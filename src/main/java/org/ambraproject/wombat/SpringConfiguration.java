@@ -3,6 +3,8 @@ package org.ambraproject.wombat;
 import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.ambraproject.wombat.service.SoaService;
+import org.ambraproject.wombat.service.SoaServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -61,6 +63,11 @@ public class SpringConfiguration {
     }
 
     return soa;
+  }
+
+  @Bean
+  public SoaService soaService() {
+    return new SoaServiceImpl();
   }
 
 }

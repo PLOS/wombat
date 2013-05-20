@@ -34,7 +34,7 @@ public interface SoaService {
 
   /**
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
-   * org.ambraproject.wombat.SpringConfiguration#gson()} bean.
+   * org.ambraproject.wombat.config.SpringConfiguration#gson()} bean.
    *
    * @param address       the path to which to send the REST request
    * @param responseClass the object type into which to serialize the JSON response

@@ -1,4 +1,4 @@
-package org.ambraproject.wombat;
+package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.service.SoaService;
 import org.slf4j.Logger;

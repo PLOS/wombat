@@ -1,4 +1,4 @@
-package org.ambraproject.wombat;
+package org.ambraproject.wombat.config;
 
 import com.google.common.io.Closeables;
 import com.google.gson.Gson;

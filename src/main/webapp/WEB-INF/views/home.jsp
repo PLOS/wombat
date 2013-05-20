@@ -11,9 +11,9 @@
 
 <P> The time on the server is ${serverTime}. </P>
 
-<p>Gson test:
+<p>SOA test:
 <pre>
-${gsonTestObject}
+${testObject}
 </pre>
 </p>
 

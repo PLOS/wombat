@@ -4,6 +4,8 @@ import com.google.common.base.Preconditions;
 import com.google.common.io.Closeables;
 import com.google.common.io.Closer;
 import com.google.gson.Gson;
+import org.ambraproject.wombat.config.SoaConfiguration;
+import org.ambraproject.wombat.util.TrustingHttpClient;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,7 +26,7 @@ import java.net.URL;
 public class SoaServiceImpl implements SoaService {
 
   @Autowired
-  private URL soa;
+  private SoaConfiguration soaConfiguration;
   @Autowired
   private Gson gson;
 
@@ -32,14 +34,15 @@ public class SoaServiceImpl implements SoaService {
   public InputStream requestStream(String address) throws IOException {
     URI targetUri;
     try {
-      targetUri = new URL(soa, Preconditions.checkNotNull(address)).toURI();
+      targetUri = new URL(soaConfiguration.getServer(), Preconditions.checkNotNull(address)).toURI();
     } catch (MalformedURLException e) {
       throw new IllegalArgumentException(e);
     } catch (URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }
 
-    HttpClient client = new DefaultHttpClient();
+    HttpClient client = ("https".equals(targetUri.getScheme()) && soaConfiguration.trustUnsignedServer())
+        ? TrustingHttpClient.create() : new DefaultHttpClient();
     HttpGet get = new HttpGet(targetUri);
     HttpResponse response = client.execute(get);
     HttpEntity entity = response.getEntity();

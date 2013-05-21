@@ -3,6 +3,7 @@ package org.ambraproject.wombat.config;
 import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SoaServiceImpl;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +13,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.Reader;
 
 @Configuration
 public class SpringConfiguration {
@@ -26,43 +26,26 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public URL soa() throws IOException {
-    File configPath = new File("/etc/ambra/soa_url.txt");
+  public SoaConfiguration soaConfiguration(Gson gson) throws IOException {
+    final File configPath = new File("/etc/ambra/soa.json");
     if (!configPath.exists()) {
-      throw new RuntimeException(configPath.getPath() + " not found");
+      throw new ConfigurationException(configPath.getPath() + " not found");
     }
 
-    URL soa = null;
-    BufferedReader reader = null;
+    SoaConfiguration soaConfiguration;
+    Reader reader = null;
     boolean threw = true;
     try {
       reader = new BufferedReader(new FileReader(configPath));
-
-      String line;
-      while ((line = reader.readLine()) != null) {
-        line = line.trim();
-        if (line.isEmpty()) {
-          continue;
-        }
-        if (soa != null) {
-          throw new RuntimeException(configPath.getPath() + " contains more than one line of text");
-        }
-        try {
-          soa = new URL(line);
-        } catch (MalformedURLException e) {
-          throw new RuntimeException(configPath.getPath() + " contains an invalid URL", e);
-        }
-      }
-      if (soa == null) {
-        throw new RuntimeException(configPath.getPath() + " is empty");
-      }
-
+      soaConfiguration = gson.fromJson(reader, SoaConfiguration.class);
       threw = false;
+    } catch (JsonSyntaxException e) {
+      throw new ConfigurationException(configPath + " contains invalid JSON");
     } finally {
       Closeables.close(reader, threw);
     }
-
-    return soa;
+    soaConfiguration.validate();
+    return soaConfiguration;
   }
 
   @Bean

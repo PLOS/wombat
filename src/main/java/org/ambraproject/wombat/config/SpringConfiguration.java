@@ -26,26 +26,26 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public SoaConfiguration soaConfiguration(Gson gson) throws IOException {
-    final File configPath = new File("/etc/ambra/soa.json");
+  public RuntimeConfiguration runtimeConfiguration(Gson gson) throws IOException {
+    final File configPath = new File("/etc/ambra/wombat.json"); // TODO Descriptive file name
     if (!configPath.exists()) {
-      throw new ConfigurationException(configPath.getPath() + " not found");
+      throw new RuntimeConfigurationException(configPath.getPath() + " not found");
     }
 
-    SoaConfiguration soaConfiguration;
+    RuntimeConfiguration runtimeConfiguration;
     Reader reader = null;
     boolean threw = true;
     try {
       reader = new BufferedReader(new FileReader(configPath));
-      soaConfiguration = gson.fromJson(reader, SoaConfiguration.class);
+      runtimeConfiguration = gson.fromJson(reader, RuntimeConfiguration.class);
       threw = false;
     } catch (JsonSyntaxException e) {
-      throw new ConfigurationException(configPath + " contains invalid JSON");
+      throw new RuntimeConfigurationException(configPath + " contains invalid JSON");
     } finally {
       Closeables.close(reader, threw);
     }
-    soaConfiguration.validate();
-    return soaConfiguration;
+    runtimeConfiguration.validate();
+    return runtimeConfiguration;
   }
 
   @Bean

@@ -7,17 +7,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Configuration for how this webapp connects, as a client, to the SOA.
+ * Configuration for the webapp's runtime behavior. Because most configuration of application behavior should be behind
+ * the service layer, this class ought to be concerned only with the minimal set of values that concern how this Spring
+ * app interacts with the service API.
  *
- * @see SpringConfiguration#soaConfiguration
+ * @see SpringConfiguration#runtimeConfiguration
  */
-public class SoaConfiguration {
+public class RuntimeConfiguration {
 
   /**
    * @deprecated should only be called reflectively by Gson
    */
   @Deprecated
-  public SoaConfiguration() {
+  public RuntimeConfiguration() {
   }
 
   // Fields are immutable by convention. They should be modified only during deserialization.
@@ -27,16 +29,16 @@ public class SoaConfiguration {
   /**
    * Validate values after deserializing.
    *
-   * @throws ConfigurationException if a value is invalid
+   * @throws RuntimeConfigurationException if a value is invalid
    */
   public void validate() {
     if (Strings.isNullOrEmpty(server)) {
-      throw new ConfigurationException("Server address required");
+      throw new RuntimeConfigurationException("Server address required");
     }
     try {
       new URL(server);
     } catch (MalformedURLException e) {
-      throw new ConfigurationException("Provided server address is not a valid URL", e);
+      throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
     }
   }
 

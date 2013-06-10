@@ -8,6 +8,9 @@ import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SoaServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -46,6 +49,22 @@ public class SpringConfiguration {
     }
     runtimeConfiguration.validate();
     return runtimeConfiguration;
+  }
+
+  @Bean
+  public FreeMarkerConfig freeMarkerConfig() {
+    FreeMarkerConfigurer config = new FreeMarkerConfigurer();
+    config.setTemplateLoaderPath("/WEB-INF/views/");
+    return config;
+  }
+
+  @Bean
+  public FreeMarkerViewResolver viewResolver() {
+    FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+    resolver.setCache(true);
+    resolver.setPrefix("");
+    resolver.setSuffix(".ftl");
+    return resolver;
   }
 
   @Bean

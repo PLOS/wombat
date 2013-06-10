@@ -1,21 +1,23 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
-  <title>Home</title>
+    <title>Home</title>
 </head>
 <body>
 <h1>
-  Hello world!
+    Hello world!
 </h1>
 
 <P> The time on the server is ${serverTime}. </P>
 
+<#if testObject??>
 <p>SOA test:
 <pre>
 ${testObject}
 </pre>
 </p>
+<#else>
+Could not contact the SOA server.
+</#if>
 
 </body>
 </html>

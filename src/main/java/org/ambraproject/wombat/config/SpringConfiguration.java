@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Map;
 
 @Configuration
 public class SpringConfiguration {
@@ -57,17 +58,10 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public ThemeAccessor themeAccessor(RuntimeConfiguration runtimeConfiguration, ThemeTree themeTree)
+  public FreeMarkerConfig freeMarkerConfig(RuntimeConfiguration runtimeConfiguration, ThemeTree themeTree)
       throws IOException {
-    return ThemeAccessor.buildOnDisk(runtimeConfiguration.getThemeBuildPath(), themeTree);
-  }
-
-  @Bean
-  public FreeMarkerConfig freeMarkerConfig(RuntimeConfiguration runtimeConfiguration,
-                                           ThemeTree themeTree, ThemeAccessor themeAccessor)
-      throws IOException {
-    JournalTemplateLoader loader = new JournalTemplateLoader(themeAccessor,
-        runtimeConfiguration.getThemesForJournals(themeTree));
+    Map<String, ThemeTree.Node> themesForJournals = runtimeConfiguration.getThemesForJournals(themeTree);
+    JournalTemplateLoader loader = new JournalTemplateLoader(themesForJournals);
 
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);

@@ -2,22 +2,23 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.google.common.collect.UnmodifiableIterator;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.SortedMap;
 
 /**
- * Internal representation of the set of all themes. Should be exposed to the controller layer only through {@link
- * ThemeAccessor}.
+ * Internal representation of the set of all themes. Should be exposed to the controller layer only.
  */
 class ThemeTree {
 
@@ -25,10 +26,6 @@ class ThemeTree {
 
   private ThemeTree(Map<String, Node> themes) {
     this.themes = ImmutableMap.copyOf(themes);
-  }
-
-  ImmutableCollection<Node> getNodes() {
-    return themes.values();
   }
 
 
@@ -50,12 +47,30 @@ class ThemeTree {
       return key;
     }
 
-    public File getDefinitionLocation() {
-      return location;
-    }
+    public Iterable<File> getLocations() {
+      return new Iterable<File>() {
+        @Override
+        public Iterator<File> iterator() {
+          return new UnmodifiableIterator<File>() {
+            private Node cursor = Node.this;
 
-    public Optional<Node> getParent() {
-      return parent;
+            @Override
+            public boolean hasNext() {
+              return cursor != null;
+            }
+
+            @Override
+            public File next() {
+              if (!hasNext()) {
+                throw new NoSuchElementException();
+              }
+              File location = cursor.location;
+              cursor = cursor.parent.orNull();
+              return location;
+            }
+          };
+        }
+      };
     }
 
     @Override

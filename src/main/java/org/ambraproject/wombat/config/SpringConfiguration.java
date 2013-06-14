@@ -43,7 +43,7 @@ public class SpringConfiguration {
       runtimeConfiguration = gson.fromJson(reader, RuntimeConfiguration.class);
       threw = false;
     } catch (JsonSyntaxException e) {
-      throw new RuntimeConfigurationException(configPath + " contains invalid JSON");
+      throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
     } finally {
       Closeables.close(reader, threw);
     }
@@ -52,9 +52,25 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public FreeMarkerConfig freeMarkerConfig() {
+  public ThemeTree themeTree(RuntimeConfiguration runtimeConfiguration) throws ThemeTree.ThemeConfigurationException {
+    return runtimeConfiguration.getThemes();
+  }
+
+  @Bean
+  public ThemeAccessor themeAccessor(RuntimeConfiguration runtimeConfiguration, ThemeTree themeTree)
+      throws IOException {
+    return ThemeAccessor.buildOnDisk(runtimeConfiguration.getThemeBuildPath(), themeTree);
+  }
+
+  @Bean
+  public FreeMarkerConfig freeMarkerConfig(RuntimeConfiguration runtimeConfiguration,
+                                           ThemeTree themeTree, ThemeAccessor themeAccessor)
+      throws IOException {
+    JournalTemplateLoader loader = new JournalTemplateLoader(themeAccessor,
+        runtimeConfiguration.getThemesForJournals(themeTree));
+
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
-    config.setTemplateLoaderPath("/WEB-INF/views/");
+    config.setPreTemplateLoaders(loader);
     return config;
   }
 

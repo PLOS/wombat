@@ -9,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -31,7 +29,7 @@ public class HomeController {
    * Simply selects the home view to render by returning its name.
    */
   @RequestMapping(value = "/", method = RequestMethod.GET)
-  public String home(Locale locale, Model model) throws IOException, URISyntaxException {
+  public String home(Locale locale, Model model) throws Exception {
     logger.info("Welcome home! The client locale is {}.", locale);
 
     Date date = new Date();
@@ -43,7 +41,7 @@ public class HomeController {
     Map<?, ?> serverConfig = soaService.requestObject("config", Map.class);
     model.addAttribute("testObject", serverConfig);
 
-    return "home";
+    return "PlosOne/home";
   }
 
 }

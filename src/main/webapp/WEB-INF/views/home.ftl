@@ -7,6 +7,8 @@
     Hello world!
 </h1>
 
+<#include "snippet.ftl" />
+
 <P> The time on the server is ${serverTime}. </P>
 
 <#if testObject??>

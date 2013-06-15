@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
+import javax.servlet.ServletContext;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -58,10 +59,12 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public FreeMarkerConfig freeMarkerConfig(RuntimeConfiguration runtimeConfiguration, ThemeTree themeTree)
+  public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext,
+                                           RuntimeConfiguration runtimeConfiguration,
+                                           ThemeTree themeTree)
       throws IOException {
     Map<String, ThemeTree.Node> themesForJournals = runtimeConfiguration.getThemesForJournals(themeTree);
-    JournalTemplateLoader loader = new JournalTemplateLoader(themesForJournals);
+    JournalTemplateLoader loader = new JournalTemplateLoader(servletContext, themesForJournals);
 
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);

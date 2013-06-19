@@ -81,7 +81,7 @@ public class RuntimeConfiguration {
     return ThemeTree.parse(this.themes);
   }
 
-  public ImmutableMap<String, ThemeTree.Node> getThemesForJournals(ThemeTree themeTree) {
+  public ImmutableMap<String, Theme> getThemesForJournals(ThemeTree themeTree) {
     return themeTree.matchToJournals(journals);
   }
 

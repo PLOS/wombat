@@ -1,19 +1,15 @@
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.SortedMap;
 
@@ -22,66 +18,10 @@ import java.util.SortedMap;
  */
 class ThemeTree {
 
-  private ImmutableMap<String, Node> themes;
+  private ImmutableMap<String, Theme> themes;
 
-  private ThemeTree(Map<String, Node> themes) {
+  private ThemeTree(Map<String, Theme> themes) {
     this.themes = ImmutableMap.copyOf(themes);
-  }
-
-
-  /**
-   * Immutable representation of a theme.
-   */
-  static class Node {
-    private final String key;
-    private final File location;
-    private final Optional<Node> parent;
-
-    private Node(Mutable node, Node parent) {
-      this.key = Preconditions.checkNotNull(node.key);
-      this.location = new File(node.location);
-      this.parent = Optional.fromNullable(parent);
-    }
-
-    public String getKey() {
-      return key;
-    }
-
-    public Iterable<File> getLocations() {
-      return new Iterable<File>() {
-        @Override
-        public Iterator<File> iterator() {
-          return new UnmodifiableIterator<File>() {
-            private Node cursor = Node.this;
-
-            @Override
-            public boolean hasNext() {
-              return cursor != null;
-            }
-
-            @Override
-            public File next() {
-              if (!hasNext()) {
-                throw new NoSuchElementException();
-              }
-              File location = cursor.location;
-              cursor = cursor.parent.orNull();
-              return location;
-            }
-          };
-        }
-      };
-    }
-
-    @Override
-    public String toString() {
-      final StringBuilder sb = new StringBuilder("Node{");
-      sb.append("key='").append(key).append('\'');
-      sb.append(", location=").append(location);
-      sb.append(", parent=").append(parent.isPresent() ? parent.get().getKey() : null);
-      sb.append('}');
-      return sb.toString();
-    }
   }
 
 
@@ -99,6 +39,10 @@ class ThemeTree {
   public static class ThemeConfigurationException extends Exception {
     private ThemeConfigurationException(String message) {
       super(message);
+    }
+
+    public ThemeConfigurationException(String message, Throwable cause) {
+      super(message, cause);
     }
   }
 
@@ -135,7 +79,7 @@ class ThemeTree {
     }
 
     // Create the root nodes, then recursively create their children
-    SortedMap<String, Node> created = Maps.newTreeMap();
+    SortedMap<String, Theme> created = Maps.newTreeMap();
     for (Mutable node : mutables.values()) {
       if (node.parent == null) {
         createImmutableNodes(node, null, created);
@@ -160,23 +104,28 @@ class ThemeTree {
     return m;
   }
 
-  private static void createImmutableNodes(Mutable toCreate,
-                                           Node parent,
-                                           Map<String, Node> container) {
-    Node node = new Node(toCreate, parent);
-    Node previous = container.put(node.key, node);
+  private static void createImmutableNodes(Mutable toCreate, Theme parent, Map<String, Theme> container)
+      throws ThemeConfigurationException {
+    File themeLocation = new File(toCreate.location);
+    Theme node;
+    try {
+      node = new FileTheme(toCreate.key, parent, themeLocation); // TODO Support other theme types
+    } catch (IOException e) {
+      throw new ThemeConfigurationException("Could not access: " + themeLocation, e);
+    }
+    Theme previous = container.put(node.getKey(), node);
     if (previous != null) {
       // Expected not to be possible on any user input.
       // It should (hopefully) interrupt an infinite recursion bug.
-      throw new RuntimeException("Key collision: " + node.key);
+      throw new RuntimeException("Key collision: " + node.getKey());
     }
     for (Mutable child : toCreate.children) {
       createImmutableNodes(child, node, container);
     }
   }
 
-  ImmutableMap<String, Node> matchToJournals(List<Map<String, ?>> journalConfigJson) {
-    SortedMap<String, Node> journalMap = Maps.newTreeMap();
+  ImmutableMap<String, Theme> matchToJournals(List<Map<String, ?>> journalConfigJson) {
+    SortedMap<String, Theme> journalMap = Maps.newTreeMap();
     for (Map<String, ?> journalObj : journalConfigJson) {
       String key = (String) journalObj.get("key");
       String themeName = (String) journalObj.get("theme");

@@ -63,7 +63,7 @@ public class SpringConfiguration {
                                            RuntimeConfiguration runtimeConfiguration,
                                            ThemeTree themeTree)
       throws IOException {
-    Map<String, ThemeTree.Node> themesForJournals = runtimeConfiguration.getThemesForJournals(themeTree);
+    Map<String, Theme> themesForJournals = runtimeConfiguration.getThemesForJournals(themeTree);
     JournalTemplateLoader loader = new JournalTemplateLoader(servletContext, themesForJournals);
 
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();

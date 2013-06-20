@@ -77,8 +77,8 @@ public class RuntimeConfiguration {
     }
   }
 
-  public ThemeTree getThemes() throws ThemeTree.ThemeConfigurationException {
-    return ThemeTree.parse(this.themes);
+  public ThemeTree getThemes(Theme internalDefault) throws ThemeTree.ThemeConfigurationException {
+    return ThemeTree.parse(this.themes, internalDefault);
   }
 
   public ImmutableMap<String, Theme> getThemesForJournals(ThemeTree themeTree) {
@@ -86,9 +86,9 @@ public class RuntimeConfiguration {
   }
 
   /*
-     * For debugger-friendliness only. If there is a need to serialize back to JSON in production, it would be more
-     * efficient to use the Gson bean.
-     */
+   * For debugger-friendliness only. If there is a need to serialize back to JSON in production, it would be more
+   * efficient to use the Gson bean.
+   */
   @Override
   public String toString() {
     return new GsonBuilder().create().toJson(this);

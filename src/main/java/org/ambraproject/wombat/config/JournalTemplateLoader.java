@@ -4,11 +4,9 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.TemplateLoader;
-import freemarker.cache.WebappTemplateLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -16,11 +14,9 @@ import java.util.Map;
 class JournalTemplateLoader extends DelegatingTemplateLoader {
   private static final Logger log = LoggerFactory.getLogger(JournalTemplateLoader.class);
 
-  private final TemplateLoader internalResource;
   private final ImmutableMap<String, TemplateLoader> loaders; // keyed by journal
 
-  JournalTemplateLoader(ServletContext servletContext, Map<String, Theme> journals) throws IOException {
-    this.internalResource = new WebappTemplateLoader(servletContext, "/WEB-INF/views/");
+  JournalTemplateLoader(Map<String, Theme> journals) throws IOException {
     this.loaders = buildLoaders(journals);
   }
 
@@ -34,7 +30,6 @@ class JournalTemplateLoader extends DelegatingTemplateLoader {
       for (Theme theme : leaf.getChain()) {
         loaders.add(theme.getTemplateLoader());
       }
-      loaders.add(internalResource); // TODO: Put this in the regular theme chain
 
       MultiTemplateLoader multiLoader = new MultiTemplateLoader(loaders.toArray(new TemplateLoader[loaders.size()]));
       builder.put(key, multiLoader);
@@ -46,8 +41,7 @@ class JournalTemplateLoader extends DelegatingTemplateLoader {
   protected TemplateLoader delegate(String key) {
     TemplateLoader loader = loaders.get(key);
     if (loader == null) {
-      log.warn("Key not matched: {}", key);
-      return internalResource;
+      throw new RuntimeException("Key not matched: " + key);
     }
     return loader;
   }

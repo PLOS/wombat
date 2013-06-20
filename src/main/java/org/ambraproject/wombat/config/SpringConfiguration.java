@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,7 +19,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.Map;
 
 @Configuration
 public class SpringConfiguration {
@@ -54,18 +54,22 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public ThemeTree themeTree(RuntimeConfiguration runtimeConfiguration) throws ThemeTree.ThemeConfigurationException {
-    return runtimeConfiguration.getThemes();
+  public ThemeTree themeTree(ServletContext servletContext, RuntimeConfiguration runtimeConfiguration)
+      throws ThemeTree.ThemeConfigurationException {
+    String internalViewPath = "/WEB-INF/views/";
+    Theme internalDefaultTheme = new InternalTheme("", null, servletContext, internalViewPath);
+    return runtimeConfiguration.getThemes(internalDefaultTheme);
   }
 
   @Bean
-  public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext,
-                                           RuntimeConfiguration runtimeConfiguration,
-                                           ThemeTree themeTree)
-      throws IOException {
-    Map<String, Theme> themesForJournals = runtimeConfiguration.getThemesForJournals(themeTree);
-    JournalTemplateLoader loader = new JournalTemplateLoader(servletContext, themesForJournals);
+  public ImmutableMap<String, Theme> themesForJournals(RuntimeConfiguration runtimeConfiguration,
+                                                       ThemeTree themeTree) {
+    return runtimeConfiguration.getThemesForJournals(themeTree);
+  }
 
+  @Bean
+  public FreeMarkerConfig freeMarkerConfig(ImmutableMap<String, Theme> themesForJournals) throws IOException {
+    JournalTemplateLoader loader = new JournalTemplateLoader(themesForJournals);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
     return config;

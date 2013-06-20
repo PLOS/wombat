@@ -14,14 +14,18 @@ import java.util.Set;
 import java.util.SortedMap;
 
 /**
- * Internal representation of the set of all themes. Should be exposed to the controller layer only.
+ * Internal representation of the set of all themes.
  */
-class ThemeTree {
+public class ThemeTree {
 
   private ImmutableMap<String, Theme> themes;
 
   private ThemeTree(Map<String, Theme> themes) {
     this.themes = ImmutableMap.copyOf(themes);
+  }
+
+  public Theme getTheme(String key) {
+    return themes.get(key);
   }
 
 
@@ -54,12 +58,12 @@ class ThemeTree {
    * @return
    * @throws ThemeConfigurationException
    */
-  static ThemeTree parse(List<Map<String, ?>> themeConfigJson) throws ThemeConfigurationException {
+  static ThemeTree parse(List<Map<String, ?>> themeConfigJson, Theme defaultTheme) throws ThemeConfigurationException {
     Map<String, Mutable> mutables = Maps.newHashMapWithExpectedSize(themeConfigJson.size());
 
     // Make a pass over the JSON, creating mutable objects and mapping them by their keys
     for (Map<String, ?> themeJsonObj : themeConfigJson) {
-      Mutable node = buildFromJson(mutables, themeJsonObj);
+      Mutable node = buildFromJson(themeJsonObj);
       mutables.put(node.key, node);
     }
 
@@ -82,7 +86,7 @@ class ThemeTree {
     SortedMap<String, Theme> created = Maps.newTreeMap();
     for (Mutable node : mutables.values()) {
       if (node.parent == null) {
-        createImmutableNodes(node, null, created);
+        createImmutableNodes(node, defaultTheme, created);
       }
     }
 
@@ -95,7 +99,7 @@ class ThemeTree {
     return new ThemeTree(created);
   }
 
-  private static Mutable buildFromJson(Map<String, Mutable> mutables, Map<String, ?> themeJsonObj) {
+  private static Mutable buildFromJson(Map<String, ?> themeJsonObj) {
     String key = (String) themeJsonObj.get("key");
     Mutable m = new Mutable();
     m.key = key;

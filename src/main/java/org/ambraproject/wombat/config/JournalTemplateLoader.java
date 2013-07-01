@@ -20,7 +20,8 @@ class JournalTemplateLoader extends DelegatingTemplateLoader {
     this.loaders = buildLoaders(journals);
   }
 
-  private ImmutableMap<String, TemplateLoader> buildLoaders(Map<String, Theme> journals) throws IOException {
+  private static ImmutableMap<String, TemplateLoader> buildLoaders(Map<String, Theme> journals)
+      throws IOException {
     ImmutableMap.Builder<String, TemplateLoader> builder = ImmutableMap.builder();
     for (Map.Entry<String, Theme> entry : journals.entrySet()) {
       String key = entry.getKey();

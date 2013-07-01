@@ -100,9 +100,8 @@ public class ThemeTree {
   }
 
   private static Mutable buildFromJson(Map<String, ?> themeJsonObj) {
-    String key = (String) themeJsonObj.get("key");
     Mutable m = new Mutable();
-    m.key = key;
+    m.key = (String) themeJsonObj.get("key");
     m.location = (String) themeJsonObj.get("path");
     m.parentKey = (String) themeJsonObj.get("parent");
     return m;

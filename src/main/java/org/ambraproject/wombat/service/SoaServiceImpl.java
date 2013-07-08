@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
-import com.google.common.io.Closeables;
 import com.google.common.io.Closer;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
@@ -14,6 +13,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -41,7 +41,7 @@ public class SoaServiceImpl implements SoaService {
       throw new IllegalArgumentException(e);
     }
 
-    HttpClient client = ("https".equals(targetUri.getScheme()) && runtimeConfiguration.trustUnsignedServer())
+    HttpClient client = (runtimeConfiguration.trustUnsignedServer() && "https".equals(targetUri.getScheme()))
         ? TrustingHttpClient.create() : new DefaultHttpClient();
     HttpGet get = new HttpGet(targetUri);
     HttpResponse response = client.execute(get);
@@ -54,35 +54,30 @@ public class SoaServiceImpl implements SoaService {
 
   @Override
   public String requestString(String address) throws IOException {
-    String response;
-    InputStream stream = null;
-    boolean threw = true;
+    Closer closer = Closer.create();
     try {
-      stream = requestStream(address);
-      response = IOUtils.toString(stream);
-      threw = false;
+      InputStream stream = closer.register(requestStream(address));
+      return IOUtils.toString(stream); // buffered
+    } catch (Throwable t) {
+      throw closer.rethrow(t);
     } finally {
-      Closeables.close(stream, threw);
+      closer.close();
     }
-    return response;
   }
 
   @Override
   public <T> T requestObject(String address, Class<T> responseClass) throws IOException {
     Preconditions.checkNotNull(responseClass);
-
-    T responseObject;
     Closer closer = Closer.create();
-    Reader reader;
-    InputStream responseStream;
     try {
-      responseStream = closer.register(requestStream(address));
-      reader = closer.register(new InputStreamReader(responseStream));
-      responseObject = gson.fromJson(reader, responseClass);
+      InputStream stream = closer.register(new BufferedInputStream(requestStream(address)));
+      Reader reader = closer.register(new InputStreamReader(stream));
+      return gson.fromJson(reader, responseClass);
+    } catch (Throwable t) {
+      throw closer.rethrow(t);
     } finally {
       closer.close();
     }
-    return responseObject;
   }
 
 }

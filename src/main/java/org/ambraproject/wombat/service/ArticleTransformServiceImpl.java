@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.Theme;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Map;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
 
@@ -65,8 +67,39 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
 
-  // TODO Cache (per journal!)
+  private final Map<String, Transformer> cache = Maps.newHashMap();
+
+  /**
+   * Access the transformer for a journal. Either builds it or retrieves it from a cache.
+   *
+   * @param journal the journal key
+   * @return the transformer
+   * @throws IOException
+   */
   private Transformer getTransformer(String journal) throws IOException {
+    /*
+     * Use a simple, hashtable-based cache. This assumes that the number of journals (and the size of the transfomers)
+     * will never be so large that evicting a cached transformer makes sense.
+     *
+     * This prevents the application from picking up any dynamic changes to the transform in a theme (such as an *.xsl
+     * file on disk being overwritten at runtime).
+     */
+    Transformer transformer = cache.get(journal);
+    if (transformer == null) {
+      transformer = buildTransformer(journal);
+      cache.put(journal, transformer);
+    }
+    return transformer;
+  }
+
+  /**
+   * Build a new transformer for a journal.
+   *
+   * @param journal the journal key
+   * @return the transformer
+   * @throws IOException
+   */
+  private Transformer buildTransformer(String journal) throws IOException {
     Theme theme = themesForJournals.get(journal);
     if (theme == null) {
       throw new UnmatchedJournalException(journal);

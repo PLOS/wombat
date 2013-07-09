@@ -3,6 +3,7 @@ package org.ambraproject.wombat.config;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.TemplateLoader;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class FileTheme extends Theme {
   @Override
   protected InputStream fetchStaticResource(String path) throws IOException {
     File file = new File(root, path);
-    return file.exists() ? new FileInputStream(file) : null;
+    return file.exists() ? new BufferedInputStream(new FileInputStream(file)) : null;
   }
 
 }

@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -56,6 +57,8 @@ public class ArticleController {
     String articleId = parseArticlePath(request);
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
 
+    Map<?, ?> articleMetadata = soaService.requestObject("articles/" + articleId, Map.class);
+
     StringWriter articleHtml = new StringWriter(BUFFER_SIZE);
     Closer closer = Closer.create();
     try {
@@ -69,6 +72,7 @@ public class ArticleController {
       closer.close();
     }
 
+    model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml.toString());
     return journal + "/ftl/article";
   }

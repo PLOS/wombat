@@ -8,6 +8,7 @@ import org.ambraproject.wombat.util.TrustingHttpClient;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -44,7 +45,15 @@ public class SoaServiceImpl implements SoaService {
     HttpClient client = (runtimeConfiguration.trustUnsignedServer() && "https".equals(targetUri.getScheme()))
         ? TrustingHttpClient.create() : new DefaultHttpClient();
     HttpGet get = new HttpGet(targetUri);
+
     HttpResponse response = client.execute(get);
+    StatusLine statusLine = response.getStatusLine();
+    if (statusLine.getStatusCode() >= 400) {
+      String message = String.format("Request to \"%s\" failed (%d): %s",
+          address, statusLine.getStatusCode(), statusLine.getReasonPhrase());
+      throw new RuntimeException(message);
+    }
+
     HttpEntity entity = response.getEntity();
     if (entity == null) {
       throw new RuntimeException("No response");

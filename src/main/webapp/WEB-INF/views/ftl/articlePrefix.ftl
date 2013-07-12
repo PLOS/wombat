@@ -1,1 +1,78 @@
-<h1>${article.title}</h1>
+<div id="container-main">
+
+    <header id="common-header">
+        <div class="search-expanded">
+            <div class="search-form-container coloration-bg">
+                <input id="search-input" type="text" class="search-field" placeholder="Search articles...">
+
+                <div class="search-buttons">
+                    <button id="search-cancel" class="rounded">cancel</button>
+                    <button id="search-execute" class="rounded">search</button>
+                </div>
+            </div>
+        </div>
+        <div id="site-header-container" class="coloration-border-top">
+
+            <a id="site-menu-button">Site Menu</a>
+            <a class="site-search-button color-active"><span class="icon">Search</span></a>
+            <a><h1 id="site-logo">PLOS</h1></a>
+
+        </div>
+        <nav id="article-menu" class="menu-bar">
+            <ul>
+                <li>
+                    <a id="menu-browse">Browse Topics</a>
+                </li>
+                <li>
+                    <a id="menu-saved">Saved Items</a>
+                </li>
+                <li>
+                    <a id="menu-recent">Recent History</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!--end common-header-->
+
+    <div id="article-content" class="content" data-article-id="0059893">
+        <article class="article-item">
+            <a class="save-article circular coloration-text-color" data-list-type="individual">x</a>
+            <h5 class="item-title lead-in">RESEARCH IN TRANSLATION</h5>
+
+            <h2 class="article-title">Psychoactive Pharmaceuticals Induce Fish Gene Expression Profiles Associated with
+                Human Idiopathic Autism</h2>
+
+            <p class="author-list">
+                <a class="author-info" data-author-id="1">Tina Šantl-Temkiv</a>,
+                <a class="author-info" data-author-id="2">Kai Finster</a>,
+                <a class="author-info" data-author-id="3">Thorsten Dittmar</a>,
+                <a class="author-info" data-author-id="4">Bjarne Munk Hansen,
+                    <a class="author-info" data-author-id="5">Runar</a>,
+                    <a class="author-info" data-author-id="6">Thyrhaug †</a>,
+                    <a class="author-info" data-author-id="7">Niels Woetmann Nielsen,
+                        <a class="author-info" class="more-authors">[...view 25 more...]</a>
+                        <a class="author-info" data-author-id="8">Ulrich Gosewinkel</a>
+            </p>
+
+            <div class="retraction red-alert">
+                <h3>Retraction:</h3>
+
+                <p>Comparative Expression Profile of miRNA and mRNA in Primary Peripheral Blood Mononuclear Cells
+                    Infected with Human Immunodeficiency Virus (HIV-1)</p>
+
+                <p>The authors wish to retract this article for the following reason:</p>
+
+                <p>Upon re-evaluation of the analyses performed, we discovered an error in the data fed into the
+                    software, which resulted in incorrect results in Table 2 and Figure 2. During the initial analysis,
+                    we eliminated miRNAs if they showed an expression CT of value 35 in over 75% of the samples. This
+                    decision was based on the instructions from the software during the initial data feed process for
+                    the selection of particular miRNAs (row) for exclusion. Unfortunately, the software included the
+                    excluded miRNAs as controls along with the endogenous controls and analyzed the data.</p>
+            </div>
+            <div class="correction-alert coloration-text-color">
+                <span class="plos-font">e</span> Correction added <span class="bold">08 Jul 2012</span>
+            </div>
+            <!--end retraction-->
+        <#-- In articleSuffix.ftl: Close <article class="article-item"> -->
+        <#-- In articleSuffix.ftl: Close <div id="article-content"> -->
+        <#-- In articleSuffix.ftl: Close <div id="container-main"> -->

@@ -5,6 +5,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.Theme;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.transform.Source;
@@ -21,6 +23,7 @@ import java.io.OutputStream;
 import java.util.Map;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
+  private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
 
   private static final String TEMPLATE_ROOT_PATH = "static/xform/";
   private static final String TRANSFORM_TEMPLATE_PATH = TEMPLATE_ROOT_PATH + "article-transform.xsl";
@@ -104,6 +107,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     if (theme == null) {
       throw new UnmatchedJournalException(journal);
     }
+    log.info("Building transformer for: {}", journal);
     TransformerFactory factory = newTransformerFactory();
 
     Closer closer = Closer.create();
@@ -128,7 +132,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     Preconditions.checkNotNull(html);
 
     Transformer transformer = getTransformer(journalKey);
+    log.debug("Starting XML transformation");
     transformer.transform(new StreamSource(xml), new StreamResult(html));
+    log.debug("Finished XML transformation");
   }
 
 }

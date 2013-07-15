@@ -13,14 +13,6 @@
   display: block;
 }
 
-.albert-bold {
-  font-family: 'fs_albertbold';
-}
-
-.albert {
-  font-family: 'fs_albertregular';
-}
-
 .arial {
   font-family: 'Arial', sans-serif;
 }
@@ -58,7 +50,7 @@
 
 /* GENERAL STYLES AND RESETS */
 h1, h2, h3, h4 {
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   font-weight: normal;
 }
 
@@ -105,7 +97,7 @@ a {
 }
 
 .article-title {
-  font-family: 'fs_albertbold';
+  font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.8em;
   line-height: 1.2em;
 }
@@ -326,7 +318,7 @@ section.spotlight .spotlight-item {
 
 section.spotlight .spotlight-item .item-link {
   color: #336699;
-  font-family: 'fs_albertbold';
+  font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.5em;
   line-height: 1.15em;
 }
@@ -351,7 +343,7 @@ section.spotlight .spotlight-item .item-link {
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   color: #fff;
   display: block;
   text-align: center;
@@ -388,7 +380,7 @@ section.spotlight .spotlight-item .item-link {
   width: 50%;
   color: #4a0100;
   display: inline-block;
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.4em;
   text-align: center;
 }
@@ -632,7 +624,7 @@ section.spotlight .spotlight-item .item-link {
 }
 
 .full-menu-container .full-menu-tout h4 {
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.5em;
   color: #4a0100;
   padding-bottom: 15px;
@@ -674,7 +666,7 @@ nav.menu-bar li {
 }
 
 nav.menu-bar li a {
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   color: #fff;
   font-size: 1.25em;
   line-height: 40px;
@@ -760,7 +752,7 @@ nav.article-menu-bottom .btn-top-container {
 }
 
 nav.article-menu-bottom .btn-top-container .btn-text {
-  font-family: 'fs_albertbold';
+  font-family: Verdana, 'Arial', sans-serif;
   font-style: italic;
   font-size: 1.5em;
 }
@@ -800,7 +792,7 @@ nav.footer-menu li a {
   border-right: 1px solid #666666;
   color: #fff;
   font-size: 1.2em;
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   height: 20px;
   line-height: 1.6em;
 }
@@ -962,7 +954,7 @@ nav.footer-secondary-menu li a {
 
 .filter-box .filter-option h5 {
   font-size: 1.4em;
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
 }
 
 .filter-box .filter-option select {
@@ -1111,7 +1103,7 @@ nav.footer-secondary-menu li a {
   height: 40px;
   display: block;
   padding: 10px 15px;
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.5em;
 }
 
@@ -1165,7 +1157,7 @@ nav.footer-secondary-menu li a {
 
 .back-header a.back {
   display: block;
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.5em;
   position: relative;
   padding: 15px 5px 15px 30px;
@@ -1184,7 +1176,7 @@ nav.footer-secondary-menu li a {
 .section-header {
   padding: 0 15px;
   font-size: 1.5em;
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   display: block;
   border-bottom: 1px solid #d3d3d3;
 }

@@ -287,7 +287,7 @@
 #page-recent-history .recent-search-list > li a {
   color: #336699;
   font-size: 1.5em;
-  font-family: 'fs_albertbold';
+  font-family: Verdana, 'Arial', sans-serif;
 }
 
 #page-recent-history #article-items {
@@ -297,7 +297,7 @@
 /* Journals */
 .lead-in.journal {
   font-size: 1.5em;
-  font-family: 'fs_albertregular';
+  font-family: Verdana, 'Arial', sans-serif;
   text-transform: none;
   margin-top: 10px;
 }

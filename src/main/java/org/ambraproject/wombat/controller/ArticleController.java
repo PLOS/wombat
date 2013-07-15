@@ -44,7 +44,8 @@ public class ArticleController {
   private static final Pattern ARTICLE_ID_PATTERN = Pattern.compile(".*?/article/(.*)");
 
   private static String parseArticlePath(HttpServletRequest request) {
-    Matcher m = ARTICLE_ID_PATTERN.matcher(request.getServletPath());
+    String path = request.getServletPath();
+    Matcher m = ARTICLE_ID_PATTERN.matcher(path);
     if (!m.matches()) {
       throw new IllegalArgumentException();
     }

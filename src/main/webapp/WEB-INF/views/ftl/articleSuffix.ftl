@@ -198,5 +198,3 @@
 <script src="../static/js/navigation.js"></script>
 <script src="../static/js/content.js"></script>
 <script src="../static/js/share.js"></script>
-
-</body>

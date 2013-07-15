@@ -39,19 +39,13 @@
             <a class="save-article circular coloration-text-color" data-list-type="individual">x</a>
             <h5 class="item-title lead-in">RESEARCH IN TRANSLATION</h5>
 
-            <h2 class="article-title">Psychoactive Pharmaceuticals Induce Fish Gene Expression Profiles Associated with
-                Human Idiopathic Autism</h2>
+            <h2 class="article-title">${article.title}</h2>
 
             <p class="author-list">
-                <a class="author-info" data-author-id="1">Tina Šantl-Temkiv</a>,
-                <a class="author-info" data-author-id="2">Kai Finster</a>,
-                <a class="author-info" data-author-id="3">Thorsten Dittmar</a>,
-                <a class="author-info" data-author-id="4">Bjarne Munk Hansen,
-                    <a class="author-info" data-author-id="5">Runar</a>,
-                    <a class="author-info" data-author-id="6">Thyrhaug †</a>,
-                    <a class="author-info" data-author-id="7">Niels Woetmann Nielsen,
-                        <a class="author-info" class="more-authors">[...view 25 more...]</a>
-                        <a class="author-info" data-author-id="8">Ulrich Gosewinkel</a>
+            <#list article.authors as author>
+                <a class="author-info" data-author-id="${author_index}">
+                ${author.fullName}</a><#if author_has_next><#-- no space -->,</#if>
+            </#list>
             </p>
 
             <div class="retraction red-alert">

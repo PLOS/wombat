@@ -31,8 +31,7 @@
                 </li>
             </ul>
         </nav>
-    </header>
-    <!--end common-header-->
+    </header><#--end common-header-->
 
     <div id="article-content" class="content" data-article-id="0059893">
         <article class="article-item">
@@ -65,8 +64,7 @@
             </div>
             <div class="correction-alert coloration-text-color">
                 <span class="plos-font">e</span> Correction added <span class="bold">08 Jul 2012</span>
-            </div>
-            <!--end retraction-->
+            </div><#--end retraction-->
         <#-- In articleSuffix.ftl: Close <article class="article-item"> -->
         <#-- In articleSuffix.ftl: Close <div id="article-content"> -->
         <#-- In articleSuffix.ftl: Close <div id="container-main"> -->

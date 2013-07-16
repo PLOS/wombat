@@ -37,8 +37,7 @@
             </a>
         </li>
     </ul>
-</nav>
-<!--end article buttons-->
+</nav><#--end article buttons-->
 
 <nav class="article-save-options">
     <div class="button-pair clearfix">
@@ -47,8 +46,7 @@
     </div>
     <a class="rounded full save-article" data-list-type="individual"><span class="plus">+</span> Add article to
         my list</a>
-</nav>
-<!--end article-save-options-->
+</nav><#--end article-save-options-->
 </article>
 
 <nav class="article-menu-bottom small">
@@ -61,8 +59,7 @@
     </div>
 </nav>
 
-</div>
-<!--end content-->
+</div><#--end content-->
 
 <footer id="common-footer" class="footer">
     <nav class="footer-menu">
@@ -115,13 +112,11 @@
 
     <a class="modal-search square-full coloration-white-on-color">search for this author</a>
 
-</section>
-<!--end model info window-->
+</section><#--end model info window-->
 
 <div id="container-main-overlay"></div>
 
-</div>
-<!--end container main-->
+</div><#--end container main-->
 
 <div id="common-menu-container" class="full-menu-container coloration-border-top">
     <nav class="full-menu">
@@ -190,8 +185,7 @@
         </ul>
         <div><a class="rounded coloration-white-on-color">get started</a></div>
     </div>
-</div>
-<!--end full menu container-->
+</div><#--end full menu container-->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../static/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>

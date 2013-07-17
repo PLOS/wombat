@@ -8,7 +8,7 @@
 </style>
 
 <title>${article.title}</title>
-<link rel="stylesheet" href="../static/css/base.css">
-<link rel="stylesheet" href="../static/css/interface.css">
-<link rel="stylesheet" href="../static/css/mobile.css">
+<link rel="stylesheet" href="static/css/base.css">
+<link rel="stylesheet" href="static/css/interface.css">
+<link rel="stylesheet" href="static/css/mobile.css">
 <#include "../cssLinks.ftl" />

@@ -6,8 +6,6 @@
 <!--[if gt IE 9]><html class="no-js"><!--<![endif]-->
 
 <head>
-    <base href="${baseHref}"/><#-- Set base path to article/ -->
-
 <#include "articleHead.ftl" />
 </head>
 

@@ -11,4 +11,4 @@
 <link rel="stylesheet" href="../static/css/base.css">
 <link rel="stylesheet" href="../static/css/interface.css">
 <link rel="stylesheet" href="../static/css/mobile.css">
-<#include "cssLinks.ftl" />
+<#include "../cssLinks.ftl" />

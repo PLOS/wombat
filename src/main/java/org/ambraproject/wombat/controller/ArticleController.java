@@ -112,7 +112,7 @@ public class ArticleController {
     model.addAttribute("baseHref", baseHref(articleId));
     model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml.toString());
-    return journal + "/ftl/article";
+    return journal + "/ftl/article/article";
   }
 
 }

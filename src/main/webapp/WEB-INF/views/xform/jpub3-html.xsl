@@ -43,10 +43,10 @@
 <!-- ============================================================= -->
 
 <xsl:stylesheet version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  xmlns:mml="http://www.w3.org/1998/Math/MathML"
-  exclude-result-prefixes="xlink mml">
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:mml="http://www.w3.org/1998/Math/MathML"
+                exclude-result-prefixes="xlink mml">
 
 
   <!--<xsl:output method="xml" indent="no" encoding="UTF-8"
@@ -55,14 +55,14 @@
 
 
   <xsl:output doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"
-    doctype-system="http://www.w3.org/TR/html4/loose.dtd"
-    encoding="UTF-8"/>
- 
+              doctype-system="http://www.w3.org/TR/html4/loose.dtd"
+              encoding="UTF-8"/>
+
   <xsl:strip-space elements="*"/>
 
   <!-- Space is preserved in all elements allowing #PCDATA -->
   <xsl:preserve-space
-    elements="abbrev abbrev-journal-title access-date addr-line aff 
+      elements="abbrev abbrev-journal-title access-date addr-line aff
               alt-text alt-title article-id article-title attrib 
               award-id bold chapter-title chem-struct collab comment 
               compound-kwd-part conf-acronym conf-date conf-loc conf-name 
@@ -105,7 +105,7 @@
 
   <!-- Enabling retrieval of cross-references to objects -->
   <xsl:key name="xref-by-rid" match="xref" use="@rid"/>
-  
+
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
   <!-- ============================================================= -->
@@ -128,9 +128,9 @@
           <xsl:call-template name="author-string"/>
         </xsl:variable>
         <xsl:value-of select="normalize-space($authors)"/>
-        <xsl:if test="normalize-space($authors)">: </xsl:if>
+        <xsl:if test="normalize-space($authors)">:</xsl:if>
         <xsl:value-of
-          select="/article/front/article-meta/title-group/article-title[1]"/>
+            select="/article/front/article-meta/title-group/article-title[1]"/>
       </title>
       <link rel="stylesheet" type="text/css" href="{$css}"/>
       <!-- XXX check: any other header stuff? XXX -->
@@ -138,9 +138,9 @@
   </xsl:template>
 
 
-<!-- ============================================================= -->
-<!--  TOP LEVEL                                                    -->
-<!-- ============================================================= -->
+  <!-- ============================================================= -->
+  <!--  TOP LEVEL                                                    -->
+  <!-- ============================================================= -->
 
   <!--
       content model for article:
@@ -152,7 +152,7 @@
       
       content model for response:
          ((front|front-stub),body?,back?,floats-group?) -->
-  
+
   <xsl:template match="article">
     <xsl:call-template name="make-article"/>
   </xsl:template>
@@ -163,9 +163,9 @@
   </xsl:template>
 
 
-<!-- ============================================================= -->
-<!--  "make-article" for the document architecture                 -->
-<!-- ============================================================= -->
+  <!-- ============================================================= -->
+  <!--  "make-article" for the document architecture                 -->
+  <!-- ============================================================= -->
 
   <xsl:template name="make-article">
     <!-- Generates a series of (flattened) divs for contents of any
@@ -307,7 +307,7 @@
             <div class="metadata-group">
 
               <xsl:apply-templates mode="metadata"
-                select="email | ext-link | uri | self-uri"/>
+                                   select="email | ext-link | uri | self-uri"/>
 
               <xsl:apply-templates mode="metadata" select="product"/>
 
@@ -335,7 +335,7 @@
               <xsl:apply-templates mode="metadata" select="isbn"/>
 
               <xsl:apply-templates mode="metadata"
-                select="supplement | related-article | conference"/>
+                                   select="supplement | related-article | conference"/>
 
               <xsl:apply-templates mode="metadata" select="article-id"/>
 
@@ -369,7 +369,7 @@
             <td>
               <div class="metadata-group">
                 <xsl:apply-templates mode="metadata"
-                  select="aff | author-notes"/>
+                                     select="aff | author-notes"/>
               </div>
             </td>
           </tr>
@@ -390,7 +390,7 @@
                   <xsl:apply-templates select="title/node()"/>
                   <xsl:if test="not(normalize-space(title))">
                     <span class="generated">
-                      <xsl:if test="self::trans-abstract">Translated </xsl:if>
+                      <xsl:if test="self::trans-abstract">Translated</xsl:if>
                       <xsl:text>Abstract</xsl:text>
                     </span>
                   </xsl:if>
@@ -424,7 +424,7 @@
     </table>
     <!-- end of big front-matter pull -->
   </xsl:template>
-  
+
   <xsl:template name="footer-metadata">
     <!-- handles: article-categories, kwd-group, counts, 
            supplementary-material, custom-meta-group
@@ -433,29 +433,29 @@
     <xsl:for-each select="front/article-meta | front-stub">
       <xsl:if test="article-categories | kwd-group | counts |
                     supplementary-material | custom-meta-group">
-      <table width="100%" class="metadata">
-        <tr>
-          <td>
-            <hr class="part-rule"/>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h4 class="generated">
-              <xsl:text>Article Information (continued)</xsl:text>
-            </h4>
-            <div class="metadata-group">
-              <xsl:apply-templates mode="metadata"
-                select="supplementary-material"/>
+        <table width="100%" class="metadata">
+          <tr>
+            <td>
+              <hr class="part-rule"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4 class="generated">
+                <xsl:text>Article Information (continued)</xsl:text>
+              </h4>
+              <div class="metadata-group">
+                <xsl:apply-templates mode="metadata"
+                                     select="supplementary-material"/>
 
-              <xsl:apply-templates mode="metadata"
-                select="article-categories | kwd-group | counts"/>
+                <xsl:apply-templates mode="metadata"
+                                     select="article-categories | kwd-group | counts"/>
 
-              <xsl:apply-templates mode="metadata" select="custom-meta-group"/>
-            </div>
-          </td>
-        </tr>
-      </table>
+                <xsl:apply-templates mode="metadata" select="custom-meta-group"/>
+              </div>
+            </td>
+          </tr>
+        </table>
       </xsl:if>
     </xsl:for-each>
 
@@ -486,13 +486,13 @@
   </xsl:template>
 
 
-<!-- ============================================================= -->
-<!--  METADATA PROCESSING                                          -->
-<!-- ============================================================= -->
+  <!-- ============================================================= -->
+  <!--  METADATA PROCESSING                                          -->
+  <!-- ============================================================= -->
 
-<!--  Includes mode "metadata" for front matter, along with 
-      "metadata-inline" for metadata elements collapsed into 
-      inline sequences, plus associated named templates            -->
+  <!--  Includes mode "metadata" for front matter, along with
+        "metadata-inline" for metadata elements collapsed into
+        inline sequences, plus associated named templates            -->
 
   <!-- journal-meta content:
        journal-id+, journal-title-group*, issn+, isbn*, publisher?,
@@ -555,7 +555,7 @@
 
 
   <xsl:template match="publisher-loc" mode="metadata-inline">
-    <span class="generated"> (</span>
+    <span class="generated">(</span>
     <xsl:apply-templates/>
     <span class="generated">)</span>
   </xsl:template>
@@ -736,7 +736,7 @@
         <xsl:with-param name="contents">
           <xsl:for-each select="copyright-year | copyright-holder">
             <xsl:apply-templates/>
-            <xsl:if test="not(position()=last())">, </xsl:if>
+            <xsl:if test="not(position()=last())">,</xsl:if>
           </xsl:for-each>
         </xsl:with-param>
       </xsl:call-template>
@@ -761,7 +761,7 @@
           <span class="data">
             <xsl:value-of select="@license-type"/>
             <xsl:if test="@xlink:href">
-              <xsl:if test="@license-type">, </xsl:if>
+              <xsl:if test="@license-type">,</xsl:if>
               <a>
                 <xsl:call-template name="assign-href"/>
                 <xsl:value-of select="@xlink:href"/>
@@ -781,10 +781,10 @@
         <xsl:text>Date</xsl:text>
         <xsl:for-each select="@date-type">
           <xsl:choose>
-            <xsl:when test=".='accepted'"> accepted</xsl:when>
-            <xsl:when test=".='received'"> received</xsl:when>
-            <xsl:when test=".='rev-request'"> revision requested</xsl:when>
-            <xsl:when test=".='rev-recd'"> revision received</xsl:when>
+            <xsl:when test=".='accepted'">accepted</xsl:when>
+            <xsl:when test=".='received'">received</xsl:when>
+            <xsl:when test=".='rev-request'">revision requested</xsl:when>
+            <xsl:when test=".='rev-recd'">revision received</xsl:when>
           </xsl:choose>
         </xsl:for-each>
       </xsl:with-param>
@@ -818,14 +818,14 @@
             <xsl:with-param name="label">Volume</xsl:with-param>
             <xsl:with-param name="contents">
               <xsl:apply-templates select="volume | volume-series"
-                mode="metadata-inline"/>
+                                   mode="metadata-inline"/>
               <xsl:apply-templates select="volume-id" mode="metadata-inline"/>
             </xsl:with-param>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates select="volume | volume-id | volume-series"
-            mode="metadata"/>
+                               mode="metadata"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:if>
@@ -895,17 +895,17 @@
   <xsl:template name="issue-info">
     <!-- handles issue?, issue-id*, issue-title*, issue-sponsor*, issue-part?, supplement? -->
     <xsl:variable name="issue-info"
-      select="issue | issue-id | issue-title |
+                  select="issue | issue-id | issue-title |
       issue-sponsor | issue-part"/>
     <xsl:choose>
       <xsl:when
-        test="$issue-info and not(issue-id[2] | issue-title[2] | issue-sponsor | issue-part)">
+          test="$issue-info and not(issue-id[2] | issue-title[2] | issue-sponsor | issue-part)">
         <!-- if there are only one issue, issue-id and issue-title and nothing else, we make one line only -->
         <xsl:call-template name="metadata-labeled-entry">
           <xsl:with-param name="label">Issue</xsl:with-param>
           <xsl:with-param name="contents">
             <xsl:apply-templates select="issue | issue-title"
-              mode="metadata-inline"/>
+                                 mode="metadata-inline"/>
             <xsl:apply-templates select="issue-id" mode="metadata-inline"/>
           </xsl:with-param>
         </xsl:call-template>
@@ -977,7 +977,7 @@
         <xsl:with-param name="label">
           <xsl:text>Page</xsl:text>
           <xsl:if
-            test="normalize-space(lpage[not(.=../fpage)])
+              test="normalize-space(lpage[not(.=../fpage)])
                    or normalize-space(page-range)">
             <!-- we have multiple pages if lpage exists and is not equal fpage,
                or if we have a page-range -->
@@ -1004,7 +1004,8 @@
   <xsl:template match="elocation-id" mode="metadata">
     <xsl:call-template name="metadata-labeled-entry">
       <xsl:with-param name="label">Electronic Location
-      Identifier</xsl:with-param>
+        Identifier
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
@@ -1022,10 +1023,10 @@
     <xsl:call-template name="metadata-labeled-entry">
       <xsl:with-param name="label">
         <xsl:text>Related </xsl:text>
-          <xsl:choose>
-            <xsl:when test="self::related-object">object</xsl:when>
-            <xsl:otherwise>article</xsl:otherwise>
-          </xsl:choose>
+        <xsl:choose>
+          <xsl:when test="self::related-object">object</xsl:when>
+          <xsl:otherwise>article</xsl:otherwise>
+        </xsl:choose>
         <xsl:for-each select="@related-article-type | @object-type">
           <xsl:text> (</xsl:text>
           <span class="data">
@@ -1058,7 +1059,7 @@
        conf-num?, conf-loc?, conf-sponsor*, conf-theme?) -->
     <xsl:choose>
       <xsl:when
-        test="not(conf-name[2] | conf-acronym[2] | conf-sponsor |
+          test="not(conf-name[2] | conf-acronym[2] | conf-sponsor |
                   conf-theme)">
         <!-- if there is no second name or acronym, and no sponsor
              or theme, we make one line only -->
@@ -1066,12 +1067,12 @@
           <xsl:with-param name="label">Conference</xsl:with-param>
           <xsl:with-param name="contents">
             <xsl:apply-templates select="conf-acronym | conf-name"
-              mode="metadata-inline"/>
+                                 mode="metadata-inline"/>
             <xsl:apply-templates select="conf-num" mode="metadata-inline"/>
             <xsl:if test="conf-date | conf-loc">
-              <span class="generated"> (</span>
+              <span class="generated">(</span>
               <xsl:for-each select="conf-date | conf-loc">
-                <xsl:if test="position() = 2">, </xsl:if>
+                <xsl:if test="position() = 2">,</xsl:if>
                 <xsl:apply-templates select="." mode="metadata-inline"/>
               </xsl:for-each>
               <span class="generated">)</span>
@@ -1138,10 +1139,10 @@
   <xsl:template match="conf-name | conf-acronym" mode="metadata-inline">
     <!-- we only hit this template if there is at most one of each -->
     <xsl:variable name="following"
-      select="preceding-sibling::conf-name | preceding-sibling::conf-acronym"/>
+                  select="preceding-sibling::conf-name | preceding-sibling::conf-acronym"/>
     <!-- if we come after the other, we go in parentheses -->
     <xsl:if test="$following">
-      <span class="generated"> (</span>
+      <span class="generated">(</span>
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:if test="$following">
@@ -1243,7 +1244,7 @@
     <!-- content model:
     article-title, subtitle*, trans-title-group*, alt-title*, fn-group? -->
     <xsl:apply-templates select="article-title | subtitle | trans-title-group"
-      mode="metadata"/>
+                         mode="metadata"/>
     <xsl:if test="alt-title | fn-group">
       <div class="document-title-notes metadata-group">
         <xsl:apply-templates select="alt-title | fn-group" mode="metadata"/>
@@ -1261,7 +1262,7 @@
 
 
   <xsl:template match="title-group/subtitle | trans-title-group/subtitle"
-    mode="metadata">
+                mode="metadata">
     <h2 class="document-title">
       <xsl:apply-templates/>
     </h2>
@@ -1312,46 +1313,46 @@
 
 
   <xsl:template mode="metadata" match="contrib-group">
-      <!-- content model of contrib-group:
-        (contrib+, 
-        (address | aff | author-comment | bio | email |
-        ext-link | on-behalf-of | role | uri | xref)*) -->
-      <!-- each contrib makes a row: name at left, details at right -->
-      <xsl:for-each select="contrib">
-        <!-- content model of contrib: 
-          ((anonymous | collab | name)*, (degrees)*, 
-           (address | aff | author-comment | bio | email |
-            ext-link | on-behalf-of | role | uri | xref)*) -->
-        <tr>
-          <td align="right">
-            <xsl:call-template name="contrib-identify">
-              <!-- handles
-                   (anonymous | collab | name | degrees | xref) -->
-            </xsl:call-template>
-          </td>
-          <td>
-            <xsl:call-template name="contrib-info">
-              <!-- handles
-                   (address | aff | author-comment | bio | email |
-                    ext-link | on-behalf-of | role | uri) -->
-            </xsl:call-template>
-          </td>
-        </tr>
-      </xsl:for-each>
-      <!-- end of contrib -->
-      <xsl:variable name="misc-contrib-data"
-        select="*[not(self::contrib | self::xref)]"/>
-      <xsl:if test="$misc-contrib-data">
-        <tr>
-          <td>&#160;</td>
-          <td>
-            <div class="metadata-group">
-              <xsl:apply-templates mode="metadata"
-                select="$misc-contrib-data"/>
-            </div>
-          </td>
-        </tr>
-      </xsl:if>
+    <!-- content model of contrib-group:
+      (contrib+,
+      (address | aff | author-comment | bio | email |
+      ext-link | on-behalf-of | role | uri | xref)*) -->
+    <!-- each contrib makes a row: name at left, details at right -->
+    <xsl:for-each select="contrib">
+      <!-- content model of contrib:
+        ((anonymous | collab | name)*, (degrees)*,
+         (address | aff | author-comment | bio | email |
+          ext-link | on-behalf-of | role | uri | xref)*) -->
+      <tr>
+        <td align="right">
+          <xsl:call-template name="contrib-identify">
+            <!-- handles
+                 (anonymous | collab | name | degrees | xref) -->
+          </xsl:call-template>
+        </td>
+        <td>
+          <xsl:call-template name="contrib-info">
+            <!-- handles
+                 (address | aff | author-comment | bio | email |
+                  ext-link | on-behalf-of | role | uri) -->
+          </xsl:call-template>
+        </td>
+      </tr>
+    </xsl:for-each>
+    <!-- end of contrib -->
+    <xsl:variable name="misc-contrib-data"
+                  select="*[not(self::contrib | self::xref)]"/>
+    <xsl:if test="$misc-contrib-data">
+      <tr>
+        <td>&#160;</td>
+        <td>
+          <div class="metadata-group">
+            <xsl:apply-templates mode="metadata"
+                                 select="$misc-contrib-data"/>
+          </div>
+        </td>
+      </tr>
+    </xsl:if>
   </xsl:template>
 
 
@@ -1359,7 +1360,7 @@
     <!-- Placed in a left-hand pane  -->
     <div class="metadata-group">
       <xsl:apply-templates mode="metadata"
-        select="anonymous | collab | name"/>
+                           select="anonymous | collab | name"/>
       <!-- degrees | xref will be handled along with the last
            of these children by the contrib-amend template -->
     </div>
@@ -1370,7 +1371,7 @@
     <xsl:call-template name="metadata-entry">
       <xsl:with-param name="contents">
         <xsl:for-each
-          select="self::*[not(preceding-sibling::*)]/parent::contrib">
+            select="self::*[not(preceding-sibling::*)]/parent::contrib">
           <!-- mark with an anchor for the parent contrib if this
                element is first -->
           <xsl:call-template name="named-anchor"/>
@@ -1378,9 +1379,9 @@
         <xsl:text>Anonymous</xsl:text>
         <xsl:call-template name="contrib-amend">
           <xsl:with-param name="last-contrib"
-            select="not(../following-sibling::contrib)"/>
-            <!-- passes Boolean false if we are inside the last
-                 contrib -->
+                          select="not(../following-sibling::contrib)"/>
+          <!-- passes Boolean false if we are inside the last
+               contrib -->
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
@@ -1391,25 +1392,25 @@
     <xsl:call-template name="metadata-entry">
       <xsl:with-param name="contents">
         <xsl:for-each
-          select="self::*[not(preceding-sibling::*)]/parent::contrib">
+            select="self::*[not(preceding-sibling::*)]/parent::contrib">
           <!-- mark with an anchor for the parent contrib if this
                element is first -->
           <xsl:call-template name="named-anchor"/>
         </xsl:for-each>
         <xsl:choose>
-        	<xsl:when test="contrib-group">
-        		<xsl:apply-templates select="text()"/>
-        		<xsl:apply-templates select="contrib-group" mode="metadata"/>
-        	</xsl:when>
-        	<xsl:otherwise>
-        		<xsl:apply-templates/>
-        	</xsl:otherwise>
+          <xsl:when test="contrib-group">
+            <xsl:apply-templates select="text()"/>
+            <xsl:apply-templates select="contrib-group" mode="metadata"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates/>
+          </xsl:otherwise>
         </xsl:choose>
         <xsl:call-template name="contrib-amend">
           <xsl:with-param name="last-contrib"
-            select="not(../following-sibling::contrib)"/>
-            <!-- passes Boolean false if we are inside the last
-                 contrib -->
+                          select="not(../following-sibling::contrib)"/>
+          <!-- passes Boolean false if we are inside the last
+               contrib -->
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
@@ -1420,7 +1421,7 @@
     <xsl:call-template name="metadata-entry">
       <xsl:with-param name="contents">
         <xsl:for-each
-          select="self::*[not(preceding-sibling::*)]/parent::contrib">
+            select="self::*[not(preceding-sibling::*)]/parent::contrib">
           <!-- mark with an anchor for the parent contrib if this 
                element is first -->
           <xsl:call-template name="named-anchor"/>
@@ -1429,9 +1430,9 @@
         <xsl:call-template name="write-name"/>
         <xsl:call-template name="contrib-amend">
           <xsl:with-param name="last-contrib"
-            select="not(../following-sibling::contrib)"/>
-            <!-- passes Boolean false if we are inside the last
-                 contrib -->
+                          select="not(../following-sibling::contrib)"/>
+          <!-- passes Boolean false if we are inside the last
+               contrib -->
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
@@ -1448,10 +1449,10 @@
                       following-sibling::collab |
                       following-sibling::name)">
       <xsl:apply-templates mode="metadata-inline"
-        select="../degrees | ../xref"/>
+                           select="../degrees | ../xref"/>
       <xsl:if test="$last-contrib">
         <xsl:apply-templates mode="metadata-inline"
-          select="parent::contrib/following-sibling::xref"/>
+                             select="parent::contrib/following-sibling::xref"/>
       </xsl:if>
     </xsl:if>
   </xsl:template>
@@ -1472,21 +1473,21 @@
     <!-- Placed in a right-hand pane -->
     <div class="metadata-group">
       <xsl:apply-templates mode="metadata"
-        select="address | aff | author-comment | bio | email |
+                           select="address | aff | author-comment | bio | email |
                 ext-link | on-behalf-of | role | uri"/>
     </div>
   </xsl:template>
 
 
   <xsl:template mode="metadata"
-    match="address[not(addr-line) or not(*[2])]">
+                match="address[not(addr-line) or not(*[2])]">
     <!-- when we have no addr-line or a single child, we generate
          a single unlabelled line -->
-        <xsl:call-template name="metadata-entry">
-          <xsl:with-param name="contents">
-            <xsl:call-template name="address-line"/>
-          </xsl:with-param>
-        </xsl:call-template>
+    <xsl:call-template name="metadata-entry">
+      <xsl:with-param name="contents">
+        <xsl:call-template name="address-line"/>
+      </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
 
@@ -1693,7 +1694,7 @@
 
 
   <xsl:template mode="metadata"
-    match="fig-count | table-count | equation-count |
+                match="fig-count | table-count | equation-count |
            ref-count | page-count | word-count">
     <xsl:call-template name="metadata-labeled-entry">
       <xsl:with-param name="label">
@@ -1707,31 +1708,37 @@
 
 
   <xsl:template match="table-count"
-    mode="metadata-label">Figures</xsl:template>
+                mode="metadata-label">Figures
+  </xsl:template>
 
 
   <xsl:template match="table-count"
-    mode="metadata-label">Tables</xsl:template>
+                mode="metadata-label">Tables
+  </xsl:template>
 
 
   <xsl:template match="equation-count"
-    mode="metadata-label">Equations</xsl:template>
+                mode="metadata-label">Equations
+  </xsl:template>
 
 
   <xsl:template match="ref-count"
-    mode="metadata-label">References</xsl:template>
+                mode="metadata-label">References
+  </xsl:template>
 
 
   <xsl:template match="page-count"
-    mode="metadata-label">Pages</xsl:template>
+                mode="metadata-label">Pages
+  </xsl:template>
 
 
   <xsl:template match="word-count"
-    mode="metadata-label">Words</xsl:template>
+                mode="metadata-label">Words
+  </xsl:template>
 
 
   <xsl:template mode="metadata"
-    match="custom-meta-group">
+                match="custom-meta-group">
     <xsl:call-template name="metadata-area">
       <xsl:with-param name="label">Custom metadata</xsl:with-param>
       <xsl:with-param name="contents">
@@ -1790,8 +1797,8 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="ref-list" name="ref-list">
     <div class="section ref-list">
       <xsl:call-template name="named-anchor"/>
@@ -1805,13 +1812,13 @@
       <xsl:apply-templates select="ref-list"/>
     </div>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="sec-meta">
-   <div class="section-metadata">
-     <!-- includes contrib-group | permissions | kwd-group -->
-     <xsl:apply-templates/>
-   </div>
+    <div class="section-metadata">
+      <!-- includes contrib-group | permissions | kwd-group -->
+      <xsl:apply-templates/>
+    </div>
   </xsl:template>
 
 
@@ -1822,9 +1829,8 @@
 
   <xsl:template match="sec-meta/kwd-group">
     <!-- matches only if contrib-group has only contrib children -->
-    <xsl:apply-templates  select="." mode="metadata"/>
+    <xsl:apply-templates select="." mode="metadata"/>
   </xsl:template>
-
 
 
   <!-- ============================================================= -->
@@ -1832,7 +1838,7 @@
   <!-- ============================================================= -->
 
   <xsl:template name="main-title"
-    match="abstract/title | body/*/title |
+                match="abstract/title | body/*/title |
            back/title | back[not(title)]/*/title">
     <xsl:param name="contents">
       <xsl:apply-templates/>
@@ -1847,11 +1853,11 @@
 
 
   <xsl:template name="section-title"
-    match="abstract/*/title | body/*/*/title |
+                match="abstract/*/title | body/*/*/title |
 		       back[title]/*/title | back[not(title)]/*/*/title">
     <xsl:param name="contents">
       <xsl:apply-templates/>
-    </xsl:param>   
+    </xsl:param>
     <xsl:if test="normalize-space($contents)">
       <!-- coding defensively since empty titles make glitchy HTML -->
       <h3 class="section-title">
@@ -1862,11 +1868,11 @@
 
 
   <xsl:template name="subsection-title"
-    match="abstract/*/*/title | body/*/*/*/title |
+                match="abstract/*/*/title | body/*/*/*/title |
 		       back[title]/*/*/title | back[not(title)]/*/*/*/title">
     <xsl:param name="contents">
       <xsl:apply-templates/>
-    </xsl:param>   
+    </xsl:param>
     <xsl:if test="normalize-space($contents)">
       <!-- coding defensively since empty titles make glitchy HTML -->
       <h4 class="subsection-title">
@@ -1877,11 +1883,11 @@
 
 
   <xsl:template name="block-title" priority="2"
-    match="list/title | def-list/title | boxed-text/title |
+                match="list/title | def-list/title | boxed-text/title |
            verse-group/title | glossary/title | kwd-group/title">
     <xsl:param name="contents">
       <xsl:apply-templates/>
-    </xsl:param>   
+    </xsl:param>
     <xsl:if test="normalize-space($contents)">
       <!-- coding defensively since empty titles make glitchy HTML -->
       <h4 class="block-title">
@@ -1910,11 +1916,11 @@
   </xsl:template>
 
 
-<!-- ============================================================= -->
-<!--  Figures, lists and block-level objectS                       -->
-<!-- ============================================================= -->
-  
-  
+  <!-- ============================================================= -->
+  <!--  Figures, lists and block-level objectS                       -->
+  <!-- ============================================================= -->
+
+
   <xsl:template match="address">
     <xsl:choose>
       <!-- address appears as a sequence of inline elements if
@@ -1936,7 +1942,7 @@
   <xsl:template name="address-line">
     <!-- emits element children in a simple comma-delimited sequence -->
     <xsl:for-each select="*">
-      <xsl:if test="position() &gt; 1">, </xsl:if>
+      <xsl:if test="position() &gt; 1">,</xsl:if>
       <xsl:apply-templates/>
     </xsl:for-each>
   </xsl:template>
@@ -1952,8 +1958,8 @@
   <xsl:template match="alternatives">
     <xsl:apply-templates/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="array | disp-formula-group | fig-group |
     fn-group | license | long-desc | open-access | sig-block | 
     table-wrap-foot | table-wrap-group">
@@ -1961,8 +1967,8 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="attrib">
     <p class="attrib">
       <xsl:apply-templates/>
@@ -1981,17 +1987,17 @@
       <xsl:apply-templates select="." mode="label"/>
       <xsl:apply-templates/>
       <xsl:apply-templates mode="footnote"
-        select="self::table-wrap//fn[not(ancestor::table-wrap-foot)]"/>
+                           select="self::table-wrap//fn[not(ancestor::table-wrap-foot)]"/>
     </div>
   </xsl:template>
-  
+
 
   <xsl:template match="caption">
     <div class="caption">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
 
   <xsl:template match="disp-formula | statement">
     <div class="{local-name()} panel">
@@ -2000,7 +2006,7 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
 
   <xsl:template match="glossary">
     <div class="glossary">
@@ -2016,15 +2022,14 @@
       <xsl:apply-templates select="*[not(self::label|self::title)]"/>
     </div>
   </xsl:template>
-  
+
 
   <xsl:template match="textual-form">
     <p class="textual-form">
-      <span class="generated">[Textual form] </span>
+      <span class="generated">[Textual form]</span>
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
 
 
   <xsl:template match="glossary/glossary">
@@ -2033,7 +2038,6 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
 
 
   <xsl:template match="graphic | inline-graphic">
@@ -2047,12 +2051,12 @@
       <xsl:call-template name="assign-src"/>
     </img>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="alt-text">
     <!-- handled with graphic or inline-graphic -->
   </xsl:template>
-  
+
 
   <xsl:template match="list">
     <div class="list">
@@ -2061,10 +2065,10 @@
       <xsl:apply-templates select="." mode="list"/>
     </div>
   </xsl:template>
-  
+
 
   <xsl:template priority="2" mode="list"
-    match="list[@list-type='simple' or list-item/label]">
+                match="list[@list-type='simple' or list-item/label]">
     <ul style="list-style-type: none">
       <xsl:apply-templates select="list-item"/>
     </ul>
@@ -2092,31 +2096,31 @@
       <xsl:apply-templates select="list-item"/>
     </ol>
   </xsl:template>
-  
-
-	<xsl:template match="list-item">
-		<li>
-			<xsl:apply-templates/>
-		</li>
-	</xsl:template>
 
 
-	<xsl:template match="list-item/label">
-	  <!-- if the next sibling is a p, the label will be called as
-	       a run-in -->
-	  <xsl:if test="following-sibling::*[1][not(self::p)]">
-	    <xsl:call-template name="label"/>
-	  </xsl:if>
-	</xsl:template>
-  
-  
-	<xsl:template match="media">
-		<a>
-			<xsl:call-template name="assign-id"/>
-			<xsl:call-template name="assign-href"/>
-			<xsl:apply-templates/>
-		</a>
-	</xsl:template>
+  <xsl:template match="list-item">
+    <li>
+      <xsl:apply-templates/>
+    </li>
+  </xsl:template>
+
+
+  <xsl:template match="list-item/label">
+    <!-- if the next sibling is a p, the label will be called as
+         a run-in -->
+    <xsl:if test="following-sibling::*[1][not(self::p)]">
+      <xsl:call-template name="label"/>
+    </xsl:if>
+  </xsl:template>
+
+
+  <xsl:template match="media">
+    <a>
+      <xsl:call-template name="assign-id"/>
+      <xsl:call-template name="assign-href"/>
+      <xsl:apply-templates/>
+    </a>
+  </xsl:template>
 
 
   <xsl:template match="p | license-p">
@@ -2129,8 +2133,8 @@
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="@content-type">
     <!-- <span class="generated">[</span>
     <xsl:value-of select="."/>
@@ -2145,7 +2149,7 @@
         <span class="label">
           <xsl:apply-templates/>
         </span>
-      <xsl:text> </xsl:text>
+        <xsl:text> </xsl:text>
       </xsl:for-each>
       <xsl:apply-templates select="@content-type"/>
       <xsl:apply-templates/>
@@ -2163,23 +2167,23 @@
 
   <xsl:template match="permissions">
     <div class="permissions">
-    <xsl:apply-templates select="copyright-statement"/>
-    <xsl:if test="copyright-year | copyright-holder">
-      <p class="copyright">
-        <span class="generated">Copyright</span>
-        <xsl:for-each select="copyright-year | copyright-holder">
+      <xsl:apply-templates select="copyright-statement"/>
+      <xsl:if test="copyright-year | copyright-holder">
+        <p class="copyright">
+          <span class="generated">Copyright</span>
+          <xsl:for-each select="copyright-year | copyright-holder">
             <xsl:apply-templates/>
             <xsl:if test="not(position()=last())">
-              <span class="generated">, </span>
+              <span class="generated">,</span>
             </xsl:if>
-        </xsl:for-each>
-      </p>
-    </xsl:if>
-    <xsl:apply-templates select="license"/>
+          </xsl:for-each>
+        </p>
+      </xsl:if>
+      <xsl:apply-templates select="license"/>
     </div>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="copyright-statement">
     <p class="copyright">
       <xsl:apply-templates></xsl:apply-templates>
@@ -2209,30 +2213,30 @@
   </xsl:template>
 
 
-	<xsl:template match="def-item">
-		<tr>
-			<xsl:call-template name="assign-id"/>
-			<xsl:apply-templates/>
-		</tr>
-	</xsl:template>
+  <xsl:template match="def-item">
+    <tr>
+      <xsl:call-template name="assign-id"/>
+      <xsl:apply-templates/>
+    </tr>
+  </xsl:template>
 
 
-	<xsl:template match="term">
-		<td class="def-term">
-			<xsl:call-template name="assign-id"/>
-		  <p>
-				<xsl:apply-templates/>
-		  </p>
-		</td>
-	</xsl:template>
+  <xsl:template match="term">
+    <td class="def-term">
+      <xsl:call-template name="assign-id"/>
+      <p>
+        <xsl:apply-templates/>
+      </p>
+    </td>
+  </xsl:template>
 
 
-	<xsl:template match="def">
-		<td valign="def-def">
-			<xsl:call-template name="assign-id"/>
-			<xsl:apply-templates/>
-		</td>
-	</xsl:template>
+  <xsl:template match="def">
+    <td valign="def-def">
+      <xsl:call-template name="assign-id"/>
+      <xsl:apply-templates/>
+    </td>
+  </xsl:template>
 
 
   <xsl:template match="disp-quote">
@@ -2251,22 +2255,22 @@
 
 
   <xsl:template match="ref">
-      <tr>
-        <td class="ref-label">
-          <p class="ref-label">
-            <xsl:apply-templates select="." mode="label"/>
-            <xsl:text>&#xA0;</xsl:text>
-            <!-- space forces vertical alignment of the paragraph -->
-            <xsl:call-template name="named-anchor"/>
-          </p>
-        </td>
-        <td class="ref-content">
-          <xsl:apply-templates/>
-        </td>
-      </tr>
+    <tr>
+      <td class="ref-label">
+        <p class="ref-label">
+          <xsl:apply-templates select="." mode="label"/>
+          <xsl:text>&#xA0;</xsl:text>
+          <!-- space forces vertical alignment of the paragraph -->
+          <xsl:call-template name="named-anchor"/>
+        </p>
+      </td>
+      <td class="ref-content">
+        <xsl:apply-templates/>
+      </td>
+    </tr>
   </xsl:template>
-    
-  
+
+
   <xsl:template match="ref/*" priority="0">
     <!-- should match mixed-citation, element-citation, nlm-citation.
          note and label should be matched below. -->
@@ -2275,13 +2279,13 @@
       <xsl:apply-templates/>
     </p>
   </xsl:template>
- 
- 
+
+
   <xsl:template match="ref/note" priority="2">
     <xsl:param name="label" select="''"/>
     <xsl:if test="normalize-space($label) and not(preceding-sibling::*[not(self::label)])">
       <p class="label">
-          <xsl:copy-of select="$label"/>
+        <xsl:copy-of select="$label"/>
       </p>
     </xsl:if>
     <div class="note">
@@ -2289,8 +2293,8 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="app/related-article |
     app-group/related-article | bio/related-article | 
     body/related-article | boxed-text/related-article | 
@@ -2298,8 +2302,8 @@
     ref-list/related-article | sec/related-article">
     <xsl:apply-templates select="." mode="metadata"/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="app/related-object |
     app-group/related-object | bio/related-object |
     body/related-object | boxed-text/related-object | 
@@ -2307,35 +2311,35 @@
     ref-list/related-object | sec/related-object">
     <xsl:apply-templates select="." mode="metadata"/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="speech">
     <div class="speech">
       <xsl:call-template name="named-anchor"/>
       <xsl:apply-templates mode="speech"/>
     </div>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="speech/speaker" mode="speech"/>
-    
-    
+
+
   <xsl:template match="speech/p" mode="speech">
     <p>
       <xsl:apply-templates select="self::p[not(preceding-sibling::p)]/../speaker"/>
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="speech/speaker">
     <b>
       <xsl:apply-templates/>
     </b>
-    <span class="generated">: </span>
+    <span class="generated">:</span>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="supplementary-material">
     <div class="panel">
       <xsl:call-template name="named-anchor"/>
@@ -2343,16 +2347,16 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
 
-	<xsl:template match="tex-math">
-		<span class="tex-math">
-			<span class="generated">[TeX:] </span>
-			<xsl:apply-templates/>
-		</span>
-	</xsl:template>
 
-  
+  <xsl:template match="tex-math">
+    <span class="tex-math">
+      <span class="generated">[TeX:]</span>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+
   <xsl:template match="mml:*">
     <!-- this stylesheet simply copies MathML through. If your browser
          supports it, you will get it -->
@@ -2361,36 +2365,36 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="verse-group">
     <div class="verse">
       <xsl:call-template name="named-anchor"/>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="verse-line">
     <p class="verse-line">
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="aff/label | corresp/label |
     chem-struct/label | element-citation/label | mixed-citation/label">
     <!-- these labels appear in line -->
     <span class="generated">[</span>
     <xsl:apply-templates/>
-    <span class="generated">] </span>
+    <span class="generated">]</span>
   </xsl:template>
 
 
   <xsl:template match="app/label | boxed-text/label | chem-struct-wrap/label |
     disp-formula/label | fig/label | fn/label | ref/label |
     statement/label | supplementary-material/label | table-wrap/label"
-    priority="2">
+                priority="2">
     <!-- suppressed, since acquired by their parents in mode="label" -->
   </xsl:template>
 
@@ -2408,8 +2412,8 @@
   <!-- ============================================================= -->
   <!--  Tables are already in XHTML, and can simply be copied
         through                                                      -->
-  
-  
+
+
   <xsl:template match="table | thead | tbody | tfoot |
       col | colgroup | tr | th | td">
     <xsl:copy>
@@ -2418,27 +2422,27 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="array/tbody">
     <table>
       <xsl:copy>
-      <xsl:apply-templates select="@*" mode="table-copy"/>
-      <xsl:call-template name="named-anchor"/>
-      <xsl:apply-templates/>
-    </xsl:copy>
+        <xsl:apply-templates select="@*" mode="table-copy"/>
+        <xsl:call-template name="named-anchor"/>
+        <xsl:apply-templates/>
+      </xsl:copy>
     </table>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="@*" mode="table-copy">
     <xsl:copy-of select="."/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="@content-type" mode="table-copy"/>
-  
-  
+
+
   <!-- ============================================================= -->
   <!--  INLINE MISCELLANEOUS                                         -->
   <!-- ============================================================= -->
@@ -2449,40 +2453,40 @@
   <xsl:template match="abbrev">
     <xsl:apply-templates/>
   </xsl:template>
-  
-    
+
+
   <xsl:template match="abbrev/def">
     <xsl:text>[</xsl:text>
     <xsl:apply-templates/>
     <xsl:text>]</xsl:text>
   </xsl:template>
-  
+
   <xsl:template match="p/address | license-p/address |
     named-content/p | styled-content/p">
     <xsl:apply-templates mode="inline"/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="address/*" mode="inline">
     <xsl:if test="preceding-sibling::*">
-      <span class="generated">, </span>
+      <span class="generated">,</span>
     </xsl:if>
     <xsl:apply-templates/>
   </xsl:template>
-  
-        
+
+
   <xsl:template match="award-id">
     <xsl:apply-templates/>
   </xsl:template>
-  
-    
+
+
   <xsl:template match="award-id[normalize-space(@rid)]">
     <a href="#{@rid}">
       <xsl:apply-templates/>
     </a>
   </xsl:template>
-  
-    
+
+
   <xsl:template match="break">
     <br class="br"/>
   </xsl:template>
@@ -2494,7 +2498,7 @@
     </a>
   </xsl:template>
 
-  
+
   <xsl:template match="ext-link | uri | inline-supplementary-material">
     <a target="xrefwindow">
       <xsl:attribute name="href">
@@ -2517,16 +2521,16 @@
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-  
+
 
   <xsl:template match="hr">
     <hr/>
   </xsl:template>
-  
+
 
   <!-- inline-graphic is handled above, with graphic -->
-  
-  
+
+
   <xsl:template match="inline-formula | chem-struct">
     <span class="{local-name()}">
       <xsl:apply-templates/>
@@ -2540,7 +2544,7 @@
     </div>
   </xsl:template>
 
-  
+
   <xsl:template match="milestone-start | milestone-end">
     <span class="{substring-after(local-name(),'milestone-')}">
       <xsl:comment>
@@ -2548,27 +2552,27 @@
       </xsl:comment>
     </span>
   </xsl:template>
-  
+
 
   <xsl:template match="object-id">
     <span class="{local-name()}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-  
+
 
   <!-- preformat is handled above -->
-  
+
   <xsl:template match="sig">
     <xsl:apply-templates/>
   </xsl:template>
-  
+
 
   <xsl:template match="target">
     <xsl:call-template name="named-anchor"/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="styled-content">
     <span>
       <xsl:copy-of select="@style"/>
@@ -2580,8 +2584,8 @@
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="named-content">
     <span>
       <xsl:for-each select="@content-type">
@@ -2592,8 +2596,8 @@
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="private-char">
     <span>
       <xsl:for-each select="@description">
@@ -2601,7 +2605,7 @@
           <xsl:value-of select="."/>
         </xsl:attribute>
       </xsl:for-each>
-      <span class="generated">[Private character </span>
+      <span class="generated">[Private character</span>
       <xsl:for-each select="@name">
         <xsl:text> </xsl:text>
         <xsl:value-of select="."/>
@@ -2609,37 +2613,37 @@
       <span class="generated">]</span>
     </span>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="glyph-data | glyph-ref">
     <span class="generated">(Glyph not rendered)</span>
   </xsl:template>
-    
-  
+
+
   <xsl:template match="related-article">
-    <span class="generated">[Related article:] </span>
+    <span class="generated">[Related article:]</span>
     <xsl:apply-templates/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="related-object">
-    <span class="generated">[Related object:] </span>
+    <span class="generated">[Related object:]</span>
     <xsl:apply-templates/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="xref[not(normalize-space())]">
-  	<xsl:choose>
-  		<xsl:when test="@ref-type='aff' and count(/article/front/article-meta//aff)=1"/>
-  		<xsl:otherwise>
-		    <a href="#{@rid}">
-		      <xsl:apply-templates select="key('element-by-id',@rid)"
-		        mode="label-text">
-		        <xsl:with-param name="warning" select="true()"/>
-		      </xsl:apply-templates>
-		    </a>
-  		</xsl:otherwise>
-  	</xsl:choose>
+    <xsl:choose>
+      <xsl:when test="@ref-type='aff' and count(/article/front/article-meta//aff)=1"/>
+      <xsl:otherwise>
+        <a href="#{@rid}">
+          <xsl:apply-templates select="key('element-by-id',@rid)"
+                               mode="label-text">
+            <xsl:with-param name="warning" select="true()"/>
+          </xsl:apply-templates>
+        </a>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
 
@@ -2650,7 +2654,6 @@
   </xsl:template>
 
 
-  
   <!-- ============================================================= -->
   <!--  Formatting elements                                          -->
   <!-- ============================================================= -->
@@ -2746,9 +2749,9 @@
 
 
   <xsl:variable name="loose-footnotes"
-    select="//fn[not(ancestor::front|parent::fn-group|ancestor::table-wrap)]"/>
-    
-    
+                select="//fn[not(ancestor::front|parent::fn-group|ancestor::table-wrap)]"/>
+
+
   <xsl:template name="make-back">
     <xsl:apply-templates select="back"/>
     <xsl:if test="$loose-footnotes and not(back)">
@@ -2757,7 +2760,7 @@
       <xsl:call-template name="footnotes"/>
     </xsl:if>
   </xsl:template>
-    
+
   <xsl:template match="back">
     <!-- content model for back: 
           (label?, title*, 
@@ -2768,8 +2771,8 @@
     </xsl:if>
     <xsl:apply-templates/>
   </xsl:template>
-  
-  
+
+
   <xsl:template name="footnotes">
     <xsl:call-template name="backmatter-section">
       <xsl:with-param name="generated-title">Notes</xsl:with-param>
@@ -2778,42 +2781,42 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="ack">
     <xsl:call-template name="backmatter-section">
       <xsl:with-param name="generated-title">Acknowledgements</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
+
 
   <xsl:template match="app-group">
     <xsl:call-template name="backmatter-section">
       <xsl:with-param name="generated-title">Appendices</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
+
 
   <xsl:template match="back/bio">
     <xsl:call-template name="backmatter-section">
       <xsl:with-param name="generated-title">Biography</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
+
 
   <xsl:template match="back/fn-group">
     <xsl:call-template name="backmatter-section">
       <xsl:with-param name="generated-title">Notes</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="back/glossary">
     <xsl:call-template name="backmatter-section">
       <xsl:with-param name="generated-title">Glossary</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
+
 
   <xsl:template match="back/ref-list">
     <xsl:call-template name="backmatter-section">
@@ -2823,14 +2826,14 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="back/notes">
     <xsl:call-template name="backmatter-section">
       <xsl:with-param name="generated-title">Notes</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
+
 
   <xsl:template name="backmatter-section">
     <xsl:param name="generated-title"/>
@@ -2858,20 +2861,20 @@
       <xsl:copy-of select="$contents"/>
     </div>
   </xsl:template>
-  
+
 
   <!-- ============================================================= -->
   <!--  FOOTNOTES                                                    -->
   <!-- ============================================================= -->
 
   <xsl:template match="fn">
-  <!-- Footnotes appearing outside fn-group
-       generate cross-references to the footnote,
-       which is displayed elsewhere -->
-  <!-- Note the rules for displayed content: if any fn elements
-       not inside an fn-group (the matched fn or any other) includes
-       a label child, all footnotes are expected to have a label
-       child. -->
+    <!-- Footnotes appearing outside fn-group
+         generate cross-references to the footnote,
+         which is displayed elsewhere -->
+    <!-- Note the rules for displayed content: if any fn elements
+         not inside an fn-group (the matched fn or any other) includes
+         a label child, all footnotes are expected to have a label
+         child. -->
     <xsl:variable name="id">
       <xsl:apply-templates select="." mode="id"/>
     </xsl:variable>
@@ -2881,21 +2884,21 @@
       </xsl:apply-templates>
     </a>
   </xsl:template>
-  
+
   <xsl:template match="fn-group/fn | table-wrap-foot/fn |
                        table-wrap-foot/fn-group/fn">
     <xsl:apply-templates select="." mode="footnote"/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="fn" mode="footnote">
     <div class="footnote">
       <xsl:call-template name="named-anchor"/>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="fn/p">
     <p>
       <xsl:call-template name="assign-id"/>
@@ -2906,8 +2909,8 @@
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
-  
+
+
   <!-- ============================================================= -->
   <!--  MODE 'label-text'
 	      Generates label text for elements and their cross-references -->
@@ -2959,30 +2962,30 @@
   <xsl:variable name="auto-label-fig" select="false()"/>
   <xsl:variable name="auto-label-ref" select="not(//ref[label])"/>
   <!-- ref elements are labeled unless any ref already has a label -->
-  
+
   <xsl:variable name="auto-label-statement" select="false()"/>
   <xsl:variable name="auto-label-supplementary"
-    select="false()"/>
+                select="false()"/>
   <xsl:variable name="auto-label-table-wrap" select="false()"/>
 
-<!--
-  These variables assignments show how autolabeling can be 
-  configured conditionally.
-  For example: "label figures if no figures have labels" translates to
-    "not(//fig[label])", which will resolve to Boolean true() when the set of
-    all fig elements with labels is empty.
-  
-  <xsl:variable name="auto-label-app" select="not(//app[label])"/>
-  <xsl:variable name="auto-label-boxed-text" select="not(//boxed-text[label])"/>
-  <xsl:variable name="auto-label-chem-struct-wrap" select="not(//chem-struct-wrap[label])"/>
-  <xsl:variable name="auto-label-disp-formula" select="not(//disp-formula[label])"/>
-  <xsl:variable name="auto-label-fig" select="not(//fig[label])"/>
-  <xsl:variable name="auto-label-ref" select="not(//ref[label])"/>
-  <xsl:variable name="auto-label-statement" select="not(//statement[label])"/>
-  <xsl:variable name="auto-label-supplementary"
-    select="not(//supplementary-material[not(ancestor::front)][label])"/>
-  <xsl:variable name="auto-label-table-wrap" select="not(//table-wrap[label])"/>
--->  
+  <!--
+    These variables assignments show how autolabeling can be
+    configured conditionally.
+    For example: "label figures if no figures have labels" translates to
+      "not(//fig[label])", which will resolve to Boolean true() when the set of
+      all fig elements with labels is empty.
+
+    <xsl:variable name="auto-label-app" select="not(//app[label])"/>
+    <xsl:variable name="auto-label-boxed-text" select="not(//boxed-text[label])"/>
+    <xsl:variable name="auto-label-chem-struct-wrap" select="not(//chem-struct-wrap[label])"/>
+    <xsl:variable name="auto-label-disp-formula" select="not(//disp-formula[label])"/>
+    <xsl:variable name="auto-label-fig" select="not(//fig[label])"/>
+    <xsl:variable name="auto-label-ref" select="not(//ref[label])"/>
+    <xsl:variable name="auto-label-statement" select="not(//statement[label])"/>
+    <xsl:variable name="auto-label-supplementary"
+      select="not(//supplementary-material[not(ancestor::front)][label])"/>
+    <xsl:variable name="auto-label-table-wrap" select="not(//table-wrap[label])"/>
+  -->
 
   <xsl:template mode="label" match="*" name="block-label">
     <xsl:param name="contents">
@@ -2990,7 +2993,7 @@
         <!-- we place a warning for missing labels if this element is ever
              cross-referenced with an empty xref -->
         <xsl:with-param name="warning"
-          select="boolean(key('xref-by-rid',@id)[not(normalize-space())])"/>
+                        select="boolean(key('xref-by-rid',@id)[not(normalize-space())])"/>
       </xsl:apply-templates>
     </xsl:param>
     <xsl:if test="normalize-space($contents)">
@@ -3008,13 +3011,13 @@
     </xsl:param>
     <xsl:if test="normalize-space($contents)">
       <!-- we're already in a p -->
-        <span class="label">
-          <xsl:copy-of select="$contents"/>
-        </span>
+      <span class="label">
+        <xsl:copy-of select="$contents"/>
+      </span>
     </xsl:if>
   </xsl:template>
 
-  
+
   <xsl:template match="app" mode="label-text">
     <xsl:param name="warning" select="true()"/>
     <!-- pass $warning in as false() if a warning string is not wanted
@@ -3030,7 +3033,7 @@
       </xsl:with-param>-->
     </xsl:call-template>
   </xsl:template>
-  
+
 
   <xsl:template match="boxed-text" mode="label-text">
     <xsl:param name="warning" select="true()"/>
@@ -3046,7 +3049,7 @@
     </xsl:call-template>
   </xsl:template>
 
-  
+
   <xsl:template match="disp-formula" mode="label-text">
     <xsl:param name="warning" select="true()"/>
     <!-- pass $warning in as false() if a warning string is not wanted
@@ -3097,7 +3100,7 @@
     <!-- pass $warning in as false() if a warning string is not wanted
          (for example, if generating autonumbered labels) -->
     <xsl:variable name="auto-number-fn"
-      select="not(ancestor::front//fn/label | ancestor::front//fn/@symbol)"/>
+                  select="not(ancestor::front//fn/label | ancestor::front//fn/@symbol)"/>
     <xsl:call-template name="make-label-text">
       <xsl:with-param name="auto" select="$auto-number-fn"/>
       <xsl:with-param name="warning" select="$warning"/>
@@ -3108,14 +3111,14 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="table-wrap//fn" mode="label-text">
     <xsl:param name="warning" select="true()"/>
     <!-- pass $warning in as false() if a warning string is not wanted
          (for example, if generating autonumbered labels) -->
     <xsl:variable name="auto-number-fn"
-      select="not(ancestor::table-wrap//fn/label | ancestor::table-wrap//fn/@symbol)"/>
+                  select="not(ancestor::table-wrap//fn/label | ancestor::table-wrap//fn/@symbol)"/>
     <xsl:call-template name="make-label-text">
       <xsl:with-param name="auto" select="$auto-number-fn"/>
       <xsl:with-param name="warning" select="$warning"/>
@@ -3126,14 +3129,14 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="fn" mode="label-text">
     <xsl:param name="warning" select="true()"/>
     <!-- pass $warning in as false() if a warning string is not wanted
          (for example, if generating autonumbered labels) -->
     <xsl:variable name="auto-number-fn"
-      select="not(ancestor::article//fn[not(ancestor::front|ancestor::table-wrap)]/label |
+                  select="not(ancestor::article//fn[not(ancestor::front|ancestor::table-wrap)]/label |
                   ancestor::article//fn[not(ancestor::front|ancestor::table-wrap)]/@symbol)"/>
     <xsl:call-template name="make-label-text">
       <xsl:with-param name="auto" select="$auto-number-fn"/>
@@ -3141,7 +3144,7 @@
       <xsl:with-param name="auto-text">
         <xsl:text>[</xsl:text>
         <xsl:number level="any" count="fn[not(ancestor::front)]"
-        from="article | sub-article | response"/>
+                    from="article | sub-article | response"/>
         <xsl:text>]</xsl:text>
       </xsl:with-param>
     </xsl:call-template>
@@ -3170,13 +3173,13 @@
       <xsl:with-param name="auto" select="$auto-label-statement"/>
       <xsl:with-param name="warning" select="$warning"/>
       <xsl:with-param name="auto-text">
-          <xsl:text>Statement </xsl:text>
+        <xsl:text>Statement </xsl:text>
         <xsl:number level="any"/>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
- 
+
+
   <xsl:template match="supplementary-material" mode="label-text">
     <xsl:param name="warning" select="true()"/>
     <!-- pass $warning in as false() if a warning string is not wanted
@@ -3185,14 +3188,14 @@
       <xsl:with-param name="auto" select="$auto-label-supplementary"/>
       <xsl:with-param name="warning" select="$warning"/>
       <xsl:with-param name="auto-text">
-          <xsl:text>Supplementary Material </xsl:text>
+        <xsl:text>Supplementary Material </xsl:text>
         <xsl:number level="any" format="A"
-          count="supplementary-material[not(ancestor::front)]"/>
+                    count="supplementary-material[not(ancestor::front)]"/>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
- 
+
+
   <xsl:template match="table-wrap" mode="label-text">
     <xsl:param name="warning" select="true()"/>
     <!-- pass $warning in as false() if a warning string is not wanted
@@ -3206,8 +3209,8 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
- 
+
+
   <xsl:template match="*" mode="label-text">
     <xsl:param name="warning" select="true()"/>
     <!-- pass $warning in as false() if a warning string is not wanted
@@ -3216,32 +3219,32 @@
       <xsl:with-param name="warning" select="$warning"/>
     </xsl:call-template>
   </xsl:template>
-  
- 
+
+
   <xsl:template match="label" mode="label-text">
     <xsl:apply-templates mode="inline-label-text"/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="text()" mode="inline-label-text">
     <!-- when displaying labels, space characters become non-breaking spaces -->
     <xsl:value-of select="translate(normalize-space(.),' &#xA;&#x9;','&#xA0;&#xA0;&#xA0;')"/>
   </xsl:template>
-  
 
-<!-- ============================================================= -->
-<!--  Writing a name                                               -->
-<!-- ============================================================= -->
+
+  <!-- ============================================================= -->
+  <!--  Writing a name                                               -->
+  <!-- ============================================================= -->
 
   <!-- Called when displaying structured names in metadata         -->
 
   <xsl:template name="write-name" match="name">
     <xsl:apply-templates select="prefix" mode="inline-name"/>
     <xsl:apply-templates select="surname[../@name-style='eastern']"
-      mode="inline-name"/>
+                         mode="inline-name"/>
     <xsl:apply-templates select="given-names" mode="inline-name"/>
     <xsl:apply-templates select="surname[not(../@name-style='eastern')]"
-      mode="inline-name"/>
+                         mode="inline-name"/>
     <xsl:apply-templates select="suffix" mode="inline-name"/>
   </xsl:template>
 
@@ -3282,22 +3285,22 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  
+
   <!-- string-name elements are written as is -->
-  
+
   <xsl:template match="string-name">
     <xsl:apply-templates/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="string-name/*">
     <xsl:apply-templates/>
   </xsl:template>
-  
-  
-<!-- ============================================================= -->
-<!--  UTILITY TEMPLATES                                           -->
-<!-- ============================================================= -->
+
+
+  <!-- ============================================================= -->
+  <!--  UTILITY TEMPLATES                                           -->
+  <!-- ============================================================= -->
 
 
   <xsl:template name="append-pub-type">
@@ -3388,11 +3391,11 @@
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates mode="label-text"
-          select="label | @symbol"/>
+                             select="label | @symbol"/>
         <xsl:if test="$warning and not(label|@symbol)">
           <span class="warning">
             <xsl:text>{ label</xsl:text>
-            <xsl:if test="self::fn"> (or @symbol)</xsl:if>
+            <xsl:if test="self::fn">(or @symbol)</xsl:if>
             <xsl:text> needed for </xsl:text>
             <xsl:value-of select="local-name()"/>
             <xsl:for-each select="@id">
@@ -3446,16 +3449,16 @@
       </xsl:if>
     </xsl:variable>
     <a name="{$id}">
-      <xsl:comment> named anchor </xsl:comment>
+      <xsl:comment>named anchor</xsl:comment>
     </a>
   </xsl:template>
 
 
-<!-- ============================================================= -->
-<!--  Process warnings                                             -->
-<!-- ============================================================= -->
-<!-- Generates a list of warnings to be reported due to processing
-     anomalies. -->
+  <!-- ============================================================= -->
+  <!--  Process warnings                                             -->
+  <!-- ============================================================= -->
+  <!-- Generates a list of warnings to be reported due to processing
+       anomalies. -->
 
   <xsl:template name="process-warnings">
     <!-- returns an RTF containing all the warnings -->
@@ -3463,11 +3466,11 @@
       <xsl:for-each select="//xref[not(normalize-space())]">
         <xsl:variable name="target-label">
           <xsl:apply-templates select="key('element-by-id',@rid)"
-            mode="label-text">
+                               mode="label-text">
             <xsl:with-param name="warning" select="false()"/>
           </xsl:apply-templates>
         </xsl:variable>
-      	
+
         <xsl:if test="not(normalize-space($target-label)) and @ref-type!='aff'
         	or not(normalize-space($target-label)) and @ref-type='aff' 
         	and count(/article/front/article-meta//aff) > 1">
@@ -3476,7 +3479,7 @@
                we ask again to get the warning -->
           <li>
             <xsl:apply-templates select="key('element-by-id',@rid)"
-              mode="label-text">
+                                 mode="label-text">
               <xsl:with-param name="warning" select="true()"/>
             </xsl:apply-templates>
           </li>
@@ -3487,21 +3490,20 @@
     <xsl:if test="normalize-space($xref-warnings)">
       <h4>Elements are cross-referenced without labels.</h4>
       <p>Either the element should be provided a label, or their cross-reference(s) should
-        have literal text content.</p>
+        have literal text content.
+      </p>
       <ul>
         <xsl:copy-of select="$xref-warnings"/>
       </ul>
     </xsl:if>
   </xsl:template>
-  
-        
-   
 
-<!-- ============================================================= -->
-<!--  id mode                                                      -->
-<!-- ============================================================= -->
-<!-- An id can be derived for any element. If an @id is given,
-     it is presumed unique and copied. If not, one is generated.   -->
+
+  <!-- ============================================================= -->
+  <!--  id mode                                                      -->
+  <!-- ============================================================= -->
+  <!-- An id can be derived for any element. If an @id is given,
+       it is presumed unique and copied. If not, one is generated.   -->
 
   <xsl:template match="*" mode="id">
     <xsl:value-of select="@id"/>
@@ -3516,15 +3518,15 @@
     <xsl:if test="not(@id)">
       <xsl:value-of select="local-name()"/>
       <xsl:number from="article" level="multiple"
-        count="article | sub-article | response" format="1-1"/>
+                  count="article | sub-article | response" format="1-1"/>
     </xsl:if>
   </xsl:template>
 
 
-<!-- ============================================================= -->
-<!--  "format-date"                                                -->
-<!-- ============================================================= -->
-<!-- Maps a structured date element to a string -->
+  <!-- ============================================================= -->
+  <!--  "format-date"                                                -->
+  <!-- ============================================================= -->
+  <!-- Maps a structured date element to a string -->
 
   <xsl:template name="format-date">
     <!-- formats date in DD Month YYYY format -->
@@ -3563,32 +3565,32 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
 
-<!-- ============================================================= -->
-<!--  "author-string" writes authors' names in sequence            -->
-<!-- ============================================================= -->
+
+  <!-- ============================================================= -->
+  <!--  "author-string" writes authors' names in sequence            -->
+  <!-- ============================================================= -->
 
   <xsl:template name="author-string">
     <xsl:variable name="all-contribs"
-      select="/article/front/article-meta/contrib-group/contrib/name/surname |
+                  select="/article/front/article-meta/contrib-group/contrib/name/surname |
               /article/front/article-meta/contrib-group/contrib/collab"/>
-   <xsl:for-each select="$all-contribs">
+    <xsl:for-each select="$all-contribs">
       <xsl:if test="count($all-contribs) &gt; 1">
         <xsl:if test="position() &gt; 1">
           <xsl:if test="count($all-contribs) &gt; 2">,</xsl:if>
           <xsl:text> </xsl:text>
         </xsl:if>
-        <xsl:if test="position() = count($all-contribs)">and </xsl:if>
+        <xsl:if test="position() = count($all-contribs)">and</xsl:if>
       </xsl:if>
       <xsl:value-of select="."/>
     </xsl:for-each>
   </xsl:template>
-  
 
-<!-- ============================================================= -->
-<!--  Footer branding                                              -->
-<!-- ============================================================= -->
+
+  <!-- ============================================================= -->
+  <!--  Footer branding                                              -->
+  <!-- ============================================================= -->
 
   <xsl:template name="footer-branding">
     <hr class="part-rule"/>
@@ -3603,8 +3605,8 @@
     </div>
   </xsl:template>
 
-<!-- ============================================================= -->
-<!--  End stylesheet                                               -->
-<!-- ============================================================= -->
+  <!-- ============================================================= -->
+  <!--  End stylesheet                                               -->
+  <!-- ============================================================= -->
 
 </xsl:stylesheet>

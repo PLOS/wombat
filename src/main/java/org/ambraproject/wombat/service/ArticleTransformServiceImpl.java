@@ -25,7 +25,7 @@ import java.util.Map;
 public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
 
-  private static final String TEMPLATE_ROOT_PATH = "static/xform/";
+  private static final String TEMPLATE_ROOT_PATH = "xform/";
   private static final String TRANSFORM_TEMPLATE_PATH = TEMPLATE_ROOT_PATH + "article-transform.xsl";
 
   @Autowired

@@ -3,14 +3,17 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Charsets;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +32,14 @@ import java.util.regex.Pattern;
  */
 @Controller
 public class ArticleController {
+
+  @ResponseStatus(value = HttpStatus.NOT_FOUND)
+  public class ArticleNotFoundException extends RuntimeException {
+
+    public ArticleNotFoundException(String doi) {
+      super(String.format("Article %s not found", doi));
+    }
+  }
 
   @Autowired
   private ServletContext servletContext;
@@ -94,13 +105,22 @@ public class ArticleController {
     String articleId = parseArticlePath(request);
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
 
-    Map<?, ?> articleMetadata = soaService.requestObject("articles/" + articleId, Map.class);
+    Map<?, ?> articleMetadata;
+    try {
+      articleMetadata = soaService.requestObject("articles/" + articleId, Map.class);
+    } catch (EntityNotFoundException enfe) {
+      throw new ArticleNotFoundException(articleId);
+    }
 
     StringWriter articleHtml = new StringWriter(BUFFER_SIZE);
     Closer closer = Closer.create();
     try {
-      InputStream articleXml = closer.register(new BufferedInputStream(
-          soaService.requestStream(xmlAssetPath)));
+      InputStream articleXml;
+      try {
+        articleXml = closer.register(new BufferedInputStream(soaService.requestStream(xmlAssetPath)));
+      } catch (EntityNotFoundException enfe) {
+        throw new ArticleNotFoundException(articleId);
+      }
       OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, CHARSET));
       articleTransformService.transform(journal, articleXml, outputStream);
     } catch (Throwable t) {

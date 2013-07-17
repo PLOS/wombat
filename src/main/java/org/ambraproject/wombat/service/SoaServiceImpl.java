@@ -49,9 +49,13 @@ public class SoaServiceImpl implements SoaService {
     HttpResponse response = client.execute(get);
     StatusLine statusLine = response.getStatusLine();
     if (statusLine.getStatusCode() >= 400) {
-      String message = String.format("Request to \"%s\" failed (%d): %s",
-          address, statusLine.getStatusCode(), statusLine.getReasonPhrase());
-      throw new RuntimeException(message);
+      if (statusLine.getStatusCode() == 404) {
+        throw new EntityNotFoundException(address);
+      } else {
+        String message = String.format("Request to \"%s\" failed (%d): %s",
+            address, statusLine.getStatusCode(), statusLine.getReasonPhrase());
+        throw new RuntimeException(message);
+      }
     }
 
     HttpEntity entity = response.getEntity();

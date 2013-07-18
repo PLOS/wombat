@@ -5,6 +5,8 @@ import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.SoaService;
@@ -96,4 +98,8 @@ public class SpringConfiguration {
     return new ArticleTransformServiceImpl();
   }
 
+  @Bean
+  public ArticleService articleService() {
+    return new ArticleServiceImpl();
+  }
 }

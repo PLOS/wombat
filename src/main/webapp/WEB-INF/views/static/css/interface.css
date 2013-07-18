@@ -144,19 +144,6 @@ a {
   margin: 15px auto 0 auto;
 }
 
-#site-logo {
-  overflow: hidden;
-  text-indent: -1000px;
-  display: block;
-  background-position: 0px -37px;
-  width: 132px;
-  height: 29px;
-  background-repeat: no-repeat;
-  background-image: url('../img/sprites/structure.png');
-  background-size: 300px 75px;
-  margin: 10px auto 0 auto;
-}
-
 /* Lists */
 ul.std {
   list-style: disc inside none;

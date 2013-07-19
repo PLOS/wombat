@@ -1,6 +1,6 @@
 <div id="container-main">
 
-    <#include "../common/header.ftl" />
+<#include "../common/header.ftl" />
 
     <div id="article-content" class="content" data-article-id="0059893">
         <article class="article-item">
@@ -32,7 +32,7 @@
                     excluded miRNAs as controls along with the endogenous controls and analyzed the data.</p>
             </div>
             <div class="correction-alert coloration-text-color">
-                <span class="plos-font">e</span> Correction added <span class="bold">08 Jul 2012</span>
+                <span class="ambra-symbols-font">e</span> Correction added <span class="bold">08 Jul 2012</span>
             </div><#--end retraction-->
         <#-- In articleSuffix.ftl: Close <article class="article-item"> -->
         <#-- In articleSuffix.ftl: Close <div id="article-content"> -->

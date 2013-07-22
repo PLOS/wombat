@@ -85,7 +85,7 @@ public class ArticleController {
    * @throws IOException
    */
   private void requestCorrections(Model model, String doi) throws IOException {
-    List<?> corrections = soaService.requestObject("corrections/" + doi, List.class);
+    List<?> corrections = soaService.requestObject(String.format("articles/%s?corrections", doi), List.class);
     if (corrections != null && !corrections.isEmpty()) {
       model.addAttribute("articleCorrections", corrections);
     }

@@ -752,7 +752,7 @@ html:not(.positionfixed) #page-figure #site-header-container {
 /* Journal-neutral coloring */
 body .coloration-white-on-color {
   background: #4a0100;
-  color: #333333;
+  color: #ffffff;
 }
 
 body .coloration-text-color {
@@ -769,7 +769,7 @@ body .coloration-border-top {
 
 body .active.color-active {
   background: #4a0100;
-  color: #333333;
+  color: #ffffff;
 }
 
 body .coloration-bg {
@@ -784,5 +784,5 @@ body .active.text-color {
 #page-saved-items #menu-saved,
 #page-recent-history #menu-recent {
   background: #4a0100;
-  color: #333333;
+  color: #ffffff;
 }

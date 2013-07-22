@@ -49,56 +49,10 @@
 </nav><#--end article-save-options-->
 </article>
 
-<nav class="article-menu-bottom small">
-    <a class="btn-lg">PLOS Journals</a>
-    <a class="btn-lg med">PLOS Blogs</a>
-
-    <div class="btn-top-container">
-        <span class="btn-text">Back to Top</span>
-        <a class="btn">Back to Top</a>
-    </div>
-</nav>
-
+<#include "../common/bottomMenu.ftl" />
 </div><#--end content-->
 
-<footer id="common-footer" class="footer">
-    <nav class="footer-menu">
-        <ul>
-            <li>
-                <a class="coloration-light-text">About Us</a>
-            </li>
-            <li>
-                <a class="coloration-light-text">Full Site</a>
-            </li>
-            <li>
-                <a class="coloration-light-text">Feedback</a>
-            </li>
-        </ul>
-    </nav>
-
-    <p class="footer-credits">
-        <a class="bold">Ambra 2.4.2</a> Managed Colocation provided by <br/><a class="bold">Internet Systems
-        Consortium.</a>
-    </p>
-
-    <nav class="footer-secondary-menu">
-        <ul>
-            <li>
-                <a>Privacy Policy</a>
-            </li>
-            <li>
-                <a>Terms of Use</a>
-            </li>
-            <li>
-                <a>Advertise</a>
-            </li>
-            <li>
-                <a>Media Inquiries</a>
-            </li>
-        </ul>
-    </nav>
-
-</footer>
+<#include "../common/footer.ftl" />
 
 <section id="article-info-window" class="modal-info-window">
 

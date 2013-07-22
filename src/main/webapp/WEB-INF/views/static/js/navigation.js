@@ -1,6 +1,6 @@
 // Navigation - Contains javascript needed for searching and navigating through the site
 
-var PlosNavigation = function () {
+var AmbraNavigation = function () {
   var self = this;
 
   self.init = function () {
@@ -66,7 +66,7 @@ var PlosNavigation = function () {
     if (isInactive) { //if the main container is inactive, we should bring it back (activate it)
       self.hideMainMenu();
     } else { //show the site menu
-      siteContentClass.findOpenModals(plosNavigation.showMainMenu); //if any other modals are open we should close them
+      siteContentClass.findOpenModals(ambraNavigation.showMainMenu); //if any other modals are open we should close them
     }
   }
 
@@ -190,9 +190,9 @@ var PlosNavigation = function () {
 
 }
 
-var plosNavigation;
+var ambraNavigation;
 
 $(document).ready(function () {
-  plosNavigation = new PlosNavigation();
-  plosNavigation.init();
+  ambraNavigation = new AmbraNavigation();
+  ambraNavigation.init();
 });

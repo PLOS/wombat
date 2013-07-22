@@ -22,7 +22,7 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
   /**
    * Interpret a view key for forwarding.
    *
-   * @param key the non-null, non-empty key
+   * @param key the non-null, non-empty key containing no slashes
    * @return a {@code TemplateLoader} instance to which to forward
    * @throws IllegalArgumentException if the key cannot be matched to a delegate object
    */
@@ -33,19 +33,34 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
     private final TemplateLoader delegateLoader;
     private final Object delegateTemplateSource;
 
-    private TemplateSource(String viewName) throws IOException {
-      int sep = viewName.indexOf('/');
-      Preconditions.checkArgument(sep >= 0);
-
-      String key = viewName.substring(0, sep);
-      this.delegateLoader = delegate(key);
-      if (this.delegateLoader == null) {
-        throw new IllegalArgumentException();
-      }
-
-      String delegateViewName = viewName.substring(sep + 1);
-      this.delegateTemplateSource = findTemplateSource(delegateLoader, delegateViewName);
+    private TemplateSource(TemplateLoader delegateLoader, Object delegateTemplateSource) {
+      this.delegateLoader = Preconditions.checkNotNull(delegateLoader);
+      this.delegateTemplateSource = Preconditions.checkNotNull(delegateTemplateSource);
     }
+  }
+
+  /**
+   * Delegate to a loader and get a template source to it. The view name contains both the forwarding key (before the
+   * first slash) and the view name to pass to the delegate loader (after the first slash).
+   *
+   * @param viewName the view name
+   * @return an object containing the loader indicated by the key and the source indicated by the view name
+   * @throws IOException
+   */
+  private TemplateSource buildTemplateSource(String viewName) throws IOException {
+    int sep = viewName.indexOf('/');
+    Preconditions.checkArgument(sep >= 0);
+
+    String key = viewName.substring(0, sep);
+    TemplateLoader delegateLoader = delegate(key);
+    if (delegateLoader == null) {
+      throw new IllegalArgumentException();
+    }
+
+    String delegateViewName = viewName.substring(sep + 1);
+    Object delegateTemplateSource = findTemplateSource(delegateLoader, delegateViewName);
+
+    return new TemplateSource(delegateLoader, delegateTemplateSource);
   }
 
   private static final Pattern LOCALIZED_FTL_NAME = Pattern.compile("(.*)_[^.]*?(\\..*?)");
@@ -78,7 +93,7 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
 
   @Override
   public Object findTemplateSource(String name) throws IOException {
-    return new TemplateSource(name);
+    return buildTemplateSource(name);
   }
 
   @Override

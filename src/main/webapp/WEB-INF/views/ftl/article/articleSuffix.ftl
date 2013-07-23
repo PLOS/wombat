@@ -49,10 +49,10 @@
 </nav><#--end article-save-options-->
 </article>
 
-<#include "../common/bottomMenu.ftl" />
+<#include "../common/bottomMenu/bottomMenu.ftl" />
 </div><#--end content-->
 
-<#include "../common/footer.ftl" />
+<#include "../common/footer/footer.ftl" />
 
 <section id="article-info-window" class="modal-info-window">
 
@@ -72,7 +72,7 @@
 
 </div><#--end container main-->
 
-<#include "../common/fullMenu.ftl" />
+<#include "../common/fullMenu/fullMenu.ftl" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="static/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>

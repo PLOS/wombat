@@ -2,10 +2,8 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.io.Files;
 import com.google.gson.GsonBuilder;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -30,7 +28,6 @@ public class RuntimeConfiguration {
   // Fields are immutable by convention. They should be modified only during deserialization.
   private String server;
   private Boolean trustUnsignedServer;
-  private String themeBuildPath;
   private List<Map<String, ?>> themes;
   private List<Map<String, ?>> journals;
 
@@ -58,10 +55,6 @@ public class RuntimeConfiguration {
    */
   public boolean trustUnsignedServer() {
     return (trustUnsignedServer == null) ? false : trustUnsignedServer;
-  }
-
-  public File getThemeBuildPath() {
-    return (themeBuildPath == null) ? Files.createTempDir() : new File(themeBuildPath);
   }
 
   /**

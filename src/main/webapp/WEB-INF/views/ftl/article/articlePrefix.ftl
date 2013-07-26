@@ -24,8 +24,7 @@
                 </div>
                 <div class="correction-alert coloration-text-color">
                   <span class="plos-font">e</span> Correction added
-                  <#-- TODO: better date handling; apparently dates are coming as Strings from the JSON right now.  -->
-                  <span class="bold">${correction.created?date("MMM d, yyyy hh:mm:ss a")?string("dd MMM yyyy")}</span>
+                  <span class="bold"><@formatJsonDate date="${correction.created}" format="dd MMM yyyy" /></span>
                 </div><#-- end correction -->
               </#list>
             </#if>

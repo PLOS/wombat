@@ -12,12 +12,14 @@
                 Corrections (3)
             </a>
         </li>
-        <li class="menuitem">
-            <a class="btn-lg">
-                <span class="arrow">View</span>
-                Reader Comments (3)
+        <#if articleComments?? && articleComments?size &gt; 0>
+          <li class="menuitem">
+            <a class="btn-lg" href="article/comments?doi=${article.doi}">
+              <span class="arrow">View</span>
+              Reader Comments (${articleComments?size})
             </a>
-        </li>
+          </li>
+        </#if>
         <li class="menuitem">
             <a class="btn-lg">
                 <span class="arrow">View</span>

@@ -1,6 +1,3 @@
-<#-- Custom FreeMarker directives  -->
-<#assign formatJsonDate = "org.ambraproject.wombat.util.Iso8601DateDirective"?new()>
-
 <header id="common-header">
     <div class="search-expanded">
         <div class="search-form-container coloration-bg">

@@ -48,12 +48,7 @@ public class ArticleController {
                               @RequestParam("doi") String articleId)
       throws IOException {
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
-    Map<?, ?> articleMetadata;
-    try {
-      articleMetadata = soaService.requestObject("articles/" + articleId, Map.class);
-    } catch (EntityNotFoundException enfe) {
-      throw new ArticleNotFoundException(articleId);
-    }
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     StringWriter articleHtml = new StringWriter(BUFFER_SIZE);
     Closer closer = Closer.create();
     try {
@@ -73,7 +68,34 @@ public class ArticleController {
     model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml.toString());
     requestCorrections(model, articleId);
+    requestComments(model, articleId);
     return journal + "/ftl/article/article";
+  }
+
+  @RequestMapping("/{journal}/article/comments")
+  public String renderArticleComments(Model model, @PathVariable("journal") String journal,
+      @RequestParam("doi") String articleId) throws IOException {
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    model.addAttribute("article", articleMetadata);
+    requestComments(model, articleId);
+    return journal + "/ftl/article/comments";
+  }
+
+  /**
+   * Loads article metadata from the SOA layer.
+   *
+   * @param articleId DOI identifying the article
+   * @return Map of JSON representing the article
+   * @throws IOException
+   */
+  private Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
+    Map<?, ?> articleMetadata;
+    try {
+      articleMetadata = soaService.requestObject("articles/" + articleId, Map.class);
+    } catch (EntityNotFoundException enfe) {
+      throw new ArticleNotFoundException(articleId);
+    }
+    return articleMetadata;
   }
 
   /**
@@ -88,6 +110,21 @@ public class ArticleController {
     List<?> corrections = soaService.requestObject(String.format("articles/%s?corrections", doi), List.class);
     if (corrections != null && !corrections.isEmpty()) {
       model.addAttribute("articleCorrections", corrections);
+    }
+  }
+
+  /**
+   * Checks whether any comments are associated with the given article, and appends
+   * them to the model if so.
+   *
+   * @param model model to be passed to the view
+   * @param doi identifies the article
+   * @throws IOException
+   */
+  private void requestComments(Model model, String doi) throws IOException {
+    List<?> comments = soaService.requestObject(String.format("articles/%s?comments", doi), List.class);
+    if (comments != null && !comments.isEmpty()) {
+      model.addAttribute("articleComments", comments);
     }
   }
 }

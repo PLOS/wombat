@@ -222,13 +222,13 @@ var SiteContent = function () {
     if (isActive) { //if a modal window is open, we'll close it
 
       var displayMethod = self.$modalInfoWindow.attr('data-method');
-      plosNavigation.modalOptions.showModalOnMenuClose = true; //we want to reactivate this modal when the user re-hides the navigation
-      plosNavigation.modalOptions.displayMethod = displayMethod;
+      ambraNavigation.modalOptions.showModalOnMenuClose = true; //we want to reactivate this modal when the user re-hides the navigation
+      ambraNavigation.modalOptions.displayMethod = displayMethod;
       self.hideModalWindow(callback, null, displayMethod);
 
     } else {
 
-      plosNavigation.modalOptions.showModalOnMenuClose = false; //since the modal was never open, we won't need to show it again when we return from the menu 
+      ambraNavigation.modalOptions.showModalOnMenuClose = false; //since the modal was never open, we won't need to show it again when we return from the menu
 
       if (typeof callback === "function") {
         callback();
@@ -301,11 +301,11 @@ var SiteContent = function () {
   } //end showModalWindow
 
   self.disableContentScrolling = function () {
-    plosNavigation.$containerMain.addClass('inactive');
+    ambraNavigation.$containerMain.addClass('inactive');
   }
 
   self.enableContentScrolling = function () {
-    plosNavigation.$containerMain.removeClass('inactive');
+    ambraNavigation.$containerMain.removeClass('inactive');
   }
 
   self.toggleFilterButton = function ($filterButton) {

@@ -12,3 +12,6 @@
 <link rel="stylesheet" href="static/css/interface.css">
 <link rel="stylesheet" href="static/css/mobile.css">
 <#include "../cssLinks.ftl" />
+
+<script src="static/js/vendor/modernizr.custom.25437.js"></script>
+<script src="static/js/vendor/respond.min.js"></script>

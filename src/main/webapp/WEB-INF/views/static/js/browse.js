@@ -1,6 +1,6 @@
 //contains scripts necessary to browse taxonomy
 
-var PlosBrowse = function () {
+var AmbraBrowse = function () {
 
   var self = this;
 
@@ -204,11 +204,11 @@ var PlosBrowse = function () {
 
 }
 
-var plosBrowse;
+var ambraBrowse;
 
 $(document).ready(function () {
 
-  plosBrowse = new PlosBrowse();
-  plosBrowse.init();
+  ambraBrowse = new AmbraBrowse();
+  ambraBrowse.init();
 
 });

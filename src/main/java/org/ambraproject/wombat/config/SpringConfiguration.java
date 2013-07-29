@@ -5,6 +5,7 @@ import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.SoaService;
@@ -21,6 +22,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Date;
 
 @Configuration
 public class SpringConfiguration {
@@ -29,6 +31,7 @@ public class SpringConfiguration {
   public Gson gson() {
     GsonBuilder builder = new GsonBuilder();
     builder.setPrettyPrinting();
+    builder.registerTypeAdapter(Date.class, new Iso8601DateAdapter());
     return builder.create();
   }
 
@@ -95,5 +98,4 @@ public class SpringConfiguration {
   public ArticleTransformService articleTransformService() {
     return new ArticleTransformServiceImpl();
   }
-
 }

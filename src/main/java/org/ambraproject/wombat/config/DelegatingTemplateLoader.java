@@ -84,7 +84,7 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
 
       Matcher matcher = LOCALIZED_FTL_NAME.matcher(viewName);
       if (!matcher.matches()) {
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(viewName);
       }
       viewName = matcher.group(1) + matcher.group(2);
     }

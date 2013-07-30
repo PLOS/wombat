@@ -1,8 +1,9 @@
+<#include "../macro/pathUp.ftl" />
 <html>
 <head>
   <title>Privacy Policy</title>
 
-  <link rel="stylesheet" href="../static/css/base.css">
+  <link rel="stylesheet" href=<@pathUp 3 "static/css/base.css" />>
   <link rel="stylesheet" href="../static/css/interface.css">
   <link rel="stylesheet" href="../static/css/mobile.css">
 <#include "../cssLinks.ftl" /><#-- TODO: Debug (this is at the wrong relative path level) -->

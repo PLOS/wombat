@@ -107,7 +107,7 @@ public class ArticleController {
    * @throws IOException
    */
   private void requestCorrections(Model model, String doi) throws IOException {
-    List<?> corrections = soaService.requestObject(String.format("articles/%s?corrections", doi), List.class);
+    List<?> corrections = null;//soaService.requestObject(String.format("articles/%s?corrections", doi), List.class);
     if (corrections != null && !corrections.isEmpty()) {
       model.addAttribute("articleCorrections", corrections);
     }
@@ -122,7 +122,7 @@ public class ArticleController {
    * @throws IOException
    */
   private void requestComments(Model model, String doi) throws IOException {
-    List<?> comments = soaService.requestObject(String.format("articles/%s?comments", doi), List.class);
+    List<?> comments = null;//soaService.requestObject(String.format("articles/%s?comments", doi), List.class);
     if (comments != null && !comments.isEmpty()) {
       model.addAttribute("articleComments", comments);
     }

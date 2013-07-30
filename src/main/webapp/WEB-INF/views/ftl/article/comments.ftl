@@ -6,7 +6,7 @@
 <!--[if gt IE 9]><!-->
 <html class="no-js"> <!--<![endif]-->
 <head>
-<#include "articleHead.ftl" />
+<#include "../common/articleHead.ftl" />
 </head>
 
 <body id="page-comments">

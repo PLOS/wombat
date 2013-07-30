@@ -1,8 +1,8 @@
 <ul>
   <li>
-    <a>Privacy Policy</a>
+    <a href="../page/privacyPolicy">Privacy Policy</a>
   </li>
   <li>
-    <a>Terms of Use</a>
+    <a href="../page/termsOfUse">Terms of Use</a>
   </li>
 </ul>

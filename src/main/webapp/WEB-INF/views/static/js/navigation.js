@@ -1,5 +1,7 @@
 // Navigation - Contains javascript needed for searching and navigating through the site
 
+var SOLR_SERVER = 'http://api.plos.org/search';
+
 var AmbraNavigation = function () {
   var self = this;
 
@@ -58,7 +60,36 @@ var AmbraNavigation = function () {
 
   self.executeSearch = function () {
     var searchVal = self.$searchExpanded.find('#search-input').val();
-    console.log("Search: " + searchVal);
+    $.ajax(SOLR_SERVER, {
+      type: 'GET',
+      dataType: 'jsonp',
+      data: {
+
+        // TODO: escape/quote the q param appropriately
+        'q': 'everything:' + searchVal,
+        'wt': 'json',
+        'fl': 'id,publication_date,title,cross_published_journal_name,author_display,article_type',
+        'fq': 'doc_type:full',
+        'fq': '!article_type_facet:"Issue Image"',
+
+        // TODO: paging
+        'rows': 25,
+
+        // These two improve solr performance greatly.
+        'hl': 'false',
+        'facet': 'false'
+
+      },
+      jsonp: 'json.wrf',
+      success: function (data) {
+
+        // TODO
+        console.log(data);
+      },
+      error: function (xOptions, textStatus) {
+        console.log(textStatus);
+      }
+    });
   }
 
   self.toggleMainMenu = function () {

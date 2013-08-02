@@ -167,7 +167,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    */
   private byte[] cacheForDevMode(String journalKey, String articleId, InputStream xml)
       throws IOException, TransformerException {
-    Preconditions.checkState(runtimeConfiguration.isDevMode());
+    Preconditions.checkState(runtimeConfiguration.devModeArticleCaching());
     if (devModeCache == null) {
       devModeCache = Maps.newHashMap();
     }
@@ -195,7 +195,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
 
-    if (runtimeConfiguration.isDevMode()) {
+    if (runtimeConfiguration.devModeArticleCaching()) {
       byte[] transformed = cacheForDevMode(journalKey, articleId, xml);
       html.write(transformed);
       return;

@@ -30,6 +30,7 @@ public class RuntimeConfiguration {
   private Boolean trustUnsignedServer;
   private List<Map<String, ?>> themes;
   private List<Map<String, ?>> journals;
+  private Boolean devModeArticleCaching;
 
   /**
    * Validate values after deserializing.
@@ -76,6 +77,10 @@ public class RuntimeConfiguration {
 
   public ImmutableMap<String, Theme> getThemesForJournals(ThemeTree themeTree) {
     return themeTree.matchToJournals(journals);
+  }
+
+  public boolean devModeArticleCaching() {
+    return (devModeArticleCaching == null) ? false : devModeArticleCaching;
   }
 
   /*

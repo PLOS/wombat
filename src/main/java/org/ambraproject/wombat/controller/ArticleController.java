@@ -59,7 +59,7 @@ public class ArticleController {
         throw new ArticleNotFoundException(articleId);
       }
       OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, CHARSET));
-      articleTransformService.transform(journal, articleXml, outputStream);
+      articleTransformService.transform(journal, articleId, articleXml, outputStream);
     } catch (Throwable t) {
       throw closer.rethrow(t);
     } finally {

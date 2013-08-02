@@ -3,7 +3,38 @@
 var AmbraNavigation = function () {
   var self = this;
 
+  /**
+   * Modify the page structure by setting up accordion sections.
+   */
+  self.build = function () {
+    var $articleText = $('#articleText');
+    var $accordionList = $('<ul/>').addClass('main-accordion').addClass('accordion');
+
+    var $sections = $('.section'); // TODO: Include '.abstract, .articleinfo' (require special handling)
+    $sections.each(function (index) {
+      var $section = $(this);
+      var $accordionItem = $('<li/>').addClass('accordion-item');
+
+      var $sectionTitle = $section.find('h3');
+      var $accordionTitle = $('<a/>').addClass('expander').text($sectionTitle.text());
+      $accordionItem.append($accordionTitle);
+
+      var $accordionContent = $('<section/>').addClass('accordion-content');
+      $accordionContent.append($section.find(':not(h3)'));
+      $accordionItem.append($accordionContent);
+
+      $accordionList.append($accordionItem);
+    });
+
+    $articleText.html($accordionList);
+  }
+
+  /**
+   * Initialize page elements.
+   */
   self.init = function () {
+    self.build();
+
     //globals
     self.$searchExpanded = $('.search-expanded');
     self.$searchButton = $('.site-search-button');

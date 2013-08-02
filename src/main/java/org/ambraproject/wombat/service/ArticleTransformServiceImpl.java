@@ -1,9 +1,10 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
+import org.ambraproject.wombat.config.JournalThemeMap;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Theme;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.URIResolver;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,7 +31,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final String TRANSFORM_TEMPLATE_PATH = TEMPLATE_ROOT_PATH + "article-transform.xsl";
 
   @Autowired
-  private ImmutableMap<String, Theme> themesForJournals;
+  private JournalThemeMap journalThemeMap;
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
@@ -103,7 +107,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @throws IOException
    */
   private Transformer buildTransformer(String journal) throws IOException {
-    Theme theme = themesForJournals.get(journal);
+    Theme theme = journalThemeMap.getTheme(journal);
     if (theme == null) {
       throw new UnmatchedJournalException(journal);
     }
@@ -124,12 +128,78 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     }
   }
 
+
+  private static class ArticleKey {
+    private final String journalKey;
+    private final String articleId;
+
+    private ArticleKey(String journalKey, String articleId) {
+      this.journalKey = Preconditions.checkNotNull(journalKey);
+      this.articleId = Preconditions.checkNotNull(articleId);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ArticleKey that = (ArticleKey) o;
+      return journalKey.equals(that.journalKey) && articleId.equals(that.articleId);
+    }
+
+    @Override
+    public int hashCode() {
+      return 31 * journalKey.hashCode() + articleId.hashCode();
+    }
+  }
+
+  private Map<ArticleKey, byte[]> devModeCache = null;
+
+  /**
+   * Very crude, naive caching to speed things up for dev mode. Copy all transformed HTML to memory and store it in a
+   * hashtable; never evict.
+   *
+   * @param journalKey
+   * @param articleId
+   * @param xml
+   * @return
+   * @throws IOException
+   * @throws TransformerException
+   */
+  private byte[] cacheForDevMode(String journalKey, String articleId, InputStream xml)
+      throws IOException, TransformerException {
+    Preconditions.checkState(runtimeConfiguration.devModeArticleCaching());
+    if (devModeCache == null) {
+      devModeCache = Maps.newHashMap();
+    }
+    ArticleKey key = new ArticleKey(journalKey, articleId);
+    byte[] cached = devModeCache.get(key);
+    if (cached != null) {
+      return cached;
+    }
+
+    ByteArrayOutputStream result = new ByteArrayOutputStream();
+    Transformer transformer = getTransformer(journalKey);
+    transformer.transform(new StreamSource(xml), new StreamResult(result));
+
+    byte[] transformed = result.toByteArray();
+    devModeCache.put(key, transformed);
+    return transformed;
+  }
+
+
   @Override
-  public void transform(String journalKey, InputStream xml, OutputStream html)
+  public void transform(String journalKey, String articleId, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
     Preconditions.checkNotNull(journalKey);
+    Preconditions.checkNotNull(articleId);
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
+
+    if (runtimeConfiguration.devModeArticleCaching()) {
+      byte[] transformed = cacheForDevMode(journalKey, articleId, xml);
+      html.write(transformed);
+      return;
+    }
 
     Transformer transformer = getTransformer(journalKey);
     log.debug("Starting XML transformation");

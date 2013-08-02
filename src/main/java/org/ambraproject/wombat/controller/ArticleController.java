@@ -59,7 +59,7 @@ public class ArticleController {
         throw new ArticleNotFoundException(articleId);
       }
       OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, CHARSET));
-      articleTransformService.transform(journal, articleXml, outputStream);
+      articleTransformService.transform(journal, articleId, articleXml, outputStream);
     } catch (Throwable t) {
       throw closer.rethrow(t);
     } finally {
@@ -74,7 +74,7 @@ public class ArticleController {
 
   @RequestMapping("/{journal}/article/comments")
   public String renderArticleComments(Model model, @PathVariable("journal") String journal,
-      @RequestParam("doi") String articleId) throws IOException {
+                                      @RequestParam("doi") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     model.addAttribute("article", articleMetadata);
     requestComments(model, articleId);
@@ -99,11 +99,10 @@ public class ArticleController {
   }
 
   /**
-   * Checks whether any corrections are associated with the given article, and appends
-   * them to the model if so.
+   * Checks whether any corrections are associated with the given article, and appends them to the model if so.
    *
    * @param model model to be passed to the view
-   * @param doi identifies the article
+   * @param doi   identifies the article
    * @throws IOException
    */
   private void requestCorrections(Model model, String doi) throws IOException {
@@ -114,11 +113,10 @@ public class ArticleController {
   }
 
   /**
-   * Checks whether any comments are associated with the given article, and appends
-   * them to the model if so.
+   * Checks whether any comments are associated with the given article, and appends them to the model if so.
    *
    * @param model model to be passed to the view
-   * @param doi identifies the article
+   * @param doi   identifies the article
    * @throws IOException
    */
   private void requestComments(Model model, String doi) throws IOException {

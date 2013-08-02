@@ -67,14 +67,14 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public ImmutableMap<String, Theme> themesForJournals(RuntimeConfiguration runtimeConfiguration,
-                                                       ThemeTree themeTree) {
-    return runtimeConfiguration.getThemesForJournals(themeTree);
+  public JournalThemeMap journalThemeMap(RuntimeConfiguration runtimeConfiguration,
+                                         ThemeTree themeTree) {
+    return new JournalThemeMap(runtimeConfiguration.getThemesForJournals(themeTree));
   }
 
   @Bean
-  public FreeMarkerConfig freeMarkerConfig(ImmutableMap<String, Theme> themesForJournals) throws IOException {
-    JournalTemplateLoader loader = new JournalTemplateLoader(themesForJournals);
+  public FreeMarkerConfig freeMarkerConfig(JournalThemeMap journalThemeMap) throws IOException {
+    JournalTemplateLoader loader = new JournalTemplateLoader(journalThemeMap);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
     return config;

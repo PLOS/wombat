@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.JournalThemeMap;
 import org.ambraproject.wombat.config.Theme;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +32,10 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final String TRANSFORM_TEMPLATE_PATH = TEMPLATE_ROOT_PATH + "article-transform.xsl";
 
   @Autowired
-  private ImmutableMap<String, Theme> themesForJournals;
-  @Autowired
   private RuntimeConfiguration runtimeConfiguration;
+
+  @Autowired
+  private JournalThemeMap journalThemeMap;
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
@@ -107,7 +109,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @throws IOException
    */
   private Transformer buildTransformer(String journal) throws IOException {
-    Theme theme = themesForJournals.get(journal);
+    Theme theme = journalThemeMap.getTheme(journal);
     if (theme == null) {
       throw new UnmatchedJournalException(journal);
     }

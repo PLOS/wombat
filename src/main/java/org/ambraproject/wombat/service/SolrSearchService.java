@@ -36,7 +36,8 @@ public class SolrSearchService extends JsonService implements SearchService {
   /**
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
-  private static final String FL = "id,publication_date,title,cross_published_journal_name,author_display,article_type";
+  private static final String FL = "id,publication_date,title,cross_published_journal_name,author_display,article_type,"
+      + "counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,alm_facebookCount";
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
@@ -69,7 +70,7 @@ public class SolrSearchService extends JsonService implements SearchService {
     params.add(new BasicNameValuePair("sort", "score desc,publication_date desc,id desc"));
     URI uri;
     try {
-      uri = new URL(runtimeConfiguration.getSolrServer(), "select?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+      uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException e) {
       throw new IllegalArgumentException(e);
     } catch (URISyntaxException e) {

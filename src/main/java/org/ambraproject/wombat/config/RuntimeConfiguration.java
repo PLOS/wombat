@@ -51,7 +51,7 @@ public class RuntimeConfiguration {
     if (Strings.isNullOrEmpty(solrServer)) {
 
       // Assume a local dev instance running on the standard port.
-      solrServer = "http://localhost:8983/solr/";
+      solrServer = "http://localhost:8983/solr/select/";
     }
     try {
       new URL(solrServer);

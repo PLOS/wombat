@@ -79,8 +79,14 @@
               | ${doc.cross_published_journal_name[0]}<br/>
               ${doc.id}<br/>
 
-              <#-- TODO  -->
-              <a>Views: 3,233</a> | <a>Citations: Yes</a> | <a>Bookmarks: None</a>
+              <#assign views = doc.counter_total_all!0 />
+              <#assign citations = doc.alm_scopusCiteCount!0 />
+              <#assign saves = doc.alm_citeulikeCount!0 + doc.alm_mendeleyCount!0 />
+              <#assign shares = doc.alm_twitterCount!0 + doc.alm_facebookCount!0 />
+              <a>Views: ${views}</a> |
+              <a>Citations: ${(citations > 0)?string("Yes", "none")}</a> |
+              <a>Saves: ${(saves > 0)?string("Yes", "none")}</a> |
+              <a>Shares: ${(shares > 0)?string("Yes", "none")}</a>
             </p>
             <!--end full citation-->
 

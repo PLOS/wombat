@@ -3,6 +3,24 @@
 var AmbraNavigation = function () {
   var self = this;
 
+  function buildAccordionItem($section) {
+    var $accordionItem = $('<li/>').addClass('accordion-item');
+
+    var $accordionContent = $('<section/>').addClass('accordion-content');
+    var $sectionTitle = $section.find('h2');
+    if ($sectionTitle.size() > 0) {
+      $accordionContent.append($section.find(':not(h2)'));
+    } else {
+      $accordionContent.append($section.find(':not(h3)'));
+      $sectionTitle = $section.find('h3');
+    }
+
+    var $accordionTitle = $('<a/>').addClass('expander').text($sectionTitle.text());
+    $accordionItem.append($accordionTitle);
+    $accordionItem.append($accordionContent);
+    return $accordionItem;
+  }
+
   /**
    * Modify the page structure by setting up accordion sections.
    */
@@ -10,20 +28,17 @@ var AmbraNavigation = function () {
     var $articleText = $('#articleText');
     var $accordionList = $('<ul/>').addClass('main-accordion').addClass('accordion');
 
-    var $sections = $('.section'); // TODO: Include '.abstract, .articleinfo' (require special handling)
+    // Build a section combining 'abstract' and 'articleinfo'
+    // These are two HTML sections in the transformed HTML, but we want them to be in one accordion item
+    var $frontMatter = $('<div/>').addClass('section');
+    $frontMatter.append($articleText.find('.abstract'));
+    $frontMatter.append($articleText.find('.articleinfo'));
+    $accordionList.append(buildAccordionItem($frontMatter));
+
+    // Make an accordion item out of each regular article section
+    var $sections = $articleText.find('.section');
     $sections.each(function (index) {
-      var $section = $(this);
-      var $accordionItem = $('<li/>').addClass('accordion-item');
-
-      var $sectionTitle = $section.find('h3');
-      var $accordionTitle = $('<a/>').addClass('expander').text($sectionTitle.text());
-      $accordionItem.append($accordionTitle);
-
-      var $accordionContent = $('<section/>').addClass('accordion-content');
-      $accordionContent.append($section.find(':not(h3)'));
-      $accordionItem.append($accordionContent);
-
-      $accordionList.append($accordionItem);
+      $accordionList.append(buildAccordionItem($(this)));
     });
 
     $articleText.html($accordionList);

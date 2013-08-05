@@ -4,18 +4,30 @@ var AmbraNavigation = function () {
   var self = this;
 
   function buildAccordionItem($section) {
-    var $accordionItem = $('<li/>').addClass('accordion-item');
+    // Find the title element from within the section
+    var titleHtml = '';
+    var $sectionTitle = null;
+    $.each(['h1', 'h2', 'h3', 'h4', 'h5'], function (index, headlineType) {
+      if (!$sectionTitle) {
+        var $headline = $section.find(headlineType);
+        if ($headline.size() > 0) {
+          // Generally expect $headline.size() == 1, but default to using the first
+          $sectionTitle = $($headline[0]);
+        }
+      }
+    });
 
-    var $accordionContent = $('<section/>').addClass('accordion-content');
-    var $sectionTitle = $section.find('h2');
-    if ($sectionTitle.size() > 0) {
-      $accordionContent.append($section.find(':not(h2)'));
-    } else {
-      $accordionContent.append($section.find(':not(h3)'));
-      $sectionTitle = $section.find('h3');
+    // Remove the title element
+    if ($sectionTitle) {
+      titleHtml = $sectionTitle.html();
+      $sectionTitle.remove();
     }
 
-    var $accordionTitle = $('<a/>').addClass('expander').text($sectionTitle.text());
+    // Build the accordion item
+    var $accordionTitle = $('<a/>').addClass('expander').text(titleHtml);
+    var $accordionContent = $('<section/>').addClass('accordion-content');
+    $accordionContent.append($section); // The title was removed; use what remains as the body
+    var $accordionItem = $('<li/>').addClass('accordion-item');
     $accordionItem.append($accordionTitle);
     $accordionItem.append($accordionContent);
     return $accordionItem;

@@ -50,7 +50,7 @@ var AmbraNavigation = function () {
     }
 
     // Make an accordion item out of each regular article section
-    var $sections = $articleText.find('.section');
+    var $sections = $articleText.find('div.section, div.acknowledgments, div.contributions, div.references');
     $sections.each(function (index) {
       $accordionList.append(buildAccordionItem($(this)));
     });

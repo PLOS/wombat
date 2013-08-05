@@ -5,9 +5,9 @@
 <!--[if IE 9]><html class="no-js ie9"><![endif]-->
 <!--[if gt IE 9]><html class="no-js"><!--<![endif]-->
 
-<head>
-<#include "articleHead.ftl" />
-</head>
+<#assign title = article.title />
+<#assign depth = 0 />
+<#include "../common/head.ftl" />
 
 <body>
 

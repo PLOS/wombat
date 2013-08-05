@@ -132,10 +132,7 @@ var AmbraNavigation = function () {
     if (isExpanded) { //collapse this accordion
       $accordionListItem.removeClass('expanded');
       $accordionListItem.children('.accordion-content').slideUp(500);
-    } else { //collapse any open accordions and show this one
-      var $expandedMenus = $accordionList.children('li.expanded');
-      $expandedMenus.removeClass('expanded');
-      $expandedMenus.children('.accordion-content').slideUp(500);
+    } else { //show this accordion
       $accordionListItem.addClass('expanded');
       $accordionListItem.children('.accordion-content').slideDown(500);
     }

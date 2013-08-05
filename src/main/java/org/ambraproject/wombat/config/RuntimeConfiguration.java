@@ -27,6 +27,7 @@ public class RuntimeConfiguration {
 
   // Fields are immutable by convention. They should be modified only during deserialization.
   private String server;
+  private String solrServer;
   private Boolean trustUnsignedServer;
   private List<Map<String, ?>> themes;
   private List<Map<String, ?>> journals;
@@ -45,6 +46,17 @@ public class RuntimeConfiguration {
       new URL(server);
     } catch (MalformedURLException e) {
       throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
+    }
+    solrServer = this.solrServer;
+    if (Strings.isNullOrEmpty(solrServer)) {
+
+      // Assume a local dev instance running on the standard port.
+      solrServer = "http://localhost:8983/solr/";
+    }
+    try {
+      new URL(solrServer);
+    } catch (MalformedURLException e) {
+      throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
     }
   }
 
@@ -66,6 +78,19 @@ public class RuntimeConfiguration {
   public URL getServer() {
     try {
       return new URL(server);
+    } catch (MalformedURLException e) {
+      throw new IllegalStateException("Invalid URL should have been caught at validation", e);
+    }
+  }
+
+  /**
+   * Get the URL of the solr search server.
+   *
+   * @return the URL
+   */
+  public URL getSolrServer() {
+    try {
+      return new URL(solrServer);
     } catch (MalformedURLException e) {
       throw new IllegalStateException("Invalid URL should have been caught at validation", e);
     }

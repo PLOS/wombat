@@ -60,36 +60,12 @@ var AmbraNavigation = function () {
 
   self.executeSearch = function () {
     var searchVal = self.$searchExpanded.find('#search-input').val();
-    $.ajax(SOLR_SERVER, {
-      type: 'GET',
-      dataType: 'jsonp',
-      data: {
+    searchVal = encodeURIComponent(searchVal);
+    var currentPage = document.location.href;
 
-        // TODO: escape/quote the q param appropriately
-        'q': 'everything:' + searchVal,
-        'wt': 'json',
-        'fl': 'id,publication_date,title,cross_published_journal_name,author_display,article_type',
-        'fq': 'doc_type:full',
-        'fq': '!article_type_facet:"Issue Image"',
-
-        // TODO: paging
-        'rows': 25,
-
-        // These two improve solr performance greatly.
-        'hl': 'false',
-        'facet': 'false'
-
-      },
-      jsonp: 'json.wrf',
-      success: function (data) {
-
-        // TODO
-        console.log(data);
-      },
-      error: function (xOptions, textStatus) {
-        console.log(textStatus);
-      }
-    });
+    // TODO: consider if this is the best way to preserve the journal-specific path.
+    // This won't work for non-PLOS journals, for instance.
+    document.location.href = currentPage.replace(/(.+\/Plos\w+\/)(.*)/, '$1search?q=' + searchVal);
   }
 
   self.toggleMainMenu = function () {

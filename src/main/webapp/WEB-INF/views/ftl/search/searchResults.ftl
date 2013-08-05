@@ -4,31 +4,10 @@
 <!--[if IE 8]>     <html class="no-js lt-ie9"> <![endif]-->
 <!--[if IE 9]>     <html class="no-js ie9"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style type='text/css'>
-  @-ms-viewport { width: device-width; }
-  @-o-viewport { width: device-width; }
-  @viewport { width: device-width; }
-  </style>
-  
-  <title>PLOS - Results</title>
 
-  <#-- TODO: move all of this into a common header  -->
-  <link rel="stylesheet" href="static/css/base.css">
-  <link rel="stylesheet" href="static/css/interface.css">
-  <link rel="stylesheet" href="static/css/mobile.css">
-  <#include "../cssLinks.ftl" />
-
-  <script src="static/js/vendor/modernizr.custom.25437.js"></script>
-  <script src="static/js/vendor/respond.min.js"></script>
-
-  <#-- Custom FreeMarker directives  -->
-  <#assign formatJsonDate = "org.ambraproject.wombat.util.Iso8601DateDirective"?new()>
-
-</head>
+<#assign title = "PLOS - Results" />
+<#assign depth = 0 />
+<#include "../common/head.ftl" />
 
 <body id="page-results" class="plosone">
   

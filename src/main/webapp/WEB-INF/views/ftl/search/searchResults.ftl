@@ -126,16 +126,7 @@
           </article>
         </#list>
       </section>
-
-      <nav class="article-menu-bottom small">
-        <a class="btn-lg">PLOS Journals</a>
-        <a class="btn-lg med">PLOS Blogs</a>
-        <div class="btn-top-container">
-          <span class="btn-text">Back to Top</span>
-          <a class="btn">Back to Top</a>
-        </div>
-      </nav>
-
+      <#include "../common/bottomMenu/bottomMenu.ftl" />
     </div>
     <!--end content-->
 

@@ -130,43 +130,7 @@
     </div>
     <!--end content-->
 
-    <footer id="common-footer" class="footer">
-      <nav class="footer-menu">
-        <ul>
-          <li>
-            <a class="coloration-light-text">About Us</a>
-          </li>
-          <li>
-            <a class="coloration-light-text">Full Site</a>
-          </li>
-          <li>
-            <a class="coloration-light-text">Feedback</a>
-          </li>
-        </ul>
-      </nav>
-
-      <p class="footer-credits">
-        <a class="bold">Ambra 2.4.2</a> Managed Colocation provided by <br/><a class="bold">Internet Systems Consortium.</a>
-      </p>
-
-      <nav class="footer-secondary-menu">
-        <ul>
-          <li>
-            <a>Privacy Policy</a>
-          </li>
-          <li>
-            <a>Terms of Use</a>
-          </li>
-          <li>
-            <a>Advertise</a>
-          </li>
-          <li>
-            <a>Media Inquiries</a>
-          </li>
-        </ul>
-      </nav>
-
-    </footer>
+    <#include "../common/footer/footer.ftl" />
     
     <section id="article-info-window" class="modal-info-window">
       
@@ -188,75 +152,7 @@
   </div>
   <!--end container main-->
 
-
-  
-  <div id="common-menu-container" class="full-menu-container coloration-border-top">
-    <nav class="full-menu">
-      <ul class="primary accordion">
-        <li class="accordion-item">
-          <a class="expander">
-            <span class="arrow">Expand</span>
-            For Authors
-          </a>
-          <ul class="secondary accordion-content">
-            <li>
-              <a class="btn-lg">Why Publish with PLOS ONE</a>
-            </li>
-            <li>
-              <a class="btn-lg">Publication Criteria</a>
-            </li>
-            <li>
-              <a class="btn-lg">Editorial Policies</a>
-            </li>
-            <li>
-              <a class="btn-lg">Manuscript Guidelines</a>
-            </li>
-            <li>
-              <a class="btn-lg">Figure and Table Guidelines</a>
-            </li>
-            <li>
-              <a class="btn-lg">Supporting Information<br/>Guidelines lorem ipsum</a>
-            </li>
-            <li>
-              <a class="btn-lg">Submitting a Manuscript</a>
-            </li>
-          </ul>
-        </li>
-        <li class="accordion-item">
-          <a class="expander">
-            <span class="arrow">Expand</span>
-            About Us
-          </a>
-          <p class="accordion-content secondary">[TEMP - CONTENT]</p>
-        </li>
-        <li class="accordion-item">
-          <a class="expander">
-            <span class="arrow">Expand</span>
-            Create an Account
-          </a>
-          <p class="accordion-content secondary">[TEMP - CONTENT]</p>
-        </li>
-        <li class="accordion-item">
-          <a class="expander">
-            <span class="arrow">Expand</span>
-            Sign In
-          </a>
-          <p class="accordion-content secondary">[TEMP - CONTENT]</p>
-        </li>
-      </ul>
-    </nav> 
-
-    <div id="submit-manuscript-container" class="full-menu-tout">
-      <h4 class="coloration-light-text">Submit Your Manuscript</h4>
-      <ul class="std">
-        <li>Fair, rigorous peer review</li>
-        <li>Broad scope and wide reach</li>
-      </ul>
-      <div><a class="rounded coloration-white-on-color">get started</a></div>
-    </div>
-  </div>
-  <!--end full menu container-->
-
+  <#include "../common/fullMenu/fullMenu.ftl" />
   <#include "../common/bodyJs.ftl" />
 </body>
 </html>

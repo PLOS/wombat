@@ -99,7 +99,7 @@
             <h2 class="article-title">${doc.title}</h2>
 
             <p class="author-list">
-              <#list doc.author_display as author>
+              <#list doc.author_display![] as author>
                 <a class="author-info" data-author-id="1">${author}</a><#if author_has_next>,</#if>
               </#list>
             </p>

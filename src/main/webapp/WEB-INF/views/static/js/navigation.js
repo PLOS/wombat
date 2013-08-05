@@ -30,10 +30,12 @@ var AmbraNavigation = function () {
 
     // Build a section combining 'abstract' and 'articleinfo'
     // These are two HTML sections in the transformed HTML, but we want them to be in one accordion item
-    var $frontMatter = $('<div/>').addClass('section');
-    $frontMatter.append($articleText.find('.abstract'));
-    $frontMatter.append($articleText.find('.articleinfo'));
-    $accordionList.append(buildAccordionItem($frontMatter));
+    var $frontMatter = $();
+    $.merge($frontMatter, $articleText.find('.abstract'));
+    $.merge($frontMatter, $articleText.find('.articleinfo'));
+    if ($frontMatter.size() > 0) {
+      $accordionList.append(buildAccordionItem($frontMatter));
+    }
 
     // Make an accordion item out of each regular article section
     var $sections = $articleText.find('.section');

@@ -1,11 +1,10 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.JournalThemeMap;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Theme;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,10 +31,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final String TRANSFORM_TEMPLATE_PATH = TEMPLATE_ROOT_PATH + "article-transform.xsl";
 
   @Autowired
-  private RuntimeConfiguration runtimeConfiguration;
-
-  @Autowired
   private JournalThemeMap journalThemeMap;
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
@@ -169,7 +167,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    */
   private byte[] cacheForDevMode(String journalKey, String articleId, InputStream xml)
       throws IOException, TransformerException {
-    Preconditions.checkState(runtimeConfiguration.isDevMode());
+    Preconditions.checkState(runtimeConfiguration.devModeArticleCaching());
     if (devModeCache == null) {
       devModeCache = Maps.newHashMap();
     }
@@ -197,7 +195,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
 
-    if (runtimeConfiguration.isDevMode()) {
+    if (runtimeConfiguration.devModeArticleCaching()) {
       byte[] transformed = cacheForDevMode(journalKey, articleId, xml);
       html.write(transformed);
       return;

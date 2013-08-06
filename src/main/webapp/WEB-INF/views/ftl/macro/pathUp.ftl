@@ -2,10 +2,6 @@
   <#if steps == 0 > <#-- Without this check, 1..steps is [1, 0], not an empty list. -->
   "${path}"
   <#else>
-    <#assign relativePath = path />
-    <#list 1..steps as i>
-      <#assign relativePath = "../" + relativePath />
-    </#list>
-  "${relativePath}"
+  "<#list 1..steps as i>../</#list>${path}" <#-- Don't insert whitespace -->
   </#if>
 </#macro>

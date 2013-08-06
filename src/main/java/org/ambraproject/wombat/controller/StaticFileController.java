@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,13 +26,14 @@ public class StaticFileController {
 
   @RequestMapping("/{journal}/static/**")
   public void serveStaticContent(HttpServletRequest request, HttpServletResponse response,
-                                 @PathVariable("journal") String journal)
+      HttpSession session, @PathVariable("journal") String journal)
       throws IOException {
     Theme theme = journalThemeMap.getTheme(journal);
 
     // Kludge to get "static/**"
     String servletPath = request.getServletPath();
     String filePath = servletPath.substring(journal.length() + 2);
+    response.setContentType(session.getServletContext().getMimeType(servletPath));
 
     Closer closer = Closer.create();
     try {

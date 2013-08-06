@@ -16,29 +16,31 @@
     <#include "../common/header.ftl" />
 
     <div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
-      <div class="filter-option date">
-        <h5>Filter by date</h5>
-        <select>
-          <option value="all-time">All Time</option>
-          <option value="option-2">Option 2</option>
-          <option value="option-3">Option 3</option>
-        </select>
-      </div>
+      <form id="sortAndFilterSearchResults" target="/${currentJournal}/search" method="get">
+        <input type="hidden" name="q" value="${currentQuery}" />
+        <div class="filter-option date">
+          <h5>Filter by date</h5>
+          <select name="dateFilter">
+            <option value="all-time">All Time</option>
+            <option value="option-2">Option 2</option>
+            <option value="option-3">Option 3</option>
+          </select>
+        </div>
 
-      <div class="filter-option sort">
-        <h5>Sort by</h5>
-        <select>
-          <option value="relevance">Relevance</option>
-          <option value="option-2">Option 2</option>
-          <option value="option-3">Option 3</option>
-        </select>
-      </div>
+        <div class="filter-option sort">
+          <h5>Sort by</h5>
+          <select name="sortOrder">
+          <#list sortOrders as sortOrder>
+            <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)> selected="selected"</#if>>${sortOrder.description}</option>
+          </#list>
+          </select>
+        </div>
 
-      <div class="filter-application">
-        <button class="rounded cancel">cancel</button>
-        <button class="rounded apply">apply</button>
-      </div>
-
+        <div class="filter-application">
+          <button class="rounded cancel">cancel</button>
+          <button class="rounded apply">apply</button>
+        </div>
+      </form>
     </div>
     <!--end filter-box-->
 

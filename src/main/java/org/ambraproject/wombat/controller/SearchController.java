@@ -13,7 +13,9 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Strings;
 import org.ambraproject.wombat.service.SearchService;
+import org.ambraproject.wombat.service.SolrSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,17 +35,29 @@ public class SearchController {
   private SearchService searchService;
 
   @RequestMapping("/{journal}/search")
-  public String search(Model model, @PathVariable("journal") String journal, @RequestParam("q") String query)
-      throws IOException {
+  public String search(Model model, @PathVariable("journal") String journal, @RequestParam("q") String query,
+      @RequestParam(value = "sortOrder", required = false) String sortOrderParam) throws IOException {
 
     // TODO: paging.  Initialize these from params.
     int start = 1;
     int rows = 25;
 
-    // TODO: sort order.
+    SolrSearchService.SolrSortOrder sortOrder = SolrSearchService.SolrSortOrder.RELEVANCE;
+    if (!Strings.isNullOrEmpty(sortOrderParam)) {
+      sortOrder = SolrSearchService.SolrSortOrder.valueOf(sortOrderParam);
+    }
+
+    model.addAttribute("currentJournal", journal);
+    model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
+
+    // TODO: bind sticky form params using Spring MVC support for Freemarker.  I think we have to add
+    // some more dependencies to do this.  See
+    // http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/view.html#view-velocity
+    model.addAttribute("selectedSortOrder", sortOrder);
+    model.addAttribute("currentQuery", query);
 
     // TODO: consider using an enum for possible journal values, and validating here.
-    model.addAttribute("searchResults", searchService.simpleSearch(query, journal, start, rows));
+    model.addAttribute("searchResults", searchService.simpleSearch(query, journal, start, rows, sortOrder));
     return journal + "/ftl/search/searchResults";
   }
 }

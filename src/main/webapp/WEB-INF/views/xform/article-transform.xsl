@@ -775,7 +775,7 @@
 
   <!-- Ambra modifications -->
   <xsl:template match="ref-list" name="ref-list">
-    <div>
+    <div class="references">
       <xsl:choose>
         <xsl:when test="not(title)">
           <a id="refs" name="refs" toc="refs" title="References"/>
@@ -2522,7 +2522,7 @@
       <hr class="section-rule"/>
     </xsl:if>
     <xsl:call-template name="newline1"/>
-    <div>
+    <div class="acknowledgments">
       <xsl:call-template name="assign-id"/>
       <xsl:if test="not(title)">
         <a id="ack" name="ack" toc="ack" title="Acknowledgments"/>

@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Charsets;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -29,16 +28,15 @@ import java.util.Map;
 @Controller
 public class ArticleController {
 
-  private static final Charset CHARSET = Charsets.UTF_8;
-
   /**
    * Number of bytes we use to buffer responses from the SOA layer.
    */
   private static final int BUFFER_SIZE = 0x8000;
 
   @Autowired
+  private Charset charset;
+  @Autowired
   private SoaService soaService;
-
   @Autowired
   private ArticleTransformService articleTransformService;
 
@@ -58,7 +56,7 @@ public class ArticleController {
       } catch (EntityNotFoundException enfe) {
         throw new ArticleNotFoundException(articleId);
       }
-      OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, CHARSET));
+      OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, charset));
       articleTransformService.transform(journal, articleId, articleXml, outputStream);
     } catch (Throwable t) {
       throw closer.rethrow(t);

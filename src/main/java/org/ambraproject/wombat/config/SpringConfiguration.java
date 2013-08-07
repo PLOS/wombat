@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableMap;
+import com.google.common.base.Charsets;
 import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.Charset;
 import java.util.Date;
 
 @Configuration
@@ -81,8 +82,14 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public FreeMarkerViewResolver viewResolver() {
+  public Charset charset() {
+    return Charsets.UTF_8;
+  }
+
+  @Bean
+  public FreeMarkerViewResolver viewResolver(Charset charset) {
     FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+    resolver.setContentType("text/html;charset=" + charset);
     resolver.setCache(true);
     resolver.setPrefix("");
     resolver.setSuffix(".ftl");

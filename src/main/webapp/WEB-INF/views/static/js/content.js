@@ -341,15 +341,9 @@ var SiteContent = function () {
 
     switch (filterFunction) {
       case 'date-and-sort':
-        var dateVal = $filterBox.find('.date select').val();
-        var sortVal = $filterBox.find('.sort select').val();
         self.toggleFilterButton($filterButton); //closes the filter box
         break;
     }
-
-    var $searchForm = $('#sortAndFilterSearchResults');
-    $searchForm.sortOrder.value = sortVal;
-    $searchForm.submit();
   }
 
   self.resetFilterBox = function ($filterBox) {

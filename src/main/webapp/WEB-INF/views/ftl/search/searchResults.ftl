@@ -37,8 +37,8 @@
         </div>
 
         <div class="filter-application">
-          <button class="rounded cancel">cancel</button>
-          <button class="rounded apply">apply</button>
+          <button class="rounded cancel" type="reset">cancel</button>
+          <button class="rounded apply" type="submit">apply</button>
         </div>
       </form>
     </div>

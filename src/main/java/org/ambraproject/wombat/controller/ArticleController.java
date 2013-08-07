@@ -29,9 +29,9 @@ import java.util.Map;
 public class ArticleController {
 
   /**
-   * Number of bytes we use to buffer responses from the SOA layer.
+   * Initial size (in bytes) of buffer that holds transformed article HTML before passing it to the model.
    */
-  private static final int BUFFER_SIZE = 0x8000;
+  private static final int XFORM_BUFFER_SIZE = 0x8000;
 
   @Autowired
   private Charset charset;
@@ -47,7 +47,10 @@ public class ArticleController {
       throws IOException {
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    StringWriter articleHtml = new StringWriter(BUFFER_SIZE);
+
+    // Can't stream into a FreeMarker template, so transform the whole article into memory
+    StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+
     Closer closer = Closer.create();
     try {
       InputStream articleXml;

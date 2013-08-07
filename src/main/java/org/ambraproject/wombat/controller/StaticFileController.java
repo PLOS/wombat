@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.JournalThemeMap;
 import org.ambraproject.wombat.config.Theme;
@@ -26,7 +25,7 @@ public class StaticFileController {
 
   @RequestMapping("/{journal}/static/**")
   public void serveStaticContent(HttpServletRequest request, HttpServletResponse response,
-      HttpSession session, @PathVariable("journal") String journal)
+                                 HttpSession session, @PathVariable("journal") String journal)
       throws IOException {
     Theme theme = journalThemeMap.getTheme(journal);
 

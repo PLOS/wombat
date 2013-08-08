@@ -24,16 +24,6 @@ public interface SoaService {
   public abstract InputStream requestStream(String address) throws IOException;
 
   /**
-   * Send a REST request and dump the response to a string.
-   *
-   * @param address the path to which to send the REST request
-   * @return the response as a string
-   * @throws IOException          if there is an error connecting to the server
-   * @throws NullPointerException if the address is null
-   */
-  public abstract String requestString(String address) throws IOException;
-
-  /**
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
    * org.ambraproject.wombat.config.SpringConfiguration#gson()} bean.
    *

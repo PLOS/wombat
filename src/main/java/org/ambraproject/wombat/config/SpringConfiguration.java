@@ -8,8 +8,10 @@ import com.google.gson.JsonSyntaxException;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
+import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SoaServiceImpl;
+import org.ambraproject.wombat.service.SolrSearchService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
@@ -104,5 +106,10 @@ public class SpringConfiguration {
   @Bean
   public ArticleTransformService articleTransformService() {
     return new ArticleTransformServiceImpl();
+  }
+
+  @Bean
+  public SearchService searchService() {
+    return new SolrSearchService();
   }
 }

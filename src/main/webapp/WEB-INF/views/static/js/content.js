@@ -316,7 +316,6 @@ var SiteContent = function () {
 
       $filterButton.removeClass('active');
       $filterBox.removeClass('active');
-      self.resetFilterBox($filterBox);
 
     } else { //show filter box and add active state. Enable cancel and apply
 
@@ -342,17 +341,9 @@ var SiteContent = function () {
 
     switch (filterFunction) {
       case 'date-and-sort':
-        var dateVal = $filterBox.find('.date select').val();
-        var sortVal = $filterBox.find('.sort select').val();
-
-        //PL-INT - if you use this function, filter logic should go here.
-
         self.toggleFilterButton($filterButton); //closes the filter box
         break;
     }
-
-    self.resetFilterBox($filterBox); //in all cases, reset the dropdowns after a selection is made
-
   }
 
   self.resetFilterBox = function ($filterBox) {

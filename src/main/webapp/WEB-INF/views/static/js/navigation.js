@@ -1,5 +1,7 @@
 // Navigation - Contains javascript needed for searching and navigating through the site
 
+var SOLR_SERVER = 'http://api.plos.org/search';
+
 var AmbraNavigation = function () {
   var self = this;
 
@@ -107,7 +109,7 @@ var AmbraNavigation = function () {
     } else { //activate search box
       self.$searchButton.addClass('active');
       self.$searchExpanded.addClass('active');
-      self.$searchExpanded.find('#search-execute').one('click', function (e) {
+      self.$searchExpanded.find('#search-input').one('change', function (e) {
         self.executeSearch();
       });
       self.$searchExpanded.find('#search-cancel').one('click', function (e) { //trigger the toggle and remove the listener
@@ -118,7 +120,12 @@ var AmbraNavigation = function () {
 
   self.executeSearch = function () {
     var searchVal = self.$searchExpanded.find('#search-input').val();
-    //PL-INT - implement search functionality here, using searchVal as the data entered into search field
+    searchVal = encodeURIComponent(searchVal);
+    var currentPage = document.location.href;
+
+    // TODO: consider if this is the best way to preserve the journal-specific path.
+    // This won't work for non-PLOS journals, for instance.
+    document.location.href = currentPage.replace(/(.+\/Plos\w+\/)(.*)/, '$1search?q=' + searchVal);
   }
 
   self.toggleMainMenu = function () {

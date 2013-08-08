@@ -5,9 +5,10 @@
 <!--[if IE 9]>     <html class="no-js ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->
 <html class="no-js"> <!--<![endif]-->
-<head>
-<#include "../common/articleHead.ftl" />
-</head>
+
+<#assign title = "PLOS - Comments" />
+<#assign depth = 1 />
+<#include "../common/head.ftl" />
 
 <body id="page-comments">
 <div id="container-main">
@@ -45,63 +46,16 @@
     </#list>
     </section>
 
-    <nav class="article-menu-bottom small">
-      <a class="btn-lg">PLOS Journals</a>
-      <a class="btn-lg med">PLOS Blogs</a>
-
-      <div class="btn-top-container">
-        <span class="btn-text">Back to Top</span>
-        <a class="btn">Back to Top</a>
-      </div>
-    </nav>
+    <#include "../common/bottomMenu/bottomMenu.ftl" />
 
   </div>
   <!--end content-->
 
-  <footer id="common-footer" class="footer">
-    <nav class="footer-menu">
-      <ul>
-        <li>
-          <a class="coloration-light-text">About Us</a>
-        </li>
-        <li>
-          <a class="coloration-light-text">Full Site</a>
-        </li>
-        <li>
-          <a class="coloration-light-text">Feedback</a>
-        </li>
-      </ul>
-    </nav>
-
-    <p class="footer-credits">
-      <a class="bold">Ambra 2.4.2</a> Managed Colocation provided by <br/><a class="bold">Internet Systems
-      Consortium.</a>
-    </p>
-
-    <nav class="footer-secondary-menu">
-      <ul>
-        <li>
-          <a>Privacy Policy</a>
-        </li>
-        <li>
-          <a>Terms of Use</a>
-        </li>
-        <li>
-          <a>Advertise</a>
-        </li>
-        <li>
-          <a>Media Inquiries</a>
-        </li>
-      </ul>
-    </nav>
-  </footer>
+  <#include "../common/footer/footer.ftl" />
 
 </div>
 <!--end container main-->
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-<script src="js/navigation.js"></script>
-<script src="js/content.js"></script>
+<#include "../common/bodyJs.ftl" />
 </body>
 </html>

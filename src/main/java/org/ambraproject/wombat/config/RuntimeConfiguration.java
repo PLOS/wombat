@@ -47,16 +47,12 @@ public class RuntimeConfiguration {
     } catch (MalformedURLException e) {
       throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
     }
-    solrServer = this.solrServer;
-    if (Strings.isNullOrEmpty(solrServer)) {
-
-      // Assume a local dev instance running on the standard port.
-      solrServer = "http://localhost:8983/solr/select/";
-    }
-    try {
-      new URL(solrServer);
-    } catch (MalformedURLException e) {
-      throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
+    if (!Strings.isNullOrEmpty(solrServer)) {
+      try {
+        new URL(solrServer);
+      } catch (MalformedURLException e) {
+        throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
+      }
     }
   }
 
@@ -89,8 +85,12 @@ public class RuntimeConfiguration {
    * @return the URL
    */
   public URL getSolrServer() {
+    String server = solrServer;
+    if (Strings.isNullOrEmpty(server)) {
+      server = "http://localhost:8983/solr/select/";
+    }
     try {
-      return new URL(solrServer);
+      return new URL(server);
     } catch (MalformedURLException e) {
       throw new IllegalStateException("Invalid URL should have been caught at validation", e);
     }

@@ -5,7 +5,67 @@ var SOLR_SERVER = 'http://api.plos.org/search';
 var AmbraNavigation = function () {
   var self = this;
 
+  function buildAccordionItem($section) {
+    // Find the title element from within the section
+    var titleHtml = '';
+    var $sectionTitle = null;
+    $.each(['h1', 'h2', 'h3', 'h4', 'h5'], function (index, headlineType) {
+      if (!$sectionTitle) {
+        var $headline = $section.find(headlineType);
+        if ($headline.size() > 0) {
+          // Generally expect $headline.size() == 1, but default to using the first
+          $sectionTitle = $($headline[0]);
+        }
+      }
+    });
+
+    // Remove the title element
+    if ($sectionTitle) {
+      titleHtml = $sectionTitle.html();
+      $sectionTitle.remove();
+    }
+
+    // Build the accordion item
+    var $accordionTitle = $('<a/>').addClass('expander').text(titleHtml);
+    var $accordionContent = $('<section/>').addClass('accordion-content');
+    $accordionContent.append($section); // The title was removed; use what remains as the body
+    var $accordionItem = $('<li/>').addClass('accordion-item');
+    $accordionItem.append($accordionTitle);
+    $accordionItem.append($accordionContent);
+    return $accordionItem;
+  }
+
+  /**
+   * Modify the page structure by setting up accordion sections.
+   */
+  self.build = function () {
+    var $articleText = $('#articleText');
+    var $accordionList = $('<ul/>').addClass('main-accordion').addClass('accordion');
+
+    // Build a section combining 'abstract' and 'articleinfo'
+    // These are two HTML sections in the transformed HTML, but we want them to be in one accordion item
+    var $frontMatter = $();
+    $.merge($frontMatter, $articleText.find('.abstract'));
+    $.merge($frontMatter, $articleText.find('.articleinfo'));
+    if ($frontMatter.size() > 0) {
+      $accordionList.append(buildAccordionItem($frontMatter));
+    }
+
+    // Make an accordion item out of each regular article section
+    var $sections = $articleText.find('div.section, div.acknowledgments, div.contributions, div.references');
+    $sections.each(function (index) {
+      $accordionList.append(buildAccordionItem($(this)));
+    });
+
+    $articleText.html($accordionList);
+  }
+
+  /**
+   * Initialize page elements.
+   */
   self.init = function () {
+    self.build();
+
     //globals
     self.$searchExpanded = $('.search-expanded');
     self.$searchButton = $('.site-search-button');
@@ -108,10 +168,7 @@ var AmbraNavigation = function () {
     if (isExpanded) { //collapse this accordion
       $accordionListItem.removeClass('expanded');
       $accordionListItem.children('.accordion-content').slideUp(500);
-    } else { //collapse any open accordions and show this one
-      var $expandedMenus = $accordionList.children('li.expanded');
-      $expandedMenus.removeClass('expanded');
-      $expandedMenus.children('.accordion-content').slideUp(500);
+    } else { //show this accordion
       $accordionListItem.addClass('expanded');
       $accordionListItem.children('.accordion-content').slideDown(500);
     }

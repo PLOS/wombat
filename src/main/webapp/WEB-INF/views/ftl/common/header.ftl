@@ -1,12 +1,14 @@
 <header id="common-header">
   <div class="search-expanded">
     <div class="search-form-container coloration-bg">
-      <input id="search-input" type="text" class="search-field" placeholder="Search articles...">
+      <form id="simpleSearchForm" action="search" method="get">
+        <input name="q" id="search-input" type="text" class="search-field" placeholder="Search articles...">
 
-      <div class="search-buttons">
-        <button id="search-cancel" class="rounded">cancel</button>
-        <button id="search-execute" class="rounded">search</button>
-      </div>
+        <div class="search-buttons">
+          <button id="search-cancel" class="rounded" type="reset">cancel</button>
+          <button id="search-execute" class="rounded" type="submit">search</button>
+        </div>
+      </form>
     </div>
   </div>
   <div id="site-header-container" class="coloration-border-top">

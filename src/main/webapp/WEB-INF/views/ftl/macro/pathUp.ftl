@@ -17,10 +17,5 @@
     <link rel="stylesheet" href="static/css/interface.css">
 
   -->
-<#macro pathUp steps path>
-  <#if steps == 0 > <#-- Without this check, 1..steps is [1, 0], not an empty list. -->
-  "${path}"
-  <#else>
-  "<#list 1..steps as i>../</#list>${path}" <#-- Don't insert whitespace -->
-  </#if>
-</#macro>
+<#-- This needs to be on one line, with no whitespace, or some javascript links will give syntax errors.  -->
+<#macro pathUp steps path><#if steps == 0 ><#-- Without this check, 1..steps is [1, 0], not an empty list. -->"${path}"<#else>"<#list 1..steps as i>../</#list>${path}"<#-- Don't insert whitespace --></#if></#macro>

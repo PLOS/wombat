@@ -16,7 +16,7 @@
     <#include "../common/header.ftl" />
 
     <div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
-      <form id="sortAndFilterSearchResults" target="/${currentJournal}/search" method="get">
+      <form id="sortAndFilterSearchResults" action="search" method="get">
         <input type="hidden" name="q" value="${currentQuery}" />
         <div class="filter-option date">
           <h5>Filter by date</h5>

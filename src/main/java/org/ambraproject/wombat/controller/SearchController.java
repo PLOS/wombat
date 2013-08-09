@@ -47,7 +47,6 @@ public class SearchController {
       sortOrder = SolrSearchService.SolrSortOrder.valueOf(sortOrderParam);
     }
 
-    model.addAttribute("currentJournal", journal);
     model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
 
     // TODO: bind sticky form params using Spring MVC support for Freemarker.  I think we have to add

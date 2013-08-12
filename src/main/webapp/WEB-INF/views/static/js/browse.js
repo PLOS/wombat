@@ -186,7 +186,7 @@ var AmbraBrowse = function () {
 
   self.bindBrowseForward = function () {
 
-    self.$browseContainer.on('click', '.browse-right:not(.inactive)', function (e) {
+    self.$browseContainer.click('.browse-right:not(.inactive)', function (e) {
       e.preventDefault();
       self.browseForward($(this));
     });
@@ -195,7 +195,7 @@ var AmbraBrowse = function () {
 
   self.bindBrowseBack = function () {
 
-    self.$browseBackButton.on('click', function (e) {
+    self.$browseBackButton.click(function (e) {
       e.preventDefault();
       self.browseBack();
     });

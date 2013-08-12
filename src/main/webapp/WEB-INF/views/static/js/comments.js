@@ -4,12 +4,12 @@ var CommentsClass = function () {
 
   self.init = function () {
 
-    $('.flag-link').on('click', function (e) {
+    $('.flag-link').click(function (e) {
       e.preventDefault();
       self.flagComment($(this));
     });
 
-    $('.respond-link').on('click', function (e) {
+    $('.respond-link').click(function (e) {
       e.preventDefault();
       self.respondToComment($(this));
     });

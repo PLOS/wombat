@@ -74,22 +74,22 @@ var AmbraNavigation = function () {
     self.modalOptions = { showModalOnMenuClose: false, displayMethod: null };
 
     //events
-    self.$searchButton.on('click', function (e) {
+    self.$searchButton.click(function (e) {
       e.preventDefault();
       self.toggleSearch();
     });
 
-    self.$siteMenuButton.on('click', function (e) {
+    self.$siteMenuButton.click(function (e) {
       e.preventDefault();
       self.toggleMainMenu();
     });
 
-    $('.accordion .accordion-item .expander').on('click', function (e) {
+    $('.accordion .accordion-item .expander').click(function (e) {
       e.preventDefault();
       self.toggleMainAccordion($(this));
     });
 
-    $('.btn-top-container a.btn').on('click', function (e) {
+    $('.btn-top-container a.btn').click(function (e) {
       e.preventDefault();
       self.scrollToTop();
     });

@@ -21,29 +21,29 @@ var ShareContent = function () {
     self.windowHeight = self.$modalInfoWindow.height();
 
     //events
-    $('.save-article:not(.remove-only)').on('click', function (e) { //occurs on results and article pages
+    $('.save-article:not(.remove-only)').click(function (e) { //occurs on results and article pages
       e.preventDefault();
       self.toggleSave($(this));
     });
 
-    $('.save-article.remove-only').on('click', function (e) { //occurs on saved items page
+    $('.save-article.remove-only').click(function (e) { //occurs on saved items page
       e.preventDefault();
       self.confirmRemoval($(this));
     });
 
-    self.$optionEdit.on('click', function (e) {
+    self.$optionEdit.click(function (e) {
       self.editClick($(this));
     });
 
-    self.$optionShare.on('click', function (e) {
+    self.$optionShare.click(function (e) {
       self.shareClick($(this));
     });
 
-    self.$optionEmail.on('click', function (e) {
+    self.$optionEmail.click(function (e) {
       self.emailClick($(this));
     });
 
-    self.$optionClearAll.on('click', function (e) {
+    self.$optionClearAll.click(function (e) {
       self.removeAllClick($(this));
     });
 
@@ -218,7 +218,7 @@ var ShareContent = function () {
 
   self.addShareClickListener = function (options) {
 
-    self.$modalInfoWindow.find('.share-method').on('click', function (e) {
+    self.$modalInfoWindow.find('.share-method').click(function (e) {
 
       e.preventDefault();
       var shareMethod = $(this).attr('data-method');

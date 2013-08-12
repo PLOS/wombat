@@ -14,35 +14,35 @@ var SiteContent = function () {
     self.modalPosition = self.windowHeight;
 
     //events
-    $('#article-type-menu').find('li').on('click', function (e) {
+    $('#article-type-menu').find('li').click(function (e) {
       var $currentButton = $(this);
       self.switchArticleListMethod($currentButton);
     });
 
-    $('.author-info').on('click', function (e) {
+    $('.author-info').click(function (e) {
       e.preventDefault();
       self.showAuthorInfo($(this));
     });
 
-    $('.filter-button').on('click', function (e) {
+    $('.filter-button').click(function (e) {
       self.toggleFilterButton($(this));
     });
 
-    $('#display-options button').on('click', function (e) {
+    $('#display-options button').click(function (e) {
       self.setDisplayOption($(this));
     });
 
-    $('.modal-tab').on('click', function (e) {
+    $('.modal-tab').click(function (e) {
       e.preventDefault();
       self.hideModalTab($(this));
     });
 
-    self.$articlePagination.find('.number').on('click', function (e) {
+    self.$articlePagination.find('.number').click(function (e) {
       e.preventDefault();
       self.gotoResultsPage($(this));
     });
 
-    self.$articlePagination.find('.switch').on('click', function (e) {
+    self.$articlePagination.find('.switch').click(function (e) {
       e.preventDefault();
       self.switchResultsPage($(this));
     });

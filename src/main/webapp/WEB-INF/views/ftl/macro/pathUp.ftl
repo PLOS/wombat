@@ -2,7 +2,6 @@
 
   Create a relative path starting with a variable number of steps "up" into parent directories.
   The output path is enclosed in double quotation marks, for use as an href or similar attribute.
-  Some junk whitespace may appear before and after the output.
   The 'steps' argument should be a nonnegative integer.
   The 'path' argument should be a file path *not* starting with a slash.
 
@@ -17,5 +16,10 @@
     <link rel="stylesheet" href="static/css/interface.css">
 
   -->
-<#-- This needs to be on one line, with no whitespace, or some javascript links will give syntax errors.  -->
-<#macro pathUp steps path><#if steps == 0 ><#-- Without this check, 1..steps is [1, 0], not an empty list. -->"${path}"<#else>"<#list 1..steps as i>../</#list>${path}"<#-- Don't insert whitespace --></#if></#macro>
+<#macro pathUp steps path>
+  <#if steps == 0 ><#-- Without this check, 1..steps is [1, 0], not an empty list. -->
+  "${path}"<#t>
+  <#else>
+  "<#list 1..steps as i>../</#list>${path}"<#t>
+  </#if>
+</#macro>

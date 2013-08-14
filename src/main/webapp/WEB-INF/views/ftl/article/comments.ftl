@@ -6,11 +6,7 @@
 
 <body id="page-comments">
 <div id="container-main">
-  <header id="site-header-container" class="back-header coloration-border-top">
-    <span class="back-arrow">Back</span>
-    <a class="back" href="article?doi=${article.doi}">Back to Article</a>
-  </header>
-  <!--end header-->
+<#include "backToArticle.ftl" />
 
   <div id="comment-content" class="content">
     <h3 class="comments-header">Reader Comments(${articleComments?size})</h3>

@@ -1,5 +1,6 @@
 <#include "../macro/pathUp.ftl" />
-<html>
+<#include "../common/htmlTag.ftl" />
+
 <head>
   <title>Privacy Policy</title>
 

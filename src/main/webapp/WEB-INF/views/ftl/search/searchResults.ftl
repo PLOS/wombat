@@ -15,10 +15,10 @@
         <input type="hidden" name="q" value="${currentQuery}" />
         <div class="filter-option date">
           <h5>Filter by date</h5>
-          <select name="dateFilter">
-            <option value="all-time">All Time</option>
-            <option value="option-2">Option 2</option>
-            <option value="option-3">Option 3</option>
+          <select name="dateRange">
+            <#list dateRanges as dateRange>
+              <option value="${dateRange}" <#if (selectedDateRange == dateRange)> selected="selected"</#if>>${dateRange.description}</option>
+            </#list>
           </select>
         </div>
 

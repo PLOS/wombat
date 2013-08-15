@@ -36,7 +36,8 @@ public class SearchController {
 
   @RequestMapping("/{journal}/search")
   public String search(Model model, @PathVariable("journal") String journal, @RequestParam("q") String query,
-      @RequestParam(value = "sortOrder", required = false) String sortOrderParam) throws IOException {
+      @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
+      @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
 
     // TODO: paging.  Initialize these from params.
     int start = 1;
@@ -46,17 +47,23 @@ public class SearchController {
     if (!Strings.isNullOrEmpty(sortOrderParam)) {
       sortOrder = SolrSearchService.SolrSortOrder.valueOf(sortOrderParam);
     }
+    SolrSearchService.SolrDateRange dateRange = SolrSearchService.SolrDateRange.ALL_TIME;
+    if (!Strings.isNullOrEmpty(dateRangeParam)) {
+      dateRange = SolrSearchService.SolrDateRange.valueOf(dateRangeParam);
+    }
 
     model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
+    model.addAttribute("dateRanges", SolrSearchService.SolrDateRange.values());
 
     // TODO: bind sticky form params using Spring MVC support for Freemarker.  I think we have to add
     // some more dependencies to do this.  See
     // http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/view.html#view-velocity
     model.addAttribute("selectedSortOrder", sortOrder);
+    model.addAttribute("selectedDateRange", dateRange);
     model.addAttribute("currentQuery", query);
 
     // TODO: consider using an enum for possible journal values, and validating here.
-    model.addAttribute("searchResults", searchService.simpleSearch(query, journal, start, rows, sortOrder));
+    model.addAttribute("searchResults", searchService.simpleSearch(query, journal, start, rows, sortOrder, dateRange));
     return journal + "/ftl/search/searchResults";
   }
 }

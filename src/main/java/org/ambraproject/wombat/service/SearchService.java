@@ -22,18 +22,19 @@ import java.util.Map;
 public interface SearchService {
 
   /**
-   * Type representing possible orderings of search results.  Concrete implementations of the
-   * service class should provide an implementation of this class.
+   * Type representing some restriction on the desired search results--for instance, a date range,
+   * or a sort order.  Implementations of SearchService should also provide appropriate implementations
+   * of this interface.
    */
-  public interface SortOrder {
+  public interface SearchCriterion {
 
     /**
-     * @return description of this sort order, suitable for exposing in the UI
+     * @return description of this criterion, suitable for exposing in the UI
      */
     public String getDescription();
 
     /**
-     * @return implementation-dependent String value specifying this sort order
+     * @return implementation-dependent String value specifying this criterion
      */
     public String getValue();
   }
@@ -47,10 +48,11 @@ public interface SearchService {
    * @param start starting result, one-based.  1 will start at the first result.
    * @param rows max number of results to return
    * @param sortOrder specifies the desired ordering for results
+   * @param dateRange specifies the date range for the results
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
   // TODO: add parameter for sort order.
-  public Map<?, ?> simpleSearch(String query, String journal, int start, int rows, SortOrder sortOrder)
-      throws IOException;
+  public Map<?, ?> simpleSearch(String query, String journal, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange) throws IOException;
 }

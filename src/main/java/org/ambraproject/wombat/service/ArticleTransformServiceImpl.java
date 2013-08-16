@@ -161,40 +161,6 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     }
   }
 
-  private Map<ArticleKey, byte[]> devModeCache = null;
-
-  /**
-   * Very crude, naive caching to speed things up for dev mode. Copy all transformed HTML to memory and store it in a
-   * hashtable; never evict.
-   *
-   * @param journalKey
-   * @param articleId
-   * @param xml
-   * @return
-   * @throws IOException
-   * @throws TransformerException
-   */
-  private byte[] cacheForDevMode(String journalKey, String articleId, InputStream xml)
-      throws IOException, TransformerException {
-    Preconditions.checkState(runtimeConfiguration.devModeArticleCaching());
-    if (devModeCache == null) {
-      devModeCache = Maps.newHashMap();
-    }
-    ArticleKey key = new ArticleKey(journalKey, articleId);
-    byte[] cached = devModeCache.get(key);
-    if (cached != null) {
-      return cached;
-    }
-
-    ByteArrayOutputStream result = new ByteArrayOutputStream();
-    Transformer transformer = getTransformer(journalKey);
-    transformer.transform(new StreamSource(xml), new StreamResult(result));
-
-    byte[] transformed = result.toByteArray();
-    devModeCache.put(key, transformed);
-    return transformed;
-  }
-
 
   @Override
   public void transform(String journalKey, String articleId, InputStream xml, OutputStream html)
@@ -203,12 +169,6 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     Preconditions.checkNotNull(articleId);
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
-
-    if (runtimeConfiguration.devModeArticleCaching()) {
-      byte[] transformed = cacheForDevMode(journalKey, articleId, xml);
-      html.write(transformed);
-      return;
-    }
 
     Transformer transformer = getTransformer(journalKey);
     log.debug("Starting XML transformation");

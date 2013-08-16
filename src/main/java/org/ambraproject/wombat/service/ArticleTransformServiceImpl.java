@@ -9,12 +9,20 @@ import org.ambraproject.wombat.config.Theme;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.URIResolver;
+import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.ByteArrayOutputStream;
@@ -22,6 +30,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringReader;
 import java.util.Map;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
@@ -203,7 +212,37 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
     Transformer transformer = getTransformer(journalKey);
     log.debug("Starting XML transformation");
-    transformer.transform(new StreamSource(xml), new StreamResult(html));
+    SAXParserFactory spf = SAXParserFactory.newInstance();
+    XMLReader xmlr;
+    try {
+      SAXParser sp = spf.newSAXParser();
+      xmlr = sp.getXMLReader();
+    } catch (ParserConfigurationException pce) {
+      throw new TransformerException(pce);
+    } catch (SAXException se) {
+      throw new TransformerException(se);
+    }
+
+    // This is a little unorthodox.  Without setting this custom EntityResolver, the transform will
+    // make ~50 HTTP calls to nlm.nih.gov to retrieve the DTD and various entity files referenced
+    // in the article XML.  By setting a custom EntityResolver that just returns an empty string
+    // for each of these, we prevent that.  This seems to have no ill effects on the transformation
+    // itself.  This is a roundabout way of turning off DTD validation, which is more
+    // straightforward to do with a Document/DocumentBuilder, but the saxon library we're using
+    // is much faster at XSLT if it uses its own XML parser instead of DocumentBuilder.  See
+    // http://stackoverflow.com/questions/155101/make-documentbuilder-parse-ignore-dtd-references
+    // for a discussion.
+    xmlr.setEntityResolver(new EntityResolver() {
+      @Override
+      public InputSource resolveEntity(String s, String s1) throws SAXException, IOException {
+
+        // If we return null here, it will cause the HTTP request to be made.
+        return new InputSource(new StringReader(""));
+      }
+    });
+    SAXSource saxSource = new SAXSource(xmlr, new InputSource(xml));
+    transformer.transform(saxSource, new StreamResult(html));
+
     log.debug("Finished XML transformation");
   }
 

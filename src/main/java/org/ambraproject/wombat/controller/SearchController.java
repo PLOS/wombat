@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
+import org.ambraproject.wombat.service.Journal;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class SearchController {
   private SearchService searchService;
 
   @RequestMapping("/{journal}/search")
-  public String search(Model model, @PathVariable("journal") String journal, @RequestParam("q") String query,
+  public String search(Model model, @PathVariable("journal") String journalParam, @RequestParam("q") String query,
       @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
       @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
 
@@ -62,8 +63,8 @@ public class SearchController {
     model.addAttribute("selectedDateRange", dateRange);
     model.addAttribute("currentQuery", query);
 
-    // TODO: consider using an enum for possible journal values, and validating here.
+    Journal journal = Journal.fromPathName(journalParam);
     model.addAttribute("searchResults", searchService.simpleSearch(query, journal, start, rows, sortOrder, dateRange));
-    return journal + "/ftl/search/searchResults";
+    return journal.getPathName() + "/ftl/search/searchResults";
   }
 }

@@ -136,7 +136,7 @@ public class SolrSearchService extends JsonService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> simpleSearch(String query, String journal, int start, int rows, SearchCriterion sortOrder,
+  public Map<?, ?> simpleSearch(String query, Journal journal, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) throws IOException {
 
     // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
@@ -161,6 +161,8 @@ public class SolrSearchService extends JsonService implements SearchService {
     if (!Strings.isNullOrEmpty(dateRangeStr)) {
       params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
     }
+    params.add(new BasicNameValuePair("fq", "cross_published_journal_key:" + journal.getSolrName()));
+
     URI uri;
     try {
       uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();

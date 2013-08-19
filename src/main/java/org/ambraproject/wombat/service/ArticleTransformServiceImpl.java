@@ -194,10 +194,15 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     // for a discussion.
     xmlr.setEntityResolver(new EntityResolver() {
       @Override
-      public InputSource resolveEntity(String s, String s1) throws SAXException, IOException {
+      public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException {
 
-        // If we return null here, it will cause the HTTP request to be made.
-        return new InputSource(new StringReader(""));
+        // Note: returning null here will cause the HTTP request to be made.
+
+        if ("http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd".equals(systemId)) {
+          return new InputSource(new StringReader(""));
+        } else {
+          throw new IllegalArgumentException("Unexpected entity encountered: " + systemId);
+        }
       }
     });
     SAXSource saxSource = new SAXSource(xmlr, new InputSource(xml));

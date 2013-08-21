@@ -13,6 +13,8 @@
 
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.config.Journal;
+
 import java.io.IOException;
 import java.util.Map;
 

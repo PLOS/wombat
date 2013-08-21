@@ -14,7 +14,8 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
-import org.ambraproject.wombat.service.Journal;
+import org.ambraproject.wombat.config.Journal;
+import org.ambraproject.wombat.config.JournalSet;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ import java.io.IOException;
 @Controller
 public class SearchController {
 
+  @Autowired
+  private JournalSet journalSet;
   @Autowired
   private SearchService searchService;
 
@@ -63,8 +66,8 @@ public class SearchController {
     model.addAttribute("selectedDateRange", dateRange);
     model.addAttribute("currentQuery", query);
 
-    Journal journal = Journal.fromPathName(journalParam);
+    Journal journal = journalSet.getJournal(journalParam);
     model.addAttribute("searchResults", searchService.simpleSearch(query, journal, start, rows, sortOrder, dateRange));
-    return journal.getPathName() + "/ftl/search/searchResults";
+    return journal.getKey() + "/ftl/search/searchResults";
   }
 }

@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
+import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -136,7 +137,7 @@ public class SolrSearchService extends JsonService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> simpleSearch(String query, Journal journal, int start, int rows, SearchCriterion sortOrder,
+  public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) throws IOException {
 
     // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
@@ -161,7 +162,7 @@ public class SolrSearchService extends JsonService implements SearchService {
     if (!Strings.isNullOrEmpty(dateRangeStr)) {
       params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
     }
-    params.add(new BasicNameValuePair("fq", "cross_published_journal_key:" + journal.getSolrName()));
+    params.add(new BasicNameValuePair("fq", "cross_published_journal_key:" + site.getJournalKey()));
 
     URI uri;
     try {

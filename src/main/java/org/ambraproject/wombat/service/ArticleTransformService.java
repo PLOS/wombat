@@ -7,7 +7,7 @@ import java.io.OutputStream;
 
 public interface ArticleTransformService {
 
-  public abstract void transform(String journalKey, String articleId, InputStream xml, OutputStream html)
+  public abstract void transform(String siteKey, String articleId, InputStream xml, OutputStream html)
       throws IOException, TransformerException;
 
 }

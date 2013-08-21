@@ -13,6 +13,8 @@
 
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.config.Site;
+
 import java.io.IOException;
 import java.util.Map;
 
@@ -43,7 +45,7 @@ public interface SearchService {
    * Performs a "simple" search (against all article fields) and returns the results.
    *
    * @param query term we are searching for
-   * @param journal name of the journal in which to search.
+   * @param site name of the site in which to search.
    * @param start starting result, one-based.  1 will start at the first result.
    * @param rows max number of results to return
    * @param sortOrder specifies the desired ordering for results
@@ -52,6 +54,6 @@ public interface SearchService {
    * @throws IOException
    */
   // TODO: add parameter for sort order.
-  public Map<?, ?> simpleSearch(String query, Journal journal, int start, int rows, SearchCriterion sortOrder,
+  public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) throws IOException;
 }

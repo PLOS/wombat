@@ -9,11 +9,11 @@ import java.io.IOException;
 @Controller
 public class TemplatePageController {
 
-  @RequestMapping("/{journal}/page/{pageName}")
-  public String servePage(@PathVariable("journal") String journal,
+  @RequestMapping("/{site}/page/{pageName}")
+  public String servePage(@PathVariable("site") String site,
                           @PathVariable("pageName") String pageName)
       throws IOException {
-    return journal + "/ftl/page/" + pageName;
+    return site + "/ftl/page/" + pageName;
   }
 
 }

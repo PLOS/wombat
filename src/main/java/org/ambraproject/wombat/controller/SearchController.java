@@ -14,7 +14,8 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
-import org.ambraproject.wombat.service.Journal;
+import org.ambraproject.wombat.config.Site;
+import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,12 @@ import java.io.IOException;
 public class SearchController {
 
   @Autowired
+  private SiteSet siteSet;
+  @Autowired
   private SearchService searchService;
 
-  @RequestMapping("/{journal}/search")
-  public String search(Model model, @PathVariable("journal") String journalParam, @RequestParam("q") String query,
+  @RequestMapping("/{site}/search")
+  public String search(Model model, @PathVariable("site") String siteParam, @RequestParam("q") String query,
       @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
       @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
 
@@ -63,8 +66,8 @@ public class SearchController {
     model.addAttribute("selectedDateRange", dateRange);
     model.addAttribute("currentQuery", query);
 
-    Journal journal = Journal.fromPathName(journalParam);
-    model.addAttribute("searchResults", searchService.simpleSearch(query, journal, start, rows, sortOrder, dateRange));
-    return journal.getPathName() + "/ftl/search/searchResults";
+    Site site = siteSet.getSite(siteParam);
+    model.addAttribute("searchResults", searchService.simpleSearch(query, site, start, rows, sortOrder, dateRange));
+    return site.getKey() + "/ftl/search/searchResults";
   }
 }

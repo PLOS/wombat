@@ -40,9 +40,9 @@ public class ArticleController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
-  @RequestMapping("/{journal}/article")
+  @RequestMapping("/{site}/article")
   public String renderArticle(Model model,
-                              @PathVariable("journal") String journal,
+                              @PathVariable("site") String site,
                               @RequestParam("doi") String articleId)
       throws IOException {
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
@@ -60,7 +60,7 @@ public class ArticleController {
         throw new ArticleNotFoundException(articleId);
       }
       OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, charset));
-      articleTransformService.transform(journal, articleId, articleXml, outputStream);
+      articleTransformService.transform(site, articleId, articleXml, outputStream);
     } catch (Throwable t) {
       throw closer.rethrow(t);
     } finally {
@@ -70,16 +70,16 @@ public class ArticleController {
     model.addAttribute("articleText", articleHtml.toString());
     requestCorrections(model, articleId);
     requestComments(model, articleId);
-    return journal + "/ftl/article/article";
+    return site + "/ftl/article/article";
   }
 
-  @RequestMapping("/{journal}/article/comments")
-  public String renderArticleComments(Model model, @PathVariable("journal") String journal,
+  @RequestMapping("/{site}/article/comments")
+  public String renderArticleComments(Model model, @PathVariable("site") String site,
                                       @RequestParam("doi") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     model.addAttribute("article", articleMetadata);
     requestComments(model, articleId);
-    return journal + "/ftl/article/comments";
+    return site + "/ftl/article/comments";
   }
 
   /**

@@ -70,14 +70,14 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public JournalSet journalSet(RuntimeConfiguration runtimeConfiguration,
-                                         ThemeTree themeTree) {
-    return JournalSet.create(runtimeConfiguration.getThemesForJournals(themeTree));
+  public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration,
+                         ThemeTree themeTree) {
+    return SiteSet.create(runtimeConfiguration.getThemesForSites(themeTree));
   }
 
   @Bean
-  public FreeMarkerConfig freeMarkerConfig(JournalSet journalSet) throws IOException {
-    JournalTemplateLoader loader = new JournalTemplateLoader(journalSet);
+  public FreeMarkerConfig freeMarkerConfig(SiteSet siteSet) throws IOException {
+    SiteTemplateLoader loader = new SiteTemplateLoader(siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
     return config;

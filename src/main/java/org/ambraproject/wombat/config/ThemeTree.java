@@ -127,14 +127,14 @@ public class ThemeTree {
     }
   }
 
-  ImmutableMap<String, Theme> matchToJournals(List<Map<String, ?>> journalConfigJson) {
-    SortedMap<String, Theme> journalMap = Maps.newTreeMap();
-    for (Map<String, ?> journalObj : journalConfigJson) {
-      String key = (String) journalObj.get("key");
-      String themeName = (String) journalObj.get("theme");
-      journalMap.put(key, themes.get(themeName));
+  ImmutableMap<String, Theme> matchToSites(List<Map<String, ?>> siteConfigJson) {
+    SortedMap<String, Theme> siteMap = Maps.newTreeMap();
+    for (Map<String, ?> siteObj : siteConfigJson) {
+      String key = (String) siteObj.get("key");
+      String themeName = (String) siteObj.get("theme");
+      siteMap.put(key, themes.get(themeName));
     }
-    return ImmutableMap.copyOf(journalMap);
+    return ImmutableMap.copyOf(siteMap);
   }
 
 }

@@ -112,13 +112,11 @@ public abstract class JsonService {
   }
 
   /**
-   * Builds a complete URI given a URL that specifies the server and a string
-   * that is the remainder of the query.
+   * Builds a complete URI given a URL that specifies the server and a string that is the remainder of the query.
    *
-   * @param server host, port, and optionally part of the path.  For example "http://www.example.com/"
-   *     or "https://plos.org/api/".
-   * @param address the remainder of the path and query string.  For example
-   *     "articles/foo.pone.1234567?comments=true"
+   * @param server  host, port, and optionally part of the path.  For example "http://www.example.com/" or
+   *                "https://plos.org/api/".
+   * @param address the remainder of the path and query string.  For example "articles/foo.pone.1234567?comments=true"
    * @return a URI to the complete path and query string
    */
   protected URI buildUri(URL server, String address) {

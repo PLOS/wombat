@@ -34,8 +34,6 @@ public class SiteSet {
   }
 
 
-
-
   public Site getSite(String key) {
     Site site = sites.get(key);
     if (site == null) {

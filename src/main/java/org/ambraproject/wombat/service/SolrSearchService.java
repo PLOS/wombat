@@ -14,8 +14,8 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
-import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.Site;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
@@ -74,8 +74,7 @@ public class SolrSearchService extends JsonService implements SearchService {
   }
 
   /**
-   * Enumerates date ranges to expose in the UI.  Currently, these all start at some prior
-   * date and extend to today.
+   * Enumerates date ranges to expose in the UI.  Currently, these all start at some prior date and extend to today.
    */
   public static enum SolrDateRange implements SearchCriterion {
 
@@ -101,12 +100,11 @@ public class SolrSearchService extends JsonService implements SearchService {
     }
 
     /**
-     * @return a String representing part of the "fq" param to pass to solr that will restrict
-     *     the date range appropriately.  For example, "[2013-02-14T21:00:29.942Z TO 2013-08-15T21:00:29.942Z]".
-     *     The String must be escaped appropriately before being included in the URL.  The final
-     *     http param passed to solr should look like
-     *     "fq=publication_date:[2013-02-14T21:00:29.942Z+TO+2013-08-15T21:00:29.942Z]".
-     *     If this date range is ALL_TIME, this method returns null.
+     * @return a String representing part of the "fq" param to pass to solr that will restrict the date range
+     *         appropriately.  For example, "[2013-02-14T21:00:29.942Z TO 2013-08-15T21:00:29.942Z]". The String must be
+     *         escaped appropriately before being included in the URL.  The final http param passed to solr should look
+     *         like "fq=publication_date:[2013-02-14T21:00:29.942Z+TO+2013-08-15T21:00:29.942Z]". If this date range is
+     *         ALL_TIME, this method returns null.
      */
     @Override
     public String getValue() {
@@ -138,7 +136,7 @@ public class SolrSearchService extends JsonService implements SearchService {
    */
   @Override
   public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) throws IOException {
+                                SearchCriterion dateRange) throws IOException {
 
     // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
     // This is the easiest way I found...
@@ -180,7 +178,7 @@ public class SolrSearchService extends JsonService implements SearchService {
     if (!responseHeader.get("status").equals(new Double(0.0))) {
       throw new RuntimeException("Solr server returned status " + responseHeader.get("status"));
     } else {
-      return (Map<?, ?>)rawResults.get("response");
+      return (Map<?, ?>) rawResults.get("response");
     }
   }
 }

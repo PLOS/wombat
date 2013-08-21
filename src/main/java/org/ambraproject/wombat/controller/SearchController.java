@@ -40,8 +40,8 @@ public class SearchController {
 
   @RequestMapping("/{site}/search")
   public String search(Model model, @PathVariable("site") String siteParam, @RequestParam("q") String query,
-      @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
-      @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
+                       @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
+                       @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
 
     // TODO: paging.  Initialize these from params.
     int start = 1;

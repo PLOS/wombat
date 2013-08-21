@@ -3,7 +3,7 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
-import org.ambraproject.wombat.config.JournalThemeMap;
+import org.ambraproject.wombat.config.JournalSet;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Theme;
 import org.slf4j.Logger;
@@ -25,7 +25,6 @@ import javax.xml.transform.URIResolver;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +39,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final String TRANSFORM_TEMPLATE_PATH = TEMPLATE_ROOT_PATH + "article-transform.xsl";
 
   @Autowired
-  private JournalThemeMap journalThemeMap;
+  private JournalSet journalSet;
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
@@ -116,7 +115,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @throws IOException
    */
   private Transformer buildTransformer(String journal) throws IOException {
-    Theme theme = journalThemeMap.getTheme(journal);
+    Theme theme = journalSet.getJournal(journal).getTheme();
     if (theme == null) {
       throw new UnmatchedJournalException(journal);
     }

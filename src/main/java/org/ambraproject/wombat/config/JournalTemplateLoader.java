@@ -16,16 +16,15 @@ class JournalTemplateLoader extends DelegatingTemplateLoader {
 
   private final ImmutableMap<String, TemplateLoader> loaders; // keyed by journal
 
-  JournalTemplateLoader(JournalThemeMap journalThemeMap) throws IOException {
-    this.loaders = buildLoaders(journalThemeMap);
+  JournalTemplateLoader(JournalSet journalSet) throws IOException {
+    this.loaders = buildLoaders(journalSet);
   }
 
-  private static ImmutableMap<String, TemplateLoader> buildLoaders(JournalThemeMap journalThemeMap)
+  private static ImmutableMap<String, TemplateLoader> buildLoaders(JournalSet journalSet)
       throws IOException {
     ImmutableMap.Builder<String, TemplateLoader> builder = ImmutableMap.builder();
-    for (Map.Entry<String, Theme> entry : journalThemeMap.asEntrySet()) {
-      String key = entry.getKey();
-      Theme leaf = entry.getValue();
+    for (Journal journal : journalSet.getJournals()) {
+      Theme leaf = journal.getTheme();
 
       List<TemplateLoader> loaders = Lists.newArrayList();
       for (Theme theme : leaf.getChain()) {
@@ -33,7 +32,7 @@ class JournalTemplateLoader extends DelegatingTemplateLoader {
       }
 
       MultiTemplateLoader multiLoader = new MultiTemplateLoader(loaders.toArray(new TemplateLoader[loaders.size()]));
-      builder.put(key, multiLoader);
+      builder.put(journal.getKey(), multiLoader);
     }
     return builder.build();
   }

@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.io.Closer;
-import org.ambraproject.wombat.config.JournalThemeMap;
+import org.ambraproject.wombat.config.JournalSet;
 import org.ambraproject.wombat.config.Theme;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,13 @@ import java.io.OutputStream;
 public class StaticFileController {
 
   @Autowired
-  private JournalThemeMap journalThemeMap;
+  private JournalSet journalSet;
 
   @RequestMapping("/{journal}/static/**")
   public void serveStaticContent(HttpServletRequest request, HttpServletResponse response,
                                  HttpSession session, @PathVariable("journal") String journal)
       throws IOException {
-    Theme theme = journalThemeMap.getTheme(journal);
+    Theme theme = journalSet.getJournal(journal).getTheme();
 
     // Kludge to get "static/**"
     String servletPath = request.getServletPath();

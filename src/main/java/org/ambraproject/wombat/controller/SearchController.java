@@ -33,6 +33,8 @@ import java.io.IOException;
 @Controller
 public class SearchController {
 
+  private static final int RESULTS_PER_PAGE = 15;
+
   @Autowired
   private SiteSet siteSet;
   @Autowired
@@ -43,9 +45,10 @@ public class SearchController {
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
                        @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
 
-    // TODO: paging.  Initialize these from params.
+    // TODO: paging.  Initialize this from params.
     int start = 1;
-    int rows = 25;
+    model.addAttribute("currentPage", start);
+    model.addAttribute("resultsPerPage", RESULTS_PER_PAGE);
 
     SolrSearchService.SolrSortOrder sortOrder = SolrSearchService.SolrSortOrder.RELEVANCE;
     if (!Strings.isNullOrEmpty(sortOrderParam)) {
@@ -67,7 +70,8 @@ public class SearchController {
     model.addAttribute("currentQuery", query);
 
     Site site = siteSet.getSite(siteParam);
-    model.addAttribute("searchResults", searchService.simpleSearch(query, site, start, rows, sortOrder, dateRange));
+    model.addAttribute("searchResults", searchService.simpleSearch(query, site, start, RESULTS_PER_PAGE, sortOrder,
+        dateRange));
     return site.getKey() + "/ftl/search/searchResults";
   }
 }

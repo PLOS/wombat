@@ -40,7 +40,7 @@
     <!--end filter-box-->
 
     <div class="filter-container clearfix">
-      <h3>${searchResults.numFound} results found</h3>
+      <h3>${searchResults.numFound} ${(searchResults.numFound == 1)?string("result", "results")} found</h3>
       <button class="filter-button coloration-white-on-color">
         <span class="text">Filter & Sort</span>
         <span class="arrow">expand</span class="arrow">
@@ -97,6 +97,22 @@
 
           </article>
         </#list>
+
+        <#assign pages = (searchResults.numFound / resultsPerPage)?ceiling />
+        <#if pages &gt; 1>
+>         <nav id="article-pagination" class="nav-pagination">
+            <a class="previous switch" data-method="previous">Previous Page</a>
+            <#list 1..pages as i>
+              <#assign linkClass = (i == currentPage)?string("number seq active text-color", "number seq text-color") />
+              <a class="${linkClass}" data-page="${i}">${i}</a>
+            </#list>
+            <#-- TODO: logic on when to add these
+              <span class="skip">...</span>
+              <a class="number last" data-page="10">10</a>
+            -->
+            <a class="next switch" data-method="next">Next Page</a>
+          </nav>
+        </#if>
       </section>
       <#include "../common/bottomMenu/bottomMenu.ftl" />
     </div>

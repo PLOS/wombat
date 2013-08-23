@@ -56,10 +56,13 @@ public class FigurePageController {
     return figures;
   }
 
+  /**
+   * Serve a page listing all figures for an article.
+   */
   @RequestMapping("/{journal}/article/figures")
-  public String renderFigurePage(Model model,
-                                 @PathVariable("journal") String journal,
-                                 @RequestParam("doi") String articleId)
+  public String renderFiguresPage(Model model,
+                                  @PathVariable("journal") String journal,
+                                  @RequestParam("doi") String articleId)
       throws IOException {
     Map<?, ?> articleMetadata;
     try {
@@ -71,6 +74,29 @@ public class FigurePageController {
     model.addAttribute("figures", buildFigureList(articleMetadata));
 
     return journal + "/ftl/article/figures";
+  }
+
+  /**
+   * Serve a page displaying a single figure.
+   */
+  @RequestMapping("/{journal}/article/figure")
+  public String renderFigurePage(Model model,
+                                 @PathVariable("journal") String journal,
+                                 @RequestParam("id") String figureId)
+      throws IOException {
+    Map<?, ?> figureMetadata;
+    try {
+      figureMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+    } catch (EntityNotFoundException enfe) {
+      throw new ArticleNotFoundException(figureId);
+    }
+    model.addAttribute("figure", figureMetadata);
+
+    // DEBUG Placeholder
+    // TODO: Cheap way of linking back to article with only a figure ID supplied
+    model.addAttribute("article", ImmutableMap.of("doi", ""));
+
+    return journal + "/ftl/article/figure";
   }
 
   /**

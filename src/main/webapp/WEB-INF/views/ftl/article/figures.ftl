@@ -13,10 +13,12 @@
     <figure class="figure-small">
 
       <figcaption>
-      ${figure.original.title} <a>More »</a>
+      ${figure.original.title}.
+      ${figure.original.description} <#-- TODO: This is untransformed XML; should be transformed to HTML. -->
+        <a href="figure?id=${article.doi}">More »</a>
       </figcaption>
 
-      <a class="figure-link">
+      <a class="figure-link" href="figure?id=${article.doi}">
         <img class="figure-image" src="asset?id=${figure.thumbnails[0].doi}.${figure.thumbnails[0].extension}"
              alt="${figure.original.title}">
         <span class="figure-expand">Expand</span>

@@ -33,13 +33,14 @@ public class FigurePageController {
    *
    * TODO: Do this entirely in FreeMarker?
    */
-  private static List<?> buildFigureList(Map<?, ?> articleMetadata) {
+  private static List<?> buildFigureViewList(Map<?, ?> articleMetadata) {
     Map<?, ?> assets = (Map<?, ?>) articleMetadata.get("assets");
     List<Map<?, ?>> figureMetadataList = (List<Map<?, ?>>) articleMetadata.get("figures");
 
-    List<Object> figures = Lists.newArrayListWithCapacity(figureMetadataList.size());
+    List<Map<String, ?>> figures = Lists.newArrayListWithCapacity(figureMetadataList.size());
     for (Map<?, ?> figureMetadata : figureMetadataList) {
-      Map<?, ?> asset = (Map<?, ?>) assets.get(figureMetadata.get("id"));
+      String assetId = (String) figureMetadata.get("id");
+      Map<?, ?> asset = (Map<?, ?>) assets.get(assetId);
       Object originalAsset = asset.get(figureMetadata.get("original"));
 
       List<String> thumbnailAssetIds = (List<String>) figureMetadata.get("thumbnails");
@@ -49,7 +50,11 @@ public class FigurePageController {
         thumbnailAssets.add(thumbnailAsset);
       }
 
-      Object figure = ImmutableMap.of("original", originalAsset, "thumbnails", thumbnailAssets);
+      Map<String, ?> figure = ImmutableMap.<String, Object>builder()
+          .put("id", assetId)
+          .put("original", originalAsset)
+          .put("thumbnails", thumbnailAssets)
+          .build();
       figures.add(figure);
     }
 
@@ -71,7 +76,7 @@ public class FigurePageController {
       throw new ArticleNotFoundException(articleId);
     }
     model.addAttribute("article", articleMetadata);
-    model.addAttribute("figures", buildFigureList(articleMetadata));
+    model.addAttribute("figures", buildFigureViewList(articleMetadata));
 
     return journal + "/ftl/article/figures";
   }

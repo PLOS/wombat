@@ -18,7 +18,7 @@
         <a href="figure?id=${article.doi}">More »</a>
       </figcaption>
 
-      <a class="figure-link" href="figure?id=${article.doi}">
+      <a class="figure-link" href="figure?id=${figure.id}">
         <img class="figure-image" src="asset?id=${figure.thumbnails[0].doi}.${figure.thumbnails[0].extension}"
              alt="${figure.original.title}">
         <span class="figure-expand">Expand</span>

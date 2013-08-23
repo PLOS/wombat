@@ -23,12 +23,12 @@
   </div>
 
   <div class="modal-content">
-    <h3>${figure.title}.</h3>
+    <h3>${figure.original.title}.</h3>
 
     <p class="article-id">${figure.doi}</p>
 
     <div class="figure-description">
-    ${figure.description} <#-- TODO: Transform from XML -->
+    ${figure.original.description} <#-- TODO: Transform from XML -->
     </div>
   </div>
 

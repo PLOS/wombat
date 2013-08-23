@@ -8,7 +8,8 @@
 <div id="container-main">
 <#include "backToArticle.ftl" />
 
-  <img class="figure-img" src="<#--TODO-->" alt="FPO Figure Large">
+<#assign imageToShow = figure.thumbnails[figure.thumbnails?size - 1] /><#-- Get largest thumbnail -->
+  <img class="figure-img" src="asset?id=${imageToShow.doi}.${imageToShow.extension}" alt="${figure.original.title}">
 
 </div><#--end container main-->
 

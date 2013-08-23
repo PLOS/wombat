@@ -92,9 +92,8 @@ public class FigurePageController {
     }
     model.addAttribute("figure", figureMetadata);
 
-    // DEBUG Placeholder
-    // TODO: Cheap way of linking back to article with only a figure ID supplied
-    model.addAttribute("article", ImmutableMap.of("doi", ""));
+    String parentArticleId = (String) figureMetadata.get("parentArticleId");
+    model.addAttribute("article", ImmutableMap.of("doi", parentArticleId));
 
     return journal + "/ftl/article/figure";
   }

@@ -3,8 +3,8 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
-import org.ambraproject.wombat.config.JournalThemeMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.config.Theme;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,6 @@ import javax.xml.transform.URIResolver;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +39,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final String TRANSFORM_TEMPLATE_PATH = TEMPLATE_ROOT_PATH + "article-transform.xsl";
 
   @Autowired
-  private JournalThemeMap journalThemeMap;
+  private SiteSet siteSet;
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
@@ -86,41 +85,41 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private final Map<String, Transformer> cache = Maps.newHashMap();
 
   /**
-   * Access the transformer for a journal. Either builds it or retrieves it from a cache.
+   * Access the transformer for a site. Either builds it or retrieves it from a cache.
    *
-   * @param journal the journal key
+   * @param site the site key
    * @return the transformer
    * @throws IOException
    */
-  private Transformer getTransformer(String journal) throws IOException {
+  private Transformer getTransformer(String site) throws IOException {
     /*
-     * Use a simple, hashtable-based cache. This assumes that the number of journals (and the size of the transfomers)
+     * Use a simple, hashtable-based cache. This assumes that the number of sites (and the size of the transfomers)
      * will never be so large that evicting a cached transformer makes sense.
      *
      * This prevents the application from picking up any dynamic changes to the transform in a theme (such as an *.xsl
      * file on disk being overwritten at runtime).
      */
-    Transformer transformer = cache.get(journal);
+    Transformer transformer = cache.get(site);
     if (transformer == null) {
-      transformer = buildTransformer(journal);
-      cache.put(journal, transformer);
+      transformer = buildTransformer(site);
+      cache.put(site, transformer);
     }
     return transformer;
   }
 
   /**
-   * Build a new transformer for a journal.
+   * Build a new transformer for a site.
    *
-   * @param journal the journal key
+   * @param site the site key
    * @return the transformer
    * @throws IOException
    */
-  private Transformer buildTransformer(String journal) throws IOException {
-    Theme theme = journalThemeMap.getTheme(journal);
+  private Transformer buildTransformer(String site) throws IOException {
+    Theme theme = siteSet.getSite(site).getTheme();
     if (theme == null) {
-      throw new UnmatchedJournalException(journal);
+      throw new UnmatchedSiteException(site);
     }
-    log.info("Building transformer for: {}", journal);
+    log.info("Building transformer for: {}", site);
     TransformerFactory factory = newTransformerFactory();
 
     Closer closer = Closer.create();
@@ -139,11 +138,11 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
 
   private static class ArticleKey {
-    private final String journalKey;
+    private final String siteKey;
     private final String articleId;
 
-    private ArticleKey(String journalKey, String articleId) {
-      this.journalKey = Preconditions.checkNotNull(journalKey);
+    private ArticleKey(String siteKey, String articleId) {
+      this.siteKey = Preconditions.checkNotNull(siteKey);
       this.articleId = Preconditions.checkNotNull(articleId);
     }
 
@@ -152,25 +151,24 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
       ArticleKey that = (ArticleKey) o;
-      return journalKey.equals(that.journalKey) && articleId.equals(that.articleId);
+      return siteKey.equals(that.siteKey) && articleId.equals(that.articleId);
     }
 
     @Override
     public int hashCode() {
-      return 31 * journalKey.hashCode() + articleId.hashCode();
+      return 31 * siteKey.hashCode() + articleId.hashCode();
     }
   }
 
 
   @Override
-  public void transform(String journalKey, String articleId, InputStream xml, OutputStream html)
+  public void transform(String siteKey, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(journalKey);
-    Preconditions.checkNotNull(articleId);
+    Preconditions.checkNotNull(siteKey);
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
 
-    Transformer transformer = getTransformer(journalKey);
+    Transformer transformer = getTransformer(siteKey);
     log.debug("Starting XML transformation");
     SAXParserFactory spf = SAXParserFactory.newInstance();
     XMLReader xmlr;
@@ -194,10 +192,15 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     // for a discussion.
     xmlr.setEntityResolver(new EntityResolver() {
       @Override
-      public InputSource resolveEntity(String s, String s1) throws SAXException, IOException {
+      public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException {
 
-        // If we return null here, it will cause the HTTP request to be made.
-        return new InputSource(new StringReader(""));
+        // Note: returning null here will cause the HTTP request to be made.
+
+        if ("http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd".equals(systemId)) {
+          return new InputSource(new StringReader(""));
+        } else {
+          throw new IllegalArgumentException("Unexpected entity encountered: " + systemId);
+        }
       }
     });
     SAXSource saxSource = new SAXSource(xmlr, new InputSource(xml));

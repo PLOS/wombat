@@ -9,23 +9,21 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
-class JournalTemplateLoader extends DelegatingTemplateLoader {
-  private static final Logger log = LoggerFactory.getLogger(JournalTemplateLoader.class);
+class SiteTemplateLoader extends DelegatingTemplateLoader {
+  private static final Logger log = LoggerFactory.getLogger(SiteTemplateLoader.class);
 
-  private final ImmutableMap<String, TemplateLoader> loaders; // keyed by journal
+  private final ImmutableMap<String, TemplateLoader> loaders; // mapped by site key
 
-  JournalTemplateLoader(JournalThemeMap journalThemeMap) throws IOException {
-    this.loaders = buildLoaders(journalThemeMap);
+  SiteTemplateLoader(SiteSet siteSet) throws IOException {
+    this.loaders = buildLoaders(siteSet);
   }
 
-  private static ImmutableMap<String, TemplateLoader> buildLoaders(JournalThemeMap journalThemeMap)
+  private static ImmutableMap<String, TemplateLoader> buildLoaders(SiteSet siteSet)
       throws IOException {
     ImmutableMap.Builder<String, TemplateLoader> builder = ImmutableMap.builder();
-    for (Map.Entry<String, Theme> entry : journalThemeMap.asEntrySet()) {
-      String key = entry.getKey();
-      Theme leaf = entry.getValue();
+    for (Site site : siteSet.getSites()) {
+      Theme leaf = site.getTheme();
 
       List<TemplateLoader> loaders = Lists.newArrayList();
       for (Theme theme : leaf.getChain()) {
@@ -33,7 +31,7 @@ class JournalTemplateLoader extends DelegatingTemplateLoader {
       }
 
       MultiTemplateLoader multiLoader = new MultiTemplateLoader(loaders.toArray(new TemplateLoader[loaders.size()]));
-      builder.put(key, multiLoader);
+      builder.put(site.getKey(), multiLoader);
     }
     return builder.build();
   }

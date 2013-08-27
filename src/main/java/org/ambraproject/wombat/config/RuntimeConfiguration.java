@@ -30,7 +30,7 @@ public class RuntimeConfiguration {
   private String solrServer;
   private Boolean trustUnsignedServer;
   private List<Map<String, ?>> themes;
-  private List<Map<String, ?>> journals;
+  private List<Map<String, ?>> sites;
 
   /**
    * Validate values after deserializing.
@@ -99,8 +99,8 @@ public class RuntimeConfiguration {
     return ThemeTree.parse(this.themes, internalDefault);
   }
 
-  public ImmutableMap<String, Theme> getThemesForJournals(ThemeTree themeTree) {
-    return themeTree.matchToJournals(journals);
+  public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
+    return themeTree.matchToSites(sites);
   }
 
   /*

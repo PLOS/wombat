@@ -13,6 +13,8 @@
 
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.config.Site;
+
 import java.io.IOException;
 import java.util.Map;
 
@@ -22,9 +24,8 @@ import java.util.Map;
 public interface SearchService {
 
   /**
-   * Type representing some restriction on the desired search results--for instance, a date range,
-   * or a sort order.  Implementations of SearchService should also provide appropriate implementations
-   * of this interface.
+   * Type representing some restriction on the desired search results--for instance, a date range, or a sort order.
+   * Implementations of SearchService should also provide appropriate implementations of this interface.
    */
   public interface SearchCriterion {
 
@@ -42,17 +43,16 @@ public interface SearchService {
   /**
    * Performs a "simple" search (against all article fields) and returns the results.
    *
-   * @param query term we are searching for
-   * @param journal name of the journal in which to search.  TODO: add a value for "all journals",
-   *     and change this to an enum.
-   * @param start starting result, one-based.  1 will start at the first result.
-   * @param rows max number of results to return
+   * @param query     term we are searching for
+   * @param site      name of the site in which to search.
+   * @param start     starting result, one-based.  1 will start at the first result.
+   * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
    * @param dateRange specifies the date range for the results
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
   // TODO: add parameter for sort order.
-  public Map<?, ?> simpleSearch(String query, String journal, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) throws IOException;
+  public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
+                                SearchCriterion dateRange) throws IOException;
 }

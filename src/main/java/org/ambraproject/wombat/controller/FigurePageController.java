@@ -64,9 +64,9 @@ public class FigurePageController {
   /**
    * Serve a page listing all figures for an article.
    */
-  @RequestMapping("/{journal}/article/figures")
+  @RequestMapping("/{site}/article/figures")
   public String renderFiguresPage(Model model,
-                                  @PathVariable("journal") String journal,
+                                  @PathVariable("site") String site,
                                   @RequestParam("doi") String articleId)
       throws IOException {
     Map<?, ?> articleMetadata;
@@ -78,15 +78,15 @@ public class FigurePageController {
     model.addAttribute("article", articleMetadata);
     model.addAttribute("figures", buildFigureViewList(articleMetadata));
 
-    return journal + "/ftl/article/figures";
+    return site + "/ftl/article/figures";
   }
 
   /**
    * Serve a page displaying a single figure.
    */
-  @RequestMapping("/{journal}/article/figure")
+  @RequestMapping("/{site}/article/figure")
   public String renderFigurePage(Model model,
-                                 @PathVariable("journal") String journal,
+                                 @PathVariable("site") String site,
                                  @RequestParam("id") String figureId)
       throws IOException {
     Map<?, ?> figureMetadata;
@@ -100,15 +100,15 @@ public class FigurePageController {
     String parentArticleId = (String) figureMetadata.get("parentArticleId");
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleId));
 
-    return journal + "/ftl/article/figure";
+    return site + "/ftl/article/figure";
   }
 
   /**
    * Serve an asset file as the response body. Forward a stream from the SOA.
    */
-  @RequestMapping("/{journal}/article/asset")
+  @RequestMapping("/{site}/article/asset")
   public void serveAsset(HttpServletResponse response,
-                         @PathVariable("journal") String journal,
+                         @PathVariable("site") String site,
                          @RequestParam("id") String assetId)
       throws IOException {
     // TODO: Set response headers

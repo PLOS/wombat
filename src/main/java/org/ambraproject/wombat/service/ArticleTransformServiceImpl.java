@@ -162,10 +162,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
 
   @Override
-  public void transform(String siteKey, String articleId, InputStream xml, OutputStream html)
+  public void transform(String siteKey, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
     Preconditions.checkNotNull(siteKey);
-    Preconditions.checkNotNull(articleId);
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
 

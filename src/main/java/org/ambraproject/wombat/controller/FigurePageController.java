@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.service.ArticleNotFoundException;
+import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
 import org.apache.commons.io.IOUtils;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -26,6 +28,8 @@ public class FigurePageController {
 
   @Autowired
   private SoaService soaService;
+  @Autowired
+  private ArticleTransformService articleTransformService;
 
   /*
    * Dereference keys given in "article.figures" to find assets from "article.assets".
@@ -33,7 +37,7 @@ public class FigurePageController {
    *
    * TODO: Do this entirely in FreeMarker?
    */
-  private static List<?> buildFigureViewList(Map<?, ?> articleMetadata) {
+  private List<?> buildFigureViewList(String site, Map<?, ?> articleMetadata) {
     Map<?, ?> assets = (Map<?, ?>) articleMetadata.get("assets");
     List<Map<?, ?>> figureMetadataList = (List<Map<?, ?>>) articleMetadata.get("figures");
 
@@ -41,7 +45,15 @@ public class FigurePageController {
     for (Map<?, ?> figureMetadata : figureMetadataList) {
       String assetId = (String) figureMetadata.get("id");
       Map<?, ?> asset = (Map<?, ?>) assets.get(assetId);
-      Object originalAsset = asset.get(figureMetadata.get("original"));
+      Map<?, ?> originalAsset = (Map<?, ?>) asset.get(figureMetadata.get("original"));
+
+      String description = (String) originalAsset.get("description");
+      try {
+        String descriptionHtml = articleTransformService.transformExcerpt(site, description, "desc");
+        ((Map<String, Object>) originalAsset).put("descriptionHtml", descriptionHtml);
+      } catch (TransformerException e) {
+        throw new RuntimeException(e);
+      }
 
       List<String> thumbnailAssetIds = (List<String>) figureMetadata.get("thumbnails");
       List<Object> thumbnailAssets = Lists.newArrayListWithCapacity(thumbnailAssetIds.size());
@@ -76,7 +88,7 @@ public class FigurePageController {
       throw new ArticleNotFoundException(articleId);
     }
     model.addAttribute("article", articleMetadata);
-    model.addAttribute("figures", buildFigureViewList(articleMetadata));
+    model.addAttribute("figures", buildFigureViewList(site, articleMetadata));
 
     return site + "/ftl/article/figures";
   }

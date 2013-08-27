@@ -14,7 +14,7 @@
 
       <figcaption>
       ${figure.original.title}.
-      ${figure.original.description} <#-- TODO: This is untransformed XML; should be transformed to HTML. -->
+      ${figure.original.descriptionHtml}
         <a href="figure?id=${article.doi}">More »</a>
       </figcaption>
 

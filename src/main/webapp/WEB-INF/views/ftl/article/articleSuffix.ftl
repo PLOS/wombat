@@ -1,11 +1,13 @@
 <nav>
   <ul class="article-buttons">
+  <#if article.figures?? && article.figures?size &gt; 0 >
     <li class="menuitem">
-      <a class="btn-lg">
+      <a class="btn-lg" href="article/figures?doi=${article.doi}">
         <span class="arrow">View</span>
-        Figures
+        Figures (${article.figures?size})
       </a>
     </li>
+  </#if>
     <li class="menuitem">
       <a class="btn-lg">
         <span class="arrow">View</span>

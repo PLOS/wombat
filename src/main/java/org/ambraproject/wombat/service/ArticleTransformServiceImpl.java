@@ -1,11 +1,16 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.config.Theme;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +34,11 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.SequenceInputStream;
 import java.io.StringReader;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Map;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
@@ -42,6 +51,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private SiteSet siteSet;
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
+  @Autowired
+  private Charset charset;
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
@@ -207,6 +218,38 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     transformer.transform(saxSource, new StreamResult(html));
 
     log.debug("Finished XML transformation");
+  }
+
+  @Override
+  public void transformExcerpt(String siteKey, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
+      throws IOException, TransformerException {
+    Preconditions.checkNotNull(siteKey);
+    Preconditions.checkNotNull(xmlExcerpt);
+    Preconditions.checkNotNull(html);
+    Preconditions.checkArgument(!Strings.isNullOrEmpty(enclosingTag));
+
+    // Build a stream that contains the original stream surrounded by tags.
+    // To avoid dumping the original stream into memory, append two mini-streams.
+    InputStream prefix = IOUtils.toInputStream('<' + enclosingTag + '>', charset);
+    InputStream suffix = IOUtils.toInputStream("</" + enclosingTag + '>', charset);
+    List<InputStream> streams = ImmutableList.of(prefix, xmlExcerpt, suffix);
+    InputStream concatenated = new SequenceInputStream(Iterators.asEnumeration(streams.iterator()));
+
+    transform(siteKey, concatenated, html);
+  }
+
+  @Override
+  public String transformExcerpt(String siteKey, String xmlExcerpt, String enclosingTag) throws TransformerException {
+    StringWriter html = new StringWriter();
+    OutputStream outputStream = new WriterOutputStream(html, charset);
+    InputStream inputStream = IOUtils.toInputStream(xmlExcerpt, charset);
+    try {
+      transformExcerpt(siteKey, inputStream, outputStream, enclosingTag);
+      outputStream.close(); // to flush (StringWriter doesn't require a finally block)
+    } catch (IOException e) {
+      throw new RuntimeException(e); // unexpected, since both streams are in memory
+    }
+    return html.toString();
   }
 
 }

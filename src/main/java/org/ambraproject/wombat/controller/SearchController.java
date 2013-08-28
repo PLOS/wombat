@@ -67,7 +67,6 @@ public class SearchController {
     // http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/view.html#view-velocity
     model.addAttribute("selectedSortOrder", sortOrder);
     model.addAttribute("selectedDateRange", dateRange);
-    model.addAttribute("currentQuery", query);
 
     Site site = siteSet.getSite(siteParam);
     model.addAttribute("searchResults", searchService.simpleSearch(query, site, start, RESULTS_PER_PAGE, sortOrder,

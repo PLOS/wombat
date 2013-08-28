@@ -12,7 +12,7 @@
 
     <div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
       <form id="sortAndFilterSearchResults" action="search" method="get">
-        <input type="hidden" name="q" value="${currentQuery}" />
+        <input type="hidden" name="q" value="${RequestParameters.q}" />
         <div class="filter-option date">
           <h5>Filter by date</h5>
           <select name="dateRange">
@@ -99,7 +99,7 @@
         </#list>
 
         <#assign pages = (searchResults.numFound / resultsPerPage)?ceiling />
-        <#if pages &gt; 1>
+        <#if pages gt 1>
 >         <nav id="article-pagination" class="nav-pagination">
             <a class="previous switch" data-method="previous">Previous Page</a>
             <#list 1..pages as i>

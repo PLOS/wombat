@@ -42,12 +42,13 @@ public class SearchController {
 
   @RequestMapping("/{site}/search")
   public String search(Model model, @PathVariable("site") String siteParam, @RequestParam("q") String query,
+                       @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
                        @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
-
-    // TODO: paging.  Initialize this from params.
     int start = 1;
-    model.addAttribute("currentPage", start);
+    if (page != null) {
+      start = (page - 1) * RESULTS_PER_PAGE + 1;
+    }
     model.addAttribute("resultsPerPage", RESULTS_PER_PAGE);
 
     SolrSearchService.SolrSortOrder sortOrder = SolrSearchService.SolrSortOrder.RELEVANCE;

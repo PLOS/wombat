@@ -99,18 +99,29 @@
         </#list>
 
         <#assign pages = (searchResults.numFound / resultsPerPage)?ceiling />
+        <#assign currentPage = (RequestParameters.page!1)?number />
         <#if pages gt 1>
 >         <nav id="article-pagination" class="nav-pagination">
-            <a class="previous switch" data-method="previous">Previous Page</a>
+            <#if currentPage gt 1>
+              <a href="search?<@replaceParams params=RequestParameters name="page" value=currentPage - 1 />" class="previous switch" data-method="previous">Previous Page</a>
+            </#if>
             <#list 1..pages as i>
               <#assign linkClass = (i == currentPage)?string("number seq active text-color", "number seq text-color") />
-              <a class="${linkClass}" data-page="${i}">${i}</a>
+              <#if currentPage == i >
+
+                <#-- TODO: this should really be a span, not an a, but that messes up the styling right now. -->
+                <a class="${linkClass}" data-page="${i}">${i}</a>
+              <#else>
+                <a href="search?<@replaceParams params=RequestParameters name="page" value=i />" class="${linkClass}" data-page="${i}">${i}</a>
+              </#if>
             </#list>
             <#-- TODO: logic on when to add these
               <span class="skip">...</span>
               <a class="number last" data-page="10">10</a>
             -->
-            <a class="next switch" data-method="next">Next Page</a>
+            <#if currentPage lt pages>
+              <a href="search?<@replaceParams params=RequestParameters name="page" value=currentPage + 1 />" class="next switch" data-method="next">Next Page</a>
+            </#if>
           </nav>
         </#if>
       </section>

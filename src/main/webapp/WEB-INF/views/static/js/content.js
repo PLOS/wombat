@@ -7,7 +7,6 @@ var SiteContent = function () {
 
     //global dom references
     self.$modalInfoWindow = $('.modal-info-window');
-    self.$articlePagination = $('#article-pagination');
 
     //global variables
     self.windowHeight = self.$modalInfoWindow.height();
@@ -36,73 +35,7 @@ var SiteContent = function () {
       e.preventDefault();
       self.hideModalTab($(this));
     });
-
-    self.$articlePagination.find('.number').click(function (e) {
-      e.preventDefault();
-      self.gotoResultsPage($(this));
-    });
-
-    self.$articlePagination.find('.switch').click(function (e) {
-      e.preventDefault();
-      self.switchResultsPage($(this));
-    });
-
   } //end init
-
-
-  self.gotoResultsPage = function ($pageLink) {
-    var pageNumber = $pageLink.attr('data-page');
-
-    self.$articlePagination.find('.number.active').removeClass('active');
-    $pageLink.addClass('active');
-
-    self.loadPage(pageNumber);
-
-  }
-
-  self.switchResultsPage = function ($pageLink) {
-    var pageNumber = parseInt(self.$articlePagination.find('.number.active').attr('data-page'));
-    var switchMethod = $pageLink.attr('data-method');
-
-    var $activePageLink = self.$articlePagination.find('.number.active');
-
-    if (switchMethod == "previous") {
-      if (pageNumber != 1) {
-        $activePageLink.removeClass('active');
-        pageNumber--;
-        $activePageLink.prev().addClass('active');
-        self.loadPage(pageNumber);
-      }
-    } else if (switchMethod == "next") {
-      var numSeq = self.$articlePagination.find('a.seq').length;
-      var totalPages = parseInt(self.$articlePagination.find('a.last').attr('data-page'));
-
-      if (pageNumber != totalPages) {
-        $activePageLink.removeClass('active');
-        pageNumber++;
-        if (numSeq == pageNumber) {
-          //PL-INT - if this is the last element in the sequence of page numbers, update pagination, otherwise go to the next page
-          $activePageLink.next().addClass('active');
-          self.loadPage(pageNumber);
-        } else {
-          $activePageLink.next().addClass('active');
-          self.loadPage(pageNumber);
-        } //end check for end of sequence
-
-      } // end check for end of pages
-
-    } //end next page method
-
-  } //end switchResultsPage
-
-  self.loadPage = function (pageNumber) {
-    //PL-INT - insert logic to navigate to the chosen page. The ajax call below is to static content
-    $.ajax({
-      url: "temp/ajax/articles-recent.html"
-    }).done(function (data) {
-        $("#article-results").html(data);
-      });
-  }
 
   self.hideModalTab = function ($modalTab) {
 

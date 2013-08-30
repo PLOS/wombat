@@ -12,7 +12,7 @@
 
     <div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
       <form id="sortAndFilterSearchResults" action="search" method="get">
-        <input type="hidden" name="q" value="${currentQuery}" />
+        <input type="hidden" name="q" value="${RequestParameters.q}" />
         <div class="filter-option date">
           <h5>Filter by date</h5>
           <select name="dateRange">
@@ -40,7 +40,7 @@
     <!--end filter-box-->
 
     <div class="filter-container clearfix">
-      <h3>${searchResults.numFound} results found</h3>
+      <h3>${searchResults.numFound} ${(searchResults.numFound == 1)?string("result", "results")} found</h3>
       <button class="filter-button coloration-white-on-color">
         <span class="text">Filter & Sort</span>
         <span class="arrow">expand</span class="arrow">
@@ -97,6 +97,51 @@
 
           </article>
         </#list>
+
+        <#-- Search results paging.  This is the basic macro that displays a series of numbered page links.
+             We use various combinations of it and ellipses below.  -->
+        <#macro pageLinkRange first last selected>
+          <#list first..last as i>
+            <#assign linkClass = (i == selected)?string("number seq active text-color", "number seq text-color") />
+            <#if selected == i >
+
+            <#-- TODO: this should really be a span, not an a, but that messes up the styling right now. -->
+              <a class="${linkClass}" data-page="${i}">${i}</a>
+            <#else>
+              <a href="search?<@replaceParams params=RequestParameters name="page" value=i />" class="${linkClass}" data-page="${i}">${i}</a>
+            </#if>
+          </#list>
+        </#macro>
+
+        <#assign numPages = (searchResults.numFound / resultsPerPage)?ceiling />
+        <#assign currentPage = (RequestParameters.page!1)?number />
+        <#if numPages gt 1>
+          <nav id="article-pagination" class="nav-pagination">
+            <#if currentPage gt 1>
+              <a href="search?<@replaceParams params=RequestParameters name="page" value=currentPage - 1 />" class="previous switch">Previous Page</a>
+            </#if>
+            <#if numPages lt 10>
+              <@pageLinkRange first=1 last=numPages selected=currentPage />
+            <#elseif currentPage lt 4>
+              <@pageLinkRange first=1 last=4 selected=currentPage />
+              <span class="skip">...</span>
+              <@pageLinkRange first=numPages last=numPages selected=currentPage />
+            <#else>
+              <@pageLinkRange first=1 last=1 selected=currentPage />
+              <span class="skip">...</span>
+              <#if currentPage lt numPages - 4>
+                <@pageLinkRange first=currentPage - 1 last=currentPage + 1 selected=currentPage />
+                <span class="skip">...</span>
+                <@pageLinkRange first=numPages - 1 last=numPages selected=currentPage />
+              <#else>
+                <@pageLinkRange first=currentPage - 1 last=numPages selected=currentPage />
+              </#if>
+            </#if>
+            <#if currentPage lt numPages>
+              <a href="search?<@replaceParams params=RequestParameters name="page" value=currentPage + 1 />" class="next switch">Next Page</a>
+            </#if>
+          </nav>
+        </#if>
       </section>
       <#include "../common/bottomMenu/bottomMenu.ftl" />
     </div>

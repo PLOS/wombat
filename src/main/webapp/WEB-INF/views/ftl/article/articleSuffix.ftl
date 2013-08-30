@@ -46,7 +46,7 @@
 <nav class="article-save-options">
   <div class="button-pair clearfix">
     <a class="rounded coloration-white-on-color">Download Article (PDF)</a>
-    <a class="rounded coloration-white-on-color">E-Mail this Article</a>
+    <a class="rounded coloration-white-on-color">Email this Article</a>
   </div>
   <a class="rounded full save-article" data-list-type="individual"><span class="plus">+</span> Add article to
     my list</a>

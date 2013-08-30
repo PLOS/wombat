@@ -29,6 +29,7 @@
   font-size: 1.7em;
   font-weight: bold;
   font-family: 'Arial', sans-serif;
+  margin-top: 0;
 }
 
 #article-content .retraction p {
@@ -171,10 +172,6 @@
   border-bottom: 1px solid #d3d3d3;
   padding-bottom: 20px;
   margin-bottom: 20px;
-}
-
-#page-results .article-item:last-child {
-  margin-bottom: 45px;
 }
 
 #page-results #article-items.title-only .article-item .author-list,
@@ -456,15 +453,12 @@
 .figure-small figcaption {
   font-weight: bold;
   font-size: 1.2em;
+  margin-bottom: 1em;
 }
 
 .figure-small figcaption a {
   font-weight: normal;
   color: #336699;
-}
-
-.figure-small .figure-image {
-  margin-top: 10px;
 }
 
 .figure-small .figure-expand {
@@ -497,6 +491,13 @@
   width: 100%;
   top: 0;
   left: 0;
+}
+
+/* Figures */
+.accordion-content figure {
+  background: #EFEFEF;
+  margin: 30px -10px;
+  padding: 15px 20px 25px;
 }
 
 html:not(.positionfixed) .modal-info-window.tab,
@@ -749,6 +750,12 @@ html:not(.positionfixed) #page-figure #site-header-container {
   font-size: 1em;
 }
 
+/* taxonomy hierarchy colors */
+.grey-on-gold {
+  background: #4a0100;
+  color: #ffffff;
+}
+
 /* Journal-neutral coloring */
 body .coloration-white-on-color {
   background: #4a0100;
@@ -785,4 +792,49 @@ body .active.text-color {
 #page-recent-history #menu-recent {
   background: #4a0100;
   color: #ffffff;
+}
+
+/* References */
+ol.references {
+  margin: 1em 0;
+  padding: 0 0 0 2em;
+  font-size: 1.2em;
+}
+
+ol.references li {
+  list-style-type: none;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+ol.references li span.label {
+  /* margin-left: -26px; */
+  /* float: left; */
+  width: 20px;
+  text-align: right;
+  position: absolute;
+  left: -2em;
+}
+
+ol.references ul.find-nolinks {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+ol.references ul.find {
+  margin: 0;
+  padding: 0;
+  min-height: 1em;
+}
+
+ol.references ul.find li {
+  float: left;
+  margin: 0 4px 0 20px;
+  list-style-type: disc;
+}
+
+ol.references ul.find li:first-child {
+  margin-left: 0px;
+  list-style-type: none;
 }

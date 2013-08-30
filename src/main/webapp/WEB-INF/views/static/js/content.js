@@ -24,6 +24,11 @@ var SiteContent = function () {
       self.showAuthorInfo($(this));
     });
 
+    $('.author-more, .author-less').click(function (e) {
+      e.preventDefault();
+      self.toggleMoreAuthors($(this));
+    });
+
     $('.filter-button').click(function (e) {
       self.toggleFilterButton($(this));
     });
@@ -45,6 +50,16 @@ var SiteContent = function () {
     self.$articlePagination.find('.switch').click(function (e) {
       e.preventDefault();
       self.switchResultsPage($(this));
+    });
+
+    // attach event hanlers for in-page links. this also wraps the handling 
+    // of showing references in the reference panel.
+    // 
+    // FIXME: this selector probably needs to be revised based on actual 
+    // content
+    $('.accordion-content a[href^=#pone]').click(function (e) {
+      e.preventDefault();
+      self.navigateToInPageLink($(e.target));
     });
 
   } //end init
@@ -163,7 +178,17 @@ var SiteContent = function () {
         $("#article-results").html(data);
       });
     // END PL-INT
-  } //end loadArticleList  
+  } //end loadArticleList
+
+  self.toggleMoreAuthors = function ($clickedLink) {
+    var $moreLink = $('.author-more');
+    var $lessLink = $('.author-less');
+    var $moreList = $('.more-authors-list');
+    $moreLink.toggle();
+    $moreList.toggle(100, function () {
+      $lessLink.toggle();
+    });
+  }
 
   self.showAuthorInfo = function ($authorLink) {
     var authorID = $authorLink.attr('data-author-id'); //PL-INT - determine what info needs be captured here
@@ -243,7 +268,7 @@ var SiteContent = function () {
     self.$modalInfoWindow.removeClass('active');
 
     if (removeContent == true) {
-      self.$modalInfoWindow.find(".modal-content").empty(); //clear the window 
+      self.$modalInfoWindow.find(".modal-content").empty(); //clear the window
     }
 
     var modalHidePosition;
@@ -316,6 +341,7 @@ var SiteContent = function () {
 
       $filterButton.removeClass('active');
       $filterBox.removeClass('active');
+      self.resetFilterBox($filterBox);
 
     } else { //show filter box and add active state. Enable cancel and apply
 
@@ -341,9 +367,17 @@ var SiteContent = function () {
 
     switch (filterFunction) {
       case 'date-and-sort':
+        var dateVal = $filterBox.find('.date select').val();
+        var sortVal = $filterBox.find('.sort select').val();
+
+        //PL-INT - if you use this function, filter logic should go here.
+
         self.toggleFilterButton($filterButton); //closes the filter box
         break;
     }
+
+    self.resetFilterBox($filterBox); //in all cases, reset the dropdowns after a selection is made
+
   }
 
   self.resetFilterBox = function ($filterBox) {
@@ -369,6 +403,86 @@ var SiteContent = function () {
     }
   }
 
+  self.showReference = function (ref_id) {
+    // first off, close any open reference
+    self.hideReference();
+
+    // grab the parent LI element as it has the content we want to show
+    var $ref = $(ref_id).parent();
+
+    // generate the skeleton markup for the panel
+    var ref_panel_markup = [
+      "<div id='reference-panel'>",
+      "<a class='close coloration-text-color'>v</a>",
+      "<div id='ref-panel-content'>",
+      "</div>",
+      "</div>"
+    ].join("\n");
+
+    // append it to the DOM as a child of the main site wrapper
+    $('#container-main').append($(ref_panel_markup));
+
+    // append the content of the reference to the container in the panel
+    $('#ref-panel-content').append($ref.html());
+
+    // allow X to close the reference panel
+    $("#reference-panel .close").click(self.hideReference);
+
+    // attach a scroll handler to remove the element on scroll
+    $(window).on('scroll', self.referenceScrollHandler);
+
+  }
+
+  self.hideReference = function () {
+    // remove the ref panel from the DOM
+    $('#reference-panel').remove();
+
+    // be courteous and stop listening for scroll events when we don't need to
+    $(window).off('scroll', self.referenceScrollHandler);
+  }
+
+  self.referenceScrollHandler = function () {
+    // dispose of the panel immediately; no need to keep it upon scroll
+    self.hideReference();
+  }
+
+  self.navigateToInPageLink = function ($clicked_el) {
+    // grab the target href, which is the ID of the ref (duh).
+    // note that the href is also already pre-formed for a DOM query for the 
+    // element ID ('#test')
+    var target_id = $clicked_el.attr('href');
+    // remove period in system-generated ref ID (it conflicts with the class designator)
+    target_id = target_id.replace(/\./, "\\.")
+
+    var target_el = $(target_id);
+
+    // handle special reference link case by testing to see if target_el is a 
+    // child of the reference list
+    var references_test = target_el.closest('ol.references');
+
+    if (references_test.length) {
+      this.showReference(target_id);
+
+      // all other in-page links scroll to target
+    } else {
+      // figure out which accordion panel the target link is in.
+      var panel_to_open = target_el.closest('li.accordion-item');
+
+      // if accordion panel is already open, then 
+      if (panel_to_open.hasClass('expanded')) {
+        $('html, body').scrollTop(target_el.offset().top);
+
+      } else {
+        // close current accordion panel and open new accordion panel. pass 
+        // toggleMainAccordion the 'a' element as that's what it expects.
+        // pass target element to toggleMainAccordion as second arg to indicate 
+        // we want to scroll to it
+        ambraNavigation.toggleMainAccordion(panel_to_open.children('a.expander'), target_el);
+      }
+    }
+
+
+  }
 }
 
 

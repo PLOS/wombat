@@ -33,6 +33,8 @@ import java.io.IOException;
 @Controller
 public class SearchController {
 
+  private static final int RESULTS_PER_PAGE = 15;
+
   @Autowired
   private SiteSet siteSet;
   @Autowired
@@ -40,12 +42,14 @@ public class SearchController {
 
   @RequestMapping("/{site}/search")
   public String search(Model model, @PathVariable("site") String siteParam, @RequestParam("q") String query,
+                       @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
                        @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
-
-    // TODO: paging.  Initialize these from params.
     int start = 1;
-    int rows = 25;
+    if (page != null) {
+      start = (page - 1) * RESULTS_PER_PAGE + 1;
+    }
+    model.addAttribute("resultsPerPage", RESULTS_PER_PAGE);
 
     SolrSearchService.SolrSortOrder sortOrder = SolrSearchService.SolrSortOrder.RELEVANCE;
     if (!Strings.isNullOrEmpty(sortOrderParam)) {
@@ -64,10 +68,10 @@ public class SearchController {
     // http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/view.html#view-velocity
     model.addAttribute("selectedSortOrder", sortOrder);
     model.addAttribute("selectedDateRange", dateRange);
-    model.addAttribute("currentQuery", query);
 
     Site site = siteSet.getSite(siteParam);
-    model.addAttribute("searchResults", searchService.simpleSearch(query, site, start, rows, sortOrder, dateRange));
+    model.addAttribute("searchResults", searchService.simpleSearch(query, site, start, RESULTS_PER_PAGE, sortOrder,
+        dateRange));
     return site.getKey() + "/ftl/search/searchResults";
   }
 }

@@ -52,12 +52,9 @@ var SiteContent = function () {
       self.switchResultsPage($(this));
     });
 
-    // attach event hanlers for in-page links. this also wraps the handling 
+    // attach event handlers for in-page links. this also wraps the handling
     // of showing references in the reference panel.
-    // 
-    // FIXME: this selector probably needs to be revised based on actual 
-    // content
-    $('.accordion-content a[href^=#pone]').click(function (e) {
+    $('a.xref').click(function (e) {
       e.preventDefault();
       self.navigateToInPageLink($(e.target));
     });

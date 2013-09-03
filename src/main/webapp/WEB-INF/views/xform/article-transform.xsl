@@ -2346,7 +2346,7 @@
   <!-- Ambra modifications (default if not one of the following ref-types (covers ref-type supplementary-material)) -->
   <xsl:template match="xref">
     <xsl:call-template name="assign-id"/>
-    <a href="#{@rid}">
+    <a class="xref" href="#{@rid}">
       <xsl:choose>
         <!-- if xref not empty -->
         <xsl:when test="child::node()">
@@ -2371,7 +2371,7 @@
             <xsl:text>, </xsl:text>
           </span>
         </xsl:if>
-        <a href="#{@rid}">
+        <a class="xref" href="#{@rid}">
           <xsl:apply-templates/>
         </a>
       </sup>
@@ -2400,7 +2400,7 @@
     <xsl:if test="local-name(preceding-sibling::node()[1])='xref'">
       <xsl:text>,</xsl:text>
     </xsl:if>
-    <a href="#{@rid}">
+    <a class="xref" href="#{@rid}">
       <xsl:apply-templates/>
     </a>
   </xsl:template>
@@ -2408,7 +2408,7 @@
   <!-- Ambra-specific template -->
   <!-- added translate so names and ids of figs have dashes (for figure enhancement) -->
   <xsl:template match="xref[@ref-type='fig'] | xref[@ref-type='table']">
-    <a href="#{translate(@rid, '.', '-')}">
+    <a class="xref" href="#{translate(@rid, '.', '-')}">
       <xsl:apply-templates/>
     </a>
   </xsl:template>

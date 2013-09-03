@@ -56,7 +56,7 @@ var AmbraNavigation = function () {
     });
 
     $articleText.html($accordionList);
-  }
+  };
 
   /**
    * Initialize page elements.
@@ -96,7 +96,7 @@ var AmbraNavigation = function () {
 
     self.checkFixedSupport();
 
-  }
+  };
 
   self.toggleSearch = function () {
     var isActive = self.$searchExpanded.hasClass('active');
@@ -114,12 +114,12 @@ var AmbraNavigation = function () {
         self.toggleSearch();
       });
     }
-  }
+  };
 
   self.executeSearch = function () {
     var searchVal = self.$searchExpanded.find('#search-input').val();
     //PL-INT - implement search functionality here, using searchVal as the data entered into search field
-  }
+  };
 
   self.toggleMainMenu = function () {
     var isInactive = self.$containerMain.hasClass('inactive');
@@ -128,7 +128,7 @@ var AmbraNavigation = function () {
     } else { //show the site menu
       siteContentClass.findOpenModals(ambraNavigation.showMainMenu); //if any other modals are open we should close them
     }
-  }
+  };
 
   self.hideMainMenu = function () {
 
@@ -142,14 +142,14 @@ var AmbraNavigation = function () {
       }
 
     });
-  }
+  };
 
   self.showMainMenu = function () {
     self.$fullMenu.show();
     self.$containerMain.addClass('inactive');
     self.$containerMainOverlay.addClass('active'); //prevent the content from being interacted with when site menu is open
     self.$containerMain.animate({'left': '80%' }, 300);
-  }
+  };
 
   // Accordion menus which appear in the body of the site
   self.toggleMainAccordion = function ($activeAccordion, $scroll_target) {
@@ -213,7 +213,7 @@ var AmbraNavigation = function () {
 
     }
 
-  }
+  };
 
   self.scrollToTop = function () {
 
@@ -223,7 +223,7 @@ var AmbraNavigation = function () {
       $("html, body").animate({ scrollTop: 0 }, 300);
     }
 
-  }
+  };
 
   self.checkFixedSupport = function () { //see if the browser supports fixed positioning for scrolling modals
 
@@ -292,7 +292,7 @@ var AmbraNavigation = function () {
 
   }
 
-}
+};
 
 var ambraNavigation;
 

@@ -61,7 +61,7 @@ var SiteContent = function () {
       self.navigateToInPageLink($(e.target));
     });
 
-  } //end init
+  }; //end init
 
   self.hideModalTab = function ($modalTab) {
 
@@ -83,13 +83,13 @@ var SiteContent = function () {
 
     }
 
-  }
+  };
 
   self.showModalTab = function () {
 
     $('.modal-tab').css({'display': 'block'}).animate({'top': '-35px'}, 100);
 
-  }
+  };
 
   self.figureModalShown = function () {
 
@@ -98,7 +98,7 @@ var SiteContent = function () {
       self.hideModalWindow(self.showModalTab, false, "tab"); //callback, removeContent
     });
 
-  }
+  };
 
   self.switchArticleListMethod = function ($currentButton) { //switch between different methods of displaying article content
 
@@ -112,7 +112,7 @@ var SiteContent = function () {
       self.loadArticleList(listMethod);
     }
 
-  } //end switchArticleListMethod
+  }; //end switchArticleListMethod
 
   self.loadArticleList = function (listMethod) {
     //PL-INT - Put in logic to call the proper article result set and replace ajax call below
@@ -122,7 +122,7 @@ var SiteContent = function () {
         $("#article-results").html(data);
       });
     // END PL-INT
-  } //end loadArticleList
+  }; //end loadArticleList
 
   self.toggleMoreAuthors = function ($clickedLink) {
     var $moreLink = $('.author-more');
@@ -132,7 +132,7 @@ var SiteContent = function () {
     $moreList.toggle(100, function () {
       $lessLink.toggle();
     });
-  }
+  };
 
   self.showAuthorInfo = function ($authorLink) {
     var authorID = $authorLink.attr('data-author-id'); //PL-INT - determine what info needs be captured here
@@ -157,7 +157,7 @@ var SiteContent = function () {
 
     } //end support for fixed position
 
-  } //end showAuthorInfo
+  }; //end showAuthorInfo
 
   self.authorModalShown = function (options) {
 
@@ -170,7 +170,7 @@ var SiteContent = function () {
 
     self.loadAuthorInfo(authorID);
 
-  } //end authorModalShown
+  }; //end authorModalShown
 
   self.loadAuthorInfo = function (options) {
 
@@ -182,7 +182,7 @@ var SiteContent = function () {
         self.$modalInfoWindow.find(".modal-content").html(data);
       });
 
-  } //end loadAuthorInfo
+  }; //end loadAuthorInfo
 
   self.findOpenModals = function (callback) {
 
@@ -205,7 +205,7 @@ var SiteContent = function () {
 
     }
 
-  }
+  };
 
   self.hideModalWindow = function (callback, removeContent, method) {
 
@@ -239,7 +239,7 @@ var SiteContent = function () {
 
     }).promise();
 
-  } //end hideModalWindow
+  }; //end hideModalWindow
 
   self.showModalWindow = function (callback, options, method) {
 
@@ -267,15 +267,15 @@ var SiteContent = function () {
 
     });
 
-  } //end showModalWindow
+  }; //end showModalWindow
 
   self.disableContentScrolling = function () {
     ambraNavigation.$containerMain.addClass('inactive');
-  }
+  };
 
   self.enableContentScrolling = function () {
     ambraNavigation.$containerMain.removeClass('inactive');
-  }
+  };
 
   self.toggleFilterButton = function ($filterButton) {
     var isActive = $filterButton.hasClass('active');
@@ -302,7 +302,7 @@ var SiteContent = function () {
 
     }
 
-  }
+  };
 
   self.applyFilter = function ($filterBox, $filterButton) {
     var filterFunction = $filterBox.attr('data-function');
@@ -322,7 +322,7 @@ var SiteContent = function () {
 
     self.resetFilterBox($filterBox); //in all cases, reset the dropdowns after a selection is made
 
-  }
+  };
 
   self.resetFilterBox = function ($filterBox) {
 
@@ -330,7 +330,7 @@ var SiteContent = function () {
       $(this).prop('selectedIndex', 0); //sets all select boxes to the first option in the list
     });
 
-  }
+  };
 
   self.setDisplayOption = function ($displayButton) {
     var isActive = $displayButton.hasClass('active');
@@ -345,7 +345,7 @@ var SiteContent = function () {
       $('#article-items').attr('class', displayType);
 
     }
-  }
+  };
 
   self.showReference = function (ref_id) {
     // first off, close any open reference
@@ -375,7 +375,7 @@ var SiteContent = function () {
     // attach a scroll handler to remove the element on scroll
     $(window).on('scroll', self.referenceScrollHandler);
 
-  }
+  };
 
   self.hideReference = function () {
     // remove the ref panel from the DOM
@@ -383,12 +383,12 @@ var SiteContent = function () {
 
     // be courteous and stop listening for scroll events when we don't need to
     $(window).off('scroll', self.referenceScrollHandler);
-  }
+  };
 
   self.referenceScrollHandler = function () {
     // dispose of the panel immediately; no need to keep it upon scroll
     self.hideReference();
-  }
+  };
 
   self.navigateToInPageLink = function ($clicked_el) {
     // grab the target href, which is the ID of the ref (duh).
@@ -427,7 +427,7 @@ var SiteContent = function () {
 
 
   }
-}
+};
 
 
 var siteContentClass;

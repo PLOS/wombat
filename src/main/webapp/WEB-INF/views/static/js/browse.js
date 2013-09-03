@@ -20,7 +20,7 @@ var AmbraBrowse = function () {
     self.bindBrowseForward(); //enable forward navigation on all currently loaded links
     self.bindBrowseBack();
 
-  }
+  };
 
   self.browseForward = function ($browseLink) {
 
@@ -73,7 +73,7 @@ var AmbraBrowse = function () {
 
     } //end hasLoaded
 
-  } // end browseForward
+  }; // end browseForward
 
   self.animateForward = function ($currentLevel, $targetLevel) {
 
@@ -92,7 +92,7 @@ var AmbraBrowse = function () {
 
     });
 
-  }
+  };
 
   self.removeLevel = function (targetLevel) {
 
@@ -101,7 +101,7 @@ var AmbraBrowse = function () {
       $removeLevel.remove();
     }
 
-  }
+  };
 
   self.browseBack = function () {
 
@@ -124,7 +124,7 @@ var AmbraBrowse = function () {
 
     });
 
-  } //end browseBack
+  }; //end browseBack
 
   self.animateBack = function ($currentLevel, $targetLevel) {
 
@@ -176,13 +176,13 @@ var AmbraBrowse = function () {
 
     });
 
-  }
+  };
 
   self.updateLevelInfo = function ($targetLevel) {
     $targetLevel.attr({'data-name': self.levelName }); //update the browse level with the current level name
     self.$topicName.text(self.previousLevelName); //update back button with previous level name
     //console.log('prev: ' + self.previousLevelName + ', current: ' + self.levelName);
-  }
+  };
 
   self.bindBrowseForward = function () {
 
@@ -191,7 +191,7 @@ var AmbraBrowse = function () {
       self.browseForward($(this));
     });
 
-  }
+  };
 
   self.bindBrowseBack = function () {
 
@@ -202,7 +202,7 @@ var AmbraBrowse = function () {
 
   }
 
-}
+};
 
 var ambraBrowse;
 

@@ -10,11 +10,43 @@
       <h2 class="article-title">${article.title}</h2>
 
       <p class="author-list">
-      <#list article.authors as author>
-        <a class="author-info" data-author-id="${author_index}">
+      <#include "maxAuthorsToShow.ftl" />
+      <#macro authorItem author author_index author_has_next>
+        <a class="author-info" data-author-id="${author_index?c}">
         ${author.fullName}</a><#if author_has_next><#-- no space -->,</#if>
-      </#list>
-      </p>
+      </#macro>
+
+      <#if article.authors?size gt maxAuthorsToShow + 1>
+      <#--
+        Put all authors in the range from maxAuthorsToShow-1 to size-1 in the expander.
+        I.e., before clicking the expander, the user sees the first maxAuthorsToShow-1 authors and the last author.
+        If the expander would contain only one author, just show the author instead.
+        -->
+        <#list article.authors as author><#-- Before the expander -->
+          <#if author_index lt (maxAuthorsToShow - 1) >
+            <@authorItem author author_index author_has_next />
+          </#if>
+        </#list>
+        <a class="author-more" class="more-authors active">[...view
+        ${article.authors?size - maxAuthorsToShow} more...],</a>
+          <span class="more-authors-list">
+            <#list article.authors as author><#-- Inside the expander -->
+            <#if author_index gte (maxAuthorsToShow - 1) && author_index lt (article.authors?size - 1) >
+              <@authorItem author author_index author_has_next />
+            </#if>
+            </#list>
+          </span>
+        <@authorItem article.authors[article.authors?size - 1] article.authors?size - 1 false /><#-- Last one after expander -->
+        <a class="author-less" class="less-authors">[ view less ]</a>
+
+      <#else>
+      <#-- List authors with no expander -->
+        <#list article.authors as author>
+          <@authorItem author author_index author_has_next />
+        </#list>
+      </#if>
+
+      </p><#-- end p.author-list -->
 
     <#if articleCorrections?? && articleCorrections?size &gt; 0>
       <#list articleCorrections as correction>

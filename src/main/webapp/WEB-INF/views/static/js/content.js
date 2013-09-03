@@ -7,6 +7,7 @@ var SiteContent = function () {
 
     //global dom references
     self.$modalInfoWindow = $('.modal-info-window');
+    self.$articlePagination = $('#article-pagination');
 
     //global variables
     self.windowHeight = self.$modalInfoWindow.height();
@@ -23,6 +24,11 @@ var SiteContent = function () {
       self.showAuthorInfo($(this));
     });
 
+    $('.author-more, .author-less').click(function (e) {
+      e.preventDefault();
+      self.toggleMoreAuthors($(this));
+    });
+
     $('.filter-button').click(function (e) {
       self.toggleFilterButton($(this));
     });
@@ -35,7 +41,25 @@ var SiteContent = function () {
       e.preventDefault();
       self.hideModalTab($(this));
     });
-  } //end init
+
+    self.$articlePagination.find('.number').click(function (e) {
+      e.preventDefault();
+      self.gotoResultsPage($(this));
+    });
+
+    self.$articlePagination.find('.switch').click(function (e) {
+      e.preventDefault();
+      self.switchResultsPage($(this));
+    });
+
+    // attach event handlers for in-page links. this also wraps the handling
+    // of showing references in the reference panel.
+    $('a.xref').click(function (e) {
+      e.preventDefault();
+      self.navigateToInPageLink($(e.target));
+    });
+
+  }; //end init
 
   self.hideModalTab = function ($modalTab) {
 
@@ -57,13 +81,13 @@ var SiteContent = function () {
 
     }
 
-  }
+  };
 
   self.showModalTab = function () {
 
     $('.modal-tab').css({'display': 'block'}).animate({'top': '-35px'}, 100);
 
-  }
+  };
 
   self.figureModalShown = function () {
 
@@ -72,7 +96,7 @@ var SiteContent = function () {
       self.hideModalWindow(self.showModalTab, false, "tab"); //callback, removeContent
     });
 
-  }
+  };
 
   self.switchArticleListMethod = function ($currentButton) { //switch between different methods of displaying article content
 
@@ -86,7 +110,7 @@ var SiteContent = function () {
       self.loadArticleList(listMethod);
     }
 
-  } //end switchArticleListMethod
+  }; //end switchArticleListMethod
 
   self.loadArticleList = function (listMethod) {
     //PL-INT - Put in logic to call the proper article result set and replace ajax call below
@@ -96,7 +120,17 @@ var SiteContent = function () {
         $("#article-results").html(data);
       });
     // END PL-INT
-  } //end loadArticleList  
+  }; //end loadArticleList
+
+  self.toggleMoreAuthors = function ($clickedLink) {
+    var $moreLink = $('.author-more');
+    var $lessLink = $('.author-less');
+    var $moreList = $('.more-authors-list');
+    $moreLink.toggle();
+    $moreList.toggle(100, function () {
+      $lessLink.toggle();
+    });
+  };
 
   self.showAuthorInfo = function ($authorLink) {
     var authorID = $authorLink.attr('data-author-id'); //PL-INT - determine what info needs be captured here
@@ -121,7 +155,7 @@ var SiteContent = function () {
 
     } //end support for fixed position
 
-  } //end showAuthorInfo
+  }; //end showAuthorInfo
 
   self.authorModalShown = function (options) {
 
@@ -134,7 +168,7 @@ var SiteContent = function () {
 
     self.loadAuthorInfo(authorID);
 
-  } //end authorModalShown
+  }; //end authorModalShown
 
   self.loadAuthorInfo = function (options) {
 
@@ -146,7 +180,7 @@ var SiteContent = function () {
         self.$modalInfoWindow.find(".modal-content").html(data);
       });
 
-  } //end loadAuthorInfo
+  }; //end loadAuthorInfo
 
   self.findOpenModals = function (callback) {
 
@@ -169,14 +203,14 @@ var SiteContent = function () {
 
     }
 
-  }
+  };
 
   self.hideModalWindow = function (callback, removeContent, method) {
 
     self.$modalInfoWindow.removeClass('active');
 
     if (removeContent == true) {
-      self.$modalInfoWindow.find(".modal-content").empty(); //clear the window 
+      self.$modalInfoWindow.find(".modal-content").empty(); //clear the window
     }
 
     var modalHidePosition;
@@ -203,7 +237,7 @@ var SiteContent = function () {
 
     }).promise();
 
-  } //end hideModalWindow
+  }; //end hideModalWindow
 
   self.showModalWindow = function (callback, options, method) {
 
@@ -231,15 +265,15 @@ var SiteContent = function () {
 
     });
 
-  } //end showModalWindow
+  }; //end showModalWindow
 
   self.disableContentScrolling = function () {
     ambraNavigation.$containerMain.addClass('inactive');
-  }
+  };
 
   self.enableContentScrolling = function () {
     ambraNavigation.$containerMain.removeClass('inactive');
-  }
+  };
 
   self.toggleFilterButton = function ($filterButton) {
     var isActive = $filterButton.hasClass('active');
@@ -249,6 +283,7 @@ var SiteContent = function () {
 
       $filterButton.removeClass('active');
       $filterBox.removeClass('active');
+      self.resetFilterBox($filterBox);
 
     } else { //show filter box and add active state. Enable cancel and apply
 
@@ -265,7 +300,7 @@ var SiteContent = function () {
 
     }
 
-  }
+  };
 
   self.applyFilter = function ($filterBox, $filterButton) {
     var filterFunction = $filterBox.attr('data-function');
@@ -274,10 +309,18 @@ var SiteContent = function () {
 
     switch (filterFunction) {
       case 'date-and-sort':
+        var dateVal = $filterBox.find('.date select').val();
+        var sortVal = $filterBox.find('.sort select').val();
+
+        //PL-INT - if you use this function, filter logic should go here.
+
         self.toggleFilterButton($filterButton); //closes the filter box
         break;
     }
-  }
+
+    self.resetFilterBox($filterBox); //in all cases, reset the dropdowns after a selection is made
+
+  };
 
   self.resetFilterBox = function ($filterBox) {
 
@@ -285,7 +328,7 @@ var SiteContent = function () {
       $(this).prop('selectedIndex', 0); //sets all select boxes to the first option in the list
     });
 
-  }
+  };
 
   self.setDisplayOption = function ($displayButton) {
     var isActive = $displayButton.hasClass('active');
@@ -300,9 +343,89 @@ var SiteContent = function () {
       $('#article-items').attr('class', displayType);
 
     }
-  }
+  };
 
-}
+  self.showReference = function (ref_id) {
+    // first off, close any open reference
+    self.hideReference();
+
+    // grab the parent LI element as it has the content we want to show
+    var $ref = $(ref_id).parent();
+
+    // generate the skeleton markup for the panel
+    var ref_panel_markup = [
+      "<div id='reference-panel'>",
+      "<a class='close coloration-text-color'>v</a>",
+      "<div id='ref-panel-content'>",
+      "</div>",
+      "</div>"
+    ].join("\n");
+
+    // append it to the DOM as a child of the main site wrapper
+    $('#container-main').append($(ref_panel_markup));
+
+    // append the content of the reference to the container in the panel
+    $('#ref-panel-content').append($ref.html());
+
+    // allow X to close the reference panel
+    $("#reference-panel .close").click(self.hideReference);
+
+    // attach a scroll handler to remove the element on scroll
+    $(window).on('scroll', self.referenceScrollHandler);
+
+  };
+
+  self.hideReference = function () {
+    // remove the ref panel from the DOM
+    $('#reference-panel').remove();
+
+    // be courteous and stop listening for scroll events when we don't need to
+    $(window).off('scroll', self.referenceScrollHandler);
+  };
+
+  self.referenceScrollHandler = function () {
+    // dispose of the panel immediately; no need to keep it upon scroll
+    self.hideReference();
+  };
+
+  self.navigateToInPageLink = function ($clicked_el) {
+    // grab the target href, which is the ID of the ref (duh).
+    // note that the href is also already pre-formed for a DOM query for the 
+    // element ID ('#test')
+    var target_id = $clicked_el.attr('href');
+    // remove period in system-generated ref ID (it conflicts with the class designator)
+    target_id = target_id.replace(/\./, "\\.")
+
+    var target_el = $(target_id);
+
+    // handle special reference link case by testing to see if target_el is a 
+    // child of the reference list
+    var references_test = target_el.closest('ol.references');
+
+    if (references_test.length) {
+      this.showReference(target_id);
+
+      // all other in-page links scroll to target
+    } else {
+      // figure out which accordion panel the target link is in.
+      var panel_to_open = target_el.closest('li.accordion-item');
+
+      // if accordion panel is already open, then 
+      if (panel_to_open.hasClass('expanded')) {
+        $('html, body').scrollTop(target_el.offset().top);
+
+      } else {
+        // close current accordion panel and open new accordion panel. pass 
+        // toggleMainAccordion the 'a' element as that's what it expects.
+        // pass target element to toggleMainAccordion as second arg to indicate 
+        // we want to scroll to it
+        ambraNavigation.toggleMainAccordion(panel_to_open.children('a.expander'), target_el);
+      }
+    }
+
+
+  }
+};
 
 
 var siteContentClass;

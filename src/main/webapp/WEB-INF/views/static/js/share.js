@@ -8,7 +8,7 @@ var ShareContent = function () {
     //global dom references
     self.$modalInfoWindow = $('.modal-info-window');
     self.$articleItems = $('#article-items');
-    $
+
     self.$savedAmt = $('#saved-amt');
     self.$savedListOptions = $('#saved-list-options');
 
@@ -47,7 +47,7 @@ var ShareContent = function () {
       self.removeAllClick($(this));
     });
 
-  } //end init
+  }; //end init
 
   self.toggleSave = function ($saveButton) { //save
 
@@ -84,7 +84,7 @@ var ShareContent = function () {
       }
       self.addArticleToSavedList(articleID, listType);
     }
-  } //end toggleSave
+  }; //end toggleSave
 
   self.editClick = function ($currentButton) {
     var isActive = $currentButton.hasClass('active');
@@ -100,7 +100,7 @@ var ShareContent = function () {
 
     }
 
-  } //end editClick
+  }; //end editClick
 
   self.shareClick = function ($currentButton) {
     var isActive = $currentButton.hasClass('active');
@@ -117,7 +117,7 @@ var ShareContent = function () {
 
     }
 
-  } //end shareClick
+  }; //end shareClick
 
   self.emailClick = function ($currentButton) {
     var isActive = $currentButton.hasClass('active');
@@ -133,7 +133,7 @@ var ShareContent = function () {
 
     }
 
-  } //end emailClick
+  }; //end emailClick
 
   self.removeAllClick = function ($currentButton) {
     var isActive = $currentButton.hasClass('active');
@@ -151,14 +151,14 @@ var ShareContent = function () {
     }
 
 
-  }
+  };
 
   self.clearOptions = function ($currentButton) {
 
     $currentButton.removeClass('active');
     self.$articleItems.removeClass('active');
 
-  } //end clearOptions
+  }; //end clearOptions
 
   self.activateOptions = function ($currentButton) {
 
@@ -178,7 +178,7 @@ var ShareContent = function () {
         break;
     }
 
-  } //end activateOptions
+  }; //end activateOptions
 
   self.shareList = function (shareMethod) {
     var articlesToShare = [];
@@ -202,7 +202,7 @@ var ShareContent = function () {
 
     }
 
-  } //end shareList
+  }; //end shareList
 
   self.shareModalShown = function (options) {
 
@@ -214,7 +214,7 @@ var ShareContent = function () {
         self.addShareClickListener(options);
       });
 
-  }
+  };
 
   self.addShareClickListener = function (options) {
 
@@ -228,14 +228,14 @@ var ShareContent = function () {
 
     });
 
-  }
+  };
 
   self.shareArticlesOnNetwork = function (options, method) {
 
     var articlesToShare = options.articlesToShare;
     //PL-INT - add share functionality here. This function provides the array of articles and site/network name to be shared.
 
-  }
+  };
 
   self.addShareCloseListener = function (method, $button) { //clear or maintain - clear removes the share option button ($button)'s active state
     self.$modalInfoWindow.find('.close').one('click', function (e) { //enable close functionality
@@ -247,13 +247,13 @@ var ShareContent = function () {
       }
 
     });
-  }
+  };
 
   self.addArticleToSavedList = function (articleID, listType) { //occurs on results and article pages
 
     //PL-INT - insert article save logic here
 
-  } //end addArticleToSavedList
+  }; //end addArticleToSavedList
 
   self.confirmRemoval = function ($saveButton) { //occurs on the saved items page
     var listType = $saveButton.attr('data-list-type');
@@ -265,7 +265,7 @@ var ShareContent = function () {
 
     siteContentClass.showModalWindow(shareClass.removalConfirmationShown, options); //callback, options
 
-  } //end confirmRemoval
+  }; //end confirmRemoval
 
   self.removalConfirmationShown = function (options) {
 
@@ -277,7 +277,7 @@ var ShareContent = function () {
         self.addShareCloseListener('maintain');
       });
 
-  } //end removalConfirmationShown
+  }; //end removalConfirmationShown
 
   self.removeAllConfirmationShown = function () { //called when user wants to clear entire saved articles list
     $.ajax({
@@ -287,7 +287,7 @@ var ShareContent = function () {
         self.addRemovalAllListener();
         self.addShareCloseListener('clear', self.$optionClearAll);
       });
-  }
+  };
 
   self.addRemovalListeners = function (options) {
 
@@ -297,7 +297,7 @@ var ShareContent = function () {
       siteContentClass.hideModalWindow(null, true); //callback, remove
     });
 
-  } //end addRemovalListeners
+  }; //end addRemovalListeners
 
   self.addRemovalAllListener = function (options) {
 
@@ -306,7 +306,7 @@ var ShareContent = function () {
       self.removeAllArticles();
     });
 
-  } //end addRemovalListeners
+  }; //end addRemovalListeners
 
   self.removeAllArticles = function () {
 
@@ -318,7 +318,7 @@ var ShareContent = function () {
     self.clearOptions(self.$optionClearAll);
     self.disableOptions();
 
-  } //end removeAllArticles
+  }; //end removeAllArticles
 
   self.removeArticleFromSavedList = function (articleID, listType) { //occurs on results and article pages
 
@@ -340,7 +340,7 @@ var ShareContent = function () {
 
     //PL-INT - insert article removal logic here
 
-  } //end removeArticleFromSavedList
+  }; //end removeArticleFromSavedList
 
   self.disableOptions = function () {
 
@@ -354,7 +354,7 @@ var ShareContent = function () {
 
   }
 
-}
+};
 
 
 var shareClass;

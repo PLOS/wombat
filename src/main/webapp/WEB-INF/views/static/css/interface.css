@@ -58,7 +58,7 @@
 
 .grey-on-gold {
   background: #4a0100;
-  color: #333333;
+  color: #ffffff;
 }
 
 /* GENERAL STYLES AND RESETS */
@@ -68,7 +68,7 @@ h1, h2, h3, h4 {
 }
 
 a {
-  color: #333333;
+  color: #336699;
 }
 
 #container-main {
@@ -111,7 +111,7 @@ a {
 
 .article-title {
   font-family: Verdana, 'Arial', sans-serif;
-  font-size: 1.8em;
+  font-size: 2em;
   line-height: 1.2em;
 }
 
@@ -427,6 +427,7 @@ section.spotlight .spotlight-item .item-link {
   display: block;
   font-size: 2em;
   font-family: 'ambraSymbols', sans-serif;
+  cursor: pointer;
 }
 
 .square-full {
@@ -839,8 +840,6 @@ nav.footer-secondary-menu li a {
 .search-expanded .search-form-container {
   background: #4a0100;
   padding: 10px;
-  /* Placeholder Styling*/
-
 }
 
 .search-expanded .search-form-container .search-field {
@@ -902,6 +901,10 @@ nav.footer-secondary-menu li a {
   font-size: 1.5em;
 }
 
+.article-item .author-list .more-authors-list, .article-item .author-list a.author-less {
+  display: none;
+}
+
 .article-item .citation {
   margin-top: 25px;
   font-size: 1.2em;
@@ -916,7 +919,47 @@ nav.footer-secondary-menu li a {
 
 .article-item .article-body p {
   font-size: 1.5em;
-  margin-top: 20px;
+  margin-top: 1em;
+}
+
+/*
+  Font specs from PSD:
+  * H1 (Article title) Albert Bold 20
+  * H2 (Accordion items) Albert Regular 18
+  * H3 Arial Bold 16
+  * H4 Arial Regular 16
+  * H5 Arial Bold 15
+  * H6 Arial Regular 15
+*/
+.article-item h2 {
+  font-size: 1.8em;
+  margin-top: 1em;
+}
+
+.article-item h3 {
+  font-family: Arial, sans-serif;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-top: 1.5em;
+}
+
+.article-item h4 {
+  font-family: Arial, sans-serif;
+  font-size: 1.6em;
+  margin-top: 1em;
+}
+
+.article-item h5 {
+  font-family: Arial, sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.article-item h6 {
+  font-family: Arial, sans-serif;
+  font-size: 1.5em;
+  margin-top: 1em;
 }
 
 .article-item .article-options-menu {
@@ -1100,11 +1143,13 @@ nav.footer-secondary-menu li a {
 }
 
 .main-accordion li.accordion-item > a {
-  height: 40px;
+  min-height: 40px;
   display: block;
-  padding: 10px 15px;
+  padding: 0.666em 15px;
   font-family: Verdana, 'Arial', sans-serif;
-  font-size: 1.5em;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: #333;
 }
 
 .main-accordion li.accordion-item .arrow {
@@ -1117,13 +1162,8 @@ nav.footer-secondary-menu li a {
   background-repeat: no-repeat;
   background-image: url('../img/sprites/structure.png');
   background-size: 300px 75px;
-  margin-top: 5px;
+  margin-top: 8px;
   float: right;
-}
-
-.main-accordion li.accordion-item .accordion-content p {
-  font-size: 1.5em;
-  padding: 10px 15px;
 }
 
 .main-accordion li.accordion-item:first-child {
@@ -1143,8 +1183,14 @@ nav.footer-secondary-menu li a {
   background-position: -275px -25px;
 }
 
-.main-accordion li.accordion-item .accordion-content {
+.accordion-content {
   display: none;
+}
+
+.accordion-content p {
+  font-size: 1.5em;
+  /* padding: 10px 15px; */
+  margin: 1em 0;
 }
 
 /* Headers */
@@ -1339,6 +1385,105 @@ nav.footer-secondary-menu li a {
   padding-bottom: 80px;
 }
 
+/* Share Modal */
+#share-methods {
+  position: absolute;
+  left: 0;
+  top: 20px;
+}
+
+#share-methods > li {
+  float: left;
+  width: 140px;
+  margin: 20px 0 0 20px;
+  height: 25px;
+}
+
+#share-methods > li a {
+  display: block;
+  height: 25px;
+  font-size: 1.5em;
+  color: #fff;
+  line-height: 25px;
+}
+
+#share-methods > li .icon {
+  float: left;
+  margin-right: 10px;
+}
+
+#share-methods .reddit .icon {
+  background-position: -50px 0px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/social.png');
+  background-size: 125px 50px;
+}
+
+#share-methods .google .icon {
+  background-position: -75px 0px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/social.png');
+  background-size: 125px 50px;
+}
+
+#share-methods .facebook .icon {
+  background-position: 0px 0px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/social.png');
+  background-size: 125px 50px;
+}
+
+#share-methods .twitter .icon {
+  background-position: -25px -25px;
+  width: 25px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/social.png');
+  background-size: 125px 50px;
+}
+
+#share-methods .stumble .icon {
+  background-position: -25px 0px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/social.png');
+  background-size: 125px 50px;
+}
+
+#share-methods .mendeley .icon {
+  background-position: 0px -25px;
+  width: 25px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/social.png');
+  background-size: 125px 50px;
+}
+
+#share-methods .connotea .icon {
+  background-position: -100px 0px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/social.png');
+  background-size: 125px 50px;
+}
+
+#share-methods .citeulike .icon {
+  background-position: -75px -25px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/social.png');
+  background-size: 125px 50px;
+}
+
 /* Saved Articles */
 .save-article.circular {
   float: right;
@@ -1350,7 +1495,7 @@ nav.footer-secondary-menu li a {
 }
 
 .save-article.full.saved {
-  background: #4a0100;
+  background: #f8af2d;
   color: #333333;
 }
 
@@ -1380,6 +1525,10 @@ nav.footer-secondary-menu li a {
 
 .standard-form textarea {
   height: 85px;
+}
+
+#article-items {
+  margin-bottom: 2em;
 }
 
 /* Pagination */
@@ -1466,6 +1615,43 @@ nav.footer-secondary-menu li a {
 #response-form-content #comment-response #response-subject {
   margin-bottom: 10px;
   border: 1px solid #d3d3d3;
+}
+
+#reference-panel {
+  position: fixed;
+  z-index: 1000; /* same as modal */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 2em;
+  background: #333;
+  color: #FFF;
+  font-size: 1.4em;
+  padding: 10px;
+  box-shadow: 0 0 10px 5px #666;
+}
+
+#reference-panel li {
+  display: inline;
+}
+
+#reference-panel li:after {
+  content: " • ";
+}
+
+#reference-panel li:last-child:after {
+  content: none;
+}
+
+#ref-panel-content a {
+  color: #8AA1CF;
+  font-weight: bold;
+}
+
+#reference-panel .close {
+  float: right;
+  margin: -5px 0 12px 12px;
+  width: auto;
 }
 
 @media all and (orientation: landscape) {

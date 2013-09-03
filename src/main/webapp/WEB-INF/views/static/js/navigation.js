@@ -56,7 +56,7 @@ var AmbraNavigation = function () {
     });
 
     $articleText.html($accordionList);
-  }
+  };
 
   /**
    * Initialize page elements.
@@ -96,7 +96,7 @@ var AmbraNavigation = function () {
 
     self.checkFixedSupport();
 
-  }
+  };
 
   self.toggleSearch = function () {
     var isActive = self.$searchExpanded.hasClass('active');
@@ -107,11 +107,19 @@ var AmbraNavigation = function () {
     } else { //activate search box
       self.$searchButton.addClass('active');
       self.$searchExpanded.addClass('active');
+      self.$searchExpanded.find('#search-execute').one('click', function (e) {
+        self.executeSearch();
+      });
       self.$searchExpanded.find('#search-cancel').one('click', function (e) { //trigger the toggle and remove the listener
         self.toggleSearch();
       });
     }
-  }
+  };
+
+  self.executeSearch = function () {
+    var searchVal = self.$searchExpanded.find('#search-input').val();
+    //PL-INT - implement search functionality here, using searchVal as the data entered into search field
+  };
 
   self.toggleMainMenu = function () {
     var isInactive = self.$containerMain.hasClass('inactive');
@@ -120,7 +128,7 @@ var AmbraNavigation = function () {
     } else { //show the site menu
       siteContentClass.findOpenModals(ambraNavigation.showMainMenu); //if any other modals are open we should close them
     }
-  }
+  };
 
   self.hideMainMenu = function () {
 
@@ -134,31 +142,78 @@ var AmbraNavigation = function () {
       }
 
     });
-  }
+  };
 
   self.showMainMenu = function () {
     self.$fullMenu.show();
     self.$containerMain.addClass('inactive');
     self.$containerMainOverlay.addClass('active'); //prevent the content from being interacted with when site menu is open
     self.$containerMain.animate({'left': '80%' }, 300);
-  }
+  };
 
-  self.toggleMainAccordion = function ($activeAccordion) { //Accordion menus which appear in the body of the site
+  // Accordion menus which appear in the body of the site
+  self.toggleMainAccordion = function ($activeAccordion, $scroll_target) {
 
     var $accordionListItem = $activeAccordion.parent('li');
     var $accordionList = $accordionListItem.parent('ul');
 
     var isExpanded = $accordionListItem.hasClass('expanded');
 
-    if (isExpanded) { //collapse this accordion
+    // collapse this accordion
+    if (isExpanded) {
       $accordionListItem.removeClass('expanded');
       $accordionListItem.children('.accordion-content').slideUp(500);
-    } else { //show this accordion
-      $accordionListItem.addClass('expanded');
-      $accordionListItem.children('.accordion-content').slideDown(500);
+
+      // first collapse any open accordions, and then show this one.
+    } else {
+      // cache some calculations
+      var clicked_accordion_top = $accordionListItem.offset().top;
+      var current_scroll_pos = $('body').scrollTop();
+      var viewport_height = $(window).height();
+
+      var within_bottom_half_of_viewport = (
+        // middle
+        ( clicked_accordion_top > (current_scroll_pos + Math.floor(viewport_height / 2)) ) &&
+          // bottom
+          ( clicked_accordion_top < (current_scroll_pos + viewport_height) )
+        );
+
+      // close the open accordion panel immedately (reducing total animation 
+      // time)
+      var $expandedMenus = $accordionList.children('li.expanded');
+      $expandedMenus.removeClass('expanded');
+      $expandedMenus.children('.accordion-content').hide();
+
+      // scroll to clicked accordion panel, allowing the user to see the 
+      // maximum amount of the panel without scrolling.
+      // 
+      // FIXME: adjust so that if the header of theh panel to open is in the 
+      // top half of the viewport, the page does not scroll. this is slightly 
+      // harder than it may seem as the content above has just been hidden 
+      // and we need to recalculate things.
+      // 
+      // if optional scroll target is not passed in, just open the panel as 
+      // normal
+      if (typeof($scroll_target) == 'undefined') {
+        // scroll to top of accordion and then show it.
+        $('html, body').scrollTop($accordionListItem.offset().top);
+        $accordionListItem.addClass('expanded');
+        $accordionListItem.children('.accordion-content').slideDown(500);
+
+        // else if there's a scroll target, then scroll to it
+      } else {
+        // show accordion panel, then scroll. content needs to be visible in  
+        // order to get its offset
+        $accordionListItem.addClass('expanded');
+        $accordionListItem.children('.accordion-content').slideDown(500, function () {
+          $('html, body').scrollTop($scroll_target.offset().top);
+        });
+
+      }
+
     }
 
-  }
+  };
 
   self.scrollToTop = function () {
 
@@ -168,7 +223,7 @@ var AmbraNavigation = function () {
       $("html, body").animate({ scrollTop: 0 }, 300);
     }
 
-  }
+  };
 
   self.checkFixedSupport = function () { //see if the browser supports fixed positioning for scrolling modals
 
@@ -237,7 +292,7 @@ var AmbraNavigation = function () {
 
   }
 
-}
+};
 
 var ambraNavigation;
 

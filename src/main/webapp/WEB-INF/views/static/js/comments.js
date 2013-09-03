@@ -14,7 +14,7 @@ var CommentsClass = function () {
       self.respondToComment($(this));
     });
 
-  }
+  };
 
   self.respondToComment = function ($respondButton) {
     var commentID = $respondButton.closest('.comment').attr('data-id');
@@ -34,7 +34,7 @@ var CommentsClass = function () {
 
     }
 
-  }
+  };
 
   self.loadResponseForm = function (commentID) {
 
@@ -61,7 +61,7 @@ var CommentsClass = function () {
 
       });
 
-  }
+  };
 
   self.submitResponseRequest = function (commentID) {
     var submissionData = {};
@@ -75,7 +75,7 @@ var CommentsClass = function () {
     //PL-INT - Insert code to submit the specified response, utilizing submissionData object for form values
     self.loadSubmissionConfirmation();
 
-  }
+  };
 
   self.flagComment = function ($flagButton) {
     var commentID = $flagButton.closest('.comment').attr('data-id');
@@ -94,7 +94,7 @@ var CommentsClass = function () {
       //PL-INT - implement proper data attributes for flagging a post
     }
 
-  }
+  };
 
   self.loadFlagForm = function (commentID) {
 
@@ -121,7 +121,7 @@ var CommentsClass = function () {
 
       });
 
-  }
+  };
 
   self.submitFlagRequest = function (commentID) {
     var submissionData = {};
@@ -133,7 +133,7 @@ var CommentsClass = function () {
     //PL-INT - Insert code to submit the specified comment for removal, utilizing submissionData object for form values
     self.loadSubmissionConfirmation();
 
-  }
+  };
 
   self.loadSubmissionConfirmation = function () {
     return $.ajax({
@@ -143,7 +143,7 @@ var CommentsClass = function () {
       });
   }
 
-}
+};
 
 var commentsClass;
 

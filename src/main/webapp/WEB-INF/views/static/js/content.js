@@ -7,6 +7,7 @@ var SiteContent = function () {
 
     //global dom references
     self.$modalInfoWindow = $('.modal-info-window');
+    self.$articlePagination = $('#article-pagination');
 
     //global variables
     self.windowHeight = self.$modalInfoWindow.height();

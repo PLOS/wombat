@@ -9,18 +9,18 @@
 <#include "backToArticle.ftl" />
 
   <section id="figures-content" class="content">
-  <#list figures as figure>
+  <#list article.assets.figures as figure>
     <figure class="figure-small">
 
       <figcaption>
-      ${figure.original.title}.
-      ${figure.original.descriptionHtml}
+      ${figure.title}.
+      ${figure.descriptionHtml}
         <a href="figure?id=${article.doi}">More »</a>
       </figcaption>
 
-      <a class="figure-link" href="figure?id=${figure.id}">
-        <img class="figure-image" src="asset?id=${figure.thumbnails[0].doi}.${figure.thumbnails[0].extension}"
-             alt="${figure.original.title}">
+      <a class="figure-link" href="figure?id=${figure.doi}">
+        <img class="figure-image" src="asset?id=${figure.thumbnails.medium.file}"
+             alt="${figure.title}">
         <span class="figure-expand">Expand</span>
       </a>
 

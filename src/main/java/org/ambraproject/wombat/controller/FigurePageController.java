@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -31,46 +30,27 @@ public class FigurePageController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
-  /*
-   * Dereference keys given in "article.figures" to find assets from "article.assets".
-   * Set them up in a new object that can be accessed more easily from FreeMarker.
+  /**
+   * For each figure in {@code article.assets.figures}, apply the site's article transformation to the figure's {@code
+   * description} member and store the result in a new {@code descriptionHtml} member.
    *
-   * TODO: Do this entirely in FreeMarker?
+   * @param site            the key of the site whose article transformation should be applied
+   * @param articleMetadata the article metadata object (per the service API's JSON response) whose figure metadata is
+   *                        to be read and added to
    */
-  private List<?> buildFigureViewList(String site, Map<?, ?> articleMetadata) {
-    Map<?, ?> assets = (Map<?, ?>) articleMetadata.get("assets");
-    List<Map<?, ?>> figureMetadataList = (List<Map<?, ?>>) articleMetadata.get("figures");
+  private void transformFigureDescriptions(String site, Map<String, Object> articleMetadata) {
+    Map<String, Object> assets = (Map<String, Object>) articleMetadata.get("assets");
+    List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) assets.get("figures");
 
-    List<Map<String, ?>> figures = Lists.newArrayListWithCapacity(figureMetadataList.size());
-    for (Map<?, ?> figureMetadata : figureMetadataList) {
-      String assetId = (String) figureMetadata.get("id");
-      Map<?, ?> asset = (Map<?, ?>) assets.get(assetId);
-      Map<?, ?> originalAsset = (Map<?, ?>) asset.get(figureMetadata.get("original"));
-
-      String description = (String) originalAsset.get("description");
+    for (Map<String, Object> figureMetadata : figureMetadataList) {
+      String description = (String) figureMetadata.get("description");
       try {
         String descriptionHtml = articleTransformService.transformExcerpt(site, description, "desc");
-        ((Map<String, Object>) originalAsset).put("descriptionHtml", descriptionHtml);
+        figureMetadata.put("descriptionHtml", descriptionHtml);
       } catch (TransformerException e) {
         throw new RuntimeException(e);
       }
-
-      List<String> thumbnailAssetIds = (List<String>) figureMetadata.get("thumbnails");
-      List<Object> thumbnailAssets = Lists.newArrayListWithCapacity(thumbnailAssetIds.size());
-      for (String thumbnailAssetId : thumbnailAssetIds) {
-        Object thumbnailAsset = asset.get(thumbnailAssetId);
-        thumbnailAssets.add(thumbnailAsset);
-      }
-
-      Map<String, ?> figure = ImmutableMap.<String, Object>builder()
-          .put("id", assetId)
-          .put("original", originalAsset)
-          .put("thumbnails", thumbnailAssets)
-          .build();
-      figures.add(figure);
     }
-
-    return figures;
   }
 
   /**
@@ -81,14 +61,14 @@ public class FigurePageController {
                                   @PathVariable("site") String site,
                                   @RequestParam("doi") String articleId)
       throws IOException {
-    Map<?, ?> articleMetadata;
+    Map<String, Object> articleMetadata;
     try {
       articleMetadata = soaService.requestObject("articles/" + articleId, Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
     model.addAttribute("article", articleMetadata);
-    model.addAttribute("figures", buildFigureViewList(site, articleMetadata));
+    transformFigureDescriptions(site, articleMetadata);
 
     return site + "/ftl/article/figures";
   }
@@ -101,7 +81,7 @@ public class FigurePageController {
                                  @PathVariable("site") String site,
                                  @RequestParam("id") String figureId)
       throws IOException {
-    Map<?, ?> figureMetadata;
+    Map<String, Object> figureMetadata;
     try {
       figureMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
     } catch (EntityNotFoundException enfe) {

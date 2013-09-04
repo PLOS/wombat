@@ -1,10 +1,10 @@
 <nav>
   <ul class="article-buttons">
-  <#if article.figures?? && article.figures?size &gt; 0 >
+  <#if article.assets.figures?? && article.assets.figures?size &gt; 0 >
     <li class="menuitem">
       <a class="btn-lg" href="article/figures?doi=${article.doi}">
         <span class="arrow">View</span>
-        Figures (${article.figures?size})
+        Figures (${article.assets.figures?size})
       </a>
     </li>
   </#if>

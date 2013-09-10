@@ -9,7 +9,7 @@
 <#include "backToArticle.ftl" />
 
   <section id="figures-content" class="content">
-  <#list article.assets.figures as figure>
+  <#list article.figures as figure>
     <figure class="figure-small">
 
       <figcaption>

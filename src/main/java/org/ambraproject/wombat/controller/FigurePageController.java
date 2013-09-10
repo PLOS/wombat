@@ -39,8 +39,7 @@ public class FigurePageController {
    *                        to be read and added to
    */
   private void transformFigureDescriptions(String site, Map<String, Object> articleMetadata) {
-    Map<String, Object> assets = (Map<String, Object>) articleMetadata.get("assets");
-    List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) assets.get("figures");
+    List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
 
     for (Map<String, Object> figureMetadata : figureMetadataList) {
       String description = (String) figureMetadata.get("description");

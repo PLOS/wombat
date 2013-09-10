@@ -8,8 +8,8 @@
 <div id="container-main">
 <#include "backToArticle.ftl" />
 
-<#assign imageToShow = figure.thumbnails[figure.thumbnails?size - 1] /><#-- Get largest thumbnail -->
-  <img class="figure-img" src="asset?id=${imageToShow.doi}.${imageToShow.extension}" alt="${figure.original.title}">
+<#assign imageToShow = figure.thumbnails.large />
+  <img class="figure-img" src="asset?id=${imageToShow.file}" alt="${figure.title}">
 
 </div><#--end container main-->
 
@@ -24,12 +24,12 @@
   </div>
 
   <div class="modal-content">
-    <h3>${figure.original.title}.</h3>
+    <h3>${figure.title}.</h3>
 
     <p class="article-id">${figure.doi}</p>
 
     <div class="figure-description">
-    ${figure.original.description} <#-- TODO: Transform from XML -->
+    ${figure.description}
     </div>
   </div>
 

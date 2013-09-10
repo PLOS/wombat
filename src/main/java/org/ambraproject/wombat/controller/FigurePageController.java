@@ -31,24 +31,19 @@ public class FigurePageController {
   private ArticleTransformService articleTransformService;
 
   /**
-   * For each figure in {@code article.assets.figures}, apply the site's article transformation to the figure's {@code
-   * description} member and store the result in a new {@code descriptionHtml} member.
+   * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
+   * descriptionHtml} member.
    *
-   * @param site            the key of the site whose article transformation should be applied
-   * @param articleMetadata the article metadata object (per the service API's JSON response) whose figure metadata is
-   *                        to be read and added to
+   * @param site           the key of the site whose article transformation should be applied
+   * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
    */
-  private void transformFigureDescriptions(String site, Map<String, Object> articleMetadata) {
-    List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
-
-    for (Map<String, Object> figureMetadata : figureMetadataList) {
-      String description = (String) figureMetadata.get("description");
-      try {
-        String descriptionHtml = articleTransformService.transformExcerpt(site, description, "desc");
-        figureMetadata.put("descriptionHtml", descriptionHtml);
-      } catch (TransformerException e) {
-        throw new RuntimeException(e);
-      }
+  private void transformFigureDescription(String site, Map<String, Object> figureMetadata) {
+    String description = (String) figureMetadata.get("description");
+    try {
+      String descriptionHtml = articleTransformService.transformExcerpt(site, description, "desc");
+      figureMetadata.put("descriptionHtml", descriptionHtml);
+    } catch (TransformerException e) {
+      throw new RuntimeException(e);
     }
   }
 
@@ -67,7 +62,11 @@ public class FigurePageController {
       throw new ArticleNotFoundException(articleId);
     }
     model.addAttribute("article", articleMetadata);
-    transformFigureDescriptions(site, articleMetadata);
+
+    List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
+    for (Map<String, Object> figureMetadata : figureMetadataList) {
+      transformFigureDescription(site, figureMetadata);
+    }
 
     return site + "/ftl/article/figures";
   }
@@ -86,6 +85,7 @@ public class FigurePageController {
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);
     }
+    transformFigureDescription(site, figureMetadata);
     model.addAttribute("figure", figureMetadata);
 
     String parentArticleId = (String) figureMetadata.get("parentArticleId");

@@ -29,7 +29,7 @@
     <p class="article-id">${figure.doi}</p>
 
     <div class="figure-description">
-    ${figure.description}
+    ${figure.descriptionHtml}
     </div>
   </div>
 

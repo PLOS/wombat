@@ -102,7 +102,9 @@ public class FigurePageController {
                          @PathVariable("site") String site,
                          @RequestParam("id") String assetId)
       throws IOException {
-    // TODO: Set response headers
+    Map<String, Object> assetMetadata = soaService.requestObject("assetfiles/" + assetId + "?metadata", Map.class);
+    String contentType = (String) assetMetadata.get("contentType");
+    response.setContentType(contentType);
 
     Closer closer = Closer.create();
     try {

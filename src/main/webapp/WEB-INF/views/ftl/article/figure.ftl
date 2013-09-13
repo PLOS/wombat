@@ -1,6 +1,6 @@
 <#include "../common/htmlTag.ftl" />
 
-<#assign title = "PLOS - Figures" /><#--TODO-->
+<#assign title = figure.title />
 <#assign depth = 1 />
 <#include "../common/head.ftl" />
 

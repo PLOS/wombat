@@ -1,4 +1,5 @@
 <#include "../macro/pathUp.ftl" />
+<#include "title/titleFormat.ftl" />
 
 <#-- Custom FreeMarker directives  -->
 <#assign formatJsonDate = "org.ambraproject.wombat.util.Iso8601DateDirective"?new()>
@@ -14,7 +15,7 @@
     @viewport { width: device-width; }
   </style>
 
-  <title>${title}</title>
+  <title><@titleFormat title /></title>
   <link rel="stylesheet" href=<@pathUp depth!0 "static/css/base.css" />>
   <link rel="stylesheet" href=<@pathUp depth!0 "static/css/interface.css" />>
   <link rel="stylesheet" href=<@pathUp depth!0 "static/css/mobile.css" />>

@@ -1577,7 +1577,7 @@
 
   <!-- suppress, we don't use -->
   <xsl:template match="ref"/>
-  <xsl:template match="ref/*" priority="0"/>
+  <xsl:template match="ref/*" priority="-1"/>
 
   <!-- Ambra-specific template -->
   <xsl:template match="mixed-citation">
@@ -2341,7 +2341,7 @@
   <xsl:template match="glyph-data | glyph-ref"/>
   <xsl:template match="related-article"/>
   <xsl:template match="related-object"/>
-  <xsl:template match="xref[not(normalize-space())]"/>
+  <xsl:template match="xref[not(normalize-space())]" priority="-1"/>
 
   <!-- Ambra modifications (default if not one of the following ref-types (covers ref-type supplementary-material)) -->
   <xsl:template match="xref">

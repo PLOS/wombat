@@ -73,6 +73,15 @@ public class ArticleController {
     return site + "/ftl/article/article";
   }
 
+  /**
+   * Serves a request for a list of all the root-level comments associated with an article.
+   *
+   * @param model data to pass to the view
+   * @param site current site
+   * @param articleId specifies the article
+   * @return path to the template
+   * @throws IOException
+   */
   @RequestMapping("/{site}/article/comments")
   public String renderArticleComments(Model model, @PathVariable("site") String site,
                                       @RequestParam("doi") String articleId) throws IOException {
@@ -80,6 +89,24 @@ public class ArticleController {
     model.addAttribute("article", articleMetadata);
     requestComments(model, articleId);
     return site + "/ftl/article/comments";
+  }
+
+  /**
+   * Serves a request for an expanded view of a single comment and any replies.
+   *
+   * @param model data to pass to the view
+   * @param site current site
+   * @param commentUri specifies the comment
+   * @return path to the template
+   * @throws IOException
+   */
+  @RequestMapping("/{site}/article/comment")
+  public String renderArticleCommentTree(Model model, @PathVariable("site") String site,
+      @RequestParam("uri") String commentUri) throws IOException {
+    Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentUri), Map.class);
+    model.addAttribute("comment", comment);
+    model.addAttribute("articleDoi", comment.get("articleDoi"));
+    return site + "/ftl/article/comment";
   }
 
   /**

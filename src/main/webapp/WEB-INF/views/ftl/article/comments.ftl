@@ -17,7 +17,7 @@
       <div class="comment">
 
         <div class="context">
-          <a class="expand">${comment.title}</a>
+          <a href="comment?uri=${comment.annotationUri}" class="expand">${comment.title}</a>
 
           <p class="details">Posted by <a class="member">${comment.creatorDisplayName}</a>
             on <@formatJsonDate date="${comment.created}" format="dd MMM yyyy 'at' hh:mm a" />

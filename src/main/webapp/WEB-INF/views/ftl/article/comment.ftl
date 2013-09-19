@@ -12,29 +12,28 @@
   </header>
 
   <#macro commentBody comment>
-    <section class="comment primary coloration-border-top">
+    <div class="context">
+      <a class="expand">${comment.title}</a>
+      <p class="details">Posted by <a class="member">${comment.creatorDisplayName}</a> on <@formatJsonDate date="${comment.created}" format="dd MMM yyyy 'at' hh:mm a" /></p>
+    </div>
 
-      <div class="context">
-        <a class="expand">${comment.title}</a>
-        <p class="details">Posted by <a class="member">${comment.creatorDisplayName}</a> on <@formatJsonDate date="${comment.created}" format="dd MMM yyyy 'at' hh:mm a" /></p>
-      </div>
-
-      <div class="response">
-        <p>${comment.body}</p>
-
+    <div class="response">
+      <p>${comment.body}</p>
+    <div class="response-menu">
       <#-- TODO: uncomment when we allow logged-in functionality
-      <div class="response-menu">
-        <a class="flag-link">Flag for Removal</a>
-        <a class="respond-link">Respond To This Post</a>
-      </div>
+      <a class="flag-link">Flag for Removal</a>
+      <a class="respond-link">Respond To This Post</a>
       -->
+    </div>
 
-      </div>
-    </section>
+    </div>
+
     <#list comment.replies as reply>
-      <section id="comments-responses" class="thread-container">
-        <div class="thread-level">
-          <@commentBody comment=reply />
+      <section id="comments-related" class="thread-container">
+        <div class="thread-level one">
+          <div class="comment">
+            <@commentBody comment=reply />
+          </div>
         </div>
       </section>
     </#list>
@@ -42,7 +41,9 @@
 
   <div id="comment-content" class="content">
     <section id="comments-individual" class="comments">
-      <@commentBody comment=comment />
+      <section class="comment primary coloration-border-top">
+        <@commentBody comment=comment />
+      </section>
     </section>
   </div>
   </div>

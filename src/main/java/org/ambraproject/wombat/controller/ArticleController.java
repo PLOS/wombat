@@ -92,6 +92,24 @@ public class ArticleController {
   }
 
   /**
+   * Serves a request for a list of all the corrections associated with an article.
+   *
+   * @param model data to pass to the view
+   * @param site current site
+   * @param articleId specifies the article
+   * @return path to the template
+   * @throws IOException
+   */
+  @RequestMapping("/{site}/article/corrections")
+  public String renderArticleCorrections(Model model, @PathVariable("site") String site,
+      @RequestParam("doi") String articleId) throws IOException {
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    model.addAttribute("article", articleMetadata);
+    requestCorrections(model, articleId);
+    return site + "/ftl/article/corrections";
+  }
+
+  /**
    * Serves a request for an expanded view of a single comment and any replies.
    *
    * @param model data to pass to the view
@@ -106,6 +124,27 @@ public class ArticleController {
     Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentUri), Map.class);
     model.addAttribute("comment", comment);
     model.addAttribute("articleDoi", comment.get("articleDoi"));
+    return site + "/ftl/article/comment";
+  }
+
+  /**
+   * Serves a request for an expanded view of a single correction and any replies.
+   *
+   * @param model data to pass to the view
+   * @param site current site
+   * @param correctionUri specifies the correction
+   * @return path to the template
+   * @throws IOException
+   */
+  @RequestMapping("/{site}/article/correction")
+  public String renderArticleCorrectionTree(Model model, @PathVariable("site") String site,
+      @RequestParam("uri") String correctionUri) throws IOException {
+    Map<?, ?> correction = soaService.requestObject(String.format("corrections/" + correctionUri), Map.class);
+
+    // Currently we use the same UI for both a comment and a correction, and they
+    // share the same backend representations.  This may not always be the case.
+    model.addAttribute("comment", correction);
+    model.addAttribute("articleDoi", correction.get("articleDoi"));
     return site + "/ftl/article/comment";
   }
 

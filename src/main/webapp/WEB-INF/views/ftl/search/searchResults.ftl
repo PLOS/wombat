@@ -62,7 +62,10 @@
         <#list searchResults.docs as doc>
           <article class="article-item" data-article-id="${doc.id}">
             <a class="save-article circular coloration-text-color" data-list-type="multi">x</a>
-            <h2 class="article-title">${doc.title}</h2>
+
+            <#-- We rely here on the fact that search in wombat is always restricted to the current
+                 journal.  If this changes, we'll have to pass in the site in the href.  -->
+            <a href="article?doi=${doc.id}" class="article-title">${doc.title}</a>
 
             <p class="author-list">
               <#list doc.author_display![] as author>

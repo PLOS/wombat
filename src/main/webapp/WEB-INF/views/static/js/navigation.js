@@ -96,6 +96,11 @@ var AmbraNavigation = function () {
 
     self.checkFixedSupport();
 
+    // If the URL specifies a particular section via an anchor, expand that section.
+    // TODO: generalize this if we need it for more than just the abstract.
+    if (window.location.hash === '#abstract') {
+      self.toggleMainAccordion($('a.expander:contains("Abstract")'));
+    }
   };
 
   self.toggleSearch = function () {

@@ -91,9 +91,11 @@
             <!--end full citation-->
 
             <nav class="article-options-menu clearfix">
-              <a>Figures</a>
+              <a href="article/figures?doi=${doc.id}">Figures</a>
               <a>Abstract</a>
-              <a>Full text</a>
+
+              <#-- TODO: what does this link mean?  Do we need to expand all accordion sections?  -->
+              <a href="article?doi=${doc.id}">Full text</a>
               <a>PDF</a>
             </nav>
             <!--end article-options-menu-->

@@ -8,12 +8,14 @@
       </a>
     </li>
   </#if>
+  <#if articleCorrections?? && articleCorrections?size gt 0>
     <li class="menuitem">
-      <a class="btn-lg">
+      <a class="btn-lg" href="article/corrections?doi=${article.doi}">
         <span class="arrow">View</span>
-        Corrections (3)
+        Corrections (${articleCorrections?size})
       </a>
     </li>
+  </#if>
   <#if articleComments?? && articleComments?size &gt; 0>
     <li class="menuitem">
       <a class="btn-lg" href="article/comments?doi=${article.doi}">

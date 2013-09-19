@@ -1,6 +1,6 @@
 <#include "../common/htmlTag.ftl" />
 
-<#assign title = "PLOS - Comments" />
+<#assign title = "PLOS - Corrections" />
 <#assign depth = 1 />
 <#include "../common/head.ftl" />
 
@@ -9,8 +9,9 @@
 <#include "backToArticle.ftl" />
 
   <div id="comment-content" class="content">
-    <h3 class="comments-header">Reader Comments(${articleComments?size})</h3>
-    <p class="post-comment"><a href="FIXME">Post a comment</a> on this article.</p>
+    <h3 class="comments-header">Corrections(${articleCorrections?size})</h3>
+    <#assign articleComments = articleCorrections />
+    <#assign mode = "corrections" />
     <#include "commentsBody.ftl" />
   </div>
   <!--end content-->

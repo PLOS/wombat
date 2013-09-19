@@ -96,7 +96,7 @@
 
               <#-- TODO: what does this link mean?  Do we need to expand all accordion sections?  -->
               <a href="article?doi=${doc.id}">Full text</a>
-              <a>PDF</a>
+              <a href="article/asset?id=${doc.id}.PDF">PDF</a>
             </nav>
             <!--end article-options-menu-->
 

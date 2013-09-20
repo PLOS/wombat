@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.config.SiteSet;
 import org.slf4j.Logger;
@@ -24,6 +25,9 @@ public class HomeController {
   @Autowired
   private SiteSet siteSet;
 
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
+
   /**
    * Simply selects the home view to render by returning its name.
    */
@@ -32,6 +36,14 @@ public class HomeController {
     logger.info("Welcome home! The client locale is {}.", locale);
 
     Site site = siteSet.getSite(siteParam);
+
+    // Certain sites (such as PLOS ONE) are highly customized vs. the "normal" wombat themes,
+    // and not only require their own views, but also custom data to be passed into that view.
+    // Here we check to see if this is the case for this site.
+    ControllerHook hook = runtimeConfiguration.getHomePageHook(siteParam);
+    if (hook != null) {
+      hook.populateCustomModelAttributes(model);
+    }
     return site.getKey() + "/ftl/home";
   }
 

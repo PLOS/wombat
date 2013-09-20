@@ -3,9 +3,11 @@ package org.ambraproject.wombat.config;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
+import org.ambraproject.wombat.controller.ControllerHook;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +33,7 @@ public class RuntimeConfiguration {
   private Boolean trustUnsignedServer;
   private List<Map<String, ?>> themes;
   private List<Map<String, ?>> sites;
+  private Map<String, Class<? extends ControllerHook>> homePageHooks;
 
   /**
    * Validate values after deserializing.
@@ -53,6 +56,25 @@ public class RuntimeConfiguration {
         throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
       }
     }
+    Map<String, Class<? extends ControllerHook>> temp = new HashMap<>();
+    for (Map<String, ?> siteMap : sites) {
+      String site = (String) siteMap.get("key");
+      String className = (String) siteMap.get("homePageHook");
+      if (className != null) {
+        Class<? extends ControllerHook> klass = null;
+        try {
+          klass = (Class<? extends ControllerHook>) Class.forName(className);
+        } catch (ClassCastException cce) {
+          throw new RuntimeConfigurationException(String.format(
+              "homePageHook %s for site %s does not extend ControllerHook", klass.getCanonicalName(), site));
+        } catch (ClassNotFoundException cnfe) {
+          throw new RuntimeConfigurationException(String.format(
+              "Could not load class %s for homePageHook for site %s", className, site));
+        }
+        temp.put(site, klass);
+      }
+    }
+    homePageHooks = ImmutableMap.copyOf(temp);
   }
 
   /**
@@ -101,6 +123,26 @@ public class RuntimeConfiguration {
 
   public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
     return themeTree.matchToSites(sites);
+  }
+
+  /**
+   * Returns the {@link ControllerHook} that adds additional model data needed to render the
+   * home page for a given site, or null if one is not needed.
+   *
+   * @param site string identifying the site
+   * @return ControllerHook instance, or null
+   */
+  public ControllerHook getHomePageHook(String site) {
+    Class<? extends ControllerHook> klass = homePageHooks.get(site);
+    ControllerHook result;
+    try {
+      result = klass.newInstance();
+    } catch (InstantiationException ie) {
+      throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), ie);
+    } catch (IllegalAccessException iae) {
+      throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), iae);
+    }
+    return result;
   }
 
   /*

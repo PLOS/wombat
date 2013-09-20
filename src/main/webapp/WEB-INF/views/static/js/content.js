@@ -42,16 +42,6 @@ var SiteContent = function () {
       self.hideModalTab($(this));
     });
 
-    self.$articlePagination.find('.number').click(function (e) {
-      e.preventDefault();
-      self.gotoResultsPage($(this));
-    });
-
-    self.$articlePagination.find('.switch').click(function (e) {
-      e.preventDefault();
-      self.switchResultsPage($(this));
-    });
-
     // attach event handlers for in-page links. this also wraps the handling
     // of showing references in the reference panel.
     $('a.xref').click(function (e) {
@@ -293,40 +283,7 @@ var SiteContent = function () {
       $filterBox.find('.cancel').one('click', function () {
         self.toggleFilterButton($filterButton);
       });
-
-      $filterBox.find('.apply').one('click', function () {
-        self.applyFilter($filterBox, $filterButton);
-      });
-
     }
-
-  };
-
-  self.applyFilter = function ($filterBox, $filterButton) {
-    var filterFunction = $filterBox.attr('data-function');
-
-    //PL-INT - Insert filter logic here - function below captures form values for date and sort
-
-    switch (filterFunction) {
-      case 'date-and-sort':
-        var dateVal = $filterBox.find('.date select').val();
-        var sortVal = $filterBox.find('.sort select').val();
-
-        //PL-INT - if you use this function, filter logic should go here.
-
-        self.toggleFilterButton($filterButton); //closes the filter box
-        break;
-    }
-
-    self.resetFilterBox($filterBox); //in all cases, reset the dropdowns after a selection is made
-
-  };
-
-  self.resetFilterBox = function ($filterBox) {
-
-    $filterBox.find('select').each(function (index) {
-      $(this).prop('selectedIndex', 0); //sets all select boxes to the first option in the list
-    });
 
   };
 

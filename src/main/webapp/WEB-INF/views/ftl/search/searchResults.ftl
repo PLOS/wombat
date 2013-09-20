@@ -13,6 +13,9 @@
     <div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
       <form id="sortAndFilterSearchResults" action="search" method="get">
         <input type="hidden" name="q" value="${RequestParameters.q}" />
+        <#if RequestParameters.page?? >
+          <input type="hidden" name="page" value="${RequestParameters.page}" />
+        </#if>
         <div class="filter-option date">
           <h5>Filter by date</h5>
           <select name="dateRange">

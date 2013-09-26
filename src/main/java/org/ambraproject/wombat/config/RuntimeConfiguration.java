@@ -134,13 +134,15 @@ public class RuntimeConfiguration {
    */
   public ControllerHook getHomePageHook(String site) {
     Class<? extends ControllerHook> klass = homePageHooks.get(site);
-    ControllerHook result;
-    try {
-      result = klass.newInstance();
-    } catch (InstantiationException ie) {
-      throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), ie);
-    } catch (IllegalAccessException iae) {
-      throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), iae);
+    ControllerHook result = null;
+    if (klass != null) {
+      try {
+        result = klass.newInstance();
+      } catch (InstantiationException ie) {
+        throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), ie);
+      } catch (IllegalAccessException iae) {
+        throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), iae);
+      }
     }
     return result;
   }

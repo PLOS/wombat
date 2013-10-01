@@ -4,6 +4,8 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
 import org.ambraproject.wombat.controller.ControllerHook;
+import org.ambraproject.wombat.service.SoaService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,6 +21,9 @@ import java.util.Map;
  * @see SpringConfiguration#runtimeConfiguration
  */
 public class RuntimeConfiguration {
+
+  @Autowired
+  private SoaService soaService;
 
   /**
    * @deprecated should only be called reflectively by Gson
@@ -144,6 +149,10 @@ public class RuntimeConfiguration {
         throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), iae);
       }
     }
+
+    // Since we create this ControllerHook here, through reflection, we can't use spring
+    // to autowire any of its fields.  Instead, they have to be injected here.
+    result.setSoaService(soaService);
     return result;
   }
 

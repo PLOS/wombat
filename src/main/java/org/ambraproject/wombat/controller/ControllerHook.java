@@ -13,7 +13,10 @@
 
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.service.SoaService;
 import org.springframework.ui.Model;
+
+import java.io.IOException;
 
 /**
  * Interface that allows controller classes to add site-specific content.
@@ -36,5 +39,7 @@ public interface ControllerHook {
    *
    * @param model model to be passed to the view
    */
-  void populateCustomModelAttributes(Model model);
+  void populateCustomModelAttributes(Model model) throws IOException;
+
+  void setSoaService(SoaService soaService);
 }

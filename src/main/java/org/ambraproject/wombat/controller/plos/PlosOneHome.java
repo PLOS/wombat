@@ -14,18 +14,29 @@
 package org.ambraproject.wombat.controller.plos;
 
 import org.ambraproject.wombat.controller.ControllerHook;
+import org.ambraproject.wombat.service.SoaService;
 import org.springframework.ui.Model;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * ControllerHook that adds additional model data needed to render the PLOS ONE homepage.
  */
 public class PlosOneHome implements ControllerHook {
 
+  private SoaService soaService;
+
   /**
    * {@inheritDoc}
    */
   @Override
-  public void populateCustomModelAttributes(Model model) {
-    model.addAttribute("message", "hello world");
+  public void populateCustomModelAttributes(Model model) throws IOException {
+    model.addAttribute("inTheNewsArticles", soaService.requestObject("journals/PLoSONE?inTheNewsArticles", List.class));
+    
+  }
+
+  public void setSoaService(SoaService soaService) {
+    this.soaService = soaService;
   }
 }

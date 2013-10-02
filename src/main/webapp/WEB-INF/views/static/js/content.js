@@ -97,20 +97,16 @@ var SiteContent = function () {
       $currentButton.addClass('active');
 
       var listMethod = $currentButton.attr('data-method');
-      self.loadArticleList(listMethod);
+      $('#article-type-menu').find('li').each(function (i, li) {
+        var method = $(li).attr('data-method');
+        if (method !== listMethod) {
+          $('#' + method).hide();
+        }
+      });
+      $('#' + listMethod).show();
     }
 
   }; //end switchArticleListMethod
-
-  self.loadArticleList = function (listMethod) {
-    //PL-INT - Put in logic to call the proper article result set and replace ajax call below
-    $.ajax({
-      url: "temp/ajax/articles-" + listMethod + ".html"
-    }).done(function (data) {
-        $("#article-results").html(data);
-      });
-    // END PL-INT
-  }; //end loadArticleList
 
   self.toggleMoreAuthors = function ($clickedLink) {
     var $moreLink = $('.author-more');

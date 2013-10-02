@@ -13,6 +13,7 @@
 
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.springframework.ui.Model;
 
@@ -42,4 +43,6 @@ public interface ControllerHook {
   void populateCustomModelAttributes(Model model) throws IOException;
 
   void setSoaService(SoaService soaService);
+
+  void setSearchService(SearchService searchService);
 }

@@ -143,7 +143,13 @@ public class SolrSearchService extends JsonService implements SearchService {
     List<NameValuePair> params = new ArrayList<NameValuePair>();
 
     // TODO: escape/quote the q param if needed.
-    params.add(new BasicNameValuePair("q", "everything:" + query));
+    String q;
+    if (Strings.isNullOrEmpty(query)) {
+      q = "*:*";
+    } else {
+      q = "everything:" + query;
+    }
+    params.add(new BasicNameValuePair("q", q));
     params.add(new BasicNameValuePair("wt", "json"));
     params.add(new BasicNameValuePair("fl", FL));
     params.add(new BasicNameValuePair("fq", "doc_type:full"));

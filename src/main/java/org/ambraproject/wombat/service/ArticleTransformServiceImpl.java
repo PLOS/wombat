@@ -148,30 +148,6 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
 
-  private static class ArticleKey {
-    private final String siteKey;
-    private final String articleId;
-
-    private ArticleKey(String siteKey, String articleId) {
-      this.siteKey = Preconditions.checkNotNull(siteKey);
-      this.articleId = Preconditions.checkNotNull(articleId);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-      ArticleKey that = (ArticleKey) o;
-      return siteKey.equals(that.siteKey) && articleId.equals(that.articleId);
-    }
-
-    @Override
-    public int hashCode() {
-      return 31 * siteKey.hashCode() + articleId.hashCode();
-    }
-  }
-
-
   @Override
   public void transform(String siteKey, InputStream xml, OutputStream html)
       throws IOException, TransformerException {

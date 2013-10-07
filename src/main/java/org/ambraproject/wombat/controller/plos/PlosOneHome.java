@@ -13,6 +13,7 @@
 
 package org.ambraproject.wombat.controller.plos;
 
+import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.controller.ControllerHook;
 import org.ambraproject.wombat.service.SearchService;
@@ -20,7 +21,9 @@ import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SolrSearchService;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,10 +32,21 @@ import java.util.Map;
  */
 public class PlosOneHome implements ControllerHook {
 
+  /**
+   * Enumerates the allowed values for the section parameter for this page.
+   */
+  private static enum Section {
+    RECENT,
+    POPULAR,
+    IN_THE_NEWS;
+  }
+
   // TODO: is this too much of a hack?  Through some contortions we could get this
   // through RuntimeConfiguration instead, but it seems like a PLOS ONE-specific
   // class should "just know" what its site is.
   private static final Site SITE = new Site("PlosOne", "PLoSONE");
+
+  private static final int RESULTS_PER_PAGE = 7;
 
   private SoaService soaService;
 
@@ -42,7 +56,46 @@ public class PlosOneHome implements ControllerHook {
    * {@inheritDoc}
    */
   @Override
-  public void populateCustomModelAttributes(Model model) throws IOException {
+  public void populateCustomModelAttributes(HttpServletRequest request, Model model) throws IOException {
+    Section section = Section.RECENT;
+    String sectionParam = request.getParameter("section");
+    if (!Strings.isNullOrEmpty(sectionParam)) {
+
+      // TODO: better validation/error handling
+      section = Section.valueOf(sectionParam.toUpperCase());
+    }
+    model.addAttribute("selectedSection", section.name().toLowerCase());
+
+    int start = 1;
+    String page = request.getParameter("page");
+    if (!Strings.isNullOrEmpty(page)) {
+      start = (Integer.parseInt(page) - 1) * RESULTS_PER_PAGE + 1;
+    }
+    model.addAttribute("resultsPerPage", RESULTS_PER_PAGE);
+
+    Map articles;
+    switch (section) {
+      case RECENT:
+        articles = searchService.simpleSearch(null, SITE, start, RESULTS_PER_PAGE,
+            SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST, SolrSearchService.SolrDateRange.ALL_TIME);
+        break;
+
+      case POPULAR:
+        articles = searchService.simpleSearch(null, SITE, start, RESULTS_PER_PAGE,
+            SolrSearchService.SolrSortOrder.MOST_VIEWS_ALL_TIME, SolrSearchService.SolrDateRange.ALL_TIME);
+        break;
+
+      case IN_THE_NEWS:
+        articles = getInTheNewsArticles();
+        break;
+
+      default:
+        throw new IllegalStateException("Unexpected section value " + section);
+    }
+    model.addAttribute("articles", articles);
+  }
+
+  private Map getInTheNewsArticles() throws IOException {
     List<?> inTheNewsArticles = soaService.requestObject("journals/PLoSONE?inTheNewsArticles", List.class);
 
     // From the presentation layer's perspective, all three of these article lists look the same.
@@ -53,16 +106,9 @@ public class PlosOneHome implements ControllerHook {
       Map article = (Map) obj;
       article.put("id", article.get("doi"));
     }
-    model.addAttribute("inTheNewsArticles", inTheNewsArticles);
-
-    // TODO: paging
-
-    Map<?, ?> recentArticlesSearch = searchService.simpleSearch(null, SITE, 1, 7,
-        SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST, SolrSearchService.SolrDateRange.ALL_TIME);
-    model.addAttribute("recentArticles", recentArticlesSearch.get("docs"));
-    Map<?, ?> popularArticlesSearch = searchService.simpleSearch(null, SITE, 1, 7,
-        SolrSearchService.SolrSortOrder.MOST_VIEWS_ALL_TIME, SolrSearchService.SolrDateRange.ALL_TIME);
-    model.addAttribute("popularArticles", popularArticlesSearch.get("docs"));
+    Map results = new HashMap();
+    results.put("docs", inTheNewsArticles);
+    return results;
   }
 
   public void setSoaService(SoaService soaService) {

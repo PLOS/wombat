@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 /**
@@ -32,7 +33,8 @@ public class HomeController {
    * Simply selects the home view to render by returning its name.
    */
   @RequestMapping(value = "/{site}/", method = RequestMethod.GET)
-  public String home(Locale locale, Model model, @PathVariable("site") String siteParam) throws Exception {
+  public String home(HttpServletRequest request, Locale locale, Model model, @PathVariable("site") String siteParam)
+      throws Exception {
     logger.info("Welcome home! The client locale is {}.", locale);
 
     Site site = siteSet.getSite(siteParam);
@@ -42,7 +44,7 @@ public class HomeController {
     // Here we check to see if this is the case for this site.
     ControllerHook hook = runtimeConfiguration.getHomePageHook(siteParam);
     if (hook != null) {
-      hook.populateCustomModelAttributes(model);
+      hook.populateCustomModelAttributes(request, model);
     }
     return site.getKey() + "/ftl/home";
   }

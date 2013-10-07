@@ -97,15 +97,9 @@ var SiteContent = function () {
       $currentButton.addClass('active');
 
       var listMethod = $currentButton.attr('data-method');
-      $('#article-type-menu').find('li').each(function (i, li) {
-        var method = $(li).attr('data-method');
-        if (method !== listMethod) {
-          $('#' + method).hide();
-        }
-      });
-      $('#' + listMethod).show();
+      $('#section').val(listMethod);
+      $('#hpSectionForm').submit();
     }
-
   }; //end switchArticleListMethod
 
   self.toggleMoreAuthors = function ($clickedLink) {

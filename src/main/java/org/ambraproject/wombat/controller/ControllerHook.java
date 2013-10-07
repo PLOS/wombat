@@ -17,6 +17,7 @@ import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -38,9 +39,10 @@ public interface ControllerHook {
   /**
    * Adds any necessary data that will be passed to the view layer.
    *
+   * @param request the current request
    * @param model model to be passed to the view
    */
-  void populateCustomModelAttributes(Model model) throws IOException;
+  void populateCustomModelAttributes(HttpServletRequest request, Model model) throws IOException;
 
   void setSoaService(SoaService soaService);
 

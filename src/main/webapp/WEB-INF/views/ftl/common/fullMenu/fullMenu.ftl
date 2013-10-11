@@ -2,6 +2,8 @@
   <nav class="full-menu">
     <ul class="primary accordion">
     <#include "fullMenuItems.ftl" />
+
+      <#-- TODO: implement when we support logged-in functionality.
       <li class="accordion-item">
         <a class="expander">
           <span class="arrow">Expand</span>
@@ -18,6 +20,8 @@
 
         <p class="accordion-content secondary">[TEMP - CONTENT]</p>
       </li>
+      -->
+
     </ul>
   </nav>
 

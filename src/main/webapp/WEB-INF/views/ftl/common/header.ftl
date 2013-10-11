@@ -23,9 +23,13 @@
       <li>
         <a id="menu-browse">Browse Topics</a>
       </li>
+
+      <#-- TODO: implement.  Not MVP.
       <li>
         <a id="menu-saved">Saved Items</a>
       </li>
+      -->
+
       <li>
         <a id="menu-recent">Recent History</a>
       </li>

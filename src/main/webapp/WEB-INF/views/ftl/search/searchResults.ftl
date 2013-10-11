@@ -64,7 +64,10 @@
 
         <#list searchResults.docs as doc>
           <article class="article-item" data-article-id="${doc.id}">
+
+            <#-- TODO: implement save to article list.  Not MVP.
             <a class="save-article circular coloration-text-color" data-list-type="multi">x</a>
+            -->
 
             <#-- We rely here on the fact that search in wombat is always restricted to the current
                  journal.  If this changes, we'll have to pass in the site in the href.  -->

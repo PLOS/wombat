@@ -19,6 +19,16 @@ public class Site {
     this.journalKey = findJournalKey(key, theme);
   }
 
+  /**
+   * Constructor for applications that do not depend on the theme and already know the journalKey.
+   *
+   * @param key key of the journal (value in wombat.json)
+   * @param journalKey key used for solr (value in journal_key.txt of the corresponding theme)
+   */
+  public Site(String key, String journalKey) {
+    this.key = Preconditions.checkNotNull(key);
+    this.journalKey = Preconditions.checkNotNull(journalKey);
+  }
 
   private static final String JOURNAL_KEY_PATH = "journal_key.txt";
 

@@ -43,7 +43,8 @@ public interface SearchService {
   /**
    * Performs a "simple" search (against all article fields) and returns the results.
    *
-   * @param query     term we are searching for
+   * @param query     term we are searching for.  If this is null, all articles will
+   *     be returned (modulo sortOrder, start, rows, and dateRange).
    * @param site      name of the site in which to search.
    * @param start     starting result, one-based.  1 will start at the first result.
    * @param rows      max number of results to return

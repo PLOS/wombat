@@ -50,8 +50,12 @@
     <a class="rounded coloration-white-on-color">Download Article (PDF)</a>
     <a class="rounded coloration-white-on-color">Email this Article</a>
   </div>
+
+  <#-- TODO: implement save to article list.  Not MVP.
   <a class="rounded full save-article" data-list-type="individual"><span class="plus">+</span> Add article to
     my list</a>
+  -->
+
 </nav><#--end article-save-options-->
 </article>
 

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Controller class for user-initiated searches.
@@ -41,7 +42,9 @@ public class SearchController {
   private SearchService searchService;
 
   @RequestMapping("/{site}/search")
-  public String search(Model model, @PathVariable("site") String siteParam, @RequestParam("q") String query,
+  public String search(Model model, @PathVariable("site") String siteParam,
+                       @RequestParam(value = "q", required = false) String query,
+                       @RequestParam(value = "subject", required = false) String subject,
                        @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
                        @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
@@ -70,8 +73,13 @@ public class SearchController {
     model.addAttribute("selectedDateRange", dateRange);
 
     Site site = siteSet.getSite(siteParam);
-    model.addAttribute("searchResults", searchService.simpleSearch(query, site, start, RESULTS_PER_PAGE, sortOrder,
-        dateRange));
+    Map<?, ?> searchResults;
+    if (!Strings.isNullOrEmpty(subject)) {
+      searchResults = searchService.subjectSearch(subject, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);
+    } else {
+      searchResults = searchService.simpleSearch(query, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);
+    }
+    model.addAttribute("searchResults", searchResults);
     return site.getKey() + "/ftl/search/searchResults";
   }
 }

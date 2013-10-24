@@ -101,6 +101,8 @@ var AmbraNavigation = function () {
     if (window.location.hash === '#abstract') {
       self.toggleMainAccordion($('a.expander:contains("Abstract")'));
     }
+
+    self.cleanMisplacedLinks();
   };
 
   self.toggleSearch = function () {
@@ -296,6 +298,21 @@ var AmbraNavigation = function () {
     });
 
   }
+
+  // Kludge to clean up misplaced links taken from article text that point to something not on this page
+  // TODO: Obviate this
+  self.cleanMisplacedLinks = function () {
+    $('.figure-description a').each(function (index, link) {
+      var $link = $(link);
+      var href = $link.attr('href');
+
+      // If it's a link to an anchor on the same page
+      if (href && href.indexOf('#') == 0) {
+        // Remove the <a> element but keep the text inside
+        $link.contents().unwrap();
+      }
+    });
+  };
 
 };
 

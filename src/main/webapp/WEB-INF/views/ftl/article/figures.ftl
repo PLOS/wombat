@@ -14,7 +14,9 @@
 
       <figcaption>
       ${figure.title}.
-      ${figure.descriptionHtml}
+        <div class="figure-description">
+        ${figure.descriptionHtml}
+        </div>
         <a href="figure?id=${figure.doi}">More »</a>
       </figcaption>
 

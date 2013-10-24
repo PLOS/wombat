@@ -307,7 +307,7 @@ var AmbraNavigation = function () {
       var href = $link.attr('href');
 
       // If it's a link to an anchor on the same page
-      if (href && href.indexOf('#') == 0) {
+      if (href && href.charAt(0) == '#') {
         // Remove the <a> element but keep the text inside
         $link.contents().unwrap();
       }

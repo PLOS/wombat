@@ -198,14 +198,6 @@ public class SolrSearchService extends JsonService implements SearchService {
       throw new IllegalArgumentException(e);
     }
     Map<?, ?> rawResults = requestObject(uri, Map.class);
-    Map responseHeader = (Map) rawResults.get("responseHeader");
-
-    // I know it's bad form to do equality checking on floating-point numbers, but
-    // JSON only has one type for number and this should be safe...
-    if (!responseHeader.get("status").equals(new Double(0.0))) {
-      throw new RuntimeException("Solr server returned status " + responseHeader.get("status"));
-    } else {
-      return (Map<?, ?>) rawResults.get("response");
-    }
+    return (Map<?, ?>) rawResults.get("response");
   }
 }

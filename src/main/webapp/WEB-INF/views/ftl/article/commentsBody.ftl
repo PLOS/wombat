@@ -23,7 +23,13 @@
     <#if comment.totalNumReplies &gt; 0>
       <div class="responses">
         <p class="response-header">
-          <a>${comment.totalNumReplies} RESPONSES</a>
+          <a>${comment.totalNumReplies}
+            <#if comment.totalNumReplies == 1 >
+              RESPONSE
+            <#else>
+              RESPONSES
+            </#if>
+          </a>
           | <@formatJsonDate date="${comment.lastReplyDate}" format="dd MMM yyyy 'at' hh:mm a" />
         </p>
       </div>

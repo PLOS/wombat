@@ -33,6 +33,7 @@ public class BrowseController {
   @RequestMapping("/{site}/browse")
   public String browse(Model model, @PathVariable("site") String siteParam) {
     Site site = siteSet.getSite(siteParam);
+    model.addAttribute("journalKey", site.getKey());
     return site.getKey() + "/ftl/browse";
   }
 }

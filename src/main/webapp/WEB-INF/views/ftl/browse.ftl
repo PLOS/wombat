@@ -14,8 +14,29 @@
     </div>
 
   </div>
+
+  <div id="subject-list-template" style="display: none;">
+    <nav class="browse-level active">
+      <ul class="browse-list">__TAXONOMY_LINKS__</ul>
+    </nav>
+  </div>
+
+  <div id="subject-term-template" style="display: none;">
+    <li>
+      <a href="search?subject=__TAXONOMY_TERM_ESCAPED__" class="browse-link browse-left">__TAXONOMY_TERM__</a>
+      <a class="__CHILD_LINK_STYLE__" data-term="__TAXONOMY_TERM__">
+        View Subcategories
+        <span class="arrow">arrow</span>
+      </a>
+    </li>
+  </div>
+
   <#include "common/footer/footer.ftl" />
   <#include "common/fullMenu/fullMenu.ftl" />
   <#include "common/bodyJs.ftl" />
+  <script>
+    var journalKey = '${journalKey}';
+  </script>
+  <script src="static/js/taxonomy.js"></script>
 </body>
 </html>

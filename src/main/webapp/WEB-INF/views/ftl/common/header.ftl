@@ -21,7 +21,7 @@
   <nav id="article-menu" class="menu-bar">
     <ul>
       <li>
-        <a id="menu-browse">Browse Topics</a>
+        <a href="browse" id="menu-browse">Browse Topics</a>
       </li>
 
       <#-- TODO: implement.  Not MVP.

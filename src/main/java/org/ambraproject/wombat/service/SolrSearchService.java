@@ -137,10 +137,7 @@ public class SolrSearchService extends JsonService implements SearchService {
   @Override
   public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
                                 SearchCriterion dateRange) throws IOException {
-
-    // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
-    // This is the easiest way I found...
-    List<NameValuePair> params = new ArrayList<NameValuePair>();
+    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange);
 
     // TODO: escape/quote the q param if needed.
     String q;
@@ -150,6 +147,27 @@ public class SolrSearchService extends JsonService implements SearchService {
       q = "everything:" + query;
     }
     params.add(new BasicNameValuePair("q", q));
+    return executeQuery(params);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> subjectSearch(String subject, Site site, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange);
+    params.add(new BasicNameValuePair("q", "*:*"));
+    params.add(new BasicNameValuePair("fq", String.format("subject:\"%s\"", subject)));
+    return executeQuery(params);
+  }
+
+  private List<NameValuePair> buildCommonParams(Site site, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange) {
+
+    // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
+    // This is the easiest way I found...
+    List<NameValuePair> params = new ArrayList<NameValuePair>();
     params.add(new BasicNameValuePair("wt", "json"));
     params.add(new BasicNameValuePair("fl", FL));
     params.add(new BasicNameValuePair("fq", "doc_type:full"));
@@ -167,7 +185,10 @@ public class SolrSearchService extends JsonService implements SearchService {
       params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
     }
     params.add(new BasicNameValuePair("fq", "cross_published_journal_key:" + site.getJournalKey()));
+    return params;
+  }
 
+  private Map<?, ?> executeQuery(List<NameValuePair> params) throws IOException {
     URI uri;
     try {
       uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();

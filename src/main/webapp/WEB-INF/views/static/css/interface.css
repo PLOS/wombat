@@ -1116,6 +1116,7 @@ nav.footer-secondary-menu li a {
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  cursor: pointer;
 }
 
 .browse-list a.browse-right .arrow {
@@ -1135,6 +1136,7 @@ nav.footer-secondary-menu li a {
 
 .browse-list a.browse-right.inactive {
   background: #d3d3d3;
+  cursor: default;
 }
 
 /* Accordions */

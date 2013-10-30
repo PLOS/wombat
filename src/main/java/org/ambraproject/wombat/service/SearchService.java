@@ -53,7 +53,21 @@ public interface SearchService {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  // TODO: add parameter for sort order.
   public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
                                 SearchCriterion dateRange) throws IOException;
+
+  /**
+   * Performs a search by the subject fields.
+   *
+   * @param subject taxonomy term the search will be restricted to
+   * @param site      name of the site in which to search.
+   * @param start     starting result, one-based.  1 will start at the first result.
+   * @param rows      max number of results to return
+   * @param sortOrder specifies the desired ordering for results
+   * @param dateRange specifies the date range for the results
+   * @return deserialized JSON returned by the search server
+   * @throws IOException
+   */
+  public Map<?, ?> subjectSearch(String subject, Site site, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange) throws IOException;
 }

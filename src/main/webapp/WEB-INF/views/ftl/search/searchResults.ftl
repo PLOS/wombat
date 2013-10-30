@@ -12,7 +12,12 @@
 
     <div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
       <form id="sortAndFilterSearchResults" action="search" method="get">
-        <input type="hidden" name="q" value="${RequestParameters.q}" />
+        <#if RequestParameters.q??>
+          <input type="hidden" name="q" value="${RequestParameters.q}" />
+        </#if>
+        <#if RequestParameters.subject??>
+          <input type="hidden" name="subject" value="${RequestParameters.subject}" />
+        </#if>
         <#if RequestParameters.page?? >
           <input type="hidden" name="page" value="${RequestParameters.page}" />
         </#if>

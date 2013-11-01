@@ -13,6 +13,7 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.service.SoaService;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Controller that handles JSON requests from the taxonomy browser.
@@ -64,6 +66,14 @@ public class TaxonomyController {
     }
     req += "journal=" + site.getJournalKey();
     response.setContentType("application/json");
-    IOUtils.copy(soaService.requestStream(req), response.getOutputStream());
+    Closer closer = Closer.create();
+    try {
+      OutputStream out = closer.register(response.getOutputStream());
+      IOUtils.copy(soaService.requestStream(req), out);
+    } catch (Throwable t) {
+      throw closer.rethrow(t);
+    } finally {
+      closer.close();
+    }
   }
 }

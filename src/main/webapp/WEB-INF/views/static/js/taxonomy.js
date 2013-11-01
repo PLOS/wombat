@@ -57,6 +57,6 @@ var TaxonomyBrowser = function() {
 };
 
 $(document).ready(function () {
-  browser = new TaxonomyBrowser();
+  var browser = new TaxonomyBrowser();
   browser.init();
 });

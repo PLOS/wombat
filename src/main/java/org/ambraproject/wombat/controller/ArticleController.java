@@ -1,10 +1,12 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.io.Closer;
+import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,28 +42,29 @@ public class ArticleController {
   private SoaService soaService;
   @Autowired
   private ArticleTransformService articleTransformService;
+  @Autowired
+  private Cache cache;
 
   @RequestMapping("/{site}/article")
   public String renderArticle(Model model,
                               @PathVariable("site") String site,
                               @RequestParam("doi") String articleId)
       throws IOException {
-    String xmlAssetPath = "assetfiles/" + articleId + ".xml";
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
 
     // Can't stream into a FreeMarker template, so transform the whole article into memory
+    String articleXml;
+    try {
+      articleXml = getArticleXml(articleId);
+    } catch (EntityNotFoundException enfe) {
+      throw new ArticleNotFoundException(articleId);
+    }
     StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
 
     Closer closer = Closer.create();
     try {
-      InputStream articleXml;
-      try {
-        articleXml = closer.register(new BufferedInputStream(soaService.requestStream(xmlAssetPath)));
-      } catch (EntityNotFoundException enfe) {
-        throw new ArticleNotFoundException(articleId);
-      }
       OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, charset));
-      articleTransformService.transform(site, articleXml, outputStream);
+      articleTransformService.transform(site, new ByteArrayInputStream(articleXml.getBytes()), outputStream);
     } catch (Throwable t) {
       throw closer.rethrow(t);
     } finally {
@@ -191,5 +195,32 @@ public class ArticleController {
     if (comments != null && !comments.isEmpty()) {
       model.addAttribute("articleComments", comments);
     }
+  }
+
+  /**
+   * Retrieves article XML, first checking to see if it is in the cache.
+   *
+   * @param articleId identifies the article
+   * @return String of the article XML
+   * @throws IOException
+   */
+  private String getArticleXml(String articleId) throws IOException {
+    String cacheKey = "xml:" + articleId;
+    String result = cache.get(cacheKey);
+    if (result == null) {
+      String xmlAssetPath = "assetfiles/" + articleId + ".xml";
+      Closer closer = Closer.create();
+      try {
+        InputStream articleXml;
+        articleXml = closer.register(new BufferedInputStream(soaService.requestStream(xmlAssetPath)));
+        result = IOUtils.toString(articleXml);
+      } catch (Throwable t) {
+        throw closer.rethrow(t);
+      } finally {
+        closer.close();
+      }
+      cache.put(cacheKey, result);
+    }
+    return result;
   }
 }

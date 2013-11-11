@@ -2,6 +2,8 @@ package org.ambraproject.wombat.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
+import java.util.Calendar;
 
 /**
  * A service for retrieving data from the SOA's RESTful server.
@@ -37,4 +39,39 @@ public interface SoaService {
    */
   public abstract <T> T requestObject(String address, Class<T> responseClass) throws IOException;
 
+  /**
+   * Simple wrapper around a timestamp and an object for the return type of requestObjectIfModifiedSince.
+   *
+   * @param <T>
+   */
+  public static class IfModifiedSinceResult<T> implements Serializable {
+
+    /**
+     * The result of the lookup to the SOA service.
+     */
+    public T result;
+
+    /**
+     * The last modification time for the object returned by the SOA service.
+     */
+    public Calendar lastModified;
+  }
+
+  /**
+   * Requests an object, using the "If-Modified-Since" header in the request so that the object
+   * will only be returned if it was modified after the given time.  Otherwise, the result field
+   * of the return type will be null.  This is useful when results from the SOA service are
+   * being added to a cache, and we only want to retrieve the result if it is newer than the
+   * version stored in the cache.
+   *
+   * @param address the path to which to send the REST request
+   * @param responseClass the object type into which to serialize the JSON response
+   * @param lastModified the object will be returned iff the SOA server indicates that
+   *     it was modified after this timestamp
+   * @param <T> the type of {@code responseClass}
+   * @return an instance of {@link IfModifiedSinceResult}
+   * @throws IOException
+   */
+  public abstract <T> IfModifiedSinceResult<T> requestObjectIfModifiedSince(String address, Class<T> responseClass,
+      Calendar lastModified) throws IOException;
 }

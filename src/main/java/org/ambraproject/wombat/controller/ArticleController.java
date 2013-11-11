@@ -6,7 +6,6 @@ import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,13 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -206,21 +204,23 @@ public class ArticleController {
    */
   private String getArticleXml(String articleId) throws IOException {
     String cacheKey = "xml:" + articleId;
-    String result = cache.get(cacheKey);
-    if (result == null) {
-      String xmlAssetPath = "assetfiles/" + articleId + ".xml";
-      Closer closer = Closer.create();
-      try {
-        InputStream articleXml;
-        articleXml = closer.register(new BufferedInputStream(soaService.requestStream(xmlAssetPath)));
-        result = IOUtils.toString(articleXml);
-      } catch (Throwable t) {
-        throw closer.rethrow(t);
-      } finally {
-        closer.close();
-      }
-      cache.put(cacheKey, result);
+    SoaService.IfModifiedSinceResult<String> cached = cache.get(cacheKey);
+    Calendar lastModified;
+    if (cached == null) {
+      lastModified = Calendar.getInstance();
+      lastModified.setTimeInMillis(0);  // Set to beginning of epoch since it's not in the cache
+    } else {
+      lastModified = cached.lastModified;
     }
-    return result;
+
+    String xmlAssetPath = "assetfiles/" + articleId + ".xml";
+    SoaService.IfModifiedSinceResult<String> fromServer = soaService.requestObjectIfModifiedSince(xmlAssetPath,
+        String.class, lastModified);
+    if (fromServer.result != null) {
+      cache.put(cacheKey, fromServer);
+      return fromServer.result;
+    } else {
+      return cached.result;
+    }
   }
 }

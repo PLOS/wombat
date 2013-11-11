@@ -34,8 +34,6 @@ import java.util.Date;
 @Configuration
 public class SpringConfiguration {
 
-  private static final int DEFAULT_CACHE_TIMEOUT = 60 * 60;
-
   @Bean
   public Gson gson() {
     GsonBuilder builder = new GsonBuilder();
@@ -122,8 +120,11 @@ public class SpringConfiguration {
   @Bean
   public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
     if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedHost())) {
+
+      // TODO: consider defining this in wombat.json instead.
+      final int cacheTimeout = 60 * 60;
       MemcacheClient result = new MemcacheClient(runtimeConfiguration.getMemcachedHost(),
-          runtimeConfiguration.getMemcachedPort(), runtimeConfiguration.getCacheAppPrefix(), DEFAULT_CACHE_TIMEOUT);
+          runtimeConfiguration.getMemcachedPort(), runtimeConfiguration.getCacheAppPrefix(), cacheTimeout);
       result.connect();
       return result;
     } else {

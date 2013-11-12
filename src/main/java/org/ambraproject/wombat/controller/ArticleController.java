@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Preconditions;
 import com.google.common.io.Closer;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.service.ArticleNotFoundException;
@@ -49,27 +50,14 @@ public class ArticleController {
                               @RequestParam("doi") String articleId)
       throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-
-    // Can't stream into a FreeMarker template, so transform the whole article into memory
-    String articleXml;
+    String articleHtml;
     try {
-      articleXml = getArticleXml(articleId);
+      articleHtml = getArticleHtml(articleId, site);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
-    StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-
-    Closer closer = Closer.create();
-    try {
-      OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, charset));
-      articleTransformService.transform(site, new ByteArrayInputStream(articleXml.getBytes()), outputStream);
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
-    }
     model.addAttribute("article", articleMetadata);
-    model.addAttribute("articleText", articleHtml.toString());
+    model.addAttribute("articleText", articleHtml);
     requestCorrections(model, articleId);
     requestComments(model, articleId);
     return site + "/ftl/article/article";
@@ -196,14 +184,18 @@ public class ArticleController {
   }
 
   /**
-   * Retrieves article XML, first checking to see if it is in the cache.
+   * Retrieves article XML from the SOA server, transforms it into HTML, and returns it.
+   * Result will be stored in memcache.
    *
    * @param articleId identifies the article
-   * @return String of the article XML
+   * @param site identifies the journal site
+   * @return String of the article HTML
    * @throws IOException
    */
-  private String getArticleXml(String articleId) throws IOException {
-    String cacheKey = "xml:" + articleId;
+  private String getArticleHtml(String articleId, String site) throws IOException {
+    Preconditions.checkNotNull(articleId);
+    Preconditions.checkNotNull(site);
+    String cacheKey = "html:" + articleId;
     SoaService.IfModifiedSinceResult<String> cached = cache.get(cacheKey);
     Calendar lastModified;
     if (cached == null) {
@@ -217,8 +209,20 @@ public class ArticleController {
     SoaService.IfModifiedSinceResult<String> fromServer = soaService.requestObjectIfModifiedSince(xmlAssetPath,
         String.class, lastModified);
     if (fromServer.result != null) {
+      StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+      Closer closer = Closer.create();
+      try {
+        OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, charset));
+        articleTransformService.transform(site, new ByteArrayInputStream(fromServer.result.getBytes()), outputStream);
+      } catch (Throwable t) {
+        throw closer.rethrow(t);
+      } finally {
+        closer.close();
+      }
+      fromServer.result = articleHtml.toString();
       cache.put(cacheKey, fromServer);
       return fromServer.result;
+
     } else {
       return cached.result;
     }

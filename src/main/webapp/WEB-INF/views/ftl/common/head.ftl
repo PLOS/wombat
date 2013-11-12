@@ -2,8 +2,8 @@
 <#include "title/titleFormat.ftl" />
 
 <#-- Custom FreeMarker directives  -->
-<#assign formatJsonDate = "org.ambraproject.wombat.util.Iso8601DateDirective"?new()>
-<#assign replaceParams = "org.ambraproject.wombat.util.ReplaceParametersDirective"?new()>
+<#assign formatJsonDate = "org.ambraproject.wombat.freemarker.Iso8601DateDirective"?new()>
+<#assign replaceParams = "org.ambraproject.wombat.freemarker.ReplaceParametersDirective"?new()>
 
 <head>
   <meta charset="utf-8">

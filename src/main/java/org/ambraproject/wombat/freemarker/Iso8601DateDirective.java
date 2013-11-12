@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.util;
+package org.ambraproject.wombat.freemarker;
 
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;

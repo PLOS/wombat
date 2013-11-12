@@ -1,6 +1,8 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Preconditions;
 import com.google.common.io.Closer;
+import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -13,12 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -39,35 +41,23 @@ public class ArticleController {
   private SoaService soaService;
   @Autowired
   private ArticleTransformService articleTransformService;
+  @Autowired
+  private Cache cache;
 
   @RequestMapping("/{site}/article")
   public String renderArticle(Model model,
                               @PathVariable("site") String site,
                               @RequestParam("doi") String articleId)
       throws IOException {
-    String xmlAssetPath = "assetfiles/" + articleId + ".xml";
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-
-    // Can't stream into a FreeMarker template, so transform the whole article into memory
-    StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-
-    Closer closer = Closer.create();
+    String articleHtml;
     try {
-      InputStream articleXml;
-      try {
-        articleXml = closer.register(new BufferedInputStream(soaService.requestStream(xmlAssetPath)));
-      } catch (EntityNotFoundException enfe) {
-        throw new ArticleNotFoundException(articleId);
-      }
-      OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, charset));
-      articleTransformService.transform(site, articleXml, outputStream);
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
+      articleHtml = getArticleHtml(articleId, site);
+    } catch (EntityNotFoundException enfe) {
+      throw new ArticleNotFoundException(articleId);
     }
     model.addAttribute("article", articleMetadata);
-    model.addAttribute("articleText", articleHtml.toString());
+    model.addAttribute("articleText", articleHtml);
     requestCorrections(model, articleId);
     requestComments(model, articleId);
     return site + "/ftl/article/article";
@@ -190,6 +180,51 @@ public class ArticleController {
     List<?> comments = soaService.requestObject(String.format("articles/%s?comments", doi), List.class);
     if (comments != null && !comments.isEmpty()) {
       model.addAttribute("articleComments", comments);
+    }
+  }
+
+  /**
+   * Retrieves article XML from the SOA server, transforms it into HTML, and returns it.
+   * Result will be stored in memcache.
+   *
+   * @param articleId identifies the article
+   * @param site identifies the journal site
+   * @return String of the article HTML
+   * @throws IOException
+   */
+  private String getArticleHtml(String articleId, String site) throws IOException {
+    Preconditions.checkNotNull(articleId);
+    Preconditions.checkNotNull(site);
+    String cacheKey = "html:" + articleId;
+    SoaService.IfModifiedSinceResult<String> cached = cache.get(cacheKey);
+    Calendar lastModified;
+    if (cached == null) {
+      lastModified = Calendar.getInstance();
+      lastModified.setTimeInMillis(0);  // Set to beginning of epoch since it's not in the cache
+    } else {
+      lastModified = cached.lastModified;
+    }
+
+    String xmlAssetPath = "assetfiles/" + articleId + ".xml";
+    SoaService.IfModifiedSinceResult<String> fromServer = soaService.requestObjectIfModifiedSince(xmlAssetPath,
+        String.class, lastModified);
+    if (fromServer.result != null) {
+      StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+      Closer closer = Closer.create();
+      try {
+        OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, charset));
+        articleTransformService.transform(site, new ByteArrayInputStream(fromServer.result.getBytes()), outputStream);
+      } catch (Throwable t) {
+        throw closer.rethrow(t);
+      } finally {
+        closer.close();
+      }
+      fromServer.result = articleHtml.toString();
+      cache.put(cacheKey, fromServer);
+      return fromServer.result;
+
+    } else {
+      return cached.result;
     }
   }
 }

@@ -39,6 +39,9 @@ public class RuntimeConfiguration {
   // Fields are immutable by convention. They should be modified only during deserialization.
   private String server;
   private String solrServer;
+  private String memcachedHost;
+  private Integer memcachedPort;
+  private String cacheAppPrefix;
   private Boolean trustUnsignedServer;
   private List<Map<String, ?>> themes;
   private List<Map<String, ?>> sites;
@@ -84,6 +87,12 @@ public class RuntimeConfiguration {
       }
     }
     homePageHooks = ImmutableMap.copyOf(temp);
+    if (!Strings.isNullOrEmpty(memcachedHost) && memcachedPort == null) {
+      throw new RuntimeConfigurationException("No memcachedPort specified");
+    }
+    if (!Strings.isNullOrEmpty(memcachedHost) && Strings.isNullOrEmpty(cacheAppPrefix)) {
+      throw new RuntimeConfigurationException("If memcachedHost is specified, cacheAppPrefix must be as well");
+    }
   }
 
   /**
@@ -94,6 +103,28 @@ public class RuntimeConfiguration {
    */
   public boolean trustUnsignedServer() {
     return (trustUnsignedServer == null) ? false : trustUnsignedServer;
+  }
+
+  /**
+   * @return the memcached host, or null if it is not present in the config
+   */
+  public String getMemcachedHost() {
+    return memcachedHost;
+  }
+
+  /**
+   * @return the memcached port, or -1 if it is not present in the config
+   */
+  public int getMemcachedPort() {
+    return memcachedPort == null ? -1 : memcachedPort;
+  }
+
+  /**
+   * @return the cacheAppPrefix value, or null if it is not defined in the config.  This should
+   *     be a String that is shared by all wombat app servers, defining a namespace for them.
+   */
+  public String getCacheAppPrefix() {
+    return cacheAppPrefix;
   }
 
   /**

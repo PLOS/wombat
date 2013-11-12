@@ -46,7 +46,7 @@ public abstract class JsonService {
   private RuntimeConfiguration runtimeConfiguration;
 
   @Autowired
-  private Gson gson;
+  protected Gson gson;
 
   /**
    * Send a ReST request and open a stream as the response.
@@ -58,10 +58,32 @@ public abstract class JsonService {
    * @throws EntityNotFoundException if the object at the address does not exist
    */
   protected InputStream requestStream(URI targetUri) throws IOException {
+    HttpResponse response = makeRequest(targetUri);
+    HttpEntity entity = response.getEntity();
+    if (entity == null) {
+      throw new RuntimeException("No response");
+    }
+    return entity.getContent();
+  }
+
+  /**
+   * Makes a request to the given URI, checks for response codes 400 or above, and returns the response.
+   *
+   * @param targetUri the URI to which to send the request
+   * @param extraHeaders extra headers to add to the request, if any.  Element zero should be the header
+   *     name, and element one the value.
+   * @return response from the server
+   * @throws IOException             if there is an error connecting to the server
+   * @throws NullPointerException    if the address is null
+   * @throws EntityNotFoundException if the object at the address does not exist
+   */
+  protected HttpResponse makeRequest(URI targetUri, String[]... extraHeaders) throws IOException {
     HttpClient client = (runtimeConfiguration.trustUnsignedServer() && "https".equals(targetUri.getScheme()))
         ? TrustingHttpClient.create() : new DefaultHttpClient();
     HttpGet get = new HttpGet(targetUri);
-
+    for (String[] header : extraHeaders) {
+      get.addHeader(header[0], header[1]);
+    }
     HttpResponse response = client.execute(get);
     StatusLine statusLine = response.getStatusLine();
     if (statusLine.getStatusCode() >= 400) {
@@ -77,12 +99,7 @@ public abstract class JsonService {
         throw new RuntimeException(message);
       }
     }
-
-    HttpEntity entity = response.getEntity();
-    if (entity == null) {
-      throw new RuntimeException("No response");
-    }
-    return entity.getContent();
+    return response;
   }
 
   /**

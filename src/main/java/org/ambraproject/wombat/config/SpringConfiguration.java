@@ -1,10 +1,14 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Charsets;
+import com.google.common.base.Strings;
 import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+import org.ambraproject.rhombat.cache.Cache;
+import org.ambraproject.rhombat.cache.MemcacheClient;
+import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
@@ -111,5 +115,20 @@ public class SpringConfiguration {
   @Bean
   public SearchService searchService() {
     return new SolrSearchService();
+  }
+
+  @Bean
+  public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
+    if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedHost())) {
+
+      // TODO: consider defining this in wombat.json instead.
+      final int cacheTimeout = 60 * 60;
+      MemcacheClient result = new MemcacheClient(runtimeConfiguration.getMemcachedHost(),
+          runtimeConfiguration.getMemcachedPort(), runtimeConfiguration.getCacheAppPrefix(), cacheTimeout);
+      result.connect();
+      return result;
+    } else {
+      return new NullCache();
+    }
   }
 }

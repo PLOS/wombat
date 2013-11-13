@@ -19,23 +19,20 @@ import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
-import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Custom freemarker directive that should be used to insert a CSS link element.
- * If we are running in dev mode, this will just render the link; otherwise the
- * CSS file specified will be minified and served along with all other CSS in
- * the app.
+ * Freemarker custom directive that renders any CSS links added via calls to {@link CssLinkDirective}.
+ * A single instance of this directive should be added at the end of the head element on the page.
+ * It will do nothing if we are running in dev assets mode (since the links were already rendered).
  */
-public class CssLinkDirective implements TemplateDirectiveModel {
+public class RenderCssLinksDirective implements TemplateDirectiveModel {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
@@ -46,33 +43,17 @@ public class CssLinkDirective implements TemplateDirectiveModel {
   @Override
   public void execute(Environment environment, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
       throws TemplateException, IOException {
-    if (params.get("target") == null) {
-      throw new TemplateModelException("target parameter is required");
-    }
-    String target = params.get("target").toString();
-    target = target.trim();
-
-    // The @pathUp macro, which we often use to generate the target, adds quotes.
-    // Strip them off if present.
-    if (target.charAt(0) == '"') {
-      target = target.substring(1);
-    }
-    if (target.charAt(target.length() - 1) == '"') {
-      target = target.substring(0, target.length() - 1);
-    }
-    if (runtimeConfiguration.devModeAssets()) {
-      environment.getOut().write(String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", target));
-    } else {
-
-      // Add the CSS file to a list that's scoped to the current request.  We'll minify, concatenate,
-      // and render all CSS files as a single link at the end of the <head>.
+    if (!runtimeConfiguration.devModeAssets()) {
       HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
       List<String> cssFiles = (List<String>) request.getAttribute("cssFiles");
-      if (cssFiles == null) {
-        cssFiles = new ArrayList<>();
+      if (cssFiles != null) {
+
+        // TODO: concatenate and minify here, instead of just writing out all the links.
+        for (String css : cssFiles) {
+          environment.getOut().write(String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", css));
+        }
       }
-      cssFiles.add(target);
-      request.setAttribute("cssFiles", cssFiles);
-    }
+
+    }  // else nothing to do, since in dev mode we already rendered the links.
   }
 }

@@ -19,4 +19,5 @@
 
   <script src=<@pathUp depth!0 "static/js/vendor/modernizr.custom.25437.js" />></script>
   <script src=<@pathUp depth!0 "static/js/vendor/respond.min.js" />></script>
+  <@renderCssLinks />
 </head>

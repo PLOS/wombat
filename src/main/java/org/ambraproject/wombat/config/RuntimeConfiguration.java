@@ -43,6 +43,7 @@ public class RuntimeConfiguration {
   private Integer memcachedPort;
   private String cacheAppPrefix;
   private Boolean trustUnsignedServer;
+  private Boolean devModeAssets;
   private List<Map<String, ?>> themes;
   private List<Map<String, ?>> sites;
   private Map<String, Class<? extends ControllerHook>> homePageHooks;
@@ -103,6 +104,14 @@ public class RuntimeConfiguration {
    */
   public boolean trustUnsignedServer() {
     return (trustUnsignedServer == null) ? false : trustUnsignedServer;
+  }
+
+  /**
+   * @return true if we are running in "dev mode" for .js and .css, and compilation/minification
+   *     should not happen for these files
+   */
+  public boolean devModeAssets() {
+    return (devModeAssets == null) ? false : devModeAssets;
   }
 
   /**

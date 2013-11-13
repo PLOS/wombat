@@ -10,6 +10,7 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.MemcacheClient;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import org.ambraproject.wombat.freemarker.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -84,20 +85,25 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public FreeMarkerConfig freeMarkerConfig(SiteSet siteSet) throws IOException {
+  public CssLinkDirective cssLinkDirective() {
+    return new CssLinkDirective();
+  }
+
+  @Bean
+  public FreeMarkerConfig freeMarkerConfig(SiteSet siteSet, CssLinkDirective cssLinkDirective) throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
+
+    // Freemarker custom directives used throughout the app.
+    // TODO: should all of these be their own @Beans?  I'm only doing that for CssLinkDirective
+    // since it's the only one that needs to have anything spring-injected (for now).
     Map<String, Object> variables = new HashMap<>();
-    addCustomFreeMarkerDirectives(variables);
+    variables.put("formatJsonDate", new Iso8601DateDirective());
+    variables.put("replaceParams", new ReplaceParametersDirective());
+    variables.put("cssLink", cssLinkDirective);
     config.setFreemarkerVariables(variables);
     return config;
-  }
-
-  private Map<String, Object> addCustomFreeMarkerDirectives(Map<String, Object> map) {
-    map.put("formatJsonDate", new Iso8601DateDirective());
-    map.put("replaceParams", new ReplaceParametersDirective());
-    return map;
   }
 
   @Bean

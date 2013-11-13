@@ -10,6 +10,8 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.MemcacheClient;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
+import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.SearchService;
@@ -30,6 +32,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class SpringConfiguration {
@@ -84,7 +88,16 @@ public class SpringConfiguration {
     SiteTemplateLoader loader = new SiteTemplateLoader(siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
+    Map<String, Object> variables = new HashMap<>();
+    addCustomFreeMarkerDirectives(variables);
+    config.setFreemarkerVariables(variables);
     return config;
+  }
+
+  private Map<String, Object> addCustomFreeMarkerDirectives(Map<String, Object> map) {
+    map.put("formatJsonDate", new Iso8601DateDirective());
+    map.put("replaceParams", new ReplaceParametersDirective());
+    return map;
   }
 
   @Bean

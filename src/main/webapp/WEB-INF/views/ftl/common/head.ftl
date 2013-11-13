@@ -1,10 +1,6 @@
 <#include "../macro/pathUp.ftl" />
 <#include "title/titleFormat.ftl" />
 
-<#-- Custom FreeMarker directives  -->
-<#assign formatJsonDate = "org.ambraproject.wombat.freemarker.Iso8601DateDirective"?new()>
-<#assign replaceParams = "org.ambraproject.wombat.freemarker.ReplaceParametersDirective"?new()>
-
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">

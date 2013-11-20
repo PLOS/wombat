@@ -1,10 +1,12 @@
 package org.ambraproject.wombat.util;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.RandomAccess;
 
 /**
  * Utilities for accessing objects deserialized from JSON.
@@ -33,24 +35,30 @@ public class DeserializedJsonUtil {
    * @param fieldNames a sequence of field names
    * @return the value
    */
-  public static Object readField(Object jsonObject, String... fieldNames) {
+  public static Object readField(Object jsonObject, List<String> fieldNames) {
     Preconditions.checkNotNull(jsonObject);
-    for (int i = 0; i < fieldNames.length; i++) {
+    if (!(fieldNames instanceof RandomAccess)) {
+      fieldNames = ImmutableList.copyOf(fieldNames);
+    }
+
+    for (int i = 0; i < fieldNames.size(); i++) {
+      String fieldName = Preconditions.checkNotNull(fieldNames.get(i));
+
       if (!(jsonObject instanceof Map)) {
-        List<String> path = Arrays.asList(fieldNames).subList(0, i);
-        String valueDescription = path.isEmpty() ? "Argument" : "Field at " + path;
-        String message = String.format("%s is not a Map (%s)",
-            valueDescription, jsonObject.getClass().getName());
-        throw new IllegalArgumentException(message);
+        throw new IllegalArgumentException(String.format("%s is not a Map (%s)",
+            (i == 0 ? "Argument" : "Field at " + fieldNames.subList(0, i)), jsonObject.getClass().getName()));
       }
-      jsonObject = ((Map<?, ?>) jsonObject).get(fieldNames[i]);
+      jsonObject = ((Map<?, ?>) jsonObject).get(fieldName);
 
       if (jsonObject == null) {
-        List<String> path = Arrays.asList(fieldNames).subList(0, i + 1);
-        throw new IllegalArgumentException("Field not found at " + path);
+        throw new IllegalArgumentException("Field not found at " + fieldNames.subList(0, i + 1));
       }
     }
     return jsonObject;
+  }
+
+  public static Object readField(Object jsonObject, String... fieldNames) {
+    return readField(jsonObject, Arrays.asList(fieldNames));
   }
 
 }

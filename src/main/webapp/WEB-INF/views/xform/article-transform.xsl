@@ -1149,124 +1149,25 @@
         <xsl:value-of select="substring($imageURI, 1, (string-length($imageURI)-5))"/>
       </xsl:variable>
 
-      <div class="figure">
+      <figure class="figure-small">
         <!--id needs to be attached to "figure" div for proper anchor linking-->
         <xsl:attribute name="id">
+          <!-- This may cause collisions. TODO: Fix -->
           <xsl:value-of select="translate($figId, '.', '-')"/>
         </xsl:attribute>
-        <div class="img">
-          <xsl:element name="a">
-            <!-- added translate so names and ids have dash (for figure enhancement) -->
-            <xsl:attribute name="name">
-              <xsl:value-of select="translate($figId, '.', '-')"/>
+        <figcaption>Figure 1. The caption.<!--TODO-->
+          <a href="test">More »</a>
+        </figcaption>
+        <a class="figure-link">
+          <img alt="thumbnail" class="figure-image">
+            <xsl:attribute name="src">
+              <xsl:value-of select="concat('article/thumbnail?id=', $imageURI)"/>
             </xsl:attribute>
-            <xsl:attribute name="title">Click for larger image</xsl:attribute>
-            <xsl:attribute name="href">
-              <xsl:value-of select="$slideshowURL"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-doi">
-              <xsl:value-of select="$targetURI"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-uri">
-              <xsl:value-of select="$imageURI"/>
-            </xsl:attribute>
-            <xsl:element name="img">
-              <xsl:attribute name="src">
-                <xsl:value-of
-                    select="concat($pubAppContext,'/article/fetchObject.action?uri=',$imageURI,'&amp;representation=PNG_I')"/>
-              </xsl:attribute>
-              <xsl:attribute name="alt">thumbnail</xsl:attribute>
-              <xsl:attribute name="class">thumbnail</xsl:attribute>
-            </xsl:element>
-          </xsl:element>
-        </div>
-        <!--start figure download-->
-        <div class="figure-inline-download">
-          Download:
-          <ul>
-            <li>
-              <div class="icon">
-                <xsl:element name="a">
-                  <xsl:attribute name="href">
-                    <xsl:value-of select="$pptURL"/>
-                  </xsl:attribute>
-                  PPT
-                </xsl:element>
-              </div>
-              <xsl:element name="a">
-                <xsl:attribute name="href">
-                  <xsl:value-of select="$pptURL"/>
-                </xsl:attribute>
-                PowerPoint slide
-              </xsl:element>
-            </li>
-            <li>
-              <div class="icon">
-                <xsl:element name="a">
-                  <xsl:attribute name="href">
-                    <xsl:value-of select="$bigImgURL"/>
-                  </xsl:attribute>
-                  PNG
-                </xsl:element>
-              </div>
-              <xsl:element name="a">
-                <xsl:attribute name="href">
-                  <xsl:value-of select="$bigImgURL"/>
-                </xsl:attribute>
-                larger image
-                (
-                <xsl:element name="span">
-                  <xsl:attribute name="id">
-                    <xsl:value-of select="$bigImgDOI"/>
-                  </xsl:attribute>
-                </xsl:element>
-                )
-              </xsl:element>
-            </li>
-            <li>
-              <div class="icon">
-                <xsl:element name="a">
-                  <xsl:attribute name="href">
-                    <xsl:value-of select="$origImgURL"/>
-                  </xsl:attribute>
-                  TIFF
-                </xsl:element>
-              </div>
-              <xsl:element name="a">
-                <xsl:attribute name="href">
-                  <xsl:value-of select="$origImgURL"/>
-                </xsl:attribute>
-                original image
-                (
-                <xsl:element name="span">
-                  <xsl:attribute name="id">
-                    <xsl:value-of select="$origImgDOI"/>
-                  </xsl:attribute>
-                </xsl:element>
-                )
-              </xsl:element>
-            </li>
-          </ul>
-        </div>
-        <!--end figure download-->
-        <p>
-          <strong>
-            <xsl:apply-templates select="label"/>
-            <xsl:if test="caption/title">
-              <xsl:text> </xsl:text>
-              <span>
-                <xsl:apply-templates select="caption/title"/>
-              </span>
-            </xsl:if>
-          </strong>
-        </p>
-        <xsl:apply-templates select="caption/node()[not(self::title)]"/>
-        <xsl:if test="object-id[@pub-id-type='doi']">
-          <span>
-            <xsl:apply-templates select="object-id[@pub-id-type='doi']"/>
-          </span>
-        </xsl:if>
-      </div>
+          </img>
+          <span class="figure-expand">Expand</span>
+        </a>
+      </figure>
+
     </xsl:if>
     <xsl:if test="not(.//graphic)">
       <xsl:if test=".//table">

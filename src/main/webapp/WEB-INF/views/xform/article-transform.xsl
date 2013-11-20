@@ -1122,33 +1122,6 @@
       <xsl:variable name="imageURI">
         <xsl:value-of select=".//graphic/@xlink:href"/>
       </xsl:variable>
-      <xsl:variable name="slideshowURL">
-        <xsl:value-of select="concat($pubAppContext, '/article/fetchObject.action?uri=',
-                  $imageURI,'&amp;representation=PNG_M')"/>
-      </xsl:variable>
-
-      <xsl:variable name="pptURL">
-        <xsl:value-of select="concat('/article/',$imageURI, '/powerpoint')"/>
-      </xsl:variable>
-
-      <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('/article/',$imageURI,'/largerimage')"/>
-      </xsl:variable>
-      <xsl:variable name="bigImgDOI">
-        <xsl:value-of select="concat($imageURI,'.PNG_L')"/>
-      </xsl:variable>
-
-      <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('/article/',$imageURI,'/originalimage')"/>
-      </xsl:variable>
-      <xsl:variable name="origImgDOI">
-        <xsl:value-of select="concat($imageURI,'.TIF')"/>
-      </xsl:variable>
-
-      <xsl:variable name="targetURI">
-        <xsl:value-of select="substring($imageURI, 1, (string-length($imageURI)-5))"/>
-      </xsl:variable>
-
       <figure class="figure-small">
         <!--id needs to be attached to "figure" div for proper anchor linking-->
         <xsl:attribute name="id">
@@ -1158,7 +1131,6 @@
         <figcaption>
           <xsl:apply-templates select="label"/>
           <xsl:if test="caption/title">
-            <xsl:text> </xsl:text>
             <span>
               <xsl:apply-templates select="caption/title"/>
             </span>

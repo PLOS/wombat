@@ -16,6 +16,8 @@ import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
+import org.ambraproject.wombat.service.AssetService;
+import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SoaServiceImpl;
@@ -157,5 +159,10 @@ public class SpringConfiguration {
     } else {
       return new NullCache();
     }
+  }
+
+  @Bean
+  public AssetService assetService() {
+    return new AssetServiceImpl();
   }
 }

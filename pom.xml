@@ -152,6 +152,13 @@
       <version>1.2</version>
     </dependency>
 
+    <!-- Asset pipeline  -->
+    <dependency>
+      <groupId>com.yahoo.platform.yui</groupId>
+      <artifactId>yuicompressor</artifactId>
+      <version>2.4.6</version>
+    </dependency>
+
     <!-- Test -->
     <dependency>
       <groupId>junit</groupId>

@@ -44,6 +44,7 @@ public class RuntimeConfiguration {
   private String cacheAppPrefix;
   private Boolean trustUnsignedServer;
   private Boolean devModeAssets;
+  private String compiledAssetDir;
   private List<Map<String, ?>> themes;
   private List<Map<String, ?>> sites;
   private Map<String, Class<? extends ControllerHook>> homePageHooks;
@@ -94,6 +95,9 @@ public class RuntimeConfiguration {
     if (!Strings.isNullOrEmpty(memcachedHost) && Strings.isNullOrEmpty(cacheAppPrefix)) {
       throw new RuntimeConfigurationException("If memcachedHost is specified, cacheAppPrefix must be as well");
     }
+    if ((devModeAssets == null || !devModeAssets) && Strings.isNullOrEmpty(compiledAssetDir)) {
+      throw new RuntimeConfigurationException("If devModeAssets is false, compiledAssetDir must be specified");
+    }
   }
 
   /**
@@ -112,6 +116,14 @@ public class RuntimeConfiguration {
    */
   public boolean devModeAssets() {
     return (devModeAssets == null) ? false : devModeAssets;
+  }
+
+  /**
+   * @return the directory in which to write and serve compiled assets (.js and .css).  Not relevant
+   *     if devModeAssets is true.
+   */
+  public String getCompiledAssetDir() {
+    return compiledAssetDir;
   }
 
   /**

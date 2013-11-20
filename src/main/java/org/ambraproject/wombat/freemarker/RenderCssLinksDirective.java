@@ -20,6 +20,7 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,9 @@ public class RenderCssLinksDirective implements TemplateDirectiveModel {
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
+  @Autowired
+  private AssetService assetService;
+
   /**
    * {@inheritDoc}
    */
@@ -46,14 +50,17 @@ public class RenderCssLinksDirective implements TemplateDirectiveModel {
     if (!runtimeConfiguration.devModeAssets()) {
       HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
       List<String> cssFiles = (List<String>) request.getAttribute("cssFiles");
-      if (cssFiles != null) {
-
-        // TODO: concatenate and minify here, instead of just writing out all the links.
-        for (String css : cssFiles) {
-          environment.getOut().write(String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", css));
-        }
+      if (cssFiles != null && !cssFiles.isEmpty()) {
+        environment.getOut().write(String.format("<link rel=\"stylesheet\" href=\"%s\" />\n",
+            assetService.getCompiledCssLink(cssFiles, getSite(request), request.getServletPath())));
       }
 
     }  // else nothing to do, since in dev mode we already rendered the links.
+  }
+
+  // We normally do this in Spring Controllers with @PathVariable annotations,
+  // but we have to do it "by hand" since we're in a TemplateDirectiveModel.
+  private String getSite(HttpServletRequest request) {
+    return request.getServletPath().split("/")[1];
   }
 }

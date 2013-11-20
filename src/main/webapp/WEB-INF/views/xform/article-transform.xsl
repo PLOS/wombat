@@ -1155,10 +1155,25 @@
           <!-- This may cause collisions. TODO: Fix -->
           <xsl:value-of select="translate($figId, '.', '-')"/>
         </xsl:attribute>
-        <figcaption>Figure 1. The caption.<!--TODO-->
-          <a href="test">More »</a>
+        <figcaption>
+          <xsl:apply-templates select="label"/>
+          <xsl:if test="caption/title">
+            <xsl:text> </xsl:text>
+            <span>
+              <xsl:apply-templates select="caption/title"/>
+            </span>
+          </xsl:if>
+          <a>
+            <xsl:attribute name="href">
+              <xsl:value-of select="concat('article/figure?id=', $imageURI)"/>
+            </xsl:attribute>
+            More »
+          </a>
         </figcaption>
         <a class="figure-link">
+          <xsl:attribute name="href">
+            <xsl:value-of select="concat('article/figure?id=', $imageURI)"/>
+          </xsl:attribute>
           <img alt="thumbnail" class="figure-image">
             <xsl:attribute name="src">
               <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/>

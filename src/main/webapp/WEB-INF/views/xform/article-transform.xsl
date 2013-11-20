@@ -1161,7 +1161,7 @@
         <a class="figure-link">
           <img alt="thumbnail" class="figure-image">
             <xsl:attribute name="src">
-              <xsl:value-of select="concat('article/thumbnail?id=', $imageURI)"/>
+              <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/>
             </xsl:attribute>
           </img>
           <span class="figure-expand">Expand</span>

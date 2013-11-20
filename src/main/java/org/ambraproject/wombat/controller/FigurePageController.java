@@ -1,12 +1,10 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.io.Closer;
 import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -92,34 +87,6 @@ public class FigurePageController {
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleId));
 
     return site + "/ftl/article/figure";
-  }
-
-  /**
-   * Serve an asset file as the response body. Forward a stream from the SOA.
-   */
-  @RequestMapping("/{site}/article/asset")
-  public void serveAsset(HttpServletResponse response,
-                         @PathVariable("site") String site,
-                         @RequestParam("id") String assetId)
-      throws IOException {
-    Map<String, Object> assetMetadata = soaService.requestObject("assetfiles/" + assetId + "?metadata", Map.class);
-    String contentType = (String) assetMetadata.get("contentType");
-    response.setContentType(contentType);
-
-    Closer closer = Closer.create();
-    try {
-      InputStream assetStream = soaService.requestStream("assetfiles/" + assetId);
-      if (assetStream == null) {
-        throw new EntityNotFoundException(assetId);
-      }
-      closer.register(assetStream);
-      OutputStream responseStream = closer.register(response.getOutputStream());
-      IOUtils.copy(assetStream, responseStream); // buffered
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
-    }
   }
 
 }

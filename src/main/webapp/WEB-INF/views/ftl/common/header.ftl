@@ -15,7 +15,7 @@
 
     <a id="site-menu-button">Site Menu</a>
     <a class="site-search-button color-active"><span class="icon">Search</span></a>
-    <a><#include "siteLogo.ftl" /></a>
+    <a href=<@pathUp depth "." />><#include "siteLogo.ftl" /></a>
 
   </div>
   <nav id="article-menu" class="menu-bar">

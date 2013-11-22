@@ -195,15 +195,17 @@ public class RuntimeConfiguration {
    */
   public ControllerHook getHomePageHook(String site) {
     Class<? extends ControllerHook> klass = homePageHooks.get(site);
-    ControllerHook result = null;
-    if (klass != null) {
-      try {
-        result = klass.newInstance();
-      } catch (InstantiationException ie) {
-        throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), ie);
-      } catch (IllegalAccessException iae) {
-        throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), iae);
-      }
+    if (klass == null) {
+      return null; // No special hook is specified for this site
+    }
+
+    ControllerHook result;
+    try {
+      result = klass.newInstance();
+    } catch (InstantiationException ie) {
+      throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), ie);
+    } catch (IllegalAccessException iae) {
+      throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), iae);
     }
 
     // Since we create this ControllerHook here, through reflection, we can't use spring

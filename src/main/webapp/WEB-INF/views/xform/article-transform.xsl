@@ -1280,8 +1280,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of
-              select="concat($pubAppContext,'/article/fetchObject.action?uri=',$graphicDOI,'&amp;representation=PNG')"/>
+          <xsl:value-of select="concat('article/figure/image?size=graphic&amp;id=', $graphicDOI)"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">

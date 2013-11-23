@@ -5,8 +5,8 @@
 
 @font-face {
   font-family: 'ambraSymbols';
-  src: url('fonts/ambraSymbols.eot');
-  src: url('fonts/ambraSymbols.eot?#iefix') format('embedded-opentype'), url('fonts/ambraSymbols.woff') format('woff'), url('fonts/ambraSymbols.ttf') format('truetype'), url('fonts/ambraSymbols.svg#plos') format('svg');
+  src: url('../fonts/ambraSymbols.eot');
+  src: url('../fonts/ambraSymbols.eot?#iefix') format('embedded-opentype'), url('../fonts/ambraSymbols.woff') format('woff'), url('../fonts/ambraSymbols.ttf') format('truetype'), url('../fonts/ambraSymbols.svg#plos') format('svg');
   font-weight: normal;
   font-style: normal;
 }

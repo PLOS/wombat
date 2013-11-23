@@ -51,8 +51,15 @@ public class RenderCssLinksDirective implements TemplateDirectiveModel {
       HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
       List<String> cssFiles = (List<String>) request.getAttribute("cssFiles");
       if (cssFiles != null && !cssFiles.isEmpty()) {
-        environment.getOut().write(String.format("<link rel=\"stylesheet\" href=\"%s\" />\n",
-            assetService.getCompiledCssLink(cssFiles, getSite(request), request.getServletPath())));
+
+        // This is a bit of a hack to get relative links from CSS files to work.  We replicate
+        // the number of levels in the uncompiled paths.  For example, if the uncompiled link
+        // points at "static/css/foo.css", the compiled one will be "static/compiled/asset_3947213.css"
+        // or something.  There's corresponding code in org.ambraproject.wombat.controller.StaticFileController
+        // as well.
+        String assetPath = "static/" + assetService.getCompiledCssLink(cssFiles, getSite(request),
+            request.getServletPath());
+        environment.getOut().write(String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", assetPath));
       }
 
     }  // else nothing to do, since in dev mode we already rendered the links.

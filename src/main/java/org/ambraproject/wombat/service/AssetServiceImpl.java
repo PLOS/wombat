@@ -15,6 +15,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.io.Closer;
 import com.yahoo.platform.yui.compressor.CssCompressor;
+import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.config.Theme;
@@ -23,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import sun.misc.BASE64Encoder;
 
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,27 +45,76 @@ public class AssetServiceImpl implements AssetService {
 
   private static final int BUFFER_SIZE = 8192;
 
+  /**
+   * We only store the contents of compiled assets in memcache if they are smaller than this
+   * value.  Otherwise, the controller that serves them will need to read them from disk.
+   */
+  private static final int MAX_ASSET_SIZE_TO_CACHE = 1024 * 1024;
+
+  /**
+   * We use a shorter cache TTL than the global default (1 hour), because it's theoretically
+   * possible that the uncompiled asset files might change in the themes directory.  And since
+   * the cache key can only be calculated by loading and hashing all the corresponding files
+   * (an expensive operation), we have to accept that we'll serve stale assets for this period.
+   */
+  private static final int CACHE_TTL = 15 * 60;
+
   @Autowired
   private SiteSet siteSet;
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
+  @Autowired
+  private Cache cache;
+
   /**
    * {@inheritDoc}
    */
   @Override
   public String getCompiledCssLink(List<String> cssFilenames, String site, String cacheKey) throws IOException {
+    String fileCacheKey = "cssFile:" + cacheKey;
+    String filename = cache.get(fileCacheKey);
+    if (filename == null) {
+      File concatenated = concatenateFiles(cssFilenames, site, ".css");
+      FileAndContents compiled = compileCss(concatenated);
+      concatenated.delete();
+      filename = compiled.file.getName();
 
-    // TODO: check memcache for cached asset based on cacheKey
+      // We cache both the file name and the file contents (if it is small enough) in memcache.
+      // In an ideal world, we would use the filename (including the hash of its contents) as
+      // the only cache key.  However, it's potentially expensive to calculate that key since
+      // you need the contents of the compiled file, which is why we do it this way.
+      cache.put(fileCacheKey, filename, CACHE_TTL);
+      if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
+        cache.put("cssContents:" + filename, compiled.contents, CACHE_TTL);
+      }
+    }
+    return COMPILED_PATH_PREFIX + filename;
+  }
 
-    File concatenated = concatenateFiles(cssFilenames, site, ".css");
-    FileAndContents compiled = compileCss(concatenated);
-    concatenated.delete();
-
-    // TODO: store compiled.contents in memcache
-    // TODO: return servlet path that will serve the asset (and set up a servlet filter to serve it)
-    return "IMPLEMENT_ME";
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException {
+    byte[] cached = cache.get("cssContents:" + assetFilename);
+    InputStream is;
+    if (cached == null) {
+      is = new FileInputStream(new File(getCompiledFilePath(assetFilename)));
+    } else {
+      is = new ByteArrayInputStream(cached);
+    }
+    Closer closer = Closer.create();
+    try {
+      closer.register(is);
+      closer.register(outputStream);
+      IOUtils.copy(is, outputStream);
+    } catch (Throwable t) {
+      throw closer.rethrow(t);
+    } finally {
+      closer.close();
+    }
   }
 
   /**
@@ -137,7 +188,12 @@ public class AssetServiceImpl implements AssetService {
     byte[] contents = baos.toByteArray();
 
     String name = String.format("asset_%s.css", getFingerprint(contents));
-    File result = new File(runtimeConfiguration.getCompiledAssetDir() + File.separator + name);
+    File result = new File(getCompiledFilePath(name));
+
+    // Overwrite if the file already exists.
+    if (result.exists()) {
+      result.delete();
+    }
     closer = Closer.create();
     try {
       OutputStream os = new FileOutputStream(result);
@@ -171,5 +227,17 @@ public class AssetServiceImpl implements AssetService {
     // Replace slashes with underscores and removing the trailing "=".
     result = result.replace('/', '_').trim();
     return result.substring(0, result.length() - 1);
+  }
+
+  /**
+   * Returns the absolute, filesystem path to where a compiled asset should be.
+   * Note that this only calculates the path, and does not validate that the
+   * file actually exists.
+   *
+   * @param basename filename of the asset
+   * @return absolute path to the asset file
+   */
+  private String getCompiledFilePath(String basename) {
+    return runtimeConfiguration.getCompiledAssetDir() + File.separator + basename;
   }
 }

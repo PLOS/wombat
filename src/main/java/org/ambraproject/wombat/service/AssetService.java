@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 /**
@@ -22,6 +23,11 @@ import java.util.List;
  * as well as serving them.
  */
 public interface AssetService {
+
+  /**
+   * The logical (servlet-relative) directory in which compiled asset files are served from.
+   */
+  static final String COMPILED_PATH_PREFIX = "compiled/";
 
   /**
    * Concatenates a group of css files into a single file, minifies it, and
@@ -36,4 +42,13 @@ public interface AssetService {
    * @throws IOException
    */
   String getCompiledCssLink(List<String> cssFilenames, String site, String cacheKey) throws IOException;
+
+  /**
+   * Writes an asset that was previously compiled with a call to getCompiledCssLink to the stream.
+   *
+   * @param assetFilename the filename, as returned by getCompiledCssLink
+   * @param outputStream output; this method will close the stream as well
+   * @throws IOException
+   */
+  void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException;
 }

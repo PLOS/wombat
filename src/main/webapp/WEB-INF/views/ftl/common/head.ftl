@@ -12,10 +12,13 @@
   </style>
 
   <title><@titleFormat title /></title>
-  <link rel="stylesheet" href=<@pathUp depth!0 "static/css/base.css" />>
-  <link rel="stylesheet" href=<@pathUp depth!0 "static/css/interface.css" />>
-  <link rel="stylesheet" href=<@pathUp depth!0 "static/css/mobile.css" />>
-<#include "../cssLinks.ftl" />
+  <#assign target><@pathUp depth!0 "static/css/base.css" /></#assign>
+  <@cssLink target=target />
+  <#assign target><@pathUp depth!0 "static/css/interface.css" /></#assign>
+  <@cssLink target=target />
+  <#assign target><@pathUp depth!0 "static/css/mobile.css" /></#assign>
+  <@cssLink target=target />
+  <#include "../cssLinks.ftl" />
 
   <script src=<@pathUp depth!0 "static/js/vendor/modernizr.custom.25437.js" />></script>
   <script src=<@pathUp depth!0 "static/js/vendor/respond.min.js" />></script>

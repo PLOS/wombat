@@ -121,6 +121,16 @@
   margin-top: 10px;
 }
 
+#article-content .equation img {
+  display: block;
+  margin: 0 auto;
+}
+
+#article-content .inline-formula img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .article-menu-bottom.small {
   padding: 0;
   margin-top: 0;

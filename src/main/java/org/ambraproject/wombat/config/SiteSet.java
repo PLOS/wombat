@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 
 import java.util.List;
@@ -44,6 +45,10 @@ public class SiteSet {
 
   public ImmutableCollection<Site> getSites() {
     return sites.values();
+  }
+
+  public ImmutableSet<String> getSiteKeys(){
+    return sites.keySet();
   }
 
   @Override

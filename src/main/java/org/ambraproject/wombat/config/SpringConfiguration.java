@@ -98,9 +98,9 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public FreeMarkerConfig freeMarkerConfig(SiteSet siteSet, CssLinkDirective cssLinkDirective,
-      RenderCssLinksDirective renderCssLinksDirective) throws IOException {
-    SiteTemplateLoader loader = new SiteTemplateLoader(siteSet);
+  public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
+      CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective) throws IOException {
+    SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
 

@@ -13,13 +13,19 @@
 
 package org.ambraproject.wombat.service;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.io.Closer;
 import com.yahoo.platform.yui.compressor.CssCompressor;
+import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.config.Theme;
 import org.apache.commons.io.IOUtils;
+import org.mozilla.javascript.ErrorReporter;
+import org.mozilla.javascript.EvaluatorException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import sun.misc.BASE64Encoder;
 
@@ -42,6 +48,8 @@ import java.util.List;
  *
  */
 public class AssetServiceImpl implements AssetService {
+
+  private static final Logger logger = LoggerFactory.getLogger(AssetServiceImpl.class);
 
   private static final int BUFFER_SIZE = 8192;
 
@@ -69,15 +77,74 @@ public class AssetServiceImpl implements AssetService {
   private Cache cache;
 
   /**
+   * Represents the types of asset files processed by this service.
+   */
+  private static enum AssetType {
+
+    CSS,
+    JS;
+
+    String getExtension() {
+      return "." + name().toLowerCase();
+    }
+
+    /**
+     * Builds a cache key to store the filename of a compiled asset.  (We cache these
+     * since their name includes a hash, which can be potentially expensive to compute.)
+     *
+     * @param cacheKey cache key for the overall request
+     * @return cache key where we can store/retrieve the compiled filename
+     */
+    String getFileCacheKey(String cacheKey) {
+      return String.format("%sFile:%s", name().toLowerCase(), cacheKey);
+    }
+
+    /**
+     * Builds a cache key to store the contents of a compiled asset.
+     *
+     * @param filename base filename of the compiled asset
+     * @return cache key where we can store/retrieve the contents of the compiled asset
+     */
+    String getContentsCacheKey(String filename) {
+      return String.format("%sContents:%s", name().toLowerCase(), filename);
+    }
+  }
+
+  /**
    * {@inheritDoc}
    */
   @Override
   public String getCompiledCssLink(List<String> cssFilenames, String site, String cacheKey) throws IOException {
-    String fileCacheKey = "cssFile:" + cacheKey;
+    return getCompiledAssetLink(AssetType.CSS, cssFilenames, site, cacheKey);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String getCompiledJavascriptLink(List<String> cssFilenames, String site, String cacheKey) throws IOException {
+    return getCompiledAssetLink(AssetType.JS, cssFilenames, site, cacheKey);
+  }
+
+  /**
+   * Concatenates a group of assets, compiles them, and returns the path where the compiled
+   * file is served.  The compiled filename and the contents of the compiled file will
+   * be cached.
+   *
+   * @param assetType specifies whether the asset is javascript or CSS
+   * @param filenames list of servlet paths that correspond to asset files to compile
+   * @param site specifies the journal/site
+   * @param cacheKey key that will be used to cache the results
+   * @return servlet path to the single, compiled asset file
+   * @throws IOException
+   */
+  private String getCompiledAssetLink(AssetType assetType, List<String> filenames, String site, String cacheKey)
+      throws IOException {
+    String fileCacheKey = assetType.getFileCacheKey(cacheKey);
     String filename = cache.get(fileCacheKey);
     if (filename == null) {
-      File concatenated = concatenateFiles(cssFilenames, site, ".css");
-      FileAndContents compiled = compileCss(concatenated);
+      File concatenated = concatenateFiles(filenames, site, assetType.getExtension());
+      FileAndContents compiled = compileAsset(assetType, concatenated);
       concatenated.delete();
       filename = compiled.file.getName();
 
@@ -87,7 +154,7 @@ public class AssetServiceImpl implements AssetService {
       // you need the contents of the compiled file, which is why we do it this way.
       cache.put(fileCacheKey, filename, CACHE_TTL);
       if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
-        cache.put("cssContents:" + filename, compiled.contents, CACHE_TTL);
+        cache.put(assetType.getContentsCacheKey(filename), compiled.contents, CACHE_TTL);
       }
     }
     return COMPILED_PATH_PREFIX + filename;
@@ -98,7 +165,13 @@ public class AssetServiceImpl implements AssetService {
    */
   @Override
   public void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException {
-    byte[] cached = cache.get("cssContents:" + assetFilename);
+
+    // Determine AssetType based on file extension.
+    String[] fields = assetFilename.split("/");
+    String basename = fields[fields.length - 1];
+    AssetType assetType = AssetType.valueOf(AssetType.class,
+        basename.substring(basename.lastIndexOf('.') + 1).toUpperCase());
+    byte[] cached = cache.get(assetType.getContentsCacheKey(basename));
     InputStream is;
     if (cached == null) {
       is = new FileInputStream(new File(getCompiledFilePath(assetFilename)));
@@ -151,13 +224,40 @@ public class AssetServiceImpl implements AssetService {
    * Simple class representing a File and its contents.  Useful since compile has to load
    * the file into memory anyway, and the caller also needs the contents.
    */
-  private static final class FileAndContents {
+  @VisibleForTesting
+  static final class FileAndContents {
     final File file;
     final byte[] contents;
 
     FileAndContents(File file, byte[] contents) {
       this.file = file;
       this.contents = contents;
+    }
+  }
+
+  /**
+   * Instance of {@link ErrorReporter} passed to the javascript compiler.
+   */
+  private static class JsErrorReporter implements ErrorReporter {
+
+    @Override
+    public void error(String message, String sourceName, int line, String lineSource, int lineOffset) {
+      throw new AssetCompilationException(getErrorMessage(sourceName, line, message, "error"));
+    }
+
+    @Override
+    public void warning(String message, String sourceName, int line, String lineSource, int lineOffset) {
+      logger.warn(getErrorMessage(sourceName, line, message, "warning"));
+    }
+
+    @Override
+    public EvaluatorException runtimeError(String message, String sourceName, int line, String lineSource,
+        int lineOffset) {
+      return new EvaluatorException(getErrorMessage(sourceName, line, message, "runtime error"));
+    }
+
+    private String getErrorMessage(String sourceFile, int line, String message, String errorType) {
+      return String.format("Javascript %s in %s: %d: %s", errorType, sourceFile, line, message);
     }
   }
 
@@ -169,7 +269,7 @@ public class AssetServiceImpl implements AssetService {
    *     the file's contents.
    * @throws IOException
    */
-  private FileAndContents compileCss(File uncompiled) throws IOException {
+  private FileAndContents compileAsset(AssetType assetType, File uncompiled) throws IOException {
 
     // Compile to memory instead of a file directly, since we will need the raw bytes
     // in order to generate a hash (which appears in the filename).
@@ -178,8 +278,15 @@ public class AssetServiceImpl implements AssetService {
     try {
       InputStreamReader isr = closer.register(new InputStreamReader(new FileInputStream(uncompiled)));
       OutputStreamWriter osw = closer.register(new OutputStreamWriter(baos));
-      CssCompressor compressor = new CssCompressor(isr);
-      compressor.compress(osw, -1);
+      if (assetType == AssetType.CSS) {
+        CssCompressor compressor = new CssCompressor(isr);
+        compressor.compress(osw, -1);
+      } else if (assetType == AssetType.JS) {
+        JavaScriptCompressor compressor = new JavaScriptCompressor(isr, new JsErrorReporter());
+        compressor.compress(osw, -1, true, false, true, false);
+      } else {
+        throw new IllegalArgumentException("Unexpected asset type " + assetType);
+      }
     } catch (Throwable t) {
       throw closer.rethrow(t);
     } finally {
@@ -187,7 +294,7 @@ public class AssetServiceImpl implements AssetService {
     }
     byte[] contents = baos.toByteArray();
 
-    String name = String.format("asset_%s.css", getFingerprint(contents));
+    String name = String.format("asset_%s%s", getFingerprint(contents), assetType.getExtension());
     File result = new File(getCompiledFilePath(name));
 
     // Overwrite if the file already exists.

@@ -57,12 +57,12 @@ public class SpringConfiguration {
       throw new RuntimeConfigurationException(configPath.getPath() + " not found");
     }
 
-    RuntimeConfiguration runtimeConfiguration;
+    JsonConfiguration runtimeConfiguration;
     Reader reader = null;
     boolean threw = true;
     try {
       reader = new BufferedReader(new FileReader(configPath));
-      runtimeConfiguration = gson.fromJson(reader, RuntimeConfiguration.class);
+      runtimeConfiguration = gson.fromJson(reader, JsonConfiguration.class);
       threw = false;
     } catch (JsonSyntaxException e) {
       throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);

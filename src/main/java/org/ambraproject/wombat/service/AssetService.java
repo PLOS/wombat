@@ -44,6 +44,20 @@ public interface AssetService {
   String getCompiledCssLink(List<String> cssFilenames, String site, String cacheKey) throws IOException;
 
   /**
+   * Concatenates a group of javascript files into a single file, minifies it, and
+   * returns the path where the compiled file is served.  Implementations may
+   * choose to cache the results, in which case cacheKey is used as the cache
+   * key.
+   *
+   * @param jsFilenames list of servlet paths that correspond to javascript files to compile
+   * @param site specifies the journal/site
+   * @param cacheKey key that will be used to cache the results
+   * @return servlet path to the single, compiled CSS file
+   * @throws IOException
+   */
+  String getCompiledJavascriptLink(List<String> jsFilenames, String site, String cacheKey) throws IOException;
+
+  /**
    * Writes an asset that was previously compiled with a call to getCompiledCssLink to the stream.
    *
    * @param assetFilename the filename, as returned by getCompiledCssLink

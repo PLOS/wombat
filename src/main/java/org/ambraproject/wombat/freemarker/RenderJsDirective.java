@@ -29,15 +29,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Freemarker custom directive that renders any CSS links added via calls to {@link CssLinkDirective}.
- * A single instance of this directive should be added at the end of the head element on the page.
- * It will do nothing if we are running in dev assets mode (since the links were already rendered).
+ * Freemarker custom directive that renders any <script> tags added via calls to
+ * {@link JsDirective}.  A single instance of this directive should be added at
+ * the end of the body element on the page.  It will do nothing if we are running
+ * in dev assets mode (since the tags were already rendered).
  */
-public class RenderCssLinksDirective implements TemplateDirectiveModel {
-
-  // TODO: there's some duplication between this class and RenderJsDirective.
-  // Consider pulling out the commonality, as with AssetDirective.  I decided
-  // not to for now, since the amount of duplicated code is fairly small.
+public class RenderJsDirective implements TemplateDirectiveModel {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
@@ -53,17 +50,17 @@ public class RenderCssLinksDirective implements TemplateDirectiveModel {
       throws TemplateException, IOException {
     if (!runtimeConfiguration.devModeAssets()) {
       HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
-      List<String> cssFiles = (List<String>) request.getAttribute(CssLinkDirective.REQUEST_VARIABLE_NAME);
-      if (cssFiles != null && !cssFiles.isEmpty()) {
+      List<String> jsFiles = (List<String>) request.getAttribute(JsDirective.REQUEST_VARIABLE_NAME);
+      if (jsFiles != null && !jsFiles.isEmpty()) {
 
-        // This is a bit of a hack to get relative links from CSS files to work.  We replicate
+        // This is a bit of a hack to get relative links from asset files to work.  We replicate
         // the number of levels in the uncompiled paths.  For example, if the uncompiled link
-        // points at "static/css/foo.css", the compiled one will be "static/compiled/asset_3947213.css"
+        // points at "static/js/foo.js", the compiled one will be "static/compiled/asset_3947213.js"
         // or something.  There's corresponding code in org.ambraproject.wombat.controller.StaticFileController
         // as well.
-        String assetPath = "static/" + assetService.getCompiledCssLink(cssFiles, getSite(request),
+        String assetPath = "static/" + assetService.getCompiledJavascriptLink(jsFiles, getSite(request),
             request.getServletPath());
-        environment.getOut().write(String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", assetPath));
+        environment.getOut().write(String.format("<script src=\"%s\"></script>\n", assetPath));
       }
 
     }  // else nothing to do, since in dev mode we already rendered the links.

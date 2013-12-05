@@ -24,14 +24,14 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Custom freemarker directive that should be used to insert a CSS link element.
+ * Custom freemarker directive that should be used to insert a <script> element.
  * If we are running in dev mode, this will just render the link; otherwise the
- * CSS file specified will be minified and served along with all other CSS in
+ * javascript file specified will be minified and served along with all other .js in
  * the app.
  */
-public class CssLinkDirective extends AssetDirective implements TemplateDirectiveModel {
+public class JsDirective extends AssetDirective implements TemplateDirectiveModel {
 
-  static final String REQUEST_VARIABLE_NAME = "cssFiles";
+  static final String REQUEST_VARIABLE_NAME = "jsFiles";
 
   /**
    * {@inheritDoc}
@@ -39,10 +39,10 @@ public class CssLinkDirective extends AssetDirective implements TemplateDirectiv
   @Override
   public void execute(Environment environment, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
       throws TemplateException, IOException {
-    if (params.get("target") == null) {
-      throw new TemplateModelException("target parameter is required");
+    if (params.get("src") == null) {
+      throw new TemplateModelException("src parameter is required");
     }
-    String target = params.get("target").toString();
+    String target = params.get("src").toString();
     addAsset(target, REQUEST_VARIABLE_NAME, environment);
   }
 
@@ -51,6 +51,6 @@ public class CssLinkDirective extends AssetDirective implements TemplateDirectiv
    */
   @Override
   protected String getHtml(String assetPath) {
-    return String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", assetPath);
+    return String.format("<script src=\"%s\"></script>\n", assetPath);
   }
 }

@@ -12,7 +12,9 @@ import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
+import org.ambraproject.wombat.freemarker.JsDirective;
 import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
+import org.ambraproject.wombat.freemarker.RenderJsDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
@@ -97,9 +99,18 @@ public class SpringConfiguration {
     return new RenderCssLinksDirective();
   }
 
+  @Bean JsDirective jsDirective() {
+    return new JsDirective();
+  }
+
+  @Bean RenderJsDirective renderJsDirective() {
+    return new RenderJsDirective();
+  }
+
   @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
-      CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective) throws IOException {
+      CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
+      RenderJsDirective renderJsDirective) throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
@@ -112,6 +123,8 @@ public class SpringConfiguration {
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("cssLink", cssLinkDirective);
     variables.put("renderCssLinks", renderCssLinksDirective);
+    variables.put("js", jsDirective);
+    variables.put("renderJs", renderJsDirective);
     config.setFreemarkerVariables(variables);
     return config;
   }

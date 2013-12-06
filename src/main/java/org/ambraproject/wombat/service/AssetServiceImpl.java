@@ -260,9 +260,9 @@ public class AssetServiceImpl implements AssetService {
   }
 
   /**
-   * Minifies the given .css file and returns the file and its contents.
+   * Minifies the given asset file and returns the file and its contents.
    *
-   * @param uncompiled uncompiled .css file
+   * @param uncompiled uncompiled asset file
    * @return File that has been minified.  The file name will contain a hash reflecting
    *     the file's contents.
    * @throws IOException

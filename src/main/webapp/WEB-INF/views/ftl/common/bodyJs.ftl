@@ -6,4 +6,6 @@
 <@js src=jsSrc />
 <#assign jsSrc><@pathUp depth!0 "static/js/share.js" /></#assign>
 <@js src=jsSrc />
+<#assign jsSrc><@pathUp depth!0 "static/js/taxonomy.js" /></#assign>
+<@js src=jsSrc />
 <@renderJs />

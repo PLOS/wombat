@@ -37,7 +37,6 @@
   <script>
     var journalKey = '${journalKey}';
   </script>
-  <@js src="static/js/taxonomy.js" />
   <#include "common/bodyJs.ftl" />
 </body>
 </html>

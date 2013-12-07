@@ -19,6 +19,8 @@ import org.ambraproject.wombat.controller.ControllerHook;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SolrSearchService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +33,7 @@ import java.util.Map;
  * ControllerHook that adds additional model data needed to render the PLOS ONE homepage.
  */
 public class PlosOneHome implements ControllerHook {
+  private static final Logger log = LoggerFactory.getLogger(PlosOneHome.class);
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -74,23 +77,28 @@ public class PlosOneHome implements ControllerHook {
     model.addAttribute("resultsPerPage", RESULTS_PER_PAGE);
 
     Map articles;
-    switch (section) {
-      case RECENT:
-        articles = searchService.simpleSearch(null, SITE, start, RESULTS_PER_PAGE,
-            SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST, SolrSearchService.SolrDateRange.ALL_TIME);
-        break;
+    try {
+      switch (section) {
+        case RECENT:
+          articles = searchService.simpleSearch(null, SITE, start, RESULTS_PER_PAGE,
+              SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST, SolrSearchService.SolrDateRange.ALL_TIME);
+          break;
 
-      case POPULAR:
-        articles = searchService.simpleSearch(null, SITE, start, RESULTS_PER_PAGE,
-            SolrSearchService.SolrSortOrder.MOST_VIEWS_ALL_TIME, SolrSearchService.SolrDateRange.ALL_TIME);
-        break;
+        case POPULAR:
+          articles = searchService.simpleSearch(null, SITE, start, RESULTS_PER_PAGE,
+              SolrSearchService.SolrSortOrder.MOST_VIEWS_ALL_TIME, SolrSearchService.SolrDateRange.ALL_TIME);
+          break;
 
-      case IN_THE_NEWS:
-        articles = getInTheNewsArticles();
-        break;
+        case IN_THE_NEWS:
+          articles = getInTheNewsArticles();
+          break;
 
-      default:
-        throw new IllegalStateException("Unexpected section value " + section);
+        default:
+          throw new IllegalStateException("Unexpected section value " + section);
+      }
+    } catch (IOException e) {
+      log.error("Could not populate home page with articles", e); // Typically caused by Solr being down
+      articles = null; // Render the rest of the page with an error message in place of the articles list
     }
     model.addAttribute("articles", articles);
   }

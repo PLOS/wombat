@@ -1,8 +1,11 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.config.SiteSet;
+import org.ambraproject.wombat.service.SearchService;
+import org.ambraproject.wombat.service.SolrSearchService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Handles requests for a site home page.
  */
 @Controller
 public class HomeController {
-
-  private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+  private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
   @Autowired
   private SiteSet siteSet;
@@ -29,15 +33,18 @@ public class HomeController {
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
+  @Autowired
+  private SolrSearchService solrSearchService;
+
   /**
    * Simply selects the home view to render by returning its name.
    */
   @RequestMapping(value = "/{site}/", method = RequestMethod.GET)
   public String home(HttpServletRequest request, Locale locale, Model model, @PathVariable("site") String siteParam)
       throws Exception {
-    logger.info("Welcome home! The client locale is {}.", locale);
-
     Site site = siteSet.getSite(siteParam);
+
+    populateWithArticleList(request, model, site, solrSearchService, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
 
     // Certain sites (such as PLOS ONE) are highly customized vs. the "normal" wombat themes,
     // and not only require their own views, but also custom data to be passed into that view.
@@ -47,6 +54,28 @@ public class HomeController {
       hook.populateCustomModelAttributes(request, model);
     }
     return site.getKey() + "/ftl/home";
+  }
+
+  private static final int RESULTS_PER_PAGE = 7;
+
+  public static void populateWithArticleList(HttpServletRequest request, Model model, Site site,
+                                             SearchService searchService,
+                                             SolrSearchService.SolrSortOrder order) {
+    int start = 1;
+    String page = request.getParameter("page");
+    if (!Strings.isNullOrEmpty(page)) {
+      start = (Integer.parseInt(page) - 1) * RESULTS_PER_PAGE + 1;
+    }
+    model.addAttribute("resultsPerPage", RESULTS_PER_PAGE);
+
+    try {
+      Map<?, ?> articles = searchService.simpleSearch(null, site, start, RESULTS_PER_PAGE,
+          order, SolrSearchService.SolrDateRange.ALL_TIME);
+      model.addAttribute("articles", articles);
+    } catch (IOException e) {
+      log.error("Could not populate home page with articles from Solr", e);
+      // Render the rest of the page without the article list
+    }
   }
 
 }

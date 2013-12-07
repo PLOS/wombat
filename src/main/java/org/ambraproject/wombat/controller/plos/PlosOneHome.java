@@ -16,6 +16,7 @@ package org.ambraproject.wombat.controller.plos;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.controller.ControllerHook;
+import org.ambraproject.wombat.controller.HomeController;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SolrSearchService;
@@ -49,8 +50,6 @@ public class PlosOneHome implements ControllerHook {
   // class should "just know" what its site is.
   private static final Site SITE = new Site("PlosOne", "PLoSONE");
 
-  private static final int RESULTS_PER_PAGE = 7;
-
   private SoaService soaService;
 
   private SearchService searchService;
@@ -69,38 +68,24 @@ public class PlosOneHome implements ControllerHook {
     }
     model.addAttribute("selectedSection", section.name().toLowerCase());
 
-    int start = 1;
-    String page = request.getParameter("page");
-    if (!Strings.isNullOrEmpty(page)) {
-      start = (Integer.parseInt(page) - 1) * RESULTS_PER_PAGE + 1;
+    switch (section) {
+      case RECENT:
+        HomeController.populateWithArticleList(request, model, SITE, searchService,
+            SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
+        break;
+
+      case POPULAR:
+        HomeController.populateWithArticleList(request, model, SITE, searchService,
+            SolrSearchService.SolrSortOrder.MOST_VIEWS_ALL_TIME);
+        break;
+
+      case IN_THE_NEWS:
+        model.addAttribute("articles", getInTheNewsArticles());
+        break;
+
+      default:
+        throw new IllegalStateException("Unexpected section value " + section);
     }
-    model.addAttribute("resultsPerPage", RESULTS_PER_PAGE);
-
-    Map articles;
-    try {
-      switch (section) {
-        case RECENT:
-          articles = searchService.simpleSearch(null, SITE, start, RESULTS_PER_PAGE,
-              SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST, SolrSearchService.SolrDateRange.ALL_TIME);
-          break;
-
-        case POPULAR:
-          articles = searchService.simpleSearch(null, SITE, start, RESULTS_PER_PAGE,
-              SolrSearchService.SolrSortOrder.MOST_VIEWS_ALL_TIME, SolrSearchService.SolrDateRange.ALL_TIME);
-          break;
-
-        case IN_THE_NEWS:
-          articles = getInTheNewsArticles();
-          break;
-
-        default:
-          throw new IllegalStateException("Unexpected section value " + section);
-      }
-    } catch (IOException e) {
-      log.error("Could not populate home page with articles", e); // Typically caused by Solr being down
-      articles = null; // Render the rest of the page with an error message in place of the articles list
-    }
-    model.addAttribute("articles", articles);
   }
 
   private Map getInTheNewsArticles() throws IOException {

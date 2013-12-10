@@ -23,7 +23,15 @@
         </ul>
       </section>
     <#else>
-      <div>Article list unavailable.</div><#-- TODO: Friendlier message? -->
+      <section>
+        <ul id="article-results" class="results">
+          <li>
+            <div class="error">
+              Our system is having a bad day. Please check back later.
+            </div>
+          </li>
+        </ul>
+      </section>
     </#if>
     </div>
   </section>

@@ -169,11 +169,18 @@ ul.results li {
   padding: 20px 10px;
 }
 
-ul.results li a {
+ul.results li a,
+ul.results li .error {
   font-size: 1.5em;
-  background: url('../img/bg/arrow-right.png') no-repeat right center;
   display: block;
   padding-right: 2.5em;
+}
+
+ul.results li a {
+  background: url('../img/bg/arrow-right.png') no-repeat right center;
+}
+ul.results li .error {
+  color: #880000;
 }
 
 ul.results li:first-child {

@@ -30,6 +30,7 @@
         About the Authors
       </a>
     </li>
+<#-- TODO: determine how to do these in mobile
     <li class="menuitem">
       <a class="btn-lg">
         <span class="arrow">View</span>
@@ -42,6 +43,7 @@
         Related Content
       </a>
     </li>
+-->
   </ul>
 </nav><#--end article buttons-->
 

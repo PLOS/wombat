@@ -15,6 +15,7 @@
 
 </head>
 <body>
+<#assign depth = 1 />
 <#include "../common/header.ftl" />
 <#include "privacyPolicyText.ftl" />
 </body>

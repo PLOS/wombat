@@ -56,8 +56,19 @@ public class HomeController {
     return site.getKey() + "/ftl/home";
   }
 
-  private static final int RESULTS_PER_PAGE = 7;
+  private static final int RESULTS_PER_PAGE = 7; // TODO: Convert to configuration hook in theme?
 
+  /**
+   * Populate a model object with a feed of articles from Solr.
+   * <p/>
+   * This logic generally should be private to this class; it is public only for reuse by {@link ControllerHook}s.
+   *
+   * @param request       the request for a home page
+   * @param model         the response's model
+   * @param site          the site of the home page
+   * @param searchService the service through which to access Solr
+   * @param order         the order in which to list the articles on the home page
+   */
   public static void populateWithArticleList(HttpServletRequest request, Model model, Site site,
                                              SearchService searchService,
                                              SolrSearchService.SolrSortOrder order) {
@@ -75,6 +86,7 @@ public class HomeController {
     } catch (IOException e) {
       log.error("Could not populate home page with articles from Solr", e);
       // Render the rest of the page without the article list
+      // The FreeMarker template should provide an error message if "articles" is missing from the model
     }
   }
 

@@ -10,8 +10,16 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.MemcacheClient;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import org.ambraproject.wombat.freemarker.CssLinkDirective;
+import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
+import org.ambraproject.wombat.freemarker.JsDirective;
+import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
+import org.ambraproject.wombat.freemarker.RenderJsDirective;
+import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
+import org.ambraproject.wombat.service.AssetService;
+import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SoaServiceImpl;
@@ -30,6 +38,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class SpringConfiguration {
@@ -49,12 +59,12 @@ public class SpringConfiguration {
       throw new RuntimeConfigurationException(configPath.getPath() + " not found");
     }
 
-    RuntimeConfiguration runtimeConfiguration;
+    JsonConfiguration runtimeConfiguration;
     Reader reader = null;
     boolean threw = true;
     try {
       reader = new BufferedReader(new FileReader(configPath));
-      runtimeConfiguration = gson.fromJson(reader, RuntimeConfiguration.class);
+      runtimeConfiguration = gson.fromJson(reader, JsonConfiguration.class);
       threw = false;
     } catch (JsonSyntaxException e) {
       throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
@@ -80,10 +90,42 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet) throws IOException {
+  public CssLinkDirective cssLinkDirective() {
+    return new CssLinkDirective();
+  }
+
+  @Bean
+  public RenderCssLinksDirective renderCssLinksDirective() {
+    return new RenderCssLinksDirective();
+  }
+
+  @Bean JsDirective jsDirective() {
+    return new JsDirective();
+  }
+
+  @Bean RenderJsDirective renderJsDirective() {
+    return new RenderJsDirective();
+  }
+
+  @Bean
+  public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
+      CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
+      RenderJsDirective renderJsDirective) throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
+
+    // Freemarker custom directives used throughout the app.
+    // TODO: should all of these be their own @Beans?  I'm only doing that now for
+    // ones that have dependencies on spring-injection.
+    Map<String, Object> variables = new HashMap<>();
+    variables.put("formatJsonDate", new Iso8601DateDirective());
+    variables.put("replaceParams", new ReplaceParametersDirective());
+    variables.put("cssLink", cssLinkDirective);
+    variables.put("renderCssLinks", renderCssLinksDirective);
+    variables.put("js", jsDirective);
+    variables.put("renderJs", renderJsDirective);
+    config.setFreemarkerVariables(variables);
     return config;
   }
 
@@ -130,5 +172,10 @@ public class SpringConfiguration {
     } else {
       return new NullCache();
     }
+  }
+
+  @Bean
+  public AssetService assetService() {
+    return new AssetServiceImpl();
   }
 }

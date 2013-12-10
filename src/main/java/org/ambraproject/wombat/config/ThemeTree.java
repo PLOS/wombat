@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -20,7 +21,8 @@ public class ThemeTree {
 
   private ImmutableMap<String, Theme> themes;
 
-  private ThemeTree(Map<String, Theme> themes) {
+  @VisibleForTesting
+  public ThemeTree(Map<String, Theme> themes) {
     this.themes = ImmutableMap.copyOf(themes);
   }
 

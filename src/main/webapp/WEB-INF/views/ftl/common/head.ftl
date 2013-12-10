@@ -1,10 +1,6 @@
 <#include "../macro/pathUp.ftl" />
 <#include "title/titleFormat.ftl" />
 
-<#-- Custom FreeMarker directives  -->
-<#assign formatJsonDate = "org.ambraproject.wombat.util.Iso8601DateDirective"?new()>
-<#assign replaceParams = "org.ambraproject.wombat.util.ReplaceParametersDirective"?new()>
-
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
@@ -16,11 +12,14 @@
   </style>
 
   <title><@titleFormat title /></title>
-  <link rel="stylesheet" href=<@pathUp depth!0 "static/css/base.css" />>
-  <link rel="stylesheet" href=<@pathUp depth!0 "static/css/interface.css" />>
-  <link rel="stylesheet" href=<@pathUp depth!0 "static/css/mobile.css" />>
-<#include "../cssLinks.ftl" />
+  <#assign target><@pathUp depth!0 "static/css/base.css" /></#assign>
+  <@cssLink target=target />
+  <#assign target><@pathUp depth!0 "static/css/interface.css" /></#assign>
+  <@cssLink target=target />
+  <#assign target><@pathUp depth!0 "static/css/mobile.css" /></#assign>
+  <@cssLink target=target />
+  <#include "../cssLinks.ftl" />
 
-  <script src=<@pathUp depth!0 "static/js/vendor/modernizr.custom.25437.js" />></script>
-  <script src=<@pathUp depth!0 "static/js/vendor/respond.min.js" />></script>
+  <script src=<@pathUp depth!0 "static/js/vendor/vendor.min.js" />></script>
+  <@renderCssLinks />
 </head>

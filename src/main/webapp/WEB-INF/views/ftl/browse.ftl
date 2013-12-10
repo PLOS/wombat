@@ -33,10 +33,10 @@
 
   <#include "common/footer/footer.ftl" />
   <#include "common/fullMenu/fullMenu.ftl" />
-  <#include "common/bodyJs.ftl" />
+
   <script>
     var journalKey = '${journalKey}';
   </script>
-  <script src="static/js/taxonomy.js"></script>
+  <#include "common/bodyJs.ftl" />
 </body>
 </html>

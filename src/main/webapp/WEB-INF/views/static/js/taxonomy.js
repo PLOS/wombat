@@ -6,7 +6,9 @@ var TaxonomyBrowser = function() {
 
   self.init = function() {
     self.$browserDiv = $('#browse-container');
-    self.loadTerms(null);
+    if (self.$browserDiv.length) {
+      self.loadTerms(null);
+    }
   };
 
   // Renders the browser, given a JSON list of subjects.

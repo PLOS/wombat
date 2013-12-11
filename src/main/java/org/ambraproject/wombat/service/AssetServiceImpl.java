@@ -75,68 +75,10 @@ public class AssetServiceImpl implements AssetService {
   private Cache cache;
 
   /**
-   * Represents the types of asset files processed by this service.
-   */
-  private static enum AssetType {
-
-    CSS,
-    JS;
-
-    String getExtension() {
-      return "." + name().toLowerCase();
-    }
-
-    /**
-     * Builds a cache key to store the filename of a compiled asset.  (We cache these
-     * since their name includes a hash, which can be potentially expensive to compute.)
-     *
-     * @param cacheKey cache key for the overall request
-     * @return cache key where we can store/retrieve the compiled filename
-     */
-    String getFileCacheKey(String cacheKey) {
-      return String.format("%sFile:%s", name().toLowerCase(), cacheKey);
-    }
-
-    /**
-     * Builds a cache key to store the contents of a compiled asset.
-     *
-     * @param filename base filename of the compiled asset
-     * @return cache key where we can store/retrieve the contents of the compiled asset
-     */
-    String getContentsCacheKey(String filename) {
-      return String.format("%sContents:%s", name().toLowerCase(), filename);
-    }
-  }
-
-  /**
    * {@inheritDoc}
    */
   @Override
-  public String getCompiledCssLink(List<String> cssFilenames, String site, String cacheKey) throws IOException {
-    return getCompiledAssetLink(AssetType.CSS, cssFilenames, site, cacheKey);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getCompiledJavascriptLink(List<String> cssFilenames, String site, String cacheKey) throws IOException {
-    return getCompiledAssetLink(AssetType.JS, cssFilenames, site, cacheKey);
-  }
-
-  /**
-   * Concatenates a group of assets, compiles them, and returns the path where the compiled
-   * file is served.  The compiled filename and the contents of the compiled file will
-   * be cached.
-   *
-   * @param assetType specifies whether the asset is javascript or CSS
-   * @param filenames list of servlet paths that correspond to asset files to compile
-   * @param site specifies the journal/site
-   * @param cacheKey key that will be used to cache the results
-   * @return servlet path to the single, compiled asset file
-   * @throws IOException
-   */
-  private String getCompiledAssetLink(AssetType assetType, List<String> filenames, String site, String cacheKey)
+  public String getCompiledAssetLink(AssetType assetType, List<String> filenames, String site, String cacheKey)
       throws IOException {
     String fileCacheKey = assetType.getFileCacheKey(cacheKey);
     String filename = cache.get(fileCacheKey);

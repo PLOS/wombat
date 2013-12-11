@@ -12,18 +12,13 @@
 package org.ambraproject.wombat.freemarker;
 
 import freemarker.core.Environment;
-import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.service.AssetService;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,13 +27,7 @@ import java.util.Map;
  * the end of the body element on the page.  It will do nothing if we are running
  * in dev assets mode (since the tags were already rendered).
  */
-public class RenderJsDirective implements TemplateDirectiveModel {
-
-  @Autowired
-  private RuntimeConfiguration runtimeConfiguration;
-
-  @Autowired
-  private AssetService assetService;
+public class RenderJsDirective extends RenderAssetsDirective implements TemplateDirectiveModel {
 
   /**
    * {@inheritDoc}
@@ -46,27 +35,14 @@ public class RenderJsDirective implements TemplateDirectiveModel {
   @Override
   public void execute(Environment environment, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
       throws TemplateException, IOException {
-    if (!runtimeConfiguration.devModeAssets()) {
-      HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
-      List<String> jsFiles = (List<String>) request.getAttribute(JsDirective.REQUEST_VARIABLE_NAME);
-      if (jsFiles != null && !jsFiles.isEmpty()) {
-
-        // This is a bit of a hack to get relative links from asset files to work.  We replicate
-        // the number of levels in the uncompiled paths.  For example, if the uncompiled link
-        // points at "static/js/foo.js", the compiled one will be "static/compiled/asset_3947213.js"
-        // or something.  There's corresponding code in org.ambraproject.wombat.controller.StaticFileController
-        // as well.
-        String assetPath = "static/" + assetService.getCompiledJavascriptLink(jsFiles, getSite(request),
-            request.getServletPath());
-        environment.getOut().write(String.format("<script src=\"%s\"></script>\n", assetPath));
-      }
-
-    }  // else nothing to do, since in dev mode we already rendered the links.
+    renderAssets(AssetService.AssetType.JS, JsDirective.REQUEST_VARIABLE_NAME, environment);
   }
 
-  // We normally do this in Spring Controllers with @PathVariable annotations,
-  // but we have to do it "by hand" since we're in a TemplateDirectiveModel.
-  private String getSite(HttpServletRequest request) {
-    return request.getServletPath().split("/")[1];
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  protected String getHtml(String assetPath) {
+    return String.format("<script src=\"%s\"></script>\n", assetPath);
   }
 }

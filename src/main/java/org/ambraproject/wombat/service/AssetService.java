@@ -28,32 +28,53 @@ public interface AssetService {
   static final String COMPILED_PATH_PREFIX = "compiled/";
 
   /**
-   * Concatenates a group of css files into a single file, minifies it, and
-   * returns the path where the compiled file is served.  Implementations may
-   * choose to cache the results, in which case cacheKey is used as the cache
-   * key.
-   *
-   * @param cssFilenames list of servlet paths that correspond to CSS files to compile
-   * @param site specifies the journal/site
-   * @param cacheKey key that will be used to cache the results
-   * @return servlet path to the single, compiled CSS file
-   * @throws IOException
+   * Represents the types of asset files processed by this service.
    */
-  String getCompiledCssLink(List<String> cssFilenames, String site, String cacheKey) throws IOException;
+  public static enum AssetType {
+
+    CSS,
+    JS;
+
+    public String getExtension() {
+      return "." + name().toLowerCase();
+    }
+
+    /**
+     * Builds a cache key to store the filename of a compiled asset.  (We cache these
+     * since their name includes a hash, which can be potentially expensive to compute.)
+     *
+     * @param cacheKey cache key for the overall request
+     * @return cache key where we can store/retrieve the compiled filename
+     */
+    public String getFileCacheKey(String cacheKey) {
+      return String.format("%sFile:%s", name().toLowerCase(), cacheKey);
+    }
+
+    /**
+     * Builds a cache key to store the contents of a compiled asset.
+     *
+     * @param filename base filename of the compiled asset
+     * @return cache key where we can store/retrieve the contents of the compiled asset
+     */
+    public String getContentsCacheKey(String filename) {
+      return String.format("%sContents:%s", name().toLowerCase(), filename);
+    }
+  }
 
   /**
-   * Concatenates a group of javascript files into a single file, minifies it, and
-   * returns the path where the compiled file is served.  Implementations may
-   * choose to cache the results, in which case cacheKey is used as the cache
-   * key.
+   * Concatenates a group of assets, compiles them, and returns the path where the compiled
+   * file is served.  The compiled filename and the contents of the compiled file will
+   * be cached.
    *
-   * @param jsFilenames list of servlet paths that correspond to javascript files to compile
+   * @param assetType specifies whether the asset is javascript or CSS
+   * @param filenames list of servlet paths that correspond to asset files to compile
    * @param site specifies the journal/site
    * @param cacheKey key that will be used to cache the results
-   * @return servlet path to the single, compiled CSS file
+   * @return servlet path to the single, compiled asset file
    * @throws IOException
    */
-  String getCompiledJavascriptLink(List<String> jsFilenames, String site, String cacheKey) throws IOException;
+  String getCompiledAssetLink(AssetType assetType, List<String> filenames, String site, String cacheKey)
+      throws IOException;
 
   /**
    * Writes an asset that was previously compiled with a call to getCompiledCssLink to the stream.

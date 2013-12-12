@@ -19,11 +19,15 @@ var SiteContent = function () {
       self.switchArticleListMethod($currentButton);
     });
 
+    // TODO: uncomment this if we want the feature.  It brings up some kind of
+    // (currently broken) dialog when you click on an author's name in the search
+    // results.  It's apparently incomplete functionality delivered by DP.
+/*
     $('.author-info').click(function (e) {
       e.preventDefault();
       self.showAuthorInfo($(this));
     });
-
+*/
     $('.author-more, .author-less').click(function (e) {
       e.preventDefault();
       self.toggleMoreAuthors($(this));

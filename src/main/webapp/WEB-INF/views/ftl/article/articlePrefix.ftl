@@ -52,8 +52,8 @@
 
       </p><#-- end p.author-list -->
 
-    <#if articleCorrections?? && articleCorrections?size &gt; 0>
-      <#list articleCorrections as correction>
+    <#if formalCorrections?? && formalCorrections?size &gt; 0>
+      <#list formalCorrections as correction>
         <div class="retraction red-alert">
           <h3>${correction.title}:</h3>
         ${correction.body}

@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
@@ -166,6 +167,17 @@ public class ArticleController {
     List<?> corrections = soaService.requestObject(String.format("articles/%s?corrections", doi), List.class);
     if (corrections != null && !corrections.isEmpty()) {
       model.addAttribute("articleCorrections", corrections);
+
+      // On the main article page, we only display formal corrections, so we have a separate
+      // entry for these.
+      List<Map> formalCorrections = new ArrayList<>();
+      for (Object o : corrections) {
+        Map correction = (Map) o;
+        if ("FORMAL_CORRECTION".equals(correction.get("type"))) {
+          formalCorrections.add(correction);
+        }
+      }
+      model.addAttribute("formalCorrections", formalCorrections);
     }
   }
 

@@ -52,17 +52,18 @@
 
       </p><#-- end p.author-list -->
 
-    <#if articleCorrections?? && articleCorrections?size &gt; 0>
-      <#list articleCorrections as correction>
-        <div class="retraction red-alert">
-          <h3>${correction.title}:</h3>
-        ${correction.body}
-        </div>
-        <div class="correction-alert coloration-text-color">
-          <span class="plos-font">e</span> Correction added
-          <span class="bold"><@formatJsonDate date="${correction.created}" format="dd MMM yyyy" /></span>
-        </div><#-- end correction -->
-      </#list>
+    <#if formalCorrections?? && formalCorrections?size &gt; 0>
+      <div class="retraction red-alert">
+        <span><h3>Formal Correction:</h3> This article has been <em>formally corrected</em> to address the following errors.</span>
+        <ol>
+          <#list formalCorrections as correction>
+            <li>
+              ${correction.truncatedBodyWithUrlLinkingNoPTags}
+              (<a href="article/correction?uri=${correction.annotationUri}" class="expand">read formal correction</a>)
+            </li>
+          </#list>
+        </ol>
+      </div>
     </#if>
     <#-- In articleSuffix.ftl: Close <article class="article-item"> -->
     <#-- In articleSuffix.ftl: Close <div id="article-content"> -->

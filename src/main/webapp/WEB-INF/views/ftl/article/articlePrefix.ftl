@@ -58,10 +58,6 @@
           <h3>${correction.title}:</h3>
         ${correction.body}
         </div>
-        <div class="correction-alert coloration-text-color">
-          <span class="plos-font">e</span> Correction added
-          <span class="bold"><@formatJsonDate date="${correction.created}" format="dd MMM yyyy" /></span>
-        </div><#-- end correction -->
       </#list>
     </#if>
     <#-- In articleSuffix.ftl: Close <article class="article-item"> -->

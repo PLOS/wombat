@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Controller intended to serve "nice" 404 pages, using the styling of the site, if possible.
@@ -28,7 +29,8 @@ import javax.servlet.http.HttpServletRequest;
 public class NotFoundController extends WombatController {
 
   @RequestMapping
-  public String handle404(HttpServletRequest request) {
+  public String handle404(HttpServletRequest request, HttpServletResponse response) {
+    response.setStatus(404);
     Site site = getSiteFromRequest(request);
     if (site == null) {
       return "//notFound";

@@ -14,9 +14,6 @@
 package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.Site;
-import org.ambraproject.wombat.config.SiteSet;
-import org.ambraproject.wombat.service.UnmatchedSiteException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,21 +25,15 @@ import javax.servlet.http.HttpServletRequest;
  * spring config.
  */
 @Controller
-public class NotFoundController {
-
-  @Autowired
-  private SiteSet siteSet;
+public class NotFoundController extends WombatController {
 
   @RequestMapping
   public String handle404(HttpServletRequest request) {
-    String possibleSite = request.getServletPath().split("/")[1];
-    try {
-      Site site = siteSet.getSite(possibleSite);
-      return site.getKey() + "/ftl/notFound";
-    } catch (UnmatchedSiteException use) {
-
-      // Site was not present in path; render non-site-specific 404 page.
+    Site site = getSiteFromRequest(request);
+    if (site == null) {
       return "//notFound";
+    } else {
+      return site.getKey() + "/ftl/notFound";
     }
   }
 }

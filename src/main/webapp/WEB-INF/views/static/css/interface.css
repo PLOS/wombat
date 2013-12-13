@@ -1689,15 +1689,15 @@ nav.footer-secondary-menu li a {
 
 }
 
-.page-not-found {
+.error {
   padding: 30px 30px 30px 10px;
 }
 
-.page-not-found h1 {
+.error h1 {
   padding: 18px 20px 18px 0;
 }
 
-.page-not-found p {
+.error p {
   margin-bottom: 1em;
   font-size: 1.3em;
 }

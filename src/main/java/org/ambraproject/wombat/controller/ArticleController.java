@@ -29,7 +29,7 @@ import java.util.Map;
  * Controller for rendering an article.
  */
 @Controller
-public class ArticleController {
+public class ArticleController extends WombatController {
 
   /**
    * Initial size (in bytes) of buffer that holds transformed article HTML before passing it to the model.

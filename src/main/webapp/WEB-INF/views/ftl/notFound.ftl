@@ -7,7 +7,7 @@
 <body>
   <div id="container-main">
     <#include "common/header.ftl" />
-    <div class="page-not-found">
+    <div class="error">
 
       <h1>Page Not Found</h1>
 

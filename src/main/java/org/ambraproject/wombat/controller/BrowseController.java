@@ -25,10 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Controller for the browse page.
  */
 @Controller
-public class BrowseController {
-
-  @Autowired
-  private SiteSet siteSet;
+public class BrowseController extends WombatController {
 
   @RequestMapping("/{site}/browse")
   public String browse(Model model, @PathVariable("site") String siteParam) {

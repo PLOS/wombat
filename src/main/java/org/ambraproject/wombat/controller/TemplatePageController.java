@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.io.IOException;
 
 @Controller
-public class TemplatePageController {
+public class TemplatePageController extends WombatController {
 
   @RequestMapping("/{site}/page/{pageName}")
   public String servePage(@PathVariable("site") String site,

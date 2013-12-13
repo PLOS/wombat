@@ -15,6 +15,7 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.config.SiteSet;
+import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,6 +64,23 @@ public abstract class WombatController {
     // No need to close stream since it's a ByteArrayOutputStream.
 
     mav.addObject("stackTrace", baos.toString("utf-8"));
+    return mav;
+  }
+
+  /**
+   * Directs unhandled ArticleNotFoundExceptions to a 404 page.
+   *
+   * @param request HttpServletRequest
+   * @param response HttpServletResponse
+   * @return ModelAndView specifying the view
+   */
+  @ExceptionHandler(ArticleNotFoundException.class)
+  protected ModelAndView handleArticleNotFound(HttpServletRequest request, HttpServletResponse response) {
+    response.setStatus(404);
+    Site site = getSiteFromRequest(request);
+
+    // TODO: do we want an "article not found" page separate from the generic 404 page?
+    ModelAndView mav = new ModelAndView(site.getKey() + "/ftl/notFound");
     return mav;
   }
 

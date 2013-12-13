@@ -14,23 +14,28 @@
 package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.Site;
-import org.ambraproject.wombat.config.SiteSet;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
- * Controller for the browse page.
+ * Controller intended to serve "nice" 404 pages, using the styling of the site, if possible.
+ * An instance of this controller needs to be set as the defaultHandler property in the
+ * spring config.
  */
 @Controller
-public class BrowseController extends WombatController {
+public class NotFoundController extends WombatController {
 
-  @RequestMapping("/{site}/browse")
-  public String browse(Model model, @PathVariable("site") String siteParam) {
-    Site site = siteSet.getSite(siteParam);
-    model.addAttribute("journalKey", site.getKey());
-    return site.getKey() + "/ftl/browse";
+  @RequestMapping
+  public String handle404(HttpServletRequest request, HttpServletResponse response) {
+    response.setStatus(404);
+    Site site = getSiteFromRequest(request);
+    if (site == null) {
+      return "//notFound";
+    } else {
+      return site.getKey() + "/ftl/notFound";
+    }
   }
 }

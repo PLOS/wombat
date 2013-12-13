@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 @Controller
-public class StaticFileController {
+public class StaticFileController extends WombatController {
 
   private static final String STATIC_NAMESPACE = "static/";
 
@@ -27,9 +27,6 @@ public class StaticFileController {
    * Path prefix for compiled assets (.js and .css).
    */
   private static final String COMPILED_NAMESPACE = STATIC_NAMESPACE + AssetService.COMPILED_PATH_PREFIX;
-
-  @Autowired
-  private SiteSet siteSet;
 
   @Autowired
   private AssetService assetService;

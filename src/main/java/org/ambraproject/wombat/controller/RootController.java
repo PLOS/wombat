@@ -18,10 +18,7 @@ import java.io.InputStream;
  * Handles requests to the application root.
  */
 @Controller
-public class RootController {
-
-  @Autowired
-  private SiteSet siteSet;
+public class RootController extends WombatController {
 
   @Autowired
   private ServletContext servletContext;

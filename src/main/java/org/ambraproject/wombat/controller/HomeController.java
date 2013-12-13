@@ -24,11 +24,8 @@ import java.util.Map;
  * Handles requests for a site home page.
  */
 @Controller
-public class HomeController {
+public class HomeController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(HomeController.class);
-
-  @Autowired
-  private SiteSet siteSet;
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;

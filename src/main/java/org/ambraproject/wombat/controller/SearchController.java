@@ -15,7 +15,6 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.Site;
-import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +31,10 @@ import java.util.Map;
  * Controller class for user-initiated searches.
  */
 @Controller
-public class SearchController {
+public class SearchController extends WombatController {
 
   private static final int RESULTS_PER_PAGE = 15;
 
-  @Autowired
-  private SiteSet siteSet;
   @Autowired
   private SearchService searchService;
 

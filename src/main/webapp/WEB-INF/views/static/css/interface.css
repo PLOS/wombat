@@ -1688,3 +1688,50 @@ nav.footer-secondary-menu li a {
   }
 
 }
+
+.error {
+  padding: 30px 30px 30px 10px;
+}
+
+.error h1 {
+  padding: 18px 20px 18px 0;
+}
+
+.error p {
+  margin-bottom: 1em;
+  font-size: 1.3em;
+}
+
+.collapsible {
+}
+
+.collapsible-title {
+  cursor: pointer;
+}
+
+.collapsible-title div {
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.collapsible-content {
+  padding: 10px;
+}
+
+/*
+ * The next two classes are a small subset of JQuery UI.  It's only being used
+ * on the custom 500 page, so I didn't think it was worth including all of JQuery
+ * UI.  If we ever do, though, remove these two.
+ */
+
+.ui-widget {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 1.1em;
+}
+
+.ui-widget-header {
+  border: 1px solid #aaaaaa;
+  background: #cccccc;
+  color: #222222;
+  font-weight: bold;
+}

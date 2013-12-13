@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class FigurePageController {
+public class FigurePageController extends WombatController {
 
   @Autowired
   private SoaService soaService;

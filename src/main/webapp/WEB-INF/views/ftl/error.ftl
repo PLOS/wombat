@@ -18,7 +18,7 @@
 
       <p>Thank you for your patience.</p>
 
-      <div>
+      <div class="collapsible" title="+&nbsp;Technical Information for Developers">
         <pre>${stackTrace}</pre>
       </div>
     </div>

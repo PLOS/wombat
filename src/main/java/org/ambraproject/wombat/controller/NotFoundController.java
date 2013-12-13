@@ -39,7 +39,9 @@ public class NotFoundController {
       Site site = siteSet.getSite(possibleSite);
       return site.getKey() + "/ftl/notFound";
     } catch (IllegalArgumentException iae) {
-      throw new RuntimeException("TODO: implement non-site-specific 404 page");
+
+      // Site was not present in path; render non-site-specific 404 page.
+      return "//notFound";
     }
   }
 }

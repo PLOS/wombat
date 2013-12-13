@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import org.ambraproject.wombat.service.UnmatchedSiteException;
 
 import java.util.List;
 import java.util.Map;
@@ -34,11 +35,17 @@ public class SiteSet {
     return new SiteSet(sites);
   }
 
-
-  public Site getSite(String key) {
+  /**
+   * Attempts to load a site based on site key.
+   *
+   * @param key specifies the site
+   * @return Site instance matching the key
+   * @throws UnmatchedSiteException if no site is found
+   */
+  public Site getSite(String key) throws UnmatchedSiteException {
     Site site = sites.get(key);
     if (site == null) {
-      throw new IllegalArgumentException("Not matched to a site: " + key);
+      throw new UnmatchedSiteException(key);
     }
     return site;
   }

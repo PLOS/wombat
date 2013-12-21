@@ -160,66 +160,16 @@ var AmbraNavigation = function () {
 
   // Accordion menus which appear in the body of the site
   self.toggleMainAccordion = function ($activeAccordion, $scroll_target) {
-
     var $accordionListItem = $activeAccordion.parent('li');
-    var $accordionList = $accordionListItem.parent('ul');
-
-    var isExpanded = $accordionListItem.hasClass('expanded');
-
     // collapse this accordion
-    if (isExpanded) {
+    if ($accordionListItem.hasClass('expanded')) {
       $accordionListItem.removeClass('expanded');
       $accordionListItem.children('.accordion-content').slideUp(500);
-
-      // first collapse any open accordions, and then show this one.
     } else {
-      // cache some calculations
-      var clicked_accordion_top = $accordionListItem.offset().top;
-      var current_scroll_pos = $('body').scrollTop();
-      var viewport_height = $(window).height();
-
-      var within_bottom_half_of_viewport = (
-        // middle
-        ( clicked_accordion_top > (current_scroll_pos + Math.floor(viewport_height / 2)) ) &&
-          // bottom
-          ( clicked_accordion_top < (current_scroll_pos + viewport_height) )
-        );
-
-      // close the open accordion panel immedately (reducing total animation 
-      // time)
-      var $expandedMenus = $accordionList.children('li.expanded');
-      $expandedMenus.removeClass('expanded');
-      $expandedMenus.children('.accordion-content').hide();
-
-      // scroll to clicked accordion panel, allowing the user to see the 
-      // maximum amount of the panel without scrolling.
-      // 
-      // FIXME: adjust so that if the header of theh panel to open is in the 
-      // top half of the viewport, the page does not scroll. this is slightly 
-      // harder than it may seem as the content above has just been hidden 
-      // and we need to recalculate things.
-      // 
-      // if optional scroll target is not passed in, just open the panel as 
-      // normal
-      if (typeof($scroll_target) == 'undefined') {
-        // scroll to top of accordion and then show it.
-        $('html, body').scrollTop($accordionListItem.offset().top);
-        $accordionListItem.addClass('expanded');
-        $accordionListItem.children('.accordion-content').slideDown(500);
-
-        // else if there's a scroll target, then scroll to it
-      } else {
-        // show accordion panel, then scroll. content needs to be visible in  
-        // order to get its offset
-        $accordionListItem.addClass('expanded');
-        $accordionListItem.children('.accordion-content').slideDown(500, function () {
-          $('html, body').scrollTop($scroll_target.offset().top);
-        });
-
-      }
-
+      // first collapse any open accordions, and then show this one.
+      $accordionListItem.addClass('expanded');
+      $accordionListItem.children('.accordion-content').slideDown(500);
     }
-
   };
 
   self.scrollToTop = function () {

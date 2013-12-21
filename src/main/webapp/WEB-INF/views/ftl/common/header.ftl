@@ -30,9 +30,11 @@
       </li>
       -->
 
+      <#-- TODO: implement.  Not MVP.
       <li>
         <a id="menu-recent">Recent History</a>
       </li>
+      -->
     </ul>
   </nav>
 </header>

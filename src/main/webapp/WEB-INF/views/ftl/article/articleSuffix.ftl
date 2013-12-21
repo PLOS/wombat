@@ -50,7 +50,10 @@
 <nav class="article-save-options">
   <div class="button-pair clearfix">
     <a class="rounded coloration-white-on-color">Download Article (PDF)</a>
+
+    <#-- TODO: implement.  Not MVP.
     <a class="rounded coloration-white-on-color">Email this Article</a>
+    -->
   </div>
 
   <#-- TODO: implement save to article list.  Not MVP.

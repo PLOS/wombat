@@ -15,7 +15,7 @@
       </#if>
       <a href="${reqPath}?uri=${comment.annotationUri}" class="expand">${comment.title}</a>
 
-      <p class="details">Posted by <a class="member">${comment.creatorDisplayName}</a>
+      <p class="details">Posted by ${comment.creatorDisplayName}
         on <@formatJsonDate date="${comment.created}" format="dd MMM yyyy 'at' hh:mm a" />
       </p>
     </div>

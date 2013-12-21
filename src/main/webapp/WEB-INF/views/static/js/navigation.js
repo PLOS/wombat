@@ -55,6 +55,14 @@ var AmbraNavigation = function () {
       $accordionList.append(buildAccordionItem($(this)));
     });
 
+    // The first accordion item starts expanded
+    var $accordionItems = $accordionList.children('.accordion-item');
+    if ($accordionItems.size() > 0) {
+      var $firstItem = $($accordionItems[0]);
+      $firstItem.addClass('expanded');
+      $firstItem.children('.accordion-content').show();
+    }
+
     $articleText.html($accordionList);
   };
 

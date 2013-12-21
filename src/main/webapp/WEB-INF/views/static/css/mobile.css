@@ -141,7 +141,8 @@
   margin: 0 auto;
 }
 
-#article-content .inline-formula img {
+#article-content .inline-formula img,
+.figure-description .inline-formula img {
   display: inline-block;
   vertical-align: middle;
 }

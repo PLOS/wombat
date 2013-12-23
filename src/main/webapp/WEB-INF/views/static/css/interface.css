@@ -1560,6 +1560,7 @@ nav.footer-secondary-menu li a {
   background-image: url('../img/sprites/structure.png');
   background-size: 300px 75px;
   margin-left: 0;
+  margin-right: 15px; /* 25px minus the 10px on '.nav-pagination > a' */
 }
 
 .nav-pagination .next {
@@ -1583,11 +1584,6 @@ nav.footer-secondary-menu li a {
   font-size: 1.8em;
   font-weight: bold;
   margin-left: 10px;
-}
-
-.nav-pagination > a:nth-child(2) {
-  /* The first numbered link after the previous arrow */
-  margin-left: 25px;
 }
 
 .content.from-modal h1,

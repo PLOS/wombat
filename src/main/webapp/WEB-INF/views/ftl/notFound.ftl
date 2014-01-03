@@ -15,9 +15,10 @@
 
     <p>Please use the search form above to locate an article.</p>
   </div>
-</div>
 
 <#include "common/footer/footer.ftl" />
+</div><#-- end container-main -->
+
 <#include "common/fullMenu/fullMenu.ftl" />
 <#include "common/bodyJs.ftl" />
 </body>

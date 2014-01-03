@@ -22,9 +22,10 @@
       <pre>${stackTrace}</pre>
     </div>
   </div>
-</div>
 
 <#include "common/footer/footer.ftl" />
+</div><#-- end container-main -->
+
 <#include "common/fullMenu/fullMenu.ftl" />
 <#include "common/bodyJs.ftl" />
 </body>

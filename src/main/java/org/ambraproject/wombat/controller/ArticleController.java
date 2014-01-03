@@ -59,6 +59,7 @@ public class ArticleController extends WombatController {
     }
     model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml);
+    requestAuthors(model, articleId);
     requestCorrections(model, articleId);
     requestComments(model, articleId);
     return site + "/ftl/article/article";
@@ -192,6 +193,20 @@ public class ArticleController extends WombatController {
     List<?> comments = soaService.requestObject(String.format("articles/%s?comments", doi), List.class);
     if (comments != null && !comments.isEmpty()) {
       model.addAttribute("articleComments", comments);
+    }
+  }
+
+  /**
+   * Appends additional info about article authors to the model.
+   *
+   * @param model model to be passed to the view
+   * @param doi identifies the article
+   * @throws IOException
+   */
+  private void requestAuthors(Model model, String doi) throws IOException {
+    List<?> authors = soaService.requestObject(String.format("articles/%s?authors", doi), List.class);
+    if (authors != null && !authors.isEmpty()) {
+      model.addAttribute("authors", authors);
     }
   }
 

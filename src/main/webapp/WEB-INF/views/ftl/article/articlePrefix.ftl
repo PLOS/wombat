@@ -20,13 +20,13 @@
         ${author.fullName}</a><#if author_has_next><#-- no space -->,</#if>
       </#macro>
 
-      <#if article.authors?size gt maxAuthorsToShow + 1>
+      <#if authors?size gt maxAuthorsToShow + 1>
       <#--
         Put all authors in the range from maxAuthorsToShow-1 to size-1 in the expander.
         I.e., before clicking the expander, the user sees the first maxAuthorsToShow-1 authors and the last author.
         If the expander would contain only one author, just show the author instead.
         -->
-        <#list article.authors as author><#-- Before the expander -->
+        <#list authors as author><#-- Before the expander -->
           <#if author_index lt (maxAuthorsToShow - 1) >
             <@authorItem author author_index author_has_next />
           </#if>

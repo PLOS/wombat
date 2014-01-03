@@ -24,17 +24,17 @@
         <a href="browse" id="menu-browse">Browse Topics</a>
       </li>
 
-      <#-- TODO: implement.  Not MVP.
-      <li>
-        <a id="menu-saved">Saved Items</a>
-      </li>
-      -->
+    <#-- TODO: implement.  Not MVP.
+    <li>
+      <a id="menu-saved">Saved Items</a>
+    </li>
+    -->
 
-      <#-- TODO: implement.  Not MVP.
-      <li>
-        <a id="menu-recent">Recent History</a>
-      </li>
-      -->
+    <#-- TODO: implement.  Not MVP.
+    <li>
+      <a id="menu-recent">Recent History</a>
+    </li>
+    -->
     </ul>
   </nav>
 </header>

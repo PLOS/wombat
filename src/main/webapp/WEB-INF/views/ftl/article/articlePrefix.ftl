@@ -5,9 +5,9 @@
   <div id="article-content" class="content" data-article-id="0059893">
     <article class="article-item">
 
-      <#-- TODO: implement save to article list.  Not MVP.
-      <a class="save-article circular coloration-text-color" data-list-type="individual">x</a>
-      -->
+    <#-- TODO: implement save to article list.  Not MVP.
+    <a class="save-article circular coloration-text-color" data-list-type="individual">x</a>
+    -->
 
       <h5 class="item-title lead-in">${article.articleType!""}</h5>
 
@@ -58,7 +58,7 @@
         <ol>
           <#list formalCorrections as correction>
             <li>
-              ${correction.truncatedBodyWithUrlLinkingNoPTags}
+            ${correction.truncatedBodyWithUrlLinkingNoPTags}
               (<a href="article/correction?uri=${correction.annotationUri}" class="expand">read formal correction</a>)
             </li>
           </#list>

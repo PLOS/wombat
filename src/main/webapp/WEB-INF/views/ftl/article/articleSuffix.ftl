@@ -30,20 +30,20 @@
         About the Authors
       </a>
     </li>
-<#-- TODO: determine how to do these in mobile
-    <li class="menuitem">
-      <a class="btn-lg">
-        <span class="arrow">View</span>
-        Metrics
-      </a>
-    </li>
-    <li class="menuitem">
-      <a class="btn-lg">
-        <span class="arrow">View</span>
-        Related Content
-      </a>
-    </li>
--->
+  <#-- TODO: determine how to do these in mobile
+      <li class="menuitem">
+        <a class="btn-lg">
+          <span class="arrow">View</span>
+          Metrics
+        </a>
+      </li>
+      <li class="menuitem">
+        <a class="btn-lg">
+          <span class="arrow">View</span>
+          Related Content
+        </a>
+      </li>
+  -->
   </ul>
 </nav><#--end article buttons-->
 
@@ -51,15 +51,15 @@
   <div class="button-pair clearfix">
     <a href="article/asset?id=${article.doi}.PDF" class="rounded coloration-white-on-color">Download Article (PDF)</a>
 
-    <#-- TODO: implement.  Not MVP.
-    <a class="rounded coloration-white-on-color">Email this Article</a>
-    -->
+  <#-- TODO: implement.  Not MVP.
+  <a class="rounded coloration-white-on-color">Email this Article</a>
+  -->
   </div>
 
-  <#-- TODO: implement save to article list.  Not MVP.
-  <a class="rounded full save-article" data-list-type="individual"><span class="plus">+</span> Add article to
-    my list</a>
-  -->
+<#-- TODO: implement save to article list.  Not MVP.
+<a class="rounded full save-article" data-list-type="individual"><span class="plus">+</span> Add article to
+  my list</a>
+-->
 
 </nav><#--end article-save-options-->
 </article>

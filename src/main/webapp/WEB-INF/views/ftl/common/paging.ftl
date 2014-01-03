@@ -18,7 +18,8 @@
     <#-- TODO: this should really be a span, not an a, but that messes up the styling right now. -->
     <a class="${linkClass}" data-page="${i}">${i}</a>
     <#else>
-    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=i />" class="${linkClass}" data-page="${i}">${i}</a>
+    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=i />" class="${linkClass}"
+       data-page="${i}">${i}</a>
     </#if>
   </#list>
 </#macro>
@@ -29,7 +30,8 @@
 <#if numPages gt 1>
 <nav id="article-pagination" class="nav-pagination">
   <#if currentPage gt 1>
-    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage - 1 />" class="previous switch">Previous Page</a>
+    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage - 1 />"
+       class="previous switch">Previous Page</a>
   </#if>
   <#if numPages lt 10>
     <@pageLinkRange first=1 last=numPages selected=currentPage />
@@ -49,7 +51,8 @@
     </#if>
   </#if>
   <#if currentPage lt numPages>
-    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage + 1 />" class="next switch">Next Page</a>
+    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage + 1 />" class="next switch">Next
+      Page</a>
   </#if>
 </nav>
 </#if>

@@ -22,6 +22,9 @@
     </#if>
   </#list>
 </#macro>
+<#function min x y>
+  <#if (x < y)><#return x><#else><#return y></#if>
+</#function>
 
 <#if numPages gt 1>
 <nav id="article-pagination" class="nav-pagination">
@@ -40,9 +43,9 @@
     <#if currentPage lt numPages - 4>
       <@pageLinkRange first=currentPage - 1 last=currentPage + 1 selected=currentPage />
       <span class="skip">...</span>
-      <@pageLinkRange first=numPages - 1 last=numPages selected=currentPage />
+      <@pageLinkRange first=numPages last=numPages selected=currentPage />
     <#else>
-      <@pageLinkRange first=currentPage - 1 last=numPages selected=currentPage />
+      <@pageLinkRange first=min(currentPage - 1, numPages - 2) last=numPages selected=currentPage />
     </#if>
   </#if>
   <#if currentPage lt numPages>

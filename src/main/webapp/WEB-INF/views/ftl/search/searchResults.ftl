@@ -46,8 +46,7 @@
         <button class="rounded apply" type="submit">apply</button>
       </div>
     </form>
-  </div>
-  <!--end filter-box-->
+  </div><#--end filter-box-->
 
   <div class="filter-container clearfix">
     <h3>${searchResults.numFound} ${(searchResults.numFound == 1)?string("result", "results")} found</h3>
@@ -102,8 +101,7 @@
           <a>Citations: ${(citations > 0)?string("Yes", "none")}</a> |
           <a>Saves: ${(saves > 0)?string("Yes", "none")}</a> |
           <a>Shares: ${(shares > 0)?string("Yes", "none")}</a>
-        </p>
-        <!--end full citation-->
+        </p><#--end full citation-->
 
         <nav class="article-options-menu clearfix">
           <a href="article/figures?doi=${doc.id}">Figures</a>
@@ -112,8 +110,7 @@
         <#-- TODO: what does this link mean?  Do we need to expand all accordion sections?  -->
           <a href="article?doi=${doc.id}">Full text</a>
           <a href="article/asset?id=${doc.id}.PDF">PDF</a>
-        </nav>
-        <!--end article-options-menu-->
+        </nav><#--end article-options-menu-->
 
       </article>
     </#list>
@@ -124,8 +121,7 @@
     <#include "../common/paging.ftl" />
     </section>
   <#include "../common/bottomMenu/bottomMenu.ftl" />
-  </div>
-  <!--end content-->
+  </div><#--end content-->
 
 <#include "../common/footer/footer.ftl" />
 
@@ -141,13 +137,11 @@
 
     <a class="modal-search coloration-white-on-color square-full">search for this author</a>
 
-  </section>
-  <!--end model info window-->
+  </section><#--end model info window-->
 
   <div id="container-main-overlay"></div>
 
-</div>
-<!--end container main-->
+</div><#--end container main-->
 
 <#include "../common/fullMenu/fullMenu.ftl" />
 <#include "../common/bodyJs.ftl" />

@@ -58,8 +58,7 @@
 
   <div class="modal-content"></div>
 
-</section>
-<!--end model info window-->
+</section><#--end model info window-->
 
 <#include "../common/bodyJs.ftl" />
 </body>

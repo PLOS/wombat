@@ -57,6 +57,7 @@
 
     <div id="results-content" class="content">
 
+    <#if searchResults.numFound gt 0>
       <div id="display-options">
         <div class="buttongroup clearfix">
           <button data-type="full-citation">full citation</button>
@@ -64,6 +65,7 @@
           <button data-type="title-only">title only</button>
         </div>
       </div>
+    </#if>
 
       <section id="article-items" class="title-and-author">
 

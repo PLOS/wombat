@@ -101,6 +101,7 @@
       <!-- article citation -->
       <p>
         <strong>Citation:</strong>
+        <xsl:text> </xsl:text>
         <!-- authors -->
         <xsl:for-each select="contrib-group/contrib[@contrib-type='author'][position() &lt; 7]">
           <xsl:choose>
@@ -361,6 +362,7 @@
   <!-- Ambra modifications -->
   <xsl:template match="funding-statement" mode="metadata">
     <strong>Funding:</strong>
+    <xsl:text> </xsl:text>
     <xsl:apply-templates/>
   </xsl:template>
 

@@ -20,6 +20,7 @@ import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -74,7 +75,7 @@ public abstract class WombatController {
    * @param response HttpServletResponse
    * @return ModelAndView specifying the view
    */
-  @ExceptionHandler(ArticleNotFoundException.class)
+  @ExceptionHandler({MissingServletRequestParameterException.class, ArticleNotFoundException.class})
   protected ModelAndView handleArticleNotFound(HttpServletRequest request, HttpServletResponse response) {
     response.setStatus(404);
     Site site = getSiteFromRequest(request);

@@ -3,7 +3,6 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Site;
-import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
 import org.slf4j.Logger;

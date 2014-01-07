@@ -23,16 +23,13 @@ import java.io.IOException;
 /**
  * Interface that allows controller classes to add site-specific content.
  * <p/>
- * The wombat codebase is intended to be reusable by any organization that wants to
- * publish scientific articles.  To keep organization-specific formatting separate
- * from the main source distribution, we have the notion of "overlayed" themes for
- * freemarker templates.  However, often individual sites will also have to customize
- * the model objects that get passed to these templates.  This interface is intended
- * to solve this problem.
+ * The wombat codebase is intended to be reusable by any organization that wants to publish scientific articles.  To
+ * keep organization-specific formatting separate from the main source distribution, we have the notion of "overlayed"
+ * themes for freemarker templates.  However, often individual sites will also have to customize the model objects that
+ * get passed to these templates.  This interface is intended to solve this problem.
  * <p/>
- * In typical usage, a controller should get a reference to an implementation of this
- * interface from the {@link org.ambraproject.wombat.config.RuntimeConfiguration} object,
- * and then call the populateCustomModelAttributes method.
+ * In typical usage, a controller should get a reference to an implementation of this interface from the {@link
+ * org.ambraproject.wombat.config.RuntimeConfiguration} object, and then call the populateCustomModelAttributes method.
  */
 public interface ControllerHook {
 
@@ -40,7 +37,7 @@ public interface ControllerHook {
    * Adds any necessary data that will be passed to the view layer.
    *
    * @param request the current request
-   * @param model model to be passed to the view
+   * @param model   model to be passed to the view
    */
   void populateCustomModelAttributes(HttpServletRequest request, Model model) throws IOException;
 

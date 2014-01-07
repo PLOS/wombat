@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.io.Closer;
-import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.config.Theme;
 import org.ambraproject.wombat.service.AssetService;
 import org.apache.commons.io.IOUtils;
@@ -53,7 +52,7 @@ public class StaticFileController extends WombatController {
    *
    * @param filePath the path to the file (relative to the theme)
    * @param response response object
-   * @param theme specifies the theme from which we are loading the file
+   * @param theme    specifies the theme from which we are loading the file
    * @throws IOException
    */
   private void serveFile(String filePath, HttpServletResponse response, Theme theme) throws IOException {
@@ -79,8 +78,8 @@ public class StaticFileController extends WombatController {
   }
 
   /**
-   * Serves a .js or .css asset that has already been concatenated and minified.
-   * See {@link AssetService} for details on this process.
+   * Serves a .js or .css asset that has already been concatenated and minified. See {@link AssetService} for details on
+   * this process.
    *
    * @param filePath the path to the file (relative to the theme)
    * @param response response object

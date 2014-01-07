@@ -42,8 +42,8 @@ public abstract class WombatController {
   /**
    * Handler invoked for all uncaught exceptions.  Renders a "nice" 500 page.
    *
-   * @param e uncaught exception
-   * @param request HttpServletRequest
+   * @param e        uncaught exception
+   * @param request  HttpServletRequest
    * @param response HttpServletResponse
    * @return ModelAndView specifying the view
    * @throws IOException
@@ -70,7 +70,7 @@ public abstract class WombatController {
   /**
    * Directs unhandled ArticleNotFoundExceptions to a 404 page.
    *
-   * @param request HttpServletRequest
+   * @param request  HttpServletRequest
    * @param response HttpServletResponse
    * @return ModelAndView specifying the view
    */
@@ -85,9 +85,9 @@ public abstract class WombatController {
   }
 
   /**
-   * Attempts to extract the site from the request.  Note that controllers should
-   * usually get the site using a @PathVariable("site") annotation on a @RequestMapping
-   * method; this method is provided for the rare cases when this is not possible.
+   * Attempts to extract the site from the request.  Note that controllers should usually get the site using a
+   * &at;PathVariable("site") annotation on a @RequestMapping method; this method is provided for the rare cases when
+   * this is not possible.
    *
    * @param request HttpServletRequest
    * @return the site key, or null if none was found in the request path

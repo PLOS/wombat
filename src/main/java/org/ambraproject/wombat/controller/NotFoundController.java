@@ -21,9 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Controller intended to serve "nice" 404 pages, using the styling of the site, if possible.
- * An instance of this controller needs to be set as the defaultHandler property in the
- * spring config.
+ * Controller intended to serve "nice" 404 pages, using the styling of the site, if possible. An instance of this
+ * controller needs to be set as the defaultHandler property in the spring config.
  */
 @Controller
 public class NotFoundController extends WombatController {

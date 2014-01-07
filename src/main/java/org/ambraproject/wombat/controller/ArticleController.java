@@ -67,8 +67,8 @@ public class ArticleController extends WombatController {
   /**
    * Serves a request for a list of all the root-level comments associated with an article.
    *
-   * @param model data to pass to the view
-   * @param site current site
+   * @param model     data to pass to the view
+   * @param site      current site
    * @param articleId specifies the article
    * @return path to the template
    * @throws IOException
@@ -85,15 +85,15 @@ public class ArticleController extends WombatController {
   /**
    * Serves a request for a list of all the corrections associated with an article.
    *
-   * @param model data to pass to the view
-   * @param site current site
+   * @param model     data to pass to the view
+   * @param site      current site
    * @param articleId specifies the article
    * @return path to the template
    * @throws IOException
    */
   @RequestMapping("/{site}/article/corrections")
   public String renderArticleCorrections(Model model, @PathVariable("site") String site,
-      @RequestParam("doi") String articleId) throws IOException {
+                                         @RequestParam("doi") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     model.addAttribute("article", articleMetadata);
     requestCorrections(model, articleId);
@@ -103,15 +103,15 @@ public class ArticleController extends WombatController {
   /**
    * Serves a request for an expanded view of a single comment and any replies.
    *
-   * @param model data to pass to the view
-   * @param site current site
+   * @param model      data to pass to the view
+   * @param site       current site
    * @param commentUri specifies the comment
    * @return path to the template
    * @throws IOException
    */
   @RequestMapping("/{site}/article/comment")
   public String renderArticleCommentTree(Model model, @PathVariable("site") String site,
-      @RequestParam("uri") String commentUri) throws IOException {
+                                         @RequestParam("uri") String commentUri) throws IOException {
     Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentUri), Map.class);
     model.addAttribute("comment", comment);
     model.addAttribute("articleDoi", comment.get("articleDoi"));
@@ -121,15 +121,15 @@ public class ArticleController extends WombatController {
   /**
    * Serves a request for an expanded view of a single correction and any replies.
    *
-   * @param model data to pass to the view
-   * @param site current site
+   * @param model         data to pass to the view
+   * @param site          current site
    * @param correctionUri specifies the correction
    * @return path to the template
    * @throws IOException
    */
   @RequestMapping("/{site}/article/correction")
   public String renderArticleCorrectionTree(Model model, @PathVariable("site") String site,
-      @RequestParam("uri") String correctionUri) throws IOException {
+                                            @RequestParam("uri") String correctionUri) throws IOException {
     Map<?, ?> correction = soaService.requestObject(String.format("corrections/" + correctionUri), Map.class);
 
     // Currently we use the same UI for both a comment and a correction, and they
@@ -196,11 +196,11 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Retrieves article XML from the SOA server, transforms it into HTML, and returns it.
-   * Result will be stored in memcache.
+   * Retrieves article XML from the SOA server, transforms it into HTML, and returns it. Result will be stored in
+   * memcache.
    *
    * @param articleId identifies the article
-   * @param site identifies the journal site
+   * @param site      identifies the journal site
    * @return String of the article HTML
    * @throws IOException
    */

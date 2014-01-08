@@ -19,15 +19,11 @@ var SiteContent = function () {
       self.switchArticleListMethod($currentButton);
     });
 
-    // TODO: uncomment this if we want the feature.  It brings up some kind of
-    // (currently broken) dialog when you click on an author's name in the search
-    // results.  It's apparently incomplete functionality delivered by DP.
-/*
     $('.author-info').click(function (e) {
       e.preventDefault();
       self.showAuthorInfo($(this));
     });
-*/
+
     $('.author-more, .author-less').click(function (e) {
       e.preventDefault();
       self.toggleMoreAuthors($(this));
@@ -122,33 +118,36 @@ var SiteContent = function () {
 
   self.showAuthorInfo = function ($authorLink) {
     var authorID = $authorLink.attr('data-author-id'); //PL-INT - determine what info needs be captured here
-    var supportsFixedPosition = Modernizr.positionfixed;
+    var $authorMeta = $('#author-meta-' + authorID);
 
-    if (!supportsFixedPosition) { //if there is no support for fixed position, we need to handle the modal a different way
-      window.location = 'temp-author-info.html'; //redirects to homepage
-    } else {
-      var isActive = self.$modalInfoWindow.hasClass('active');
+    // There are some rare cases where we don't have enough info for authors to show
+    // this.  If that's the case the div won't be available.
+    if ($authorMeta.length == 1) {
+      var supportsFixedPosition = Modernizr.positionfixed;
 
-      if (isActive) { //if the window is active, just load the content
+      if (!supportsFixedPosition) { //if there is no support for fixed position, we need to handle the modal a different way
+        window.location = 'temp-author-info.html'; //redirects to homepage
+      } else {
+        var isActive = self.$modalInfoWindow.hasClass('active');
 
-        self.loadAuthorInfo(authorID);
+        if (isActive) { //if the window is active, just load the content
 
-      } else { //animate the window, then load the content
+          self.loadAuthorInfo(authorID);
 
-        var options = { };
-        options.authorID = authorID;
-        self.showModalWindow(self.authorModalShown, options); //callback, options
+        } else { //animate the window, then load the content
 
-      }
+          var options = { };
+          options.authorID = authorID;
+          self.showModalWindow(self.authorModalShown, options); //callback, options
 
-    } //end support for fixed position
+        }
 
+      } //end support for fixed position
+    }
   }; //end showAuthorInfo
 
   self.authorModalShown = function (options) {
-
     var authorID = options.authorID;
-
     self.$modalInfoWindow.find('.close').one('click', function (e) { //enable close functionality
       e.preventDefault();
       self.hideModalWindow(null, true); //callback, remove
@@ -158,17 +157,10 @@ var SiteContent = function () {
 
   }; //end authorModalShown
 
-  self.loadAuthorInfo = function (options) {
-
-    var authorID = options.authorID;
-
-    return $.ajax({
-      url: "temp/ajax/author-info.html" //PL-INT should construct the URL dynamically here
-    }).done(function (data) {
-        self.$modalInfoWindow.find(".modal-content").html(data);
-      });
-
-  }; //end loadAuthorInfo
+  self.loadAuthorInfo = function (authorID) {
+    var $authorMeta = $('#author-meta-' + authorID);
+    self.$modalInfoWindow.find(".modal-content").html($authorMeta.html());
+  };
 
   self.findOpenModals = function (callback) {
 

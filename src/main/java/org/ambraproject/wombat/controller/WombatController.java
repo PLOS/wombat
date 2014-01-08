@@ -21,6 +21,7 @@ import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -56,7 +57,7 @@ public abstract class WombatController {
   protected ModelAndView handleException(Exception e, HttpServletRequest request, HttpServletResponse response)
       throws IOException {
     log.error("handleException", e);
-    response.setStatus(500);
+    response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
     SitePageContext context = inspectPathForContext(request);
 
     // For some reason, methods decorated with @ExceptionHandler cannot accept Model parameters,
@@ -81,7 +82,7 @@ public abstract class WombatController {
    */
   @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class})
   protected ModelAndView handleArticleNotFound(HttpServletRequest request, HttpServletResponse response) {
-    response.setStatus(404);
+    response.setStatus(HttpStatus.NOT_FOUND.value());
     SitePageContext context = inspectPathForContext(request);
 
     // TODO: do we want an "article not found" page separate from the generic 404 page?

@@ -13,6 +13,7 @@
 
 package org.ambraproject.wombat.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ public class NotFoundController extends WombatController {
 
   @RequestMapping
   public String handle404(HttpServletRequest request, HttpServletResponse response, Model model) {
-    response.setStatus(404);
+    response.setStatus(HttpStatus.NOT_FOUND.value());
     SitePageContext context = inspectPathForContext(request);
     if (context == null) {
       return "//notFound";

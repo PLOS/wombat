@@ -1,7 +1,6 @@
 <#include "common/htmlTag.ftl" />
 
-<#assign title = "PLOS - 404" />
-<#assign depth = 0 />
+<#assign title = "Page Not Found" />
 <#include "common/head.ftl" />
 
 <body>

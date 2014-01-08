@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * Exception type thrown when no article exists at a given DOI.
  */
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class ArticleNotFoundException extends RuntimeException {
+ class ArticleNotFoundException extends NotFoundException {
 
   public ArticleNotFoundException(String doi) {
     super(String.format("Article %s not found", doi));

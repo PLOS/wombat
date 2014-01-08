@@ -62,6 +62,7 @@ public class FigurePageController extends WombatController {
                                   @PathVariable("site") String site,
                                   @RequestParam("doi") String articleId)
       throws IOException {
+    requireNonemptyParameter(articleId);
     Map<String, Object> articleMetadata;
     try {
       articleMetadata = soaService.requestObject("articles/" + articleId, Map.class);
@@ -86,6 +87,7 @@ public class FigurePageController extends WombatController {
                                  @PathVariable("site") String site,
                                  @RequestParam("id") String figureId)
       throws IOException {
+    requireNonemptyParameter(figureId);
     Map<String, Object> figureMetadata;
     try {
       figureMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);

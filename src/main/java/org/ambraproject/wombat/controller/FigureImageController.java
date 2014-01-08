@@ -60,6 +60,7 @@ public class FigureImageController extends WombatController {
                          @PathVariable("site") String site,
                          @RequestParam("id") String assetId)
       throws IOException {
+    requireNonemptyParameter(assetId);
     Map<String, Object> assetMetadata = soaService.requestObject("assetfiles/" + assetId + "?metadata", Map.class);
     String contentType = (String) assetMetadata.get("contentType");
     serveAssetFile(response, assetId, contentType);
@@ -76,13 +77,14 @@ public class FigureImageController extends WombatController {
                                @RequestParam("id") String figureId,
                                @RequestParam("size") String figureSize)
       throws IOException {
+    requireNonemptyParameter(figureId);
     Map<String, ?> assetMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
 
     List<String> pathToFigureObject = ORIGINAL_FIGURE.equals(figureSize)
         ? ORIGINAL_FIGURE_PATH : ImmutableList.of("thumbnails", figureSize);
     Map<String, ?> figureObject = (Map<String, ?>) DeserializedJsonUtil.readField(assetMetadata, pathToFigureObject);
     if (figureObject == null) {
-      throw new IllegalArgumentException("Not a valid size: " + figureSize); // TODO: Respond with 404?
+      throw new NotFoundException("Not a valid size: " + figureSize);
     }
     String assetFileId = (String) figureObject.get("file");
     Map<String, ?> assetFileMeta = (Map<String, ?>) figureObject.get("metadata");

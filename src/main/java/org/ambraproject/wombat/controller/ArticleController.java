@@ -49,6 +49,7 @@ public class ArticleController extends WombatController {
                               @PathVariable("site") String site,
                               @RequestParam("doi") String articleId)
       throws IOException {
+    requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     String articleHtml;
     try {
@@ -75,6 +76,7 @@ public class ArticleController extends WombatController {
   @RequestMapping("/{site}/article/comments")
   public String renderArticleComments(Model model, @PathVariable("site") String site,
                                       @RequestParam("doi") String articleId) throws IOException {
+    requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     model.addAttribute("article", articleMetadata);
     requestComments(model, articleId);
@@ -93,6 +95,7 @@ public class ArticleController extends WombatController {
   @RequestMapping("/{site}/article/corrections")
   public String renderArticleCorrections(Model model, @PathVariable("site") String site,
                                          @RequestParam("doi") String articleId) throws IOException {
+    requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     model.addAttribute("article", articleMetadata);
     requestCorrections(model, articleId);
@@ -111,6 +114,7 @@ public class ArticleController extends WombatController {
   @RequestMapping("/{site}/article/comment")
   public String renderArticleCommentTree(Model model, @PathVariable("site") String site,
                                          @RequestParam("uri") String commentUri) throws IOException {
+    requireNonemptyParameter(commentUri);
     Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentUri), Map.class);
     model.addAttribute("comment", comment);
     model.addAttribute("articleDoi", comment.get("articleDoi"));
@@ -129,6 +133,7 @@ public class ArticleController extends WombatController {
   @RequestMapping("/{site}/article/correction")
   public String renderArticleCorrectionTree(Model model, @PathVariable("site") String site,
                                             @RequestParam("uri") String correctionUri) throws IOException {
+    requireNonemptyParameter(correctionUri);
     Map<?, ?> correction = soaService.requestObject(String.format("corrections/" + correctionUri), Map.class);
 
     // Currently we use the same UI for both a comment and a correction, and they

@@ -79,7 +79,7 @@ public abstract class WombatController {
    * @param response HttpServletResponse
    * @return ModelAndView specifying the view
    */
-  @ExceptionHandler({MissingServletRequestParameterException.class, ArticleNotFoundException.class})
+  @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class})
   protected ModelAndView handleArticleNotFound(HttpServletRequest request, HttpServletResponse response) {
     response.setStatus(404);
     SitePageContext context = inspectPathForContext(request);
@@ -147,6 +147,23 @@ public abstract class WombatController {
       return new SitePageContext(site, pageDepth);
     }
     return null; // no site name matched
+  }
+
+  /**
+   * Check that a request parameter is not empty.
+   * <p/>
+   * This is useful for validating that the user didn't supply an empty string as a URL parameter, such as by typing
+   * ".../article?doi" into the browser bar when ".../article?doi=10.0/foo" is expected. The {@code required} argument
+   * on {@code RequestParam} merely guarantees the parameter to be non-null, not non-empty.
+   *
+   * @param parameter a non-null value supplied as a {@code RequestParam}
+   * @throws NotFoundException    if the parameter is empty
+   * @throws NullPointerException if the parameter is null
+   */
+  protected static void requireNonemptyParameter(String parameter) {
+    if (parameter.isEmpty()) {
+      throw new NotFoundException("Required parameter not supplied");
+    }
   }
 
 }

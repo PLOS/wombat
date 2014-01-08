@@ -13,8 +13,8 @@
 
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.Site;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,13 +28,14 @@ import javax.servlet.http.HttpServletResponse;
 public class NotFoundController extends WombatController {
 
   @RequestMapping
-  public String handle404(HttpServletRequest request, HttpServletResponse response) {
+  public String handle404(HttpServletRequest request, HttpServletResponse response, Model model) {
     response.setStatus(404);
-    Site site = getSiteFromRequest(request);
-    if (site == null) {
+    SitePageContext context = inspectPathForContext(request);
+    if (context == null) {
       return "//notFound";
     } else {
-      return site.getKey() + "/ftl/notFound";
+      model.addAttribute("depth", context.getPageDepth());
+      return context.getSite().getKey() + "/ftl/notFound";
     }
   }
 }

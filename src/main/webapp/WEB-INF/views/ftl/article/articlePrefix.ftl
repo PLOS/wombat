@@ -62,7 +62,7 @@
       || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
       <#if hasMeta>
         <div id="author-meta-${author_index?c}" style="display:none;">
-          <p>${author.fullName}</p>
+          <h2>${author.fullName}</h2>
           <#if author.equalContrib>
               <p><span class="equal-contrib" title="These authors contributed equally to this work">equal contributor</span>
                 Contributed equally to this work with: ${contributingAuthors}</p>

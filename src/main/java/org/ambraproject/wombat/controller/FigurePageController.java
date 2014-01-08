@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;

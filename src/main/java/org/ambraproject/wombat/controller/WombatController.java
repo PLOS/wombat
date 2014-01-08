@@ -17,7 +17,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.config.SiteSet;
-import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

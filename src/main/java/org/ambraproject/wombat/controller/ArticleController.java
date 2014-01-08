@@ -3,7 +3,6 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Preconditions;
 import com.google.common.io.Closer;
 import org.ambraproject.rhombat.cache.Cache;
-import org.ambraproject.wombat.service.ArticleNotFoundException;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;

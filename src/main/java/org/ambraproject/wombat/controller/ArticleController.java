@@ -50,6 +50,11 @@ public class ArticleController extends WombatController {
                               @PathVariable("site") String site,
                               @RequestParam("doi") String articleId)
       throws IOException {
+
+    // TODO: this method currently makes 5 backend RPCs, all sequentially.
+    // Explore reducing this number, or doing them in parallel, if this is
+    // a performance bottleneck.
+
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     String articleHtml;
     try {

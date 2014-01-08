@@ -1,3 +1,19 @@
+<#macro menuSection title>
+<li class="accordion-item">
+  <a class="expander">
+    <span class="arrow">Expand</span>
+  ${title}
+  </a>
+  <ul class="secondary accordion-content">
+    <#nested>
+  </ul>
+</li>
+</#macro>
+<#macro menuLink href>
+<li>
+  <a class="btn-lg" href="${href}"><#nested></a>
+</li>
+</#macro>
 <div id="common-menu-container" class="full-menu-container coloration-border-top">
   <nav class="full-menu">
     <ul class="primary accordion">

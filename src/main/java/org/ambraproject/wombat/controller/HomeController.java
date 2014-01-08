@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -32,12 +31,13 @@ public class HomeController extends WombatController {
   @Autowired
   private SolrSearchService solrSearchService;
 
-  /**
-   * Simply selects the home view to render by returning its name.
-   */
-  @RequestMapping(value = "/{site}/", method = RequestMethod.GET)
-  public String home(HttpServletRequest request, Locale locale, Model model, @PathVariable("site") String siteParam)
-      throws Exception {
+  @RequestMapping(value = "/{site}", method = RequestMethod.GET)
+  public String serveHomepage(HttpServletRequest request, Model model, @PathVariable("site") String siteParam)
+      throws IOException {
+    if (!request.getServletPath().endsWith("/")) {
+      return "redirect:" + siteParam + "/";
+    }
+
     Site site = siteSet.getSite(siteParam);
 
     populateWithArticleList(request, model, site, solrSearchService, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);

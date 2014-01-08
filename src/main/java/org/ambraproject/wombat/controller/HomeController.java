@@ -36,9 +36,13 @@ public class HomeController extends WombatController {
   /**
    * Simply selects the home view to render by returning its name.
    */
-  @RequestMapping(value = "/{site}/", method = RequestMethod.GET)
+  @RequestMapping(value = "/{site}", method = RequestMethod.GET)
   public String home(HttpServletRequest request, Locale locale, Model model, @PathVariable("site") String siteParam)
       throws Exception {
+    if (!request.getServletPath().endsWith("/")) {
+      return "redirect:" + siteParam + "/";
+    }
+
     Site site = siteSet.getSite(siteParam);
 
     populateWithArticleList(request, model, site, solrSearchService, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);

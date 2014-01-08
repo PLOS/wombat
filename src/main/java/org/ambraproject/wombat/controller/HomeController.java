@@ -3,7 +3,6 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Site;
-import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
 import org.slf4j.Logger;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -33,12 +31,9 @@ public class HomeController extends WombatController {
   @Autowired
   private SolrSearchService solrSearchService;
 
-  /**
-   * Simply selects the home view to render by returning its name.
-   */
   @RequestMapping(value = "/{site}", method = RequestMethod.GET)
-  public String home(HttpServletRequest request, Locale locale, Model model, @PathVariable("site") String siteParam)
-      throws Exception {
+  public String serveHomepage(HttpServletRequest request, Model model, @PathVariable("site") String siteParam)
+      throws IOException {
     if (!request.getServletPath().endsWith("/")) {
       return "redirect:" + siteParam + "/";
     }

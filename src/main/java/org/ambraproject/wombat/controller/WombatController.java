@@ -85,9 +85,14 @@ public abstract class WombatController {
     response.setStatus(HttpStatus.NOT_FOUND.value());
     SitePageContext context = inspectPathForContext(request);
 
-    // TODO: do we want an "article not found" page separate from the generic 404 page?
-    ModelAndView mav = new ModelAndView(context.getSite().getKey() + "/ftl/notFound");
-    mav.addObject("depth", context.getPageDepth());
+    ModelAndView mav;
+    if (context == null) {
+      mav = new ModelAndView("//notFound");
+    } else {
+      // TODO: do we want an "article not found" page separate from the generic 404 page?
+      mav = new ModelAndView(context.getSite().getKey() + "/ftl/notFound");
+      mav.addObject("depth", context.getPageDepth());
+    }
     return mav;
   }
 

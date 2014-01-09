@@ -5,6 +5,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
+import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,12 @@ public class HomeController extends WombatController {
       return "redirect:" + siteParam + "/";
     }
 
-    Site site = siteSet.getSite(siteParam);
+    Site site;
+    try {
+      site = siteSet.getSite(siteParam);
+    } catch (UnmatchedSiteException e) {
+      throw new NotFoundException(e);
+    }
 
     populateWithArticleList(request, model, site, solrSearchService, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
 

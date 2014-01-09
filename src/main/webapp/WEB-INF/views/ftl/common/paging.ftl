@@ -24,7 +24,10 @@
   </#list>
 </#macro>
 <#function min x y>
-  <#if (x < y)><#return x><#else><#return y></#if>
+  <#if (x lt y)><#return x><#else><#return y></#if>
+</#function>
+<#function max x y>
+  <#if (x gt y)><#return x><#else><#return y></#if>
 </#function>
 
 <#if numPages gt 1>
@@ -35,14 +38,14 @@
   </#if>
   <#if numPages lt 10>
     <@pageLinkRange first=1 last=numPages selected=currentPage />
-  <#elseif currentPage lt 4>
-    <@pageLinkRange first=1 last=4 selected=currentPage />
+  <#elseif currentPage lte 4>
+    <@pageLinkRange first=1 last=max(4, currentPage + 1) selected=currentPage />
     <span class="skip">...</span>
     <@pageLinkRange first=numPages last=numPages selected=currentPage />
   <#else>
     <@pageLinkRange first=1 last=1 selected=currentPage />
     <span class="skip">...</span>
-    <#if currentPage lt numPages - 4>
+    <#if currentPage lt numPages - 3>
       <@pageLinkRange first=currentPage - 1 last=currentPage + 1 selected=currentPage />
       <span class="skip">...</span>
       <@pageLinkRange first=numPages last=numPages selected=currentPage />
@@ -51,8 +54,8 @@
     </#if>
   </#if>
   <#if currentPage lt numPages>
-    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage + 1 />" class="next switch">Next
-      Page</a>
+    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage + 1 />" class="next switch">
+      Next Page</a>
   </#if>
 </nav>
 </#if>

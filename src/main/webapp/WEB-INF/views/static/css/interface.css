@@ -1731,3 +1731,7 @@ nav.footer-secondary-menu li a {
   color: #222222;
   font-weight: bold;
 }
+
+.about-author {
+  padding: 10px 10px 10px 10px;
+}

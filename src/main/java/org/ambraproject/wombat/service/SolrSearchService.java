@@ -162,6 +162,17 @@ public class SolrSearchService extends JsonService implements SearchService {
     return executeQuery(params);
   }
 
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> authorSearch(String author, Site site, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange);
+    params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
+    return executeQuery(params);
+  }
+
   private List<NameValuePair> buildCommonParams(Site site, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) {
 

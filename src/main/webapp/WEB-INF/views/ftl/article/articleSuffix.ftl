@@ -25,7 +25,7 @@
     </li>
   </#if>
     <li class="menuitem">
-      <a class="btn-lg">
+      <a class="btn-lg" href="article/authors?doi=${article.doi}">
         <span class="arrow">View</span>
         About the Authors
       </a>
@@ -79,7 +79,7 @@
 
   </div>
 
-  <a class="modal-search square-full coloration-white-on-color">search for this author</a>
+  <a href="#" class="modal-search square-full coloration-white-on-color">search for this author</a>
 
 </section><#--end model info window-->
 

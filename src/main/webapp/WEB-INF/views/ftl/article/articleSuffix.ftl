@@ -25,7 +25,7 @@
     </li>
   </#if>
     <li class="menuitem">
-      <a class="btn-lg">
+      <a class="btn-lg" href="article/authors?doi=${article.doi}">
         <span class="arrow">View</span>
         About the Authors
       </a>

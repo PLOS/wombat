@@ -163,29 +163,8 @@ public class ArticleController extends WombatController {
       @RequestParam("doi") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     model.addAttribute("article", articleMetadata);
-    List authors = requestAuthors(model, articleId);
-    model.addAttribute("correspondingAuthors", getCorrespondingAuthors(authors));
+    requestAuthors(model, articleId);
     return site + "/ftl/article/authors";
-  }
-
-  /**
-   * Extracts the corresponding authors strings (usually emails) from the authors data structure.
-   * <p/>
-   * Putting this here was a judgement call.  One could make the argument that this logic belongs
-   * in Rhino, but it's so simple I elected to keep it here for now.
-   *
-   * @param authors deserialized JSON for all authors for the article
-   * @return list of "corresponding" fields for all authors that possess such a field
-   */
-  private List<String> getCorrespondingAuthors(List authors) {
-    List<String> results = new ArrayList<>();
-    for (Object o : authors) {
-      Map<?, ?> author = (Map<?, ?>) o;
-      if (author.containsKey("corresponding")) {
-        results.add((String) author.get("corresponding"));
-      }
-    }
-    return results;
   }
 
   /**
@@ -252,12 +231,28 @@ public class ArticleController extends WombatController {
    * @return the list of authors appended to the model
    * @throws IOException
    */
-  private List requestAuthors(Model model, String doi) throws IOException {
+  private void requestAuthors(Model model, String doi) throws IOException {
     List<?> authors = soaService.requestObject(String.format("articles/%s?authors", doi), List.class);
     if (authors != null && !authors.isEmpty()) {
       model.addAttribute("authors", authors);
     }
-    return authors;
+
+    // Putting this here was a judgement call.  One could make the argument that this logic belongs
+    // in Rhino, but it's so simple I elected to keep it here for now.
+    List<String> correspondingAuthors = new ArrayList<>();
+    List<String> equalContributors = new ArrayList<>();
+    for (Object o : authors) {
+      Map<?, ?> author = (Map<?, ?>) o;
+      if (author.containsKey("corresponding")) {
+        correspondingAuthors.add((String) author.get("corresponding"));
+      }
+      Object obj = author.get("equalContrib");
+      if (obj != null && (boolean) obj) {
+        equalContributors.add((String) author.get("fullName"));
+      }
+    }
+    model.addAttribute("correspondingAuthors", correspondingAuthors);
+    model.addAttribute("equalContributors", equalContributors);
   }
 
   /**

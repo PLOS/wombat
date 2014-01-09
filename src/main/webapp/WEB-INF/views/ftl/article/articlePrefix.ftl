@@ -64,8 +64,12 @@
         <div id="author-meta-${author_index?c}" style="display:none;">
           <h2 id="author-full-name">${author.fullName}</h2>
           <#if author.equalContrib>
-              <p><span class="equal-contrib" title="These authors contributed equally to this work">equal contributor</span>
-                Contributed equally to this work with: ${contributingAuthors}</p>
+              <p>
+                Contributed equally to this work with:
+                <#list equalContributors as contributor>
+                  ${contributor}<#if contributor_has_next>,</#if>
+                </#list>
+              </p>
           </#if>
           <#if author.deceased><p>† Deceased.</p></#if>
           <#if author.corresponding??><p>${author.corresponding}</p></#if>

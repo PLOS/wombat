@@ -42,6 +42,7 @@ public class SearchController extends WombatController {
   public String search(Model model, @PathVariable("site") String siteParam,
                        @RequestParam(value = "q", required = false) String query,
                        @RequestParam(value = "subject", required = false) String subject,
+                       @RequestParam(value = "author", required = false) String author,
                        @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
                        @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
@@ -73,6 +74,8 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults;
     if (!Strings.isNullOrEmpty(subject)) {
       searchResults = searchService.subjectSearch(subject, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);
+    } else if (!Strings.isNullOrEmpty(author)) {
+      searchResults = searchService.authorSearch(author, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);
     } else {
       searchResults = searchService.simpleSearch(query, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);
     }

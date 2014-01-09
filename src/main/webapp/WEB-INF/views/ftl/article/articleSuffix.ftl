@@ -79,7 +79,7 @@
 
   </div>
 
-  <a class="modal-search square-full coloration-white-on-color">search for this author</a>
+  <a href="#" class="modal-search square-full coloration-white-on-color">search for this author</a>
 
 </section><#--end model info window-->
 

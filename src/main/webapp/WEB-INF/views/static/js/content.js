@@ -159,7 +159,11 @@ var SiteContent = function () {
 
   self.loadAuthorInfo = function (authorID) {
     var $authorMeta = $('#author-meta-' + authorID);
-    self.$modalInfoWindow.find(".modal-content").html($authorMeta.html());
+    self.$modalInfoWindow.find('.modal-content').html($authorMeta.html());
+
+    // Set the "search for this author" link target.
+    var authorName = $authorMeta.find('#author-full-name').html();
+    $('.modal-search').attr('href', 'search?author=' + encodeURIComponent(authorName));
   };
 
   self.findOpenModals = function (callback) {

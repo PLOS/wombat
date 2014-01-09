@@ -6,13 +6,11 @@
 
 <body id="page-browse" class="plosone">
 
-  <div id="container-main">
-    <#include "common/header.ftl" />
+<div id="container-main">
+<#include "common/header.ftl" />
 
-    <div id="browse-content" class="content">
-      <div id="browse-container"></div>
-    </div>
-
+  <div id="browse-content" class="content">
+    <div id="browse-container"></div>
   </div>
 
   <div id="subject-list-template" style="display: none;">
@@ -31,12 +29,15 @@
     </li>
   </div>
 
-  <#include "common/footer/footer.ftl" />
-  <#include "common/fullMenu/fullMenu.ftl" />
+<#include "common/footer/footer.ftl" />
 
-  <script>
-    var journalKey = '${journalKey}';
-  </script>
-  <#include "common/bodyJs.ftl" />
+</div><#-- end container-main -->
+
+<#include "common/fullMenu/fullMenu.ftl" />
+
+<script>
+  var journalKey = '${journalKey}';
+</script>
+<#include "common/bodyJs.ftl" />
 </body>
 </html>

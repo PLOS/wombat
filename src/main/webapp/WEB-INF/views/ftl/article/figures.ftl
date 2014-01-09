@@ -35,8 +35,7 @@
 
 <#include "../common/footer/footer.ftl" />
 
-</div>
-<!--end container main-->
+</div><#--end container main-->
 
 <#include "../common/bodyJs.ftl" />
 </body>

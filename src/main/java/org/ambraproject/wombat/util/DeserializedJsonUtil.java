@@ -51,7 +51,7 @@ public class DeserializedJsonUtil {
       jsonObject = ((Map<?, ?>) jsonObject).get(fieldName);
 
       if (jsonObject == null) {
-        throw new IllegalArgumentException("Field not found at " + fieldNames.subList(0, i + 1));
+        return null;
       }
     }
     return jsonObject;

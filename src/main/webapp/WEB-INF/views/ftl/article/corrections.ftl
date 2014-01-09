@@ -10,16 +10,14 @@
 
   <div id="comment-content" class="content">
     <h3 class="comments-header">Corrections(${articleCorrections?size})</h3>
-    <#assign articleComments = articleCorrections />
-    <#assign mode = "corrections" />
-    <#include "commentsBody.ftl" />
-  </div>
-  <!--end content-->
+  <#assign articleComments = articleCorrections />
+  <#assign mode = "corrections" />
+  <#include "commentsBody.ftl" />
+  </div><#--end content-->
 
-  <#include "../common/footer/footer.ftl" />
+<#include "../common/footer/footer.ftl" />
 
-</div>
-<!--end container main-->
+</div><#--end container main-->
 
 <#include "../common/bodyJs.ftl" />
 </body>

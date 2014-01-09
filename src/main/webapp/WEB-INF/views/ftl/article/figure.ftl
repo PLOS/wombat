@@ -33,8 +33,6 @@
     </div>
   </div>
 
-  <a class="modal-search square-full coloration-white-on-color">email figure</a>
-
 </section><#--end model info window-->
 
 </div><#--end container main-->

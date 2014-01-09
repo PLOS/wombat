@@ -14,8 +14,6 @@
 package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.Site;
-import org.ambraproject.wombat.config.SiteSet;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -15,7 +15,7 @@
 
     <a id="site-menu-button">Site Menu</a>
     <a class="site-search-button color-active"><span class="icon">Search</span></a>
-    <a href=<@pathUp depth "." />><#include "siteLogo.ftl" /></a>
+    <a href=<@pathUp depth!0 "." />><#include "siteLogo.ftl" /></a>
 
   </div>
   <nav id="article-menu" class="menu-bar">
@@ -24,17 +24,17 @@
         <a href="browse" id="menu-browse">Browse Topics</a>
       </li>
 
-      <#-- TODO: implement.  Not MVP.
-      <li>
-        <a id="menu-saved">Saved Items</a>
-      </li>
-      -->
+    <#-- TODO: implement.  Not MVP.
+    <li>
+      <a id="menu-saved">Saved Items</a>
+    </li>
+    -->
 
-      <#-- TODO: implement.  Not MVP.
-      <li>
-        <a id="menu-recent">Recent History</a>
-      </li>
-      -->
+    <#-- TODO: implement.  Not MVP.
+    <li>
+      <a id="menu-recent">Recent History</a>
+    </li>
+    -->
     </ul>
   </nav>
 </header>

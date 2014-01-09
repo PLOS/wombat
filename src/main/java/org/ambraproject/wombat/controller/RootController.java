@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.io.Closer;
-import org.ambraproject.wombat.config.SiteSet;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -101,6 +101,7 @@
       <!-- article citation -->
       <p>
         <strong>Citation:</strong>
+        <xsl:text> </xsl:text>
         <!-- authors -->
         <xsl:for-each select="contrib-group/contrib[@contrib-type='author'][position() &lt; 7]">
           <xsl:choose>
@@ -361,6 +362,7 @@
   <!-- Ambra modifications -->
   <xsl:template match="funding-statement" mode="metadata">
     <strong>Funding:</strong>
+    <xsl:text> </xsl:text>
     <xsl:apply-templates/>
   </xsl:template>
 
@@ -1170,11 +1172,6 @@
               <xsl:value-of select="$figId"/>
             </xsl:attribute>
           </a>
-          <div class="expand">
-            <xsl:attribute name="onclick">
-              return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "HTML");
-            </xsl:attribute>
-          </div>
           <div class="table">
             <xsl:apply-templates select=".//table"/>
           </div>
@@ -1200,20 +1197,6 @@
               </div>
             </xsl:for-each>
           </xsl:if>
-          <div class="table-download">
-            <div class="icon">
-              <xsl:attribute name="onclick">
-                return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
-              </xsl:attribute>
-              CSV
-            </div>
-            <a class="label">
-              <xsl:attribute name="onclick">
-                return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
-              </xsl:attribute>
-              Download CSV
-            </a>
-          </div>
         </div>
       </xsl:if>
     </xsl:if>

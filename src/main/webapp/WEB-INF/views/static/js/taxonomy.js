@@ -32,7 +32,7 @@ var TaxonomyBrowser = function() {
     var html = $('#subject-list-template').html();
     html = html.replace('__TAXONOMY_LINKS__', termList);
     $('#browse-container').html(html);
-    $('a.browse-further').click(function(e) {
+    $('a.browse-further:not(.inactive)').click(function(e) {
       self.loadTerms($(this).data('term'));
     });
   };

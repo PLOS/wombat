@@ -162,7 +162,7 @@ var SiteContent = function () {
     self.$modalInfoWindow.find('.modal-content').html($authorMeta.html());
 
     // Set the "search for this author" link target.
-    var authorName = $authorMeta.find('#author-full-name').html();
+    var authorName = $authorMeta.find('.author-full-name').html();
     $('.modal-search').attr('href', 'search?author=' + encodeURIComponent(authorName));
   };
 

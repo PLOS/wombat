@@ -62,7 +62,7 @@
       || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
       <#if hasMeta>
         <div id="author-meta-${author_index?c}" style="display:none;">
-          <h2 id="author-full-name">${author.fullName}</h2>
+          <h2 class="author-full-name">${author.fullName}</h2>
           <#if author.equalContrib>
               <p>
                 Contributed equally to this work with:

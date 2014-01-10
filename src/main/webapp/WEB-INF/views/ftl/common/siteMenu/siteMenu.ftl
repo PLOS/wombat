@@ -17,7 +17,7 @@
 <div id="common-menu-container" class="full-menu-container coloration-border-top">
   <nav class="full-menu">
     <ul class="primary accordion">
-    <#include "fullMenuItems.ftl" />
+    <#include "siteMenuItems.ftl" />
 
       <#-- TODO: implement when we support logged-in functionality.
       <li class="accordion-item">
@@ -42,7 +42,7 @@
   </nav>
 
   <div class="full-menu-tout">
-  <#include "fullMenuFooter.ftl" />
+  <#include "siteMenuFooter.ftl" />
   </div>
 
 </div>

@@ -97,6 +97,6 @@
 
 </div><#--end container main-->
 
-<#include "../common/fullMenu/fullMenu.ftl" />
+<#include "../common/siteMenu/siteMenu.ftl" />
 
 <#include "../common/bodyJs.ftl" />

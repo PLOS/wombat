@@ -133,7 +133,18 @@
 
 #article-content .article-save-options a.rounded.full {
   width: 100%;
+}
+
+#article-content .article-save-options .button-row + .button-row {
   margin-top: 10px;
+}
+
+#article-content .article-save-options .button-row + .button-row:last-child {
+  /*
+   * If there are two or more button-rows, add some extra spacing to separate the article space from the footer.
+   * If there is only one button-row, it should appear vertically centered between adjacent elements.
+   */
+  margin-bottom: 30px;
 }
 
 #article-content .equation img {

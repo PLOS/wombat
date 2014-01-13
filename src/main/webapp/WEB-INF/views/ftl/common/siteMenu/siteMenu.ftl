@@ -1,3 +1,5 @@
+<#include "siteMenuFlag.ftl" />
+<#if hasSiteMenu>
 <#macro menuSection title>
 <li class="accordion-item">
   <a class="expander">
@@ -46,3 +48,4 @@
   </div>
 
 </div>
+</#if>

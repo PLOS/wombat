@@ -63,7 +63,7 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
     return new TemplateSource(delegateLoader, delegateTemplateSource);
   }
 
-  private static final Pattern LOCALIZED_FTL_NAME = Pattern.compile("(.*)_[^.]*?(\\..*?)");
+  private static final Pattern LOCALIZED_FTL_NAME = Pattern.compile("(.*)_[^./]*?(\\.[^/]*?)");
 
   /**
    * Chop localization extensions from the name until we get a hit. For example, for {@code "home_en_US.ftl"}, try to

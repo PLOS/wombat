@@ -24,7 +24,7 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
    *
    * @param key the non-null, non-empty key containing no slashes
    * @return a {@code TemplateLoader} instance to which to forward
-   * @throws IllegalArgumentException if the key cannot be matched to a delegate object
+   * @throws TemplateNotFoundException if the key cannot be matched to a delegate object
    */
   protected abstract TemplateLoader delegate(String key);
 
@@ -49,12 +49,14 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
    */
   private TemplateSource buildTemplateSource(String viewName) throws IOException {
     int sep = viewName.indexOf('/');
-    Preconditions.checkArgument(sep >= 0);
+    if (sep < 0) {
+      throw new TemplateNotFoundException("No site key found in viewName: " + viewName);
+    }
 
     String key = viewName.substring(0, sep);
     TemplateLoader delegateLoader = delegate(key);
     if (delegateLoader == null) {
-      throw new IllegalArgumentException();
+      throw new TemplateNotFoundException("No loader found for site key: " + key);
     }
 
     String delegateViewName = viewName.substring(sep + 1);
@@ -84,7 +86,7 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
 
       Matcher matcher = LOCALIZED_FTL_NAME.matcher(viewName);
       if (!matcher.matches()) {
-        throw new IllegalArgumentException(viewName);
+        throw new TemplateNotFoundException("Expected to find template at: " + viewName);
       }
       viewName = matcher.group(1) + matcher.group(2);
     }

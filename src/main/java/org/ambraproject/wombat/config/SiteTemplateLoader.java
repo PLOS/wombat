@@ -48,7 +48,7 @@ class SiteTemplateLoader extends DelegatingTemplateLoader {
   protected TemplateLoader delegate(String key) {
     TemplateLoader loader = loaders.get(key);
     if (loader == null) {
-      throw new RuntimeException("Key not matched: " + key);
+      throw new TemplateNotFoundException("No loader found for site key: " + key);
     }
     return loader;
   }

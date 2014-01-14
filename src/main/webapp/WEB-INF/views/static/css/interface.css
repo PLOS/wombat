@@ -1732,3 +1732,7 @@ nav.footer-secondary-menu li a {
 .about-author {
   padding: 10px 10px 10px 10px;
 }
+
+.author-full-name {
+  padding: 0px 0px 10px 0px;
+}

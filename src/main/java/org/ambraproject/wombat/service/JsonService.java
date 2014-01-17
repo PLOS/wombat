@@ -17,6 +17,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.io.Closer;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.util.TrustingHttpClient;
 import org.apache.http.HttpEntity;
@@ -120,7 +121,12 @@ public abstract class JsonService {
     try {
       InputStream stream = closer.register(new BufferedInputStream(requestStream(uri)));
       Reader reader = closer.register(new InputStreamReader(stream));
-      return gson.fromJson(reader, responseClass);
+      try {
+        return gson.fromJson(reader, responseClass);
+      } catch (JsonSyntaxException e) {
+        String message = String.format("Could not deserialize %s from stream at: %s", responseClass.getName(), uri);
+        throw new RuntimeException(message, e);
+      }
     } catch (Throwable t) {
       throw closer.rethrow(t);
     } finally {

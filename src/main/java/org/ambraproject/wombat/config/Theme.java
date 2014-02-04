@@ -2,18 +2,27 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.common.io.Closer;
+import com.google.common.io.Files;
 import freemarker.cache.TemplateLoader;
+import org.apache.commons.io.IOUtils;
 import org.yaml.snakeyaml.Yaml;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 public abstract class Theme {
 
@@ -106,6 +115,59 @@ public abstract class Theme {
    * @throws IOException if an error occurs accessing the resource
    */
   protected abstract InputStream fetchStaticResource(String path) throws IOException;
+
+
+  /**
+   * Return a collection of all static resources available from a root path in this theme and its parents. The returned
+   * paths are relative to the provided root, and should be concatenated to it before passing to {@link
+   * #getStaticResource}. (See the method body of {@link #dumpToTemporaryDirectory} for an example usage.)
+   *
+   * @param root the root path
+   * @return the static resource paths
+   * @throws IOException
+   */
+  public final ImmutableSet<String> getStaticResourcePaths(String root) throws IOException {
+    if (!root.endsWith("/")) {
+      root += "/";
+    }
+    Set<String> paths = Sets.newTreeSet();
+    for (Theme theme : getChain()) {
+      Collection<String> themePaths = theme.fetchStaticResourcePaths(root);
+      if (themePaths != null) {
+        paths.addAll(themePaths);
+      }
+    }
+    return ImmutableSet.copyOf(paths);
+  }
+
+  /**
+   * Return a collection of all static resources available from a root path in this theme. Return values must follow the
+   * same contract as in {@link #getStaticResourcePaths}.
+   *
+   * @param root the root path
+   * @return the static resource paths
+   * @throws IOException
+   */
+  protected abstract Collection<String> fetchStaticResourcePaths(String root) throws IOException;
+
+  /**
+   * Dump all static resources in this theme and its parents into a single temporary directory.
+   *
+   * @return the new temporary directory
+   * @throws IOException
+   */
+  public final File dumpToTemporaryDirectory(String root) throws IOException {
+    File tempDir = Files.createTempDir();
+    for (String path : getStaticResourcePaths(root)) {
+      String readLocation = root + path;
+      File writeLocation = new File(tempDir, path);
+      try (InputStream inputStream = getStaticResource(readLocation);
+           OutputStream outputStream = new FileOutputStream(writeLocation)) {
+        IOUtils.copy(inputStream, outputStream);
+      }
+    }
+    return tempDir;
+  }
 
 
   /**

@@ -16,6 +16,7 @@ import freemarker.cache.TemplateLoader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 
 /**
  * Implementation of {@link Theme} suitable for tests.  All resources are loaded
@@ -43,5 +44,10 @@ public class TestClasspathTheme extends Theme {
     } else {
       return Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
     }
+  }
+
+  @Override
+  public Collection<String> fetchStaticResourcePaths(String root) throws IOException {
+    throw new IllegalStateException("Not yet implemented for testing");
   }
 }

@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.util.TrustingHttpClient;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -71,19 +72,18 @@ public abstract class JsonService {
    * Makes a request to the given URI, checks for response codes 400 or above, and returns the response.
    *
    * @param targetUri the URI to which to send the request
-   * @param extraHeaders extra headers to add to the request, if any.  Element zero should be the header
-   *     name, and element one the value.
+   * @param headers   headers to add to the request, if any
    * @return response from the server
    * @throws IOException             if there is an error connecting to the server
    * @throws NullPointerException    if the address is null
    * @throws EntityNotFoundException if the object at the address does not exist
    */
-  protected HttpResponse makeRequest(URI targetUri, String[]... extraHeaders) throws IOException {
+  protected HttpResponse makeRequest(URI targetUri, Header... headers) throws IOException {
     HttpClient client = (runtimeConfiguration.trustUnsignedServer() && "https".equals(targetUri.getScheme()))
         ? TrustingHttpClient.create() : new DefaultHttpClient();
     HttpGet get = new HttpGet(targetUri);
-    for (String[] header : extraHeaders) {
-      get.addHeader(header[0], header[1]);
+    for (Header header : headers) {
+      get.setHeader(header);
     }
     HttpResponse response = client.execute(get);
     StatusLine statusLine = response.getStatusLine();

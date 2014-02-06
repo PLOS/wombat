@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.service;
 
+import org.apache.http.HttpResponse;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -74,4 +76,14 @@ public interface SoaService {
    */
   public abstract <T> IfModifiedSinceResult<T> requestObjectIfModifiedSince(String address, Class<T> responseClass,
       Calendar lastModified) throws IOException;
+
+  /**
+   * Requests an asset, returning both the headers and stream.
+   *
+   * @param assetId the asset ID within the SOA service's "assetfiles/" namespace
+   * @return
+   * @throws IOException
+   */
+  public abstract HttpResponse requestAsset(String assetId) throws IOException;
+
 }

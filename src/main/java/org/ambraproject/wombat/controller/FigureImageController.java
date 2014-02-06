@@ -6,6 +6,8 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.apache.commons.io.IOUtils;
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,24 +28,36 @@ public class FigureImageController extends WombatController {
   private SoaService soaService;
 
   /**
-   * Forward a stream for an asset file from the SOA to the response.
+   * Forward a response for an asset file from the SOA to the response.
    *
-   * @param response
+   * @param responseToClient
    * @param assetId
-   * @param contentType
    * @throws IOException
    */
-  private void serveAssetFile(HttpServletResponse response, String assetId, String contentType) throws IOException {
-    response.setContentType(contentType);
+  private void serveAssetFile(HttpServletResponse responseToClient, String assetId) throws IOException {
+    HttpResponse responseFromService = soaService.requestAsset(assetId);
+
+    /*
+     * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
+     * "content-disposition" headers, and headers that control reproxying.
+     */
+    for (Header headerFromService : responseFromService.getAllHeaders()) {
+      responseToClient.setHeader(headerFromService.getName(), headerFromService.getValue());
+    }
 
     Closer closer = Closer.create();
     try {
-      InputStream assetStream = soaService.requestStream("assetfiles/" + assetId);
+      InputStream assetStream = responseFromService.getEntity().getContent();
       if (assetStream == null) {
         throw new EntityNotFoundException(assetId);
       }
       closer.register(assetStream);
-      OutputStream responseStream = closer.register(response.getOutputStream());
+      /*
+       * In a reproxying case, the asset stream might be empty. It might be a performance win to look ahead and avoid
+       * opening an output stream if there's nothing to send, but for now just let IOUtils.copy handle it regardless.
+       */
+
+      OutputStream responseStream = closer.register(responseToClient.getOutputStream());
       IOUtils.copy(assetStream, responseStream); // buffered
     } catch (Throwable t) {
       throw closer.rethrow(t);
@@ -61,9 +75,7 @@ public class FigureImageController extends WombatController {
                          @RequestParam("id") String assetId)
       throws IOException {
     requireNonemptyParameter(assetId);
-    Map<String, Object> assetMetadata = soaService.requestObject("assetfiles/" + assetId + "?metadata", Map.class);
-    String contentType = (String) assetMetadata.get("contentType");
-    serveAssetFile(response, assetId, contentType);
+    serveAssetFile(response, assetId);
   }
 
   private static final String ORIGINAL_FIGURE = "original";
@@ -87,10 +99,8 @@ public class FigureImageController extends WombatController {
       throw new NotFoundException("Not a valid size: " + figureSize);
     }
     String assetFileId = (String) figureObject.get("file");
-    Map<String, ?> assetFileMeta = (Map<String, ?>) figureObject.get("metadata");
 
-    String contentType = (String) assetFileMeta.get("contentType");
-    serveAssetFile(response, assetFileId, contentType);
+    serveAssetFile(response, assetFileId);
   }
 
 }

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
@@ -8,16 +9,19 @@ import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.message.BasicHeader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -28,14 +32,34 @@ public class FigureImageController extends WombatController {
   private SoaService soaService;
 
   /**
+   * Copy headers from a request. Effectively translating from a Spring model into an Apache model.
+   *
+   * @param request a request
+   * @return its headers
+   */
+  private static Header[] copyHeaders(HttpServletRequest request) {
+    Enumeration headerNames = request.getHeaderNames();
+    List<Header> headers = Lists.newArrayList();
+    while (headerNames.hasMoreElements()) {
+      String headerName = (String) headerNames.nextElement();
+      String headerValue = request.getHeader(headerName);
+      headers.add(new BasicHeader(headerName, headerValue));
+    }
+    return headers.toArray(new Header[headers.size()]);
+  }
+
+  /**
    * Forward a response for an asset file from the SOA to the response.
    *
    * @param responseToClient
    * @param assetId
    * @throws IOException
    */
-  private void serveAssetFile(HttpServletResponse responseToClient, String assetId) throws IOException {
-    HttpResponse responseFromService = soaService.requestAsset(assetId);
+  private void serveAssetFile(HttpServletRequest requestFromClient,
+                              HttpServletResponse responseToClient,
+                              String assetId)
+      throws IOException {
+    HttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient));
 
     /*
      * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
@@ -70,12 +94,13 @@ public class FigureImageController extends WombatController {
    * Serve the identified asset file.
    */
   @RequestMapping("/{site}/article/asset")
-  public void serveAsset(HttpServletResponse response,
+  public void serveAsset(HttpServletRequest request,
+                         HttpServletResponse response,
                          @PathVariable("site") String site,
                          @RequestParam("id") String assetId)
       throws IOException {
     requireNonemptyParameter(assetId);
-    serveAssetFile(response, assetId);
+    serveAssetFile(request, response, assetId);
   }
 
   private static final String ORIGINAL_FIGURE = "original";
@@ -85,7 +110,8 @@ public class FigureImageController extends WombatController {
    * Serve the asset file for an identified figure thumbnail.
    */
   @RequestMapping("/{site}/article/figure/image")
-  public void serveFigureImage(HttpServletResponse response,
+  public void serveFigureImage(HttpServletRequest request,
+                               HttpServletResponse response,
                                @RequestParam("id") String figureId,
                                @RequestParam("size") String figureSize)
       throws IOException {
@@ -100,7 +126,7 @@ public class FigureImageController extends WombatController {
     }
     String assetFileId = (String) figureObject.get("file");
 
-    serveAssetFile(response, assetFileId);
+    serveAssetFile(request, response, assetFileId);
   }
 
 }

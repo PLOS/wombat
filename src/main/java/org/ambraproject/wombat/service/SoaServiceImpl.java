@@ -75,8 +75,8 @@ public class SoaServiceImpl extends JsonService implements SoaService {
    * {@inheritDoc}
    */
   @Override
-  public HttpResponse requestAsset(String assetId) throws IOException {
-    return makeRequest(buildUri("assetfiles/" + assetId));
+  public HttpResponse requestAsset(String assetId, Header... headers) throws IOException {
+    return makeRequest(buildUri("assetfiles/" + assetId), headers);
   }
 
   private URI buildUri(String address) {

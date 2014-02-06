@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 
 import java.io.IOException;
@@ -84,6 +85,6 @@ public interface SoaService {
    * @return
    * @throws IOException
    */
-  public abstract HttpResponse requestAsset(String assetId) throws IOException;
+  public abstract HttpResponse requestAsset(String assetId, Header... headers) throws IOException;
 
 }

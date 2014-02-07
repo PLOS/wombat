@@ -51,6 +51,11 @@
       <artifactId>saxon</artifactId>
       <version>9.3</version>
     </dependency>
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+      <version>1.13</version>
+    </dependency>
 
     <!-- Spring -->
     <dependency>

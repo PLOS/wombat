@@ -19,7 +19,7 @@ public class Site {
   /**
    * Constructor for applications that do not depend on the theme and already know the journalKey.
    *
-   * @param key        key of the journal (value in wombat.json)
+   * @param key        key of the journal (value in wombat.yaml)
    * @param journalKey key used for solr (value in journal_key.txt of the corresponding theme)
    */
   public Site(String key, String journalKey) {

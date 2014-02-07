@@ -29,6 +29,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+import org.yaml.snakeyaml.Yaml;
 
 import javax.servlet.ServletContext;
 import java.io.BufferedReader;
@@ -53,8 +54,13 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public RuntimeConfiguration runtimeConfiguration(Gson gson) throws IOException {
-    final File configPath = new File("/etc/ambra/wombat.json"); // TODO Descriptive file name
+  public Yaml yaml() {
+    return new Yaml();
+  }
+
+  @Bean
+  public RuntimeConfiguration runtimeConfiguration(Yaml yaml) throws IOException {
+    final File configPath = new File("/etc/ambra/wombat.yaml"); // TODO Descriptive file name
     if (!configPath.exists()) {
       throw new RuntimeConfigurationException(configPath.getPath() + " not found");
     }
@@ -64,7 +70,7 @@ public class SpringConfiguration {
     boolean threw = true;
     try {
       reader = new BufferedReader(new FileReader(configPath));
-      runtimeConfiguration = gson.fromJson(reader, JsonConfiguration.class);
+      runtimeConfiguration = new JsonConfiguration(yaml.loadAs(reader, JsonConfiguration.UserFields.class));
       threw = false;
     } catch (JsonSyntaxException e) {
       throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
@@ -163,7 +169,7 @@ public class SpringConfiguration {
   public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
     if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedHost())) {
 
-      // TODO: consider defining this in wombat.json instead.
+      // TODO: consider defining this in wombat.yaml instead.
       final int cacheTimeout = 60 * 60;
       MemcacheClient result = new MemcacheClient(runtimeConfiguration.getMemcachedHost(),
           runtimeConfiguration.getMemcachedPort(), runtimeConfiguration.getCacheAppPrefix(), cacheTimeout);

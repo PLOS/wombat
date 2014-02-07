@@ -11,6 +11,7 @@
 
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableSet;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.wombat.service.AssetService;
@@ -32,7 +33,8 @@ public class TestSpringConfiguration {
   @Bean
   public ThemeTree themeTree(RuntimeConfiguration runtimeConfiguration)
       throws ThemeTree.ThemeConfigurationException {
-    return runtimeConfiguration.getThemes(new TestClasspathTheme());
+    TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
+    return runtimeConfiguration.getThemes(ImmutableSet.of(testClasspathTheme), testClasspathTheme);
   }
 
   @Bean

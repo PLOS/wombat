@@ -11,6 +11,7 @@
 
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableList;
 import freemarker.cache.TemplateLoader;
 
 import java.io.ByteArrayInputStream;
@@ -25,7 +26,7 @@ import java.util.Collection;
 public class TestClasspathTheme extends Theme {
 
   public TestClasspathTheme() {
-    super("", null);
+    super("test", null);
   }
 
   @Override

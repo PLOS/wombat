@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -243,8 +244,9 @@ public class JsonConfiguration implements RuntimeConfiguration {
    * {@inheritDoc}
    */
   @Override
-  public ThemeTree getThemes(Theme internalDefault) throws ThemeTree.ThemeConfigurationException {
-    return ThemeTree.parse(uf.themes, internalDefault);
+  public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme)
+      throws ThemeTree.ThemeConfigurationException {
+    return ThemeTree.parse(uf.themes, internalThemes, rootTheme);
   }
 
   /**

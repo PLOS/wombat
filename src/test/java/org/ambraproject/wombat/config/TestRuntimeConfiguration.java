@@ -15,13 +15,13 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.controller.ControllerHook;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Instance of {@link RuntimeConfiguration} suitable for tests.  Many of the return
- * values here will be null or meaningless defaults; we can fill them in with "real"
- * values as tests need them.
+ * Instance of {@link RuntimeConfiguration} suitable for tests.  Many of the return values here will be null or
+ * meaningless defaults; we can fill them in with "real" values as tests need them.
  */
 public class TestRuntimeConfiguration implements RuntimeConfiguration {
 
@@ -95,9 +95,9 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
    * {@inheritDoc}
    */
   @Override
-  public ThemeTree getThemes(Theme internalDefault) throws ThemeTree.ThemeConfigurationException {
+  public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {
     Map<String, Theme> mutable = new HashMap<>();
-    mutable.put("default", internalDefault);
+    mutable.put("default", rootTheme);
     themeMap = ImmutableMap.copyOf(mutable);
     return new ThemeTree(themeMap);
   }

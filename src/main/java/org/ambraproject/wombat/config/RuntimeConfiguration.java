@@ -15,6 +15,7 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.controller.ControllerHook;
 
 import java.net.URL;
+import java.util.Collection;
 
 /**
  * Interface that represents configurable values that are only known at server startup time.
@@ -71,7 +72,7 @@ public interface RuntimeConfiguration {
    */
   URL getSolrServer();
 
-  ThemeTree getThemes(Theme internalDefault) throws ThemeTree.ThemeConfigurationException;
+  ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException;
 
   ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree);
 

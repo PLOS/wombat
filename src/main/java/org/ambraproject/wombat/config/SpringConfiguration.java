@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -84,9 +85,11 @@ public class SpringConfiguration {
   @Bean
   public ThemeTree themeTree(ServletContext servletContext, RuntimeConfiguration runtimeConfiguration)
       throws ThemeTree.ThemeConfigurationException {
-    String internalViewPath = "/WEB-INF/views/";
-    Theme internalDefaultTheme = new InternalTheme("", null, servletContext, internalViewPath);
-    return runtimeConfiguration.getThemes(internalDefaultTheme);
+    String path = "/WEB-INF/themes/";
+    InternalTheme root = new InternalTheme(".Root", null, servletContext, path + "root/");
+    InternalTheme desktop = new InternalTheme(".Desktop", root, servletContext, path + "desktop/");
+    InternalTheme mobile = new InternalTheme(".Mobile", root, servletContext, path + "mobile/");
+    return runtimeConfiguration.getThemes(ImmutableSet.of(root, desktop, mobile), root);
   }
 
   @Bean
@@ -105,18 +108,20 @@ public class SpringConfiguration {
     return new RenderCssLinksDirective();
   }
 
-  @Bean JsDirective jsDirective() {
+  @Bean
+  JsDirective jsDirective() {
     return new JsDirective();
   }
 
-  @Bean RenderJsDirective renderJsDirective() {
+  @Bean
+  RenderJsDirective renderJsDirective() {
     return new RenderJsDirective();
   }
 
   @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
-      CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
-      RenderJsDirective renderJsDirective) throws IOException {
+                                           CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
+                                           RenderJsDirective renderJsDirective) throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);

@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config;
 
+import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
@@ -30,6 +31,8 @@ public abstract class Theme {
   private final Optional<Theme> parent;
 
   protected Theme(String key, Theme parent) {
+    Preconditions.checkArgument(!key.isEmpty());
+    Preconditions.checkArgument(key.startsWith(".") == (this instanceof InternalTheme));
     this.key = key;
     this.parent = Optional.fromNullable(parent);
   }
@@ -42,6 +45,13 @@ public abstract class Theme {
   public String getKey() {
     return key;
   }
+
+  static final Function<Theme, String> GET_KEY = new Function<Theme, String>() {
+    @Override
+    public String apply(Theme input) {
+      return input.getKey();
+    }
+  };
 
   /**
    * Return the inheritance chain of themes, from leaf to root. The first element is guaranteed to be this object. Each

@@ -28,7 +28,7 @@ public class Site {
   }
 
   @VisibleForTesting
-  static final String JOURNAL_KEY_PATH = "journal.json";
+  static final String JOURNAL_KEY_PATH = "journal";
   @VisibleForTesting
   static final String CONFIG_KEY_FOR_JOURNAL = "journalKey";
 

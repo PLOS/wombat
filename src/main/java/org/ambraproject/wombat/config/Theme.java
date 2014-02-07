@@ -5,9 +5,8 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.common.io.Closer;
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 import freemarker.cache.TemplateLoader;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -110,13 +109,13 @@ public abstract class Theme {
 
 
   /**
-   * Read a set of configuration values from JSON, overriding individual values from parent themes if applicable. The
-   * path must point to a JSON file containing an object (i.e., key-value map) in the special {@code config/} theme
-   * path.
+   * Read a set of configuration values from YAML (or JSON), overriding individual values from parent themes if
+   * applicable. The path (plus a *.yaml or *.json extension) points to a file containing an object (i.e., key-value
+   * map) in the special {@code config/} theme path.
    * <p/>
    * This is distinct from the other kinds of theme inheritance ({@link #getTemplateLoader} and {@link
-   * #getStaticResource}), which override on a file-by-file basis. This method reads a JSON map (if any) at the given
-   * path from every theme in the inheritance chain, and builds the result map by overriding individual members.
+   * #getStaticResource}), which override on a file-by-file basis. This method reads a map (if any) at the given path
+   * from every theme in the inheritance chain, and builds the result map by overriding individual members.
    *
    * @param path a path within the theme's {@code config/} directory
    * @return a map of overridden values
@@ -127,7 +126,7 @@ public abstract class Theme {
     for (Theme theme : getChain()) {
       Map<?, ?> valuesFromTheme;
       try {
-        valuesFromTheme = readJsonConfigValues(theme, configPath);
+        valuesFromTheme = readYamlConfigValues(theme, configPath);
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
@@ -145,23 +144,36 @@ public abstract class Theme {
     return values;
   }
 
-  private static Map<?, ?> readJsonConfigValues(Theme theme, String configPath) throws IOException {
+  private Map<?, ?> readYamlConfigValues(Theme theme, String configPath) throws IOException {
     Closer closer = Closer.create();
     try {
-      InputStream inputStream = theme.fetchStaticResource(configPath);
-      if (inputStream == null) {
+      // Allow either *.yaml or *.json for the filename, but complain if both appear in the same theme.
+      // Allow mixing and matching of *.yaml and *.json across different (inheriting) themes.
+      // We can get away with parsing both as YAML (because JSON is a subset of YAML),
+      // but this needs more abstract handling by format if we ever support more than two formats.
+      // We don't actually validate whether a *.json file is valid JSON or just YAML.
+      InputStream yamlStream = theme.fetchStaticResource(configPath + ".yaml");
+      if (yamlStream != null) closer.register(yamlStream);
+      InputStream jsonStream = theme.fetchStaticResource(configPath + ".json");
+      if (jsonStream != null) closer.register(jsonStream);
+
+      if (yamlStream == null && jsonStream == null) {
         return null;
+      } else if (yamlStream != null && jsonStream != null) {
+        String message = String.format("Redundant files at %s.yaml and %s.json in theme \"%s\"",
+            configPath, configPath, theme.getKey());
+        throw new IllegalStateException(message);
       }
-      closer.register(inputStream);
-      return GSON.fromJson(new JsonReader(new InputStreamReader(inputStream)), Map.class);
+      InputStream streamToUse = (yamlStream != null) ? yamlStream : jsonStream;
+
+      Yaml yaml = new Yaml(); // don't cache; it isn't threadsafe
+      return yaml.loadAs(new InputStreamReader(streamToUse), Map.class);
     } catch (Throwable t) {
       throw closer.rethrow(t);
     } finally {
       closer.close();
     }
   }
-
-  private static final Gson GSON = new Gson();
 
 
   @Override

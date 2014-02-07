@@ -152,15 +152,15 @@ public class ArticleController extends WombatController {
   /**
    * Serves a request for the "about the authors" page for an article.
    *
-   * @param model data to pass to the view
-   * @param site current site
+   * @param model     data to pass to the view
+   * @param site      current site
    * @param articleId specifies the article
    * @return path to the template
    * @throws IOException
    */
   @RequestMapping("/{site}/article/authors")
   public String renderArticleAuthors(Model model, @PathVariable("site") String site,
-      @RequestParam("doi") String articleId) throws IOException {
+                                     @RequestParam("doi") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     model.addAttribute("article", articleMetadata);
     requestAuthors(model, articleId);
@@ -227,7 +227,7 @@ public class ArticleController extends WombatController {
    * Appends additional info about article authors to the model.
    *
    * @param model model to be passed to the view
-   * @param doi identifies the article
+   * @param doi   identifies the article
    * @return the list of authors appended to the model
    * @throws IOException
    */

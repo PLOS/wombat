@@ -16,9 +16,8 @@ import java.io.OutputStream;
 import java.util.List;
 
 /**
- * Service that deals with static assets, such as javascript and CSS.  Contains
- * functionality for concatenating and minifying (aka "compiling") these assets,
- * as well as serving them.
+ * Service that deals with static assets, such as javascript and CSS.  Contains functionality for concatenating and
+ * minifying (aka "compiling") these assets, as well as serving them.
  */
 public interface AssetService {
 
@@ -40,8 +39,8 @@ public interface AssetService {
     }
 
     /**
-     * Builds a cache key to store the filename of a compiled asset.  (We cache these
-     * since their name includes a hash, which can be potentially expensive to compute.)
+     * Builds a cache key to store the filename of a compiled asset.  (We cache these since their name includes a hash,
+     * which can be potentially expensive to compute.)
      *
      * @param cacheKey cache key for the overall request
      * @return cache key where we can store/retrieve the compiled filename
@@ -62,14 +61,13 @@ public interface AssetService {
   }
 
   /**
-   * Concatenates a group of assets, compiles them, and returns the path where the compiled
-   * file is served.  The compiled filename and the contents of the compiled file will
-   * be cached.
+   * Concatenates a group of assets, compiles them, and returns the path where the compiled file is served.  The
+   * compiled filename and the contents of the compiled file will be cached.
    *
    * @param assetType specifies whether the asset is javascript or CSS
    * @param filenames list of servlet paths that correspond to asset files to compile
-   * @param site specifies the journal/site
-   * @param cacheKey key that will be used to cache the results
+   * @param site      specifies the journal/site
+   * @param cacheKey  key that will be used to cache the results
    * @return servlet path to the single, compiled asset file
    * @throws IOException
    */
@@ -80,7 +78,7 @@ public interface AssetService {
    * Writes an asset that was previously compiled with a call to getCompiledCssLink to the stream.
    *
    * @param assetFilename the filename, as returned by getCompiledCssLink
-   * @param outputStream output; this method will close the stream as well
+   * @param outputStream  output; this method will close the stream as well
    * @throws IOException
    */
   void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException;

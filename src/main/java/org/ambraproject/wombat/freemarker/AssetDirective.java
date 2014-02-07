@@ -23,8 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Base class for Freemarker custom directives used to insert compiled versions
- * of asset files (javascript and CSS).
+ * Base class for Freemarker custom directives used to insert compiled versions of asset files (javascript and CSS).
  */
 public abstract class AssetDirective {
 
@@ -32,16 +31,13 @@ public abstract class AssetDirective {
   private RuntimeConfiguration runtimeConfiguration;
 
   /**
-   * Called when we are adding a new asset file to the page.  If we're in dev
-   * mode, this will just render HTML that links to the asset; if not, no
-   * HTML will be rendered, and instead the asset file will be queued for
-   * compilation.
+   * Called when we are adding a new asset file to the page.  If we're in dev mode, this will just render HTML that
+   * links to the asset; if not, no HTML will be rendered, and instead the asset file will be queued for compilation.
    *
-   * @param assetPath path to the asset file being added
-   * @param requestVariableName the name of the request-scoped variable
-   *     that stores assets awaiting compilation.  Typically, there will be
-   *     one of these per asset type (javascript or CSS).
-   * @param environment freemarker execution environment
+   * @param assetPath           path to the asset file being added
+   * @param requestVariableName the name of the request-scoped variable that stores assets awaiting compilation.
+   *                            Typically, there will be one of these per asset type (javascript or CSS).
+   * @param environment         freemarker execution environment
    * @throws TemplateException
    * @throws IOException
    */
@@ -74,8 +70,8 @@ public abstract class AssetDirective {
   }
 
   /**
-   * Returns the HTML that renders a link to an asset.  This will vary depending
-   * on the subclass (and the type of the asset).
+   * Returns the HTML that renders a link to an asset.  This will vary depending on the subclass (and the type of the
+   * asset).
    *
    * @param assetPath path to the asset file
    * @return HTMl snippet linking to the asset file

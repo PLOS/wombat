@@ -70,9 +70,9 @@ public abstract class JsonService {
   /**
    * Makes a request to the given URI, checks for response codes 400 or above, and returns the response.
    *
-   * @param targetUri the URI to which to send the request
-   * @param extraHeaders extra headers to add to the request, if any.  Element zero should be the header
-   *     name, and element one the value.
+   * @param targetUri    the URI to which to send the request
+   * @param extraHeaders extra headers to add to the request, if any.  Element zero should be the header name, and
+   *                     element one the value.
    * @return response from the server
    * @throws IOException             if there is an error connecting to the server
    * @throws NullPointerException    if the address is null

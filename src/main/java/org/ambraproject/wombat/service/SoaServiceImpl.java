@@ -36,9 +36,9 @@ public class SoaServiceImpl extends JsonService implements SoaService {
    */
   @Override
   public <T> IfModifiedSinceResult<T> requestObjectIfModifiedSince(String address, Class<T> responseClass,
-      Calendar lastModified) throws IOException {
+                                                                   Calendar lastModified) throws IOException {
     URI uri = buildUri(address);
-    HttpResponse response = makeRequest(uri, new String[] {"If-Modified-Since", HttpDateUtil.format(lastModified)});
+    HttpResponse response = makeRequest(uri, new String[]{"If-Modified-Since", HttpDateUtil.format(lastModified)});
     Header[] lastModifiedHeaders = response.getHeaders("Last-Modified");
     if (lastModifiedHeaders.length != 1) {
       throw new RuntimeException("Expecting 1 Last-Modified header, got " + lastModifiedHeaders.length);

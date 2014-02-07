@@ -179,6 +179,7 @@ ul.results li .error {
 ul.results li a {
   background: url('../img/bg/arrow-right.png') no-repeat right center;
 }
+
 ul.results li .error {
   color: #880000;
 }
@@ -1666,7 +1667,6 @@ nav.footer-secondary-menu li a {
   }
 
   /* corrections for iOS zoom on orientation landscape */
-
   .modal-info-window #share-methods {
     padding-bottom: 60px; /* necessary for inconsistencies in iOS zoom behavior among versions */
   }

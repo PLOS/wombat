@@ -22,9 +22,8 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Custom freemarker directive that should be used to insert a CSS link element.
- * If we are running in dev mode, this will just render the link; otherwise the
- * CSS file specified will be minified and served along with all other CSS in
+ * Custom freemarker directive that should be used to insert a CSS link element. If we are running in dev mode, this
+ * will just render the link; otherwise the CSS file specified will be minified and served along with all other CSS in
  * the app.
  */
 public class CssLinkDirective extends AssetDirective implements TemplateDirectiveModel {

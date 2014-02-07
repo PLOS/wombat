@@ -11,7 +11,6 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableList;
 import freemarker.cache.TemplateLoader;
 
 import java.io.ByteArrayInputStream;
@@ -20,8 +19,7 @@ import java.io.InputStream;
 import java.util.Collection;
 
 /**
- * Implementation of {@link Theme} suitable for tests.  All resources are loaded
- * from the classpath.
+ * Implementation of {@link Theme} suitable for tests.  All resources are loaded from the classpath.
  */
 public class TestClasspathTheme extends Theme {
 

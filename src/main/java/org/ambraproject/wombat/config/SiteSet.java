@@ -54,7 +54,7 @@ public class SiteSet {
     return sites.values();
   }
 
-  public ImmutableSet<String> getSiteKeys(){
+  public ImmutableSet<String> getSiteKeys() {
     return sites.keySet();
   }
 

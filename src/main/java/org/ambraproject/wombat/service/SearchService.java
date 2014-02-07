@@ -43,8 +43,8 @@ public interface SearchService {
   /**
    * Performs a "simple" search (against all article fields) and returns the results.
    *
-   * @param query     term we are searching for.  If this is null, all articles will
-   *     be returned (modulo sortOrder, start, rows, and dateRange).
+   * @param query     term we are searching for.  If this is null, all articles will be returned (modulo sortOrder,
+   *                  start, rows, and dateRange).
    * @param site      name of the site in which to search.
    * @param start     starting result, one-based.  1 will start at the first result.
    * @param rows      max number of results to return
@@ -59,7 +59,7 @@ public interface SearchService {
   /**
    * Performs a search by the subject fields.
    *
-   * @param subject taxonomy term the search will be restricted to
+   * @param subject   taxonomy term the search will be restricted to
    * @param site      name of the site in which to search.
    * @param start     starting result, one-based.  1 will start at the first result.
    * @param rows      max number of results to return
@@ -69,7 +69,7 @@ public interface SearchService {
    * @throws IOException
    */
   public Map<?, ?> subjectSearch(String subject, Site site, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) throws IOException;
+                                 SearchCriterion dateRange) throws IOException;
 
   /**
    * Performs a search for an author's name.
@@ -84,5 +84,5 @@ public interface SearchService {
    * @throws IOException
    */
   public Map<?, ?> authorSearch(String author, Site site, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) throws IOException;
+                                SearchCriterion dateRange) throws IOException;
 }

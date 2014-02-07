@@ -22,9 +22,8 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Freemarker custom directive that renders any <script> tags added via calls to
- * {@link JsDirective}.  A single instance of this directive should be added at
- * the end of the body element on the page.  It will do nothing if we are running
+ * Freemarker custom directive that renders any <script> tags added via calls to {@link JsDirective}.  A single instance
+ * of this directive should be added at the end of the body element on the page.  It will do nothing if we are running
  * in dev assets mode (since the tags were already rendered).
  */
 public class RenderJsDirective extends RenderAssetsDirective implements TemplateDirectiveModel {

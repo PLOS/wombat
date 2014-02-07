@@ -50,7 +50,7 @@
         </#list>
       </#if>
 
-    </p><#-- end p.author-list -->
+      </p><#-- end p.author-list -->
 
     <#-- Render the hidden divs that display author affiliation (and other) info.
          These are displayed when clicking on an author's name.  We do this after
@@ -64,32 +64,32 @@
         <div id="author-meta-${author_index?c}" style="display:none;">
           <h2 class="author-full-name">${author.fullName}</h2>
           <#if author.equalContrib>
-              <p>
-                Contributed equally to this work with:
-                <#list equalContributors as contributor>
-                  ${contributor}<#if contributor_has_next>,</#if>
-                </#list>
-              </p>
+            <p>
+              Contributed equally to this work with:
+              <#list equalContributors as contributor>
+              ${contributor}<#if contributor_has_next>,</#if>
+              </#list>
+            </p>
           </#if>
           <#if author.deceased><p>† Deceased.</p></#if>
           <#if author.corresponding??><p>${author.corresponding}</p></#if>
           <#if author.affiliations?? && author.affiliations?size gt 0>
             <p><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
               <#list author.affiliations as affil>
-                ${affil}<#if affil_has_next>, </#if>
+              ${affil}<#if affil_has_next>, </#if>
               </#list>
             </p>
           </#if>
           <#if author.currentAddresses?? && author.currentAddresses?size gt 0>
             <p>
               <#list author.currentAddresses as address>
-                ${address}<#if address_has_next>; </#if>
+              ${address}<#if address_has_next>; </#if>
               </#list>
             </p>
           </#if>
           <#if author.customFootnotes?? && author.customFootnotes?size gt 0>
             <#list author.customFootnotes as note>
-              ${note}
+            ${note}
             </#list>
           </#if>
         </div>

@@ -385,9 +385,9 @@ var SiteContent = function () {
 // Based on code from http://www.darreningram.net/pages/examples/jQuery/CollapsiblePanelPlugin.aspx
 // (No copyright statements there, but including for attribution.)
 
-(function($) {
+(function ($) {
   $.fn.extend({
-    collapsiblePanel: function() {
+    collapsiblePanel: function () {
       return $(this).each(ConfigureCollapsiblePanel);
     }
   });

@@ -13,7 +13,7 @@
        controller.  This controller serves the 404 page.  We have to do it this way,
        instead of using the error-page directive in web.xml, because we want to preserve
        any site path variable present so we can render the 404 page with site-specific styling.  -->
-  <beans:bean id="notFoundController" class="org.ambraproject.wombat.controller.NotFoundController" />
+  <beans:bean id="notFoundController" class="org.ambraproject.wombat.controller.NotFoundController"/>
   <beans:bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
     <beans:property name="defaultHandler" ref="notFoundController"/>
   </beans:bean>

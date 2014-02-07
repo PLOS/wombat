@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Abstract superclass of freemarker custom directives that render links to compiled assets.
- * See {@link AssetDirective}.
+ * Abstract superclass of freemarker custom directives that render links to compiled assets. See {@link
+ * AssetDirective}.
  */
 public abstract class RenderAssetsDirective {
 
@@ -42,10 +42,10 @@ public abstract class RenderAssetsDirective {
   /**
    * Renders HTML that includes a compiled asset.
    *
-   * @param assetType defines the type of asset (.js or .css)
-   * @param requestVariableName the name of the request variable that uncompiled assets
-   *     have been stored in by calls to a subclass of {@link AssetDirective}
-   * @param environment freemarker execution environment
+   * @param assetType           defines the type of asset (.js or .css)
+   * @param requestVariableName the name of the request variable that uncompiled assets have been stored in by calls to
+   *                            a subclass of {@link AssetDirective}
+   * @param environment         freemarker execution environment
    * @throws TemplateException
    * @throws IOException
    */
@@ -80,8 +80,8 @@ public abstract class RenderAssetsDirective {
   }
 
   /**
-   * Returns the HTML that renders a link to an asset.  This will vary depending
-   * on the subclass (and the type of the asset).
+   * Returns the HTML that renders a link to an asset.  This will vary depending on the subclass (and the type of the
+   * asset).
    *
    * @param assetPath path to the asset file
    * @return HTMl snippet linking to the asset file
@@ -101,14 +101,12 @@ public abstract class RenderAssetsDirective {
   public static final class GetPathDepthsResult {
 
     /**
-     * The "depth" of the asset links; that is, the number of occurrences of "../"
-     * at the start of the paths.
+     * The "depth" of the asset links; that is, the number of occurrences of "../" at the start of the paths.
      */
     int depth;
 
     /**
-     * List of paths with the "up-directory" portions removed.  That is, "../../foo"
-     * becomes "foo".
+     * List of paths with the "up-directory" portions removed.  That is, "../../foo" becomes "foo".
      */
     List<String> depthlessPaths;
 
@@ -119,8 +117,8 @@ public abstract class RenderAssetsDirective {
   }
 
   /**
-   * Calculates the number of "up-directory" levels in the relative paths passed in,
-   * and removes these up-directory markers.
+   * Calculates the number of "up-directory" levels in the relative paths passed in, and removes these up-directory
+   * markers.
    *
    * @param assetPaths relative paths to assets
    * @return see comments for {@link GetPathDepthsResult}
@@ -149,9 +147,8 @@ public abstract class RenderAssetsDirective {
   }
 
   /**
-   * Returns a string representing a unix-like relative path going up the specified number
-   * of levels.  For example, an argument of 3 will return "../../../", while 0 will
-   * return the empty string.
+   * Returns a string representing a unix-like relative path going up the specified number of levels.  For example, an
+   * argument of 3 will return "../../../", while 0 will return the empty string.
    *
    * @param depth number of directory levels deep
    * @return string going up the specified number of directories

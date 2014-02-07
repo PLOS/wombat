@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,8 +23,8 @@ public class InternalTheme extends Theme {
   private final String resourceRoot;
   private final WebappTemplateLoader templateLoader;
 
-  public InternalTheme(String key, Theme parent, ServletContext servletContext, String resourcePath) {
-    super(key, parent);
+  public InternalTheme(String key, List<? extends Theme> parents, ServletContext servletContext, String resourcePath) {
+    super(key, parents);
     this.servletContext = Preconditions.checkNotNull(servletContext);
     this.resourceRoot = Preconditions.checkNotNull(resourcePath);
     this.templateLoader = new WebappTemplateLoader(servletContext, resourcePath);

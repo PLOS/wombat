@@ -31,10 +31,16 @@ public class TestSpringConfiguration {
   }
 
   @Bean
+<<<<<<< HEAD
   public ThemeTree themeTree(RuntimeConfiguration runtimeConfiguration)
       throws ThemeTree.ThemeConfigurationException {
     TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
     return runtimeConfiguration.getThemes(ImmutableSet.of(testClasspathTheme), testClasspathTheme);
+=======
+  public ThemeTree themeTree(RuntimeConfiguration runtimeConfiguration)
+      throws ThemeTree.ThemeConfigurationException {
+    return runtimeConfiguration.getThemes(new TestClasspathTheme());
+>>>>>>> eae61bb... First pass at supporting multiple inheritance in themes
   }
 
   @Bean

@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.io.Closeables;
 import com.google.gson.Gson;
@@ -87,8 +88,9 @@ public class SpringConfiguration {
       throws ThemeTree.ThemeConfigurationException {
     String path = "/WEB-INF/themes/";
     InternalTheme root = new InternalTheme(".Root", null, servletContext, path + "root/");
-    InternalTheme desktop = new InternalTheme(".Desktop", root, servletContext, path + "desktop/");
-    InternalTheme mobile = new InternalTheme(".Mobile", root, servletContext, path + "mobile/");
+    ImmutableList<InternalTheme> listOfRoot = ImmutableList.of(root);
+    InternalTheme desktop = new InternalTheme(".Desktop", listOfRoot, servletContext, path + "desktop/");
+    InternalTheme mobile = new InternalTheme(".Mobile", listOfRoot, servletContext, path + "mobile/");
     return runtimeConfiguration.getThemes(ImmutableSet.of(root, desktop, mobile), root);
   }
 

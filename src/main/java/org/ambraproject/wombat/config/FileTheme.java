@@ -13,6 +13,7 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.List;
 import java.util.Set;
 
 public class FileTheme extends Theme {
@@ -20,8 +21,8 @@ public class FileTheme extends Theme {
   private final File root;
   private final FileTemplateLoader templateLoader;
 
-  protected FileTheme(String key, Theme parent, File root) throws IOException {
-    super(key, parent);
+  protected FileTheme(String key, List<Theme> parents, File root) throws IOException {
+    super(key, parents);
     this.root = root;
     this.templateLoader = new FileTemplateLoader(root);
   }

@@ -4,6 +4,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
 import java.io.File;
@@ -62,11 +63,13 @@ public class ThemeTree {
    */
   static ThemeTree parse(List<Map<String, ?>> themeConfigJson, Theme defaultTheme) throws ThemeConfigurationException {
     Map<String, Mutable> mutables = Maps.newHashMapWithExpectedSize(themeConfigJson.size());
+    List<String> keyOrder = Lists.newArrayListWithCapacity(themeConfigJson.size());
 
     // Make a pass over the JSON, creating mutable objects and mapping them by their keys
     for (Map<String, ?> themeJsonObj : themeConfigJson) {
       Mutable node = buildFromJson(themeJsonObj);
       mutables.put(node.key, node);
+      keyOrder.add(node.key);
     }
 
     // Make a pass over the created mutables, linking them to their parent mutables
@@ -85,7 +88,7 @@ public class ThemeTree {
     }
 
     // Create the root nodes, then recursively create their children
-    SortedMap<String, Theme> created = Maps.newTreeMap();
+    SortedMap<String, Theme> created = Maps.newTreeMap(Ordering.explicit(keyOrder));
     for (Mutable node : mutables.values()) {
       if (node.parent == null) {
         createImmutableNodes(node, defaultTheme, created);
@@ -130,7 +133,7 @@ public class ThemeTree {
   }
 
   ImmutableMap<String, Theme> matchToSites(List<Map<String, ?>> siteConfigJson) {
-    SortedMap<String, Theme> siteMap = Maps.newTreeMap();
+    Map<String, Theme> siteMap = Maps.newLinkedHashMap();
     for (Map<String, ?> siteObj : siteConfigJson) {
       String key = (String) siteObj.get("key");
       String themeName = (String) siteObj.get("theme");

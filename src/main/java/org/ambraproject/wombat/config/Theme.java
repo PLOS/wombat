@@ -2,12 +2,18 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Maps;
 import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.io.Closer;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import freemarker.cache.TemplateLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 public abstract class Theme {
@@ -101,6 +107,62 @@ public abstract class Theme {
    * @throws IOException if an error occurs accessing the resource
    */
   protected abstract InputStream fetchStaticResource(String path) throws IOException;
+
+
+  /**
+   * Read a set of configuration values from JSON, overriding individual values from parent themes if applicable. The
+   * path must point to a JSON file containing an object (i.e., key-value map) in the special {@code config/} theme
+   * path.
+   * <p/>
+   * This is distinct from the other kinds of theme inheritance ({@link #getTemplateLoader} and {@link
+   * #getStaticResource}), which override on a file-by-file basis. This method reads a JSON map (if any) at the given
+   * path from every theme in the inheritance chain, and builds the result map by overriding individual members.
+   *
+   * @param path a path within the theme's {@code config/} directory
+   * @return a map of overridden values
+   */
+  public final Map<String, Object> getConfigMap(String path) {
+    String configPath = "config/" + path;
+    Map<String, Object> values = Maps.newLinkedHashMap();
+    for (Theme theme : getChain()) {
+      Map<?, ?> valuesFromTheme;
+      try {
+        valuesFromTheme = readJsonConfigValues(theme, configPath);
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+      if (valuesFromTheme == null) {
+        continue; // no overrides present in this theme
+      }
+
+      for (Map.Entry<?, ?> entry : valuesFromTheme.entrySet()) {
+        String entryKey = (String) entry.getKey();
+        if (!values.containsKey(entryKey)) {
+          values.put(entryKey, entry.getValue());
+        } // else, do not overwrite, because the value was put there by a theme that overrides the current one
+      }
+    }
+    return values;
+  }
+
+  private static Map<?, ?> readJsonConfigValues(Theme theme, String configPath) throws IOException {
+    Closer closer = Closer.create();
+    try {
+      InputStream inputStream = theme.fetchStaticResource(configPath);
+      if (inputStream == null) {
+        return null;
+      }
+      closer.register(inputStream);
+      return GSON.fromJson(new JsonReader(new InputStreamReader(inputStream)), Map.class);
+    } catch (Throwable t) {
+      throw closer.rethrow(t);
+    } finally {
+      closer.close();
+    }
+  }
+
+  private static final Gson GSON = new Gson();
+
 
   @Override
   public String toString() {

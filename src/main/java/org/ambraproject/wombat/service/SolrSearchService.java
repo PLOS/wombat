@@ -101,10 +101,10 @@ public class SolrSearchService extends JsonService implements SearchService {
 
     /**
      * @return a String representing part of the "fq" param to pass to solr that will restrict the date range
-     *         appropriately.  For example, "[2013-02-14T21:00:29.942Z TO 2013-08-15T21:00:29.942Z]". The String must be
-     *         escaped appropriately before being included in the URL.  The final http param passed to solr should look
-     *         like "fq=publication_date:[2013-02-14T21:00:29.942Z+TO+2013-08-15T21:00:29.942Z]". If this date range is
-     *         ALL_TIME, this method returns null.
+     * appropriately.  For example, "[2013-02-14T21:00:29.942Z TO 2013-08-15T21:00:29.942Z]". The String must be escaped
+     * appropriately before being included in the URL.  The final http param passed to solr should look like
+     * "fq=publication_date:[2013-02-14T21:00:29.942Z+TO+2013-08-15T21:00:29.942Z]". If this date range is ALL_TIME,
+     * this method returns null.
      */
     @Override
     public String getValue() {
@@ -155,7 +155,7 @@ public class SolrSearchService extends JsonService implements SearchService {
    */
   @Override
   public Map<?, ?> subjectSearch(String subject, Site site, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) throws IOException {
+                                 SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange);
     params.add(new BasicNameValuePair("q", "*:*"));
     params.add(new BasicNameValuePair("fq", String.format("subject:\"%s\"", subject)));
@@ -167,14 +167,14 @@ public class SolrSearchService extends JsonService implements SearchService {
    */
   @Override
   public Map<?, ?> authorSearch(String author, Site site, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) throws IOException {
+                                SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange);
     params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
     return executeQuery(params);
   }
 
   private List<NameValuePair> buildCommonParams(Site site, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) {
+                                                SearchCriterion dateRange) {
 
     // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
     // This is the easiest way I found...

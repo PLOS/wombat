@@ -22,9 +22,9 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Freemarker custom directive that renders any CSS links added via calls to {@link CssLinkDirective}.
- * A single instance of this directive should be added at the end of the head element on the page.
- * It will do nothing if we are running in dev assets mode (since the links were already rendered).
+ * Freemarker custom directive that renders any CSS links added via calls to {@link CssLinkDirective}. A single instance
+ * of this directive should be added at the end of the head element on the page. It will do nothing if we are running in
+ * dev assets mode (since the links were already rendered).
  */
 public class RenderCssLinksDirective extends RenderAssetsDirective implements TemplateDirectiveModel {
 

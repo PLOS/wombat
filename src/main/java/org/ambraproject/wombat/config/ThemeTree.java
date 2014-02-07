@@ -1,9 +1,11 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
 import java.io.File;
@@ -60,19 +62,26 @@ public class ThemeTree {
    * @return
    * @throws ThemeConfigurationException
    */
-  static ThemeTree parse(List<Map<String, ?>> themeConfigJson, Theme defaultTheme) throws ThemeConfigurationException {
-    Map<String, Mutable> mutables = Maps.newHashMapWithExpectedSize(themeConfigJson.size());
+  static ThemeTree parse(List<Map<String, ?>> themeConfigJson, Collection<? extends Theme> internalThemes, Theme rootTheme)
+      throws ThemeConfigurationException {
+    Preconditions.checkArgument(internalThemes.contains(rootTheme));
+    Map<String, ? extends Theme> internalThemeMap = Maps.uniqueIndex(internalThemes, Theme.GET_KEY);
+
+    Map<String, Mutable> mutables = Maps.newHashMapWithExpectedSize(internalThemeMap.size() + themeConfigJson.size());
+    List<String> keyOrder = Lists.newArrayListWithCapacity(themeConfigJson.size());
+    keyOrder.addAll(internalThemeMap.keySet());
 
     // Make a pass over the JSON, creating mutable objects and mapping them by their keys
     for (Map<String, ?> themeJsonObj : themeConfigJson) {
       Mutable node = buildFromJson(themeJsonObj);
       mutables.put(node.key, node);
+      keyOrder.add(node.key);
     }
 
     // Make a pass over the created mutables, linking them to their parent mutables
     for (Mutable node : mutables.values()) {
-      if (node.parentKey == null) {
-        continue; // It's a root node
+      if (node.parentKey == null || internalThemeMap.containsKey(node.parentKey)) {
+        continue; // Its parent is internal
       }
       Mutable parent = mutables.get(node.parentKey);
       if (parent == null) {
@@ -84,11 +93,14 @@ public class ThemeTree {
       node.parent = parent;
     }
 
+    SortedMap<String, Theme> created = Maps.newTreeMap(Ordering.explicit(keyOrder));
+    created.putAll(internalThemeMap);
+
     // Create the root nodes, then recursively create their children
-    SortedMap<String, Theme> created = Maps.newTreeMap();
     for (Mutable node : mutables.values()) {
       if (node.parent == null) {
-        createImmutableNodes(node, defaultTheme, created);
+        Theme parent = (node.parentKey == null) ? rootTheme : internalThemeMap.get(node.parentKey);
+        createImmutableNodes(node, parent, created);
       }
     }
 
@@ -130,7 +142,7 @@ public class ThemeTree {
   }
 
   ImmutableMap<String, Theme> matchToSites(List<Map<String, ?>> siteConfigJson) {
-    SortedMap<String, Theme> siteMap = Maps.newTreeMap();
+    Map<String, Theme> siteMap = Maps.newLinkedHashMap();
     for (Map<String, ?> siteObj : siteConfigJson) {
       String key = (String) siteObj.get("key");
       String themeName = (String) siteObj.get("theme");

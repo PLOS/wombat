@@ -1,11 +1,8 @@
 package org.ambraproject.wombat.config;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
-import com.google.common.io.Closer;
-import org.apache.commons.io.IOUtils;
-
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.base.Strings;
 
 public class Site {
 
@@ -16,13 +13,13 @@ public class Site {
   public Site(String key, Theme theme) {
     this.key = Preconditions.checkNotNull(key);
     this.theme = Preconditions.checkNotNull(theme);
-    this.journalKey = findJournalKey(key, theme);
+    this.journalKey = findJournalKey(theme);
   }
 
   /**
    * Constructor for applications that do not depend on the theme and already know the journalKey.
    *
-   * @param key key of the journal (value in wombat.json)
+   * @param key        key of the journal (value in wombat.yaml)
    * @param journalKey key used for solr (value in journal_key.txt of the corresponding theme)
    */
   public Site(String key, String journalKey) {
@@ -30,30 +27,16 @@ public class Site {
     this.journalKey = Preconditions.checkNotNull(journalKey);
   }
 
-  private static final String JOURNAL_KEY_PATH = "journal_key.txt";
+  @VisibleForTesting
+  static final String JOURNAL_KEY_PATH = "journal";
+  @VisibleForTesting
+  static final String CONFIG_KEY_FOR_JOURNAL = "journalKey";
 
-  private static String findJournalKey(String siteKey, Theme theme) {
-    String journalKey;
-    try {
-      Closer closer = Closer.create();
-      try {
-        // The built-in root theme provides an empty file for this value, so the stream is never null
-        InputStream stream = closer.register(theme.getStaticResource(JOURNAL_KEY_PATH));
-        journalKey = IOUtils.toString(stream);
-      } catch (Throwable t) {
-        throw closer.rethrow(t);
-      } finally {
-        closer.close();
-      }
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-
-    journalKey = journalKey.trim();
-    if (journalKey.isEmpty()) {
-      // We pick up the empty file if the user forgot to provide a journal key in a theme
-      String message = String.format("The site \"%s\" must provide a journal key in its theme at the path: %s",
-          siteKey, JOURNAL_KEY_PATH);
+  private static String findJournalKey(Theme theme) {
+    String journalKey = (String) theme.getConfigMap(JOURNAL_KEY_PATH).get(CONFIG_KEY_FOR_JOURNAL);
+    if (Strings.isNullOrEmpty(journalKey)) {
+      String message = String.format("The theme %s must provide or inherit a journal key at the path: config/%s",
+          theme.getKey(), JOURNAL_KEY_PATH);
       throw new RuntimeConfigurationException(message);
     }
     return journalKey;

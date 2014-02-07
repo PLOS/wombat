@@ -16,15 +16,15 @@ import freemarker.cache.TemplateLoader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 
 /**
- * Implementation of {@link Theme} suitable for tests.  All resources are loaded
- * from the classpath.
+ * Implementation of {@link Theme} suitable for tests.  All resources are loaded from the classpath.
  */
 public class TestClasspathTheme extends Theme {
 
   public TestClasspathTheme() {
-    super("", null);
+    super("test", null);
   }
 
   @Override
@@ -37,10 +37,16 @@ public class TestClasspathTheme extends Theme {
 
     // Huge hack: the "real" themes include a file that specifies the theme
     // key.  Instead of including a test version, we just look for the filename.
-    if ("journal_key.txt".equals(path)) {
-      return new ByteArrayInputStream("default".getBytes());
+    if (path.equals("config/" + Site.JOURNAL_KEY_PATH + ".json")) {
+      String dummyJson = String.format("{\"%s\": \"%s\"}", Site.CONFIG_KEY_FOR_JOURNAL, "default");
+      return new ByteArrayInputStream(dummyJson.getBytes());
     } else {
       return Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
     }
+  }
+
+  @Override
+  public Collection<String> fetchStaticResourcePaths(String root) throws IOException {
+    throw new IllegalStateException("Not yet implemented for testing");
   }
 }

@@ -1,10 +1,9 @@
-
 // Javascript controlling the taxonomy browser.
 
-var TaxonomyBrowser = function() {
+var TaxonomyBrowser = function () {
   var self = this;
 
-  self.init = function() {
+  self.init = function () {
     self.$browserDiv = $('#browse-container');
     if (self.$browserDiv.length) {
       self.loadTerms(null);
@@ -12,7 +11,7 @@ var TaxonomyBrowser = function() {
   };
 
   // Renders the browser, given a JSON list of subjects.
-  self.renderTerms = function(terms) {
+  self.renderTerms = function (terms) {
     var termList = '';
     for (var i = 0; i < terms.length; i++) {
       var fullPath = terms[i].subject;
@@ -32,14 +31,14 @@ var TaxonomyBrowser = function() {
     var html = $('#subject-list-template').html();
     html = html.replace('__TAXONOMY_LINKS__', termList);
     $('#browse-container').html(html);
-    $('a.browse-further:not(.inactive)').click(function(e) {
+    $('a.browse-further:not(.inactive)').click(function (e) {
       self.loadTerms($(this).data('term'));
     });
   };
 
   // Loads the child terms given a parent term.  If the parent evaluates to false,
   // the root taxonomy terms will be loaded.
-  self.loadTerms = function(parent) {
+  self.loadTerms = function (parent) {
     var url = 'taxonomy';
     if (parent) {
       url += parent;
@@ -48,10 +47,10 @@ var TaxonomyBrowser = function() {
     }
     $.ajax(url, {
       type: 'GET',
-      success: function(data) {
+      success: function (data) {
         self.renderTerms(data);
       },
-      error: function(xOptions, textStatus) {
+      error: function (xOptions, textStatus) {
         console.log(textStatus);
       }
     });

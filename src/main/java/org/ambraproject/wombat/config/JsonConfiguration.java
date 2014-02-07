@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,25 +41,77 @@ public class JsonConfiguration implements RuntimeConfiguration {
   @Autowired
   private SearchService searchService;
 
-  /**
-   * @deprecated should only be called reflectively by Gson
-   */
-  @Deprecated
-  public JsonConfiguration() {
+  private final UserFields uf;
+
+  public JsonConfiguration(UserFields uf) {
+    this.uf = uf;
   }
 
-  // Fields are immutable by convention. They should be modified only during deserialization.
-  private String server;
-  private String solrServer;
-  private String memcachedHost;
-  private Integer memcachedPort;
-  private String cacheAppPrefix;
-  private Boolean trustUnsignedServer;
-  private Boolean devModeAssets;
-  private String compiledAssetDir;
-  private List<Map<String, ?>> themes;
-  private List<Map<String, ?>> sites;
-  private Map<String, Class<? extends ControllerHook>> homePageHooks;
+  public static class UserFields {
+    /**
+     * @deprecated should only be called reflectively by a deserialization library
+     */
+    @Deprecated
+    public UserFields() {
+    }
+
+    // Fields are immutable by convention. They should be modified only during deserialization.
+    private String server;
+    private String solrServer;
+    private String memcachedHost;
+    private Integer memcachedPort;
+    private String cacheAppPrefix;
+    private Boolean trustUnsignedServer;
+    private Boolean devModeAssets;
+    private String compiledAssetDir;
+    private List<Map<String, ?>> themes;
+    private List<Map<String, ?>> sites;
+    private Map<String, Class<? extends ControllerHook>> homePageHooks;
+
+    public void setServer(String server) {
+      this.server = server;
+    }
+
+    public void setSolrServer(String solrServer) {
+      this.solrServer = solrServer;
+    }
+
+    public void setMemcachedHost(String memcachedHost) {
+      this.memcachedHost = memcachedHost;
+    }
+
+    public void setMemcachedPort(Integer memcachedPort) {
+      this.memcachedPort = memcachedPort;
+    }
+
+    public void setCacheAppPrefix(String cacheAppPrefix) {
+      this.cacheAppPrefix = cacheAppPrefix;
+    }
+
+    public void setTrustUnsignedServer(Boolean trustUnsignedServer) {
+      this.trustUnsignedServer = trustUnsignedServer;
+    }
+
+    public void setDevModeAssets(Boolean devModeAssets) {
+      this.devModeAssets = devModeAssets;
+    }
+
+    public void setCompiledAssetDir(String compiledAssetDir) {
+      this.compiledAssetDir = compiledAssetDir;
+    }
+
+    public void setThemes(List<Map<String, ?>> themes) {
+      this.themes = themes;
+    }
+
+    public void setSites(List<Map<String, ?>> sites) {
+      this.sites = sites;
+    }
+
+    public void setHomePageHooks(Map<String, Class<? extends ControllerHook>> homePageHooks) {
+      this.homePageHooks = homePageHooks;
+    }
+  }
 
   /**
    * Validate values after deserializing.
@@ -66,23 +119,23 @@ public class JsonConfiguration implements RuntimeConfiguration {
    * @throws RuntimeConfigurationException if a value is invalid
    */
   public void validate() {
-    if (Strings.isNullOrEmpty(server)) {
+    if (Strings.isNullOrEmpty(uf.server)) {
       throw new RuntimeConfigurationException("Server address required");
     }
     try {
-      new URL(server);
+      new URL(uf.server);
     } catch (MalformedURLException e) {
       throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
     }
-    if (!Strings.isNullOrEmpty(solrServer)) {
+    if (!Strings.isNullOrEmpty(uf.solrServer)) {
       try {
-        new URL(solrServer);
+        new URL(uf.solrServer);
       } catch (MalformedURLException e) {
         throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
       }
     }
     Map<String, Class<? extends ControllerHook>> temp = new HashMap<>();
-    for (Map<String, ?> siteMap : sites) {
+    for (Map<String, ?> siteMap : uf.sites) {
       String site = (String) siteMap.get("key");
       String className = (String) siteMap.get("homePageHook");
       if (className != null) {
@@ -99,14 +152,14 @@ public class JsonConfiguration implements RuntimeConfiguration {
         temp.put(site, klass);
       }
     }
-    homePageHooks = ImmutableMap.copyOf(temp);
-    if (!Strings.isNullOrEmpty(memcachedHost) && memcachedPort == null) {
+    uf.homePageHooks = ImmutableMap.copyOf(temp);
+    if (!Strings.isNullOrEmpty(uf.memcachedHost) && uf.memcachedPort == null) {
       throw new RuntimeConfigurationException("No memcachedPort specified");
     }
-    if (!Strings.isNullOrEmpty(memcachedHost) && Strings.isNullOrEmpty(cacheAppPrefix)) {
+    if (!Strings.isNullOrEmpty(uf.memcachedHost) && Strings.isNullOrEmpty(uf.cacheAppPrefix)) {
       throw new RuntimeConfigurationException("If memcachedHost is specified, cacheAppPrefix must be as well");
     }
-    if ((devModeAssets == null || !devModeAssets) && Strings.isNullOrEmpty(compiledAssetDir)) {
+    if ((uf.devModeAssets == null || !uf.devModeAssets) && Strings.isNullOrEmpty(uf.compiledAssetDir)) {
       throw new RuntimeConfigurationException("If devModeAssets is false, compiledAssetDir must be specified");
     }
   }
@@ -116,7 +169,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public boolean trustUnsignedServer() {
-    return (trustUnsignedServer == null) ? false : trustUnsignedServer;
+    return (uf.trustUnsignedServer == null) ? false : uf.trustUnsignedServer;
   }
 
   /**
@@ -124,7 +177,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public boolean devModeAssets() {
-    return (devModeAssets == null) ? false : devModeAssets;
+    return (uf.devModeAssets == null) ? false : uf.devModeAssets;
   }
 
   /**
@@ -132,7 +185,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public String getCompiledAssetDir() {
-    return compiledAssetDir;
+    return uf.compiledAssetDir;
   }
 
   /**
@@ -140,7 +193,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public String getMemcachedHost() {
-    return memcachedHost;
+    return uf.memcachedHost;
   }
 
   /**
@@ -148,7 +201,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public int getMemcachedPort() {
-    return memcachedPort == null ? -1 : memcachedPort;
+    return uf.memcachedPort == null ? -1 : uf.memcachedPort;
   }
 
   /**
@@ -156,7 +209,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public String getCacheAppPrefix() {
-    return cacheAppPrefix;
+    return uf.cacheAppPrefix;
   }
 
   /**
@@ -165,7 +218,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
   @Override
   public URL getServer() {
     try {
-      return new URL(server);
+      return new URL(uf.server);
     } catch (MalformedURLException e) {
       throw new IllegalStateException("Invalid URL should have been caught at validation", e);
     }
@@ -176,7 +229,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public URL getSolrServer() {
-    String server = solrServer;
+    String server = uf.solrServer;
     if (Strings.isNullOrEmpty(server)) {
       server = "http://localhost:8983/solr/select/";
     }
@@ -191,8 +244,9 @@ public class JsonConfiguration implements RuntimeConfiguration {
    * {@inheritDoc}
    */
   @Override
-  public ThemeTree getThemes(Theme internalDefault) throws ThemeTree.ThemeConfigurationException {
-    return ThemeTree.parse(this.themes, internalDefault);
+  public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme)
+      throws ThemeTree.ThemeConfigurationException {
+    return ThemeTree.parse(uf.themes, internalThemes, rootTheme);
   }
 
   /**
@@ -200,7 +254,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
-    return themeTree.matchToSites(sites);
+    return themeTree.matchToSites(uf.sites);
   }
 
   /**
@@ -208,7 +262,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public ControllerHook getHomePageHook(String site) {
-    Class<? extends ControllerHook> klass = homePageHooks.get(site);
+    Class<? extends ControllerHook> klass = uf.homePageHooks.get(site);
     if (klass == null) {
       return null; // No special hook is specified for this site
     }

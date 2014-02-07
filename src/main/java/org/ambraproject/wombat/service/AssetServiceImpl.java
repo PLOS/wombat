@@ -52,16 +52,16 @@ public class AssetServiceImpl implements AssetService {
   private static final int BUFFER_SIZE = 8192;
 
   /**
-   * We only store the contents of compiled assets in memcache if they are smaller than this
-   * value.  Otherwise, the controller that serves them will need to read them from disk.
+   * We only store the contents of compiled assets in memcache if they are smaller than this value.  Otherwise, the
+   * controller that serves them will need to read them from disk.
    */
   private static final int MAX_ASSET_SIZE_TO_CACHE = 1024 * 1024;
 
   /**
-   * We use a shorter cache TTL than the global default (1 hour), because it's theoretically
-   * possible that the uncompiled asset files might change in the themes directory.  And since
-   * the cache key can only be calculated by loading and hashing all the corresponding files
-   * (an expensive operation), we have to accept that we'll serve stale assets for this period.
+   * We use a shorter cache TTL than the global default (1 hour), because it's theoretically possible that the
+   * uncompiled asset files might change in the themes directory.  And since the cache key can only be calculated by
+   * loading and hashing all the corresponding files (an expensive operation), we have to accept that we'll serve stale
+   * assets for this period.
    */
   private static final int CACHE_TTL = 15 * 60;
 
@@ -134,10 +134,10 @@ public class AssetServiceImpl implements AssetService {
    * Retrieves the given files and concatenates them into a single file.
    *
    * @param filenames list of servlet paths corresponding to the files to concatenate
-   * @param site specifies the journal/site
+   * @param site      specifies the journal/site
    * @param extension specifies the type of file created (e.g. ".css", ".js")
-   * @return File with all filenames concatenated.  It is the responsibility of the caller
-   *     to delete this file (since it will end up being minified eventually).
+   * @return File with all filenames concatenated.  It is the responsibility of the caller to delete this file (since it
+   * will end up being minified eventually).
    * @throws IOException
    */
   private File concatenateFiles(List<String> filenames, String site, String extension) throws IOException {
@@ -161,8 +161,8 @@ public class AssetServiceImpl implements AssetService {
   }
 
   /**
-   * Simple class representing a File and its contents.  Useful since compile has to load
-   * the file into memory anyway, and the caller also needs the contents.
+   * Simple class representing a File and its contents.  Useful since compile has to load the file into memory anyway,
+   * and the caller also needs the contents.
    */
   @VisibleForTesting
   static final class FileAndContents {
@@ -192,7 +192,7 @@ public class AssetServiceImpl implements AssetService {
 
     @Override
     public EvaluatorException runtimeError(String message, String sourceName, int line, String lineSource,
-        int lineOffset) {
+                                           int lineOffset) {
       return new EvaluatorException(getErrorMessage(sourceName, line, message, "runtime error"));
     }
 
@@ -205,8 +205,7 @@ public class AssetServiceImpl implements AssetService {
    * Minifies the given asset file and returns the file and its contents.
    *
    * @param uncompiled uncompiled asset file
-   * @return File that has been minified.  The file name will contain a hash reflecting
-   *     the file's contents.
+   * @return File that has been minified.  The file name will contain a hash reflecting the file's contents.
    * @throws IOException
    */
   private FileAndContents compileAsset(AssetType assetType, File uncompiled) throws IOException {
@@ -254,8 +253,7 @@ public class AssetServiceImpl implements AssetService {
   }
 
   /**
-   * Generates a fingerprint based on the data passed in that is suitable for use in
-   * a filename or servlet path.
+   * Generates a fingerprint based on the data passed in that is suitable for use in a filename or servlet path.
    *
    * @param bytes data to fingerprint
    * @return fingerprint
@@ -277,9 +275,8 @@ public class AssetServiceImpl implements AssetService {
   }
 
   /**
-   * Returns the absolute, filesystem path to where a compiled asset should be.
-   * Note that this only calculates the path, and does not validate that the
-   * file actually exists.
+   * Returns the absolute, filesystem path to where a compiled asset should be. Note that this only calculates the path,
+   * and does not validate that the file actually exists.
    *
    * @param basename filename of the asset
    * @return absolute path to the asset file

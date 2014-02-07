@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,6 +30,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+import org.yaml.snakeyaml.Yaml;
 
 import javax.servlet.ServletContext;
 import java.io.BufferedReader;
@@ -53,8 +55,13 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public RuntimeConfiguration runtimeConfiguration(Gson gson) throws IOException {
-    final File configPath = new File("/etc/ambra/wombat.json"); // TODO Descriptive file name
+  public Yaml yaml() {
+    return new Yaml();
+  }
+
+  @Bean
+  public RuntimeConfiguration runtimeConfiguration(Yaml yaml) throws IOException {
+    final File configPath = new File("/etc/ambra/wombat.yaml"); // TODO Descriptive file name
     if (!configPath.exists()) {
       throw new RuntimeConfigurationException(configPath.getPath() + " not found");
     }
@@ -64,7 +71,7 @@ public class SpringConfiguration {
     boolean threw = true;
     try {
       reader = new BufferedReader(new FileReader(configPath));
-      runtimeConfiguration = gson.fromJson(reader, JsonConfiguration.class);
+      runtimeConfiguration = new JsonConfiguration(yaml.loadAs(reader, JsonConfiguration.UserFields.class));
       threw = false;
     } catch (JsonSyntaxException e) {
       throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
@@ -78,9 +85,11 @@ public class SpringConfiguration {
   @Bean
   public ThemeTree themeTree(ServletContext servletContext, RuntimeConfiguration runtimeConfiguration)
       throws ThemeTree.ThemeConfigurationException {
-    String internalViewPath = "/WEB-INF/views/";
-    Theme internalDefaultTheme = new InternalTheme("", null, servletContext, internalViewPath);
-    return runtimeConfiguration.getThemes(internalDefaultTheme);
+    String path = "/WEB-INF/themes/";
+    InternalTheme root = new InternalTheme(".Root", null, servletContext, path + "root/");
+    InternalTheme desktop = new InternalTheme(".Desktop", root, servletContext, path + "desktop/");
+    InternalTheme mobile = new InternalTheme(".Mobile", root, servletContext, path + "mobile/");
+    return runtimeConfiguration.getThemes(ImmutableSet.of(root, desktop, mobile), root);
   }
 
   @Bean
@@ -99,18 +108,20 @@ public class SpringConfiguration {
     return new RenderCssLinksDirective();
   }
 
-  @Bean JsDirective jsDirective() {
+  @Bean
+  JsDirective jsDirective() {
     return new JsDirective();
   }
 
-  @Bean RenderJsDirective renderJsDirective() {
+  @Bean
+  RenderJsDirective renderJsDirective() {
     return new RenderJsDirective();
   }
 
   @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
-      CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
-      RenderJsDirective renderJsDirective) throws IOException {
+                                           CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
+                                           RenderJsDirective renderJsDirective) throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
@@ -163,7 +174,7 @@ public class SpringConfiguration {
   public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
     if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedHost())) {
 
-      // TODO: consider defining this in wombat.json instead.
+      // TODO: consider defining this in wombat.yaml instead.
       final int cacheTimeout = 60 * 60;
       MemcacheClient result = new MemcacheClient(runtimeConfiguration.getMemcachedHost(),
           runtimeConfiguration.getMemcachedPort(), runtimeConfiguration.getCacheAppPrefix(), cacheTimeout);

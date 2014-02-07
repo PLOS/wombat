@@ -29,24 +29,22 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Freemarker custom directive that writes out URL parameters based on the current
- * request parameters.  A single parameter's value can be replaced or added.
+ * Freemarker custom directive that writes out URL parameters based on the current request parameters.  A single
+ * parameter's value can be replaced or added.
  * <p/>
- * There is one required parameter named params.  This should be an instance of
- * {@link HttpRequestParametersHashModel}, which is available in freemarker templates
- * as RequestParameters.
+ * There is one required parameter named params.  This should be an instance of {@link HttpRequestParametersHashModel},
+ * which is available in freemarker templates as RequestParameters.
  * <p/>
- * Optional parameters are name and value.  If present, the named parameter will
- * be added (or replaced if it is already present) with the value.
+ * Optional parameters are name and value.  If present, the named parameter will be added (or replaced if it is already
+ * present) with the value.
  * <p/>
  * Example usage:
- *
- *   <a href="foo?<@replaceParams params=RequestParameters name="bar" value="baz" />">link</a>
- *
- * This will write out a URL beginning with foo and including all the parameters in
- * the current request, with an additional parameter "bar" added (or replaced) with the
- * value "baz".
- *
+ * <p/>
+ * <a href="foo?<@replaceParams params=RequestParameters name="bar" value="baz" />">link</a>
+ * <p/>
+ * This will write out a URL beginning with foo and including all the parameters in the current request, with an
+ * additional parameter "bar" added (or replaced) with the value "baz".
+ * <p/>
  * TODO: add the ability to add/replace multiple params, if that is needed.
  */
 public class ReplaceParametersDirective implements TemplateDirectiveModel {

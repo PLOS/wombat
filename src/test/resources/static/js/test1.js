@@ -1,4 +1,3 @@
-
 /*
  * $HeadURL$
  * $Id$
@@ -16,7 +15,7 @@
 /*
  * another style of comment
  */
-var setupTestMap = function() {
+var setupTestMap = function () {
   var result = {};
   result[42] = 'Foo';
   result['magicKey'] = 'magicValue';

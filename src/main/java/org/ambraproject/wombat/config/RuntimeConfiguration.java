@@ -15,6 +15,7 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.controller.ControllerHook;
 
 import java.net.URL;
+import java.util.Collection;
 
 /**
  * Interface that represents configurable values that are only known at server startup time.
@@ -30,14 +31,14 @@ public interface RuntimeConfiguration {
   boolean trustUnsignedServer();
 
   /**
-   * @return true if we are running in "dev mode" for .js and .css, and compilation/minification
-   *     should not happen for these files
+   * @return true if we are running in "dev mode" for .js and .css, and compilation/minification should not happen for
+   * these files
    */
   boolean devModeAssets();
 
   /**
-   * @return the directory in which to write and serve compiled assets (.js and .css).  Not relevant
-   *     if devModeAssets is true.
+   * @return the directory in which to write and serve compiled assets (.js and .css).  Not relevant if devModeAssets is
+   * true.
    */
   String getCompiledAssetDir();
 
@@ -52,8 +53,8 @@ public interface RuntimeConfiguration {
   int getMemcachedPort();
 
   /**
-   * @return the cacheAppPrefix value, or null if it is not defined in the config.  This should
-   *     be a String that is shared by all wombat app servers, defining a namespace for them.
+   * @return the cacheAppPrefix value, or null if it is not defined in the config.  This should be a String that is
+   * shared by all wombat app servers, defining a namespace for them.
    */
   String getCacheAppPrefix();
 
@@ -71,13 +72,13 @@ public interface RuntimeConfiguration {
    */
   URL getSolrServer();
 
-  ThemeTree getThemes(Theme internalDefault) throws ThemeTree.ThemeConfigurationException;
+  ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException;
 
   ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree);
 
   /**
-   * Returns the {@link ControllerHook} that adds additional model data needed to render the
-   * home page for a given site, or null if one is not needed.
+   * Returns the {@link ControllerHook} that adds additional model data needed to render the home page for a given site,
+   * or null if one is not needed.
    *
    * @param site string identifying the site
    * @return ControllerHook instance, or null

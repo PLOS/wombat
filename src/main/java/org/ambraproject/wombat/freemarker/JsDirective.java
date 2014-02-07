@@ -22,10 +22,9 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Custom freemarker directive that should be used to insert a <script> element.
- * If we are running in dev mode, this will just render the link; otherwise the
- * javascript file specified will be minified and served along with all other .js in
- * the app.
+ * Custom freemarker directive that should be used to insert a <script> element. If we are running in dev mode, this
+ * will just render the link; otherwise the javascript file specified will be minified and served along with all other
+ * .js in the app.
  */
 public class JsDirective extends AssetDirective implements TemplateDirectiveModel {
 

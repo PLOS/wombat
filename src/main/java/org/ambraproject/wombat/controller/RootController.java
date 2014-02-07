@@ -51,7 +51,7 @@ public class RootController extends WombatController {
      * Must supply this image data embedded (if at all), because there's no URL at which we could put it
      * without colliding with the site namespace.
      */
-    model.addAttribute("imageCode", getResourceAsBase64("/WEB-INF/views/app/wombat.jpg"));
+    model.addAttribute("imageCode", getResourceAsBase64("/WEB-INF/themes/root/app/wombat.jpg"));
 
     return "//approot";
   }

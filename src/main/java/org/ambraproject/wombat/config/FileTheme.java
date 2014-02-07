@@ -31,4 +31,17 @@ public class FileTheme extends Theme {
     return file.exists() ? new BufferedInputStream(new FileInputStream(file)) : null;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
+    return root.equals(((FileTheme) o).root);
+  }
+
+  @Override
+  public int hashCode() {
+    return 31 * super.hashCode() + root.hashCode();
+  }
+
 }

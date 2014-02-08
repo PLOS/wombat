@@ -12,7 +12,6 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.controller.ControllerHook;
 
 import java.net.URL;
 import java.util.Collection;
@@ -108,13 +107,5 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   @Override
   public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
     return themeMap;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public ControllerHook getHomePageHook(String site) {
-    return null;
   }
 }

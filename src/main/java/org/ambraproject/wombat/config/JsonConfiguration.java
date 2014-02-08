@@ -14,7 +14,6 @@ package org.ambraproject.wombat.config;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
-import org.ambraproject.wombat.controller.ControllerHook;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -66,7 +64,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
     private String compiledAssetDir;
     private List<Map<String, ?>> themes;
     private List<Map<String, ?>> sites;
-    private Map<String, Class<? extends ControllerHook>> homePageHooks;
 
     public void setServer(String server) {
       this.server = server;
@@ -107,10 +104,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
     public void setSites(List<Map<String, ?>> sites) {
       this.sites = sites;
     }
-
-    public void setHomePageHooks(Map<String, Class<? extends ControllerHook>> homePageHooks) {
-      this.homePageHooks = homePageHooks;
-    }
   }
 
   /**
@@ -134,25 +127,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
         throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
       }
     }
-    Map<String, Class<? extends ControllerHook>> temp = new HashMap<>();
-    for (Map<String, ?> siteMap : uf.sites) {
-      String site = (String) siteMap.get("key");
-      String className = (String) siteMap.get("homePageHook");
-      if (className != null) {
-        Class<? extends ControllerHook> klass = null;
-        try {
-          klass = (Class<? extends ControllerHook>) Class.forName(className);
-        } catch (ClassCastException cce) {
-          throw new RuntimeConfigurationException(String.format(
-              "homePageHook %s for site %s does not extend ControllerHook", klass.getCanonicalName(), site));
-        } catch (ClassNotFoundException cnfe) {
-          throw new RuntimeConfigurationException(String.format(
-              "Could not load class %s for homePageHook for site %s", className, site));
-        }
-        temp.put(site, klass);
-      }
-    }
-    uf.homePageHooks = ImmutableMap.copyOf(temp);
     if (!Strings.isNullOrEmpty(uf.memcachedHost) && uf.memcachedPort == null) {
       throw new RuntimeConfigurationException("No memcachedPort specified");
     }
@@ -255,32 +229,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
   @Override
   public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
     return themeTree.matchToSites(uf.sites);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public ControllerHook getHomePageHook(String site) {
-    Class<? extends ControllerHook> klass = uf.homePageHooks.get(site);
-    if (klass == null) {
-      return null; // No special hook is specified for this site
-    }
-
-    ControllerHook result;
-    try {
-      result = klass.newInstance();
-    } catch (InstantiationException ie) {
-      throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), ie);
-    } catch (IllegalAccessException iae) {
-      throw new RuntimeConfigurationException("Cound not instantiate " + klass.getName(), iae);
-    }
-
-    // Since we create this ControllerHook here, through reflection, we can't use spring
-    // to autowire any of its fields.  Instead, they have to be injected here.
-    result.setSoaService(soaService);
-    result.setSearchService(searchService);
-    return result;
   }
 
   /*

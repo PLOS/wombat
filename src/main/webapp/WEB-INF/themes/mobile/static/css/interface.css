@@ -1195,9 +1195,14 @@ nav.footer-secondary-menu li a {
 }
 
 .accordion-content p {
-  font-size: 1.5em;
+  font-size: 1.5em; /* TODO: Generalize beyond <p> and <li> */
   /* padding: 10px 15px; */
   margin: 1em 0;
+}
+
+.accordion-content li {
+  font-size: 1.5em;
+  margin: 0 0 0 2.5em;
 }
 
 /* Headers */

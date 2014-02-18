@@ -94,11 +94,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
    * {@inheritDoc}
    */
   @Override
-<<<<<<< HEAD
   public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {
-=======
-  public ThemeTree getThemes(Theme internalDefault) throws ThemeTree.ThemeConfigurationException {
->>>>>>> eae61bb... First pass at supporting multiple inheritance in themes
     Map<String, Theme> mutable = new HashMap<>();
     mutable.put("default", rootTheme);
     themeMap = ImmutableMap.copyOf(mutable);

@@ -4,6 +4,8 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 
+import java.io.IOException;
+
 public class Site {
 
   private String key;
@@ -33,7 +35,12 @@ public class Site {
   static final String CONFIG_KEY_FOR_JOURNAL = "journalKey";
 
   private static String findJournalKey(Theme theme) {
-    String journalKey = (String) theme.getConfigMap(JOURNAL_KEY_PATH).get(CONFIG_KEY_FOR_JOURNAL);
+    String journalKey;
+    try {
+      journalKey = (String) theme.getConfigMap(JOURNAL_KEY_PATH).get(CONFIG_KEY_FOR_JOURNAL);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
     if (Strings.isNullOrEmpty(journalKey)) {
       String message = String.format("The theme %s must provide or inherit a journal key at the path: config/%s",
           theme.getKey(), JOURNAL_KEY_PATH);

@@ -7,7 +7,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.io.Closer;
 import com.google.common.io.Files;
 import freemarker.cache.TemplateLoader;
 import org.apache.commons.io.IOUtils;
@@ -192,16 +191,11 @@ public abstract class Theme {
    * @param path a path within the theme's {@code config/} directory
    * @return a map of overridden values
    */
-  public final Map<String, Object> getConfigMap(String path) {
+  public final Map<String, Object> getConfigMap(String path) throws IOException {
     String configPath = "config/" + path;
     Map<String, Object> values = Maps.newLinkedHashMap();
     for (Theme theme : getChain()) {
-      Map<?, ?> valuesFromTheme;
-      try {
-        valuesFromTheme = readYamlConfigValues(theme, configPath);
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
+      Map<?, ?> valuesFromTheme = readYamlConfigValues(theme, configPath);
       if (valuesFromTheme == null) {
         continue; // no overrides present in this theme
       }
@@ -217,18 +211,13 @@ public abstract class Theme {
   }
 
   private Map<?, ?> readYamlConfigValues(Theme theme, String configPath) throws IOException {
-    Closer closer = Closer.create();
-    try {
-      // Allow either *.yaml or *.json for the filename, but complain if both appear in the same theme.
-      // Allow mixing and matching of *.yaml and *.json across different (inheriting) themes.
-      // We can get away with parsing both as YAML (because JSON is a subset of YAML),
-      // but this needs more abstract handling by format if we ever support more than two formats.
-      // We don't actually validate whether a *.json file is valid JSON or just YAML.
-      InputStream yamlStream = theme.fetchStaticResource(configPath + ".yaml");
-      if (yamlStream != null) closer.register(yamlStream);
-      InputStream jsonStream = theme.fetchStaticResource(configPath + ".json");
-      if (jsonStream != null) closer.register(jsonStream);
-
+    // Allow either *.yaml or *.json for the filename, but complain if both appear in the same theme.
+    // Allow mixing and matching of *.yaml and *.json across different (inheriting) themes.
+    // We can get away with parsing both as YAML (because JSON is a subset of YAML),
+    // but this needs more abstract handling by format if we ever support more than two formats.
+    // We don't actually validate whether a *.json file is valid JSON or just YAML.
+    try (InputStream yamlStream = theme.fetchStaticResource(configPath + ".yaml");
+         InputStream jsonStream = theme.fetchStaticResource(configPath + ".json")) {
       if (yamlStream == null && jsonStream == null) {
         return null;
       } else if (yamlStream != null && jsonStream != null) {
@@ -240,10 +229,6 @@ public abstract class Theme {
 
       Yaml yaml = new Yaml(); // don't cache; it isn't threadsafe
       return yaml.loadAs(new InputStreamReader(streamToUse), Map.class);
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
     }
   }
 

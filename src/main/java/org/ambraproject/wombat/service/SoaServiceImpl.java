@@ -6,6 +6,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.message.BasicHeader;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.BufferedInputStream;
@@ -36,9 +37,9 @@ public class SoaServiceImpl extends JsonService implements SoaService {
    */
   @Override
   public <T> IfModifiedSinceResult<T> requestObjectIfModifiedSince(String address, Class<T> responseClass,
-                                                                   Calendar lastModified) throws IOException {
+      Calendar lastModified) throws IOException {
     URI uri = buildUri(address);
-    HttpResponse response = makeRequest(uri, new String[]{"If-Modified-Since", HttpDateUtil.format(lastModified)});
+    HttpResponse response = makeRequest(uri, new BasicHeader("If-Modified-Since", HttpDateUtil.format(lastModified)));
     Header[] lastModifiedHeaders = response.getHeaders("Last-Modified");
     if (lastModifiedHeaders.length != 1) {
       throw new RuntimeException("Expecting 1 Last-Modified header, got " + lastModifiedHeaders.length);
@@ -68,6 +69,14 @@ public class SoaServiceImpl extends JsonService implements SoaService {
     }  // else we got a 304, and we want result.result to be null
 
     return result;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public HttpResponse requestAsset(String assetId, Header... headers) throws IOException {
+    return makeRequest(buildUri("assetfiles/" + assetId), headers);
   }
 
   private URI buildUri(String address) {

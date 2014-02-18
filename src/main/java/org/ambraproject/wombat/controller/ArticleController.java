@@ -1,6 +1,12 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.LinkedListMultimap;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Multimaps;
 import com.google.common.io.Closer;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -21,6 +27,7 @@ import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 
@@ -64,8 +71,8 @@ public class ArticleController extends WombatController {
     }
     model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml);
+    model.addAttribute("amendments", fillAmendments(articleMetadata));
     requestAuthors(model, articleId);
-    requestCorrections(model, articleId);
     requestComments(model, articleId);
     return site + "/ftl/article/article";
   }
@@ -89,24 +96,85 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comments";
   }
 
+
   /**
-   * Serves a request for a list of all the corrections associated with an article.
-   *
-   * @param model     data to pass to the view
-   * @param site      current site
-   * @param articleId specifies the article
-   * @return path to the template
-   * @throws IOException
+   * Types of related articles that get special display handling.
    */
-  @RequestMapping("/{site}/article/corrections")
-  public String renderArticleCorrections(Model model, @PathVariable("site") String site,
-                                         @RequestParam("doi") String articleId) throws IOException {
-    requireNonemptyParameter(articleId);
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    model.addAttribute("article", articleMetadata);
-    requestCorrections(model, articleId);
-    return site + "/ftl/article/corrections";
+  private static enum AmendmentType {
+    CORRECTION("correction-forward"),
+    EOC("expressed-concern"),
+    RETRACTION("retraction");
+
+    /**
+     * A value of the "type" field of an object in an article's "relatedArticles" list.
+     */
+    private final String relationshipType;
+
+    private AmendmentType(String relationshipType) {
+      this.relationshipType = relationshipType;
+    }
+
+    // For use as a key in maps destined for the FreeMarker model
+    private String getLabel() {
+      return name().toLowerCase();
+    }
+
+    private static final int COUNT = values().length;
+
+    private static final ImmutableMap<String, AmendmentType> BY_RELATIONSHIP_TYPE = Maps.uniqueIndex(
+        EnumSet.allOf(AmendmentType.class),
+        new Function<AmendmentType, String>() {
+          @Override
+          public String apply(AmendmentType input) {
+            return input.relationshipType;
+          }
+        });
   }
+
+  /**
+   * Check related articles for ones that amend this article and return them for special display.
+   *
+   * @param articleMetadata the article metadata
+   * @return a map from amendment type labels to related article objects
+   */
+  private static Map<String, List<Object>> fillAmendments(Map<?, ?> articleMetadata) {
+    List<Map<String, ?>> relatedArticles = (List<Map<String, ?>>) articleMetadata.get("relatedArticles");
+    if (relatedArticles == null || relatedArticles.isEmpty()) {
+      return ImmutableMap.of();
+    }
+    ListMultimap<String, Object> amendments = LinkedListMultimap.create(AmendmentType.COUNT);
+    for (Map<String, ?> relatedArticle : relatedArticles) {
+      String relationshipType = (String) relatedArticle.get("type");
+      AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
+      if (amendmentType != null) {
+        amendments.put(amendmentType.getLabel(), relatedArticle);
+      }
+    }
+    if (amendments.keySet().size() > 1) {
+      applyAmendmentPrecedence(amendments);
+    }
+    return Multimaps.asMap(amendments);
+  }
+
+  /**
+   * Apply the display logic for different amendment types taking precedence over each other.
+   * <p/>
+   * Retractions take precedence over all else (i.e., don't show them if there is a retraction) and EOCs take precedence
+   * over corrections. This logic could conceivably vary between sites (e.g., some journals might want to show all
+   * amendments side-by-side), so this is a good candidate for making it controllable through config. But for now,
+   * assume that the rules are always the same.
+   *
+   * @param amendments related article objects, keyed by {@link AmendmentType#getLabel()}.
+   */
+  private static void applyAmendmentPrecedence(ListMultimap<String, Object> amendments) {
+    if (amendments.containsKey(AmendmentType.RETRACTION.getLabel())) {
+      amendments.removeAll(AmendmentType.EOC.getLabel());
+      amendments.removeAll(AmendmentType.CORRECTION.getLabel());
+    } else if (amendments.containsKey(AmendmentType.EOC.getLabel())) {
+      amendments.removeAll(AmendmentType.CORRECTION.getLabel());
+    }
+  }
+
 
   /**
    * Serves a request for an expanded view of a single comment and any replies.
@@ -182,31 +250,6 @@ public class ArticleController extends WombatController {
       throw new ArticleNotFoundException(articleId);
     }
     return articleMetadata;
-  }
-
-  /**
-   * Checks whether any corrections are associated with the given article, and appends them to the model if so.
-   *
-   * @param model model to be passed to the view
-   * @param doi   identifies the article
-   * @throws IOException
-   */
-  private void requestCorrections(Model model, String doi) throws IOException {
-    List<?> corrections = soaService.requestObject(String.format("articles/%s?corrections", doi), List.class);
-    if (corrections != null && !corrections.isEmpty()) {
-      model.addAttribute("articleCorrections", corrections);
-
-      // On the main article page, we only display formal corrections, so we have a separate
-      // entry for these.
-      List<Map> formalCorrections = new ArrayList<>();
-      for (Object o : corrections) {
-        Map correction = (Map) o;
-        if ("FORMAL_CORRECTION".equals(correction.get("type"))) {
-          formalCorrections.add(correction);
-        }
-      }
-      model.addAttribute("formalCorrections", formalCorrections);
-    }
   }
 
   /**

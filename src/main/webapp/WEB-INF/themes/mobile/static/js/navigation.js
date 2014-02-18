@@ -24,11 +24,19 @@ var AmbraNavigation = function () {
     }
 
     // Build the accordion item
-    var $accordionTitle = $('<a/>').addClass('expander').text(titleHtml);
+    var $accordionTitle = $('<a/>').text(titleHtml);
     var $accordionContent = $('<section/>').addClass('accordion-content');
     $accordionContent.append($section); // The title was removed; use what remains as the body
     var $accordionItem = $('<li/>').addClass('accordion-item');
-    $accordionItem.append($accordionTitle);
+
+    if (titleHtml.length > 0) {
+      $accordionItem.append($accordionTitle); // include the title bar
+      $accordionTitle.addClass('expander'); // enable expansion-toggling functionality
+    } else {
+      // The section has no title. Omit the title bar and open the section permanently.
+      $accordionContent.show();
+    }
+
     $accordionItem.append($accordionContent);
     return $accordionItem;
   }

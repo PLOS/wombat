@@ -2,8 +2,10 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -27,15 +29,20 @@ import java.util.SortedMap;
  */
 public class ThemeTree {
 
-  private ImmutableMap<String, Theme> themes;
+  private ImmutableBiMap<String, Theme> themes;
 
   @VisibleForTesting
   public ThemeTree(Map<String, Theme> themes) {
-    this.themes = ImmutableMap.copyOf(themes);
+    this.themes = ImmutableBiMap.copyOf(themes);
   }
 
   public Theme getTheme(String key) {
     return themes.get(key);
+  }
+
+  @VisibleForTesting
+  ImmutableSet<Theme> getThemes() {
+    return themes.values();
   }
 
 
@@ -78,7 +85,7 @@ public class ThemeTree {
    * @return
    * @throws ThemeConfigurationException
    */
-  static ThemeTree parse(List<Map<String, ?>> themeConfigJson, Collection<? extends Theme> internalThemes, Theme rootTheme)
+  static ThemeTree parse(List<? extends Map<String, ?>> themeConfigJson, Collection<? extends Theme> internalThemes, Theme rootTheme)
       throws ThemeConfigurationException {
     Preconditions.checkArgument(internalThemes.contains(rootTheme));
     Map<String, ? extends Theme> internalThemeMap = Maps.uniqueIndex(internalThemes, Theme.GET_KEY);

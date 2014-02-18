@@ -96,19 +96,40 @@
       </#if>
     </#list>
 
-    <#if formalCorrections?? && formalCorrections?size &gt; 0>
+    <#macro amendment amendmentObjects amendmentType>
       <div class="retraction red-alert">
-        <span><h3>Formal Correction:</h3> This article has been <em>formally corrected</em> to address the following errors.</span>
-        <ol>
-          <#list formalCorrections as correction>
-            <li>
-            ${correction.truncatedBodyWithUrlLinkingNoPTags}
-              (<a href="article/correction?uri=${correction.annotationUri}" class="expand">read formal correction</a>)
-            </li>
-          </#list>
-        </ol>
+        <span><h3>
+          <#nested/>
+          <#if amendmentObjects?size == 1>
+            <a href="article?doi=${amendmentObjects[0].otherArticleDoi}">
+              View ${amendmentType}
+            </a>
+          <#else>
+            View
+            <#list amendmentObjects as amendmentObject>
+              <a href="article?doi=${amendmentObject.otherArticleDoi}">
+              ${amendmentType} ${amendmentObject_index + 1}</a><#if amendmentObject_has_next>,</#if>
+            </#list>
+          </#if>
+        </h3></span>
       </div>
+    </#macro>
+    <#if amendments.correction??>
+      <@amendment amendments.correction "correction">
+        This article has been corrected.
+      </@amendment>
     </#if>
+    <#if amendments.eoc??>
+      <@amendment amendments.eoc "expression of concern">
+        There is an expression of concern about this article.
+      </@amendment>
+    </#if>
+    <#if amendments.retraction??>
+      <@amendment amendments.retraction "retraction">
+        This article has been retracted.
+      </@amendment>
+    </#if>
+
     <#-- In articleSuffix.ftl: Close <article class="article-item"> -->
     <#-- In articleSuffix.ftl: Close <div id="article-content"> -->
     <#-- In articleSuffix.ftl: Close <div id="container-main"> -->

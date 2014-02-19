@@ -62,6 +62,7 @@ public class HomeController extends WombatController {
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");
     int resultsPerPage = ((Number) homepageConfig.get("resultsPerPage")).intValue();
     List<String> supportedSections = (List<String>) homepageConfig.get("sections");
+    model.addAttribute("supportedSections", supportedSections);
 
     Section section = null;
     if (!Strings.isNullOrEmpty(sectionParam)) {

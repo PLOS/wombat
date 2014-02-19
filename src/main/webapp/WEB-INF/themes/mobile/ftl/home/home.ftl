@@ -1,14 +1,14 @@
-<#include "common/htmlTag.ftl" />
+<#include "../common/htmlTag.ftl" />
 
-<#include "common/title/siteTitle.ftl" />
+<#include "../common/title/siteTitle.ftl" />
 <#assign title = siteTitle />
 <#assign depth = 0 />
-<#include "common/head.ftl" />
+<#include "../common/head.ftl" />
 
 <body>
 <div id="container-main">
 
-<#include "common/header.ftl" />
+<#include "../common/header.ftl" />
 
   <div id="home-content" class="content">
 
@@ -41,7 +41,7 @@
           <ul id="article-results" class="results">
             <#list articles.docs as article>
               <li>
-                <a href="article?doi=${article.id}">${article.title}</a>
+                <a href="../article?doi=${article.id}">${article.title}</a>
               </li>
             </#list>
           </ul>
@@ -51,7 +51,7 @@
           <#assign numPages = (articles.numFound / resultsPerPage)?ceiling />
           <#assign currentPage = (RequestParameters.page!1)?number />
           <#assign path = "" />
-          <#include "common/paging.ftl" />
+          <#include "../common/paging.ftl" />
         </#if>
       <#else>
         <section>
@@ -72,12 +72,12 @@
 
   </div><#-- end home-content -->
 
-<#include "common/footer/footer.ftl" />
+<#include "../common/footer/footer.ftl" />
 
 </div><#-- end container-main -->
 
-<#include "common/siteMenu/siteMenu.ftl" />
-<#include "common/bodyJs.ftl" />
+<#include "../common/siteMenu/siteMenu.ftl" />
+<#include "../common/bodyJs.ftl" />
 
 </body>
 </html>

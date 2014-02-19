@@ -99,7 +99,7 @@ public class HomeController extends WombatController {
         throw new IllegalStateException("Unexpected section value " + section);
     }
 
-    return site.getKey() + "/ftl/home";
+    return site.getKey() + "/ftl/home/home";
   }
 
   /**

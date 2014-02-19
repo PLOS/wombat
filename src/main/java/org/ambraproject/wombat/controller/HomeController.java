@@ -91,7 +91,7 @@ public class HomeController extends WombatController {
         break;
 
       case IN_THE_NEWS:
-        model.addAttribute("articles", getInTheNewsArticles());
+        model.addAttribute("articles", getInTheNewsArticles(site.getJournalKey()));
         break;
 
       default:
@@ -134,8 +134,9 @@ public class HomeController extends WombatController {
     }
   }
 
-  private Map getInTheNewsArticles() throws IOException {
-    List<Map<String, Object>> inTheNewsArticles = soaService.requestObject("journals/PLoSONE?inTheNewsArticles", List.class);
+  private Map getInTheNewsArticles(String journalKey) throws IOException {
+    String requestAddress = "journals/" + journalKey + "?inTheNewsArticles";
+    List<Map<String, Object>> inTheNewsArticles = soaService.requestObject(requestAddress, List.class);
 
     // From the presentation layer's perspective, all three of these article lists look the same.
     // However, two of them come from solr, and one from rhino.  Unfortunately solr uses

@@ -71,8 +71,23 @@ public interface RuntimeConfiguration {
    */
   URL getSolrServer();
 
+  /**
+   * Parse the user-defined themes.
+   *
+   * @param internalThemes constant themes provided by the webapp
+   * @param rootTheme      the default parent theme to be applied to any user-defined theme without an explicit parent
+   * @return the set of all available themes
+   * @throws ThemeTree.ThemeConfigurationException
+   * @throws java.lang.IllegalArgumentException    if {@code internalThemes} does not contain {@code rootTheme}
+   */
   ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException;
 
+  /**
+   * Produce a map from site keys to each site's theme.
+   *
+   * @param themeTree the set of available themes
+   * @return map from site keys to each site's theme
+   */
   ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree);
 
 }

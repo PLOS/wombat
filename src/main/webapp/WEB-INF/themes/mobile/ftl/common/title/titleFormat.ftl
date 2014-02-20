@@ -5,5 +5,9 @@
   -->
 <#macro titleFormat pageTitle>
   <#include "siteTitle.ftl" />
-${siteTitle}: ${pageTitle}<#t>
+  <#if pageTitle?length gt 0>
+  ${siteTitle}: ${pageTitle}<#t>
+  <#else>
+  ${siteTitle}<#t>
+  </#if>
 </#macro>

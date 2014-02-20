@@ -62,6 +62,7 @@ public class HomeController extends WombatController {
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");
     int resultsPerPage = ((Number) homepageConfig.get("resultsPerPage")).intValue();
     List<String> supportedSections = (List<String>) homepageConfig.get("sections");
+    model.addAttribute("supportedSections", supportedSections);
 
     Section section = null;
     if (!Strings.isNullOrEmpty(sectionParam)) {
@@ -91,14 +92,14 @@ public class HomeController extends WombatController {
         break;
 
       case IN_THE_NEWS:
-        model.addAttribute("articles", getInTheNewsArticles());
+        model.addAttribute("articles", getInTheNewsArticles(site.getJournalKey()));
         break;
 
       default:
         throw new IllegalStateException("Unexpected section value " + section);
     }
 
-    return site.getKey() + "/ftl/home";
+    return site.getKey() + "/ftl/home/home";
   }
 
   /**
@@ -134,8 +135,9 @@ public class HomeController extends WombatController {
     }
   }
 
-  private Map getInTheNewsArticles() throws IOException {
-    List<Map<String, Object>> inTheNewsArticles = soaService.requestObject("journals/PLoSONE?inTheNewsArticles", List.class);
+  private Map getInTheNewsArticles(String journalKey) throws IOException {
+    String requestAddress = "journals/" + journalKey + "?inTheNewsArticles";
+    List<Map<String, Object>> inTheNewsArticles = soaService.requestObject(requestAddress, List.class);
 
     // From the presentation layer's perspective, all three of these article lists look the same.
     // However, two of them come from solr, and one from rhino.  Unfortunately solr uses

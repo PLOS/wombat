@@ -12,7 +12,6 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.controller.ControllerHook;
 
 import java.net.URL;
 import java.util.Collection;
@@ -91,12 +90,4 @@ public interface RuntimeConfiguration {
    */
   ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree);
 
-  /**
-   * Returns the {@link ControllerHook} that adds additional model data needed to render the home page for a given site,
-   * or null if one is not needed.
-   *
-   * @param site string identifying the site
-   * @return ControllerHook instance, or null
-   */
-  ControllerHook getHomePageHook(String site);
 }

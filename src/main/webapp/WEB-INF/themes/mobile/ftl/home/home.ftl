@@ -41,7 +41,7 @@
           <ul id="article-results" class="results">
             <#list articles.docs as article>
               <li>
-                <a href="../article?doi=${article.id}">${article.title}</a>
+                <a href="article?doi=${article.id}">${article.title}</a>
               </li>
             </#list>
           </ul>

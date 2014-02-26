@@ -49,4 +49,12 @@ public class TestClasspathTheme extends Theme {
   public Collection<String> fetchStaticResourcePaths(String root) throws IOException {
     throw new IllegalStateException("Not yet implemented for testing");
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  protected ResourceAttributes fetchResourceAttributes(String path) throws IOException {
+    throw new IllegalStateException("Not yet implemented for testing");
+  }
 }

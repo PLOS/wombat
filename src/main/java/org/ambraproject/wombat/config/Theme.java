@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.URLConnection;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -125,6 +126,51 @@ public abstract class Theme {
    */
   protected abstract InputStream fetchStaticResource(String path) throws IOException;
 
+  /**
+   * Result class for fetchResourceAttributes.
+   */
+  public static final class ResourceAttributes {
+
+    /**
+     * Last modified time of the given resource.
+     */
+    public long lastModified;
+
+    /**
+     * Length of the requested resource.
+     */
+    public long contentLength;
+
+    protected ResourceAttributes(File file) {
+      contentLength = file.length();
+      lastModified = file.lastModified();
+    }
+
+    protected ResourceAttributes(URLConnection conn) {
+      contentLength = conn.getContentLengthLong();
+      lastModified = conn.getLastModified();
+    }
+  }
+
+  /**
+   * Returns the last modified time and the content length for a given resource returned by this theme.
+   *
+   * @param path the static resource path
+   * @return see {@link ResourceAttributes}
+   * @throws IOException
+   */
+  public ResourceAttributes getResourceAttributes(String path) throws IOException {
+    Preconditions.checkNotNull(path);
+    for (Theme theme : getChain()) {
+      ResourceAttributes result = theme.fetchResourceAttributes(path);
+      if (result != null) {
+        return result;
+      }
+    }
+    return null; // TODO: IOException better here?
+  }
+
+  protected abstract ResourceAttributes fetchResourceAttributes(String path) throws IOException ;
 
   /**
    * Return a collection of all static resources available from a root path in this theme and its parents. The returned

@@ -131,6 +131,15 @@ public class AssetServiceImpl implements AssetService {
   }
 
   /**
+   * {@inheritDoc}
+   */
+  @Override
+  public long getLastModifiedTime(String assetFilename) {
+    File f = new File(getCompiledFilePath(assetFilename));
+    return f.lastModified();
+  }
+
+  /**
    * Retrieves the given files and concatenates them into a single file.
    *
    * @param filenames list of servlet paths corresponding to the files to concatenate

@@ -1,7 +1,6 @@
 <#include "../common/htmlTag.ftl" />
 
-<#include "../common/title/siteTitle.ftl" />
-<#assign title = siteTitle />
+<#assign title = '' />
 <#assign depth = 0 />
 <#include "../common/head.ftl" />
 

@@ -37,6 +37,15 @@ public class FileTheme extends Theme {
     return file.exists() ? new BufferedInputStream(new FileInputStream(file)) : null;
   }
 
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  protected ResourceAttributes fetchResourceAttributes(String path) {
+    File file = new File(root, path);
+    return file.exists() ? new ResourceAttributes(file) : null;
+  }
+
   protected Collection<String> fetchStaticResourcePaths(String searchRoot) throws IOException {
     File searchRootFile = new File(root, searchRoot);
     Set<String> filePaths = Sets.newTreeSet();

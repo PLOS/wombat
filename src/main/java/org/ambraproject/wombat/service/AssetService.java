@@ -77,9 +77,17 @@ public interface AssetService {
   /**
    * Writes an asset that was previously compiled with a call to getCompiledCssLink to the stream.
    *
-   * @param assetFilename the filename, as returned by getCompiledCssLink
+   * @param assetFilename the filename, as returned by getCompiledAssetLink
    * @param outputStream  output; this method will close the stream as well
    * @throws IOException
    */
   void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException;
+
+  /**
+   * Returns the mtime of the given asset file.
+   *
+   * @param assetFilename the filename, as returned by getCompiledAssetLink
+   * @return last modified time of the given asset file
+   */
+  long getLastModifiedTime(String assetFilename);
 }

@@ -26,7 +26,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.BufferedInputStream;
@@ -49,6 +51,9 @@ public abstract class JsonService {
 
   @Autowired
   protected Gson gson;
+
+  @Autowired
+  private HttpClientConnectionManager httpClientConnectionManager;
 
   /**
    * Send a ReST request and open a stream as the response.
@@ -80,7 +85,7 @@ public abstract class JsonService {
    */
   protected HttpResponse makeRequest(URI targetUri, Header... headers) throws IOException {
     HttpClient client = (runtimeConfiguration.trustUnsignedServer() && "https".equals(targetUri.getScheme()))
-        ? TrustingHttpClient.create() : new DefaultHttpClient();
+        ? TrustingHttpClient.create() : createClient();
     HttpGet get = new HttpGet(targetUri);
     for (Header header : headers) {
       get.setHeader(header);
@@ -101,6 +106,12 @@ public abstract class JsonService {
       }
     }
     return response;
+  }
+
+  private CloseableHttpClient createClient() {
+    return HttpClientBuilder.create()
+        .setConnectionManager(httpClientConnectionManager)
+        .build();
   }
 
   /**

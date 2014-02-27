@@ -25,6 +25,8 @@ import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SoaServiceImpl;
 import org.ambraproject.wombat.service.SolrSearchService;
+import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
@@ -189,4 +191,10 @@ public class SpringConfiguration {
   public AssetService assetService() {
     return new AssetServiceImpl();
   }
+
+  @Bean
+  public HttpClientConnectionManager httpClientConnectionManager() {
+    return new PoolingHttpClientConnectionManager();
+  }
+
 }

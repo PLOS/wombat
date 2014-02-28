@@ -6,6 +6,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicHeader;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -39,17 +40,19 @@ public class SoaServiceImpl extends JsonService implements SoaService {
   public <T> IfModifiedSinceResult<T> requestObjectIfModifiedSince(String address, Class<T> responseClass,
       Calendar lastModified) throws IOException {
     URI uri = buildUri(address);
-    HttpResponse response = makeRequest(uri, new BasicHeader("If-Modified-Since", HttpDateUtil.format(lastModified)));
-    Header[] lastModifiedHeaders = response.getHeaders("Last-Modified");
-    if (lastModifiedHeaders.length != 1) {
-      throw new RuntimeException("Expecting 1 Last-Modified header, got " + lastModifiedHeaders.length);
-    }
-    IfModifiedSinceResult<T> result = new IfModifiedSinceResult<>();
-    result.lastModified = HttpDateUtil.parse(lastModifiedHeaders[0].getValue());
+    BasicHeader header = new BasicHeader("If-Modified-Since", HttpDateUtil.format(lastModified));
 
-    if (response.getStatusLine().getStatusCode() == 200) {
-      Closer closer = Closer.create();
-      try {
+    Closer closer = Closer.create();
+    try {
+      HttpResponse response = closer.register(makeRequest(uri, header));
+      Header[] lastModifiedHeaders = response.getHeaders("Last-Modified");
+      if (lastModifiedHeaders.length != 1) {
+        throw new RuntimeException("Expecting 1 Last-Modified header, got " + lastModifiedHeaders.length);
+      }
+      IfModifiedSinceResult<T> result = new IfModifiedSinceResult<>();
+      result.lastModified = HttpDateUtil.parse(lastModifiedHeaders[0].getValue());
+
+      if (response.getStatusLine().getStatusCode() == 200) {
         InputStream is = closer.register(new BufferedInputStream(response.getEntity().getContent()));
 
         // Kind of nasty, but necessary for now since we're only caching article XML, which is a String
@@ -59,23 +62,23 @@ public class SoaServiceImpl extends JsonService implements SoaService {
           Reader reader = closer.register(new InputStreamReader(is));
           result.result = gson.fromJson(reader, responseClass);
         }
-      } catch (Throwable t) {
-        throw closer.rethrow(t);
-      } finally {
-        closer.close();
-      }
-    } else if (response.getStatusLine().getStatusCode() != 304) {
-      throw new RuntimeException("Unexpected status code " + response.getStatusLine().getStatusCode());
-    }  // else we got a 304, and we want result.result to be null
+      } else if (response.getStatusLine().getStatusCode() != 304) {
+        throw new RuntimeException("Unexpected status code " + response.getStatusLine().getStatusCode());
+      }  // else we got a 304, and we want result.result to be null
 
-    return result;
+      return result;
+    } catch (Throwable t) {
+      throw closer.rethrow(t);
+    } finally {
+      closer.close();
+    }
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public HttpResponse requestAsset(String assetId, Header... headers) throws IOException {
+  public CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException {
     return makeRequest(buildUri("assetfiles/" + assetId), headers);
   }
 

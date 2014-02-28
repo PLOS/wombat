@@ -10,7 +10,7 @@ import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
-import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicHeader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,21 +82,21 @@ public class FigureImageController extends WombatController {
                               HttpServletResponse responseToClient,
                               String assetId)
       throws IOException {
-    HttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient));
-
-    /*
-     * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
-     * "content-disposition" headers, and headers that control reproxying.
-     */
-    for (Header headerFromService : responseFromService.getAllHeaders()) {
-      String name = headerFromService.getName();
-      if (ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
-        responseToClient.setHeader(name, headerFromService.getValue());
-      }
-    }
-
     Closer closer = Closer.create();
     try {
+      CloseableHttpResponse responseFromService = closer.register(soaService.requestAsset(assetId, copyHeaders(requestFromClient)));
+
+      /*
+       * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
+       * "content-disposition" headers, and headers that control reproxying.
+       */
+      for (Header headerFromService : responseFromService.getAllHeaders()) {
+        String name = headerFromService.getName();
+        if (ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
+          responseToClient.setHeader(name, headerFromService.getValue());
+        }
+      }
+
       InputStream assetStream = responseFromService.getEntity().getContent();
       if (assetStream == null) {
         throw new EntityNotFoundException(assetId);

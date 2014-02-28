@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import org.apache.http.Header;
-import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.CloseableHttpResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -79,11 +79,15 @@ public interface SoaService {
 
   /**
    * Requests an asset, returning both the headers and stream.
+   * <p/>
+   * The caller <em>must</em> either close the returned {@code CloseableHttpResponse} object or close the {@code
+   * InputStream} to the response body. This is very important, because leaving responses hanging open can starve the
+   * connection pool and cause horrible timeouts.
    *
    * @param assetId the asset ID within the SOA service's "assetfiles/" namespace
    * @return
    * @throws IOException
    */
-  public abstract HttpResponse requestAsset(String assetId, Header... headers) throws IOException;
+  public abstract CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException;
 
 }

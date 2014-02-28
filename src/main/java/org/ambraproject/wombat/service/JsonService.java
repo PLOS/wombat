@@ -22,9 +22,8 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.util.TrustingHttpClient;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -57,6 +56,8 @@ public abstract class JsonService {
 
   /**
    * Send a ReST request and open a stream as the response.
+   * <p/>
+   * The caller must close the stream when it is done reading. This is important for connection pooling.
    *
    * @param targetUri the URI to which to send the REST request
    * @return a stream to the response
@@ -65,16 +66,26 @@ public abstract class JsonService {
    * @throws EntityNotFoundException if the object at the address does not exist
    */
   protected InputStream requestStream(URI targetUri) throws IOException {
-    HttpResponse response = makeRequest(targetUri);
-    HttpEntity entity = response.getEntity();
-    if (entity == null) {
-      throw new RuntimeException("No response");
+    CloseableHttpResponse response = makeRequest(targetUri);
+    // We must leave the response open if we return a valid stream, but must close it otherwise.
+    try {
+      HttpEntity entity = response.getEntity();
+      if (entity == null) {
+        throw new RuntimeException("No response");
+      }
+      return entity.getContent();
+    } catch (Throwable t) {
+      response.close();
+      throw t;
     }
-    return entity.getContent();
   }
 
   /**
    * Makes a request to the given URI, checks for response codes 400 or above, and returns the response.
+   * <p/>
+   * The caller <em>must</em> either close the returned {@code CloseableHttpResponse} object or close the {@code
+   * InputStream} to the response body (i.e., {@code CloseableHttpResponse.getEntity().getContent()}). This is very
+   * important, because leaving responses hanging open can starve the connection pool and cause horrible timeouts.
    *
    * @param targetUri the URI to which to send the request
    * @param headers   headers to add to the request, if any
@@ -83,29 +94,41 @@ public abstract class JsonService {
    * @throws NullPointerException    if the address is null
    * @throws EntityNotFoundException if the object at the address does not exist
    */
-  protected HttpResponse makeRequest(URI targetUri, Header... headers) throws IOException {
-    HttpClient client = (runtimeConfiguration.trustUnsignedServer() && "https".equals(targetUri.getScheme()))
+  protected CloseableHttpResponse makeRequest(URI targetUri, Header... headers) throws IOException {
+    // Don't close the client, as this shuts down the connection pool. Do close every response or its entity stream.
+    CloseableHttpClient client = (runtimeConfiguration.trustUnsignedServer() && "https".equals(targetUri.getScheme()))
         ? TrustingHttpClient.create() : createClient();
     HttpGet get = new HttpGet(targetUri);
     for (Header header : headers) {
       get.setHeader(header);
     }
-    HttpResponse response = client.execute(get);
-    StatusLine statusLine = response.getStatusLine();
-    if (statusLine.getStatusCode() >= 400) {
-      String address = targetUri.getPath();
-      if (!Strings.isNullOrEmpty(targetUri.getQuery())) {
-        address += "?" + targetUri.getQuery();
+
+    // We want to return an unclosed response. Hence, close the response only if we throw an exception,
+    // *not* in a finally block (or try-with-resources).
+    CloseableHttpResponse response = null;
+    try {
+      response = client.execute(get);
+      StatusLine statusLine = response.getStatusLine();
+      if (statusLine.getStatusCode() >= 400) {
+        String address = targetUri.getPath();
+        if (!Strings.isNullOrEmpty(targetUri.getQuery())) {
+          address += "?" + targetUri.getQuery();
+        }
+        if (statusLine.getStatusCode() == 404) {
+          throw new EntityNotFoundException(address);
+        } else {
+          String message = String.format("Request to \"%s\" failed (%d): %s",
+              address, statusLine.getStatusCode(), statusLine.getReasonPhrase());
+          throw new RuntimeException(message);
+        }
       }
-      if (statusLine.getStatusCode() == 404) {
-        throw new EntityNotFoundException(address);
-      } else {
-        String message = String.format("Request to \"%s\" failed (%d): %s",
-            address, statusLine.getStatusCode(), statusLine.getReasonPhrase());
-        throw new RuntimeException(message);
+      return response;
+    } catch (Throwable t) {
+      if (response != null) {
+        response.close();
       }
+      throw t;
     }
-    return response;
   }
 
   private CloseableHttpClient createClient() {

@@ -193,8 +193,15 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public HttpClientConnectionManager httpClientConnectionManager() {
-    return new PoolingHttpClientConnectionManager();
+  public HttpClientConnectionManager httpClientConnectionManager(RuntimeConfiguration runtimeConfiguration) {
+    PoolingHttpClientConnectionManager manager = new PoolingHttpClientConnectionManager();
+
+    Integer maxTotal = runtimeConfiguration.getConnectionPoolMaxTotal();
+    if (maxTotal != null) manager.setMaxTotal(maxTotal);
+    Integer defaultMaxPerRoute = runtimeConfiguration.getConnectionPoolDefaultMaxPerRoute();
+    if (maxTotal != null) manager.setDefaultMaxPerRoute(defaultMaxPerRoute);
+
+    return manager;
   }
 
 }

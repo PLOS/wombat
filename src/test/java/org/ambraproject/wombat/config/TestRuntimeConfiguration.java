@@ -66,6 +66,16 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
     return -1;
   }
 
+  @Override
+  public Integer getConnectionPoolMaxTotal() {
+    return null;
+  }
+
+  @Override
+  public Integer getConnectionPoolDefaultMaxPerRoute() {
+    return null;
+  }
+
   /**
    * {@inheritDoc}
    */

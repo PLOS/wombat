@@ -52,6 +52,16 @@ public interface RuntimeConfiguration {
   int getMemcachedPort();
 
   /**
+   * @see org.apache.http.pool.ConnPoolControl
+   */
+  Integer getConnectionPoolMaxTotal();
+
+  /**
+   * @see org.apache.http.pool.ConnPoolControl
+   */
+  Integer getConnectionPoolDefaultMaxPerRoute();
+
+  /**
    * @return the cacheAppPrefix value, or null if it is not defined in the config.  This should be a String that is
    * shared by all wombat app servers, defining a namespace for them.
    */

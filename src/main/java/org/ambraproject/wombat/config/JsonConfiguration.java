@@ -59,7 +59,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
     private String memcachedHost;
     private Integer memcachedPort;
     private String cacheAppPrefix;
-    private Boolean trustUnsignedServer;
     private Boolean devModeAssets;
     private String compiledAssetDir;
     private List<Map<String, ?>> themes;
@@ -83,10 +82,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
 
     public void setCacheAppPrefix(String cacheAppPrefix) {
       this.cacheAppPrefix = cacheAppPrefix;
-    }
-
-    public void setTrustUnsignedServer(Boolean trustUnsignedServer) {
-      this.trustUnsignedServer = trustUnsignedServer;
     }
 
     public void setDevModeAssets(Boolean devModeAssets) {
@@ -136,14 +131,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
     if ((uf.devModeAssets == null || !uf.devModeAssets) && Strings.isNullOrEmpty(uf.compiledAssetDir)) {
       throw new RuntimeConfigurationException("If devModeAssets is false, compiledAssetDir must be specified");
     }
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean trustUnsignedServer() {
-    return (uf.trustUnsignedServer == null) ? false : uf.trustUnsignedServer;
   }
 
   /**

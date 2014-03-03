@@ -30,14 +30,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
    * {@inheritDoc}
    */
   @Override
-  public boolean trustUnsignedServer() {
-    return false;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
   public boolean devModeAssets() {
     return false;
   }

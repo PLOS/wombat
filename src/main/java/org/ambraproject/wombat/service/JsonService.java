@@ -19,7 +19,6 @@ import com.google.common.io.Closer;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.util.TrustingHttpClient;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -79,8 +78,7 @@ public abstract class JsonService {
    * @throws EntityNotFoundException if the object at the address does not exist
    */
   protected HttpResponse makeRequest(URI targetUri, Header... headers) throws IOException {
-    HttpClient client = (runtimeConfiguration.trustUnsignedServer() && "https".equals(targetUri.getScheme()))
-        ? TrustingHttpClient.create() : new DefaultHttpClient();
+    HttpClient client = new DefaultHttpClient();
     HttpGet get = new HttpGet(targetUri);
     for (Header header : headers) {
       get.setHeader(header);

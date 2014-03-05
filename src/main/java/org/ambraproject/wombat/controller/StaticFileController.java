@@ -110,7 +110,7 @@ public class StaticFileController extends WombatController {
    * @throws IOException
    */
   private void serveCompiledAsset(String filePath, HttpServletRequest request, HttpServletResponse response)
-    throws IOException {
+      throws IOException {
 
     // The hash is already included in the compiled asset's filename, so we take advantage
     // of that here and use it as the etag.
@@ -123,7 +123,7 @@ public class StaticFileController extends WombatController {
     // This is a "strong" etag since it's based on a fingerprint of the contents.
     String etag = String.format("\"%s\"", matcher.group(1));
     long lastModified = assetService.getLastModifiedTime(basename);
-    if (checkIfModifiedSince(request,lastModified, etag)) {
+    if (checkIfModifiedSince(request, lastModified, etag)) {
       response.setHeader("Etag", etag);
       setLastModified(response, lastModified);
       assetService.serveCompiledAsset(basename, response.getOutputStream());
@@ -136,7 +136,7 @@ public class StaticFileController extends WombatController {
   /**
    * Sets the "Last-Modified" header in the response.
    *
-   * @param response HttpServletResponse
+   * @param response     HttpServletResponse
    * @param lastModified timestamp to set the header to
    */
   private void setLastModified(HttpServletResponse response, long lastModified) {
@@ -148,12 +148,12 @@ public class StaticFileController extends WombatController {
   }
 
   /**
-   * Checks to see if we should serve the contents of the static resource, or just return a 304 response
-   * with no body, based on cache-related request headers.
+   * Checks to see if we should serve the contents of the static resource, or just return a 304 response with no body,
+   * based on cache-related request headers.
    *
-   * @param request HttpServletRequest we will check for cache headers
+   * @param request      HttpServletRequest we will check for cache headers
    * @param lastModified last modified timestamp of the actual resource on the server
-   * @param etag etag generated from the actual resource on the server
+   * @param etag         etag generated from the actual resource on the server
    * @return true if we should serve the bytes of the resource, false if we should return 304.
    */
   private boolean checkIfModifiedSince(HttpServletRequest request, long lastModified, String etag) {

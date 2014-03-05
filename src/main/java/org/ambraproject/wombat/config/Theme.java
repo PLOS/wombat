@@ -134,12 +134,12 @@ public abstract class Theme {
     /**
      * Last modified time of the given resource.
      */
-    public long lastModified;
+    public final long lastModified;
 
     /**
      * Length of the requested resource.
      */
-    public long contentLength;
+    public final long contentLength;
 
     protected ResourceAttributes(File file) {
       contentLength = file.length();

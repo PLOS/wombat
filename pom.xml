@@ -14,6 +14,19 @@
     <org.slf4j-version>1.6.6</org.slf4j-version>
     <rhombat.version>1.0.1-BUILD-SNAPSHOT</rhombat.version>
   </properties>
+  <repositories>
+    <repository>
+      <id>ambra</id>
+      <name>Maven 2 Release Repository for Ambra</name>
+      <url>http://maven.ambraproject.org/maven2/release/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.ambraproject</groupId>

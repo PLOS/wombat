@@ -19,7 +19,6 @@ import com.google.common.io.Closer;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.util.TrustingHttpClient;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.StatusLine;
@@ -96,8 +95,7 @@ public abstract class JsonService {
    */
   protected CloseableHttpResponse makeRequest(URI targetUri, Header... headers) throws IOException {
     // Don't close the client, as this shuts down the connection pool. Do close every response or its entity stream.
-    CloseableHttpClient client = (runtimeConfiguration.trustUnsignedServer() && "https".equals(targetUri.getScheme()))
-        ? TrustingHttpClient.create() : createClient();
+    CloseableHttpClient client = createClient();
     HttpGet get = new HttpGet(targetUri);
     for (Header header : headers) {
       get.setHeader(header);

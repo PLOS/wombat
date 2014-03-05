@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
@@ -69,7 +70,8 @@ public class TaxonomyController {
     Closer closer = Closer.create();
     try {
       OutputStream out = closer.register(response.getOutputStream());
-      IOUtils.copy(soaService.requestStream(req), out);
+      InputStream in = closer.register(soaService.requestStream(req));
+      IOUtils.copy(in, out);
     } catch (Throwable t) {
       throw closer.rethrow(t);
     } finally {

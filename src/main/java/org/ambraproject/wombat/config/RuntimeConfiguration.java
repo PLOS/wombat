@@ -22,14 +22,6 @@ import java.util.Collection;
 public interface RuntimeConfiguration {
 
   /**
-   * Check whether this webapp is configured to naively trust servers without SSL certificates. This should be {@code
-   * true} only when debugging or connecting to a private testing server. Defaults to {@code false}.
-   *
-   * @return {@code false} if default SSL authentication should be preserved
-   */
-  boolean trustUnsignedServer();
-
-  /**
    * @return true if we are running in "dev mode" for .js and .css, and compilation/minification should not happen for
    * these files
    */

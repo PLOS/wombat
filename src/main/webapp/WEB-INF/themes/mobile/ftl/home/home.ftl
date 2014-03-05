@@ -1,7 +1,6 @@
 <#include "../common/htmlTag.ftl" />
 
-<#include "../common/title/siteTitle.ftl" />
-<#assign title = siteTitle />
+<#assign title = '' />
 <#assign depth = 0 />
 <#include "../common/head.ftl" />
 
@@ -41,7 +40,7 @@
           <ul id="article-results" class="results">
             <#list articles.docs as article>
               <li>
-                <a href="../article?doi=${article.id}">${article.title}</a>
+                <a href="article?doi=${article.id}">${article.title}</a>
               </li>
             </#list>
           </ul>

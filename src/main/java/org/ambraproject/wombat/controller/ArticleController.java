@@ -276,9 +276,7 @@ public class ArticleController extends WombatController {
    */
   private void requestAuthors(Model model, String doi) throws IOException {
     List<?> authors = soaService.requestObject(String.format("articles/%s?authors", doi), List.class);
-    if (authors != null && !authors.isEmpty()) {
-      model.addAttribute("authors", authors);
-    }
+    model.addAttribute("authors", authors);
 
     // Putting this here was a judgement call.  One could make the argument that this logic belongs
     // in Rhino, but it's so simple I elected to keep it here for now.

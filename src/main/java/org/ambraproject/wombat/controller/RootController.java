@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.io.Closer;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +22,9 @@ public class RootController extends WombatController {
   private ServletContext servletContext;
 
   private String getResourceAsBase64(String path) throws IOException {
-    Closer closer = Closer.create();
     byte[] bytes;
-    try {
-      InputStream stream = closer.register(servletContext.getResourceAsStream(path));
+    try (InputStream stream = servletContext.getResourceAsStream(path)) {
       bytes = IOUtils.toByteArray(stream);
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
     }
     return Base64.encodeBase64String(bytes);
   }

@@ -99,7 +99,10 @@ public class StaticFileController extends WombatController {
     }
   }
 
-  private static final Pattern COMPILED_ASSET_PATTERN = Pattern.compile("static/compiled/asset_(\\w+)\\.\\w+");
+  private static final Pattern COMPILED_ASSET_PATTERN = Pattern.compile(""
+      + "static/compiled/asset_"
+      + "([+\\w]+)" // The asset hash in modified base 64. May contain '_' and '+' chars. ('_' replaces '/'; see getFingerprint)
+      + "\\.\\w+"); // The file extension.
 
   /**
    * Serves a .js or .css asset that has already been concatenated and minified. See {@link AssetService} for details on

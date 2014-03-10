@@ -140,13 +140,15 @@ public class SolrSearchService extends JsonService implements SearchService {
     List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange);
 
     // TODO: escape/quote the q param if needed.
-    String q;
     if (Strings.isNullOrEmpty(query)) {
-      q = "*:*";
+      query = "*:*";
     } else {
-      q = "everything:" + query;
+
+      // Use the dismax query parser, recommended for all user-entered queries.
+      // See https://wiki.apache.org/solr/DisMax
+      params.add(new BasicNameValuePair("defType", "dismax"));
     }
-    params.add(new BasicNameValuePair("q", q));
+    params.add(new BasicNameValuePair("q", query));
     return executeQuery(params);
   }
 

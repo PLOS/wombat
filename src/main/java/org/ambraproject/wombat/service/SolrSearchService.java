@@ -186,7 +186,7 @@ public class SolrSearchService extends JsonService implements SearchService {
     params.add(new BasicNameValuePair("fq", "doc_type:full"));
     params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
     params.add(new BasicNameValuePair("rows", Integer.toString(rows)));
-    if (start > 1) {
+    if (start > 0) {
       params.add(new BasicNameValuePair("start", Integer.toString(start)));
     }
     // The next two params improve solr performance significantly.

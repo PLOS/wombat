@@ -13,6 +13,16 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   @Autowired
   private SoaService soaService;
 
+  /*
+   * Cache the results in the service object. This may not be the best place to cache them, especially if the data is
+   * unstable, but we can broadly assume both values are constant. We expect serviceBuildInfo to change rarely (i.e.,
+   * only when the service component is upgraded), and often at the same time that this application is restarted.
+   * And localBuildInfo actually is constant.
+   *
+   * If these values need to not be cached here, they could be extracted out as Spring beans, so that this service
+   * class is called once to initialize the beans. There are more sophisticated options for caching with eviction if we
+   * want to handle the case of stale serviceBuildInfo, but that doesn't seem worthwhile right now.
+   */
   private BuildInfo localBuildInfo = null;
   private BuildInfo serviceBuildInfo = null;
 
@@ -28,6 +38,12 @@ public class BuildInfoServiceImpl implements BuildInfoService {
     }
   }
 
+  /**
+   * {@inheritDoc}
+   * <p/>
+   * Each service bean makes only one remote call during its lifecycle (or maybe a small number in edge cases with
+   * concurrency).
+   */
   @Override
   public BuildInfo getServiceBuildInfo() {
     if (serviceBuildInfo != null) {

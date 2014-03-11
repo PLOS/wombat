@@ -82,7 +82,12 @@ public class FigureImageController extends WombatController {
                               HttpServletResponse responseToClient,
                               String assetId)
       throws IOException {
-    HttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient));
+    HttpResponse responseFromService;
+    try {
+      responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient));
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
+    }
 
     /*
      * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
@@ -142,7 +147,12 @@ public class FigureImageController extends WombatController {
                                @RequestParam("size") String figureSize)
       throws IOException {
     requireNonemptyParameter(figureId);
-    Map<String, ?> assetMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+    Map<String, ?> assetMetadata;
+    try {
+      assetMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
+    }
 
     List<String> pathToFigureObject = ORIGINAL_FIGURE.equals(figureSize)
         ? ORIGINAL_FIGURE_PATH : ImmutableList.of("thumbnails", figureSize);

@@ -46,7 +46,7 @@ public interface SearchService {
    * @param query     term we are searching for.  If this is null, all articles will be returned (modulo sortOrder,
    *                  start, rows, and dateRange).
    * @param site      name of the site in which to search.
-   * @param start     starting result, one-based.  1 will start at the first result.
+   * @param start     starting result, zero-based.  0 will start at the first result.
    * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
    * @param dateRange specifies the date range for the results
@@ -61,7 +61,7 @@ public interface SearchService {
    *
    * @param subject   taxonomy term the search will be restricted to
    * @param site      name of the site in which to search.
-   * @param start     starting result, one-based.  1 will start at the first result.
+   * @param start     starting result, zero-based.  0 will start at the first result.
    * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
    * @param dateRange specifies the date range for the results
@@ -76,7 +76,7 @@ public interface SearchService {
    *
    * @param author    full or partial author name
    * @param site      name of the site in which to search.
-   * @param start     starting result, one-based.  1 will start at the first result.
+   * @param start     starting result, zero-based.  0 will start at the first result.
    * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
    * @param dateRange specifies the date range for the results

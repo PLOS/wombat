@@ -12,6 +12,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.io.BaseEncoding;
 import com.google.common.io.Closer;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
@@ -25,7 +26,6 @@ import org.mozilla.javascript.EvaluatorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import sun.misc.BASE64Encoder;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -261,6 +261,8 @@ public class AssetServiceImpl implements AssetService {
     return new FileAndContents(result, contents);
   }
 
+  private static final BaseEncoding FINGERPRINT_ENCODING = BaseEncoding.base64();
+
   /**
    * Generates a fingerprint based on the data passed in that is suitable for use in a filename or servlet path.
    *
@@ -275,8 +277,7 @@ public class AssetServiceImpl implements AssetService {
     } catch (NoSuchAlgorithmException ex) {
       throw new RuntimeException(ex);
     }
-    BASE64Encoder encoder = new BASE64Encoder();
-    String result = encoder.encodeBuffer(bytes);
+    String result = FINGERPRINT_ENCODING.encode(bytes);
 
     // Replace slashes with underscores and removing the trailing "=".
     result = result.replace('/', '_').trim();

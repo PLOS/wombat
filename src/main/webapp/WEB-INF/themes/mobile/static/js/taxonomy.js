@@ -6,20 +6,31 @@ var TaxonomyBrowser = function () {
   self.init = function () {
     self.$browserDiv = $('#browse-container');
     if (self.$browserDiv.length) {
-
-      // Play nicely with the back button.
-      window.history.pushState(null, 'browse', 'browse');
+      var term = self.getTermFromUrl();
+      self.pushState(term);
 
       // Upon initial loading, this also loads the list of top-level terms.
       $(window).bind('popstate', function(e) {
-        var pieces = window.location.href.split('?path=');
-        var term = null;
-        if (pieces.length == 2) {
-          term = '/' + decodeURI(pieces[1]);
+        var term = self.getTermFromUrl();
+        if (term) {
+          term = '/' + term;
         }
         self.loadTerms(term, false);
       });
     }
+  };
+
+  // Examines window.location to see if we are starting at a given term; if so, returns that term.
+  // If we are at the top level, returns null.
+  self.getTermFromUrl = function() {
+
+    // TODO: this will break if we ever have more than one parameter on this page.
+    var pieces = window.location.href.split('?path=');
+    var term = null;
+    if (pieces.length == 2) {
+      term = decodeURI(pieces[1]);
+    }
+    return term;
   };
 
   // Renders the browser, given a JSON list of subjects.
@@ -62,14 +73,20 @@ var TaxonomyBrowser = function () {
     });
 
     if (pushState) {
-      var url = 'browse';
-      var title = 'browse';
-      if (parent) {
-        url += '?path=' + parent;
-        title = parent;
-      }
-      window.history.pushState(null, title, url);
+      self.pushState(parent);
     }
+  };
+
+  // Saves the current state to the browser history, so the back button functions correctly.
+  // Term should be the parent term of the ones we are currently displaying.
+  self.pushState = function(term) {
+    var url = 'browse';
+    var title = 'browse';
+    if (term) {
+      url += '?path=' + term;
+      title = term;
+    }
+    window.history.pushState(null, title, url);
   };
 
   // Loads the child terms given a parent term.  If the parent evaluates to false,
@@ -87,7 +104,7 @@ var TaxonomyBrowser = function () {
         self.renderTerms(data, pushState);
       },
       error: function (xOptions, textStatus) {
-        console.log(textStatus);
+        console.log('Error loading term ' + parent + ': ' + textStatus);
       }
     });
   };

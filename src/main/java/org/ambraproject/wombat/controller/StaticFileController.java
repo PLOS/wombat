@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.Theme;
 import org.ambraproject.wombat.service.AssetService;
 import org.apache.commons.io.IOUtils;
@@ -63,15 +62,15 @@ public class StaticFileController extends WombatController {
    */
   private void serveFile(String filePath, HttpServletRequest request, HttpServletResponse response, Theme theme)
       throws IOException {
-    Closer closer = Closer.create();
-    try {
-      InputStream inputStream = theme.getStaticResource(filePath);
+    try (InputStream inputStream = theme.getStaticResource(filePath)) {
       if (inputStream == null) {
         // TODO: Forward to user-friendly 404 page
         response.setStatus(HttpStatus.NOT_FOUND.value());
 
         // Just for debugging
-        closer.register(response.getOutputStream()).write("Not found!".getBytes());
+        try (OutputStream outputStream = response.getOutputStream()) {
+          outputStream.write("Not found!".getBytes());
+        }
       } else {
         Theme.ResourceAttributes attributes = theme.getResourceAttributes(filePath);
 
@@ -84,18 +83,14 @@ public class StaticFileController extends WombatController {
         if (checkIfModifiedSince(request, attributes.lastModified, etag)) {
           response.setHeader("Etag", etag);
           setLastModified(response, attributes.lastModified);
-          closer.register(inputStream);
-          OutputStream outputStream = closer.register(response.getOutputStream());
-          IOUtils.copy(inputStream, outputStream);
+          try (OutputStream outputStream = response.getOutputStream()) {
+            IOUtils.copy(inputStream, outputStream);
+          }
         } else {
           response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
           response.setHeader("Etag", etag);
         }
       }
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
     }
   }
 

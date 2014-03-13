@@ -24,6 +24,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.URIResolver;
@@ -133,17 +134,12 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     log.info("Building transformer for: {}", site);
     TransformerFactory factory = newTransformerFactory();
 
-    Closer closer = Closer.create();
-    try {
-      ThemeUriResolver resolver = closer.register(new ThemeUriResolver(theme));
+    try (ThemeUriResolver resolver = new ThemeUriResolver(theme);
+         InputStream transformFile = theme.getStaticResource(TRANSFORM_TEMPLATE_PATH)) {
       factory.setURIResolver(resolver);
-
-      InputStream transformFile = closer.register(theme.getStaticResource(TRANSFORM_TEMPLATE_PATH));
       return factory.newTransformer(new StreamSource(transformFile));
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
+    } catch (TransformerConfigurationException e) {
+      throw new RuntimeException(e);
     }
   }
 
@@ -162,10 +158,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     try {
       SAXParser sp = spf.newSAXParser();
       xmlr = sp.getXMLReader();
-    } catch (ParserConfigurationException pce) {
-      throw new TransformerException(pce);
-    } catch (SAXException se) {
-      throw new TransformerException(se);
+    } catch (ParserConfigurationException | SAXException e) {
+      throw new TransformerException(e);
     }
 
     // This is a little unorthodox.  Without setting this custom EntityResolver, the transform will

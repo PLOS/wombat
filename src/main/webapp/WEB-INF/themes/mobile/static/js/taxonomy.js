@@ -12,9 +12,6 @@ var TaxonomyBrowser = function () {
       // Upon initial loading, this also loads the list of top-level terms.
       $(window).bind('popstate', function(e) {
         var term = self.getTermFromUrl();
-        if (term) {
-          term = '/' + term;
-        }
         self.loadTerms(term, false);
       });
     }
@@ -26,7 +23,7 @@ var TaxonomyBrowser = function () {
 
     // TODO: this will break if we ever have more than one parameter on this page.
     var pieces = window.location.href.split('?path=');
-    var term = null;
+    var term = '/';
     if (pieces.length == 2) {
       term = decodeURI(pieces[1]);
     }
@@ -37,6 +34,7 @@ var TaxonomyBrowser = function () {
   // If pushState is true, we will push the current state onto the browser history.
   self.renderTerms = function (terms, pushState) {
     var termList = '';
+    var parent = '/';
     for (var i = 0; i < terms.length; i++) {
       var fullPath = terms[i].subject;
       var levels = fullPath.split('/');
@@ -45,7 +43,6 @@ var TaxonomyBrowser = function () {
       // Get parent term if there is one.  Only do this once for efficiency since all terms
       // will have the same parent.
       if (i == 0 && levels.length > 2) {
-        var parent = '';
         for (var j = 0; j < levels.length - 1; j++) {
           if (j > 1) {
             parent += '/';

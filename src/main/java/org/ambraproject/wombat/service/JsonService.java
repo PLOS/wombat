@@ -15,7 +15,6 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import com.google.common.io.Closer;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
@@ -149,20 +148,11 @@ public abstract class JsonService {
    */
   protected <T> T requestObject(URI uri, Class<T> responseClass) throws IOException {
     Preconditions.checkNotNull(responseClass);
-    Closer closer = Closer.create();
-    try {
-      InputStream stream = closer.register(new BufferedInputStream(requestStream(uri)));
-      Reader reader = closer.register(new InputStreamReader(stream));
-      try {
-        return gson.fromJson(reader, responseClass);
-      } catch (JsonSyntaxException e) {
-        String message = String.format("Could not deserialize %s from stream at: %s", responseClass.getName(), uri);
-        throw new RuntimeException(message, e);
-      }
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
+    try (Reader reader = new InputStreamReader(new BufferedInputStream(requestStream(uri)))) {
+      return gson.fromJson(reader, responseClass);
+    } catch (JsonSyntaxException e) {
+      String message = String.format("Could not deserialize %s from stream at: %s", responseClass.getName(), uri);
+      throw new RuntimeException(message, e);
     }
   }
 
@@ -178,9 +168,7 @@ public abstract class JsonService {
     URI targetUri;
     try {
       targetUri = new URL(server, Preconditions.checkNotNull(address)).toURI();
-    } catch (MalformedURLException e) {
-      throw new IllegalArgumentException(e);
-    } catch (URISyntaxException e) {
+    } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }
     return targetUri;

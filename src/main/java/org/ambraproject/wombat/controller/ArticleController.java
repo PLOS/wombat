@@ -7,7 +7,6 @@ import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
-import com.google.common.io.Closer;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -323,14 +323,10 @@ public class ArticleController extends WombatController {
         String.class, lastModified);
     if (fromServer.result != null) {
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-      Closer closer = Closer.create();
-      try {
-        OutputStream outputStream = closer.register(new WriterOutputStream(articleHtml, charset));
+      try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
         articleTransformService.transform(site, new ByteArrayInputStream(fromServer.result.getBytes()), outputStream);
-      } catch (Throwable t) {
-        throw closer.rethrow(t);
-      } finally {
-        closer.close();
+      } catch (TransformerException e) {
+        throw new RuntimeException(e);
       }
       fromServer.result = articleHtml.toString();
       cache.put(cacheKey, fromServer);

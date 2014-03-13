@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Lists;
-import com.google.common.io.Closer;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
@@ -82,14 +81,7 @@ public class FigureImageController extends WombatController {
                               HttpServletResponse responseToClient,
                               String assetId)
       throws IOException {
-    Closer closer = Closer.create();
-    try {
-      CloseableHttpResponse responseFromService = null;
-      try {
-        responseFromService = closer.register(soaService.requestAsset(assetId, copyHeaders(requestFromClient)));
-      } catch (EntityNotFoundException e) {
-        throw new NotFoundException(e);
-      }
+    try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient))) {
 
       /*
        * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
@@ -102,22 +94,21 @@ public class FigureImageController extends WombatController {
         }
       }
 
-      InputStream assetStream = responseFromService.getEntity().getContent();
-      if (assetStream == null) {
-        throw new EntityNotFoundException(assetId);
-      }
-      closer.register(assetStream);
-      /*
-       * In a reproxying case, the asset stream might be empty. It might be a performance win to look ahead and avoid
-       * opening an output stream if there's nothing to send, but for now just let IOUtils.copy handle it regardless.
-       */
+      try (InputStream assetStream = responseFromService.getEntity().getContent()) {
+        if (assetStream == null) {
+          throw new EntityNotFoundException(assetId);
+        }
 
-      OutputStream responseStream = closer.register(responseToClient.getOutputStream());
-      IOUtils.copy(assetStream, responseStream); // buffered
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
+        /*
+         * In a reproxying case, the asset stream might be empty. It might be a performance win to look ahead and avoid
+         * opening an output stream if there's nothing to send, but for now just let IOUtils.copy handle it regardless.
+         */
+        try (OutputStream responseStream = responseToClient.getOutputStream()) {
+          IOUtils.copy(assetStream, responseStream); // buffered
+        }
+      }
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
     }
   }
 

@@ -3,7 +3,6 @@ package org.ambraproject.wombat.config;
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -69,16 +68,10 @@ public class SpringConfiguration {
     }
 
     JsonConfiguration runtimeConfiguration;
-    Reader reader = null;
-    boolean threw = true;
-    try {
-      reader = new BufferedReader(new FileReader(configPath));
+    try (Reader reader = new BufferedReader(new FileReader(configPath))) {
       runtimeConfiguration = new JsonConfiguration(yaml.loadAs(reader, JsonConfiguration.UserFields.class));
-      threw = false;
     } catch (JsonSyntaxException e) {
       throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
-    } finally {
-      Closeables.close(reader, threw);
     }
     runtimeConfiguration.validate();
     return runtimeConfiguration;

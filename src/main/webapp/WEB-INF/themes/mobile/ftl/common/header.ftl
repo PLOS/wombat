@@ -18,7 +18,7 @@
     <a id="site-menu-button">Site Menu</a>
   </#if>
     <a class="site-search-button color-active"><span class="icon">Search</span></a>
-    <a href=<@pathUp depth!0 "." />><#include "siteLogo.ftl" /></a>
+    <a href="${pathUp(depth!0 ".")}"><#include "siteLogo.ftl" /></a>
 
   </div>
   <nav id="article-menu" class="menu-bar">

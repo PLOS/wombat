@@ -49,33 +49,38 @@
   </div><#--end filter-box-->
 
   <div class="filter-container clearfix">
-    <h3>${searchResults.numFound} ${(searchResults.numFound == 1)?string("result", "results")} found</h3>
-    <button class="filter-button coloration-white-on-color">
-      <span class="text">Filter & Sort</span>
-      <span class="arrow">expand</span class="arrow">
-    </button>
-  </div>
+    <h3>
+      ${searchResults.numFound} ${(searchResults.numFound == 1)?string("result", "results")} found
+      <#if RequestParameters.subject??>
+        in ${RequestParameters.subject}
+      </#if>
+    </h3>
+          <button class="filter-button coloration-white-on-color">
+            <span class="text">Filter & Sort</span>
+            <span class="arrow">expand</span class="arrow">
+          </button>
+        </div>
 
-  <div id="results-content" class="content">
+        <div id="results-content" class="content">
 
-  <#if searchResults.numFound gt 0>
-    <div id="display-options">
-      <div class="buttongroup clearfix">
-        <button data-type="full-citation">full citation</button>
-        <button class="active" data-type="title-and-author">title + author</button>
-        <button data-type="title-only">title only</button>
-      </div>
-    </div>
-  </#if>
+        <#if searchResults.numFound gt 0>
+          <div id="display-options">
+            <div class="buttongroup clearfix">
+              <button data-type="full-citation">full citation</button>
+              <button class="active" data-type="title-and-author">title + author</button>
+              <button data-type="title-only">title only</button>
+            </div>
+          </div>
+        </#if>
 
-    <section id="article-items" class="title-and-author">
+          <section id="article-items" class="title-and-author">
 
-    <#list searchResults.docs as doc>
-      <article class="article-item" data-article-id="${doc.id}">
+          <#list searchResults.docs as doc>
+            <article class="article-item" data-article-id="${doc.id}">
 
-      <#-- TODO: implement save to article list.  Not MVP.
-      <a class="save-article circular coloration-text-color" data-list-type="multi">x</a>
-      -->
+            <#-- TODO: implement save to article list.  Not MVP.
+            <a class="save-article circular coloration-text-color" data-list-type="multi">x</a>
+            -->
 
       <#-- We rely here on the fact that search in wombat is always restricted to the current
            journal.  If this changes, we'll have to pass in the site in the href.  -->

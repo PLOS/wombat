@@ -64,17 +64,21 @@ public abstract class JsonService {
    * @throws EntityNotFoundException if the object at the address does not exist
    */
   protected InputStream requestStream(URI targetUri) throws IOException {
-    CloseableHttpResponse response = makeRequest(targetUri);
     // We must leave the response open if we return a valid stream, but must close it otherwise.
+    boolean returningResponse = false;
+    CloseableHttpResponse response = null;
     try {
+      response = makeRequest(targetUri);
       HttpEntity entity = response.getEntity();
       if (entity == null) {
         throw new RuntimeException("No response");
       }
+      returningResponse = true;
       return entity.getContent();
-    } catch (Throwable t) {
-      response.close();
-      throw t;
+    } finally {
+      if (!returningResponse && response != null) {
+        response.close();
+      }
     }
   }
 
@@ -100,8 +104,8 @@ public abstract class JsonService {
       get.setHeader(header);
     }
 
-    // We want to return an unclosed response. Hence, close the response only if we throw an exception,
-    // *not* in a finally block (or try-with-resources).
+    // We want to return an unclosed response, so close the response only if we throw an exception.
+    boolean returningResponse = false;
     CloseableHttpResponse response = null;
     try {
       response = client.execute(get);
@@ -119,12 +123,12 @@ public abstract class JsonService {
           throw new RuntimeException(message);
         }
       }
+      returningResponse = true;
       return response;
-    } catch (Throwable t) {
-      if (response != null) {
+    } finally {
+      if (!returningResponse && response != null) {
         response.close();
       }
-      throw t;
     }
   }
 

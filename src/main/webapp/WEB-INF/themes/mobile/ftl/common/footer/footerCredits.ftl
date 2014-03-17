@@ -1,1 +1,1 @@
-Powered by <a class="bold" href="http://ambraproject.org/">Ambra</a>
+Version <#include "../buildInfo.ftl" />.

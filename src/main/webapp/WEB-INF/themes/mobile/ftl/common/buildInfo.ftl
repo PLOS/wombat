@@ -1,16 +1,5 @@
-<#macro buildInfo infoObj desc>
-<#-- The element below is intended to be an HTML comment (!), not a FreeMarker comment (#).
-     We want it to be visible in production if you inspect the page source. -->
 <!--
-  Build properties for ${desc}:
-    version: ${infoObj.version}
-    date:    ${infoObj.date}
-    user:    ${infoObj.user}
+  Webapp build: <@buildInfo component='local' field='version' /> at <@buildInfo component='local' field='date' /> by <@buildInfo component='local' field='user' />
+  Service build: <@buildInfo component='service' field='version' /> at <@buildInfo component='service' field='date' /> by <@buildInfo component='service' field='user' />
   -->
-</#macro>
-<#if localBuildInfo??>
-  <@buildInfo localBuildInfo 'display component ("Wombat")' />
-</#if>
-<#if serviceBuildInfo??>
-  <@buildInfo serviceBuildInfo 'service component ("Rhino")' />
-</#if>
+<@buildInfo component='local' field='version' />/<@buildInfo component='service' field='version' />

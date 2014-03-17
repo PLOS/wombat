@@ -21,14 +21,11 @@
   </style>
 
   <title><@titleFormat title /></title>
-<#assign target><@pathUp depth!0 "static/css/base.css" /></#assign>
-<@cssLink target=target />
-<#assign target><@pathUp depth!0 "static/css/interface.css" /></#assign>
-<@cssLink target=target />
-<#assign target><@pathUp depth!0 "static/css/mobile.css" /></#assign>
-<@cssLink target=target />
+<@cssLink target=pathUp(depth!0 "static/css/base.css") />
+<@cssLink target=pathUp(depth!0 "static/css/interface.css") />
+<@cssLink target=pathUp(depth!0 "static/css/mobile.css") />
 <#include "../cssLinks.ftl" />
 
-  <script src=<@pathUp depth!0 "static/js/vendor/vendor.min.js" />></script>
+  <script src="${pathUp(depth!0 "static/js/vendor/vendor.min.js")}"></script>
 <@renderCssLinks />
 </head>

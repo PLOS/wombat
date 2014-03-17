@@ -13,7 +13,6 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.io.BaseEncoding;
-import com.google.common.io.Closer;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
 import org.ambraproject.rhombat.cache.Cache;
@@ -105,28 +104,21 @@ public class AssetServiceImpl implements AssetService {
    */
   @Override
   public void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException {
-
-    // Determine AssetType based on file extension.
-    String[] fields = assetFilename.split("/");
-    String basename = fields[fields.length - 1];
-    AssetType assetType = AssetType.valueOf(AssetType.class,
-        basename.substring(basename.lastIndexOf('.') + 1).toUpperCase());
-    byte[] cached = cache.get(assetType.getContentsCacheKey(basename));
-    InputStream is;
-    if (cached == null) {
-      is = new FileInputStream(new File(getCompiledFilePath(assetFilename)));
-    } else {
-      is = new ByteArrayInputStream(cached);
-    }
-    Closer closer = Closer.create();
     try {
-      closer.register(is);
-      closer.register(outputStream);
-      IOUtils.copy(is, outputStream);
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
+      // Determine AssetType based on file extension.
+      String[] fields = assetFilename.split("/");
+      String basename = fields[fields.length - 1];
+      AssetType assetType = AssetType.valueOf(AssetType.class,
+          basename.substring(basename.lastIndexOf('.') + 1).toUpperCase());
+      byte[] cached = cache.get(assetType.getContentsCacheKey(basename));
+      try (InputStream is =
+               (cached == null)
+                   ? new FileInputStream(new File(getCompiledFilePath(assetFilename)))
+                   : new ByteArrayInputStream(cached)) {
+        IOUtils.copy(is, outputStream);
+      }
     } finally {
-      closer.close();
+      outputStream.close();
     }
   }
 
@@ -149,22 +141,17 @@ public class AssetServiceImpl implements AssetService {
    * will end up being minified eventually).
    * @throws IOException
    */
+
   private File concatenateFiles(List<String> filenames, String site, String extension) throws IOException {
     File result = File.createTempFile("concatenated_", extension);
     Theme theme = siteSet.getSite(site).getTheme();
-    Closer closer = Closer.create();
-    try {
-      BufferedOutputStream bos = closer.register(new BufferedOutputStream(new FileOutputStream(result)));
+    try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(result))) {
       for (String filename : filenames) {
-        InputStream is = theme.getStaticResource(filename);
-        closer.register(is);
-        IOUtils.copy(is, bos);
-        bos.write('\n');  // just in case
+        try (InputStream is = theme.getStaticResource(filename)) {
+          IOUtils.copy(is, bos);
+          bos.write('\n');  // just in case
+        }
       }
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
     }
     return result;
   }
@@ -222,10 +209,8 @@ public class AssetServiceImpl implements AssetService {
     // Compile to memory instead of a file directly, since we will need the raw bytes
     // in order to generate a hash (which appears in the filename).
     ByteArrayOutputStream baos = new ByteArrayOutputStream(BUFFER_SIZE);
-    Closer closer = Closer.create();
-    try {
-      InputStreamReader isr = closer.register(new InputStreamReader(new FileInputStream(uncompiled)));
-      OutputStreamWriter osw = closer.register(new OutputStreamWriter(baos));
+    try (InputStreamReader isr = new InputStreamReader(new FileInputStream(uncompiled));
+         OutputStreamWriter osw = new OutputStreamWriter(baos)) {
       if (assetType == AssetType.CSS) {
         CssCompressor compressor = new CssCompressor(isr);
         compressor.compress(osw, -1);
@@ -235,10 +220,6 @@ public class AssetServiceImpl implements AssetService {
       } else {
         throw new IllegalArgumentException("Unexpected asset type " + assetType);
       }
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
     }
     byte[] contents = baos.toByteArray();
 
@@ -249,14 +230,8 @@ public class AssetServiceImpl implements AssetService {
     if (result.exists()) {
       result.delete();
     }
-    closer = Closer.create();
-    try {
-      OutputStream os = new FileOutputStream(result);
+    try (OutputStream os = new FileOutputStream(result)) {
       IOUtils.write(contents, os);
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
     }
     return new FileAndContents(result, contents);
   }

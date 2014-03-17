@@ -13,7 +13,6 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.Site;
 import org.ambraproject.wombat.config.SiteSet;
 import org.ambraproject.wombat.service.SoaService;
@@ -67,15 +66,9 @@ public class TaxonomyController {
     }
     req += "journal=" + site.getJournalKey();
     response.setContentType("application/json");
-    Closer closer = Closer.create();
-    try {
-      OutputStream out = closer.register(response.getOutputStream());
-      InputStream in = closer.register(soaService.requestStream(req));
-      IOUtils.copy(in, out);
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
+    try (OutputStream output = response.getOutputStream();
+         InputStream input = soaService.requestStream(req)) {
+      IOUtils.copy(input, output);
     }
   }
 }

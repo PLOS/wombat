@@ -26,8 +26,8 @@ public class BuildInfoDirective implements TemplateDirectiveModel {
     String component = params.get("component").toString();
     BuildInfo info;
     switch (component) {
-      case "local":
-        info = buildInfoService.getLocalBuildInfo();
+      case "webapp":
+        info = buildInfoService.getWebappBuildInfo();
         break;
       case "service":
         info = buildInfoService.getServiceBuildInfo();

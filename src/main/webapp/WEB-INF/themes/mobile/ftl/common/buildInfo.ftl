@@ -1,5 +1,5 @@
 <!--
-  Webapp build: <@buildInfo component='local' field='version' /> at <@buildInfo component='local' field='date' /> by <@buildInfo component='local' field='user' />
+  Webapp build: <@buildInfo component='webapp' field='version' /> at <@buildInfo component='webapp' field='date' /> by <@buildInfo component='webapp' field='user' />
   Service build: <@buildInfo component='service' field='version' /> at <@buildInfo component='service' field='date' /> by <@buildInfo component='service' field='user' />
   -->
-<@buildInfo component='local' field='version' />/<@buildInfo component='service' field='version' />
+<@buildInfo component='webapp' field='version' />/<@buildInfo component='service' field='version' />

@@ -53,7 +53,7 @@ public class HomeController extends WombatController {
                               @RequestParam(value = "section", required = false) String sectionParam)
       throws IOException {
     // TODO Make these more generally available. For now just show them on the home page.
-    model.addAttribute("localBuildInfo", buildInfoService.getLocalBuildInfo());
+    model.addAttribute("localBuildInfo", buildInfoService.getWebappBuildInfo());
     model.addAttribute("serviceBuildInfo", buildInfoService.getServiceBuildInfo());
 
     if (!request.getServletPath().endsWith("/")) {

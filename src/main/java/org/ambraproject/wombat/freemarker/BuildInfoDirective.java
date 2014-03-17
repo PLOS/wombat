@@ -52,7 +52,7 @@ public class BuildInfoDirective implements TemplateDirectiveModel {
         throw new TemplateModelException("field required");
     }
 
-    env.getOut().write(value);
+    env.getOut().write(value != null ? value : "?");
   }
 
 }

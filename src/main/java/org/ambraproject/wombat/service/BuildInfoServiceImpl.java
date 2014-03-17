@@ -1,6 +1,8 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.util.BuildInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -9,6 +11,7 @@ import java.util.Map;
 import java.util.Properties;
 
 public class BuildInfoServiceImpl implements BuildInfoService {
+  private static final Logger log = LoggerFactory.getLogger(BuildInfoServiceImpl.class);
 
   @Autowired
   private SoaService soaService;
@@ -33,8 +36,9 @@ public class BuildInfoServiceImpl implements BuildInfoService {
     }
     try {
       return localBuildInfo = fetchLocalBuildInfo();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+    } catch (Exception e) {
+      log.error("Could not fetch local build info", e);
+      return null;
     }
   }
 
@@ -51,8 +55,9 @@ public class BuildInfoServiceImpl implements BuildInfoService {
     }
     try {
       return serviceBuildInfo = fetchServiceBuildInfo();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+    } catch (Exception e) {
+      log.error("Could not fetch service build info", e);
+      return null;
     }
   }
 

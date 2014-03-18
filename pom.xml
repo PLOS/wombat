@@ -13,6 +13,7 @@
     <org.aspectj-version>1.6.10</org.aspectj-version>
     <org.slf4j-version>1.6.6</org.slf4j-version>
     <rhombat.version>1.0.1-BUILD-SNAPSHOT</rhombat.version>
+    <buildDate>${maven.build.timestamp}</buildDate>
   </properties>
   <repositories>
     <repository>
@@ -211,6 +212,12 @@
 
   </dependencies>
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>

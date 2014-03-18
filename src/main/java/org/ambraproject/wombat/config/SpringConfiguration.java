@@ -10,6 +10,7 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.MemcacheClient;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.JsDirective;
@@ -20,6 +21,8 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
+import org.ambraproject.wombat.service.BuildInfoService;
+import org.ambraproject.wombat.service.BuildInfoServiceImpl;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SoaServiceImpl;
@@ -112,9 +115,15 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public BuildInfoDirective buildInfoDirective() {
+    return new BuildInfoDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
-                                           RenderJsDirective renderJsDirective) throws IOException {
+                                           RenderJsDirective renderJsDirective, BuildInfoDirective buildInfoDirective)
+      throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
@@ -129,6 +138,7 @@ public class SpringConfiguration {
     variables.put("renderCssLinks", renderCssLinksDirective);
     variables.put("js", jsDirective);
     variables.put("renderJs", renderJsDirective);
+    variables.put("buildInfo", buildInfoDirective);
     config.setFreemarkerVariables(variables);
     return config;
   }
@@ -182,4 +192,10 @@ public class SpringConfiguration {
   public AssetService assetService() {
     return new AssetServiceImpl();
   }
+
+  @Bean
+  public BuildInfoService buildInfoService() {
+    return new BuildInfoServiceImpl();
+  }
+
 }

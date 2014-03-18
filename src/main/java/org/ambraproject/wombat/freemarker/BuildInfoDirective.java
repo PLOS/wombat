@@ -18,8 +18,6 @@ public class BuildInfoDirective implements TemplateDirectiveModel {
   @Autowired
   private BuildInfoService buildInfoService;
 
-  private static enum Component {LOCAL, SERVICE}
-
   @Override
   public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
       throws TemplateException, IOException {

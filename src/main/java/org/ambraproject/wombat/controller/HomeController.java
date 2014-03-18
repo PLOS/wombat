@@ -2,7 +2,6 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.Site;
-import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SolrSearchService;
@@ -36,9 +35,6 @@ public class HomeController extends WombatController {
   @Autowired
   private SoaService soaService;
 
-  @Autowired
-  private BuildInfoService buildInfoService;
-
   /**
    * Enumerates the allowed values for the section parameter for this page.
    */
@@ -52,10 +48,6 @@ public class HomeController extends WombatController {
   public String serveHomepage(HttpServletRequest request, Model model, @PathVariable("site") String siteParam,
                               @RequestParam(value = "section", required = false) String sectionParam)
       throws IOException {
-    // TODO Make these more generally available. For now just show them on the home page.
-    model.addAttribute("localBuildInfo", buildInfoService.getWebappBuildInfo());
-    model.addAttribute("serviceBuildInfo", buildInfoService.getServiceBuildInfo());
-
     if (!request.getServletPath().endsWith("/")) {
       return "redirect:" + siteParam + "/";
     }

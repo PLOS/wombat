@@ -207,6 +207,7 @@ public class SpringConfiguration {
     return manager;
   }
 
+  @Bean
   public BuildInfoService buildInfoService() {
     return new BuildInfoServiceImpl();
   }

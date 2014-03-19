@@ -46,9 +46,9 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
                        @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
-    int start = 1;
+    int start = 0;
     if (page != null) {
-      start = (page - 1) * RESULTS_PER_PAGE + 1;
+      start = (page - 1) * RESULTS_PER_PAGE;
     }
     model.addAttribute("resultsPerPage", RESULTS_PER_PAGE);
 

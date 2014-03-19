@@ -12,7 +12,6 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Joiner;
-import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.mozilla.javascript.Context;
@@ -52,17 +51,11 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
       Context jsContext = Context.enter();
       jsContext.setOptimizationLevel(-1);
       Scriptable jsScope = jsContext.initStandardObjects();
-      Closer closer = Closer.create();
-      try {
-        FileReader reader1 = closer.register(new FileReader(new File(DATA_PATH + "test1.js")));
+      try (FileReader reader1 = new FileReader(new File(DATA_PATH + "test1.js"));
+           FileReader reader2 = new FileReader(new File(DATA_PATH + "test2.js"))) {
         jsContext.evaluateReader(jsScope, reader1, "test1.js", 1, null);
-        FileReader reader2 = closer.register(new FileReader(new File(DATA_PATH + "test2.js")));
         expected = jsContext.evaluateReader(jsScope, reader2, "test2.js", 1, null);
         assertEquals(expected, "magicValue");
-      } catch (Throwable t) {
-        throw closer.rethrow(t);
-      } finally {
-        closer.close();
       }
     }
 
@@ -78,16 +71,10 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
     Context jsContext = Context.enter();
     jsContext.setOptimizationLevel(-1);
     Scriptable jsScope = jsContext.initStandardObjects();
-    Closer closer = Closer.create();
-    try {
-      FileReader fr = closer.register(new FileReader(new File(
-          runtimeConfiguration.getCompiledAssetDir() + File.separator + basename)));
+    File file = new File(runtimeConfiguration.getCompiledAssetDir() + File.separator + basename);
+    try (FileReader fr = new FileReader(file)) {
       Object actual = jsContext.evaluateReader(jsScope, fr, basename, 1, null);
       assertEquals(actual, expected);
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
     }
   }
 

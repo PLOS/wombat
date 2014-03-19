@@ -4,8 +4,7 @@
 <head>
   <title>Privacy Policy</title>
 
-<#assign target><@pathUp 3 "static/css/base.css" /></#assign>
-<@cssLink target=target />
+<@cssLink target=pathUp(3, "static/css/base.css") />
 <@cssLink target="../static/css/interface.css" />
 <@cssLink target="../static/css/mobile.css" />
 <#include "../cssLinks.ftl" /><#-- TODO: Debug (this is at the wrong relative path level) -->

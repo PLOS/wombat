@@ -4,7 +4,6 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.io.Closeables;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -12,6 +11,7 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.MemcacheClient;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.JsDirective;
@@ -22,10 +22,14 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
+import org.ambraproject.wombat.service.BuildInfoService;
+import org.ambraproject.wombat.service.BuildInfoServiceImpl;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SoaServiceImpl;
 import org.ambraproject.wombat.service.SolrSearchService;
+import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
@@ -68,16 +72,10 @@ public class SpringConfiguration {
     }
 
     JsonConfiguration runtimeConfiguration;
-    Reader reader = null;
-    boolean threw = true;
-    try {
-      reader = new BufferedReader(new FileReader(configPath));
+    try (Reader reader = new BufferedReader(new FileReader(configPath))) {
       runtimeConfiguration = new JsonConfiguration(yaml.loadAs(reader, JsonConfiguration.UserFields.class));
-      threw = false;
     } catch (JsonSyntaxException e) {
       throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
-    } finally {
-      Closeables.close(reader, threw);
     }
     runtimeConfiguration.validate();
     return runtimeConfiguration;
@@ -121,9 +119,15 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public BuildInfoDirective buildInfoDirective() {
+    return new BuildInfoDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
-                                           RenderJsDirective renderJsDirective) throws IOException {
+                                           RenderJsDirective renderJsDirective, BuildInfoDirective buildInfoDirective)
+      throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
     config.setPreTemplateLoaders(loader);
@@ -138,6 +142,7 @@ public class SpringConfiguration {
     variables.put("renderCssLinks", renderCssLinksDirective);
     variables.put("js", jsDirective);
     variables.put("renderJs", renderJsDirective);
+    variables.put("buildInfo", buildInfoDirective);
     config.setFreemarkerVariables(variables);
     return config;
   }
@@ -191,4 +196,22 @@ public class SpringConfiguration {
   public AssetService assetService() {
     return new AssetServiceImpl();
   }
+
+  @Bean
+  public HttpClientConnectionManager httpClientConnectionManager(RuntimeConfiguration runtimeConfiguration) {
+    PoolingHttpClientConnectionManager manager = new PoolingHttpClientConnectionManager();
+
+    Integer maxTotal = runtimeConfiguration.getConnectionPoolMaxTotal();
+    if (maxTotal != null) manager.setMaxTotal(maxTotal);
+    Integer defaultMaxPerRoute = runtimeConfiguration.getConnectionPoolDefaultMaxPerRoute();
+    if (maxTotal != null) manager.setDefaultMaxPerRoute(defaultMaxPerRoute);
+
+    return manager;
+  }
+
+  @Bean
+  public BuildInfoService buildInfoService() {
+    return new BuildInfoServiceImpl();
+  }
+
 }

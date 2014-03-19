@@ -4,13 +4,12 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Lists;
-import com.google.common.io.Closer;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
-import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicHeader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,37 +81,34 @@ public class FigureImageController extends WombatController {
                               HttpServletResponse responseToClient,
                               String assetId)
       throws IOException {
-    HttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient));
+    try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient))) {
 
-    /*
-     * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
-     * "content-disposition" headers, and headers that control reproxying.
-     */
-    for (Header headerFromService : responseFromService.getAllHeaders()) {
-      String name = headerFromService.getName();
-      if (ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
-        responseToClient.setHeader(name, headerFromService.getValue());
-      }
-    }
-
-    Closer closer = Closer.create();
-    try {
-      InputStream assetStream = responseFromService.getEntity().getContent();
-      if (assetStream == null) {
-        throw new EntityNotFoundException(assetId);
-      }
-      closer.register(assetStream);
       /*
-       * In a reproxying case, the asset stream might be empty. It might be a performance win to look ahead and avoid
-       * opening an output stream if there's nothing to send, but for now just let IOUtils.copy handle it regardless.
+       * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
+       * "content-disposition" headers, and headers that control reproxying.
        */
+      for (Header headerFromService : responseFromService.getAllHeaders()) {
+        String name = headerFromService.getName();
+        if (ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
+          responseToClient.setHeader(name, headerFromService.getValue());
+        }
+      }
 
-      OutputStream responseStream = closer.register(responseToClient.getOutputStream());
-      IOUtils.copy(assetStream, responseStream); // buffered
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
+      try (InputStream assetStream = responseFromService.getEntity().getContent()) {
+        if (assetStream == null) {
+          throw new EntityNotFoundException(assetId);
+        }
+
+        /*
+         * In a reproxying case, the asset stream might be empty. It might be a performance win to look ahead and avoid
+         * opening an output stream if there's nothing to send, but for now just let IOUtils.copy handle it regardless.
+         */
+        try (OutputStream responseStream = responseToClient.getOutputStream()) {
+          IOUtils.copy(assetStream, responseStream); // buffered
+        }
+      }
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
     }
   }
 
@@ -142,7 +138,12 @@ public class FigureImageController extends WombatController {
                                @RequestParam("size") String figureSize)
       throws IOException {
     requireNonemptyParameter(figureId);
-    Map<String, ?> assetMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+    Map<String, ?> assetMetadata;
+    try {
+      assetMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
+    }
 
     List<String> pathToFigureObject = ORIGINAL_FIGURE.equals(figureSize)
         ? ORIGINAL_FIGURE_PATH : ImmutableList.of("thumbnails", figureSize);

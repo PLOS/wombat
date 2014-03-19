@@ -58,6 +58,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
     private String solrServer;
     private String memcachedHost;
     private Integer memcachedPort;
+    private Map<String, ?> httpConnectionPool;
     private String cacheAppPrefix;
     private Boolean devModeAssets;
     private String compiledAssetDir;
@@ -78,6 +79,10 @@ public class JsonConfiguration implements RuntimeConfiguration {
 
     public void setMemcachedPort(Integer memcachedPort) {
       this.memcachedPort = memcachedPort;
+    }
+
+    public void setHttpConnectionPool(Map<String, ?> httpConnectionPool) {
+      this.httpConnectionPool = httpConnectionPool;
     }
 
     public void setCacheAppPrefix(String cacheAppPrefix) {
@@ -163,6 +168,16 @@ public class JsonConfiguration implements RuntimeConfiguration {
   @Override
   public int getMemcachedPort() {
     return uf.memcachedPort == null ? -1 : uf.memcachedPort;
+  }
+
+  @Override
+  public Integer getConnectionPoolMaxTotal() {
+    return uf.httpConnectionPool == null ? null : (Integer) uf.httpConnectionPool.get("maxTotal");
+  }
+
+  @Override
+  public Integer getConnectionPoolDefaultMaxPerRoute() {
+    return uf.httpConnectionPool == null ? null : (Integer) uf.httpConnectionPool.get("defaultMaxPerRoute");
   }
 
   /**

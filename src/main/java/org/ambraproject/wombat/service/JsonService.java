@@ -15,17 +15,17 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import com.google.common.io.Closer;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.BufferedInputStream;
@@ -49,8 +49,13 @@ public abstract class JsonService {
   @Autowired
   protected Gson gson;
 
+  @Autowired
+  private HttpClientConnectionManager httpClientConnectionManager;
+
   /**
    * Send a ReST request and open a stream as the response.
+   * <p/>
+   * The caller must close the stream when it is done reading. This is important for connection pooling.
    *
    * @param targetUri the URI to which to send the REST request
    * @return a stream to the response
@@ -59,16 +64,30 @@ public abstract class JsonService {
    * @throws EntityNotFoundException if the object at the address does not exist
    */
   protected InputStream requestStream(URI targetUri) throws IOException {
-    HttpResponse response = makeRequest(targetUri);
-    HttpEntity entity = response.getEntity();
-    if (entity == null) {
-      throw new RuntimeException("No response");
+    // We must leave the response open if we return a valid stream, but must close it otherwise.
+    boolean returningResponse = false;
+    CloseableHttpResponse response = null;
+    try {
+      response = makeRequest(targetUri);
+      HttpEntity entity = response.getEntity();
+      if (entity == null) {
+        throw new RuntimeException("No response");
+      }
+      returningResponse = true;
+      return entity.getContent();
+    } finally {
+      if (!returningResponse && response != null) {
+        response.close();
+      }
     }
-    return entity.getContent();
   }
 
   /**
    * Makes a request to the given URI, checks for response codes 400 or above, and returns the response.
+   * <p/>
+   * The caller <em>must</em> either close the returned {@code CloseableHttpResponse} object or close the {@code
+   * InputStream} to the response body (i.e., {@code CloseableHttpResponse.getEntity().getContent()}). This is very
+   * important, because leaving responses hanging open can starve the connection pool and cause horrible timeouts.
    *
    * @param targetUri the URI to which to send the request
    * @param headers   headers to add to the request, if any
@@ -77,28 +96,46 @@ public abstract class JsonService {
    * @throws NullPointerException    if the address is null
    * @throws EntityNotFoundException if the object at the address does not exist
    */
-  protected HttpResponse makeRequest(URI targetUri, Header... headers) throws IOException {
-    HttpClient client = new DefaultHttpClient();
+  protected CloseableHttpResponse makeRequest(URI targetUri, Header... headers) throws IOException {
+    // Don't close the client, as this shuts down the connection pool. Do close every response or its entity stream.
+    CloseableHttpClient client = createClient();
     HttpGet get = new HttpGet(targetUri);
     for (Header header : headers) {
       get.setHeader(header);
     }
-    HttpResponse response = client.execute(get);
-    StatusLine statusLine = response.getStatusLine();
-    if (statusLine.getStatusCode() >= 400) {
-      String address = targetUri.getPath();
-      if (!Strings.isNullOrEmpty(targetUri.getQuery())) {
-        address += "?" + targetUri.getQuery();
+
+    // We want to return an unclosed response, so close the response only if we throw an exception.
+    boolean returningResponse = false;
+    CloseableHttpResponse response = null;
+    try {
+      response = client.execute(get);
+      StatusLine statusLine = response.getStatusLine();
+      if (statusLine.getStatusCode() >= 400) {
+        String address = targetUri.getPath();
+        if (!Strings.isNullOrEmpty(targetUri.getQuery())) {
+          address += "?" + targetUri.getQuery();
+        }
+        if (statusLine.getStatusCode() == 404) {
+          throw new EntityNotFoundException(address);
+        } else {
+          String message = String.format("Request to \"%s\" failed (%d): %s",
+              address, statusLine.getStatusCode(), statusLine.getReasonPhrase());
+          throw new RuntimeException(message);
+        }
       }
-      if (statusLine.getStatusCode() == 404) {
-        throw new EntityNotFoundException(address);
-      } else {
-        String message = String.format("Request to \"%s\" failed (%d): %s",
-            address, statusLine.getStatusCode(), statusLine.getReasonPhrase());
-        throw new RuntimeException(message);
+      returningResponse = true;
+      return response;
+    } finally {
+      if (!returningResponse && response != null) {
+        response.close();
       }
     }
-    return response;
+  }
+
+  private CloseableHttpClient createClient() {
+    return HttpClientBuilder.create()
+        .setConnectionManager(httpClientConnectionManager)
+        .build();
   }
 
   /**
@@ -115,20 +152,11 @@ public abstract class JsonService {
    */
   protected <T> T requestObject(URI uri, Class<T> responseClass) throws IOException {
     Preconditions.checkNotNull(responseClass);
-    Closer closer = Closer.create();
-    try {
-      InputStream stream = closer.register(new BufferedInputStream(requestStream(uri)));
-      Reader reader = closer.register(new InputStreamReader(stream));
-      try {
-        return gson.fromJson(reader, responseClass);
-      } catch (JsonSyntaxException e) {
-        String message = String.format("Could not deserialize %s from stream at: %s", responseClass.getName(), uri);
-        throw new RuntimeException(message, e);
-      }
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
+    try (Reader reader = new InputStreamReader(new BufferedInputStream(requestStream(uri)))) {
+      return gson.fromJson(reader, responseClass);
+    } catch (JsonSyntaxException e) {
+      String message = String.format("Could not deserialize %s from stream at: %s", responseClass.getName(), uri);
+      throw new RuntimeException(message, e);
     }
   }
 
@@ -144,9 +172,7 @@ public abstract class JsonService {
     URI targetUri;
     try {
       targetUri = new URL(server, Preconditions.checkNotNull(address)).toURI();
-    } catch (MalformedURLException e) {
-      throw new IllegalArgumentException(e);
-    } catch (URISyntaxException e) {
+    } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }
     return targetUri;

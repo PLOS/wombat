@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.Theme;
 import org.ambraproject.wombat.service.AssetService;
 import org.apache.commons.io.IOUtils;
@@ -63,15 +62,15 @@ public class StaticFileController extends WombatController {
    */
   private void serveFile(String filePath, HttpServletRequest request, HttpServletResponse response, Theme theme)
       throws IOException {
-    Closer closer = Closer.create();
-    try {
-      InputStream inputStream = theme.getStaticResource(filePath);
+    try (InputStream inputStream = theme.getStaticResource(filePath)) {
       if (inputStream == null) {
         // TODO: Forward to user-friendly 404 page
         response.setStatus(HttpStatus.NOT_FOUND.value());
 
         // Just for debugging
-        closer.register(response.getOutputStream()).write("Not found!".getBytes());
+        try (OutputStream outputStream = response.getOutputStream()) {
+          outputStream.write("Not found!".getBytes());
+        }
       } else {
         Theme.ResourceAttributes attributes = theme.getResourceAttributes(filePath);
 
@@ -84,22 +83,21 @@ public class StaticFileController extends WombatController {
         if (checkIfModifiedSince(request, attributes.lastModified, etag)) {
           response.setHeader("Etag", etag);
           setLastModified(response, attributes.lastModified);
-          closer.register(inputStream);
-          OutputStream outputStream = closer.register(response.getOutputStream());
-          IOUtils.copy(inputStream, outputStream);
+          try (OutputStream outputStream = response.getOutputStream()) {
+            IOUtils.copy(inputStream, outputStream);
+          }
         } else {
           response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
           response.setHeader("Etag", etag);
         }
       }
-    } catch (Throwable t) {
-      throw closer.rethrow(t);
-    } finally {
-      closer.close();
     }
   }
 
-  private static final Pattern COMPILED_ASSET_PATTERN = Pattern.compile("static/compiled/asset_(\\w+)\\.\\w+");
+  private static final Pattern COMPILED_ASSET_PATTERN = Pattern.compile(""
+      + "static/compiled/asset_"
+      + "([+\\w]+)" // The asset hash in modified base 64. May contain '_' and '+' chars. ('_' replaces '/'; see getFingerprint)
+      + "\\.\\w+"); // The file extension.
 
   /**
    * Serves a .js or .css asset that has already been concatenated and minified. See {@link AssetService} for details on
@@ -110,7 +108,7 @@ public class StaticFileController extends WombatController {
    * @throws IOException
    */
   private void serveCompiledAsset(String filePath, HttpServletRequest request, HttpServletResponse response)
-    throws IOException {
+      throws IOException {
 
     // The hash is already included in the compiled asset's filename, so we take advantage
     // of that here and use it as the etag.
@@ -123,7 +121,7 @@ public class StaticFileController extends WombatController {
     // This is a "strong" etag since it's based on a fingerprint of the contents.
     String etag = String.format("\"%s\"", matcher.group(1));
     long lastModified = assetService.getLastModifiedTime(basename);
-    if (checkIfModifiedSince(request,lastModified, etag)) {
+    if (checkIfModifiedSince(request, lastModified, etag)) {
       response.setHeader("Etag", etag);
       setLastModified(response, lastModified);
       assetService.serveCompiledAsset(basename, response.getOutputStream());
@@ -136,7 +134,7 @@ public class StaticFileController extends WombatController {
   /**
    * Sets the "Last-Modified" header in the response.
    *
-   * @param response HttpServletResponse
+   * @param response     HttpServletResponse
    * @param lastModified timestamp to set the header to
    */
   private void setLastModified(HttpServletResponse response, long lastModified) {
@@ -148,12 +146,12 @@ public class StaticFileController extends WombatController {
   }
 
   /**
-   * Checks to see if we should serve the contents of the static resource, or just return a 304 response
-   * with no body, based on cache-related request headers.
+   * Checks to see if we should serve the contents of the static resource, or just return a 304 response with no body,
+   * based on cache-related request headers.
    *
-   * @param request HttpServletRequest we will check for cache headers
+   * @param request      HttpServletRequest we will check for cache headers
    * @param lastModified last modified timestamp of the actual resource on the server
-   * @param etag etag generated from the actual resource on the server
+   * @param etag         etag generated from the actual resource on the server
    * @return true if we should serve the bytes of the resource, false if we should return 304.
    */
   private boolean checkIfModifiedSince(HttpServletRequest request, long lastModified, String etag) {

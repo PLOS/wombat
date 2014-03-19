@@ -45,14 +45,6 @@ public abstract class AssetDirective {
       throws TemplateException, IOException {
     assetPath = assetPath.trim();
 
-    // The @pathUp macro, which we often use to generate assetPath, adds quotes.
-    // Strip them off if present.
-    if (assetPath.charAt(0) == '"') {
-      assetPath = assetPath.substring(1);
-    }
-    if (assetPath.charAt(assetPath.length() - 1) == '"') {
-      assetPath = assetPath.substring(0, assetPath.length() - 1);
-    }
     if (runtimeConfiguration.devModeAssets()) {
       environment.getOut().write(getHtml(assetPath));
     } else {

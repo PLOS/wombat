@@ -34,6 +34,8 @@ class FooterTestLinks(unittest.TestCase):
     except AssertionError as e: self.verificationErrors.append(str(e))
     try: self.assertEqual("Media Inquiries", driver.find_element_by_link_text("Media Inquiries").text)
     except AssertionError as e: self.verificationErrors.append(str(e))
+    try: self.assertTrue("regexp:^Version [0-9]\.{2}[0-9].*/[0-9]\.{3}.*", driver.find_element_by_xpath("/html/body/div/footer/p[2]").text)
+    except AssertionError as e: self.verificationErrors.append(str(e))
     driver.find_element_by_link_text("Full Site").click()
     try: self.assertTrue(self.is_element_present(By.LINK_TEXT, "create account"))
     except AssertionError as e: self.verificationErrors.append(str(e))

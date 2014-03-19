@@ -17,14 +17,14 @@
     </div>
   </div>
 
-  <div id="pagehdr-wrap">
+  <div id="pagehdr-wrap"  class="highlight-border">
     <div id="pagehdr">
       <div id="user" class="nav">
         <ul>
           <li><a href="http://www.plos.org">plos.org</a></li>
           <li><a href="https://plosone-rskonnord:43/ambra-registration/register.action">create account</a></li>
           <li class="btn-style"><a
-              href="/user/secure/secureRedirect.action?goTo=%2Fhome.action">sign in</a>
+              href="/user/secure/secureRedirect.action?goTo=%2Fhome.action" class="highlight-background">sign in</a>
           </li>
         </ul>
       </div>
@@ -36,8 +36,7 @@
         <form name="searchForm" action="/search/simple?noSearchFlag=true&amp;query=" method="get">
           <input type="hidden" name="from" value="globalSimpleSearch" id="from"/><input type="hidden"
                                                                                         name="filterJournals"
-                                                                                        value="PLoSBiology"
-                                                                                        id="filterJournals"/>
+                                                                       id="filterJournals"/>
           <fieldset>
             <legend>Search</legend>
             <label for="search">Search</label>

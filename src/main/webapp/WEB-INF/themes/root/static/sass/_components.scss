@@ -6,7 +6,7 @@
 @import "sections/header"; //TODO should these be here or in screen.scss?
 
 
-@mixin rounded-pill($background: $highlight, $padding: $pad-default, $border-radius: $border-radius-default){
+@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default){
     background: $background;
     padding: $padding;
     border-radius: $border-radius;

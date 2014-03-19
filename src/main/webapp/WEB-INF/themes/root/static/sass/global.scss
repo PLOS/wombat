@@ -540,7 +540,8 @@ ul.style-a li {
 }
 
 #user .btn-style a {
-  background: #f8af2d;
+  @extend journal-background;
+  background: $clr-highlight;
   border-radius: 0 0 4px 4px;
 }
 
@@ -1615,7 +1616,8 @@ span.author span.rel-footnote {
 }
 
 .btn-reveal.reveal .btn {
-  background-color: #3C63AF;
+ // background-color: $clr-highlight;
+  @extend .journal-background;
   color: #FFF;
 }
 
@@ -1625,8 +1627,9 @@ span.author span.rel-footnote {
 }
 
 .btn-reveal .content {
+  @extend .journal-background;
   display: none;
-  background: #3c63af;
+  background: $clr-highlight;
   color: #fff;
   border-radius: 4px;
   position: absolute;
@@ -1643,7 +1646,8 @@ span.author span.rel-footnote {
 }
 
 html:not(.js) .btn-reveal:hover .btn {
-  background: #3c63af;
+  @extend .journal-background;
+  background: $clr-highlight;
   color: #fff;
 }
 
@@ -1904,7 +1908,8 @@ html:not(.js) .btn-reveal:hover .content {
 
 #title-banner .btn-g a.btn-close:hover {
   background-position: 0 -24px;
-  background-color: #3C63AF;
+  @extend .journal-background;
+  background: $clr-highlight;
 }
 
 #banner-ftr {

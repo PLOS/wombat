@@ -15,11 +15,11 @@
   <div id="headlines">
     <div class="tab-block">
 
-      <div class="nav tab-nav">
+      <div class="nav tab-nav ">
         <ul>
-          <li><a href="#tab-01" data-loadurl="/recentArticles.action">most recent</a></li>
-          <li><a href="#tab-02" data-loadurl="/mostViewed.action">most viewed</a></li>
-          <li><a href="#tab-03" data-loadurl="/mostCommented.action">featured discussions</a></li>
+          <li><a href="#tab-01" class="highlight-background" data-loadurl="/recentArticles.action">most recent</a></li>
+          <li><a href="#tab-02" class="highlight-background" data-loadurl="/mostViewed.action">most viewed</a></li>
+          <li><a href="#tab-03" class="highlight-background" data-loadurl="/mostCommented.action">featured discussions</a></li>
         </ul>
       </div>
 

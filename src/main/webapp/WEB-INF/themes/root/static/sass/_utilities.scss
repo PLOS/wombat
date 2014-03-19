@@ -6,3 +6,7 @@
 //compass overides
 
 $default-border-radius: $border-radius-default; // that name space convention in compass just really bugs me.
+
+.highlight-background {
+  background: $clr-highlight;
+}

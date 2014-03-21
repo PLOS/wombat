@@ -342,7 +342,7 @@
 
 <#include "footer/footer.ftl" />
 
-<script type="text/javascript" src="static/js/jquery-1.8.1.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="static/js/ga.js"></script>
 <script type="text/javascript" src="static/js/jquery.hoverIntent.js"></script>
 <script type="text/javascript" src="static/js/jquery.placeholder.js"></script>
@@ -354,7 +354,6 @@
 <script type="text/javascript" src="static/js/figviewer.js"></script>
 <script type="text/javascript" src="static/js/global.js"></script>
 <script type="text/javascript" src="static/js/jquery.touchswipe.js"></script>
-<script type="text/javascript" src="static/js/alm.js"></script>
 
 </body>
 </html>

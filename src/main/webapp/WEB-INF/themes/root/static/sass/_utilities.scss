@@ -7,6 +7,42 @@
 
 $default-border-radius: $border-radius-default; // that name space convention in compass just really bugs me.
 
+
+// color mixin:
+@mixin highlight-color($clr-highlight: $plos-default) {
+  color: $clr-highlight;
+}
+
+@mixin highlight-background(
+$clr-highlight: $plos-default,
+$clr-highlight-hover: $plos-default,
+$clr-highlight-text: $white
+) {
+  background: $clr-highlight;
+  color: $clr-highlight-text;
+  &:hover {
+    background: $clr-highlight-hover;
+  }
+}
+
+@mixin highlight-border($clr-highlight: $plos-default) {
+  border-color: $clr-highlight;
+}
+
+// color extendibles
+
+.highlight-color {
+  color: $clr-highlight;
+}
+
 .highlight-background {
   background: $clr-highlight;
+  color: $clr-highlight-text;
+  &:hover {
+    background: $clr-highlight-hover;
+  }
+}
+
+.highlight-border {
+  border-color: $clr-highlight;
 }

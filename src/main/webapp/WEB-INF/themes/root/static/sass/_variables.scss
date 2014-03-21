@@ -24,10 +24,14 @@ $success: #16A127;
 
 //colors
 
-$clr-highlight: $plos-default;
+$clr-highlight: $plos-default !default;
+$clr-highlight-hover: $plos-default !default;
+$clr-highlight-text: $white !default;
+
 $clr-body-bg: $grey-light;
 $clr-panel: $white;
 $clr-separator: $grey-med-light;
+
 
 $clr-link: $clr-highlight;
 $clr-body-text: $grey-dark;

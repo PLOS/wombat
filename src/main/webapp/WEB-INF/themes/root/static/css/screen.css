@@ -249,9 +249,21 @@ dd {
 /*      This file has wombat specific mixins and extensible styles
  *
  */
-/* line 10, ../sass/_utilities.scss */
+/* line 34, ../sass/_utilities.scss */
+.highlight-color {
+  color: #3c63af; }
+
+/* line 38, ../sass/_utilities.scss */
 .highlight-background {
-  background: #3c63af; }
+  background: #3c63af;
+  color: white; }
+  /* line 41, ../sass/_utilities.scss */
+  .highlight-background:hover {
+    background: #3c63af; }
+
+/* line 46, ../sass/_utilities.scss */
+.highlight-border {
+  border-color: #3c63af; }
 
 /* 
  *

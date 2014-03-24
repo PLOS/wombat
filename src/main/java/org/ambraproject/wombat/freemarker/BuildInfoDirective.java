@@ -34,20 +34,24 @@ public class BuildInfoDirective implements TemplateDirectiveModel {
         throw new TemplateModelException("component required");
     }
 
-    String field = params.get("field").toString();
     String value;
-    switch (field) {
-      case "version":
-        value = info.getVersion();
-        break;
-      case "date":
-        value = info.getDate();
-        break;
-      case "user":
-        value = info.getUser();
-        break;
-      default:
-        throw new TemplateModelException("field required");
+    if (info == null) {
+      value = null;
+    } else {
+      String field = params.get("field").toString();
+      switch (field) {
+        case "version":
+          value = info.getVersion();
+          break;
+        case "date":
+          value = info.getDate();
+          break;
+        case "user":
+          value = info.getUser();
+          break;
+        default:
+          throw new TemplateModelException("field required");
+      }
     }
 
     env.getOut().write(value != null ? value : "?");

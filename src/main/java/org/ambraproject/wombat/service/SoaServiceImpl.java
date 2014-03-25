@@ -69,6 +69,7 @@ public class SoaServiceImpl extends JsonService implements SoaService {
     }
   }
 
+  @Override
   public <T> T requestCachedStream(String cacheKey, String address, CacheCallback<? extends T> callback) throws IOException {
     Preconditions.checkNotNull(cacheKey);
     Preconditions.checkNotNull(address);

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Map;
 
 /**
  * A service for retrieving data from the SOA's RESTful server.
@@ -90,4 +91,13 @@ public interface SoaService {
    */
   public abstract CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException;
 
+  /**
+   * Requests metadata about an article.
+   *
+   * @param articleId DOI string
+   * @return deserialized JSON data structure as returned by the SOA layer
+   * @throws IOException
+   */
+  // TODO: consider moving this somewhere else (there's no ArticleService right now, just an ArticleTransformService).
+  public abstract Map<?, ?> requestArticleMetadata(String articleId) throws IOException;
 }

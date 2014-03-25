@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URI;
 import java.util.Calendar;
+import java.util.Map;
 
 public class SoaServiceImpl extends JsonService implements SoaService {
 
@@ -74,6 +75,14 @@ public class SoaServiceImpl extends JsonService implements SoaService {
   @Override
   public CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException {
     return makeRequest(buildUri("assetfiles/" + assetId), headers);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
+    return requestObject(String.format("articles/%s?excludeCitations=true", articleId), Map.class);
   }
 
   private URI buildUri(String address) {

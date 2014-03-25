@@ -31,7 +31,8 @@ public class SoaServiceImpl extends JsonService implements SoaService {
 
   @Override
   public <T> T requestObject(String address, Class<T> responseClass) throws IOException {
-    return requestObject(buildUri(address), responseClass);
+    // Just try to cache everything. We may want to narrow this in the future.
+    return requestCachedObject("obj:" + address, address, responseClass);
   }
 
 

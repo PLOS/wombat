@@ -5,8 +5,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
-import java.util.Calendar;
 
 /**
  * A service for retrieving data from the SOA's RESTful server.
@@ -42,40 +40,24 @@ public interface SoaService {
    */
   public abstract <T> T requestObject(String address, Class<T> responseClass) throws IOException;
 
-  /**
-   * Simple wrapper around a timestamp and an object for the return type of requestObjectIfModifiedSince.
-   *
-   * @param <T>
-   */
-  public static class IfModifiedSinceResult<T> implements Serializable {
-
-    /**
-     * The result of the lookup to the SOA service.
-     */
-    public T result;
-
-    /**
-     * The last modification time for the object returned by the SOA service.
-     */
-    public Calendar lastModified;
+  public static interface CacheCallback<T> {
+    public abstract T call(InputStream stream) throws IOException;
   }
 
   /**
-   * Requests an object, using the "If-Modified-Since" header in the request so that the object will only be returned if
-   * it was modified after the given time.  Otherwise, the result field of the return type will be null.  This is useful
-   * when results from the SOA service are being added to a cache, and we only want to retrieve the result if it is
-   * newer than the version stored in the cache.
+   * Get a stream either through a REST request or from the cache. If there is a cached value, and the REST service does
+   * not indicate that the value has been modified since the value was inserted into the cache, return that value. Else,
+   * query the service for a new stream and convert that stream to a cacheable return value using the provided
+   * callback.
    *
-   * @param address       the path to which to send the REST request
-   * @param responseClass the object type into which to serialize the JSON response
-   * @param lastModified  the object will be returned iff the SOA server indicates that it was modified after this
-   *                      timestamp
-   * @param <T>           the type of {@code responseClass}
-   * @return an instance of {@link IfModifiedSinceResult}
+   * @param cacheKey the cache key at which to retrieve and store the value
+   * @param address  the address to query the SOA service if the value is not cached
+   * @param callback how to deserialize a new value from the stream, to return and insert into the cache
+   * @param <T>      the type of value to deserialize and return
+   * @return the value from the service or cache
    * @throws IOException
    */
-  public abstract <T> IfModifiedSinceResult<T> requestObjectIfModifiedSince(String address, Class<T> responseClass,
-                                                                            Calendar lastModified) throws IOException;
+  public abstract <T> T requestCachedStream(String cacheKey, String address, CacheCallback<? extends T> callback) throws IOException;
 
   /**
    * Requests an asset, returning both the headers and stream.

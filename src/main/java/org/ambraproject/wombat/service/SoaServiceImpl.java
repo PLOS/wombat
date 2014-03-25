@@ -43,8 +43,8 @@ public class SoaServiceImpl extends JsonService implements SoaService {
     private final InputStream stream;
 
     private TimestampedStream(Calendar timestamp, InputStream stream) {
-      this.timestamp = Preconditions.checkNotNull(timestamp);
-      this.stream = stream; // nullable
+      this.timestamp = timestamp; // null if the service does not support the If-Modified-Since header for this request
+      this.stream = stream; // null if the object has not been modified since a given time
     }
 
     @Override
@@ -87,7 +87,9 @@ public class SoaServiceImpl extends JsonService implements SoaService {
          InputStream streamFromServer = fromServer.stream) {
       if (streamFromServer != null) {
         T value = callback.call(streamFromServer);
-        cache.put(cacheKey, new CachedObject<>(fromServer.timestamp, value));
+        if (fromServer.timestamp != null) {
+          cache.put(cacheKey, new CachedObject<>(fromServer.timestamp, value));
+        }
         return value;
       } else {
         return cached.object;
@@ -115,6 +117,11 @@ public class SoaServiceImpl extends JsonService implements SoaService {
     try {
       response = makeRequest(uri, new BasicHeader("If-Modified-Since", HttpDateUtil.format(lastModified)));
       Header[] lastModifiedHeaders = response.getHeaders("Last-Modified");
+      if (lastModifiedHeaders.length == 0) {
+        TimestampedStream timestamped = new TimestampedStream(null, new BufferedInputStream(response.getEntity().getContent()));
+        returningStream = true;
+        return timestamped;
+      }
       if (lastModifiedHeaders.length != 1) {
         throw new RuntimeException("Expecting 1 Last-Modified header, got " + lastModifiedHeaders.length);
       }

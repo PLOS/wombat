@@ -137,6 +137,16 @@ public class SoaServiceImpl extends JsonService implements SoaService {
     }
   }
 
+  @Override
+  public <T> T requestCachedObject(String cacheKey, final String address, final Class<T> responseClass) throws IOException {
+    Preconditions.checkNotNull(responseClass);
+    return requestCachedStream(cacheKey, address, new CacheCallback<T>() {
+      @Override
+      public T call(InputStream stream) throws IOException {
+        return deserializeStream(responseClass, stream, address);
+      }
+    });
+  }
 
   /**
    * {@inheritDoc}

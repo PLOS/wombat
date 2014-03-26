@@ -1984,7 +1984,7 @@
       <strong>
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat($pubAppContext,'/article/fetchSingleRepresentation.action?uri=',$objURI)"/>
+            <xsl:value-of select="concat('article/figure?id=', $objURI)"/>
           </xsl:attribute>
           <xsl:apply-templates select="label"/>
         </xsl:element>

@@ -202,7 +202,7 @@ public class SpringConfiguration {
     Integer maxTotal = runtimeConfiguration.getConnectionPoolMaxTotal();
     if (maxTotal != null) manager.setMaxTotal(maxTotal);
     Integer defaultMaxPerRoute = runtimeConfiguration.getConnectionPoolDefaultMaxPerRoute();
-    if (maxTotal != null) manager.setDefaultMaxPerRoute(defaultMaxPerRoute);
+    if (defaultMaxPerRoute != null) manager.setDefaultMaxPerRoute(defaultMaxPerRoute);
 
     return manager;
   }

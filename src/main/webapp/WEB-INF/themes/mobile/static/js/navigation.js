@@ -24,7 +24,7 @@ var AmbraNavigation = function () {
     }
 
     // Build the accordion item
-    var $accordionTitle = $('<a/>').text(titleHtml);
+    var $accordionTitle = $('<a/>').html(titleHtml);
     var $accordionContent = $('<section/>').addClass('accordion-content');
     $accordionContent.append($section); // The title was removed; use what remains as the body
     var $accordionItem = $('<li/>').addClass('accordion-item');

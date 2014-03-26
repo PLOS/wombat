@@ -63,9 +63,9 @@ public class FigurePageController extends WombatController {
                                   @RequestParam("doi") String articleId)
       throws IOException {
     requireNonemptyParameter(articleId);
-    Map<String, Object> articleMetadata;
+    Map<?, ?> articleMetadata;
     try {
-      articleMetadata = soaService.requestObject("articles/" + articleId, Map.class);
+      articleMetadata = soaService.requestArticleMetadata(articleId);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }

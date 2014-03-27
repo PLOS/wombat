@@ -7,7 +7,6 @@ import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
-import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
@@ -20,13 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.xml.transform.TransformerException;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
@@ -48,8 +46,6 @@ public class ArticleController extends WombatController {
   private SoaService soaService;
   @Autowired
   private ArticleTransformService articleTransformService;
-  @Autowired
-  private Cache cache;
 
   @RequestMapping("/{site}/article")
   public String renderArticle(Model model,
@@ -305,35 +301,24 @@ public class ArticleController extends WombatController {
    * @return String of the article HTML
    * @throws IOException
    */
-  private String getArticleHtml(String articleId, String site) throws IOException {
+  private String getArticleHtml(String articleId, final String site) throws IOException {
     Preconditions.checkNotNull(articleId);
     Preconditions.checkNotNull(site);
+
     String cacheKey = "html:" + articleId;
-    SoaService.IfModifiedSinceResult<String> cached = cache.get(cacheKey);
-    Calendar lastModified;
-    if (cached == null) {
-      lastModified = Calendar.getInstance();
-      lastModified.setTimeInMillis(0);  // Set to beginning of epoch since it's not in the cache
-    } else {
-      lastModified = cached.lastModified;
-    }
-
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
-    SoaService.IfModifiedSinceResult<String> fromServer = soaService.requestObjectIfModifiedSince(xmlAssetPath,
-        String.class, lastModified);
-    if (fromServer.result != null) {
-      StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-      try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-        articleTransformService.transform(site, new ByteArrayInputStream(fromServer.result.getBytes()), outputStream);
-      } catch (TransformerException e) {
-        throw new RuntimeException(e);
-      }
-      fromServer.result = articleHtml.toString();
-      cache.put(cacheKey, fromServer);
-      return fromServer.result;
 
-    } else {
-      return cached.result;
-    }
+    return soaService.requestCachedStream(cacheKey, xmlAssetPath, new SoaService.CacheCallback<String>() {
+      @Override
+      public String call(InputStream stream) throws IOException {
+        StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+        try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
+          articleTransformService.transform(site, stream, outputStream);
+        } catch (TransformerException e) {
+          throw new RuntimeException(e);
+        }
+        return articleHtml.toString();
+      }
+    });
   }
 }

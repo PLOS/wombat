@@ -28,7 +28,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -152,10 +151,26 @@ public abstract class JsonService {
    */
   protected <T> T requestObject(URI uri, Class<T> responseClass) throws IOException {
     Preconditions.checkNotNull(responseClass);
-    try (Reader reader = new InputStreamReader(new BufferedInputStream(requestStream(uri)))) {
+    try (InputStream stream = requestStream(uri)) {
+      return deserializeStream(responseClass, stream, uri);
+    }
+  }
+
+  /**
+   * Serialize the content of a stream to an object.
+   *
+   * @param responseClass the object type into which to serialize the JSON code
+   * @param stream        the source of the JSON code
+   * @param source        an object whose {@code toString()} describes where the JSON code came from (for logging only)
+   * @param <T>           the type of {@code responseClass}
+   * @return the deserialized object
+   * @throws IOException
+   */
+  protected <T> T deserializeStream(Class<T> responseClass, InputStream stream, Object source) throws IOException {
+    try (Reader reader = new InputStreamReader(stream)) {
       return gson.fromJson(reader, responseClass);
     } catch (JsonSyntaxException e) {
-      String message = String.format("Could not deserialize %s from stream at: %s", responseClass.getName(), uri);
+      String message = String.format("Could not deserialize %s from stream at: %s", responseClass.getName(), source);
       throw new RuntimeException(message, e);
     }
   }

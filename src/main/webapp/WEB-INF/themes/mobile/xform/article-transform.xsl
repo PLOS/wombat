@@ -1131,12 +1131,22 @@
           <xsl:value-of select="translate($figId, '.', '-')"/>
         </xsl:attribute>
         <figcaption>
-          <xsl:apply-templates select="label"/>
+          <span class="caption-label">
+            <xsl:apply-templates select="label"/>
+          </span>
           <xsl:if test="caption/title">
-            <span>
+            <span class="caption-title">
               <xsl:apply-templates select="caption/title"/>
             </span>
           </xsl:if>
+          <div class="caption-body">
+            <xsl:apply-templates select="caption/node()[not(self::title)]"/>
+            <xsl:if test="object-id[@pub-id-type='doi']">
+              <p class="caption-doi">
+                <xsl:apply-templates select="object-id[@pub-id-type='doi']"/>
+              </p>
+            </xsl:if>
+          </div>
           <a>
             <xsl:attribute name="href">
               <xsl:value-of select="concat('article/figure?id=', $imageURI)"/>

@@ -45,7 +45,6 @@ var SiteContent = function () {
     // attach event handlers for in-page links. this also wraps the handling
     // of showing references in the reference panel.
     $('a.xref').click(function (e) {
-      e.preventDefault();
       self.navigateToInPageLink($(e.target));
     });
 
@@ -340,13 +339,14 @@ var SiteContent = function () {
   };
 
   self.navigateToInPageLink = function ($clicked_el) {
+
     // grab the target href, which is the ID of the ref (duh).
     // note that the href is also already pre-formed for a DOM query for the 
     // element ID ('#test')
     var target_id = $clicked_el.attr('href');
-    // remove period in system-generated ref ID (it conflicts with the class designator)
-    target_id = target_id.replace(/\./, "\\.")
 
+    // remove period in system-generated ref ID (it conflicts with the class designator)
+    target_id = target_id.replace( /(:|\.|\[|\])/g, "\\$1" );
     var target_el = $(target_id);
 
     // handle special reference link case by testing to see if target_el is a 
@@ -360,6 +360,7 @@ var SiteContent = function () {
     } else {
       // figure out which accordion panel the target link is in.
       var panel_to_open = target_el.closest('li.accordion-item');
+
 
       // if accordion panel is already open, then 
       if (panel_to_open.hasClass('expanded')) {

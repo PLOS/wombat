@@ -1,4 +1,5 @@
 <#include "../macro/pathUp.ftl" />
+<#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 
 <head>
@@ -19,7 +20,7 @@
     }
   </style>
 
-  <title><@titleFormat title /></title>
+  <title><@titleFormat removeTags(title) /></title>
 <@cssLink target=pathUp(depth!0 "static/css/base.css") />
 <@cssLink target=pathUp(depth!0 "static/css/interface.css") />
 <@cssLink target=pathUp(depth!0 "static/css/mobile.css") />

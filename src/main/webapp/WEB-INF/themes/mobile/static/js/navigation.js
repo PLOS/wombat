@@ -114,7 +114,7 @@ var AmbraNavigation = function () {
 
     // If the URL specifies a particular section via an anchor, expand that section.
     // TODO: generalize this if we need it for more than just the abstract.
-    if (window.location.hash === '#abstract') {
+    if (window.location.hash === '#s5') {
       self.toggleMainAccordion($('a.expander:contains("Abstract")'));
     }
 
@@ -181,10 +181,13 @@ var AmbraNavigation = function () {
     if ($accordionListItem.hasClass('expanded')) {
       $accordionListItem.removeClass('expanded');
       $accordionListItem.children('.accordion-content').slideUp(500);
+
     } else {
       // first collapse any open accordions, and then show this one.
       $accordionListItem.addClass('expanded');
-      $accordionListItem.children('.accordion-content').slideDown(500);
+      $accordionListItem.children('.accordion-content').slideDown(500,
+       function(){ console.log("location ");location.href+="#eqn2"; }
+      );
     }
   };
 

@@ -346,15 +346,15 @@ var SiteContent = function () {
     var target_id = $clicked_el.attr('href');
 
     // remove period in system-generated ref ID (it conflicts with the class designator)
-    target_id = target_id.replace( /(:|\.|\[|\])/g, "\\$1" );
-    var target_el = $(target_id);
+    var target_id_replaced = target_id.replace( /(:|\.|\[|\])/g, "\\$1" );
+    var target_el = $( target_id_replaced);
 
     // handle special reference link case by testing to see if target_el is a 
     // child of the reference list
     var references_test = target_el.closest('ol.references');
 
     if (references_test.length) {
-      this.showReference(target_id);
+      this.showReference(target_id_replaced);
 
       // all other in-page links scroll to target
     } else {
@@ -371,7 +371,10 @@ var SiteContent = function () {
         // toggleMainAccordion the 'a' element as that's what it expects.
         // pass target element to toggleMainAccordion as second arg to indicate 
         // we want to scroll to it
-        ambraNavigation.toggleMainAccordion(panel_to_open.children('a.expander'), target_el);
+        ambraNavigation.toggleMainAccordion(panel_to_open.children('a.expander'), target_id);
+        console.log("opened accordian ");
+        location.href+=target_id;
+        console.log("id: " + target_id);
       }
     }
 

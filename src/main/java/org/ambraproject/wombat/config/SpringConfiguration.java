@@ -14,6 +14,7 @@ import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.JsDirective;
+import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
 import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.RenderJsDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
@@ -136,6 +137,7 @@ public class SpringConfiguration {
     Map<String, Object> variables = new HashMap<>();
     variables.put("formatJsonDate", new Iso8601DateDirective());
     variables.put("replaceParams", new ReplaceParametersDirective());
+    variables.put("randomInteger", new RandomIntegerDirective());
     variables.put("cssLink", cssLinkDirective);
     variables.put("renderCssLinks", renderCssLinksDirective);
     variables.put("js", jsDirective);

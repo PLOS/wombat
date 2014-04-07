@@ -119,7 +119,7 @@ public abstract class JsonService {
         } else {
           String message = String.format("Request to \"%s\" failed (%d): %s",
               address, statusLine.getStatusCode(), statusLine.getReasonPhrase());
-          throw new RuntimeException(message);
+          throw new ServiceRequestException(message);
         }
       }
       returningResponse = true;

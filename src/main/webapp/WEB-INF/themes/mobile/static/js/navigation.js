@@ -2,6 +2,7 @@
 
 var AmbraNavigation = function () {
   var self = this;
+  var animation_time = '500';
 
   function buildAccordionItem($section) {
     // Find the title element from within the section
@@ -180,19 +181,25 @@ var AmbraNavigation = function () {
     // collapse this accordion
     if ($accordionListItem.hasClass('expanded')) {
       $accordionListItem.removeClass('expanded');
-      $accordionListItem.children('.accordion-content').slideUp(500);
+      $accordionListItem.children('.accordion-content').slideUp(animation_time);
 
     } else {
       // first collapse any open accordions, and then show this one.
       $accordionListItem.addClass('expanded');
-      $accordionListItem.children('.accordion-content').slideDown(500,
-       function(){ console.log("location ");location.href+="#eqn2"; }
+      $accordionListItem.children('.accordion-content').slideDown(animation_time,
+        // if there is a scroll target passed then
+       function(){ if ($scroll_target){
+         $('html, body').animate({
+           scrollTop: $scroll_target.offset().top
+         }, 500);
+         }
+        }
+
       );
     }
   };
 
   self.scrollToTop = function () {
-
     if (Modernizr.android && !Modernizr.positionfixed) { //account for an infrequent Android < 3 bug where window animates to the top, but then jumps back to the bottom
       $('body').scrollTop(0);
     } else {

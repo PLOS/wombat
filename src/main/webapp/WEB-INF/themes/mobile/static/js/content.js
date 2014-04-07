@@ -371,10 +371,10 @@ var SiteContent = function () {
         // toggleMainAccordion the 'a' element as that's what it expects.
         // pass target element to toggleMainAccordion as second arg to indicate 
         // we want to scroll to it
-        ambraNavigation.toggleMainAccordion(panel_to_open.children('a.expander'), target_id);
-        console.log("opened accordian ");
-        location.href+=target_id;
-        console.log("id: " + target_id);
+        ambraNavigation.toggleMainAccordion(panel_to_open.children('a.expander'), target_el);
+
+
+
       }
     }
 

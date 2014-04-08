@@ -7,6 +7,8 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicHeader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.BufferedInputStream;
@@ -19,6 +21,7 @@ import java.util.Calendar;
 import java.util.Map;
 
 public class SoaServiceImpl extends JsonService implements SoaService {
+  private static final Logger log = LoggerFactory.getLogger(SoaServiceImpl.class);
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
@@ -77,7 +80,15 @@ public class SoaServiceImpl extends JsonService implements SoaService {
     Preconditions.checkNotNull(address);
     Preconditions.checkNotNull(callback);
 
-    CachedObject<T> cached = cache.get(cacheKey);
+    CachedObject<T> cached;
+    try {
+      cached = cache.get(cacheKey);
+    } catch (Exception e) {
+      // Unexpected, but to degrade gracefully, treat it the same as a cache miss
+      log.error("Error accessing cache", e);
+      cached = null;
+    }
+
     Calendar lastModified;
     if (cached == null) {
       lastModified = Calendar.getInstance();

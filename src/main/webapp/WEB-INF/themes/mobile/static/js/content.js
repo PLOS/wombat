@@ -52,6 +52,16 @@ var SiteContent = function () {
     if ($collapsible.length) {
       $collapsible.collapsiblePanel();
     }
+
+    // "Take me to the desktop site" link.  We link to the current page with an extra URL parameter.
+    // Apache will detect this param, redirect to the corresponding desktop ambra page, and set a
+    // session cookie such that the user will stay on the desktop site.
+    $('#full-site-link').click(function(e) {
+      var url = window.location.href;
+      url += (url.indexOf('?') == -1) ? '?' : '&';
+      url += 'fullSite';
+      window.location.href = url;
+    });
   }; //end init
 
   self.hideModalTab = function ($modalTab) {

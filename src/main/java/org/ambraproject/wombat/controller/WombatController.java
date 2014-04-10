@@ -33,6 +33,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Base class with common functionality for all controllers in the application.
@@ -94,6 +96,22 @@ public abstract class WombatController {
       mav.addObject("depth", context.getPageDepth());
     }
     return mav;
+  }
+
+  /**
+   * Validate that an article was published in the journal belonging to a site. If not, throw an exception indicating
+   * that the article is not found on the site.
+   *
+   * @param siteKey         the site on which the article was queried
+   * @param articleMetadata the article metadata
+   * @throws NotFoundException if the article was not published in the journal that belongs to the site
+   */
+  protected void validateJournalSite(String siteKey, Map<?, ?> articleMetadata) {
+    Set<String> articleJournalKeys = ((Map<String, ?>) articleMetadata.get("journals")).keySet();
+    String siteJournalKey = siteSet.getSite(siteKey).getJournalKey();
+    if (!articleJournalKeys.contains(siteJournalKey)) {
+      throw new NotFoundException();
+    }
   }
 
   /**

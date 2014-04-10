@@ -59,6 +59,8 @@ public class ArticleController extends WombatController {
 
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateJournalSite(site, articleMetadata);
+
     String articleHtml;
     try {
       articleHtml = getArticleHtml(articleId, site);
@@ -87,6 +89,7 @@ public class ArticleController extends WombatController {
                                       @RequestParam("doi") String articleId) throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateJournalSite(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
     requestComments(model, articleId);
     return site + "/ftl/article/comments";
@@ -226,6 +229,7 @@ public class ArticleController extends WombatController {
   public String renderArticleAuthors(Model model, @PathVariable("site") String site,
                                      @RequestParam("doi") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateJournalSite(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
     requestAuthors(model, articleId);
     return site + "/ftl/article/authors";

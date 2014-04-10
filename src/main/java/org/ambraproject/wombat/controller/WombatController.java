@@ -76,13 +76,13 @@ public abstract class WombatController {
   }
 
   /**
-   * Directs unhandled ArticleNotFoundExceptions to a 404 page.
+   * Directs unhandled exceptions that indicate an invalid URL to a 404 page.
    *
    * @param request  HttpServletRequest
    * @param response HttpServletResponse
    * @return ModelAndView specifying the view
    */
-  @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class})
+  @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class, NotVisibleException.class})
   protected ModelAndView handleArticleNotFound(HttpServletRequest request, HttpServletResponse response) {
     response.setStatus(HttpStatus.NOT_FOUND.value());
     SitePageContext context = inspectPathForContext(request);
@@ -99,18 +99,26 @@ public abstract class WombatController {
   }
 
   /**
-   * Validate that an article was published in the journal belonging to a site. If not, throw an exception indicating
-   * that the article is not found on the site.
+   * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user
+   * should see a 404.
+   * <p/>
+   * An article may be invisible if it is not in a published state, or if it has not been published in a journal
+   * corresponding to the site.
    *
    * @param siteKey         the site on which the article was queried
    * @param articleMetadata the article metadata
-   * @throws NotFoundException if the article was not published in the journal that belongs to the site
+   * @throws NotVisibleException if the article is not visible on the site
    */
-  protected void validateJournalSite(String siteKey, Map<?, ?> articleMetadata) {
+  protected void validateArticleVisibility(String siteKey, Map<?, ?> articleMetadata) {
+    String state = (String) articleMetadata.get("state");
+    if (!"published".equals(state)) {
+      throw new NotVisibleException("Article is in unpublished state: " + state);
+    }
+
     Set<String> articleJournalKeys = ((Map<String, ?>) articleMetadata.get("journals")).keySet();
     String siteJournalKey = siteSet.getSite(siteKey).getJournalKey();
     if (!articleJournalKeys.contains(siteJournalKey)) {
-      throw new NotFoundException();
+      throw new NotVisibleException("Article is not published in: " + siteKey);
     }
   }
 

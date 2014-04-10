@@ -69,7 +69,7 @@ public class FigurePageController extends WombatController {
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
-    validateJournalSite(site, articleMetadata);
+    validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
 
     List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");

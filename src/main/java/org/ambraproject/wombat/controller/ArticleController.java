@@ -59,7 +59,7 @@ public class ArticleController extends WombatController {
 
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateJournalSite(site, articleMetadata);
+    validateArticleVisibility(site, articleMetadata);
 
     String articleHtml;
     try {
@@ -89,7 +89,7 @@ public class ArticleController extends WombatController {
                                       @RequestParam("doi") String articleId) throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateJournalSite(site, articleMetadata);
+    validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
     requestComments(model, articleId);
     return site + "/ftl/article/comments";
@@ -189,6 +189,8 @@ public class ArticleController extends WombatController {
                                          @RequestParam("uri") String commentUri) throws IOException {
     requireNonemptyParameter(commentUri);
     Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentUri), Map.class);
+    validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
+
     model.addAttribute("comment", comment);
     model.addAttribute("articleDoi", comment.get("articleDoi"));
     return site + "/ftl/article/comment";
@@ -208,6 +210,7 @@ public class ArticleController extends WombatController {
                                             @RequestParam("uri") String correctionUri) throws IOException {
     requireNonemptyParameter(correctionUri);
     Map<?, ?> correction = soaService.requestObject(String.format("corrections/" + correctionUri), Map.class);
+    validateArticleVisibility(site, (Map<?, ?>) correction.get("parentArticle"));
 
     // Currently we use the same UI for both a comment and a correction, and they
     // share the same backend representations.  This may not always be the case.
@@ -229,7 +232,7 @@ public class ArticleController extends WombatController {
   public String renderArticleAuthors(Model model, @PathVariable("site") String site,
                                      @RequestParam("doi") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateJournalSite(site, articleMetadata);
+    validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
     requestAuthors(model, articleId);
     return site + "/ftl/article/authors";

@@ -128,6 +128,14 @@ public class FigureImageController extends WombatController {
                          @RequestParam(value = "unique", required = false) String unique)
       throws IOException {
     requireNonemptyParameter(assetId);
+    Map<String, ?> assetMetadata;
+    try {
+      assetMetadata = soaService.requestObject("assetfiles/" + assetId + "?metadata", Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
+    }
+    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
+
     serveAssetFile(request, response, assetId, (unique != null));
   }
 
@@ -140,6 +148,7 @@ public class FigureImageController extends WombatController {
   @RequestMapping("/{site}/article/figure/image")
   public void serveFigureImage(HttpServletRequest request,
                                HttpServletResponse response,
+                               @PathVariable("site") String site,
                                @RequestParam("id") String figureId,
                                @RequestParam("size") String figureSize)
       throws IOException {
@@ -150,6 +159,7 @@ public class FigureImageController extends WombatController {
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
+    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
 
     List<String> pathToFigureObject = ORIGINAL_FIGURE.equals(figureSize)
         ? ORIGINAL_FIGURE_PATH : ImmutableList.of("thumbnails", figureSize);

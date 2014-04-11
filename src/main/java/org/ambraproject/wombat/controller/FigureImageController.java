@@ -140,6 +140,7 @@ public class FigureImageController extends WombatController {
   @RequestMapping("/{site}/article/figure/image")
   public void serveFigureImage(HttpServletRequest request,
                                HttpServletResponse response,
+                               @PathVariable("site") String site,
                                @RequestParam("id") String figureId,
                                @RequestParam("size") String figureSize)
       throws IOException {
@@ -150,6 +151,7 @@ public class FigureImageController extends WombatController {
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
+    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
 
     List<String> pathToFigureObject = ORIGINAL_FIGURE.equals(figureSize)
         ? ORIGINAL_FIGURE_PATH : ImmutableList.of("thumbnails", figureSize);

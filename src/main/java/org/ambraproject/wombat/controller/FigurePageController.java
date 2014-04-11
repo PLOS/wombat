@@ -95,11 +95,14 @@ public class FigurePageController extends WombatController {
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);
     }
+
+    Map<String, ?> parentArticle = (Map<String, ?>) figureMetadata.get("parentArticle");
+    validateArticleVisibility(site, parentArticle);
+    String parentArticleDoi = (String) parentArticle.get("doi");
+    model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));
+
     transformFigureDescription(site, figureMetadata);
     model.addAttribute("figure", figureMetadata);
-
-    String parentArticleId = (String) figureMetadata.get("parentArticleId");
-    model.addAttribute("article", ImmutableMap.of("doi", parentArticleId));
 
     return site + "/ftl/article/figure";
   }

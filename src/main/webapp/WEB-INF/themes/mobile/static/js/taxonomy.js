@@ -4,21 +4,16 @@ var TaxonomyBrowser = function () {
   var self = this;
 
   self.init = function () {
+
     self.$browserDiv = $('#browse-container');
+
     if (self.$browserDiv.length) {
       var term = self.getTermFromUrl();
       self.loadTerms(term, false);
-      self.pushState(term);
 
-      $(window).bind('popstate', function(e) {
-
-        // Unfortunately, some browsers (Chrome) fire a popstate event on page load, while others
-        // (Firefox) do not.  To determine which are the "real" events we check for this class, which
-        // is added below in renderTerms().
-        if ($('body').hasClass('historyPushed')) {
-          var term = self.getTermFromUrl();
-          self.loadTerms(term, false);
-        }
+      $(window).bind('popstate', function (e) {
+        var term = self.getTermFromUrl();
+        self.loadTerms(term, false);
       });
     }
   };
@@ -34,6 +29,7 @@ var TaxonomyBrowser = function () {
       term = decodeURI(pieces[1]);
     }
     return term;
+
   };
 
   // Renders the browser, given a JSON list of subjects.

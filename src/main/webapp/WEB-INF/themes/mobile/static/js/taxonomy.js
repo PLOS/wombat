@@ -11,10 +11,9 @@ var TaxonomyBrowser = function () {
       var term = self.getTermFromUrl();
       self.loadTerms(term, false);
 
-      $(window).bind('popstate', function(e) {
-          var term = self.getTermFromUrl();
-          self.loadTerms(term, false);
-
+      $(window).bind('popstate', function (e) {
+        var term = self.getTermFromUrl();
+        self.loadTerms(term, false);
       });
     }
   };

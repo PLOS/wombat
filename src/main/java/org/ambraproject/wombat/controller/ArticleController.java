@@ -189,6 +189,8 @@ public class ArticleController extends WombatController {
                                          @RequestParam("uri") String commentUri) throws IOException {
     requireNonemptyParameter(commentUri);
     Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentUri), Map.class);
+    validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
+
     model.addAttribute("comment", comment);
     model.addAttribute("articleDoi", comment.get("articleDoi"));
     return site + "/ftl/article/comment";
@@ -208,6 +210,7 @@ public class ArticleController extends WombatController {
                                             @RequestParam("uri") String correctionUri) throws IOException {
     requireNonemptyParameter(correctionUri);
     Map<?, ?> correction = soaService.requestObject(String.format("corrections/" + correctionUri), Map.class);
+    validateArticleVisibility(site, (Map<?, ?>) correction.get("parentArticle"));
 
     // Currently we use the same UI for both a comment and a correction, and they
     // share the same backend representations.  This may not always be the case.

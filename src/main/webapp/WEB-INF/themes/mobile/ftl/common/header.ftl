@@ -23,9 +23,12 @@
   </div>
   <nav id="article-menu" class="menu-bar">
     <ul>
+    <#include "../hasTaxonomyBrowser.ftl" />
+    <#if hasTaxonomyBrowser>
       <li>
         <a href="browse" id="menu-browse">Browse Topics</a>
       </li>
+    </#if>
 
     <#-- TODO: implement.  Not MVP.
     <li>

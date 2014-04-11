@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Map;
 
 /**
  * Controller that handles JSON requests from the taxonomy browser.
@@ -46,6 +47,11 @@ public class TaxonomyController {
   @RequestMapping("/{site}" + TAXONOMY_TEMPLATE)
   public void read(@PathVariable("site") String siteParam, HttpServletRequest request, HttpServletResponse response)
       throws IOException {
+    Map<String, Object> taxonomyBrowserConfig = siteSet.getSite(siteParam).getTheme().getConfigMap("taxonomyBrowser");
+    boolean hasTaxonomyBrowser = (boolean) taxonomyBrowserConfig.get("hasTaxonomyBrowser");
+    if (!hasTaxonomyBrowser) {
+      throw new NotFoundException();
+    }
 
     // All we do here is forward the request and response to and from rhino.  Another
     // approach would be to have the taxonomy browser issue JSONP requests directly

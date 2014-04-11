@@ -106,7 +106,7 @@ public abstract class WombatController {
    * corresponding to the site.
    *
    * @param siteKey         the site on which the article was queried
-   * @param articleMetadata the article metadata
+   * @param articleMetadata the article metadata, or a subset containing the {@code state} and {@code journals} fields
    * @throws NotVisibleException if the article is not visible on the site
    */
   protected void validateArticleVisibility(String siteKey, Map<?, ?> articleMetadata) {

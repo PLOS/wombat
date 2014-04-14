@@ -2,7 +2,7 @@
   <ul class="article-buttons">
   <#if article.figures?? && article.figures?size &gt; 0 >
     <li class="menuitem">
-      <a class="btn-lg" href="article/figures?doi=${article.doi}">
+      <a class="btn-lg" href="article/figures?id=${article.doi}">
         <span class="arrow">View</span>
         Figures (${article.figures?size})
       </a>
@@ -10,7 +10,7 @@
   </#if>
   <#if articleCorrections?? && articleCorrections?size gt 0>
     <li class="menuitem">
-      <a class="btn-lg" href="article/corrections?doi=${article.doi}">
+      <a class="btn-lg" href="article/corrections?id=${article.doi}">
         <span class="arrow">View</span>
         Corrections (${articleCorrections?size})
       </a>
@@ -18,14 +18,14 @@
   </#if>
   <#if articleComments?? && articleComments?size &gt; 0>
     <li class="menuitem">
-      <a class="btn-lg" href="article/comments?doi=${article.doi}">
+      <a class="btn-lg" href="article/comments?id=${article.doi}">
         <span class="arrow">View</span>
         Reader Comments (${articleComments?size})
       </a>
     </li>
   </#if>
     <li class="menuitem">
-      <a class="btn-lg" href="article/authors?doi=${article.doi}">
+      <a class="btn-lg" href="article/authors?id=${article.doi}">
         <span class="arrow">View</span>
         About the Authors
       </a>

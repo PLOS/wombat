@@ -8,7 +8,7 @@
 <div id="container-main">
   <header id="site-header-container" class="back-header coloration-border-top">
     <span class="back-arrow">Back</span>
-    <a class="back" href="${pathUp(1 "article?doi=${articleDoi}")}">Back to Article</a>
+    <a class="back" href="${pathUp(1 "article?id=${articleDoi}")}">Back to Article</a>
   </header>
 
 <#macro commentBody comment>

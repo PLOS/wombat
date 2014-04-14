@@ -185,8 +185,8 @@ public abstract class WombatController {
    * Check that a request parameter is not empty.
    * <p/>
    * This is useful for validating that the user didn't supply an empty string as a URL parameter, such as by typing
-   * ".../article?doi" into the browser bar when ".../article?doi=10.0/foo" is expected. The {@code required} argument
-   * on {@code RequestParam} merely guarantees the parameter to be non-null, not non-empty.
+   * ".../article?doi" into the browser bar when ".../article?id=10.0/foo" is expected. The {@code required} argument on
+   * {@code RequestParam} merely guarantees the parameter to be non-null, not non-empty.
    *
    * @param parameter a non-null value supplied as a {@code RequestParam}
    * @throws NotFoundException    if the parameter is empty

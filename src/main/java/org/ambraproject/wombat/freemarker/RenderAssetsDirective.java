@@ -19,6 +19,7 @@ import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.controller.StaticFileController;
 import org.ambraproject.wombat.service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -67,10 +68,10 @@ public abstract class RenderAssetsDirective {
 
         // This is a bit of a hack to get relative links from asset files to work.  We replicate
         // the number of levels in the uncompiled paths.  For example, if the uncompiled link
-        // points at "static/css/foo.css", the compiled one will be "static/compiled/asset_3947213.css"
+        // points at "resource/css/foo.css", the compiled one will be "resource/compiled/asset_3947213.css"
         // or something.  There's corresponding code in org.ambraproject.wombat.controller.StaticFileController
         // as well.
-        compiledPath.append("static/");
+        compiledPath.append(StaticFileController.RESOURCE_NAMESPACE).append('/');
         compiledPath.append(assetService.getCompiledAssetLink(assetType, assetPaths, getSite(request),
             request.getServletPath()));
         environment.getOut().write(getHtml(compiledPath.toString()));

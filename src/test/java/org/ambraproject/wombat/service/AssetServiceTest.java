@@ -14,7 +14,7 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Joiner;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
-import org.ambraproject.wombat.controller.StaticFileController;
+import org.ambraproject.wombat.controller.StaticResourceController;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ import static org.testng.Assert.assertEquals;
 public class AssetServiceTest extends AbstractTestNGSpringContextTests {
 
   private static final String DATA_PATH = Joiner.on(File.separator).join("src", "test", "resources",
-      StaticFileController.RESOURCE_NAMESPACE, "js") + File.separator;
+      StaticResourceController.RESOURCE_NAMESPACE, "js") + File.separator;
 
   @Autowired
   private AssetService assetService;

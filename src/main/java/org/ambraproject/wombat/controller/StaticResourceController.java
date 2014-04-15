@@ -23,7 +23,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Controller
-public class StaticFileController extends WombatController {
+public class StaticResourceController extends WombatController {
 
   public static final String RESOURCE_NAMESPACE = "resource";
 

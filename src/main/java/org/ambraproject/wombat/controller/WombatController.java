@@ -33,6 +33,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Base class with common functionality for all controllers in the application.
@@ -74,13 +76,13 @@ public abstract class WombatController {
   }
 
   /**
-   * Directs unhandled ArticleNotFoundExceptions to a 404 page.
+   * Directs unhandled exceptions that indicate an invalid URL to a 404 page.
    *
    * @param request  HttpServletRequest
    * @param response HttpServletResponse
    * @return ModelAndView specifying the view
    */
-  @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class})
+  @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class, NotVisibleException.class})
   protected ModelAndView handleArticleNotFound(HttpServletRequest request, HttpServletResponse response) {
     response.setStatus(HttpStatus.NOT_FOUND.value());
     SitePageContext context = inspectPathForContext(request);
@@ -94,6 +96,30 @@ public abstract class WombatController {
       mav.addObject("depth", context.getPageDepth());
     }
     return mav;
+  }
+
+  /**
+   * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user
+   * should see a 404.
+   * <p/>
+   * An article may be invisible if it is not in a published state, or if it has not been published in a journal
+   * corresponding to the site.
+   *
+   * @param siteKey         the site on which the article was queried
+   * @param articleMetadata the article metadata, or a subset containing the {@code state} and {@code journals} fields
+   * @throws NotVisibleException if the article is not visible on the site
+   */
+  protected void validateArticleVisibility(String siteKey, Map<?, ?> articleMetadata) {
+    String state = (String) articleMetadata.get("state");
+    if (!"published".equals(state)) {
+      throw new NotVisibleException("Article is in unpublished state: " + state);
+    }
+
+    Set<String> articleJournalKeys = ((Map<String, ?>) articleMetadata.get("journals")).keySet();
+    String siteJournalKey = siteSet.getSite(siteKey).getJournalKey();
+    if (!articleJournalKeys.contains(siteJournalKey)) {
+      throw new NotVisibleException("Article is not published in: " + siteKey);
+    }
   }
 
   /**
@@ -159,8 +185,8 @@ public abstract class WombatController {
    * Check that a request parameter is not empty.
    * <p/>
    * This is useful for validating that the user didn't supply an empty string as a URL parameter, such as by typing
-   * ".../article?doi" into the browser bar when ".../article?doi=10.0/foo" is expected. The {@code required} argument
-   * on {@code RequestParam} merely guarantees the parameter to be non-null, not non-empty.
+   * ".../article?doi" into the browser bar when ".../article?id=10.0/foo" is expected. The {@code required} argument on
+   * {@code RequestParam} merely guarantees the parameter to be non-null, not non-empty.
    *
    * @param parameter a non-null value supplied as a {@code RequestParam}
    * @throws NotFoundException    if the parameter is empty

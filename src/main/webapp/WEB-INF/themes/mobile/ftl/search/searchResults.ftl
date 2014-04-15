@@ -84,7 +84,7 @@
 
       <#-- We rely here on the fact that search in wombat is always restricted to the current
            journal.  If this changes, we'll have to pass in the site in the href.  -->
-        <a href="article?doi=${doc.id}" class="article-title">${doc.title}</a>
+        <a href="article?id=${doc.id}" class="article-title">${doc.title}</a>
 
         <p class="author-list">
           <#list doc.author_display![] as author>
@@ -109,11 +109,11 @@
         </p><#--end full citation-->
 
         <nav class="article-options-menu clearfix">
-          <a href="article/figures?doi=${doc.id}">Figures</a>
-          <a href="article?doi=${doc.id}#abstract">Abstract</a>
+          <a href="article/figures?id=${doc.id}">Figures</a>
+          <a href="article?id=${doc.id}#abstract">Abstract</a>
 
         <#-- TODO: what does this link mean?  Do we need to expand all accordion sections?  -->
-          <a href="article?doi=${doc.id}">Full text</a>
+          <a href="article?id=${doc.id}">Full text</a>
           <a href="article/asset?id=${doc.id}.PDF">PDF</a>
         </nav><#--end article-options-menu-->
 

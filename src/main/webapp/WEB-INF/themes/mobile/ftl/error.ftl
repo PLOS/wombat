@@ -1,6 +1,6 @@
 <#include "common/htmlTag.ftl" />
 
-<#assign title = "PLOS - Server Error" />
+<#assign title = "Server Error" />
 <#include "common/head.ftl" />
 
 <body>

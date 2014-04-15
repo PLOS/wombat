@@ -60,15 +60,16 @@ public class FigurePageController extends WombatController {
   @RequestMapping("/{site}/article/figures")
   public String renderFiguresPage(Model model,
                                   @PathVariable("site") String site,
-                                  @RequestParam("doi") String articleId)
+                                  @RequestParam("id") String articleId)
       throws IOException {
     requireNonemptyParameter(articleId);
-    Map<String, Object> articleMetadata;
+    Map<?, ?> articleMetadata;
     try {
-      articleMetadata = soaService.requestObject("articles/" + articleId, Map.class);
+      articleMetadata = soaService.requestArticleMetadata(articleId);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
+    validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
 
     List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
@@ -94,11 +95,14 @@ public class FigurePageController extends WombatController {
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);
     }
+
+    Map<String, ?> parentArticle = (Map<String, ?>) figureMetadata.get("parentArticle");
+    validateArticleVisibility(site, parentArticle);
+    String parentArticleDoi = (String) parentArticle.get("doi");
+    model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));
+
     transformFigureDescription(site, figureMetadata);
     model.addAttribute("figure", figureMetadata);
-
-    String parentArticleId = (String) figureMetadata.get("parentArticleId");
-    model.addAttribute("article", ImmutableMap.of("doi", parentArticleId));
 
     return site + "/ftl/article/figure";
   }

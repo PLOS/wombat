@@ -73,15 +73,18 @@ public class FigureImageController extends WombatController {
   /**
    * Forward a response for an asset file from the SOA to the response.
    *
+   * @param requestFromClient
    * @param responseToClient
-   * @param assetId
+   * @param assetId             the identifier for an asset or asset file
+   * @param fileIsUniqueToAsset {@code true} if the ID identifies an asset with a single file; {@code false} if the ID
+   *                            identifies a particular asset file
    * @throws IOException
    */
   private void serveAssetFile(HttpServletRequest requestFromClient,
                               HttpServletResponse responseToClient,
-                              String assetId)
+                              String assetId, boolean fileIsUniqueToAsset)
       throws IOException {
-    try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient))) {
+    try (CloseableHttpResponse responseFromService = soaService.requestAsset(fileIsUniqueToAsset, assetId, copyHeaders(requestFromClient))) {
 
       /*
        * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
@@ -114,15 +117,26 @@ public class FigureImageController extends WombatController {
 
   /**
    * Serve the identified asset file.
+   *
+   * @param unique if present, assume the asset has a single file and serve that file; else, serve an identified file
    */
   @RequestMapping("/{site}/article/asset")
   public void serveAsset(HttpServletRequest request,
                          HttpServletResponse response,
                          @PathVariable("site") String site,
-                         @RequestParam("id") String assetId)
+                         @RequestParam(value = "id", required = true) String assetId,
+                         @RequestParam(value = "unique", required = false) String unique)
       throws IOException {
     requireNonemptyParameter(assetId);
-    serveAssetFile(request, response, assetId);
+    Map<String, ?> assetMetadata;
+    try {
+      assetMetadata = soaService.requestObject("assetfiles/" + assetId + "?metadata", Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
+    }
+    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
+
+    serveAssetFile(request, response, assetId, (unique != null));
   }
 
   private static final String ORIGINAL_FIGURE = "original";
@@ -134,6 +148,7 @@ public class FigureImageController extends WombatController {
   @RequestMapping("/{site}/article/figure/image")
   public void serveFigureImage(HttpServletRequest request,
                                HttpServletResponse response,
+                               @PathVariable("site") String site,
                                @RequestParam("id") String figureId,
                                @RequestParam("size") String figureSize)
       throws IOException {
@@ -144,6 +159,7 @@ public class FigureImageController extends WombatController {
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
+    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
 
     List<String> pathToFigureObject = ORIGINAL_FIGURE.equals(figureSize)
         ? ORIGINAL_FIGURE_PATH : ImmutableList.of("thumbnails", figureSize);
@@ -153,7 +169,7 @@ public class FigureImageController extends WombatController {
     }
     String assetFileId = (String) figureObject.get("file");
 
-    serveAssetFile(request, response, assetFileId);
+    serveAssetFile(request, response, assetFileId, false);
   }
 
 }

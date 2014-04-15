@@ -493,6 +493,12 @@
   margin-bottom: 1em;
 }
 
+.figure-small figcaption .caption-body * {
+  font-weight: normal;
+  font-size: 1em;
+  margin-top: 0;
+}
+
 .figure-small figcaption a {
   font-weight: normal;
   color: #336699;

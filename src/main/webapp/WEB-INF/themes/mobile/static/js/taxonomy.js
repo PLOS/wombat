@@ -4,13 +4,14 @@ var TaxonomyBrowser = function () {
   var self = this;
 
   self.init = function () {
+
     self.$browserDiv = $('#browse-container');
+
     if (self.$browserDiv.length) {
       var term = self.getTermFromUrl();
-      self.pushState(term);
+      self.loadTerms(term, false);
 
-      // Upon initial loading, this also loads the list of top-level terms.
-      $(window).bind('popstate', function(e) {
+      $(window).bind('popstate', function (e) {
         var term = self.getTermFromUrl();
         self.loadTerms(term, false);
       });
@@ -28,6 +29,7 @@ var TaxonomyBrowser = function () {
       term = decodeURI(pieces[1]);
     }
     return term;
+
   };
 
   // Renders the browser, given a JSON list of subjects.
@@ -71,6 +73,7 @@ var TaxonomyBrowser = function () {
 
     if (pushState) {
       self.pushState(parent);
+      $('body').addClass('historyPushed');
     }
   };
 

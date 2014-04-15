@@ -67,7 +67,7 @@
           <div id="display-options">
             <div class="buttongroup clearfix">
               <button data-type="full-citation">full citation</button>
-              <button class="active" data-type="title-and-author">title + author</button>
+              <button class="active" data-type="title-and-author">title &amp; author</button>
               <button data-type="title-only">title only</button>
             </div>
           </div>

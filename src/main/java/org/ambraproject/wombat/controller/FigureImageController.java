@@ -11,6 +11,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicHeader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,12 +25,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 public class FigureImageController extends WombatController {
+  private static final Logger log = LoggerFactory.getLogger(FigureImageController.class);
 
   @Autowired
   private SoaService soaService;
@@ -118,26 +122,64 @@ public class FigureImageController extends WombatController {
   /**
    * Serve the identified asset file.
    *
+   * @param id     an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
    * @param unique if present, assume the asset has a single file and serve that file; else, serve an identified file
    */
   @RequestMapping("/{site}/article/asset")
   public void serveAsset(HttpServletRequest request,
                          HttpServletResponse response,
                          @PathVariable("site") String site,
-                         @RequestParam(value = "id", required = true) String assetId,
+                         @RequestParam(value = "id", required = true) String id,
                          @RequestParam(value = "unique", required = false) String unique)
       throws IOException {
-    requireNonemptyParameter(assetId);
+    requireNonemptyParameter(id);
+
+    // Need to make different service calls based on what id refers to
+    boolean fileIsUniqueToAsset = (unique != null);
+    String serviceToCall = fileIsUniqueToAsset ? "assets" : "assetfiles";
+    String serviceAddress = String.format("%s/%s?metadata", serviceToCall, id);
+
     Map<String, ?> assetMetadata;
     try {
-      assetMetadata = soaService.requestObject("assetfiles/" + assetId + "?metadata", Map.class);
+      assetMetadata = soaService.requestObject(serviceAddress, Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
-    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
+    Map<?, ?> parentArticleMetadata = getParentArticleMetadata(id, assetMetadata, !fileIsUniqueToAsset);
+    validateArticleVisibility(site, parentArticleMetadata);
 
-    serveAssetFile(request, response, assetId, (unique != null));
+    serveAssetFile(request, response, id, fileIsUniqueToAsset);
   }
+
+  /**
+   * Extract parent article metadata from an asset metadata query.
+   *
+   * @param id          the ID of an asset or asset file
+   * @param metadata    metadata about what {@code id} refers to
+   * @param isAssetFile {@code true} if {@code metadata} is about one asset file; {@code false} if {@code metadata} is
+   *                    about the whole asset
+   * @return metadata about the entity's parent article
+   */
+  private static Map<String, ?> getParentArticleMetadata(String id, Map<String, ?> metadata, boolean isAssetFile) {
+    Map<String, ?> fileMetadata;
+    if (isAssetFile) {
+      fileMetadata = metadata;
+    } else {
+      Collection<Map<String, ?>> fileMetadataCollection = (Collection<Map<String, ?>>) metadata.values();
+      if (fileMetadataCollection.size() != 1) {
+        /*
+         * The user queried for the unique file of a non-unique asset. Because they might have manually punched in an
+         * invalid URL, show a 404 page. Also log a warning in case it was caused by a buggy link.
+         */
+        log.warn("Received request for unique asset file with ID=\"{}\". More than one associated file ID: {}",
+            id, metadata.keySet());
+        throw new NotFoundException();
+      }
+      fileMetadata = fileMetadataCollection.iterator().next();
+    }
+    return (Map<String, ?>) fileMetadata.get("parentArticle");
+  }
+
 
   private static final String ORIGINAL_FIGURE = "original";
   private static final ImmutableList<String> ORIGINAL_FIGURE_PATH = ImmutableList.of(ORIGINAL_FIGURE);

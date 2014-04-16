@@ -135,7 +135,7 @@ public class FigureImageController extends WombatController {
     String assetFileId;
     Map<String, ?> assetFileMetadata;
     try {
-      if (unique == null) {
+      if (!booleanParameter(unique)) {
         // The request directly identifies an asset file.
         assetFileId = id;
         assetFileMetadata = soaService.requestObject("assetfiles/" + id + "?metadata", Map.class);

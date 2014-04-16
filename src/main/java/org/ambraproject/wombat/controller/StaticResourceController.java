@@ -36,8 +36,8 @@ public class StaticResourceController extends WombatController {
   private AssetService assetService;
 
   @RequestMapping("/{site}/" + RESOURCE_NAMESPACE + "/**")
-  public void serveStaticResource(HttpServletRequest request, HttpServletResponse response,
-                                  HttpSession session, @PathVariable("site") String site)
+  public void serveResource(HttpServletRequest request, HttpServletResponse response,
+                            HttpSession session, @PathVariable("site") String site)
       throws IOException {
     Theme theme = siteSet.getSite(site).getTheme();
 

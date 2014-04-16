@@ -197,29 +197,6 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Serves a request for an expanded view of a single correction and any replies.
-   *
-   * @param model        data to pass to the view
-   * @param site         current site
-   * @param correctionId specifies the correction
-   * @return path to the template
-   * @throws IOException
-   */
-  @RequestMapping("/{site}/article/correction")
-  public String renderArticleCorrectionTree(Model model, @PathVariable("site") String site,
-                                            @RequestParam("id") String correctionId) throws IOException {
-    requireNonemptyParameter(correctionId);
-    Map<?, ?> correction = soaService.requestObject(String.format("corrections/" + correctionId), Map.class);
-    validateArticleVisibility(site, (Map<?, ?>) correction.get("parentArticle"));
-
-    // Currently we use the same UI for both a comment and a correction, and they
-    // share the same backend representations.  This may not always be the case.
-    model.addAttribute("comment", correction);
-    model.addAttribute("articleDoi", correction.get("articleDoi"));
-    return site + "/ftl/article/comment";
-  }
-
-  /**
    * Serves a request for the "about the authors" page for an article.
    *
    * @param model     data to pass to the view

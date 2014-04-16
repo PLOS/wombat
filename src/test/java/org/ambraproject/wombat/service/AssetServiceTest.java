@@ -14,6 +14,7 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Joiner;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
+import org.ambraproject.wombat.controller.StaticResourceController;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ import static org.testng.Assert.assertEquals;
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
 public class AssetServiceTest extends AbstractTestNGSpringContextTests {
 
-  private static final String DATA_PATH = Joiner.on(File.separator).join("src", "test", "resources", "static", "js")
-      + File.separator;
+  private static final String DATA_PATH = Joiner.on(File.separator).join("src", "test", "resources",
+      StaticResourceController.RESOURCE_NAMESPACE, "js") + File.separator;
 
   @Autowired
   private AssetService assetService;
@@ -61,8 +62,8 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
 
     // Now we compile the same javascript files, execute them, and check the value returned.
     List<String> jsFiles = new ArrayList<>();
-    jsFiles.add("static/js/test1.js");
-    jsFiles.add("static/js/test2.js");
+    jsFiles.add("resource/js/test1.js");
+    jsFiles.add("resource/js/test2.js");
     String compiledJsPath = assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles, "default",
         "meaninglessCacheKey");
     String[] fields = compiledJsPath.split("/");
@@ -84,7 +85,7 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
   @Test(expectedExceptions = {AssetCompilationException.class})
   public void testJsError() throws Exception {
     List<String> jsFiles = new ArrayList<>();
-    jsFiles.add("static/js/error.js");
+    jsFiles.add("resource/js/error.js");
     assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles, "default", "meaninglessCacheKey");
   }
 }

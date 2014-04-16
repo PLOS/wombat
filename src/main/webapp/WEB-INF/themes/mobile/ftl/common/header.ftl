@@ -23,12 +23,18 @@
   </div>
   <nav id="article-menu" class="menu-bar">
     <ul>
+       <li>
+           <noscript>
+               <a href="http://www.activatejavascript.org" target="_blank">For full functionality of this site, please enable JavaScript.</a>
+           </noscript>
+       </li>
     <#include "../hasTaxonomyBrowser.ftl" />
     <#if hasTaxonomyBrowser>
       <li>
         <a href="browse" id="menu-browse">Browse Topics</a>
       </li>
     </#if>
+
 
     <#-- TODO: implement.  Not MVP.
     <li>

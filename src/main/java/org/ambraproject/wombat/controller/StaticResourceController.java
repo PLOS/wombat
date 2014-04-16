@@ -23,27 +23,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Controller
-public class StaticFileController extends WombatController {
+public class StaticResourceController extends WombatController {
 
-  private static final String STATIC_NAMESPACE = "static/";
+  public static final String RESOURCE_NAMESPACE = "resource";
 
   /**
    * Path prefix for compiled assets (.js and .css).
    */
-  private static final String COMPILED_NAMESPACE = STATIC_NAMESPACE + AssetService.COMPILED_PATH_PREFIX;
+  private static final String COMPILED_NAMESPACE = RESOURCE_NAMESPACE + '/' + AssetService.COMPILED_PATH_PREFIX;
 
   @Autowired
   private AssetService assetService;
 
-  @RequestMapping("/{site}/static/**")
-  public void serveStaticContent(HttpServletRequest request, HttpServletResponse response,
-                                 HttpSession session, @PathVariable("site") String site)
+  @RequestMapping("/{site}/" + RESOURCE_NAMESPACE + "/**")
+  public void serveResource(HttpServletRequest request, HttpServletResponse response,
+                            HttpSession session, @PathVariable("site") String site)
       throws IOException {
     Theme theme = siteSet.getSite(site).getTheme();
 
-    // Kludge to get "static/**"
+    // Kludge to get "resource/**"
     String servletPath = request.getServletPath();
     String filePath = servletPath.substring(site.length() + 2);
+
     response.setContentType(session.getServletContext().getMimeType(servletPath));
     if (filePath.startsWith(COMPILED_NAMESPACE)) {
       serveCompiledAsset(filePath, request, response);
@@ -92,7 +93,7 @@ public class StaticFileController extends WombatController {
   }
 
   private static final Pattern COMPILED_ASSET_PATTERN = Pattern.compile(""
-      + "static/compiled/asset_"
+      + COMPILED_NAMESPACE + "asset_"
       + "([+\\w]+)" // The asset hash in modified base 64. May contain '_' and '+' chars. ('_' replaces '/'; see getFingerprint)
       + "\\.\\w+"); // The file extension.
 

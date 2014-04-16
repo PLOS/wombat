@@ -173,10 +173,9 @@ public class SoaServiceImpl extends JsonService implements SoaService {
    * {@inheritDoc}
    */
   @Override
-  public CloseableHttpResponse requestAsset(boolean fileIsUniqueToAsset, String assetId, Header... headers)
+  public CloseableHttpResponse requestAsset(String assetId, Header... headers)
       throws IOException {
-    String address = fileIsUniqueToAsset ? ("assetfiles/" + assetId + "?unique") : ("assetfiles/" + assetId);
-    return makeRequest(buildUri(address), headers);
+    return makeRequest(buildUri("assetfiles/" + assetId), headers);
   }
 
   /**

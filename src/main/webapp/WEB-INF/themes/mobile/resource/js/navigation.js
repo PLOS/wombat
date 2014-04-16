@@ -64,6 +64,13 @@ var AmbraNavigation = function () {
       $accordionList.append(buildAccordionItem($(this)));
     });
 
+    // If there is text floating outside the other sections (anything non-whitespace not yet removed)
+    if (!/^\s*$/.test($articleText.html())) {
+      // Put it in a headerless section at the *top* of the article (before front matter)
+      var $floatingTextSection = buildAccordionItem($articleText.clone());
+      $accordionList.prepend($floatingTextSection);
+    }
+
     // The first accordion item starts expanded
     var $accordionItems = $accordionList.children('.accordion-item');
     if ($accordionItems.size() > 0) {

@@ -81,13 +81,11 @@ public interface SoaService {
    * InputStream} to the response body. This is very important, because leaving responses hanging open can starve the
    * connection pool and cause horrible timeouts.
    *
-   * @param fileIsUniqueToAsset {@code true} if the ID identifies an asset with a single file; {@code false} if the ID
-   *                            identifies a particular asset file
-   * @param assetId             the asset ID within the SOA service's "assetfiles/" namespace
+   * @param assetId the asset ID within the SOA service's "assetfiles/" namespace
    * @return
    * @throws IOException
    */
-  public abstract CloseableHttpResponse requestAsset(boolean fileIsUniqueToAsset, String assetId, Header... headers) throws IOException;
+  public abstract CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException;
 
   /**
    * Requests metadata about an article.

@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
@@ -11,6 +12,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicHeader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +32,7 @@ import java.util.Map;
 
 @Controller
 public class FigureImageController extends WombatController {
+  private static final Logger log = LoggerFactory.getLogger(FigureImageController.class);
 
   @Autowired
   private SoaService soaService;
@@ -75,16 +79,14 @@ public class FigureImageController extends WombatController {
    *
    * @param requestFromClient
    * @param responseToClient
-   * @param assetId             the identifier for an asset or asset file
-   * @param fileIsUniqueToAsset {@code true} if the ID identifies an asset with a single file; {@code false} if the ID
-   *                            identifies a particular asset file
+   * @param assetId           the identifier for an asset or asset file
    * @throws IOException
    */
   private void serveAssetFile(HttpServletRequest requestFromClient,
                               HttpServletResponse responseToClient,
-                              String assetId, boolean fileIsUniqueToAsset)
+                              String assetId)
       throws IOException {
-    try (CloseableHttpResponse responseFromService = soaService.requestAsset(fileIsUniqueToAsset, assetId, copyHeaders(requestFromClient))) {
+    try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient))) {
 
       /*
        * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
@@ -118,25 +120,50 @@ public class FigureImageController extends WombatController {
   /**
    * Serve the identified asset file.
    *
+   * @param id     an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
    * @param unique if present, assume the asset has a single file and serve that file; else, serve an identified file
    */
   @RequestMapping("/{site}/article/asset")
   public void serveAsset(HttpServletRequest request,
                          HttpServletResponse response,
                          @PathVariable("site") String site,
-                         @RequestParam(value = "id", required = true) String assetId,
+                         @RequestParam(value = "id", required = true) String id,
                          @RequestParam(value = "unique", required = false) String unique)
       throws IOException {
-    requireNonemptyParameter(assetId);
-    Map<String, ?> assetMetadata;
+    requireNonemptyParameter(id);
+
+    String assetFileId;
+    Map<String, ?> assetFileMetadata;
     try {
-      assetMetadata = soaService.requestObject("assetfiles/" + assetId + "?metadata", Map.class);
+      if (!booleanParameter(unique)) {
+        // The request directly identifies an asset file.
+        assetFileId = id;
+        assetFileMetadata = soaService.requestObject("assetfiles/" + id + "?metadata", Map.class);
+      } else {
+        // The request identifies an asset and asserts that the asset has exactly one file. Get the ID of that file.
+
+        Map<String, Map<String, ?>> assetMetadata = soaService.requestObject("assets/" + id + "?metadata", Map.class);
+        if (assetMetadata.size() != 1) {
+          /*
+           * The user queried for the unique file of a non-unique asset. Because they might have manually punched in an
+           * invalid URL, show a 404 page. Also log a warning in case it was caused by a buggy link.
+           */
+          log.warn("Received request for unique asset file with ID=\"{}\". More than one associated file ID: {}",
+              id, assetMetadata.keySet());
+          throw new NotFoundException();
+        }
+
+        assetFileId = Iterables.getOnlyElement(assetMetadata.keySet());
+        assetFileMetadata = Iterables.getOnlyElement(assetMetadata.values());
+      }
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
-    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
 
-    serveAssetFile(request, response, assetId, (unique != null));
+    Map<?, ?> parentArticleMetadata = (Map<String, ?>) assetFileMetadata.get("parentArticle");
+    validateArticleVisibility(site, parentArticleMetadata);
+
+    serveAssetFile(request, response, assetFileId);
   }
 
   private static final String ORIGINAL_FIGURE = "original";
@@ -169,7 +196,7 @@ public class FigureImageController extends WombatController {
     }
     String assetFileId = (String) figureObject.get("file");
 
-    serveAssetFile(request, response, assetFileId, false);
+    serveAssetFile(request, response, assetFileId);
   }
 
 }

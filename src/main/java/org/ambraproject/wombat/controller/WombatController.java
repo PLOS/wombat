@@ -198,4 +198,18 @@ public abstract class WombatController {
     }
   }
 
+  /**
+   * Interpret a URL parameter as a boolean. In general, interpret {@code null} as false and all non-null strings,
+   * including the empty string, as true. But the string {@code "false"} is (case-insensitively) false.
+   * <p/>
+   * The empty string is true because it represents a URL parameter as being present but with no value, e.g. {@code
+   * http://example.com/page?foo}. Contrast {@link Boolean#valueOf(String)}, which returns false for the empty string.
+   *
+   * @param parameterValue a URL parameter value
+   * @return the boolean value
+   */
+  protected static boolean booleanParameter(String parameterValue) {
+    return (parameterValue != null) && !Boolean.toString(false).equalsIgnoreCase(parameterValue);
+  }
+
 }

@@ -50,7 +50,7 @@ public class ArticleController extends WombatController {
   @RequestMapping("/{site}/article")
   public String renderArticle(Model model,
                               @PathVariable("site") String site,
-                              @RequestParam("doi") String articleId)
+                              @RequestParam("id") String articleId)
       throws IOException {
 
     // TODO: this method currently makes 5 backend RPCs, all sequentially.
@@ -86,7 +86,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping("/{site}/article/comments")
   public String renderArticleComments(Model model, @PathVariable("site") String site,
-                                      @RequestParam("doi") String articleId) throws IOException {
+                                      @RequestParam("id") String articleId) throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -178,17 +178,17 @@ public class ArticleController extends WombatController {
   /**
    * Serves a request for an expanded view of a single comment and any replies.
    *
-   * @param model      data to pass to the view
-   * @param site       current site
-   * @param commentUri specifies the comment
+   * @param model     data to pass to the view
+   * @param site      current site
+   * @param commentId specifies the comment
    * @return path to the template
    * @throws IOException
    */
   @RequestMapping("/{site}/article/comment")
   public String renderArticleCommentTree(Model model, @PathVariable("site") String site,
-                                         @RequestParam("uri") String commentUri) throws IOException {
-    requireNonemptyParameter(commentUri);
-    Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentUri), Map.class);
+                                         @RequestParam("id") String commentId) throws IOException {
+    requireNonemptyParameter(commentId);
+    Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
     validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
 
     model.addAttribute("comment", comment);
@@ -207,7 +207,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping("/{site}/article/authors")
   public String renderArticleAuthors(Model model, @PathVariable("site") String site,
-                                     @RequestParam("doi") String articleId) throws IOException {
+                                     @RequestParam("id") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);

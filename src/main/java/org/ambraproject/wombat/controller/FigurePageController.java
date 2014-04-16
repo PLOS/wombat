@@ -60,7 +60,7 @@ public class FigurePageController extends WombatController {
   @RequestMapping("/{site}/article/figures")
   public String renderFiguresPage(Model model,
                                   @PathVariable("site") String site,
-                                  @RequestParam("doi") String articleId)
+                                  @RequestParam("id") String articleId)
       throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata;

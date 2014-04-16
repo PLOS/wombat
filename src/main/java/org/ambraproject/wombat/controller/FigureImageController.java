@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
@@ -25,7 +26,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
@@ -79,16 +79,14 @@ public class FigureImageController extends WombatController {
    *
    * @param requestFromClient
    * @param responseToClient
-   * @param assetId             the identifier for an asset or asset file
-   * @param fileIsUniqueToAsset {@code true} if the ID identifies an asset with a single file; {@code false} if the ID
-   *                            identifies a particular asset file
+   * @param assetId           the identifier for an asset or asset file
    * @throws IOException
    */
   private void serveAssetFile(HttpServletRequest requestFromClient,
                               HttpServletResponse responseToClient,
-                              String assetId, boolean fileIsUniqueToAsset)
+                              String assetId)
       throws IOException {
-    try (CloseableHttpResponse responseFromService = soaService.requestAsset(fileIsUniqueToAsset, assetId, copyHeaders(requestFromClient))) {
+    try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient))) {
 
       /*
        * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
@@ -134,52 +132,39 @@ public class FigureImageController extends WombatController {
       throws IOException {
     requireNonemptyParameter(id);
 
-    // Need to make different service calls based on what id refers to
-    boolean fileIsUniqueToAsset = (unique != null);
-    String serviceToCall = fileIsUniqueToAsset ? "assets" : "assetfiles";
-    String serviceAddress = String.format("%s/%s?metadata", serviceToCall, id);
-
-    Map<String, ?> assetMetadata;
+    String assetFileId;
+    Map<String, ?> assetFileMetadata;
     try {
-      assetMetadata = soaService.requestObject(serviceAddress, Map.class);
+      if (unique == null) {
+        // The request directly identifies an asset file.
+        assetFileId = id;
+        assetFileMetadata = soaService.requestObject("assetfiles/" + id + "?metadata", Map.class);
+      } else {
+        // The request identifies an asset and asserts that the asset has exactly one file. Get the ID of that file.
+
+        Map<String, Map<String, ?>> assetMetadata = soaService.requestObject("assets/" + id + "?metadata", Map.class);
+        if (assetMetadata.size() != 1) {
+          /*
+           * The user queried for the unique file of a non-unique asset. Because they might have manually punched in an
+           * invalid URL, show a 404 page. Also log a warning in case it was caused by a buggy link.
+           */
+          log.warn("Received request for unique asset file with ID=\"{}\". More than one associated file ID: {}",
+              id, assetMetadata.keySet());
+          throw new NotFoundException();
+        }
+
+        assetFileId = Iterables.getOnlyElement(assetMetadata.keySet());
+        assetFileMetadata = Iterables.getOnlyElement(assetMetadata.values());
+      }
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
-    Map<?, ?> parentArticleMetadata = getParentArticleMetadata(id, assetMetadata, !fileIsUniqueToAsset);
+
+    Map<?, ?> parentArticleMetadata = (Map<String, ?>) assetFileMetadata.get("parentArticle");
     validateArticleVisibility(site, parentArticleMetadata);
 
-    serveAssetFile(request, response, id, fileIsUniqueToAsset);
+    serveAssetFile(request, response, assetFileId);
   }
-
-  /**
-   * Extract parent article metadata from an asset metadata query.
-   *
-   * @param id          the ID of an asset or asset file
-   * @param metadata    metadata about what {@code id} refers to
-   * @param isAssetFile {@code true} if {@code metadata} is about one asset file; {@code false} if {@code metadata} is
-   *                    about the whole asset
-   * @return metadata about the entity's parent article
-   */
-  private static Map<String, ?> getParentArticleMetadata(String id, Map<String, ?> metadata, boolean isAssetFile) {
-    Map<String, ?> fileMetadata;
-    if (isAssetFile) {
-      fileMetadata = metadata;
-    } else {
-      Collection<Map<String, ?>> fileMetadataCollection = (Collection<Map<String, ?>>) metadata.values();
-      if (fileMetadataCollection.size() != 1) {
-        /*
-         * The user queried for the unique file of a non-unique asset. Because they might have manually punched in an
-         * invalid URL, show a 404 page. Also log a warning in case it was caused by a buggy link.
-         */
-        log.warn("Received request for unique asset file with ID=\"{}\". More than one associated file ID: {}",
-            id, metadata.keySet());
-        throw new NotFoundException();
-      }
-      fileMetadata = fileMetadataCollection.iterator().next();
-    }
-    return (Map<String, ?>) fileMetadata.get("parentArticle");
-  }
-
 
   private static final String ORIGINAL_FIGURE = "original";
   private static final ImmutableList<String> ORIGINAL_FIGURE_PATH = ImmutableList.of(ORIGINAL_FIGURE);
@@ -211,7 +196,7 @@ public class FigureImageController extends WombatController {
     }
     String assetFileId = (String) figureObject.get("file");
 
-    serveAssetFile(request, response, assetFileId, false);
+    serveAssetFile(request, response, assetFileId);
   }
 
 }

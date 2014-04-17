@@ -10,6 +10,7 @@
 # Build locations #
 overlays/
 target/
+.sass-cache/
 
 # Project metadata #
 .idea/
@@ -19,5 +20,3 @@ target/
 
 # Temporary files #
 *~
-
-Icon

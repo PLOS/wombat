@@ -6,17 +6,17 @@
 
   Examples:
 
-    <link rel="stylesheet" href="${pathUp(2 "static/css/base.css")}">
+    <link rel="stylesheet" href="${pathUp(2 "resource/css/base.css")}">
       resolves to
-    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../resource/css/base.css">
 
-    <link rel="stylesheet" href="${pathUp(0 "static/css/interface.css")}">
+    <link rel="stylesheet" href="${pathUp(0 "resource/css/interface.css")}">
       resolves to
-    <link rel="stylesheet" href="static/css/interface.css">
+    <link rel="stylesheet" href="resource/css/interface.css">
 
-    <@cssLink target=pathUp(1 "static/css/base.css") />
+    <@cssLink target=pathUp(1 "resource/css/base.css") />
       is equivalent to
-    <@cssLink target="../static/css/base.css" />
+    <@cssLink target="../resource/css/base.css" />
 
   -->
 <#function pathUp steps path>

@@ -88,7 +88,7 @@ public class HomeController extends WombatController {
 
       case POPULAR:
         HomeController.populateWithArticleList(request, model, site, resultsPerPage, solrSearchService,
-            SolrSearchService.SolrSortOrder.MOST_VIEWS_ALL_TIME);
+            SolrSearchService.SolrSortOrder.POPULAR);
         break;
 
       case IN_THE_NEWS:
@@ -117,10 +117,10 @@ public class HomeController extends WombatController {
                                              int resultsPerPage,
                                              SearchService searchService,
                                              SolrSearchService.SolrSortOrder order) {
-    int start = 1;
+    int start = 0;
     String page = request.getParameter("page");
     if (!Strings.isNullOrEmpty(page)) {
-      start = (Integer.parseInt(page) - 1) * resultsPerPage + 1;
+      start = (Integer.parseInt(page) - 1) * resultsPerPage;
     }
     model.addAttribute("resultsPerPage", resultsPerPage);
 

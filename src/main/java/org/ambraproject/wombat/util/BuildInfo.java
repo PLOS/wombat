@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2006-2014 by Public Library of Science
+ * http://plos.org
+ * http://ambraproject.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.ambraproject.wombat.util;
 
 import com.google.common.base.Objects;
@@ -13,11 +31,13 @@ public class BuildInfo {
   private final String version;
   private final String date;
   private final String user;
+  private final String gitCommitIdAbbrev;
 
-  public BuildInfo(String version, String date, String user) {
+  public BuildInfo(String version, String date, String user, String gitCommitIdAbbrev) {
     this.version = Strings.nullToEmpty(version);
     this.date = Strings.nullToEmpty(date);
     this.user = Strings.nullToEmpty(user);
+    this.gitCommitIdAbbrev = Strings.nullToEmpty(gitCommitIdAbbrev);
   }
 
   /**
@@ -41,12 +61,20 @@ public class BuildInfo {
     return user;
   }
 
+  /**
+   * @return the git commit short hash of the code
+   */
+  public String getGitCommitIdAbbrev() {
+    return gitCommitIdAbbrev;
+  }
+
   @Override
   public String toString() {
     return Objects.toStringHelper(this)
         .add("version", version)
         .add("date", date)
         .add("user", user)
+        .add("gitCommitIdAbbrev", gitCommitIdAbbrev)
         .toString();
   }
 
@@ -60,6 +88,7 @@ public class BuildInfo {
     if (!date.equals(buildInfo.date)) return false;
     if (!user.equals(buildInfo.user)) return false;
     if (!version.equals(buildInfo.version)) return false;
+    if (!gitCommitIdAbbrev.equals(buildInfo.gitCommitIdAbbrev)) return false;
 
     return true;
   }
@@ -69,6 +98,7 @@ public class BuildInfo {
     int result = version.hashCode();
     result = 31 * result + date.hashCode();
     result = 31 * result + user.hashCode();
+    result = 31 * result + gitCommitIdAbbrev.hashCode();
     return result;
   }
 }

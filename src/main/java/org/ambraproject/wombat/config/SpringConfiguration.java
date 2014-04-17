@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2006-2014 by Public Library of Science
+ * http://plos.org
+ * http://ambraproject.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Charsets;
@@ -28,10 +46,14 @@ import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SoaServiceImpl;
 import org.ambraproject.wombat.service.SolrSearchService;
+import org.ambraproject.wombat.service.GitInfoService;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
@@ -49,7 +71,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+@PropertySource("classpath:git.properties")
 public class SpringConfiguration {
+  @Autowired
+  Environment env;
 
   @Bean
   public Gson gson() {
@@ -212,6 +237,28 @@ public class SpringConfiguration {
   @Bean
   public BuildInfoService buildInfoService() {
     return new BuildInfoServiceImpl();
+  }
+
+  @Bean
+  public GitInfoService gitInfoService() {
+    GitInfoService gitInfoService = new GitInfoService();
+
+    gitInfoService.setBranch(env.getProperty("git.branch"));
+    gitInfoService.setDescribe(env.getProperty("git.branch"));
+
+    gitInfoService.setCommitId(env.getProperty("git.commit.id"));
+    gitInfoService.setCommitIdAbbrev(env.getProperty("git.commit.id.abbrev"));
+    gitInfoService.setCommitUserName(env.getProperty("git.commit.user.name"));
+    gitInfoService.setCommitUserEmail(env.getProperty("git.commit.user.email"));
+    gitInfoService.setCommitMessageFull(env.getProperty("git.commit.message.full"));
+    gitInfoService.setCommitMessageShort(env.getProperty("git.commit.message.short"));
+    gitInfoService.setCommitTime(env.getProperty("git.commit.time"));
+
+    gitInfoService.setBuildUserName(env.getProperty("git.build.user.name"));
+    gitInfoService.setBuildUserEmail(env.getProperty("git.build.user.email"));
+    gitInfoService.setBuildTime(env.getProperty("git.build.time"));
+
+    return gitInfoService;
   }
 
 }

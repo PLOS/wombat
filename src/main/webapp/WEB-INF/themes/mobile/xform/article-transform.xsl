@@ -792,7 +792,7 @@
       <ol class="references">
         <xsl:for-each select="ref">
           <xsl:sort data-type="number" select="label"/>
-          <li>
+          <li class="article-reference">
             <span class="label">
               <xsl:value-of select="label"/>.
             </span>

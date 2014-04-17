@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.service.remote;
 
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -23,7 +23,7 @@ public interface SoaService {
    * @return a stream to the response
    * @throws IOException             if there is an error connecting to the server
    * @throws NullPointerException    if the address is null
-   * @throws EntityNotFoundException if the object at the address does not exist
+   * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   public abstract InputStream requestStream(String address) throws IOException;
 
@@ -37,7 +37,7 @@ public interface SoaService {
    * @return the response, serialized from JSON into an object
    * @throws IOException             if there is an error connecting to the server
    * @throws NullPointerException    if either argument is null
-   * @throws EntityNotFoundException if the object at the address does not exist
+   * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   public abstract <T> T requestObject(String address, Class<T> responseClass) throws IOException;
 

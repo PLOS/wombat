@@ -11,13 +11,14 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.StatusLine;
@@ -60,7 +61,7 @@ public abstract class JsonService {
    * @return a stream to the response
    * @throws IOException             if there is an error connecting to the server
    * @throws NullPointerException    if the address is null
-   * @throws EntityNotFoundException if the object at the address does not exist
+   * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   protected InputStream requestStream(URI targetUri) throws IOException {
     // We must leave the response open if we return a valid stream, but must close it otherwise.
@@ -93,7 +94,7 @@ public abstract class JsonService {
    * @return response from the server
    * @throws IOException             if there is an error connecting to the server
    * @throws NullPointerException    if the address is null
-   * @throws EntityNotFoundException if the object at the address does not exist
+   * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   protected CloseableHttpResponse makeRequest(URI targetUri, Header... headers) throws IOException {
     // Don't close the client, as this shuts down the connection pool. Do close every response or its entity stream.

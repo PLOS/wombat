@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;

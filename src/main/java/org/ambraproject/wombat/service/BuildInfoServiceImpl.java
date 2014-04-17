@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.BuildInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

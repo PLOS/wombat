@@ -15,8 +15,8 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.Site;
-import org.ambraproject.wombat.service.SearchService;
-import org.ambraproject.wombat.service.SolrSearchService;
+import org.ambraproject.wombat.service.remote.SearchService;
+import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

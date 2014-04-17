@@ -3,7 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.SoaService;
+import org.ambraproject.wombat.service.remote.SoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

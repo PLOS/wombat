@@ -47,7 +47,12 @@ public class SolrSearchService extends JsonService implements SearchService {
     RELEVANCE("Relevance", "score desc,publication_date desc,id desc"),
     DATE_NEWEST_FIRST("Date, newest first", "publication_date desc,id desc"),
     DATE_OLDEST_FIRST("Date, oldest first", "publication_date asc,id desc"),
+
+    // For some reason, ambra defines slightly different orderings for the "Recent" tab on the home page,
+    // and the "Most Views, last 30 days" option on the search results ordering dropdown.  The former
+    // omits the "id desc" clause.  To replicate this behavior, we define the following two values.
     MOST_VIEWS_30_DAYS("Most views, last 30 days", "counter_total_month desc,id desc"),
+    POPULAR("Popular", "counter_total_month desc"),
     MOST_VIEWS_ALL_TIME("Most views, all time", "counter_total_all desc,id desc"),
     MOST_CITED("Most cited, all time", "alm_scopusCiteCount desc,id desc"),
     MOST_BOOKMARKED("Most bookmarked", "sum(alm_citeulikeCount, alm_mendeleyCount) desc,id desc"),
@@ -70,6 +75,22 @@ public class SolrSearchService extends JsonService implements SearchService {
     @Override
     public String getValue() {
       return value;
+    }
+
+    /**
+     * @return List of values that can be used to order search results.
+     */
+    public static List<SolrSortOrder> getSearchSortOrders() {
+      SolrSortOrder[] values = values();
+      List<SolrSortOrder> results = new ArrayList<>(values.length - 1);
+      for (SolrSortOrder value : values) {
+
+        // This is only used on the "popular" tab of the homepage, not for ordering search results.
+        if (!POPULAR.equals(value)) {
+          results.add(value);
+        }
+      }
+      return results;
     }
   }
 

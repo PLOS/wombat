@@ -61,7 +61,7 @@ public class SearchController extends WombatController {
       dateRange = SolrSearchService.SolrDateRange.valueOf(dateRangeParam);
     }
 
-    model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
+    model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.getSearchSortOrders());
     model.addAttribute("dateRanges", SolrSearchService.SolrDateRange.values());
 
     // TODO: bind sticky form params using Spring MVC support for Freemarker.  I think we have to add

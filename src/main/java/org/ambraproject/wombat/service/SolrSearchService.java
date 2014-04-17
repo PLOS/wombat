@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Site;
 import org.apache.http.NameValuePair;
@@ -47,11 +48,30 @@ public class SolrSearchService extends JsonService implements SearchService {
     RELEVANCE("Relevance", "score desc,publication_date desc,id desc"),
     DATE_NEWEST_FIRST("Date, newest first", "publication_date desc,id desc"),
     DATE_OLDEST_FIRST("Date, oldest first", "publication_date asc,id desc"),
+
+    // For some reason, ambra defines slightly different orderings for the "Recent" tab on the home page,
+    // and the "Most Views, last 30 days" option on the search results ordering dropdown.  The former
+    // omits the "id desc" clause.  To replicate this behavior, we define the following two values.
     MOST_VIEWS_30_DAYS("Most views, last 30 days", "counter_total_month desc,id desc"),
+    POPULAR("Popular", "counter_total_month desc"),
     MOST_VIEWS_ALL_TIME("Most views, all time", "counter_total_all desc,id desc"),
     MOST_CITED("Most cited, all time", "alm_scopusCiteCount desc,id desc"),
     MOST_BOOKMARKED("Most bookmarked", "sum(alm_citeulikeCount, alm_mendeleyCount) desc,id desc"),
     MOST_SHARED("Most shared in social media", "sum(alm_twitterCount, alm_facebookCount) desc,id desc");
+
+    /**
+     * SolrSortOrders that can be used to sort search results.
+     */
+    public static final ImmutableList<SolrSortOrder> SEARCH_SORT_ORDERS = ImmutableList.of(
+        RELEVANCE,
+        DATE_NEWEST_FIRST,
+        DATE_OLDEST_FIRST,
+        MOST_VIEWS_30_DAYS,
+        MOST_VIEWS_ALL_TIME,
+        MOST_CITED,
+        MOST_BOOKMARKED,
+        MOST_SHARED
+    );
 
     private String description;
 

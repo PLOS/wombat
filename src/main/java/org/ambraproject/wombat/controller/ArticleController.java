@@ -9,6 +9,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -290,7 +291,7 @@ public class ArticleController extends WombatController {
     String cacheKey = "html:" + articleId;
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
 
-    return soaService.requestCachedStream(cacheKey, xmlAssetPath, new SoaService.CacheCallback<String>() {
+    return soaService.requestCachedStream(cacheKey, xmlAssetPath, new CacheDeserializer<String>() {
       @Override
       public String call(InputStream stream) throws IOException {
         StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);

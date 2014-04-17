@@ -77,9 +77,6 @@ public class HomeController extends WombatController {
     }
     model.addAttribute("selectedSection", section.name().toLowerCase());
 
-    populateWithArticleList(request, model, site, resultsPerPage,
-        solrSearchService, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
-
     switch (section) {
       case RECENT:
         HomeController.populateWithArticleList(request, model, site, resultsPerPage, solrSearchService,

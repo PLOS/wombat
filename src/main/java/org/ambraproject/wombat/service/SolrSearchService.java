@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Site;
 import org.apache.http.NameValuePair;
@@ -58,6 +59,20 @@ public class SolrSearchService extends JsonService implements SearchService {
     MOST_BOOKMARKED("Most bookmarked", "sum(alm_citeulikeCount, alm_mendeleyCount) desc,id desc"),
     MOST_SHARED("Most shared in social media", "sum(alm_twitterCount, alm_facebookCount) desc,id desc");
 
+    /**
+     * SolrSortOrders that can be used to sort search results.
+     */
+    public static final ImmutableList<SolrSortOrder> SEARCH_SORT_ORDERS = ImmutableList.of(
+        RELEVANCE,
+        DATE_NEWEST_FIRST,
+        DATE_OLDEST_FIRST,
+        MOST_VIEWS_30_DAYS,
+        MOST_VIEWS_ALL_TIME,
+        MOST_CITED,
+        MOST_BOOKMARKED,
+        MOST_SHARED
+    );
+
     private String description;
 
     private String value;
@@ -75,22 +90,6 @@ public class SolrSearchService extends JsonService implements SearchService {
     @Override
     public String getValue() {
       return value;
-    }
-
-    /**
-     * @return List of values that can be used to order search results.
-     */
-    public static List<SolrSortOrder> getSearchSortOrders() {
-      SolrSortOrder[] values = values();
-      List<SolrSortOrder> results = new ArrayList<>(values.length - 1);
-      for (SolrSortOrder value : values) {
-
-        // This is only used on the "popular" tab of the homepage, not for ordering search results.
-        if (!POPULAR.equals(value)) {
-          results.add(value);
-        }
-      }
-      return results;
     }
   }
 

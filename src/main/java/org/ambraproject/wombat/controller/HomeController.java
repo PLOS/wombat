@@ -85,7 +85,7 @@ public class HomeController extends WombatController {
 
       case POPULAR:
         HomeController.populateWithArticleList(request, model, site, resultsPerPage, solrSearchService,
-            SolrSearchService.SolrSortOrder.POPULAR);
+            SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
         break;
 
       case IN_THE_NEWS:
@@ -122,8 +122,7 @@ public class HomeController extends WombatController {
     model.addAttribute("resultsPerPage", resultsPerPage);
 
     try {
-      Map<?, ?> articles = searchService.simpleSearch(null, site, start, resultsPerPage,
-          order, SolrSearchService.SolrDateRange.ALL_TIME);
+      Map<?, ?> articles = searchService.getHomePageArticles(site, start, resultsPerPage, order);
       model.addAttribute("articles", articles);
     } catch (IOException e) {
       log.error("Could not populate home page with articles from Solr", e);

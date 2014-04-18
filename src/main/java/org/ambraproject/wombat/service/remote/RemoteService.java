@@ -23,7 +23,10 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Calendar;
 
 /**
@@ -239,5 +242,22 @@ abstract class RemoteService {
     }
   }
 
+  /**
+   * Builds a complete URI given a URL that specifies the server and a string that is the remainder of the query.
+   *
+   * @param server  host, port, and optionally part of the path.  For example "http://www.example.com/" or
+   *                "https://plos.org/api/".
+   * @param address the remainder of the path and query string.  For example "articles/foo.pone.1234567?comments=true"
+   * @return a URI to the complete path and query string
+   */
+  protected static URI buildUri(URL server, String address) {
+    URI targetUri;
+    try {
+      targetUri = new URL(server, Preconditions.checkNotNull(address)).toURI();
+    } catch (MalformedURLException | URISyntaxException e) {
+      throw new IllegalArgumentException(e);
+    }
+    return targetUri;
+  }
 
 }

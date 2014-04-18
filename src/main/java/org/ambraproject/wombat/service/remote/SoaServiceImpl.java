@@ -55,22 +55,4 @@ public class SoaServiceImpl extends JsonService implements SoaService {
     return buildUri(runtimeConfiguration.getServer(), address);
   }
 
-  /**
-   * Builds a complete URI given a URL that specifies the server and a string that is the remainder of the query.
-   *
-   * @param server  host, port, and optionally part of the path.  For example "http://www.example.com/" or
-   *                "https://plos.org/api/".
-   * @param address the remainder of the path and query string.  For example "articles/foo.pone.1234567?comments=true"
-   * @return a URI to the complete path and query string
-   */
-  private static URI buildUri(URL server, String address) {
-    URI targetUri;
-    try {
-      targetUri = new URL(server, Preconditions.checkNotNull(address)).toURI();
-    } catch (MalformedURLException | URISyntaxException e) {
-      throw new IllegalArgumentException(e);
-    }
-    return targetUri;
-  }
-
 }

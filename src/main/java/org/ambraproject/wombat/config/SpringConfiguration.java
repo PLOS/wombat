@@ -12,6 +12,7 @@ import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
+import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.JsDirective;
 import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
@@ -123,9 +124,18 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public FetchHtmlDirective fetchHtmlDirective() {
+    return new FetchHtmlDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
-                                           CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
-                                           RenderJsDirective renderJsDirective, BuildInfoDirective buildInfoDirective)
+                                           CssLinkDirective cssLinkDirective,
+                                           RenderCssLinksDirective renderCssLinksDirective,
+                                           JsDirective jsDirective,
+                                           RenderJsDirective renderJsDirective,
+                                           BuildInfoDirective buildInfoDirective,
+                                           FetchHtmlDirective fetchHtmlDirective)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -143,6 +153,7 @@ public class SpringConfiguration {
     variables.put("js", jsDirective);
     variables.put("renderJs", renderJsDirective);
     variables.put("buildInfo", buildInfoDirective);
+    variables.put("fetchHtml", fetchHtmlDirective);
     config.setFreemarkerVariables(variables);
     return config;
   }

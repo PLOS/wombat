@@ -291,9 +291,9 @@ public class ArticleController extends WombatController {
     String cacheKey = "html:" + articleId;
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
 
-    return soaService.requestCachedStream(cacheKey, xmlAssetPath, new CacheDeserializer<String>() {
+    return soaService.requestCachedStream(cacheKey, xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override
-      public String call(InputStream stream) throws IOException {
+      public String read(InputStream stream) throws IOException {
         StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
         try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
           articleTransformService.transform(site, stream, outputStream);

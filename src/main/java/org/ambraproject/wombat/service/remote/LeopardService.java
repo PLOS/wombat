@@ -1,10 +1,10 @@
 package org.ambraproject.wombat.service.remote;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.Reader;
 
 public interface LeopardService {
 
-  InputStream requestStream(String path) throws IOException;
+  public abstract Reader readHtml(String path) throws IOException;
 
 }

@@ -11,6 +11,7 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
@@ -18,15 +19,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.BufferedInputStream;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Calendar;
 
 /**
@@ -108,6 +111,16 @@ abstract class RemoteService {
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   protected InputStream requestStream(URI targetUri) throws IOException {
+    return requestEntity(targetUri).getContent();
+  }
+
+  protected Reader requestReader(URI targetUri) throws IOException {
+    return openReader(requestEntity(targetUri));
+  }
+
+  private HttpEntity requestEntity(URI targetUri) throws IOException {
+    Preconditions.checkNotNull(targetUri);
+
     // We must leave the response open if we return a valid stream, but must close it otherwise.
     boolean returningResponse = false;
     CloseableHttpResponse response = null;
@@ -118,7 +131,7 @@ abstract class RemoteService {
         throw new RuntimeException("No response");
       }
       returningResponse = true;
-      return entity.getContent();
+      return entity;
     } finally {
       if (!returningResponse && response != null) {
         response.close();
@@ -126,22 +139,27 @@ abstract class RemoteService {
     }
   }
 
+  private static Reader openReader(HttpEntity entity) throws IOException {
+    Charset charset = ContentType.getOrDefault(entity).getCharset();
+    return new InputStreamReader(entity.getContent(), charset);
+  }
+
   /**
    * Representation of a stream from the SOA service and a timestamp indicating when it was last modified.
    */
-  private static class TimestampedStream implements Closeable {
+  private static class TimestampedResponse implements Closeable {
     private final Calendar timestamp;
-    private final InputStream stream;
+    private final CloseableHttpResponse response;
 
-    private TimestampedStream(Calendar timestamp, InputStream stream) {
+    private TimestampedResponse(Calendar timestamp, CloseableHttpResponse response) {
       this.timestamp = timestamp; // null if the service does not support the If-Modified-Since header for this request
-      this.stream = stream; // null if the object has not been modified since a given time
+      this.response = response; // null if the object has not been modified since a given time
     }
 
     @Override
     public void close() throws IOException {
-      if (stream != null) {
-        stream.close();
+      if (response != null) {
+        response.close();
       }
     }
   }
@@ -160,39 +178,71 @@ abstract class RemoteService {
     }
   }
 
-  protected <T> T requestCachedStream(String cacheKey, URI address, CacheDeserializer<? extends T> callback) throws IOException {
-    Preconditions.checkNotNull(cacheKey);
+  protected <T> T requestCachedStream(String cacheKey, URI address,
+                                      CacheDeserializer<InputStream, T> callback)
+      throws IOException {
     Preconditions.checkNotNull(address);
     Preconditions.checkNotNull(callback);
 
-    CachedObject<T> cached;
-    try {
-      cached = cache.get(cacheKey);
-    } catch (Exception e) {
-      // Unexpected, but to degrade gracefully, treat it the same as a cache miss
-      log.error("Error accessing cache", e);
-      cached = null;
-    }
+    CachedObject<T> cached = getCachedObject(cacheKey);
+    Calendar lastModified = getLastModified(cached);
 
-    Calendar lastModified;
-    if (cached == null) {
-      lastModified = Calendar.getInstance();
-      lastModified.setTimeInMillis(0);  // Set to beginning of epoch since it's not in the cache
-    } else {
-      lastModified = cached.timestamp;
-    }
-
-    try (TimestampedStream fromServer = requestStreamIfModifiedSince(address, lastModified);
-         InputStream streamFromServer = fromServer.stream) {
-      if (streamFromServer != null) {
-        T value = callback.call(streamFromServer);
-        if (fromServer.timestamp != null) {
-          cache.put(cacheKey, new CachedObject<>(fromServer.timestamp, value));
+    try (TimestampedResponse fromServer = requestIfModifiedSince(address, lastModified)) {
+      if (fromServer.response != null) {
+        try (InputStream stream = fromServer.response.getEntity().getContent()) {
+          T value = callback.read(stream);
+          if (fromServer.timestamp != null) {
+            cache.put(cacheKey, new CachedObject<>(fromServer.timestamp, value));
+          }
+          return value;
         }
-        return value;
       } else {
         return cached.object;
       }
+    }
+  }
+
+  protected <T> T requestCachedReader(String cacheKey, URI address,
+                                      CacheDeserializer<Reader, T> callback)
+      throws IOException {
+    Preconditions.checkNotNull(address);
+    Preconditions.checkNotNull(callback);
+
+    CachedObject<T> cached = getCachedObject(cacheKey);
+    Calendar lastModified = getLastModified(cached);
+
+    try (TimestampedResponse fromServer = requestIfModifiedSince(address, lastModified)) {
+      if (fromServer.response != null) {
+        try (Reader reader = openReader(fromServer.response.getEntity())) {
+          T value = callback.read(reader);
+          if (fromServer.timestamp != null) {
+            cache.put(cacheKey, new CachedObject<>(fromServer.timestamp, value));
+          }
+          return value;
+        }
+      } else {
+        return cached.object;
+      }
+    }
+  }
+
+  private <T> CachedObject<T> getCachedObject(String cacheKey) {
+    try {
+      return cache.get(Preconditions.checkNotNull(cacheKey));
+    } catch (Exception e) {
+      // Unexpected, but to degrade gracefully, treat it the same as a cache miss
+      log.error("Error accessing cache", e);
+      return null;
+    }
+  }
+
+  private static <T> Calendar getLastModified(CachedObject<T> cached) {
+    if (cached == null) {
+      Calendar lastModified = Calendar.getInstance();
+      lastModified.setTimeInMillis(0);  // Set to beginning of epoch since it's not in the cache
+      return lastModified;
+    } else {
+      return cached.timestamp;
     }
   }
 
@@ -208,7 +258,7 @@ abstract class RemoteService {
    * @return a timestamped stream, or a null stream with non-null timestamp
    * @throws IOException
    */
-  private TimestampedStream requestStreamIfModifiedSince(URI address, Calendar lastModified) throws IOException {
+  private TimestampedResponse requestIfModifiedSince(URI address, Calendar lastModified) throws IOException {
     Preconditions.checkNotNull(lastModified);
     CloseableHttpResponse response = null;
     boolean returningStream = false;
@@ -216,7 +266,7 @@ abstract class RemoteService {
       response = makeRequest(address, new BasicHeader("If-Modified-Since", HttpDateUtil.format(lastModified)));
       Header[] lastModifiedHeaders = response.getHeaders("Last-Modified");
       if (lastModifiedHeaders.length == 0) {
-        TimestampedStream timestamped = new TimestampedStream(null, new BufferedInputStream(response.getEntity().getContent()));
+        TimestampedResponse timestamped = new TimestampedResponse(null, response);
         returningStream = true;
         return timestamped;
       }
@@ -227,11 +277,11 @@ abstract class RemoteService {
 
       int statusCode = response.getStatusLine().getStatusCode();
       if (statusCode == 200) {
-        TimestampedStream timestamped = new TimestampedStream(resultLastModified, new BufferedInputStream(response.getEntity().getContent()));
+        TimestampedResponse timestamped = new TimestampedResponse(resultLastModified, response);
         returningStream = true;
         return timestamped;
       } else if (statusCode == 304) {
-        return new TimestampedStream(resultLastModified, null);
+        return new TimestampedResponse(resultLastModified, null);
       } else {
         throw new RuntimeException("Unexpected status code " + statusCode);
       }

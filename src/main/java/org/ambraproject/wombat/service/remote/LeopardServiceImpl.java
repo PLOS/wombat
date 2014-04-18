@@ -4,7 +4,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.Reader;
 
 public class LeopardServiceImpl extends RemoteService implements LeopardService {
 
@@ -12,8 +12,8 @@ public class LeopardServiceImpl extends RemoteService implements LeopardService 
   private RuntimeConfiguration runtimeConfiguration;
 
   @Override
-  public InputStream requestStream(String path) throws IOException {
-    return requestStream(buildUri(runtimeConfiguration.getLeopardServer(), path));
+  public Reader readHtml(String path) throws IOException {
+    return requestReader(buildUri(runtimeConfiguration.getLeopardServer(), path));
   }
 
 }

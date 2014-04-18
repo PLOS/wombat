@@ -31,7 +31,7 @@ public class SoaServiceImpl extends JsonService implements SoaService {
   }
 
   @Override
-  public <T> T requestCachedStream(String cacheKey, String address, CacheDeserializer<? extends T> callback) throws IOException {
+  public <T> T requestCachedStream(String cacheKey, String address, CacheDeserializer<InputStream, T> callback) throws IOException {
     return requestCachedStream(cacheKey, buildUri(address), callback);
   }
 

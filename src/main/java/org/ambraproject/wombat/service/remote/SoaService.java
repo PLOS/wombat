@@ -54,7 +54,7 @@ public interface SoaService {
    * @return the value from the service or cache
    * @throws IOException
    */
-  public abstract <T> T requestCachedStream(String cacheKey, String address, CacheDeserializer<? extends T> callback) throws IOException;
+  public abstract <T> T requestCachedStream(String cacheKey, String address, CacheDeserializer<InputStream, T> callback) throws IOException;
 
   /**
    * Serialize an object either through a REST request or from the cache. If there is a cached value, and the REST

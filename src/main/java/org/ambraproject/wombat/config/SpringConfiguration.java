@@ -25,6 +25,8 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
+import org.ambraproject.wombat.service.remote.LeopardService;
+import org.ambraproject.wombat.service.remote.LeopardServiceImpl;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SoaServiceImpl;
@@ -206,6 +208,11 @@ public class SpringConfiguration {
   @Bean
   public AssetService assetService() {
     return new AssetServiceImpl();
+  }
+
+  @Bean
+  public LeopardService leopardService() {
+    return new LeopardServiceImpl();
   }
 
   @Bean

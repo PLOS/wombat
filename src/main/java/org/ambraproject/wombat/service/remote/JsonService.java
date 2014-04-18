@@ -54,9 +54,9 @@ abstract class JsonService extends RemoteService {
 
   protected <T> T requestCachedObject(String cacheKey, final URI address, final Class<T> responseClass) throws IOException {
     Preconditions.checkNotNull(responseClass);
-    return requestCachedStream(cacheKey, address, new CacheDeserializer<T>() {
+    return requestCachedStream(cacheKey, address, new CacheDeserializer<InputStream,T>() {
       @Override
-      public T call(InputStream stream) throws IOException {
+      public T read(InputStream stream) throws IOException {
         return deserializeStream(responseClass, stream, address);
       }
     });

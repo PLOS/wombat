@@ -19,6 +19,7 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.util.BuildInfo;
+import org.ambraproject.wombat.util.GitInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   private SoaService soaService;
 
   @Autowired
-  private GitInfoService gitInfoService;
+  private GitInfo gitInfo;
 
   /*
    * Cache the results in the service object. This may not be the best place to cache them, especially if the data is
@@ -87,7 +88,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
     try (InputStream versionStream = getClass().getResourceAsStream("/version.properties")) {
       properties.load(versionStream);
     }
-    properties.setProperty("gitCommitIdAbbrev", gitInfoService.getCommitIdAbbrev());
+    properties.setProperty("gitCommitIdAbbrev", gitInfo.getCommitIdAbbrev());
     return parse(properties);
   }
 

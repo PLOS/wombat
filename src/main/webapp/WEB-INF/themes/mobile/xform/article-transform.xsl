@@ -1130,6 +1130,17 @@
           <!-- This may cause collisions. TODO: Fix -->
           <xsl:value-of select="translate($figId, '.', '-')"/>
         </xsl:attribute>
+        <a class="figure-link">
+          <xsl:attribute name="href">
+            <xsl:value-of select="concat('article/figure?id=', $imageURI)"/>
+          </xsl:attribute>
+          <span class="figure-expand">Expand</span>
+          <img alt="thumbnail" class="figure-image">
+            <xsl:attribute name="src">
+              <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/>
+            </xsl:attribute>
+          </img>
+        </a>
         <figcaption>
           <span class="caption-label">
             <xsl:apply-templates select="label"/>
@@ -1154,17 +1165,6 @@
             More »
           </a>
         </figcaption>
-        <a class="figure-link">
-          <xsl:attribute name="href">
-            <xsl:value-of select="concat('article/figure?id=', $imageURI)"/>
-          </xsl:attribute>
-          <img alt="thumbnail" class="figure-image">
-            <xsl:attribute name="src">
-              <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/>
-            </xsl:attribute>
-          </img>
-          <span class="figure-expand">Expand</span>
-        </a>
       </figure>
 
     </xsl:if>

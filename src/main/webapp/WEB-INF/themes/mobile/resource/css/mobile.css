@@ -506,7 +506,7 @@
 
 .figure-small .figure-expand {
   position: absolute;
-  bottom: -10px;
+  top: -10px;
   right: -10px;
   background-position: -150px 0;
   width: 33px;

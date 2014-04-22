@@ -5,6 +5,7 @@ import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.rhombat.cache.Cache;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicHeader;
 import org.slf4j.Logger;
@@ -170,8 +171,8 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
     CloseableHttpResponse response = null;
     boolean returningStream = false;
     try {
-      response = remoteService.getResponse(address, new BasicHeader("If-Modified-Since", HttpDateUtil.format(lastModified)));
-      Header[] lastModifiedHeaders = response.getHeaders("Last-Modified");
+      response = remoteService.getResponse(address, new BasicHeader(HttpHeaders.IF_MODIFIED_SINCE, HttpDateUtil.format(lastModified)));
+      Header[] lastModifiedHeaders = response.getHeaders(HttpHeaders.LAST_MODIFIED);
       if (lastModifiedHeaders.length == 0) {
         TimestampedResponse timestamped = new TimestampedResponse(null, response);
         returningStream = true;

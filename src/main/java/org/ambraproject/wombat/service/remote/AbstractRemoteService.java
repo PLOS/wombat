@@ -69,16 +69,17 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
     try {
       response = client.execute(get);
       StatusLine statusLine = response.getStatusLine();
-      if (statusLine.getStatusCode() >= 400) {
+      int statusCode = statusLine.getStatusCode();
+      if (isErrorStatus(statusCode)) {
         String address = targetUri.getPath();
         if (!Strings.isNullOrEmpty(targetUri.getQuery())) {
           address += "?" + targetUri.getQuery();
         }
-        if (statusLine.getStatusCode() == HttpStatus.NOT_FOUND.value()) {
+        if (statusCode == HttpStatus.NOT_FOUND.value()) {
           throw new EntityNotFoundException(address);
         } else {
           String message = String.format("Request to \"%s\" failed (%d): %s",
-              address, statusLine.getStatusCode(), statusLine.getReasonPhrase());
+              address, statusCode, statusLine.getReasonPhrase());
           throw new ServiceRequestException(message);
         }
       }
@@ -89,6 +90,11 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
         response.close();
       }
     }
+  }
+
+  private static boolean isErrorStatus(int statusCode) {
+    HttpStatus.Series series = HttpStatus.Series.valueOf(statusCode);
+    return (series == HttpStatus.Series.CLIENT_ERROR) || (series == HttpStatus.Series.SERVER_ERROR);
   }
 
   @Override

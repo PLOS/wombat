@@ -77,9 +77,6 @@ public class HomeController extends WombatController {
     }
     model.addAttribute("selectedSection", section.name().toLowerCase());
 
-    populateWithArticleList(request, model, site, resultsPerPage,
-        solrSearchService, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
-
     switch (section) {
       case RECENT:
         HomeController.populateWithArticleList(request, model, site, resultsPerPage, solrSearchService,
@@ -88,7 +85,7 @@ public class HomeController extends WombatController {
 
       case POPULAR:
         HomeController.populateWithArticleList(request, model, site, resultsPerPage, solrSearchService,
-            SolrSearchService.SolrSortOrder.MOST_VIEWS_ALL_TIME);
+            SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
         break;
 
       case IN_THE_NEWS:
@@ -117,16 +114,15 @@ public class HomeController extends WombatController {
                                              int resultsPerPage,
                                              SearchService searchService,
                                              SolrSearchService.SolrSortOrder order) {
-    int start = 1;
+    int start = 0;
     String page = request.getParameter("page");
     if (!Strings.isNullOrEmpty(page)) {
-      start = (Integer.parseInt(page) - 1) * resultsPerPage + 1;
+      start = (Integer.parseInt(page) - 1) * resultsPerPage;
     }
     model.addAttribute("resultsPerPage", resultsPerPage);
 
     try {
-      Map<?, ?> articles = searchService.simpleSearch(null, site, start, resultsPerPage,
-          order, SolrSearchService.SolrDateRange.ALL_TIME);
+      Map<?, ?> articles = searchService.getHomePageArticles(site, start, resultsPerPage, order);
       model.addAttribute("articles", articles);
     } catch (IOException e) {
       log.error("Could not populate home page with articles from Solr", e);

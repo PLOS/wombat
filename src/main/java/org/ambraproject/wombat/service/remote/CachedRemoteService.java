@@ -82,6 +82,20 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
     }
   }
 
+  /**
+   * Get a value either from the cache or by converting a stream from a REST request or from the cache.
+   * <p/>
+   * If there is a cached value, and the REST service does not indicate that the value has been modified since the value
+   * was inserted into the cache, return that value. Else, query the service for a new stream and convert that stream to
+   * a cacheable return value using the provided callback.
+   *
+   * @param cacheKey the cache key at which to retrieve and store the value
+   * @param address  the address at which to query the service if the value is not cached
+   * @param callback how to deserialize a new value from the stream, to return and insert into the cache
+   * @param <T>      the type of value to deserialize and return
+   * @return the value from the service or cache
+   * @throws IOException
+   */
   public <T> T requestCached(String cacheKey, URI address, CacheDeserializer<? super S, ? extends T> callback)
       throws IOException {
     Preconditions.checkNotNull(address);
@@ -105,6 +119,13 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
     }
   }
 
+  /**
+   * Query the cache for a value, with error-handling.
+   *
+   * @param cacheKey the cache key
+   * @param <T>      the type of cached value
+   * @return the cached value, wrapped with its timestamp
+   */
   private <T> CachedObject<T> getCachedObject(String cacheKey) {
     try {
       return cache.get(Preconditions.checkNotNull(cacheKey));
@@ -115,6 +136,13 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
     }
   }
 
+  /**
+   * Extract the timestamp from a cached object, or a default value.
+   *
+   * @param cached the cached object wrapper
+   * @param <T>    the type of cached value
+   * @return the timestamp
+   */
   private static <T> Calendar getLastModified(CachedObject<? extends T> cached) {
     if (cached == null) {
       Calendar lastModified = Calendar.getInstance();

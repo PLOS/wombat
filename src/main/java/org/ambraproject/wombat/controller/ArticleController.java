@@ -188,7 +188,12 @@ public class ArticleController extends WombatController {
   public String renderArticleCommentTree(Model model, @PathVariable("site") String site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
-    Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+    Map<?, ?> comment;
+    try {
+      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+    } catch (EntityNotFoundException enfe) {
+      throw new NotFoundException(enfe);
+    }
     validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
 
     model.addAttribute("comment", comment);

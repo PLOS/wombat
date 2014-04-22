@@ -25,12 +25,16 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
+import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.LeopardService;
 import org.ambraproject.wombat.service.remote.LeopardServiceImpl;
+import org.ambraproject.wombat.service.remote.ReaderService;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SoaServiceImpl;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.service.remote.StreamService;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.context.annotation.Bean;
@@ -45,6 +49,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.util.Date;
@@ -191,6 +196,16 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public AssetService assetService() {
+    return new AssetServiceImpl();
+  }
+
+  @Bean
+  public LeopardService leopardService() {
+    return new LeopardServiceImpl();
+  }
+
+  @Bean
   public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
     if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedHost())) {
 
@@ -206,13 +221,20 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public AssetService assetService() {
-    return new AssetServiceImpl();
+  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
+                                                               Cache cache) {
+    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), cache);
   }
 
   @Bean
-  public LeopardService leopardService() {
-    return new LeopardServiceImpl();
+  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
+                                                        Cache cache) {
+    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), cache);
+  }
+
+  @Bean
+  public JsonService jsonService() {
+    return new JsonService();
   }
 
   @Bean

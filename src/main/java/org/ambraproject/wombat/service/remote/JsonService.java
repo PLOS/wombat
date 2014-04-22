@@ -20,15 +20,13 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URI;
 
 /**
  * Abstract class for services that query a ReST backend that returns JSON.
  */
-abstract class JsonService extends RemoteService {
+public class JsonService {
 
   @Autowired
   protected Gson gson;
@@ -45,19 +43,33 @@ abstract class JsonService extends RemoteService {
    * @throws NullPointerException    if either argument is null
    * @throws EntityNotFoundException if the object at the address does not exist
    */
-  protected <T> T requestObject(URI uri, Class<T> responseClass) throws IOException {
+  public <T> T requestObject(RemoteService<? extends Reader> remoteService, URI uri, Class<T> responseClass) throws IOException {
     Preconditions.checkNotNull(responseClass);
-    try (InputStream stream = requestStream(uri)) {
-      return deserializeStream(responseClass, stream, uri);
+    try (Reader reader = remoteService.request(uri)) {
+      return deserializeStream(responseClass, reader, uri);
     }
   }
 
-  protected <T> T requestCachedObject(String cacheKey, final URI address, final Class<T> responseClass) throws IOException {
+  /**
+   * Serialize an object either through a REST request or from the cache. If there is a cached value, and the REST
+   * service does not indicate that the value has been modified since the value was inserted into the cache, return that
+   * value. Else, query the service for JSON and deserialize it to an object as usual.
+   *
+   * @param cacheKey the cache key at which to retrieve and store the value
+   * @param address the address to query the SOA service if the value is not cached
+   * @param responseClass the type of object to deserialize
+   * @param <T> the type of {@code responseClass}
+   * @return the deserialized object
+   * @throws IOException
+   */
+  public <T> T requestCachedObject(CachedRemoteService<? extends Reader> remoteService, String cacheKey,
+                                   final URI address, final Class<T> responseClass)
+      throws IOException {
     Preconditions.checkNotNull(responseClass);
-    return requestCachedStream(cacheKey, address, new CacheDeserializer<InputStream,T>() {
+    return remoteService.requestCached(cacheKey, address, new CacheDeserializer<Reader, T>() {
       @Override
-      public T read(InputStream stream) throws IOException {
-        return deserializeStream(responseClass, stream, address);
+      public T read(Reader reader) throws IOException {
+        return deserializeStream(responseClass, reader, address);
       }
     });
   }
@@ -66,14 +78,13 @@ abstract class JsonService extends RemoteService {
    * Serialize the content of a stream to an object.
    *
    * @param responseClass the object type into which to serialize the JSON code
-   * @param stream        the source of the JSON code
+   * @param reader        the source of the JSON code
    * @param source        an object whose {@code toString()} describes where the JSON code came from (for logging only)
-   * @param <T>           the type of {@code responseClass}
    * @return the deserialized object
    * @throws IOException
    */
-  private <T> T deserializeStream(Class<T> responseClass, InputStream stream, Object source) throws IOException {
-    try (Reader reader = new InputStreamReader(stream)) {
+  private <T> T deserializeStream(Class<T> responseClass, Reader reader, Object source) throws IOException {
+    try {
       return gson.fromJson(reader, responseClass);
     } catch (JsonSyntaxException e) {
       String message = String.format("Could not deserialize %s from stream at: %s", responseClass.getName(), source);

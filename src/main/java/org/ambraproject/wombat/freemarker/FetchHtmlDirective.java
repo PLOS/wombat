@@ -16,6 +16,18 @@ import java.util.Map;
 
 public class FetchHtmlDirective implements TemplateDirectiveModel {
 
+  /*
+   * This directive is capable of fetching HTML from any arbitrary HTTP endpoint. In FreeMarker code, an invocation
+   * looks like <@fetchHtml path="..." /> and does not specify which service the path applies to.
+   *
+   * To keep things simple, the directive class is currently hard-coded to call only the leopardService bean, which
+   * creates an implicit link between "fetchHtml" in FreeMarker code and "leopardService" in the config code. The link
+   * is not intuitive, and will need to be generalized if this directive must ever connect to more than one service.
+   *
+   * However, we are choosing not to complicate it until we have a motivating case. So, leopardService remains
+   * hard-coded as the one and only way to "fetch HTML" for now.
+   */
+
   @Autowired
   private LeopardService leopardService;
 

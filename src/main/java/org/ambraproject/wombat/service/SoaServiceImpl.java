@@ -178,14 +178,6 @@ public class SoaServiceImpl extends JsonService implements SoaService {
     return makeRequest(buildUri("assetfiles/" + assetId), headers);
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
-    return requestObject(String.format("articles/%s?excludeCitations=true", articleId), Map.class);
-  }
-
   private URI buildUri(String address) {
     return buildUri(runtimeConfiguration.getServer(), address);
   }

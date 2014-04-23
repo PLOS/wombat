@@ -1122,7 +1122,20 @@
     <xsl:variable name="apos">'</xsl:variable>
     <xsl:if test=".//graphic">
       <xsl:variable name="imageURI">
-        <xsl:value-of select=".//graphic/@xlink:href"/>
+        <xsl:variable name="tempImageURI">
+          <xsl:value-of select=".//graphic/@xlink:href"/>
+        </xsl:variable>
+
+        <!-- For consistency in the UI, we strip of the URI scheme of the DOI when rendering links
+             that contain DOIs as parameters.                                                  -->
+        <xsl:choose>
+          <xsl:when test="starts-with($tempImageURI, 'info:doi/')">
+            <xsl:value-of select="substring($tempImageURI, 10)" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$tempImageURI" />
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:variable>
       <figure class="figure-small">
         <!--id needs to be attached to "figure" div for proper anchor linking-->

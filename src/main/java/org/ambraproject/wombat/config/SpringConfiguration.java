@@ -18,6 +18,8 @@ import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
 import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.RenderJsDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
+import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.AssetService;
@@ -165,6 +167,11 @@ public class SpringConfiguration {
   @Bean
   public SoaService soaService() {
     return new SoaServiceImpl();
+  }
+
+  @Bean
+  public ArticleService articleService() {
+    return new ArticleServiceImpl();
   }
 
   @Bean

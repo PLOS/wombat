@@ -10,6 +10,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicHeader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -184,11 +185,11 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
       Calendar resultLastModified = HttpDateUtil.parse(lastModifiedHeaders[0].getValue());
 
       int statusCode = response.getStatusLine().getStatusCode();
-      if (statusCode == 200) {
+      if (statusCode == HttpStatus.OK.value()) {
         TimestampedResponse timestamped = new TimestampedResponse(resultLastModified, response);
         returningStream = true;
         return timestamped;
-      } else if (statusCode == 304) {
+      } else if (statusCode == HttpStatus.NOT_MODIFIED.value()) {
         return new TimestampedResponse(resultLastModified, null);
       } else {
         throw new RuntimeException("Unexpected status code " + statusCode);

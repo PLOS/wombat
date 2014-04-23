@@ -70,7 +70,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@PropertySource("classpath:git.properties")
 public class SpringConfiguration {
 
   @Bean

@@ -38,20 +38,20 @@ public class GitInfo {
   private final String buildTime;
 
   public GitInfo(Environment env) {
-    this.branch = env.getProperty("git.branch");
+    this.branch = env.getProperty("git.branch", "");
 
-    this.describe = env.getProperty("git.commit.id.describe");
-    this.commitId = env.getProperty("git.commit.id");
-    this.commitIdAbbrev = env.getProperty("git.commit.id.abbrev");
-    this.commitUserName = env.getProperty("git.commit.user.name");
-    this.commitUserEmail = env.getProperty("git.commit.user.email");
-    this.commitMessageFull = env.getProperty("git.commit.message.full");
-    this.commitMessageShort = env.getProperty("git.commit.message.short");
-    this.commitTime = env.getProperty("git.commit.time");
+    this.describe = env.getProperty("git.commit.id.describe", "");
+    this.commitId = env.getProperty("git.commit.id", "");
+    this.commitIdAbbrev = env.getProperty("git.commit.id.abbrev", "");
+    this.commitUserName = env.getProperty("git.commit.user.name", "");
+    this.commitUserEmail = env.getProperty("git.commit.user.email", "");
+    this.commitMessageFull = env.getProperty("git.commit.message.full", "");
+    this.commitMessageShort = env.getProperty("git.commit.message.short", "");
+    this.commitTime = env.getProperty("git.commit.time", "");
 
-    this.buildUserName = env.getProperty("git.build.user.name");
-    this.buildUserEmail = env.getProperty("git.build.user.email");
-    this.buildTime = env.getProperty("git.build.time");
+    this.buildUserName = env.getProperty("git.build.user.name", "");
+    this.buildUserEmail = env.getProperty("git.build.user.email", "");
+    this.buildTime = env.getProperty("git.build.time", "");
   }
 
   public String getBranch() {

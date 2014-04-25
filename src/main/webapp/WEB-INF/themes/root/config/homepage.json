@@ -1,4 +1,5 @@
 {
   "resultsPerPage": 7,
-  "sections": ["recent"]
+  "sections": ["recent"],
+  "defaultSection": "recent"
 }

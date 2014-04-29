@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.Theme;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

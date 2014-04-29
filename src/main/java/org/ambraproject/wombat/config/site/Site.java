@@ -1,8 +1,10 @@
-package org.ambraproject.wombat.config;
+package org.ambraproject.wombat.config.site;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
+import org.ambraproject.wombat.config.RuntimeConfigurationException;
+import org.ambraproject.wombat.config.theme.Theme;
 
 import java.io.IOException;
 
@@ -30,9 +32,9 @@ public class Site {
   }
 
   @VisibleForTesting
-  static final String JOURNAL_KEY_PATH = "journal";
+  public static final String JOURNAL_KEY_PATH = "journal";
   @VisibleForTesting
-  static final String CONFIG_KEY_FOR_JOURNAL = "journalKey";
+  public static final String CONFIG_KEY_FOR_JOURNAL = "journalKey";
 
   private static String findJournalKey(Theme theme) {
     String journalKey;

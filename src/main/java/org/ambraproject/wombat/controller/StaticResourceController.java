@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.Theme;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.AssetService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;

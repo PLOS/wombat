@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.config;
+package org.ambraproject.wombat.config.theme;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
@@ -85,7 +85,7 @@ public class ThemeTree {
    * @return
    * @throws ThemeConfigurationException
    */
-  static ThemeTree parse(List<? extends Map<String, ?>> themeConfigJson, Collection<? extends Theme> internalThemes, Theme rootTheme)
+  public static ThemeTree parse(List<? extends Map<String, ?>> themeConfigJson, Collection<? extends Theme> internalThemes, Theme rootTheme)
       throws ThemeConfigurationException {
     Preconditions.checkArgument(internalThemes.contains(rootTheme));
     Map<String, ? extends Theme> internalThemeMap = Maps.uniqueIndex(internalThemes, Theme.GET_KEY);
@@ -164,7 +164,7 @@ public class ThemeTree {
     return node;
   }
 
-  ImmutableMap<String, Theme> matchToSites(List<Map<String, ?>> siteConfigJson) {
+  public ImmutableMap<String, Theme> matchToSites(List<Map<String, ?>> siteConfigJson) {
     Map<String, Theme> siteMap = Maps.newLinkedHashMap();
     for (Map<String, ?> siteObj : siteConfigJson) {
       String key = (String) siteObj.get("key");

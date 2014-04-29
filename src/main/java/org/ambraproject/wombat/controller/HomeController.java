@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
-import org.ambraproject.wombat.config.Site;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SolrSearchService;

@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
-import com.google.common.collect.ImmutableCollection;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import org.ambraproject.wombat.config.theme.Theme;
@@ -15,10 +14,10 @@ import java.util.Map;
  */
 public class SiteSet {
 
-  private final ImmutableMap<String, Site> sites;
+  private final ImmutableBiMap<String, Site> sites;
 
   private SiteSet(Iterable<Site> sites) {
-    ImmutableMap.Builder<String, Site> map = ImmutableMap.builder();
+    ImmutableBiMap.Builder<String, Site> map = ImmutableBiMap.builder();
     for (Site site : sites) {
       map.put(site.getKey(), site);
     }
@@ -51,7 +50,7 @@ public class SiteSet {
     return site;
   }
 
-  public ImmutableCollection<Site> getSites() {
+  public ImmutableSet<Site> getSites() {
     return sites.values();
   }
 

@@ -60,4 +60,33 @@ public class Site {
     return requestPredicate.isForSite(Preconditions.checkNotNull(request));
   }
 
+  @Override
+  public String toString() {
+    return getKey();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Site site = (Site) o;
+
+    if (!key.equals(site.key)) return false;
+    if (!theme.equals(site.theme)) return false;
+    if (!journalKey.equals(site.journalKey)) return false;
+    if (!requestPredicate.equals(site.requestPredicate)) return false;
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = key.hashCode();
+    result = 31 * result + theme.hashCode();
+    result = 31 * result + journalKey.hashCode();
+    result = 31 * result + requestPredicate.hashCode();
+    return result;
+  }
+
 }

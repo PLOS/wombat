@@ -38,7 +38,8 @@ public class TestClasspathTheme extends Theme {
     // Huge hack: the "real" themes include a file that specifies the theme
     // key.  Instead of including a test version, we just look for the filename.
     if (path.equals("config/" + Site.JOURNAL_KEY_PATH + ".json")) {
-      String dummyJson = String.format("{\"%s\": \"%s\"}", Site.CONFIG_KEY_FOR_JOURNAL, "default");
+      String dummyJson = String.format("{\"%s\": \"%s\", \"gaCode\": \"whoCares\"}", Site.CONFIG_KEY_FOR_JOURNAL,
+          "default");
       return new ByteArrayInputStream(dummyJson.getBytes());
     } else {
       return Thread.currentThread().getContextClassLoader().getResourceAsStream(path);

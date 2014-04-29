@@ -18,6 +18,7 @@ import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
 import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.RenderJsDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
+import org.ambraproject.wombat.freemarker.SiteGoogleAnalyticsDirective;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.AssetService;
@@ -123,9 +124,15 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public SiteGoogleAnalyticsDirective siteGoogleAnalyticsDirective() {
+    return new SiteGoogleAnalyticsDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            CssLinkDirective cssLinkDirective, RenderCssLinksDirective renderCssLinksDirective, JsDirective jsDirective,
-                                           RenderJsDirective renderJsDirective, BuildInfoDirective buildInfoDirective)
+                                           RenderJsDirective renderJsDirective, BuildInfoDirective buildInfoDirective,
+                                           SiteGoogleAnalyticsDirective siteGaCode)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -143,6 +150,7 @@ public class SpringConfiguration {
     variables.put("js", jsDirective);
     variables.put("renderJs", renderJsDirective);
     variables.put("buildInfo", buildInfoDirective);
+    variables.put("siteGaCode", siteGaCode);
     config.setFreemarkerVariables(variables);
     return config;
   }

@@ -72,8 +72,8 @@ public abstract class RenderAssetsDirective {
         // or something.  There's corresponding code in org.ambraproject.wombat.controller.StaticResourceController
         // as well.
         compiledPath.append(StaticResourceController.RESOURCE_NAMESPACE).append('/');
-        compiledPath.append(assetService.getCompiledAssetLink(assetType, assetPaths, getSite(request),
-            request.getServletPath()));
+        compiledPath.append(assetService.getCompiledAssetLink(assetType, assetPaths,
+            DirectiveUtil.getSitePathParam(request), request.getServletPath()));
         environment.getOut().write(getHtml(compiledPath.toString()));
       }
 
@@ -88,12 +88,6 @@ public abstract class RenderAssetsDirective {
    * @return HTMl snippet linking to the asset file
    */
   protected abstract String getHtml(String assetPath);
-
-  // We normally do this in Spring Controllers with @PathVariable annotations,
-  // but we have to do it "by hand" since we're in a TemplateDirectiveModel.
-  private String getSite(HttpServletRequest request) {
-    return request.getServletPath().split("/")[1];
-  }
 
   /**
    * Simple class that wraps the multiple values returned by getPathDepths.

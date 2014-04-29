@@ -30,7 +30,7 @@ public class SiteSet {
     for (Map.Entry<String, ? extends Theme> entry : themesForSites.entrySet()) {
       String key = entry.getKey();
       Theme theme = entry.getValue();
-      Site site = new Site(key, theme);
+      Site site = new Site(key, theme, new SiteKeyRequestPredicate(key));
       sites.add(site);
     }
     return new SiteSet(sites);

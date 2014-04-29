@@ -1,9 +1,7 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Splitter;
-import org.ambraproject.wombat.config.Site;
-import org.ambraproject.wombat.config.SiteSet;
-import org.ambraproject.wombat.service.UnmatchedSiteException;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.HttpDebug;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +13,6 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Iterator;
 
 public class SiteResolver implements HandlerMethodArgumentResolver {
   private static final Logger log = LoggerFactory.getLogger(SiteResolver.class);
@@ -28,8 +25,6 @@ public class SiteResolver implements HandlerMethodArgumentResolver {
     return parameter.getParameterAnnotation(SiteParam.class) != null;
   }
 
-  private static final Splitter PATH_SPLITTER = Splitter.on('/').omitEmptyStrings();
-
   @Override
   public Site resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                               NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
@@ -41,16 +36,21 @@ public class SiteResolver implements HandlerMethodArgumentResolver {
       log.debug(HttpDebug.dump(request));
     }
 
-    Iterator<String> path = PATH_SPLITTER.split(request.getServletPath()).iterator();
-    if (path.hasNext()) {
-      try {
-        return siteSet.getSite(path.next());
-      } catch (UnmatchedSiteException e) {
-        // Fall through and keep trying
+    Site resolution = null;
+    for (Site site : siteSet.getSites()) {
+      if (site.isFor(request)) {
+        if (resolution != null) {
+          String message = String.format("Multiple sites (%s, %s) matched for request: %s",
+              resolution, site, HttpDebug.dump(request));
+          throw new RuntimeException(message);
+        }
+        resolution = site;
       }
     }
-
-    throw new UnmatchedSiteException(null); // Not yet implemented
+    if (resolution == null) {
+      throw new NotFoundException("No site matched for request");
+    }
+    return resolution;
   }
 
 }

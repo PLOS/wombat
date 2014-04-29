@@ -6,29 +6,21 @@ import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.theme.Theme;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class Site {
 
-  private String key;
-  private Theme theme;
-  private String journalKey;
+  private final String key;
+  private final Theme theme;
+  private final String journalKey;
+  private final SiteRequestPredicate requestPredicate;
 
-  public Site(String key, Theme theme) {
+  public Site(String key, Theme theme, SiteRequestPredicate requestPredicate) {
+    this.requestPredicate = requestPredicate;
     this.key = Preconditions.checkNotNull(key);
     this.theme = Preconditions.checkNotNull(theme);
     this.journalKey = findJournalKey(theme);
-  }
-
-  /**
-   * Constructor for applications that do not depend on the theme and already know the journalKey.
-   *
-   * @param key        key of the journal (value in wombat.yaml)
-   * @param journalKey key used for solr (value in journal_key.txt of the corresponding theme)
-   */
-  public Site(String key, String journalKey) {
-    this.key = Preconditions.checkNotNull(key);
-    this.journalKey = Preconditions.checkNotNull(journalKey);
   }
 
   @VisibleForTesting
@@ -62,6 +54,10 @@ public class Site {
 
   public String getJournalKey() {
     return journalKey;
+  }
+
+  public boolean isFor(HttpServletRequest request) {
+    return requestPredicate.isForSite(Preconditions.checkNotNull(request));
   }
 
 }

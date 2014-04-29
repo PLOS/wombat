@@ -7,6 +7,7 @@ import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -16,7 +17,6 @@ import org.apache.commons.io.output.WriterOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -51,9 +51,9 @@ public class ArticleController extends WombatController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
-  @RequestMapping("/{site}/article")
+  @RequestMapping(value = {"/article", "/{site}/article"})
   public String renderArticle(Model model,
-                              @PathVariable("site") String site,
+                              @SiteParam Site site,
                               @RequestParam("id") String articleId)
       throws IOException {
 
@@ -88,8 +88,8 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping("/{site}/article/comments")
-  public String renderArticleComments(Model model, @PathVariable("site") String site,
+  @RequestMapping(value = {"/article/comments", "/{site}/article/comments"})
+  public String renderArticleComments(Model model, @SiteParam Site site,
                                       @RequestParam("id") String articleId) throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
@@ -189,8 +189,8 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping("/{site}/article/comment")
-  public String renderArticleCommentTree(Model model, @PathVariable("site") String site,
+  @RequestMapping(value = {"/article/comment", "/{site}/article/comment"})
+  public String renderArticleCommentTree(Model model, @SiteParam Site site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
     Map<String, Object> comment;
@@ -216,8 +216,8 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping("/{site}/article/authors")
-  public String renderArticleAuthors(Model model, @PathVariable("site") String site,
+  @RequestMapping(value = {"/article/authors", "/{site}/article/authors"})
+  public String renderArticleAuthors(Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -294,7 +294,7 @@ public class ArticleController extends WombatController {
    * @return String of the article HTML
    * @throws IOException
    */
-  private String getArticleHtml(String articleId, final String site) throws IOException {
+  private String getArticleHtml(String articleId, final Site site) throws IOException {
     Preconditions.checkNotNull(articleId);
     Preconditions.checkNotNull(site);
 

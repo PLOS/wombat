@@ -16,7 +16,6 @@ package org.ambraproject.wombat.controller;
 import org.ambraproject.wombat.config.site.Site;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -25,9 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BrowseController extends WombatController {
 
-  @RequestMapping("/{site}/browse")
-  public String browse(Model model, @PathVariable("site") String siteParam) {
-    Site site = siteSet.getSite(siteParam);
+  @RequestMapping(value = {"/browse", "/{site}/browse"})
+  public String browse(Model model, @SiteParam Site site) {
     model.addAttribute("journalKey", site.getKey());
     return site.getKey() + "/ftl/browse";
   }

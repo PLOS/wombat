@@ -105,20 +105,20 @@ public abstract class WombatController {
    * An article may be invisible if it is not in a published state, or if it has not been published in a journal
    * corresponding to the site.
    *
-   * @param siteKey         the site on which the article was queried
+   * @param site            the site on which the article was queried
    * @param articleMetadata the article metadata, or a subset containing the {@code state} and {@code journals} fields
    * @throws NotVisibleException if the article is not visible on the site
    */
-  protected void validateArticleVisibility(String siteKey, Map<?, ?> articleMetadata) {
+  protected void validateArticleVisibility(Site site, Map<?, ?> articleMetadata) {
     String state = (String) articleMetadata.get("state");
     if (!"published".equals(state)) {
       throw new NotVisibleException("Article is in unpublished state: " + state);
     }
 
     Set<String> articleJournalKeys = ((Map<String, ?>) articleMetadata.get("journals")).keySet();
-    String siteJournalKey = siteSet.getSite(siteKey).getJournalKey();
+    String siteJournalKey = site.getJournalKey();
     if (!articleJournalKeys.contains(siteJournalKey)) {
-      throw new NotVisibleException("Article is not published in: " + siteKey);
+      throw new NotVisibleException("Article is not published in: " + site);
     }
   }
 

@@ -5,14 +5,12 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SolrSearchService;
-import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,19 +43,12 @@ public class HomeController extends WombatController {
     IN_THE_NEWS;
   }
 
-  @RequestMapping(value = "/{site}", method = RequestMethod.GET)
-  public String serveHomepage(HttpServletRequest request, Model model, @PathVariable("site") String siteParam,
+  @RequestMapping(value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
+  public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam(value = "section", required = false) String sectionParam)
       throws IOException {
     if (!request.getServletPath().endsWith("/")) {
-      return "redirect:" + siteParam + "/";
-    }
-
-    Site site;
-    try {
-      site = siteSet.getSite(siteParam);
-    } catch (UnmatchedSiteException e) {
-      throw new NotFoundException(e);
+      return "redirect:" + site.getKey() + "/"; // TODO Support other site types
     }
 
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");

@@ -20,7 +20,6 @@ import org.ambraproject.wombat.service.SolrSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,8 +37,8 @@ public class SearchController extends WombatController {
   @Autowired
   private SearchService searchService;
 
-  @RequestMapping("/{site}/search")
-  public String search(Model model, @PathVariable("site") String siteParam,
+  @RequestMapping(value = {"/search", "/{site}/search"})
+  public String search(Model model, @SiteParam Site site,
                        @RequestParam(value = "q", required = false) String query,
                        @RequestParam(value = "subject", required = false) String subject,
                        @RequestParam(value = "author", required = false) String author,
@@ -70,7 +69,6 @@ public class SearchController extends WombatController {
     model.addAttribute("selectedSortOrder", sortOrder);
     model.addAttribute("selectedDateRange", dateRange);
 
-    Site site = siteSet.getSite(siteParam);
     Map<?, ?> searchResults;
     if (!Strings.isNullOrEmpty(subject)) {
       searchResults = searchService.subjectSearch(subject, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);

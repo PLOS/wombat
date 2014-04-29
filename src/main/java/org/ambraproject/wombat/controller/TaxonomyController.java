@@ -19,7 +19,6 @@ import org.ambraproject.wombat.service.SoaService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,10 +43,10 @@ public class TaxonomyController {
   @Autowired
   private SiteSet siteSet;
 
-  @RequestMapping("/{site}" + TAXONOMY_TEMPLATE)
-  public void read(@PathVariable("site") String siteParam, HttpServletRequest request, HttpServletResponse response)
+  @RequestMapping(value = {TAXONOMY_TEMPLATE, "/{site}" + TAXONOMY_TEMPLATE})
+  public void read(@SiteParam Site site, HttpServletRequest request, HttpServletResponse response)
       throws IOException {
-    Map<String, Object> taxonomyBrowserConfig = siteSet.getSite(siteParam).getTheme().getConfigMap("taxonomyBrowser");
+    Map<String, Object> taxonomyBrowserConfig = site.getTheme().getConfigMap("taxonomyBrowser");
     boolean hasTaxonomyBrowser = (boolean) taxonomyBrowserConfig.get("hasTaxonomyBrowser");
     if (!hasTaxonomyBrowser) {
       throw new NotFoundException();
@@ -62,7 +61,6 @@ public class TaxonomyController {
     // a way that plays nicely with spring
     // (specifically org.ambraproject.rhino.rest.controller.abstr.RestController).
 
-    Site site = siteSet.getSite(siteParam);
     String uri = request.getRequestURI();
     String req = uri.substring(uri.indexOf(TAXONOMY_NAMESPACE) + 1);  // Remove first slash
     req += "?";

@@ -11,12 +11,12 @@ public class TestThemeTree {
   /**
    * Create a dummy theme.
    */
-  private static ImmutableMap<String, Object> theme(String key, String parentKey) {
+  private static ImmutableMap<String, Object> theme(String key, String... parentKeys) {
     ImmutableMap.Builder<String, Object> builder = ImmutableMap.builder();
     builder.put("path", ".");
     builder.put("key", key);
-    if (parentKey != null) {
-      builder.put("parent", parentKey);
+    if (parentKeys != null) {
+      builder.put("parent", ImmutableList.copyOf(parentKeys));
     }
     return builder.build();
   }
@@ -31,7 +31,11 @@ public class TestThemeTree {
 
       // Should be able to declare children before their parents
       theme("child3", "root3"),
-      theme("root3", null)
+      theme("root3", null),
+
+      theme("multichild1-1", "child1-1", "child1-2"),
+      theme("multichild1-2", "root1", "child1-1", "child1-2"), // redundant parent should change nothing
+      theme("multichild2", "child1-1", "child1-2", "child2-1")
   );
 
   private static final ImmutableList<ImmutableMap<String, Object>> THEME_TREE_CYCLE_CASE = ImmutableList.of(
@@ -66,6 +70,10 @@ public class TestThemeTree {
     assertChainIs(themeTree, "child2-1", "root2", classpathThemeKey);
     assertChainIs(themeTree, "root3", classpathThemeKey);
     assertChainIs(themeTree, "child3", "root3", classpathThemeKey);
+
+    assertChainIs(themeTree, "multichild1-1", "child1-1", "child1-2", "root1", classpathThemeKey);
+    assertChainIs(themeTree, "multichild1-2", "child1-1", "child1-2", "root1", classpathThemeKey);
+    assertChainIs(themeTree, "multichild2", "child1-1", "child1-2", "root1", "child2-1", "root2", classpathThemeKey);
   }
 
   @Test(expectedExceptions = ThemeTree.ThemeConfigurationException.class)

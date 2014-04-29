@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,6 +19,8 @@ import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
 import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.RenderJsDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
+import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.AssetService;
@@ -86,8 +89,9 @@ public class SpringConfiguration {
       throws ThemeTree.ThemeConfigurationException {
     String path = "/WEB-INF/themes/";
     InternalTheme root = new InternalTheme(".Root", null, servletContext, path + "root/");
-    InternalTheme desktop = new InternalTheme(".Desktop", root, servletContext, path + "desktop/");
-    InternalTheme mobile = new InternalTheme(".Mobile", root, servletContext, path + "mobile/");
+    ImmutableList<InternalTheme> listOfRoot = ImmutableList.of(root);
+    InternalTheme desktop = new InternalTheme(".Desktop", listOfRoot, servletContext, path + "desktop/");
+    InternalTheme mobile = new InternalTheme(".Mobile", listOfRoot, servletContext, path + "mobile/");
     return runtimeConfiguration.getThemes(ImmutableSet.of(root, desktop, mobile), root);
   }
 
@@ -165,6 +169,11 @@ public class SpringConfiguration {
   @Bean
   public SoaService soaService() {
     return new SoaServiceImpl();
+  }
+
+  @Bean
+  public ArticleService articleService() {
+    return new ArticleServiceImpl();
   }
 
   @Bean

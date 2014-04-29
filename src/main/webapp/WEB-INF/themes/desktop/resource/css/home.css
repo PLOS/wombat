@@ -1,0 +1,364 @@
+/*
+ * $HeadURL: http://ambraproject.org/svn/plos/templates/branches/ginzu/journals/PLoSDefault/webapp/css/home.css $
+ * $Id: home.css 12936 2012-11-30 21:54:56Z josowski $
+ * Copyright (c) 2006-2012 by Public Library of Science http://plos.org http://ambraproject.org
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/********** home.css **********/
+
+#pagebdy-wrap {
+  background: #efefef;
+}
+
+#headlines {
+  padding: 10px 15px 15px;
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+#headlines h1 {
+  margin-bottom: 12px;
+}
+
+#headlines .tab-content {
+  padding-right: 20px;
+}
+
+.js .tab-pane + .tab-pane,
+.js .tab-pane h3 {
+  display: none;
+}
+
+#headlines ul.articles {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#headlines ul.articles li {
+  font-size: 20px;
+  line-height: 1.3;
+  margin-bottom: 25px;
+}
+
+#headlines ul.articles a {
+  color: #333;
+}
+
+#headlines ul.articles a:hover {
+  color: #3c63af;
+  text-decoration: none;
+}
+
+#headlines .more {
+  font-size: 0.923em !important;
+  line-height: 1.417 !important;
+  border-top: 1px solid #d1d1d1;
+  padding-top: 20px;
+  margin-top: 40px;
+}
+
+#headlines .tab-pane p {
+  margin-bottom: 18px;
+}
+
+#headlines ul.articles li.more {
+  margin-bottom: 18px;
+}
+
+#headlines ul.articles li.more a {
+  color: #3c63af;
+  text-decoration: underline;
+}
+
+#headlines p a {
+  text-decoration: underline;
+}
+
+.promoted-block {
+  margin-bottom: 30px;
+}
+
+.promoted {
+  background: #fff;
+  padding: 15px 35px 25px 15px;
+  margin-bottom: 20px;
+}
+
+.promoted .type {
+  font: 20px/1 'FS Albert Web Regular', Verdana, sans-serif !important;
+  font-size-adjust: 0.48;
+  margin-bottom: 10px;
+}
+
+.promoted .img {
+  float: left;
+  margin: 0 15px 1em 0;
+  padding-top: 2px;
+}
+
+.promoted .txt {
+  display: table-cell;
+  vertical-align: top;
+  font-size: 0.923em;
+  color: #666;
+}
+
+.promoted h3 {
+  font-size: 16px;
+  line-height: 1.125;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.promoted h3 a {
+  color: #333;
+}
+
+.promoted h3 a:hover {
+  color: #3c63af;
+  text-decoration: none;
+}
+
+.promoted .more {
+  font-size: 0.923em !important;
+  line-height: 1.417 !important;
+  border-top: 1px solid #d1d1d1;
+  padding-top: 20px;
+  margin-top: 40px;
+}
+
+.promoted-block hr {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  color: #dadada;
+}
+
+#issue {
+  background: #363636;
+  border-radius: 4px;
+  color: #ccc;
+  padding-top: 16px;
+  margin-bottom: 20px;
+}
+
+#issue .kicker {
+  text-align: center;
+  margin: 0 17px 3px;
+  font-size: 1.077em;
+}
+
+#issue h3 {
+  color: #fff;
+  text-align: center;
+  font: 20px/1 'FS Albert Web Regular', Verdana, sans-serif;
+  font-size-adjust: 0.48;
+  margin: 0 17px 17px;
+}
+
+#issue h3 a {
+  color: #fff;
+}
+
+#issue .img img {
+  margin: 0 auto;
+}
+
+#issue .txt {
+  padding: 17px;
+  font-size: 0.923em;
+  line-height: 1.417;
+}
+
+#issue p {
+  margin: 0;
+}
+
+#issue .txt a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#issue .txt a:hover{
+  text-decoration: underline;
+}
+
+#issue .txt strong {
+  color: #fff;
+}
+
+#connect {
+  margin-bottom: 20px;
+}
+
+#connect .lnk-social li {
+  float: left;
+  margin-left: 6px;
+}
+
+#connect .lnk-social li:first-child {
+  margin: 0;
+}
+
+.publish {
+  background: #363636;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 30px;
+  font: 20px/1.1 'FS Albert Web Regular', Verdana, sans-serif;
+  font-size-adjust: 0.48;
+  padding: 18px 15px 25px;
+}
+
+.publish h2 {
+  box-shadow: 0 7px 7px -4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-weight: normal;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
+.publish a {
+  color: #8aa1cf;
+}
+
+.publish .body {
+  padding-top: 20px;
+}
+
+.publish .item {
+  width: 110px;
+  float: left;
+  min-height: 2.5em;
+  padding: 0 10px 0 15px;
+}
+
+.publish .item + .item {
+  padding: 0 0 0 25px;
+  position: relative;
+}
+
+.publish .item + .item:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2.1em;
+  border-left: 1px solid #666;
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+
+#blog {
+  margin-bottom: 20px;
+}
+
+#blog h3 {
+  font: 20px/1.1 'FS Albert Web Regular', Verdana, sans-serif;
+  font-size-adjust: 0.48;
+  text-align: center;
+  margin-bottom: 25;
+}
+
+#blog h4 {
+  font-size: 0.923em;
+  margin: 25px 0 7px;
+}
+
+#blog h4 a {
+  color: #333;
+}
+
+#blog h4 a:hover {
+  color: #3c63af;
+  text-decoration: none;
+}
+
+#adWrap {
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+#adWrap iframe {
+  float: left;
+}
+
+/*plos one*/
+
+#search-home {
+  width: 960px;
+  margin: 0 auto;
+  padding: 35px 0 40px;
+  color: #afafaf;
+}
+
+#search-home p.intro {
+  text-align: center;
+  font: 20px/24px 'FS Albert Web Regular', Verdana, sans-serif;
+  font-size-adjust: 0.48;
+}
+
+#search-home p.intro strong {
+  font-weight: normal;
+  color: #fff;
+}
+
+#search-home #db {
+  margin-left: 115px;
+  position: relative;
+  width: 700px;
+}
+
+#search-home #db .wrap {
+  width: 525px;
+  padding-left: 15px;
+  margin: 0;
+}
+
+#search-home #db input#search {
+  width: 490px;
+}
+
+#search-home #advSearch {
+  min-width: 123px;
+  position: absolute;
+  top: 2px;
+  right: 0;
+}
+
+.explore {
+  padding: 0 5px 0 10px;
+  margin-bottom: 30px;
+}
+
+.explore h2 {
+  font: 30px 'FS Albert Web Regular', Verdana, sans-serif;
+  font-size-adjust: 0.48;
+  margin-bottom: 25px;
+}
+
+.explore ul {
+  width: 290px;
+}
+
+.explore li {
+  font-size: 15px;
+  padding-left: 15px;
+  background: url(../images/bul.blu.png) no-repeat 0 8px;
+  margin-bottom: 6px;
+}
+
+.explore li a img {
+  visibility: hidden;
+}
+
+.explore li:hover a img {
+  visibility: visible;
+}

@@ -7,10 +7,12 @@ import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
+import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,6 +47,8 @@ public class ArticleController extends WombatController {
   private Charset charset;
   @Autowired
   private SoaService soaService;
+  @Autowired
+  private ArticleService articleService;
   @Autowired
   private ArticleTransformService articleTransformService;
 
@@ -128,7 +132,8 @@ public class ArticleController extends WombatController {
           public String apply(AmendmentType input) {
             return input.relationshipType;
           }
-        });
+        }
+    );
   }
 
   /**
@@ -189,7 +194,13 @@ public class ArticleController extends WombatController {
   public String renderArticleCommentTree(Model model, @PathVariable("site") String site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
-    Map<?, ?> comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+    Map<String, Object> comment;
+    try {
+      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+    } catch (EntityNotFoundException enfe) {
+      throw new NotFoundException(enfe);
+    }
+    comment = DoiSchemeStripper.strip(comment, "articleDoi");
     validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
 
     model.addAttribute("comment", comment);
@@ -226,7 +237,7 @@ public class ArticleController extends WombatController {
   private Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = soaService.requestArticleMetadata(articleId);
+      articleMetadata = articleService.requestArticleMetadata(articleId);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }

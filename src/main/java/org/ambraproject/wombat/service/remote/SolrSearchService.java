@@ -192,13 +192,13 @@ public class SolrSearchService implements SearchService {
   /**
    * Populates the SOLR parameters with values used across all searchs in the application.
    *
-   * @param site name of the site in which to search
-   * @param start starting result, zero-based.  0 will start at the first result.
-   * @param rows max number of results to return
-   * @param sortOrder specifies the desired ordering for results
-   * @param dateRange specifies the date range for the results
-   * @param forHomePage if true, this search is for articles on a journal home page; if false it is for
-   *     a specific query
+   * @param site        name of the site in which to search
+   * @param start       starting result, zero-based.  0 will start at the first result.
+   * @param rows        max number of results to return
+   * @param sortOrder   specifies the desired ordering for results
+   * @param dateRange   specifies the date range for the results
+   * @param forHomePage if true, this search is for articles on a journal home page; if false it is for a specific
+   *                    query
    * @return populated list of parameters
    */
   private List<NameValuePair> buildCommonParams(Site site, int start, int rows, SearchCriterion sortOrder,

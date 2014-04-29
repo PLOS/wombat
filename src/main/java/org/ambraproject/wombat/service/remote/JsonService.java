@@ -55,10 +55,10 @@ public class JsonService {
    * service does not indicate that the value has been modified since the value was inserted into the cache, return that
    * value. Else, query the service for JSON and deserialize it to an object as usual.
    *
-   * @param cacheKey the cache key at which to retrieve and store the value
-   * @param address the address to query the SOA service if the value is not cached
+   * @param cacheKey      the cache key at which to retrieve and store the value
+   * @param address       the address to query the SOA service if the value is not cached
    * @param responseClass the type of object to deserialize
-   * @param <T> the type of {@code responseClass}
+   * @param <T>           the type of {@code responseClass}
    * @return the deserialized object
    * @throws IOException
    */

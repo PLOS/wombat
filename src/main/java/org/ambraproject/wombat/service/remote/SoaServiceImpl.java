@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.net.URI;
-import java.util.Map;
 
 public class SoaServiceImpl implements SoaService {
 
@@ -48,11 +47,6 @@ public class SoaServiceImpl implements SoaService {
   public CloseableHttpResponse requestAsset(String assetId, Header... headers)
       throws IOException {
     return cachedRemoteStreamer.getResponse(buildUri("assetfiles/" + assetId), headers);
-  }
-
-  @Override
-  public Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
-    return requestObject(String.format("articles/%s?excludeCitations=true", articleId), Map.class);
   }
 
   private URI buildUri(String address) {

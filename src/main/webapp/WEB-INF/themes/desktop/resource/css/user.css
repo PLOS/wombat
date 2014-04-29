@@ -1,0 +1,654 @@
+/*basic styles for user page*/
+h2.displayName {
+  font: 30px/1 'FS Albert Web Regular', Verdana, sans-serif;
+  font-size-adjust: 0.48;
+}
+
+.note {
+  color: #999;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 15px;
+  margin-top: 2px;
+}
+
+/*Set a minimum height so page doesn't drastically grow when content is loaded*/
+div#user-forms {
+  min-height: 600px;
+}
+
+#info-list li {
+  margin: 7px 0;
+}
+
+#info-list li.close-top {
+  margin-top: -5px;
+}
+
+/**************Override jquery ui tabs default look**********************/
+div#user-forms {
+  border: none;
+}
+
+div#user-tabs ul {
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/*****************Styles for the forms******************************/
+.required {
+  color: #f03;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+input.btn + span.required {
+  padding-left: 5px;
+}
+
+.ambra-form {
+  position: relative;
+  display: block;
+}
+
+.ambra-form fieldset {
+  position: relative;
+}
+
+.ambra-form fieldset legend {
+  font-family: Verdana, Arial, Helvetica, san-serif, serif;
+  font-size: 1.6em;
+  color: #333;
+  background-color: #FFFFFF;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.ambra-form ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ambra-form ol li {
+  position: relative;
+  list-style: none;
+  display: block;
+  padding-bottom: 14px;
+  background-color: transparent;
+  background-image: none;
+  clear: both;
+}
+
+.ambra-form .form-last-item {
+  border-bottom: none;
+}
+
+/************* inline form elements styles *****************/
+.ambra-form ol li ol li {
+  float: left;
+  margin-right: 10px;
+  border-bottom: none !important;
+  padding-left: 0;
+  clear: none;
+}
+
+.ambra-form ol li ol {
+  display: block;
+  clear: both;
+  width: 100%;
+  float: none;
+}
+
+/************* general comambrant styles *****************/
+.ambra-form ol li label, label {
+  display: block;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 2px;
+  line-height: normal;
+  cursor: pointer
+}
+
+.ambra-form ol li input:not([type="submit"]) {
+  width: 206px;
+  border: 1px solid #999;
+  padding: 2px;
+}
+
+.ambra-form ol li input.radio {
+  border-width: 0;
+}
+
+.ambra-form ol li .long-input {
+  width: 430px;
+}
+
+.ambra-form ol li select {
+  padding: 1px;
+  width: 213px;
+  margin-top: -2px;
+}
+
+.ambra-form ol li .radio {
+  width: 14px;
+}
+
+.ambra-form ol li .checkbox {
+  width: 14px;
+}
+
+.ambra-form textarea {
+  width: 206px;
+  border: 1px solid #999;
+}
+
+.ambra-form #submit, .ambra-form #cancel {
+}
+
+.ambra-form .checkboxLabel {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  margin-bottom: 30px;
+}
+
+/***********************************************/
+/* individual styles                         */
+/***********************************************/
+#userForm_postalAddress {
+  width: 212px;
+}
+
+#userForm_title {
+  width: auto;
+}
+
+#userForm_givenNames {
+  width: 106px;
+}
+
+#userForm_biographyText {
+  width: 430px;
+  min-height: 130px;
+}
+
+/************* error styles *****************/
+.ambra-form ol .form-error {
+  color: #f03;
+  font-style: italic;
+}
+
+.ambra-form ol .form-error label {
+  font-weight: bold;
+  color: #f03;
+  font-style: normal;
+}
+
+.ambra-form ol .form-error input, .ambra-form ol .form-error select, .ambra-form ol .form-error textarea {
+  border-color: #c03;
+}
+
+.ambra-form .errorMessage {
+  padding-left: 16px;
+}
+
+/************* success message styles *****************/
+.ambra-form .form-success {
+  padding: 25px 0 25px 10px;
+}
+
+.ambra-form ol .note.top {
+}
+
+/************ two column layout *******************/
+.ambra-form .col {
+  float: left;
+  clear: none;
+  margin-right: 9px;
+}
+
+.ambra-form .row.col {
+  clear: both;
+  float: left;
+}
+
+.ambra-form .public-private legend {
+  background-color: transparent;
+  font-size: 1.4em;
+  margin: 20px 0;
+}
+
+.public-private label {
+  position: relative;
+  top: -2px;
+}
+
+/************* alerts styles *****************/
+#alert-form ol {
+  overflow: hidden;
+  position: relative;
+  width: 900px;
+}
+
+#alert-form ol ol {
+  width: auto;
+}
+
+#alert-form .alerts-title {
+  width: 300px;
+  float: left;
+  font-weight: bold;
+  margin: 0;
+  padding: 5px 0 0 5px;
+}
+
+#alert-form .alerts-weekly {
+  width: 160px;
+  margin: 0;
+  padding: 5px 0;
+}
+
+#alert-form ol li {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 5px 0;
+  display: block;
+  border-bottom: 1px solid #ccc;
+  width: auto;
+}
+
+#alert-form ol li ol {
+  position: relative;
+  top: 0;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+#alert-form label {
+  text-align: left;
+  width: auto;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+#alert-form label input {
+  margin: 0;
+  width: 20px;
+  border-width: 0;
+  position: relative;
+  top: 3px;
+}
+
+#alert-form .search-alerts-title {
+  width: 200px;
+  float: left;
+  font-weight: bold;
+  margin: 0;
+  padding: 5px 0 0 5px;
+}
+
+#alert-form .search-alerts-weekly {
+  width: 120px;
+  margin: 0;
+  padding: 5px 0;
+}
+
+#alert-form .search-alerts-monthly {
+  width: 120px;
+  margin: 0;
+  padding: 5px 0;
+}
+
+ul {
+  margin-left: 15px;
+  padding: 0;
+}
+
+.btnwrap {
+  margin-top: 15px;
+}
+
+/** webkit (Safari & Chrome fixes) **/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  ol {
+    -webkit-margin-top-collapse: separate;
+    margin-top: 10px !important;
+  }
+
+  .public-private label {
+    position: relative;
+    top: 0;
+  }
+
+  #userForm_givenNames {
+    width: 110px;
+  }
+}
+
+/********************
+
+display profile page
+
+*********************/
+div.profile ol {
+  clear: left;
+  list-style-type: none;
+  margin: 25px 0 0;
+  padding: 20px 0 0;
+}
+
+div.profile ol li {
+  background-color: transparent;
+  background-image: none;
+  border-bottom: 2px solid #999;
+  clear: both;
+  display: block;
+  list-style: none outside none;
+  padding: 5px 20px 10px;
+}
+
+div.profile li em {
+  color: #555555;
+  font-size: 0.9em;
+}
+
+div.profile ol li span.heading {
+  display: block;
+  font-weight: bold;
+}
+
+div.profile ol li input {
+  border: 1px solid #FDAE7A;
+  padding: 2px;
+  width: 200px;
+}
+
+#pagehdr-wrap {
+  border-top: 6px solid #3C63AF;
+  background: #efefef;
+}
+
+#user .btn-style a {
+  background: #3C63AF;
+  border-radius: 0 0 4px 4px;
+  color: #FFFFFF
+}
+
+.tab-nav .active a,
+.tab-nav .active a:hover {
+  background-color: #3C63AF;
+  color: #FFF;
+}
+
+.btn.primary {
+  background-color: #3C63AF;
+  color: #FFFFFF;
+}
+
+div#save-confirm {
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  box-shadow: 4px 4px 8px #808080;
+  display: none;
+  width: 320px;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  background-color: black;
+  opacity: 0.9;
+}
+
+form > p.required:first-child {
+  padding-left: 3px;
+}
+
+div#formError {
+  color: red;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+div.weekly_description {
+  font-weight: bold;
+  color: #333;
+}
+
+/** CSS for journal alerts selector **/
+
+.alertToggle {
+  float: right;
+  margin-top: 3px;
+  margin-right: 3px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 12px;
+  width: 12px;
+}
+
+.alertToggleOff {
+  background-image: url("/images/icon.arrow.closed.png");
+}
+
+.alertToggleOn {
+  background-image: url("/images/icon.arrow.open.png");
+}
+
+#alert-form ol > li.filtered {
+  cursor: pointer;
+}
+
+#alert-form ol > li.toggleOn {
+  border-bottom: 0;
+}
+
+#alert-form ol > li.filtered:hover {
+  background-color: #d3e2ff;
+}
+
+#alert-form ol li.subjectAreaSelector {
+  padding-left: 10px;
+}
+
+li.subjectAreaSelector div.selectSubjectAreas {
+  float: left;
+  margin: 10px 0 30px 0;
+  border: 1px solid #b4b4b4;
+}
+
+li.subjectAreaSelector div.selectedSubjectAreas {
+  float: left;
+  margin: 10px 0 30px 0;
+  margin-left: 10px;
+  width: 375px;
+}
+
+li.subjectAreaSelector div.row {
+  clear: both;
+  padding-top: 3px;
+}
+
+#alert-form ol li.subjectAreaSelector div.row label {
+  padding: 3px 0 5px 0;
+}
+
+li.subjectAreaSelector div.selectSubjectAreas {
+  padding-top: 2px;
+  margin-left: 20px;
+  width: 480px;
+  height: 450px;
+  overflow: auto;
+}
+
+#alert-form ol.selector {
+  margin-top: 5px;
+}
+
+#alert-form div.subjectSearchInput {
+  position:relative;
+}
+
+#alert-form div.row .subjectSearchInput {
+  float: left;
+  margin-left: 20px;
+  height: 20px;
+  width: 399px;
+}
+
+#alert-form div.row input[name="searchSubject_btn"] {
+  float: left;
+  margin-left: 7px;
+  width: 70px;
+  height: 26px;
+  border: 0;
+}
+
+#alert-form div.row div.clearFilter {
+  background: #606060 url("/images/btn.close.png") no-repeat scroll center;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 22px;
+  width: 21px;
+  float: left;
+  padding: 0;
+  margin: 0;
+  top: 5px;
+  left: 402px;
+  position: absolute;
+  display: none;
+}
+
+#alert-form div.row div.clearFilter:hover {
+  background: #808080 url("/images/btn.close.png") no-repeat scroll center;
+}
+
+#alert-form ol.selector li {
+  cursor: default;
+  padding: 0;
+  margin: 4px 0 0 0;
+  float: none;
+}
+
+#alert-form ol.selector li span {
+  padding: 1px 5px 2px 5px;
+  cursor: pointer;
+}
+
+#alert-form ol.selector li span:hover {
+  background-color: #d3e2ff;
+  border-radius:4px 4px 4px 4px;
+}
+
+#alert-form ol.selector li span:hover:after {
+  content: url("/images/icon.plus.png");
+  padding: 0 0 0 5px;
+}
+
+#alert-form ol.selector li span.checked {
+  cursor: default;
+}
+
+#alert-form ol.selector li span.checked:after {
+  padding-left: 5px;
+  content: url('/images/icon.checkmark.png');
+}
+
+#alert-form ol.selector li span.checked:hover {
+  background-color: transparent;
+}
+
+#alert-form ol.selector li span.checked {
+  color: #afafaf;
+}
+
+#alert-form ol.selector li ol li {
+  padding-left: 15px;
+}
+
+#alert-form ol.selector li img {
+  margin: 0 0 0 8px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 14px;
+  height: 14px;
+}
+
+#alert-form ol.selector li img.expand {
+  background-image: url("/images/icon.arrow.closed.png");
+  cursor: pointer;
+}
+
+#alert-form ol.selector li img.expanded {
+  background-image: url("/images/icon.arrow.open.png");
+  cursor: pointer;
+}
+
+#alert-form ol.selector li img.expanded-nopointer {
+  background-image: url("/images/icon.arrow.open.png");
+}
+
+#alert-form div.selectedSubjectAreas ol li {
+  padding: 3px 0 0 0;
+  float: none;
+}
+
+#alert-form div.selectedSubjectAreas div.subjectsSelected h3 {
+  margin-bottom: 0;
+}
+
+/*TODO: Fix cursor states for form fields*/
+
+#alert-form div.selectedSubjectAreas ol li div {
+  background: none repeat scroll 0 0 #646464;
+  border-radius: 4px 4px 4px 4px;
+  color: #FFFFFF;
+  font-weight: bold;
+  line-height: 28px;
+  margin: 0 6px 6px 0;
+  padding: 0 9px 0 10px;
+}
+
+#alert-form div.selectedSubjectAreas ol li div img {
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+#alert-form ol li.subjectAreaSelector div.row div.selectedSubjectAreas div.subjectsSelected div.required {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+#alert-form ol li.subjectAreaSelector div.row div.selectedSubjectAreas div.subjectsSelected input#subjectSave.btn {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#alert-form ol li.subjectAreaSelector div.row div.selectedSubjectAreas div.noSubjectsSelected {
+  margin-bottom: 10px;
+}
+
+#alert-form ol li.subjectAreaSelector div.row div.selectedSubjectAreas div.subjectsSelected h3 {
+  font-weight: normal;
+}
+
+#alert-form ol li.subjectAreaSelector div.row div.selectedSubjectAreas div.noSubjectsSelected h3 {
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+#alert-form ol li.subjectAreaSelector div.row div.selectedSubjectAreas div.subjectsSelected ol li div.filter-item {
+  margin: 0;
+}
+
+/** END CSS for journal alerts selector **/

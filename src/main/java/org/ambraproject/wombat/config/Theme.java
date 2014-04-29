@@ -1,12 +1,15 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Function;
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.SetMultimap;
 import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
 import com.google.common.io.Files;
 import freemarker.cache.TemplateLoader;
 import org.apache.commons.io.IOUtils;
@@ -19,22 +22,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URLConnection;
+import java.util.ArrayDeque;
 import java.util.Collection;
+import java.util.Deque;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 public abstract class Theme {
 
   private final String key;
-  private final Optional<Theme> parent;
+  private final ImmutableList<Theme> parents;
 
-  protected Theme(String key, Theme parent) {
+  protected Theme(String key, List<? extends Theme> parents) {
     Preconditions.checkArgument(!key.isEmpty());
     Preconditions.checkArgument(key.startsWith(".") == (this instanceof InternalTheme));
     this.key = key;
-    this.parent = Optional.fromNullable(parent);
+    this.parents = (parents == null) ? ImmutableList.<Theme>of() : ImmutableList.copyOf(parents);
   }
 
   /**
@@ -53,6 +58,9 @@ public abstract class Theme {
     }
   };
 
+
+  private transient Iterable<Theme> iterableView;
+
   /**
    * Return the inheritance chain of themes, from leaf to root. The first element is guaranteed to be this object. Each
    * element is followed by its parent until a root theme is reached.
@@ -60,31 +68,9 @@ public abstract class Theme {
    * @return the chain of themes
    */
   public final Iterable<Theme> getChain() {
-    return new Iterable<Theme>() {
-      @Override
-      public Iterator<Theme> iterator() {
-        return new UnmodifiableIterator<Theme>() {
-          private Theme cursor = Theme.this;
-
-          @Override
-          public boolean hasNext() {
-            return (cursor != null);
-          }
-
-          @Override
-          public Theme next() {
-            if (!hasNext()) {
-              throw new NoSuchElementException();
-            }
-            Theme next = cursor;
-            cursor = cursor.parent.orNull();
-            return next;
-          }
-        };
-      }
-    };
+    return (iterableView != null) ? iterableView :
+        (iterableView = ImmutableList.copyOf(new InheritanceChain()));
   }
-
 
   /**
    * Return a loader for this theme's templates.
@@ -170,7 +156,7 @@ public abstract class Theme {
     return null; // TODO: IOException better here?
   }
 
-  protected abstract ResourceAttributes fetchResourceAttributes(String path) throws IOException ;
+  protected abstract ResourceAttributes fetchResourceAttributes(String path) throws IOException;
 
   /**
    * Return a collection of all static resources available from a root path in this theme and its parents. The returned
@@ -275,6 +261,70 @@ public abstract class Theme {
 
       Yaml yaml = new Yaml(); // don't cache; it isn't threadsafe
       return yaml.loadAs(new InputStreamReader(streamToUse), Map.class);
+    }
+  }
+
+
+  /**
+   * Iterate over this theme and its parents in topological sort order. This means, if two paths lead to a common
+   * parent, explore each path fully before hitting the parent. Uses Kahn's algorithm.
+   */
+  private class InheritanceChain extends AbstractIterator<Theme> {
+    private final SetMultimap<Theme, Theme> childMap; // map from parents to their children
+    private final Set<Theme> yielded; // themes already returned by this iterator
+    private final Deque<Theme> stack; // candidates for the next iteration
+
+    private InheritanceChain() {
+      childMap = buildChildMap(Theme.this);
+      yielded = Sets.newHashSet();
+      stack = Lists.newLinkedList(); // we will remove from the middle occasionally
+      stack.add(Theme.this);
+    }
+
+    /*
+     * Set up links from parents to children, since Theme objects don't natively keep track of their children. Note that
+     * this causes initialization of the iterator to take O(n) time, though the full trip is still only O(n).
+     */
+    private SetMultimap<Theme, Theme> buildChildMap(Theme root) {
+      SetMultimap<Theme, Theme> childMap = HashMultimap.create();
+      Deque<Theme> tempStack = new ArrayDeque<>();
+      tempStack.push(root);
+      while (!tempStack.isEmpty()) {
+        Theme child = tempStack.pop();
+        for (Theme parent : child.parents) {
+          childMap.put(parent, child);
+          tempStack.push(parent);
+        }
+      }
+      return childMap;
+    }
+
+    @Override
+    protected Theme computeNext() {
+      for (Iterator<Theme> iterator = stack.iterator(); iterator.hasNext(); ) {
+        Theme candidate = iterator.next();
+        if (yielded.contains(candidate)) {
+          iterator.remove();
+        } else if (!childMap.containsKey(candidate)) {
+          // The candidate has no children that haven't been yielded yet, so we will yield this one.
+
+          iterator.remove(); // Do this first. The iterator will be clobbered once we add to the stack.
+
+          // Push all parents onto the stack, and remove the child from the parents' child sets.
+          // Push in an order such that we do depth-first search, using the same order as in the parents list.
+          for (Theme parent : candidate.parents.reverse()) {
+            stack.addFirst(parent);
+            childMap.get(parent).remove(candidate);
+          }
+
+          yielded.add(candidate);
+          return candidate;
+        } // Else, continue down the stack until we find a node with no outstanding children.
+      }
+      if (stack.isEmpty()) {
+        return endOfData();
+      }
+      throw new RuntimeException("Invalid graph (expected to throw ThemeConfigException when built)");
     }
   }
 

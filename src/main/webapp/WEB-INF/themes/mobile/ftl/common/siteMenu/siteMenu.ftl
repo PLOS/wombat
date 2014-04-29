@@ -1,6 +1,6 @@
 <#include "siteMenuFlag.ftl" />
 <#if hasSiteMenu>
-  <#macro menuSection title>
+  <#macro menuSection title containsSubmit=false>
   <li class="accordion-item">
     <a class="expander">
       <span class="arrow">Expand</span>
@@ -15,6 +15,9 @@
   <li>
     <a class="btn-lg" href="${href}"><#nested></a>
   </li>
+  </#macro>
+  <#macro submitBlock>
+  <#-- TODO Document -->
   </#macro>
 <div id="common-menu-container" class="full-menu-container coloration-border-top">
   <nav class="full-menu">

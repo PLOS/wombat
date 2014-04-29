@@ -6,6 +6,7 @@ import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.service.SolrSearchService;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
+import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -133,13 +134,15 @@ public class HomeController extends WombatController {
 
   private Map getInTheNewsArticles(String journalKey) throws IOException {
     String requestAddress = "journals/" + journalKey + "?inTheNewsArticles";
-    List<Map<String, Object>> inTheNewsArticles = soaService.requestObject(requestAddress, List.class);
+    List<Map<String, Object>> inTheNewsArticles = (List<Map<String, Object>>) soaService.requestObject(requestAddress,
+        List.class);
 
     // From the presentation layer's perspective, all three of these article lists look the same.
     // However, two of them come from solr, and one from rhino.  Unfortunately solr uses
     // "id" as the name of the DOI attribute, while rhino uses "doi".  So this hack is
-    // necessary...
+    // necessary.  (We also take the opportunity to strip off the DOI scheme.)
     for (Map<String, Object> article : inTheNewsArticles) {
+      article = DoiSchemeStripper.strip(article);
       article.put("id", article.get("doi"));
     }
     Map<String, Object> results = new HashMap<>();

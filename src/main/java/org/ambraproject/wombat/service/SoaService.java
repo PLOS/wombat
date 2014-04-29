@@ -86,14 +86,4 @@ public interface SoaService {
    * @throws IOException
    */
   public abstract CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException;
-
-  /**
-   * Requests metadata about an article.
-   *
-   * @param articleId DOI string
-   * @return deserialized JSON data structure as returned by the SOA layer
-   * @throws IOException
-   */
-  // TODO: consider moving this somewhere else (there's no ArticleService right now, just an ArticleTransformService).
-  public abstract Map<?, ?> requestArticleMetadata(String articleId) throws IOException;
 }

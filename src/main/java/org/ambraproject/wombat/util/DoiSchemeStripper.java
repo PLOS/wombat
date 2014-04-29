@@ -16,19 +16,18 @@ package org.ambraproject.wombat.util;
 import java.util.Map;
 
 /**
- * Utility class for removing the URI scheme ("info:doi/") from DOIs.  Most of the wombat code accepts URL
- * parameters that are DOIs either with or without the scheme, but for consistency, we render URLs without
- * the scheme.
+ * Utility class for removing the URI scheme ("info:doi/") from DOIs.  Most of the wombat code accepts URL parameters
+ * that are DOIs either with or without the scheme, but for consistency, we render URLs without the scheme.
  * <p/>
- * This code duplicates logic from the Rhino org.ambraproject.rhino.identity.ArticleIdentity, but we don't
- * use that here because doing so would introduce a dependency on ambra-models, which we don't want wombat
- * to know about.
+ * This code duplicates logic from the Rhino org.ambraproject.rhino.identity.ArticleIdentity, but we don't use that here
+ * because doing so would introduce a dependency on ambra-models, which we don't want wombat to know about.
  */
 public final class DoiSchemeStripper {
 
   private static final String DOI_URI_SCHEME = "info:doi/";
 
-  private DoiSchemeStripper() {}
+  private DoiSchemeStripper() {
+  }
 
   /**
    * Removes the URI scheme, if present, from any entries in the input map that have a key of "doi".
@@ -43,7 +42,7 @@ public final class DoiSchemeStripper {
   /**
    * Removes the URI scheme, if present, from any entries in the input map that have a given key.
    *
-   * @param map map which will be modified
+   * @param map          map which will be modified
    * @param doiFieldName key whose value may be modified in the map
    * @return reference to map
    */

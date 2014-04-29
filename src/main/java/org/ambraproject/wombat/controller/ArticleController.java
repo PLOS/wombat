@@ -131,7 +131,8 @@ public class ArticleController extends WombatController {
           public String apply(AmendmentType input) {
             return input.relationshipType;
           }
-        });
+        }
+    );
   }
 
   /**

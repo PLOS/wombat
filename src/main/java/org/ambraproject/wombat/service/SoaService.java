@@ -5,7 +5,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 
 /**
  * A service for retrieving data from the SOA's RESTful server.

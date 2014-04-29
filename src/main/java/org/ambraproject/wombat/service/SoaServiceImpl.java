@@ -18,7 +18,6 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.net.URI;
 import java.util.Calendar;
-import java.util.Map;
 
 public class SoaServiceImpl extends JsonService implements SoaService {
   private static final Logger log = LoggerFactory.getLogger(SoaServiceImpl.class);

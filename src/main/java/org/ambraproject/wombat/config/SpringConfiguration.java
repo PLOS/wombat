@@ -15,6 +15,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
@@ -103,6 +104,11 @@ public class SpringConfiguration {
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration,
                          ThemeTree themeTree) {
     return SiteSet.create(runtimeConfiguration.getThemesForSites(themeTree));
+  }
+
+  @Bean
+  public SiteResolver siteResolver() {
+    return new SiteResolver();
   }
 
   @Bean

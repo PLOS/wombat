@@ -16,8 +16,8 @@ public class Site {
   public Site(String key, Theme theme) {
     this.key = Preconditions.checkNotNull(key);
     this.theme = Preconditions.checkNotNull(theme);
-    this.journalKey = findJournalConfigValue(CONFIG_KEY_FOR_JOURNAL, theme);
-    gaCode = findJournalConfigValue("gaCode", theme);
+    this.journalKey = findJournalConfigValue(CONFIG_KEY_FOR_JOURNAL, theme, true);
+    gaCode = findJournalConfigValue("gaCode", theme, false);
   }
 
   /**
@@ -36,14 +36,14 @@ public class Site {
   @VisibleForTesting
   static final String CONFIG_KEY_FOR_JOURNAL = "journalKey";
 
-  private static String findJournalConfigValue(String key, Theme theme) {
+  private static String findJournalConfigValue(String key, Theme theme, boolean required) {
     String value;
     try {
       value = (String) theme.getConfigMap(JOURNAL_KEY_PATH).get(key);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    if (Strings.isNullOrEmpty(value)) {
+    if (required && Strings.isNullOrEmpty(value)) {
       String message = String.format("The theme %s must provide or inherit %s at the path: config/%s",
           theme.getKey(), key, JOURNAL_KEY_PATH);
       throw new RuntimeConfigurationException(message);
@@ -64,6 +64,9 @@ public class Site {
     return journalKey;
   }
 
+  /**
+   * @return the Google Analytics code for this site, or null if none is defined.
+   */
   public String getGoogleAnalyticsCode() {
     return gaCode;
   }

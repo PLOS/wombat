@@ -7,7 +7,7 @@
     comment ('#') as usual. We want it to show up in page source.
   -->
 <!--
-  Webapp build: <@buildInfo component='webapp' field='version' /> at <@buildInfo component='webapp' field='date' /> by <@buildInfo component='webapp' field='user' />
-  Service build: <@buildInfo component='service' field='version' /> at <@buildInfo component='service' field='date' /> by <@buildInfo component='service' field='user' />
+  Webapp build: <@buildInfo component='webapp' field='version' /> at <@buildInfo component='webapp' field='date' /> by <@buildInfo component='webapp' field='user' />, commit: <@buildInfo component='webapp' field='commitIdAbbrev' />
+  Service build: <@buildInfo component='service' field='version' /> at <@buildInfo component='service' field='date' /> by <@buildInfo component='service' field='user' /> , commit: <@buildInfo component='service' field='commitIdAbbrev' />
   -->
 <@buildInfo component='webapp' field='version' />/<@buildInfo component='service' field='version' /><#t>

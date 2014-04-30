@@ -8,10 +8,12 @@ import freemarker.cache.WebappTemplateLoader;
 import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -23,8 +25,8 @@ public class InternalTheme extends Theme {
   private final String resourceRoot;
   private final WebappTemplateLoader templateLoader;
 
-  public InternalTheme(String key, Theme parent, ServletContext servletContext, String resourcePath) {
-    super(key, parent);
+  public InternalTheme(String key, List<? extends Theme> parents, ServletContext servletContext, String resourcePath) {
+    super(key, parents);
     this.servletContext = Preconditions.checkNotNull(servletContext);
     this.resourceRoot = Preconditions.checkNotNull(resourcePath);
     this.templateLoader = new WebappTemplateLoader(servletContext, resourcePath);
@@ -45,7 +47,11 @@ public class InternalTheme extends Theme {
    */
   @Override
   protected ResourceAttributes fetchResourceAttributes(String path) throws IOException {
-    URLConnection conn = servletContext.getResource(resourceRoot + path).openConnection();
+    URL resource = servletContext.getResource(resourceRoot + path);
+    if (resource == null) {
+      return null;
+    }
+    URLConnection conn = resource.openConnection();
     return conn.getContentLengthLong() > 0 ? new ResourceAttributes(conn) : null;
   }
 

@@ -1,9 +1,11 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
+import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,8 @@ public class FigurePageController extends WombatController {
 
   @Autowired
   private SoaService soaService;
+  @Autowired
+  private ArticleService articleService;
   @Autowired
   private ArticleTransformService articleTransformService;
 
@@ -65,7 +69,7 @@ public class FigurePageController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = soaService.requestArticleMetadata(articleId);
+      articleMetadata = articleService.requestArticleMetadata(articleId);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
@@ -74,6 +78,7 @@ public class FigurePageController extends WombatController {
 
     List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
     for (Map<String, Object> figureMetadata : figureMetadataList) {
+      figureMetadata = DoiSchemeStripper.strip(figureMetadata);
       transformFigureDescription(site, figureMetadata);
     }
 
@@ -91,12 +96,13 @@ public class FigurePageController extends WombatController {
     requireNonemptyParameter(figureId);
     Map<String, Object> figureMetadata;
     try {
-      figureMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+      figureMetadata = (Map<String, Object>) soaService.requestObject("assets/" + figureId + "?figure", Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);
     }
 
-    Map<String, ?> parentArticle = (Map<String, ?>) figureMetadata.get("parentArticle");
+    Map<String, Object> parentArticle = (Map<String, Object>) figureMetadata.get("parentArticle");
+    parentArticle = DoiSchemeStripper.strip(parentArticle);
     validateArticleVisibility(site, parentArticle);
     String parentArticleDoi = (String) parentArticle.get("doi");
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));

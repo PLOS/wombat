@@ -14,7 +14,6 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.Site;
 import org.apache.http.NameValuePair;
@@ -45,33 +44,14 @@ public class SolrSearchService extends JsonService implements SearchService {
   public static enum SolrSortOrder implements SearchCriterion {
 
     // The order here determines the order in the UI.
-    RELEVANCE("Relevance", "score desc,publication_date desc,id desc"),
-    DATE_NEWEST_FIRST("Date, newest first", "publication_date desc,id desc"),
-    DATE_OLDEST_FIRST("Date, oldest first", "publication_date asc,id desc"),
-
-    // For some reason, ambra defines slightly different orderings for the "Recent" tab on the home page,
-    // and the "Most Views, last 30 days" option on the search results ordering dropdown.  The former
-    // omits the "id desc" clause.  To replicate this behavior, we define the following two values.
-    MOST_VIEWS_30_DAYS("Most views, last 30 days", "counter_total_month desc,id desc"),
-    POPULAR("Popular", "counter_total_month desc"),
-    MOST_VIEWS_ALL_TIME("Most views, all time", "counter_total_all desc,id desc"),
-    MOST_CITED("Most cited, all time", "alm_scopusCiteCount desc,id desc"),
-    MOST_BOOKMARKED("Most bookmarked", "sum(alm_citeulikeCount, alm_mendeleyCount) desc,id desc"),
-    MOST_SHARED("Most shared in social media", "sum(alm_twitterCount, alm_facebookCount) desc,id desc");
-
-    /**
-     * SolrSortOrders that can be used to sort search results.
-     */
-    public static final ImmutableList<SolrSortOrder> SEARCH_SORT_ORDERS = ImmutableList.of(
-        RELEVANCE,
-        DATE_NEWEST_FIRST,
-        DATE_OLDEST_FIRST,
-        MOST_VIEWS_30_DAYS,
-        MOST_VIEWS_ALL_TIME,
-        MOST_CITED,
-        MOST_BOOKMARKED,
-        MOST_SHARED
-    );
+    RELEVANCE("Relevance", "score desc,publication_date desc"),
+    DATE_NEWEST_FIRST("Date, newest first", "publication_date desc"),
+    DATE_OLDEST_FIRST("Date, oldest first", "publication_date asc"),
+    MOST_VIEWS_30_DAYS("Most views, last 30 days", "counter_total_month desc"),
+    MOST_VIEWS_ALL_TIME("Most views, all time", "counter_total_all desc"),
+    MOST_CITED("Most cited, all time", "alm_scopusCiteCount desc"),
+    MOST_BOOKMARKED("Most bookmarked", "sum(alm_citeulikeCount, alm_mendeleyCount) desc"),
+    MOST_SHARED("Most shared in social media", "sum(alm_twitterCount, alm_facebookCount) desc");
 
     private String description;
 
@@ -157,7 +137,7 @@ public class SolrSearchService extends JsonService implements SearchService {
   @Override
   public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
                                 SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange);
+    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange, false);
 
     // TODO: escape/quote the q param if needed.
     if (Strings.isNullOrEmpty(query)) {
@@ -178,7 +158,7 @@ public class SolrSearchService extends JsonService implements SearchService {
   @Override
   public Map<?, ?> subjectSearch(String subject, Site site, int start, int rows, SearchCriterion sortOrder,
                                  SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange);
+    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange, false);
     params.add(new BasicNameValuePair("q", "*:*"));
     params.add(new BasicNameValuePair("fq", String.format("subject:\"%s\"", subject)));
     return executeQuery(params);
@@ -190,13 +170,32 @@ public class SolrSearchService extends JsonService implements SearchService {
   @Override
   public Map<?, ?> authorSearch(String author, Site site, int start, int rows, SearchCriterion sortOrder,
                                 SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange);
+    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange, false);
     params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
     return executeQuery(params);
   }
 
+  @Override
+  public Map<?, ?> getHomePageArticles(Site site, int start, int rows, SearchCriterion sortOrder) throws IOException {
+    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, SolrDateRange.ALL_TIME, true);
+    params.add(new BasicNameValuePair("q", "*:*"));
+    return executeQuery(params);
+  }
+
+  /**
+   * Populates the SOLR parameters with values used across all searchs in the application.
+   *
+   * @param site        name of the site in which to search
+   * @param start       starting result, zero-based.  0 will start at the first result.
+   * @param rows        max number of results to return
+   * @param sortOrder   specifies the desired ordering for results
+   * @param dateRange   specifies the date range for the results
+   * @param forHomePage if true, this search is for articles on a journal home page; if false it is for a specific
+   *                    query
+   * @return populated list of parameters
+   */
   private List<NameValuePair> buildCommonParams(Site site, int start, int rows, SearchCriterion sortOrder,
-                                                SearchCriterion dateRange) {
+                                                SearchCriterion dateRange, boolean forHomePage) {
 
     // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
     // This is the easiest way I found...
@@ -212,7 +211,15 @@ public class SolrSearchService extends JsonService implements SearchService {
     // The next two params improve solr performance significantly.
     params.add(new BasicNameValuePair("hl", "false"));
     params.add(new BasicNameValuePair("facet", "false"));
-    params.add(new BasicNameValuePair("sort", sortOrder.getValue()));
+    String sortOrderStr = sortOrder.getValue();
+
+    // This is a quirk from ambra: when doing "normal" searches, we append "id desc" as the final part of
+    // the sort order.  However ambra doesn't do this for homepage-related searches, and the returned
+    // results are slightly different.  We replicate that behavior here.
+    if (!forHomePage) {
+      sortOrderStr += ",id desc";
+    }
+    params.add(new BasicNameValuePair("sort", sortOrderStr));
     String dateRangeStr = dateRange.getValue();
     if (!Strings.isNullOrEmpty(dateRangeStr)) {
       params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));

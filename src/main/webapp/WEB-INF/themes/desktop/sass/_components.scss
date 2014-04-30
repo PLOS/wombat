@@ -1,0 +1,27 @@
+/*   This file contains design components used for Journals and Wombat Generic
+ *
+ */
+
+
+@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default){
+    background: $background;
+    padding: $padding;
+    border-radius: $border-radius;
+    color: $clr-btn-text;
+    display: inline-block;
+    &:hover{
+       background: $clr-link-hover;
+    }
+
+}
+
+.pill{
+  @include rounded-pill();
+}
+
+
+
+
+
+
+

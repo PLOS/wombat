@@ -24,10 +24,10 @@
   </li>
   </#macro>
 
-<div id="nav-main" class="nav">
+<nav id="nav-main" class="nav">
   <ul>
     <#include "siteMenuItems.ftl" />
   </ul>
-</div>
+</nav>
 
 </#if>

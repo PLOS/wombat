@@ -1,0 +1,296 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+/* line 22, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1; }
+
+/* line 24, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 26, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 28, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+/* line 30, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none; }
+  /* line 103, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+  q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none; }
+
+/* line 32, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none; }
+
+/* line 116, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block; }
+
+/*------------------------------------*\
+   COLORS
+\*------------------------------------*/
+/* 
+ *     some of this is stolen from twitter bootstrap2
+ */
+/* line 16, ../sass/_typography.scss */
+body {
+  font-family: "arial"; }
+
+/* line 23, ../sass/_typography.scss */
+h1, h2
+.h1, .h2 {
+  font-family: "Albert";
+  font-weight: normal;
+  line-height: 1;
+  color: #333333; }
+  /* line 30, ../sass/_typography.scss */
+  h1 small,
+  h1 .small, h2
+  .h1 small,
+  h2
+  .h1 .small, .h2 small,
+  .h2 .small {
+    font-weight: normal;
+    line-height: 1; }
+
+/* line 38, ../sass/_typography.scss */
+h3, h4, h5, h6,
+.h3, .h4, .h5, .h6 {
+  font-family: "arial";
+  font-weight: bold;
+  line-height: 1;
+  color: #333333; }
+  /* line 45, ../sass/_typography.scss */
+  h3 small,
+  h3 .small, h4 small,
+  h4 .small, h5 small,
+  h5 .small, h6 small,
+  h6 .small,
+  .h3 small,
+  .h3 .small, .h4 small,
+  .h4 .small, .h5 small,
+  .h5 .small, .h6 small,
+  .h6 .small {
+    font-weight: normal;
+    line-height: 1; }
+
+/* line 52, ../sass/_typography.scss */
+h1, .h1,
+h2, .h2 {
+  margin-top: 20px;
+  margin-bottom: 10px; }
+  /* line 57, ../sass/_typography.scss */
+  h1 small,
+  h1 .small, .h1 small,
+  .h1 .small,
+  h2 small,
+  h2 .small, .h2 small,
+  .h2 .small {
+    font-size: 65%; }
+
+/* line 65, ../sass/_typography.scss */
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 20px;
+  margin-bottom: 10px; }
+  /* line 70, ../sass/_typography.scss */
+  h3 small,
+  h3 .small, .h3 small,
+  .h3 .small,
+  h4 small,
+  h4 .small, .h4 small,
+  .h4 .small,
+  h5 small,
+  h5 .small, .h5 small,
+  .h5 .small,
+  h6 small,
+  h6 .small, .h6 small,
+  .h6 .small {
+    font-size: 75%; }
+
+/* line 75, ../sass/_typography.scss */
+h1, .h1 {
+  font-size: 20px; }
+
+/* line 76, ../sass/_typography.scss */
+h2, .h2 {
+  font-size: 26px; }
+
+/* line 77, ../sass/_typography.scss */
+h3, .h3 {
+  font-size: 18px; }
+
+/* line 78, ../sass/_typography.scss */
+h4, .h4 {
+  font-size: 13px; }
+
+/* line 79, ../sass/_typography.scss */
+h5, .h5 {
+  font-size: 13px; }
+
+/* line 80, ../sass/_typography.scss */
+h6, .h6 {
+  font-size: 13px; }
+
+/* line 86, ../sass/_typography.scss */
+p {
+  margin: 0 0 10px; }
+
+/* line 107, ../sass/_typography.scss */
+small,
+.small {
+  font-size: 85%; }
+
+/* line 110, ../sass/_typography.scss */
+cite {
+  font-style: normal; }
+
+/* line 113, ../sass/_typography.scss */
+.text-left {
+  text-align: left; }
+
+/* line 114, ../sass/_typography.scss */
+.text-right {
+  text-align: right; }
+
+/* line 115, ../sass/_typography.scss */
+.text-center {
+  text-align: center; }
+
+/* line 116, ../sass/_typography.scss */
+.text-justify {
+  text-align: justify; }
+
+/* line 119, ../sass/_typography.scss */
+.text-muted {
+  color: #636363; }
+
+/* line 167, ../sass/_typography.scss */
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px; }
+  /* line 171, ../sass/_typography.scss */
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin-bottom: 0; }
+
+/* line 179, ../sass/_typography.scss */
+.list-unstyled, .list-inline {
+  padding-left: 0;
+  list-style: none; }
+
+/* line 185, ../sass/_typography.scss */
+.list-inline {
+  margin-left: -5px; }
+  /* line 189, ../sass/_typography.scss */
+  .list-inline > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px; }
+
+/* line 197, ../sass/_typography.scss */
+dl {
+  margin-top: 0;
+  margin-bottom: 20px; }
+
+/* line 202, ../sass/_typography.scss */
+dt,
+dd {
+  line-height: 20px; }
+
+/* line 205, ../sass/_typography.scss */
+dt {
+  font-weight: bold; }
+
+/* line 208, ../sass/_typography.scss */
+dd {
+  margin-left: 0; }
+
+/* 
+ *
+ */
+/*      This file has wombat specific mixins and extensible styles
+ *
+ */
+/* line 34, ../sass/_utilities.scss */
+.highlight-color {
+  color: #3c63af; }
+
+/* line 38, ../sass/_utilities.scss */
+.highlight-background {
+  background: #3c63af;
+  color: white; }
+  /* line 41, ../sass/_utilities.scss */
+  .highlight-background:hover {
+    background: #3c63af; }
+
+/* line 46, ../sass/_utilities.scss */
+.highlight-border {
+  border-color: #3c63af; }
+
+/* 
+ *
+ */
+/*   This file contains design components used for Journals and Wombat Generic
+ *
+ */
+/* 
+ *
+ */
+/* 
+ *
+ */
+/* line 21, ../sass/_components.scss */
+.pill {
+  background: #3c63af;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: white;
+  display: inline-block; }
+  /* line 15, ../sass/_components.scss */
+  .pill:hover {
+    background: #333333; }
+
+/*    This file contains styles for forms
+ *
+ */
+/*    this is my file to play with elements
+ *
+ */

@@ -1,8 +1,8 @@
 package org.ambraproject.wombat.config.site;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
+import org.ambraproject.wombat.util.PathUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Iterator;
@@ -15,11 +15,9 @@ class SiteKeyRequestPredicate implements SiteRequestPredicate {
     this.key = key;
   }
 
-  private static final Splitter PATH_SPLITTER = Splitter.on('/').omitEmptyStrings();
-
   @Override
   public boolean isForSite(HttpServletRequest request) {
-    Iterator<String> path = PATH_SPLITTER.split(request.getServletPath()).iterator();
+    Iterator<String> path = PathUtil.SPLITTER.split(request.getServletPath()).iterator();
     return path.hasNext() && key.equals(path.next());
   }
 

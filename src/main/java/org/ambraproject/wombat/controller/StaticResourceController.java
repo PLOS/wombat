@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.AssetService;
+import org.ambraproject.wombat.util.PathUtil;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
@@ -35,6 +37,24 @@ public class StaticResourceController extends WombatController {
   @Autowired
   private AssetService assetService;
 
+  /**
+   * Return a portion of a path from a given token forward.
+   *
+   * @param path  a path containing slash-separated tokens
+   * @param token the token to look for
+   * @return a slash-separated substring of path containing {@code token} and everything after it
+   * @throws IllegalArgumentException if {@code token} is not in {@code path}
+   */
+  private static String pathFrom(String path, String token) {
+    List<String> pathTokens = PathUtil.SPLITTER.splitToList(path);
+    int index = pathTokens.indexOf(token);
+    if (index < 0) {
+      throw new IllegalArgumentException(String.format("\"%s\" not found in %s", token, pathTokens));
+    }
+    List<String> targetTokens = pathTokens.subList(index, pathTokens.size());
+    return PathUtil.JOINER.join(targetTokens);
+  }
+
   @RequestMapping(value = {"/" + RESOURCE_NAMESPACE + "/**", "/{site}/" + RESOURCE_NAMESPACE + "/**"})
   public void serveResource(HttpServletRequest request, HttpServletResponse response,
                             HttpSession session, @SiteParam Site site)
@@ -43,7 +63,7 @@ public class StaticResourceController extends WombatController {
 
     // Kludge to get "resource/**"
     String servletPath = request.getServletPath();
-    String filePath = servletPath.substring(site.getKey().length() + 2); // TODO Support for other site types
+    String filePath = pathFrom(servletPath, RESOURCE_NAMESPACE);
 
     response.setContentType(session.getServletContext().getMimeType(servletPath));
     if (filePath.startsWith(COMPILED_NAMESPACE)) {

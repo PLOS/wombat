@@ -14,10 +14,10 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Splitter;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
+import org.ambraproject.wombat.util.PathUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,19 +150,19 @@ public abstract class WombatController {
     }
   }
 
-  private static final Splitter PATH_SPLITTER = Splitter.on('/');
-
   /**
    * Attempts to extract the site from the request. Note that controllers should usually get the site using a
    * &at;PathVariable("site") annotation on a @RequestMapping method; this method is provided for the rare cases when
    * this is not possible.
+   * <p/>
+   * TODO: Replace with something compatible with {@link org.ambraproject.wombat.controller.SiteResolver}
    *
    * @param request HttpServletRequest
    * @return the site and page depth, or null if no site key was found in the request path
    */
   protected SitePageContext inspectPathForContext(HttpServletRequest request) {
     // Must use Splitter instead of String.split, because String.split ignores the final slash
-    List<String> pathComponents = PATH_SPLITTER.splitToList(request.getServletPath());
+    List<String> pathComponents = PathUtil.SPLITTER.splitToList(request.getServletPath());
 
     // Iterate over parts of the path, looking for the first that is a site name
     for (ListIterator<String> iter = pathComponents.listIterator(); iter.hasNext(); ) {

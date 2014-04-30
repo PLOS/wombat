@@ -92,7 +92,7 @@ public abstract class RenderAssetsDirective {
   // We normally do this in Spring Controllers with @PathVariable annotations,
   // but we have to do it "by hand" since we're in a TemplateDirectiveModel.
   private String getSite(HttpServletRequest request) {
-    return request.getServletPath().split("/")[1];
+    return request.getServletPath().split("/")[1]; // TODO Make compatible with SiteResolver
   }
 
   /**

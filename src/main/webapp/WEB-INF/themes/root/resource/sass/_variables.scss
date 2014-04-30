@@ -1,0 +1,102 @@
+/*------------------------------------*\
+   COLORS
+\*------------------------------------*/
+
+//journal specific
+
+$plos-default: #3c63af; //blue
+$plos-one: #f8af2d; //yellow
+$plos-bio: #16a127; //green
+$plos-med: #891fb1; // purple
+$plos-currents: #1dbfe0; // light blue
+
+// TODO : these probably are in different variable files
+
+$black: #000;
+$white: #fff;
+$grey-dark: #333;
+$grey-med: #636363;
+$grey-med-light: #ccc;
+$grey-light: #efefef;
+
+$warning: #E53350;
+$success: #16A127;
+
+//colors
+
+$clr-highlight: $plos-default !default;
+$clr-highlight-hover: $plos-default !default;
+$clr-highlight-text: $white !default;
+
+$clr-body-bg: $grey-light;
+$clr-panel: $white;
+$clr-separator: $grey-med-light;
+
+
+$clr-link: $clr-highlight;
+$clr-body-text: $grey-dark;
+$clr-link-hover: $grey-dark;
+$clr-muted: $grey-med;
+$clr-light-text: $white;
+
+$clr-warning: $warning;
+$clr-success: $success;
+
+$clr-btn-primary: $clr-highlight;
+$clr-btn-secondary: $grey-dark;
+$clr-btn-disabled: $grey-light;
+$clr-btn-text: $white;
+
+
+// layout patterns
+$border-radius-default: 4px;
+$border-radius-large: 8px;
+$pad-default: 10px 20px; //TODO this will be computed
+
+// typography
+$font-face-plain: "arial";
+$font-face-fancy: "Albert";
+
+$font-face-copy: $font-face-plain;
+$font-face-navigation: $font-face-fancy;
+$font-face-headings: $font-face-fancy;
+
+//Type Sizes
+$txt-size-giant: 30px;
+$txt-size-xlarge: 26px;
+$txt-size-large: 20px;
+$txt-size-medium: 18px;
+$txt-size-small: 13px;
+$txt-size-xsmall: 11px;
+
+$txt-size-pgtitle: $txt-size-giant;
+$txt-size-default: $txt-size-small;
+$txt-size-h1: $txt-size-large;
+$txt-size-h2: $txt-size-xlarge;
+$txt-size-h3: $txt-size-medium;
+$txt-size-h4: $txt-size-default;
+$txt-size-h5: $txt-size-default; // may not use
+$txt-size-h6: $txt-size-default; // may not use
+$txt-size-note: $txt-size-small;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

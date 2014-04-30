@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +44,13 @@ public class HomeController extends WombatController {
     RECENT,
     POPULAR,
     IN_THE_NEWS;
+
+    /**
+     * @throws java.lang.IllegalArgumentException if name is not matched
+     */
+    private static Section forCaseInsensitiveName(String name) {
+      return Section.valueOf(name.toUpperCase());
+    }
   }
 
   @RequestMapping(value = "/{site}", method = RequestMethod.GET)
@@ -68,13 +76,21 @@ public class HomeController extends WombatController {
     Section section = null;
     if (!Strings.isNullOrEmpty(sectionParam)) {
       try {
-        section = Section.valueOf(sectionParam.toUpperCase());
+        section = Section.forCaseInsensitiveName(sectionParam);
       } catch (IllegalArgumentException e) {
         // Fall through and use the default
       }
     }
     if (section == null || !supportedSections.contains(section.name().toLowerCase())) {
-      section = Section.RECENT; // default value
+      // Use the default section specified in the theme
+      String defaultSectionName = (String) homepageConfig.get("defaultSection");
+      try {
+        section = Section.forCaseInsensitiveName(defaultSectionName);
+      } catch (IllegalArgumentException e) {
+        String message = String.format("Invalid defaultSection value in homepage config: \"%s\". Expected one of: %s",
+            defaultSectionName, EnumSet.allOf(Section.class));
+        throw new RuntimeException(message, e);
+      }
     }
     model.addAttribute("selectedSection", section.name().toLowerCase());
 

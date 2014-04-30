@@ -7,7 +7,9 @@
 
 // Behold, here are all the Foundation components/.
 
-@import "settings", "components/grid",
+@import "settings",   // this file contains foundation's setup code
+//.
+"components/grid",
 //  "components/accordion",
 //"components/alert-boxes",
 "components/block-grid",

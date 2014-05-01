@@ -6,13 +6,12 @@
 
     <div id="pagehdr-wrap" class="highlight-border">
       <div id="pagehdr">
-        <nav id="user" class="nav">
+        <nav id="nav-user" class="nav">
           <ul class="nav-top">
-            <li><a href="http://www.plos.org">plos.org</a></li>
-            <li><a href="https://plosone-rskonnord:43/ambra-registration/register.action">create account</a></li>
-            <li class="btn-style"><a
-                href="/user/secure/secureRedirect.action?goTo=%2Fhome.action" class="highlight-background">sign in</a>
-            </li>
+          <#macro navTopItem href highlighted=false>
+            <li <#if highlighted>class="highlighted"</#if>><a href="${href}"><#nested/></a></li>
+          </#macro>
+          <#include "navTop.ftl" />
           </ul>
         </nav>
         <div class="logo">

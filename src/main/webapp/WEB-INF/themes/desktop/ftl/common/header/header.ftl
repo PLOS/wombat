@@ -1,12 +1,7 @@
 <header>
   <div id="page-wrap">
-    <div id="topbanner" class="head-ad">
-
-      <!-- Div for the ad at the top of journal home page-->
-      <div class="center">
-        <div class="title">Advertisement</div>
-        THIS IS WHERE THE ADS GO
-      </div>
+    <div id="topslot" class="head-ad">
+    <#include "topSlot.ftl" />
     </div>
 
     <div id="pagehdr-wrap" class="highlight-border">

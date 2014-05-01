@@ -6,9 +6,9 @@
 
     <div class="submenu">
       <#if containsSubmit>
-      <div class="submit">
-        <#include "siteMenuFooter.ftl" />
-      </div>
+        <div class="submit">
+          <#include "siteMenuFooter.ftl" />
+        </div>
       </#if>
       <div class="menu">
         <ul>

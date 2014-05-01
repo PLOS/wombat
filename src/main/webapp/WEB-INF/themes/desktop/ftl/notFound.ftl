@@ -2,7 +2,7 @@
 
 <#--<#assign title = "Page Not Found" />-->
 <#--<#include "common/head.ftl" />-->
- <html>
+<html>
 <body>
 <div id="container-main">
 <#--<#include "common/header/header.ftl" />-->

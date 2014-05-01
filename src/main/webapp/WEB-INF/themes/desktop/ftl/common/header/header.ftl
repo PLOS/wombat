@@ -15,7 +15,7 @@
           </ul>
         </nav>
         <div class="logo">
-          <a href="/"><img src="/images/logo.png" alt="PLOS Biology"></a>
+          <a href="${pathUp(depth!0 ".")}">${siteTitle}</a>
         </div>
 
         <div id="db">

@@ -20,9 +20,8 @@
 
         <div id="db">
           <form name="searchForm" action="/search/simple?noSearchFlag=true&amp;query=" method="get">
-            <input type="hidden" name="from" value="globalSimpleSearch" id="from"/><input type="hidden"
-                                                                                          name="filterJournals"
-                                                                                          id="filterJournals"/>
+            <input type="hidden" name="from" value="globalSimpleSearch" id="from"/>
+            <input type="hidden" name="filterJournals" id="filterJournals"/>
             <fieldset>
               <legend>Search</legend>
               <label for="search">Search</label>
@@ -33,8 +32,9 @@
               </div>
             </fieldset>
           </form>
-          <a id="advSearch" href="/search/advanced?noSearchFlag=true&amp;query=&filterJournals=PLoSBiology">advanced
-            search</a>
+          <a id="advSearch" href="/search/advanced?noSearchFlag=true&amp;query=&filterJournals=PLoSBiology">
+            advanced search
+          </a>
         </div>
 
       <#include "../siteMenu/siteMenu.ftl" />

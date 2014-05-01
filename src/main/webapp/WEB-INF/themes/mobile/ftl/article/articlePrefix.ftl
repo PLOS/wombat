@@ -1,6 +1,6 @@
 <div id="container-main">
 
-<#include "../common/header.ftl" />
+<#include "../common/header/header.ftl" />
 
   <div id="article-content" class="content" data-article-id="0059893">
     <article class="article-item">

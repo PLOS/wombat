@@ -13,12 +13,12 @@
   </div>
   <div id="site-header-container" class="coloration-border-top">
 
-  <#include "siteMenu/siteMenuFlag.ftl" />
+  <#include "../siteMenu/siteMenuFlag.ftl" />
   <#if hasSiteMenu>
     <a id="site-menu-button">Site Menu</a>
   </#if>
     <a class="site-search-button color-active"><span class="icon">Search</span></a>
-    <a href="${pathUp(depth!0 ".")}"><#include "siteLogo.ftl" /></a>
+    <a href="${pathUp(depth!0 ".")}"><#include "../siteLogo.ftl" /></a>
 
   </div>
   <nav id="article-menu" class="menu-bar">
@@ -28,7 +28,7 @@
                <a href="http://www.activatejavascript.org" target="_blank">For full functionality of this site, please enable JavaScript.</a>
            </noscript>
        </li>
-    <#include "../hasTaxonomyBrowser.ftl" />
+    <#include "../../hasTaxonomyBrowser.ftl" />
     <#if hasTaxonomyBrowser>
       <li>
         <a href="browse" id="menu-browse">Browse Topics</a>

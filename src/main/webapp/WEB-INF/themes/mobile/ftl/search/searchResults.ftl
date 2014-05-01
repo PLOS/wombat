@@ -8,7 +8,7 @@
 
 <div id="container-main">
 
-<#include "../common/header.ftl" />
+<#include "../common/header/header.ftl" />
 
   <div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
     <form id="sortAndFilterSearchResults" action="search" method="get">

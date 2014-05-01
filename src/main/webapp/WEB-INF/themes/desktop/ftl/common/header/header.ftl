@@ -44,7 +44,7 @@
           search</a>
       </div>
 
-    <#include "siteMenu/siteMenu.ftl" />
+    <#include "../siteMenu/siteMenu.ftl" />
 
     </div><#-- pagehdr-->
   </div>

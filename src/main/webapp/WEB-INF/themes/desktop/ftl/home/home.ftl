@@ -8,7 +8,7 @@
 <#include "../common/head.ftl" />
 <body>
 
-<#include "../common/header.ftl" />
+<#include "../common/header/header.ftl" />
 
 THIS IS THE BODY
 

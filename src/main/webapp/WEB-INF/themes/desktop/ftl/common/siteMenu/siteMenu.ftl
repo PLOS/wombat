@@ -7,7 +7,7 @@
     <div class="submenu">
       <#if containsSubmit>
         <div class="submit">
-          <#include "siteMenuFooter.ftl" />
+          <#include "siteMenuCallout.ftl" />
         </div>
       </#if>
       <div class="menu">

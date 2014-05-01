@@ -47,7 +47,7 @@
   </nav>
 
   <div class="full-menu-tout">
-    <#include "siteMenuFooter.ftl" />
+    <#include "siteMenuCallout.ftl" />
   </div>
 
 </div>

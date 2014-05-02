@@ -1,4 +1,3 @@
-<#include "../macro/pathUp.ftl" />
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 
@@ -26,6 +25,6 @@
 <@cssLink target="resource/css/mobile.css" />
 <#include "../cssLinks.ftl" />
 
-  <script src="${pathUp(depth!0 "resource/js/vendor/vendor.min.js")}"></script>
+  <script src="<@siteLink path="resource/js/vendor/vendor.min.js" />"></script>
 <@renderCssLinks />
 </head>

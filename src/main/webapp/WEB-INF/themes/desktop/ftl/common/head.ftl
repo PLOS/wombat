@@ -1,6 +1,9 @@
 <#include "../macro/pathUp.ftl" />
+<#include "../macro/removeTags.ftl" />
+<#include "title/titleFormat.ftl" />
+
 <head prefix="og: http://ogp.me/ns#">
-  <title>TODO:GRAB TITLE</title>
+  <title><@titleFormat removeTags(title) /></title>
 
   <link rel="stylesheet" type="text/css" href="${pathUp(depth!0 "resource/css/screen.css")}"/>
 

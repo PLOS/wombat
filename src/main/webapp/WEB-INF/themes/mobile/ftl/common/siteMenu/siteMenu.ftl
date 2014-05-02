@@ -47,7 +47,22 @@
   </nav>
 
   <div class="full-menu-tout">
-    <#include "siteMenuFooter.ftl" />
+    <#macro siteMenuCalloutHeadline>
+      <h4 class="coloration-light-text"><#nested/></h4>
+    </#macro>
+    <#macro siteMenuCalloutBulletList>
+      <ul class="std">
+        <#nested/>
+      </ul>
+    </#macro>
+    <#macro siteMenuCalloutButton href>
+      <div><a class="rounded coloration-white-on-color" href="${href}">
+        <#nested/>
+      </a></div>
+    </#macro>
+    <div id="submit-manuscript-container">
+      <#include "siteMenuCallout.ftl" />
+    </div>
   </div>
 
 </div>

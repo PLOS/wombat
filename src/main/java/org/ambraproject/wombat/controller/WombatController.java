@@ -13,11 +13,9 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Preconditions;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.service.UnmatchedSiteException;
-import org.ambraproject.wombat.util.PathUtil;
+import org.ambraproject.wombat.config.site.UnresolvedSiteException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.util.List;
-import java.util.ListIterator;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,34 +41,41 @@ public abstract class WombatController {
 
   @Autowired
   protected SiteSet siteSet;
+  @Autowired
+  private SiteResolver siteResolver;
 
   /**
    * Handler invoked for all uncaught exceptions.  Renders a "nice" 500 page.
    *
-   * @param e        uncaught exception
-   * @param request  HttpServletRequest
-   * @param response HttpServletResponse
+   * @param exception uncaught exception
+   * @param request   HttpServletRequest
+   * @param response  HttpServletResponse
    * @return ModelAndView specifying the view
    * @throws IOException
    */
   @ExceptionHandler(Exception.class)
-  protected ModelAndView handleException(Exception e, HttpServletRequest request, HttpServletResponse response)
+  protected ModelAndView handleException(Exception exception, HttpServletRequest request, HttpServletResponse response)
       throws IOException {
-    log.error("handleException", e);
+    log.error("handleException", exception);
     response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-    SitePageContext context = inspectPathForContext(request);
+    Site site = siteResolver.resolveSite(request);
 
     // For some reason, methods decorated with @ExceptionHandler cannot accept Model parameters,
     // unlike @RequestMapping methods.  So this is a little different...
-    ModelAndView mav = new ModelAndView(context.getSite().getKey() + "/ftl/error");
-    mav.addObject("depth", context.getPageDepth());
-    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    e.printStackTrace(new PrintStream(baos));
+    String viewName = (site == null) ? "//error" : (site.getKey() + "/ftl/error");
+    ModelAndView mav = new ModelAndView(viewName);
 
-    // No need to close stream since it's a ByteArrayOutputStream.
+    StringWriter stackTrace = new StringWriter();
+    exception.printStackTrace(new PrintWriter(stackTrace));
+    mav.addObject("stackTrace", stackTrace.toString());
 
-    mav.addObject("stackTrace", baos.toString("utf-8"));
     return mav;
+  }
+
+  @ExceptionHandler(UnresolvedSiteException.class)
+  protected String handleUnresolvedSite(HttpServletResponse response) {
+    response.setStatus(HttpStatus.NOT_FOUND.value());
+    return "//notFound";
   }
 
   /**
@@ -83,19 +86,10 @@ public abstract class WombatController {
    * @return ModelAndView specifying the view
    */
   @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class, NotVisibleException.class})
-  protected ModelAndView handleArticleNotFound(HttpServletRequest request, HttpServletResponse response) {
+  protected String handleNotFound(HttpServletRequest request, HttpServletResponse response) {
     response.setStatus(HttpStatus.NOT_FOUND.value());
-    SitePageContext context = inspectPathForContext(request);
-
-    ModelAndView mav;
-    if (context == null) {
-      mav = new ModelAndView("//notFound");
-    } else {
-      // TODO: do we want an "article not found" page separate from the generic 404 page?
-      mav = new ModelAndView(context.getSite().getKey() + "/ftl/notFound");
-      mav.addObject("depth", context.getPageDepth());
-    }
-    return mav;
+    Site site = siteResolver.resolveSite(request);
+    return (site == null) ? "//notFound" : (site.getKey() + "/ftl/notFound");
   }
 
   /**
@@ -120,65 +114,6 @@ public abstract class WombatController {
     if (!articleJournalKeys.contains(siteJournalKey)) {
       throw new NotVisibleException("Article is not published in: " + site);
     }
-  }
-
-  /**
-   * The inferred location of a page from inspecting the path.
-   */
-  protected static class SitePageContext {
-    private final Site site;
-    private final int pageDepth;
-
-    private SitePageContext(Site site, int pageDepth) {
-      this.site = Preconditions.checkNotNull(site);
-      this.pageDepth = pageDepth;
-      Preconditions.checkArgument(this.pageDepth >= 0);
-    }
-
-    /**
-     * @return the site to which the page belongs
-     */
-    public Site getSite() {
-      return site;
-    }
-
-    /**
-     * @return the number of steps from the page's path to the site root
-     */
-    public int getPageDepth() {
-      return pageDepth;
-    }
-  }
-
-  /**
-   * Attempts to extract the site from the request. Note that controllers should usually get the site using a
-   * &at;PathVariable("site") annotation on a @RequestMapping method; this method is provided for the rare cases when
-   * this is not possible.
-   * <p/>
-   * TODO: Replace with something compatible with {@link org.ambraproject.wombat.controller.SiteResolver}
-   *
-   * @param request HttpServletRequest
-   * @return the site and page depth, or null if no site key was found in the request path
-   */
-  protected SitePageContext inspectPathForContext(HttpServletRequest request) {
-    // Must use Splitter instead of String.split, because String.split ignores the final slash
-    List<String> pathComponents = PathUtil.SPLITTER.splitToList(request.getServletPath());
-
-    // Iterate over parts of the path, looking for the first that is a site name
-    for (ListIterator<String> iter = pathComponents.listIterator(); iter.hasNext(); ) {
-      String possibleSite = iter.next();
-
-      Site site;
-      try {
-        site = siteSet.getSite(possibleSite);
-      } catch (UnmatchedSiteException use) {
-        continue; // try the next path component
-      }
-
-      int pageDepth = pathComponents.size() - iter.previousIndex() - 2;
-      return new SitePageContext(site, pageDepth);
-    }
-    return null; // no site name matched
   }
 
   /**

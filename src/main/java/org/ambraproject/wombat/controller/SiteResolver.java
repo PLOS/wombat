@@ -7,6 +7,7 @@ import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.UnresolvedSiteException;
 import org.ambraproject.wombat.util.HttpDebug;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,13 +43,13 @@ public class SiteResolver implements HandlerMethodArgumentResolver {
     }
     Site site = resolveSite(request);
     if (site == null) {
-      throw new NotFoundException("No site matched for request");
+      throw new UnresolvedSiteException(request);
     }
     mavContainer.addAttribute("site", site);
     return site;
   }
 
-  private Site resolveSite(HttpServletRequest request) {
+  public Site resolveSite(HttpServletRequest request) {
     Site resolution = null;
     for (Site site : siteSet.getSites()) {
       if (site.getRequestScheme().isForSite(request)) {

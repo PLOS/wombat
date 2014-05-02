@@ -4,11 +4,20 @@
 
  .nav-top{
    @include inline-list;
-   @include highlight-border;
    @extend .float-right;
    li{}
  }
 
-.head-ad{
-@extend .bg-dark;
+.head-top{
+ @extend .bg-dark;
+ @extend .text-center;
+ @extend .pad-small-x;
+ @include highlight-border();
 }
+
+.ad-head{
+  iframe {padding-left: 18px;
+    background: image-url('text.vert.ad.gif') no-repeat left 5px; }
+}
+
+

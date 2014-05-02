@@ -1,5 +1,7 @@
 /* 
  *
  */
-
-
+//sets up the body container
+.grid-container, main, {
+  @include grid-row();
+}

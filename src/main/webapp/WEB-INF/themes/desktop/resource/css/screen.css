@@ -142,7 +142,7 @@ select {
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 62.5rem;
+  max-width: 60rem;
   *zoom: 1; }
   /* line 145, ../../sass/vendor/foundation/components/_global.scss */
   .row:before, .row:after {
@@ -5074,7 +5074,7 @@ meta.foundation-mq-topbar {
 
   /* line 467, ../../sass/vendor/foundation/components/_top-bar.scss */
   .contain-to-grid .top-bar {
-    max-width: 62.5rem;
+    max-width: 60rem;
     margin: 0 auto;
     margin-bottom: 0; }
 
@@ -5233,7 +5233,7 @@ meta.foundation-mq-topbar {
   text-align: right !important; }
 
 /* line 141, ../../sass/vendor/foundation/components/_type.scss */
-.text-center {
+.text-center, .head-top {
   text-align: center !important; }
 
 /* line 141, ../../sass/vendor/foundation/components/_type.scss */
@@ -5409,7 +5409,7 @@ meta.foundation-mq-topbar {
   text-align: right !important; }
 
 /* line 189, ../../sass/vendor/foundation/components/_type.scss */
-.text-center {
+.text-center, .head-top {
   text-align: center !important; }
 
 /* line 190, ../../sass/vendor/foundation/components/_type.scss */
@@ -5964,7 +5964,7 @@ blockquote p {
   text-align: right !important; }
 
 /* line 141, ../../sass/vendor/foundation/components/_type.scss */
-.text-center {
+.text-center, .head-top {
   text-align: center !important; }
 
 /* line 141, ../../sass/vendor/foundation/components/_type.scss */
@@ -6849,7 +6849,7 @@ cite {
   text-align: right; }
 
 /* line 115, ../../sass/_typography.scss */
-.text-center {
+.text-center, .head-top {
   text-align: center; }
 
 /* line 116, ../../sass/_typography.scss */
@@ -6910,29 +6910,54 @@ dd {
 /*      This file has wombat specific mixins and extensible styles
  *
  */
-/* line 34, ../../sass/_utilities.scss */
-.bg-dark, footer, .head-ad {
+/* line 43, ../../sass/_utilities.scss */
+.bg-dark, footer, .head-top {
   background: #333333; }
 
-/* line 38, ../../sass/_utilities.scss */
+/* line 47, ../../sass/_utilities.scss */
 .highlight-color {
   color: #3c63af; }
 
-/* line 42, ../../sass/_utilities.scss */
+/* line 51, ../../sass/_utilities.scss */
 .highlight-background {
   background: #3c63af;
   color: white; }
-  /* line 45, ../../sass/_utilities.scss */
+  /* line 54, ../../sass/_utilities.scss */
   .highlight-background:hover {
     background: #3c63af; }
 
-/* line 50, ../../sass/_utilities.scss */
+/* line 59, ../../sass/_utilities.scss */
 .highlight-border {
   border-color: #3c63af; }
+
+/* line 65, ../../sass/_utilities.scss */
+.center-simple {
+  margin: 0 auto; }
+
+/* line 69, ../../sass/_utilities.scss */
+.pad-small-x, .head-top {
+  padding: 5px 0; }
 
 /* 
  *
  */
+/* line 5, ../../sass/_scaffold.scss */
+.grid-container, main {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 60rem;
+  *zoom: 1; }
+  /* line 145, ../../sass/vendor/foundation/components/_global.scss */
+  .grid-container:before, .grid-container:after, main:before, main:after {
+    content: " ";
+    display: table; }
+  /* line 146, ../../sass/vendor/foundation/components/_global.scss */
+  .grid-container:after, main:after {
+    clear: both; }
+
 /*   This file contains design components used for Journals and Wombat Generic
  *
  */
@@ -6966,8 +6991,7 @@ dd {
   margin-right: 0;
   padding: 0;
   list-style: none;
-  overflow: hidden;
-  border-top: 6px solid #3c63af; }
+  overflow: hidden; }
   /* line 41, ../../sass/vendor/foundation/components/_inline-lists.scss */
   .nav-top > li {
     list-style: none;
@@ -6977,3 +7001,12 @@ dd {
     /* line 46, ../../sass/vendor/foundation/components/_inline-lists.scss */
     .nav-top > li > * {
       display: block; }
+
+/* line 11, ../../sass/sections/_header.scss */
+.head-top {
+  border-bottom: 6px solid #3c63af; }
+
+/* line 19, ../../sass/sections/_header.scss */
+.ad-head iframe {
+  padding-left: 18px;
+  background: url('../img/text.vert.ad.gif?1399053987') no-repeat left 5px; }

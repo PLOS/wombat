@@ -25,8 +25,17 @@ $clr-highlight-text: $white
   }
 }
 
-@mixin highlight-border($clr-highlight: $plos-default, $width: 6px ) {
+@mixin highlight-border($clr-highlight: $plos-default, $width: 6px, $position: bottom) {
+
+  @if $position == bottom {
+    border-bottom: $width solid $clr-highlight;
+  } @else if $position == left {
+    border-left: $width solid $clr-highlight;
+  } @else if $position == right {
+    border-left: $width solid $clr-highlight;
+  } @else if $position == top {
   border-top: $width solid $clr-highlight;
+  }
 }
 
 // color extendibles
@@ -49,4 +58,14 @@ $clr-highlight-text: $white
 
 .highlight-border {
   border-color: $clr-highlight;
+}
+
+// layout utilities
+
+.center-simple{
+  margin:0 auto;
+}
+
+.pad-small-x{
+  padding: $pad-small 0;
 }

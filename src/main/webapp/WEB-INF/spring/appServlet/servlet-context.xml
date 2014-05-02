@@ -18,6 +18,8 @@
     <beans:property name="defaultHandler" ref="notFoundController"/>
   </beans:bean>
 
+  <context:property-placeholder location="classpath:git.properties" ignore-unresolvable="true" />
+
   <!-- Enables the Spring MVC @Controller programming model -->
   <annotation-driven>
     <argument-resolvers>

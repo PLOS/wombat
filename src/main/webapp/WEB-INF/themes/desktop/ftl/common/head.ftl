@@ -1,0 +1,13 @@
+<#include "../macro/pathUp.ftl" />
+<#include "../macro/removeTags.ftl" />
+<#include "title/titleFormat.ftl" />
+
+<head prefix="og: http://ogp.me/ns#">
+  <title><@titleFormat removeTags(title) /></title>
+
+  <link rel="stylesheet" type="text/css" href="${pathUp(depth!0 "resource/css/screen.css")}"/>
+
+  <script type="text/javascript" src="resource/js/vendor/modernizr-v2.7.1.js"></script>
+
+  <link rel="shortcut icon" href="resource/img/favicon.ico" type="image/x-icon"/>
+</head>

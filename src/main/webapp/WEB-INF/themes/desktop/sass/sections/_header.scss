@@ -1,0 +1,14 @@
+/* 
+ *       These are the header styles
+ */
+
+ .nav-top{
+   @include inline-list;
+   @include highlight-border;
+   @extend .float-right;
+   li{}
+ }
+
+.head-ad{
+@extend .bg-dark;
+}

@@ -5,7 +5,7 @@
 
 <body>
 <div id="container-main">
-<#include "common/header.ftl" />
+<#include "common/header/header.ftl" />
   <div class="error">
 
     <h1>Something's Broken!</h1>

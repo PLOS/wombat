@@ -38,7 +38,7 @@ public class SiteResolver implements HandlerMethodArgumentResolver {
 
     Site resolution = null;
     for (Site site : siteSet.getSites()) {
-      if (site.isFor(request)) {
+      if (site.getRequestScheme().isForSite(request)) {
         if (resolution != null) {
           String message = String.format("Multiple sites (%s, %s) matched for request: %s",
               resolution, site, HttpDebug.dump(request));

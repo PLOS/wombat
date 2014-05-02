@@ -4,6 +4,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
+import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +15,12 @@ public class Site {
   private final String key;
   private final Theme theme;
   private final String journalKey;
-  private final SiteRequestPredicate requestPredicate;
+  private final SiteRequestScheme requestScheme;
 
-  public Site(String key, Theme theme, SiteRequestPredicate requestPredicate) {
-    this.requestPredicate = requestPredicate;
+  public Site(String key, Theme theme, SiteRequestScheme requestScheme) {
     this.key = Preconditions.checkNotNull(key);
     this.theme = Preconditions.checkNotNull(theme);
+    this.requestScheme = Preconditions.checkNotNull(requestScheme);
     this.journalKey = findJournalKey(theme);
   }
 
@@ -56,8 +57,8 @@ public class Site {
     return journalKey;
   }
 
-  public boolean isFor(HttpServletRequest request) {
-    return requestPredicate.isForSite(Preconditions.checkNotNull(request));
+  public SiteRequestScheme getRequestScheme() {
+    return requestScheme;
   }
 
   @Override
@@ -75,7 +76,7 @@ public class Site {
     if (!key.equals(site.key)) return false;
     if (!theme.equals(site.theme)) return false;
     if (!journalKey.equals(site.journalKey)) return false;
-    if (!requestPredicate.equals(site.requestPredicate)) return false;
+    if (!requestScheme.equals(site.requestScheme)) return false;
 
     return true;
   }
@@ -85,7 +86,7 @@ public class Site {
     int result = key.hashCode();
     result = 31 * result + theme.hashCode();
     result = 31 * result + journalKey.hashCode();
-    result = 31 * result + requestPredicate.hashCode();
+    result = 31 * result + requestScheme.hashCode();
     return result;
   }
 

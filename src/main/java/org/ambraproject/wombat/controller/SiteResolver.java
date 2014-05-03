@@ -20,17 +20,31 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Bean that resolves requests to the sites that the application hosts.
+ * <p/>
+ * The sites themselves, and the definitions of how to resolve requests to individual sites, are encapsulated in the
+ * {@link SiteSet} bean. This object exposes them to the view layer.
+ */
 public class SiteResolver implements HandlerMethodArgumentResolver {
   private static final Logger log = LoggerFactory.getLogger(SiteResolver.class);
 
   @Autowired
   private SiteSet siteSet;
 
+  /**
+   * Apply to every controller parameter annotated with {@code @SiteParam}, which should be of type {@link Site}.
+   */
   @Override
   public boolean supportsParameter(MethodParameter parameter) {
     return parameter.getParameterAnnotation(SiteParam.class) != null;
   }
 
+  /**
+   * Resolve the site from the request and store it in the model as {@code "site"}.
+   *
+   * @see {@link #resolveSite}
+   */
   @Override
   public Site resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                               NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
@@ -49,6 +63,14 @@ public class SiteResolver implements HandlerMethodArgumentResolver {
     return site;
   }
 
+  /**
+   * Determine which site a request is for. Applies the {@link org.ambraproject.wombat.config.site.url.SiteRequestScheme}s
+   * defined in the {@link SiteSet} bean. Returns {@code null} if no site is matched.
+   *
+   * @param request a request from the web
+   * @return the site for the request, or {@code null}
+   * @throws java.lang.RuntimeException if more than one {@code SiteRequestScheme} matches the request
+   */
   public Site resolveSite(HttpServletRequest request) {
     Site resolution = null;
     for (Site site : siteSet.getSites()) {
@@ -68,6 +90,13 @@ public class SiteResolver implements HandlerMethodArgumentResolver {
     return ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
   }
 
+  /**
+   * Determine the site that a page being rendered belongs to.
+   *
+   * @param environment the page's FreeMarker environment
+   * @return the site
+   * @throws TemplateModelException
+   */
   public Site getSite(Environment environment) throws TemplateModelException {
     TemplateModel site = environment.getDataModel().get("site");
     if (site instanceof BeanModel) {
@@ -80,7 +109,8 @@ public class SiteResolver implements HandlerMethodArgumentResolver {
   }
 
   /**
-   * Convenience method for {@link org.ambraproject.wombat.config.site.url.SiteRequestScheme#buildLink}.
+   * Convenience method for {@link org.ambraproject.wombat.config.site.url.SiteRequestScheme#buildLink} when applied to
+   * the request from a FreeMarker {@link Environment}.
    */
   public String buildLink(Environment environment, String path) throws TemplateModelException {
     return getSite(environment).getRequestScheme().buildLink(extractRequest(environment), path);

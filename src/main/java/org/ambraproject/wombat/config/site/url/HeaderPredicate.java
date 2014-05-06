@@ -19,7 +19,7 @@ class HeaderPredicate implements SiteRequestPredicate {
   public boolean isForSite(HttpServletRequest request) {
     Enumeration headers = request.getHeaders(headerName);
     while (headers.hasMoreElements()) {
-      if (requiredValue.equalsIgnoreCase((String) headers.nextElement())) {
+      if (requiredValue.equals(headers.nextElement())) {
         return true;
       }
     }

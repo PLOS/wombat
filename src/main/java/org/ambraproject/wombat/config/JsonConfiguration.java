@@ -14,6 +14,8 @@ package org.ambraproject.wombat.config;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
+import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.springframework.beans.factory.annotation.Autowired;

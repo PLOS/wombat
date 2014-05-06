@@ -1,10 +1,12 @@
-package org.ambraproject.wombat.config;
+package org.ambraproject.wombat.config.site;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.TemplateLoader;
 import freemarker.cache.WebappTemplateLoader;
+import org.ambraproject.wombat.config.DelegatingTemplateLoader;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,12 +14,12 @@ import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.util.List;
 
-class SiteTemplateLoader extends DelegatingTemplateLoader {
+public class SiteTemplateLoader extends DelegatingTemplateLoader {
   private static final Logger log = LoggerFactory.getLogger(SiteTemplateLoader.class);
 
   private final ImmutableMap<String, TemplateLoader> loaders; // mapped by site key
 
-  SiteTemplateLoader(ServletContext servletContext, SiteSet siteSet) throws IOException {
+  public SiteTemplateLoader(ServletContext servletContext, SiteSet siteSet) throws IOException {
     this.loaders = buildLoaders(servletContext, siteSet);
   }
 

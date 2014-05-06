@@ -15,7 +15,7 @@
           </ul>
         </nav>
         <div class="logo">
-          <a href="${pathUp(depth!0 ".")}">${siteTitle}</a>
+          <a href="<@siteLink path="." />">${siteTitle}</a>
         </div>
 
         <#include "search.ftl" />

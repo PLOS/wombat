@@ -9,9 +9,10 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.config;
+package org.ambraproject.wombat.config.theme;
 
 import freemarker.cache.TemplateLoader;
+import org.ambraproject.wombat.config.site.Site;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -19,7 +20,8 @@ import java.io.InputStream;
 import java.util.Collection;
 
 /**
- * Implementation of {@link Theme} suitable for tests.  All resources are loaded from the classpath.
+ * Implementation of {@link org.ambraproject.wombat.config.theme.Theme} suitable for tests.  All resources are loaded
+ * from the classpath.
  */
 public class TestClasspathTheme extends Theme {
 

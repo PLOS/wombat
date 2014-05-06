@@ -1,9 +1,10 @@
-package org.ambraproject.wombat.config;
+package org.ambraproject.wombat.config.site;
 
-import com.google.common.collect.ImmutableCollection;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import org.ambraproject.wombat.config.site.url.PathTokenScheme;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 
 import java.util.List;
@@ -14,10 +15,10 @@ import java.util.Map;
  */
 public class SiteSet {
 
-  private final ImmutableMap<String, Site> sites;
+  private final ImmutableBiMap<String, Site> sites;
 
   private SiteSet(Iterable<Site> sites) {
-    ImmutableMap.Builder<String, Site> map = ImmutableMap.builder();
+    ImmutableBiMap.Builder<String, Site> map = ImmutableBiMap.builder();
     for (Site site : sites) {
       map.put(site.getKey(), site);
     }
@@ -29,7 +30,7 @@ public class SiteSet {
     for (Map.Entry<String, ? extends Theme> entry : themesForSites.entrySet()) {
       String key = entry.getKey();
       Theme theme = entry.getValue();
-      Site site = new Site(key, theme);
+      Site site = new Site(key, theme, new PathTokenScheme(key));
       sites.add(site);
     }
     return new SiteSet(sites);
@@ -50,7 +51,7 @@ public class SiteSet {
     return site;
   }
 
-  public ImmutableCollection<Site> getSites() {
+  public ImmutableSet<Site> getSites() {
     return sites.values();
   }
 

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -9,7 +10,6 @@ import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,10 +32,10 @@ public class FigurePageController extends WombatController {
    * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
    * descriptionHtml} member.
    *
-   * @param site           the key of the site whose article transformation should be applied
+   * @param site           the site whose article transformation should be applied
    * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
    */
-  private void transformFigureDescription(String site, Map<String, Object> figureMetadata) {
+  private void transformFigureDescription(Site site, Map<String, Object> figureMetadata) {
     String description = (String) figureMetadata.get("description");
     String descriptionHtml;
     try {
@@ -61,9 +61,9 @@ public class FigurePageController extends WombatController {
   /**
    * Serve a page listing all figures for an article.
    */
-  @RequestMapping("/{site}/article/figures")
+  @RequestMapping(value = {"/article/figures", "/{site}/article/figures"})
   public String renderFiguresPage(Model model,
-                                  @PathVariable("site") String site,
+                                  @SiteParam Site site,
                                   @RequestParam("id") String articleId)
       throws IOException {
     requireNonemptyParameter(articleId);
@@ -88,9 +88,9 @@ public class FigurePageController extends WombatController {
   /**
    * Serve a page displaying a single figure.
    */
-  @RequestMapping("/{site}/article/figure")
+  @RequestMapping(value = {"/article/figure", "/{site}/article/figure"})
   public String renderFigurePage(Model model,
-                                 @PathVariable("site") String site,
+                                 @SiteParam Site site,
                                  @RequestParam("id") String figureId)
       throws IOException {
     requireNonemptyParameter(figureId);

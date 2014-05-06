@@ -17,8 +17,9 @@ import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.SiteSet;
-import org.ambraproject.wombat.config.Theme;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
 import org.mozilla.javascript.EvaluatorException;
@@ -77,7 +78,7 @@ public class AssetServiceImpl implements AssetService {
    * {@inheritDoc}
    */
   @Override
-  public String getCompiledAssetLink(AssetType assetType, List<String> filenames, String site, String cacheKey)
+  public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site, String cacheKey)
       throws IOException {
     String fileCacheKey = assetType.getFileCacheKey(cacheKey);
     String filename = cache.get(fileCacheKey);
@@ -142,9 +143,9 @@ public class AssetServiceImpl implements AssetService {
    * @throws IOException
    */
 
-  private File concatenateFiles(List<String> filenames, String site, String extension) throws IOException {
+  private File concatenateFiles(List<String> filenames, Site site, String extension) throws IOException {
     File result = File.createTempFile("concatenated_", extension);
-    Theme theme = siteSet.getSite(site).getTheme();
+    Theme theme = site.getTheme();
     try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(result))) {
       for (String filename : filenames) {
         try (InputStream is = theme.getStaticResource(filename)) {

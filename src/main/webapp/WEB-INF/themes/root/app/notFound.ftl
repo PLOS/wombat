@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<#--
+  Plain page for showing 404 errors on requests that can't be matched to any site.
+  -->
 <html>
 <head>
   <title>404 Not Found</title>

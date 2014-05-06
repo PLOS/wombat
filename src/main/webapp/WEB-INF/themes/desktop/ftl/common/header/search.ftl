@@ -8,7 +8,7 @@
 
       <div class="wrap">
         <input id="search" type="text" name="query" placeholder="Search">
-        <input type="image" alt="SEARCH" src="${pathUp(depth!0 "resource/img/icon.search.gif")}">
+        <input type="image" alt="SEARCH" src="<@siteLink path="resource/img/icon.search.gif" />">
       </div>
     </fieldset>
   </form>

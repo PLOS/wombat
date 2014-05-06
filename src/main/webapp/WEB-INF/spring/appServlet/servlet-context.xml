@@ -21,7 +21,11 @@
   <context:property-placeholder location="classpath:git.properties" ignore-unresolvable="true" />
 
   <!-- Enables the Spring MVC @Controller programming model -->
-  <annotation-driven/>
+  <annotation-driven>
+    <argument-resolvers>
+      <beans:bean class="org.ambraproject.wombat.controller.SiteResolver" />
+    </argument-resolvers>
+  </annotation-driven>
 
   <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
   <resources mapping="/resources/**" location="/resources/"/>

@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
@@ -16,7 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -123,10 +123,10 @@ public class FigureImageController extends WombatController {
    * @param id     an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
    * @param unique if present, assume the asset has a single file and serve that file; else, serve an identified file
    */
-  @RequestMapping("/{site}/article/asset")
+  @RequestMapping(value = {"/article/asset", "/{site}/article/asset"})
   public void serveAsset(HttpServletRequest request,
                          HttpServletResponse response,
-                         @PathVariable("site") String site,
+                         @SiteParam Site site,
                          @RequestParam(value = "id", required = true) String id,
                          @RequestParam(value = "unique", required = false) String unique)
       throws IOException {
@@ -172,10 +172,10 @@ public class FigureImageController extends WombatController {
   /**
    * Serve the asset file for an identified figure thumbnail.
    */
-  @RequestMapping("/{site}/article/figure/image")
+  @RequestMapping(value = {"/article/figure/image", "/{site}/article/figure/image"})
   public void serveFigureImage(HttpServletRequest request,
                                HttpServletResponse response,
-                               @PathVariable("site") String site,
+                               @SiteParam Site site,
                                @RequestParam("id") String figureId,
                                @RequestParam("size") String figureSize)
       throws IOException {

@@ -13,7 +13,7 @@
 
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.config.Site;
+import org.ambraproject.wombat.config.site.Site;
 
 import java.io.IOException;
 import java.util.Map;

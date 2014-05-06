@@ -2,6 +2,6 @@
  *
  */
 //sets up the body container
-.grid-container, main, {
+.grid-container, main, .head-main, {
   @include grid-row();
 }

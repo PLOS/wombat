@@ -33,12 +33,12 @@ $base-line-height: 150%;
 
 // Grid
 
-// $include-html-grid-classes: $include-html-classes;
-// $include-xl-html-grid-classes: false;
+//$include-html-grid-classes: $include-html-classes;
+$include-xl-html-grid-classes: false;
 
-// $row-width: rem-calc(1000);
-// $column-gutter: rem-calc(30);
-// $total-columns: 12;
+$row-width: rem-calc(960);
+$column-gutter: rem-calc(20);
+$total-columns: 12;
 
 // We use these to control various global styles
 $body-bg: $clr-body-bg;
@@ -489,7 +489,7 @@ $block-grid-default-spacing: rem-calc(20);
 // $form-label-font-color: scale-color(#000, $lightness: 30%);
 // $form-label-bottom-margin: 0;
 // $input-font-family: inherit;
-// $input-font-color: rgba(0,0,0,0.75);
+ $input-font-color: $clr-body-text;
 // $input-font-size: rem-calc(14);
 // $input-bg-color: #fff;
 // $input-focus-bg-color: scale-color(#fff, $lightness: -2%);
@@ -497,7 +497,7 @@ $block-grid-default-spacing: rem-calc(20);
 // $input-focus-border-color: scale-color(#fff, $lightness: -40%);
 // $input-border-style: solid;
 // $input-border-width: 1px;
-// $input-border-radius: $global-radius;
+ $input-border-radius: 0;
 // $input-disabled-bg: #ddd;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 // $input-include-glowing-effect: true;

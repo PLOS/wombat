@@ -10,7 +10,17 @@
 
 <#include "../common/header/header.ftl" />
 
-THIS IS THE BODY
+<div class="hero">
+
+</div>
+<div class="row1"></div>
+<div class="row2"></div>
+<div class="row3"></div>
+<div class="row4">
+
+
+</div>
+<div class="spotlight"></div>
 
 <#include "../common/footer/footer.ftl" />
 

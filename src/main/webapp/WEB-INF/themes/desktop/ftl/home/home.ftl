@@ -34,10 +34,10 @@
     <div class="column left">
      <#include "blocks/editorialBlockLarge.ftl" />
      <#include "blocks/editorialBlockLarge.ftl" />
-     <#include "blocks/editorialBlockMedium.ftl" />
-     <#include "blocks/editorialBlockMedium.ftl" />
-     <#include "blocks/editorialBlockMedium.ftl" />
-     <#include "blocks/editorialBlockMedium.ftl" />
+     <#include "blocks/editorialBlockSmall.ftl" />
+     <#include "blocks/editorialBlockSmall.ftl" />
+     <#include "blocks/editorialBlockSmall.ftl" />
+     <#include "blocks/editorialBlockSmall.ftl" />
     </div>
     <div class="column right">
       <#include "blocks/submissionLinks.ftl" />

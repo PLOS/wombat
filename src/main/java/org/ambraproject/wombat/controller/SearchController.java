@@ -17,6 +17,8 @@ import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Map;
 
 /**
@@ -31,6 +35,7 @@ import java.util.Map;
  */
 @Controller
 public class SearchController extends WombatController {
+  private static final Logger log = LoggerFactory.getLogger(SearchController.class);
 
   private static final int RESULTS_PER_PAGE = 15;
 
@@ -44,7 +49,12 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "author", required = false) String author,
                        @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
-                       @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
+                       @RequestParam(value = "dateRange", required = false) String dateRangeParam,
+                       @RequestParam(value = "legacy", required = false) String legacy)
+      throws IOException {
+    if (booleanParameter(legacy)) {
+      return "redirect:" + redirectToLegacySearch(site, query);
+    }
     int start = 0;
     if (page != null) {
       start = (page - 1) * RESULTS_PER_PAGE;
@@ -80,4 +90,23 @@ public class SearchController extends WombatController {
     model.addAttribute("searchResults", searchResults);
     return site.getKey() + "/ftl/search/searchResults";
   }
+
+  private static URL redirectToLegacySearch(Site site, String query) throws IOException {
+    String legacySearchPattern = (String) site.getTheme().getConfigMap("legacySearch").get("pattern");
+    if (legacySearchPattern == null) {
+      log.warn("Received legacy search request in {}, which does not provide a legacy search pattern", site);
+      throw new NotFoundException();
+    }
+
+    String redirectUrl = legacySearchPattern;
+    redirectUrl = redirectUrl.replace("{query}", query); // TODO escape characters
+    redirectUrl = redirectUrl.replace("{journalKey}", site.getJournalKey());
+
+    try {
+      return new URL(redirectUrl);
+    } catch (MalformedURLException e) {
+      throw new RuntimeException("Could not form URL from legacy search pattern for " + site, e);
+    }
+  }
+
 }

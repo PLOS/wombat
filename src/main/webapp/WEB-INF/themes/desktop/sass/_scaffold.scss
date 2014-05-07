@@ -1,7 +1,14 @@
 /* 
  *
  */
-//sets up the body container
-.grid-container, main, .head-main, {
+
+/*sets up the body container */
+.grid-container,
+main,
+.head-main {
   @include grid-row();
 }
+
+
+
+

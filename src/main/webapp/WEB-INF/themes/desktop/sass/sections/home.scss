@@ -2,4 +2,38 @@
  *    Home page blocks
  */
 
+$block-height: rem-calc(250);
 
+.home{
+  .row{}
+ .block{
+  height: rem-calc(250);
+   &.x-small{
+     @include grid-column(3);
+   }
+  &.small{
+  @include grid-column(4);
+  }
+   &.medium{
+     @include grid-column(4);
+   }
+  }
+
+}
+
+#submission-links,
+#spotlight,
+#issue,
+#twitterfeed,
+#blogroll {
+  @include stub();
+  height: $block-height;
+}
+
+#submission-links,
+#spotlight,
+#issue,
+#twitterfeed,
+#blogroll{
+@include grid-column(4);
+}

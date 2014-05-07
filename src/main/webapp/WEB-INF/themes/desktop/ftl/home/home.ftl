@@ -6,20 +6,45 @@
 <#assign depth = 0 />
 <#assign title = '' />
 <#include "../common/head.ftl" />
-<body>
+<body class="home">
 
+<#include "blocks/stub-data.ftl" />
 <#include "../common/header/header.ftl" />
 
-<div class="hero">
+<div class="row hero">
+  <#include "blocks/hero.ftl" />
+  <#include "blocks/banner.ftl" />
+</div>
+<div class="row one">
+  <#include "blocks/editorialBlockMedium.ftl" />
+  <#include "blocks/articleList.ftl" />
+  <#include "blocks/currentIssue.ftl" />
+</div>
+
+<div class="row two">
+  <#include "blocks/editorialBlockMedium.ftl" />
+  <#include "blocks/editorialBlockMedium.ftl" />
+</div>
+
+<div class="row three">
+
+  <div class="column left">
+   <#include "blocks/editorialBlockMedium.ftl" />
+   <#include "blocks/editorialBlockMedium.ftl" />
+   <#include "blocks/editorialBlockMedium.ftl" />
+  </div>
+	<div class="column right">
+    <#include "blocks/submissionLinks.ftl" />
+    <#include "blocks/socialLinks.ftl" />
+    <#include "blocks/twitter.ftl" />
+    <#include "blocks/blogs.ftl" />
+	</div>
+
 
 </div>
-<div class="row1"></div>
-<div class="row2"></div>
-<div class="row3"></div>
-<div class="row4">
 
 
-</div>
+
 <div class="spotlight"></div>
 
 <#include "../common/footer/footer.ftl" />

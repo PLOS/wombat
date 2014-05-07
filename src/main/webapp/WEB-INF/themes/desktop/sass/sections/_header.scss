@@ -27,7 +27,7 @@
    .logo{ @include grid-column($width-logo); }
    .head-search{
      @include grid-column($width-search);
-     $last-column:true,
+     $last-column:true;
      form{
         $input-box-shadow: none;
         $input-include-glowing-effect: false;

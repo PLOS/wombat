@@ -25,8 +25,8 @@
   </div>
 
   <div class="row two">
-    <#include "blocks/editorialBlockLarge.ftl" />
-    <#include "blocks/editorialBlockLarge.ftl" />
+    <#include "blocks/editorialBlockMedium.ftl" />
+    <#include "blocks/editorialBlockMedium.ftl" />
   </div>
 
   <div class="row three">

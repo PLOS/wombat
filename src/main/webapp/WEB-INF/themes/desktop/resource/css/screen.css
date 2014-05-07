@@ -6970,14 +6970,14 @@ main,
 /*   This file contains design components used for Journals and Wombat Generic
  *
  */
-/* line 18, ../../sass/_components.scss */
+/* line 25, ../../sass/_components.scss */
 .pill {
   background: #3c63af;
   padding: 10px 20px;
   border-radius: 5px;
   color: white;
   display: inline-block; }
-  /* line 12, ../../sass/_components.scss */
+  /* line 19, ../../sass/_components.scss */
   .pill:hover {
     background: #333333; }
 
@@ -7065,4 +7065,79 @@ main,
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 41.66667%;
+  float: left; }
+
+/* 
+ *
+ */
+/*
+ *    Home page blocks
+ */
+/* line 13, ../../sass/pages/_home.scss */
+#home-content .row {
+  border: 1px solid red; }
+/* line 15, ../../sass/pages/_home.scss */
+#home-content .block {
+  height: 15.625rem;
+  background: white;
+  padding: 0.625rem;
+  -webkit-box-shadow: 1px 1px 5px 0 #333333;
+  -moz-box-shadow: 1px 1px 5px 0 #333333;
+  box-shadow: 1px 1px 5px 0 #333333;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 1.25rem; }
+  /* line 21, ../../sass/pages/_home.scss */
+  #home-content .block.x-small {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 16.66667%;
+    float: left; }
+  /* line 24, ../../sass/pages/_home.scss */
+  #home-content .block.small {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 33.33333%;
+    float: left; }
+  /* line 27, ../../sass/pages/_home.scss */
+  #home-content .block.medium {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 50%;
+    float: left; }
+  /* line 30, ../../sass/pages/_home.scss */
+  #home-content .block.large {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 58.33333%;
+    float: left; }
+/* line 35, ../../sass/pages/_home.scss */
+#home-content .column {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 50%;
+  float: left; }
+
+/* line 47, ../../sass/pages/_home.scss */
+#submission-links,
+#spotlight,
+#issue,
+#twitterfeed,
+#blogroll {
+  background-color: #cccccc;
+  color: white;
+  height: 15.625rem; }
+
+/* line 56, ../../sass/pages/_home.scss */
+#submission-links,
+#spotlight,
+#issue,
+#twitterfeed,
+#blogroll {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 33.33333%;
   float: left; }

@@ -1,0 +1,58 @@
+/* 
+ *
+ */
+
+
+/*
+ *    Home page blocks
+ */
+
+$block-height: rem-calc(250);
+
+#home-content{
+  .row{ border: 1px solid red;}
+  //home page blocks
+  .block{
+    height: rem-calc(250);
+    @include blocks;
+
+
+    //sizes:
+    &.x-small{
+      @include grid-column(2);
+    }
+    &.small{
+      @include grid-column(4);
+    }
+    &.medium{
+      @include grid-column(6);
+    }
+    &.large{
+      @include grid-column(7);
+    }
+  }
+
+  .column{
+    @include grid-column(6);
+
+    &.right{}
+  }
+
+}
+
+#submission-links,
+#spotlight,
+#issue,
+#twitterfeed,
+#blogroll {
+  @include stub();
+  height: $block-height;
+}
+
+#submission-links,
+#spotlight,
+#issue,
+#twitterfeed,
+#blogroll{
+  @include grid-column(4);
+}

@@ -8,7 +8,6 @@
 <#include "../common/head.ftl" />
 <body class="home">
 
-<!-- for LEMUR: block begins here: -->
 
 <#include "blocks/stub-data.ftl" />
 <#include "../common/header/header.ftl" />

@@ -8,9 +8,9 @@
 <#include "../common/head.ftl" />
 <body class="home">
 
-
 <#include "blocks/stub-data.ftl" />
 <#include "../common/header/header.ftl" />
+
 <#include "cmsContent.ftl"/>
 
 <div class="spotlight"></div>

@@ -2,7 +2,6 @@
  *
  */
 
-
 /*
  *    Home page blocks
  */
@@ -13,115 +12,139 @@ $pad-default: rem-calc(10);
 $image-width: rem-calc(70);
 $image-container: ($image-width + $pad-default);
 // HOME CONTENT - home-content
-  .row{
-    @include grid-row()}
+.row {
+  @include grid-row()
+}
+
 //home page blocks
- .hero{
-   position:relative;
-   // hero colors:
-   color: $white;
-   a{color: $white;}
-   img{width: 960px;}
-   &.dark-text,
-   &.dark-text a{
-     color: $clr-body-text;
-   }
-   // hero
-    .hero-content{
-     position: absolute;
-     width: 100%;
-     bottom: 0;
-     padding: $pad-default;
-     font-size: rem-calc($txt-size-medium-large);
-     h4{
-       @extend h1;
-       @extend .no-margin;
-     }
-      p{@extend .no-margin;}
+.hero {
+  position: relative;
+  // hero colors:
+  color: $white;
+  a {
+    color: $white;
+  }
+  img {
+    width: 960px;
+  }
+  &.dark-text,
+  &.dark-text a {
+    color: $clr-body-text;
+  }
+  // hero
+  .hero-content {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: $pad-default;
+    font-size: rem-calc($txt-size-medium-large);
+    h4 {
+      @extend h1;
+      @extend .no-margin;
     }
- }
-  //sizes:
- .row > .block{
-   &.x-small{
-    @include grid-column(2, $collapse:false);
+    p {
+      @extend .no-margin;
+    }
   }
-  &.small{
-    @include grid-column(4,$collapse:false);
+}
+
+//sizes:
+.row > .block {
+  &.x-small {
+    @include grid-column(2, $collapse: false);
   }
-  &.medium{
-    @include grid-column(6, $collapse:false);
+  &.small {
+    @include grid-column(4, $collapse: false);
   }
-  &.large{
-    @include grid-column(7,$collapse:false);
+  &.medium {
+    @include grid-column(6, $collapse: false);
+  }
+  &.large {
+    @include grid-column(7, $collapse: false);
   }
 
- }
+}
 
-  .block{
+.block {
+  position: relative;
+  height: $block-height;
+  @include blocks;
+  .block-image {
+    width: $image-container;
+    display: block;
+    position: absolute;
+    left: $pad-default;
+    top: $pad-default;
+  }
+  &.image .block-content {
+    margin-left: ($image-container + ($pad-default * 2));
+  }
+  // components
+  .date {
+    @extend .small-italic;
+  }
+  .credits {
+    @extend .small-italic;
+    position: absolute;
+    bottom: $pad-default;
+    left: ($image-container + ($pad-default * 3));
+    margin: 0;
+
+  }
+  .category {
+    @extend .header-allcaps;
+    @include highlight-color();
+  }
+  .title {
+    @extend h2;
+    a {
+      color: $clr-body-text;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+  .blurb {
+    //TODO: remove when you neaten up font sizes.
+  }
+
+  .block-content {
     position: relative;
-    height: $block-height;
-    @include blocks;
-    .block-image{
-      width: $image-container;
-      display: block;
-      position: absolute;
-      left: $pad-default;
-      top: $pad-default;
-    }
-    &.image .block-content{
-     margin-left: ($image-container + ($pad-default * 2));
-    }
-    // components
-    .date{@extend .small-italic;}
-    .credits{
-      @extend .small-italic;
-      position: absolute;
-      bottom: $pad-default;
-      left: ($image-container + ($pad-default * 3));
-      margin:0;
-
-    }
-    .block-content{
-      position:relative;
-      font-size: rem-calc($txt-size-default); //TODO figure out why fonts size is off
-    .category{
-      @extend .header-allcaps;
-      @include highlight-color();
-    }
-    .title{
-     @extend h2;
-     .small &{@extend h3;}
-
-    }
-    .blurb{
-      //TODO: remove when you neaten up font sizes.
-    }
-
-    }
-
+    font-size: rem-calc($txt-size-default);
   }
 
-  .column{
-   &.left{
-     @include grid-column(8,$collapse: true);
+  &.small {
+    .title {
+      font-weight: bold;
+      @extend h4;
+      @extend .subheader;
+    }
+  }
+}
 
-     /// row three is shorter than the others
-     .block{
+.column {
+  &.left {
+    @include grid-column(8, $collapse: true);
+
+    /// row three is shorter than the others
+    .block {
       height: $block-height-small;
-      .block-image{ height: ($block-height-small - ($pad-default *2));
+      .block-image {
+        height: ($block-height-small - ($pad-default *2));
         overflow: hidden;
       }
 
-       &.small{
-       @include grid-column(6,$collapse: false);
-     }
-   }
-   }
-
-    &.right{@include grid-column(4,$collapse: true);}
+      &.small {
+        @include grid-column(6, $collapse: false);
+      }
+    }
   }
 
-
+  &.right {
+    @include grid-column(4, $collapse: true);
+  }
+}
 
 #submission-links,
 #article-list,
@@ -130,20 +153,18 @@ $image-container: ($image-width + $pad-default);
 #issue,
 #twitter-feed,
 #blogroll,
-#billboard{
+#billboard {
   @include blocks();
   @include stub();
   height: $block-height;
 }
 
-#issue
- {
-   @include grid-column(2);
+#issue {
+  @include grid-column(2);
 
- }
+}
 
-#article-list
-{
+#article-list {
   @include grid-column(4);
 
 }

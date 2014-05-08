@@ -3936,14 +3936,14 @@ kbd {
   .panel > :last-child {
     margin-bottom: 0; }
   /* line 58, ../../sass/vendor/foundation/components/_panels.scss */
-  .panel h1, .panel .hero .hero-content h4, .hero .hero-content .panel h4, .panel h2, .panel .block .block-content .title, .block .block-content .panel .title, .panel h3, .panel .small .block .block-content .title, .small .block .block-content .panel .title, .panel .small-italic .block .block-content .title, .small-italic .block .block-content .panel .title, .panel .block .date .block .block-content .title, .block .date .block .block-content .panel .title, .panel .block .credits .block .block-content .title, .block .credits .block .block-content .panel .title, .panel h4, .panel h5, .panel h6, .panel p {
+  .panel h1, .panel .hero .hero-content h4, .hero .hero-content .panel h4, .panel .hero .hero-content .block.small .title, .hero .hero-content .block.small .panel .title, .panel .block.small .hero .hero-content .title, .block.small .hero .hero-content .panel .title, .panel .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .panel .title, .panel .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .panel .title, .panel .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .panel .title, .panel .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .panel .title, .panel .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .panel .title, .panel .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .panel .title, .panel h2, .panel .block .title, .block .panel .title, .panel h3, .panel h4, .panel .block.small .title, .block.small .panel .title, .panel .block.small-italic .title, .block.small-italic .panel .title, .panel .block .block.date .title, .block .block.date .panel .title, .panel .block .block.credits .title, .block .block.credits .panel .title, .panel h5, .panel h6, .panel p {
     color: #333333; }
   /* line 62, ../../sass/vendor/foundation/components/_panels.scss */
-  .panel h1, .panel .hero .hero-content h4, .hero .hero-content .panel h4, .panel h2, .panel .block .block-content .title, .block .block-content .panel .title, .panel h3, .panel .small .block .block-content .title, .small .block .block-content .panel .title, .panel .small-italic .block .block-content .title, .small-italic .block .block-content .panel .title, .panel .block .date .block .block-content .title, .block .date .block .block-content .panel .title, .panel .block .credits .block .block-content .title, .block .credits .block .block-content .panel .title, .panel h4, .panel h5, .panel h6 {
+  .panel h1, .panel .hero .hero-content h4, .hero .hero-content .panel h4, .panel .hero .hero-content .block.small .title, .hero .hero-content .block.small .panel .title, .panel .block.small .hero .hero-content .title, .block.small .hero .hero-content .panel .title, .panel .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .panel .title, .panel .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .panel .title, .panel .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .panel .title, .panel .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .panel .title, .panel .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .panel .title, .panel .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .panel .title, .panel h2, .panel .block .title, .block .panel .title, .panel h3, .panel h4, .panel .block.small .title, .block.small .panel .title, .panel .block.small-italic .title, .block.small-italic .panel .title, .panel .block .block.date .title, .block .block.date .panel .title, .panel .block .block.credits .title, .block .block.credits .panel .title, .panel h5, .panel h6 {
     line-height: 1;
     margin-bottom: 0.625rem; }
     /* line 64, ../../sass/vendor/foundation/components/_panels.scss */
-    .panel h1.subheader, .panel .hero .hero-content h4.subheader, .hero .hero-content .panel h4.subheader, .panel h2.subheader, .panel .block .block-content .subheader.title, .block .block-content .panel .subheader.title, .panel h3.subheader, .panel .small .block .block-content .subheader.title, .small .block .block-content .panel .subheader.title, .panel .small-italic .block .block-content .subheader.title, .small-italic .block .block-content .panel .subheader.title, .panel .block .date .block .block-content .subheader.title, .block .date .block .block-content .panel .subheader.title, .panel .block .credits .block .block-content .subheader.title, .block .credits .block .block-content .panel .subheader.title, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
+    .panel h1.subheader, .panel .hero .hero-content h4.subheader, .hero .hero-content .panel h4.subheader, .panel .hero .hero-content .block.small .title, .hero .hero-content .block.small .panel .title, .panel .block.small .hero .hero-content .title, .block.small .hero .hero-content .panel .title, .panel .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .panel .title, .panel .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .panel .title, .panel .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .panel .title, .panel .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .panel .title, .panel .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .panel .title, .panel .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .panel .title, .panel .block.small h1.title, .block.small .panel h1.title, .panel .block.small-italic h1.title, .block.small-italic .panel h1.title, .panel .block .block.date h1.title, .block .block.date .panel h1.title, .panel .block .block.credits h1.title, .block .block.credits .panel h1.title, .panel h2.subheader, .panel .block .subheader.title, .block .panel .subheader.title, .panel .block.small .title, .block.small .panel .title, .panel .block.small-italic .title, .block.small-italic .panel .title, .panel .block.date .block.date .title, .block.date .block.date .panel .title, .panel .block.credits .block.credits .title, .block.credits .block.credits .panel .title, .panel .block .block.date h2.title, .block .block.date .panel h2.title, .panel .block .block.credits h2.title, .block .block.credits .panel h2.title, .panel h3.subheader, .panel .block.small h3.title, .block.small .panel h3.title, .panel .block.small-italic h3.title, .block.small-italic .panel h3.title, .panel .block .block.date h3.title, .block .block.date .panel h3.title, .panel .block .block.credits h3.title, .block .block.credits .panel h3.title, .panel h4.subheader, .panel .block.small .title, .block.small .panel .title, .panel .block.small-italic .title, .block.small-italic .panel .title, .panel .block .block.date .title, .block .block.date .panel .title, .panel .block .block.credits .title, .block .block.credits .panel .title, .panel h5.subheader, .panel .block.small h5.title, .block.small .panel h5.title, .panel .block.small-italic h5.title, .block.small-italic .panel h5.title, .panel .block .block.date h5.title, .block .block.date .panel h5.title, .panel .block .block.credits h5.title, .block .block.credits .panel h5.title, .panel h6.subheader, .panel .block.small h6.title, .block.small .panel h6.title, .panel .block.small-italic h6.title, .block.small-italic .panel h6.title, .panel .block .block.date h6.title, .block .block.date .panel h6.title, .panel .block .block.credits h6.title, .block .block.credits .panel h6.title {
       line-height: 1.4; }
   /* line 76, ../../sass/vendor/foundation/components/_panels.scss */
   .panel.callout {
@@ -3960,14 +3960,14 @@ kbd {
     .panel.callout > :last-child {
       margin-bottom: 0; }
     /* line 58, ../../sass/vendor/foundation/components/_panels.scss */
-    .panel.callout h1, .panel.callout .hero .hero-content h4, .hero .hero-content .panel.callout h4, .panel.callout h2, .panel.callout .block .block-content .title, .block .block-content .panel.callout .title, .panel.callout h3, .panel.callout .small .block .block-content .title, .small .block .block-content .panel.callout .title, .panel.callout .small-italic .block .block-content .title, .small-italic .block .block-content .panel.callout .title, .panel.callout .block .date .block .block-content .title, .block .date .block .block-content .panel.callout .title, .panel.callout .block .credits .block .block-content .title, .block .credits .block .block-content .panel.callout .title, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
+    .panel.callout h1, .panel.callout .hero .hero-content h4, .hero .hero-content .panel.callout h4, .panel.callout .hero .hero-content .block.small .title, .hero .hero-content .block.small .panel.callout .title, .panel.callout .block.small .hero .hero-content .title, .block.small .hero .hero-content .panel.callout .title, .panel.callout .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .panel.callout .title, .panel.callout .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .panel.callout .title, .panel.callout .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .panel.callout .title, .panel.callout .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .panel.callout .title, .panel.callout .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .panel.callout .title, .panel.callout .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .panel.callout .title, .panel.callout h2, .panel.callout .block .title, .block .panel.callout .title, .panel.callout h3, .panel.callout h4, .panel.callout .block.small .title, .block.small .panel.callout .title, .panel.callout .block.small-italic .title, .block.small-italic .panel.callout .title, .panel.callout .block .block.date .title, .block .block.date .panel.callout .title, .panel.callout .block .block.credits .title, .block .block.credits .panel.callout .title, .panel.callout h5, .panel.callout h6, .panel.callout p {
       color: #333333; }
     /* line 62, ../../sass/vendor/foundation/components/_panels.scss */
-    .panel.callout h1, .panel.callout .hero .hero-content h4, .hero .hero-content .panel.callout h4, .panel.callout h2, .panel.callout .block .block-content .title, .block .block-content .panel.callout .title, .panel.callout h3, .panel.callout .small .block .block-content .title, .small .block .block-content .panel.callout .title, .panel.callout .small-italic .block .block-content .title, .small-italic .block .block-content .panel.callout .title, .panel.callout .block .date .block .block-content .title, .block .date .block .block-content .panel.callout .title, .panel.callout .block .credits .block .block-content .title, .block .credits .block .block-content .panel.callout .title, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
+    .panel.callout h1, .panel.callout .hero .hero-content h4, .hero .hero-content .panel.callout h4, .panel.callout .hero .hero-content .block.small .title, .hero .hero-content .block.small .panel.callout .title, .panel.callout .block.small .hero .hero-content .title, .block.small .hero .hero-content .panel.callout .title, .panel.callout .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .panel.callout .title, .panel.callout .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .panel.callout .title, .panel.callout .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .panel.callout .title, .panel.callout .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .panel.callout .title, .panel.callout .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .panel.callout .title, .panel.callout .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .panel.callout .title, .panel.callout h2, .panel.callout .block .title, .block .panel.callout .title, .panel.callout h3, .panel.callout h4, .panel.callout .block.small .title, .block.small .panel.callout .title, .panel.callout .block.small-italic .title, .block.small-italic .panel.callout .title, .panel.callout .block .block.date .title, .block .block.date .panel.callout .title, .panel.callout .block .block.credits .title, .block .block.credits .panel.callout .title, .panel.callout h5, .panel.callout h6 {
       line-height: 1;
       margin-bottom: 0.625rem; }
       /* line 64, ../../sass/vendor/foundation/components/_panels.scss */
-      .panel.callout h1.subheader, .panel.callout .hero .hero-content h4.subheader, .hero .hero-content .panel.callout h4.subheader, .panel.callout h2.subheader, .panel.callout .block .block-content .subheader.title, .block .block-content .panel.callout .subheader.title, .panel.callout h3.subheader, .panel.callout .small .block .block-content .subheader.title, .small .block .block-content .panel.callout .subheader.title, .panel.callout .small-italic .block .block-content .subheader.title, .small-italic .block .block-content .panel.callout .subheader.title, .panel.callout .block .date .block .block-content .subheader.title, .block .date .block .block-content .panel.callout .subheader.title, .panel.callout .block .credits .block .block-content .subheader.title, .block .credits .block .block-content .panel.callout .subheader.title, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
+      .panel.callout h1.subheader, .panel.callout .hero .hero-content h4.subheader, .hero .hero-content .panel.callout h4.subheader, .panel.callout .hero .hero-content .block.small .title, .hero .hero-content .block.small .panel.callout .title, .panel.callout .block.small .hero .hero-content .title, .block.small .hero .hero-content .panel.callout .title, .panel.callout .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .panel.callout .title, .panel.callout .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .panel.callout .title, .panel.callout .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .panel.callout .title, .panel.callout .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .panel.callout .title, .panel.callout .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .panel.callout .title, .panel.callout .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .panel.callout .title, .panel.callout .block.small h1.title, .block.small .panel.callout h1.title, .panel.callout .block.small-italic h1.title, .block.small-italic .panel.callout h1.title, .panel.callout .block .block.date h1.title, .block .block.date .panel.callout h1.title, .panel.callout .block .block.credits h1.title, .block .block.credits .panel.callout h1.title, .panel.callout h2.subheader, .panel.callout .block .subheader.title, .block .panel.callout .subheader.title, .panel.callout .block.small .title, .block.small .panel.callout .title, .panel.callout .block.small-italic .title, .block.small-italic .panel.callout .title, .panel.callout .block.date .block.date .title, .block.date .block.date .panel.callout .title, .panel.callout .block.credits .block.credits .title, .block.credits .block.credits .panel.callout .title, .panel.callout .block .block.date h2.title, .block .block.date .panel.callout h2.title, .panel.callout .block .block.credits h2.title, .block .block.credits .panel.callout h2.title, .panel.callout h3.subheader, .panel.callout .block.small h3.title, .block.small .panel.callout h3.title, .panel.callout .block.small-italic h3.title, .block.small-italic .panel.callout h3.title, .panel.callout .block .block.date h3.title, .block .block.date .panel.callout h3.title, .panel.callout .block .block.credits h3.title, .block .block.credits .panel.callout h3.title, .panel.callout h4.subheader, .panel.callout .block.small .title, .block.small .panel.callout .title, .panel.callout .block.small-italic .title, .block.small-italic .panel.callout .title, .panel.callout .block .block.date .title, .block .block.date .panel.callout .title, .panel.callout .block .block.credits .title, .block .block.credits .panel.callout .title, .panel.callout h5.subheader, .panel.callout .block.small h5.title, .block.small .panel.callout h5.title, .panel.callout .block.small-italic h5.title, .block.small-italic .panel.callout h5.title, .panel.callout .block .block.date h5.title, .block .block.date .panel.callout h5.title, .panel.callout .block .block.credits h5.title, .block .block.credits .panel.callout h5.title, .panel.callout h6.subheader, .panel.callout .block.small h6.title, .block.small .panel.callout h6.title, .panel.callout .block.small-italic h6.title, .block.small-italic .panel.callout h6.title, .panel.callout .block .block.date h6.title, .block .block.date .panel.callout h6.title, .panel.callout .block .block.credits h6.title, .block .block.credits .panel.callout h6.title {
         line-height: 1.4; }
     /* line 78, ../../sass/vendor/foundation/components/_panels.scss */
     .panel.callout a:not(.button) {
@@ -4813,12 +4813,12 @@ meta.foundation-mq-topbar {
     margin: 0;
     font-size: 16px; }
     /* line 184, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4 {
+    .top-bar .name h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4, .top-bar .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar .name .title, .top-bar .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .top-bar .name .title, .top-bar .name .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .top-bar .name .title, .top-bar .name .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .top-bar .name .title, .top-bar .name .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .top-bar .name .title {
       line-height: 45px;
       font-size: 1.0625rem;
       margin: 0; }
       /* line 188, ../../sass/vendor/foundation/components/_top-bar.scss */
-      .top-bar .name h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a {
+      .top-bar .name h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a {
         font-weight: normal;
         color: white;
         width: 50%;
@@ -5060,7 +5060,7 @@ meta.foundation-mq-topbar {
     .top-bar .title-area {
       float: left; }
     /* line 455, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a {
+    .top-bar .name h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a {
       width: auto; }
     /* line 458, ../../sass/vendor/foundation/components/_top-bar.scss */
     .top-bar input,
@@ -5587,14 +5587,22 @@ ol,
 li,
 h1,
 .hero .hero-content h4,
+.hero .hero-content .block.small .title,
+.block.small .hero .hero-content .title,
+.hero .hero-content .block.small-italic .title,
+.block.small-italic .hero .hero-content .title,
+.hero .hero-content .block .block.date .title,
+.block .block.date .hero .hero-content .title,
+.hero .hero-content .block .block.credits .title,
+.block .block.credits .hero .hero-content .title,
 h2,
-.block .block-content .title,
+.block .title,
 h3,
-.small .block .block-content .title,
-.small-italic .block .block-content .title,
-.block .date .block .block-content .title,
-.block .credits .block .block-content .title,
 h4,
+.block.small .title,
+.block.small-italic .title,
+.block .block.date .title,
+.block .block.credits .title,
 h5,
 h6,
 pre,
@@ -5640,7 +5648,7 @@ p {
 
 /* Default header styles */
 /* line 317, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4, h2, .block .block-content .title, h3, .small .block .block-content .title, .small-italic .block .block-content .title, .block .date .block .block-content .title, .block .credits .block .block-content .title, h4, h5, h6 {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, h2, .block .title, h3, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, h5, h6 {
   font-family: "Albert";
   font-weight: normal;
   font-style: normal;
@@ -5650,25 +5658,25 @@ h1, .hero .hero-content h4, h2, .block .block-content .title, h3, .small .block 
   margin-bottom: 0.2rem;
   line-height: 1; }
   /* line 327, ../../sass/vendor/foundation/components/_type.scss */
-  h1 small, .hero .hero-content h4 small, h2 small, .block .block-content .title small, h3 small, .small .block .block-content .title small, .small-italic .block .block-content .title small, .block .date .block .block-content .title small, .block .credits .block .block-content .title small, h4 small, h5 small, h6 small {
+  h1 small, .hero .hero-content h4 small, .hero .hero-content .block.small .title small, .block.small .hero .hero-content .title small, .hero .hero-content .block.small-italic .title small, .block.small-italic .hero .hero-content .title small, .hero .hero-content .block .block.date .title small, .block .block.date .hero .hero-content .title small, .hero .hero-content .block .block.credits .title small, .block .block.credits .hero .hero-content .title small, h2 small, .block .title small, h3 small, h4 small, .block.small .title small, .block.small-italic .title small, .block .block.date .title small, .block .block.credits .title small, h5 small, h6 small {
     font-size: 0.75rem;
     color: #333333;
     line-height: 0; }
 
 /* line 334, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4 {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title {
   font-size: 1.625rem; }
 
 /* line 335, ../../sass/vendor/foundation/components/_type.scss */
-h2, .block .block-content .title {
+h2, .block .title {
   font-size: 0.75rem; }
 
 /* line 336, ../../sass/vendor/foundation/components/_type.scss */
-h3, .small .block .block-content .title, .small-italic .block .block-content .title, .block .date .block .block-content .title, .block .credits .block .block-content .title {
+h3 {
   font-size: 0.8125rem; }
 
 /* line 337, ../../sass/vendor/foundation/components/_type.scss */
-h4 {
+h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
   font-size: 0.5rem; }
 
 /* line 338, ../../sass/vendor/foundation/components/_type.scss */
@@ -5680,12 +5688,12 @@ h6 {
   font-size: 0.8125rem; }
 
 /* line 341, ../../sass/vendor/foundation/components/_type.scss */
-.subheader {
-  line-height: 1.4;
-  color: #7a7a7a;
-  font-weight: normal;
+.subheader, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+  line-height: 1;
+  color: #333333;
+  font-weight: 300;
   margin-top: 0.2rem;
-  margin-bottom: 0.5rem; }
+  margin-bottom: 0.2rem; }
 
 /* line 343, ../../sass/vendor/foundation/components/_type.scss */
 hr {
@@ -5855,23 +5863,23 @@ blockquote p {
 
 @media only screen and (min-width: 40.063em) {
   /* line 513, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4, h2, .block .block-content .title, h3, .small .block .block-content .title, .small-italic .block .block-content .title, .block .date .block .block-content .title, .block .credits .block .block-content .title, h4, h5, h6 {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, h2, .block .title, h3, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, h5, h6 {
     line-height: 1; }
 
   /* line 514, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4 {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title {
     font-size: 2.25rem; }
 
   /* line 515, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .block .block-content .title {
+  h2, .block .title {
     font-size: 1.375rem; }
 
   /* line 516, ../../sass/vendor/foundation/components/_type.scss */
-  h3, .small .block .block-content .title, .small-italic .block .block-content .title, .block .date .block .block-content .title, .block .credits .block .block-content .title {
+  h3 {
     font-size: 1.125rem; }
 
   /* line 517, ../../sass/vendor/foundation/components/_type.scss */
-  h4 {
+  h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
     font-size: 0.8125rem; } }
 /*
  * Print styles.
@@ -5937,22 +5945,14 @@ blockquote p {
   /* line 565, ../../sass/vendor/foundation/components/_type.scss */
   p,
   h2,
-  .block .block-content .title,
-  h3,
-  .small .block .block-content .title,
-  .small-italic .block .block-content .title,
-  .block .date .block .block-content .title,
-  .block .credits .block .block-content .title {
+  .block .title,
+  h3 {
     orphans: 3;
     widows: 3; }
 
   /* line 571, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .block .block-content .title,
-  h3,
-  .small .block .block-content .title,
-  .small-italic .block .block-content .title,
-  .block .date .block .block-content .title,
-  .block .credits .block .block-content .title {
+  h2, .block .title,
+  h3 {
     page-break-after: avoid; }
 
   /* line 573, ../../sass/vendor/foundation/components/_type.scss */
@@ -6184,13 +6184,13 @@ blockquote p {
   line-height: 2.8125rem;
   position: relative; }
   /* line 157, ../../sass/vendor/foundation/components/_offcanvas.scss */
-  .tab-bar h1, .tab-bar .hero .hero-content h4, .hero .hero-content .tab-bar h4, .tab-bar h2, .tab-bar .block .block-content .title, .block .block-content .tab-bar .title, .tab-bar h3, .tab-bar .small .block .block-content .title, .small .block .block-content .tab-bar .title, .tab-bar .small-italic .block .block-content .title, .small-italic .block .block-content .tab-bar .title, .tab-bar .block .date .block .block-content .title, .block .date .block .block-content .tab-bar .title, .tab-bar .block .credits .block .block-content .title, .block .credits .block .block-content .tab-bar .title, .tab-bar h4, .tab-bar h5, .tab-bar h6 {
+  .tab-bar h1, .tab-bar .hero .hero-content h4, .hero .hero-content .tab-bar h4, .tab-bar .hero .hero-content .block.small .title, .hero .hero-content .block.small .tab-bar .title, .tab-bar .block.small .hero .hero-content .title, .block.small .hero .hero-content .tab-bar .title, .tab-bar .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .tab-bar .title, .tab-bar .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .tab-bar .title, .tab-bar .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .tab-bar .title, .tab-bar .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .tab-bar .title, .tab-bar .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .tab-bar .title, .tab-bar .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .tab-bar .title, .tab-bar h2, .tab-bar .block .title, .block .tab-bar .title, .tab-bar h3, .tab-bar h4, .tab-bar .block.small .title, .block.small .tab-bar .title, .tab-bar .block.small-italic .title, .block.small-italic .tab-bar .title, .tab-bar .block .block.date .title, .block .block.date .tab-bar .title, .tab-bar .block .block.credits .title, .block .block.credits .tab-bar .title, .tab-bar h5, .tab-bar h6 {
     color: white;
     font-weight: bold;
     line-height: 2.8125rem;
     margin: 0; }
   /* line 163, ../../sass/vendor/foundation/components/_offcanvas.scss */
-  .tab-bar h1, .tab-bar .hero .hero-content h4, .hero .hero-content .tab-bar h4, .tab-bar h2, .tab-bar .block .block-content .title, .block .block-content .tab-bar .title, .tab-bar h3, .tab-bar .small .block .block-content .title, .small .block .block-content .tab-bar .title, .tab-bar .small-italic .block .block-content .title, .small-italic .block .block-content .tab-bar .title, .tab-bar .block .date .block .block-content .title, .block .date .block .block-content .tab-bar .title, .tab-bar .block .credits .block .block-content .title, .block .credits .block .block-content .tab-bar .title, .tab-bar h4 {
+  .tab-bar h1, .tab-bar .hero .hero-content h4, .hero .hero-content .tab-bar h4, .tab-bar .hero .hero-content .block.small .title, .hero .hero-content .block.small .tab-bar .title, .tab-bar .block.small .hero .hero-content .title, .block.small .hero .hero-content .tab-bar .title, .tab-bar .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .tab-bar .title, .tab-bar .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .tab-bar .title, .tab-bar .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .tab-bar .title, .tab-bar .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .tab-bar .title, .tab-bar .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .tab-bar .title, .tab-bar .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .tab-bar .title, .tab-bar h2, .tab-bar .block .title, .block .tab-bar .title, .tab-bar h3, .tab-bar h4, .tab-bar .block.small .title, .block.small .tab-bar .title, .tab-bar .block.small-italic .title, .block.small-italic .tab-bar .title, .tab-bar .block .block.date .title, .block .block.date .tab-bar .title, .tab-bar .block .block.credits .title, .block .block.credits .tab-bar .title {
     font-size: 0.8125rem; }
 
 /* line 335, ../../sass/vendor/foundation/components/_offcanvas.scss */
@@ -6741,19 +6741,27 @@ th.hide-for-touch {
   font-family: "albert";
   src: url('../fonts/fs_albert.ttf') format('truetype'), url('../fonts/fs_albert.otf') format('opentype'), url('../fonts/fs_albert.svg') format('svg'), url('../fonts/fs_albert.woff') format('woff'); }
 
-/* line 5, ../../sass/_typography.scss */
-.header-allcaps, .block .block-content .category {
+@font-face {
+  font-family: "albert-bold";
+  src: url('../fonts/fs_albert-bold-webfont.ttf') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg') format('svg'), url('../fonts/fs_albert-bold-webfont.woff') format('woff'); }
+
+@font-face {
+  font-family: "icons-fawesome";
+  src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/FontAwesome-webfont.otf') format('opentype'), url('../fonts/FontAwesome-webfont.svg') format('svg'), url('../fonts/FontAwesome-webfont.woff') format('woff'); }
+
+/* line 9, ../../sass/_typography.scss */
+.header-allcaps, .block .category {
   font-size: 0.875rem;
   font-family: "Albert";
   text-transform: uppercase; }
 
-/* line 11, ../../sass/_typography.scss */
+/* line 15, ../../sass/_typography.scss */
 .small-italic, .block .date, .block .credits {
   font-size: 0.625rem;
   font-style: italic; }
 
-/* line 17, ../../sass/_typography.scss */
-.no-margin, .hero .hero-content h4, .hero .hero-content p {
+/* line 21, ../../sass/_typography.scss */
+.no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content p {
   margin-bottom: 0; }
 
 /* 
@@ -6925,7 +6933,7 @@ main,
 /*
  *    Home page blocks
  */
-/* line 16, ../../sass/pages/_home.scss */
+/* line 15, ../../sass/pages/_home.scss */
 .row {
   width: 100%;
   margin-left: auto;
@@ -6942,20 +6950,20 @@ main,
   .row:after {
     clear: both; }
 
-/* line 19, ../../sass/pages/_home.scss */
+/* line 20, ../../sass/pages/_home.scss */
 .hero {
   position: relative;
   color: white; }
-  /* line 23, ../../sass/pages/_home.scss */
+  /* line 24, ../../sass/pages/_home.scss */
   .hero a {
     color: white; }
-  /* line 24, ../../sass/pages/_home.scss */
+  /* line 27, ../../sass/pages/_home.scss */
   .hero img {
     width: 960px; }
-  /* line 26, ../../sass/pages/_home.scss */
+  /* line 31, ../../sass/pages/_home.scss */
   .hero.dark-text, .hero.dark-text a {
     color: #333333; }
-  /* line 30, ../../sass/pages/_home.scss */
+  /* line 35, ../../sass/pages/_home.scss */
   .hero .hero-content {
     position: absolute;
     width: 100%;
@@ -6963,32 +6971,32 @@ main,
     padding: 0.625rem;
     font-size: 1rem; }
 
-/* line 45, ../../sass/pages/_home.scss */
+/* line 53, ../../sass/pages/_home.scss */
 .row > .block.x-small {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
-/* line 48, ../../sass/pages/_home.scss */
+/* line 56, ../../sass/pages/_home.scss */
 .row > .block.small, .row > .block.small-italic, .block .row > .block.date, .block .row > .block.credits {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 33.33333%;
   float: left; }
-/* line 51, ../../sass/pages/_home.scss */
+/* line 59, ../../sass/pages/_home.scss */
 .row > .block.medium {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 50%;
   float: left; }
-/* line 54, ../../sass/pages/_home.scss */
+/* line 62, ../../sass/pages/_home.scss */
 .row > .block.large {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 58.33333%;
   float: left; }
 
-/* line 60, ../../sass/pages/_home.scss */
+/* line 68, ../../sass/pages/_home.scss */
 .block {
   position: relative;
   height: 15.625rem;
@@ -7004,57 +7012,66 @@ main,
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   margin-bottom: 1.25rem; }
-  /* line 64, ../../sass/pages/_home.scss */
+  /* line 72, ../../sass/pages/_home.scss */
   .block .block-image {
     width: 5rem;
     display: block;
     position: absolute;
     left: 0.625rem;
     top: 0.625rem; }
-  /* line 71, ../../sass/pages/_home.scss */
+  /* line 79, ../../sass/pages/_home.scss */
   .block.image .block-content {
     margin-left: 6.25rem; }
-  /* line 76, ../../sass/pages/_home.scss */
+  /* line 86, ../../sass/pages/_home.scss */
   .block .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.875rem;
     margin: 0; }
-  /* line 84, ../../sass/pages/_home.scss */
+  /* line 94, ../../sass/pages/_home.scss */
+  .block .category {
+    color: #3c63af; }
+  /* line 100, ../../sass/pages/_home.scss */
+  .block .title a {
+    color: #333333; }
+    /* line 102, ../../sass/pages/_home.scss */
+    .block .title a:hover {
+      text-decoration: underline; }
+  /* line 112, ../../sass/pages/_home.scss */
   .block .block-content {
     position: relative;
     font-size: 0.8125rem; }
-    /* line 87, ../../sass/pages/_home.scss */
-    .block .block-content .category {
-      color: #3c63af; }
+  /* line 118, ../../sass/pages/_home.scss */
+  .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+    font-weight: bold; }
 
-/* line 105, ../../sass/pages/_home.scss */
+/* line 127, ../../sass/pages/_home.scss */
 .column.left {
   padding-left: 0;
   padding-right: 0;
   width: 66.66667%;
   float: left; }
-  /* line 109, ../../sass/pages/_home.scss */
+  /* line 131, ../../sass/pages/_home.scss */
   .column.left .block {
     height: 11.25rem; }
-    /* line 111, ../../sass/pages/_home.scss */
+    /* line 133, ../../sass/pages/_home.scss */
     .column.left .block .block-image {
       height: 10rem;
       overflow: hidden; }
-    /* line 115, ../../sass/pages/_home.scss */
+    /* line 138, ../../sass/pages/_home.scss */
     .column.left .block.small, .column.left .block.small-italic, .column.left .block .block.date, .block .column.left .block.date, .column.left .block .block.credits, .block .column.left .block.credits {
       padding-left: 0.625rem;
       padding-right: 0.625rem;
       width: 50%;
       float: left; }
-/* line 121, ../../sass/pages/_home.scss */
+/* line 144, ../../sass/pages/_home.scss */
 .column.right {
   padding-left: 0;
   padding-right: 0;
   width: 33.33333%;
   float: left; }
 
-/* line 133, ../../sass/pages/_home.scss */
+/* line 156, ../../sass/pages/_home.scss */
 #submission-links,
 #article-list,
 #social-links,
@@ -7079,14 +7096,14 @@ main,
   color: white;
   height: 15.625rem; }
 
-/* line 140, ../../sass/pages/_home.scss */
+/* line 162, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
 
-/* line 146, ../../sass/pages/_home.scss */
+/* line 167, ../../sass/pages/_home.scss */
 #article-list {
   padding-left: 0.625rem;
   padding-right: 0.625rem;

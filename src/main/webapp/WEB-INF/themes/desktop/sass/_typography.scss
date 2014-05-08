@@ -1,5 +1,9 @@
 @include font-face("albert", font-files("fs_albert.ttf", "fs_albert.otf",  "fs_albert.svg",  "fs_albert.woff"));
 
+
+@include font-face("albert-bold", font-files("fs_albert-bold-webfont.ttf", "fs_albert-bold-webfont.otf",  "fs_albert-bold-webfont.svg",  "fs_albert-bold-webfont.woff"));
+
+@include font-face("icons-fawesome", font-files("FontAwesome.ttf", "FontAwesome-webfont.otf",  "FontAwesome-webfont.svg",  "FontAwesome-webfont.woff"));
 //typography extension styles
 
 .header-allcaps{

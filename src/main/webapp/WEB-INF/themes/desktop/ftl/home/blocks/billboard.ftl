@@ -1,7 +1,7 @@
-<div id="banner" class="banner">
+<div id="billboard" class="billboard">
 		<div class="content">
-			<h2 class="title">Join PLOS Biology in National Harbor, MD September 18 -22</h2>
-			<p>for the 3rd International Conference on Frontiers in Basic Cancer Research&nbsp;</p>
+			<h2 class="title">${billboard_title}</h2>
+			<p>${billboard_subtitle}</p>
 		</div>
-		<a href="" class="button">view the program</a>
+		<a href="${billboard_button_url}" class="button">${billboard_button_text}</a>
 </div>

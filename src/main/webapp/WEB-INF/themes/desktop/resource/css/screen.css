@@ -7054,14 +7054,15 @@ main,
   width: 33.33333%;
   float: left; }
 
-/* line 132, ../../sass/pages/_home.scss */
+/* line 133, ../../sass/pages/_home.scss */
 #submission-links,
 #article-list,
 #social-links,
 #spotlight,
 #issue,
 #twitter-feed,
-#blogroll {
+#blogroll,
+#billboard {
   background: white;
   padding: 0.625rem;
   -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -7078,14 +7079,14 @@ main,
   color: white;
   height: 15.625rem; }
 
-/* line 139, ../../sass/pages/_home.scss */
+/* line 140, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
 
-/* line 145, ../../sass/pages/_home.scss */
+/* line 146, ../../sass/pages/_home.scss */
 #article-list {
   padding-left: 0.625rem;
   padding-right: 0.625rem;

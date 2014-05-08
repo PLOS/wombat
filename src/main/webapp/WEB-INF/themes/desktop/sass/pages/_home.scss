@@ -129,7 +129,8 @@ $image-container: ($image-width + $pad-default);
 #spotlight,
 #issue,
 #twitter-feed,
-#blogroll {
+#blogroll,
+#billboard{
   @include blocks();
   @include stub();
   height: $block-height;

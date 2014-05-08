@@ -1,4 +1,10 @@
 // this file is just STUB DATA only for testing and developing homepages
+
+<#assign billboard_title="Join PLOS Biology in National Harbor, MD September 18 22">
+<#assign billboard_subtitle="for the 3rd International Conference on Frontiers in Basic Cancer Research">
+<#assign billboard_button_url="banner-url">
+<#assign billboard_button_text="view the program">
+
 // Article Blocks
 
 <#assign cell_category="EDITORIAL">
@@ -20,3 +26,4 @@
 <#assign category="cat">
 <#assign block_id="2">
 <#assign rank="3">
+

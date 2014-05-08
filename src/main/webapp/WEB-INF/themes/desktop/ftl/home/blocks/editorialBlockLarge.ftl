@@ -1,7 +1,7 @@
 <article class="block large image" id="cellcat${cell_category}-r${rank}">
 	<div class="block-content">
 		<p class="category">${category}</p>
-		<h4 class="title"><a href="${item_url}"> ${title} </a></h4>
+		<h2 class="title"><a href="${item_url}"> ${title} </a></h2>
 		<div class="blurb">
     ${blurb}
 		</div>

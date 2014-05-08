@@ -2,7 +2,7 @@
 	<div class="block-content">
 		<p class="date">${published_at}</p>
 		<p class="category">${category} </p>
-		<h4 class="title"><a href="${item_url}"> ${title} </a></h4>
+		<h2 class="title"><a href="${item_url}"> ${title} </a></h2>
 	</div>
 	<a class="block-image" href="${item_url}">
 		<img src="${guid}" alt="${title}">

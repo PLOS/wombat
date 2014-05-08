@@ -15,7 +15,7 @@
 <div id="home-content">
   <div class="row hero">
     <#include "blocks/hero.ftl" />
-    <#include "blocks/banner.ftl" />
+    <#include "blocks/billboard.ftl" />
   </div>
   <div class="row one">
     <#include "blocks/editorialBlockMedium.ftl" />

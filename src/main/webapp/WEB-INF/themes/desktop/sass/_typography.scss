@@ -3,12 +3,14 @@
 //typography extension styles
 
 .header-allcaps{
- font-size: $txt-size-medium;
+ font-size: rem-calc($txt-size-medium);
+ font-family: $font-face-fancy;
  text-transform: uppercase;
 }
 
 .small-italic{
   @extend .small;
+  font-size: rem-calc($txt-size-xxxsmall);
   font-style: italic;
 }
 

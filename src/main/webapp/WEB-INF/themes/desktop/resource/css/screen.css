@@ -5651,7 +5651,7 @@ h1, .hero .hero-content h4, h2, .block .block-content .title, h3, .small .block 
   line-height: 1; }
   /* line 327, ../../sass/vendor/foundation/components/_type.scss */
   h1 small, .hero .hero-content h4 small, h2 small, .block .block-content .title small, h3 small, .small .block .block-content .title small, .small-italic .block .block-content .title small, .block .date .block .block-content .title small, .block .credits .block .block-content .title small, h4 small, h5 small, h6 small {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     color: #333333;
     line-height: 0; }
 
@@ -5710,7 +5710,7 @@ b {
 
 /* line 364, ../../sass/vendor/foundation/components/_type.scss */
 small {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   line-height: inherit; }
 
 /* line 369, ../../sass/vendor/foundation/components/_type.scss */
@@ -6743,14 +6743,16 @@ th.hide-for-touch {
 
 /* line 5, ../../sass/_typography.scss */
 .header-allcaps, .block .block-content .category {
-  font-size: 14px;
+  font-size: 0.875rem;
+  font-family: "Albert";
   text-transform: uppercase; }
 
-/* line 10, ../../sass/_typography.scss */
+/* line 11, ../../sass/_typography.scss */
 .small-italic, .block .date, .block .credits {
+  font-size: 0.625rem;
   font-style: italic; }
 
-/* line 15, ../../sass/_typography.scss */
+/* line 17, ../../sass/_typography.scss */
 .no-margin, .hero .hero-content h4, .hero .hero-content p {
   margin-bottom: 0; }
 

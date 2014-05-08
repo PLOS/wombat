@@ -3,7 +3,7 @@
 
 		<div class="hero-content">
 			<p class="published_at">${published_at}</p>
-			<h4 class="title"><a href="${item_id}">${title}</a></h4>
+			<h1 class="title"><a href="${item_id}">${title}</a></h1>
 			<p class="authors">${author}</p>
 		  <p class="credit">Image credit: ${credit}</p>
 		</div>

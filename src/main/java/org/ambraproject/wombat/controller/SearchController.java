@@ -13,10 +13,12 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
+import org.apache.commons.codec.binary.Hex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,7 +101,7 @@ public class SearchController extends WombatController {
     }
 
     String redirectUrl = legacySearchPattern;
-    redirectUrl = redirectUrl.replace("{query}", query); // TODO escape characters
+    redirectUrl = redirectUrl.replace("{query}", escapeParameter(query));
     redirectUrl = redirectUrl.replace("{journalKey}", site.getJournalKey());
 
     try {
@@ -107,6 +109,30 @@ public class SearchController extends WombatController {
     } catch (MalformedURLException e) {
       throw new RuntimeException("Could not form URL from legacy search pattern for " + site, e);
     }
+  }
+
+  private static final CharMatcher URL_DELIMITERS = CharMatcher.anyOf("!#$&'()*+,/:;=?@[]");
+
+  /**
+   * Replace delimiter characters with hex escapes, as required in a URL parameter value.
+   *
+   * @param parameterValue the parameter value
+   * @return the same value with delimiters escaped
+   */
+  private static String escapeParameter(String parameterValue) {
+    if (parameterValue.isEmpty()) return "";
+    StringBuilder escaped = new StringBuilder(parameterValue.length() + 4);
+    for (int i = 0; i < parameterValue.length(); i++) {
+      char c = parameterValue.charAt(i);
+      if (URL_DELIMITERS.matches(c)) {
+        byte[] charAsByte = {(byte) c}; // Downcasting is safe because all chars in URL_DELIMITERS are < 0x80
+        char[] charAsHex = Hex.encodeHex(charAsByte, false);
+        escaped.append('%').append(charAsHex);
+      } else {
+        escaped.append(c);
+      }
+    }
+    return escaped.toString();
   }
 
 }

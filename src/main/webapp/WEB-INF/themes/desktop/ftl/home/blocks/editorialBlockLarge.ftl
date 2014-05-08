@@ -1,6 +1,6 @@
-<article class="block large" id="cellcat${cell_category}-r${rank}">
+<article class="block large image" id="cellcat${cell_category}-r${rank}">
 	<div class="block-content">
-		<p class="category">${category} </p>
+		<p class="category">${category}</p>
 		<h4 class="title"><a href="${item_url}"> ${title} </a></h4>
 		<div class="blurb">
     ${blurb}

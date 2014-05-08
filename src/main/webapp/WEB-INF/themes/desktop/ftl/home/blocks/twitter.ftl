@@ -1,3 +1,3 @@
-<div id="twitterFeed">
+<div id="twitter-feed">
 	TWITTER
 </div>

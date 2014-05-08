@@ -8,14 +8,15 @@ $block-height: rem-calc(250);
   .row{}
  .block{
   height: rem-calc(250);
+
    &.x-small{
-     @include grid-column(3);
+     @include grid-column(3,false);
    }
   &.small{
-  @include grid-column(4);
+  @include grid-column(4,false);
   }
    &.medium{
-     @include grid-column(4);
+     @include grid-column(4, false);
    }
   }
 

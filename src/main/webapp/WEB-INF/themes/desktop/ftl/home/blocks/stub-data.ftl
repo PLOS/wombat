@@ -1,4 +1,4 @@
-
+// this file is just STUB DATA only for testing and developing homepages
 // Article Blocks
 
 <#assign cell_category="EDITORIAL">
@@ -8,7 +8,7 @@
 <#assign author="Felix Warneken, Brian Hare, Alicia P Melis, Daniel Hanus, Michael Tomasello">
 
 //images
-<#assign credit="EDITORIAL">
+<#assign credit="Image credit: Polina Grinbaum">
 <#assign guid="resource/img/stub-editorialPhoto.jpg">
 
 <#assign published_at="August 24, 2013">

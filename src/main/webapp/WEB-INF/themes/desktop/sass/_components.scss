@@ -1,7 +1,7 @@
 /*   This file contains design components used for Journals and Wombat Generic
  *
  */
-$default-box-shadow-color: #333333;
+$default-box-shadow-color: rgba(0, 0, 0, 0.1);
 $default-box-shadow-h-offset: 1px;
 $default-box-shadow-v-offset: 1px;
 $default-box-shadow-blur: 5px;
@@ -30,7 +30,7 @@ $default-box-shadow-inset: false;
   background: $white;
   padding: rem-calc(10);
   @include single-box-shadow();
-  @include border-radius();
+  @include border-top-radius();
   margin-bottom: $block-grid-default-spacing;
 
 
@@ -41,9 +41,6 @@ $default-box-shadow-inset: false;
 @mixin stub(){
   background-color: $grey-med-light;
   color: $white;
-
-
-
 }
 
 

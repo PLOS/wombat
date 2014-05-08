@@ -63,18 +63,21 @@ $font-face-navigation: $font-face-fancy;
 $font-face-headings: $font-face-fancy;
 
 //Type Sizes
-$txt-size-giant: 30px;
-$txt-size-xlarge: 26px;
-$txt-size-large: 20px;
-$txt-size-medium: 18px;
+$txt-size-giant: 36px;
+$txt-size-xxxlarge: 26px;
+$txt-size-xxlarge: 22px;
+$txt-size-xlarge: 20px;
+$txt-size-large: 18px;
+$txt-size-medium-large: 16px;// TODO This is getting ridiculous there has to be a better way
+$txt-size-medium: 14px;
 $txt-size-small: 13px;
 $txt-size-xsmall: 11px;
 
 $txt-size-pgtitle: $txt-size-giant;
 $txt-size-default: $txt-size-small;
-$txt-size-h1: $txt-size-large;
-$txt-size-h2: $txt-size-xlarge;
-$txt-size-h3: $txt-size-medium;
+$txt-size-h1: $txt-size-xlarge;
+$txt-size-h2: $txt-size-xxlarge;
+$txt-size-h3: $txt-size-large;
 $txt-size-h4: $txt-size-default;
 $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use

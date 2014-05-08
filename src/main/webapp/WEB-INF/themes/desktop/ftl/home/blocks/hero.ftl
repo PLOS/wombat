@@ -1,4 +1,4 @@
-<div id="hero" class="hero txt-${text_color} decoration-${gradient}">
+<div id="hero" class="hero ${text_color} decoration-${gradient}">
 	<a href=""><img src="${file}" alt="${title}" class="hero-image"></a>
 
 		<div class="hero-content">

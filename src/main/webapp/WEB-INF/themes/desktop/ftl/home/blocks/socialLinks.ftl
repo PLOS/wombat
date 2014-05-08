@@ -1,3 +1,3 @@
-<div id="social">
+<div id="social-links">
 	SOCIAL LINKS
 </div>

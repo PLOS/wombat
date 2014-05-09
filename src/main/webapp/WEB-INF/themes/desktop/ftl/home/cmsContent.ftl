@@ -22,10 +22,12 @@
 		<div class="column left">
      <#include "blocks/editorialBlockLarge.ftl" />
      <#include "blocks/editorialBlockLarge.ftl" />
-     <#include "blocks/editorialBlockSmall.ftl" />
-     <#include "blocks/editorialBlockSmall.ftl" />
-     <#include "blocks/editorialBlockSmall.ftl" />
-     <#include "blocks/editorialBlockSmall.ftl" />
+     <div class="row-small-blocks">
+       <#include "blocks/editorialBlockSmall.ftl" />
+       <#include "blocks/editorialBlockSmall.ftl" />
+       <#include "blocks/editorialBlockSmall.ftl" />
+       <#include "blocks/editorialBlockSmall.ftl" />
+     </div>
 		</div>
 		<div class="column right">
       <#include "blocks/submissionLinks.ftl" />

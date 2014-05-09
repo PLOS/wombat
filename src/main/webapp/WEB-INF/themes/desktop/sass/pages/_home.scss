@@ -116,9 +116,9 @@ $image-container: ($image-width + $pad-default);
 
   &.small {
     .title {
-      font-weight: bold;
       @extend h4;
       @extend .subheader;
+      font-family: albert-bold;
     }
   }
 }
@@ -126,7 +126,9 @@ $image-container: ($image-width + $pad-default);
 .column {
   &.left {
     @include grid-column(8, $collapse: true);
-
+    .row-small-blocks{
+      @include block-grid(2);
+    }
     /// row three is shorter than the others
     .block {
       height: $block-height-small;

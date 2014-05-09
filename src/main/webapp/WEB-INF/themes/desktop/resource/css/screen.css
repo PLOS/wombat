@@ -5633,7 +5633,7 @@ p {
   font-family: inherit;
   font-weight: normal;
   font-size: 0.8125rem;
-  line-height: 1.2;
+  line-height: 1.35;
   margin-bottom: 0.3125rem;
   text-rendering: optimizeLegibility; }
   /* line 307, ../../sass/vendor/foundation/components/_type.scss */
@@ -5649,7 +5649,7 @@ p {
 /* Default header styles */
 /* line 317, ../../sass/vendor/foundation/components/_type.scss */
 h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, h2, .block .title, h3, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, h5, h6 {
-  font-family: "Albert";
+  font-family: "albert";
   font-weight: normal;
   font-style: normal;
   color: #333333;
@@ -5689,7 +5689,7 @@ h6 {
 
 /* line 341, ../../sass/vendor/foundation/components/_type.scss */
 .subheader, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
-  line-height: 1;
+  line-height: 1.1;
   color: #333333;
   font-weight: 300;
   margin-top: 0.2rem;
@@ -5733,7 +5733,7 @@ ul,
 ol,
 dl {
   font-size: 0.8125rem;
-  line-height: 1.2;
+  line-height: 1.35;
   margin-bottom: 0.3125rem;
   list-style-position: outside;
   font-family: inherit; }
@@ -5831,7 +5831,7 @@ blockquote {
 /* line 477, ../../sass/vendor/foundation/components/_type.scss */
 blockquote,
 blockquote p {
-  line-height: 1.2;
+  line-height: 1.35;
   color: #7a7a7a; }
 
 /* Microformats */
@@ -6749,18 +6749,18 @@ th.hide-for-touch {
   font-family: "icons-fawesome";
   src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/FontAwesome-webfont.otf') format('opentype'), url('../fonts/FontAwesome-webfont.svg') format('svg'), url('../fonts/FontAwesome-webfont.woff') format('woff'); }
 
-/* line 9, ../../sass/_typography.scss */
+/* line 10, ../../sass/_typography.scss */
 .header-allcaps, .block .category {
   font-size: 0.875rem;
-  font-family: "Albert";
+  font-family: "albert";
   text-transform: uppercase; }
 
-/* line 15, ../../sass/_typography.scss */
+/* line 16, ../../sass/_typography.scss */
 .small-italic, .block .date, .block .credits {
   font-size: 0.625rem;
   font-style: italic; }
 
-/* line 21, ../../sass/_typography.scss */
+/* line 22, ../../sass/_typography.scss */
 .no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content p {
   margin-bottom: 0; }
 
@@ -7043,7 +7043,7 @@ main,
     font-size: 0.8125rem; }
   /* line 118, ../../sass/pages/_home.scss */
   .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
-    font-weight: bold; }
+    font-family: albert-bold; }
 
 /* line 127, ../../sass/pages/_home.scss */
 .column.left {
@@ -7051,27 +7051,65 @@ main,
   padding-right: 0;
   width: 66.66667%;
   float: left; }
-  /* line 131, ../../sass/pages/_home.scss */
+  /* line 129, ../../sass/pages/_home.scss */
+  .column.left .row-small-blocks {
+    display: block;
+    padding: 0;
+    margin: 0;
+    *zoom: 1; }
+    /* line 145, ../../sass/vendor/foundation/components/_global.scss */
+    .column.left .row-small-blocks:before, .column.left .row-small-blocks:after {
+      content: " ";
+      display: table; }
+    /* line 146, ../../sass/vendor/foundation/components/_global.scss */
+    .column.left .row-small-blocks:after {
+      clear: both; }
+    /* line 49, ../../sass/vendor/foundation/components/_block-grid.scss */
+    .column.left .row-small-blocks > li {
+      display: block;
+      height: auto;
+      float: left;
+      padding: 0 0.625rem 1.25rem; }
+    /* line 60, ../../sass/vendor/foundation/components/_block-grid.scss */
+    .column.left .row-small-blocks > li {
+      width: 50%;
+      padding: 0 0.625rem 1.25rem;
+      list-style: none; }
+      /* line 67, ../../sass/vendor/foundation/components/_block-grid.scss */
+      .column.left .row-small-blocks > li:nth-of-type(n) {
+        clear: none; }
+      /* line 68, ../../sass/vendor/foundation/components/_block-grid.scss */
+      .column.left .row-small-blocks > li:nth-of-type(2n+1) {
+        clear: both; }
+      /* line 83, ../../sass/vendor/foundation/components/_block-grid.scss */
+      .column.left .row-small-blocks > li:nth-child(2n+1) {
+        padding-left: 0rem;
+        padding-right: 0.625rem; }
+      /* line 83, ../../sass/vendor/foundation/components/_block-grid.scss */
+      .column.left .row-small-blocks > li:nth-child(2n) {
+        padding-left: 0.625rem;
+        padding-right: 0rem; }
+  /* line 133, ../../sass/pages/_home.scss */
   .column.left .block {
     height: 11.25rem; }
-    /* line 133, ../../sass/pages/_home.scss */
+    /* line 135, ../../sass/pages/_home.scss */
     .column.left .block .block-image {
       height: 10rem;
       overflow: hidden; }
-    /* line 138, ../../sass/pages/_home.scss */
+    /* line 140, ../../sass/pages/_home.scss */
     .column.left .block.small, .column.left .block.small-italic, .column.left .block .block.date, .block .column.left .block.date, .column.left .block .block.credits, .block .column.left .block.credits {
       padding-left: 0.625rem;
       padding-right: 0.625rem;
       width: 50%;
       float: left; }
-/* line 144, ../../sass/pages/_home.scss */
+/* line 146, ../../sass/pages/_home.scss */
 .column.right {
   padding-left: 0;
   padding-right: 0;
   width: 33.33333%;
   float: left; }
 
-/* line 156, ../../sass/pages/_home.scss */
+/* line 158, ../../sass/pages/_home.scss */
 #submission-links,
 #article-list,
 #social-links,
@@ -7096,14 +7134,14 @@ main,
   color: white;
   height: 15.625rem; }
 
-/* line 162, ../../sass/pages/_home.scss */
+/* line 164, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
 
-/* line 167, ../../sass/pages/_home.scss */
+/* line 169, ../../sass/pages/_home.scss */
 #article-list {
   padding-left: 0.625rem;
   padding-right: 0.625rem;

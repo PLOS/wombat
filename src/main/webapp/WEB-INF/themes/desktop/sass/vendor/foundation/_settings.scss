@@ -135,7 +135,7 @@ $h5-font-size: rem-calc($txt-size-h5);
 $h6-font-size: rem-calc($txt-size-h6);
 
 // These control how subheaders are styled.
-$subheader-line-height: 1;
+$subheader-line-height: 1.1;
 $subheader-font-color: $clr-body-text;
 $subheader-font-weight: 300;
 $subheader-top-margin: .2rem;
@@ -149,7 +149,7 @@ $subheader-bottom-margin: .2rem;
 $paragraph-font-family: inherit;
 $paragraph-font-weight: normal;
 $paragraph-font-size: rem-calc($txt-size-default);
-$paragraph-line-height: 1.2;
+$paragraph-line-height: 1.35;
 $paragraph-margin-bottom: rem-calc(5);
 $paragraph-aside-font-size: rem-calc(14);
 $paragraph-aside-line-height: 1.35;
@@ -276,7 +276,7 @@ $anchor-font-color-hover:  $grey-dark;
 $block-grid-elements: 12;
 $row-width: rem-calc(960);
 $block-grid-default-spacing: rem-calc(20);
-// $align-block-grid-to-grid: true;
+ $align-block-grid-to-grid: true;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 // $block-grid-media-queries: true;

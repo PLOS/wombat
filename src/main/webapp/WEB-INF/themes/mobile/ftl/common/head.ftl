@@ -1,4 +1,3 @@
-<#include "../macro/pathUp.ftl" />
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 
@@ -21,11 +20,11 @@
   </style>
 
   <title><@titleFormat removeTags(title) /></title>
-<@cssLink target=pathUp(depth!0 "resource/css/base.css") />
-<@cssLink target=pathUp(depth!0 "resource/css/interface.css") />
-<@cssLink target=pathUp(depth!0 "resource/css/mobile.css") />
+<@cssLink target="resource/css/base.css" />
+<@cssLink target="resource/css/interface.css" />
+<@cssLink target="resource/css/mobile.css" />
 <#include "../cssLinks.ftl" />
 
-  <script src="${pathUp(depth!0 "resource/js/vendor/vendor.min.js")}"></script>
+  <script src="<@siteLink path="resource/js/vendor/vendor.min.js" />"></script>
 <@renderCssLinks />
 </head>

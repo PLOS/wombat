@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.Preconditions;
 import freemarker.cache.TemplateLoader;
+import org.ambraproject.wombat.config.site.TemplateNotFoundException;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -24,7 +25,8 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
    *
    * @param key the non-null, non-empty key containing no slashes
    * @return a {@code TemplateLoader} instance to which to forward
-   * @throws TemplateNotFoundException if the key cannot be matched to a delegate object
+   * @throws org.ambraproject.wombat.config.site.TemplateNotFoundException if the key cannot be matched to a delegate
+   *                                                                       object
    */
   protected abstract TemplateLoader delegate(String key);
 

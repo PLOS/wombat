@@ -12,6 +12,8 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
 import java.util.Collection;
@@ -81,8 +83,9 @@ public interface RuntimeConfiguration {
    * @param internalThemes constant themes provided by the webapp
    * @param rootTheme      the default parent theme to be applied to any user-defined theme without an explicit parent
    * @return the set of all available themes
-   * @throws ThemeTree.ThemeConfigurationException
-   * @throws java.lang.IllegalArgumentException    if {@code internalThemes} does not contain {@code rootTheme}
+   * @throws org.ambraproject.wombat.config.theme.ThemeTree.ThemeConfigurationException
+   * @throws java.lang.IllegalArgumentException                                         if {@code internalThemes} does
+   *                                                                                    not contain {@code rootTheme}
    */
   ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException;
 

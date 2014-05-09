@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.config;
 
-class RuntimeConfigurationException extends RuntimeException {
+public class RuntimeConfigurationException extends RuntimeException {
 
   public RuntimeConfigurationException(String message) {
     super(message);

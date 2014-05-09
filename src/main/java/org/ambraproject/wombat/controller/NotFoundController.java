@@ -13,30 +13,25 @@
 
 package org.ambraproject.wombat.controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Controller intended to serve "nice" 404 pages, using the styling of the site, if possible. An instance of this
- * controller needs to be set as the defaultHandler property in the spring config.
+ * Controller intended to serve "nice" 404 pages, using the styling of the site, if possible.
+ * <p/>
+ * An instance of this controller is set as the defaultHandler property in the Spring config, in order to pick up any
+ * pages that don't match the RequestMapping of any controller. Compare {@link WombatController#handleNotFound}, which
+ * is the handler for {@link NotFoundException}s thrown by controllers.
  */
 @Controller
 public class NotFoundController extends WombatController {
 
   @RequestMapping
-  public String handle404(HttpServletRequest request, HttpServletResponse response, Model model) {
-    response.setStatus(HttpStatus.NOT_FOUND.value());
-    SitePageContext context = inspectPathForContext(request);
-    if (context == null) {
-      return "//notFound";
-    } else {
-      model.addAttribute("depth", context.getPageDepth());
-      return context.getSite().getKey() + "/ftl/notFound";
-    }
+  public String handle404(HttpServletRequest request, HttpServletResponse response) {
+    return handleNotFound(request, response);
   }
+
 }

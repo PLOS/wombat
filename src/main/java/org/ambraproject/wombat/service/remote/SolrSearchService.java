@@ -15,7 +15,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.Site;
+import org.ambraproject.wombat.config.site.Site;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;

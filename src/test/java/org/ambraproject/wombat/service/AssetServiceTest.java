@@ -14,6 +14,7 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Joiner;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.controller.StaticResourceController;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
@@ -42,6 +43,9 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
+  @Autowired
+  private SiteSet siteSet;
+
   @Test
   public void testCompiledJs() throws Exception {
 
@@ -64,8 +68,8 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
     List<String> jsFiles = new ArrayList<>();
     jsFiles.add("resource/js/test1.js");
     jsFiles.add("resource/js/test2.js");
-    String compiledJsPath = assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles, "default",
-        "meaninglessCacheKey");
+    String compiledJsPath = assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles,
+        siteSet.getSite("default"), "meaninglessCacheKey");
     String[] fields = compiledJsPath.split("/");
     String basename = fields[fields.length - 1];
 
@@ -86,6 +90,7 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
   public void testJsError() throws Exception {
     List<String> jsFiles = new ArrayList<>();
     jsFiles.add("resource/js/error.js");
-    assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles, "default", "meaninglessCacheKey");
+    assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles,
+        siteSet.getSite("default"), "meaninglessCacheKey");
   }
 }

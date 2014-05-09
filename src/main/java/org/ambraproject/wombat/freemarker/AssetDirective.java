@@ -15,6 +15,7 @@ import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.controller.SiteResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,8 @@ public abstract class AssetDirective {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
+  @Autowired
+  private SiteResolver siteResolver;
 
   /**
    * Called when we are adding a new asset file to the page.  If we're in dev mode, this will just render HTML that
@@ -46,7 +49,8 @@ public abstract class AssetDirective {
     assetPath = assetPath.trim();
 
     if (runtimeConfiguration.devModeAssets()) {
-      environment.getOut().write(getHtml(assetPath));
+      String assetAddress = siteResolver.buildLink(environment, assetPath);
+      environment.getOut().write(getHtml(assetAddress));
     } else {
 
       // Add the asset file to a list that's scoped to the current request.  We'll minify,

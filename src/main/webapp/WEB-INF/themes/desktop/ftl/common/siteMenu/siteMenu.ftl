@@ -1,14 +1,29 @@
 <#include "siteMenuFlag.ftl" />
 <#if hasSiteMenu>
-  <#macro menuSection title containsSubmit=false>
+
+  <#macro siteMenuCalloutHeadline>
+  <h3><#nested/></h3>
+  </#macro>
+  <#macro siteMenuCalloutBulletList>
+  <ul>
+    <#nested/>
+  </ul>
+  </#macro>
+  <#macro siteMenuCalloutButton href>
+  <a class="btn" href="${href}">
+    <#nested/>
+  </a>
+  </#macro>
+
+  <#macro menuSection title containsCallout=false>
   <li id="mn-01">
     <a href="javascript:void(0);">${title}</a>
 
     <div class="submenu">
-      <#if containsSubmit>
-      <div class="submit">
-        <#include "siteMenuFooter.ftl" />
-      </div>
+      <#if containsCallout>
+        <div class="submit">
+          <#include "siteMenuCallout.ftl" />
+        </div>
       </#if>
       <div class="menu">
         <ul>
@@ -24,10 +39,10 @@
   </li>
   </#macro>
 
-<div id="nav-main" class="nav">
+<nav id="nav-main" class="nav">
   <ul>
     <#include "siteMenuItems.ftl" />
   </ul>
-</div>
+</nav>
 
 </#if>

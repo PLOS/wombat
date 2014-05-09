@@ -1,8 +1,27 @@
+/*
+ * Copyright (c) 2006-2014 by Public Library of Science
+ * http://plos.org
+ * http://ambraproject.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,6 +30,11 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.MemcacheClient;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.SiteTemplateLoader;
+import org.ambraproject.wombat.config.theme.InternalTheme;
+import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
@@ -20,6 +44,7 @@ import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
 import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.RenderJsDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
+import org.ambraproject.wombat.freemarker.SiteLinkDirective;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -38,10 +63,12 @@ import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SoaServiceImpl;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.StreamService;
+import org.ambraproject.wombat.util.GitInfo;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
@@ -56,8 +83,6 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Configuration
 public class SpringConfiguration {
@@ -110,6 +135,16 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public SiteResolver siteResolver() {
+    return new SiteResolver();
+  }
+
+  @Bean
+  public SiteLinkDirective siteLinkDirective() {
+    return new SiteLinkDirective();
+  }
+
+  @Bean
   public CssLinkDirective cssLinkDirective() {
     return new CssLinkDirective();
   }
@@ -141,6 +176,7 @@ public class SpringConfiguration {
 
   @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
+                                           SiteLinkDirective siteLinkDirective,
                                            CssLinkDirective cssLinkDirective,
                                            RenderCssLinksDirective renderCssLinksDirective,
                                            JsDirective jsDirective,
@@ -155,17 +191,18 @@ public class SpringConfiguration {
     // Freemarker custom directives used throughout the app.
     // TODO: should all of these be their own @Beans?  I'm only doing that now for
     // ones that have dependencies on spring-injection.
-    Map<String, Object> variables = new HashMap<>();
+    ImmutableMap.Builder<String, Object> variables = ImmutableMap.builder();
     variables.put("formatJsonDate", new Iso8601DateDirective());
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("randomInteger", new RandomIntegerDirective());
+    variables.put("siteLink", siteLinkDirective);
     variables.put("cssLink", cssLinkDirective);
     variables.put("renderCssLinks", renderCssLinksDirective);
     variables.put("js", jsDirective);
     variables.put("renderJs", renderJsDirective);
     variables.put("buildInfo", buildInfoDirective);
     variables.put("fetchHtml", fetchHtmlDirective);
-    config.setFreemarkerVariables(variables);
+    config.setFreemarkerVariables(variables.build());
     return config;
   }
 
@@ -261,6 +298,12 @@ public class SpringConfiguration {
   @Bean
   public BuildInfoService buildInfoService() {
     return new BuildInfoServiceImpl();
+  }
+
+  @Bean
+  public GitInfo gitInfo(Environment environment) {
+    GitInfo gitInfo = new GitInfo(environment);
+    return gitInfo;
   }
 
 }

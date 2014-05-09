@@ -111,7 +111,7 @@ public class SearchController extends WombatController {
     }
   }
 
-  private static final CharMatcher URL_DELIMITERS = CharMatcher.anyOf("!#$&'()*+,/:;=?@[]");
+  private static final CharMatcher URL_DELIMITERS = CharMatcher.anyOf("!#$%&'()*+,/:;=?@[]");
 
   /**
    * Replace delimiter characters with hex escapes, as required in a URL parameter value.

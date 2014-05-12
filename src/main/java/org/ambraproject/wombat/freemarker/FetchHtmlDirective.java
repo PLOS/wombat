@@ -7,11 +7,9 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.service.remote.LeopardService;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.util.Map;
 
 public class FetchHtmlDirective implements TemplateDirectiveModel {
@@ -42,9 +40,8 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
       throw new TemplateModelException("path parameter required");
     }
 
-    try (Reader reader = leopardService.readHtml(pathObj.toString())) {
-      IOUtils.copy(reader, env.getOut());
-    }
+    String html = leopardService.readHtml(pathObj.toString());
+    env.getOut().write(html);
   }
 
 }

@@ -6,11 +6,11 @@ import org.ambraproject.wombat.util.PathUtil;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Iterator;
 
-public class PathTokenScheme implements SiteRequestScheme {
+class PathTokenPredicate implements SiteRequestPredicate {
 
   private final String token;
 
-  public PathTokenScheme(String token) {
+  PathTokenPredicate(String token) {
     Preconditions.checkArgument(!token.isEmpty());
     this.token = token;
   }
@@ -22,16 +22,8 @@ public class PathTokenScheme implements SiteRequestScheme {
   }
 
   @Override
-  public String buildLink(HttpServletRequest request, String path) {
-    if (path.startsWith("/")) {
-      path = path.substring(1);
-    }
-    return PathUtil.JOINER.join(request.getContextPath(), token, path);
-  }
-
-  @Override
   public String toString() {
-    return "PathTokenScheme{" +
+    return "PathTokenPredicate{" +
         "token='" + token + '\'' +
         '}';
   }
@@ -40,7 +32,7 @@ public class PathTokenScheme implements SiteRequestScheme {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    return token.equals(((PathTokenScheme) o).token);
+    return token.equals(((PathTokenPredicate) o).token);
   }
 
   @Override

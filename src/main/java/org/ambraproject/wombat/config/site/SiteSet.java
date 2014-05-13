@@ -3,7 +3,7 @@ package org.ambraproject.wombat.config.site;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import org.ambraproject.wombat.config.site.url.PathTokenScheme;
+import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 
@@ -30,7 +30,8 @@ public class SiteSet {
     for (Map.Entry<String, ? extends Theme> entry : themesForSites.entrySet()) {
       String key = entry.getKey();
       Theme theme = entry.getValue();
-      Site site = new Site(key, theme, new PathTokenScheme(key));
+      SiteRequestScheme requestScheme = SiteRequestScheme.builder().setPathToken(key).build();
+      Site site = new Site(key, theme, requestScheme);
       sites.add(site);
     }
     return new SiteSet(sites);

@@ -75,6 +75,8 @@ public interface RuntimeConfiguration {
    */
   URL getSolrServer();
 
+  URL getLeopardServer();
+
   /**
    * Parse the user-defined themes.
    *

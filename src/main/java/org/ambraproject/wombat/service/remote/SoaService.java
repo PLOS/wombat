@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.service.remote;
 
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -20,9 +20,9 @@ public interface SoaService {
    *
    * @param address the path to which to send the REST request
    * @return a stream to the response
-   * @throws IOException             if there is an error connecting to the server
-   * @throws NullPointerException    if the address is null
-   * @throws EntityNotFoundException if the object at the address does not exist
+   * @throws IOException                                             if there is an error connecting to the server
+   * @throws NullPointerException                                    if the address is null
+   * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   public abstract InputStream requestStream(String address) throws IOException;
 
@@ -34,15 +34,11 @@ public interface SoaService {
    * @param responseClass the object type into which to serialize the JSON response
    * @param <T>           the type of {@code responseClass}
    * @return the response, serialized from JSON into an object
-   * @throws IOException             if there is an error connecting to the server
-   * @throws NullPointerException    if either argument is null
-   * @throws EntityNotFoundException if the object at the address does not exist
+   * @throws IOException                                             if there is an error connecting to the server
+   * @throws NullPointerException                                    if either argument is null
+   * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   public abstract <T> T requestObject(String address, Class<T> responseClass) throws IOException;
-
-  public static interface CacheCallback<T> {
-    public abstract T call(InputStream stream) throws IOException;
-  }
 
   /**
    * Get a stream either through a REST request or from the cache. If there is a cached value, and the REST service does
@@ -57,7 +53,7 @@ public interface SoaService {
    * @return the value from the service or cache
    * @throws IOException
    */
-  public abstract <T> T requestCachedStream(String cacheKey, String address, CacheCallback<? extends T> callback) throws IOException;
+  public abstract <T> T requestCachedStream(String cacheKey, String address, CacheDeserializer<InputStream, T> callback) throws IOException;
 
   /**
    * Serialize an object either through a REST request or from the cache. If there is a cached value, and the REST

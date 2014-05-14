@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,7 +28,7 @@ public class StoredHomepageService implements FetchHtmlService {
    * Applies transforms that are particular to the "Lemur" API for homepages.
    */
   @Override
-  public Reader readHtml(String key) throws IOException {
+  public Reader readHtml(SitePageContext sitePageContext, String key) throws IOException {
     // TODO: Cache
 
     Document document;
@@ -40,7 +41,7 @@ public class StoredHomepageService implements FetchHtmlService {
     }
 
     for (AttributeTransformation transformation : AttributeTransformation.values()) {
-      transformation.apply(document);
+      transformation.apply(sitePageContext, document);
     }
 
     // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
@@ -50,17 +51,17 @@ public class StoredHomepageService implements FetchHtmlService {
   }
 
   private static enum AttributeTransformation {
-    IMAGE("img", "data-hash", "src") {
+    IMAGE("img", "data-lemur-key", "src") {
       @Override
-      protected String transformAttribute(String value) {
-        return "indirect/" + value; // Placeholder. TODO: Actual implementation
+      protected String transformAttribute(SitePageContext sitePageContext, String value) {
+        return sitePageContext.buildLink("indirect/" + value); // TODO: Create "indirect" controller
       }
     },
 
-    ARTICLE("a", "data-doi", "href") {
+    ARTICLE("a", "data-lemur-doi", "href") {
       @Override
-      protected String transformAttribute(String value) {
-        return "article?id=" + value; // Placeholder. TODO: Actual implementation
+      protected String transformAttribute(SitePageContext sitePageContext, String value) {
+        return sitePageContext.buildLink("article?id=" + value);
       }
     };
 
@@ -71,10 +72,11 @@ public class StoredHomepageService implements FetchHtmlService {
     /**
      * Transform the source attribute value into the target attribute value.
      *
-     * @param value the source attribute value
+     * @param sitePageContext the context of the HTML page
+     * @param value           the source attribute value
      * @return the target attribute value
      */
-    protected abstract String transformAttribute(String value);
+    protected abstract String transformAttribute(SitePageContext sitePageContext, String value);
 
     private AttributeTransformation(String tagName, String sourceAttributeKey, String targetAttributeKey) {
       this.tagName = tagName;
@@ -88,11 +90,11 @@ public class StoredHomepageService implements FetchHtmlService {
      *
      * @param document the document to modify in place
      */
-    public void apply(Document document) {
+    public void apply(SitePageContext sitePageContext, Document document) {
       for (Element element : document.getElementsByAttribute(sourceAttributeKey)) {
         if (element.tagName().equals(tagName)) {
           String oldValue = element.attr(sourceAttributeKey);
-          String newValue = transformAttribute(oldValue);
+          String newValue = transformAttribute(sitePageContext, oldValue);
 
           element.removeAttr(sourceAttributeKey);
           element.attr(targetAttributeKey, newValue);

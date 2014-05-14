@@ -6,6 +6,7 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
+import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.service.remote.FetchHtmlService;
 import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.apache.commons.io.IOUtils;
@@ -17,6 +18,8 @@ import java.util.Map;
 
 public class FetchHtmlDirective implements TemplateDirectiveModel {
 
+  @Autowired
+  private SiteResolver siteResolver;
   @Autowired
   private StoredHomepageService storedHomepageService;
 
@@ -48,7 +51,8 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
       throw new TemplateModelException("path parameter required");
     }
 
-    try (Reader html = service.readHtml(pathObj.toString())) {
+    SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
+    try (Reader html = service.readHtml(sitePageContext, pathObj.toString())) {
       IOUtils.copy(html, env.getOut());
     }
   }

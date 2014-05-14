@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
+import org.ambraproject.wombat.freemarker.SitePageContext;
+
 import java.io.IOException;
 import java.io.Reader;
 
@@ -12,10 +14,11 @@ public interface FetchHtmlService {
    * body) and one service to fetch it from. Implementing classes may apply transformations to the raw HTML that it
    * receives from a service.
    *
-   * @param key a key identifying the HTML to fetch
+   * @param sitePageContext the site of the context into which the HTML will be inserted
+   * @param key  a key identifying the HTML to fetch
    * @return an HTML block
    * @throws IOException
    */
-  public abstract Reader readHtml(String key) throws IOException;
+  public abstract Reader readHtml(SitePageContext sitePageContext, String key) throws IOException;
 
 }

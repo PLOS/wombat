@@ -10,7 +10,7 @@
 
 <#include "../common/header/header.ftl" />
 
-<@fetchHtml path="home.html" />
+<@fetchHtml type="homepage" path="home.html" />
 
 <#include "../common/footer/footer.ftl" />
 

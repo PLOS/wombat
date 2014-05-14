@@ -58,7 +58,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
     // Fields are immutable by convention. They should be modified only during deserialization.
     private String server;
     private String solrServer;
-    private String leopardServer;
     private String memcachedHost;
     private Integer memcachedPort;
     private Map<String, ?> httpConnectionPool;
@@ -74,10 +73,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
 
     public void setSolrServer(String solrServer) {
       this.solrServer = solrServer;
-    }
-
-    public void setLeopardServer(String leopardServer) {
-      this.leopardServer = leopardServer;
     }
 
     public void setMemcachedHost(String memcachedHost) {
@@ -209,11 +204,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
   @Override
   public URL getSolrServer() {
     return buildUrl(uf.solrServer, "http://localhost:8983/solr/select/");
-  }
-
-  @Override
-  public URL getLeopardServer() {
-    return buildUrl(uf.leopardServer, null);
   }
 
   private static URL buildUrl(String address, String defaultValue) {

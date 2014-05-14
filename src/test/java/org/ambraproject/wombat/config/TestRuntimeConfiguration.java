@@ -94,11 +94,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
     return null;
   }
 
-  @Override
-  public URL getLeopardServer() {
-    return null;
-  }
-
   /**
    * {@inheritDoc}
    */

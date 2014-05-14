@@ -55,8 +55,7 @@ import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.LeopardService;
-import org.ambraproject.wombat.service.remote.LeopardServiceImpl;
+import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.ambraproject.wombat.service.remote.ReaderService;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SoaService;
@@ -247,8 +246,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public LeopardService leopardService() {
-    return new LeopardServiceImpl();
+  public StoredHomepageService storedHomepageService() {
+    return new StoredHomepageService();
   }
 
   @Bean

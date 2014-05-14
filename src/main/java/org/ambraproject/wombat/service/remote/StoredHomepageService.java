@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -10,25 +9,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.net.URI;
+import java.io.StringReader;
 
-public class LeopardServiceImpl implements LeopardService {
+/**
+ * Retrieves stored blocks of homepage content from a remote service.
+ */
+public class StoredHomepageService implements FetchHtmlService {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
   @Autowired
-  private CachedRemoteService<Reader> cachedRemoteReader;
+  private SoaService soaService;
 
+  /**
+   * {@inheritDoc}
+   * <p/>
+   * Applies transforms that are particular to the "Lemur" API for homepages.
+   */
   @Override
-  public String readHtml(String path) throws IOException {
+  public Reader readHtml(String key) throws IOException {
     // TODO: Cache
-    URI address = UriUtil.concatenate(runtimeConfiguration.getLeopardServer(), path);
 
     Document document;
-    try (Reader htmlFromLeopardService = cachedRemoteReader.request(address)) {
+    String address = String.format("repo/%s/latest", key);
+    try (Reader html = soaService.requestReader(address)) {
       // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
       // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.
-      String htmlString = IOUtils.toString(htmlFromLeopardService);
+      String htmlString = IOUtils.toString(html);
       document = Jsoup.parse(htmlString);
     }
 
@@ -38,7 +45,8 @@ public class LeopardServiceImpl implements LeopardService {
 
     // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
     // We want to return only the transformed snippet, so retrieve it from the body tag.
-    return document.getElementsByTag("body").html();
+    String transformedHtml = document.getElementsByTag("body").html();
+    return new StringReader(transformedHtml);
   }
 
   private static enum AttributeTransformation {

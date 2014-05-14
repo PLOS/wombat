@@ -5,6 +5,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 
 /**
  * A service for retrieving data from the SOA's RESTful server.
@@ -25,6 +26,8 @@ public interface SoaService {
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   public abstract InputStream requestStream(String address) throws IOException;
+
+  public abstract Reader requestReader(String address) throws IOException;
 
   /**
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
@@ -54,6 +57,8 @@ public interface SoaService {
    * @throws IOException
    */
   public abstract <T> T requestCachedStream(String cacheKey, String address, CacheDeserializer<InputStream, T> callback) throws IOException;
+
+  public abstract <T> T requestCachedReader(String cacheKey, String address, CacheDeserializer<Reader, T> callback) throws IOException;
 
   /**
    * Serialize an object either through a REST request or from the cache. If there is a cached value, and the REST

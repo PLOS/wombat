@@ -28,6 +28,11 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
+  public Reader requestReader(String address) throws IOException {
+    return cachedRemoteReader.request(buildUri(address));
+  }
+
+  @Override
   public <T> T requestObject(String address, Class<T> responseClass) throws IOException {
     // Just try to cache everything. We may want to narrow this in the future.
     return requestCachedObject("obj:" + address, address, responseClass);
@@ -36,6 +41,11 @@ public class SoaServiceImpl implements SoaService {
   @Override
   public <T> T requestCachedStream(String cacheKey, String address, CacheDeserializer<InputStream, T> callback) throws IOException {
     return cachedRemoteStreamer.requestCached(cacheKey, buildUri(address), callback);
+  }
+
+  @Override
+  public <T> T requestCachedReader(String cacheKey, String address, CacheDeserializer<Reader, T> callback) throws IOException {
+    return cachedRemoteReader.requestCached(cacheKey, buildUri(address), callback);
   }
 
   @Override

@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:security="http://www.springframework.org/schema/security"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-  <!-- Root Context: defines shared resources visible to all other web components -->
 
-</beans>
+    <!-- Root Context: defines shared resources visible to all other web components -->
+
+  <beans:bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
+    <beans:property name="service" value="http://localhost:8234/wombat/j_spring_cas_security_check"/>
+    <beans:property name="sendRenew" value="false"/>
+  </beans:bean>
+
+  <security:http entry-point-ref="casEntryPoint" use-expressions="true">
+    <security:intercept-url pattern="/**/user/secure/**" access="isFullyAuthenticated()" />
+    <security:custom-filter position="CAS_FILTER" ref="casFilter" />
+  </security:http>
+
+  <beans:bean id="casFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
+    <beans:property name="authenticationManager" ref="authenticationManager"/>
+  </beans:bean>
+
+  <beans:bean id="casEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
+    <beans:property name="loginUrl" value="https://register.plos.org/cas/login"/>
+    <beans:property name="serviceProperties" ref="serviceProperties"/>
+  </beans:bean>
+
+  <security:authentication-manager alias="authenticationManager">
+    <security:authentication-provider ref="casAuthenticationProvider" />
+  </security:authentication-manager>
+
+  <beans:bean id="casAuthenticationProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
+
+    <beans:property name="authenticationUserDetailsService">
+      <beans:bean class="org.ambraproject.wombat.service.cas.CasUserDetailsService" />
+    </beans:property>
+
+    <beans:property name="serviceProperties" ref="serviceProperties" />
+
+    <beans:property name="ticketValidator">
+      <beans:bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
+        <beans:constructor-arg index="0" value="https://register.plos.org/cas" />
+      </beans:bean>
+    </beans:property>
+
+    <beans:property name="key" value="casAuthProviderKey" />
+  </beans:bean>
+
+</beans:beans>

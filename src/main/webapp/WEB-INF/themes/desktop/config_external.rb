@@ -2,7 +2,7 @@
 
 # Set this to the root of your project when deployed:
 http_path = "/wombat/DesktopPlosBiology/"
-css_dir = "resource/css/export"
+css_dir = "resource/css/external"
 sass_dir = "sass"
 images_dir = "resource/img"
 javascripts_dir = "resource/js"

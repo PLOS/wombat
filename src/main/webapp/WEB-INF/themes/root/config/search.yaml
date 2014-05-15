@@ -1,0 +1,5 @@
+legacyPattern: null
+# If not null, instead of allowing searches on this site, redirect to an external URL as the search result.
+# To build the URL, substitute the query and site's journal key into the markers "{query}" and "{journalKey}",
+# then append to the "urlPrefix" value defined in legacy.yaml.
+# See org.ambraproject.wombat.controller.SearchController.redirectToLegacySearch

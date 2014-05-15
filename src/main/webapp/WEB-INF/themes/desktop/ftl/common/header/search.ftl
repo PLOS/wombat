@@ -6,11 +6,12 @@
       <label for="search">Search</label>
 
       <div class="wrap row collapse">
-         <div class="small-8 columns">
-        <input id="search" type="text" name="query" placeholder="Search">
-         </div>
+        <div class="small-8 columns">
+          <input id="search" type="text" name="q" placeholder="Search">
+        </div>
         <div class="small-4 columns">
-        <input type="image" alt="SEARCH" class="postfix" src="<@siteLink path="resource/img/icon.search.gif" />">    </div>
+          <input type="image" alt="SEARCH" class="postfix" src="<@siteLink path="resource/img/icon.search.gif" />">
+        </div>
       </div>
     </fieldset>
   </form>

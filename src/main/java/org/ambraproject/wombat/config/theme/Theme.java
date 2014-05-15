@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.config;
+package org.ambraproject.wombat.config.theme;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;

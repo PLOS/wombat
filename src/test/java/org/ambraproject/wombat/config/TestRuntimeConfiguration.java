@@ -12,6 +12,8 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
 import java.util.Collection;

@@ -11,6 +11,8 @@
 
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.config.site.Site;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
@@ -66,12 +68,12 @@ public interface AssetService {
    *
    * @param assetType specifies whether the asset is javascript or CSS
    * @param filenames list of servlet paths that correspond to asset files to compile
-   * @param site      specifies the journal/site
+   * @param site      the journal/site
    * @param cacheKey  key that will be used to cache the results
    * @return servlet path to the single, compiled asset file
    * @throws IOException
    */
-  String getCompiledAssetLink(AssetType assetType, List<String> filenames, String site, String cacheKey)
+  String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site, String cacheKey)
       throws IOException;
 
   /**

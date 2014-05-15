@@ -19,8 +19,11 @@ import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.controller.StaticResourceController;
 import org.ambraproject.wombat.service.AssetService;
+import org.ambraproject.wombat.util.PathUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,9 +39,10 @@ public abstract class RenderAssetsDirective {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
-
   @Autowired
   private AssetService assetService;
+  @Autowired
+  private SiteResolver siteResolver;
 
   /**
    * Renders HTML that includes a compiled asset.
@@ -56,25 +60,11 @@ public abstract class RenderAssetsDirective {
       HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
       List<String> assetPaths = (List<String>) request.getAttribute(requestVariableName);
       if (assetPaths != null && !assetPaths.isEmpty()) {
-
-        // Links to asset files are relative, to account for the different sites/journals.
-        // However, AssetService needs more absolute paths (since it deals with the Themes
-        // directly).  The following logic is needed to determine if we're in a subdirectory
-        // of the site/journal dir, and the asset paths begin with "../".
-        GetPathDepthsResult result = getPathDepths(assetPaths);
-        assetPaths = result.depthlessPaths;
-        StringBuilder compiledPath = new StringBuilder();
-        compiledPath.append(getDepthPrefix(result.depth));
-
-        // This is a bit of a hack to get relative links from asset files to work.  We replicate
-        // the number of levels in the uncompiled paths.  For example, if the uncompiled link
-        // points at "resource/css/foo.css", the compiled one will be "resource/compiled/asset_3947213.css"
-        // or something.  There's corresponding code in org.ambraproject.wombat.controller.StaticResourceController
-        // as well.
-        compiledPath.append(StaticResourceController.RESOURCE_NAMESPACE).append('/');
-        compiledPath.append(assetService.getCompiledAssetLink(assetType, assetPaths, getSite(request),
-            request.getServletPath()));
-        environment.getOut().write(getHtml(compiledPath.toString()));
+        Site site = siteResolver.getSite(environment);
+        String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site, request.getServletPath());
+        String assetAddress = site.getRequestScheme().buildLink(request,
+            PathUtil.JOINER.join(StaticResourceController.RESOURCE_NAMESPACE, assetLink));
+        environment.getOut().write(getHtml(assetAddress));
       }
 
     }  // else nothing to do, since in dev mode we already rendered the links.
@@ -88,12 +78,6 @@ public abstract class RenderAssetsDirective {
    * @return HTMl snippet linking to the asset file
    */
   protected abstract String getHtml(String assetPath);
-
-  // We normally do this in Spring Controllers with @PathVariable annotations,
-  // but we have to do it "by hand" since we're in a TemplateDirectiveModel.
-  private String getSite(HttpServletRequest request) {
-    return request.getServletPath().split("/")[1];
-  }
 
   /**
    * Simple class that wraps the multiple values returned by getPathDepths.

@@ -13,18 +13,23 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;
-import org.ambraproject.wombat.config.Site;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SolrSearchService;
+import org.apache.commons.codec.binary.Hex;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Map;
 
 /**
@@ -32,20 +37,26 @@ import java.util.Map;
  */
 @Controller
 public class SearchController extends WombatController {
+  private static final Logger log = LoggerFactory.getLogger(SearchController.class);
 
   private static final int RESULTS_PER_PAGE = 15;
 
   @Autowired
   private SearchService searchService;
 
-  @RequestMapping("/{site}/search")
-  public String search(Model model, @PathVariable("site") String siteParam,
+  @RequestMapping(value = {"/search", "/{site}/search"})
+  public String search(Model model, @SiteParam Site site,
                        @RequestParam(value = "q", required = false) String query,
                        @RequestParam(value = "subject", required = false) String subject,
                        @RequestParam(value = "author", required = false) String author,
                        @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
-                       @RequestParam(value = "dateRange", required = false) String dateRangeParam) throws IOException {
+                       @RequestParam(value = "dateRange", required = false) String dateRangeParam,
+                       @RequestParam(value = "legacy", required = false) String legacy)
+      throws IOException {
+    if (booleanParameter(legacy)) {
+      return "redirect:" + redirectToLegacySearch(site, query);
+    }
     int start = 0;
     if (page != null) {
       start = (page - 1) * RESULTS_PER_PAGE;
@@ -70,7 +81,6 @@ public class SearchController extends WombatController {
     model.addAttribute("selectedSortOrder", sortOrder);
     model.addAttribute("selectedDateRange", dateRange);
 
-    Site site = siteSet.getSite(siteParam);
     Map<?, ?> searchResults;
     if (!Strings.isNullOrEmpty(subject)) {
       searchResults = searchService.subjectSearch(subject, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);
@@ -82,4 +92,47 @@ public class SearchController extends WombatController {
     model.addAttribute("searchResults", searchResults);
     return site.getKey() + "/ftl/search/searchResults";
   }
+
+  private static URL redirectToLegacySearch(Site site, String query) throws IOException {
+    String legacySearchPattern = (String) site.getTheme().getConfigMap("legacySearch").get("pattern");
+    if (legacySearchPattern == null) {
+      log.warn("Received legacy search request in {}, which does not provide a legacy search pattern", site);
+      throw new NotFoundException();
+    }
+
+    String redirectUrl = legacySearchPattern;
+    redirectUrl = redirectUrl.replace("{query}", escapeParameter(query));
+    redirectUrl = redirectUrl.replace("{journalKey}", site.getJournalKey());
+
+    try {
+      return new URL(redirectUrl);
+    } catch (MalformedURLException e) {
+      throw new RuntimeException("Could not form URL from legacy search pattern for " + site, e);
+    }
+  }
+
+  private static final CharMatcher URL_DELIMITERS = CharMatcher.anyOf("!#$%&'()*+,/:;=?@[]");
+
+  /**
+   * Replace delimiter characters with hex escapes, as required in a URL parameter value.
+   *
+   * @param parameterValue the parameter value
+   * @return the same value with delimiters escaped
+   */
+  private static String escapeParameter(String parameterValue) {
+    if (parameterValue.isEmpty()) return "";
+    StringBuilder escaped = new StringBuilder(parameterValue.length() + 4);
+    for (int i = 0; i < parameterValue.length(); i++) {
+      char c = parameterValue.charAt(i);
+      if (URL_DELIMITERS.matches(c)) {
+        byte[] charAsByte = {(byte) c}; // Downcasting is safe because all chars in URL_DELIMITERS are < 0x80
+        char[] charAsHex = Hex.encodeHex(charAsByte, false);
+        escaped.append('%').append(charAsHex);
+      } else {
+        escaped.append(c);
+      }
+    }
+    return escaped.toString();
+  }
+
 }

@@ -7,8 +7,9 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.SiteSet;
-import org.ambraproject.wombat.config.Theme;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
@@ -103,7 +104,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @return the transformer
    * @throws IOException
    */
-  private Transformer getTransformer(String site) throws IOException {
+  private Transformer getTransformer(Site site) throws IOException {
     /*
      * Use a simple, hashtable-based cache. This assumes that the number of sites (and the size of the transfomers)
      * will never be so large that evicting a cached transformer makes sense.
@@ -111,10 +112,11 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
      * This prevents the application from picking up any dynamic changes to the transform in a theme (such as an *.xsl
      * file on disk being overwritten at runtime).
      */
-    Transformer transformer = cache.get(site);
+    String siteKey = site.getKey();
+    Transformer transformer = cache.get(siteKey);
     if (transformer == null) {
       transformer = buildTransformer(site);
-      cache.put(site, transformer);
+      cache.put(siteKey, transformer);
     }
     return transformer;
   }
@@ -126,11 +128,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @return the transformer
    * @throws IOException
    */
-  private Transformer buildTransformer(String site) throws IOException {
-    Theme theme = siteSet.getSite(site).getTheme();
-    if (theme == null) {
-      throw new UnmatchedSiteException(site);
-    }
+  private Transformer buildTransformer(Site site) throws IOException {
+    Theme theme = site.getTheme();
     log.info("Building transformer for: {}", site);
     TransformerFactory factory = newTransformerFactory();
 
@@ -145,13 +144,13 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
 
   @Override
-  public void transform(String siteKey, InputStream xml, OutputStream html)
+  public void transform(Site site, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(siteKey);
+    Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
 
-    Transformer transformer = getTransformer(siteKey);
+    Transformer transformer = getTransformer(site);
     log.debug("Starting XML transformation");
     SAXParserFactory spf = SAXParserFactory.newInstance();
     XMLReader xmlr;
@@ -191,9 +190,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public void transformExcerpt(String siteKey, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
+  public void transformExcerpt(Site site, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(siteKey);
+    Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(xmlExcerpt);
     Preconditions.checkNotNull(html);
     Preconditions.checkArgument(!Strings.isNullOrEmpty(enclosingTag));
@@ -205,16 +204,16 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     List<InputStream> streams = ImmutableList.of(prefix, xmlExcerpt, suffix);
     InputStream concatenated = new SequenceInputStream(Iterators.asEnumeration(streams.iterator()));
 
-    transform(siteKey, concatenated, html);
+    transform(site, concatenated, html);
   }
 
   @Override
-  public String transformExcerpt(String siteKey, String xmlExcerpt, String enclosingTag) throws TransformerException {
+  public String transformExcerpt(Site site, String xmlExcerpt, String enclosingTag) throws TransformerException {
     StringWriter html = new StringWriter();
     OutputStream outputStream = new WriterOutputStream(html, charset);
     InputStream inputStream = IOUtils.toInputStream(xmlExcerpt, charset);
     try {
-      transformExcerpt(siteKey, inputStream, outputStream, enclosingTag);
+      transformExcerpt(site, inputStream, outputStream, enclosingTag);
       outputStream.close(); // to flush (StringWriter doesn't require a finally block)
     } catch (IOException e) {
       throw new RuntimeException(e); // unexpected, since both streams are in memory

@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.site.Site;
 

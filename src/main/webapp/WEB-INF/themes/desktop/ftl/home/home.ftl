@@ -11,7 +11,7 @@
 <#include "blocks/stub-data.ftl" />
 <#include "../common/header/header.ftl" />
 
-<#include "cmsContent.ftl"/>
+<#include "body.ftl" />
 
 <div class="spotlight"></div>
 

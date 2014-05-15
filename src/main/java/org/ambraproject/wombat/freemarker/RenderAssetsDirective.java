@@ -60,7 +60,7 @@ public abstract class RenderAssetsDirective {
       HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
       List<String> assetPaths = (List<String>) request.getAttribute(requestVariableName);
       if (assetPaths != null && !assetPaths.isEmpty()) {
-        Site site = siteResolver.getSite(environment);
+        Site site = new SitePageContext(siteResolver, environment).getSite();
         String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site, request.getServletPath());
         String assetAddress = site.getRequestScheme().buildLink(request,
             PathUtil.JOINER.join(StaticResourceController.RESOURCE_NAMESPACE, assetLink));

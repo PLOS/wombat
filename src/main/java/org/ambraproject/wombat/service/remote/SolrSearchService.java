@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
+import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -36,7 +37,13 @@ import java.util.TimeZone;
 /**
  * Implementation of SearchService that queries a solr backend.
  */
-public class SolrSearchService extends JsonService implements SearchService {
+public class SolrSearchService implements SearchService {
+
+  @Autowired
+  private JsonService jsonService;
+  @Autowired
+  private CachedRemoteService<Reader> cachedRemoteReader;
+
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -237,7 +244,7 @@ public class SolrSearchService extends JsonService implements SearchService {
     } catch (URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }
-    Map<?, ?> rawResults = requestObject(uri, Map.class);
+    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
     return (Map<?, ?>) rawResults.get("response");
   }
 }

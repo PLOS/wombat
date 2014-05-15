@@ -1,3 +1,1 @@
 hasTaxonomyBrowser: false
-# This value should be synced with the "hasTaxonomyBrowser" FreeMarker value assigned in ../ftl/hasTaxonomyBrowser.ftl.
-# This is unfortunately necessary because the controller can't see that file and the templating engine can't see here.

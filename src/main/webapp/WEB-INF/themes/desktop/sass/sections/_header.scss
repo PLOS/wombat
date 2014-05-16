@@ -2,11 +2,6 @@
  *       These are the header styles
  */
 
- .nav-top{
-   @include inline-list;
-   @extend .float-right;
-   li{}
- }
 
 .head-top{
  @extend .bg-dark;
@@ -20,10 +15,11 @@
     background: image-url('text.vert.ad.gif') no-repeat left 5px; }
 }
 
-.head-main{
-  $width-logo: 4;
-  $width-search: 3;
-  $width-nav: $block-grid-elements - ($width-logo + $width-search);
+$width-logo: 4;
+$width-search: 3;
+$width-nav: $block-grid-elements - ($width-logo + $width-search);
+#pagehdr-wrap{
+
    .logo{ @include grid-column($width-logo); }
    .head-search{
      @include grid-column($width-search);
@@ -51,9 +47,34 @@
        }
      }
    }
-  .head-nav{
-    @include grid-column($width-nav);
+
+
+}
+
+.head-nav{
+  @include grid-column($width-nav);
+  ul  {    @extend .inline-list;}
+  li {
+    @extend h2;
+    .submenu{display: none;}
+    border-left: 1px solid $clr-separator;
+    margin:0px 10px;
+    &:first-child{}
   }
 }
+.nav{
+  @include grid-row();
+}
+.nav-top{
+  @extend .inline-list;
+  @extend .right;
+  @include grid-column($columns:4, $float:right);
+  font-weight: bold;
+  li{}
+
+  li.highlighted{@include rounded-pill(); margin-top: -5px;
+    a{color: white;}
+  }
+ }
 
 

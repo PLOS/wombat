@@ -32,7 +32,7 @@ public class StoredHomepageService implements FetchHtmlService {
     // TODO: Cache
 
     Document document;
-    String address = String.format("repo/%s/latest", key);
+    String address = String.format("repo/homepages/%s/latest", key);
     try (Reader html = soaService.requestReader(address)) {
       // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
       // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.

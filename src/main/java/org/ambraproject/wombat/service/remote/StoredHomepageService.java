@@ -54,7 +54,8 @@ public class StoredHomepageService implements FetchHtmlService {
     IMAGE("img", "data-lemur-key", "src") {
       @Override
       protected String transformAttribute(SitePageContext sitePageContext, String value) {
-        return sitePageContext.buildLink("indirect/" + value); // TODO: Create "indirect" controller
+        String path = String.format("indirect/homepages/%s/latest", value);
+        return sitePageContext.buildLink(path);
       }
     },
 

@@ -6933,7 +6933,14 @@ main,
 /*
  *    Home page blocks
  */
-/* line 15, ../../sass/pages/_home.scss */
+/* line 20, ../../sass/pages/_home.scss */
+.row.one .block, .row.two .block {
+  margin-right: 2%; }
+  /* line 22, ../../sass/pages/_home.scss */
+  .row.one .block:last-child, .row.two .block:last-child {
+    margin-right: 0; }
+
+/* line 27, ../../sass/pages/_home.scss */
 .row {
   width: 100%;
   margin-left: auto;
@@ -6950,20 +6957,20 @@ main,
   .row:after {
     clear: both; }
 
-/* line 20, ../../sass/pages/_home.scss */
+/* line 32, ../../sass/pages/_home.scss */
 .hero {
   position: relative;
   color: white; }
-  /* line 24, ../../sass/pages/_home.scss */
+  /* line 36, ../../sass/pages/_home.scss */
   .hero a {
     color: white; }
-  /* line 27, ../../sass/pages/_home.scss */
+  /* line 39, ../../sass/pages/_home.scss */
   .hero img {
     width: 960px; }
-  /* line 31, ../../sass/pages/_home.scss */
+  /* line 43, ../../sass/pages/_home.scss */
   .hero.dark-text, .hero.dark-text a {
     color: #333333; }
-  /* line 35, ../../sass/pages/_home.scss */
+  /* line 47, ../../sass/pages/_home.scss */
   .hero .hero-content {
     position: absolute;
     width: 100%;
@@ -6971,32 +6978,33 @@ main,
     padding: 0.625rem;
     font-size: 1rem; }
 
-/* line 53, ../../sass/pages/_home.scss */
+/* line 65, ../../sass/pages/_home.scss */
 .row > .block.x-small {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
-/* line 56, ../../sass/pages/_home.scss */
+/* line 69, ../../sass/pages/_home.scss */
 .row > .block.small, .row > .block.small-italic, .block .row > .block.date, .block .row > .block.credits {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 33.33333%;
   float: left; }
-/* line 59, ../../sass/pages/_home.scss */
+/* line 72, ../../sass/pages/_home.scss */
 .row > .block.medium {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 50%;
-  float: left; }
-/* line 62, ../../sass/pages/_home.scss */
+  float: left;
+  width: 48%; }
+/* line 76, ../../sass/pages/_home.scss */
 .row > .block.large {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 58.33333%;
   float: left; }
 
-/* line 68, ../../sass/pages/_home.scss */
+/* line 84, ../../sass/pages/_home.scss */
 .block {
   position: relative;
   height: 15.625rem;
@@ -7012,46 +7020,46 @@ main,
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   margin-bottom: 1.25rem; }
-  /* line 72, ../../sass/pages/_home.scss */
+  /* line 89, ../../sass/pages/_home.scss */
   .block .block-image {
     width: 5rem;
     display: block;
     position: absolute;
     left: 0.625rem;
     top: 0.625rem; }
-  /* line 79, ../../sass/pages/_home.scss */
+  /* line 96, ../../sass/pages/_home.scss */
   .block.image .block-content {
     margin-left: 6.25rem; }
-  /* line 86, ../../sass/pages/_home.scss */
+  /* line 103, ../../sass/pages/_home.scss */
   .block .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.875rem;
     margin: 0; }
-  /* line 94, ../../sass/pages/_home.scss */
+  /* line 111, ../../sass/pages/_home.scss */
   .block .category {
     color: #3c63af; }
-  /* line 100, ../../sass/pages/_home.scss */
+  /* line 117, ../../sass/pages/_home.scss */
   .block .title a {
     color: #333333; }
-    /* line 102, ../../sass/pages/_home.scss */
+    /* line 119, ../../sass/pages/_home.scss */
     .block .title a:hover {
       text-decoration: underline; }
-  /* line 112, ../../sass/pages/_home.scss */
+  /* line 129, ../../sass/pages/_home.scss */
   .block .block-content {
     position: relative;
     font-size: 0.8125rem; }
-  /* line 118, ../../sass/pages/_home.scss */
+  /* line 135, ../../sass/pages/_home.scss */
   .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
     font-family: albert-bold; }
 
-/* line 127, ../../sass/pages/_home.scss */
+/* line 144, ../../sass/pages/_home.scss */
 .column.left {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
   width: 66.66667%;
   float: left; }
-  /* line 129, ../../sass/pages/_home.scss */
+  /* line 146, ../../sass/pages/_home.scss */
   .column.left .row-small-blocks {
     display: block;
     padding: 0;
@@ -7089,27 +7097,31 @@ main,
       .column.left .row-small-blocks > li:nth-child(2n) {
         padding-left: 0.625rem;
         padding-right: 0rem; }
-  /* line 133, ../../sass/pages/_home.scss */
+    /* line 150, ../../sass/pages/_home.scss */
+    .column.left .row-small-blocks .block:nth-child(1), .column.left .row-small-blocks .block:nth-child(3) {
+      margin-right: 2%;
+      width: 46%; }
+  /* line 158, ../../sass/pages/_home.scss */
   .column.left .block {
     height: 11.25rem; }
-    /* line 135, ../../sass/pages/_home.scss */
+    /* line 161, ../../sass/pages/_home.scss */
     .column.left .block .block-image {
       height: 10rem;
       overflow: hidden; }
-    /* line 140, ../../sass/pages/_home.scss */
+    /* line 166, ../../sass/pages/_home.scss */
     .column.left .block.small, .column.left .block.small-italic, .column.left .block .block.date, .block .column.left .block.date, .column.left .block .block.credits, .block .column.left .block.credits {
       padding-left: 0.625rem;
       padding-right: 0.625rem;
       width: 50%;
       float: left; }
-/* line 146, ../../sass/pages/_home.scss */
+/* line 172, ../../sass/pages/_home.scss */
 .column.right {
   padding-left: 0;
   padding-right: 0;
   width: 33.33333%;
   float: left; }
 
-/* line 158, ../../sass/pages/_home.scss */
+/* line 184, ../../sass/pages/_home.scss */
 #submission-links,
 #article-list,
 #social-links,
@@ -7134,16 +7146,18 @@ main,
   color: white;
   height: 15.625rem; }
 
-/* line 164, ../../sass/pages/_home.scss */
+/* line 190, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
 
-/* line 169, ../../sass/pages/_home.scss */
+/* line 195, ../../sass/pages/_home.scss */
 #article-list {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 33.33333%;
-  float: left; }
+  float: left;
+  width: 30%;
+  margin-right: 3%; }

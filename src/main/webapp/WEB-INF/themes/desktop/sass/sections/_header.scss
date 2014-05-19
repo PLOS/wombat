@@ -29,12 +29,7 @@ $width-nav: $block-grid-elements - ($width-logo + $width-search);
         $input-include-glowing-effect: false;
         $input-font-size: rem-calc(22);
        legend,label{display: none;}
-//       input::-webkit-input-placeholder,
-//       input::-moz-placeholder,
-//       input:-moz-placeholder,
-//       input:-ms-input-placeholder  {
-//         color: $clr-body-text;
-//       }
+
        input[type="text"] {
          $input-border-radius: 0;
          $input-include-glowing-effect: false;

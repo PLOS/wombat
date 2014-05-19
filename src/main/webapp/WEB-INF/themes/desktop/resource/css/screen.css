@@ -6880,7 +6880,7 @@ main,
   /* line 31, ../../sass/sections/_header.scss */
   #pagehdr-wrap .head-search form legend, #pagehdr-wrap .head-search form label {
     display: none; }
-  /* line 38, ../../sass/sections/_header.scss */
+  /* line 33, ../../sass/sections/_header.scss */
   #pagehdr-wrap .head-search form input[type="text"] {
     background-color: white;
     font-family: inherit;
@@ -6905,7 +6905,7 @@ main,
     /* line 136, ../../sass/vendor/foundation/components/_forms.scss */
     #pagehdr-wrap .head-search form input[type="text"][disabled], fieldset[disabled] #pagehdr-wrap .head-search form input[type="text"] {
       background-color: #dddddd; }
-  /* line 48, ../../sass/sections/_header.scss */
+  /* line 43, ../../sass/sections/_header.scss */
   #pagehdr-wrap .head-search form input[type="image"] {
     width: 45px;
     height: 45px;
@@ -6913,23 +6913,23 @@ main,
     border: 0px none;
     background-color: white; }
 
-/* line 60, ../../sass/sections/_header.scss */
+/* line 55, ../../sass/sections/_header.scss */
 .head-nav {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 50%;
   float: left; }
-  /* line 63, ../../sass/sections/_header.scss */
+  /* line 58, ../../sass/sections/_header.scss */
   .head-nav li {
     border-left: 1px solid #cccccc; }
-    /* line 65, ../../sass/sections/_header.scss */
+    /* line 60, ../../sass/sections/_header.scss */
     .head-nav li .submenu {
       display: none; }
-    /* line 67, ../../sass/sections/_header.scss */
+    /* line 62, ../../sass/sections/_header.scss */
     .head-nav li a {
       padding: 0px 20px; }
 
-/* line 71, ../../sass/sections/_header.scss */
+/* line 66, ../../sass/sections/_header.scss */
 .nav {
   width: 100%;
   margin-left: auto;
@@ -6946,14 +6946,14 @@ main,
   .nav:after {
     clear: both; }
 
-/* line 74, ../../sass/sections/_header.scss */
+/* line 69, ../../sass/sections/_header.scss */
 .nav-top {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 33.33333%;
   float: right;
   font-weight: bold; }
-  /* line 81, ../../sass/sections/_header.scss */
+  /* line 76, ../../sass/sections/_header.scss */
   .nav-top li.highlighted {
     background: #3c63af;
     padding: 10px 20px;
@@ -6964,7 +6964,7 @@ main,
     /* line 19, ../../sass/_components.scss */
     .nav-top li.highlighted:hover {
       background: #333333; }
-    /* line 82, ../../sass/sections/_header.scss */
+    /* line 77, ../../sass/sections/_header.scss */
     .nav-top li.highlighted a {
       color: white; }
 

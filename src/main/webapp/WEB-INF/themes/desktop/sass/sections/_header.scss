@@ -15,12 +15,12 @@
     background: image-url('text.vert.ad.gif') no-repeat left 5px; }
 }
 
-$width-logo: 4;
+$width-logo: 3;
 $width-search: 3;
 $width-nav: $block-grid-elements - ($width-logo + $width-search);
 #pagehdr-wrap{
 
-   .logo{ @include grid-column($width-logo); }
+   .logo{ @include grid-column($width-logo); @include background-image('logo-bio.png'); }
    .head-search{
      @include grid-column($width-search);
      $last-column:true;
@@ -45,6 +45,12 @@ $width-nav: $block-grid-elements - ($width-logo + $width-search);
 
 
        }
+       input[type="image"]{ width: 45px;
+         height: 45px;
+         padding: 12px;
+         border: 0px none;
+         background-color: white;
+       }
      }
    }
 
@@ -58,7 +64,7 @@ $width-nav: $block-grid-elements - ($width-logo + $width-search);
     @extend h2;
     .submenu{display: none;}
     border-left: 1px solid $clr-separator;
-    margin:0px 10px;
+    a{padding:0px 20px;}
     &:first-child{}
   }
 }

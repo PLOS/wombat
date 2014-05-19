@@ -31,6 +31,15 @@ $image-container: ($image-width + $pad-default);
 //home page blocks
 .hero {
   position: relative;
+  img{
+
+    @include single-box-shadow();
+
+  @include border-top-radius();
+  }
+  padding: 0;
+  margin-bottom: 20px;
+  background: transparent;
   // hero colors:
   color: $white;
   a {
@@ -180,8 +189,7 @@ $image-container: ($image-width + $pad-default);
 #spotlight,
 #issue,
 #twitter-feed,
-#blogroll,
-#billboard {
+#blogroll{
   @include blocks();
   @include stub();
   height: $block-height;
@@ -197,4 +205,12 @@ $image-container: ($image-width + $pad-default);
   width: 30%; // for demo
   margin-right: 3%; //for demo
 
+}
+
+#billboard{
+  @include grid-row;
+  @include blocks($grey-dark);
+  h3, h4, a {color: $white !important;}
+  position: relative;
+  a{@include rounded-pill(); position: absolute; width: 80px; height: 36px; right: 20px; top: 10px; }
 }

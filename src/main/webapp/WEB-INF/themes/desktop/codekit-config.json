@@ -262,18 +262,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/global.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/global.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/global.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/screen.scss" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 0,
@@ -415,15 +403,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/resource\/css\/external\/sections\/home.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/css\/external\/sections\/home.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/sass\/vendor\/foundation\/components\/_magellan.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -448,18 +427,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/foundation\/components\/_clearing.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_clearing.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_clearing.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/vendor\/foundation\/foundation.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -469,6 +436,18 @@
       "outputStyle" : 0,
       "shouldRunBless" : 1,
       "outputAbbreviatedPath" : "\/resource\/css\/foundation.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/vendor\/foundation\/components\/_clearing.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_clearing.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_clearing.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -553,24 +532,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/resource\/css\/sections\/home.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/css\/sections\/home.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/resource\/css\/global.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/css\/global.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/sass\/vendor\/susy\/susy\/output\/_float.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -582,6 +543,15 @@
       "outputAbbreviatedPath" : "\/resource\/css\/_float.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/resource\/css\/sections\/home.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/resource\/css\/sections\/home.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/sass\/vendor\/foundation\/components\/_panels.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -619,14 +589,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/resource\/css\/external\/global.css" : {
+    "\/sass\/vendor\/susy\/susy\/math\/su\/_maps.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/css\/external\/global.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/math\/su\/_maps.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_maps.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/vendor\/susy\/susy\/language\/susyone\/_background.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -649,18 +622,6 @@
       "outputStyle" : 0,
       "shouldRunBless" : 1,
       "outputAbbreviatedPath" : "\/resource\/css\/_buttons.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/sass\/vendor\/susy\/susy\/math\/su\/_maps.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/math\/su\/_maps.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_maps.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -826,6 +787,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/resource\/img\/logo-bio.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/resource\/img\/logo-bio.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/resource\/img\/logo-bio.png",
+      "initialSize" : 5355,
+      "fileType" : 8192
+    },
     "\/sass\/vendor\/foundation\/components\/_button-groups.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -862,6 +834,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/resource\/img\/stub-editorialPhoto.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/resource\/img\/stub-editorialPhoto.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/resource\/img\/stub-editorialPhoto.jpg",
+      "initialSize" : 5080,
+      "fileType" : 4096
+    },
     "\/sass\/vendor\/foundation\/components\/_pricing-tables.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -873,17 +856,6 @@
       "outputAbbreviatedPath" : "\/resource\/css\/_pricing-tables.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/resource\/img\/stub-editorialPhoto.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/img\/stub-editorialPhoto.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/resource\/img\/stub-editorialPhoto.jpg",
-      "initialSize" : 5080,
-      "fileType" : 4096
     },
     "\/sass\/vendor\/foundation\/components\/_top-bar.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -1367,18 +1339,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/susy\/susy\/language\/susyone\/_isolation.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susyone\/_isolation.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_isolation.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/vendor\/susy\/susy\/math\/su\/_validation.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -1388,6 +1348,18 @@
       "outputStyle" : 0,
       "shouldRunBless" : 1,
       "outputAbbreviatedPath" : "\/resource\/css\/_validation.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/vendor\/susy\/susy\/language\/susyone\/_isolation.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susyone\/_isolation.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_isolation.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -1438,15 +1410,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/resource\/css\/ie.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/css\/ie.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/sass\/vendor\/susy\/_susy.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1470,6 +1433,15 @@
       "outputAbbreviatedPath" : "\/resource\/css\/_alert-boxes.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/resource\/css\/ie.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/resource\/css\/ie.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/sass\/vendor\/foundation\/components\/_accordion.scss" : {
       "ignoreWasSetByUser" : 0,

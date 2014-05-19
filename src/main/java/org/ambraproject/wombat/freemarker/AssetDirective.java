@@ -49,7 +49,7 @@ public abstract class AssetDirective {
     assetPath = assetPath.trim();
 
     if (runtimeConfiguration.devModeAssets()) {
-      String assetAddress = siteResolver.buildLink(environment, assetPath);
+      String assetAddress = new SitePageContext(siteResolver, environment).buildLink(assetPath);
       environment.getOut().write(getHtml(assetAddress));
     } else {
 

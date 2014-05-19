@@ -39,7 +39,7 @@
   </li>
   </#macro>
 
-<nav id="nav-main" class="nav">
+<nav id="nav-main" class="head-nav">
   <ul>
     <#include "siteMenuItems.ftl" />
   </ul>

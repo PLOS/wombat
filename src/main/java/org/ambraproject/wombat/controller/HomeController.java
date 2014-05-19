@@ -2,9 +2,9 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.service.SearchService;
-import org.ambraproject.wombat.service.SoaService;
-import org.ambraproject.wombat.service.SolrSearchService;
+import org.ambraproject.wombat.service.remote.SearchService;
+import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

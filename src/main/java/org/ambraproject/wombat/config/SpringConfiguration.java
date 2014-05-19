@@ -37,6 +37,7 @@ import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
+import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.JsDirective;
 import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
@@ -52,10 +53,15 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
-import org.ambraproject.wombat.service.SearchService;
-import org.ambraproject.wombat.service.SoaService;
-import org.ambraproject.wombat.service.SoaServiceImpl;
-import org.ambraproject.wombat.service.SolrSearchService;
+import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.StoredHomepageService;
+import org.ambraproject.wombat.service.remote.ReaderService;
+import org.ambraproject.wombat.service.remote.SearchService;
+import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.SoaServiceImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.service.remote.StreamService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -72,6 +78,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.util.Date;
@@ -162,13 +169,19 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public FetchHtmlDirective fetchHtmlDirective() {
+    return new FetchHtmlDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            SiteLinkDirective siteLinkDirective,
                                            CssLinkDirective cssLinkDirective,
                                            RenderCssLinksDirective renderCssLinksDirective,
                                            JsDirective jsDirective,
                                            RenderJsDirective renderJsDirective,
-                                           BuildInfoDirective buildInfoDirective)
+                                           BuildInfoDirective buildInfoDirective,
+                                           FetchHtmlDirective fetchHtmlDirective)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -187,6 +200,7 @@ public class SpringConfiguration {
     variables.put("js", jsDirective);
     variables.put("renderJs", renderJsDirective);
     variables.put("buildInfo", buildInfoDirective);
+    variables.put("fetchHtml", fetchHtmlDirective);
     config.setFreemarkerVariables(variables.build());
     return config;
   }
@@ -227,6 +241,16 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public AssetService assetService() {
+    return new AssetServiceImpl();
+  }
+
+  @Bean
+  public StoredHomepageService storedHomepageService() {
+    return new StoredHomepageService();
+  }
+
+  @Bean
   public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
     if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedHost())) {
 
@@ -242,8 +266,20 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public AssetService assetService() {
-    return new AssetServiceImpl();
+  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
+                                                               Cache cache) {
+    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), cache);
+  }
+
+  @Bean
+  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
+                                                        Cache cache) {
+    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), cache);
+  }
+
+  @Bean
+  public JsonService jsonService() {
+    return new JsonService();
   }
 
   @Bean

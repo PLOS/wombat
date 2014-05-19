@@ -2,13 +2,80 @@
  *       These are the header styles
  */
 
- .nav-top{
-   @include inline-list;
-   @include highlight-border;
-   @extend .float-right;
-   li{}
+
+.head-top{
+ @extend .bg-dark;
+ @extend .text-center;
+ @extend .pad-small-x;
+ @include highlight-border();
+}
+
+.ad-head{
+  iframe {padding-left: 18px;
+    background: image-url('text.vert.ad.gif') no-repeat left 5px; }
+}
+
+$width-logo: 3;
+$width-search: 3;
+$width-nav: $block-grid-elements - ($width-logo + $width-search);
+#pagehdr-wrap{
+
+   .logo{ @include grid-column($width-logo); @include background-image('logo-bio.png'); }
+   .head-search{
+     @include grid-column($width-search);
+     $last-column:true;
+     form{
+        $input-box-shadow: none;
+        $input-include-glowing-effect: false;
+        $input-font-size: rem-calc(22);
+       legend,label{display: none;}
+
+       input[type="text"] {
+         $input-border-radius: 0;
+         $input-include-glowing-effect: false;
+         $input-font-color: $clr-body-text;
+         $input-border-color: $input-bg-color;
+         $input-focus-border-color:  $input-bg-color;
+         @include form-element();
+
+
+       }
+       input[type="image"]{ width: 45px;
+         height: 45px;
+         padding: 12px;
+         border: 0px none;
+         background-color: white;
+       }
+     }
+   }
+
+
+}
+
+.head-nav{
+  @include grid-column($width-nav);
+  ul  {    @extend .inline-list;}
+  li {
+    @extend h2;
+    .submenu{display: none;}
+    border-left: 1px solid $clr-separator;
+    a{padding:0px 20px;}
+    &:first-child{}
+  }
+}
+.nav{
+  @include grid-row();
+}
+.nav-top{
+  @extend .inline-list;
+  @extend .right;
+  @include grid-column($columns:4, $float:right);
+  font-weight: bold;
+  li{}
+
+  li.highlighted{@include rounded-pill(); margin-top: -5px;
+    a{color: white;}
+  }
  }
 
-.head-ad{
-@extend .bg-dark;
-}
+

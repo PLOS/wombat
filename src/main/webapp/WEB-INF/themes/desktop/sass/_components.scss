@@ -1,6 +1,13 @@
 /*   This file contains design components used for Journals and Wombat Generic
  *
  */
+$default-box-shadow-color: rgba(0, 0, 0, 0.1);
+$default-box-shadow-h-offset: 1px;
+$default-box-shadow-v-offset: 1px;
+$default-box-shadow-blur: 5px;
+$default-box-shadow-spread: 0;
+$default-box-shadow-inset: false;
+
 
 
 @mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default){
@@ -18,6 +25,24 @@
 .pill{
   @include rounded-pill();
 }
+
+@mixin blocks($color: $white){
+  background: $color;
+  padding: rem-calc(10);
+  @include single-box-shadow();
+  @include border-top-radius();
+  margin-bottom: $block-grid-default-spacing;
+
+
+}
+
+  ///PLACEHOLDER STYLES
+
+@mixin stub(){
+  background-color: $grey-med-light;
+  color: $white;
+}
+
 
 
 

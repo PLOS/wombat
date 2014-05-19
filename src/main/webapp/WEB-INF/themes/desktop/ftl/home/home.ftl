@@ -6,11 +6,13 @@
 <#assign depth = 0 />
 <#assign title = '' />
 <#include "../common/head.ftl" />
-<body>
+<body class="home">
 
 <#include "../common/header/header.ftl" />
 
-THIS IS THE BODY
+<#include "body.ftl" />
+
+<div class="spotlight"></div>
 
 <#include "../common/footer/footer.ftl" />
 

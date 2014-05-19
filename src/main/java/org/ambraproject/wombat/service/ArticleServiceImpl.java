@@ -13,6 +13,7 @@
 
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 

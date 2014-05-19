@@ -10,7 +10,7 @@ fonts_dir = "fonts"
 
 output_style = :nested
 
-relative_assets = true
+relative_assets = false
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 # line_comments = false

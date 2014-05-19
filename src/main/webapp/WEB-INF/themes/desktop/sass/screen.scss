@@ -5,7 +5,7 @@
 
 @import "compass";  //an external library of usefull mixins - reset
 //@import "compass/reset";  //an external library of usefull mixins - reset
-//@import "susy";     //an external library for grid layout and rapid prototyping
+//@import "vendor/susy/susy";     //an external library for grid layout and rapid prototyping
 
 
 
@@ -22,6 +22,10 @@
 
 @import "sections/footer";
 @import "sections/header";
+@import "pages/home";
+
+
+
 
 
 

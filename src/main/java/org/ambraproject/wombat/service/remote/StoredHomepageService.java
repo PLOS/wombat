@@ -28,25 +28,29 @@ public class StoredHomepageService implements FetchHtmlService {
    * Applies transforms that are particular to the "Lemur" API for homepages.
    */
   @Override
-  public Reader readHtml(SitePageContext sitePageContext, String key) throws IOException {
+  public Reader readHtml(final SitePageContext sitePageContext, String key) throws IOException {
     // TODO: Cache
 
-    Document document;
+    String cacheKey = "homepage:" + key;
     String address = String.format("repo/homepages/%s/latest", key);
-    try (Reader html = soaService.requestReader(address)) {
-      // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
-      // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.
-      String htmlString = IOUtils.toString(html);
-      document = Jsoup.parse(htmlString);
-    }
 
-    for (AttributeTransformation transformation : AttributeTransformation.values()) {
-      transformation.apply(sitePageContext, document);
-    }
+    String transformedHtml = soaService.requestCachedReader(cacheKey, address, new CacheDeserializer<Reader, String>() {
+      @Override
+      public String read(Reader htmlReader) throws IOException {
+        // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
+        // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.
+        String htmlString = IOUtils.toString(htmlReader);
+        Document document = Jsoup.parse(htmlString);
 
-    // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
-    // We want to return only the transformed snippet, so retrieve it from the body tag.
-    String transformedHtml = document.getElementsByTag("body").html();
+        for (AttributeTransformation transformation : AttributeTransformation.values()) {
+          transformation.apply(sitePageContext, document);
+        }
+
+        // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
+        // We want to return only the transformed snippet, so retrieve it from the body tag.
+        return document.getElementsByTag("body").html();
+      }
+    });
     return new StringReader(transformedHtml);
   }
 

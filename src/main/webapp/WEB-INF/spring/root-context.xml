@@ -14,7 +14,7 @@
   </beans:bean>
 
   <security:http entry-point-ref="casEntryPoint" use-expressions="true">
-    <security:intercept-url pattern="/**/user/secure/**" access="isFullyAuthenticated()" />
+    <security:intercept-url pattern="/*/user/secure/**" access="isFullyAuthenticated()" />
     <security:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
     <security:custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
     <security:custom-filter position="CAS_FILTER" ref="casFilter" />

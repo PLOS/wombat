@@ -28,12 +28,13 @@
                <a href="http://www.activatejavascript.org" target="_blank">For full functionality of this site, please enable JavaScript.</a>
            </noscript>
        </li>
-    <#include "../../hasTaxonomyBrowser.ftl" />
-    <#if hasTaxonomyBrowser>
-      <li>
-        <a href="browse" id="menu-browse">Browse Topics</a>
-      </li>
-    </#if>
+    <@themeConfig map="taxonomyBrowser" value="hasTaxonomyBrowser" ; hasTaxonomyBrowser>
+      <#if hasTaxonomyBrowser>
+        <li>
+          <a href="browse" id="menu-browse">Browse Topics</a>
+        </li>
+      </#if>
+    </@themeConfig>
 
 
     <#-- TODO: implement.  Not MVP.

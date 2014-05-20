@@ -16,6 +16,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.apache.commons.codec.binary.Hex;
@@ -94,15 +95,24 @@ public class SearchController extends WombatController {
   }
 
   private static URL redirectToLegacySearch(Site site, String query) throws IOException {
-    String legacySearchPattern = (String) site.getTheme().getConfigMap("legacySearch").get("pattern");
+    Theme theme = site.getTheme();
+    String legacySearchPattern = (String) theme.getConfigMap("search").get("legacyPattern");
     if (legacySearchPattern == null) {
       log.warn("Received legacy search request in {}, which does not provide a legacy search pattern", site);
+      // Throw NotFoundException because it might have just been caused by a user requesting weird URLs
       throw new NotFoundException();
     }
 
-    String redirectUrl = legacySearchPattern;
-    redirectUrl = redirectUrl.replace("{query}", escapeParameter(query));
-    redirectUrl = redirectUrl.replace("{journalKey}", site.getJournalKey());
+    String legacyUrlPrefix = (String) theme.getConfigMap("legacy").get("urlPrefix");
+    if (legacyUrlPrefix == null) {
+      String message = String.format("Site \"%s\" supports legacy search, but does not provide a legacy URL prefix",
+          site.getKey());
+      throw new RuntimeException(message);
+    }
+
+    String redirectUrl = legacyUrlPrefix + legacySearchPattern
+        .replace("{query}", escapeParameter(query))
+        .replace("{journalKey}", site.getJournalKey());
 
     try {
       return new URL(redirectUrl);

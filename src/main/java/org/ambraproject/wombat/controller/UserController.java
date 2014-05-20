@@ -16,4 +16,9 @@ public class UserController extends WombatController {
   public ModelAndView redirectToOriginalLink(HttpServletRequest request) {
     return new ModelAndView("redirect:" + request.getHeader("Referer"));
   }
+
+  @RequestMapping(value={"/user/logout", "/{site}/user/logout" })
+  public ModelAndView redirectToSignOut(HttpServletRequest request) {
+    return new ModelAndView("redirect:" + request.getHeader("Referer"));
+  }
 }

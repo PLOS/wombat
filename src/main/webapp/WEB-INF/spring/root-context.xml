@@ -15,8 +15,23 @@
 
   <security:http entry-point-ref="casEntryPoint" use-expressions="true">
     <security:intercept-url pattern="/**/user/secure/**" access="isFullyAuthenticated()" />
+    <security:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
+    <security:custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
     <security:custom-filter position="CAS_FILTER" ref="casFilter" />
+    <security:logout logout-success-url="/user/logout" />
   </security:http>
+
+  <!-- This filter handles a Single Logout Request from the CAS Server -->
+  <beans:bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
+
+  <!-- This filter redirects to the CAS Server to signal Single Logout should be performed -->
+  <beans:bean id="requestSingleLogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+    <beans:constructor-arg value="https://register.plos.org/cas/logout?service=http%3A%2F%2Flocalhost%3A8234%2Fwombat%2Fuser%2Flogout"/>
+    <beans:constructor-arg>
+      <beans:bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+    </beans:constructor-arg>
+    <beans:property name="filterProcessesUrl" value="/j_spring_cas_security_logout"/>
+  </beans:bean>
 
   <beans:bean id="casFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
     <beans:property name="authenticationManager" ref="authenticationManager"/>

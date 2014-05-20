@@ -59,6 +59,12 @@ public class SoaServiceImpl implements SoaService {
     return cachedRemoteStreamer.getResponse(buildUri("assetfiles/" + assetId), headers);
   }
 
+  @Override
+  public CloseableHttpResponse requestFromContentRepo(String bucket, String key, String version) throws IOException {
+    String address = String.format("repo/%s/%s/%s", bucket, key, version);
+    return cachedRemoteStreamer.getResponse(buildUri(address));
+  }
+
   private URI buildUri(String address) {
     return UriUtil.concatenate(runtimeConfiguration.getServer(), address);
   }

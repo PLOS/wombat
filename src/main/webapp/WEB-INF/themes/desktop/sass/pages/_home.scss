@@ -12,6 +12,18 @@ $pad-default: rem-calc(10);
 $image-width: rem-calc(70);
 $image-container: ($image-width + $pad-default);
 // HOME CONTENT - home-content
+
+// for demo:
+
+.row {
+  &.one, &.two{
+    .block{
+      margin-right: 2%; // this is for demo
+      &:last-child{margin-right: 0;}
+    }
+  }
+}
+
 .row {
   @include grid-row()
 }
@@ -19,6 +31,15 @@ $image-container: ($image-width + $pad-default);
 //home page blocks
 .hero {
   position: relative;
+  img{
+
+    @include single-box-shadow();
+
+  @include border-top-radius();
+  }
+  padding: 0;
+  margin-bottom: 20px;
+  background: transparent;
   // hero colors:
   color: $white;
   a {
@@ -52,12 +73,14 @@ $image-container: ($image-width + $pad-default);
 .row > .block {
   &.x-small {
     @include grid-column(2, $collapse: false);
+
   }
   &.small {
     @include grid-column(4, $collapse: false);
   }
   &.medium {
     @include grid-column(6, $collapse: false);
+    width: 48%;  // for demo
   }
   &.large {
     @include grid-column(7, $collapse: false);
@@ -65,9 +88,12 @@ $image-container: ($image-width + $pad-default);
 
 }
 
+
+
 .block {
   position: relative;
   height: $block-height;
+
   @include blocks;
   .block-image {
     width: $image-container;
@@ -125,13 +151,22 @@ $image-container: ($image-width + $pad-default);
 
 .column {
   &.left {
-    @include grid-column(8, $collapse: true);
+    @include grid-column(8, $collapse: false);
     .row-small-blocks{
       @include block-grid(2);
+      // for demo
+      .block {
+        &:nth-child(1),&:nth-child(3){
+          margin-right: 2%;
+          width: 46%;
+        }
+      }
+
     }
     /// row three is shorter than the others
     .block {
       height: $block-height-small;
+
       .block-image {
         height: ($block-height-small - ($pad-default *2));
         overflow: hidden;
@@ -154,8 +189,7 @@ $image-container: ($image-width + $pad-default);
 #spotlight,
 #issue,
 #twitter-feed,
-#blogroll,
-#billboard {
+#blogroll{
   @include blocks();
   @include stub();
   height: $block-height;
@@ -168,5 +202,15 @@ $image-container: ($image-width + $pad-default);
 
 #article-list {
   @include grid-column(4);
+  width: 30%; // for demo
+  margin-right: 3%; //for demo
 
+}
+
+#billboard{
+  @include grid-row;
+  @include blocks($grey-dark);
+  h3, h4, a {color: $white !important;}
+  position: relative;
+  a{@include rounded-pill(); position: absolute; width: 80px; height: 36px; right: 20px; top: 10px; }
 }

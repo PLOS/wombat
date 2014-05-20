@@ -5,15 +5,16 @@
   </div>
   <div class="grid-container">
     <div id="pagehdr-wrap" class="highlight-border">
+			<nav id="nav-user" class="nav">
+				<ul class="nav-top">
+        <#macro navTopItem href highlighted=false>
+					<li <#if highlighted>class="highlighted"</#if>><a href="${href}"><#nested/></a></li>
+        </#macro>
+        <#include "navTop.ftl" />
+				</ul>
+			</nav>
       <div id="pagehdr">
-        <nav id="nav-user" class="nav">
-          <ul class="nav-top">
-          <#macro navTopItem href highlighted=false>
-            <li <#if highlighted>class="highlighted"</#if>><a href="${href}"><#nested/></a></li>
-          </#macro>
-          <#include "navTop.ftl" />
-          </ul>
-        </nav>
+
         <div class="logo">
           <a href="<@siteLink path="." />">${siteTitle}</a>
         </div>

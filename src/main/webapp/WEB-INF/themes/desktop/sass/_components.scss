@@ -26,8 +26,8 @@ $default-box-shadow-inset: false;
   @include rounded-pill();
 }
 
-@mixin blocks(){
-  background: $white;
+@mixin blocks($color: $white){
+  background: $color;
   padding: rem-calc(10);
   @include single-box-shadow();
   @include border-top-radius();

@@ -86,4 +86,17 @@ public interface SoaService {
    * @throws IOException
    */
   public abstract CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException;
+
+  /**
+   * Requests a file from the content repository. Returns the full response.
+   *
+   * @param bucket  content repo bucket
+   * @param key     content repo key
+   * @param version content repo version
+   * @return the response from the content repo
+   * @throws IOException
+   */
+  public abstract CloseableHttpResponse requestFromContentRepo(String bucket, String key, String version)
+      throws IOException;
+
 }

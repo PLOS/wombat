@@ -29,8 +29,6 @@ public class StoredHomepageService implements FetchHtmlService {
    */
   @Override
   public Reader readHtml(final SitePageContext sitePageContext, String key) throws IOException {
-    // TODO: Cache
-
     String cacheKey = "homepage:" + key;
     String address = String.format("repo/homepages/%s/latest", key);
 

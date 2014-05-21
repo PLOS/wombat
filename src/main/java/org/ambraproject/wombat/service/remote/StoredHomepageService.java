@@ -41,7 +41,7 @@ public class StoredHomepageService implements FetchHtmlService {
         // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
         // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.
         String htmlString = IOUtils.toString(htmlReader);
-        Document document = Jsoup.parse(htmlString);
+        Document document = Jsoup.parseBodyFragment(htmlString);
 
         for (AttributeTransformation transformation : AttributeTransformation.values()) {
           transformation.apply(sitePageContext, document);

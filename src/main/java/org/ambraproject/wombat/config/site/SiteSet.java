@@ -34,22 +34,26 @@ public class SiteSet {
     for (Map<String, ?> siteSpec : siteSpecifications) {
       String key = (String) siteSpec.get("key");
       Theme theme = themeTree.getTheme((String) siteSpec.get("theme"));
-      SiteRequestScheme requestScheme = parseRequestScheme(key, siteSpec);
+
+      Map<String, ?> resolveDefinition = (Map<String, ?>) siteSpec.get("resolve");
+      SiteRequestScheme requestScheme = resolveDefinition != null ? parseRequestScheme(resolveDefinition)
+          : SiteRequestScheme.builder().setPathToken(key).build();
+
       sites.add(new Site(key, theme, requestScheme));
     }
     validateSchemes(sites);
     return new SiteSet(sites);
   }
 
-  private static SiteRequestScheme parseRequestScheme(String siteKey, Map<String, ?> siteSpecification) {
+  private static SiteRequestScheme parseRequestScheme(Map<String, ?> resolveDefinition) {
     SiteRequestScheme.Builder builder = SiteRequestScheme.builder();
 
-    String pathToken = (String) siteSpecification.get("path");
+    String pathToken = (String) resolveDefinition.get("path");
     if (pathToken != null) {
       builder.setPathToken(pathToken);
     }
 
-    List<Map<String, ?>> headers = (List<Map<String, ?>>) siteSpecification.get("headers");
+    List<Map<String, ?>> headers = (List<Map<String, ?>>) resolveDefinition.get("headers");
     if (headers != null && !headers.isEmpty()) {
       for (Map<String, ?> headerSpec : headers) {
         String headerName = (String) headerSpec.get("name");

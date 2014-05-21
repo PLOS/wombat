@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.freemarker.FetchHtmlDirective.ElementSubstitution;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
+import java.util.Collection;
 
 /**
  * Retrieves stored blocks of homepage content from a remote service.
@@ -28,7 +30,8 @@ public class StoredHomepageService implements FetchHtmlService {
    * Applies transforms that are particular to the "Lemur" API for homepages.
    */
   @Override
-  public Reader readHtml(final SitePageContext sitePageContext, String key) throws IOException {
+  public Reader readHtml(final SitePageContext sitePageContext, String key, final Collection<ElementSubstitution> substitutions)
+      throws IOException {
     String cacheKey = "homepage:" + key;
     String address = String.format("repo/homepages/%s/latest", key);
 
@@ -42,6 +45,9 @@ public class StoredHomepageService implements FetchHtmlService {
 
         for (AttributeTransformation transformation : AttributeTransformation.values()) {
           transformation.apply(sitePageContext, document);
+        }
+        for (ElementSubstitution substitution : substitutions) {
+          substitution.substitute(document);
         }
 
         // We received a snippet, which Jsoup has automatically turned into a complete HTML document.

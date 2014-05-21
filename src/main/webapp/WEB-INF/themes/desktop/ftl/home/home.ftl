@@ -12,6 +12,7 @@
 
 <#include "body.ftl" />
 
+
 <div class="spotlight"></div>
 
 <#include "../common/footer/footer.ftl" />

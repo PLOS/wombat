@@ -2,7 +2,6 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
@@ -51,9 +50,22 @@ public class HomeController extends WombatController {
     }
   }
 
+  private int parseNumberParameter(String param, int minValue) {
+    if (param == null) {
+      return minValue;
+    }
+    try {
+      int value = Integer.parseInt(param);
+      return (value < minValue) ? minValue : value;
+    } catch (NumberFormatException e) {
+      return minValue;
+    }
+  }
+
   @RequestMapping(value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
   public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
-                              @RequestParam(value = "section", required = false) String sectionParam)
+                              @RequestParam(value = "section", required = false) String sectionParam,
+                              @RequestParam(value = "page", required = false) String pageParam)
       throws IOException {
     if (!request.getServletPath().endsWith("/")) {
       return "redirect:" + site.getKey() + "/"; // TODO Support other site types
@@ -61,6 +73,7 @@ public class HomeController extends WombatController {
 
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");
     int resultsPerPage = ((Number) homepageConfig.get("resultsPerPage")).intValue();
+    int page = parseNumberParameter(pageParam, 1);
     List<String> supportedSections = (List<String>) homepageConfig.get("sections");
     model.addAttribute("supportedSections", supportedSections);
 
@@ -87,12 +100,12 @@ public class HomeController extends WombatController {
 
     switch (section) {
       case RECENT:
-        HomeController.populateWithArticleList(request, model, site, resultsPerPage, solrSearchService,
+        populateWithArticleList(model, site, page, resultsPerPage,
             SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
         break;
 
       case POPULAR:
-        HomeController.populateWithArticleList(request, model, site, resultsPerPage, solrSearchService,
+        populateWithArticleList(model, site, page, resultsPerPage,
             SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
         break;
 
@@ -109,28 +122,20 @@ public class HomeController extends WombatController {
 
   /**
    * Populate a model object with a feed of articles from Solr.
-   * <p/>
-   * This logic generally should be private to this class; it is public only for reuse by {@link ControllerHook}s.
    *
-   * @param request       the request for a home page
-   * @param model         the response's model
-   * @param site          the site of the home page
-   * @param searchService the service through which to access Solr
-   * @param order         the order in which to list the articles on the home page
+   * @param model the response's model
+   * @param site  the site of the home page
+   * @param page  the page parameter
+   * @param order the order in which to list the articles on the home page
    */
-  public static void populateWithArticleList(HttpServletRequest request, Model model, Site site,
-                                             int resultsPerPage,
-                                             SearchService searchService,
-                                             SolrSearchService.SolrSortOrder order) {
-    int start = 0;
-    String page = request.getParameter("page");
-    if (!Strings.isNullOrEmpty(page)) {
-      start = (Integer.parseInt(page) - 1) * resultsPerPage;
-    }
+  private void populateWithArticleList(Model model, Site site,
+                                       int page, int resultsPerPage,
+                                       SolrSearchService.SolrSortOrder order) {
+    int start = (page - 1) * resultsPerPage;
     model.addAttribute("resultsPerPage", resultsPerPage);
 
     try {
-      Map<?, ?> articles = searchService.getHomePageArticles(site, start, resultsPerPage, order);
+      Map<?, ?> articles = solrSearchService.getHomePageArticles(site, start, resultsPerPage, order);
       model.addAttribute("articles", articles);
     } catch (IOException e) {
       log.error("Could not populate home page with articles from Solr", e);

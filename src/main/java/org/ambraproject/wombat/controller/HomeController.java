@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -73,7 +73,6 @@ public class HomeController extends WombatController {
 
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");
     int resultsPerPage = ((Number) homepageConfig.get("resultsPerPage")).intValue();
-    int page = parseNumberParameter(pageParam, 1);
     List<String> supportedSections = (List<String>) homepageConfig.get("sections");
     model.addAttribute("supportedSections", supportedSections);
 
@@ -98,56 +97,48 @@ public class HomeController extends WombatController {
     }
     model.addAttribute("selectedSection", section.name().toLowerCase());
 
-    switch (section) {
-      case RECENT:
-        populateWithArticleList(model, site, page, resultsPerPage,
-            SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
-        break;
+    int page = parseNumberParameter(pageParam, 1);
+    int start = (page - 1) * resultsPerPage;
+    model.addAttribute("resultsPerPage", resultsPerPage);
 
-      case POPULAR:
-        populateWithArticleList(model, site, page, resultsPerPage,
-            SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
-        break;
+    Map<?, ?> articles;
+    try {
+      switch (section) {
+        case RECENT:
+          articles = solrSearchService.getHomePageArticles(site, start, resultsPerPage,
+              SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
+          break;
 
-      case IN_THE_NEWS:
-        model.addAttribute("articles", getInTheNewsArticles(site.getJournalKey()));
-        break;
+        case POPULAR:
+          articles = solrSearchService.getHomePageArticles(site, start, resultsPerPage,
+              SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
+          break;
 
-      default:
-        throw new IllegalStateException("Unexpected section value " + section);
+        case IN_THE_NEWS:
+          articles = getInTheNewsArticles(site.getJournalKey());
+          break;
+
+        default:
+          throw new IllegalStateException("Unexpected section value " + section);
+      }
+    } catch (IOException e) {
+      log.error("Could not populate home page with articles from Solr", e);
+      articles = null;
+      // Render the rest of the page without the article list
+      // The FreeMarker template should provide an error message if "articles" is missing from the model
+    }
+
+    if (articles != null) {
+      model.addAttribute("articles", articles);
     }
 
     return site.getKey() + "/ftl/home/home";
   }
 
-  /**
-   * Populate a model object with a feed of articles from Solr.
-   *
-   * @param model the response's model
-   * @param site  the site of the home page
-   * @param page  the page parameter
-   * @param order the order in which to list the articles on the home page
-   */
-  private void populateWithArticleList(Model model, Site site,
-                                       int page, int resultsPerPage,
-                                       SolrSearchService.SolrSortOrder order) {
-    int start = (page - 1) * resultsPerPage;
-    model.addAttribute("resultsPerPage", resultsPerPage);
-
-    try {
-      Map<?, ?> articles = solrSearchService.getHomePageArticles(site, start, resultsPerPage, order);
-      model.addAttribute("articles", articles);
-    } catch (IOException e) {
-      log.error("Could not populate home page with articles from Solr", e);
-      // Render the rest of the page without the article list
-      // The FreeMarker template should provide an error message if "articles" is missing from the model
-    }
-  }
-
-  private Map getInTheNewsArticles(String journalKey) throws IOException {
+  private Map<String, Object> getInTheNewsArticles(String journalKey) throws IOException {
     String requestAddress = "journals/" + journalKey + "?inTheNewsArticles";
-    List<Map<String, Object>> inTheNewsArticles = (List<Map<String, Object>>) soaService.requestObject(requestAddress,
-        List.class);
+    List<Map<String, Object>> inTheNewsArticles = (List<Map<String, Object>>)
+        soaService.requestObject(requestAddress, List.class);
 
     // From the presentation layer's perspective, all three of these article lists look the same.
     // However, two of them come from solr, and one from rhino.  Unfortunately solr uses
@@ -157,7 +148,7 @@ public class HomeController extends WombatController {
       article = DoiSchemeStripper.strip(article);
       article.put("id", article.get("doi"));
     }
-    Map<String, Object> results = new HashMap<>();
+    Map<String, Object> results = Maps.newHashMapWithExpectedSize(1);
     results.put("docs", inTheNewsArticles);
     return results;
   }

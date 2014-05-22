@@ -5597,6 +5597,7 @@ main,
     border: 0px none;
     background-color: white; }
 
+/*hi there */
 /* line 59, ../../sass/sections/_header.scss */
 .head-nav {
   padding-left: 0.625rem;
@@ -5609,43 +5610,53 @@ main,
     border-left: 1px solid #cccccc; }
     /* line 65, ../../sass/sections/_header.scss */
     .head-nav li a {
-      padding: 0px 20px; }
-    /* line 67, ../../sass/sections/_header.scss */
+      padding: 10px 20px;
+      height: 30px; }
+      /* line 69, ../../sass/sections/_header.scss */
+      .head-nav li a:hover {
+        background-color: white;
+        -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+        -moz-border-radius-topleft: 5px;
+        -webkit-border-top-left-radius: 5px;
+        border-top-left-radius: 5px;
+        -moz-border-radius-topright: 5px;
+        -webkit-border-top-right-radius: 5px;
+        border-top-right-radius: 5px; }
+    /* line 76, ../../sass/sections/_header.scss */
     .head-nav li .f-dropdown {
       padding: 0;
       margin: 0;
-      /* padding: 20px 0px 30px;
       width: 240px;
+      border-radius: 4px;
+      border: none;
+      padding: 20px 0px 30px;
+      margin-left: -13px;
+        /* padding: 20px 0px 30px;
+
       margin-left: -13px;
       border-radius: 4px;
       box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);   */
-      background: white;
-      padding: 0.625rem;
       -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
       -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-      box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-      -moz-border-radius-topleft: 5px;
-      -webkit-border-top-left-radius: 5px;
-      border-top-left-radius: 5px;
-      -moz-border-radius-topright: 5px;
-      -webkit-border-top-right-radius: 5px;
-      border-top-right-radius: 5px;
-      margin-bottom: 1.25rem; }
-      /* line 76, ../../sass/sections/_header.scss */
+      box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1); }
+      /* line 91, ../../sass/sections/_header.scss */
       .head-nav li .f-dropdown li {
         border-left: 0;
         padding: 0;
         margin: 0; }
-        /* line 80, ../../sass/sections/_header.scss */
+        /* line 95, ../../sass/sections/_header.scss */
         .head-nav li .f-dropdown li a {
-          font-size: 12px;
+          font-size: 13px;
           padding: 10px;
-          width: 240px; }
-        /* line 85, ../../sass/sections/_header.scss */
-        .head-nav li .f-dropdown li:hover {
-          color: white;
-          background-color: #3c63af; }
-  /* line 94, ../../sass/sections/_header.scss */
+          width: 240px;
+          border-radius: 0; }
+          /* line 101, ../../sass/sections/_header.scss */
+          .head-nav li .f-dropdown li a:hover {
+            color: white;
+            background-color: #3c63af; }
+  /* line 112, ../../sass/sections/_header.scss */
   .head-nav .menuCallout {
     display: none; }
 
@@ -5659,7 +5670,7 @@ margin-left: -13px;
 border-radius: 4px;
 box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
 */
-/* line 109, ../../sass/sections/_header.scss */
+/* line 127, ../../sass/sections/_header.scss */
 .nav {
   width: 100%;
   margin-left: auto;
@@ -5676,14 +5687,14 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
   .nav:after {
     clear: both; }
 
-/* line 112, ../../sass/sections/_header.scss */
+/* line 130, ../../sass/sections/_header.scss */
 .nav-top {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 33.33333%;
   float: right;
   font-weight: bold; }
-  /* line 117, ../../sass/sections/_header.scss */
+  /* line 135, ../../sass/sections/_header.scss */
   .nav-top li.highlighted {
     background: #3c63af;
     padding: 10px 20px;
@@ -5694,11 +5705,11 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
     /* line 19, ../../sass/_components.scss */
     .nav-top li.highlighted:hover {
       background: #333333; }
-    /* line 120, ../../sass/sections/_header.scss */
+    /* line 138, ../../sass/sections/_header.scss */
     .nav-top li.highlighted a {
       color: white; }
 
-/* line 124, ../../sass/sections/_header.scss */
+/* line 142, ../../sass/sections/_header.scss */
 .head-search fieldset {
   padding: 0;
   margin: 0; }

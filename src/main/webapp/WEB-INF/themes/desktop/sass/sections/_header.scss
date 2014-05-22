@@ -62,39 +62,57 @@ $width-nav: $block-grid-elements - ($width-logo + $width-search);
   li {
     @extend h2;
     border-left: 1px solid $clr-separator;
-    a{padding:0px 20px;}
+    a{
+      padding: 10px 20px;
+      height: 30px;
+
+      &:hover {
+        background-color: white;
+        @include single-box-shadow(); // from foundation
+        @include border-top-radius(); // from foundation
+      }
+    }
 
     .f-dropdown {
       padding: 0;
       margin: 0;
-      /* padding: 20px 0px 30px;
       width: 240px;
+      border-radius: 4px;
+      border: none;
+      padding: 20px 0px 30px;
+
+      margin-left: -13px;
+        /* padding: 20px 0px 30px;
+
       margin-left: -13px;
       border-radius: 4px;
       box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);   */
-      @include blocks();
-      li {
+      @include single-box-shadow(); // from foundation
+       li {
         border-left: 0;
         padding: 0;
         margin: 0;
-        a {
-          font-size: $txt-size-xsmall;
-          padding: 10px;
-          width: 240px;
-        }
-        &:hover {
-          color: $clr-highlight-text;
-          background-color: $clr-highlight-hover;
+          a {
+            font-size: $txt-size-small;
+            padding: 10px;
+            width: 240px;
+            border-radius: 0;
 
+              &:hover {
+                color: $clr-highlight-text;
+                background-color: $clr-highlight-hover;
+
+              }
+          }
         }
       }
-    }
   }
+
   /* no styling for this yet so hiding for now */
-.menuCallout {
+  .menuCallout {
    display: none;
   }
-  }
+}
 /*
 callout: width: 540px;
 margin-left: -310px;

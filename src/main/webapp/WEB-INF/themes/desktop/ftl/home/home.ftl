@@ -19,5 +19,9 @@
 
 <script type="text/javascript" src="resource/js/vendor/jquery-1.11.0.js"></script>
 
+<script type="text/javascript" src="resource/js/vendor/foundation.min.js"></script>
+<script>
+	$(document).foundation();
+</script>
 </body>
 </html>

@@ -15,22 +15,18 @@
   </a>
   </#macro>
 
-  <#macro menuSection title containsCallout=false>
-  <li id="mn-01">
-    <a href="javascript:void(0);">${title}</a>
+  <#macro menuSection title subject containsCallout=false>
+  <li>
+    <a href="#" data-dropdown="${subject}" data-options="is_hover:true">${title}</a>
 
-    <div class="submenu">
-      <#if containsCallout>
-        <div class="submit">
-          <#include "siteMenuCallout.ftl" />
-        </div>
-      </#if>
-      <div class="menu">
-        <ul>
-          <#nested/>
-        </ul>
-      </div>
-    </div>
+    <#if containsCallout>
+			<div class="menuCallout">
+        <#include "siteMenuCallout.ftl" />
+			</div>
+    </#if>
+		<ul id="${subject}" class="f-dropdown" data-dropdown-content>
+      <#nested/>
+		</ul>
   </li>
   </#macro>
   <#macro menuLink href>

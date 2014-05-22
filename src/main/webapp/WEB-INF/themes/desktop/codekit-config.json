@@ -61,14 +61,28 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/resource\/css\/external\/print.css" : {
+    "\/resource\/js\/vendor\/foundation.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/css\/external\/print.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation.min-ck.js",
+      "fileType" : 64
+    },
+    "\/sass\/vendor\/susy\/susy\/language\/susy\/_settings.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susy\/_settings.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_settings.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/vendor\/susy\/susy\/language\/susy\/_padding.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -82,17 +96,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/resource\/js\/vendor\/foundation\/foundation.magellan.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.magellan.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.magellan-ck.js",
-      "fileType" : 64
-    },
     "\/sass\/vendor\/foundation\/components\/_pagination.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -105,17 +108,16 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/susy\/susy\/language\/susy\/_settings.scss" : {
+    "\/resource\/js\/vendor\/foundation\/foundation.magellan.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susy\/_settings.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_settings.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.magellan.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.magellan-ck.js",
+      "fileType" : 64
     },
     "\/sass\/vendor\/susy\/susy\/language\/susyone\/_media.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -199,16 +201,14 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/resource\/js\/vendor\/foundation.min.js" : {
+    "\/resource\/css\/external\/print.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation.min-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/resource\/css\/external\/print.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/sass\/vendor\/foundation\/components\/_visibility.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -269,18 +269,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/susy\/susy\/language\/susy\/_container.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susy\/_container.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_container.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/_forms.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -301,6 +289,18 @@
       "inputAbbreviatedPath" : "\/resource\/js\/vendor\/jquery-placeholder\/tests\/index.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/sass\/vendor\/susy\/susy\/language\/susy\/_container.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susy\/_container.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_container.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/vendor\/susy\/susy\/language\/susy\/_context.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -370,14 +370,17 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/resource\/css\/foundation.css" : {
+    "\/sass\/vendor\/foundation\/components\/_keystrokes.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/css\/foundation.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_keystrokes.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_keystrokes.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/vendor\/foundation\/components\/_forms.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -388,18 +391,6 @@
       "outputStyle" : 0,
       "shouldRunBless" : 1,
       "outputAbbreviatedPath" : "\/resource\/css\/_forms.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/sass\/vendor\/foundation\/components\/_keystrokes.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_keystrokes.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_keystrokes.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -601,6 +592,18 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/sass\/vendor\/foundation\/components\/_inline-lists.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_inline-lists.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_inline-lists.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/resource\/css\/screen.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -609,18 +612,6 @@
       "inputAbbreviatedPath" : "\/resource\/css\/screen.css",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
-    },
-    "\/sass\/vendor\/foundation\/components\/_thumbs.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_thumbs.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_thumbs.css",
-      "fileType" : 4,
-      "debugStyle" : 0
     },
     "\/sass\/vendor\/foundation\/components\/_split-buttons.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -634,15 +625,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/foundation\/components\/_inline-lists.scss" : {
+    "\/sass\/vendor\/foundation\/components\/_thumbs.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_inline-lists.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_thumbs.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_inline-lists.css",
+      "outputAbbreviatedPath" : "\/resource\/css\/_thumbs.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -667,16 +658,17 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/resource\/js\/vendor\/foundation\/foundation.tab.js" : {
+    "\/sass\/vendor\/foundation\/components\/_panels.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.tab.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.tab-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_panels.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_panels.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/print.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -687,18 +679,6 @@
       "outputStyle" : 0,
       "shouldRunBless" : 1,
       "outputAbbreviatedPath" : "\/resource\/css\/print.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/sass\/vendor\/foundation\/components\/_panels.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_panels.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_panels.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -713,6 +693,17 @@
       "outputAbbreviatedPath" : "\/resource\/css\/_switch.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/resource\/js\/vendor\/foundation\/foundation.tab.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.tab.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.tab-ck.js",
+      "fileType" : 64
     },
     "\/sass\/vendor\/susy\/susy\/math\/su\/_maps.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -761,15 +752,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/susy\/susy\/output\/_shared.scss" : {
+    "\/sass\/vendor\/susy\/susy\/output\/shared\/_output.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/output\/_shared.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/output\/shared\/_output.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_shared.css",
+      "outputAbbreviatedPath" : "\/resource\/css\/_output.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -782,15 +773,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/sass\/vendor\/susy\/susy\/output\/shared\/_output.scss" : {
+    "\/sass\/vendor\/susy\/susy\/output\/_shared.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/output\/shared\/_output.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/output\/_shared.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_output.css",
+      "outputAbbreviatedPath" : "\/resource\/css\/_shared.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -844,7 +835,7 @@
     },
     "\/sass\/_foundation.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/sass\/_foundation.scss",
@@ -854,15 +845,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/resource\/js\/vendor\/fastclick\/lib\/fastclick.js" : {
+    "\/resource\/js\/vendor\/foundation\/foundation.offcanvas.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/fastclick\/lib\/fastclick.js",
+      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.offcanvas.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/fastclick\/lib\/fastclick-ck.js",
+      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.offcanvas-ck.js",
       "fileType" : 64
     },
     "\/resource\/js\/vendor\/foundation\/foundation.joyride.js" : {
@@ -876,15 +867,15 @@
       "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.joyride-ck.js",
       "fileType" : 64
     },
-    "\/resource\/js\/vendor\/foundation\/foundation.offcanvas.js" : {
+    "\/resource\/js\/vendor\/fastclick\/lib\/fastclick.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.offcanvas.js",
+      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/fastclick\/lib\/fastclick.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.offcanvas-ck.js",
+      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/fastclick\/lib\/fastclick-ck.js",
       "fileType" : 64
     },
     "\/sass\/vendor\/foundation\/components\/_tabs.scss" : {
@@ -1155,15 +1146,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/sass\/vendor\/susy\/susy\/language\/susy\/_box-sizing.scss" : {
+    "\/sass\/vendor\/foundation\/_settings.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susy\/_box-sizing.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/_settings.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_box-sizing.css",
+      "outputAbbreviatedPath" : "\/resource\/css\/_settings.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -1179,15 +1170,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/foundation\/_settings.scss" : {
+    "\/sass\/vendor\/susy\/susy\/language\/susy\/_box-sizing.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/_settings.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susy\/_box-sizing.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_settings.css",
+      "outputAbbreviatedPath" : "\/resource\/css\/_box-sizing.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -1318,15 +1309,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/foundation\/components\/_dropdown.scss" : {
+    "\/sass\/ie.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_dropdown.scss",
+      "inputAbbreviatedPath" : "\/sass\/ie.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_dropdown.css",
+      "outputAbbreviatedPath" : "\/resource\/css\/ie.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -1401,15 +1392,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/ie.scss" : {
+    "\/sass\/vendor\/foundation\/components\/_dropdown.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/ie.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/foundation\/components\/_dropdown.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/ie.css",
+      "outputAbbreviatedPath" : "\/resource\/css\/_dropdown.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -1494,17 +1485,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/resource\/js\/vendor\/foundation\/foundation.abide.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.abide.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.abide-ck.js",
-      "fileType" : 64
-    },
     "\/sass\/vendor\/susy\/susy\/language\/susy\/_bleed.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -1516,6 +1496,17 @@
       "outputAbbreviatedPath" : "\/resource\/css\/_bleed.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/resource\/js\/vendor\/foundation\/foundation.abide.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.abide.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/foundation\/foundation.abide-ck.js",
+      "fileType" : 64
     },
     "\/sass\/vendor\/susy\/susy\/language\/susyone\/_margin.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -1623,6 +1614,17 @@
       "outputAbbreviatedPath" : "\/resource\/js\/vendor\/jquery-placeholder\/tests\/tests-ck.js",
       "fileType" : 64
     },
+    "\/resource\/js\/vendor\/jquery-1.11.0.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/jquery-1.11.0.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/jquery-1.11.0-ck.js",
+      "fileType" : 64
+    },
     "\/sass\/vendor\/foundation\/components\/_global.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -1634,17 +1636,6 @@
       "outputAbbreviatedPath" : "\/resource\/css\/_global.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/resource\/js\/vendor\/jquery-1.11.0.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/jquery-1.11.0.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/jquery-1.11.0-ck.js",
-      "fileType" : 64
     },
     "\/sass\/vendor\/susy\/susy\/language\/susy\/_rows.scss" : {
       "ignoreWasSetByUser" : 0,

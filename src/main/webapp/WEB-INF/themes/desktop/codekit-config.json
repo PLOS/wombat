@@ -26,6 +26,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/resource\/js\/vendor\/jquery.carousel.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/resource\/js\/vendor\/jquery.carousel.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/resource\/js\/vendor\/jquery.carousel-ck.js",
+      "fileType" : 64
+    },
     "\/sass\/vendor\/foundation\/components\/_side-nav.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -415,6 +426,18 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/sass\/vendor\/font-awesome.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/font-awesome.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/font-awesome.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/sass\/vendor\/susy\/susy\/output\/support\/_background.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -589,15 +612,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/susy\/susy\/math\/su\/_maps.scss" : {
+    "\/sass\/vendor\/susy\/susy\/output\/shared\/_output.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/math\/su\/_maps.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/output\/shared\/_output.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_maps.css",
+      "outputAbbreviatedPath" : "\/resource\/css\/_output.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -625,6 +648,18 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/resource\/css\/vendor\/font-awesome.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/resource\/css\/vendor\/font-awesome.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/font-awesome.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/sass\/vendor\/susy\/susy\/output\/_shared.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -646,15 +681,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/sass\/vendor\/susy\/susy\/output\/shared\/_output.scss" : {
+    "\/sass\/vendor\/susy\/susy\/math\/su\/_maps.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/output\/shared\/_output.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/math\/su\/_maps.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_output.css",
+      "outputAbbreviatedPath" : "\/resource\/css\/_maps.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -751,17 +786,16 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/sass\/vendor\/susy\/susy\/language\/susy\/_gutters.scss" : {
-      "ignoreWasSetByUser" : 0,
+    "\/resource\/js\/components\/carousel.js" : {
+      "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susy\/_gutters.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_gutters.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/resource\/js\/components\/carousel.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/resource\/js\/components\/carousel-ck.js",
+      "fileType" : 64
     },
     "\/sass\/vendor\/foundation\/components\/_offcanvas.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -785,6 +819,18 @@
       "outputAbbreviatedPath" : "\/resource\/img\/logo-bio.png",
       "initialSize" : 5355,
       "fileType" : 8192
+    },
+    "\/sass\/vendor\/susy\/susy\/language\/susy\/_gutters.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/susy\/_gutters.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_gutters.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/vendor\/susy\/susy\/output\/support\/_prefix.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -962,18 +1008,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/susy\/susy\/language\/_susyone.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/_susyone.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/resource\/css\/_susyone.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/vendor\/susy\/susy\/language\/susy\/_box-sizing.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -983,6 +1017,18 @@
       "outputStyle" : 0,
       "shouldRunBless" : 1,
       "outputAbbreviatedPath" : "\/resource\/css\/_box-sizing.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/vendor\/susy\/susy\/language\/_susyone.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/susy\/susy\/language\/_susyone.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/resource\/css\/_susyone.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -1293,8 +1339,8 @@
       "debugStyle" : 0
     },
     "\/resource\/js\/vendor\/modernizr-v2.7.1.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/resource\/js\/vendor\/modernizr-v2.7.1.js",
@@ -1376,8 +1422,8 @@
       "debugStyle" : 0
     },
     "\/resource\/js\/vendor\/jquery-1.11.0.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/resource\/js\/vendor\/jquery-1.11.0.js",

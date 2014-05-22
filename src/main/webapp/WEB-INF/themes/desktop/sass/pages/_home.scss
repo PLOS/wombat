@@ -9,12 +9,12 @@
 $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
 $pad-default: rem-calc(10);
+$pad-default-margin: ($pad-default * 2);
 $image-width: rem-calc(70);
 $image-container: ($image-width + $pad-default);
 // HOME CONTENT - home-content
 
 // for demo:
-
 .row {
   &.one, &.two{
     .block{
@@ -34,7 +34,6 @@ $image-container: ($image-width + $pad-default);
   img{
 
     @include single-box-shadow();
-
   @include border-top-radius();
   }
   padding: 0;
@@ -89,6 +88,18 @@ $image-container: ($image-width + $pad-default);
 }
 
 
+.carousel-wrap{
+  @extend .block-card;
+}
+
+.block-header{
+  @extend .highlight-background;
+   @extend h3;
+
+  padding: $pad-default $pad-default-margin;
+  width: 100%;
+
+}
 
 .block {
   position: relative;
@@ -215,4 +226,45 @@ $image-container: ($image-width + $pad-default);
   h3, h4, a {color: $white !important;}
   position: relative;
   a{@include rounded-pill(); position: absolute; width: 80px; height: 36px; right: 20px; top: 10px; }
+}
+
+.carousel-wrap{
+  @extend .black-card;
+  .carousel{
+    li{
+      h3{ @extend h2; }
+      p{ font-size: rem-calc($txt-size-medium);}
+    }
+  }
+  .carousel-control{
+    $icon-height: rem-calc(30px);
+    text-align: center;
+    display: table;
+      .jcarousel-prev,
+      .jcarousel-next{
+        @extend .fa;
+        font-size: $icon-height;
+
+        &:hover{ color: red}
+      }
+    .jcarousel-prev{
+       @extend .fa-chevron-circle-left;
+       &:hover{ @extend .fa-chevron-left; height: 60%;}
+    }
+    .jcarousel-next{
+      @extend .fa-chevron-circle-right;
+      &:hover{ @extend .fa-chevron-right;}
+    }
+    .numbers{
+      font-size: rem-calc($txt-size-xsmall);
+      display: inline-block;
+
+     // display: inline-block;
+
+      span{display: inline-block; vertical-align: middle; line-height: $icon-height;
+        height: $icon-height;}
+    }
+  }
+
+
 }

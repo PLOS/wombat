@@ -5341,14 +5341,14 @@ main,
 /*   This file contains design components used for Journals and Wombat Generic
  *
  */
-/* line 25, ../../sass/_components.scss */
+/* line 26, ../../sass/_components.scss */
 .pill {
-  background: #3c63af;
   padding: 10px 20px;
+  display: inline-block;
   border-radius: 5px;
-  color: white;
-  display: inline-block; }
-  /* line 19, ../../sass/_components.scss */
+  background: #3c63af;
+  color: white; }
+  /* line 20, ../../sass/_components.scss */
   .pill:hover {
     background: #333333; }
 
@@ -5448,8 +5448,6 @@ main,
       margin-left: -13px;
       border-radius: 4px;
       box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);   */
-      background: white;
-      padding: 0.625rem;
       -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
       -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
       box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -5459,7 +5457,9 @@ main,
       -moz-border-radius-topright: 5px;
       -webkit-border-top-right-radius: 5px;
       border-top-right-radius: 5px;
-      margin-bottom: 1.25rem; }
+      margin-bottom: 1.25rem;
+      padding: 0.625rem;
+      background: white; }
       /* line 76, ../../sass/sections/_header.scss */
       .head-nav li .f-dropdown li {
         border-left: 0;
@@ -5514,13 +5514,13 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
   font-weight: bold; }
   /* line 117, ../../sass/sections/_header.scss */
   .nav-top li.highlighted {
-    background: #3c63af;
     padding: 10px 20px;
-    border-radius: 5px;
-    color: white;
     display: inline-block;
+    border-radius: 5px;
+    background: #3c63af;
+    color: white;
     margin-top: -5px; }
-    /* line 19, ../../sass/_components.scss */
+    /* line 20, ../../sass/_components.scss */
     .nav-top li.highlighted:hover {
       background: #333333; }
     /* line 120, ../../sass/sections/_header.scss */
@@ -5627,8 +5627,6 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
 .block {
   position: relative;
   height: 15.625rem;
-  background: white;
-  padding: 0.625rem;
   -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -5638,7 +5636,9 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
-  margin-bottom: 1.25rem; }
+  margin-bottom: 1.25rem;
+  padding: 0.625rem;
+  background: white; }
   /* line 98, ../../sass/pages/_home.scss */
   .block .block-image {
     width: 5rem;
@@ -5748,8 +5748,6 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
 #issue,
 #twitter-feed,
 #blogroll {
-  background: white;
-  padding: 0.625rem;
   -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -5760,6 +5758,8 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   margin-bottom: 1.25rem;
+  padding: 0.625rem;
+  background: white;
   background-color: #cccccc;
   color: white;
   height: 15.625rem; }
@@ -5789,8 +5789,6 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
   margin-bottom: 0;
   max-width: 60rem;
   *zoom: 1;
-  background: #333333;
-  padding: 0.625rem;
   -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -5801,6 +5799,8 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   margin-bottom: 1.25rem;
+  padding: 0.625rem;
+  background: #333333;
   position: relative; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
   #billboard:before, #billboard:after {
@@ -5814,16 +5814,16 @@ box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
     color: white !important; }
   /* line 217, ../../sass/pages/_home.scss */
   #billboard a {
-    background: #3c63af;
     padding: 0.625rem;
-    border-radius: 5px;
-    color: white;
     display: inline-block;
+    border-radius: 5px;
+    background: #3c63af;
+    color: white;
     position: absolute;
     width: 80px;
     height: 36px;
     right: 20px;
     top: 10px; }
-    /* line 19, ../../sass/_components.scss */
+    /* line 20, ../../sass/_components.scss */
     #billboard a:hover {
       background: #333333; }

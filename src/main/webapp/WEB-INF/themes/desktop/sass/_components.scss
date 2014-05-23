@@ -11,11 +11,12 @@ $default-box-shadow-inset: false;
 
 
 @mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default){
-    background: $background;
     padding: $padding;
-    border-radius: $border-radius;
-    color: $clr-btn-text;
     display: inline-block;
+    border-radius: $border-radius;
+    background: $background;
+    color: $clr-btn-text;
+
     &:hover{
        background: $clr-link-hover;
     }
@@ -27,17 +28,16 @@ $default-box-shadow-inset: false;
 }
 
 @mixin blocks($color: $white){
-  background: $color;
-  padding: rem-calc(10);
+
   @include single-box-shadow();
   @include border-top-radius();
   margin-bottom: $block-grid-default-spacing;
-
+  padding: rem-calc(10);
+  background: $color;
 
 }
 
   ///PLACEHOLDER STYLES
-
 @mixin stub(){
   background-color: $grey-med-light;
   color: $white;
@@ -45,7 +45,6 @@ $default-box-shadow-inset: false;
 
 .stub{
   @include stub();
-
 }
 
 

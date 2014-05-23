@@ -10,6 +10,7 @@
   <properties>
     <java-version>1.7</java-version>
     <org.springframework-version>3.2.2.RELEASE</org.springframework-version>
+    <org.springsecurity-version>3.2.2.RELEASE</org.springsecurity-version>
     <org.aspectj-version>1.6.10</org.aspectj-version>
     <org.slf4j-version>1.6.6</org.slf4j-version>
     <rhombat.version>1.0.1</rhombat.version>
@@ -227,25 +228,25 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-cas</artifactId>
-      <version>${org.springframework-version}</version>
+      <version>${org.springsecurity-version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
-      <version>${org.springframework-version}</version>
+      <version>${org.springsecurity-version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
-      <version>${org.springframework-version}</version>
+      <version>${org.springsecurity-version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
-      <version>${org.springframework-version}</version>
+      <version>${org.springsecurity-version}</version>
     </dependency>
 
   </dependencies>

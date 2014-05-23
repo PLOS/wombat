@@ -20,8 +20,10 @@ import org.ambraproject.wombat.service.SearchService;
 import org.ambraproject.wombat.service.SoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +44,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
   private SearchService searchService;
 
   private final UserFields uf;
+  private String casLogoutUrl;
 
   public JsonConfiguration(UserFields uf) {
     this.uf = uf;
@@ -70,6 +73,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
     private String casUrl;
     private String casLoginUrl;
     private String casLogoutUrl;
+    private String casLogoutServiceUrl;
 
     public void setServer(String server) {
       this.server = server;
@@ -127,6 +131,9 @@ public class JsonConfiguration implements RuntimeConfiguration {
       this.casLogoutUrl = casLogoutUrl;
     }
 
+    public void setCasLogoutServiceUrl(String casLogoutServiceUrl) {
+      this.casLogoutServiceUrl = casLogoutServiceUrl;
+    }
   }
 
   /**
@@ -158,6 +165,14 @@ public class JsonConfiguration implements RuntimeConfiguration {
     }
     if ((uf.devModeAssets == null || !uf.devModeAssets) && Strings.isNullOrEmpty(uf.compiledAssetDir)) {
       throw new RuntimeConfigurationException("If devModeAssets is false, compiledAssetDir must be specified");
+    }
+
+    if (!Strings.isNullOrEmpty(uf.casLogoutUrl) && !Strings.isNullOrEmpty(uf.casLogoutServiceUrl)) {
+      try {
+        this.casLogoutUrl = uf.casLogoutUrl + "?service=" + URLEncoder.encode(uf.casLogoutServiceUrl, "UTF-8");
+      } catch (UnsupportedEncodingException e) {
+        this.casLogoutUrl = uf.casLogoutUrl + "?service=" + URLEncoder.encode(uf.casLogoutServiceUrl);
+      }
     }
   }
 
@@ -273,7 +288,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
 
   @Override
   public String getCasLogoutUrl() {
-    return uf.casLogoutUrl;
+    return this.casLogoutUrl;
   }
 
   /*

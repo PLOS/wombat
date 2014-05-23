@@ -1,0 +1,35 @@
+sections:
+# A list of supported sections.
+# (Only one is present here, which is used as an example case to document everything.)
+# Subthemes may override "sections" with a variable-length list.
+# If this element is overridden, note that the entire "sections" list is overridden;
+# it is not possible to override individual fields of a section and inherit the rest.
+# The order is significant; it defines the order of the "supportedSections" model field,
+# which can build a section menu.
+
+  - name: "recent"
+    # The section identifier.
+    # Must be one of the valid values defined by org.ambraproject.wombat.controller.HomeController.SectionType.
+
+    resultCount: 7
+    # The number of articles to load into the model when this section is displayed.
+
+    shuffle: null
+    # If null, don't shuffle results, but display them in the order defined in HomeController.
+    # Else, must be a sequence of numbers. Pull articles from the last n days, where n is the first number in the
+    # sequence. Iterate down the sequence until at the end or the number of articles is at least resultCount.
+    # Then randomly reorder and display those.
+    #
+    # For example,
+    #   {"sections": [ {"name": "recent", "resultCount": 5, "shuffle": [7, 14]} ]}
+    # would mean to display a random selection of 5 articles from the past 7 days, or from the past 14 days
+    # if fewer than 5 articles were published in the past 7 days.
+    #
+    # Shuffling is supported (currently) only for "recent".
+    # This must be null on any section for which shuffling is supported.
+
+defaultSelection: "recent"
+# The value must be either null or equal to the "name" value of one of the entries under "section".
+# If null, the homepage takes no selection, and loads articles for every supported section into the model.
+# If non-null, then the homepage has one selected section, and this is the default is none is queried for.
+# This affects what is loaded into the model.

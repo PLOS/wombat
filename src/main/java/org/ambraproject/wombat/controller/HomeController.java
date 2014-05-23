@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Strings;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.SoaService;
@@ -17,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.EnumSet;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -37,20 +39,59 @@ public class HomeController extends WombatController {
   /**
    * Enumerates the allowed values for the section parameter for this page.
    */
-  private static enum Section {
-    RECENT,
-    POPULAR,
-    IN_THE_NEWS;
+  private static enum SectionType {
+    RECENT {
+      @Override
+      public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site, start, section.resultCount,
+            SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
+        return (List<Object>) result.get("docs");
+      }
+    },
+    POPULAR {
+      @Override
+      public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site, start, section.resultCount,
+            SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
+        return (List<Object>) result.get("docs");
+      }
+    },
+    IN_THE_NEWS {
+      @Override
+      public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+        return (List<Object>) getInTheNewsArticles(context.soaService, site.getJournalKey());
+      }
+    };
 
     /**
      * @throws java.lang.IllegalArgumentException if name is not matched
      */
-    private static Section forCaseInsensitiveName(String name) {
-      return Section.valueOf(name.toUpperCase());
+    private static SectionType forCaseInsensitiveName(String name) {
+      return SectionType.valueOf(name.toUpperCase());
+    }
+
+    public abstract List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException;
+  }
+
+  private static class SectionSpec {
+    private final SectionType type;
+    private final int resultCount;
+    private final List<Number> shuffleSeq;
+
+    private SectionSpec(Map<String, Object> configuration) {
+      type = SectionType.forCaseInsensitiveName((String) configuration.get("name"));
+      resultCount = ((Number) configuration.get("resultCount")).intValue();
+      shuffleSeq = (List<Number>) configuration.get("shuffle"); // may be null
+
+      Preconditions.checkArgument(resultCount > 0);
+    }
+
+    public String getName() {
+      return type.name().toLowerCase();
     }
   }
 
-  private int parseNumberParameter(String param, int minValue) {
+  private static int parseNumberParameter(String param, int minValue) {
     if (param == null) {
       return minValue;
     }
@@ -59,6 +100,41 @@ public class HomeController extends WombatController {
       return (value < minValue) ? minValue : value;
     } catch (NumberFormatException e) {
       return minValue;
+    }
+  }
+
+  private static List<SectionSpec> parseSectionSpecs(List<Map<String, Object>> sectionSpecs) {
+    List<SectionSpec> sections = new ArrayList<>(sectionSpecs.size());
+    for (Map<String, Object> sectionSpec : sectionSpecs) {
+      sections.add(new SectionSpec(sectionSpec));
+    }
+    return sections;
+  }
+
+  private static List<String> getSupportedSectionNames(List<SectionSpec> supportedSections) {
+    List<String> supportedSectionNames = new ArrayList<>(supportedSections.size());
+    for (SectionSpec sectionSpec : supportedSections) {
+      supportedSectionNames.add(sectionSpec.getName());
+    }
+    return supportedSectionNames;
+  }
+
+  private static SectionSpec findQueriedSection(Collection<SectionSpec> sectionSpecs,
+                                                String sectionParam, String defaultSection) {
+    if (sectionParam == null) {
+      sectionParam = defaultSection;
+    }
+    for (SectionSpec sectionSpec : sectionSpecs) {
+      if (sectionSpec.type.name().equalsIgnoreCase(sectionParam)) {
+        return sectionSpec;
+      }
+    }
+
+    if (sectionParam.equalsIgnoreCase(defaultSection)) {
+      throw new IllegalArgumentException("Default not found in specs");
+    } else {
+      // Iterate again and return the default
+      return findQueriedSection(sectionSpecs, defaultSection, defaultSection);
     }
   }
 
@@ -72,70 +148,38 @@ public class HomeController extends WombatController {
     }
 
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");
-    int resultsPerPage = ((Number) homepageConfig.get("resultsPerPage")).intValue();
-    List<String> supportedSections = (List<String>) homepageConfig.get("sections");
-    model.addAttribute("supportedSections", supportedSections);
 
-    Section section = null;
-    if (!Strings.isNullOrEmpty(sectionParam)) {
-      try {
-        section = Section.forCaseInsensitiveName(sectionParam);
-      } catch (IllegalArgumentException e) {
-        // Fall through and use the default
-      }
-    }
-    if (section == null || !supportedSections.contains(section.name().toLowerCase())) {
-      // Use the default section specified in the theme
-      String defaultSectionName = (String) homepageConfig.get("defaultSection");
-      try {
-        section = Section.forCaseInsensitiveName(defaultSectionName);
-      } catch (IllegalArgumentException e) {
-        String message = String.format("Invalid defaultSection value in homepage config: \"%s\". Expected one of: %s",
-            defaultSectionName, EnumSet.allOf(Section.class));
-        throw new RuntimeException(message, e);
-      }
-    }
-    model.addAttribute("selectedSection", section.name().toLowerCase());
+    List<SectionSpec> sectionSpecs = parseSectionSpecs((List<Map<String, Object>>) homepageConfig.get("sections"));
+    model.addAttribute("supportedSections", getSupportedSectionNames(sectionSpecs));
+    String defaultSection = (String) homepageConfig.get("defaultSelection");
 
-    int page = parseNumberParameter(pageParam, 1);
-    int start = (page - 1) * resultsPerPage;
-    model.addAttribute("resultsPerPage", resultsPerPage);
+    Collection<SectionSpec> sectionsToRender;
+    int start;
+    if (defaultSection == null) {
+      sectionsToRender = sectionSpecs; // Use all sections
+      start = 0;
+    } else {
+      SectionSpec selectedSection = findQueriedSection(sectionSpecs, sectionParam, defaultSection);
+      model.addAttribute("selectedSection", selectedSection.getName());
+      sectionsToRender = ImmutableList.of(selectedSection);
 
-    Map<?, ?> articles;
-    try {
-      switch (section) {
-        case RECENT:
-          articles = solrSearchService.getHomePageArticles(site, start, resultsPerPage,
-              SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
-          break;
-
-        case POPULAR:
-          articles = solrSearchService.getHomePageArticles(site, start, resultsPerPage,
-              SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
-          break;
-
-        case IN_THE_NEWS:
-          articles = getInTheNewsArticles(site.getJournalKey());
-          break;
-
-        default:
-          throw new IllegalStateException("Unexpected section value " + section);
-      }
-    } catch (IOException e) {
-      log.error("Could not populate home page with articles from Solr", e);
-      articles = null;
-      // Render the rest of the page without the article list
-      // The FreeMarker template should provide an error message if "articles" is missing from the model
+      model.addAttribute("resultsPerPage", selectedSection.resultCount);
+      int pageSelection = parseNumberParameter(pageParam, 1);
+      start = (pageSelection - 1) * selectedSection.resultCount;
     }
 
-    if (articles != null) {
-      model.addAttribute("articles", articles);
+
+    Map<String, Object> sectionsForModel = Maps.newHashMapWithExpectedSize(sectionsToRender.size());
+    for (SectionSpec section : sectionsToRender) {
+      List<Object> articles = section.type.getArticles(this, section, site, start);
+      sectionsForModel.put(section.getName(), articles);
     }
 
+    model.addAttribute("sections", sectionsForModel);
     return site.getKey() + "/ftl/home/home";
   }
 
-  private Map<String, Object> getInTheNewsArticles(String journalKey) throws IOException {
+  private static List<?> getInTheNewsArticles(SoaService soaService, String journalKey) throws IOException {
     String requestAddress = "journals/" + journalKey + "?inTheNewsArticles";
     List<Map<String, Object>> inTheNewsArticles = (List<Map<String, Object>>)
         soaService.requestObject(requestAddress, List.class);
@@ -148,9 +192,7 @@ public class HomeController extends WombatController {
       article = DoiSchemeStripper.strip(article);
       article.put("id", article.get("doi"));
     }
-    Map<String, Object> results = Maps.newHashMapWithExpectedSize(1);
-    results.put("docs", inTheNewsArticles);
-    return results;
+    return inTheNewsArticles;
   }
 
 }

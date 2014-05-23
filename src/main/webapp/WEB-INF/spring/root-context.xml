@@ -2,11 +2,17 @@
 <beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:security="http://www.springframework.org/schema/security"
+             xmlns:context="http://www.springframework.org/schema/context"
              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
     <!-- Root Context: defines shared resources visible to all other web components -->
+
+  <context:annotation-config/>
+
+  <beans:bean class="org.ambraproject.wombat.config.RootConfiguration" />
 
   <beans:bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
     <beans:property name="service" value="http://localhost:8234/wombat/j_spring_cas_security_check"/>

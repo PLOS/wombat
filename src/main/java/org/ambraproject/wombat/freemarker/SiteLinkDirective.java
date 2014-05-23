@@ -28,7 +28,7 @@ public class SiteLinkDirective implements TemplateDirectiveModel {
       throw new RuntimeException("path parameter required");
     }
     String path = ((TemplateScalarModel) pathObj).getAsString();
-    String link = siteResolver.buildLink(env, path);
+    String link = new SitePageContext(siteResolver, env).buildLink(path);
     env.getOut().write(link);
   }
 

@@ -164,14 +164,4 @@ public class ThemeTree {
     return node;
   }
 
-  public ImmutableMap<String, Theme> matchToSites(List<Map<String, ?>> siteConfigJson) {
-    Map<String, Theme> siteMap = Maps.newLinkedHashMap();
-    for (Map<String, ?> siteObj : siteConfigJson) {
-      String key = (String) siteObj.get("key");
-      String themeName = (String) siteObj.get("theme");
-      siteMap.put(key, themes.get(themeName));
-    }
-    return ImmutableMap.copyOf(siteMap);
-  }
-
 }

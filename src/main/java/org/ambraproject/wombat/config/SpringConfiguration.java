@@ -29,6 +29,7 @@ import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
+import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.JsDirective;
 import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
@@ -36,6 +37,7 @@ import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.RenderJsDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.freemarker.SiteLinkDirective;
+import org.ambraproject.wombat.freemarker.ThemeConfigDirective;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -44,6 +46,7 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
+import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -73,7 +76,7 @@ public class SpringConfiguration {
   @Bean
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration,
                          ThemeTree themeTree) {
-    return SiteSet.create(runtimeConfiguration.getThemesForSites(themeTree));
+    return runtimeConfiguration.getSites(themeTree);
   }
 
   @Bean
@@ -112,13 +115,25 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public FetchHtmlDirective fetchHtmlDirective() {
+    return new FetchHtmlDirective();
+  }
+
+  @Bean
+  public ThemeConfigDirective themeConfigDirective() {
+    return new ThemeConfigDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            SiteLinkDirective siteLinkDirective,
                                            CssLinkDirective cssLinkDirective,
                                            RenderCssLinksDirective renderCssLinksDirective,
                                            JsDirective jsDirective,
                                            RenderJsDirective renderJsDirective,
-                                           BuildInfoDirective buildInfoDirective)
+                                           BuildInfoDirective buildInfoDirective,
+                                           FetchHtmlDirective fetchHtmlDirective,
+                                           ThemeConfigDirective themeConfigDirective)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -137,6 +152,8 @@ public class SpringConfiguration {
     variables.put("js", jsDirective);
     variables.put("renderJs", renderJsDirective);
     variables.put("buildInfo", buildInfoDirective);
+    variables.put("fetchHtml", fetchHtmlDirective);
+    variables.put("themeConfig", themeConfigDirective);
     config.setFreemarkerVariables(variables.build());
     return config;
   }
@@ -171,6 +188,10 @@ public class SpringConfiguration {
     return new AssetServiceImpl();
   }
 
+  @Bean
+  public StoredHomepageService storedHomepageService() {
+    return new StoredHomepageService();
+  }
 
   @Bean
   public BuildInfoService buildInfoService() {

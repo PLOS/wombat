@@ -12,6 +12,7 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 
@@ -93,7 +94,7 @@ public interface RuntimeConfiguration {
    * @param themeTree the set of available themes
    * @return map from site keys to each site's theme
    */
-  ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree);
+  SiteSet getSites(ThemeTree themeTree);
 
   String getCasServiceUrl();
   String getCasUrl();

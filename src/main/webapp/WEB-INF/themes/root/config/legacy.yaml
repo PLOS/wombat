@@ -1,0 +1,2 @@
+urlPrefix: null
+# If not null, certain links will point at a legacy server (expectedly, Ambra) with URLs beginning with this string.

@@ -7,7 +7,6 @@
 //
 
 // This is the default html and body font-size for the base rem value.
-$rem-base: $base-font-size;
 
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "../../variables", "functions";
@@ -21,10 +20,10 @@ $rem-base: $base-font-size;
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
- $base-font-size: $txt-size-small;
+ $base-font-size: 100% ;
 
 // The $base-line-height is 100% while $base-font-size is 150%
-$base-line-height: 150%;
+$base-line-height: 120%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
 // $include-html-classes: true;
@@ -33,12 +32,12 @@ $base-line-height: 150%;
 
 // Grid
 
-// $include-html-grid-classes: $include-html-classes;
-// $include-xl-html-grid-classes: false;
+$include-html-grid-classes: true;
+$include-xl-html-grid-classes: false;
 
-// $row-width: rem-calc(1000);
-// $column-gutter: rem-calc(30);
-// $total-columns: 12;
+$row-width: rem-calc(960);
+$column-gutter: rem-calc(20);
+$total-columns: 12;
 
 // We use these to control various global styles
 $body-bg: $clr-body-bg;
@@ -57,7 +56,7 @@ $default-float: left;
 
 // We use these as default colors throughout
 $primary-color: $clr-highlight;
-$secondary-color: $grey-dark;
+$secondary-color: $body-font-color;
 $alert-color: $clr-warning;
 $success-color:$clr-success;
 $warning-color: $clr-warning;
@@ -122,40 +121,40 @@ $header-font-family: $font-face-fancy;
 $header-font-weight: normal;
 $header-font-style: normal;
 $header-font-color: $grey-dark;
-//$header-line-height: 1.4;
+$header-line-height: 1;
 //$header-top-margin: .2rem;
-//$header-bottom-margin: .5rem;
+$header-bottom-margin: .2rem;
 $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
-$h1-font-size: rem-calc(44);
-$h2-font-size: rem-calc(37);
-$h3-font-size: rem-calc(27);
-$h4-font-size: rem-calc(23);
-$h5-font-size: rem-calc(18);
-$h6-font-size: 1rem;
+$h1-font-size: rem-calc($txt-size-pgtitle);
+$h2-font-size: rem-calc($txt-size-h2);
+$h3-font-size: rem-calc($txt-size-h3);
+$h4-font-size: rem-calc($txt-size-h4);
+$h5-font-size: rem-calc($txt-size-h5);
+$h6-font-size: rem-calc($txt-size-h6);
 
 // These control how subheaders are styled.
-//$subheader-line-height: 1.4;
-//$subheader-font-color: scale-color($header-font-color, $lightness: 35%);
-//$subheader-font-weight: 300;
-//$subheader-top-margin: .2rem;
-//$subheader-bottom-margin: .5rem;
+$subheader-line-height: 1.1;
+$subheader-font-color: $clr-body-text;
+$subheader-font-weight: 300;
+$subheader-top-margin: .2rem;
+$subheader-bottom-margin: .2rem;
 
 // A general <small> styling
-// $small-font-size: 60%;
-// $small-font-color: scale-color($header-font-color, $lightness: 35%);
+ $small-font-size: rem-calc($txt-size-xsmall);
+ $small-font-color: $body-font-color;
 
 // We use these to style paragraphs
-// $paragraph-font-family: inherit;
-// $paragraph-font-weight: normal;
-// $paragraph-font-size: 1rem;
-// $paragraph-line-height: 1.6;
-// $paragraph-margin-bottom: rem-calc(20);
-// $paragraph-aside-font-size: rem-calc(14);
-// $paragraph-aside-line-height: 1.35;
-// $paragraph-aside-font-style: italic;
-// $paragraph-text-rendering: optimizeLegibility;
+$paragraph-font-family: inherit;
+$paragraph-font-weight: normal;
+$paragraph-font-size: rem-calc($txt-size-default);
+$paragraph-line-height: 1.35;
+$paragraph-margin-bottom: rem-calc(5);
+$paragraph-aside-font-size: rem-calc(14);
+$paragraph-aside-line-height: 1.35;
+$paragraph-aside-font-style: italic;
+$paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style <code> tags
 // $code-color: scale-color($alert-color, $lightness: -27%);
@@ -274,9 +273,10 @@ $anchor-font-color-hover:  $grey-dark;
 // $include-html-grid-classes: $include-html-classes;
 
 // We use this to control the maximum number of block grid elements per row
-// $block-grid-elements: 12;
-// $block-grid-default-spacing: rem-calc(20);
-// $align-block-grid-to-grid: true;
+$block-grid-elements: 12;
+$row-width: rem-calc(960);
+$block-grid-default-spacing: rem-calc(20);
+ $align-block-grid-to-grid: true;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 // $block-grid-media-queries: true;
@@ -488,7 +488,7 @@ $anchor-font-color-hover:  $grey-dark;
 // $form-label-font-color: scale-color(#000, $lightness: 30%);
 // $form-label-bottom-margin: 0;
 // $input-font-family: inherit;
-// $input-font-color: rgba(0,0,0,0.75);
+ $input-font-color: $clr-body-text;
 // $input-font-size: rem-calc(14);
 // $input-bg-color: #fff;
 // $input-focus-bg-color: scale-color(#fff, $lightness: -2%);
@@ -496,7 +496,7 @@ $anchor-font-color-hover:  $grey-dark;
 // $input-focus-border-color: scale-color(#fff, $lightness: -40%);
 // $input-border-style: solid;
 // $input-border-width: 1px;
-// $input-border-radius: $global-radius;
+ $input-border-radius: 0;
 // $input-disabled-bg: #ddd;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 // $input-include-glowing-effect: true;

@@ -1,6 +1,6 @@
 </div><#-- Close pagebdy from header.ftl -->
 </div><#-- Close pagebdy-wrap from header.ftl -->
-</article>
+</main>
 <footer id="pageftr">
   <div class="ftr-cols cf">
 

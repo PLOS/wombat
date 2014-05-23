@@ -1,0 +1,218 @@
+/* 
+ *
+ */
+
+/*
+ *    Home page blocks
+ */
+
+$block-height: rem-calc(250);
+$block-height-small: rem-calc(180);
+$pad-default: rem-calc(10);
+$image-width: rem-calc(70);
+$image-container: ($image-width + $pad-default);
+// HOME CONTENT - home-content
+
+// for demo:
+
+.row {
+  &.one, &.two{
+    .block{
+      margin-right: 2%; // this is for demo
+      &:last-child{margin-right: 0;}
+    }
+  }
+}
+
+.row {
+  @include grid-row()
+}
+
+//home page blocks
+.hero {
+  position: relative;
+  img{
+
+    @include single-box-shadow();
+
+  @include border-top-radius();
+  }
+  padding: 0;
+  margin-bottom: 20px;
+  background: transparent;
+  // hero colors:
+  color: $white;
+  a {
+    color: $white;
+  }
+  img {
+    width: 960px;
+  }
+  &.dark-text,
+  &.dark-text a {
+    color: $clr-body-text;
+  }
+  // hero
+  .hero-content {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: $pad-default;
+    font-size: rem-calc($txt-size-medium-large);
+    h4 {
+      @extend h1;
+      @extend .no-margin;
+    }
+    p {
+      @extend .no-margin;
+    }
+  }
+}
+
+//sizes:
+.row > .block {
+  &.x-small {
+    @include grid-column(2, $collapse: false);
+
+  }
+  &.small {
+    @include grid-column(4, $collapse: false);
+  }
+  &.medium {
+    @include grid-column(6, $collapse: false);
+    width: 48%;  // for demo
+  }
+  &.large {
+    @include grid-column(7, $collapse: false);
+  }
+
+}
+
+
+
+.block {
+  position: relative;
+  height: $block-height;
+
+  @include blocks;
+  .block-image {
+    width: $image-container;
+    display: block;
+    position: absolute;
+    left: $pad-default;
+    top: $pad-default;
+  }
+  &.image .block-content {
+    margin-left: ($image-container + ($pad-default * 2));
+  }
+  // components
+  .date {
+    @extend .small-italic;
+  }
+  .credits {
+    @extend .small-italic;
+    position: absolute;
+    bottom: $pad-default;
+    left: ($image-container + ($pad-default * 3));
+    margin: 0;
+
+  }
+  .category {
+    @extend .header-allcaps;
+    @include highlight-color();
+  }
+  .title {
+    @extend h2;
+    a {
+      color: $clr-body-text;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+  .blurb {
+    //TODO: remove when you neaten up font sizes.
+  }
+
+  .block-content {
+    position: relative;
+    font-size: rem-calc($txt-size-default);
+  }
+
+  &.small {
+    .title {
+      @extend h4;
+      @extend .subheader;
+      font-family: albert-bold;
+    }
+  }
+}
+
+.column {
+  &.left {
+    @include grid-column(8, $collapse: false);
+    .row-small-blocks{
+      @include block-grid(2);
+      // for demo
+      .block {
+        &:nth-child(1),&:nth-child(3){
+          margin-right: 2%;
+          width: 46%;
+        }
+      }
+
+    }
+    /// row three is shorter than the others
+    .block {
+      height: $block-height-small;
+
+      .block-image {
+        height: ($block-height-small - ($pad-default *2));
+        overflow: hidden;
+      }
+
+      &.small {
+        @include grid-column(6, $collapse: false);
+      }
+    }
+  }
+
+  &.right {
+    @include grid-column(4, $collapse: true);
+  }
+}
+
+
+
+#submission-links,
+#article-list,
+#social-links,
+#spotlight,
+#issue,
+#twitter-feed,
+#blogroll{
+  @include blocks();
+  @include stub();
+  height: $block-height;
+}
+
+#issue {
+  @include grid-column(2);
+
+}
+
+#article-list {
+  @include grid-column(4);
+  width: 30%; // for demo
+  margin-right: 3%; //for demo
+
+}
+
+#billboard{
+  @include grid-row;
+  @include blocks($grey-dark);
+  h3, h4, a {color: $white !important;}
+  position: relative;
+  a{@include rounded-pill(); position: absolute; width: 80px; height: 36px; right: 20px; top: 10px; }
+}

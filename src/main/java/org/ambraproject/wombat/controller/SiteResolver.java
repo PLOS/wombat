@@ -1,10 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import freemarker.core.Environment;
-import freemarker.ext.beans.BeanModel;
-import freemarker.ext.servlet.HttpRequestHashModel;
-import freemarker.template.TemplateModel;
-import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.UnresolvedSiteException;
@@ -84,36 +79,6 @@ public class SiteResolver implements HandlerMethodArgumentResolver {
       }
     }
     return resolution;
-  }
-
-  private static HttpServletRequest extractRequest(Environment environment) throws TemplateModelException {
-    return ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
-  }
-
-  /**
-   * Determine the site that a page being rendered belongs to.
-   *
-   * @param environment the page's FreeMarker environment
-   * @return the site
-   * @throws TemplateModelException
-   */
-  public Site getSite(Environment environment) throws TemplateModelException {
-    TemplateModel site = environment.getDataModel().get("site");
-    if (site instanceof BeanModel) {
-      Object wrappedObject = ((BeanModel) site).getWrappedObject();
-      if (wrappedObject instanceof Site) {
-        return (Site) wrappedObject;
-      }
-    }
-    return resolveSite(extractRequest(environment));
-  }
-
-  /**
-   * Convenience method for {@link org.ambraproject.wombat.config.site.url.SiteRequestScheme#buildLink} when applied to
-   * the request from a FreeMarker {@link Environment}.
-   */
-  public String buildLink(Environment environment, String path) throws TemplateModelException {
-    return getSite(environment).getRequestScheme().buildLink(extractRequest(environment), path);
   }
 
 }

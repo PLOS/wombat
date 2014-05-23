@@ -12,12 +12,15 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.gson.Gson;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -105,12 +108,10 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
     return new ThemeTree(themeMap);
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
-    return themeMap;
+  public SiteSet getSites(ThemeTree themeTree) {
+    List<Map<String, ?>> spec = new Gson().fromJson("[ { \"key\": \"default\", \"theme\": \"default\" } ]", List.class);
+    return SiteSet.create(spec, themeTree);
   }
 
   @Override

@@ -2,13 +2,130 @@
  *       These are the header styles
  */
 
- .nav-top{
-   @include inline-list;
-   @include highlight-border;
-   @extend .float-right;
-   li{}
- }
 
-.head-ad{
-@extend .bg-dark;
+.head-top{
+ @extend .bg-dark;
+ @extend .text-center;
+ @extend .pad-small-x;
+ @include highlight-border();
 }
+
+.ad-head{
+  iframe {padding-left: 18px;
+    background: image-url('text.vert.ad.gif') no-repeat left 5px; }
+}
+
+$width-logo: 3;
+$width-search: 3;
+$width-nav: $block-grid-elements - ($width-logo + $width-search);
+#pagehdr-wrap{
+
+   .logo{ @include grid-column($width-logo); // from foundation
+     @include background-image('logo-bio.png'); }
+   .head-search{
+     @include grid-column($width-search);  // from foundation
+     $last-column:true;   // from foundation
+     form{
+
+        $input-box-shadow: none; // from foundation
+        $input-include-glowing-effect: false;  // from foundation
+        $input-font-size: rem-calc(22);   // from foundation
+       legend,label{display: none;}
+
+       input[type="text"] {
+         $input-border-radius: 0;    // from foundation
+         $input-include-glowing-effect: false;  // from foundation
+         $input-font-color: $clr-body-text;   // from foundation
+         $input-border-color: $input-bg-color; // from foundation
+         $input-focus-border-color:  $input-bg-color;  // from foundation
+         @include form-element();  // from foundation
+
+
+       }
+       input[type="image"]{
+         // the following was desperation from demo
+         width: 45px;
+         height: 45px;
+         padding: 12px;
+         border: 0px none;
+         background-color: white;
+       }
+     }
+   }
+
+
+}
+
+.head-nav{
+  @include grid-column($width-nav);   // from foundation
+  ul  { @extend .inline-list;   }    // from foundation
+  li {
+    @extend h2;
+    border-left: 1px solid $clr-separator;
+    a{padding:0px 20px;}
+
+    .f-dropdown {
+      padding: 0;
+      margin: 0;
+      /* padding: 20px 0px 30px;
+      width: 240px;
+      margin-left: -13px;
+      border-radius: 4px;
+      box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);   */
+      @include blocks();
+      li {
+        border-left: 0;
+        padding: 0;
+        margin: 0;
+        a {
+          font-size: $txt-size-xsmall;
+          padding: 10px;
+          width: 240px;
+        }
+        &:hover {
+          color: $clr-highlight-text;
+          background-color: $clr-highlight-hover;
+
+        }
+      }
+    }
+  }
+  /* no styling for this yet so hiding for now */
+.menuCallout {
+   display: none;
+  }
+  }
+/*
+callout: width: 540px;
+margin-left: -310px;
+
+ padding: 20px 0px 30px;
+width: 240px;
+margin-left: -13px;
+border-radius: 4px;
+box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
+*/
+
+.nav{
+  @include grid-row();
+}
+.nav-top{
+  @extend .inline-list; // from foundation
+  @extend .right;   // from foundation
+  @include grid-column($columns:4, $float:right); // from foundation
+  font-weight: bold;
+  li.highlighted{
+    @include rounded-pill();
+    margin-top: -5px;
+    a{color: white;}
+  }
+ }
+.head-search {
+  fieldset {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+
+

@@ -12,12 +12,12 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
-import org.ambraproject.wombat.service.SearchService;
-import org.ambraproject.wombat.service.SoaService;
+import org.ambraproject.wombat.service.remote.SearchService;
+import org.ambraproject.wombat.service.remote.SoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.UnsupportedEncodingException;
@@ -231,11 +231,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public URL getServer() {
-    try {
-      return new URL(uf.server);
-    } catch (MalformedURLException e) {
-      throw new IllegalStateException("Invalid URL should have been caught at validation", e);
-    }
+    return buildUrl(uf.server, null);
   }
 
   /**
@@ -243,12 +239,19 @@ public class JsonConfiguration implements RuntimeConfiguration {
    */
   @Override
   public URL getSolrServer() {
-    String server = uf.solrServer;
-    if (Strings.isNullOrEmpty(server)) {
-      server = "http://localhost:8983/solr/select/";
+    return buildUrl(uf.solrServer, "http://localhost:8983/solr/select/");
+  }
+
+  private static URL buildUrl(String address, String defaultValue) {
+    if (Strings.isNullOrEmpty(address)) {
+      if (defaultValue == null) {
+        return null;
+      } else {
+        address = defaultValue;
+      }
     }
     try {
-      return new URL(server);
+      return new URL(address);
     } catch (MalformedURLException e) {
       throw new IllegalStateException("Invalid URL should have been caught at validation", e);
     }
@@ -267,8 +270,8 @@ public class JsonConfiguration implements RuntimeConfiguration {
    * {@inheritDoc}
    */
   @Override
-  public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
-    return themeTree.matchToSites(uf.sites);
+  public SiteSet getSites(ThemeTree themeTree) {
+    return SiteSet.create(uf.sites, themeTree);
   }
 
   @Override

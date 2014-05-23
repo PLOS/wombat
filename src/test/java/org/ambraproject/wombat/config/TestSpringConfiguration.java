@@ -42,7 +42,7 @@ public class TestSpringConfiguration {
 
   @Bean
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration, ThemeTree themeTree) {
-    return SiteSet.create(runtimeConfiguration.getThemesForSites(themeTree));
+    return runtimeConfiguration.getSites(themeTree);
   }
 
   @Bean

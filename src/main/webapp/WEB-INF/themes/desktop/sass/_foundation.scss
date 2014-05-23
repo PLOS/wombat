@@ -6,7 +6,8 @@
 @charset "UTF-8";
 
 // Behold, here are all the Foundation components.
-@import "vendor/foundation/components/grid",
+@import "vendor/foundation/settings",
+"vendor/foundation/components/grid",
 //"vendor/foundation/components/accordion",
 //"vendor/foundation/components/alert-boxes",
 "vendor/foundation/components/block-grid",

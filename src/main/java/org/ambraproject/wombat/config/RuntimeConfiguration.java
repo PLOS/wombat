@@ -95,4 +95,8 @@ public interface RuntimeConfiguration {
    */
   ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree);
 
+  String getCasServiceUrl();
+  String getCasUrl();
+  String getCasLoginUrl();
+  String getCasLogoutUrl();
 }

@@ -66,6 +66,10 @@ public class JsonConfiguration implements RuntimeConfiguration {
     private String compiledAssetDir;
     private List<Map<String, ?>> themes;
     private List<Map<String, ?>> sites;
+    private String casServiceUrl;
+    private String casUrl;
+    private String casLoginUrl;
+    private String casLogoutUrl;
 
     public void setServer(String server) {
       this.server = server;
@@ -106,6 +110,23 @@ public class JsonConfiguration implements RuntimeConfiguration {
     public void setSites(List<Map<String, ?>> sites) {
       this.sites = sites;
     }
+
+    public void setCasServiceUrl(String casServiceUrl) {
+      this.casServiceUrl = casServiceUrl;
+    }
+
+    public void setCasUrl(String casUrl) {
+      this.casUrl = casUrl;
+    }
+
+    public void setCasLoginUrl(String casLoginUrl) {
+      this.casLoginUrl = casLoginUrl;
+    }
+
+    public void setCasLogoutUrl(String casLogoutUrl) {
+      this.casLogoutUrl = casLogoutUrl;
+    }
+
   }
 
   /**
@@ -233,6 +254,26 @@ public class JsonConfiguration implements RuntimeConfiguration {
   @Override
   public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
     return themeTree.matchToSites(uf.sites);
+  }
+
+  @Override
+  public String getCasServiceUrl() {
+    return uf.casServiceUrl;
+  }
+
+  @Override
+  public String getCasUrl() {
+    return uf.casUrl;
+  }
+
+  @Override
+  public String getCasLoginUrl() {
+    return uf.casLoginUrl;
+  }
+
+  @Override
+  public String getCasLogoutUrl() {
+    return uf.casLogoutUrl;
   }
 
   /*

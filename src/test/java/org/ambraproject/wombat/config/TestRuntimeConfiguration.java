@@ -112,4 +112,24 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
     return themeMap;
   }
+
+  @Override
+  public String getCasServiceUrl() {
+    return null;
+  }
+
+  @Override
+  public String getCasUrl() {
+    return null;
+  }
+
+  @Override
+  public String getCasLoginUrl() {
+    return null;
+  }
+
+  @Override
+  public String getCasLogoutUrl() {
+    return null;
+  }
 }

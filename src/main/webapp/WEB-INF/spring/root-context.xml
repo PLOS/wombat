@@ -15,7 +15,7 @@
   <beans:bean class="org.ambraproject.wombat.config.RootConfiguration" />
 
   <beans:bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
-    <beans:property name="service" value="http://localhost:8234/wombat/j_spring_cas_security_check"/>
+    <beans:property name="service" value="#{runtimeConfiguration.casServiceUrl}"/>
     <beans:property name="sendRenew" value="false"/>
   </beans:bean>
 
@@ -32,7 +32,7 @@
 
   <!-- This filter redirects to the CAS Server to signal Single Logout should be performed -->
   <beans:bean id="requestSingleLogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
-    <beans:constructor-arg value="https://register.plos.org/cas/logout?service=http%3A%2F%2Flocalhost%3A8234%2Fwombat%2Fuser%2Flogout"/>
+    <beans:constructor-arg value="#{runtimeConfiguration.casLogoutUrl}"/>
     <beans:constructor-arg>
       <beans:bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
     </beans:constructor-arg>
@@ -44,7 +44,7 @@
   </beans:bean>
 
   <beans:bean id="casEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
-    <beans:property name="loginUrl" value="https://register.plos.org/cas/login"/>
+    <beans:property name="loginUrl" value="#{runtimeConfiguration.casLoginUrl}"/>
     <beans:property name="serviceProperties" ref="serviceProperties"/>
   </beans:bean>
 
@@ -62,7 +62,7 @@
 
     <beans:property name="ticketValidator">
       <beans:bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
-        <beans:constructor-arg index="0" value="https://register.plos.org/cas" />
+        <beans:constructor-arg index="0" value="#{runtimeConfiguration.casUrl}" />
       </beans:bean>
     </beans:property>
 

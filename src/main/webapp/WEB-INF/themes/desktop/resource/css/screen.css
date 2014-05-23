@@ -5352,6 +5352,11 @@ main,
   .pill:hover {
     background: #333333; }
 
+/* line 46, ../../sass/_components.scss */
+.stub {
+  background-color: #cccccc;
+  color: white; }
+
 /*    This file contains styles for forms
  *
  */

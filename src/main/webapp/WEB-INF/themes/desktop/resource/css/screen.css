@@ -2769,7 +2769,7 @@ button, .button {
     font-size: 1.25rem;
     /*     @else                            { font-size: $padding - rem-calc(2); } */ }
   /* line 199, ../../sass/vendor/foundation/components/_buttons.scss */
-  button.small, button.small-italic, .block button.date, .block button.credits, .button.small, .button.small-italic, .block .button.date, .block .button.credits {
+  button.small, button.small-italic, .block button.date, .carousel-wrap button.date, .block button.credits, .carousel-wrap button.credits, .button.small, .button.small-italic, .block .button.date, .carousel-wrap .button.date, .block .button.credits, .carousel-wrap .button.credits {
     padding-top: 0.875rem;
     padding-right: 1.75rem;
     padding-bottom: 0.9375rem;
@@ -3334,7 +3334,7 @@ button, .button {
   .f-dropdown.tiny {
     max-width: 200px; }
   /* line 242, ../../sass/vendor/foundation/components/_dropdown.scss */
-  .f-dropdown.small, .f-dropdown.small-italic, .block .f-dropdown.date, .block .f-dropdown.credits {
+  .f-dropdown.small, .f-dropdown.small-italic, .block .f-dropdown.date, .carousel-wrap .f-dropdown.date, .block .f-dropdown.credits, .carousel-wrap .f-dropdown.credits {
     max-width: 300px; }
   /* line 243, ../../sass/vendor/foundation/components/_dropdown.scss */
   .f-dropdown.medium {
@@ -3377,15 +3377,15 @@ button, .button {
     .dropdown.button.tiny:before, button.dropdown.tiny:before {
       border-color: white transparent transparent transparent; }
   /* line 124, ../../sass/vendor/foundation/components/_dropdown-buttons.scss */
-  .dropdown.button.small, .dropdown.button.small-italic, .block .dropdown.button.date, .block .dropdown.button.credits, button.dropdown.small, button.dropdown.small-italic, .block button.dropdown.date, .block button.dropdown.credits {
+  .dropdown.button.small, .dropdown.button.small-italic, .block .dropdown.button.date, .carousel-wrap .dropdown.button.date, .block .dropdown.button.credits, .carousel-wrap .dropdown.button.credits, button.dropdown.small, button.dropdown.small-italic, .block button.dropdown.date, .carousel-wrap button.dropdown.date, .block button.dropdown.credits, .carousel-wrap button.dropdown.credits {
     padding-right: 3.0625rem; }
     /* line 87, ../../sass/vendor/foundation/components/_dropdown-buttons.scss */
-    .dropdown.button.small:before, .dropdown.button.small-italic:before, .block .dropdown.button.date:before, .block .dropdown.button.credits:before, button.dropdown.small:before, button.dropdown.small-italic:before, .block button.dropdown.date:before, .block button.dropdown.credits:before {
+    .dropdown.button.small:before, .dropdown.button.small-italic:before, .block .dropdown.button.date:before, .carousel-wrap .dropdown.button.date:before, .block .dropdown.button.credits:before, .carousel-wrap .dropdown.button.credits:before, button.dropdown.small:before, button.dropdown.small-italic:before, .block button.dropdown.date:before, .carousel-wrap button.dropdown.date:before, .block button.dropdown.credits:before, .carousel-wrap button.dropdown.credits:before {
       border-width: 0.4375rem;
       right: 1.3125rem;
       margin-top: -0.15625rem; }
     /* line 116, ../../sass/vendor/foundation/components/_dropdown-buttons.scss */
-    .dropdown.button.small:before, .dropdown.button.small-italic:before, .block .dropdown.button.date:before, .block .dropdown.button.credits:before, button.dropdown.small:before, button.dropdown.small-italic:before, .block button.dropdown.date:before, .block button.dropdown.credits:before {
+    .dropdown.button.small:before, .dropdown.button.small-italic:before, .block .dropdown.button.date:before, .carousel-wrap .dropdown.button.date:before, .block .dropdown.button.credits:before, .carousel-wrap .dropdown.button.credits:before, button.dropdown.small:before, button.dropdown.small-italic:before, .block button.dropdown.date:before, .carousel-wrap button.dropdown.date:before, .block button.dropdown.credits:before, .carousel-wrap button.dropdown.credits:before {
       border-color: white transparent transparent transparent; }
   /* line 125, ../../sass/vendor/foundation/components/_dropdown-buttons.scss */
   .dropdown.button.large, button.dropdown.large {
@@ -3985,13 +3985,13 @@ kbd {
         top: 48%;
         margin-left: -0.375rem; }
   /* line 180, ../../sass/vendor/foundation/components/_split-buttons.scss */
-  .split.button.small, .split.button.small-italic, .block .split.button.date, .block .split.button.credits {
+  .split.button.small, .split.button.small-italic, .block .split.button.date, .carousel-wrap .split.button.date, .block .split.button.credits, .carousel-wrap .split.button.credits {
     padding-right: 4.375rem; }
     /* line 126, ../../sass/vendor/foundation/components/_split-buttons.scss */
-    .split.button.small span, .split.button.small-italic span, .block .split.button.date span, .block .split.button.credits span {
+    .split.button.small span, .split.button.small-italic span, .block .split.button.date span, .carousel-wrap .split.button.date span, .block .split.button.credits span, .carousel-wrap .split.button.credits span {
       width: 2.625rem; }
       /* line 127, ../../sass/vendor/foundation/components/_split-buttons.scss */
-      .split.button.small span:before, .split.button.small-italic span:before, .block .split.button.date span:before, .block .split.button.credits span:before {
+      .split.button.small span:before, .split.button.small-italic span:before, .block .split.button.date span:before, .carousel-wrap .split.button.date span:before, .block .split.button.credits span:before, .carousel-wrap .split.button.credits span:before {
         border-top-style: solid;
         border-width: 0.4375rem;
         top: 48%;
@@ -4264,12 +4264,12 @@ meta.foundation-mq-topbar {
     margin: 0;
     font-size: 16px; }
     /* line 184, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4, .top-bar .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar .name .title, .top-bar .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .top-bar .name .title, .top-bar .name .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .top-bar .name .title, .top-bar .name .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .top-bar .name .title, .top-bar .name .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .top-bar .name .title {
+    .top-bar .name h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4, .top-bar .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar .name .title, .top-bar .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .top-bar .name .title, .top-bar .name .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .top-bar .name .title, .top-bar .name .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .carousel-wrap .block.date .title, .hero .hero-content .carousel-wrap .block.date .top-bar .name .title, .top-bar .name .carousel-wrap .block.date .hero .hero-content .title, .carousel-wrap .block.date .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block .date.carousel-wrap .title, .hero .hero-content .block .date.carousel-wrap .top-bar .name .title, .top-bar .name .block .date.carousel-wrap .hero .hero-content .title, .block .date.carousel-wrap .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .carousel-wrap .date.carousel-wrap .title, .hero .hero-content .carousel-wrap .date.carousel-wrap .top-bar .name .title, .top-bar .name .carousel-wrap .date.carousel-wrap .hero .hero-content .title, .carousel-wrap .date.carousel-wrap .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .top-bar .name .title, .top-bar .name .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .carousel-wrap .block.credits .title, .hero .hero-content .carousel-wrap .block.credits .top-bar .name .title, .top-bar .name .carousel-wrap .block.credits .hero .hero-content .title, .carousel-wrap .block.credits .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .block .credits.carousel-wrap .title, .hero .hero-content .block .credits.carousel-wrap .top-bar .name .title, .top-bar .name .block .credits.carousel-wrap .hero .hero-content .title, .block .credits.carousel-wrap .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .carousel-wrap .credits.carousel-wrap .title, .hero .hero-content .carousel-wrap .credits.carousel-wrap .top-bar .name .title, .top-bar .name .carousel-wrap .credits.carousel-wrap .hero .hero-content .title, .carousel-wrap .credits.carousel-wrap .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .small-italic.carousel-wrap .title, .hero .hero-content .small-italic.carousel-wrap .top-bar .name .title, .top-bar .name .small-italic.carousel-wrap .hero .hero-content .title, .small-italic.carousel-wrap .hero .hero-content .top-bar .name .title, .top-bar .name .hero .hero-content .small.carousel-wrap .title, .hero .hero-content .small.carousel-wrap .top-bar .name .title, .top-bar .name .small.carousel-wrap .hero .hero-content .title, .small.carousel-wrap .hero .hero-content .top-bar .name .title {
       line-height: 45px;
       font-size: 1.0625rem;
       margin: 0; }
       /* line 188, ../../sass/vendor/foundation/components/_top-bar.scss */
-      .top-bar .name h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a {
+      .top-bar .name h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .carousel-wrap .block.date .title a, .hero .hero-content .carousel-wrap .block.date .top-bar .name .title a, .top-bar .name .carousel-wrap .block.date .hero .hero-content .title a, .carousel-wrap .block.date .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .date.carousel-wrap .title a, .hero .hero-content .block .date.carousel-wrap .top-bar .name .title a, .top-bar .name .block .date.carousel-wrap .hero .hero-content .title a, .block .date.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .carousel-wrap .date.carousel-wrap .title a, .hero .hero-content .carousel-wrap .date.carousel-wrap .top-bar .name .title a, .top-bar .name .carousel-wrap .date.carousel-wrap .hero .hero-content .title a, .carousel-wrap .date.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .carousel-wrap .block.credits .title a, .hero .hero-content .carousel-wrap .block.credits .top-bar .name .title a, .top-bar .name .carousel-wrap .block.credits .hero .hero-content .title a, .carousel-wrap .block.credits .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .credits.carousel-wrap .title a, .hero .hero-content .block .credits.carousel-wrap .top-bar .name .title a, .top-bar .name .block .credits.carousel-wrap .hero .hero-content .title a, .block .credits.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .carousel-wrap .credits.carousel-wrap .title a, .hero .hero-content .carousel-wrap .credits.carousel-wrap .top-bar .name .title a, .top-bar .name .carousel-wrap .credits.carousel-wrap .hero .hero-content .title a, .carousel-wrap .credits.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .small-italic.carousel-wrap .title a, .hero .hero-content .small-italic.carousel-wrap .top-bar .name .title a, .top-bar .name .small-italic.carousel-wrap .hero .hero-content .title a, .small-italic.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .top-bar .name .title a, .top-bar .name .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .top-bar .name .title a {
         font-weight: normal;
         color: white;
         width: 50%;
@@ -4511,7 +4511,7 @@ meta.foundation-mq-topbar {
     .top-bar .title-area {
       float: left; }
     /* line 455, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a {
+    .top-bar .name h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .carousel-wrap .block.date .title a, .hero .hero-content .carousel-wrap .block.date .top-bar .name .title a, .top-bar .name .carousel-wrap .block.date .hero .hero-content .title a, .carousel-wrap .block.date .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .date.carousel-wrap .title a, .hero .hero-content .block .date.carousel-wrap .top-bar .name .title a, .top-bar .name .block .date.carousel-wrap .hero .hero-content .title a, .block .date.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .carousel-wrap .date.carousel-wrap .title a, .hero .hero-content .carousel-wrap .date.carousel-wrap .top-bar .name .title a, .top-bar .name .carousel-wrap .date.carousel-wrap .hero .hero-content .title a, .carousel-wrap .date.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .carousel-wrap .block.credits .title a, .hero .hero-content .carousel-wrap .block.credits .top-bar .name .title a, .top-bar .name .carousel-wrap .block.credits .hero .hero-content .title a, .carousel-wrap .block.credits .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .block .credits.carousel-wrap .title a, .hero .hero-content .block .credits.carousel-wrap .top-bar .name .title a, .top-bar .name .block .credits.carousel-wrap .hero .hero-content .title a, .block .credits.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .carousel-wrap .credits.carousel-wrap .title a, .hero .hero-content .carousel-wrap .credits.carousel-wrap .top-bar .name .title a, .top-bar .name .carousel-wrap .credits.carousel-wrap .hero .hero-content .title a, .carousel-wrap .credits.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .small-italic.carousel-wrap .title a, .hero .hero-content .small-italic.carousel-wrap .top-bar .name .title a, .top-bar .name .small-italic.carousel-wrap .hero .hero-content .title a, .small-italic.carousel-wrap .hero .hero-content .top-bar .name .title a, .top-bar .name .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .top-bar .name .title a, .top-bar .name .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .top-bar .name .title a {
       width: auto; }
     /* line 458, ../../sass/vendor/foundation/components/_top-bar.scss */
     .top-bar input,
@@ -5044,11 +5044,28 @@ h1,
 .block.small-italic .hero .hero-content .title,
 .hero .hero-content .block .block.date .title,
 .block .block.date .hero .hero-content .title,
+.hero .hero-content .carousel-wrap .block.date .title,
+.carousel-wrap .block.date .hero .hero-content .title,
+.hero .hero-content .block .date.carousel-wrap .title,
+.block .date.carousel-wrap .hero .hero-content .title,
+.hero .hero-content .carousel-wrap .date.carousel-wrap .title,
+.carousel-wrap .date.carousel-wrap .hero .hero-content .title,
 .hero .hero-content .block .block.credits .title,
 .block .block.credits .hero .hero-content .title,
+.hero .hero-content .carousel-wrap .block.credits .title,
+.carousel-wrap .block.credits .hero .hero-content .title,
+.hero .hero-content .block .credits.carousel-wrap .title,
+.block .credits.carousel-wrap .hero .hero-content .title,
+.hero .hero-content .carousel-wrap .credits.carousel-wrap .title,
+.carousel-wrap .credits.carousel-wrap .hero .hero-content .title,
+.hero .hero-content .small-italic.carousel-wrap .title,
+.small-italic.carousel-wrap .hero .hero-content .title,
+.hero .hero-content .small.carousel-wrap .title,
+.small.carousel-wrap .hero .hero-content .title,
 h2,
 .head-nav li,
 .block .title,
+.carousel-wrap .title,
 .carousel-wrap .carousel li h3,
 .carousel-wrap .carousel li .block-header,
 h3,
@@ -5057,7 +5074,15 @@ h4,
 .block.small .title,
 .block.small-italic .title,
 .block .block.date .title,
+.carousel-wrap .block.date .title,
+.block .date.carousel-wrap .title,
+.carousel-wrap .date.carousel-wrap .title,
 .block .block.credits .title,
+.carousel-wrap .block.credits .title,
+.block .credits.carousel-wrap .title,
+.carousel-wrap .credits.carousel-wrap .title,
+.small-italic.carousel-wrap .title,
+.small.carousel-wrap .title,
 h5,
 h6,
 pre,
@@ -5103,7 +5128,7 @@ p {
 
 /* Default header styles */
 /* line 317, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, h2, .head-nav li, .block .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header, h3, .block-header, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, h5, h6 {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.date .title, .carousel-wrap .block.date .hero .hero-content .title, .hero .hero-content .block .date.carousel-wrap .title, .block .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.credits .title, .carousel-wrap .block.credits .hero .hero-content .title, .hero .hero-content .block .credits.carousel-wrap .title, .block .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .small-italic.carousel-wrap .title, .small-italic.carousel-wrap .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title, h2, .head-nav li, .block .title, .carousel-wrap .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header, h3, .block-header, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .carousel-wrap .block.date .title, .block .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .title, .block .block.credits .title, .carousel-wrap .block.credits .title, .block .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .title, .small-italic.carousel-wrap .title, .small.carousel-wrap .title, h5, h6 {
   font-family: "albert";
   font-weight: normal;
   font-style: normal;
@@ -5113,17 +5138,17 @@ h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.smal
   margin-bottom: 0.2rem;
   line-height: 1; }
   /* line 327, ../../sass/vendor/foundation/components/_type.scss */
-  h1 small, .hero .hero-content h4 small, .hero .hero-content .block.small .title small, .block.small .hero .hero-content .title small, .hero .hero-content .block.small-italic .title small, .block.small-italic .hero .hero-content .title small, .hero .hero-content .block .block.date .title small, .block .block.date .hero .hero-content .title small, .hero .hero-content .block .block.credits .title small, .block .block.credits .hero .hero-content .title small, h2 small, .head-nav li small, .block .title small, .carousel-wrap .carousel li h3 small, .carousel-wrap .carousel li .block-header small, h3 small, .block-header small, h4 small, .block.small .title small, .block.small-italic .title small, .block .block.date .title small, .block .block.credits .title small, h5 small, h6 small {
+  h1 small, .hero .hero-content h4 small, .hero .hero-content .block.small .title small, .block.small .hero .hero-content .title small, .hero .hero-content .block.small-italic .title small, .block.small-italic .hero .hero-content .title small, .hero .hero-content .block .block.date .title small, .block .block.date .hero .hero-content .title small, .hero .hero-content .carousel-wrap .block.date .title small, .carousel-wrap .block.date .hero .hero-content .title small, .hero .hero-content .block .date.carousel-wrap .title small, .block .date.carousel-wrap .hero .hero-content .title small, .hero .hero-content .carousel-wrap .date.carousel-wrap .title small, .carousel-wrap .date.carousel-wrap .hero .hero-content .title small, .hero .hero-content .block .block.credits .title small, .block .block.credits .hero .hero-content .title small, .hero .hero-content .carousel-wrap .block.credits .title small, .carousel-wrap .block.credits .hero .hero-content .title small, .hero .hero-content .block .credits.carousel-wrap .title small, .block .credits.carousel-wrap .hero .hero-content .title small, .hero .hero-content .carousel-wrap .credits.carousel-wrap .title small, .carousel-wrap .credits.carousel-wrap .hero .hero-content .title small, .hero .hero-content .small-italic.carousel-wrap .title small, .small-italic.carousel-wrap .hero .hero-content .title small, .hero .hero-content .small.carousel-wrap .title small, .small.carousel-wrap .hero .hero-content .title small, h2 small, .head-nav li small, .block .title small, .carousel-wrap .title small, .carousel-wrap .carousel li h3 small, .carousel-wrap .carousel li .block-header small, h3 small, .block-header small, h4 small, .block.small .title small, .block.small-italic .title small, .block .block.date .title small, .carousel-wrap .block.date .title small, .block .date.carousel-wrap .title small, .carousel-wrap .date.carousel-wrap .title small, .block .block.credits .title small, .carousel-wrap .block.credits .title small, .block .credits.carousel-wrap .title small, .carousel-wrap .credits.carousel-wrap .title small, .small-italic.carousel-wrap .title small, .small.carousel-wrap .title small, h5 small, h6 small {
     font-size: 0.75rem;
     color: #333333;
     line-height: 0; }
 
 /* line 334, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.date .title, .carousel-wrap .block.date .hero .hero-content .title, .hero .hero-content .block .date.carousel-wrap .title, .block .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.credits .title, .carousel-wrap .block.credits .hero .hero-content .title, .hero .hero-content .block .credits.carousel-wrap .title, .block .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .small-italic.carousel-wrap .title, .small-italic.carousel-wrap .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title {
   font-size: 1.625rem; }
 
 /* line 335, ../../sass/vendor/foundation/components/_type.scss */
-h2, .head-nav li, .block .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header {
+h2, .head-nav li, .block .title, .carousel-wrap .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header {
   font-size: 0.75rem; }
 
 /* line 336, ../../sass/vendor/foundation/components/_type.scss */
@@ -5131,7 +5156,7 @@ h3, .block-header {
   font-size: 0.8125rem; }
 
 /* line 337, ../../sass/vendor/foundation/components/_type.scss */
-h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .carousel-wrap .block.date .title, .block .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .title, .block .block.credits .title, .carousel-wrap .block.credits .title, .block .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .title, .small-italic.carousel-wrap .title, .small.carousel-wrap .title {
   font-size: 0.5rem; }
 
 /* line 338, ../../sass/vendor/foundation/components/_type.scss */
@@ -5143,7 +5168,7 @@ h6 {
   font-size: 0.8125rem; }
 
 /* line 341, ../../sass/vendor/foundation/components/_type.scss */
-.subheader, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+.subheader, .block.small .title, .block.small-italic .title, .block .block.date .title, .carousel-wrap .block.date .title, .block .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .title, .block .block.credits .title, .carousel-wrap .block.credits .title, .block .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .title, .small-italic.carousel-wrap .title, .small.carousel-wrap .title {
   line-height: 1.1;
   color: #333333;
   font-weight: 300;
@@ -5318,15 +5343,15 @@ blockquote p {
 
 @media only screen and (min-width: 40.063em) {
   /* line 513, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, h2, .head-nav li, .block .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header, h3, .block-header, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, h5, h6 {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.date .title, .carousel-wrap .block.date .hero .hero-content .title, .hero .hero-content .block .date.carousel-wrap .title, .block .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.credits .title, .carousel-wrap .block.credits .hero .hero-content .title, .hero .hero-content .block .credits.carousel-wrap .title, .block .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .small-italic.carousel-wrap .title, .small-italic.carousel-wrap .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title, h2, .head-nav li, .block .title, .carousel-wrap .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header, h3, .block-header, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .carousel-wrap .block.date .title, .block .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .title, .block .block.credits .title, .carousel-wrap .block.credits .title, .block .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .title, .small-italic.carousel-wrap .title, .small.carousel-wrap .title, h5, h6 {
     line-height: 1; }
 
   /* line 514, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.date .title, .carousel-wrap .block.date .hero .hero-content .title, .hero .hero-content .block .date.carousel-wrap .title, .block .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.credits .title, .carousel-wrap .block.credits .hero .hero-content .title, .hero .hero-content .block .credits.carousel-wrap .title, .block .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .small-italic.carousel-wrap .title, .small-italic.carousel-wrap .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title {
     font-size: 2.25rem; }
 
   /* line 515, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .head-nav li, .block .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header {
+  h2, .head-nav li, .block .title, .carousel-wrap .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header {
     font-size: 1.375rem; }
 
   /* line 516, ../../sass/vendor/foundation/components/_type.scss */
@@ -5334,7 +5359,7 @@ blockquote p {
     font-size: 1.125rem; }
 
   /* line 517, ../../sass/vendor/foundation/components/_type.scss */
-  h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+  h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .carousel-wrap .block.date .title, .block .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .title, .block .block.credits .title, .carousel-wrap .block.credits .title, .block .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .title, .small-italic.carousel-wrap .title, .small.carousel-wrap .title {
     font-size: 0.8125rem; } }
 /*
  * Print styles.
@@ -5402,6 +5427,7 @@ blockquote p {
   h2,
   .head-nav li,
   .block .title,
+  .carousel-wrap .title,
   .carousel-wrap .carousel li h3,
   .carousel-wrap .carousel li .block-header,
   h3,
@@ -5410,7 +5436,7 @@ blockquote p {
     widows: 3; }
 
   /* line 571, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .head-nav li, .block .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header,
+  h2, .head-nav li, .block .title, .carousel-wrap .title, .carousel-wrap .carousel li h3, .carousel-wrap .carousel li .block-header,
   h3,
   .block-header {
     page-break-after: avoid; }
@@ -5644,7 +5670,8 @@ blockquote p {
   font-size: 2em; }
 
 /* line 181, ../../sass/vendor/font-awesome.scss */
-.fa-inverse {
+.fa-inverse, .carousel-wrap .carousel-control .jcarousel-prev:hover,
+.carousel-wrap .carousel-control .jcarousel-next:hover {
   color: #3c63af; }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
@@ -5968,11 +5995,11 @@ blockquote p {
   content: "\f052"; }
 
 /* line 426, ../../sass/vendor/font-awesome.scss */
-.fa-chevron-left:before, .carousel-wrap .carousel-control .jcarousel-prev:hover:before {
+.fa-chevron-left:before {
   content: "\f053"; }
 
 /* line 429, ../../sass/vendor/font-awesome.scss */
-.fa-chevron-right:before, .carousel-wrap .carousel-control .jcarousel-next:hover:before {
+.fa-chevron-right:before {
   content: "\f054"; }
 
 /* line 432, ../../sass/vendor/font-awesome.scss */
@@ -7482,18 +7509,18 @@ blockquote p {
   src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg') format('svg'), url('../fonts/fontawesome-webfont.woff') format('woff'); }
 
 /* line 10, ../../sass/_typography.scss */
-.header-allcaps, .block .category {
+.header-allcaps, .block .category, .carousel-wrap .category {
   font-size: 0.875rem;
   font-family: "albert";
   text-transform: uppercase; }
 
 /* line 16, ../../sass/_typography.scss */
-.small-italic, .block .date, .block .credits {
+.small-italic, .block .date, .carousel-wrap .date, .block .credits, .carousel-wrap .credits {
   font-size: 0.625rem;
   font-style: italic; }
 
 /* line 22, ../../sass/_typography.scss */
-.no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content p {
+.no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.date .title, .carousel-wrap .block.date .hero .hero-content .title, .hero .hero-content .block .date.carousel-wrap .title, .block .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .carousel-wrap .block.credits .title, .carousel-wrap .block.credits .hero .hero-content .title, .hero .hero-content .block .credits.carousel-wrap .title, .block .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .hero .hero-content .title, .hero .hero-content .small-italic.carousel-wrap .title, .small-italic.carousel-wrap .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title, .hero .hero-content p {
   margin-bottom: 0; }
 
 /* 
@@ -7562,18 +7589,18 @@ main,
 /*   This file contains design components used for Journals and Wombat Generic
  *
  */
-/* line 25, ../../sass/_components.scss */
+/* line 23, ../../sass/_components.scss */
 .pill {
   background: #3c63af;
   padding: 10px 20px;
   border-radius: 5px;
   color: white;
   display: inline-block; }
-  /* line 19, ../../sass/_components.scss */
+  /* line 17, ../../sass/_components.scss */
   .pill:hover {
     background: #333333; }
 
-/* line 48, ../../sass/_components.scss */
+/* line 45, ../../sass/_components.scss */
 .block-card, .carousel-wrap {
   padding: 0;
   -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -7588,7 +7615,7 @@ Set a width here to define how much items are visible.
 The width can be either fixed in px or flexible in %.
 Position must be relative!
 */
-/* line 67, ../../sass/_components.scss */
+/* line 63, ../../sass/_components.scss */
 .jcarousel {
   position: relative;
   overflow: hidden;
@@ -7599,7 +7626,7 @@ This is the container of the carousel items.
 You must ensure that the position is relative or absolute and
 that the width is big enough to contain all items.
 */
-/* line 78, ../../sass/_components.scss */
+/* line 74, ../../sass/_components.scss */
 .jcarousel ul {
   width: 20000em;
   position: relative;
@@ -7612,7 +7639,7 @@ that the width is big enough to contain all items.
 These are the item elements. jCarousel works best, if the items
 have a fixed width and height (but it's not required).
 */
-/* line 92, ../../sass/_components.scss */
+/* line 88, ../../sass/_components.scss */
 .jcarousel li {
   /* Required only for block elements like <li>'s */
   float: left;
@@ -7740,7 +7767,7 @@ have a fixed width and height (but it's not required).
     color: white;
     display: inline-block;
     margin-top: -5px; }
-    /* line 19, ../../sass/_components.scss */
+    /* line 17, ../../sass/_components.scss */
     .nav-top li.highlighted:hover {
       background: #333333; }
     /* line 90, ../../sass/sections/_header.scss */
@@ -7754,13 +7781,13 @@ have a fixed width and height (but it's not required).
  *    Home page blocks
  */
 /* line 20, ../../sass/pages/_home.scss */
-.row.one .block, .row.two .block {
+.row.one .block, .row.one .carousel-wrap, .row.two .block, .row.two .carousel-wrap {
   margin-right: 2%; }
   /* line 22, ../../sass/pages/_home.scss */
-  .row.one .block:last-child, .row.two .block:last-child {
+  .row.one .block:last-child, .row.one .carousel-wrap:last-child, .row.two .block:last-child, .row.two .carousel-wrap:last-child {
     margin-right: 0; }
 
-/* line 27, ../../sass/pages/_home.scss */
+/* line 29, ../../sass/pages/_home.scss */
 .row {
   width: 100%;
   margin-left: auto;
@@ -7777,14 +7804,14 @@ have a fixed width and height (but it's not required).
   .row:after {
     clear: both; }
 
-/* line 32, ../../sass/pages/_home.scss */
+/* line 34, ../../sass/pages/_home.scss */
 .hero {
   position: relative;
   padding: 0;
   margin-bottom: 20px;
   background: transparent;
   color: white; }
-  /* line 34, ../../sass/pages/_home.scss */
+  /* line 36, ../../sass/pages/_home.scss */
   .hero img {
     -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -7795,16 +7822,16 @@ have a fixed width and height (but it's not required).
     -moz-border-radius-topright: 5px;
     -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px; }
-  /* line 44, ../../sass/pages/_home.scss */
+  /* line 46, ../../sass/pages/_home.scss */
   .hero a {
     color: white; }
-  /* line 47, ../../sass/pages/_home.scss */
+  /* line 49, ../../sass/pages/_home.scss */
   .hero img {
     width: 960px; }
-  /* line 51, ../../sass/pages/_home.scss */
+  /* line 53, ../../sass/pages/_home.scss */
   .hero.dark-text, .hero.dark-text a {
     color: #333333; }
-  /* line 55, ../../sass/pages/_home.scss */
+  /* line 57, ../../sass/pages/_home.scss */
   .hero .hero-content {
     position: absolute;
     width: 100%;
@@ -7812,39 +7839,39 @@ have a fixed width and height (but it's not required).
     padding: 0.625rem;
     font-size: 1rem; }
 
-/* line 73, ../../sass/pages/_home.scss */
-.row > .block.x-small {
+/* line 75, ../../sass/pages/_home.scss */
+.row > .block.x-small, .row > .x-small.carousel-wrap {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
-/* line 77, ../../sass/pages/_home.scss */
-.row > .block.small, .row > .block.small-italic, .block .row > .block.date, .block .row > .block.credits {
+/* line 79, ../../sass/pages/_home.scss */
+.row > .block.small, .row > .block.small-italic, .block .row > .block.date, .carousel-wrap .row > .block.date, .block .row > .date.carousel-wrap, .carousel-wrap .row > .date.carousel-wrap, .block .row > .block.credits, .carousel-wrap .row > .block.credits, .block .row > .credits.carousel-wrap, .carousel-wrap .row > .credits.carousel-wrap, .row > .small-italic.carousel-wrap, .row > .small.carousel-wrap {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 33.33333%;
   float: left; }
-/* line 80, ../../sass/pages/_home.scss */
-.row > .block.medium {
+/* line 82, ../../sass/pages/_home.scss */
+.row > .block.medium, .row > .medium.carousel-wrap {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 50%;
   float: left;
   width: 48%; }
-/* line 84, ../../sass/pages/_home.scss */
-.row > .block.large {
+/* line 86, ../../sass/pages/_home.scss */
+.row > .block.large, .row > .large.carousel-wrap {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 58.33333%;
   float: left; }
 
-/* line 95, ../../sass/pages/_home.scss */
+/* line 96, ../../sass/pages/_home.scss */
 .block-header {
   padding: 0.625rem 1.25rem;
   width: 100%; }
 
-/* line 104, ../../sass/pages/_home.scss */
-.block {
+/* line 105, ../../sass/pages/_home.scss */
+.block, .carousel-wrap {
   position: relative;
   height: 15.625rem;
   padding: 0.625rem;
@@ -7859,46 +7886,46 @@ have a fixed width and height (but it's not required).
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white; }
-  /* line 109, ../../sass/pages/_home.scss */
-  .block .block-image {
+  /* line 110, ../../sass/pages/_home.scss */
+  .block .block-image, .carousel-wrap .block-image {
     width: 5rem;
     display: block;
     position: absolute;
     left: 0.625rem;
     top: 0.625rem; }
-  /* line 116, ../../sass/pages/_home.scss */
-  .block.image .block-content {
+  /* line 117, ../../sass/pages/_home.scss */
+  .block.image .block-content, .image.carousel-wrap .block-content {
     margin-left: 6.25rem; }
-  /* line 123, ../../sass/pages/_home.scss */
-  .block .credits {
+  /* line 124, ../../sass/pages/_home.scss */
+  .block .credits, .carousel-wrap .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.875rem;
     margin: 0; }
-  /* line 131, ../../sass/pages/_home.scss */
-  .block .category {
+  /* line 132, ../../sass/pages/_home.scss */
+  .block .category, .carousel-wrap .category {
     color: #3c63af; }
-  /* line 137, ../../sass/pages/_home.scss */
-  .block .title a {
+  /* line 138, ../../sass/pages/_home.scss */
+  .block .title a, .carousel-wrap .title a {
     color: #333333; }
-    /* line 139, ../../sass/pages/_home.scss */
-    .block .title a:hover {
+    /* line 140, ../../sass/pages/_home.scss */
+    .block .title a:hover, .carousel-wrap .title a:hover {
       text-decoration: underline; }
-  /* line 149, ../../sass/pages/_home.scss */
-  .block .block-content {
+  /* line 150, ../../sass/pages/_home.scss */
+  .block .block-content, .carousel-wrap .block-content {
     position: relative;
     font-size: 0.8125rem; }
-  /* line 155, ../../sass/pages/_home.scss */
-  .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+  /* line 156, ../../sass/pages/_home.scss */
+  .block.small .title, .block.small-italic .title, .block .block.date .title, .carousel-wrap .block.date .title, .block .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap .title, .block .block.credits .title, .carousel-wrap .block.credits .title, .block .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap .title, .small-italic.carousel-wrap .title, .small.carousel-wrap .title {
     font-family: albert-bold; }
 
-/* line 164, ../../sass/pages/_home.scss */
+/* line 165, ../../sass/pages/_home.scss */
 .column.left {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 66.66667%;
   float: left; }
-  /* line 166, ../../sass/pages/_home.scss */
+  /* line 167, ../../sass/pages/_home.scss */
   .column.left .row-small-blocks {
     display: block;
     padding: 0;
@@ -7936,31 +7963,31 @@ have a fixed width and height (but it's not required).
       .column.left .row-small-blocks > li:nth-child(2n) {
         padding-left: 0.625rem;
         padding-right: 0rem; }
-    /* line 170, ../../sass/pages/_home.scss */
-    .column.left .row-small-blocks .block:nth-child(1), .column.left .row-small-blocks .block:nth-child(3) {
+    /* line 171, ../../sass/pages/_home.scss */
+    .column.left .row-small-blocks .block:nth-child(1), .column.left .row-small-blocks .carousel-wrap:nth-child(1), .column.left .row-small-blocks .block:nth-child(3), .column.left .row-small-blocks .carousel-wrap:nth-child(3) {
       margin-right: 2%;
       width: 46%; }
-  /* line 178, ../../sass/pages/_home.scss */
-  .column.left .block {
+  /* line 179, ../../sass/pages/_home.scss */
+  .column.left .block, .column.left .carousel-wrap {
     height: 11.25rem; }
-    /* line 181, ../../sass/pages/_home.scss */
-    .column.left .block .block-image {
+    /* line 182, ../../sass/pages/_home.scss */
+    .column.left .block .block-image, .column.left .carousel-wrap .block-image {
       height: 10rem;
       overflow: hidden; }
-    /* line 186, ../../sass/pages/_home.scss */
-    .column.left .block.small, .column.left .block.small-italic, .column.left .block .block.date, .block .column.left .block.date, .column.left .block .block.credits, .block .column.left .block.credits {
+    /* line 187, ../../sass/pages/_home.scss */
+    .column.left .block.small, .column.left .block.small-italic, .column.left .block .block.date, .block .column.left .block.date, .column.left .carousel-wrap .block.date, .carousel-wrap .column.left .block.date, .column.left .block .date.carousel-wrap, .block .column.left .date.carousel-wrap, .column.left .carousel-wrap .date.carousel-wrap, .carousel-wrap .column.left .date.carousel-wrap, .column.left .block .block.credits, .block .column.left .block.credits, .column.left .carousel-wrap .block.credits, .carousel-wrap .column.left .block.credits, .column.left .block .credits.carousel-wrap, .block .column.left .credits.carousel-wrap, .column.left .carousel-wrap .credits.carousel-wrap, .carousel-wrap .column.left .credits.carousel-wrap, .column.left .small-italic.carousel-wrap, .column.left .small.carousel-wrap {
       padding-left: 0.625rem;
       padding-right: 0.625rem;
       width: 50%;
       float: left; }
-/* line 192, ../../sass/pages/_home.scss */
+/* line 193, ../../sass/pages/_home.scss */
 .column.right, .column.nav-top {
   padding-left: 0;
   padding-right: 0;
   width: 33.33333%;
   float: left; }
 
-/* line 205, ../../sass/pages/_home.scss */
+/* line 204, ../../sass/pages/_home.scss */
 #submission-links,
 #article-list,
 #social-links,
@@ -7984,14 +8011,14 @@ have a fixed width and height (but it's not required).
   color: white;
   height: 15.625rem; }
 
-/* line 211, ../../sass/pages/_home.scss */
+/* line 210, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
 
-/* line 216, ../../sass/pages/_home.scss */
+/* line 215, ../../sass/pages/_home.scss */
 #article-list {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -8000,7 +8027,7 @@ have a fixed width and height (but it's not required).
   width: 30%;
   margin-right: 3%; }
 
-/* line 223, ../../sass/pages/_home.scss */
+/* line 222, ../../sass/pages/_home.scss */
 #billboard {
   width: 100%;
   margin-left: auto;
@@ -8029,10 +8056,10 @@ have a fixed width and height (but it's not required).
   /* line 146, ../../sass/vendor/foundation/components/_global.scss */
   #billboard:after {
     clear: both; }
-  /* line 226, ../../sass/pages/_home.scss */
-  #billboard h3, #billboard .block-header, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard .block.small-italic .title, .block.small-italic #billboard .title, #billboard .block .block.date .title, .block .block.date #billboard .title, #billboard .block .block.credits .title, .block .block.credits #billboard .title, #billboard a {
+  /* line 225, ../../sass/pages/_home.scss */
+  #billboard h3, #billboard .block-header, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard .block.small-italic .title, .block.small-italic #billboard .title, #billboard .block .block.date .title, .block .block.date #billboard .title, #billboard .carousel-wrap .block.date .title, .carousel-wrap .block.date #billboard .title, #billboard .block .date.carousel-wrap .title, .block .date.carousel-wrap #billboard .title, #billboard .carousel-wrap .date.carousel-wrap .title, .carousel-wrap .date.carousel-wrap #billboard .title, #billboard .block .block.credits .title, .block .block.credits #billboard .title, #billboard .carousel-wrap .block.credits .title, .carousel-wrap .block.credits #billboard .title, #billboard .block .credits.carousel-wrap .title, .block .credits.carousel-wrap #billboard .title, #billboard .carousel-wrap .credits.carousel-wrap .title, .carousel-wrap .credits.carousel-wrap #billboard .title, #billboard .small-italic.carousel-wrap .title, .small-italic.carousel-wrap #billboard .title, #billboard .small.carousel-wrap .title, .small.carousel-wrap #billboard .title, #billboard a {
     color: white !important; }
-  /* line 228, ../../sass/pages/_home.scss */
+  /* line 229, ../../sass/pages/_home.scss */
   #billboard a {
     background: #3c63af;
     padding: 0.625rem;
@@ -8044,33 +8071,26 @@ have a fixed width and height (but it's not required).
     height: 36px;
     right: 20px;
     top: 10px; }
-    /* line 19, ../../sass/_components.scss */
+    /* line 17, ../../sass/_components.scss */
     #billboard a:hover {
       background: #333333; }
 
-/* line 236, ../../sass/pages/_home.scss */
+/* line 247, ../../sass/pages/_home.scss */
 .carousel-wrap .carousel li p {
   font-size: 0.875rem; }
-/* line 239, ../../sass/pages/_home.scss */
+/* line 252, ../../sass/pages/_home.scss */
 .carousel-wrap .carousel-control {
   text-align: center;
   display: table; }
-  /* line 244, ../../sass/pages/_home.scss */
+  /* line 257, ../../sass/pages/_home.scss */
   .carousel-wrap .carousel-control .jcarousel-prev,
   .carousel-wrap .carousel-control .jcarousel-next {
     font-size: 1.875rem; }
-    /* line 248, ../../sass/pages/_home.scss */
-    .carousel-wrap .carousel-control .jcarousel-prev:hover,
-    .carousel-wrap .carousel-control .jcarousel-next:hover {
-      color: red; }
-  /* line 252, ../../sass/pages/_home.scss */
-  .carousel-wrap .carousel-control .jcarousel-prev:hover {
-    height: 60%; }
-  /* line 258, ../../sass/pages/_home.scss */
+  /* line 270, ../../sass/pages/_home.scss */
   .carousel-wrap .carousel-control .numbers {
     font-size: 0.75rem;
     display: inline-block; }
-    /* line 264, ../../sass/pages/_home.scss */
+    /* line 273, ../../sass/pages/_home.scss */
     .carousel-wrap .carousel-control .numbers span {
       display: inline-block;
       vertical-align: middle;

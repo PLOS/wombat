@@ -35,27 +35,25 @@
 			</ul>
 		</div>
 
-
 		<!-- Controls -->
 		<div class="carousel-control">
-
-			<a class="jcarousel-prev" href="#">Prev</a>
+			<a class="jcarousel-prev" href="#"></a>
 			<span class="number" data-js="carousel-current-item">1</span> of
 			<span class="number" data-js="carousel-total-index"></span>
-			<a class="jcarousel-next" href="#">Next</a>
+			<a class="jcarousel-next" href="#"></a>
 		</div>
 	</div>
 
-	<div class="carousel-wrap jcarousel-wrapper">
+	<article class="carousel-wrap jcarousel-wrapper">
 		<div class="block-header">Topic:Astrobiology</div>
 		<!-- Carousel -->
 		<div class="jcarousel carousel">
 			<ul>
-				<li class="carousel-item"><h3>Enable Turn Key Web Readiness</h3>
+				<li><h3>Enable Turn Key Web Readiness</h3>
 
 					<p>Enable Turn Key Web Readiness</p>
 				</li>
-				<li class="carousel-item"><h3>2 Enable Turn Key Web Readiness</h3>
+				<li><h3>2 Enable Turn Key Web Readiness</h3>
 
 					<p>Enable Turn Key Web Readiness</p>
 				</li>
@@ -83,7 +81,7 @@
 			<a class="jcarousel-next" href="#"> </a>
 		</div>
 	</div>
-</div>
+</article>
 
 <div class="spotlight"></div>
 

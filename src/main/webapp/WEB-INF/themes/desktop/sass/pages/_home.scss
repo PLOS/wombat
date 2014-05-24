@@ -16,10 +16,12 @@ $image-container: ($image-width + $pad-default);
 
 // for demo:
 .row {
-  &.one, &.two{
-    .block{
+  &.one, &.two {
+    .block {
       margin-right: 2%; // this is for demo
-      &:last-child{margin-right: 0;}
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }
@@ -31,10 +33,10 @@ $image-container: ($image-width + $pad-default);
 //home page blocks
 .hero {
   position: relative;
-  img{
+  img {
 
     @include single-box-shadow();
-  @include border-top-radius();
+    @include border-top-radius();
   }
   padding: 0;
   margin-bottom: 20px;
@@ -79,7 +81,7 @@ $image-container: ($image-width + $pad-default);
   }
   &.medium {
     @include grid-column(6, $collapse: false);
-    width: 48%;  // for demo
+    width: 48%; // for demo
   }
   &.large {
     @include grid-column(7, $collapse: false);
@@ -87,14 +89,13 @@ $image-container: ($image-width + $pad-default);
 
 }
 
-
-.carousel-wrap{
+.carousel-wrap {
   @extend .block-card;
 }
 
-.block-header{
+.block-header {
   @extend .highlight-background;
-   @extend h3;
+  @extend h3;
 
   padding: $pad-default $pad-default-margin;
   width: 100%;
@@ -163,11 +164,11 @@ $image-container: ($image-width + $pad-default);
 .column {
   &.left {
     @include grid-column(8, $collapse: false);
-    .row-small-blocks{
+    .row-small-blocks {
       @include block-grid(2);
       // for demo
       .block {
-        &:nth-child(1),&:nth-child(3){
+        &:nth-child(1), &:nth-child(3) {
           margin-right: 2%;
           width: 46%;
         }
@@ -194,15 +195,13 @@ $image-container: ($image-width + $pad-default);
   }
 }
 
-
-
 #submission-links,
 #article-list,
 #social-links,
 #spotlight,
 #issue,
 #twitter-feed,
-#blogroll{
+#blogroll {
   @include blocks();
   @include stub();
   height: $block-height;
@@ -220,51 +219,64 @@ $image-container: ($image-width + $pad-default);
 
 }
 
-#billboard{
+#billboard {
   @include grid-row;
   @include blocks($grey-dark);
-  h3, h4, a {color: $white !important;}
+  h3, h4, a {
+    color: $white !important;
+  }
   position: relative;
-  a{@include rounded-pill(); position: absolute; width: 80px; height: 36px; right: 20px; top: 10px; }
+  a {
+    @include rounded-pill();
+    position: absolute;
+    width: 80px;
+    height: 36px;
+    right: 20px;
+    top: 10px;
+  }
 }
 
-.carousel-wrap{
-  @extend .black-card;
-  .carousel{
-    li{
-      h3{ @extend h2; }
-      p{ font-size: rem-calc($txt-size-medium);}
+.carousel-wrap {
+  @extend .block-card;
+  @extend .block;
+  .carousel {
+    li {
+      h3 {
+        @extend h2;
+      }
+      p {
+        font-size: rem-calc($txt-size-medium);
+      }
     }
   }
-  .carousel-control{
+  .carousel-control {
     $icon-height: rem-calc(30px);
     text-align: center;
     display: table;
-      .jcarousel-prev,
-      .jcarousel-next{
-        @extend .fa;
-        font-size: $icon-height;
-
-        &:hover{ color: red}
+    .jcarousel-prev,
+    .jcarousel-next {
+      @extend .fa;
+      font-size: $icon-height;
+      &:hover {
+        @extend .fa-inverse;
       }
-    .jcarousel-prev{
-       @extend .fa-chevron-circle-left;
-       &:hover{ @extend .fa-chevron-left; height: 60%;}
     }
-    .jcarousel-next{
+    .jcarousel-prev {
+      @extend .fa-chevron-circle-left;
+    }
+    .jcarousel-next {
       @extend .fa-chevron-circle-right;
-      &:hover{ @extend .fa-chevron-right;}
     }
-    .numbers{
+    .numbers {
       font-size: rem-calc($txt-size-xsmall);
       display: inline-block;
-
-     // display: inline-block;
-
-      span{display: inline-block; vertical-align: middle; line-height: $icon-height;
-        height: $icon-height;}
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: $icon-height;
+        height: $icon-height;
+      }
     }
   }
-
 
 }

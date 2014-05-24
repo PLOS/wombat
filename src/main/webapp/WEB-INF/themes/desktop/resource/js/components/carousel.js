@@ -1,5 +1,6 @@
 /**
  * Created by pgrinbaum on 5/21/14.
+ * using jcarousel
  */
 
 $(function () {

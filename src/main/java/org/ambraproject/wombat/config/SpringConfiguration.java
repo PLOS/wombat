@@ -45,6 +45,7 @@ import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.RenderJsDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.freemarker.SiteLinkDirective;
+import org.ambraproject.wombat.freemarker.ThemeConfigDirective;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -55,12 +56,12 @@ import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.ambraproject.wombat.service.remote.ReaderService;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SoaServiceImpl;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.ambraproject.wombat.service.remote.StreamService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.apache.http.conn.HttpClientConnectionManager;
@@ -130,7 +131,7 @@ public class SpringConfiguration {
   @Bean
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration,
                          ThemeTree themeTree) {
-    return SiteSet.create(runtimeConfiguration.getThemesForSites(themeTree));
+    return runtimeConfiguration.getSites(themeTree);
   }
 
   @Bean
@@ -174,6 +175,11 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public ThemeConfigDirective themeConfigDirective() {
+    return new ThemeConfigDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            SiteLinkDirective siteLinkDirective,
                                            CssLinkDirective cssLinkDirective,
@@ -181,7 +187,8 @@ public class SpringConfiguration {
                                            JsDirective jsDirective,
                                            RenderJsDirective renderJsDirective,
                                            BuildInfoDirective buildInfoDirective,
-                                           FetchHtmlDirective fetchHtmlDirective)
+                                           FetchHtmlDirective fetchHtmlDirective,
+                                           ThemeConfigDirective themeConfigDirective)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -201,6 +208,7 @@ public class SpringConfiguration {
     variables.put("renderJs", renderJsDirective);
     variables.put("buildInfo", buildInfoDirective);
     variables.put("fetchHtml", fetchHtmlDirective);
+    variables.put("themeConfig", themeConfigDirective);
     config.setFreemarkerVariables(variables.build());
     return config;
   }

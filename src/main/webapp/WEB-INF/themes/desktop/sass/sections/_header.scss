@@ -58,22 +58,54 @@ $width-nav: $block-grid-elements - ($width-logo + $width-search);
 
 .head-nav{
   @include grid-column($width-nav);   // from foundation
-  ul  {    @extend .inline-list;}    // from foundation
+  ul  { @extend .inline-list;   }    // from foundation
   li {
     @extend h2;
     border-left: 1px solid $clr-separator;
     a{padding:0px 20px;}
-    &:first-child{}
-    //hover state for submenu
-    position:relative;
-    .submenu{display: none;
 
-    }
-    &:hover{
-      .submenu{display: block; }
+    .f-dropdown {
+      padding: 0;
+      margin: 0;
+      /* padding: 20px 0px 30px;
+      width: 240px;
+      margin-left: -13px;
+      border-radius: 4px;
+      box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);   */
+      @include blocks();
+      li {
+        border-left: 0;
+        padding: 0;
+        margin: 0;
+        a {
+          font-size: $txt-size-xsmall;
+          padding: 10px;
+          width: 240px;
+        }
+        &:hover {
+          color: $clr-highlight-text;
+          background-color: $clr-highlight-hover;
+
+        }
+      }
     }
   }
-}
+  /* no styling for this yet so hiding for now */
+.menuCallout {
+   display: none;
+  }
+  }
+/*
+callout: width: 540px;
+margin-left: -310px;
+
+ padding: 20px 0px 30px;
+width: 240px;
+margin-left: -13px;
+border-radius: 4px;
+box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
+*/
+
 .nav{
   @include grid-row();
 }
@@ -82,13 +114,18 @@ $width-nav: $block-grid-elements - ($width-logo + $width-search);
   @extend .right;   // from foundation
   @include grid-column($columns:4, $float:right); // from foundation
   font-weight: bold;
-  li{}
-
   li.highlighted{
     @include rounded-pill();
     margin-top: -5px;
     a{color: white;}
   }
  }
+.head-search {
+  fieldset {
+    padding: 0;
+    margin: 0;
+  }
+}
+
 
 

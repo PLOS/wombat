@@ -12,8 +12,8 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.service.remote.SearchService;
@@ -234,8 +234,8 @@ public class JsonConfiguration implements RuntimeConfiguration {
    * {@inheritDoc}
    */
   @Override
-  public ImmutableMap<String, Theme> getThemesForSites(ThemeTree themeTree) {
-    return themeTree.matchToSites(uf.sites);
+  public SiteSet getSites(ThemeTree themeTree) {
+    return SiteSet.create(uf.sites, themeTree);
   }
 
   /*

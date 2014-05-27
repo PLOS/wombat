@@ -10,6 +10,7 @@
 
 
 @import "variables"; // basic settings for type, size and colors
+@import "vendor/font-awesome"; // basic settings for type, size and colors
 @import "foundation"; //using the foundation library
 @import "typography"; // type styles including sizes and vertical spacing
 @import "sprites";   // icons and logos
@@ -23,7 +24,3 @@
 @import "sections/footer";
 @import "sections/header";
 @import "pages/home";
-
-
-
-

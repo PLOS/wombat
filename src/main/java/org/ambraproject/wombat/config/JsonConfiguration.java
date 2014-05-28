@@ -11,6 +11,7 @@
 
 package org.ambraproject.wombat.config;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
 import com.google.gson.GsonBuilder;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -169,9 +170,9 @@ public class JsonConfiguration implements RuntimeConfiguration {
 
     if (!Strings.isNullOrEmpty(uf.casLogoutUrl) && !Strings.isNullOrEmpty(uf.casLogoutServiceUrl)) {
       try {
-        this.casLogoutUrl = uf.casLogoutUrl + "?service=" + URLEncoder.encode(uf.casLogoutServiceUrl, "UTF-8");
+        this.casLogoutUrl = uf.casLogoutUrl + "?service=" + URLEncoder.encode(uf.casLogoutServiceUrl, Charsets.UTF_8.name());
       } catch (UnsupportedEncodingException e) {
-        this.casLogoutUrl = uf.casLogoutUrl + "?service=" + URLEncoder.encode(uf.casLogoutServiceUrl);
+        throw new RuntimeException(e);
       }
     }
   }

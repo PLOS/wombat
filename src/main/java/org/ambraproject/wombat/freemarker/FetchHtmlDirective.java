@@ -111,7 +111,10 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
      * @param document the document to modify
      */
     public void substitute(Document document) {
-      document.getElementById(replacementElement.id()).replaceWith(replacementElement);
+      Element elementToReplace = document.getElementById(replacementElement.id());
+      if (elementToReplace != null) {
+        elementToReplace.replaceWith(replacementElement);
+      }
     }
   }
 

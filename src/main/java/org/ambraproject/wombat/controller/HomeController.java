@@ -73,7 +73,7 @@ public class HomeController extends WombatController {
     public abstract List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException;
   }
 
-  private static class SectionSpec {
+  private class SectionSpec {
     private final SectionType type;
     private final int resultCount;
     private final List<Number> shuffleSeq;
@@ -89,6 +89,18 @@ public class HomeController extends WombatController {
     public String getName() {
       return type.name().toLowerCase();
     }
+
+    public List<Object> getArticles(Site site, int start) throws IOException {
+      if (shuffleSeq != null) {
+        if (type == SectionType.RECENT) {
+          throw new RuntimeException("Not supported yet"); // TODO: Implement
+        } else {
+          throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support
+        }
+      } else {
+        return type.getArticles(HomeController.this, this, site, start);
+      }
+    }
   }
 
   private static int parseNumberParameter(String param, int minValue) {
@@ -103,7 +115,7 @@ public class HomeController extends WombatController {
     }
   }
 
-  private static List<SectionSpec> parseSectionSpecs(List<Map<String, Object>> sectionSpecs) {
+  private List<SectionSpec> parseSectionSpecs(List<Map<String, Object>> sectionSpecs) {
     List<SectionSpec> sections = new ArrayList<>(sectionSpecs.size());
     for (Map<String, Object> sectionSpec : sectionSpecs) {
       sections.add(new SectionSpec(sectionSpec));
@@ -172,7 +184,7 @@ public class HomeController extends WombatController {
     Map<String, Object> sectionsForModel = Maps.newHashMapWithExpectedSize(sectionsToRender.size());
     for (SectionSpec section : sectionsToRender) {
       try {
-        List<Object> articles = section.type.getArticles(this, section, site, start);
+        List<Object> articles = section.getArticles(site, start);
         sectionsForModel.put(section.getName(), articles);
       } catch (IOException e) {
         log.error("Could not populate home page section: " + section.getName(), e);

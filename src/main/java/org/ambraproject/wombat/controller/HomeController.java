@@ -171,8 +171,14 @@ public class HomeController extends WombatController {
 
     Map<String, Object> sectionsForModel = Maps.newHashMapWithExpectedSize(sectionsToRender.size());
     for (SectionSpec section : sectionsToRender) {
-      List<Object> articles = section.type.getArticles(this, section, site, start);
-      sectionsForModel.put(section.getName(), articles);
+      try {
+        List<Object> articles = section.type.getArticles(this, section, site, start);
+        sectionsForModel.put(section.getName(), articles);
+      } catch (IOException e) {
+        log.error("Could not populate home page section: " + section.getName(), e);
+        // Render the rest of the page without the article list
+        // The FreeMarker template should provide an error message if there is a null value in sectionsForModel
+      }
     }
 
     model.addAttribute("sections", sectionsForModel);

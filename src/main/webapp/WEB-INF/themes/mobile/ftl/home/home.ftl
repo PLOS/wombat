@@ -35,8 +35,8 @@
     </#if>
 
       <div id="article-results-container">
-      <#assign articles = sections[selectedSection] />
-      <#if articles?? >
+      <#if sections[selectedSection]??>
+        <#assign articles = sections[selectedSection] />
         <section>
           <ul id="article-results" class="results">
             <#list articles as article>

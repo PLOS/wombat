@@ -114,4 +114,23 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
     return SiteSet.create(spec, themeTree);
   }
 
+  @Override
+  public String getCasServiceUrl() {
+    return null;
+  }
+
+  @Override
+  public String getCasUrl() {
+    return null;
+  }
+
+  @Override
+  public String getCasLoginUrl() {
+    return null;
+  }
+
+  @Override
+  public String getCasLogoutUrl() {
+    return null;
+  }
 }

@@ -19,17 +19,9 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Charsets;
-import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
-import org.ambraproject.rhombat.cache.Cache;
-import org.ambraproject.rhombat.cache.MemcacheClient;
-import org.ambraproject.rhombat.cache.NullCache;
-import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
@@ -54,68 +46,21 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
-import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.ReaderService;
-import org.ambraproject.wombat.service.remote.SearchService;
-import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.service.remote.SoaServiceImpl;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.StoredHomepageService;
-import org.ambraproject.wombat.service.remote.StreamService;
 import org.ambraproject.wombat.util.GitInfo;
-import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
-import org.yaml.snakeyaml.Yaml;
 
 import javax.servlet.ServletContext;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
 import java.nio.charset.Charset;
-import java.util.Date;
 
 @Configuration
 public class SpringConfiguration {
-
-  @Bean
-  public Gson gson() {
-    GsonBuilder builder = new GsonBuilder();
-    builder.setPrettyPrinting();
-    builder.registerTypeAdapter(Date.class, new Iso8601DateAdapter());
-    return builder.create();
-  }
-
-  @Bean
-  public Yaml yaml() {
-    return new Yaml();
-  }
-
-  @Bean
-  public RuntimeConfiguration runtimeConfiguration(Yaml yaml) throws IOException {
-    final File configPath = new File("/etc/ambra/wombat.yaml"); // TODO Descriptive file name
-    if (!configPath.exists()) {
-      throw new RuntimeConfigurationException(configPath.getPath() + " not found");
-    }
-
-    JsonConfiguration runtimeConfiguration;
-    try (Reader reader = new BufferedReader(new FileReader(configPath))) {
-      runtimeConfiguration = new JsonConfiguration(yaml.loadAs(reader, JsonConfiguration.UserFields.class));
-    } catch (JsonSyntaxException e) {
-      throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
-    }
-    runtimeConfiguration.validate();
-    return runtimeConfiguration;
-  }
 
   @Bean
   public ThemeTree themeTree(ServletContext servletContext, RuntimeConfiguration runtimeConfiguration)
@@ -229,11 +174,6 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public SoaService soaService() {
-    return new SoaServiceImpl();
-  }
-
-  @Bean
   public ArticleService articleService() {
     return new ArticleServiceImpl();
   }
@@ -244,11 +184,6 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public SearchService searchService() {
-    return new SolrSearchService();
-  }
-
-  @Bean
   public AssetService assetService() {
     return new AssetServiceImpl();
   }
@@ -256,50 +191,6 @@ public class SpringConfiguration {
   @Bean
   public StoredHomepageService storedHomepageService() {
     return new StoredHomepageService();
-  }
-
-  @Bean
-  public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
-    if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedHost())) {
-
-      // TODO: consider defining this in wombat.yaml instead.
-      final int cacheTimeout = 60 * 60;
-      MemcacheClient result = new MemcacheClient(runtimeConfiguration.getMemcachedHost(),
-          runtimeConfiguration.getMemcachedPort(), runtimeConfiguration.getCacheAppPrefix(), cacheTimeout);
-      result.connect();
-      return result;
-    } else {
-      return new NullCache();
-    }
-  }
-
-  @Bean
-  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
-                                                               Cache cache) {
-    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), cache);
-  }
-
-  @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
-                                                        Cache cache) {
-    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), cache);
-  }
-
-  @Bean
-  public JsonService jsonService() {
-    return new JsonService();
-  }
-
-  @Bean
-  public HttpClientConnectionManager httpClientConnectionManager(RuntimeConfiguration runtimeConfiguration) {
-    PoolingHttpClientConnectionManager manager = new PoolingHttpClientConnectionManager();
-
-    Integer maxTotal = runtimeConfiguration.getConnectionPoolMaxTotal();
-    if (maxTotal != null) manager.setMaxTotal(maxTotal);
-    Integer defaultMaxPerRoute = runtimeConfiguration.getConnectionPoolDefaultMaxPerRoute();
-    if (defaultMaxPerRoute != null) manager.setDefaultMaxPerRoute(defaultMaxPerRoute);
-
-    return manager;
   }
 
   @Bean

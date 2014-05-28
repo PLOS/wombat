@@ -96,4 +96,8 @@ public interface RuntimeConfiguration {
    */
   SiteSet getSites(ThemeTree themeTree);
 
+  String getCasServiceUrl();
+  String getCasUrl();
+  String getCasLoginUrl();
+  String getCasLogoutUrl();
 }

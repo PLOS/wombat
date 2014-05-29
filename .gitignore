@@ -1,3 +1,8 @@
+
+# local files #
+SCRATCHPAD.txt
+
+
 # Compiled code #
 *.class
 *.pyc
@@ -29,3 +34,5 @@ target/
 
 
 plos-mobile-themes
+
+

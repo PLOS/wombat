@@ -5,22 +5,26 @@
   </div>
   <div class="grid-container">
     <div id="pagehdr-wrap" class="highlight-border">
-			<nav id="nav-user" class="nav">
-				<ul class="nav-top">
+			<div id="user" class="nav">
+				<ul class="nav-user">
         <#macro navTopItem href highlighted=false>
 					<li <#if highlighted>class="highlighted"</#if>><a href="${href}"><#nested/></a></li>
         </#macro>
         <#include "navTop.ftl" />
 				</ul>
-			</nav>
+			</div>
       <div id="pagehdr">
+				<div class="contain-to-grid">  <#--foundation class name. needed for top-bar use. -->
+					<nav class="nav-main" data-topbar>
 
-        <div class="logo">
-          <a href="<@siteLink path="." />">${siteTitle}</a>
+            <#include "../siteMenu/siteMenu.ftl" />
+
+              <#include "search.ftl" />
+
+              </ul>     <#--opened in siteMenu.ftl -->
+            </section>  <#--opened in siteMenu.ftl -->
+          </nav>
         </div>
-
-      <#include "../siteMenu/siteMenu.ftl" />
-      <#include "search.ftl" />
       </div>
     </div><#-- pagehdr-->
   </div>

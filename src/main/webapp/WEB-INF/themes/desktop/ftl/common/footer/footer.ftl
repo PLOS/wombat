@@ -2,9 +2,9 @@
 </div><#-- Close pagebdy-wrap from header.ftl -->
 </main>
 <footer id="pageftr">
-  <div class="ftr-cols cf">
+  <div class="row">
 
-    <div class="col col-1">
+    <div class="large-6 columns">
     <#macro footerLogo src alt>
       <img src="${src}" alt="${alt}" class="logo"/>
     </#macro>
@@ -13,11 +13,11 @@
     <#include "footerPrimaryLinks.ftl" />
     </div>
 
-    <div class="col col-2">
+		<div class="large-3 columns">
     <#include "footerSecondaryLinks.ftl" />
     </div>
 
-    <div class="col col-3">
+		<div class="large-3 columns">
     <#include "footerTertiaryLinks.ftl" />
     </div>
 

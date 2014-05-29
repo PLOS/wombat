@@ -1,13 +1,29 @@
-/* 
+/*
  *       These are the header styles
+ page-wrap
+  topbanner
+  pagehdr-wrap
+    nav-user (***production has "user")
+    pagehdr
+      contain-to-grid
+        nav-main (foundation topbar)
+          logo
+          top-bar-section
+            right
+              ul /
+              li
+                'browse'
+                'for authors'
+                'about us'
+                'search'
  */
 
 
 .head-top{
- @extend .bg-dark;
- @extend .text-center;
- @extend .pad-small-x;
- @include highlight-border();
+  @extend .bg-dark;
+  @extend .text-center;
+  @extend .pad-small-x;
+  @include highlight-border($plos-bio);
 }
 
 .ad-head{
@@ -15,135 +31,185 @@
     background: image-url('text.vert.ad.gif') no-repeat left 5px; }
 }
 
-$width-logo: 3;
-$width-search: 3;
-$width-nav: $block-grid-elements - ($width-logo + $width-search);
-#pagehdr-wrap{
+$width-logo: 5;
+$width-search: 4;
+$width-nav: $block-grid-elements - $width-logo;    //
 
-   .logo{ @include grid-column($width-logo); // from foundation
-     @include background-image('logo-bio.png'); }
-   .head-search{
-     @include grid-column($width-search);  // from foundation
-     $last-column:true;   // from foundation
-     form{
+#pagehdr-wrap {
+  .nav {
+    @include grid-row();
 
-        $input-box-shadow: none; // from foundation
-        $input-include-glowing-effect: false;  // from foundation
-        $input-font-size: rem-calc(22);   // from foundation
-       legend,label{display: none;}
+    .nav-user {
+      @extend .inline-list; // from foundation
+      @extend .right; // from foundation
+      //  @include grid-column($columns:4, $float:right); // from foundation
+      font-weight: bold;
+      > li {
+        margin-top: -5px;
+        margin-left: rem-calc(4);
+        &:hover {
+        }
+        > a {
+          @include rounded-pill(transparent, $pad-nav-user);
+          color: $plos-default;
 
-       input[type="text"] {
-         $input-border-radius: 0;    // from foundation
-         $input-include-glowing-effect: false;  // from foundation
-         $input-font-color: $clr-body-text;   // from foundation
-         $input-border-color: $input-bg-color; // from foundation
-         $input-focus-border-color:  $input-bg-color;  // from foundation
-         @include form-element();  // from foundation
-
-
-       }
-       input[type="image"]{
-         // the following was desperation from demo
-         width: 45px;
-         height: 45px;
-         padding: 12px;
-         border: 0px none;
-         background-color: white;
-       }
-     }
-   }
-
-
-}
-  /*hi there */
-.head-nav{
-  @include grid-column($width-nav);   // from foundation
-  ul  { @extend .inline-list;   }    // from foundation
-  li {
-    @extend h2;
-    border-left: 1px solid $clr-separator;
-    a{
-      padding: 10px 20px;
-      height: 30px;
-
-      &:hover {
-        background-color: white;
-        @include single-box-shadow(); // from foundation
-        @include border-top-radius(); // from foundation
-      }
-    }
-
-    .f-dropdown {
-      padding: 0;
-      margin: 0;
-      width: 240px;
-      border-radius: 4px;
-      border: none;
-      padding: 20px 0px 30px;
-
-      margin-left: -13px;
-        /* padding: 20px 0px 30px;
-
-      margin-left: -13px;
-      border-radius: 4px;
-      box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);   */
-      @include single-box-shadow(); // from foundation
-       li {
-        border-left: 0;
-        padding: 0;
-        margin: 0;
-          a {
-            font-size: $txt-size-small;
-            padding: 10px;
-            width: 240px;
-            border-radius: 0;
-
-              &:hover {
-                color: $clr-highlight-text;
-                background-color: $clr-highlight-hover;
-
-              }
+          &:hover {
+            color: $clr-highlight-text;
+            background: $plos-default;
           }
         }
       }
+      li.highlighted {
+        > a {
+          color: $clr-highlight-text;
+          background: $plos-bio;
+        }
+      }
+    }
   }
 
-  /* no styling for this yet so hiding for now */
-  .menuCallout {
-   display: none;
+
+  .logo {
+    @include grid-column($width-logo); // from foundation
+    @extend .title-area;
+    background: image-url('logo.png') no-repeat 0 0;
+    text-indent: -9999px;
+    height: 41px;
+  }
+  .home-link {
+    @extend .name;
   }
 }
+
+
+ /* using Foundation Top Bar
+  all @extend .class are Foundation
+  */
+
+.nav-main {
+  @extend .top-bar;
+  font-family: $font-face-navigation;
+
+  .top-bar-section ul.nav-elements {
+    @extend .left; // foundation
+    @include grid-column($width-nav); // from foundation
+  }
+  .top-bar-section ul.nav-elements > li.has-dropdown {
+    border-left: 1px solid $clr-separator;
+
+    &:first-child { border-left: 1px solid #efefef; }
+    &:hover { border-left: 1px solid #efefef; }
+
+    > a {
+      font-family: $font-face-navigation;
+      @include border-top-radius();
+
+      &:hover {
+        @include single-box-shadow();
+        background: $white;
+       /* $default-box-shadow-h-offset: 1px;
+        $default-box-shadow-v-offset: 1px;*/
+      }
+    }
+  }
+
+  .top-bar-section ul.nav-elements > li.has-dropdown ul.dropdown {
+    padding-top: rem-calc(20);
+    padding-bottom: rem-calc(30);
+    background: $white;
+    @include border-radius();
+    margin-left: -15px;
+    @include single-box-shadow();
+  }
+  .top-bar-section ul.nav-elements > li.has-dropdown:last-child ul.dropdown {background: red;}
+
+  .top-bar-section li.has-dropdown ul.dropdown li:hover {
+   // background-color: transparent; //override foundation settings
+  }
+  .top-bar-section li.has-dropdown ul.dropdown li a {
+    width: rem-calc(240);
+    font-family: $font-face-navigation;
+    font-size: $txt-size-medium;
+    line-height: rem-calc(30);
+    padding: 0 13px;
+
+    &:hover {
+      color: $clr-highlight-text;
+      background: $clr-highlight-hover;
+    }
+  }
+
+  .head-search {
+
+   // @extend .has-form;
+    @include grid-column($width-search);  // from foundation
+    $last-column:true;   // from foundation
+    padding-left: rem-calc(20);
+    padding-right: 0;
+
+    form {
+      margin-top: -5px;
+      $fieldset-padding: 0;
+      $fieldset-margin: 0;
+      $input-box-shadow: none; // from foundation
+      $input-include-glowing-effect: false;  // from foundation
+      $input-font-size: rem-calc(22);   // from foundation
+      legend,label { display: none; }
+
+      input[type="text"] {
+        $input-border-radius: 0;    // from foundation
+        $input-include-glowing-effect: false;  // from foundation
+        $input-font-color: $clr-body-text;   // from foundation
+        $input-border-color: $input-bg-color; // from foundation
+        $input-focus-border-color:  $input-bg-color;  // from foundation
+        @include form-element();  // from foundation
+        width: rem-calc(195);
+      }
+      input[type="image"]{
+        // the following was desperation from demo
+        width: 45px;
+        height: 45px;
+        padding: 12px;
+        border: 0px none;
+        background-color: white;
+      }
+    }
+    background-color: transparent;
+    text-align: right;
+    > a {
+      display: block;
+      padding: 0 !important;
+      //margin: 0 -30px 0 0;
+      font-size: $txt-size-small;
+
+      &:hover {
+        text-decoration: underline;
+        background-color: transparent;
+      }
+
+    }
+   }
+} // end nav-main
+
+
+
+
+
+
+
+
+
+
+/*.top-bar-section li.has-dropdown ul.dropdown li a:hover {
+  color: $clr-highlight-text;
+  background: $clr-highlight-hover;
+  }*/
 /*
-callout: width: 540px;
-margin-left: -310px;
+.top-bar-section ul.dropdown li a:hover {
+  color: $clr-highlight-text;
+  background-color: $clr-highlight-hover;
+}
 
- padding: 20px 0px 30px;
-width: 240px;
-margin-left: -13px;
-border-radius: 4px;
-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
 */
-
-.nav{
-  @include grid-row();
-}
-.nav-top{
-  @extend .inline-list; // from foundation
-  @extend .right;   // from foundation
-  @include grid-column($columns:4, $float:right); // from foundation
-  font-weight: bold;
-  li.highlighted{
-    @include rounded-pill();
-    margin-top: -5px;
-    a{color: white;}
-  }
- }
-.head-search {
-  fieldset {
-    padding: 0;
-    margin: 0;
-  }
-}
-
 
 

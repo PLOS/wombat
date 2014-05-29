@@ -4,4 +4,60 @@
 
 footer{
   @extend .bg-dark;
-}
+  padding: rem-calc(25 0 60); // 25px 0 60px;
+
+  .logo { }
+  color: $white;
+  font-weight: normal;
+
+  a {
+    color: $grey-med-light;
+    font-weight: normal;
+
+    &:hover {
+      color: $grey-med-light;
+      text-decoration: underline;
+    }
+  }
+  .nav {
+    position: relative;
+    color: $grey-med-light;
+     a {
+      font-size: $txt-size-xsmall;
+
+      color: $grey-med-light;
+
+      &:hover {
+        color: $grey-med-light;
+        text-decoration: underline;
+      }
+       .nav-aux {
+         position: absolute;
+         bottom: 0;
+         a {
+           font-weight: normal;
+         }
+       }
+
+     }
+    }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+    ul li a {
+      font-size: $txt-size-xsmall;
+      color: $grey-med-light;
+
+      &:hover {
+        color: $grey-med-light;
+        text-decoration: underline;
+      }
+    }
+  .nav-special a {
+    font-weight: bold;
+    color: $clr-light-text
+  }
+
+  }

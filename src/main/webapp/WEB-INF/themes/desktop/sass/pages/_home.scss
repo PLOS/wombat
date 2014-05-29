@@ -10,6 +10,7 @@ $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
 $pad-default: rem-calc(10);
 $image-width: rem-calc(70);
+$hero-height: rem-calc(380);
 $image-container: ($image-width + $pad-default);
 // HOME CONTENT - home-content
 
@@ -31,10 +32,10 @@ $image-container: ($image-width + $pad-default);
 //home page blocks
 .hero {
   position: relative;
+  height:
   img{
 
-    @include single-box-shadow();
-
+  @include single-box-shadow();
   @include border-top-radius();
   }
   padding: 0;
@@ -46,7 +47,7 @@ $image-container: ($image-width + $pad-default);
     color: $white;
   }
   img {
-    width: 960px;
+    width: 100%;
   }
   &.dark-text,
   &.dark-text a {

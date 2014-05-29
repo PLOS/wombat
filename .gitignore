@@ -1,8 +1,3 @@
-
-# local files #
-SCRATCHPAD.txt
-
-
 # Compiled code #
 *.class
 *.pyc
@@ -35,4 +30,4 @@ target/
 
 plos-mobile-themes
 
-
+src/main/webapp/WEB-INF/themes/desktop/codekit-config.json

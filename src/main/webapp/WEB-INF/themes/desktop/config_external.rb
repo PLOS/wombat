@@ -1,3 +1,5 @@
+
+# Compass config file for creating external css - all fonts have absolute paths. This is not run automatically right now.
 # Require any additional compass plugins here.
 
 # Set this to the root of your project when deployed:

@@ -1,14 +1,17 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
+import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -28,9 +31,18 @@ public class RecentArticleServiceImpl implements RecentArticleService {
    */
   private final Random random = new Random();
 
-  private List<Object> getArticlesFromLastDays(String journalKey, double numberOfDays) throws IOException {
-    String query = String.format("articles?journal=%s&publishedWithin=%f", journalKey, numberOfDays);
-    return soaService.requestObject(query, ArrayList.class); // ArrayList is important; see shuffleSubset
+  private static final int SECONDS_PER_DAY = 60 * 60 * 24;
+
+  private List<Object> getArticlesFromDaysAgo(String journalKey, double daysAgo) throws IOException {
+    Calendar threshold = Calendar.getInstance();
+    threshold.add(Calendar.SECOND, (int) (-daysAgo * SECONDS_PER_DAY));
+    String thresholdTimestamp = HttpDateUtil.format(threshold);
+    String params = UrlParamBuilder.params()
+        .add("journal", journalKey)
+        .add("since", thresholdTimestamp)
+        .format();
+    Class<ArrayList> responseClass = ArrayList.class; // need ArrayList for shuffleSubset
+    return soaService.requestObject("articles?" + params, responseClass);
   }
 
   /**
@@ -68,13 +80,13 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       throws IOException {
     Preconditions.checkArgument(shuffleDuration <= defaultDuration);
     String journalKey = site.getJournalKey();
-    List<Object> articles = getArticlesFromLastDays(journalKey, shuffleDuration);
+    List<Object> articles = getArticlesFromDaysAgo(journalKey, shuffleDuration);
     if (articles.size() >= articleCount) {
       // Because there were enough articles below the shuffling threshold, return a random selection of them
       return shuffleSubset(articles, articleCount);
     } else {
       // Not enough articles to shuffle. Return a number up to articleCount in chronological order.
-      articles = getArticlesFromLastDays(journalKey, defaultDuration);
+      articles = getArticlesFromDaysAgo(journalKey, defaultDuration);
       return (articles.size() > articleCount) ? articles.subList(0, articleCount) : articles;
     }
   }

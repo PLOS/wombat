@@ -7,7 +7,6 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
-import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +40,18 @@ public class HomeController extends WombatController {
   private RecentArticleService recentArticleService;
 
   /**
+   * Extract {@code docs} element; rename {@code "id"} to {@code "doi"} to match the service API.
+   */
+  private static List<Object> sanitizeSolrResults(Map<?, ?> solrResults) {
+    List<Object> articles = (List<Object>) solrResults.get("docs");
+    for (Object articleObj : articles) {
+      Map<String, Object> article = (Map<String, Object>) articleObj;
+      article.put("doi", article.remove("id"));
+    }
+    return articles;
+  }
+
+  /**
    * Enumerates the allowed values for the section parameter for this page.
    */
   private static enum SectionType {
@@ -49,7 +60,7 @@ public class HomeController extends WombatController {
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         Map<?, ?> result = context.solrSearchService.getHomePageArticles(site, start, section.resultCount,
             SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
-        return (List<Object>) result.get("docs");
+        return sanitizeSolrResults(result);
       }
     },
     POPULAR {
@@ -57,7 +68,7 @@ public class HomeController extends WombatController {
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         Map<?, ?> result = context.solrSearchService.getHomePageArticles(site, start, section.resultCount,
             SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
-        return (List<Object>) result.get("docs");
+        return sanitizeSolrResults(result);
       }
     },
     IN_THE_NEWS {
@@ -207,14 +218,6 @@ public class HomeController extends WombatController {
     List<Map<String, Object>> inTheNewsArticles = (List<Map<String, Object>>)
         soaService.requestObject(requestAddress, List.class);
 
-    // From the presentation layer's perspective, all three of these article lists look the same.
-    // However, two of them come from solr, and one from rhino.  Unfortunately solr uses
-    // "id" as the name of the DOI attribute, while rhino uses "doi".  So this hack is
-    // necessary.  (We also take the opportunity to strip off the DOI scheme.)
-    for (Map<String, Object> article : inTheNewsArticles) {
-      article = DoiSchemeStripper.strip(article);
-      article.put("id", article.get("doi"));
-    }
     return inTheNewsArticles;
   }
 

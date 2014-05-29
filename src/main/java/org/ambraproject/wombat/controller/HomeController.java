@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
@@ -35,6 +36,9 @@ public class HomeController extends WombatController {
 
   @Autowired
   private SoaService soaService;
+
+  @Autowired
+  private RecentArticleService recentArticleService;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -76,12 +80,21 @@ public class HomeController extends WombatController {
   private class SectionSpec {
     private final SectionType type;
     private final int resultCount;
-    private final List<Number> shuffleSeq;
+    private final Double shuffleThreshold;
+    private final Double shuffleDefault;
 
     private SectionSpec(Map<String, Object> configuration) {
       type = SectionType.forCaseInsensitiveName((String) configuration.get("name"));
       resultCount = ((Number) configuration.get("resultCount")).intValue();
-      shuffleSeq = (List<Number>) configuration.get("shuffle"); // may be null
+
+      Map<String, Number> shuffleObj = (Map<String, Number>) configuration.get("shuffle");
+      if (shuffleObj == null) {
+        shuffleThreshold = null;
+        shuffleDefault = null;
+      } else {
+        shuffleThreshold = shuffleObj.get("threshold").doubleValue();
+        shuffleDefault = shuffleObj.get("default").doubleValue();
+      }
 
       Preconditions.checkArgument(resultCount > 0);
     }
@@ -91,9 +104,9 @@ public class HomeController extends WombatController {
     }
 
     public List<Object> getArticles(Site site, int start) throws IOException {
-      if (shuffleSeq != null) {
+      if (shuffleThreshold != null) {
         if (type == SectionType.RECENT) {
-          throw new RuntimeException("Not supported yet"); // TODO: Implement
+          return recentArticleService.getRecentArticles(site, resultCount, shuffleThreshold, shuffleDefault);
         } else {
           throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support
         }

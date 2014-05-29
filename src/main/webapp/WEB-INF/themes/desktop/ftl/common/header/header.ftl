@@ -1,3 +1,5 @@
+<#include "variables.ftl" >
+
 <header>
 <#--top head slot-->
   <div id="topslot" class="head-top">

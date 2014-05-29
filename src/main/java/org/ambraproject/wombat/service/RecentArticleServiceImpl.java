@@ -33,13 +33,13 @@ public class RecentArticleServiceImpl implements RecentArticleService {
 
   private static final int SECONDS_PER_DAY = 60 * 60 * 24;
 
-  private List<Object> getArticlesFromDaysAgo(String journalKey, double daysAgo) throws IOException {
+  private List<Object> getArticlesFromDaysAgo(String journalKey, int articleCount, double daysAgo) throws IOException {
     Calendar threshold = Calendar.getInstance();
     threshold.add(Calendar.SECOND, (int) (-daysAgo * SECONDS_PER_DAY));
-    String thresholdTimestamp = HttpDateUtil.format(threshold);
     String params = UrlParamBuilder.params()
         .add("journal", journalKey)
-        .add("since", thresholdTimestamp)
+        .add("min", Integer.toString(articleCount))
+        .add("since", HttpDateUtil.format(threshold))
         .format();
     Class<ArrayList> responseClass = ArrayList.class; // need ArrayList for shuffleSubset
     return soaService.requestObject("articles?" + params, responseClass);
@@ -75,20 +75,13 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   }
 
   @Override
-  public List<Object> getRecentArticles(Site site, int articleCount,
-                                        double shuffleDuration, double defaultDuration)
+  public List<Object> getRecentArticles(Site site, int articleCount, double shuffleFromDaysAgo)
       throws IOException {
-    Preconditions.checkArgument(shuffleDuration <= defaultDuration);
     String journalKey = site.getJournalKey();
-    List<Object> articles = getArticlesFromDaysAgo(journalKey, shuffleDuration);
-    if (articles.size() >= articleCount) {
-      // Because there were enough articles below the shuffling threshold, return a random selection of them
-      return shuffleSubset(articles, articleCount);
-    } else {
-      // Not enough articles to shuffle. Return a number up to articleCount in chronological order.
-      articles = getArticlesFromDaysAgo(journalKey, defaultDuration);
-      return (articles.size() > articleCount) ? articles.subList(0, articleCount) : articles;
-    }
+    List<Object> articles = getArticlesFromDaysAgo(journalKey, articleCount, shuffleFromDaysAgo);
+
+    // Return a shuffled selection if we got more than enough. Else, preserve chronological order.
+    return (articles.size() > articleCount) ? shuffleSubset(articles, articleCount) : articles;
   }
 
 }

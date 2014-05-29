@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface RecentArticleService {
-  public abstract List<Object> getRecentArticles(Site site, int articleCount,
-                                                 double shuffleDuration, double defaultDuration)
+  public abstract List<Object> getRecentArticles(Site site, int articleCount, double shuffleFromDaysAgo)
       throws IOException;
 }

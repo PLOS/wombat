@@ -27,6 +27,7 @@ import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.SiteResolver;
+import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
@@ -133,7 +134,8 @@ public class SpringConfiguration {
                                            RenderJsDirective renderJsDirective,
                                            BuildInfoDirective buildInfoDirective,
                                            FetchHtmlDirective fetchHtmlDirective,
-                                           ThemeConfigDirective themeConfigDirective)
+                                           ThemeConfigDirective themeConfigDirective,
+                                           AppLinkDirective appLinkDirective)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -154,6 +156,7 @@ public class SpringConfiguration {
     variables.put("buildInfo", buildInfoDirective);
     variables.put("fetchHtml", fetchHtmlDirective);
     variables.put("themeConfig", themeConfigDirective);
+    variables.put("appLink", appLinkDirective);
     config.setFreemarkerVariables(variables.build());
     return config;
   }
@@ -202,6 +205,11 @@ public class SpringConfiguration {
   public GitInfo gitInfo(Environment environment) {
     GitInfo gitInfo = new GitInfo(environment);
     return gitInfo;
+  }
+
+  @Bean
+  public AppLinkDirective appLinkDirective() {
+    return new AppLinkDirective();
   }
 
 }

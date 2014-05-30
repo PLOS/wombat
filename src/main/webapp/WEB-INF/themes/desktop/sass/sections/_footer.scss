@@ -1,14 +1,16 @@
 /* 
  *      styles for the footer
  */
-
-footer{
+//TODO sassify & format all code below
+footer {
   @extend .bg-dark;
   padding: rem-calc(25 0 60); // 25px 0 60px;
-
-  .logo { }
   color: $white;
   font-weight: normal;
+
+  .logo-footer {
+    padding-bottom: rem-calc(25);
+  }
 
   a {
     color: $grey-med-light;
@@ -22,7 +24,7 @@ footer{
   .nav {
     position: relative;
     color: $grey-med-light;
-     a {
+    a {
       font-size: $txt-size-xsmall;
 
       color: $grey-med-light;
@@ -31,33 +33,49 @@ footer{
         color: $grey-med-light;
         text-decoration: underline;
       }
-       .nav-aux {
-         position: absolute;
-         bottom: 0;
-         a {
-           font-weight: normal;
-         }
-       }
 
-     }
     }
+  }
+  .nav-aux {
+    @extend .inline-list;
+    margin-top: rem-calc(45);
+    margin-left: 0;
+
+    li {
+      margin-left: rem-calc(10);
+      padding: rem-calc(0 10 0 0);
+      border-right: 1px solid #efefef;
+    }
+    li:first-child {
+      margin-left: 0;
+    }
+    li:last-child {
+      padding-right: none;
+      border-right: none;
+    }
+  }
   ul {
     list-style: none;
     padding-left: 0;
     margin-left: 0;
   }
-    ul li a {
-      font-size: $txt-size-xsmall;
+  ul li a {
+    font-size: $txt-size-xsmall;
+    color: $grey-med-light;
+
+    &:hover {
       color: $grey-med-light;
-
-      &:hover {
-        color: $grey-med-light;
-        text-decoration: underline;
-      }
+      text-decoration: underline;
     }
-  .nav-special a {
-    font-weight: bold;
-    color: $clr-light-text
+  }
+  .nav-special {
+    font-size: $txt-size-xsmall;
+    color: $grey-med-light;
+
+    a {
+      font-weight: bold;
+      color: $clr-light-text
+    }
   }
 
-  }
+}

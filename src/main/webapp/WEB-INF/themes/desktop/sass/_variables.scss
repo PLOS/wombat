@@ -4,16 +4,11 @@
 
 //journal specific
 
-$plos-default: #3c63af;
-//blue
-$plos-one: #f8af2d;
-//yellow
-$plos-bio: #16a127;
-//green
-$plos-med: #891fb1;
-// purple
-$plos-currents: #1dbfe0;
-// light blue
+$plos-default: #3c63af; //blue
+$plos-one: #f8af2d; //yellow
+$plos-bio: #16a127; //green
+$plos-med: #891fb1; // purple
+$plos-currents: #1dbfe0; // light blue
 
 // TODO : these probably are in different variable files
 
@@ -54,11 +49,9 @@ $clr-btn-text: $white;
 // layout patterns
 $border-radius-default: 5px;
 $border-radius-large: 8px;
-$pad-default: 10px 20px;
-//TODO this will be computed
+$pad-default: 10px 20px;//TODO this will be computed
 $pad-small: 5px;
-$pad-nav-user: 14px 16px 8px;
-//TODO change to computation
+$pad-nav-user: 14px 16px 8px; //TODO change to computation
 
 // typography
 $font-face-plain: "arial";
@@ -77,8 +70,7 @@ $txt-size-xxxlarge: 26px;
 $txt-size-xxlarge: 22px;
 $txt-size-xlarge: 20px;
 $txt-size-large: 18px;
-$txt-size-medium-large: 16px;
-// TODO This is getting ridiculous there has to be a better way
+$txt-size-medium-large: 16px; // TODO This is getting ridiculous there has to be a better way
 $txt-size-medium: 14px;
 $txt-size-small: 13px;
 $txt-size-xsmall: 12px;
@@ -91,10 +83,8 @@ $txt-size-h1: $txt-size-xlarge;
 $txt-size-h2: $txt-size-xxlarge;
 $txt-size-h3: $txt-size-large;
 $txt-size-h4: $txt-size-default;
-$txt-size-h5: $txt-size-default;
-// may not use
-$txt-size-h6: $txt-size-default;
-// may not use
+$txt-size-h5: $txt-size-default; // may not use
+$txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
 

@@ -17,10 +17,12 @@ $image-container: ($image-width + $pad-default);
 // for demo:
 
 .row {
-  &.one, &.two{
-    .block{
+  &.one, &.two {
+    .block {
       margin-right: 2%; // this is for demo
-      &:last-child{margin-right: 0;}
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }
@@ -32,11 +34,11 @@ $image-container: ($image-width + $pad-default);
 //home page blocks
 .hero {
   position: relative;
-  height:
-  img{
+  //height:
+  img {
 
-  @include single-box-shadow();
-  @include border-top-radius();
+    @include single-box-shadow();
+    @include border-top-radius();
   }
   padding: 0;
   margin-bottom: 20px;
@@ -81,15 +83,13 @@ $image-container: ($image-width + $pad-default);
   }
   &.medium {
     @include grid-column(6, $collapse: false);
-    width: 48%;  // for demo
+    width: 48%; // for demo
   }
   &.large {
     @include grid-column(7, $collapse: false);
   }
 
 }
-
-
 
 .block {
   position: relative;
@@ -153,11 +153,11 @@ $image-container: ($image-width + $pad-default);
 .column {
   &.left {
     @include grid-column(8, $collapse: false);
-    .row-small-blocks{
+    .row-small-blocks {
       @include block-grid(2);
       // for demo
       .block {
-        &:nth-child(1),&:nth-child(3){
+        &:nth-child(1), &:nth-child(3) {
           margin-right: 2%;
           width: 46%;
         }
@@ -184,15 +184,13 @@ $image-container: ($image-width + $pad-default);
   }
 }
 
-
-
 #submission-links,
 #article-list,
 #social-links,
 #spotlight,
 #issue,
 #twitter-feed,
-#blogroll{
+#blogroll {
   @include blocks();
   @include stub();
   height: $block-height;
@@ -210,10 +208,19 @@ $image-container: ($image-width + $pad-default);
 
 }
 
-#billboard{
+#billboard {
   @include grid-row;
   @include blocks($grey-dark);
-  h3, h4, a {color: $white !important;}
+  h3, h4, a {
+    color: $white !important;
+  }
   position: relative;
-  a{@include rounded-pill(); position: absolute; width: 80px; height: 36px; right: 20px; top: 10px; }
+  a {
+    @include rounded-pill();
+    position: absolute;
+    width: 80px;
+    height: 36px;
+    right: 20px;
+    top: 10px;
+  }
 }

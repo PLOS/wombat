@@ -19,8 +19,8 @@ $grey-med: #636363;
 $grey-med-light: #ccc;
 $grey-light: #efefef;
 
-$warning: #E53350;
-$success: #16A127;
+$warning: #e53350;
+$success: #16a127;
 
 //colors
 
@@ -31,7 +31,6 @@ $clr-highlight-text: $white !default;
 $clr-body-bg: $grey-light;
 $clr-panel: $white;
 $clr-separator: $grey-med-light;
-
 
 $clr-link: $clr-highlight;
 $clr-body-text: $grey-dark;
@@ -47,12 +46,12 @@ $clr-btn-secondary: $grey-dark;
 $clr-btn-disabled: $grey-light;
 $clr-btn-text: $white;
 
-
 // layout patterns
 $border-radius-default: 5px;
 $border-radius-large: 8px;
-$pad-default: 10px 20px; //TODO this will be computed
-$pad-small:5px;
+$pad-default: 10px 20px;//TODO this will be computed
+$pad-small: 5px;
+$pad-nav-user: 14px 16px 8px; //TODO change to computation
 
 // typography
 $font-face-plain: "arial";
@@ -64,7 +63,6 @@ $font-face-copy: $font-face-plain;
 $font-face-navigation: $font-face-fancy;
 $font-face-headings: $font-face-fancy;
 
-
 //Type Sizes
 $txt-size-giant: 36px;
 $txt-size-xxxxlarge: 28px;
@@ -72,7 +70,7 @@ $txt-size-xxxlarge: 26px;
 $txt-size-xxlarge: 22px;
 $txt-size-xlarge: 20px;
 $txt-size-large: 18px;
-$txt-size-medium-large: 16px;// TODO This is getting ridiculous there has to be a better way
+$txt-size-medium-large: 16px; // TODO This is getting ridiculous there has to be a better way
 $txt-size-medium: 14px;
 $txt-size-small: 13px;
 $txt-size-xsmall: 12px;

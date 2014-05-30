@@ -8,37 +8,34 @@ $default-box-shadow-blur: 5px;
 $default-box-shadow-spread: 0;
 $default-box-shadow-inset: false;
 
+@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default) {
+  background: $background;
+  padding: $padding;
+  border-radius: $border-radius;
+  color: $clr-btn-text;
 
-
-@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default){
-    background: $background;
-    padding: $padding;
-    border-radius: $border-radius;
-    color: $clr-btn-text;
-    
-    &:hover{
-       background: $clr-link-hover;
-    }
+  &:hover {
+    background: $clr-link-hover;
+  }
 
 }
 
-.pill{
+.pill {
   @include rounded-pill();
 }
 
-@mixin blocks($color: $white){
+@mixin blocks($color: $white) {
   background: $color;
   padding: rem-calc(10);
   @include single-box-shadow();
   @include border-top-radius();
   margin-bottom: $block-grid-default-spacing;
 
-
 }
 
-  ///PLACEHOLDER STYLES
+///PLACEHOLDER STYLES
 
-@mixin stub(){
+@mixin stub() {
   background-color: $grey-med-light;
   color: $white;
 }

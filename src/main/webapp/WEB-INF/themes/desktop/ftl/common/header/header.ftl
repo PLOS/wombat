@@ -1,10 +1,10 @@
 <header>
 <#--top head slot-->
-  <div id="topslot" class="head-top">
+	<div id="topslot" class="head-top">
   <#include "topSlot.ftl" />
-  </div>
-  <div class="grid-container">
-    <div id="pagehdr-wrap" class="highlight-border">
+	</div>
+	<div class="grid-container">
+		<div id="pagehdr-wrap" class="highlight-border">
 			<div id="user" class="nav">
 				<ul class="nav-user">
         <#macro navTopItem href highlighted=false>
@@ -13,22 +13,22 @@
         <#include "navTop.ftl" />
 				</ul>
 			</div>
-      <div id="pagehdr">
+			<div id="pagehdr">
 				<div class="contain-to-grid">  <#--foundation class name. needed for top-bar use. -->
 					<nav class="nav-main" data-topbar>
 
-            <#include "../siteMenu/siteMenu.ftl" />
+          <#include "../siteMenu/siteMenu.ftl" />
 
-              <#include "search.ftl" />
+          <#include "search.ftl" />
 
-              </ul>     <#--opened in siteMenu.ftl -->
-            </section>  <#--opened in siteMenu.ftl -->
-          </nav>
-        </div>
-      </div>
-    </div><#-- pagehdr-->
-  </div>
+						</ul>     <#--opened in siteMenu.ftl -->
+						</section>  <#--opened in siteMenu.ftl -->
+					</nav>
+				</div>
+			</div>
+		</div><#-- pagehdr-->
+	</div>
 </header>
 <main>
-  <div id="pagebdy-wrap"><#-- Closed in footer.ftl -->
-    <div id="pagebdy"><#-- Closed in footer.ftl -->
+	<div id="pagebdy-wrap"><#-- Closed in footer.ftl -->
+		<div id="pagebdy"><#-- Closed in footer.ftl -->

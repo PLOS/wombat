@@ -33,18 +33,6 @@ public class RecentArticleServiceImpl implements RecentArticleService {
 
   private static final int SECONDS_PER_DAY = 60 * 60 * 24;
 
-  private List<Object> getArticlesFromDaysAgo(String journalKey, int articleCount, double daysAgo) throws IOException {
-    Calendar threshold = Calendar.getInstance();
-    threshold.add(Calendar.SECOND, (int) (-daysAgo * SECONDS_PER_DAY));
-    String params = UrlParamBuilder.params()
-        .add("journal", journalKey)
-        .add("min", Integer.toString(articleCount))
-        .add("since", HttpDateUtil.format(threshold))
-        .format();
-    Class<ArrayList> responseClass = ArrayList.class; // need ArrayList for shuffleSubset
-    return soaService.requestObject("articles?" + params, responseClass);
-  }
-
   /**
    * Select a random subset of elements and shuffle their order.
    * <p/>
@@ -78,7 +66,17 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   public List<Object> getRecentArticles(Site site, int articleCount, double shuffleFromDaysAgo)
       throws IOException {
     String journalKey = site.getJournalKey();
-    List<Object> articles = getArticlesFromDaysAgo(journalKey, articleCount, shuffleFromDaysAgo);
+    Calendar threshold = Calendar.getInstance();
+    threshold.add(Calendar.SECOND, (int) (-shuffleFromDaysAgo * SECONDS_PER_DAY));
+
+    String params = UrlParamBuilder.params()
+        .add("journal", journalKey)
+        .add("min", Integer.toString(articleCount))
+        .add("since", HttpDateUtil.format(threshold))
+        .add("type", "http://rdf.plos.org/RDF/articleType/research-article")
+        .format();
+    Class<ArrayList> responseClass = ArrayList.class; // need ArrayList for shuffleSubset
+    List<Object> articles = soaService.requestObject("articles?" + params, responseClass);
 
     // Return a shuffled selection if we got more than enough. Else, preserve chronological order.
     return (articles.size() > articleCount) ? shuffleSubset(articles, articleCount) : articles;

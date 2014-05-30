@@ -14,15 +14,24 @@ sections:
     resultCount: 7
     # The number of articles to load into the model when this section is displayed.
 
-    shuffle: null
-    # If null (or omitted), don't shuffle results, but display them in the order defined in HomeController.
+    since: null
+    # If null, use the default query behavior for this section. Must be null on all sections other than "recent".
     #
-    # If a non-null number, query for all articles published within that number of days. If there are more than
-    # resultCount, select a random subset (of size == resultCount) and display them in a random order. Else, show a
-    # number equal to resultCount, in chronological order, regardless of how old they are.
+    # If a non-null number on "recent", query the service API for articles published that number of days ago. Enables
+    # the "shuffle" and "articleTypes" special parameters.
+
+    shuffle: false
+    # Ignored unless "name" is "recent" and "since" is non-null.
     #
-    # Shuffling is supported (currently) only for "recent".
-    # This must be null on any section for which shuffling is unsupported.
+    # If true, when the number of articles returned for the "since" threshold is greater than resultCount, select a
+    # random subset (of size equal to resultCount) and display them in a random order. Else, show them in chronological
+    # order, regardless of how old they are.
+
+    articleTypes: null
+    # Ignored unless "name" is "recent" and "since" is non-null.
+    #
+    # Filter articles by these types. If enough have been published after the "since" threshold, sort them by type in
+    # this order.
 
 defaultSelection: "recent"
 # The value must be either null or equal to the "name" value of one of the entries under "section".

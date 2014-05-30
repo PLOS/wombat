@@ -65,26 +65,31 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   @Override
   public List<Object> getRecentArticles(Site site,
                                         int articleCount,
-                                        double shuffleFromDaysAgo,
+                                        double numberOfDaysAgo,
+                                        boolean shuffle,
                                         List<String> articleTypes)
       throws IOException {
     String journalKey = site.getJournalKey();
     Calendar threshold = Calendar.getInstance();
-    threshold.add(Calendar.SECOND, (int) (-shuffleFromDaysAgo * SECONDS_PER_DAY));
+    threshold.add(Calendar.SECOND, (int) (-numberOfDaysAgo * SECONDS_PER_DAY));
 
     UrlParamBuilder params = UrlParamBuilder.params()
         .add("journal", journalKey)
         .add("min", Integer.toString(articleCount))
         .add("since", HttpDateUtil.format(threshold));
-    for (String articleType : articleTypes) {
-      params.add("type", articleType);
+    if (articleTypes != null) {
+      for (String articleType : articleTypes) {
+        params.add("type", articleType);
+      }
     }
 
     Class<ArrayList> responseClass = ArrayList.class; // need ArrayList for shuffleSubset
     List<Object> articles = soaService.requestObject("articles?" + params.format(), responseClass);
 
-    // Return a shuffled selection if we got more than enough. Else, preserve chronological order.
-    return (articles.size() > articleCount) ? shuffleSubset(articles, articleCount) : articles;
+    if (articles.size() > articleCount) {
+      articles = shuffle ? shuffleSubset(articles, articleCount) : articles.subList(0, articleCount);
+    }
+    return articles;
   }
 
 }

@@ -91,7 +91,8 @@ public class HomeController extends WombatController {
   private class SectionSpec {
     private final SectionType type;
     private final int resultCount;
-    private final Double shuffle; // nullable
+    private final Double since; // nullable
+    private final boolean shuffle;
     private final List<String> articleTypes;
 
     private SectionSpec(Map<String, Object> configuration) {
@@ -99,8 +100,10 @@ public class HomeController extends WombatController {
       resultCount = ((Number) configuration.get("resultCount")).intValue();
       Preconditions.checkArgument(resultCount > 0);
 
-      Number shuffleThreshold = (Number) configuration.get("shuffle");
-      this.shuffle = (shuffleThreshold == null) ? null : shuffleThreshold.doubleValue();
+      Number shuffleThreshold = (Number) configuration.get("since");
+      this.since = (shuffleThreshold == null) ? null : shuffleThreshold.doubleValue();
+
+      this.shuffle = (Boolean) configuration.get("shuffle");
 
       this.articleTypes = (List<String>) configuration.get("articleTypes");
     }
@@ -110,9 +113,9 @@ public class HomeController extends WombatController {
     }
 
     public List<Object> getArticles(Site site, int start) throws IOException {
-      if (shuffle != null) {
+      if (since != null) {
         if (type == SectionType.RECENT) {
-          return recentArticleService.getRecentArticles(site, resultCount, shuffle, articleTypes);
+          return recentArticleService.getRecentArticles(site, resultCount, since, shuffle, articleTypes);
         } else {
           throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support
         }

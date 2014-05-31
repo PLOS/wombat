@@ -20,8 +20,10 @@
 		<a href="#">${title}</a>
 
     <#if containsCallout>
-			<div class="submit" style="display:none">
-        <#include "siteMenuCallout.ftl" />
+			<div class="submit">
+        <div class="calloutInner">
+          <#include "siteMenuCallout.ftl" />
+        </div>
 			</div>
     </#if>
 

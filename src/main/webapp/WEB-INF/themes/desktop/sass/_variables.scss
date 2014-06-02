@@ -4,16 +4,11 @@
 
 //journal specific
 
-$plos-default: #3c63af;
-//blue
-$plos-one: #f8af2d;
-//yellow
-$plos-bio: #16a127;
-//green
-$plos-med: #891fb1;
-// purple
-$plos-currents: #1dbfe0;
-// light blue
+$plos-default: #3c63af; //blue
+$plos-one: #f8af2d; //yellow
+$plos-bio: #16a127; //green
+$plos-med: #891fb1; // purple
+$plos-currents: #1dbfe0; // light blue
 
 // TODO : these probably are in different variable files
 
@@ -88,10 +83,8 @@ $txt-size-h1: $txt-size-xlarge;
 $txt-size-h2: $txt-size-xxlarge;
 $txt-size-h3: $txt-size-large;
 $txt-size-h4: $txt-size-default;
-$txt-size-h5: $txt-size-default;
-// may not use
-$txt-size-h6: $txt-size-default;
-// may not use
+$txt-size-h5: $txt-size-default; // may not use
+$txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
 

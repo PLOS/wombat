@@ -47,6 +47,8 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
+import org.ambraproject.wombat.service.RecentArticleService;
+import org.ambraproject.wombat.service.RecentArticleServiceImpl;
 import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.springframework.context.annotation.Bean;
@@ -199,6 +201,11 @@ public class SpringConfiguration {
   @Bean
   public BuildInfoService buildInfoService() {
     return new BuildInfoServiceImpl();
+  }
+
+  @Bean
+  public RecentArticleService recentArticleService() {
+    return new RecentArticleServiceImpl();
   }
 
   @Bean

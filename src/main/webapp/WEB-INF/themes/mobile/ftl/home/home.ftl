@@ -35,19 +35,20 @@
     </#if>
 
       <div id="article-results-container">
-      <#if articles?? >
+      <#if sections[selectedSection]??>
+        <#assign articles = sections[selectedSection] />
         <section>
           <ul id="article-results" class="results">
-            <#list articles.docs as article>
+            <#list articles as article>
               <li>
-                <a href="article?id=${article.id}">${article.title}</a>
+                <a href="article?id=${article.doi}">${article.title}</a>
               </li>
             </#list>
           </ul>
         </section>
 
         <#if selectedSection != "in_the_news">
-          <#assign numPages = (articles.numFound / resultsPerPage)?ceiling />
+          <#assign numPages = (articles?size / resultsPerPage)?ceiling />
           <#assign currentPage = (RequestParameters.page!1)?number />
           <#assign path = "" />
           <#include "../common/paging.ftl" />

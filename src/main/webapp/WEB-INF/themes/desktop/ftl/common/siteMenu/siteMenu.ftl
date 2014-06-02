@@ -2,54 +2,54 @@
 <#if hasSiteMenu>
 
   <#macro siteMenuCalloutHeadline>
-	<h3><#nested/></h3>
+  <h3><#nested/></h3>
   </#macro>
   <#macro siteMenuCalloutBulletList>
-	<ul>
+  <ul>
     <#nested/>
-	</ul>
+  </ul>
   </#macro>
   <#macro siteMenuCalloutButton href>
-	<a class="btn" href="${href}">
+  <a class="btn" href="${href}">
     <#nested/>
-	</a>
+  </a>
   </#macro>
 
   <#macro menuSection title containsCallout=false>
-	<li class="has-dropdown">
-		<a href="#">${title}</a>
+  <li class="has-dropdown">
+    <a href="#">${title}</a>
 
     <#if containsCallout>
-			<div class="submit">
-        <div class="calloutInner">
-          <#include "siteMenuCallout.ftl" />
-        </div>
-			</div>
+    <div class="submit">
+      <div class="calloutInner">
+        <#include "siteMenuCallout.ftl" />
+      </div>
+    </div>
     </#if>
 
-		<ul class="dropdown">
+    <ul class="dropdown">
       <#nested/>
-		</ul>
+    </ul>
 
-	</li>
+  </li>
   </#macro>
 
   <#macro menuLink href>
-	<li>
-		<a href="${href}"><#nested/></a>
-	</li>
+  <li>
+    <a href="${href}"><#nested/></a>
+  </li>
   </#macro>
 
 <#--Markup starts here
 MARKUP: using Foundation Top Bar for navigation -->
-<ul class="logo">
-	<li class="home-link">
-		<h1><a href="<@siteLink path="." />">${siteTitle}</a></h1>
-	</li>
-</ul>
-<section class="top-bar-section"> <#--closed in header.ftl-->
+  <ul class="logo">
+    <li class="home-link">
+      <h1><a href="<@siteLink path="." />">${siteTitle}</a></h1>
+    </li>
+  </ul>
+  <section class="top-bar-section"> <#--closed in header.ftl-->
 
-	<ul class="nav-elements">
+  <ul class="nav-elements">
     <#include "siteMenuItems.ftl" />
 
 </#if>

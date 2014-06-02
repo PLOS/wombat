@@ -20,11 +20,11 @@
 		<a href="#">${title}</a>
 
     <#if containsCallout>
-			<div class="submit">
-        <div class="calloutInner">
-          <#include "siteMenuCallout.ftl" />
-        </div>
-			</div>
+	  <div class="submit">
+      <div class="calloutInner">
+        <#include "siteMenuCallout.ftl" />
+      </div>
+	  </div>
     </#if>
 
 		<ul class="dropdown">

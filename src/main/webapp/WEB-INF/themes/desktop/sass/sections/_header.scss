@@ -1,4 +1,23 @@
 
+-/*
+ *       These are the header styles
+  page-wrap
+   topbanner
+   pagehdr-wrap
+     nav-user (***production has "user")
+     pagehdr
+       contain-to-grid
+         nav-main (foundation topbar)
+           logo
+           top-bar-section
+             right
+               ul /
+               li
+                 'browse'
+                 'for authors'
+                 'about us'
+                 'search'
+ */
 .head-top {
   @extend .bg-dark;
   @extend .text-center;

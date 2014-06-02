@@ -1,7 +1,7 @@
 // Foundation by ZURB
 // foundation.zurb.com
 // Licensed under MIT Open Source
-
+/* ADDED .submit to display on hover */
 @import "global";
 @import "grid";
 @import "buttons";
@@ -521,6 +521,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             & > .dropdown {
               @include topbar-show-dropdown();
             }
+            & > .submit {
+              display: block !important;
+            }
           }
 
           .dropdown li.has-dropdown {
@@ -555,7 +558,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
             &:not(.has-form) a:not(.button) {
               color: $topbar-dropdown-link-color;
-              background: $topbar-dropdown-link-bg;   
+              background: $topbar-dropdown-link-bg;
             }
             &:not(.has-form):hover > a:not(.button) {
               color: $topbar-link-color-hover;
@@ -631,6 +634,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           &:hover {
             & > .dropdown {
               @include topbar-show-dropdown();
+            }
+            & > .submit {
+              display: block !important;
             }
           }
         }

@@ -21,7 +21,7 @@
 <script type="text/javascript" src="resource/js/vendor/jquery.carousel.js"></script>
 <script type="text/javascript" src="resource/js/components/carousel.js"></script>
 
-<script type="text/javascript" src="resource/js/vendor/foundation.js"></script>
+<script type="text/javascript" src="resource/js/vendor/foundation-altered.js"></script>
 
 <script>
 	$(document).foundation();

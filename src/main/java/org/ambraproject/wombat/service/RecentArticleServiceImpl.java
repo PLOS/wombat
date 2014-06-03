@@ -33,18 +33,6 @@ public class RecentArticleServiceImpl implements RecentArticleService {
 
   private static final int SECONDS_PER_DAY = 60 * 60 * 24;
 
-  private List<Object> getArticlesFromDaysAgo(String journalKey, int articleCount, double daysAgo) throws IOException {
-    Calendar threshold = Calendar.getInstance();
-    threshold.add(Calendar.SECOND, (int) (-daysAgo * SECONDS_PER_DAY));
-    String params = UrlParamBuilder.params()
-        .add("journal", journalKey)
-        .add("min", Integer.toString(articleCount))
-        .add("since", HttpDateUtil.format(threshold))
-        .format();
-    Class<ArrayList> responseClass = ArrayList.class; // need ArrayList for shuffleSubset
-    return soaService.requestObject("articles?" + params, responseClass);
-  }
-
   /**
    * Select a random subset of elements and shuffle their order.
    * <p/>
@@ -75,13 +63,33 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   }
 
   @Override
-  public List<Object> getRecentArticles(Site site, int articleCount, double shuffleFromDaysAgo)
+  public List<Object> getRecentArticles(Site site,
+                                        int articleCount,
+                                        double numberOfDaysAgo,
+                                        boolean shuffle,
+                                        List<String> articleTypes)
       throws IOException {
     String journalKey = site.getJournalKey();
-    List<Object> articles = getArticlesFromDaysAgo(journalKey, articleCount, shuffleFromDaysAgo);
+    Calendar threshold = Calendar.getInstance();
+    threshold.add(Calendar.SECOND, (int) (-numberOfDaysAgo * SECONDS_PER_DAY));
 
-    // Return a shuffled selection if we got more than enough. Else, preserve chronological order.
-    return (articles.size() > articleCount) ? shuffleSubset(articles, articleCount) : articles;
+    UrlParamBuilder params = UrlParamBuilder.params()
+        .add("journal", journalKey)
+        .add("min", Integer.toString(articleCount))
+        .add("since", HttpDateUtil.format(threshold));
+    if (articleTypes != null) {
+      for (String articleType : articleTypes) {
+        params.add("type", articleType);
+      }
+    }
+
+    Class<ArrayList> responseClass = ArrayList.class; // need ArrayList for shuffleSubset
+    List<Object> articles = soaService.requestObject("articles?" + params.format(), responseClass);
+
+    if (articles.size() > articleCount) {
+      articles = shuffle ? shuffleSubset(articles, articleCount) : articles.subList(0, articleCount);
+    }
+    return articles;
   }
 
 }

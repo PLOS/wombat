@@ -2,22 +2,19 @@
  *
  */
 
-
 //compass overides
 
-$default-border-radius: $border-radius-default; // that name space convention in compass just really bugs me.
-
+$default-border-radius: $border-radius-default;
+// that name space convention in compass just really bugs me.
 
 // color mixin:
 @mixin highlight-color($clr-highlight: $plos-default) {
   color: $clr-highlight;
 }
 
-@mixin highlight-background(
-$clr-highlight: $plos-default,
+@mixin highlight-background($clr-highlight: $plos-default,
 $clr-highlight-hover: $plos-default,
-$clr-highlight-text: $white
-) {
+$clr-highlight-text: $white) {
   background: $clr-highlight;
   color: $clr-highlight-text;
   &:hover {
@@ -34,13 +31,13 @@ $clr-highlight-text: $white
   } @else if $position == right {
     border-left: $width solid $clr-highlight;
   } @else if $position == top {
-  border-top: $width solid $clr-highlight;
+    border-top: $width solid $clr-highlight;
   }
 }
 
 // color extensibles
 
-.bg-dark{
+.bg-dark {
   background: $grey-dark;
 }
 
@@ -62,10 +59,25 @@ $clr-highlight-text: $white
 
 // layout utilities
 
-.center-simple{
-  margin:0 auto;
+.center-simple {
+  margin: 0 auto;
 }
 
-.pad-small-x{
+.pad-small-x {
   padding: $pad-small 0;
+}
+
+// use in the following way:
+//  .DIV_THAT_NEEDS_OVERLAY:before{
+//  @extend .overlay;
+//  background: OVERLAY DETAILS
+//  }
+.overlay {
+  background-position: bottom;
+  content: " ";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

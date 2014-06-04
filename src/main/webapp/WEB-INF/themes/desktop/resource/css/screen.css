@@ -19,7 +19,11 @@
   font-style: normal;
 }*/
 /* line 14, ../../sass/vendor/_font-awesome.scss */
-.fa {
+.fa, .carousel-wrap.small .carousel-control .jcarousel-prev, .carousel-wrap.small-italic .carousel-control .jcarousel-prev, .block .carousel-wrap.date .carousel-control .jcarousel-prev, .block .carousel-wrap.credits .carousel-control .jcarousel-prev,
+.carousel-wrap.small .carousel-control .jcarousel-next,
+.carousel-wrap.small-italic .carousel-control .jcarousel-next,
+.block .carousel-wrap.date .carousel-control .jcarousel-next,
+.block .carousel-wrap.credits .carousel-control .jcarousel-next {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -93,11 +97,19 @@
   float: left; }
 
 /* line 74, ../../sass/vendor/_font-awesome.scss */
-.fa.pull-left {
+.fa.pull-left, .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev, .carousel-wrap.small-italic .carousel-control .pull-left.jcarousel-prev, .block .carousel-wrap.date .carousel-control .pull-left.jcarousel-prev, .block .carousel-wrap.credits .carousel-control .pull-left.jcarousel-prev,
+.carousel-wrap.small .carousel-control .pull-left.jcarousel-next,
+.carousel-wrap.small-italic .carousel-control .pull-left.jcarousel-next,
+.block .carousel-wrap.date .carousel-control .pull-left.jcarousel-next,
+.block .carousel-wrap.credits .carousel-control .pull-left.jcarousel-next {
   margin-right: .3em; }
 
 /* line 77, ../../sass/vendor/_font-awesome.scss */
-.fa.pull-right {
+.fa.pull-right, .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev, .carousel-wrap.small-italic .carousel-control .pull-right.jcarousel-prev, .block .carousel-wrap.date .carousel-control .pull-right.jcarousel-prev, .block .carousel-wrap.credits .carousel-control .pull-right.jcarousel-prev,
+.carousel-wrap.small .carousel-control .pull-right.jcarousel-next,
+.carousel-wrap.small-italic .carousel-control .pull-right.jcarousel-next,
+.block .carousel-wrap.date .carousel-control .pull-right.jcarousel-next,
+.block .carousel-wrap.credits .carousel-control .pull-right.jcarousel-next {
   margin-left: .3em; }
 
 /* line 80, ../../sass/vendor/_font-awesome.scss */
@@ -216,7 +228,11 @@
   font-size: 2em; }
 
 /* line 181, ../../sass/vendor/_font-awesome.scss */
-.fa-inverse {
+.fa-inverse, .carousel-wrap.small .carousel-control .jcarousel-prev:hover, .carousel-wrap.small-italic .carousel-control .jcarousel-prev:hover, .block .carousel-wrap.date .carousel-control .jcarousel-prev:hover, .block .carousel-wrap.credits .carousel-control .jcarousel-prev:hover,
+.carousel-wrap.small .carousel-control .jcarousel-next:hover,
+.carousel-wrap.small-italic .carousel-control .jcarousel-next:hover,
+.block .carousel-wrap.date .carousel-control .jcarousel-next:hover,
+.block .carousel-wrap.credits .carousel-control .jcarousel-next:hover {
   color: #3c63af; }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
@@ -1364,11 +1380,11 @@
   content: "\f136"; }
 
 /* line 1050, ../../sass/vendor/_font-awesome.scss */
-.fa-chevron-circle-left:before {
+.fa-chevron-circle-left:before, .carousel-wrap.small .carousel-control .jcarousel-prev:before, .carousel-wrap.small-italic .carousel-control .jcarousel-prev:before, .block .carousel-wrap.date .carousel-control .jcarousel-prev:before, .block .carousel-wrap.credits .carousel-control .jcarousel-prev:before {
   content: "\f137"; }
 
 /* line 1053, ../../sass/vendor/_font-awesome.scss */
-.fa-chevron-circle-right:before {
+.fa-chevron-circle-right:before, .carousel-wrap.small .carousel-control .jcarousel-next:before, .carousel-wrap.small-italic .carousel-control .jcarousel-next:before, .block .carousel-wrap.date .carousel-control .jcarousel-next:before, .block .carousel-wrap.credits .carousel-control .jcarousel-next:before {
   content: "\f138"; }
 
 /* line 1056, ../../sass/vendor/_font-awesome.scss */
@@ -4809,7 +4825,7 @@ button, .button {
     padding-left: 2.25rem;
     font-size: 1.25rem; }
   /* line 198, ../../sass/vendor/foundation/components/_buttons.scss */
-  button.small, button.small-italic, .block button.date, .block button.credits, .button.small, .button.small-italic, .block .button.date, .block .button.credits {
+  button.small, button.small-italic, .block button.date, .carousel-wrap.small button.date, .block button.credits, .carousel-wrap.small button.credits, .button.small, .button.small-italic, .block .button.date, .carousel-wrap.small .button.date, .block .button.credits, .carousel-wrap.small .button.credits {
     padding-top: 0.875rem;
     padding-right: 1.75rem;
     padding-bottom: 0.9375rem;
@@ -5533,7 +5549,7 @@ button, .button {
   .f-dropdown.tiny {
     max-width: 200px; }
   /* line 242, ../../sass/vendor/foundation/components/_dropdown.scss */
-  .f-dropdown.small, .f-dropdown.small-italic, .block .f-dropdown.date, .block .f-dropdown.credits {
+  .f-dropdown.small, .f-dropdown.small-italic, .block .f-dropdown.date, .carousel-wrap.small .f-dropdown.date, .block .f-dropdown.credits, .carousel-wrap.small .f-dropdown.credits {
     max-width: 300px; }
   /* line 243, ../../sass/vendor/foundation/components/_dropdown.scss */
   .f-dropdown.medium {
@@ -5576,15 +5592,15 @@ button, .button {
     .dropdown.button.tiny:before, button.dropdown.tiny:before {
       border-color: white transparent transparent transparent; }
   /* line 124, ../../sass/vendor/foundation/components/_dropdown-buttons.scss */
-  .dropdown.button.small, .dropdown.button.small-italic, .block .dropdown.button.date, .block .dropdown.button.credits, button.dropdown.small, button.dropdown.small-italic, .block button.dropdown.date, .block button.dropdown.credits {
+  .dropdown.button.small, .dropdown.button.small-italic, .block .dropdown.button.date, .carousel-wrap.small .dropdown.button.date, .block .dropdown.button.credits, .carousel-wrap.small .dropdown.button.credits, button.dropdown.small, button.dropdown.small-italic, .block button.dropdown.date, .carousel-wrap.small button.dropdown.date, .block button.dropdown.credits, .carousel-wrap.small button.dropdown.credits {
     padding-right: 3.0625rem; }
     /* line 87, ../../sass/vendor/foundation/components/_dropdown-buttons.scss */
-    .dropdown.button.small:before, .dropdown.button.small-italic:before, .block .dropdown.button.date:before, .block .dropdown.button.credits:before, button.dropdown.small:before, button.dropdown.small-italic:before, .block button.dropdown.date:before, .block button.dropdown.credits:before {
+    .dropdown.button.small:before, .dropdown.button.small-italic:before, .block .dropdown.button.date:before, .carousel-wrap.small .dropdown.button.date:before, .block .dropdown.button.credits:before, .carousel-wrap.small .dropdown.button.credits:before, button.dropdown.small:before, button.dropdown.small-italic:before, .block button.dropdown.date:before, .carousel-wrap.small button.dropdown.date:before, .block button.dropdown.credits:before, .carousel-wrap.small button.dropdown.credits:before {
       border-width: 0.4375rem;
       right: 1.3125rem;
       margin-top: -0.15625rem; }
     /* line 116, ../../sass/vendor/foundation/components/_dropdown-buttons.scss */
-    .dropdown.button.small:before, .dropdown.button.small-italic:before, .block .dropdown.button.date:before, .block .dropdown.button.credits:before, button.dropdown.small:before, button.dropdown.small-italic:before, .block button.dropdown.date:before, .block button.dropdown.credits:before {
+    .dropdown.button.small:before, .dropdown.button.small-italic:before, .block .dropdown.button.date:before, .carousel-wrap.small .dropdown.button.date:before, .block .dropdown.button.credits:before, .carousel-wrap.small .dropdown.button.credits:before, button.dropdown.small:before, button.dropdown.small-italic:before, .block button.dropdown.date:before, .carousel-wrap.small button.dropdown.date:before, .block button.dropdown.credits:before, .carousel-wrap.small button.dropdown.credits:before {
       border-color: white transparent transparent transparent; }
   /* line 125, ../../sass/vendor/foundation/components/_dropdown-buttons.scss */
   .dropdown.button.large, button.dropdown.large {
@@ -6476,12 +6492,12 @@ meta.foundation-mq-topbar {
     margin: 0;
     font-size: 16px; }
     /* line 185, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1, .nav-main .name h1, .top-bar #pagehdr-wrap .home-link h1, #pagehdr-wrap .top-bar .home-link h1, .nav-main #pagehdr-wrap .home-link h1, #pagehdr-wrap .nav-main .home-link h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4, .nav-main .name .hero .hero-content h4, .hero .hero-content .nav-main .name h4, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4, .top-bar .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar .name .title, .nav-main .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar .name .title, .nav-main .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .top-bar .name .title, .nav-main .name .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .top-bar .name .title, .nav-main .name .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .top-bar .name .title, .nav-main .name .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .top-bar .name .title, .nav-main .name .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .top-bar .name .title, .nav-main .name .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .top-bar .name .title, .nav-main .name .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content #pagehdr-wrap .nav-main .home-link .title {
+    .top-bar .name h1, .nav-main .name h1, .top-bar #pagehdr-wrap .home-link h1, #pagehdr-wrap .top-bar .home-link h1, .nav-main #pagehdr-wrap .home-link h1, #pagehdr-wrap .nav-main .home-link h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4, .nav-main .name .hero .hero-content h4, .hero .hero-content .nav-main .name h4, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4, .top-bar .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar .name .title, .nav-main .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar .name .title, .nav-main .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .top-bar .name .title, .nav-main .name .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small-italic .title, .hero .hero-content .block.small-italic #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .top-bar .name .title, .nav-main .name .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block.small-italic .hero .hero-content .title, .block.small-italic .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .top-bar .name .title, .nav-main .name .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.date .title, .hero .hero-content .block .block.date #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .top-bar .name .title, .nav-main .name .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block .block.date .hero .hero-content .title, .block .block.date .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .top-bar .name .title, .nav-main .name .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.credits .title, .hero .hero-content .block .block.credits #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .top-bar .name .title, .nav-main .name .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block .block.credits .hero .hero-content .title, .block .block.credits .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .small.carousel-wrap .title, .hero .hero-content .small.carousel-wrap .top-bar .name .title, .nav-main .name .hero .hero-content .small.carousel-wrap .title, .hero .hero-content .small.carousel-wrap .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .small.carousel-wrap .title, .hero .hero-content .small.carousel-wrap .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .small.carousel-wrap .title, .hero .hero-content .small.carousel-wrap #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .small.carousel-wrap .title, .hero .hero-content .small.carousel-wrap .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .small.carousel-wrap .title, .hero .hero-content .small.carousel-wrap #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .small.carousel-wrap .hero .hero-content .title, .small.carousel-wrap .hero .hero-content .top-bar .name .title, .nav-main .name .small.carousel-wrap .hero .hero-content .title, .small.carousel-wrap .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .small.carousel-wrap .hero .hero-content .title, .small.carousel-wrap .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .small.carousel-wrap .hero .hero-content .title, .small.carousel-wrap .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .small.carousel-wrap .hero .hero-content .title, .small.carousel-wrap .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .small.carousel-wrap .hero .hero-content .title, .small.carousel-wrap .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .carousel-wrap.small-italic .title, .hero .hero-content .carousel-wrap.small-italic .top-bar .name .title, .nav-main .name .hero .hero-content .carousel-wrap.small-italic .title, .hero .hero-content .carousel-wrap.small-italic .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .carousel-wrap.small-italic .title, .hero .hero-content .carousel-wrap.small-italic .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .carousel-wrap.small-italic .title, .hero .hero-content .carousel-wrap.small-italic #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .carousel-wrap.small-italic .title, .hero .hero-content .carousel-wrap.small-italic .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .carousel-wrap.small-italic .title, .hero .hero-content .carousel-wrap.small-italic #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .carousel-wrap.small-italic .hero .hero-content .title, .carousel-wrap.small-italic .hero .hero-content .top-bar .name .title, .nav-main .name .carousel-wrap.small-italic .hero .hero-content .title, .carousel-wrap.small-italic .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .carousel-wrap.small-italic .hero .hero-content .title, .carousel-wrap.small-italic .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .carousel-wrap.small-italic .hero .hero-content .title, .carousel-wrap.small-italic .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .carousel-wrap.small-italic .hero .hero-content .title, .carousel-wrap.small-italic .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .carousel-wrap.small-italic .hero .hero-content .title, .carousel-wrap.small-italic .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .block .carousel-wrap.date .title, .hero .hero-content .block .carousel-wrap.date .top-bar .name .title, .nav-main .name .hero .hero-content .block .carousel-wrap.date .title, .hero .hero-content .block .carousel-wrap.date .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.date .title, .hero .hero-content .block .carousel-wrap.date .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .carousel-wrap.date .title, .hero .hero-content .block .carousel-wrap.date #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.date .title, .hero .hero-content .block .carousel-wrap.date .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .carousel-wrap.date .title, .hero .hero-content .block .carousel-wrap.date #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block .carousel-wrap.date .hero .hero-content .title, .block .carousel-wrap.date .hero .hero-content .top-bar .name .title, .nav-main .name .block .carousel-wrap.date .hero .hero-content .title, .block .carousel-wrap.date .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block .carousel-wrap.date .hero .hero-content .title, .block .carousel-wrap.date .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block .carousel-wrap.date .hero .hero-content .title, .block .carousel-wrap.date .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block .carousel-wrap.date .hero .hero-content .title, .block .carousel-wrap.date .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block .carousel-wrap.date .hero .hero-content .title, .block .carousel-wrap.date .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .block .carousel-wrap.credits .title, .hero .hero-content .block .carousel-wrap.credits .top-bar .name .title, .nav-main .name .hero .hero-content .block .carousel-wrap.credits .title, .hero .hero-content .block .carousel-wrap.credits .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.credits .title, .hero .hero-content .block .carousel-wrap.credits .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .carousel-wrap.credits .title, .hero .hero-content .block .carousel-wrap.credits #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.credits .title, .hero .hero-content .block .carousel-wrap.credits .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .carousel-wrap.credits .title, .hero .hero-content .block .carousel-wrap.credits #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block .carousel-wrap.credits .hero .hero-content .title, .block .carousel-wrap.credits .hero .hero-content .top-bar .name .title, .nav-main .name .block .carousel-wrap.credits .hero .hero-content .title, .block .carousel-wrap.credits .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block .carousel-wrap.credits .hero .hero-content .title, .block .carousel-wrap.credits .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block .carousel-wrap.credits .hero .hero-content .title, .block .carousel-wrap.credits .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block .carousel-wrap.credits .hero .hero-content .title, .block .carousel-wrap.credits .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block .carousel-wrap.credits .hero .hero-content .title, .block .carousel-wrap.credits .hero .hero-content #pagehdr-wrap .nav-main .home-link .title {
       line-height: 45px;
       font-size: 1.0625rem;
       margin: 0; }
       /* line 189, ../../sass/vendor/foundation/components/_top-bar.scss */
-      .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .nav-main .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .nav-main .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .nav-main .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a, .nav-main .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
+      .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .nav-main .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .nav-main .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .nav-main .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a, .nav-main .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .top-bar .name .title a, .nav-main .name .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .top-bar .name .title a, .nav-main .name .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic .top-bar .name .title a, .nav-main .name .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content .top-bar .name .title a, .nav-main .name .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date .top-bar .name .title a, .nav-main .name .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content .top-bar .name .title a, .nav-main .name .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits .top-bar .name .title a, .nav-main .name .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content .top-bar .name .title a, .nav-main .name .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
         font-weight: normal;
         color: #3c63af;
         width: 75%;
@@ -6779,7 +6795,7 @@ meta.foundation-mq-topbar {
     .top-bar .title-area, .nav-main .title-area, .top-bar #pagehdr-wrap .logo, #pagehdr-wrap .top-bar .logo, .nav-main #pagehdr-wrap .logo, #pagehdr-wrap .nav-main .logo {
       float: left; }
     /* line 439, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .nav-main .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .nav-main .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .nav-main .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a, .nav-main .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
+    .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small-italic .title a, .hero .hero-content .block.small-italic #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small-italic .hero .hero-content .title a, .block.small-italic .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar .name .title a, .nav-main .name .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.date .title a, .hero .hero-content .block .block.date #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar .name .title a, .nav-main .name .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .block.date .hero .hero-content .title a, .block .block.date .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar .name .title a, .nav-main .name .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .block.credits .title a, .hero .hero-content .block .block.credits #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar .name .title a, .nav-main .name .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .block.credits .hero .hero-content .title a, .block .block.credits .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .top-bar .name .title a, .nav-main .name .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .small.carousel-wrap .title a, .hero .hero-content .small.carousel-wrap #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .top-bar .name .title a, .nav-main .name .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .small.carousel-wrap .hero .hero-content .title a, .small.carousel-wrap .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic .top-bar .name .title a, .nav-main .name .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .carousel-wrap.small-italic .title a, .hero .hero-content .carousel-wrap.small-italic #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content .top-bar .name .title a, .nav-main .name .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .carousel-wrap.small-italic .hero .hero-content .title a, .carousel-wrap.small-italic .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date .top-bar .name .title a, .nav-main .name .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .carousel-wrap.date .title a, .hero .hero-content .block .carousel-wrap.date #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content .top-bar .name .title a, .nav-main .name .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .carousel-wrap.date .hero .hero-content .title a, .block .carousel-wrap.date .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits .top-bar .name .title a, .nav-main .name .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block .carousel-wrap.credits .title a, .hero .hero-content .block .carousel-wrap.credits #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content .top-bar .name .title a, .nav-main .name .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block .carousel-wrap.credits .hero .hero-content .title a, .block .carousel-wrap.credits .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
       width: auto; }
     /* line 443, ../../sass/vendor/foundation/components/_top-bar.scss */
     .top-bar input, .nav-main input,
@@ -7139,14 +7155,32 @@ h1,
 .block .block.date .hero .hero-content .title,
 .hero .hero-content .block .block.credits .title,
 .block .block.credits .hero .hero-content .title,
+.hero .hero-content .small.carousel-wrap .title,
+.small.carousel-wrap .hero .hero-content .title,
+.hero .hero-content .carousel-wrap.small-italic .title,
+.carousel-wrap.small-italic .hero .hero-content .title,
+.hero .hero-content .block .carousel-wrap.date .title,
+.block .carousel-wrap.date .hero .hero-content .title,
+.hero .hero-content .block .carousel-wrap.credits .title,
+.block .carousel-wrap.credits .hero .hero-content .title,
 h2,
+.carousel-wrap.small .carousel li h3,
+.carousel-wrap.small-italic .carousel li h3,
+.block .carousel-wrap.date .carousel li h3,
+.block .carousel-wrap.credits .carousel li h3,
 .block .title,
+.carousel-wrap.small .title,
+.carousel-wrap.small-italic .title,
 h3,
 h4,
 .block.small .title,
 .block.small-italic .title,
 .block .block.date .title,
 .block .block.credits .title,
+.small.carousel-wrap .title,
+.carousel-wrap.small-italic .title,
+.block .carousel-wrap.date .title,
+.block .carousel-wrap.credits .title,
 h5,
 h6,
 pre,
@@ -7192,7 +7226,7 @@ p {
 
 /* Default header styles */
 /* line 229, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, h2, .block .title, h3, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, h5, h6 {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap.small-italic .title, .carousel-wrap.small-italic .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.date .title, .block .carousel-wrap.date .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.credits .title, .block .carousel-wrap.credits .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .carousel-wrap.small-italic .carousel li h3, .block .carousel-wrap.date .carousel li h3, .block .carousel-wrap.credits .carousel li h3, .block .title, .carousel-wrap.small .title, .carousel-wrap.small-italic .title, h3, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, .small.carousel-wrap .title, .carousel-wrap.small-italic .title, .block .carousel-wrap.date .title, .block .carousel-wrap.credits .title, h5, h6 {
   font-family: "albert";
   font-weight: normal;
   font-style: normal;
@@ -7202,17 +7236,17 @@ h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.smal
   margin-bottom: 0.2rem;
   line-height: 1; }
   /* line 239, ../../sass/vendor/foundation/components/_type.scss */
-  h1 small, .hero .hero-content h4 small, .hero .hero-content .block.small .title small, .block.small .hero .hero-content .title small, .hero .hero-content .block.small-italic .title small, .block.small-italic .hero .hero-content .title small, .hero .hero-content .block .block.date .title small, .block .block.date .hero .hero-content .title small, .hero .hero-content .block .block.credits .title small, .block .block.credits .hero .hero-content .title small, h2 small, .block .title small, h3 small, h4 small, .block.small .title small, .block.small-italic .title small, .block .block.date .title small, .block .block.credits .title small, h5 small, h6 small {
+  h1 small, .hero .hero-content h4 small, .hero .hero-content .block.small .title small, .block.small .hero .hero-content .title small, .hero .hero-content .block.small-italic .title small, .block.small-italic .hero .hero-content .title small, .hero .hero-content .block .block.date .title small, .block .block.date .hero .hero-content .title small, .hero .hero-content .block .block.credits .title small, .block .block.credits .hero .hero-content .title small, .hero .hero-content .small.carousel-wrap .title small, .small.carousel-wrap .hero .hero-content .title small, .hero .hero-content .carousel-wrap.small-italic .title small, .carousel-wrap.small-italic .hero .hero-content .title small, .hero .hero-content .block .carousel-wrap.date .title small, .block .carousel-wrap.date .hero .hero-content .title small, .hero .hero-content .block .carousel-wrap.credits .title small, .block .carousel-wrap.credits .hero .hero-content .title small, h2 small, .carousel-wrap.small .carousel li h3 small, .carousel-wrap.small-italic .carousel li h3 small, .block .carousel-wrap.date .carousel li h3 small, .block .carousel-wrap.credits .carousel li h3 small, .block .title small, .carousel-wrap.small .title small, .carousel-wrap.small-italic .title small, h3 small, h4 small, .block.small .title small, .block.small-italic .title small, .block .block.date .title small, .block .block.credits .title small, .small.carousel-wrap .title small, .carousel-wrap.small-italic .title small, .block .carousel-wrap.date .title small, .block .carousel-wrap.credits .title small, h5 small, h6 small {
     font-size: 0.75rem;
     color: #333333;
     line-height: 0; }
 
 /* line 246, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap.small-italic .title, .carousel-wrap.small-italic .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.date .title, .block .carousel-wrap.date .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.credits .title, .block .carousel-wrap.credits .hero .hero-content .title {
   font-size: 1.625rem; }
 
 /* line 247, ../../sass/vendor/foundation/components/_type.scss */
-h2, .block .title {
+h2, .carousel-wrap.small .carousel li h3, .carousel-wrap.small-italic .carousel li h3, .block .carousel-wrap.date .carousel li h3, .block .carousel-wrap.credits .carousel li h3, .block .title, .carousel-wrap.small .title, .carousel-wrap.small-italic .title {
   font-size: 0.75rem; }
 
 /* line 248, ../../sass/vendor/foundation/components/_type.scss */
@@ -7220,7 +7254,7 @@ h3 {
   font-size: 0.8125rem; }
 
 /* line 249, ../../sass/vendor/foundation/components/_type.scss */
-h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, .small.carousel-wrap .title, .carousel-wrap.small-italic .title, .block .carousel-wrap.date .title, .block .carousel-wrap.credits .title {
   font-size: 0.5rem; }
 
 /* line 250, ../../sass/vendor/foundation/components/_type.scss */
@@ -7232,7 +7266,7 @@ h6 {
   font-size: 0.8125rem; }
 
 /* line 253, ../../sass/vendor/foundation/components/_type.scss */
-.subheader, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+.subheader, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, .small.carousel-wrap .title, .carousel-wrap.small-italic .title, .block .carousel-wrap.date .title, .block .carousel-wrap.credits .title {
   line-height: 1.1;
   color: #333333;
   font-weight: 300;
@@ -7407,15 +7441,15 @@ blockquote p {
 
 @media only screen and (min-width: 40.063em) {
   /* line 425, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, h2, .block .title, h3, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, h5, h6 {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap.small-italic .title, .carousel-wrap.small-italic .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.date .title, .block .carousel-wrap.date .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.credits .title, .block .carousel-wrap.credits .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .carousel-wrap.small-italic .carousel li h3, .block .carousel-wrap.date .carousel li h3, .block .carousel-wrap.credits .carousel li h3, .block .title, .carousel-wrap.small .title, .carousel-wrap.small-italic .title, h3, h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, .small.carousel-wrap .title, .carousel-wrap.small-italic .title, .block .carousel-wrap.date .title, .block .carousel-wrap.credits .title, h5, h6 {
     line-height: 1; }
 
   /* line 426, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap.small-italic .title, .carousel-wrap.small-italic .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.date .title, .block .carousel-wrap.date .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.credits .title, .block .carousel-wrap.credits .hero .hero-content .title {
     font-size: 2.25rem; }
 
   /* line 427, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .block .title {
+  h2, .carousel-wrap.small .carousel li h3, .carousel-wrap.small-italic .carousel li h3, .block .carousel-wrap.date .carousel li h3, .block .carousel-wrap.credits .carousel li h3, .block .title, .carousel-wrap.small .title, .carousel-wrap.small-italic .title {
     font-size: 1.375rem; }
 
   /* line 428, ../../sass/vendor/foundation/components/_type.scss */
@@ -7423,7 +7457,7 @@ blockquote p {
     font-size: 1.125rem; }
 
   /* line 429, ../../sass/vendor/foundation/components/_type.scss */
-  h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+  h4, .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, .small.carousel-wrap .title, .carousel-wrap.small-italic .title, .block .carousel-wrap.date .title, .block .carousel-wrap.credits .title {
     font-size: 0.8125rem; } }
 /*
  * Print styles.
@@ -7489,13 +7523,19 @@ blockquote p {
   /* line 477, ../../sass/vendor/foundation/components/_type.scss */
   p,
   h2,
+  .carousel-wrap.small .carousel li h3,
+  .carousel-wrap.small-italic .carousel li h3,
+  .block .carousel-wrap.date .carousel li h3,
+  .block .carousel-wrap.credits .carousel li h3,
   .block .title,
+  .carousel-wrap.small .title,
+  .carousel-wrap.small-italic .title,
   h3 {
     orphans: 3;
     widows: 3; }
 
   /* line 483, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .block .title,
+  h2, .carousel-wrap.small .carousel li h3, .carousel-wrap.small-italic .carousel li h3, .block .carousel-wrap.date .carousel li h3, .block .carousel-wrap.credits .carousel li h3, .block .title, .carousel-wrap.small .title, .carousel-wrap.small-italic .title,
   h3 {
     page-break-after: avoid; }
 
@@ -7838,18 +7878,18 @@ th.hide-for-touch {
   src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg') format('svg'), url('../fonts/fontawesome-webfont.woff') format('woff'); }
 
 /* line 10, ../../sass/_typography.scss */
-.header-allcaps, .block .category {
+.header-allcaps, .block .category, .carousel-wrap.small .category, .carousel-wrap.small-italic .category {
   font-size: 0.875rem;
   font-family: "albert";
   text-transform: uppercase; }
 
 /* line 16, ../../sass/_typography.scss */
-.small-italic, .block .date, .block .credits {
+.small-italic, .block .date, .carousel-wrap.small .date, .carousel-wrap.small-italic .date, .block .credits, .carousel-wrap.small .credits, .carousel-wrap.small-italic .credits {
   font-size: 0.625rem;
   font-style: italic; }
 
 /* line 22, ../../sass/_typography.scss */
-.no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content p {
+.no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content .small.carousel-wrap .title, .small.carousel-wrap .hero .hero-content .title, .hero .hero-content .carousel-wrap.small-italic .title, .carousel-wrap.small-italic .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.date .title, .block .carousel-wrap.date .hero .hero-content .title, .hero .hero-content .block .carousel-wrap.credits .title, .block .carousel-wrap.credits .hero .hero-content .title, .hero .hero-content p {
   margin-bottom: 0; }
 
 /* 
@@ -7937,6 +7977,81 @@ main,
   /* line 17, ../../sass/_components.scss */
   .pill:hover {
     background: #333333; }
+
+/* line 46, ../../sass/_components.scss */
+.block-card, .carousel-wrap.small, .carousel-wrap.small-italic, .block .carousel-wrap.date, .carousel-wrap.small .carousel-wrap.date, .block .carousel-wrap.credits, .carousel-wrap.small .carousel-wrap.credits {
+  padding: 0;
+  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.25rem;
+  background: white; }
+
+/*
+This is the visible area of you carousel.
+Set a width here to define how much items are visible.
+The width can be either fixed in px or flexible in %.
+Position must be relative!
+*/
+/* line 66, ../../sass/_components.scss */
+.jcarousel {
+  position: relative;
+  overflow: hidden;
+  width: 200px; }
+
+/*
+This is the container of the carousel items.
+You must ensure that the position is relative or absolute and
+that the width is big enough to contain all items.
+*/
+/* line 77, ../../sass/_components.scss */
+.jcarousel ul {
+  width: 20000em;
+  position: relative;
+  /* Optional, required in this case since it's a <ul> element */
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+/*
+These are the item elements. jCarousel works best, if the items
+have a fixed width and height (but it's not required).
+*/
+/* line 91, ../../sass/_components.scss */
+.jcarousel li {
+  /* Required only for block elements like <li>'s */
+  float: left;
+  width: 200px; }
+
+/* line 98, ../../sass/_components.scss */
+.carousel-wrap.small, .carousel-wrap.small-italic, .block .carousel-wrap.date, .carousel-wrap.small .carousel-wrap.date, .block .carousel-wrap.credits, .carousel-wrap.small .carousel-wrap.credits {
+  margin-right: 1.25rem; }
+  /* line 107, ../../sass/_components.scss */
+  .carousel-wrap.small .carousel li p, .carousel-wrap.small-italic .carousel li p, .block .carousel-wrap.date .carousel li p, .block .carousel-wrap.credits .carousel li p {
+    font-size: 0.875rem; }
+  /* line 112, ../../sass/_components.scss */
+  .carousel-wrap.small .carousel-control, .carousel-wrap.small-italic .carousel-control, .block .carousel-wrap.date .carousel-control, .block .carousel-wrap.credits .carousel-control {
+    text-align: center;
+    display: table; }
+    /* line 117, ../../sass/_components.scss */
+    .carousel-wrap.small .carousel-control .jcarousel-prev, .carousel-wrap.small-italic .carousel-control .jcarousel-prev, .block .carousel-wrap.date .carousel-control .jcarousel-prev, .block .carousel-wrap.credits .carousel-control .jcarousel-prev,
+    .carousel-wrap.small .carousel-control .jcarousel-next,
+    .carousel-wrap.small-italic .carousel-control .jcarousel-next,
+    .block .carousel-wrap.date .carousel-control .jcarousel-next,
+    .block .carousel-wrap.credits .carousel-control .jcarousel-next {
+      font-size: 1.875rem; }
+    /* line 130, ../../sass/_components.scss */
+    .carousel-wrap.small .carousel-control .numbers, .carousel-wrap.small-italic .carousel-control .numbers, .block .carousel-wrap.date .carousel-control .numbers, .block .carousel-wrap.credits .carousel-control .numbers {
+      font-size: 0.75rem;
+      display: inline-block;
+      padding: 0 0.3125rem;
+      vertical-align: top; }
+      /* line 135, ../../sass/_components.scss */
+      .carousel-wrap.small .carousel-control .numbers span, .carousel-wrap.small-italic .carousel-control .numbers span, .block .carousel-wrap.date .carousel-control .numbers span, .block .carousel-wrap.credits .carousel-control .numbers span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1.875rem;
+        height: 1.875rem; }
 
 /*    This file contains styles for forms
  *
@@ -8255,10 +8370,10 @@ footer {
  *    Home page blocks
  */
 /* line 21, ../../sass/pages/_home.scss */
-.row.one .block, .row.two .block {
+.row.one .block, .row.one .carousel-wrap.small, .row.one .carousel-wrap.small-italic, .row.one .block .carousel-wrap.date, .block .row.one .carousel-wrap.date, .row.one .block .carousel-wrap.credits, .block .row.one .carousel-wrap.credits, .row.two .block, .row.two .carousel-wrap.small, .row.two .carousel-wrap.small-italic, .row.two .block .carousel-wrap.date, .block .row.two .carousel-wrap.date, .row.two .block .carousel-wrap.credits, .block .row.two .carousel-wrap.credits {
   margin-right: 2%; }
   /* line 23, ../../sass/pages/_home.scss */
-  .row.one .block:last-child, .row.two .block:last-child {
+  .row.one .block:last-child, .row.one .carousel-wrap.small:last-child, .row.one .carousel-wrap.small-italic:last-child, .row.one .block .carousel-wrap.date:last-child, .block .row.one .carousel-wrap.date:last-child, .row.one .block .carousel-wrap.credits:last-child, .block .row.one .carousel-wrap.credits:last-child, .row.two .block:last-child, .row.two .carousel-wrap.small:last-child, .row.two .carousel-wrap.small-italic:last-child, .row.two .block .carousel-wrap.date:last-child, .block .row.two .carousel-wrap.date:last-child, .row.two .block .carousel-wrap.credits:last-child, .block .row.two .carousel-wrap.credits:last-child {
     margin-right: 0; }
 
 /* line 30, ../../sass/pages/_home.scss */
@@ -8296,7 +8411,7 @@ footer {
     background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 45%, rgba(250, 250, 250, 0) 46%, rgba(231, 231, 231, 0.06) 50%, rgba(203, 203, 203, 0.17) 56%, rgba(134, 134, 134, 0.54) 71%, rgba(102, 102, 102, 0.65) 78%, rgba(0, 0, 0, 0.66) 100%);
     background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 45%, rgba(250, 250, 250, 0) 46%, rgba(231, 231, 231, 0.06) 50%, rgba(203, 203, 203, 0.17) 56%, rgba(134, 134, 134, 0.54) 71%, rgba(102, 102, 102, 0.65) 78%, rgba(0, 0, 0, 0.66) 100%);
     background-image: linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 45%, rgba(250, 250, 250, 0) 46%, rgba(231, 231, 231, 0.06) 50%, rgba(203, 203, 203, 0.17) 56%, rgba(134, 134, 134, 0.54) 71%, rgba(102, 102, 102, 0.65) 78%, rgba(0, 0, 0, 0.66) 100%); }
-  /* line 54, ../../sass/pages/_home.scss */
+  /* line 53, ../../sass/pages/_home.scss */
   .hero.overlay-light > a:before {
     *zoom: 1;
     filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF00FFFF', endColorstr='#FFA8FFFF');
@@ -8307,7 +8422,7 @@ footer {
     background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.17) 56%, rgba(255, 255, 255, 0.54) 71%, rgba(255, 255, 255, 0.65) 78%, rgba(255, 255, 255, 0.66) 100%);
     background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.17) 56%, rgba(255, 255, 255, 0.54) 71%, rgba(255, 255, 255, 0.65) 78%, rgba(255, 255, 255, 0.66) 100%);
     background-image: linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.17) 56%, rgba(255, 255, 255, 0.54) 71%, rgba(255, 255, 255, 0.65) 78%, rgba(255, 255, 255, 0.66) 100%); }
-  /* line 61, ../../sass/pages/_home.scss */
+  /* line 59, ../../sass/pages/_home.scss */
   .hero img {
     -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -8319,13 +8434,13 @@ footer {
     -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px;
     width: 100%; }
-  /* line 68, ../../sass/pages/_home.scss */
+  /* line 66, ../../sass/pages/_home.scss */
   .hero a {
     color: white; }
-  /* line 72, ../../sass/pages/_home.scss */
+  /* line 70, ../../sass/pages/_home.scss */
   .hero.dark-text, .hero.dark-text a {
     color: #333333; }
-  /* line 77, ../../sass/pages/_home.scss */
+  /* line 75, ../../sass/pages/_home.scss */
   .hero .hero-content {
     position: absolute;
     width: 100%;
@@ -8333,7 +8448,7 @@ footer {
     padding: 0.625rem;
     font-size: 1rem; }
 
-/* line 93, ../../sass/pages/_home.scss */
+/* line 91, ../../sass/pages/_home.scss */
 #billboard {
   width: 100%;
   margin-left: auto;
@@ -8342,18 +8457,18 @@ footer {
   margin-bottom: 0;
   max-width: 60rem;
   *zoom: 1;
-  background: #333333;
   padding: 0.625rem;
-  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
+  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
+  background: #333333;
   position: relative; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
   #billboard:before, #billboard:after {
@@ -8362,10 +8477,10 @@ footer {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   #billboard:after {
     clear: both; }
-  /* line 96, ../../sass/pages/_home.scss */
-  #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard .block.small-italic .title, .block.small-italic #billboard .title, #billboard .block .block.date .title, .block .block.date #billboard .title, #billboard .block .block.credits .title, .block .block.credits #billboard .title, #billboard a {
+  /* line 94, ../../sass/pages/_home.scss */
+  #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard .block.small-italic .title, .block.small-italic #billboard .title, #billboard .block .block.date .title, .block .block.date #billboard .title, #billboard .block .block.credits .title, .block .block.credits #billboard .title, #billboard .small.carousel-wrap .title, .small.carousel-wrap #billboard .title, #billboard .carousel-wrap.small-italic .title, .carousel-wrap.small-italic #billboard .title, #billboard .block .carousel-wrap.date .title, .block .carousel-wrap.date #billboard .title, #billboard .block .carousel-wrap.credits .title, .block .carousel-wrap.credits #billboard .title, #billboard a {
     color: white !important; }
-  /* line 100, ../../sass/pages/_home.scss */
+  /* line 98, ../../sass/pages/_home.scss */
   #billboard a {
     background: #3c63af;
     padding: 0.625rem;
@@ -8380,88 +8495,88 @@ footer {
     #billboard a:hover {
       background: #333333; }
 
-/* line 112, ../../sass/pages/_home.scss */
-.row > .block.x-small {
+/* line 110, ../../sass/pages/_home.scss */
+.row > .block.x-small, .row > .x-small.carousel-wrap.small, .row > .x-small.carousel-wrap.small-italic, .block .row > .x-small.carousel-wrap.date, .block .row > .x-small.carousel-wrap.credits {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
-/* line 116, ../../sass/pages/_home.scss */
-.row > .block.small, .row > .block.small-italic, .block .row > .block.date, .block .row > .block.credits {
+/* line 114, ../../sass/pages/_home.scss */
+.row > .block.small, .row > .block.small-italic, .block .row > .block.date, .carousel-wrap.small .row > .block.date, .block .row > .block.credits, .carousel-wrap.small .row > .block.credits, .row > .small.carousel-wrap, .row > .carousel-wrap.small-italic, .block .row > .carousel-wrap.date, .block .row > .carousel-wrap.credits {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 33.33333%;
   float: left; }
-/* line 119, ../../sass/pages/_home.scss */
-.row > .block.medium {
+/* line 117, ../../sass/pages/_home.scss */
+.row > .block.medium, .row > .medium.carousel-wrap.small, .row > .medium.carousel-wrap.small-italic, .block .row > .medium.carousel-wrap.date, .block .row > .medium.carousel-wrap.credits {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 50%;
   float: left;
   width: 48%; }
-/* line 123, ../../sass/pages/_home.scss */
-.row > .block.large {
+/* line 121, ../../sass/pages/_home.scss */
+.row > .block.large, .row > .large.carousel-wrap.small, .row > .large.carousel-wrap.small-italic, .block .row > .large.carousel-wrap.date, .block .row > .large.carousel-wrap.credits {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 58.33333%;
   float: left; }
 
-/* line 129, ../../sass/pages/_home.scss */
-.block {
+/* line 127, ../../sass/pages/_home.scss */
+.block, .carousel-wrap.small, .carousel-wrap.small-italic, .block .carousel-wrap.date, .block .carousel-wrap.credits {
   position: relative;
   height: 15.625rem;
-  background: white;
   padding: 0.625rem;
-  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
-  margin-bottom: 1.25rem; }
-  /* line 134, ../../sass/pages/_home.scss */
-  .block .block-image {
+  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.25rem;
+  background: white; }
+  /* line 132, ../../sass/pages/_home.scss */
+  .block .block-image, .carousel-wrap.small .block-image, .carousel-wrap.small-italic .block-image {
     width: 5rem;
     display: block;
     position: absolute;
     left: 0.625rem;
     top: 0.625rem; }
-  /* line 141, ../../sass/pages/_home.scss */
-  .block.image .block-content {
+  /* line 139, ../../sass/pages/_home.scss */
+  .block.image .block-content, .image.carousel-wrap.small .block-content, .image.carousel-wrap.small-italic .block-content, .block .image.carousel-wrap.date .block-content, .block .image.carousel-wrap.credits .block-content {
     margin-left: 6.25rem; }
-  /* line 148, ../../sass/pages/_home.scss */
-  .block .credits {
+  /* line 146, ../../sass/pages/_home.scss */
+  .block .credits, .carousel-wrap.small .credits, .carousel-wrap.small-italic .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.875rem;
     margin: 0; }
-  /* line 156, ../../sass/pages/_home.scss */
-  .block .category {
+  /* line 154, ../../sass/pages/_home.scss */
+  .block .category, .carousel-wrap.small .category, .carousel-wrap.small-italic .category {
     color: #3c63af; }
-  /* line 162, ../../sass/pages/_home.scss */
-  .block .title a {
+  /* line 160, ../../sass/pages/_home.scss */
+  .block .title a, .carousel-wrap.small .title a, .carousel-wrap.small-italic .title a {
     color: #333333; }
-    /* line 164, ../../sass/pages/_home.scss */
-    .block .title a:hover {
+    /* line 162, ../../sass/pages/_home.scss */
+    .block .title a:hover, .carousel-wrap.small .title a:hover, .carousel-wrap.small-italic .title a:hover {
       text-decoration: underline; }
-  /* line 174, ../../sass/pages/_home.scss */
-  .block .block-content {
+  /* line 172, ../../sass/pages/_home.scss */
+  .block .block-content, .carousel-wrap.small .block-content, .carousel-wrap.small-italic .block-content {
     position: relative;
     font-size: 0.8125rem; }
-  /* line 180, ../../sass/pages/_home.scss */
-  .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title {
+  /* line 178, ../../sass/pages/_home.scss */
+  .block.small .title, .block.small-italic .title, .block .block.date .title, .block .block.credits .title, .small.carousel-wrap .title, .carousel-wrap.small-italic .title, .block .carousel-wrap.date .title, .block .carousel-wrap.credits .title {
     font-family: albert-bold; }
 
-/* line 189, ../../sass/pages/_home.scss */
+/* line 187, ../../sass/pages/_home.scss */
 .column.left, .nav-main .top-bar-section ul.column.nav-elements {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 66.66667%;
   float: left; }
-  /* line 191, ../../sass/pages/_home.scss */
+  /* line 189, ../../sass/pages/_home.scss */
   .column.left .row-small-blocks, .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks {
     display: block;
     padding: 0;
@@ -8499,24 +8614,24 @@ footer {
       .column.left .row-small-blocks > li:nth-of-type(2n), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks > li:nth-of-type(2n) {
         padding-left: 0.625rem;
         padding-right: 0rem; }
-    /* line 195, ../../sass/pages/_home.scss */
-    .column.left .row-small-blocks .block:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block:nth-child(1), .column.left .row-small-blocks .block:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block:nth-child(3) {
+    /* line 193, ../../sass/pages/_home.scss */
+    .column.left .row-small-blocks .block:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block:nth-child(1), .column.left .row-small-blocks .carousel-wrap.small:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.small:nth-child(1), .column.left .row-small-blocks .carousel-wrap.small-italic:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.small-italic:nth-child(1), .column.left .row-small-blocks .block .carousel-wrap.date:nth-child(1), .block .column.left .row-small-blocks .carousel-wrap.date:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block .carousel-wrap.date:nth-child(1), .block .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.date:nth-child(1), .column.left .row-small-blocks .block .carousel-wrap.credits:nth-child(1), .block .column.left .row-small-blocks .carousel-wrap.credits:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block .carousel-wrap.credits:nth-child(1), .block .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.credits:nth-child(1), .column.left .row-small-blocks .block:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block:nth-child(3), .column.left .row-small-blocks .carousel-wrap.small:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.small:nth-child(3), .column.left .row-small-blocks .carousel-wrap.small-italic:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.small-italic:nth-child(3), .column.left .row-small-blocks .block .carousel-wrap.date:nth-child(3), .block .column.left .row-small-blocks .carousel-wrap.date:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block .carousel-wrap.date:nth-child(3), .block .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.date:nth-child(3), .column.left .row-small-blocks .block .carousel-wrap.credits:nth-child(3), .block .column.left .row-small-blocks .carousel-wrap.credits:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block .carousel-wrap.credits:nth-child(3), .block .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.credits:nth-child(3) {
       margin-right: 2%;
       width: 46%; }
-  /* line 203, ../../sass/pages/_home.scss */
-  .column.left .block, .nav-main .top-bar-section ul.column.nav-elements .block {
+  /* line 201, ../../sass/pages/_home.scss */
+  .column.left .block, .nav-main .top-bar-section ul.column.nav-elements .block, .column.left .carousel-wrap.small, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small, .column.left .carousel-wrap.small-italic, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small-italic, .column.left .block .carousel-wrap.date, .block .column.left .carousel-wrap.date, .nav-main .top-bar-section ul.column.nav-elements .block .carousel-wrap.date, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.date, .column.left .block .carousel-wrap.credits, .block .column.left .carousel-wrap.credits, .nav-main .top-bar-section ul.column.nav-elements .block .carousel-wrap.credits, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.credits {
     height: 11.25rem; }
-    /* line 206, ../../sass/pages/_home.scss */
-    .column.left .block .block-image, .nav-main .top-bar-section ul.column.nav-elements .block .block-image {
+    /* line 204, ../../sass/pages/_home.scss */
+    .column.left .block .block-image, .nav-main .top-bar-section ul.column.nav-elements .block .block-image, .column.left .carousel-wrap.small .block-image, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small .block-image, .column.left .carousel-wrap.small-italic .block-image, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small-italic .block-image, .block .column.left .carousel-wrap.date .block-image, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.date .block-image, .block .column.left .carousel-wrap.credits .block-image, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.credits .block-image {
       height: 10rem;
       overflow: hidden; }
-    /* line 211, ../../sass/pages/_home.scss */
-    .column.left .block.small, .nav-main .top-bar-section ul.column.nav-elements .block.small, .column.left .block.small-italic, .nav-main .top-bar-section ul.column.nav-elements .block.small-italic, .column.left .block .block.date, .block .column.left .block.date, .nav-main .top-bar-section ul.column.nav-elements .block .block.date, .block .nav-main .top-bar-section ul.column.nav-elements .block.date, .column.left .block .block.credits, .block .column.left .block.credits, .nav-main .top-bar-section ul.column.nav-elements .block .block.credits, .block .nav-main .top-bar-section ul.column.nav-elements .block.credits {
+    /* line 209, ../../sass/pages/_home.scss */
+    .column.left .block.small, .nav-main .top-bar-section ul.column.nav-elements .block.small, .column.left .block.small-italic, .nav-main .top-bar-section ul.column.nav-elements .block.small-italic, .column.left .block .block.date, .block .column.left .block.date, .nav-main .top-bar-section ul.column.nav-elements .block .block.date, .block .nav-main .top-bar-section ul.column.nav-elements .block.date, .column.left .carousel-wrap.small .block.date, .carousel-wrap.small .column.left .block.date, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small .block.date, .carousel-wrap.small .nav-main .top-bar-section ul.column.nav-elements .block.date, .column.left .block .block.credits, .block .column.left .block.credits, .nav-main .top-bar-section ul.column.nav-elements .block .block.credits, .block .nav-main .top-bar-section ul.column.nav-elements .block.credits, .column.left .carousel-wrap.small .block.credits, .carousel-wrap.small .column.left .block.credits, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small .block.credits, .carousel-wrap.small .nav-main .top-bar-section ul.column.nav-elements .block.credits, .column.left .small.carousel-wrap, .nav-main .top-bar-section ul.column.nav-elements .small.carousel-wrap, .column.left .carousel-wrap.small-italic, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small-italic, .column.left .block .carousel-wrap.date, .block .column.left .carousel-wrap.date, .nav-main .top-bar-section ul.column.nav-elements .block .carousel-wrap.date, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.date, .column.left .block .carousel-wrap.credits, .block .column.left .carousel-wrap.credits, .nav-main .top-bar-section ul.column.nav-elements .block .carousel-wrap.credits, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.credits {
       padding-left: 0.625rem;
       padding-right: 0.625rem;
       width: 50%;
       float: left; }
-/* line 217, ../../sass/pages/_home.scss */
+/* line 215, ../../sass/pages/_home.scss */
 .column.right, #pagehdr-wrap .nav .column.nav-user {
   padding-left: 0;
   padding-right: 0;
@@ -8531,18 +8646,18 @@ footer {
 #issue,
 #twitter-feed,
 #blogroll {
-  background: white;
   padding: 0.625rem;
-  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
+  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
+  background: white;
   background-color: #cccccc;
   color: white;
   height: 15.625rem; }

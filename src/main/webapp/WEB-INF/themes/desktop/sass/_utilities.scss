@@ -67,10 +67,10 @@ $clr-highlight-text: $white) {
   padding: $pad-small 0;
 }
 
-// use in the following way:
+// You need to use :before pseudo selector like this:
 //  .DIV_THAT_NEEDS_OVERLAY:before{
-//  @extend .overlay;
-//  background: OVERLAY DETAILS
+//    @extend .overlay;
+//    background: OVERLAY DETAILS
 //  }
 .overlay {
   background-position: bottom;

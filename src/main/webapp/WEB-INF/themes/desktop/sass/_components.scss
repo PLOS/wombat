@@ -142,11 +142,10 @@ have a fixed width and height (but it's not required).
 
 }
 
-/*
-font awesome icon: arrow after link
-use with ::after
-example: .more-link::after { @extend .more-icon }
-*/
+//font awesome icon: arrow after link
+//use with ::after
+//example: .more-link::after { @extend .more-icon }
+
 .more-icon {
   // need to use content instead of @extend .fa-chevron-circle-right with ::after;
   content: '\f138';

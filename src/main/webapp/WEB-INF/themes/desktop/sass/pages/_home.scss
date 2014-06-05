@@ -255,15 +255,11 @@ $image-container: ($image-width + $pad-default);
   width: 30%; // for demo
   margin-right: 3%; //for demo
 
-  &:hover {
-    background: $white;
-    color: $clr-body-text;
-  }
   h3 {
     @extend .category;
   }
   ul {
-    @extend .no-bullet;
+    @extend .no-bullet; // from foundation
     line-height: normal;
 
     li {

@@ -8175,12 +8175,7 @@ have a fixed width and height (but it's not required).
         line-height: 1.875rem;
         height: 1.875rem; }
 
-/*
-font awesome icon: arrow after link
-use with ::after
-example: .more-link::after { @extend .more-icon }
-*/
-/* line 150, ../../sass/_components.scss */
+/* line 149, ../../sass/_components.scss */
 .more-icon, #article-list .more-link:after {
   content: '\f138';
   padding-left: 0.1875rem; }
@@ -8905,38 +8900,34 @@ footer {
   height: 15.625rem;
   width: 30%;
   margin-right: 3%; }
-  /* line 258, ../../sass/pages/_home.scss */
-  #article-list:hover {
-    background: white;
-    color: #333333; }
-  /* line 265, ../../sass/pages/_home.scss */
+  /* line 261, ../../sass/pages/_home.scss */
   #article-list ul {
     line-height: normal; }
-    /* line 269, ../../sass/pages/_home.scss */
+    /* line 265, ../../sass/pages/_home.scss */
     #article-list ul li {
       color: #333333;
       margin-bottom: 20px; }
-      /* line 272, ../../sass/pages/_home.scss */
+      /* line 268, ../../sass/pages/_home.scss */
       #article-list ul li a {
         color: #3c63af; }
-        /* line 274, ../../sass/pages/_home.scss */
+        /* line 270, ../../sass/pages/_home.scss */
         #article-list ul li a:hover {
           color: #333333; }
-  /* line 281, ../../sass/pages/_home.scss */
+  /* line 277, ../../sass/pages/_home.scss */
   #article-list .more-link {
     position: absolute;
     bottom: 10px;
     left: 10px;
     right: auto; }
-    /* line 286, ../../sass/pages/_home.scss */
+    /* line 282, ../../sass/pages/_home.scss */
     #article-list .more-link > a {
       color: #333333; }
-      /* line 290, ../../sass/pages/_home.scss */
+      /* line 286, ../../sass/pages/_home.scss */
       #article-list .more-link > a:hover {
         text-decoration: underline;
         color: #3c63af; }
 
-/* line 301, ../../sass/pages/_home.scss */
+/* line 297, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -8954,24 +8945,24 @@ footer {
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white; }
-  /* line 306, ../../sass/pages/_home.scss */
+  /* line 302, ../../sass/pages/_home.scss */
   #issue .current-img {
     width: 10rem; }
-  /* line 309, ../../sass/pages/_home.scss */
+  /* line 305, ../../sass/pages/_home.scss */
   #issue .boxtitle {
     margin-top: 5px; }
-    /* line 311, ../../sass/pages/_home.scss */
+    /* line 307, ../../sass/pages/_home.scss */
     #issue .boxtitle a {
       display: block;
       margin-bottom: -5px;
       font-weight: 900;
       color: #333333;
       line-height: 22px; }
-      /* line 319, ../../sass/pages/_home.scss */
+      /* line 315, ../../sass/pages/_home.scss */
       #issue .boxtitle a:hover {
         text-decoration: none;
         color: #3c63af; }
-    /* line 324, ../../sass/pages/_home.scss */
+    /* line 320, ../../sass/pages/_home.scss */
     #issue .boxtitle .subhead {
       font-face: "arial";
       font-size: 16px;

@@ -221,27 +221,13 @@ $image-container: ($image-width + $pad-default);
 
 
 #submission-links,
-#article-list,
 #social-links,
 #spotlight,
-#issue,
 #twitter-feed,
 #blogroll {
   @include blocks();
   @include stub();
   height: $block-height;
-}
-
-#issue {
-  @include grid-column(2);
-
-}
-
-#article-list {
-  @include grid-column(4);
-  width: 30%; // for demo
-  margin-right: 3%; //for demo
-
 }
 
 #billboard {
@@ -261,3 +247,84 @@ $image-container: ($image-width + $pad-default);
   }
 }
 
+#article-list {
+  @include blocks;
+  @include grid-column(4);
+  @extend .block;
+  height: $block-height;
+  width: 30%; // for demo
+  margin-right: 3%; //for demo
+
+  &:hover {
+    background: $white;
+    color: $clr-body-text;
+  }
+  h3 {
+    @extend .category;
+  }
+  ul {
+    @extend .no-bullet;
+    line-height: normal;
+
+    li {
+      color: $body-font-color;
+      margin-bottom: 20px;
+      a {
+        color: $clr-link;
+        &:hover {
+          color: $clr-link-hover;
+        }
+
+      }
+    }
+  }
+  .more-link {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: auto;
+    > a {
+      @extend .header-allcaps-plain;
+      color: $clr-body-text;
+
+      &:hover {
+        text-decoration: underline;
+        color:$clr-highlight-hover;
+      }
+    }
+
+    &:after {
+      @extend .more-icon;
+    }
+  }
+}
+#issue {
+  @include grid-column(2);
+  @include blocks;
+  @extend .block;
+
+  .current-img {
+    width: rem-calc(160);
+  }
+  .boxtitle {
+    margin-top: 5px;
+    a {
+      @extend .header-allcaps-xxlarge;
+      @extend .condense;
+      display: block;
+      margin-bottom: -5px;
+      font-weight: 900;
+      color: $clr-body-text;
+      line-height: 22px;
+      &:hover {
+        text-decoration: none;
+        color: $clr-highlight-hover;
+      }
+    }
+    .subhead {
+      font-face: $font-face-plain;
+      font-size: $txt-size-medium-large;
+      color: $clr-body-text;
+    }
+  }
+}

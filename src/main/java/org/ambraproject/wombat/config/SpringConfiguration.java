@@ -175,6 +175,7 @@ public class SpringConfiguration {
     resolver.setCache(true);
     resolver.setPrefix("");
     resolver.setSuffix(".ftl");
+    resolver.setRequestContextAttribute("requestContext");
     return resolver;
   }
 

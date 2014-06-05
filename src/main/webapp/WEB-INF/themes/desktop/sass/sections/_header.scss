@@ -1,5 +1,5 @@
 
--/*
+/*
  *       These are the header styles
   page-wrap
    topbanner
@@ -10,9 +10,8 @@
          nav-main (foundation topbar)
            logo
            top-bar-section
-             right
-               ul /
-               li
+               ul.nav-elements /
+               li:
                  'browse'
                  'for authors'
                  'about us'
@@ -22,13 +21,13 @@
   @extend .bg-dark;
   @extend .text-center;
   @extend .pad-small-x;
-  @include highlight-border($plos-bio);
+  @include highlight-border($plos-default);  /*TODO: use themes journal-specific css to assign border color*/
 }
 
 .ad-head {
   iframe {
     padding-left: 18px;
-    background: image-url('text.vert.ad.gif') no-repeat left 5px;
+    background: image-url('text.vert.ad.gif') no-repeat left remcalc(5);
   }
 }
 
@@ -46,12 +45,12 @@ $width-nav: $block-grid-elements - $width-logo;
       //  @include grid-column($columns:4, $float:right); // from foundation
       font-weight: bold;
       > li {
-        margin-top: -5px;
+        margin-top: rem-calc(-5);
         margin-left: rem-calc(4);
         &:hover {
         }
         > a {
-          @include rounded-pill(transparent, $pad-nav-user);
+          @include rounded-pill(transparent, rem-calc(14 16 8));
           color: $plos-default;
 
           &:hover {
@@ -102,6 +101,9 @@ $width-nav: $block-grid-elements - $width-logo;
     }
     &:hover {
       border-left: 1px solid #efefef;
+      .submit { // 'submit your manuscript' callout
+        display: block;
+      }
     }
 
     > a {
@@ -146,12 +148,12 @@ $width-nav: $block-grid-elements - $width-logo;
   .top-bar-section ul.nav-elements > li.has-dropdown {
     position: relative;
 
-    .submit {
+    .submit {   //'Submit your manuscript' callout
       display: none;
       position: absolute;
-      top: 45px;
-      left: -290px;
-      width: 280px;
+      top: rem-calc(45);
+      left: rem-calc(-290);
+      width: rem-calc(280);
       padding: rem-calc(20 0 30 15);
       z-index: 997;
       background: white;
@@ -160,6 +162,9 @@ $width-nav: $block-grid-elements - $width-logo;
       font-family: $font-face-navigation;
       font-size: $txt-size-medium;
 
+      &:hover {
+        display: block !important;
+      }
       .calloutInner {
         border-right: 1px solid $grey-light;
         padding-right: rem-calc(15);
@@ -176,26 +181,37 @@ $width-nav: $block-grid-elements - $width-logo;
         list-style-type: disc;
         li {
           margin-left: rem-calc(15);
-          a {
+          a { //all this is necessary to override the foundation styles that are cascading
+            margin: 0;
+            padding: 0;
+            line-height: 1.35;
             font-family: $font-face-navigation;
-            font-size: $txt-size-medium;
+            font-size: $txt-size-medium-large;
             background: $white;
-            color: $clr-body-text;
+            color: $clr-link;
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
 
       }
       a.btn {
         @include rounded-pill($clr-btn-secondary);
-        margin-left: 15px;
+        display: inline-block;
+        margin-top: rem-calc(20);
+        margin-left: rem-calc(15);
+        padding: rem-calc(0 10);
+        line-height: 35px;
       }
     }
   }
+
   .head-search {
     // $last-column: true; // from foundation
-    // @extend .has-form;   // from foundation
+    //@extend .has-form;   // from foundation
     @include grid-column($width-search); // from foundation
-    width: 214px !important; //TODO fix this (it's a hack to make it stretch to the edge of the grid.)
+    //width: 214px !important; //TODO fix this (it's a hack to make it stretch to the edge of the grid.)
     padding-left: rem-calc(20);
     padding-right: 0;
     text-align: right;
@@ -211,36 +227,47 @@ $width-nav: $block-grid-elements - $width-logo;
       }
 
       input[type="text"] {
+
+        $form-spacing: rem-calc(14);  // from foundation
         $input-border-radius: 0; // from foundation
         $input-include-glowing-effect: false; // from foundation
         $input-font-color: $clr-body-text; // from foundation
-        $input-border-color: $input-bg-color; // from foundation
-        $input-focus-border-color: $input-bg-color; // from foundation
+        $input-border-color: $white; // from foundation
+        $input-focus-border-color: $white; // from foundation
         @include form-element(); // from foundation
         width: rem-calc(195);
+        color: #333;
       }
-      input[type="image"] {
-        // the following was desperation from demo
+      button[type="submit"] {
+        @include postfix($white, $white); //foundation
         width: 45px;
-        height: 45px;
-        padding: 12px;
-        border: 0px none;
-        background-color: white;
+        border: none;
+
+        .search-icon {
+          @extend .fa;
+          @extend .fa-search;
+          padding-top: rem-calc(4);
+          font-size: rem-calc(20);
+        }
       }
     }
+  }
 
+  //overrides for top-bar styles: they have to be here to work
+  .top-bar-section ul li.head-search a {
+    margin-top: rem-calc(-10);
+    line-height: 33px;
+    width: 190px;
+    padding: 0 !important;
+    font-size: $txt-size-small;
 
-    > a {
-      display: block;
-      padding: 0 !important;
-      font-size: $txt-size-small;
-
-      &:hover {
-        text-decoration: underline;
-        background: $grey-light;
-      }
-
+    &:hover {
+      text-decoration: underline;
+      color: $clr-highlight-hover;
     }
+  }
+  .top-bar-section ul li.head-search:hover:not(.has-form) > a {
+    background: $grey-light;
   }
 
 }

@@ -47,7 +47,6 @@ $default-box-shadow-inset: false;
   @include blocks($radius: none, $padding: none);
 }
 
-
 ///PLACEHOLDER STYLES
 
 @mixin stub() {

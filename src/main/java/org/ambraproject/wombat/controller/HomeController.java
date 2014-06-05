@@ -103,7 +103,8 @@ public class HomeController extends WombatController {
       Number shuffleThreshold = (Number) configuration.get("since");
       this.since = (shuffleThreshold == null) ? null : shuffleThreshold.doubleValue();
 
-      this.shuffle = (Boolean) configuration.get("shuffle");
+      Boolean shuffle = (Boolean) configuration.get("shuffle");
+      this.shuffle = (shuffle == null) ? false : shuffle.booleanValue();
 
       this.articleTypes = (List<String>) configuration.get("articleTypes");
     }

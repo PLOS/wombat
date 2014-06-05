@@ -4,7 +4,7 @@
 			itemscope itemtype="http://schema.org/Article"
 			class="no-js">
 <#assign depth = 0 />
-<#assign title = '' />
+<#include "../common/title/defaultPageTitle.ftl" />
 <#include "../common/head.ftl" />
 <body class="home">
 

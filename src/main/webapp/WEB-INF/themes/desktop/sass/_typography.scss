@@ -12,11 +12,20 @@
  font-family: $font-face-fancy;
  text-transform: uppercase;
 }
-
+.header-allcaps-plain {
+  @extend .header-allcaps;
+  font-family: $font-face-plain;
+}
+.header-allcaps-xxlarge {
+  @extend .header-allcaps;
+  font-size: rem-calc($txt-size-xlarge);
+}
 .small-italic{
   @extend .small;
   font-size: rem-calc($txt-size-xxxsmall);
   font-style: italic;
 }
-
+.condense {
+  letter-spacing: -1;
+}
 .no-margin{ margin-bottom: 0;}

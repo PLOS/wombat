@@ -46,15 +46,6 @@ $default-box-shadow-inset: false;
 .block-card {
   @include blocks($radius: none, $padding: none);
 }
-//font-awesome arrow at end of links. use in span
-.more-icon {
-  @extend .fa;
-  @extend .fa-chevron-circle-right;
-  @extend .fa-inverse;
-  padding-left: rem-calc(3);
-  color: $clr-highlight;
-}
-
 
 ///PLACEHOLDER STYLES
 

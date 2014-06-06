@@ -324,3 +324,22 @@ $image-container: ($image-width + $pad-default);
     }
   }
 }
+
+.linkbox {
+  @extend .block-card;
+  height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
+  ul {
+    @extend .no-bullet; // from foundation
+    li {
+      padding: $pad-default $pad-medium;
+      border-top: 1px solid $grey-light;
+      @extend .link-text-body;
+      a {
+        font-family: $font-face-fancy;
+        font-size: $txt-size-medium-large;
+
+      }
+    }
+  }
+
+}

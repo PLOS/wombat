@@ -142,6 +142,8 @@ $image-container: ($image-width + $pad-default);
   // components
   .date {
     @extend .small-italic;
+    position: absolute;
+    right: $pad-default;
   }
   .credits {
     @extend .small-italic;

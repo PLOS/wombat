@@ -8674,36 +8674,40 @@ footer {
   /* line 139, ../../sass/pages/_home.scss */
   .block.image .block-content, .image.carousel-wrap.small .block-content, .image.carousel-wrap.small-italic .block-content, .block .image.carousel-wrap.date .block-content, .block .image.carousel-wrap.credits .block-content, .image#issue .block-content {
     margin-left: 6.25rem; }
-  /* line 146, ../../sass/pages/_home.scss */
+  /* line 143, ../../sass/pages/_home.scss */
+  .block .date, .carousel-wrap.small .date, .carousel-wrap.small-italic .date, #issue .date {
+    position: absolute;
+    right: 0.625rem; }
+  /* line 148, ../../sass/pages/_home.scss */
   .block .credits, .carousel-wrap.small .credits, .carousel-wrap.small-italic .credits, #issue .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.875rem;
     margin: 0; }
-  /* line 154, ../../sass/pages/_home.scss */
+  /* line 156, ../../sass/pages/_home.scss */
   .block .category, .carousel-wrap.small .category, .carousel-wrap.small-italic .category, #issue .category, .block #article-list h3, #article-list .block h3, .carousel-wrap.small #article-list h3, #article-list .carousel-wrap.small h3, .carousel-wrap.small-italic #article-list h3, #article-list .carousel-wrap.small-italic h3, #issue #article-list h3, #article-list #issue h3 {
     color: #3c63af; }
-  /* line 160, ../../sass/pages/_home.scss */
+  /* line 162, ../../sass/pages/_home.scss */
   .block .title a, .carousel-wrap.small .title a, .carousel-wrap.small-italic .title a, #issue .title a {
     color: #333333; }
-    /* line 162, ../../sass/pages/_home.scss */
+    /* line 164, ../../sass/pages/_home.scss */
     .block .title a:hover, .carousel-wrap.small .title a:hover, .carousel-wrap.small-italic .title a:hover, #issue .title a:hover {
       text-decoration: underline; }
-  /* line 172, ../../sass/pages/_home.scss */
+  /* line 174, ../../sass/pages/_home.scss */
   .block .block-content, .carousel-wrap.small .block-content, .carousel-wrap.small-italic .block-content, #issue .block-content {
     position: relative;
     font-size: 0.8125rem; }
-  /* line 178, ../../sass/pages/_home.scss */
+  /* line 180, ../../sass/pages/_home.scss */
   .block.small .title, .block.small-italic .title, .block .block.date .title, #issue .block.date .title, #issue .date.carousel-wrap.small .title, .block .date#issue .title, .carousel-wrap.small .date#issue .title, #issue .date#issue .title, .block .block.credits .title, #issue .block.credits .title, #issue .credits.carousel-wrap.small .title, .block .credits#issue .title, .carousel-wrap.small .credits#issue .title, #issue .credits#issue .title, .small-italic#issue .title, .small.carousel-wrap .title, .carousel-wrap.small-italic .title, .block .carousel-wrap.date .title, .block .carousel-wrap.credits .title, .small#issue .title {
     font-family: albert-bold; }
 
-/* line 188, ../../sass/pages/_home.scss */
+/* line 190, ../../sass/pages/_home.scss */
 .column.left, .nav-main .top-bar-section ul.column.nav-elements {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 66.66667%;
   float: left; }
-  /* line 190, ../../sass/pages/_home.scss */
+  /* line 192, ../../sass/pages/_home.scss */
   .column.left .row-small-blocks, .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks {
     display: block;
     padding: 0;
@@ -8741,31 +8745,31 @@ footer {
       .column.left .row-small-blocks > li:nth-of-type(2n), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks > li:nth-of-type(2n) {
         padding-left: 0.625rem;
         padding-right: 0rem; }
-    /* line 194, ../../sass/pages/_home.scss */
+    /* line 196, ../../sass/pages/_home.scss */
     .column.left .row-small-blocks .block:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block:nth-child(1), .column.left .row-small-blocks .carousel-wrap.small:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.small:nth-child(1), .column.left .row-small-blocks .carousel-wrap.small-italic:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.small-italic:nth-child(1), .column.left .row-small-blocks .block .carousel-wrap.date:nth-child(1), .block .column.left .row-small-blocks .carousel-wrap.date:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block .carousel-wrap.date:nth-child(1), .block .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.date:nth-child(1), .column.left .row-small-blocks .block .carousel-wrap.credits:nth-child(1), .block .column.left .row-small-blocks .carousel-wrap.credits:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block .carousel-wrap.credits:nth-child(1), .block .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.credits:nth-child(1), .column.left .row-small-blocks #issue:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks #issue:nth-child(1), .column.left .row-small-blocks .block:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block:nth-child(3), .column.left .row-small-blocks .carousel-wrap.small:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.small:nth-child(3), .column.left .row-small-blocks .carousel-wrap.small-italic:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.small-italic:nth-child(3), .column.left .row-small-blocks .block .carousel-wrap.date:nth-child(3), .block .column.left .row-small-blocks .carousel-wrap.date:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block .carousel-wrap.date:nth-child(3), .block .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.date:nth-child(3), .column.left .row-small-blocks .block .carousel-wrap.credits:nth-child(3), .block .column.left .row-small-blocks .carousel-wrap.credits:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block .carousel-wrap.credits:nth-child(3), .block .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .carousel-wrap.credits:nth-child(3), .column.left .row-small-blocks #issue:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks #issue:nth-child(3) {
       margin-right: 2%;
       width: 46%; }
-  /* line 202, ../../sass/pages/_home.scss */
+  /* line 204, ../../sass/pages/_home.scss */
   .column.left .block, .nav-main .top-bar-section ul.column.nav-elements .block, .column.left .carousel-wrap.small, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small, .column.left .carousel-wrap.small-italic, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small-italic, .column.left .block .carousel-wrap.date, .block .column.left .carousel-wrap.date, .nav-main .top-bar-section ul.column.nav-elements .block .carousel-wrap.date, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.date, .column.left .block .carousel-wrap.credits, .block .column.left .carousel-wrap.credits, .nav-main .top-bar-section ul.column.nav-elements .block .carousel-wrap.credits, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.credits, .column.left #issue, .nav-main .top-bar-section ul.column.nav-elements #issue {
     height: 11.25rem; }
-    /* line 205, ../../sass/pages/_home.scss */
+    /* line 207, ../../sass/pages/_home.scss */
     .column.left .block .block-image, .nav-main .top-bar-section ul.column.nav-elements .block .block-image, .column.left .carousel-wrap.small .block-image, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small .block-image, .column.left .carousel-wrap.small-italic .block-image, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small-italic .block-image, .block .column.left .carousel-wrap.date .block-image, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.date .block-image, .block .column.left .carousel-wrap.credits .block-image, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.credits .block-image, .column.left #issue .block-image, .nav-main .top-bar-section ul.column.nav-elements #issue .block-image {
       height: 10rem;
       overflow: hidden; }
-    /* line 210, ../../sass/pages/_home.scss */
+    /* line 212, ../../sass/pages/_home.scss */
     .column.left .block.small, .nav-main .top-bar-section ul.column.nav-elements .block.small, .column.left .block.small-italic, .nav-main .top-bar-section ul.column.nav-elements .block.small-italic, .column.left .block .block.date, .block .column.left .block.date, .nav-main .top-bar-section ul.column.nav-elements .block .block.date, .block .nav-main .top-bar-section ul.column.nav-elements .block.date, .column.left .carousel-wrap.small .block.date, .carousel-wrap.small .column.left .block.date, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small .block.date, .carousel-wrap.small .nav-main .top-bar-section ul.column.nav-elements .block.date, .column.left #issue .block.date, #issue .column.left .block.date, .nav-main .top-bar-section ul.column.nav-elements #issue .block.date, #issue .nav-main .top-bar-section ul.column.nav-elements .block.date, .column.left #issue .date.carousel-wrap.small, #issue .column.left .date.carousel-wrap.small, .nav-main .top-bar-section ul.column.nav-elements #issue .date.carousel-wrap.small, #issue .nav-main .top-bar-section ul.column.nav-elements .date.carousel-wrap.small, .column.left .block .date#issue, .block .column.left .date#issue, .nav-main .top-bar-section ul.column.nav-elements .block .date#issue, .block .nav-main .top-bar-section ul.column.nav-elements .date#issue, .column.left .carousel-wrap.small .date#issue, .carousel-wrap.small .column.left .date#issue, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small .date#issue, .carousel-wrap.small .nav-main .top-bar-section ul.column.nav-elements .date#issue, .column.left #issue .date#issue, #issue .column.left .date#issue, .nav-main .top-bar-section ul.column.nav-elements #issue .date#issue, #issue .nav-main .top-bar-section ul.column.nav-elements .date#issue, .column.left .block .block.credits, .block .column.left .block.credits, .nav-main .top-bar-section ul.column.nav-elements .block .block.credits, .block .nav-main .top-bar-section ul.column.nav-elements .block.credits, .column.left .carousel-wrap.small .block.credits, .carousel-wrap.small .column.left .block.credits, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small .block.credits, .carousel-wrap.small .nav-main .top-bar-section ul.column.nav-elements .block.credits, .column.left #issue .block.credits, #issue .column.left .block.credits, .nav-main .top-bar-section ul.column.nav-elements #issue .block.credits, #issue .nav-main .top-bar-section ul.column.nav-elements .block.credits, .column.left #issue .credits.carousel-wrap.small, #issue .column.left .credits.carousel-wrap.small, .nav-main .top-bar-section ul.column.nav-elements #issue .credits.carousel-wrap.small, #issue .nav-main .top-bar-section ul.column.nav-elements .credits.carousel-wrap.small, .column.left .block .credits#issue, .block .column.left .credits#issue, .nav-main .top-bar-section ul.column.nav-elements .block .credits#issue, .block .nav-main .top-bar-section ul.column.nav-elements .credits#issue, .column.left .carousel-wrap.small .credits#issue, .carousel-wrap.small .column.left .credits#issue, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small .credits#issue, .carousel-wrap.small .nav-main .top-bar-section ul.column.nav-elements .credits#issue, .column.left #issue .credits#issue, #issue .column.left .credits#issue, .nav-main .top-bar-section ul.column.nav-elements #issue .credits#issue, #issue .nav-main .top-bar-section ul.column.nav-elements .credits#issue, .column.left .small-italic#issue, .nav-main .top-bar-section ul.column.nav-elements .small-italic#issue, .column.left .small.carousel-wrap, .nav-main .top-bar-section ul.column.nav-elements .small.carousel-wrap, .column.left .carousel-wrap.small-italic, .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.small-italic, .column.left .block .carousel-wrap.date, .block .column.left .carousel-wrap.date, .nav-main .top-bar-section ul.column.nav-elements .block .carousel-wrap.date, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.date, .column.left .block .carousel-wrap.credits, .block .column.left .carousel-wrap.credits, .nav-main .top-bar-section ul.column.nav-elements .block .carousel-wrap.credits, .block .nav-main .top-bar-section ul.column.nav-elements .carousel-wrap.credits, .column.left .small#issue, .nav-main .top-bar-section ul.column.nav-elements .small#issue {
       padding-left: 0.625rem;
       padding-right: 0.625rem;
       width: 50%;
       float: left; }
-/* line 216, ../../sass/pages/_home.scss */
+/* line 218, ../../sass/pages/_home.scss */
 .column.right, #pagehdr-wrap .nav .column.nav-user {
   padding-left: 0;
   padding-right: 0;
   width: 33.33333%;
   float: left; }
 
-/* line 225, ../../sass/pages/_home.scss */
+/* line 227, ../../sass/pages/_home.scss */
 #submission-links,
 #social-links,
 #spotlight,
@@ -8787,7 +8791,7 @@ footer {
   color: white;
   height: 15.625rem; }
 
-/* line 231, ../../sass/pages/_home.scss */
+/* line 233, ../../sass/pages/_home.scss */
 #billboard {
   width: 100%;
   margin-left: auto;
@@ -8816,10 +8820,10 @@ footer {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   #billboard:after {
     clear: both; }
-  /* line 234, ../../sass/pages/_home.scss */
+  /* line 236, ../../sass/pages/_home.scss */
   #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard .block.small-italic .title, .block.small-italic #billboard .title, #billboard .block .block.date .title, .block .block.date #billboard .title, #billboard #issue .block.date .title, #issue .block.date #billboard .title, #billboard .block .date#issue .title, .block .date#issue #billboard .title, #billboard #issue .date#issue .title, #issue .date#issue #billboard .title, #billboard .block .block.credits .title, .block .block.credits #billboard .title, #billboard #issue .block.credits .title, #issue .block.credits #billboard .title, #billboard .block .credits#issue .title, .block .credits#issue #billboard .title, #billboard #issue .credits#issue .title, #issue .credits#issue #billboard .title, #billboard .small-italic#issue .title, .small-italic#issue #billboard .title, #billboard .small.carousel-wrap .title, .small.carousel-wrap #billboard .title, #billboard .carousel-wrap.small-italic .title, .carousel-wrap.small-italic #billboard .title, #billboard .block .carousel-wrap.date .title, .block .carousel-wrap.date #billboard .title, #billboard .block .carousel-wrap.credits .title, .block .carousel-wrap.credits #billboard .title, #billboard .small#issue .title, .small#issue #billboard .title, #billboard a {
     color: white !important; }
-  /* line 238, ../../sass/pages/_home.scss */
+  /* line 240, ../../sass/pages/_home.scss */
   #billboard a {
     background: #3c63af;
     padding: 0.625rem;
@@ -8834,7 +8838,7 @@ footer {
     #billboard a:hover {
       background: #333333; }
 
-/* line 248, ../../sass/pages/_home.scss */
+/* line 250, ../../sass/pages/_home.scss */
 #article-list {
   padding: 0.625rem;
   -moz-border-radius-topleft: 5px;
@@ -8855,34 +8859,34 @@ footer {
   height: 15.625rem;
   width: 30%;
   margin-right: 3%; }
-  /* line 258, ../../sass/pages/_home.scss */
+  /* line 260, ../../sass/pages/_home.scss */
   #article-list ul {
     line-height: normal; }
-    /* line 262, ../../sass/pages/_home.scss */
+    /* line 264, ../../sass/pages/_home.scss */
     #article-list ul li {
       color: #333333;
       margin-bottom: 20px; }
-      /* line 265, ../../sass/pages/_home.scss */
+      /* line 267, ../../sass/pages/_home.scss */
       #article-list ul li a {
         color: #3c63af; }
-        /* line 267, ../../sass/pages/_home.scss */
+        /* line 269, ../../sass/pages/_home.scss */
         #article-list ul li a:hover {
           color: #333333; }
-  /* line 274, ../../sass/pages/_home.scss */
+  /* line 276, ../../sass/pages/_home.scss */
   #article-list .more-link {
     position: absolute;
     bottom: 10px;
     left: 10px;
     right: auto; }
-    /* line 279, ../../sass/pages/_home.scss */
+    /* line 281, ../../sass/pages/_home.scss */
     #article-list .more-link > a {
       color: #333333; }
-      /* line 283, ../../sass/pages/_home.scss */
+      /* line 285, ../../sass/pages/_home.scss */
       #article-list .more-link > a:hover {
         text-decoration: underline;
         color: #3c63af; }
 
-/* line 295, ../../sass/pages/_home.scss */
+/* line 297, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -8900,37 +8904,37 @@ footer {
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white; }
-  /* line 300, ../../sass/pages/_home.scss */
+  /* line 302, ../../sass/pages/_home.scss */
   #issue .current-img {
     width: 10rem; }
-  /* line 303, ../../sass/pages/_home.scss */
+  /* line 305, ../../sass/pages/_home.scss */
   #issue .boxtitle {
     margin-top: 5px; }
-    /* line 305, ../../sass/pages/_home.scss */
+    /* line 307, ../../sass/pages/_home.scss */
     #issue .boxtitle a {
       display: block;
       margin-bottom: -5px;
       font-weight: 900;
       color: #333333;
       line-height: 22px; }
-      /* line 313, ../../sass/pages/_home.scss */
+      /* line 315, ../../sass/pages/_home.scss */
       #issue .boxtitle a:hover {
         text-decoration: none;
         color: #3c63af; }
-    /* line 318, ../../sass/pages/_home.scss */
+    /* line 320, ../../sass/pages/_home.scss */
     #issue .boxtitle .subhead {
       font-face: "arial";
       font-size: 16px;
       color: #333333; }
 
-/* line 326, ../../sass/pages/_home.scss */
+/* line 328, ../../sass/pages/_home.scss */
 .linkbox {
   height: 25.625rem; }
-  /* line 331, ../../sass/pages/_home.scss */
+  /* line 333, ../../sass/pages/_home.scss */
   .linkbox ul li {
     padding: 0.625rem 1.25rem;
     border-top: 1px solid #efefef; }
-    /* line 335, ../../sass/pages/_home.scss */
+    /* line 337, ../../sass/pages/_home.scss */
     .linkbox ul li a {
       font-family: "albert";
       font-size: 16px; }

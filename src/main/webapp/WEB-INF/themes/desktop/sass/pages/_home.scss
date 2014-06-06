@@ -9,9 +9,11 @@
 $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
 $pad-default: rem-calc(10);
+$pad-medium: ($pad-default * 2);
 $image-width: rem-calc(70);
 $hero-height: rem-calc(380);
 $image-container: ($image-width + $pad-default);
+
 // HOME CONTENT - home-content
 
 // for demo:
@@ -33,10 +35,6 @@ $image-container: ($image-width + $pad-default);
 
 //home page blocks
 
-.hero
-.overlay-light {
-
-}
 
 .hero {
   position: relative;
@@ -218,8 +216,6 @@ $image-container: ($image-width + $pad-default);
   }
 }
 
-
-
 #submission-links,
 #social-links,
 #spotlight,
@@ -285,7 +281,7 @@ $image-container: ($image-width + $pad-default);
 
       &:hover {
         text-decoration: underline;
-        color:$clr-highlight-hover;
+        color: $clr-highlight-hover;
       }
     }
 
@@ -294,6 +290,7 @@ $image-container: ($image-width + $pad-default);
     }
   }
 }
+
 #issue {
   @include grid-column(2);
   @include blocks;

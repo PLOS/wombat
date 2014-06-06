@@ -18,12 +18,20 @@
 
 package org.ambraproject.wombat.util;
 
-import org.springframework.core.env.Environment;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
+
+import java.util.Properties;
 
 /**
  * Information about git commit
  */
 public class GitInfo {
+  private static final Logger log = LoggerFactory.getLogger(GitInfo.class);
+
   private final String branch;
   private final String describe;
   private final String commitId;
@@ -37,21 +45,44 @@ public class GitInfo {
   private final String buildUserEmail;
   private final String buildTime;
 
-  public GitInfo(Environment env) {
-    this.branch = env.getProperty("git.branch", "");
+  public GitInfo() {
+    Resource resource = new ClassPathResource("/git.properties");
+    Properties props = new Properties();
+    try {
+      props = PropertiesLoaderUtils.loadProperties(resource);
+    } catch (Exception e) {
+      log.warn("Could not get the git commit info", e);
+    }
 
-    this.describe = env.getProperty("git.commit.id.describe", "");
-    this.commitId = env.getProperty("git.commit.id", "");
-    this.commitIdAbbrev = env.getProperty("git.commit.id.abbrev", "");
-    this.commitUserName = env.getProperty("git.commit.user.name", "");
-    this.commitUserEmail = env.getProperty("git.commit.user.email", "");
-    this.commitMessageFull = env.getProperty("git.commit.message.full", "");
-    this.commitMessageShort = env.getProperty("git.commit.message.short", "");
-    this.commitTime = env.getProperty("git.commit.time", "");
+    this.branch = getPropertyValue(props, "git.branch");
 
-    this.buildUserName = env.getProperty("git.build.user.name", "");
-    this.buildUserEmail = env.getProperty("git.build.user.email", "");
-    this.buildTime = env.getProperty("git.build.time", "");
+    this.describe = getPropertyValue(props, "git.commit.id.describe");
+    this.commitId = getPropertyValue(props, "git.commit.id");
+    this.commitIdAbbrev = getPropertyValue(props, "git.commit.id.abbrev");
+    this.commitUserName = getPropertyValue(props, "git.commit.user.name");
+    this.commitUserEmail = getPropertyValue(props, "git.commit.user.email");
+    this.commitMessageFull = getPropertyValue(props, "git.commit.message.full");
+    this.commitMessageShort = getPropertyValue(props, "git.commit.message.short");
+    this.commitTime = getPropertyValue(props, "git.commit.time");
+
+    this.buildUserName = getPropertyValue(props, "git.build.user.name");
+    this.buildUserEmail = getPropertyValue(props, "git.build.user.email");
+    this.buildTime = getPropertyValue(props, "git.build.time");
+  }
+
+  /**
+   * This is to handle a situation where git folder isn't available
+   * @param properties Properties object that contains the git.properties info
+   * @param key key
+   * @return value, default value is an empty string
+   */
+  private String getPropertyValue(Properties properties, String key) {
+    String value = properties.getProperty(key);
+    if (value != null && !value.startsWith("${")) {
+      return value;
+    } else {
+      return "";
+    }
   }
 
   public String getBranch() {

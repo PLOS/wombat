@@ -1,1 +1,1 @@
-<#assign title = "" />
+<#assign defaultPageTitle = "" />

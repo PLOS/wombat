@@ -246,7 +246,6 @@ $image-container: ($image-width + $pad-default);
 #article-list {
   @include blocks;
   @include grid-column(4);
-  @extend .block;
   height: $block-height;
   width: 30%; // for demo
   margin-right: 3%; //for demo

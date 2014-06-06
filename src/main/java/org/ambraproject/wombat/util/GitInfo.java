@@ -51,7 +51,7 @@ public class GitInfo {
     try {
       props = PropertiesLoaderUtils.loadProperties(resource);
     } catch (Exception e) {
-      log.error("Could not get the git commit info", e);
+      log.warn("Could not get the git commit info", e);
     }
 
     this.branch = getPropertyValue(props, "git.branch");

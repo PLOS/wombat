@@ -1,3 +1,11 @@
+<@themeConfig map="legacy" value="urlPrefix" ; p>
+  <#assign prefix = p />
+</@themeConfig>
+
+<@themeConfig map="journal" value="journalKey" ; j>
+  <#assign filterJournal = j />
+</@themeConfig>
+
 <#--markup starts in SiteMenu.ftl: this li is part of the main nav ul -->
 <li id="search" class="head-search">
   <form name="searchForm" action="search" method="get"><#-- TODO: address for simple search controller -->
@@ -16,7 +24,9 @@
       </div>
     </fieldset>
   </form>
-  <a id="advSearch" href=""><#-- TODO: address for advanced search controller -->
+  <#-- the link will be replaced with the correct advanced search after the migration -->
+  <#-- TODO: address for advanced search controller -->
+  <a id="advSearch" href="${prefix}search/advanced?noSearchFlag=true&query=&filterJournals=${filterJournal}">
     advanced search
   </a>
 </li>

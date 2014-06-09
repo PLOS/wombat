@@ -240,6 +240,21 @@ $image-container: ($image-width + $pad-default);
     top: 10px;
   }
 }
+/*@mixin link-text($color: $clr-body-text, $decoration: none){
+  color: $color;
+  text-decoration: none;
+
+  &:hover, a:hover{
+    @if $decoration == none{
+    color: $clr-highlight;
+    text-decoration: none;
+  }
+    @elseif $decoration == underline{
+      color: $color;
+      text-decoration: underline;
+    }
+  }
+}*/
 #article-list {
   height: $block-height;
   @include blocks;
@@ -259,17 +274,13 @@ $image-container: ($image-width + $pad-default);
 
     li {
       color: $clr-body-text;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
 
       a {
+        @include link-text();
         display: block;
-       // font-family: $font-face-fancy;
-        //font-size: $txt-size-xsmall;
-        color: red; //$clr-body-text;
-        &:hover {
-          color: $clr-link-hover;
-        }
-
+        font-family: $font-face-fancy;
+        font-size: $txt-size-xsmall;
       }
     }
   }
@@ -279,15 +290,9 @@ $image-container: ($image-width + $pad-default);
     left: 10px;
     right: auto;
     > a {
+      @include link-text();
       @extend .header-allcaps-plain;
-      color: $clr-body-text;
-
-      &:hover {
-        text-decoration: underline;
-        color: $clr-highlight-hover;
-      }
     }
-
     &:after {
       @extend .more-icon;
     }
@@ -313,24 +318,18 @@ $image-container: ($image-width + $pad-default);
       width: rem-calc(160);
     }
     .boxtitle {
-      margin-top: 5px;
+      margin-top: rem-calc(5);
       a {
+        @include link-text();
         @extend .header-allcaps-xxlarge;
         @extend .condense;
         display: block;
-        margin-bottom: -5px;
+        margin-bottom: rem-calc(-5);
         font-weight: 900;
-        color: $clr-body-text;
-        line-height: 22px;
-        &:hover {
-          text-decoration: none;
-          color: $clr-highlight-hover;
-        }
       }
       .subhead {
         font-face: $font-face-plain;
         font-size: $txt-size-medium-large;
-        color: $clr-body-text;
       }
     }
 }
@@ -341,7 +340,7 @@ $image-container: ($image-width + $pad-default);
   ul {
     @extend .no-bullet; // from foundation
     li {
-      padding: $pad-default $pad-medium;
+      //padding: $pad-default $pad-medium;
       border-top: 1px solid $grey-light;
       @extend .link-text-body;
       a {

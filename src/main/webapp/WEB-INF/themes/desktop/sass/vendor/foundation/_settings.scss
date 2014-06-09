@@ -1100,11 +1100,11 @@ $has-tip-font-weight: normal;
 $has-tip-font-color: $clr-body-text;
 $has-tip-border-bottom-hover: none; //dotted 1px scale-color($primary-color, $lightness: -55%);
 $has-tip-font-color-hover: $primary-color;
-$has-tip-cursor-type: default; //help;
+$has-tip-cursor-type: pointer; //help;
 
 $tooltip-padding: $pad-default;
 $tooltip-bg: $clr-body-bg;
-$tooltip-font-size: $txt-size-xsmall;
+$tooltip-font-size: $txt-size-xxsmall;
 $tooltip-font-weight: normal;
 $tooltip-font-color: $clr-body-text;
 $tooltip-line-height: 1.3;

@@ -25,6 +25,7 @@
 .highlighted-title {
   @extend .header-allcaps;
   @extend .highlight-color;
+  margin-bottom: $pad-small;
 }
 
 //////////////

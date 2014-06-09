@@ -38,3 +38,6 @@ defaultSelection: "recent"
 # If null, the homepage takes no selection, and loads articles for every supported section into the model.
 # If non-null, then the homepage has one selected section, and this is the default is none is queried for.
 # This affects what is loaded into the model.
+
+showsIssue: false
+# If true, populate the model with metadata for the site's journal's current issue.

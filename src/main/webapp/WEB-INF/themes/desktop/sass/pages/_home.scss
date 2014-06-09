@@ -214,8 +214,6 @@ $image-container: ($image-width + $pad-default);
   }
 }
 
-
-
 #submission-links,
 #social-links,
 #spotlight,
@@ -262,7 +260,7 @@ $image-container: ($image-width + $pad-default);
     li {
       color: $clr-body-text;
       margin-bottom: 10px;
-      line-height: 15;
+
       a {
         display: block;
        // font-family: $font-face-fancy;
@@ -335,4 +333,23 @@ $image-container: ($image-width + $pad-default);
         color: $clr-body-text;
       }
     }
+}
+
+.linkbox {
+  @extend .block-card;
+  height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
+  ul {
+    @extend .no-bullet; // from foundation
+    li {
+      padding: $pad-default $pad-medium;
+      border-top: 1px solid $grey-light;
+      @extend .link-text-body;
+      a {
+        font-family: $font-face-fancy;
+        font-size: $txt-size-medium-large;
+
+      }
+    }
   }
+
+}

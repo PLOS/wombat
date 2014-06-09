@@ -1,7 +1,3 @@
-/* 
- *
- */
-
 /*
  *    Home page blocks
  */
@@ -9,11 +5,9 @@
 $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
 $pad-default: rem-calc(10);
-$pad-medium: ($pad-default * 2);
 $image-width: rem-calc(70);
 $hero-height: rem-calc(380);
 $image-container: ($image-width + $pad-default);
-
 // HOME CONTENT - home-content
 
 // for demo:
@@ -35,6 +29,10 @@ $image-container: ($image-width + $pad-default);
 
 //home page blocks
 
+.hero
+.overlay-light {
+
+}
 
 .hero {
   position: relative;
@@ -61,12 +59,11 @@ $image-container: ($image-width + $pad-default);
   }
   // hero colors: default is white text
   color: $white;
-  a,p{
+  a {
     color: $white;
   }
   &.dark-text,
-  &.dark-text a,
-  &.dark-text p {
+  &.dark-text a {
     color: $clr-body-text;
   }
 
@@ -77,7 +74,6 @@ $image-container: ($image-width + $pad-default);
     bottom: 0;
     padding: $pad-default;
     font-size: rem-calc($txt-size-medium-large);
-
     h4 {
       @extend h1;
       @extend .no-margin;
@@ -129,6 +125,7 @@ $image-container: ($image-width + $pad-default);
   height: $block-height;
 
   @include blocks;
+
   .block-image {
     width: $image-container;
     display: block;
@@ -142,8 +139,6 @@ $image-container: ($image-width + $pad-default);
   // components
   .date {
     @extend .small-italic;
-    position: absolute;
-    right: $pad-default;
   }
   .credits {
     @extend .small-italic;
@@ -154,8 +149,7 @@ $image-container: ($image-width + $pad-default);
 
   }
   .category {
-    @extend .header-allcaps;
-    @include highlight-color();
+    @extend .highlighted-title;
   }
   .title {
     @extend h2;
@@ -246,30 +240,47 @@ $image-container: ($image-width + $pad-default);
     top: 10px;
   }
 }
+/*@mixin link-text($color: $clr-body-text, $decoration: none){
+  color: $color;
+  text-decoration: none;
 
+  &:hover, a:hover{
+    @if $decoration == none{
+    color: $clr-highlight;
+    text-decoration: none;
+  }
+    @elseif $decoration == underline{
+      color: $color;
+      text-decoration: underline;
+    }
+  }
+}*/
 #article-list {
+  height: $block-height;
   @include blocks;
   @include grid-column(4);
-  height: $block-height;
-  width: 30%; // for demo
-  margin-right: 3%; //for demo
+
+  position: relative;
+  width: 30%; // TODO: fix grid
+  margin-right: 3%; // TODO: fix grid
 
   h3 {
-    @extend .category;
+    @extend .highlighted-title;
   }
-  ul {
+
+  ul.list-plain {
     @extend .no-bullet; // from foundation
     line-height: normal;
 
     li {
-      color: $body-font-color;
-      margin-bottom: 20px;
-      a {
-        color: $clr-link;
-        &:hover {
-          color: $clr-link-hover;
-        }
+      color: $clr-body-text;
+      margin-bottom: 15px;
 
+      a {
+        @include link-text();
+        display: block;
+        font-family: $font-face-fancy;
+        font-size: $txt-size-xsmall;
       }
     }
   }
@@ -279,50 +290,48 @@ $image-container: ($image-width + $pad-default);
     left: 10px;
     right: auto;
     > a {
+      @include link-text();
       @extend .header-allcaps-plain;
-      color: $clr-body-text;
-
-      &:hover {
-        text-decoration: underline;
-        color: $clr-highlight-hover;
-      }
     }
-
     &:after {
       @extend .more-icon;
     }
   }
+
+  .truncated-tooltip {
+    @extend .has-tip; //foundation
+  }
+}
+//Tooltips are added to the bottom of the page & hidden. This class should not be nested.
+.tooltip {
+  width: 300px !important;
+  @include single-box-shadow();
+  border: 1px solid $grey-med-light;
 }
 
 #issue {
-  @include grid-column(2);
-  @include blocks;
-  @extend .block;
+    @include grid-column(2);
+    @include blocks;
+    @extend .block;
 
-  .current-img {
-    width: rem-calc(160);
-  }
-  .boxtitle {
-    margin-top: 5px;
-    a {
-      @extend .header-allcaps-xxlarge;
-      @extend .condense;
-      display: block;
-      margin-bottom: -5px;
-      font-weight: 900;
-      color: $clr-body-text;
-      line-height: 22px;
-      &:hover {
-        text-decoration: none;
-        color: $clr-highlight-hover;
+    .current-img {
+      width: rem-calc(160);
+    }
+    .boxtitle {
+      margin-top: rem-calc(5);
+      a {
+        @include link-text();
+        @extend .header-allcaps-xxlarge;
+        @extend .condense;
+        display: block;
+        margin-bottom: rem-calc(-5);
+        font-weight: 900;
+      }
+      .subhead {
+        font-face: $font-face-plain;
+        font-size: $txt-size-medium-large;
       }
     }
-    .subhead {
-      font-face: $font-face-plain;
-      font-size: $txt-size-medium-large;
-      color: $clr-body-text;
-    }
-  }
 }
 
 .linkbox {
@@ -331,7 +340,7 @@ $image-container: ($image-width + $pad-default);
   ul {
     @extend .no-bullet; // from foundation
     li {
-      padding: $pad-default $pad-medium;
+      //padding: $pad-default $pad-medium;
       border-top: 1px solid $grey-light;
       @extend .link-text-body;
       a {

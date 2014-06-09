@@ -12,6 +12,17 @@
 
 <#include "body.ftl" />
 
+
+<div id="linkbox" style="width:360px">
+		<img src="images/logos/logo-iscb.jpg" alt="International Society for Computational Biology">
+	<ul class="linkbox-content">
+		<li><a href="" class="block-link al">Breaking the Ice and Forging Links: The Importance of Socializing in Research</a></li>
+		<li><a href="" class="block-link al">Breaking the Ice and Forging Links: The Importance of Socializing in Research</a></li>
+		<li><a href="" class="block-link al">Breaking the Ice and Forging Links: The Importance of Socializing in Research</a></li>
+
+	</ul>
+</div>
+
 <div class="spotlight"></div>
 
 <#include "../common/footer/footer.ftl" />
@@ -19,11 +30,31 @@
 <script type="text/javascript" src="resource/js/vendor/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="resource/js/vendor/jquery.carousel.js"></script>
 <script type="text/javascript" src="resource/js/components/carousel.js"></script>
-
+<script type="text/javascript" src="resource/js/vendor/jquery.dotdotdot.js"></script>
 <script type="text/javascript" src="resource/js/vendor/foundation-altered.js"></script>
 
+
 <script>
-	$(document).foundation();
+
+	$(document).foundation({
+    //need the above for the top-bar
+    //need the below for foundation the tooltips on the home page in 'recently published articles'
+    tooltip: {
+      'wrap' : 'word',
+      selector : '.truncated-tooltip',
+      tip_template : function (selector, content) {
+        return '<span data-selector="' + selector + '" class="'
+          + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
+          + '">' + content + '</span>';
+      }
+    }
+  });
+  $(document).ready(function() {
+    $(".truncated-tooltip").dotdotdot({
+      height: 45
+    });
+  });
+
 </script>
 </body>
 </html>

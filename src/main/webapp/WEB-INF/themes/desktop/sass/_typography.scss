@@ -22,7 +22,11 @@
   @extend .header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
 }
-
+.highlighted-title {
+  @extend .header-allcaps;
+  @extend .highlight-color;
+  margin-bottom: $pad-small;
+}
 
 //////////////
 //link styles

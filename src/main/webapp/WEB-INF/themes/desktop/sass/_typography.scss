@@ -5,7 +5,9 @@
 
 @include font-face("FontAwesome", font-files("FontAwesome.ttf", "fontawesome-webfont.otf",  "fontawesome-webfont.svg",  "fontawesome-webfont.woff"));
 
-//typography extension styles
+//////////////
+//header styles
+///////////////
 
 .header-allcaps{
  font-size: rem-calc($txt-size-medium);
@@ -20,6 +22,42 @@
   @extend .header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
 }
+
+
+//////////////
+//link styles
+///////////////
+
+// "decoration" sets the hover style:
+// "none" = there is NO underline and the text turns the highlight color
+// "underline" =  text stays the same color but has an underline
+@mixin link-text($color: $clr-body-text, $decoration: none){
+  color: $color;
+  text-decoration: none;
+
+  &:hover, a:hover{
+    @if $decoration == none{
+    color: $clr-highlight;
+    text-decoration: none;
+  }
+    @elseif $decoration == underline{
+      color: $color;
+      text-decoration: underline;
+    }
+  }
+}
+
+.link-text-body, .link-text-body a{
+  @include link-text();
+}
+
+.link-text-white, .link-text-white a{
+  @include link-text($color: $white,$decoration: underline);
+}
+
+//////////////
+//utility styles
+///////////////
 .small-italic{
   @extend .small;
   font-size: rem-calc($txt-size-xxxsmall);

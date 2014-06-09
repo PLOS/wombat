@@ -20,6 +20,10 @@
   @extend .header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
 }
+.highlighted-title {
+  @extend .header-allcaps;
+  @extend .highlight-color;
+}
 .small-italic{
   @extend .small;
   font-size: rem-calc($txt-size-xxxsmall);

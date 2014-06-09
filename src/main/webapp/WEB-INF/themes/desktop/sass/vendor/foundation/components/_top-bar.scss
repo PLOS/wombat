@@ -555,7 +555,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
             &:not(.has-form) a:not(.button) {
               color: $topbar-dropdown-link-color;
-              background: $topbar-dropdown-link-bg;   
+              background: $topbar-dropdown-link-bg;
             }
             &:not(.has-form):hover > a:not(.button) {
               color: $topbar-link-color-hover;

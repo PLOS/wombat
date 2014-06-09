@@ -53,7 +53,6 @@ import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
@@ -175,6 +174,7 @@ public class SpringConfiguration {
     resolver.setCache(true);
     resolver.setPrefix("");
     resolver.setSuffix(".ftl");
+    resolver.setRequestContextAttribute("requestContext");
     return resolver;
   }
 
@@ -209,9 +209,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public GitInfo gitInfo(Environment environment) {
-    GitInfo gitInfo = new GitInfo(environment);
-    return gitInfo;
+  public GitInfo gitInfo() {
+    return new GitInfo();
   }
 
   @Bean

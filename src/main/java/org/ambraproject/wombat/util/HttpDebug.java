@@ -16,12 +16,19 @@ public class HttpDebug {
   }
 
   private static String enumerationToString(Enumeration enumeration) {
+    if (enumeration == null) {
+      return null;
+    }
     return Iterators.toString(Iterators.forEnumeration(enumeration));
   }
 
   private static List<String> formatParameters(HttpServletRequest request) {
     List<String> parameterStrings = Lists.newArrayList();
-    for (Object entryObj : request.getParameterMap().entrySet()) {
+    Map<?, ?> parameterMap = request.getParameterMap();
+    if (parameterMap == null) {
+      return null;
+    }
+    for (Object entryObj : parameterMap.entrySet()) {
       Map.Entry<?, ?> entry = (Map.Entry<?, ?>) entryObj;
       String key = (String) entry.getKey();
       String[] value = (String[]) entry.getValue();
@@ -44,6 +51,9 @@ public class HttpDebug {
   }
 
   private static List<String> formatCookies(Cookie[] cookies) {
+    if (cookies == null) {
+      return null;
+    }
     List<String> cookieStrings = Lists.newArrayListWithCapacity(cookies.length);
     for (Cookie cookie : cookies) {
       cookieStrings.add(Objects.toStringHelper(Cookie.class)

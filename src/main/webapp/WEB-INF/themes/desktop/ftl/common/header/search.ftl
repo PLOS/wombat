@@ -7,7 +7,7 @@
 </@themeConfig>
 
 <#--markup starts in SiteMenu.ftl: this li is part of the main nav ul -->
-<li id="search" class="head-search">
+<li id="navsearch" class="head-search">
   <form name="searchForm" action="search" method="get"><#-- TODO: address for simple search controller -->
     <input type="hidden" name="legacy" value="true" id="legacy"/>
     <fieldset>
@@ -24,8 +24,6 @@
       </div>
     </fieldset>
   </form>
-  <#-- the link will be replaced with the correct advanced search after the migration -->
-  <#-- TODO: address for advanced search controller -->
   <a id="advSearch" href="${prefix}search/advanced?noSearchFlag=true&query=&filterJournals=${filterJournal}">
     advanced search
   </a>

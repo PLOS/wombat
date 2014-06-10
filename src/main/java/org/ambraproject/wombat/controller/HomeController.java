@@ -216,6 +216,14 @@ public class HomeController extends WombatController {
       }
     }
 
+    if ((Boolean) homepageConfig.get("showsIssue")) {
+      String issueAddress = "journals/" + site.getJournalKey() + "?currentIssue";
+      Map<String, Object> currentIssue = soaService.requestObject(issueAddress, Map.class);
+      model.addAttribute("currentIssue", currentIssue);
+      Map<String, Object> issueImageMetadata = soaService.requestObject("articles/" + currentIssue.get("imageUri"), Map.class);
+      model.addAttribute("issueImage", issueImageMetadata);
+    }
+
     model.addAttribute("sections", sectionsForModel);
     return site.getKey() + "/ftl/home/home";
   }

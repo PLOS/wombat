@@ -7,7 +7,7 @@
 </@themeConfig>
 
 <#--markup starts in SiteMenu.ftl: this li is part of the main nav ul -->
-<li id="search" class="head-search">
+<li id="db" class="head-search">
   <form name="searchForm" action="search" method="get"><#-- TODO: address for simple search controller -->
     <input type="hidden" name="legacy" value="true" id="legacy"/>
     <fieldset>

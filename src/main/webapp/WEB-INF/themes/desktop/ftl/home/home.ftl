@@ -27,18 +27,21 @@
 
 <#include "../common/footer/footer.ftl" />
 
-<script type="text/javascript" src="resource/js/vendor/jquery-1.11.0.js"></script>
-<script type="text/javascript" src="resource/js/vendor/jquery.carousel.js"></script>
-<script type="text/javascript" src="resource/js/components/carousel.js"></script>
-<script type="text/javascript" src="resource/js/vendor/jquery.dotdotdot.js"></script>
-<script type="text/javascript" src="resource/js/vendor/foundation-altered.js"></script>
+<script src="resource/js/vendor/jquery-1.11.0.js"></script>
+<script src="resource/js/vendor/jquery.carousel.js"></script>
+<script src="resource/js/components/carousel.js"></script>
+<script src="resource/js/vendor/jquery.dotdotdot.js"></script>
 
+<!--TODO: the following need to be on all pages, not just home-->
+
+<script src="resource/js/vendor/foundation-altered.js"></script>
+<script src="resource/js/components/navsearch.js"></script>
 
 <script>
 
 	$(document).foundation({
-    //need the above for the top-bar
-    //need the below for foundation the tooltips on the home page in 'recently published articles'
+    //The above is needed for the Foundation Top-bar
+    //Below is needed for Foundation Tooltips on the home page in 'recently published articles'
     tooltip: {
       'wrap' : 'word',
       selector : '.truncated-tooltip',

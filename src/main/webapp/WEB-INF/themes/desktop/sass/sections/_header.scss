@@ -257,14 +257,11 @@ $width-nav: $block-grid-elements - $width-logo;
   .top-bar-section ul li.head-search a {
     margin-top: rem-calc(-10);
     line-height: 33px;
-    width: 190px;
+    width: rem-calc(190);
     padding: 0 !important;
     font-size: $txt-size-small;
 
-    &:hover {
-      text-decoration: underline;
-      color: $clr-highlight-hover;
-    }
+    @include link-text($clr-highlight-hover, underline);
   }
   .top-bar-section ul li.head-search:hover:not(.has-form) > a {
     background: $grey-light;

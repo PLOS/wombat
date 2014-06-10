@@ -8571,14 +8571,16 @@ footer {
   .nav-main .top-bar-section ul li.head-search a {
     margin-top: -0.625rem;
     line-height: 33px;
-    width: 190px;
+    width: 11.875rem;
     padding: 0 !important;
-    font-size: 13px; }
-    /* line 264, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul li.head-search a:hover {
-      text-decoration: underline;
-      color: #3c63af; }
-  /* line 269, ../../sass/sections/_header.scss */
+    font-size: 13px;
+    color: #3c63af;
+    text-decoration: none; }
+    /* line 42, ../../sass/_typography.scss */
+    .nav-main .top-bar-section ul li.head-search a:hover, .nav-main .top-bar-section ul li.head-search a a:hover {
+      color: #3c63af;
+      text-decoration: underline; }
+  /* line 266, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search:hover:not(.has-form) > a {
     background: #efefef; }
 

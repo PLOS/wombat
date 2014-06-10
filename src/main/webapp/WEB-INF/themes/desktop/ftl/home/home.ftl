@@ -21,8 +21,10 @@
 <script src="resource/js/components/carousel.js"></script>
 <script src="resource/js/vendor/jquery.dotdotdot.js"></script>
 
-<!--TODO: the following needs to be on all pages, not just home-->
+<!--TODO: the following need to be on all pages, not just home-->
+
 <script src="resource/js/vendor/foundation-altered.js"></script>
+<script src="resource/js/components/navsearch.js"></script>
 
 <script>
 

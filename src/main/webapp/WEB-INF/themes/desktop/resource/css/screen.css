@@ -6452,17 +6452,17 @@ label.error {
   /* line 67, ../../sass/vendor/foundation/components/_tooltips.scss */
   .tooltip > .nub {
     display: block;
-    left: 10px;
+    left: 5px;
     position: absolute;
     width: 0;
     height: 0;
-    border: solid 10px;
+    border: solid 5px;
     border-color: transparent transparent #efefef transparent;
-    top: -20px; }
+    top: -10px; }
     /* line 77, ../../sass/vendor/foundation/components/_tooltips.scss */
     .tooltip > .nub.rtl {
       left: auto;
-      right: 10px; }
+      right: 5px; }
   /* line 83, ../../sass/vendor/foundation/components/_tooltips.scss */
   .tooltip.radius {
     border-radius: 5px; }
@@ -6488,29 +6488,29 @@ label.error {
   /* line 108, ../../sass/vendor/foundation/components/_tooltips.scss */
   .tooltip > .nub {
     border-color: transparent transparent #efefef transparent;
-    top: -20px; }
+    top: -10px; }
   /* line 112, ../../sass/vendor/foundation/components/_tooltips.scss */
   .tooltip.tip-top > .nub {
     border-color: #efefef transparent transparent transparent;
     top: auto;
-    bottom: -20px; }
+    bottom: -10px; }
   /* line 119, ../../sass/vendor/foundation/components/_tooltips.scss */
   .tooltip.tip-left, .tooltip.tip-right {
     float: none !important; }
   /* line 121, ../../sass/vendor/foundation/components/_tooltips.scss */
   .tooltip.tip-left > .nub {
     border-color: transparent transparent transparent #efefef;
-    right: -20px;
+    right: -10px;
     left: auto;
     top: 50%;
-    margin-top: -10px; }
+    margin-top: -5px; }
   /* line 128, ../../sass/vendor/foundation/components/_tooltips.scss */
   .tooltip.tip-right > .nub {
     border-color: transparent #efefef transparent transparent;
     right: auto;
-    left: -20px;
+    left: -10px;
     top: 50%;
-    margin-top: -10px; } }
+    margin-top: -5px; } }
 /* line 103, ../../sass/vendor/foundation/components/_top-bar.scss */
 meta.foundation-mq-topbar {
   font-family: "/only screen and (min-width:40.063em)/";

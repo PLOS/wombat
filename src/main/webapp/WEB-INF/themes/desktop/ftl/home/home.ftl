@@ -34,14 +34,12 @@
 
 <!--TODO: the following needs to be on all pages, not just home-->
 <script src="resource/js/vendor/foundation-altered.js"></script>
-<script src="resource/js/components/navsearch.js"></script>
-
 
 <script>
 
 	$(document).foundation({
-    //need the above for the top-bar
-    //need the below for foundation the tooltips on the home page in 'recently published articles'
+    //The above is needed for the Foundation Top-bar
+    //Below is needed for Foundation Tooltips on the home page in 'recently published articles'
     tooltip: {
       'wrap' : 'word',
       selector : '.truncated-tooltip',
@@ -56,8 +54,6 @@
     $(".truncated-tooltip").dotdotdot({
       height: 45
     });
-    //function is in navsearch.js
-    searchCheck();
   });
 
 </script>

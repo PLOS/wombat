@@ -50,7 +50,7 @@ public class ContentRepoServiceImpl implements ContentRepoService {
    * @throws IOException
    */
   @Override
-  public ContentRepoResponse request(String bucket, String key, Optional<Integer> version)
+  public ContentRepoResponse request(String bucket, String key, Optional<Integer> version, Header... headers)
       throws IOException {
     URI contentRepoAddress = getContentRepoAddress();
     if ("file".equals(contentRepoAddress.getScheme())) {
@@ -68,7 +68,7 @@ public class ContentRepoServiceImpl implements ContentRepoService {
     URI requestAddress = URI.create(String.format("%s/objects/%s?%s",
         contentRepoAddressStr, bucket, requestParams.format()));
 
-    final CloseableHttpResponse response = cachedRemoteStreamer.getResponse(requestAddress);
+    final CloseableHttpResponse response = cachedRemoteStreamer.getResponse(requestAddress, headers);
     return new ContentRepoResponse() {
       @Override
       public Header[] getAllHeaders() {

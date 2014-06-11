@@ -17,7 +17,7 @@ public interface ContentRepoService {
 
   }
 
-  public abstract ContentRepoResponse request(String bucket, String key, Optional<Integer> version)
+  public abstract ContentRepoResponse request(String bucket, String key, Optional<Integer> version, Header... headers)
       throws IOException;
 
 }

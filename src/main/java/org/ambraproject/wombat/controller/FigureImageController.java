@@ -1,18 +1,13 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.message.BasicHeader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Arrays;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -36,43 +29,6 @@ public class FigureImageController extends WombatController {
 
   @Autowired
   private SoaService soaService;
-
-  // Inconsistent with equals. See Javadoc for java.util.SortedSet.
-  private static ImmutableSet<String> caseInsensitiveImmutableSet(String... strings) {
-    return ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, Arrays.asList(strings));
-  }
-
-  /**
-   * Names of headers that, on an asset request from the client, should be passed through on our request to the service
-   * tier.
-   */
-  private static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet("X-Proxy-Capabilities");
-
-  /**
-   * Names of headers that, in an asset response from the service tier, should be passed through to the client.
-   */
-  private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-      "Content-Type", "Content-Disposition", "X-Reproxy-URL", "X-Reproxy-Cache-For");
-
-  /**
-   * Copy headers from an asset request if they are whitelisted. Effectively translating from a Spring model into an
-   * Apache model.
-   *
-   * @param request a request
-   * @return its headers
-   */
-  private static Header[] copyHeaders(HttpServletRequest request) {
-    Enumeration headerNames = request.getHeaderNames();
-    List<Header> headers = Lists.newArrayList();
-    while (headerNames.hasMoreElements()) {
-      String headerName = (String) headerNames.nextElement();
-      if (ASSET_REQUEST_HEADER_WHITELIST.contains(headerName)) {
-        String headerValue = request.getHeader(headerName);
-        headers.add(new BasicHeader(headerName, headerValue));
-      }
-    }
-    return headers.toArray(new Header[headers.size()]);
-  }
 
   /**
    * Forward a response for an asset file from the SOA to the response.
@@ -86,18 +42,8 @@ public class FigureImageController extends WombatController {
                               HttpServletResponse responseToClient,
                               String assetId)
       throws IOException {
-    try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId, copyHeaders(requestFromClient))) {
-
-      /*
-       * Repeat all headers from the service to the client. This propagates (at minimum) the "content-type" and
-       * "content-disposition" headers, and headers that control reproxying.
-       */
-      for (Header headerFromService : responseFromService.getAllHeaders()) {
-        String name = headerFromService.getName();
-        if (ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
-          responseToClient.setHeader(name, headerFromService.getValue());
-        }
-      }
+    try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId, copyAssetRequestHeaders(requestFromClient))) {
+      copyAssetResponseHeaders(responseFromService.getAllHeaders(), responseToClient);
 
       try (InputStream assetStream = responseFromService.getEntity().getContent()) {
         if (assetStream == null) {

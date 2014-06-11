@@ -46,6 +46,7 @@ public class ContentRepoServiceImpl implements ContentRepoService {
    * @param version content repo version
    * @return the response from the content repo
    * @throws IOException
+   * @throws org.ambraproject.wombat.service.EntityNotFoundException if the repository does not provide the file
    */
   @Override
   public AssetServiceResponse request(String bucket, String key, Optional<Integer> version, Header... headers)

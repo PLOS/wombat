@@ -2,6 +2,7 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.AssetServiceResponse;
 import org.ambraproject.wombat.service.remote.ContentRepoService;
 import org.apache.http.Header;
@@ -55,9 +56,11 @@ public class IndirectFileController extends WombatController {
       throws IOException {
     Header[] assetHeaders = copyAssetRequestHeaders(requestFromClient);
     try (AssetServiceResponse repoResponse = contentRepoService.request(bucket, key, version, assetHeaders)) {
-      // TODO Serve 400-series errors if entity does not exist
-
       copyAssetServiceResponse(repoResponse, responseToClient);
+    } catch (EntityNotFoundException e) {
+      String message = String.format("Not found in repo: [bucket: %s, key: %s, version: %s]",
+          bucket, key, version.orNull());
+      throw new NotFoundException(message, e);
     }
   }
 

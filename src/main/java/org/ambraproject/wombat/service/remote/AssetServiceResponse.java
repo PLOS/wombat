@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Preconditions;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -23,8 +25,6 @@ public abstract class AssetServiceResponse implements Closeable {
   }
 
   public abstract InputStream openStream() throws IOException;
-
-  public abstract int getStatusCode();
 
   public abstract Header[] getAllHeaders();
 
@@ -46,11 +46,6 @@ public abstract class AssetServiceResponse implements Closeable {
     @Override
     public InputStream openStream() throws IOException {
       return delegate.getEntity().getContent();
-    }
-
-    @Override
-    public int getStatusCode() throws IllegalStateException {
-      return delegate.getStatusLine().getStatusCode();
     }
 
     @Override
@@ -82,12 +77,11 @@ public abstract class AssetServiceResponse implements Closeable {
 
     @Override
     public InputStream openStream() throws IOException {
-      return (stream = new FileInputStream(file));
-    }
-
-    @Override
-    public int getStatusCode() {
-      return ((stream != null || file.exists()) ? HttpStatus.OK : HttpStatus.NOT_FOUND).value();
+      try {
+        return (stream = new FileInputStream(file));
+      } catch (FileNotFoundException e) {
+        throw new EntityNotFoundException("file://" + file.getPath());
+      }
     }
 
     @Override

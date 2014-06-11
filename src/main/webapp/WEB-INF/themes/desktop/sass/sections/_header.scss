@@ -20,7 +20,7 @@
 .head-top {
   @extend .bg-dark;
   @extend .text-center;
-  @extend .pad-small-x;
+  @extend .pad-xsmall-y;
   @include highlight-border($plos-default);  /*TODO: use themes journal-specific css to assign border color*/
 }
 

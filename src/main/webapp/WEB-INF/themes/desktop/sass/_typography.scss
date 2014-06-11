@@ -28,6 +28,15 @@
   margin-bottom: $pad-small;
 }
 
+.header-brand{
+  @extend .highlight-background-nohover;
+  padding: 0 $pad-default;
+  font-family: $font-face-fancy;
+  font-size: rem-calc($txt-size-medium-large);
+  line-height: $pad-large;
+}
+
+
 //////////////
 //link styles
 ///////////////

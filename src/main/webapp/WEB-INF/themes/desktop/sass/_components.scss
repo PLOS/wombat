@@ -1,12 +1,7 @@
 /*   This file contains design components used for Journals and Wombat Generic
  *
  */
-$default-box-shadow-color: rgba(0, 0, 0, 0.1);
-$default-box-shadow-h-offset: 1px;
-$default-box-shadow-v-offset: 1px;
-$default-box-shadow-blur: 5px;
-$default-box-shadow-spread: 0;
-$default-box-shadow-inset: false;
+
 
 @mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default) {
   background: $background;
@@ -29,9 +24,8 @@ $default-box-shadow-inset: false;
   @if $padding == none{
     padding: 0;
   } @else {
-    padding: rem-calc(10);
+    padding: $pad-small;
   }
-
   @if $radius == none{
     // no radius
   } @else {
@@ -65,7 +59,6 @@ Position must be relative!
 .jcarousel {
   position: relative;
   overflow: hidden;
-  width: 200px;
 }
 
 /*
@@ -90,16 +83,25 @@ have a fixed width and height (but it's not required).
 .jcarousel li {
   /* Required only for block elements like <li>'s */
   float: left;
-  width: 200px;
 }
 
 // small carousel
 .carousel-wrap.small {
+  $icon-height: rem-calc(30);
+  $carousel-width: rem-calc(320);// TODO there should be a way to calulate this width
+
   @extend .block-card;
-  @extend .block;
-  margin-right: $block-grid-default-spacing;
+  @include grid-column(4, $collapse: false);
+  padding:0;    // TODO needs to be removed in grid refactor
+  margin-right: $pad-default;  /// needs to be removed in grid refactor
+  .block-header{
+    @extend .header-brand;
+  }
   .carousel {
+
     li {
+      width: $carousel-width;
+      padding: $pad-default;
       h3 {
         @extend h2;
       }
@@ -109,9 +111,10 @@ have a fixed width and height (but it's not required).
     }
   }
   .carousel-control {
-    $icon-height: rem-calc(30px);
     text-align: center;
     display: table;
+    margin: 0 auto;
+    padding-bottom: $pad-small;
     .jcarousel-prev,
     .jcarousel-next {
       @extend .fa;
@@ -129,7 +132,7 @@ have a fixed width and height (but it's not required).
     .numbers {
       font-size: rem-calc($txt-size-xsmall);
       display: inline-block;
-      padding: 0 rem-calc(5);
+      padding: 0 $pad-xsmall;
       vertical-align: top;
       span {
         display: inline-block;

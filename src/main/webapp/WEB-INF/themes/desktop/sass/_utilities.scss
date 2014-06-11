@@ -53,6 +53,11 @@ $clr-highlight-text: $white) {
   }
 }
 
+.highlight-background-nohover {
+  background: $clr-highlight;
+  color: $clr-highlight-text;
+}
+
 .highlight-border {
   border-color: $clr-highlight;
 }
@@ -63,9 +68,10 @@ $clr-highlight-text: $white) {
   margin: 0 auto;
 }
 
-.pad-small-x {
-  padding: $pad-small 0;
+.pad-xsmall-x{
+  padding: 0 $pad-default;
 }
+
 
 // You need to use :before pseudo selector like this:
 //  .DIV_THAT_NEEDS_OVERLAY:before{

@@ -154,6 +154,26 @@ have a fixed width and height (but it's not required).
   padding-left: rem-calc(3);
 }
 
+.icon-twitter {
+  @extend .fa;
+  @extend .fa-twitter;
+  content: '\f099';
+}
+.icon-facebook {
+  @extend .fa;
+  @extend .fa-facebook;
+  content: '\f09a';
+}
+.icon-rss {
+  @extend .fa;
+  @extend .fa-rss;
+  content: '\f09e';
+}
+.icon-email {
+  @extend .fa;
+  @extend .fa-envelope-o;
+  content: '\f003';
+}
 
 
 

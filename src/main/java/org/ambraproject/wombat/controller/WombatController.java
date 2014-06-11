@@ -20,6 +20,8 @@ import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.UnresolvedSiteException;
+import org.ambraproject.wombat.service.remote.AssetServiceResponse;
+import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
 import org.slf4j.Logger;
@@ -33,6 +35,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
@@ -198,14 +202,20 @@ public abstract class WombatController {
   /**
    * Copy headers, if their names are whitelisted, from a response from a service that provides an asset.
    *
-   * @param headersFromService
+   * @param responseFromService
    * @param responseToClient
    */
-  protected static void copyAssetResponseHeaders(Header[] headersFromService, HttpServletResponse responseToClient) {
-    for (Header header : headersFromService) {
+  protected static void copyAssetServiceResponse(AssetServiceResponse responseFromService, HttpServletResponse responseToClient)
+      throws IOException {
+    for (Header header : responseFromService.getAllHeaders()) {
       if (ASSET_RESPONSE_HEADER_WHITELIST.contains(header.getName())) {
         responseToClient.setHeader(header.getName(), header.getValue());
       }
+    }
+
+    try (InputStream streamFromService = responseFromService.openStream();
+         OutputStream streamToClient = responseToClient.getOutputStream()) {
+      IOUtils.copy(streamFromService, streamToClient);
     }
   }
 

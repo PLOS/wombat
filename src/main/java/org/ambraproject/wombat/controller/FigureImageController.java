@@ -4,9 +4,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.AssetServiceResponse;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
-import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -43,21 +41,7 @@ public class FigureImageController extends WombatController {
                               String assetId)
       throws IOException {
     try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId, copyAssetRequestHeaders(requestFromClient))) {
-      copyAssetResponseHeaders(responseFromService.getAllHeaders(), responseToClient);
-
-      try (InputStream assetStream = responseFromService.getEntity().getContent()) {
-        if (assetStream == null) {
-          throw new EntityNotFoundException(assetId);
-        }
-
-        /*
-         * In a reproxying case, the asset stream might be empty. It might be a performance win to look ahead and avoid
-         * opening an output stream if there's nothing to send, but for now just let IOUtils.copy handle it regardless.
-         */
-        try (OutputStream responseStream = responseToClient.getOutputStream()) {
-          IOUtils.copy(assetStream, responseStream); // buffered
-        }
-      }
+      copyAssetServiceResponse(AssetServiceResponse.wrap(responseFromService), responseToClient);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

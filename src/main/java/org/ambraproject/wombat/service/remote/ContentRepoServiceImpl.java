@@ -4,11 +4,9 @@ import com.google.common.base.Optional;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,7 +48,7 @@ public class ContentRepoServiceImpl implements ContentRepoService {
    * @throws IOException
    */
   @Override
-  public ContentRepoResponse request(String bucket, String key, Optional<Integer> version, Header... headers)
+  public AssetServiceResponse request(String bucket, String key, Optional<Integer> version, Header... headers)
       throws IOException {
     URI contentRepoAddress = getContentRepoAddress();
     if ("file".equals(contentRepoAddress.getScheme())) {
@@ -68,45 +66,13 @@ public class ContentRepoServiceImpl implements ContentRepoService {
     URI requestAddress = URI.create(String.format("%s/objects/%s?%s",
         contentRepoAddressStr, bucket, requestParams.format()));
 
-    final CloseableHttpResponse response = cachedRemoteStreamer.getResponse(requestAddress, headers);
-    return new ContentRepoResponse() {
-      @Override
-      public Header[] getAllHeaders() {
-        return response.getAllHeaders();
-      }
-
-      @Override
-      public InputStream getStream() throws IOException {
-        return response.getEntity().getContent();
-      }
-
-      @Override
-      public void close() throws IOException {
-        response.close();
-      }
-    };
+    return AssetServiceResponse.wrap(cachedRemoteStreamer.getResponse(requestAddress, headers));
   }
 
-  private ContentRepoResponse requestInDevMode(URI contentRepoAddress, String bucket, String key, Optional<Integer> version)
+  private AssetServiceResponse requestInDevMode(URI contentRepoAddress, String bucket, String key, Optional<Integer> version)
       throws FileNotFoundException {
     File path = new File(contentRepoAddress.getPath(), bucket + '/' + key);
-    final FileInputStream stream = new FileInputStream(path); // duck under FileNotFoundException
-    return new ContentRepoResponse() {
-      @Override
-      public Header[] getAllHeaders() {
-        return new Header[0];
-      }
-
-      @Override
-      public InputStream getStream() throws IOException {
-        return stream;
-      }
-
-      @Override
-      public void close() throws IOException {
-        stream.close();
-      }
-    };
+    return AssetServiceResponse.wrap(path);
   }
 
 }

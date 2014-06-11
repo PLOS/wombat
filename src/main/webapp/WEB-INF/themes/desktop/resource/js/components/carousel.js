@@ -13,7 +13,7 @@ $(function () {
     .on('jcarousel:create',function (event, carousel) {
       var total_index = $(this).jcarousel('items').size();
       $(this).next('.carousel-control').find(index_locator).html(total_index);
-
+      $(this).next('.carousel-control').find(current_locator).html("1");
     }).
     // change number
     on('jcarousel:animateend',function (event, carousel) {

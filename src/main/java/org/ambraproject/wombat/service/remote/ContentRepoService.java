@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.base.Optional;
 import org.apache.http.Header;
 
 import java.io.Closeable;
@@ -16,7 +17,7 @@ public interface ContentRepoService {
 
   }
 
-  public abstract ContentRepoResponse request(String bucket, String key, String version)
+  public abstract ContentRepoResponse request(String bucket, String key, Optional<Integer> version)
       throws IOException;
 
 }

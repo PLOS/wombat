@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ContentRepoService;
 import org.apache.commons.io.IOUtils;
@@ -23,12 +24,33 @@ public class IndirectFileController {
   @Autowired
   private ContentRepoService contentRepoService;
 
+  @RequestMapping(value = {"indirect/{bucket}/{key}", "{site}/indirect/{bucket}/{key}"})
+  public void serve(HttpServletResponse response,
+                    @SiteParam Site site,
+                    @PathVariable("bucket") String bucket,
+                    @PathVariable("key") String key)
+      throws IOException {
+    serve(response, bucket, key, Optional.<Integer>absent());
+  }
+
   @RequestMapping(value = {"indirect/{bucket}/{key}/{version}", "{site}/indirect/{bucket}/{key}/{version}"})
-  public void serve(HttpServletResponse responseToClient,
+  public void serve(HttpServletResponse response,
                     @SiteParam Site site,
                     @PathVariable("bucket") String bucket,
                     @PathVariable("key") String key,
                     @PathVariable("version") String version)
+      throws IOException {
+    Integer versionInt;
+    try {
+      versionInt = Integer.valueOf(version);
+    } catch (NumberFormatException e) {
+      throw new NotFoundException("Not a valid version integer: " + version, e);
+    }
+    serve(response, bucket, key, Optional.of(versionInt));
+  }
+
+  private void serve(HttpServletResponse responseToClient,
+                     String bucket, String key, Optional<Integer> version)
       throws IOException {
     try (ContentRepoService.ContentRepoResponse repoResponse = contentRepoService.request(bucket, key, version)) {
       // TODO Support reproxy headers

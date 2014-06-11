@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.base.Optional;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
@@ -48,19 +49,25 @@ public class ContentRepoServiceImpl implements ContentRepoService {
    * @return the response from the content repo
    * @throws IOException
    */
-  public ContentRepoResponse request(String bucket, String key, String version)
+  @Override
+  public ContentRepoResponse request(String bucket, String key, Optional<Integer> version)
       throws IOException {
     URI contentRepoAddress = getContentRepoAddress();
     if ("file".equals(contentRepoAddress.getScheme())) {
       return requestInDevMode(contentRepoAddress, bucket, key, version);
     }
+
+    String contentRepoAddressStr = contentRepoAddress.toString();
+    if (contentRepoAddressStr.endsWith("/")) {
+      contentRepoAddressStr = contentRepoAddressStr.substring(0, contentRepoAddressStr.length() - 1);
+    }
+    UrlParamBuilder requestParams = UrlParamBuilder.params().add("key", key);
+    if (version.isPresent()) {
+      requestParams.add("version", version.get().toString());
+    }
     URI requestAddress = URI.create(String.format("%s/objects/%s?%s",
-        contentRepoAddress, bucket,
-        UrlParamBuilder.params()
-            .add("key", key)
-            .add("version", version)
-            .build()
-    ));
+        contentRepoAddressStr, bucket, requestParams.format()));
+
     final CloseableHttpResponse response = cachedRemoteStreamer.getResponse(requestAddress);
     return new ContentRepoResponse() {
       @Override
@@ -80,7 +87,7 @@ public class ContentRepoServiceImpl implements ContentRepoService {
     };
   }
 
-  private ContentRepoResponse requestInDevMode(URI contentRepoAddress, String bucket, String key, String version)
+  private ContentRepoResponse requestInDevMode(URI contentRepoAddress, String bucket, String key, Optional<Integer> version)
       throws FileNotFoundException {
     File path = new File(contentRepoAddress.getPath(), bucket + '/' + key);
     final FileInputStream stream = new FileInputStream(path); // duck under FileNotFoundException

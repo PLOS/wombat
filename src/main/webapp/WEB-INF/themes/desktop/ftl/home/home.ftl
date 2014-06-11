@@ -12,17 +12,6 @@
 
 <#include "body.ftl" />
 
-
-<div id="linkbox" style="width:360px">
-		<img src="images/logos/logo-iscb.jpg" alt="International Society for Computational Biology">
-	<ul class="linkbox-content">
-		<li><a href="" class="block-link al">Breaking the Ice and Forging Links: The Importance of Socializing in Research</a></li>
-		<li><a href="" class="block-link al">Breaking the Ice and Forging Links: The Importance of Socializing in Research</a></li>
-		<li><a href="" class="block-link al">Breaking the Ice and Forging Links: The Importance of Socializing in Research</a></li>
-
-	</ul>
-</div>
-
 <div class="spotlight"></div>
 
 <#include "../common/footer/footer.ftl" />

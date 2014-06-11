@@ -59,7 +59,6 @@ Position must be relative!
 .jcarousel {
   position: relative;
   overflow: hidden;
-  width: 320px;
 }
 
 /*
@@ -88,8 +87,8 @@ have a fixed width and height (but it's not required).
 
 // small carousel
 .carousel-wrap.small {
-  $icon-height: rem-calc(30px);
-  $carousel-width: rem-calc(320px);// TODO there should be a way to calulate this width
+  $icon-height: rem-calc(30);
+  $carousel-width: rem-calc(320);// TODO there should be a way to calulate this width
 
   @extend .block-card;
   @include grid-column(4, $collapse: false);

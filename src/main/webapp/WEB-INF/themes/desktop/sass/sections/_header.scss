@@ -20,8 +20,8 @@
 .head-top {
   @extend .bg-dark;
   @extend .text-center;
-  @extend .pad-xsmall-y;
   @include highlight-border($plos-default);  /*TODO: use themes journal-specific css to assign border color*/
+  padding: 0 $pad-small;
 }
 
 .ad-head {

@@ -156,7 +156,33 @@ have a fixed width and height (but it's not required).
   @extend .fa-inverse;
   padding-left: rem-calc(3);
 }
+.icon-fa {
+  @extend .fa;
+  line-height: ($txt-size-xxlarge * 2);
+  font-size: $txt-size-xxlarge;
+}
+.icon-twitter {
+  @extend .icon-fa;
+  @extend .fa-twitter;
+  content: '\f099';
 
+}
+.icon-facebook {
+  @extend .icon-fa;
+  @extend .fa-facebook;
+  content: '\f09a';
+
+}
+.icon-rss {
+  @extend .icon-fa;
+  @extend .fa-rss;
+  content: '\f09e';
+}
+.icon-email {
+  @extend .icon-fa;
+  @extend .fa-envelope-o;
+  content: '\f003';
+}
 
 
 

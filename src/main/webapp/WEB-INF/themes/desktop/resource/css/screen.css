@@ -25,7 +25,7 @@
 .block .carousel-wrap.date .carousel-control .jcarousel-next,
 #issue .carousel-wrap.date .carousel-control .jcarousel-next,
 .block .carousel-wrap.credits .carousel-control .jcarousel-next,
-#issue .carousel-wrap.credits .carousel-control .jcarousel-next, .more-icon, #article-list .more-link:after, .nav-main .head-search form button[type="submit"] .search-icon {
+#issue .carousel-wrap.credits .carousel-control .jcarousel-next, .more-icon, #article-list .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .nav-main .head-search form button[type="submit"] .search-icon {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -105,7 +105,7 @@
 .block .carousel-wrap.date .carousel-control .pull-left.jcarousel-next,
 #issue .carousel-wrap.date .carousel-control .pull-left.jcarousel-next,
 .block .carousel-wrap.credits .carousel-control .pull-left.jcarousel-next,
-#issue .carousel-wrap.credits .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, #article-list .pull-left.more-link:after, .nav-main .head-search form button[type="submit"] .pull-left.search-icon {
+#issue .carousel-wrap.credits .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, #article-list .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .nav-main .head-search form button[type="submit"] .pull-left.search-icon {
   margin-right: .3em; }
 
 /* line 77, ../../sass/vendor/_font-awesome.scss */
@@ -115,7 +115,7 @@
 .block .carousel-wrap.date .carousel-control .pull-right.jcarousel-next,
 #issue .carousel-wrap.date .carousel-control .pull-right.jcarousel-next,
 .block .carousel-wrap.credits .carousel-control .pull-right.jcarousel-next,
-#issue .carousel-wrap.credits .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, #article-list .pull-right.more-link:after, .nav-main .head-search form button[type="submit"] .pull-right.search-icon {
+#issue .carousel-wrap.credits .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, #article-list .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .nav-main .head-search form button[type="submit"] .pull-right.search-icon {
   margin-left: .3em; }
 
 /* line 80, ../../sass/vendor/_font-awesome.scss */
@@ -258,7 +258,7 @@
   content: "\f002"; }
 
 /* line 195, ../../sass/vendor/_font-awesome.scss */
-.fa-envelope-o:before {
+.fa-envelope-o:before, .icon-email:before {
   content: "\f003"; }
 
 /* line 198, ../../sass/vendor/_font-awesome.scss */
@@ -831,11 +831,11 @@
   content: "\f098"; }
 
 /* line 627, ../../sass/vendor/_font-awesome.scss */
-.fa-twitter:before {
+.fa-twitter:before, .icon-twitter:before {
   content: "\f099"; }
 
 /* line 630, ../../sass/vendor/_font-awesome.scss */
-.fa-facebook:before {
+.fa-facebook:before, .icon-facebook:before {
   content: "\f09a"; }
 
 /* line 633, ../../sass/vendor/_font-awesome.scss */
@@ -851,7 +851,7 @@
   content: "\f09d"; }
 
 /* line 642, ../../sass/vendor/_font-awesome.scss */
-.fa-rss:before {
+.fa-rss:before, .icon-rss:before {
   content: "\f09e"; }
 
 /* line 645, ../../sass/vendor/_font-awesome.scss */
@@ -7986,7 +7986,7 @@ th.hide-for-touch {
   src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg') format('svg'), url('../fonts/fontawesome-webfont.woff') format('woff'); }
 
 /* line 12, ../../sass/_typography.scss */
-.header-allcaps, .header-allcaps-plain, #article-list .more-link > a, .header-allcaps-xxlarge, #issue .boxtitle a, .highlighted-title, .block .category, #issue .category, #article-list h3 {
+.header-allcaps, .header-allcaps-plain, #article-list .more-link > a, .header-allcaps-xlarge, .highlighted-title, .block .category, #issue .category, #article-list h3 {
   font-size: 0.875rem;
   font-family: "albert";
   text-transform: uppercase; }
@@ -7996,48 +7996,61 @@ th.hide-for-touch {
   font-family: "arial"; }
 
 /* line 21, ../../sass/_typography.scss */
-.header-allcaps-xxlarge, #issue .boxtitle a {
+.header-allcaps-xlarge {
   font-size: 1.25rem; }
 
 /* line 25, ../../sass/_typography.scss */
 .highlighted-title, .block .category, #issue .category, #article-list h3 {
   margin-bottom: 0.625rem; }
 
-/* line 31, ../../sass/_typography.scss */
+/* line 30, ../../sass/_typography.scss */
+.header-xlarge-light, #submission-links h3, #social-links h3 {
+  font-size: 1.25rem;
+  color: white;
+  font-family: "albert"; }
+
+/* line 36, ../../sass/_typography.scss */
 .header-brand, .carousel-wrap.small .block-header, .carousel-wrap.small-italic .block-header, .block .carousel-wrap.date .block-header, #issue .carousel-wrap.date .block-header, .block .carousel-wrap.credits .block-header, #issue .carousel-wrap.credits .block-header {
   padding: 0 1.25rem;
   font-family: "albert";
   font-size: 1rem;
   line-height: 2.5rem; }
 
-/* line 63, ../../sass/_typography.scss */
+/* line 44, ../../sass/_typography.scss */
+.header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit h3, #submission-links h3 {
+  padding-bottom: 1.0625rem;
+  margin-bottom: 1.0625rem;
+  box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
+  text-align: center; }
+
+/* line 74, ../../sass/_typography.scss */
 .link-text-body, .linkbox ul li, .link-text-body a, .linkbox ul li a {
   color: #333333;
   text-decoration: none; }
-  /* line 51, ../../sass/_typography.scss */
+  /* line 62, ../../sass/_typography.scss */
   .link-text-body:hover, .linkbox ul li:hover, .link-text-body a:hover, .linkbox ul li a:hover, .link-text-body a:hover, .linkbox ul li a:hover, .link-text-body a a:hover, .linkbox ul li a a:hover {
     color: #3c63af;
     text-decoration: none; }
 
-/* line 67, ../../sass/_typography.scss */
+/* line 78, ../../sass/_typography.scss */
 .link-text-white, .link-text-white a {
   color: white;
   text-decoration: none; }
-  /* line 51, ../../sass/_typography.scss */
+  /* line 62, ../../sass/_typography.scss */
   .link-text-white:hover, .link-text-white a:hover, .link-text-white a:hover, .link-text-white a a:hover {
     color: white;
     text-decoration: underline; }
 
-/* line 74, ../../sass/_typography.scss */
+/* line 85, ../../sass/_typography.scss */
 .small-italic, .block .date, #issue .date, .block .credits, #issue .credits {
   font-size: 0.625rem;
   font-style: italic; }
 
-/* line 79, ../../sass/_typography.scss */
+/* line 90, ../../sass/_typography.scss */
 .condense, #issue .boxtitle a {
   letter-spacing: -1; }
 
-/* line 82, ../../sass/_typography.scss */
+/* line 93, ../../sass/_typography.scss */
 .no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .block.small-italic .title, .block.small-italic .hero .hero-content .title, .hero .hero-content .block .block.date .title, .block .block.date .hero .hero-content .title, .hero .hero-content #issue .block.date .title, #issue .block.date .hero .hero-content .title, .hero .hero-content .block .date#issue .title, .block .date#issue .hero .hero-content .title, .hero .hero-content #issue .date#issue .title, #issue .date#issue .hero .hero-content .title, .hero .hero-content .block .block.credits .title, .block .block.credits .hero .hero-content .title, .hero .hero-content #issue .block.credits .title, #issue .block.credits .hero .hero-content .title, .hero .hero-content .block .credits#issue .title, .block .credits#issue .hero .hero-content .title, .hero .hero-content #issue .credits#issue .title, #issue .credits#issue .hero .hero-content .title, .hero .hero-content .small-italic#issue .title, .small-italic#issue .hero .hero-content .title, .hero .hero-content .small#issue .title, .small#issue .hero .hero-content .title, .hero .hero-content p {
   margin-bottom: 0; }
 
@@ -8219,6 +8232,27 @@ have a fixed width and height (but it's not required).
 .more-icon, #article-list .more-link:after {
   content: '\f138';
   padding-left: 0.1875rem; }
+
+/* line 159, ../../sass/_components.scss */
+.icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email {
+  line-height: 44px;
+  font-size: 22px; }
+
+/* line 164, ../../sass/_components.scss */
+.icon-twitter {
+  content: '\f099'; }
+
+/* line 170, ../../sass/_components.scss */
+.icon-facebook {
+  content: '\f09a'; }
+
+/* line 176, ../../sass/_components.scss */
+.icon-rss {
+  content: '\f09e'; }
+
+/* line 181, ../../sass/_components.scss */
+.icon-email {
+  content: '\f003'; }
 
 /*    This file contains styles for forms
  *
@@ -8439,7 +8473,7 @@ footer {
     line-height: 1.875rem;
     padding: 0 1.875rem;
     font-family: "arial";
-    font-size: 14px; }
+    font-size: 0.875rem; }
     /* line 142, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section li.has-dropdown ul.dropdown li a:hover {
       color: white;
@@ -8460,7 +8494,7 @@ footer {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
       font-family: "albert";
-      font-size: 14px; }
+      font-size: 0.875rem; }
       /* line 165, ../../sass/sections/_header.scss */
       .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit:hover {
         display: block !important; }
@@ -8470,31 +8504,28 @@ footer {
         padding-right: 0.9375rem; }
       /* line 172, ../../sass/sections/_header.scss */
       .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit h3 {
-        font-size: 23px !important;
-        padding-bottom: 1.0625rem;
-        margin-bottom: 1.0625rem;
-        box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3); }
-      /* line 178, ../../sass/sections/_header.scss */
+        font-size: 1.4375rem; }
+      /* line 176, ../../sass/sections/_header.scss */
       .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul {
         margin-left: 0.9375rem;
         display: block !important;
         list-style-type: disc; }
-        /* line 182, ../../sass/sections/_header.scss */
+        /* line 180, ../../sass/sections/_header.scss */
         .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul li {
           margin-left: 0.9375rem; }
-          /* line 184, ../../sass/sections/_header.scss */
+          /* line 182, ../../sass/sections/_header.scss */
           .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul li a {
             margin: 0;
             padding: 0;
             line-height: 1.35;
             font-family: "albert";
-            font-size: 16px;
+            font-size: 1rem;
             background: white;
             color: #3c63af; }
-            /* line 192, ../../sass/sections/_header.scss */
+            /* line 190, ../../sass/sections/_header.scss */
             .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul li a:hover {
               text-decoration: underline; }
-      /* line 199, ../../sass/sections/_header.scss */
+      /* line 197, ../../sass/sections/_header.scss */
       .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit a.btn {
         background: #333333;
         padding: 1.25rem;
@@ -8508,7 +8539,7 @@ footer {
         /* line 12, ../../sass/_components.scss */
         .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit a.btn:hover {
           background: #333333; }
-  /* line 210, ../../sass/sections/_header.scss */
+  /* line 208, ../../sass/sections/_header.scss */
   .nav-main .head-search {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
@@ -8517,13 +8548,13 @@ footer {
     padding-left: 1.25rem;
     padding-right: 0;
     text-align: right; }
-    /* line 218, ../../sass/sections/_header.scss */
+    /* line 216, ../../sass/sections/_header.scss */
     .nav-main .head-search form {
       margin-top: -0.3125rem; }
-      /* line 225, ../../sass/sections/_header.scss */
+      /* line 223, ../../sass/sections/_header.scss */
       .nav-main .head-search form legend, .nav-main .head-search form label {
         display: none; }
-      /* line 229, ../../sass/sections/_header.scss */
+      /* line 227, ../../sass/sections/_header.scss */
       .nav-main .head-search form input[type="text"] {
         background-color: white;
         font-family: inherit;
@@ -8540,7 +8571,7 @@ footer {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         width: 12.1875rem;
-        color: #333; }
+        color: #333333; }
         /* line 124, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"]:focus {
           background: #fafafa;
@@ -8549,7 +8580,7 @@ footer {
         /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"][disabled], fieldset[disabled] .nav-main .head-search form input[type="text"] {
           background-color: #dddddd; }
-      /* line 241, ../../sass/sections/_header.scss */
+      /* line 239, ../../sass/sections/_header.scss */
       .nav-main .head-search form button[type="submit"] {
         background: white;
         border-left: none;
@@ -8557,24 +8588,24 @@ footer {
         border-color: white;
         width: 45px;
         border: none; }
-        /* line 246, ../../sass/sections/_header.scss */
+        /* line 244, ../../sass/sections/_header.scss */
         .nav-main .head-search form button[type="submit"] .search-icon {
           padding-top: 0.25rem;
           font-size: 1.25rem; }
-  /* line 257, ../../sass/sections/_header.scss */
+  /* line 255, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search a {
     margin-top: -0.625rem;
     line-height: 33px;
     width: 11.875rem;
     padding: 0 !important;
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: #3c63af;
     text-decoration: none; }
-    /* line 51, ../../sass/_typography.scss */
+    /* line 62, ../../sass/_typography.scss */
     .nav-main .top-bar-section ul li.head-search a:hover, .nav-main .top-bar-section ul li.head-search a a:hover {
       color: #3c63af;
       text-decoration: underline; }
-  /* line 266, ../../sass/sections/_header.scss */
+  /* line 264, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search:hover:not(.has-form) > a {
     background: #efefef; }
 
@@ -8950,7 +8981,7 @@ footer {
         display: block;
         font-family: "albert";
         font-size: 12px; }
-        /* line 51, ../../sass/_typography.scss */
+        /* line 62, ../../sass/_typography.scss */
         #article-list ul.list-plain li a:hover, #article-list ul.list-plain li a a:hover {
           color: #3c63af;
           text-decoration: none; }
@@ -8964,7 +8995,7 @@ footer {
     #article-list .more-link > a {
       color: #333333;
       text-decoration: none; }
-      /* line 51, ../../sass/_typography.scss */
+      /* line 62, ../../sass/_typography.scss */
       #article-list .more-link > a:hover, #article-list .more-link > a a:hover {
         color: #3c63af;
         text-decoration: none; }
@@ -9008,7 +9039,7 @@ footer {
       display: block;
       margin-bottom: -0.3125rem;
       font-weight: 900; }
-      /* line 51, ../../sass/_typography.scss */
+      /* line 62, ../../sass/_typography.scss */
       #issue .boxtitle a:hover, #issue .boxtitle a a:hover {
         color: #3c63af;
         text-decoration: none; }
@@ -9019,17 +9050,16 @@ footer {
 
 /* line 323, ../../sass/pages/_home.scss */
 .linkbox {
-  display: none;
   height: 25.625rem; }
-  /* line 329, ../../sass/pages/_home.scss */
+  /* line 328, ../../sass/pages/_home.scss */
   .linkbox ul li {
     border-top: 1px solid #efefef; }
-    /* line 333, ../../sass/pages/_home.scss */
+    /* line 332, ../../sass/pages/_home.scss */
     .linkbox ul li a {
       font-family: "albert";
       font-size: 1rem; }
 
-/* line 341, ../../sass/pages/_home.scss */
+/* line 340, ../../sass/pages/_home.scss */
 #submission-links {
   padding: 0.625rem;
   -moz-border-radius-topleft: 5px;
@@ -9043,27 +9073,38 @@ footer {
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
   background: #333333;
-  border-radius: 5px;
-  padding: 0.625rem; }
-  /* line 347, ../../sass/pages/_home.scss */
-  #submission-links h3 {
-    text-align: center;
-    padding-bottom: 1.0625rem;
-    margin-bottom: 1.0625rem;
-    box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3); }
-  /* line 358, ../../sass/pages/_home.scss */
+  padding: 0.625rem 1.875rem; }
+  /* line 350, ../../sass/pages/_home.scss */
+  #submission-links .split-container {
+    margin-left: 0; }
+  /* line 354, ../../sass/pages/_home.scss */
   #submission-links .split-item {
-    /*    display: inline-block;
-        float: left;*/
-    color: #89a0d0;
-    width: 130px;
-    height: 40px; }
-  /* line 365, ../../sass/pages/_home.scss */
-  #submission-links .split-item:first-child {
-    border-right: 1px solid #636363; }
+    margin: 0 !important;
+    width: 127px;
+    height: 40px;
+    text-align: center; }
+    /* line 359, ../../sass/pages/_home.scss */
+    #submission-links .split-item:first-child {
+      border-right: 1px solid #636363; }
+    /* line 362, ../../sass/pages/_home.scss */
+    #submission-links .split-item a {
+      color: #89a0d0;
+      text-decoration: none;
+      font-size: 16px;
+      font-family: "albert"; }
+      /* line 62, ../../sass/_typography.scss */
+      #submission-links .split-item a:hover, #submission-links .split-item a a:hover {
+        color: #89a0d0;
+        text-decoration: underline; }
 
-/* line 374, ../../sass/pages/_home.scss */
+/* line 370, ../../sass/pages/_home.scss */
 #social-links {
   padding: 0.625rem;
   -moz-border-radius-topleft: 5px;
@@ -9080,19 +9121,19 @@ footer {
   background: #04417d;
   border-radius: 5px;
   padding: 0.3125rem; }
-  /* line 381, ../../sass/pages/_home.scss */
+  /* line 377, ../../sass/pages/_home.scss */
   #social-links h3 {
-    text-indent: 10px;
+    text-indent: 0.625rem;
     margin-bottom: 10px; }
-  /* line 386, ../../sass/pages/_home.scss */
+  /* line 382, ../../sass/pages/_home.scss */
   #social-links ul {
     margin-bottom: 0;
     margin-left: -0.25rem; }
-    /* line 390, ../../sass/pages/_home.scss */
+    /* line 386, ../../sass/pages/_home.scss */
     #social-links ul > li {
       margin-left: 4px;
       margin-bottom: 0; }
-      /* line 393, ../../sass/pages/_home.scss */
+      /* line 389, ../../sass/pages/_home.scss */
       #social-links ul > li > a {
         background: #3c63af;
         border-radius: 5px;
@@ -9100,18 +9141,18 @@ footer {
         height: 44px;
         text-align: center;
         color: white; }
-        /* line 400, ../../sass/pages/_home.scss */
+        /* line 396, ../../sass/pages/_home.scss */
         #social-links ul > li > a:hover {
           background: #333333; }
-      /* line 404, ../../sass/pages/_home.scss */
+      /* line 400, ../../sass/pages/_home.scss */
       #social-links ul > li .social {
         width: 44px; }
-      /* line 407, ../../sass/pages/_home.scss */
+      /* line 403, ../../sass/pages/_home.scss */
       #social-links ul > li .aria-text {
         position: absolute;
         top: -9999px;
         left: -9999px; }
-    /* line 413, ../../sass/pages/_home.scss */
+    /* line 409, ../../sass/pages/_home.scss */
     #social-links ul .social-blogs {
       width: 102px;
       line-height: 44px;

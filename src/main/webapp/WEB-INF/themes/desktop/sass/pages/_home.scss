@@ -321,7 +321,6 @@ $image-container: ($image-width + $pad-small);
 }
 
 .linkbox {
-  display: none;
   @extend .block-card;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
   ul {
@@ -340,36 +339,33 @@ $image-container: ($image-width + $pad-small);
 }
 #submission-links {
   @include blocks;
+  @include border-top-radius();
   background: $grey-dark;
-  border-radius: $border-radius-default;
-  padding: $pad-small;
+  padding: $pad-small $pad-medium;
 
   h3 {
+    @extend .header-bottom-shadow;
     @extend .header-xlarge-light;
-    text-align: center;
-    //  margin-bottom: 10px;
-    padding-bottom: rem-calc(17);
-    margin-bottom: rem-calc(17);
-    box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
   }
   .split-container {
     @extend .inline-list;
+    margin-left: 0;
   }
   .split-item {
-    /*    display: inline-block;
-        float: left;*/
-    color: #89a0d0;
-    width: 130px;
+    margin: 0 !important;
+    width: 127px;
     height: 40px;
-
-  } .split-item:first-child {
+    text-align: center;
+    &:first-child {
       border-right: 1px solid $grey-med;
     }
+    a {
+      @include link-text($color: #89a0d0, $decoration: underline);
+      font-size: $txt-size-medium-large;
+      font-family: $font-face-fancy;
+    }
+  }
 }
-
-
-
-
 
 #social-links {
 
@@ -380,7 +376,7 @@ $image-container: ($image-width + $pad-small);
 
   h3 {
     @extend .header-xlarge-light;
-    text-indent: 10px;
+    text-indent: rem-calc(10);
     margin-bottom: 10px;
   }
   ul {

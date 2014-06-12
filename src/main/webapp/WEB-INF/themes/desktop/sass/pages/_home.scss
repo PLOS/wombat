@@ -216,8 +216,6 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-#submission-links,
-#social-links,
 #spotlight,
 #twitter-feed,
 #blogroll {
@@ -242,21 +240,7 @@ $image-container: ($image-width + $pad-small);
     top: $pad-small;
   }
 }
-/*@mixin link-text($color: $clr-body-text, $decoration: none){
-  color: $color;
-  text-decoration: none;
 
-  &:hover, a:hover{
-    @if $decoration == none{
-    color: $clr-highlight;
-    text-decoration: none;
-  }
-    @elseif $decoration == underline{
-      color: $color;
-      text-decoration: underline;
-    }
-  }
-}*/
 #article-list {
   height: $block-height;
   @include blocks;
@@ -312,31 +296,32 @@ $image-container: ($image-width + $pad-small);
 }
 
 #issue {
-    @include grid-column(2);
-    @include blocks;
-    @extend .block;
+  @include grid-column(2);
+  @include blocks;
+  @extend .block;
 
-    .current-img {
-      width: rem-calc(160);
+  .current-img {
+    width: rem-calc(160);
+  }
+  .boxtitle {
+    margin-top: rem-calc(5);
+    a {
+      @include link-text();
+      @extend .header-allcaps-xxlarge;
+      @extend .condense;
+      display: block;
+      margin-bottom: rem-calc(-5);
+      font-weight: 900;
     }
-    .boxtitle {
-      margin-top: rem-calc(5);
-      a {
-        @include link-text();
-        @extend .header-allcaps-xxlarge;
-        @extend .condense;
-        display: block;
-        margin-bottom: rem-calc(-5);
-        font-weight: 900;
-      }
-      .subhead {
-        font-face: $font-face-plain;
-        font-size: $txt-size-medium-large;
-      }
+    .subhead {
+      font-face: $font-face-plain;
+      font-size: $txt-size-medium-large;
     }
+  }
 }
 
 .linkbox {
+  display: none;
   @extend .block-card;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
   ul {
@@ -352,5 +337,86 @@ $image-container: ($image-width + $pad-small);
       }
     }
   }
+}
+#submission-links {
+  @include blocks;
+  background: $grey-dark;
+  border-radius: $border-radius-default;
+  padding: $pad-small;
+
+  h3 {
+    @extend .header-xlarge-light;
+    text-align: center;
+    //  margin-bottom: 10px;
+    padding-bottom: rem-calc(17);
+    margin-bottom: rem-calc(17);
+    box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
+  }
+  .split-container {
+    @extend .inline-list;
+  }
+  .split-item {
+    /*    display: inline-block;
+        float: left;*/
+    color: #89a0d0;
+    width: 130px;
+    height: 40px;
+
+  } .split-item:first-child {
+      border-right: 1px solid $grey-med;
+    }
+}
+
+
+
+
+
+#social-links {
+
+  @include blocks;
+  background: #04417d;
+  border-radius: $border-radius-default;
+  padding: $pad-xsmall;
+
+  h3 {
+    @extend .header-xlarge-light;
+    text-indent: 10px;
+    margin-bottom: 10px;
+  }
+  ul {
+    @extend .inline-list;
+    margin-bottom: 0;
+    margin-left: rem-calc(-4);
+    > li {
+      margin-left: 4px;
+      margin-bottom: 0;
+      > a {
+        background: $plos-default;
+        border-radius: $border-radius-default;
+        display: inline-block;
+        height: ($txt-size-xxlarge * 2);
+        text-align: center;
+        color: $clr-light-text;
+        &:hover {
+          background: $grey-dark;
+        }
+      }
+      .social {
+        width: ($txt-size-xxlarge * 2);
+      }
+      .aria-text {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+    }
+    .social-blogs {
+      width: 102px;
+      line-height: ($txt-size-xxlarge * 2);
+      font-size: rem-calc($txt-size-medium-large);
+      font-family: $font-face-fancy;
+    }
+  }
+
 
 }

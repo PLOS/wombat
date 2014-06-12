@@ -4,10 +4,11 @@
 
 $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
-$pad-default: rem-calc(10);
+
 $image-width: rem-calc(70);
 $hero-height: rem-calc(380);
-$image-container: ($image-width + $pad-default);
+$image-container: ($image-width + $pad-small);
+// HOME CONTENT - home-content
 
 // for demo:
 
@@ -71,7 +72,7 @@ $image-container: ($image-width + $pad-default);
     position: absolute;
     width: 100%;
     bottom: 0;
-    padding: $pad-default;
+    padding: $pad-small;
     font-size: rem-calc($txt-size-medium-large);
     h4 {
       @extend h1;
@@ -111,11 +112,11 @@ $image-container: ($image-width + $pad-default);
     width: $image-container;
     display: block;
     position: absolute;
-    left: $pad-default;
-    top: $pad-default;
+    left: $pad-small;
+    top: $pad-small;
   }
   &.image .block-content {
-    margin-left: ($image-container + ($pad-default * 2));
+    margin-left: ($image-container + $pad-default);
   }
   // components
   .date {
@@ -124,8 +125,8 @@ $image-container: ($image-width + $pad-default);
   .credits {
     @extend .small-italic;
     position: absolute;
-    bottom: $pad-default;
-    left: ($image-container + ($pad-default * 3));
+    bottom: $pad-small;
+    left: ($image-container + $pad-default);
     margin: 0;
 
   }
@@ -180,7 +181,7 @@ $image-container: ($image-width + $pad-default);
       height: $block-height-small;
 
       .block-image {
-        height: ($block-height-small - ($pad-default *2));
+        height: ($block-height-small - ($pad-default));
         overflow: hidden;
       }
 
@@ -216,8 +217,8 @@ $image-container: ($image-width + $pad-default);
     position: absolute;
     width: 80px;
     height: 36px;
-    right: 20px;
-    top: 10px;
+    right: $pad-default;
+    top: $pad-small;
   }
 }
 
@@ -243,7 +244,6 @@ $image-container: ($image-width + $pad-default);
 
       a {
         @include link-text();
-      //  display: block;
         font-family: $font-face-fancy;
         font-size: rem-calc($txt-size-xsmall);
       }
@@ -310,7 +310,7 @@ $image-container: ($image-width + $pad-default);
       @extend .link-text-body;
       a {
         font-family: $font-face-fancy;
-        font-size: $txt-size-medium-large;
+        font-size: rem-calc($txt-size-medium-large);
 
       }
     }
@@ -323,6 +323,7 @@ $image-container: ($image-width + $pad-default);
   @include blocks;
   background: #04417d;
   border-radius: $border-radius-default;
+  padding: $pad-xsmall;
 
   h3 {
     @extend .header-xlarge-light;
@@ -332,7 +333,7 @@ $image-container: ($image-width + $pad-default);
   ul {
     @extend .inline-list;
     margin-bottom: 0;
-    margin-left: rem-calc(-7);
+    margin-left: rem-calc(-4);
     > li {
       margin-left: 4px;
       margin-bottom: 0;

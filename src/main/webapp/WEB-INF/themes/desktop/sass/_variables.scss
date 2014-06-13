@@ -46,11 +46,25 @@ $clr-btn-secondary: $grey-dark;
 $clr-btn-disabled: $grey-light;
 $clr-btn-text: $white;
 
+// grid values
+$grid-gutter: 1.25rem;
+
+
 // layout patterns
 $border-radius-default: 5px;
 $border-radius-large: 8px;
-$pad-default: 10px 20px; //TODO this will be computed
-$pad-small: 5px;
+$default-box-shadow-color: rgba(0, 0, 0, 0.1);
+$default-box-shadow-h-offset: 1px;
+$default-box-shadow-v-offset: 1px;
+$default-box-shadow-blur: 5px;
+$default-box-shadow-spread: 0;
+$default-box-shadow-inset: false;
+
+$pad-xsmall: ($grid-gutter / 4);  //5px
+$pad-small: ($grid-gutter / 2);   //10px
+$pad-default: $grid-gutter;       //20px
+$pad-medium: ($grid-gutter *1.5); //30px
+$pad-large: ($grid-gutter * 2);   //40px
 
 // typography
 $font-face-plain: "arial";
@@ -66,6 +80,7 @@ $font-face-headings: $font-face-fancy;
 $txt-size-giant: 36px;
 $txt-size-xxxxlarge: 28px;
 $txt-size-xxxlarge: 26px;
+$txt-size-23large: 23px;
 $txt-size-xxlarge: 22px;
 $txt-size-xlarge: 20px;
 $txt-size-large: 18px;

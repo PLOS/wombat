@@ -1,6 +1,10 @@
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 
+<@themeConfig map="journal" value="journalKey" ; journalKey>
+  <#assign journalKey = journalKey />
+</@themeConfig>
+
 <head prefix="og: http://ogp.me/ns#">
   <title><@titleFormat removeTags(title) /></title>
 

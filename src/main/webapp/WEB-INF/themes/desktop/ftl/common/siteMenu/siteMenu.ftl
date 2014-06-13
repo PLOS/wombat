@@ -28,7 +28,7 @@
     </#if>
 
     <ul class="dropdown">
-      <#nested/>   //  macro:menuLink
+      <#nested/>
     </ul>
 
   </li>

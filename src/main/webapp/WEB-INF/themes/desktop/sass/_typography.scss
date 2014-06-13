@@ -18,7 +18,7 @@
   @extend .header-allcaps;
   font-family: $font-face-plain;
 }
-.header-allcaps-xxlarge {
+.header-allcaps-xlarge {
   @extend .header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
 }
@@ -26,6 +26,11 @@
   @extend .header-allcaps;
   @extend .highlight-color;
   margin-bottom: $pad-small;
+}
+.header-xlarge-light {
+  font-size: rem-calc($txt-size-xlarge);
+  color: $clr-light-text;
+  font-family: $font-face-fancy;
 }
 
 .header-brand{

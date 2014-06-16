@@ -84,8 +84,27 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
+#billboard {
+  @include grid-row;
+  @include blocks($grey-dark);
+  h3, h4, a {
+    color: $white !important;
+  }
+  position: relative;
+  a {
+    @include rounded-pill();
+    position: absolute;
+    width: 80px;
+    height: 36px;
+    right: 20px;
+    top: 10px;
+  }
+}
+
 //sizes:
-.row > .block {
+.row > .block
+{ // to do this needs to get fixed in the grid refactor
+
   &.x-small {
     @include grid-column(2, $collapse: false);
 
@@ -108,6 +127,7 @@ $image-container: ($image-width + $pad-small);
   height: $block-height;
 
   @include blocks;
+
   .block-image {
     width: $image-container;
     display: block;
@@ -196,7 +216,6 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-#submission-links,
 #spotlight,
 #twitter-feed,
 #blogroll {
@@ -226,6 +245,7 @@ $image-container: ($image-width + $pad-small);
   height: $block-height;
   @include blocks;
   @include grid-column(4);
+
   position: relative;
   width: 30%; // TODO: fix grid
   margin-right: 3%; // TODO: fix grid
@@ -244,8 +264,9 @@ $image-container: ($image-width + $pad-small);
 
       a {
         @include link-text();
+        display: block;
         font-family: $font-face-fancy;
-        font-size: rem-calc($txt-size-xsmall);
+        font-size: $txt-size-xsmall;
       }
     }
   }
@@ -275,28 +296,28 @@ $image-container: ($image-width + $pad-small);
 }
 
 #issue {
-  height: $block-height;
-    @include grid-column(2);
-    @include blocks;
+  @include grid-column(2);
+  @include blocks;
+  @extend .block;
 
-    .current-img {
-      width: rem-calc(160);
+  .current-img {
+    width: rem-calc(160);
+  }
+  .boxtitle {
+    margin-top: rem-calc(5);
+    a {
+      @include link-text();
+      @extend .header-allcaps-xxlarge;
+      @extend .condense;
+      display: block;
+      margin-bottom: rem-calc(-5);
+      font-weight: 900;
     }
-    .boxtitle {
-      margin-top: rem-calc(5);
-      a {
-        @include link-text();
-        @extend .header-allcaps-xlarge;
-        @extend .condense;
-        display: block;
-        margin-bottom: rem-calc(-5);
-        font-weight: 900;
-      }
-      .subhead {
-        font-face: $font-face-plain;
-        font-size: rem-calc($txt-size-medium-large);
-      }
+    .subhead {
+      font-face: $font-face-plain;
+      font-size: $txt-size-medium-large;
     }
+  }
 }
 
 .linkbox {
@@ -315,7 +336,35 @@ $image-container: ($image-width + $pad-small);
       }
     }
   }
+}
+#submission-links {
+  @include blocks;
+  @include border-top-radius();
+  background: $grey-dark;
+  padding: $pad-small $pad-medium;
 
+  h3 {
+    @extend .header-bottom-shadow;
+    @extend .header-xlarge-light;
+  }
+  .split-container {
+    @extend .inline-list;
+    margin-left: 0;
+  }
+  .split-item {
+    margin: 0 !important;
+    width: 127px;
+    height: 40px;
+    text-align: center;
+    &:first-child {
+      border-right: 1px solid $grey-med;
+    }
+    a {
+      @include link-text($color: #89a0d0, $decoration: underline);
+      font-size: $txt-size-medium-large;
+      font-family: $font-face-fancy;
+    }
+  }
 }
 
 #social-links {
@@ -327,7 +376,7 @@ $image-container: ($image-width + $pad-small);
 
   h3 {
     @extend .header-xlarge-light;
-    text-indent: 10px;
+    text-indent: rem-calc(10);
     margin-bottom: 10px;
   }
   ul {
@@ -364,5 +413,6 @@ $image-container: ($image-width + $pad-small);
       font-family: $font-face-fancy;
     }
   }
+
 
 }

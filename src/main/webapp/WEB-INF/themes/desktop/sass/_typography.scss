@@ -41,6 +41,12 @@
   line-height: $pad-large;
 }
 
+.header-bottom-shadow {
+  padding-bottom: rem-calc(17);
+  margin-bottom: rem-calc(17);
+  box-shadow: $default-header-shadow;
+  text-align: center;
+}
 
 //////////////
 //link styles

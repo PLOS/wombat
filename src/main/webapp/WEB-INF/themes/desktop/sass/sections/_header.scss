@@ -170,10 +170,8 @@ $width-nav: $block-grid-elements - $width-logo;
         padding-right: rem-calc(15);
       }
       h3 {
+        @extend .header-bottom-shadow;
         font-size: rem-calc($txt-size-23large);
-        padding-bottom: rem-calc(17);
-        margin-bottom: rem-calc(17);
-        box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
       }
       ul {
         margin-left: rem-calc(15);

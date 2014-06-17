@@ -1,7 +1,7 @@
 <header>
 <#--top head slot-->
 	<div id="topslot" class="head-top">
-  <#include "topSlot.ftl" />
+  <#include "adSlotTop.ftl" />
 	</div>
 	<div class="grid-container">
 		<div id="pagehdr-wrap" class="highlight-border">

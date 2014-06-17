@@ -5828,7 +5828,7 @@ textarea {
   input[type="time"]:focus,
   input[type="url"]:focus,
   textarea:focus {
-    background: #fafafa;
+    background: white;
     border-color: #999999;
     outline: none; }
   /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
@@ -8574,7 +8574,7 @@ footer {
         color: #333333; }
         /* line 124, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"]:focus {
-          background: #fafafa;
+          background: white;
           border-color: white;
           outline: none; }
         /* line 131, ../../sass/vendor/foundation/components/_forms.scss */

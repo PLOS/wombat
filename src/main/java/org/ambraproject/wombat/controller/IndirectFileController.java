@@ -1,49 +1,66 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.service.remote.SoaService;
-import org.apache.commons.io.IOUtils;
+import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.AssetServiceResponse;
+import org.ambraproject.wombat.service.remote.ContentRepoService;
 import org.apache.http.Header;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * Forwards requests for files to the content repository.
  */
 @Controller
-public class IndirectFileController {
+public class IndirectFileController extends WombatController {
 
   @Autowired
-  private SoaService soaService;
+  private ContentRepoService contentRepoService;
+
+  @RequestMapping(value = {"indirect/{bucket}/{key}", "{site}/indirect/{bucket}/{key}"})
+  public void serve(HttpServletResponse response,
+                    HttpServletRequest request,
+                    @SiteParam Site site,
+                    @PathVariable("bucket") String bucket,
+                    @PathVariable("key") String key)
+      throws IOException {
+    serve(response, request, bucket, key, Optional.<Integer>absent());
+  }
 
   @RequestMapping(value = {"indirect/{bucket}/{key}/{version}", "{site}/indirect/{bucket}/{key}/{version}"})
-  public void serve(HttpServletResponse responseToClient,
+  public void serve(HttpServletResponse response,
+                    HttpServletRequest request,
                     @SiteParam Site site,
                     @PathVariable("bucket") String bucket,
                     @PathVariable("key") String key,
                     @PathVariable("version") String version)
       throws IOException {
-    try (CloseableHttpResponse responseFromRepo = soaService.requestFromContentRepo(bucket, key, version)) {
-      // TODO Support reproxy headers; unify with FigureImageController.serveAssetFile()
+    Integer versionInt;
+    try {
+      versionInt = Integer.valueOf(version);
+    } catch (NumberFormatException e) {
+      throw new NotFoundException("Not a valid version integer: " + version, e);
+    }
+    serve(response, request, bucket, key, Optional.of(versionInt));
+  }
 
-      for (Header headerFromService : responseFromRepo.getAllHeaders()) {
-        String name = headerFromService.getName();
-        responseToClient.setHeader(name, headerFromService.getValue());
-      }
-
-      try (InputStream assetStream = responseFromRepo.getEntity().getContent()) {
-        try (OutputStream responseStream = responseToClient.getOutputStream()) {
-          IOUtils.copy(assetStream, responseStream);
-        }
-      }
+  private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
+                     String bucket, String key, Optional<Integer> version)
+      throws IOException {
+    Header[] assetHeaders = copyAssetRequestHeaders(requestFromClient);
+    try (AssetServiceResponse repoResponse = contentRepoService.request(bucket, key, version, assetHeaders)) {
+      copyAssetServiceResponse(repoResponse, responseToClient);
+    } catch (EntityNotFoundException e) {
+      String message = String.format("Not found in repo: [bucket: %s, key: %s, version: %s]",
+          bucket, key, version.orNull());
+      throw new NotFoundException(message, e);
     }
   }
 

@@ -13,9 +13,17 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSortedSet;
+import com.google.common.collect.Lists;
+import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.UnresolvedSiteException;
+import org.ambraproject.wombat.service.remote.AssetServiceResponse;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.Header;
+import org.apache.http.message.BasicHeader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +35,13 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -145,6 +158,65 @@ public abstract class WombatController {
    */
   protected static boolean booleanParameter(String parameterValue) {
     return (parameterValue != null) && !Boolean.toString(false).equalsIgnoreCase(parameterValue);
+  }
+
+
+  // Inconsistent with equals. See Javadoc for java.util.SortedSet.
+  private static ImmutableSortedSet<String> caseInsensitiveImmutableSet(String... strings) {
+    return ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, Arrays.asList(strings));
+  }
+
+  /**
+   * Names of headers that, on an asset request from the client, should be passed through on our request to the service
+   * tier (Rhino or Content Repo).
+   */
+  private static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet("X-Proxy-Capabilities");
+
+  /**
+   * Names of headers that, in an asset response from the service tier (Rhino or Content Repo), should be passed through
+   * to the client.
+   */
+  private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
+      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, "X-Reproxy-URL", "X-Reproxy-Cache-For");
+
+  /**
+   * Copy headers from an asset request if they are whitelisted. This effectively translates from the javax.servlet
+   * model (used by Spring model) into the Apache model.
+   *
+   * @param request a request
+   * @return its headers
+   */
+  protected static Header[] copyAssetRequestHeaders(HttpServletRequest request) {
+    Enumeration headerNames = request.getHeaderNames();
+    List<Header> headers = Lists.newArrayList();
+    while (headerNames.hasMoreElements()) {
+      String headerName = (String) headerNames.nextElement();
+      if (ASSET_REQUEST_HEADER_WHITELIST.contains(headerName)) {
+        String headerValue = request.getHeader(headerName);
+        headers.add(new BasicHeader(headerName, headerValue));
+      }
+    }
+    return headers.toArray(new Header[headers.size()]);
+  }
+
+  /**
+   * Copy headers, if their names are whitelisted, from a response from a service that provides an asset.
+   *
+   * @param responseFromService
+   * @param responseToClient
+   */
+  protected static void copyAssetServiceResponse(AssetServiceResponse responseFromService, HttpServletResponse responseToClient)
+      throws IOException {
+    for (Header header : responseFromService.getAllHeaders()) {
+      if (ASSET_RESPONSE_HEADER_WHITELIST.contains(header.getName())) {
+        responseToClient.setHeader(header.getName(), header.getValue());
+      }
+    }
+
+    try (InputStream streamFromService = responseFromService.openStream();
+         OutputStream streamToClient = responseToClient.getOutputStream()) {
+      IOUtils.copy(streamFromService, streamToClient);
+    }
   }
 
 }

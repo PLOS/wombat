@@ -49,6 +49,8 @@ import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
+import org.ambraproject.wombat.service.remote.ContentRepoService;
+import org.ambraproject.wombat.service.remote.ContentRepoServiceImpl;
 import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.springframework.context.annotation.Bean;
@@ -216,6 +218,11 @@ public class SpringConfiguration {
   @Bean
   public AppLinkDirective appLinkDirective() {
     return new AppLinkDirective();
+  }
+
+  @Bean
+  public ContentRepoService contentRepoService() {
+    return new ContentRepoServiceImpl();
   }
 
 }

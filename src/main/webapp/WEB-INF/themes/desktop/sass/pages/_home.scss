@@ -217,11 +217,10 @@ $image-container: ($image-width + $pad-small);
 }
 
 #spotlight,
-#twitter-feed,
-#blogroll {
+#blogs {
   @include blocks();
-  @include stub();
   height: $block-height;
+
 }
 
 #billboard {
@@ -326,7 +325,7 @@ $image-container: ($image-width + $pad-small);
   ul {
     @extend .no-bullet; // from foundation
     li {
-      //padding: $pad-default $pad-medium;
+      padding: $pad-default $pad-medium;
       border-top: 1px solid $grey-light;
       @extend .link-text-body;
       a {
@@ -415,4 +414,14 @@ $image-container: ($image-width + $pad-small);
   }
 
 
+}
+
+#ad-slot-bottom{
+  @include grid-row;
+    .ad-item{
+
+      @include grid-column(4);
+      iframe{  @extend .block;}
+
+    }
 }

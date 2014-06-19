@@ -217,15 +217,23 @@ public class HomeController extends WombatController {
     }
 
     if ((Boolean) homepageConfig.get("showsIssue")) {
-      String issueAddress = "journals/" + site.getJournalKey() + "?currentIssue";
-      Map<String, Object> currentIssue = soaService.requestObject(issueAddress, Map.class);
-      model.addAttribute("currentIssue", currentIssue);
-      Map<String, Object> issueImageMetadata = soaService.requestObject("articles/" + currentIssue.get("imageUri"), Map.class);
-      model.addAttribute("issueImage", issueImageMetadata);
+      try {
+        populateCurrentIssue(model, site);
+      } catch (IOException e) {
+        log.error("Could not retrieve current issue for: " + site.getJournalKey(), e);
+      }
     }
 
     model.addAttribute("sections", sectionsForModel);
     return site.getKey() + "/ftl/home/home";
+  }
+
+  private void populateCurrentIssue(Model model, Site site) throws IOException {
+    String issueAddress = "journals/" + site.getJournalKey() + "?currentIssue";
+    Map<String, Object> currentIssue = soaService.requestObject(issueAddress, Map.class);
+    model.addAttribute("currentIssue", currentIssue);
+    Map<String, Object> issueImageMetadata = soaService.requestObject("articles/" + currentIssue.get("imageUri"), Map.class);
+    model.addAttribute("issueImage", issueImageMetadata);
   }
 
   private static List<?> getInTheNewsArticles(SoaService soaService, String journalKey) throws IOException {

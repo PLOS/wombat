@@ -12,7 +12,9 @@
 
 <#include "body.ftl" />
 
-<div class="spotlight"></div>
+<div class="spotlight">
+<#include "adSlotBottom.ftl" />
+</div>
 
 <#include "../common/footer/footer.ftl" />
 

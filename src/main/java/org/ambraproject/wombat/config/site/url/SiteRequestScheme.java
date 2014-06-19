@@ -97,21 +97,31 @@ public class SiteRequestScheme implements SiteRequestPredicate {
   /**
    * Build a link to a path within a site.
    * <p/>
-   * The link always starts with {@code '/'} and is assumed to appear on the same site as its destination. It may not
-   * work as a cross-site link if the destination site is defined with a different hostname (or port, etc.).
+   * The link always starts with {@code '/'} and is usable as a domain-absolute link to a path on the current site.
    *
    * @param request a request to the current site
    * @param path    a site-independent path
    * @return a link to that path within the same site
    */
   public String buildLink(HttpServletRequest request, String path) {
-    /*
-     * Because the link starts at '/', we assume that nothing encapsulated in requestPredicates would not affect it
-     * except for pathToken (which is why pathToken is its own field).
-     */
+    return request.getContextPath() + buildLink(path);
+  }
 
+  /**
+   * Build a link to a path within a site.
+   * <p/>
+   * The link always starts with {@code '/'} and is relative to the application root. It is suitable for use in a {@code
+   * "redirect:*"} return value for Spring.
+   *
+   * @param path a site-independent path
+   * @return a link to that path within the same site
+   */
+  public String buildLink(String path) {
+    /*
+     * Because the link starts at '/', we assume that nothing encapsulated in requestPredicates (such as hostname,
+     * ports...) would affect it, except for pathToken (which is why pathToken is its own field).
+     */
     StringBuilder link = new StringBuilder(path.length() + 32);
-    link.append(request.getContextPath());
 
     if (pathToken.isPresent()) {
       link.append('/').append(pathToken.get());

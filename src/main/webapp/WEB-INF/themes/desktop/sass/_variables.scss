@@ -61,6 +61,8 @@ $default-box-shadow-spread: 0;
 $default-box-shadow-inset: false;
 $default-header-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
 
+$nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
+
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px
 $pad-default: $grid-gutter;       //20px

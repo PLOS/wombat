@@ -2068,9 +2068,6 @@
 /*------------------------------------*\
    COLORS
 \*------------------------------------*/
-/* $topbar-dropdown-toggle-size: 5px;
- $topbar-dropdown-toggle-color: $clr-highlight-text;
- $topbar-dropdown-toggle-alpha: 0.4;*/
 /*
  $topbar-menu-link-transform: uppercase;
  $topbar-menu-link-font-size: rem-calc(13);
@@ -8017,7 +8014,7 @@ th.hide-for-touch {
   line-height: 2.5rem; }
 
 /* line 44, ../../sass/_typography.scss */
-.header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit h3, #submission-links h3 {
+.header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit h3, #submission-links h3 {
   padding-bottom: 1.0625rem;
   margin-bottom: 1.0625rem;
   box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
@@ -8356,7 +8353,7 @@ footer {
 /* line 28, ../../sass/sections/_header.scss */
 .ad-head iframe {
   padding-left: 18px;
-  background: url('../img/text.vert.ad.gif?1400626859') no-repeat left remcalc(5); }
+  background: url('../img/resource/img/text.vert.ad.gif') no-repeat left remcalc(5); }
 
 /* line 39, ../../sass/sections/_header.scss */
 #pagehdr-wrap .nav {
@@ -8381,7 +8378,7 @@ footer {
     #pagehdr-wrap .nav .nav-user > li {
       margin-top: -0.3125rem;
       margin-left: 0.25rem; }
-      /* line 52, ../../sass/sections/_header.scss */
+      /* line 51, ../../sass/sections/_header.scss */
       #pagehdr-wrap .nav .nav-user > li > a {
         background: transparent;
         padding: 0.875rem 1rem 0.5rem;
@@ -8391,15 +8388,15 @@ footer {
         /* line 12, ../../sass/_components.scss */
         #pagehdr-wrap .nav .nav-user > li > a:hover {
           background: #333333; }
-        /* line 56, ../../sass/sections/_header.scss */
+        /* line 55, ../../sass/sections/_header.scss */
         #pagehdr-wrap .nav .nav-user > li > a:hover {
           color: white;
           background: #3c63af; }
-    /* line 63, ../../sass/sections/_header.scss */
+    /* line 62, ../../sass/sections/_header.scss */
     #pagehdr-wrap .nav .nav-user li.highlighted > a {
       color: white;
       background: #16a127; }
-/* line 71, ../../sass/sections/_header.scss */
+/* line 70, ../../sass/sections/_header.scss */
 #pagehdr-wrap .logo {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -8412,30 +8409,39 @@ footer {
 /* using Foundation Top Bar
  all @extend .class are Foundation
  */
-/* line 87, ../../sass/sections/_header.scss */
+/* line 86, ../../sass/sections/_header.scss */
 .nav-main {
   font-family: "albert"; }
-  /* line 91, ../../sass/sections/_header.scss */
+  /* line 90, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
     width: 58.33333%;
     float: left;
     padding-right: 0; }
-  /* line 96, ../../sass/sections/_header.scss */
+  /* line 95, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li.has-dropdown {
-    border-left: 1px solid #cccccc; }
-    /* line 99, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:first-child {
-      border-left: 1px solid #efefef; }
-    /* line 102, ../../sass/sections/_header.scss */
+    margin-right: 3px;
+    padding-right: 3px;
+    border-right: 1px solid #cccccc; }
+    /* line 100, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:nth-child(3) {
+      border-right: none;
+      margin-right: 0; }
+    /* line 104, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:hover {
-      border-left: 1px solid #efefef; }
-      /* line 104, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:hover .submit {
-        display: block; }
-    /* line 109, ../../sass/sections/_header.scss */
+      -moz-border-radius-topleft: 5px;
+      -webkit-border-top-left-radius: 5px;
+      border-top-left-radius: 5px;
+      -moz-border-radius-topright: 5px;
+      -webkit-border-top-right-radius: 5px;
+      border-top-right-radius: 5px;
+      box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
+      background: white; }
+    /* line 110, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > a {
+      line-height: 1;
+      padding: 10px 15px;
       font-family: "albert";
       -moz-border-radius-topleft: 5px;
       -webkit-border-top-left-radius: 5px;
@@ -8443,78 +8449,73 @@ footer {
       -moz-border-radius-topright: 5px;
       -webkit-border-top-right-radius: 5px;
       border-top-right-radius: 5px; }
-      /* line 113, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > a:hover {
-        -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-        -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-        box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-        background: white; }
-  /* line 120, ../../sass/sections/_header.scss */
+  /* line 118, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li.has-dropdown ul.dropdown {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px;
-    min-width: 14.6875rem;
+    width: 15rem;
     margin-left: -0.9375rem;
     padding-top: 1.25rem;
     padding-bottom: 1.875rem;
     background: white;
-    -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1); }
-  /* line 131, ../../sass/sections/_header.scss */
+    box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15); }
+  /* line 128, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li:nth-child(3) ul.dropdown {
     margin-left: -6.875rem; }
-  /* line 135, ../../sass/sections/_header.scss */
-  .nav-main .top-bar-section li.has-dropdown ul.dropdown li a {
+  /* line 133, ../../sass/sections/_header.scss */
+  .nav-main .dropdownanchor, .nav-main .top-bar-section li.has-dropdown ul.dropdown li a, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .dropdowncallout li a {
     width: 100%;
-    line-height: 1.875rem;
-    padding: 0 1.875rem;
+    line-height: 1;
+    padding: 0.4375rem 1.875rem 0.5rem 1.875rem;
     font-family: "arial";
-    font-size: 0.875rem; }
-    /* line 142, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section li.has-dropdown ul.dropdown li a:hover {
+    font-size: 0.875rem;
+    white-space: pre-wrap; }
+    /* line 140, ../../sass/sections/_header.scss */
+    .nav-main .dropdownanchor:hover, .nav-main .top-bar-section li.has-dropdown ul.dropdown li a:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .dropdowncallout li a:hover {
       color: white;
       background: #3c63af; }
-  /* line 148, ../../sass/sections/_header.scss */
-  .nav-main .top-bar-section ul.nav-elements > li.has-dropdown {
-    position: relative; }
-    /* line 151, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit {
-      display: none;
-      position: absolute;
-      top: 2.8125rem;
-      left: -18.125rem;
+  /* line 149, ../../sass/sections/_header.scss */
+  .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer {
+    width: 530px;
+    margin-left: -18.125rem;
+    padding: 1.25rem 0 1.875rem;
+    background: white;
+    box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px; }
+    /* line 157, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit {
+      position: relative;
+      float: left;
+      display: inline !important;
       width: 17.5rem;
-      padding: 1.25rem 0 1.875rem 0.9375rem;
-      z-index: 997;
-      background: white;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
+      margin-right: 10px;
+      padding: 0 1.25rem 1.875rem 0.9375rem;
       font-family: "albert";
       font-size: 0.875rem; }
-      /* line 165, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit:hover {
-        display: block !important; }
-      /* line 168, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit .calloutInner {
-        border-right: 1px solid #efefef;
-        padding-right: 0.9375rem; }
-      /* line 172, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit h3 {
+      /* line 167, ../../sass/sections/_header.scss */
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit h3 {
+        margin-top: 5px;
         font-size: 1.4375rem; }
-      /* line 176, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul {
+      /* line 172, ../../sass/sections/_header.scss */
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit ul {
         margin-left: 0.9375rem;
         display: block !important;
-        list-style-type: disc; }
-        /* line 180, ../../sass/sections/_header.scss */
-        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul li {
-          margin-left: 0.9375rem; }
-          /* line 182, ../../sass/sections/_header.scss */
-          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul li a {
+        list-style-type: disc;
+        width: auto; }
+        /* line 177, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit ul li {
+          margin-left: 0.9375rem;
+          width: auto; }
+          /* line 180, ../../sass/sections/_header.scss */
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit ul li a {
+            display: inline !important;
             margin: 0;
             padding: 0;
             line-height: 1.35;
@@ -8523,10 +8524,10 @@ footer {
             background: white;
             color: #3c63af; }
             /* line 190, ../../sass/sections/_header.scss */
-            .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul li a:hover {
+            .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit ul li a:hover {
               text-decoration: underline; }
       /* line 197, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit a.btn {
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit a.btn {
         background: #333333;
         padding: 1.25rem;
         border-radius: 5px;
@@ -8537,9 +8538,20 @@ footer {
         padding: 0 0.625rem;
         line-height: 35px; }
         /* line 12, ../../sass/_components.scss */
-        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit a.btn:hover {
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit a.btn:hover {
           background: #333333; }
-  /* line 208, ../../sass/sections/_header.scss */
+        /* line 204, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .submit a.btn:hover {
+          background: #3c63af; }
+    /* line 209, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer .dropdowncallout {
+      float: right;
+      display: inline-block;
+      width: 15rem;
+      border-left: 1px solid #efefef;
+      background: white;
+      border-radius: 5px; }
+  /* line 222, ../../sass/sections/_header.scss */
   .nav-main .head-search {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
@@ -8548,13 +8560,13 @@ footer {
     padding-left: 1.25rem;
     padding-right: 0;
     text-align: right; }
-    /* line 216, ../../sass/sections/_header.scss */
+    /* line 229, ../../sass/sections/_header.scss */
     .nav-main .head-search form {
       margin-top: -0.3125rem; }
-      /* line 223, ../../sass/sections/_header.scss */
+      /* line 236, ../../sass/sections/_header.scss */
       .nav-main .head-search form legend, .nav-main .head-search form label {
         display: none; }
-      /* line 227, ../../sass/sections/_header.scss */
+      /* line 240, ../../sass/sections/_header.scss */
       .nav-main .head-search form input[type="text"] {
         background-color: white;
         font-family: inherit;
@@ -8580,7 +8592,7 @@ footer {
         /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"][disabled], fieldset[disabled] .nav-main .head-search form input[type="text"] {
           background-color: #dddddd; }
-      /* line 239, ../../sass/sections/_header.scss */
+      /* line 252, ../../sass/sections/_header.scss */
       .nav-main .head-search form button[type="submit"] {
         background: white;
         border-left: none;
@@ -8588,11 +8600,11 @@ footer {
         border-color: white;
         width: 45px;
         border: none; }
-        /* line 244, ../../sass/sections/_header.scss */
+        /* line 257, ../../sass/sections/_header.scss */
         .nav-main .head-search form button[type="submit"] .search-icon {
           padding-top: 0.25rem;
           font-size: 1.25rem; }
-  /* line 255, ../../sass/sections/_header.scss */
+  /* line 268, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search a {
     margin-top: -0.625rem;
     line-height: 33px;
@@ -8605,7 +8617,7 @@ footer {
     .nav-main .top-bar-section ul li.head-search a:hover, .nav-main .top-bar-section ul li.head-search a a:hover {
       color: #3c63af;
       text-decoration: underline; }
-  /* line 264, ../../sass/sections/_header.scss */
+  /* line 277, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search:hover:not(.has-form) > a {
     background: #efefef; }
 

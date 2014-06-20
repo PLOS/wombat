@@ -8420,7 +8420,7 @@ footer {
 /* line 28, ../../sass/sections/_header.scss */
 .ad-head iframe {
   padding-left: 18px;
-  background: url('../img/text.vert.ad.gif?1402533884') no-repeat left remcalc(5); }
+  background: url('../img/text.vert.ad.gif?1400626859') no-repeat left remcalc(5); }
 
 /* line 39, ../../sass/sections/_header.scss */
 #pagehdr-wrap .nav {
@@ -8603,7 +8603,10 @@ footer {
         /* line 12, ../../sass/_components.scss */
         .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit a.btn:hover {
           background: #333333; }
-  /* line 208, ../../sass/sections/_header.scss */
+        /* line 204, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit a.btn:hover {
+          background: #3c63af; }
+  /* line 211, ../../sass/sections/_header.scss */
   .nav-main .head-search {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
@@ -8612,13 +8615,13 @@ footer {
     padding-left: 1.25rem;
     padding-right: 0;
     text-align: right; }
-    /* line 216, ../../sass/sections/_header.scss */
+    /* line 219, ../../sass/sections/_header.scss */
     .nav-main .head-search form {
       margin-top: -0.3125rem; }
-      /* line 223, ../../sass/sections/_header.scss */
+      /* line 226, ../../sass/sections/_header.scss */
       .nav-main .head-search form legend, .nav-main .head-search form label {
         display: none; }
-      /* line 227, ../../sass/sections/_header.scss */
+      /* line 230, ../../sass/sections/_header.scss */
       .nav-main .head-search form input[type="text"] {
         background-color: white;
         font-family: inherit;
@@ -8635,7 +8638,7 @@ footer {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         width: 12.1875rem;
-        color: #333333; }
+        color: #636363; }
         /* line 124, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"]:focus {
           background: white;
@@ -8644,7 +8647,21 @@ footer {
         /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"][disabled], fieldset[disabled] .nav-main .head-search form input[type="text"] {
           background-color: #dddddd; }
-      /* line 239, ../../sass/sections/_header.scss */
+      /* line 100, ../../sass/_typography.scss */
+      .nav-main .head-search form ::-webkit-input-placeholder {
+        color: black; }
+      /* line 103, ../../sass/_typography.scss */
+      .nav-main .head-search form :-moz-placeholder {
+        /* Firefox 18- */
+        color: black; }
+      /* line 107, ../../sass/_typography.scss */
+      .nav-main .head-search form ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: black; }
+      /* line 111, ../../sass/_typography.scss */
+      .nav-main .head-search form :-ms-input-placeholder {
+        color: black; }
+      /* line 244, ../../sass/sections/_header.scss */
       .nav-main .head-search form button[type="submit"] {
         background: white;
         border-left: none;
@@ -8652,11 +8669,11 @@ footer {
         border-color: white;
         width: 45px;
         border: none; }
-        /* line 244, ../../sass/sections/_header.scss */
+        /* line 249, ../../sass/sections/_header.scss */
         .nav-main .head-search form button[type="submit"] .search-icon {
           padding-top: 0.25rem;
           font-size: 1.25rem; }
-  /* line 255, ../../sass/sections/_header.scss */
+  /* line 260, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search a {
     margin-top: -0.625rem;
     line-height: 33px;
@@ -8669,7 +8686,7 @@ footer {
     .nav-main .top-bar-section ul li.head-search a:hover, .nav-main .top-bar-section ul li.head-search a a:hover {
       color: #3c63af;
       text-decoration: underline; }
-  /* line 264, ../../sass/sections/_header.scss */
+  /* line 269, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search:hover:not(.has-form) > a {
     background: #efefef; }
 

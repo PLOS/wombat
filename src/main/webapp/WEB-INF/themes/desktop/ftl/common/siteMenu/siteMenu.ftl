@@ -17,7 +17,7 @@
 
   <#macro menuSection title containsCallout=false>
   <li class="has-dropdown">
-    <a href="#">${title}</a>
+    ${title}
 
     <#if containsCallout>
     <div class="calloutcontainer dropdown">

@@ -4,8 +4,8 @@
  * Copyright 2014, ZURB
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
-*/
-/* EDITED TO SET HEIGHT OF SUBMIT MENU TO MATCH DROPDOWN MENU HEIGHT*/
+ */
+
 (function ($, window, document, undefined) {
   'use strict';
 
@@ -15,7 +15,7 @@
 
     while (i--) {
       if(head.has('.' + class_array[i]).length === 0) {
-          head.append('<meta class="' + class_array[i] + '" />');
+        head.append('<meta class="' + class_array[i] + '" />');
       }
     }
   };
@@ -74,8 +74,8 @@
 
   var add_namespace = function (str) {
     var parts = str.split('-'),
-        i = parts.length,
-        arr = [];
+      i = parts.length,
+      arr = [];
 
     while (i--) {
       if (i !== 0) {
@@ -96,7 +96,7 @@
 
   var bindings = function (method, options) {
     var self = this,
-        should_bind_events = !S(this).data(this.attr_name(true));
+      should_bind_events = !S(this).data(this.attr_name(true));
 
     if (typeof method === 'string') {
       return this[method].call(this, options);
@@ -131,7 +131,7 @@
 
       if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
         var src = this.attr( 'src' ),
-            param = src.match( /\?/ ) ? '&' : '?';
+          param = src.match( /\?/ ) ? '&' : '?';
 
         param += 'random=' + (new Date()).getTime();
         this.attr('src', src + param);
@@ -149,21 +149,21 @@
       bindLoad.call(image);
     }
   };
-  
+
   /*
-    https://github.com/paulirish/matchMedia.js
-  */
+   https://github.com/paulirish/matchMedia.js
+   */
 
   window.matchMedia = window.matchMedia || (function( doc ) {
 
     "use strict";
 
     var bool,
-        docElem = doc.documentElement,
-        refNode = docElem.firstElementChild || docElem.firstChild,
-        // fakeBody required for <FF4 when executed in <head>
-        fakeBody = doc.createElement( "body" ),
-        div = doc.createElement( "div" );
+      docElem = doc.documentElement,
+      refNode = docElem.firstElementChild || docElem.firstChild,
+    // fakeBody required for <FF4 when executed in <head>
+      fakeBody = doc.createElement( "body" ),
+      div = doc.createElement( "div" );
 
     div.id = "mq-test-1";
     div.style.cssText = "position:absolute;top:-100em";
@@ -198,69 +198,69 @@
 
   (function($) {
 
-  // requestAnimationFrame polyfill adapted from Erik Möller
-  // fixes from Paul Irish and Tino Zijdel
-  // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-  // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+    // requestAnimationFrame polyfill adapted from Erik Möller
+    // fixes from Paul Irish and Tino Zijdel
+    // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+    // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
-  var animating,
+    var animating,
       lastTime = 0,
       vendors = ['webkit', 'moz'],
       requestAnimationFrame = window.requestAnimationFrame,
       cancelAnimationFrame = window.cancelAnimationFrame,
       jqueryFxAvailable = 'undefined' !== typeof jQuery.fx;
 
-  for (; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
-    requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
-    cancelAnimationFrame = cancelAnimationFrame ||
-      window[ vendors[lastTime] + "CancelAnimationFrame" ] || 
-      window[ vendors[lastTime] + "CancelRequestAnimationFrame" ];
-  }
+    for (; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
+      requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
+      cancelAnimationFrame = cancelAnimationFrame ||
+        window[ vendors[lastTime] + "CancelAnimationFrame" ] ||
+        window[ vendors[lastTime] + "CancelRequestAnimationFrame" ];
+    }
 
-  function raf() {
-    if (animating) {
-      requestAnimationFrame(raf);
-      
-      if (jqueryFxAvailable) {
-        jQuery.fx.tick();
+    function raf() {
+      if (animating) {
+        requestAnimationFrame(raf);
+
+        if (jqueryFxAvailable) {
+          jQuery.fx.tick();
+        }
       }
     }
-  }
 
-  if (requestAnimationFrame) {
-    // use rAF
-    window.requestAnimationFrame = requestAnimationFrame;
-    window.cancelAnimationFrame = cancelAnimationFrame;
-    
-    if (jqueryFxAvailable) {
-      jQuery.fx.timer = function (timer) {
-        if (timer() && jQuery.timers.push(timer) && !animating) {
-          animating = true;
-          raf();
-        }
+    if (requestAnimationFrame) {
+      // use rAF
+      window.requestAnimationFrame = requestAnimationFrame;
+      window.cancelAnimationFrame = cancelAnimationFrame;
+
+      if (jqueryFxAvailable) {
+        jQuery.fx.timer = function (timer) {
+          if (timer() && jQuery.timers.push(timer) && !animating) {
+            animating = true;
+            raf();
+          }
+        };
+
+        jQuery.fx.stop = function () {
+          animating = false;
+        };
+      }
+    } else {
+      // polyfill
+      window.requestAnimationFrame = function (callback) {
+        var currTime = new Date().getTime(),
+          timeToCall = Math.max(0, 16 - (currTime - lastTime)),
+          id = window.setTimeout(function () {
+            callback(currTime + timeToCall);
+          }, timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
       };
 
-      jQuery.fx.stop = function () {
-        animating = false;
+      window.cancelAnimationFrame = function (id) {
+        clearTimeout(id);
       };
+
     }
-  } else {
-    // polyfill
-    window.requestAnimationFrame = function (callback) {
-      var currTime = new Date().getTime(),
-        timeToCall = Math.max(0, 16 - (currTime - lastTime)),
-        id = window.setTimeout(function () {
-          callback(currTime + timeToCall);
-        }, timeToCall);
-      lastTime = currTime + timeToCall;
-      return id;
-    };
-
-    window.cancelAnimationFrame = function (id) {
-      clearTimeout(id);
-    };
-
-  }
 
   }( jQuery ));
 
@@ -294,7 +294,7 @@
 
     init : function (scope, libraries, method, options, response) {
       var args = [scope, method, options, response],
-          responses = [];
+        responses = [];
 
       // check RTL
       this.rtl = /rtl/i.test(S('html').attr('dir'));
@@ -322,12 +322,12 @@
         this.patch(this.libs[lib]);
 
         if (args && args.hasOwnProperty(lib)) {
-            if (typeof this.libs[lib].settings !== 'undefined') {
-                $.extend(true, this.libs[lib].settings, args[lib]);
-            }
-            else if (typeof this.libs[lib].defaults !== 'undefined') {
-                $.extend(true, this.libs[lib].defaults, args[lib]);
-            }
+          if (typeof this.libs[lib].settings !== 'undefined') {
+            $.extend(true, this.libs[lib].settings, args[lib]);
+          }
+          else if (typeof this.libs[lib].defaults !== 'undefined') {
+            $.extend(true, this.libs[lib].defaults, args[lib]);
+          }
           return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
 
@@ -351,7 +351,7 @@
 
     inherit : function (scope, methods) {
       var methods_arr = methods.split(' '),
-          i = methods_arr.length;
+        i = methods_arr.length;
 
       while (i--) {
         if (this.utils.hasOwnProperty(methods_arr[i])) {
@@ -376,7 +376,7 @@
       // If the namespace has not been set (is undefined), try to read it out of the meta element. 
       // Otherwise use the globally defined namespace, even if it's empty ('')
       var namespace = ( this.global.namespace === undefined ) ? $('.foundation-data-attribute-namespace').css('font-family') : this.global.namespace;
-      
+
       // Finally, if the namsepace is either undefined or false, set it to an empty string. 
       // Otherwise use the namespace value.
       this.global.namespace = ( namespace === undefined || /false/i.test(namespace) ) ? '' : namespace;
@@ -469,15 +469,15 @@
       //    attribute.
       data_options : function (el) {
         var opts = {}, ii, p, opts_arr,
-            data_options = function (el) {
-              var namespace = Foundation.global.namespace;
+          data_options = function (el) {
+            var namespace = Foundation.global.namespace;
 
-              if (namespace.length > 0) {
-                return el.data(namespace + '-options');
-              }
+            if (namespace.length > 0) {
+              return el.data(namespace + '-options');
+            }
 
-              return el.data('options');
-            };
+            return el.data('options');
+          };
 
         var cached_options = data_options(el);
 
@@ -548,7 +548,7 @@
           var query = Foundation.media_queries[media];
 
           if (query !== undefined) {
-            Foundation.stylesheet.insertRule('@media ' + 
+            Foundation.stylesheet.insertRule('@media ' +
               Foundation.media_queries[media] + '{ ' + rule + ' }');
           }
         }
@@ -563,7 +563,7 @@
       //    Callback (Function): Fundation to execute when image is fully loaded.
       image_loaded : function (images, callback) {
         var self = this,
-            unloaded = images.length;
+          unloaded = images.length;
 
         if (unloaded === 0) {
           callback(images);
@@ -653,8 +653,8 @@
       validators : {
         equalTo: function(el, required, parent) {
           var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
-              to    = el.value,
-              valid = (from === to);
+            to    = el.value,
+            valid = (from === to);
 
           return valid;
         }
@@ -669,8 +669,8 @@
 
     events : function (scope) {
       var self = this,
-          form = self.S(scope).attr('novalidate', 'novalidate'),
-          settings = form.data(this.attr_name(true) + '-init') || {};
+        form = self.S(scope).attr('novalidate', 'novalidate'),
+        settings = form.data(this.attr_name(true) + '-init') || {};
 
       this.invalid_attr = this.add_namespace('data-invalid');
 
@@ -684,18 +684,18 @@
           return self.reset($(this));
         })
         .find('input, textarea, select')
-          .off('.abide')
-          .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-            self.validate([this], e);
-          })
-          .on('keydown.fndtn.abide', function (e) {
-            if (settings.live_validate === true) {
-              clearTimeout(self.timer);
-              self.timer = setTimeout(function () {
-                self.validate([this], e);
-              }.bind(this), settings.timeout);
-            }
-          });
+        .off('.abide')
+        .on('blur.fndtn.abide change.fndtn.abide', function (e) {
+          self.validate([this], e);
+        })
+        .on('keydown.fndtn.abide', function (e) {
+          if (settings.live_validate === true) {
+            clearTimeout(self.timer);
+            self.timer = setTimeout(function () {
+              self.validate([this], e);
+            }.bind(this), settings.timeout);
+          }
+        });
     },
 
     reset : function (form) {
@@ -706,10 +706,10 @@
 
     validate : function (els, e, is_ajax) {
       var validations = this.parse_patterns(els),
-          validation_count = validations.length,
-          form = this.S(els[0]).closest('[data-' + this.attr_name(true) + ']'),
-          settings = form.data(this.attr_name(true) + '-init') || {},
-          submit_event = /submit/.test(e.type);
+        validation_count = validations.length,
+        form = this.S(els[0]).closest('[data-' + this.attr_name(true) + ']'),
+        settings = form.data(this.attr_name(true) + '-init') || {},
+        submit_event = /submit/.test(e.type);
 
       form.trigger('validated');
       // Has to count up to make sure the focus gets applied to the top error
@@ -735,7 +735,7 @@
 
     parse_patterns : function (els) {
       var i = els.length,
-          el_patterns = [];
+        el_patterns = [];
 
       while (i--) {
         el_patterns.push(this.pattern(els[i]));
@@ -746,7 +746,7 @@
 
     pattern : function (el) {
       var type = el.getAttribute('type'),
-          required = typeof el.getAttribute('required') === 'string';
+        required = typeof el.getAttribute('required') === 'string';
 
       var pattern = el.getAttribute('pattern') || '';
 
@@ -767,20 +767,20 @@
 
     check_validation_and_apply_styles : function (el_patterns) {
       var i = el_patterns.length,
-          validations = [],
-          form = this.S(el_patterns[0][0]).closest('[data-' + this.attr_name(true) + ']'),
-          settings = form.data(this.attr_name(true) + '-init') || {};
+        validations = [],
+        form = this.S(el_patterns[0][0]).closest('[data-' + this.attr_name(true) + ']'),
+        settings = form.data(this.attr_name(true) + '-init') || {};
 
       while (i--) {
         var el = el_patterns[i][0],
-            required = el_patterns[i][2],
-            value = el.value,
-            direct_parent = this.S(el).parent(),
-            validator = el.getAttribute(this.add_namespace('data-abide-validator')),
-            is_radio = el.type === "radio",
-            is_checkbox = el.type === "checkbox",
-            label = this.S('label[for="' + el.getAttribute('id') + '"]'),
-            valid_length = (required) ? (el.value.length > 0) : true;
+          required = el_patterns[i][2],
+          value = el.value,
+          direct_parent = this.S(el).parent(),
+          validator = el.getAttribute(this.add_namespace('data-abide-validator')),
+          is_radio = el.type === "radio",
+          is_checkbox = el.type === "checkbox",
+          label = this.S('label[for="' + el.getAttribute('id') + '"]'),
+          valid_length = (required) ? (el.value.length > 0) : true;
 
         var parent, valid;
 
@@ -835,7 +835,7 @@
 
     valid_checkbox : function(el, required) {
       var el = this.S(el),
-          valid = (el.is(':checked') || !required);
+        valid = (el.is(':checked') || !required);
 
       if (valid) {
         el.removeAttr(this.invalid_attr).parent().removeClass('error');
@@ -848,9 +848,9 @@
 
     valid_radio : function (el, required) {
       var name = el.getAttribute('name'),
-          group = this.S(el).closest('[data-' + this.attr_name(true) + ']').find("[name="+name+"]"),
-          count = group.length,
-          valid = false;
+        group = this.S(el).closest('[data-' + this.attr_name(true) + ']').find("[name="+name+"]"),
+        count = group.length,
+        valid = false;
 
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < count; i++) {
@@ -871,8 +871,8 @@
 
     valid_equal: function(el, required, parent) {
       var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
-          to    = el.value,
-          valid = (from === to);
+        to    = el.value,
+        valid = (from === to);
 
       if (valid) {
         this.S(el).removeAttr(this.invalid_attr);
@@ -930,31 +930,31 @@
       var self = this;
       var S = this.S;
       S(this.scope)
-      .off('.fndtn.accordion')
-      .on('click.fndtn.accordion', '[' + this.attr_name() + '] dd > a', function (e) {
-        var accordion = S(this).closest('[' + self.attr_name() + ']'),
+        .off('.fndtn.accordion')
+        .on('click.fndtn.accordion', '[' + this.attr_name() + '] dd > a', function (e) {
+          var accordion = S(this).closest('[' + self.attr_name() + ']'),
             target = S('#' + this.href.split('#')[1]),
             siblings = S('dd > .content', accordion),
             aunts = $('dd', accordion),
             settings = accordion.data(self.attr_name(true) + '-init'),
             active_content = S('dd > .content.' + settings.active_class, accordion),
             active_parent = S('dd.' + settings.active_class, accordion);
-        e.preventDefault();
+          e.preventDefault();
 
-        if (! S(this).closest('dl').is(accordion)) { return; }
+          if (! S(this).closest('dl').is(accordion)) { return; }
 
-        if (settings.toggleable && target.is(active_content)) {
-          active_parent.toggleClass(settings.active_class, false);
-          return target.toggleClass(settings.active_class, false);
-        }
+          if (settings.toggleable && target.is(active_content)) {
+            active_parent.toggleClass(settings.active_class, false);
+            return target.toggleClass(settings.active_class, false);
+          }
 
-        if (!settings.multi_expand) {
-          siblings.removeClass(settings.active_class);
-          aunts.removeClass(settings.active_class);
-        }
+          if (!settings.multi_expand) {
+            siblings.removeClass(settings.active_class);
+            aunts.removeClass(settings.active_class);
+          }
 
-        target.addClass(settings.active_class).parent().addClass(settings.active_class);
-      });
+          target.addClass(settings.active_class).parent().addClass(settings.active_class);
+        });
     },
 
     off : function () {},
@@ -981,11 +981,11 @@
 
     events : function () {
       var self = this,
-          S = this.S;
+        S = this.S;
 
       $(this.scope).off('.alert').on('click.fndtn.alert', '[' + this.attr_name() + '] a.close', function (e) {
-          var alertBox = S(this).closest('[' + self.attr_name() + ']'),
-              settings = alertBox.data(self.attr_name(true) + '-init') || self.settings;
+        var alertBox = S(this).closest('[' + self.attr_name() + ']'),
+          settings = alertBox.data(self.attr_name(true) + '-init') || self.settings;
 
         e.preventDefault();
         if ('transitionend' in window || 'webkitTransitionEnd' in window || 'oTransitionEnd' in window) {
@@ -1018,8 +1018,8 @@
     settings : {
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
-          '<div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
-          '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
+                    '<div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
+                    '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
           '<a href="#" class="clearing-main-next"><span></span></a></div>'
       },
 
@@ -1051,7 +1051,7 @@
 
     events : function (scope) {
       var self = this,
-      S = self.S;
+        S = self.S;
 
       if ($('.scroll-container').length > 0) {
         this.scope = $('.scroll-container');
@@ -1060,43 +1060,43 @@
       S(this.scope)
         .off('.clearing')
         .on('click.fndtn.clearing', 'ul[' + this.attr_name() + '] li',
-          function (e, current, target) {
-            var current = current || S(this),
-                target = target || current,
-                next = current.next('li'),
-                settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init'),
-                image = S(e.target);
+        function (e, current, target) {
+          var current = current || S(this),
+            target = target || current,
+            next = current.next('li'),
+            settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init'),
+            image = S(e.target);
 
-            e.preventDefault();
+          e.preventDefault();
 
-            if (!settings) {
-              self.init();
-              settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
-            }
+          if (!settings) {
+            self.init();
+            settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
+          }
 
-            // if clearing is open and the current image is
-            // clicked, go to the next image in sequence
-            if (target.hasClass('visible') &&
-              current[0] === target[0] &&
-              next.length > 0 && self.is_open(current)) {
-              target = next;
-              image = S('img', target);
-            }
+          // if clearing is open and the current image is
+          // clicked, go to the next image in sequence
+          if (target.hasClass('visible') &&
+            current[0] === target[0] &&
+            next.length > 0 && self.is_open(current)) {
+            target = next;
+            image = S('img', target);
+          }
 
-            // set current and target to the clicked li if not otherwise defined.
-            self.open(image, current, target);
-            self.update_paddles(target);
-          })
+          // set current and target to the clicked li if not otherwise defined.
+          self.open(image, current, target);
+          self.update_paddles(target);
+        })
 
         .on('click.fndtn.clearing', '.clearing-main-next',
-          function (e) { self.nav(e, 'next') })
+        function (e) { self.nav(e, 'next') })
         .on('click.fndtn.clearing', '.clearing-main-prev',
-          function (e) { self.nav(e, 'prev') })
+        function (e) { self.nav(e, 'prev') })
         .on('click.fndtn.clearing', this.settings.close_selectors,
-          function (e) { Foundation.libs.clearing.close(e, this) });
+        function (e) { Foundation.libs.clearing.close(e, this) });
 
       $(document).on('keydown.fndtn.clearing',
-          function (e) { self.keydown(e) });
+        function (e) { self.keydown(e) });
 
       S(window).off('.clearing').on('resize.fndtn.clearing',
         function () { self.resize() });
@@ -1106,18 +1106,18 @@
 
     swipe_events : function (scope) {
       var self = this,
-      S = self.S;
+        S = self.S;
 
       S(this.scope)
         .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
           if (!e.touches) { e = e.originalEvent; }
           var data = {
-                start_page_x: e.touches[0].pageX,
-                start_page_y: e.touches[0].pageY,
-                start_time: (new Date()).getTime(),
-                delta_x: 0,
-                is_scrolling: undefined
-              };
+            start_page_x: e.touches[0].pageX,
+            start_page_y: e.touches[0].pageY,
+            start_time: (new Date()).getTime(),
+            delta_x: 0,
+            is_scrolling: undefined
+          };
 
           S(this).data('swipe-transition', data);
           e.stopPropagation();
@@ -1158,7 +1158,7 @@
       if ($el.parent().hasClass('carousel')) {
         return;
       }
-      
+
       $el.after('<div id="foundationClearingHolder"></div>');
       var grid = $el.detach();
       var grid_outerHTML = '';
@@ -1167,17 +1167,17 @@
       } else {
         grid_outerHTML = grid[0].outerHTML;
       }
-      
+
       var holder = this.S('#foundationClearingHolder'),
-          settings = $el.data(this.attr_name(true) + '-init'),
-          grid = $el.detach(),
-          data = {
-            grid: '<div class="carousel">' + grid_outerHTML + '</div>',
-            viewing: settings.templates.viewing
-          },
-          wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
-            data.grid + '</div></div>',
-          touch_label = this.settings.touch_label;
+        settings = $el.data(this.attr_name(true) + '-init'),
+        grid = $el.detach(),
+        data = {
+          grid: '<div class="carousel">' + grid_outerHTML + '</div>',
+          viewing: settings.templates.viewing
+        },
+        wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
+          data.grid + '</div></div>',
+        touch_label = this.settings.touch_label;
 
       if (Modernizr.touch) {
         wrapper = $(wrapper).find('.clearing-touch-label').html(touch_label).end();
@@ -1188,13 +1188,13 @@
 
     open : function ($image, current, target) {
       var self = this,
-          body = $(document.body),
-          root = target.closest('.clearing-assembled'),
-          container = self.S('div', root).first(),
-          visible_image = self.S('.visible-img', container),
-          image = self.S('img', visible_image).not($image),
-          label = self.S('.clearing-touch-label', container),
-          error = false;
+        body = $(document.body),
+        root = target.closest('.clearing-assembled'),
+        container = self.S('div', root).first(),
+        visible_image = self.S('.visible-img', container),
+        image = self.S('img', visible_image).not($image),
+        label = self.S('.clearing-touch-label', container),
+        error = false;
 
       image.error(function () {
         error = true;
@@ -1244,13 +1244,13 @@
       e.preventDefault();
 
       var root = (function (target) {
-            if (/blackout/.test(target.selector)) {
-              return target;
-            } else {
-              return target.closest('.clearing-blackout');
-            }
-          }($(el))),
-          body = $(document.body), container, visible_image;
+          if (/blackout/.test(target.selector)) {
+            return target;
+          } else {
+            return target.closest('.clearing-blackout');
+          }
+        }($(el))),
+        body = $(document.body), container, visible_image;
 
       if (el === e.target && root) {
         body.css('overflow', '');
@@ -1273,9 +1273,9 @@
 
     keydown : function (e) {
       var clearing = $('.clearing-blackout ul[' + this.attr_name() + ']'),
-          NEXT_KEY = this.rtl ? 37 : 39,
-          PREV_KEY = this.rtl ? 39 : 37,
-          ESC_KEY = 27;
+        NEXT_KEY = this.rtl ? 37 : 39,
+        PREV_KEY = this.rtl ? 39 : 37,
+        ESC_KEY = 27;
 
       if (e.which === NEXT_KEY) this.go(clearing, 'next');
       if (e.which === PREV_KEY) this.go(clearing, 'prev');
@@ -1291,7 +1291,7 @@
 
     resize : function () {
       var image = $('img', '.clearing-blackout .visible-img'),
-          label = $('.clearing-touch-label', '.clearing-blackout');
+        label = $('.clearing-touch-label', '.clearing-blackout');
 
       if (image.length) {
         this.center_and_label(image, label);
@@ -1301,16 +1301,16 @@
     // visual adjustments
     fix_height : function (target) {
       var lis = target.parent().children(),
-          self = this;
+        self = this;
 
       lis.each(function () {
-          var li = self.S(this),
-              image = li.find('img');
+        var li = self.S(this),
+          image = li.find('img');
 
-          if (li.height() > image.outerHeight()) {
-            li.addClass('fix-height');
-          }
-        })
+        if (li.height() > image.outerHeight()) {
+          li.addClass('fix-height');
+        }
+      })
         .closest('ul')
         .width(lis.length * 100 + '%');
 
@@ -1396,7 +1396,7 @@
     img : function (img) {
       if (img.length) {
         var new_img = new Image(),
-            new_a = this.S('a', img);
+          new_a = this.S('a', img);
 
         if (new_a.length) {
           new_img.src = new_a.attr('href');
@@ -1428,7 +1428,7 @@
 
     go : function ($ul, direction) {
       var current = this.S('.visible', $ul),
-          target = current[direction]();
+        target = current[direction]();
 
       if (target.length) {
         this.S('img', target)
@@ -1438,12 +1438,12 @@
 
     shift : function (current, target, callback) {
       var clearing = target.parent(),
-          old_index = this.settings.prev_index || target.index(),
-          direction = this.direction(clearing, current, target),
-          dir = this.rtl ? 'right' : 'left',
-          left = parseInt(clearing.css('left'), 10),
-          width = target.outerWidth(),
-          skip_shift;
+        old_index = this.settings.prev_index || target.index(),
+        direction = this.direction(clearing, current, target),
+        dir = this.rtl ? 'right' : 'left',
+        left = parseInt(clearing.css('left'), 10),
+        width = target.outerWidth(),
+        skip_shift;
 
       var dir_obj = {};
 
@@ -1480,10 +1480,10 @@
 
     direction : function ($el, current, target) {
       var lis = this.S('li', $el),
-          li_width = lis.outerWidth() + (lis.outerWidth() / 4),
-          up_count = Math.floor(this.S('.clearing-container').outerWidth() / li_width) - 1,
-          target_index = lis.index(target),
-          response;
+        li_width = lis.outerWidth() + (lis.outerWidth() / 4),
+        up_count = Math.floor(this.S('.clearing-container').outerWidth() / li_width) - 1,
+        target_index = lis.index(target),
+        response;
 
       this.settings.up_count = up_count;
 
@@ -1563,7 +1563,7 @@
 
     events : function (scope) {
       var self = this,
-          S = self.S;
+        S = self.S;
 
       S(this.scope)
         .off('.dropdown')
@@ -1580,18 +1580,18 @@
 
           if ($this.data(self.data_attr())) {
             var dropdown = S('#' + $this.data(self.data_attr())),
-                target = $this;
+              target = $this;
           } else {
             var dropdown = $this;
-                target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
+            target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
           }
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
-          
+
           if(S(e.target).data(self.data_attr()) && settings.is_hover) {
             self.closeall.call(self);
           }
-          
+
           if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
         .on('mouseleave.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
@@ -1602,7 +1602,7 @@
               if (settings.is_hover) self.close.call(self, S('#' + $this.data(self.data_attr())));
             } else {
               var target = S('[' + self.attr_name() + '="' + S(this).attr('id') + '"]'),
-                  settings = target.data(self.attr_name(true) + '-init') || self.settings;
+                settings = target.data(self.attr_name(true) + '-init') || self.settings;
               if (settings.is_hover) self.close.call(self, $this);
             }
           }.bind(this), 150);
@@ -1613,8 +1613,8 @@
           if (S(e.target).data(self.data_attr()) || S(e.target).parent().data(self.data_attr())) {
             return;
           }
-          if (!(S(e.target).data('revealId')) && 
-            (parent.length > 0 && (S(e.target).is('[' + self.attr_name() + '-content]') || 
+          if (!(S(e.target).data('revealId')) &&
+            (parent.length > 0 && (S(e.target).is('[' + self.attr_name() + '-content]') ||
               $.contains(parent.first()[0], e.target)))) {
             e.stopPropagation();
             return;
@@ -1623,10 +1623,10 @@
           self.close.call(self, S('[' + self.attr_name() + '-content]'));
         })
         .on('opened.fndtn.dropdown', '[' + self.attr_name() + '-content]', function () {
-            self.settings.opened.call(this);
+          self.settings.opened.call(this);
         })
         .on('closed.fndtn.dropdown', '[' + self.attr_name() + '-content]', function () {
-            self.settings.closed.call(this);
+          self.settings.closed.call(this);
         });
 
       S(window)
@@ -1661,11 +1661,11 @@
     },
 
     open: function (dropdown, target) {
-        this
-          .css(dropdown
-            .addClass(this.settings.active_class), target);
-        dropdown.prev('[' + this.attr_name() + ']').addClass(this.settings.active_class);
-        dropdown.trigger('opened', [dropdown, target]);
+      this
+        .css(dropdown
+          .addClass(this.settings.active_class), target);
+      dropdown.prev('[' + this.attr_name() + ']').addClass(this.settings.active_class);
+      dropdown.trigger('opened', [dropdown, target]);
     },
 
     data_attr: function () {
@@ -1695,7 +1695,7 @@
 
     resize : function () {
       var dropdown = this.S('[' + this.attr_name() + '-content].open'),
-          target = this.S("[" + this.attr_name() + "='" + dropdown.attr('id') + "']");
+        target = this.S("[" + this.attr_name() + "='" + dropdown.attr('id') + "']");
 
       if (dropdown.length && target.length) {
         this.css(dropdown, target);
@@ -1726,7 +1726,7 @@
     },
 
     style : function (dropdown, target, settings) {
-      var css = $.extend({position: 'absolute'}, 
+      var css = $.extend({position: 'absolute'},
         this.dirs[settings.align].call(dropdown, target, settings));
 
       dropdown.attr('style', '').css(css);
@@ -1738,8 +1738,8 @@
       // Calculate target offset
       _base : function (t) {
         var o_p = this.offsetParent(),
-            o = o_p.offset(),
-            p = t.offset();
+          o = o_p.offset(),
+          p = t.offset();
 
         p.top -= o.top;
         p.left -= o.left;
@@ -1748,8 +1748,8 @@
       },
       top: function (t, s) {
         var self = Foundation.libs.dropdown,
-            p = self.dirs._base.call(this, t),
-            pip_offset_base = (t.outerWidth() / 2) - 8;
+          p = self.dirs._base.call(this, t),
+          pip_offset_base = (t.outerWidth() / 2) - 8;
 
         this.addClass('drop-top');
 
@@ -1758,7 +1758,7 @@
         }
 
         if (Foundation.rtl) {
-          return {left: p.left - this.outerWidth() + t.outerWidth(), 
+          return {left: p.left - this.outerWidth() + t.outerWidth(),
             top: p.top - this.outerHeight()};
         }
 
@@ -1766,8 +1766,8 @@
       },
       bottom: function (t, s) {
         var self = Foundation.libs.dropdown,
-            p = self.dirs._base.call(this, t),
-            pip_offset_base = (t.outerWidth() / 2) - 8;
+          p = self.dirs._base.call(this, t),
+          pip_offset_base = (t.outerWidth() / 2) - 8;
 
         if (t.outerWidth() < this.outerWidth() || self.small()) {
           self.adjust_pip(pip_offset_base, p);
@@ -1806,9 +1806,9 @@
       this.rule_idx = sheet.cssRules.length;
 
       var sel_before = '.f-dropdown.open:before',
-          sel_after  = '.f-dropdown.open:after',
-          css_before = 'left: ' + pip_offset_base + 'px;',
-          css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
+        sel_after  = '.f-dropdown.open:after',
+        css_before = 'left: ' + pip_offset_base + 'px;',
+        css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
 
       if (sheet.insertRule) {
         sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
@@ -1874,9 +1874,9 @@
 
     equalize: function(equalizer) {
       var isStacked = false,
-          vals = equalizer.find('[' + this.attr_name() + '-watch]:visible'),
-          firstTopOffset = vals.first().offset().top,
-          settings = equalizer.data(this.attr_name(true)+'-init');
+        vals = equalizer.find('[' + this.attr_name() + '-watch]:visible'),
+        firstTopOffset = vals.first().offset().top,
+        settings = equalizer.data(this.attr_name(true)+'-init');
 
       if (vals.length === 0) return;
       settings.before_height_change();
@@ -1940,10 +1940,10 @@
         landscape : 'only screen and (orientation: landscape)',
         portrait : 'only screen and (orientation: portrait)',
         retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
-          'only screen and (min--moz-device-pixel-ratio: 2),' +
-          'only screen and (-o-min-device-pixel-ratio: 2/1),' +
-          'only screen and (min-device-pixel-ratio: 2),' +
-          'only screen and (min-resolution: 192dpi),' +
+                      'only screen and (min--moz-device-pixel-ratio: 2),' +
+                      'only screen and (-o-min-device-pixel-ratio: 2/1),' +
+                      'only screen and (min-device-pixel-ratio: 2),' +
+                      'only screen and (min-resolution: 192dpi),' +
           'only screen and (min-resolution: 2dppx)'
       },
 
@@ -2000,11 +2000,11 @@
     },
 
     get_media_hash : function() {
-        var mediaHash='';
-        for (var queryName in this.settings.named_queries ) {
-            mediaHash += matchMedia(this.settings.named_queries[queryName]).matches.toString();
-        }
-        return mediaHash;
+      var mediaHash='';
+      for (var queryName in this.settings.named_queries ) {
+        mediaHash += matchMedia(this.settings.named_queries[queryName]).matches.toString();
+      }
+      return mediaHash;
     },
 
     events : function () {
@@ -2013,11 +2013,11 @@
       $(window)
         .off('.interchange')
         .on('resize.fndtn.interchange', self.throttle(function () {
-            var currMediaHash = self.get_media_hash();
-            if (currMediaHash !== prevMediaHash) {
-                self.resize();
-            }
-            prevMediaHash = currMediaHash;
+          var currMediaHash = self.get_media_hash();
+          if (currMediaHash !== prevMediaHash) {
+            self.resize();
+          }
+          prevMediaHash = currMediaHash;
         }, 50));
 
       return this;
@@ -2038,9 +2038,9 @@
           if (passed) {
             this.settings.directives[passed
               .scenario[1]].call(this, passed.el, passed.scenario[0], function () {
-                if (arguments[0] instanceof Array) { 
+                if (arguments[0] instanceof Array) {
                   var args = arguments[0];
-                } else { 
+                } else {
                   var args = Array.prototype.slice.call(arguments, 0);
                 }
 
@@ -2084,10 +2084,10 @@
 
     update_images : function () {
       var images = this.S('img[' + this.data_attr + ']'),
-          count = images.length,
-          i = count,
-          loaded_count = 0,
-          data_attr = this.data_attr;
+        count = images.length,
+        i = count,
+        loaded_count = 0,
+        data_attr = this.data_attr;
 
       this.cache = {};
       this.cached_images = [];
@@ -2114,10 +2114,10 @@
 
     update_nodes : function () {
       var nodes = this.S('[' + this.data_attr + ']').not('img'),
-          count = nodes.length,
-          i = count,
-          loaded_count = 0,
-          data_attr = this.data_attr;
+        count = nodes.length,
+        i = count,
+        loaded_count = 0,
+        data_attr = this.data_attr;
 
       this.cached_nodes = [];
       this.nodes_loaded = (count === 0);
@@ -2167,8 +2167,8 @@
 
     object : function(el) {
       var raw_arr = this.parse_data_attr(el),
-          scenarios = [], 
-          i = raw_arr.length;
+        scenarios = [],
+        i = raw_arr.length;
 
       if (i > 0) {
         while (i--) {
@@ -2176,8 +2176,8 @@
 
           if (split.length > 1) {
             var cached_split = split[0].split(','),
-                params = this.parse_params(cached_split[0],
-                  cached_split[1], split[1]);
+              params = this.parse_params(cached_split[0],
+                cached_split[1], split[1]);
 
             scenarios.push(params);
           }
@@ -2189,7 +2189,7 @@
 
     store : function (el, scenarios) {
       var uuid = this.random_str(),
-          current_uuid = el.data(this.add_namespace('uuid', true));
+        current_uuid = el.data(this.add_namespace('uuid', true));
 
       if (this.cache[current_uuid]) return this.cache[current_uuid];
 
@@ -2225,8 +2225,8 @@
 
     parse_data_attr : function (el) {
       var raw = el.attr(this.attr_name()).split(/\[(.*?)\]/),
-          i = raw.length, 
-          output = [];
+        i = raw.length,
+        output = [];
 
       while (i--) {
         if (raw[i].replace(/[\W\d]+/, '').length > 4) {
@@ -2361,9 +2361,9 @@
 
     start : function () {
       var self = this,
-          $this = $('[' + this.attr_name() + ']', this.scope),
-          integer_settings = ['timer', 'scrollSpeed', 'startOffset', 'tipAnimationFadeSpeed', 'cookieExpires'],
-          int_settings_count = integer_settings.length;
+        $this = $('[' + this.attr_name() + ']', this.scope),
+        integer_settings = ['timer', 'scrollSpeed', 'startOffset', 'tipAnimationFadeSpeed', 'cookieExpires'],
+        int_settings_count = integer_settings.length;
 
       if (!$this.length > 0) return;
 
@@ -2454,8 +2454,8 @@
     },
 
     create : function (opts) {
-      var buttonText = opts.$li.attr(this.add_namespace('data-button')) 
-        || opts.$li.attr(this.add_namespace('data-text')),
+      var buttonText = opts.$li.attr(this.add_namespace('data-button'))
+          || opts.$li.attr(this.add_namespace('data-text')),
         tipClass = opts.$li.attr('class'),
         $tip_content = $(this.tip_template({
           tip_class : tipClass,
@@ -2559,7 +2559,7 @@
 
           this.settings.$current_tip = this.settings.$next_tip;
 
-        // skip non-existant targets
+          // skip non-existant targets
         } else if (this.settings.$li && this.settings.$target.length < 1) {
 
           this.show();
@@ -2621,16 +2621,16 @@
 
     set_target : function () {
       var cl = this.settings.$li.attr(this.add_namespace('data-class')),
-          id = this.settings.$li.attr(this.add_namespace('data-id')),
-          $sel = function () {
-            if (id) {
-              return $(document.getElementById(id));
-            } else if (cl) {
-              return $('.' + cl).first();
-            } else {
-              return $('body');
-            }
-          };
+        id = this.settings.$li.attr(this.add_namespace('data-id')),
+        $sel = function () {
+          if (id) {
+            return $(document.getElementById(id));
+          } else if (cl) {
+            return $('.' + cl).first();
+          } else {
+            return $('body');
+          }
+        };
 
       this.settings.$target = $sel();
     },
@@ -2660,11 +2660,11 @@
 
     pos_default : function (init, resizing) {
       var half_fold = Math.ceil($(window).height() / 2),
-          tip_position = this.settings.$next_tip.offset(),
-          $nub = this.settings.$next_tip.find('.joyride-nub'),
-          nub_width = Math.ceil($nub.outerWidth() / 2),
-          nub_height = Math.ceil($nub.outerHeight() / 2),
-          toggle = init || false;
+        tip_position = this.settings.$next_tip.offset(),
+        $nub = this.settings.$next_tip.find('.joyride-nub'),
+        nub_width = Math.ceil($nub.outerWidth() / 2),
+        nub_height = Math.ceil($nub.outerHeight() / 2),
+        toggle = init || false;
 
       // tip must not be "display: none" to calculate position
       if (toggle) {
@@ -2677,64 +2677,64 @@
       }
 
       if (!/body/i.test(this.settings.$target.selector)) {
-          if (this.bottom()) {
-            if (this.rtl) {
-              this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
-                left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth()});
-            } else {
-              this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
-                left: this.settings.$target.offset().left});
-            }
-
-            this.nub_position($nub, this.settings.tip_settings.nub_position, 'top');
-
-          } else if (this.top()) {
-            if (this.rtl) {
-              this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
-                left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth()});
-            } else {
-              this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
-                left: this.settings.$target.offset().left});
-            }
-
-            this.nub_position($nub, this.settings.tip_settings.nub_position, 'bottom');
-
-          } else if (this.right()) {
-
+        if (this.bottom()) {
+          if (this.rtl) {
             this.settings.$next_tip.css({
-              top: this.settings.$target.offset().top,
-              left: (this.settings.$target.outerWidth() + this.settings.$target.offset().left + nub_width)});
-
-            this.nub_position($nub, this.settings.tip_settings.nub_position, 'left');
-
-          } else if (this.left()) {
-
+              top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
+              left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth()});
+          } else {
             this.settings.$next_tip.css({
-              top: this.settings.$target.offset().top,
-              left: (this.settings.$target.offset().left - this.settings.$next_tip.outerWidth() - nub_width)});
-
-            this.nub_position($nub, this.settings.tip_settings.nub_position, 'right');
-
+              top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
+              left: this.settings.$target.offset().left});
           }
 
-          if (!this.visible(this.corners(this.settings.$next_tip)) && this.settings.attempts < this.settings.tip_settings.tip_location_pattern.length) {
+          this.nub_position($nub, this.settings.tip_settings.nub_position, 'top');
 
-            $nub.removeClass('bottom')
-              .removeClass('top')
-              .removeClass('right')
-              .removeClass('left');
-
-            this.settings.tip_settings.tip_location = this.settings.tip_settings.tip_location_pattern[this.settings.attempts];
-
-            this.settings.attempts++;
-
-            this.pos_default();
-
+        } else if (this.top()) {
+          if (this.rtl) {
+            this.settings.$next_tip.css({
+              top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
+              left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth()});
+          } else {
+            this.settings.$next_tip.css({
+              top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
+              left: this.settings.$target.offset().left});
           }
+
+          this.nub_position($nub, this.settings.tip_settings.nub_position, 'bottom');
+
+        } else if (this.right()) {
+
+          this.settings.$next_tip.css({
+            top: this.settings.$target.offset().top,
+            left: (this.settings.$target.outerWidth() + this.settings.$target.offset().left + nub_width)});
+
+          this.nub_position($nub, this.settings.tip_settings.nub_position, 'left');
+
+        } else if (this.left()) {
+
+          this.settings.$next_tip.css({
+            top: this.settings.$target.offset().top,
+            left: (this.settings.$target.offset().left - this.settings.$next_tip.outerWidth() - nub_width)});
+
+          this.nub_position($nub, this.settings.tip_settings.nub_position, 'right');
+
+        }
+
+        if (!this.visible(this.corners(this.settings.$next_tip)) && this.settings.attempts < this.settings.tip_settings.tip_location_pattern.length) {
+
+          $nub.removeClass('bottom')
+            .removeClass('top')
+            .removeClass('right')
+            .removeClass('left');
+
+          this.settings.tip_settings.tip_location = this.settings.tip_settings.tip_location_pattern[this.settings.attempts];
+
+          this.settings.attempts++;
+
+          this.pos_default();
+
+        }
 
       } else if (this.settings.$li.length) {
 
@@ -2751,11 +2751,11 @@
 
     pos_phone : function (init) {
       var tip_height = this.settings.$next_tip.outerHeight(),
-          tip_offset = this.settings.$next_tip.offset(),
-          target_height = this.settings.$target.outerHeight(),
-          $nub = $('.joyride-nub', this.settings.$next_tip),
-          nub_height = Math.ceil($nub.outerHeight() / 2),
-          toggle = init || false;
+        tip_offset = this.settings.$next_tip.offset(),
+        target_height = this.settings.$target.outerHeight(),
+        $nub = $('.joyride-nub', this.settings.$next_tip),
+        nub_height = Math.ceil($nub.outerHeight() / 2),
+        toggle = init || false;
 
       $nub.removeClass('bottom')
         .removeClass('top')
@@ -2771,8 +2771,8 @@
 
         if (this.top()) {
 
-            this.settings.$next_tip.offset({top: this.settings.$target.offset().top - tip_height - nub_height});
-            $nub.addClass('bottom');
+          this.settings.$next_tip.offset({top: this.settings.$target.offset().top - tip_height - nub_height});
+          $nub.addClass('bottom');
 
         } else {
 
@@ -2806,20 +2806,20 @@
         }
 
         if (/pop/i.test(this.settings.tip_animation)) {
-            joyridemodalbg.show();
+          joyridemodalbg.show();
         } else {
-            joyridemodalbg.fadeIn(this.settings.tip_animation_fade_speed);
+          joyridemodalbg.fadeIn(this.settings.tip_animation_fade_speed);
         }
       }
     },
 
     expose : function () {
       var expose,
-          exposeCover,
-          el,
-          origCSS,
-          origClasses,
-          randId = 'expose-' + this.random_str(6);
+        exposeCover,
+        el,
+        origCSS,
+        origClasses,
+        randId = 'expose-' + this.random_str(6);
 
       if (arguments.length > 0 && arguments[0] instanceof $) {
         el = arguments[0];
@@ -2883,11 +2883,11 @@
 
     un_expose : function () {
       var exposeId,
-          el,
-          expose ,
-          origCSS,
-          origClasses,
-          clearAll = false;
+        el,
+        expose ,
+        origCSS,
+        origClasses,
+        clearAll = false;
 
       if (arguments.length > 0 && arguments[0] instanceof $) {
         el = arguments[0];
@@ -2999,13 +2999,13 @@
 
     corners : function (el) {
       var w = $(window),
-          window_half = w.height() / 2,
-          //using this to calculate since scroll may not have finished yet.
-          tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight()),
-          right = w.width() + w.scrollLeft(),
-          offsetBottom =  w.height() + tipOffset,
-          bottom = w.height() + w.scrollTop(),
-          top = w.scrollTop();
+        window_half = w.height() / 2,
+      //using this to calculate since scroll may not have finished yet.
+        tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight()),
+        right = w.width() + w.scrollLeft(),
+        offsetBottom =  w.height() + tipOffset,
+        bottom = w.height() + w.scrollTop(),
+        top = w.scrollTop();
 
       if (tipOffset < top) {
         if (tipOffset < 0) {
@@ -3020,10 +3020,10 @@
       }
 
       return [
-        el.offset().top < top,
-        right < el.offset().left + el.outerWidth(),
-        bottom < el.offset().top + el.outerHeight(),
-        w.scrollLeft() > el.offset().left
+          el.offset().top < top,
+          right < el.offset().left + el.outerWidth(),
+          bottom < el.offset().top + el.outerHeight(),
+          w.scrollLeft() > el.offset().left
       ];
     },
 
@@ -3109,7 +3109,7 @@
       threshold: 0, // pixels from the top of the expedition for it to become fixes
       destination_threshold: 20, // pixels from the top of destination for it to be considered active
       throttle_delay: 30 // calculation throttling to increase framerate
-    }, 
+    },
 
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle');
@@ -3118,8 +3118,8 @@
 
     events : function () {
       var self = this,
-          S = self.S,
-          settings = self.settings;
+        S = self.S,
+        settings = self.settings;
 
       // initialize expedition offset
       self.set_expedition_position();
@@ -3127,31 +3127,31 @@
       S(self.scope)
         .off('.magellan')
         .on('click.fndtn.magellan', '[' + self.add_namespace('data-magellan-arrival') + '] a[href^="#"]', function (e) {
-            e.preventDefault();
-            var expedition = $(this).closest('[' + self.attr_name() + ']'),
-                settings = expedition.data('magellan-expedition-init');
+          e.preventDefault();
+          var expedition = $(this).closest('[' + self.attr_name() + ']'),
+            settings = expedition.data('magellan-expedition-init');
 
-            var hash = this.hash.split('#').join(''),
-                target = $("a[name='"+hash+"']");
-            if (target.length === 0) target = $('#'+hash);
+          var hash = this.hash.split('#').join(''),
+            target = $("a[name='"+hash+"']");
+          if (target.length === 0) target = $('#'+hash);
 
-            // Account for expedition height if fixed position
-            var scroll_top = target.offset().top;
-            scroll_top = scroll_top - expedition.outerHeight();
+          // Account for expedition height if fixed position
+          var scroll_top = target.offset().top;
+          scroll_top = scroll_top - expedition.outerHeight();
 
-            $('html, body').stop().animate({
-                'scrollTop': scroll_top
-            }, 700, 'swing', function () {
-                if(history.pushState) {
-                    history.pushState(null, null, '#'+hash);
-                }
-                else {
-                    location.hash = '#'+hash;
-                }
-            });
+          $('html, body').stop().animate({
+            'scrollTop': scroll_top
+          }, 700, 'swing', function () {
+            if(history.pushState) {
+              history.pushState(null, null, '#'+hash);
+            }
+            else {
+              location.hash = '#'+hash;
+            }
+          });
         })
         .on('scroll.fndtn.magellan', self.throttle(this.check_for_arrivals.bind(this), settings.throttle_delay))
-        $(window).on('resize.fndtn.magellan', self.throttle(this.set_expedition_position.bind(this), settings.throttle_delay));
+      $(window).on('resize.fndtn.magellan', self.throttle(this.set_expedition_position.bind(this), settings.throttle_delay));
     },
 
     check_for_arrivals : function() {
@@ -3164,8 +3164,8 @@
       var self = this;
       $('[' + this.attr_name() + '=fixed]', self.scope).each(function(idx, el) {
         var expedition = $(this),
-            styles = expedition.attr('styles'), // save styles
-            top_offset;
+          styles = expedition.attr('styles'), // save styles
+          top_offset;
 
         expedition.attr('style', '');
         top_offset = expedition.offset().top;
@@ -3177,11 +3177,11 @@
 
     update_expedition_positions : function() {
       var self = this,
-          window_top_offset = $(window).scrollTop();
+        window_top_offset = $(window).scrollTop();
 
       $('[' + this.attr_name() + '=fixed]', self.scope).each(function() {
         var expedition = $(this),
-            top_offset = expedition.data('magellan-top-offset');
+          top_offset = expedition.data('magellan-top-offset');
 
         if (window_top_offset >= top_offset) {
           // Placeholder allows height calculations to be consistent even when
@@ -3203,14 +3203,14 @@
 
     update_arrivals : function() {
       var self = this,
-          window_top_offset = $(window).scrollTop();
+        window_top_offset = $(window).scrollTop();
 
       $('[' + this.attr_name() + ']', self.scope).each(function() {
         var expedition = $(this),
-            settings = settings = expedition.data(self.attr_name(true) + '-init'),
-            offsets = self.offsets(expedition, window_top_offset),
-            arrivals = expedition.find('[' + self.add_namespace('data-magellan-arrival') + ']'),
-            active_item = false;
+          settings = settings = expedition.data(self.attr_name(true) + '-init'),
+          offsets = self.offsets(expedition, window_top_offset),
+          arrivals = expedition.find('[' + self.add_namespace('data-magellan-arrival') + ']'),
+          active_item = false;
         offsets.each(function(idx, item) {
           if (item.viewport_offset >= item.top_offset) {
             var arrivals = expedition.find('[' + self.add_namespace('data-magellan-arrival') + ']');
@@ -3227,12 +3227,12 @@
 
     offsets : function(expedition, window_offset) {
       var self = this,
-          settings = expedition.data(self.attr_name(true) + '-init'),
-          viewport_offset = window_offset;
+        settings = expedition.data(self.attr_name(true) + '-init'),
+        viewport_offset = window_offset;
 
       return expedition.find('[' + self.add_namespace('data-magellan-arrival') + ']').map(function(idx, el) {
         var name = $(this).data(self.data_attr('magellan-arrival')),
-            dest = $('[' + self.add_namespace('data-magellan-destination') + '=' + name + ']');
+          dest = $('[' + self.add_namespace('data-magellan-destination') + '=' + name + ']');
         if (dest.length > 0) {
           var top_offset = dest.offset().top - settings.destination_threshold - expedition.outerHeight();
           return {
@@ -3286,7 +3286,7 @@
 
     events : function () {
       var self = this,
-          S = self.S;
+        S = self.S;
 
       S(this.scope).off('.offcanvas')
         .on('click.fndtn.offcanvas', '.left-off-canvas-toggle', function (e) {
@@ -3333,15 +3333,15 @@
     }
 
     var self = this,
-        container,
-        slides_container = el,
-        number_container,
-        bullets_container,
-        timer_container,
-        idx = 0,
-        animate,
-        adjust_height_after = false,
-        has_init_active = slides_container.find("." + settings.active_slide_class).length > 0;
+      container,
+      slides_container = el,
+      number_container,
+      bullets_container,
+      timer_container,
+      idx = 0,
+      animate,
+      adjust_height_after = false,
+      has_init_active = slides_container.find("." + settings.active_slide_class).length > 0;
 
     self.cache = {};
 
@@ -3373,7 +3373,7 @@
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
       slides_container.addClass(settings.animation);
-      
+
       if (settings.stack_on_small) {
         container.addClass(settings.stack_on_small_class);
       }
@@ -3387,7 +3387,7 @@
         timer_container = $('<div>').addClass(settings.timer_container_class);
         timer_container.append('<span>');
         if (settings.timer_show_progress_bar) {
-            timer_container.append($('<div>').addClass(settings.timer_progress_class));
+          timer_container.append($('<div>').addClass(settings.timer_progress_class));
         }
         timer_container.addClass(settings.timer_paused_class);
         container.append(timer_container);
@@ -3414,15 +3414,15 @@
     self._prepare_direction = function(next_idx, current_direction) {
       var dir = 'next';
       if (next_idx <= idx) { dir = 'prev'; }
-      
-      if (settings.animation === 'slide') {    
+
+      if (settings.animation === 'slide') {
         setTimeout(function(){
           slides_container.removeClass("swipe-prev swipe-next");
           if (dir === 'next') {slides_container.addClass("swipe-next");}
           else if (dir === 'prev') {slides_container.addClass("swipe-prev");}
         },0);
       }
-      
+
       var slides = self.slides();
       if (next_idx >= slides.length) {
         if (!settings.circular) return false;
@@ -3433,7 +3433,7 @@
       }
       var current = $(slides.get(idx))
         , next = $(slides.get(next_idx));
-      
+
       return [dir, current, next, next_idx];
     };
 
@@ -3442,7 +3442,7 @@
       if (self.cache.animating) {return false;}
       if (next_idx === idx) {return false;}
       if (typeof self.cache.timer === 'object') {self.cache.timer.restart();}
-      
+
       var slides = self.slides();
       self.cache.animating = true;
       var res = self._prepare_direction(next_idx)
@@ -3460,7 +3460,7 @@
 
       current.css("transitionDuration", settings.animation_speed+"ms");
       next.css("transitionDuration", settings.animation_speed+"ms");
-      
+
       var callback = function() {
         var unlock = function() {
           if (start_timer === true) {self.cache.timer.restart();}
@@ -3472,7 +3472,7 @@
           setTimeout(function(){
             self.cache.animating = false;
           }, 100);
-          
+
         };
         if (slides_container.height() != next.height() && settings.variable_height) {
           slides_container.animate({'height': next.height()}, 250, 'linear', unlock);
@@ -3485,7 +3485,7 @@
 
       var start_animation = function() {
         if (dir === 'next') {animate.next(current, next, callback);}
-        if (dir === 'prev') {animate.prev(current, next, callback);}        
+        if (dir === 'prev') {animate.prev(current, next, callback);}
       };
 
       if (next.height() > slides_container.height() && settings.variable_height) {
@@ -3494,16 +3494,16 @@
         start_animation();
       }
     };
-    
+
     self.next = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
       self._prepare_direction(idx + 1);
       setTimeout(function(){
         self._goto(idx + 1);
-    }, 100);
+      }, 100);
     };
-    
+
     self.prev = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
@@ -3526,7 +3526,7 @@
       }
     };
 
-    self.link_bullet = function(e) {    
+    self.link_bullet = function(e) {
       var index = $(this).attr('data-orbit-slide');
       if ((typeof index === 'string') && (index = $.trim(index)) != "") {
         if(isNaN(parseInt(index)))
@@ -3551,7 +3551,7 @@
     self.timer_callback = function() {
       self._goto(idx + 1, true);
     }
-    
+
     self.compute_dimensions = function() {
       var current = $(self.slides().get(idx));
       var h = current.height();
@@ -3565,8 +3565,8 @@
 
     self.create_timer = function() {
       var t = new Timer(
-        container.find('.'+settings.timer_container_class), 
-        settings, 
+        container.find('.'+settings.timer_container_class),
+        settings,
         self.timer_callback
       );
       return t;
@@ -3580,7 +3580,7 @@
       var t = container.find('.'+settings.timer_container_class);
       if (t.hasClass(settings.timer_paused_class)) {
         if (typeof self.cache.timer === 'undefined') {self.cache.timer = self.create_timer();}
-        self.cache.timer.start();     
+        self.cache.timer.start();
       }
       else {
         if (typeof self.cache.timer === 'object') {self.cache.timer.stop();}
@@ -3590,15 +3590,15 @@
     self.init = function() {
       self.build_markup();
       if (settings.timer) {
-        self.cache.timer = self.create_timer(); 
+        self.cache.timer = self.create_timer();
         Foundation.utils.image_loaded(this.slides().children('img'), self.cache.timer.start);
       }
-      
+
       animate = new CSSAnimation(settings, slides_container);
 
       if (has_init_active) {
         var $init_target = slides_container.find("." + settings.active_slide_class),
-            animation_speed = settings.animation_speed;
+          animation_speed = settings.animation_speed;
         settings.animation_speed = 1;
         $init_target.removeClass('active');
         self._goto($init_target.index());
@@ -3611,7 +3611,7 @@
       if (settings.next_on_click) {
         container.on('click', '[data-orbit-slide]', self.link_bullet);
       }
-      
+
       container.on('click', self.toggle_timer);
       if (settings.swipe) {
         slides_container.on('touchstart.fndtn.orbit',function(e) {
@@ -3626,73 +3626,73 @@
           self.cache.delta_x = 0;
           self.cache.is_scrolling = null;
           self.cache.direction = null;
-          
+
           self.stop_timer(); // does not appear to prevent callback from occurring          
         })
-        .on('touchmove.fndtn.orbit',function(e) {
-          if (Math.abs(self.cache.delta_x) > 5) {
+          .on('touchmove.fndtn.orbit',function(e) {
+            if (Math.abs(self.cache.delta_x) > 5) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+
+            if (self.cache.animating) {return;}
+            requestAnimationFrame(function(){
+              if (!e.touches) { e = e.originalEvent; }
+
+              // Ignore pinch/zoom events
+              if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
+
+              self.cache.delta_x = e.touches[0].pageX - self.cache.start_page_x;
+
+              if (self.cache.is_scrolling === null) {
+                self.cache.is_scrolling = !!( self.cache.is_scrolling || Math.abs(self.cache.delta_x) < Math.abs(e.touches[0].pageY - self.cache.start_page_y) );
+              }
+
+              if (self.cache.is_scrolling) {
+                return;
+              }
+
+              var direction = (self.cache.delta_x < 0) ? (idx+1) : (idx-1);
+              if (self.cache.direction !== direction) {
+                var res = self._prepare_direction(direction);
+                self.cache.direction = direction;
+                self.cache.dir = res[0];
+                self.cache.current = res[1];
+                self.cache.next = res[2];
+              }
+
+              if (settings.animation === 'slide') {
+                var offset, next_offset;
+
+                offset = (self.cache.delta_x / container.width()) * 100;
+                if (offset >= 0) {next_offset = -(100 - offset);}
+                else {next_offset = 100 + offset;}
+
+                self.cache.current.css("transform","translate3d("+offset+"%,0,0)");
+                self.cache.next.css("transform","translate3d("+next_offset+"%,0,0)");
+              }
+            });
+          })
+          .on('touchend.fndtn.orbit', function(e) {
+            if (self.cache.animating) {return;}
             e.preventDefault();
             e.stopPropagation();
-          }
-
-          if (self.cache.animating) {return;}          
-          requestAnimationFrame(function(){
-            if (!e.touches) { e = e.originalEvent; }
-
-            // Ignore pinch/zoom events
-            if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
-
-            self.cache.delta_x = e.touches[0].pageX - self.cache.start_page_x;
-
-            if (self.cache.is_scrolling === null) {
-              self.cache.is_scrolling = !!( self.cache.is_scrolling || Math.abs(self.cache.delta_x) < Math.abs(e.touches[0].pageY - self.cache.start_page_y) );
-            }
-
-            if (self.cache.is_scrolling) {
-              return;
-            }
-            
-            var direction = (self.cache.delta_x < 0) ? (idx+1) : (idx-1);
-            if (self.cache.direction !== direction) {
-              var res = self._prepare_direction(direction);
-              self.cache.direction = direction;
-              self.cache.dir = res[0];
-              self.cache.current = res[1];
-              self.cache.next = res[2];
-            }
-
-            if (settings.animation === 'slide') {
-              var offset, next_offset;
-              
-              offset = (self.cache.delta_x / container.width()) * 100;
-              if (offset >= 0) {next_offset = -(100 - offset);}
-              else {next_offset = 100 + offset;}
-
-              self.cache.current.css("transform","translate3d("+offset+"%,0,0)");
-              self.cache.next.css("transform","translate3d("+next_offset+"%,0,0)");
-            }
+            setTimeout(function(){
+              self._goto(self.cache.direction);
+            }, 50);
           });
-        })
-        .on('touchend.fndtn.orbit', function(e) {
-          if (self.cache.animating) {return;}
-          e.preventDefault();
-          e.stopPropagation();
-          setTimeout(function(){
-            self._goto(self.cache.direction);
-          }, 50);
-        });
       }
       container.on('mouseenter.fndtn.orbit', function(e) {
         if (settings.timer && settings.pause_on_hover) {
           self.stop_timer();
         }
       })
-      .on('mouseleave.fndtn.orbit', function(e) {
-        if (settings.timer && settings.resume_on_mouseout) {
-          self.cache.timer.start();
-        }
-      });
-      
+        .on('mouseleave.fndtn.orbit', function(e) {
+          if (settings.timer && settings.resume_on_mouseout) {
+            self.cache.timer.start();
+          }
+        });
+
       $(document).on('click', '[data-orbit-link]', self.link_custom);
       $(window).on('load resize', self.compute_dimensions);
       var children = this.slides().find('img');
@@ -3710,12 +3710,12 @@
 
   var Timer = function(el, settings, callback) {
     var self = this,
-        duration = settings.timer_speed,
-        progress = el.find('.'+settings.timer_progress_class),
-        do_progress = progress && progress.css('display') != 'none',
-        start, 
-        timeout,
-        left = -1;
+      duration = settings.timer_speed,
+      progress = el.find('.'+settings.timer_progress_class),
+      do_progress = progress && progress.css('display') != 'none',
+      start,
+      timeout,
+      left = -1;
 
     this.update_progress = function(w) {
       var new_progress = progress.clone();
@@ -3738,8 +3738,8 @@
       left = (left === -1) ? duration : left;
       el.removeClass(settings.timer_paused_class);
       if (do_progress) {
-          start = new Date().getTime();
-          progress.animate({'width': '100%'}, left, 'linear');
+        start = new Date().getTime();
+        progress.animate({'width': '100%'}, left, 'linear');
       }
       timeout = setTimeout(function() {
         self.restart();
@@ -3753,10 +3753,10 @@
       clearTimeout(timeout);
       el.addClass(settings.timer_paused_class);
       if (do_progress) {
-          var end = new Date().getTime();
-          left = left - (end - start);
-          var w = 100 - ((left / duration) * 100);
-          self.update_progress(w);
+        var end = new Date().getTime();
+        left = left - (end - start);
+        var w = 100 - ((left / duration) * 100);
+        self.update_progress(w);
       }
       el.trigger('timer-stopped.fndtn.orbit');
     };
@@ -3925,7 +3925,7 @@
     }
   };
 
-    
+
 }(jQuery, this, this.document));
 
 ;(function ($, window, document, undefined) {
@@ -3971,7 +3971,7 @@
 
     events : function (scope) {
       var self = this,
-          S = self.S;
+        S = self.S;
 
       S(this.scope)
         .off('.reveal')
@@ -3980,7 +3980,7 @@
 
           if (!self.locked) {
             var element = S(this),
-                ajax = element.data(self.data_attr('reveal-ajax'));
+              ajax = element.data(self.data_attr('reveal-ajax'));
 
             self.locked = true;
 
@@ -4001,7 +4001,7 @@
 
           if (!self.locked) {
             var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init'),
-                bg_clicked = S(e.target)[0] === S('.' + settings.bg_class)[0];
+              bg_clicked = S(e.target)[0] === S('.' + settings.bg_class)[0];
 
             if (bg_clicked) {
               if (settings.close_on_background_click) {
@@ -4046,7 +4046,7 @@
       // PATCH #1: fixing multiple keyup event trigger from single key press
       self.S('body').off('keyup.fndtn.reveal').on('keyup.fndtn.reveal', function ( event ) {
         var open_modal = self.S('[' + self.attr_name() + '].open'),
-            settings = open_modal.data(self.attr_name(true) + '-init');
+          settings = open_modal.data(self.attr_name(true) + '-init');
         // PATCH #2: making sure that the close event can be called only while unlocked,
         //           so that multiple keyup.fndtn.reveal events don't prevent clean closing of the reveal window.
         if ( settings && event.which === 27  && settings.close_on_esc && !self.locked) { // 27 is the keycode for the Escape key
@@ -4132,8 +4132,8 @@
 
     close : function (modal) {
       var modal = modal && modal.length ? modal : this.S(this.scope),
-          open_modals = this.S('[' + this.attr_name() + '].open'),
-          settings = modal.data(this.attr_name(true) + '-init');
+        open_modals = this.S('[' + this.attr_name() + '].open'),
+        settings = modal.data(this.attr_name(true) + '-init');
 
       if (open_modals.length > 0) {
         this.locked = true;
@@ -4175,7 +4175,7 @@
         var settings = el.data(this.attr_name(true) + '-init');
         if (el.parent('body').length === 0) {
           var placeholder = el.wrap('<div style="display: none;" />').parent(),
-              rootElement = this.settings.rootElement || 'body';
+            rootElement = this.settings.rootElement || 'body';
 
           el.on('closed.fndtn.reveal.wrapped', function() {
             el.detach().appendTo(placeholder);
@@ -4289,7 +4289,7 @@
 
     close_video : function (e) {
       var video = $('.flex-video', e.target),
-          iframe = $('iframe', video);
+        iframe = $('iframe', video);
 
       if (iframe.length > 0) {
         iframe.attr('data-src', iframe[0].src);
@@ -4300,7 +4300,7 @@
 
     open_video : function (e) {
       var video = $('.flex-video', e.target),
-          iframe = video.find('iframe');
+        iframe = video.find('iframe');
 
       if (iframe.length > 0) {
         var data_src = iframe.attr('data-src');
@@ -4387,7 +4387,7 @@
       $(this.scope)
         .off('.slider')
         .on('mousedown.fndtn.slider touchstart.fndtn.slider pointerdown.fndtn.slider',
-        '[' + self.attr_name() + '] .range-slider-handle', function(e) {
+          '[' + self.attr_name() + '] .range-slider-handle', function(e) {
           if (!self.cache.active) {
             e.preventDefault();
             self.set_active_slider($(e.target));
@@ -4422,11 +4422,11 @@
 
     calculate_position : function($handle, cursor_x) {
       var self = this,
-          settings = $.extend({}, self.settings, self.data_options($handle.parent())),
-          handle_w = $.data($handle[0], 'handle_w'),
-          handle_o = $.data($handle[0], 'handle_o'),
-          bar_w = $.data($handle[0], 'bar_w'),
-          bar_o = $.data($handle[0], 'bar_o');
+        settings = $.extend({}, self.settings, self.data_options($handle.parent())),
+        handle_w = $.data($handle[0], 'handle_w'),
+        handle_o = $.data($handle[0], 'handle_o'),
+        bar_w = $.data($handle[0], 'bar_w'),
+        bar_o = $.data($handle[0], 'bar_o');
 
       requestAnimationFrame(function(){
         var pct;
@@ -4445,11 +4445,11 @@
 
     set_ui : function($handle, value) {
       var settings = $.extend({}, this.settings, this.data_options($handle.parent())),
-          handle_w = $.data($handle[0], 'handle_w'),
-          bar_w = $.data($handle[0], 'bar_w'),
-          norm_pct = this.normalized_percentage(value, settings.start, settings.end),
-          handle_offset = norm_pct*(bar_w-handle_w)-1,
-          progress_bar_width = norm_pct*100;
+        handle_w = $.data($handle[0], 'handle_w'),
+        bar_w = $.data($handle[0], 'bar_w'),
+        norm_pct = this.normalized_percentage(value, settings.start, settings.end),
+        handle_offset = norm_pct*(bar_w-handle_w)-1,
+        progress_bar_width = norm_pct*100;
 
       if (Foundation.rtl) {
         handle_offset = -handle_offset;
@@ -4481,11 +4481,11 @@
 
     normalized_value : function(val, start, end, step) {
       var range = end - start,
-          step = step,
-          point = val*range,
-          mod = (point-(point%step)) / step,
-          rem = point % step,
-          round = ( rem >= step*0.5 ? step : 0);
+        step = step,
+        point = val*range,
+        mod = (point-(point%step)) / step,
+        rem = point % step,
+        round = ( rem >= step*0.5 ? step : 0);
       return (mod*step + round) + start;
     },
 
@@ -4522,8 +4522,8 @@
 
     set_initial_position : function($ele) {
       var settings = $.data($ele.children('.range-slider-handle')[0], 'settings'),
-          initial = (!!settings.initial ? settings.initial : Math.floor((settings.end-settings.start)*0.5/settings.step)*settings.step+settings.start),
-          $handle = $ele.children('.range-slider-handle');
+        initial = (!!settings.initial ? settings.initial : Math.floor((settings.end-settings.start)*0.5/settings.step)*settings.step+settings.start),
+        $handle = $ele.children('.range-slider-handle');
       this.set_ui($handle, initial);
     },
 
@@ -4542,7 +4542,7 @@
       var self = this;
       self.S('[' + this.attr_name() + ']').each(function() {
         var handle = $(this).children('.range-slider-handle')[0],
-            val = $(this).attr(self.attr_name());
+          val = $(this).attr(self.attr_name());
         self.initialize_settings(handle);
 
         if (val) {
@@ -4578,7 +4578,7 @@
 
     init : function (scope, method, options) {
       var self = this,
-          S = this.S;
+        S = this.S;
 
       this.bindings(method, options);
       this.handle_location_hash_change();
@@ -4593,7 +4593,7 @@
 
     events : function () {
       var self = this,
-          S = this.S;
+        S = this.S;
 
       S(this.scope)
         .off('.tab')
@@ -4621,7 +4621,7 @@
 
     handle_location_hash_change : function () {
       var self = this,
-          S = this.S;
+        S = this.S;
 
       S('[' + this.attr_name() + ']', this.scope).each(function () {
         var settings = S(this).data(self.attr_name(true) + '-init');
@@ -4650,17 +4650,17 @@
             }
           }
         }
-       });
-     },
+      });
+    },
 
     toggle_active_tab: function (tab, location_hash) {
       var S = this.S,
-          tabs = tab.closest('[' + this.attr_name() + ']'),
-          anchor = tab.children('a').first(),
-          target_hash = '#' + anchor.attr('href').split('#')[1],
-          target = S(target_hash),
-          siblings = tab.siblings(),
-          settings = tabs.data(this.attr_name(true) + '-init');
+        tabs = tab.closest('[' + this.attr_name() + ']'),
+        anchor = tab.children('a').first(),
+        target_hash = '#' + anchor.attr('href').split('#')[1],
+        target = S(target_hash),
+        siblings = tab.siblings(),
+        settings = tabs.data(this.attr_name(true) + '-init');
 
       // allow usage of data-tab-content attribute instead of href
       if (S(this).data(this.data_attr('tab-content'))) {
@@ -4757,7 +4757,7 @@
 
     events : function (instance) {
       var self = this,
-          S = self.S;
+        S = self.S;
 
       self.create(this.S(instance));
 
@@ -4766,8 +4766,8 @@
         .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip',
           '[' + this.attr_name() + ']', function (e) {
           var $this = S(this),
-              settings = $.extend({}, self.settings, self.data_options($this)),
-              is_touch = false;
+            settings = $.extend({}, self.settings, self.data_options($this)),
+            is_touch = false;
 
           if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type) && S(e.target).is('a')) {
             return false;
@@ -4824,13 +4824,13 @@
     showTip : function ($target) {
       var $tip = this.getTip($target);
 
-        return this.show($target);
+      return this.show($target);
     },
 
     getTip : function ($target) {
       var selector = this.selector($target),
-          settings = $.extend({}, this.settings, this.data_options($target)),
-          tip = null;
+        settings = $.extend({}, this.settings, this.data_options($target)),
+        tip = null;
 
       if (selector) {
         tip = this.S('span[data-selector="' + selector + '"]' + settings.tooltip_class);
@@ -4841,7 +4841,7 @@
 
     selector : function ($target) {
       var id = $target.attr('id'),
-          dataSelector = $target.attr(this.attr_name()) || $target.attr('data-selector');
+        dataSelector = $target.attr(this.attr_name()) || $target.attr('data-selector');
 
       if ((id && id.length < 1 || !id) && typeof dataSelector != 'string') {
         dataSelector = this.random_str(6);
@@ -4853,15 +4853,15 @@
 
     create : function ($target) {
       var self = this,
-          settings = $.extend({}, this.settings, this.data_options($target)),
-          tip_template = this.settings.tip_template;
+        settings = $.extend({}, this.settings, this.data_options($target)),
+        tip_template = this.settings.tip_template;
 
       if (typeof settings.tip_template === 'string' && window.hasOwnProperty(settings.tip_template)) {
         tip_template = window[settings.tip_template];
       }
 
       var $tip = $(tip_template(this.selector($target), $('<div></div>').html($target.attr('title')).html())),
-          classes = this.inheritable_classes($target);
+        classes = this.inheritable_classes($target);
 
       $tip.addClass(classes).appendTo(settings.append_to);
 
@@ -4939,21 +4939,21 @@
 
     inheritable_classes : function ($target) {
       var settings = $.extend({}, this.settings, this.data_options($target)),
-          inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'radius', 'round'].concat(settings.additional_inheritable_classes),
-          classes = $target.attr('class'),
-          filtered = classes ? $.map(classes.split(' '), function (el, i) {
-            if ($.inArray(el, inheritables) !== -1) {
-              return el;
-            }
-          }).join(' ') : '';
+        inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'radius', 'round'].concat(settings.additional_inheritable_classes),
+        classes = $target.attr('class'),
+        filtered = classes ? $.map(classes.split(' '), function (el, i) {
+          if ($.inArray(el, inheritables) !== -1) {
+            return el;
+          }
+        }).join(' ') : '';
 
       return $.trim(filtered);
     },
 
     convert_to_touch : function($target) {
       var self = this,
-          $tip = self.getTip($target),
-          settings = $.extend({}, self.settings, self.data_options($target));
+        $tip = self.getTip($target),
+        settings = $.extend({}, self.settings, self.data_options($target));
 
       if ($tip.find('.tap-to-close').length === 0) {
         $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
@@ -4998,7 +4998,7 @@
     reflow : function () {}
   };
 }(jQuery, this, this.document));
-
+/*
 ;(function ($, window, document, undefined) {
   'use strict';
 
@@ -5028,11 +5028,10 @@
 
       self.S('[' + this.attr_name() + ']', this.scope).each(function () {
         var topbar = $(this),
-            settings = topbar.data(self.attr_name(true) + '-init'),
-            section = self.S('section', this),
-            titlebar = topbar.children().filter('ul').first();
+          settings = topbar.data(self.attr_name(true) + '-init'),
+          section = self.S('section', this),
+          titlebar = topbar.children().filter('ul').first();
         topbar.data('index', 0);
-
         var topbarContainer = topbar.parent();
         if(topbarContainer.hasClass('fixed') || self.is_sticky(topbar, topbarContainer, settings) ) {
           self.settings.sticky_class = settings.sticky_class;
@@ -5046,12 +5045,6 @@
         if (!settings.assembled) self.assemble(topbar);
 
         if (settings.is_hover) {
-          var li = self.S('.has-dropdown'),
-          //20140530 added to make submit box the same height as the dropdown
-            isCallout = li.find('div'),
-            dropHeight = isCallout.next().height();
-            isCallout.height(dropHeight);
-
           self.S('.has-dropdown', topbar).addClass('not-click');
         } else {
           self.S('.has-dropdown', topbar).removeClass('not-click');
@@ -5128,7 +5121,7 @@
 
             window.scrollTo(0,0);
           } else {
-              topbar.parent().removeClass('expanded');
+            topbar.parent().removeClass('expanded');
           }
         }
       } else {
@@ -5154,7 +5147,7 @@
 
     events : function (bar) {
       var self = this,
-          S = this.S;
+        S = this.S;
 
       S(this.scope)
         .off('.topbar')
@@ -5163,17 +5156,18 @@
           self.toggle(this);
         })
         .on('click.fndtn.topbar','.top-bar .top-bar-section li a[href^="#"],[' + this.attr_name() + '] .top-bar-section li a[href^="#"]',function (e) {
-            var li = $(this).closest('li');
-            if(self.breakpoint() && !li.hasClass('back') && !li.hasClass('has-dropdown'))
-            {
+          var li = $(this).closest('li');
+          if(self.breakpoint() && !li.hasClass('back') && !li.hasClass('has-dropdown'))
+          {
             self.toggle();
-            }
+          }
         })
         .on('click.fndtn.topbar', '[' + this.attr_name() + '] li.has-dropdown', function (e) {
           var li = S(this),
-              target = S(e.target),
-              topbar = li.closest('[' + self.attr_name() + ']'),
-              settings = topbar.data(self.attr_name(true) + '-init');
+            target = S(e.target),
+            topbar = li.closest('[' + self.attr_name() + ']'),
+            settings = topbar.data(self.attr_name(true) + '-init');
+
           if(target.data('revealId')) {
             self.toggle();
             return;
@@ -5208,11 +5202,11 @@
             e.preventDefault();
 
             var $this = S(this),
-                topbar = $this.closest('[' + self.attr_name() + ']'),
-                section = topbar.find('section, .section'),
-                dropdownHeight = $this.next('.dropdown').outerHeight(),
-                $selectedLi = $this.closest('li');
-                     console.log(dropdownHeight);
+              topbar = $this.closest('[' + self.attr_name() + ']'),
+              section = topbar.find('section, .section'),
+              dropdownHeight = $this.next('.dropdown').outerHeight(),
+              $selectedLi = $this.closest('li');
+
             topbar.data('index', topbar.data('index') + 1);
             $selectedLi.addClass('moved');
 
@@ -5227,7 +5221,7 @@
             topbar.css('height', $this.siblings('ul').outerHeight(true) + topbar.data('height'));
           }
         });
-      
+
       S(window).off('.topbar').on('resize.fndtn.topbar', self.throttle(function () {
         self.resize.call(self);
       }, 50)).trigger('resize');
@@ -5247,11 +5241,11 @@
         e.preventDefault();
 
         var $this = S(this),
-            topbar = $this.closest('[' + self.attr_name() + ']'),
-            section = topbar.find('section, .section'),
-            settings = topbar.data(self.attr_name(true) + '-init'),
-            $movedLi = $this.closest('li.moved'),
-            $previousLevelUl = $movedLi.parent();
+          topbar = $this.closest('[' + self.attr_name() + ']'),
+          section = topbar.find('section, .section'),
+          settings = topbar.data(self.attr_name(true) + '-init'),
+          $movedLi = $this.closest('li.moved'),
+          $previousLevelUl = $movedLi.parent();
 
         topbar.data('index', topbar.data('index') - 1);
 
@@ -5279,7 +5273,7 @@
       var self = this;
       self.S('[' + this.attr_name() + ']').each(function () {
         var topbar = self.S(this),
-            settings = topbar.data(self.attr_name(true) + '-init');
+          settings = topbar.data(self.attr_name(true) + '-init');
 
         var stickyContainer = topbar.parent('.' + self.settings.sticky_class);
         var stickyOffset;
@@ -5292,9 +5286,9 @@
             .find('li')
             .removeClass('hover');
 
-            if(doToggle) {
-              self.toggle(topbar);
-            }
+          if(doToggle) {
+            self.toggle(topbar);
+          }
         }
 
         if(self.is_sticky(topbar, stickyContainer, settings)) {
@@ -5336,17 +5330,17 @@
 
     assemble : function (topbar) {
       var self = this,
-          settings = topbar.data(this.attr_name(true) + '-init'),
-          section = self.S('section', topbar),
-          titlebar = $(this).children().filter('ul').first();
+        settings = topbar.data(this.attr_name(true) + '-init'),
+        section = self.S('section', topbar),
+        titlebar = $(this).children().filter('ul').first();
 
       // Pull element out of the DOM for manipulation
       section.detach();
 
       self.S('.has-dropdown>a', section).each(function () {
         var $link = self.S(this),
-            $dropdown = $link.siblings('.dropdown'),
-            url = $link.attr('href');
+          $dropdown = $link.siblings('.dropdown'),
+          url = $link.attr('href');
 
         if (!$dropdown.find('.title.back').length) {
           if (settings.mobile_show_parent_link && url && url.length > 1) {
@@ -5354,7 +5348,7 @@
           } else {
             var $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li>');
           }
-  
+
           // Copy link to subnav
           if (settings.custom_back_text == true) {
             $('h5>a', $titleLi).html(settings.back_text);
@@ -5380,7 +5374,7 @@
 
     height : function (ul) {
       var total = 0,
-          self = this;
+        self = this;
 
       $('> li', ul).each(function () { total += self.S(this).outerHeight(true); });
 
@@ -5389,7 +5383,7 @@
 
     sticky : function () {
       var $window = this.S(window),
-          self = this;
+        self = this;
 
       this.S(window).on('scroll', function() {
         self.update_sticky_positioning();
@@ -5398,8 +5392,8 @@
 
     update_sticky_positioning: function() {
       var klass = '.' + this.settings.sticky_class,
-          $window = this.S(window), 
-          self = this;
+        $window = this.S(window),
+        self = this;
 
       if (self.settings.sticky_topbar && self.is_sticky(this.settings.sticky_topbar,this.settings.sticky_topbar.parent(), this.settings)) {
         var distance = this.settings.sticky_topbar.data('stickyoffset');
@@ -5427,3 +5421,4 @@
     reflow : function () {}
   };
 }(jQuery, this, this.document));
+*/

@@ -2076,9 +2076,6 @@
 /*------------------------------------*\
    COLORS
 \*------------------------------------*/
-/* $topbar-dropdown-toggle-size: 5px;
- $topbar-dropdown-toggle-color: $clr-highlight-text;
- $topbar-dropdown-toggle-alpha: 0.4;*/
 /*
  $topbar-menu-link-transform: uppercase;
  $topbar-menu-link-font-size: rem-calc(13);
@@ -5668,7 +5665,7 @@ form .row textarea.columns {
 /* line 332, ../../sass/vendor/foundation/components/_forms.scss */
 label {
   font-size: 0.875rem;
-  color: #4d4d4d;
+  color: #333333;
   cursor: pointer;
   display: block;
   font-weight: normal;
@@ -5686,7 +5683,7 @@ label {
   /* line 336, ../../sass/vendor/foundation/components/_forms.scss */
   label small {
     text-transform: capitalize;
-    color: #676767; }
+    color: #525252; }
 
 /* line 342, ../../sass/vendor/foundation/components/_forms.scss */
 select::-ms-expand {
@@ -6005,7 +6002,7 @@ span.error, small.error {
   color: white; }
 /* line 473, ../../sass/vendor/foundation/components/_forms.scss */
 .error > label > small {
-  color: #676767;
+  color: #525252;
   background: transparent;
   padding: 0;
   text-transform: capitalize;
@@ -8079,7 +8076,7 @@ th.hide-for-touch {
   line-height: 2.5rem; }
 
 /* line 44, ../../sass/_typography.scss */
-.header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit h3, #submission-links h3 {
+.header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit h3, #submission-links h3 {
   padding-bottom: 1.0625rem;
   margin-bottom: 1.0625rem;
   box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
@@ -8417,12 +8414,12 @@ footer {
   /*TODO: use themes journal-specific css to assign border color*/
   padding: 0 0.625rem; }
 
-/* line 28, ../../sass/sections/_header.scss */
+/* line 27, ../../sass/sections/_header.scss */
 .ad-head iframe {
   padding-left: 18px;
-  background: url('../img/text.vert.ad.gif?1402533884') no-repeat left remcalc(5); }
+  background: url('../img/text.vert.ad.gif?1400626859') no-repeat left remcalc(5); }
 
-/* line 39, ../../sass/sections/_header.scss */
+/* line 38, ../../sass/sections/_header.scss */
 #pagehdr-wrap .nav {
   width: 100%;
   margin-left: auto;
@@ -8438,14 +8435,14 @@ footer {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   #pagehdr-wrap .nav:after {
     clear: both; }
-  /* line 42, ../../sass/sections/_header.scss */
+  /* line 41, ../../sass/sections/_header.scss */
   #pagehdr-wrap .nav .nav-user {
     font-weight: bold; }
-    /* line 47, ../../sass/sections/_header.scss */
+    /* line 46, ../../sass/sections/_header.scss */
     #pagehdr-wrap .nav .nav-user > li {
       margin-top: -0.3125rem;
       margin-left: 0.25rem; }
-      /* line 52, ../../sass/sections/_header.scss */
+      /* line 50, ../../sass/sections/_header.scss */
       #pagehdr-wrap .nav .nav-user > li > a {
         background: transparent;
         padding: 0.875rem 1rem 0.5rem;
@@ -8455,15 +8452,15 @@ footer {
         /* line 12, ../../sass/_components.scss */
         #pagehdr-wrap .nav .nav-user > li > a:hover {
           background: #333333; }
-        /* line 56, ../../sass/sections/_header.scss */
+        /* line 54, ../../sass/sections/_header.scss */
         #pagehdr-wrap .nav .nav-user > li > a:hover {
           color: white;
           background: #3c63af; }
-    /* line 63, ../../sass/sections/_header.scss */
+    /* line 61, ../../sass/sections/_header.scss */
     #pagehdr-wrap .nav .nav-user li.highlighted > a {
       color: white;
       background: #16a127; }
-/* line 71, ../../sass/sections/_header.scss */
+/* line 69, ../../sass/sections/_header.scss */
 #pagehdr-wrap .logo {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -8476,134 +8473,159 @@ footer {
 /* using Foundation Top Bar
  all @extend .class are Foundation
  */
-/* line 87, ../../sass/sections/_header.scss */
+/* line 85, ../../sass/sections/_header.scss */
 .nav-main {
   font-family: "albert"; }
+  /* line 88, ../../sass/sections/_header.scss */
+  .nav-main .top-bar-section {
+    width: 960px; }
   /* line 91, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
     width: 58.33333%;
     float: left;
-    padding-right: 0; }
-  /* line 96, ../../sass/sections/_header.scss */
+    padding-right: 0;
+    padding-left: 0; }
+  /* line 98, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li.has-dropdown {
-    border-left: 1px solid #cccccc; }
-    /* line 99, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:first-child {
-      border-left: 1px solid #efefef; }
-    /* line 102, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:hover {
-      border-left: 1px solid #efefef; }
-      /* line 104, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:hover .submit {
-        display: block; }
-    /* line 109, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > a {
-      font-family: "albert";
-      -moz-border-radius-topleft: 5px;
-      -webkit-border-top-left-radius: 5px;
-      border-top-left-radius: 5px;
-      -moz-border-radius-topright: 5px;
-      -webkit-border-top-right-radius: 5px;
-      border-top-right-radius: 5px; }
-      /* line 113, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown > a:hover {
-        -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-        -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-        box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-        background: white; }
-  /* line 120, ../../sass/sections/_header.scss */
-  .nav-main .top-bar-section ul.nav-elements > li.has-dropdown ul.dropdown {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    min-width: 14.6875rem;
-    margin-left: -0.9375rem;
-    padding-top: 1.25rem;
-    padding-bottom: 1.875rem;
+    cursor: pointer;
+    margin-right: 3px;
+    border-right: 1px solid #cccccc;
+    line-height: 36px;
+    padding: 0 15px;
+    font-family: "albert";
+    font-size: 20px; }
+    /* line 106, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:nth-child(3) {
+      border-right: none;
+      margin-right: 0; }
+  /* line 111, ../../sass/sections/_header.scss */
+  .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover {
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
     background: white;
-    -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1); }
-  /* line 131, ../../sass/sections/_header.scss */
-  .nav-main .top-bar-section ul.nav-elements > li:nth-child(3) ul.dropdown {
-    margin-left: -6.875rem; }
-  /* line 135, ../../sass/sections/_header.scss */
-  .nav-main .top-bar-section li.has-dropdown ul.dropdown li a {
-    width: 100%;
-    line-height: 1.875rem;
-    padding: 0 1.875rem;
-    font-family: "arial";
-    font-size: 0.875rem; }
-    /* line 142, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section li.has-dropdown ul.dropdown li a:hover {
-      color: white;
-      background: #3c63af; }
-  /* line 148, ../../sass/sections/_header.scss */
-  .nav-main .top-bar-section ul.nav-elements > li.has-dropdown {
-    position: relative; }
-    /* line 151, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit {
-      display: none;
-      position: absolute;
-      top: 2.8125rem;
-      left: -18.125rem;
-      width: 17.5rem;
-      padding: 1.25rem 0 1.875rem 0.9375rem;
-      z-index: 997;
+    /*.top-bar-section ul.nav-elements >*/
+    /*.top-bar-section ul.nav-elements > li.has-dropdown*/ }
+    /* line 116, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > ul.dropdown {
+      display: block;
+      position: static !important;
+      height: auto;
+      width: auto;
+      overflow: visible;
+      clip: auto;
+      position: absolute !important;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      border-radius: 5px;
+      width: 15rem;
+      margin-left: -0.9375rem;
+      padding-top: 1.25rem;
+      padding-bottom: 1.875rem;
       background: white;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      font-family: "albert";
-      font-size: 0.875rem; }
-      /* line 165, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit:hover {
-        display: block !important; }
-      /* line 168, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit .calloutInner {
-        border-right: 1px solid #efefef;
-        padding-right: 0.9375rem; }
-      /* line 172, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit h3 {
-        font-size: 1.4375rem; }
-      /* line 176, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul {
-        margin-left: 0.9375rem;
-        display: block !important;
-        list-style-type: disc; }
-        /* line 180, ../../sass/sections/_header.scss */
-        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul li {
-          margin-left: 0.9375rem; }
-          /* line 182, ../../sass/sections/_header.scss */
-          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul li a {
-            margin: 0;
-            padding: 0;
-            line-height: 1.35;
-            font-family: "albert";
-            font-size: 1rem;
-            background: white;
-            color: #3c63af; }
-            /* line 190, ../../sass/sections/_header.scss */
-            .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit ul li a:hover {
-              text-decoration: underline; }
-      /* line 197, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit a.btn {
-        background: #333333;
-        padding: 1.25rem;
-        border-radius: 5px;
+      box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15); }
+    /* line 127, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover li:nth-child(3) ul.dropdown {
+      margin-left: -6.875rem; }
+    /* line 133, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .dropdownanchor, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .dropdowncallout ul.nav-elements > li.has-dropdown.hover a {
+      width: 100%;
+      line-height: 1;
+      padding: 0.4375rem 1.875rem 0.5rem 1.875rem;
+      font-family: "arial";
+      font-size: 0.875rem;
+      white-space: pre-wrap; }
+      /* line 140, ../../sass/sections/_header.scss */
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .dropdownanchor:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .dropdowncallout ul.nav-elements > li.has-dropdown.hover a:hover {
         color: white;
+        background: #3c63af; }
+    /* line 149, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer {
+      width: 530px;
+      margin-left: -18.125rem;
+      padding: 1.25rem 0 1.875rem;
+      background: white;
+      box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      border-radius: 5px; }
+      /* line 157, ../../sass/sections/_header.scss */
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit {
+        position: relative;
+        float: left;
+        display: inline !important;
+        width: 17.5rem;
+        margin-right: 0.625rem;
+        padding: 0 1.25rem 1.875rem 0.9375rem;
+        font-family: "albert";
+        font-size: 0.875rem; }
+        /* line 168, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit h3 {
+          margin-top: 0.3125rem;
+          font-size: 1.4375rem; }
+        /* line 173, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit ul {
+          margin-left: 0.9375rem;
+          display: block !important;
+          list-style-type: disc;
+          width: auto; }
+          /* line 178, ../../sass/sections/_header.scss */
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit ul li {
+            margin-left: 0.9375rem;
+            width: auto; }
+            /* line 181, ../../sass/sections/_header.scss */
+            .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit ul li a {
+              display: inline !important;
+              margin: 0;
+              padding: 0;
+              line-height: 1.35;
+              font-family: "albert";
+              font-size: 1rem;
+              background: white;
+              color: #3c63af; }
+              /* line 191, ../../sass/sections/_header.scss */
+              .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit ul li a:hover {
+                text-decoration: underline; }
+        /* line 198, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit a.btn {
+          background: #333333;
+          padding: 1.25rem;
+          border-radius: 5px;
+          color: white;
+          display: inline-block;
+          margin-top: 1.25rem;
+          margin-left: 0.9375rem;
+          padding: 0 0.625rem;
+          line-height: 35px; }
+          /* line 12, ../../sass/_components.scss */
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit a.btn:hover {
+            background: #333333; }
+          /* line 205, ../../sass/sections/_header.scss */
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit a.btn:hover {
+            background: #3c63af; }
+      /* line 210, ../../sass/sections/_header.scss */
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .dropdowncallout {
+        float: right;
         display: inline-block;
-        margin-top: 1.25rem;
-        margin-left: 0.9375rem;
-        padding: 0 0.625rem;
-        line-height: 35px; }
-        /* line 12, ../../sass/_components.scss */
-        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown .submit a.btn:hover {
-          background: #333333; }
-  /* line 208, ../../sass/sections/_header.scss */
+        width: 15rem;
+        border-left: 1px solid #efefef;
+        background: white;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        border-radius: 5px; }
+  /* line 223, ../../sass/sections/_header.scss */
   .nav-main .head-search {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
@@ -8612,13 +8634,13 @@ footer {
     padding-left: 1.25rem;
     padding-right: 0;
     text-align: right; }
-    /* line 216, ../../sass/sections/_header.scss */
+    /* line 230, ../../sass/sections/_header.scss */
     .nav-main .head-search form {
       margin-top: -0.3125rem; }
-      /* line 223, ../../sass/sections/_header.scss */
+      /* line 237, ../../sass/sections/_header.scss */
       .nav-main .head-search form legend, .nav-main .head-search form label {
         display: none; }
-      /* line 227, ../../sass/sections/_header.scss */
+      /* line 241, ../../sass/sections/_header.scss */
       .nav-main .head-search form input[type="text"] {
         background-color: white;
         font-family: inherit;
@@ -8634,8 +8656,8 @@ footer {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        width: 12.1875rem;
-        color: #333333; }
+        width: 10.9375rem;
+        color: #636363; }
         /* line 124, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"]:focus {
           background: white;
@@ -8644,23 +8666,37 @@ footer {
         /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"][disabled], fieldset[disabled] .nav-main .head-search form input[type="text"] {
           background-color: #dddddd; }
-      /* line 239, ../../sass/sections/_header.scss */
+      /* line 253, ../../sass/sections/_header.scss */
+      .nav-main .head-search form ::-webkit-input-placeholder {
+        color: black; }
+      /* line 257, ../../sass/sections/_header.scss */
+      .nav-main .head-search form :-moz-placeholder {
+        /* Firefox 18- */
+        color: black; }
+      /* line 261, ../../sass/sections/_header.scss */
+      .nav-main .head-search form ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: black; }
+      /* line 265, ../../sass/sections/_header.scss */
+      .nav-main .head-search form :-ms-input-placeholder {
+        color: black; }
+      /* line 268, ../../sass/sections/_header.scss */
       .nav-main .head-search form button[type="submit"] {
         background: white;
         border-left: none;
         color: #333333;
         border-color: white;
-        width: 45px;
+        width: 40px;
+        height: 42px;
         border: none; }
-        /* line 244, ../../sass/sections/_header.scss */
+        /* line 274, ../../sass/sections/_header.scss */
         .nav-main .head-search form button[type="submit"] .search-icon {
-          padding-top: 0.25rem;
           font-size: 1.25rem; }
-  /* line 255, ../../sass/sections/_header.scss */
+  /* line 285, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search a {
     margin-top: -0.625rem;
     line-height: 33px;
-    width: 11.875rem;
+    width: 10.9375rem;
     padding: 0 !important;
     font-size: 0.8125rem;
     color: #3c63af;
@@ -8669,7 +8705,7 @@ footer {
     .nav-main .top-bar-section ul li.head-search a:hover, .nav-main .top-bar-section ul li.head-search a a:hover {
       color: #3c63af;
       text-decoration: underline; }
-  /* line 264, ../../sass/sections/_header.scss */
+  /* line 294, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search:hover:not(.has-form) > a {
     background: #efefef; }
 

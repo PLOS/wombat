@@ -24,7 +24,8 @@
 <script src="resource/js/vendor/jquery.dotdotdot.js"></script>
 
 <!--TODO: the following need to be on all pages, not just home-->
-
+ <!-- TODO: foundation-altered.js is in use for development. Need to
+  download a customized foundation.js that includes only what we're using -->
 <script src="resource/js/vendor/foundation-altered.js"></script>
 <script src="resource/js/components/navsearch.js"></script>
 
@@ -47,6 +48,23 @@
     $(".truncated-tooltip").dotdotdot({
       height: 45
     });
+    $('li.has-dropdown').mouseover(function(e){
+      var self = $(this);
+
+      setTimeout(function(){
+        self.addClass('hover');
+        }, 500);
+    }).mouseout(function(e) {
+      var self = $(this);
+      setTimeout(
+        function () {
+          self.removeClass('hover');
+        }, 800
+      );
+    });
+
+
+
   });
 
 </script>

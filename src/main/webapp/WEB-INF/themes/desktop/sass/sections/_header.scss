@@ -20,14 +20,13 @@
 .head-top {
   @extend .bg-dark;
   @extend .text-center;
-  @include highlight-border($plos-default);  /*TODO: use themes journal-specific css to assign border color*/
+  @include highlight-border($plos-default); /*TODO: use themes journal-specific css to assign border color*/
   padding: 0 $pad-small;
 }
-
 .ad-head {
   iframe {
     padding-left: 18px;
-    background: image-url('resource/img/text.vert.ad.gif') no-repeat left remcalc(5);
+    background: image-url('text.vert.ad.gif') no-repeat left remcalc(5);
   }
 }
 
@@ -84,141 +83,143 @@ $width-nav: $block-grid-elements - $width-logo;
  */
 
 .nav-main {
-  @extend .top-bar;
+ @extend .top-bar;
   font-family: $font-face-navigation;
-
+  .top-bar-section {
+    width: 960px;
+  }
   .top-bar-section ul.nav-elements {
     @extend .left; // foundation
     @include grid-column($width-nav); // from foundation
     padding-right: 0;
+    padding-left: 0;
   }
-  .top-bar-section ul.nav-elements > li.has-dropdown {
-    margin-right: 3px;
-    padding-right: 3px;
-    border-right: 1px solid $clr-separator;
 
+  .top-bar-section ul.nav-elements > li.has-dropdown {
+    cursor: pointer;
+    margin-right: 3px;
+    border-right: 1px solid $clr-separator;
+    line-height: 36px;
+    padding: 0 15px;
+    font-family: $font-face-navigation;
+    font-size: $txt-size-xlarge;
     &:nth-child(3) {
       border-right: none;
       margin-right: 0;
     }
-    &:hover {
-      @include border-top-radius();
-      box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
+  }
+  .top-bar-section ul.nav-elements > li.has-dropdown.hover {
+    @include border-top-radius();
+    box-shadow: $nav-main-box-shadow;
+    background: $white;
+
+    > ul.dropdown {
+      @include topbar-show-dropdown();
+      @include border-radius();
+      width: rem-calc(240);
+      margin-left: rem-calc(-15);
+      padding-top: rem-calc(20);
+      padding-bottom: rem-calc(30);
       background: $white;
+      box-shadow: $nav-main-box-shadow;
     }
-
-    > a {
-      line-height: 1;
-      padding: 10px 15px;
-      font-family: $font-face-navigation;
-      @include border-top-radius();
-    }
-  }
-
-  .top-bar-section ul.nav-elements > li.has-dropdown ul.dropdown {
-   @include border-radius();
-   width: rem-calc(240);
-   margin-left: rem-calc(-15);
-   padding-top: rem-calc(20);
-   padding-bottom: rem-calc(30);
-   background: $white;
-   box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
-  }
-  .top-bar-section ul.nav-elements > li:nth-child(3) {
-    ul.dropdown {
-      margin-left: rem-calc(-110);
-    }
-  }
-  // repeated for the dropdowncallout
-  .dropdownanchor {
-    width: 100%;
-    line-height: 1;
-    padding: rem-calc(7 30 8 30);
-    font-family: $font-face-plain;
-    font-size: rem-calc($txt-size-medium);
-    white-space: pre-wrap;
-    &:hover {
-      color: $clr-highlight-text;
-      background: $clr-highlight-hover;
-    }
-  }
-  .top-bar-section li.has-dropdown ul.dropdown li a {
-     @extend .dropdownanchor;
-  }
-
-  .top-bar-section ul.nav-elements > li.has-dropdown > .calloutcontainer {
-    width: 530px;
-    margin-left: rem-calc(-290);
-    padding: rem-calc(20 0 30);
-    background: white;
-    box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
-    @include border-radius();
-
-    .submit { //'Submit your manuscript' callout
-      position: relative;
-      float: left;
-      display: inline !important;
-      width: rem-calc(280);
-      margin-right: 10px;
-      padding: rem-calc(0 20 30 15);
-      font-family: $font-face-navigation;
-      font-size: rem-calc($txt-size-medium);
-
-      h3 {
-        @extend .header-bottom-shadow;
-        margin-top: 5px;
-        font-size: rem-calc($txt-size-23large);
+    /*.top-bar-section ul.nav-elements >*/ li:nth-child(3) {
+      ul.dropdown {
+        margin-left: rem-calc(-110);
       }
-      ul {
-        margin-left: rem-calc(15);
-        display: block !important;
-        list-style-type: disc;
-        width: auto;
-        li {
+    }
+
+    // repeated for the dropdowncallout
+    .dropdownanchor {
+      width: 100%;
+      line-height: 1;
+      padding: rem-calc(7 30 8 30);
+      font-family: $font-face-plain;
+      font-size: rem-calc($txt-size-medium);
+      white-space: pre-wrap;
+      &:hover {
+        color: $clr-highlight-text;
+        background: $clr-highlight-hover;
+      }
+    }
+    ul.dropdown li a {
+      @extend .dropdownanchor;
+    }
+
+    /*.top-bar-section ul.nav-elements > li.has-dropdown*/ > .calloutcontainer {
+      width: 530px;
+      margin-left: rem-calc(-290);
+      padding: rem-calc(20 0 30);
+      background: white;
+      box-shadow: $nav-main-box-shadow;
+      @include border-radius();
+
+      .submit {
+        //'Submit your manuscript' callout
+        position: relative;
+        float: left;
+        display: inline !important;
+        width: rem-calc(280);
+        margin-right: $pad-small;
+        padding: rem-calc(0 20 30 15);
+        font-family: $font-face-navigation;
+        font-size: rem-calc($txt-size-medium);
+
+        h3 {
+          @extend .header-bottom-shadow;
+          margin-top: $pad-xsmall;
+          font-size: rem-calc($txt-size-23large);
+        }
+        ul {
           margin-left: rem-calc(15);
+          display: block !important;
+          list-style-type: disc;
           width: auto;
-          a {
-            // necessary to override the foundation styles
-            display: inline !important;
-            margin: 0;
-            padding: 0;
-            line-height: 1.35;
-            font-family: $font-face-navigation;
-            font-size: rem-calc($txt-size-medium-large);
-            background: $white;
-            color: $clr-link;
-            &:hover {
-              text-decoration: underline;
+          li {
+            margin-left: rem-calc(15);
+            width: auto;
+            a {
+              // necessary to override the foundation styles
+              display: inline !important;
+              margin: 0;
+              padding: 0;
+              line-height: 1.35;
+              font-family: $font-face-navigation;
+              font-size: rem-calc($txt-size-medium-large);
+              background: $white;
+              color: $clr-link;
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
-        }
 
-      }
-      a.btn {
-        @include rounded-pill($clr-btn-secondary);
-        display: inline-block;
-        margin-top: rem-calc(20);
-        margin-left: rem-calc(15);
-        padding: rem-calc(0 10);
-        line-height: 35px;
-        &:hover {
-          background: $clr-btn-primary;
+        }
+        a.btn {
+          @include rounded-pill($clr-btn-secondary);
+          display: inline-block;
+          margin-top: rem-calc(20);
+          margin-left: rem-calc(15);
+          padding: rem-calc(0 10);
+          line-height: 35px;
+          &:hover {
+            background: $clr-btn-primary;
+          }
         }
       }
-    }
-    .dropdowncallout {
-      float: right;
-      display: inline-block;
-      width: rem-calc(240);
-      border-left: 1px solid $grey-light;
-      background: $white;
-      border-radius: 5px;
-      li a {
-        @extend .dropdownanchor;
+      .dropdowncallout {
+        float: right;
+        display: inline-block;
+        width: rem-calc(240);
+        border-left: 1px solid $grey-light;
+        background: $white;
+        @include border-radius();
+        li a {
+          @extend .dropdownanchor;
+        }
       }
     }
   }
-
  .head-search {
     // $last-column: true; // from foundation
     //@extend .has-form;   // from foundation
@@ -246,18 +247,34 @@ $width-nav: $block-grid-elements - $width-logo;
         $input-border-color: $white; // from foundation
         $input-focus-border-color: $white; // from foundation
         @include form-element(); // from foundation
-        width: rem-calc(195);
-        color: $grey-dark;
+        width: rem-calc(175);
+        color: $grey-med;
+      }
+      ::-webkit-input-placeholder {
+        color: black;
+      }
+
+      :-moz-placeholder { /* Firefox 18- */
+        color: black;
+      }
+
+      ::-moz-placeholder {  /* Firefox 19+ */
+        color: black;
+      }
+
+      :-ms-input-placeholder {
+        color: black;
       }
       button[type="submit"] {
         @include postfix($white, $white); //foundation
-        width: 45px;
+        width: 40px;
+        height: 42px;
         border: none;
 
         .search-icon {
           @extend .fa;
           @extend .fa-search;
-          padding-top: rem-calc(4);
+          //padding-top: rem-calc(4);
           font-size: rem-calc($txt-size-xlarge);
         }
       }
@@ -268,7 +285,7 @@ $width-nav: $block-grid-elements - $width-logo;
   .top-bar-section ul li.head-search a {
     margin-top: rem-calc(-10);
     line-height: 33px;
-    width: rem-calc(190);
+    width: rem-calc(175);
     padding: 0 !important;
     font-size:  rem-calc($txt-size-small);
 

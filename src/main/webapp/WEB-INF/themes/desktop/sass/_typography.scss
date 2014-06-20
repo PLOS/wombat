@@ -91,3 +91,24 @@
   letter-spacing: -1;
 }
 .no-margin{ margin-bottom: 0;}
+
+//////////////
+//form styles
+///////////////
+
+@mixin input-placeholder-color ($color: $clr-input-placeholder) {
+  ::-webkit-input-placeholder {
+    color: $color;
+  }
+  :-moz-placeholder {
+    /* Firefox 18- */
+    color: $color;
+  }
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $color;
+  }
+  :-ms-input-placeholder {
+    color: $color;
+  }
+}

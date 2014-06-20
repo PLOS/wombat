@@ -201,6 +201,9 @@ $width-nav: $block-grid-elements - $width-logo;
         margin-left: rem-calc(15);
         padding: rem-calc(0 10);
         line-height: 35px;
+        &:hover {
+          background: $clr-btn-primary;
+        }
       }
     }
   }
@@ -234,8 +237,10 @@ $width-nav: $block-grid-elements - $width-logo;
         $input-focus-border-color: $white; // from foundation
         @include form-element(); // from foundation
         width: rem-calc(195);
-        color: $grey-dark;
+        color: $clr-input-active;
       }
+      @include input-placeholder-color();
+
       button[type="submit"] {
         @include postfix($white, $white); //foundation
         width: 45px;

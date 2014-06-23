@@ -297,8 +297,6 @@ $image-container: ($image-width + $pad-small);
 #issue {
   @include grid-column(2);
   @include blocks;
-  @extend .block;
-
   .current-img {
     width: rem-calc(160);
   }
@@ -306,7 +304,7 @@ $image-container: ($image-width + $pad-small);
     margin-top: rem-calc(5);
     a {
       @include link-text();
-      @extend .header-allcaps-xxlarge;
+      @extend .header-allcaps-xlarge;
       @extend .condense;
       display: block;
       margin-bottom: rem-calc(-5);

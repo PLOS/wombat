@@ -27,8 +27,9 @@
  <!-- TODO: foundation-altered.js is in use for development. Need to
   download a customized foundation.js that includes only what we're using -->
 <script src="resource/js/vendor/foundation-altered.js"></script>
-<script src="resource/js/components/navsearch.js"></script>
+<script src="resource/js/vendor/hoverIntent.js"></script>
 
+<script src="resource/js/components/navsearch.js"></script>
 <script>
 
 	$(document).foundation({
@@ -48,23 +49,20 @@
     $(".truncated-tooltip").dotdotdot({
       height: 45
     });
-    $('li.has-dropdown').mouseover(function(e){
-      var self = $(this);
 
-      setTimeout(function(){
-        self.addClass('hover');
-        }, 500);
-    }).mouseout(function(e) {
-      var self = $(this);
-      setTimeout(
-        function () {
-          self.removeClass('hover');
-        }, 800
-      );
-    });
+    function showIt() {
 
+        $(this).addClass("hover");
+        $('.dropdown', this).css('visibility', 'visible');
 
+    }
+    function hideIt(){
 
+      $(this).removeClass("hover");
+      $('.dropdown', this).css('visibility', 'hidden');
+
+    }
+    $('li.has-dropdown').hoverIntent(showIt, hideIt);
   });
 
 </script>

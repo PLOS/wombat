@@ -297,8 +297,6 @@ $image-container: ($image-width + $pad-small);
 #issue {
   @include grid-column(2);
   @include blocks;
-  @extend .block;
-
   .current-img {
     width: rem-calc(160);
   }

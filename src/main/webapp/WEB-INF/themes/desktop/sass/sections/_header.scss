@@ -100,15 +100,18 @@ $width-nav: $block-grid-elements - $width-logo;
 
   .top-bar-section ul.nav-elements > li.has-dropdown {
     cursor: pointer;
-    margin-right: 3px;
-    border-right: 1px solid $clr-separator;
+    margin-lef: 3px;
+    border-left: 1px solid $clr-separator;
     line-height: 36px;
     padding: 0 15px;
     font-family: $font-face-navigation;
     font-size: $txt-size-xlarge;
-    &:nth-child(3) {
-      border-right: none;
-      margin-right: 0;
+    &:first-child {
+      border-left: none;
+      margin-left: 0;
+    }
+    &:last-child {
+      border-left: 1px solid $grey-light;
     }
   }
   .dropdownanchor {
@@ -122,12 +125,15 @@ $width-nav: $block-grid-elements - $width-logo;
       color: $clr-highlight-text;
       background: $clr-highlight-hover;
     }
+
   }
   .top-bar-section ul.nav-elements > li.has-dropdown.hover {
     @include border-top-radius();
     box-shadow: $nav-main-box-shadow;
     background: $white;
-
+    &:hover + li {
+      border-left: 1px solid $grey-light;
+    }
     > ul.dropdown {
 
       @include border-radius();
@@ -138,7 +144,7 @@ $width-nav: $block-grid-elements - $width-logo;
       background: $white;
       box-shadow: $nav-main-box-shadow;
     }
-    /*.top-bar-section ul.nav-elements >*/ li:nth-child(3) {
+    li:nth-child(3) {
       ul.dropdown {
         margin-left: rem-calc(-110);
       }
@@ -148,7 +154,7 @@ $width-nav: $block-grid-elements - $width-logo;
       @extend .dropdownanchor;
     }
 
-    /*.top-bar-section ul.nav-elements > li.has-dropdown*/ > .calloutcontainer {
+    .calloutcontainer {
       width: 530px;
       margin-left: rem-calc(-290);
       padding: rem-calc(20 0 30);
@@ -228,6 +234,7 @@ $width-nav: $block-grid-elements - $width-logo;
     @include grid-column($width-search); // from foundation
     padding-left: rem-calc(20);
     padding-right: 0;
+   border-left: 1px solid $grey-light;
     text-align: right;
     form {
       $fieldset-padding: 0;   // from foundation

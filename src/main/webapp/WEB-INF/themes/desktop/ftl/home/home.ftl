@@ -24,8 +24,11 @@
 <script src="resource/js/vendor/jquery.dotdotdot.js"></script>
 
 <!--TODO: the following need to be on all pages, not just home-->
- <!-- TODO: foundation-altered.js is in use for development. Need to
-  download a customized foundation.js that includes only what we're using -->
+ <!--
+ TODO: foundation-altered.js is in use for development. Need to
+  download a customized foundation.js that includes only what we're using
+  (Remove javascript for topbar)
+  -->
 <script src="resource/js/vendor/foundation-altered.js"></script>
 <script src="resource/js/vendor/hoverIntent.js"></script>
 
@@ -49,7 +52,7 @@
     $(".truncated-tooltip").dotdotdot({
       height: 45
     });
-
+    //HoverIntent.js is used for the main navigation delay on hover
     function showIt() {
 
         $(this).addClass("hover");

@@ -8020,7 +8020,7 @@ th.hide-for-touch {
   line-height: 2.5rem; }
 
 /* line 44, ../../sass/_typography.scss */
-.header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit h3, #submission-links h3 {
+.header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3, #submission-links h3 {
   padding-bottom: 1.0625rem;
   margin-bottom: 1.0625rem;
   box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
@@ -8435,29 +8435,32 @@ footer {
   /* line 101, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li.has-dropdown {
     cursor: pointer;
-    margin-right: 3px;
-    border-right: 1px solid #cccccc;
+    margin-lef: 3px;
+    border-left: 1px solid #cccccc;
     line-height: 36px;
     padding: 0 15px;
     font-family: "albert";
     font-size: 20px; }
     /* line 109, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:nth-child(3) {
-      border-right: none;
-      margin-right: 0; }
-  /* line 114, ../../sass/sections/_header.scss */
-  .nav-main .dropdownanchor, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .dropdowncallout li a {
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:first-child {
+      border-left: none;
+      margin-left: 0; }
+    /* line 113, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:last-child {
+      border-left: 1px solid #efefef; }
+  /* line 117, ../../sass/sections/_header.scss */
+  .nav-main .dropdownanchor, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a {
     width: 100%;
     line-height: 1;
     padding: 0.4375rem 1.875rem 0.5rem 1.875rem;
     font-family: "arial";
     font-size: 0.875rem;
     white-space: pre-wrap; }
-    /* line 121, ../../sass/sections/_header.scss */
-    .nav-main .dropdownanchor:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .dropdowncallout li a:hover {
+    /* line 124, ../../sass/sections/_header.scss */
+    .nav-main .dropdownanchor:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a:hover {
       color: white;
       background: #3c63af; }
-  /* line 126, ../../sass/sections/_header.scss */
+  /* line 130, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -8466,10 +8469,11 @@ footer {
     -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px;
     box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
-    background: white;
-    /*.top-bar-section ul.nav-elements >*/
-    /*.top-bar-section ul.nav-elements > li.has-dropdown*/ }
-    /* line 131, ../../sass/sections/_header.scss */
+    background: white; }
+    /* line 134, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover:hover + li {
+      border-left: 1px solid #efefef; }
+    /* line 137, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > ul.dropdown {
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
@@ -8482,11 +8486,11 @@ footer {
       padding-bottom: 1.875rem;
       background: white;
       box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15); }
-    /* line 142, ../../sass/sections/_header.scss */
+    /* line 148, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover li:nth-child(3) ul.dropdown {
       margin-left: -6.875rem; }
-    /* line 151, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer {
+    /* line 157, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer {
       width: 530px;
       margin-left: -18.125rem;
       padding: 1.25rem 0 1.875rem;
@@ -8497,8 +8501,8 @@ footer {
       -ms-border-radius: 5px;
       -o-border-radius: 5px;
       border-radius: 5px; }
-      /* line 159, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit {
+      /* line 165, ../../sass/sections/_header.scss */
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit {
         position: relative;
         float: left;
         display: inline !important;
@@ -8507,22 +8511,22 @@ footer {
         padding: 0 1.25rem 1.875rem 0.9375rem;
         font-family: "albert";
         font-size: 0.875rem; }
-        /* line 170, ../../sass/sections/_header.scss */
-        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit h3 {
+        /* line 176, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3 {
           margin-top: 0.3125rem;
           font-size: 1.4375rem; }
-        /* line 175, ../../sass/sections/_header.scss */
-        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit ul {
+        /* line 181, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul {
           margin-left: 0.9375rem;
           display: block !important;
           list-style-type: disc;
           width: auto; }
-          /* line 180, ../../sass/sections/_header.scss */
-          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit ul li {
+          /* line 186, ../../sass/sections/_header.scss */
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li {
             margin-left: 0.9375rem;
             width: auto; }
-            /* line 183, ../../sass/sections/_header.scss */
-            .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit ul li a {
+            /* line 189, ../../sass/sections/_header.scss */
+            .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li a {
               display: inline !important;
               margin: 0;
               padding: 0;
@@ -8531,11 +8535,11 @@ footer {
               font-size: 1rem;
               background: white;
               color: #3c63af; }
-              /* line 193, ../../sass/sections/_header.scss */
-              .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit ul li a:hover {
+              /* line 199, ../../sass/sections/_header.scss */
+              .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li a:hover {
                 text-decoration: underline; }
-        /* line 200, ../../sass/sections/_header.scss */
-        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit a.btn {
+        /* line 206, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn {
           background: #333333;
           padding: 1.25rem;
           border-radius: 5px;
@@ -8546,13 +8550,13 @@ footer {
           padding: 0 0.625rem;
           line-height: 35px; }
           /* line 12, ../../sass/_components.scss */
-          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit a.btn:hover {
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn:hover {
             background: #333333; }
-          /* line 207, ../../sass/sections/_header.scss */
-          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .submit a.btn:hover {
+          /* line 213, ../../sass/sections/_header.scss */
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn:hover {
             background: #3c63af; }
-      /* line 212, ../../sass/sections/_header.scss */
-      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > .calloutcontainer .dropdowncallout {
+      /* line 218, ../../sass/sections/_header.scss */
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout {
         float: right;
         display: inline-block;
         width: 15rem;
@@ -8563,7 +8567,7 @@ footer {
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
         border-radius: 5px; }
-  /* line 225, ../../sass/sections/_header.scss */
+  /* line 231, ../../sass/sections/_header.scss */
   .nav-main .head-search {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
@@ -8571,14 +8575,15 @@ footer {
     float: left;
     padding-left: 1.25rem;
     padding-right: 0;
+    border-left: 1px solid #efefef;
     text-align: right; }
-    /* line 232, ../../sass/sections/_header.scss */
+    /* line 239, ../../sass/sections/_header.scss */
     .nav-main .head-search form {
       margin-top: -0.3125rem; }
-      /* line 239, ../../sass/sections/_header.scss */
+      /* line 246, ../../sass/sections/_header.scss */
       .nav-main .head-search form legend, .nav-main .head-search form label {
         display: none; }
-      /* line 243, ../../sass/sections/_header.scss */
+      /* line 250, ../../sass/sections/_header.scss */
       .nav-main .head-search form input[type="text"] {
         background-color: white;
         font-family: inherit;
@@ -8604,21 +8609,21 @@ footer {
         /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"][disabled], fieldset[disabled] .nav-main .head-search form input[type="text"] {
           background-color: #dddddd; }
-      /* line 255, ../../sass/sections/_header.scss */
+      /* line 262, ../../sass/sections/_header.scss */
       .nav-main .head-search form ::-webkit-input-placeholder {
         color: black; }
-      /* line 259, ../../sass/sections/_header.scss */
+      /* line 266, ../../sass/sections/_header.scss */
       .nav-main .head-search form :-moz-placeholder {
         /* Firefox 18- */
         color: black; }
-      /* line 263, ../../sass/sections/_header.scss */
+      /* line 270, ../../sass/sections/_header.scss */
       .nav-main .head-search form ::-moz-placeholder {
         /* Firefox 19+ */
         color: black; }
-      /* line 267, ../../sass/sections/_header.scss */
+      /* line 274, ../../sass/sections/_header.scss */
       .nav-main .head-search form :-ms-input-placeholder {
         color: black; }
-      /* line 270, ../../sass/sections/_header.scss */
+      /* line 277, ../../sass/sections/_header.scss */
       .nav-main .head-search form button[type="submit"] {
         background: white;
         border-left: none;
@@ -8627,10 +8632,10 @@ footer {
         width: 40px;
         height: 42px;
         border: none; }
-        /* line 276, ../../sass/sections/_header.scss */
+        /* line 283, ../../sass/sections/_header.scss */
         .nav-main .head-search form button[type="submit"] .search-icon {
           font-size: 1.25rem; }
-  /* line 287, ../../sass/sections/_header.scss */
+  /* line 294, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search a {
     margin-top: -0.625rem;
     line-height: 33px;
@@ -8643,7 +8648,7 @@ footer {
     .nav-main .top-bar-section ul li.head-search a:hover, .nav-main .top-bar-section ul li.head-search a a:hover {
       color: #3c63af;
       text-decoration: underline; }
-  /* line 296, ../../sass/sections/_header.scss */
+  /* line 303, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search:hover:not(.has-form) > a {
     background: #efefef; }
 

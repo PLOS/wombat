@@ -71,6 +71,7 @@ $width-nav: $block-grid-elements - $width-logo;
     @extend .title-area;
     text-indent: -9999px;
     height: 41px;
+    //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
     background: image-url('logo.png') no-repeat 0 0;
   }
   .home-link {
@@ -100,7 +101,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
   .top-bar-section ul.nav-elements > li.has-dropdown {
     cursor: pointer;
-    margin-lef: 3px;
+    margin-left: 3px;
     border-left: 1px solid $clr-separator;
     line-height: 36px;
     padding: 0 15px;
@@ -125,7 +126,6 @@ $width-nav: $block-grid-elements - $width-logo;
       color: $clr-highlight-text;
       background: $clr-highlight-hover;
     }
-
   }
   .top-bar-section ul.nav-elements > li.has-dropdown.hover {
     @include border-top-radius();
@@ -234,7 +234,7 @@ $width-nav: $block-grid-elements - $width-logo;
     @include grid-column($width-search); // from foundation
     padding-left: rem-calc(20);
     padding-right: 0;
-   border-left: 1px solid $grey-light;
+    border-left: 1px solid $grey-light;
     text-align: right;
     form {
       $fieldset-padding: 0;   // from foundation
@@ -256,24 +256,11 @@ $width-nav: $block-grid-elements - $width-logo;
         $input-border-color: $white; // from foundation
         $input-focus-border-color: $white; // from foundation
         @include form-element(); // from foundation
-        width: rem-calc(175);
-        color: $grey-med;
+        width: rem-calc(195);
+        color: $clr-input-active;
       }
-      ::-webkit-input-placeholder {
-        color: black;
-      }
+      @include input-placeholder-color();
 
-      :-moz-placeholder { /* Firefox 18- */
-        color: black;
-      }
-
-      ::-moz-placeholder {  /* Firefox 19+ */
-        color: black;
-      }
-
-      :-ms-input-placeholder {
-        color: black;
-      }
       button[type="submit"] {
         @include postfix($white, $white); //foundation
         width: 40px;
@@ -283,7 +270,6 @@ $width-nav: $block-grid-elements - $width-logo;
         .search-icon {
           @extend .fa;
           @extend .fa-search;
-          //padding-top: rem-calc(4);
           font-size: rem-calc($txt-size-xlarge);
         }
       }
@@ -297,7 +283,6 @@ $width-nav: $block-grid-elements - $width-logo;
     width: rem-calc(175);
     padding: 0 !important;
     font-size:  rem-calc($txt-size-small);
-
     @include link-text($clr-highlight-hover, underline);
   }
   .top-bar-section ul li.head-search:hover:not(.has-form) > a {

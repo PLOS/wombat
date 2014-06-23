@@ -8415,16 +8415,16 @@ footer {
 /* using Foundation Top Bar
  all @extend .class are Foundation
  */
-/* line 85, ../../sass/sections/_header.scss */
+/* line 86, ../../sass/sections/_header.scss */
 .nav-main {
   font-family: "albert"; }
-  /* line 86, ../../sass/sections/_header.scss */
+  /* line 87, ../../sass/sections/_header.scss */
   .nav-main > .dropdown {
     visibility: hidden; }
-  /* line 91, ../../sass/sections/_header.scss */
+  /* line 92, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section {
     width: 960px; }
-  /* line 94, ../../sass/sections/_header.scss */
+  /* line 95, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
@@ -8432,23 +8432,23 @@ footer {
     float: left;
     padding-right: 0;
     padding-left: 0; }
-  /* line 101, ../../sass/sections/_header.scss */
+  /* line 102, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li.has-dropdown {
     cursor: pointer;
-    margin-lef: 3px;
+    margin-left: 3px;
     border-left: 1px solid #cccccc;
     line-height: 36px;
     padding: 0 15px;
     font-family: "albert";
     font-size: 20px; }
-    /* line 109, ../../sass/sections/_header.scss */
+    /* line 110, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:first-child {
       border-left: none;
       margin-left: 0; }
-    /* line 113, ../../sass/sections/_header.scss */
+    /* line 114, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:last-child {
       border-left: 1px solid #efefef; }
-  /* line 117, ../../sass/sections/_header.scss */
+  /* line 118, ../../sass/sections/_header.scss */
   .nav-main .dropdownanchor, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a {
     width: 100%;
     line-height: 1;
@@ -8456,7 +8456,7 @@ footer {
     font-family: "arial";
     font-size: 0.875rem;
     white-space: pre-wrap; }
-    /* line 124, ../../sass/sections/_header.scss */
+    /* line 125, ../../sass/sections/_header.scss */
     .nav-main .dropdownanchor:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a:hover {
       color: white;
       background: #3c63af; }
@@ -8599,7 +8599,7 @@ footer {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        width: 10.9375rem;
+        width: 12.1875rem;
         color: #636363; }
         /* line 124, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"]:focus {
@@ -8609,21 +8609,21 @@ footer {
         /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"][disabled], fieldset[disabled] .nav-main .head-search form input[type="text"] {
           background-color: #dddddd; }
-      /* line 262, ../../sass/sections/_header.scss */
+      /* line 100, ../../sass/_typography.scss */
       .nav-main .head-search form ::-webkit-input-placeholder {
         color: black; }
-      /* line 266, ../../sass/sections/_header.scss */
+      /* line 103, ../../sass/_typography.scss */
       .nav-main .head-search form :-moz-placeholder {
         /* Firefox 18- */
         color: black; }
-      /* line 270, ../../sass/sections/_header.scss */
+      /* line 107, ../../sass/_typography.scss */
       .nav-main .head-search form ::-moz-placeholder {
         /* Firefox 19+ */
         color: black; }
-      /* line 274, ../../sass/sections/_header.scss */
+      /* line 111, ../../sass/_typography.scss */
       .nav-main .head-search form :-ms-input-placeholder {
         color: black; }
-      /* line 277, ../../sass/sections/_header.scss */
+      /* line 264, ../../sass/sections/_header.scss */
       .nav-main .head-search form button[type="submit"] {
         background: white;
         border-left: none;
@@ -8632,10 +8632,10 @@ footer {
         width: 40px;
         height: 42px;
         border: none; }
-        /* line 283, ../../sass/sections/_header.scss */
+        /* line 270, ../../sass/sections/_header.scss */
         .nav-main .head-search form button[type="submit"] .search-icon {
           font-size: 1.25rem; }
-  /* line 294, ../../sass/sections/_header.scss */
+  /* line 280, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search a {
     margin-top: -0.625rem;
     line-height: 33px;
@@ -8648,7 +8648,7 @@ footer {
     .nav-main .top-bar-section ul li.head-search a:hover, .nav-main .top-bar-section ul li.head-search a a:hover {
       color: #3c63af;
       text-decoration: underline; }
-  /* line 303, ../../sass/sections/_header.scss */
+  /* line 288, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul li.head-search:hover:not(.has-form) > a {
     background: #efefef; }
 

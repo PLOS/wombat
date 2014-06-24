@@ -10,6 +10,11 @@
 
 <#include "../common/header/header.ftl" />
 
+<div class="grid-test">
+
+
+</div>
+
 <#include "body.ftl" />
 
 <div class="spotlight">

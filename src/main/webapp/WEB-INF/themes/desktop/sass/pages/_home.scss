@@ -101,24 +101,63 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
+@mixin grid-column-fixedwidth($size, $gutter: outside){
+  @include grid-column($collapse:true,$center: false);
+  width: rem-calc($size);
+  @if $gutter == outside{
+    margin-left: ($grid-gutter / 2);
+    margin-right:  ($grid-gutter / 2);
+  }
+    @if $gutter == none{
+
+  }
+
+  margin-bottom: $grid-gutter;
+  }
+
+
+
+
+///TODOPG: these are al the widths
+
+.width-xx-small {
+  @include grid-column-fixedwidth(180);
+}
+
+.width-x-small {
+  @include grid-column-fixedwidth(267);
+}
+.width-small {
+  @include grid-column-fixedwidth(306);
+}
+.width-medium {
+  @include grid-column-fixedwidth(469);
+}
+.width-large {
+  @include grid-column-fixedwidth(633);
+}
+
 //sizes:
 .row > .block
-{ // to do this needs to get fixed in the grid refactor
+{ // to do this needs to get fixed in the grid refactor  it really does
+
+  &.xx-small {
+    @include grid-column-fixedwidth(180);
+  }
 
   &.x-small {
-    @include grid-column(2, $collapse: false);
-
+    @include grid-column-fixedwidth(267);
   }
   &.small {
-    @include grid-column(4, $collapse: false);
+    @include grid-column-fixedwidth(306);
   }
   &.medium {
-    @include grid-column(6, $collapse: false);
-    width: 48%; // for demo
+    @include grid-column-fixedwidth(469);
   }
   &.large {
-    @include grid-column(7, $collapse: false);
+    @include grid-column-fixedwidth(633);
   }
+
 
 }
 
@@ -184,15 +223,13 @@ $image-container: ($image-width + $pad-small);
 
 .column {
   &.left {
-    @include grid-column(8, $collapse: false);
+    @include grid-column-fixedwidth(653, none);  //width + gutter
+
     .row-small-blocks {
-      @include block-grid(2);
+
       // for demo
       .block {
-        &:nth-child(1), &:nth-child(3) {
-          margin-right: 2%;
-          width: 46%;
-        }
+        @extend .width-small;
       }
 
     }
@@ -206,13 +243,13 @@ $image-container: ($image-width + $pad-small);
       }
 
       &.small {
-        @include grid-column(6, $collapse: false);
+        @extend .width-small;
       }
     }
   }
 
   &.right {
-    @include grid-column(4, $collapse: true);
+    @include grid-column-fixedwidth(326, none);   //width + gutter
   }
 }
 
@@ -243,11 +280,8 @@ $image-container: ($image-width + $pad-small);
 #article-list {
   height: $block-height;
   @include blocks;
-  @include grid-column(4);
+  @include grid-column-fixedwidth(267);
 
-  position: relative;
-  width: 30%; // TODO: fix grid
-  margin-right: 3%; // TODO: fix grid
 
   h3 {
     @extend .highlighted-title;
@@ -295,8 +329,9 @@ $image-container: ($image-width + $pad-small);
 }
 
 #issue {
-  @include grid-column(2);
+
   @include blocks;
+  @include grid-column-fixedwidth(180);
   .current-img {
     width: rem-calc(160);
   }
@@ -304,7 +339,7 @@ $image-container: ($image-width + $pad-small);
     margin-top: rem-calc(5);
     a {
       @include link-text();
-      @extend .header-allcaps-xxlarge;
+    //  @extend .header-allcaps-xxlarge;
       @extend .condense;
       display: block;
       margin-bottom: rem-calc(-5);
@@ -397,7 +432,7 @@ $image-container: ($image-width + $pad-small);
       .social {
         width: ($txt-size-xxlarge * 2);
       }
-      .aria-text {
+      .aria-text {   // TODO?: make this easier to extend?
         position: absolute;
         top: -9999px;
         left: -9999px;

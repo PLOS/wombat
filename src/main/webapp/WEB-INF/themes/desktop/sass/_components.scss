@@ -32,7 +32,7 @@
     @include border-top-radius();
   }
   @include single-box-shadow();
-  margin-bottom: $block-grid-default-spacing;
+  margin-bottom: $grid-gutter;
   background: $color;
 }
 
@@ -89,9 +89,9 @@ have a fixed width and height (but it's not required).
 .carousel-wrap.small {
   $icon-height: rem-calc(30);
   $carousel-width: rem-calc(320);// TODO there should be a way to calulate this width
+  // TODO PG-width is set in home.scss
 
   @extend .block-card;
-  @include grid-column(4, $collapse: false);
   padding:0;    // TODO needs to be removed in grid refactor
   margin-right: $pad-default;  /// needs to be removed in grid refactor
   .block-header{

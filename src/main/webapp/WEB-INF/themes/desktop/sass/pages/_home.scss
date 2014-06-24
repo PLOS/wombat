@@ -11,22 +11,26 @@ $image-container: ($image-width + $pad-small);
 // HOME CONTENT - home-content
 
 // for demo:
-
-.row {
-  &.one, &.two {
-    .block {
-      margin-right: 2%; // this is for demo
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-}
+//
+//.row {
+//  &.one, &.two {
+//    .block {
+//      margin-right: 2%; // this is for demo
+//      &:last-child {
+//        margin-right: 0;
+//      }
+//    }
+//  }
+//}
 
 .row {
   @include grid-row()
 }
 
+
+.carousel-wrap.small{
+  @extend .width-small;
+}
 //home page blocks
 
 .hero
@@ -88,6 +92,7 @@ $image-container: ($image-width + $pad-small);
 @mixin grid-column-fixedwidth($size, $gutter: outside){
   @include grid-column($collapse:true,$center: false);
   width: rem-calc($size);
+  margin-bottom: $grid-gutter;
   @if $gutter == outside{
     margin-left: ($grid-gutter / 2);
     margin-right:  ($grid-gutter / 2);
@@ -96,10 +101,8 @@ $image-container: ($image-width + $pad-small);
 
   }
 
-  margin-bottom: $grid-gutter;
+
 }
-
-
 
 
 ///TODOPG: these are al the widths
@@ -286,7 +289,7 @@ $image-container: ($image-width + $pad-small);
   height: $block-height;
   @include blocks;
   @extend .width-x-small;
-
+  position: relative;
 
   h3 {
     @extend .highlighted-title;
@@ -380,10 +383,9 @@ $image-container: ($image-width + $pad-small);
   }
 }
 #submission-links {
-  @include blocks;
-  @include border-top-radius();
+  @include blocks($color: $grey-dark);
   @extend .width-small;
-  background: $grey-dark;
+
   padding: $pad-small $pad-medium;
 
   h3 {
@@ -412,8 +414,7 @@ $image-container: ($image-width + $pad-small);
 
 #social-links {
   @extend .width-small;
-  @include blocks;
-  background: #04417d;
+  @include blocks($color: #04417d);
   border-radius: $border-radius-default;
   padding: $pad-xsmall;
 
@@ -463,7 +464,6 @@ $image-container: ($image-width + $pad-small);
 #ad-slot-bottom{
   @include grid-row;
     .ad-item{
-
       @extend .width-small;
       iframe{  @extend .block;}
 

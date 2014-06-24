@@ -84,22 +84,6 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-#billboard {
-  @include grid-row;
-  @include blocks($grey-dark);
-  h3, h4, a {
-    color: $white !important;
-  }
-  position: relative;
-  a {
-    @include rounded-pill();
-    position: absolute;
-    width: 80px;
-    height: 36px;
-    right: 20px;
-    top: 10px;
-  }
-}
 
 @mixin grid-column-fixedwidth($size, $gutter: outside){
   @include grid-column($collapse:true,$center: false);
@@ -108,12 +92,12 @@ $image-container: ($image-width + $pad-small);
     margin-left: ($grid-gutter / 2);
     margin-right:  ($grid-gutter / 2);
   }
-    @if $gutter == none{
+  @if $gutter == none{
 
   }
 
   margin-bottom: $grid-gutter;
-  }
+}
 
 
 
@@ -135,6 +119,24 @@ $image-container: ($image-width + $pad-small);
 }
 .width-large {
   @include grid-column-fixedwidth(633);
+}
+
+
+#billboard {
+  @include grid-row;
+  @include blocks($grey-dark);
+  h3, h4, a {
+    color: $white !important;
+  }
+  position: relative;
+  a {
+    @include rounded-pill();
+    position: absolute;
+    width: 80px;
+    height: 36px;
+    right: 20px;
+    top: 10px;
+  }
 }
 
 //sizes:
@@ -224,6 +226,9 @@ $image-container: ($image-width + $pad-small);
 .column {
   &.left {
     @include grid-column-fixedwidth(653, none);  //width + gutter
+    .block.large{
+      @extend .width-large;                         //TODOPG- need to move this out
+    }
 
     .row-small-blocks {
 
@@ -253,11 +258,11 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-#spotlight,
+
 #blogs {
   @include blocks();
+  @extend .width-small;
   height: $block-height;
-
 }
 
 #billboard {
@@ -280,7 +285,7 @@ $image-container: ($image-width + $pad-small);
 #article-list {
   height: $block-height;
   @include blocks;
-  @include grid-column-fixedwidth(267);
+  @extend .width-x-small;
 
 
   h3 {
@@ -351,9 +356,14 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
+#twitter {
+  @extend .width-small;
+
+}
 
 .linkbox {
   @extend .block-card;
+  @extend .width-small;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
   ul {
     @extend .no-bullet; // from foundation
@@ -372,6 +382,7 @@ $image-container: ($image-width + $pad-small);
 #submission-links {
   @include blocks;
   @include border-top-radius();
+  @extend .width-small;
   background: $grey-dark;
   padding: $pad-small $pad-medium;
 
@@ -385,7 +396,7 @@ $image-container: ($image-width + $pad-small);
   }
   .split-item {
     margin: 0 !important;
-    width: 127px;
+    width: 50%;
     height: 40px;
     text-align: center;
     &:first-child {
@@ -400,7 +411,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 #social-links {
-
+  @extend .width-small;
   @include blocks;
   background: #04417d;
   border-radius: $border-radius-default;
@@ -453,7 +464,7 @@ $image-container: ($image-width + $pad-small);
   @include grid-row;
     .ad-item{
 
-      @include grid-column(4);
+      @extend .width-small;
       iframe{  @extend .block;}
 
     }

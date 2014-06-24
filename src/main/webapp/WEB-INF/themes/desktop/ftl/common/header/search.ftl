@@ -1,22 +1,16 @@
-<@themeConfig map="legacy" value="urlPrefix" ; p>
-  <#assign prefix = p />
-</@themeConfig>
-
-<@themeConfig map="journal" value="journalKey" ; j>
-  <#assign filterJournal = j />
-</@themeConfig>
-
 <#--markup starts in SiteMenu.ftl: this li is part of the main nav ul -->
 <li id="navsearch" class="head-search">
-  <form name="searchForm" action="search" method="get"><#-- TODO: address for simple search controller -->
-    <input type="hidden" name="legacy" value="true" id="legacy"/>
+
+<#macro searchForm>
+  <form name="searchForm" action="search" method="get">
+    <#nested/>
     <fieldset>
       <legend>Search</legend>
       <label for="search">Search</label>
 
       <div class="row collapse">
         <div class=" wrap small-8 columns">
-          <input id="search" type="text" name="q" placeholder="Search" required />
+          <input id="search" type="text" name="q" placeholder="Search" required/>
         </div>
         <div class="small-4 columns">
           <button type="submit"><span class="search-icon"></span></button>
@@ -24,7 +18,24 @@
       </div>
     </fieldset>
   </form>
-  <a id="advSearch" href="${prefix}search/advanced?noSearchFlag=true&query=&filterJournals=${filterJournal}">
-    advanced search
-  </a>
+</#macro>
+
+<@themeConfig map="legacy" value="urlPrefix" ; legacyUrlPrefix>
+  <#if legacyUrlPrefix??>
+  <#-- Point at a legacy Ambra instance for search results -->
+    <@searchForm>
+    <#-- This constant signals the controller to resolve it as a legacy search -->
+      <input type="hidden" name="legacy" value="true" id="legacy"/>
+    </@searchForm>
+    <@themeConfig map="journal" value="journalKey" ; filterJournal>
+      <a id="advSearch"
+         href="${legacyUrlPrefix}search/advanced?noSearchFlag=true&query=&filterJournals=${filterJournal}">
+        advanced search
+      </a>
+    </@themeConfig>
+  <#else>
+  <#-- Point at our own simple search controller -->
+    <@searchForm/>
+  </#if>
+</@themeConfig>
 </li>

@@ -21,15 +21,19 @@
   @extend .bg-dark;
   @extend .text-center;
   @include highlight-border($plos-default); /*TODO: use themes journal-specific css to assign border color*/
-  padding: 0 $pad-small;
-}
-.ad-head {
-  iframe {
-    padding-left: 18px;
-    background: image-url('text.vert.ad.gif') no-repeat left remcalc(5);
+  padding: $pad-xsmall $pad-small;
+  .center { width: 748px;
+    margin: 0 auto;
+    height: 90px;
+  }
+  .title {
+    width: 18px;
+    height: 88px;
+    text-indent: -9999px;
+    background: image-url('text.vert.ad.gif') no-repeat 0 6px;
+    float: left;
   }
 }
-
 $width-logo: 5;
 $width-search: 4;
 $width-nav: $block-grid-elements - $width-logo;

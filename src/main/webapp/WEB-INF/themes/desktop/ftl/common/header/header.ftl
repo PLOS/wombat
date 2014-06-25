@@ -15,7 +15,7 @@
 			</div>
 			<div id="pagehdr">
 				<div class="contain-to-grid">  <#--foundation class name. needed for top-bar use. -->
-					<nav class="nav-main" data-topbar>
+					<nav class="nav-main">
 
           <#include "../siteMenu/siteMenu.ftl" />
 

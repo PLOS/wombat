@@ -17,19 +17,24 @@
 
   <#macro menuSection title containsCallout=false>
   <li class="has-dropdown">
-    <a href="#">${title}</a>
+    ${title}
 
     <#if containsCallout>
-    <div class="submit">
-      <div class="calloutInner">
+    <div class="calloutcontainer dropdown">
+      <div class="submit ">
         <#include "siteMenuCallout.ftl" />
       </div>
+
+      <ul class="dropdowncallout">
+        <#nested/>
+      </ul>
     </div>
-    </#if>
+    <#else>
 
     <ul class="dropdown">
       <#nested/>
     </ul>
+    </#if>
 
   </li>
   </#macro>

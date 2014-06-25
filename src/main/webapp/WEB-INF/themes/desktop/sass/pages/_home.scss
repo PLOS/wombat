@@ -269,20 +269,20 @@ $image-container: ($image-width + $pad-small);
       }
     }
   }
-  .more-link {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: auto;
-    > a {
-      @include link-text();
-      @extend .header-allcaps-plain;
-    }
-    &:after {
-      @extend .more-icon;
-    }
-  }
 
+  }
+.more-link {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: auto;
+  > a {
+    @include link-text();
+    @extend .header-allcaps-plain;
+  }
+  &:after {
+    @extend .more-icon;
+  }
   .truncated-tooltip {
     @extend .has-tip; //foundation
   }
@@ -425,8 +425,14 @@ $image-container: ($image-width + $pad-small);
   }
   #blogrss {
     padding: $pad-default $pad-default 0;
-
+    .postimg {
+      float: left;
+      height: 75px;
+      width: 35px;
+      margin-right: 10px;
+    }
     .postdate {
+      margin: 0;
       font-size: $txt-size-xxxsmall;
       font-family: $font-face-plain;
       color: $clr-muted;
@@ -450,14 +456,22 @@ $image-container: ($image-width + $pad-small);
       padding: 0;
     }
     div {
+      @include clearfix();
       margin-bottom: $pad-small;
     }
 
   }
-  .more-blogs {
-  @extend .more-link;
+  .more-link {
     bottom: 30px;
     left: 86px;
+/*    > a {
+      @include link-text();
+      @extend .header-allcaps-plain;
+    }
+    &:after {
+      @extend .more-icon;
+    }*/
+
   }
 }
 #ad-slot-bottom{

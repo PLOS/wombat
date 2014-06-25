@@ -33,6 +33,7 @@
 <script src="resource/js/vendor/hoverIntent.js"></script>
 
 <script src="resource/js/components/navsearch.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script>
 
 	$(document).foundation({

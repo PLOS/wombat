@@ -269,20 +269,20 @@ $image-container: ($image-width + $pad-small);
       }
     }
   }
-  .more-link {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: auto;
-    > a {
-      @include link-text();
-      @extend .header-allcaps-plain;
-    }
-    &:after {
-      @extend .more-icon;
-    }
-  }
 
+  }
+.more-link {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: auto;
+  > a {
+    @include link-text();
+    @extend .header-allcaps-plain;
+  }
+  &:after {
+    @extend .more-icon;
+  }
   .truncated-tooltip {
     @extend .has-tip; //foundation
   }
@@ -413,7 +413,67 @@ $image-container: ($image-width + $pad-small);
 
 
 }
+#blogs {
+  height: $block-height;
+  @extend .block-card;
+  @include blocks;
+  padding:0; // TODO needs to be removed in grid refactor
 
+  .block-header{
+    @extend .header-brand;
+
+  }
+  #blogrss {
+    padding: $pad-default $pad-default 0;
+    .postimg {
+      float: left;
+      height: 75px;
+      width: 35px;
+      margin-right: 10px;
+    }
+    .postdate {
+      margin: 0;
+      font-size: $txt-size-xxxsmall;
+      font-family: $font-face-plain;
+      color: $clr-muted;
+      padding: 0;
+    }
+    .posttitle {
+      height: 30px;
+      line-height: 15px;
+      overflow: hidden;
+      margin: $pad-xsmall 0;
+      a {
+        @extend .link-text-body;
+        font-family: $font-face-fancy;
+        font-size: $txt-size-small;
+      }
+    }
+    .postauthor {
+      @extend .small-italic;
+      color: $clr-muted;
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      @include clearfix();
+      margin-bottom: $pad-small;
+    }
+
+  }
+  .more-link {
+    bottom: 30px;
+    left: 86px;
+/*    > a {
+      @include link-text();
+      @extend .header-allcaps-plain;
+    }
+    &:after {
+      @extend .more-icon;
+    }*/
+
+  }
+}
 #ad-slot-bottom{
   @include grid-row;
     .ad-item{

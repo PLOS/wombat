@@ -23,6 +23,8 @@
 <script src="resource/js/components/carousel.js"></script>
 <script src="resource/js/vendor/jquery.dotdotdot.js"></script>
 
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="resource/js/components/blogfeed.js"></script>
 <!--TODO: the following need to be on all pages, not just home-->
  <!--
  TODO: foundation-altered.js is in use for development. Need to
@@ -33,6 +35,7 @@
 <script src="resource/js/vendor/hoverIntent.js"></script>
 
 <script src="resource/js/components/navsearch.js"></script>
+
 <script>
 
 	$(document).foundation({
@@ -69,5 +72,24 @@
   });
 
 </script>
+<script>
+
+  function OnLoad() {
+    var getBlog = document.getElementById('blogs').firstChild.nextSibling.textContent,
+      findTitle = getBlog.trim().slice(5,8);
+
+    if (findTitle === 'Bio') {
+      var feed = new google.feeds.Feed("http://feeds.plos.org/plos/blogs/biologue");
+      feed.load(feedLoaded);
+    } else if (findTitle === 'Spe') {
+      var feed = new google.feeds.Feed("http://feeds.plos.org/plos/MedicineBlog");
+      feed.load(feedLoaded);
+    }
+  }
+
+  google.setOnLoadCallback(OnLoad);
+
+</script>
+
 </body>
 </html>

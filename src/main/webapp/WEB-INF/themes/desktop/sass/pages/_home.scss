@@ -1,6 +1,4 @@
-/*
- *    Home page blocks
- */
+// HOME CONTENT - home-content
 
 $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
@@ -8,9 +6,7 @@ $block-height-small: rem-calc(180);
 $image-width: rem-calc(70);
 $hero-height: rem-calc(380);
 $image-container: ($image-width + $pad-small);
-// HOME CONTENT - home-content
 
-// for demo:
 
 .row {
   &.one, &.two {
@@ -269,20 +265,20 @@ $image-container: ($image-width + $pad-small);
       }
     }
   }
-  .more-link {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: auto;
-    > a {
-      @include link-text();
-      @extend .header-allcaps-plain;
-    }
-    &:after {
-      @extend .more-icon;
-    }
-  }
 
+  }
+.more-link {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: auto;
+  > a {
+    @include link-text();
+    @extend .header-allcaps-plain;
+  }
+  &:after {
+    @extend .more-icon;
+  }
   .truncated-tooltip {
     @extend .has-tip; //foundation
   }
@@ -297,6 +293,7 @@ $image-container: ($image-width + $pad-small);
 #issue {
   @include grid-column(2);
   @include blocks;
+  height: $block-height;
   .current-img {
     width: rem-calc(160);
   }
@@ -416,17 +413,23 @@ $image-container: ($image-width + $pad-small);
 #blogs {
   height: $block-height;
   @extend .block-card;
-  @include blocks;
+
   padding:0; // TODO needs to be removed in grid refactor
 
   .block-header{
     @extend .header-brand;
-
   }
+
   #blogrss {
     padding: $pad-default $pad-default 0;
-
+    .postimg {
+      float: left;
+      height: 75px;
+      width: 35px;
+      margin-right: 10px;
+    }
     .postdate {
+      margin: 0;
       font-size: $txt-size-xxxsmall;
       font-family: $font-face-plain;
       color: $clr-muted;
@@ -450,12 +453,11 @@ $image-container: ($image-width + $pad-small);
       padding: 0;
     }
     div {
+      @include clearfix();
       margin-bottom: $pad-small;
     }
-
   }
-  .more-blogs {
-  @extend .more-link;
+  .more-link {
     bottom: 30px;
     left: 86px;
   }

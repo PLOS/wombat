@@ -1,6 +1,4 @@
-/*
- *    Home page blocks
- */
+// HOME CONTENT - home-content
 
 $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
@@ -8,9 +6,7 @@ $block-height-small: rem-calc(180);
 $image-width: rem-calc(70);
 $hero-height: rem-calc(380);
 $image-container: ($image-width + $pad-small);
-// HOME CONTENT - home-content
 
-// for demo:
 
 .row {
   &.one, &.two {
@@ -28,11 +24,6 @@ $image-container: ($image-width + $pad-small);
 }
 
 //home page blocks
-
-.hero
-.overlay-light {
-
-}
 
 .hero {
   position: relative;
@@ -102,8 +93,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 //sizes:
-.row > .block
-{ // to do this needs to get fixed in the grid refactor
+.row > .block { // to do this needs to get fixed in the grid refactor
 
   &.x-small {
     @include grid-column(2, $collapse: false);
@@ -216,8 +206,7 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-#spotlight,
-#blogs {
+#spotlight {
   @include blocks();
   height: $block-height;
 
@@ -269,24 +258,25 @@ $image-container: ($image-width + $pad-small);
       }
     }
   }
-
-  }
-.more-link {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: auto;
-  > a {
-    @include link-text();
-    @extend .header-allcaps-plain;
-  }
-  &:after {
-    @extend .more-icon;
-  }
   .truncated-tooltip {
     @extend .has-tip; //foundation
   }
 }
+  .more-link {
+    position: absolute;
+    bottom: $pad-small;
+    left: $pad-small;
+    right: auto;
+    > a {
+      @include link-text();
+      @extend .header-allcaps-plain;
+    }
+    &:after {
+      @extend .more-icon;
+    }
+
+  }
+
 //Tooltips are added to the bottom of the page & hidden. This class should not be nested.
 .tooltip {
   width: 300px !important;
@@ -297,6 +287,7 @@ $image-container: ($image-width + $pad-small);
 #issue {
   @include grid-column(2);
   @include blocks;
+  height: $block-height;
   .current-img {
     width: rem-calc(160);
   }
@@ -374,7 +365,7 @@ $image-container: ($image-width + $pad-small);
   h3 {
     @extend .header-xlarge-light;
     text-indent: rem-calc(10);
-    margin-bottom: 10px;
+    margin-bottom: $pad-small;
   }
   ul {
     @extend .inline-list;
@@ -410,26 +401,27 @@ $image-container: ($image-width + $pad-small);
       font-family: $font-face-fancy;
     }
   }
-
-
 }
 #blogs {
   height: $block-height;
   @extend .block-card;
-  @include blocks;
   padding:0; // TODO needs to be removed in grid refactor
 
   .block-header{
     @extend .header-brand;
-
   }
+
   #blogrss {
     padding: $pad-default $pad-default 0;
+    div {
+      @include clearfix();
+      margin-bottom: $pad-small;
+    }
     .postimg {
       float: left;
       height: 75px;
       width: 35px;
-      margin-right: 10px;
+      margin-right: $pad-small;
     }
     .postdate {
       margin: 0;
@@ -444,7 +436,7 @@ $image-container: ($image-width + $pad-small);
       overflow: hidden;
       margin: $pad-xsmall 0;
       a {
-        @extend .link-text-body;
+       @extend .link-text-body;
         font-family: $font-face-fancy;
         font-size: $txt-size-small;
       }
@@ -455,25 +447,13 @@ $image-container: ($image-width + $pad-small);
       margin: 0;
       padding: 0;
     }
-    div {
-      @include clearfix();
-      margin-bottom: $pad-small;
-    }
-
   }
   .more-link {
     bottom: 30px;
     left: 86px;
-/*    > a {
-      @include link-text();
-      @extend .header-allcaps-plain;
-    }
-    &:after {
-      @extend .more-icon;
-    }*/
-
   }
 }
+
 #ad-slot-bottom{
   @include grid-row;
     .ad-item{

@@ -83,7 +83,7 @@
 //utility styles
 ///////////////
 .small-italic{
-  @extend .small;
+ // @extend .small;
   font-size: rem-calc($txt-size-xxxsmall);
   font-style: italic;
 }

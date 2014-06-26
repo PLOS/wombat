@@ -31,7 +31,7 @@ $include-html-classes: true;
 $include-html-grid-classes: true;
 $include-xl-html-grid-classes: false;
 
-$row-width: rem-calc(980);
+$row-width: rem-calc($grid-width);
 $column-gutter: rem-calc($grid-gutter);
 $total-columns: 12;
 
@@ -266,7 +266,7 @@ $anchor-font-color-hover: $grey-dark;
 
 // Block Grid
 
-// $include-html-grid-classes: $include-html-classes;
+ $include-html-grid-classes: false;
 
 // We use this to control the maximum number of block grid elements per row
 $block-grid-elements: 12;

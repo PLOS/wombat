@@ -4,13 +4,6 @@
 
 /*sets up the body container */
 
-@mixin plos-grid-container($grid-type: fixed){
-    @if $grid-type == fixed {
-      min-width: rem-calc(980px);  //TODO put this in value
-      max-width: rem-calc(980px);  //TODO put this in value
-    }
-  margin: 0 auto;
-}
 
 @mixin plos-grid-gutter-outside(){
   margin-left: ($grid-gutter / 2);
@@ -51,15 +44,33 @@
 
 }
 
+
+@mixin plos-grid-container($grid-type: fixed){
+  @include plos-grid-row($container:true);
+  @if $grid-type == fixed {
+    min-width: rem-calc(980px);  //TODO put this in value
+    max-width: rem-calc(980px);  //TODO put this in value
+  }
+  margin: 0 auto;
+
+}
+
 .row { @include plos-grid-row($container: true); }
 .row-inside{}
 
-.grid-container, //TODO - do we use this?
+ //TODO - do we use this?
 main,
 .head-main {
   @include plos-grid-container;
 }
 
 
+.grid-test{
+   @extend .row;
+    .one {@include plos-grid-column($pixelwidth: columns, $columns:5); border: 1px solid;}
+  .two {@include plos-grid-column($pixelwidth: columns, $columns:3); border: 1px solid;}
+  .three {@include plos-grid-column($pixelwidth: columns, $columns:3); border: 1px solid;}
+
+}
 
 

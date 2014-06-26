@@ -148,7 +148,7 @@ $width-nav: $block-grid-elements - $width-logo;
       background: $white;
       box-shadow: $nav-main-box-shadow;
     }
-    li:nth-child(3) {
+    &:nth-child(3) {
       ul.dropdown {
         margin-left: rem-calc(-110);
       }
@@ -279,7 +279,7 @@ $width-nav: $block-grid-elements - $width-logo;
       }
     }
   }
-
+}
   //overrides for top-bar styles: they have to be here to work
   .top-bar-section ul li.head-search a {
     margin-top: rem-calc(-10);
@@ -293,4 +293,3 @@ $width-nav: $block-grid-elements - $width-logo;
     background: $grey-light;
   }
 
-}

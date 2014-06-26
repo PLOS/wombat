@@ -3,10 +3,61 @@
  */
 
 /*sets up the body container */
-.grid-container,
+
+@mixin plos-grid-container($grid-type: fixed){
+    @if $grid-type == fixed {
+      min-width: rem-calc(980px);  //TODO put this in value
+      max-width: rem-calc(980px);  //TODO put this in value
+    }
+  margin: 0 auto;
+}
+
+@mixin plos-grid-gutter-outside(){
+  margin-left: ($grid-gutter / 2);
+  margin-right:  ($grid-gutter / 2);
+}
+
+@mixin plos-grid-row($container: false, $f-gridargs...){
+  @include grid-row($behavior:collapse, $f-gridargs...);
+  @if $container == false{
+     @include plos-grid-gutter-outside();
+  } @else if $container == true {
+    // do nothing
+  }
+
+}
+
+@mixin plos-grid-column($pixelwidth, $gutter: outside, $f-gridargs...){
+
+  // from foundation:
+  @include grid-column($collapse: true, $f-gridargs...);
+  // sets the width
+  @if $pixelwidth == full-width {
+    width: rem-calc(980px);
+  } @else if $pixelwidth == columns {
+    // do nothing
+  } @else {
+    width: rem-calc($pixelwidth);
+  }
+
+  // sets the gutter - adds one on the right and on the left.
+  @if $gutter == outside{
+    margin-left: ($grid-gutter / 2);
+    margin-right:  ($grid-gutter / 2);
+  }
+  @if $gutter == none{
+    // no gutter
+  }
+
+}
+
+.row { @include plos-grid-row($container: true); }
+.row-inside{}
+
+.grid-container, //TODO - do we use this?
 main,
 .head-main {
-  @include grid-row();
+  @include plos-grid-container;
 }
 
 

@@ -15,52 +15,32 @@ $image-container: ($image-width + $pad-small);
 // do we name this "plos-grid" - the handy thing is that we can extend it.
 // I am using foundation settings values is this confusing? - i did it cause of rem-calc.
 
-@mixin grid-column-fixedwidth($pixelwidth, $gutter: outside){
- $inside-width: ($row-width - $grid-gutter);
-  @include grid-column($collapse:true);
- // sets the width
-  @if $pixelwidth == full-width {
-       width: $inside-width;
-  ;
-} @else {
-   width: rem-calc($pixelwidth);
-}
-
-  // sets the gutter - adds one on the right and on the left.
-  @if $gutter == outside{
-    margin-left: ($grid-gutter / 2);
-    margin-right:  ($grid-gutter / 2);
-  }
-  @if $gutter == none{
-    // no gutter
-  }
-
-}
 
 
-///TODOPG: these are al the widths
+
+///TODOPG: these are all the widths
 .width-full{
-  @include grid-column-fixedwidth($pixelwidth: full-width);
+  @include plos-grid-column($pixelwidth: full-width);
 }
 .width-xx-small {
-  @include grid-column-fixedwidth(182);
+  @include plos-grid-column(182);
 }
 
 .width-x-small {
-  @include grid-column-fixedwidth(267);
+  @include plos-grid-column(267);
 }
 .width-small {
-  @include grid-column-fixedwidth(306);
+  @include plos-grid-column(306);
 }
 .width-medium {
-  @include grid-column-fixedwidth(469);
+  @include plos-grid-column(469);
 }
 .width-large {
-  @include grid-column-fixedwidth(633);
+  @include plos-grid-column(633);
 }
 
 .row {
-  @include grid-row()
+  @include plos-grid-row();
 }
 
 .carousel-wrap.small{
@@ -126,8 +106,8 @@ $image-container: ($image-width + $pad-small);
 
 
 #billboard {
-  @include grid-row;
   @include blocks($grey-dark);
+  @extend .width-full;
   h3, h4, a {
     color: $white !important;
   }
@@ -147,20 +127,20 @@ $image-container: ($image-width + $pad-small);
 { // to do this needs to get fixed in the grid refactor  it really does
 
   &.xx-small {
-    @include grid-column-fixedwidth(180);
+    @include plos-grid-column(180);
   }
 
   &.x-small {
-    @include grid-column-fixedwidth(267);
+    @include plos-grid-column(267);
   }
   &.small {
-    @include grid-column-fixedwidth(306);
+    @extend .width-small;
   }
   &.medium {
-    @include grid-column-fixedwidth(469);
+    @include plos-grid-column(469);
   }
   &.large {
-    @include grid-column-fixedwidth(633);
+    @include plos-grid-column(633);
   }
 
 
@@ -220,7 +200,7 @@ $image-container: ($image-width + $pad-small);
     .title {
       @extend h4;
       @extend .subheader;
-      font-family: albert-bold;
+      font-family: $font-face-fancy;
     }
   }
 
@@ -228,13 +208,13 @@ $image-container: ($image-width + $pad-small);
 
 .column {
   &.left {
-    @include grid-column-fixedwidth(653, none);  //width + gutter
+    @include plos-grid-column(653, none);  //width + gutter
     .block.large{
-      @extend .width-large;                         //TODOPG- need to move this out
+      @extend .width-large;
     }
 
     .row-small-blocks {
-
+      width: 100%;
       // for demo
       .block {
         @extend .width-small;
@@ -257,7 +237,7 @@ $image-container: ($image-width + $pad-small);
   }
 
   &.right {
-    @include grid-column-fixedwidth(326, none);   //width + gutter
+    @include plos-grid-column(326, none);   //width + gutter
   }
 }
 
@@ -339,7 +319,7 @@ $image-container: ($image-width + $pad-small);
 #issue {
 
   @include blocks;
-  @include grid-column-fixedwidth(180);
+  @include plos-grid-column(180);
   .current-img {
     width: rem-calc(160);
   }

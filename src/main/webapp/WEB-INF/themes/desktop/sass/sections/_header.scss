@@ -73,7 +73,7 @@ $width-nav: $block-grid-elements - $width-logo;
     @extend .title-area;
     text-indent: -9999px;
     height: 41px;
-    background: image-url('logo.png') no-repeat 0 0;
+ //   background: image-url('logo.png') no-repeat 0 0;
   }
   .home-link {
     @extend .name;
@@ -97,10 +97,10 @@ $width-nav: $block-grid-elements - $width-logo;
     border-left: 1px solid $clr-separator;
 
     &:first-child {
-      border-left: 1px solid #efefef;
+      border-left: 1px solid $grey-light;
     }
     &:hover {
-      border-left: 1px solid #efefef;
+      border-left: 1px solid $grey-light;
       .submit { // 'submit your manuscript' callout
         display: block;
       }
@@ -156,7 +156,7 @@ $width-nav: $block-grid-elements - $width-logo;
       width: rem-calc(280);
       padding: rem-calc(20 0 30 15);
       z-index: 997;
-      background: white;
+      background: $white;
       border-top-left-radius: $border-radius-default;
       border-bottom-left-radius: $border-radius-default;
       font-family: $font-face-navigation;

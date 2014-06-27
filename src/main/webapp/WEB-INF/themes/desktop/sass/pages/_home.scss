@@ -7,19 +7,21 @@ $image-width: rem-calc(70);
 $hero-height: rem-calc(380);
 $image-container: ($image-width + $pad-small);
 
+// this mixin extends the foundation grid to do two things it can't do
+//1. add margins on the outside if needed
+//2. use pixel widths - cause that's how digital pulp rolls.
+// questions:
+// I am using foundation settings values is this confusing? - i did it cause of rem-calc.
 
-
-
-
-
-
-
-
-
+///TODOPG: these are all the widths
+.width-full {
+  @include plos-grid-column($pixelwidth: full-width);
+}
 
 .width-xx-small {
   @include plos-grid-column(182);
 }
+
 
 .width-x-small {
   @include plos-grid-column(267);
@@ -42,6 +44,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 //home page blocks
+
 
 .hero {
   @extend .width-full;
@@ -114,8 +117,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 //sizes:
-
-
+.row > .block {
 
   &.xx-small {
     @extend .width-xx-small;
@@ -231,6 +233,7 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
+
 #spotlight {
   @include blocks();
   @extend .width-small;
@@ -297,11 +300,7 @@ $image-container: ($image-width + $pad-small);
       @extend .more-icon;
     }
 
-
-
-
   }
-
 
 //Tooltips are added to the bottom of the page & hidden. This class should not be nested.
 .tooltip {
@@ -311,9 +310,9 @@ $image-container: ($image-width + $pad-small);
 }
 
 #issue {
-
   @include blocks;
-
+  @include plos-grid-column(180);
+  height: $block-height;
   .current-img {
     width: rem-calc(160);
   }
@@ -321,6 +320,8 @@ $image-container: ($image-width + $pad-small);
     margin-top: rem-calc(5);
     a {
       @include link-text();
+
+      //  @extend .header-allcaps-xxlarge;
 
       @extend .condense;
       display: block;
@@ -433,8 +434,8 @@ $image-container: ($image-width + $pad-small);
       font-size: rem-calc($txt-size-medium-large);
       font-family: $font-face-fancy;
     }
-}
   }
+}
 #blogs {
   height: $block-height;
   @extend .block-card;

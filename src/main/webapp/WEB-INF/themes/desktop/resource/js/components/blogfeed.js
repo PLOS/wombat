@@ -5,10 +5,19 @@
   function feedLoaded(result) {
     if (!result.error) {
       var container = document.getElementById("blogrss"),
-        html = "", entry, getdate, pubDate, blogImg;
-      //container.innerHTML = '';
+        html = "", entry, getdate, pubDate, blogImg, postQty;
+      var getBlog = document.getElementById('blogs').firstChild.nextSibling.textContent,
+        docTitle = document.title.slice(5,8),
+        blogDiv = container.parentNode;
+         console.log(blogDiv);
+      if (docTitle === 'Bio') {
+        postQty = 4;
+        blogDiv.style.height = "425px";
+      } else {
+        postQty = 2
+      }
+      for (var i = 0; i < postQty; i++) {
 
-      for (var i = 0; i < 2; i++) {
         entry = result.feed.entries[i],
         getdate = new Date(entry.publishedDate),
           options = {

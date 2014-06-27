@@ -12,16 +12,13 @@ $image-container: ($image-width + $pad-small);
 //1. add margins on the outside if needed
 //2. use pixel widths - cause that's how digital pulp rolls.
 // questions:
-// do we name this "plos-grid" - the handy thing is that we can extend it.
 // I am using foundation settings values is this confusing? - i did it cause of rem-calc.
 
-
-
-
 ///TODOPG: these are all the widths
-.width-full{
+.width-full {
   @include plos-grid-column($pixelwidth: full-width);
 }
+
 .width-xx-small {
   @include plos-grid-column(182);
 }
@@ -29,29 +26,24 @@ $image-container: ($image-width + $pad-small);
 .width-x-small {
   @include plos-grid-column(267);
 }
+
 .width-small {
   @include plos-grid-column(306);
 }
+
 .width-medium {
   @include plos-grid-column(469);
 }
+
 .width-large {
   @include plos-grid-column(633);
 }
 
-.row {
-  @include plos-grid-row();
-}
-
-.carousel-wrap.small{
+.carousel-wrap.small {
   @extend .width-small;
 }
+
 //home page blocks
-
-.hero
-.overlay-light {
-
-}
 
 .hero {
   @extend .width-full;
@@ -104,10 +96,10 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-
 #billboard {
   @include blocks($grey-dark);
   @extend .width-full;
+
   h3, h4, a {
     color: $white !important;
   }
@@ -116,6 +108,7 @@ $image-container: ($image-width + $pad-small);
     @include rounded-pill();
     position: absolute;
     width: auto;
+    //TODO neaten this up
     height: 36px;
     right: 20px;
     top: 10px;
@@ -123,34 +116,32 @@ $image-container: ($image-width + $pad-small);
 }
 
 //sizes:
-.row > .block
-{ // to do this needs to get fixed in the grid refactor  it really does
+.row > .block {
+  // to do this needs to get fixed in the grid refactor  it really does
 
   &.xx-small {
-    @include plos-grid-column(180);
+    @extend .width-xx-small;
   }
 
   &.x-small {
-    @include plos-grid-column(267);
+    @extend .width-x-small;
   }
   &.small {
     @extend .width-small;
   }
   &.medium {
-    @include plos-grid-column(469);
+    @extend .width-medium;
   }
   &.large {
-    @include plos-grid-column(633);
+    @extend .width-large;
   }
-
 
 }
 
 .block {
+  @include blocks;
   position: relative;
   height: $block-height;
-
-  @include blocks;
 
   .block-image {
     width: $image-container;
@@ -208,13 +199,13 @@ $image-container: ($image-width + $pad-small);
 
 .column {
   &.left {
-    @include plos-grid-column(653, none);  //width + gutter
-    .block.large{
+    @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 8); //width + gutter
+    .block.large {
       @extend .width-large;
     }
 
     .row-small-blocks {
-      width: 100%;
+      width: 100%; //TODO remove width?
       // for demo
       .block {
         @extend .width-small;
@@ -237,10 +228,10 @@ $image-container: ($image-width + $pad-small);
   }
 
   &.right {
-    @include plos-grid-column(326, none);   //width + gutter
+    @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 4); //width + gutter
+
   }
 }
-
 
 #blogs {
   @include blocks();
@@ -309,6 +300,7 @@ $image-container: ($image-width + $pad-small);
     @extend .has-tip; //foundation
   }
 }
+
 //Tooltips are added to the bottom of the page & hidden. This class should not be nested.
 .tooltip {
   width: 300px !important;
@@ -327,7 +319,7 @@ $image-container: ($image-width + $pad-small);
     margin-top: rem-calc(5);
     a {
       @include link-text();
-    //  @extend .header-allcaps-xxlarge;
+      //  @extend .header-allcaps-xxlarge;
       @extend .condense;
       display: block;
       margin-bottom: rem-calc(-5);
@@ -339,9 +331,10 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
+
 #twitter {
   @extend .width-small;
-
+  margin-bottom: $pad-default;
 }
 
 .linkbox {
@@ -362,6 +355,7 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
+
 #submission-links {
   @include blocks($color: $grey-dark);
   @extend .width-small;
@@ -400,8 +394,8 @@ $image-container: ($image-width + $pad-small);
 
   h3 {
     @extend .header-xlarge-light;
-    text-indent: rem-calc(10);
-    margin-bottom: 10px;
+    text-indent: $pad-small;
+    margin-bottom: $pad-small;
   }
   ul {
     @extend .inline-list;
@@ -424,7 +418,8 @@ $image-container: ($image-width + $pad-small);
       .social {
         width: ($txt-size-xxlarge * 2);
       }
-      .aria-text {   // TODO?: make this easier to extend?
+      .aria-text {
+        // TODO?: make this easier to extend?
         position: absolute;
         top: -9999px;
         left: -9999px;
@@ -438,14 +433,15 @@ $image-container: ($image-width + $pad-small);
     }
   }
 
-
 }
 
-#ad-slot-bottom{
-  @include grid-row;
-    .ad-item{
-      @extend .width-small;
-      iframe{  @extend .block;}
-
+#ad-slot-bottom {
+  @extend .row;
+  .ad-item {
+    @extend .width-small;
+    iframe {
+      @extend .block;
     }
+
+  }
 }

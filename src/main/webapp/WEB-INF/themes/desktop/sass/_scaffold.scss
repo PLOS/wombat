@@ -4,29 +4,37 @@
 
 /*sets up the body container */
 
-
-@mixin plos-grid-gutter-outside(){
+@mixin plos-grid-gutter-outside() {
   margin-left: ($grid-gutter / 2);
-  margin-right:  ($grid-gutter / 2);
+  margin-right: ($grid-gutter / 2);
 }
 
-@mixin plos-grid-row($container: false, $f-gridargs...){
-  @include grid-row($behavior:collapse, $f-gridargs...);
+@mixin plos-grid-row($container: false, $f-gridargs...) {
+  @include grid-row($behavior: collapse, $f-gridargs...);
   @if $container == false{
-     @include plos-grid-gutter-outside();
+    @include plos-grid-gutter-outside();
   } @else if $container == true {
     // do nothing
   }
 
 }
 
-@mixin plos-grid-column($pixelwidth, $gutter: outside, $f-gridargs...){
+/// from foundation amending this so we can use rems
+//TODO - review where values
+//TODO - do if flexible case
+
+@function grid-calc($colNumber, $totalColumns) {
+  $columnWidth: ($row-width / $totalColumns); // ($row-width / $total-columns);
+  @return ( $colNumber * $columnWidth ) - $grid-gutter;
+}
+
+@mixin plos-grid-column($pixelwidth, $gutter: outside, $f-gridargs...) {
 
   // from foundation:
   @include grid-column($collapse: true, $f-gridargs...);
   // sets the width
   @if $pixelwidth == full-width {
-    width: rem-calc(980px);
+    width: rem-calc(960px); // TODO - use variable
   } @else if $pixelwidth == columns {
     // do nothing
   } @else {
@@ -36,40 +44,74 @@
   // sets the gutter - adds one on the right and on the left.
   @if $gutter == outside{
     margin-left: ($grid-gutter / 2);
-    margin-right:  ($grid-gutter / 2);
+    margin-right: ($grid-gutter / 2);
   }
   @if $gutter == none{
-    // no gutter
   }
 
 }
 
+/// this is a total kluge essentially this allows us to have the margins on the outside
+@function grid-calc($colNumber, $totalColumns) {
+  $columnWidth: ($row-width / $totalColumns); // ($row-width / $total-columns);
+  @return ( $colNumber * $columnWidth );
+}
 
-@mixin plos-grid-container($grid-type: fixed){
-  @include plos-grid-row($container:true);
+@mixin plos-grid-column-nopad($pixelwidth, $f-gridargs...) {
+
+  // from foundation:
+  @include grid-column($collapse: true, $f-gridargs...);
+  // sets the width
+  @if $pixelwidth == full-width {
+    width: rem-calc(960px); // TODO - use variable
+  } @else if $pixelwidth == columns {
+    // do nothing
+  } @else {
+    width: rem-calc($pixelwidth);
+  }
+
+}
+
+@mixin plos-grid-container($grid-type: fixed) {
+  @include plos-grid-row($container: true);
   @if $grid-type == fixed {
-    min-width: rem-calc(980px);  //TODO put this in value
-    max-width: rem-calc(980px);  //TODO put this in value
+    min-width: rem-calc(980px); //TODO put this in value
+    max-width: rem-calc(980px); //TODO put this in value
   }
   margin: 0 auto;
 
 }
 
-.row { @include plos-grid-row($container: true); }
-.row-inside{}
+.row {
+  @include plos-grid-row($container: true);
+}
 
- //TODO - do we use this?
+.row-inside {
+}
+
+//TODO - do we use this?
 main,
-.head-main {
+.head-main,
+#pagehdr-wrap,
+#pagehdr,
+#pageftr .row {
   @include plos-grid-container;
 }
 
-
-.grid-test{
-   @extend .row;
-    .one {@include plos-grid-column($pixelwidth: columns, $columns:5); border: 1px solid;}
-  .two {@include plos-grid-column($pixelwidth: columns, $columns:3); border: 1px solid;}
-  .three {@include plos-grid-column($pixelwidth: columns, $columns:3); border: 1px solid;}
+.grid-test {
+  @extend .row;
+  .one {
+    @include plos-grid-column($pixelwidth: columns, $columns: 5);
+    border: 1px solid;
+  }
+  .two {
+    @include plos-grid-column($pixelwidth: columns, $columns: 2);
+    border: 1px solid;
+  }
+  .three {
+    @include plos-grid-column($pixelwidth: columns, $gutter: none, $columns: 5);
+    border: 1px solid;
+  }
 
 }
 

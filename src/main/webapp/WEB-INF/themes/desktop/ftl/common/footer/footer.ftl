@@ -4,7 +4,7 @@
 <footer id="pageftr">
   <div class="row">
 
-    <div class="large-6 columns">
+    <div class="brand-column">
       <#macro footerLogo src alt>
   			<img src="${src}" alt="${alt}" class="logo-footer"/>
       </#macro>
@@ -13,11 +13,11 @@
       <#include "footerPrimaryLinks.ftl" />
   	</div>
   
-  	<div class="large-3 columns">
+  	<div class="link-column">
       <#include "footerSecondaryLinks.ftl" />
   	</div>
   
-  	<div class="large-3 columns">
+  	<div class="link-column">
       <#include "footerTertiaryLinks.ftl" />
 		</div>
 

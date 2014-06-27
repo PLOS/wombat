@@ -37,7 +37,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
 #pagehdr-wrap {
   .nav {
-    @include grid-row();
+    @extend .row;
 
     .nav-user {
       @extend .inline-list; // from foundation
@@ -69,30 +69,39 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 
   .logo {
-    @include grid-column($width-logo); // from foundation
+
+//   OLD:   @include grid-column($width-logo); // from foundation
+    @include plos-grid-column($pixelwidth: columns, $columns: $width-logo);
     @extend .title-area;
     text-indent: -9999px;
     height: 41px;
- //   background: image-url('logo.png') no-repeat 0 0;
+    background: image-url('logo.png') no-repeat 0 0;
   }
   .home-link {
     @extend .name;
   }
 }
 
+
+.contain-to-grid{
+  @extend .row;   //TODO- why is this working?
+}
 /* using Foundation Top Bar
  all @extend .class are Foundation
  */
 
 .nav-main {
   @extend .top-bar;
+  @extend .row;
   font-family: $font-face-navigation;
-
+  .top-bar-section {@include plos-grid-column-nopad($pixelwidth: columns, $columns: $width-nav, $float: right);}
   .top-bar-section ul.nav-elements {
-    @extend .left; // foundation
-    @include grid-column($width-nav); // from foundation
+    @extend .right; // foundation
+//    @include grid-column($width-nav); // from foundation
+
     padding-right: 0;
   }
+  > li{ @extend .right;}
   .top-bar-section ul.nav-elements > li.has-dropdown {
     border-left: 1px solid $clr-separator;
 
@@ -209,47 +218,75 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 
   .head-search {
-    // $last-column: true; // from foundation
+   //  $last-column: true; // from foundation
+     @extend .right;
     //@extend .has-form;   // from foundation
-    @include grid-column($width-search); // from foundation
+  //  OLD: @include grid-column($width-search); // from foundation
+   // @include plos-grid-column($pixelwidth: columns, $columns: $width-search);
     //width: 214px !important; //TODO fix this (it's a hack to make it stretch to the edge of the grid.)
     padding-left: rem-calc(20);
     padding-right: 0;
     text-align: right;
+
+   // .search{ @include plos-grid-column($pixelwidth: columns, $columns: 2);}
+    .input{ }
     form {
+      background: $white;
       $fieldset-padding: 0;   // from foundation
       $fieldset-margin: 0;   // from foundation
       $input-box-shadow: none; // from foundation
       $input-include-glowing-effect: false; // from foundation
       $input-font-size: rem-calc($txt-size-xxlarge); // from foundation
-      margin-top: rem-calc(-5);
+//      margin-top: rem-calc(-5);
+ //     height: 40px;
       legend, label {
         display: none;
       }
 
+      fieldset {
+        border: 1px none white;
+        padding: 10px 10px 10px 3px;
+        margin: 0;
+        background-color: white;
+        display: inline-block;
+      }
+
       input[type="text"] {
 
-        $form-spacing: rem-calc(14);  // from foundation
+        $form-spacing: 0;  // from foundation
         $input-border-radius: 0; // from foundation
         $input-include-glowing-effect: false; // from foundation
         $input-font-color: $clr-body-text; // from foundation
         $input-border-color: $white; // from foundation
         $input-focus-border-color: $white; // from foundation
+        $form-label-line-height: 2; // from foundation
         @include form-element(); // from foundation
-        width: rem-calc(195);
+        display: inline-block;
+        width: rem-calc(150);
         color: $clr-input-active;
+        /// overwriting foundation styles
+        height: auto;
+        top: 0 !important;
       }
       @include input-placeholder-color();
 
       button[type="submit"] {
         @include postfix($white, $white); //foundation
-        width: 45px;
-        border: none;
 
+        //width: 20px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin: 0;
+        border: none;
+        display: inline-block;
+        /// overwriting foundation styles
+        top: 0 !important;
         .search-icon {
           @extend .fa;
           @extend .fa-search;
-          padding-top: rem-calc(4);
+//          padding-top: rem-calc(4);
           font-size: rem-calc($txt-size-xlarge);
         }
       }
@@ -260,7 +297,7 @@ $width-nav: $block-grid-elements - $width-logo;
   .top-bar-section ul li.head-search a {
     margin-top: rem-calc(-10);
     line-height: 33px;
-    width: rem-calc(190);
+  // OLD:  width: rem-calc(190);
     padding: 0 !important;
     font-size:  rem-calc($txt-size-small);
 

@@ -8373,18 +8373,19 @@ footer {
     cursor: pointer;
     margin-left: 3px;
     border-left: 1px solid #cccccc;
-    line-height: 36px;
-    padding: 0 15px;
+    line-height: 30px;
+    padding: 0.4375rem 0.9375rem;
     font-family: "albert";
-    font-size: 20px; }
-    /* line 114, ../../sass/sections/_header.scss */
+    font-size: 20px;
+    color: #3c63af; }
+    /* line 115, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:first-child {
       border-left: none;
       margin-left: 0; }
-    /* line 118, ../../sass/sections/_header.scss */
+    /* line 119, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:last-child {
       border-left: 1px solid #efefef; }
-  /* line 122, ../../sass/sections/_header.scss */
+  /* line 123, ../../sass/sections/_header.scss */
   .nav-main .dropdownanchor, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a {
     width: 100%;
     line-height: 1;
@@ -8392,11 +8393,11 @@ footer {
     font-family: "arial";
     font-size: 0.875rem;
     white-space: pre-wrap; }
-    /* line 129, ../../sass/sections/_header.scss */
+    /* line 130, ../../sass/sections/_header.scss */
     .nav-main .dropdownanchor:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a:hover {
       color: white;
       background: #3c63af; }
-  /* line 134, ../../sass/sections/_header.scss */
+  /* line 135, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -8405,12 +8406,15 @@ footer {
     -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px;
     box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
-    background: white; }
-    /* line 138, ../../sass/sections/_header.scss */
+    background: white;
+    padding-bottom: 12px;
+    color: #333333; }
+    /* line 142, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover:hover + li {
-      border-left: 1px solid #efefef; }
-    /* line 141, ../../sass/sections/_header.scss */
+      border-left: 1px solid #e0e0e0; }
+    /* line 145, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > ul.dropdown {
+      top: 47px;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       -ms-border-radius: 5px;
@@ -8422,12 +8426,10 @@ footer {
       padding-bottom: 1.875rem;
       background: white;
       box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15); }
-    /* line 152, ../../sass/sections/_header.scss */
-    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover:nth-child(3) ul.dropdown {
-      margin-left: -6.875rem; }
-    /* line 161, ../../sass/sections/_header.scss */
+    /* line 160, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer {
-      width: 530px;
+      width: 33.125rem;
+      top: 47px;
       margin-left: -18.125rem;
       padding: 1.25rem 0 1.875rem;
       background: white;

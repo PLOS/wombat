@@ -91,7 +91,7 @@ $width-nav: $block-grid-elements - $width-logo;
   > .dropdown {
     visibility: hidden;
   }
- @extend .top-bar;
+  @extend .top-bar;
   font-family: $font-face-navigation;
   .top-bar-section {
     width: 960px;
@@ -107,10 +107,11 @@ $width-nav: $block-grid-elements - $width-logo;
     cursor: pointer;
     margin-left: 3px;
     border-left: 1px solid $clr-separator;
-    line-height: 36px;
-    padding: 0 15px;
+    line-height: 30px;
+    padding: rem-calc(7 15);
     font-family: $font-face-navigation;
     font-size: $txt-size-xlarge;
+    color: $plos-default;
     &:first-child {
       border-left: none;
       margin-left: 0;
@@ -135,11 +136,14 @@ $width-nav: $block-grid-elements - $width-logo;
     @include border-top-radius();
     box-shadow: $nav-main-box-shadow;
     background: $white;
+    padding-bottom: 12px;
+    color: $clr-body-text;
+    //change color of separator because it's too far over from the padding that's necessary for the shadow
     &:hover + li {
-      border-left: 1px solid $grey-light;
+      border-left: 1px solid scale-color(#666, $lightness: 80%);
     }
     > ul.dropdown {
-
+      top: 47px;
       @include border-radius();
       width: rem-calc(240);
       margin-left: rem-calc(-15);
@@ -148,18 +152,14 @@ $width-nav: $block-grid-elements - $width-logo;
       background: $white;
       box-shadow: $nav-main-box-shadow;
     }
-    &:nth-child(3) {
-      ul.dropdown {
-        margin-left: rem-calc(-110);
-      }
-    }
 
     ul.dropdown li a {
       @extend .dropdownanchor;
     }
 
     .calloutcontainer {
-      width: 530px;
+      width: rem-calc(530);
+      top: 47px;
       margin-left: rem-calc(-290);
       padding: rem-calc(20 0 30);
       background: white;
@@ -232,7 +232,7 @@ $width-nav: $block-grid-elements - $width-logo;
       }
     }
   }
- .head-search {
+  .head-search {
     // $last-column: true; // from foundation
     //@extend .has-form;   // from foundation
     @include grid-column($width-search); // from foundation
@@ -280,16 +280,16 @@ $width-nav: $block-grid-elements - $width-logo;
     }
   }
 }
-  //overrides for top-bar styles: they have to be here to work
-  .top-bar-section ul li.head-search a {
-    margin-top: rem-calc(-10);
-    line-height: 33px;
-    width: rem-calc(175);
-    padding: 0 !important;
-    font-size:  rem-calc($txt-size-small);
-    @include link-text($clr-highlight-hover, underline);
-  }
-  .top-bar-section ul li.head-search:hover:not(.has-form) > a {
-    background: $grey-light;
-  }
+//overrides for top-bar styles: they have to be here to work
+.top-bar-section ul li.head-search a {
+  margin-top: rem-calc(-10);
+  line-height: 33px;
+  width: rem-calc(175);
+  padding: 0 !important;
+  font-size:  rem-calc($txt-size-small);
+  @include link-text($clr-highlight-hover, underline);
+}
+.top-bar-section ul li.head-search:hover:not(.has-form) > a {
+  background: $grey-light;
+}
 

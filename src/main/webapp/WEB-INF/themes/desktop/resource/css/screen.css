@@ -1017,22 +1017,24 @@ form {
 
 /* Using forms within rows, we need to set some defaults */
 /* line 82, ../../sass/vendor/foundation/components/_forms.scss */
-form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wrap form .nav .row, form .contain-to-grid .row, form .nav-main .row, form .row .grid-test, form .grid-test .grid-test, form #pagehdr-wrap .nav .grid-test, #pagehdr-wrap form .nav .grid-test, form .contain-to-grid .grid-test, form .nav-main .grid-test, form .row #pagehdr-wrap .nav, #pagehdr-wrap form .row .nav, form .grid-test #pagehdr-wrap .nav, #pagehdr-wrap form .grid-test .nav, form #pagehdr-wrap .nav .nav, #pagehdr-wrap form .nav .nav, form .contain-to-grid #pagehdr-wrap .nav, #pagehdr-wrap form .contain-to-grid .nav, form .nav-main #pagehdr-wrap .nav, #pagehdr-wrap form .nav-main .nav, form .row .contain-to-grid, form .grid-test .contain-to-grid, form #pagehdr-wrap .nav .contain-to-grid, #pagehdr-wrap form .nav .contain-to-grid, form .contain-to-grid .contain-to-grid, form .nav-main .contain-to-grid, form .row .nav-main, form .grid-test .nav-main, form #pagehdr-wrap .nav .nav-main, #pagehdr-wrap form .nav .nav-main, form .contain-to-grid .nav-main, form .nav-main .nav-main {
+form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wrap form .nav .row, form .contain-to-grid .row, form .nav-main .row, form #ad-slot-bottom .row, form .row .grid-test, form .grid-test .grid-test, form #pagehdr-wrap .nav .grid-test, #pagehdr-wrap form .nav .grid-test, form .contain-to-grid .grid-test, form .nav-main .grid-test, form #ad-slot-bottom .grid-test, form .row #pagehdr-wrap .nav, #pagehdr-wrap form .row .nav, form .grid-test #pagehdr-wrap .nav, #pagehdr-wrap form .grid-test .nav, form #pagehdr-wrap .nav .nav, #pagehdr-wrap form .nav .nav, form .contain-to-grid #pagehdr-wrap .nav, #pagehdr-wrap form .contain-to-grid .nav, form .nav-main #pagehdr-wrap .nav, #pagehdr-wrap form .nav-main .nav, form #ad-slot-bottom #pagehdr-wrap .nav, #pagehdr-wrap form #ad-slot-bottom .nav, form .row .contain-to-grid, form .grid-test .contain-to-grid, form #pagehdr-wrap .nav .contain-to-grid, #pagehdr-wrap form .nav .contain-to-grid, form .contain-to-grid .contain-to-grid, form .nav-main .contain-to-grid, form #ad-slot-bottom .contain-to-grid, form .row .nav-main, form .grid-test .nav-main, form #pagehdr-wrap .nav .nav-main, #pagehdr-wrap form .nav .nav-main, form .contain-to-grid .nav-main, form .nav-main .nav-main, form #ad-slot-bottom .nav-main, form .row #ad-slot-bottom, form .grid-test #ad-slot-bottom, form #pagehdr-wrap .nav #ad-slot-bottom, #pagehdr-wrap form .nav #ad-slot-bottom, form .contain-to-grid #ad-slot-bottom, form .nav-main #ad-slot-bottom, form #ad-slot-bottom #ad-slot-bottom {
   margin: 0 -0.5rem; }
   /* line 84, ../../sass/vendor/foundation/components/_forms.scss */
-  form .row .row .column, form .grid-test .row .column, form #pagehdr-wrap .nav .row .column, #pagehdr-wrap form .nav .row .column, form .contain-to-grid .row .column, form .nav-main .row .column, form .row .grid-test .column, form .grid-test .grid-test .column, form #pagehdr-wrap .nav .grid-test .column, #pagehdr-wrap form .nav .grid-test .column, form .contain-to-grid .grid-test .column, form .nav-main .grid-test .column, form .row #pagehdr-wrap .nav .column, #pagehdr-wrap form .row .nav .column, form .grid-test #pagehdr-wrap .nav .column, #pagehdr-wrap form .grid-test .nav .column, form #pagehdr-wrap .nav .nav .column, #pagehdr-wrap form .nav .nav .column, form .contain-to-grid #pagehdr-wrap .nav .column, #pagehdr-wrap form .contain-to-grid .nav .column, form .nav-main #pagehdr-wrap .nav .column, #pagehdr-wrap form .nav-main .nav .column, form .row .contain-to-grid .column, form .grid-test .contain-to-grid .column, form #pagehdr-wrap .nav .contain-to-grid .column, #pagehdr-wrap form .nav .contain-to-grid .column, form .contain-to-grid .contain-to-grid .column, form .nav-main .contain-to-grid .column, form .row .nav-main .column, form .grid-test .nav-main .column, form #pagehdr-wrap .nav .nav-main .column, #pagehdr-wrap form .nav .nav-main .column, form .contain-to-grid .nav-main .column, form .nav-main .nav-main .column,
+  form .row .row .column, form .grid-test .row .column, form #pagehdr-wrap .nav .row .column, #pagehdr-wrap form .nav .row .column, form .contain-to-grid .row .column, form .nav-main .row .column, form #ad-slot-bottom .row .column, form .row .grid-test .column, form .grid-test .grid-test .column, form #pagehdr-wrap .nav .grid-test .column, #pagehdr-wrap form .nav .grid-test .column, form .contain-to-grid .grid-test .column, form .nav-main .grid-test .column, form #ad-slot-bottom .grid-test .column, form .row #pagehdr-wrap .nav .column, #pagehdr-wrap form .row .nav .column, form .grid-test #pagehdr-wrap .nav .column, #pagehdr-wrap form .grid-test .nav .column, form #pagehdr-wrap .nav .nav .column, #pagehdr-wrap form .nav .nav .column, form .contain-to-grid #pagehdr-wrap .nav .column, #pagehdr-wrap form .contain-to-grid .nav .column, form .nav-main #pagehdr-wrap .nav .column, #pagehdr-wrap form .nav-main .nav .column, form #ad-slot-bottom #pagehdr-wrap .nav .column, #pagehdr-wrap form #ad-slot-bottom .nav .column, form .row .contain-to-grid .column, form .grid-test .contain-to-grid .column, form #pagehdr-wrap .nav .contain-to-grid .column, #pagehdr-wrap form .nav .contain-to-grid .column, form .contain-to-grid .contain-to-grid .column, form .nav-main .contain-to-grid .column, form #ad-slot-bottom .contain-to-grid .column, form .row .nav-main .column, form .grid-test .nav-main .column, form #pagehdr-wrap .nav .nav-main .column, #pagehdr-wrap form .nav .nav-main .column, form .contain-to-grid .nav-main .column, form .nav-main .nav-main .column, form #ad-slot-bottom .nav-main .column, form .row #ad-slot-bottom .column, form .grid-test #ad-slot-bottom .column, form #pagehdr-wrap .nav #ad-slot-bottom .column, #pagehdr-wrap form .nav #ad-slot-bottom .column, form .contain-to-grid #ad-slot-bottom .column, form .nav-main #ad-slot-bottom .column, form #ad-slot-bottom #ad-slot-bottom .column,
   form .row .row .columns,
   form .grid-test .row .columns,
   form #pagehdr-wrap .nav .row .columns,
   #pagehdr-wrap form .nav .row .columns,
   form .contain-to-grid .row .columns,
   form .nav-main .row .columns,
+  form #ad-slot-bottom .row .columns,
   form .row .grid-test .columns,
   form .grid-test .grid-test .columns,
   form #pagehdr-wrap .nav .grid-test .columns,
   #pagehdr-wrap form .nav .grid-test .columns,
   form .contain-to-grid .grid-test .columns,
   form .nav-main .grid-test .columns,
+  form #ad-slot-bottom .grid-test .columns,
   form .row #pagehdr-wrap .nav .columns,
   #pagehdr-wrap form .row .nav .columns,
   form .grid-test #pagehdr-wrap .nav .columns,
@@ -1043,36 +1045,49 @@ form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wra
   #pagehdr-wrap form .contain-to-grid .nav .columns,
   form .nav-main #pagehdr-wrap .nav .columns,
   #pagehdr-wrap form .nav-main .nav .columns,
+  form #ad-slot-bottom #pagehdr-wrap .nav .columns,
+  #pagehdr-wrap form #ad-slot-bottom .nav .columns,
   form .row .contain-to-grid .columns,
   form .grid-test .contain-to-grid .columns,
   form #pagehdr-wrap .nav .contain-to-grid .columns,
   #pagehdr-wrap form .nav .contain-to-grid .columns,
   form .contain-to-grid .contain-to-grid .columns,
   form .nav-main .contain-to-grid .columns,
+  form #ad-slot-bottom .contain-to-grid .columns,
   form .row .nav-main .columns,
   form .grid-test .nav-main .columns,
   form #pagehdr-wrap .nav .nav-main .columns,
   #pagehdr-wrap form .nav .nav-main .columns,
   form .contain-to-grid .nav-main .columns,
-  form .nav-main .nav-main .columns {
+  form .nav-main .nav-main .columns,
+  form #ad-slot-bottom .nav-main .columns,
+  form .row #ad-slot-bottom .columns,
+  form .grid-test #ad-slot-bottom .columns,
+  form #pagehdr-wrap .nav #ad-slot-bottom .columns,
+  #pagehdr-wrap form .nav #ad-slot-bottom .columns,
+  form .contain-to-grid #ad-slot-bottom .columns,
+  form .nav-main #ad-slot-bottom .columns,
+  form #ad-slot-bottom #ad-slot-bottom .columns {
     padding: 0 0.5rem; }
   /* line 88, ../../sass/vendor/foundation/components/_forms.scss */
-  form .row .row.collapse, form .grid-test .row.collapse, form #pagehdr-wrap .nav .row.collapse, #pagehdr-wrap form .nav .row.collapse, form .contain-to-grid .row.collapse, form .nav-main .row.collapse, form .row .collapse.grid-test, form .grid-test .collapse.grid-test, form #pagehdr-wrap .nav .collapse.grid-test, #pagehdr-wrap form .nav .collapse.grid-test, form .contain-to-grid .collapse.grid-test, form .nav-main .collapse.grid-test, form .row #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .row .collapse.nav, form .grid-test #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .grid-test .collapse.nav, form #pagehdr-wrap .nav .collapse.nav, #pagehdr-wrap form .nav .collapse.nav, form .contain-to-grid #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .contain-to-grid .collapse.nav, form .nav-main #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .nav-main .collapse.nav, form .row .collapse.contain-to-grid, form .grid-test .collapse.contain-to-grid, form #pagehdr-wrap .nav .collapse.contain-to-grid, #pagehdr-wrap form .nav .collapse.contain-to-grid, form .contain-to-grid .collapse.contain-to-grid, form .nav-main .collapse.contain-to-grid, form .row .collapse.nav-main, form .grid-test .collapse.nav-main, form #pagehdr-wrap .nav .collapse.nav-main, #pagehdr-wrap form .nav .collapse.nav-main, form .contain-to-grid .collapse.nav-main, form .nav-main .collapse.nav-main {
+  form .row .row.collapse, form .grid-test .row.collapse, form #pagehdr-wrap .nav .row.collapse, #pagehdr-wrap form .nav .row.collapse, form .contain-to-grid .row.collapse, form .nav-main .row.collapse, form #ad-slot-bottom .row.collapse, form .row .collapse.grid-test, form .grid-test .collapse.grid-test, form #pagehdr-wrap .nav .collapse.grid-test, #pagehdr-wrap form .nav .collapse.grid-test, form .contain-to-grid .collapse.grid-test, form .nav-main .collapse.grid-test, form #ad-slot-bottom .collapse.grid-test, form .row #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .row .collapse.nav, form .grid-test #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .grid-test .collapse.nav, form #pagehdr-wrap .nav .collapse.nav, #pagehdr-wrap form .nav .collapse.nav, form .contain-to-grid #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .contain-to-grid .collapse.nav, form .nav-main #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .nav-main .collapse.nav, form #ad-slot-bottom #pagehdr-wrap .collapse.nav, #pagehdr-wrap form #ad-slot-bottom .collapse.nav, form .row .collapse.contain-to-grid, form .grid-test .collapse.contain-to-grid, form #pagehdr-wrap .nav .collapse.contain-to-grid, #pagehdr-wrap form .nav .collapse.contain-to-grid, form .contain-to-grid .collapse.contain-to-grid, form .nav-main .collapse.contain-to-grid, form #ad-slot-bottom .collapse.contain-to-grid, form .row .collapse.nav-main, form .grid-test .collapse.nav-main, form #pagehdr-wrap .nav .collapse.nav-main, #pagehdr-wrap form .nav .collapse.nav-main, form .contain-to-grid .collapse.nav-main, form .nav-main .collapse.nav-main, form #ad-slot-bottom .collapse.nav-main, form .row .collapse#ad-slot-bottom, form .grid-test .collapse#ad-slot-bottom, form #pagehdr-wrap .nav .collapse#ad-slot-bottom, #pagehdr-wrap form .nav .collapse#ad-slot-bottom, form .contain-to-grid .collapse#ad-slot-bottom, form .nav-main .collapse#ad-slot-bottom, form #ad-slot-bottom .collapse#ad-slot-bottom {
     margin: 0; }
     /* line 90, ../../sass/vendor/foundation/components/_forms.scss */
-    form .row .row.collapse .column, form .grid-test .row.collapse .column, form #pagehdr-wrap .nav .row.collapse .column, #pagehdr-wrap form .nav .row.collapse .column, form .contain-to-grid .row.collapse .column, form .nav-main .row.collapse .column, form .row .collapse.grid-test .column, form .grid-test .collapse.grid-test .column, form #pagehdr-wrap .nav .collapse.grid-test .column, #pagehdr-wrap form .nav .collapse.grid-test .column, form .contain-to-grid .collapse.grid-test .column, form .nav-main .collapse.grid-test .column, form .row #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .row .collapse.nav .column, form .grid-test #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .grid-test .collapse.nav .column, form #pagehdr-wrap .nav .collapse.nav .column, #pagehdr-wrap form .nav .collapse.nav .column, form .contain-to-grid #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .contain-to-grid .collapse.nav .column, form .nav-main #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .nav-main .collapse.nav .column, form .row .collapse.contain-to-grid .column, form .grid-test .collapse.contain-to-grid .column, form #pagehdr-wrap .nav .collapse.contain-to-grid .column, #pagehdr-wrap form .nav .collapse.contain-to-grid .column, form .contain-to-grid .collapse.contain-to-grid .column, form .nav-main .collapse.contain-to-grid .column, form .row .collapse.nav-main .column, form .grid-test .collapse.nav-main .column, form #pagehdr-wrap .nav .collapse.nav-main .column, #pagehdr-wrap form .nav .collapse.nav-main .column, form .contain-to-grid .collapse.nav-main .column, form .nav-main .collapse.nav-main .column,
+    form .row .row.collapse .column, form .grid-test .row.collapse .column, form #pagehdr-wrap .nav .row.collapse .column, #pagehdr-wrap form .nav .row.collapse .column, form .contain-to-grid .row.collapse .column, form .nav-main .row.collapse .column, form #ad-slot-bottom .row.collapse .column, form .row .collapse.grid-test .column, form .grid-test .collapse.grid-test .column, form #pagehdr-wrap .nav .collapse.grid-test .column, #pagehdr-wrap form .nav .collapse.grid-test .column, form .contain-to-grid .collapse.grid-test .column, form .nav-main .collapse.grid-test .column, form #ad-slot-bottom .collapse.grid-test .column, form .row #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .row .collapse.nav .column, form .grid-test #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .grid-test .collapse.nav .column, form #pagehdr-wrap .nav .collapse.nav .column, #pagehdr-wrap form .nav .collapse.nav .column, form .contain-to-grid #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .contain-to-grid .collapse.nav .column, form .nav-main #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .nav-main .collapse.nav .column, form #ad-slot-bottom #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form #ad-slot-bottom .collapse.nav .column, form .row .collapse.contain-to-grid .column, form .grid-test .collapse.contain-to-grid .column, form #pagehdr-wrap .nav .collapse.contain-to-grid .column, #pagehdr-wrap form .nav .collapse.contain-to-grid .column, form .contain-to-grid .collapse.contain-to-grid .column, form .nav-main .collapse.contain-to-grid .column, form #ad-slot-bottom .collapse.contain-to-grid .column, form .row .collapse.nav-main .column, form .grid-test .collapse.nav-main .column, form #pagehdr-wrap .nav .collapse.nav-main .column, #pagehdr-wrap form .nav .collapse.nav-main .column, form .contain-to-grid .collapse.nav-main .column, form .nav-main .collapse.nav-main .column, form #ad-slot-bottom .collapse.nav-main .column, form .row .collapse#ad-slot-bottom .column, form .grid-test .collapse#ad-slot-bottom .column, form #pagehdr-wrap .nav .collapse#ad-slot-bottom .column, #pagehdr-wrap form .nav .collapse#ad-slot-bottom .column, form .contain-to-grid .collapse#ad-slot-bottom .column, form .nav-main .collapse#ad-slot-bottom .column, form #ad-slot-bottom .collapse#ad-slot-bottom .column,
     form .row .row.collapse .columns,
     form .grid-test .row.collapse .columns,
     form #pagehdr-wrap .nav .row.collapse .columns,
     #pagehdr-wrap form .nav .row.collapse .columns,
     form .contain-to-grid .row.collapse .columns,
     form .nav-main .row.collapse .columns,
+    form #ad-slot-bottom .row.collapse .columns,
     form .row .collapse.grid-test .columns,
     form .grid-test .collapse.grid-test .columns,
     form #pagehdr-wrap .nav .collapse.grid-test .columns,
     #pagehdr-wrap form .nav .collapse.grid-test .columns,
     form .contain-to-grid .collapse.grid-test .columns,
     form .nav-main .collapse.grid-test .columns,
+    form #ad-slot-bottom .collapse.grid-test .columns,
     form .row #pagehdr-wrap .collapse.nav .columns,
     #pagehdr-wrap form .row .collapse.nav .columns,
     form .grid-test #pagehdr-wrap .collapse.nav .columns,
@@ -1083,43 +1098,57 @@ form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wra
     #pagehdr-wrap form .contain-to-grid .collapse.nav .columns,
     form .nav-main #pagehdr-wrap .collapse.nav .columns,
     #pagehdr-wrap form .nav-main .collapse.nav .columns,
+    form #ad-slot-bottom #pagehdr-wrap .collapse.nav .columns,
+    #pagehdr-wrap form #ad-slot-bottom .collapse.nav .columns,
     form .row .collapse.contain-to-grid .columns,
     form .grid-test .collapse.contain-to-grid .columns,
     form #pagehdr-wrap .nav .collapse.contain-to-grid .columns,
     #pagehdr-wrap form .nav .collapse.contain-to-grid .columns,
     form .contain-to-grid .collapse.contain-to-grid .columns,
     form .nav-main .collapse.contain-to-grid .columns,
+    form #ad-slot-bottom .collapse.contain-to-grid .columns,
     form .row .collapse.nav-main .columns,
     form .grid-test .collapse.nav-main .columns,
     form #pagehdr-wrap .nav .collapse.nav-main .columns,
     #pagehdr-wrap form .nav .collapse.nav-main .columns,
     form .contain-to-grid .collapse.nav-main .columns,
-    form .nav-main .collapse.nav-main .columns {
+    form .nav-main .collapse.nav-main .columns,
+    form #ad-slot-bottom .collapse.nav-main .columns,
+    form .row .collapse#ad-slot-bottom .columns,
+    form .grid-test .collapse#ad-slot-bottom .columns,
+    form #pagehdr-wrap .nav .collapse#ad-slot-bottom .columns,
+    #pagehdr-wrap form .nav .collapse#ad-slot-bottom .columns,
+    form .contain-to-grid .collapse#ad-slot-bottom .columns,
+    form .nav-main .collapse#ad-slot-bottom .columns,
+    form #ad-slot-bottom .collapse#ad-slot-bottom .columns {
       padding: 0; }
     /* line 92, ../../sass/vendor/foundation/components/_forms.scss */
-    form .row .row.collapse input, form .grid-test .row.collapse input, form #pagehdr-wrap .nav .row.collapse input, #pagehdr-wrap form .nav .row.collapse input, form .contain-to-grid .row.collapse input, form .nav-main .row.collapse input, form .row .collapse.grid-test input, form .grid-test .collapse.grid-test input, form #pagehdr-wrap .nav .collapse.grid-test input, #pagehdr-wrap form .nav .collapse.grid-test input, form .contain-to-grid .collapse.grid-test input, form .nav-main .collapse.grid-test input, form .row #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .row .collapse.nav input, form .grid-test #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .grid-test .collapse.nav input, form #pagehdr-wrap .nav .collapse.nav input, #pagehdr-wrap form .nav .collapse.nav input, form .contain-to-grid #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .contain-to-grid .collapse.nav input, form .nav-main #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .nav-main .collapse.nav input, form .row .collapse.contain-to-grid input, form .grid-test .collapse.contain-to-grid input, form #pagehdr-wrap .nav .collapse.contain-to-grid input, #pagehdr-wrap form .nav .collapse.contain-to-grid input, form .contain-to-grid .collapse.contain-to-grid input, form .nav-main .collapse.contain-to-grid input, form .row .collapse.nav-main input, form .grid-test .collapse.nav-main input, form #pagehdr-wrap .nav .collapse.nav-main input, #pagehdr-wrap form .nav .collapse.nav-main input, form .contain-to-grid .collapse.nav-main input, form .nav-main .collapse.nav-main input {
+    form .row .row.collapse input, form .grid-test .row.collapse input, form #pagehdr-wrap .nav .row.collapse input, #pagehdr-wrap form .nav .row.collapse input, form .contain-to-grid .row.collapse input, form .nav-main .row.collapse input, form #ad-slot-bottom .row.collapse input, form .row .collapse.grid-test input, form .grid-test .collapse.grid-test input, form #pagehdr-wrap .nav .collapse.grid-test input, #pagehdr-wrap form .nav .collapse.grid-test input, form .contain-to-grid .collapse.grid-test input, form .nav-main .collapse.grid-test input, form #ad-slot-bottom .collapse.grid-test input, form .row #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .row .collapse.nav input, form .grid-test #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .grid-test .collapse.nav input, form #pagehdr-wrap .nav .collapse.nav input, #pagehdr-wrap form .nav .collapse.nav input, form .contain-to-grid #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .contain-to-grid .collapse.nav input, form .nav-main #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .nav-main .collapse.nav input, form #ad-slot-bottom #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form #ad-slot-bottom .collapse.nav input, form .row .collapse.contain-to-grid input, form .grid-test .collapse.contain-to-grid input, form #pagehdr-wrap .nav .collapse.contain-to-grid input, #pagehdr-wrap form .nav .collapse.contain-to-grid input, form .contain-to-grid .collapse.contain-to-grid input, form .nav-main .collapse.contain-to-grid input, form #ad-slot-bottom .collapse.contain-to-grid input, form .row .collapse.nav-main input, form .grid-test .collapse.nav-main input, form #pagehdr-wrap .nav .collapse.nav-main input, #pagehdr-wrap form .nav .collapse.nav-main input, form .contain-to-grid .collapse.nav-main input, form .nav-main .collapse.nav-main input, form #ad-slot-bottom .collapse.nav-main input, form .row .collapse#ad-slot-bottom input, form .grid-test .collapse#ad-slot-bottom input, form #pagehdr-wrap .nav .collapse#ad-slot-bottom input, #pagehdr-wrap form .nav .collapse#ad-slot-bottom input, form .contain-to-grid .collapse#ad-slot-bottom input, form .nav-main .collapse#ad-slot-bottom input, form #ad-slot-bottom .collapse#ad-slot-bottom input {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0; }
 /* line 98, ../../sass/vendor/foundation/components/_forms.scss */
-form .row input.column, form .grid-test input.column, form #pagehdr-wrap .nav input.column, #pagehdr-wrap form .nav input.column, form .contain-to-grid input.column, form .nav-main input.column,
+form .row input.column, form .grid-test input.column, form #pagehdr-wrap .nav input.column, #pagehdr-wrap form .nav input.column, form .contain-to-grid input.column, form .nav-main input.column, form #ad-slot-bottom input.column,
 form .row input.columns,
 form .grid-test input.columns,
 form #pagehdr-wrap .nav input.columns,
 #pagehdr-wrap form .nav input.columns,
 form .contain-to-grid input.columns,
 form .nav-main input.columns,
+form #ad-slot-bottom input.columns,
 form .row textarea.column,
 form .grid-test textarea.column,
 form #pagehdr-wrap .nav textarea.column,
 #pagehdr-wrap form .nav textarea.column,
 form .contain-to-grid textarea.column,
 form .nav-main textarea.column,
+form #ad-slot-bottom textarea.column,
 form .row textarea.columns,
 form .grid-test textarea.columns,
 form #pagehdr-wrap .nav textarea.columns,
 #pagehdr-wrap form .nav textarea.columns,
 form .contain-to-grid textarea.columns,
-form .nav-main textarea.columns {
+form .nav-main textarea.columns,
+form #ad-slot-bottom textarea.columns {
   padding-left: 0.5rem; }
 
 /* Label Styles */
@@ -2025,7 +2054,7 @@ meta.foundation-mq-topbar {
     margin-bottom: 0;
     list-style: none; }
   /* line 157, ../../sass/vendor/foundation/components/_top-bar.scss */
-  .top-bar .row, .nav-main .row, .top-bar .grid-test, .nav-main .grid-test, .top-bar #pagehdr-wrap .nav, #pagehdr-wrap .top-bar .nav, .nav-main #pagehdr-wrap .nav, #pagehdr-wrap .nav-main .nav, .top-bar .contain-to-grid, .nav-main .contain-to-grid, .top-bar .nav-main, .nav-main .nav-main {
+  .top-bar .row, .nav-main .row, .top-bar .grid-test, .nav-main .grid-test, .top-bar #pagehdr-wrap .nav, #pagehdr-wrap .top-bar .nav, .nav-main #pagehdr-wrap .nav, #pagehdr-wrap .nav-main .nav, .top-bar .contain-to-grid, .nav-main .contain-to-grid, .top-bar .nav-main, .nav-main .nav-main, .top-bar #ad-slot-bottom, .nav-main #ad-slot-bottom {
     max-width: none; }
   /* line 159, ../../sass/vendor/foundation/components/_top-bar.scss */
   .top-bar form, .nav-main form,
@@ -3395,6 +3424,107 @@ th.hide-for-touch {
 /* line 343, ../../sass/vendor/foundation/components/_visibility.scss */
 .touch th.show-for-touch {
   display: table-cell !important; }
+
+/* 
+ *
+ */
+/*sets up the body container */
+/* line 87, ../../sass/_scaffold.scss */
+.row, .grid-test, #pagehdr-wrap .nav, .contain-to-grid, .nav-main, #ad-slot-bottom {
+  width: 100%;
+  margin: 0;
+  max-width: 61.25rem;
+  *zoom: 1; }
+  /* line 116, ../../sass/vendor/foundation/components/_global.scss */
+  .row:before, .grid-test:before, #pagehdr-wrap .nav:before, .contain-to-grid:before, .nav-main:before, #ad-slot-bottom:before, .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .contain-to-grid:after, .nav-main:after, #ad-slot-bottom:after {
+    content: " ";
+    display: table; }
+  /* line 117, ../../sass/vendor/foundation/components/_global.scss */
+  .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .contain-to-grid:after, .nav-main:after, #ad-slot-bottom:after {
+    clear: both; }
+
+/* line 95, ../../sass/_scaffold.scss */
+main,
+.head-main,
+#pagehdr-wrap,
+#pagehdr,
+#pageftr .row,
+#pageftr .grid-test,
+#pageftr #pagehdr-wrap .nav,
+#pagehdr-wrap #pageftr .nav,
+#pageftr .contain-to-grid,
+#pageftr .nav-main,
+#pageftr #ad-slot-bottom {
+  width: 100%;
+  margin: 0;
+  max-width: 61.25rem;
+  *zoom: 1;
+  min-width: 980px;
+  max-width: 980px;
+  margin: 0 auto; }
+  /* line 116, ../../sass/vendor/foundation/components/_global.scss */
+  main:before, main:after,
+  .head-main:before,
+  .head-main:after,
+  #pagehdr-wrap:before,
+  #pagehdr-wrap:after,
+  #pagehdr:before,
+  #pagehdr:after,
+  #pageftr .row:before,
+  #pageftr .grid-test:before,
+  #pageftr #pagehdr-wrap .nav:before,
+  #pagehdr-wrap #pageftr .nav:before,
+  #pageftr .contain-to-grid:before,
+  #pageftr .nav-main:before,
+  #pageftr #ad-slot-bottom:before,
+  #pageftr .row:after,
+  #pageftr .grid-test:after,
+  #pageftr #pagehdr-wrap .nav:after,
+  #pagehdr-wrap #pageftr .nav:after,
+  #pageftr .contain-to-grid:after,
+  #pageftr .nav-main:after,
+  #pageftr #ad-slot-bottom:after {
+    content: " ";
+    display: table; }
+  /* line 117, ../../sass/vendor/foundation/components/_global.scss */
+  main:after,
+  .head-main:after,
+  #pagehdr-wrap:after,
+  #pagehdr:after,
+  #pageftr .row:after,
+  #pageftr .grid-test:after,
+  #pageftr #pagehdr-wrap .nav:after,
+  #pagehdr-wrap #pageftr .nav:after,
+  #pageftr .contain-to-grid:after,
+  #pageftr .nav-main:after,
+  #pageftr #ad-slot-bottom:after {
+    clear: both; }
+
+/* line 105, ../../sass/_scaffold.scss */
+.grid-test .one {
+  padding-left: 0;
+  padding-right: 0;
+  width: 25.52083rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
+  border: 1px solid; }
+/* line 109, ../../sass/_scaffold.scss */
+.grid-test .two {
+  padding-left: 0;
+  padding-right: 0;
+  width: 10.20833rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
+  border: 1px solid; }
+/* line 113, ../../sass/_scaffold.scss */
+.grid-test .three {
+  padding-left: 0;
+  padding-right: 0;
+  width: 25.52083rem;
+  float: left;
+  border: 1px solid; }
 
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -5556,103 +5686,6 @@ th.hide-for-touch {
   top: 0;
   left: 0; }
 
-/* 
- *
- */
-/*sets up the body container */
-/* line 85, ../../sass/_scaffold.scss */
-.row, .grid-test, #pagehdr-wrap .nav, .contain-to-grid, .nav-main {
-  width: 100%;
-  margin: 0;
-  max-width: 61.25rem;
-  *zoom: 1; }
-  /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  .row:before, .grid-test:before, #pagehdr-wrap .nav:before, .contain-to-grid:before, .nav-main:before, .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .contain-to-grid:after, .nav-main:after {
-    content: " ";
-    display: table; }
-  /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .contain-to-grid:after, .nav-main:after {
-    clear: both; }
-
-/* line 93, ../../sass/_scaffold.scss */
-main,
-.head-main,
-#pagehdr-wrap,
-#pagehdr,
-#pageftr .row,
-#pageftr .grid-test,
-#pageftr #pagehdr-wrap .nav,
-#pagehdr-wrap #pageftr .nav,
-#pageftr .contain-to-grid,
-#pageftr .nav-main {
-  width: 100%;
-  margin: 0;
-  max-width: 61.25rem;
-  *zoom: 1;
-  min-width: 61.25rem;
-  max-width: 61.25rem;
-  margin: 0 auto; }
-  /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  main:before, main:after,
-  .head-main:before,
-  .head-main:after,
-  #pagehdr-wrap:before,
-  #pagehdr-wrap:after,
-  #pagehdr:before,
-  #pagehdr:after,
-  #pageftr .row:before,
-  #pageftr .grid-test:before,
-  #pageftr #pagehdr-wrap .nav:before,
-  #pagehdr-wrap #pageftr .nav:before,
-  #pageftr .contain-to-grid:before,
-  #pageftr .nav-main:before,
-  #pageftr .row:after,
-  #pageftr .grid-test:after,
-  #pageftr #pagehdr-wrap .nav:after,
-  #pagehdr-wrap #pageftr .nav:after,
-  #pageftr .contain-to-grid:after,
-  #pageftr .nav-main:after {
-    content: " ";
-    display: table; }
-  /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  main:after,
-  .head-main:after,
-  #pagehdr-wrap:after,
-  #pagehdr:after,
-  #pageftr .row:after,
-  #pageftr .grid-test:after,
-  #pageftr #pagehdr-wrap .nav:after,
-  #pagehdr-wrap #pageftr .nav:after,
-  #pageftr .contain-to-grid:after,
-  #pageftr .nav-main:after {
-    clear: both; }
-
-/* line 103, ../../sass/_scaffold.scss */
-.grid-test .one {
-  padding-left: 0;
-  padding-right: 0;
-  width: 25.52083rem;
-  float: left;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem;
-  border: 1px solid; }
-/* line 107, ../../sass/_scaffold.scss */
-.grid-test .two {
-  padding-left: 0;
-  padding-right: 0;
-  width: 10.20833rem;
-  float: left;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem;
-  border: 1px solid; }
-/* line 111, ../../sass/_scaffold.scss */
-.grid-test .three {
-  padding-left: 0;
-  padding-right: 0;
-  width: 25.52083rem;
-  float: left;
-  border: 1px solid; }
-
 /*   This file contains design components used for Journals and Wombat Generic
  *
  */
@@ -6155,7 +6188,7 @@ footer {
 /*
  *    Home page blocks
  */
-/* line 22, ../../sass/pages/_home.scss */
+/* line 18, ../../sass/pages/_home.scss */
 .width-full, .hero, #billboard {
   padding-left: 0;
   padding-right: 0;
@@ -6164,8 +6197,8 @@ footer {
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 25, ../../sass/pages/_home.scss */
-.width-xx-small {
+/* line 22, ../../sass/pages/_home.scss */
+.width-xx-small, .row > .block.xx-small, .grid-test > .block.xx-small, #pagehdr-wrap .nav > .block.xx-small, .contain-to-grid > .block.xx-small, .nav-main > .block.xx-small, #ad-slot-bottom > .block.xx-small, #ad-slot-bottom .ad-item .row > iframe.xx-small, #ad-slot-bottom .ad-item .grid-test > iframe.xx-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.xx-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.xx-small, #ad-slot-bottom .ad-item .contain-to-grid > iframe.xx-small, #ad-slot-bottom .ad-item .nav-main > iframe.xx-small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.xx-small {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6173,8 +6206,8 @@ footer {
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 29, ../../sass/pages/_home.scss */
-.width-x-small, #article-list {
+/* line 26, ../../sass/pages/_home.scss */
+.width-x-small, .row > .block.x-small, .grid-test > .block.x-small, #pagehdr-wrap .nav > .block.x-small, .contain-to-grid > .block.x-small, .nav-main > .block.x-small, #ad-slot-bottom > .block.x-small, #ad-slot-bottom .ad-item .row > iframe.x-small, #ad-slot-bottom .ad-item .grid-test > iframe.x-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.x-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.x-small, #ad-slot-bottom .ad-item .contain-to-grid > iframe.x-small, #ad-slot-bottom .ad-item .nav-main > iframe.x-small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.x-small, #article-list {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6182,8 +6215,8 @@ footer {
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 32, ../../sass/pages/_home.scss */
-.width-small, .carousel-wrap.small, .row > .block.small, .grid-test > .block.small, #pagehdr-wrap .nav > .block.small, .contain-to-grid > .block.small, .nav-main > .block.small, #ad-slot-bottom .ad-item .row > iframe.small, #ad-slot-bottom .ad-item .grid-test > iframe.small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.small, #ad-slot-bottom .ad-item .contain-to-grid > iframe.small, #ad-slot-bottom .ad-item .nav-main > iframe.small, .column.left .row-small-blocks .block, .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .column.left .row-small-blocks iframe, .column.left .block.small, .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .column.left iframe.small, #blogs, #twitter, .linkbox, #submission-links, #social-links, #ad-slot-bottom .ad-item {
+/* line 30, ../../sass/pages/_home.scss */
+.width-small, .carousel-wrap.small, .row > .block.small, .grid-test > .block.small, #pagehdr-wrap .nav > .block.small, .contain-to-grid > .block.small, .nav-main > .block.small, #ad-slot-bottom > .block.small, #ad-slot-bottom .ad-item .row > iframe.small, #ad-slot-bottom .ad-item .grid-test > iframe.small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.small, #ad-slot-bottom .ad-item .contain-to-grid > iframe.small, #ad-slot-bottom .ad-item .nav-main > iframe.small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.small, .column.left .row-small-blocks .block, .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .column.left .row-small-blocks iframe, .column.left .block.small, .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .column.left iframe.small, #blogs, #twitter, .linkbox, #submission-links, #social-links, #ad-slot-bottom .ad-item {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6191,8 +6224,8 @@ footer {
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 35, ../../sass/pages/_home.scss */
-.width-medium {
+/* line 34, ../../sass/pages/_home.scss */
+.width-medium, .row > .block.medium, .grid-test > .block.medium, #pagehdr-wrap .nav > .block.medium, .contain-to-grid > .block.medium, .nav-main > .block.medium, #ad-slot-bottom > .block.medium, #ad-slot-bottom .ad-item .row > iframe.medium, #ad-slot-bottom .ad-item .grid-test > iframe.medium, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.medium, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.medium, #ad-slot-bottom .ad-item .contain-to-grid > iframe.medium, #ad-slot-bottom .ad-item .nav-main > iframe.medium, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.medium {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6201,7 +6234,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 38, ../../sass/pages/_home.scss */
-.width-large, .column.left .block.large, .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .column.left iframe.large {
+.width-large, .row > .block.large, .grid-test > .block.large, #pagehdr-wrap .nav > .block.large, .contain-to-grid > .block.large, .nav-main > .block.large, #ad-slot-bottom > .block.large, #ad-slot-bottom .ad-item .row > iframe.large, #ad-slot-bottom .ad-item .grid-test > iframe.large, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.large, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.large, #ad-slot-bottom .ad-item .contain-to-grid > iframe.large, #ad-slot-bottom .ad-item .nav-main > iframe.large, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.large, .column.left .block.large, .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .column.left iframe.large {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6209,23 +6242,7 @@ footer {
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 42, ../../sass/pages/_home.scss */
-.row, .grid-test, #pagehdr-wrap .nav, .contain-to-grid, .nav-main {
-  width: 100%;
-  margin: 0;
-  max-width: 61.25rem;
-  *zoom: 1;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-  /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  .row:before, .grid-test:before, #pagehdr-wrap .nav:before, .contain-to-grid:before, .nav-main:before, .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .contain-to-grid:after, .nav-main:after {
-    content: " ";
-    display: table; }
-  /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .contain-to-grid:after, .nav-main:after {
-    clear: both; }
-
-/* line 56, ../../sass/pages/_home.scss */
+/* line 48, ../../sass/pages/_home.scss */
 .hero {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -6240,21 +6257,21 @@ footer {
   padding: 0;
   background: transparent;
   color: white; }
-  /* line 64, ../../sass/pages/_home.scss */
+  /* line 56, ../../sass/pages/_home.scss */
   .hero.overlay-dark > a:before {
     *zoom: 1;
     filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF00FFFF', endColorstr='#FFA80000');
     background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 45%, rgba(250, 250, 250, 0) 46%, rgba(231, 231, 231, 0.06) 50%, rgba(203, 203, 203, 0.17) 56%, rgba(134, 134, 134, 0.54) 71%, rgba(102, 102, 102, 0.65) 78%, rgba(0, 0, 0, 0.66) 100%);
     background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 45%, rgba(250, 250, 250, 0) 46%, rgba(231, 231, 231, 0.06) 50%, rgba(203, 203, 203, 0.17) 56%, rgba(134, 134, 134, 0.54) 71%, rgba(102, 102, 102, 0.65) 78%, rgba(0, 0, 0, 0.66) 100%);
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 45%, rgba(250, 250, 250, 0) 46%, rgba(231, 231, 231, 0.06) 50%, rgba(203, 203, 203, 0.17) 56%, rgba(134, 134, 134, 0.54) 71%, rgba(102, 102, 102, 0.65) 78%, rgba(0, 0, 0, 0.66) 100%); }
-  /* line 70, ../../sass/pages/_home.scss */
+  /* line 62, ../../sass/pages/_home.scss */
   .hero.overlay-light > a:before {
     *zoom: 1;
     filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF00FFFF', endColorstr='#FFA8FFFF');
     background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.17) 56%, rgba(255, 255, 255, 0.54) 71%, rgba(255, 255, 255, 0.65) 78%, rgba(255, 255, 255, 0.66) 100%);
     background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.17) 56%, rgba(255, 255, 255, 0.54) 71%, rgba(255, 255, 255, 0.65) 78%, rgba(255, 255, 255, 0.66) 100%);
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.17) 56%, rgba(255, 255, 255, 0.54) 71%, rgba(255, 255, 255, 0.65) 78%, rgba(255, 255, 255, 0.66) 100%); }
-  /* line 76, ../../sass/pages/_home.scss */
+  /* line 68, ../../sass/pages/_home.scss */
   .hero img {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -6263,13 +6280,13 @@ footer {
     -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px;
     width: 100%; }
-  /* line 82, ../../sass/pages/_home.scss */
+  /* line 74, ../../sass/pages/_home.scss */
   .hero a {
     color: white; }
-  /* line 85, ../../sass/pages/_home.scss */
+  /* line 77, ../../sass/pages/_home.scss */
   .hero.dark-text, .hero.dark-text a {
     color: #333333; }
-  /* line 91, ../../sass/pages/_home.scss */
+  /* line 83, ../../sass/pages/_home.scss */
   .hero .hero-content {
     position: absolute;
     width: 100%;
@@ -6277,7 +6294,7 @@ footer {
     padding: 0.625rem;
     font-size: 1rem; }
 
-/* line 108, ../../sass/pages/_home.scss */
+/* line 99, ../../sass/pages/_home.scss */
 #billboard {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -6292,10 +6309,10 @@ footer {
   margin-bottom: 1.25rem;
   background: #333333;
   position: relative; }
-  /* line 111, ../../sass/pages/_home.scss */
+  /* line 103, ../../sass/pages/_home.scss */
   #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small #billboard .title, #billboard a {
     color: white !important; }
-  /* line 115, ../../sass/pages/_home.scss */
+  /* line 107, ../../sass/pages/_home.scss */
   #billboard a {
     background: #3c63af;
     padding: 1.25rem;
@@ -6310,43 +6327,8 @@ footer {
     #billboard a:hover {
       background: #333333; }
 
-/* line 129, ../../sass/pages/_home.scss */
-.row > .block.xx-small, .grid-test > .block.xx-small, #pagehdr-wrap .nav > .block.xx-small, .contain-to-grid > .block.xx-small, .nav-main > .block.xx-small, #ad-slot-bottom .ad-item .row > iframe.xx-small, #ad-slot-bottom .ad-item .grid-test > iframe.xx-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.xx-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.xx-small, #ad-slot-bottom .ad-item .contain-to-grid > iframe.xx-small, #ad-slot-bottom .ad-item .nav-main > iframe.xx-small {
-  padding-left: 0;
-  padding-right: 0;
-  float: left;
-  width: 11.25rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-/* line 133, ../../sass/pages/_home.scss */
-.row > .block.x-small, .grid-test > .block.x-small, #pagehdr-wrap .nav > .block.x-small, .contain-to-grid > .block.x-small, .nav-main > .block.x-small, #ad-slot-bottom .ad-item .row > iframe.x-small, #ad-slot-bottom .ad-item .grid-test > iframe.x-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.x-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.x-small, #ad-slot-bottom .ad-item .contain-to-grid > iframe.x-small, #ad-slot-bottom .ad-item .nav-main > iframe.x-small {
-  padding-left: 0;
-  padding-right: 0;
-  float: left;
-  width: 16.6875rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-/* line 139, ../../sass/pages/_home.scss */
-.row > .block.medium, .grid-test > .block.medium, #pagehdr-wrap .nav > .block.medium, .contain-to-grid > .block.medium, .nav-main > .block.medium, #ad-slot-bottom .ad-item .row > iframe.medium, #ad-slot-bottom .ad-item .grid-test > iframe.medium, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.medium, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.medium, #ad-slot-bottom .ad-item .contain-to-grid > iframe.medium, #ad-slot-bottom .ad-item .nav-main > iframe.medium {
-  padding-left: 0;
-  padding-right: 0;
-  float: left;
-  width: 29.3125rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-/* line 142, ../../sass/pages/_home.scss */
-.row > .block.large, .grid-test > .block.large, #pagehdr-wrap .nav > .block.large, .contain-to-grid > .block.large, .nav-main > .block.large, #ad-slot-bottom .ad-item .row > iframe.large, #ad-slot-bottom .ad-item .grid-test > iframe.large, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.large, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.large, #ad-slot-bottom .ad-item .contain-to-grid > iframe.large, #ad-slot-bottom .ad-item .nav-main > iframe.large {
-  padding-left: 0;
-  padding-right: 0;
-  float: left;
-  width: 39.5625rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-
-/* line 149, ../../sass/pages/_home.scss */
+/* line 141, ../../sass/pages/_home.scss */
 .block, #ad-slot-bottom .ad-item iframe {
-  position: relative;
-  height: 15.625rem;
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
@@ -6358,61 +6340,63 @@ footer {
   -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
-  background: white; }
-  /* line 155, ../../sass/pages/_home.scss */
+  background: white;
+  position: relative;
+  height: 15.625rem; }
+  /* line 146, ../../sass/pages/_home.scss */
   .block .block-image, #ad-slot-bottom .ad-item iframe .block-image {
     width: 5rem;
     display: block;
     position: absolute;
     left: 0.625rem;
     top: 0.625rem; }
-  /* line 162, ../../sass/pages/_home.scss */
+  /* line 153, ../../sass/pages/_home.scss */
   .block.image .block-content, #ad-slot-bottom .ad-item iframe.image .block-content {
     margin-left: 6.25rem; }
-  /* line 169, ../../sass/pages/_home.scss */
+  /* line 160, ../../sass/pages/_home.scss */
   .block .credits, #ad-slot-bottom .ad-item iframe .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.25rem;
     margin: 0; }
-  /* line 182, ../../sass/pages/_home.scss */
+  /* line 173, ../../sass/pages/_home.scss */
   .block .title a, #ad-slot-bottom .ad-item iframe .title a {
     color: #333333; }
-    /* line 184, ../../sass/pages/_home.scss */
+    /* line 175, ../../sass/pages/_home.scss */
     .block .title a:hover, #ad-slot-bottom .ad-item iframe .title a:hover {
       text-decoration: underline; }
-  /* line 194, ../../sass/pages/_home.scss */
+  /* line 185, ../../sass/pages/_home.scss */
   .block .block-content, #ad-slot-bottom .ad-item iframe .block-content {
     position: relative;
     font-size: 0.8125rem; }
-  /* line 200, ../../sass/pages/_home.scss */
+  /* line 191, ../../sass/pages/_home.scss */
   .block.small .title, #ad-slot-bottom .ad-item iframe.small .title {
     font-family: "albert"; }
 
-/* line 210, ../../sass/pages/_home.scss */
+/* line 201, ../../sass/pages/_home.scss */
 .column.left {
   padding-left: 0;
   padding-right: 0;
-  float: left;
-  width: 40.8125rem; }
-  /* line 216, ../../sass/pages/_home.scss */
+  width: 40.83333rem;
+  float: left; }
+  /* line 207, ../../sass/pages/_home.scss */
   .column.left .row-small-blocks {
     width: 100%; }
-  /* line 225, ../../sass/pages/_home.scss */
+  /* line 216, ../../sass/pages/_home.scss */
   .column.left .block, .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .column.left iframe {
     height: 11.25rem; }
-    /* line 228, ../../sass/pages/_home.scss */
+    /* line 219, ../../sass/pages/_home.scss */
     .column.left .block .block-image, .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .column.left iframe .block-image {
       height: 10rem;
       overflow: hidden; }
-/* line 239, ../../sass/pages/_home.scss */
+/* line 230, ../../sass/pages/_home.scss */
 .column.right, #pagehdr-wrap .nav .column.nav-user, .nav-main .top-bar-section ul.column.nav-elements, .nav-main > li.column, .nav-main .column.head-search {
   padding-left: 0;
   padding-right: 0;
-  float: left;
-  width: 20.375rem; }
+  width: 20.41667rem;
+  float: left; }
 
-/* line 245, ../../sass/pages/_home.scss */
+/* line 236, ../../sass/pages/_home.scss */
 #blogs {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -6428,7 +6412,7 @@ footer {
   background: white;
   height: 15.625rem; }
 
-/* line 251, ../../sass/pages/_home.scss */
+/* line 242, ../../sass/pages/_home.scss */
 #billboard {
   width: 100%;
   margin-left: auto;
@@ -6457,10 +6441,10 @@ footer {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   #billboard:after {
     clear: both; }
-  /* line 254, ../../sass/pages/_home.scss */
+  /* line 245, ../../sass/pages/_home.scss */
   #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small #billboard .title, #billboard a {
     color: white !important; }
-  /* line 258, ../../sass/pages/_home.scss */
+  /* line 249, ../../sass/pages/_home.scss */
   #billboard a {
     background: #3c63af;
     padding: 1.25rem;
@@ -6475,7 +6459,7 @@ footer {
     #billboard a:hover {
       background: #333333; }
 
-/* line 268, ../../sass/pages/_home.scss */
+/* line 259, ../../sass/pages/_home.scss */
 #article-list {
   height: 15.625rem;
   -moz-border-radius-topleft: 5px;
@@ -6491,14 +6475,14 @@ footer {
   margin-bottom: 1.25rem;
   background: white;
   position: relative; }
-  /* line 278, ../../sass/pages/_home.scss */
+  /* line 269, ../../sass/pages/_home.scss */
   #article-list ul.list-plain {
     line-height: normal; }
-    /* line 282, ../../sass/pages/_home.scss */
+    /* line 273, ../../sass/pages/_home.scss */
     #article-list ul.list-plain li {
       color: #333333;
       margin-bottom: 15px; }
-      /* line 286, ../../sass/pages/_home.scss */
+      /* line 277, ../../sass/pages/_home.scss */
       #article-list ul.list-plain li a {
         color: #333333;
         text-decoration: none;
@@ -6509,13 +6493,13 @@ footer {
         #article-list ul.list-plain li a:hover, #article-list ul.list-plain li a a:hover {
           color: #3c63af;
           text-decoration: none; }
-  /* line 294, ../../sass/pages/_home.scss */
+  /* line 285, ../../sass/pages/_home.scss */
   #article-list .more-link {
     position: absolute;
     bottom: 10px;
     left: 10px;
     right: auto; }
-    /* line 299, ../../sass/pages/_home.scss */
+    /* line 290, ../../sass/pages/_home.scss */
     #article-list .more-link > a {
       color: #333333;
       text-decoration: none; }
@@ -6524,7 +6508,7 @@ footer {
         color: #3c63af;
         text-decoration: none; }
 
-/* line 313, ../../sass/pages/_home.scss */
+/* line 305, ../../sass/pages/_home.scss */
 .tooltip {
   width: 300px !important;
   -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -6532,7 +6516,7 @@ footer {
   box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
   border: 1px solid #cccccc; }
 
-/* line 319, ../../sass/pages/_home.scss */
+/* line 311, ../../sass/pages/_home.scss */
 #issue {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -6552,13 +6536,13 @@ footer {
   width: 11.25rem;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
-  /* line 323, ../../sass/pages/_home.scss */
+  /* line 315, ../../sass/pages/_home.scss */
   #issue .current-img {
     width: 10rem; }
-  /* line 326, ../../sass/pages/_home.scss */
+  /* line 318, ../../sass/pages/_home.scss */
   #issue .boxtitle {
     margin-top: 0.3125rem; }
-    /* line 328, ../../sass/pages/_home.scss */
+    /* line 320, ../../sass/pages/_home.scss */
     #issue .boxtitle a {
       color: #333333;
       text-decoration: none;
@@ -6569,24 +6553,28 @@ footer {
       #issue .boxtitle a:hover, #issue .boxtitle a a:hover {
         color: #3c63af;
         text-decoration: none; }
-    /* line 336, ../../sass/pages/_home.scss */
+    /* line 328, ../../sass/pages/_home.scss */
     #issue .boxtitle .subhead {
       font-face: "arial";
       font-size: 16px; }
 
-/* line 347, ../../sass/pages/_home.scss */
+/* line 335, ../../sass/pages/_home.scss */
+#twitter {
+  margin-bottom: 1.25rem; }
+
+/* line 340, ../../sass/pages/_home.scss */
 .linkbox {
   height: 25.625rem; }
-  /* line 353, ../../sass/pages/_home.scss */
+  /* line 346, ../../sass/pages/_home.scss */
   .linkbox ul li {
     padding: 1.25rem 1.875rem;
     border-top: 1px solid #efefef; }
-    /* line 357, ../../sass/pages/_home.scss */
+    /* line 350, ../../sass/pages/_home.scss */
     .linkbox ul li a {
       font-family: "albert";
       font-size: 1rem; }
 
-/* line 365, ../../sass/pages/_home.scss */
+/* line 359, ../../sass/pages/_home.scss */
 #submission-links {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -6601,19 +6589,19 @@ footer {
   margin-bottom: 1.25rem;
   background: #333333;
   padding: 0.625rem 1.875rem; }
-  /* line 375, ../../sass/pages/_home.scss */
+  /* line 369, ../../sass/pages/_home.scss */
   #submission-links .split-container {
     margin-left: 0; }
-  /* line 379, ../../sass/pages/_home.scss */
+  /* line 373, ../../sass/pages/_home.scss */
   #submission-links .split-item {
     margin: 0 !important;
     width: 50%;
     height: 40px;
     text-align: center; }
-    /* line 384, ../../sass/pages/_home.scss */
+    /* line 378, ../../sass/pages/_home.scss */
     #submission-links .split-item:first-child {
       border-right: 1px solid #636363; }
-    /* line 387, ../../sass/pages/_home.scss */
+    /* line 381, ../../sass/pages/_home.scss */
     #submission-links .split-item a {
       color: #89a0d0;
       text-decoration: none;
@@ -6624,7 +6612,7 @@ footer {
         color: #89a0d0;
         text-decoration: underline; }
 
-/* line 395, ../../sass/pages/_home.scss */
+/* line 389, ../../sass/pages/_home.scss */
 #social-links {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -6640,19 +6628,19 @@ footer {
   background: #04417d;
   border-radius: 5px;
   padding: 0.3125rem; }
-  /* line 401, ../../sass/pages/_home.scss */
+  /* line 395, ../../sass/pages/_home.scss */
   #social-links h3 {
     text-indent: 0.625rem;
-    margin-bottom: 10px; }
-  /* line 406, ../../sass/pages/_home.scss */
+    margin-bottom: 0.625rem; }
+  /* line 400, ../../sass/pages/_home.scss */
   #social-links ul {
     margin-bottom: 0;
     margin-left: -0.25rem; }
-    /* line 410, ../../sass/pages/_home.scss */
+    /* line 404, ../../sass/pages/_home.scss */
     #social-links ul > li {
       margin-left: 4px;
       margin-bottom: 0; }
-      /* line 413, ../../sass/pages/_home.scss */
+      /* line 407, ../../sass/pages/_home.scss */
       #social-links ul > li > a {
         background: #3c63af;
         border-radius: 5px;
@@ -6660,37 +6648,20 @@ footer {
         height: 44px;
         text-align: center;
         color: white; }
-        /* line 420, ../../sass/pages/_home.scss */
+        /* line 414, ../../sass/pages/_home.scss */
         #social-links ul > li > a:hover {
           background: #333333; }
-      /* line 424, ../../sass/pages/_home.scss */
+      /* line 418, ../../sass/pages/_home.scss */
       #social-links ul > li .social {
         width: 44px; }
-      /* line 427, ../../sass/pages/_home.scss */
+      /* line 421, ../../sass/pages/_home.scss */
       #social-links ul > li .aria-text {
         position: absolute;
         top: -9999px;
         left: -9999px; }
-    /* line 433, ../../sass/pages/_home.scss */
+    /* line 428, ../../sass/pages/_home.scss */
     #social-links ul .social-blogs {
       width: 102px;
       line-height: 44px;
       font-size: 1rem;
       font-family: "albert"; }
-
-/* line 444, ../../sass/pages/_home.scss */
-#ad-slot-bottom {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  max-width: 61.25rem;
-  *zoom: 1; }
-  /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  #ad-slot-bottom:before, #ad-slot-bottom:after {
-    content: " ";
-    display: table; }
-  /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  #ad-slot-bottom:after {
-    clear: both; }

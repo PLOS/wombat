@@ -6302,7 +6302,7 @@ footer {
     border-radius: 5px;
     color: white;
     position: absolute;
-    width: 80px;
+    width: auto;
     height: 36px;
     right: 20px;
     top: 10px; }

@@ -9,7 +9,7 @@
       var getBlog = document.getElementById('blogs').firstChild.nextSibling.textContent,
         docTitle = document.title.slice(5,8),
         blogDiv = container.parentNode;
-         console.log(blogDiv);
+         
       if (docTitle === 'Bio') {
         postQty = 4;
         blogDiv.style.height = "425px";

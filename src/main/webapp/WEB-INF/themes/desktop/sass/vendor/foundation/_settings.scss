@@ -471,7 +471,7 @@ $align-block-grid-to-grid: true;
 
 // Forms
 
-// $include-html-form-classes: $include-html-classes;
+ $include-html-form-classes: $include-html-classes;
 
 // We use this to set the base for lots of form spacing and positioning styles
 // $form-spacing: rem-calc(16);
@@ -481,7 +481,7 @@ $align-block-grid-to-grid: true;
 // $form-label-font-size: rem-calc(14);
 // $form-label-font-weight: normal;
 // $form-label-line-height: 1.5;
-// $form-label-font-color: scale-color(#000, $lightness: 30%);
+$form-label-font-color: $clr-body-text;// scale-color(#000, $lightness: 30%);
 // $form-label-bottom-margin: 0;
 $input-font-family: inherit;
 $input-font-color: $clr-body-text;
@@ -1139,9 +1139,9 @@ $topbar-dropdown-bg: $topbar-bg-color;
 $topbar-dropdown-link-color: $clr-link-hover;
 $topbar-dropdown-link-bg: $white;
 $topbar-dropdown-link-weight: normal;
-/* $topbar-dropdown-toggle-size: 5px;
- $topbar-dropdown-toggle-color: $clr-highlight-text;
- $topbar-dropdown-toggle-alpha: 0.4;*/
+// $topbar-dropdown-toggle-size: 5px;
+// $topbar-dropdown-toggle-color: $clr-highlight-text;
+// $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $plos-default;
@@ -1150,8 +1150,7 @@ $topbar-link-color-active: $grey-dark;
 $topbar-link-color-active-hover: $grey-dark;
 $topbar-link-weight: normal;
 $topbar-link-font-size: rem-calc(20);
-$topbar-link-hover-lightness: 0;
-//-10%; // Darken by 10%
+$topbar-link-hover-lightness: 0; //-10%; // Darken by 10%
 $topbar-link-bg-hover: $white;
 $topbar-link-bg-active: $white;
 $topbar-link-bg-active-hover: $white;

@@ -20,17 +20,20 @@
 .head-top {
   @extend .bg-dark;
   @extend .text-center;
-  @include highlight-border($plos-default);  /*TODO: use themes journal-specific css to assign border color*/
-  padding: 0 $pad-small;
-}
-
-.ad-head {
-  iframe {
-    padding-left: 18px;
-    background: image-url('text.vert.ad.gif') no-repeat left remcalc(5);
+  @include highlight-border($plos-default); /*TODO: use themes journal-specific css to assign border color*/
+  padding: $pad-xsmall $pad-small;
+  .center { width: 748px;
+    margin: 0 auto;
+    height: 90px;
+  }
+  .title {
+    width: 18px;
+    height: 88px;
+    text-indent: -9999px;
+    background: image-url('text.vert.ad.gif') no-repeat 0 6px;
+    float: left;
   }
 }
-
 $width-logo: 5;
 $width-search: 4;
 $width-nav: $block-grid-elements - $width-logo;
@@ -47,8 +50,7 @@ $width-nav: $block-grid-elements - $width-logo;
       > li {
         margin-top: rem-calc(-5);
         margin-left: rem-calc(4);
-        &:hover {
-        }
+
         > a {
           @include rounded-pill(transparent, rem-calc(14 16 8));
           color: $plos-default;
@@ -75,6 +77,7 @@ $width-nav: $block-grid-elements - $width-logo;
     @extend .title-area;
     text-indent: -9999px;
     height: 41px;
+    //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
     background: image-url('logo.png') no-repeat 0 0;
   }
   .home-link {
@@ -92,144 +95,174 @@ $width-nav: $block-grid-elements - $width-logo;
 
 .nav-main {
   @extend .top-bar;
+  > .dropdown {
+    visibility: hidden;
+  }
   @extend .row;
   font-family: $font-face-navigation;
   .top-bar-section {@include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right);}
+  // TODO PG remove  width: 960px;
+  }
   .top-bar-section ul.nav-elements {
     @extend .right; // foundation
 //    @include grid-column($width-nav); // from foundation
 
-    padding-right: 0;
+   // TODO PG remove   padding-right: 0;
+    padding-left: 0;
   }
-  > li{ @extend .right;}
+  > li{ @extend .right;} //PG check if needed
   .top-bar-section ul.nav-elements > li.has-dropdown {
+    cursor: pointer;
+    margin-left: 3px;
     border-left: 1px solid $clr-separator;
-
+    line-height: 36px;
+    padding: 0 15px;
+    font-family: $font-face-navigation;
+    font-size: $txt-size-xlarge;
     &:first-child {
+      border-left: none;
+      margin-left: 0;
+    }
+    &:last-child {
       border-left: 1px solid $grey-light;
     }
-    &:hover {
-      border-left: 1px solid $grey-light;
-      .submit { // 'submit your manuscript' callout
-        display: block;
-      }
-    }
 
-    > a {
-      font-family: $font-face-navigation;
-      @include border-top-radius();
 
-      &:hover {
-        @include single-box-shadow();
-        background: $white;
-      }
-    }
+
+
+
+
+
+
+
+
   }
-
-  .top-bar-section ul.nav-elements > li.has-dropdown ul.dropdown {
-    @include border-radius();
-    min-width: rem-calc(235);
-    margin-left: rem-calc(-15);
-    padding-top: rem-calc(20);
-    padding-bottom: rem-calc(30);
-    background: $white;
-
-    @include single-box-shadow();
-  }
-  .top-bar-section ul.nav-elements > li:nth-child(3) {
-    ul.dropdown {
-      margin-left: rem-calc(-110);
-    }
-  }
-  .top-bar-section li.has-dropdown ul.dropdown li a {
+  .dropdownanchor {
     width: 100%;
-    line-height: rem-calc(30);
-    padding: rem-calc(0 30);
+    line-height: 1;
+    padding: rem-calc(7 30 8 30);
     font-family: $font-face-plain;
     font-size: rem-calc($txt-size-medium);
-
+    white-space: pre-wrap;
     &:hover {
       color: $clr-highlight-text;
       background: $clr-highlight-hover;
     }
   }
+  .top-bar-section ul.nav-elements > li.has-dropdown.hover {
+    @include border-top-radius();
+    box-shadow: $nav-main-box-shadow;
+    background: $white;
+    &:hover + li {
+      border-left: 1px solid $grey-light;
+    }
+    > ul.dropdown {
 
-  .top-bar-section ul.nav-elements > li.has-dropdown {
-    position: relative;
-
-    .submit {   //'Submit your manuscript' callout
-      display: none;
-      position: absolute;
-      top: rem-calc(45);
-      left: rem-calc(-290);
-      width: rem-calc(280);
-      padding: rem-calc(20 0 30 15);
-      z-index: 997;
+      @include border-radius();
+      width: rem-calc(240);
+      margin-left: rem-calc(-15);
+      padding-top: rem-calc(20);
+      padding-bottom: rem-calc(30);
       background: $white;
-      border-top-left-radius: $border-radius-default;
-      border-bottom-left-radius: $border-radius-default;
-      font-family: $font-face-navigation;
-      font-size: rem-calc($txt-size-medium);
+      box-shadow: $nav-main-box-shadow;
+    }
+    &:nth-child(3) {
+      ul.dropdown {
+        margin-left: rem-calc(-110);
+      }
+    }
 
-      &:hover {
-        display: block !important;
-      }
-      .calloutInner {
-        border-right: 1px solid $grey-light;
-        padding-right: rem-calc(15);
-      }
-      h3 {
-        @extend .header-bottom-shadow;
-        font-size: rem-calc($txt-size-23large);
-      }
-      ul {
-        margin-left: rem-calc(15);
-        display: block !important;
-        list-style-type: disc;
-        li {
+    ul.dropdown li a {
+      @extend .dropdownanchor;
+    }
+
+    .calloutcontainer {
+      width: 530px;
+      margin-left: rem-calc(-290);
+      padding: rem-calc(20 0 30);
+      background: white;
+      box-shadow: $nav-main-box-shadow;
+      @include border-radius();
+
+      .submit {
+        //'Submit your manuscript' callout
+        position: relative;
+        float: left;
+        display: inline !important;
+        width: rem-calc(280);
+        margin-right: $pad-small;
+        padding: rem-calc(0 20 30 15);
+        font-family: $font-face-navigation;
+        font-size: rem-calc($txt-size-medium);
+        h3 {
+          @extend .header-bottom-shadow;
+          margin-top: $pad-xsmall;
+          font-size: rem-calc($txt-size-23large);
+        }
+        ul {
           margin-left: rem-calc(15);
-          a { //all this is necessary to override the foundation styles that are cascading
-            margin: 0;
-            padding: 0;
-            line-height: 1.35;
-            font-family: $font-face-navigation;
-            font-size: rem-calc($txt-size-medium-large);
-            background: $white;
-            color: $clr-link;
-            &:hover {
-              text-decoration: underline;
+          display: block !important;
+          list-style-type: disc;
+          width: auto;
+          li {
+            margin-left: rem-calc(15);
+            width: auto;
+            a {
+              // necessary to override the foundation styles
+              display: inline !important;
+              margin: 0;
+              padding: 0;
+              line-height: 1.35;
+              font-family: $font-face-navigation;
+              font-size: rem-calc($txt-size-medium-large);
+              background: $white;
+              color: $clr-link;
+              &:hover {
+                text-decoration: underline;
+              }
             }
+          }
+
+        }
+        a.btn {
+          @include rounded-pill($clr-btn-secondary);
+          display: inline-block;
+          margin-top: rem-calc(20);
+          margin-left: rem-calc(15);
+          padding: rem-calc(0 10);
+          line-height: 35px;
+          &:hover {
+            background: $clr-btn-primary;
           }
         }
 
       }
-      a.btn {
-        @include rounded-pill($clr-btn-secondary);
+      .dropdowncallout {
+        float: right;
         display: inline-block;
-        margin-top: rem-calc(20);
-        margin-left: rem-calc(15);
-        padding: rem-calc(0 10);
-        line-height: 35px;
-        &:hover {
-          background: $clr-btn-primary;
+        width: rem-calc(240);
+        border-left: 1px solid $grey-light;
+        background: $white;
+        @include border-radius();
+        li a {
+          @extend .dropdownanchor;
         }
       }
     }
   }
-
   .head-search {
    //  $last-column: true; // from foundation
      @extend .right;
     //@extend .has-form;   // from foundation
   //  OLD: @include grid-column($width-search); // from foundation
-   // @include plos-grid-column($pixelwidth: columns, $columns: $width-search);
-    //width: 214px !important; //TODO fix this (it's a hack to make it stretch to the edge of the grid.)
+
+
     padding-left: rem-calc(20);
     padding-right: 0;
+    border-left: 1px solid $grey-light;
     text-align: right;
 
    // .search{ @include plos-grid-column($pixelwidth: columns, $columns: 2);}
-    .input{ }
     form {
       background: $white;
       $fieldset-padding: 0;   // from foundation
@@ -272,7 +305,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
       button[type="submit"] {
         @include postfix($white, $white); //foundation
-
+     
         //width: 20px;
         padding-left: 0;
         padding-right: 0;
@@ -286,25 +319,23 @@ $width-nav: $block-grid-elements - $width-logo;
         .search-icon {
           @extend .fa;
           @extend .fa-search;
-//          padding-top: rem-calc(4);
+
           font-size: rem-calc($txt-size-xlarge);
         }
       }
     }
   }
-
+}
   //overrides for top-bar styles: they have to be here to work
   .top-bar-section ul li.head-search a {
     margin-top: rem-calc(-10);
     line-height: 33px;
-  // OLD:  width: rem-calc(190);
+//TODO PG Remove   width: rem-calc(175);
     padding: 0 !important;
     font-size:  rem-calc($txt-size-small);
-
     @include link-text($clr-highlight-hover, underline);
   }
   .top-bar-section ul li.head-search:hover:not(.has-form) > a {
     background: $grey-light;
   }
 
-}

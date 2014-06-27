@@ -23,9 +23,17 @@
 <script src="resource/js/components/carousel.js"></script>
 <script src="resource/js/vendor/jquery.dotdotdot.js"></script>
 
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="resource/js/components/blogfeed.js"></script>
 <!--TODO: the following need to be on all pages, not just home-->
-
+ <!--
+ TODO: foundation-altered.js is in use for development. Need to
+  download a customized foundation.js that includes only what we're using
+  (Remove javascript for topbar)
+  -->
 <script src="resource/js/vendor/foundation-altered.js"></script>
+<script src="resource/js/vendor/hoverIntent.js"></script>
+
 <script src="resource/js/components/navsearch.js"></script>
 
 <script>
@@ -47,8 +55,43 @@
     $(".truncated-tooltip").dotdotdot({
       height: 45
     });
+    //HoverIntent.js is used for the main navigation delay on hover
+    function showIt() {
+
+        $(this).addClass("hover");
+        $('.dropdown', this).css('visibility', 'visible');
+
+    }
+    function hideIt(){
+
+      $(this).removeClass("hover");
+      $('.dropdown', this).css('visibility', 'hidden');
+
+    }
+    $('li.has-dropdown').hoverIntent(showIt, hideIt);
   });
 
 </script>
+
+<script>
+
+  function OnLoad() {
+    var getBlog = document.getElementById('blogs').firstChild.nextSibling.textContent,
+      findTitle = getBlog.trim().slice(5,8);
+
+    if (findTitle === 'Bio') {
+      var feed = new google.feeds.Feed("http://feeds.plos.org/plos/blogs/biologue");
+      feed.load(feedLoaded);
+    } else if (findTitle === 'Spe') {
+      var feed = new google.feeds.Feed("http://feeds.plos.org/plos/MedicineBlog");
+      feed.load(feedLoaded);
+    }
+  }
+
+  google.setOnLoadCallback(OnLoad);
+
+</script>
+
+
 </body>
 </html>

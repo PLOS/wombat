@@ -1,6 +1,4 @@
-/*
- *    Home page blocks
- */
+// HOME CONTENT - home-content
 
 $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
@@ -8,16 +6,16 @@ $block-height-small: rem-calc(180);
 $image-width: rem-calc(70);
 $hero-height: rem-calc(380);
 $image-container: ($image-width + $pad-small);
-// this mixin extends the foundation grid to do two things it can't do
-//1. add margins on the outside if needed
-//2. use pixel widths - cause that's how digital pulp rolls.
-// questions:
-// I am using foundation settings values is this confusing? - i did it cause of rem-calc.
 
-///TODOPG: these are all the widths
-.width-full {
-  @include plos-grid-column($pixelwidth: full-width);
-}
+
+
+
+
+
+
+
+
+
 
 .width-xx-small {
   @include plos-grid-column(182);
@@ -116,8 +114,8 @@ $image-container: ($image-width + $pad-small);
 }
 
 //sizes:
-.row > .block {
-  // to do this needs to get fixed in the grid refactor  it really does
+
+
 
   &.xx-small {
     @extend .width-xx-small;
@@ -233,7 +231,7 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-#blogs {
+#spotlight {
   @include blocks();
   @extend .width-small;
   height: $block-height;
@@ -282,10 +280,14 @@ $image-container: ($image-width + $pad-small);
       }
     }
   }
+  .truncated-tooltip {
+    @extend .has-tip; //foundation
+  }
+}
   .more-link {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    bottom: $pad-small;
+    left: $pad-small;
     right: auto;
     > a {
       @include link-text();
@@ -294,12 +296,12 @@ $image-container: ($image-width + $pad-small);
     &:after {
       @extend .more-icon;
     }
+
+
+
+
   }
 
-  .truncated-tooltip {
-    @extend .has-tip; //foundation
-  }
-}
 
 //Tooltips are added to the bottom of the page & hidden. This class should not be nested.
 .tooltip {
@@ -311,7 +313,7 @@ $image-container: ($image-width + $pad-small);
 #issue {
 
   @include blocks;
-  @include plos-grid-column(180);
+
   .current-img {
     width: rem-calc(160);
   }
@@ -319,7 +321,7 @@ $image-container: ($image-width + $pad-small);
     margin-top: rem-calc(5);
     a {
       @include link-text();
-      //  @extend .header-allcaps-xxlarge;
+
       @extend .condense;
       display: block;
       margin-bottom: rem-calc(-5);
@@ -431,8 +433,58 @@ $image-container: ($image-width + $pad-small);
       font-size: rem-calc($txt-size-medium-large);
       font-family: $font-face-fancy;
     }
+}
+  }
+#blogs {
+  height: $block-height;
+  @extend .block-card;
+  padding:0; // TODO needs to be removed in grid refactor
+
+  .block-header{
+    @extend .header-brand;
   }
 
+  #blogrss {
+    padding: $pad-default $pad-default 0;
+    div {
+      @include clearfix();
+      margin-bottom: $pad-small;
+    }
+    .postimg {
+      float: left;
+      height: 75px;
+      width: 35px;
+      margin-right: $pad-small;
+    }
+    .postdate {
+      margin: 0;
+      font-size: $txt-size-xxxsmall;
+      font-family: $font-face-plain;
+      color: $clr-muted;
+      padding: 0;
+    }
+    .posttitle {
+      height: 30px;
+      line-height: 15px;
+      overflow: hidden;
+      margin: $pad-xsmall 0;
+      a {
+       @extend .link-text-body;
+        font-family: $font-face-fancy;
+        font-size: $txt-size-small;
+      }
+    }
+    .postauthor {
+      @extend .small-italic;
+      color: $clr-muted;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .more-link {
+    bottom: 30px;
+    left: 86px;
+  }
 }
 
 #ad-slot-bottom {

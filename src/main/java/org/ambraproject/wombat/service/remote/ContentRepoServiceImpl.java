@@ -4,6 +4,7 @@ import com.google.common.base.Optional;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
+import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
@@ -67,7 +68,9 @@ public class ContentRepoServiceImpl implements ContentRepoService {
     URI requestAddress = URI.create(String.format("%s/objects/%s?%s",
         contentRepoAddressStr, bucket, requestParams.format()));
 
-    return AssetServiceResponse.wrap(cachedRemoteStreamer.getResponse(requestAddress, headers));
+    HttpGet get = new HttpGet(requestAddress);
+    get.setHeaders(headers);
+    return AssetServiceResponse.wrap(cachedRemoteStreamer.getResponse(get));
   }
 
   private AssetServiceResponse requestInDevMode(URI contentRepoAddress, String bucket, String key, Optional<Integer> version)

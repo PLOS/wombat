@@ -7,7 +7,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.message.BasicHeader;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
-import java.net.URI;
 import java.util.Calendar;
 
 /**
@@ -36,18 +35,18 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
   }
 
   @Override // delegate
-  public CloseableHttpResponse getResponse(URI targetUri, Header... headers) throws IOException {
-    return remoteService.getResponse(targetUri, headers);
-  }
-
-  @Override // delegate
-  public S request(URI targetUri) throws IOException {
-    return remoteService.request(targetUri);
+  public S request(HttpUriRequest target) throws IOException {
+    return remoteService.request(target);
   }
 
   @Override // delegate
   public S open(HttpEntity entity) throws IOException {
     return remoteService.open(entity);
+  }
+
+  @Override // delegate
+  public CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException {
+    return remoteService.getResponse(target);
   }
 
   /**
@@ -92,21 +91,21 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    * a cacheable return value using the provided callback.
    *
    * @param cacheKey the cache key at which to retrieve and store the value
-   * @param address  the address at which to query the service if the value is not cached
+   * @param target   the request with which to query the service if the value is not cached
    * @param callback how to deserialize a new value from the stream, to return and insert into the cache
    * @param <T>      the type of value to deserialize and return
    * @return the value from the service or cache
    * @throws IOException
    */
-  public <T> T requestCached(String cacheKey, URI address, CacheDeserializer<? super S, ? extends T> callback)
+  public <T> T requestCached(String cacheKey, HttpUriRequest target, CacheDeserializer<? super S, ? extends T> callback)
       throws IOException {
-    Preconditions.checkNotNull(address);
+    Preconditions.checkNotNull(target);
     Preconditions.checkNotNull(callback);
 
     CachedObject<T> cached = getCachedObject(cacheKey);
     Calendar lastModified = getLastModified(cached);
 
-    try (TimestampedResponse fromServer = requestIfModifiedSince(address, lastModified)) {
+    try (TimestampedResponse fromServer = requestIfModifiedSince(target, lastModified)) {
       if (fromServer.response != null) {
         try (S stream = remoteService.open(fromServer.response.getEntity())) {
           T value = callback.read(stream);
@@ -161,18 +160,19 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    * useful when results from the SOA service are being added to a cache, and we only want to retrieve the result if it
    * is newer than the version stored in the cache.
    *
-   * @param address      the address to which to send the REST request
+   * @param target       the request to send the REST service
    * @param lastModified the object will be returned iff the SOA server indicates that it was modified after this
    *                     timestamp
    * @return a timestamped stream, or a null stream with non-null timestamp
    * @throws IOException
    */
-  private TimestampedResponse requestIfModifiedSince(URI address, Calendar lastModified) throws IOException {
+  private TimestampedResponse requestIfModifiedSince(HttpUriRequest target, Calendar lastModified) throws IOException {
     Preconditions.checkNotNull(lastModified);
     CloseableHttpResponse response = null;
     boolean returningStream = false;
     try {
-      response = remoteService.getResponse(address, new BasicHeader(HttpHeaders.IF_MODIFIED_SINCE, HttpDateUtil.format(lastModified)));
+      target.addHeader(HttpHeaders.IF_MODIFIED_SINCE, HttpDateUtil.format(lastModified));
+      response = remoteService.getResponse(target);
       Header[] lastModifiedHeaders = response.getHeaders(HttpHeaders.LAST_MODIFIED);
       if (lastModifiedHeaders.length == 0) {
         TimestampedResponse timestamped = new TimestampedResponse(null, response);

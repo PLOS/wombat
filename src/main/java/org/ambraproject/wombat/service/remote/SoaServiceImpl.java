@@ -4,6 +4,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -24,12 +25,12 @@ public class SoaServiceImpl implements SoaService {
 
   @Override
   public InputStream requestStream(String address) throws IOException {
-    return cachedRemoteStreamer.request(buildUri(address));
+    return cachedRemoteStreamer.request(buildGet(address));
   }
 
   @Override
   public Reader requestReader(String address) throws IOException {
-    return cachedRemoteReader.request(buildUri(address));
+    return cachedRemoteReader.request(buildGet(address));
   }
 
   @Override
@@ -40,12 +41,12 @@ public class SoaServiceImpl implements SoaService {
 
   @Override
   public <T> T requestCachedStream(String cacheKey, String address, CacheDeserializer<InputStream, T> callback) throws IOException {
-    return cachedRemoteStreamer.requestCached(cacheKey, buildUri(address), callback);
+    return cachedRemoteStreamer.requestCached(cacheKey, buildGet(address), callback);
   }
 
   @Override
   public <T> T requestCachedReader(String cacheKey, String address, CacheDeserializer<Reader, T> callback) throws IOException {
-    return cachedRemoteReader.requestCached(cacheKey, buildUri(address), callback);
+    return cachedRemoteReader.requestCached(cacheKey, buildGet(address), callback);
   }
 
   @Override
@@ -56,13 +57,19 @@ public class SoaServiceImpl implements SoaService {
   @Override
   public CloseableHttpResponse requestAsset(String assetId, Header... headers)
       throws IOException {
-    return cachedRemoteStreamer.getResponse(buildUri("assetfiles/" + assetId), headers);
+    HttpGet get = buildGet("assetfiles/" + assetId);
+    get.setHeaders(headers);
+    return cachedRemoteStreamer.getResponse(get);
   }
 
   @Override
   public CloseableHttpResponse requestFromContentRepo(String bucket, String key, String version) throws IOException {
     String address = String.format("repo/%s/%s/%s", bucket, key, version);
-    return cachedRemoteStreamer.getResponse(buildUri(address));
+    return cachedRemoteStreamer.getResponse(buildGet(address));
+  }
+
+  private HttpGet buildGet(String address) {
+    return new HttpGet(buildUri(address));
   }
 
   private URI buildUri(String address) {

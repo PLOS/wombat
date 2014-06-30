@@ -7970,11 +7970,11 @@ th.hide-for-touch {
     text-decoration: none; }
 
 /* line 78, ../../sass/_typography.scss */
-.link-text-white, .link-text-white a {
+.link-text-white, #blogs .block-header, .link-text-white a, #blogs .block-header a {
   color: white;
   text-decoration: none; }
   /* line 62, ../../sass/_typography.scss */
-  .link-text-white:hover, .link-text-white a:hover, .link-text-white a:hover, .link-text-white a a:hover {
+  .link-text-white:hover, #blogs .block-header:hover, .link-text-white a:hover, #blogs .block-header a:hover, .link-text-white a:hover, #blogs .block-header a:hover, .link-text-white a a:hover, #blogs .block-header a a:hover {
     color: white;
     text-decoration: underline; }
 
@@ -9142,10 +9142,10 @@ footer {
 #blogs {
   height: 15.625rem;
   padding: 0; }
-  /* line 414, ../../sass/pages/_home.scss */
+  /* line 415, ../../sass/pages/_home.scss */
   #blogs #blogrss {
     padding: 1.25rem 1.25rem 0; }
-    /* line 416, ../../sass/pages/_home.scss */
+    /* line 417, ../../sass/pages/_home.scss */
     #blogs #blogrss div {
       *zoom: 1;
       margin-bottom: 0.625rem; }
@@ -9156,40 +9156,40 @@ footer {
       /* line 117, ../../sass/vendor/foundation/components/_global.scss */
       #blogs #blogrss div:after {
         clear: both; }
-    /* line 420, ../../sass/pages/_home.scss */
+    /* line 421, ../../sass/pages/_home.scss */
     #blogs #blogrss .postimg {
       float: left;
       height: 75px;
       width: 35px;
       margin-right: 0.625rem; }
-    /* line 426, ../../sass/pages/_home.scss */
+    /* line 427, ../../sass/pages/_home.scss */
     #blogs #blogrss .postdate {
       margin: 0;
       font-size: 10px;
       font-family: "arial";
       color: #636363;
       padding: 0; }
-    /* line 433, ../../sass/pages/_home.scss */
+    /* line 434, ../../sass/pages/_home.scss */
     #blogs #blogrss .posttitle {
       height: 30px;
       line-height: 15px;
       overflow: hidden;
       margin: 0.3125rem 0; }
-      /* line 438, ../../sass/pages/_home.scss */
+      /* line 439, ../../sass/pages/_home.scss */
       #blogs #blogrss .posttitle a {
         font-family: "albert";
         font-size: 13px; }
-    /* line 444, ../../sass/pages/_home.scss */
+    /* line 445, ../../sass/pages/_home.scss */
     #blogs #blogrss .postauthor {
       color: #636363;
       margin: 0;
       padding: 0; }
-  /* line 451, ../../sass/pages/_home.scss */
+  /* line 452, ../../sass/pages/_home.scss */
   #blogs .more-link {
     bottom: 30px;
     left: 86px; }
 
-/* line 457, ../../sass/pages/_home.scss */
+/* line 458, ../../sass/pages/_home.scss */
 #ad-slot-bottom {
   width: 100%;
   margin-left: auto;
@@ -9205,7 +9205,7 @@ footer {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   #ad-slot-bottom:after {
     clear: both; }
-  /* line 459, ../../sass/pages/_home.scss */
+  /* line 460, ../../sass/pages/_home.scss */
   #ad-slot-bottom .ad-item {
     padding-left: 0.625rem;
     padding-right: 0.625rem;

@@ -22,7 +22,6 @@ $image-container: ($image-width + $pad-small);
   @include plos-grid-column(182);
 }
 
-
 .width-x-small {
   @include plos-grid-column(267);
 }
@@ -196,7 +195,7 @@ $image-container: ($image-width + $pad-small);
   }
 
 }
-
+.row.three{
 .column {
   &.left {
     @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 8); //width + gutter
@@ -232,7 +231,7 @@ $image-container: ($image-width + $pad-small);
 
   }
 }
-
+}
 
 #spotlight {
   @include blocks();
@@ -437,9 +436,10 @@ $image-container: ($image-width + $pad-small);
   }
 }
 #blogs {
+  @extend .width-small;
   height: $block-height;
   @extend .block-card;
-  padding:0; // TODO needs to be removed in grid refactor
+  position:relative;
 
   .block-header{
     @extend .header-brand;
@@ -470,7 +470,7 @@ $image-container: ($image-width + $pad-small);
       overflow: hidden;
       margin: $pad-xsmall 0;
       a {
-       @extend .link-text-body;
+        @extend .link-text-body;
         font-family: $font-face-fancy;
         font-size: $txt-size-small;
       }

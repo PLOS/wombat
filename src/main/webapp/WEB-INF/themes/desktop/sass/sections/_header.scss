@@ -41,13 +41,14 @@ $width-nav: $block-grid-elements - $width-logo;
 #pagehdr-wrap {
   .nav {
     @extend .row;
-
     .nav-user {
       @extend .inline-list; // from foundation
-      @extend .right; // from foundation
+      float: right;
       //  @include grid-column($columns:4, $float:right); // from foundation
       font-weight: bold;
       > li {
+
+
         margin-top: rem-calc(-5);
         margin-left: rem-calc(4);
 
@@ -105,7 +106,7 @@ $width-nav: $block-grid-elements - $width-logo;
 }
 .top-bar-section ul.nav-elements {
   @extend .right; // foundation
-  //    @include grid-column($width-nav); // from foundation
+  float:right;//    @include grid-column($width-nav); // from foundation
 
   // TODO PG remove   padding-right: 0;
   padding-left: 0;
@@ -126,14 +127,6 @@ $width-nav: $block-grid-elements - $width-logo;
   &:last-child {
     border-left: 1px solid $grey-light;
   }
-
-
-
-
-
-
-
-
 
 
 }

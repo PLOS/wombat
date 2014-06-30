@@ -84,11 +84,15 @@ $image-container: ($image-width + $pad-small);
   position: relative;
   a {
     @include rounded-pill();
+    @extend .brand-background;
     position: absolute;
     width: 80px;
     height: 36px;
     right: 20px;
     top: 10px;
+    &:hover {
+      background: $plos-default;
+    }
   }
 }
 
@@ -141,7 +145,7 @@ $image-container: ($image-width + $pad-small);
 
   }
   .category {
-    @extend .highlighted-title;
+    @extend .brand-title;
   }
   .title {
     @extend h2;
@@ -221,11 +225,16 @@ $image-container: ($image-width + $pad-small);
   position: relative;
   a {
     @include rounded-pill();
+    @extend .brand-background;
+    padding: $pad-xsmall $pad-default;
     position: absolute;
     width: 80px;
-    height: 36px;
+   /* height: 36px;*/
     right: $pad-default;
     top: $pad-small;
+    &:hover {
+      background: $plos-default;
+    }
   }
 }
 
@@ -239,7 +248,7 @@ $image-container: ($image-width + $pad-small);
   margin-right: 3%; // TODO: fix grid
 
   h3 {
-    @extend .highlighted-title;
+    @extend .brand-title;
   }
 
   ul.list-plain {
@@ -407,8 +416,8 @@ $image-container: ($image-width + $pad-small);
   @extend .block-card;
   padding:0; // TODO needs to be removed in grid refactor
 
-  .block-header {
-    @extend .header-brand;
+  .block-header{
+    @extend .brand-header;
     @extend .link-text-white;
   }
 
@@ -463,4 +472,14 @@ $image-container: ($image-width + $pad-small);
       iframe{  @extend .block;}
 
     }
+}
+
+body {
+  @include brandColor()
+}
+.plosbiology, .ploscompbiol, .plosgenetics {
+  @include brandColor($setColor: $plos-bio);
+}
+.plosmedicine, .plospathogens, .plosntd {
+  @include brandColor($setColor: $plos-med);
 }

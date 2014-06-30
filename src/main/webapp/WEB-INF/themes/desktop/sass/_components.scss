@@ -95,7 +95,7 @@ have a fixed width and height (but it's not required).
   padding:0;    // TODO needs to be removed in grid refactor
   margin-right: $pad-default;  /// needs to be removed in grid refactor
   .block-header{
-    @extend .header-brand;
+    @extend .brand-header;
   }
   .carousel {
 
@@ -154,6 +154,7 @@ have a fixed width and height (but it's not required).
   content: '\f138';
   @extend .fa;
   @extend .fa-inverse;
+  @extend .brand-color;
   padding-left: rem-calc(3);
 }
 .icon-fa {

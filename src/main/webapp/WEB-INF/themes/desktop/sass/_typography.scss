@@ -22,24 +22,14 @@
   @extend .header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
 }
-.highlighted-title {
-  @extend .header-allcaps;
-  @extend .highlight-color;
-  margin-bottom: $pad-small;
-}
+
 .header-xlarge-light {
   font-size: rem-calc($txt-size-xlarge);
   color: $clr-light-text;
   font-family: $font-face-fancy;
 }
 
-.header-brand{
-  @extend .highlight-background-nohover;
-  padding: 0 $pad-default;
-  font-family: $font-face-fancy;
-  font-size: rem-calc($txt-size-medium-large);
-  line-height: $pad-large;
-}
+
 
 .header-bottom-shadow {
   padding-bottom: rem-calc(17);
@@ -47,7 +37,19 @@
   box-shadow: $default-header-shadow;
   text-align: center;
 }
-
+.brand-title {
+  @extend .header-allcaps;
+  @extend .brand-color;
+  margin-bottom: $pad-small;
+}
+.brand-header {
+  @extend .brand-background;
+  color: $clr-highlight-text;
+  padding: 0 $pad-default;
+  font-family: $font-face-fancy;
+  font-size: rem-calc($txt-size-medium-large);
+  line-height: $pad-large;
+}
 //////////////
 //link styles
 ///////////////

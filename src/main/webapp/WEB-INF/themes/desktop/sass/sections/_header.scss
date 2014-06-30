@@ -20,7 +20,10 @@
 .head-top {
   @extend .bg-dark;
   @extend .text-center;
-  @include highlight-border($plos-default); /*TODO: use themes journal-specific css to assign border color*/
+  //@include highlight-border($clr-highlight: $clr-brand);
+  @extend .brand-border;
+  border-bottom-width: 6px;
+  border-bottom-style: solid;
   padding: $pad-xsmall $pad-small;
   .center { width: 748px;
     margin: 0 auto;
@@ -64,7 +67,7 @@ $width-nav: $block-grid-elements - $width-logo;
       li.highlighted {
         > a {
           color: $clr-highlight-text;
-          background: $plos-bio;
+          @extend .brand-background;
         }
       }
     }

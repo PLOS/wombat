@@ -53,15 +53,28 @@ $clr-highlight-text: $white) {
   }
 }
 
-.highlight-background-nohover {
-  background: $clr-highlight;
-  color: $clr-highlight-text;
-}
-
 .highlight-border {
   border-color: $clr-highlight;
 }
-
+///////
+//branding
+/////
+@mixin brandColor($setColor: $plos-default ) {
+  .jcarousel-prev,
+  .jcarousel-next,
+  .more-icon {
+    color: $setColor;
+  }
+  .brand-color {
+    color: $setColor;
+  }
+  .brand-border {
+    border-color: $setColor;
+  }
+  .brand-background {
+    background: $setColor;
+  }
+}
 // layout utilities
 
 .center-simple {

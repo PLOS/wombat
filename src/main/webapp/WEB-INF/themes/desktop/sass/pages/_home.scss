@@ -83,6 +83,9 @@ $image-container: ($image-width + $pad-small);
     color: $white;
   }
   position: relative;
+  h3 {
+    font-size: $txt-size-h2;
+  }
   a {  //not using rounded-pill; would need too many override
     @extend .brand-background-hover;
     border-radius: $border-radius-default;
@@ -133,6 +136,7 @@ $image-container: ($image-width + $pad-small);
   // components
   .date {
     @extend .small-italic;
+    @extend .right;
   }
   .credits {
     @extend .small-italic;
@@ -147,13 +151,12 @@ $image-container: ($image-width + $pad-small);
   }
   .title {
     @extend h2;
-    a {
-      color: $clr-body-text;
-      &:hover {
-        text-decoration: underline;
-      }
+    @extend .link-text-body;
+    //in case p tag is added in CMS, need to override global settings for p
+    p {
+      font-size: inherit; //$txt-size-h2;
+      line-height: inherit;
     }
-
   }
   .blurb {
     //TODO: remove when you neaten up font sizes.

@@ -69,11 +69,9 @@ $clr-highlight-text: $white) {
   .brand-border {
     border-color: $setColor;
   }
-  //no color change on hover
   .brand-background {
     background: $setColor;
   }
-  //color change on hover
   .brand-background-hover {
     background: $setColor;
     &:hover {

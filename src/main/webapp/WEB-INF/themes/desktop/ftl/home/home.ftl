@@ -32,7 +32,7 @@
   (Remove javascript for topbar)
   -->
 <script src="resource/js/vendor/foundation-altered.js"></script>
-<script src="resource/js/vendor/hoverIntent.js"></script>
+<script src="resource/js/vendor/jquery.hoverIntent.js"></script>
 
 <script src="resource/js/components/navsearch.js"></script>
 

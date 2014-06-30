@@ -14,7 +14,7 @@
   }
 
 }
-
+//extend .pill if using defaults in rounded-pill
 .pill {
   @include rounded-pill();
 }

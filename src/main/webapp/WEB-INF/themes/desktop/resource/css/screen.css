@@ -8015,15 +8015,15 @@ th.hide-for-touch {
 .highlight-border {
   border-color: #3c63af; }
 
-/* line 80, ../../sass/_utilities.scss */
+/* line 113, ../../sass/_utilities.scss */
 .center-simple {
   margin: 0 auto; }
 
-/* line 84, ../../sass/_utilities.scss */
+/* line 117, ../../sass/_utilities.scss */
 .pad-xsmall-x {
   padding: 0 1.25rem; }
 
-/* line 94, ../../sass/_utilities.scss */
+/* line 127, ../../sass/_utilities.scss */
 .overlay, .hero.overlay-dark > a:before, .hero.overlay-light > a:before {
   background-position: bottom;
   content: " ";
@@ -8666,7 +8666,7 @@ footer {
     padding: 0.625rem;
     font-size: 1rem; }
 
-/* line 78, ../../sass/pages/_home.scss */
+/* line 79, ../../sass/pages/_home.scss */
 #billboard {
   width: 100%;
   margin-left: auto;
@@ -8695,54 +8695,45 @@ footer {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   #billboard:after {
     clear: both; }
-  /* line 81, ../../sass/pages/_home.scss */
+  /* line 82, ../../sass/pages/_home.scss */
   #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small #billboard .title, #billboard a {
-    color: white !important; }
-  /* line 85, ../../sass/pages/_home.scss */
+    color: white; }
+  /* line 86, ../../sass/pages/_home.scss */
   #billboard a {
-    background: #3c63af;
-    padding: 1.25rem;
     border-radius: 5px;
-    color: white;
+    padding: 0.3125rem 1.25rem;
     position: absolute;
-    width: 80px;
-    height: 36px;
-    right: 20px;
-    top: 10px; }
-    /* line 12, ../../sass/_components.scss */
-    #billboard a:hover {
-      background: #333333; }
-    /* line 93, ../../sass/pages/_home.scss */
-    #billboard a:hover {
-      background: #3c63af; }
+    display: inline-block;
+    right: 1.25rem;
+    top: 18px; }
 
-/* line 102, ../../sass/pages/_home.scss */
+/* line 100, ../../sass/pages/_home.scss */
 .row > .block.x-small, #ad-slot-bottom .ad-item .row > iframe.x-small {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 16.66667%;
   float: left; }
-/* line 106, ../../sass/pages/_home.scss */
+/* line 104, ../../sass/pages/_home.scss */
 .row > .block.small, #ad-slot-bottom .ad-item .row > iframe.small {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 33.33333%;
   float: left; }
-/* line 109, ../../sass/pages/_home.scss */
+/* line 107, ../../sass/pages/_home.scss */
 .row > .block.medium, #ad-slot-bottom .ad-item .row > iframe.medium {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 50%;
   float: left;
   width: 48%; }
-/* line 113, ../../sass/pages/_home.scss */
+/* line 111, ../../sass/pages/_home.scss */
 .row > .block.large, #ad-slot-bottom .ad-item .row > iframe.large {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 58.33333%;
   float: left; }
 
-/* line 119, ../../sass/pages/_home.scss */
+/* line 117, ../../sass/pages/_home.scss */
 .block, #ad-slot-bottom .ad-item iframe {
   position: relative;
   height: 15.625rem;
@@ -8758,43 +8749,43 @@ footer {
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white; }
-  /* line 125, ../../sass/pages/_home.scss */
+  /* line 123, ../../sass/pages/_home.scss */
   .block .block-image, #ad-slot-bottom .ad-item iframe .block-image {
     width: 5rem;
     display: block;
     position: absolute;
     left: 0.625rem;
     top: 0.625rem; }
-  /* line 132, ../../sass/pages/_home.scss */
+  /* line 130, ../../sass/pages/_home.scss */
   .block.image .block-content, #ad-slot-bottom .ad-item iframe.image .block-content {
     margin-left: 6.25rem; }
-  /* line 139, ../../sass/pages/_home.scss */
+  /* line 137, ../../sass/pages/_home.scss */
   .block .credits, #ad-slot-bottom .ad-item iframe .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.25rem;
     margin: 0; }
-  /* line 152, ../../sass/pages/_home.scss */
+  /* line 150, ../../sass/pages/_home.scss */
   .block .title a, #ad-slot-bottom .ad-item iframe .title a {
     color: #333333; }
-    /* line 154, ../../sass/pages/_home.scss */
+    /* line 152, ../../sass/pages/_home.scss */
     .block .title a:hover, #ad-slot-bottom .ad-item iframe .title a:hover {
       text-decoration: underline; }
-  /* line 164, ../../sass/pages/_home.scss */
+  /* line 162, ../../sass/pages/_home.scss */
   .block .block-content, #ad-slot-bottom .ad-item iframe .block-content {
     position: relative;
     font-size: 0.8125rem; }
-  /* line 170, ../../sass/pages/_home.scss */
+  /* line 168, ../../sass/pages/_home.scss */
   .block.small .title, #ad-slot-bottom .ad-item iframe.small .title {
     font-family: albert-bold; }
 
-/* line 180, ../../sass/pages/_home.scss */
+/* line 178, ../../sass/pages/_home.scss */
 .column.left, .nav-main .top-bar-section ul.column.nav-elements {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 66.66667%;
   float: left; }
-  /* line 182, ../../sass/pages/_home.scss */
+  /* line 180, ../../sass/pages/_home.scss */
   .column.left .row-small-blocks, .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks {
     display: block;
     padding: 0;
@@ -8832,31 +8823,31 @@ footer {
       .column.left .row-small-blocks > li:nth-of-type(2n), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks > li:nth-of-type(2n) {
         padding-left: 0.625rem;
         padding-right: 0rem; }
-    /* line 186, ../../sass/pages/_home.scss */
+    /* line 184, ../../sass/pages/_home.scss */
     .column.left .row-small-blocks .block:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block:nth-child(1), .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe:nth-child(1), #ad-slot-bottom .ad-item .column.left .row-small-blocks iframe:nth-child(1), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks #ad-slot-bottom .ad-item iframe:nth-child(1), #ad-slot-bottom .ad-item .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks iframe:nth-child(1), .column.left .row-small-blocks .block:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks .block:nth-child(3), .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe:nth-child(3), #ad-slot-bottom .ad-item .column.left .row-small-blocks iframe:nth-child(3), .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks #ad-slot-bottom .ad-item iframe:nth-child(3), #ad-slot-bottom .ad-item .nav-main .top-bar-section ul.column.nav-elements .row-small-blocks iframe:nth-child(3) {
       margin-right: 2%;
       width: 46%; }
-  /* line 194, ../../sass/pages/_home.scss */
+  /* line 192, ../../sass/pages/_home.scss */
   .column.left .block, .nav-main .top-bar-section ul.column.nav-elements .block, .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .column.left iframe, .nav-main .top-bar-section ul.column.nav-elements #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .nav-main .top-bar-section ul.column.nav-elements iframe {
     height: 11.25rem; }
-    /* line 197, ../../sass/pages/_home.scss */
+    /* line 195, ../../sass/pages/_home.scss */
     .column.left .block .block-image, .nav-main .top-bar-section ul.column.nav-elements .block .block-image, .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .column.left iframe .block-image, .nav-main .top-bar-section ul.column.nav-elements #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .nav-main .top-bar-section ul.column.nav-elements iframe .block-image {
       height: 10rem;
       overflow: hidden; }
-    /* line 202, ../../sass/pages/_home.scss */
+    /* line 200, ../../sass/pages/_home.scss */
     .column.left .block.small, .nav-main .top-bar-section ul.column.nav-elements .block.small, .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .column.left iframe.small, .nav-main .top-bar-section ul.column.nav-elements #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .nav-main .top-bar-section ul.column.nav-elements iframe.small {
       padding-left: 0.625rem;
       padding-right: 0.625rem;
       width: 50%;
       float: left; }
-/* line 208, ../../sass/pages/_home.scss */
+/* line 206, ../../sass/pages/_home.scss */
 .column.right, #pagehdr-wrap .nav .column.nav-user {
   padding-left: 0;
   padding-right: 0;
   width: 33.33333%;
   float: left; }
 
-/* line 213, ../../sass/pages/_home.scss */
+/* line 211, ../../sass/pages/_home.scss */
 #spotlight {
   padding: 0.625rem;
   -moz-border-radius-topleft: 5px;
@@ -8872,58 +8863,7 @@ footer {
   background: white;
   height: 15.625rem; }
 
-/* line 219, ../../sass/pages/_home.scss */
-#billboard {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  max-width: 60rem;
-  *zoom: 1;
-  padding: 0.625rem;
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.25rem;
-  background: #333333;
-  position: relative; }
-  /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  #billboard:before, #billboard:after {
-    content: " ";
-    display: table; }
-  /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  #billboard:after {
-    clear: both; }
-  /* line 222, ../../sass/pages/_home.scss */
-  #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small #billboard .title, #billboard a {
-    color: white !important; }
-  /* line 226, ../../sass/pages/_home.scss */
-  #billboard a {
-    background: #3c63af;
-    padding: 1.25rem;
-    border-radius: 5px;
-    color: white;
-    padding: 0.3125rem 1.25rem;
-    position: absolute;
-    width: 80px;
-    /* height: 36px;*/
-    right: 1.25rem;
-    top: 0.625rem; }
-    /* line 12, ../../sass/_components.scss */
-    #billboard a:hover {
-      background: #333333; }
-    /* line 235, ../../sass/pages/_home.scss */
-    #billboard a:hover {
-      background: #3c63af; }
-
-/* line 241, ../../sass/pages/_home.scss */
+/* line 218, ../../sass/pages/_home.scss */
 #article-list {
   height: 15.625rem;
   padding: 0.625rem;
@@ -8945,14 +8885,14 @@ footer {
   position: relative;
   width: 30%;
   margin-right: 3%; }
-  /* line 254, ../../sass/pages/_home.scss */
+  /* line 231, ../../sass/pages/_home.scss */
   #article-list ul.list-plain {
     line-height: normal; }
-    /* line 258, ../../sass/pages/_home.scss */
+    /* line 235, ../../sass/pages/_home.scss */
     #article-list ul.list-plain li {
       color: #333333;
       margin-bottom: 15px; }
-      /* line 262, ../../sass/pages/_home.scss */
+      /* line 239, ../../sass/pages/_home.scss */
       #article-list ul.list-plain li a {
         color: #333333;
         text-decoration: none;
@@ -8964,13 +8904,13 @@ footer {
           color: #3c63af;
           text-decoration: none; }
 
-/* line 274, ../../sass/pages/_home.scss */
+/* line 251, ../../sass/pages/_home.scss */
 .more-link {
   position: absolute;
   bottom: 0.625rem;
   left: 0.625rem;
   right: auto; }
-  /* line 279, ../../sass/pages/_home.scss */
+  /* line 256, ../../sass/pages/_home.scss */
   .more-link > a {
     color: #333333;
     text-decoration: none; }
@@ -8979,7 +8919,7 @@ footer {
       color: #3c63af;
       text-decoration: none; }
 
-/* line 290, ../../sass/pages/_home.scss */
+/* line 267, ../../sass/pages/_home.scss */
 .tooltip {
   width: 300px !important;
   -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -8987,7 +8927,7 @@ footer {
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
   border: 1px solid #cccccc; }
 
-/* line 296, ../../sass/pages/_home.scss */
+/* line 273, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -9006,13 +8946,13 @@ footer {
   margin-bottom: 1.25rem;
   background: white;
   height: 15.625rem; }
-  /* line 300, ../../sass/pages/_home.scss */
+  /* line 277, ../../sass/pages/_home.scss */
   #issue .current-img {
     width: 10rem; }
-  /* line 303, ../../sass/pages/_home.scss */
+  /* line 280, ../../sass/pages/_home.scss */
   #issue .boxtitle {
     margin-top: 0.3125rem; }
-    /* line 305, ../../sass/pages/_home.scss */
+    /* line 282, ../../sass/pages/_home.scss */
     #issue .boxtitle a {
       color: #333333;
       text-decoration: none;
@@ -9023,24 +8963,24 @@ footer {
       #issue .boxtitle a:hover, #issue .boxtitle a a:hover {
         color: #3c63af;
         text-decoration: none; }
-    /* line 313, ../../sass/pages/_home.scss */
+    /* line 290, ../../sass/pages/_home.scss */
     #issue .boxtitle .subhead {
       font-face: "arial";
       font-size: 16px; }
 
-/* line 320, ../../sass/pages/_home.scss */
+/* line 297, ../../sass/pages/_home.scss */
 .linkbox {
   height: 25.625rem; }
-  /* line 325, ../../sass/pages/_home.scss */
+  /* line 302, ../../sass/pages/_home.scss */
   .linkbox ul li {
     padding: 1.25rem 1.875rem;
     border-top: 1px solid #efefef; }
-    /* line 329, ../../sass/pages/_home.scss */
+    /* line 306, ../../sass/pages/_home.scss */
     .linkbox ul li a {
       font-family: "albert";
       font-size: 1rem; }
 
-/* line 337, ../../sass/pages/_home.scss */
+/* line 314, ../../sass/pages/_home.scss */
 #submission-links {
   padding: 0.625rem;
   -moz-border-radius-topleft: 5px;
@@ -9062,19 +9002,19 @@ footer {
   border-top-right-radius: 5px;
   background: #333333;
   padding: 0.625rem 1.875rem; }
-  /* line 347, ../../sass/pages/_home.scss */
+  /* line 324, ../../sass/pages/_home.scss */
   #submission-links .split-container {
     margin-left: 0; }
-  /* line 351, ../../sass/pages/_home.scss */
+  /* line 328, ../../sass/pages/_home.scss */
   #submission-links .split-item {
     margin: 0 !important;
     width: 127px;
     height: 40px;
     text-align: center; }
-    /* line 356, ../../sass/pages/_home.scss */
+    /* line 333, ../../sass/pages/_home.scss */
     #submission-links .split-item:first-child {
       border-right: 1px solid #636363; }
-    /* line 359, ../../sass/pages/_home.scss */
+    /* line 336, ../../sass/pages/_home.scss */
     #submission-links .split-item a {
       color: #89a0d0;
       text-decoration: none;
@@ -9085,7 +9025,7 @@ footer {
         color: #89a0d0;
         text-decoration: underline; }
 
-/* line 367, ../../sass/pages/_home.scss */
+/* line 344, ../../sass/pages/_home.scss */
 #social-links {
   padding: 0.625rem;
   -moz-border-radius-topleft: 5px;
@@ -9102,19 +9042,19 @@ footer {
   background: #04417d;
   border-radius: 5px;
   padding: 0.3125rem; }
-  /* line 374, ../../sass/pages/_home.scss */
+  /* line 351, ../../sass/pages/_home.scss */
   #social-links h3 {
     text-indent: 0.625rem;
     margin-bottom: 0.625rem; }
-  /* line 379, ../../sass/pages/_home.scss */
+  /* line 356, ../../sass/pages/_home.scss */
   #social-links ul {
     margin-bottom: 0;
     margin-left: -0.25rem; }
-    /* line 383, ../../sass/pages/_home.scss */
+    /* line 360, ../../sass/pages/_home.scss */
     #social-links ul > li {
       margin-left: 4px;
       margin-bottom: 0; }
-      /* line 386, ../../sass/pages/_home.scss */
+      /* line 363, ../../sass/pages/_home.scss */
       #social-links ul > li > a {
         background: #3c63af;
         border-radius: 5px;
@@ -9122,32 +9062,32 @@ footer {
         height: 44px;
         text-align: center;
         color: white; }
-        /* line 393, ../../sass/pages/_home.scss */
+        /* line 370, ../../sass/pages/_home.scss */
         #social-links ul > li > a:hover {
           background: #333333; }
-      /* line 397, ../../sass/pages/_home.scss */
+      /* line 374, ../../sass/pages/_home.scss */
       #social-links ul > li .social {
         width: 44px; }
-      /* line 400, ../../sass/pages/_home.scss */
+      /* line 377, ../../sass/pages/_home.scss */
       #social-links ul > li .aria-text {
         position: absolute;
         top: -9999px;
         left: -9999px; }
-    /* line 406, ../../sass/pages/_home.scss */
+    /* line 383, ../../sass/pages/_home.scss */
     #social-links ul .social-blogs {
       width: 102px;
       line-height: 44px;
       font-size: 1rem;
       font-family: "albert"; }
 
-/* line 414, ../../sass/pages/_home.scss */
+/* line 392, ../../sass/pages/_home.scss */
 #blogs {
   height: 15.625rem;
   padding: 0; }
-  /* line 424, ../../sass/pages/_home.scss */
+  /* line 402, ../../sass/pages/_home.scss */
   #blogs #blogrss {
     padding: 1.25rem 1.25rem 0; }
-    /* line 426, ../../sass/pages/_home.scss */
+    /* line 404, ../../sass/pages/_home.scss */
     #blogs #blogrss div {
       *zoom: 1;
       margin-bottom: 0.625rem; }
@@ -9158,40 +9098,40 @@ footer {
       /* line 117, ../../sass/vendor/foundation/components/_global.scss */
       #blogs #blogrss div:after {
         clear: both; }
-    /* line 430, ../../sass/pages/_home.scss */
+    /* line 408, ../../sass/pages/_home.scss */
     #blogs #blogrss .postimg {
       float: left;
       height: 75px;
       width: 35px;
       margin-right: 0.625rem; }
-    /* line 436, ../../sass/pages/_home.scss */
+    /* line 414, ../../sass/pages/_home.scss */
     #blogs #blogrss .postdate {
       margin: 0;
       font-size: 10px;
       font-family: "arial";
       color: #636363;
       padding: 0; }
-    /* line 443, ../../sass/pages/_home.scss */
+    /* line 421, ../../sass/pages/_home.scss */
     #blogs #blogrss .posttitle {
       height: 30px;
       line-height: 15px;
       overflow: hidden;
       margin: 0.3125rem 0; }
-      /* line 448, ../../sass/pages/_home.scss */
+      /* line 426, ../../sass/pages/_home.scss */
       #blogs #blogrss .posttitle a {
         font-family: "albert";
         font-size: 13px; }
-    /* line 454, ../../sass/pages/_home.scss */
+    /* line 432, ../../sass/pages/_home.scss */
     #blogs #blogrss .postauthor {
       color: #636363;
       margin: 0;
       padding: 0; }
-  /* line 461, ../../sass/pages/_home.scss */
+  /* line 439, ../../sass/pages/_home.scss */
   #blogs .more-link {
     bottom: 30px;
     left: 86px; }
 
-/* line 467, ../../sass/pages/_home.scss */
+/* line 445, ../../sass/pages/_home.scss */
 #ad-slot-bottom {
   width: 100%;
   margin-left: auto;
@@ -9207,69 +9147,158 @@ footer {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   #ad-slot-bottom:after {
     clear: both; }
-  /* line 469, ../../sass/pages/_home.scss */
+  /* line 447, ../../sass/pages/_home.scss */
   #ad-slot-bottom .ad-item {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
     width: 33.33333%;
     float: left; }
 
-/* line 65, ../../sass/_utilities.scss */
-body .jcarousel-prev,
-body .jcarousel-next,
-body .more-icon,
-body .more-link:after {
-  color: #3c63af; }
-/* line 68, ../../sass/_utilities.scss */
-body .brand-color, body .brand-title, body .block .category, .block body .category, body #ad-slot-bottom .ad-item iframe .category, #ad-slot-bottom .ad-item iframe body .category, body #article-list h3, #article-list body h3, body .more-icon, body .more-link:after {
-  color: #3c63af; }
-/* line 71, ../../sass/_utilities.scss */
-body .brand-border, body .head-top {
-  border-color: #3c63af; }
-/* line 74, ../../sass/_utilities.scss */
-body .brand-background, body .brand-header, body .carousel-wrap.small .block-header, .carousel-wrap.small body .block-header, body #blogs .block-header, #blogs body .block-header, body #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user body li.highlighted > a, body #billboard a, #billboard body a {
-  background: #3c63af; }
-
-/* line 65, ../../sass/_utilities.scss */
-.plosbiology .jcarousel-prev,
-.plosbiology .jcarousel-next,
-.plosbiology .more-icon,
-.plosbiology .more-link:after, .ploscompbiol .jcarousel-prev,
-.ploscompbiol .jcarousel-next,
-.ploscompbiol .more-icon,
-.ploscompbiol .more-link:after, .plosgenetics .jcarousel-prev,
-.plosgenetics .jcarousel-next,
-.plosgenetics .more-icon,
-.plosgenetics .more-link:after {
+/*body {
+  @include brandColor()
+}*/
+/* line 63, ../../sass/_utilities.scss */
+.plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .more-icon, .plosgenetics .more-link:after {
   color: #16a127; }
-/* line 68, ../../sass/_utilities.scss */
+/* line 66, ../../sass/_utilities.scss */
 .plosbiology .brand-color, .plosbiology .brand-title, .plosbiology .block .category, .block .plosbiology .category, .plosbiology #ad-slot-bottom .ad-item iframe .category, #ad-slot-bottom .ad-item iframe .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .brand-color, .ploscompbiol .brand-title, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #ad-slot-bottom .ad-item iframe .category, #ad-slot-bottom .ad-item iframe .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .brand-color, .plosgenetics .brand-title, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #ad-slot-bottom .ad-item iframe .category, #ad-slot-bottom .ad-item iframe .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .more-icon, .plosgenetics .more-link:after {
   color: #16a127; }
-/* line 71, ../../sass/_utilities.scss */
+/* line 69, ../../sass/_utilities.scss */
 .plosbiology .brand-border, .plosbiology .head-top, .ploscompbiol .brand-border, .ploscompbiol .head-top, .plosgenetics .brand-border, .plosgenetics .head-top {
   border-color: #16a127; }
-/* line 74, ../../sass/_utilities.scss */
-.plosbiology .brand-background, .plosbiology .brand-header, .plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosbiology li.highlighted > a, .plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol .brand-background, .ploscompbiol .brand-header, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .ploscompbiol li.highlighted > a, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics .brand-background, .plosgenetics .brand-header, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosgenetics li.highlighted > a, .plosgenetics #billboard a, #billboard .plosgenetics a {
+/* line 73, ../../sass/_utilities.scss */
+.plosbiology .brand-background, .plosbiology .brand-header, .plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosbiology li.highlighted > a, .ploscompbiol .brand-background, .ploscompbiol .brand-header, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .ploscompbiol li.highlighted > a, .plosgenetics .brand-background, .plosgenetics .brand-header, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosgenetics li.highlighted > a {
   background: #16a127; }
+/* line 77, ../../sass/_utilities.scss */
+.plosbiology .brand-background-hover, .plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol .brand-background-hover, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics .brand-background-hover, .plosgenetics #billboard a, #billboard .plosgenetics a {
+  background: #16a127; }
+  /* line 79, ../../sass/_utilities.scss */
+  .plosbiology .brand-background-hover:hover, .plosbiology #billboard a:hover, #billboard .plosbiology a:hover, .ploscompbiol .brand-background-hover:hover, .ploscompbiol #billboard a:hover, #billboard .ploscompbiol a:hover, .plosgenetics .brand-background-hover:hover, .plosgenetics #billboard a:hover, #billboard .plosgenetics a:hover {
+    background: #3c63af; }
+/* line 86, ../../sass/_utilities.scss */
+.plosbiology .brand-shading:first-child .block-header, .plosbiology .row .carousel-wrap:first-child .block-header, .row .plosbiology .carousel-wrap:first-child .block-header, .ploscompbiol .brand-shading:first-child .block-header, .ploscompbiol .row .carousel-wrap:first-child .block-header, .row .ploscompbiol .carousel-wrap:first-child .block-header, .plosgenetics .brand-shading:first-child .block-header, .plosgenetics .row .carousel-wrap:first-child .block-header, .row .plosgenetics .carousel-wrap:first-child .block-header {
+  background: #0b5013; }
+/* line 90, ../../sass/_utilities.scss */
+.plosbiology .brand-shading:first-child .jcarousel-prev, .plosbiology .row .carousel-wrap:first-child .jcarousel-prev, .row .plosbiology .carousel-wrap:first-child .jcarousel-prev,
+.plosbiology .brand-shading:first-child .jcarousel-next,
+.plosbiology .row .carousel-wrap:first-child .jcarousel-next,
+.row .plosbiology .carousel-wrap:first-child .jcarousel-next, .ploscompbiol .brand-shading:first-child .jcarousel-prev, .ploscompbiol .row .carousel-wrap:first-child .jcarousel-prev, .row .ploscompbiol .carousel-wrap:first-child .jcarousel-prev,
+.ploscompbiol .brand-shading:first-child .jcarousel-next,
+.ploscompbiol .row .carousel-wrap:first-child .jcarousel-next,
+.row .ploscompbiol .carousel-wrap:first-child .jcarousel-next, .plosgenetics .brand-shading:first-child .jcarousel-prev, .plosgenetics .row .carousel-wrap:first-child .jcarousel-prev, .row .plosgenetics .carousel-wrap:first-child .jcarousel-prev,
+.plosgenetics .brand-shading:first-child .jcarousel-next,
+.plosgenetics .row .carousel-wrap:first-child .jcarousel-next,
+.row .plosgenetics .carousel-wrap:first-child .jcarousel-next {
+  color: #0b5013; }
+  /* line 92, ../../sass/_utilities.scss */
+  .plosbiology .brand-shading:first-child .jcarousel-prev:hover, .plosbiology .row .carousel-wrap:first-child .jcarousel-prev:hover, .row .plosbiology .carousel-wrap:first-child .jcarousel-prev:hover,
+  .plosbiology .brand-shading:first-child .jcarousel-next:hover,
+  .plosbiology .row .carousel-wrap:first-child .jcarousel-next:hover,
+  .row .plosbiology .carousel-wrap:first-child .jcarousel-next:hover, .ploscompbiol .brand-shading:first-child .jcarousel-prev:hover, .ploscompbiol .row .carousel-wrap:first-child .jcarousel-prev:hover, .row .ploscompbiol .carousel-wrap:first-child .jcarousel-prev:hover,
+  .ploscompbiol .brand-shading:first-child .jcarousel-next:hover,
+  .ploscompbiol .row .carousel-wrap:first-child .jcarousel-next:hover,
+  .row .ploscompbiol .carousel-wrap:first-child .jcarousel-next:hover, .plosgenetics .brand-shading:first-child .jcarousel-prev:hover, .plosgenetics .row .carousel-wrap:first-child .jcarousel-prev:hover, .row .plosgenetics .carousel-wrap:first-child .jcarousel-prev:hover,
+  .plosgenetics .brand-shading:first-child .jcarousel-next:hover,
+  .plosgenetics .row .carousel-wrap:first-child .jcarousel-next:hover,
+  .row .plosgenetics .carousel-wrap:first-child .jcarousel-next:hover {
+    color: #3c63af; }
+/* line 98, ../../sass/_utilities.scss */
+.plosbiology .brand-shading:nth-child(2) .block-header, .plosbiology .row .carousel-wrap:nth-child(2) .block-header, .row .plosbiology .carousel-wrap:nth-child(2) .block-header, .ploscompbiol .brand-shading:nth-child(2) .block-header, .ploscompbiol .row .carousel-wrap:nth-child(2) .block-header, .row .ploscompbiol .carousel-wrap:nth-child(2) .block-header, .plosgenetics .brand-shading:nth-child(2) .block-header, .plosgenetics .row .carousel-wrap:nth-child(2) .block-header, .row .plosgenetics .carousel-wrap:nth-child(2) .block-header {
+  background: #0e6719; }
+/* line 102, ../../sass/_utilities.scss */
+.plosbiology .brand-shading:nth-child(2) .jcarousel-prev, .plosbiology .row .carousel-wrap:nth-child(2) .jcarousel-prev, .row .plosbiology .carousel-wrap:nth-child(2) .jcarousel-prev,
+.plosbiology .brand-shading:nth-child(2) .jcarousel-next,
+.plosbiology .row .carousel-wrap:nth-child(2) .jcarousel-next,
+.row .plosbiology .carousel-wrap:nth-child(2) .jcarousel-next, .ploscompbiol .brand-shading:nth-child(2) .jcarousel-prev, .ploscompbiol .row .carousel-wrap:nth-child(2) .jcarousel-prev, .row .ploscompbiol .carousel-wrap:nth-child(2) .jcarousel-prev,
+.ploscompbiol .brand-shading:nth-child(2) .jcarousel-next,
+.ploscompbiol .row .carousel-wrap:nth-child(2) .jcarousel-next,
+.row .ploscompbiol .carousel-wrap:nth-child(2) .jcarousel-next, .plosgenetics .brand-shading:nth-child(2) .jcarousel-prev, .plosgenetics .row .carousel-wrap:nth-child(2) .jcarousel-prev, .row .plosgenetics .carousel-wrap:nth-child(2) .jcarousel-prev,
+.plosgenetics .brand-shading:nth-child(2) .jcarousel-next,
+.plosgenetics .row .carousel-wrap:nth-child(2) .jcarousel-next,
+.row .plosgenetics .carousel-wrap:nth-child(2) .jcarousel-next {
+  color: #0e6719; }
+  /* line 104, ../../sass/_utilities.scss */
+  .plosbiology .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosbiology .row .carousel-wrap:nth-child(2) .jcarousel-prev:hover, .row .plosbiology .carousel-wrap:nth-child(2) .jcarousel-prev:hover,
+  .plosbiology .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosbiology .row .carousel-wrap:nth-child(2) .jcarousel-next:hover,
+  .row .plosbiology .carousel-wrap:nth-child(2) .jcarousel-next:hover, .ploscompbiol .brand-shading:nth-child(2) .jcarousel-prev:hover, .ploscompbiol .row .carousel-wrap:nth-child(2) .jcarousel-prev:hover, .row .ploscompbiol .carousel-wrap:nth-child(2) .jcarousel-prev:hover,
+  .ploscompbiol .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .ploscompbiol .row .carousel-wrap:nth-child(2) .jcarousel-next:hover,
+  .row .ploscompbiol .carousel-wrap:nth-child(2) .jcarousel-next:hover, .plosgenetics .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosgenetics .row .carousel-wrap:nth-child(2) .jcarousel-prev:hover, .row .plosgenetics .carousel-wrap:nth-child(2) .jcarousel-prev:hover,
+  .plosgenetics .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosgenetics .row .carousel-wrap:nth-child(2) .jcarousel-next:hover,
+  .row .plosgenetics .carousel-wrap:nth-child(2) .jcarousel-next:hover {
+    color: #3c63af; }
 
-/* line 65, ../../sass/_utilities.scss */
-.plosmedicine .jcarousel-prev,
-.plosmedicine .jcarousel-next,
-.plosmedicine .more-icon,
-.plosmedicine .more-link:after, .plospathogens .jcarousel-prev,
-.plospathogens .jcarousel-next,
-.plospathogens .more-icon,
-.plospathogens .more-link:after, .plosntd .jcarousel-prev,
-.plosntd .jcarousel-next,
-.plosntd .more-icon,
-.plosntd .more-link:after {
+/* line 63, ../../sass/_utilities.scss */
+.plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .more-icon, .plosntd .more-link:after {
   color: #891fb1; }
-/* line 68, ../../sass/_utilities.scss */
+/* line 66, ../../sass/_utilities.scss */
 .plosmedicine .brand-color, .plosmedicine .brand-title, .plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #ad-slot-bottom .ad-item iframe .category, #ad-slot-bottom .ad-item iframe .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .brand-color, .plospathogens .brand-title, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #ad-slot-bottom .ad-item iframe .category, #ad-slot-bottom .ad-item iframe .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .brand-color, .plosntd .brand-title, .plosntd .block .category, .block .plosntd .category, .plosntd #ad-slot-bottom .ad-item iframe .category, #ad-slot-bottom .ad-item iframe .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .more-icon, .plosntd .more-link:after {
   color: #891fb1; }
-/* line 71, ../../sass/_utilities.scss */
+/* line 69, ../../sass/_utilities.scss */
 .plosmedicine .brand-border, .plosmedicine .head-top, .plospathogens .brand-border, .plospathogens .head-top, .plosntd .brand-border, .plosntd .head-top {
   border-color: #891fb1; }
-/* line 74, ../../sass/_utilities.scss */
-.plosmedicine .brand-background, .plosmedicine .brand-header, .plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosmedicine li.highlighted > a, .plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens .brand-background, .plospathogens .brand-header, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plospathogens li.highlighted > a, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd .brand-background, .plosntd .brand-header, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosntd li.highlighted > a, .plosntd #billboard a, #billboard .plosntd a {
+/* line 73, ../../sass/_utilities.scss */
+.plosmedicine .brand-background, .plosmedicine .brand-header, .plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosmedicine li.highlighted > a, .plospathogens .brand-background, .plospathogens .brand-header, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plospathogens li.highlighted > a, .plosntd .brand-background, .plosntd .brand-header, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosntd li.highlighted > a {
   background: #891fb1; }
+/* line 77, ../../sass/_utilities.scss */
+.plosmedicine .brand-background-hover, .plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens .brand-background-hover, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd .brand-background-hover, .plosntd #billboard a, #billboard .plosntd a {
+  background: #891fb1; }
+  /* line 79, ../../sass/_utilities.scss */
+  .plosmedicine .brand-background-hover:hover, .plosmedicine #billboard a:hover, #billboard .plosmedicine a:hover, .plospathogens .brand-background-hover:hover, .plospathogens #billboard a:hover, #billboard .plospathogens a:hover, .plosntd .brand-background-hover:hover, .plosntd #billboard a:hover, #billboard .plosntd a:hover {
+    background: #3c63af; }
+/* line 86, ../../sass/_utilities.scss */
+.plosmedicine .brand-shading:first-child .block-header, .plosmedicine .row .carousel-wrap:first-child .block-header, .row .plosmedicine .carousel-wrap:first-child .block-header, .plospathogens .brand-shading:first-child .block-header, .plospathogens .row .carousel-wrap:first-child .block-header, .row .plospathogens .carousel-wrap:first-child .block-header, .plosntd .brand-shading:first-child .block-header, .plosntd .row .carousel-wrap:first-child .block-header, .row .plosntd .carousel-wrap:first-child .block-header {
+  background: #4d1163; }
+/* line 90, ../../sass/_utilities.scss */
+.plosmedicine .brand-shading:first-child .jcarousel-prev, .plosmedicine .row .carousel-wrap:first-child .jcarousel-prev, .row .plosmedicine .carousel-wrap:first-child .jcarousel-prev,
+.plosmedicine .brand-shading:first-child .jcarousel-next,
+.plosmedicine .row .carousel-wrap:first-child .jcarousel-next,
+.row .plosmedicine .carousel-wrap:first-child .jcarousel-next, .plospathogens .brand-shading:first-child .jcarousel-prev, .plospathogens .row .carousel-wrap:first-child .jcarousel-prev, .row .plospathogens .carousel-wrap:first-child .jcarousel-prev,
+.plospathogens .brand-shading:first-child .jcarousel-next,
+.plospathogens .row .carousel-wrap:first-child .jcarousel-next,
+.row .plospathogens .carousel-wrap:first-child .jcarousel-next, .plosntd .brand-shading:first-child .jcarousel-prev, .plosntd .row .carousel-wrap:first-child .jcarousel-prev, .row .plosntd .carousel-wrap:first-child .jcarousel-prev,
+.plosntd .brand-shading:first-child .jcarousel-next,
+.plosntd .row .carousel-wrap:first-child .jcarousel-next,
+.row .plosntd .carousel-wrap:first-child .jcarousel-next {
+  color: #4d1163; }
+  /* line 92, ../../sass/_utilities.scss */
+  .plosmedicine .brand-shading:first-child .jcarousel-prev:hover, .plosmedicine .row .carousel-wrap:first-child .jcarousel-prev:hover, .row .plosmedicine .carousel-wrap:first-child .jcarousel-prev:hover,
+  .plosmedicine .brand-shading:first-child .jcarousel-next:hover,
+  .plosmedicine .row .carousel-wrap:first-child .jcarousel-next:hover,
+  .row .plosmedicine .carousel-wrap:first-child .jcarousel-next:hover, .plospathogens .brand-shading:first-child .jcarousel-prev:hover, .plospathogens .row .carousel-wrap:first-child .jcarousel-prev:hover, .row .plospathogens .carousel-wrap:first-child .jcarousel-prev:hover,
+  .plospathogens .brand-shading:first-child .jcarousel-next:hover,
+  .plospathogens .row .carousel-wrap:first-child .jcarousel-next:hover,
+  .row .plospathogens .carousel-wrap:first-child .jcarousel-next:hover, .plosntd .brand-shading:first-child .jcarousel-prev:hover, .plosntd .row .carousel-wrap:first-child .jcarousel-prev:hover, .row .plosntd .carousel-wrap:first-child .jcarousel-prev:hover,
+  .plosntd .brand-shading:first-child .jcarousel-next:hover,
+  .plosntd .row .carousel-wrap:first-child .jcarousel-next:hover,
+  .row .plosntd .carousel-wrap:first-child .jcarousel-next:hover {
+    color: #3c63af; }
+/* line 98, ../../sass/_utilities.scss */
+.plosmedicine .brand-shading:nth-child(2) .block-header, .plosmedicine .row .carousel-wrap:nth-child(2) .block-header, .row .plosmedicine .carousel-wrap:nth-child(2) .block-header, .plospathogens .brand-shading:nth-child(2) .block-header, .plospathogens .row .carousel-wrap:nth-child(2) .block-header, .row .plospathogens .carousel-wrap:nth-child(2) .block-header, .plosntd .brand-shading:nth-child(2) .block-header, .plosntd .row .carousel-wrap:nth-child(2) .block-header, .row .plosntd .carousel-wrap:nth-child(2) .block-header {
+  background: #5d1579; }
+/* line 102, ../../sass/_utilities.scss */
+.plosmedicine .brand-shading:nth-child(2) .jcarousel-prev, .plosmedicine .row .carousel-wrap:nth-child(2) .jcarousel-prev, .row .plosmedicine .carousel-wrap:nth-child(2) .jcarousel-prev,
+.plosmedicine .brand-shading:nth-child(2) .jcarousel-next,
+.plosmedicine .row .carousel-wrap:nth-child(2) .jcarousel-next,
+.row .plosmedicine .carousel-wrap:nth-child(2) .jcarousel-next, .plospathogens .brand-shading:nth-child(2) .jcarousel-prev, .plospathogens .row .carousel-wrap:nth-child(2) .jcarousel-prev, .row .plospathogens .carousel-wrap:nth-child(2) .jcarousel-prev,
+.plospathogens .brand-shading:nth-child(2) .jcarousel-next,
+.plospathogens .row .carousel-wrap:nth-child(2) .jcarousel-next,
+.row .plospathogens .carousel-wrap:nth-child(2) .jcarousel-next, .plosntd .brand-shading:nth-child(2) .jcarousel-prev, .plosntd .row .carousel-wrap:nth-child(2) .jcarousel-prev, .row .plosntd .carousel-wrap:nth-child(2) .jcarousel-prev,
+.plosntd .brand-shading:nth-child(2) .jcarousel-next,
+.plosntd .row .carousel-wrap:nth-child(2) .jcarousel-next,
+.row .plosntd .carousel-wrap:nth-child(2) .jcarousel-next {
+  color: #5d1579; }
+  /* line 104, ../../sass/_utilities.scss */
+  .plosmedicine .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosmedicine .row .carousel-wrap:nth-child(2) .jcarousel-prev:hover, .row .plosmedicine .carousel-wrap:nth-child(2) .jcarousel-prev:hover,
+  .plosmedicine .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosmedicine .row .carousel-wrap:nth-child(2) .jcarousel-next:hover,
+  .row .plosmedicine .carousel-wrap:nth-child(2) .jcarousel-next:hover, .plospathogens .brand-shading:nth-child(2) .jcarousel-prev:hover, .plospathogens .row .carousel-wrap:nth-child(2) .jcarousel-prev:hover, .row .plospathogens .carousel-wrap:nth-child(2) .jcarousel-prev:hover,
+  .plospathogens .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plospathogens .row .carousel-wrap:nth-child(2) .jcarousel-next:hover,
+  .row .plospathogens .carousel-wrap:nth-child(2) .jcarousel-next:hover, .plosntd .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosntd .row .carousel-wrap:nth-child(2) .jcarousel-prev:hover, .row .plosntd .carousel-wrap:nth-child(2) .jcarousel-prev:hover,
+  .plosntd .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosntd .row .carousel-wrap:nth-child(2) .jcarousel-next:hover,
+  .row .plosntd .carousel-wrap:nth-child(2) .jcarousel-next:hover {
+    color: #3c63af; }

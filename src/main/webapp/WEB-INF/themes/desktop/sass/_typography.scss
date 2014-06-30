@@ -63,7 +63,7 @@
 
   &:hover, a:hover{
     @if $decoration == none{
-    color: $clr-highlight;
+    color: $plos-default;
     text-decoration: none;
   }
     @elseif $decoration == underline{

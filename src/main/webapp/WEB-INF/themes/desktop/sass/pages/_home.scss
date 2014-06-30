@@ -75,24 +75,22 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
+
 #billboard {
   @include grid-row;
   @include blocks($grey-dark);
   h3, h4, a {
-    color: $white !important;
+    color: $white;
   }
   position: relative;
-  a {
-    @include rounded-pill();
-    @extend .brand-background;
+  a {  //not using rounded-pill; would need too many override
+    @extend .brand-background-hover;
+    border-radius: $border-radius-default;
+    padding: $pad-xsmall $pad-default;
     position: absolute;
-    width: 80px;
-    height: 36px;
-    right: 20px;
-    top: 10px;
-    &:hover {
-      background: $plos-default;
-    }
+    display: inline-block;
+    right: $pad-default;
+    top: 18px;
   }
 }
 
@@ -216,27 +214,6 @@ $image-container: ($image-width + $pad-small);
 
 }
 
-#billboard {
-  @include grid-row;
-  @include blocks($grey-dark);
-  h3, h4, a {
-    color: $white !important;
-  }
-  position: relative;
-  a {
-    @include rounded-pill();
-    @extend .brand-background;
-    padding: $pad-xsmall $pad-default;
-    position: absolute;
-    width: 80px;
-   /* height: 36px;*/
-    right: $pad-default;
-    top: $pad-small;
-    &:hover {
-      background: $plos-default;
-    }
-  }
-}
 
 #article-list {
   height: $block-height;
@@ -411,6 +388,7 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
+
 #blogs {
   height: $block-height;
   @extend .block-card;
@@ -474,12 +452,15 @@ $image-container: ($image-width + $pad-small);
     }
 }
 
-body {
+/*body {
   @include brandColor()
-}
+}*/
 .plosbiology, .ploscompbiol, .plosgenetics {
   @include brandColor($setColor: $plos-bio);
 }
 .plosmedicine, .plospathogens, .plosntd {
   @include brandColor($setColor: $plos-med);
+}
+.row .carousel-wrap {
+ @extend .brand-shading;
 }

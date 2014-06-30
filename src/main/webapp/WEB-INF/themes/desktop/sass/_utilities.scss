@@ -60,8 +60,6 @@ $clr-highlight-text: $white) {
 //branding
 /////
 @mixin brandColor($setColor: $plos-default ) {
-  .jcarousel-prev,
-  .jcarousel-next,
   .more-icon {
     color: $setColor;
   }
@@ -71,8 +69,43 @@ $clr-highlight-text: $white) {
   .brand-border {
     border-color: $setColor;
   }
+  //no color change on hover
   .brand-background {
     background: $setColor;
+  }
+  //color change on hover
+  .brand-background-hover {
+    background: $setColor;
+    &:hover {
+      background: $plos-default;
+    }
+  }
+  //color shading variations on adjacent box headers
+  .brand-shading {
+    &:first-child {
+      .block-header {
+        background: darken($setColor, 18%);
+      }
+      .jcarousel-prev,
+      .jcarousel-next {
+        color: darken($setColor, 18%);
+        &:hover {
+          color: $plos-default;
+        }
+      }
+    }
+    &:nth-child(2) {
+      .block-header {
+        background: darken($setColor, 13%);
+      }
+      .jcarousel-prev,
+      .jcarousel-next {
+        color: darken($setColor, 13%);
+        &:hover {
+          color: $plos-default;
+        }
+      }
+    }
   }
 }
 // layout utilities

@@ -407,8 +407,9 @@ $image-container: ($image-width + $pad-small);
   @extend .block-card;
   padding:0; // TODO needs to be removed in grid refactor
 
-  .block-header{
+  .block-header {
     @extend .header-brand;
+    @extend .link-text-white;
   }
 
   #blogrss {

@@ -34,7 +34,7 @@
   // set block shadow
   @if $shadow == default{
     @include single-box-shadow();
-  }@if $shadow == none{
+  } @if $shadow == none{
     // no shadow
   }
 

@@ -3392,7 +3392,7 @@ th.hide-for-touch {
  *
  */
 /*sets up the body container */
-/* line 87, ../../sass/_scaffold.scss */
+/* line 86, ../../sass/_scaffold.scss */
 .row, .grid-test, #pagehdr-wrap .nav, .nav-main, #ad-slot-bottom {
   width: 100%;
   margin: 0;
@@ -3406,7 +3406,7 @@ th.hide-for-touch {
   .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .nav-main:after, #ad-slot-bottom:after {
     clear: both; }
 
-/* line 95, ../../sass/_scaffold.scss */
+/* line 94, ../../sass/_scaffold.scss */
 main,
 .head-main,
 #pagehdr-wrap,
@@ -3459,7 +3459,7 @@ main,
   #pageftr #ad-slot-bottom:after {
     clear: both; }
 
-/* line 105, ../../sass/_scaffold.scss */
+/* line 104, ../../sass/_scaffold.scss */
 .grid-test .one {
   padding-left: 0;
   padding-right: 0;
@@ -3468,7 +3468,7 @@ main,
   margin-left: 0.625rem;
   margin-right: 0.625rem;
   border: 1px solid; }
-/* line 109, ../../sass/_scaffold.scss */
+/* line 108, ../../sass/_scaffold.scss */
 .grid-test .two {
   padding-left: 0;
   padding-right: 0;
@@ -3477,7 +3477,7 @@ main,
   margin-left: 0.625rem;
   margin-right: 0.625rem;
   border: 1px solid; }
-/* line 113, ../../sass/_scaffold.scss */
+/* line 112, ../../sass/_scaffold.scss */
 .grid-test .three {
   padding-left: 0;
   padding-right: 0;
@@ -5661,9 +5661,9 @@ main,
 /* line 45, ../../sass/_components.scss */
 .block-card, .carousel-wrap.small, .linkbox, #blogs, #ad-slot-bottom .ad-item iframe {
   padding: 0;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white; }
 
@@ -6280,9 +6280,9 @@ footer {
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   padding: 0.625rem;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: #333333;
   position: relative; }
@@ -6313,9 +6313,9 @@ footer {
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   padding: 0.625rem;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white;
   position: relative;
@@ -6389,9 +6389,9 @@ footer {
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   padding: 0.625rem;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: #333333;
   position: relative; }
@@ -6430,9 +6430,9 @@ footer {
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   padding: 0.625rem;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white;
   position: relative; }
@@ -6473,9 +6473,9 @@ footer {
 /* line 299, ../../sass/pages/_home.scss */
 .tooltip {
   width: 300px !important;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid #cccccc; }
 
 /* line 305, ../../sass/pages/_home.scss */
@@ -6493,9 +6493,9 @@ footer {
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   padding: 0.625rem;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white;
   height: 15.625rem; }
@@ -6546,9 +6546,9 @@ footer {
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   padding: 0.625rem;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: #333333;
   padding: 0.625rem 1.875rem; }
@@ -6584,9 +6584,9 @@ footer {
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   padding: 0.625rem;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: #04417d;
   border-radius: 5px;

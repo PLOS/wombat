@@ -24,7 +24,6 @@ $grid-width-inside: ($row-width - $grid-gutter);
 
 /// from foundation amending this so we can use rems
 
-
 @function grid-calc($colNumber, $totalColumns) {
   $columnWidth: ($row-width / $totalColumns); // ($row-width / $total-columns);
   @return ( $colNumber * $columnWidth ) - $grid-gutter;

@@ -4,18 +4,13 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass";  //an external library of usefull mixins - reset
-//@import "compass/reset";  //an external library of usefull mixins - reset
-//@import "vendor/susy/susy";     //an external library for grid layout and rapid prototyping
-
-
-
 @import "variables"; // basic settings for type, size and colors
-@import "vendor/font-awesome"; // basic settings for type, size and colors
 @import "foundation"; //using the foundation library
+@import "scaffold";  // grids and basic setup
+@import "vendor/font-awesome"; // basic settings for type, size and colors
 @import "typography"; // type styles including sizes and vertical spacing
 @import "sprites";   // icons and logos
 @import "utilities"; // mixins and extensible styles specific to wombat and journals
-@import "scaffold";  // grids and basic setup
 @import "components"; // wombat and journal specific layout styles for large layouts
 @import "forms";      // forms styles
 
@@ -24,3 +19,4 @@
 @import "sections/footer";
 @import "sections/header";
 @import "pages/home";
+

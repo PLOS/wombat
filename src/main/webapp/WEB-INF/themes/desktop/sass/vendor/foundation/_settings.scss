@@ -28,11 +28,11 @@ $include-html-classes: true;
 
 // Grid
 
-$include-html-grid-classes: true;
+$include-html-grid-classes: false;
 $include-xl-html-grid-classes: false;
 
-$row-width: rem-calc(960);
-$column-gutter: rem-calc(20);
+$row-width: rem-calc($grid-width);
+$column-gutter: rem-calc($grid-gutter);
 $total-columns: 12;
 
 // We use these to control various global styles
@@ -266,11 +266,11 @@ $anchor-font-color-hover: $grey-dark;
 
 // Block Grid
 
-// $include-html-grid-classes: $include-html-classes;
+$include-html-grid-classes: false;
 
 // We use this to control the maximum number of block grid elements per row
 $block-grid-elements: 12;
-$row-width: rem-calc(960);
+$row-width: rem-calc(980);
 $block-grid-default-spacing: rem-calc(20);
 $align-block-grid-to-grid: true;
 

@@ -107,7 +107,7 @@ img {
   float: left !important; }
 
 /* line 339, ../../sass/vendor/foundation/components/_global.scss */
-.right, .top-bar-section ul.nav-elements, > li, .head-search {
+.right, #pagehdr-wrap .nav .nav-user, .nav-main .top-bar-section ul.nav-elements, .nav-main > li, .nav-main .head-search {
   float: right !important; }
 
 /* line 340, ../../sass/vendor/foundation/components/_global.scss */
@@ -743,11 +743,11 @@ button, .button {
     left: 9px;
     z-index: 98; }
   /* line 110, ../../sass/vendor/foundation/components/_dropdown.scss */
-  .f-dropdown.right:before, .top-bar-section ul.f-dropdown.nav-elements:before, > li.f-dropdown:before, .f-dropdown.head-search:before {
+  .f-dropdown.right:before, #pagehdr-wrap .nav .f-dropdown.nav-user:before, .nav-main .top-bar-section ul.f-dropdown.nav-elements:before, .nav-main > li.f-dropdown:before, .nav-main .f-dropdown.head-search:before {
     left: auto;
     right: 10px; }
   /* line 114, ../../sass/vendor/foundation/components/_dropdown.scss */
-  .f-dropdown.right:after, .top-bar-section ul.f-dropdown.nav-elements:after, > li.f-dropdown:after, .f-dropdown.head-search:after {
+  .f-dropdown.right:after, #pagehdr-wrap .nav .f-dropdown.nav-user:after, .nav-main .top-bar-section ul.f-dropdown.nav-elements:after, .nav-main > li.f-dropdown:after, .nav-main .f-dropdown.head-search:after {
     left: auto;
     right: 9px; }
   /* line 222, ../../sass/vendor/foundation/components/_dropdown.scss */
@@ -1014,22 +1014,20 @@ form {
 
 /* Using forms within rows, we need to set some defaults */
 /* line 82, ../../sass/vendor/foundation/components/_forms.scss */
-form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wrap form .nav .row, form .contain-to-grid .row, form .nav-main .row, form #ad-slot-bottom .row, form .row .grid-test, form .grid-test .grid-test, form #pagehdr-wrap .nav .grid-test, #pagehdr-wrap form .nav .grid-test, form .contain-to-grid .grid-test, form .nav-main .grid-test, form #ad-slot-bottom .grid-test, form .row #pagehdr-wrap .nav, #pagehdr-wrap form .row .nav, form .grid-test #pagehdr-wrap .nav, #pagehdr-wrap form .grid-test .nav, form #pagehdr-wrap .nav .nav, #pagehdr-wrap form .nav .nav, form .contain-to-grid #pagehdr-wrap .nav, #pagehdr-wrap form .contain-to-grid .nav, form .nav-main #pagehdr-wrap .nav, #pagehdr-wrap form .nav-main .nav, form #ad-slot-bottom #pagehdr-wrap .nav, #pagehdr-wrap form #ad-slot-bottom .nav, form .row .contain-to-grid, form .grid-test .contain-to-grid, form #pagehdr-wrap .nav .contain-to-grid, #pagehdr-wrap form .nav .contain-to-grid, form .contain-to-grid .contain-to-grid, form .nav-main .contain-to-grid, form #ad-slot-bottom .contain-to-grid, form .row .nav-main, form .grid-test .nav-main, form #pagehdr-wrap .nav .nav-main, #pagehdr-wrap form .nav .nav-main, form .contain-to-grid .nav-main, form .nav-main .nav-main, form #ad-slot-bottom .nav-main, form .row #ad-slot-bottom, form .grid-test #ad-slot-bottom, form #pagehdr-wrap .nav #ad-slot-bottom, #pagehdr-wrap form .nav #ad-slot-bottom, form .contain-to-grid #ad-slot-bottom, form .nav-main #ad-slot-bottom, form #ad-slot-bottom #ad-slot-bottom {
+form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wrap form .nav .row, form .nav-main .row, form #ad-slot-bottom .row, form .row .grid-test, form .grid-test .grid-test, form #pagehdr-wrap .nav .grid-test, #pagehdr-wrap form .nav .grid-test, form .nav-main .grid-test, form #ad-slot-bottom .grid-test, form .row #pagehdr-wrap .nav, #pagehdr-wrap form .row .nav, form .grid-test #pagehdr-wrap .nav, #pagehdr-wrap form .grid-test .nav, form #pagehdr-wrap .nav .nav, #pagehdr-wrap form .nav .nav, form .nav-main #pagehdr-wrap .nav, #pagehdr-wrap form .nav-main .nav, form #ad-slot-bottom #pagehdr-wrap .nav, #pagehdr-wrap form #ad-slot-bottom .nav, form .row .nav-main, form .grid-test .nav-main, form #pagehdr-wrap .nav .nav-main, #pagehdr-wrap form .nav .nav-main, form .nav-main .nav-main, form #ad-slot-bottom .nav-main, form .row #ad-slot-bottom, form .grid-test #ad-slot-bottom, form #pagehdr-wrap .nav #ad-slot-bottom, #pagehdr-wrap form .nav #ad-slot-bottom, form .nav-main #ad-slot-bottom, form #ad-slot-bottom #ad-slot-bottom {
   margin: 0 -0.5rem; }
   /* line 84, ../../sass/vendor/foundation/components/_forms.scss */
-  form .row .row .column, form .grid-test .row .column, form #pagehdr-wrap .nav .row .column, #pagehdr-wrap form .nav .row .column, form .contain-to-grid .row .column, form .nav-main .row .column, form #ad-slot-bottom .row .column, form .row .grid-test .column, form .grid-test .grid-test .column, form #pagehdr-wrap .nav .grid-test .column, #pagehdr-wrap form .nav .grid-test .column, form .contain-to-grid .grid-test .column, form .nav-main .grid-test .column, form #ad-slot-bottom .grid-test .column, form .row #pagehdr-wrap .nav .column, #pagehdr-wrap form .row .nav .column, form .grid-test #pagehdr-wrap .nav .column, #pagehdr-wrap form .grid-test .nav .column, form #pagehdr-wrap .nav .nav .column, #pagehdr-wrap form .nav .nav .column, form .contain-to-grid #pagehdr-wrap .nav .column, #pagehdr-wrap form .contain-to-grid .nav .column, form .nav-main #pagehdr-wrap .nav .column, #pagehdr-wrap form .nav-main .nav .column, form #ad-slot-bottom #pagehdr-wrap .nav .column, #pagehdr-wrap form #ad-slot-bottom .nav .column, form .row .contain-to-grid .column, form .grid-test .contain-to-grid .column, form #pagehdr-wrap .nav .contain-to-grid .column, #pagehdr-wrap form .nav .contain-to-grid .column, form .contain-to-grid .contain-to-grid .column, form .nav-main .contain-to-grid .column, form #ad-slot-bottom .contain-to-grid .column, form .row .nav-main .column, form .grid-test .nav-main .column, form #pagehdr-wrap .nav .nav-main .column, #pagehdr-wrap form .nav .nav-main .column, form .contain-to-grid .nav-main .column, form .nav-main .nav-main .column, form #ad-slot-bottom .nav-main .column, form .row #ad-slot-bottom .column, form .grid-test #ad-slot-bottom .column, form #pagehdr-wrap .nav #ad-slot-bottom .column, #pagehdr-wrap form .nav #ad-slot-bottom .column, form .contain-to-grid #ad-slot-bottom .column, form .nav-main #ad-slot-bottom .column, form #ad-slot-bottom #ad-slot-bottom .column,
+  form .row .row .column, form .grid-test .row .column, form #pagehdr-wrap .nav .row .column, #pagehdr-wrap form .nav .row .column, form .nav-main .row .column, form #ad-slot-bottom .row .column, form .row .grid-test .column, form .grid-test .grid-test .column, form #pagehdr-wrap .nav .grid-test .column, #pagehdr-wrap form .nav .grid-test .column, form .nav-main .grid-test .column, form #ad-slot-bottom .grid-test .column, form .row #pagehdr-wrap .nav .column, #pagehdr-wrap form .row .nav .column, form .grid-test #pagehdr-wrap .nav .column, #pagehdr-wrap form .grid-test .nav .column, form #pagehdr-wrap .nav .nav .column, #pagehdr-wrap form .nav .nav .column, form .nav-main #pagehdr-wrap .nav .column, #pagehdr-wrap form .nav-main .nav .column, form #ad-slot-bottom #pagehdr-wrap .nav .column, #pagehdr-wrap form #ad-slot-bottom .nav .column, form .row .nav-main .column, form .grid-test .nav-main .column, form #pagehdr-wrap .nav .nav-main .column, #pagehdr-wrap form .nav .nav-main .column, form .nav-main .nav-main .column, form #ad-slot-bottom .nav-main .column, form .row #ad-slot-bottom .column, form .grid-test #ad-slot-bottom .column, form #pagehdr-wrap .nav #ad-slot-bottom .column, #pagehdr-wrap form .nav #ad-slot-bottom .column, form .nav-main #ad-slot-bottom .column, form #ad-slot-bottom #ad-slot-bottom .column,
   form .row .row .columns,
   form .grid-test .row .columns,
   form #pagehdr-wrap .nav .row .columns,
   #pagehdr-wrap form .nav .row .columns,
-  form .contain-to-grid .row .columns,
   form .nav-main .row .columns,
   form #ad-slot-bottom .row .columns,
   form .row .grid-test .columns,
   form .grid-test .grid-test .columns,
   form #pagehdr-wrap .nav .grid-test .columns,
   #pagehdr-wrap form .nav .grid-test .columns,
-  form .contain-to-grid .grid-test .columns,
   form .nav-main .grid-test .columns,
   form #ad-slot-bottom .grid-test .columns,
   form .row #pagehdr-wrap .nav .columns,
@@ -1038,51 +1036,38 @@ form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wra
   #pagehdr-wrap form .grid-test .nav .columns,
   form #pagehdr-wrap .nav .nav .columns,
   #pagehdr-wrap form .nav .nav .columns,
-  form .contain-to-grid #pagehdr-wrap .nav .columns,
-  #pagehdr-wrap form .contain-to-grid .nav .columns,
   form .nav-main #pagehdr-wrap .nav .columns,
   #pagehdr-wrap form .nav-main .nav .columns,
   form #ad-slot-bottom #pagehdr-wrap .nav .columns,
   #pagehdr-wrap form #ad-slot-bottom .nav .columns,
-  form .row .contain-to-grid .columns,
-  form .grid-test .contain-to-grid .columns,
-  form #pagehdr-wrap .nav .contain-to-grid .columns,
-  #pagehdr-wrap form .nav .contain-to-grid .columns,
-  form .contain-to-grid .contain-to-grid .columns,
-  form .nav-main .contain-to-grid .columns,
-  form #ad-slot-bottom .contain-to-grid .columns,
   form .row .nav-main .columns,
   form .grid-test .nav-main .columns,
   form #pagehdr-wrap .nav .nav-main .columns,
   #pagehdr-wrap form .nav .nav-main .columns,
-  form .contain-to-grid .nav-main .columns,
   form .nav-main .nav-main .columns,
   form #ad-slot-bottom .nav-main .columns,
   form .row #ad-slot-bottom .columns,
   form .grid-test #ad-slot-bottom .columns,
   form #pagehdr-wrap .nav #ad-slot-bottom .columns,
   #pagehdr-wrap form .nav #ad-slot-bottom .columns,
-  form .contain-to-grid #ad-slot-bottom .columns,
   form .nav-main #ad-slot-bottom .columns,
   form #ad-slot-bottom #ad-slot-bottom .columns {
     padding: 0 0.5rem; }
   /* line 88, ../../sass/vendor/foundation/components/_forms.scss */
-  form .row .row.collapse, form .grid-test .row.collapse, form #pagehdr-wrap .nav .row.collapse, #pagehdr-wrap form .nav .row.collapse, form .contain-to-grid .row.collapse, form .nav-main .row.collapse, form #ad-slot-bottom .row.collapse, form .row .collapse.grid-test, form .grid-test .collapse.grid-test, form #pagehdr-wrap .nav .collapse.grid-test, #pagehdr-wrap form .nav .collapse.grid-test, form .contain-to-grid .collapse.grid-test, form .nav-main .collapse.grid-test, form #ad-slot-bottom .collapse.grid-test, form .row #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .row .collapse.nav, form .grid-test #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .grid-test .collapse.nav, form #pagehdr-wrap .nav .collapse.nav, #pagehdr-wrap form .nav .collapse.nav, form .contain-to-grid #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .contain-to-grid .collapse.nav, form .nav-main #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .nav-main .collapse.nav, form #ad-slot-bottom #pagehdr-wrap .collapse.nav, #pagehdr-wrap form #ad-slot-bottom .collapse.nav, form .row .collapse.contain-to-grid, form .grid-test .collapse.contain-to-grid, form #pagehdr-wrap .nav .collapse.contain-to-grid, #pagehdr-wrap form .nav .collapse.contain-to-grid, form .contain-to-grid .collapse.contain-to-grid, form .nav-main .collapse.contain-to-grid, form #ad-slot-bottom .collapse.contain-to-grid, form .row .collapse.nav-main, form .grid-test .collapse.nav-main, form #pagehdr-wrap .nav .collapse.nav-main, #pagehdr-wrap form .nav .collapse.nav-main, form .contain-to-grid .collapse.nav-main, form .nav-main .collapse.nav-main, form #ad-slot-bottom .collapse.nav-main, form .row .collapse#ad-slot-bottom, form .grid-test .collapse#ad-slot-bottom, form #pagehdr-wrap .nav .collapse#ad-slot-bottom, #pagehdr-wrap form .nav .collapse#ad-slot-bottom, form .contain-to-grid .collapse#ad-slot-bottom, form .nav-main .collapse#ad-slot-bottom, form #ad-slot-bottom .collapse#ad-slot-bottom {
+  form .row .row.collapse, form .grid-test .row.collapse, form #pagehdr-wrap .nav .row.collapse, #pagehdr-wrap form .nav .row.collapse, form .nav-main .row.collapse, form #ad-slot-bottom .row.collapse, form .row .collapse.grid-test, form .grid-test .collapse.grid-test, form #pagehdr-wrap .nav .collapse.grid-test, #pagehdr-wrap form .nav .collapse.grid-test, form .nav-main .collapse.grid-test, form #ad-slot-bottom .collapse.grid-test, form .row #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .row .collapse.nav, form .grid-test #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .grid-test .collapse.nav, form #pagehdr-wrap .nav .collapse.nav, #pagehdr-wrap form .nav .collapse.nav, form .nav-main #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .nav-main .collapse.nav, form #ad-slot-bottom #pagehdr-wrap .collapse.nav, #pagehdr-wrap form #ad-slot-bottom .collapse.nav, form .row .collapse.nav-main, form .grid-test .collapse.nav-main, form #pagehdr-wrap .nav .collapse.nav-main, #pagehdr-wrap form .nav .collapse.nav-main, form .nav-main .collapse.nav-main, form #ad-slot-bottom .collapse.nav-main, form .row .collapse#ad-slot-bottom, form .grid-test .collapse#ad-slot-bottom, form #pagehdr-wrap .nav .collapse#ad-slot-bottom, #pagehdr-wrap form .nav .collapse#ad-slot-bottom, form .nav-main .collapse#ad-slot-bottom, form #ad-slot-bottom .collapse#ad-slot-bottom {
     margin: 0; }
     /* line 90, ../../sass/vendor/foundation/components/_forms.scss */
-    form .row .row.collapse .column, form .grid-test .row.collapse .column, form #pagehdr-wrap .nav .row.collapse .column, #pagehdr-wrap form .nav .row.collapse .column, form .contain-to-grid .row.collapse .column, form .nav-main .row.collapse .column, form #ad-slot-bottom .row.collapse .column, form .row .collapse.grid-test .column, form .grid-test .collapse.grid-test .column, form #pagehdr-wrap .nav .collapse.grid-test .column, #pagehdr-wrap form .nav .collapse.grid-test .column, form .contain-to-grid .collapse.grid-test .column, form .nav-main .collapse.grid-test .column, form #ad-slot-bottom .collapse.grid-test .column, form .row #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .row .collapse.nav .column, form .grid-test #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .grid-test .collapse.nav .column, form #pagehdr-wrap .nav .collapse.nav .column, #pagehdr-wrap form .nav .collapse.nav .column, form .contain-to-grid #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .contain-to-grid .collapse.nav .column, form .nav-main #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .nav-main .collapse.nav .column, form #ad-slot-bottom #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form #ad-slot-bottom .collapse.nav .column, form .row .collapse.contain-to-grid .column, form .grid-test .collapse.contain-to-grid .column, form #pagehdr-wrap .nav .collapse.contain-to-grid .column, #pagehdr-wrap form .nav .collapse.contain-to-grid .column, form .contain-to-grid .collapse.contain-to-grid .column, form .nav-main .collapse.contain-to-grid .column, form #ad-slot-bottom .collapse.contain-to-grid .column, form .row .collapse.nav-main .column, form .grid-test .collapse.nav-main .column, form #pagehdr-wrap .nav .collapse.nav-main .column, #pagehdr-wrap form .nav .collapse.nav-main .column, form .contain-to-grid .collapse.nav-main .column, form .nav-main .collapse.nav-main .column, form #ad-slot-bottom .collapse.nav-main .column, form .row .collapse#ad-slot-bottom .column, form .grid-test .collapse#ad-slot-bottom .column, form #pagehdr-wrap .nav .collapse#ad-slot-bottom .column, #pagehdr-wrap form .nav .collapse#ad-slot-bottom .column, form .contain-to-grid .collapse#ad-slot-bottom .column, form .nav-main .collapse#ad-slot-bottom .column, form #ad-slot-bottom .collapse#ad-slot-bottom .column,
+    form .row .row.collapse .column, form .grid-test .row.collapse .column, form #pagehdr-wrap .nav .row.collapse .column, #pagehdr-wrap form .nav .row.collapse .column, form .nav-main .row.collapse .column, form #ad-slot-bottom .row.collapse .column, form .row .collapse.grid-test .column, form .grid-test .collapse.grid-test .column, form #pagehdr-wrap .nav .collapse.grid-test .column, #pagehdr-wrap form .nav .collapse.grid-test .column, form .nav-main .collapse.grid-test .column, form #ad-slot-bottom .collapse.grid-test .column, form .row #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .row .collapse.nav .column, form .grid-test #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .grid-test .collapse.nav .column, form #pagehdr-wrap .nav .collapse.nav .column, #pagehdr-wrap form .nav .collapse.nav .column, form .nav-main #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .nav-main .collapse.nav .column, form #ad-slot-bottom #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form #ad-slot-bottom .collapse.nav .column, form .row .collapse.nav-main .column, form .grid-test .collapse.nav-main .column, form #pagehdr-wrap .nav .collapse.nav-main .column, #pagehdr-wrap form .nav .collapse.nav-main .column, form .nav-main .collapse.nav-main .column, form #ad-slot-bottom .collapse.nav-main .column, form .row .collapse#ad-slot-bottom .column, form .grid-test .collapse#ad-slot-bottom .column, form #pagehdr-wrap .nav .collapse#ad-slot-bottom .column, #pagehdr-wrap form .nav .collapse#ad-slot-bottom .column, form .nav-main .collapse#ad-slot-bottom .column, form #ad-slot-bottom .collapse#ad-slot-bottom .column,
     form .row .row.collapse .columns,
     form .grid-test .row.collapse .columns,
     form #pagehdr-wrap .nav .row.collapse .columns,
     #pagehdr-wrap form .nav .row.collapse .columns,
-    form .contain-to-grid .row.collapse .columns,
     form .nav-main .row.collapse .columns,
     form #ad-slot-bottom .row.collapse .columns,
     form .row .collapse.grid-test .columns,
     form .grid-test .collapse.grid-test .columns,
     form #pagehdr-wrap .nav .collapse.grid-test .columns,
     #pagehdr-wrap form .nav .collapse.grid-test .columns,
-    form .contain-to-grid .collapse.grid-test .columns,
     form .nav-main .collapse.grid-test .columns,
     form #ad-slot-bottom .collapse.grid-test .columns,
     form .row #pagehdr-wrap .collapse.nav .columns,
@@ -1091,59 +1076,45 @@ form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wra
     #pagehdr-wrap form .grid-test .collapse.nav .columns,
     form #pagehdr-wrap .nav .collapse.nav .columns,
     #pagehdr-wrap form .nav .collapse.nav .columns,
-    form .contain-to-grid #pagehdr-wrap .collapse.nav .columns,
-    #pagehdr-wrap form .contain-to-grid .collapse.nav .columns,
     form .nav-main #pagehdr-wrap .collapse.nav .columns,
     #pagehdr-wrap form .nav-main .collapse.nav .columns,
     form #ad-slot-bottom #pagehdr-wrap .collapse.nav .columns,
     #pagehdr-wrap form #ad-slot-bottom .collapse.nav .columns,
-    form .row .collapse.contain-to-grid .columns,
-    form .grid-test .collapse.contain-to-grid .columns,
-    form #pagehdr-wrap .nav .collapse.contain-to-grid .columns,
-    #pagehdr-wrap form .nav .collapse.contain-to-grid .columns,
-    form .contain-to-grid .collapse.contain-to-grid .columns,
-    form .nav-main .collapse.contain-to-grid .columns,
-    form #ad-slot-bottom .collapse.contain-to-grid .columns,
     form .row .collapse.nav-main .columns,
     form .grid-test .collapse.nav-main .columns,
     form #pagehdr-wrap .nav .collapse.nav-main .columns,
     #pagehdr-wrap form .nav .collapse.nav-main .columns,
-    form .contain-to-grid .collapse.nav-main .columns,
     form .nav-main .collapse.nav-main .columns,
     form #ad-slot-bottom .collapse.nav-main .columns,
     form .row .collapse#ad-slot-bottom .columns,
     form .grid-test .collapse#ad-slot-bottom .columns,
     form #pagehdr-wrap .nav .collapse#ad-slot-bottom .columns,
     #pagehdr-wrap form .nav .collapse#ad-slot-bottom .columns,
-    form .contain-to-grid .collapse#ad-slot-bottom .columns,
     form .nav-main .collapse#ad-slot-bottom .columns,
     form #ad-slot-bottom .collapse#ad-slot-bottom .columns {
       padding: 0; }
     /* line 92, ../../sass/vendor/foundation/components/_forms.scss */
-    form .row .row.collapse input, form .grid-test .row.collapse input, form #pagehdr-wrap .nav .row.collapse input, #pagehdr-wrap form .nav .row.collapse input, form .contain-to-grid .row.collapse input, form .nav-main .row.collapse input, form #ad-slot-bottom .row.collapse input, form .row .collapse.grid-test input, form .grid-test .collapse.grid-test input, form #pagehdr-wrap .nav .collapse.grid-test input, #pagehdr-wrap form .nav .collapse.grid-test input, form .contain-to-grid .collapse.grid-test input, form .nav-main .collapse.grid-test input, form #ad-slot-bottom .collapse.grid-test input, form .row #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .row .collapse.nav input, form .grid-test #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .grid-test .collapse.nav input, form #pagehdr-wrap .nav .collapse.nav input, #pagehdr-wrap form .nav .collapse.nav input, form .contain-to-grid #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .contain-to-grid .collapse.nav input, form .nav-main #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .nav-main .collapse.nav input, form #ad-slot-bottom #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form #ad-slot-bottom .collapse.nav input, form .row .collapse.contain-to-grid input, form .grid-test .collapse.contain-to-grid input, form #pagehdr-wrap .nav .collapse.contain-to-grid input, #pagehdr-wrap form .nav .collapse.contain-to-grid input, form .contain-to-grid .collapse.contain-to-grid input, form .nav-main .collapse.contain-to-grid input, form #ad-slot-bottom .collapse.contain-to-grid input, form .row .collapse.nav-main input, form .grid-test .collapse.nav-main input, form #pagehdr-wrap .nav .collapse.nav-main input, #pagehdr-wrap form .nav .collapse.nav-main input, form .contain-to-grid .collapse.nav-main input, form .nav-main .collapse.nav-main input, form #ad-slot-bottom .collapse.nav-main input, form .row .collapse#ad-slot-bottom input, form .grid-test .collapse#ad-slot-bottom input, form #pagehdr-wrap .nav .collapse#ad-slot-bottom input, #pagehdr-wrap form .nav .collapse#ad-slot-bottom input, form .contain-to-grid .collapse#ad-slot-bottom input, form .nav-main .collapse#ad-slot-bottom input, form #ad-slot-bottom .collapse#ad-slot-bottom input {
+    form .row .row.collapse input, form .grid-test .row.collapse input, form #pagehdr-wrap .nav .row.collapse input, #pagehdr-wrap form .nav .row.collapse input, form .nav-main .row.collapse input, form #ad-slot-bottom .row.collapse input, form .row .collapse.grid-test input, form .grid-test .collapse.grid-test input, form #pagehdr-wrap .nav .collapse.grid-test input, #pagehdr-wrap form .nav .collapse.grid-test input, form .nav-main .collapse.grid-test input, form #ad-slot-bottom .collapse.grid-test input, form .row #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .row .collapse.nav input, form .grid-test #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .grid-test .collapse.nav input, form #pagehdr-wrap .nav .collapse.nav input, #pagehdr-wrap form .nav .collapse.nav input, form .nav-main #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .nav-main .collapse.nav input, form #ad-slot-bottom #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form #ad-slot-bottom .collapse.nav input, form .row .collapse.nav-main input, form .grid-test .collapse.nav-main input, form #pagehdr-wrap .nav .collapse.nav-main input, #pagehdr-wrap form .nav .collapse.nav-main input, form .nav-main .collapse.nav-main input, form #ad-slot-bottom .collapse.nav-main input, form .row .collapse#ad-slot-bottom input, form .grid-test .collapse#ad-slot-bottom input, form #pagehdr-wrap .nav .collapse#ad-slot-bottom input, #pagehdr-wrap form .nav .collapse#ad-slot-bottom input, form .nav-main .collapse#ad-slot-bottom input, form #ad-slot-bottom .collapse#ad-slot-bottom input {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0; }
 /* line 98, ../../sass/vendor/foundation/components/_forms.scss */
-form .row input.column, form .grid-test input.column, form #pagehdr-wrap .nav input.column, #pagehdr-wrap form .nav input.column, form .contain-to-grid input.column, form .nav-main input.column, form #ad-slot-bottom input.column,
+form .row input.column, form .grid-test input.column, form #pagehdr-wrap .nav input.column, #pagehdr-wrap form .nav input.column, form .nav-main input.column, form #ad-slot-bottom input.column,
 form .row input.columns,
 form .grid-test input.columns,
 form #pagehdr-wrap .nav input.columns,
 #pagehdr-wrap form .nav input.columns,
-form .contain-to-grid input.columns,
 form .nav-main input.columns,
 form #ad-slot-bottom input.columns,
 form .row textarea.column,
 form .grid-test textarea.column,
 form #pagehdr-wrap .nav textarea.column,
 #pagehdr-wrap form .nav textarea.column,
-form .contain-to-grid textarea.column,
 form .nav-main textarea.column,
 form #ad-slot-bottom textarea.column,
 form .row textarea.columns,
 form .grid-test textarea.columns,
 form #pagehdr-wrap .nav textarea.columns,
 #pagehdr-wrap form .nav textarea.columns,
-form .contain-to-grid textarea.columns,
 form .nav-main textarea.columns,
 form #ad-slot-bottom textarea.columns {
   padding-left: 0.5rem; }
@@ -1160,7 +1131,7 @@ label {
   margin-bottom: 0;
   /* Styles for required inputs */ }
   /* line 333, ../../sass/vendor/foundation/components/_forms.scss */
-  label.right, label.head-search {
+  label.right, #pagehdr-wrap .nav label.nav-user, .nav-main label.head-search {
     float: none;
     text-align: right; }
   /* line 334, ../../sass/vendor/foundation/components/_forms.scss */
@@ -2051,7 +2022,7 @@ meta.foundation-mq-topbar {
     margin-bottom: 0;
     list-style: none; }
   /* line 157, ../../sass/vendor/foundation/components/_top-bar.scss */
-  .top-bar .row, .nav-main .row, .top-bar .grid-test, .nav-main .grid-test, .top-bar #pagehdr-wrap .nav, #pagehdr-wrap .top-bar .nav, .nav-main #pagehdr-wrap .nav, #pagehdr-wrap .nav-main .nav, .top-bar .contain-to-grid, .nav-main .contain-to-grid, .top-bar .nav-main, .nav-main .nav-main, .top-bar #ad-slot-bottom, .nav-main #ad-slot-bottom {
+  .top-bar .row, .nav-main .row, .top-bar .grid-test, .nav-main .grid-test, .top-bar #pagehdr-wrap .nav, #pagehdr-wrap .top-bar .nav, .nav-main #pagehdr-wrap .nav, #pagehdr-wrap .nav-main .nav, .top-bar .nav-main, .nav-main .nav-main, .top-bar #ad-slot-bottom, .nav-main #ad-slot-bottom {
     max-width: none; }
   /* line 159, ../../sass/vendor/foundation/components/_top-bar.scss */
   .top-bar form, .nav-main form,
@@ -2511,11 +2482,11 @@ meta.foundation-mq-topbar {
       padding: 0 15px;
       height: 45px; }
     /* line 596, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar-section .right li .dropdown, .top-bar-section ul.nav-elements li .dropdown, > .top-bar-section li li .dropdown, .top-bar-section .head-search li .dropdown {
+    .top-bar-section .right li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown, .top-bar-section .nav-main > li li .dropdown, .top-bar-section .nav-main .head-search li .dropdown, .nav-main .top-bar-section .head-search li .dropdown {
       left: auto;
       right: 0; }
       /* line 600, ../../sass/vendor/foundation/components/_top-bar.scss */
-      .top-bar-section .right li .dropdown li .dropdown, .top-bar-section ul.nav-elements li .dropdown li .dropdown, > .top-bar-section li li .dropdown li .dropdown, .top-bar-section .head-search li .dropdown li .dropdown {
+      .top-bar-section .right li .dropdown li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown li .dropdown, .top-bar-section .nav-main > li li .dropdown li .dropdown, .top-bar-section .nav-main .head-search li .dropdown li .dropdown, .nav-main .top-bar-section .head-search li .dropdown li .dropdown {
         right: 100%; }
     /* line 604, ../../sass/vendor/foundation/components/_top-bar.scss */
     .top-bar-section .left li .dropdown {
@@ -3427,17 +3398,17 @@ th.hide-for-touch {
  */
 /*sets up the body container */
 /* line 87, ../../sass/_scaffold.scss */
-.row, .grid-test, #pagehdr-wrap .nav, .contain-to-grid, .nav-main, #ad-slot-bottom {
+.row, .grid-test, #pagehdr-wrap .nav, .nav-main, #ad-slot-bottom {
   width: 100%;
   margin: 0;
   max-width: 61.25rem;
   *zoom: 1; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  .row:before, .grid-test:before, #pagehdr-wrap .nav:before, .contain-to-grid:before, .nav-main:before, #ad-slot-bottom:before, .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .contain-to-grid:after, .nav-main:after, #ad-slot-bottom:after {
+  .row:before, .grid-test:before, #pagehdr-wrap .nav:before, .nav-main:before, #ad-slot-bottom:before, .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .nav-main:after, #ad-slot-bottom:after {
     content: " ";
     display: table; }
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .contain-to-grid:after, .nav-main:after, #ad-slot-bottom:after {
+  .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .nav-main:after, #ad-slot-bottom:after {
     clear: both; }
 
 /* line 95, ../../sass/_scaffold.scss */
@@ -3449,7 +3420,6 @@ main,
 #pageftr .grid-test,
 #pageftr #pagehdr-wrap .nav,
 #pagehdr-wrap #pageftr .nav,
-#pageftr .contain-to-grid,
 #pageftr .nav-main,
 #pageftr #ad-slot-bottom {
   width: 100%;
@@ -3471,14 +3441,12 @@ main,
   #pageftr .grid-test:before,
   #pageftr #pagehdr-wrap .nav:before,
   #pagehdr-wrap #pageftr .nav:before,
-  #pageftr .contain-to-grid:before,
   #pageftr .nav-main:before,
   #pageftr #ad-slot-bottom:before,
   #pageftr .row:after,
   #pageftr .grid-test:after,
   #pageftr #pagehdr-wrap .nav:after,
   #pagehdr-wrap #pageftr .nav:after,
-  #pageftr .contain-to-grid:after,
   #pageftr .nav-main:after,
   #pageftr #ad-slot-bottom:after {
     content: " ";
@@ -3492,7 +3460,6 @@ main,
   #pageftr .grid-test:after,
   #pageftr #pagehdr-wrap .nav:after,
   #pagehdr-wrap #pageftr .nav:after,
-  #pageftr .contain-to-grid:after,
   #pageftr .nav-main:after,
   #pageftr #ad-slot-bottom:after {
     clear: both; }
@@ -3538,7 +3505,7 @@ main,
 }*/
 /* line 14, ../../sass/vendor/_font-awesome.scss */
 .fa, .carousel-wrap.small .carousel-control .jcarousel-prev,
-.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .head-search form button[type="submit"] .search-icon {
+.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .nav-main .head-search form button[type="submit"] .search-icon {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -3613,12 +3580,12 @@ main,
 
 /* line 74, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-left, .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .head-search form button[type="submit"] .pull-left.search-icon {
+.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .nav-main .head-search form button[type="submit"] .pull-left.search-icon {
   margin-right: .3em; }
 
 /* line 77, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-right, .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .head-search form button[type="submit"] .pull-right.search-icon {
+.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .nav-main .head-search form button[type="submit"] .pull-right.search-icon {
   margin-left: .3em; }
 
 /* line 80, ../../sass/vendor/_font-awesome.scss */
@@ -3748,7 +3715,7 @@ main,
   content: "\f001"; }
 
 /* line 192, ../../sass/vendor/_font-awesome.scss */
-.fa-search:before, .head-search form button[type="submit"] .search-icon:before {
+.fa-search:before, .nav-main .head-search form button[type="submit"] .search-icon:before {
   content: "\f002"; }
 
 /* line 195, ../../sass/vendor/_font-awesome.scss */
@@ -5600,7 +5567,7 @@ main,
   line-height: 2.5rem; }
 
 /* line 44, ../../sass/_typography.scss */
-.header-bottom-shadow, .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3, #submission-links h3 {
+.header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3, #submission-links h3 {
   padding-bottom: 1.0625rem;
   margin-bottom: 1.0625rem;
   box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
@@ -5913,11 +5880,6 @@ footer {
   /*TODO: use themes journal-specific css to assign border color*/
   padding: 0.3125rem 0.625rem; }
   /* line 25, ../../sass/sections/_header.scss */
-  .head-top .center {
-    width: 748px;
-    margin: 0 auto;
-    height: 90px; }
-  /* line 29, ../../sass/sections/_header.scss */
   .head-top .title {
     width: 18px;
     height: 88px;
@@ -5925,15 +5887,14 @@ footer {
     background: url('../img/text.vert.ad.gif') no-repeat 0 6px;
     float: left; }
 
-/* line 44, ../../sass/sections/_header.scss */
+/* line 41, ../../sass/sections/_header.scss */
 #pagehdr-wrap .nav .nav-user {
-  float: right;
   font-weight: bold; }
-  /* line 49, ../../sass/sections/_header.scss */
+  /* line 45, ../../sass/sections/_header.scss */
   #pagehdr-wrap .nav .nav-user > li {
     margin-top: -0.3125rem;
     margin-left: 0.25rem; }
-    /* line 55, ../../sass/sections/_header.scss */
+    /* line 49, ../../sass/sections/_header.scss */
     #pagehdr-wrap .nav .nav-user > li > a {
       background: transparent;
       padding: 0.875rem 1rem 0.5rem;
@@ -5943,15 +5904,15 @@ footer {
       /* line 11, ../../sass/_components.scss */
       #pagehdr-wrap .nav .nav-user > li > a:hover {
         background: #333333; }
-      /* line 59, ../../sass/sections/_header.scss */
+      /* line 53, ../../sass/sections/_header.scss */
       #pagehdr-wrap .nav .nav-user > li > a:hover {
         color: white;
         background: #3c63af; }
-  /* line 66, ../../sass/sections/_header.scss */
+  /* line 60, ../../sass/sections/_header.scss */
   #pagehdr-wrap .nav .nav-user li.highlighted > a {
     color: white;
     background: #16a127; }
-/* line 74, ../../sass/sections/_header.scss */
+/* line 68, ../../sass/sections/_header.scss */
 #pagehdr-wrap .logo {
   padding-left: 0;
   padding-right: 0;
@@ -5966,237 +5927,233 @@ footer {
 /* using Foundation Top Bar
  all @extend .class are Foundation
  */
-/* line 97, ../../sass/sections/_header.scss */
+/* line 85, ../../sass/sections/_header.scss */
 .nav-main {
   font-family: "albert"; }
-  /* line 99, ../../sass/sections/_header.scss */
+  /* line 86, ../../sass/sections/_header.scss */
   .nav-main > .dropdown {
     visibility: hidden; }
-  /* line 104, ../../sass/sections/_header.scss */
+  /* line 92, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section {
     padding-left: 0;
     padding-right: 0;
     width: 35.72917rem;
     float: right; }
-
-/* line 107, ../../sass/sections/_header.scss */
-.top-bar-section ul.nav-elements {
-  float: right;
-  padding-left: 0; }
-
-/* line 115, ../../sass/sections/_header.scss */
-.top-bar-section ul.nav-elements > li.has-dropdown {
-  cursor: pointer;
-  margin-left: 3px;
-  border-left: 1px solid #cccccc;
-  line-height: 36px;
-  padding: 0 15px;
-  font-family: "albert";
-  font-size: 20px; }
-  /* line 123, ../../sass/sections/_header.scss */
-  .top-bar-section ul.nav-elements > li.has-dropdown:first-child {
-    border-left: none;
-    margin-left: 0; }
-  /* line 127, ../../sass/sections/_header.scss */
-  .top-bar-section ul.nav-elements > li.has-dropdown:last-child {
-    border-left: 1px solid #efefef; }
-
-/* line 133, ../../sass/sections/_header.scss */
-.dropdownanchor, .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a, .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a {
-  width: 100%;
-  line-height: 1;
-  padding: 0.4375rem 1.875rem 0.5rem 1.875rem;
-  font-family: "arial";
-  font-size: 0.875rem;
-  white-space: pre-wrap; }
-  /* line 140, ../../sass/sections/_header.scss */
-  .dropdownanchor:hover, .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a:hover, .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a:hover {
-    color: white;
-    background: #3c63af; }
-
-/* line 145, ../../sass/sections/_header.scss */
-.top-bar-section ul.nav-elements > li.has-dropdown.hover {
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
-  background: white; }
-  /* line 149, ../../sass/sections/_header.scss */
-  .top-bar-section ul.nav-elements > li.has-dropdown.hover:hover + li {
-    border-left: 1px solid #efefef; }
-  /* line 152, ../../sass/sections/_header.scss */
-  .top-bar-section ul.nav-elements > li.has-dropdown.hover > ul.dropdown {
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    width: 15rem;
-    margin-left: -0.9375rem;
-    padding-top: 1.25rem;
-    padding-bottom: 1.875rem;
-    background: white;
-    box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15); }
-  /* line 163, ../../sass/sections/_header.scss */
-  .top-bar-section ul.nav-elements > li.has-dropdown.hover:nth-child(3) ul.dropdown {
-    margin-left: -6.875rem; }
-  /* line 172, ../../sass/sections/_header.scss */
-  .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer {
-    width: 530px;
-    margin-left: -18.125rem;
-    padding: 1.25rem 0 1.875rem;
-    background: white;
+  /* line 95, ../../sass/sections/_header.scss */
+  .nav-main .top-bar-section ul.nav-elements {
+    padding-right: 0; }
+  /* line 100, ../../sass/sections/_header.scss */
+  .nav-main .top-bar-section ul.nav-elements > li.has-dropdown {
+    cursor: pointer;
+    margin-left: 3px;
+    border-left: 1px solid #cccccc;
+    line-height: 30px;
+    padding: 0.4375rem 0.9375rem;
+    font-family: "albert";
+    font-size: 20px;
+    color: #3c63af; }
+    /* line 109, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:first-child {
+      border-left: none;
+      margin-left: 0; }
+    /* line 113, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:last-child {
+      border-left: 1px solid #efefef; }
+  /* line 117, ../../sass/sections/_header.scss */
+  .nav-main .dropdownanchor, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a {
+    width: 100%;
+    line-height: 1;
+    padding: 0.4375rem 1.875rem 0.5rem 1.875rem;
+    font-family: "arial";
+    font-size: 0.875rem;
+    white-space: pre-wrap; }
+    /* line 124, ../../sass/sections/_header.scss */
+    .nav-main .dropdownanchor:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a:hover {
+      color: white;
+      background: #3c63af; }
+  /* line 129, ../../sass/sections/_header.scss */
+  .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover {
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-top-right-radius: 5px;
     box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; }
-    /* line 180, ../../sass/sections/_header.scss */
-    .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit {
-      position: relative;
-      float: left;
-      display: inline !important;
-      width: 17.5rem;
-      margin-right: 0.625rem;
-      padding: 0 1.25rem 1.875rem 0.9375rem;
-      font-family: "albert";
-      font-size: 0.875rem; }
-      /* line 190, ../../sass/sections/_header.scss */
-      .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3 {
-        margin-top: 0.3125rem;
-        font-size: 1.4375rem; }
-      /* line 195, ../../sass/sections/_header.scss */
-      .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul {
-        margin-left: 0.9375rem;
-        display: block !important;
-        list-style-type: disc;
-        width: auto; }
-        /* line 200, ../../sass/sections/_header.scss */
-        .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li {
-          margin-left: 0.9375rem;
-          width: auto; }
-          /* line 203, ../../sass/sections/_header.scss */
-          .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li a {
-            display: inline !important;
-            margin: 0;
-            padding: 0;
-            line-height: 1.35;
-            font-family: "albert";
-            font-size: 1rem;
-            background: white;
-            color: #3c63af; }
-            /* line 213, ../../sass/sections/_header.scss */
-            .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li a:hover {
-              text-decoration: underline; }
-      /* line 220, ../../sass/sections/_header.scss */
-      .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn {
-        background: #333333;
-        padding: 1.25rem;
-        border-radius: 5px;
-        color: white;
-        display: inline-block;
-        margin-top: 1.25rem;
-        margin-left: 0.9375rem;
-        padding: 0 0.625rem;
-        line-height: 35px; }
-        /* line 11, ../../sass/_components.scss */
-        .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn:hover {
-          background: #333333; }
-        /* line 227, ../../sass/sections/_header.scss */
-        .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn:hover {
-          background: #3c63af; }
-    /* line 233, ../../sass/sections/_header.scss */
-    .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout {
-      float: right;
-      display: inline-block;
+    background: white;
+    padding-bottom: 12px;
+    color: #333333; }
+    /* line 136, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover:hover + li {
+      border-left: 1px solid #e0e0e0; }
+    /* line 139, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > ul.dropdown {
+      top: 47px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
       width: 15rem;
-      border-left: 1px solid #efefef;
+      margin-left: -0.9375rem;
+      padding-top: 1.25rem;
+      padding-bottom: 1.875rem;
       background: white;
+      box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15); }
+    /* line 154, ../../sass/sections/_header.scss */
+    .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer {
+      width: 33.125rem;
+      top: 47px;
+      margin-left: -18.125rem;
+      padding: 1.25rem 0 1.875rem;
+      background: white;
+      box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
       border-radius: 5px; }
-
-/* line 246, ../../sass/sections/_header.scss */
-.head-search {
-  padding-left: 1.25rem;
-  padding-right: 0;
-  border-left: 1px solid #efefef;
-  text-align: right; }
-  /* line 259, ../../sass/sections/_header.scss */
-  .head-search form {
-    background: white; }
-    /* line 268, ../../sass/sections/_header.scss */
-    .head-search form legend, .head-search form label {
-      display: none; }
-    /* line 272, ../../sass/sections/_header.scss */
-    .head-search form fieldset {
-      border: 1px none white;
-      padding: 10px 10px 10px 3px;
-      margin: 0;
-      background-color: white;
-      display: inline-block; }
-    /* line 280, ../../sass/sections/_header.scss */
-    .head-search form input[type="text"] {
-      background-color: white;
-      font-family: inherit;
-      border: 1px solid white;
-      box-shadow: none;
-      color: #333333;
-      display: block;
-      font-size: 1.375rem;
-      margin: 0 0 0 0;
-      padding: 0;
-      height: 1.3125rem;
-      width: 100%;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      display: inline-block;
-      width: 9.375rem;
-      color: #636363;
-      height: auto;
-      top: 0 !important; }
-      /* line 124, ../../sass/vendor/foundation/components/_forms.scss */
-      .head-search form input[type="text"]:focus {
+      /* line 163, ../../sass/sections/_header.scss */
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit {
+        position: relative;
+        float: left;
+        display: inline !important;
+        width: 17.5rem;
+        margin-right: 0.625rem;
+        padding: 0 1.25rem 1.875rem 0.9375rem;
+        font-family: "albert";
+        font-size: 0.875rem; }
+        /* line 174, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3 {
+          margin-top: 0.3125rem;
+          font-size: 1.4375rem; }
+        /* line 179, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul {
+          margin-left: 0.9375rem;
+          display: block !important;
+          list-style-type: disc;
+          width: auto; }
+          /* line 184, ../../sass/sections/_header.scss */
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li {
+            margin-left: 0.9375rem;
+            width: auto; }
+            /* line 187, ../../sass/sections/_header.scss */
+            .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li a {
+              display: inline !important;
+              margin: 0;
+              padding: 0;
+              line-height: 1.35;
+              font-family: "albert";
+              font-size: 1rem;
+              background: white;
+              color: #3c63af; }
+              /* line 197, ../../sass/sections/_header.scss */
+              .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li a:hover {
+                text-decoration: underline; }
+        /* line 204, ../../sass/sections/_header.scss */
+        .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn {
+          background: #333333;
+          padding: 1.25rem;
+          border-radius: 5px;
+          color: white;
+          display: inline-block;
+          margin-top: 1.25rem;
+          margin-left: 0.9375rem;
+          padding: 0 0.625rem;
+          line-height: 35px; }
+          /* line 11, ../../sass/_components.scss */
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn:hover {
+            background: #333333; }
+          /* line 211, ../../sass/sections/_header.scss */
+          .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn:hover {
+            background: #3c63af; }
+      /* line 216, ../../sass/sections/_header.scss */
+      .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout {
+        float: right;
+        display: inline-block;
+        width: 15rem;
+        border-left: 1px solid #efefef;
         background: white;
-        border-color: white;
-        outline: none; }
-      /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
-      .head-search form input[type="text"][disabled], fieldset[disabled] .head-search form input[type="text"] {
-        background-color: #dddddd; }
-    /* line 99, ../../sass/_typography.scss */
-    .head-search form ::-webkit-input-placeholder {
-      color: black; }
-    /* line 102, ../../sass/_typography.scss */
-    .head-search form :-moz-placeholder {
-      /* Firefox 18- */
-      color: black; }
-    /* line 106, ../../sass/_typography.scss */
-    .head-search form ::-moz-placeholder {
-      /* Firefox 19+ */
-      color: black; }
-    /* line 110, ../../sass/_typography.scss */
-    .head-search form :-ms-input-placeholder {
-      color: black; }
-    /* line 299, ../../sass/sections/_header.scss */
-    .head-search form button[type="submit"] {
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px; }
+  /* line 229, ../../sass/sections/_header.scss */
+  .nav-main .head-search {
+    padding-left: 1.25rem;
+    padding-right: 0;
+    text-align: right; }
+    /* line 234, ../../sass/sections/_header.scss */
+    .nav-main .head-search form {
       background: white;
-      border-left: none;
-      color: #333333;
-      border-color: white;
-      padding-left: 0;
-      padding-right: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin: 0;
-      border: none;
-      display: inline-block;
-      top: 0 !important; }
-      /* line 312, ../../sass/sections/_header.scss */
-      .head-search form button[type="submit"] .search-icon {
-        font-size: 1.25rem; }
+      display: inline-block; }
+      /* line 242, ../../sass/sections/_header.scss */
+      .nav-main .head-search form legend, .nav-main .head-search form label {
+        display: none; }
+      /* line 246, ../../sass/sections/_header.scss */
+      .nav-main .head-search form fieldset {
+        border: 1px none white;
+        margin: 0.625rem 0.625rem 0.625rem 0.1875rem;
+        background-color: white; }
+      /* line 253, ../../sass/sections/_header.scss */
+      .nav-main .head-search form input[type="text"] {
+        background-color: white;
+        font-family: inherit;
+        border: 1px solid white;
+        box-shadow: none;
+        color: #333333;
+        display: block;
+        font-size: 1.375rem;
+        margin: 0 0 0 0;
+        padding: 0;
+        height: 1.3125rem;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: inline-block;
+        width: 9.375rem;
+        color: #636363;
+        display: inline-block;
+        height: auto;
+        top: 0 !important; }
+        /* line 124, ../../sass/vendor/foundation/components/_forms.scss */
+        .nav-main .head-search form input[type="text"]:focus {
+          background: white;
+          border-color: white;
+          outline: none; }
+        /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
+        .nav-main .head-search form input[type="text"][disabled], fieldset[disabled] .nav-main .head-search form input[type="text"] {
+          background-color: #dddddd; }
+      /* line 99, ../../sass/_typography.scss */
+      .nav-main .head-search form ::-webkit-input-placeholder {
+        color: black; }
+      /* line 102, ../../sass/_typography.scss */
+      .nav-main .head-search form :-moz-placeholder {
+        /* Firefox 18- */
+        color: black; }
+      /* line 106, ../../sass/_typography.scss */
+      .nav-main .head-search form ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: black; }
+      /* line 110, ../../sass/_typography.scss */
+      .nav-main .head-search form :-ms-input-placeholder {
+        color: black; }
+      /* line 273, ../../sass/sections/_header.scss */
+      .nav-main .head-search form button[type="submit"] {
+        background: white;
+        border-left: none;
+        color: #333333;
+        border-color: white;
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin: 0;
+        border: none;
+        display: inline-block;
+        top: 0 !important; }
+        /* line 285, ../../sass/sections/_header.scss */
+        .nav-main .head-search form button[type="submit"] .search-icon {
+          font-size: 1.25rem; }
 
-/* line 323, ../../sass/sections/_header.scss */
+/* line 295, ../../sass/sections/_header.scss */
 .top-bar-section ul li.head-search a {
   margin-top: -0.625rem;
   line-height: 33px;
@@ -6209,7 +6166,7 @@ footer {
     color: #3c63af;
     text-decoration: underline; }
 
-/* line 331, ../../sass/sections/_header.scss */
+/* line 302, ../../sass/sections/_header.scss */
 .top-bar-section ul li.head-search:hover:not(.has-form) > a {
   background: #efefef; }
 
@@ -6223,7 +6180,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 21, ../../sass/pages/_home.scss */
-.width-xx-small, .row > .block.xx-small, .grid-test > .block.xx-small, #pagehdr-wrap .nav > .block.xx-small, .contain-to-grid > .block.xx-small, .nav-main > .block.xx-small, #ad-slot-bottom > .block.xx-small, #ad-slot-bottom .ad-item .row > iframe.xx-small, #ad-slot-bottom .ad-item .grid-test > iframe.xx-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.xx-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.xx-small, #ad-slot-bottom .ad-item .contain-to-grid > iframe.xx-small, #ad-slot-bottom .ad-item .nav-main > iframe.xx-small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.xx-small {
+.width-xx-small, .row > .block.xx-small, .grid-test > .block.xx-small, #pagehdr-wrap .nav > .block.xx-small, .nav-main > .block.xx-small, #ad-slot-bottom > .block.xx-small, #ad-slot-bottom .ad-item .row > iframe.xx-small, #ad-slot-bottom .ad-item .grid-test > iframe.xx-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.xx-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.xx-small, #ad-slot-bottom .ad-item .nav-main > iframe.xx-small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.xx-small {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6232,7 +6189,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 25, ../../sass/pages/_home.scss */
-.width-x-small, .row > .block.x-small, .grid-test > .block.x-small, #pagehdr-wrap .nav > .block.x-small, .contain-to-grid > .block.x-small, .nav-main > .block.x-small, #ad-slot-bottom > .block.x-small, #ad-slot-bottom .ad-item .row > iframe.x-small, #ad-slot-bottom .ad-item .grid-test > iframe.x-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.x-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.x-small, #ad-slot-bottom .ad-item .contain-to-grid > iframe.x-small, #ad-slot-bottom .ad-item .nav-main > iframe.x-small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.x-small, #article-list {
+.width-x-small, .row > .block.x-small, .grid-test > .block.x-small, #pagehdr-wrap .nav > .block.x-small, .nav-main > .block.x-small, #ad-slot-bottom > .block.x-small, #ad-slot-bottom .ad-item .row > iframe.x-small, #ad-slot-bottom .ad-item .grid-test > iframe.x-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.x-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.x-small, #ad-slot-bottom .ad-item .nav-main > iframe.x-small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.x-small, #article-list {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6241,7 +6198,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 29, ../../sass/pages/_home.scss */
-.width-small, .carousel-wrap.small, .row > .block.small, .grid-test > .block.small, #pagehdr-wrap .nav > .block.small, .contain-to-grid > .block.small, .nav-main > .block.small, #ad-slot-bottom > .block.small, #ad-slot-bottom .ad-item .row > iframe.small, #ad-slot-bottom .ad-item .grid-test > iframe.small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.small, #ad-slot-bottom .ad-item .contain-to-grid > iframe.small, #ad-slot-bottom .ad-item .nav-main > iframe.small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.small, .row.three .column.left .row-small-blocks .block, .three.grid-test .column.left .row-small-blocks .block, #pagehdr-wrap .three.nav .column.left .row-small-blocks .block, .three.contain-to-grid .column.left .row-small-blocks .block, .three.nav-main .column.left .row-small-blocks .block, .three#ad-slot-bottom .column.left .row-small-blocks .block, .row.three .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .row.three .column.left .row-small-blocks iframe, .three.grid-test .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.grid-test .column.left .row-small-blocks iframe, #pagehdr-wrap .three.nav .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left .row-small-blocks iframe, .three.contain-to-grid .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.contain-to-grid .column.left .row-small-blocks iframe, .three.nav-main .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.nav-main .column.left .row-small-blocks iframe, .three#ad-slot-bottom .column.left .row-small-blocks .ad-item iframe, .three#ad-slot-bottom .ad-item .column.left .row-small-blocks iframe, .row.three .column.left .block.small, .three.grid-test .column.left .block.small, #pagehdr-wrap .three.nav .column.left .block.small, .three.contain-to-grid .column.left .block.small, .three.nav-main .column.left .block.small, .three#ad-slot-bottom .column.left .block.small, .row.three .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .row.three .column.left iframe.small, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe.small, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe.small, .three.contain-to-grid .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .three.contain-to-grid .column.left iframe.small, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe.small, .three#ad-slot-bottom .column.left .ad-item iframe.small, .three#ad-slot-bottom .ad-item .column.left iframe.small, #spotlight, #twitter, .linkbox, #submission-links, #social-links, #blogs, #ad-slot-bottom .ad-item {
+.width-small, .carousel-wrap.small, .row > .block.small, .grid-test > .block.small, #pagehdr-wrap .nav > .block.small, .nav-main > .block.small, #ad-slot-bottom > .block.small, #ad-slot-bottom .ad-item .row > iframe.small, #ad-slot-bottom .ad-item .grid-test > iframe.small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.small, #ad-slot-bottom .ad-item .nav-main > iframe.small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.small, .row.three .column.left .row-small-blocks .block, .three.grid-test .column.left .row-small-blocks .block, #pagehdr-wrap .three.nav .column.left .row-small-blocks .block, .three.nav-main .column.left .row-small-blocks .block, .three#ad-slot-bottom .column.left .row-small-blocks .block, .row.three .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .row.three .column.left .row-small-blocks iframe, .three.grid-test .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.grid-test .column.left .row-small-blocks iframe, #pagehdr-wrap .three.nav .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left .row-small-blocks iframe, .three.nav-main .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.nav-main .column.left .row-small-blocks iframe, .three#ad-slot-bottom .column.left .row-small-blocks .ad-item iframe, .three#ad-slot-bottom .ad-item .column.left .row-small-blocks iframe, .row.three .column.left .block.small, .three.grid-test .column.left .block.small, #pagehdr-wrap .three.nav .column.left .block.small, .three.nav-main .column.left .block.small, .three#ad-slot-bottom .column.left .block.small, .row.three .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .row.three .column.left iframe.small, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe.small, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe.small, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe.small, .three#ad-slot-bottom .column.left .ad-item iframe.small, .three#ad-slot-bottom .ad-item .column.left iframe.small, #spotlight, #twitter, .linkbox, #submission-links, #social-links, #blogs, #ad-slot-bottom .ad-item {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6250,7 +6207,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 33, ../../sass/pages/_home.scss */
-.width-medium, .row > .block.medium, .grid-test > .block.medium, #pagehdr-wrap .nav > .block.medium, .contain-to-grid > .block.medium, .nav-main > .block.medium, #ad-slot-bottom > .block.medium, #ad-slot-bottom .ad-item .row > iframe.medium, #ad-slot-bottom .ad-item .grid-test > iframe.medium, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.medium, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.medium, #ad-slot-bottom .ad-item .contain-to-grid > iframe.medium, #ad-slot-bottom .ad-item .nav-main > iframe.medium, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.medium {
+.width-medium, .row > .block.medium, .grid-test > .block.medium, #pagehdr-wrap .nav > .block.medium, .nav-main > .block.medium, #ad-slot-bottom > .block.medium, #ad-slot-bottom .ad-item .row > iframe.medium, #ad-slot-bottom .ad-item .grid-test > iframe.medium, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.medium, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.medium, #ad-slot-bottom .ad-item .nav-main > iframe.medium, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.medium {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6259,7 +6216,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 37, ../../sass/pages/_home.scss */
-.width-large, .row > .block.large, .grid-test > .block.large, #pagehdr-wrap .nav > .block.large, .contain-to-grid > .block.large, .nav-main > .block.large, #ad-slot-bottom > .block.large, #ad-slot-bottom .ad-item .row > iframe.large, #ad-slot-bottom .ad-item .grid-test > iframe.large, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.large, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.large, #ad-slot-bottom .ad-item .contain-to-grid > iframe.large, #ad-slot-bottom .ad-item .nav-main > iframe.large, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.large, .row.three .column.left .block.large, .three.grid-test .column.left .block.large, #pagehdr-wrap .three.nav .column.left .block.large, .three.contain-to-grid .column.left .block.large, .three.nav-main .column.left .block.large, .three#ad-slot-bottom .column.left .block.large, .row.three .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .row.three .column.left iframe.large, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe.large, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe.large, .three.contain-to-grid .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .three.contain-to-grid .column.left iframe.large, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe.large, .three#ad-slot-bottom .column.left .ad-item iframe.large, .three#ad-slot-bottom .ad-item .column.left iframe.large {
+.width-large, .row > .block.large, .grid-test > .block.large, #pagehdr-wrap .nav > .block.large, .nav-main > .block.large, #ad-slot-bottom > .block.large, #ad-slot-bottom .ad-item .row > iframe.large, #ad-slot-bottom .ad-item .grid-test > iframe.large, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.large, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.large, #ad-slot-bottom .ad-item .nav-main > iframe.large, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.large, .row.three .column.left .block.large, .three.grid-test .column.left .block.large, #pagehdr-wrap .three.nav .column.left .block.large, .three.nav-main .column.left .block.large, .three#ad-slot-bottom .column.left .block.large, .row.three .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .row.three .column.left iframe.large, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe.large, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe.large, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe.large, .three#ad-slot-bottom .column.left .ad-item iframe.large, .three#ad-slot-bottom .ad-item .column.left iframe.large {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6399,23 +6356,23 @@ footer {
     font-family: "albert"; }
 
 /* line 200, ../../sass/pages/_home.scss */
-.row.three .column.left, .three.grid-test .column.left, #pagehdr-wrap .three.nav .column.left, .three.contain-to-grid .column.left, .three.nav-main .column.left, .three#ad-slot-bottom .column.left {
+.row.three .column.left, .three.grid-test .column.left, #pagehdr-wrap .three.nav .column.left, .three.nav-main .column.left, .three#ad-slot-bottom .column.left {
   padding-left: 0;
   padding-right: 0;
   width: 40.83333rem;
   float: left; }
   /* line 206, ../../sass/pages/_home.scss */
-  .row.three .column.left .row-small-blocks, .three.grid-test .column.left .row-small-blocks, #pagehdr-wrap .three.nav .column.left .row-small-blocks, .three.contain-to-grid .column.left .row-small-blocks, .three.nav-main .column.left .row-small-blocks, .three#ad-slot-bottom .column.left .row-small-blocks {
+  .row.three .column.left .row-small-blocks, .three.grid-test .column.left .row-small-blocks, #pagehdr-wrap .three.nav .column.left .row-small-blocks, .three.nav-main .column.left .row-small-blocks, .three#ad-slot-bottom .column.left .row-small-blocks {
     width: 100%; }
   /* line 215, ../../sass/pages/_home.scss */
-  .row.three .column.left .block, .three.grid-test .column.left .block, #pagehdr-wrap .three.nav .column.left .block, .three.contain-to-grid .column.left .block, .three.nav-main .column.left .block, .three#ad-slot-bottom .column.left .block, .row.three .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .row.three .column.left iframe, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe, .three.contain-to-grid .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.contain-to-grid .column.left iframe, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe, .three#ad-slot-bottom .column.left .ad-item iframe, .three#ad-slot-bottom .ad-item .column.left iframe {
+  .row.three .column.left .block, .three.grid-test .column.left .block, #pagehdr-wrap .three.nav .column.left .block, .three.nav-main .column.left .block, .three#ad-slot-bottom .column.left .block, .row.three .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .row.three .column.left iframe, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe, .three#ad-slot-bottom .column.left .ad-item iframe, .three#ad-slot-bottom .ad-item .column.left iframe {
     height: 11.25rem; }
     /* line 218, ../../sass/pages/_home.scss */
-    .row.three .column.left .block .block-image, .three.grid-test .column.left .block .block-image, #pagehdr-wrap .three.nav .column.left .block .block-image, .three.contain-to-grid .column.left .block .block-image, .three.nav-main .column.left .block .block-image, .three#ad-slot-bottom .column.left .block .block-image, .row.three .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .row.three .column.left iframe .block-image, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe .block-image, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe .block-image, .three.contain-to-grid .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .three.contain-to-grid .column.left iframe .block-image, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe .block-image, .three#ad-slot-bottom .column.left .ad-item iframe .block-image, .three#ad-slot-bottom .ad-item .column.left iframe .block-image {
+    .row.three .column.left .block .block-image, .three.grid-test .column.left .block .block-image, #pagehdr-wrap .three.nav .column.left .block .block-image, .three.nav-main .column.left .block .block-image, .three#ad-slot-bottom .column.left .block .block-image, .row.three .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .row.three .column.left iframe .block-image, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe .block-image, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe .block-image, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe .block-image, .three#ad-slot-bottom .column.left .ad-item iframe .block-image, .three#ad-slot-bottom .ad-item .column.left iframe .block-image {
       height: 10rem;
       overflow: hidden; }
 /* line 229, ../../sass/pages/_home.scss */
-.row.three .column.right, .three.grid-test .column.right, #pagehdr-wrap .three.nav .column.right, .three.contain-to-grid .column.right, .three.nav-main .column.right, .three#ad-slot-bottom .column.right, .row.three .top-bar-section ul.column.nav-elements, .top-bar-section .row.three ul.column.nav-elements, .three.grid-test .top-bar-section ul.column.nav-elements, .top-bar-section .three.grid-test ul.column.nav-elements, #pagehdr-wrap .three.nav .top-bar-section ul.column.nav-elements, .top-bar-section #pagehdr-wrap .three.nav ul.column.nav-elements, .three.contain-to-grid .top-bar-section ul.column.nav-elements, .top-bar-section .three.contain-to-grid ul.column.nav-elements, .three.nav-main .top-bar-section ul.column.nav-elements, .top-bar-section .three.nav-main ul.column.nav-elements, .three#ad-slot-bottom .top-bar-section ul.column.nav-elements, .top-bar-section .three#ad-slot-bottom ul.column.nav-elements, > .row.three li.column, > .three.grid-test li.column, > #pagehdr-wrap .three.nav li.column, > .three.contain-to-grid li.column, > .three.nav-main li.column, > .three#ad-slot-bottom li.column, .row.three .column.head-search, .three.grid-test .column.head-search, #pagehdr-wrap .three.nav .column.head-search, .three.contain-to-grid .column.head-search, .three.nav-main .column.head-search, .three#ad-slot-bottom .column.head-search {
+.row.three .column.right, .three.grid-test .column.right, #pagehdr-wrap .three.nav .column.right, .three.nav-main .column.right, .three#ad-slot-bottom .column.right, .row.three #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .row.three .column.nav-user, .three.grid-test #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.grid-test .column.nav-user, #pagehdr-wrap .three.nav .column.nav-user, .three.nav-main #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.nav-main .column.nav-user, .three#ad-slot-bottom #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three#ad-slot-bottom .column.nav-user, .row.three .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .row.three ul.column.nav-elements, .three.grid-test .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three.grid-test ul.column.nav-elements, #pagehdr-wrap .three.nav .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section #pagehdr-wrap .three.nav ul.column.nav-elements, .three.nav-main .top-bar-section ul.column.nav-elements, .three#ad-slot-bottom .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three#ad-slot-bottom ul.column.nav-elements, .row.three .nav-main > li.column, .three.grid-test .nav-main > li.column, #pagehdr-wrap .three.nav .nav-main > li.column, .three.nav-main .nav-main > li.column, .three#ad-slot-bottom .nav-main > li.column, .row.three .nav-main .column.head-search, .nav-main .row.three .column.head-search, .three.grid-test .nav-main .column.head-search, .nav-main .three.grid-test .column.head-search, #pagehdr-wrap .three.nav .nav-main .column.head-search, .nav-main #pagehdr-wrap .three.nav .column.head-search, .three.nav-main .column.head-search, .three#ad-slot-bottom .nav-main .column.head-search, .nav-main .three#ad-slot-bottom .column.head-search {
   padding-left: 0;
   padding-right: 0;
   width: 20.41667rem;

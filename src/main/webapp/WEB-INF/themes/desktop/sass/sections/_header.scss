@@ -22,10 +22,6 @@
   @extend .text-center;
   @include highlight-border($plos-default); /*TODO: use themes journal-specific css to assign border color*/
   padding: $pad-xsmall $pad-small;
-  .center { width: 748px;
-    margin: 0 auto;
-    height: 90px;
-  }
   .title {
     width: 18px;
     height: 88px;
@@ -40,15 +36,13 @@ $width-nav: $block-grid-elements - $width-logo;
 
 #pagehdr-wrap {
   .nav {
-    @extend .row;
+    @extend .row;  //PG -changed
+
     .nav-user {
       @extend .inline-list; // from foundation
-      float: right;
-      //  @include grid-column($columns:4, $float:right); // from foundation
+      @extend .right; // from foundation
       font-weight: bold;
       > li {
-
-
         margin-top: rem-calc(-5);
         margin-left: rem-calc(4);
 
@@ -72,8 +66,6 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 
   .logo {
-
-    //   OLD:   @include grid-column($width-logo); // from foundation
     @include plos-grid-column($pixelwidth: columns, $columns: $width-logo);
     @extend .title-area;
     text-indent: -9999px;
@@ -86,244 +78,223 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 }
 
-
-.contain-to-grid{
-  @extend .row;   //TODO- why is this working?
-}
 /* using Foundation Top Bar
  all @extend .class are Foundation
  */
 
 .nav-main {
-  @extend .top-bar;
   > .dropdown {
     visibility: hidden;
   }
+  @extend .top-bar;
   @extend .row;
   font-family: $font-face-navigation;
-  .top-bar-section {@include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right);}
-  // TODO PG remove  width: 960px;
-}
-.top-bar-section ul.nav-elements {
-  @extend .right; // foundation
-  float:right;//    @include grid-column($width-nav); // from foundation
-
-  // TODO PG remove   padding-right: 0;
-  padding-left: 0;
-}
-> li{ @extend .right;} //PG check if needed
-.top-bar-section ul.nav-elements > li.has-dropdown {
-  cursor: pointer;
-  margin-left: 3px;
-  border-left: 1px solid $clr-separator;
-  line-height: 36px;
-  padding: 0 15px;
-  font-family: $font-face-navigation;
-  font-size: $txt-size-xlarge;
-  &:first-child {
-    border-left: none;
-    margin-left: 0;
+  .top-bar-section {
+    @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right)
   }
-  &:last-child {
-    border-left: 1px solid $grey-light;
+  .top-bar-section ul.nav-elements {
+    @extend .right; // foundation
+    padding-right: 0;
   }
-
-
-}
-.dropdownanchor {
-  width: 100%;
-  line-height: 1;
-  padding: rem-calc(7 30 8 30);
-  font-family: $font-face-plain;
-  font-size: rem-calc($txt-size-medium);
-  white-space: pre-wrap;
-  &:hover {
-    color: $clr-highlight-text;
-    background: $clr-highlight-hover;
-  }
-}
-.top-bar-section ul.nav-elements > li.has-dropdown.hover {
-  @include border-top-radius();
-  box-shadow: $nav-main-box-shadow;
-  background: $white;
-  &:hover + li {
-    border-left: 1px solid $grey-light;
-  }
-  > ul.dropdown {
-
-    @include border-radius();
-    width: rem-calc(240);
-    margin-left: rem-calc(-15);
-    padding-top: rem-calc(20);
-    padding-bottom: rem-calc(30);
-    background: $white;
-    box-shadow: $nav-main-box-shadow;
-  }
-  &:nth-child(3) {
-    ul.dropdown {
-      margin-left: rem-calc(-110);
+  > li{ @extend .right;} // PG - added this seems funny
+  .top-bar-section ul.nav-elements > li.has-dropdown {
+    cursor: pointer;
+    margin-left: 3px;
+    border-left: 1px solid $clr-separator;
+    line-height: 30px;
+    padding: rem-calc(7 15);
+    font-family: $font-face-navigation;
+    font-size: $txt-size-xlarge;
+    color: $plos-default;
+    &:first-child {
+      border-left: none;
+      margin-left: 0;
+    }
+    &:last-child {
+      border-left: 1px solid $grey-light;
     }
   }
-
-  ul.dropdown li a {
-    @extend .dropdownanchor;
+  .dropdownanchor {
+    width: 100%;
+    line-height: 1;
+    padding: rem-calc(7 30 8 30);
+    font-family: $font-face-plain;
+    font-size: rem-calc($txt-size-medium);
+    white-space: pre-wrap;
+    &:hover {
+      color: $clr-highlight-text;
+      background: $clr-highlight-hover;
+    }
   }
-
-  .calloutcontainer {
-    width: 530px;
-    margin-left: rem-calc(-290);
-    padding: rem-calc(20 0 30);
-    background: white;
+  .top-bar-section ul.nav-elements > li.has-dropdown.hover {
+    @include border-top-radius();
     box-shadow: $nav-main-box-shadow;
-    @include border-radius();
+    background: $white;
+    padding-bottom: 12px;
+    color: $clr-body-text;
+    //change color of separator because it's too far over from the padding that's necessary for the shadow
+    &:hover + li {
+      border-left: 1px solid scale-color(#666, $lightness: 80%);
+    }
+    > ul.dropdown {
+      top: 47px;
+      @include border-radius();
+      width: rem-calc(240);
+      margin-left: rem-calc(-15);
+      padding-top: rem-calc(20);
+      padding-bottom: rem-calc(30);
+      background: $white;
+      box-shadow: $nav-main-box-shadow;
+    }
 
-    .submit {
-      //'Submit your manuscript' callout
-      position: relative;
-      float: left;
-      display: inline !important;
-      width: rem-calc(280);
-      margin-right: $pad-small;
-      padding: rem-calc(0 20 30 15);
-      font-family: $font-face-navigation;
-      font-size: rem-calc($txt-size-medium);
-      h3 {
-        @extend .header-bottom-shadow;
-        margin-top: $pad-xsmall;
-        font-size: rem-calc($txt-size-23large);
-      }
-      ul {
-        margin-left: rem-calc(15);
-        display: block !important;
-        list-style-type: disc;
-        width: auto;
-        li {
+    ul.dropdown li a {
+      @extend .dropdownanchor;
+    }
+
+    .calloutcontainer {
+      width: rem-calc(530);
+      top: 47px;
+      margin-left: rem-calc(-290);
+      padding: rem-calc(20 0 30);
+      background: white;
+      box-shadow: $nav-main-box-shadow;
+      @include border-radius();
+
+      .submit {
+        //'Submit your manuscript' callout
+        position: relative;
+        float: left;
+        display: inline !important;
+        width: rem-calc(280);
+        margin-right: $pad-small;
+        padding: rem-calc(0 20 30 15);
+        font-family: $font-face-navigation;
+        font-size: rem-calc($txt-size-medium);
+
+        h3 {
+          @extend .header-bottom-shadow;
+          margin-top: $pad-xsmall;
+          font-size: rem-calc($txt-size-23large);
+        }
+        ul {
           margin-left: rem-calc(15);
+          display: block !important;
+          list-style-type: disc;
           width: auto;
-          a {
-            // necessary to override the foundation styles
-            display: inline !important;
-            margin: 0;
-            padding: 0;
-            line-height: 1.35;
-            font-family: $font-face-navigation;
-            font-size: rem-calc($txt-size-medium-large);
-            background: $white;
-            color: $clr-link;
-            &:hover {
-              text-decoration: underline;
+          li {
+            margin-left: rem-calc(15);
+            width: auto;
+            a {
+              // necessary to override the foundation styles
+              display: inline !important;
+              margin: 0;
+              padding: 0;
+              line-height: 1.35;
+              font-family: $font-face-navigation;
+              font-size: rem-calc($txt-size-medium-large);
+              background: $white;
+              color: $clr-link;
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
-        }
 
+        }
+        a.btn {
+          @include rounded-pill($clr-btn-secondary);
+          display: inline-block;
+          margin-top: rem-calc(20);
+          margin-left: rem-calc(15);
+          padding: rem-calc(0 10);
+          line-height: 35px;
+          &:hover {
+            background: $clr-btn-primary;
+          }
+        }
       }
-      a.btn {
-        @include rounded-pill($clr-btn-secondary);
+      .dropdowncallout {
+        float: right;
         display: inline-block;
-        margin-top: rem-calc(20);
-        margin-left: rem-calc(15);
-        padding: rem-calc(0 10);
-        line-height: 35px;
-        &:hover {
-          background: $clr-btn-primary;
+        width: rem-calc(240);
+        border-left: 1px solid $grey-light;
+        background: $white;
+        @include border-radius();
+        li a {
+          @extend .dropdownanchor;
         }
       }
-
     }
-    .dropdowncallout {
-      float: right;
-      display: inline-block;
-      width: rem-calc(240);
-      border-left: 1px solid $grey-light;
+  }
+  .head-search {
+    @extend .right;
+    padding-left: rem-calc(20);
+    padding-right: 0;
+    text-align: right;
+    form {
       background: $white;
-      @include border-radius();
-      li a {
-        @extend .dropdownanchor;
-      }
-    }
-  }
-}
-.head-search {
-  //  $last-column: true; // from foundation
-  @extend .right;
-  //@extend .has-form;   // from foundation
-  //  OLD: @include grid-column($width-search); // from foundation
-
-
-  padding-left: rem-calc(20);
-  padding-right: 0;
-  border-left: 1px solid $grey-light;
-  text-align: right;
-
-  // .search{ @include plos-grid-column($pixelwidth: columns, $columns: 2);}
-  form {
-    background: $white;
-    $fieldset-padding: 0;   // from foundation
-    $fieldset-margin: 0;   // from foundation
-    $input-box-shadow: none; // from foundation
-    $input-include-glowing-effect: false; // from foundation
-    $input-font-size: rem-calc($txt-size-xxlarge); // from foundation
-    //      margin-top: rem-calc(-5);
-    //     height: 40px;
-    legend, label {
-      display: none;
-    }
-
-    fieldset {
-      border: 1px none white;
-      padding: 10px 10px 10px 3px;
-      margin: 0;
-      background-color: white;
-      display: inline-block;
-    }
-
-    input[type="text"] {
-
-      $form-spacing: 0;  // from foundation
-      $input-border-radius: 0; // from foundation
+      $fieldset-padding: 0;   // from foundation
+      $fieldset-margin: 0;   // from foundation
+      $input-box-shadow: none; // from foundation
       $input-include-glowing-effect: false; // from foundation
-      $input-font-color: $clr-body-text; // from foundation
-      $input-border-color: $white; // from foundation
-      $input-focus-border-color: $white; // from foundation
-      $form-label-line-height: 2; // from foundation
-      @include form-element(); // from foundation
+      $input-font-size: rem-calc($txt-size-xxlarge); // from foundation
       display: inline-block;
-      width: rem-calc(150);
-      color: $clr-input-active;
-      /// overwriting foundation styles
-      height: auto;
-      top: 0 !important;
-    }
-    @include input-placeholder-color();
+      legend, label {
+        display: none;
+      }
 
-    button[type="submit"] {
-      @include postfix($white, $white); //foundation
+      fieldset {
+        border: 1px none white;
+        margin: rem-calc(10px 10px 10px 3px);
+        background-color: $white;
 
-      //width: 20px;
-      padding-left: 0;
-      padding-right: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin: 0;
-      border: none;
-      display: inline-block;
-      /// overwriting foundation styles
-      top: 0 !important;
-      .search-icon {
-        @extend .fa;
-        @extend .fa-search;
+      }
 
-        font-size: rem-calc($txt-size-xlarge);
+      input[type="text"] {
+
+        $form-spacing: 0;  // from foundation
+        $input-border-radius: 0; // from foundation
+        $input-include-glowing-effect: false; // from foundation
+        $input-font-color: $clr-body-text; // from foundation
+        $input-border-color: $white; // from foundation
+        $form-label-line-height: 2; // from foundation
+        $input-focus-border-color: $white; // from foundation
+        @include form-element(); // from foundation
+        display: inline-block;
+        width: rem-calc(150);
+        color: $clr-input-active;
+        /// overwriting foundation styles
+        display: inline-block;
+        height: auto;
+        top: 0 !important;
+      }
+      @include input-placeholder-color();
+
+      button[type="submit"] {
+        @include postfix($white, $white); //foundation
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin: 0;
+        border: none;
+        display: inline-block;
+        /// overwriting foundation styles
+        top: 0 !important;
+        .search-icon {
+          @extend .fa;
+          @extend .fa-search;
+          font-size: rem-calc($txt-size-xlarge);
+        }
       }
     }
   }
 }
-
 //overrides for top-bar styles: they have to be here to work
 .top-bar-section ul li.head-search a {
   margin-top: rem-calc(-10);
   line-height: 33px;
-  //TODO PG Remove   width: rem-calc(175);
   padding: 0 !important;
   font-size:  rem-calc($txt-size-small);
   @include link-text($clr-highlight-hover, underline);

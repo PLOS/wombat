@@ -333,10 +333,8 @@ $image-container: ($image-width + $pad-small);
 }
 
 #submission-links {
-  @include blocks($color: $grey-dark);
+  @include blocks($color: $grey-dark, $padding: $pad-small $pad-medium 0 $pad-medium);
   @extend .width-small;
-
-  padding: $pad-small $pad-medium;
 
   h3 {
     @extend .header-bottom-shadow;

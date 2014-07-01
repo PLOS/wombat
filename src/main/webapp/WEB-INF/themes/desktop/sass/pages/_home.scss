@@ -9,9 +9,9 @@ $image-container: ($image-width + $pad-small);
 
 // this mixin extends the foundation grid to do two things it can't do
 //1. add margins on the outside if needed
-//2. use pixel widths - cause that's how digital pulp rolls.
+//2. use pixel widths - Digital Pulp submitted designs with columns in pixel widths that vary from page to page.
 // questions:
-// I am using foundation settings values is this confusing? - i did it cause of rem-calc.
+// I am using foundation settings values.
 
 ///TODOPG: these are all the widths
 .width-full {

@@ -3388,11 +3388,8 @@ th.hide-for-touch {
 .touch th.show-for-touch {
   display: table-cell !important; }
 
-/* 
- *
- */
 /*sets up the body container */
-/* line 85, ../../sass/_scaffold.scss */
+/* line 83, ../../sass/_scaffold.scss */
 .row, .grid-test, #pagehdr-wrap .nav, .nav-main, #ad-slot-bottom {
   width: 100%;
   margin: 0;
@@ -3406,7 +3403,7 @@ th.hide-for-touch {
   .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .nav-main:after, #ad-slot-bottom:after {
     clear: both; }
 
-/* line 94, ../../sass/_scaffold.scss */
+/* line 92, ../../sass/_scaffold.scss */
 main,
 .head-main,
 #pagehdr-wrap,
@@ -3459,7 +3456,7 @@ main,
   #pageftr #ad-slot-bottom:after {
     clear: both; }
 
-/* line 104, ../../sass/_scaffold.scss */
+/* line 102, ../../sass/_scaffold.scss */
 .grid-test .one {
   padding-left: 0;
   padding-right: 0;
@@ -3468,7 +3465,7 @@ main,
   margin-left: 0.625rem;
   margin-right: 0.625rem;
   border: 1px solid; }
-/* line 108, ../../sass/_scaffold.scss */
+/* line 106, ../../sass/_scaffold.scss */
 .grid-test .two {
   padding-left: 0;
   padding-right: 0;
@@ -3477,7 +3474,7 @@ main,
   margin-left: 0.625rem;
   margin-right: 0.625rem;
   border: 1px solid; }
-/* line 112, ../../sass/_scaffold.scss */
+/* line 110, ../../sass/_scaffold.scss */
 .grid-test .three {
   padding-left: 0;
   padding-right: 0;

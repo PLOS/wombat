@@ -107,7 +107,7 @@ img {
   float: left !important; }
 
 /* line 339, ../../sass/vendor/foundation/components/_global.scss */
-.right, #pagehdr-wrap .nav .nav-user, .nav-main .top-bar-section ul.nav-elements, .nav-main > li, .nav-main .head-search {
+.right, #pagehdr-wrap .nav .nav-user, .nav-main .top-bar-section ul.nav-elements, .nav-main > li, .nav-main .head-search, .block .date {
   float: right !important; }
 
 /* line 340, ../../sass/vendor/foundation/components/_global.scss */
@@ -743,11 +743,11 @@ button, .button {
     left: 9px;
     z-index: 98; }
   /* line 110, ../../sass/vendor/foundation/components/_dropdown.scss */
-  .f-dropdown.right:before, #pagehdr-wrap .nav .f-dropdown.nav-user:before, .nav-main .top-bar-section ul.f-dropdown.nav-elements:before, .nav-main > li.f-dropdown:before, .nav-main .f-dropdown.head-search:before {
+  .f-dropdown.right:before, #pagehdr-wrap .nav .f-dropdown.nav-user:before, .nav-main .top-bar-section ul.f-dropdown.nav-elements:before, .nav-main > li.f-dropdown:before, .nav-main .f-dropdown.head-search:before, .block .f-dropdown.date:before {
     left: auto;
     right: 10px; }
   /* line 114, ../../sass/vendor/foundation/components/_dropdown.scss */
-  .f-dropdown.right:after, #pagehdr-wrap .nav .f-dropdown.nav-user:after, .nav-main .top-bar-section ul.f-dropdown.nav-elements:after, .nav-main > li.f-dropdown:after, .nav-main .f-dropdown.head-search:after {
+  .f-dropdown.right:after, #pagehdr-wrap .nav .f-dropdown.nav-user:after, .nav-main .top-bar-section ul.f-dropdown.nav-elements:after, .nav-main > li.f-dropdown:after, .nav-main .f-dropdown.head-search:after, .block .f-dropdown.date:after {
     left: auto;
     right: 9px; }
   /* line 222, ../../sass/vendor/foundation/components/_dropdown.scss */
@@ -1131,7 +1131,7 @@ label {
   margin-bottom: 0;
   /* Styles for required inputs */ }
   /* line 333, ../../sass/vendor/foundation/components/_forms.scss */
-  label.right, #pagehdr-wrap .nav label.nav-user, .nav-main label.head-search {
+  label.right, #pagehdr-wrap .nav label.nav-user, .nav-main label.head-search, .block label.date {
     float: none;
     text-align: right; }
   /* line 334, ../../sass/vendor/foundation/components/_forms.scss */
@@ -2482,11 +2482,11 @@ meta.foundation-mq-topbar {
       padding: 0 15px;
       height: 45px; }
     /* line 596, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar-section .right li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown, .top-bar-section .nav-main > li li .dropdown, .top-bar-section .nav-main .head-search li .dropdown, .nav-main .top-bar-section .head-search li .dropdown {
+    .top-bar-section .right li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown, .top-bar-section .nav-main > li li .dropdown, .top-bar-section .nav-main .head-search li .dropdown, .nav-main .top-bar-section .head-search li .dropdown, .top-bar-section .block .date li .dropdown, .block .top-bar-section .date li .dropdown {
       left: auto;
       right: 0; }
       /* line 600, ../../sass/vendor/foundation/components/_top-bar.scss */
-      .top-bar-section .right li .dropdown li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown li .dropdown, .top-bar-section .nav-main > li li .dropdown li .dropdown, .top-bar-section .nav-main .head-search li .dropdown li .dropdown, .nav-main .top-bar-section .head-search li .dropdown li .dropdown {
+      .top-bar-section .right li .dropdown li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown li .dropdown, .top-bar-section .nav-main > li li .dropdown li .dropdown, .top-bar-section .nav-main .head-search li .dropdown li .dropdown, .nav-main .top-bar-section .head-search li .dropdown li .dropdown, .top-bar-section .block .date li .dropdown li .dropdown, .block .top-bar-section .date li .dropdown li .dropdown {
         right: 100%; }
     /* line 604, ../../sass/vendor/foundation/components/_top-bar.scss */
     .top-bar-section .left li .dropdown {
@@ -5520,15 +5520,15 @@ main,
 
 @font-face {
   font-family: "albert";
-  src: url('../fonts/fs_albert.ttf?1402533884') format('truetype'), url('../fonts/fs_albert.otf?1402533884') format('opentype'), url('../fonts/fs_albert.svg?1402533884') format('svg'), url('../fonts/fs_albert.woff?1402533884') format('woff'); }
+  src: url('../fonts/fs_albert.ttf?1400626859') format('truetype'), url('../fonts/fs_albert.otf?1402701102') format('opentype'), url('../fonts/fs_albert.svg?1400626859') format('svg'), url('../fonts/fs_albert.woff?1400626859') format('woff'); }
 @font-face {
   font-family: "albert-bold";
-  src: url('../fonts/fs_albert-bold-webfont.ttf?1402533884') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1402533884') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1402533884') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1402533884') format('woff'); }
+  src: url('../fonts/fs_albert-bold-webfont.ttf?1400626859') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1402701102') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1400626859') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1400626859') format('woff'); }
 @font-face {
   font-family: "FontAwesome";
-  src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg?1402533884') format('svg'), url('../fonts/fontawesome-webfont.woff?1402533884') format('woff'); }
+  src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg?1401731168') format('svg'), url('../fonts/fontawesome-webfont.woff?1401731168') format('woff'); }
 /* line 12, ../../sass/_typography.scss */
-.header-allcaps, .header-allcaps-plain, .more-link > a, .header-allcaps-xlarge, #issue .boxtitle a, .highlighted-title, .block .category, #article-list h3 {
+.header-allcaps, .header-allcaps-plain, .more-link > a, .header-allcaps-xlarge, #issue .boxtitle a, .brand-title, .block .category, #article-list h3 {
   font-size: 0.875rem;
   font-family: "albert";
   text-transform: uppercase; }
@@ -5541,58 +5541,59 @@ main,
 .header-allcaps-xlarge, #issue .boxtitle a {
   font-size: 1.25rem; }
 
-/* line 25, ../../sass/_typography.scss */
-.highlighted-title, .block .category, #article-list h3 {
-  margin-bottom: 0.625rem; }
-
-/* line 30, ../../sass/_typography.scss */
+/* line 26, ../../sass/_typography.scss */
 .header-xlarge-light, #submission-links h3, #social-links h3 {
   font-size: 1.25rem;
   color: white;
   font-family: "albert"; }
 
-/* line 36, ../../sass/_typography.scss */
-.header-brand, .carousel-wrap.small .block-header, #blogs .block-header {
-  padding: 0 1.25rem;
-  font-family: "albert";
-  font-size: 1rem;
-  line-height: 2.5rem; }
-
-/* line 44, ../../sass/_typography.scss */
+/* line 34, ../../sass/_typography.scss */
 .header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3, #submission-links h3 {
   padding-bottom: 1.0625rem;
   margin-bottom: 1.0625rem;
   box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
   text-align: center; }
 
-/* line 74, ../../sass/_typography.scss */
-.link-text-body, .linkbox ul li, #blogs #blogrss .posttitle a, .link-text-body a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
+/* line 40, ../../sass/_typography.scss */
+.brand-title, .block .category, #article-list h3 {
+  margin-bottom: 0.625rem; }
+
+/* line 45, ../../sass/_typography.scss */
+.brand-header, .carousel-wrap.small .block-header, #blogs .block-header {
+  color: white;
+  padding: 0 1.25rem;
+  font-family: "albert";
+  font-size: 1rem;
+  line-height: 2.5rem; }
+
+/* line 76, ../../sass/_typography.scss */
+.link-text-body, .block .title, .linkbox ul li, #blogs #blogrss .posttitle a, .link-text-body a, .block .title a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
   color: #333333;
   text-decoration: none; }
-  /* line 62, ../../sass/_typography.scss */
-  .link-text-body:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .link-text-body a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .link-text-body a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .link-text-body a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
+  /* line 64, ../../sass/_typography.scss */
+  .link-text-body:hover, .block .title:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .link-text-body a:hover, .block .title a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .link-text-body a:hover, .block .title a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .link-text-body a a:hover, .block .title a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
     color: #3c63af;
     text-decoration: none; }
 
-/* line 78, ../../sass/_typography.scss */
+/* line 80, ../../sass/_typography.scss */
 .link-text-white, #blogs .block-header, .link-text-white a, #blogs .block-header a {
   color: white;
   text-decoration: none; }
-  /* line 62, ../../sass/_typography.scss */
+  /* line 64, ../../sass/_typography.scss */
   .link-text-white:hover, #blogs .block-header:hover, .link-text-white a:hover, #blogs .block-header a:hover, .link-text-white a:hover, #blogs .block-header a:hover, .link-text-white a a:hover, #blogs .block-header a a:hover {
     color: white;
     text-decoration: underline; }
 
-/* line 85, ../../sass/_typography.scss */
+/* line 87, ../../sass/_typography.scss */
 .small-italic, .block .date, .block .credits, #blogs #blogrss .postauthor {
   font-size: 0.625rem;
   font-style: italic; }
 
-/* line 89, ../../sass/_typography.scss */
+/* line 91, ../../sass/_typography.scss */
 .condense, #issue .boxtitle a {
   letter-spacing: -1; }
 
-/* line 92, ../../sass/_typography.scss */
+/* line 94, ../../sass/_typography.scss */
 .no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content p {
   margin-bottom: 0; }
 
@@ -5604,7 +5605,7 @@ main,
   background: #333333; }
 
 /* line 44, ../../sass/_utilities.scss */
-.highlight-color, .highlighted-title, .block .category, #article-list h3 {
+.highlight-color {
   color: #3c63af; }
 
 /* line 48, ../../sass/_utilities.scss */
@@ -5616,23 +5617,18 @@ main,
     background: #3c63af; }
 
 /* line 56, ../../sass/_utilities.scss */
-.highlight-background-nohover, .header-brand, .carousel-wrap.small .block-header, #blogs .block-header {
-  background: #3c63af;
-  color: white; }
-
-/* line 61, ../../sass/_utilities.scss */
 .highlight-border {
   border-color: #3c63af; }
 
-/* line 67, ../../sass/_utilities.scss */
+/* line 111, ../../sass/_utilities.scss */
 .center-simple {
   margin: 0 auto; }
 
-/* line 71, ../../sass/_utilities.scss */
+/* line 115, ../../sass/_utilities.scss */
 .pad-xsmall-x {
   padding: 0 1.25rem; }
 
-/* line 81, ../../sass/_utilities.scss */
+/* line 125, ../../sass/_utilities.scss */
 .overlay, .hero.overlay-dark > a:before, .hero.overlay-light > a:before {
   background-position: bottom;
   content: " ";
@@ -5655,7 +5651,7 @@ main,
   .pill:hover {
     background: #333333; }
 
-/* line 46, ../../sass/_components.scss */
+/* line 48, ../../sass/_components.scss */
 .block-card, .carousel-wrap.small, .linkbox, #blogs, #ad-slot-bottom .ad-item iframe {
   padding: 0;
   -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
@@ -5670,7 +5666,7 @@ Set a width here to define how much items are visible.
 The width can be either fixed in px or flexible in %.
 Position must be relative!
 */
-/* line 64, ../../sass/_components.scss */
+/* line 66, ../../sass/_components.scss */
 .jcarousel {
   position: relative;
   overflow: hidden; }
@@ -5680,7 +5676,7 @@ This is the container of the carousel items.
 You must ensure that the position is relative or absolute and
 that the width is big enough to contain all items.
 */
-/* line 74, ../../sass/_components.scss */
+/* line 76, ../../sass/_components.scss */
 .jcarousel ul {
   width: 20000em;
   position: relative;
@@ -5693,70 +5689,75 @@ that the width is big enough to contain all items.
 These are the item elements. jCarousel works best, if the items
 have a fixed width and height (but it's not required).
 */
-/* line 88, ../../sass/_components.scss */
+/* line 90, ../../sass/_components.scss */
 .jcarousel li {
   /* Required only for block elements like <li>'s */
   float: left; }
 
-/* line 94, ../../sass/_components.scss */
+/* line 96, ../../sass/_components.scss */
 .carousel-wrap.small {
-  padding: 0;
   margin-right: 1.25rem; }
-  /* line 107, ../../sass/_components.scss */
+  /* line 108, ../../sass/_components.scss */
   .carousel-wrap.small .carousel li {
     width: 20rem;
     padding: 1.25rem; }
-    /* line 113, ../../sass/_components.scss */
+    /* line 114, ../../sass/_components.scss */
     .carousel-wrap.small .carousel li p {
       font-size: 0.875rem; }
-  /* line 118, ../../sass/_components.scss */
+  /* line 119, ../../sass/_components.scss */
   .carousel-wrap.small .carousel-control {
     text-align: center;
     display: table;
     margin: 0 auto;
     padding-bottom: 0.625rem; }
-    /* line 123, ../../sass/_components.scss */
+    /* line 124, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .jcarousel-prev,
     .carousel-wrap.small .carousel-control .jcarousel-next {
       font-size: 1.875rem; }
-    /* line 137, ../../sass/_components.scss */
+    /* line 138, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .numbers {
       font-size: 0.75rem;
       display: inline-block;
       padding: 0 0.3125rem;
       vertical-align: top; }
-      /* line 142, ../../sass/_components.scss */
+      /* line 143, ../../sass/_components.scss */
       .carousel-wrap.small .carousel-control .numbers span {
         display: inline-block;
         vertical-align: middle;
         line-height: 1.875rem;
         height: 1.875rem; }
 
-/* line 157, ../../sass/_components.scss */
+/* line 158, ../../sass/_components.scss */
 .more-icon, .more-link:after {
   content: '\f138';
   padding-left: 0.1875rem; }
 
-/* line 165, ../../sass/_components.scss */
+/* line 167, ../../sass/_components.scss */
 .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email {
   line-height: 44px;
   font-size: 22px; }
 
-/* line 171, ../../sass/_components.scss */
+/* line 173, ../../sass/_components.scss */
 .icon-twitter {
   content: '\f099'; }
 
-/* line 178, ../../sass/_components.scss */
+/* line 180, ../../sass/_components.scss */
 .icon-facebook {
   content: '\f09a'; }
 
-/* line 185, ../../sass/_components.scss */
+/* line 187, ../../sass/_components.scss */
 .icon-rss {
   content: '\f09e'; }
 
-/* line 191, ../../sass/_components.scss */
+/* line 193, ../../sass/_components.scss */
 .icon-email {
   content: '\f003'; }
+
+/* line 199, ../../sass/_components.scss */
+.aria-text, #social-links ul > li .icon-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px; }
 
 /*    This file contains styles for forms
  *
@@ -5868,10 +5869,10 @@ footer {
  */
 /* line 20, ../../sass/sections/_header.scss */
 .head-top {
-  border-bottom: 6px solid #3c63af;
-  /*TODO: use themes journal-specific css to assign border color*/
+  border-bottom-width: 6px;
+  border-bottom-style: solid;
   padding: 0.3125rem 0.625rem; }
-  /* line 25, ../../sass/sections/_header.scss */
+  /* line 28, ../../sass/sections/_header.scss */
   .head-top .title {
     width: 18px;
     height: 88px;
@@ -5879,14 +5880,14 @@ footer {
     background: url('../img/text.vert.ad.gif') no-repeat 0 6px;
     float: left; }
 
-/* line 41, ../../sass/sections/_header.scss */
+/* line 44, ../../sass/sections/_header.scss */
 #pagehdr-wrap .nav .nav-user {
   font-weight: bold; }
-  /* line 45, ../../sass/sections/_header.scss */
+  /* line 48, ../../sass/sections/_header.scss */
   #pagehdr-wrap .nav .nav-user > li {
     margin-top: -0.3125rem;
     margin-left: 0.25rem; }
-    /* line 49, ../../sass/sections/_header.scss */
+    /* line 52, ../../sass/sections/_header.scss */
     #pagehdr-wrap .nav .nav-user > li > a {
       background: transparent;
       padding: 0.875rem 1rem 0.5rem;
@@ -5896,15 +5897,14 @@ footer {
       /* line 11, ../../sass/_components.scss */
       #pagehdr-wrap .nav .nav-user > li > a:hover {
         background: #333333; }
-      /* line 53, ../../sass/sections/_header.scss */
+      /* line 56, ../../sass/sections/_header.scss */
       #pagehdr-wrap .nav .nav-user > li > a:hover {
         color: white;
         background: #3c63af; }
-  /* line 60, ../../sass/sections/_header.scss */
+  /* line 63, ../../sass/sections/_header.scss */
   #pagehdr-wrap .nav .nav-user li.highlighted > a {
-    color: white;
-    background: #16a127; }
-/* line 68, ../../sass/sections/_header.scss */
+    color: white; }
+/* line 71, ../../sass/sections/_header.scss */
 #pagehdr-wrap .logo {
   padding-left: 0;
   padding-right: 0;
@@ -5919,22 +5919,22 @@ footer {
 /* using Foundation Top Bar
  all @extend .class are Foundation
  */
-/* line 85, ../../sass/sections/_header.scss */
+/* line 88, ../../sass/sections/_header.scss */
 .nav-main {
   font-family: "albert"; }
-  /* line 86, ../../sass/sections/_header.scss */
+  /* line 89, ../../sass/sections/_header.scss */
   .nav-main > .dropdown {
     visibility: hidden; }
-  /* line 92, ../../sass/sections/_header.scss */
+  /* line 95, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section {
     padding-left: 0;
     padding-right: 0;
     width: 35.72917rem;
     float: right; }
-  /* line 95, ../../sass/sections/_header.scss */
+  /* line 98, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements {
     padding-right: 0; }
-  /* line 100, ../../sass/sections/_header.scss */
+  /* line 103, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li.has-dropdown {
     cursor: pointer;
     margin-left: 3px;
@@ -5944,14 +5944,14 @@ footer {
     font-family: "albert";
     font-size: 20px;
     color: #3c63af; }
-    /* line 109, ../../sass/sections/_header.scss */
+    /* line 112, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:first-child {
       border-left: none;
       margin-left: 0; }
-    /* line 113, ../../sass/sections/_header.scss */
+    /* line 116, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown:last-child {
       border-left: 1px solid #efefef; }
-  /* line 117, ../../sass/sections/_header.scss */
+  /* line 120, ../../sass/sections/_header.scss */
   .nav-main .dropdownanchor, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a {
     width: 100%;
     line-height: 1;
@@ -5959,11 +5959,11 @@ footer {
     font-family: "arial";
     font-size: 0.875rem;
     white-space: pre-wrap; }
-    /* line 124, ../../sass/sections/_header.scss */
+    /* line 127, ../../sass/sections/_header.scss */
     .nav-main .dropdownanchor:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover ul.dropdown li a:hover, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a:hover {
       color: white;
       background: #3c63af; }
-  /* line 129, ../../sass/sections/_header.scss */
+  /* line 132, ../../sass/sections/_header.scss */
   .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -5975,12 +5975,12 @@ footer {
     background: white;
     padding-bottom: 12px;
     color: #333333; }
-    /* line 136, ../../sass/sections/_header.scss */
+    /* line 140, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover:hover + li {
       border-left: 1px solid #e0e0e0; }
-    /* line 139, ../../sass/sections/_header.scss */
+    /* line 143, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover > ul.dropdown {
-      top: 47px;
+      top: 45px;
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
       border-radius: 5px;
@@ -5990,10 +5990,10 @@ footer {
       padding-bottom: 1.875rem;
       background: white;
       box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15); }
-    /* line 154, ../../sass/sections/_header.scss */
+    /* line 158, ../../sass/sections/_header.scss */
     .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer {
       width: 33.125rem;
-      top: 47px;
+      top: 46px;
       margin-left: -18.125rem;
       padding: 1.25rem 0 1.875rem;
       background: white;
@@ -6001,7 +6001,7 @@ footer {
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
       border-radius: 5px; }
-      /* line 163, ../../sass/sections/_header.scss */
+      /* line 167, ../../sass/sections/_header.scss */
       .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit {
         position: relative;
         float: left;
@@ -6011,21 +6011,21 @@ footer {
         padding: 0 1.25rem 1.875rem 0.9375rem;
         font-family: "albert";
         font-size: 0.875rem; }
-        /* line 174, ../../sass/sections/_header.scss */
+        /* line 178, ../../sass/sections/_header.scss */
         .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3 {
           margin-top: 0.3125rem;
           font-size: 1.4375rem; }
-        /* line 179, ../../sass/sections/_header.scss */
+        /* line 183, ../../sass/sections/_header.scss */
         .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul {
           margin-left: 0.9375rem;
           display: block !important;
           list-style-type: disc;
           width: auto; }
-          /* line 184, ../../sass/sections/_header.scss */
+          /* line 188, ../../sass/sections/_header.scss */
           .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li {
             margin-left: 0.9375rem;
             width: auto; }
-            /* line 187, ../../sass/sections/_header.scss */
+            /* line 191, ../../sass/sections/_header.scss */
             .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li a {
               display: inline !important;
               margin: 0;
@@ -6035,10 +6035,10 @@ footer {
               font-size: 1rem;
               background: white;
               color: #3c63af; }
-              /* line 197, ../../sass/sections/_header.scss */
+              /* line 201, ../../sass/sections/_header.scss */
               .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit ul li a:hover {
                 text-decoration: underline; }
-        /* line 204, ../../sass/sections/_header.scss */
+        /* line 208, ../../sass/sections/_header.scss */
         .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn {
           background: #333333;
           padding: 1.25rem;
@@ -6052,10 +6052,10 @@ footer {
           /* line 11, ../../sass/_components.scss */
           .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn:hover {
             background: #333333; }
-          /* line 211, ../../sass/sections/_header.scss */
+          /* line 215, ../../sass/sections/_header.scss */
           .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit a.btn:hover {
             background: #3c63af; }
-      /* line 216, ../../sass/sections/_header.scss */
+      /* line 220, ../../sass/sections/_header.scss */
       .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .dropdowncallout {
         float: right;
         display: inline-block;
@@ -6065,24 +6065,25 @@ footer {
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
         border-radius: 5px; }
-  /* line 229, ../../sass/sections/_header.scss */
+  /* line 233, ../../sass/sections/_header.scss */
   .nav-main .head-search {
     padding-left: 1.25rem;
     padding-right: 0;
-    text-align: right; }
-    /* line 234, ../../sass/sections/_header.scss */
+    text-align: right;
+    border-left: 1px solid #efefef; }
+    /* line 242, ../../sass/sections/_header.scss */
     .nav-main .head-search form {
       background: white;
       display: inline-block; }
-      /* line 242, ../../sass/sections/_header.scss */
+      /* line 250, ../../sass/sections/_header.scss */
       .nav-main .head-search form legend, .nav-main .head-search form label {
         display: none; }
-      /* line 246, ../../sass/sections/_header.scss */
+      /* line 254, ../../sass/sections/_header.scss */
       .nav-main .head-search form fieldset {
         border: 1px none white;
         margin: 0.625rem 0.625rem 0.625rem 0.1875rem;
         background-color: white; }
-      /* line 253, ../../sass/sections/_header.scss */
+      /* line 261, ../../sass/sections/_header.scss */
       .nav-main .head-search form input[type="text"] {
         background-color: white;
         font-family: inherit;
@@ -6112,21 +6113,21 @@ footer {
         /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"][disabled], fieldset[disabled] .nav-main .head-search form input[type="text"] {
           background-color: #dddddd; }
-      /* line 99, ../../sass/_typography.scss */
+      /* line 101, ../../sass/_typography.scss */
       .nav-main .head-search form ::-webkit-input-placeholder {
         color: black; }
-      /* line 102, ../../sass/_typography.scss */
+      /* line 104, ../../sass/_typography.scss */
       .nav-main .head-search form :-moz-placeholder {
         /* Firefox 18- */
         color: black; }
-      /* line 106, ../../sass/_typography.scss */
+      /* line 108, ../../sass/_typography.scss */
       .nav-main .head-search form ::-moz-placeholder {
         /* Firefox 19+ */
         color: black; }
-      /* line 110, ../../sass/_typography.scss */
+      /* line 112, ../../sass/_typography.scss */
       .nav-main .head-search form :-ms-input-placeholder {
         color: black; }
-      /* line 273, ../../sass/sections/_header.scss */
+      /* line 281, ../../sass/sections/_header.scss */
       .nav-main .head-search form button[type="submit"] {
         background: white;
         border-left: none;
@@ -6141,11 +6142,11 @@ footer {
         border: none;
         display: inline-block;
         top: 0 !important; }
-        /* line 285, ../../sass/sections/_header.scss */
+        /* line 293, ../../sass/sections/_header.scss */
         .nav-main .head-search form button[type="submit"] .search-icon {
           font-size: 1.25rem; }
 
-/* line 295, ../../sass/sections/_header.scss */
+/* line 303, ../../sass/sections/_header.scss */
 .top-bar-section ul li.head-search a {
   margin-top: -0.625rem;
   line-height: 33px;
@@ -6153,12 +6154,12 @@ footer {
   font-size: 0.8125rem;
   color: #3c63af;
   text-decoration: none; }
-  /* line 62, ../../sass/_typography.scss */
+  /* line 64, ../../sass/_typography.scss */
   .top-bar-section ul li.head-search a:hover, .top-bar-section ul li.head-search a a:hover {
     color: #3c63af;
     text-decoration: underline; }
 
-/* line 302, ../../sass/sections/_header.scss */
+/* line 310, ../../sass/sections/_header.scss */
 .top-bar-section ul li.head-search:hover:not(.has-form) > a {
   background: #efefef; }
 
@@ -6294,74 +6295,72 @@ footer {
   /* line 134, ../../sass/pages/_home.scss */
   .block.image .block-content {
     margin-left: 6.25rem; }
-  /* line 141, ../../sass/pages/_home.scss */
+  /* line 138, ../../sass/pages/_home.scss */
+  .block .date {
+    padding-right: 0.625rem; }
+  /* line 143, ../../sass/pages/_home.scss */
   .block .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.25rem;
     margin: 0; }
-  /* line 154, ../../sass/pages/_home.scss */
-  .block .title a {
-    color: #333333; }
-    /* line 156, ../../sass/pages/_home.scss */
-    .block .title a:hover {
-      text-decoration: underline; }
-  /* line 166, ../../sass/pages/_home.scss */
+  /* line 158, ../../sass/pages/_home.scss */
+  .block .title p {
+    font-size: inherit;
+    line-height: inherit; }
+  /* line 167, ../../sass/pages/_home.scss */
   .block .block-content {
     position: relative;
     font-size: 0.8125rem; }
-  /* line 172, ../../sass/pages/_home.scss */
+  /* line 173, ../../sass/pages/_home.scss */
   .block.small .title {
     font-family: "albert"; }
 
-/* line 182, ../../sass/pages/_home.scss */
+/* line 183, ../../sass/pages/_home.scss */
 .row.three .column.left, .three.grid-test .column.left, #pagehdr-wrap .three.nav .column.left, .three.nav-main .column.left, .three#ad-slot-bottom .column.left {
   padding-left: 0;
   padding-right: 0;
   width: 40.83333rem;
   float: left; }
-  /* line 187, ../../sass/pages/_home.scss */
+  /* line 188, ../../sass/pages/_home.scss */
   .row.three .column.left .row-small-blocks, .three.grid-test .column.left .row-small-blocks, #pagehdr-wrap .three.nav .column.left .row-small-blocks, .three.nav-main .column.left .row-small-blocks, .three#ad-slot-bottom .column.left .row-small-blocks {
     width: 100%; }
-  /* line 195, ../../sass/pages/_home.scss */
+  /* line 196, ../../sass/pages/_home.scss */
   .row.three .column.left .block, .three.grid-test .column.left .block, #pagehdr-wrap .three.nav .column.left .block, .three.nav-main .column.left .block, .three#ad-slot-bottom .column.left .block {
     height: 11.25rem; }
-    /* line 198, ../../sass/pages/_home.scss */
+    /* line 199, ../../sass/pages/_home.scss */
     .row.three .column.left .block .block-image, .three.grid-test .column.left .block .block-image, #pagehdr-wrap .three.nav .column.left .block .block-image, .three.nav-main .column.left .block .block-image, .three#ad-slot-bottom .column.left .block .block-image {
       height: 10rem;
       overflow: hidden; }
-/* line 209, ../../sass/pages/_home.scss */
-.row.three .column.right, .three.grid-test .column.right, #pagehdr-wrap .three.nav .column.right, .three.nav-main .column.right, .three#ad-slot-bottom .column.right, .row.three #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .row.three .column.nav-user, .three.grid-test #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.grid-test .column.nav-user, #pagehdr-wrap .three.nav .column.nav-user, .three.nav-main #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.nav-main .column.nav-user, .three#ad-slot-bottom #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three#ad-slot-bottom .column.nav-user, .row.three .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .row.three ul.column.nav-elements, .three.grid-test .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three.grid-test ul.column.nav-elements, #pagehdr-wrap .three.nav .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section #pagehdr-wrap .three.nav ul.column.nav-elements, .three.nav-main .top-bar-section ul.column.nav-elements, .three#ad-slot-bottom .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three#ad-slot-bottom ul.column.nav-elements, .row.three .nav-main > li.column, .three.grid-test .nav-main > li.column, #pagehdr-wrap .three.nav .nav-main > li.column, .three.nav-main .nav-main > li.column, .three#ad-slot-bottom .nav-main > li.column, .row.three .nav-main .column.head-search, .nav-main .row.three .column.head-search, .three.grid-test .nav-main .column.head-search, .nav-main .three.grid-test .column.head-search, #pagehdr-wrap .three.nav .nav-main .column.head-search, .nav-main #pagehdr-wrap .three.nav .column.head-search, .three.nav-main .column.head-search, .three#ad-slot-bottom .nav-main .column.head-search, .nav-main .three#ad-slot-bottom .column.head-search {
+/* line 210, ../../sass/pages/_home.scss */
+.row.three .column.right, .three.grid-test .column.right, #pagehdr-wrap .three.nav .column.right, .three.nav-main .column.right, .three#ad-slot-bottom .column.right, .row.three #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .row.three .column.nav-user, .three.grid-test #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.grid-test .column.nav-user, #pagehdr-wrap .three.nav .column.nav-user, .three.nav-main #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.nav-main .column.nav-user, .three#ad-slot-bottom #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three#ad-slot-bottom .column.nav-user, .row.three .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .row.three ul.column.nav-elements, .three.grid-test .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three.grid-test ul.column.nav-elements, #pagehdr-wrap .three.nav .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section #pagehdr-wrap .three.nav ul.column.nav-elements, .three.nav-main .top-bar-section ul.column.nav-elements, .three#ad-slot-bottom .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three#ad-slot-bottom ul.column.nav-elements, .row.three .nav-main > li.column, .three.grid-test .nav-main > li.column, #pagehdr-wrap .three.nav .nav-main > li.column, .three.nav-main .nav-main > li.column, .three#ad-slot-bottom .nav-main > li.column, .row.three .nav-main .column.head-search, .nav-main .row.three .column.head-search, .three.grid-test .nav-main .column.head-search, .nav-main .three.grid-test .column.head-search, #pagehdr-wrap .three.nav .nav-main .column.head-search, .nav-main #pagehdr-wrap .three.nav .column.head-search, .three.nav-main .column.head-search, .three#ad-slot-bottom .nav-main .column.head-search, .nav-main .three#ad-slot-bottom .column.head-search, .row.three .block .column.date, .block .row.three .column.date, .three.grid-test .block .column.date, .block .three.grid-test .column.date, #pagehdr-wrap .three.nav .block .column.date, .block #pagehdr-wrap .three.nav .column.date, .three.nav-main .block .column.date, .block .three.nav-main .column.date, .three#ad-slot-bottom .block .column.date, .block .three#ad-slot-bottom .column.date {
   padding-left: 0;
   padding-right: 0;
   width: 20.41667rem;
   float: left; }
 
-/* line 215, ../../sass/pages/_home.scss */
+/* line 216, ../../sass/pages/_home.scss */
 #billboard {
-  padding: 0.625rem;
+  padding: 0.625rem 1.25rem;
   margin-bottom: 1.25rem;
   background: #333333;
   position: relative; }
-  /* line 218, ../../sass/pages/_home.scss */
+  /* line 220, ../../sass/pages/_home.scss */
   #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard a {
-    color: white !important; }
-  /* line 222, ../../sass/pages/_home.scss */
+    color: white; }
+  /* line 223, ../../sass/pages/_home.scss */
+  #billboard h3 {
+    font-size: 22px; }
+  /* line 226, ../../sass/pages/_home.scss */
   #billboard a {
-    background: #3c63af;
-    padding: 1.25rem;
     border-radius: 5px;
-    color: white;
+    padding: 0.3125rem 1.25rem;
     position: absolute;
-    width: 80px;
-    height: 36px;
+    display: inline-block;
     right: 1.25rem;
-    top: 0.625rem; }
-    /* line 11, ../../sass/_components.scss */
-    #billboard a:hover {
-      background: #333333; }
+    top: 18px; }
 
-/* line 232, ../../sass/pages/_home.scss */
+/* line 237, ../../sass/pages/_home.scss */
 #article-list {
   height: 15.625rem;
   -moz-border-radius-topleft: 5px;
@@ -6377,41 +6376,41 @@ footer {
   margin-bottom: 1.25rem;
   background: white;
   position: relative; }
-  /* line 242, ../../sass/pages/_home.scss */
+  /* line 247, ../../sass/pages/_home.scss */
   #article-list ul.list-plain {
     line-height: normal; }
-    /* line 246, ../../sass/pages/_home.scss */
+    /* line 251, ../../sass/pages/_home.scss */
     #article-list ul.list-plain li {
       color: #333333;
       margin-bottom: 15px; }
-      /* line 250, ../../sass/pages/_home.scss */
+      /* line 255, ../../sass/pages/_home.scss */
       #article-list ul.list-plain li a {
         color: #333333;
         text-decoration: none;
         display: block;
         font-family: "albert";
         font-size: 12px; }
-        /* line 62, ../../sass/_typography.scss */
+        /* line 64, ../../sass/_typography.scss */
         #article-list ul.list-plain li a:hover, #article-list ul.list-plain li a a:hover {
           color: #3c63af;
           text-decoration: none; }
 
-/* line 262, ../../sass/pages/_home.scss */
+/* line 267, ../../sass/pages/_home.scss */
 .more-link {
   position: absolute;
   bottom: 0.625rem;
   left: 0.625rem;
   right: auto; }
-  /* line 267, ../../sass/pages/_home.scss */
+  /* line 272, ../../sass/pages/_home.scss */
   .more-link > a {
     color: #333333;
     text-decoration: none; }
-    /* line 62, ../../sass/_typography.scss */
+    /* line 64, ../../sass/_typography.scss */
     .more-link > a:hover, .more-link > a a:hover {
       color: #3c63af;
       text-decoration: none; }
 
-/* line 278, ../../sass/pages/_home.scss */
+/* line 283, ../../sass/pages/_home.scss */
 .tooltip {
   width: 300px !important;
   -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
@@ -6419,7 +6418,7 @@ footer {
   box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid #cccccc; }
 
-/* line 284, ../../sass/pages/_home.scss */
+/* line 289, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0;
   padding-right: 0;
@@ -6440,45 +6439,45 @@ footer {
   margin-bottom: 1.25rem;
   background: white;
   height: 15.625rem; }
-  /* line 289, ../../sass/pages/_home.scss */
+  /* line 294, ../../sass/pages/_home.scss */
   #issue .current-img {
     width: 10rem; }
-  /* line 292, ../../sass/pages/_home.scss */
+  /* line 297, ../../sass/pages/_home.scss */
   #issue .boxtitle {
     margin-top: 0.3125rem; }
-    /* line 294, ../../sass/pages/_home.scss */
+    /* line 299, ../../sass/pages/_home.scss */
     #issue .boxtitle a {
       color: #333333;
       text-decoration: none;
       display: block;
       margin-bottom: -0.3125rem;
       font-weight: 900; }
-      /* line 62, ../../sass/_typography.scss */
+      /* line 64, ../../sass/_typography.scss */
       #issue .boxtitle a:hover, #issue .boxtitle a a:hover {
         color: #3c63af;
         text-decoration: none; }
-    /* line 302, ../../sass/pages/_home.scss */
+    /* line 307, ../../sass/pages/_home.scss */
     #issue .boxtitle .subhead {
       font-face: "arial";
       font-size: 16px; }
 
-/* line 309, ../../sass/pages/_home.scss */
+/* line 314, ../../sass/pages/_home.scss */
 #twitter {
   margin-bottom: 1.25rem; }
 
-/* line 314, ../../sass/pages/_home.scss */
+/* line 319, ../../sass/pages/_home.scss */
 .linkbox {
   height: 25.625rem; }
-  /* line 320, ../../sass/pages/_home.scss */
+  /* line 325, ../../sass/pages/_home.scss */
   .linkbox ul li {
     padding: 1.25rem 1.875rem;
     border-top: 1px solid #efefef; }
-    /* line 324, ../../sass/pages/_home.scss */
+    /* line 329, ../../sass/pages/_home.scss */
     .linkbox ul li a {
       font-family: "albert";
       font-size: 1rem; }
 
-/* line 333, ../../sass/pages/_home.scss */
+/* line 338, ../../sass/pages/_home.scss */
 #submission-links {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -6487,63 +6486,50 @@ footer {
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   padding: 0.625rem 1.875rem 0 1.875rem;
-  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: #333333; }
-  /* line 341, ../../sass/pages/_home.scss */
+  /* line 346, ../../sass/pages/_home.scss */
   #submission-links .split-container {
-    margin-left: 0; }
-  /* line 345, ../../sass/pages/_home.scss */
+    margin: 0 0 0.625rem; }
+  /* line 350, ../../sass/pages/_home.scss */
   #submission-links .split-item {
     margin: 0 !important;
     width: 50%;
     height: 40px;
     text-align: center; }
-    /* line 350, ../../sass/pages/_home.scss */
+    /* line 355, ../../sass/pages/_home.scss */
     #submission-links .split-item:first-child {
       border-right: 1px solid #636363; }
-    /* line 353, ../../sass/pages/_home.scss */
+    /* line 358, ../../sass/pages/_home.scss */
     #submission-links .split-item a {
       color: #89a0d0;
       text-decoration: none;
       font-size: 16px;
       font-family: "albert"; }
-      /* line 62, ../../sass/_typography.scss */
+      /* line 64, ../../sass/_typography.scss */
       #submission-links .split-item a:hover, #submission-links .split-item a a:hover {
         color: #89a0d0;
         text-decoration: underline; }
 
-/* line 361, ../../sass/pages/_home.scss */
+/* line 366, ../../sass/pages/_home.scss */
 #social-links {
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 0.625rem;
-  -moz-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.25rem;
-  background: #04417d;
   border-radius: 5px;
-  padding: 0.3125rem; }
-  /* line 367, ../../sass/pages/_home.scss */
+  padding: 0.3125rem;
+  margin-bottom: 1.25rem;
+  background: #04417d; }
+  /* line 370, ../../sass/pages/_home.scss */
   #social-links h3 {
     text-indent: 0.625rem;
     margin-bottom: 0.625rem; }
-  /* line 372, ../../sass/pages/_home.scss */
+  /* line 375, ../../sass/pages/_home.scss */
   #social-links ul {
     margin-bottom: 0;
     margin-left: -0.25rem; }
-    /* line 376, ../../sass/pages/_home.scss */
+    /* line 379, ../../sass/pages/_home.scss */
     #social-links ul > li {
       margin-left: 4px;
       margin-bottom: 0; }
-      /* line 379, ../../sass/pages/_home.scss */
+      /* line 382, ../../sass/pages/_home.scss */
       #social-links ul > li > a {
         background: #3c63af;
         border-radius: 5px;
@@ -6551,25 +6537,20 @@ footer {
         height: 44px;
         text-align: center;
         color: white; }
-        /* line 386, ../../sass/pages/_home.scss */
+        /* line 389, ../../sass/pages/_home.scss */
         #social-links ul > li > a:hover {
           background: #333333; }
-      /* line 390, ../../sass/pages/_home.scss */
+      /* line 393, ../../sass/pages/_home.scss */
       #social-links ul > li .social {
         width: 44px; }
-      /* line 393, ../../sass/pages/_home.scss */
-      #social-links ul > li .aria-text {
-        position: absolute;
-        top: -9999px;
-        left: -9999px; }
     /* line 400, ../../sass/pages/_home.scss */
     #social-links ul .social-blogs {
-      width: 102px;
+      width: 6.5rem;
       line-height: 44px;
       font-size: 1rem;
       font-family: "albert"; }
 
-/* line 408, ../../sass/pages/_home.scss */
+/* line 409, ../../sass/pages/_home.scss */
 #blogs {
   height: 15.625rem;
   position: relative; }
@@ -6619,3 +6600,125 @@ footer {
   #blogs .more-link {
     bottom: 0.625rem;
     left: 4.0625rem; }
+
+/* line 63, ../../sass/_utilities.scss */
+.plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .more-icon, .plosgenetics .more-link:after {
+  color: #16a127; }
+/* line 66, ../../sass/_utilities.scss */
+.plosbiology .brand-color, .plosbiology .brand-title, .plosbiology .block .category, .block .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .brand-color, .ploscompbiol .brand-title, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .brand-color, .plosgenetics .brand-title, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .more-icon, .plosgenetics .more-link:after {
+  color: #16a127; }
+/* line 69, ../../sass/_utilities.scss */
+.plosbiology .brand-border, .plosbiology .head-top, .ploscompbiol .brand-border, .ploscompbiol .head-top, .plosgenetics .brand-border, .plosgenetics .head-top {
+  border-color: #16a127; }
+/* line 72, ../../sass/_utilities.scss */
+.plosbiology .brand-background, .plosbiology .brand-header, .plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosbiology li.highlighted > a, .ploscompbiol .brand-background, .ploscompbiol .brand-header, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .ploscompbiol li.highlighted > a, .plosgenetics .brand-background, .plosgenetics .brand-header, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosgenetics li.highlighted > a {
+  background: #16a127; }
+/* line 75, ../../sass/_utilities.scss */
+.plosbiology .brand-background-hover, .plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol .brand-background-hover, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics .brand-background-hover, .plosgenetics #billboard a, #billboard .plosgenetics a {
+  background: #16a127; }
+  /* line 77, ../../sass/_utilities.scss */
+  .plosbiology .brand-background-hover:hover, .plosbiology #billboard a:hover, #billboard .plosbiology a:hover, .ploscompbiol .brand-background-hover:hover, .ploscompbiol #billboard a:hover, #billboard .ploscompbiol a:hover, .plosgenetics .brand-background-hover:hover, .plosgenetics #billboard a:hover, #billboard .plosgenetics a:hover {
+    background: #3c63af; }
+/* line 84, ../../sass/_utilities.scss */
+.plosbiology .brand-shading:first-child .block-header, .plosbiology .carousel-wrap.small:first-child .block-header, .ploscompbiol .brand-shading:first-child .block-header, .ploscompbiol .carousel-wrap.small:first-child .block-header, .plosgenetics .brand-shading:first-child .block-header, .plosgenetics .carousel-wrap.small:first-child .block-header {
+  background: #0b5013; }
+/* line 87, ../../sass/_utilities.scss */
+.plosbiology .brand-shading:first-child .jcarousel-prev, .plosbiology .carousel-wrap.small:first-child .jcarousel-prev,
+.plosbiology .brand-shading:first-child .jcarousel-next,
+.plosbiology .carousel-wrap.small:first-child .jcarousel-next, .ploscompbiol .brand-shading:first-child .jcarousel-prev, .ploscompbiol .carousel-wrap.small:first-child .jcarousel-prev,
+.ploscompbiol .brand-shading:first-child .jcarousel-next,
+.ploscompbiol .carousel-wrap.small:first-child .jcarousel-next, .plosgenetics .brand-shading:first-child .jcarousel-prev, .plosgenetics .carousel-wrap.small:first-child .jcarousel-prev,
+.plosgenetics .brand-shading:first-child .jcarousel-next,
+.plosgenetics .carousel-wrap.small:first-child .jcarousel-next {
+  color: #0b5013; }
+  /* line 90, ../../sass/_utilities.scss */
+  .plosbiology .brand-shading:first-child .jcarousel-prev:hover, .plosbiology .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .plosbiology .brand-shading:first-child .jcarousel-next:hover,
+  .plosbiology .carousel-wrap.small:first-child .jcarousel-next:hover, .ploscompbiol .brand-shading:first-child .jcarousel-prev:hover, .ploscompbiol .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .ploscompbiol .brand-shading:first-child .jcarousel-next:hover,
+  .ploscompbiol .carousel-wrap.small:first-child .jcarousel-next:hover, .plosgenetics .brand-shading:first-child .jcarousel-prev:hover, .plosgenetics .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .plosgenetics .brand-shading:first-child .jcarousel-next:hover,
+  .plosgenetics .carousel-wrap.small:first-child .jcarousel-next:hover {
+    color: #3c63af; }
+/* line 96, ../../sass/_utilities.scss */
+.plosbiology .brand-shading:nth-child(2) .block-header, .plosbiology .carousel-wrap.small:nth-child(2) .block-header, .ploscompbiol .brand-shading:nth-child(2) .block-header, .ploscompbiol .carousel-wrap.small:nth-child(2) .block-header, .plosgenetics .brand-shading:nth-child(2) .block-header, .plosgenetics .carousel-wrap.small:nth-child(2) .block-header {
+  background: #0e6719; }
+/* line 99, ../../sass/_utilities.scss */
+.plosbiology .brand-shading:nth-child(2) .jcarousel-prev, .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.plosbiology .brand-shading:nth-child(2) .jcarousel-next,
+.plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next, .ploscompbiol .brand-shading:nth-child(2) .jcarousel-prev, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.ploscompbiol .brand-shading:nth-child(2) .jcarousel-next,
+.ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosgenetics .brand-shading:nth-child(2) .jcarousel-prev, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.plosgenetics .brand-shading:nth-child(2) .jcarousel-next,
+.plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-next {
+  color: #0e6719; }
+  /* line 102, ../../sass/_utilities.scss */
+  .plosbiology .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .plosbiology .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .ploscompbiol .brand-shading:nth-child(2) .jcarousel-prev:hover, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .ploscompbiol .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosgenetics .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .plosgenetics .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-next:hover {
+    color: #3c63af; }
+
+/* line 63, ../../sass/_utilities.scss */
+.plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .more-icon, .plosntd .more-link:after {
+  color: #891fb1; }
+/* line 66, ../../sass/_utilities.scss */
+.plosmedicine .brand-color, .plosmedicine .brand-title, .plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .brand-color, .plospathogens .brand-title, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .brand-color, .plosntd .brand-title, .plosntd .block .category, .block .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .more-icon, .plosntd .more-link:after {
+  color: #891fb1; }
+/* line 69, ../../sass/_utilities.scss */
+.plosmedicine .brand-border, .plosmedicine .head-top, .plospathogens .brand-border, .plospathogens .head-top, .plosntd .brand-border, .plosntd .head-top {
+  border-color: #891fb1; }
+/* line 72, ../../sass/_utilities.scss */
+.plosmedicine .brand-background, .plosmedicine .brand-header, .plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosmedicine li.highlighted > a, .plospathogens .brand-background, .plospathogens .brand-header, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plospathogens li.highlighted > a, .plosntd .brand-background, .plosntd .brand-header, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosntd li.highlighted > a {
+  background: #891fb1; }
+/* line 75, ../../sass/_utilities.scss */
+.plosmedicine .brand-background-hover, .plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens .brand-background-hover, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd .brand-background-hover, .plosntd #billboard a, #billboard .plosntd a {
+  background: #891fb1; }
+  /* line 77, ../../sass/_utilities.scss */
+  .plosmedicine .brand-background-hover:hover, .plosmedicine #billboard a:hover, #billboard .plosmedicine a:hover, .plospathogens .brand-background-hover:hover, .plospathogens #billboard a:hover, #billboard .plospathogens a:hover, .plosntd .brand-background-hover:hover, .plosntd #billboard a:hover, #billboard .plosntd a:hover {
+    background: #3c63af; }
+/* line 84, ../../sass/_utilities.scss */
+.plosmedicine .brand-shading:first-child .block-header, .plosmedicine .carousel-wrap.small:first-child .block-header, .plospathogens .brand-shading:first-child .block-header, .plospathogens .carousel-wrap.small:first-child .block-header, .plosntd .brand-shading:first-child .block-header, .plosntd .carousel-wrap.small:first-child .block-header {
+  background: #4d1163; }
+/* line 87, ../../sass/_utilities.scss */
+.plosmedicine .brand-shading:first-child .jcarousel-prev, .plosmedicine .carousel-wrap.small:first-child .jcarousel-prev,
+.plosmedicine .brand-shading:first-child .jcarousel-next,
+.plosmedicine .carousel-wrap.small:first-child .jcarousel-next, .plospathogens .brand-shading:first-child .jcarousel-prev, .plospathogens .carousel-wrap.small:first-child .jcarousel-prev,
+.plospathogens .brand-shading:first-child .jcarousel-next,
+.plospathogens .carousel-wrap.small:first-child .jcarousel-next, .plosntd .brand-shading:first-child .jcarousel-prev, .plosntd .carousel-wrap.small:first-child .jcarousel-prev,
+.plosntd .brand-shading:first-child .jcarousel-next,
+.plosntd .carousel-wrap.small:first-child .jcarousel-next {
+  color: #4d1163; }
+  /* line 90, ../../sass/_utilities.scss */
+  .plosmedicine .brand-shading:first-child .jcarousel-prev:hover, .plosmedicine .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .plosmedicine .brand-shading:first-child .jcarousel-next:hover,
+  .plosmedicine .carousel-wrap.small:first-child .jcarousel-next:hover, .plospathogens .brand-shading:first-child .jcarousel-prev:hover, .plospathogens .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .plospathogens .brand-shading:first-child .jcarousel-next:hover,
+  .plospathogens .carousel-wrap.small:first-child .jcarousel-next:hover, .plosntd .brand-shading:first-child .jcarousel-prev:hover, .plosntd .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .plosntd .brand-shading:first-child .jcarousel-next:hover,
+  .plosntd .carousel-wrap.small:first-child .jcarousel-next:hover {
+    color: #3c63af; }
+/* line 96, ../../sass/_utilities.scss */
+.plosmedicine .brand-shading:nth-child(2) .block-header, .plosmedicine .carousel-wrap.small:nth-child(2) .block-header, .plospathogens .brand-shading:nth-child(2) .block-header, .plospathogens .carousel-wrap.small:nth-child(2) .block-header, .plosntd .brand-shading:nth-child(2) .block-header, .plosntd .carousel-wrap.small:nth-child(2) .block-header {
+  background: #5d1579; }
+/* line 99, ../../sass/_utilities.scss */
+.plosmedicine .brand-shading:nth-child(2) .jcarousel-prev, .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.plosmedicine .brand-shading:nth-child(2) .jcarousel-next,
+.plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next, .plospathogens .brand-shading:nth-child(2) .jcarousel-prev, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.plospathogens .brand-shading:nth-child(2) .jcarousel-next,
+.plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosntd .brand-shading:nth-child(2) .jcarousel-prev, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.plosntd .brand-shading:nth-child(2) .jcarousel-next,
+.plosntd .carousel-wrap.small:nth-child(2) .jcarousel-next {
+  color: #5d1579; }
+  /* line 102, ../../sass/_utilities.scss */
+  .plosmedicine .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .plosmedicine .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plospathogens .brand-shading:nth-child(2) .jcarousel-prev:hover, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .plospathogens .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosntd .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .plosntd .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-next:hover {
+    color: #3c63af; }

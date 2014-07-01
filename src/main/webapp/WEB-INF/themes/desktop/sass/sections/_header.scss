@@ -135,12 +135,13 @@ $width-nav: $block-grid-elements - $width-logo;
     background: $white;
     padding-bottom: 12px;
     color: $clr-body-text;
-    //change color of separator because it's too far over from the padding that's necessary for the shadow
+    // &hover + li is used to account for the padding needed for the
+    //  drop shadow. if the color isn't changed it sticks out too much.
     &:hover + li {
       border-left: 1px solid scale-color(#666, $lightness: 80%);
     }
     > ul.dropdown {
-      top: 47px;
+      top: 45px;
       @include border-radius();
       width: rem-calc(240);
       margin-left: rem-calc(-15);
@@ -156,7 +157,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
     .calloutcontainer {
       width: rem-calc(530);
-      top: 47px;
+      top: 46px;
       margin-left: rem-calc(-290);
       padding: rem-calc(20 0 30);
       background: white;
@@ -234,6 +235,10 @@ $width-nav: $block-grid-elements - $width-logo;
     padding-left: rem-calc(20);
     padding-right: 0;
     text-align: right;
+    //the following is needed because &hover + li is used to account for the
+    // padding needed for the drop shadow. if the color isn't changed it sticks
+    // out too much.
+    border-left: 1px solid $grey-light;
     form {
       background: $white;
       $fieldset-padding: 0;   // from foundation

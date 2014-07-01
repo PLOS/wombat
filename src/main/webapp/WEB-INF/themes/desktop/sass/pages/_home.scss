@@ -202,14 +202,12 @@ $image-container: ($image-width + $pad-small);
     .block.large {
       @extend .width-large;
     }
-
     .row-small-blocks {
       width: 100%; //TODO remove width?
       // for demo
       .block {
         @extend .width-small;
       }
-
     }
     /// row three is shorter than the others
     .block {
@@ -233,11 +231,7 @@ $image-container: ($image-width + $pad-small);
 }
 }
 
-#spotlight {
-  @include blocks();
-  @extend .width-small;
-  height: $block-height;
-}
+
 
 #billboard {
   @include grid-row;
@@ -309,8 +303,9 @@ $image-container: ($image-width + $pad-small);
 }
 
 #issue {
-  @include blocks;
   @include plos-grid-column(180);
+  @include blocks;
+
   height: $block-height;
   .current-img {
     width: rem-calc(160);
@@ -436,10 +431,12 @@ $image-container: ($image-width + $pad-small);
   }
 }
 #blogs {
+  $image-width: rem-calc(35px);
   @extend .width-small;
   height: $block-height;
   @extend .block-card;
   position:relative;
+
 
   .block-header {
     @extend .header-brand;
@@ -455,7 +452,7 @@ $image-container: ($image-width + $pad-small);
     .postimg {
       float: left;
       height: 75px;
-      width: 35px;
+      width: $image-width;
       margin-right: $pad-small;
     }
     .postdate {
@@ -484,8 +481,8 @@ $image-container: ($image-width + $pad-small);
     }
   }
   .more-link {
-    bottom: 30px;
-    left: 86px;
+    bottom: $pad-small;
+    left: ($image-width + ($pad-default + $pad-small));
   }
 }
 
@@ -494,7 +491,7 @@ $image-container: ($image-width + $pad-small);
   .ad-item {
     @extend .width-small;
     iframe {
-      @extend .block;
+      @extend .block-card;
     }
 
   }

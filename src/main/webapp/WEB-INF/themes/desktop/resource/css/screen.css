@@ -2051,12 +2051,12 @@ meta.foundation-mq-topbar {
     margin: 0;
     font-size: 16px; }
     /* line 185, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1, .nav-main .name h1, .top-bar #pagehdr-wrap .home-link h1, #pagehdr-wrap .top-bar .home-link h1, .nav-main #pagehdr-wrap .home-link h1, #pagehdr-wrap .nav-main .home-link h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4, .nav-main .name .hero .hero-content h4, .hero .hero-content .nav-main .name h4, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4, .top-bar .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar .name .title, .nav-main .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar .name .title, .nav-main .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .top-bar .name .title, .nav-main .name .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small #pagehdr-wrap .nav-main .home-link .title, .top-bar .name #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .top-bar .name .title, .nav-main .name #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title {
+    .top-bar .name h1, .nav-main .name h1, .top-bar #pagehdr-wrap .home-link h1, #pagehdr-wrap .top-bar .home-link h1, .nav-main #pagehdr-wrap .home-link h1, #pagehdr-wrap .nav-main .home-link h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4, .nav-main .name .hero .hero-content h4, .hero .hero-content .nav-main .name h4, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4, .top-bar .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar .name .title, .nav-main .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar .name .title, .nav-main .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title {
       line-height: 45px;
       font-size: 1.0625rem;
       margin: 0; }
       /* line 189, ../../sass/vendor/foundation/components/_top-bar.scss */
-      .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .top-bar .name .title a, .nav-main .name .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .top-bar .name .title a, .nav-main .name #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
+      .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
         font-weight: normal;
         color: #3c63af;
         width: 75%;
@@ -2354,7 +2354,7 @@ meta.foundation-mq-topbar {
     .top-bar .title-area, .nav-main .title-area, .top-bar #pagehdr-wrap .logo, #pagehdr-wrap .top-bar .logo, .nav-main #pagehdr-wrap .logo, #pagehdr-wrap .nav-main .logo {
       float: left; }
     /* line 439, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .top-bar .name .title a, .nav-main .name .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title a, .hero .hero-content #ad-slot-bottom .ad-item iframe.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .top-bar .name .title a, .nav-main .name #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title a, #ad-slot-bottom .ad-item iframe.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
+    .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
       width: auto; }
     /* line 441, ../../sass/vendor/foundation/components/_top-bar.scss */
     .top-bar input, .nav-main input,
@@ -2702,16 +2702,12 @@ h1,
 .hero .hero-content h4,
 .hero .hero-content .block.small .title,
 .block.small .hero .hero-content .title,
-.hero .hero-content #ad-slot-bottom .ad-item iframe.small .title,
-#ad-slot-bottom .ad-item iframe.small .hero .hero-content .title,
 h2,
 .carousel-wrap.small .carousel li h3,
 .block .title,
-#ad-slot-bottom .ad-item iframe .title,
 h3,
 h4,
 .block.small .title,
-#ad-slot-bottom .ad-item iframe.small .title,
 h5,
 h6,
 pre,
@@ -2757,7 +2753,7 @@ p {
 
 /* Default header styles */
 /* line 229, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .block .title, #ad-slot-bottom .ad-item iframe .title, h3, h4, .block.small .title, #ad-slot-bottom .ad-item iframe.small .title, h5, h6 {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .block .title, h3, h4, .block.small .title, h5, h6 {
   font-family: "albert";
   font-weight: normal;
   font-style: normal;
@@ -2767,17 +2763,17 @@ h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.smal
   margin-bottom: 0.2rem;
   line-height: 1; }
   /* line 239, ../../sass/vendor/foundation/components/_type.scss */
-  h1 small, .hero .hero-content h4 small, .hero .hero-content .block.small .title small, .block.small .hero .hero-content .title small, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title small, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title small, h2 small, .carousel-wrap.small .carousel li h3 small, .block .title small, #ad-slot-bottom .ad-item iframe .title small, h3 small, h4 small, .block.small .title small, #ad-slot-bottom .ad-item iframe.small .title small, h5 small, h6 small {
+  h1 small, .hero .hero-content h4 small, .hero .hero-content .block.small .title small, .block.small .hero .hero-content .title small, h2 small, .carousel-wrap.small .carousel li h3 small, .block .title small, h3 small, h4 small, .block.small .title small, h5 small, h6 small {
     font-size: 0.75rem;
     color: #333333;
     line-height: 0; }
 
 /* line 246, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title {
   font-size: 1.625rem; }
 
 /* line 247, ../../sass/vendor/foundation/components/_type.scss */
-h2, .carousel-wrap.small .carousel li h3, .block .title, #ad-slot-bottom .ad-item iframe .title {
+h2, .carousel-wrap.small .carousel li h3, .block .title {
   font-size: 0.75rem; }
 
 /* line 248, ../../sass/vendor/foundation/components/_type.scss */
@@ -2785,7 +2781,7 @@ h3 {
   font-size: 0.8125rem; }
 
 /* line 249, ../../sass/vendor/foundation/components/_type.scss */
-h4, .block.small .title, #ad-slot-bottom .ad-item iframe.small .title {
+h4, .block.small .title {
   font-size: 0.5rem; }
 
 /* line 250, ../../sass/vendor/foundation/components/_type.scss */
@@ -2797,7 +2793,7 @@ h6 {
   font-size: 0.8125rem; }
 
 /* line 253, ../../sass/vendor/foundation/components/_type.scss */
-.subheader, .block.small .title, #ad-slot-bottom .ad-item iframe.small .title {
+.subheader, .block.small .title {
   line-height: 1.1;
   color: #333333;
   font-weight: 300;
@@ -2974,15 +2970,15 @@ blockquote p {
 
 @media only screen and (min-width: 40.063em) {
   /* line 425, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .block .title, #ad-slot-bottom .ad-item iframe .title, h3, h4, .block.small .title, #ad-slot-bottom .ad-item iframe.small .title, h5, h6 {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .block .title, h3, h4, .block.small .title, h5, h6 {
     line-height: 1; }
 
   /* line 426, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title {
     font-size: 2.25rem; }
 
   /* line 427, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .carousel-wrap.small .carousel li h3, .block .title, #ad-slot-bottom .ad-item iframe .title {
+  h2, .carousel-wrap.small .carousel li h3, .block .title {
     font-size: 1.375rem; }
 
   /* line 428, ../../sass/vendor/foundation/components/_type.scss */
@@ -2990,7 +2986,7 @@ blockquote p {
     font-size: 1.125rem; }
 
   /* line 429, ../../sass/vendor/foundation/components/_type.scss */
-  h4, .block.small .title, #ad-slot-bottom .ad-item iframe.small .title {
+  h4, .block.small .title {
     font-size: 0.8125rem; } }
 /*
  * Print styles.
@@ -3057,13 +3053,12 @@ blockquote p {
   h2,
   .carousel-wrap.small .carousel li h3,
   .block .title,
-  #ad-slot-bottom .ad-item iframe .title,
   h3 {
     orphans: 3;
     widows: 3; }
 
   /* line 482, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .carousel-wrap.small .carousel li h3, .block .title, #ad-slot-bottom .ad-item iframe .title,
+  h2, .carousel-wrap.small .carousel li h3, .block .title,
   h3 {
     page-break-after: avoid; }
 
@@ -5536,7 +5531,7 @@ main,
   font-family: "FontAwesome";
   src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg?1402533884') format('svg'), url('../fonts/fontawesome-webfont.woff?1402533884') format('woff'); }
 /* line 12, ../../sass/_typography.scss */
-.header-allcaps, .header-allcaps-plain, .more-link > a, .header-allcaps-xlarge, .highlighted-title, .block .category, #ad-slot-bottom .ad-item iframe .category, #article-list h3 {
+.header-allcaps, .header-allcaps-plain, .more-link > a, .header-allcaps-xlarge, .highlighted-title, .block .category, #article-list h3 {
   font-size: 0.875rem;
   font-family: "albert";
   text-transform: uppercase; }
@@ -5550,7 +5545,7 @@ main,
   font-size: 1.25rem; }
 
 /* line 25, ../../sass/_typography.scss */
-.highlighted-title, .block .category, #ad-slot-bottom .ad-item iframe .category, #article-list h3 {
+.highlighted-title, .block .category, #article-list h3 {
   margin-bottom: 0.625rem; }
 
 /* line 30, ../../sass/_typography.scss */
@@ -5583,16 +5578,16 @@ main,
     text-decoration: none; }
 
 /* line 78, ../../sass/_typography.scss */
-.link-text-white, .link-text-white a {
+.link-text-white, #blogs .block-header, .link-text-white a, #blogs .block-header a {
   color: white;
   text-decoration: none; }
   /* line 62, ../../sass/_typography.scss */
-  .link-text-white:hover, .link-text-white a:hover, .link-text-white a:hover, .link-text-white a a:hover {
+  .link-text-white:hover, #blogs .block-header:hover, .link-text-white a:hover, #blogs .block-header a:hover, .link-text-white a:hover, #blogs .block-header a:hover, .link-text-white a a:hover, #blogs .block-header a a:hover {
     color: white;
     text-decoration: underline; }
 
 /* line 85, ../../sass/_typography.scss */
-.small-italic, .block .date, #ad-slot-bottom .ad-item iframe .date, .block .credits, #ad-slot-bottom .ad-item iframe .credits, #blogs #blogrss .postauthor {
+.small-italic, .block .date, .block .credits, #blogs #blogrss .postauthor {
   font-size: 0.625rem;
   font-style: italic; }
 
@@ -5601,7 +5596,7 @@ main,
   letter-spacing: -1; }
 
 /* line 92, ../../sass/_typography.scss */
-.no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small .hero .hero-content .title, .hero .hero-content p {
+.no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content p {
   margin-bottom: 0; }
 
 /* 
@@ -5612,7 +5607,7 @@ main,
   background: #333333; }
 
 /* line 44, ../../sass/_utilities.scss */
-.highlight-color, .highlighted-title, .block .category, #ad-slot-bottom .ad-item iframe .category, #article-list h3 {
+.highlight-color, .highlighted-title, .block .category, #article-list h3 {
   color: #3c63af; }
 
 /* line 48, ../../sass/_utilities.scss */
@@ -5664,7 +5659,7 @@ main,
     background: #333333; }
 
 /* line 45, ../../sass/_components.scss */
-.block-card, .carousel-wrap.small, .linkbox, #blogs {
+.block-card, .carousel-wrap.small, .linkbox, #blogs, #ad-slot-bottom .ad-item iframe {
   padding: 0;
   -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -6180,7 +6175,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 21, ../../sass/pages/_home.scss */
-.width-xx-small, .row > .block.xx-small, .grid-test > .block.xx-small, #pagehdr-wrap .nav > .block.xx-small, .nav-main > .block.xx-small, #ad-slot-bottom > .block.xx-small, #ad-slot-bottom .ad-item .row > iframe.xx-small, #ad-slot-bottom .ad-item .grid-test > iframe.xx-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.xx-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.xx-small, #ad-slot-bottom .ad-item .nav-main > iframe.xx-small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.xx-small {
+.width-xx-small, .row > .block.xx-small, .grid-test > .block.xx-small, #pagehdr-wrap .nav > .block.xx-small, .nav-main > .block.xx-small, #ad-slot-bottom > .block.xx-small {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6189,7 +6184,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 25, ../../sass/pages/_home.scss */
-.width-x-small, .row > .block.x-small, .grid-test > .block.x-small, #pagehdr-wrap .nav > .block.x-small, .nav-main > .block.x-small, #ad-slot-bottom > .block.x-small, #ad-slot-bottom .ad-item .row > iframe.x-small, #ad-slot-bottom .ad-item .grid-test > iframe.x-small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.x-small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.x-small, #ad-slot-bottom .ad-item .nav-main > iframe.x-small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.x-small, #article-list {
+.width-x-small, .row > .block.x-small, .grid-test > .block.x-small, #pagehdr-wrap .nav > .block.x-small, .nav-main > .block.x-small, #ad-slot-bottom > .block.x-small, #article-list {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6198,7 +6193,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 29, ../../sass/pages/_home.scss */
-.width-small, .carousel-wrap.small, .row > .block.small, .grid-test > .block.small, #pagehdr-wrap .nav > .block.small, .nav-main > .block.small, #ad-slot-bottom > .block.small, #ad-slot-bottom .ad-item .row > iframe.small, #ad-slot-bottom .ad-item .grid-test > iframe.small, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.small, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.small, #ad-slot-bottom .ad-item .nav-main > iframe.small, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.small, .row.three .column.left .row-small-blocks .block, .three.grid-test .column.left .row-small-blocks .block, #pagehdr-wrap .three.nav .column.left .row-small-blocks .block, .three.nav-main .column.left .row-small-blocks .block, .three#ad-slot-bottom .column.left .row-small-blocks .block, .row.three .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .row.three .column.left .row-small-blocks iframe, .three.grid-test .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.grid-test .column.left .row-small-blocks iframe, #pagehdr-wrap .three.nav .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left .row-small-blocks iframe, .three.nav-main .column.left .row-small-blocks #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.nav-main .column.left .row-small-blocks iframe, .three#ad-slot-bottom .column.left .row-small-blocks .ad-item iframe, .three#ad-slot-bottom .ad-item .column.left .row-small-blocks iframe, .row.three .column.left .block.small, .three.grid-test .column.left .block.small, #pagehdr-wrap .three.nav .column.left .block.small, .three.nav-main .column.left .block.small, .three#ad-slot-bottom .column.left .block.small, .row.three .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .row.three .column.left iframe.small, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe.small, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe.small, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe.small, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe.small, .three#ad-slot-bottom .column.left .ad-item iframe.small, .three#ad-slot-bottom .ad-item .column.left iframe.small, #spotlight, #twitter, .linkbox, #submission-links, #social-links, #blogs, #ad-slot-bottom .ad-item {
+.width-small, .carousel-wrap.small, .row > .block.small, .grid-test > .block.small, #pagehdr-wrap .nav > .block.small, .nav-main > .block.small, #ad-slot-bottom > .block.small, .row.three .column.left .row-small-blocks .block, .three.grid-test .column.left .row-small-blocks .block, #pagehdr-wrap .three.nav .column.left .row-small-blocks .block, .three.nav-main .column.left .row-small-blocks .block, .three#ad-slot-bottom .column.left .row-small-blocks .block, .row.three .column.left .block.small, .three.grid-test .column.left .block.small, #pagehdr-wrap .three.nav .column.left .block.small, .three.nav-main .column.left .block.small, .three#ad-slot-bottom .column.left .block.small, #twitter, .linkbox, #submission-links, #social-links, #blogs, #ad-slot-bottom .ad-item {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6207,7 +6202,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 33, ../../sass/pages/_home.scss */
-.width-medium, .row > .block.medium, .grid-test > .block.medium, #pagehdr-wrap .nav > .block.medium, .nav-main > .block.medium, #ad-slot-bottom > .block.medium, #ad-slot-bottom .ad-item .row > iframe.medium, #ad-slot-bottom .ad-item .grid-test > iframe.medium, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.medium, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.medium, #ad-slot-bottom .ad-item .nav-main > iframe.medium, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.medium {
+.width-medium, .row > .block.medium, .grid-test > .block.medium, #pagehdr-wrap .nav > .block.medium, .nav-main > .block.medium, #ad-slot-bottom > .block.medium {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6216,7 +6211,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 37, ../../sass/pages/_home.scss */
-.width-large, .row > .block.large, .grid-test > .block.large, #pagehdr-wrap .nav > .block.large, .nav-main > .block.large, #ad-slot-bottom > .block.large, #ad-slot-bottom .ad-item .row > iframe.large, #ad-slot-bottom .ad-item .grid-test > iframe.large, #pagehdr-wrap #ad-slot-bottom .ad-item .nav > iframe.large, #ad-slot-bottom .ad-item #pagehdr-wrap .nav > iframe.large, #ad-slot-bottom .ad-item .nav-main > iframe.large, #ad-slot-bottom .ad-item #ad-slot-bottom > iframe.large, .row.three .column.left .block.large, .three.grid-test .column.left .block.large, #pagehdr-wrap .three.nav .column.left .block.large, .three.nav-main .column.left .block.large, .three#ad-slot-bottom .column.left .block.large, .row.three .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .row.three .column.left iframe.large, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe.large, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe.large, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe.large, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe.large, .three#ad-slot-bottom .column.left .ad-item iframe.large, .three#ad-slot-bottom .ad-item .column.left iframe.large {
+.width-large, .row > .block.large, .grid-test > .block.large, #pagehdr-wrap .nav > .block.large, .nav-main > .block.large, #ad-slot-bottom > .block.large, .row.three .column.left .block.large, .three.grid-test .column.left .block.large, #pagehdr-wrap .three.nav .column.left .block.large, .three.nav-main .column.left .block.large, .three#ad-slot-bottom .column.left .block.large {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -6292,7 +6287,7 @@ footer {
   background: #333333;
   position: relative; }
   /* line 103, ../../sass/pages/_home.scss */
-  #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small #billboard .title, #billboard a {
+  #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard a {
     color: white !important; }
   /* line 107, ../../sass/pages/_home.scss */
   #billboard a {
@@ -6310,7 +6305,7 @@ footer {
       background: #333333; }
 
 /* line 140, ../../sass/pages/_home.scss */
-.block, #ad-slot-bottom .ad-item iframe {
+.block {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
@@ -6326,33 +6321,33 @@ footer {
   position: relative;
   height: 15.625rem; }
   /* line 145, ../../sass/pages/_home.scss */
-  .block .block-image, #ad-slot-bottom .ad-item iframe .block-image {
+  .block .block-image {
     width: 5rem;
     display: block;
     position: absolute;
     left: 0.625rem;
     top: 0.625rem; }
   /* line 152, ../../sass/pages/_home.scss */
-  .block.image .block-content, #ad-slot-bottom .ad-item iframe.image .block-content {
+  .block.image .block-content {
     margin-left: 6.25rem; }
   /* line 159, ../../sass/pages/_home.scss */
-  .block .credits, #ad-slot-bottom .ad-item iframe .credits {
+  .block .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.25rem;
     margin: 0; }
   /* line 172, ../../sass/pages/_home.scss */
-  .block .title a, #ad-slot-bottom .ad-item iframe .title a {
+  .block .title a {
     color: #333333; }
     /* line 174, ../../sass/pages/_home.scss */
-    .block .title a:hover, #ad-slot-bottom .ad-item iframe .title a:hover {
+    .block .title a:hover {
       text-decoration: underline; }
   /* line 184, ../../sass/pages/_home.scss */
-  .block .block-content, #ad-slot-bottom .ad-item iframe .block-content {
+  .block .block-content {
     position: relative;
     font-size: 0.8125rem; }
   /* line 190, ../../sass/pages/_home.scss */
-  .block.small .title, #ad-slot-bottom .ad-item iframe.small .title {
+  .block.small .title {
     font-family: "albert"; }
 
 /* line 200, ../../sass/pages/_home.scss */
@@ -6361,17 +6356,17 @@ footer {
   padding-right: 0;
   width: 40.83333rem;
   float: left; }
-  /* line 206, ../../sass/pages/_home.scss */
+  /* line 205, ../../sass/pages/_home.scss */
   .row.three .column.left .row-small-blocks, .three.grid-test .column.left .row-small-blocks, #pagehdr-wrap .three.nav .column.left .row-small-blocks, .three.nav-main .column.left .row-small-blocks, .three#ad-slot-bottom .column.left .row-small-blocks {
     width: 100%; }
-  /* line 215, ../../sass/pages/_home.scss */
-  .row.three .column.left .block, .three.grid-test .column.left .block, #pagehdr-wrap .three.nav .column.left .block, .three.nav-main .column.left .block, .three#ad-slot-bottom .column.left .block, .row.three .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .row.three .column.left iframe, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe, .three#ad-slot-bottom .column.left .ad-item iframe, .three#ad-slot-bottom .ad-item .column.left iframe {
+  /* line 213, ../../sass/pages/_home.scss */
+  .row.three .column.left .block, .three.grid-test .column.left .block, #pagehdr-wrap .three.nav .column.left .block, .three.nav-main .column.left .block, .three#ad-slot-bottom .column.left .block {
     height: 11.25rem; }
-    /* line 218, ../../sass/pages/_home.scss */
-    .row.three .column.left .block .block-image, .three.grid-test .column.left .block .block-image, #pagehdr-wrap .three.nav .column.left .block .block-image, .three.nav-main .column.left .block .block-image, .three#ad-slot-bottom .column.left .block .block-image, .row.three .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .row.three .column.left iframe .block-image, .three.grid-test .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .three.grid-test .column.left iframe .block-image, #pagehdr-wrap .three.nav .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item #pagehdr-wrap .three.nav .column.left iframe .block-image, .three.nav-main .column.left #ad-slot-bottom .ad-item iframe .block-image, #ad-slot-bottom .ad-item .three.nav-main .column.left iframe .block-image, .three#ad-slot-bottom .column.left .ad-item iframe .block-image, .three#ad-slot-bottom .ad-item .column.left iframe .block-image {
+    /* line 216, ../../sass/pages/_home.scss */
+    .row.three .column.left .block .block-image, .three.grid-test .column.left .block .block-image, #pagehdr-wrap .three.nav .column.left .block .block-image, .three.nav-main .column.left .block .block-image, .three#ad-slot-bottom .column.left .block .block-image {
       height: 10rem;
       overflow: hidden; }
-/* line 229, ../../sass/pages/_home.scss */
+/* line 227, ../../sass/pages/_home.scss */
 .row.three .column.right, .three.grid-test .column.right, #pagehdr-wrap .three.nav .column.right, .three.nav-main .column.right, .three#ad-slot-bottom .column.right, .row.three #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .row.three .column.nav-user, .three.grid-test #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.grid-test .column.nav-user, #pagehdr-wrap .three.nav .column.nav-user, .three.nav-main #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.nav-main .column.nav-user, .three#ad-slot-bottom #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three#ad-slot-bottom .column.nav-user, .row.three .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .row.three ul.column.nav-elements, .three.grid-test .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three.grid-test ul.column.nav-elements, #pagehdr-wrap .three.nav .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section #pagehdr-wrap .three.nav ul.column.nav-elements, .three.nav-main .top-bar-section ul.column.nav-elements, .three#ad-slot-bottom .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three#ad-slot-bottom ul.column.nav-elements, .row.three .nav-main > li.column, .three.grid-test .nav-main > li.column, #pagehdr-wrap .three.nav .nav-main > li.column, .three.nav-main .nav-main > li.column, .three#ad-slot-bottom .nav-main > li.column, .row.three .nav-main .column.head-search, .nav-main .row.three .column.head-search, .three.grid-test .nav-main .column.head-search, .nav-main .three.grid-test .column.head-search, #pagehdr-wrap .three.nav .nav-main .column.head-search, .nav-main #pagehdr-wrap .three.nav .column.head-search, .three.nav-main .column.head-search, .three#ad-slot-bottom .nav-main .column.head-search, .nav-main .three#ad-slot-bottom .column.head-search {
   padding-left: 0;
   padding-right: 0;
@@ -6379,22 +6374,6 @@ footer {
   float: left; }
 
 /* line 236, ../../sass/pages/_home.scss */
-#spotlight {
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 0.625rem;
-  -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.25rem;
-  background: white;
-  height: 15.625rem; }
-
-/* line 242, ../../sass/pages/_home.scss */
 #billboard {
   width: 100%;
   margin-left: auto;
@@ -6423,10 +6402,10 @@ footer {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   #billboard:after {
     clear: both; }
-  /* line 245, ../../sass/pages/_home.scss */
-  #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard #ad-slot-bottom .ad-item iframe.small .title, #ad-slot-bottom .ad-item iframe.small #billboard .title, #billboard a {
+  /* line 239, ../../sass/pages/_home.scss */
+  #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard a {
     color: white !important; }
-  /* line 249, ../../sass/pages/_home.scss */
+  /* line 243, ../../sass/pages/_home.scss */
   #billboard a {
     background: #3c63af;
     padding: 1.25rem;
@@ -6441,7 +6420,7 @@ footer {
     #billboard a:hover {
       background: #333333; }
 
-/* line 259, ../../sass/pages/_home.scss */
+/* line 253, ../../sass/pages/_home.scss */
 #article-list {
   height: 15.625rem;
   -moz-border-radius-topleft: 5px;
@@ -6457,14 +6436,14 @@ footer {
   margin-bottom: 1.25rem;
   background: white;
   position: relative; }
-  /* line 269, ../../sass/pages/_home.scss */
+  /* line 263, ../../sass/pages/_home.scss */
   #article-list ul.list-plain {
     line-height: normal; }
-    /* line 273, ../../sass/pages/_home.scss */
+    /* line 267, ../../sass/pages/_home.scss */
     #article-list ul.list-plain li {
       color: #333333;
       margin-bottom: 15px; }
-      /* line 277, ../../sass/pages/_home.scss */
+      /* line 271, ../../sass/pages/_home.scss */
       #article-list ul.list-plain li a {
         color: #333333;
         text-decoration: none;
@@ -6476,13 +6455,13 @@ footer {
           color: #3c63af;
           text-decoration: none; }
 
-/* line 289, ../../sass/pages/_home.scss */
+/* line 283, ../../sass/pages/_home.scss */
 .more-link {
   position: absolute;
   bottom: 0.625rem;
   left: 0.625rem;
   right: auto; }
-  /* line 294, ../../sass/pages/_home.scss */
+  /* line 288, ../../sass/pages/_home.scss */
   .more-link > a {
     color: #333333;
     text-decoration: none; }
@@ -6491,7 +6470,7 @@ footer {
       color: #3c63af;
       text-decoration: none; }
 
-/* line 305, ../../sass/pages/_home.scss */
+/* line 299, ../../sass/pages/_home.scss */
 .tooltip {
   width: 300px !important;
   -moz-box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -6499,8 +6478,14 @@ footer {
   box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
   border: 1px solid #cccccc; }
 
-/* line 311, ../../sass/pages/_home.scss */
+/* line 305, ../../sass/pages/_home.scss */
 #issue {
+  padding-left: 0;
+  padding-right: 0;
+  float: left;
+  width: 11.25rem;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
@@ -6513,20 +6498,14 @@ footer {
   box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 1.25rem;
   background: white;
-  padding-left: 0;
-  padding-right: 0;
-  float: left;
-  width: 11.25rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem;
   height: 15.625rem; }
-  /* line 315, ../../sass/pages/_home.scss */
+  /* line 310, ../../sass/pages/_home.scss */
   #issue .current-img {
     width: 10rem; }
-  /* line 318, ../../sass/pages/_home.scss */
+  /* line 313, ../../sass/pages/_home.scss */
   #issue .boxtitle {
     margin-top: 0.3125rem; }
-    /* line 320, ../../sass/pages/_home.scss */
+    /* line 315, ../../sass/pages/_home.scss */
     #issue .boxtitle a {
       color: #333333;
       text-decoration: none;
@@ -6537,28 +6516,28 @@ footer {
       #issue .boxtitle a:hover, #issue .boxtitle a a:hover {
         color: #3c63af;
         text-decoration: none; }
-    /* line 330, ../../sass/pages/_home.scss */
+    /* line 325, ../../sass/pages/_home.scss */
     #issue .boxtitle .subhead {
       font-face: "arial";
       font-size: 16px; }
 
-/* line 337, ../../sass/pages/_home.scss */
+/* line 332, ../../sass/pages/_home.scss */
 #twitter {
   margin-bottom: 1.25rem; }
 
-/* line 342, ../../sass/pages/_home.scss */
+/* line 337, ../../sass/pages/_home.scss */
 .linkbox {
   height: 25.625rem; }
-  /* line 348, ../../sass/pages/_home.scss */
+  /* line 343, ../../sass/pages/_home.scss */
   .linkbox ul li {
     padding: 1.25rem 1.875rem;
     border-top: 1px solid #efefef; }
-    /* line 352, ../../sass/pages/_home.scss */
+    /* line 347, ../../sass/pages/_home.scss */
     .linkbox ul li a {
       font-family: "albert";
       font-size: 1rem; }
 
-/* line 361, ../../sass/pages/_home.scss */
+/* line 356, ../../sass/pages/_home.scss */
 #submission-links {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -6573,19 +6552,19 @@ footer {
   margin-bottom: 1.25rem;
   background: #333333;
   padding: 0.625rem 1.875rem; }
-  /* line 371, ../../sass/pages/_home.scss */
+  /* line 366, ../../sass/pages/_home.scss */
   #submission-links .split-container {
     margin-left: 0; }
-  /* line 375, ../../sass/pages/_home.scss */
+  /* line 370, ../../sass/pages/_home.scss */
   #submission-links .split-item {
     margin: 0 !important;
     width: 50%;
     height: 40px;
     text-align: center; }
-    /* line 380, ../../sass/pages/_home.scss */
+    /* line 375, ../../sass/pages/_home.scss */
     #submission-links .split-item:first-child {
       border-right: 1px solid #636363; }
-    /* line 383, ../../sass/pages/_home.scss */
+    /* line 378, ../../sass/pages/_home.scss */
     #submission-links .split-item a {
       color: #89a0d0;
       text-decoration: none;
@@ -6596,7 +6575,7 @@ footer {
         color: #89a0d0;
         text-decoration: underline; }
 
-/* line 391, ../../sass/pages/_home.scss */
+/* line 386, ../../sass/pages/_home.scss */
 #social-links {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -6612,19 +6591,19 @@ footer {
   background: #04417d;
   border-radius: 5px;
   padding: 0.3125rem; }
-  /* line 397, ../../sass/pages/_home.scss */
+  /* line 392, ../../sass/pages/_home.scss */
   #social-links h3 {
     text-indent: 0.625rem;
     margin-bottom: 0.625rem; }
-  /* line 402, ../../sass/pages/_home.scss */
+  /* line 397, ../../sass/pages/_home.scss */
   #social-links ul {
     margin-bottom: 0;
     margin-left: -0.25rem; }
-    /* line 406, ../../sass/pages/_home.scss */
+    /* line 401, ../../sass/pages/_home.scss */
     #social-links ul > li {
       margin-left: 4px;
       margin-bottom: 0; }
-      /* line 409, ../../sass/pages/_home.scss */
+      /* line 404, ../../sass/pages/_home.scss */
       #social-links ul > li > a {
         background: #3c63af;
         border-radius: 5px;
@@ -6632,32 +6611,32 @@ footer {
         height: 44px;
         text-align: center;
         color: white; }
-        /* line 416, ../../sass/pages/_home.scss */
+        /* line 411, ../../sass/pages/_home.scss */
         #social-links ul > li > a:hover {
           background: #333333; }
-      /* line 420, ../../sass/pages/_home.scss */
+      /* line 415, ../../sass/pages/_home.scss */
       #social-links ul > li .social {
         width: 44px; }
-      /* line 423, ../../sass/pages/_home.scss */
+      /* line 418, ../../sass/pages/_home.scss */
       #social-links ul > li .aria-text {
         position: absolute;
         top: -9999px;
         left: -9999px; }
-    /* line 430, ../../sass/pages/_home.scss */
+    /* line 425, ../../sass/pages/_home.scss */
     #social-links ul .social-blogs {
       width: 102px;
       line-height: 44px;
       font-size: 1rem;
       font-family: "albert"; }
 
-/* line 438, ../../sass/pages/_home.scss */
+/* line 433, ../../sass/pages/_home.scss */
 #blogs {
   height: 15.625rem;
   position: relative; }
-  /* line 448, ../../sass/pages/_home.scss */
+  /* line 446, ../../sass/pages/_home.scss */
   #blogs #blogrss {
     padding: 1.25rem 1.25rem 0; }
-    /* line 450, ../../sass/pages/_home.scss */
+    /* line 448, ../../sass/pages/_home.scss */
     #blogs #blogrss div {
       *zoom: 1;
       margin-bottom: 0.625rem; }
@@ -6668,35 +6647,35 @@ footer {
       /* line 117, ../../sass/vendor/foundation/components/_global.scss */
       #blogs #blogrss div:after {
         clear: both; }
-    /* line 454, ../../sass/pages/_home.scss */
+    /* line 452, ../../sass/pages/_home.scss */
     #blogs #blogrss .postimg {
       float: left;
       height: 75px;
-      width: 35px;
+      width: 2.1875rem;
       margin-right: 0.625rem; }
-    /* line 460, ../../sass/pages/_home.scss */
+    /* line 458, ../../sass/pages/_home.scss */
     #blogs #blogrss .postdate {
       margin: 0;
       font-size: 10px;
       font-family: "arial";
       color: #636363;
       padding: 0; }
-    /* line 467, ../../sass/pages/_home.scss */
+    /* line 465, ../../sass/pages/_home.scss */
     #blogs #blogrss .posttitle {
       height: 30px;
       line-height: 15px;
       overflow: hidden;
       margin: 0.3125rem 0; }
-      /* line 472, ../../sass/pages/_home.scss */
+      /* line 470, ../../sass/pages/_home.scss */
       #blogs #blogrss .posttitle a {
         font-family: "albert";
         font-size: 13px; }
-    /* line 478, ../../sass/pages/_home.scss */
+    /* line 476, ../../sass/pages/_home.scss */
     #blogs #blogrss .postauthor {
       color: #636363;
       margin: 0;
       padding: 0; }
-  /* line 485, ../../sass/pages/_home.scss */
+  /* line 483, ../../sass/pages/_home.scss */
   #blogs .more-link {
-    bottom: 30px;
-    left: 86px; }
+    bottom: 0.625rem;
+    left: 4.0625rem; }

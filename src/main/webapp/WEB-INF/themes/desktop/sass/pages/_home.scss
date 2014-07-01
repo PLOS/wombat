@@ -441,8 +441,9 @@ $image-container: ($image-width + $pad-small);
   @extend .block-card;
   position:relative;
 
-  .block-header{
+  .block-header {
     @extend .header-brand;
+    @extend .link-text-white;
   }
 
   #blogrss {

@@ -35,7 +35,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @include grid-column($collapse: true, $f-gridargs...);
   // sets the width
   @if $pixelwidth == full-width {
-    width: $grid-width-inside; // TODO - use variable
+    width: $grid-width-inside;
   } @else if $pixelwidth == columns {
     // do nothing
   } @else {
@@ -64,7 +64,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @include grid-column($collapse: true, $f-gridargs...);
   // sets the width
   @if $pixelwidth == full-width {
-    width: $grid-width-inside; // TODO - use variable
+    width: $grid-width-inside;
   } @else if $pixelwidth == columns {
     // do nothing
   } @else {
@@ -76,9 +76,8 @@ $grid-width-inside: ($row-width - $grid-gutter);
 @mixin plos-grid-container($grid-type: fixed) {
   @include plos-grid-row($container: true);
   @if $grid-type == fixed {
-    min-width: $grid-width; //TODO put this in value
-    max-width: $grid-width; //TODO put this in value
-  }
+    min-width: $grid-width;
+    max-width: $grid-width; / }
   margin: 0 auto;
 
 }
@@ -88,6 +87,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 }
 
 .row-inside {
+
 }
 
 //TODO - do we use this?

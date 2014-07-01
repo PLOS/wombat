@@ -36,7 +36,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
 #pagehdr-wrap {
   .nav {
-    @extend .row;  //PG -changed
+    @extend .row;
 
     .nav-user {
       @extend .inline-list; // from foundation
@@ -96,7 +96,7 @@ $width-nav: $block-grid-elements - $width-logo;
     @extend .right; // foundation
     padding-right: 0;
   }
-  > li{ @extend .right;} // PG - added this seems funny
+  > li{ @extend .right;}
   .top-bar-section ul.nav-elements > li.has-dropdown {
     cursor: pointer;
     margin-left: 3px;

@@ -37,6 +37,10 @@ public class JsonService {
   @Autowired
   protected Gson gson;
 
+  public String serialize(Object object) {
+    return gson.toJson(object);
+  }
+
   /**
    * Send a ReST request and serialize the response to an object. The serialization is controlled by the {@link
    * org.ambraproject.wombat.config.SpringConfiguration#gson()} bean.

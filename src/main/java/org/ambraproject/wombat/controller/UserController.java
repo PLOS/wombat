@@ -1,31 +1,68 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.collect.Maps;
+import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.util.HttpDebug;
+import org.apache.http.HttpHeaders;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * Controller for user related actions
  */
 @Controller
 public class UserController extends WombatController {
+  private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
-  @RequestMapping(value={"/user/secure/login", "/{site}/user/secure/login"})
+  @Autowired
+  private SoaService soaService;
+
+  @RequestMapping(value = {"/user/secure/login", "/{site}/user/secure/login"})
   public ModelAndView redirectToOriginalLink(HttpServletRequest request, @RequestParam("page") String page) {
     // page param should contain the url to the location we want to send the user to
     String contextPath = request.getContextPath();
     int index = page.indexOf(contextPath);
-    if (index != -1 ) {
+    if (index != -1) {
       page = page.substring(index + contextPath.length());
+    }
+
+    try {
+      recordLogin(request);
+    } catch (Exception e) {
+      if (log.isErrorEnabled()) { // don't rely on log.error's string-builder because HttpDebug.dump itself is expensive
+        String requestDump = HttpDebug.dump(request);
+        log.error(String.format("Failed to record login (%s)", requestDump), e);
+      }
     }
 
     return new ModelAndView("redirect:" + page);
   }
 
-  @RequestMapping(value={"/user/logout", "/{site}/user/logout" })
+  private void recordLogin(HttpServletRequest request) throws IOException {
+    String remoteUser = request.getRemoteUser();
+    HttpSession session = request.getSession(false);
+    String sessionId = (session == null) ? null : session.getId();
+    String ipAddress = request.getRemoteAddr();
+    String userAgent = request.getHeader(HttpHeaders.USER_AGENT);
+
+    Map<String, String> persist = Maps.newHashMapWithExpectedSize(3);
+    persist.put("sessionId", sessionId);
+    persist.put("IP", ipAddress);
+    persist.put("userAgent", userAgent);
+    soaService.postObject("users/" + remoteUser, persist);
+  }
+
+  @RequestMapping(value = {"/user/logout", "/{site}/user/logout"})
   public ModelAndView redirectToSignOut(HttpServletRequest request) {
     return new ModelAndView("redirect:" + request.getHeader("Referer"));
   }

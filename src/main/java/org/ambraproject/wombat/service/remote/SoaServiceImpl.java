@@ -5,11 +5,14 @@ import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 
 public class SoaServiceImpl implements SoaService {
@@ -37,6 +40,20 @@ public class SoaServiceImpl implements SoaService {
   public <T> T requestObject(String address, Class<T> responseClass) throws IOException {
     // Just try to cache everything. We may want to narrow this in the future.
     return requestCachedObject("obj:" + address, address, responseClass);
+  }
+
+  @Override
+  public void postObject(String address, Object object) throws IOException {
+    String json = jsonService.serialize(object);
+    HttpPost post = new HttpPost(buildUri(address));
+    try {
+      post.setEntity(new StringEntity(json));
+    } catch (UnsupportedEncodingException e) {
+      throw new RuntimeException(e);
+    }
+
+    try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(post)) {
+    }
   }
 
   @Override

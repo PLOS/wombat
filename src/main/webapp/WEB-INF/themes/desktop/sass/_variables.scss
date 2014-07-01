@@ -2,6 +2,11 @@
    COLORS
 \*------------------------------------*/
 
+
+//some of these values use the rem-calc() function in foundation framework from zurb - http://foundation.zurb.com/ - if not using foundation you have to change these values to use the units of you choice
+// if you still want to use rem-calc then import foundation/functions  here.  or create your own rem-calc function
+
+
 //journal specific
 
 $plos-default: #3c63af; //blue
@@ -49,8 +54,16 @@ $clr-btn-text: $white;
 $clr-input-placeholder: $black;
 $clr-input-active: $grey-med;
 
-// grid values
-$grid-gutter: 1.25rem;
+// GRID OPTIONS
+// Options are in scaffold.scss
+// $grid-type options:
+//  fixed - sets the grid width and doesn't respond to sizes
+//  responsive - makes the grid responsive - currently uses foundation responsive grid features.
+$grid-type: fixed;
+$grid-gutter: 1.25rem; //TODO: figure out this whole rem thing
+$grid-width: 980px;
+$grid-columns: 12;
+
 
 
 // layout patterns
@@ -60,8 +73,10 @@ $default-box-shadow-color: rgba(0, 0, 0, 0.1);
 $default-box-shadow-h-offset: 1px;
 $default-box-shadow-v-offset: 1px;
 $default-box-shadow-blur: 5px;
-$default-box-shadow-spread: 0;
+$default-box-shadow-spread: 5px;
 $default-box-shadow-inset: false;
+$default-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1);
+
 $default-header-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
 
 $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
@@ -69,7 +84,7 @@ $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px
 $pad-default: $grid-gutter;       //20px
-$pad-medium: ($grid-gutter *1.5); //30px
+$pad-medium: ($grid-gutter * 1.5); //30px
 $pad-large: ($grid-gutter * 2);   //40px
 
 // typography

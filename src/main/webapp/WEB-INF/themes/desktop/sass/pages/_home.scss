@@ -7,28 +7,50 @@ $image-width: rem-calc(70);
 $hero-height: rem-calc(380);
 $image-container: ($image-width + $pad-small);
 
+// this mixin extends the foundation grid to do two things it can't do
+//1. add margins on the outside if needed
+//2. use pixel widths - Digital Pulp submitted designs with columns in pixel widths that vary from page to page.
+// questions:
+// I am using foundation settings values.
 
-.row {
-  &.one, &.two {
-    .block {
-      margin-right: 2%; // this is for demo
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
+///TODOPG: these are all the widths
+.width-full {
+  @include plos-grid-column($pixelwidth: full-width);
 }
 
-.row {
-  @include grid-row()
+.width-xx-small {
+  @include plos-grid-column(182);
+}
+
+.width-x-small {
+  @include plos-grid-column(267);
+}
+
+.width-small {
+  @include plos-grid-column(306);
+}
+
+.width-medium {
+  @include plos-grid-column(469);
+}
+
+.width-large {
+  @include plos-grid-column(633);
+}
+
+.carousel-wrap.small {
+  @extend .width-small;
 }
 
 //home page blocks
 
+
 .hero {
+  @extend .width-full;
+  @include blocks($shadow: none);
+
   position: relative;
   padding: 0;
-  margin-bottom: rem-calc(20);
   background: transparent;
   // overlay colors
   &.overlay-dark > a:before {
@@ -44,7 +66,6 @@ $image-container: ($image-width + $pad-small);
     @include background-image(linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.17) 56%, rgba(255, 255, 255, 0.54) 71%, rgba(255, 255, 255, 0.65) 78%, rgba(255, 255, 255, 0.66) 100%));
   }
   img {
-    @include single-box-shadow();
     @include border-top-radius();
     width: 100%;
   }
@@ -75,48 +96,33 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-#billboard {
-  @include grid-row;
-  @include blocks($grey-dark);
-  h3, h4, a {
-    color: $white !important;
-  }
-  position: relative;
-  a {
-    @include rounded-pill();
-    position: absolute;
-    width: 80px;
-    height: 36px;
-    right: 20px;
-    top: 10px;
-  }
-}
 
 //sizes:
-.row > .block { // to do this needs to get fixed in the grid refactor
+.row > .block {
+
+  &.xx-small {
+    @extend .width-xx-small;
+  }
 
   &.x-small {
-    @include grid-column(2, $collapse: false);
-
+    @extend .width-x-small;
   }
   &.small {
-    @include grid-column(4, $collapse: false);
+    @extend .width-small;
   }
   &.medium {
-    @include grid-column(6, $collapse: false);
-    width: 48%; // for demo
+    @extend .width-medium;
   }
   &.large {
-    @include grid-column(7, $collapse: false);
+    @extend .width-large;
   }
 
 }
 
 .block {
+  @include blocks;
   position: relative;
   height: $block-height;
-
-  @include blocks;
 
   .block-image {
     width: $image-container;
@@ -166,25 +172,24 @@ $image-container: ($image-width + $pad-small);
     .title {
       @extend h4;
       @extend .subheader;
-      font-family: albert-bold;
+      font-family: $font-face-fancy;
     }
   }
 
 }
-
+.row.three{
 .column {
   &.left {
-    @include grid-column(8, $collapse: false);
+    @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 8); //width + gutter
+    .block.large {
+      @extend .width-large;
+    }
     .row-small-blocks {
-      @include block-grid(2);
+      width: 100%; //TODO remove width?
       // for demo
       .block {
-        &:nth-child(1), &:nth-child(3) {
-          margin-right: 2%;
-          width: 46%;
-        }
+        @extend .width-small;
       }
-
     }
     /// row three is shorter than the others
     .block {
@@ -196,25 +201,20 @@ $image-container: ($image-width + $pad-small);
       }
 
       &.small {
-        @include grid-column(6, $collapse: false);
+        @extend .width-small;
       }
     }
   }
 
   &.right {
-    @include grid-column(4, $collapse: true);
+    @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 4); //width + gutter
   }
 }
-
-#spotlight {
-  @include blocks();
-  height: $block-height;
-
 }
 
 #billboard {
-  @include grid-row;
-  @include blocks($grey-dark);
+  @extend .width-full;
+  @include blocks($grey-dark, $shadow: none, $radius: none);
   h3, h4, a {
     color: $white !important;
   }
@@ -232,11 +232,8 @@ $image-container: ($image-width + $pad-small);
 #article-list {
   height: $block-height;
   @include blocks;
-  @include grid-column(4);
-
+  @extend .width-x-small;
   position: relative;
-  width: 30%; // TODO: fix grid
-  margin-right: 3%; // TODO: fix grid
 
   h3 {
     @extend .highlighted-title;
@@ -285,8 +282,9 @@ $image-container: ($image-width + $pad-small);
 }
 
 #issue {
-  @include grid-column(2);
+  @include plos-grid-column(180);
   @include blocks;
+
   height: $block-height;
   .current-img {
     width: rem-calc(160);
@@ -308,8 +306,14 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
+#twitter {
+  @extend .width-small;
+  margin-bottom: $pad-default;
+}
+
 .linkbox {
   @extend .block-card;
+  @extend .width-small;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
   ul {
     @extend .no-bullet; // from foundation
@@ -325,11 +329,10 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
+
 #submission-links {
-  @include blocks;
-  @include border-top-radius();
-  background: $grey-dark;
-  padding: $pad-small $pad-medium;
+  @include blocks($color: $grey-dark, $padding: $pad-small $pad-medium 0 $pad-medium);
+  @extend .width-small;
 
   h3 {
     @extend .header-bottom-shadow;
@@ -341,7 +344,7 @@ $image-container: ($image-width + $pad-small);
   }
   .split-item {
     margin: 0 !important;
-    width: 127px;
+    width: 50%;
     height: 40px;
     text-align: center;
     &:first-child {
@@ -356,15 +359,14 @@ $image-container: ($image-width + $pad-small);
 }
 
 #social-links {
-
-  @include blocks;
-  background: #04417d;
+  @extend .width-small;
+  @include blocks($color: #04417d);
   border-radius: $border-radius-default;
   padding: $pad-xsmall;
 
   h3 {
     @extend .header-xlarge-light;
-    text-indent: rem-calc(10);
+    text-indent: $pad-small;
     margin-bottom: $pad-small;
   }
   ul {
@@ -389,6 +391,7 @@ $image-container: ($image-width + $pad-small);
         width: ($txt-size-xxlarge * 2);
       }
       .aria-text {
+        // TODO?: make this easier to extend?
         position: absolute;
         top: -9999px;
         left: -9999px;
@@ -403,9 +406,12 @@ $image-container: ($image-width + $pad-small);
   }
 }
 #blogs {
+  $image-width: rem-calc(35px);
+  @extend .width-small;
   height: $block-height;
   @extend .block-card;
-  padding:0; // TODO needs to be removed in grid refactor
+  position:relative;
+
 
   .block-header {
     @extend .header-brand;
@@ -421,7 +427,7 @@ $image-container: ($image-width + $pad-small);
     .postimg {
       float: left;
       height: 75px;
-      width: 35px;
+      width: $image-width;
       margin-right: $pad-small;
     }
     .postdate {
@@ -437,7 +443,7 @@ $image-container: ($image-width + $pad-small);
       overflow: hidden;
       margin: $pad-xsmall 0;
       a {
-       @extend .link-text-body;
+        @extend .link-text-body;
         font-family: $font-face-fancy;
         font-size: $txt-size-small;
       }
@@ -450,17 +456,18 @@ $image-container: ($image-width + $pad-small);
     }
   }
   .more-link {
-    bottom: 30px;
-    left: 86px;
+    bottom: $pad-small;
+    left: ($image-width + ($pad-default + $pad-small));
   }
 }
 
-#ad-slot-bottom{
-  @include grid-row;
-    .ad-item{
-
-      @include grid-column(4);
-      iframe{  @extend .block;}
-
+#ad-slot-bottom {
+  @extend .row;
+  .ad-item {
+    @extend .width-small;
+    iframe {
+      @extend .block-card;
     }
+
+  }
 }

@@ -22,10 +22,6 @@
   @extend .text-center;
   @include highlight-border($plos-default); /*TODO: use themes journal-specific css to assign border color*/
   padding: $pad-xsmall $pad-small;
-  .center { width: 748px;
-    margin: 0 auto;
-    height: 90px;
-  }
   .title {
     width: 18px;
     height: 88px;
@@ -40,12 +36,11 @@ $width-nav: $block-grid-elements - $width-logo;
 
 #pagehdr-wrap {
   .nav {
-    @include grid-row();
+    @extend .row;
 
     .nav-user {
       @extend .inline-list; // from foundation
       @extend .right; // from foundation
-      //  @include grid-column($columns:4, $float:right); // from foundation
       font-weight: bold;
       > li {
         margin-top: rem-calc(-5);
@@ -71,7 +66,7 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 
   .logo {
-    @include grid-column($width-logo); // from foundation
+    @include plos-grid-column($pixelwidth: columns, $columns: $width-logo);
     @extend .title-area;
     text-indent: -9999px;
     height: 41px;
@@ -92,17 +87,16 @@ $width-nav: $block-grid-elements - $width-logo;
     visibility: hidden;
   }
   @extend .top-bar;
+  @extend .row;
   font-family: $font-face-navigation;
   .top-bar-section {
-    width: 960px;
+    @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right)
   }
   .top-bar-section ul.nav-elements {
-    @extend .left; // foundation
-    @include grid-column($width-nav); // from foundation
+    @extend .right; // foundation
     padding-right: 0;
-    padding-left: 0;
   }
-
+  > li{ @extend .right;}
   .top-bar-section ul.nav-elements > li.has-dropdown {
     cursor: pointer;
     margin-left: 3px;
@@ -233,44 +227,61 @@ $width-nav: $block-grid-elements - $width-logo;
     }
   }
   .head-search {
-    // $last-column: true; // from foundation
-    //@extend .has-form;   // from foundation
-    @include grid-column($width-search); // from foundation
+    @extend .right;
     padding-left: rem-calc(20);
     padding-right: 0;
-    border-left: 1px solid $grey-light;
     text-align: right;
     form {
+      background: $white;
       $fieldset-padding: 0;   // from foundation
       $fieldset-margin: 0;   // from foundation
       $input-box-shadow: none; // from foundation
       $input-include-glowing-effect: false; // from foundation
       $input-font-size: rem-calc($txt-size-xxlarge); // from foundation
-      margin-top: rem-calc(-5);
+      display: inline-block;
       legend, label {
         display: none;
       }
 
+      fieldset {
+        border: 1px none white;
+        margin: $pad-small $pad-small $pad-small rem-calc(3px);
+        background-color: $white;
+
+      }
+
       input[type="text"] {
 
-        $form-spacing: rem-calc(14);  // from foundation
+        $form-spacing: 0;  // from foundation
         $input-border-radius: 0; // from foundation
         $input-include-glowing-effect: false; // from foundation
         $input-font-color: $clr-body-text; // from foundation
         $input-border-color: $white; // from foundation
+        $form-label-line-height: 2; // from foundation
         $input-focus-border-color: $white; // from foundation
         @include form-element(); // from foundation
-        width: rem-calc(195);
+        display: inline-block;
+        width: rem-calc(150);
         color: $clr-input-active;
+        /// overwriting foundation styles
+        display: inline-block;
+        height: auto;
+        top: 0 !important;
       }
       @include input-placeholder-color();
 
       button[type="submit"] {
         @include postfix($white, $white); //foundation
-        width: 40px;
-        height: 42px;
         border: none;
-
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin: 0;
+        border: none;
+        display: inline-block;
+        /// overwriting foundation styles
+        top: 0 !important;
         .search-icon {
           @extend .fa;
           @extend .fa-search;
@@ -284,7 +295,6 @@ $width-nav: $block-grid-elements - $width-logo;
 .top-bar-section ul li.head-search a {
   margin-top: rem-calc(-10);
   line-height: 33px;
-  width: rem-calc(175);
   padding: 0 !important;
   font-size:  rem-calc($txt-size-small);
   @include link-text($clr-highlight-hover, underline);

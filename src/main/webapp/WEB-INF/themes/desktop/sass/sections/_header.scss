@@ -245,7 +245,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
       fieldset {
         border: 1px none white;
-        margin: rem-calc(10px 10px 10px 3px);
+        margin: $pad-small $pad-small $pad-small rem-calc(3px);
         background-color: $white;
 
       }

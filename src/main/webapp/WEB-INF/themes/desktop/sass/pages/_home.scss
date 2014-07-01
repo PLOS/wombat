@@ -96,24 +96,6 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-#billboard {
-  @include blocks($grey-dark);
-  @extend .width-full;
-
-  h3, h4, a {
-    color: $white !important;
-  }
-  position: relative;
-  a {
-    @include rounded-pill();
-    position: absolute;
-    width: auto;
-    //TODO neaten this up
-    height: 36px;
-    right: 20px;
-    top: 10px;
-  }
-}
 
 //sizes:
 .row > .block {
@@ -226,16 +208,13 @@ $image-container: ($image-width + $pad-small);
 
   &.right {
     @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 4); //width + gutter
-
   }
 }
 }
 
-
-
 #billboard {
-  @include grid-row;
-  @include blocks($grey-dark);
+  @extend .width-full;
+  @include blocks($grey-dark, $shadow: none, $radius: none);
   h3, h4, a {
     color: $white !important;
   }

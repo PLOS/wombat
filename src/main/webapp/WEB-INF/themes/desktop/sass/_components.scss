@@ -28,16 +28,17 @@
   // set block padding
   @if $padding == default {
     padding: $pad-small;
-  }@if $padding == none{
+  } @else if $padding == none{
     padding: 0;
-  }
+  } @else {
+    padding: $padding;
+}
   // set block shadow
   @if $shadow == default{
     @include single-box-shadow();
   } @if $shadow == none{
     // no shadow
   }
-
   margin-bottom: $grid-gutter;
   background: $color;
 }

@@ -77,7 +77,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @include plos-grid-row($container: true);
   @if $grid-type == fixed {
     min-width: $grid-width;
-    max-width: $grid-width; / }
+    max-width: $grid-width; }
   margin: 0 auto;
 
 }

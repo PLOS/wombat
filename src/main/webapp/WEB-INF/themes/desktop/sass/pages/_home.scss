@@ -137,6 +137,8 @@ $image-container: ($image-width + $pad-small);
   // components
   .date {
     @extend .small-italic;
+    @extend .right;
+    padding-right: $pad-small;
   }
   .credits {
     @extend .small-italic;
@@ -147,17 +149,16 @@ $image-container: ($image-width + $pad-small);
 
   }
   .category {
-    @extend .highlighted-title;
+    @extend .brand-title;
   }
   .title {
     @extend h2;
-    a {
-      color: $clr-body-text;
-      &:hover {
-        text-decoration: underline;
-      }
+    @extend .link-text-body;
+    //in case p tag is added in CMS, need to override global settings for p
+    p {
+      font-size: inherit; //$txt-size-h2;
+      line-height: inherit;
     }
-
   }
   .blurb {
     //TODO: remove when you neaten up font sizes.
@@ -214,18 +215,22 @@ $image-container: ($image-width + $pad-small);
 
 #billboard {
   @extend .width-full;
-  @include blocks($grey-dark, $shadow: none, $radius: none);
-  h3, h4, a {
-    color: $white !important;
-  }
+  @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-small $pad-default);
   position: relative;
-  a {
-    @include rounded-pill();
+  h3, h4, a {
+    color: $white;
+  }
+  h3 {
+    font-size: $txt-size-h2;
+  }
+  a {  //not using rounded-pill: would need too many overrides
+    @extend .brand-background-hover;
+    border-radius: $border-radius-default;
+    padding: $pad-xsmall $pad-default;
     position: absolute;
-    width: 80px;
-    height: 36px;
+    display: inline-block;
     right: $pad-default;
-    top: $pad-small;
+    top: 18px;
   }
 }
 
@@ -236,7 +241,7 @@ $image-container: ($image-width + $pad-small);
   position: relative;
 
   h3 {
-    @extend .highlighted-title;
+    @extend .brand-title;
   }
 
   ul.list-plain {
@@ -331,7 +336,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 #submission-links {
-  @include blocks($color: $grey-dark, $padding: $pad-small $pad-medium 0 $pad-medium);
+  @include blocks($color: $grey-dark, $padding: $pad-small $pad-medium 0 $pad-medium, $shadow: none);
   @extend .width-small;
 
   h3 {
@@ -340,7 +345,7 @@ $image-container: ($image-width + $pad-small);
   }
   .split-container {
     @extend .inline-list;
-    margin-left: 0;
+    margin: 0 0 $pad-small;
   }
   .split-item {
     margin: 0 !important;
@@ -360,9 +365,7 @@ $image-container: ($image-width + $pad-small);
 
 #social-links {
   @extend .width-small;
-  @include blocks($color: #04417d);
-  border-radius: $border-radius-default;
-  padding: $pad-xsmall;
+  @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);
 
   h3 {
     @extend .header-xlarge-light;
@@ -390,31 +393,28 @@ $image-container: ($image-width + $pad-small);
       .social {
         width: ($txt-size-xxlarge * 2);
       }
-      .aria-text {
-        // TODO?: make this easier to extend?
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
+      .icon-text {
+        @extend .aria-text;
       }
     }
     .social-blogs {
-      width: 102px;
+      width: rem-calc(104);
       line-height: ($txt-size-xxlarge * 2);
       font-size: rem-calc($txt-size-medium-large);
       font-family: $font-face-fancy;
     }
   }
 }
+
 #blogs {
   $image-width: rem-calc(35px);
   @extend .width-small;
   height: $block-height;
   @extend .block-card;
-  position:relative;
+  position: relative;
 
-
-  .block-header {
-    @extend .header-brand;
+  .block-header{
+    @extend .brand-header;
     @extend .link-text-white;
   }
 
@@ -471,3 +471,11 @@ $image-container: ($image-width + $pad-small);
 
   }
 }
+// set the journal-specific colors
+.plosbiology, .ploscompbiol, .plosgenetics {
+  @include brandColor($setColor: $plos-bio);
+}
+.plosmedicine, .plospathogens, .plosntd {
+  @include brandColor($setColor: $plos-med);
+}
+

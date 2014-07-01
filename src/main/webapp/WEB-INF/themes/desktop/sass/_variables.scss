@@ -11,11 +11,11 @@
 
 $plos-default: #3c63af; //blue
 $plos-one: #f8af2d; //yellow
-$plos-bio: #16a127; //green
-$plos-med: #891fb1; // purple
+$plos-bio: #16a127; //green: biology, comp-bio, genetics
+$plos-med: #891fb1; // purple: medicine, pathogens, ntds
 $plos-currents: #1dbfe0; // light blue
 
-// TODO : these probably are in different variable files
+$clr-brand: $plos-default;
 
 $black: #000;
 $white: #fff;

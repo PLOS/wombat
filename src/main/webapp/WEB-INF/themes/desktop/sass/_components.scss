@@ -13,7 +13,7 @@
   }
 
 }
-
+//extend .pill if using defaults in rounded-pill
 .pill {
   @include rounded-pill();
 }
@@ -22,9 +22,11 @@
   // set block radius
   @if $radius == top {
     @include border-top-radius();
-  } @if $radius == none{
+  } @if $radius == none {
      // no radius
-  }
+  } @if $radius == all {
+    border-radius: $border-radius-default;
+}
   // set block padding
   @if $padding == default {
     padding: $pad-small;
@@ -95,12 +97,11 @@ have a fixed width and height (but it's not required).
   $icon-height: rem-calc(30);
   $carousel-width: rem-calc(320); // TODO there should be a way to calulate this width
   // TODO PG-width is set in home.scss
-
+  @extend .brand-shading;
   @extend .block-card;
-  padding: 0; // TODO needs to be removed in grid refactor
-  margin-right: $pad-default; /// needs to be removed in grid refactor
+   margin-right: $pad-default; /// needs to be removed in grid refactor
   .block-header {
-    @extend .header-brand;
+    @extend .brand-header;
   }
   .carousel {
 
@@ -159,6 +160,7 @@ have a fixed width and height (but it's not required).
   content: '\f138';
   @extend .fa;
   @extend .fa-inverse;
+  @extend .brand-color;
   padding-left: rem-calc(3);
 }
 
@@ -193,7 +195,12 @@ have a fixed width and height (but it's not required).
   @extend .fa-envelope-o;
   content: '\f003';
 }
-
+//example: <span class="aria-text">RSS</span>
+.aria-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
 
 
 

@@ -53,15 +53,59 @@ $clr-highlight-text: $white) {
   }
 }
 
-.highlight-background-nohover {
-  background: $clr-highlight;
-  color: $clr-highlight-text;
-}
-
 .highlight-border {
   border-color: $clr-highlight;
 }
-
+///////
+//branding
+/////
+@mixin brandColor($setColor: $plos-default ) {
+  .more-icon {
+    color: $setColor;
+  }
+  .brand-color {
+    color: $setColor;
+  }
+  .brand-border {
+    border-color: $setColor;
+  }
+  .brand-background {
+    background: $setColor;
+  }
+  .brand-background-hover {
+    background: $setColor;
+    &:hover {
+      background: $plos-default;
+    }
+  }
+  //color shading variations on adjacent box headers
+  .brand-shading {
+    &:first-child {
+      .block-header {
+        background: darken($setColor, 18%);
+      }
+      .jcarousel-prev,
+      .jcarousel-next {
+        color: darken($setColor, 18%);
+        &:hover {
+          color: $plos-default;
+        }
+      }
+    }
+    &:nth-child(2) {
+      .block-header {
+        background: darken($setColor, 13%);
+      }
+      .jcarousel-prev,
+      .jcarousel-next {
+        color: darken($setColor, 13%);
+        &:hover {
+          color: $plos-default;
+        }
+      }
+    }
+  }
+}
 // layout utilities
 
 .center-simple {

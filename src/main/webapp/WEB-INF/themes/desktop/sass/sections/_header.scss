@@ -25,6 +25,11 @@
   border-bottom-width: 6px;
   border-bottom-style: solid;
   padding: $pad-xsmall $pad-small;
+  .center {
+    width: 748px;
+    margin: 0 auto;
+    height: 90px;
+  }
   .title {
     width: 18px;
     height: 88px;
@@ -40,7 +45,6 @@ $width-nav: $block-grid-elements - $width-logo;
 #pagehdr-wrap {
   .nav {
     @extend .row;
-
     .nav-user {
       @extend .inline-list; // from foundation
       @extend .right; // from foundation

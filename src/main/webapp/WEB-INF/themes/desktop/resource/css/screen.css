@@ -6086,7 +6086,7 @@ footer {
       /* line 258, ../../sass/sections/_header.scss */
       .nav-main .head-search form fieldset {
         border: 1px none white;
-        margin: 0.625rem 0.625rem 0.625rem 0.1875rem;
+        margin: 0.625rem;
         background-color: white; }
       /* line 265, ../../sass/sections/_header.scss */
       .nav-main .head-search form input[type="text"] {
@@ -6120,19 +6120,33 @@ footer {
           background-color: #dddddd; }
       /* line 101, ../../sass/_typography.scss */
       .nav-main .head-search form ::-webkit-input-placeholder {
-        color: black; }
+        color: #333333; }
       /* line 104, ../../sass/_typography.scss */
       .nav-main .head-search form :-moz-placeholder {
         /* Firefox 18- */
-        color: black; }
+        color: #333333; }
       /* line 108, ../../sass/_typography.scss */
       .nav-main .head-search form ::-moz-placeholder {
         /* Firefox 19+ */
-        color: black; }
+        color: #333333; }
       /* line 112, ../../sass/_typography.scss */
       .nav-main .head-search form :-ms-input-placeholder {
-        color: black; }
-      /* line 285, ../../sass/sections/_header.scss */
+        color: #333333; }
+      /* line 101, ../../sass/_typography.scss */
+      .nav-main .head-search form.placeholder ::-webkit-input-placeholder {
+        color: #999999; }
+      /* line 104, ../../sass/_typography.scss */
+      .nav-main .head-search form.placeholder :-moz-placeholder {
+        /* Firefox 18- */
+        color: #999999; }
+      /* line 108, ../../sass/_typography.scss */
+      .nav-main .head-search form.placeholder ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: #999999; }
+      /* line 112, ../../sass/_typography.scss */
+      .nav-main .head-search form.placeholder :-ms-input-placeholder {
+        color: #999999; }
+      /* line 289, ../../sass/sections/_header.scss */
       .nav-main .head-search form button[type="submit"] {
         background: white;
         border-left: none;
@@ -6147,11 +6161,11 @@ footer {
         border: none;
         display: inline-block;
         top: 0 !important; }
-        /* line 297, ../../sass/sections/_header.scss */
+        /* line 301, ../../sass/sections/_header.scss */
         .nav-main .head-search form button[type="submit"] .search-icon {
           font-size: 1.25rem; }
 
-/* line 307, ../../sass/sections/_header.scss */
+/* line 311, ../../sass/sections/_header.scss */
 .top-bar-section ul li.head-search a {
   margin-top: -0.625rem;
   line-height: 33px;
@@ -6164,7 +6178,7 @@ footer {
     color: #3c63af;
     text-decoration: underline; }
 
-/* line 314, ../../sass/sections/_header.scss */
+/* line 318, ../../sass/sections/_header.scss */
 .top-bar-section ul li.head-search:hover:not(.has-form) > a {
   background: #efefef; }
 

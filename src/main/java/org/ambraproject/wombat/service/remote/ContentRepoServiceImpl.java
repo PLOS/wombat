@@ -22,6 +22,7 @@ public class ContentRepoServiceImpl implements ContentRepoService {
   private CachedRemoteService<InputStream> cachedRemoteStreamer;
 
   private URI contentRepoAddress;
+  private String repoBucketName;
 
   private URI getContentRepoAddress() throws IOException {
     if (contentRepoAddress != null) {
@@ -38,10 +39,22 @@ public class ContentRepoServiceImpl implements ContentRepoService {
     }
   }
 
+  private String getRepoBucketName() throws IOException {
+    if (repoBucketName != null) {
+      return repoBucketName;
+    }
+    try (Reader reader = soaService.requestReader("repoBucket/")) {
+      repoBucketName = IOUtils.toString(reader);
+    }
+    if (repoBucketName == null) {
+      throw new RuntimeException("No repository bucket name returned from service");
+    }
+    return repoBucketName;
+  }
+
   /**
    * Requests a file from the content repository. Returns the full response.
    *
-   * @param bucket  content repo bucket
    * @param key     content repo key
    * @param version content repo version
    * @return the response from the content repo
@@ -49,11 +62,11 @@ public class ContentRepoServiceImpl implements ContentRepoService {
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the repository does not provide the file
    */
   @Override
-  public AssetServiceResponse request(String bucket, String key, Optional<Integer> version, Header... headers)
+  public AssetServiceResponse request(String key, Optional<Integer> version, Header... headers)
       throws IOException {
     URI contentRepoAddress = getContentRepoAddress();
     if ("file".equals(contentRepoAddress.getScheme())) {
-      return requestInDevMode(contentRepoAddress, bucket, key, version);
+      return requestInDevMode(contentRepoAddress, key, version);
     }
 
     String contentRepoAddressStr = contentRepoAddress.toString();
@@ -64,15 +77,16 @@ public class ContentRepoServiceImpl implements ContentRepoService {
     if (version.isPresent()) {
       requestParams.add("version", version.get().toString());
     }
+    String repoBucketName = getRepoBucketName();
     URI requestAddress = URI.create(String.format("%s/objects/%s?%s",
-        contentRepoAddressStr, bucket, requestParams.format()));
+        contentRepoAddressStr, repoBucketName, requestParams.format()));
 
     return AssetServiceResponse.wrap(cachedRemoteStreamer.getResponse(requestAddress, headers));
   }
 
-  private AssetServiceResponse requestInDevMode(URI contentRepoAddress, String bucket, String key, Optional<Integer> version)
+  private AssetServiceResponse requestInDevMode(URI contentRepoAddress, String key, Optional<Integer> version)
       throws FileNotFoundException {
-    File path = new File(contentRepoAddress.getPath(), bucket + '/' + key);
+    File path = new File(contentRepoAddress.getPath(), key);
     return AssetServiceResponse.wrap(path);
   }
 

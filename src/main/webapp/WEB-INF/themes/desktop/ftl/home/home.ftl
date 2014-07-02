@@ -72,6 +72,22 @@
   });
 
 </script>
+ <#--placeholder logic -->
+<script>
+  $(document).ready(function() {
+    var $input = $("#navsearch input#search");
+    var placeholderClass= "placeholder";
+
+    $input.focusin(function() {
+       $( this ).parents("form").addClass( placeholderClass );
+
+     });
+    $input.focusout(function() {
+      $( this ).parents("form").removeClass( placeholderClass );
+
+    });
+  });
+</script>
 
 <script>
 

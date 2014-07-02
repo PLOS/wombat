@@ -257,7 +257,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
       fieldset {
         border: 1px none white;
-        margin: $pad-small $pad-small $pad-small rem-calc(3px);
+        margin: $pad-small;
         background-color: $white;
 
       }
@@ -279,8 +279,12 @@ $width-nav: $block-grid-elements - $width-logo;
         display: inline-block;
         height: auto;
         top: 0 !important;
+
       }
       @include input-placeholder-color();
+
+
+      &.placeholder{@include input-placeholder-color(#999);}
 
       button[type="submit"] {
         @include postfix($white, $white); //foundation

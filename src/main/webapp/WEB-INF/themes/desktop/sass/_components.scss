@@ -95,7 +95,7 @@ have a fixed width and height (but it's not required).
 // small carousel
 .carousel-wrap.small {
   $icon-height: rem-calc(30);
-  $carousel-width: rem-calc(320); // TODO there should be a way to calulate this width
+  $carousel-width: rem-calc(306);
   // TODO PG-width is set in home.scss
   @extend .brand-shading;
   @extend .block-card;
@@ -104,10 +104,10 @@ have a fixed width and height (but it's not required).
     @extend .brand-header;
   }
   .carousel {
-
     li {
       width: $carousel-width;
       padding: $pad-default;
+      height: 145px;
       h3 {
         @extend h2;
       }
@@ -117,10 +117,11 @@ have a fixed width and height (but it's not required).
     }
   }
   .carousel-control {
-    text-align: center;
-    display: table;
-    margin: 0 auto;
-    padding-bottom: $pad-small;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 120px;
+    margin-left: -50px;
     .jcarousel-prev,
     .jcarousel-next {
       @extend .fa;
@@ -136,7 +137,8 @@ have a fixed width and height (but it's not required).
       @extend .fa-chevron-circle-right;
     }
     .numbers {
-      font-size: rem-calc($txt-size-xsmall);
+      @extend .small-italic;
+      color: $grey-med;
       display: inline-block;
       padding: 0 $pad-xsmall;
       vertical-align: top;
@@ -195,7 +197,7 @@ have a fixed width and height (but it's not required).
   @extend .fa-envelope-o;
   content: '\f003';
 }
-//example: <span class="aria-text">RSS</span>
+
 .aria-text {
   position: absolute;
   top: -9999px;

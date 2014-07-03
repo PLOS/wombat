@@ -103,7 +103,7 @@ $width-nav: $block-grid-elements - $width-logo;
     @extend .right; // foundation
     padding-right: 0;
   }
-  > li{ @extend .right;}
+  //> li{ @extend .right;}
   .top-bar-section ul.nav-elements > li.has-dropdown {
     cursor: pointer;
     margin-left: 3px;
@@ -148,7 +148,7 @@ $width-nav: $block-grid-elements - $width-logo;
       top: 45px;
       @include border-radius();
       width: rem-calc(240);
-      margin-left: rem-calc(-15);
+      left: -13px;
       padding-top: rem-calc(20);
       padding-bottom: rem-calc(30);
       background: $white;
@@ -162,7 +162,7 @@ $width-nav: $block-grid-elements - $width-logo;
     .calloutcontainer {
       width: rem-calc(530);
       top: 46px;
-      margin-left: rem-calc(-290);
+      right: -103px;
       padding: rem-calc(20 0 30);
       background: white;
       box-shadow: $nav-main-box-shadow;

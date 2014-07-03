@@ -136,13 +136,13 @@ $image-container: ($image-width + $pad-small);
   }
   &.image .block-content {
     margin-left: ($image-container + $pad-default);
+    margin-right: $pad-small;
     height: ($block-height - ($pad-default));
   }
   // components
   .date {
     @extend .small-italic;
     @extend .right;
-    padding-right: $pad-small;
   }
   .credits {
     @extend .small-italic;

@@ -320,6 +320,10 @@ $image-container: ($image-width + $pad-small);
   @extend .block-card;
   @extend .width-small;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
+  .image-header{
+    background-color: #1c2e53;
+    text-align: center;
+  }
   ul {
     @extend .no-bullet; // from foundation
     li {

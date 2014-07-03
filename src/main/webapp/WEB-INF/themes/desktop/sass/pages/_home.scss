@@ -40,6 +40,8 @@ $image-container: ($image-width + $pad-small);
 
 .carousel-wrap.small {
   @extend .width-small;
+  height: $block-height;
+  position: relative;
 }
 
 //home page blocks
@@ -130,9 +132,11 @@ $image-container: ($image-width + $pad-small);
     position: absolute;
     left: $pad-small;
     top: $pad-small;
+
   }
   &.image .block-content {
     margin-left: ($image-container + $pad-default);
+    height: ($block-height - ($pad-default));
   }
   // components
   .date {
@@ -184,31 +188,47 @@ $image-container: ($image-width + $pad-small);
     @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 8); //width + gutter
     .block.large {
       @extend .width-large;
+      height: $block-height-small;
+      .block-image {
+        height: ($block-height-small - ($pad-default));
+        overflow: hidden;
+      }
     }
+
     .row-small-blocks {
       width: 100%; //TODO remove width?
       // for demo
       .block {
         @extend .width-small;
+        height: $block-height;
+        .block-image {
+          height: ($block-height - ($pad-default));
+          overflow: hidden;
+        }
       }
     }
-    /// row three is shorter than the others
-    .block {
-      height: $block-height-small;
+   /* .block {
 
-      .block-image {
-        height: ($block-height-small - ($pad-default));
-        overflow: hidden;
-      }
+
+
 
       &.small {
         @extend .width-small;
+        height: $block-height;
+        .block-image {
+          height: ($block-height - ($pad-default));
+          overflow: hidden;
+        }
       }
-    }
+    }*/
   }
 
   &.right {
     @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 4); //width + gutter
+    position: relative;
+    > div > div {
+      float: none;
+    }
   }
 }
 }
@@ -313,13 +333,14 @@ $image-container: ($image-width + $pad-small);
 
 #twitter {
   @extend .width-small;
-  margin-bottom: $pad-default;
+  margin-bottom: rem-calc(16); // non-standard to account for the drop-shadow on adjacent containers
 }
-
+ //ISCB box
 .linkbox {
   @extend .block-card;
   @extend .width-small;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
+
   ul {
     @extend .no-bullet; // from foundation
     li {
@@ -336,7 +357,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 #submission-links {
-  @include blocks($color: $grey-dark, $padding: $pad-small $pad-medium 0 $pad-medium, $shadow: none);
+  @include blocks($color: $grey-dark, $padding: $pad-small $pad-medium $pad-xsmall $pad-medium, $shadow: none);
   @extend .width-small;
 
   h3 {
@@ -409,8 +430,8 @@ $image-container: ($image-width + $pad-small);
 #blogs {
   $image-width: rem-calc(35px);
   @extend .width-small;
-  height: $block-height;
   @extend .block-card;
+  height: $block-height;
   position: relative;
 
   .block-header{
@@ -471,6 +492,7 @@ $image-container: ($image-width + $pad-small);
 
   }
 }
+
 // set the journal-specific colors
 .plosbiology, .ploscompbiol, .plosgenetics {
   @include brandColor($setColor: $plos-bio);

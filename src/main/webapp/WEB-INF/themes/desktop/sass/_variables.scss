@@ -69,14 +69,13 @@ $grid-columns: 12;
 // layout patterns
 $border-radius-default: 5px;
 $border-radius-large: 8px;
-$default-box-shadow-color: rgba(0, 0, 0, 0.1);
+$default-box-shadow-color: rgba(0, 0, 0, 0.15);
 $default-box-shadow-h-offset: 1px;
 $default-box-shadow-v-offset: 1px;
-$default-box-shadow-blur: 5px;
-$default-box-shadow-spread: 5px;
+$default-box-shadow-blur: 3px;
+$default-box-shadow-spread: 3px;
 $default-box-shadow-inset: false;
-$default-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1);
-
+$default-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.15);
 $default-header-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
 
 $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);

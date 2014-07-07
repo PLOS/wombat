@@ -5591,7 +5591,7 @@ main,
 
 /* line 91, ../../sass/_typography.scss */
 .condense, #issue .boxtitle a {
-  letter-spacing: -1; }
+  letter-spacing: -0.5px; }
 
 /* line 94, ../../sass/_typography.scss */
 .no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content p {

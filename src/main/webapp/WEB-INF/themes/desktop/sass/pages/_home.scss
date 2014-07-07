@@ -39,13 +39,11 @@ $image-container: ($image-width + $pad-small);
 }
 
 .carousel-wrap.small {
+  //more styling for this in _components.scss
   @extend .width-small;
   height: $block-height;
   position: relative;
 }
-
-//home page blocks
-
 
 .hero {
   @extend .width-full;
@@ -171,7 +169,7 @@ $image-container: ($image-width + $pad-small);
     @extend .link-text-body;
     //in case p tag is added in CMS, need to override global settings for p
     p {
-      font-size: inherit; //$txt-size-h2;
+      font-size: inherit;
       line-height: inherit;
     }
   }

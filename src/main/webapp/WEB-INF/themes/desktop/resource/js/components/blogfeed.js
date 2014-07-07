@@ -5,8 +5,9 @@
   function feedLoaded(result) {
     if (!result.error) {
       var container = document.getElementById("blogrss"),
-        html = "", entry, getdate, pubDate, blogImg, postQty, postTitle;
-      var getBlog = document.getElementById('blogs').firstChild.nextSibling.textContent,
+        html = "", entry, getdategetdate, pubDate, blogImg,
+        postQty, postTitle, docTitle, blogDiv;
+
         docTitle = document.title.slice(5,8),
         blogDiv = container.parentNode;
          

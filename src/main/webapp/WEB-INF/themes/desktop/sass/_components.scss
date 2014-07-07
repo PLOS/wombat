@@ -99,7 +99,7 @@ have a fixed width and height (but it's not required).
   // TODO PG-width is set in home.scss
   @extend .brand-shading;
   @extend .block-card;
-   margin-right: $pad-default; /// needs to be removed in grid refactor
+   margin-right: $pad-default;
   .block-header {
     @extend .brand-header;
   }
@@ -110,6 +110,7 @@ have a fixed width and height (but it's not required).
       height: 145px;
       h3 {
         @extend h2;
+        @extend .link-text-body;
       }
       p {
         font-size: rem-calc($txt-size-medium);

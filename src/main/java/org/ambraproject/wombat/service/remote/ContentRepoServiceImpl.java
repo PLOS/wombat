@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
+import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
@@ -13,6 +14,7 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Map;
 
 public class ContentRepoServiceImpl implements ContentRepoService {
 
@@ -24,30 +26,37 @@ public class ContentRepoServiceImpl implements ContentRepoService {
   private URI contentRepoAddress;
   private String repoBucketName;
 
+  private void setRepoConfig() throws IOException {
+    Map<String,Object> repoConfig = (Map<String, Object>) soaService.requestObject("config?type=repo", Map.class);
+    if (repoConfig.containsKey("contentRepoAddress")){
+      try {
+        contentRepoAddress = new URI(repoConfig.get("contentRepoAddress").toString());
+      } catch (URISyntaxException e) {
+        throw new RuntimeException("Invalid content repo URI returned from service", e);
+      }
+    } else {
+      throw new RuntimeException("No content repo URI returned from service");
+    }
+    if (repoConfig.containsKey("repoBucketName")){
+      repoBucketName = repoConfig.get("repoBucketName").toString();
+    }
+
+  }
+
   private URI getContentRepoAddress() throws IOException {
-    if (contentRepoAddress != null) {
-      return contentRepoAddress;
+    if (contentRepoAddress == null) {
+      setRepoConfig();
     }
-    String address;
-    try (Reader reader = soaService.requestReader("repo/")) {
-      address = IOUtils.toString(reader);
-    }
-    try {
-      return (contentRepoAddress = new URI(address));
-    } catch (URISyntaxException e) {
-      throw new RuntimeException("Invalid URI returned from service", e);
-    }
+    return contentRepoAddress;
+
   }
 
   private String getRepoBucketName() throws IOException {
-    if (repoBucketName != null) {
-      return repoBucketName;
-    }
-    try (Reader reader = soaService.requestReader("repoBucket/")) {
-      repoBucketName = IOUtils.toString(reader);
-    }
     if (repoBucketName == null) {
-      throw new RuntimeException("No repository bucket name returned from service");
+      setRepoConfig();
+      if (repoBucketName == null) {
+        throw new RuntimeException("No repository bucket name returned from service");
+      }
     }
     return repoBucketName;
   }

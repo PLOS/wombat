@@ -94,7 +94,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   }
 
   private BuildInfo fetchServiceBuildInfo() throws IOException {
-    return parse(soaService.requestObject("build", Map.class));
+    return parse(soaService.requestObject("config?type=build", Map.class));
   }
 
   private static BuildInfo parse(Map<?, ?> propertyMap) {

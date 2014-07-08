@@ -99,7 +99,8 @@ have a fixed width and height (but it's not required).
   // TODO PG-width is set in home.scss
   @extend .brand-shading;
   @extend .block-card;
-   margin-right: $pad-default;
+  margin-right: $pad-default;
+  position: relative;
   .block-header {
     @extend .brand-header;
   }

@@ -44,6 +44,15 @@ public interface SoaService {
   public abstract <T> T requestObject(String address, Class<T> responseClass) throws IOException;
 
   /**
+   * Serialize an object to JSON and POST the JSON to a service path.
+   *
+   * @param address the path to which to send the REST request
+   * @param object  the object to serialize to product JSON
+   * @throws IOException
+   */
+  public abstract void postObject(String address, Object object) throws IOException;
+
+  /**
    * Get a stream either through a REST request or from the cache. If there is a cached value, and the REST service does
    * not indicate that the value has been modified since the value was inserted into the cache, return that value. Else,
    * query the service for a new stream and convert that stream to a cacheable return value using the provided

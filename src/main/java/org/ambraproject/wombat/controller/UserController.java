@@ -37,6 +37,18 @@ public class UserController extends WombatController {
     }
 
     try {
+      /*
+       * Post a record of this user logging in.
+       *
+       * Posting here (in response to a "/user/secure/login" request) is less robust against redundancy than Ambra.
+       * Ambra sets a session variable that prevents the record from being written again in the same session. Here, we
+       * exploit the fact that a user typically hits this redirect only once each time they log in, and never sees a
+       * link to it in normal browsing behavior.
+       *
+       * Because any request to the "/user/secure/login" mapping (regardless of its session state) will trigger a
+       * write, it is a bit simpler than in Ambra to imagine a scenario where we get spammed with bogus records. This
+       * is a simplifying trade-off that we are making. It is not any less secure than Ambra against active malice.
+       */
       recordLogin(request);
     } catch (Exception e) {
       if (log.isErrorEnabled()) { // don't rely on log.error's string-builder because HttpDebug.dump itself is expensive

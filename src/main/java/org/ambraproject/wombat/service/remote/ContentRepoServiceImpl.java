@@ -1,17 +1,13 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
-import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.UrlParamBuilder;
-import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;

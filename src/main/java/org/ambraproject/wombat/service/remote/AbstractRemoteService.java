@@ -9,6 +9,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.StatusLine;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -40,37 +41,20 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
     return clientBuilder.build();
   }
 
-  /**
-   * Makes a request to the given URI, checks for response codes 400 or above, and returns the response.
-   * <p/>
-   * The caller <em>must</em> either close the returned {@code CloseableHttpResponse} object or close the {@code
-   * InputStream} to the response body (i.e., {@code CloseableHttpResponse.getEntity().getContent()}). This is very
-   * important, because leaving responses hanging open can starve the connection pool and cause horrible timeouts.
-   *
-   * @param targetUri the URI to which to send the request
-   * @param headers   headers to add to the request, if any
-   * @return response from the server
-   * @throws IOException                                             if there is an error connecting to the server
-   * @throws NullPointerException                                    if the address is null
-   * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
-   */
   @Override
-  public CloseableHttpResponse getResponse(URI targetUri, Header... headers) throws IOException {
+  public CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException {
     // Don't close the client, as this shuts down the connection pool. Do close every response or its entity stream.
     CloseableHttpClient client = createClient();
-    HttpGet get = new HttpGet(targetUri);
-    for (Header header : headers) {
-      get.setHeader(header);
-    }
 
     // We want to return an unclosed response, so close the response only if we throw an exception.
     boolean returningResponse = false;
     CloseableHttpResponse response = null;
     try {
-      response = client.execute(get);
+      response = client.execute(target);
       StatusLine statusLine = response.getStatusLine();
       int statusCode = statusLine.getStatusCode();
       if (isErrorStatus(statusCode)) {
+        URI targetUri = target.getURI();
         String address = targetUri.getPath();
         if (!Strings.isNullOrEmpty(targetUri.getQuery())) {
           address += "?" + targetUri.getQuery();
@@ -98,27 +82,27 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
   }
 
   @Override
-  public S request(URI targetUri) throws IOException {
-    return open(requestEntity(targetUri));
+  public S request(HttpUriRequest target) throws IOException {
+    return open(requestEntity(target));
   }
 
   /**
    * Get a response and open the response entity.
    *
-   * @param targetUri the URI from which to request a response
+   * @param target the request to send
    * @return the response entity
    * @throws IOException      on making the request
    * @throws RuntimeException if a response is received but it has no response entity object
    * @see org.apache.http.HttpResponse#getEntity()
    */
-  private HttpEntity requestEntity(URI targetUri) throws IOException {
-    Preconditions.checkNotNull(targetUri);
+  private HttpEntity requestEntity(HttpUriRequest target) throws IOException {
+    Preconditions.checkNotNull(target);
 
     // We must leave the response open if we return a valid stream, but must close it otherwise.
     boolean returningResponse = false;
     CloseableHttpResponse response = null;
     try {
-      response = getResponse(targetUri);
+      response = getResponse(target);
       HttpEntity entity = response.getEntity();
       if (entity == null) {
         throw new RuntimeException("No response");

@@ -24,17 +24,17 @@ public class ContentRepoServiceImpl implements ContentRepoService {
 
   private void setRepoConfig() throws IOException {
     Map<String,Object> repoConfig = (Map<String, Object>) soaService.requestObject("config?type=repo", Map.class);
-    if (repoConfig.containsKey("contentRepoAddress")){
+    Object address = repoConfig.get("contentRepoAddress");
+    if (address != null){
       try {
-        contentRepoAddress = new URI(repoConfig.get("contentRepoAddress").toString());
+        contentRepoAddress = new URI(address.toString());
       } catch (URISyntaxException e) {
         throw new RuntimeException("Invalid content repo URI returned from service", e);
       }
-    } else {
-      throw new RuntimeException("No content repo URI returned from service");
     }
-    if (repoConfig.containsKey("repoBucketName")){
-      repoBucketName = repoConfig.get("repoBucketName").toString();
+    Object bucket = repoConfig.get("repoBucketName");
+    if (bucket != null){
+      repoBucketName = bucket.toString();
     }
 
   }
@@ -42,9 +42,11 @@ public class ContentRepoServiceImpl implements ContentRepoService {
   private URI getContentRepoAddress() throws IOException {
     if (contentRepoAddress == null) {
       setRepoConfig();
+      if (contentRepoAddress == null) {
+        throw new RuntimeException("No content repo URI returned from service");
+      }
     }
     return contentRepoAddress;
-
   }
 
   private String getRepoBucketName() throws IOException {

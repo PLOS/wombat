@@ -1,4 +1,4 @@
-// HOME CONTENT - home-content
+// HOME CONTENT
 
 $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
@@ -13,7 +13,7 @@ $image-container: ($image-width + $pad-small);
 // questions:
 // I am using foundation settings values.
 
-///TODOPG: these are all the widths
+//PG: these are all the widths
 .width-full {
   @include plos-grid-column($pixelwidth: full-width);
 }
@@ -42,7 +42,6 @@ $image-container: ($image-width + $pad-small);
   //more styling for this in _components.scss
   @extend .width-small;
   height: $block-height;
-  position: relative;
 }
 
 .hero {
@@ -81,7 +80,7 @@ $image-container: ($image-width + $pad-small);
     position: absolute;
     width: 100%;
     bottom: 0;
-    padding: $pad-small;
+    padding: $pad-small $pad-default;
     font-size: rem-calc($txt-size-medium-large);
     h4 {
       @extend h1;
@@ -152,6 +151,8 @@ $image-container: ($image-width + $pad-small);
   .date {
     @extend .small-italic;
     @extend .right;
+    //padding-right on block-content needs to be overridden here
+    margin-right: -$pad-default;
   }
   .credits {
     @extend .small-italic;
@@ -167,18 +168,16 @@ $image-container: ($image-width + $pad-small);
   .title {
     @extend h2;
     @extend .link-text-body;
-    //in case p tag is added in CMS, need to override global settings for p
+    //in case p tag is added in CMS, need to override global settings
     p {
       font-size: inherit;
       line-height: inherit;
     }
   }
-  .blurb {
-    //TODO: remove when you neaten up font sizes.
-  }
 
   .block-content {
     position: relative;
+    padding-right: $pad-default;
     font-size: rem-calc($txt-size-default);
   }
 

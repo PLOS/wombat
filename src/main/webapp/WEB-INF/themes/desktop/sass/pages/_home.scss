@@ -467,7 +467,7 @@ $image-container: ($image-width + $pad-small);
   }
   .more-link {
     bottom: $pad-small;
-    left: ($image-width + ($pad-default + $pad-small));
+    left: ($image-width + ($pad-large + $pad-small));
   }
 }
 

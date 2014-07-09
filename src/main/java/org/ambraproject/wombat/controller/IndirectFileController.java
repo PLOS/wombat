@@ -24,21 +24,19 @@ public class IndirectFileController extends WombatController {
   @Autowired
   private ContentRepoService contentRepoService;
 
-  @RequestMapping(value = {"indirect/{bucket}/{key}", "{site}/indirect/{bucket}/{key}"})
+  @RequestMapping(value = {"indirect/{key}", "{site}/indirect/{key}"})
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,
-                    @PathVariable("bucket") String bucket,
                     @PathVariable("key") String key)
       throws IOException {
-    serve(response, request, bucket, key, Optional.<Integer>absent());
+    serve(response, request, key, Optional.<Integer>absent());
   }
 
-  @RequestMapping(value = {"indirect/{bucket}/{key}/{version}", "{site}/indirect/{bucket}/{key}/{version}"})
+  @RequestMapping(value = {"indirect/{key}/{version}", "{site}/indirect/{key}/{version}"})
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,
-                    @PathVariable("bucket") String bucket,
                     @PathVariable("key") String key,
                     @PathVariable("version") String version)
       throws IOException {
@@ -48,18 +46,18 @@ public class IndirectFileController extends WombatController {
     } catch (NumberFormatException e) {
       throw new NotFoundException("Not a valid version integer: " + version, e);
     }
-    serve(response, request, bucket, key, Optional.of(versionInt));
+    serve(response, request, key, Optional.of(versionInt));
   }
 
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
-                     String bucket, String key, Optional<Integer> version)
+                     String key, Optional<Integer> version)
       throws IOException {
     Header[] assetHeaders = copyAssetRequestHeaders(requestFromClient);
-    try (AssetServiceResponse repoResponse = contentRepoService.request(bucket, key, version, assetHeaders)) {
+    try (AssetServiceResponse repoResponse = contentRepoService.request(key, version, assetHeaders)) {
       copyAssetServiceResponse(repoResponse, responseToClient);
     } catch (EntityNotFoundException e) {
-      String message = String.format("Not found in repo: [bucket: %s, key: %s, version: %s]",
-          bucket, key, version.orNull());
+      String message = String.format("Not found in repo: [key: %s, version: %s]",
+          key, version.orNull());
       throw new NotFoundException(message, e);
     }
   }

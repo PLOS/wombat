@@ -108,6 +108,11 @@
 
 </script>
 
+<#--This polyfill is so that IE8 can use rems. I don't think we can call this using the asset manager. -->
+<!--[if IE 8]>
+<script src="resource/js/vendor/rem.min.js"></script>
+<![endif]-->
+
 
 </body>
 </html>

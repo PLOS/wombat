@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.Site;
 
 import java.io.IOException;
@@ -9,6 +10,9 @@ public interface RecentArticleService {
 
   /**
    * Query for recent articles.
+   * <p/>
+   * The service may retain a reference to the returned list for caching purposes. The caller is required not to modify
+   * the list, nor any object nested inside it.
    *
    * @param site            The site on which to display the articles. Articles will be filtered for this site's
    *                        journal.
@@ -28,6 +32,9 @@ public interface RecentArticleService {
    *                        in this order, then in chronological order. If the query went beyond the time window, the
    *                        order is ignored and the results are sorted in chronological order. The string {@code "*"}
    *                        means "all article types".
+   * @param cacheTtl        The time, in seconds, to cache the results of a query to the service tier. In other words,
+   *                        amount of time between refreshing recent articles. If absent, don't read or add to the cache
+   *                        and always check for new recent articles.
    * @return the list of results
    * @throws IOException
    */
@@ -35,7 +42,8 @@ public interface RecentArticleService {
                                                  int articleCount,
                                                  double numberOfDaysAgo,
                                                  boolean shuffle,
-                                                 List<String> articleTypes)
+                                                 List<String> articleTypes,
+                                                 Optional<Integer> cacheTtl)
       throws IOException;
 
 }

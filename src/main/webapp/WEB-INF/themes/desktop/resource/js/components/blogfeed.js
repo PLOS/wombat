@@ -2,11 +2,12 @@
   google.load("feeds", "1");
 
   // Our callback function, for when a feed is loaded.
+
   function feedLoaded(result) {
     if (!result.error) {
       var container = document.getElementById("blogrss"),
-        html = "", entry, getdate, pubDate, blogImg,
-        postQty, postTitle, docTitle, blogDiv;
+        html = "", entry, getdate, pubDate, blogImg, postQty,
+        postTitle, docTitle, blogDiv, postDescription, tempDiv;
 
         docTitle = document.title.slice(5,8),
         blogDiv = container.parentNode;
@@ -26,9 +27,15 @@
             day: "numeric"
           },
           pubDate = getdate.toLocaleString("en-US", options),
-          blogImg = "resource/img/generic_blogfeed.png",
-          postTitle = entry.title;
+          postTitle = entry.title,
+          postDescription = entry.content;
 
+        tempDiv = document.createElement('div');
+        tempDiv.innerHTML = postDescription;
+        blogImg = tempDiv.firstChild.src;
+        if (blogImg == null) {
+          blogImg = "resource/img/generic_blogfeed.png";
+        }
         if (postTitle.length > 75) {
           postTitle = postTitle.slice(0, 70) + "&hellip;";
         }

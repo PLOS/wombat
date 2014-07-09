@@ -214,7 +214,7 @@ $anchor-font-color-hover: $grey-dark;
 
 // Accordion
 
-// $include-html-accordion-classes: $include-html-classes;
+ $include-html-accordion-classes: false;
 
 // $accordion-navigation-padding: rem-calc(16);
 // $accordion-navigation-bg-color: #efefef  ;
@@ -229,7 +229,7 @@ $anchor-font-color-hover: $grey-dark;
 
 // Alert Boxes
 
-// $include-html-alert-classes: $include-html-classes;
+ $include-html-alert-classes: false;
 
 // We use this to control alert padding.
 // $alert-padding-top: rem-calc(14);
@@ -279,7 +279,7 @@ $align-block-grid-to-grid: true;
 
 // Breadcrumbs
 
-// $include-html-nav-classes: $include-html-classes;
+ $include-html-nav-classes: false;
 
 // We use this to set the background color for the breadcrumb container.
 // $crumb-bg: scale-color($secondary-color, $lightness: 55%);
@@ -311,7 +311,7 @@ $align-block-grid-to-grid: true;
 // BUTTONS
 //
 
-// $include-html-button-classes: $include-html-classes;
+$include-html-button-classes: false;
 
 // We use these to build padding for buttons.
 // $button-tny: rem-calc(10);
@@ -350,7 +350,7 @@ $align-block-grid-to-grid: true;
 
 // Button Groups
 
-// $include-html-button-classes: $include-html-classes;
+$include-html-button-classes: false;
 
 // Sets the margin for the right side by default, and the left margin if right-to-left direction is used
 // $button-bar-margin-opposite: rem-calc(10);
@@ -358,7 +358,7 @@ $align-block-grid-to-grid: true;
 
 // Clearing
 
-// $include-html-clearing-classes: $include-html-classes;
+$include-html-clearing-classes: false;
 
 // We use these to set the background colors for parts of Clearing.
 // $clearing-bg: #333;
@@ -459,7 +459,7 @@ $align-block-grid-to-grid: true;
 
 // Flex Video
 
-// $include-html-media-classes: $include-html-classes;
+$include-html-media-classes: false;
 
 // We use these to control video container padding and margins
 // $flex-video-padding-top: rem-calc(25);
@@ -557,7 +557,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Joyride
 
-// $include-html-joyride-classes: $include-html-classes;
+$include-html-joyride-classes: false;
 
 // Controlling default Joyride styles
 // $joyride-tip-bg: #333;
@@ -590,7 +590,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Keystrokes
 
-// $include-html-keystroke-classes: $include-html-classes;
+$include-html-keystroke-classes: false;
 
 // We use these to control text styles.
 // $keystroke-font: "Consolas", "Menlo", "Courier", monospace;
@@ -626,7 +626,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Magellan
 
-// $include-html-magellan-classes: $include-html-classes;
+$include-html-magellan-classes: false;
 
 // $magellan-bg: #fff;
 // $magellan-padding: 10px;
@@ -694,7 +694,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Orbit
 
-// $include-html-orbit-classes: $include-html-classes;
+$include-html-orbit-classes: false;
 
 // We use these to control the caption styles
 // $orbit-container-bg: none;
@@ -731,7 +731,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Pagination
 
-// $include-html-nav-classes: $include-html-classes;
+$include-html-nav-classes:false;
 
 // We use these to control the pagination container
 // $pagination-height: rem-calc(24);
@@ -763,7 +763,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Panels
 
-// $include-html-panel-classes: $include-html-classes;
+$include-html-panel-classes: false;
 
 // We use these to control the background and border styles
 // $panel-bg: scale-color(#fff, $lightness: -5%);
@@ -787,7 +787,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Pricing Tables
 
-// $include-html-pricing-classes: $include-html-classes;
+$include-html-pricing-classes: false;
 
 // We use this to control the border color
 // $price-table-border: solid 1px #ddd;
@@ -862,7 +862,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Reveal
 
-// $include-html-reveal-classes: $include-html-classes;
+$include-html-reveal-classes: false;
 
 // We use these to control the style of the reveal overlay.
 // $reveal-overlay-bg: rgba(#000, .45);
@@ -892,7 +892,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Side Nav
 
-// $include-html-nav-classes: $include-html-classes;
+$include-html-nav-classes: false;
 
 // We use this to control padding.
 // $side-nav-padding: rem-calc(14 0);
@@ -1025,7 +1025,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 
 // Tables
 
-// $include-html-table-classes: $include-html-classes;
+$include-html-table-classes: false;
 
 // These control the background color for the table and even rows
 // $table-bg: #fff;
@@ -1057,7 +1057,7 @@ $fieldset-margin: 0; //rem-calc(18 0);
 // TABS
 //
 
-// $include-html-tabs-classes: $include-html-classes;
+ $include-html-tabs-classes: false;
 
 // $tabs-navigation-padding: rem-calc(16);
 // $tabs-navigation-bg-color: #efefef  ;
@@ -1196,15 +1196,15 @@ $topbar-arrows: false;
 // VISIBILITY CLASSES
 //
 
-// $include-html-visibility-classes: $include-html-classes;
-// $include-table-visibility-classes: true;
-// $include-legacy-visibility-classes: true;
+$include-html-visibility-classes: false;
+$include-table-visibility-classes: false;
+$include-legacy-visibility-classes: false;
 
 //
 // RANGE SLIDER
 //
 
-// $include-html-range-slider-classes: $include-html-classes;
+$include-html-range-slider-classes: false;
 
 // These variabels define the slider bar styles
 // $range-slider-bar-width: 100%;

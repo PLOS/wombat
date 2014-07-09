@@ -5,8 +5,9 @@
   function feedLoaded(result) {
     if (!result.error) {
       var container = document.getElementById("blogrss"),
-        html = "", entry, getdate, pubDate, blogImg, postQty;
-      var getBlog = document.getElementById('blogs').firstChild.nextSibling.textContent,
+        html = "", entry, getdategetdate, pubDate, blogImg,
+        postQty, postTitle, docTitle, blogDiv;
+
         docTitle = document.title.slice(5,8),
         blogDiv = container.parentNode;
          
@@ -25,10 +26,15 @@
             day: "numeric"
           },
           pubDate = getdate.toLocaleString("en-US", options),
-          blogImg = "resource/img/generic_blogfeed.png";
+          blogImg = "resource/img/generic_blogfeed.png",
+          postTitle = entry.title;
+
+        if (postTitle.length > 75) {
+          postTitle = postTitle.slice(0, 70) + "&hellip;";
+        }
 
         html += '<div><img class="postimg" src="'+blogImg+'" /><p class="postdate">Posted '+ pubDate +'</p>' +
-          '<p class="posttitle"><a href="'+entry.link+'">'+entry.title+'</a></p>' +
+          '<p class="posttitle"><a href="'+entry.link+'">'+postTitle+'</a></p>' +
           '<p class="postauthor">'+entry.author+'</p></div>';
 
         }

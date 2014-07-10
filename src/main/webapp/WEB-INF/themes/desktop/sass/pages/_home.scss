@@ -95,7 +95,7 @@ $image-container: ($image-width + $pad-small);
       }
       &.credit{
         // credits have to sit in this weird place because they cant' run into authors.
-        @extend .small-italic;
+        @extend %small-italic;
         width: 20%;
         text-align: right;
         bottom: $pad-small;
@@ -149,13 +149,13 @@ $image-container: ($image-width + $pad-small);
   }
   // components
   .date {
-    @extend .small-italic;
+    @extend %small-italic;
     @extend .right;
     //padding-right on block-content needs to be overridden here
     margin-right: -$pad-default;
   }
   .credits {
-    @extend .small-italic;
+    @extend %small-italic;
     position: absolute;
     bottom: $pad-small;
     left: ($image-container + $pad-default);
@@ -163,12 +163,13 @@ $image-container: ($image-width + $pad-small);
 
   }
   .category {
-    @extend .brand-title;
+    @extend %brand-title;
   }
   .title {
     //@extend h2;
     font-size: $txt-size-h2;
-    @extend .link-text-body;
+    @extend %link-text-body;
+
     //in case p tag is added in CMS, need to override global settings
     p {
       font-size: inherit;
@@ -235,7 +236,7 @@ $image-container: ($image-width + $pad-small);
     font-size: $txt-size-h2;
   }
   a {  //not using rounded-pill: would need too many overrides
-    @extend .brand-background-hover;
+    @extend %brand-background-hover;
     border-radius: $border-radius-default;
     padding: $pad-xsmall $pad-default;
     position: absolute;
@@ -252,7 +253,7 @@ $image-container: ($image-width + $pad-small);
   position: relative;
 
   h3 {
-    @extend .brand-title;
+    @extend %brand-title;
   }
 
   ul.list-plain {
@@ -264,7 +265,7 @@ $image-container: ($image-width + $pad-small);
       margin-bottom: 15px;
 
       a {
-        @include link-text();
+        @extend %link-text-body;
         display: block;
         font-family: $font-face-fancy;
         font-size: $txt-size-xsmall;
@@ -281,8 +282,8 @@ $image-container: ($image-width + $pad-small);
     left: $pad-small;
     right: auto;
     > a {
-      @include link-text();
-      @extend .header-allcaps-plain;
+      @extend %link-text-body;
+      @extend %header-allcaps-plain;
     }
     &:after {
       @extend .more-icon;
@@ -308,9 +309,9 @@ $image-container: ($image-width + $pad-small);
   .boxtitle {
     margin-top: rem-calc(5);
     a {
-      @include link-text();
-      @extend .header-allcaps-xlarge;
-      @extend .condense;
+      @extend %link-text-body;
+      @extend %header-allcaps-xlarge;
+      @extend %condense;
       display: block;
       margin-bottom: rem-calc(-5);
       font-weight: 900;
@@ -337,7 +338,7 @@ $image-container: ($image-width + $pad-small);
     li {
       padding: $pad-default $pad-medium;
       border-top: 1px solid $grey-light;
-      @extend .link-text-body;
+      @extend %link-text-body;
       a {
         font-family: $font-face-fancy;
         font-size: rem-calc($txt-size-medium-large);
@@ -352,8 +353,8 @@ $image-container: ($image-width + $pad-small);
   @extend .width-small;
 
   h3 {
-    @extend .header-bottom-shadow;
-    @extend .header-xlarge-light;
+    @extend %header-bottom-shadow;
+    @extend %header-xlarge-light;
   }
   .split-container {
     @extend .inline-list;
@@ -380,7 +381,7 @@ $image-container: ($image-width + $pad-small);
   @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);
 
   h3 {
-    @extend .header-xlarge-light;
+    @extend %header-xlarge-light;
     text-indent: $pad-small;
     margin-bottom: $pad-small;
   }
@@ -426,8 +427,8 @@ $image-container: ($image-width + $pad-small);
   position: relative;
 
   .block-header{
-    @extend .brand-header;
-    @extend .link-text-white;
+    @extend %brand-header;
+    @extend %link-text-white;
   }
 
   #blogrss {
@@ -455,13 +456,13 @@ $image-container: ($image-width + $pad-small);
       overflow: hidden;
       margin: $pad-xsmall 0;
       a {
-        @extend .link-text-body;
+        @extend %link-text-body;
         font-family: $font-face-fancy;
         font-size: $txt-size-small;
       }
     }
     .postauthor {
-      @extend .small-italic;
+      @extend %small-italic;
       color: $clr-muted;
       margin: 0;
       padding: 0;

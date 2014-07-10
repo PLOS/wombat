@@ -128,7 +128,7 @@ $width-nav: $block-grid-elements - $width-logo;
     line-height: 1;
     padding: rem-calc(7 30 8 30);
     font-family: $font-face-plain;
-    font-size: $txt-size-xxsmall;
+    font-size: $txt-size-medium;
     white-space: pre-wrap;
     &:hover {
       color: $clr-highlight-text;
@@ -144,7 +144,7 @@ $width-nav: $block-grid-elements - $width-logo;
     // &hover + li is used to account for the padding needed for the
     //  drop shadow. if the color isn't changed it sticks out too much.
     &:hover + li {
-      border-left: 1px solid scale-color(#666, $lightness: 80%);
+      border-left: 1px solid transparent;
     }
     > ul.dropdown {
       top: 45px;

@@ -4386,7 +4386,7 @@ footer {
     line-height: 1;
     padding: 0.4375rem 1.875rem 0.5rem 1.875rem;
     font-family: "arial";
-    font-size: 11px;
+    font-size: 14px;
     white-space: pre-wrap; }
     /* line 133, ../../sass/sections/_header.scss */
     .top-bar-section .dropdownanchor:hover, .top-bar-section ul > li.has-dropdown.hover ul.dropdown li a:hover, .top-bar-section ul > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a:hover {
@@ -4406,7 +4406,7 @@ footer {
     color: #333333; }
     /* line 146, ../../sass/sections/_header.scss */
     .top-bar-section ul > li.has-dropdown.hover:hover + li {
-      border-left: 1px solid #e0e0e0; }
+      border-left: 1px solid transparent; }
     /* line 149, ../../sass/sections/_header.scss */
     .top-bar-section ul > li.has-dropdown.hover > ul.dropdown {
       top: 45px;

@@ -4505,8 +4505,7 @@ have a fixed width and height (but it's not required).
 /* line 5, ../../sass/sections/_footer.scss */
 footer {
   padding: 1.5625rem 0 3.75rem;
-  color: white;
-  font-weight: normal; }
+  color: white; }
   /* line 8, ../../sass/sections/_footer.scss */
   footer .brand-column {
     padding-left: 0;
@@ -4522,66 +4521,49 @@ footer {
     /* line 12, ../../sass/sections/_footer.scss */
     footer .link-column:last-child {
       padding-right: 0.625rem; }
-  /* line 21, ../../sass/sections/_footer.scss */
+  /* line 20, ../../sass/sections/_footer.scss */
   footer .logo-footer {
     padding-bottom: 1.5625rem; }
-  /* line 25, ../../sass/sections/_footer.scss */
+  /* line 24, ../../sass/sections/_footer.scss */
   footer a {
     color: #cccccc;
-    font-weight: normal; }
-    /* line 29, ../../sass/sections/_footer.scss */
-    footer a:hover {
+    text-decoration: none; }
+    /* line 64, ../../sass/_typography.scss */
+    footer a:hover, footer a a:hover {
       color: #cccccc;
       text-decoration: underline; }
-  /* line 34, ../../sass/sections/_footer.scss */
-  footer .nav {
-    position: relative;
-    color: #cccccc; }
-    /* line 37, ../../sass/sections/_footer.scss */
-    footer .nav a {
-      font-size: 12px;
-      color: #cccccc; }
-      /* line 42, ../../sass/sections/_footer.scss */
-      footer .nav a:hover {
-        color: #cccccc;
-        text-decoration: underline; }
-  /* line 49, ../../sass/sections/_footer.scss */
+    /* line 27, ../../sass/sections/_footer.scss */
+    footer a .nav {
+      position: relative; }
+  /* line 32, ../../sass/sections/_footer.scss */
   footer .nav-aux {
     margin-top: 2.8125rem;
     margin-left: 0; }
-    /* line 54, ../../sass/sections/_footer.scss */
+    /* line 37, ../../sass/sections/_footer.scss */
     footer .nav-aux li {
       margin-left: 0.625rem;
       padding: 0 0.625rem 0 0;
-      border-right: 1px solid #efefef; }
-    /* line 59, ../../sass/sections/_footer.scss */
+      border-right: 1px solid #cccccc; }
+    /* line 42, ../../sass/sections/_footer.scss */
     footer .nav-aux li:first-child {
       margin-left: 0; }
-    /* line 62, ../../sass/sections/_footer.scss */
+    /* line 45, ../../sass/sections/_footer.scss */
     footer .nav-aux li:last-child {
       padding-right: none;
       border-right: none; }
-  /* line 67, ../../sass/sections/_footer.scss */
+  /* line 50, ../../sass/sections/_footer.scss */
   footer ul {
     list-style: none;
     padding-left: 0;
     margin-left: 0; }
-  /* line 72, ../../sass/sections/_footer.scss */
-  footer ul li a {
-    font-size: 12px;
-    color: #cccccc; }
-    /* line 76, ../../sass/sections/_footer.scss */
-    footer ul li a:hover {
-      color: #cccccc;
-      text-decoration: underline; }
-  /* line 81, ../../sass/sections/_footer.scss */
-  footer .nav-special {
-    font-size: 12px;
-    color: #cccccc; }
-    /* line 85, ../../sass/sections/_footer.scss */
-    footer .nav-special a {
-      font-weight: bold;
-      color: white; }
+
+/* line 57, ../../sass/sections/_footer.scss */
+.nav-special {
+  font-size: 12px; }
+  /* line 59, ../../sass/sections/_footer.scss */
+  .nav-special a {
+    font-weight: bold;
+    color: white; }
 
 /*
  *       These are the header styles

@@ -16,22 +16,22 @@
   </#macro>
 
   <#macro menuSection title containsCallout=false>
-  <li class="has-dropdown">
+  <li class="has-dropdown" id="${title?lower_case?replace(" ","-")}">
     ${title}
 
     <#if containsCallout>
     <div class="calloutcontainer dropdown">
-      <div class="submit ">
+      <div class="submit" id="dropdown-callout-submit">
         <#include "siteMenuCallout.ftl" />
       </div>
 
-      <ul class="dropdowncallout">
+      <ul class="dropdowncallout" id="${title?lower_case?replace(" ","-")}-dropdown-list">
         <#nested/>
       </ul>
     </div>
     <#else>
 
-    <ul class="dropdown">
+    <ul class="dropdown" id="${title?lower_case?replace(" ","-")}-dropdown-list">
       <#nested/>
     </ul>
     </#if>

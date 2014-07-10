@@ -20,7 +20,6 @@
 .head-top {
   @extend %bg-dark;
   @extend .text-center;
-  //@include highlight-border($clr-highlight: $clr-brand);
   @extend %brand-border;
   border-bottom-width: 6px;
   border-bottom-style: solid;
@@ -38,73 +37,76 @@
     float: left;
   }
 }
+
 $width-logo: 5;
 $width-search: 4;
 $width-nav: $block-grid-elements - $width-logo;
 
-#pagehdr-wrap {
-  .nav {
-    @extend .row;
-    .nav-user {
-      @extend .inline-list; // from foundation
-      @extend .right; // from foundation
-      font-weight: bold;
-      > li {
-        margin-top: rem-calc(-5);
-        margin-left: rem-calc(4);
 
-        > a {
-          @include rounded-pill(transparent, rem-calc(14 16 8));
-          color: $plos-default;
+.nav {
+  @extend .row;
+  .nav-user {
+    @extend .inline-list; // from foundation
+    @extend .right; // from foundation
+    font-weight: bold;
+    > li {
+      margin-top: rem-calc(-5);
+      margin-left: rem-calc(4);
 
-          &:hover {
-            color: $clr-highlight-text;
-            background: $plos-default;
-          }
-        }
-      }
-      li.highlighted {
-        > a {
+      > a {
+        @include rounded-pill(transparent, rem-calc(14 16 8));
+        color: $plos-default;
+
+        &:hover {
           color: $clr-highlight-text;
-          @extend %brand-background;
+          background: $plos-default;
         }
       }
     }
-  }
-
-  .logo {
-    @include plos-grid-column($pixelwidth: columns, $columns: $width-logo);
-    @extend .title-area;
-    text-indent: -9999px;
-    height: 41px;
-    //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
-    background: image-url('logo.png') no-repeat 0 0;
-  }
-  .home-link {
-    @extend .name;
+    li.highlighted {
+      > a {
+        color: $clr-highlight-text;
+        @extend %brand-background-hover;
+      }
+    }
   }
 }
+
+.logo {
+  @include plos-grid-column($pixelwidth: columns, $columns: $width-logo);
+  @extend .title-area; // foundation
+  text-indent: -9999px;
+  height: 41px;
+  //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
+  background: image-url('logo.png') no-repeat 0 0;
+}
+.home-link {
+  @extend .name; // foundation
+}
+
 
 /* using Foundation Top Bar
  all @extend .class are Foundation
  */
 
 .nav-main {
+  @extend .row;
+  @extend .top-bar; // foundation
+  font-family: $font-face-navigation;
   > .dropdown {
     visibility: hidden;
   }
-  @extend .top-bar;
-  @extend .row;
-  font-family: $font-face-navigation;
-  .top-bar-section {
-    @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right)
-  }
-  .top-bar-section ul.nav-elements {
+}
+.top-bar-section {
+  // foundation
+  @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right);
+
+  ul.nav-elements {
     @extend .right; // foundation
     padding-right: 0;
   }
-  //> li{ @extend .right;}
-  .top-bar-section ul.nav-elements > li.has-dropdown {
+  //this level of specificity is needed to override foundation styles
+  ul > li.has-dropdown {
     cursor: pointer;
     margin-left: 3px;
     border-left: 1px solid $clr-separator;
@@ -121,28 +123,18 @@ $width-nav: $block-grid-elements - $width-logo;
       border-left: 1px solid $grey-light;
     }
   }
-  .dropdownanchor {
-    width: 100%;
-    line-height: 1;
-    padding: rem-calc(7 30 8 30);
-    font-family: $font-face-plain;
-    font-size: rem-calc($txt-size-medium);
-    white-space: pre-wrap;
-    &:hover {
-      color: $clr-highlight-text;
-      background: $clr-highlight-hover;
-    }
-  }
-  .top-bar-section ul.nav-elements > li.has-dropdown.hover {
+
+  ul > li.has-dropdown.hover {
     @include border-top-radius();
     box-shadow: $nav-main-box-shadow;
     background: $white;
+    //padding-top: 5px;
     padding-bottom: 12px;
     color: $clr-body-text;
     // &hover + li is used to account for the padding needed for the
     //  drop shadow. if the color isn't changed it sticks out too much.
     &:hover + li {
-      border-left: 1px solid scale-color(#666, $lightness: 80%);
+      border-left: 1px solid scale-color(#666, $lightness: 82%);
     }
     > ul.dropdown {
       top: 45px;
@@ -168,59 +160,6 @@ $width-nav: $block-grid-elements - $width-logo;
       box-shadow: $nav-main-box-shadow;
       @include border-radius();
 
-      .submit {
-        //'Submit your manuscript' callout
-        position: relative;
-        float: left;
-        display: inline !important;
-        width: rem-calc(280);
-        margin-right: $pad-small;
-        padding: rem-calc(0 20 30 15);
-        font-family: $font-face-navigation;
-        font-size: rem-calc($txt-size-medium);
-
-        h3 {
-          @extend %header-bottom-shadow;
-          margin-top: $pad-xsmall;
-          font-size: rem-calc($txt-size-23large);
-        }
-        ul {
-          margin-left: rem-calc(15);
-          display: block !important;
-          list-style-type: disc;
-          width: auto;
-          li {
-            margin-left: rem-calc(15);
-            width: auto;
-            a {
-              // necessary to override the foundation styles
-              display: inline !important;
-              margin: 0;
-              padding: 0;
-              line-height: 1.35;
-              font-family: $font-face-navigation;
-              font-size: rem-calc($txt-size-medium-large);
-              background: $white;
-              color: $clr-link;
-              &:hover {
-                text-decoration: underline;
-              }
-            }
-          }
-
-        }
-        a.btn {
-          @include rounded-pill($clr-btn-secondary);
-          display: inline-block;
-          margin-top: rem-calc(20);
-          margin-left: rem-calc(15);
-          padding: rem-calc(0 10);
-          line-height: 35px;
-          &:hover {
-            background: $clr-btn-primary;
-          }
-        }
-      }
       .dropdowncallout {
         float: right;
         display: inline-block;
@@ -232,6 +171,29 @@ $width-nav: $block-grid-elements - $width-logo;
           @extend .dropdownanchor;
         }
       }
+    }
+    a.btn {
+      @include rounded-pill($background: $clr-btn-secondary);
+      display: inline-block;
+      margin-top: rem-calc(20);
+      margin-left: rem-calc(15);
+      padding: rem-calc(0 10);
+      line-height: 35px;
+      &:hover {
+        background: $clr-btn-primary;
+      }
+    }
+  }
+  .dropdownanchor {
+    width: 100%;
+    line-height: 1;
+    padding: rem-calc(7 30 8 30);
+    font-family: $font-face-plain;
+    font-size: $txt-size-medium;
+    white-space: pre-wrap;
+    &:hover {
+      color: $clr-highlight-text;
+      background: $clr-highlight-hover;
     }
   }
   .head-search {
@@ -245,12 +207,13 @@ $width-nav: $block-grid-elements - $width-logo;
     border-left: 1px solid $grey-light;
     form {
       background: $white;
-      $fieldset-padding: 0;   // from foundation
-      $fieldset-margin: 0;   // from foundation
+      $fieldset-padding: 0; // from foundation
+      $fieldset-margin: 0; // from foundation
       $input-box-shadow: none; // from foundation
       $input-include-glowing-effect: false; // from foundation
       $input-font-size: rem-calc($txt-size-xxlarge); // from foundation
       display: inline-block;
+
       legend, label {
         display: none;
       }
@@ -259,12 +222,10 @@ $width-nav: $block-grid-elements - $width-logo;
         border: 1px none white;
         margin: $pad-small;
         background-color: $white;
-
       }
 
       input[type="text"] {
-
-        $form-spacing: 0;  // from foundation
+        $form-spacing: 0; // from foundation
         $input-border-radius: 0; // from foundation
         $input-include-glowing-effect: false; // from foundation
         $input-font-color: $clr-body-text; // from foundation
@@ -283,8 +244,9 @@ $width-nav: $block-grid-elements - $width-logo;
       }
       @include input-placeholder-color();
 
-
-      &.placeholder{@include input-placeholder-color(#999);}
+      &.placeholder {
+        @include input-placeholder-color(#999);
+      }
 
       button[type="submit"] {
         @include postfix($white, $white); //foundation
@@ -306,16 +268,59 @@ $width-nav: $block-grid-elements - $width-logo;
       }
     }
   }
-}
-//overrides for top-bar styles: they have to be here to work
-.top-bar-section ul li.head-search a {
-  margin-top: rem-calc(-10);
-  line-height: 33px;
-  padding: 0 !important;
-  font-size:  rem-calc($txt-size-small);
-  @include link-text($clr-highlight-hover, underline);
-}
-.top-bar-section ul li.head-search:hover:not(.has-form) > a {
-  background: $grey-light;
+  //overrides for top-bar styles
+  ul > li.head-search a {
+    margin-top: rem-calc(-10);
+    line-height: 33px;
+    padding: 0 !important;
+    font-size:  rem-calc($txt-size-small);
+    @include link-text($clr-highlight-hover, underline);
+  }
+  // this is the only way I could find to override the white background on hover
+  ul > li.head-search:hover:not(.has-form) > a {
+    background: $grey-light;
+  }
 }
 
+.submit {
+  //'Submit your manuscript' callout
+  position: relative;
+  float: left;
+  display: inline !important;
+  width: rem-calc(280);
+  margin-right: $pad-small;
+  padding: rem-calc(0 20 30 15);
+  font-family: $font-face-navigation;
+  font-size: rem-calc($txt-size-medium);
+
+  h3 {
+    @extend %header-bottom-shadow;
+    margin-top: $pad-xsmall;
+    font-size: rem-calc($txt-size-23large);
+  }
+  ul {
+    margin-left: rem-calc(15);
+    display: block !important;
+    list-style-type: disc;
+    width: auto;
+    li {
+      margin-left: rem-calc(15);
+      width: auto;
+      a {
+        // necessary to override the foundation styles
+        display: inline !important;
+        margin: 0;
+        padding: 0;
+        line-height: 1.35;
+        font-family: $font-face-navigation;
+        font-size: rem-calc($txt-size-medium-large);
+        background: $white;
+        color: $clr-link;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+}

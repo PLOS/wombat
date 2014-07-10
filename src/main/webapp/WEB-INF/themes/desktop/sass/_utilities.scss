@@ -115,13 +115,13 @@ $clr-highlight-text: $white) {
 .pad-xsmall-x{
   padding: 0 $pad-default;
 }
-
-
+//
 // You need to use :before pseudo selector like this:
 //  .DIV_THAT_NEEDS_OVERLAY:before{
 //    @extend .overlay;
 //    background: OVERLAY DETAILS
 //  }
+//
 .overlay {
   background-position: bottom;
   content: " ";
@@ -131,3 +131,4 @@ $clr-highlight-text: $white) {
   top: 0;
   left: 0;
 }
+

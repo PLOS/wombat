@@ -107,7 +107,7 @@ img {
   float: left !important; }
 
 /* line 339, ../../sass/vendor/foundation/components/_global.scss */
-.right, #pagehdr-wrap .nav .nav-user, .nav-main .top-bar-section ul.nav-elements, .nav-main .head-search, .block .date {
+.right, #pagehdr-wrap .nav .nav-user, .nav-main .top-bar-section ul.nav-elements, .nav-main .head-search, .block .date, #article-list .date, #issue .date {
   float: right !important; }
 
 /* line 340, ../../sass/vendor/foundation/components/_global.scss */
@@ -193,11 +193,11 @@ select {
     left: 9px;
     z-index: 98; }
   /* line 110, ../../sass/vendor/foundation/components/_dropdown.scss */
-  .f-dropdown.right:before, #pagehdr-wrap .nav .f-dropdown.nav-user:before, .nav-main .top-bar-section ul.f-dropdown.nav-elements:before, .nav-main .f-dropdown.head-search:before, .block .f-dropdown.date:before {
+  .f-dropdown.right:before, #pagehdr-wrap .nav .f-dropdown.nav-user:before, .nav-main .top-bar-section ul.f-dropdown.nav-elements:before, .nav-main .f-dropdown.head-search:before, .block .f-dropdown.date:before, #article-list .f-dropdown.date:before, #issue .f-dropdown.date:before {
     left: auto;
     right: 10px; }
   /* line 114, ../../sass/vendor/foundation/components/_dropdown.scss */
-  .f-dropdown.right:after, #pagehdr-wrap .nav .f-dropdown.nav-user:after, .nav-main .top-bar-section ul.f-dropdown.nav-elements:after, .nav-main .f-dropdown.head-search:after, .block .f-dropdown.date:after {
+  .f-dropdown.right:after, #pagehdr-wrap .nav .f-dropdown.nav-user:after, .nav-main .top-bar-section ul.f-dropdown.nav-elements:after, .nav-main .f-dropdown.head-search:after, .block .f-dropdown.date:after, #article-list .f-dropdown.date:after, #issue .f-dropdown.date:after {
     left: auto;
     right: 9px; }
   /* line 222, ../../sass/vendor/foundation/components/_dropdown.scss */
@@ -405,26 +405,17 @@ form {
 
 /* Using forms within rows, we need to set some defaults */
 /* line 82, ../../sass/vendor/foundation/components/_forms.scss */
-form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wrap form .nav .row, form .nav-main .row, form #ad-slot-bottom .row, form .row .grid-test, form .grid-test .grid-test, form #pagehdr-wrap .nav .grid-test, #pagehdr-wrap form .nav .grid-test, form .nav-main .grid-test, form #ad-slot-bottom .grid-test, form .row #pagehdr-wrap .nav, #pagehdr-wrap form .row .nav, form .grid-test #pagehdr-wrap .nav, #pagehdr-wrap form .grid-test .nav, form #pagehdr-wrap .nav .nav, #pagehdr-wrap form .nav .nav, form .nav-main #pagehdr-wrap .nav, #pagehdr-wrap form .nav-main .nav, form #ad-slot-bottom #pagehdr-wrap .nav, #pagehdr-wrap form #ad-slot-bottom .nav, form .row .nav-main, form .grid-test .nav-main, form #pagehdr-wrap .nav .nav-main, #pagehdr-wrap form .nav .nav-main, form .nav-main .nav-main, form #ad-slot-bottom .nav-main, form .row #ad-slot-bottom, form .grid-test #ad-slot-bottom, form #pagehdr-wrap .nav #ad-slot-bottom, #pagehdr-wrap form .nav #ad-slot-bottom, form .nav-main #ad-slot-bottom, form #ad-slot-bottom #ad-slot-bottom {
+form .row .row, form #pagehdr-wrap .nav .row, #pagehdr-wrap form .nav .row, form .nav-main .row, form #ad-slot-bottom .row, form .row #pagehdr-wrap .nav, #pagehdr-wrap form .row .nav, form #pagehdr-wrap .nav .nav, #pagehdr-wrap form .nav .nav, form .nav-main #pagehdr-wrap .nav, #pagehdr-wrap form .nav-main .nav, form #ad-slot-bottom #pagehdr-wrap .nav, #pagehdr-wrap form #ad-slot-bottom .nav, form .row .nav-main, form #pagehdr-wrap .nav .nav-main, #pagehdr-wrap form .nav .nav-main, form .nav-main .nav-main, form #ad-slot-bottom .nav-main, form .row #ad-slot-bottom, form #pagehdr-wrap .nav #ad-slot-bottom, #pagehdr-wrap form .nav #ad-slot-bottom, form .nav-main #ad-slot-bottom, form #ad-slot-bottom #ad-slot-bottom {
   margin: 0 -0.5rem; }
   /* line 84, ../../sass/vendor/foundation/components/_forms.scss */
-  form .row .row .column, form .grid-test .row .column, form #pagehdr-wrap .nav .row .column, #pagehdr-wrap form .nav .row .column, form .nav-main .row .column, form #ad-slot-bottom .row .column, form .row .grid-test .column, form .grid-test .grid-test .column, form #pagehdr-wrap .nav .grid-test .column, #pagehdr-wrap form .nav .grid-test .column, form .nav-main .grid-test .column, form #ad-slot-bottom .grid-test .column, form .row #pagehdr-wrap .nav .column, #pagehdr-wrap form .row .nav .column, form .grid-test #pagehdr-wrap .nav .column, #pagehdr-wrap form .grid-test .nav .column, form #pagehdr-wrap .nav .nav .column, #pagehdr-wrap form .nav .nav .column, form .nav-main #pagehdr-wrap .nav .column, #pagehdr-wrap form .nav-main .nav .column, form #ad-slot-bottom #pagehdr-wrap .nav .column, #pagehdr-wrap form #ad-slot-bottom .nav .column, form .row .nav-main .column, form .grid-test .nav-main .column, form #pagehdr-wrap .nav .nav-main .column, #pagehdr-wrap form .nav .nav-main .column, form .nav-main .nav-main .column, form #ad-slot-bottom .nav-main .column, form .row #ad-slot-bottom .column, form .grid-test #ad-slot-bottom .column, form #pagehdr-wrap .nav #ad-slot-bottom .column, #pagehdr-wrap form .nav #ad-slot-bottom .column, form .nav-main #ad-slot-bottom .column, form #ad-slot-bottom #ad-slot-bottom .column,
+  form .row .row .column, form #pagehdr-wrap .nav .row .column, #pagehdr-wrap form .nav .row .column, form .nav-main .row .column, form #ad-slot-bottom .row .column, form .row #pagehdr-wrap .nav .column, #pagehdr-wrap form .row .nav .column, form #pagehdr-wrap .nav .nav .column, #pagehdr-wrap form .nav .nav .column, form .nav-main #pagehdr-wrap .nav .column, #pagehdr-wrap form .nav-main .nav .column, form #ad-slot-bottom #pagehdr-wrap .nav .column, #pagehdr-wrap form #ad-slot-bottom .nav .column, form .row .nav-main .column, form #pagehdr-wrap .nav .nav-main .column, #pagehdr-wrap form .nav .nav-main .column, form .nav-main .nav-main .column, form #ad-slot-bottom .nav-main .column, form .row #ad-slot-bottom .column, form #pagehdr-wrap .nav #ad-slot-bottom .column, #pagehdr-wrap form .nav #ad-slot-bottom .column, form .nav-main #ad-slot-bottom .column, form #ad-slot-bottom #ad-slot-bottom .column,
   form .row .row .columns,
-  form .grid-test .row .columns,
   form #pagehdr-wrap .nav .row .columns,
   #pagehdr-wrap form .nav .row .columns,
   form .nav-main .row .columns,
   form #ad-slot-bottom .row .columns,
-  form .row .grid-test .columns,
-  form .grid-test .grid-test .columns,
-  form #pagehdr-wrap .nav .grid-test .columns,
-  #pagehdr-wrap form .nav .grid-test .columns,
-  form .nav-main .grid-test .columns,
-  form #ad-slot-bottom .grid-test .columns,
   form .row #pagehdr-wrap .nav .columns,
   #pagehdr-wrap form .row .nav .columns,
-  form .grid-test #pagehdr-wrap .nav .columns,
-  #pagehdr-wrap form .grid-test .nav .columns,
   form #pagehdr-wrap .nav .nav .columns,
   #pagehdr-wrap form .nav .nav .columns,
   form .nav-main #pagehdr-wrap .nav .columns,
@@ -432,39 +423,28 @@ form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wra
   form #ad-slot-bottom #pagehdr-wrap .nav .columns,
   #pagehdr-wrap form #ad-slot-bottom .nav .columns,
   form .row .nav-main .columns,
-  form .grid-test .nav-main .columns,
   form #pagehdr-wrap .nav .nav-main .columns,
   #pagehdr-wrap form .nav .nav-main .columns,
   form .nav-main .nav-main .columns,
   form #ad-slot-bottom .nav-main .columns,
   form .row #ad-slot-bottom .columns,
-  form .grid-test #ad-slot-bottom .columns,
   form #pagehdr-wrap .nav #ad-slot-bottom .columns,
   #pagehdr-wrap form .nav #ad-slot-bottom .columns,
   form .nav-main #ad-slot-bottom .columns,
   form #ad-slot-bottom #ad-slot-bottom .columns {
     padding: 0 0.5rem; }
   /* line 88, ../../sass/vendor/foundation/components/_forms.scss */
-  form .row .row.collapse, form .grid-test .row.collapse, form #pagehdr-wrap .nav .row.collapse, #pagehdr-wrap form .nav .row.collapse, form .nav-main .row.collapse, form #ad-slot-bottom .row.collapse, form .row .collapse.grid-test, form .grid-test .collapse.grid-test, form #pagehdr-wrap .nav .collapse.grid-test, #pagehdr-wrap form .nav .collapse.grid-test, form .nav-main .collapse.grid-test, form #ad-slot-bottom .collapse.grid-test, form .row #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .row .collapse.nav, form .grid-test #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .grid-test .collapse.nav, form #pagehdr-wrap .nav .collapse.nav, #pagehdr-wrap form .nav .collapse.nav, form .nav-main #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .nav-main .collapse.nav, form #ad-slot-bottom #pagehdr-wrap .collapse.nav, #pagehdr-wrap form #ad-slot-bottom .collapse.nav, form .row .collapse.nav-main, form .grid-test .collapse.nav-main, form #pagehdr-wrap .nav .collapse.nav-main, #pagehdr-wrap form .nav .collapse.nav-main, form .nav-main .collapse.nav-main, form #ad-slot-bottom .collapse.nav-main, form .row .collapse#ad-slot-bottom, form .grid-test .collapse#ad-slot-bottom, form #pagehdr-wrap .nav .collapse#ad-slot-bottom, #pagehdr-wrap form .nav .collapse#ad-slot-bottom, form .nav-main .collapse#ad-slot-bottom, form #ad-slot-bottom .collapse#ad-slot-bottom {
+  form .row .row.collapse, form #pagehdr-wrap .nav .row.collapse, #pagehdr-wrap form .nav .row.collapse, form .nav-main .row.collapse, form #ad-slot-bottom .row.collapse, form .row #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .row .collapse.nav, form #pagehdr-wrap .nav .collapse.nav, #pagehdr-wrap form .nav .collapse.nav, form .nav-main #pagehdr-wrap .collapse.nav, #pagehdr-wrap form .nav-main .collapse.nav, form #ad-slot-bottom #pagehdr-wrap .collapse.nav, #pagehdr-wrap form #ad-slot-bottom .collapse.nav, form .row .collapse.nav-main, form #pagehdr-wrap .nav .collapse.nav-main, #pagehdr-wrap form .nav .collapse.nav-main, form .nav-main .collapse.nav-main, form #ad-slot-bottom .collapse.nav-main, form .row .collapse#ad-slot-bottom, form #pagehdr-wrap .nav .collapse#ad-slot-bottom, #pagehdr-wrap form .nav .collapse#ad-slot-bottom, form .nav-main .collapse#ad-slot-bottom, form #ad-slot-bottom .collapse#ad-slot-bottom {
     margin: 0; }
     /* line 90, ../../sass/vendor/foundation/components/_forms.scss */
-    form .row .row.collapse .column, form .grid-test .row.collapse .column, form #pagehdr-wrap .nav .row.collapse .column, #pagehdr-wrap form .nav .row.collapse .column, form .nav-main .row.collapse .column, form #ad-slot-bottom .row.collapse .column, form .row .collapse.grid-test .column, form .grid-test .collapse.grid-test .column, form #pagehdr-wrap .nav .collapse.grid-test .column, #pagehdr-wrap form .nav .collapse.grid-test .column, form .nav-main .collapse.grid-test .column, form #ad-slot-bottom .collapse.grid-test .column, form .row #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .row .collapse.nav .column, form .grid-test #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .grid-test .collapse.nav .column, form #pagehdr-wrap .nav .collapse.nav .column, #pagehdr-wrap form .nav .collapse.nav .column, form .nav-main #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .nav-main .collapse.nav .column, form #ad-slot-bottom #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form #ad-slot-bottom .collapse.nav .column, form .row .collapse.nav-main .column, form .grid-test .collapse.nav-main .column, form #pagehdr-wrap .nav .collapse.nav-main .column, #pagehdr-wrap form .nav .collapse.nav-main .column, form .nav-main .collapse.nav-main .column, form #ad-slot-bottom .collapse.nav-main .column, form .row .collapse#ad-slot-bottom .column, form .grid-test .collapse#ad-slot-bottom .column, form #pagehdr-wrap .nav .collapse#ad-slot-bottom .column, #pagehdr-wrap form .nav .collapse#ad-slot-bottom .column, form .nav-main .collapse#ad-slot-bottom .column, form #ad-slot-bottom .collapse#ad-slot-bottom .column,
+    form .row .row.collapse .column, form #pagehdr-wrap .nav .row.collapse .column, #pagehdr-wrap form .nav .row.collapse .column, form .nav-main .row.collapse .column, form #ad-slot-bottom .row.collapse .column, form .row #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .row .collapse.nav .column, form #pagehdr-wrap .nav .collapse.nav .column, #pagehdr-wrap form .nav .collapse.nav .column, form .nav-main #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form .nav-main .collapse.nav .column, form #ad-slot-bottom #pagehdr-wrap .collapse.nav .column, #pagehdr-wrap form #ad-slot-bottom .collapse.nav .column, form .row .collapse.nav-main .column, form #pagehdr-wrap .nav .collapse.nav-main .column, #pagehdr-wrap form .nav .collapse.nav-main .column, form .nav-main .collapse.nav-main .column, form #ad-slot-bottom .collapse.nav-main .column, form .row .collapse#ad-slot-bottom .column, form #pagehdr-wrap .nav .collapse#ad-slot-bottom .column, #pagehdr-wrap form .nav .collapse#ad-slot-bottom .column, form .nav-main .collapse#ad-slot-bottom .column, form #ad-slot-bottom .collapse#ad-slot-bottom .column,
     form .row .row.collapse .columns,
-    form .grid-test .row.collapse .columns,
     form #pagehdr-wrap .nav .row.collapse .columns,
     #pagehdr-wrap form .nav .row.collapse .columns,
     form .nav-main .row.collapse .columns,
     form #ad-slot-bottom .row.collapse .columns,
-    form .row .collapse.grid-test .columns,
-    form .grid-test .collapse.grid-test .columns,
-    form #pagehdr-wrap .nav .collapse.grid-test .columns,
-    #pagehdr-wrap form .nav .collapse.grid-test .columns,
-    form .nav-main .collapse.grid-test .columns,
-    form #ad-slot-bottom .collapse.grid-test .columns,
     form .row #pagehdr-wrap .collapse.nav .columns,
     #pagehdr-wrap form .row .collapse.nav .columns,
-    form .grid-test #pagehdr-wrap .collapse.nav .columns,
-    #pagehdr-wrap form .grid-test .collapse.nav .columns,
     form #pagehdr-wrap .nav .collapse.nav .columns,
     #pagehdr-wrap form .nav .collapse.nav .columns,
     form .nav-main #pagehdr-wrap .collapse.nav .columns,
@@ -472,38 +452,33 @@ form .row .row, form .grid-test .row, form #pagehdr-wrap .nav .row, #pagehdr-wra
     form #ad-slot-bottom #pagehdr-wrap .collapse.nav .columns,
     #pagehdr-wrap form #ad-slot-bottom .collapse.nav .columns,
     form .row .collapse.nav-main .columns,
-    form .grid-test .collapse.nav-main .columns,
     form #pagehdr-wrap .nav .collapse.nav-main .columns,
     #pagehdr-wrap form .nav .collapse.nav-main .columns,
     form .nav-main .collapse.nav-main .columns,
     form #ad-slot-bottom .collapse.nav-main .columns,
     form .row .collapse#ad-slot-bottom .columns,
-    form .grid-test .collapse#ad-slot-bottom .columns,
     form #pagehdr-wrap .nav .collapse#ad-slot-bottom .columns,
     #pagehdr-wrap form .nav .collapse#ad-slot-bottom .columns,
     form .nav-main .collapse#ad-slot-bottom .columns,
     form #ad-slot-bottom .collapse#ad-slot-bottom .columns {
       padding: 0; }
     /* line 92, ../../sass/vendor/foundation/components/_forms.scss */
-    form .row .row.collapse input, form .grid-test .row.collapse input, form #pagehdr-wrap .nav .row.collapse input, #pagehdr-wrap form .nav .row.collapse input, form .nav-main .row.collapse input, form #ad-slot-bottom .row.collapse input, form .row .collapse.grid-test input, form .grid-test .collapse.grid-test input, form #pagehdr-wrap .nav .collapse.grid-test input, #pagehdr-wrap form .nav .collapse.grid-test input, form .nav-main .collapse.grid-test input, form #ad-slot-bottom .collapse.grid-test input, form .row #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .row .collapse.nav input, form .grid-test #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .grid-test .collapse.nav input, form #pagehdr-wrap .nav .collapse.nav input, #pagehdr-wrap form .nav .collapse.nav input, form .nav-main #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .nav-main .collapse.nav input, form #ad-slot-bottom #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form #ad-slot-bottom .collapse.nav input, form .row .collapse.nav-main input, form .grid-test .collapse.nav-main input, form #pagehdr-wrap .nav .collapse.nav-main input, #pagehdr-wrap form .nav .collapse.nav-main input, form .nav-main .collapse.nav-main input, form #ad-slot-bottom .collapse.nav-main input, form .row .collapse#ad-slot-bottom input, form .grid-test .collapse#ad-slot-bottom input, form #pagehdr-wrap .nav .collapse#ad-slot-bottom input, #pagehdr-wrap form .nav .collapse#ad-slot-bottom input, form .nav-main .collapse#ad-slot-bottom input, form #ad-slot-bottom .collapse#ad-slot-bottom input {
+    form .row .row.collapse input, form #pagehdr-wrap .nav .row.collapse input, #pagehdr-wrap form .nav .row.collapse input, form .nav-main .row.collapse input, form #ad-slot-bottom .row.collapse input, form .row #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .row .collapse.nav input, form #pagehdr-wrap .nav .collapse.nav input, #pagehdr-wrap form .nav .collapse.nav input, form .nav-main #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form .nav-main .collapse.nav input, form #ad-slot-bottom #pagehdr-wrap .collapse.nav input, #pagehdr-wrap form #ad-slot-bottom .collapse.nav input, form .row .collapse.nav-main input, form #pagehdr-wrap .nav .collapse.nav-main input, #pagehdr-wrap form .nav .collapse.nav-main input, form .nav-main .collapse.nav-main input, form #ad-slot-bottom .collapse.nav-main input, form .row .collapse#ad-slot-bottom input, form #pagehdr-wrap .nav .collapse#ad-slot-bottom input, #pagehdr-wrap form .nav .collapse#ad-slot-bottom input, form .nav-main .collapse#ad-slot-bottom input, form #ad-slot-bottom .collapse#ad-slot-bottom input {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0; }
 /* line 98, ../../sass/vendor/foundation/components/_forms.scss */
-form .row input.column, form .grid-test input.column, form #pagehdr-wrap .nav input.column, #pagehdr-wrap form .nav input.column, form .nav-main input.column, form #ad-slot-bottom input.column,
+form .row input.column, form #pagehdr-wrap .nav input.column, #pagehdr-wrap form .nav input.column, form .nav-main input.column, form #ad-slot-bottom input.column,
 form .row input.columns,
-form .grid-test input.columns,
 form #pagehdr-wrap .nav input.columns,
 #pagehdr-wrap form .nav input.columns,
 form .nav-main input.columns,
 form #ad-slot-bottom input.columns,
 form .row textarea.column,
-form .grid-test textarea.column,
 form #pagehdr-wrap .nav textarea.column,
 #pagehdr-wrap form .nav textarea.column,
 form .nav-main textarea.column,
 form #ad-slot-bottom textarea.column,
 form .row textarea.columns,
-form .grid-test textarea.columns,
 form #pagehdr-wrap .nav textarea.columns,
 #pagehdr-wrap form .nav textarea.columns,
 form .nav-main textarea.columns,
@@ -522,7 +497,7 @@ label {
   margin-bottom: 0;
   /* Styles for required inputs */ }
   /* line 333, ../../sass/vendor/foundation/components/_forms.scss */
-  label.right, #pagehdr-wrap .nav label.nav-user, .nav-main label.head-search, .block label.date {
+  label.right, #pagehdr-wrap .nav label.nav-user, .nav-main label.head-search, .block label.date, #article-list label.date, #issue label.date {
     float: none;
     text-align: right; }
   /* line 334, ../../sass/vendor/foundation/components/_forms.scss */
@@ -1064,7 +1039,7 @@ meta.foundation-mq-topbar {
     margin-bottom: 0;
     list-style: none; }
   /* line 157, ../../sass/vendor/foundation/components/_top-bar.scss */
-  .top-bar .row, .nav-main .row, .top-bar .grid-test, .nav-main .grid-test, .top-bar #pagehdr-wrap .nav, #pagehdr-wrap .top-bar .nav, .nav-main #pagehdr-wrap .nav, #pagehdr-wrap .nav-main .nav, .top-bar .nav-main, .nav-main .nav-main, .top-bar #ad-slot-bottom, .nav-main #ad-slot-bottom {
+  .top-bar .row, .nav-main .row, .top-bar #pagehdr-wrap .nav, #pagehdr-wrap .top-bar .nav, .nav-main #pagehdr-wrap .nav, #pagehdr-wrap .nav-main .nav, .top-bar .nav-main, .nav-main .nav-main, .top-bar #ad-slot-bottom, .nav-main #ad-slot-bottom {
     max-width: none; }
   /* line 159, ../../sass/vendor/foundation/components/_top-bar.scss */
   .top-bar form, .nav-main form,
@@ -1093,12 +1068,12 @@ meta.foundation-mq-topbar {
     margin: 0;
     font-size: 16px; }
     /* line 185, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1, .nav-main .name h1, .top-bar #pagehdr-wrap .home-link h1, #pagehdr-wrap .top-bar .home-link h1, .nav-main #pagehdr-wrap .home-link h1, #pagehdr-wrap .nav-main .home-link h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4, .nav-main .name .hero .hero-content h4, .hero .hero-content .nav-main .name h4, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4, .top-bar .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar .name .title, .nav-main .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar .name .title, .nav-main .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title {
+    .top-bar .name h1, .nav-main .name h1, .top-bar #pagehdr-wrap .home-link h1, #pagehdr-wrap .top-bar .home-link h1, .nav-main #pagehdr-wrap .home-link h1, #pagehdr-wrap .nav-main .home-link h1, .top-bar .name .hero .hero-content h4, .hero .hero-content .top-bar .name h4, .nav-main .name .hero .hero-content h4, .hero .hero-content .nav-main .name h4, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4, .top-bar .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar .name .title, .nav-main .name .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar .name .title, .nav-main .name .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .small#article-list .title, .hero .hero-content .small#article-list .top-bar .name .title, .nav-main .name .hero .hero-content .small#article-list .title, .hero .hero-content .small#article-list .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .small#article-list .title, .hero .hero-content .small#article-list .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .small#article-list .title, .hero .hero-content .small#article-list #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .small#article-list .title, .hero .hero-content .small#article-list .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .small#article-list .title, .hero .hero-content .small#article-list #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .small#article-list .hero .hero-content .title, .small#article-list .hero .hero-content .top-bar .name .title, .nav-main .name .small#article-list .hero .hero-content .title, .small#article-list .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .small#article-list .hero .hero-content .title, .small#article-list .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .small#article-list .hero .hero-content .title, .small#article-list .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .small#article-list .hero .hero-content .title, .small#article-list .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .small#article-list .hero .hero-content .title, .small#article-list .hero .hero-content #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .hero .hero-content .small#issue .title, .hero .hero-content .small#issue .top-bar .name .title, .nav-main .name .hero .hero-content .small#issue .title, .hero .hero-content .small#issue .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .hero .hero-content .small#issue .title, .hero .hero-content .small#issue .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .hero .hero-content .small#issue .title, .hero .hero-content .small#issue #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .hero .hero-content .small#issue .title, .hero .hero-content .small#issue .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .hero .hero-content .small#issue .title, .hero .hero-content .small#issue #pagehdr-wrap .nav-main .home-link .title, .top-bar .name .small#issue .hero .hero-content .title, .small#issue .hero .hero-content .top-bar .name .title, .nav-main .name .small#issue .hero .hero-content .title, .small#issue .hero .hero-content .nav-main .name .title, .top-bar #pagehdr-wrap .home-link .small#issue .hero .hero-content .title, .small#issue .hero .hero-content .top-bar #pagehdr-wrap .home-link .title, #pagehdr-wrap .top-bar .home-link .small#issue .hero .hero-content .title, .small#issue .hero .hero-content #pagehdr-wrap .top-bar .home-link .title, .nav-main #pagehdr-wrap .home-link .small#issue .hero .hero-content .title, .small#issue .hero .hero-content .nav-main #pagehdr-wrap .home-link .title, #pagehdr-wrap .nav-main .home-link .small#issue .hero .hero-content .title, .small#issue .hero .hero-content #pagehdr-wrap .nav-main .home-link .title {
       line-height: 45px;
       font-size: 1.0625rem;
       margin: 0; }
       /* line 189, ../../sass/vendor/foundation/components/_top-bar.scss */
-      .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
+      .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list .top-bar .name .title a, .nav-main .name .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content .top-bar .name .title a, .nav-main .name .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue .top-bar .name .title a, .nav-main .name .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content .top-bar .name .title a, .nav-main .name .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
         font-weight: normal;
         color: #3c63af;
         width: 75%;
@@ -1396,7 +1371,7 @@ meta.foundation-mq-topbar {
     .top-bar .title-area, .nav-main .title-area, .top-bar #pagehdr-wrap .logo, #pagehdr-wrap .top-bar .logo, .nav-main #pagehdr-wrap .logo, #pagehdr-wrap .nav-main .logo {
       float: left; }
     /* line 439, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
+    .top-bar .name h1 a, .nav-main .name h1 a, .top-bar #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .top-bar .home-link h1 a, .nav-main #pagehdr-wrap .home-link h1 a, #pagehdr-wrap .nav-main .home-link h1 a, .top-bar .name .hero .hero-content h4 a, .hero .hero-content .top-bar .name h4 a, .nav-main .name .hero .hero-content h4 a, .hero .hero-content .nav-main .name h4 a, .top-bar #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .top-bar #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .top-bar .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .top-bar .home-link h4 a, .nav-main #pagehdr-wrap .home-link .hero .hero-content h4 a, .hero .hero-content .nav-main #pagehdr-wrap .home-link h4 a, #pagehdr-wrap .nav-main .home-link .hero .hero-content h4 a, .hero .hero-content #pagehdr-wrap .nav-main .home-link h4 a, .top-bar .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar .name .title a, .nav-main .name .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .block.small .title a, .hero .hero-content .block.small #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar .name .title a, .nav-main .name .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .block.small .hero .hero-content .title a, .block.small .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list .top-bar .name .title a, .nav-main .name .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .small#article-list .title a, .hero .hero-content .small#article-list #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content .top-bar .name .title a, .nav-main .name .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .small#article-list .hero .hero-content .title a, .small#article-list .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue .top-bar .name .title a, .nav-main .name .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .hero .hero-content .small#issue .title a, .hero .hero-content .small#issue #pagehdr-wrap .nav-main .home-link .title a, .top-bar .name .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content .top-bar .name .title a, .nav-main .name .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content .nav-main .name .title a, .top-bar #pagehdr-wrap .home-link .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content .top-bar #pagehdr-wrap .home-link .title a, #pagehdr-wrap .top-bar .home-link .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content #pagehdr-wrap .top-bar .home-link .title a, .nav-main #pagehdr-wrap .home-link .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content .nav-main #pagehdr-wrap .home-link .title a, #pagehdr-wrap .nav-main .home-link .small#issue .hero .hero-content .title a, .small#issue .hero .hero-content #pagehdr-wrap .nav-main .home-link .title a {
       width: auto; }
     /* line 441, ../../sass/vendor/foundation/components/_top-bar.scss */
     .top-bar input, .nav-main input,
@@ -1524,11 +1499,11 @@ meta.foundation-mq-topbar {
       padding: 0 15px;
       height: 45px; }
     /* line 596, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar-section .right li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown, .top-bar-section .nav-main .head-search li .dropdown, .nav-main .top-bar-section .head-search li .dropdown, .top-bar-section .block .date li .dropdown, .block .top-bar-section .date li .dropdown {
+    .top-bar-section .right li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown, .top-bar-section .nav-main .head-search li .dropdown, .nav-main .top-bar-section .head-search li .dropdown, .top-bar-section .block .date li .dropdown, .block .top-bar-section .date li .dropdown, .top-bar-section #article-list .date li .dropdown, #article-list .top-bar-section .date li .dropdown, .top-bar-section #issue .date li .dropdown, #issue .top-bar-section .date li .dropdown {
       left: auto;
       right: 0; }
       /* line 600, ../../sass/vendor/foundation/components/_top-bar.scss */
-      .top-bar-section .right li .dropdown li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown li .dropdown, .top-bar-section .nav-main .head-search li .dropdown li .dropdown, .nav-main .top-bar-section .head-search li .dropdown li .dropdown, .top-bar-section .block .date li .dropdown li .dropdown, .block .top-bar-section .date li .dropdown li .dropdown {
+      .top-bar-section .right li .dropdown li .dropdown, .top-bar-section #pagehdr-wrap .nav .nav-user li .dropdown li .dropdown, #pagehdr-wrap .nav .top-bar-section .nav-user li .dropdown li .dropdown, .nav-main .top-bar-section ul.nav-elements li .dropdown li .dropdown, .top-bar-section .nav-main .head-search li .dropdown li .dropdown, .nav-main .top-bar-section .head-search li .dropdown li .dropdown, .top-bar-section .block .date li .dropdown li .dropdown, .block .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #article-list .date li .dropdown li .dropdown, #article-list .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #issue .date li .dropdown li .dropdown, #issue .top-bar-section .date li .dropdown li .dropdown {
         right: 100%; }
     /* line 604, ../../sass/vendor/foundation/components/_top-bar.scss */
     .top-bar-section .left li .dropdown {
@@ -1744,12 +1719,20 @@ h1,
 .hero .hero-content h4,
 .hero .hero-content .block.small .title,
 .block.small .hero .hero-content .title,
+.hero .hero-content .small#article-list .title,
+.small#article-list .hero .hero-content .title,
+.hero .hero-content .small#issue .title,
+.small#issue .hero .hero-content .title,
 h2,
 .carousel-wrap.small .carousel li h3,
 .block .title,
+#article-list .title,
+#issue .title,
 h3,
 h4,
 .block.small .title,
+.small#article-list .title,
+.small#issue .title,
 h5,
 h6,
 pre,
@@ -1795,7 +1778,7 @@ p {
 
 /* Default header styles */
 /* line 229, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .block .title, h3, h4, .block.small .title, h5, h6 {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .small#article-list .title, .small#article-list .hero .hero-content .title, .hero .hero-content .small#issue .title, .small#issue .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title, h3, h4, .block.small .title, .small#article-list .title, .small#issue .title, h5, h6 {
   font-family: "albert";
   font-weight: normal;
   font-style: normal;
@@ -1805,17 +1788,17 @@ h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.smal
   margin-bottom: 0.2rem;
   line-height: 1; }
   /* line 239, ../../sass/vendor/foundation/components/_type.scss */
-  h1 small, .hero .hero-content h4 small, .hero .hero-content .block.small .title small, .block.small .hero .hero-content .title small, h2 small, .carousel-wrap.small .carousel li h3 small, .block .title small, h3 small, h4 small, .block.small .title small, h5 small, h6 small {
+  h1 small, .hero .hero-content h4 small, .hero .hero-content .block.small .title small, .block.small .hero .hero-content .title small, .hero .hero-content .small#article-list .title small, .small#article-list .hero .hero-content .title small, .hero .hero-content .small#issue .title small, .small#issue .hero .hero-content .title small, h2 small, .carousel-wrap.small .carousel li h3 small, .block .title small, #article-list .title small, #issue .title small, h3 small, h4 small, .block.small .title small, .small#article-list .title small, .small#issue .title small, h5 small, h6 small {
     font-size: 0.75rem;
     color: #333333;
     line-height: 0; }
 
 /* line 246, ../../sass/vendor/foundation/components/_type.scss */
-h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title {
+h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .small#article-list .title, .small#article-list .hero .hero-content .title, .hero .hero-content .small#issue .title, .small#issue .hero .hero-content .title {
   font-size: 1.625rem; }
 
 /* line 247, ../../sass/vendor/foundation/components/_type.scss */
-h2, .carousel-wrap.small .carousel li h3, .block .title {
+h2, .carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title {
   font-size: 0.75rem; }
 
 /* line 248, ../../sass/vendor/foundation/components/_type.scss */
@@ -1823,7 +1806,7 @@ h3 {
   font-size: 0.8125rem; }
 
 /* line 249, ../../sass/vendor/foundation/components/_type.scss */
-h4, .block.small .title {
+h4, .block.small .title, .small#article-list .title, .small#issue .title {
   font-size: 0.5rem; }
 
 /* line 250, ../../sass/vendor/foundation/components/_type.scss */
@@ -1835,7 +1818,7 @@ h6 {
   font-size: 0.8125rem; }
 
 /* line 253, ../../sass/vendor/foundation/components/_type.scss */
-.subheader, .block.small .title {
+.subheader, .block.small .title, .small#article-list .title, .small#issue .title {
   line-height: 1.1;
   color: #333333;
   font-weight: 300;
@@ -2012,15 +1995,15 @@ blockquote p {
 
 @media only screen and (min-width: 40.063em) {
   /* line 425, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .block .title, h3, h4, .block.small .title, h5, h6 {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .small#article-list .title, .small#article-list .hero .hero-content .title, .hero .hero-content .small#issue .title, .small#issue .hero .hero-content .title, h2, .carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title, h3, h4, .block.small .title, .small#article-list .title, .small#issue .title, h5, h6 {
     line-height: 1; }
 
   /* line 426, ../../sass/vendor/foundation/components/_type.scss */
-  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title {
+  h1, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .small#article-list .title, .small#article-list .hero .hero-content .title, .hero .hero-content .small#issue .title, .small#issue .hero .hero-content .title {
     font-size: 2.25rem; }
 
   /* line 427, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .carousel-wrap.small .carousel li h3, .block .title {
+  h2, .carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title {
     font-size: 1.375rem; }
 
   /* line 428, ../../sass/vendor/foundation/components/_type.scss */
@@ -2028,7 +2011,7 @@ blockquote p {
     font-size: 1.125rem; }
 
   /* line 429, ../../sass/vendor/foundation/components/_type.scss */
-  h4, .block.small .title {
+  h4, .block.small .title, .small#article-list .title, .small#issue .title {
     font-size: 0.8125rem; } }
 /*
  * Print styles.
@@ -2095,12 +2078,14 @@ blockquote p {
   h2,
   .carousel-wrap.small .carousel li h3,
   .block .title,
+  #article-list .title,
+  #issue .title,
   h3 {
     orphans: 3;
     widows: 3; }
 
   /* line 482, ../../sass/vendor/foundation/components/_type.scss */
-  h2, .carousel-wrap.small .carousel li h3, .block .title,
+  h2, .carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title,
   h3 {
     page-break-after: avoid; }
 
@@ -2120,27 +2105,26 @@ blockquote p {
   .show-for-print {
     display: inherit !important; } }
 /*sets up the body container */
-/* line 83, ../../sass/_scaffold.scss */
-.row, .grid-test, #pagehdr-wrap .nav, .nav-main, #ad-slot-bottom {
+/* line 84, ../../sass/_scaffold.scss */
+.row, #pagehdr-wrap .nav, .nav-main, #ad-slot-bottom {
   width: 100%;
   margin: 0;
   max-width: 61.25rem;
   *zoom: 1; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  .row:before, .grid-test:before, #pagehdr-wrap .nav:before, .nav-main:before, #ad-slot-bottom:before, .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .nav-main:after, #ad-slot-bottom:after {
+  .row:before, #pagehdr-wrap .nav:before, .nav-main:before, #ad-slot-bottom:before, .row:after, #pagehdr-wrap .nav:after, .nav-main:after, #ad-slot-bottom:after {
     content: " ";
     display: table; }
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  .row:after, .grid-test:after, #pagehdr-wrap .nav:after, .nav-main:after, #ad-slot-bottom:after {
+  .row:after, #pagehdr-wrap .nav:after, .nav-main:after, #ad-slot-bottom:after {
     clear: both; }
 
-/* line 92, ../../sass/_scaffold.scss */
+/* line 93, ../../sass/_scaffold.scss */
 main,
 .head-main,
 #pagehdr-wrap,
 #pagehdr,
 #pageftr .row,
-#pageftr .grid-test,
 #pageftr #pagehdr-wrap .nav,
 #pagehdr-wrap #pageftr .nav,
 #pageftr .nav-main,
@@ -2161,13 +2145,11 @@ main,
   #pagehdr:before,
   #pagehdr:after,
   #pageftr .row:before,
-  #pageftr .grid-test:before,
   #pageftr #pagehdr-wrap .nav:before,
   #pagehdr-wrap #pageftr .nav:before,
   #pageftr .nav-main:before,
   #pageftr #ad-slot-bottom:before,
   #pageftr .row:after,
-  #pageftr .grid-test:after,
   #pageftr #pagehdr-wrap .nav:after,
   #pagehdr-wrap #pageftr .nav:after,
   #pageftr .nav-main:after,
@@ -2180,38 +2162,11 @@ main,
   #pagehdr-wrap:after,
   #pagehdr:after,
   #pageftr .row:after,
-  #pageftr .grid-test:after,
   #pageftr #pagehdr-wrap .nav:after,
   #pagehdr-wrap #pageftr .nav:after,
   #pageftr .nav-main:after,
   #pageftr #ad-slot-bottom:after {
     clear: both; }
-
-/* line 102, ../../sass/_scaffold.scss */
-.grid-test .one {
-  padding-left: 0;
-  padding-right: 0;
-  width: 25.52083rem;
-  float: left;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem;
-  border: 1px solid; }
-/* line 106, ../../sass/_scaffold.scss */
-.grid-test .two {
-  padding-left: 0;
-  padding-right: 0;
-  width: 10.20833rem;
-  float: left;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem;
-  border: 1px solid; }
-/* line 110, ../../sass/_scaffold.scss */
-.grid-test .three {
-  padding-left: 0;
-  padding-right: 0;
-  width: 25.52083rem;
-  float: left;
-  border: 1px solid; }
 
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -4259,7 +4214,7 @@ main,
   font-family: "FontAwesome";
   src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg?1402533884') format('svg'), url('../fonts/fontawesome-webfont.woff?1402533884') format('woff'); }
 /* line 12, ../../sass/_typography.scss */
-.more-link > a, #issue .boxtitle a, .block .category, #article-list h3 {
+.more-link > a, #issue .boxtitle a, .block .category, #article-list .category, #issue .category, #article-list h3 {
   font-size: 0.875rem;
   font-family: "albert";
   text-transform: uppercase; }
@@ -4286,7 +4241,7 @@ main,
   text-align: center; }
 
 /* line 38, ../../sass/_typography.scss */
-.block .category, #article-list h3 {
+.block .category, #article-list .category, #issue .category, #article-list h3 {
   margin-bottom: 0.625rem; }
 
 /* line 43, ../../sass/_typography.scss */
@@ -4298,11 +4253,11 @@ main,
   line-height: 2.5rem; }
 
 /* line 74, ../../sass/_typography.scss */
-.carousel-wrap.small .carousel li h3, .block .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .carousel-wrap.small .carousel li h3 a, .block .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
+.carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .carousel-wrap.small .carousel li h3 a, .block .title a, #article-list .title a, #issue .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
   color: #333333;
   text-decoration: none; }
   /* line 62, ../../sass/_typography.scss */
-  .carousel-wrap.small .carousel li h3:hover, .block .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .block .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
+  .carousel-wrap.small .carousel li h3:hover, .block .title:hover, #article-list .title:hover, #issue .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .block .title a a:hover, #article-list .title a a:hover, #issue .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
     color: #3c63af;
     text-decoration: none; }
 
@@ -4316,7 +4271,7 @@ main,
     text-decoration: underline; }
 
 /* line 85, ../../sass/_typography.scss */
-.carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, .block .credits, #blogs #blogrss .postauthor {
+.carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, #article-list .date, #issue .date, .block .credits, #article-list .credits, #issue .credits, #blogs #blogrss .postauthor {
   font-size: 0.625rem;
   font-style: italic; }
 
@@ -4325,7 +4280,7 @@ main,
   letter-spacing: -0.5px; }
 
 /* line 92, ../../sass/_typography.scss */
-.no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content p {
+.no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content .small#article-list .title, .small#article-list .hero .hero-content .title, .hero .hero-content .small#issue .title, .small#issue .hero .hero-content .title, .hero .hero-content p {
   margin-bottom: 0; }
 
 /* 
@@ -4367,6 +4322,33 @@ footer, .head-top {
     background: #333333; }
 
 /* line 48, ../../sass/_components.scss */
+.block, #article-list, #issue {
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 0.625rem;
+  -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.25rem;
+  background: white; }
+
+/* line 51, ../../sass/_components.scss */
+.block-noshadow {
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 0.625rem;
+  margin-bottom: 1.25rem;
+  background: white; }
+
+/* line 55, ../../sass/_components.scss */
 .block-card, .carousel-wrap.small, .linkbox, #blogs, #ad-slot-bottom .ad-item iframe {
   padding: 0;
   -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
@@ -4381,7 +4363,7 @@ Set a width here to define how much items are visible.
 The width can be either fixed in px or flexible in %.
 Position must be relative!
 */
-/* line 66, ../../sass/_components.scss */
+/* line 73, ../../sass/_components.scss */
 .jcarousel {
   position: relative;
   overflow: hidden; }
@@ -4391,7 +4373,7 @@ This is the container of the carousel items.
 You must ensure that the position is relative or absolute and
 that the width is big enough to contain all items.
 */
-/* line 76, ../../sass/_components.scss */
+/* line 83, ../../sass/_components.scss */
 .jcarousel ul {
   width: 20000em;
   position: relative;
@@ -4404,74 +4386,74 @@ that the width is big enough to contain all items.
 These are the item elements. jCarousel works best, if the items
 have a fixed width and height (but it's not required).
 */
-/* line 90, ../../sass/_components.scss */
+/* line 97, ../../sass/_components.scss */
 .jcarousel li {
   /* Required only for block elements like <li>'s */
   float: left; }
 
-/* line 96, ../../sass/_components.scss */
+/* line 103, ../../sass/_components.scss */
 .carousel-wrap.small {
   margin-right: 1.25rem;
   position: relative; }
-  /* line 108, ../../sass/_components.scss */
+  /* line 115, ../../sass/_components.scss */
   .carousel-wrap.small .carousel li {
     width: 19.125rem;
     padding: 1.25rem;
     height: 145px; }
-    /* line 116, ../../sass/_components.scss */
+    /* line 123, ../../sass/_components.scss */
     .carousel-wrap.small .carousel li p {
       font-size: 0.875rem; }
-  /* line 121, ../../sass/_components.scss */
+  /* line 128, ../../sass/_components.scss */
   .carousel-wrap.small .carousel-control {
     position: absolute;
     bottom: 10px;
     left: 50%;
     width: 120px;
     margin-left: -50px; }
-    /* line 127, ../../sass/_components.scss */
+    /* line 134, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .jcarousel-prev,
     .carousel-wrap.small .carousel-control .jcarousel-next {
       font-size: 1.875rem; }
-    /* line 141, ../../sass/_components.scss */
+    /* line 148, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .numbers {
       color: #636363;
       display: inline-block;
       padding: 0 0.3125rem;
       vertical-align: top; }
-      /* line 147, ../../sass/_components.scss */
+      /* line 154, ../../sass/_components.scss */
       .carousel-wrap.small .carousel-control .numbers span {
         display: inline-block;
         vertical-align: middle;
         line-height: 1.875rem;
         height: 1.875rem; }
 
-/* line 162, ../../sass/_components.scss */
+/* line 169, ../../sass/_components.scss */
 .more-icon, .more-link:after {
   content: '\f138';
   padding-left: 0.1875rem; }
 
-/* line 171, ../../sass/_components.scss */
+/* line 178, ../../sass/_components.scss */
 .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email {
   line-height: 44px;
   font-size: 22px; }
 
-/* line 177, ../../sass/_components.scss */
+/* line 184, ../../sass/_components.scss */
 .icon-twitter {
   content: '\f099'; }
 
-/* line 184, ../../sass/_components.scss */
+/* line 191, ../../sass/_components.scss */
 .icon-facebook {
   content: '\f09a'; }
 
-/* line 191, ../../sass/_components.scss */
+/* line 198, ../../sass/_components.scss */
 .icon-rss {
   content: '\f09e'; }
 
-/* line 197, ../../sass/_components.scss */
+/* line 204, ../../sass/_components.scss */
 .icon-email {
   content: '\f003'; }
 
-/* line 203, ../../sass/_components.scss */
+/* line 210, ../../sass/_components.scss */
 .aria-text, #social-links ul > li .icon-text {
   position: absolute;
   top: -9999px;
@@ -4877,7 +4859,7 @@ footer {
   background: #efefef; }
 
 /* line 17, ../../sass/pages/_home.scss */
-.width-full, .hero, #billboard {
+.hero, #billboard {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -4886,7 +4868,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 21, ../../sass/pages/_home.scss */
-.width-xx-small, .row > .block.xx-small, .grid-test > .block.xx-small, #pagehdr-wrap .nav > .block.xx-small, .nav-main > .block.xx-small, #ad-slot-bottom > .block.xx-small {
+.block.xx-small, .xx-small#article-list, .xx-small#issue {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -4895,7 +4877,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 25, ../../sass/pages/_home.scss */
-.width-x-small, .row > .block.x-small, .grid-test > .block.x-small, #pagehdr-wrap .nav > .block.x-small, .nav-main > .block.x-small, #ad-slot-bottom > .block.x-small, #article-list {
+.block.x-small, .x-small#issue, #article-list {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -4904,7 +4886,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 29, ../../sass/pages/_home.scss */
-.width-small, .carousel-wrap.small, .row > .block.small, .grid-test > .block.small, #pagehdr-wrap .nav > .block.small, .nav-main > .block.small, #ad-slot-bottom > .block.small, .row.three .column.left .block.small, .three.grid-test .column.left .block.small, #pagehdr-wrap .three.nav .column.left .block.small, .three.nav-main .column.left .block.small, .three#ad-slot-bottom .column.left .block.small, #twitter, .linkbox, #submission-links, #social-links, #blogs, #ad-slot-bottom .ad-item {
+.carousel-wrap.small, .block.small, .small#article-list, .small#issue, #twitter, .linkbox, #submission-links, #social-links, #blogs, #ad-slot-bottom .ad-item {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -4913,7 +4895,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 33, ../../sass/pages/_home.scss */
-.width-medium, .row > .block.medium, .grid-test > .block.medium, #pagehdr-wrap .nav > .block.medium, .nav-main > .block.medium, #ad-slot-bottom > .block.medium {
+.block.medium, .medium#article-list, .medium#issue {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -4922,7 +4904,7 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 37, ../../sass/pages/_home.scss */
-.width-large, .row > .block.large, .grid-test > .block.large, #pagehdr-wrap .nav > .block.large, .nav-main > .block.large, #ad-slot-bottom > .block.large, .row.three .column.left .block.large, .three.grid-test .column.left .block.large, #pagehdr-wrap .three.nav .column.left .block.large, .three.nav-main .column.left .block.large, .three#ad-slot-bottom .column.left .block.large {
+.block.large, .large#article-list, .large#issue {
   padding-left: 0;
   padding-right: 0;
   float: left;
@@ -4934,7 +4916,7 @@ footer {
 .carousel-wrap.small {
   height: 15.625rem; }
 
-/* line 47, ../../sass/pages/_home.scss */
+/* line 70, ../../sass/pages/_home.scss */
 .hero {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -4947,15 +4929,18 @@ footer {
   background: white;
   position: relative;
   padding: 0;
-  background: transparent;
+  background: transparent; }
+
+/* line 80, ../../sass/pages/_home.scss */
+.hero {
   color: white; }
-  /* line 55, ../../sass/pages/_home.scss */
+  /* line 82, ../../sass/pages/_home.scss */
   .hero.overlay-dark > a:before {
     background: url('../img/gradient-dark_1x364.png') repeat-x bottom; }
-  /* line 60, ../../sass/pages/_home.scss */
+  /* line 87, ../../sass/pages/_home.scss */
   .hero.overlay-light > a:before {
     background: url('../img/gradient-light_1x364.png') repeat-x bottom; }
-  /* line 64, ../../sass/pages/_home.scss */
+  /* line 91, ../../sass/pages/_home.scss */
   .hero img {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -4964,27 +4949,27 @@ footer {
     -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px;
     width: 100%; }
-  /* line 70, ../../sass/pages/_home.scss */
+  /* line 97, ../../sass/pages/_home.scss */
   .hero a {
     color: white; }
-  /* line 73, ../../sass/pages/_home.scss */
+  /* line 100, ../../sass/pages/_home.scss */
   .hero.dark-text, .hero.dark-text a {
     color: #333333; }
-  /* line 79, ../../sass/pages/_home.scss */
+  /* line 106, ../../sass/pages/_home.scss */
   .hero .hero-content {
     position: absolute;
     width: 100%;
     bottom: 0;
     padding: 0.625rem 1.25rem;
     font-size: 1rem; }
-    /* line 89, ../../sass/pages/_home.scss */
+    /* line 116, ../../sass/pages/_home.scss */
     .hero .hero-content p {
       font-size: 1rem; }
-      /* line 92, ../../sass/pages/_home.scss */
+      /* line 119, ../../sass/pages/_home.scss */
       .hero .hero-content p.authors {
         width: 75%;
         float: left; }
-      /* line 96, ../../sass/pages/_home.scss */
+      /* line 123, ../../sass/pages/_home.scss */
       .hero .hero-content p.credit {
         width: 20%;
         text-align: right;
@@ -4992,100 +4977,89 @@ footer {
         position: absolute;
         right: 1.25rem; }
 
-/* line 132, ../../sass/pages/_home.scss */
-.block {
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 0.625rem;
-  -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-  margin-bottom: 1.25rem;
-  background: white;
+/* line 138, ../../sass/pages/_home.scss */
+.block, #article-list, #issue {
   position: relative;
   height: 15.625rem; }
-  /* line 137, ../../sass/pages/_home.scss */
-  .block .block-image {
+  /* line 142, ../../sass/pages/_home.scss */
+  .block .block-image, #article-list .block-image, #issue .block-image {
     width: 5rem;
     display: block;
     position: absolute;
     left: 0.625rem;
     top: 0.625rem; }
-  /* line 145, ../../sass/pages/_home.scss */
-  .block.image .block-content {
+  /* line 150, ../../sass/pages/_home.scss */
+  .block.image .block-content, .image#article-list .block-content, .image#issue .block-content {
     margin-left: 6.25rem;
     margin-right: 0.625rem;
     height: 14.375rem; }
-  /* line 151, ../../sass/pages/_home.scss */
-  .block .date {
+  /* line 156, ../../sass/pages/_home.scss */
+  .block .date, #article-list .date, #issue .date {
     margin-right: -1.25rem; }
-  /* line 157, ../../sass/pages/_home.scss */
-  .block .credits {
+  /* line 162, ../../sass/pages/_home.scss */
+  .block .credits, #article-list .credits, #issue .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.25rem;
     margin: 0; }
-  /* line 172, ../../sass/pages/_home.scss */
-  .block .title p {
+  /* line 177, ../../sass/pages/_home.scss */
+  .block .title p, #article-list .title p, #issue .title p {
     font-size: inherit;
     line-height: inherit; }
-  /* line 178, ../../sass/pages/_home.scss */
-  .block .block-content {
+  /* line 183, ../../sass/pages/_home.scss */
+  .block .block-content, #article-list .block-content, #issue .block-content {
     position: relative;
     padding-right: 1.25rem;
     font-size: 0.8125rem; }
-  /* line 185, ../../sass/pages/_home.scss */
-  .block.small .title {
+  /* line 190, ../../sass/pages/_home.scss */
+  .block.small .title, .small#article-list .title, .small#issue .title {
     font-family: "albert"; }
 
-/* line 195, ../../sass/pages/_home.scss */
-.row.three .column.left, .three.grid-test .column.left, #pagehdr-wrap .three.nav .column.left, .three.nav-main .column.left, .three#ad-slot-bottom .column.left {
+/* line 200, ../../sass/pages/_home.scss */
+.row.three .column:first-child, #pagehdr-wrap .three.nav .column:first-child, .three.nav-main .column:first-child, .three#ad-slot-bottom .column:first-child {
   padding-left: 0;
   padding-right: 0;
   width: 40.83333rem;
   float: left; }
-  /* line 197, ../../sass/pages/_home.scss */
-  .row.three .column.left .block.large, .three.grid-test .column.left .block.large, #pagehdr-wrap .three.nav .column.left .block.large, .three.nav-main .column.left .block.large, .three#ad-slot-bottom .column.left .block.large {
-    height: 11.25rem; }
-    /* line 200, ../../sass/pages/_home.scss */
-    .row.three .column.left .block.large .block-image, .three.grid-test .column.left .block.large .block-image, #pagehdr-wrap .three.nav .column.left .block.large .block-image, .three.nav-main .column.left .block.large .block-image, .three#ad-slot-bottom .column.left .block.large .block-image {
-      height: 10rem;
-      overflow: hidden; }
-  /* line 205, ../../sass/pages/_home.scss */
-  .row.three .column.left .block.small, .three.grid-test .column.left .block.small, #pagehdr-wrap .three.nav .column.left .block.small, .three.nav-main .column.left .block.small, .three#ad-slot-bottom .column.left .block.small {
-    height: 15.625rem; }
-    /* line 208, ../../sass/pages/_home.scss */
-    .row.three .column.left .block.small .block-image, .three.grid-test .column.left .block.small .block-image, #pagehdr-wrap .three.nav .column.left .block.small .block-image, .three.nav-main .column.left .block.small .block-image, .three#ad-slot-bottom .column.left .block.small .block-image {
-      height: 14.375rem;
-      overflow: hidden; }
-/* line 215, ../../sass/pages/_home.scss */
-.row.three .column.right, .three.grid-test .column.right, #pagehdr-wrap .three.nav .column.right, .three.nav-main .column.right, .three#ad-slot-bottom .column.right, .row.three #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .row.three .column.nav-user, .three.grid-test #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.grid-test .column.nav-user, #pagehdr-wrap .three.nav .column.nav-user, .three.nav-main #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three.nav-main .column.nav-user, .three#ad-slot-bottom #pagehdr-wrap .nav .column.nav-user, #pagehdr-wrap .nav .three#ad-slot-bottom .column.nav-user, .row.three .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .row.three ul.column.nav-elements, .three.grid-test .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three.grid-test ul.column.nav-elements, #pagehdr-wrap .three.nav .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section #pagehdr-wrap .three.nav ul.column.nav-elements, .three.nav-main .top-bar-section ul.column.nav-elements, .three#ad-slot-bottom .nav-main .top-bar-section ul.column.nav-elements, .nav-main .top-bar-section .three#ad-slot-bottom ul.column.nav-elements, .row.three .nav-main .column.head-search, .nav-main .row.three .column.head-search, .three.grid-test .nav-main .column.head-search, .nav-main .three.grid-test .column.head-search, #pagehdr-wrap .three.nav .nav-main .column.head-search, .nav-main #pagehdr-wrap .three.nav .column.head-search, .three.nav-main .column.head-search, .three#ad-slot-bottom .nav-main .column.head-search, .nav-main .three#ad-slot-bottom .column.head-search, .row.three .block .column.date, .block .row.three .column.date, .three.grid-test .block .column.date, .block .three.grid-test .column.date, #pagehdr-wrap .three.nav .block .column.date, .block #pagehdr-wrap .three.nav .column.date, .three.nav-main .block .column.date, .block .three.nav-main .column.date, .three#ad-slot-bottom .block .column.date, .block .three#ad-slot-bottom .column.date {
+/* line 204, ../../sass/pages/_home.scss */
+.row.three .column:last-child, #pagehdr-wrap .three.nav .column:last-child, .three.nav-main .column:last-child, .three#ad-slot-bottom .column:last-child {
   padding-left: 0;
   padding-right: 0;
   width: 20.41667rem;
   float: left;
   position: relative; }
-  /* line 218, ../../sass/pages/_home.scss */
-  .row.three .column.right > div > div, .three.grid-test .column.right > div > div, #pagehdr-wrap .three.nav .column.right > div > div, .three.nav-main .column.right > div > div, .three#ad-slot-bottom .column.right > div > div, .row.three #pagehdr-wrap .nav .column.nav-user > div > div, #pagehdr-wrap .nav .row.three .column.nav-user > div > div, .three.grid-test #pagehdr-wrap .nav .column.nav-user > div > div, #pagehdr-wrap .nav .three.grid-test .column.nav-user > div > div, #pagehdr-wrap .three.nav .column.nav-user > div > div, .three.nav-main #pagehdr-wrap .nav .column.nav-user > div > div, #pagehdr-wrap .nav .three.nav-main .column.nav-user > div > div, .three#ad-slot-bottom #pagehdr-wrap .nav .column.nav-user > div > div, #pagehdr-wrap .nav .three#ad-slot-bottom .column.nav-user > div > div, .row.three .nav-main .top-bar-section ul.column.nav-elements > div > div, .nav-main .top-bar-section .row.three ul.column.nav-elements > div > div, .three.grid-test .nav-main .top-bar-section ul.column.nav-elements > div > div, .nav-main .top-bar-section .three.grid-test ul.column.nav-elements > div > div, #pagehdr-wrap .three.nav .nav-main .top-bar-section ul.column.nav-elements > div > div, .nav-main .top-bar-section #pagehdr-wrap .three.nav ul.column.nav-elements > div > div, .three.nav-main .top-bar-section ul.column.nav-elements > div > div, .three#ad-slot-bottom .nav-main .top-bar-section ul.column.nav-elements > div > div, .nav-main .top-bar-section .three#ad-slot-bottom ul.column.nav-elements > div > div, .row.three .nav-main .column.head-search > div > div, .nav-main .row.three .column.head-search > div > div, .three.grid-test .nav-main .column.head-search > div > div, .nav-main .three.grid-test .column.head-search > div > div, #pagehdr-wrap .three.nav .nav-main .column.head-search > div > div, .nav-main #pagehdr-wrap .three.nav .column.head-search > div > div, .three.nav-main .column.head-search > div > div, .three#ad-slot-bottom .nav-main .column.head-search > div > div, .nav-main .three#ad-slot-bottom .column.head-search > div > div, .row.three .block .column.date > div > div, .block .row.three .column.date > div > div, .three.grid-test .block .column.date > div > div, .block .three.grid-test .column.date > div > div, #pagehdr-wrap .three.nav .block .column.date > div > div, .block #pagehdr-wrap .three.nav .column.date > div > div, .three.nav-main .block .column.date > div > div, .block .three.nav-main .column.date > div > div, .three#ad-slot-bottom .block .column.date > div > div, .block .three#ad-slot-bottom .column.date > div > div {
+  /* line 207, ../../sass/pages/_home.scss */
+  .row.three .column:last-child > div > div, #pagehdr-wrap .three.nav .column:last-child > div > div, .three.nav-main .column:last-child > div > div, .three#ad-slot-bottom .column:last-child > div > div {
     float: none; }
 
-/* line 225, ../../sass/pages/_home.scss */
+/* line 217, ../../sass/pages/_home.scss */
+.row.three .column:first-child .block.large, #pagehdr-wrap .three.nav .column:first-child .block.large, .three.nav-main .column:first-child .block.large, .three#ad-slot-bottom .column:first-child .block.large, .row.three .column:first-child .large#article-list, #pagehdr-wrap .three.nav .column:first-child .large#article-list, .three.nav-main .column:first-child .large#article-list, .three#ad-slot-bottom .column:first-child .large#article-list, .row.three .column:first-child .large#issue, #pagehdr-wrap .three.nav .column:first-child .large#issue, .three.nav-main .column:first-child .large#issue, .three#ad-slot-bottom .column:first-child .large#issue {
+  height: 11.25rem; }
+  /* line 219, ../../sass/pages/_home.scss */
+  .row.three .column:first-child .block.large .block-image, #pagehdr-wrap .three.nav .column:first-child .block.large .block-image, .three.nav-main .column:first-child .block.large .block-image, .three#ad-slot-bottom .column:first-child .block.large .block-image, .row.three .column:first-child .large#article-list .block-image, #pagehdr-wrap .three.nav .column:first-child .large#article-list .block-image, .three.nav-main .column:first-child .large#article-list .block-image, .three#ad-slot-bottom .column:first-child .large#article-list .block-image, .row.three .column:first-child .large#issue .block-image, #pagehdr-wrap .three.nav .column:first-child .large#issue .block-image, .three.nav-main .column:first-child .large#issue .block-image, .three#ad-slot-bottom .column:first-child .large#issue .block-image {
+    height: 10rem;
+    overflow: hidden; }
+/* line 224, ../../sass/pages/_home.scss */
+.row.three .column:first-child .block.small, #pagehdr-wrap .three.nav .column:first-child .block.small, .three.nav-main .column:first-child .block.small, .three#ad-slot-bottom .column:first-child .block.small, .row.three .column:first-child .small#article-list, #pagehdr-wrap .three.nav .column:first-child .small#article-list, .three.nav-main .column:first-child .small#article-list, .three#ad-slot-bottom .column:first-child .small#article-list, .row.three .column:first-child .small#issue, #pagehdr-wrap .three.nav .column:first-child .small#issue, .three.nav-main .column:first-child .small#issue, .three#ad-slot-bottom .column:first-child .small#issue {
+  height: 15.625rem; }
+  /* line 226, ../../sass/pages/_home.scss */
+  .row.three .column:first-child .block.small .block-image, #pagehdr-wrap .three.nav .column:first-child .block.small .block-image, .three.nav-main .column:first-child .block.small .block-image, .three#ad-slot-bottom .column:first-child .block.small .block-image, .row.three .column:first-child .small#article-list .block-image, #pagehdr-wrap .three.nav .column:first-child .small#article-list .block-image, .three.nav-main .column:first-child .small#article-list .block-image, .three#ad-slot-bottom .column:first-child .small#article-list .block-image, .row.three .column:first-child .small#issue .block-image, #pagehdr-wrap .three.nav .column:first-child .small#issue .block-image, .three.nav-main .column:first-child .small#issue .block-image, .three#ad-slot-bottom .column:first-child .small#issue .block-image {
+    height: 14.375rem;
+    overflow: hidden; }
+
+/* line 235, ../../sass/pages/_home.scss */
 #billboard {
   padding: 0.625rem 1.25rem;
   margin-bottom: 1.25rem;
   background: #333333;
   position: relative; }
-  /* line 229, ../../sass/pages/_home.scss */
-  #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard a {
+  /* line 239, ../../sass/pages/_home.scss */
+  #billboard h3, #billboard h4, #billboard .block.small .title, .block.small #billboard .title, #billboard .small#article-list .title, .small#article-list #billboard .title, #billboard .small#issue .title, .small#issue #billboard .title, #billboard a {
     color: white; }
-  /* line 232, ../../sass/pages/_home.scss */
+  /* line 242, ../../sass/pages/_home.scss */
   #billboard h3 {
     font-size: 22px; }
-  /* line 235, ../../sass/pages/_home.scss */
+  /* line 245, ../../sass/pages/_home.scss */
   #billboard a {
     border-radius: 5px;
     padding: 0.3125rem 1.25rem;
@@ -5094,43 +5068,31 @@ footer {
     right: 1.25rem;
     top: 18px; }
 
-/* line 246, ../../sass/pages/_home.scss */
+/* line 256, ../../sass/pages/_home.scss */
 #article-list {
   height: 15.625rem;
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 0.625rem;
-  -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-  margin-bottom: 1.25rem;
-  background: white;
   position: relative; }
-  /* line 256, ../../sass/pages/_home.scss */
+  /* line 266, ../../sass/pages/_home.scss */
   #article-list ul.list-plain {
     line-height: normal; }
-    /* line 260, ../../sass/pages/_home.scss */
+    /* line 270, ../../sass/pages/_home.scss */
     #article-list ul.list-plain li {
       color: #333333;
       margin-bottom: 15px; }
-      /* line 264, ../../sass/pages/_home.scss */
+      /* line 274, ../../sass/pages/_home.scss */
       #article-list ul.list-plain li a {
         display: block;
         font-family: "albert";
         font-size: 12px; }
 
-/* line 276, ../../sass/pages/_home.scss */
+/* line 286, ../../sass/pages/_home.scss */
 .more-link {
   position: absolute;
   bottom: 0.625rem;
   left: 0.625rem;
   right: auto; }
 
-/* line 292, ../../sass/pages/_home.scss */
+/* line 302, ../../sass/pages/_home.scss */
 .tooltip {
   width: 300px !important;
   -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
@@ -5138,7 +5100,7 @@ footer {
   box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
   border: 1px solid #cccccc; }
 
-/* line 298, ../../sass/pages/_home.scss */
+/* line 308, ../../sass/pages/_home.scss */
 #issue {
   padding-left: 0;
   padding-right: 0;
@@ -5146,52 +5108,40 @@ footer {
   width: 11.25rem;
   margin-left: 0.625rem;
   margin-right: 0.625rem;
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 0.625rem;
-  -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-  margin-bottom: 1.25rem;
-  background: white;
   height: 15.625rem; }
-  /* line 303, ../../sass/pages/_home.scss */
+  /* line 313, ../../sass/pages/_home.scss */
   #issue .current-img {
     width: 10rem; }
-  /* line 306, ../../sass/pages/_home.scss */
+  /* line 316, ../../sass/pages/_home.scss */
   #issue .boxtitle {
     margin-top: 0.3125rem; }
-    /* line 308, ../../sass/pages/_home.scss */
+    /* line 318, ../../sass/pages/_home.scss */
     #issue .boxtitle a {
       display: block;
       margin-bottom: -0.3125rem;
       font-weight: 900; }
-    /* line 316, ../../sass/pages/_home.scss */
+    /* line 326, ../../sass/pages/_home.scss */
     #issue .boxtitle .subhead {
       font-face: "arial";
       font-size: 16px; }
 
-/* line 323, ../../sass/pages/_home.scss */
+/* line 333, ../../sass/pages/_home.scss */
 #twitter {
   margin-bottom: 1rem; }
 
-/* line 328, ../../sass/pages/_home.scss */
+/* line 338, ../../sass/pages/_home.scss */
 .linkbox {
   height: 25.625rem; }
-  /* line 335, ../../sass/pages/_home.scss */
+  /* line 345, ../../sass/pages/_home.scss */
   .linkbox ul li {
     padding: 1.25rem 1.875rem;
     border-top: 1px solid #efefef; }
-    /* line 339, ../../sass/pages/_home.scss */
+    /* line 349, ../../sass/pages/_home.scss */
     .linkbox ul li a {
       font-family: "albert";
       font-size: 1rem; }
 
-/* line 348, ../../sass/pages/_home.scss */
+/* line 358, ../../sass/pages/_home.scss */
 #submission-links {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -5202,19 +5152,19 @@ footer {
   padding: 0.625rem 1.875rem 0.3125rem 1.875rem;
   margin-bottom: 1.25rem;
   background: #333333; }
-  /* line 356, ../../sass/pages/_home.scss */
+  /* line 366, ../../sass/pages/_home.scss */
   #submission-links .split-container {
     margin: 0 0 0.625rem; }
-  /* line 360, ../../sass/pages/_home.scss */
+  /* line 370, ../../sass/pages/_home.scss */
   #submission-links .split-item {
     margin: 0 !important;
     width: 50%;
     height: 40px;
     text-align: center; }
-    /* line 365, ../../sass/pages/_home.scss */
+    /* line 375, ../../sass/pages/_home.scss */
     #submission-links .split-item:first-child {
       border-right: 1px solid #636363; }
-    /* line 368, ../../sass/pages/_home.scss */
+    /* line 378, ../../sass/pages/_home.scss */
     #submission-links .split-item a {
       color: #89a0d0;
       text-decoration: none;
@@ -5225,25 +5175,25 @@ footer {
         color: #89a0d0;
         text-decoration: underline; }
 
-/* line 376, ../../sass/pages/_home.scss */
+/* line 386, ../../sass/pages/_home.scss */
 #social-links {
   border-radius: 5px;
   padding: 0.3125rem;
   margin-bottom: 1.25rem;
   background: #04417d; }
-  /* line 380, ../../sass/pages/_home.scss */
+  /* line 390, ../../sass/pages/_home.scss */
   #social-links h3 {
     text-indent: 0.625rem;
     margin-bottom: 0.625rem; }
-  /* line 385, ../../sass/pages/_home.scss */
+  /* line 395, ../../sass/pages/_home.scss */
   #social-links ul {
     margin-bottom: 0;
     margin-left: -0.25rem; }
-    /* line 389, ../../sass/pages/_home.scss */
+    /* line 399, ../../sass/pages/_home.scss */
     #social-links ul > li {
       margin-left: 4px;
       margin-bottom: 0; }
-      /* line 392, ../../sass/pages/_home.scss */
+      /* line 402, ../../sass/pages/_home.scss */
       #social-links ul > li > a {
         background: #3c63af;
         border-radius: 5px;
@@ -5251,27 +5201,27 @@ footer {
         height: 44px;
         text-align: center;
         color: white; }
-        /* line 399, ../../sass/pages/_home.scss */
+        /* line 409, ../../sass/pages/_home.scss */
         #social-links ul > li > a:hover {
           background: #333333; }
-      /* line 403, ../../sass/pages/_home.scss */
+      /* line 413, ../../sass/pages/_home.scss */
       #social-links ul > li .social {
         width: 44px; }
-    /* line 410, ../../sass/pages/_home.scss */
+    /* line 420, ../../sass/pages/_home.scss */
     #social-links ul .social-blogs {
       width: 6.5rem;
       line-height: 44px;
       font-size: 1rem;
       font-family: "albert"; }
 
-/* line 419, ../../sass/pages/_home.scss */
+/* line 429, ../../sass/pages/_home.scss */
 #blogs {
   height: 15.625rem;
   position: relative; }
-  /* line 431, ../../sass/pages/_home.scss */
+  /* line 441, ../../sass/pages/_home.scss */
   #blogs #blogrss {
     padding: 1.25rem 1.25rem 0; }
-    /* line 433, ../../sass/pages/_home.scss */
+    /* line 443, ../../sass/pages/_home.scss */
     #blogs #blogrss div {
       *zoom: 1;
       margin-bottom: 0.625rem; }
@@ -5282,35 +5232,35 @@ footer {
       /* line 117, ../../sass/vendor/foundation/components/_global.scss */
       #blogs #blogrss div:after {
         clear: both; }
-    /* line 437, ../../sass/pages/_home.scss */
+    /* line 447, ../../sass/pages/_home.scss */
     #blogs #blogrss .postimg {
       float: left;
       height: 75px;
       width: 2.1875rem;
       margin-right: 0.625rem; }
-    /* line 443, ../../sass/pages/_home.scss */
+    /* line 453, ../../sass/pages/_home.scss */
     #blogs #blogrss .postdate {
       margin: 0;
       font-size: 10px;
       font-family: "arial";
       color: #636363;
       padding: 0; }
-    /* line 450, ../../sass/pages/_home.scss */
+    /* line 460, ../../sass/pages/_home.scss */
     #blogs #blogrss .posttitle {
       height: 30px;
       line-height: 15px;
       overflow: hidden;
       margin: 0.3125rem 0; }
-      /* line 455, ../../sass/pages/_home.scss */
+      /* line 465, ../../sass/pages/_home.scss */
       #blogs #blogrss .posttitle a {
         font-family: "albert";
         font-size: 13px; }
-    /* line 461, ../../sass/pages/_home.scss */
+    /* line 471, ../../sass/pages/_home.scss */
     #blogs #blogrss .postauthor {
       color: #636363;
       margin: 0;
       padding: 0; }
-  /* line 468, ../../sass/pages/_home.scss */
+  /* line 478, ../../sass/pages/_home.scss */
   #blogs .more-link {
     bottom: 0.625rem;
     left: 5.3125rem; }
@@ -5319,7 +5269,7 @@ footer {
 .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .more-icon, .plosgenetics .more-link:after {
   color: #16a127; }
 /* line 66, ../../sass/_utilities.scss */
-.plosbiology .block .category, .block .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .more-icon, .plosgenetics .more-link:after {
+.plosbiology .block .category, .block .plosbiology .category, .plosbiology #article-list .category, #article-list .plosbiology .category, .plosbiology #issue .category, #issue .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #article-list .category, #article-list .ploscompbiol .category, .ploscompbiol #issue .category, #issue .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #article-list .category, #article-list .plosgenetics .category, .plosgenetics #issue .category, #issue .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .more-icon, .plosgenetics .more-link:after {
   color: #16a127; }
 /* line 69, ../../sass/_utilities.scss */
 .plosbiology .head-top, .ploscompbiol .head-top, .plosgenetics .head-top {
@@ -5368,7 +5318,7 @@ footer {
 .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .more-icon, .plosntd .more-link:after {
   color: #891fb1; }
 /* line 66, ../../sass/_utilities.scss */
-.plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .block .category, .block .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .more-icon, .plosntd .more-link:after {
+.plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #article-list .category, #article-list .plosmedicine .category, .plosmedicine #issue .category, #issue .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #article-list .category, #article-list .plospathogens .category, .plospathogens #issue .category, #issue .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .block .category, .block .plosntd .category, .plosntd #article-list .category, #article-list .plosntd .category, .plosntd #issue .category, #issue .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .more-icon, .plosntd .more-link:after {
   color: #891fb1; }
 /* line 69, ../../sass/_utilities.scss */
 .plosmedicine .head-top, .plospathogens .head-top, .plosntd .head-top {

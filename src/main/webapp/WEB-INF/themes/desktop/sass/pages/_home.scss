@@ -14,43 +14,70 @@ $image-container: ($image-width + $pad-small);
 // I am using foundation settings values.
 
 //PG: these are all the widths
-.width-full {
+%width-full {
   @include plos-grid-column($pixelwidth: full-width);
 }
 
-.width-xx-small {
+%width-xx-small {
   @include plos-grid-column(182);
 }
 
-.width-x-small {
+%width-x-small {
   @include plos-grid-column(267);
 }
 
-.width-small {
+%width-small {
   @include plos-grid-column(306);
 }
 
-.width-medium {
+%width-medium {
   @include plos-grid-column(469);
 }
 
-.width-large {
+%width-large {
   @include plos-grid-column(633);
 }
 
 .carousel-wrap.small {
   //more styling for this in _components.scss
-  @extend .width-small;
+  @extend %width-small;
   height: $block-height;
 }
 
+//page scaffolding
+
+//sizes:
+
+ .block {
+  &.xx-small {
+    @extend %width-xx-small;
+  }
+
+  &.x-small {
+    @extend %width-x-small;
+  }
+  &.small {
+    @extend %width-small;
+  }
+  &.medium {
+    @extend %width-medium;
+  }
+  &.large {
+    @extend %width-large;
+  }
+ }
+
 .hero {
-  @extend .width-full;
+  @extend %width-full;
   @include blocks($shadow: none);
 
   position: relative;
   padding: 0;
   background: transparent;
+}
+
+
+.hero{
   // overlay colors
   &.overlay-dark > a:before {
     @extend .overlay;
@@ -107,30 +134,8 @@ $image-container: ($image-width + $pad-small);
 }
 
 
-//sizes:
-.row > .block {
-
-  &.xx-small {
-    @extend .width-xx-small;
-  }
-
-  &.x-small {
-    @extend .width-x-small;
-  }
-  &.small {
-    @extend .width-small;
-  }
-  &.medium {
-    @extend .width-medium;
-  }
-  &.large {
-    @extend .width-large;
-  }
-
-}
 
 .block {
-  @include blocks;
   position: relative;
   height: $block-height;
 
@@ -192,27 +197,11 @@ $image-container: ($image-width + $pad-small);
 }
 .row.three{
   .column {
-    &.left {
+    &:first-child {
       @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 8); //width + gutter
-      .block.large {
-        @extend .width-large;
-        height: $block-height-small;
-        .block-image {
-          height: ($block-height-small - ($pad-default));
-          overflow: hidden;
-        }
-      }
-      .block.small {
-        @extend .width-small;
-        height: $block-height;
-        .block-image {
-          height: ($block-height - ($pad-default));
-          overflow: hidden;
-        }
-      }
     }
 
-    &.right {
+    &:last-child {
       @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 4); //width + gutter
       position: relative;
       > div > div {
@@ -222,8 +211,29 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
+.row.three{
+  .column {
+    &:first-child {
+      .block.large {
+        height: $block-height-small;
+        .block-image {
+          height: ($block-height-small - ($pad-default));
+          overflow: hidden;
+        }
+      }
+      .block.small {
+        height: $block-height;
+        .block-image {
+          height: ($block-height - ($pad-default));
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
 #billboard {
-  @extend .width-full;
+  @extend %width-full;
   @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-small $pad-default);
   position: relative;
   h3, h4, a {
@@ -245,8 +255,8 @@ $image-container: ($image-width + $pad-small);
 
 #article-list {
   height: $block-height;
-  @include blocks;
-  @extend .width-x-small;
+  @extend .block;
+  @extend %width-x-small;
   position: relative;
 
   h3 {
@@ -297,7 +307,7 @@ $image-container: ($image-width + $pad-small);
 
 #issue {
   @include plos-grid-column(180);
-  @include blocks;
+  @extend .block;
 
   height: $block-height;
   .current-img {
@@ -321,13 +331,13 @@ $image-container: ($image-width + $pad-small);
 }
 
 #twitter {
-  @extend .width-small;
+  @extend %width-small;
   margin-bottom: rem-calc(16); // non-standard to account for the drop-shadow on adjacent containers
 }
  //ISCB box
 .linkbox {
   @extend .block-card;
-  @extend .width-small;
+  @extend %width-small;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
 
   ul {
@@ -347,7 +357,7 @@ $image-container: ($image-width + $pad-small);
 
 #submission-links {
   @include blocks($color: $grey-dark, $padding: $pad-small $pad-medium $pad-xsmall $pad-medium, $shadow: none);
-  @extend .width-small;
+  @extend %width-small;
 
   h3 {
     @extend %header-bottom-shadow;
@@ -374,7 +384,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 #social-links {
-  @extend .width-small;
+  @extend %width-small;
   @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);
 
   h3 {
@@ -418,7 +428,7 @@ $image-container: ($image-width + $pad-small);
 
 #blogs {
   $image-width: rem-calc(35px);
-  @extend .width-small;
+  @extend %width-small;
   @extend .block-card;
   height: $block-height;
   position: relative;
@@ -474,7 +484,7 @@ $image-container: ($image-width + $pad-small);
 #ad-slot-bottom {
   @extend .row;
   .ad-item {
-    @extend .width-small;
+    @extend %width-small;
     iframe {
       @extend .block-card;
     }

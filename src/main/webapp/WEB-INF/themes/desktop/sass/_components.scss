@@ -45,6 +45,13 @@
   background: $color;
 }
 
+.block{
+  @include blocks();
+}
+.block-noshadow{
+  @include blocks($shadow: none);
+
+}
 .block-card {
   @include blocks($radius: none, $padding: none);
 }

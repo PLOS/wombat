@@ -51,6 +51,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 
 }
 
+
 /// this is a total kluge essentially this allows us to have the margins on the outside
 @function grid-calc($colNumber, $totalColumns) {
   $columnWidth: ($row-width / $totalColumns); // ($row-width / $total-columns);
@@ -95,23 +96,6 @@ main,
 #pagehdr,
 #pageftr .row {
   @include plos-grid-container;
-}
-
-.grid-test {
-  @extend .row;
-  .one {
-    @include plos-grid-column($pixelwidth: columns, $columns: 5);
-    border: 1px solid;
-  }
-  .two {
-    @include plos-grid-column($pixelwidth: columns, $columns: 2);
-    border: 1px solid;
-  }
-  .three {
-    @include plos-grid-column($pixelwidth: columns, $gutter: none, $columns: 5);
-    border: 1px solid;
-  }
-
 }
 
 

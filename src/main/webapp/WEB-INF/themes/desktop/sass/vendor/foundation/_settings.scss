@@ -387,7 +387,7 @@ $include-html-clearing-classes: false;
 
 // Dropdown
 
-// $include-html-dropdown-classes: $include-html-classes;
+$include-html-dropdown-classes: false;
 
 // We use these to controls height and width styles.
 // $f-dropdown-max-width: 200px;
@@ -1139,9 +1139,9 @@ $topbar-dropdown-bg: $topbar-bg-color;
 $topbar-dropdown-link-color: $clr-link-hover;
 $topbar-dropdown-link-bg: $white;
 $topbar-dropdown-link-weight: normal;
-// $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: $clr-highlight-text;
-// $topbar-dropdown-toggle-alpha: 0.4;
+ $topbar-dropdown-toggle-size: false;
+ $topbar-dropdown-toggle-color: false;
+ $topbar-dropdown-toggle-alpha: false;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $plos-default;
@@ -1161,22 +1161,20 @@ $topbar-link-padding: $topbar-height / 3;
 // $topbar-button-font-size: 0.75rem;
 // $topbar-button-top: 7px;
 
-// $topbar-dropdown-label-color: #777;
-// $topbar-dropdown-label-text-transform: uppercase;
-// $topbar-dropdown-label-font-weight: bold;
-// $topbar-dropdown-label-font-size: rem-calc(10);
-// $topbar-dropdown-label-bg: #333;
+ $topbar-dropdown-label-color: false;
+ $topbar-dropdown-label-text-transform: false;
+ $topbar-dropdown-label-font-weight: false;
+ $topbar-dropdown-label-font-size: false;
+ $topbar-dropdown-label-bg: false;
 
 // Top menu icon styles
-/*
- $topbar-menu-link-transform: uppercase;
- $topbar-menu-link-font-size: rem-calc(13);
- $topbar-menu-link-weight: bold;
- $topbar-menu-link-color: #fff;
- $topbar-menu-icon-color: #fff;
- $topbar-menu-link-color-toggled: #888;
- $topbar-menu-icon-color-toggled: #888;
- */
+ $topbar-menu-link-transform: false;
+ $topbar-menu-link-font-size: false;
+ $topbar-menu-link-weight: false;
+ $topbar-menu-link-color: false;
+ $topbar-menu-icon-color: false;
+ $topbar-menu-link-color-toggled: false;
+ $topbar-menu-icon-color-toggled: false;
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar

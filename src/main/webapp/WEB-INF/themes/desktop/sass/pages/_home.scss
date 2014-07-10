@@ -83,7 +83,7 @@ $image-container: ($image-width + $pad-small);
     padding: $pad-small $pad-default;
     font-size: rem-calc($txt-size-medium-large);
     h4 {
-      @extend h1;
+      font-size: $txt-size-h1;
       @extend .no-margin;
     }
     p {
@@ -166,7 +166,8 @@ $image-container: ($image-width + $pad-small);
     @extend .brand-title;
   }
   .title {
-    @extend h2;
+    //@extend h2;
+    font-size: $txt-size-h2;
     @extend .link-text-body;
     //in case p tag is added in CMS, need to override global settings
     p {
@@ -183,7 +184,8 @@ $image-container: ($image-width + $pad-small);
 
   &.small {
     .title {
-      @extend h4;
+     // @extend h4;
+      font-size: $txt-size-h4;
       @extend .subheader;
       font-family: $font-face-fancy;
     }

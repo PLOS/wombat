@@ -18,10 +18,10 @@
                  'search'
  */
 .head-top {
-  @extend .bg-dark;
+  @extend %bg-dark;
   @extend .text-center;
   //@include highlight-border($clr-highlight: $clr-brand);
-  @extend .brand-border;
+  @extend %brand-border;
   border-bottom-width: 6px;
   border-bottom-style: solid;
   padding: $pad-xsmall $pad-small;
@@ -66,7 +66,7 @@ $width-nav: $block-grid-elements - $width-logo;
       li.highlighted {
         > a {
           color: $clr-highlight-text;
-          @extend .brand-background;
+          @extend %brand-background;
         }
       }
     }
@@ -180,7 +180,7 @@ $width-nav: $block-grid-elements - $width-logo;
         font-size: rem-calc($txt-size-medium);
 
         h3 {
-          @extend .header-bottom-shadow;
+          @extend %header-bottom-shadow;
           margin-top: $pad-xsmall;
           font-size: rem-calc($txt-size-23large);
         }

@@ -4259,72 +4259,72 @@ main,
   font-family: "FontAwesome";
   src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg?1402533884') format('svg'), url('../fonts/fontawesome-webfont.woff?1402533884') format('woff'); }
 /* line 12, ../../sass/_typography.scss */
-.header-allcaps, .header-allcaps-plain, .more-link > a, .header-allcaps-xlarge, #issue .boxtitle a, .brand-title, .block .category, #article-list h3 {
+.more-link > a, #issue .boxtitle a, .block .category, #article-list h3 {
   font-size: 0.875rem;
   font-family: "albert";
   text-transform: uppercase; }
 
 /* line 17, ../../sass/_typography.scss */
-.header-allcaps-plain, .more-link > a {
+.more-link > a {
   font-family: "arial"; }
 
 /* line 21, ../../sass/_typography.scss */
-.header-allcaps-xlarge, #issue .boxtitle a {
+#issue .boxtitle a {
   font-size: 1.25rem; }
 
 /* line 26, ../../sass/_typography.scss */
-.header-xlarge-light, #submission-links h3, #social-links h3 {
+#submission-links h3, #social-links h3 {
   font-size: 1.25rem;
   color: white;
   font-family: "albert"; }
 
-/* line 34, ../../sass/_typography.scss */
-.header-bottom-shadow, .nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3, #submission-links h3 {
+/* line 32, ../../sass/_typography.scss */
+.nav-main .top-bar-section ul.nav-elements > li.has-dropdown.hover .calloutcontainer .submit h3, #submission-links h3 {
   padding-bottom: 1.0625rem;
   margin-bottom: 1.0625rem;
   box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
   text-align: center; }
 
-/* line 40, ../../sass/_typography.scss */
-.brand-title, .block .category, #article-list h3 {
+/* line 38, ../../sass/_typography.scss */
+.block .category, #article-list h3 {
   margin-bottom: 0.625rem; }
 
-/* line 45, ../../sass/_typography.scss */
-.brand-header, .carousel-wrap.small .block-header, #blogs .block-header {
+/* line 43, ../../sass/_typography.scss */
+.carousel-wrap.small .block-header, #blogs .block-header {
   color: white;
   padding: 0 1.25rem;
   font-family: "albert";
   font-size: 1rem;
   line-height: 2.5rem; }
 
-/* line 76, ../../sass/_typography.scss */
-.link-text-body, .carousel-wrap.small .carousel li h3, .block .title, .linkbox ul li, #blogs #blogrss .posttitle a, .link-text-body a, .carousel-wrap.small .carousel li h3 a, .block .title a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
+/* line 74, ../../sass/_typography.scss */
+.carousel-wrap.small .carousel li h3, .block .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .carousel-wrap.small .carousel li h3 a, .block .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
   color: #333333;
   text-decoration: none; }
-  /* line 64, ../../sass/_typography.scss */
-  .link-text-body:hover, .carousel-wrap.small .carousel li h3:hover, .block .title:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .link-text-body a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .link-text-body a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .link-text-body a a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .block .title a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
+  /* line 62, ../../sass/_typography.scss */
+  .carousel-wrap.small .carousel li h3:hover, .block .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .block .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
     color: #3c63af;
     text-decoration: none; }
 
-/* line 80, ../../sass/_typography.scss */
-.link-text-white, #blogs .block-header, .link-text-white a, #blogs .block-header a {
+/* line 78, ../../sass/_typography.scss */
+#blogs .block-header, #blogs .block-header a {
   color: white;
   text-decoration: none; }
-  /* line 64, ../../sass/_typography.scss */
-  .link-text-white:hover, #blogs .block-header:hover, .link-text-white a:hover, #blogs .block-header a:hover, .link-text-white a:hover, #blogs .block-header a:hover, .link-text-white a a:hover, #blogs .block-header a a:hover {
+  /* line 62, ../../sass/_typography.scss */
+  #blogs .block-header:hover, #blogs .block-header a:hover, #blogs .block-header a:hover, #blogs .block-header a a:hover {
     color: white;
     text-decoration: underline; }
 
-/* line 87, ../../sass/_typography.scss */
-.small-italic, .carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, .block .credits, #blogs #blogrss .postauthor {
+/* line 85, ../../sass/_typography.scss */
+.carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, .block .credits, #blogs #blogrss .postauthor {
   font-size: 0.625rem;
   font-style: italic; }
 
-/* line 91, ../../sass/_typography.scss */
-.condense, #issue .boxtitle a {
+/* line 89, ../../sass/_typography.scss */
+#issue .boxtitle a {
   letter-spacing: -0.5px; }
 
-/* line 94, ../../sass/_typography.scss */
+/* line 92, ../../sass/_typography.scss */
 .no-margin, .hero .hero-content h4, .hero .hero-content .block.small .title, .block.small .hero .hero-content .title, .hero .hero-content p {
   margin-bottom: 0; }
 
@@ -4332,24 +4332,8 @@ main,
  *
  */
 /* line 40, ../../sass/_utilities.scss */
-.bg-dark, footer, .head-top {
+footer, .head-top {
   background: #333333; }
-
-/* line 44, ../../sass/_utilities.scss */
-.highlight-color {
-  color: #3c63af; }
-
-/* line 48, ../../sass/_utilities.scss */
-.highlight-background {
-  background: #3c63af;
-  color: white; }
-  /* line 51, ../../sass/_utilities.scss */
-  .highlight-background:hover {
-    background: #3c63af; }
-
-/* line 56, ../../sass/_utilities.scss */
-.highlight-border {
-  border-color: #3c63af; }
 
 /* line 111, ../../sass/_utilities.scss */
 .center-simple {
@@ -4506,12 +4490,6 @@ have a fixed width and height (but it's not required).
 footer {
   padding: 1.5625rem 0 3.75rem;
   color: white; }
-  /* line 8, ../../sass/sections/_footer.scss */
-  footer .brand-column {
-    padding-left: 0;
-    padding-right: 0;
-    width: 30.625rem;
-    float: left; }
   /* line 10, ../../sass/sections/_footer.scss */
   footer .link-column {
     padding-left: 0;
@@ -4528,7 +4506,7 @@ footer {
   footer a {
     color: #cccccc;
     text-decoration: none; }
-    /* line 64, ../../sass/_typography.scss */
+    /* line 62, ../../sass/_typography.scss */
     footer a:hover, footer a a:hover {
       color: #cccccc;
       text-decoration: underline; }
@@ -4834,32 +4812,32 @@ footer {
         /* line 131, ../../sass/vendor/foundation/components/_forms.scss */
         .nav-main .head-search form input[type="text"][disabled], fieldset[disabled] .nav-main .head-search form input[type="text"] {
           background-color: #dddddd; }
-      /* line 101, ../../sass/_typography.scss */
+      /* line 99, ../../sass/_typography.scss */
       .nav-main .head-search form ::-webkit-input-placeholder {
         color: #333333; }
-      /* line 104, ../../sass/_typography.scss */
+      /* line 102, ../../sass/_typography.scss */
       .nav-main .head-search form :-moz-placeholder {
         /* Firefox 18- */
         color: #333333; }
-      /* line 108, ../../sass/_typography.scss */
+      /* line 106, ../../sass/_typography.scss */
       .nav-main .head-search form ::-moz-placeholder {
         /* Firefox 19+ */
         color: #333333; }
-      /* line 112, ../../sass/_typography.scss */
+      /* line 110, ../../sass/_typography.scss */
       .nav-main .head-search form :-ms-input-placeholder {
         color: #333333; }
-      /* line 101, ../../sass/_typography.scss */
+      /* line 99, ../../sass/_typography.scss */
       .nav-main .head-search form.placeholder ::-webkit-input-placeholder {
         color: #999999; }
-      /* line 104, ../../sass/_typography.scss */
+      /* line 102, ../../sass/_typography.scss */
       .nav-main .head-search form.placeholder :-moz-placeholder {
         /* Firefox 18- */
         color: #999999; }
-      /* line 108, ../../sass/_typography.scss */
+      /* line 106, ../../sass/_typography.scss */
       .nav-main .head-search form.placeholder ::-moz-placeholder {
         /* Firefox 19+ */
         color: #999999; }
-      /* line 112, ../../sass/_typography.scss */
+      /* line 110, ../../sass/_typography.scss */
       .nav-main .head-search form.placeholder :-ms-input-placeholder {
         color: #999999; }
       /* line 289, ../../sass/sections/_header.scss */
@@ -4889,7 +4867,7 @@ footer {
   font-size: 0.8125rem;
   color: #3c63af;
   text-decoration: none; }
-  /* line 64, ../../sass/_typography.scss */
+  /* line 62, ../../sass/_typography.scss */
   .top-bar-section ul li.head-search a:hover, .top-bar-section ul li.head-search a a:hover {
     color: #3c63af;
     text-decoration: underline; }
@@ -5141,15 +5119,9 @@ footer {
       margin-bottom: 15px; }
       /* line 264, ../../sass/pages/_home.scss */
       #article-list ul.list-plain li a {
-        color: #333333;
-        text-decoration: none;
         display: block;
         font-family: "albert";
         font-size: 12px; }
-        /* line 64, ../../sass/_typography.scss */
-        #article-list ul.list-plain li a:hover, #article-list ul.list-plain li a a:hover {
-          color: #3c63af;
-          text-decoration: none; }
 
 /* line 276, ../../sass/pages/_home.scss */
 .more-link {
@@ -5157,14 +5129,6 @@ footer {
   bottom: 0.625rem;
   left: 0.625rem;
   right: auto; }
-  /* line 281, ../../sass/pages/_home.scss */
-  .more-link > a {
-    color: #333333;
-    text-decoration: none; }
-    /* line 64, ../../sass/_typography.scss */
-    .more-link > a:hover, .more-link > a a:hover {
-      color: #3c63af;
-      text-decoration: none; }
 
 /* line 292, ../../sass/pages/_home.scss */
 .tooltip {
@@ -5203,15 +5167,9 @@ footer {
     margin-top: 0.3125rem; }
     /* line 308, ../../sass/pages/_home.scss */
     #issue .boxtitle a {
-      color: #333333;
-      text-decoration: none;
       display: block;
       margin-bottom: -0.3125rem;
       font-weight: 900; }
-      /* line 64, ../../sass/_typography.scss */
-      #issue .boxtitle a:hover, #issue .boxtitle a a:hover {
-        color: #3c63af;
-        text-decoration: none; }
     /* line 316, ../../sass/pages/_home.scss */
     #issue .boxtitle .subhead {
       font-face: "arial";
@@ -5262,7 +5220,7 @@ footer {
       text-decoration: none;
       font-size: 16px;
       font-family: "albert"; }
-      /* line 64, ../../sass/_typography.scss */
+      /* line 62, ../../sass/_typography.scss */
       #submission-links .split-item a:hover, #submission-links .split-item a a:hover {
         color: #89a0d0;
         text-decoration: underline; }
@@ -5361,60 +5319,48 @@ footer {
 .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .more-icon, .plosgenetics .more-link:after {
   color: #16a127; }
 /* line 66, ../../sass/_utilities.scss */
-.plosbiology .brand-color, .plosbiology .brand-title, .plosbiology .block .category, .block .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .brand-color, .ploscompbiol .brand-title, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .brand-color, .plosgenetics .brand-title, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .more-icon, .plosgenetics .more-link:after {
+.plosbiology .block .category, .block .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .more-icon, .plosgenetics .more-link:after {
   color: #16a127; }
 /* line 69, ../../sass/_utilities.scss */
-.plosbiology .brand-border, .plosbiology .head-top, .ploscompbiol .brand-border, .ploscompbiol .head-top, .plosgenetics .brand-border, .plosgenetics .head-top {
+.plosbiology .head-top, .ploscompbiol .head-top, .plosgenetics .head-top {
   border-color: #16a127; }
 /* line 72, ../../sass/_utilities.scss */
-.plosbiology .brand-background, .plosbiology .brand-header, .plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosbiology li.highlighted > a, .ploscompbiol .brand-background, .ploscompbiol .brand-header, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .ploscompbiol li.highlighted > a, .plosgenetics .brand-background, .plosgenetics .brand-header, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosgenetics li.highlighted > a {
+.plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosbiology li.highlighted > a, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .ploscompbiol li.highlighted > a, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosgenetics li.highlighted > a {
   background: #16a127; }
 /* line 75, ../../sass/_utilities.scss */
-.plosbiology .brand-background-hover, .plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol .brand-background-hover, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics .brand-background-hover, .plosgenetics #billboard a, #billboard .plosgenetics a {
+.plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics #billboard a, #billboard .plosgenetics a {
   background: #16a127; }
   /* line 77, ../../sass/_utilities.scss */
-  .plosbiology .brand-background-hover:hover, .plosbiology #billboard a:hover, #billboard .plosbiology a:hover, .ploscompbiol .brand-background-hover:hover, .ploscompbiol #billboard a:hover, #billboard .ploscompbiol a:hover, .plosgenetics .brand-background-hover:hover, .plosgenetics #billboard a:hover, #billboard .plosgenetics a:hover {
+  .plosbiology #billboard a:hover, #billboard .plosbiology a:hover, .ploscompbiol #billboard a:hover, #billboard .ploscompbiol a:hover, .plosgenetics #billboard a:hover, #billboard .plosgenetics a:hover {
     background: #3c63af; }
 /* line 84, ../../sass/_utilities.scss */
-.plosbiology .brand-shading:first-child .block-header, .plosbiology .carousel-wrap.small:first-child .block-header, .ploscompbiol .brand-shading:first-child .block-header, .ploscompbiol .carousel-wrap.small:first-child .block-header, .plosgenetics .brand-shading:first-child .block-header, .plosgenetics .carousel-wrap.small:first-child .block-header {
+.plosbiology .carousel-wrap.small:first-child .block-header, .ploscompbiol .carousel-wrap.small:first-child .block-header, .plosgenetics .carousel-wrap.small:first-child .block-header {
   background: #0b5013; }
 /* line 87, ../../sass/_utilities.scss */
-.plosbiology .brand-shading:first-child .jcarousel-prev, .plosbiology .carousel-wrap.small:first-child .jcarousel-prev,
-.plosbiology .brand-shading:first-child .jcarousel-next,
-.plosbiology .carousel-wrap.small:first-child .jcarousel-next, .ploscompbiol .brand-shading:first-child .jcarousel-prev, .ploscompbiol .carousel-wrap.small:first-child .jcarousel-prev,
-.ploscompbiol .brand-shading:first-child .jcarousel-next,
-.ploscompbiol .carousel-wrap.small:first-child .jcarousel-next, .plosgenetics .brand-shading:first-child .jcarousel-prev, .plosgenetics .carousel-wrap.small:first-child .jcarousel-prev,
-.plosgenetics .brand-shading:first-child .jcarousel-next,
+.plosbiology .carousel-wrap.small:first-child .jcarousel-prev,
+.plosbiology .carousel-wrap.small:first-child .jcarousel-next, .ploscompbiol .carousel-wrap.small:first-child .jcarousel-prev,
+.ploscompbiol .carousel-wrap.small:first-child .jcarousel-next, .plosgenetics .carousel-wrap.small:first-child .jcarousel-prev,
 .plosgenetics .carousel-wrap.small:first-child .jcarousel-next {
   color: #0b5013; }
   /* line 90, ../../sass/_utilities.scss */
-  .plosbiology .brand-shading:first-child .jcarousel-prev:hover, .plosbiology .carousel-wrap.small:first-child .jcarousel-prev:hover,
-  .plosbiology .brand-shading:first-child .jcarousel-next:hover,
-  .plosbiology .carousel-wrap.small:first-child .jcarousel-next:hover, .ploscompbiol .brand-shading:first-child .jcarousel-prev:hover, .ploscompbiol .carousel-wrap.small:first-child .jcarousel-prev:hover,
-  .ploscompbiol .brand-shading:first-child .jcarousel-next:hover,
-  .ploscompbiol .carousel-wrap.small:first-child .jcarousel-next:hover, .plosgenetics .brand-shading:first-child .jcarousel-prev:hover, .plosgenetics .carousel-wrap.small:first-child .jcarousel-prev:hover,
-  .plosgenetics .brand-shading:first-child .jcarousel-next:hover,
+  .plosbiology .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .plosbiology .carousel-wrap.small:first-child .jcarousel-next:hover, .ploscompbiol .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .ploscompbiol .carousel-wrap.small:first-child .jcarousel-next:hover, .plosgenetics .carousel-wrap.small:first-child .jcarousel-prev:hover,
   .plosgenetics .carousel-wrap.small:first-child .jcarousel-next:hover {
     color: #3c63af; }
 /* line 96, ../../sass/_utilities.scss */
-.plosbiology .brand-shading:nth-child(2) .block-header, .plosbiology .carousel-wrap.small:nth-child(2) .block-header, .ploscompbiol .brand-shading:nth-child(2) .block-header, .ploscompbiol .carousel-wrap.small:nth-child(2) .block-header, .plosgenetics .brand-shading:nth-child(2) .block-header, .plosgenetics .carousel-wrap.small:nth-child(2) .block-header {
+.plosbiology .carousel-wrap.small:nth-child(2) .block-header, .ploscompbiol .carousel-wrap.small:nth-child(2) .block-header, .plosgenetics .carousel-wrap.small:nth-child(2) .block-header {
   background: #0e6719; }
 /* line 99, ../../sass/_utilities.scss */
-.plosbiology .brand-shading:nth-child(2) .jcarousel-prev, .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosbiology .brand-shading:nth-child(2) .jcarousel-next,
-.plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next, .ploscompbiol .brand-shading:nth-child(2) .jcarousel-prev, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.ploscompbiol .brand-shading:nth-child(2) .jcarousel-next,
-.ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosgenetics .brand-shading:nth-child(2) .jcarousel-prev, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosgenetics .brand-shading:nth-child(2) .jcarousel-next,
+.plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev,
 .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-next {
   color: #0e6719; }
   /* line 102, ../../sass/_utilities.scss */
-  .plosbiology .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosbiology .brand-shading:nth-child(2) .jcarousel-next:hover,
-  .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .ploscompbiol .brand-shading:nth-child(2) .jcarousel-prev:hover, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .ploscompbiol .brand-shading:nth-child(2) .jcarousel-next:hover,
-  .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosgenetics .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosgenetics .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
   .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-next:hover {
     color: #3c63af; }
 
@@ -5422,59 +5368,47 @@ footer {
 .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .more-icon, .plosntd .more-link:after {
   color: #891fb1; }
 /* line 66, ../../sass/_utilities.scss */
-.plosmedicine .brand-color, .plosmedicine .brand-title, .plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .brand-color, .plospathogens .brand-title, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .brand-color, .plosntd .brand-title, .plosntd .block .category, .block .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .more-icon, .plosntd .more-link:after {
+.plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .block .category, .block .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .more-icon, .plosntd .more-link:after {
   color: #891fb1; }
 /* line 69, ../../sass/_utilities.scss */
-.plosmedicine .brand-border, .plosmedicine .head-top, .plospathogens .brand-border, .plospathogens .head-top, .plosntd .brand-border, .plosntd .head-top {
+.plosmedicine .head-top, .plospathogens .head-top, .plosntd .head-top {
   border-color: #891fb1; }
 /* line 72, ../../sass/_utilities.scss */
-.plosmedicine .brand-background, .plosmedicine .brand-header, .plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosmedicine li.highlighted > a, .plospathogens .brand-background, .plospathogens .brand-header, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plospathogens li.highlighted > a, .plosntd .brand-background, .plosntd .brand-header, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosntd li.highlighted > a {
+.plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosmedicine li.highlighted > a, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plospathogens li.highlighted > a, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd #pagehdr-wrap .nav .nav-user li.highlighted > a, #pagehdr-wrap .nav .nav-user .plosntd li.highlighted > a {
   background: #891fb1; }
 /* line 75, ../../sass/_utilities.scss */
-.plosmedicine .brand-background-hover, .plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens .brand-background-hover, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd .brand-background-hover, .plosntd #billboard a, #billboard .plosntd a {
+.plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd #billboard a, #billboard .plosntd a {
   background: #891fb1; }
   /* line 77, ../../sass/_utilities.scss */
-  .plosmedicine .brand-background-hover:hover, .plosmedicine #billboard a:hover, #billboard .plosmedicine a:hover, .plospathogens .brand-background-hover:hover, .plospathogens #billboard a:hover, #billboard .plospathogens a:hover, .plosntd .brand-background-hover:hover, .plosntd #billboard a:hover, #billboard .plosntd a:hover {
+  .plosmedicine #billboard a:hover, #billboard .plosmedicine a:hover, .plospathogens #billboard a:hover, #billboard .plospathogens a:hover, .plosntd #billboard a:hover, #billboard .plosntd a:hover {
     background: #3c63af; }
 /* line 84, ../../sass/_utilities.scss */
-.plosmedicine .brand-shading:first-child .block-header, .plosmedicine .carousel-wrap.small:first-child .block-header, .plospathogens .brand-shading:first-child .block-header, .plospathogens .carousel-wrap.small:first-child .block-header, .plosntd .brand-shading:first-child .block-header, .plosntd .carousel-wrap.small:first-child .block-header {
+.plosmedicine .carousel-wrap.small:first-child .block-header, .plospathogens .carousel-wrap.small:first-child .block-header, .plosntd .carousel-wrap.small:first-child .block-header {
   background: #4d1163; }
 /* line 87, ../../sass/_utilities.scss */
-.plosmedicine .brand-shading:first-child .jcarousel-prev, .plosmedicine .carousel-wrap.small:first-child .jcarousel-prev,
-.plosmedicine .brand-shading:first-child .jcarousel-next,
-.plosmedicine .carousel-wrap.small:first-child .jcarousel-next, .plospathogens .brand-shading:first-child .jcarousel-prev, .plospathogens .carousel-wrap.small:first-child .jcarousel-prev,
-.plospathogens .brand-shading:first-child .jcarousel-next,
-.plospathogens .carousel-wrap.small:first-child .jcarousel-next, .plosntd .brand-shading:first-child .jcarousel-prev, .plosntd .carousel-wrap.small:first-child .jcarousel-prev,
-.plosntd .brand-shading:first-child .jcarousel-next,
+.plosmedicine .carousel-wrap.small:first-child .jcarousel-prev,
+.plosmedicine .carousel-wrap.small:first-child .jcarousel-next, .plospathogens .carousel-wrap.small:first-child .jcarousel-prev,
+.plospathogens .carousel-wrap.small:first-child .jcarousel-next, .plosntd .carousel-wrap.small:first-child .jcarousel-prev,
 .plosntd .carousel-wrap.small:first-child .jcarousel-next {
   color: #4d1163; }
   /* line 90, ../../sass/_utilities.scss */
-  .plosmedicine .brand-shading:first-child .jcarousel-prev:hover, .plosmedicine .carousel-wrap.small:first-child .jcarousel-prev:hover,
-  .plosmedicine .brand-shading:first-child .jcarousel-next:hover,
-  .plosmedicine .carousel-wrap.small:first-child .jcarousel-next:hover, .plospathogens .brand-shading:first-child .jcarousel-prev:hover, .plospathogens .carousel-wrap.small:first-child .jcarousel-prev:hover,
-  .plospathogens .brand-shading:first-child .jcarousel-next:hover,
-  .plospathogens .carousel-wrap.small:first-child .jcarousel-next:hover, .plosntd .brand-shading:first-child .jcarousel-prev:hover, .plosntd .carousel-wrap.small:first-child .jcarousel-prev:hover,
-  .plosntd .brand-shading:first-child .jcarousel-next:hover,
+  .plosmedicine .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .plosmedicine .carousel-wrap.small:first-child .jcarousel-next:hover, .plospathogens .carousel-wrap.small:first-child .jcarousel-prev:hover,
+  .plospathogens .carousel-wrap.small:first-child .jcarousel-next:hover, .plosntd .carousel-wrap.small:first-child .jcarousel-prev:hover,
   .plosntd .carousel-wrap.small:first-child .jcarousel-next:hover {
     color: #3c63af; }
 /* line 96, ../../sass/_utilities.scss */
-.plosmedicine .brand-shading:nth-child(2) .block-header, .plosmedicine .carousel-wrap.small:nth-child(2) .block-header, .plospathogens .brand-shading:nth-child(2) .block-header, .plospathogens .carousel-wrap.small:nth-child(2) .block-header, .plosntd .brand-shading:nth-child(2) .block-header, .plosntd .carousel-wrap.small:nth-child(2) .block-header {
+.plosmedicine .carousel-wrap.small:nth-child(2) .block-header, .plospathogens .carousel-wrap.small:nth-child(2) .block-header, .plosntd .carousel-wrap.small:nth-child(2) .block-header {
   background: #5d1579; }
 /* line 99, ../../sass/_utilities.scss */
-.plosmedicine .brand-shading:nth-child(2) .jcarousel-prev, .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosmedicine .brand-shading:nth-child(2) .jcarousel-next,
-.plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next, .plospathogens .brand-shading:nth-child(2) .jcarousel-prev, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plospathogens .brand-shading:nth-child(2) .jcarousel-next,
-.plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosntd .brand-shading:nth-child(2) .jcarousel-prev, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosntd .brand-shading:nth-child(2) .jcarousel-next,
+.plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev,
+.plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev,
 .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-next {
   color: #5d1579; }
   /* line 102, ../../sass/_utilities.scss */
-  .plosmedicine .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosmedicine .brand-shading:nth-child(2) .jcarousel-next:hover,
-  .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plospathogens .brand-shading:nth-child(2) .jcarousel-prev:hover, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plospathogens .brand-shading:nth-child(2) .jcarousel-next:hover,
-  .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosntd .brand-shading:nth-child(2) .jcarousel-prev:hover, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosntd .brand-shading:nth-child(2) .jcarousel-next:hover,
+  .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
+  .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
   .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-next:hover {
     color: #3c63af; }

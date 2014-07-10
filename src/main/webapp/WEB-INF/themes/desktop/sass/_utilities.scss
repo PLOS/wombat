@@ -37,15 +37,15 @@ $clr-highlight-text: $white) {
 
 // color extensibles
 
-.bg-dark {
+%bg-dark {
   background: $grey-dark;
 }
 
-.highlight-color {
+%highlight-color {
   color: $clr-highlight;
 }
 
-.highlight-background {
+%highlight-background {
   background: $clr-highlight;
   color: $clr-highlight-text;
   &:hover {
@@ -53,7 +53,7 @@ $clr-highlight-text: $white) {
   }
 }
 
-.highlight-border {
+%highlight-border {
   border-color: $clr-highlight;
 }
 ///////
@@ -63,23 +63,23 @@ $clr-highlight-text: $white) {
   .more-icon {
     color: $setColor;
   }
-  .brand-color {
+  %brand-color {
     color: $setColor;
   }
-  .brand-border {
+  %brand-border {
     border-color: $setColor;
   }
-  .brand-background {
+  %brand-background {
     background: $setColor;
   }
-  .brand-background-hover {
+  %brand-background-hover {
     background: $setColor;
     &:hover {
       background: $plos-default;
     }
   }
   //color shading variations on adjacent box headers
-  .brand-shading {
+  %brand-shading {
     &:first-child {
       .block-header {
         background: darken($setColor, 18%);

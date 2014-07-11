@@ -88,8 +88,8 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @include plos-grid-row($container: true);
 }
 
-.row-inside {
-
+.row-nomargin {
+@include grid-row($container: true);
 }
 
 // All the columns - expressed like this:

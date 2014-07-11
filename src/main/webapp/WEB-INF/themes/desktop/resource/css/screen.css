@@ -4067,6 +4067,10 @@ main,
 .no-margin, .hero .hero-content h4, .hero .hero-content p {
   margin-bottom: 0; }
 
+/* line 119, ../../sass/_typography.scss */
+.note, .caption {
+  color: #cccccc; }
+
 /* 
  *
  */

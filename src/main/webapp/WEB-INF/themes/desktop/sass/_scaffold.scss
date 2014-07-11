@@ -30,7 +30,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 @mixin plos-grid-column($pixelwidth, $gutter: outside, $f-gridargs...) {
 
   // from foundation:
-  @include grid-column($collapse: true, $f-gridargs...);
+  @include grid-column($collapse: null, $f-gridargs...);
   // sets the width
   @if $pixelwidth == full-width {
     width: $grid-width-inside;

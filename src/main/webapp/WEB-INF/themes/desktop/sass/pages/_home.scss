@@ -70,7 +70,6 @@ $image-container: ($image-width + $pad-small);
 .hero {
   @extend %width-full;
   @include blocks($shadow: none);
-
   position: relative;
   padding: 0;
   background: transparent;
@@ -133,8 +132,6 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-
-
 .block {
   position: relative;
   height: $block-height;
@@ -151,6 +148,7 @@ $image-container: ($image-width + $pad-small);
     margin-left: ($image-container + $pad-default);
     margin-right: $pad-small;
     height: ($block-height - ($pad-default));
+    overflow: hidden;
   }
   // components
   .date {

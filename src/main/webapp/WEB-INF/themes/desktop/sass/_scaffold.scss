@@ -81,6 +81,12 @@ $grid-width-inside: ($row-width - $grid-gutter);
 
 }
 
+//extendable styles
+// All the columns -
+@for $i from 0 through $total-columns - 1 {
+  .column-#{$i} { @include plos-grid-column($pixelwidth: columns, $columns: $i); }
+}
+
 .row {
   @include plos-grid-row($container: true);
 }

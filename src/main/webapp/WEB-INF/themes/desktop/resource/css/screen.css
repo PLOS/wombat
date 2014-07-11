@@ -1809,7 +1809,91 @@ blockquote p {
   .show-for-print {
     display: inherit !important; } }
 /*sets up the body container */
-/* line 84, ../../sass/_scaffold.scss */
+/* line 87, ../../sass/_scaffold.scss */
+.column-0 {
+  width: 0rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-1 {
+  width: 5.10417rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-2 {
+  width: 10.20833rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-3 {
+  width: 15.3125rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-4 {
+  width: 20.41667rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-5 {
+  width: 25.52083rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-6 {
+  width: 30.625rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-7 {
+  width: 35.72917rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-8 {
+  width: 40.83333rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-9 {
+  width: 45.9375rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-10 {
+  width: 51.04167rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 87, ../../sass/_scaffold.scss */
+.column-11 {
+  width: 56.14583rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 90, ../../sass/_scaffold.scss */
 .row, .nav, .nav-main, #ad-slot-bottom {
   width: 100%;
   margin: 0;
@@ -1823,7 +1907,7 @@ blockquote p {
   .row:after, .nav:after, .nav-main:after, #ad-slot-bottom:after {
     clear: both; }
 
-/* line 93, ../../sass/_scaffold.scss */
+/* line 99, ../../sass/_scaffold.scss */
 main,
 .head-main,
 #pagehdr-wrap,

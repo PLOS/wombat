@@ -93,7 +93,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 }
 
 // All the columns - expressed like this:
-// .columns-1
+// .column-1
 @for $i from 0 through $total-columns - 1 {
   .column-#{$i} { @include plos-grid-column($pixelwidth: columns, $columns: $i); }
 }

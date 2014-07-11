@@ -4078,10 +4078,6 @@ main,
 footer, .head-top {
   background: #333333; }
 
-/* line 56, ../../sass/_utilities.scss */
-.highlight-border {
-  border-color: #3c63af; }
-
 /* line 111, ../../sass/_utilities.scss */
 .center-simple {
   margin: 0 auto; }
@@ -4252,9 +4248,6 @@ have a fixed width and height (but it's not required).
   left: -9999px; }
 
 /*    This file contains styles for forms
- *
- */
-/*    this is my file to play with elements
  *
  */
 /* 

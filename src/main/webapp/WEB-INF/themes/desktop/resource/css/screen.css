@@ -4178,8 +4178,6 @@ footer {
   color: white; }
   /* line 10, ../../sass/sections/_footer.scss */
   footer .link-column {
-    padding-left: 0;
-    padding-right: 0;
     width: 15.3125rem;
     float: left; }
     /* line 12, ../../sass/sections/_footer.scss */
@@ -4312,8 +4310,6 @@ footer {
 
 /* line 100, ../../sass/sections/_header.scss */
 .top-bar-section {
-  padding-left: 0;
-  padding-right: 0;
   width: 35.72917rem;
   float: right; }
   /* line 104, ../../sass/sections/_header.scss */
@@ -4716,14 +4712,10 @@ footer {
 
 /* line 201, ../../sass/pages/_home.scss */
 .row.three .column:first-child, .three.nav .column:first-child, .three.nav-main .column:first-child, .three#ad-slot-bottom .column:first-child {
-  padding-left: 0;
-  padding-right: 0;
   width: 40.83333rem;
   float: left; }
 /* line 205, ../../sass/pages/_home.scss */
 .row.three .column:last-child, .three.nav .column:last-child, .three.nav-main .column:last-child, .three#ad-slot-bottom .column:last-child {
-  padding-left: 0;
-  padding-right: 0;
   width: 20.41667rem;
   float: left;
   position: relative; }

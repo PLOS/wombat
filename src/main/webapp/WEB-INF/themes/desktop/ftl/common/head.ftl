@@ -13,4 +13,6 @@
   <script type="text/javascript" src="resource/js/vendor/modernizr-v2.7.1.js"></script>
 
   <link rel="shortcut icon" href="resource/img/favicon.ico" type="image/x-icon"/>
+
+  <#include "analytics.ftl" />
 </head>

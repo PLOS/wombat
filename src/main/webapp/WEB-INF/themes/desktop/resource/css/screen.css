@@ -1806,7 +1806,7 @@ blockquote p {
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.plos-column-3 {
+.plos-column-3, footer .link-column {
   width: 15.3125rem;
   float: left;
   margin-left: 0.625rem;
@@ -1820,7 +1820,7 @@ blockquote p {
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.plos-column-5 {
+.plos-column-5, footer .brand-column {
   width: 25.52083rem;
   float: left;
   margin-left: 0.625rem;
@@ -4206,13 +4206,9 @@ have a fixed width and height (but it's not required).
 footer {
   padding: 1.5625rem 0 3.75rem;
   color: white; }
-  /* line 10, ../../sass/sections/_footer.scss */
-  footer .link-column {
-    width: 15.3125rem;
-    float: left; }
-    /* line 12, ../../sass/sections/_footer.scss */
-    footer .link-column:last-child {
-      padding-right: 0.625rem; }
+  /* line 12, ../../sass/sections/_footer.scss */
+  footer .link-column:last-child {
+    padding-right: 0.625rem; }
   /* line 20, ../../sass/sections/_footer.scss */
   footer .logo-footer {
     padding-bottom: 1.5625rem; }

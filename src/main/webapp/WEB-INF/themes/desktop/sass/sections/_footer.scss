@@ -5,10 +5,10 @@
 footer {
 
   // widths
-  %brand-column{
-    @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 6); }
+  .brand-column{
+    @extend .plos-column-5 }
   .link-column{
-    @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 3);
+    @extend .plos-column-3;
    &:last-child{
      padding-right: $pad-small;
    }

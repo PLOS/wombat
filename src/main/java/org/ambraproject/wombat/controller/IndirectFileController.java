@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Optional;
+import com.google.common.primitives.Ints;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.AssetServiceResponse;
@@ -30,7 +31,7 @@ public class IndirectFileController extends WombatController {
                     @SiteParam Site site,
                     @PathVariable("key") String key)
       throws IOException {
-    serve(response, request, key, Optional.<Integer>absent());
+    serve(response, request, key, Optional.<String>absent());
   }
 
   @RequestMapping(value = {"indirect/{key}/{version}", "{site}/indirect/{key}/{version}"})
@@ -40,17 +41,15 @@ public class IndirectFileController extends WombatController {
                     @PathVariable("key") String key,
                     @PathVariable("version") String version)
       throws IOException {
-    Integer versionInt;
-    try {
-      versionInt = Integer.valueOf(version);
-    } catch (NumberFormatException e) {
-      throw new NotFoundException("Not a valid version integer: " + version, e);
+    if (Ints.tryParse(version) == null){
+      throw new NotFoundException("Not a valid version integer: " + version);
     }
-    serve(response, request, key, Optional.of(versionInt));
+
+    serve(response, request, key, Optional.of(version));
   }
 
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
-                     String key, Optional<Integer> version)
+                     String key, Optional<String> version)
       throws IOException {
     Header[] assetHeaders = copyAssetRequestHeaders(requestFromClient);
     try (AssetServiceResponse repoResponse = contentRepoService.request(key, version, assetHeaders)) {

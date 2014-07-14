@@ -34,9 +34,8 @@ public class StoredHomepageService implements FetchHtmlService {
   public Reader readHtml(final SitePageContext sitePageContext, String key, final Collection<ElementSubstitution> substitutions)
       throws IOException {
     String cacheKey = "homepage:" + key;
-    // TODO Use version
-    //Optional<String> version = Optional.of("latest");
-    Optional<String> version = Optional.absent();
+
+    Optional<Integer> version = Optional.absent();     // TODO Use version
 
     String transformedHtml = contentRepoService.requestCachedReader(cacheKey, key, version, new CacheDeserializer<Reader, String>() {
       @Override

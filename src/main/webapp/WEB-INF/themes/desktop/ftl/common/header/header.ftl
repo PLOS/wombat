@@ -14,18 +14,17 @@
 				</ul>
 			</div>
 			<div id="pagehdr">
-				<div class="contain-to-grid">  <#--foundation class name. needed for top-bar use. -->
-					<nav class="nav-main">
+				<nav class="nav-main">
 
-          <#include "../siteMenu/siteMenu.ftl" />
+        <#include "../siteMenu/siteMenu.ftl" />
 
-          <#include "search.ftl" />
+        <#include "search.ftl" />
 
 						</ul>     <#--opened in siteMenu.ftl -->
 						</section>  <#--opened in siteMenu.ftl -->
-					</nav>
-				</div>
+				</nav>
 			</div>
+
 		</div><#-- pagehdr-->
 	</div>
 </header>

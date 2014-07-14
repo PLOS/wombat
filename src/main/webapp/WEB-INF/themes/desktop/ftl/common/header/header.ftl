@@ -14,14 +14,15 @@
 				</ul>
 			</div>
 			<div id="pagehdr">
+			
 				<nav class="nav-main">
 
         <#include "../siteMenu/siteMenu.ftl" />
 
         <#include "search.ftl" />
 
-						</ul>     <#--opened in siteMenu.ftl -->
-						</section>  <#--opened in siteMenu.ftl -->
+			  	</ul>     <#--opened in siteMenu.ftl -->
+					</section>  <#--opened in siteMenu.ftl -->
 				</nav>
 			</div>
 

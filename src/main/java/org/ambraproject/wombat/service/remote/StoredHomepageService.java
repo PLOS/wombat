@@ -33,7 +33,7 @@ public class StoredHomepageService implements FetchHtmlService {
   public Reader readHtml(final SitePageContext sitePageContext, String key, final Collection<ElementSubstitution> substitutions)
       throws IOException {
     String cacheKey = "homepage:" + key;
-    String address = String.format("repo/homepages/%s/latest", key);
+    String address = String.format("repo/%s/latest", key);
 
     String transformedHtml = soaService.requestCachedReader(cacheKey, address, new CacheDeserializer<Reader, String>() {
       @Override
@@ -62,7 +62,7 @@ public class StoredHomepageService implements FetchHtmlService {
     IMAGE("img", "data-lemur-key", "src") {
       @Override
       protected String transformAttribute(SitePageContext sitePageContext, String value) {
-        String path = "indirect/homepages/" + value;
+        String path = "indirect/" + value;
         return sitePageContext.buildLink(path);
       }
     },

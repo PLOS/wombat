@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public interface ContentRepoService {
 
-  public abstract AssetServiceResponse request(String bucket, String key, Optional<Integer> version, Header... headers)
+  public abstract AssetServiceResponse request(String key, Optional<Integer> version, Header... headers)
       throws IOException;
 
 }

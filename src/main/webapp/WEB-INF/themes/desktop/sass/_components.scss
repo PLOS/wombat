@@ -2,7 +2,6 @@
  *
  */
 
-
 @mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default) {
   background: $background;
   padding: $padding;
@@ -14,28 +13,37 @@
   }
 
 }
-
+//extend .pill if using defaults in rounded-pill
 .pill {
   @include rounded-pill();
 }
 
-@mixin blocks($color: $white, $radius: top, $padding: standard) {
-
-  @if $padding == none{
+@mixin blocks($color: $white, $radius: top, $padding: default, $shadow: default) {
+  // set block radius
+  @if $radius == top {
+    @include border-top-radius();
+  } @if $radius == none {
+     // no radius
+  } @if $radius == all {
+    border-radius: $border-radius-default;
+}
+  // set block padding
+  @if $padding == default {
+    padding: $pad-small;
+  } @else if $padding == none{
     padding: 0;
   } @else {
-    padding: $pad-small;
+    padding: $padding;
+}
+  // set block shadow
+  @if $shadow == default{
+    @include single-box-shadow();
+  } @if $shadow == none{
+    // no shadow
   }
-  @if $radius == none{
-    // no radius
-  } @else {
-    @include border-top-radius();
-  }
-  @include single-box-shadow();
-  margin-bottom: $block-grid-default-spacing;
+  margin-bottom: $grid-gutter;
   background: $color;
 }
-
 
 .block-card {
   @include blocks($radius: none, $padding: none);
@@ -47,7 +55,6 @@
   background-color: $grey-med-light;
   color: $white;
 }
-
 
 // jcarousel styles - from jquery -
 /*
@@ -88,22 +95,23 @@ have a fixed width and height (but it's not required).
 // small carousel
 .carousel-wrap.small {
   $icon-height: rem-calc(30);
-  $carousel-width: rem-calc(320);// TODO there should be a way to calulate this width
-
+  $carousel-width: rem-calc(306);
+  // TODO PG-width is set in home.scss
+  @extend .brand-shading;
   @extend .block-card;
-  @include grid-column(4, $collapse: false);
-  padding:0;    // TODO needs to be removed in grid refactor
-  margin-right: $pad-default;  /// needs to be removed in grid refactor
-  .block-header{
-    @extend .header-brand;
+  margin-right: $pad-default;
+  position: relative;
+  .block-header {
+    @extend .brand-header;
   }
   .carousel {
-
     li {
       width: $carousel-width;
       padding: $pad-default;
+      height: 145px;
       h3 {
         @extend h2;
+        @extend .link-text-body;
       }
       p {
         font-size: rem-calc($txt-size-medium);
@@ -111,10 +119,11 @@ have a fixed width and height (but it's not required).
     }
   }
   .carousel-control {
-    text-align: center;
-    display: table;
-    margin: 0 auto;
-    padding-bottom: $pad-small;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 120px;
+    margin-left: -50px;
     .jcarousel-prev,
     .jcarousel-next {
       @extend .fa;
@@ -130,7 +139,8 @@ have a fixed width and height (but it's not required).
       @extend .fa-chevron-circle-right;
     }
     .numbers {
-      font-size: rem-calc($txt-size-xsmall);
+      @extend .small-italic;
+      color: $grey-med;
       display: inline-block;
       padding: 0 $pad-xsmall;
       vertical-align: top;
@@ -154,36 +164,47 @@ have a fixed width and height (but it's not required).
   content: '\f138';
   @extend .fa;
   @extend .fa-inverse;
+  @extend .brand-color;
   padding-left: rem-calc(3);
 }
+
 .icon-fa {
   @extend .fa;
   line-height: ($txt-size-xxlarge * 2);
   font-size: $txt-size-xxlarge;
 }
+
 .icon-twitter {
   @extend .icon-fa;
   @extend .fa-twitter;
   content: '\f099';
 
 }
+
 .icon-facebook {
   @extend .icon-fa;
   @extend .fa-facebook;
   content: '\f09a';
 
 }
+
 .icon-rss {
   @extend .icon-fa;
   @extend .fa-rss;
   content: '\f09e';
 }
+
 .icon-email {
   @extend .icon-fa;
   @extend .fa-envelope-o;
   content: '\f003';
 }
 
+.aria-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
 
 
 

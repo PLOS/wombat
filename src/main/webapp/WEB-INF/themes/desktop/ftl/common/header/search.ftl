@@ -7,15 +7,9 @@
     <fieldset>
       <legend>Search</legend>
       <label for="search">Search</label>
-
-      <div class="row collapse">
-        <div class=" wrap small-8 columns">
-          <input id="search" type="text" name="q" placeholder="Search" required/>
-        </div>
-        <div class="small-4 columns">
+          <input id="search" type="text" name="q" placeholder="Search" required />
           <button type="submit"><span class="search-icon"></span></button>
-        </div>
-      </div>
+
     </fieldset>
   </form>
 </#macro>

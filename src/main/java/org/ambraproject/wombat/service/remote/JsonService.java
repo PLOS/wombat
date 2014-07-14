@@ -22,6 +22,7 @@ import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -35,6 +36,10 @@ public class JsonService {
 
   @Autowired
   protected Gson gson;
+
+  public String serialize(Object object) {
+    return gson.toJson(object);
+  }
 
   /**
    * Send a ReST request and serialize the response to an object. The serialization is controlled by the {@link
@@ -50,7 +55,7 @@ public class JsonService {
    */
   public <T> T requestObject(RemoteService<? extends Reader> remoteService, URI uri, Class<T> responseClass) throws IOException {
     Preconditions.checkNotNull(responseClass);
-    try (Reader reader = remoteService.request(uri)) {
+    try (Reader reader = remoteService.request(new HttpGet(uri))) {
       return deserializeStream(responseClass, reader, uri);
     }
   }
@@ -71,12 +76,14 @@ public class JsonService {
                                    final URI address, final Class<T> responseClass)
       throws IOException {
     Preconditions.checkNotNull(responseClass);
-    return remoteService.requestCached(cacheKey, address, new CacheDeserializer<Reader, T>() {
-      @Override
-      public T read(Reader reader) throws IOException {
-        return deserializeStream(responseClass, reader, address);
-      }
-    });
+    return remoteService.requestCached(cacheKey, new HttpGet(address),
+        new CacheDeserializer<Reader, T>() {
+          @Override
+          public T read(Reader reader) throws IOException {
+            return deserializeStream(responseClass, reader, address);
+          }
+        }
+    );
   }
 
   /**

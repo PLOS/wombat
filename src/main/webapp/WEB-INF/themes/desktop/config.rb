@@ -16,6 +16,7 @@ output_style = :nested
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 #line_comments = false
 color_output = false
+disable_warnings = true
 
 
 # If you prefer the indented syntax, you might want to regenerate this

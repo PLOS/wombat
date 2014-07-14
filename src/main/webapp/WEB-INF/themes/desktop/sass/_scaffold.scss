@@ -1,8 +1,7 @@
 
-
 $grid-width-inside: ($row-width - $grid-gutter);
-/*sets up the body container */
 
+/* sets up the body container */
 @mixin plos-grid-gutter-outside() {
   margin-left: ($grid-gutter / 2);
   margin-right: ($grid-gutter / 2);
@@ -17,8 +16,8 @@ $grid-width-inside: ($row-width - $grid-gutter);
   }
 
 }
-//TODO - review where values
-//TODO - do if flexible case
+//TODO - review where values come from
+//TODO - do "if flexible" case
 
 /// from foundation amending this so we can use rems
 
@@ -30,7 +29,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 @mixin plos-grid-column($pixelwidth, $gutter: outside, $f-gridargs...) {
 
   // from foundation:
-  @include grid-column($collapse: true, $f-gridargs...);
+  @include grid-column($collapse: null, $f-gridargs...);
   // sets the width
   @if $pixelwidth == full-width {
     width: $grid-width-inside;
@@ -51,6 +50,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 
 }
 
+
 /// this is a total kluge essentially this allows us to have the margins on the outside
 @function grid-calc($colNumber, $totalColumns) {
   $columnWidth: ($row-width / $totalColumns); // ($row-width / $total-columns);
@@ -59,7 +59,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 
 @mixin plos-grid-column-nomargin($pixelwidth, $f-gridargs...) {
   // from foundation:
-  @include grid-column($collapse: true, $f-gridargs...);
+  @include grid-column($collapse: null, $f-gridargs...);
   // sets the width
   @if $pixelwidth == full-width {
     width: $grid-width-inside;
@@ -76,17 +76,28 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @if $grid-type == fixed {
     min-width: $grid-width;
     max-width: $grid-width; }
-  margin: 0 auto;
+    margin: 0 auto;
 
 }
+
+//extendable styles
+
 
 .row {
   @include plos-grid-row($container: true);
 }
 
-.row-inside {
+.row-nomargin {
 
 }
+
+// All the columns - expressed like this:
+// .column-1
+@for $i from 0 through $total-columns - 1 {
+  .column-#{$i} { @include plos-grid-column($pixelwidth: columns, $columns: $i); }
+}
+
+
 
 //TODO - do we use this?
 main,
@@ -95,23 +106,6 @@ main,
 #pagehdr,
 #pageftr .row {
   @include plos-grid-container;
-}
-
-.grid-test {
-  @extend .row;
-  .one {
-    @include plos-grid-column($pixelwidth: columns, $columns: 5);
-    border: 1px solid;
-  }
-  .two {
-    @include plos-grid-column($pixelwidth: columns, $columns: 2);
-    border: 1px solid;
-  }
-  .three {
-    @include plos-grid-column($pixelwidth: columns, $gutter: none, $columns: 5);
-    border: 1px solid;
-  }
-
 }
 
 

@@ -14,43 +14,69 @@ $image-container: ($image-width + $pad-small);
 // I am using foundation settings values.
 
 //PG: these are all the widths
-.width-full {
+%width-full {
   @include plos-grid-column($pixelwidth: full-width);
 }
 
-.width-xx-small {
+%width-xx-small {
   @include plos-grid-column(182);
 }
 
-.width-x-small {
+%width-x-small {
   @include plos-grid-column(267);
 }
 
-.width-small {
+%width-small {
   @include plos-grid-column(306);
 }
 
-.width-medium {
+%width-medium {
   @include plos-grid-column(469);
 }
 
-.width-large {
+%width-large {
   @include plos-grid-column(633);
 }
 
 .carousel-wrap.small {
   //more styling for this in _components.scss
-  @extend .width-small;
+  @extend %width-small;
   height: $block-height;
 }
 
-.hero {
-  @extend .width-full;
-  @include blocks($shadow: none);
+//page scaffolding
 
+//sizes:
+
+ .block {
+  &.xx-small {
+    @extend %width-xx-small;
+  }
+
+  &.x-small {
+    @extend %width-x-small;
+  }
+  &.small {
+    @extend %width-small;
+  }
+  &.medium {
+    @extend %width-medium;
+  }
+  &.large {
+    @extend %width-large;
+  }
+ }
+
+.hero {
+  @extend %width-full;
+  @include blocks($shadow: none);
   position: relative;
   padding: 0;
   background: transparent;
+}
+
+
+.hero{
   // overlay colors
   &.overlay-dark > a:before {
     @extend .overlay;
@@ -83,7 +109,7 @@ $image-container: ($image-width + $pad-small);
     padding: $pad-small $pad-default;
     font-size: rem-calc($txt-size-medium-large);
     h4 {
-      @extend h1;
+      font-size: $txt-size-h1;
       @extend .no-margin;
     }
     p {
@@ -95,7 +121,7 @@ $image-container: ($image-width + $pad-small);
       }
       &.credit{
         // credits have to sit in this weird place because they cant' run into authors.
-        @extend .small-italic;
+        @extend %small-italic;
         width: 20%;
         text-align: right;
         bottom: $pad-small;
@@ -106,31 +132,7 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-
-//sizes:
-.row > .block {
-
-  &.xx-small {
-    @extend .width-xx-small;
-  }
-
-  &.x-small {
-    @extend .width-x-small;
-  }
-  &.small {
-    @extend .width-small;
-  }
-  &.medium {
-    @extend .width-medium;
-  }
-  &.large {
-    @extend .width-large;
-  }
-
-}
-
 .block {
-  @include blocks;
   position: relative;
   height: $block-height;
 
@@ -146,16 +148,17 @@ $image-container: ($image-width + $pad-small);
     margin-left: ($image-container + $pad-default);
     margin-right: $pad-small;
     height: ($block-height - ($pad-default));
+    overflow: hidden;
   }
   // components
   .date {
-    @extend .small-italic;
+    @extend %small-italic;
     @extend .right;
     //padding-right on block-content needs to be overridden here
     margin-right: -$pad-default;
   }
   .credits {
-    @extend .small-italic;
+    @extend %small-italic;
     position: absolute;
     bottom: $pad-small;
     left: ($image-container + $pad-default);
@@ -163,11 +166,13 @@ $image-container: ($image-width + $pad-small);
 
   }
   .category {
-    @extend .brand-title;
+    @extend %brand-title;
   }
   .title {
-    @extend h2;
-    @extend .link-text-body;
+    //@extend h2;
+    font-size: $txt-size-h2;
+    @extend %link-text-body;
+
     //in case p tag is added in CMS, need to override global settings
     p {
       font-size: inherit;
@@ -183,7 +188,8 @@ $image-container: ($image-width + $pad-small);
 
   &.small {
     .title {
-      @extend h4;
+     // @extend h4;
+      font-size: $txt-size-h4;
       @extend .subheader;
       font-family: $font-face-fancy;
     }
@@ -192,27 +198,11 @@ $image-container: ($image-width + $pad-small);
 }
 .row.three{
   .column {
-    &.left {
+    &:first-child {
       @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 8); //width + gutter
-      .block.large {
-        @extend .width-large;
-        height: $block-height-small;
-        .block-image {
-          height: ($block-height-small - ($pad-default));
-          overflow: hidden;
-        }
-      }
-      .block.small {
-        @extend .width-small;
-        height: $block-height;
-        .block-image {
-          height: ($block-height - ($pad-default));
-          overflow: hidden;
-        }
-      }
     }
 
-    &.right {
+    &:last-child {
       @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 4); //width + gutter
       position: relative;
       > div > div {
@@ -222,8 +212,29 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
+.row.three{
+  .column {
+    &:first-child {
+      .block.large {
+        height: $block-height-small;
+        .block-image {
+          height: ($block-height-small - ($pad-default));
+          overflow: hidden;
+        }
+      }
+      .block.small {
+        height: $block-height;
+        .block-image {
+          height: ($block-height - ($pad-default));
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
 #billboard {
-  @extend .width-full;
+  @extend %width-full;
   @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-small $pad-default);
   position: relative;
   h3, h4, a {
@@ -233,7 +244,7 @@ $image-container: ($image-width + $pad-small);
     font-size: $txt-size-h2;
   }
   a {  //not using rounded-pill: would need too many overrides
-    @extend .brand-background-hover;
+    @extend %brand-background-hover;
     border-radius: $border-radius-default;
     padding: $pad-xsmall $pad-default;
     position: absolute;
@@ -245,12 +256,12 @@ $image-container: ($image-width + $pad-small);
 
 #article-list {
   height: $block-height;
-  @include blocks;
-  @extend .width-x-small;
+  @extend .block;
+  @extend %width-x-small;
   position: relative;
 
   h3 {
-    @extend .brand-title;
+    @extend %brand-title;
   }
 
   ul.list-plain {
@@ -262,7 +273,7 @@ $image-container: ($image-width + $pad-small);
       margin-bottom: 15px;
 
       a {
-        @include link-text();
+        @extend %link-text-body;
         display: block;
         font-family: $font-face-fancy;
         font-size: $txt-size-xsmall;
@@ -279,8 +290,8 @@ $image-container: ($image-width + $pad-small);
     left: $pad-small;
     right: auto;
     > a {
-      @include link-text();
-      @extend .header-allcaps-plain;
+      @extend %link-text-body;
+      @extend %header-allcaps-plain;
     }
     &:after {
       @extend .more-icon;
@@ -297,7 +308,7 @@ $image-container: ($image-width + $pad-small);
 
 #issue {
   @include plos-grid-column(180);
-  @include blocks;
+  @extend .block;
 
   height: $block-height;
   .current-img {
@@ -306,9 +317,9 @@ $image-container: ($image-width + $pad-small);
   .boxtitle {
     margin-top: rem-calc(5);
     a {
-      @include link-text();
-      @extend .header-allcaps-xlarge;
-      @extend .condense;
+      @extend %link-text-body;
+      @extend %header-allcaps-xlarge;
+      @extend %condense;
       display: block;
       margin-bottom: rem-calc(-5);
       font-weight: 900;
@@ -321,13 +332,13 @@ $image-container: ($image-width + $pad-small);
 }
 
 #twitter {
-  @extend .width-small;
+  @extend %width-small;
   margin-bottom: rem-calc(16); // non-standard to account for the drop-shadow on adjacent containers
 }
  //ISCB box
 .linkbox {
   @extend .block-card;
-  @extend .width-small;
+  @extend %width-small;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
 
   ul {
@@ -335,7 +346,7 @@ $image-container: ($image-width + $pad-small);
     li {
       padding: $pad-default $pad-medium;
       border-top: 1px solid $grey-light;
-      @extend .link-text-body;
+      @extend %link-text-body;
       a {
         font-family: $font-face-fancy;
         font-size: rem-calc($txt-size-medium-large);
@@ -347,11 +358,11 @@ $image-container: ($image-width + $pad-small);
 
 #submission-links {
   @include blocks($color: $grey-dark, $padding: $pad-small $pad-medium $pad-xsmall $pad-medium, $shadow: none);
-  @extend .width-small;
+  @extend %width-small;
 
   h3 {
-    @extend .header-bottom-shadow;
-    @extend .header-xlarge-light;
+    @extend %header-bottom-shadow;
+    @extend %header-xlarge-light;
   }
   .split-container {
     @extend .inline-list;
@@ -374,11 +385,11 @@ $image-container: ($image-width + $pad-small);
 }
 
 #social-links {
-  @extend .width-small;
+  @extend %width-small;
   @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);
 
   h3 {
-    @extend .header-xlarge-light;
+    @extend %header-xlarge-light;
     text-indent: $pad-small;
     margin-bottom: $pad-small;
   }
@@ -418,14 +429,14 @@ $image-container: ($image-width + $pad-small);
 
 #blogs {
   $image-width: rem-calc(35px);
-  @extend .width-small;
+  @extend %width-small;
   @extend .block-card;
   height: $block-height;
   position: relative;
 
   .block-header{
-    @extend .brand-header;
-    @extend .link-text-white;
+    @extend %brand-header;
+    @extend %link-text-white;
   }
 
   #blogrss {
@@ -453,13 +464,13 @@ $image-container: ($image-width + $pad-small);
       overflow: hidden;
       margin: $pad-xsmall 0;
       a {
-        @extend .link-text-body;
+        @extend %link-text-body;
         font-family: $font-face-fancy;
         font-size: $txt-size-small;
       }
     }
     .postauthor {
-      @extend .small-italic;
+      @extend %small-italic;
       color: $clr-muted;
       margin: 0;
       padding: 0;
@@ -474,7 +485,7 @@ $image-container: ($image-width + $pad-small);
 #ad-slot-bottom {
   @extend .row;
   .ad-item {
-    @extend .width-small;
+    @extend %width-small;
     iframe {
       @extend .block-card;
     }

@@ -5,7 +5,7 @@
 footer {
 
   // widths
-  .brand-column{
+  %brand-column{
     @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 6); }
   .link-column{
     @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 3);
@@ -13,36 +13,19 @@ footer {
      padding-right: $pad-small;
    }
   }
-  @extend .bg-dark;
+  @extend %bg-dark;
   padding: rem-calc(25 0 60); // 25px 0 60px;
   color: $white;
-  font-weight: normal;
 
   .logo-footer {
     padding-bottom: rem-calc(25);
   }
 
   a {
-    color: $grey-med-light;
-    font-weight: normal;
-
-    &:hover {
-      color: $grey-med-light;
-      text-decoration: underline;
-    }
+    @include link-text($color: $grey-med-light, $decoration: underline){
   }
   .nav {
     position: relative;
-    color: $grey-med-light;
-    a {
-      font-size: $txt-size-xsmall;
-
-      color: $grey-med-light;
-
-      &:hover {
-        color: $grey-med-light;
-        text-decoration: underline;
-      }
 
     }
   }
@@ -54,7 +37,7 @@ footer {
     li {
       margin-left: rem-calc(10);
       padding: rem-calc(0 10 0 0);
-      border-right: 1px solid #efefef;
+      border-right: 1px solid $grey-med-light;
     }
     li:first-child {
       margin-left: 0;
@@ -69,23 +52,14 @@ footer {
     padding-left: 0;
     margin-left: 0;
   }
-  ul li a {
-    font-size: $txt-size-xsmall;
-    color: $grey-med-light;
 
-    &:hover {
-      color: $grey-med-light;
-      text-decoration: underline;
-    }
   }
   .nav-special {
     font-size: $txt-size-xsmall;
-    color: $grey-med-light;
-
     a {
       font-weight: bold;
       color: $clr-light-text
     }
   }
 
-}
+

@@ -45,6 +45,13 @@
   background: $color;
 }
 
+.block{
+  @include blocks();
+}
+.block-noshadow{
+  @include blocks($shadow: none);
+
+}
 .block-card {
   @include blocks($radius: none, $padding: none);
 }
@@ -97,12 +104,12 @@ have a fixed width and height (but it's not required).
   $icon-height: rem-calc(30);
   $carousel-width: rem-calc(306);
   // TODO PG-width is set in home.scss
-  @extend .brand-shading;
+  @extend %brand-shading;
   @extend .block-card;
   margin-right: $pad-default;
   position: relative;
   .block-header {
-    @extend .brand-header;
+    @extend %brand-header;
   }
   .carousel {
     li {
@@ -111,7 +118,7 @@ have a fixed width and height (but it's not required).
       height: 145px;
       h3 {
         @extend h2;
-        @extend .link-text-body;
+        @extend %link-text-body;
       }
       p {
         font-size: rem-calc($txt-size-medium);
@@ -139,7 +146,7 @@ have a fixed width and height (but it's not required).
       @extend .fa-chevron-circle-right;
     }
     .numbers {
-      @extend .small-italic;
+      @extend %small-italic;
       color: $grey-med;
       display: inline-block;
       padding: 0 $pad-xsmall;
@@ -164,7 +171,7 @@ have a fixed width and height (but it's not required).
   content: '\f138';
   @extend .fa;
   @extend .fa-inverse;
-  @extend .brand-color;
+  @extend %brand-color;
   padding-left: rem-calc(3);
 }
 

@@ -22,7 +22,10 @@
 <#--This polyfill is so that IE8 can use rems. I don't think we can call this using the asset manager. -->
 <!--[if IE 8]>
 <script src="resource/js/vendor/rem.min.js"></script>
+<script src="resource/js/vendor/html5shiv.js"></script>
+<script src="resource/js/vendor/respond.min.js"></script>
 <![endif]-->
+<!--the previous two scripts enable the use of foundation's dropdowns to work in IE8 -->
 
 <script src="resource/js/vendor/jquery.carousel.js"></script>
 <script src="resource/js/components/carousel.js"></script>

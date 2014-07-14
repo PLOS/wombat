@@ -15,4 +15,5 @@
   <link rel="shortcut icon" href="resource/img/favicon.ico" type="image/x-icon"/>
 
   <#include "analytics.ftl" />
+
 </head>

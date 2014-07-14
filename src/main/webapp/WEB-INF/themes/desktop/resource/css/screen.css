@@ -4202,17 +4202,14 @@ have a fixed width and height (but it's not required).
 /* 
  *      styles for the footer
  */
-/* line 5, ../../sass/sections/_footer.scss */
+/* line 4, ../../sass/sections/_footer.scss */
 footer {
   padding: 1.5625rem 0 3.75rem;
   color: white; }
-  /* line 12, ../../sass/sections/_footer.scss */
-  footer .link-column:last-child {
-    padding-right: 0.625rem; }
-  /* line 20, ../../sass/sections/_footer.scss */
+  /* line 16, ../../sass/sections/_footer.scss */
   footer .logo-footer {
     padding-bottom: 1.5625rem; }
-  /* line 24, ../../sass/sections/_footer.scss */
+  /* line 20, ../../sass/sections/_footer.scss */
   footer a {
     color: #cccccc;
     text-decoration: none; }
@@ -4220,35 +4217,35 @@ footer {
     footer a:hover, footer a a:hover {
       color: #cccccc;
       text-decoration: underline; }
-    /* line 27, ../../sass/sections/_footer.scss */
+    /* line 23, ../../sass/sections/_footer.scss */
     footer a .nav {
       position: relative; }
-  /* line 32, ../../sass/sections/_footer.scss */
+  /* line 27, ../../sass/sections/_footer.scss */
   footer .nav-aux {
     margin-top: 2.8125rem;
     margin-left: 0; }
-    /* line 37, ../../sass/sections/_footer.scss */
+    /* line 32, ../../sass/sections/_footer.scss */
     footer .nav-aux li {
       margin-left: 0.625rem;
       padding: 0 0.625rem 0 0;
       border-right: 1px solid #cccccc; }
-    /* line 42, ../../sass/sections/_footer.scss */
+    /* line 37, ../../sass/sections/_footer.scss */
     footer .nav-aux li:first-child {
       margin-left: 0; }
-    /* line 45, ../../sass/sections/_footer.scss */
+    /* line 40, ../../sass/sections/_footer.scss */
     footer .nav-aux li:last-child {
       padding-right: none;
       border-right: none; }
-  /* line 50, ../../sass/sections/_footer.scss */
+  /* line 45, ../../sass/sections/_footer.scss */
   footer ul {
     list-style: none;
     padding-left: 0;
     margin-left: 0; }
 
-/* line 57, ../../sass/sections/_footer.scss */
+/* line 52, ../../sass/sections/_footer.scss */
 .nav-special {
   font-size: 12px; }
-  /* line 59, ../../sass/sections/_footer.scss */
+  /* line 54, ../../sass/sections/_footer.scss */
   .nav-special a {
     font-weight: bold;
     color: white; }

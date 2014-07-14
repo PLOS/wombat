@@ -1,7 +1,6 @@
 /* 
  *      styles for the footer
  */
-//TODO sassify & format all code below
 footer {
 
   // widths
@@ -9,9 +8,6 @@ footer {
     @extend .plos-column-5 }
   .link-column{
     @extend .plos-column-3;
-   &:last-child{
-     padding-right: $pad-small;
-   }
   }
   @extend %bg-dark;
   padding: rem-calc(25 0 60); // 25px 0 60px;
@@ -26,7 +22,6 @@ footer {
   }
   .nav {
     position: relative;
-
     }
   }
   .nav-aux {

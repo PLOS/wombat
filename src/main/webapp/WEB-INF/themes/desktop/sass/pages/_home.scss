@@ -13,7 +13,6 @@ $image-container: ($image-width + $pad-small);
 // questions:
 // I am using foundation settings values.
 
-//PG: these are all the widths
 %width-full {
   @include plos-grid-column($pixelwidth: full-width);
 }
@@ -43,8 +42,9 @@ $image-container: ($image-width + $pad-small);
   @extend %width-small;
   height: $block-height;
 }
-
+///////
 //page scaffolding
+/////
 
 //sizes:
 
@@ -483,7 +483,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 #ad-slot-bottom {
-  @extend .row;
+  @extend .plos-row;
   .ad-item {
     @extend %width-small;
     iframe {

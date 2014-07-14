@@ -1,3 +1,18 @@
-.error-page{
+//@import "../_global-imports";
+
+.error-page {
+
+  @extend .row;
+
+  .image {
+    @extend .column-4;
+  }
+
+  .content {
+    @extend .column-7;
+    p {
+      @extend .text-size-large;
+    }
+  }
 
 }

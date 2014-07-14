@@ -1,8 +1,7 @@
 
-
 $grid-width-inside: ($row-width - $grid-gutter);
-/*sets up the body container */
 
+/* sets up the body container */
 @mixin plos-grid-gutter-outside() {
   margin-left: ($grid-gutter / 2);
   margin-right: ($grid-gutter / 2);
@@ -17,8 +16,8 @@ $grid-width-inside: ($row-width - $grid-gutter);
   }
 
 }
-//TODO - review where values
-//TODO - do if flexible case
+//TODO - review where values come from
+//TODO - do "if flexible" case
 
 /// from foundation amending this so we can use rems
 
@@ -77,7 +76,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @if $grid-type == fixed {
     min-width: $grid-width;
     max-width: $grid-width; }
-  margin: 0 auto;
+    margin: 0 auto;
 
 }
 
@@ -89,7 +88,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 }
 
 .row-nomargin {
-@include grid-row($container: true);
+
 }
 
 // All the columns - expressed like this:

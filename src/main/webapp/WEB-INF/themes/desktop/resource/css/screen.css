@@ -142,67 +142,28 @@ form {
 
 /* Using forms within rows, we need to set some defaults */
 /* line 82, ../../sass/vendor/foundation/components/_forms.scss */
-form .row .row, form .nav .row, form .nav-main .row, form #ad-slot-bottom .row, form .row .nav, form .nav .nav, form .nav-main .nav, form #ad-slot-bottom .nav, form .row .nav-main, form .nav .nav-main, form .nav-main .nav-main, form #ad-slot-bottom .nav-main, form .row #ad-slot-bottom, form .nav #ad-slot-bottom, form .nav-main #ad-slot-bottom, form #ad-slot-bottom #ad-slot-bottom {
+form .row .row {
   margin: 0 -0.5rem; }
   /* line 84, ../../sass/vendor/foundation/components/_forms.scss */
-  form .row .row .column, form .nav .row .column, form .nav-main .row .column, form #ad-slot-bottom .row .column, form .row .nav .column, form .nav .nav .column, form .nav-main .nav .column, form #ad-slot-bottom .nav .column, form .row .nav-main .column, form .nav .nav-main .column, form .nav-main .nav-main .column, form #ad-slot-bottom .nav-main .column, form .row #ad-slot-bottom .column, form .nav #ad-slot-bottom .column, form .nav-main #ad-slot-bottom .column, form #ad-slot-bottom #ad-slot-bottom .column,
-  form .row .row .columns,
-  form .nav .row .columns,
-  form .nav-main .row .columns,
-  form #ad-slot-bottom .row .columns,
-  form .row .nav .columns,
-  form .nav .nav .columns,
-  form .nav-main .nav .columns,
-  form #ad-slot-bottom .nav .columns,
-  form .row .nav-main .columns,
-  form .nav .nav-main .columns,
-  form .nav-main .nav-main .columns,
-  form #ad-slot-bottom .nav-main .columns,
-  form .row #ad-slot-bottom .columns,
-  form .nav #ad-slot-bottom .columns,
-  form .nav-main #ad-slot-bottom .columns,
-  form #ad-slot-bottom #ad-slot-bottom .columns {
+  form .row .row .column,
+  form .row .row .columns {
     padding: 0 0.5rem; }
   /* line 88, ../../sass/vendor/foundation/components/_forms.scss */
-  form .row .row.collapse, form .nav .row.collapse, form .nav-main .row.collapse, form #ad-slot-bottom .row.collapse, form .row .collapse.nav, form .nav .collapse.nav, form .nav-main .collapse.nav, form #ad-slot-bottom .collapse.nav, form .row .collapse.nav-main, form .nav .collapse.nav-main, form .nav-main .collapse.nav-main, form #ad-slot-bottom .collapse.nav-main, form .row .collapse#ad-slot-bottom, form .nav .collapse#ad-slot-bottom, form .nav-main .collapse#ad-slot-bottom, form #ad-slot-bottom .collapse#ad-slot-bottom {
+  form .row .row.collapse {
     margin: 0; }
     /* line 90, ../../sass/vendor/foundation/components/_forms.scss */
-    form .row .row.collapse .column, form .nav .row.collapse .column, form .nav-main .row.collapse .column, form #ad-slot-bottom .row.collapse .column, form .row .collapse.nav .column, form .nav .collapse.nav .column, form .nav-main .collapse.nav .column, form #ad-slot-bottom .collapse.nav .column, form .row .collapse.nav-main .column, form .nav .collapse.nav-main .column, form .nav-main .collapse.nav-main .column, form #ad-slot-bottom .collapse.nav-main .column, form .row .collapse#ad-slot-bottom .column, form .nav .collapse#ad-slot-bottom .column, form .nav-main .collapse#ad-slot-bottom .column, form #ad-slot-bottom .collapse#ad-slot-bottom .column,
-    form .row .row.collapse .columns,
-    form .nav .row.collapse .columns,
-    form .nav-main .row.collapse .columns,
-    form #ad-slot-bottom .row.collapse .columns,
-    form .row .collapse.nav .columns,
-    form .nav .collapse.nav .columns,
-    form .nav-main .collapse.nav .columns,
-    form #ad-slot-bottom .collapse.nav .columns,
-    form .row .collapse.nav-main .columns,
-    form .nav .collapse.nav-main .columns,
-    form .nav-main .collapse.nav-main .columns,
-    form #ad-slot-bottom .collapse.nav-main .columns,
-    form .row .collapse#ad-slot-bottom .columns,
-    form .nav .collapse#ad-slot-bottom .columns,
-    form .nav-main .collapse#ad-slot-bottom .columns,
-    form #ad-slot-bottom .collapse#ad-slot-bottom .columns {
+    form .row .row.collapse .column,
+    form .row .row.collapse .columns {
       padding: 0; }
     /* line 92, ../../sass/vendor/foundation/components/_forms.scss */
-    form .row .row.collapse input, form .nav .row.collapse input, form .nav-main .row.collapse input, form #ad-slot-bottom .row.collapse input, form .row .collapse.nav input, form .nav .collapse.nav input, form .nav-main .collapse.nav input, form #ad-slot-bottom .collapse.nav input, form .row .collapse.nav-main input, form .nav .collapse.nav-main input, form .nav-main .collapse.nav-main input, form #ad-slot-bottom .collapse.nav-main input, form .row .collapse#ad-slot-bottom input, form .nav .collapse#ad-slot-bottom input, form .nav-main .collapse#ad-slot-bottom input, form #ad-slot-bottom .collapse#ad-slot-bottom input {
+    form .row .row.collapse input {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0; }
 /* line 98, ../../sass/vendor/foundation/components/_forms.scss */
-form .row input.column, form .nav input.column, form .nav-main input.column, form #ad-slot-bottom input.column,
+form .row input.column,
 form .row input.columns,
-form .nav input.columns,
-form .nav-main input.columns,
-form #ad-slot-bottom input.columns,
 form .row textarea.column,
-form .nav textarea.column,
-form .nav-main textarea.column,
-form #ad-slot-bottom textarea.column,
-form .row textarea.columns,
-form .nav textarea.columns,
-form .nav-main textarea.columns,
-form #ad-slot-bottom textarea.columns {
+form .row textarea.columns {
   padding-left: 0.5rem; }
 
 /* Label Styles */
@@ -759,7 +720,7 @@ meta.foundation-mq-topbar {
     margin-bottom: 0;
     list-style: none; }
   /* line 157, ../../sass/vendor/foundation/components/_top-bar.scss */
-  .top-bar .row, .nav-main .row, .top-bar .nav, .nav-main .nav, .top-bar .nav-main, .nav-main .nav-main, .top-bar #ad-slot-bottom, .nav-main #ad-slot-bottom {
+  .top-bar .row, .nav-main .row {
     max-width: none; }
   /* line 159, ../../sass/vendor/foundation/components/_top-bar.scss */
   .top-bar form, .nav-main form,
@@ -1810,98 +1771,98 @@ blockquote p {
     display: inherit !important; } }
 /* sets up the body container */
 /* line 86, ../../sass/_scaffold.scss */
-.row, .nav, .nav-main, #ad-slot-bottom {
+.plos-row, .nav, .nav-main, #ad-slot-bottom {
   width: 100%;
   margin: 0;
   max-width: 61.25rem;
   *zoom: 1; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  .row:before, .nav:before, .nav-main:before, #ad-slot-bottom:before, .row:after, .nav:after, .nav-main:after, #ad-slot-bottom:after {
+  .plos-row:before, .nav:before, .nav-main:before, #ad-slot-bottom:before, .plos-row:after, .nav:after, .nav-main:after, #ad-slot-bottom:after {
     content: " ";
     display: table; }
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  .row:after, .nav:after, .nav-main:after, #ad-slot-bottom:after {
+  .plos-row:after, .nav:after, .nav-main:after, #ad-slot-bottom:after {
     clear: both; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-0 {
+.plos-column-0 {
   width: 0rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-1 {
+.plos-column-1 {
   width: 5.10417rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-2 {
+.plos-column-2 {
   width: 10.20833rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-3 {
+.plos-column-3 {
   width: 15.3125rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-4 {
+.plos-column-4 {
   width: 20.41667rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-5 {
+.plos-column-5 {
   width: 25.52083rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-6 {
+.plos-column-6 {
   width: 30.625rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-7 {
+.plos-column-7 {
   width: 35.72917rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-8 {
+.plos-column-8 {
   width: 40.83333rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-9 {
+.plos-column-9 {
   width: 45.9375rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-10 {
+.plos-column-10 {
   width: 51.04167rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 97, ../../sass/_scaffold.scss */
-.column-11 {
+.plos-column-11 {
   width: 56.14583rem;
   float: left;
   margin-left: 0.625rem;
@@ -1912,10 +1873,7 @@ main,
 .head-main,
 #pagehdr-wrap,
 #pagehdr,
-#pageftr .row,
-#pageftr .nav,
-#pageftr .nav-main,
-#pageftr #ad-slot-bottom {
+#pageftr .row {
   width: 100%;
   margin: 0;
   max-width: 61.25rem;
@@ -1932,13 +1890,7 @@ main,
   #pagehdr:before,
   #pagehdr:after,
   #pageftr .row:before,
-  #pageftr .nav:before,
-  #pageftr .nav-main:before,
-  #pageftr #ad-slot-bottom:before,
-  #pageftr .row:after,
-  #pageftr .nav:after,
-  #pageftr .nav-main:after,
-  #pageftr #ad-slot-bottom:after {
+  #pageftr .row:after {
     content: " ";
     display: table; }
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
@@ -1946,10 +1898,7 @@ main,
   .head-main:after,
   #pagehdr-wrap:after,
   #pagehdr:after,
-  #pageftr .row:after,
-  #pageftr .nav:after,
-  #pageftr .nav-main:after,
-  #pageftr #ad-slot-bottom:after {
+  #pageftr .row:after {
     clear: both; }
 
 /*!
@@ -4792,30 +4741,30 @@ footer {
     font-family: "albert"; }
 
 /* line 201, ../../sass/pages/_home.scss */
-.row.three .column:first-child, .three.nav .column:first-child, .three.nav-main .column:first-child, .three#ad-slot-bottom .column:first-child {
+.row.three .column:first-child {
   width: 40.83333rem;
   float: left; }
 /* line 205, ../../sass/pages/_home.scss */
-.row.three .column:last-child, .three.nav .column:last-child, .three.nav-main .column:last-child, .three#ad-slot-bottom .column:last-child {
+.row.three .column:last-child {
   width: 20.41667rem;
   float: left;
   position: relative; }
   /* line 208, ../../sass/pages/_home.scss */
-  .row.three .column:last-child > div > div, .three.nav .column:last-child > div > div, .three.nav-main .column:last-child > div > div, .three#ad-slot-bottom .column:last-child > div > div {
+  .row.three .column:last-child > div > div {
     float: none; }
 
 /* line 218, ../../sass/pages/_home.scss */
-.row.three .column:first-child .block.large, .three.nav .column:first-child .block.large, .three.nav-main .column:first-child .block.large, .three#ad-slot-bottom .column:first-child .block.large, .row.three .column:first-child .large#article-list, .three.nav .column:first-child .large#article-list, .three.nav-main .column:first-child .large#article-list, .three#ad-slot-bottom .column:first-child .large#article-list, .row.three .column:first-child .large#issue, .three.nav .column:first-child .large#issue, .three.nav-main .column:first-child .large#issue, .three#ad-slot-bottom .column:first-child .large#issue {
+.row.three .column:first-child .block.large, .row.three .column:first-child .large#article-list, .row.three .column:first-child .large#issue {
   height: 11.25rem; }
   /* line 220, ../../sass/pages/_home.scss */
-  .row.three .column:first-child .block.large .block-image, .three.nav .column:first-child .block.large .block-image, .three.nav-main .column:first-child .block.large .block-image, .three#ad-slot-bottom .column:first-child .block.large .block-image, .row.three .column:first-child .large#article-list .block-image, .three.nav .column:first-child .large#article-list .block-image, .three.nav-main .column:first-child .large#article-list .block-image, .three#ad-slot-bottom .column:first-child .large#article-list .block-image, .row.three .column:first-child .large#issue .block-image, .three.nav .column:first-child .large#issue .block-image, .three.nav-main .column:first-child .large#issue .block-image, .three#ad-slot-bottom .column:first-child .large#issue .block-image {
+  .row.three .column:first-child .block.large .block-image, .row.three .column:first-child .large#article-list .block-image, .row.three .column:first-child .large#issue .block-image {
     height: 10rem;
     overflow: hidden; }
 /* line 225, ../../sass/pages/_home.scss */
-.row.three .column:first-child .block.small, .three.nav .column:first-child .block.small, .three.nav-main .column:first-child .block.small, .three#ad-slot-bottom .column:first-child .block.small, .row.three .column:first-child .small#article-list, .three.nav .column:first-child .small#article-list, .three.nav-main .column:first-child .small#article-list, .three#ad-slot-bottom .column:first-child .small#article-list, .row.three .column:first-child .small#issue, .three.nav .column:first-child .small#issue, .three.nav-main .column:first-child .small#issue, .three#ad-slot-bottom .column:first-child .small#issue {
+.row.three .column:first-child .block.small, .row.three .column:first-child .small#article-list, .row.three .column:first-child .small#issue {
   height: 15.625rem; }
   /* line 227, ../../sass/pages/_home.scss */
-  .row.three .column:first-child .block.small .block-image, .three.nav .column:first-child .block.small .block-image, .three.nav-main .column:first-child .block.small .block-image, .three#ad-slot-bottom .column:first-child .block.small .block-image, .row.three .column:first-child .small#article-list .block-image, .three.nav .column:first-child .small#article-list .block-image, .three.nav-main .column:first-child .small#article-list .block-image, .three#ad-slot-bottom .column:first-child .small#article-list .block-image, .row.three .column:first-child .small#issue .block-image, .three.nav .column:first-child .small#issue .block-image, .three.nav-main .column:first-child .small#issue .block-image, .three#ad-slot-bottom .column:first-child .small#issue .block-image {
+  .row.three .column:first-child .block.small .block-image, .row.three .column:first-child .small#article-list .block-image, .row.three .column:first-child .small#issue .block-image {
     height: 14.375rem;
     overflow: hidden; }
 

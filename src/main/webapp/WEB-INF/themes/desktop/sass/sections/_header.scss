@@ -44,7 +44,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
 
 .nav {
-  @extend .row;
+  @extend .plos-row;
   .nav-user {
     @extend .inline-list; // from foundation
     @extend .right; // from foundation
@@ -90,7 +90,7 @@ $width-nav: $block-grid-elements - $width-logo;
  */
 
 .nav-main {
-  @extend .row;
+  @extend .plos-row;
   @extend .top-bar; // foundation
   font-family: $font-face-navigation;
   > .dropdown {

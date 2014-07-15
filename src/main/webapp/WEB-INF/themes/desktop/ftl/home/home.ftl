@@ -12,34 +12,12 @@
 
 <#include "body.ftl" />
 
-<div class="spotlight">
 <#include "adSlotBottom.ftl" />
-</div>
+
 
 <#include "../common/footer/footer.ftl" />
+<#include "../common/bodyJs.ftl" />
 
-<script src="resource/js/vendor/jquery-1.11.0.js"></script>
-<#--This polyfill is so that IE8 can use rems. I don't think we can call this using the asset manager. -->
-<!--[if IE 8]>
-<script src="resource/js/vendor/rem.min.js"></script>
-<![endif]-->
-
-<script src="resource/js/vendor/jquery.carousel.js"></script>
-<script src="resource/js/components/carousel.js"></script>
-<script src="resource/js/vendor/jquery.dotdotdot.js"></script>
-
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="resource/js/components/blogfeed.js"></script>
-<!--TODO: the following need to be on all pages, not just home-->
- <!--
- TODO: foundation-altered.js is in use for development. Need to
-  download a customized foundation.js that includes only what we're using
-  (Remove javascript for topbar)
-  -->
-<script src="resource/js/vendor/foundation-altered.js"></script>
-<script src="resource/js/vendor/jquery.hoverIntent.js"></script>
-
-<script src="resource/js/components/navsearch.js"></script>
 
 <script>
 

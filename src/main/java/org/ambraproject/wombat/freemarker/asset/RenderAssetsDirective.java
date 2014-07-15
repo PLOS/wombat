@@ -90,13 +90,6 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
     List<String> simplePaths = extractPathsIfSimple(assetNodes);
     if (simplePaths != null) return simplePaths;
 
-    Multimap<String, String> dependencyMap = LinkedListMultimap.create(assetNodes.size());
-    for (AssetNode dependent : assetNodes) {
-      for (String dependency : dependent.getDependencies()) {
-        dependencyMap.put(dependent.getPath(), dependency);
-      }
-    }
-
     // Topological sort by Kahn's algorithm
     Set<String> assetPaths = Sets.newLinkedHashSetWithExpectedSize(assetNodes.size());
     Deque<AssetNode> queue = new LinkedList<>(assetNodes);
@@ -106,7 +99,7 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
         AssetNode candidate = queueIterator.next();
 
         // Check whether the candidate has any dependents not yet in assetPaths
-        Collection<String> dependencies = dependencyMap.get(candidate.getPath());
+        Collection<String> dependencies = candidate.getDependencies();
         for (Iterator<String> dependencyIterator = dependencies.iterator(); dependencyIterator.hasNext(); ) {
           String dependent = dependencyIterator.next();
           if (assetPaths.contains(dependent)) {

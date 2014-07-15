@@ -42,13 +42,14 @@ $image-container: ($image-width + $pad-small);
   @extend %width-small;
   height: $block-height;
 }
+
 ///////
 //page scaffolding
 /////
 
 //sizes:
 
- .block {
+.block {
   &.xx-small {
     @extend %width-xx-small;
   }
@@ -65,7 +66,7 @@ $image-container: ($image-width + $pad-small);
   &.large {
     @extend %width-large;
   }
- }
+}
 
 .hero {
   @extend %width-full;
@@ -75,12 +76,11 @@ $image-container: ($image-width + $pad-small);
   background: transparent;
 }
 
-
-.hero{
+.hero {
   // overlay colors
   &.overlay-dark > a:before {
     @extend .overlay;
-// we are using images here to match lemur.
+    // we are using images here to match lemur.
     background: image-url("gradient-dark_1x364.png") repeat-x bottom;
   }
   &.overlay-light > a:before {
@@ -119,7 +119,7 @@ $image-container: ($image-width + $pad-small);
         width: 75%;
         float: left;
       }
-      &.credit{
+      &.credit {
         // credits have to sit in this weird place because they cant' run into authors.
         @extend %small-italic;
         width: 20%;
@@ -135,8 +135,9 @@ $image-container: ($image-width + $pad-small);
 .block {
   position: relative;
   height: $block-height;
-
-
+  .blurb{
+    color: $grey-med;
+  }
   .block-image {
     width: $image-container;
     display: block;
@@ -146,7 +147,7 @@ $image-container: ($image-width + $pad-small);
 
   }
   &.image .block-content {
-    margin-left: ($image-container + $pad-default);
+    margin-left: ($image-container + $pad-small);
     margin-right: $pad-small;
     height: ($block-height - ($pad-default));
     overflow: hidden;
@@ -168,10 +169,12 @@ $image-container: ($image-width + $pad-small);
   }
   .category {
     @extend %brand-title;
+    margin-bottom: $pad-xsmall;
   }
   .title {
     //@extend h2;
     font-size: $txt-size-h2;
+    margin-bottom: $pad-xsmall;
     @extend %link-text-body;
 
     //in case p tag is added in CMS, need to override global settings
@@ -189,15 +192,15 @@ $image-container: ($image-width + $pad-small);
 
   &.small {
     .title {
-     // @extend h4;
+      // @extend h4;
       font-size: $txt-size-h4;
       @extend .subheader;
       font-family: $font-face-fancy;
     }
   }
-
 }
-.row.three{
+
+.row.three {
   .column {
     &:first-child {
       @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 8); //width + gutter
@@ -213,24 +216,24 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
-.row.three{
-  .row-small-blocks .small{
+.row.three {
+  .row-small-blocks .small {
     $small-block-spacing: rem-calc($pad-xsmall);
     .date, .category {
       margin-bottom: $small-block-spacing;
     }
-    .date{
-     float:none !important; // sadly have to use this to override the .right on the other blocks
-     margin-right: 0;
+    .date {
+      float: none !important; // sadly have to use this to override the .right on the other blocks
+      margin-right: 0;
     }
     .title {
       margin-top: $small-block-spacing;
-      a{
-      font-family: $font-face-fancy-bold;
-      font-size: rem-calc($txt-size-medium);
-      @include link-text($color: $grey-med);
-
-    } }
+      a {
+        font-family: $font-face-fancy-bold;
+        font-size: rem-calc($txt-size-medium);
+        @include link-text($color: $grey-med);
+      }
+    }
 
   }
   .column {
@@ -263,7 +266,8 @@ $image-container: ($image-width + $pad-small);
   h3 {
     font-size: $txt-size-h2;
   }
-  a {  //not using rounded-pill: would need too many overrides
+  a {
+    //not using rounded-pill: would need too many overrides
     @extend %brand-background-hover;
     border-radius: $border-radius-default;
     padding: $pad-xsmall $pad-default;
@@ -304,20 +308,21 @@ $image-container: ($image-width + $pad-small);
     @extend .has-tip; //foundation
   }
 }
-  .more-link {
-    position: absolute;
-    bottom: $pad-small;
-    left: $pad-small;
-    right: auto;
-    > a {
-      @extend %link-text-body;
-      @extend %header-allcaps-plain;
-    }
-    &:after {
-      @extend .more-icon;
-    }
 
+.more-link {
+  position: absolute;
+  bottom: $pad-small;
+  left: $pad-small;
+  right: auto;
+  > a {
+    @extend %link-text-body;
+    @extend %header-allcaps-plain;
   }
+  &:after {
+    @extend .more-icon;
+  }
+
+}
 
 //Tooltips are added to the bottom of the page & hidden. This class should not be nested.
 .tooltip {
@@ -355,12 +360,16 @@ $image-container: ($image-width + $pad-small);
   @extend %width-small;
   margin-bottom: rem-calc(16); // non-standard to account for the drop-shadow on adjacent containers
 }
- //ISCB box
+
+//ISCB box
 .linkbox {
   @extend .block-card;
   @extend %width-small;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
-
+  .image-header{
+    background-color: #1c2e5e;
+    text-align: center;
+  }
   ul {
     @extend .no-bullet; // from foundation
     li {
@@ -454,7 +463,7 @@ $image-container: ($image-width + $pad-small);
   height: $block-height;
   position: relative;
 
-  .block-header{
+  .block-header {
     @extend %brand-header;
     @extend %link-text-white;
   }
@@ -517,6 +526,7 @@ $image-container: ($image-width + $pad-small);
 .plosbiology, .ploscompbiol, .plosgenetics {
   @include brandColor($setColor: $plos-bio);
 }
+
 .plosmedicine, .plospathogens, .plosntd {
   @include brandColor($setColor: $plos-med);
 }

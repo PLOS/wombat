@@ -124,9 +124,7 @@ $image-container: ($image-width + $pad-small);
         float: left;
       }
       &.credit{
-        // credits have to sit in this weird place because they cant' run into authors.
         @extend %small-italic;
-        width: 20%;
         text-align: right;
         bottom: $pad-small;
         position: absolute;
@@ -198,8 +196,9 @@ $image-container: ($image-width + $pad-small);
       font-family: $font-face-fancy;
     }
   }
-
 }
+
+// ROW THREE: overall scaffolding
 .row.three{
   .column {
     &:first-child {
@@ -215,7 +214,7 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
-
+// ROW THREE: heights and other styling details.
 .row.three{
   .column {
     &:first-child {
@@ -398,12 +397,11 @@ $image-container: ($image-width + $pad-small);
     margin-bottom: $pad-small;
   }
   ul {
-    @extend .inline-list;
-    margin-bottom: 0;
-    margin-left: rem-calc(-4);
+    list-style: none;
+    margin: 0 0 0 rem-calc(-4);
     > li {
-      margin-left: 4px;
-      margin-bottom: 0;
+      float: left;
+      margin: 0 0 0 rem-calc(4);
       > a {
         background: $plos-default;
         border-radius: $border-radius-default;

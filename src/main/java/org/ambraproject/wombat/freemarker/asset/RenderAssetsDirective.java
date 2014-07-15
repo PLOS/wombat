@@ -13,8 +13,6 @@
 
 package org.ambraproject.wombat.freemarker.asset;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Joiner;
 import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateDirectiveModel;
@@ -30,7 +28,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -81,71 +78,4 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
    */
   protected abstract String getHtml(String assetPath);
 
-  /**
-   * Simple class that wraps the multiple values returned by getPathDepths.
-   */
-  @VisibleForTesting
-  public static final class GetPathDepthsResult {
-
-    /**
-     * The "depth" of the asset links; that is, the number of occurrences of "../" at the start of the paths.
-     */
-    int depth;
-
-    /**
-     * List of paths with the "up-directory" portions removed.  That is, "../../foo" becomes "foo".
-     */
-    List<String> depthlessPaths;
-
-    GetPathDepthsResult(int depth, List<String> depthlessPaths) {
-      this.depth = depth;
-      this.depthlessPaths = depthlessPaths;
-    }
-  }
-
-  /**
-   * Calculates the number of "up-directory" levels in the relative paths passed in, and removes these up-directory
-   * markers.
-   *
-   * @param assetPaths relative paths to assets
-   * @return see comments for {@link GetPathDepthsResult}
-   */
-  @VisibleForTesting
-  static GetPathDepthsResult getPathDepths(List<String> assetPaths) {
-    int globalDepth = -1;
-    List<String> depthlessPaths = new ArrayList<>();
-    for (String path : assetPaths) {
-      int localDepth = 0;
-      while (path.startsWith("../")) {
-        path = path.substring(3);
-        localDepth += 1;
-      }
-      if (globalDepth >= 0 && globalDepth != localDepth) {
-
-        // TODO: will we ever need to support this?
-        String message = "RenderAssetsDirective does not support asset paths with mixes of depths: ";
-        message += Joiner.on(", ").join(assetPaths);
-        throw new IllegalArgumentException(message);
-      }
-      globalDepth = localDepth;
-      depthlessPaths.add(path);
-    }
-    return new GetPathDepthsResult(globalDepth, depthlessPaths);
-  }
-
-  /**
-   * Returns a string representing a unix-like relative path going up the specified number of levels.  For example, an
-   * argument of 3 will return "../../../", while 0 will return the empty string.
-   *
-   * @param depth number of directory levels deep
-   * @return string going up the specified number of directories
-   */
-  @VisibleForTesting
-  static String getDepthPrefix(int depth) {
-    StringBuilder result = new StringBuilder();
-    for (int i = 0; i < depth; i++) {
-      result.append("../");
-    }
-    return result.toString();
-  }
 }

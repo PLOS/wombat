@@ -120,9 +120,7 @@ $image-container: ($image-width + $pad-small);
         float: left;
       }
       &.credit{
-        // credits have to sit in this weird place because they cant' run into authors.
         @extend %small-italic;
-        width: 20%;
         text-align: right;
         bottom: $pad-small;
         position: absolute;

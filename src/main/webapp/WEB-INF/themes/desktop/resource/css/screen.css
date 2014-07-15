@@ -4588,9 +4588,9 @@ footer {
   margin-right: 0.625rem; }
 
 /* line 20, ../../sass/pages/_home.scss */
-.block.xx-small, .xx-small#article-list, .xx-small#issue {
+.block.xx-small, .xx-small#article-list, #issue {
   float: left;
-  width: 11.375rem;
+  width: 11.4375rem;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
@@ -4611,7 +4611,7 @@ footer {
 /* line 32, ../../sass/pages/_home.scss */
 .block.medium, .medium#article-list, .medium#issue {
   float: left;
-  width: 29.3125rem;
+  width: 29.375rem;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
@@ -4816,10 +4816,6 @@ footer {
 
 /* line 309, ../../sass/pages/_home.scss */
 #issue {
-  float: left;
-  width: 11.25rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem;
   height: 15.625rem; }
   /* line 314, ../../sass/pages/_home.scss */
   #issue .current-img {

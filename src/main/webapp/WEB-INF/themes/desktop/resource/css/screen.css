@@ -528,7 +528,7 @@ label.error {
   color: #e53350; }
 
 /* line 52, ../../sass/vendor/foundation/components/_inline-lists.scss */
-.inline-list, footer .nav-aux, .nav .nav-user, #submission-links .split-container, #social-links ul {
+.inline-list, footer .nav-aux, .nav .nav-user, #submission-links .split-container {
   margin: 0 auto 1.0625rem auto;
   margin-left: -1.375rem;
   margin-right: 0;
@@ -536,13 +536,13 @@ label.error {
   list-style: none;
   overflow: hidden; }
   /* line 41, ../../sass/vendor/foundation/components/_inline-lists.scss */
-  .inline-list > li, footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, #social-links ul > li {
+  .inline-list > li, footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li {
     list-style: none;
     float: left;
     margin-left: 1.375rem;
     display: block; }
     /* line 46, ../../sass/vendor/foundation/components/_inline-lists.scss */
-    .inline-list > li > *, footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, #social-links ul > li > * {
+    .inline-list > li > *, footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > * {
       display: block; }
 
 /* line 91, ../../sass/vendor/foundation/components/_labels.scss */
@@ -4896,13 +4896,13 @@ footer {
     margin-bottom: 0.625rem; }
   /* line 396, ../../sass/pages/_home.scss */
   #social-links ul {
-    margin-bottom: 0;
-    margin-left: -0.25rem; }
-    /* line 400, ../../sass/pages/_home.scss */
+    list-style: none;
+    margin: 0 0 0 -0.25rem; }
+    /* line 399, ../../sass/pages/_home.scss */
     #social-links ul > li {
-      margin-left: 4px;
-      margin-bottom: 0; }
-      /* line 403, ../../sass/pages/_home.scss */
+      float: left;
+      margin: 0 0 0 0.25rem; }
+      /* line 402, ../../sass/pages/_home.scss */
       #social-links ul > li > a {
         background: #3c63af;
         border-radius: 5px;
@@ -4910,27 +4910,27 @@ footer {
         height: 44px;
         text-align: center;
         color: white; }
-        /* line 410, ../../sass/pages/_home.scss */
+        /* line 409, ../../sass/pages/_home.scss */
         #social-links ul > li > a:hover {
           background: #333333; }
-      /* line 414, ../../sass/pages/_home.scss */
+      /* line 413, ../../sass/pages/_home.scss */
       #social-links ul > li .social {
         width: 44px; }
-    /* line 421, ../../sass/pages/_home.scss */
+    /* line 420, ../../sass/pages/_home.scss */
     #social-links ul .social-blogs {
       width: 6.5rem;
       line-height: 44px;
       font-size: 1rem;
       font-family: "albert"; }
 
-/* line 430, ../../sass/pages/_home.scss */
+/* line 429, ../../sass/pages/_home.scss */
 #blogs {
   height: 15.625rem;
   position: relative; }
-  /* line 442, ../../sass/pages/_home.scss */
+  /* line 441, ../../sass/pages/_home.scss */
   #blogs #blogrss {
     padding: 1.25rem 1.25rem 0; }
-    /* line 444, ../../sass/pages/_home.scss */
+    /* line 443, ../../sass/pages/_home.scss */
     #blogs #blogrss div {
       *zoom: 1;
       margin-bottom: 0.625rem; }
@@ -4941,35 +4941,35 @@ footer {
       /* line 117, ../../sass/vendor/foundation/components/_global.scss */
       #blogs #blogrss div:after {
         clear: both; }
-    /* line 448, ../../sass/pages/_home.scss */
+    /* line 447, ../../sass/pages/_home.scss */
     #blogs #blogrss .postimg {
       float: left;
       height: 75px;
       width: 2.1875rem;
       margin-right: 0.625rem; }
-    /* line 454, ../../sass/pages/_home.scss */
+    /* line 453, ../../sass/pages/_home.scss */
     #blogs #blogrss .postdate {
       margin: 0;
       font-size: 10px;
       font-family: "arial";
       color: #636363;
       padding: 0; }
-    /* line 461, ../../sass/pages/_home.scss */
+    /* line 460, ../../sass/pages/_home.scss */
     #blogs #blogrss .posttitle {
       height: 30px;
       line-height: 15px;
       overflow: hidden;
       margin: 0.3125rem 0; }
-      /* line 466, ../../sass/pages/_home.scss */
+      /* line 465, ../../sass/pages/_home.scss */
       #blogs #blogrss .posttitle a {
         font-family: "albert";
         font-size: 13px; }
-    /* line 472, ../../sass/pages/_home.scss */
+    /* line 471, ../../sass/pages/_home.scss */
     #blogs #blogrss .postauthor {
       color: #636363;
       margin: 0;
       padding: 0; }
-  /* line 479, ../../sass/pages/_home.scss */
+  /* line 478, ../../sass/pages/_home.scss */
   #blogs .more-link {
     bottom: 0.625rem;
     left: 5.3125rem; }
@@ -5005,19 +5005,19 @@ footer {
   .plosgenetics .carousel-wrap.small:first-child .jcarousel-next:hover {
     color: #3c63af; }
 /* line 96, ../../sass/_utilities.scss */
-.plosbiology .carousel-wrap.small:nth-child(2) .block-header, .ploscompbiol .carousel-wrap.small:nth-child(2) .block-header, .plosgenetics .carousel-wrap.small:nth-child(2) .block-header {
+.plosbiology .carousel-wrap.small:first-child + .carousel-wrap .block-header, .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .block-header, .plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .block-header {
   background: #0e6719; }
 /* line 99, ../../sass/_utilities.scss */
-.plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-next {
+.plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next {
   color: #0e6719; }
   /* line 102, ../../sass/_utilities.scss */
-  .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-next:hover {
+  .plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover, .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover, .plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover {
     color: #3c63af; }
 
 /* line 66, ../../sass/_utilities.scss */
@@ -5051,17 +5051,17 @@ footer {
   .plosntd .carousel-wrap.small:first-child .jcarousel-next:hover {
     color: #3c63af; }
 /* line 96, ../../sass/_utilities.scss */
-.plosmedicine .carousel-wrap.small:nth-child(2) .block-header, .plospathogens .carousel-wrap.small:nth-child(2) .block-header, .plosntd .carousel-wrap.small:nth-child(2) .block-header {
+.plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .block-header, .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .block-header, .plosntd .carousel-wrap.small:first-child + .carousel-wrap .block-header {
   background: #5d1579; }
 /* line 99, ../../sass/_utilities.scss */
-.plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosntd .carousel-wrap.small:nth-child(2) .jcarousel-next {
+.plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plospathogens .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next {
   color: #5d1579; }
   /* line 102, ../../sass/_utilities.scss */
-  .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-next:hover {
+  .plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover, .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover, .plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover {
     color: #3c63af; }

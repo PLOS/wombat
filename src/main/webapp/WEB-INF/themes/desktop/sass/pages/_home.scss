@@ -213,6 +213,12 @@ $image-container: ($image-width + $pad-small);
 }
 
 .row.three{
+  .row-small-blocks{
+    .date{
+     float:none !important; // sadly have to use this to override the .right on the other blocks
+     margin-right: 0;
+  }
+  }
   .column {
     &:first-child {
       .block.large {

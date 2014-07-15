@@ -11,10 +11,15 @@
 
 package org.ambraproject.wombat.freemarker.asset;
 
+import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableList;
 import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
+import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
+import freemarker.template.TemplateModel;
+import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +27,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Base class for Freemarker custom directives used to insert compiled versions of asset files (javascript and CSS).
@@ -33,6 +40,33 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
   private RuntimeConfiguration runtimeConfiguration;
   @Autowired
   private SiteResolver siteResolver;
+
+  private static final Splitter DEPENDENCY_SPLITTER = Splitter.on(';');
+
+  @Override
+  public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
+    Object targetObj = params.get(getParameterName());
+    if (targetObj == null) {
+      throw new TemplateModelException(getParameterName() + " parameter is required");
+    }
+    String target = targetObj.toString();
+
+    Object dependencyObj = params.get("dependsOn");
+    List<String> dependencies = (dependencyObj == null) ? ImmutableList.<String>of()
+        : DEPENDENCY_SPLITTER.splitToList(dependencyObj.toString());
+
+    addAsset(target, getRequestVariableName(), dependencies, env);
+  }
+
+  /**
+   * @return the constant name of the FreeMarker attribute that supplies the target path
+   */
+  protected abstract String getParameterName();
+
+  /**
+   * @return the constant name of the request-scoped variable in which to store links of this asset type
+   */
+  protected abstract String getRequestVariableName();
 
   /**
    * Called when we are adding a new asset file to the page.  If we're in dev mode, this will just render HTML that
@@ -45,7 +79,7 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
    * @throws TemplateException
    * @throws IOException
    */
-  protected void addAsset(String assetPath, String requestVariableName, Environment environment)
+  protected void addAsset(String assetPath, String requestVariableName, Collection<String> dependencies, Environment environment)
       throws TemplateException, IOException {
     assetPath = assetPath.trim();
 
@@ -56,7 +90,7 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
     if (assetNodes == null) {
       assetNodes = new ArrayList<>();
     }
-    AssetNode node = new AssetNode(assetPath, null); // TODO Support dependencies
+    AssetNode node = new AssetNode(assetPath, dependencies);
     assetNodes.add(node);
     request.setAttribute(requestVariableName, assetNodes);
   }

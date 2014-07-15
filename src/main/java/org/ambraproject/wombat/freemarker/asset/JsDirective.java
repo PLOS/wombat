@@ -11,15 +11,6 @@
 
 package org.ambraproject.wombat.freemarker.asset;
 
-import freemarker.core.Environment;
-import freemarker.template.TemplateDirectiveBody;
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateModel;
-import freemarker.template.TemplateModelException;
-
-import java.io.IOException;
-import java.util.Map;
-
 /**
  * Custom freemarker directive that should be used to insert a <script> element. If we are running in dev mode, this
  * will just render the link; otherwise the javascript file specified will be minified and served along with all other
@@ -29,17 +20,14 @@ public class JsDirective extends AssetDirective {
 
   static final String REQUEST_VARIABLE_NAME = "jsFiles";
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public void execute(Environment environment, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
-      throws TemplateException, IOException {
-    if (params.get("src") == null) {
-      throw new TemplateModelException("src parameter is required");
-    }
-    String target = params.get("src").toString();
-    addAsset(target, REQUEST_VARIABLE_NAME, environment);
+  protected String getParameterName() {
+    return "src";
+  }
+
+  @Override
+  protected String getRequestVariableName() {
+    return REQUEST_VARIABLE_NAME;
   }
 
 }

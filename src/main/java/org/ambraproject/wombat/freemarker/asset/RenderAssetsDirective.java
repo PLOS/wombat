@@ -55,18 +55,22 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
    */
   protected void renderAssets(AssetService.AssetType assetType, String requestVariableName, Environment environment)
       throws TemplateException, IOException {
-    if (!runtimeConfiguration.devModeAssets()) {
-      HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
-      List<String> assetPaths = (List<String>) request.getAttribute(requestVariableName);
-      if (assetPaths != null && !assetPaths.isEmpty()) {
+    HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
+    List<String> assetPaths = (List<String>) request.getAttribute(requestVariableName);
+    if (assetPaths != null && !assetPaths.isEmpty()) {
+      if (runtimeConfiguration.devModeAssets()) {
+        for (String assetPath : assetPaths) {
+          String assetAddress = new SitePageContext(siteResolver, environment).buildLink(assetPath);
+          environment.getOut().write(getHtml(assetAddress));
+        }
+      } else {
         Site site = new SitePageContext(siteResolver, environment).getSite();
         String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site, request.getServletPath());
         String assetAddress = site.getRequestScheme().buildLink(request,
             PathUtil.JOINER.join(StaticResourceController.RESOURCE_NAMESPACE, assetLink));
         environment.getOut().write(getHtml(assetAddress));
       }
-
-    }  // else nothing to do, since in dev mode we already rendered the links.
+    }
   }
 
   /**

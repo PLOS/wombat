@@ -17,7 +17,6 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.controller.SiteResolver;
-import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,21 +49,15 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
       throws TemplateException, IOException {
     assetPath = assetPath.trim();
 
-    if (runtimeConfiguration.devModeAssets()) {
-      String assetAddress = new SitePageContext(siteResolver, environment).buildLink(assetPath);
-      environment.getOut().write(getHtml(assetAddress));
-    } else {
-
-      // Add the asset file to a list that's scoped to the current request.  We'll minify,
-      // concatenate, and render all asset files as a single link later.
-      HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
-      List<String> assetFiles = (List<String>) request.getAttribute(requestVariableName);
-      if (assetFiles == null) {
-        assetFiles = new ArrayList<>();
-      }
-      assetFiles.add(assetPath);
-      request.setAttribute(requestVariableName, assetFiles);
+    // Add the asset file to a list that's scoped to the current request. We'll render the asset link(s) later.
+    // If not in dev mode, we will minify, concatenate, and render them as a single link then.
+    HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
+    List<String> assetFiles = (List<String>) request.getAttribute(requestVariableName);
+    if (assetFiles == null) {
+      assetFiles = new ArrayList<>();
     }
+    assetFiles.add(assetPath);
+    request.setAttribute(requestVariableName, assetFiles);
   }
 
   /**

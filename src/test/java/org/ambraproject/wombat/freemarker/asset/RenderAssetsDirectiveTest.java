@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.freemarker;
+package org.ambraproject.wombat.freemarker.asset;
 
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.springframework.test.context.ContextConfiguration;

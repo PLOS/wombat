@@ -9,13 +9,14 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.freemarker;
+package org.ambraproject.wombat.freemarker.asset;
 
 import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.controller.SiteResolver;
+import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;

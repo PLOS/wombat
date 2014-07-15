@@ -9,24 +9,26 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.freemarker;
+package org.ambraproject.wombat.freemarker.asset;
 
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
-import org.ambraproject.wombat.service.AssetService;
+import freemarker.template.TemplateModelException;
 
 import java.io.IOException;
 import java.util.Map;
 
 /**
- * Freemarker custom directive that renders any CSS links added via calls to {@link CssLinkDirective}. A single instance
- * of this directive should be added at the end of the head element on the page. It will do nothing if we are running in
- * dev assets mode (since the links were already rendered).
+ * Custom freemarker directive that should be used to insert a CSS link element. If we are running in dev mode, this
+ * will just render the link; otherwise the CSS file specified will be minified and served along with all other CSS in
+ * the app.
  */
-public class RenderCssLinksDirective extends RenderAssetsDirective implements TemplateDirectiveModel {
+public class CssLinkDirective extends AssetDirective implements TemplateDirectiveModel {
+
+  static final String REQUEST_VARIABLE_NAME = "cssFiles";
 
   /**
    * {@inheritDoc}
@@ -34,7 +36,11 @@ public class RenderCssLinksDirective extends RenderAssetsDirective implements Te
   @Override
   public void execute(Environment environment, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
       throws TemplateException, IOException {
-    renderAssets(AssetService.AssetType.CSS, CssLinkDirective.REQUEST_VARIABLE_NAME, environment);
+    if (params.get("target") == null) {
+      throw new TemplateModelException("target parameter is required");
+    }
+    String target = params.get("target").toString();
+    addAsset(target, REQUEST_VARIABLE_NAME, environment);
   }
 
   /**

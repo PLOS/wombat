@@ -9,26 +9,24 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.freemarker;
+package org.ambraproject.wombat.freemarker.asset;
 
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
-import freemarker.template.TemplateModelException;
+import org.ambraproject.wombat.service.AssetService;
 
 import java.io.IOException;
 import java.util.Map;
 
 /**
- * Custom freemarker directive that should be used to insert a CSS link element. If we are running in dev mode, this
- * will just render the link; otherwise the CSS file specified will be minified and served along with all other CSS in
- * the app.
+ * Freemarker custom directive that renders any <script> tags added via calls to {@link JsDirective}.  A single instance
+ * of this directive should be added at the end of the body element on the page.  It will do nothing if we are running
+ * in dev assets mode (since the tags were already rendered).
  */
-public class CssLinkDirective extends AssetDirective implements TemplateDirectiveModel {
-
-  static final String REQUEST_VARIABLE_NAME = "cssFiles";
+public class RenderJsDirective extends RenderAssetsDirective implements TemplateDirectiveModel {
 
   /**
    * {@inheritDoc}
@@ -36,11 +34,7 @@ public class CssLinkDirective extends AssetDirective implements TemplateDirectiv
   @Override
   public void execute(Environment environment, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
       throws TemplateException, IOException {
-    if (params.get("target") == null) {
-      throw new TemplateModelException("target parameter is required");
-    }
-    String target = params.get("target").toString();
-    addAsset(target, REQUEST_VARIABLE_NAME, environment);
+    renderAssets(AssetService.AssetType.JS, JsDirective.REQUEST_VARIABLE_NAME, environment);
   }
 
   /**
@@ -48,6 +42,6 @@ public class CssLinkDirective extends AssetDirective implements TemplateDirectiv
    */
   @Override
   protected String getHtml(String assetPath) {
-    return String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", assetPath);
+    return String.format("<script src=\"%s\"></script>\n", assetPath);
   }
 }

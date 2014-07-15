@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.freemarker;
+package org.ambraproject.wombat.freemarker.asset;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
@@ -22,6 +22,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.controller.StaticResourceController;
+import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.util.PathUtil;
 import org.springframework.beans.factory.annotation.Autowired;

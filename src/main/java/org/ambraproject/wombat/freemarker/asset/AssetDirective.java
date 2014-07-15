@@ -52,12 +52,13 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
     // Add the asset file to a list that's scoped to the current request. We'll render the asset link(s) later.
     // If not in dev mode, we will minify, concatenate, and render them as a single link then.
     HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
-    List<String> assetFiles = (List<String>) request.getAttribute(requestVariableName);
-    if (assetFiles == null) {
-      assetFiles = new ArrayList<>();
+    List<AssetNode> assetNodes = (List<AssetNode>) request.getAttribute(requestVariableName);
+    if (assetNodes == null) {
+      assetNodes = new ArrayList<>();
     }
-    assetFiles.add(assetPath);
-    request.setAttribute(requestVariableName, assetFiles);
+    AssetNode node = new AssetNode(assetPath, null); // TODO Support dependencies
+    assetNodes.add(node);
+    request.setAttribute(requestVariableName, assetNodes);
   }
 
 }

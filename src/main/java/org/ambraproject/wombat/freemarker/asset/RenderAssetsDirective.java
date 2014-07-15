@@ -13,6 +13,8 @@
 
 package org.ambraproject.wombat.freemarker.asset;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateDirectiveModel;
@@ -56,7 +58,8 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
   protected void renderAssets(AssetService.AssetType assetType, String requestVariableName, Environment environment)
       throws TemplateException, IOException {
     HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
-    List<String> assetPaths = (List<String>) request.getAttribute(requestVariableName);
+    List<AssetNode> assetNodes = (List<AssetNode>) request.getAttribute(requestVariableName);
+    List<String> assetPaths = sortNodes(assetNodes);
     if (assetPaths != null && !assetPaths.isEmpty()) {
       if (runtimeConfiguration.devModeAssets()) {
         for (String assetPath : assetPaths) {
@@ -71,6 +74,16 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
         environment.getOut().write(getHtml(assetAddress));
       }
     }
+  }
+
+  private static List<String> sortNodes(List<AssetNode> assetNodes) {
+    // TODO Extract paths, sorted by dependencies. Placeholder below.
+    return Lists.transform(assetNodes, new Function<AssetNode, String>() {
+      @Override
+      public String apply(AssetNode input) {
+        return input.getPath();
+      }
+    });
   }
 
   /**

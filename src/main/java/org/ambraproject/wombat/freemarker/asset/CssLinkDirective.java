@@ -42,11 +42,4 @@ public class CssLinkDirective extends AssetDirective {
     addAsset(target, REQUEST_VARIABLE_NAME, environment);
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected String getHtml(String assetPath) {
-    return String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", assetPath);
-  }
 }

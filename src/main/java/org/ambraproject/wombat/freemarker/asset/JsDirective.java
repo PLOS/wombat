@@ -42,11 +42,4 @@ public class JsDirective extends AssetDirective {
     addAsset(target, REQUEST_VARIABLE_NAME, environment);
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected String getHtml(String assetPath) {
-    return String.format("<script src=\"%s\"></script>\n", assetPath);
-  }
 }

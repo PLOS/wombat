@@ -60,12 +60,4 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
     request.setAttribute(requestVariableName, assetFiles);
   }
 
-  /**
-   * Returns the HTML that renders a link to an asset.  This will vary depending on the subclass (and the type of the
-   * asset).
-   *
-   * @param assetPath path to the asset file
-   * @return HTMl snippet linking to the asset file
-   */
-  protected abstract String getHtml(String assetPath);
 }

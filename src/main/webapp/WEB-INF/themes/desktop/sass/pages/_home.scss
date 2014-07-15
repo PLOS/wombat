@@ -67,6 +67,10 @@ $image-container: ($image-width + $pad-small);
   }
  }
 
+ .row{
+   @extend .plos-row;
+ }
+
 .hero {
   @extend %width-full;
   @include blocks($shadow: none);
@@ -210,7 +214,7 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
-// ROW THREE: heights adn other styling details.
+// ROW THREE: heights and other styling details.
 .row.three{
   .column {
     &:first-child {

@@ -13,8 +13,11 @@
 
 package org.ambraproject.wombat.freemarker.asset;
 
-import com.google.common.base.Function;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateDirectiveModel;
@@ -30,7 +33,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Abstract superclass of freemarker custom directives that render links to compiled assets. See {@link
@@ -76,14 +85,57 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
     }
   }
 
-  private static List<String> sortNodes(List<AssetNode> assetNodes) {
-    // TODO Extract paths, sorted by dependencies. Placeholder below.
-    return Lists.transform(assetNodes, new Function<AssetNode, String>() {
-      @Override
-      public String apply(AssetNode input) {
-        return input.getPath();
+  @VisibleForTesting
+  static List<String> sortNodes(List<AssetNode> assetNodes) {
+    List<String> simplePaths = extractPathsIfSimple(assetNodes);
+    if (simplePaths != null) return simplePaths;
+
+    Multimap<String, String> dependencyMap = LinkedListMultimap.create(assetNodes.size());
+    for (AssetNode dependent : assetNodes) {
+      for (String dependency : dependent.getDependencies()) {
+        dependencyMap.put(dependent.getPath(), dependency);
       }
-    });
+    }
+
+    // Topological sort by Kahn's algorithm
+    Set<String> assetPaths = Sets.newLinkedHashSetWithExpectedSize(assetNodes.size());
+    Deque<AssetNode> queue = new LinkedList<>(assetNodes);
+    while (!queue.isEmpty()) {
+      boolean foundAvailableNode = false;
+      for (Iterator<AssetNode> queueIterator = queue.iterator(); queueIterator.hasNext(); ) {
+        AssetNode candidate = queueIterator.next();
+
+        // Check whether the candidate has any dependents not yet in assetPaths
+        Collection<String> dependencies = dependencyMap.get(candidate.getPath());
+        for (Iterator<String> dependencyIterator = dependencies.iterator(); dependencyIterator.hasNext(); ) {
+          String dependent = dependencyIterator.next();
+          if (assetPaths.contains(dependent)) {
+            dependencyIterator.remove();
+          } else break;
+        }
+        if (dependencies.isEmpty()) {
+          assetPaths.add(candidate.getPath());
+          queueIterator.remove();
+          foundAvailableNode = true;
+          break;
+        }
+      }
+      if (!foundAvailableNode) {
+        throw new RuntimeException("Dependency cycle in assets: " + queue);
+      }
+    }
+    return new ArrayList<>(assetPaths);
+  }
+
+  private static List<String> extractPathsIfSimple(List<AssetNode> assetNodes) {
+    List<String> assetPaths = Lists.newArrayListWithCapacity(assetNodes.size());
+    for (AssetNode assetNode : assetNodes) {
+      if (!assetNode.getDependencies().isEmpty()) {
+        return null;
+      }
+      assetPaths.add(assetNode.getPath());
+    }
+    return assetPaths;
   }
 
   /**

@@ -67,6 +67,10 @@ $image-container: ($image-width + $pad-small);
   }
  }
 
+ .row{
+   @extend .plos-row;
+ }
+
 .hero {
   @extend %width-full;
   @include blocks($shadow: none);

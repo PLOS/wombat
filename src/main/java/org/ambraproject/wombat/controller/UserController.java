@@ -1,9 +1,9 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.Maps;
+import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.HttpDebug;
-import org.apache.http.HttpHeaders;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +64,7 @@ public class UserController extends WombatController {
     String remoteUser = request.getRemoteUser();
     HttpSession session = request.getSession(false);
     String sessionId = (session == null) ? null : session.getId();
-    String ipAddress = request.getRemoteAddr();
+    String ipAddress = getIpAddress(request);
     String userAgent = request.getHeader(HttpHeaders.USER_AGENT);
 
     Map<String, String> persist = Maps.newHashMapWithExpectedSize(3);
@@ -72,6 +72,11 @@ public class UserController extends WombatController {
     persist.put("IP", ipAddress);
     persist.put("userAgent", userAgent);
     soaService.postObject("users/" + remoteUser, persist);
+  }
+
+  private static String getIpAddress(HttpServletRequest request) {
+    String forwardedFor = request.getHeader(HttpHeaders.X_FORWARDED_FOR);
+    return (forwardedFor != null) ? forwardedFor : request.getRemoteAddr();
   }
 
   @RequestMapping(value = {"/user/logout", "/{site}/user/logout"})

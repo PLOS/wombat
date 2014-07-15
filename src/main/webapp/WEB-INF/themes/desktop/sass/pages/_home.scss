@@ -18,7 +18,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 %width-xx-small {
-  @include plos-grid-column(182);
+  @include plos-grid-column(183);
 }
 
 %width-x-small {
@@ -30,7 +30,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 %width-medium {
-  @include plos-grid-column(469);
+  @include plos-grid-column(470);
 }
 
 %width-large {
@@ -307,7 +307,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 #issue {
-  @include plos-grid-column(180);
+  @extend %width-xx-small;
   @extend .block;
 
   height: $block-height;

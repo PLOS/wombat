@@ -94,22 +94,12 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public CssLinkDirective cssLinkDirective() {
-    return new CssLinkDirective();
-  }
-
-  @Bean
   public RenderCssLinksDirective renderCssLinksDirective() {
     return new RenderCssLinksDirective();
   }
 
   @Bean
-  JsDirective jsDirective() {
-    return new JsDirective();
-  }
-
-  @Bean
-  RenderJsDirective renderJsDirective() {
+  public RenderJsDirective renderJsDirective() {
     return new RenderJsDirective();
   }
 
@@ -131,9 +121,7 @@ public class SpringConfiguration {
   @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            SiteLinkDirective siteLinkDirective,
-                                           CssLinkDirective cssLinkDirective,
                                            RenderCssLinksDirective renderCssLinksDirective,
-                                           JsDirective jsDirective,
                                            RenderJsDirective renderJsDirective,
                                            BuildInfoDirective buildInfoDirective,
                                            FetchHtmlDirective fetchHtmlDirective,
@@ -152,9 +140,9 @@ public class SpringConfiguration {
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("randomInteger", new RandomIntegerDirective());
     variables.put("siteLink", siteLinkDirective);
-    variables.put("cssLink", cssLinkDirective);
+    variables.put("cssLink", new CssLinkDirective());
     variables.put("renderCssLinks", renderCssLinksDirective);
-    variables.put("js", jsDirective);
+    variables.put("js", new JsDirective());
     variables.put("renderJs", renderJsDirective);
     variables.put("buildInfo", buildInfoDirective);
     variables.put("fetchHtml", fetchHtmlDirective);

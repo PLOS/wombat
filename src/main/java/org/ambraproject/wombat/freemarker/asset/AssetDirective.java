@@ -20,9 +20,6 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.controller.SiteResolver;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -35,11 +32,6 @@ import java.util.Map;
  * Base class for Freemarker custom directives used to insert compiled versions of asset files (javascript and CSS).
  */
 public abstract class AssetDirective implements TemplateDirectiveModel {
-
-  @Autowired
-  private RuntimeConfiguration runtimeConfiguration;
-  @Autowired
-  private SiteResolver siteResolver;
 
   private static final Splitter DEPENDENCY_SPLITTER = Splitter.on(';');
 

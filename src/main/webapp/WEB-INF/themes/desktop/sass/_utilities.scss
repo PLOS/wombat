@@ -92,7 +92,7 @@ $clr-highlight-text: $white) {
         }
       }
     }
-    &:nth-child(2) {
+    &:first-child + .carousel-wrap {
       .block-header {
         background: darken($setColor, 13%);
       }

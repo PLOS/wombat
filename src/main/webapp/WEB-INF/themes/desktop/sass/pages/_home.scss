@@ -42,6 +42,7 @@ $image-container: ($image-width + $pad-small);
   @extend %width-small;
   height: $block-height;
 }
+
 ///////
 //page scaffolding
 /////
@@ -137,7 +138,9 @@ $image-container: ($image-width + $pad-small);
 .block {
   position: relative;
   height: $block-height;
-
+  .blurb{
+    color: $grey-med;
+  }
   .block-image {
     width: $image-container;
     display: block;
@@ -147,7 +150,7 @@ $image-container: ($image-width + $pad-small);
 
   }
   &.image .block-content {
-    margin-left: ($image-container + $pad-default);
+    margin-left: ($image-container + $pad-small);
     margin-right: $pad-small;
     height: ($block-height - ($pad-default));
     overflow: hidden;
@@ -169,10 +172,12 @@ $image-container: ($image-width + $pad-small);
   }
   .category {
     @extend %brand-title;
+    margin-bottom: $pad-xsmall;
   }
   .title {
     //@extend h2;
     font-size: $txt-size-h2;
+    margin-bottom: $pad-xsmall;
     @extend %link-text-body;
 
     //in case p tag is added in CMS, need to override global settings
@@ -196,8 +201,10 @@ $image-container: ($image-width + $pad-small);
       font-family: $font-face-fancy;
     }
   }
+
 }
 
+// ROW THREE: is VERY different than the others
 // ROW THREE: overall scaffolding
 .row.three{
   .column {
@@ -214,7 +221,8 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
-// ROW THREE: heights and other styling details.
+// ROW THREE: heights
+
 .row.three{
   .column {
     &:first-child {
@@ -236,6 +244,29 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
+// ROW THREE: spacing and other styling details.
+.row.three {
+  .row-small-blocks .small {
+    $small-block-spacing: ($pad-xsmall/2);
+    .date, .category {
+      margin-bottom: $small-block-spacing;
+    }
+    .date {
+      float: none !important; // sadly have to use this to override the .right on the other blocks
+      margin-right: 0;
+    }
+    .title {
+      margin-top: $small-block-spacing;
+      a {
+        font-family: $font-face-fancy-bold;
+        font-size: rem-calc($txt-size-medium);
+        @include link-text($color: $grey-med);
+      }
+    }
+  }
+}
+
+// ROW THREE: heights and other styling details.
 #billboard {
   @extend %width-full;
   @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-small $pad-default);
@@ -347,7 +378,10 @@ $image-container: ($image-width + $pad-small);
   @extend .block-card;
   @extend %width-small;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
-
+  .image-header{
+    background-color: #1c2e5e;
+    text-align: center;
+  }
   ul {
     @extend .no-bullet; // from foundation
     li {
@@ -357,7 +391,6 @@ $image-container: ($image-width + $pad-small);
       a {
         font-family: $font-face-fancy;
         font-size: rem-calc($txt-size-medium-large);
-
       }
     }
   }

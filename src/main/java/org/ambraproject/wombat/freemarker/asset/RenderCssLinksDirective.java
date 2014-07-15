@@ -13,7 +13,6 @@ package org.ambraproject.wombat.freemarker.asset;
 
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
-import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import org.ambraproject.wombat.service.AssetService;
@@ -26,7 +25,7 @@ import java.util.Map;
  * of this directive should be added at the end of the head element on the page. It will do nothing if we are running in
  * dev assets mode (since the links were already rendered).
  */
-public class RenderCssLinksDirective extends RenderAssetsDirective implements TemplateDirectiveModel {
+public class RenderCssLinksDirective extends RenderAssetsDirective {
 
   /**
    * {@inheritDoc}

@@ -13,7 +13,6 @@ package org.ambraproject.wombat.freemarker.asset;
 
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
-import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
@@ -26,7 +25,7 @@ import java.util.Map;
  * will just render the link; otherwise the CSS file specified will be minified and served along with all other CSS in
  * the app.
  */
-public class CssLinkDirective extends AssetDirective implements TemplateDirectiveModel {
+public class CssLinkDirective extends AssetDirective {
 
   static final String REQUEST_VARIABLE_NAME = "cssFiles";
 

@@ -13,6 +13,7 @@ package org.ambraproject.wombat.freemarker.asset;
 
 import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
+import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.controller.SiteResolver;
@@ -27,7 +28,7 @@ import java.util.List;
 /**
  * Base class for Freemarker custom directives used to insert compiled versions of asset files (javascript and CSS).
  */
-public abstract class AssetDirective {
+public abstract class AssetDirective implements TemplateDirectiveModel {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;

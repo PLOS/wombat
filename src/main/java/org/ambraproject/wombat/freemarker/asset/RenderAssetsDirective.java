@@ -17,6 +17,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
+import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
@@ -36,7 +37,7 @@ import java.util.List;
  * Abstract superclass of freemarker custom directives that render links to compiled assets. See {@link
  * AssetDirective}.
  */
-public abstract class RenderAssetsDirective {
+public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;

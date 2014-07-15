@@ -528,7 +528,7 @@ label.error {
   color: #e53350; }
 
 /* line 52, ../../sass/vendor/foundation/components/_inline-lists.scss */
-.inline-list, footer .nav-aux, .nav .nav-user, #submission-links .split-container, #social-links ul {
+.inline-list, footer .nav-aux, .nav .nav-user, #submission-links .split-container {
   margin: 0 auto 1.0625rem auto;
   margin-left: -1.375rem;
   margin-right: 0;
@@ -536,13 +536,13 @@ label.error {
   list-style: none;
   overflow: hidden; }
   /* line 41, ../../sass/vendor/foundation/components/_inline-lists.scss */
-  .inline-list > li, footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, #social-links ul > li {
+  .inline-list > li, footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li {
     list-style: none;
     float: left;
     margin-left: 1.375rem;
     display: block; }
     /* line 46, ../../sass/vendor/foundation/components/_inline-lists.scss */
-    .inline-list > li > *, footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, #social-links ul > li > * {
+    .inline-list > li > *, footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > * {
       display: block; }
 
 /* line 91, ../../sass/vendor/foundation/components/_labels.scss */
@@ -4733,47 +4733,47 @@ footer {
     font-size: 13px;
     font-family: "albert"; }
 
-/* line 199, ../../sass/pages/_home.scss */
+/* line 200, ../../sass/pages/_home.scss */
 .row.three .column:first-child {
   width: 40.83333rem;
   float: left; }
-/* line 203, ../../sass/pages/_home.scss */
+/* line 204, ../../sass/pages/_home.scss */
 .row.three .column:first-child + .column.right, .row.three .nav .column:first-child + .column.nav-user, .nav .row.three .column:first-child + .column.nav-user, .row.three .top-bar-section .column:first-child + ul.column.nav-elements, .top-bar-section .row.three .column:first-child + ul.column.nav-elements, .row.three .top-bar-section .column:first-child + .column.head-search, .top-bar-section .row.three .column:first-child + .column.head-search, .row.three .block .column:first-child + .column.date, .block .row.three .column:first-child + .column.date, .row.three #article-list .column:first-child + .column.date, #article-list .row.three .column:first-child + .column.date, .row.three #issue .column:first-child + .column.date, #issue .row.three .column:first-child + .column.date {
   width: 20.41667rem;
   float: left;
   position: relative; }
-  /* line 206, ../../sass/pages/_home.scss */
+  /* line 207, ../../sass/pages/_home.scss */
   .row.three .column:first-child + .column.right > div > div, .row.three .nav .column:first-child + .column.nav-user > div > div, .nav .row.three .column:first-child + .column.nav-user > div > div, .row.three .top-bar-section .column:first-child + ul.column.nav-elements > div > div, .top-bar-section .row.three .column:first-child + ul.column.nav-elements > div > div, .row.three .top-bar-section .column:first-child + .column.head-search > div > div, .top-bar-section .row.three .column:first-child + .column.head-search > div > div, .row.three .block .column:first-child + .column.date > div > div, .block .row.three .column:first-child + .column.date > div > div, .row.three #article-list .column:first-child + .column.date > div > div, #article-list .row.three .column:first-child + .column.date > div > div, .row.three #issue .column:first-child + .column.date > div > div, #issue .row.three .column:first-child + .column.date > div > div {
     float: none; }
 
-/* line 216, ../../sass/pages/_home.scss */
+/* line 217, ../../sass/pages/_home.scss */
 .row.three .column:first-child .block.large, .row.three .column:first-child .large#article-list, .row.three .column:first-child .large#issue {
   height: 11.25rem; }
-  /* line 218, ../../sass/pages/_home.scss */
+  /* line 219, ../../sass/pages/_home.scss */
   .row.three .column:first-child .block.large .block-image, .row.three .column:first-child .large#article-list .block-image, .row.three .column:first-child .large#issue .block-image {
     height: 10rem;
     overflow: hidden; }
-/* line 223, ../../sass/pages/_home.scss */
+/* line 224, ../../sass/pages/_home.scss */
 .row.three .column:first-child .block.small, .row.three .column:first-child .small#article-list, .row.three .column:first-child .small#issue {
   height: 15.625rem; }
-  /* line 225, ../../sass/pages/_home.scss */
+  /* line 226, ../../sass/pages/_home.scss */
   .row.three .column:first-child .block.small .block-image, .row.three .column:first-child .small#article-list .block-image, .row.three .column:first-child .small#issue .block-image {
     height: 14.375rem;
     overflow: hidden; }
 
-/* line 234, ../../sass/pages/_home.scss */
+/* line 235, ../../sass/pages/_home.scss */
 #billboard {
   padding: 0.625rem 1.25rem;
   margin-bottom: 1.25rem;
   background: #333333;
   position: relative; }
-  /* line 238, ../../sass/pages/_home.scss */
+  /* line 239, ../../sass/pages/_home.scss */
   #billboard h3, #billboard h4, #billboard a {
     color: white; }
-  /* line 241, ../../sass/pages/_home.scss */
+  /* line 242, ../../sass/pages/_home.scss */
   #billboard h3 {
     font-size: 22px; }
-  /* line 244, ../../sass/pages/_home.scss */
+  /* line 245, ../../sass/pages/_home.scss */
   #billboard a {
     border-radius: 5px;
     padding: 0.3125rem 1.25rem;
@@ -4782,31 +4782,31 @@ footer {
     right: 1.25rem;
     top: 18px; }
 
-/* line 255, ../../sass/pages/_home.scss */
+/* line 256, ../../sass/pages/_home.scss */
 #article-list {
   height: 15.625rem;
   position: relative; }
-  /* line 265, ../../sass/pages/_home.scss */
+  /* line 266, ../../sass/pages/_home.scss */
   #article-list ul.list-plain {
     line-height: normal; }
-    /* line 269, ../../sass/pages/_home.scss */
+    /* line 270, ../../sass/pages/_home.scss */
     #article-list ul.list-plain li {
       color: #333333;
       margin-bottom: 15px; }
-      /* line 273, ../../sass/pages/_home.scss */
+      /* line 274, ../../sass/pages/_home.scss */
       #article-list ul.list-plain li a {
         display: block;
         font-family: "albert";
         font-size: 12px; }
 
-/* line 285, ../../sass/pages/_home.scss */
+/* line 286, ../../sass/pages/_home.scss */
 .more-link {
   position: absolute;
   bottom: 0.625rem;
   left: 0.625rem;
   right: auto; }
 
-/* line 301, ../../sass/pages/_home.scss */
+/* line 302, ../../sass/pages/_home.scss */
 .tooltip {
   width: 300px !important;
   -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
@@ -4814,42 +4814,42 @@ footer {
   box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
   border: 1px solid #cccccc; }
 
-/* line 307, ../../sass/pages/_home.scss */
+/* line 308, ../../sass/pages/_home.scss */
 #issue {
   height: 15.625rem; }
-  /* line 312, ../../sass/pages/_home.scss */
+  /* line 313, ../../sass/pages/_home.scss */
   #issue .current-img {
     width: 10rem; }
-  /* line 315, ../../sass/pages/_home.scss */
+  /* line 316, ../../sass/pages/_home.scss */
   #issue .boxtitle {
     margin-top: 0.3125rem; }
-    /* line 317, ../../sass/pages/_home.scss */
+    /* line 318, ../../sass/pages/_home.scss */
     #issue .boxtitle a {
       display: block;
       margin-bottom: -0.3125rem;
       font-weight: 900; }
-    /* line 325, ../../sass/pages/_home.scss */
+    /* line 326, ../../sass/pages/_home.scss */
     #issue .boxtitle .subhead {
       font-face: "arial";
       font-size: 16px; }
 
-/* line 332, ../../sass/pages/_home.scss */
+/* line 333, ../../sass/pages/_home.scss */
 #twitter {
   margin-bottom: 1rem; }
 
-/* line 337, ../../sass/pages/_home.scss */
+/* line 338, ../../sass/pages/_home.scss */
 .linkbox {
   height: 25.625rem; }
-  /* line 344, ../../sass/pages/_home.scss */
+  /* line 345, ../../sass/pages/_home.scss */
   .linkbox ul li {
     padding: 1.25rem 1.875rem;
     border-top: 1px solid #efefef; }
-    /* line 348, ../../sass/pages/_home.scss */
+    /* line 349, ../../sass/pages/_home.scss */
     .linkbox ul li a {
       font-family: "albert";
       font-size: 1rem; }
 
-/* line 357, ../../sass/pages/_home.scss */
+/* line 358, ../../sass/pages/_home.scss */
 #submission-links {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -4860,19 +4860,19 @@ footer {
   padding: 0.625rem 1.875rem 0.3125rem 1.875rem;
   margin-bottom: 1.25rem;
   background: #333333; }
-  /* line 365, ../../sass/pages/_home.scss */
+  /* line 366, ../../sass/pages/_home.scss */
   #submission-links .split-container {
     margin: 0 0 0.625rem; }
-  /* line 369, ../../sass/pages/_home.scss */
+  /* line 370, ../../sass/pages/_home.scss */
   #submission-links .split-item {
     margin: 0 !important;
     width: 50%;
     height: 40px;
     text-align: center; }
-    /* line 374, ../../sass/pages/_home.scss */
+    /* line 375, ../../sass/pages/_home.scss */
     #submission-links .split-item:first-child {
       border-right: 1px solid #636363; }
-    /* line 377, ../../sass/pages/_home.scss */
+    /* line 378, ../../sass/pages/_home.scss */
     #submission-links .split-item a {
       color: #89a0d0;
       text-decoration: none;
@@ -4883,24 +4883,24 @@ footer {
         color: #89a0d0;
         text-decoration: underline; }
 
-/* line 385, ../../sass/pages/_home.scss */
+/* line 386, ../../sass/pages/_home.scss */
 #social-links {
   border-radius: 5px;
   padding: 0.3125rem;
   margin-bottom: 1.25rem;
   background: #04417d; }
-  /* line 389, ../../sass/pages/_home.scss */
+  /* line 390, ../../sass/pages/_home.scss */
   #social-links h3 {
     text-indent: 0.625rem;
     margin-bottom: 0.625rem; }
-  /* line 394, ../../sass/pages/_home.scss */
+  /* line 395, ../../sass/pages/_home.scss */
   #social-links ul {
-    margin-bottom: 0;
-    margin-left: -0.25rem; }
+    list-style: none;
+    margin: 0 0 0 -0.25rem; }
     /* line 398, ../../sass/pages/_home.scss */
     #social-links ul > li {
-      margin-left: 4px;
-      margin-bottom: 0; }
+      float: left;
+      margin: 0 0 0 0.25rem; }
       /* line 401, ../../sass/pages/_home.scss */
       #social-links ul > li > a {
         background: #3c63af;
@@ -5004,19 +5004,19 @@ footer {
   .plosgenetics .carousel-wrap.small:first-child .jcarousel-next:hover {
     color: #3c63af; }
 /* line 96, ../../sass/_utilities.scss */
-.plosbiology .carousel-wrap.small:nth-child(2) .block-header, .ploscompbiol .carousel-wrap.small:nth-child(2) .block-header, .plosgenetics .carousel-wrap.small:nth-child(2) .block-header {
+.plosbiology .carousel-wrap.small:first-child + .carousel-wrap .block-header, .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .block-header, .plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .block-header {
   background: #0e6719; }
 /* line 99, ../../sass/_utilities.scss */
-.plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-next {
+.plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next {
   color: #0e6719; }
   /* line 102, ../../sass/_utilities.scss */
-  .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosbiology .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .ploscompbiol .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosgenetics .carousel-wrap.small:nth-child(2) .jcarousel-next:hover {
+  .plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover, .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover, .plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover {
     color: #3c63af; }
 
 /* line 66, ../../sass/_utilities.scss */
@@ -5050,17 +5050,17 @@ footer {
   .plosntd .carousel-wrap.small:first-child .jcarousel-next:hover {
     color: #3c63af; }
 /* line 96, ../../sass/_utilities.scss */
-.plosmedicine .carousel-wrap.small:nth-child(2) .block-header, .plospathogens .carousel-wrap.small:nth-child(2) .block-header, .plosntd .carousel-wrap.small:nth-child(2) .block-header {
+.plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .block-header, .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .block-header, .plosntd .carousel-wrap.small:first-child + .carousel-wrap .block-header {
   background: #5d1579; }
 /* line 99, ../../sass/_utilities.scss */
-.plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev,
-.plosntd .carousel-wrap.small:nth-child(2) .jcarousel-next {
+.plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plospathogens .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
+.plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next {
   color: #5d1579; }
   /* line 102, ../../sass/_utilities.scss */
-  .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosmedicine .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plospathogens .carousel-wrap.small:nth-child(2) .jcarousel-next:hover, .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-prev:hover,
-  .plosntd .carousel-wrap.small:nth-child(2) .jcarousel-next:hover {
+  .plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover, .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover, .plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev:hover,
+  .plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover {
     color: #3c63af; }

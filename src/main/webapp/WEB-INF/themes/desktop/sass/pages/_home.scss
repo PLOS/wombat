@@ -120,9 +120,7 @@ $image-container: ($image-width + $pad-small);
         float: left;
       }
       &.credit{
-        // credits have to sit in this weird place because they cant' run into authors.
         @extend %small-italic;
-        width: 20%;
         text-align: right;
         bottom: $pad-small;
         position: absolute;
@@ -194,8 +192,9 @@ $image-container: ($image-width + $pad-small);
       font-family: $font-face-fancy;
     }
   }
-
 }
+
+// ROW THREE: overall scaffolding
 .row.three{
   .column {
     &:first-child {
@@ -211,7 +210,7 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
- //asdfdf
+// ROW THREE: heights adn other styling details.
 .row.three{
   .column {
     &:first-child {

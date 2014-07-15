@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.freemarker.asset;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableSet;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,9 +16,7 @@ class AssetNode {
 
   AssetNode(String path, Collection<String> dependencies) {
     this.path = Preconditions.checkNotNull(path);
-    this.dependencies = (dependencies == null || dependencies.isEmpty())
-        ? ImmutableSet.<String>of() // We expect nothing to be added, so the immutable flyweight should be safe
-        : new HashSet<>(dependencies); // Must make this mutable to support removal
+    this.dependencies = (dependencies == null) ? new HashSet<String>(0) : new HashSet<>(dependencies);
   }
 
   public String getPath() {

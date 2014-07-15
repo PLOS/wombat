@@ -14,9 +14,7 @@
 package org.ambraproject.wombat.freemarker.asset;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
@@ -39,6 +37,7 @@ import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -67,8 +66,11 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
   protected void renderAssets(AssetService.AssetType assetType, String requestVariableName, Environment environment)
       throws TemplateException, IOException {
     HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
-    List<AssetNode> assetNodes = (List<AssetNode>) request.getAttribute(requestVariableName);
-    List<String> assetPaths = sortNodes(assetNodes);
+    Map<String, AssetNode> assetNodes = (Map<String, AssetNode>) request.getAttribute(requestVariableName);
+    if (assetNodes == null) return;
+    List<String> assetPaths = sortNodes(assetNodes.values());
+    assetNodes.clear(); // Reset in case new assets get put in for a second render
+
     if (assetPaths != null && !assetPaths.isEmpty()) {
       if (runtimeConfiguration.devModeAssets()) {
         for (String assetPath : assetPaths) {
@@ -86,7 +88,7 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
   }
 
   @VisibleForTesting
-  static List<String> sortNodes(List<AssetNode> assetNodes) {
+  static List<String> sortNodes(Collection<AssetNode> assetNodes) {
     List<String> simplePaths = extractPathsIfSimple(assetNodes);
     if (simplePaths != null) return simplePaths;
 
@@ -120,7 +122,7 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
     return new ArrayList<>(assetPaths);
   }
 
-  private static List<String> extractPathsIfSimple(List<AssetNode> assetNodes) {
+  private static List<String> extractPathsIfSimple(Collection<AssetNode> assetNodes) {
     List<String> assetPaths = Lists.newArrayListWithCapacity(assetNodes.size());
     for (AssetNode assetNode : assetNodes) {
       if (!assetNode.getDependencies().isEmpty()) {

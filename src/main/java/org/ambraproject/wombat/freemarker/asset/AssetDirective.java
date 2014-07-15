@@ -12,7 +12,6 @@
 package org.ambraproject.wombat.freemarker.asset;
 
 import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
 import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateDirectiveBody;
@@ -23,8 +22,8 @@ import freemarker.template.TemplateModelException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +43,7 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
     String target = targetObj.toString();
 
     Object dependencyObj = params.get("dependsOn");
-    List<String> dependencies = (dependencyObj == null) ? ImmutableList.<String>of()
+    List<String> dependencies = (dependencyObj == null) ? null
         : DEPENDENCY_SPLITTER.splitToList(dependencyObj.toString());
 
     addAsset(target, getRequestVariableName(), dependencies, env);
@@ -78,12 +77,19 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
     // Add the asset file to a list that's scoped to the current request. We'll render the asset link(s) later.
     // If not in dev mode, we will minify, concatenate, and render them as a single link then.
     HttpServletRequest request = ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
-    List<AssetNode> assetNodes = (List<AssetNode>) request.getAttribute(requestVariableName);
+    Map<String, AssetNode> assetNodes = (Map<String, AssetNode>) request.getAttribute(requestVariableName);
     if (assetNodes == null) {
-      assetNodes = new ArrayList<>();
+      assetNodes = new LinkedHashMap<>(); // order is significant
     }
-    AssetNode node = new AssetNode(assetPath, dependencies);
-    assetNodes.add(node);
+
+    AssetNode node = assetNodes.get(assetPath);
+    if (node == null) {
+      node = new AssetNode(assetPath, dependencies);
+      assetNodes.put(assetPath, node);
+    } else if (dependencies != null) {
+      node.getDependencies().addAll(dependencies);
+    }
+
     request.setAttribute(requestVariableName, assetNodes);
   }
 

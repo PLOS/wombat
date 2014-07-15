@@ -136,6 +136,7 @@ $image-container: ($image-width + $pad-small);
   position: relative;
   height: $block-height;
 
+
   .block-image {
     width: $image-container;
     display: block;
@@ -213,11 +214,24 @@ $image-container: ($image-width + $pad-small);
 }
 
 .row.three{
-  .row-small-blocks{
+  .row-small-blocks .small{
+    $small-block-spacing: rem-calc($pad-xsmall);
+    .date, .category {
+      margin-bottom: $small-block-spacing;
+    }
     .date{
      float:none !important; // sadly have to use this to override the .right on the other blocks
      margin-right: 0;
-  }
+    }
+    .title {
+      margin-top: $small-block-spacing;
+      a{
+      font-family: $font-face-fancy-bold;
+      font-size: rem-calc($txt-size-medium);
+      @include link-text($color: $grey-med);
+
+    } }
+
   }
   .column {
     &:first-child {

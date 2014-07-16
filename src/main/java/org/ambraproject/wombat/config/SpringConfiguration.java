@@ -29,16 +29,16 @@ import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
-import org.ambraproject.wombat.freemarker.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
-import org.ambraproject.wombat.freemarker.JsDirective;
 import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
-import org.ambraproject.wombat.freemarker.RenderCssLinksDirective;
-import org.ambraproject.wombat.freemarker.RenderJsDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.freemarker.SiteLinkDirective;
 import org.ambraproject.wombat.freemarker.ThemeConfigDirective;
+import org.ambraproject.wombat.freemarker.asset.CssLinkDirective;
+import org.ambraproject.wombat.freemarker.asset.JsDirective;
+import org.ambraproject.wombat.freemarker.asset.RenderCssLinksDirective;
+import org.ambraproject.wombat.freemarker.asset.RenderJsDirective;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -94,22 +94,12 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public CssLinkDirective cssLinkDirective() {
-    return new CssLinkDirective();
-  }
-
-  @Bean
   public RenderCssLinksDirective renderCssLinksDirective() {
     return new RenderCssLinksDirective();
   }
 
   @Bean
-  JsDirective jsDirective() {
-    return new JsDirective();
-  }
-
-  @Bean
-  RenderJsDirective renderJsDirective() {
+  public RenderJsDirective renderJsDirective() {
     return new RenderJsDirective();
   }
 
@@ -131,9 +121,7 @@ public class SpringConfiguration {
   @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            SiteLinkDirective siteLinkDirective,
-                                           CssLinkDirective cssLinkDirective,
                                            RenderCssLinksDirective renderCssLinksDirective,
-                                           JsDirective jsDirective,
                                            RenderJsDirective renderJsDirective,
                                            BuildInfoDirective buildInfoDirective,
                                            FetchHtmlDirective fetchHtmlDirective,
@@ -152,9 +140,9 @@ public class SpringConfiguration {
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("randomInteger", new RandomIntegerDirective());
     variables.put("siteLink", siteLinkDirective);
-    variables.put("cssLink", cssLinkDirective);
+    variables.put("cssLink", new CssLinkDirective());
     variables.put("renderCssLinks", renderCssLinksDirective);
-    variables.put("js", jsDirective);
+    variables.put("js", new JsDirective());
     variables.put("renderJs", renderJsDirective);
     variables.put("buildInfo", buildInfoDirective);
     variables.put("fetchHtml", fetchHtmlDirective);

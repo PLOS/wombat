@@ -29,13 +29,17 @@ import java.util.Map;
 
 /**
  * Base class for Freemarker custom directives used to insert compiled versions of asset files (javascript and CSS).
+ * <p/>
+ * Allows the invoker to specify "dependencies" for an asset, which means other assets that must precede it when
+ * rendered on the page.
  */
-public abstract class AssetDirective implements TemplateDirectiveModel {
+abstract class AssetDirective implements TemplateDirectiveModel {
 
   private static final Splitter DEPENDENCY_SPLITTER = Splitter.on(';');
 
   @Override
-  public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
+  public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
+      throws TemplateException, IOException {
     Object targetObj = params.get(getParameterName());
     if (targetObj == null) {
       throw new TemplateModelException(getParameterName() + " parameter is required");
@@ -46,7 +50,7 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
     List<String> dependencies = (dependencyObj == null) ? null
         : DEPENDENCY_SPLITTER.splitToList(dependencyObj.toString());
 
-    addAsset(target, getRequestVariableName(), dependencies, env);
+    addAsset(target, dependencies, env);
   }
 
   /**
@@ -60,19 +64,19 @@ public abstract class AssetDirective implements TemplateDirectiveModel {
   protected abstract String getRequestVariableName();
 
   /**
-   * Called when we are adding a new asset file to the page.  If we're in dev mode, this will just render HTML that
-   * links to the asset; if not, no HTML will be rendered, and instead the asset file will be queued for compilation.
+   * Called when we are adding a new asset file to the page. The asset file will be queued to render by {@link
+   * RenderAssetsDirective#renderAssets}.
    *
-   * @param assetPath           path to the asset file being added
-   * @param requestVariableName the name of the request-scoped variable that stores assets awaiting compilation.
-   *                            Typically, there will be one of these per asset type (javascript or CSS).
-   * @param environment         freemarker execution environment
+   * @param assetPath    path to the asset file being added
+   * @param dependencies paths to other assets which this asset must come after (may be null for none)
+   * @param environment  freemarker execution environment
    * @throws TemplateException
    * @throws IOException
    */
-  protected void addAsset(String assetPath, String requestVariableName, Collection<String> dependencies, Environment environment)
+  protected void addAsset(String assetPath, Collection<String> dependencies, Environment environment)
       throws TemplateException, IOException {
     assetPath = assetPath.trim();
+    String requestVariableName = getRequestVariableName();
 
     // Add the asset file to a list that's scoped to the current request. We'll render the asset link(s) later.
     // If not in dev mode, we will minify, concatenate, and render them as a single link then.

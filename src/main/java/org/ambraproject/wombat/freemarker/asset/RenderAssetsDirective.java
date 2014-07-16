@@ -44,7 +44,7 @@ import java.util.Set;
  * Abstract superclass of freemarker custom directives that render links to compiled assets. See {@link
  * AssetDirective}.
  */
-public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
+abstract class RenderAssetsDirective implements TemplateDirectiveModel {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
@@ -54,7 +54,15 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
   private SiteResolver siteResolver;
 
   /**
-   * Renders HTML that includes a compiled asset.
+   * Renders queued asset links as HTML. If in dev mode, the rendered output will be a sequence of plain links to the
+   * asset resources. Else, the queued assets will be compiled into a minified form, and the rendered output will be a
+   * single link to the result.
+   * <p/>
+   * Either way, assets will be ordered according to their dependencies, defaulting to the order in which they were
+   * enqueued. (That is, in dev mode the links appear in that order, and in production mode the assets are concatenated
+   * in that order before they are minified.)
+   * <p/>
+   * This method pulls asset nodes from the named environment variable. Executing the method clears the queue.
    *
    * @param assetType           defines the type of asset (.js or .css)
    * @param requestVariableName the name of the request variable that uncompiled assets have been stored in by calls to
@@ -87,6 +95,19 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
     }
   }
 
+  /**
+   * Sort assets by their dependencies and return their paths in order.
+   * <p/>
+   * The result is a topological sort that preserves the input order as much as possible. The algorithm repeatedly pulls
+   * the first node from the sequence that does not depend on any nodes not yet pulled.
+   * <p/>
+   * This method clobbers the nodes' {@code dependencies} fields. Specifically, a successful run will empty all the
+   * dependency sets, with the assumption that the node objects will be discarded immediately after this method
+   * returns.
+   *
+   * @param assetNodes an ordered collection of assets
+   * @return a list of asset paths, sorted by dependency
+   */
   @VisibleForTesting
   static List<String> sortNodes(Collection<AssetNode> assetNodes) {
     List<String> simplePaths = extractPathsIfSimple(assetNodes);
@@ -122,6 +143,13 @@ public abstract class RenderAssetsDirective implements TemplateDirectiveModel {
     return new ArrayList<>(assetPaths);
   }
 
+  /**
+   * If no asset nodes have any dependencies, return their paths in the same order. This is more efficient than stepping
+   * through the topological sorting algorithm in {@link #sortNodes}.
+   *
+   * @param assetNodes a sequence of asset nodes
+   * @return the nodes'
+   */
   private static List<String> extractPathsIfSimple(Collection<AssetNode> assetNodes) {
     List<String> assetPaths = Lists.newArrayListWithCapacity(assetNodes.size());
     for (AssetNode assetNode : assetNodes) {

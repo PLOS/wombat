@@ -65,6 +65,7 @@ public class RenderAssetsDirectiveTest extends AbstractTestNGSpringContextTests 
   public Object[][] cyclicNodes() {
     return new Object[][]{
         {new AssetNode[]{node("a", "a")}},
+        {new AssetNode[]{node("a", "nonexistent")}},
         {new AssetNode[]{node("a", "b"), node("b", "a")}},
         {new AssetNode[]{node("a"), node("b", "c"), node("c", "b"), node("d")}},
     };

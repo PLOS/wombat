@@ -137,7 +137,9 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
         }
       }
       if (!foundAvailableNode) {
-        throw new RuntimeException("Dependency cycle in assets: " + queue);
+        String message = "Can't resolve asset dependencies. "
+            + "(There is either a cycle or a reference to a nonexistent asset.) " + queue;
+        throw new RuntimeException(message);
       }
     }
     return new ArrayList<>(assetPaths);

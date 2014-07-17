@@ -1773,7 +1773,10 @@ blockquote p {
 /* line 86, ../../sass/_scaffold.scss */
 .plos-row, .nav, .nav-main, .row, #ad-slot-bottom {
   width: 100%;
-  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
   max-width: 61.25rem;
   *zoom: 1; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
@@ -1875,7 +1878,10 @@ main,
 #pagehdr,
 #pageftr .row {
   width: 100%;
-  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
   max-width: 61.25rem;
   *zoom: 1;
   min-width: 980px;

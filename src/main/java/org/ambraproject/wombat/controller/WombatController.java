@@ -205,7 +205,7 @@ public abstract class WombatController {
    * @param responseFromService
    * @param responseToClient
    */
-  protected static void copyResponseWithHeaders(CloseableHttpResponse responseFromService, HttpServletResponse responseToClient)
+  protected static void copyAssetResponseHeaders(CloseableHttpResponse responseFromService, HttpServletResponse responseToClient)
       throws IOException {
     for (Header header : responseFromService.getAllHeaders()) {
       if (ASSET_RESPONSE_HEADER_WHITELIST.contains(header.getName())) {

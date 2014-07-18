@@ -10,7 +10,7 @@ public class CacheParams {
 
   private CacheParams(String cacheKey, Optional<Integer> timeToLive) {
     this.cacheKey = Preconditions.checkNotNull(cacheKey);
-    this.timeToLive = timeToLive;
+    this.timeToLive = Preconditions.checkNotNull(timeToLive);
   }
 
   public static CacheParams create(String cacheKey) {

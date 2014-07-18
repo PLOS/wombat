@@ -5,14 +5,12 @@
   carousel = {
 
     settings: {
-
       container:       '.jcarousel',
       current_locator: '[data-js=carousel-current-item]',
       index_locator:   'span[data-js=carousel-total-index]',
       controls:        '.carousel-control',
       control_next:    '.jcarousel-next',
       control_prev:    '.jcarousel-prev'
-
     },
 
     init:    function () {
@@ -26,8 +24,6 @@
       $(s.container)
         // get index
         .on('jcarousel:create',function (event, carousel) {
-          //console.log("carousel inside:" + s.current_locator);
-
           var total_index = $(this).jcarousel('items').size();
           $(this).next(s.controls).find(s.index_locator).html(total_index);
           $(this).next(s.controls).find(s.current_locator).html('1');

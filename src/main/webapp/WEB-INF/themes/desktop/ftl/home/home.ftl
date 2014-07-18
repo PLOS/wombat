@@ -19,7 +19,7 @@
 
 
 <#include "../common/footer/footer.ftl" />
- <#--TODO: revisit if these need to be in the head -->
+
 <#--This polyfill is so that IE8 can use rems. I don't think we can call this using the asset manager. -->
 
 <!--the previous two scripts enable the use of foundation's dropdowns to work in IE8 -->
@@ -36,9 +36,5 @@
 <script src="resource/js/components/blogfeed.js"></script>
 <script src="resource/js/components/blogcall.js"></script>
 <!--TODO: the following need to be on all pages, not just home-->
-
-
-
-
 </body>
 </html>

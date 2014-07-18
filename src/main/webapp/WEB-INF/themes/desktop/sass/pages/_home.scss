@@ -140,6 +140,9 @@ $image-container: ($image-width + $pad-small);
   height: $block-height;
   .blurb{
     color: $grey-med;
+    a {
+      @include link-text($color: $plos-default, $decoration: underline);
+    }
   }
   .block-image {
     width: $image-container;

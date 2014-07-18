@@ -8,7 +8,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 }
 
 @mixin plos-grid-row($container: false, $f-gridargs...) {
-  @include grid-row($behavior: collapse, $f-gridargs...);
+  @include grid-row($behavior: false, $f-gridargs...);
   @if $container == false{
     @include plos-grid-gutter-outside();
   } @else if $container == true {

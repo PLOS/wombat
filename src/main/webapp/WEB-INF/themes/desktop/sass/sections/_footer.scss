@@ -11,7 +11,7 @@ footer {
   }
   @extend %bg-dark;
   padding: rem-calc(25 0 60); // 25px 0 60px;
-  color: $white;
+  color: $grey-med-light;
 
   .logo-footer {
     padding-bottom: rem-calc(25);

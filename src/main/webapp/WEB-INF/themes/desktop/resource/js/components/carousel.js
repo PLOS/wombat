@@ -26,7 +26,7 @@
       $(s.container)
         // get index
         .on('jcarousel:create',function (event, carousel) {
-          console.log("carousel inside:" + s.current_locator);
+          //console.log("carousel inside:" + s.current_locator);
 
           var total_index = $(this).jcarousel('items').size();
           $(this).next(s.controls).find(s.index_locator).html(total_index);

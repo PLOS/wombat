@@ -4211,7 +4211,7 @@ have a fixed width and height (but it's not required).
 /* line 4, ../../sass/sections/_footer.scss */
 footer {
   padding: 1.5625rem 0 3.75rem;
-  color: white; }
+  color: #cccccc; }
   /* line 16, ../../sass/sections/_footer.scss */
   footer .logo-footer {
     padding-bottom: 1.5625rem; }

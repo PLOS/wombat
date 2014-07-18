@@ -24,17 +24,26 @@
 
 <!--the previous two scripts enable the use of foundation's dropdowns to work in IE8 -->
 <@js src="resource/js/global.js" />
+
 <@js src="resource/js/pages/home.js" />
-<@renderJs />
 <!--[if IE 8]>
 <script src="resource/js/vendor/rem.min.js"></script>
 <script src="resource/js/vendor/html5shiv.js"></script>
 <script src="resource/js/vendor/respond.min.js"></script>
 <![endif]-->
 
+<@renderJs />
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="resource/js/components/blogfeed.js"></script>
-<script src="resource/js/components/blogcall.js"></script>
+<script src="resource/js/components/blogfeed.js" /></script>
+
+<script>
+  $(document).ready(function() {
+    google.setOnLoadCallback(function(){
+      feedLoaded();
+    });
+  });
+</script>
+
 <!--TODO: the following need to be on all pages, not just home-->
 </body>
 </html>

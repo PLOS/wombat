@@ -13,6 +13,7 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -302,7 +303,7 @@ public class ArticleController extends WombatController {
     String cacheKey = "html:" + articleId;
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
 
-    return soaService.requestCachedStream(cacheKey, xmlAssetPath, new CacheDeserializer<InputStream, String>() {
+    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override
       public String read(InputStream stream) throws IOException {
         StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);

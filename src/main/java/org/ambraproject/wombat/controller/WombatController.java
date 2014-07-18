@@ -20,9 +20,9 @@ import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.UnresolvedSiteException;
-import org.ambraproject.wombat.service.remote.AssetServiceResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicHeader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -205,7 +205,7 @@ public abstract class WombatController {
    * @param responseFromService
    * @param responseToClient
    */
-  protected static void copyAssetServiceResponse(AssetServiceResponse responseFromService, HttpServletResponse responseToClient)
+  protected static void copyResponseWithHeaders(CloseableHttpResponse responseFromService, HttpServletResponse responseToClient)
       throws IOException {
     for (Header header : responseFromService.getAllHeaders()) {
       if (ASSET_RESPONSE_HEADER_WHITELIST.contains(header.getName())) {
@@ -213,7 +213,7 @@ public abstract class WombatController {
       }
     }
 
-    try (InputStream streamFromService = responseFromService.openStream();
+    try (InputStream streamFromService = responseFromService.getEntity().getContent();
          OutputStream streamToClient = responseToClient.getOutputStream()) {
       IOUtils.copy(streamFromService, streamToClient);
     }

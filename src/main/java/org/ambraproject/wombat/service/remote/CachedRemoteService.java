@@ -3,6 +3,7 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.rhombat.cache.Cache;
+import org.ambraproject.wombat.util.CacheParams;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -90,19 +91,20 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    * was inserted into the cache, return that value. Else, query the service for a new stream and convert that stream to
    * a cacheable return value using the provided callback.
    *
-   * @param cacheKey the cache key at which to retrieve and store the value
+   * @param cacheParams   the cache parameters object containing the cache key at which to retrieve and store the value
    * @param target   the request with which to query the service if the value is not cached
    * @param callback how to deserialize a new value from the stream, to return and insert into the cache
    * @param <T>      the type of value to deserialize and return
    * @return the value from the service or cache
    * @throws IOException
    */
-  public <T> T requestCached(String cacheKey, HttpUriRequest target, CacheDeserializer<? super S, ? extends T> callback)
+  public <T> T requestCached(CacheParams cacheParams, HttpUriRequest target, CacheDeserializer<? super S, ? extends T> callback)
       throws IOException {
     Preconditions.checkNotNull(target);
     Preconditions.checkNotNull(callback);
+    Preconditions.checkNotNull(cacheParams);
 
-    CachedObject<T> cached = getCachedObject(cacheKey);
+    CachedObject<T> cached = getCachedObject(cacheParams.getCacheKey());
     Calendar lastModified = getLastModified(cached);
 
     try (TimestampedResponse fromServer = requestIfModifiedSince(target, lastModified)) {
@@ -110,7 +112,11 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
         try (S stream = remoteService.open(fromServer.response.getEntity())) {
           T value = callback.read(stream);
           if (fromServer.timestamp != null) {
-            cache.put(cacheKey, new CachedObject<>(fromServer.timestamp, value));
+            if (cacheParams.getTimeToLive().isPresent()){
+              cache.put(cacheParams.getCacheKey(), new CachedObject<>(fromServer.timestamp, value), cacheParams.getTimeToLive().get());
+            } else {
+              cache.put(cacheParams.getCacheKey(), new CachedObject<>(fromServer.timestamp, value));
+            }
           }
           return value;
         }

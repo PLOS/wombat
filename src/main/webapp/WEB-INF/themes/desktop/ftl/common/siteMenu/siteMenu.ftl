@@ -56,5 +56,7 @@ MARKUP: using Foundation Top Bar for navigation -->
 
   <ul class="nav-elements">
     <#include "siteMenuItems.ftl" />
-
 </#if>
+
+<@js src="resource/js/vendor/jquery.hoverIntent.js"/>
+<@js src="resource/js/components/hover_delay.js"/>

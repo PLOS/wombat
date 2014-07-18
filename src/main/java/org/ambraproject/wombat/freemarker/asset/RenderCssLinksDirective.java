@@ -9,11 +9,10 @@
  * limitations under the License.
  */
 
-package org.ambraproject.wombat.freemarker;
+package org.ambraproject.wombat.freemarker.asset;
 
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
-import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import org.ambraproject.wombat.service.AssetService;
@@ -22,11 +21,11 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Freemarker custom directive that renders any <script> tags added via calls to {@link JsDirective}.  A single instance
- * of this directive should be added at the end of the body element on the page.  It will do nothing if we are running
- * in dev assets mode (since the tags were already rendered).
+ * Freemarker custom directive that renders any CSS links added via calls to {@link CssLinkDirective}. A single instance
+ * of this directive should be added at the end of the head element on the page. It will do nothing if we are running in
+ * dev assets mode (since the links were already rendered).
  */
-public class RenderJsDirective extends RenderAssetsDirective implements TemplateDirectiveModel {
+public class RenderCssLinksDirective extends RenderAssetsDirective {
 
   /**
    * {@inheritDoc}
@@ -34,7 +33,7 @@ public class RenderJsDirective extends RenderAssetsDirective implements Template
   @Override
   public void execute(Environment environment, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
       throws TemplateException, IOException {
-    renderAssets(AssetService.AssetType.JS, JsDirective.REQUEST_VARIABLE_NAME, environment);
+    renderAssets(AssetService.AssetType.CSS, CssLinkDirective.REQUEST_VARIABLE_NAME, environment);
   }
 
   /**
@@ -42,6 +41,6 @@ public class RenderJsDirective extends RenderAssetsDirective implements Template
    */
   @Override
   protected String getHtml(String assetPath) {
-    return String.format("<script src=\"%s\"></script>\n", assetPath);
+    return String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", assetPath);
   }
 }

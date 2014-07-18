@@ -18,7 +18,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 %width-xx-small {
-  @include plos-grid-column(182);
+  @include plos-grid-column(183);
 }
 
 %width-x-small {
@@ -30,7 +30,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 %width-medium {
-  @include plos-grid-column(469);
+  @include plos-grid-column(470);
 }
 
 %width-large {
@@ -42,6 +42,7 @@ $image-container: ($image-width + $pad-small);
   @extend %width-small;
   height: $block-height;
 }
+
 ///////
 //page scaffolding
 /////
@@ -65,6 +66,10 @@ $image-container: ($image-width + $pad-small);
   &.large {
     @extend %width-large;
   }
+ }
+
+ .row{
+   @extend .plos-row;
  }
 
 .hero {
@@ -120,9 +125,7 @@ $image-container: ($image-width + $pad-small);
         float: left;
       }
       &.credit{
-        // credits have to sit in this weird place because they cant' run into authors.
         @extend %small-italic;
-        width: 20%;
         text-align: right;
         bottom: $pad-small;
         position: absolute;
@@ -135,7 +138,9 @@ $image-container: ($image-width + $pad-small);
 .block {
   position: relative;
   height: $block-height;
-
+  .blurb{
+    color: $grey-med;
+  }
   .block-image {
     width: $image-container;
     display: block;
@@ -145,7 +150,7 @@ $image-container: ($image-width + $pad-small);
 
   }
   &.image .block-content {
-    margin-left: ($image-container + $pad-default);
+    margin-left: ($image-container + $pad-small);
     margin-right: $pad-small;
     height: ($block-height - ($pad-default));
     overflow: hidden;
@@ -167,10 +172,12 @@ $image-container: ($image-width + $pad-small);
   }
   .category {
     @extend %brand-title;
+    margin-bottom: $pad-xsmall;
   }
   .title {
     //@extend h2;
     font-size: $txt-size-h2;
+    margin-bottom: $pad-xsmall;
     @extend %link-text-body;
 
     //in case p tag is added in CMS, need to override global settings
@@ -196,13 +203,16 @@ $image-container: ($image-width + $pad-small);
   }
 
 }
+
+// ROW THREE: is VERY different than the others
+// ROW THREE: overall scaffolding
 .row.three{
   .column {
     &:first-child {
       @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 8); //width + gutter
     }
 
-    &:last-child {
+    &:first-child + .column.right {
       @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 4); //width + gutter
       position: relative;
       > div > div {
@@ -211,6 +221,7 @@ $image-container: ($image-width + $pad-small);
     }
   }
 }
+// ROW THREE: heights
 
 .row.three{
   .column {
@@ -233,15 +244,42 @@ $image-container: ($image-width + $pad-small);
   }
 }
 
+// ROW THREE: spacing and other styling details.
+.row.three {
+  .row-small-blocks .small {
+    $small-block-spacing: ($pad-xsmall/2);
+    .date, .category {
+      margin-bottom: $small-block-spacing;
+    }
+    .date {
+      float: none !important; // sadly have to use this to override the .right on the other blocks
+      margin-right: 0;
+    }
+    .title {
+      margin-top: $small-block-spacing;
+      a {
+        font-family: $font-face-fancy-bold;
+        font-size: rem-calc($txt-size-medium);
+        @include link-text($color: $grey-med);
+      }
+    }
+  }
+}
+
+// ROW THREE: heights and other styling details.
 #billboard {
   @extend %width-full;
   @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-small $pad-default);
   position: relative;
-  h3, h4, a {
+  h3, a {
     color: $white;
   }
   h3 {
     font-size: $txt-size-h2;
+  }
+  h4 {
+    font-family: $font-face-plain;
+    color: $grey-med-light;
   }
   a {  //not using rounded-pill: would need too many overrides
     @extend %brand-background-hover;
@@ -307,7 +345,7 @@ $image-container: ($image-width + $pad-small);
 }
 
 #issue {
-  @include plos-grid-column(180);
+  @extend %width-xx-small;
   @extend .block;
 
   height: $block-height;
@@ -340,7 +378,10 @@ $image-container: ($image-width + $pad-small);
   @extend .block-card;
   @extend %width-small;
   height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
-
+  .image-header{
+    background-color: #1c2e5e;
+    text-align: center;
+  }
   ul {
     @extend .no-bullet; // from foundation
     li {
@@ -350,7 +391,6 @@ $image-container: ($image-width + $pad-small);
       a {
         font-family: $font-face-fancy;
         font-size: rem-calc($txt-size-medium-large);
-
       }
     }
   }
@@ -394,12 +434,11 @@ $image-container: ($image-width + $pad-small);
     margin-bottom: $pad-small;
   }
   ul {
-    @extend .inline-list;
-    margin-bottom: 0;
-    margin-left: rem-calc(-4);
+    list-style: none;
+    margin: 0 0 0 rem-calc(-4);
     > li {
-      margin-left: 4px;
-      margin-bottom: 0;
+      float: left;
+      margin: 0 0 0 rem-calc(4);
       > a {
         background: $plos-default;
         border-radius: $border-radius-default;

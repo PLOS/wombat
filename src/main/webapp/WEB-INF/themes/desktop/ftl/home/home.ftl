@@ -32,17 +32,19 @@
 <script src="resource/js/vendor/respond.min.js"></script>
 <![endif]-->
 
+
 <@renderJs />
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script src="resource/js/components/blogfeed.js" /></script>
 
 <script>
-  $(document).ready(function() {
-    google.setOnLoadCallback(function(){
-      feedLoaded();
-    });
+$(document).ready(function() {
+  google.setOnLoadCallback(function(){
+    feedLoaded();
   });
+});
 </script>
+
 
 <!--TODO: the following need to be on all pages, not just home-->
 </body>

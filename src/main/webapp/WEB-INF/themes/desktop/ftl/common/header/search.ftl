@@ -33,3 +33,6 @@
   </#if>
 </@themeConfig>
 </li>
+
+<@js src="resource/js/components/navsearch.js"/>
+<@js src="resource/js/components/placeholder_style.js"/>

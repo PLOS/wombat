@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/screen.css" />"/>
   <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />" />
+  <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />" />
   <![endif]-->
   <script type="text/javascript" src="resource/js/vendor/modernizr-v2.7.1.js"></script>
 
@@ -19,3 +19,8 @@
   <#include "analytics.ftl" />
 
 </head>
+<#--references js that it foundational like jquery and foundation.js. JS output is printed at the bottom of the body.
+-->
+
+<#include "baseJs.ftl" />
+

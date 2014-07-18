@@ -1,20 +1,25 @@
 
-
-google.load("feeds", "1");
-
+if (typeof google=='undefined') {
+  document.getElementById("blogrss").innerHTML = "Please click on the link above to see the blog posts."
+} else {
+  google.load("feeds", "1");
+}
 function feedLoaded() {
 
   var whichBlog = document.getElementById('blogtitle').innerHTML;
   whichBlog = whichBlog.slice(5,8);
+  if (typeof google=='undefined') {
+    document.getElementById("blogrss").innerHTML = "Something went wrong. Please click on the link above to see the blog posts."
+  } else {
+    if (whichBlog === 'Bio') {
+      var feed = new google.feeds.Feed("http://feeds.plos.org/plos/blogs/biologue");
 
-  if (whichBlog === 'Bio') {
-    var feed = new google.feeds.Feed("http://feeds.plos.org/plos/blogs/biologue");
+    } else if (whichBlog === 'Spe') {
+      var feed = new google.feeds.Feed("http://feeds.plos.org/plos/MedicineBlog");
 
-  } else if (whichBlog === 'Spe') {
-    var feed = new google.feeds.Feed("http://feeds.plos.org/plos/MedicineBlog");
-
+    }
   }
-  //var feed = new google.feeds.Feed("http://feeds.plos.org/plos/blogs/biologue");
+
   feed.load(
     function (result) {
       var container = document.getElementById("blogrss");
@@ -77,4 +82,6 @@ function feedLoaded() {
   );
 }
 
-
+google.setOnLoadCallback(function(){
+  feedLoaded();
+});

@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.AssetServiceResponse;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -41,7 +40,7 @@ public class FigureImageController extends WombatController {
                               String assetId)
       throws IOException {
     try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId, copyAssetRequestHeaders(requestFromClient))) {
-      copyAssetServiceResponse(AssetServiceResponse.wrap(responseFromService), responseToClient);
+      copyAssetResponseHeaders(responseFromService, responseToClient);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

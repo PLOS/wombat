@@ -22,6 +22,7 @@ import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.util.CacheParams;
 import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -65,18 +66,18 @@ public class JsonService {
    * service does not indicate that the value has been modified since the value was inserted into the cache, return that
    * value. Else, query the service for JSON and deserialize it to an object as usual.
    *
-   * @param cacheKey      the cache key at which to retrieve and store the value
+   * @param cacheParams   the cache parameters object containing the cache key at which to retrieve and store the value
    * @param address       the address to query the SOA service if the value is not cached
    * @param responseClass the type of object to deserialize
    * @param <T>           the type of {@code responseClass}
    * @return the deserialized object
    * @throws IOException
    */
-  public <T> T requestCachedObject(CachedRemoteService<? extends Reader> remoteService, String cacheKey,
+  public <T> T requestCachedObject(CachedRemoteService<? extends Reader> remoteService, CacheParams cacheParams,
                                    final URI address, final Class<T> responseClass)
       throws IOException {
     Preconditions.checkNotNull(responseClass);
-    return remoteService.requestCached(cacheKey, new HttpGet(address),
+    return remoteService.requestCached(cacheParams, new HttpGet(address),
         new CacheDeserializer<Reader, T>() {
           @Override
           public T read(Reader reader) throws IOException {

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -39,7 +40,7 @@ public class SoaServiceImpl implements SoaService {
   @Override
   public <T> T requestObject(String address, Class<T> responseClass) throws IOException {
     // Just try to cache everything. We may want to narrow this in the future.
-    return requestCachedObject("obj:" + address, address, responseClass);
+    return requestCachedObject(CacheParams.create("obj:" + address), address, responseClass);
   }
 
   @Override
@@ -57,18 +58,18 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public <T> T requestCachedStream(String cacheKey, String address, CacheDeserializer<InputStream, T> callback) throws IOException {
-    return cachedRemoteStreamer.requestCached(cacheKey, buildGet(address), callback);
+  public <T> T requestCachedStream(CacheParams cacheParams, String address, CacheDeserializer<InputStream, T> callback) throws IOException {
+    return cachedRemoteStreamer.requestCached(cacheParams, buildGet(address), callback);
   }
 
   @Override
-  public <T> T requestCachedReader(String cacheKey, String address, CacheDeserializer<Reader, T> callback) throws IOException {
-    return cachedRemoteReader.requestCached(cacheKey, buildGet(address), callback);
+  public <T> T requestCachedReader(CacheParams cacheParams, String address, CacheDeserializer<Reader, T> callback) throws IOException {
+    return cachedRemoteReader.requestCached(cacheParams, buildGet(address), callback);
   }
 
   @Override
-  public <T> T requestCachedObject(String cacheKey, String address, Class<T> responseClass) throws IOException {
-    return jsonService.requestCachedObject(cachedRemoteReader, cacheKey, buildUri(address), responseClass);
+  public <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException {
+    return jsonService.requestCachedObject(cachedRemoteReader, cacheParams, buildUri(address), responseClass);
   }
 
   @Override
@@ -77,12 +78,6 @@ public class SoaServiceImpl implements SoaService {
     HttpGet get = buildGet("assetfiles/" + assetId);
     get.setHeaders(headers);
     return cachedRemoteStreamer.getResponse(get);
-  }
-
-  @Override
-  public CloseableHttpResponse requestFromContentRepo(String bucket, String key, String version) throws IOException {
-    String address = String.format("repo/%s/%s/%s", bucket, key, version);
-    return cachedRemoteStreamer.getResponse(buildGet(address));
   }
 
   private HttpGet buildGet(String address) {

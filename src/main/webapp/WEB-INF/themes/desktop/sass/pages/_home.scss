@@ -400,16 +400,17 @@ $image-container: ($image-width + $pad-small);
 }
 
 #submission-links {
-  @include blocks($color: $grey-dark, $padding: $pad-small $pad-medium $pad-xsmall $pad-medium, $shadow: none);
+  @include blocks($color: $grey-dark, $radius: all, $padding: $pad-small $pad-medium $pad-xsmall $pad-medium, $shadow: none);
   @extend %width-small;
-
+  padding-top: $pad-small + $pad-xsmall;
   h3 {
     @extend %header-bottom-shadow;
     @extend %header-xlarge-light;
   }
   .split-container {
     @extend .inline-list;
-    margin: 0 0 $pad-small;
+    margin: 0 0 $pad-small + $pad-xsmall;
+    line-height: inherit;
   }
   .split-item {
     margin: 0 !important;
@@ -421,7 +422,7 @@ $image-container: ($image-width + $pad-small);
     }
     a {
       @include link-text($color: #89a0d0, $decoration: underline);
-      font-size: $txt-size-medium-large;
+      font-size: $txt-size-xlarge;
       font-family: $font-face-fancy;
     }
   }

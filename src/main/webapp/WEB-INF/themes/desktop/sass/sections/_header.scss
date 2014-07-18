@@ -223,27 +223,22 @@ $width-nav: $block-grid-elements - $width-logo;
 
       fieldset {
         border: 1px none white;
-        margin: $pad-small;
+        margin: 0;
+        padding: 0 $pad-small;
         background-color: $white;
       }
 
       input[type="text"] {
-        $form-spacing: 0; // from foundation
-        $input-border-radius: 0; // from foundation
-        $input-include-glowing-effect: false; // from foundation
-        $input-font-color: $clr-body-text; // from foundation
-        $input-border-color: $white; // from foundation
-        $form-label-line-height: 2; // from foundation
-        $input-focus-border-color: $white; // from foundation
         @include form-element(); // from foundation
+        $form-spacing: 0;
+        margin: 0;
+        padding:0;
+        border: none;
         display: inline-block;
         width: rem-calc(150);
+        font-size: $txt-size-xlarge;
         color: $clr-input-active;
-        /// overwriting foundation styles
-        display: inline-block;
-        height: auto;
         top: 0 !important;
-
       }
       @include input-placeholder-color();
 

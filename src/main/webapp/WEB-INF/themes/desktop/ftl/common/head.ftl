@@ -8,10 +8,12 @@
 <head prefix="og: http://ogp.me/ns#">
   <title><@titleFormat removeTags(title) /></title>
   <@cssLink target="resource/css/screen.css"/>
+  <@renderCssLinks />
     <!--[if IE 8]>
     <@cssLink target="resource/css/ie.css"/>
+    <@renderCssLinks />
     <![endif]-->
-  <@renderCssLinks />
+
 
   <script type="text/javascript" src="resource/js/vendor/modernizr-v2.7.1.js"></script>
 

@@ -3945,13 +3945,13 @@ main,
 
 @font-face {
   font-family: "albert";
-  src: url('../fonts/fs_albert.ttf?1400626859') format('truetype'), url('../fonts/fs_albert.otf?1402701102') format('opentype'), url('../fonts/fs_albert.svg?1400626859') format('svg'), url('../fonts/fs_albert.woff?1400626859') format('woff'); }
+  src: url('../fonts/fs_albert.ttf?1402533884') format('truetype'), url('../fonts/fs_albert.otf?1402533884') format('opentype'), url('../fonts/fs_albert.svg?1402533884') format('svg'), url('../fonts/fs_albert.woff?1402533884') format('woff'); }
 @font-face {
   font-family: "albert-bold";
-  src: url('../fonts/fs_albert-bold-webfont.ttf?1400626859') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1402701102') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1400626859') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1400626859') format('woff'); }
+  src: url('../fonts/fs_albert-bold-webfont.ttf?1402533884') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1402533884') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1402533884') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1402533884') format('woff'); }
 @font-face {
   font-family: "FontAwesome";
-  src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg?1401731168') format('svg'), url('../fonts/fontawesome-webfont.woff?1401731168') format('woff'); }
+  src: url('../fonts/FontAwesome.ttf') format('truetype'), url('../fonts/fontawesome-webfont.otf') format('opentype'), url('../fonts/fontawesome-webfont.svg?1402533884') format('svg'), url('../fonts/fontawesome-webfont.woff?1402533884') format('woff'); }
 /* line 12, ../../sass/_typography.scss */
 .more-link > a, #issue .boxtitle a, .block .category, #article-list .category, #issue .category, #article-list h3 {
   font-size: 0.875rem;
@@ -4907,11 +4907,10 @@ footer {
   border-radius: 5px;
   padding: 0.625rem 1.875rem 0.3125rem 1.875rem;
   margin-bottom: 1.25rem;
-  background: #333333;
-  padding-top: 0.9375rem; }
+  background: #333333; }
   /* line 410, ../../sass/pages/_home.scss */
   #submission-links .split-container {
-    margin: 0 0 0.9375rem;
+    margin: 0 0 0.625rem;
     line-height: inherit; }
   /* line 415, ../../sass/pages/_home.scss */
   #submission-links .split-item {
@@ -4926,7 +4925,7 @@ footer {
     #submission-links .split-item a {
       color: #89a0d0;
       text-decoration: none;
-      font-size: 20px;
+      font-size: 16px;
       font-family: "albert"; }
       /* line 62, ../../sass/_typography.scss */
       #submission-links .split-item a:hover, #submission-links .split-item a a:hover {

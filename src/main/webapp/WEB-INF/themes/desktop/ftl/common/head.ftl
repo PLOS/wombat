@@ -7,11 +7,12 @@
 
 <head prefix="og: http://ogp.me/ns#">
   <title><@titleFormat removeTags(title) /></title>
+  <@cssLink target="resource/css/screen.css"/>
+    <!--[if IE 8]>
+    <@cssLink target="resource/css/ie.css"/>
+    <![endif]-->
+  <@renderCssLinks />
 
-  <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/screen.css" />"/>
-  <!--[if IE 8]>
-  <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />" />
-  <![endif]-->
   <script type="text/javascript" src="resource/js/vendor/modernizr-v2.7.1.js"></script>
 
   <link rel="shortcut icon" href="resource/img/favicon.ico" type="image/x-icon"/>

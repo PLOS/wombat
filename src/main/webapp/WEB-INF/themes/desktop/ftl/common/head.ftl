@@ -10,8 +10,7 @@
   <@cssLink target="resource/css/screen.css"/>
   <@renderCssLinks />
     <!--[if IE 8]>
-    <@cssLink target="resource/css/ie.css"/>
-    <@renderCssLinks />
+  <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />"/>
     <![endif]-->
 
 
@@ -19,7 +18,7 @@
 
   <link rel="shortcut icon" href="resource/img/favicon.ico" type="image/x-icon"/>
 
-  <#include "analytics.ftl" />
+<#include "analytics.ftl" />
 
 </head>
 <#--references js that it foundational like jquery and foundation.js. JS output is printed at the bottom of the body.

@@ -7,3 +7,7 @@
   src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0") format("embedded-opentype");
   font-weight: normal;
   font-style: normal; }
+/* line 15, ../../sass/ie.scss */
+.carousel-wrap.small .carousel-control .jcarousel-prev,
+.carousel-wrap.small .carousel-control .jcarousel-next {
+  font-size: 30px !important; }

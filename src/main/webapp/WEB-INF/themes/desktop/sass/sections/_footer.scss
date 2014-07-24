@@ -16,8 +16,8 @@ footer {
   .logo-footer {
     padding-bottom: rem-calc(25);
   }
-
-  a {
+  //pseudo elements are for Firefox
+  a, a:visited, a:focus, a:active {
     @include link-text($color: $grey-med-light, $decoration: underline){
   }
   .nav {

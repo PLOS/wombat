@@ -15,7 +15,11 @@
 
 
   <script type="text/javascript" src="<@siteLink path="resource/js/vendor/modernizr-v2.7.1.js"/>"></script>
-
+  <!--html5shiv. js and respond.js - enable the use of foundation's dropdowns to work in IE8 -->
+  <!--[if IE 8]>
+  <script src="<@siteLink path="resource/js/vendor/html5shiv.js"/>"></script>
+  <script src="<@siteLink path="resource/js/vendor/respond.min.js"/>"></script>
+  <![endif]-->
   <link rel="shortcut icon" href="<@siteLink path="resource/img/favicon.ico"/>" type="image/x-icon"/>
 
 <#include "analytics.ftl" />

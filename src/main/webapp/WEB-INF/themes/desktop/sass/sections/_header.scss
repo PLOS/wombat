@@ -266,6 +266,7 @@ $width-nav: $block-grid-elements - $width-logo;
       }
     }
   }
+
   //overrides for top-bar styles
   ul > li.head-search a {
     margin-top: rem-calc(-10);
@@ -277,6 +278,7 @@ $width-nav: $block-grid-elements - $width-logo;
   // this is the only way I could find to override the white background on hover
   ul > li.head-search:hover:not(.has-form) > a {
     background: $grey-light;
+    color: $plos-default;
   }
 }
 

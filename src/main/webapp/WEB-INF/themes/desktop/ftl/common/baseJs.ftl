@@ -6,7 +6,9 @@ TODO: foundation-altered.js is in use for development. Need to
  download a customized foundation.js that includes only what we're using
  (Remove javascript for topbar)
  -->
-<@js src="resource/js/vendor/foundation-altered.js"/>
+<@js src="resource/js/vendor/foundation/foundation.js"/>
+<@js src="resource/js/vendor/fastclick/lib/fastclick.js"/>
+<@js src="resource/js/vendor/foundation/foundation.tooltip.js"/>
 
 
 

@@ -13,7 +13,7 @@ $(document).foundation({
         + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
         + '">' + content + '</span>';
     }
-  },
+  }
 });
 
 $(document).ready(function () {

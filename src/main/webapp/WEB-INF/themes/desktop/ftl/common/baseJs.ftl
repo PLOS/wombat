@@ -2,11 +2,16 @@
 <@js src="resource/js/vendor/jquery-1.11.0.js" />
 <!--TODO: do we want to use the CDN? -->
 <!--
-TODO: foundation-altered.js is in use for development. Need to
- download a customized foundation.js that includes only what we're using
- (Remove javascript for topbar)
- -->
-<@js src="resource/js/vendor/foundation-altered.js"/>
+fast click is required for mobile interactions for foundation.
+-->
+<@js src="resource/js/vendor/fastclick/lib/fastclick.js"/>
+<@js src="resource/js/vendor/foundation/foundation.js"/>
+
+<#--include foundation js widgets here *
+* unless you are absolutely sure they will only be in one scenario - then you
+should include it in the ftl file that needs it. -->
+<@js src="resource/js/vendor/foundation/foundation.tooltip.js"/>
+
 
 
 

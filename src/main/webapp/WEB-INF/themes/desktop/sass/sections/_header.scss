@@ -162,7 +162,7 @@ $width-nav: $block-grid-elements - $width-logo;
       background: white;
       box-shadow: $nav-main-box-shadow;
       @include border-radius();
-
+      cursor: default;
       .dropdowncallout {
         float: right;
         display: inline-block;
@@ -282,7 +282,7 @@ $width-nav: $block-grid-elements - $width-logo;
   padding: rem-calc(0 20 30 15);
   font-family: $font-face-navigation;
   font-size: rem-calc($txt-size-medium);
-
+  cursor: default;
   h3 {
     @extend %header-bottom-shadow;
     margin-top: $pad-xsmall;
@@ -296,21 +296,22 @@ $width-nav: $block-grid-elements - $width-logo;
     li {
       margin-left: rem-calc(15);
       width: auto;
-      a {
-        // necessary to override the foundation styles
-        display: inline !important;
-        margin: 0;
-        padding: 0;
-        line-height: 1.35;
-        font-family: $font-face-navigation;
-        font-size: rem-calc($txt-size-medium-large);
-        background: $white;
-        color: $clr-link;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+      cursor: default;
+
     }
   }
 
+}
+// this seems excessive but it is necessary to override foundation
+// by referencing 'top-bar-section dropdown'
+.top-bar-section .dropdown .submit li a {
+  display: inline !important;
+  line-height: normal !important;
+  padding: 0;
+  font-family: $font-face-navigation;
+  font-size: rem-calc($txt-size-medium-large);
+  color: $plos-default !important;
+  &:hover {
+    text-decoration: underline;
+  }
 }

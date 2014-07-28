@@ -3,47 +3,45 @@
 
 @include font-face("albert-bold", font-files("fs_albert-bold-webfont.ttf", "fs_albert-bold-webfont.otf",  "fs_albert-bold-webfont.svg",  "fs_albert-bold-webfont.woff"));
 
-@include font-face("FontAwesome", font-files("FontAwesome.ttf", "fontawesome-webfont.otf",  "fontawesome-webfont.svg",  "fontawesome-webfont.woff"));
+@include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf",  "fontawesome-webfont.svg",  "fontawesome-webfont.woff"));
 
 //////////////
 //header styles
 ///////////////
 
-.header-allcaps{
+%header-allcaps{
  font-size: rem-calc($txt-size-medium);
  font-family: $font-face-fancy;
  text-transform: uppercase;
 }
-.header-allcaps-plain {
-  @extend .header-allcaps;
+%header-allcaps-plain {
+  @extend %header-allcaps;
   font-family: $font-face-plain;
 }
-.header-allcaps-xlarge {
-  @extend .header-allcaps;
+%header-allcaps-xlarge {
+  @extend %header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
 }
 
-.header-xlarge-light {
+%header-xlarge-light {
   font-size: rem-calc($txt-size-xlarge);
   color: $clr-light-text;
   font-family: $font-face-fancy;
 }
 
-
-
-.header-bottom-shadow {
+%header-bottom-shadow {
   padding-bottom: rem-calc(17);
   margin-bottom: rem-calc(17);
   box-shadow: $default-header-shadow;
   text-align: center;
 }
-.brand-title {
-  @extend .header-allcaps;
-  @extend .brand-color;
+%brand-title {
+  @extend %header-allcaps;
+  @extend %brand-color;
   margin-bottom: $pad-small;
 }
-.brand-header {
-  @extend .brand-background;
+%brand-header {
+  @extend %brand-background;
   color: $clr-highlight-text;
   padding: 0 $pad-default;
   font-family: $font-face-fancy;
@@ -66,29 +64,30 @@
     color: $plos-default;
     text-decoration: none;
   }
-    @elseif $decoration == underline{
+    @else if $decoration == underline{
       color: $color;
       text-decoration: underline;
     }
   }
 }
 
-.link-text-body, .link-text-body a{
+%link-text-body, %link-text-body a{
   @include link-text();
 }
 
-.link-text-white, .link-text-white a{
+%link-text-white, %link-text-white a{
   @include link-text($color: $white,$decoration: underline);
 }
 
 //////////////
 //utility styles
 ///////////////
-.small-italic{
+
+%small-italic{
   font-size: rem-calc($txt-size-xxxsmall);
   font-style: italic;
 }
-.condense {
+%condense {
   letter-spacing: -0.5px;
 }
 .no-margin{ margin-bottom: 0;}
@@ -113,3 +112,13 @@
     color: $color;
   }
 }
+
+//////////////
+//font-sizes styles
+///////////////
+
+.note,.caption { color: $grey-med-light;}
+
+
+
+

@@ -1,8 +1,11 @@
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.base.Optional;
+import com.google.common.primitives.Ints;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective.ElementSubstitution;
 import org.ambraproject.wombat.freemarker.SitePageContext;
+import org.ambraproject.wombat.util.CacheParams;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,6 +16,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * Retrieves stored blocks of homepage content from a remote service.
@@ -22,7 +26,7 @@ public class StoredHomepageService implements FetchHtmlService {
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
   @Autowired
-  private SoaService soaService;
+  private ContentRepoService contentRepoService;
 
   /**
    * {@inheritDoc}
@@ -32,10 +36,13 @@ public class StoredHomepageService implements FetchHtmlService {
   @Override
   public Reader readHtml(final SitePageContext sitePageContext, String key, final Collection<ElementSubstitution> substitutions)
       throws IOException {
+    Map<String, Object> homepageConfig = sitePageContext.getSite().getTheme().getConfigMap("homepage");
     String cacheKey = "homepage:" + key;
-    String address = String.format("repo/%s/latest", key);
+    Number cacheTtl = (Number) homepageConfig.get("cacheTtl");
+    CacheParams cacheParams = CacheParams.create(cacheKey, (cacheTtl == null) ? null : cacheTtl.intValue());
+    Optional<Integer> version = Optional.absent();     // TODO May want to support homepage versioning at some point using fetchHtmlDirective
 
-    String transformedHtml = soaService.requestCachedReader(cacheKey, address, new CacheDeserializer<Reader, String>() {
+    String transformedHtml = contentRepoService.requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
       @Override
       public String read(Reader htmlReader) throws IOException {
         // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.

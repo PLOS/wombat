@@ -80,7 +80,7 @@ public class AssetServiceImpl implements AssetService {
   @Override
   public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site, String cacheKey)
       throws IOException {
-    String fileCacheKey = assetType.getFileCacheKey(cacheKey);
+    String fileCacheKey = site.getKey() + ":" + assetType.getFileCacheKey(cacheKey);
     String filename = cache.get(fileCacheKey);
     if (filename == null) {
       File concatenated = concatenateFiles(filenames, site, assetType.getExtension());

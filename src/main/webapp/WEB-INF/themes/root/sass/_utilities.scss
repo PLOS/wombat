@@ -31,11 +31,11 @@ $clr-highlight-text: $white
 
 // color extendibles
 
-.highlight-color {
+%highlight-color {
   color: $clr-highlight;
 }
 
-.highlight-background {
+%highlight-background {
   background: $clr-highlight;
   color: $clr-highlight-text;
   &:hover {
@@ -43,6 +43,6 @@ $clr-highlight-text: $white
   }
 }
 
-.highlight-border {
+%highlight-border {
   border-color: $clr-highlight;
 }

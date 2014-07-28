@@ -1,10 +1,15 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
+import com.google.common.base.Preconditions;
+import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.Header;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.io.Reader;
+import java.io.InputStreamReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,6 +24,8 @@ public class ContentRepoServiceImpl implements ContentRepoService {
   private SoaService soaService;
   @Autowired
   private CachedRemoteService<InputStream> cachedRemoteStreamer;
+  @Autowired
+  private CachedRemoteService<Reader> cachedRemoteReader;
 
   private URI contentRepoAddress;
   private String repoBucketName;
@@ -70,14 +77,16 @@ public class ContentRepoServiceImpl implements ContentRepoService {
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the repository does not provide the file
    */
   @Override
-  public AssetServiceResponse request(String key, Optional<Integer> version, Header... headers)
+  public CloseableHttpResponse request(String key, Optional<Integer> version, Header... headers)
       throws IOException {
-    URI contentRepoAddress = getContentRepoAddress();
-    if ("file".equals(contentRepoAddress.getScheme())) {
-      return requestInDevMode(contentRepoAddress, key, version);
-    }
+    URI requestAddress = buildUri(key, version);
+    HttpGet get = new HttpGet(requestAddress);
+    get.setHeaders(headers);
+    return cachedRemoteStreamer.getResponse(get);
+  }
 
-    String contentRepoAddressStr = contentRepoAddress.toString();
+  private URI buildUri(String key, Optional<Integer> version) throws IOException {
+    String contentRepoAddressStr = getContentRepoAddress().toString();
     if (contentRepoAddressStr.endsWith("/")) {
       contentRepoAddressStr = contentRepoAddressStr.substring(0, contentRepoAddressStr.length() - 1);
     }
@@ -86,18 +95,13 @@ public class ContentRepoServiceImpl implements ContentRepoService {
       requestParams.add("version", version.get().toString());
     }
     String repoBucketName = getRepoBucketName();
-    URI requestAddress = URI.create(String.format("%s/objects/%s?%s",
-        contentRepoAddressStr, repoBucketName, requestParams.format()));
-
-    HttpGet get = new HttpGet(requestAddress);
-    get.setHeaders(headers);
-    return AssetServiceResponse.wrap(cachedRemoteStreamer.getResponse(get));
+    return URI.create(String.format("%s/objects/%s?%s", contentRepoAddressStr, repoBucketName, requestParams.format()));
   }
 
-  private AssetServiceResponse requestInDevMode(URI contentRepoAddress, String key, Optional<Integer> version)
-      throws FileNotFoundException {
-    File path = new File(contentRepoAddress.getPath(), key);
-    return AssetServiceResponse.wrap(path);
+  @Override
+  public <T> T requestCachedReader(CacheParams cacheParams, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
+    Preconditions.checkNotNull(callback);
+    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version)), callback);
   }
 
 }

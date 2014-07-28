@@ -37,15 +37,15 @@ $clr-highlight-text: $white) {
 
 // color extensibles
 
-.bg-dark {
+%bg-dark {
   background: $grey-dark;
 }
 
-.highlight-color {
+%highlight-color {
   color: $clr-highlight;
 }
 
-.highlight-background {
+%highlight-background {
   background: $clr-highlight;
   color: $clr-highlight-text;
   &:hover {
@@ -53,33 +53,33 @@ $clr-highlight-text: $white) {
   }
 }
 
-.highlight-border {
+%highlight-border {
   border-color: $clr-highlight;
 }
 ///////
 //branding
 /////
 @mixin brandColor($setColor: $plos-default ) {
-  .more-icon {
+  %more-icon {
     color: $setColor;
   }
-  .brand-color {
+  %brand-color {
     color: $setColor;
   }
-  .brand-border {
+  %brand-border {
     border-color: $setColor;
   }
-  .brand-background {
+  %brand-background {
     background: $setColor;
   }
-  .brand-background-hover {
+  %brand-background-hover {
     background: $setColor;
     &:hover {
       background: $plos-default;
     }
   }
   //color shading variations on adjacent box headers
-  .brand-shading {
+  %brand-shading {
     &:first-child {
       .block-header {
         background: darken($setColor, 18%);
@@ -92,7 +92,7 @@ $clr-highlight-text: $white) {
         }
       }
     }
-    &:nth-child(2) {
+    &:first-child + .carousel-wrap {
       .block-header {
         background: darken($setColor, 13%);
       }
@@ -106,7 +106,9 @@ $clr-highlight-text: $white) {
     }
   }
 }
+//////////////
 // layout utilities
+//////////////
 
 .center-simple {
   margin: 0 auto;
@@ -115,13 +117,13 @@ $clr-highlight-text: $white) {
 .pad-xsmall-x{
   padding: 0 $pad-default;
 }
-
-
+//
 // You need to use :before pseudo selector like this:
 //  .DIV_THAT_NEEDS_OVERLAY:before{
 //    @extend .overlay;
 //    background: OVERLAY DETAILS
 //  }
+//
 .overlay {
   background-position: bottom;
   content: " ";
@@ -131,3 +133,4 @@ $clr-highlight-text: $white) {
   top: 0;
   left: 0;
 }
+

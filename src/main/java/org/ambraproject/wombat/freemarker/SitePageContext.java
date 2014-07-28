@@ -37,7 +37,7 @@ public class SitePageContext {
   private final Site site;
   private final HttpServletRequest request;
 
-  SitePageContext(SiteResolver siteResolver, Environment environment) {
+  public SitePageContext(SiteResolver siteResolver, Environment environment) {
     try {
       this.request = extractRequest(environment);
       this.site = findSite(siteResolver, environment, request);

@@ -4399,7 +4399,8 @@ footer {
       box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
-      border-radius: 5px; }
+      border-radius: 5px;
+      cursor: default; }
       /* line 166, ../../sass/sections/_header.scss */
       .top-bar-section ul > li.has-dropdown.hover .calloutcontainer .dropdowncallout {
         float: right;
@@ -4561,7 +4562,8 @@ footer {
   margin-right: 0.625rem;
   padding: 0 1.25rem 1.875rem 0.9375rem;
   font-family: "albert";
-  font-size: 0.875rem; }
+  font-size: 0.875rem;
+  cursor: default; }
   /* line 294, ../../sass/sections/_header.scss */
   .submit h3 {
     margin-top: 0.3125rem;
@@ -4575,20 +4577,20 @@ footer {
     /* line 304, ../../sass/sections/_header.scss */
     .submit ul li {
       margin-left: 0.9375rem;
-      width: auto; }
-      /* line 307, ../../sass/sections/_header.scss */
-      .submit ul li a {
-        display: inline !important;
-        margin: 0;
-        padding: 0;
-        line-height: 1.35;
-        font-family: "albert";
-        font-size: 1rem;
-        background: white;
-        color: #3c63af; }
-        /* line 317, ../../sass/sections/_header.scss */
-        .submit ul li a:hover {
-          text-decoration: underline; }
+      width: auto;
+      cursor: default; }
+
+/* line 315, ../../sass/sections/_header.scss */
+.top-bar-section .dropdown .submit li a {
+  display: inline !important;
+  line-height: normal !important;
+  padding: 0;
+  font-family: "albert";
+  font-size: 1rem;
+  color: #3c63af !important; }
+  /* line 322, ../../sass/sections/_header.scss */
+  .top-bar-section .dropdown .submit li a:hover {
+    text-decoration: underline; }
 
 /* line 16, ../../sass/pages/_home.scss */
 .hero, #billboard {

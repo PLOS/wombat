@@ -10,5 +10,10 @@
   font-style: normal;
 }
 
-
-
+.carousel-wrap.small .carousel-control {
+  $icon-height: 30px;
+  .jcarousel-prev,
+  .jcarousel-next {
+    font-size: $icon-height !important;
+  }
+}

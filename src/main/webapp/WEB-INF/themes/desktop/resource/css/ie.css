@@ -6,19 +6,4 @@
   src: url("../fonts/fontawesome-webfont.eot?v=4.1.0");
   src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0") format("embedded-opentype");
   font-weight: normal;
-  font-style: normal;
-}
-.top-bar-section .head-search form input[type="text"] {
-  padding: 10px 0;
-}
-.top-bar-section .head-search form button[type="submit"] {
-  top: -8px !important;
-}
-.top-bar-section ul > li.head-search > a {
-  line-height: 32px !important;
-  padding: 0 !important;
-  font-size:  12px;
-}
-.top-bar-section ul > li.head-search > a:hover {
-  text-decoration: underline;
-}
+  font-style: normal; }

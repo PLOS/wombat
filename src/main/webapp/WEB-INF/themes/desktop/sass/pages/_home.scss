@@ -47,6 +47,12 @@ $image-container: ($image-width + $pad-small);
 //page scaffolding
 /////
 
+///////
+// home specific colors
+/////
+.home { background: $clr-header; }
+
+
 //sizes:
 
  .block {

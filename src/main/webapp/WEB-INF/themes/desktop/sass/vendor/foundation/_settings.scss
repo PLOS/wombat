@@ -1103,7 +1103,7 @@ $has-tip-font-color-hover: $primary-color;
 $has-tip-cursor-type: pointer; //help;
 
 $tooltip-padding: $pad-default;
-$tooltip-bg: $clr-body-bg;
+$tooltip-bg: $clr-grey-light;
 $tooltip-font-size: $txt-size-xxsmall;
 $tooltip-font-weight: normal;
 $tooltip-font-color: $clr-body-text;
@@ -1123,7 +1123,7 @@ $tooltip-line-height: 1.3;
 //$include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $grey-light;
+$topbar-bg-color: $clr-header;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin

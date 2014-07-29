@@ -24,7 +24,7 @@
 
       <a class="figure-link" href="figure?id=${figure.doi}">
         <img class="figure-image" src="asset?id=${figure.thumbnails.medium.file}"
-             <#if hasTitle>alt="${figure.title}"</#if>>
+             alt="<#if hasTitle>${figure.title}</#if>"> <#-- Print alt="" if no title -->
         <span class="figure-expand">Expand</span>
       </a>
 

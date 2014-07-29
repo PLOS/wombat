@@ -33,13 +33,6 @@
 
 <script type="text/javascript" src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22feeds%22%2C%22version%22%3A%221.0%22%2C%22language%22%3A%22en%22%7D%5D%7D"></script>
 <script src="<@siteLink path="resource/js/components/blogfeed.js"/>"></script>
-<script>
-  $( document ).ready(function() {
 
-    $(".hero img").css("border","red");
-  });
-
-
-</script>
 </body>
 </html>

@@ -110,6 +110,36 @@ public class ArticleControllerTest extends ControllerTest {
         View view = result.getModelAndView().getView();
         assertNull(view);
 
+        verify(articleService).requestArticleMetadata(articleId);
+        verify(soaService).requestCachedStream(eq(cacheKey), eq(xmlAssetPath), any(CacheDeserializer.class));
+        verify(soaService).requestObject(format("articles/%s?authors", articleId), List.class);
+        verify(soaService).requestObject(format("articles/%s?comments", articleId), List.class);
+
+        verifyZeroInteractions(articleTransformService);
+        verifyNoMoreInteractions(articleService, soaService);
+    }
+
+    @Test
+    public void renderArticleHtmlUnitTest() throws Exception {
+        /**
+         * Define response objects & setup expectations
+         */
+        Map articleMetadata = createTestArticleMetadata();
+
+        String articleId = "1234";
+        when(articleService.requestArticleMetadata(articleId)).thenReturn(articleMetadata);
+
+        CacheParams cacheKey = CacheParams.create("html:" + articleId);
+        String xmlAssetPath = "assetfiles/" + articleId + ".xml";
+        String responseHTML = "An HTML snippet should come along here...";
+        when(soaService.requestCachedStream(eq(cacheKey), eq(xmlAssetPath), any(CacheDeserializer.class))).thenReturn(responseHTML);
+
+        List<?> authors = new ArrayList<Object>();
+        when(soaService.requestObject(format("articles/%s?authors", articleId), List.class)).thenReturn(authors);
+
+        List<?> comments = new ArrayList<Object>();
+        when(soaService.requestObject(format("articles/%s?comments", articleId), List.class)).thenReturn(comments);
+
         /**
          * Perform actual invocation of method for class under test - Method II
          *
@@ -130,20 +160,119 @@ public class ArticleControllerTest extends ControllerTest {
         assertEquals(page.getElementById("articleText").getTextContent().trim(), responseHTML);
         assertEquals(page.getElementById("article-content").getElementsByTagName("h2").get(0).getTextContent(), articleMetadata.get("title").toString());
 
-        /**
-         * Verify mock statuses
-         * Times(2) is due to the fact that I'm actually calling the GET method twice, once in mockMvc.perform(..) and
-         * then again in webClient.getPage(..).
-         * This test does not need to do both, but it was added as an example.
-         */
-
-        verify(articleService, times(2)).requestArticleMetadata(articleId);
-        verify(soaService, times(2)).requestCachedStream(eq(cacheKey), eq(xmlAssetPath), any(CacheDeserializer.class));
-        verify(soaService, times(2)).requestObject(format("articles/%s?authors", articleId), List.class);
-        verify(soaService, times(2)).requestObject(format("articles/%s?comments", articleId), List.class);
+        verify(articleService).requestArticleMetadata(articleId);
+        verify(soaService).requestCachedStream(eq(cacheKey), eq(xmlAssetPath), any(CacheDeserializer.class));
+        verify(soaService).requestObject(format("articles/%s?authors", articleId), List.class);
+        verify(soaService).requestObject(format("articles/%s?comments", articleId), List.class);
 
         verifyZeroInteractions(articleTransformService);
         verifyNoMoreInteractions(articleService, soaService);
+    }
+
+    @Test
+    public void renderArticleCommentsTest() throws Exception {
+        /**
+         * Define response objects & setup expectations
+         */
+        Map articleMetadata = createTestArticleMetadata();
+
+        String articleId = "1234";
+        when(articleService.requestArticleMetadata(articleId)).thenReturn(articleMetadata);
+
+        CacheParams cacheKey = CacheParams.create("html:" + articleId);
+        String xmlAssetPath = "assetfiles/" + articleId + ".xml";
+        String responseHTML = "An HTML snippet should come along here...";
+        when(soaService.requestCachedStream(eq(cacheKey), eq(xmlAssetPath), any(CacheDeserializer.class))).thenReturn(responseHTML);
+
+        List<Map> comments = new ArrayList<Map>();
+        Map<String, Object> comment = new HashMap<String, Object>();
+        comment.put("created", "2014-07-29");
+        comment.put("totalNumReplies", 0);
+        comment.put("title", "A title!");
+        comment.put("creatorDisplayName", "Juan Krzemien");
+        comment.put("annotationUri", "I don't know what should go here...");
+        comments.add(comment);
+        when(soaService.requestObject(format("articles/%s?comments", articleId), List.class)).thenReturn(comments);
+
+        /**
+         * Perform actual invocation of method for class under test - Method I
+         */
+        MvcResult result = mockMvc.perform(get(format("/article/comments?id=%s", articleId)))
+                .andExpect(handler().handlerType(ArticleController.class))
+                .andExpect(handler().methodName("renderArticleComments"))
+                .andExpect(status().is(SC_OK))
+                .andExpect(forwardedUrl(null))
+                .andExpect(redirectedUrl(null))
+                .andReturn();
+
+        /**
+         * Validations section
+         */
+        Map<String, Object> model = result.getModelAndView().getModel();
+        assertEquals(model.get("article"), articleMetadata);
+        assertEquals(model.get("site").toString(), "");
+        assertEquals(model.get("articleComments"), comments);
+
+        View view = result.getModelAndView().getView();
+        assertNull(view);
+
+        verify(articleService).requestArticleMetadata(articleId);
+        verify(soaService).requestObject(format("articles/%s?comments", articleId), List.class);
+
+        verifyNoMoreInteractions(articleService, soaService);
+        verifyZeroInteractions(articleTransformService);
+    }
+
+    @Test
+    public void renderArticleCommentsHtmlUnirTest() throws Exception {
+        /**
+         * Define response objects & setup expectations
+         */
+        Map articleMetadata = createTestArticleMetadata();
+
+
+        String articleId = "1234";
+        when(articleService.requestArticleMetadata(articleId)).thenReturn(articleMetadata);
+
+        CacheParams cacheKey = CacheParams.create("html:" + articleId);
+        String xmlAssetPath = "assetfiles/" + articleId + ".xml";
+        String responseHTML = "An HTML snippet should come along here...";
+        when(soaService.requestCachedStream(eq(cacheKey), eq(xmlAssetPath), any(CacheDeserializer.class))).thenReturn(responseHTML);
+
+        List<Map> comments = new ArrayList<Map>();
+        Map<String, Object> comment = new HashMap<String, Object>();
+        comment.put("created", "2014-07-29");
+        comment.put("totalNumReplies", 0);
+        comment.put("title", "A title!");
+        comment.put("creatorDisplayName", "Juan Krzemien");
+        comment.put("annotationUri", "I don't know what should go here...");
+        comments.add(comment);
+        when(soaService.requestObject(format("articles/%s?comments", articleId), List.class)).thenReturn(comments);
+
+        /**
+         * Perform actual invocation of method for class under test - Method II
+         *
+         * HTMLUnit needs a CONTEXT prior to the actual namespace to invoke, will be discarded, don't worry...
+         * In this example, it is the "/context/" part of the URL...
+         */
+        HtmlPage page = webClient.getPage("http://localhost/context/article/comments?id=" + articleId);
+
+        /**
+         * Validations section
+         */
+        assertTrue(page.isHtmlPage());
+        assertEquals(page.getWebResponse().getStatusCode(), SC_OK);
+        assertEquals(page.getWebResponse().getContentType(), TEXT_HTML.getMimeType());
+        assertEquals(page.getWebResponse().getContentCharset(), UTF_8.toString());
+
+        assertEquals(page.getTitleText(), "An Ambra-Hosted Site: PLOS - Comments");
+
+        verify(articleService).requestArticleMetadata(articleId);
+        verify(soaService).requestObject(format("articles/%s?comments", articleId), List.class);
+
+        verifyNoMoreInteractions(articleService, soaService);
+        verifyZeroInteractions(articleTransformService);
+
     }
 
     /**

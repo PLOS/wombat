@@ -90,6 +90,7 @@ public class SoaServiceImplTest {
         inOrder.verify(cachedRemoteStreamer).getResponse(any(HttpGet.class));
         verifyNoMoreInteractions(jsonConfig, cachedRemoteStreamer);
         verifyZeroInteractions(jsonService, cachedRemoteReader);
+        verifyZeroInteractions(response);
     }
 
     @Test
@@ -118,36 +119,6 @@ public class SoaServiceImplTest {
         verifyNoMoreInteractions(jsonConfig, cachedRemoteStreamer);
         verifyZeroInteractions(jsonService, cachedRemoteReader);
     }
-
-    /*@Test
-    public void requestFromContentRepoTest() throws IOException {
-        String bucket = "daBucket";
-        String key = "daKey";
-        String version = "daVersion";
-
-        final HttpGet expectedURI = buildExpectedRepoURI(bucket, key, version);
-
-        when(cachedRemoteStreamer.getResponse(any(HttpGet.class))).thenAnswer(new Answer<Object>() {
-            @Override
-            public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
-                HttpUriRequest argumentPassedToStreamer = (HttpUriRequest) invocationOnMock.getArguments()[0];
-                assertEquals(argumentPassedToStreamer.getMethod(), GET);
-                assertEquals(argumentPassedToStreamer.getURI(), expectedURI.getURI());
-                assertEquals(argumentPassedToStreamer.getAllHeaders().length, 0);
-                return mock(CloseableHttpResponse.class);
-            }
-        });
-
-        CloseableHttpResponse response = serviceUnderTest.requestFromContentRepo(bucket, key, version);
-
-        assertNotNull(response);
-
-        InOrder inOrder = inOrder(jsonConfig, cachedRemoteStreamer);
-        inOrder.verify(jsonConfig).getServer();
-        inOrder.verify(cachedRemoteStreamer).getResponse(any(HttpGet.class));
-        verifyNoMoreInteractions(jsonConfig, cachedRemoteStreamer);
-        verifyZeroInteractions(jsonService, cachedRemoteReader);
-    }*/
 
     @Test
     public void requestCachedObjectTest() throws IOException {

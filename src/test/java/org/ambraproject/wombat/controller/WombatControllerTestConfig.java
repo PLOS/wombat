@@ -46,7 +46,7 @@ import static org.mockito.Mockito.when;
 public class WombatControllerTestConfig extends WebMvcConfigurerAdapter {
 
     private static SiteResolver resolver = null;
-    public static final String MOCK_SITE_URL = ""; //http://unittest.com";
+    public static final String MOCK_SITE_URL = "";
 
     public TemplateDirectiveModel getEmptyTemplateDirectiveModel() {
         return new TemplateDirectiveModel() {

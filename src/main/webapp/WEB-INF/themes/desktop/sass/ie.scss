@@ -17,3 +17,32 @@
     font-size: $icon-height !important;
   }
 }
+.hero.overlay-dark > a:before, .hero.overlay-light > a:before {
+  background: none !important;
+}
+
+.hero.overlay-dark .hero-content:before {
+  position: absolute;
+  width: 100%;
+  height: 234px;
+  // we are using images here to match lemur.
+  background: image-url("gradient-dark_1x364.png") repeat-x bottom;
+  top: 0;
+  left: 0;
+  content: " ";
+}
+.hero.overlay-light .hero-content:before {
+  position: absolute;
+  width: 100%;
+  height: 234px;
+  background: image-url("gradient-light_1x364.png") repeat-x;
+  top: 0;
+  left: 0;
+  content: " ";
+}
+.hero .hero-content {
+  height: 234px !important;
+  padding-top: 103px !important;
+}
+
+

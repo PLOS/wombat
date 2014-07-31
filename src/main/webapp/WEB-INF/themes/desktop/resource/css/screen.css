@@ -4058,28 +4058,34 @@ header {
       background: #3c63af; }
   /* line 204, ../../sass/sections/_header.scss */
   .top-bar-section .head-search {
+    padding-top: 2px;
     padding-left: 1.25rem;
     padding-right: 0;
     text-align: right;
     border-left: 1px solid #efefef; }
-    /* line 213, ../../sass/sections/_header.scss */
+    /* line 214, ../../sass/sections/_header.scss */
     .top-bar-section .head-search form {
       background: white;
       display: inline-block; }
       /* line 217, ../../sass/sections/_header.scss */
+      .top-bar-section .head-search form input:focus,
+      .top-bar-section .head-search form select:focus,
+      .top-bar-section .head-search form textarea:focus,
+      .top-bar-section .head-search form button:focus {
+        outline: none; }
+      /* line 223, ../../sass/sections/_header.scss */
       .top-bar-section .head-search form legend, .top-bar-section .head-search form label {
         display: none; }
-      /* line 221, ../../sass/sections/_header.scss */
+      /* line 227, ../../sass/sections/_header.scss */
       .top-bar-section .head-search form fieldset {
         border: none;
         margin: 0;
         padding: 0 0.625rem;
         background-color: white; }
-      /* line 228, ../../sass/sections/_header.scss */
+      /* line 234, ../../sass/sections/_header.scss */
       .top-bar-section .head-search form input[type="text"] {
         margin: 0;
-        padding: 0;
-        line-height: 41px;
+        padding: 9px 0 10px;
         border: none;
         display: inline-block;
         width: 9.375rem;
@@ -4115,7 +4121,7 @@ header {
       /* line 111, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder :-ms-input-placeholder {
         color: #999999; }
-      /* line 246, ../../sass/sections/_header.scss */
+      /* line 251, ../../sass/sections/_header.scss */
       .top-bar-section .head-search form button[type="submit"] {
         background: white;
         border-left: none;
@@ -4126,10 +4132,10 @@ header {
         border: none;
         display: inline-block;
         top: 0 !important; }
-        /* line 254, ../../sass/sections/_header.scss */
+        /* line 259, ../../sass/sections/_header.scss */
         .top-bar-section .head-search form button[type="submit"] .search-icon {
           font-size: 1.25rem; }
-  /* line 264, ../../sass/sections/_header.scss */
+  /* line 269, ../../sass/sections/_header.scss */
   .top-bar-section ul > li.head-search:not(.has-form) > a {
     line-height: 32px;
     padding: 0;
@@ -4140,12 +4146,12 @@ header {
     .top-bar-section ul > li.head-search:not(.has-form) > a:hover, .top-bar-section ul > li.head-search:not(.has-form) > a a:hover {
       color: #3c63af;
       text-decoration: underline; }
-  /* line 271, ../../sass/sections/_header.scss */
+  /* line 276, ../../sass/sections/_header.scss */
   .top-bar-section ul > li.head-search:hover:not(.has-form) > a {
     background: #efefef;
     color: #3c63af; }
 
-/* line 277, ../../sass/sections/_header.scss */
+/* line 282, ../../sass/sections/_header.scss */
 .submit {
   position: relative;
   float: left;
@@ -4156,23 +4162,23 @@ header {
   font-family: "albert";
   font-size: 0.875rem;
   cursor: default; }
-  /* line 288, ../../sass/sections/_header.scss */
+  /* line 293, ../../sass/sections/_header.scss */
   .submit h3 {
     margin-top: 0.3125rem;
     font-size: 1.4375rem; }
-  /* line 293, ../../sass/sections/_header.scss */
+  /* line 298, ../../sass/sections/_header.scss */
   .submit ul {
     margin-left: 0.9375rem;
     display: block !important;
     list-style-type: disc;
     width: auto; }
-    /* line 298, ../../sass/sections/_header.scss */
+    /* line 303, ../../sass/sections/_header.scss */
     .submit ul li {
       margin-left: 0.9375rem;
       width: auto;
       cursor: default; }
 
-/* line 309, ../../sass/sections/_header.scss */
+/* line 314, ../../sass/sections/_header.scss */
 .top-bar-section .dropdown .submit li a {
   display: inline !important;
   line-height: normal !important;
@@ -4180,7 +4186,7 @@ header {
   font-family: "albert";
   font-size: 1rem;
   color: #3c63af !important; }
-  /* line 316, ../../sass/sections/_header.scss */
+  /* line 321, ../../sass/sections/_header.scss */
   .top-bar-section .dropdown .submit li a:hover {
     text-decoration: underline; }
 

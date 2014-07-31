@@ -3,7 +3,7 @@
 <#assign title = "Page Not Found" />
 <#include "common/head.ftl" />
 
-<body class="static ${journalKey?lower_case}"">
+<body class="static ${journalKey?lower_case}">
 <#include "common/header/header.ftl" />
 <h1>Page Not Found</h1>
 <div class="error-page">
@@ -36,6 +36,7 @@
   </div>
 </div>
 <#include "common/footer/footer.ftl" />
+<#include "common/bodyBottomJs.ftl" />
 
 </body>
 </html>

@@ -1,3 +1,23 @@
-.error-page{
+
+
+.static {
+  main{ margin-top: rem-calc(30); margin-bottom: rem-calc(70); }
+  h1{margin-bottom: rem-calc(30) }
+  background-color: $white;
+}
+
+.error-page {
+
+  .image {
+    @extend .plos-column-4;
+  }
+  .content {
+    @extend .plos-column-6;
+    p {
+      @extend .text-size-large;
+    }
+  }
 
 }
+
+

@@ -17,6 +17,8 @@
                  'about us'
                  'search'
  */
+header{background: $clr-header;}
+
 .head-top {
   @extend %bg-dark;
   @extend .text-center;
@@ -159,7 +161,7 @@ $width-nav: $block-grid-elements - $width-logo;
       top: 46px;
       right: -103px;
       padding: rem-calc(20 0 30);
-      background: white;
+      background: $white;
       box-shadow: $nav-main-box-shadow;
       @include border-radius();
       cursor: default;
@@ -267,7 +269,7 @@ $width-nav: $block-grid-elements - $width-logo;
   }
   // this is the only way I could find to override the white background on hover
   ul > li.head-search:hover:not(.has-form) > a {
-    background: $grey-light;
+    background: $clr-header;
     color: $plos-default;
   }
 }

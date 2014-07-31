@@ -20,4 +20,3 @@
 	</div>
 </footer>
 
-</div><#-- Close page-wrap from header.ftl -->

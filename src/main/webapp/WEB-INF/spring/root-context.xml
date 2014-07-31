@@ -25,6 +25,7 @@
     <security:custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
     <security:custom-filter position="CAS_FILTER" ref="casFilter" />
     <security:logout logout-success-url="/user/logout" />
+    <security:headers/>
   </security:http>
 
   <!-- This filter handles a Single Logout Request from the CAS Server -->

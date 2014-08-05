@@ -19,6 +19,7 @@
   <!--[if IE 8]>
   <script src="<@siteLink path="resource/js/vendor/html5shiv.js"/>"></script>
   <script src="<@siteLink path="resource/js/vendor/respond.min.js"/>"></script>
+<script src="<@siteLink path="resource/js/vendor/rem.min.js"/>"></script>
   <![endif]-->
   <link rel="shortcut icon" href="<@siteLink path="resource/img/favicon.ico"/>" type="image/x-icon"/>
 

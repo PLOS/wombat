@@ -5,7 +5,7 @@
 
 <body class="static ${journalKey?lower_case}">
 <#include "common/header/header.ftl" />
-<h1>Page Not Found</h1>
+<h1>Page Not Found - desktop</h1>
 <div class="error-page">
 
   <div class="image">

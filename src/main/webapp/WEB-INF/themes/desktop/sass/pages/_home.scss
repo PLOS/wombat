@@ -108,6 +108,7 @@ $image-container: ($image-width + $pad-small);
   &.dark-text,
   &.dark-text a {
     color: $clr-body-text;
+
   }
 
   // hero text
@@ -123,7 +124,8 @@ $image-container: ($image-width + $pad-small);
     }
     .authors {
       width: 75%;
-      float: left;
+      display: inline-block;
+      vertical-align: bottom;
     }
     p {
       @extend .no-margin;
@@ -132,8 +134,9 @@ $image-container: ($image-width + $pad-small);
       &.credit{
         @extend %small-italic;
         text-align: right;
-        float: right;
         width: 23%;
+        vertical-align: bottom;
+        display: inline-block;
       }
     }
   }

@@ -121,19 +121,19 @@ $image-container: ($image-width + $pad-small);
       font-size: $txt-size-h1;
       @extend .no-margin;
     }
+    .authors {
+      width: 75%;
+      float: left;
+    }
     p {
       @extend .no-margin;
       font-size: rem-calc($txt-size-medium-large);
-      &.authors {
-        width: 75%;
-        float: left;
-      }
+
       &.credit{
         @extend %small-italic;
         text-align: right;
-        bottom: $pad-small;
-        position: absolute;
-        right: $pad-default;
+        float: right;
+        width: 23%;
       }
     }
   }

@@ -36,7 +36,8 @@
   </div>
 </div>
 <#include "common/footer/footer.ftl" />
-<#include "common/bodyBottomJs.ftl" />
+<@js src="resource/js/global.js" />
+<@renderJs />
 
 </body>
 </html>

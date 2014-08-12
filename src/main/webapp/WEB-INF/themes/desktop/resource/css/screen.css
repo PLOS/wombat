@@ -1771,7 +1771,7 @@ blockquote p {
     display: inherit !important; } }
 /* sets up the body container */
 /* line 86, ../../sass/_scaffold.scss */
-.plos-row, .nav, .nav-main, .row, #ad-slot-bottom {
+.plos-row, .nav, .nav-main, .row, #ad-slot-bottom, .error-page {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -1780,11 +1780,11 @@ blockquote p {
   max-width: 61.25rem;
   *zoom: 1; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  .plos-row:before, .nav:before, .nav-main:before, .row:before, #ad-slot-bottom:before, .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after {
+  .plos-row:before, .nav:before, .nav-main:before, .row:before, #ad-slot-bottom:before, .error-page:before, .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after {
     content: " ";
     display: table; }
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after {
+  .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after {
     clear: both; }
 
 /* line 97, ../../sass/_scaffold.scss */
@@ -5127,13 +5127,16 @@ header {
   .plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover {
     color: #3c63af; }
 
-/* line 3, ../../sass/pages/_static.scss */
+/*%width-full {
+  @include plos-grid-column($pixelwidth: full-width);
+}*/
+/* line 5, ../../sass/pages/_static.scss */
 .static {
   background-color: white; }
-  /* line 4, ../../sass/pages/_static.scss */
+  /* line 6, ../../sass/pages/_static.scss */
   .static main {
     margin-top: 1.875rem;
     margin-bottom: 4.375rem; }
-  /* line 5, ../../sass/pages/_static.scss */
+  /* line 7, ../../sass/pages/_static.scss */
   .static h1 {
     margin-bottom: 1.875rem; }

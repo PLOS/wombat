@@ -9,15 +9,15 @@
 
 <body class="static ${journalKey?lower_case}">
 <#include "common/header/header.ftl" />
-<h1>Page Not Found</h1>
-<div class="error-page">
 
+<article class="error-page">
+  <h1>Page Not Found</h1>
   <div class="content">
     <p>Sorry, the page that you've requested cannot be found; it may have been moved, changed or removed.</p>
 
     <p>Thank you for your patience.</p>
   </div>
-</div>
+</article>
 <#include "common/footer/footer.ftl" />
 <@js src="resource/js/global.js" />
 <@renderJs />

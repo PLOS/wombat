@@ -16,7 +16,11 @@
   <section class="article-body">
     <div class="classifications">
       <p class="license-short" id="licenseShort"><span class="icon"></span>Open Access</p>
+
+      <#if article.title=="Research Article">
       <p class="peer-reviewed" id="peerReviewed"><span class="icon"></span>Peer-reviewed</p>
+      </#if>
+
       <div class="article-type" id="articleType">${article.articleType!""}</div>
     </div>
 

@@ -4355,7 +4355,7 @@ header {
     position: absolute;
     bottom: 0.625rem;
     left: 6.25rem;
-    margin: 0; }
+    margin: 0 0.625rem 0 0; }
   /* line 183, ../../sass/pages/_home.scss */
   .block .category, #article-list .category, #issue .category {
     margin-bottom: 0.3125rem; }

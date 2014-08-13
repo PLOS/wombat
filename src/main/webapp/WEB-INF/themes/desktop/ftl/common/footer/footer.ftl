@@ -1,6 +1,7 @@
 </main><#-- opened in header.ftl -->
 
 <footer id="pageftr">
+
   <div class="row">
     <div class="brand-column">
       <#macro footerLogo src alt>
@@ -17,5 +18,8 @@
       <#include "footerTertiaryLinks.ftl" />
 		</div>
 	</div>
+
+<@js src="resource/js/global.js" />
+
 </footer>
 

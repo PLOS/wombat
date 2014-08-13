@@ -26,7 +26,7 @@
     .icon {
       padding-right: $pad-xsmall;
       font-size: $txt-size-medium;
-      vertical-align: bottom;
+      vertical-align: -3px;
     }
   }
   .license-short {
@@ -41,8 +41,8 @@
     }
   }
   .article-type {
-    margin-top: $pad-small;
-    font-size: $txt-size-xxxsmall;
+    margin-top: $pad-xsmall;
+    font-size: $txt-size-xxsmall;
   }
 }
 .stub {

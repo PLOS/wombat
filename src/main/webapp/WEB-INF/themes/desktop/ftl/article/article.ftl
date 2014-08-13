@@ -21,7 +21,8 @@
     </div>
 
     <div id="articleText">
-    ${article.title}
+    <h1>${article.title}</h1>
+
     ${articleText}
     </div>
   </section>

@@ -15,7 +15,7 @@
 .classifications {
   @extend %txt-transform-fancy;
   margin-top: $pad-default + $pad-xsmall;
-  margin-bottom: $pad-default;
+  margin-bottom: $pad-small + $pad-xsmall;
   p {
     font-size: $txt-size-xxxxsmall;
     vertical-align: top;
@@ -40,6 +40,17 @@
   .article-type {
     margin-top: $pad-xsmall;
     font-size: $txt-size-xxsmall;
+  }
+}
+
+.article-body {
+  h1 {
+    font-size: $txt-size-xxxlarge;
+    margin-bottom: $pad-xsmall;
+    line-height: normal;
+    i, italic {
+     font-style: italic;
+    }
   }
 }
 .stub {

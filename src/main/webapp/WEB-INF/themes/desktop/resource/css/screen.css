@@ -1511,7 +1511,7 @@ main,
   margin-right: 0.625rem; }
 
 /* line 109, ../../sass/_scaffold.scss */
-.block.xx-small, .xx-small#article-list, #issue, .article-column {
+.block.xx-small, .xx-small#article-list, #issue {
   float: left;
   width: 10rem; }
 
@@ -1530,7 +1530,7 @@ main,
 }
 */
 /* line 127, ../../sass/_scaffold.scss */
-.block.large, .large#article-list, .large#issue, .article-body {
+.block.large, .large#article-list, .large#issue {
   float: left;
   width: 47.5rem; }
 
@@ -4222,7 +4222,7 @@ header {
     margin-left: 0.625rem;
     margin-right: 0.625rem; }
   /* line 25, ../../sass/pages/_home.scss */
-  .home .block.xx-small, .home .xx-small#article-list, .home #issue, .home .article-column {
+  .home .block.xx-small, .home .xx-small#article-list, .home #issue {
     float: left;
     width: 11.4375rem;
     margin-left: 0.625rem;
@@ -4246,7 +4246,7 @@ header {
     margin-left: 0.625rem;
     margin-right: 0.625rem; }
   /* line 41, ../../sass/pages/_home.scss */
-  .home .block.large, .home .large#article-list, .home .large#issue, .home .article-body {
+  .home .block.large, .home .large#article-list, .home .large#issue {
     float: left;
     width: 39.5625rem;
     margin-left: 0.625rem;
@@ -4748,29 +4748,54 @@ header {
   .static h1 {
     margin-bottom: 1.875rem; }
 
+/* line 10, ../../sass/pages/_article.scss */
+.article-body {
+  float: left;
+  width: 46.25rem;
+  margin-right: 1.25rem;
+  /*  temporary to make it look right even if the code is wrong */ }
+
 /* line 15, ../../sass/pages/_article.scss */
+.article-column {
+  float: left;
+  width: 11.25rem;
+  float: right;
+  /* temporary */
+  margin-left: 1.25rem;
+  /* temporary */ }
+
+/* line 21, ../../sass/pages/_article.scss */
 .classifications {
   margin-top: 1.5625rem;
-  margin-bottom: 1.25rem; }
-  /* line 19, ../../sass/pages/_article.scss */
+  margin-bottom: 0.9375rem; }
+  /* line 25, ../../sass/pages/_article.scss */
   .classifications p {
     font-size: 9px;
     vertical-align: top;
     display: inline-block; }
-    /* line 23, ../../sass/pages/_article.scss */
+    /* line 29, ../../sass/pages/_article.scss */
     .classifications p .icon {
       padding-right: 0.3125rem;
       font-size: 14px;
       vertical-align: -3px; }
-  /* line 29, ../../sass/pages/_article.scss */
+  /* line 35, ../../sass/pages/_article.scss */
   .classifications .license-short {
     padding-right: 0.625rem; }
-  /* line 40, ../../sass/pages/_article.scss */
+  /* line 46, ../../sass/pages/_article.scss */
   .classifications .article-type {
     margin-top: 0.3125rem;
     font-size: 11px; }
 
-/* line 45, ../../sass/pages/_article.scss */
+/* line 53, ../../sass/pages/_article.scss */
+.article-body h1 {
+  font-size: 26px;
+  margin-bottom: 0.625rem;
+  line-height: normal; }
+  /* line 57, ../../sass/pages/_article.scss */
+  .article-body h1 i, .article-body h1 italic {
+    font-style: italic; }
+
+/* line 62, ../../sass/pages/_article.scss */
 .stub {
   background: powderblue;
   color: #999;

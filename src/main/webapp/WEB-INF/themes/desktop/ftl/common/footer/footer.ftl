@@ -1,6 +1,5 @@
-</div><#-- Close pagebdy from header.ftl -->
-</div><#-- Close pagebdy-wrap from header.ftl -->
-</main>
+</main><#-- opened in header.ftl -->
+
 <footer id="pageftr">
   <div class="row">
     <div class="brand-column">

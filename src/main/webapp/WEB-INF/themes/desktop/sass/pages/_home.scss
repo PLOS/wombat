@@ -12,41 +12,41 @@ $image-container: ($image-width + $pad-small);
 //2. use pixel widths - Digital Pulp submitted designs with columns in pixel widths that vary from page to page.
 // questions:
 // I am using foundation settings values.
+.home {
+  ///////
+  // home specific colors
+  /////
+  background: $clr-header;
 
-%width-full {
-  @include plos-grid-column($pixelwidth: full-width);
+  %width-full {
+    @include plos-grid-column($pixelwidth: full-width);
+  }
+
+  %width-xx-small {
+    @include plos-grid-column(183);
+  }
+
+  %width-x-small {
+    @include plos-grid-column(267);
+  }
+
+  %width-small {
+    @include plos-grid-column(306);
+  }
+
+  %width-medium {
+    @include plos-grid-column(470);
+  }
+
+  %width-large {
+    @include plos-grid-column(633);
+  }
 }
-
-%width-xx-small {
-  @include plos-grid-column(183);
-}
-
-%width-x-small {
-  @include plos-grid-column(267);
-}
-
-%width-small {
-  @include plos-grid-column(306);
-}
-
-%width-medium {
-  @include plos-grid-column(470);
-}
-
-%width-large {
-  @include plos-grid-column(633);
-}
-
 .carousel-wrap.small {
-  //more styling for this in _components.scss
+  //more styling for carousel in _components.scss
   @extend %width-small;
   height: $block-height;
 }
-
-///////
-// home specific colors
-/////
-.home { background: $clr-header; }
 
 ///////
 //page scaffolding

@@ -1,23 +1,21 @@
 
 /*
  *       These are the header styles
-  page-wrap
-   topbanner
-   pagehdr-wrap
-     nav-user (***production has "user")
-     pagehdr
-       contain-to-grid
-         nav-main (foundation topbar)
-           logo
-           top-bar-section
-               ul.nav-elements /
-               li:
-                 'browse'
-                 'for authors'
-                 'about us'
-                 'search'
+  header
+   topslot (banner ad)
+   nav-user (***production has "user")
+   pagehdr
+       nav-main (foundation)
+         logo
+         top-bar-section  (foundation)
+             ul.nav-elements /
+             li:
+               'browse'
+               'for authors'
+               'about us'
+               'search'
  */
-header{background: $clr-header;}
+header { background: $clr-header; }
 
 .head-top {
   @extend %bg-dark;
@@ -43,7 +41,6 @@ header{background: $clr-header;}
 $width-logo: 5;
 $width-search: 4;
 $width-nav: $block-grid-elements - $width-logo;
-
 
 .nav {
   @extend .plos-row;

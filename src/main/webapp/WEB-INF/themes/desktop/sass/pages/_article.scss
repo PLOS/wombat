@@ -1,16 +1,22 @@
 //article pages structure
   //header
   //main -- plos-grid-container is assigned to pagebdy in _scaffold.scss
-    //section.article-body -- plos-grid-column is assigned to %width-large in _scaffold.scss
-      // main part of the contents
-    //aside.article-column -- plos-grid-column is assigned to %width-xx-small
-      //right column contents
+    //.plos-row
+      //section.article-body -- plos-grid-column is assigned to %width-large in _scaffold.scss
+        // main part of the contents
+      //aside.article-column -- plos-grid-column is assigned to %width-xx-small
+        //right column contents
 
 .article-body {
-  @extend %width-large;
+  //@extend %width-large;
+  @include plos-grid-column(740, $gutter: none);
+  margin-right: $pad-default;  /*  temporary to make it look right even if the code is wrong */
 }
 .article-column {
-  @extend %width-xx-small;
+  //@extend %width-xx-small;
+  @include plos-grid-column(180, $gutter: none);
+  float: right; /* temporary */
+  margin-left: $pad-default; /* temporary */
 }
 .classifications {
   @extend %txt-transform-fancy;
@@ -46,7 +52,7 @@
 .article-body {
   h1 {
     font-size: $txt-size-xxxlarge;
-    margin-bottom: $pad-xsmall;
+    margin-bottom: $pad-small;
     line-height: normal;
     i, italic {
      font-style: italic;

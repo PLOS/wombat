@@ -12,25 +12,24 @@
   <body class="article ${journalKey?lower_case}">
 
   <#include "../common/header/header.ftl" />
+  <div class="plos-row">
+    <section class="article-body">
+      <div class="classifications">
+        <p class="license-short" id="licenseShort"><span class="icon"></span>Open Access</p>
+        <p class="peer-reviewed" id="peerReviewed"><span class="icon"></span>Peer-reviewed</p>
+        <div class="article-type" id="articleType">${article.articleType!""}</div>
+      </div>
 
-  <section class="article-body">
-    <div class="classifications">
-      <p class="license-short" id="licenseShort"><span class="icon"></span>Open Access</p>
-      <p class="peer-reviewed" id="peerReviewed"><span class="icon"></span>Peer-reviewed</p>
-      <div class="article-type" id="articleType">${article.articleType!""}</div>
-    </div>
+      <div id="articleText">
+      <h1>${article.title}</h1>
 
-    <div id="articleText">
-    <h1>${article.title}</h1>
+      ${articleText}
+      </div>
+    </section>
+    <aside class="stub article-column">
 
-    ${articleText}
-    </div>
-  </section>
-  <aside class="stub article-column">
-
-
-
-  </aside>
+    </aside>
+  </div>
   <#include "../common/footer/footer.ftl" />
 
   <@renderJs />

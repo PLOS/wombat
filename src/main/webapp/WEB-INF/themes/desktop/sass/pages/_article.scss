@@ -1,0 +1,49 @@
+//article pages structure
+  //header
+  //main -- plos-grid-container is assigned to pagebdy in _scaffold.scss
+    //section.article-body -- plos-grid-column is assigned to %width-large in _scaffold.scss
+      // main part of the contents
+    //aside.article-column -- plos-grid-column is assigned to %width-xx-small
+      //right column contents
+
+.article-body {
+  @extend %width-large;
+}
+.article-column {
+  @extend %width-xx-small;
+}
+.classifications {
+  @extend %txt-transform-fancy;
+  margin-top: $pad-default + $pad-xsmall;
+  margin-bottom: $pad-default;
+  p {
+    font-size: $txt-size-xxxxsmall;
+    vertical-align: top;
+    display: inline-block;
+    .icon {
+      padding-right: $pad-xsmall;
+      font-size: $txt-size-medium;
+      vertical-align: -3px;
+    }
+  }
+  .license-short {
+   .icon {
+      @extend .icon-unlock;
+    }
+     padding-right: $pad-small;
+   }
+  .peer-reviewed {
+    .icon {
+      @extend .icon-edit;
+    }
+  }
+  .article-type {
+    margin-top: $pad-xsmall;
+    font-size: $txt-size-xxsmall;
+  }
+}
+.stub {
+  background: powderblue;
+  color: #999;
+  height: 700px;
+}

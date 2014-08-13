@@ -1378,7 +1378,7 @@ blockquote p {
   .show-for-print {
     display: inherit !important; } }
 /* sets up the body container */
-/* line 86, ../../sass/_scaffold.scss */
+/* line 87, ../../sass/_scaffold.scss */
 .plos-row, .nav, .nav-main, .row, #ad-slot-bottom, .error-page {
   width: 100%;
   margin-left: auto;
@@ -1395,96 +1395,93 @@ blockquote p {
   .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after {
     clear: both; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-0 {
   width: 0rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-1 {
   width: 5.10417rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-2 {
   width: 10.20833rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-3, footer .link-column {
   width: 15.3125rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-4, .error-page .image {
   width: 20.41667rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-5, footer .brand-column {
   width: 25.52083rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-6, .error-page .content {
   width: 30.625rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-7 {
   width: 35.72917rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-8 {
   width: 40.83333rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-9 {
   width: 45.9375rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-10 {
   width: 51.04167rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 97, ../../sass/_scaffold.scss */
+/* line 98, ../../sass/_scaffold.scss */
 .plos-column-11 {
   width: 56.14583rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 103, ../../sass/_scaffold.scss */
+/* line 100, ../../sass/_scaffold.scss */
 main,
-.head-main,
-#pagehdr-wrap,
-#pagehdr,
-#pageftr .row {
+#pagehdr {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -1497,23 +1494,45 @@ main,
   margin: 0 auto; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
   main:before, main:after,
-  .head-main:before,
-  .head-main:after,
-  #pagehdr-wrap:before,
-  #pagehdr-wrap:after,
   #pagehdr:before,
-  #pagehdr:after,
-  #pageftr .row:before,
-  #pageftr .row:after {
+  #pagehdr:after {
     content: " ";
     display: table; }
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   main:after,
-  .head-main:after,
-  #pagehdr-wrap:after,
-  #pagehdr:after,
-  #pageftr .row:after {
+  #pagehdr:after {
     clear: both; }
+
+/* line 105, ../../sass/_scaffold.scss */
+.hero, #billboard {
+  float: left;
+  width: 60rem;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 109, ../../sass/_scaffold.scss */
+.block.xx-small, .xx-small#article-list, #issue, .article-column {
+  float: left;
+  width: 10rem; }
+
+/*
+
+%width-x-small {
+  @include plos-grid-column(267);
+}
+
+%width-small {
+  @include plos-grid-column(306);
+}
+
+%width-medium {
+  @include plos-grid-column(470);
+}
+*/
+/* line 127, ../../sass/_scaffold.scss */
+.block.large, .large#article-list, .large#issue, .article-body {
+  float: left;
+  width: 47.5rem; }
 
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -1530,7 +1549,7 @@ main,
 }*/
 /* line 14, ../../sass/vendor/_font-awesome.scss */
 .fa, .carousel-wrap.small .carousel-control .jcarousel-prev,
-.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .top-bar-section .head-search form button[type="submit"] .search-icon {
+.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-unlock, .classifications .license-short .icon, .icon-edit, .classifications .peer-reviewed .icon, .top-bar-section .head-search form button[type="submit"] .search-icon {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1605,12 +1624,12 @@ main,
 
 /* line 74, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-left, .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
+.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .pull-left.icon-unlock, .classifications .license-short .pull-left.icon, .pull-left.icon-edit, .classifications .peer-reviewed .pull-left.icon, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
   margin-right: .3em; }
 
 /* line 77, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-right, .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
+.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .pull-right.icon-unlock, .classifications .license-short .pull-right.icon, .pull-right.icon-edit, .classifications .peer-reviewed .pull-right.icon, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
   margin-left: .3em; }
 
 /* line 80, ../../sass/vendor/_font-awesome.scss */
@@ -1993,7 +2012,7 @@ main,
   content: "\f043"; }
 
 /* line 383, ../../sass/vendor/_font-awesome.scss */
-.fa-edit:before,
+.fa-edit:before, .icon-edit:before, .classifications .peer-reviewed .icon:before,
 .fa-pencil-square-o:before {
   content: "\f044"; }
 
@@ -2902,7 +2921,7 @@ main,
   content: "\f13d"; }
 
 /* line 1071, ../../sass/vendor/_font-awesome.scss */
-.fa-unlock-alt:before {
+.fa-unlock-alt:before, .icon-unlock:before, .classifications .license-short .icon:before {
   content: "\f13e"; }
 
 /* line 1074, ../../sass/vendor/_font-awesome.scss */
@@ -3560,38 +3579,43 @@ main,
 @font-face {
   font-family: "FontAwesome";
   src: url('../fonts/fontawesome-webfont.ttf?1401731168') format('truetype'), url('../fonts/FontAwesome.otf?1401731168') format('opentype'), url('../fonts/fontawesome-webfont.svg?1401731168') format('svg'), url('../fonts/fontawesome-webfont.woff?1401731168') format('woff'); }
-/* line 12, ../../sass/_typography.scss */
+/* line 8, ../../sass/_typography.scss */
+.classifications {
+  font-family: "albert";
+  text-transform: uppercase; }
+
+/* line 17, ../../sass/_typography.scss */
 .more-link > a, #issue .boxtitle a, .block .category, #article-list .category, #issue .category, #article-list h3 {
   font-size: 0.875rem;
   font-family: "albert";
   text-transform: uppercase; }
 
-/* line 17, ../../sass/_typography.scss */
+/* line 22, ../../sass/_typography.scss */
 .more-link > a {
   font-family: "arial"; }
 
-/* line 21, ../../sass/_typography.scss */
+/* line 26, ../../sass/_typography.scss */
 #issue .boxtitle a {
   font-size: 1.25rem; }
 
-/* line 26, ../../sass/_typography.scss */
+/* line 31, ../../sass/_typography.scss */
 #submission-links h3, #social-links h3 {
   font-size: 1.25rem;
   color: white;
   font-family: "albert"; }
 
-/* line 32, ../../sass/_typography.scss */
+/* line 37, ../../sass/_typography.scss */
 .submit h3, #submission-links h3 {
   padding-bottom: 1.0625rem;
   margin-bottom: 1.0625rem;
   box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
   text-align: center; }
 
-/* line 38, ../../sass/_typography.scss */
+/* line 43, ../../sass/_typography.scss */
 .block .category, #article-list .category, #issue .category, #article-list h3 {
   margin-bottom: 0.625rem; }
 
-/* line 43, ../../sass/_typography.scss */
+/* line 48, ../../sass/_typography.scss */
 .carousel-wrap.small .block-header, #blogs .block-header {
   color: white;
   padding: 0 1.25rem;
@@ -3599,42 +3623,42 @@ main,
   font-size: 1rem;
   line-height: 2.5rem; }
 
-/* line 74, ../../sass/_typography.scss */
+/* line 80, ../../sass/_typography.scss */
 .carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .carousel-wrap.small .carousel li h3 a, .block .title a, #article-list .title a, #issue .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
   color: #333333;
   text-decoration: none; }
-  /* line 62, ../../sass/_typography.scss */
+  /* line 68, ../../sass/_typography.scss */
   .carousel-wrap.small .carousel li h3:hover, .block .title:hover, #article-list .title:hover, #issue .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .block .title a a:hover, #article-list .title a a:hover, #issue .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
     color: #3c63af;
     text-decoration: none; }
 
-/* line 78, ../../sass/_typography.scss */
+/* line 84, ../../sass/_typography.scss */
 #blogs .block-header, #blogs .block-header a {
   color: white;
   text-decoration: none; }
-  /* line 62, ../../sass/_typography.scss */
+  /* line 68, ../../sass/_typography.scss */
   #blogs .block-header:hover, #blogs .block-header a:hover, #blogs .block-header a:hover, #blogs .block-header a a:hover {
     color: white;
     text-decoration: underline; }
 
-/* line 86, ../../sass/_typography.scss */
+/* line 92, ../../sass/_typography.scss */
 .carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, #article-list .date, #issue .date, .block .credits, #article-list .credits, #issue .credits, #blogs #blogrss .postauthor {
   font-size: 0.625rem;
   font-style: italic; }
 
-/* line 90, ../../sass/_typography.scss */
+/* line 96, ../../sass/_typography.scss */
 #issue .boxtitle a {
   letter-spacing: -0.5px; }
 
-/* line 93, ../../sass/_typography.scss */
+/* line 99, ../../sass/_typography.scss */
 .no-margin, .hero .hero-content h4, .hero .hero-content p {
   margin-bottom: 0; }
 
-/* line 120, ../../sass/_typography.scss */
+/* line 126, ../../sass/_typography.scss */
 .note, .caption {
   color: #cccccc; }
 
-/* line 121, ../../sass/_typography.scss */
+/* line 127, ../../sass/_typography.scss */
 .text-size-large, .error-page .content p {
   font-size: 18px; }
 
@@ -3808,7 +3832,7 @@ have a fixed width and height (but it's not required).
 .icon-email {
   content: '\f003'; }
 
-/* line 210, ../../sass/_components.scss */
+/* line 220, ../../sass/_components.scss */
 .aria-text, #social-links ul > li .icon-text {
   position: absolute;
   top: -9999px;
@@ -3831,7 +3855,7 @@ footer {
   footer a, footer a:visited, footer a:focus, footer a:active {
     color: #cccccc;
     text-decoration: none; }
-    /* line 62, ../../sass/_typography.scss */
+    /* line 68, ../../sass/_typography.scss */
     footer a:hover, footer a a:hover, footer a:visited:hover, footer a:visited a:hover, footer a:focus:hover, footer a:focus a:hover, footer a:active:hover, footer a:active a:hover {
       color: #cccccc;
       text-decoration: underline; }
@@ -3870,37 +3894,35 @@ footer {
 
 /*
  *       These are the header styles
-  page-wrap
-   topbanner
-   pagehdr-wrap
-     nav-user (***production has "user")
-     pagehdr
-       contain-to-grid
-         nav-main (foundation topbar)
-           logo
-           top-bar-section
-               ul.nav-elements /
-               li:
-                 'browse'
-                 'for authors'
-                 'about us'
-                 'search'
+  header
+   topslot (banner ad)
+   nav-user (***production has "user")
+   pagehdr
+       nav-main (foundation)
+         logo
+         top-bar-section  (foundation)
+             ul.nav-elements /
+             li:
+               'browse'
+               'for authors'
+               'about us'
+               'search'
  */
-/* line 20, ../../sass/sections/_header.scss */
+/* line 18, ../../sass/sections/_header.scss */
 header {
   background: #efefef; }
 
-/* line 22, ../../sass/sections/_header.scss */
+/* line 20, ../../sass/sections/_header.scss */
 .head-top {
   border-bottom-width: 6px;
   border-bottom-style: solid;
   padding: 0.3125rem 0.625rem; }
-  /* line 29, ../../sass/sections/_header.scss */
+  /* line 27, ../../sass/sections/_header.scss */
   .head-top .center {
     width: 748px;
     margin: 0 auto;
     height: 90px; }
-  /* line 34, ../../sass/sections/_header.scss */
+  /* line 32, ../../sass/sections/_header.scss */
   .head-top .title {
     width: 18px;
     height: 88px;
@@ -3908,14 +3930,14 @@ header {
     background: url('../img/text.vert.ad.gif') no-repeat 0 6px;
     float: left; }
 
-/* line 50, ../../sass/sections/_header.scss */
+/* line 47, ../../sass/sections/_header.scss */
 .nav .nav-user {
   font-weight: bold; }
-  /* line 54, ../../sass/sections/_header.scss */
+  /* line 51, ../../sass/sections/_header.scss */
   .nav .nav-user > li {
     margin-top: -0.3125rem;
     margin-left: 0.25rem; }
-    /* line 58, ../../sass/sections/_header.scss */
+    /* line 55, ../../sass/sections/_header.scss */
     .nav .nav-user > li > a {
       background: transparent;
       padding: 0.875rem 1rem 0.5rem;
@@ -3925,15 +3947,15 @@ header {
       /* line 11, ../../sass/_components.scss */
       .nav .nav-user > li > a:hover {
         background: #333333; }
-      /* line 62, ../../sass/sections/_header.scss */
+      /* line 59, ../../sass/sections/_header.scss */
       .nav .nav-user > li > a:hover {
         color: white;
         background: #3c63af; }
-  /* line 69, ../../sass/sections/_header.scss */
+  /* line 66, ../../sass/sections/_header.scss */
   .nav .nav-user li.highlighted > a {
     color: white; }
 
-/* line 77, ../../sass/sections/_header.scss */
+/* line 74, ../../sass/sections/_header.scss */
 .logo {
   width: 25.52083rem;
   float: left;
@@ -3946,21 +3968,21 @@ header {
 /* using Foundation Top Bar
  all @extend .class are Foundation
  */
-/* line 94, ../../sass/sections/_header.scss */
+/* line 91, ../../sass/sections/_header.scss */
 .nav-main {
   font-family: "albert"; }
-  /* line 98, ../../sass/sections/_header.scss */
+  /* line 95, ../../sass/sections/_header.scss */
   .nav-main > .dropdown {
     visibility: hidden; }
 
-/* line 104, ../../sass/sections/_header.scss */
+/* line 101, ../../sass/sections/_header.scss */
 .top-bar-section {
   width: 35.72917rem;
   float: right; }
-  /* line 108, ../../sass/sections/_header.scss */
+  /* line 105, ../../sass/sections/_header.scss */
   .top-bar-section ul.nav-elements {
     padding-right: 0; }
-  /* line 113, ../../sass/sections/_header.scss */
+  /* line 110, ../../sass/sections/_header.scss */
   .top-bar-section ul > li.has-dropdown {
     float: left;
     cursor: pointer;
@@ -3971,14 +3993,14 @@ header {
     font-family: "albert";
     font-size: 20px;
     color: #3c63af; }
-    /* line 123, ../../sass/sections/_header.scss */
+    /* line 120, ../../sass/sections/_header.scss */
     .top-bar-section ul > li.has-dropdown:first-child {
       border-left: none;
       margin-left: 0; }
-    /* line 127, ../../sass/sections/_header.scss */
+    /* line 124, ../../sass/sections/_header.scss */
     .top-bar-section ul > li.has-dropdown:last-child {
       border-left: 1px solid #efefef; }
-  /* line 132, ../../sass/sections/_header.scss */
+  /* line 129, ../../sass/sections/_header.scss */
   .top-bar-section ul > li.has-dropdown.hover {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -3990,10 +4012,10 @@ header {
     background: white;
     padding-bottom: 12px;
     color: #333333; }
-    /* line 140, ../../sass/sections/_header.scss */
+    /* line 137, ../../sass/sections/_header.scss */
     .top-bar-section ul > li.has-dropdown.hover:hover + li {
       border-left: 1px solid #e3e3e3; }
-    /* line 143, ../../sass/sections/_header.scss */
+    /* line 140, ../../sass/sections/_header.scss */
     .top-bar-section ul > li.has-dropdown.hover > ul.dropdown {
       top: 45px;
       -moz-border-radius: 5px;
@@ -4005,7 +4027,7 @@ header {
       padding-bottom: 1.875rem;
       background: white;
       box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15); }
-    /* line 159, ../../sass/sections/_header.scss */
+    /* line 156, ../../sass/sections/_header.scss */
     .top-bar-section ul > li.has-dropdown.hover .calloutcontainer {
       width: 33.125rem;
       top: 46px;
@@ -4017,7 +4039,7 @@ header {
       -webkit-border-radius: 5px;
       border-radius: 5px;
       cursor: default; }
-      /* line 168, ../../sass/sections/_header.scss */
+      /* line 165, ../../sass/sections/_header.scss */
       .top-bar-section ul > li.has-dropdown.hover .calloutcontainer .dropdowncallout {
         float: right;
         display: inline-block;
@@ -4027,7 +4049,7 @@ header {
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
         border-radius: 5px; }
-    /* line 180, ../../sass/sections/_header.scss */
+    /* line 177, ../../sass/sections/_header.scss */
     .top-bar-section ul > li.has-dropdown.hover a.btn {
       background: #333333;
       padding: 1.25rem;
@@ -4041,10 +4063,10 @@ header {
       /* line 11, ../../sass/_components.scss */
       .top-bar-section ul > li.has-dropdown.hover a.btn:hover {
         background: #333333; }
-      /* line 187, ../../sass/sections/_header.scss */
+      /* line 184, ../../sass/sections/_header.scss */
       .top-bar-section ul > li.has-dropdown.hover a.btn:hover {
         background: #3c63af; }
-  /* line 192, ../../sass/sections/_header.scss */
+  /* line 189, ../../sass/sections/_header.scss */
   .top-bar-section .dropdownanchor, .top-bar-section ul > li.has-dropdown.hover ul.dropdown li a, .top-bar-section ul > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a {
     width: 100%;
     line-height: 1;
@@ -4052,37 +4074,37 @@ header {
     font-family: "arial";
     font-size: 14px;
     white-space: pre-wrap; }
-    /* line 199, ../../sass/sections/_header.scss */
+    /* line 196, ../../sass/sections/_header.scss */
     .top-bar-section .dropdownanchor:hover, .top-bar-section ul > li.has-dropdown.hover ul.dropdown li a:hover, .top-bar-section ul > li.has-dropdown.hover .calloutcontainer .dropdowncallout li a:hover {
       color: white;
       background: #3c63af; }
-  /* line 204, ../../sass/sections/_header.scss */
+  /* line 201, ../../sass/sections/_header.scss */
   .top-bar-section .head-search {
     padding-top: 2px;
     padding-left: 1.25rem;
     padding-right: 0;
     text-align: right;
     border-left: 1px solid #efefef; }
-    /* line 214, ../../sass/sections/_header.scss */
+    /* line 211, ../../sass/sections/_header.scss */
     .top-bar-section .head-search form {
       background: white;
       display: inline-block; }
-      /* line 217, ../../sass/sections/_header.scss */
+      /* line 214, ../../sass/sections/_header.scss */
       .top-bar-section .head-search form input:focus,
       .top-bar-section .head-search form select:focus,
       .top-bar-section .head-search form textarea:focus,
       .top-bar-section .head-search form button:focus {
         outline: none; }
-      /* line 223, ../../sass/sections/_header.scss */
+      /* line 220, ../../sass/sections/_header.scss */
       .top-bar-section .head-search form legend, .top-bar-section .head-search form label {
         display: none; }
-      /* line 227, ../../sass/sections/_header.scss */
+      /* line 224, ../../sass/sections/_header.scss */
       .top-bar-section .head-search form fieldset {
         border: none;
         margin: 0;
         padding: 0 0.625rem;
         background-color: white; }
-      /* line 234, ../../sass/sections/_header.scss */
+      /* line 231, ../../sass/sections/_header.scss */
       .top-bar-section .head-search form input[type="text"] {
         margin: 0;
         padding: 9px 0 10px;
@@ -4093,35 +4115,35 @@ header {
         font-size: 20px;
         color: #636363;
         top: 0 !important; }
-      /* line 100, ../../sass/_typography.scss */
+      /* line 106, ../../sass/_typography.scss */
       .top-bar-section .head-search form ::-webkit-input-placeholder {
         color: #333333; }
-      /* line 103, ../../sass/_typography.scss */
+      /* line 109, ../../sass/_typography.scss */
       .top-bar-section .head-search form :-moz-placeholder {
         /* Firefox 18- */
         color: #333333; }
-      /* line 107, ../../sass/_typography.scss */
+      /* line 113, ../../sass/_typography.scss */
       .top-bar-section .head-search form ::-moz-placeholder {
         /* Firefox 19+ */
         color: #333333; }
-      /* line 111, ../../sass/_typography.scss */
+      /* line 117, ../../sass/_typography.scss */
       .top-bar-section .head-search form :-ms-input-placeholder {
         color: #333333; }
-      /* line 100, ../../sass/_typography.scss */
+      /* line 106, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder ::-webkit-input-placeholder {
         color: #999999; }
-      /* line 103, ../../sass/_typography.scss */
+      /* line 109, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder :-moz-placeholder {
         /* Firefox 18- */
         color: #999999; }
-      /* line 107, ../../sass/_typography.scss */
+      /* line 113, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder ::-moz-placeholder {
         /* Firefox 19+ */
         color: #999999; }
-      /* line 111, ../../sass/_typography.scss */
+      /* line 117, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder :-ms-input-placeholder {
         color: #999999; }
-      /* line 251, ../../sass/sections/_header.scss */
+      /* line 248, ../../sass/sections/_header.scss */
       .top-bar-section .head-search form button[type="submit"] {
         background: white;
         border-left: none;
@@ -4132,26 +4154,26 @@ header {
         border: none;
         display: inline-block;
         top: 0 !important; }
-        /* line 259, ../../sass/sections/_header.scss */
+        /* line 256, ../../sass/sections/_header.scss */
         .top-bar-section .head-search form button[type="submit"] .search-icon {
           font-size: 1.25rem; }
-  /* line 269, ../../sass/sections/_header.scss */
+  /* line 266, ../../sass/sections/_header.scss */
   .top-bar-section ul > li.head-search:not(.has-form) > a {
     line-height: 32px;
     padding: 0;
     font-size: 0.8125rem;
     color: #3c63af;
     text-decoration: none; }
-    /* line 62, ../../sass/_typography.scss */
+    /* line 68, ../../sass/_typography.scss */
     .top-bar-section ul > li.head-search:not(.has-form) > a:hover, .top-bar-section ul > li.head-search:not(.has-form) > a a:hover {
       color: #3c63af;
       text-decoration: underline; }
-  /* line 276, ../../sass/sections/_header.scss */
+  /* line 273, ../../sass/sections/_header.scss */
   .top-bar-section ul > li.head-search:hover:not(.has-form) > a {
     background: #efefef;
     color: #3c63af; }
 
-/* line 282, ../../sass/sections/_header.scss */
+/* line 279, ../../sass/sections/_header.scss */
 .submit {
   position: relative;
   float: left;
@@ -4162,23 +4184,23 @@ header {
   font-family: "albert";
   font-size: 0.875rem;
   cursor: default; }
-  /* line 293, ../../sass/sections/_header.scss */
+  /* line 290, ../../sass/sections/_header.scss */
   .submit h3 {
     margin-top: 0.3125rem;
     font-size: 1.4375rem; }
-  /* line 298, ../../sass/sections/_header.scss */
+  /* line 295, ../../sass/sections/_header.scss */
   .submit ul {
     margin-left: 0.9375rem;
     display: block !important;
     list-style-type: disc;
     width: auto; }
-    /* line 303, ../../sass/sections/_header.scss */
+    /* line 300, ../../sass/sections/_header.scss */
     .submit ul li {
       margin-left: 0.9375rem;
       width: auto;
       cursor: default; }
 
-/* line 314, ../../sass/sections/_header.scss */
+/* line 311, ../../sass/sections/_header.scss */
 .top-bar-section .dropdown .submit li a {
   display: inline !important;
   line-height: normal !important;
@@ -4186,59 +4208,53 @@ header {
   font-family: "albert";
   font-size: 1rem;
   color: #3c63af !important; }
-  /* line 321, ../../sass/sections/_header.scss */
+  /* line 318, ../../sass/sections/_header.scss */
   .top-bar-section .dropdown .submit li a:hover {
     text-decoration: underline; }
 
-/* line 16, ../../sass/pages/_home.scss */
-.hero, #billboard {
-  float: left;
-  width: 60rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-
-/* line 20, ../../sass/pages/_home.scss */
-.block.xx-small, .xx-small#article-list, #issue {
-  float: left;
-  width: 11.4375rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-
-/* line 24, ../../sass/pages/_home.scss */
-.block.x-small, .x-small#issue, #article-list {
-  float: left;
-  width: 16.6875rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-
-/* line 28, ../../sass/pages/_home.scss */
-.carousel-wrap.small, .block.small, .small#article-list, .small#issue, #twitter, .linkbox, #submission-links, #social-links, #blogs, #ad-slot-bottom .ad-item {
-  float: left;
-  width: 19.125rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-
-/* line 32, ../../sass/pages/_home.scss */
-.block.medium, .medium#article-list, .medium#issue {
-  float: left;
-  width: 29.375rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-
-/* line 36, ../../sass/pages/_home.scss */
-.block.large, .large#article-list, .large#issue {
-  float: left;
-  width: 39.5625rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-
-/* line 40, ../../sass/pages/_home.scss */
-.carousel-wrap.small {
-  height: 15.625rem; }
-
-/* line 49, ../../sass/pages/_home.scss */
+/* line 15, ../../sass/pages/_home.scss */
 .home {
   background: #efefef; }
+  /* line 21, ../../sass/pages/_home.scss */
+  .home .hero, .home #billboard {
+    float: left;
+    width: 60rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem; }
+  /* line 25, ../../sass/pages/_home.scss */
+  .home .block.xx-small, .home .xx-small#article-list, .home #issue, .home .article-column {
+    float: left;
+    width: 11.4375rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem; }
+  /* line 29, ../../sass/pages/_home.scss */
+  .home .block.x-small, .home .x-small#issue, .home #article-list {
+    float: left;
+    width: 16.6875rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem; }
+  /* line 33, ../../sass/pages/_home.scss */
+  .home .carousel-wrap.small, .home .block.small, .home .small#article-list, .home .small#issue, .home #twitter, .home .linkbox, .home #submission-links, .home #social-links, .home #blogs, .home #ad-slot-bottom .ad-item, #ad-slot-bottom .home .ad-item {
+    float: left;
+    width: 19.125rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem; }
+  /* line 37, ../../sass/pages/_home.scss */
+  .home .block.medium, .home .medium#article-list, .home .medium#issue {
+    float: left;
+    width: 29.375rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem; }
+  /* line 41, ../../sass/pages/_home.scss */
+  .home .block.large, .home .large#article-list, .home .large#issue, .home .article-body {
+    float: left;
+    width: 39.5625rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem; }
+
+/* line 45, ../../sass/pages/_home.scss */
+.carousel-wrap.small {
+  height: 15.625rem; }
 
 /* line 80, ../../sass/pages/_home.scss */
 .hero {
@@ -4314,7 +4330,7 @@ header {
     .block .blurb a, #article-list .blurb a, #issue .blurb a {
       color: #3c63af;
       text-decoration: none; }
-      /* line 62, ../../sass/_typography.scss */
+      /* line 68, ../../sass/_typography.scss */
       .block .blurb a:hover, #article-list .blurb a:hover, #issue .blurb a:hover, .block .blurb a a:hover, #article-list .blurb a a:hover, #issue .blurb a a:hover {
         color: #3c63af;
         text-decoration: underline; }
@@ -4405,7 +4421,7 @@ header {
     font-size: 0.875rem;
     color: #636363;
     text-decoration: none; }
-    /* line 62, ../../sass/_typography.scss */
+    /* line 68, ../../sass/_typography.scss */
     .row.three .row-small-blocks .small .title a:hover, .row.three .row-small-blocks .small .title a a:hover {
       color: #3c63af;
       text-decoration: none; }
@@ -4531,7 +4547,7 @@ header {
       text-decoration: none;
       font-size: 16px;
       font-family: "albert"; }
-      /* line 62, ../../sass/_typography.scss */
+      /* line 68, ../../sass/_typography.scss */
       #submission-links .split-item a:hover, #submission-links .split-item a a:hover {
         color: #89a0d0;
         text-decoration: underline; }
@@ -4731,3 +4747,31 @@ header {
   /* line 7, ../../sass/pages/_static.scss */
   .static h1 {
     margin-bottom: 1.875rem; }
+
+/* line 15, ../../sass/pages/_article.scss */
+.classifications {
+  margin-top: 1.5625rem;
+  margin-bottom: 1.25rem; }
+  /* line 19, ../../sass/pages/_article.scss */
+  .classifications p {
+    font-size: 9px;
+    vertical-align: top;
+    display: inline-block; }
+    /* line 23, ../../sass/pages/_article.scss */
+    .classifications p .icon {
+      padding-right: 0.3125rem;
+      font-size: 14px;
+      vertical-align: -3px; }
+  /* line 29, ../../sass/pages/_article.scss */
+  .classifications .license-short {
+    padding-right: 0.625rem; }
+  /* line 40, ../../sass/pages/_article.scss */
+  .classifications .article-type {
+    margin-top: 0.3125rem;
+    font-size: 11px; }
+
+/* line 45, ../../sass/pages/_article.scss */
+.stub {
+  background: powderblue;
+  color: #999;
+  height: 700px; }

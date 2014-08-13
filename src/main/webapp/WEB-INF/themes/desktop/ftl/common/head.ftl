@@ -15,19 +15,19 @@
 
 
   <script type="text/javascript" src="<@siteLink path="resource/js/vendor/modernizr-v2.7.1.js"/>"></script>
-  <!--html5shiv. js and respond.js - enable the use of foundation's dropdowns to work in IE8 -->
+  <#-- html5shiv. js and respond.js - enable the use of foundation's dropdowns to work in IE8 -->
+  <#-- The rem  polyfill rewrites the rems in to pixels. I don't think we can call this using the asset manager. -->
   <!--[if IE 8]>
   <script src="<@siteLink path="resource/js/vendor/html5shiv.js"/>"></script>
   <script src="<@siteLink path="resource/js/vendor/respond.min.js"/>"></script>
-<script src="<@siteLink path="resource/js/vendor/rem.min.js"/>"></script>
+  <script src="<@siteLink path="resource/js/vendor/rem.min.js"/>"></script>
   <![endif]-->
   <link rel="shortcut icon" href="<@siteLink path="resource/img/favicon.ico"/>" type="image/x-icon"/>
 
 <#include "analytics.ftl" />
 
 </head>
-<#--references js that it foundational like jquery and foundation.js. JS output is printed at the bottom of the body.
+<#-- references js that is foundational like jquery and foundation.js. JS output is printed at the bottom of the body.
 -->
-
 <#include "baseJs.ftl" />
 

@@ -75,7 +75,8 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @include plos-grid-row($container: true);
   @if $grid-type == fixed {
     min-width: $grid-width;
-    max-width: $grid-width; }
+    max-width: $grid-width;
+  }
     margin: 0 auto;
 
 }
@@ -96,16 +97,33 @@ $grid-width-inside: ($row-width - $grid-gutter);
 @for $i from 0 through $total-columns - 1 {
   .plos-column-#{$i} { @include plos-grid-column($pixelwidth: columns, $columns: $i); }
 }
-
-
-
-//TODO - do we use this?
 main,
-.head-main,
-#pagehdr-wrap,
-#pagehdr,
-#pageftr .row {
+#pagehdr {
   @include plos-grid-container;
 }
+// using the same naming conventions as home page for continuity.
+%width-full {
+  @include plos-grid-column($pixelwidth: full-width);
+}
 
+%width-xx-small {
+  @include plos-grid-column(160, $gutter: none);
+}
+/*
 
+%width-x-small {
+  @include plos-grid-column(267);
+}
+
+%width-small {
+  @include plos-grid-column(306);
+}
+
+%width-medium {
+  @include plos-grid-column(470);
+}
+*/
+
+%width-large {
+  @include plos-grid-column(760, $gutter: none);
+}

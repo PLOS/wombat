@@ -59,4 +59,5 @@ MARKUP: using Foundation Top Bar for navigation -->
 </#if>
 
 <@js src="resource/js/vendor/jquery.hoverIntent.js"/>
+<@js src="resource/js/components/menu_drop.js"/>
 <@js src="resource/js/components/hover_delay.js"/>

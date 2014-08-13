@@ -1379,7 +1379,7 @@ blockquote p {
     display: inherit !important; } }
 /* sets up the body container */
 /* line 87, ../../sass/_scaffold.scss */
-.plos-row, .nav, .nav-main, .row, #ad-slot-bottom {
+.plos-row, .nav, .nav-main, .row, #ad-slot-bottom, .error-page {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -1388,11 +1388,11 @@ blockquote p {
   max-width: 61.25rem;
   *zoom: 1; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  .plos-row:before, .nav:before, .nav-main:before, .row:before, #ad-slot-bottom:before, .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after {
+  .plos-row:before, .nav:before, .nav-main:before, .row:before, #ad-slot-bottom:before, .error-page:before, .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after {
     content: " ";
     display: table; }
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after {
+  .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after {
     clear: both; }
 
 /* line 98, ../../sass/_scaffold.scss */
@@ -4729,50 +4729,53 @@ header {
   .plosntd .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next:hover {
     color: #3c63af; }
 
-/* line 3, ../../sass/pages/_static.scss */
+/*%width-full {
+  @include plos-grid-column($pixelwidth: full-width);
+}*/
+/* line 5, ../../sass/pages/_static.scss */
 .static {
   background-color: white; }
-  /* line 4, ../../sass/pages/_static.scss */
+  /* line 6, ../../sass/pages/_static.scss */
   .static main {
     margin-top: 1.875rem;
     margin-bottom: 4.375rem; }
-  /* line 5, ../../sass/pages/_static.scss */
+  /* line 7, ../../sass/pages/_static.scss */
   .static h1 {
     margin-bottom: 1.875rem; }
 
-/* line 9, ../../sass/pages/_articles.scss */
+/* line 9, ../../sass/pages/_article.scss */
 .article-body {
   float: left; }
 
-/* line 13, ../../sass/pages/_articles.scss */
+/* line 13, ../../sass/pages/_article.scss */
 .article-column {
   float: right; }
 
-/* line 17, ../../sass/pages/_articles.scss */
+/* line 17, ../../sass/pages/_article.scss */
 .classifications {
   margin-top: 1.5625rem;
   margin-bottom: 1.25rem;
   font-family: "albert";
   text-transform: uppercase; }
-  /* line 22, ../../sass/pages/_articles.scss */
+  /* line 22, ../../sass/pages/_article.scss */
   .classifications p {
     font-size: 9px;
     vertical-align: top;
     display: inline-block; }
-    /* line 26, ../../sass/pages/_articles.scss */
+    /* line 26, ../../sass/pages/_article.scss */
     .classifications p .icon {
       padding-right: 0.3125rem;
       font-size: 14px;
-      vertical-align: bottom; }
-  /* line 32, ../../sass/pages/_articles.scss */
+      vertical-align: -3px; }
+  /* line 32, ../../sass/pages/_article.scss */
   .classifications .license-short {
     padding-right: 0.625rem; }
-  /* line 43, ../../sass/pages/_articles.scss */
+  /* line 43, ../../sass/pages/_article.scss */
   .classifications .article-type {
-    margin-top: 0.625rem;
-    font-size: 10px; }
+    margin-top: 0.3125rem;
+    font-size: 11px; }
 
-/* line 48, ../../sass/pages/_articles.scss */
+/* line 48, ../../sass/pages/_article.scss */
 .stub {
   background: powderblue;
   color: #999;

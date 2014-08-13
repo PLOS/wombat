@@ -5,12 +5,14 @@
       class="no-js">
 
 <#assign title = article.title />
+<#assign depth = 0 />
 
 <#include "../common/head.ftl" />
 
   <body class="article ${journalKey?lower_case}">
 
   <#include "../common/header/header.ftl" />
+
   <section class="article-body">
     <div class="classifications">
       <p class="license-short" id="licenseShort"><span class="icon"></span>Open Access</p>
@@ -29,6 +31,7 @@
 
   </aside>
   <#include "../common/footer/footer.ftl" />
-  <#include "articleJs.ftl" />
+
+  <@renderJs />
   </body>
 </html>

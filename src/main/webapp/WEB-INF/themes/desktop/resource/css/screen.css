@@ -3579,38 +3579,43 @@ main,
 @font-face {
   font-family: "FontAwesome";
   src: url('../fonts/fontawesome-webfont.ttf?1401731168') format('truetype'), url('../fonts/FontAwesome.otf?1401731168') format('opentype'), url('../fonts/fontawesome-webfont.svg?1401731168') format('svg'), url('../fonts/fontawesome-webfont.woff?1401731168') format('woff'); }
-/* line 12, ../../sass/_typography.scss */
+/* line 8, ../../sass/_typography.scss */
+.classifications {
+  font-family: "albert";
+  text-transform: uppercase; }
+
+/* line 17, ../../sass/_typography.scss */
 .more-link > a, #issue .boxtitle a, .block .category, #article-list .category, #issue .category, #article-list h3 {
   font-size: 0.875rem;
   font-family: "albert";
   text-transform: uppercase; }
 
-/* line 17, ../../sass/_typography.scss */
+/* line 22, ../../sass/_typography.scss */
 .more-link > a {
   font-family: "arial"; }
 
-/* line 21, ../../sass/_typography.scss */
+/* line 26, ../../sass/_typography.scss */
 #issue .boxtitle a {
   font-size: 1.25rem; }
 
-/* line 26, ../../sass/_typography.scss */
+/* line 31, ../../sass/_typography.scss */
 #submission-links h3, #social-links h3 {
   font-size: 1.25rem;
   color: white;
   font-family: "albert"; }
 
-/* line 32, ../../sass/_typography.scss */
+/* line 37, ../../sass/_typography.scss */
 .submit h3, #submission-links h3 {
   padding-bottom: 1.0625rem;
   margin-bottom: 1.0625rem;
   box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
   text-align: center; }
 
-/* line 38, ../../sass/_typography.scss */
+/* line 43, ../../sass/_typography.scss */
 .block .category, #article-list .category, #issue .category, #article-list h3 {
   margin-bottom: 0.625rem; }
 
-/* line 43, ../../sass/_typography.scss */
+/* line 48, ../../sass/_typography.scss */
 .carousel-wrap.small .block-header, #blogs .block-header {
   color: white;
   padding: 0 1.25rem;
@@ -3618,42 +3623,42 @@ main,
   font-size: 1rem;
   line-height: 2.5rem; }
 
-/* line 74, ../../sass/_typography.scss */
+/* line 80, ../../sass/_typography.scss */
 .carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .carousel-wrap.small .carousel li h3 a, .block .title a, #article-list .title a, #issue .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
   color: #333333;
   text-decoration: none; }
-  /* line 62, ../../sass/_typography.scss */
+  /* line 68, ../../sass/_typography.scss */
   .carousel-wrap.small .carousel li h3:hover, .block .title:hover, #article-list .title:hover, #issue .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .block .title a a:hover, #article-list .title a a:hover, #issue .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
     color: #3c63af;
     text-decoration: none; }
 
-/* line 78, ../../sass/_typography.scss */
+/* line 84, ../../sass/_typography.scss */
 #blogs .block-header, #blogs .block-header a {
   color: white;
   text-decoration: none; }
-  /* line 62, ../../sass/_typography.scss */
+  /* line 68, ../../sass/_typography.scss */
   #blogs .block-header:hover, #blogs .block-header a:hover, #blogs .block-header a:hover, #blogs .block-header a a:hover {
     color: white;
     text-decoration: underline; }
 
-/* line 86, ../../sass/_typography.scss */
+/* line 92, ../../sass/_typography.scss */
 .carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, #article-list .date, #issue .date, .block .credits, #article-list .credits, #issue .credits, #blogs #blogrss .postauthor {
   font-size: 0.625rem;
   font-style: italic; }
 
-/* line 90, ../../sass/_typography.scss */
+/* line 96, ../../sass/_typography.scss */
 #issue .boxtitle a {
   letter-spacing: -0.5px; }
 
-/* line 93, ../../sass/_typography.scss */
+/* line 99, ../../sass/_typography.scss */
 .no-margin, .hero .hero-content h4, .hero .hero-content p {
   margin-bottom: 0; }
 
-/* line 120, ../../sass/_typography.scss */
+/* line 126, ../../sass/_typography.scss */
 .note, .caption {
   color: #cccccc; }
 
-/* line 121, ../../sass/_typography.scss */
+/* line 127, ../../sass/_typography.scss */
 .text-size-large, .error-page .content p {
   font-size: 18px; }
 
@@ -3850,7 +3855,7 @@ footer {
   footer a, footer a:visited, footer a:focus, footer a:active {
     color: #cccccc;
     text-decoration: none; }
-    /* line 62, ../../sass/_typography.scss */
+    /* line 68, ../../sass/_typography.scss */
     footer a:hover, footer a a:hover, footer a:visited:hover, footer a:visited a:hover, footer a:focus:hover, footer a:focus a:hover, footer a:active:hover, footer a:active a:hover {
       color: #cccccc;
       text-decoration: underline; }
@@ -4110,32 +4115,32 @@ header {
         font-size: 20px;
         color: #636363;
         top: 0 !important; }
-      /* line 100, ../../sass/_typography.scss */
+      /* line 106, ../../sass/_typography.scss */
       .top-bar-section .head-search form ::-webkit-input-placeholder {
         color: #333333; }
-      /* line 103, ../../sass/_typography.scss */
+      /* line 109, ../../sass/_typography.scss */
       .top-bar-section .head-search form :-moz-placeholder {
         /* Firefox 18- */
         color: #333333; }
-      /* line 107, ../../sass/_typography.scss */
+      /* line 113, ../../sass/_typography.scss */
       .top-bar-section .head-search form ::-moz-placeholder {
         /* Firefox 19+ */
         color: #333333; }
-      /* line 111, ../../sass/_typography.scss */
+      /* line 117, ../../sass/_typography.scss */
       .top-bar-section .head-search form :-ms-input-placeholder {
         color: #333333; }
-      /* line 100, ../../sass/_typography.scss */
+      /* line 106, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder ::-webkit-input-placeholder {
         color: #999999; }
-      /* line 103, ../../sass/_typography.scss */
+      /* line 109, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder :-moz-placeholder {
         /* Firefox 18- */
         color: #999999; }
-      /* line 107, ../../sass/_typography.scss */
+      /* line 113, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder ::-moz-placeholder {
         /* Firefox 19+ */
         color: #999999; }
-      /* line 111, ../../sass/_typography.scss */
+      /* line 117, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder :-ms-input-placeholder {
         color: #999999; }
       /* line 248, ../../sass/sections/_header.scss */
@@ -4159,7 +4164,7 @@ header {
     font-size: 0.8125rem;
     color: #3c63af;
     text-decoration: none; }
-    /* line 62, ../../sass/_typography.scss */
+    /* line 68, ../../sass/_typography.scss */
     .top-bar-section ul > li.head-search:not(.has-form) > a:hover, .top-bar-section ul > li.head-search:not(.has-form) > a a:hover {
       color: #3c63af;
       text-decoration: underline; }
@@ -4325,7 +4330,7 @@ header {
     .block .blurb a, #article-list .blurb a, #issue .blurb a {
       color: #3c63af;
       text-decoration: none; }
-      /* line 62, ../../sass/_typography.scss */
+      /* line 68, ../../sass/_typography.scss */
       .block .blurb a:hover, #article-list .blurb a:hover, #issue .blurb a:hover, .block .blurb a a:hover, #article-list .blurb a a:hover, #issue .blurb a a:hover {
         color: #3c63af;
         text-decoration: underline; }
@@ -4416,7 +4421,7 @@ header {
     font-size: 0.875rem;
     color: #636363;
     text-decoration: none; }
-    /* line 62, ../../sass/_typography.scss */
+    /* line 68, ../../sass/_typography.scss */
     .row.three .row-small-blocks .small .title a:hover, .row.three .row-small-blocks .small .title a a:hover {
       color: #3c63af;
       text-decoration: none; }
@@ -4542,7 +4547,7 @@ header {
       text-decoration: none;
       font-size: 16px;
       font-family: "albert"; }
-      /* line 62, ../../sass/_typography.scss */
+      /* line 68, ../../sass/_typography.scss */
       #submission-links .split-item a:hover, #submission-links .split-item a a:hover {
         color: #89a0d0;
         text-decoration: underline; }
@@ -4743,39 +4748,29 @@ header {
   .static h1 {
     margin-bottom: 1.875rem; }
 
-/* line 9, ../../sass/pages/_article.scss */
-.article-body {
-  float: left; }
-
-/* line 13, ../../sass/pages/_article.scss */
-.article-column {
-  float: right; }
-
-/* line 17, ../../sass/pages/_article.scss */
+/* line 15, ../../sass/pages/_article.scss */
 .classifications {
   margin-top: 1.5625rem;
-  margin-bottom: 1.25rem;
-  font-family: "albert";
-  text-transform: uppercase; }
-  /* line 22, ../../sass/pages/_article.scss */
+  margin-bottom: 1.25rem; }
+  /* line 19, ../../sass/pages/_article.scss */
   .classifications p {
     font-size: 9px;
     vertical-align: top;
     display: inline-block; }
-    /* line 26, ../../sass/pages/_article.scss */
+    /* line 23, ../../sass/pages/_article.scss */
     .classifications p .icon {
       padding-right: 0.3125rem;
       font-size: 14px;
       vertical-align: -3px; }
-  /* line 32, ../../sass/pages/_article.scss */
+  /* line 29, ../../sass/pages/_article.scss */
   .classifications .license-short {
     padding-right: 0.625rem; }
-  /* line 43, ../../sass/pages/_article.scss */
+  /* line 40, ../../sass/pages/_article.scss */
   .classifications .article-type {
     margin-top: 0.3125rem;
     font-size: 11px; }
 
-/* line 48, ../../sass/pages/_article.scss */
+/* line 45, ../../sass/pages/_article.scss */
 .stub {
   background: powderblue;
   color: #999;

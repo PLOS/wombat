@@ -8,17 +8,14 @@
 
 .article-body {
   @extend %width-large;
-  float: left;
 }
 .article-column {
   @extend %width-xx-small;
-  float: right;
 }
 .classifications {
+  @extend %txt-transform-fancy;
   margin-top: $pad-default + $pad-xsmall;
   margin-bottom: $pad-default;
-  font-family: $font-face-fancy;
-  text-transform: uppercase;
   p {
     font-size: $txt-size-xxxxsmall;
     vertical-align: top;

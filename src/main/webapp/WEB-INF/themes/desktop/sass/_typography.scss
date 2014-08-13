@@ -5,6 +5,11 @@
 
 @include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf",  "fontawesome-webfont.svg",  "fontawesome-webfont.woff"));
 
+%txt-transform-fancy {
+  font-family: $font-face-fancy;
+  text-transform: uppercase;
+}
+
 //////////////
 //header styles
 ///////////////
@@ -48,6 +53,7 @@
   font-size: rem-calc($txt-size-medium-large);
   line-height: $pad-large;
 }
+
 //////////////
 //link styles
 ///////////////

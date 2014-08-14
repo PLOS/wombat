@@ -8,7 +8,7 @@
   var articlePubDate = dateParse(rawDate, true);
 
   $( document ).ready(function() {
-    $("#publishedDate").append(articlePubDate);
+    $("#artPubDate").append(articlePubDate);
   });
 
 }(jQuery));

@@ -4755,7 +4755,7 @@ header {
   margin-right: 1.25rem;
   /*  temporary to make it look right even if the code is wrong */ }
 
-/* line 15, ../../sass/pages/_article.scss */
+/* line 14, ../../sass/pages/_article.scss */
 .article-column {
   float: left;
   width: 11.25rem;
@@ -4764,29 +4764,29 @@ header {
   margin-left: 1.25rem;
   /* temporary */ }
 
-/* line 21, ../../sass/pages/_article.scss */
+/* line 19, ../../sass/pages/_article.scss */
 .classifications {
   margin-top: 1.5625rem;
   margin-bottom: 0.9375rem; }
-  /* line 25, ../../sass/pages/_article.scss */
+  /* line 23, ../../sass/pages/_article.scss */
   .classifications p {
     font-size: 9px;
     vertical-align: top;
     display: inline-block; }
-    /* line 29, ../../sass/pages/_article.scss */
+    /* line 28, ../../sass/pages/_article.scss */
     .classifications p .icon {
       padding-right: 0.3125rem;
       font-size: 14px;
       vertical-align: -3px; }
-  /* line 35, ../../sass/pages/_article.scss */
+  /* line 34, ../../sass/pages/_article.scss */
   .classifications .license-short {
     padding-right: 0.625rem; }
-  /* line 46, ../../sass/pages/_article.scss */
+  /* line 45, ../../sass/pages/_article.scss */
   .classifications .article-type {
     margin-top: 0.3125rem;
     font-size: 11px; }
 
-/* line 53, ../../sass/pages/_article.scss */
+/* line 52, ../../sass/pages/_article.scss */
 .article-body h1 {
   font-size: 26px;
   margin-bottom: 0.625rem;
@@ -4796,10 +4796,28 @@ header {
     font-style: italic; }
 /* line 61, ../../sass/pages/_article.scss */
 .article-body .date-doi {
+  *zoom: 1;
   margin: 0.9375rem 0;
   font-size: 13px; }
+  /* line 116, ../../sass/vendor/foundation/components/_global.scss */
+  .article-body .date-doi:before, .article-body .date-doi:after {
+    content: " ";
+    display: table; }
+  /* line 117, ../../sass/vendor/foundation/components/_global.scss */
+  .article-body .date-doi:after {
+    clear: both; }
+  /* line 66, ../../sass/pages/_article.scss */
+  .article-body .date-doi li {
+    float: left;
+    margin-left: 10px;
+    color: #666; }
+    /* line 71, ../../sass/pages/_article.scss */
+    .article-body .date-doi li:first-child {
+      margin: 0 15px 0 0;
+      padding: 0;
+      list-style-type: none; }
 
-/* line 66, ../../sass/pages/_article.scss */
+/* line 79, ../../sass/pages/_article.scss */
 .stub {
   background: powderblue;
   color: #999;

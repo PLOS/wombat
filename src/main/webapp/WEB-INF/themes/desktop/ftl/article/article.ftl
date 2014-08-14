@@ -30,9 +30,10 @@
 
         <h1 id="artTitle"> ${article.title} </h1>
 
-        <div class="date-doi">
-          <span id="publishedDate">Published:  </span>
-        </div>
+        <ul class="date-doi">
+          <li id="artPubDate">Published:  </li>
+          <li id="artDoi">DOI: ${article.doi}</li>
+        </ul>
 
       ${articleText}
 

@@ -6,45 +6,43 @@
 
 <#assign title = article.title />
 <#assign depth = 0 />
-<#assign rawPubDate = article.date />
 
 <#include "../common/head.ftl" />
 
   <body class="article ${journalKey?lower_case}">
 
+  <input type="hidden" id="rawPubDate" value="${article.date}" />
+
   <#include "../common/header/header.ftl" />
+  <div class="plos-row">
+    <section class="article-body">
+      <div class="classifications">
+        <p class="license-short" id="licenseShort"><span class="icon"></span>Open Access</p>
 
-  <section class="article-body">
-    <div class="classifications">
-      <p class="license-short" id="licenseShort"><span class="icon"></span>Open Access</p>
+        <#if article.articleType=="Research Article">
+        <p class="peer-reviewed" id="peerReviewed"><span class="icon"></span>Peer-reviewed</p>
+        </#if>
 
-      <#if article.title=="Research Article">
-      <p class="peer-reviewed" id="peerReviewed"><span class="icon"></span>Peer-reviewed</p>
-      </#if>
+        <div class="article-type" id="articleType">${article.articleType!""}</div>
+      </div>
 
-      <div class="article-type" id="articleType">${article.articleType!""}</div>
-    </div>
+      <div id="articleText">
+      ${article.title}
 
-    <div id="articleText">
-    ${article.title}
+        <p id="publishedDate"><strong>Published date: </strong>  </p>
 
-      <p>Published date: ${article.date}</p>
+      ${articleText}
+      </div>
+    </section>
+    <aside class="stub article-column">
 
-    ${articleText}
-    </div>
-  </section>
-  <aside class="stub article-column">
-
-
-
-  </aside>
+    </aside>
+  </div>
   <#include "../common/footer/footer.ftl" />
 
   <@renderJs />
+  <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
+  <script src="<@siteLink path="resource/js/pages/article.js"/>"></script>
+
   </body>
 </html>
-
-str = "2008-09-26T07:00:00Z";
-ending = str.indexOf('T');
-modified = str.substring(0, ending);
-shoe = new Date(modified);

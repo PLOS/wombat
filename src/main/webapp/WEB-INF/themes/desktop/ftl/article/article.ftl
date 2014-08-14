@@ -11,31 +11,42 @@
 
   <body class="article ${journalKey?lower_case}">
 
+  <input type="hidden" id="rawPubDate" value="${article.date}" />
+
   <#include "../common/header/header.ftl" />
+  <div class="plos-row">
+    <section class="article-body">
+      <div class="classifications">
+        <p class="license-short" id="licenseShort"><span class="icon"></span>Open Access</p>
 
-  <section class="article-body">
-    <div class="classifications">
-      <p class="license-short" id="licenseShort"><span class="icon"></span>Open Access</p>
+        <#if article.articleType=="Research Article">
+        <p class="peer-reviewed" id="peerReviewed"><span class="icon"></span>Peer-reviewed</p>
+        </#if>
 
-      <#if article.title=="Research Article">
-      <p class="peer-reviewed" id="peerReviewed"><span class="icon"></span>Peer-reviewed</p>
-      </#if>
+        <div class="article-type" id="artType">${article.articleType!""}</div>
+      </div>
 
-      <div class="article-type" id="articleType">${article.articleType!""}</div>
-    </div>
+      <div class="article-text" id="artText">
 
-    <div id="articleText">
-    ${article.title}
-    ${articleText}
-    </div>
-  </section>
-  <aside class="stub article-column">
+        <h1 id="artTitle"> ${article.title} </h1>
 
+        <div class="date-doi">
+          <span id="publishedDate">Published:  </span>
+        </div>
 
+      ${articleText}
 
-  </aside>
+      </div>
+    </section>
+    <aside class="stub article-column">
+
+    </aside>
+  </div>
   <#include "../common/footer/footer.ftl" />
 
   <@renderJs />
+  <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
+  <script src="<@siteLink path="resource/js/pages/article.js"/>"></script>
+
   </body>
 </html>

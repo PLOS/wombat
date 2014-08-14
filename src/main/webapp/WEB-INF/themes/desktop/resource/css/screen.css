@@ -4794,8 +4794,12 @@ header {
   /* line 57, ../../sass/pages/_article.scss */
   .article-body h1 i, .article-body h1 italic {
     font-style: italic; }
+/* line 61, ../../sass/pages/_article.scss */
+.article-body .date-doi {
+  margin: 0.9375rem 0;
+  font-size: 13px; }
 
-/* line 62, ../../sass/pages/_article.scss */
+/* line 66, ../../sass/pages/_article.scss */
 .stub {
   background: powderblue;
   color: #999;

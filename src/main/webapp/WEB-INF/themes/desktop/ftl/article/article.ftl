@@ -6,6 +6,7 @@
 
 <#assign title = article.title />
 <#assign depth = 0 />
+<#assign rawPubDate = article.date />
 
 <#include "../common/head.ftl" />
 
@@ -22,6 +23,9 @@
 
     <div id="articleText">
     ${article.title}
+
+      <p>Published date: ${article.date}</p>
+
     ${articleText}
     </div>
   </section>
@@ -35,3 +39,8 @@
   <@renderJs />
   </body>
 </html>
+
+str = "2008-09-26T07:00:00Z";
+ending = str.indexOf('T');
+modified = str.substring(0, ending);
+shoe = new Date(modified);

@@ -97,10 +97,18 @@ $grid-width-inside: ($row-width - $grid-gutter);
 @for $i from 0 through $total-columns - 1 {
   .plos-column-#{$i} { @include plos-grid-column($pixelwidth: columns, $columns: $i); }
 }
-main,
-#pagehdr {
-  @include plos-grid-container;
+$one-third: ($total-columns /3);
+$one-half: ($total-columns / 2);
+
+.plos-column-third {
+ @include plos-grid-column($pixelwidth: columns, $columns:  $one-third);
 }
+
+.plos-column-half {
+  @include plos-grid-column($pixelwidth: columns, $columns: $one-half);
+}
+
+
 // using the same naming conventions as home page for continuity.
 %width-full {
   @include plos-grid-column($pixelwidth: full-width);
@@ -126,4 +134,11 @@ main,
 
 %width-large {
   @include plos-grid-column(760, $gutter: none);
+}
+
+
+// body layout
+main,
+#pagehdr {
+  @include plos-grid-container;
 }

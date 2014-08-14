@@ -1,3 +1,7 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /*------------------------------------*\
    COLORS
 \*------------------------------------*/
@@ -132,7 +136,7 @@ select {
   width: 100%; }
 
 /* line 52, ../../sass/vendor/foundation/components/_inline-lists.scss */
-.inline-list, footer .nav-aux, .nav .nav-user, #submission-links .split-container {
+footer .nav-aux, .nav .nav-user, #submission-links .split-container, .inline-list, .calloutcontainer ul {
   margin: 0 auto 1.0625rem auto;
   margin-left: -1.375rem;
   margin-right: 0;
@@ -140,13 +144,13 @@ select {
   list-style: none;
   overflow: hidden; }
   /* line 41, ../../sass/vendor/foundation/components/_inline-lists.scss */
-  .inline-list > li, footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li {
+  footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, .inline-list > li, .calloutcontainer ul > li {
     list-style: none;
     float: left;
     margin-left: 1.375rem;
     display: block; }
     /* line 46, ../../sass/vendor/foundation/components/_inline-lists.scss */
-    .inline-list > li > *, footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > * {
+    footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, .inline-list > li > *, .calloutcontainer ul > li > * {
       display: block; }
 
 /* line 91, ../../sass/vendor/foundation/components/_labels.scss */
@@ -1413,7 +1417,7 @@ blockquote p {
   margin-right: 0.625rem; }
 
 /* line 98, ../../sass/_scaffold.scss */
-.plos-column-3, footer .link-column {
+.plos-column-3, footer .link-column, .calloutcontainer {
   width: 15.3125rem;
   float: left;
   margin-left: 0.625rem;
@@ -1475,7 +1479,52 @@ blockquote p {
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 100, ../../sass/_scaffold.scss */
+/* line 103, ../../sass/_scaffold.scss */
+.plos-column-third {
+  width: 20.41667rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 107, ../../sass/_scaffold.scss */
+.plos-column-half {
+  width: 30.625rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 113, ../../sass/_scaffold.scss */
+.hero, #billboard {
+  float: left;
+  width: 60rem;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 117, ../../sass/_scaffold.scss */
+.block.xx-small, .xx-small#article-list, #issue, .article-column {
+  float: left;
+  width: 10rem; }
+
+/*
+
+%width-x-small {
+  @include plos-grid-column(267);
+}
+
+%width-small {
+  @include plos-grid-column(306);
+}
+
+%width-medium {
+  @include plos-grid-column(470);
+}
+*/
+/* line 135, ../../sass/_scaffold.scss */
+.block.large, .large#article-list, .large#issue, .article-body {
+  float: left;
+  width: 47.5rem; }
+
+/* line 141, ../../sass/_scaffold.scss */
 main,
 #pagehdr {
   width: 100%;
@@ -1498,37 +1547,6 @@ main,
   main:after,
   #pagehdr:after {
     clear: both; }
-
-/* line 105, ../../sass/_scaffold.scss */
-.hero, #billboard {
-  float: left;
-  width: 60rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-
-/* line 109, ../../sass/_scaffold.scss */
-.block.xx-small, .xx-small#article-list, #issue, .article-column {
-  float: left;
-  width: 10rem; }
-
-/*
-
-%width-x-small {
-  @include plos-grid-column(267);
-}
-
-%width-small {
-  @include plos-grid-column(306);
-}
-
-%width-medium {
-  @include plos-grid-column(470);
-}
-*/
-/* line 127, ../../sass/_scaffold.scss */
-.block.large, .large#article-list, .large#issue, .article-body {
-  float: left;
-  width: 47.5rem; }
 
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -3651,7 +3669,7 @@ main,
   margin-bottom: 0; }
 
 /* line 126, ../../sass/_typography.scss */
-.note, .caption {
+.note, .caption, figcaption {
   color: #cccccc; }
 
 /* line 127, ../../sass/_typography.scss */
@@ -4771,3 +4789,33 @@ header {
   background: powderblue;
   color: #999;
   height: 700px; }
+
+/* line 13, ../../sass/styleguide.scss */
+.rounded {
+  background: #3c63af;
+  padding: 1.25rem;
+  border-radius: 5px;
+  color: white; }
+  /* line 11, ../../sass/_components.scss */
+  .rounded:hover {
+    background: #333333; }
+
+/* line 23, ../../sass/styleguide.scss */
+dd {
+  background: #efefef;
+  width: 100%; }
+
+/* line 24, ../../sass/styleguide.scss */
+dt {
+  font-weight: normal;
+  width: 95%;
+  margin: .5em auto; }
+
+/* line 26, ../../sass/styleguide.scss */
+pre {
+  width: 95%;
+  margin: .5em auto; }
+
+/* line 32, ../../sass/styleguide.scss */
+pre h4, section h4 {
+  margin-left: -1em; }

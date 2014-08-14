@@ -1479,7 +1479,52 @@ blockquote p {
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 100, ../../sass/_scaffold.scss */
+/* line 103, ../../sass/_scaffold.scss */
+.plos-column-third {
+  width: 20.41667rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 107, ../../sass/_scaffold.scss */
+.plos-column-half {
+  width: 30.625rem;
+  float: left;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 113, ../../sass/_scaffold.scss */
+.hero, #billboard {
+  float: left;
+  width: 60rem;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+
+/* line 117, ../../sass/_scaffold.scss */
+.block.xx-small, .xx-small#article-list, #issue, .article-column {
+  float: left;
+  width: 10rem; }
+
+/*
+
+%width-x-small {
+  @include plos-grid-column(267);
+}
+
+%width-small {
+  @include plos-grid-column(306);
+}
+
+%width-medium {
+  @include plos-grid-column(470);
+}
+*/
+/* line 135, ../../sass/_scaffold.scss */
+.block.large, .large#article-list, .large#issue, .article-body {
+  float: left;
+  width: 47.5rem; }
+
+/* line 141, ../../sass/_scaffold.scss */
 main,
 #pagehdr {
   width: 100%;
@@ -1502,37 +1547,6 @@ main,
   main:after,
   #pagehdr:after {
     clear: both; }
-
-/* line 105, ../../sass/_scaffold.scss */
-.hero, #billboard {
-  float: left;
-  width: 60rem;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem; }
-
-/* line 109, ../../sass/_scaffold.scss */
-.block.xx-small, .xx-small#article-list, #issue, .article-column {
-  float: left;
-  width: 10rem; }
-
-/*
-
-%width-x-small {
-  @include plos-grid-column(267);
-}
-
-%width-small {
-  @include plos-grid-column(306);
-}
-
-%width-medium {
-  @include plos-grid-column(470);
-}
-*/
-/* line 127, ../../sass/_scaffold.scss */
-.block.large, .large#article-list, .large#issue, .article-body {
-  float: left;
-  width: 47.5rem; }
 
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome

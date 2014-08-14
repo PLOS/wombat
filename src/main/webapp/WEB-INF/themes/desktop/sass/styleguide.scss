@@ -1,0 +1,41 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "global-imports";
+@import "sections/footer";
+@import "sections/header";
+@import "pages/home";
+@import "pages/static";
+@import "pages/article";
+
+.rounded{
+  @include rounded-pill();
+}
+
+.inline-list{
+  @extend .inline-list; // from foundation
+
+}
+
+
+dd{ background: $grey-light; width: 100%; }
+dt{ font-weight: normal;  width: 95%;
+  margin: .5em auto; }
+pre{
+    width: 95%;
+    margin: .5em auto;
+}
+
+pre, section {
+  h4{margin-left: -1em}
+}
+
+
+.calloutcontainer{
+  @extend .plos-column-3; // make this 3 columns out of 12 width
+  ul{
+    @extend .inline-list; // the ul should be an
+  }
+}

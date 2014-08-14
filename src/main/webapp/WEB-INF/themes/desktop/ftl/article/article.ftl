@@ -23,12 +23,12 @@
         <p class="peer-reviewed" id="peerReviewed"><span class="icon"></span>Peer-reviewed</p>
         </#if>
 
-        <div class="article-type" id="articleType">${article.articleType!""}</div>
+        <div class="article-type" id="artType">${article.articleType!""}</div>
       </div>
 
-      <div class="article-text" id="articleText">
+      <div class="article-text" id="artText">
 
-        <h1> ${article.title} </h1>
+        <h1 id="artTitle"> ${article.title} </h1>
 
         <div class="date-doi">
           <span id="publishedDate">Published:  </span>

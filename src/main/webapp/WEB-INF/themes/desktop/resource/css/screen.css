@@ -1,7 +1,3 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /*------------------------------------*\
    COLORS
 \*------------------------------------*/
@@ -1377,8 +1373,53 @@ blockquote p {
   /* line 488, ../../sass/vendor/foundation/components/_type.scss */
   .show-for-print {
     display: inherit !important; } }
+/*doc
+---
+title: Grid
+name: grid
+category: scaffolding
+---
+A grid allows us to set widths of columns and containers so that they are consistent.
+
+The plos-grid mixins use the foundation grid but allow us to extend the foundation grid in a few important ways:
+ - it allows us to put margins on the outside which allows us the ability to set containers.
+ - it allows us to use pixel widths for columns that do not fit into the 12 columns grid.
+
+## Usage
+ * wrap in a container: `@extend .plos-row`  or use the  `@plos-row` mixin if you need more control
+ * for each column  `@extend .plos-column-NUMBER` or use the  `@plos-columns` mixin if you need more control
+
+
+```html_example
+
+<div class="grid-example-simple">
+  <div class="grid-example-column-1">3 column div</div>
+  <div class="grid-example-column-2">8 column div</div>
+</div>
+
+```
+
+``` scss_example
+.grid-example-simple{
+  @extend .plos-row; // make this 3 columns out of 12 width
+  .grid-example-column-1 {
+    @extend .plos-column-3;
+  }
+  .grid-example-column-2{
+    @extend .plos-column-8;
+  }
+}
+```
+
+column classes                            | result
+------------------------------------------| -----------------
+`@extend .plos-column-NUMBER`               | sets the column width NUMBER of 12 with the default margins on either side.
+`@extend .plos-column-third`              |   sets the column to a third of the container with default margins on either side
+`@extend .plos-column-half`               |   sets the column to half of the container with default margins on either side.
+`@extend %width-full`               |   sets the column the full-width of teh container with default margins on either side.
+*/
 /* sets up the body container */
-/* line 87, ../../sass/_scaffold.scss */
+/* line 137, ../../sass/_scaffold.scss */
 .plos-row, .nav, .nav-main, .row, #ad-slot-bottom, .error-page {
   width: 100%;
   margin-left: auto;
@@ -1395,112 +1436,112 @@ blockquote p {
   .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after {
     clear: both; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-0 {
   width: 0rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-1 {
   width: 5.10417rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-2 {
   width: 10.20833rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-3, footer .link-column {
   width: 15.3125rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-4, .error-page .image {
   width: 20.41667rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-5, footer .brand-column {
   width: 25.52083rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-6, .error-page .content {
   width: 30.625rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-7 {
   width: 35.72917rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-8 {
   width: 40.83333rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-9 {
   width: 45.9375rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-10 {
   width: 51.04167rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 98, ../../sass/_scaffold.scss */
+/* line 148, ../../sass/_scaffold.scss */
 .plos-column-11 {
   width: 56.14583rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 103, ../../sass/_scaffold.scss */
+/* line 153, ../../sass/_scaffold.scss */
 .plos-column-third {
   width: 20.41667rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 107, ../../sass/_scaffold.scss */
+/* line 157, ../../sass/_scaffold.scss */
 .plos-column-half {
   width: 30.625rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 113, ../../sass/_scaffold.scss */
+/* line 163, ../../sass/_scaffold.scss */
 .hero, #billboard {
   float: left;
   width: 60rem;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 117, ../../sass/_scaffold.scss */
+/* line 167, ../../sass/_scaffold.scss */
 .block.xx-small, .xx-small#article-list, #issue, .article-column {
   float: left;
   width: 10rem; }
@@ -1519,12 +1560,12 @@ blockquote p {
   @include plos-grid-column(470);
 }
 */
-/* line 135, ../../sass/_scaffold.scss */
+/* line 185, ../../sass/_scaffold.scss */
 .block.large, .large#article-list, .large#issue, .article-body {
   float: left;
   width: 47.5rem; }
 
-/* line 141, ../../sass/_scaffold.scss */
+/* line 191, ../../sass/_scaffold.scss */
 main,
 #pagehdr {
   width: 100%;
@@ -1534,8 +1575,8 @@ main,
   margin-bottom: 0;
   max-width: 61.25rem;
   *zoom: 1;
-  min-width: 980px;
-  max-width: 980px;
+  min-width: 61.25rem;
+  max-width: 61.25rem;
   margin: 0 auto; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
   main:before, main:after,
@@ -1548,6 +1589,64 @@ main,
   #pagehdr:after {
     clear: both; }
 
+/*doc
+
+---
+title: Advanced Features
+name: advanced
+category: scaffolding
+parent: grid
+
+---
+
+##setting column widths in pixels
+`@extend .plos-grid-column(NUMBER)` - creates a column of the width you set with margins on either side.
+
+```html_example
+<div class="grid-example-complex">
+  <div class="grid-example-one">120px div</div>
+</div>
+```
+```sass_example
+  .grid-example-one {
+    @include plos-grid-column(120);
+  }
+```
+
+#further customisation
+ ## gutters
+
+option                            | result
+------------------------------------------| -----------------
+$gutter: none              | no columns
+`@extend .plos-column-third`              |   sets the column to a third of the container with default margins on either side
+`@extend .plos-column-half`               |   sets the column to half of the container with default margins on either side.
+
+
+ ```html_example
+<div class="grid-example-complex">
+    <div class="grid-example-three">120px div with no gutters</div>
+
+  <div class="grid-example-two">120px div with 50px gutters on either side</div>
+
+</div>
+```
+```sass_example
+  .grid-example-two {
+        @include plos-grid-column( 120, $gutter: 40 );
+  }
+    .grid-example-three {
+    @include plos-grid-column( 120, $gutter: none );
+      }
+```
+
+
+#theming
+ you can adjust the the number of columns, total width,  gutter widths etc... in `_variables.scss`
+
+
+
+*/
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -3637,42 +3736,72 @@ main,
   font-size: 1rem;
   line-height: 2.5rem; }
 
-/* line 80, ../../sass/_typography.scss */
+/*doc
+---
+title: link styles
+name: links colors
+category: typography CSS
+---
+
+This is one place not to use @extend, since this is a semantic class name
+
+ "decoration" sets the hover style:
+ "none" = there is NO underline and the text turns the highlight color
+ "underline" =  text stays the same color but has an underline ```
+
+*/
+/* line 91, ../../sass/_typography.scss */
 .carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .carousel-wrap.small .carousel li h3 a, .block .title a, #article-list .title a, #issue .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
   color: #333333;
   text-decoration: none; }
-  /* line 68, ../../sass/_typography.scss */
+  /* line 79, ../../sass/_typography.scss */
   .carousel-wrap.small .carousel li h3:hover, .block .title:hover, #article-list .title:hover, #issue .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .block .title a a:hover, #article-list .title a a:hover, #issue .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
     color: #3c63af;
     text-decoration: none; }
 
-/* line 84, ../../sass/_typography.scss */
+/* line 95, ../../sass/_typography.scss */
 #blogs .block-header, #blogs .block-header a {
   color: white;
   text-decoration: none; }
-  /* line 68, ../../sass/_typography.scss */
+  /* line 79, ../../sass/_typography.scss */
   #blogs .block-header:hover, #blogs .block-header a:hover, #blogs .block-header a:hover, #blogs .block-header a a:hover {
     color: white;
     text-decoration: underline; }
 
-/* line 92, ../../sass/_typography.scss */
+/* line 103, ../../sass/_typography.scss */
 .carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, #article-list .date, #issue .date, .block .credits, #article-list .credits, #issue .credits, #blogs #blogrss .postauthor {
   font-size: 0.625rem;
   font-style: italic; }
 
-/* line 96, ../../sass/_typography.scss */
+/* line 107, ../../sass/_typography.scss */
 #issue .boxtitle a {
   letter-spacing: -0.5px; }
 
-/* line 99, ../../sass/_typography.scss */
+/* line 110, ../../sass/_typography.scss */
 .no-margin, .hero .hero-content h4, .hero .hero-content p {
   margin-bottom: 0; }
 
-/* line 126, ../../sass/_typography.scss */
+/*doc
+---
+title: note
+name: note
+category: typography CSS
+---
+
+This is one place not to use @extend, since this is a semantic class name
+
+```html_example
+           <p class="note">This is a note</p>
+          <p class="caption">this is a caption</p>
+          <figcaption>This is a figcaption</figcaption>
+ ```
+
+*/
+/* line 154, ../../sass/_typography.scss */
 .note, .caption, figcaption {
   color: #cccccc; }
 
-/* line 127, ../../sass/_typography.scss */
+/* line 156, ../../sass/_typography.scss */
 .text-size-large, .error-page .content p {
   font-size: 18px; }
 
@@ -3869,7 +3998,7 @@ footer {
   footer a, footer a:visited, footer a:focus, footer a:active {
     color: #cccccc;
     text-decoration: none; }
-    /* line 68, ../../sass/_typography.scss */
+    /* line 79, ../../sass/_typography.scss */
     footer a:hover, footer a a:hover, footer a:visited:hover, footer a:visited a:hover, footer a:focus:hover, footer a:focus a:hover, footer a:active:hover, footer a:active a:hover {
       color: #cccccc;
       text-decoration: underline; }
@@ -4129,32 +4258,32 @@ header {
         font-size: 20px;
         color: #636363;
         top: 0 !important; }
-      /* line 106, ../../sass/_typography.scss */
+      /* line 117, ../../sass/_typography.scss */
       .top-bar-section .head-search form ::-webkit-input-placeholder {
         color: #333333; }
-      /* line 109, ../../sass/_typography.scss */
+      /* line 120, ../../sass/_typography.scss */
       .top-bar-section .head-search form :-moz-placeholder {
         /* Firefox 18- */
         color: #333333; }
-      /* line 113, ../../sass/_typography.scss */
+      /* line 124, ../../sass/_typography.scss */
       .top-bar-section .head-search form ::-moz-placeholder {
         /* Firefox 19+ */
         color: #333333; }
-      /* line 117, ../../sass/_typography.scss */
+      /* line 128, ../../sass/_typography.scss */
       .top-bar-section .head-search form :-ms-input-placeholder {
         color: #333333; }
-      /* line 106, ../../sass/_typography.scss */
+      /* line 117, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder ::-webkit-input-placeholder {
         color: #999999; }
-      /* line 109, ../../sass/_typography.scss */
+      /* line 120, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder :-moz-placeholder {
         /* Firefox 18- */
         color: #999999; }
-      /* line 113, ../../sass/_typography.scss */
+      /* line 124, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder ::-moz-placeholder {
         /* Firefox 19+ */
         color: #999999; }
-      /* line 117, ../../sass/_typography.scss */
+      /* line 128, ../../sass/_typography.scss */
       .top-bar-section .head-search form.placeholder :-ms-input-placeholder {
         color: #999999; }
       /* line 248, ../../sass/sections/_header.scss */
@@ -4178,7 +4307,7 @@ header {
     font-size: 0.8125rem;
     color: #3c63af;
     text-decoration: none; }
-    /* line 68, ../../sass/_typography.scss */
+    /* line 79, ../../sass/_typography.scss */
     .top-bar-section ul > li.head-search:not(.has-form) > a:hover, .top-bar-section ul > li.head-search:not(.has-form) > a a:hover {
       color: #3c63af;
       text-decoration: underline; }
@@ -4344,7 +4473,7 @@ header {
     .block .blurb a, #article-list .blurb a, #issue .blurb a {
       color: #3c63af;
       text-decoration: none; }
-      /* line 68, ../../sass/_typography.scss */
+      /* line 79, ../../sass/_typography.scss */
       .block .blurb a:hover, #article-list .blurb a:hover, #issue .blurb a:hover, .block .blurb a a:hover, #article-list .blurb a a:hover, #issue .blurb a a:hover {
         color: #3c63af;
         text-decoration: underline; }
@@ -4435,7 +4564,7 @@ header {
     font-size: 0.875rem;
     color: #636363;
     text-decoration: none; }
-    /* line 68, ../../sass/_typography.scss */
+    /* line 79, ../../sass/_typography.scss */
     .row.three .row-small-blocks .small .title a:hover, .row.three .row-small-blocks .small .title a a:hover {
       color: #3c63af;
       text-decoration: none; }
@@ -4561,7 +4690,7 @@ header {
       text-decoration: none;
       font-size: 16px;
       font-family: "albert"; }
-      /* line 68, ../../sass/_typography.scss */
+      /* line 79, ../../sass/_typography.scss */
       #submission-links .split-item a:hover, #submission-links .split-item a a:hover {
         color: #89a0d0;
         text-decoration: underline; }

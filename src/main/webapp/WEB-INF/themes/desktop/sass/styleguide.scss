@@ -33,9 +33,27 @@ pre, section {
 }
 
 
-.calloutcontainer{
-  @extend .plos-column-3; // make this 3 columns out of 12 width
-  ul{
-    @extend .inline-list; // the ul should be an
+.grid-example-simple{
+  @extend .plos-row; // make this 3 columns out of 12 width
+  div{ background-color: $grey-light}
+  .grid-example-column-1 {
+    @extend .plos-column-3;
+  }
+  .grid-example-column-2{
+    @extend .plos-column-8;
+  }
+}
+
+.grid-example-complex{
+  @extend .plos-row; // make this 3 columns out of 12 width
+  div{ background-color: $grey-light}
+  .grid-example-one {
+    @include plos-grid-column(120);
+  }
+  .grid-example-two{
+    @include plos-grid-column( 120, $gutter: left, $gutter-width: 50px );
+  }
+  .grid-example-three{
+    @include plos-grid-column( 120, $gutter: right );
   }
 }

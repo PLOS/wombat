@@ -58,9 +58,20 @@
 //link styles
 ///////////////
 
-// "decoration" sets the hover style:
-// "none" = there is NO underline and the text turns the highlight color
-// "underline" =  text stays the same color but has an underline
+/*doc
+---
+title: link styles
+name: links colors
+category: typography CSS
+---
+
+This is one place not to use @extend, since this is a semantic class name
+
+ "decoration" sets the hover style:
+ "none" = there is NO underline and the text turns the highlight color
+ "underline" =  text stays the same color but has an underline ```
+
+*/
 @mixin link-text($color: $clr-body-text, $decoration: none){
   color: $color;
   text-decoration: none;
@@ -123,5 +134,23 @@
 //font-sizes styles
 ///////////////
 
+/*doc
+---
+title: note
+name: note
+category: typography CSS
+---
+
+This is one place not to use @extend, since this is a semantic class name
+
+```html_example
+           <p class="note">This is a note</p>
+          <p class="caption">this is a caption</p>
+          <figcaption>This is a figcaption</figcaption>
+ ```
+
+*/
+
 .note,.caption, figcaption{ color: $grey-med-light;}
+
 .text-size-large {font-size: $txt-size-large;}

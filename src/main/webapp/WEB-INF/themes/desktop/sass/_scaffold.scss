@@ -1,3 +1,48 @@
+/*doc
+---
+title: Grid
+name: grid
+category: scaffolding
+---
+A grid allows us to set widths of columns and containers so that they are consistent.
+
+The plos-grid mixins use the foundation grid but allow us to extend the foundation grid in a few important ways:
+ - it allows us to put margins on the outside which allows us the ability to set containers.
+ - it allows us to use pixel widths for columns that do not fit into the 12 columns grid.
+
+## Usage
+ * wrap in a container: `@extend .plos-row`  or use the  `@plos-row` mixin if you need more control
+ * for each column  `@extend .plos-column-NUMBER` or use the  `@plos-columns` mixin if you need more control
+
+
+```html_example
+
+<div class="grid-example-simple">
+  <div class="grid-example-column-1">3 column div</div>
+  <div class="grid-example-column-2">8 column div</div>
+</div>
+
+```
+
+``` scss_example
+.grid-example-simple{
+  @extend .plos-row; // make this 3 columns out of 12 width
+  .grid-example-column-1 {
+    @extend .plos-column-3;
+  }
+  .grid-example-column-2{
+    @extend .plos-column-8;
+  }
+}
+```
+
+column classes                            | result
+------------------------------------------| -----------------
+`@extend .plos-column-NUMBER`               | sets the column width NUMBER of 12 with the default margins on either side.
+`@extend .plos-column-third`              |   sets the column to a third of the container with default margins on either side
+`@extend .plos-column-half`               |   sets the column to half of the container with default margins on either side.
+`@extend %width-full`               |   sets the column the full-width of teh container with default margins on either side.
+*/
 
 $grid-width-inside: ($row-width - $grid-gutter);
 
@@ -26,7 +71,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @return ( $colNumber * $columnWidth ) - $grid-gutter;
 }
 
-@mixin plos-grid-column($pixelwidth, $gutter: outside, $f-gridargs...) {
+@mixin plos-grid-column($pixelwidth, $gutter: outside, $gutter-width: $grid-gutter, $f-gridargs...) {
 
   // from foundation:
   @include grid-column($collapse: null, $f-gridargs...);
@@ -44,8 +89,14 @@ $grid-width-inside: ($row-width - $grid-gutter);
     margin-left: ($grid-gutter / 2);
     margin-right: ($grid-gutter / 2);
   }
-  @if $gutter == none{
+  @else if $gutter == none{
     // do nothing
+  }   @else if $gutter == left {
+    margin-left: rem-calc($gutter-width);
+  }
+
+  @else if $gutter == right {
+  margin-right: $gutter-width;
   }
 
 }
@@ -74,15 +125,14 @@ $grid-width-inside: ($row-width - $grid-gutter);
 @mixin plos-grid-container($grid-type: fixed) {
   @include plos-grid-row($container: true);
   @if $grid-type == fixed {
-    min-width: $grid-width;
-    max-width: $grid-width;
+    min-width: rem-calc($grid-width);
+    max-width: rem-calc($grid-width);
   }
     margin: 0 auto;
 
 }
 
 //extendable styles
-
 
 .plos-row {
   @include plos-grid-row($container: true);
@@ -142,3 +192,62 @@ main,
 #pagehdr {
   @include plos-grid-container;
 }
+
+/*doc
+
+---
+title: Advanced Features
+name: advanced
+category: scaffolding
+parent: grid
+
+---
+
+##setting column widths in pixels
+`@extend .plos-grid-column(NUMBER)` - creates a column of the width you set with margins on either side.
+
+```html_example
+<div class="grid-example-complex">
+  <div class="grid-example-one">120px div</div>
+</div>
+```
+```sass_example
+  .grid-example-one {
+    @include plos-grid-column(120);
+  }
+```
+
+#further customisation
+ ## gutters
+
+option                            | result
+------------------------------------------| -----------------
+$gutter: none              | no columns
+`@extend .plos-column-third`              |   sets the column to a third of the container with default margins on either side
+`@extend .plos-column-half`               |   sets the column to half of the container with default margins on either side.
+
+
+ ```html_example
+<div class="grid-example-complex">
+    <div class="grid-example-three">120px div with no gutters</div>
+
+  <div class="grid-example-two">120px div with 50px gutters on either side</div>
+
+</div>
+```
+```sass_example
+  .grid-example-two {
+        @include plos-grid-column( 120, $gutter: 40 );
+  }
+    .grid-example-three {
+    @include plos-grid-column( 120, $gutter: none );
+      }
+```
+
+
+#theming
+ you can adjust the the number of columns, total width,  gutter widths etc... in `_variables.scss`
+
+
+
+*/

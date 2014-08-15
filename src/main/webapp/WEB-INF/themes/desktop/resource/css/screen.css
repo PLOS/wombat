@@ -1624,17 +1624,13 @@ option  | result
 `$gutter: left, $gutter-width: 50` |  *50px gutter on the left side ONLY - $gutter width does nothing without $gutter: left or right.
 `$gutter: right, $gutter-width: 50` |  *50px gutter on the right side ONLY - $gutter width does nothing without $gutter: left or right.
 
-
-
-
  ```html_example
 <div class="grid-example-complex">
-    <div class="grid-example-two">120px div with no gutters</div>
-  <div class="grid-example-three">120px div with 50px gutters on either side</div>
-  <div class="grid-example-four">120px div with 50px gutters on either side</div>
-  <div class="grid-example-five">120px div with 50px gutters on either side</div>
-  <div class="grid-example-six">120px div </div>
-
+    <div class="grid-example-two">120px div left gutter of 50px none on the right</div>
+  <div class="grid-example-three">120px div with default gutter on the left, none on the right</div>
+  <div class="grid-example-four">120px div with 50px gutter on the right, none on the left</div>
+  <div class="grid-example-five">120px div with default gutter on the right, none on the left</div>
+  <div class="grid-example-six">120px div with no gutter</div>
 </div>
 ```
 ```sass_example
@@ -1655,8 +1651,15 @@ option  | result
     @include plos-grid-column( 120, $gutter: none );
   }
 ```
+*/
+/*doc
+---
+title: Theming
+name: theming
+category: scaffolding
+parent: grid
 
-#theming
+---
  you can adjust the the number of columns, total width,  gutter widths etc... in `_variables.scss`
 
 

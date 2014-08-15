@@ -1520,28 +1520,28 @@ column classes                            | result
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 153, ../../sass/_scaffold.scss */
+/* line 156, ../../sass/_scaffold.scss */
 .plos-column-third {
   width: 20.41667rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 157, ../../sass/_scaffold.scss */
+/* line 160, ../../sass/_scaffold.scss */
 .plos-column-half {
   width: 30.625rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 163, ../../sass/_scaffold.scss */
+/* line 165, ../../sass/_scaffold.scss */
 .hero, #billboard {
   float: left;
   width: 60rem;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
-/* line 167, ../../sass/_scaffold.scss */
+/* line 169, ../../sass/_scaffold.scss */
 .block.xx-small, .xx-small#article-list, #issue, .article-column {
   float: left;
   width: 10rem; }
@@ -1560,12 +1560,12 @@ column classes                            | result
   @include plos-grid-column(470);
 }
 */
-/* line 185, ../../sass/_scaffold.scss */
+/* line 188, ../../sass/_scaffold.scss */
 .block.large, .large#article-list, .large#issue, .article-body {
   float: left;
   width: 47.5rem; }
 
-/* line 191, ../../sass/_scaffold.scss */
+/* line 193, ../../sass/_scaffold.scss */
 main,
 #pagehdr {
   width: 100%;
@@ -1616,34 +1616,48 @@ parent: grid
 #further customisation
  ## gutters
 
-option                            | result
+option  | result
 ------------------------------------------| -----------------
-$gutter: none              | no columns
-`@extend .plos-column-third`              |   sets the column to a third of the container with default margins on either side
-`@extend .plos-column-half`               |   sets the column to half of the container with default margins on either side.
+`$gutter: none`              | no gutter on either side
+`$gutter: left` |  default gutter on the left side - the plos default is 20px
+`$gutter: right` |  default gutter on the right side - the plos default is 20px
+`$gutter: left, $gutter-width: 50` |  *50px gutter on the left side ONLY - $gutter width does nothing without $gutter: left or right.
+`$gutter: right, $gutter-width: 50` |  *50px gutter on the right side ONLY - $gutter width does nothing without $gutter: left or right.
+
+
 
 
  ```html_example
 <div class="grid-example-complex">
-    <div class="grid-example-three">120px div with no gutters</div>
-
-  <div class="grid-example-two">120px div with 50px gutters on either side</div>
+    <div class="grid-example-two">120px div with no gutters</div>
+  <div class="grid-example-three">120px div with 50px gutters on either side</div>
+  <div class="grid-example-four">120px div with 50px gutters on either side</div>
+  <div class="grid-example-five">120px div with 50px gutters on either side</div>
+  <div class="grid-example-six">120px div </div>
 
 </div>
 ```
 ```sass_example
-  .grid-example-two {
-        @include plos-grid-column( 120, $gutter: 40 );
+  .grid-example-two{
+    @include plos-grid-column( 120, $gutter: left, $gutter-width: 50px );
   }
-    .grid-example-three {
-    @include plos-grid-column( 120, $gutter: none );
-      }
-```
+  .grid-example-three{
+    @include plos-grid-column( 120, $gutter: left );
+  }
 
+  .grid-example-four{
+    @include plos-grid-column( 120, $gutter: right, $gutter-width: 50px );
+  }
+  .grid-example-five{
+    @include plos-grid-column( 120, $gutter: right );
+  }
+    .grid-example-six{
+    @include plos-grid-column( 120, $gutter: none );
+  }
+```
 
 #theming
  you can adjust the the number of columns, total width,  gutter widths etc... in `_variables.scss`
-
 
 
 */

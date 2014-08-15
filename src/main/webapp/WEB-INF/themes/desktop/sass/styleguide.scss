@@ -10,6 +10,9 @@
 @import "pages/static";
 @import "pages/article";
 
+section.content{
+  h1{margin-top: .rem; font-size: $txt-size-medium-large;}
+}
 .rounded{
   @include rounded-pill();
 }
@@ -18,20 +21,6 @@
   @extend .inline-list; // from foundation
 
 }
-
-
-dd{ background: $grey-light; width: 100%; }
-dt{ font-weight: normal;  width: 95%;
-  margin: .5em auto; }
-pre{
-    width: 95%;
-    margin: .5em auto;
-}
-
-pre, section {
-  h4{margin-left: -1em}
-}
-
 
 .grid-example-simple{
   @extend .plos-row; // make this 3 columns out of 12 width
@@ -54,6 +43,16 @@ pre, section {
     @include plos-grid-column( 120, $gutter: left, $gutter-width: 50px );
   }
   .grid-example-three{
+    @include plos-grid-column( 120, $gutter: left );
+  }
+
+  .grid-example-four{
+    @include plos-grid-column( 120, $gutter: right, $gutter-width: 50px );
+  }
+  .grid-example-five{
     @include plos-grid-column( 120, $gutter: right );
+  }
+  .grid-example-six{
+    @include plos-grid-column( 120, $gutter: none );
   }
 }

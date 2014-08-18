@@ -1,25 +1,30 @@
 //article pages structure
   //header
   //main -- plos-grid-container is assigned to pagebdy in _scaffold.scss
-    //section.article-body -- plos-grid-column is assigned to %width-large in _scaffold.scss
-      // main part of the contents
-    //aside.article-column -- plos-grid-column is assigned to %width-xx-small
-      //right column contents
+    //.plos-row
+      //section.article-body -- plos-grid-column is assigned to %width-large in _scaffold.scss
+        // main part of the contents
+      //aside.article-column -- plos-grid-column is assigned to %width-xx-small
+        //right column contents
 
 .article-body {
-  @extend %width-large;
+  @include plos-grid-column(740, $gutter: none);
+  margin-right: $pad-default;  /*  temporary to make it look right even if the code is wrong */
 }
 .article-column {
-  @extend %width-xx-small;
+  @include plos-grid-column(180, $gutter: none);
+  float: right; /* temporary */
+  margin-left: $pad-default; /* temporary */
 }
 .classifications {
   @extend %txt-transform-fancy;
   margin-top: $pad-default + $pad-xsmall;
-  margin-bottom: $pad-default;
+  margin-bottom: $pad-small + $pad-xsmall;
   p {
     font-size: $txt-size-xxxxsmall;
     vertical-align: top;
     display: inline-block;
+
     .icon {
       padding-right: $pad-xsmall;
       font-size: $txt-size-medium;
@@ -40,6 +45,35 @@
   .article-type {
     margin-top: $pad-xsmall;
     font-size: $txt-size-xxsmall;
+  }
+}
+
+.article-body {
+  h1 {
+    font-size: $txt-size-xxxlarge;
+    margin-bottom: $pad-small;
+    line-height: normal;
+
+    i, italic {
+     font-style: italic;
+    }
+  }
+  .date-doi {
+    @include clearfix();
+    margin: $pad-notsmall 0; //this will change once we format more of the page
+    font-size: $txt-size-default;
+
+    li {
+      float: left;
+      margin-left: 10px;
+      color: #666;
+
+      &:first-child {
+        margin: 0 15px 0 0;
+        padding: 0;
+        list-style-type: none;
+      }
+    }
   }
 }
 .stub {

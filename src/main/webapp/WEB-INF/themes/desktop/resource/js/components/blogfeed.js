@@ -1,3 +1,4 @@
+// *** requires dateparse.js
 
 if (typeof google=='undefined') {
   document.getElementById("blogrss").innerHTML = "Please click on the link above to see the blog posts."
@@ -24,8 +25,8 @@ function feedLoaded() {
     function (result) {
       var container = document.getElementById("blogrss");
       if (!result.error) {
-        var html = "", docTitle, blogDiv, postQty, entry, postTitle, blogDate, postDescription,
-          postPubDate, dateOptions, findDay, findMonth, tempDiv, blogImg;
+        var html = "", docTitle, blogDiv, postQty, entry, postTitle, postDescription,
+          postPubDate, tempDiv, blogImg;
 
         blogDiv = container.parentNode;
         docTitle = document.title.slice(5, 8);
@@ -40,20 +41,8 @@ function feedLoaded() {
           entry = result.feed.entries[i];
           postTitle = entry.title;
           postDescription = entry.content;
-          blogDate = new Date(entry.publishedDate);
 
-          // IE10 & lower don't support options in toLocaleString, so use verbose method to display the date
-          if (document.all) {
-            var monthNames = new Array();
-            monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            findMonth = blogDate.getMonth();
-            findDay = blogDate.getDay();
-            postPubDate = monthNames[findMonth] + " " + findDay;
-
-          } else {
-            dateOptions = {month: "long", day: "numeric"};
-            postPubDate = blogDate.toLocaleString("en-US", dateOptions);
-          }
+          postPubDate = dateParse(entry.publishedDate);
 
           // add ellipsis to titles that are cut off
           if (postTitle.length > 75) {

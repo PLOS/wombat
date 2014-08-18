@@ -1,4 +1,6 @@
-@charset "UTF-8";
+/*
+ * This is a centralized import file that covers the main libraries and component files. you should import this into any new standalone .css
+*/
 @import "compass";  //an external library of usefull mixins - reset
 @import "variables"; // basic settings for type, size and colors
 @import "foundation"; //using the foundation library

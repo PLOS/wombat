@@ -3,7 +3,7 @@
 // Licensed under MIT Open Source
 
 // Make sure the charset is set appropriately
-@charset "UTF-8";  /// we have to put this into -global-imports to avoid sass errors
+//@charset "UTF-8";  // we have to put this into -global-imports to avoid sass errors
 
 // Behold, here are all the Foundation components.
 @import "vendor/foundation/settings",

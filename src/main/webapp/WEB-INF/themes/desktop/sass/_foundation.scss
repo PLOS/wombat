@@ -3,7 +3,7 @@
 // Licensed under MIT Open Source
 
 // Make sure the charset is set appropriately
-@charset "UTF-8";
+//@charset "UTF-8";  // we have to put this into each .scss that creates a standalone css file to avoid sass errors when we output the cms-preview file.
 
 // Behold, here are all the Foundation components.
 @import "vendor/foundation/settings",

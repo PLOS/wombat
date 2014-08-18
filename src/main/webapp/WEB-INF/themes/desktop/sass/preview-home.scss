@@ -1,0 +1,8 @@
+/*
+ *  This file is for cms output, it creates a namespace for the preview.
+ */
+
+.cms-preview {
+  @import "global-imports";
+  @import "pages/home";
+};

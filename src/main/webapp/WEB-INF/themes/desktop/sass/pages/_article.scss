@@ -79,31 +79,34 @@
 // TABS
 
 .article-tabs {
-  @extend .tabs;
-  @extend .inline-list;
-
+  display: table;
+  table-layout: fixed;
+  margin-bottom: $pad-default;
+  width: 100%;
   margin-left: 0;
   .tab-title {
     margin-left: 0;
-    //the following backgrounds by class can maybe be improved upon using lighten % and sibling selectors.
-    // with 5 it was getting pretty complex and lame so I threw in class names.
-    a.tab-article {
+    display: table-cell;
+    float: none;
+    position: static;
+
+    a.article-tab-1 {
       background: #2b2b2b;
     }
-    a.tab-authors {
-      background: #414141;
+    a.article-tab-2 {
+      background: lighten(#2b2b2b, 10%);
     }
-    a.tab-metrics {
-      background: #565656;
+    a.article-tab-3 {
+      background: lighten(#2b2b2b, 20%);
     }
-    a.tab-comments {
-      background: #6c6c6c;
+    a.article-tab-4 {
+      background: lighten(#2b2b2b, 30%);
     }
-    a.tab-related {
-      background: #818181;
+    a.article-tab-5 {
+      background: lighten(#2b2b2b, 40%);
     }
     a {
-      width: 145px;
+      display: block;
       height: 75px;
       padding: 10px;
       border-right: 1px solid #fff;
@@ -113,18 +116,17 @@
         background: $plos-default;
         color: $white;
       }
-
-    /*&:first-child {
-      background: #818181;
-    }*/
     }
     &.active a {
       position: relative;
       @extend %brand-background;
       height: 83px;
       font-weight: bold;
-      @extend .icon-tab-active;
+      font-family: $font-face-plain;
       &:before {
+       /* @extend .fa;
+        @extend .fa-angle-double-down;*/
+        @extend .icon-tab-active;
         position: absolute;
         bottom: 5px;
         left: 10px;

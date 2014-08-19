@@ -29,7 +29,7 @@
       <div class="article-text" id="artText">
 
         <h1 id="artTitle"> ${article.title} </h1>
-
+        <#-- pulled this from mobile and modified a bit. rip it out if need to change. sb list or dd -->
         <#if article.authors??>
         <div id="artAuthors" class="article-authors">
 

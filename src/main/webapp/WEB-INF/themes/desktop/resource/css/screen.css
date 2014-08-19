@@ -3668,13 +3668,13 @@ main,
 
 @font-face {
   font-family: "albert";
-  src: url('../fonts/fs_albert.ttf?1405986949') format('truetype'), url('../fonts/fs_albert.otf?1405986949') format('opentype'), url('../fonts/fs_albert.svg?1405986949') format('svg'), url('../fonts/fs_albert.woff?1405986949') format('woff'); }
+  src: url('../fonts/fs_albert.ttf?1400626859') format('truetype'), url('../fonts/fs_albert.otf?1402701102') format('opentype'), url('../fonts/fs_albert.svg?1400626859') format('svg'), url('../fonts/fs_albert.woff?1400626859') format('woff'); }
 @font-face {
   font-family: "albert-bold";
-  src: url('../fonts/fs_albert-bold-webfont.ttf?1405986949') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1405986949') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1405986949') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1405986949') format('woff'); }
+  src: url('../fonts/fs_albert-bold-webfont.ttf?1400626859') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1402701102') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1400626859') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1400626859') format('woff'); }
 @font-face {
   font-family: "FontAwesome";
-  src: url('../fonts/fontawesome-webfont.ttf?1405986949') format('truetype'), url('../fonts/FontAwesome.otf?1405986949') format('opentype'), url('../fonts/fontawesome-webfont.svg?1405986949') format('svg'), url('../fonts/fontawesome-webfont.woff?1405986949') format('woff'); }
+  src: url('../fonts/fontawesome-webfont.ttf?1401731168') format('truetype'), url('../fonts/FontAwesome.otf?1401731168') format('opentype'), url('../fonts/fontawesome-webfont.svg?1401731168') format('svg'), url('../fonts/fontawesome-webfont.woff?1401731168') format('woff'); }
 /* line 8, ../../sass/_typography.scss */
 .classifications {
   font-family: "albert";
@@ -4919,22 +4919,22 @@ header {
   /* line 86, ../../sass/pages/_article.scss */
   .article-tabs .tab-title {
     margin-left: 0; }
-    /* line 88, ../../sass/pages/_article.scss */
+    /* line 90, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.tab-article {
       background: #2b2b2b; }
-    /* line 91, ../../sass/pages/_article.scss */
+    /* line 93, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.tab-authors {
       background: #414141; }
-    /* line 94, ../../sass/pages/_article.scss */
+    /* line 96, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.tab-metrics {
       background: #565656; }
-    /* line 97, ../../sass/pages/_article.scss */
+    /* line 99, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.tab-comments {
       background: #6c6c6c; }
-    /* line 100, ../../sass/pages/_article.scss */
+    /* line 102, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.tab-related {
       background: #818181; }
-    /* line 103, ../../sass/pages/_article.scss */
+    /* line 105, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a {
       width: 145px;
       height: 75px;
@@ -4945,23 +4945,23 @@ header {
       /*&:first-child {
         background: #818181;
       }*/ }
-      /* line 111, ../../sass/pages/_article.scss */
+      /* line 112, ../../sass/pages/_article.scss */
       .article-tabs .tab-title a:hover {
         background: #3c63af;
         color: white; }
-    /* line 120, ../../sass/pages/_article.scss */
+    /* line 121, ../../sass/pages/_article.scss */
     .article-tabs .tab-title.active a {
       position: relative;
       height: 83px;
       font-weight: bold; }
-      /* line 126, ../../sass/pages/_article.scss */
+      /* line 127, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:before {
         position: absolute;
         bottom: 5px;
         left: 10px;
         font-size: 1.25em;
         font-weight: 100; }
-      /* line 133, ../../sass/pages/_article.scss */
+      /* line 134, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }
 
@@ -4973,7 +4973,7 @@ header {
 818181 129129129
 
  */
-/* line 152, ../../sass/pages/_article.scss */
+/* line 153, ../../sass/pages/_article.scss */
 .stub {
   background: powderblue;
   color: #999;

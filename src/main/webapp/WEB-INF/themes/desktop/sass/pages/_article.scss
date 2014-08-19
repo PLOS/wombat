@@ -85,6 +85,8 @@
   margin-left: 0;
   .tab-title {
     margin-left: 0;
+    //the following backgrounds by class can maybe be improved upon using lighten % and sibling selectors.
+    // with 5 it was getting pretty complex and lame so I threw in class names.
     a.tab-article {
       background: #2b2b2b;
     }
@@ -101,7 +103,6 @@
       background: #818181;
     }
     a {
-     // background: #818181;
       width: 145px;
       height: 75px;
       padding: 10px;

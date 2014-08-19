@@ -1,11 +1,11 @@
 //article pages structure
-  //header
-  //main -- plos-grid-container is assigned to pagebdy in _scaffold.scss
-    //.plos-row
-      //section.article-body -- plos-grid-column is assigned to %width-large in _scaffold.scss
-        // main part of the contents
-      //aside.article-column -- plos-grid-column is assigned to %width-xx-small
-        //right column contents
+//header
+//main -- plos-grid-container is assigned to pagebdy in _scaffold.scss
+//.plos-row
+//section.article-body -- plos-grid-column is assigned to %width-large in _scaffold.scss
+// main part of the contents
+//aside.article-column -- plos-grid-column is assigned to %width-xx-small
+//right column contents
 
 .article-body {
   @include plos-grid-column(740, $gutter: none);
@@ -32,11 +32,11 @@
     }
   }
   .license-short {
-   .icon {
+    .icon {
       @extend .icon-unlock;
     }
-     padding-right: $pad-small;
-   }
+    padding-right: $pad-small;
+  }
   .peer-reviewed {
     .icon {
       @extend .icon-edit;
@@ -55,7 +55,7 @@
     line-height: normal;
 
     i, italic {
-     font-style: italic;
+      font-style: italic;
     }
   }
   .date-doi {
@@ -76,6 +76,79 @@
     }
   }
 }
+// TABS
+
+.article-tabs {
+  @extend .tabs;
+  @extend .inline-list;
+
+  margin-left: 0;
+  .tab-title {
+    margin-left: 0;
+    a.tab-article {
+      background: #2b2b2b;
+    }
+    a.tab-authors {
+      background: #414141;
+    }
+    a.tab-metrics {
+      background: #565656;
+    }
+    a.tab-comments {
+      background: #6c6c6c;
+    }
+    a.tab-related {
+      background: #818181;
+    }
+    a {
+     // background: #818181;
+      width: 145px;
+      height: 75px;
+      padding: 10px;
+      border-right: 1px solid #fff;
+      font-weight: bold;
+      color: $white;
+      &:hover {
+        background: $plos-default;
+        color: $white;
+      }
+
+    /*&:first-child {
+      background: #818181;
+    }*/
+    }
+    &.active a {
+      position: relative;
+      @extend %brand-background;
+      height: 83px;
+      font-weight: bold;
+      @extend .icon-tab-active;
+      &:before {
+        position: absolute;
+        bottom: 5px;
+        left: 10px;
+        font-size: 1.25em;
+        font-weight: 100;
+      }
+      &:hover {
+        @extend %brand-background;
+        cursor: inherit;
+      }
+    }
+  }
+}
+
+
+
+/*
+#2b2b2b 434343
+414141  656565
+565656  868686
+6c6c6c  108108108
+818181 129129129
+
+ */
+
 .stub {
   background: powderblue;
   color: #999;

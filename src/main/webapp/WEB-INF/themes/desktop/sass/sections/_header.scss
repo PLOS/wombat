@@ -319,3 +319,11 @@ $width-nav: $block-grid-elements - $width-logo;
     text-decoration: underline;
   }
 }
+
+// set the journal-specific colors
+.plosbiology, .ploscompbiol, .plosgenetics {
+  @include brandColor($setColor: $plos-bio);
+}
+.plosmedicine, .plospathogens, .plosntd {
+  @include brandColor($setColor: $plos-med);
+}

@@ -9,6 +9,16 @@
 
   $( document ).ready(function() {
     $("#artPubDate").append(articlePubDate);
-  });
 
+
+/*$(document).foundation({
+    tab: {
+      callback : function (tab) {
+        console.log(tab);
+      }
+    }
+  });*/
+  /*   $('#myTabs').on('toggled', function (event, tab) {
+    console.log(tab);
+  });*/  });
 }(jQuery));

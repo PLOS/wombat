@@ -216,7 +216,10 @@ have a fixed width and height (but it's not required).
   @extend .fa;
   @extend .fa-edit;
 }
-
+.icon-tab-active {
+  @extend .fa;
+  @extend .fa-angle-double-down;
+ }
 .aria-text {
   position: absolute;
   top: -9999px;

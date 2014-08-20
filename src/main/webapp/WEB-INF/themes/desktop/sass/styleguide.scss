@@ -9,6 +9,7 @@
 @import "pages/home";
 @import "pages/static";
 @import "pages/article";
+
 body.styleguide {
     background-color: $grey-light;
 
@@ -88,3 +89,16 @@ section.content{
     @include plos-grid-column( 120, $gutter: none );
   }
 }
+
+.example-link{@extend %link-text-body;}
+.example-link-text-white{@extend %link-text-white; background: $plos-brand; padding: $pad-small;}
+.example-small-italic{@extend %small-italic;}
+.example-condense{@extend %condense;}
+.example-text-size-large{@extend %text-size-large; }
+.example-header-allcaps{@extend %header-allcaps}
+//%header-allcaps-plain {
+//
+//}
+//%header-allcaps-xlarge {
+//
+//%header-xlarge-light

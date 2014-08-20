@@ -71,14 +71,19 @@ parent: files
 /*doc
 ---
 title: link styles
-name: links colors
+name: link styles
 category: typography CSS
 ---
 
+in most cases you can leave the a tag alone but in some cases we need to manipulate the link behaviour.
 
+example | extension
+--------|----------
+
+### mixin
  "decoration" sets the hover style:
  "none" = there is NO underline and the text turns the highlight color
- "underline" =  text stays the same color but has an underline ```
+ "underline" =  text stays the same color but has an underline
 
 */
 @mixin link-text($color: $clr-body-text, $decoration: none){
@@ -162,4 +167,4 @@ This is one place not to use @extend, since this is a semantic class name
 
 .note,.caption, figcaption{ color: $grey-med-light;}
 
-.text-size-large {font-size: $txt-size-large;}
+%text-size-large {font-size: $txt-size-large;}

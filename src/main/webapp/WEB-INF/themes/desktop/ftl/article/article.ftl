@@ -33,37 +33,48 @@
         <div class="article-type" id="artType">${article.articleType!""}</div>
       </div>
 
-      <div class="article-text" id="artText">
-
         <h1 id="artTitle"> ${article.title} </h1>
-        <#-- pulled this from mobile and modified a bit. rip it out if need to change. sb list or dd -->
-        <#if article.authors??>
-        <div id="artAuthors" class="article-authors">
-
-              <#list authors as author>
-                <div class="article-author">
-                  ${author.fullName}
-                  <#list author.affiliations as affiliation>
-                    <p>${affiliation}</p>
-                  </#list>
-                </div>
-              </#list>
-          </div>
-          </#if>
 
         <ul class="date-doi">
           <li id="artPubDate">Published:  </li>
-          <li id="artDoi">DOI: ${article.doi}</li>
+          <li id="artDoi">DOI: ${article.doi} </li>
         </ul>
-      <#-- developing the tabs here; will move to include when complete -->
-         <#include "tabs.ftl" />
-          ${articleText}
 
-        </div>
+     <#-- <#include "tabs.ftl" />-->
+
+      <ul class="article-tabs" data-tab>
+        <li class="tab-title active">
+
+          <a href="#tabArticle1" class="article-tab-1" id="tabArticle">Article</a>
+        <#-- http://one-dpro.plosjournals.org/wombat/DesktopPlosNtds/article?id=10.1371/journal.pntd.0000104 -->
+        </li>
+
+      <#-- check if there are authors -->
+      <#if article.authors?? && article.authors?size gt 0>
+      <#-- check if article type is correction, retraction, concern -->
+        <#if ["correction", "retraction", "expression-of-concern"]?seq_contains(article.articleType)>
+        <#--suppress author tab -->
+        <#else>
+        <#-- ok to show the author tab -->
+          <li class="tab-title">
+            <a href="#tabArticle2" class="article-tab-2" id="tabAuthors">About the Authors</a>
+          <#---->
+          </li>
+        </#if>
+      </#if>
+        <li class="tab-title"><a href="#tabArticle3" class="article-tab-3" id="tabMetrics">Metrics</a></li>
+        <li class="tab-title"><a href="#tabArticle4" class="article-tab-4" id="tabComments">Comments</a></li>
+        <li class="tab-title"><a href="#tabArticle5" class="article-tab-5" id="tabRelated">Related Content</a></li>
+
+      </ul>
+
+      <div class="article-text" id="artText">
+          ${articleText}
+      </div>
 
 
     </section>
-    <aside class="stub article-column">
+    <aside class="article-column">
 
     </aside>
   </div>

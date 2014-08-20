@@ -4764,39 +4764,41 @@ header {
   float: right;
   /* temporary */
   margin-left: 1.25rem;
-  /* temporary */ }
+  /* temporary */
+  background-color: #808080;
+  height: 800px; }
 
-/* line 11, ../../sass/pages/_article.scss */
+/* line 14, ../../sass/pages/_article.scss */
 .classifications {
   margin-top: 1.5625rem;
   margin-bottom: 0.9375rem; }
-  /* line 15, ../../sass/pages/_article.scss */
+  /* line 18, ../../sass/pages/_article.scss */
   .classifications p {
     font-size: 9px;
     vertical-align: top;
     display: inline-block; }
-    /* line 20, ../../sass/pages/_article.scss */
+    /* line 23, ../../sass/pages/_article.scss */
     .classifications p .icon {
       padding-right: 0.3125rem;
       font-size: 14px;
       vertical-align: -3px; }
-  /* line 26, ../../sass/pages/_article.scss */
+  /* line 29, ../../sass/pages/_article.scss */
   .classifications .license-short {
     padding-right: 0.625rem; }
-  /* line 37, ../../sass/pages/_article.scss */
+  /* line 40, ../../sass/pages/_article.scss */
   .classifications .article-type {
     margin-top: 0.3125rem;
     font-size: 11px; }
 
-/* line 44, ../../sass/pages/_article.scss */
+/* line 47, ../../sass/pages/_article.scss */
 .article-body h1 {
   font-size: 26px;
   margin-bottom: 0.625rem;
   line-height: normal; }
-  /* line 49, ../../sass/pages/_article.scss */
+  /* line 52, ../../sass/pages/_article.scss */
   .article-body h1 i, .article-body h1 italic {
     font-style: italic; }
-/* line 53, ../../sass/pages/_article.scss */
+/* line 56, ../../sass/pages/_article.scss */
 .article-body .date-doi {
   *zoom: 1;
   margin: 0.9375rem 0;
@@ -4808,46 +4810,46 @@ header {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   .article-body .date-doi:after {
     clear: both; }
-  /* line 58, ../../sass/pages/_article.scss */
+  /* line 61, ../../sass/pages/_article.scss */
   .article-body .date-doi li {
     float: left;
     margin-left: 10px;
     color: #666; }
-    /* line 63, ../../sass/pages/_article.scss */
+    /* line 66, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
       margin: 0 15px 0 0;
       padding: 0;
       list-style-type: none; }
 
-/* line 74, ../../sass/pages/_article.scss */
+/* line 77, ../../sass/pages/_article.scss */
 .article-tabs {
   display: table;
   table-layout: fixed;
   margin-bottom: 1.25rem;
   width: 100%;
   margin-left: 0; }
-  /* line 80, ../../sass/pages/_article.scss */
+  /* line 83, ../../sass/pages/_article.scss */
   .article-tabs .tab-title {
     margin-left: 0;
     display: table-cell;
     float: none;
     position: static; }
-    /* line 86, ../../sass/pages/_article.scss */
+    /* line 89, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-1 {
       background: #2b2b2b; }
-    /* line 89, ../../sass/pages/_article.scss */
+    /* line 92, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-2 {
       background: #454545; }
-    /* line 92, ../../sass/pages/_article.scss */
+    /* line 95, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-3 {
       background: #5e5e5e; }
-    /* line 95, ../../sass/pages/_article.scss */
+    /* line 98, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-4 {
       background: #777777; }
-    /* line 98, ../../sass/pages/_article.scss */
+    /* line 101, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-5 {
       background: #919191; }
-    /* line 101, ../../sass/pages/_article.scss */
+    /* line 104, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
@@ -4855,17 +4857,17 @@ header {
       border-right: 1px solid #fff;
       font-weight: bold;
       color: white; }
-      /* line 108, ../../sass/pages/_article.scss */
+      /* line 111, ../../sass/pages/_article.scss */
       .article-tabs .tab-title a:hover {
         background: #3c63af;
         color: white; }
-    /* line 113, ../../sass/pages/_article.scss */
+    /* line 116, ../../sass/pages/_article.scss */
     .article-tabs .tab-title.active a {
       position: relative;
       height: 83px;
       font-weight: bold;
       font-family: "arial"; }
-      /* line 119, ../../sass/pages/_article.scss */
+      /* line 122, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:before {
         /* @extend .fa;
          @extend .fa-angle-double-down;*/
@@ -4874,6 +4876,6 @@ header {
         left: 10px;
         font-size: 1.25em;
         font-weight: 100; }
-      /* line 129, ../../sass/pages/_article.scss */
+      /* line 132, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }

@@ -7,6 +7,9 @@
   @include plos-grid-column(180, $gutter: none);
   float: right; /* temporary */
   margin-left: $pad-default; /* temporary */
+  //remove the following when content is added
+  background-color: #808080;
+  height: 800px;
 }
 .classifications {
   @extend %txt-transform-fancy;

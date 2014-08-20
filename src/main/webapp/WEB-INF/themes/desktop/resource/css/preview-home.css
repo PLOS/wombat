@@ -1445,7 +1445,7 @@
     width: 47.5rem; }
   /* line 14, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa, .cms-preview .carousel-wrap.small .carousel-control .jcarousel-prev,
-  .cms-preview .carousel-wrap.small .carousel-control .jcarousel-next, .cms-preview .more-icon, .cms-preview .more-link:after, .cms-preview .icon-fa, .cms-preview .icon-twitter, .cms-preview .icon-facebook, .cms-preview .icon-rss, .cms-preview .icon-email, .cms-preview .icon-unlock, .cms-preview .icon-edit {
+  .cms-preview .carousel-wrap.small .carousel-control .jcarousel-next, .cms-preview .more-icon, .cms-preview .more-link:after, .cms-preview .icon-fa, .cms-preview .icon-twitter, .cms-preview .icon-facebook, .cms-preview .icon-rss, .cms-preview .icon-email {
     display: inline-block;
     font-family: FontAwesome;
     font-style: normal;
@@ -1505,11 +1505,11 @@
     float: left; }
   /* line 74, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa.pull-left, .cms-preview .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev,
-  .cms-preview .carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .cms-preview .pull-left.more-icon, .cms-preview .pull-left.more-link:after, .cms-preview .pull-left.icon-fa, .cms-preview .pull-left.icon-twitter, .cms-preview .pull-left.icon-facebook, .cms-preview .pull-left.icon-rss, .cms-preview .pull-left.icon-email, .cms-preview .pull-left.icon-unlock, .cms-preview .pull-left.icon-edit {
+  .cms-preview .carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .cms-preview .pull-left.more-icon, .cms-preview .pull-left.more-link:after, .cms-preview .pull-left.icon-fa, .cms-preview .pull-left.icon-twitter, .cms-preview .pull-left.icon-facebook, .cms-preview .pull-left.icon-rss, .cms-preview .pull-left.icon-email {
     margin-right: .3em; }
   /* line 77, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa.pull-right, .cms-preview .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev,
-  .cms-preview .carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .cms-preview .pull-right.more-icon, .cms-preview .pull-right.more-link:after, .cms-preview .pull-right.icon-fa, .cms-preview .pull-right.icon-twitter, .cms-preview .pull-right.icon-facebook, .cms-preview .pull-right.icon-rss, .cms-preview .pull-right.icon-email, .cms-preview .pull-right.icon-unlock, .cms-preview .pull-right.icon-edit {
+  .cms-preview .carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .cms-preview .pull-right.more-icon, .cms-preview .pull-right.more-link:after, .cms-preview .pull-right.icon-fa, .cms-preview .pull-right.icon-twitter, .cms-preview .pull-right.icon-facebook, .cms-preview .pull-right.icon-rss, .cms-preview .pull-right.icon-email {
     margin-left: .3em; }
   /* line 80, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa-spin {
@@ -1810,7 +1810,7 @@
   .cms-preview .fa-tint:before {
     content: "\f043"; }
   /* line 383, ../../sass/vendor/_font-awesome.scss */
-  .cms-preview .fa-edit:before, .cms-preview .icon-edit:before,
+  .cms-preview .fa-edit:before,
   .cms-preview .fa-pencil-square-o:before {
     content: "\f044"; }
   /* line 387, ../../sass/vendor/_font-awesome.scss */
@@ -2498,7 +2498,7 @@
   .cms-preview .fa-anchor:before {
     content: "\f13d"; }
   /* line 1071, ../../sass/vendor/_font-awesome.scss */
-  .cms-preview .fa-unlock-alt:before, .cms-preview .icon-unlock:before {
+  .cms-preview .fa-unlock-alt:before {
     content: "\f13e"; }
   /* line 1074, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa-bullseye:before {
@@ -2997,79 +2997,81 @@
   /* line 6, ../../sass/preview-home.scss */
   .cms-preview {
     font-family: "albert";
-    src: url('../fonts/fs_albert.ttf?1405986949') format('truetype'), url('../fonts/fs_albert.otf?1405986949') format('opentype'), url('../fonts/fs_albert.svg?1405986949') format('svg'), url('../fonts/fs_albert.woff?1405986949') format('woff'); } }
+    src: url('../fonts/fs_albert.ttf?1400626859') format('truetype'), url('../fonts/fs_albert.otf?1402701102') format('opentype'), url('../fonts/fs_albert.svg?1400626859') format('svg'), url('../fonts/fs_albert.woff?1400626859') format('woff'); } }
 @font-face {
   /* line 6, ../../sass/preview-home.scss */
   .cms-preview {
     font-family: "albert-bold";
-    src: url('../fonts/fs_albert-bold-webfont.ttf?1405986949') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1405986949') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1405986949') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1405986949') format('woff'); } }
+    src: url('../fonts/fs_albert-bold-webfont.ttf?1400626859') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1402701102') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1400626859') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1400626859') format('woff'); } }
 @font-face {
   /* line 6, ../../sass/preview-home.scss */
   .cms-preview {
     font-family: "FontAwesome";
-    src: url('../fonts/fontawesome-webfont.ttf?1405986949') format('truetype'), url('../fonts/FontAwesome.otf?1405986949') format('opentype'), url('../fonts/fontawesome-webfont.svg?1405986949') format('svg'), url('../fonts/fontawesome-webfont.woff?1405986949') format('woff'); } }
-  /* line 17, ../../sass/_typography.scss */
+    src: url('../fonts/fontawesome-webfont.ttf?1401731168') format('truetype'), url('../fonts/FontAwesome.otf?1401731168') format('opentype'), url('../fonts/fontawesome-webfont.svg?1401731168') format('svg'), url('../fonts/fontawesome-webfont.woff?1401731168') format('woff'); } }
+  /* line 13, ../../sass/_typography.scss */
   .cms-preview .more-link > a, .cms-preview #issue .boxtitle a, .cms-preview .block .category, .cms-preview #article-list .category, .cms-preview #issue .category, .cms-preview #article-list h3 {
     font-size: 0.875rem;
-    font-family: "albert";
-    text-transform: uppercase; }
-  /* line 22, ../../sass/_typography.scss */
+    font-family: "albert"; }
+  /* line 18, ../../sass/_typography.scss */
   .cms-preview .more-link > a {
     font-family: "arial"; }
-  /* line 26, ../../sass/_typography.scss */
+  /* line 22, ../../sass/_typography.scss */
   .cms-preview #issue .boxtitle a {
     font-size: 1.25rem; }
-  /* line 31, ../../sass/_typography.scss */
+  /* line 27, ../../sass/_typography.scss */
   .cms-preview #submission-links h3, .cms-preview #social-links h3 {
     font-size: 1.25rem;
     color: white;
     font-family: "albert"; }
-  /* line 37, ../../sass/_typography.scss */
+  /* line 33, ../../sass/_typography.scss */
   .cms-preview #submission-links h3 {
     padding-bottom: 1.0625rem;
     margin-bottom: 1.0625rem;
     box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
     text-align: center; }
-  /* line 43, ../../sass/_typography.scss */
+  /* line 39, ../../sass/_typography.scss */
   .cms-preview .block .category, .cms-preview #article-list .category, .cms-preview #issue .category, .cms-preview #article-list h3 {
     margin-bottom: 0.625rem; }
-  /* line 48, ../../sass/_typography.scss */
+  /* line 44, ../../sass/_typography.scss */
   .cms-preview .carousel-wrap.small .block-header, .cms-preview #blogs .block-header {
     color: white;
     padding: 0 1.25rem;
     font-family: "albert";
     font-size: 1rem;
     line-height: 2.5rem; }
-  /* line 80, ../../sass/_typography.scss */
+  /* line 76, ../../sass/_typography.scss */
   .cms-preview .carousel-wrap.small .carousel li h3, .cms-preview .block .title, .cms-preview #article-list .title, .cms-preview #issue .title, .cms-preview #article-list ul.list-plain li a, .cms-preview .more-link > a, .cms-preview #issue .boxtitle a, .cms-preview .linkbox ul li, .cms-preview #blogs #blogrss .posttitle a, .cms-preview .carousel-wrap.small .carousel li h3 a, .cms-preview .block .title a, .cms-preview #article-list .title a, .cms-preview #issue .title a, .cms-preview #article-list ul.list-plain li a a, .cms-preview .more-link > a a, .cms-preview #issue .boxtitle a a, .cms-preview .linkbox ul li a, .cms-preview #blogs #blogrss .posttitle a a {
     color: #333333;
     text-decoration: none; }
-    /* line 68, ../../sass/_typography.scss */
+    /* line 64, ../../sass/_typography.scss */
     .cms-preview .carousel-wrap.small .carousel li h3:hover, .cms-preview .block .title:hover, .cms-preview #article-list .title:hover, .cms-preview #issue .title:hover, .cms-preview #article-list ul.list-plain li a:hover, .cms-preview .more-link > a:hover, .cms-preview #issue .boxtitle a:hover, .cms-preview .linkbox ul li:hover, .cms-preview #blogs #blogrss .posttitle a:hover, .cms-preview .carousel-wrap.small .carousel li h3 a:hover, .cms-preview .block .title a:hover, .cms-preview #article-list .title a:hover, .cms-preview #issue .title a:hover, .cms-preview #article-list ul.list-plain li a a:hover, .cms-preview .more-link > a a:hover, .cms-preview #issue .boxtitle a a:hover, .cms-preview .linkbox ul li a:hover, .cms-preview #blogs #blogrss .posttitle a a:hover, .cms-preview .carousel-wrap.small .carousel li h3 a:hover, .cms-preview .block .title a:hover, .cms-preview #article-list .title a:hover, .cms-preview #issue .title a:hover, .cms-preview #article-list ul.list-plain li a a:hover, .cms-preview .more-link > a a:hover, .cms-preview #issue .boxtitle a a:hover, .cms-preview .linkbox ul li a:hover, .cms-preview #blogs #blogrss .posttitle a a:hover, .cms-preview .carousel-wrap.small .carousel li h3 a a:hover, .cms-preview .block .title a a:hover, .cms-preview #article-list .title a a:hover, .cms-preview #issue .title a a:hover, .cms-preview #article-list ul.list-plain li a a a:hover, .cms-preview .more-link > a a a:hover, .cms-preview #issue .boxtitle a a a:hover, .cms-preview .linkbox ul li a a:hover, .cms-preview #blogs #blogrss .posttitle a a a:hover {
       color: #3c63af;
       text-decoration: none; }
-  /* line 84, ../../sass/_typography.scss */
+  /* line 80, ../../sass/_typography.scss */
   .cms-preview #blogs .block-header, .cms-preview #blogs .block-header a {
     color: white;
     text-decoration: none; }
-    /* line 68, ../../sass/_typography.scss */
+    /* line 64, ../../sass/_typography.scss */
     .cms-preview #blogs .block-header:hover, .cms-preview #blogs .block-header a:hover, .cms-preview #blogs .block-header a:hover, .cms-preview #blogs .block-header a a:hover {
       color: white;
       text-decoration: underline; }
-  /* line 92, ../../sass/_typography.scss */
+  /* line 88, ../../sass/_typography.scss */
   .cms-preview .carousel-wrap.small .carousel-control .numbers, .cms-preview .hero .hero-content p.credit, .cms-preview .block .date, .cms-preview #article-list .date, .cms-preview #issue .date, .cms-preview .block .credits, .cms-preview #article-list .credits, .cms-preview #issue .credits, .cms-preview #blogs #blogrss .postauthor {
     font-size: 0.625rem;
     font-style: italic; }
-  /* line 96, ../../sass/_typography.scss */
+  /* line 92, ../../sass/_typography.scss */
   .cms-preview #issue .boxtitle a {
     letter-spacing: -0.5px; }
-  /* line 99, ../../sass/_typography.scss */
+  /* line 95, ../../sass/_typography.scss */
+  .cms-preview .more-link > a, .cms-preview #issue .boxtitle a, .cms-preview .block .category, .cms-preview #article-list .category, .cms-preview #issue .category, .cms-preview #article-list h3 {
+    text-transform: uppercase; }
+  /* line 98, ../../sass/_typography.scss */
   .cms-preview .no-margin, .cms-preview .hero .hero-content h4, .cms-preview .hero .hero-content p {
     margin-bottom: 0; }
-  /* line 126, ../../sass/_typography.scss */
+  /* line 125, ../../sass/_typography.scss */
   .cms-preview .note, .cms-preview .caption {
     color: #cccccc; }
-  /* line 127, ../../sass/_typography.scss */
+  /* line 126, ../../sass/_typography.scss */
   .cms-preview .text-size-large {
     font-size: 18px; }
   /* line 113, ../../sass/_utilities.scss */
@@ -3200,7 +3202,7 @@
   /* line 204, ../../sass/_components.scss */
   .cms-preview .icon-email {
     content: '\f003'; }
-  /* line 220, ../../sass/_components.scss */
+  /* line 210, ../../sass/_components.scss */
   .cms-preview .aria-text, .cms-preview #social-links ul > li .icon-text {
     position: absolute;
     top: -9999px;
@@ -3319,7 +3321,7 @@
       .cms-preview .block .blurb a, .cms-preview #article-list .blurb a, .cms-preview #issue .blurb a {
         color: #3c63af;
         text-decoration: none; }
-        /* line 68, ../../sass/_typography.scss */
+        /* line 64, ../../sass/_typography.scss */
         .cms-preview .block .blurb a:hover, .cms-preview #article-list .blurb a:hover, .cms-preview #issue .blurb a:hover, .cms-preview .block .blurb a a:hover, .cms-preview #article-list .blurb a a:hover, .cms-preview #issue .blurb a a:hover {
           color: #3c63af;
           text-decoration: underline; }
@@ -3407,7 +3409,7 @@
       font-size: 0.875rem;
       color: #636363;
       text-decoration: none; }
-      /* line 68, ../../sass/_typography.scss */
+      /* line 64, ../../sass/_typography.scss */
       .cms-preview .row.three .row-small-blocks .small .title a:hover, .cms-preview .row.three .row-small-blocks .small .title a a:hover {
         color: #3c63af;
         text-decoration: none; }
@@ -3525,7 +3527,7 @@
         text-decoration: none;
         font-size: 16px;
         font-family: "albert"; }
-        /* line 68, ../../sass/_typography.scss */
+        /* line 64, ../../sass/_typography.scss */
         .cms-preview #submission-links .split-item a:hover, .cms-preview #submission-links .split-item a a:hover {
           color: #89a0d0;
           text-decoration: underline; }

@@ -17,10 +17,10 @@
   <div class="plos-row">
     <section class="article-body">
       <div class="classifications">
-        <p class="license-short" id="licenseShort"><span class="icon"></span>Open Access</p>
+        <p class="license-short" id="licenseShort">Open Access</p>
 
         <#if article.articleType=="Research Article">
-        <p class="peer-reviewed" id="peerReviewed"><span class="icon"></span>Peer-reviewed</p>
+        <p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>
         </#if>
 
         <div class="article-type" id="artType">${article.articleType!""}</div>

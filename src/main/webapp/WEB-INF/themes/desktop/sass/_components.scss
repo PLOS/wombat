@@ -207,16 +207,6 @@ have a fixed width and height (but it's not required).
   content: '\f003';
 }
 
-.icon-unlock {
-  @extend .fa;
-  @extend .fa-unlock-alt;
-}
-
-.icon-edit {
-  @extend .fa;
-  @extend .fa-edit;
-}
-
 .aria-text {
   position: absolute;
   top: -9999px;

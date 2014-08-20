@@ -1,8 +1,8 @@
 /*doc
 ---
-title: Grid
-name: grid
-category: scaffolding
+title: Intro
+name: intro
+category: Grid
 ---
 A grid allows us to set widths of columns and containers so that they are consistent.
 
@@ -102,7 +102,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
 
 }
 
-/// this is a total kluge essentially this allows us to have the margins on the outside
+// this is a total kluge essentially this allows us to have the margins on the outside
 @function grid-calc($colNumber, $totalColumns) {
   $columnWidth: ($row-width / $totalColumns); // ($row-width / $total-columns);
   @return ( $colNumber * $columnWidth );
@@ -138,9 +138,6 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @include plos-grid-row($container: true);
 }
 
-.plos-row-nomargin {
-
-}
 
 // All the columns - expressed like this:
 // .column-1
@@ -199,9 +196,8 @@ main,
 
 ---
 title: Advanced Features
-name: advanced
-category: scaffolding
-parent: grid
+name: z-advanced
+category: Grid
 
 ---
 
@@ -219,8 +215,8 @@ parent: grid
   }
 ```
 
-#further customisation
- ## gutters
+##further customisation
+###gutters
 
 option  | result
 ------------------------------------------| -----------------
@@ -260,13 +256,24 @@ option  | result
 */
 /*doc
 ---
-title: Theming
-name: theming
-category: scaffolding
-parent: grid
+title: Grid
+name: grid
+category: Theming
 
 ---
  you can adjust the the number of columns, total width,  gutter widths etc... in `_variables.scss`
 
+
+*/
+
+/*doc
+---
+title: scaffold.scss
+name:  scaffold.scss
+category: base
+parent: files
+---
+
+This file contains the code for the grid and general layout.
 
 */

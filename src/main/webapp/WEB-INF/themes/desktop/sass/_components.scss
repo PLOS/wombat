@@ -1,6 +1,14 @@
-/*   This file contains design components used for Journals and Wombat Generic
- *
- */
+
+/*doc
+---
+title: components.scss
+name: components
+category: base
+parent: files
+---
+
+wombat and journal specific layout styles for large layouts
+*/
 
 @mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default) {
   background: $background;

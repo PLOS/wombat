@@ -1,24 +1,19 @@
-/*------------------------------------*\
-   COLORS
-\*------------------------------------*/
 
 /*doc
 ---
-title: Variables
-name: variables
+title: variables.scss
+name: variables.scss
 category: base
-
+parent: files
 ---
+Variables.scss  contain color values, fonts, font-sizes and padding options you should use instead of setting those yourself.
+
+For example: instead of using `font-size: 22px` you should  instead use `font-size: $txt-size-xxlarge` this way we can adjust the sizes in one place rather than all over the stylesheets.
 
 
-Variables contain color values and sizes that you can and should use.
-
-*/
-
-
-//some of these values use the rem-calc() function in foundation framework from zurb - http://foundation.zurb.com/ - if not using foundation you have to change these values to use the units of you choice
-// if you still want to use rem-calc then import foundation/functions  here.  or create your own rem-calc function
-
+/*------------------------------------*\
+   COLORS
+\*------------------------------------*/
 
 //journal specific
 
@@ -96,7 +91,7 @@ $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0
 
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px
-$pad-notsmall: $pad-small + $pad-xsmall;
+$pad-notsmall: $pad-small + $pad-xsmall;  //15px
 $pad-default: $grid-gutter;       //20px
 $pad-medium: ($grid-gutter * 1.5); //30px
 $pad-large: ($grid-gutter * 2);   //40px
@@ -119,7 +114,7 @@ $txt-size-23large: 23px;
 $txt-size-xxlarge: 22px;
 $txt-size-xlarge: 20px;
 $txt-size-large: 18px;
-$txt-size-medium-large: 16px; // TODO This is getting ridiculous there has to be a better way
+$txt-size-medium-large: 16px;
 $txt-size-medium: 14px;
 $txt-size-small: 13px;
 $txt-size-xsmall: 12px;
@@ -138,8 +133,42 @@ $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
 
+/*doc
+---
+title: Setting basic defaults
+name: defaults
+category: Theming
+---
+Variables.scss  contain color values, fonts, font-sizes, grid values etc.... that you can use to create your own themes for other journals.
 
+#units
+We are assuming that pixel values will be converted to pixels using the rem-calc function from the foundation framework from zurb - http:foundation.zurb.com/ - if not using foundation you can change these values to use the units of your choice. you will have to go through the scss code to remove the rem-calc function.
 
+*/
+
+/*doc
+---
+title: Reusable Variables
+name: reuseable_variables
+category: Styles
+---
+Use variables rather than setting the values yourself.
+Unfortunately it's impractical to list them all here but I'll provide a few highlights:
+option          | result
+--------------- | -----------------
+`$border-radius-default`| our default border-radius
+`$border-radius-large` | our larger border-radius
+`$default-box-shadow` | ;
+`$pad-xsmall`| 5px
+`$pad-small`| 10px
+`$pad-notsmall`| 15px
+`$pad-default`| 20px
+`$pad-medium`|  30px
+`$pad-large`| 40px
+`$font-face-fancy`| Albert font
+`$font-face-plain` | arial font
+ `$clr-brand`| sets the journal color
+                                                                                                                                                     */
 
 
 

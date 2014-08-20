@@ -1,3 +1,13 @@
+/*doc
+---
+title: typography.scss
+name: typography
+category: base
+parent: files
+---
+ type styles including sizes and vertical spacing
+*/
+
 @include font-face("albert", font-files("fs_albert.ttf", "fs_albert.otf",  "fs_albert.svg",  "fs_albert.woff"));
 
 
@@ -65,7 +75,6 @@ name: links colors
 category: typography CSS
 ---
 
-This is one place not to use @extend, since this is a semantic class name
 
  "decoration" sets the hover style:
  "none" = there is NO underline and the text turns the highlight color

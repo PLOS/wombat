@@ -1,5 +1,13 @@
-//  This file has wombat specific mixins and extensible styles
-//  and ties in with plos-themes and setting each journal color
+/*doc
+---
+title: utilities.scss
+name: utilities
+category: base
+parent: files
+---
+  This file has wombat specific mixins and extensible styles
+  and ties in with plos-themes and setting each journal color
+*/
 
 
 //compass overides
@@ -18,7 +26,7 @@ $clr-highlight-text: $white) {
   background: $clr-highlight;
   color: $clr-highlight-text;
   &:hover {
-    background: $clr-highlight-hover;
+    background: $clr-highlight-hover;                                                         
   }
 }
 

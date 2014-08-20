@@ -9,11 +9,40 @@
 @import "pages/home";
 @import "pages/static";
 @import "pages/article";
+body.styleguide {
+    background-color: $grey-light;
 
+  header{ @include plos-grid-container;
+   margin-bottom: 1em;
+    h1{margin-bottom: .25em; padding-bottom: .25em;  border-bottom: 5px solid $plos-default;
+    }
+    nav{li { padding: .25em;}}
+  }
+}
 section.content{
-  h1,h2{margin-top: 1em; }
-  h2{font-size: $txt-size-medium-large;}
+  @extend .plos-row;
+  h1,h2,h3{margin: .75em 0   .25em -5px; text-transform: capitalize; }
+  h1{font-size: $txt-size-xxxlarge;}
+  h2{font-size: $txt-size-xxlarge;}
   h3{font-size: $txt-size-medium-large;}
+  aside {@extend .plos-column-2; @extend .block; height: 100%;
+  nav{li {padding-bottom: .25em;}}
+  }
+  article {@extend .plos-column-9;  @extend .block; height: 100%; }
+  p,table{padding-bottom: .25em; line-height: 140%;}
+  table{
+  border-collapse: collapse;
+  width: 100%;
+    td{font-size: $txt-size-default;}
+    th{
+      text-align: left;}
+}
+
+  /// trulia over rides:
+  div.codeExample:before{
+    width: 100%;
+    border-radius: 0;
+  }
 
 }
 .rounded{

@@ -3574,13 +3574,13 @@ main,
 
 @font-face {
   font-family: "albert";
-  src: url('../fonts/fs_albert.ttf?1405986949') format('truetype'), url('../fonts/fs_albert.otf?1405986949') format('opentype'), url('../fonts/fs_albert.svg?1405986949') format('svg'), url('../fonts/fs_albert.woff?1405986949') format('woff'); }
+  src: url('../fonts/fs_albert.ttf?1400626859') format('truetype'), url('../fonts/fs_albert.otf?1402701102') format('opentype'), url('../fonts/fs_albert.svg?1400626859') format('svg'), url('../fonts/fs_albert.woff?1400626859') format('woff'); }
 @font-face {
   font-family: "albert-bold";
-  src: url('../fonts/fs_albert-bold-webfont.ttf?1405986949') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1405986949') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1405986949') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1405986949') format('woff'); }
+  src: url('../fonts/fs_albert-bold-webfont.ttf?1400626859') format('truetype'), url('../fonts/fs_albert-bold-webfont.otf?1402701102') format('opentype'), url('../fonts/fs_albert-bold-webfont.svg?1400626859') format('svg'), url('../fonts/fs_albert-bold-webfont.woff?1400626859') format('woff'); }
 @font-face {
   font-family: "FontAwesome";
-  src: url('../fonts/fontawesome-webfont.ttf?1405986949') format('truetype'), url('../fonts/FontAwesome.otf?1405986949') format('opentype'), url('../fonts/fontawesome-webfont.svg?1405986949') format('svg'), url('../fonts/fontawesome-webfont.woff?1405986949') format('woff'); }
+  src: url('../fonts/fontawesome-webfont.ttf?1401731168') format('truetype'), url('../fonts/FontAwesome.otf?1401731168') format('opentype'), url('../fonts/fontawesome-webfont.svg?1401731168') format('svg'), url('../fonts/fontawesome-webfont.woff?1401731168') format('woff'); }
 /* line 8, ../../sass/_typography.scss */
 .classifications {
   font-family: "albert";
@@ -4818,9 +4818,3 @@ header {
       margin: 0 15px 0 0;
       padding: 0;
       list-style-type: none; }
-
-/* line 79, ../../sass/pages/_article.scss */
-.stub {
-  background: powderblue;
-  color: #999;
-  height: 700px; }

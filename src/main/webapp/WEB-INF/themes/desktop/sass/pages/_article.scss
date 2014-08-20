@@ -1,11 +1,3 @@
-//article pages structure
-  //header
-  //main -- plos-grid-container is assigned to pagebdy in _scaffold.scss
-    //.plos-row
-      //section.article-body -- plos-grid-column is assigned to %width-large in _scaffold.scss
-        // main part of the contents
-      //aside.article-column -- plos-grid-column is assigned to %width-xx-small
-        //right column contents
 
 .article-body {
   @include plos-grid-column(740, $gutter: none);
@@ -67,9 +59,4 @@
       }
     }
   }
-}
-.stub {
-  background: powderblue;
-  color: #999;
-  height: 700px;
 }

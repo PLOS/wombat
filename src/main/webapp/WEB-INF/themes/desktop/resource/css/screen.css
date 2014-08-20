@@ -4748,14 +4748,14 @@ header {
   .static h1 {
     margin-bottom: 1.875rem; }
 
-/* line 10, ../../sass/pages/_article.scss */
+/* line 2, ../../sass/pages/_article.scss */
 .article-body {
   float: left;
   width: 46.25rem;
   margin-right: 1.25rem;
   /*  temporary to make it look right even if the code is wrong */ }
 
-/* line 14, ../../sass/pages/_article.scss */
+/* line 6, ../../sass/pages/_article.scss */
 .article-column {
   float: left;
   width: 11.25rem;
@@ -4764,38 +4764,38 @@ header {
   margin-left: 1.25rem;
   /* temporary */ }
 
-/* line 19, ../../sass/pages/_article.scss */
+/* line 11, ../../sass/pages/_article.scss */
 .classifications {
   margin-top: 1.5625rem;
   margin-bottom: 0.9375rem; }
-  /* line 23, ../../sass/pages/_article.scss */
+  /* line 15, ../../sass/pages/_article.scss */
   .classifications p {
     font-size: 10px;
     display: inline-block;
     padding-left: 0.9375rem;
     line-height: 17px; }
-  /* line 29, ../../sass/pages/_article.scss */
+  /* line 21, ../../sass/pages/_article.scss */
   .classifications .license-short {
     background: url('../img/icon.oa.gif') no-repeat 0 3px;
     padding-right: 0.625rem; }
-  /* line 33, ../../sass/pages/_article.scss */
+  /* line 25, ../../sass/pages/_article.scss */
   .classifications .peer-reviewed {
     background: url('../img/icon.pr.gif') no-repeat 0 3px; }
-  /* line 36, ../../sass/pages/_article.scss */
+  /* line 28, ../../sass/pages/_article.scss */
   .classifications .article-type {
     margin-top: 0.3125rem;
     font-family: "albert";
     font-size: 11px; }
 
-/* line 44, ../../sass/pages/_article.scss */
+/* line 36, ../../sass/pages/_article.scss */
 .article-body h1 {
   font-size: 27px;
   margin-bottom: 0.625rem;
   line-height: normal; }
-  /* line 49, ../../sass/pages/_article.scss */
+  /* line 41, ../../sass/pages/_article.scss */
   .article-body h1 i, .article-body h1 italic {
     font-style: italic; }
-/* line 53, ../../sass/pages/_article.scss */
+/* line 45, ../../sass/pages/_article.scss */
 .article-body .date-doi {
   *zoom: 1;
   margin: 0.9375rem 0;
@@ -4807,19 +4807,13 @@ header {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   .article-body .date-doi:after {
     clear: both; }
-  /* line 58, ../../sass/pages/_article.scss */
+  /* line 50, ../../sass/pages/_article.scss */
   .article-body .date-doi li {
     float: left;
     margin-left: 10px;
     color: #666; }
-    /* line 63, ../../sass/pages/_article.scss */
+    /* line 55, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
       margin: 0 15px 0 0;
       padding: 0;
       list-style-type: none; }
-
-/* line 71, ../../sass/pages/_article.scss */
-.stub {
-  background: powderblue;
-  color: #999;
-  height: 700px; }

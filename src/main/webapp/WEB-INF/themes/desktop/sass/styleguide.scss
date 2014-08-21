@@ -24,7 +24,7 @@ section.content{
   @extend .plos-row;
   h1,h2,h3{margin: .75em 0   .25em -5px; text-transform: capitalize; }
   h1{font-size: $txt-size-xxxlarge;}
-  h2{font-size: $txt-size-xxlarge;}
+  h2{font-size: $txt-size-medium-large; font-family: $font-face-plain; font-weight: 800;}
   h3{font-size: $txt-size-medium-large;}
   aside {@extend .plos-column-2; @extend .block; height: 100%;
   nav{li {padding-bottom: .25em;}}

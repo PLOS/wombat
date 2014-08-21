@@ -15,9 +15,10 @@ These are the common files we use in our framework.
 /*doc
 ---
 title: global-imports.scss
+parent: files
 name: global-imports.scss
 category: base
-parent: files
+
 ---
 
 This is a centralized import file that covers the main libraries and component files. you should import this into any new standalone .css
@@ -5333,7 +5334,9 @@ section.content h1 {
   font-size: 26px; }
 /* line 27, ../../sass/styleguide.scss */
 section.content h2, section.content .carousel-wrap.small .carousel li h3, .carousel-wrap.small .carousel li section.content h3 {
-  font-size: 22px; }
+  font-size: 16px;
+  font-family: "arial";
+  font-weight: 800; }
 /* line 28, ../../sass/styleguide.scss */
 section.content h3 {
   font-size: 16px; }

@@ -30,7 +30,7 @@ section.content{
   nav{li {padding-bottom: .25em;}}
   }
   article {@extend .plos-column-9;  @extend .block; height: 100%; }
-  p,table{padding-bottom: .25em; line-height: 140%;}
+  table{padding-bottom: .25em; line-height: 140%;}
   table{
   border-collapse: collapse;
   width: 100%;
@@ -91,14 +91,15 @@ section.content{
 }
 
 .example-link{@extend %link-text-body;}
-.example-link-text-white{@extend %link-text-white; background: $plos-brand; padding: $pad-small;}
+.example-link-text-white{@extend %link-text-white; background: $plos-default; padding: $pad-small;}
 .example-small-italic{@extend %small-italic;}
 .example-condense{@extend %condense;}
-.example-text-size-large{@extend %text-size-large; }
-.example-header-allcaps{@extend %header-allcaps}
-//%header-allcaps-plain {
-//
-//}
-//%header-allcaps-xlarge {
-//
-//%header-xlarge-light
+.example-text-size-large{@extend %text-size-large;}
+.example-header-allcaps-plain{@extend %header-allcaps-plain;}
+.example-header-allcaps-xlarge{@extend %header-allcaps-xlarge;}
+.example-header-allcaps{@extend %header-allcaps;}
+.example-brand-title{@extend %brand-title;}
+.example-brand-header{@extend %brand-header;}
+
+.example-more-link::after { @extend .more-icon; }
+

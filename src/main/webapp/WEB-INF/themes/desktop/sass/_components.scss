@@ -1,14 +1,18 @@
 
 /*doc
 ---
-title: components.scss
-name: components
-category: base
-parent: files
+title: small components
+name: small components
+category: components
 ---
 
-wombat and journal specific layout styles for large layouts
+##pill
+<p class="pill">I am a pill</p>
+`@extend %pill`
+
+
 */
+
 
 @mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default) {
   background: $background;
@@ -25,6 +29,26 @@ wombat and journal specific layout styles for large layouts
 .pill {
   @include rounded-pill();
 }
+
+/*doc
+---
+title: blocks
+name: blocks
+category: components
+---
+
+.block{
+  @include blocks();
+}
+.block-noshadow{
+  @include blocks($shadow: none);
+
+}
+.block-card {
+  @include blocks($radius: none, $padding: none);
+}
+
+*/
 
 @mixin blocks($color: $white, $radius: top, $padding: default, $shadow: default) {
   // set block radius
@@ -170,9 +194,30 @@ have a fixed width and height (but it's not required).
 
 }
 
-//font awesome icon: arrow after link
-//use with ::after
-//example: .more-link::after { @extend .more-icon }
+
+/*doc
+---
+title: icons
+name: icons
+category: typography
+---
+
+WE use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
+For icons after text:
+use with `::after` example: `.more-link::after { @extend .more-icon }`
+
+
+
+example | extension
+--------|----------
+<a class="example-more-link">more</a>| `@extend .more-icon`
+<p class="icon-twitter"> twitter </p> | `@extend .icon-twitter`
+<p class="icon-facebook"> facebook</p> | `@extend .icon-facebook`
+<p class="icon-email"> email</p> | `@extend .icon-email`
+
+
+*/
+
 
 .more-icon {
   // need to use content instead of @extend .fa-chevron-circle-right with ::after;

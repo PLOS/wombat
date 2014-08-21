@@ -150,15 +150,16 @@ We are assuming that pixel values will be converted to pixels using the rem-calc
 ---
 title: Reusable Variables
 name: reuseable_variables
-category: Styles
+category: utilities
 ---
 Use variables rather than setting the values yourself.
 Unfortunately it's impractical to list them all here but I'll provide a few highlights:
+
 option          | result
 --------------- | -----------------
 `$border-radius-default`| our default border-radius
 `$border-radius-large` | our larger border-radius
-`$default-box-shadow` | ;
+`$default-box-shadow` | our default box shadow (you can also `@include box-shadow()`);
 `$pad-xsmall`| 5px
 `$pad-small`| 10px
 `$pad-notsmall`| 15px
@@ -167,8 +168,8 @@ option          | result
 `$pad-large`| 40px
 `$font-face-fancy`| Albert font
 `$font-face-plain` | arial font
- `$clr-brand`| sets the journal color
-  `$plos-default`| sets the journal color
+`$clr-brand`| sets the journal color
+`$clr-highlight`| sets the plos-default color
                                                                                                                                                      */
 
 

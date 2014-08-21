@@ -55,9 +55,11 @@ section.content{
 
 }
 
+.box-example{  background-color: $grey-light; border:1px solid $grey-med-light; margin-bottom: $pad-xsmall;}
+
 .grid-example-simple{
+  div{@extend .box-example;}
   @extend .plos-row; // make this 3 columns out of 12 width
-  div{ background-color: $grey-light}
   .grid-example-column-1 {
     @extend .plos-column-3;
   }
@@ -68,7 +70,7 @@ section.content{
 
 .grid-example-complex{
   @extend .plos-row; // make this 3 columns out of 12 width
-  div{ background-color: $grey-light}
+  div{@extend .box-example;}
   .grid-example-one {
     @include plos-grid-column(120);
   }

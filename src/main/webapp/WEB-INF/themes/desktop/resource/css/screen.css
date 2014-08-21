@@ -7,6 +7,7 @@ title: Files
 name: files
 category: base
 ---
+
 These are the common files we use in our framework.
 
 */
@@ -17,7 +18,8 @@ name: global-imports.scss
 category: base
 parent: files
 ---
- * This is a centralized import file that covers the main libraries and component files. you should import this into any new standalone .css
+
+This is a centralized import file that covers the main libraries and component files. you should import this into any new standalone .css
 These are the files that need to be on each stand alone stylesheet, this is the basis of our framework
 
 */
@@ -32,7 +34,7 @@ Variables.scss  contain color values, fonts, font-sizes and padding options you 
 
 For example: instead of using `font-size: 22px` you should  instead use `font-size: $txt-size-xxlarge` this way we can adjust the sizes in one place rather than all over the stylesheets.
 
-
+*/
 /*------------------------------------*\
    COLORS
 \*------------------------------------*/
@@ -44,7 +46,7 @@ category: Theming
 ---
 Variables.scss  contain color values, fonts, font-sizes, grid values etc.... that you can use to create your own themes for other journals.
 
-#units
+#Units
 We are assuming that pixel values will be converted to pixels using the rem-calc function from the foundation framework from zurb - http:foundation.zurb.com/ - if not using foundation you can change these values to use the units of your choice. you will have to go through the scss code to remove the rem-calc function.
 
 */
@@ -93,7 +95,7 @@ Variables.scss  contain color values, fonts, font-sizes and padding options you 
 
 For example: instead of using `font-size: 22px` you should  instead use `font-size: $txt-size-xxlarge` this way we can adjust the sizes in one place rather than all over the stylesheets.
 
-
+*/
 /*------------------------------------*\
    COLORS
 \*------------------------------------*/
@@ -105,7 +107,7 @@ category: Theming
 ---
 Variables.scss  contain color values, fonts, font-sizes, grid values etc.... that you can use to create your own themes for other journals.
 
-#units
+#Units
 We are assuming that pixel values will be converted to pixels using the rem-calc function from the foundation framework from zurb - http:foundation.zurb.com/ - if not using foundation you can change these values to use the units of your choice. you will have to go through the scss code to remove the rem-calc function.
 
 */
@@ -4203,11 +4205,9 @@ name: icons
 category: typography
 ---
 
-WE use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
+We use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
 For icons after text:
 use with `::after` example: `.more-link::after { @extend .more-icon }`
-
-
 
 example | extension
 --------|----------
@@ -4216,35 +4216,34 @@ example | extension
 <p class="icon-facebook"> facebook</p> | `@extend .icon-facebook`
 <p class="icon-email"> email</p> | `@extend .icon-email`
 
-
 */
-/* line 222, ../../sass/_components.scss */
+/* line 217, ../../sass/_components.scss */
 .more-icon, .more-link:after {
   content: '\f138';
   padding-left: 0.1875rem; }
 
-/* line 231, ../../sass/_components.scss */
+/* line 226, ../../sass/_components.scss */
 .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email {
   line-height: 44px;
   font-size: 22px; }
 
-/* line 237, ../../sass/_components.scss */
+/* line 232, ../../sass/_components.scss */
 .icon-twitter {
   content: '\f099'; }
 
-/* line 244, ../../sass/_components.scss */
+/* line 238, ../../sass/_components.scss */
 .icon-facebook {
   content: '\f09a'; }
 
-/* line 251, ../../sass/_components.scss */
+/* line 244, ../../sass/_components.scss */
 .icon-rss {
   content: '\f09e'; }
 
-/* line 257, ../../sass/_components.scss */
+/* line 250, ../../sass/_components.scss */
 .icon-email {
   content: '\f003'; }
 
-/* line 263, ../../sass/_components.scss */
+/* line 256, ../../sass/_components.scss */
 .aria-text, #social-links ul > li .icon-text {
   position: absolute;
   top: -9999px;

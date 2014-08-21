@@ -4,6 +4,7 @@ title: Files
 name: files
 category: base
 ---
+
 These are the common files we use in our framework.
 
 */
@@ -15,7 +16,8 @@ name: global-imports.scss
 category: base
 parent: files
 ---
- * This is a centralized import file that covers the main libraries and component files. you should import this into any new standalone .css
+
+This is a centralized import file that covers the main libraries and component files. you should import this into any new standalone .css
 These are the files that need to be on each stand alone stylesheet, this is the basis of our framework
 
 */ 

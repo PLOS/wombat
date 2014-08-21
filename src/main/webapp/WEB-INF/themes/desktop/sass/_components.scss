@@ -191,7 +191,6 @@ have a fixed width and height (but it's not required).
       }
     }
   }
-
 }
 
 
@@ -202,11 +201,9 @@ name: icons
 category: typography
 ---
 
-WE use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
+We use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
 For icons after text:
 use with `::after` example: `.more-link::after { @extend .more-icon }`
-
-
 
 example | extension
 --------|----------
@@ -215,9 +212,7 @@ example | extension
 <p class="icon-facebook"> facebook</p> | `@extend .icon-facebook`
 <p class="icon-email"> email</p> | `@extend .icon-email`
 
-
 */
-
 
 .more-icon {
   // need to use content instead of @extend .fa-chevron-circle-right with ::after;
@@ -238,14 +233,12 @@ example | extension
   @extend .icon-fa;
   @extend .fa-twitter;
   content: '\f099';
-
 }
 
 .icon-facebook {
   @extend .icon-fa;
   @extend .fa-facebook;
   content: '\f09a';
-
 }
 
 .icon-rss {

@@ -10,6 +10,7 @@ Variables.scss  contain color values, fonts, font-sizes and padding options you 
 
 For example: instead of using `font-size: 22px` you should  instead use `font-size: $txt-size-xxlarge` this way we can adjust the sizes in one place rather than all over the stylesheets.
 
+*/
 
 /*------------------------------------*\
    COLORS
@@ -88,7 +89,6 @@ $default-box-shadow-spread: 3px;
 $default-box-shadow-inset: false;
 $default-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.15);
 $default-header-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
-
 $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
 
 $pad-xsmall: ($grid-gutter / 4);  //5px
@@ -144,7 +144,7 @@ category: Theming
 ---
 Variables.scss  contain color values, fonts, font-sizes, grid values etc.... that you can use to create your own themes for other journals.
 
-#units
+#Units
 We are assuming that pixel values will be converted to pixels using the rem-calc function from the foundation framework from zurb - http:foundation.zurb.com/ - if not using foundation you can change these values to use the units of your choice. you will have to go through the scss code to remove the rem-calc function.
 
 */

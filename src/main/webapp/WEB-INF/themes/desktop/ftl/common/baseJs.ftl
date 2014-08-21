@@ -11,6 +11,7 @@ fast click is required for mobile interactions for foundation.
 * unless you are absolutely sure they will only be in one scenario - then you
 should include it in the ftl file that needs it. -->
 <@js src="resource/js/vendor/foundation/foundation.tooltip.js"/>
+<@js src="resource/js/vendor/foundation/foundation.tab.js" />
 
 
 

@@ -26,20 +26,22 @@
         <div class="article-type" id="artType">${article.articleType!""}</div>
       </div>
 
-      <div class="article-text" id="artText">
-
         <h1 id="artTitle"> ${article.title} </h1>
 
         <ul class="date-doi">
           <li id="artPubDate">Published:  </li>
-          <li id="artDoi">DOI: ${article.doi}</li>
+          <li id="artDoi">DOI: ${article.doi} </li>
         </ul>
 
-      ${articleText}
+      <#include "tabs.ftl" />
 
+      <div class="article-text" id="artText">
+         ${articleText}
       </div>
+
+
     </section>
-    <aside class="stub article-column">
+    <aside class="article-column">
 
     </aside>
   </div>

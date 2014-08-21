@@ -7,6 +7,9 @@
   @include plos-grid-column(180, $gutter: none);
   float: right; /* temporary */
   margin-left: $pad-default; /* temporary */
+  //remove the following when content is added
+  background-color: #808080;
+  height: 800px;
 }
 .classifications {
   @extend %txt-transform;
@@ -22,6 +25,7 @@
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
    }
+
   .peer-reviewed {
     background: image-url('icon.pr.gif') no-repeat 0 3px;
   }
@@ -39,7 +43,7 @@
     line-height: normal;
 
     i, italic {
-     font-style: italic;
+      font-style: italic;
     }
   }
   .date-doi {
@@ -50,7 +54,7 @@
     li {
       float: left;
       margin-left: 10px;
-      color: #666;
+      color: $grey-med;
 
       &:first-child {
         margin: 0 15px 0 0;
@@ -60,3 +64,62 @@
     }
   }
 }
+
+// TABS
+
+.article-tabs {
+  display: table;
+  table-layout: fixed;
+  margin-bottom: $pad-default;
+  width: 100%;
+  margin-left: 0;
+  .tab-title {
+    margin-left: 0;
+    display: table-cell;
+    float: none;
+    position: static;
+
+    a.article-tab-1 {
+      background: $tabs-base-color;
+    }
+    a.article-tab-2 {
+      background: lighten($tabs-base-color, 10%);
+    }
+    a.article-tab-3 {
+      background: lighten($tabs-base-color, 20%);
+    }
+    a.article-tab-4 {
+      background: lighten($tabs-base-color, 30%);
+    }
+    a.article-tab-5 {
+      background: lighten($tabs-base-color, 40%);
+    }
+    a {
+      display: block;
+      height: 75px;
+      padding: $pad-small;
+      border-right: 1px solid $white;
+      font-weight: bold;
+      color: $white;
+      &:hover {
+        background: $plos-default;
+        color: $white;
+      }
+    }
+    &.active a {
+      position: relative;
+      @extend %brand-background;
+      height: 83px;
+      font-weight: bold;
+      font-family: $font-face-plain;
+      background-image: image-url("icon.tabs.active.white.png");
+      background-repeat: no-repeat;
+      background-position: 10px 65px;
+      &:hover {
+        @extend %brand-background;
+        cursor: inherit;
+      }
+    }
+  }
+}
+

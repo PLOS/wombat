@@ -9,6 +9,6 @@
 
   $( document ).ready(function() {
     $("#artPubDate").append(articlePubDate);
-  });
 
+  });
 }(jQuery));

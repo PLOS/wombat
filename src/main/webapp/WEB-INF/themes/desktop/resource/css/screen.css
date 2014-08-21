@@ -1551,7 +1551,7 @@ main,
 }*/
 /* line 14, ../../sass/vendor/_font-awesome.scss */
 .fa, .carousel-wrap.small .carousel-control .jcarousel-prev,
-.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-unlock, .classifications .license-short .icon, .icon-edit, .classifications .peer-reviewed .icon, .icon-tab-active, .article-tabs .tab-title.active a:before, .top-bar-section .head-search form button[type="submit"] .search-icon {
+.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-unlock, .classifications .license-short .icon, .icon-edit, .classifications .peer-reviewed .icon, .icon-tab-active, .top-bar-section .head-search form button[type="submit"] .search-icon {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1626,12 +1626,12 @@ main,
 
 /* line 74, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-left, .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .pull-left.icon-unlock, .classifications .license-short .pull-left.icon, .pull-left.icon-edit, .classifications .peer-reviewed .pull-left.icon, .pull-left.icon-tab-active, .article-tabs .tab-title.active a.pull-left:before, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
+.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .pull-left.icon-unlock, .classifications .license-short .pull-left.icon, .pull-left.icon-edit, .classifications .peer-reviewed .pull-left.icon, .pull-left.icon-tab-active, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
   margin-right: .3em; }
 
 /* line 77, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-right, .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .pull-right.icon-unlock, .classifications .license-short .pull-right.icon, .pull-right.icon-edit, .classifications .peer-reviewed .pull-right.icon, .pull-right.icon-tab-active, .article-tabs .tab-title.active a.pull-right:before, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
+.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .pull-right.icon-unlock, .classifications .license-short .pull-right.icon, .pull-right.icon-edit, .classifications .peer-reviewed .pull-right.icon, .pull-right.icon-tab-active, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
   margin-left: .3em; }
 
 /* line 80, ../../sass/vendor/_font-awesome.scss */
@@ -2701,7 +2701,7 @@ main,
   content: "\f102"; }
 
 /* line 903, ../../sass/vendor/_font-awesome.scss */
-.fa-angle-double-down:before, .icon-tab-active:before, .article-tabs .tab-title.active a:before {
+.fa-angle-double-down:before, .icon-tab-active:before {
   content: "\f103"; }
 
 /* line 906, ../../sass/vendor/_font-awesome.scss */
@@ -4222,16 +4222,16 @@ header {
   border-color: #16a127; }
 /* line 72, ../../sass/_utilities.scss */
 .plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosbiology a, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscompbiol a, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosgenetics a {
-  background: #16a127; }
+  background-color: #16a127; }
 /* line 75, ../../sass/_utilities.scss */
 .plosbiology .nav .nav-user li.highlighted > a, .nav .nav-user .plosbiology li.highlighted > a, .plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol .nav .nav-user li.highlighted > a, .nav .nav-user .ploscompbiol li.highlighted > a, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics .nav .nav-user li.highlighted > a, .nav .nav-user .plosgenetics li.highlighted > a, .plosgenetics #billboard a, #billboard .plosgenetics a {
-  background: #16a127; }
+  background-color: #16a127; }
   /* line 77, ../../sass/_utilities.scss */
   .plosbiology .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosbiology li.highlighted > a:hover, .plosbiology #billboard a:hover, #billboard .plosbiology a:hover, .ploscompbiol .nav .nav-user li.highlighted > a:hover, .nav .nav-user .ploscompbiol li.highlighted > a:hover, .ploscompbiol #billboard a:hover, #billboard .ploscompbiol a:hover, .plosgenetics .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosgenetics li.highlighted > a:hover, .plosgenetics #billboard a:hover, #billboard .plosgenetics a:hover {
-    background: #3c63af; }
+    background-color: #3c63af; }
 /* line 84, ../../sass/_utilities.scss */
 .plosbiology .carousel-wrap.small:first-child .block-header, .ploscompbiol .carousel-wrap.small:first-child .block-header, .plosgenetics .carousel-wrap.small:first-child .block-header {
-  background: #0b5013; }
+  background-color: #0b5013; }
 /* line 87, ../../sass/_utilities.scss */
 .plosbiology .carousel-wrap.small:first-child .jcarousel-prev,
 .plosbiology .carousel-wrap.small:first-child .jcarousel-next, .ploscompbiol .carousel-wrap.small:first-child .jcarousel-prev,
@@ -4246,7 +4246,7 @@ header {
     color: #3c63af; }
 /* line 96, ../../sass/_utilities.scss */
 .plosbiology .carousel-wrap.small:first-child + .carousel-wrap .block-header, .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .block-header, .plosgenetics .carousel-wrap.small:first-child + .carousel-wrap .block-header {
-  background: #0e6719; }
+  background-color: #0e6719; }
 /* line 99, ../../sass/_utilities.scss */
 .plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
 .plosbiology .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .ploscompbiol .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
@@ -4268,16 +4268,16 @@ header {
   border-color: #891fb1; }
 /* line 72, ../../sass/_utilities.scss */
 .plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosmedicine a, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plospathogens a, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosntd a {
-  background: #891fb1; }
+  background-color: #891fb1; }
 /* line 75, ../../sass/_utilities.scss */
 .plosmedicine .nav .nav-user li.highlighted > a, .nav .nav-user .plosmedicine li.highlighted > a, .plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens .nav .nav-user li.highlighted > a, .nav .nav-user .plospathogens li.highlighted > a, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd .nav .nav-user li.highlighted > a, .nav .nav-user .plosntd li.highlighted > a, .plosntd #billboard a, #billboard .plosntd a {
-  background: #891fb1; }
+  background-color: #891fb1; }
   /* line 77, ../../sass/_utilities.scss */
   .plosmedicine .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosmedicine li.highlighted > a:hover, .plosmedicine #billboard a:hover, #billboard .plosmedicine a:hover, .plospathogens .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plospathogens li.highlighted > a:hover, .plospathogens #billboard a:hover, #billboard .plospathogens a:hover, .plosntd .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosntd li.highlighted > a:hover, .plosntd #billboard a:hover, #billboard .plosntd a:hover {
-    background: #3c63af; }
+    background-color: #3c63af; }
 /* line 84, ../../sass/_utilities.scss */
 .plosmedicine .carousel-wrap.small:first-child .block-header, .plospathogens .carousel-wrap.small:first-child .block-header, .plosntd .carousel-wrap.small:first-child .block-header {
-  background: #4d1163; }
+  background-color: #4d1163; }
 /* line 87, ../../sass/_utilities.scss */
 .plosmedicine .carousel-wrap.small:first-child .jcarousel-prev,
 .plosmedicine .carousel-wrap.small:first-child .jcarousel-next, .plospathogens .carousel-wrap.small:first-child .jcarousel-prev,
@@ -4292,7 +4292,7 @@ header {
     color: #3c63af; }
 /* line 96, ../../sass/_utilities.scss */
 .plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .block-header, .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .block-header, .plosntd .carousel-wrap.small:first-child + .carousel-wrap .block-header {
-  background: #5d1579; }
+  background-color: #5d1579; }
 /* line 99, ../../sass/_utilities.scss */
 .plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
 .plosmedicine .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-next, .plospathogens .carousel-wrap.small:first-child + .carousel-wrap .jcarousel-prev,
@@ -4814,7 +4814,7 @@ header {
   .article-body .date-doi li {
     float: left;
     margin-left: 10px;
-    color: #666; }
+    color: #636363; }
     /* line 66, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
       margin: 0 15px 0 0;
@@ -4853,8 +4853,8 @@ header {
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
-      padding: 10px;
-      border-right: 1px solid #fff;
+      padding: 0.625rem;
+      border-right: 1px solid white;
       font-weight: bold;
       color: white; }
       /* line 111, ../../sass/pages/_article.scss */
@@ -4866,16 +4866,10 @@ header {
       position: relative;
       height: 83px;
       font-weight: bold;
-      font-family: "arial"; }
-      /* line 122, ../../sass/pages/_article.scss */
-      .article-tabs .tab-title.active a:before {
-        /* @extend .fa;
-         @extend .fa-angle-double-down;*/
-        position: absolute;
-        bottom: 5px;
-        left: 10px;
-        font-size: 1.25em;
-        font-weight: 100; }
-      /* line 132, ../../sass/pages/_article.scss */
+      font-family: "arial";
+      background-image: url('../img/icon.tabs.active.white.png');
+      background-repeat: no-repeat;
+      background-position: 5px 68px; }
+      /* line 125, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }

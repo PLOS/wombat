@@ -61,7 +61,7 @@
     li {
       float: left;
       margin-left: 10px;
-      color: #666;
+      color: $grey-med;
 
       &:first-child {
         margin: 0 15px 0 0;
@@ -87,25 +87,25 @@
     position: static;
 
     a.article-tab-1 {
-      background: #2b2b2b;
+      background: $tabs-base-color;
     }
     a.article-tab-2 {
-      background: lighten(#2b2b2b, 10%);
+      background: lighten($tabs-base-color, 10%);
     }
     a.article-tab-3 {
-      background: lighten(#2b2b2b, 20%);
+      background: lighten($tabs-base-color, 20%);
     }
     a.article-tab-4 {
-      background: lighten(#2b2b2b, 30%);
+      background: lighten($tabs-base-color, 30%);
     }
     a.article-tab-5 {
-      background: lighten(#2b2b2b, 40%);
+      background: lighten($tabs-base-color, 40%);
     }
     a {
       display: block;
       height: 75px;
-      padding: 10px;
-      border-right: 1px solid #fff;
+      padding: $pad-small;
+      border-right: 1px solid $white;
       font-weight: bold;
       color: $white;
       &:hover {
@@ -119,16 +119,9 @@
       height: 83px;
       font-weight: bold;
       font-family: $font-face-plain;
-      &:before {
-       /* @extend .fa;
-        @extend .fa-angle-double-down;*/
-        @extend .icon-tab-active;
-        position: absolute;
-        bottom: 5px;
-        left: 10px;
-        font-size: 1.25em;
-        font-weight: 100;
-      }
+      background-image: image-url("icon.tabs.active.white.png");
+      background-repeat: no-repeat;
+      background-position: 5px 68px;
       &:hover {
         @extend %brand-background;
         cursor: inherit;

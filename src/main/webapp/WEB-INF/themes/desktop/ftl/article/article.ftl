@@ -6,13 +6,6 @@
 
 <#assign title = article.title />
 <#assign depth = 0 />
- <#--
- if articleType is any of:
- correction, retraction, expression of concern
- else if
- authors == 0
- hide authors tab
- -->
 
 <#include "../common/head.ftl" />
 
@@ -40,36 +33,10 @@
           <li id="artDoi">DOI: ${article.doi} </li>
         </ul>
 
-     <#-- <#include "tabs.ftl" />-->
-
-      <ul class="article-tabs" data-tab>
-        <li class="tab-title active">
-
-          <a href="#tabArticle1" class="article-tab-1" id="tabArticle">Article</a>
-        <#-- http://one-dpro.plosjournals.org/wombat/DesktopPlosNtds/article?id=10.1371/journal.pntd.0000104 -->
-        </li>
-
-      <#-- check if there are authors -->
-      <#if article.authors?? && article.authors?size gt 0>
-      <#-- check if article type is correction, retraction, concern -->
-        <#if ["correction", "retraction", "expression-of-concern"]?seq_contains(article.articleType)>
-        <#--suppress author tab -->
-        <#else>
-        <#-- ok to show the author tab -->
-          <li class="tab-title">
-            <a href="#tabArticle2" class="article-tab-2" id="tabAuthors">About the Authors</a>
-          <#---->
-          </li>
-        </#if>
-      </#if>
-        <li class="tab-title"><a href="#tabArticle3" class="article-tab-3" id="tabMetrics">Metrics</a></li>
-        <li class="tab-title"><a href="#tabArticle4" class="article-tab-4" id="tabComments">Comments</a></li>
-        <li class="tab-title"><a href="#tabArticle5" class="article-tab-5" id="tabRelated">Related Content</a></li>
-
-      </ul>
+      <#include "tabs.ftl" />
 
       <div class="article-text" id="artText">
-          ${articleText}
+         ${articleText}
       </div>
 
 

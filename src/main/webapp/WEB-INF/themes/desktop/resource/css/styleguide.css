@@ -3896,12 +3896,12 @@ example | extension
 
 */
 /* line 59, ../../sass/_typography.scss */
-.more-link > a, .example-header-allcaps-plain, #issue .boxtitle a, .example-header-allcaps-xlarge, .block .category, #article-list .category, #issue .category, section.content aside .category, section.content article .category, #article-list h3, .example-brand-title, .example-header-allcaps {
+.more-link > a, body.styleguide header nav li, .example-header-allcaps-plain, #issue .boxtitle a, .example-header-allcaps-xlarge, .block .category, #article-list .category, #issue .category, section.content aside .category, section.content article .category, #article-list h3, .example-brand-title, .example-header-allcaps {
   font-size: 0.875rem;
   font-family: "albert"; }
 
 /* line 64, ../../sass/_typography.scss */
-.more-link > a, .example-header-allcaps-plain {
+.more-link > a, body.styleguide header nav li, .example-header-allcaps-plain {
   font-family: "arial"; }
 
 /* line 68, ../../sass/_typography.scss */
@@ -3986,7 +3986,7 @@ example | extension
   letter-spacing: -0.5px; }
 
 /* line 163, ../../sass/_typography.scss */
-.more-link > a, .example-header-allcaps-plain, #issue .boxtitle a, .example-header-allcaps-xlarge, .block .category, #article-list .category, #issue .category, section.content aside .category, section.content article .category, #article-list h3, .example-brand-title, .example-header-allcaps, .classifications {
+.more-link > a, body.styleguide header nav li, .example-header-allcaps-plain, #issue .boxtitle a, .example-header-allcaps-xlarge, .block .category, #article-list .category, #issue .category, section.content aside .category, section.content article .category, #article-list h3, .example-brand-title, .example-header-allcaps, .classifications {
   text-transform: uppercase; }
 
 /* line 166, ../../sass/_typography.scss */
@@ -5293,10 +5293,10 @@ header {
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }
 
-/* line 13, ../../sass/styleguide.scss */
+/* line 12, ../../sass/styleguide.scss */
 body.styleguide {
   background-color: #efefef; }
-  /* line 16, ../../sass/styleguide.scss */
+  /* line 14, ../../sass/styleguide.scss */
   body.styleguide header {
     width: 100%;
     margin-left: auto;
@@ -5316,59 +5316,61 @@ body.styleguide {
     /* line 117, ../../sass/vendor/foundation/components/_global.scss */
     body.styleguide header:after {
       clear: both; }
-    /* line 18, ../../sass/styleguide.scss */
+    /* line 17, ../../sass/styleguide.scss */
     body.styleguide header h1 {
       margin-bottom: .25em;
       padding-bottom: .25em;
       border-bottom: 5px solid #3c63af; }
-    /* line 20, ../../sass/styleguide.scss */
+    /* line 23, ../../sass/styleguide.scss */
     body.styleguide header nav li {
       padding: .25em; }
 
-/* line 25, ../../sass/styleguide.scss */
+/* line 33, ../../sass/styleguide.scss */
 section.content h1, section.content h2, section.content .carousel-wrap.small .carousel li h3, .carousel-wrap.small .carousel li section.content h3, section.content h3 {
-  margin: .75em 0   .25em -5px;
-  text-transform: capitalize; }
-/* line 26, ../../sass/styleguide.scss */
+  margin: 1em 0 .5em -5px;
+  text-transform: capitalize;
+  font-family: "arial"; }
+/* line 38, ../../sass/styleguide.scss */
 section.content h1 {
   font-size: 26px; }
-/* line 27, ../../sass/styleguide.scss */
+/* line 41, ../../sass/styleguide.scss */
 section.content h2, section.content .carousel-wrap.small .carousel li h3, .carousel-wrap.small .carousel li section.content h3 {
   font-size: 16px;
   font-family: "arial";
-  font-weight: 800; }
-/* line 28, ../../sass/styleguide.scss */
+  font-weight: 400; }
+/* line 46, ../../sass/styleguide.scss */
 section.content h3 {
   font-size: 16px; }
-/* line 29, ../../sass/styleguide.scss */
+/* line 49, ../../sass/styleguide.scss */
 section.content aside {
   height: 100%; }
-  /* line 30, ../../sass/styleguide.scss */
+  /* line 54, ../../sass/styleguide.scss */
   section.content aside nav li {
     padding-bottom: .25em; }
-/* line 32, ../../sass/styleguide.scss */
+/* line 59, ../../sass/styleguide.scss */
 section.content article {
   height: 100%; }
-/* line 33, ../../sass/styleguide.scss */
+/* line 64, ../../sass/styleguide.scss */
 section.content table {
   padding-bottom: .25em;
   line-height: 140%; }
-/* line 34, ../../sass/styleguide.scss */
+/* line 68, ../../sass/styleguide.scss */
 section.content table {
   border-collapse: collapse;
   width: 100%; }
-  /* line 37, ../../sass/styleguide.scss */
+  /* line 71, ../../sass/styleguide.scss */
   section.content table td {
     font-size: 13px; }
-  /* line 38, ../../sass/styleguide.scss */
+  /* line 74, ../../sass/styleguide.scss */
   section.content table th {
-    text-align: left; }
-/* line 43, ../../sass/styleguide.scss */
+    text-align: left;
+    background-color: #efefef; }
+/* line 81, ../../sass/styleguide.scss */
 section.content div.codeExample:before {
   width: 100%;
   border-radius: 0; }
 
-/* line 49, ../../sass/styleguide.scss */
+/* line 87, ../../sass/styleguide.scss */
 .rounded {
   background: #3c63af;
   padding: 1.25rem;
@@ -5378,44 +5380,44 @@ section.content div.codeExample:before {
   .rounded:hover {
     background: #333333; }
 
-/* line 58, ../../sass/styleguide.scss */
+/* line 96, ../../sass/styleguide.scss */
 .box-example, .grid-example-simple div, .grid-example-complex div {
   background-color: #efefef;
   border: 1px solid #cccccc;
   margin-bottom: 0.3125rem; }
 
-/* line 74, ../../sass/styleguide.scss */
+/* line 120, ../../sass/styleguide.scss */
 .grid-example-complex .grid-example-one {
   float: left;
   width: 7.5rem;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
-/* line 77, ../../sass/styleguide.scss */
+/* line 123, ../../sass/styleguide.scss */
 .grid-example-complex .grid-example-two {
   float: left;
   width: 7.5rem;
   margin-left: 3.125rem; }
-/* line 80, ../../sass/styleguide.scss */
+/* line 126, ../../sass/styleguide.scss */
 .grid-example-complex .grid-example-three {
   float: left;
   width: 7.5rem;
   margin-left: 1.25rem; }
-/* line 84, ../../sass/styleguide.scss */
+/* line 130, ../../sass/styleguide.scss */
 .grid-example-complex .grid-example-four {
   float: left;
   width: 7.5rem;
   margin-right: 3.125rem; }
-/* line 87, ../../sass/styleguide.scss */
+/* line 133, ../../sass/styleguide.scss */
 .grid-example-complex .grid-example-five {
   float: left;
   width: 7.5rem;
   margin-right: 1.25rem; }
-/* line 90, ../../sass/styleguide.scss */
+/* line 136, ../../sass/styleguide.scss */
 .grid-example-complex .grid-example-six {
   float: left;
   width: 7.5rem; }
 
-/* line 96, ../../sass/styleguide.scss */
+/* line 145, ../../sass/styleguide.scss */
 .example-link-text-white {
   background: #3c63af;
   padding: 0.625rem; }

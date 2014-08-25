@@ -134,3 +134,5 @@ $clr-highlight-text: $white) {
   left: 0;
 }
 
+// Hide elements so we dont' get a flash of unstyled content
+[data-visibility= 'none']{@extend .hide;}

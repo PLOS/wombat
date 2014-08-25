@@ -81,6 +81,10 @@
   @include link-text($color: $white,$decoration: underline);
 }
 
+%link-text-underline, %link-text-underline a{
+  @include link-text($decoration: underline);
+}
+
 //////////////
 //utility styles
 ///////////////

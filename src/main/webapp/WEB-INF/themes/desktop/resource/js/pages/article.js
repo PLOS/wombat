@@ -11,4 +11,7 @@
     $("#artPubDate").append(articlePubDate);
 
   });
+
+  toggle.init();
 }(jQuery));
+

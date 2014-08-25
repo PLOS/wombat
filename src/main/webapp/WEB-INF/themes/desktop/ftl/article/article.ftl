@@ -9,47 +9,48 @@
 
 <#include "../common/head.ftl" />
 
-  <body class="article ${journalKey?lower_case}">
+<body class="article ${journalKey?lower_case}">
 
-  <input type="hidden" id="rawPubDate" value="${article.date}" />
+<input type="hidden" id="rawPubDate" value="${article.date}"/>
 
-  <#include "../common/header/header.ftl" />
-  <div class="plos-row">
-    <section class="article-body">
-      <div class="classifications">
-        <p class="license-short" id="licenseShort">Open Access</p>
+<#include "../common/header/header.ftl" />
+<div class="plos-row">
+  <section class="article-body">
+    <div class="classifications">
+      <p class="license-short" id="licenseShort">Open Access</p>
 
-        <#if article.articleType=="Research Article">
-        <p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>
-        </#if>
+    <#if article.articleType=="Research Article">
+      <p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>
+    </#if>
 
-        <div class="article-type" id="artType">${article.articleType!""}</div>
-      </div>
+      <div class="article-type" id="artType">${article.articleType!""}</div>
+    </div>
 
-        <h1 id="artTitle"> ${article.title} </h1>
+    <h1 id="artTitle"> ${article.title} </h1>
 
-        <ul class="date-doi">
-          <li id="artPubDate">Published:  </li>
-          <li id="artDoi">DOI: ${article.doi} </li>
-        </ul>
+    <#include "author_list.ftl" />
 
-      <#include "tabs.ftl" />
+    <ul class="date-doi">
+      <li id="artPubDate">Published:</li>
+      <li id="artDoi">DOI: ${article.doi} </li>
+    </ul>
 
-      <div class="article-text" id="artText">
-         ${articleText}
-      </div>
+    <#include "tabs.ftl" />
 
+    <div class="article-text" id="artText">
+    ${articleText}
+    </div>
 
-    </section>
-    <aside class="article-column">
+  </section>
+  <aside class="article-column">
 
-    </aside>
-  </div>
-  <#include "../common/footer/footer.ftl" />
+  </aside>
+</div>
+<#include "../common/footer/footer.ftl" />
 
-  <@renderJs />
-  <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
-  <script src="<@siteLink path="resource/js/pages/article.js"/>"></script>
+<@renderJs />
+<script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
+<script src="<@siteLink path="resource/js/pages/article.js"/>"></script>
 
-  </body>
+</body>
 </html>

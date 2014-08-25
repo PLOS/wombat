@@ -1,49 +1,125 @@
-//article pages structure
-  //header
-  //main -- plos-grid-container is assigned to pagebdy in _scaffold.scss
-    //section.article-body -- plos-grid-column is assigned to %width-large in _scaffold.scss
-      // main part of the contents
-    //aside.article-column -- plos-grid-column is assigned to %width-xx-small
-      //right column contents
 
 .article-body {
-  @extend %width-large;
+  @include plos-grid-column(740, $gutter: none);
+  margin-right: $pad-default;  /*  temporary to make it look right even if the code is wrong */
 }
 .article-column {
-  @extend %width-xx-small;
+  @include plos-grid-column(180, $gutter: none);
+  float: right; /* temporary */
+  margin-left: $pad-default; /* temporary */
+  //remove the following when content is added
+  background-color: #808080;
+  height: 800px;
 }
 .classifications {
-  @extend %txt-transform-fancy;
+  @extend %txt-transform;
   margin-top: $pad-default + $pad-xsmall;
-  margin-bottom: $pad-default;
+  margin-bottom: $pad-small + $pad-xsmall;
   p {
-    font-size: $txt-size-xxxxsmall;
-    vertical-align: top;
+    font-size: $txt-size-xxxsmall;
     display: inline-block;
-    .icon {
-      padding-right: $pad-xsmall;
-      font-size: $txt-size-medium;
-      vertical-align: -3px;
-    }
+    padding-left: $pad-small + $pad-xsmall;
+    line-height: 17px;
   }
   .license-short {
-   .icon {
-      @extend .icon-unlock;
-    }
-     padding-right: $pad-small;
+    background: image-url('icon.oa.gif') no-repeat 0 3px;
+    padding-right: $pad-small;
    }
+
   .peer-reviewed {
-    .icon {
-      @extend .icon-edit;
-    }
+    background: image-url('icon.pr.gif') no-repeat 0 3px;
   }
   .article-type {
     margin-top: $pad-xsmall;
+    font-family: $font-face-fancy;
     font-size: $txt-size-xxsmall;
   }
 }
-.stub {
-  background: powderblue;
-  color: #999;
-  height: 700px;
+
+.article-body {
+  h1 {
+    font-size: $txt-size-27large;
+    margin-bottom: $pad-small;
+    line-height: normal;
+
+    i, italic {
+      font-style: italic;
+    }
+  }
+  .date-doi {
+    @include clearfix();
+    margin: $pad-notsmall 0; //this will change once we format more of the page
+    font-size: $txt-size-default;
+
+    li {
+      float: left;
+      margin-left: 10px;
+      color: $grey-med;
+
+      &:first-child {
+        margin: 0 15px 0 0;
+        padding: 0;
+        list-style-type: none;
+      }
+    }
+  }
 }
+
+// TABS
+
+.article-tabs {
+  display: table;
+  table-layout: fixed;
+  margin-bottom: $pad-default;
+  width: 100%;
+  margin-left: 0;
+  .tab-title {
+    margin-left: 0;
+    display: table-cell;
+    float: none;
+    position: static;
+
+    a.article-tab-1 {
+      background: $tabs-base-color;
+    }
+    a.article-tab-2 {
+      background: lighten($tabs-base-color, 10%);
+    }
+    a.article-tab-3 {
+      background: lighten($tabs-base-color, 20%);
+    }
+    a.article-tab-4 {
+      background: lighten($tabs-base-color, 30%);
+    }
+    a.article-tab-5 {
+      background: lighten($tabs-base-color, 40%);
+    }
+    a {
+      display: block;
+      height: 75px;
+      padding: $pad-small;
+      border-right: 1px solid $white;
+      font-weight: bold;
+      color: $white;
+      &:hover {
+        background: $plos-default;
+        color: $white;
+      }
+    }
+    &.active a {
+      position: relative;
+      @extend %brand-background;
+      height: 83px;
+      font-weight: bold;
+      font-family: $font-face-plain;
+      background-image: image-url("icon.tabs.active.white.png");
+      background-repeat: no-repeat;
+      background-position: 10px 65px;
+      &:hover {
+        @extend %brand-background;
+        cursor: inherit;
+      }
+    }
+  }
+}
+

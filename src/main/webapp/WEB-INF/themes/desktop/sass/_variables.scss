@@ -24,6 +24,8 @@ $grey-med: #636363;
 $grey-med-light: #ccc;
 $grey-light: #efefef;
 
+$tabs-base-color: #2b2b2b;
+
 $warning: #e53350;
 $success: #16a127;
 
@@ -83,6 +85,7 @@ $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0
 
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px
+$pad-notsmall: $pad-small + $pad-xsmall;
 $pad-default: $grid-gutter;       //20px
 $pad-medium: ($grid-gutter * 1.5); //30px
 $pad-large: ($grid-gutter * 2);   //40px
@@ -100,18 +103,19 @@ $font-face-headings: $font-face-fancy;
 //Type Sizes
 $txt-size-giant: 36px;
 $txt-size-xxxxlarge: 28px;
+//27 is for article title on article page
+$txt-size-27large: 27px;
 $txt-size-xxxlarge: 26px;
 $txt-size-23large: 23px;
 $txt-size-xxlarge: 22px;
 $txt-size-xlarge: 20px;
 $txt-size-large: 18px;
-$txt-size-medium-large: 16px; // TODO This is getting ridiculous there has to be a better way
+$txt-size-medium-large: 16px;
 $txt-size-medium: 14px;
 $txt-size-small: 13px;
 $txt-size-xsmall: 12px;
 $txt-size-xxsmall: 11px;
 $txt-size-xxxsmall: 10px;
-$txt-size-xxxxsmall: 9px;
 
 $txt-size-pgtitle: $txt-size-giant;
 $txt-size-default: $txt-size-small;

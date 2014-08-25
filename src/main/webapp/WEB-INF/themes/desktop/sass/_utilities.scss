@@ -70,19 +70,19 @@ $clr-highlight-text: $white) {
     border-color: $setColor;
   }
   %brand-background {
-    background: $setColor;
+    background-color: $setColor;
   }
   %brand-background-hover {
-    background: $setColor;
+    background-color: $setColor;
     &:hover {
-      background: $plos-default;
+      background-color: $plos-default;
     }
   }
   //color shading variations on adjacent box headers
   %brand-shading {
     &:first-child {
       .block-header {
-        background: darken($setColor, 18%);
+        background-color: darken($setColor, 18%);
       }
       .jcarousel-prev,
       .jcarousel-next {
@@ -94,7 +94,7 @@ $clr-highlight-text: $white) {
     }
     &:first-child + .carousel-wrap {
       .block-header {
-        background: darken($setColor, 13%);
+        background-color: darken($setColor, 13%);
       }
       .jcarousel-prev,
       .jcarousel-next {

@@ -5,10 +5,6 @@
 
 @include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf",  "fontawesome-webfont.svg",  "fontawesome-webfont.woff"));
 
-%txt-transform-fancy {
-  font-family: $font-face-fancy;
-  text-transform: uppercase;
-}
 
 //////////////
 //header styles
@@ -17,7 +13,7 @@
 %header-allcaps{
  font-size: rem-calc($txt-size-medium);
  font-family: $font-face-fancy;
- text-transform: uppercase;
+ @extend %txt-transform;
 }
 %header-allcaps-plain {
   @extend %header-allcaps;
@@ -95,6 +91,9 @@
 }
 %condense {
   letter-spacing: -0.5px;
+}
+%txt-transform {
+  text-transform: uppercase;
 }
 .no-margin{ margin-bottom: 0;}
 

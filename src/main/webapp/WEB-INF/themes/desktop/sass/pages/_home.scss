@@ -177,7 +177,7 @@ $image-container: ($image-width + $pad-small);
     position: absolute;
     bottom: $pad-small;
     left: ($image-container + $pad-default);
-    margin: 0 $pad-small 0 0;
+    margin: 0 $pad-small + $pad-xsmall 0 0;
 
   }
   .category {

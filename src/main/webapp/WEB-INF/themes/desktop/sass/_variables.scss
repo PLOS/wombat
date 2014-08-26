@@ -76,7 +76,6 @@ $grid-width: 980px;
 $grid-columns: 12;
 
 
-
 // layout patterns
 $border-radius-default: 5px;
 $border-radius-large: 8px;
@@ -151,7 +150,7 @@ We are assuming that pixel values will be converted to pixels using the rem-calc
 /*doc
 ---
 title: Reusable Variables
-name: reuseable_variables
+name: reusable_variables
 category: utilities
 ---
 Use variables rather than setting the values yourself.

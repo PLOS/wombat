@@ -50,7 +50,7 @@ We are assuming that pixel values will be converted to pixels using the rem-calc
 /*doc
 ---
 title: Reusable Variables
-name: reuseable_variables
+name: reusable_variables
 category: utilities
 ---
 Use variables rather than setting the values yourself.
@@ -109,7 +109,7 @@ We are assuming that pixel values will be converted to pixels using the rem-calc
 /*doc
 ---
 title: Reusable Variables
-name: reuseable_variables
+name: reusable_variables
 category: utilities
 ---
 Use variables rather than setting the values yourself.
@@ -1742,7 +1742,7 @@ category: Grid
 ##further customisation
 ###gutters
 
-option  | result
+variable  | result
 ------------------------------------------| -----------------
 `$gutter: none`              | no gutter on either side
 `$gutter: left` |  default gutter on the left side - the plos default is 20px
@@ -4111,19 +4111,33 @@ name: blocks
 category: components
 ---
 
-.block{
-  @include blocks();
-}
-.block-noshadow{
-  @include blocks($shadow: none);
+Blocks are essentially boxes with some defaults, such as color and bottom margin. You can either use the extendable classes below or the mixin if you need more flexibility. if you are using a certain style over and over feel free to add a extendable class of your own.
 
-}
-.block-card {
-  @include blocks($radius: none, $padding: none);
-}
+### Extendable Classes
+We created extendable classes for some commonly used blocks.
+
+example | extension
+--------|----------
+<p class="block">I am a block - usually on the homepage</p> | `@extend .block`
+<div class="padded-example" style="color:black"><p class="block-noshadow">I am a block - with no shadow </p></div> | `@extend .block-noshadow`
+<p class="block-card ">I am a block - with padding and no border radius</p> | `@extend .block-card`
+
+###Mixin
+We also have a mixin you can use to create your own blocks:
+`@include blocks();`
+
+variable  | result   | default
+------------------------------------------| ----------------- | ---------
+`$radius: top` | default radius on the top corners of block   |  yes
+`$radius: none` | no radius  |
+`$radius: all` | default radius on all corners of block   |
+`$padding: default` | block has a padding of `$pad-small` - 10px   |   yes
+`$padding: none` |  block has no padding |
+`$padding: NUMBER` | allows you to set the number padding - use variables |
+`$color: COLOR` | sets the background color   |   `$white`
 
 */
-/* line 80, ../../sass/_components.scss */
+/* line 94, ../../sass/_components.scss */
 .block, #article-list, #issue {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -4138,7 +4152,7 @@ category: components
   margin-bottom: 1.25rem;
   background: white; }
 
-/* line 83, ../../sass/_components.scss */
+/* line 97, ../../sass/_components.scss */
 .block-noshadow {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -4150,7 +4164,7 @@ category: components
   margin-bottom: 1.25rem;
   background: white; }
 
-/* line 87, ../../sass/_components.scss */
+/* line 101, ../../sass/_components.scss */
 .block-card, .carousel-wrap.small, .linkbox, #blogs, #ad-slot-bottom .ad-item iframe {
   padding: 0;
   -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
@@ -4165,7 +4179,7 @@ Set a width here to define how much items are visible.
 The width can be either fixed in px or flexible in %.
 Position must be relative!
 */
-/* line 105, ../../sass/_components.scss */
+/* line 119, ../../sass/_components.scss */
 .jcarousel {
   position: relative;
   overflow: hidden; }
@@ -4175,7 +4189,7 @@ This is the container of the carousel items.
 You must ensure that the position is relative or absolute and
 that the width is big enough to contain all items.
 */
-/* line 115, ../../sass/_components.scss */
+/* line 129, ../../sass/_components.scss */
 .jcarousel ul {
   width: 20000em;
   position: relative;
@@ -4188,41 +4202,41 @@ that the width is big enough to contain all items.
 These are the item elements. jCarousel works best, if the items
 have a fixed width and height (but it's not required).
 */
-/* line 129, ../../sass/_components.scss */
+/* line 143, ../../sass/_components.scss */
 .jcarousel li {
   /* Required only for block elements like <li>'s */
   float: left; }
 
-/* line 135, ../../sass/_components.scss */
+/* line 149, ../../sass/_components.scss */
 .carousel-wrap.small {
   margin-right: 1.25rem;
   position: relative; }
-  /* line 147, ../../sass/_components.scss */
+  /* line 161, ../../sass/_components.scss */
   .carousel-wrap.small .carousel li {
     width: 19.125rem;
     padding: 1.25rem;
     height: 145px; }
-    /* line 155, ../../sass/_components.scss */
+    /* line 169, ../../sass/_components.scss */
     .carousel-wrap.small .carousel li p {
       font-size: 0.875rem; }
-  /* line 160, ../../sass/_components.scss */
+  /* line 174, ../../sass/_components.scss */
   .carousel-wrap.small .carousel-control {
     position: absolute;
     bottom: 10px;
     left: 50%;
     width: 120px;
     margin-left: -50px; }
-    /* line 166, ../../sass/_components.scss */
+    /* line 180, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .jcarousel-prev,
     .carousel-wrap.small .carousel-control .jcarousel-next {
       font-size: 1.875rem; }
-    /* line 180, ../../sass/_components.scss */
+    /* line 194, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .numbers {
       color: #636363;
       display: inline-block;
       padding: 0 0.3125rem;
       vertical-align: top; }
-      /* line 186, ../../sass/_components.scss */
+      /* line 200, ../../sass/_components.scss */
       .carousel-wrap.small .carousel-control .numbers span {
         display: inline-block;
         vertical-align: middle;
@@ -4248,33 +4262,33 @@ example | extension
 <p class="icon-email"> email</p> | `@extend .icon-email`
 
 */
-/* line 217, ../../sass/_components.scss */
+/* line 231, ../../sass/_components.scss */
 .more-icon, .more-link:after {
   content: '\f138';
   padding-left: 0.1875rem; }
 
-/* line 226, ../../sass/_components.scss */
+/* line 240, ../../sass/_components.scss */
 .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email {
   line-height: 44px;
   font-size: 22px; }
 
-/* line 232, ../../sass/_components.scss */
+/* line 246, ../../sass/_components.scss */
 .icon-twitter {
   content: '\f099'; }
 
-/* line 238, ../../sass/_components.scss */
+/* line 252, ../../sass/_components.scss */
 .icon-facebook {
   content: '\f09a'; }
 
-/* line 244, ../../sass/_components.scss */
+/* line 258, ../../sass/_components.scss */
 .icon-rss {
   content: '\f09e'; }
 
-/* line 250, ../../sass/_components.scss */
+/* line 264, ../../sass/_components.scss */
 .icon-email {
   content: '\f003'; }
 
-/* line 256, ../../sass/_components.scss */
+/* line 270, ../../sass/_components.scss */
 .aria-text, #social-links ul > li .icon-text {
   position: absolute;
   top: -9999px;

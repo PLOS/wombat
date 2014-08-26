@@ -1,5 +1,5 @@
 /*
- *  This file is for cms output, it creates a namespace for the preview.
+ *  This file is for cms output, it creates a namespace for the preview. This requires SASS 3.3.0
  */
 /* line 6, ../../sass/preview-home.scss */
 .cms-preview {
@@ -3430,7 +3430,7 @@
       position: absolute;
       bottom: 0.625rem;
       left: 6.25rem;
-      margin: 0 0.625rem 0 0; }
+      margin: 0 0.9375rem 0 0; }
     /* line 183, ../../sass/pages/_home.scss */
     .cms-preview .block .category, .cms-preview #article-list .category, .cms-preview #issue .category {
       margin-bottom: 0.3125rem; }

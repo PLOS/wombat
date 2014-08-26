@@ -1,3 +1,51 @@
 /*
- *  This file is for cms output, it creates a namespace for the preview.
- */
+Syntax error: ".cms-preview %brand-title" failed to @extend "%brand-color".
+              The selector "%brand-color" was not found.
+              Use "@extend %brand-color !optional" if the extend should be able to fail.
+        on line 41 of /home/ddowell/workspace/wombat/src/main/webapp/WEB-INF/themes/desktop/sass/_typography.scss
+
+Backtrace:
+/home/ddowell/workspace/wombat/src/main/webapp/WEB-INF/themes/desktop/sass/_typography.scss:41
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/extend.rb:65:in `block in check_extends_fired!'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/util/subset_map.rb:106:in `block in each_value'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/util/subset_map.rb:106:in `each'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/util/subset_map.rb:106:in `each_value'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/extend.rb:50:in `check_extends_fired!'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/visitors/extend.rb:16:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/root_node.rb:39:in `css_tree'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/tree/root_node.rb:20:in `render'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/engine.rb:275:in `block in render'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/util.rb:479:in `silence_sass_warnings'
+/var/lib/gems/1.9.1/gems/sass-3.3.9/lib/sass/engine.rb:275:in `render'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:171:in `block (2 levels) in compile'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:153:in `timed'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:166:in `block in compile'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/logger.rb:46:in `red'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:165:in `compile'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:144:in `compile_if_required'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:129:in `block (2 levels) in run'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:127:in `each'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:127:in `block in run'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:153:in `timed'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:126:in `run'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/watcher/compiler.rb:24:in `compile'
+/usr/lib/ruby/1.9.1/forwardable.rb:201:in `compile'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:101:in `sass_modified'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:89:in `sass_callback'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/watcher/watch.rb:14:in `call'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/watcher/watch.rb:14:in `run_callback'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:69:in `block in listen_callback'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:66:in `each'
+/var/lib/gems/1.9.1/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:66:in `listen_callback'
+/var/lib/gems/1.9.1/gems/listen-1.1.6/lib/listen/listener.rb:236:in `call'
+/var/lib/gems/1.9.1/gems/listen-1.1.6/lib/listen/listener.rb:236:in `on_change'
+/var/lib/gems/1.9.1/gems/listen-1.1.6/lib/listen/listener.rb:271:in `block in initialize_adapter'
+/var/lib/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:244:in `call'
+/var/lib/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:244:in `report_changes'
+/var/lib/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:313:in `poll_changed_directories'
+/var/lib/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:289:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: \".cms-preview %brand-title\" failed to @extend \"%brand-color\".\A               The selector \"%brand-color\" was not found.\A               Use \"@extend %brand-color !optional\" if the extend should be able to fail.\A         on line 41 of /home/ddowell/workspace/wombat/src/main/webapp/WEB-INF/themes/desktop/sass/_typography.scss"; }

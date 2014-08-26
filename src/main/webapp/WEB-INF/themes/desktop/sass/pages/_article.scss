@@ -1,3 +1,12 @@
+ // extensible layout styles
+
+.text-article-intro{
+  font-size: $txt-size-default;
+  color: $grey-med;
+  a{ @include link-text($decoration: underline, $color: $grey-med);}
+}
+
+// layout elements
 
 .article-body {
   @include plos-grid-column(740, $gutter: none);
@@ -35,6 +44,11 @@
     font-size: $txt-size-xxsmall;
   }
 }
+.author-list{
+  @extend .text-article-intro;
+  margin-bottom: $pad-default - $pad-small;
+  line-height: ($pad-default + $pad-xsmall); /// this will change when we add in the roll over info boxes.
+}
 
 .article-body {
   h1 {
@@ -48,22 +62,25 @@
   }
   .date-doi {
     @include clearfix();
-    margin: $pad-notsmall 0; //this will change once we format more of the page
-    font-size: $txt-size-default;
+    @extend .text-article-intro;
+    margin: 0;
+    margin-bottom: ($pad-default + $pad-xsmall);
 
     li {
       float: left;
-      margin-left: 10px;
-      color: $grey-med;
+      margin-left: $pad-small;
 
       &:first-child {
-        margin: 0 15px 0 0;
-        padding: 0;
+        margin: 0 $pad-notsmall 0 0;
+        padding-left: 0;
         list-style-type: none;
       }
     }
   }
 }
+
+
+
 
 // TABS
 

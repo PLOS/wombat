@@ -59,6 +59,9 @@ $clr-highlight-text: $white) {
 ///////
 //branding
 /////
+
+
+
 @mixin brandColor($setColor: $plos-default ) {
   %more-icon {
     color: $setColor;
@@ -106,6 +109,14 @@ $clr-highlight-text: $white) {
     }
   }
 }
+
+// set the journal-specific colors - PS this is a good example of things that can be pulle dinto theme sor a separate scss file
+.plosbiology, .ploscompbiol, .plosgenetics {
+  @include brandColor($setColor: $plos-bio);
+}
+.plosmedicine, .plospathogens, .plosntd {
+  @include brandColor($setColor: $plos-med);
+}
 //////////////
 // layout utilities
 //////////////
@@ -134,3 +145,5 @@ $clr-highlight-text: $white) {
   left: 0;
 }
 
+// Hide elements so we dont' get a flash of unstyled content
+[data-visibility= 'none']{@extend .hide;}

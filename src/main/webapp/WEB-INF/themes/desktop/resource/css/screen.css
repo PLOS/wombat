@@ -4793,29 +4793,29 @@ header {
   .classifications .license-short {
     background: url('../img/icon.oa.gif') no-repeat 0 3px;
     padding-right: 0.625rem; }
-  /* line 38, ../../sass/pages/_article.scss */
+  /* line 37, ../../sass/pages/_article.scss */
   .classifications .peer-reviewed {
     background: url('../img/icon.pr.gif') no-repeat 0 3px; }
-  /* line 41, ../../sass/pages/_article.scss */
+  /* line 40, ../../sass/pages/_article.scss */
   .classifications .article-type {
     margin-top: 0.3125rem;
     font-family: "albert";
     font-size: 11px; }
 
-/* line 47, ../../sass/pages/_article.scss */
+/* line 46, ../../sass/pages/_article.scss */
 .author-list {
   margin-bottom: 0.625rem;
   line-height: 1.5625rem; }
 
-/* line 54, ../../sass/pages/_article.scss */
+/* line 53, ../../sass/pages/_article.scss */
 .article-body h1 {
   font-size: 27px;
   margin-bottom: 0.625rem;
   line-height: normal; }
-  /* line 59, ../../sass/pages/_article.scss */
+  /* line 58, ../../sass/pages/_article.scss */
   .article-body h1 i, .article-body h1 italic {
     font-style: italic; }
-/* line 63, ../../sass/pages/_article.scss */
+/* line 62, ../../sass/pages/_article.scss */
 .article-body .date-doi {
   *zoom: 1;
   margin: 0;
@@ -4827,45 +4827,45 @@ header {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   .article-body .date-doi:after {
     clear: both; }
-  /* line 69, ../../sass/pages/_article.scss */
+  /* line 68, ../../sass/pages/_article.scss */
   .article-body .date-doi li {
     float: left;
     margin-left: 0.625rem; }
-    /* line 73, ../../sass/pages/_article.scss */
+    /* line 72, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
       margin: 0 0.9375rem 0 0;
       padding-left: 0;
       list-style-type: none; }
 
-/* line 87, ../../sass/pages/_article.scss */
+/* line 86, ../../sass/pages/_article.scss */
 .article-tabs {
   display: table;
   table-layout: fixed;
   margin-bottom: 1.25rem;
   width: 100%;
   margin-left: 0; }
-  /* line 93, ../../sass/pages/_article.scss */
+  /* line 92, ../../sass/pages/_article.scss */
   .article-tabs .tab-title {
     margin-left: 0;
     display: table-cell;
     float: none;
     position: static; }
-    /* line 99, ../../sass/pages/_article.scss */
+    /* line 98, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-1 {
       background: #2b2b2b; }
-    /* line 102, ../../sass/pages/_article.scss */
+    /* line 101, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-2 {
       background: #454545; }
-    /* line 105, ../../sass/pages/_article.scss */
+    /* line 104, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-3 {
       background: #5e5e5e; }
-    /* line 108, ../../sass/pages/_article.scss */
+    /* line 107, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-4 {
       background: #777777; }
-    /* line 111, ../../sass/pages/_article.scss */
+    /* line 110, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-5 {
       background: #919191; }
-    /* line 114, ../../sass/pages/_article.scss */
+    /* line 113, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
@@ -4873,11 +4873,11 @@ header {
       border-right: 1px solid white;
       font-weight: bold;
       color: white; }
-      /* line 121, ../../sass/pages/_article.scss */
+      /* line 120, ../../sass/pages/_article.scss */
       .article-tabs .tab-title a:hover {
         background: #3c63af;
         color: white; }
-    /* line 126, ../../sass/pages/_article.scss */
+    /* line 125, ../../sass/pages/_article.scss */
     .article-tabs .tab-title.active a {
       position: relative;
       height: 83px;
@@ -4886,6 +4886,6 @@ header {
       background-image: url('../img/icon.tabs.active.white.png');
       background-repeat: no-repeat;
       background-position: 10px 65px; }
-      /* line 135, ../../sass/pages/_article.scss */
+      /* line 134, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }

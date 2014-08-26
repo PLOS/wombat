@@ -2,8 +2,7 @@
 ---
 title: Files
 name: files
-category: base
----
+category: Files
 
 These are the common files we use in our framework.
 
@@ -12,10 +11,8 @@ These are the common files we use in our framework.
 /*doc
 ---
 title: global-imports.scss
-parent: files
 name: global-imports.scss
-category: base
-
+category: Files
 ---
 
 This is a centralized import file that covers the main libraries and component files. you should import this into any new standalone .css

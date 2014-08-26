@@ -2,8 +2,7 @@
 ---
 title: typography.scss
 name: typography
-category: base
-parent: files
+category: Files
 ---
  type styles including sizes and vertical spacing
 */
@@ -26,13 +25,13 @@ title: other text styles
 name: other
 category: typography
 ---
-
-we want to use semantic headers - a logical flow of 'h1', 'h2', `h3` etc...
+Other text-styles
 
 example | extension
 --------|----------
 <p class="example-condense">I am condensed</p> | `@extend %condense`
 <p class="example-text-size-large">I am a size larger than most text</p> | `@extend %text-size-large`
+
 
 
 */

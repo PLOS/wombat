@@ -138,6 +138,12 @@ section.content {
   }
 }
 
+.padded-example {
+  padding: .5em;
+  @extend %bg-dark;
+  color: $white;
+}
+
 .example-link {
   @extend %link-text-body;
 }
@@ -182,5 +188,57 @@ section.content {
 
 .example-more-link::after {
   @extend .more-icon;
+}
+
+
+.example-bg-dark {
+  @extend %bg-dark;
+  color: $white;
+}
+
+.example-highlight-color {
+  @extend %highlight-color;
+}
+.example-highlight-background {
+  @extend %highlight-background;
+}
+
+.example-highlight-border {
+  border-width: 1px;
+  border-style: solid;
+  @extend %highlight-border;
+  display: block;
+
+}
+
+.example-brand-color {
+  @extend %brand-color;
+}
+.example-brand-background {
+  @extend %brand-background;
+}
+
+.example-brand-border {
+  border-width: 1px;
+  border-style: solid;
+  @extend %brand-border;
+  display: block;
+
+}
+
+.example-border-radius {
+  @extend .padded-example;
+ @include border-radius();
+
+}
+
+.example-border-radius-large {
+  @extend .padded-example;
+  @include border-radius($border-radius-large);
+}
+
+.example-box-shadow {
+  @extend .padded-example;
+  @include box-shadow();   /// hey box shadow
 }
 

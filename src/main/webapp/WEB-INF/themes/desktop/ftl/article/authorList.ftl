@@ -1,4 +1,4 @@
-<div class="author-list">
+<p class="author-list">
 <#include "maxAuthorsToShow.ftl" />
 <#macro authorItem author author_index author_has_next>
 
@@ -36,4 +36,4 @@
   </#list>
 </#if>
 
-</div><#-- end div.author-list -->
+</p><#-- end div.author-list -->

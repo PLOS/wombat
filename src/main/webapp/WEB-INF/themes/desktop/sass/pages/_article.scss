@@ -1,16 +1,19 @@
+//  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
+$temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
  // extensible layout styles
 
 .text-article-intro{
   font-size: $txt-size-default;
   color: $grey-med;
-  a{ @include link-text($decoration: underline, $color: $grey-med);}
+  a {
+    @include link-text($decoration: underline, $color: $grey-med);
+  }
 }
 
 // layout elements
 
 .article-body {
-  @include plos-grid-column(740, $gutter: none);
-  margin-right: $pad-default;  /*  temporary to make it look right even if the code is wrong */
+  @include plos-grid-column(755, $gutter: none);
 }
 .article-column {
   @include plos-grid-column(180, $gutter: none);
@@ -23,11 +26,11 @@
 .classifications {
   @extend %txt-transform;
   margin-top: $pad-default + $pad-xsmall;
-  margin-bottom: $pad-small + $pad-xsmall;
+  margin-bottom: $pad-smallish;
   p {
     font-size: $txt-size-xxxsmall;
     display: inline-block;
-    padding-left: $pad-small + $pad-xsmall;
+    padding-left: $pad-smallish;
     line-height: 17px;
   }
   .license-short {
@@ -40,7 +43,7 @@
   }
   .article-type {
     margin-top: $pad-xsmall;
-    font-family: $font-face-fancy;
+    font-family: $font-face-fancy;  // TEMP-PROD: remove this line (should inherit body font)
     font-size: $txt-size-xxsmall;
   }
 }
@@ -52,7 +55,7 @@
 
 .article-body {
   h1 {
-    font-size: $txt-size-27large;
+    font-size: $txt-size-27large;  // TEMP-PROD: needs to be 26px or 28px
     margin-bottom: $pad-small;
     line-height: normal;
 
@@ -71,16 +74,13 @@
       margin-left: $pad-small;
 
       &:first-child {
-        margin: 0 $pad-notsmall 0 0;
+        margin: 0 $pad-smallish 0 0;
         padding-left: 0;
         list-style-type: none;
       }
     }
   }
 }
-
-
-
 
 // TABS
 
@@ -114,7 +114,7 @@
     a {
       display: block;
       height: 75px;
-      padding: $pad-small;
+      padding: $temp-pad-tabs;  // TEMP-PROD: use $pad-small;
       border-right: 1px solid $white;
       font-weight: bold;
       color: $white;
@@ -131,7 +131,7 @@
       font-family: $font-face-plain;
       background-image: image-url("icon.tabs.active.white.png");
       background-repeat: no-repeat;
-      background-position: 10px 65px;
+      background-position: 9px 65px;
       &:hover {
         @extend %brand-background;
         cursor: inherit;

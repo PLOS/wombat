@@ -85,7 +85,7 @@ $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0
 
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px
-$pad-notsmall: $pad-small + $pad-xsmall; //15px
+$pad-smallish: $pad-small + $pad-xsmall; //15px
 $pad-default: $grid-gutter;       //20px
 $pad-medium: ($grid-gutter * 1.5); //30px
 $pad-large: ($grid-gutter * 2);   //40px

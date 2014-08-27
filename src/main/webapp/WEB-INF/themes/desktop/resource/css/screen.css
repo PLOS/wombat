@@ -4748,11 +4748,11 @@ header {
   .static h1 {
     margin-bottom: 1.875rem; }
 
-/* line 3, ../../sass/pages/_article.scss */
+/* line 5, ../../sass/pages/_article.scss */
 .text-article-intro, .author-list, .article-body .date-doi {
   font-size: 13px;
   color: #666666; }
-  /* line 6, ../../sass/pages/_article.scss */
+  /* line 8, ../../sass/pages/_article.scss */
   .text-article-intro a, .author-list a, .article-body .date-doi a {
     color: #666666;
     text-decoration: none; }
@@ -4761,14 +4761,12 @@ header {
       color: #666666;
       text-decoration: underline; }
 
-/* line 11, ../../sass/pages/_article.scss */
+/* line 15, ../../sass/pages/_article.scss */
 .article-body {
   float: left;
-  width: 46.25rem;
-  margin-right: 1.25rem;
-  /*  temporary to make it look right even if the code is wrong */ }
+  width: 47.1875rem; }
 
-/* line 15, ../../sass/pages/_article.scss */
+/* line 18, ../../sass/pages/_article.scss */
 .article-column {
   float: left;
   width: 11.25rem;
@@ -4779,43 +4777,43 @@ header {
   background-color: #808080;
   height: 800px; }
 
-/* line 23, ../../sass/pages/_article.scss */
+/* line 26, ../../sass/pages/_article.scss */
 .classifications {
   margin-top: 1.5625rem;
   margin-bottom: 0.9375rem; }
-  /* line 27, ../../sass/pages/_article.scss */
+  /* line 30, ../../sass/pages/_article.scss */
   .classifications p {
     font-size: 10px;
     display: inline-block;
     padding-left: 0.9375rem;
     line-height: 17px; }
-  /* line 33, ../../sass/pages/_article.scss */
+  /* line 36, ../../sass/pages/_article.scss */
   .classifications .license-short {
     background: url('../img/icon.oa.gif') no-repeat 0 3px;
     padding-right: 0.625rem; }
-  /* line 38, ../../sass/pages/_article.scss */
+  /* line 41, ../../sass/pages/_article.scss */
   .classifications .peer-reviewed {
     background: url('../img/icon.pr.gif') no-repeat 0 3px; }
-  /* line 41, ../../sass/pages/_article.scss */
+  /* line 44, ../../sass/pages/_article.scss */
   .classifications .article-type {
     margin-top: 0.3125rem;
     font-family: "albert";
     font-size: 11px; }
 
-/* line 47, ../../sass/pages/_article.scss */
+/* line 50, ../../sass/pages/_article.scss */
 .author-list {
   margin-bottom: 0.625rem;
   line-height: 1.5625rem; }
 
-/* line 54, ../../sass/pages/_article.scss */
+/* line 57, ../../sass/pages/_article.scss */
 .article-body h1 {
   font-size: 27px;
   margin-bottom: 0.625rem;
   line-height: normal; }
-  /* line 59, ../../sass/pages/_article.scss */
+  /* line 62, ../../sass/pages/_article.scss */
   .article-body h1 i, .article-body h1 italic {
     font-style: italic; }
-/* line 63, ../../sass/pages/_article.scss */
+/* line 66, ../../sass/pages/_article.scss */
 .article-body .date-doi {
   *zoom: 1;
   margin: 0;
@@ -4827,11 +4825,11 @@ header {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   .article-body .date-doi:after {
     clear: both; }
-  /* line 69, ../../sass/pages/_article.scss */
+  /* line 72, ../../sass/pages/_article.scss */
   .article-body .date-doi li {
     float: left;
     margin-left: 0.625rem; }
-    /* line 73, ../../sass/pages/_article.scss */
+    /* line 76, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
       margin: 0 0.9375rem 0 0;
       padding-left: 0;
@@ -4869,7 +4867,7 @@ header {
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
-      padding: 0.625rem;
+      padding: 0.5rem 0.5625rem;
       border-right: 1px solid white;
       font-weight: bold;
       color: white; }
@@ -4885,7 +4883,7 @@ header {
       font-family: "arial";
       background-image: url('../img/icon.tabs.active.white.png');
       background-repeat: no-repeat;
-      background-position: 10px 65px; }
+      background-position: 9px 65px; }
       /* line 135, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }

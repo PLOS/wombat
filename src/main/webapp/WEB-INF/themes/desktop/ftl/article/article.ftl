@@ -6,6 +6,13 @@
 
 <#assign title = article.title />
 <#assign depth = 0 />
+<#assign articleType = article.articleType />
+<#macro setArticleType classType>
+<br/>
+  <div class="${classType}" id="artType">
+    ${articleType}
+  </div>
+</#macro>
 
 <#include "../common/head.ftl" />
 
@@ -16,15 +23,7 @@
   <#include "../common/header/header.ftl" />
   <div class="plos-row">
     <section class="article-body">
-      <div class="classifications">
-        <p class="license-short" id="licenseShort">Open Access</p>
-
-        <#if article.articleType=="Research Article">
-        <p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>
-        </#if>
-
-        <div class="article-type" id="artType">${article.articleType!""}</div>
-      </div>
+     <#include "article-classifications.ftl" />
 
         <h1 id="artTitle"> ${article.title} </h1>
     <#include "authorList.ftl" />
@@ -33,7 +32,7 @@
         <li id="artDoi">DOI: ${article.doi} </li>
       </ul>
 
-    <#include "tabs.ftl" />
+      <#include "tabs.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}

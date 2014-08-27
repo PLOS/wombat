@@ -9,16 +9,6 @@
 
   $( document ).ready(function() {
     $("#artPubDate").append(articlePubDate);
-/*
-    $(".type-desc").hover(function(){
-        $(".type-tooltip").addClass("type-tooltip-hover");  },
-      function () {
-        $(".type-tooltip").removeClass("type-tooltip-hover");
-      }
-    });*/
 
   });
-
-  toggle.init();
 }(jQuery));
-

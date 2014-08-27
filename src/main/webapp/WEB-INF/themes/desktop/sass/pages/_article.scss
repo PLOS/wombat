@@ -9,8 +9,7 @@
 // layout elements
 
 .article-body {
-  @include plos-grid-column(740, $gutter: none);
-  margin-right: $pad-default;  /*  temporary to make it look right even if the code is wrong */
+  @include plos-grid-column(755, $gutter: none);
 }
 .article-column {
   @include plos-grid-column(180, $gutter: none);
@@ -114,7 +113,7 @@
     a {
       display: block;
       height: 75px;
-      padding: $pad-small;
+      padding: 8px $pad-small;
       border-right: 1px solid $white;
       font-weight: bold;
       color: $white;

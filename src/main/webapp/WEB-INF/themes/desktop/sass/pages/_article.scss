@@ -3,7 +3,9 @@
 .text-article-intro{
   font-size: $txt-size-default;
   color: $grey-med;
-  a{ @include link-text($decoration: underline, $color: $grey-med);}
+  a {
+    @include link-text($decoration: underline, $color: $grey-med);
+  }
 }
 
 // layout elements
@@ -20,28 +22,89 @@
   background-color: #808080;
   height: 800px;
 }
+ .type-tooltip-hover {
+   display: inline-block;
+   @include border-radius();
+   background-color: $plos-default;
+   color: $white;
+ }
 .classifications {
-  @extend %txt-transform;
+
   margin-top: $pad-default + $pad-xsmall;
   margin-bottom: $pad-small + $pad-xsmall;
+  position: relative;
   p {
-    font-size: $txt-size-xxxsmall;
+
     display: inline-block;
     padding-left: $pad-small + $pad-xsmall;
     line-height: 17px;
   }
   .license-short {
+    @extend %txt-transform;
+    font-size: $txt-size-xxxsmall;
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
-   }
+  }
   .peer-reviewed {
+    @extend %txt-transform;
+    font-size: $txt-size-xxxsmall;
     background: image-url('icon.pr.gif') no-repeat 0 3px;
   }
-  .article-type {
+  .type-article {
+    @extend %txt-transform;
     margin-top: $pad-xsmall;
     font-family: $font-face-fancy;
     font-size: $txt-size-xxsmall;
+    width: auto;
   }
+  .type-concern-retraction {
+    @extend .type-article;
+    color: $warning;
+    background: image-url("icon.concern.retraction.png") no-repeat 0 0;
+  }
+  .type-correction {
+    @extend .type-article;
+    background: image-url("icon.correction.png") no-repeat 0 0;
+  }
+  .type-tooltip {
+    @extend .type-article;
+    padding: $pad-small;
+    margin-left: -$pad-small;
+
+    &:hover {
+      @extend .type-tooltip-hover;
+      + .type-desc {
+        display: block;
+      }
+    }
+  }
+}
+  .type-desc {
+    display: none;
+    position: absolute;
+    margin-top: $pad-small;
+    margin-left: -$pad-small;
+    @include border-radius();
+    background-color: $plos-default;
+    width: 320px;
+    padding: $pad-small;
+    line-height: rem-calc(18);
+    font-size: $txt-size-default;
+    color: $clr-tooltip-text;
+      &:hover {
+        display: block;
+    }
+    a {
+      color: $white;
+      &:hover {
+        text-decoration: underline;
+      }
+
+    }
+   .type-seeall {
+     display: block;
+     margin-top: $pad-small;
+   }
 }
 .author-list{
   @extend .text-article-intro;
@@ -77,7 +140,6 @@
     }
   }
 }
-
 
 
 
@@ -138,4 +200,3 @@
     }
   }
 }
-

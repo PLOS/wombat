@@ -1,5 +1,7 @@
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
 $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
+
+
  // extensible layout styles
 
 .text-article-intro{
@@ -33,6 +35,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     padding-left: $pad-smallish;
     line-height: 17px;
   }
+
   .license-short {
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;

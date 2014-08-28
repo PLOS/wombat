@@ -10,7 +10,15 @@
 <#include "../common/head.ftl" />
 
   <body class="article ${journalKey?lower_case}">
-
+  <div id="titleFloater" class="topAttached">
+    <div class="plos-row">
+      <div class="title-authors">
+    <h1 id="artTitle"> ${article.title} </h1>
+  <#include "authorList.ftl" />
+        </div>
+      <div class="logo-close">plos x</div>
+    </div>
+  </div>
   <input type="hidden" id="rawPubDate" value="${article.date}" />
 
   <#include "../common/header/header.ftl" />
@@ -27,13 +35,15 @@
       </div>
 
         <h1 id="artTitle"> ${article.title} </h1>
-    <#include "authorList.ftl" />
+        <#include "authorList.ftl" />
+
+
       <ul class="date-doi">
         <li id="artPubDate">Published:  </li>
         <li id="artDoi">DOI: ${article.doi} </li>
       </ul>
 
-    <#include "tabs.ftl" />
+      <#include "tabs.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}

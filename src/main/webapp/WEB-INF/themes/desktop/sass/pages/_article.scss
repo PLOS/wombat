@@ -47,7 +47,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-size: $txt-size-xxsmall;
   }
 }
-.author-list{
+
+.author-list {
   @extend .text-article-intro;
   margin-bottom: $pad-default - $pad-small;
   line-height: ($pad-default + $pad-xsmall); /// this will change when we add in the roll over info boxes.
@@ -81,7 +82,37 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     }
   }
 }
-
+// the attached class is added with js for fixing the title to the top of the page on scroll.
+#titleFloater.topAttached {
+  position: fixed;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 49px;
+  border-bottom: 1px solid $grey-med-light;
+  background-color: $white;
+  z-index: 999;
+  padding: $pad-small;
+  .title-authors {
+    float: left;
+    width: 755px;
+    h1 {
+      font-size: $txt-size-medium;
+      font-weight: bold;
+      font-family: $font-face-plain;
+      margin: 0;
+      padding: 0;
+    }
+    p.author-list {
+      //margin: 0 !important;
+      line-height: normal;
+    }
+  }
+  .logo-close {
+    width: 180px;
+    float: right;
+  }
+}
 // TABS
 
 .article-tabs {

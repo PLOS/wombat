@@ -4889,3 +4889,32 @@ header {
       /* line 135, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }
+
+/* line 177, ../../sass/pages/_article.scss */
+[data-animate=tooltip-container] {
+  position: relative;
+  border: 1px solid;
+  display: inline-block; }
+
+/* line 184, ../../sass/pages/_article.scss */
+[data-animate=tooltip-target] {
+  top: 20px;
+  width: 200px;
+  height: auto;
+  background-color: #333;
+  opacity: 0;
+  position: absolute;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  z-index: 2000; }
+
+/* line 199, ../../sass/pages/_article.scss */
+[data-animate=tooltip-container]:active [data-animate=tooltip-target] {
+  opacity: 1; }
+
+/* line 203, ../../sass/pages/_article.scss */
+.active {
+  background-color: #3c63af; }

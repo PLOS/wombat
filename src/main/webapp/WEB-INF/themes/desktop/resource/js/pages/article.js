@@ -7,11 +7,16 @@
   var rawDate = document.getElementById("rawPubDate").value;
   var articlePubDate = dateParse(rawDate, true);
 
-  $( document ).ready(function() {
+//  $( document ).ready(function() {
     $("#artPubDate").append(articlePubDate);
 
-  });
+//  });
 
   toggle.init();
+  tooltip.init();
+
+
 }(jQuery));
+
+
 

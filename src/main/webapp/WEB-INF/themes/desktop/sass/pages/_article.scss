@@ -139,4 +139,66 @@
     }
   }
 }
+//
+// a[data-tooltip]:link, a[data-tooltip]:visited {
+//   position: relative;
+//   text-decoration: none;
+//   border-bottom: solid 1px;
+// }
+//
+// a[data-tooltip]:before {
+//
+// }
+//
+// a[data-tooltip]:after {
+//   content: attr(data-tooltip);
+//   position: absolute;
+//   color: white;
+//   top: -35px;
+//   left: -26px;
+//   background: #0090ff;
+//   padding: 5px 15px;
+//   -webkit-border-radius: 10px;
+//   -moz-border-radius: 10px;
+//   border-radius: 10px;
+//   white-space: nowrap;
+//   visibility: hidden;
+// }
+//
+// a[data-tooltip]:hover:before, a[data-tooltip]:hover:after {
+//   visibility: visible;
+//   -webkit-transition: visibility 0s linear .3s;
+//   -moz-transition: visibility 0s linear .3s;
+//   -o-transition: visibility 0s linear .3s;
+//   transition: visibility 0s linear .3s;
+// }
 
+
+ [data-animate = tooltip-container] {
+   position:relative;
+   border:1px solid;
+  display: inline-block;
+
+ }
+
+ [data-animate = tooltip-target]{
+   top: 20px;
+   width: 200px;
+   height: auto;
+   background-color: #333;
+   opacity:0;
+   position:absolute;
+   -webkit-transition: opacity 0.5s;
+   -moz-transition:  opacity 0.5s;
+   -ms-transition: opacity 0.5s;
+   -o-transition:  opacity 0.5s;
+   transition:  opacity 0.5s;
+   z-index: 2000;
+ }
+
+ [data-animate = tooltip-container]:active  [data-animate = tooltip-target] {
+   opacity:1;
+ }
+ 
+ .active{
+   background-color: $plos-default;}

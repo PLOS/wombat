@@ -27,13 +27,13 @@
       </div>
 
         <h1 id="artTitle"> ${article.title} </h1>
+    <#include "authorList.ftl" />
+      <ul class="date-doi">
+        <li id="artPubDate">Published:  </li>
+        <li id="artDoi">DOI: ${article.doi} </li>
+      </ul>
 
-        <ul class="date-doi">
-          <li id="artPubDate">Published:  </li>
-          <li id="artDoi">DOI: ${article.doi} </li>
-        </ul>
-
-      <#include "tabs.ftl" />
+    <#include "tabs.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}

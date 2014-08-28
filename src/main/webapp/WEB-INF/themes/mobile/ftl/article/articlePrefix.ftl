@@ -31,7 +31,7 @@
             <@authorItem author author_index author_has_next />
           </#if>
         </#list>
-        <a class="author-more" class="more-authors active">[...view
+        <a class="author-more" class="more-authors active" data-js="show">[...view
         ${authors?size - maxAuthorsToShow} more...],</a>
           <span class="more-authors-list">
             <#list authors as author><#-- Inside the expander -->
@@ -41,7 +41,7 @@
             </#list>
           </span>
         <@authorItem authors[authors?size - 1] authors?size - 1 false /><#-- Last one after expander -->
-        <a class="author-less" class="less-authors">[ view less ]</a>
+        <a class="author-less" class="less-authors"  data-js="hide">[ view less ]</a>
 
       <#else>
       <#-- List authors with no expander -->

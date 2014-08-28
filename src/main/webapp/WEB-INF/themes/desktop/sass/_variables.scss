@@ -28,7 +28,7 @@ $clr-brand: $plos-default;
 $black: #000;
 $white: #fff;
 $grey-dark: #333;
-$grey-med: #636363;
+$grey-med: #666;
 $grey-med-light: #ccc;
 $grey-light: #efefef;
 
@@ -76,6 +76,7 @@ $grid-width: 980px;
 $grid-columns: 12;
 
 
+
 // layout patterns
 $border-radius-default: 5px;
 $border-radius-large: 8px;
@@ -91,7 +92,7 @@ $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0
 
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px
-$pad-notsmall: $pad-small + $pad-xsmall;  //15px
+$pad-smallish: $pad-small + $pad-xsmall; //15px
 $pad-default: $grid-gutter;       //20px
 $pad-medium: ($grid-gutter * 1.5); //30px
 $pad-large: ($grid-gutter * 2);   //40px

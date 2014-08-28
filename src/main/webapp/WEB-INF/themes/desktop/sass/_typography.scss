@@ -95,6 +95,7 @@ example | extension
   line-height: $pad-large;
 }
 
+
 //////////////
 //link styles
 ///////////////
@@ -146,6 +147,10 @@ example | extension
 
 %link-text-white, %link-text-white a{
   @include link-text($color: $white,$decoration: underline);
+}
+
+%link-text-underline, %link-text-underline a{
+  @include link-text($decoration: underline);
 }
 
 //////////////

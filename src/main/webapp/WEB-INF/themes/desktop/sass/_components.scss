@@ -2,20 +2,30 @@
  *
  */
 
-@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default) {
+@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default, $hover: true ) {
   background: $background;
   padding: $padding;
   border-radius: $border-radius;
   color: $clr-btn-text;
 
-  &:hover {
-    background: $clr-link-hover;
-  }
+  @if $hover == true {
+    &:hover {
+      background: $clr-link-hover;
+    }
+  } @else {
+
+}
+
+
 
 }
 //extend .pill if using defaults in rounded-pill
 .pill {
   @include rounded-pill();
+}
+
+.pill-small{
+  @include rounded-pill($padding: $pad-xsmall,  $hover: false);
 }
 
 @mixin blocks($color: $white, $radius: top, $padding: default, $shadow: default) {

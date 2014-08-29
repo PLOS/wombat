@@ -3173,16 +3173,22 @@
     position: absolute;
     top: 0;
     left: 0; }
-  /* line 17, ../../sass/_components.scss */
+  /* line 23, ../../sass/_components.scss */
   .cms-preview .pill {
     background: #3c63af;
     padding: 1.25rem;
     border-radius: 5px;
     color: white; }
-    /* line 11, ../../sass/_components.scss */
+    /* line 12, ../../sass/_components.scss */
     .cms-preview .pill:hover {
       background: #333333; }
-  /* line 48, ../../sass/_components.scss */
+  /* line 27, ../../sass/_components.scss */
+  .cms-preview .pill-small {
+    background: #3c63af;
+    padding: 0.3125rem;
+    border-radius: 5px;
+    color: white; }
+  /* line 58, ../../sass/_components.scss */
   .cms-preview .block, .cms-preview #article-list, .cms-preview #issue {
     border-top-left-radius: 5px;
     border-top-left-radius: 5px;
@@ -3196,7 +3202,7 @@
     box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
     margin-bottom: 1.25rem;
     background: white; }
-  /* line 51, ../../sass/_components.scss */
+  /* line 61, ../../sass/_components.scss */
   .cms-preview .block-noshadow {
     border-top-left-radius: 5px;
     border-top-left-radius: 5px;
@@ -3207,7 +3213,7 @@
     padding: 0.625rem;
     margin-bottom: 1.25rem;
     background: white; }
-  /* line 55, ../../sass/_components.scss */
+  /* line 65, ../../sass/_components.scss */
   .cms-preview .block-card, .cms-preview .carousel-wrap.small, .cms-preview .linkbox, .cms-preview #blogs, .cms-preview #ad-slot-bottom .ad-item iframe {
     padding: 0;
     box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
@@ -3215,11 +3221,11 @@
     box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
     margin-bottom: 1.25rem;
     background: white; }
-  /* line 73, ../../sass/_components.scss */
+  /* line 83, ../../sass/_components.scss */
   .cms-preview .jcarousel {
     position: relative;
     overflow: hidden; }
-  /* line 83, ../../sass/_components.scss */
+  /* line 93, ../../sass/_components.scss */
   .cms-preview .jcarousel ul {
     width: 20000em;
     position: relative;
@@ -3227,66 +3233,66 @@
     list-style: none;
     margin: 0;
     padding: 0; }
-  /* line 97, ../../sass/_components.scss */
+  /* line 107, ../../sass/_components.scss */
   .cms-preview .jcarousel li {
     /* Required only for block elements like <li>'s */
     float: left; }
-  /* line 103, ../../sass/_components.scss */
+  /* line 113, ../../sass/_components.scss */
   .cms-preview .carousel-wrap.small {
     margin-right: 1.25rem;
     position: relative; }
-    /* line 115, ../../sass/_components.scss */
+    /* line 125, ../../sass/_components.scss */
     .cms-preview .carousel-wrap.small .carousel li {
       width: 19.125rem;
       padding: 1.25rem;
       height: 145px; }
-      /* line 123, ../../sass/_components.scss */
+      /* line 133, ../../sass/_components.scss */
       .cms-preview .carousel-wrap.small .carousel li p {
         font-size: 0.875rem; }
-    /* line 128, ../../sass/_components.scss */
+    /* line 138, ../../sass/_components.scss */
     .cms-preview .carousel-wrap.small .carousel-control {
       position: absolute;
       bottom: 10px;
       left: 50%;
       width: 120px;
       margin-left: -50px; }
-      /* line 134, ../../sass/_components.scss */
+      /* line 144, ../../sass/_components.scss */
       .cms-preview .carousel-wrap.small .carousel-control .jcarousel-prev,
       .cms-preview .carousel-wrap.small .carousel-control .jcarousel-next {
         font-size: 1.875rem; }
-      /* line 148, ../../sass/_components.scss */
+      /* line 158, ../../sass/_components.scss */
       .cms-preview .carousel-wrap.small .carousel-control .numbers {
         color: #666666;
         display: inline-block;
         padding: 0 0.3125rem;
         vertical-align: top; }
-        /* line 154, ../../sass/_components.scss */
+        /* line 164, ../../sass/_components.scss */
         .cms-preview .carousel-wrap.small .carousel-control .numbers span {
           display: inline-block;
           vertical-align: middle;
           line-height: 1.875rem;
           height: 1.875rem; }
-  /* line 169, ../../sass/_components.scss */
+  /* line 179, ../../sass/_components.scss */
   .cms-preview .more-icon, .cms-preview .more-link:after {
     content: '\f138';
     padding-left: 0.1875rem; }
-  /* line 178, ../../sass/_components.scss */
+  /* line 188, ../../sass/_components.scss */
   .cms-preview .icon-fa, .cms-preview .icon-twitter, .cms-preview .icon-facebook, .cms-preview .icon-rss, .cms-preview .icon-email {
     line-height: 44px;
     font-size: 22px; }
-  /* line 184, ../../sass/_components.scss */
+  /* line 194, ../../sass/_components.scss */
   .cms-preview .icon-twitter {
     content: '\f099'; }
-  /* line 191, ../../sass/_components.scss */
+  /* line 201, ../../sass/_components.scss */
   .cms-preview .icon-facebook {
     content: '\f09a'; }
-  /* line 198, ../../sass/_components.scss */
+  /* line 208, ../../sass/_components.scss */
   .cms-preview .icon-rss {
     content: '\f09e'; }
-  /* line 204, ../../sass/_components.scss */
+  /* line 214, ../../sass/_components.scss */
   .cms-preview .icon-email {
     content: '\f003'; }
-  /* line 210, ../../sass/_components.scss */
+  /* line 220, ../../sass/_components.scss */
   .cms-preview .aria-text, .cms-preview #social-links ul > li .icon-text {
     position: absolute;
     top: -9999px;

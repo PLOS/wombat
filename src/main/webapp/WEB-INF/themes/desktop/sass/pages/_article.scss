@@ -44,11 +44,7 @@
     font-size: $txt-size-xxsmall;
   }
 }
-.author-list{
-  @extend .text-article-intro;
-  margin-bottom: $pad-default - $pad-small;
-  line-height: ($pad-default + $pad-xsmall); /// this will change when we add in the roll over info boxes.
-}
+
 
 .article-body {
   h1 {
@@ -175,30 +171,58 @@
 
 
  [data-animate = tooltip-container] {
-   position:relative;
-   border:1px solid;
+
   display: inline-block;
 
  }
 
  [data-animate = tooltip-target]{
-   top: 20px;
-   width: 200px;
-   height: auto;
-   background-color: #333;
-   opacity:0;
-   position:absolute;
-   -webkit-transition: opacity 0.5s;
-   -moz-transition:  opacity 0.5s;
-   -ms-transition: opacity 0.5s;
-   -o-transition:  opacity 0.5s;
-   transition:  opacity 0.5s;
-   z-index: 2000;
+
  }
 
- [data-animate = tooltip-container]:active  [data-animate = tooltip-target] {
+ [data-animate = tooltip-container]:active [data-animate = tooltip-target] {
    opacity:1;
  }
- 
- .active{
-   background-color: $plos-default;}
+
+.author-list{
+   @extend .text-article-intro;
+   @extend .inline-list;
+  overflow: visible; // needed t overwrite the inline-list
+   margin-bottom: $pad-default - $pad-small;
+   li {
+     position: relative;
+     margin-left: 0;  // needed t overwrite the inline-list
+     > a {
+     display: inline-block;   // needed t overwrite the inline-list
+      padding: 2px 4px; //TODO line-height;
+    }
+   }
+ }
+
+ .author-info {
+     @extend .pill-small;
+     width: rem-calc(450);
+     top: rem-calc(($txt-size-default + 10));   // need to make this a tad more dynamic.
+     height: auto;
+     position:absolute;
+     -webkit-transition: opacity 0.5s;
+     -moz-transition:  opacity 0.5s;
+     -ms-transition: opacity 0.5s;
+     -o-transition:  opacity 0.5s;
+     transition:  opacity 0.5s;
+     opacity: 0;
+   }
+ .active {
+   .author-name{
+     @include rounded-pill($padding: 2px 4px,$hover: false);
+   }
+   .author-info {
+     opacity: 1;
+     z-index: 5000;
+   }
+ }
+
+ .posRight .author-info {
+   right: 0;
+ }
+

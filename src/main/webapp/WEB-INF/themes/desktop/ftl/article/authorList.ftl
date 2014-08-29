@@ -2,7 +2,7 @@
 <#include "maxAuthorsToShow.ftl" />
 <#macro authorItem author author_index author_has_next>
 
-  <a href="#" class="author-info" data-author-id="${author_index?c}">
+  <a  class="author-info" data-author-id="${author_index?c}">
   ${author.fullName}</a><#if author_has_next><#-- no space -->,</#if>
 </#macro>
 
@@ -18,8 +18,7 @@
       <@authorItem author author_index author_has_next />
     </#if>
   </#list>
-  <a class="more-authors active" data-js="toggle_trigger">[...view
-  ${authors?size - maxAuthorsToShow} more...],</a>
+
           <span class="more-authors-list"  data-js="toggle_target" data-initial="hide">
             <#list authors as author><#-- Inside the expander -->
             <#if author_index gte (maxAuthorsToShow - 1) && author_index lt (authors?size - 1) >
@@ -27,8 +26,11 @@
             </#if>
             </#list>
           </span>
-  <@authorItem authors[authors?size - 1] authors?size - 1 false /><#-- Last one after expander -->
-  <a class="author-less" data-js="toggle_trigger" data-initial="hide">[ view less ]</a>
+  [...]
+  <@authorItem authors[authors?size - 1] authors?size - 1 false />,<#-- Last one after expander -->
+  <a class="more-authors active" data-js="toggle_trigger" id="authors-show">[ view all ]</a>
+  <a class="author-less" data-js="toggle_trigger" data-initial="hide" id="author-hide">[ view less ]</a>
+
 <#else>
 <#-- List authors with no expander -->
   <#list authors as author>

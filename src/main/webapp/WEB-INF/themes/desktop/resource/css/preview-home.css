@@ -1445,7 +1445,7 @@
     width: 47.5rem; }
   /* line 14, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa, .cms-preview .carousel-wrap.small .carousel-control .jcarousel-prev,
-  .cms-preview .carousel-wrap.small .carousel-control .jcarousel-next, .cms-preview .more-icon, .cms-preview .more-link:after, .cms-preview .icon-fa, .cms-preview .icon-twitter, .cms-preview .icon-facebook, .cms-preview .icon-rss, .cms-preview .icon-email {
+  .cms-preview .carousel-wrap.small .carousel-control .jcarousel-next, .cms-preview .more-icon, .cms-preview .more-link:after, .cms-preview .icon-fa, .cms-preview .icon-twitter, .cms-preview .icon-facebook, .cms-preview .icon-rss, .cms-preview .icon-email, .cms-preview .icon-plus {
     display: inline-block;
     font-family: FontAwesome;
     font-style: normal;
@@ -1505,11 +1505,11 @@
     float: left; }
   /* line 74, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa.pull-left, .cms-preview .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev,
-  .cms-preview .carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .cms-preview .pull-left.more-icon, .cms-preview .pull-left.more-link:after, .cms-preview .pull-left.icon-fa, .cms-preview .pull-left.icon-twitter, .cms-preview .pull-left.icon-facebook, .cms-preview .pull-left.icon-rss, .cms-preview .pull-left.icon-email {
+  .cms-preview .carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .cms-preview .pull-left.more-icon, .cms-preview .pull-left.more-link:after, .cms-preview .pull-left.icon-fa, .cms-preview .pull-left.icon-twitter, .cms-preview .pull-left.icon-facebook, .cms-preview .pull-left.icon-rss, .cms-preview .pull-left.icon-email, .cms-preview .pull-left.icon-plus {
     margin-right: .3em; }
   /* line 77, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa.pull-right, .cms-preview .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev,
-  .cms-preview .carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .cms-preview .pull-right.more-icon, .cms-preview .pull-right.more-link:after, .cms-preview .pull-right.icon-fa, .cms-preview .pull-right.icon-twitter, .cms-preview .pull-right.icon-facebook, .cms-preview .pull-right.icon-rss, .cms-preview .pull-right.icon-email {
+  .cms-preview .carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .cms-preview .pull-right.more-icon, .cms-preview .pull-right.more-link:after, .cms-preview .pull-right.icon-fa, .cms-preview .pull-right.icon-twitter, .cms-preview .pull-right.icon-facebook, .cms-preview .pull-right.icon-rss, .cms-preview .pull-right.icon-email, .cms-preview .pull-right.icon-plus {
     margin-left: .3em; }
   /* line 80, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa-spin {
@@ -2318,7 +2318,7 @@
   .cms-preview .fa-h-square:before {
     content: "\f0fd"; }
   /* line 891, ../../sass/vendor/_font-awesome.scss */
-  .cms-preview .fa-plus-square:before {
+  .cms-preview .fa-plus-square:before, .cms-preview .icon-plus:before {
     content: "\f0fe"; }
   /* line 894, ../../sass/vendor/_font-awesome.scss */
   .cms-preview .fa-angle-double-left:before {
@@ -3271,7 +3271,7 @@
     content: '\f138';
     padding-left: 0.1875rem; }
   /* line 178, ../../sass/_components.scss */
-  .cms-preview .icon-fa, .cms-preview .icon-twitter, .cms-preview .icon-facebook, .cms-preview .icon-rss, .cms-preview .icon-email {
+  .cms-preview .icon-fa, .cms-preview .icon-twitter, .cms-preview .icon-facebook, .cms-preview .icon-rss, .cms-preview .icon-email, .cms-preview .icon-plus {
     line-height: 44px;
     font-size: 22px; }
   /* line 184, ../../sass/_components.scss */
@@ -3280,13 +3280,16 @@
   /* line 191, ../../sass/_components.scss */
   .cms-preview .icon-facebook {
     content: '\f09a'; }
-  /* line 198, ../../sass/_components.scss */
+  /* line 197, ../../sass/_components.scss */
   .cms-preview .icon-rss {
     content: '\f09e'; }
-  /* line 204, ../../sass/_components.scss */
+  /* line 203, ../../sass/_components.scss */
   .cms-preview .icon-email {
     content: '\f003'; }
-  /* line 210, ../../sass/_components.scss */
+  /* line 208, ../../sass/_components.scss */
+  .cms-preview .icon-plus {
+    content: '\f0fe'; }
+  /* line 213, ../../sass/_components.scss */
   .cms-preview .aria-text, .cms-preview #social-links ul > li .icon-text {
     position: absolute;
     top: -9999px;

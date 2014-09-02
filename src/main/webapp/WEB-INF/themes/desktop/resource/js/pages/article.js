@@ -3,49 +3,55 @@
  */
 
 (function ($) {
+  var rawDate, articlePubDate;
 
-  function UpdateTableHeaders() {
-    $(".persist-area").each(function() {
 
-      var el             = $(this),
-        offset         = el.offset(),
-        scrollTop      = $(window).scrollTop(),
-        floatingHeader = $(".floatingHeader", this)
-
-      if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
-        floatingHeader.css({
-          "visibility": "visible"
-        });
-      } else {
-        floatingHeader.css({
-          "visibility": "hidden"
-        });
-      };
-    });
-  }
-
-  var rawDate = document.getElementById("rawPubDate").value;
-  var articlePubDate = dateParse(rawDate, true);
+  rawDate = document.getElementById("rawPubDate").value;
+  articlePubDate = dateParse(rawDate, true);
 
   $( document ).ready(function() {
-    $("#artPubDate").append(articlePubDate);
+    var floater = $(".titleFloater").clone().appendTo( document.body).css("top","-100px");
+
+    //bindEvents();
+    //function bindEvents() {
+    $(window).scroll( onscroll );
+   // }
 
 
+  $("#artPubDate").append(articlePubDate);
 
-  var clonedHeaderRow;
+//show title & authors on floating header if window scrolls to tabs area
+    onscroll = function() {
+      var top = $(window).scrollTop(),
+          topLimit = 420;
+        //console.log(top);
+      if (top < topLimit && !floater.hasClass("topVisible") || top > topLimit && floater.hasClass("topVisible")) return;
 
-  $(".persist-area").each(function() {
-    clonedHeaderRow = $(".persist-header", this);
-    clonedHeaderRow
-      .before(clonedHeaderRow.clone())
-      .css("width", clonedHeaderRow.width())
-      .addClass("floatingHeader");
+        if ( top > topLimit ) {
+            $(floater).addClass('topVisible').css('top',0);
 
+        $(floater).find('.logo-close').on('click', function () {
+
+            floater.css('top','-100px');
+            $(window).unbind('scroll');
+        });
+
+        } else {
+            $(floater).removeClass('topVisible').css('top','-100px');
+        }
+    };
+
+      function onetime(node, type, callback) {
+
+          // create event
+          node.addEventListener(type, function(e) {
+              // remove event
+              e.target.removeEventListener(e.type, arguments.callee);
+              // call handler
+              return callback(e);
+          });
+
+      }
   });
-
-  $(window)
-    .scroll(UpdateTableHeaders)
-    .trigger("scroll");
-  });
-
 }(jQuery));
+

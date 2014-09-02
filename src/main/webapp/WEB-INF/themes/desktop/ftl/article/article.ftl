@@ -10,15 +10,7 @@
 <#include "../common/head.ftl" />
 
   <body class="article ${journalKey?lower_case}">
-  <div id="titleFloater" class="topAttached">
-    <div class="plos-row">
-      <div class="title-authors">
-    <h1 id="artTitle"> ${article.title} </h1>
-  <#include "authorList.ftl" />
-        </div>
-      <div class="logo-close">plos x</div>
-    </div>
-  </div>
+
   <input type="hidden" id="rawPubDate" value="${article.date}" />
 
   <#include "../common/header/header.ftl" />
@@ -33,10 +25,18 @@
 
         <div class="article-type" id="artType">${article.articleType!""}</div>
       </div>
-
-        <h1 id="artTitle"> ${article.title} </h1>
-        <#include "authorList.ftl" />
-
+      <div class="titleFloater">
+          <div class="plos-row">
+          <div class="title-authors">
+            <h1 id="artTitle"> ${article.title} </h1>
+            <#include "authorList.ftl" />
+          </div>
+            <div class="logo-close">
+              <img src="<@siteLink path="/resource/img/logo.plos.95.png"/>" alt="PLOS" />
+              <div class="close-floater">x</div>
+            </div>
+          </div>
+      </div>
 
       <ul class="date-doi">
         <li id="artPubDate">Published:  </li>

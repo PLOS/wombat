@@ -1,8 +1,9 @@
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
 $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
+
  // extensible layout styles
 
-.text-article-intro{
+.text-article-intro {
   font-size: $txt-size-default;
   color: $grey-med;
   a {
@@ -64,6 +65,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       font-style: italic;
     }
   }
+  .logo-close {
+    display: none;
+  }
   .date-doi {
     @include clearfix();
     @extend .text-article-intro;
@@ -82,17 +86,28 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     }
   }
 }
-// the attached class is added with js for fixing the title to the top of the page on scroll.
-#titleFloater.topAttached {
+// the topAttached class is added with js for showing the title to the top of the page on scroll.
+/*.topVisibile.first {
+  top: -100px;
+}*/
+.topVisible {
   position: fixed;
   top: 0;
-  display: block;
+  left: 0;
   width: 100%;
   height: 49px;
   border-bottom: 1px solid $grey-med-light;
   background-color: $white;
   z-index: 999;
   padding: $pad-small;
+  max-height: 49px; /* approximate max height */
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+ /* transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);*/
+  overflow: hidden;
+  box-sizing: border-box;
+
   .title-authors {
     float: left;
     width: 755px;
@@ -104,13 +119,29 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       padding: 0;
     }
     p.author-list {
-      //margin: 0 !important;
       line-height: normal;
     }
   }
+
   .logo-close {
-    width: 180px;
+    display: block;
+    width: rem-calc(140);
     float: right;
+    text-align: right;
+    cursor: pointer;
+    img {
+     margin-right: $pad-smallish;
+    }
+    .close-floater {
+      vertical-align: middle;
+      display: inline-block;
+      width: rem-calc(25);
+      height: rem-calc(25);
+      @extend %brand-background;
+      border-radius: $border-radius-small;
+      text-indent: 9999px;
+      color: $white;
+    }
   }
 }
 // TABS

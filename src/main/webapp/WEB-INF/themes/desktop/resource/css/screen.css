@@ -1551,7 +1551,7 @@ main,
 }*/
 /* line 14, ../../sass/vendor/_font-awesome.scss */
 .fa, .carousel-wrap.small .carousel-control .jcarousel-prev,
-.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .top-bar-section .head-search form button[type="submit"] .search-icon {
+.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus, .top-bar-section .head-search form button[type="submit"] .search-icon {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1626,12 +1626,12 @@ main,
 
 /* line 74, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-left, .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
+.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .pull-left.icon-plus, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
   margin-right: .3em; }
 
 /* line 77, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-right, .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
+.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .pull-right.icon-plus, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
   margin-left: .3em; }
 
 /* line 80, ../../sass/vendor/_font-awesome.scss */
@@ -2685,7 +2685,7 @@ main,
   content: "\f0fd"; }
 
 /* line 891, ../../sass/vendor/_font-awesome.scss */
-.fa-plus-square:before {
+.fa-plus-square:before, .icon-plus:before {
   content: "\f0fe"; }
 
 /* line 894, ../../sass/vendor/_font-awesome.scss */
@@ -3676,7 +3676,7 @@ footer, .head-top {
 .plosbiology .head-top, .ploscompbiol .head-top, .plosgenetics .head-top {
   border-color: #16a127; }
 /* line 75, ../../sass/_utilities.scss */
-.plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosbiology a, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscompbiol a, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosgenetics a {
+.plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology .topVisible .logo-close .close-floater, .topVisible .logo-close .plosbiology .close-floater, .plosbiology .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosbiology a, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol .topVisible .logo-close .close-floater, .topVisible .logo-close .ploscompbiol .close-floater, .ploscompbiol .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscompbiol a, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics .topVisible .logo-close .close-floater, .topVisible .logo-close .plosgenetics .close-floater, .plosgenetics .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosgenetics a {
   background-color: #16a127; }
 /* line 78, ../../sass/_utilities.scss */
 .plosbiology .nav .nav-user li.highlighted > a, .nav .nav-user .plosbiology li.highlighted > a, .plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol .nav .nav-user li.highlighted > a, .nav .nav-user .ploscompbiol li.highlighted > a, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics .nav .nav-user li.highlighted > a, .nav .nav-user .plosgenetics li.highlighted > a, .plosgenetics #billboard a, #billboard .plosgenetics a {
@@ -3722,7 +3722,7 @@ footer, .head-top {
 .plosmedicine .head-top, .plospathogens .head-top, .plosntd .head-top {
   border-color: #891fb1; }
 /* line 75, ../../sass/_utilities.scss */
-.plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosmedicine a, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plospathogens a, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosntd a {
+.plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine .topVisible .logo-close .close-floater, .topVisible .logo-close .plosmedicine .close-floater, .plosmedicine .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosmedicine a, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens .topVisible .logo-close .close-floater, .topVisible .logo-close .plospathogens .close-floater, .plospathogens .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plospathogens a, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd .topVisible .logo-close .close-floater, .topVisible .logo-close .plosntd .close-floater, .plosntd .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosntd a {
   background-color: #891fb1; }
 /* line 78, ../../sass/_utilities.scss */
 .plosmedicine .nav .nav-user li.highlighted > a, .nav .nav-user .plosmedicine li.highlighted > a, .plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens .nav .nav-user li.highlighted > a, .nav .nav-user .plospathogens li.highlighted > a, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd .nav .nav-user li.highlighted > a, .nav .nav-user .plosntd li.highlighted > a, .plosntd #billboard a, #billboard .plosntd a {
@@ -3904,7 +3904,7 @@ have a fixed width and height (but it's not required).
   padding-left: 0.1875rem; }
 
 /* line 178, ../../sass/_components.scss */
-.icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email {
+.icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus {
   line-height: 44px;
   font-size: 22px; }
 
@@ -3916,15 +3916,19 @@ have a fixed width and height (but it's not required).
 .icon-facebook {
   content: '\f09a'; }
 
-/* line 198, ../../sass/_components.scss */
+/* line 197, ../../sass/_components.scss */
 .icon-rss {
   content: '\f09e'; }
 
-/* line 204, ../../sass/_components.scss */
+/* line 203, ../../sass/_components.scss */
 .icon-email {
   content: '\f003'; }
 
-/* line 210, ../../sass/_components.scss */
+/* line 208, ../../sass/_components.scss */
+.icon-plus {
+  content: '\f0fe'; }
+
+/* line 213, ../../sass/_components.scss */
 .aria-text, #social-links ul > li .icon-text {
   position: absolute;
   top: -9999px;
@@ -4748,11 +4752,11 @@ header {
   .static h1 {
     margin-bottom: 1.875rem; }
 
-/* line 5, ../../sass/pages/_article.scss */
+/* line 6, ../../sass/pages/_article.scss */
 .text-article-intro, .author-list, .article-body .date-doi {
   font-size: 13px;
   color: #666666; }
-  /* line 8, ../../sass/pages/_article.scss */
+  /* line 9, ../../sass/pages/_article.scss */
   .text-article-intro a, .author-list a, .article-body .date-doi a {
     color: #666666;
     text-decoration: none; }
@@ -4761,12 +4765,12 @@ header {
       color: #666666;
       text-decoration: underline; }
 
-/* line 15, ../../sass/pages/_article.scss */
+/* line 16, ../../sass/pages/_article.scss */
 .article-body {
   float: left;
   width: 47.1875rem; }
 
-/* line 18, ../../sass/pages/_article.scss */
+/* line 19, ../../sass/pages/_article.scss */
 .article-column {
   float: left;
   width: 11.25rem;
@@ -4777,43 +4781,46 @@ header {
   background-color: #808080;
   height: 800px; }
 
-/* line 26, ../../sass/pages/_article.scss */
+/* line 27, ../../sass/pages/_article.scss */
 .classifications {
   margin-top: 1.5625rem;
   margin-bottom: 0.9375rem; }
-  /* line 30, ../../sass/pages/_article.scss */
+  /* line 31, ../../sass/pages/_article.scss */
   .classifications p {
     font-size: 10px;
     display: inline-block;
     padding-left: 0.9375rem;
     line-height: 17px; }
-  /* line 36, ../../sass/pages/_article.scss */
+  /* line 37, ../../sass/pages/_article.scss */
   .classifications .license-short {
     background: url('../img/icon.oa.gif') no-repeat 0 3px;
     padding-right: 0.625rem; }
-  /* line 41, ../../sass/pages/_article.scss */
+  /* line 42, ../../sass/pages/_article.scss */
   .classifications .peer-reviewed {
     background: url('../img/icon.pr.gif') no-repeat 0 3px; }
-  /* line 44, ../../sass/pages/_article.scss */
+  /* line 45, ../../sass/pages/_article.scss */
   .classifications .article-type {
     margin-top: 0.3125rem;
     font-family: "albert";
     font-size: 11px; }
 
-/* line 51, ../../sass/pages/_article.scss */
+/* line 52, ../../sass/pages/_article.scss */
 .author-list {
   margin-bottom: 0.625rem;
   line-height: 1.5625rem; }
 
-/* line 58, ../../sass/pages/_article.scss */
+/* line 59, ../../sass/pages/_article.scss */
 .article-body h1 {
   font-size: 27px;
   margin-bottom: 0.625rem;
   line-height: normal; }
-  /* line 63, ../../sass/pages/_article.scss */
+  /* line 64, ../../sass/pages/_article.scss */
   .article-body h1 i, .article-body h1 italic {
     font-style: italic; }
-/* line 67, ../../sass/pages/_article.scss */
+/* line 68, ../../sass/pages/_article.scss */
+.article-body .logo-close {
+  display: none; }
+/* line 71, ../../sass/pages/_article.scss */
 .article-body .date-doi {
   *zoom: 1;
   margin: 0;
@@ -4825,75 +4832,101 @@ header {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   .article-body .date-doi:after {
     clear: both; }
-  /* line 73, ../../sass/pages/_article.scss */
+  /* line 77, ../../sass/pages/_article.scss */
   .article-body .date-doi li {
     float: left;
     margin-left: 0.625rem; }
-    /* line 77, ../../sass/pages/_article.scss */
+    /* line 81, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
       margin: 0 0.9375rem 0 0;
       padding-left: 0;
       list-style-type: none; }
 
-/* line 86, ../../sass/pages/_article.scss */
-#titleFloater.topAttached {
+/*.topVisibile.first {
+  top: -100px;
+}*/
+/* line 93, ../../sass/pages/_article.scss */
+.topVisible {
   position: fixed;
   top: 0;
-  display: block;
+  left: 0;
   width: 100%;
   height: 49px;
   border-bottom: 1px solid #cccccc;
   background-color: white;
   z-index: 999;
-  padding: 0.625rem; }
-  /* line 96, ../../sass/pages/_article.scss */
-  #titleFloater.topAttached .title-authors {
+  padding: 0.625rem;
+  max-height: 49px;
+  /* approximate max height */
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  /* transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);*/
+  overflow: hidden;
+  box-sizing: border-box; }
+  /* line 111, ../../sass/pages/_article.scss */
+  .topVisible .title-authors {
     float: left;
     width: 755px; }
-    /* line 99, ../../sass/pages/_article.scss */
-    #titleFloater.topAttached .title-authors h1 {
+    /* line 114, ../../sass/pages/_article.scss */
+    .topVisible .title-authors h1 {
       font-size: 14px;
       font-weight: bold;
       font-family: "arial";
       margin: 0;
       padding: 0; }
-    /* line 106, ../../sass/pages/_article.scss */
-    #titleFloater.topAttached .title-authors p.author-list {
+    /* line 121, ../../sass/pages/_article.scss */
+    .topVisible .title-authors p.author-list {
       line-height: normal; }
-  /* line 111, ../../sass/pages/_article.scss */
-  #titleFloater.topAttached .logo-close {
-    width: 180px;
-    float: right; }
+  /* line 126, ../../sass/pages/_article.scss */
+  .topVisible .logo-close {
+    display: block;
+    width: 8.75rem;
+    float: right;
+    text-align: right;
+    cursor: pointer; }
+    /* line 132, ../../sass/pages/_article.scss */
+    .topVisible .logo-close img {
+      margin-right: 0.9375rem; }
+    /* line 135, ../../sass/pages/_article.scss */
+    .topVisible .logo-close .close-floater {
+      vertical-align: middle;
+      display: inline-block;
+      width: 1.5625rem;
+      height: 1.5625rem;
+      border-radius: 3px;
+      text-indent: 9999px;
+      color: white; }
 
-/* line 118, ../../sass/pages/_article.scss */
+/* line 149, ../../sass/pages/_article.scss */
 .article-tabs {
   display: table;
   table-layout: fixed;
   margin-bottom: 1.25rem;
   width: 100%;
   margin-left: 0; }
-  /* line 124, ../../sass/pages/_article.scss */
+  /* line 155, ../../sass/pages/_article.scss */
   .article-tabs .tab-title {
     margin-left: 0;
     display: table-cell;
     float: none;
     position: static; }
-    /* line 130, ../../sass/pages/_article.scss */
+    /* line 161, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-1 {
       background: #2b2b2b; }
-    /* line 133, ../../sass/pages/_article.scss */
+    /* line 164, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-2 {
       background: #454545; }
-    /* line 136, ../../sass/pages/_article.scss */
+    /* line 167, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-3 {
       background: #5e5e5e; }
-    /* line 139, ../../sass/pages/_article.scss */
+    /* line 170, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-4 {
       background: #777777; }
-    /* line 142, ../../sass/pages/_article.scss */
+    /* line 173, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-5 {
       background: #919191; }
-    /* line 145, ../../sass/pages/_article.scss */
+    /* line 176, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
@@ -4901,11 +4934,11 @@ header {
       border-right: 1px solid white;
       font-weight: bold;
       color: white; }
-      /* line 152, ../../sass/pages/_article.scss */
+      /* line 183, ../../sass/pages/_article.scss */
       .article-tabs .tab-title a:hover {
         background: #3c63af;
         color: white; }
-    /* line 157, ../../sass/pages/_article.scss */
+    /* line 188, ../../sass/pages/_article.scss */
     .article-tabs .tab-title.active a {
       position: relative;
       height: 83px;
@@ -4914,6 +4947,6 @@ header {
       background-image: url('../img/icon.tabs.active.white.png');
       background-repeat: no-repeat;
       background-position: 9px 65px; }
-      /* line 166, ../../sass/pages/_article.scss */
+      /* line 197, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }

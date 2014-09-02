@@ -2,9 +2,11 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 import org.ambraproject.wombat.config.site.Site;
@@ -29,6 +31,7 @@ import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
@@ -76,6 +79,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(articleMetadata));
+    model.addAttribute("crossPub", fillCrossPublishedJournals(site, articleMetadata));
     requestAuthors(model, articleId);
     requestComments(model, articleId);
     return site + "/ftl/article/article";
@@ -160,6 +164,31 @@ public class ArticleController extends WombatController {
       applyAmendmentPrecedence(amendments);
     }
     return Multimaps.asMap(amendments);
+  }
+
+  /**
+   * Filter the {@code "journals"} metadata value for journals that aren't this site's journal.
+   *
+   * @param site            the site of the current page request
+   * @param articleMetadata metadata for an article being rendered
+   * @return metadata for all cross-published journals
+   */
+  private static Collection<Map<String, Object>> fillCrossPublishedJournals(Site site, Map<?, ?> articleMetadata) {
+    Map<?, ?> publishedJournals = (Map<?, ?>) articleMetadata.get("journals");
+    if (publishedJournals.size() <= 1) {
+      return ImmutableList.of();
+    }
+    String localJournal = site.getJournalKey();
+    Collection<Map<String, Object>> crossPublishedJournals = Lists.newArrayListWithCapacity(publishedJournals.size() - 1);
+    for (Map.Entry<?, ?> entry : publishedJournals.entrySet()) {
+      String journalKey = (String) entry.getKey();
+      if (!journalKey.equals(localJournal)) {
+        Map<String, Object> crossPublishedJournalMetadata = (Map<String, Object>) entry.getValue();
+        crossPublishedJournals.add(crossPublishedJournalMetadata);
+        // TODO: Invoke site.getTheme().resolveForeignJournalKey?
+      }
+    }
+    return crossPublishedJournals;
   }
 
   /**

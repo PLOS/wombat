@@ -31,6 +31,16 @@
       <ul class="date-doi">
         <li id="artPubDate">Published:  </li>
         <li id="artDoi">DOI: ${article.doi} </li>
+      <#if crossPub?size gt 0>
+        <li>
+          Featured in
+          <#list crossPub as crossPubJournal>
+          ${crossPubJournal.title}
+          <#-- TODO: Link to other journal's home page -->
+          <#-- TODO: Format in case crossPub has more than one -->
+          </#list>
+        </li>
+      </#if>
       </ul>
 
     <#include "tabs.ftl" />

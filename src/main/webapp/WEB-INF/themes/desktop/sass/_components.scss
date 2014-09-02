@@ -1,6 +1,18 @@
-/*   This file contains design components used for Journals and Wombat Generic
- *
- */
+
+/*doc
+---
+title: small components
+name: small components
+category: components
+---
+
+##pill
+<p class="pill">I am a pill</p>
+`@extend %pill`
+
+
+*/
+
 
 @mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default) {
   background: $background;
@@ -17,6 +29,40 @@
 .pill {
   @include rounded-pill();
 }
+
+/*doc
+---
+title: blocks
+name: blocks
+category: components
+---
+
+Blocks are essentially boxes with some defaults, such as color and bottom margin. You can either use the extendable classes below or the mixin if you need more flexibility. if you are using a certain style over and over feel free to add a extendable class of your own.
+
+### Extendable Classes
+We created extendable classes for some commonly used blocks.
+
+example | extension
+--------|----------
+<p class="block">I am a block - usually on the homepage</p> | `@extend .block`
+<div class="padded-example" style="color:black"><p class="block-noshadow">I am a block - with no shadow </p></div> | `@extend .block-noshadow`
+<p class="block-card ">I am a block - with padding and no border radius</p> | `@extend .block-card`
+
+###Mixin
+We also have a mixin you can use to create your own blocks:
+`@include blocks();`
+
+variable  | result   | default
+------------------------------------------| ----------------- | ---------
+`$radius: top` | default radius on the top corners of block   |  yes
+`$radius: none` | no radius  |
+`$radius: all` | default radius on all corners of block   |
+`$padding: default` | block has a padding of `$pad-small` - 10px   |   yes
+`$padding: none` |  block has no padding |
+`$padding: NUMBER` | allows you to set the number padding - use variables |
+`$color: COLOR` | sets the background color   |   `$white`
+
+*/
 
 @mixin blocks($color: $white, $radius: top, $padding: default, $shadow: default) {
   // set block radius
@@ -159,12 +205,28 @@ have a fixed width and height (but it's not required).
       }
     }
   }
-
 }
 
-//font awesome icon: arrow after link
-//use with ::after
-//example: .more-link::after { @extend .more-icon }
+
+/*doc
+---
+title: icons
+name: icons
+category: typography
+---
+
+We use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
+For icons after text:
+use with `::after` example: `.more-link::after { @extend .more-icon }`
+
+example | extension
+--------|----------
+<a class="example-more-link">more</a>| `@extend .more-icon`
+<p class="icon-twitter"> twitter </p> | `@extend .icon-twitter`
+<p class="icon-facebook"> facebook</p> | `@extend .icon-facebook`
+<p class="icon-email"> email</p> | `@extend .icon-email`
+
+*/
 
 .more-icon {
   // need to use content instead of @extend .fa-chevron-circle-right with ::after;
@@ -185,7 +247,6 @@ have a fixed width and height (but it's not required).
   @extend .icon-fa;
   @extend .fa-twitter;
   content: '\f099';
-
 }
 
 .icon-facebook {

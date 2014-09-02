@@ -1,6 +1,5 @@
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
 $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
-
  // extensible layout styles
 
 .text-article-intro {
@@ -34,6 +33,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     padding-left: $pad-smallish;
     line-height: 17px;
   }
+
   .license-short {
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
@@ -53,6 +53,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   @extend .text-article-intro;
   margin-bottom: $pad-default - $pad-small;
   line-height: ($pad-default + $pad-xsmall); /// this will change when we add in the roll over info boxes.
+  a[data-js='toggle_trigger']{color: $clr-highlight;}
 }
 
 .article-body {

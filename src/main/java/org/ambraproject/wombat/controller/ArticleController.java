@@ -13,11 +13,14 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.apache.commons.io.output.WriterOutputStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +44,8 @@ import java.util.Map;
  */
 @Controller
 public class ArticleController extends WombatController {
+
+  private static final Logger log = LoggerFactory.getLogger(ArticleController.class);
 
   /**
    * Initial size (in bytes) of buffer that holds transformed article HTML before passing it to the model.
@@ -173,7 +178,8 @@ public class ArticleController extends WombatController {
    * @param articleMetadata metadata for an article being rendered
    * @return metadata for all cross-published journals
    */
-  private static Collection<Map<String, Object>> fillCrossPublishedJournals(Site site, Map<?, ?> articleMetadata) {
+  private Collection<Map<String, Object>> fillCrossPublishedJournals(Site site, Map<?, ?> articleMetadata)
+      throws IOException {
     Map<?, ?> publishedJournals = (Map<?, ?>) articleMetadata.get("journals");
     if (publishedJournals.size() <= 1) {
       return ImmutableList.of();
@@ -185,7 +191,15 @@ public class ArticleController extends WombatController {
       if (!journalKey.equals(localJournal)) {
         Map<String, Object> crossPublishedJournalMetadata = (Map<String, Object>) entry.getValue();
         crossPublishedJournals.add(crossPublishedJournalMetadata);
-        // TODO: Invoke site.getTheme().resolveForeignJournalKey?
+
+        String crossPublishedJournalKey = (String) crossPublishedJournalMetadata.get("journalKey");
+        try {
+          Site crossPublishedSite = site.getTheme().resolveForeignJournalKey(siteSet, crossPublishedJournalKey);
+          log.debug(crossPublishedSite.getKey()); // TODO: Use this to produce an href to the other site's hoempage
+        } catch (UnmatchedSiteException e) {
+          // The data may still be valid if the other journal is hosted on a legacy Ambra system
+          log.warn("Cross-published journal with no matching site: {}", crossPublishedJournalKey);
+        }
       }
     }
     return crossPublishedJournals;

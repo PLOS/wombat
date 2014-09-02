@@ -36,11 +36,11 @@
           Featured in
           <#list crossPub as crossPubJournal>
             <#if crossPubJournal.href??>
-              <a href="${crossPubJournal.href}">${crossPubJournal.title}</a>
+              <a href="${crossPubJournal.href}">${crossPubJournal.title}</a><#t>
             <#else>
-            ${crossPubJournal.title}
+            ${crossPubJournal.title}<#t>
             </#if>
-          <#-- TODO: Format in case crossPub has more than one -->
+          <#if crossPubJournal_has_next><#t>,</#if>
           </#list>
         </li>
       </#if>

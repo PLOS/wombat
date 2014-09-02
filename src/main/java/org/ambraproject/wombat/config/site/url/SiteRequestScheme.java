@@ -111,7 +111,8 @@ public class SiteRequestScheme implements SiteRequestPredicate {
    * Build a link to a path within a site.
    * <p/>
    * The link always starts with {@code '/'} and is relative to the application root. It is suitable for use in a {@code
-   * "redirect:*"} return value for Spring.
+   * "redirect:*"} return value for Spring. It must <em>not</em> be used to build {@code href} values to be sent to the
+   * client browser; use {@link #buildLink(javax.servlet.http.HttpServletRequest, String)} for that instead.
    *
    * @param path a site-independent path
    * @return a link to that path within the same site

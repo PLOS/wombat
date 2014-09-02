@@ -35,8 +35,11 @@
         <li>
           Featured in
           <#list crossPub as crossPubJournal>
-          ${crossPubJournal.title}
-          <#-- TODO: Link to other journal's home page -->
+            <#if crossPubJournal.href??>
+              <a href="${crossPubJournal.href}">${crossPubJournal.title}</a>
+            <#else>
+            ${crossPubJournal.title}
+            </#if>
           <#-- TODO: Format in case crossPub has more than one -->
           </#list>
         </li>

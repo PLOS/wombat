@@ -27,6 +27,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,6 +37,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,7 +64,8 @@ public class ArticleController extends WombatController {
   private ArticleTransformService articleTransformService;
 
   @RequestMapping(value = {"/article", "/{site}/article"})
-  public String renderArticle(Model model,
+  public String renderArticle(HttpServletRequest request,
+                              Model model,
                               @SiteParam Site site,
                               @RequestParam("id") String articleId)
       throws IOException {
@@ -84,7 +87,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(articleMetadata));
-    model.addAttribute("crossPub", fillCrossPublishedJournals(site, articleMetadata));
+    model.addAttribute("crossPub", fillCrossPublishedJournals(request, site, articleMetadata));
     requestAuthors(model, articleId);
     requestComments(model, articleId);
     return site + "/ftl/article/article";
@@ -174,11 +177,14 @@ public class ArticleController extends WombatController {
   /**
    * Filter the {@code "journals"} metadata value for journals that aren't this site's journal.
    *
+   * @param request
    * @param site            the site of the current page request
    * @param articleMetadata metadata for an article being rendered
    * @return metadata for all cross-published journals
    */
-  private Collection<Map<String, Object>> fillCrossPublishedJournals(Site site, Map<?, ?> articleMetadata)
+  private Collection<Map<String, Object>> fillCrossPublishedJournals(HttpServletRequest request,
+                                                                     Site site,
+                                                                     Map<?, ?> articleMetadata)
       throws IOException {
     Map<?, ?> publishedJournals = (Map<?, ?>) articleMetadata.get("journals");
     if (publishedJournals.size() <= 1) {
@@ -189,17 +195,17 @@ public class ArticleController extends WombatController {
     for (Map.Entry<?, ?> entry : publishedJournals.entrySet()) {
       String journalKey = (String) entry.getKey();
       if (!journalKey.equals(localJournal)) {
-        Map<String, Object> crossPublishedJournalMetadata = (Map<String, Object>) entry.getValue();
-        crossPublishedJournals.add(crossPublishedJournalMetadata);
-
+        Map<String, Object> crossPublishedJournalMetadata = new HashMap<>((Map<? extends String, ?>) entry.getValue());
         String crossPublishedJournalKey = (String) crossPublishedJournalMetadata.get("journalKey");
         try {
           Site crossPublishedSite = site.getTheme().resolveForeignJournalKey(siteSet, crossPublishedJournalKey);
-          log.debug(crossPublishedSite.getKey()); // TODO: Use this to produce an href to the other site's hoempage
+          String homepageLink = crossPublishedSite.getRequestScheme().buildLink(request, "/");
+          crossPublishedJournalMetadata.put("href", homepageLink);
         } catch (UnmatchedSiteException e) {
           // The data may still be valid if the other journal is hosted on a legacy Ambra system
           log.warn("Cross-published journal with no matching site: {}", crossPublishedJournalKey);
         }
+        crossPublishedJournals.add(crossPublishedJournalMetadata);
       }
     }
     return crossPublishedJournals;

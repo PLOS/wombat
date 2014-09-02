@@ -4940,3 +4940,7 @@ header {
 /* line 225, ../../sass/pages/_article.scss */
 .posRight .author-info {
   right: 0; }
+
+/* line 230, ../../sass/pages/_article.scss */
+[data-js=tooltip_trigger]:focus {
+  outline: 0; }

@@ -44,39 +44,42 @@ tooltip = {
     var s = this.settings;
     this.tooltip();
     this.checkwidth();
+   // this.click_elsewhere();
   },
 
   tooltip: function () {
     var s = this.settings;
-  //  $(s.tooltip_hidden).hide();
 
-  //  $(s.tooltip_hidden).hide();
     $(s.tooltip_trigger).on('click', function(){
-
+     var self =
       var parent_width = $(this).parents('.author-list').innerWidth(),
           parent_width_offset = parent_width * .75,
           pos = $(this).position();
-      console.log(pos.left);
-      console.log(parent_width_offset);
-      $(s.tooltip_trigger).not(this).removeClass('active');
 
+      $(s.tooltip_trigger).not(this).removeClass('active');  //TODO: does this work?
       $(this).toggleClass('active');
-      if(pos.left >= parent_width_offset) { $(this).addClass('posRight');}
+
+      if(pos.left >= parent_width_offset) { $(this).addClass('posRight');
+      }
+
+      $(s.tooltip_close).on('click', function(){
+        $(s.tooltip_trigger).removeClass('active');
+      });
 
     });
-//    $(s.tooltip_close).on('click', function(){
-//      $(s.tooltip_trigger).removeClass('active');
-//    });
-
 
 
   },
   checkwidth: function () {
-//    var s=this.settings;
-//    //  $(s.tooltip_hidden).hide();
-//    $(s.tooltip_trigger).on(s.tooltip_event, function(){
-//      $(this).parent().toggleClass('active');
-//    });
+    var s=this.settings;
+
+
+
+  },
+  click_elsewhere: function () {
+    var s = this.settings;
+    $(s.tooltip_trigger).blur(function(){$(s.tooltip_trigger).removeClass('active');});
+
   }
 };
 

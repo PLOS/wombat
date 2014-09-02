@@ -226,3 +226,7 @@
    right: 0;
  }
 
+
+ [data-js=tooltip_trigger]:focus{
+ outline: 0;
+ }

@@ -1,10 +1,10 @@
-<ul class="author-list clearfix">
+<ul class="author-list clearfix" data-js="tooltip_container">
 <#include "maxAuthorsToShow.ftl" />
 
 <#macro authorItem author author_index author_has_next toggle = false >
 
-  <li data-js="tooltip_trigger"  <#if toggle>data-js="toggle_target" dlayata-initial="hide"</#if> >
-    <a data-author-id="${author_index?c}" class="author-name">
+  <li data-js="tooltip_trigger"  <#if toggle>data-js="toggle_target" data-initial="hide"</#if> tabindex="0" >
+    <a data-author-id="${author_index?c}" class="author-name" >
   ${author.fullName}<#if author_has_next><#-- no space -->,</#if>
 
     </a>

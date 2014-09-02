@@ -108,7 +108,7 @@ public class SiteSet {
   public Site getSite(String key) throws UnmatchedSiteException {
     Site site = sites.get(key);
     if (site == null) {
-      throw new UnmatchedSiteException(key);
+      throw new UnmatchedSiteException("Key not matched to site: " + key);
     }
     return site;
   }

@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config.theme;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
 import com.google.common.collect.AbstractIterator;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableList;
@@ -12,6 +13,9 @@ import com.google.common.collect.SetMultimap;
 import com.google.common.collect.Sets;
 import com.google.common.io.Files;
 import freemarker.cache.TemplateLoader;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.apache.commons.io.IOUtils;
 import org.yaml.snakeyaml.Yaml;
 
@@ -262,6 +266,36 @@ public abstract class Theme {
       Yaml yaml = new Yaml(); // don't cache; it isn't threadsafe
       return yaml.loadAs(new InputStreamReader(streamToUse), Map.class);
     }
+  }
+
+
+  /**
+   * Resolve a journal key for another site into that site. Uses theme-specific config hooks to define links between
+   * sites (for example, mobile themes link to mobile sites) before defaulting to searching the site set for a site with
+   * that journal key.
+   *
+   * @param siteSet    the system's set of all sites
+   * @param journalKey a journal key belonging to another site
+   * @return a site for the journal key, using preferences defined for this theme if any
+   * @throws IOException if the theme's config values can't be read
+   */
+  public Site resolveForeignJournalKey(SiteSet siteSet, String journalKey) throws IOException {
+    Preconditions.checkArgument(!Strings.isNullOrEmpty(journalKey));
+    Map<?, ?> otherJournals = (Map<?, ?>) getConfigMap("journal").get("otherJournals");
+    if (otherJournals != null) {
+      String otherSiteKey = (String) otherJournals.get(journalKey);
+      if (otherSiteKey != null) {
+        return siteSet.getSite(otherSiteKey);
+      } // else, fall through and try the other way
+    }
+
+    // No site name was explicitly given for the journal key, so just search siteSet for it.
+    for (Site candidateSite : siteSet.getSites()) {
+      if (candidateSite.getJournalKey().equals(journalKey)) {
+        return candidateSite;
+      }
+    }
+    throw new UnmatchedSiteException("Journal key not matched to site: " + journalKey);
   }
 
 

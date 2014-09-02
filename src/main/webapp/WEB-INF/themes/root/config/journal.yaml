@@ -1,0 +1,16 @@
+journalKey: null
+# Specify the journal key for this site. The journal key is a value associated with articles (in the service API) that
+# describes which journals the article was published or cross-published in. This controls, among other things, which
+# articles may be viewed on this site.
+#
+# This configuration value is mandatory and must be overridden with a non-null string in order for the site to work.
+
+otherJournals: null
+# May be overridden with a map from journal keys to other sites, in order to specify how links on this site should point
+# to other sites based on journal keys.
+#
+# Overriding this value is necessary only if multiple sites share a journal key, in which case the map is used to
+# resolve links for cross-published articles. (For example, if the system has a desktop and mobile site for each
+# journal, the map could point from a desktop site to the other desktop sites for the other journals.) If it is left
+# null, the application will reverse-lookup journal keys on its own, choosing one in no defined order if the journal
+# keys are overloaded.

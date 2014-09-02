@@ -1,6 +1,7 @@
-/*
- * This is the centralized import file for the main screen.css.
-*/
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /*doc
 ---
 title: Files
@@ -221,7 +222,7 @@ img {
   float: left !important; }
 
 /* line 339, ../../sass/vendor/foundation/components/_global.scss */
-.right, .nav .nav-user, .top-bar-section ul.nav-elements, .top-bar-section .head-search, .block .date, #article-list .date, #issue .date {
+.right, .nav .nav-user, .top-bar-section ul.nav-elements, .top-bar-section .head-search, .block .date, #article-list .date, #issue .date, section.content aside .date, section.content article .date {
   float: right !important; }
 
 /* line 340, ../../sass/vendor/foundation/components/_global.scss */
@@ -259,7 +260,7 @@ select {
   width: 100%; }
 
 /* line 52, ../../sass/vendor/foundation/components/_inline-lists.scss */
-.inline-list, footer .nav-aux, .nav .nav-user, #submission-links .split-container {
+footer .nav-aux, .nav .nav-user, #submission-links .split-container, .inline-list {
   margin: 0 auto 1.0625rem auto;
   margin-left: -1.375rem;
   margin-right: 0;
@@ -267,13 +268,13 @@ select {
   list-style: none;
   overflow: hidden; }
   /* line 41, ../../sass/vendor/foundation/components/_inline-lists.scss */
-  .inline-list > li, footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li {
+  footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, .inline-list > li {
     list-style: none;
     float: left;
     margin-left: 1.375rem;
     display: block; }
     /* line 46, ../../sass/vendor/foundation/components/_inline-lists.scss */
-    .inline-list > li > *, footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > * {
+    footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, .inline-list > li > * {
       display: block; }
 
 /* line 91, ../../sass/vendor/foundation/components/_labels.scss */
@@ -911,11 +912,11 @@ meta.foundation-mq-topbar {
       padding: 0 15px;
       height: 45px; }
     /* line 596, ../../sass/vendor/foundation/components/_top-bar.scss */
-    .top-bar-section .right li .dropdown, .top-bar-section .nav .nav-user li .dropdown, .nav .top-bar-section .nav-user li .dropdown, .top-bar-section ul.nav-elements li .dropdown, .top-bar-section .head-search li .dropdown, .top-bar-section .block .date li .dropdown, .block .top-bar-section .date li .dropdown, .top-bar-section #article-list .date li .dropdown, #article-list .top-bar-section .date li .dropdown, .top-bar-section #issue .date li .dropdown, #issue .top-bar-section .date li .dropdown {
+    .top-bar-section .right li .dropdown, .top-bar-section .nav .nav-user li .dropdown, .nav .top-bar-section .nav-user li .dropdown, .top-bar-section ul.nav-elements li .dropdown, .top-bar-section .head-search li .dropdown, .top-bar-section .block .date li .dropdown, .block .top-bar-section .date li .dropdown, .top-bar-section #article-list .date li .dropdown, #article-list .top-bar-section .date li .dropdown, .top-bar-section #issue .date li .dropdown, #issue .top-bar-section .date li .dropdown, .top-bar-section section.content aside .date li .dropdown, section.content aside .top-bar-section .date li .dropdown, .top-bar-section section.content article .date li .dropdown, section.content article .top-bar-section .date li .dropdown {
       left: auto;
       right: 0; }
       /* line 600, ../../sass/vendor/foundation/components/_top-bar.scss */
-      .top-bar-section .right li .dropdown li .dropdown, .top-bar-section .nav .nav-user li .dropdown li .dropdown, .nav .top-bar-section .nav-user li .dropdown li .dropdown, .top-bar-section ul.nav-elements li .dropdown li .dropdown, .top-bar-section .head-search li .dropdown li .dropdown, .top-bar-section .block .date li .dropdown li .dropdown, .block .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #article-list .date li .dropdown li .dropdown, #article-list .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #issue .date li .dropdown li .dropdown, #issue .top-bar-section .date li .dropdown li .dropdown {
+      .top-bar-section .right li .dropdown li .dropdown, .top-bar-section .nav .nav-user li .dropdown li .dropdown, .nav .top-bar-section .nav-user li .dropdown li .dropdown, .top-bar-section ul.nav-elements li .dropdown li .dropdown, .top-bar-section .head-search li .dropdown li .dropdown, .top-bar-section .block .date li .dropdown li .dropdown, .block .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #article-list .date li .dropdown li .dropdown, #article-list .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #issue .date li .dropdown li .dropdown, #issue .top-bar-section .date li .dropdown li .dropdown, .top-bar-section section.content aside .date li .dropdown li .dropdown, section.content aside .top-bar-section .date li .dropdown li .dropdown, .top-bar-section section.content article .date li .dropdown li .dropdown, section.content article .top-bar-section .date li .dropdown li .dropdown {
         right: 100%; }
     /* line 604, ../../sass/vendor/foundation/components/_top-bar.scss */
     .top-bar-section .left li .dropdown {
@@ -1217,7 +1218,7 @@ h6 {
   font-size: 0.8125rem; }
 
 /* line 253, ../../sass/vendor/foundation/components/_type.scss */
-.subheader, .block.small .title, .small#article-list .title, .small#issue .title {
+.subheader, .block.small .title, .small#article-list .title, .small#issue .title, section.content aside.small .title, section.content article.small .title {
   line-height: 1.1;
   color: #333333;
   font-weight: 300;
@@ -1547,7 +1548,7 @@ column classes                            | result
 */
 /* sets up the body container */
 /* line 137, ../../sass/_scaffold.scss */
-.plos-row, .nav, .nav-main, .row, #ad-slot-bottom, .error-page {
+.plos-row, .nav, .nav-main, .row, #ad-slot-bottom, .error-page, section.content, .grid-example-simple, .grid-example-complex {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -1556,11 +1557,11 @@ column classes                            | result
   max-width: 61.25rem;
   *zoom: 1; }
   /* line 116, ../../sass/vendor/foundation/components/_global.scss */
-  .plos-row:before, .nav:before, .nav-main:before, .row:before, #ad-slot-bottom:before, .error-page:before, .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after {
+  .plos-row:before, .nav:before, .nav-main:before, .row:before, #ad-slot-bottom:before, .error-page:before, section.content:before, .grid-example-simple:before, .grid-example-complex:before, .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after, section.content:after, .grid-example-simple:after, .grid-example-complex:after {
     content: " ";
     display: table; }
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
-  .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after {
+  .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after, section.content:after, .grid-example-simple:after, .grid-example-complex:after {
     clear: both; }
 
 /* line 145, ../../sass/_scaffold.scss */
@@ -1578,14 +1579,14 @@ column classes                            | result
   margin-right: 0.625rem; }
 
 /* line 145, ../../sass/_scaffold.scss */
-.plos-column-2 {
+.plos-column-2, section.content aside {
   width: 10.20833rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 145, ../../sass/_scaffold.scss */
-.plos-column-3, footer .link-column {
+.plos-column-3, footer .link-column, .grid-example-simple .grid-example-column-1 {
   width: 15.3125rem;
   float: left;
   margin-left: 0.625rem;
@@ -1620,14 +1621,14 @@ column classes                            | result
   margin-right: 0.625rem; }
 
 /* line 145, ../../sass/_scaffold.scss */
-.plos-column-8 {
+.plos-column-8, .grid-example-simple .grid-example-column-2 {
   width: 40.83333rem;
   float: left;
   margin-left: 0.625rem;
   margin-right: 0.625rem; }
 
 /* line 145, ../../sass/_scaffold.scss */
-.plos-column-9 {
+.plos-column-9, section.content article {
   width: 45.9375rem;
   float: left;
   margin-left: 0.625rem;
@@ -1669,7 +1670,7 @@ column classes                            | result
   margin-right: 0.625rem; }
 
 /* line 166, ../../sass/_scaffold.scss */
-.block.xx-small, .xx-small#article-list, #issue {
+.block.xx-small, .xx-small#article-list, section.content aside.xx-small, section.content article.xx-small, #issue {
   float: left;
   width: 10rem; }
 
@@ -1688,7 +1689,7 @@ column classes                            | result
 }
 */
 /* line 185, ../../sass/_scaffold.scss */
-.block.large, .large#article-list, .large#issue {
+.block.large, .large#article-list, .large#issue, section.content aside.large, section.content article.large {
   float: left;
   width: 47.5rem; }
 
@@ -1814,7 +1815,7 @@ This file contains the code for the grid and general layout.
 }*/
 /* line 14, ../../sass/vendor/_font-awesome.scss */
 .fa, .carousel-wrap.small .carousel-control .jcarousel-prev,
-.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .top-bar-section .head-search form button[type="submit"] .search-icon {
+.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .example-more-link::after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .top-bar-section .head-search form button[type="submit"] .search-icon {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1889,12 +1890,12 @@ This file contains the code for the grid and general layout.
 
 /* line 74, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-left, .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
+.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.example-more-link::after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
   margin-right: .3em; }
 
 /* line 77, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-right, .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
+.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.example-more-link::after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
   margin-left: .3em; }
 
 /* line 80, ../../sass/vendor/_font-awesome.scss */
@@ -2010,7 +2011,7 @@ This file contains the code for the grid and general layout.
 
 /* line 181, ../../sass/vendor/_font-awesome.scss */
 .fa-inverse, .carousel-wrap.small .carousel-control .jcarousel-prev:hover,
-.carousel-wrap.small .carousel-control .jcarousel-next:hover, .more-icon, .more-link:after {
+.carousel-wrap.small .carousel-control .jcarousel-next:hover, .more-icon, .more-link:after, .example-more-link::after {
   color: #3c63af; }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
@@ -3887,16 +3888,16 @@ example | extension
 
 */
 /* line 58, ../../sass/_typography.scss */
-.more-link > a, #issue .boxtitle a, .block .category, #article-list .category, #issue .category, #article-list h3 {
+.more-link > a, body.styleguide header nav li, .example-header-allcaps-plain, #issue .boxtitle a, .example-header-allcaps-xlarge, .block .category, #article-list .category, #issue .category, section.content aside .category, section.content article .category, #article-list h3, .example-brand-title, .example-header-allcaps {
   font-size: 0.875rem;
   font-family: "albert"; }
 
 /* line 63, ../../sass/_typography.scss */
-.more-link > a {
+.more-link > a, body.styleguide header nav li, .example-header-allcaps-plain {
   font-family: "arial"; }
 
 /* line 67, ../../sass/_typography.scss */
-#issue .boxtitle a {
+#issue .boxtitle a, .example-header-allcaps-xlarge {
   font-size: 1.25rem; }
 
 /* line 72, ../../sass/_typography.scss */
@@ -3913,11 +3914,11 @@ example | extension
   text-align: center; }
 
 /* line 84, ../../sass/_typography.scss */
-.block .category, #article-list .category, #issue .category, #article-list h3 {
+.block .category, #article-list .category, #issue .category, section.content aside .category, section.content article .category, #article-list h3, .example-brand-title {
   margin-bottom: 0.625rem; }
 
 /* line 89, ../../sass/_typography.scss */
-.carousel-wrap.small .block-header, #blogs .block-header {
+.carousel-wrap.small .block-header, #blogs .block-header, .example-brand-header {
   color: white;
   padding: 0 1.25rem;
   font-family: "albert";
@@ -3950,34 +3951,34 @@ example | extension
 
 */
 /* line 144, ../../sass/_typography.scss */
-.carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .carousel-wrap.small .carousel li h3 a, .block .title a, #article-list .title a, #issue .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a {
+.carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title, section.content aside .title, section.content article .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .example-link, .carousel-wrap.small .carousel li h3 a, .block .title a, #article-list .title a, #issue .title a, section.content aside .title a, section.content article .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a, .example-link a {
   color: #333333;
   text-decoration: none; }
   /* line 132, ../../sass/_typography.scss */
-  .carousel-wrap.small .carousel li h3:hover, .block .title:hover, #article-list .title:hover, #issue .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .block .title a a:hover, #article-list .title a a:hover, #issue .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover {
+  .carousel-wrap.small .carousel li h3:hover, .block .title:hover, #article-list .title:hover, #issue .title:hover, section.content aside .title:hover, section.content article .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .example-link:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, section.content aside .title a:hover, section.content article .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .example-link a:hover, .carousel-wrap.small .carousel li h3 a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, section.content aside .title a:hover, section.content article .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .example-link a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .block .title a a:hover, #article-list .title a a:hover, #issue .title a a:hover, section.content aside .title a a:hover, section.content article .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover, .example-link a a:hover {
     color: #3c63af;
     text-decoration: none; }
 
 /* line 148, ../../sass/_typography.scss */
-#blogs .block-header, #blogs .block-header a {
+#blogs .block-header, .example-link-text-white, #blogs .block-header a, .example-link-text-white a {
   color: white;
   text-decoration: none; }
   /* line 132, ../../sass/_typography.scss */
-  #blogs .block-header:hover, #blogs .block-header a:hover, #blogs .block-header a:hover, #blogs .block-header a a:hover {
+  #blogs .block-header:hover, .example-link-text-white:hover, #blogs .block-header a:hover, .example-link-text-white a:hover, #blogs .block-header a:hover, .example-link-text-white a:hover, #blogs .block-header a a:hover, .example-link-text-white a a:hover {
     color: white;
     text-decoration: underline; }
 
 /* line 160, ../../sass/_typography.scss */
-.carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, #article-list .date, #issue .date, .block .credits, #article-list .credits, #issue .credits, #blogs #blogrss .postauthor {
+.carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, #article-list .date, #issue .date, section.content aside .date, section.content article .date, .block .credits, #article-list .credits, #issue .credits, section.content aside .credits, section.content article .credits, #blogs #blogrss .postauthor, .example-small-italic {
   font-size: 0.625rem;
   font-style: italic; }
 
 /* line 164, ../../sass/_typography.scss */
-#issue .boxtitle a {
+#issue .boxtitle a, .example-condense {
   letter-spacing: -0.5px; }
 
 /* line 167, ../../sass/_typography.scss */
-.more-link > a, #issue .boxtitle a, .block .category, #article-list .category, #issue .category, #article-list h3, .classifications {
+.more-link > a, body.styleguide header nav li, .example-header-allcaps-plain, #issue .boxtitle a, .example-header-allcaps-xlarge, .block .category, #article-list .category, #issue .category, section.content aside .category, section.content article .category, #article-list h3, .example-brand-title, .example-header-allcaps, .classifications {
   text-transform: uppercase; }
 
 /* line 170, ../../sass/_typography.scss */
@@ -4005,7 +4006,7 @@ This is one place not to use @extend, since this is a semantic class name
   color: #cccccc; }
 
 /* line 216, ../../sass/_typography.scss */
-.error-page .content p {
+.error-page .content p, .example-text-size-large {
   font-size: 18px; }
 
 /* 
@@ -4044,17 +4045,33 @@ example | extension
 
 */
 /* line 71, ../../sass/_utilities.scss */
-footer, .head-top {
+footer, .head-top, .padded-example, .example-border-radius, .example-border-radius-large, .example-box-shadow, .example-bg-dark {
   background: #333333; }
 
+/* line 75, ../../sass/_utilities.scss */
+.example-highlight-color {
+  color: #3c63af; }
+
+/* line 79, ../../sass/_utilities.scss */
+.example-highlight-background {
+  background: #3c63af;
+  color: white; }
+  /* line 82, ../../sass/_utilities.scss */
+  .example-highlight-background:hover {
+    background: #3c63af; }
+
+/* line 87, ../../sass/_utilities.scss */
+.example-highlight-border {
+  border-color: #3c63af; }
+
 /* line 100, ../../sass/_utilities.scss */
-.plosbiology .block .category, .block .plosbiology .category, .plosbiology #article-list .category, #article-list .plosbiology .category, .plosbiology #issue .category, #issue .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #article-list .category, #article-list .ploscompbiol .category, .ploscompbiol #issue .category, #issue .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #article-list .category, #article-list .plosgenetics .category, .plosgenetics #issue .category, #issue .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .more-icon, .plosgenetics .more-link:after {
+.plosbiology .block .category, .block .plosbiology .category, .plosbiology #article-list .category, #article-list .plosbiology .category, .plosbiology #issue .category, #issue .plosbiology .category, .plosbiology section.content aside .category, section.content aside .plosbiology .category, .plosbiology section.content article .category, section.content article .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .example-brand-title, .plosbiology .more-icon, .plosbiology .more-link:after, .plosbiology .example-more-link::after, .plosbiology .example-brand-color, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #article-list .category, #article-list .ploscompbiol .category, .ploscompbiol #issue .category, #issue .ploscompbiol .category, .ploscompbiol section.content aside .category, section.content aside .ploscompbiol .category, .ploscompbiol section.content article .category, section.content article .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .example-brand-title, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .ploscompbiol .example-more-link::after, .ploscompbiol .example-brand-color, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #article-list .category, #article-list .plosgenetics .category, .plosgenetics #issue .category, #issue .plosgenetics .category, .plosgenetics section.content aside .category, section.content aside .plosgenetics .category, .plosgenetics section.content article .category, section.content article .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .example-brand-title, .plosgenetics .more-icon, .plosgenetics .more-link:after, .plosgenetics .example-more-link::after, .plosgenetics .example-brand-color {
   color: #16a127; }
 /* line 103, ../../sass/_utilities.scss */
-.plosbiology .head-top, .ploscompbiol .head-top, .plosgenetics .head-top {
+.plosbiology .head-top, .plosbiology .example-brand-border, .ploscompbiol .head-top, .ploscompbiol .example-brand-border, .plosgenetics .head-top, .plosgenetics .example-brand-border {
   border-color: #16a127; }
 /* line 106, ../../sass/_utilities.scss */
-.plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosbiology a, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscompbiol a, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosgenetics a {
+.plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology .example-brand-header, .plosbiology .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosbiology a, .plosbiology .example-brand-background, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol .example-brand-header, .ploscompbiol .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscompbiol a, .ploscompbiol .example-brand-background, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics .example-brand-header, .plosgenetics .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosgenetics a, .plosgenetics .example-brand-background {
   background-color: #16a127; }
 /* line 109, ../../sass/_utilities.scss */
 .plosbiology .nav .nav-user li.highlighted > a, .nav .nav-user .plosbiology li.highlighted > a, .plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol .nav .nav-user li.highlighted > a, .nav .nav-user .ploscompbiol li.highlighted > a, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics .nav .nav-user li.highlighted > a, .nav .nav-user .plosgenetics li.highlighted > a, .plosgenetics #billboard a, #billboard .plosgenetics a {
@@ -4094,13 +4111,13 @@ footer, .head-top {
     color: #3c63af; }
 
 /* line 100, ../../sass/_utilities.scss */
-.plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #article-list .category, #article-list .plosmedicine .category, .plosmedicine #issue .category, #issue .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #article-list .category, #article-list .plospathogens .category, .plospathogens #issue .category, #issue .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .block .category, .block .plosntd .category, .plosntd #article-list .category, #article-list .plosntd .category, .plosntd #issue .category, #issue .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .more-icon, .plosntd .more-link:after {
+.plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #article-list .category, #article-list .plosmedicine .category, .plosmedicine #issue .category, #issue .plosmedicine .category, .plosmedicine section.content aside .category, section.content aside .plosmedicine .category, .plosmedicine section.content article .category, section.content article .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .example-brand-title, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plosmedicine .example-more-link::after, .plosmedicine .example-brand-color, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #article-list .category, #article-list .plospathogens .category, .plospathogens #issue .category, #issue .plospathogens .category, .plospathogens section.content aside .category, section.content aside .plospathogens .category, .plospathogens section.content article .category, section.content article .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .example-brand-title, .plospathogens .more-icon, .plospathogens .more-link:after, .plospathogens .example-more-link::after, .plospathogens .example-brand-color, .plosntd .block .category, .block .plosntd .category, .plosntd #article-list .category, #article-list .plosntd .category, .plosntd #issue .category, #issue .plosntd .category, .plosntd section.content aside .category, section.content aside .plosntd .category, .plosntd section.content article .category, section.content article .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .example-brand-title, .plosntd .more-icon, .plosntd .more-link:after, .plosntd .example-more-link::after, .plosntd .example-brand-color {
   color: #891fb1; }
 /* line 103, ../../sass/_utilities.scss */
-.plosmedicine .head-top, .plospathogens .head-top, .plosntd .head-top {
+.plosmedicine .head-top, .plosmedicine .example-brand-border, .plospathogens .head-top, .plospathogens .example-brand-border, .plosntd .head-top, .plosntd .example-brand-border {
   border-color: #891fb1; }
 /* line 106, ../../sass/_utilities.scss */
-.plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosmedicine a, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plospathogens a, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosntd a {
+.plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine .example-brand-header, .plosmedicine .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosmedicine a, .plosmedicine .example-brand-background, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens .example-brand-header, .plospathogens .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plospathogens a, .plospathogens .example-brand-background, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd .example-brand-header, .plosntd .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosntd a, .plosntd .example-brand-background {
   background-color: #891fb1; }
 /* line 109, ../../sass/_utilities.scss */
 .plosmedicine .nav .nav-user li.highlighted > a, .nav .nav-user .plosmedicine li.highlighted > a, .plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens .nav .nav-user li.highlighted > a, .nav .nav-user .plospathogens li.highlighted > a, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd .nav .nav-user li.highlighted > a, .nav .nav-user .plosntd li.highlighted > a, .plosntd #billboard a, #billboard .plosntd a {
@@ -4230,7 +4247,7 @@ variable  | result   | default
 
 */
 /* line 94, ../../sass/_components.scss */
-.block, #article-list, #issue {
+.block, #article-list, #issue, section.content aside, section.content article {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
@@ -4355,7 +4372,7 @@ example | extension
 
 */
 /* line 231, ../../sass/_components.scss */
-.more-icon, .more-link:after {
+.more-icon, .more-link:after, .example-more-link::after {
   content: '\f138';
   padding-left: 0.1875rem; }
 
@@ -4776,31 +4793,31 @@ header {
     margin-left: 0.625rem;
     margin-right: 0.625rem; }
   /* line 25, ../../sass/pages/_home.scss */
-  .home .block.xx-small, .home .xx-small#article-list, .home #issue {
+  .home .block.xx-small, .home .xx-small#article-list, .home section.content aside.xx-small, section.content .home aside.xx-small, .home section.content article.xx-small, section.content .home article.xx-small, .home #issue {
     float: left;
     width: 11.4375rem;
     margin-left: 0.625rem;
     margin-right: 0.625rem; }
   /* line 29, ../../sass/pages/_home.scss */
-  .home .block.x-small, .home .x-small#issue, .home #article-list {
+  .home .block.x-small, .home .x-small#issue, .home section.content aside.x-small, section.content .home aside.x-small, .home section.content article.x-small, section.content .home article.x-small, .home #article-list {
     float: left;
     width: 16.6875rem;
     margin-left: 0.625rem;
     margin-right: 0.625rem; }
   /* line 33, ../../sass/pages/_home.scss */
-  .home .carousel-wrap.small, .home .block.small, .home .small#article-list, .home .small#issue, .home #twitter, .home .linkbox, .home #submission-links, .home #social-links, .home #blogs, .home #ad-slot-bottom .ad-item, #ad-slot-bottom .home .ad-item {
+  .home .carousel-wrap.small, .home .block.small, .home .small#article-list, .home .small#issue, .home section.content aside.small, section.content .home aside.small, .home section.content article.small, section.content .home article.small, .home #twitter, .home .linkbox, .home #submission-links, .home #social-links, .home #blogs, .home #ad-slot-bottom .ad-item, #ad-slot-bottom .home .ad-item {
     float: left;
     width: 19.125rem;
     margin-left: 0.625rem;
     margin-right: 0.625rem; }
   /* line 37, ../../sass/pages/_home.scss */
-  .home .block.medium, .home .medium#article-list, .home .medium#issue {
+  .home .block.medium, .home .medium#article-list, .home .medium#issue, .home section.content aside.medium, section.content .home aside.medium, .home section.content article.medium, section.content .home article.medium {
     float: left;
     width: 29.375rem;
     margin-left: 0.625rem;
     margin-right: 0.625rem; }
   /* line 41, ../../sass/pages/_home.scss */
-  .home .block.large, .home .large#article-list, .home .large#issue {
+  .home .block.large, .home .large#article-list, .home .large#issue, .home section.content aside.large, section.content .home aside.large, .home section.content article.large, section.content .home article.large {
     float: left;
     width: 39.5625rem;
     margin-left: 0.625rem;
@@ -4874,60 +4891,60 @@ header {
         display: inline-block; }
 
 /* line 145, ../../sass/pages/_home.scss */
-.block, #article-list, #issue {
+.block, #article-list, #issue, section.content aside, section.content article {
   position: relative;
   height: 15.625rem; }
   /* line 148, ../../sass/pages/_home.scss */
-  .block .blurb, #article-list .blurb, #issue .blurb {
+  .block .blurb, #article-list .blurb, #issue .blurb, section.content aside .blurb, section.content article .blurb {
     color: #666666; }
     /* line 150, ../../sass/pages/_home.scss */
-    .block .blurb a, #article-list .blurb a, #issue .blurb a {
+    .block .blurb a, #article-list .blurb a, #issue .blurb a, section.content aside .blurb a, section.content article .blurb a {
       color: #3c63af;
       text-decoration: none; }
       /* line 132, ../../sass/_typography.scss */
-      .block .blurb a:hover, #article-list .blurb a:hover, #issue .blurb a:hover, .block .blurb a a:hover, #article-list .blurb a a:hover, #issue .blurb a a:hover {
+      .block .blurb a:hover, #article-list .blurb a:hover, #issue .blurb a:hover, section.content aside .blurb a:hover, section.content article .blurb a:hover, .block .blurb a a:hover, #article-list .blurb a a:hover, #issue .blurb a a:hover, section.content aside .blurb a a:hover, section.content article .blurb a a:hover {
         color: #3c63af;
         text-decoration: underline; }
   /* line 154, ../../sass/pages/_home.scss */
-  .block .block-image, #article-list .block-image, #issue .block-image {
+  .block .block-image, #article-list .block-image, #issue .block-image, section.content aside .block-image, section.content article .block-image {
     width: 5rem;
     display: block;
     position: absolute;
     left: 0.625rem;
     top: 0.625rem; }
   /* line 162, ../../sass/pages/_home.scss */
-  .block.image .block-content, .image#article-list .block-content, .image#issue .block-content {
+  .block.image .block-content, .image#article-list .block-content, .image#issue .block-content, section.content aside.image .block-content, section.content article.image .block-content {
     margin-left: 5.625rem;
     margin-right: 0.625rem;
     height: 14.375rem;
     overflow: hidden; }
   /* line 169, ../../sass/pages/_home.scss */
-  .block .date, #article-list .date, #issue .date {
+  .block .date, #article-list .date, #issue .date, section.content aside .date, section.content article .date {
     margin-right: -1.25rem; }
   /* line 175, ../../sass/pages/_home.scss */
-  .block .credits, #article-list .credits, #issue .credits {
+  .block .credits, #article-list .credits, #issue .credits, section.content aside .credits, section.content article .credits {
     position: absolute;
     bottom: 0.625rem;
     left: 6.25rem;
     margin: 0 0.9375rem 0 0; }
   /* line 183, ../../sass/pages/_home.scss */
-  .block .category, #article-list .category, #issue .category {
+  .block .category, #article-list .category, #issue .category, section.content aside .category, section.content article .category {
     margin-bottom: 0.3125rem; }
   /* line 187, ../../sass/pages/_home.scss */
-  .block .title, #article-list .title, #issue .title {
+  .block .title, #article-list .title, #issue .title, section.content aside .title, section.content article .title {
     font-size: 22px;
     margin-bottom: 0.3125rem; }
     /* line 194, ../../sass/pages/_home.scss */
-    .block .title p, #article-list .title p, #issue .title p {
+    .block .title p, #article-list .title p, #issue .title p, section.content aside .title p, section.content article .title p {
       font-size: inherit;
       line-height: inherit; }
   /* line 200, ../../sass/pages/_home.scss */
-  .block .block-content, #article-list .block-content, #issue .block-content {
+  .block .block-content, #article-list .block-content, #issue .block-content, section.content aside .block-content, section.content article .block-content {
     position: relative;
     padding-right: 1.25rem;
     font-size: 0.8125rem; }
   /* line 207, ../../sass/pages/_home.scss */
-  .block.small .title, .small#article-list .title, .small#issue .title {
+  .block.small .title, .small#article-list .title, .small#issue .title, section.content aside.small .title, section.content article.small .title {
     font-size: 13px;
     font-family: "albert"; }
 
@@ -4936,26 +4953,26 @@ header {
   width: 40.83333rem;
   float: left; }
 /* line 225, ../../sass/pages/_home.scss */
-.row.three .column:first-child + .column.right, .row.three .nav .column:first-child + .column.nav-user, .nav .row.three .column:first-child + .column.nav-user, .row.three .top-bar-section .column:first-child + ul.column.nav-elements, .top-bar-section .row.three .column:first-child + ul.column.nav-elements, .row.three .top-bar-section .column:first-child + .column.head-search, .top-bar-section .row.three .column:first-child + .column.head-search, .row.three .block .column:first-child + .column.date, .block .row.three .column:first-child + .column.date, .row.three #article-list .column:first-child + .column.date, #article-list .row.three .column:first-child + .column.date, .row.three #issue .column:first-child + .column.date, #issue .row.three .column:first-child + .column.date {
+.row.three .column:first-child + .column.right, .row.three .nav .column:first-child + .column.nav-user, .nav .row.three .column:first-child + .column.nav-user, .row.three .top-bar-section .column:first-child + ul.column.nav-elements, .top-bar-section .row.three .column:first-child + ul.column.nav-elements, .row.three .top-bar-section .column:first-child + .column.head-search, .top-bar-section .row.three .column:first-child + .column.head-search, .row.three .block .column:first-child + .column.date, .block .row.three .column:first-child + .column.date, .row.three #article-list .column:first-child + .column.date, #article-list .row.three .column:first-child + .column.date, .row.three #issue .column:first-child + .column.date, #issue .row.three .column:first-child + .column.date, .row.three section.content aside .column:first-child + .column.date, section.content aside .row.three .column:first-child + .column.date, .row.three section.content article .column:first-child + .column.date, section.content article .row.three .column:first-child + .column.date {
   width: 20.41667rem;
   float: left;
   position: relative; }
   /* line 228, ../../sass/pages/_home.scss */
-  .row.three .column:first-child + .column.right > div > div, .row.three .nav .column:first-child + .column.nav-user > div > div, .nav .row.three .column:first-child + .column.nav-user > div > div, .row.three .top-bar-section .column:first-child + ul.column.nav-elements > div > div, .top-bar-section .row.three .column:first-child + ul.column.nav-elements > div > div, .row.three .top-bar-section .column:first-child + .column.head-search > div > div, .top-bar-section .row.three .column:first-child + .column.head-search > div > div, .row.three .block .column:first-child + .column.date > div > div, .block .row.three .column:first-child + .column.date > div > div, .row.three #article-list .column:first-child + .column.date > div > div, #article-list .row.three .column:first-child + .column.date > div > div, .row.three #issue .column:first-child + .column.date > div > div, #issue .row.three .column:first-child + .column.date > div > div {
+  .row.three .column:first-child + .column.right > div > div, .row.three .nav .column:first-child + .column.nav-user > div > div, .nav .row.three .column:first-child + .column.nav-user > div > div, .row.three .top-bar-section .column:first-child + ul.column.nav-elements > div > div, .top-bar-section .row.three .column:first-child + ul.column.nav-elements > div > div, .row.three .top-bar-section .column:first-child + .column.head-search > div > div, .top-bar-section .row.three .column:first-child + .column.head-search > div > div, .row.three .block .column:first-child + .column.date > div > div, .block .row.three .column:first-child + .column.date > div > div, .row.three #article-list .column:first-child + .column.date > div > div, #article-list .row.three .column:first-child + .column.date > div > div, .row.three #issue .column:first-child + .column.date > div > div, #issue .row.three .column:first-child + .column.date > div > div, .row.three section.content aside .column:first-child + .column.date > div > div, section.content aside .row.three .column:first-child + .column.date > div > div, .row.three section.content article .column:first-child + .column.date > div > div, section.content article .row.three .column:first-child + .column.date > div > div {
     float: none; }
 
 /* line 239, ../../sass/pages/_home.scss */
-.row.three .column:first-child .block.large, .row.three .column:first-child .large#article-list, .row.three .column:first-child .large#issue {
+.row.three .column:first-child .block.large, .row.three .column:first-child .large#article-list, .row.three .column:first-child .large#issue, .row.three .column:first-child section.content aside.large, section.content .row.three .column:first-child aside.large, .row.three .column:first-child section.content article.large, section.content .row.three .column:first-child article.large {
   height: 11.25rem; }
   /* line 241, ../../sass/pages/_home.scss */
-  .row.three .column:first-child .block.large .block-image, .row.three .column:first-child .large#article-list .block-image, .row.three .column:first-child .large#issue .block-image {
+  .row.three .column:first-child .block.large .block-image, .row.three .column:first-child .large#article-list .block-image, .row.three .column:first-child .large#issue .block-image, .row.three .column:first-child section.content aside.large .block-image, section.content .row.three .column:first-child aside.large .block-image, .row.three .column:first-child section.content article.large .block-image, section.content .row.three .column:first-child article.large .block-image {
     height: 10rem;
     overflow: hidden; }
 /* line 246, ../../sass/pages/_home.scss */
-.row.three .column:first-child .block.small, .row.three .column:first-child .small#article-list, .row.three .column:first-child .small#issue {
+.row.three .column:first-child .block.small, .row.three .column:first-child .small#article-list, .row.three .column:first-child .small#issue, .row.three .column:first-child section.content aside.small, section.content .row.three .column:first-child aside.small, .row.three .column:first-child section.content article.small, section.content .row.three .column:first-child article.small {
   height: 15.625rem; }
   /* line 248, ../../sass/pages/_home.scss */
-  .row.three .column:first-child .block.small .block-image, .row.three .column:first-child .small#article-list .block-image, .row.three .column:first-child .small#issue .block-image {
+  .row.three .column:first-child .block.small .block-image, .row.three .column:first-child .small#article-list .block-image, .row.three .column:first-child .small#issue .block-image, .row.three .column:first-child section.content aside.small .block-image, section.content .row.three .column:first-child aside.small .block-image, .row.three .column:first-child section.content article.small .block-image, section.content .row.three .column:first-child article.small .block-image {
     height: 14.375rem;
     overflow: hidden; }
 
@@ -5210,11 +5227,11 @@ header {
   .static h1 {
     margin-bottom: 1.875rem; }
 
-/* line 7, ../../sass/pages/_article.scss */
+/* line 5, ../../sass/pages/_article.scss */
 .text-article-intro, .author-list, .article-body .date-doi {
   font-size: 13px;
   color: #666666; }
-  /* line 10, ../../sass/pages/_article.scss */
+  /* line 8, ../../sass/pages/_article.scss */
   .text-article-intro a, .author-list a, .article-body .date-doi a {
     color: #666666;
     text-decoration: none; }
@@ -5223,12 +5240,12 @@ header {
       color: #666666;
       text-decoration: underline; }
 
-/* line 17, ../../sass/pages/_article.scss */
+/* line 15, ../../sass/pages/_article.scss */
 .article-body {
   float: left;
   width: 47.1875rem; }
 
-/* line 20, ../../sass/pages/_article.scss */
+/* line 18, ../../sass/pages/_article.scss */
 .article-column {
   float: left;
   width: 11.25rem;
@@ -5239,46 +5256,43 @@ header {
   background-color: #808080;
   height: 800px; }
 
-/* line 28, ../../sass/pages/_article.scss */
+/* line 26, ../../sass/pages/_article.scss */
 .classifications {
   margin-top: 1.5625rem;
   margin-bottom: 0.9375rem; }
-  /* line 32, ../../sass/pages/_article.scss */
+  /* line 30, ../../sass/pages/_article.scss */
   .classifications p {
     font-size: 10px;
     display: inline-block;
     padding-left: 0.9375rem;
     line-height: 17px; }
-  /* line 39, ../../sass/pages/_article.scss */
+  /* line 36, ../../sass/pages/_article.scss */
   .classifications .license-short {
     background: url('../img/icon.oa.gif') no-repeat 0 3px;
     padding-right: 0.625rem; }
-  /* line 44, ../../sass/pages/_article.scss */
+  /* line 41, ../../sass/pages/_article.scss */
   .classifications .peer-reviewed {
     background: url('../img/icon.pr.gif') no-repeat 0 3px; }
-  /* line 47, ../../sass/pages/_article.scss */
+  /* line 44, ../../sass/pages/_article.scss */
   .classifications .article-type {
     margin-top: 0.3125rem;
     font-family: "albert";
     font-size: 11px; }
 
-/* line 53, ../../sass/pages/_article.scss */
+/* line 50, ../../sass/pages/_article.scss */
 .author-list {
   margin-bottom: 0.625rem;
   line-height: 1.5625rem; }
-  /* line 57, ../../sass/pages/_article.scss */
-  .author-list a[data-js='toggle_trigger'] {
-    color: #3c63af; }
 
-/* line 61, ../../sass/pages/_article.scss */
+/* line 57, ../../sass/pages/_article.scss */
 .article-body h1 {
   font-size: 27px;
   margin-bottom: 0.625rem;
   line-height: normal; }
-  /* line 66, ../../sass/pages/_article.scss */
+  /* line 62, ../../sass/pages/_article.scss */
   .article-body h1 i, .article-body h1 italic {
     font-style: italic; }
-/* line 70, ../../sass/pages/_article.scss */
+/* line 66, ../../sass/pages/_article.scss */
 .article-body .date-doi {
   *zoom: 1;
   margin: 0;
@@ -5290,45 +5304,45 @@ header {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   .article-body .date-doi:after {
     clear: both; }
-  /* line 76, ../../sass/pages/_article.scss */
+  /* line 72, ../../sass/pages/_article.scss */
   .article-body .date-doi li {
     float: left;
     margin-left: 0.625rem; }
-    /* line 80, ../../sass/pages/_article.scss */
+    /* line 76, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
       margin: 0 0.9375rem 0 0;
       padding-left: 0;
       list-style-type: none; }
 
-/* line 91, ../../sass/pages/_article.scss */
+/* line 87, ../../sass/pages/_article.scss */
 .article-tabs {
   display: table;
   table-layout: fixed;
   margin-bottom: 1.25rem;
   width: 100%;
   margin-left: 0; }
-  /* line 97, ../../sass/pages/_article.scss */
+  /* line 93, ../../sass/pages/_article.scss */
   .article-tabs .tab-title {
     margin-left: 0;
     display: table-cell;
     float: none;
     position: static; }
-    /* line 103, ../../sass/pages/_article.scss */
+    /* line 99, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-1 {
       background: #2b2b2b; }
-    /* line 106, ../../sass/pages/_article.scss */
+    /* line 102, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-2 {
       background: #454545; }
-    /* line 109, ../../sass/pages/_article.scss */
+    /* line 105, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-3 {
       background: #5e5e5e; }
-    /* line 112, ../../sass/pages/_article.scss */
+    /* line 108, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-4 {
       background: #777777; }
-    /* line 115, ../../sass/pages/_article.scss */
+    /* line 111, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-5 {
       background: #919191; }
-    /* line 118, ../../sass/pages/_article.scss */
+    /* line 114, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
@@ -5336,11 +5350,11 @@ header {
       border-right: 1px solid white;
       font-weight: bold;
       color: white; }
-      /* line 125, ../../sass/pages/_article.scss */
+      /* line 121, ../../sass/pages/_article.scss */
       .article-tabs .tab-title a:hover {
         background: #3c63af;
         color: white; }
-    /* line 130, ../../sass/pages/_article.scss */
+    /* line 126, ../../sass/pages/_article.scss */
     .article-tabs .tab-title.active a {
       position: relative;
       height: 83px;
@@ -5349,6 +5363,174 @@ header {
       background-image: url('../img/icon.tabs.active.white.png');
       background-repeat: no-repeat;
       background-position: 9px 65px; }
-      /* line 139, ../../sass/pages/_article.scss */
+      /* line 135, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }
+
+/* line 12, ../../sass/styleguide.scss */
+body.styleguide {
+  background-color: #efefef; }
+  /* line 14, ../../sass/styleguide.scss */
+  body.styleguide header {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 61.25rem;
+    *zoom: 1;
+    min-width: 61.25rem;
+    max-width: 61.25rem;
+    margin: 0 auto;
+    margin-bottom: 1em; }
+    /* line 116, ../../sass/vendor/foundation/components/_global.scss */
+    body.styleguide header:before, body.styleguide header:after {
+      content: " ";
+      display: table; }
+    /* line 117, ../../sass/vendor/foundation/components/_global.scss */
+    body.styleguide header:after {
+      clear: both; }
+    /* line 17, ../../sass/styleguide.scss */
+    body.styleguide header h1 {
+      margin-bottom: .25em;
+      padding-bottom: .25em;
+      border-bottom: 5px solid #3c63af; }
+    /* line 23, ../../sass/styleguide.scss */
+    body.styleguide header nav li {
+      padding: .25em; }
+
+/* line 33, ../../sass/styleguide.scss */
+section.content h1, section.content h2, section.content .carousel-wrap.small .carousel li h3, .carousel-wrap.small .carousel li section.content h3, section.content h3 {
+  margin: 1em 0 .5em -5px;
+  text-transform: capitalize;
+  font-family: "arial"; }
+/* line 38, ../../sass/styleguide.scss */
+section.content h1 {
+  font-size: 26px; }
+/* line 41, ../../sass/styleguide.scss */
+section.content h2, section.content .carousel-wrap.small .carousel li h3, .carousel-wrap.small .carousel li section.content h3 {
+  font-size: 16px;
+  font-family: "arial";
+  font-weight: 400; }
+/* line 46, ../../sass/styleguide.scss */
+section.content h3 {
+  font-size: 16px; }
+/* line 49, ../../sass/styleguide.scss */
+section.content aside {
+  height: 100%; }
+  /* line 54, ../../sass/styleguide.scss */
+  section.content aside nav li {
+    padding-bottom: .25em; }
+/* line 59, ../../sass/styleguide.scss */
+section.content article {
+  height: 100%; }
+/* line 64, ../../sass/styleguide.scss */
+section.content table {
+  padding-bottom: .25em;
+  line-height: 140%; }
+/* line 68, ../../sass/styleguide.scss */
+section.content table {
+  border-collapse: collapse;
+  width: 100%; }
+  /* line 71, ../../sass/styleguide.scss */
+  section.content table td {
+    font-size: 13px; }
+  /* line 74, ../../sass/styleguide.scss */
+  section.content table th {
+    text-align: left;
+    background-color: #efefef; }
+/* line 81, ../../sass/styleguide.scss */
+section.content div.codeExample:before {
+  width: 100%;
+  border-radius: 0; }
+
+/* line 87, ../../sass/styleguide.scss */
+.rounded {
+  background: #3c63af;
+  padding: 1.25rem;
+  border-radius: 5px;
+  color: white; }
+  /* line 23, ../../sass/_components.scss */
+  .rounded:hover {
+    background: #333333; }
+
+/* line 96, ../../sass/styleguide.scss */
+.box-example, .grid-example-simple div, .grid-example-complex div {
+  background-color: #efefef;
+  border: 1px solid #cccccc;
+  margin-bottom: 0.3125rem; }
+
+/* line 120, ../../sass/styleguide.scss */
+.grid-example-complex .grid-example-one {
+  float: left;
+  width: 7.5rem;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem; }
+/* line 123, ../../sass/styleguide.scss */
+.grid-example-complex .grid-example-two {
+  float: left;
+  width: 7.5rem;
+  margin-left: 3.125rem; }
+/* line 126, ../../sass/styleguide.scss */
+.grid-example-complex .grid-example-three {
+  float: left;
+  width: 7.5rem;
+  margin-left: 1.25rem; }
+/* line 130, ../../sass/styleguide.scss */
+.grid-example-complex .grid-example-four {
+  float: left;
+  width: 7.5rem;
+  margin-right: 3.125rem; }
+/* line 133, ../../sass/styleguide.scss */
+.grid-example-complex .grid-example-five {
+  float: left;
+  width: 7.5rem;
+  margin-right: 1.25rem; }
+/* line 136, ../../sass/styleguide.scss */
+.grid-example-complex .grid-example-six {
+  float: left;
+  width: 7.5rem; }
+
+/* line 141, ../../sass/styleguide.scss */
+.padded-example, .example-border-radius, .example-border-radius-large, .example-box-shadow {
+  padding: .5em;
+  color: white; }
+
+/* line 151, ../../sass/styleguide.scss */
+.example-link-text-white {
+  background: #3c63af;
+  padding: 0.625rem; }
+
+/* line 194, ../../sass/styleguide.scss */
+.example-bg-dark {
+  color: white; }
+
+/* line 206, ../../sass/styleguide.scss */
+.example-highlight-border {
+  border-width: 1px;
+  border-style: solid;
+  display: block; }
+
+/* line 221, ../../sass/styleguide.scss */
+.example-brand-border {
+  border-width: 1px;
+  border-style: solid;
+  display: block; }
+
+/* line 229, ../../sass/styleguide.scss */
+.example-border-radius {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+
+/* line 235, ../../sass/styleguide.scss */
+.example-border-radius-large {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px; }
+
+/* line 240, ../../sass/styleguide.scss */
+.example-box-shadow {
+  -moz-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.15); }

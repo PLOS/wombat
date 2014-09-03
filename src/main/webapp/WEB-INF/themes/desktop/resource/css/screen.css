@@ -1814,7 +1814,7 @@ This file contains the code for the grid and general layout.
 }*/
 /* line 14, ../../sass/vendor/_font-awesome.scss */
 .fa, .carousel-wrap.small .carousel-control .jcarousel-prev,
-.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus, .top-bar-section .head-search form button[type="submit"] .search-icon {
+.carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus, .topVisible .logo-close .close-floater, .top-bar-section .head-search form button[type="submit"] .search-icon {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1889,12 +1889,12 @@ This file contains the code for the grid and general layout.
 
 /* line 74, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-left, .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .pull-left.icon-plus, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
+.carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .pull-left.icon-plus, .topVisible .logo-close .pull-left.close-floater, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon {
   margin-right: .3em; }
 
 /* line 77, ../../sass/vendor/_font-awesome.scss */
 .fa.pull-right, .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev,
-.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .pull-right.icon-plus, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
+.carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .pull-right.icon-plus, .topVisible .logo-close .pull-right.close-floater, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon {
   margin-left: .3em; }
 
 /* line 80, ../../sass/vendor/_font-awesome.scss */
@@ -2948,7 +2948,7 @@ This file contains the code for the grid and general layout.
   content: "\f0fd"; }
 
 /* line 891, ../../sass/vendor/_font-awesome.scss */
-.fa-plus-square:before, .icon-plus:before {
+.fa-plus-square:before, .icon-plus:before, .topVisible .logo-close .close-floater:before {
   content: "\f0fe"; }
 
 /* line 894, ../../sass/vendor/_font-awesome.scss */
@@ -4360,7 +4360,7 @@ example | extension
   padding-left: 0.1875rem; }
 
 /* line 240, ../../sass/_components.scss */
-.icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus {
+.icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus, .topVisible .logo-close .close-floater {
   line-height: 44px;
   font-size: 22px; }
 
@@ -4381,7 +4381,7 @@ example | extension
   content: '\f003'; }
 
 /* line 269, ../../sass/_components.scss */
-.icon-plus {
+.icon-plus, .topVisible .logo-close .close-floater {
   content: '\f0fe'; }
 
 /* line 274, ../../sass/_components.scss */
@@ -5307,10 +5307,7 @@ header {
       padding-left: 0;
       list-style-type: none; }
 
-/*.topVisibile.first {
-  top: -100px;
-}*/
-/* line 94, ../../sass/pages/_article.scss */
+/* line 91, ../../sass/pages/_article.scss */
 .topVisible {
   position: fixed;
   top: 0;
@@ -5321,39 +5318,36 @@ header {
   background-color: white;
   z-index: 999;
   padding: 0.625rem;
-  max-height: 49px;
-  /* approximate max height */
-  transition-property: all;
-  transition-duration: 1s;
+  transition-property: top;
+  transition-duration: .75s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  /* transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);*/
   overflow: hidden;
   box-sizing: border-box; }
-  /* line 112, ../../sass/pages/_article.scss */
+  /* line 107, ../../sass/pages/_article.scss */
   .topVisible .title-authors {
     float: left;
     width: 755px; }
-    /* line 115, ../../sass/pages/_article.scss */
+    /* line 110, ../../sass/pages/_article.scss */
     .topVisible .title-authors h1 {
       font-size: 14px;
       font-weight: bold;
       font-family: "arial";
       margin: 0;
       padding: 0; }
-    /* line 122, ../../sass/pages/_article.scss */
+    /* line 117, ../../sass/pages/_article.scss */
     .topVisible .title-authors p.author-list {
       line-height: normal; }
-  /* line 127, ../../sass/pages/_article.scss */
+  /* line 122, ../../sass/pages/_article.scss */
   .topVisible .logo-close {
     display: block;
     width: 8.75rem;
     float: right;
     text-align: right;
     cursor: pointer; }
-    /* line 133, ../../sass/pages/_article.scss */
+    /* line 128, ../../sass/pages/_article.scss */
     .topVisible .logo-close img {
       margin-right: 0.9375rem; }
-    /* line 136, ../../sass/pages/_article.scss */
+    /* line 131, ../../sass/pages/_article.scss */
     .topVisible .logo-close .close-floater {
       vertical-align: middle;
       display: inline-block;
@@ -5363,35 +5357,35 @@ header {
       text-indent: 9999px;
       color: white; }
 
-/* line 150, ../../sass/pages/_article.scss */
+/* line 146, ../../sass/pages/_article.scss */
 .article-tabs {
   display: table;
   table-layout: fixed;
   margin-bottom: 1.25rem;
   width: 100%;
   margin-left: 0; }
-  /* line 156, ../../sass/pages/_article.scss */
+  /* line 152, ../../sass/pages/_article.scss */
   .article-tabs .tab-title {
     margin-left: 0;
     display: table-cell;
     float: none;
     position: static; }
-    /* line 162, ../../sass/pages/_article.scss */
+    /* line 158, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-1 {
       background: #2b2b2b; }
-    /* line 165, ../../sass/pages/_article.scss */
+    /* line 161, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-2 {
       background: #454545; }
-    /* line 168, ../../sass/pages/_article.scss */
+    /* line 164, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-3 {
       background: #5e5e5e; }
-    /* line 171, ../../sass/pages/_article.scss */
+    /* line 167, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-4 {
       background: #777777; }
-    /* line 174, ../../sass/pages/_article.scss */
+    /* line 170, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-5 {
       background: #919191; }
-    /* line 177, ../../sass/pages/_article.scss */
+    /* line 173, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
@@ -5399,11 +5393,11 @@ header {
       border-right: 1px solid white;
       font-weight: bold;
       color: white; }
-      /* line 184, ../../sass/pages/_article.scss */
+      /* line 180, ../../sass/pages/_article.scss */
       .article-tabs .tab-title a:hover {
         background: #3c63af;
         color: white; }
-    /* line 189, ../../sass/pages/_article.scss */
+    /* line 185, ../../sass/pages/_article.scss */
     .article-tabs .tab-title.active a {
       position: relative;
       height: 83px;
@@ -5412,6 +5406,6 @@ header {
       background-image: url('../img/icon.tabs.active.white.png');
       background-repeat: no-repeat;
       background-position: 9px 65px; }
-      /* line 198, ../../sass/pages/_article.scss */
+      /* line 194, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }

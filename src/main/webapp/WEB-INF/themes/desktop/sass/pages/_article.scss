@@ -87,10 +87,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     }
   }
 }
-// the topAttached class is added with js for showing the title to the top of the page on scroll.
-/*.topVisibile.first {
-  top: -100px;
-}*/
+
 .topVisible {
   position: fixed;
   top: 0;
@@ -101,11 +98,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   background-color: $white;
   z-index: 999;
   padding: $pad-small;
-  max-height: 49px; /* approximate max height */
-  transition-property: all;
-  transition-duration: 1s;
+  transition-property: top;
+  transition-duration: .75s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
- /* transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);*/
   overflow: hidden;
   box-sizing: border-box;
 
@@ -134,6 +129,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      margin-right: $pad-smallish;
     }
     .close-floater {
+      @extend .icon-plus;
       vertical-align: middle;
       display: inline-block;
       width: rem-calc(25);

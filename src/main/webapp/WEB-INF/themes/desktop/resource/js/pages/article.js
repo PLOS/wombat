@@ -3,20 +3,20 @@
  */
 
 (function ($) {
-  var rawDate, articlePubDate;
 
-
-  rawDate = document.getElementById("rawPubDate").value;
+  var rawDate = document.getElementById("rawPubDate").value,
   articlePubDate = dateParse(rawDate, true);
 
   $( document ).ready(function() {
+   //create the  floating title div
     var floater = $(".titleFloater").clone().appendTo( document.body).css("top","-100px");
 
-    //bindEvents();
-    //function bindEvents() {
-    $(window).scroll( onscroll );
-   // }
-
+    $(window).on('scroll', function (){
+      //if floater has been removed, no need to run function
+      if (floater) {
+          onscroll();
+      }
+    });
 
   $("#artPubDate").append(articlePubDate);
 
@@ -24,34 +24,19 @@
     onscroll = function() {
       var top = $(window).scrollTop(),
           topLimit = 420;
-        //console.log(top);
-      if (top < topLimit && !floater.hasClass("topVisible") || top > topLimit && floater.hasClass("topVisible")) return;
 
         if ( top > topLimit ) {
-            $(floater).addClass('topVisible').css('top',0);
+          $(floater).addClass('topVisible').css('top',0);
 
-        $(floater).find('.logo-close').on('click', function () {
+          $(floater).find('.logo-close').on('click', function () {
+            $(floater).remove();
+          });
 
-            floater.css('top','-100px');
-            $(window).unbind('scroll');
-        });
-
-        } else {
-            $(floater).removeClass('topVisible').css('top','-100px');
+        } else if ( top < topLimit ) {
+          $(floater).removeClass('topVisible').css('top','-100px');
         }
     };
 
-      function onetime(node, type, callback) {
-
-          // create event
-          node.addEventListener(type, function(e) {
-              // remove event
-              e.target.removeEventListener(e.type, arguments.callee);
-              // call handler
-              return callback(e);
-          });
-
-      }
   });
 }(jQuery));
 

@@ -1,5 +1,7 @@
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
 $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
+
+
  // extensible layout styles
 
 .text-article-intro {
@@ -11,7 +13,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 // layout elements
-
+.set-grid {
+  @extend .plos-row;
+}
 .article-body {
   @include plos-grid-column(755, $gutter: none);
 }
@@ -31,7 +35,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-size: $txt-size-xxxsmall;
     display: inline-block;
     padding-left: $pad-smallish;
-    line-height: 17px;
+    line-height: 17px; // TEMP-PROD: change to 18px ($txt-size-large)
   }
 
   .license-short {
@@ -93,11 +97,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   top: 0;
   left: 0;
   width: 100%;
-  height: 49px;
+  height: rem-calc(49);
   border-bottom: 1px solid $grey-med-light;
   background-color: $white;
-  z-index: 999;
-  padding: $pad-small;
+  z-index: map-get($zindex, topVisible);
+  padding: $pad-xsmall 0;
   transition-property: top;
   transition-duration: .75s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
@@ -105,14 +109,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   box-sizing: border-box;
 
   .title-authors {
-    float: left;
-    width: 755px;
+    @include plos-grid-column(755, $gutter: none);
     h1 {
       font-size: $txt-size-medium;
       font-weight: bold;
       font-family: $font-face-plain;
-      margin: 0;
-      padding: 0;
     }
     p.author-list {
       line-height: normal;
@@ -120,8 +121,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 
   .logo-close {
+    @include plos-grid-column(140, $gutter: none);
+    padding: $pad-xsmall 0;
     display: block;
-    width: rem-calc(140);
     float: right;
     text-align: right;
     cursor: pointer;
@@ -129,18 +131,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      margin-right: $pad-smallish;
     }
     .close-floater {
-      @extend .icon-plus;
-      vertical-align: middle;
-      display: inline-block;
-      width: rem-calc(25);
-      height: rem-calc(25);
-      @extend %brand-background;
-      border-radius: $border-radius-small;
-      text-indent: 9999px;
-      color: $white;
+      @extend .closer;
     }
   }
 }
+
 // TABS
 
 .article-tabs {

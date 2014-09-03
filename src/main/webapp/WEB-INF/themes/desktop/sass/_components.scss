@@ -269,7 +269,13 @@ example | extension
 .icon-plus {
   @extend .icon-fa;
   @extend .fa-plus-square;
-  content: '\f0fe';
+  line-height: normal;
+}
+.icon-close {
+  @extend .icon-fa;
+ // @extend .fa-close;
+  line-height: normal;
+  content: '\f00d';
 }
 .aria-text {
   position: absolute;
@@ -277,9 +283,30 @@ example | extension
   left: -9999px;
 }
 
+.closer {
+  background: image-url('icon.sprite.close.png') no-repeat 0 -24px;
+  vertical-align: middle;
+  display: inline-block;
+  width: rem-calc(25);
+  height: rem-calc(25);
+  @extend %brand-background;
+  border-radius: $border-radius-small;
+  color: $white;
+}
 
-
-
+$zindex: (
+  modal     : 9000,
+  overlay   : 8000,
+  dropdown  : 7000,
+  topVisible: 6999,
+  header    : 6000,
+  footer    : 5000
+);
+/* zindex map use example
+.header {
+  z-index: map-get($zindex, header);
+}
+*/
 
 
 

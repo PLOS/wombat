@@ -14,7 +14,7 @@
   <input type="hidden" id="rawPubDate" value="${article.date}" />
 
   <#include "../common/header/header.ftl" />
-  <div class="plos-row">
+  <div class="set-grid">
     <section class="article-body">
       <div class="classifications">
         <p class="license-short" id="licenseShort">Open Access</p>
@@ -25,18 +25,7 @@
 
         <div class="article-type" id="artType">${article.articleType!""}</div>
       </div>
-      <div class="titleFloater">
-          <div class="plos-row">
-          <div class="title-authors">
-            <h1 id="artTitle"> ${article.title} </h1>
-            <#include "authorList.ftl" />
-          </div>
-            <div class="logo-close">
-              <img src="<@siteLink path="/resource/img/logo.plos.95.png"/>" alt="PLOS" />
-              <div class="close-floater">x</div>
-            </div>
-          </div>
-      </div>
+      <#include "articleTitle.ftl" />
 
       <ul class="date-doi">
         <li id="artPubDate">Published:  </li>

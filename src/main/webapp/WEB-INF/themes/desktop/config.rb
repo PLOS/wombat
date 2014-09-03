@@ -1,7 +1,7 @@
 # Require any additional compass plugins here.
 
 # Set this to the root of your project when deployed:
-http_path = "/"
+http_path = "../../"
 css_dir = "resource/css"
 sass_dir = "sass"
 images_dir = "resource/img"
@@ -11,7 +11,7 @@ fonts_dir = "resource/fonts"
 output_style = :nested
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
- relative_assets = true
+ relative_assets = false
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 #line_comments = false

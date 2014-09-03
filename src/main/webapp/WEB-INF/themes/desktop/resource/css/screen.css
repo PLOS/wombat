@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * This is the centralized import file for the main screen.css.
 */
@@ -4831,10 +4832,10 @@ header {
   /* line 76, ../../sass/pages/_article.scss */
   .article-body .date-doi li {
     float: left;
-    margin-left: 0.625rem; }
+    margin: 0 0.625rem; }
     /* line 80, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
-      margin: 0 0.9375rem 0 0;
+      margin: 0 0.625rem 0 0;
       padding-left: 0;
       list-style-type: none; }
 

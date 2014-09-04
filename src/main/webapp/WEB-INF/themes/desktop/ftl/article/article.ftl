@@ -47,9 +47,10 @@
   </div>
   <#include "../common/footer/footer.ftl" />
 
-  <@renderJs />
+
   <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
-  <script src="<@siteLink path="resource/js/pages/article.js"/>"></script>
+  <@js src="resource/js/pages/article.js"/>
+  <@renderJs />
 
   </body>
 </html>

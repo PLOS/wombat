@@ -4919,28 +4919,31 @@ header {
   top: 1.4375rem;
   height: auto;
   position: absolute;
-  -webkit-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  -ms-transition: opacity 0.5s;
-  -o-transition: opacity 0.5s;
-  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -ms-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
   opacity: 0; }
 
-/* line 216, ../../sass/pages/_article.scss */
+/* line 217, ../../sass/pages/_article.scss */
+.active a, .active a:hover {
+  color: white; }
+/* line 219, ../../sass/pages/_article.scss */
 .active .author-name {
   background: #3c63af;
   padding: 2px 4px;
   border-radius: 5px;
   color: white; }
-/* line 219, ../../sass/pages/_article.scss */
+/* line 223, ../../sass/pages/_article.scss */
 .active .author-info {
   opacity: 1;
   z-index: 5000; }
 
-/* line 225, ../../sass/pages/_article.scss */
+/* line 229, ../../sass/pages/_article.scss */
 .posRight .author-info {
   right: 0; }
 
-/* line 230, ../../sass/pages/_article.scss */
+/* line 234, ../../sass/pages/_article.scss */
 [data-js=tooltip_trigger]:focus {
   outline: 0; }

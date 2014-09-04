@@ -1,10 +1,10 @@
 <ul class="author-list clearfix" data-js="tooltip_container">
 <#include "maxAuthorsToShow.ftl" />
 
-<#macro authorItem author author_index author_has_next toggle = false >
+<#macro authorItem author author_index author_has_next >
 
-  <li data-js="tooltip_trigger"  <#if toggle>data-js="toggle_target" data-initial="hide"</#if> tabindex="0" >
-    <a data-author-id="${author_index?c}" class="author-name" >
+  <li data-js="tooltip_trigger">
+    <a data-author-id="${author_index?c}" class="author-name">
   ${author.fullName}<#if author_has_next><#-- no space -->,</#if>
 
     </a>
@@ -15,7 +15,7 @@
     || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
     <#if hasMeta>
       <div id="author-meta-${author_index?c}" class="author-info" data-js="tooltip_target">
-
+                   hello
         <#if author.equalContrib>
           <p>
             Contributed equally to this work with:
@@ -26,7 +26,7 @@
         </#if>
 
         <#if author.deceased><p>† Deceased.</p></#if>
-        <#if author.corresponding??><p><a href="google.com">${author.corresponding}</a></p></#if>
+        <#if author.corresponding??><p>${author.corresponding}</p></#if>
         <#if author.affiliations?? && author.affiliations?size gt 0>
           <p><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
             <#list author.affiliations as affil>
@@ -61,16 +61,20 @@
   -->
   <#list authors as author><#-- Before the expander -->
     <#if author_index lt (maxAuthorsToShow - 1) >
-      <@authorItem author author_index author_has_next false/>
+      <@authorItem author author_index author_has_next />
     </#if>
   </#list>
-
+<li data-js="toggle_target"  data-initial="hide" >
+<ul class="inline-list">
       <#list authors as author><#-- Inside the expander -->
+
         <#if author_index gte (maxAuthorsToShow - 1) && author_index lt (authors?size - 1) >
           <@authorItem author author_index author_has_next  />
       </#if>
-     </#list>
 
+     </#list>
+</ul>
+  </li>
 
   <@authorItem authors[authors?size - 1] authors?size - 1 false /><#-- Last one after expander -->
   <li data-js="toggle_trigger"><a class="more-authors active">[view all]</a></li>
@@ -86,3 +90,5 @@
 </#if>
 
 </ul><#-- end div.author-list -->
+<@js src="resource/js/components/tooltip.js" />
+

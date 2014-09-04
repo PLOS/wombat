@@ -5,20 +5,20 @@ toggle = {
 
   settings: {
     toggle_trigger: '[data-js=toggle_trigger]',
-    toggle_target: '[data-js=toggle_target]',
-    toggle_hidden: '[data-initial=hide]',
-    speed: 0
+    toggle_target:  '[data-js=toggle_target]',
+    toggle_hidden:  '[data-initial=hide]',
+    speed:          0
   },
 
-  init:    function () {
+  init: function () {
     // kick things off
     this.toggle();
   },
 
   toggle: function () {
-    var s=this.settings;
+    var s = this.settings;
     $(s.toggle_hidden).hide();
-    $(s.toggle_trigger).on('click', function(){
+    $(s.toggle_trigger).on('click', function () {
       $(this).siblings(s.toggle_trigger).andSelf().toggle(s.speed);
       $(this).siblings(s.toggle_target).toggle(s.speed);
     })
@@ -26,62 +26,7 @@ toggle = {
 
 };
 
-tooltip = {
 
-  settings: {
-    tooltip_trigger: '[data-js=tooltip_trigger]',
-    tooltip_target: '[data-js=tooltip_target]',
-    tooltip_hidden: '[data-initial=hide]',
-    tooltip_close: '[data-js=tooltip_close]',
-    tooltip_event: 'click',
-    tooltip_adjust: true,
-    speed: 0
-  },
-
-  init:  function (options) {
-    // kick things off
-    this.settings = $.extend(this.settings, options);
-    var s = this.settings;
-    this.tooltip();
-    this.checkwidth();
-   // this.click_elsewhere();
-  },
-
-  tooltip: function () {
-    var s = this.settings;
-
-    $(s.tooltip_trigger).on('click', function(){
-     var self =
-      var parent_width = $(this).parents('.author-list').innerWidth(),
-          parent_width_offset = parent_width * .75,
-          pos = $(this).position();
-
-      $(s.tooltip_trigger).not(this).removeClass('active');  //TODO: does this work?
-      $(this).toggleClass('active');
-
-      if(pos.left >= parent_width_offset) { $(this).addClass('posRight');
-      }
-
-      $(s.tooltip_close).on('click', function(){
-        $(s.tooltip_trigger).removeClass('active');
-      });
-
-    });
-
-
-  },
-  checkwidth: function () {
-    var s=this.settings;
-
-
-
-  },
-  click_elsewhere: function () {
-    var s = this.settings;
-    $(s.tooltip_trigger).blur(function(){$(s.tooltip_trigger).removeClass('active');});
-
-  }
-};
 
 
 

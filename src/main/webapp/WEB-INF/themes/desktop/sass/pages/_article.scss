@@ -205,16 +205,20 @@
      top: rem-calc(($txt-size-default + 10));   // need to make this a tad more dynamic.
      height: auto;
      position:absolute;
-     -webkit-transition: opacity 0.5s;
-     -moz-transition:  opacity 0.5s;
-     -ms-transition: opacity 0.5s;
-     -o-transition:  opacity 0.5s;
-     transition:  opacity 0.5s;
+     -webkit-transition: opacity 0.3s;
+     -moz-transition:  opacity 0.3s;
+     -ms-transition: opacity 0.3s;
+     -o-transition:  opacity 0.3s;
+     transition:  opacity 0.3s;
      opacity: 0;
-   }
+
+ }
  .active {
+   a, a:hover{color: $white;}
+
    .author-name{
      @include rounded-pill($padding: 2px 4px,$hover: false);
+
    }
    .author-info {
      opacity: 1;

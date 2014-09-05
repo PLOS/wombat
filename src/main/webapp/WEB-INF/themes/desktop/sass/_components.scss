@@ -291,6 +291,7 @@ example | extension
   @extend %brand-background;
   border-radius: $border-radius-small;
   color: $white;
+  text-indent: 9999px;
 }
 
 $zindex: (
@@ -306,6 +307,7 @@ $zindex: (
   z-index: map-get($zindex, header);
 }
 */
+
 // for one-line truncates 
 @mixin truncated ($width: 100%) {
   width: $width;

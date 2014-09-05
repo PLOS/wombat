@@ -66,13 +66,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     margin-bottom: $pad-small;
     line-height: normal;
 
-    i, italic {
+    i, italic, named-content {
       font-style: italic;
     }
   }
-  .logo-close {
-    display: none;
-  }
+
   .date-doi {
     @include clearfix();
     @extend .text-article-intro;
@@ -93,47 +91,61 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 #titleTopFixed {
   position: fixed;
-  top: rem-calc(-100);
   left: 0;
   width: 100%;
   height: rem-calc(49);
-  padding: $pad-xsmall 0;
+  padding: rem-calc(7 $pad-small); // TEMP-PROD: normalize to $pad-small;
   border-bottom: 1px solid $grey-med-light;
   background-color: $white;
-
+  z-index: map-get($zindex, titleTopFixed);
 }
 .topVisible {
   top: 0;
-  z-index: map-get($zindex, topVisible);
   transition-property: top;
   transition-duration: .75s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   overflow: hidden;
   box-sizing: border-box;
 
-  .title-authors {
-    @include plos-grid-column(755, $gutter: none);
+  .title-fixed-authors {
+
+    @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
     h1 {
+      @include truncated();
       font-size: $txt-size-medium;
       font-weight: bold;
       font-family: $font-face-plain;
+      line-height: 16px;
+      margin: 2px 0; //TEMP-PROD: change this
+      i, italic, named-content {
+        font-style: italic;
+      }
     }
-    #titleTopAuthors {
+    #titleFloatAuthors {
+      height: 16px;
       @include truncated();
-      line-height: normal;
+      @extend .inline-list;
+      margin-bottom: 0;
+      padding-left: $pad-default;
+      li {
+        padding-right: $pad-xsmall;
+        margin-left: 0;
+        line-height: 16px;
+        font-size: rem-calc($txt-size-xsmall);
+      }
     }
 
   }
 
   .logo-close {
-    @include plos-grid-column(140, $gutter: none);
-    padding: $pad-xsmall 0;
+    @include plos-grid-column(160, $gutter: none);
+    padding: 0 10px $pad-xsmall 0;
     display: block;
     float: right;
     text-align: right;
     cursor: pointer;
     img {
-     margin-right: $pad-smallish;
+      margin-right: $pad-smallish;
     }
     .close-floater {
       @extend .closer;

@@ -1,5 +1,12 @@
-//  This file has wombat specific mixins and extensible styles
-//  and ties in with plos-themes and setting each journal color
+/*doc
+---
+title: utilities.scss
+name: utilities
+category: Files
+---
+  This file has wombat specific mixins and extensible styles
+  and ties in with plos-themes and setting each journal color
+*/
 
 
 //compass overides
@@ -36,6 +43,30 @@ $clr-highlight-text: $white) {
 }
 
 // color extensibles
+
+/*doc
+---
+title: Colors
+name: color
+category: utilities
+---
+
+`brand color` refers to the journal colors
+
+`highlight color` refers to the default highlight color - in our case it is `plos-blue`
+
+example | extension
+--------|----------
+<p class="example-bg-dark">I have a dark background</p> | `@extend %bg-dark`
+<p class="example-highlight-color">My text is the highlight color</p> | `@extend %highlight-color`
+<a class="example-highlight-background">I have a highlighted background - hover over me</a> | `@extend %highlight-background`
+<p class="example-highlight-border">I have a highlighted border </p> | `@extend %highlight-border`
+<p class="example-brand-color">My text is the brand color</p> | `@extend %brand-color`
+<p class="example-brand-background">I have a branded background - hover over me</p> | `@extend %brand-background`
+<p class="example-brand-border">I have a branded border </p> | `@extend %brand-border`
+
+
+*/
 
 %bg-dark {
   background: $grey-dark;
@@ -121,6 +152,24 @@ $clr-highlight-text: $white) {
 // layout utilities
 //////////////
 
+/*doc
+---
+title: layout utilities
+name: layout
+category: utilities
+---
+
+example | extension
+--------|----------
+<p class="center-simple" style="width: 50%">I have am centered in the middle</p> | `@extend .center-simple`
+<p class="pad-xsmall-x">I have a small amount of padding ???? we dont' use this much, should we? </p> | `@extend .pad-xsmall-x`
+<div class="example-border-radius">I have a border radius</div> | ` @include border-radius()`
+<div class="example-border-radius-large">I have a large border radius</div> | ` @include border-radius($border-radius-large)`
+<div class="example-box-shadow">I have box-shadow</div> | ` @include box-shadow()`
+
+*/
+
+
 .center-simple {
   margin: 0 auto;
 }
@@ -145,5 +194,35 @@ $clr-highlight-text: $white) {
   left: 0;
 }
 
+
+/*doc
+---
+title: interaction and animation utilities
+name:  animation
+category: utilities
+---
+
+example | extension
+--------|----------
+
+
+*/
+
+
 // Hide elements so we dont' get a flash of unstyled content
 [data-visibility= 'none']{@extend .hide;}
+
+
+$zindex: (
+  modal     : 9000,
+  overlay   : 8000,
+  dropdown  : 7000,
+  topVisible: 6999,
+  header    : 6000,
+  footer    : 5000
+);
+/* zindex map use example
+.header {
+  z-index: map-get($zindex, header);
+}
+*/

@@ -1,21 +1,23 @@
 <ul class="author-list clearfix" data-js="tooltip_container">
 <#include "maxAuthorsToShow.ftl" />
+<#macro authorItem author author_index author_has_next>
 
-<#macro authorItem author author_index author_has_next >
 
   <li data-js="tooltip_trigger">
     <a data-author-id="${author_index?c}" class="author-name">
-  ${author.fullName}<#if author_has_next><#-- no space -->,</#if>
-
-    </a>
-
+  ${author.fullName}<#-- no space
+ --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space
+ --><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if><#-- no space
+ --><#if author.corresponding??> <span class="email">  </span></#if><#-- no space
+ --><#if author.deceased>&#8224</#if><#-- no space
+ --><#if author_has_next><#-- no space -->,</#if><#-- no space
+    --></a>
 
     <#assign hasMeta = author.equalContrib?? || author.deceased?? || author.corresponding??
     || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
     || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
     <#if hasMeta>
       <div id="author-meta-${author_index?c}" class="author-info" data-js="tooltip_target">
-                   hello
         <#if author.equalContrib>
           <p>
             Contributed equally to this work with:
@@ -25,15 +27,17 @@
           </p>
         </#if>
 
-        <#if author.deceased><p>† Deceased.</p></#if>
+        <#if author.deceased><p>Deceased.</p></#if>
         <#if author.corresponding??><p>${author.corresponding}</p></#if>
         <#if author.affiliations?? && author.affiliations?size gt 0>
           <p><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
             <#list author.affiliations as affil>
             ${affil}<#if affil_has_next>, </#if>
+
             </#list>
           </p>
         </#if>
+
         <#if author.currentAddresses?? && author.currentAddresses?size gt 0>
           <p>
             <#list author.currentAddresses as address>
@@ -77,15 +81,17 @@
   </li>
 
   <@authorItem authors[authors?size - 1] authors?size - 1 false /><#-- Last one after expander -->
-  <li data-js="toggle_trigger"><a class="more-authors active">[view all]</a></li>
-  <li data-js="toggle_trigger" data-initial="hide">
-    <a class="author-less">[ view less ]</a>
+<span data-js="toggle_add">[ ... ],</span>
+  <@authorItem authors[authors?size - 1] authors?size - 1 false /><span data-js="toggle_add">,</span>
+<#--there was no way to not do this. -->
+<a class="more-authors active" data-js="toggle_trigger" id="authors-show"> [ view all ]</a>
+<a class="author-less" data-js="toggle_trigger" data-initial="hide" id="author-hide">[ view less ]</a>
+
   </li>
 <#else>
 <#-- List authors with no expander -->
   <#list authors as author>
     <@authorItem author author_index author_has_next />
-
   </#list>
 </#if>
 

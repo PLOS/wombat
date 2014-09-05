@@ -1,3 +1,13 @@
+/*doc
+---
+title: foundation.scss
+name: foundation
+category: Files
+---
+We are using foundation from zurb for our base framework. We dont' want to use all of of it's components so we pick and choose here.
+*/
+
+
 // Foundation by ZURB
 // foundation.zurb.com
 // Licensed under MIT Open Source
@@ -43,3 +53,5 @@
 "vendor/foundation/components/type";
   //"vendor/foundation/components/offcanvas",
 //"vendor/foundation/components/visibility";
+
+

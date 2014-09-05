@@ -14,7 +14,7 @@
   <input type="hidden" id="rawPubDate" value="${article.date}" />
 
   <#include "../common/header/header.ftl" />
-  <div class="plos-row">
+  <div class="set-grid">
     <section class="article-body">
       <div class="classifications">
         <p class="license-short" id="licenseShort">Open Access</p>
@@ -25,15 +25,14 @@
 
         <div class="article-type" id="artType">${article.articleType!""}</div>
       </div>
+      <#include "articleTitle.ftl" />
 
-        <h1 id="artTitle"> ${article.title} </h1>
-    <#include "authorList.ftl" />
       <ul class="date-doi">
         <li id="artPubDate">Published:  </li>
         <li id="artDoi">DOI: ${article.doi} </li>
       </ul>
 
-    <#include "tabs.ftl" />
+      <#include "tabs.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}

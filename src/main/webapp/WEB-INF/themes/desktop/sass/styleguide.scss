@@ -1,0 +1,244 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@import "global-imports";
+@import "sections/footer";
+@import "sections/header";
+@import "pages/home";
+@import "pages/static";
+@import "pages/article";
+
+body.styleguide {
+  background-color: $grey-light;
+  header {
+    @include plos-grid-container;
+    margin-bottom: 1em;
+    h1 {
+      margin-bottom: .25em;
+      padding-bottom: .25em;
+      border-bottom: 5px solid $plos-default;
+    }
+    nav {
+      li {
+        padding: .25em;
+        @extend %header-allcaps-plain;
+      }
+    }
+  }
+}
+
+section.content {
+  @extend .plos-row;
+  h1, h2, h3 {
+    margin: 1em 0 .5em -5px;
+    text-transform: capitalize;
+    font-family: $font-face-plain;
+  }
+  h1 {
+    font-size: $txt-size-xxxlarge;
+  }
+  h2 {
+    font-size: $txt-size-medium-large;
+    font-family: $font-face-plain;
+    font-weight: 400;
+  }
+  h3 {
+    font-size: $txt-size-medium-large;
+  }
+  aside {
+    @extend .plos-column-2;
+    @extend .block;
+    height: 100%;
+    nav {
+      li {
+        padding-bottom: .25em;
+      }
+    }
+  }
+  article {
+    @extend .plos-column-9;
+    @extend .block;
+    height: 100%;
+  }
+  table {
+    padding-bottom: .25em;
+    line-height: 140%;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    td {
+      font-size: $txt-size-default;
+    }
+    th {
+      text-align: left;
+      background-color: $grey-light;
+    }
+  }
+
+  /// trulia over rides:
+  div.codeExample:before {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+.rounded {
+  @include rounded-pill();
+}
+
+.inline-list {
+  @extend .inline-list; // from foundation
+
+}
+
+.box-example {
+  background-color: $grey-light;
+  border: 1px solid $grey-med-light;
+  margin-bottom: $pad-xsmall;
+}
+
+.grid-example-simple {
+  div {
+    @extend .box-example;
+  }
+  @extend .plos-row; // make this 3 columns out of 12 width
+  .grid-example-column-1 {
+    @extend .plos-column-3;
+  }
+  .grid-example-column-2 {
+    @extend .plos-column-8;
+  }
+}
+
+.grid-example-complex {
+  @extend .plos-row; // make this 3 columns out of 12 width
+  div {
+    @extend .box-example;
+  }
+  .grid-example-one {
+    @include plos-grid-column(120);
+  }
+  .grid-example-two {
+    @include plos-grid-column(120, $gutter: left, $gutter-width: 50px);
+  }
+  .grid-example-three {
+    @include plos-grid-column(120, $gutter: left);
+  }
+
+  .grid-example-four {
+    @include plos-grid-column(120, $gutter: right, $gutter-width: 50px);
+  }
+  .grid-example-five {
+    @include plos-grid-column(120, $gutter: right);
+  }
+  .grid-example-six {
+    @include plos-grid-column(120, $gutter: none);
+  }
+}
+
+.padded-example {
+  padding: .5em;
+  @extend %bg-dark;
+  color: $white;
+}
+
+.example-link {
+  @extend %link-text-body;
+}
+
+.example-link-text-white {
+  @extend %link-text-white;
+  background: $plos-default;
+  padding: $pad-small;
+}
+
+.example-small-italic {
+  @extend %small-italic;
+}
+
+.example-condense {
+  @extend %condense;
+}
+
+.example-text-size-large {
+  @extend %text-size-large;
+}
+
+.example-header-allcaps-plain {
+  @extend %header-allcaps-plain;
+}
+
+.example-header-allcaps-xlarge {
+  @extend %header-allcaps-xlarge;
+}
+
+.example-header-allcaps {
+  @extend %header-allcaps;
+}
+
+.example-brand-title {
+  @extend %brand-title;
+}
+
+.example-brand-header {
+  @extend %brand-header;
+}
+
+.example-more-link::after {
+  @extend .more-icon;
+}
+
+
+.example-bg-dark {
+  @extend %bg-dark;
+  color: $white;
+}
+
+.example-highlight-color {
+  @extend %highlight-color;
+}
+.example-highlight-background {
+  @extend %highlight-background;
+}
+
+.example-highlight-border {
+  border-width: 1px;
+  border-style: solid;
+  @extend %highlight-border;
+  display: block;
+
+}
+
+.example-brand-color {
+  @extend %brand-color;
+}
+.example-brand-background {
+  @extend %brand-background;
+}
+
+.example-brand-border {
+  border-width: 1px;
+  border-style: solid;
+  @extend %brand-border;
+  display: block;
+
+}
+
+.example-border-radius {
+  @extend .padded-example;
+ @include border-radius();
+
+}
+
+.example-border-radius-large {
+  @extend .padded-example;
+  @include border-radius($border-radius-large);
+}
+
+.example-box-shadow {
+  @extend .padded-example;
+  @include box-shadow();   /// hey box shadow
+}
+

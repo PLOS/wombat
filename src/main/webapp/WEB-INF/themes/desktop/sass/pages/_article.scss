@@ -1,16 +1,23 @@
+//  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
+$temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
+
+
  // extensible layout styles
 
-.text-article-intro{
+.text-article-intro {
   font-size: $txt-size-default;
   color: $grey-med;
-  a{ @include link-text($decoration: underline, $color: $grey-med);}
+  a {
+    @include link-text($decoration: underline, $color: $grey-med);
+  }
 }
 
 // layout elements
-
+.set-grid {
+  @extend .plos-row;
+}
 .article-body {
-  @include plos-grid-column(740, $gutter: none);
-  margin-right: $pad-default;  /*  temporary to make it look right even if the code is wrong */
+  @include plos-grid-column(755, $gutter: none);
 }
 .article-column {
   @include plos-grid-column(180, $gutter: none);
@@ -23,12 +30,12 @@
 .classifications {
   @extend %txt-transform;
   margin-top: $pad-default + $pad-xsmall;
-  margin-bottom: $pad-small + $pad-xsmall;
+  margin-bottom: $pad-smallish;
   p {
     font-size: $txt-size-xxxsmall;
     display: inline-block;
-    padding-left: $pad-small + $pad-xsmall;
-    line-height: 17px;
+    padding-left: $pad-smallish;
+    line-height: 17px; // TEMP-PROD: change to 18px ($txt-size-large)
   }
   .license-short {
     background: image-url('icon.oa.gif') no-repeat 0 3px;
@@ -45,16 +52,25 @@
   }
 }
 
+.author-list {
+  @extend .text-article-intro;
+  margin-bottom: $pad-default - $pad-small;
+  line-height: ($pad-default + $pad-xsmall); /// this will change when we add in the roll over info boxes.
+  a[data-js='toggle_trigger']{color: $clr-highlight;}
+}
 
 .article-body {
   h1 {
-    font-size: $txt-size-27large;
+    font-size: $txt-size-27large;  // TEMP-PROD: needs to be 26px or 28px
     margin-bottom: $pad-small;
     line-height: normal;
 
     i, italic {
       font-style: italic;
     }
+  }
+  .logo-close {
+    display: none;
   }
   .date-doi {
     @include clearfix();
@@ -67,7 +83,7 @@
       margin-left: $pad-small;
 
       &:first-child {
-        margin: 0 $pad-notsmall 0 0;
+        margin: 0 $pad-smallish 0 0;
         padding-left: 0;
         list-style-type: none;
       }
@@ -75,8 +91,49 @@
   }
 }
 
+.topVisible {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: rem-calc(49);
+  border-bottom: 1px solid $grey-med-light;
+  background-color: $white;
+  z-index: map-get($zindex, topVisible);
+  padding: $pad-xsmall 0;
+  transition-property: top;
+  transition-duration: .75s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  overflow: hidden;
+  box-sizing: border-box;
 
+  .title-authors {
+    @include plos-grid-column(755, $gutter: none);
+    h1 {
+      font-size: $txt-size-medium;
+      font-weight: bold;
+      font-family: $font-face-plain;
+    }
+    p.author-list {
+      line-height: normal;
+    }
+  }
 
+  .logo-close {
+    @include plos-grid-column(140, $gutter: none);
+    padding: $pad-xsmall 0;
+    display: block;
+    float: right;
+    text-align: right;
+    cursor: pointer;
+    img {
+     margin-right: $pad-smallish;
+    }
+    .close-floater {
+      @extend .closer;
+    }
+  }
+}
 
 // TABS
 
@@ -110,7 +167,7 @@
     a {
       display: block;
       height: 75px;
-      padding: $pad-small;
+      padding: $temp-pad-tabs;  // TEMP-PROD: use $pad-small;
       border-right: 1px solid $white;
       font-weight: bold;
       color: $white;
@@ -127,7 +184,7 @@
       font-family: $font-face-plain;
       background-image: image-url("icon.tabs.active.white.png");
       background-repeat: no-repeat;
-      background-position: 10px 65px;
+      background-position: 9px 65px;
       &:hover {
         @extend %brand-background;
         cursor: inherit;
@@ -170,19 +227,19 @@
 // }
 
 
- [data-animate = tooltip-container] {
-
-  display: inline-block;
-
- }
-
- [data-animate = tooltip-target]{
-
- }
-
- [data-animate = tooltip-container]:active [data-animate = tooltip-target] {
-   opacity:1;
- }
+// [data-animate = tooltip-container] {
+//
+//  display: inline-block;
+//
+// }
+//
+// [data-animate = tooltip-target]{
+//
+// }
+//
+// [data-animate = tooltip-container]:active [data-animate = tooltip-target] {
+//   opacity:1;
+// }
 
 .author-list{
    @extend .text-article-intro;
@@ -197,6 +254,28 @@
       padding: 2px 4px; //TODO line-height;
     }
    }
+  .contribute{
+    @extend .icon-author-contribute;
+
+  }
+  .rel-footnote{
+    @extend .icon-author-footnotes;
+
+  }
+  .email{
+    @extend .icon-author-address;
+
+  }
+//  .contribute::after{
+//
+//    @extend .icon-author-contribute;
+//  }
+//  .footnotes::after{
+//    @extend .icon-author-footnotes;
+//  }
+//  .address::after{
+//    @extend .icon-author-address;
+//  }
  }
 
  .author-info {
@@ -205,12 +284,13 @@
      top: rem-calc(($txt-size-default + 10));   // need to make this a tad more dynamic.
      height: auto;
      position:absolute;
-     -webkit-transition: opacity 0.3s;
-     -moz-transition:  opacity 0.3s;
-     -ms-transition: opacity 0.3s;
-     -o-transition:  opacity 0.3s;
-     transition:  opacity 0.3s;
+     @include single-transition(opacity);
      opacity: 0;
+
+   .email, .rel-footnote, {
+     @include icon-offscreen;
+   }
+
 
  }
  .active {
@@ -222,7 +302,7 @@
    }
    .author-info {
      opacity: 1;
-     z-index: 5000;
+     z-index: map-get($zindex, dropdown);
    }
  }
 
@@ -234,3 +314,5 @@
  [data-js=tooltip_trigger]:focus{
  outline: 0;
  }
+
+

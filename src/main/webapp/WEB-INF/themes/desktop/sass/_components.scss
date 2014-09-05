@@ -13,7 +13,6 @@ category: components
 
 */
 
-
 @mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default) {
   background: $background;
   padding: $padding;
@@ -307,7 +306,13 @@ $zindex: (
   z-index: map-get($zindex, header);
 }
 */
-
+// for one-line truncates 
+@mixin truncated ($width: 100%) {
+  width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 
 

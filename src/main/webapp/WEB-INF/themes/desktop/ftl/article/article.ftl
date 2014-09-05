@@ -9,7 +9,8 @@
 
 <#include "../common/head.ftl" />
 
-  <body class="article ${journalKey?lower_case}">
+<#include "../common/journalStyle.ftl" />
+  <body class="article ${journalStyle}">
 
   <input type="hidden" id="rawPubDate" value="${article.date}" />
 

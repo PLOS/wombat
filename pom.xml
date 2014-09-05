@@ -36,6 +36,20 @@
       </snapshots>
     </repository>
   </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>ambra</id>
+      <name>Maven 2 Release Repository for Ambra</name>
+      <url>http://maven.ambraproject.org/maven2/release/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
   <dependencies>
     <dependency>
       <groupId>org.ambraproject</groupId>

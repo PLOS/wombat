@@ -1,10 +1,7 @@
 <p class="author-list">
 <#include "maxAuthorsToShow.ftl" />
-<#macro authorItem author author_index author_has_next>
-
-  <a  class="author-info" data-author-id="${author_index?c}">
-  ${author.fullName}</a><#if author_has_next><#-- no space -->,</#if>
-</#macro>
+<#macro authorItem author author_index author_has_next><a  class="author-info" data-author-id="${author_index?c}">
+  ${author.fullName}</a><#if author_has_next><#-- no space -->,</#if></#macro>
 
 
 <#if authors?size gt maxAuthorsToShow + 1>
@@ -26,9 +23,10 @@
             </#if>
             </#list>
           </span>
-  [...]
-  <@authorItem authors[authors?size - 1] authors?size - 1 false />,<#-- Last one after expander -->
-  <a class="more-authors active" data-js="toggle_trigger" id="authors-show">[ view all ]</a>
+  <span data-js="toggle_add">[ ... ],</span>
+  <@authorItem authors[authors?size - 1] authors?size - 1 false /><span data-js="toggle_add">,</span>
+  <#--there was no way to not do this. -->
+  <a class="more-authors active" data-js="toggle_trigger" id="authors-show"> [ view all ]</a>
   <a class="author-less" data-js="toggle_trigger" data-initial="hide" id="author-hide">[ view less ]</a>
 
 <#else>

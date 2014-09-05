@@ -4,7 +4,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
  // extensible layout styles
 
-.text-article-intro{
+.text-article-intro {
   font-size: $txt-size-default;
   color: $grey-med;
   a {
@@ -13,7 +13,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 // layout elements
-
+.set-grid {
+  @extend .plos-row;
+}
 .article-body {
   @include plos-grid-column(755, $gutter: none);
 }
@@ -33,7 +35,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-size: $txt-size-xxxsmall;
     display: inline-block;
     padding-left: $pad-smallish;
-    line-height: 17px;
+    line-height: 17px; // TEMP-PROD: change to 18px ($txt-size-large)
   }
 
   .license-short {
@@ -50,7 +52,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-size: $txt-size-xxsmall;
   }
 }
-.author-list{
+
+.author-list {
   @extend .text-article-intro;
   margin-bottom: $pad-default - $pad-small;
   line-height: ($pad-default + $pad-xsmall); /// this will change when we add in the roll over info boxes.
@@ -67,6 +70,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       font-style: italic;
     }
   }
+  .logo-close {
+    display: none;
+  }
   .date-doi {
     @include clearfix();
     @extend .text-article-intro;
@@ -82,6 +88,50 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
         padding-left: 0;
         list-style-type: none;
       }
+    }
+  }
+}
+
+.topVisible {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: rem-calc(49);
+  border-bottom: 1px solid $grey-med-light;
+  background-color: $white;
+  z-index: map-get($zindex, topVisible);
+  padding: $pad-xsmall 0;
+  transition-property: top;
+  transition-duration: .75s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .title-authors {
+    @include plos-grid-column(755, $gutter: none);
+    h1 {
+      font-size: $txt-size-medium;
+      font-weight: bold;
+      font-family: $font-face-plain;
+    }
+    p.author-list {
+      line-height: normal;
+    }
+  }
+
+  .logo-close {
+    @include plos-grid-column(140, $gutter: none);
+    padding: $pad-xsmall 0;
+    display: block;
+    float: right;
+    text-align: right;
+    cursor: pointer;
+    img {
+     margin-right: $pad-smallish;
+    }
+    .close-floater {
+      @extend .closer;
     }
   }
 }

@@ -1,5 +1,12 @@
-/* Welcome to Compass. Use this file to write IE specific override styles.
- * Import this file using the following HTML or equivalent:
+/*doc
+---
+title: ie.scss
+name: ie.scss
+category: Files
+---
+
+This is for IE specific styles mostly ie9 and below.
+
 */
 @font-face {
   font-family: 'FontAwesome';
@@ -7,25 +14,25 @@
   src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0") format("embedded-opentype");
   font-weight: normal;
   font-style: normal; }
-/* line 13, ../../sass/ie.scss */
+/* line 21, ../../sass/ie.scss */
 .top-bar-section .head-search form input[type="text"] {
   padding: 10px 0; }
 
-/* line 16, ../../sass/ie.scss */
+/* line 24, ../../sass/ie.scss */
 .top-bar-section ul > li.head-search > a {
   line-height: 32px !important;
   padding: 0 !important;
   font-size: 12px; }
 
-/* line 21, ../../sass/ie.scss */
+/* line 29, ../../sass/ie.scss */
 .top-bar-section ul > li.head-search > a:hover {
   text-decoration: underline; }
 
-/* line 25, ../../sass/ie.scss */
+/* line 33, ../../sass/ie.scss */
 .hero.overlay-dark > a:before, .hero.overlay-light > a:before {
   background: none !important; }
 
-/* line 28, ../../sass/ie.scss */
+/* line 36, ../../sass/ie.scss */
 .hero.overlay-dark .hero-content:before {
   position: absolute;
   width: 100%;
@@ -35,7 +42,7 @@
   left: 0;
   content: " "; }
 
-/* line 38, ../../sass/ie.scss */
+/* line 46, ../../sass/ie.scss */
 .hero.overlay-light .hero-content:before {
   position: absolute;
   width: 100%;
@@ -45,12 +52,12 @@
   left: 0;
   content: " "; }
 
-/* line 47, ../../sass/ie.scss */
+/* line 55, ../../sass/ie.scss */
 .hero .hero-content {
   height: 234px !important;
   padding-top: 103px !important; }
 
-/* line 54, ../../sass/ie.scss */
+/* line 62, ../../sass/ie.scss */
 .carousel-wrap.small .carousel-control .jcarousel-prev,
 .carousel-wrap.small .carousel-control .jcarousel-next {
   font-size: 30px !important; }

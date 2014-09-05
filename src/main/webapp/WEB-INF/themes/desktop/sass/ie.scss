@@ -1,6 +1,14 @@
-/* Welcome to Compass. Use this file to write IE specific override styles.
- * Import this file using the following HTML or equivalent:
+/*doc
+---
+title: ie.scss
+name: ie.scss
+category: Files
+---
+
+This is for IE specific styles mostly ie9 and below.
+
 */
+
 //for ie8; couldn't get compass font-face mixin to work with ie8 even following the use specified
 @font-face {
   font-family: 'FontAwesome';

@@ -7,7 +7,7 @@
 <#assign title = "Page Not Found" />
 <#include "common/head.ftl" />
 
-<#include "../common/journalStyle.ftl" />
+<#include "common/journalStyle.ftl" />
 <body class="static ${journalStyle}">
 <#include "common/header/header.ftl" />
 

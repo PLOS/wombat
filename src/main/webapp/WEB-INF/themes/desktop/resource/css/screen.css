@@ -4219,7 +4219,7 @@ category: components
 /* line 38, ../../sass/_components.scss */
 .pill-small, .author-info {
   background: #3c63af;
-  padding: 0.3125rem;
+  padding: 0.625rem;
   border-radius: 5px;
   color: white; }
 
@@ -4422,7 +4422,7 @@ example | extension
   top: -9999px;
   left: -9999px; }
 
-/* line 319, ../../sass/_components.scss */
+/* line 318, ../../sass/_components.scss */
 .icon-author-contribute, .author-list .contribute {
   background: url('../img/icon.author.co.gif') no-repeat 0 0;
   vertical-align: middle;
@@ -4430,7 +4430,7 @@ example | extension
   width: 0.9375rem;
   height: 0.8125rem; }
 
-/* line 323, ../../sass/_components.scss */
+/* line 322, ../../sass/_components.scss */
 .icon-author-footnotes, .author-list .rel-footnote {
   background: url('../img/icon.author.grp.png') no-repeat 0 0;
   vertical-align: middle;
@@ -4438,7 +4438,7 @@ example | extension
   width: 0.9375rem;
   height: 0.8125rem; }
 
-/* line 326, ../../sass/_components.scss */
+/* line 325, ../../sass/_components.scss */
 .icon-author-address, .author-list .email {
   background: url('../img/icon.author.email.png') no-repeat 0 0;
   vertical-align: middle;
@@ -4446,7 +4446,7 @@ example | extension
   width: 0.9375rem;
   height: 0.8125rem; }
 
-/* line 330, ../../sass/_components.scss */
+/* line 329, ../../sass/_components.scss */
 .closer, .topVisible .logo-close .close-floater {
   background: url('../img/icon.sprite.close.png') no-repeat 0 -24px;
   vertical-align: middle;
@@ -5486,30 +5486,45 @@ header {
   top: 1.4375rem;
   height: auto;
   position: absolute;
+  margin-top: 0.625rem;
   transition: opacity 300ms ease-out;
   opacity: 0; }
-  /* line 290, ../../sass/pages/_article.scss */
+  /* line 291, ../../sass/pages/_article.scss */
+  .author-info p {
+    border-top: 2px solid #666666;
+    padding: 0.625rem 0; }
+    /* line 294, ../../sass/pages/_article.scss */
+    .author-info p:first-child {
+      border-top: none; }
+  /* line 299, ../../sass/pages/_article.scss */
   .author-info .email, .author-info .rel-footnote {
     text-indent: -300000px; }
 
-/* line 297, ../../sass/pages/_article.scss */
+/* line 304, ../../sass/pages/_article.scss */
 .active a, .active a:hover {
   color: white; }
-/* line 299, ../../sass/pages/_article.scss */
+/* line 305, ../../sass/pages/_article.scss */
 .active .author-name {
   background: #3c63af;
   padding: 2px 4px;
   border-radius: 5px;
   color: white; }
-/* line 303, ../../sass/pages/_article.scss */
+/* line 309, ../../sass/pages/_article.scss */
 .active .author-info {
   opacity: 1;
   z-index: 7000; }
+/* line 313, ../../sass/pages/_article.scss */
+.active .close {
+  line-height: normal;
+  font-size: 18px;
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem; }
 
-/* line 309, ../../sass/pages/_article.scss */
+/* line 323, ../../sass/pages/_article.scss */
 .posRight .author-info {
   right: 0; }
 
-/* line 314, ../../sass/pages/_article.scss */
+/* line 327, ../../sass/pages/_article.scss */
 [data-js=tooltip_trigger]:focus {
   outline: 0; }

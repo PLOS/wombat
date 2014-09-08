@@ -26,13 +26,16 @@ tooltip = {
   },
   tooltip: function () {
     var s = this.settings;
-    $(s.tooltip_trigger).blur(function(){    $(s.tooltip_trigger).removeClass(s.tooltip_class);
+
+    $(s.tooltip_trigger).blur(function(){
+      $(s.tooltip_trigger).removeClass(s.tooltip_class);
     });
 
     $(s.tooltip_trigger).on('click', function () {
       var parent_width = $(this).parents(s.tooltip_container).innerWidth(),
           parent_width_offset = parent_width * .75,
           this_position = $(this).position();
+
       $(s.tooltip_trigger).attr('tabindex','0');
       $(s.tooltip_trigger).not(this).removeClass(s.tooltip_class);
       $(this).toggleClass(s.tooltip_class);
@@ -41,14 +44,11 @@ tooltip = {
         $(this).addClass('posRight');
       }
 
-      $(s.tooltip_close).on('click', function () {
-        $(s.tooltip_trigger).removeClass(s.tooltip_class);
-
-      });
-
     });
 
-
+    $(s.tooltip_close).on('click', function () {
+      $(this).parent(s.tooltip_trigger).removeClass('active');
+    });
 
   },
 

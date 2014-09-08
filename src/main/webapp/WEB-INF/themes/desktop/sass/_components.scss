@@ -36,7 +36,7 @@ category: components
 }
 
 .pill-small{
-  @include rounded-pill($padding: $pad-xsmall,  $hover: false);
+  @include rounded-pill($padding: $pad-small,  $hover: false);
 }
 
 /*doc
@@ -313,7 +313,6 @@ example | extension
 
 $icn-tiny-width: 15;
 $icn-tiny-height: 13;
-
 $icn-tiny-align: middle;
 
 .icon-author-contribute{
@@ -333,6 +332,7 @@ $icn-tiny-align: middle;
   border-radius: $border-radius-small;
   color: $white;
 }
+
 
 
 

@@ -284,32 +284,45 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      top: rem-calc(($txt-size-default + 10));   // need to make this a tad more dynamic.
      height: auto;
      position:absolute;
+     margin-top: $pad-small;
+
      @include single-transition(opacity);
      opacity: 0;
+   p{
+      border-top: 2px solid $grey-med;
+      padding: $pad-small 0;
+      &:first-child {
+        border-top: none;
+      }
+   }
 
    .email, .rel-footnote, {
      @include icon-offscreen;
    }
-
-
  }
  .active {
    a, a:hover{color: $white;}
-
    .author-name{
      @include rounded-pill($padding: 2px 4px,$hover: false);
-
    }
+
    .author-info {
      opacity: 1;
      z-index: map-get($zindex, dropdown);
+   }
+   .close{
+     line-height: normal;
+     font-size: $txt-size-large;
+     position: absolute;
+     top: $pad-small;
+     right: $pad-small;
+
    }
  }
 
  .posRight .author-info {
    right: 0;
  }
-
 
  [data-js=tooltip_trigger]:focus{
  outline: 0;

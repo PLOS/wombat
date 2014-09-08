@@ -20,15 +20,15 @@
       <div id="author-meta-${author_index?c}" class="author-info" data-js="tooltip_target">
         <#if author.equalContrib>
           <p>
-            Contributed equally to this work with:
+          <span class="contribute"> </span> Contributed equally to this work with:
             <#list equalContributors as contributor>
             ${contributor}<#if contributor_has_next>,</#if>
             </#list>
           </p>
         </#if>
 
-        <#if author.deceased><p>Deceased.</p></#if>
-        <#if author.corresponding??><p>${author.corresponding}</p></#if>
+        <#if author.deceased><p>&#8224 Deceased.</p></#if>
+        <#if author.corresponding??><p> ${author.corresponding}</p></#if>
         <#if author.affiliations?? && author.affiliations?size gt 0>
           <p><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
             <#list author.affiliations as affil>
@@ -50,7 +50,7 @@
           ${note}
           </#list>
         </#if>
-        <a data-js="tooltip_close">Close</a>
+        <a data-js="tooltip_close" class="close" id="tooltipClose"> &#x02A2F </a>
       </div>
     </#if>
   </li>

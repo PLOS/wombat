@@ -210,16 +210,29 @@ public class ArticleController extends WombatController {
           continue;
         }
 
+        // Make a mutable copy to clobber
         Map<String, Object> crossPublishedJournalMetadata = new HashMap<>((Map<? extends String, ?>) journalEntry.getValue());
+
+        // Find the site object (if possible) for the other journal
         String crossPublishedJournalKey = (String) crossPublishedJournalMetadata.get("journalKey");
+        Site crossPublishedSite;
         try {
-          Site crossPublishedSite = site.getTheme().resolveForeignJournalKey(siteSet, crossPublishedJournalKey);
-          String homepageLink = crossPublishedSite.getRequestScheme().buildLink(request, "/");
-          crossPublishedJournalMetadata.put("href", homepageLink);
+          crossPublishedSite = site.getTheme().resolveForeignJournalKey(siteSet, crossPublishedJournalKey);
         } catch (UnmatchedSiteException e) {
           // The data may still be valid if the other journal is hosted on a legacy Ambra system
           log.warn("Cross-published journal with no matching site: {}", crossPublishedJournalKey);
-          // Fall through and add the journal to the model with no href
+          crossPublishedSite = null; // Still show the title, but without the link
+        }
+        if (crossPublishedSite != null) {
+          // Set up an href link to the other site's homepage
+          String homepageLink = crossPublishedSite.getRequestScheme().buildLink(request, "/");
+          crossPublishedJournalMetadata.put("href", homepageLink);
+
+          // Look up whether the other site wants its journal title italicized
+          // (This isn't a big deal because it's only one value, but if similar display details pile up
+          // in the future, it would be better to abstract them out than to handle them all individually here.)
+          boolean italicizeTitle = (boolean) crossPublishedSite.getTheme().getConfigMap("journal").get("italicizeTitle");
+          crossPublishedJournalMetadata.put("italicizeTitle", italicizeTitle);
         }
 
         if (eissn.equals(crossPublishedJournalMetadata.get("eIssn"))) {

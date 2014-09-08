@@ -35,9 +35,6 @@
 
 <#include "common/siteMenu/siteMenu.ftl" />
 
-<script>
-  var journalKey = '${journalKey}';
-</script>
 <#include "common/bodyJs.ftl" />
 </body>
 </html>

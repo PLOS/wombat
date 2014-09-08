@@ -7,7 +7,8 @@
 <#assign title = "Page Not Found" />
 <#include "common/head.ftl" />
 
-<body class="static ${journalKey?lower_case}">
+<#include "common/journalStyle.ftl" />
+<body class="static ${journalStyle}">
 <#include "common/header/header.ftl" />
 
 <article class="error-page">

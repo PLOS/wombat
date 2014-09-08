@@ -260,7 +260,7 @@ select {
   width: 100%; }
 
 /* line 52, ../../sass/vendor/foundation/components/_inline-lists.scss */
-footer .nav-aux, .nav .nav-user, #submission-links .split-container, .topVisible .title-fixed-authors #titleFloatAuthors, .inline-list {
+footer .nav-aux, .nav .nav-user, #submission-links .split-container, .topVisible .float-title-inner #floatAuthorList, .inline-list {
   margin: 0 auto 1.0625rem auto;
   margin-left: -1.375rem;
   margin-right: 0;
@@ -268,13 +268,13 @@ footer .nav-aux, .nav .nav-user, #submission-links .split-container, .topVisible
   list-style: none;
   overflow: hidden; }
   /* line 41, ../../sass/vendor/foundation/components/_inline-lists.scss */
-  footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, .topVisible .title-fixed-authors #titleFloatAuthors > li, .inline-list > li {
+  footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, .topVisible .float-title-inner #floatAuthorList > li, .inline-list > li {
     list-style: none;
     float: left;
     margin-left: 1.375rem;
     display: block; }
     /* line 46, ../../sass/vendor/foundation/components/_inline-lists.scss */
-    footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, .topVisible .title-fixed-authors #titleFloatAuthors > li > *, .inline-list > li > * {
+    footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, .topVisible .float-title-inner #floatAuthorList > li > *, .inline-list > li > * {
       display: block; }
 
 /* line 91, ../../sass/vendor/foundation/components/_labels.scss */
@@ -5342,10 +5342,12 @@ header {
       padding-left: 0;
       list-style-type: none; }
 
-/* line 92, ../../sass/pages/_article.scss */
-#titleTopFixed {
+/* line 93, ../../sass/pages/_article.scss */
+.float-title {
   position: fixed;
   left: 0;
+  visibility: hidden;
+  top: -100px;
   width: 100%;
   height: 3.0625rem;
   padding: 0.4375rem 0.03906rem;
@@ -5353,21 +5355,22 @@ header {
   background-color: white;
   z-index: 6999; }
 
-/* line 102, ../../sass/pages/_article.scss */
+/* line 105, ../../sass/pages/_article.scss */
 .topVisible {
+  visibility: visible;
   top: 0;
   transition-property: top;
   transition-duration: .75s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   overflow: hidden;
   box-sizing: border-box; }
-  /* line 110, ../../sass/pages/_article.scss */
-  .topVisible .title-fixed-authors {
+  /* line 114, ../../sass/pages/_article.scss */
+  .topVisible .float-title-inner {
     float: left;
     width: 47.5rem;
     margin-left: 1.125rem; }
-    /* line 113, ../../sass/pages/_article.scss */
-    .topVisible .title-fixed-authors h1 {
+    /* line 117, ../../sass/pages/_article.scss */
+    .topVisible .float-title-inner h1 {
       width: 100%;
       white-space: nowrap;
       overflow: hidden;
@@ -5375,68 +5378,64 @@ header {
       font-size: 14px;
       font-weight: bold;
       font-family: "arial";
-      line-height: 16px;
-      margin: 2px 0; }
-      /* line 120, ../../sass/pages/_article.scss */
-      .topVisible .title-fixed-authors h1 i, .topVisible .title-fixed-authors h1 italic, .topVisible .title-fixed-authors h1 named-content {
+      line-height: 1rem;
+      margin: 0.125rem 0; }
+      /* line 124, ../../sass/pages/_article.scss */
+      .topVisible .float-title-inner h1 i, .topVisible .float-title-inner h1 italic, .topVisible .float-title-inner h1 named-content {
         font-style: italic; }
-    /* line 124, ../../sass/pages/_article.scss */
-    .topVisible .title-fixed-authors #titleFloatAuthors {
-      height: 16px;
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 0;
-      padding-left: 1.25rem; }
-      /* line 130, ../../sass/pages/_article.scss */
-      .topVisible .title-fixed-authors #titleFloatAuthors li {
-        padding-right: 0.3125rem;
+    /* line 128, ../../sass/pages/_article.scss */
+    .topVisible .float-title-inner #floatAuthorList {
+      height: 1rem;
+      width: 47.5rem;
+      margin: 0;
+      padding-left: 0; }
+      /* line 134, ../../sass/pages/_article.scss */
+      .topVisible .float-title-inner #floatAuthorList li {
         margin-left: 0;
         line-height: 16px;
         font-size: 0.75rem; }
-  /* line 140, ../../sass/pages/_article.scss */
+  /* line 143, ../../sass/pages/_article.scss */
   .topVisible .logo-close {
     float: left;
     width: 10rem;
-    padding: 0 10px 0.3125rem 0;
+    padding: 0 0.625rem 0.3125rem 0;
     display: block;
     float: right;
     text-align: right;
     cursor: pointer; }
-    /* line 147, ../../sass/pages/_article.scss */
+    /* line 150, ../../sass/pages/_article.scss */
     .topVisible .logo-close img {
       margin-right: 0.9375rem; }
 
-/* line 158, ../../sass/pages/_article.scss */
+/* line 161, ../../sass/pages/_article.scss */
 .article-tabs {
   display: table;
   table-layout: fixed;
   margin-bottom: 1.25rem;
   width: 100%;
   margin-left: 0; }
-  /* line 164, ../../sass/pages/_article.scss */
+  /* line 167, ../../sass/pages/_article.scss */
   .article-tabs .tab-title {
     margin-left: 0;
     display: table-cell;
     float: none;
     position: static; }
-    /* line 170, ../../sass/pages/_article.scss */
+    /* line 173, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-1 {
       background: #2b2b2b; }
-    /* line 173, ../../sass/pages/_article.scss */
+    /* line 176, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-2 {
       background: #454545; }
-    /* line 176, ../../sass/pages/_article.scss */
+    /* line 179, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-3 {
       background: #5e5e5e; }
-    /* line 179, ../../sass/pages/_article.scss */
+    /* line 182, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-4 {
       background: #777777; }
-    /* line 182, ../../sass/pages/_article.scss */
+    /* line 185, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-5 {
       background: #919191; }
-    /* line 185, ../../sass/pages/_article.scss */
+    /* line 188, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
@@ -5444,11 +5443,11 @@ header {
       border-right: 1px solid white;
       font-weight: bold;
       color: white; }
-      /* line 192, ../../sass/pages/_article.scss */
+      /* line 195, ../../sass/pages/_article.scss */
       .article-tabs .tab-title a:hover {
         background: #3c63af;
         color: white; }
-    /* line 197, ../../sass/pages/_article.scss */
+    /* line 200, ../../sass/pages/_article.scss */
     .article-tabs .tab-title.active a {
       position: relative;
       height: 83px;
@@ -5457,7 +5456,7 @@ header {
       background-image: url('../img/icon.tabs.active.white.png');
       background-repeat: no-repeat;
       background-position: 9px 65px; }
-      /* line 206, ../../sass/pages/_article.scss */
+      /* line 209, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }
 

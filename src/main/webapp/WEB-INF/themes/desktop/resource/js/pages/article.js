@@ -9,8 +9,7 @@
 
   $( document ).ready(function() {
    //cache the floating title div
-    var floater = $("#titleTopFixed"), 
-        floatingAuthors = $("#titleTopAuthors");
+    var floater = $("#floatTitleTop");
 
     $(window).on('scroll', function (){
       //if floater has been removed, no need to run function

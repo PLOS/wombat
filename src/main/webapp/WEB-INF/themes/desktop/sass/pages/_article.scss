@@ -89,17 +89,21 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     }
   }
 }
-#titleTopFixed {
+
+.float-title {
   position: fixed;
   left: 0;
+  visibility: hidden;
+  top: -100px;
   width: 100%;
   height: rem-calc(49);
-  padding: rem-calc(7 $pad-small); // TEMP-PROD: normalize to $pad-small;
+  padding: rem-calc(7 $pad-small); // TEMP-PROD: normalize 7 to $pad-small;
   border-bottom: 1px solid $grey-med-light;
   background-color: $white;
   z-index: map-get($zindex, titleTopFixed);
 }
 .topVisible {
+  visibility: visible;
   top: 0;
   transition-property: top;
   transition-duration: .75s;
@@ -107,28 +111,27 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   overflow: hidden;
   box-sizing: border-box;
 
-  .title-fixed-authors {
-
+  .float-title-inner {
     @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
+
     h1 {
       @include truncated();
       font-size: $txt-size-medium;
       font-weight: bold;
       font-family: $font-face-plain;
-      line-height: 16px;
-      margin: 2px 0; //TEMP-PROD: change this
+      line-height: rem-calc(16);
+      margin: rem-calc(2) 0; //TEMP-PROD: change this
       i, italic, named-content {
         font-style: italic;
       }
     }
-    #titleFloatAuthors {
-      height: 16px;
-      @include truncated();
+    #floatAuthorList {
+      height: rem-calc(16);
+      width: rem-calc(760);
       @extend .inline-list;
-      margin-bottom: 0;
-      padding-left: $pad-default;
+      margin: 0;
+      padding-left: 0;
       li {
-        padding-right: $pad-xsmall;
         margin-left: 0;
         line-height: 16px;
         font-size: rem-calc($txt-size-xsmall);
@@ -139,7 +142,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
   .logo-close {
     @include plos-grid-column(160, $gutter: none);
-    padding: 0 10px $pad-xsmall 0;
+    padding: 0 $pad-small $pad-xsmall 0;
     display: block;
     float: right;
     text-align: right;

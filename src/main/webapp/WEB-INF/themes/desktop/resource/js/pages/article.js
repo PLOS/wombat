@@ -38,6 +38,10 @@
     };
     // initialize toggle for author list view more
     toggle.init();
+    // initialize tooltip for author info
+    tooltip.init(); 
   });
+
+
 }(jQuery));
 

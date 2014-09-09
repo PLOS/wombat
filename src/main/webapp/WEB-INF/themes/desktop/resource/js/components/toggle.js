@@ -4,10 +4,10 @@
 toggle = {
 
   settings: {
-    toggle_trigger: '[data-js=toggle_trigger]',
-    toggle_target: '[data-js=toggle_target]',
+    toggle_trigger: '[data-js-toggle=toggle_trigger]',
+    toggle_target: '[data-js-toggle=toggle_target]',
     toggle_hidden: '[data-initial=hide]',
-    toggle_add: '[data-js=toggle_add]',
+    toggle_add: '[data-js-toggle=toggle_add]',
     speed: 0
   },
 

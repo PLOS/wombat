@@ -203,6 +203,34 @@ example | extension
 }
 
 
+/*doc
+---
+title: interaction and animation utilities
+name:  animation
+category: utilities
+---
+
+example | extension
+--------|----------
+
+
+*/
+
 
 // Hide elements so we dont' get a flash of unstyled content
 [data-visibility= 'none']{@extend .hide;}
+
+
+$zindex: (
+  modal     : 9000,
+  overlay   : 8000,
+  dropdown  : 7000,
+  topVisible: 6999,
+  header    : 6000,
+  footer    : 5000
+);
+/* zindex map use example
+.header {
+  z-index: map-get($zindex, header);
+}
+*/

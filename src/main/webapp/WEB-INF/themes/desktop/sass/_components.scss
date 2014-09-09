@@ -9,25 +9,30 @@ category: components
 ##pill
 <p class="pill">I am a pill</p>
 `@extend %pill`
-
-
 */
 
 
-@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default) {
+@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default, $hover: true) {
   background: $background;
   padding: $padding;
   border-radius: $border-radius;
   color: $clr-btn-text;
 
-  &:hover {
-    background: $clr-link-hover;
+  @if $hover == true {
+    &:hover {
+      background: $clr-link-hover;
+    }
+  } @else {
   }
 
 }
 //extend .pill if using defaults in rounded-pill
 .pill {
   @include rounded-pill();
+}
+
+.pill-small{
+  @include rounded-pill($padding: $pad-small,  $hover: false);
 }
 
 /*doc
@@ -207,6 +212,9 @@ have a fixed width and height (but it's not required).
   }
 }
 
+//font awesome icon: arrow after link
+//use with ::after
+//example: .more-link::after { @extend .more-icon }
 
 /*doc
 ---
@@ -217,7 +225,7 @@ category: typography
 
 We use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
 For icons after text:
-use with `::after` example: `.more-link::after { @extend .more-icon }`
+use  with `::after` example: `.more-link::after { @extend .more-icon }`
 
 example | extension
 --------|----------
@@ -266,17 +274,84 @@ example | extension
   @extend .fa-envelope-o;
   content: '\f003';
 }
-
+.icon-plus {
+  @extend .icon-fa;
+  @extend .fa-plus-square;
+  line-height: normal;
+}
+.icon-close {
+  @extend .icon-fa;
+ // @extend .fa-close;
+  line-height: normal;
+  content: '\f00d';
+}
 .aria-text {
   position: absolute;
   top: -9999px;
   left: -9999px;
 }
+/// use with span
+// $width and $height use rem calc so only pixels are needed, $width, $height, $img are required  .
+@mixin icon-image($width, $height,$img, $offset: 0 0, $align: middle){
+  background: image-url($img) no-repeat $offset;
+  vertical-align: $align;
+  display: inline-block;
+  width: rem-calc($width);
+  height: rem-calc($height);
+}
 
+@mixin icon-offscreen{
+  text-indent: 9999px;
+}
 
+$icn-tiny-width: 15;
+$icn-tiny-height: 13;
+$icn-tiny-align: middle;
 
+.icon-author-contribute{
+  @include icon-image($icn-tiny-width, $icn-tiny-height, 'icon.author.co.gif', $align: $icn-tiny-align );
+}
 
+.icon-author-footnotes{
+  @include icon-image($icn-tiny-width, $icn-tiny-height, 'icon.author.grp.png', $align: $icn-tiny-align );
+}
+.icon-author-address{
+  @include icon-image($icn-tiny-width, $icn-tiny-height, 'icon.author.email.png', $align: $icn-tiny-align );
+}
 
+.closer {
+  @include icon-image(25, 25,'icon.sprite.close.png', 0 -24px);
+  color: $white;
+  @include icon-offscreen;
+}
+
+.closer-brand{
+  @extend .closer;
+  @extend %brand-background;
+  border-radius: $border-radius-small;
+}
+
+$zindex: (
+  modal     : 9000,
+  overlay   : 8000,
+  dropdown  : 7000,
+  titleTopFixed: 6999,
+  header    : 6000,
+  footer    : 5000
+);
+/* zindex map use example
+.header {
+  z-index: map-get($zindex, header);
+}
+*/
+
+// for one-line truncates 
+@mixin truncated ($width: 100%) {
+  width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 
 

@@ -9,12 +9,13 @@
 
 <#include "../common/head.ftl" />
 
-  <body class="article ${journalKey?lower_case}">
+<#include "../common/journalStyle.ftl" />
+  <body class="article ${journalStyle}">
 
   <input type="hidden" id="rawPubDate" value="${article.date}" />
 
   <#include "../common/header/header.ftl" />
-  <div class="plos-row">
+  <div class="set-grid">
     <section class="article-body">
       <div class="classifications">
         <p class="license-short" id="licenseShort">Open Access</p>
@@ -25,15 +26,14 @@
 
         <div class="article-type" id="artType">${article.articleType!""}</div>
       </div>
+      <#include "articleTitle.ftl" />
 
-        <h1 id="artTitle"> ${article.title} </h1>
-    <#include "authorList.ftl" />
       <ul class="date-doi">
         <li id="artPubDate">Published:  </li>
         <li id="artDoi">DOI: ${article.doi} </li>
       </ul>
 
-    <#include "tabs.ftl" />
+      <#include "tabs.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}
@@ -47,9 +47,10 @@
   </div>
   <#include "../common/footer/footer.ftl" />
 
-  <@renderJs />
+
   <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
-  <script src="<@siteLink path="resource/js/pages/article.js"/>"></script>
+  <@js src="resource/js/pages/article.js"/>
+  <@renderJs />
 
   </body>
 </html>

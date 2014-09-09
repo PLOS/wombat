@@ -4,14 +4,44 @@
 
 (function ($) {
 
-  var rawDate = document.getElementById("rawPubDate").value;
-  var articlePubDate = dateParse(rawDate, true);
+  var rawDate = document.getElementById("rawPubDate").value,
+  articlePubDate = dateParse(rawDate, true);
 
   $( document ).ready(function() {
-    $("#artPubDate").append(articlePubDate);
+   //cache the floating title div
+    var floater = $("#floatTitleTop");
 
+    $(window).on('scroll', function (){
+      //if floater has been removed, no need to run function
+      if (floater) {
+          onscroll();
+      }
+    });
+
+  $("#artPubDate").append(articlePubDate);
+
+//show title & authors on floating header if window scrolls to tabs area
+    onscroll = function() {
+      var top = $(window).scrollTop(),
+          topLimit = 420;
+
+        if ( top > topLimit ) {
+          $(floater).addClass('topVisible');
+
+          $(floater).find('.logo-close').on('click', function () {
+            $(floater).remove();
+          });
+
+        } else if ( top < topLimit ) {
+          $(floater).removeClass('topVisible');
+        }
+    };
+    // initialize toggle for author list view more
+    toggle.init();
+    // initialize tooltip for author info
+    tooltip.init(); 
   });
 
-  toggle.init();
+
 }(jQuery));
 

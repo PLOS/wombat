@@ -78,6 +78,7 @@ $grid-columns: 12;
 
 
 // layout patterns
+$border-radius-small: 3px; //icon backgrounds
 $border-radius-default: 5px;
 $border-radius-large: 8px;
 $default-box-shadow-color: rgba(0, 0, 0, 0.15);
@@ -89,6 +90,13 @@ $default-box-shadow-inset: false;
 $default-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.15);
 $default-header-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
 $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
+$default-transition-duration: .3s;
+$default-transition-function: linear;
+// typography
+
+
+
+
 
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px

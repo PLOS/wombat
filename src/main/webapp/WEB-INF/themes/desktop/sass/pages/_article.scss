@@ -4,7 +4,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
  // extensible layout styles
 
-.text-article-intro{
+.text-article-intro {
   font-size: $txt-size-default;
   color: $grey-med;
   a {
@@ -13,7 +13,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 // layout elements
-
+.set-grid {
+  @extend .plos-row;
+}
 .article-body {
   @include plos-grid-column(755, $gutter: none);
 }
@@ -33,9 +35,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-size: $txt-size-xxxsmall;
     display: inline-block;
     padding-left: $pad-smallish;
-    line-height: 17px;
+    line-height: 17px; // TEMP-PROD: change to 18px ($txt-size-large)
   }
-
   .license-short {
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
@@ -46,16 +47,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
   .article-type {
     margin-top: $pad-xsmall;
-    font-family: $font-face-fancy;  // TEMP-PROD: remove this line (should inherit body font)
+    font-family: $font-face-fancy;
     font-size: $txt-size-xxsmall;
   }
 }
-.author-list{
-  @extend .text-article-intro;
-  margin-bottom: $pad-default - $pad-small;
-  line-height: ($pad-default + $pad-xsmall); /// this will change when we add in the roll over info boxes.
-  a[data-js='toggle_trigger']{color: $clr-highlight;}
-}
+
+
 
 .article-body {
   h1 {
@@ -63,10 +60,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     margin-bottom: $pad-small;
     line-height: normal;
 
-    i, italic {
+    i, italic, named-content {
       font-style: italic;
     }
   }
+
   .date-doi {
     @include clearfix();
     @extend .text-article-intro;
@@ -82,6 +80,72 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
         padding-left: 0;
         list-style-type: none;
       }
+    }
+  }
+}
+
+.float-title {
+  position: fixed;
+  left: 0;
+  visibility: hidden;
+  top: -100px;
+  width: 100%;
+  height: rem-calc(49);
+  padding: rem-calc(7 $pad-small); // TEMP-PROD: normalize 7 to $pad-small;
+  border-bottom: 1px solid $grey-med-light;
+  background-color: $white;
+  z-index: map-get($zindex, titleTopFixed);
+}
+.topVisible {
+  visibility: visible;
+  top: 0;
+  transition-property: top;
+  transition-duration: .6s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .float-title-inner {
+    @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
+
+    h1 {
+      @include truncated();
+      font-size: $txt-size-medium;
+      font-weight: bold;
+      font-family: $font-face-plain;
+      line-height: rem-calc(16);
+      margin: rem-calc(2) 0; //TEMP-PROD: change this
+      i, italic, named-content {
+        font-style: italic;
+      }
+    }
+    #floatAuthorList {
+      height: rem-calc(16);
+      width: rem-calc(760);
+      @extend .inline-list;
+      margin: 0;
+      padding-left: 0;
+      li {
+        margin-left: 0;
+        line-height: 16px;
+        font-size: rem-calc($txt-size-xsmall);
+      }
+    }
+
+  }
+
+  .logo-close {
+    @include plos-grid-column(160, $gutter: none);
+    padding: 0 $pad-small $pad-xsmall 0;
+    display: block;
+    float: right;
+    text-align: right;
+    cursor: pointer;
+    img {
+      margin-right: $pad-smallish;
+    }
+    .close-floater {
+      @extend .closer-brand;
     }
   }
 }
@@ -143,4 +207,105 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     }
   }
 }
+
+
+.author-list{
+   @extend .text-article-intro;
+   @extend .inline-list;
+  overflow: visible;
+  margin-left: 0;// needed t overwrite the inline-list
+   margin-bottom: $pad-default - $pad-small;
+   li {
+     position: relative;
+     margin-left: 0;  // needed to overwrite the inline-list
+     > a {
+     display: inline-block;   // needed t overwrite the inline-list
+     padding: rem-calc(2 4); //TODO line-height;
+      &:hover{
+        text-decoration: none;
+      }
+      &[data-js='toggle_trigger']{
+         color: $clr-highlight;
+       }
+     }
+   }
+  .contribute{
+    @extend .icon-author-contribute;
+
+  }
+  .rel-footnote{
+    @extend .icon-author-footnotes;
+
+  }
+  .email{
+    @extend .icon-author-address;
+
+  }
+//  .contribute::after{
+//
+//    @extend .icon-author-contribute;
+//  }
+//  .footnotes::after{
+//    @extend .icon-author-footnotes;
+//  }
+//  .address::after{
+//    @extend .icon-author-address;
+//  }
+ }
+
+$icon-space: rem-calc(2);
+ .author-info {
+     @extend .pill-small;
+     padding-right: ($pad-small + $pad-small);
+     width: rem-calc(450);
+     top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
+     height: auto;
+     position:absolute;
+     margin-top: $pad-small;
+     opacity: 0;
+     @include single-transition(opacity);
+     z-index: -1;
+
+   p{
+      border-top: rem-calc(2) solid $grey-med;
+      padding: $pad-small 0;
+      &:first-child {
+        border-top: none;
+      }
+   }
+
+   .email, .rel-footnote {
+     @include icon-offscreen;
+   }
+   .rel-footnote{
+     margin-right: $icon-space;
+   }
+ }
+ .active {
+   a, a:hover{color: $white;}
+   .author-name{
+     @include rounded-pill($padding: rem-calc(2 4),$hover: false);
+
+   }
+
+   .author-info {
+     opacity: 1;
+     z-index: map-get($zindex, dropdown);
+   }
+   .close{
+    @extend .closer;
+     position: absolute;
+     top: $pad-xsmall;
+     right: $pad-xsmall;
+   }
+ }
+
+ .posRight .author-info {
+   right: 0;
+ }
+
+ [data-js-tooltip=tooltip_trigger]:focus{
+ outline: 0;
+ }
+
 

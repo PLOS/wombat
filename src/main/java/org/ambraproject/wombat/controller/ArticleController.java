@@ -2,26 +2,32 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.apache.commons.io.output.WriterOutputStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,7 +35,9 @@ import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +46,8 @@ import java.util.Map;
  */
 @Controller
 public class ArticleController extends WombatController {
+
+  private static final Logger log = LoggerFactory.getLogger(ArticleController.class);
 
   /**
    * Initial size (in bytes) of buffer that holds transformed article HTML before passing it to the model.
@@ -54,7 +64,8 @@ public class ArticleController extends WombatController {
   private ArticleTransformService articleTransformService;
 
   @RequestMapping(value = {"/article", "/{site}/article"})
-  public String renderArticle(Model model,
+  public String renderArticle(HttpServletRequest request,
+                              Model model,
                               @SiteParam Site site,
                               @RequestParam("id") String articleId)
       throws IOException {
@@ -76,6 +87,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(articleMetadata));
+    addCrossPublishedJournals(request, model, site, articleMetadata);
     requestAuthors(model, articleId);
     requestComments(model, articleId);
     return site + "/ftl/article/article";
@@ -160,6 +172,79 @@ public class ArticleController extends WombatController {
       applyAmendmentPrecedence(amendments);
     }
     return Multimaps.asMap(amendments);
+  }
+
+  /**
+   * Add links to cross-published journals to the model.
+   * <p/>
+   * Each journal in which the article was published (according to the supplied article metadata) will be represented in
+   * the model, other than the journal belonging to the site being browsed. If that journal is the only one, nothing is
+   * added to the model. The journal of original publication (according to the article metadata's eISSN) is added under
+   * the named {@code "originalPub"}, and other journals are added as a collection named {@code "crossPub"}.
+   *
+   * @param request         the contextual request (used to build cross-site links)
+   * @param model           the page model into which to insert the link values
+   * @param site            the site of the current page request
+   * @param articleMetadata metadata for an article being rendered
+   * @throws IOException
+   */
+  private void addCrossPublishedJournals(HttpServletRequest request, Model model, Site site, Map<?, ?> articleMetadata)
+      throws IOException {
+    final Map<?, ?> publishedJournals = (Map<?, ?>) articleMetadata.get("journals");
+    final String eissn = (String) articleMetadata.get("eIssn");
+    Collection<Map<String, Object>> crossPublishedJournals;
+    Map<String, Object> originalJournal = null;
+
+    if (publishedJournals.size() <= 1) {
+      // The article was published in only one journal.
+      // Assume it is the one being browsed (validateArticleVisibility would have caught it otherwise).
+      crossPublishedJournals = ImmutableList.of();
+    } else {
+      crossPublishedJournals = Lists.newArrayListWithCapacity(publishedJournals.size() - 1);
+      String localJournal = site.getJournalKey();
+
+      for (Map.Entry<?, ?> journalEntry : publishedJournals.entrySet()) {
+        String journalKey = (String) journalEntry.getKey();
+        if (journalKey.equals(localJournal)) {
+          // This is the journal being browsed right now, so don't add a link
+          continue;
+        }
+
+        // Make a mutable copy to clobber
+        Map<String, Object> crossPublishedJournalMetadata = new HashMap<>((Map<? extends String, ?>) journalEntry.getValue());
+
+        // Find the site object (if possible) for the other journal
+        String crossPublishedJournalKey = (String) crossPublishedJournalMetadata.get("journalKey");
+        Site crossPublishedSite;
+        try {
+          crossPublishedSite = site.getTheme().resolveForeignJournalKey(siteSet, crossPublishedJournalKey);
+        } catch (UnmatchedSiteException e) {
+          // The data may still be valid if the other journal is hosted on a legacy Ambra system
+          log.warn("Cross-published journal with no matching site: {}", crossPublishedJournalKey);
+          crossPublishedSite = null; // Still show the title, but without the link
+        }
+        if (crossPublishedSite != null) {
+          // Set up an href link to the other site's homepage
+          String homepageLink = crossPublishedSite.getRequestScheme().buildLink(request, "/");
+          crossPublishedJournalMetadata.put("href", homepageLink);
+
+          // Look up whether the other site wants its journal title italicized
+          // (This isn't a big deal because it's only one value, but if similar display details pile up
+          // in the future, it would be better to abstract them out than to handle them all individually here.)
+          boolean italicizeTitle = (boolean) crossPublishedSite.getTheme().getConfigMap("journal").get("italicizeTitle");
+          crossPublishedJournalMetadata.put("italicizeTitle", italicizeTitle);
+        }
+
+        if (eissn.equals(crossPublishedJournalMetadata.get("eIssn"))) {
+          originalJournal = crossPublishedJournalMetadata;
+        } else {
+          crossPublishedJournals.add(crossPublishedJournalMetadata);
+        }
+      }
+    }
+
+    model.addAttribute("crossPub", crossPublishedJournals);
+    model.addAttribute("originalPub", originalJournal);
   }
 
   /**

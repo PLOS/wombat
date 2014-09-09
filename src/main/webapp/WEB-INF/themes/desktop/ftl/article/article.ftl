@@ -31,6 +31,32 @@
       <ul class="date-doi">
         <li id="artPubDate">Published:  </li>
         <li id="artDoi">DOI: ${article.doi} </li>
+
+      <#macro crossPubTitle pub>
+        <#if pub.italicizeTitle>
+          <em>${pub.title}</em><#t/>
+        <#else>
+        ${pub.title}<#t/>
+        </#if>
+      </#macro>
+      <#macro crossPubLink prefix publications>
+      ${prefix}
+        <#list publications as pub>
+          <#if pub.href??>
+            <a href="${pub.href}"><@crossPubTitle pub /></a><#t/>
+          <#else>
+            <@crossPubTitle pub /><#t/>
+          </#if>
+          <#if pub_has_next><#t/>,</#if>
+        </#list>
+      </#macro>
+      <#if originalPub??>
+        <li><@crossPubLink "Published in", [originalPub] /></li>
+      </#if>
+      <#if crossPub?size gt 0>
+        <li><@crossPubLink "Featured in" crossPub /></li>
+      </#if>
+
       </ul>
 
       <#include "tabs.ftl" />

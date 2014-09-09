@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
@@ -21,7 +22,8 @@ public class SiteSet {
 
   private final ImmutableBiMap<String, Site> sites;
 
-  private SiteSet(Iterable<Site> sites) {
+  @VisibleForTesting // otherwise use SiteSet.create
+  public SiteSet(Iterable<Site> sites) {
     ImmutableBiMap.Builder<String, Site> map = ImmutableBiMap.builder();
     for (Site site : sites) {
       map.put(site.getKey(), site);
@@ -108,7 +110,7 @@ public class SiteSet {
   public Site getSite(String key) throws UnmatchedSiteException {
     Site site = sites.get(key);
     if (site == null) {
-      throw new UnmatchedSiteException(key);
+      throw new UnmatchedSiteException("Key not matched to site: " + key);
     }
     return site;
   }

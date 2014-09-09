@@ -73,10 +73,10 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
     li {
       float: left;
-      margin-left: $pad-small;
+      margin: 0 $pad-small;
 
       &:first-child {
-        margin: 0 $pad-smallish 0 0;
+        margin: 0 $pad-small 0 0;
         padding-left: 0;
         list-style-type: none;
       }

@@ -1,6 +1,3 @@
-/*   This file contains design components used for Journals and Wombat Generic
- *
- */
 
 /*doc
 ---
@@ -29,6 +26,7 @@ category: components
     }
   } @else {
   }
+
 }
 //extend .pill if using defaults in rounded-pill
 .pill {
@@ -214,7 +212,6 @@ have a fixed width and height (but it's not required).
       }
     }
   }
-
 }
 
 //font awesome icon: arrow after link
@@ -260,14 +257,12 @@ example | extension
   @extend .icon-fa;
   @extend .fa-twitter;
   content: '\f099';
-
 }
 
 .icon-facebook {
   @extend .icon-fa;
   @extend .fa-facebook;
   content: '\f09a';
-
 }
 
 .icon-rss {
@@ -331,12 +326,30 @@ $icn-tiny-align: middle;
   @extend %brand-background;
   border-radius: $border-radius-small;
   color: $white;
+  text-indent: 9999px;
 }
 
+$zindex: (
+  modal     : 9000,
+  overlay   : 8000,
+  dropdown  : 7000,
+  titleTopFixed: 6999,
+  header    : 6000,
+  footer    : 5000
+);
+/* zindex map use example
+.header {
+  z-index: map-get($zindex, header);
+}
+*/
 
-
-
-
+// for one-line truncates 
+@mixin truncated ($width: 100%) {
+  width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 
 

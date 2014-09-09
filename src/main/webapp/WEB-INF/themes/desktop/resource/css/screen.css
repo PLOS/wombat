@@ -259,7 +259,7 @@ select {
   width: 100%; }
 
 /* line 52, ../../sass/vendor/foundation/components/_inline-lists.scss */
-.inline-list, footer .nav-aux, .nav .nav-user, #submission-links .split-container, .author-list {
+.inline-list, footer .nav-aux, .nav .nav-user, #submission-links .split-container, .topVisible .float-title-inner #floatAuthorList, .author-list {
   margin: 0 auto 1.0625rem auto;
   margin-left: -1.375rem;
   margin-right: 0;
@@ -267,13 +267,13 @@ select {
   list-style: none;
   overflow: hidden; }
   /* line 41, ../../sass/vendor/foundation/components/_inline-lists.scss */
-  .inline-list > li, footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, .author-list > li {
+  .inline-list > li, footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, .topVisible .float-title-inner #floatAuthorList > li, .author-list > li {
     list-style: none;
     float: left;
     margin-left: 1.375rem;
     display: block; }
     /* line 46, ../../sass/vendor/foundation/components/_inline-lists.scss */
-    .inline-list > li > *, footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, .author-list > li > * {
+    .inline-list > li > *, footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, .topVisible .float-title-inner #floatAuthorList > li > *, .author-list > li > * {
       display: block; }
 
 /* line 91, ../../sass/vendor/foundation/components/_labels.scss */
@@ -4190,9 +4190,6 @@ example | extension
   z-index: map-get($zindex, header);
 }
 */
-/*   This file contains design components used for Journals and Wombat Generic
- *
- */
 /*doc
 ---
 title: small components
@@ -4206,17 +4203,17 @@ category: components
 
 
 */
-/* line 34, ../../sass/_components.scss */
+/* line 32, ../../sass/_components.scss */
 .pill {
   background: #3c63af;
   padding: 1.25rem;
   border-radius: 5px;
   color: white; }
-  /* line 27, ../../sass/_components.scss */
+  /* line 24, ../../sass/_components.scss */
   .pill:hover {
     background: #333333; }
 
-/* line 38, ../../sass/_components.scss */
+/* line 36, ../../sass/_components.scss */
 .pill-small, .author-info {
   background: #3c63af;
   padding: 0.625rem;
@@ -4256,7 +4253,7 @@ variable  | result   | default
 `$color: COLOR` | sets the background color   |   `$white`
 
 */
-/* line 103, ../../sass/_components.scss */
+/* line 101, ../../sass/_components.scss */
 .block, #article-list, #issue {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -4271,7 +4268,7 @@ variable  | result   | default
   margin-bottom: 1.25rem;
   background: white; }
 
-/* line 106, ../../sass/_components.scss */
+/* line 104, ../../sass/_components.scss */
 .block-noshadow {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -4283,7 +4280,7 @@ variable  | result   | default
   margin-bottom: 1.25rem;
   background: white; }
 
-/* line 110, ../../sass/_components.scss */
+/* line 108, ../../sass/_components.scss */
 .block-card, .carousel-wrap.small, .linkbox, #blogs, #ad-slot-bottom .ad-item iframe {
   padding: 0;
   -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
@@ -4298,7 +4295,7 @@ Set a width here to define how much items are visible.
 The width can be either fixed in px or flexible in %.
 Position must be relative!
 */
-/* line 128, ../../sass/_components.scss */
+/* line 126, ../../sass/_components.scss */
 .jcarousel {
   position: relative;
   overflow: hidden; }
@@ -4308,7 +4305,7 @@ This is the container of the carousel items.
 You must ensure that the position is relative or absolute and
 that the width is big enough to contain all items.
 */
-/* line 138, ../../sass/_components.scss */
+/* line 136, ../../sass/_components.scss */
 .jcarousel ul {
   width: 20000em;
   position: relative;
@@ -4321,41 +4318,41 @@ that the width is big enough to contain all items.
 These are the item elements. jCarousel works best, if the items
 have a fixed width and height (but it's not required).
 */
-/* line 152, ../../sass/_components.scss */
+/* line 150, ../../sass/_components.scss */
 .jcarousel li {
   /* Required only for block elements like <li>'s */
   float: left; }
 
-/* line 158, ../../sass/_components.scss */
+/* line 156, ../../sass/_components.scss */
 .carousel-wrap.small {
   margin-right: 1.25rem;
   position: relative; }
-  /* line 170, ../../sass/_components.scss */
+  /* line 168, ../../sass/_components.scss */
   .carousel-wrap.small .carousel li {
     width: 19.125rem;
     padding: 1.25rem;
     height: 145px; }
-    /* line 178, ../../sass/_components.scss */
+    /* line 176, ../../sass/_components.scss */
     .carousel-wrap.small .carousel li p {
       font-size: 0.875rem; }
-  /* line 183, ../../sass/_components.scss */
+  /* line 181, ../../sass/_components.scss */
   .carousel-wrap.small .carousel-control {
     position: absolute;
     bottom: 10px;
     left: 50%;
     width: 120px;
     margin-left: -50px; }
-    /* line 189, ../../sass/_components.scss */
+    /* line 187, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .jcarousel-prev,
     .carousel-wrap.small .carousel-control .jcarousel-next {
       font-size: 1.875rem; }
-    /* line 203, ../../sass/_components.scss */
+    /* line 201, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .numbers {
       color: #666666;
       display: inline-block;
       padding: 0 0.3125rem;
       vertical-align: top; }
-      /* line 209, ../../sass/_components.scss */
+      /* line 207, ../../sass/_components.scss */
       .carousel-wrap.small .carousel-control .numbers span {
         display: inline-block;
         vertical-align: middle;
@@ -4381,48 +4378,48 @@ example | extension
 <p class="icon-email"> email</p> | `@extend .icon-email`
 
 */
-/* line 244, ../../sass/_components.scss */
+/* line 241, ../../sass/_components.scss */
 .more-icon, .more-link:after {
   content: '\f138';
   padding-left: 0.1875rem; }
 
-/* line 253, ../../sass/_components.scss */
+/* line 250, ../../sass/_components.scss */
 .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus, .icon-close {
   line-height: 44px;
   font-size: 22px; }
 
-/* line 259, ../../sass/_components.scss */
+/* line 256, ../../sass/_components.scss */
 .icon-twitter {
   content: '\f099'; }
 
-/* line 266, ../../sass/_components.scss */
+/* line 262, ../../sass/_components.scss */
 .icon-facebook {
   content: '\f09a'; }
 
-/* line 273, ../../sass/_components.scss */
+/* line 268, ../../sass/_components.scss */
 .icon-rss {
   content: '\f09e'; }
 
-/* line 279, ../../sass/_components.scss */
+/* line 274, ../../sass/_components.scss */
 .icon-email {
   content: '\f003'; }
 
-/* line 284, ../../sass/_components.scss */
+/* line 279, ../../sass/_components.scss */
 .icon-plus {
   line-height: normal; }
 
-/* line 289, ../../sass/_components.scss */
+/* line 284, ../../sass/_components.scss */
 .icon-close {
   line-height: normal;
   content: '\f00d'; }
 
-/* line 295, ../../sass/_components.scss */
+/* line 290, ../../sass/_components.scss */
 .aria-text, #social-links ul > li .icon-text {
   position: absolute;
   top: -9999px;
   left: -9999px; }
 
-/* line 318, ../../sass/_components.scss */
+/* line 313, ../../sass/_components.scss */
 .icon-author-contribute, .author-list .contribute {
   background: url('../img/icon.author.co.gif') no-repeat 0 0;
   vertical-align: middle;
@@ -4430,7 +4427,7 @@ example | extension
   width: 0.9375rem;
   height: 0.8125rem; }
 
-/* line 322, ../../sass/_components.scss */
+/* line 317, ../../sass/_components.scss */
 .icon-author-footnotes, .author-list .rel-footnote {
   background: url('../img/icon.author.grp.png') no-repeat 0 0;
   vertical-align: middle;
@@ -4438,7 +4435,7 @@ example | extension
   width: 0.9375rem;
   height: 0.8125rem; }
 
-/* line 325, ../../sass/_components.scss */
+/* line 320, ../../sass/_components.scss */
 .icon-author-address, .author-list .email {
   background: url('../img/icon.author.email.png') no-repeat 0 0;
   vertical-align: middle;
@@ -4446,7 +4443,7 @@ example | extension
   width: 0.9375rem;
   height: 0.8125rem; }
 
-/* line 329, ../../sass/_components.scss */
+/* line 324, ../../sass/_components.scss */
 .closer, .topVisible .logo-close .close-floater {
   background: url('../img/icon.sprite.close.png') no-repeat 0 -24px;
   vertical-align: middle;
@@ -4454,8 +4451,14 @@ example | extension
   width: 1.5625rem;
   height: 1.5625rem;
   border-radius: 3px;
-  color: white; }
+  color: white;
+  text-indent: 9999px; }
 
+/* zindex map use example
+.header {
+  z-index: map-get($zindex, header);
+}
+*/
 /*doc
 ---
 title: typography.scss
@@ -4568,7 +4571,7 @@ header {
       border-radius: 5px;
       color: white;
       color: #3c63af; }
-      /* line 27, ../../sass/_components.scss */
+      /* line 24, ../../sass/_components.scss */
       .nav .nav-user > li > a:hover {
         background: #333333; }
       /* line 59, ../../sass/sections/_header.scss */
@@ -4684,7 +4687,7 @@ header {
       margin-left: 0.9375rem;
       padding: 0 0.625rem;
       line-height: 35px; }
-      /* line 27, ../../sass/_components.scss */
+      /* line 24, ../../sass/_components.scss */
       .top-bar-section ul > li.has-dropdown.hover a.btn:hover {
         background: #333333; }
       /* line 184, ../../sass/sections/_header.scss */
@@ -5346,12 +5349,9 @@ header {
   margin-bottom: 0.625rem;
   line-height: normal; }
   /* line 68, ../../sass/pages/_article.scss */
-  .article-body h1 i, .article-body h1 italic {
+  .article-body h1 i, .article-body h1 italic, .article-body h1 named-content {
     font-style: italic; }
-/* line 72, ../../sass/pages/_article.scss */
-.article-body .logo-close {
-  display: none; }
-/* line 75, ../../sass/pages/_article.scss */
+/* line 73, ../../sass/pages/_article.scss */
 .article-body .date-doi {
   *zoom: 1;
   margin: 0;
@@ -5363,86 +5363,110 @@ header {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   .article-body .date-doi:after {
     clear: both; }
-  /* line 81, ../../sass/pages/_article.scss */
+  /* line 79, ../../sass/pages/_article.scss */
   .article-body .date-doi li {
     float: left;
     margin-left: 0.625rem; }
-    /* line 85, ../../sass/pages/_article.scss */
+    /* line 83, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
       margin: 0 0.9375rem 0 0;
       padding-left: 0;
       list-style-type: none; }
 
-/* line 94, ../../sass/pages/_article.scss */
-.topVisible {
+/* line 92, ../../sass/pages/_article.scss */
+.float-title {
   position: fixed;
-  top: 0;
   left: 0;
+  visibility: hidden;
+  top: -100px;
   width: 100%;
   height: 3.0625rem;
+  padding: 0.4375rem 0.03906rem;
   border-bottom: 1px solid #cccccc;
   background-color: white;
-  z-index: 6999;
-  padding: 0.3125rem 0;
+  z-index: 6999; }
+
+/* line 104, ../../sass/pages/_article.scss */
+.topVisible {
+  visibility: visible;
+  top: 0;
   transition-property: top;
-  transition-duration: .75s;
+  transition-duration: .6s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   overflow: hidden;
   box-sizing: border-box; }
-  /* line 110, ../../sass/pages/_article.scss */
-  .topVisible .title-authors {
+  /* line 113, ../../sass/pages/_article.scss */
+  .topVisible .float-title-inner {
     float: left;
-    width: 47.1875rem; }
-    /* line 112, ../../sass/pages/_article.scss */
-    .topVisible .title-authors h1 {
+    width: 47.5rem;
+    margin-left: 1.125rem; }
+    /* line 116, ../../sass/pages/_article.scss */
+    .topVisible .float-title-inner h1 {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       font-size: 14px;
       font-weight: bold;
-      font-family: "arial"; }
-    /* line 117, ../../sass/pages/_article.scss */
-    .topVisible .title-authors p.author-list {
-      line-height: normal; }
-  /* line 122, ../../sass/pages/_article.scss */
+      font-family: "arial";
+      line-height: 1rem;
+      margin: 0.125rem 0; }
+      /* line 123, ../../sass/pages/_article.scss */
+      .topVisible .float-title-inner h1 i, .topVisible .float-title-inner h1 italic, .topVisible .float-title-inner h1 named-content {
+        font-style: italic; }
+    /* line 127, ../../sass/pages/_article.scss */
+    .topVisible .float-title-inner #floatAuthorList {
+      height: 1rem;
+      width: 47.5rem;
+      margin: 0;
+      padding-left: 0; }
+      /* line 133, ../../sass/pages/_article.scss */
+      .topVisible .float-title-inner #floatAuthorList li {
+        margin-left: 0;
+        line-height: 16px;
+        font-size: 0.75rem; }
+  /* line 142, ../../sass/pages/_article.scss */
   .topVisible .logo-close {
     float: left;
-    width: 8.75rem;
-    padding: 0.3125rem 0;
+    width: 10rem;
+    padding: 0 0.625rem 0.3125rem 0;
     display: block;
     float: right;
     text-align: right;
     cursor: pointer; }
-    /* line 129, ../../sass/pages/_article.scss */
+    /* line 149, ../../sass/pages/_article.scss */
     .topVisible .logo-close img {
       margin-right: 0.9375rem; }
 
-/* line 140, ../../sass/pages/_article.scss */
+/* line 160, ../../sass/pages/_article.scss */
 .article-tabs {
   display: table;
   table-layout: fixed;
   margin-bottom: 1.25rem;
   width: 100%;
   margin-left: 0; }
-  /* line 146, ../../sass/pages/_article.scss */
+  /* line 166, ../../sass/pages/_article.scss */
   .article-tabs .tab-title {
     margin-left: 0;
     display: table-cell;
     float: none;
     position: static; }
-    /* line 152, ../../sass/pages/_article.scss */
+    /* line 172, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-1 {
       background: #2b2b2b; }
-    /* line 155, ../../sass/pages/_article.scss */
+    /* line 175, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-2 {
       background: #454545; }
-    /* line 158, ../../sass/pages/_article.scss */
+    /* line 178, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-3 {
       background: #5e5e5e; }
-    /* line 161, ../../sass/pages/_article.scss */
+    /* line 181, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-4 {
       background: #777777; }
-    /* line 164, ../../sass/pages/_article.scss */
+    /* line 184, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-5 {
       background: #919191; }
-    /* line 167, ../../sass/pages/_article.scss */
+    /* line 187, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
@@ -5450,11 +5474,11 @@ header {
       border-right: 1px solid white;
       font-weight: bold;
       color: white; }
-      /* line 174, ../../sass/pages/_article.scss */
+      /* line 194, ../../sass/pages/_article.scss */
       .article-tabs .tab-title a:hover {
         background: #3c63af;
         color: white; }
-    /* line 179, ../../sass/pages/_article.scss */
+    /* line 199, ../../sass/pages/_article.scss */
     .article-tabs .tab-title.active a {
       position: relative;
       height: 83px;
@@ -5463,24 +5487,24 @@ header {
       background-image: url('../img/icon.tabs.active.white.png');
       background-repeat: no-repeat;
       background-position: 9px 65px; }
-      /* line 188, ../../sass/pages/_article.scss */
+      /* line 208, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }
 
-/* line 244, ../../sass/pages/_article.scss */
+/* line 264, ../../sass/pages/_article.scss */
 .author-list {
   overflow: visible;
   margin-bottom: 0.625rem; }
-  /* line 249, ../../sass/pages/_article.scss */
+  /* line 269, ../../sass/pages/_article.scss */
   .author-list li {
     position: relative;
     margin-left: 0; }
-    /* line 252, ../../sass/pages/_article.scss */
+    /* line 272, ../../sass/pages/_article.scss */
     .author-list li > a {
       display: inline-block;
       padding: 2px 4px; }
 
-/* line 281, ../../sass/pages/_article.scss */
+/* line 301, ../../sass/pages/_article.scss */
 .author-info {
   width: 28.125rem;
   top: 1.4375rem;
@@ -5489,31 +5513,31 @@ header {
   margin-top: 0.625rem;
   transition: opacity 300ms ease-out;
   opacity: 0; }
-  /* line 291, ../../sass/pages/_article.scss */
+  /* line 311, ../../sass/pages/_article.scss */
   .author-info p {
     border-top: 2px solid #666666;
     padding: 0.625rem 0; }
-    /* line 294, ../../sass/pages/_article.scss */
+    /* line 314, ../../sass/pages/_article.scss */
     .author-info p:first-child {
       border-top: none; }
-  /* line 299, ../../sass/pages/_article.scss */
+  /* line 319, ../../sass/pages/_article.scss */
   .author-info .email, .author-info .rel-footnote {
     text-indent: -300000px; }
 
-/* line 304, ../../sass/pages/_article.scss */
+/* line 324, ../../sass/pages/_article.scss */
 .active a, .active a:hover {
   color: white; }
-/* line 305, ../../sass/pages/_article.scss */
+/* line 325, ../../sass/pages/_article.scss */
 .active .author-name {
   background: #3c63af;
   padding: 2px 4px;
   border-radius: 5px;
   color: white; }
-/* line 309, ../../sass/pages/_article.scss */
+/* line 329, ../../sass/pages/_article.scss */
 .active .author-info {
   opacity: 1;
   z-index: 7000; }
-/* line 313, ../../sass/pages/_article.scss */
+/* line 333, ../../sass/pages/_article.scss */
 .active .close {
   line-height: normal;
   font-size: 18px;
@@ -5521,10 +5545,10 @@ header {
   top: 0.625rem;
   right: 0.625rem; }
 
-/* line 323, ../../sass/pages/_article.scss */
+/* line 343, ../../sass/pages/_article.scss */
 .posRight .author-info {
   right: 0; }
 
-/* line 327, ../../sass/pages/_article.scss */
+/* line 347, ../../sass/pages/_article.scss */
 [data-js=tooltip_trigger]:focus {
   outline: 0; }

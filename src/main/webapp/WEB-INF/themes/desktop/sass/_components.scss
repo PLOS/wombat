@@ -9,8 +9,6 @@ category: components
 ##pill
 <p class="pill">I am a pill</p>
 `@extend %pill`
-
-
 */
 
 
@@ -323,10 +321,14 @@ $icn-tiny-align: middle;
 
 .closer {
   @include icon-image(25, 25,'icon.sprite.close.png', 0 -24px);
-  @extend %brand-background;
-  border-radius: $border-radius-small;
   color: $white;
   text-indent: 9999px;
+}
+
+.closer-brand{
+  @extend .closer;
+  @extend %brand-background;
+  border-radius: $border-radius-small;
 }
 
 $zindex: (

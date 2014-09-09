@@ -4054,7 +4054,7 @@ footer, .head-top {
 .plosbiology .head-top, .ploscompbiol .head-top, .plosgenetics .head-top {
   border-color: #16a127; }
 /* line 106, ../../sass/_utilities.scss */
-.plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology .closer, .plosbiology .topVisible .logo-close .close-floater, .topVisible .logo-close .plosbiology .close-floater, .plosbiology .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosbiology a, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol .closer, .ploscompbiol .topVisible .logo-close .close-floater, .topVisible .logo-close .ploscompbiol .close-floater, .ploscompbiol .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscompbiol a, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics .closer, .plosgenetics .topVisible .logo-close .close-floater, .topVisible .logo-close .plosgenetics .close-floater, .plosgenetics .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosgenetics a {
+.plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology .closer-brand, .plosbiology .topVisible .logo-close .close-floater, .topVisible .logo-close .plosbiology .close-floater, .plosbiology .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosbiology a, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol .closer-brand, .ploscompbiol .topVisible .logo-close .close-floater, .topVisible .logo-close .ploscompbiol .close-floater, .ploscompbiol .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscompbiol a, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics .closer-brand, .plosgenetics .topVisible .logo-close .close-floater, .topVisible .logo-close .plosgenetics .close-floater, .plosgenetics .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosgenetics a {
   background-color: #16a127; }
 /* line 109, ../../sass/_utilities.scss */
 .plosbiology .nav .nav-user li.highlighted > a, .nav .nav-user .plosbiology li.highlighted > a, .plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol .nav .nav-user li.highlighted > a, .nav .nav-user .ploscompbiol li.highlighted > a, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics .nav .nav-user li.highlighted > a, .nav .nav-user .plosgenetics li.highlighted > a, .plosgenetics #billboard a, #billboard .plosgenetics a {
@@ -4100,7 +4100,7 @@ footer, .head-top {
 .plosmedicine .head-top, .plospathogens .head-top, .plosntd .head-top {
   border-color: #891fb1; }
 /* line 106, ../../sass/_utilities.scss */
-.plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine .closer, .plosmedicine .topVisible .logo-close .close-floater, .topVisible .logo-close .plosmedicine .close-floater, .plosmedicine .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosmedicine a, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens .closer, .plospathogens .topVisible .logo-close .close-floater, .topVisible .logo-close .plospathogens .close-floater, .plospathogens .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plospathogens a, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd .closer, .plosntd .topVisible .logo-close .close-floater, .topVisible .logo-close .plosntd .close-floater, .plosntd .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosntd a {
+.plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine .closer-brand, .plosmedicine .topVisible .logo-close .close-floater, .topVisible .logo-close .plosmedicine .close-floater, .plosmedicine .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosmedicine a, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens .closer-brand, .plospathogens .topVisible .logo-close .close-floater, .topVisible .logo-close .plospathogens .close-floater, .plospathogens .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plospathogens a, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd .closer-brand, .plosntd .topVisible .logo-close .close-floater, .topVisible .logo-close .plosntd .close-floater, .plosntd .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosntd a {
   background-color: #891fb1; }
 /* line 109, ../../sass/_utilities.scss */
 .plosmedicine .nav .nav-user li.highlighted > a, .nav .nav-user .plosmedicine li.highlighted > a, .plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens .nav .nav-user li.highlighted > a, .nav .nav-user .plospathogens li.highlighted > a, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd .nav .nav-user li.highlighted > a, .nav .nav-user .plosntd li.highlighted > a, .plosntd #billboard a, #billboard .plosntd a {
@@ -4200,20 +4200,18 @@ category: components
 ##pill
 <p class="pill">I am a pill</p>
 `@extend %pill`
-
-
 */
-/* line 32, ../../sass/_components.scss */
+/* line 30, ../../sass/_components.scss */
 .pill {
   background: #3c63af;
   padding: 1.25rem;
   border-radius: 5px;
   color: white; }
-  /* line 24, ../../sass/_components.scss */
+  /* line 22, ../../sass/_components.scss */
   .pill:hover {
     background: #333333; }
 
-/* line 36, ../../sass/_components.scss */
+/* line 34, ../../sass/_components.scss */
 .pill-small, .author-info {
   background: #3c63af;
   padding: 0.625rem;
@@ -4253,7 +4251,7 @@ variable  | result   | default
 `$color: COLOR` | sets the background color   |   `$white`
 
 */
-/* line 101, ../../sass/_components.scss */
+/* line 99, ../../sass/_components.scss */
 .block, #article-list, #issue {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -4268,7 +4266,7 @@ variable  | result   | default
   margin-bottom: 1.25rem;
   background: white; }
 
-/* line 104, ../../sass/_components.scss */
+/* line 102, ../../sass/_components.scss */
 .block-noshadow {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -4280,7 +4278,7 @@ variable  | result   | default
   margin-bottom: 1.25rem;
   background: white; }
 
-/* line 108, ../../sass/_components.scss */
+/* line 106, ../../sass/_components.scss */
 .block-card, .carousel-wrap.small, .linkbox, #blogs, #ad-slot-bottom .ad-item iframe {
   padding: 0;
   -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
@@ -4295,7 +4293,7 @@ Set a width here to define how much items are visible.
 The width can be either fixed in px or flexible in %.
 Position must be relative!
 */
-/* line 126, ../../sass/_components.scss */
+/* line 124, ../../sass/_components.scss */
 .jcarousel {
   position: relative;
   overflow: hidden; }
@@ -4305,7 +4303,7 @@ This is the container of the carousel items.
 You must ensure that the position is relative or absolute and
 that the width is big enough to contain all items.
 */
-/* line 136, ../../sass/_components.scss */
+/* line 134, ../../sass/_components.scss */
 .jcarousel ul {
   width: 20000em;
   position: relative;
@@ -4318,41 +4316,41 @@ that the width is big enough to contain all items.
 These are the item elements. jCarousel works best, if the items
 have a fixed width and height (but it's not required).
 */
-/* line 150, ../../sass/_components.scss */
+/* line 148, ../../sass/_components.scss */
 .jcarousel li {
   /* Required only for block elements like <li>'s */
   float: left; }
 
-/* line 156, ../../sass/_components.scss */
+/* line 154, ../../sass/_components.scss */
 .carousel-wrap.small {
   margin-right: 1.25rem;
   position: relative; }
-  /* line 168, ../../sass/_components.scss */
+  /* line 166, ../../sass/_components.scss */
   .carousel-wrap.small .carousel li {
     width: 19.125rem;
     padding: 1.25rem;
     height: 145px; }
-    /* line 176, ../../sass/_components.scss */
+    /* line 174, ../../sass/_components.scss */
     .carousel-wrap.small .carousel li p {
       font-size: 0.875rem; }
-  /* line 181, ../../sass/_components.scss */
+  /* line 179, ../../sass/_components.scss */
   .carousel-wrap.small .carousel-control {
     position: absolute;
     bottom: 10px;
     left: 50%;
     width: 120px;
     margin-left: -50px; }
-    /* line 187, ../../sass/_components.scss */
+    /* line 185, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .jcarousel-prev,
     .carousel-wrap.small .carousel-control .jcarousel-next {
       font-size: 1.875rem; }
-    /* line 201, ../../sass/_components.scss */
+    /* line 199, ../../sass/_components.scss */
     .carousel-wrap.small .carousel-control .numbers {
       color: #666666;
       display: inline-block;
       padding: 0 0.3125rem;
       vertical-align: top; }
-      /* line 207, ../../sass/_components.scss */
+      /* line 205, ../../sass/_components.scss */
       .carousel-wrap.small .carousel-control .numbers span {
         display: inline-block;
         vertical-align: middle;
@@ -4378,48 +4376,48 @@ example | extension
 <p class="icon-email"> email</p> | `@extend .icon-email`
 
 */
-/* line 241, ../../sass/_components.scss */
+/* line 239, ../../sass/_components.scss */
 .more-icon, .more-link:after {
   content: '\f138';
   padding-left: 0.1875rem; }
 
-/* line 250, ../../sass/_components.scss */
+/* line 248, ../../sass/_components.scss */
 .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus, .icon-close {
   line-height: 44px;
   font-size: 22px; }
 
-/* line 256, ../../sass/_components.scss */
+/* line 254, ../../sass/_components.scss */
 .icon-twitter {
   content: '\f099'; }
 
-/* line 262, ../../sass/_components.scss */
+/* line 260, ../../sass/_components.scss */
 .icon-facebook {
   content: '\f09a'; }
 
-/* line 268, ../../sass/_components.scss */
+/* line 266, ../../sass/_components.scss */
 .icon-rss {
   content: '\f09e'; }
 
-/* line 274, ../../sass/_components.scss */
+/* line 272, ../../sass/_components.scss */
 .icon-email {
   content: '\f003'; }
 
-/* line 279, ../../sass/_components.scss */
+/* line 277, ../../sass/_components.scss */
 .icon-plus {
   line-height: normal; }
 
-/* line 284, ../../sass/_components.scss */
+/* line 282, ../../sass/_components.scss */
 .icon-close {
   line-height: normal;
   content: '\f00d'; }
 
-/* line 290, ../../sass/_components.scss */
+/* line 288, ../../sass/_components.scss */
 .aria-text, #social-links ul > li .icon-text {
   position: absolute;
   top: -9999px;
   left: -9999px; }
 
-/* line 313, ../../sass/_components.scss */
+/* line 311, ../../sass/_components.scss */
 .icon-author-contribute, .author-list .contribute {
   background: url('../img/icon.author.co.gif') no-repeat 0 0;
   vertical-align: middle;
@@ -4427,7 +4425,7 @@ example | extension
   width: 0.9375rem;
   height: 0.8125rem; }
 
-/* line 317, ../../sass/_components.scss */
+/* line 315, ../../sass/_components.scss */
 .icon-author-footnotes, .author-list .rel-footnote {
   background: url('../img/icon.author.grp.png') no-repeat 0 0;
   vertical-align: middle;
@@ -4435,7 +4433,7 @@ example | extension
   width: 0.9375rem;
   height: 0.8125rem; }
 
-/* line 320, ../../sass/_components.scss */
+/* line 318, ../../sass/_components.scss */
 .icon-author-address, .author-list .email {
   background: url('../img/icon.author.email.png') no-repeat 0 0;
   vertical-align: middle;
@@ -4443,16 +4441,19 @@ example | extension
   width: 0.9375rem;
   height: 0.8125rem; }
 
-/* line 324, ../../sass/_components.scss */
-.closer, .topVisible .logo-close .close-floater {
+/* line 322, ../../sass/_components.scss */
+.closer, .closer-brand, .topVisible .logo-close .close-floater, .active .close {
   background: url('../img/icon.sprite.close.png') no-repeat 0 -24px;
   vertical-align: middle;
   display: inline-block;
   width: 1.5625rem;
   height: 1.5625rem;
-  border-radius: 3px;
   color: white;
   text-indent: 9999px; }
+
+/* line 328, ../../sass/_components.scss */
+.closer-brand, .topVisible .logo-close .close-floater {
+  border-radius: 3px; }
 
 /* zindex map use example
 .header {
@@ -4571,7 +4572,7 @@ header {
       border-radius: 5px;
       color: white;
       color: #3c63af; }
-      /* line 24, ../../sass/_components.scss */
+      /* line 22, ../../sass/_components.scss */
       .nav .nav-user > li > a:hover {
         background: #333333; }
       /* line 59, ../../sass/sections/_header.scss */
@@ -4687,7 +4688,7 @@ header {
       margin-left: 0.9375rem;
       padding: 0 0.625rem;
       line-height: 35px; }
-      /* line 24, ../../sass/_components.scss */
+      /* line 22, ../../sass/_components.scss */
       .top-bar-section ul > li.has-dropdown.hover a.btn:hover {
         background: #333333; }
       /* line 184, ../../sass/sections/_header.scss */
@@ -5284,15 +5285,15 @@ header {
     margin-bottom: 1.875rem; }
 
 /* line 7, ../../sass/pages/_article.scss */
-.text-article-intro, .author-list, .article-body .date-doi {
+.text-article-intro, .article-body .date-doi, .author-list {
   font-size: 13px;
   color: #666666; }
   /* line 10, ../../sass/pages/_article.scss */
-  .text-article-intro a, .author-list a, .article-body .date-doi a {
+  .text-article-intro a, .article-body .date-doi a, .author-list a {
     color: #666666;
     text-decoration: none; }
     /* line 132, ../../sass/_typography.scss */
-    .text-article-intro a:hover, .author-list a:hover, .article-body .date-doi a:hover, .text-article-intro a a:hover, .author-list a a:hover, .article-body .date-doi a a:hover {
+    .text-article-intro a:hover, .article-body .date-doi a:hover, .author-list a:hover, .text-article-intro a a:hover, .article-body .date-doi a a:hover, .author-list a a:hover {
       color: #666666;
       text-decoration: underline; }
 
@@ -5335,23 +5336,15 @@ header {
     font-family: "albert";
     font-size: 11px; }
 
-/* line 55, ../../sass/pages/_article.scss */
-.author-list {
-  margin-bottom: 0.625rem;
-  line-height: 1.5625rem; }
-  /* line 59, ../../sass/pages/_article.scss */
-  .author-list a[data-js='toggle_trigger'] {
-    color: #3c63af; }
-
-/* line 63, ../../sass/pages/_article.scss */
+/* line 58, ../../sass/pages/_article.scss */
 .article-body h1 {
   font-size: 27px;
   margin-bottom: 0.625rem;
   line-height: normal; }
-  /* line 68, ../../sass/pages/_article.scss */
+  /* line 63, ../../sass/pages/_article.scss */
   .article-body h1 i, .article-body h1 italic, .article-body h1 named-content {
     font-style: italic; }
-/* line 73, ../../sass/pages/_article.scss */
+/* line 68, ../../sass/pages/_article.scss */
 .article-body .date-doi {
   *zoom: 1;
   margin: 0;
@@ -5363,17 +5356,17 @@ header {
   /* line 117, ../../sass/vendor/foundation/components/_global.scss */
   .article-body .date-doi:after {
     clear: both; }
-  /* line 79, ../../sass/pages/_article.scss */
+  /* line 74, ../../sass/pages/_article.scss */
   .article-body .date-doi li {
     float: left;
     margin-left: 0.625rem; }
-    /* line 83, ../../sass/pages/_article.scss */
+    /* line 78, ../../sass/pages/_article.scss */
     .article-body .date-doi li:first-child {
       margin: 0 0.9375rem 0 0;
       padding-left: 0;
       list-style-type: none; }
 
-/* line 92, ../../sass/pages/_article.scss */
+/* line 87, ../../sass/pages/_article.scss */
 .float-title {
   position: fixed;
   left: 0;
@@ -5386,7 +5379,7 @@ header {
   background-color: white;
   z-index: 6999; }
 
-/* line 104, ../../sass/pages/_article.scss */
+/* line 99, ../../sass/pages/_article.scss */
 .topVisible {
   visibility: visible;
   top: 0;
@@ -5395,12 +5388,12 @@ header {
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   overflow: hidden;
   box-sizing: border-box; }
-  /* line 113, ../../sass/pages/_article.scss */
+  /* line 108, ../../sass/pages/_article.scss */
   .topVisible .float-title-inner {
     float: left;
     width: 47.5rem;
     margin-left: 1.125rem; }
-    /* line 116, ../../sass/pages/_article.scss */
+    /* line 111, ../../sass/pages/_article.scss */
     .topVisible .float-title-inner h1 {
       width: 100%;
       white-space: nowrap;
@@ -5411,21 +5404,21 @@ header {
       font-family: "arial";
       line-height: 1rem;
       margin: 0.125rem 0; }
-      /* line 123, ../../sass/pages/_article.scss */
+      /* line 118, ../../sass/pages/_article.scss */
       .topVisible .float-title-inner h1 i, .topVisible .float-title-inner h1 italic, .topVisible .float-title-inner h1 named-content {
         font-style: italic; }
-    /* line 127, ../../sass/pages/_article.scss */
+    /* line 122, ../../sass/pages/_article.scss */
     .topVisible .float-title-inner #floatAuthorList {
       height: 1rem;
       width: 47.5rem;
       margin: 0;
       padding-left: 0; }
-      /* line 133, ../../sass/pages/_article.scss */
+      /* line 128, ../../sass/pages/_article.scss */
       .topVisible .float-title-inner #floatAuthorList li {
         margin-left: 0;
         line-height: 16px;
         font-size: 0.75rem; }
-  /* line 142, ../../sass/pages/_article.scss */
+  /* line 137, ../../sass/pages/_article.scss */
   .topVisible .logo-close {
     float: left;
     width: 10rem;
@@ -5434,39 +5427,39 @@ header {
     float: right;
     text-align: right;
     cursor: pointer; }
-    /* line 149, ../../sass/pages/_article.scss */
+    /* line 144, ../../sass/pages/_article.scss */
     .topVisible .logo-close img {
       margin-right: 0.9375rem; }
 
-/* line 160, ../../sass/pages/_article.scss */
+/* line 155, ../../sass/pages/_article.scss */
 .article-tabs {
   display: table;
   table-layout: fixed;
   margin-bottom: 1.25rem;
   width: 100%;
   margin-left: 0; }
-  /* line 166, ../../sass/pages/_article.scss */
+  /* line 161, ../../sass/pages/_article.scss */
   .article-tabs .tab-title {
     margin-left: 0;
     display: table-cell;
     float: none;
     position: static; }
-    /* line 172, ../../sass/pages/_article.scss */
+    /* line 167, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-1 {
       background: #2b2b2b; }
-    /* line 175, ../../sass/pages/_article.scss */
+    /* line 170, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-2 {
       background: #454545; }
-    /* line 178, ../../sass/pages/_article.scss */
+    /* line 173, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-3 {
       background: #5e5e5e; }
-    /* line 181, ../../sass/pages/_article.scss */
+    /* line 176, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-4 {
       background: #777777; }
-    /* line 184, ../../sass/pages/_article.scss */
+    /* line 179, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a.article-tab-5 {
       background: #919191; }
-    /* line 187, ../../sass/pages/_article.scss */
+    /* line 182, ../../sass/pages/_article.scss */
     .article-tabs .tab-title a {
       display: block;
       height: 75px;
@@ -5474,11 +5467,11 @@ header {
       border-right: 1px solid white;
       font-weight: bold;
       color: white; }
-      /* line 194, ../../sass/pages/_article.scss */
+      /* line 189, ../../sass/pages/_article.scss */
       .article-tabs .tab-title a:hover {
         background: #3c63af;
         color: white; }
-    /* line 199, ../../sass/pages/_article.scss */
+    /* line 194, ../../sass/pages/_article.scss */
     .article-tabs .tab-title.active a {
       position: relative;
       height: 83px;
@@ -5487,63 +5480,66 @@ header {
       background-image: url('../img/icon.tabs.active.white.png');
       background-repeat: no-repeat;
       background-position: 9px 65px; }
-      /* line 208, ../../sass/pages/_article.scss */
+      /* line 203, ../../sass/pages/_article.scss */
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }
 
-/* line 264, ../../sass/pages/_article.scss */
+/* line 260, ../../sass/pages/_article.scss */
 .author-list {
   overflow: visible;
+  margin-left: 0;
   margin-bottom: 0.625rem; }
-  /* line 269, ../../sass/pages/_article.scss */
+  /* line 266, ../../sass/pages/_article.scss */
   .author-list li {
     position: relative;
     margin-left: 0; }
-    /* line 272, ../../sass/pages/_article.scss */
+    /* line 269, ../../sass/pages/_article.scss */
     .author-list li > a {
       display: inline-block;
-      padding: 2px 4px; }
+      padding: 0.125rem; }
+      /* line 272, ../../sass/pages/_article.scss */
+      .author-list li > a[data-js='toggle_trigger'] {
+        color: #3c63af; }
 
 /* line 301, ../../sass/pages/_article.scss */
 .author-info {
+  padding-right: 1.25rem;
   width: 28.125rem;
-  top: 1.4375rem;
+  top: 0.9375rem;
   height: auto;
   position: absolute;
   margin-top: 0.625rem;
-  transition: opacity 300ms ease-out;
-  opacity: 0; }
-  /* line 311, ../../sass/pages/_article.scss */
+  opacity: 0;
+  transition: opacity 300ms ease-out; }
+  /* line 312, ../../sass/pages/_article.scss */
   .author-info p {
-    border-top: 2px solid #666666;
+    border-top: 0.125rem solid #666666;
     padding: 0.625rem 0; }
-    /* line 314, ../../sass/pages/_article.scss */
+    /* line 315, ../../sass/pages/_article.scss */
     .author-info p:first-child {
       border-top: none; }
-  /* line 319, ../../sass/pages/_article.scss */
+  /* line 320, ../../sass/pages/_article.scss */
   .author-info .email, .author-info .rel-footnote {
     text-indent: -300000px; }
 
-/* line 324, ../../sass/pages/_article.scss */
+/* line 325, ../../sass/pages/_article.scss */
 .active a, .active a:hover {
   color: white; }
-/* line 325, ../../sass/pages/_article.scss */
+/* line 326, ../../sass/pages/_article.scss */
 .active .author-name {
   background: #3c63af;
-  padding: 2px 4px;
+  padding: 0.125rem;
   border-radius: 5px;
   color: white; }
-/* line 329, ../../sass/pages/_article.scss */
+/* line 331, ../../sass/pages/_article.scss */
 .active .author-info {
   opacity: 1;
   z-index: 7000; }
-/* line 333, ../../sass/pages/_article.scss */
+/* line 335, ../../sass/pages/_article.scss */
 .active .close {
-  line-height: normal;
-  font-size: 18px;
   position: absolute;
-  top: 0.625rem;
-  right: 0.625rem; }
+  top: 0.3125rem;
+  right: 0.3125rem; }
 
 /* line 343, ../../sass/pages/_article.scss */
 .posRight .author-info {

@@ -52,12 +52,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.author-list {
-  @extend .text-article-intro;
-  margin-bottom: $pad-default - $pad-small;
-  line-height: ($pad-default + $pad-xsmall); /// this will change when we add in the roll over info boxes.
-  a[data-js='toggle_trigger']{color: $clr-highlight;}
-}
+
 
 .article-body {
   h1 {
@@ -150,7 +145,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       margin-right: $pad-smallish;
     }
     .close-floater {
-      @extend .closer;
+      @extend .closer-brand;
     }
   }
 }
@@ -261,18 +256,23 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 //   opacity:1;
 // }
 
+
 .author-list{
    @extend .text-article-intro;
    @extend .inline-list;
-  overflow: visible; // needed t overwrite the inline-list
+  overflow: visible;
+  margin-left: 0;// needed t overwrite the inline-list
    margin-bottom: $pad-default - $pad-small;
    li {
      position: relative;
-     margin-left: 0;  // needed t overwrite the inline-list
+     margin-left: 0;  // needed to overwrite the inline-list
      > a {
      display: inline-block;   // needed t overwrite the inline-list
-      padding: 2px 4px; //TODO line-height;
-    }
+      padding: rem-calc(2px); //TODO line-height;
+       &[data-js='toggle_trigger']{
+         color: $clr-highlight;
+       }
+     }
    }
   .contribute{
     @extend .icon-author-contribute;
@@ -300,16 +300,17 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
  .author-info {
      @extend .pill-small;
+     padding-right: ($pad-small + $pad-small);
      width: rem-calc(450);
-     top: rem-calc(($txt-size-default + 10));   // need to make this a tad more dynamic.
+     top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
      height: auto;
      position:absolute;
      margin-top: $pad-small;
-
-     @include single-transition(opacity);
      opacity: 0;
+     @include single-transition(opacity);
+
    p{
-      border-top: 2px solid $grey-med;
+      border-top: rem-calc(2) solid $grey-med;
       padding: $pad-small 0;
       &:first-child {
         border-top: none;
@@ -323,7 +324,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
  .active {
    a, a:hover{color: $white;}
    .author-name{
-     @include rounded-pill($padding: 2px 4px,$hover: false);
+     @include rounded-pill($padding: rem-calc(2),$hover: false);
+
    }
 
    .author-info {
@@ -331,12 +333,10 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      z-index: map-get($zindex, dropdown);
    }
    .close{
-     line-height: normal;
-     font-size: $txt-size-large;
+    @extend .closer;
      position: absolute;
-     top: $pad-small;
-     right: $pad-small;
-
+     top: $pad-xsmall;
+     right: $pad-xsmall;
    }
  }
 

@@ -1,12 +1,11 @@
 tooltip = {
 
   settings: {
-    tooltip_trigger: '[data-js=tooltip_trigger]',
-    tooltip_target:  '[data-js=tooltip_target]',
+    tooltip_trigger: '[data-js-tooltip=tooltip_trigger]',
+    tooltip_target:  '[data-js-tooltip=tooltip_target]',
     tooltip_hidden:  '[data-initial=hide]',
-    tooltip_close:   '[data-js=tooltip_close]',
-    tooltip_event:   'click',
-    tooltip_container: '[data-js=tooltip_container]',
+    tooltip_close:   '[data-js-tooltip=tooltip_close]',
+    tooltip_container: '[data-js-tooltip=tooltip_container]',
     tooltip_adjust:  true,
     tooltip_class: 'active',
     speed:           0
@@ -17,13 +16,8 @@ tooltip = {
     this.settings = $.extend(this.settings, options);
     var s = this.settings;
     this.tooltip();
-    this.click_elsewhere();
-
   },
 
-  remove_all: function(){
-    var s = this.settings;
-  },
   tooltip: function () {
     var s = this.settings;
 
@@ -53,8 +47,5 @@ tooltip = {
   },
 
 
-  click_elsewhere: function () {
-    var s = this.settings;
 
-  }
 };

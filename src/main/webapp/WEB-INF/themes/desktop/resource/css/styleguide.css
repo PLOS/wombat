@@ -5501,24 +5501,27 @@ header {
       .article-tabs .tab-title.active a:hover {
         cursor: inherit; }
 
-/* line 260, ../../sass/pages/_article.scss */
+/* line 212, ../../sass/pages/_article.scss */
 .author-list {
   overflow: visible;
   margin-left: 0;
   margin-bottom: 0.625rem; }
-  /* line 266, ../../sass/pages/_article.scss */
+  /* line 218, ../../sass/pages/_article.scss */
   .author-list li {
     position: relative;
     margin-left: 0; }
-    /* line 269, ../../sass/pages/_article.scss */
+    /* line 221, ../../sass/pages/_article.scss */
     .author-list li > a {
       display: inline-block;
-      padding: 0.125rem; }
-      /* line 272, ../../sass/pages/_article.scss */
+      padding: 0.125rem 0.25rem; }
+      /* line 224, ../../sass/pages/_article.scss */
+      .author-list li > a:hover {
+        text-decoration: none; }
+      /* line 227, ../../sass/pages/_article.scss */
       .author-list li > a[data-js='toggle_trigger'] {
         color: #3c63af; }
 
-/* line 301, ../../sass/pages/_article.scss */
+/* line 257, ../../sass/pages/_article.scss */
 .author-info {
   padding-right: 1.25rem;
   width: 28.125rem;
@@ -5527,43 +5530,47 @@ header {
   position: absolute;
   margin-top: 0.625rem;
   opacity: 0;
-  transition: opacity 300ms ease-out; }
-  /* line 312, ../../sass/pages/_article.scss */
+  transition: opacity 300ms ease-out;
+  z-index: -1; }
+  /* line 269, ../../sass/pages/_article.scss */
   .author-info p {
     border-top: 0.125rem solid #666666;
     padding: 0.625rem 0; }
-    /* line 315, ../../sass/pages/_article.scss */
+    /* line 272, ../../sass/pages/_article.scss */
     .author-info p:first-child {
       border-top: none; }
-  /* line 320, ../../sass/pages/_article.scss */
+  /* line 277, ../../sass/pages/_article.scss */
   .author-info .email, .author-info .rel-footnote {
-    text-indent: -300000px; }
+    text-indent: 9999px; }
+  /* line 280, ../../sass/pages/_article.scss */
+  .author-info .rel-footnote {
+    margin-right: 0.125rem; }
 
-/* line 325, ../../sass/pages/_article.scss */
+/* line 285, ../../sass/pages/_article.scss */
 .active a, .active a:hover {
   color: white; }
-/* line 326, ../../sass/pages/_article.scss */
+/* line 286, ../../sass/pages/_article.scss */
 .active .author-name {
   background: #3c63af;
-  padding: 0.125rem;
+  padding: 0.125rem 0.25rem;
   border-radius: 5px;
   color: white; }
-/* line 331, ../../sass/pages/_article.scss */
+/* line 291, ../../sass/pages/_article.scss */
 .active .author-info {
   opacity: 1;
   z-index: 7000; }
-/* line 335, ../../sass/pages/_article.scss */
+/* line 295, ../../sass/pages/_article.scss */
 .active .close {
   position: absolute;
   top: 0.3125rem;
   right: 0.3125rem; }
 
-/* line 343, ../../sass/pages/_article.scss */
+/* line 303, ../../sass/pages/_article.scss */
 .posRight .author-info {
   right: 0; }
 
-/* line 347, ../../sass/pages/_article.scss */
-[data-js=tooltip_trigger]:focus {
+/* line 307, ../../sass/pages/_article.scss */
+[data-js-tooltip=tooltip_trigger]:focus {
   outline: 0; }
 
 /* line 12, ../../sass/styleguide.scss */

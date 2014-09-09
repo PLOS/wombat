@@ -1,11 +1,12 @@
-<ul class="author-list clearfix" data-js="tooltip_container">
+<ul class="author-list clearfix" data-js-tooltip="tooltip_container">
 <#include "maxAuthorsToShow.ftl" />
-<#macro authorItem author author_index author_has_next>
+<#macro authorItem author author_index author_has_next hidden=false>
 
 
-  <li data-js="tooltip_trigger">
-    <a data-author-id="${author_index?c}" class="author-name">
-  ${author.fullName}<#-- no space
+  <li data-js-tooltip="tooltip_trigger" <#if hidden> data-js-toggle="toggle_target"
+      data-initial="hide"</#if> >
+    <a data-author-id="${author_index?c}" class="author-name" >
+    ${author.fullName}<#-- no space
  --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space
  --><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if><#-- no space
  --><#if author.corresponding??> <span class="email">  </span></#if><#-- no space
@@ -17,10 +18,10 @@
     || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
     || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
     <#if hasMeta>
-      <div id="author-meta-${author_index?c}" class="author-info" data-js="tooltip_target">
+      <div id="author-meta-${author_index?c}" class="author-info" data-js-tooltip="tooltip_target">
         <#if author.equalContrib>
           <p>
-          <span class="contribute"> </span> Contributed equally to this work with:
+            <span class="contribute"> </span> Contributed equally to this work with:
             <#list equalContributors as contributor>
             ${contributor}<#if contributor_has_next>,</#if>
             </#list>
@@ -50,7 +51,7 @@
           ${note}
           </#list>
         </#if>
-        <a data-js="tooltip_close" class="close" id="tooltipClose"> &#x02A2F </a>
+        <a data-js-tooltip="tooltip_close" class="close" id="tooltipClose"> &#x02A2F </a>
       </div>
     </#if>
   </li>
@@ -68,25 +69,26 @@
       <@authorItem author author_index author_has_next />
     </#if>
   </#list>
-<li data-js="toggle_target"  data-initial="hide" >
-<ul class="inline-list">
       <#list authors as author><#-- Inside the expander -->
 
         <#if author_index gte (maxAuthorsToShow - 1) && author_index lt (authors?size - 1) >
-          <@authorItem author author_index author_has_next  />
+        <@authorItem author author_index author_has_next true />
       </#if>
 
      </#list>
-</ul>
-  </li>
+
+
+<li data-js-toggle="toggle_add">
+  [ ... ],
+</li>
 
   <@authorItem authors[authors?size - 1] authors?size - 1 false /><#-- Last one after expander -->
-<span data-js="toggle_add">[ ... ],</span>
-  <@authorItem authors[authors?size - 1] authors?size - 1 false /><span data-js="toggle_add">,</span>
-<#--there was no way to not do this. -->
-<a class="more-authors active" data-js="toggle_trigger" id="authors-show"> [ view all ]</a>
-<a class="author-less" data-js="toggle_trigger" data-initial="hide" id="author-hide">[ view less ]</a>
-
+  <li data-js-toggle="toggle_trigger" >
+  <#--there was no way to not do this. -->
+    <a class="more-authors active" id="authors-show">[ view all ]</a>
+    </li>
+  <li data-js-toggle="toggle_trigger" data-initial="hide">
+    <a class="author-less" id="author-hide">[ view less ]</a>
   </li>
 <#else>
 <#-- List authors with no expander -->

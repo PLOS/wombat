@@ -207,54 +207,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     }
   }
 }
-//
-// a[data-tooltip]:link, a[data-tooltip]:visited {
-//   position: relative;
-//   text-decoration: none;
-//   border-bottom: solid 1px;
-// }
-//
-// a[data-tooltip]:before {
-//
-// }
-//
-// a[data-tooltip]:after {
-//   content: attr(data-tooltip);
-//   position: absolute;
-//   color: white;
-//   top: -35px;
-//   left: -26px;
-//   background: #0090ff;
-//   padding: 5px 15px;
-//   -webkit-border-radius: 10px;
-//   -moz-border-radius: 10px;
-//   border-radius: 10px;
-//   white-space: nowrap;
-//   visibility: hidden;
-// }
-//
-// a[data-tooltip]:hover:before, a[data-tooltip]:hover:after {
-//   visibility: visible;
-//   -webkit-transition: visibility 0s linear .3s;
-//   -moz-transition: visibility 0s linear .3s;
-//   -o-transition: visibility 0s linear .3s;
-//   transition: visibility 0s linear .3s;
-// }
-
-
-// [data-animate = tooltip-container] {
-//
-//  display: inline-block;
-//
-// }
-//
-// [data-animate = tooltip-target]{
-//
-// }
-//
-// [data-animate = tooltip-container]:active [data-animate = tooltip-target] {
-//   opacity:1;
-// }
 
 
 .author-list{
@@ -268,8 +220,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      margin-left: 0;  // needed to overwrite the inline-list
      > a {
      display: inline-block;   // needed t overwrite the inline-list
-      padding: rem-calc(2px); //TODO line-height;
-       &[data-js='toggle_trigger']{
+     padding: rem-calc(2 4); //TODO line-height;
+      &:hover{
+        text-decoration: none;
+      }
+      &[data-js='toggle_trigger']{
          color: $clr-highlight;
        }
      }
@@ -298,6 +253,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 //  }
  }
 
+$icon-space: rem-calc(2);
  .author-info {
      @extend .pill-small;
      padding-right: ($pad-small + $pad-small);
@@ -308,6 +264,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      margin-top: $pad-small;
      opacity: 0;
      @include single-transition(opacity);
+     z-index: -1;
 
    p{
       border-top: rem-calc(2) solid $grey-med;
@@ -317,14 +274,17 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       }
    }
 
-   .email, .rel-footnote, {
+   .email, .rel-footnote {
      @include icon-offscreen;
+   }
+   .rel-footnote{
+     margin-right: $icon-space;
    }
  }
  .active {
    a, a:hover{color: $white;}
    .author-name{
-     @include rounded-pill($padding: rem-calc(2),$hover: false);
+     @include rounded-pill($padding: rem-calc(2 4),$hover: false);
 
    }
 
@@ -344,7 +304,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    right: 0;
  }
 
- [data-js=tooltip_trigger]:focus{
+ [data-js-tooltip=tooltip_trigger]:focus{
  outline: 0;
  }
 

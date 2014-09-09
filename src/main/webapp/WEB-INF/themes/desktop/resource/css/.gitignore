@@ -1,0 +1,8 @@
+# Reserve this directory as the build target for sass-maven-plugin
+# Exclude all files except this one from source control
+/*
+/*/
+!/.gitignore
+
+# External CSS is temporarily in source control
+!/external/

@@ -9,7 +9,8 @@
 
 <#include "../common/head.ftl" />
 
-  <body class="article ${journalKey?lower_case}">
+<#include "../common/journalStyle.ftl" />
+  <body class="article ${journalStyle}">
 
   <input type="hidden" id="rawPubDate" value="${article.date}" />
 
@@ -72,9 +73,10 @@
   </div>
   <#include "../common/footer/footer.ftl" />
 
-  <@renderJs />
+
   <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
-  <script src="<@siteLink path="resource/js/pages/article.js"/>"></script>
+  <@js src="resource/js/pages/article.js"/>
+  <@renderJs />
 
   </body>
 </html>

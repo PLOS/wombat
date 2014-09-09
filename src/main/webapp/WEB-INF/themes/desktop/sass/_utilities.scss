@@ -141,13 +141,21 @@ example | extension
   }
 }
 
-// set the journal-specific colors - PS this is a good example of things that can be pulle dinto theme sor a separate scss file
+// set the journal-specific colors - PS this is a good example of things that can be pulled into themes or a separate scss file when the maven sass compiler is installed & working
 .plosbiology, .ploscompbiol, .plosgenetics {
   @include brandColor($setColor: $plos-bio);
 }
 .plosmedicine, .plospathogens, .plosntd {
   @include brandColor($setColor: $plos-med);
 }
+
+.ploscollections, .plosclinicaltrials {
+  @include brandColor($setColor: $plos-default);
+}
+.plosone {
+  @include brandColor($setColor: $plos-one);
+}
+
 //////////////
 // layout utilities
 //////////////
@@ -195,6 +203,34 @@ example | extension
 }
 
 
+/*doc
+---
+title: interaction and animation utilities
+name:  animation
+category: utilities
+---
+
+example | extension
+--------|----------
+
+
+*/
+
 
 // Hide elements so we dont' get a flash of unstyled content
 [data-visibility= 'none']{@extend .hide;}
+
+
+$zindex: (
+  modal     : 9000,
+  overlay   : 8000,
+  dropdown  : 7000,
+  topVisible: 6999,
+  header    : 6000,
+  footer    : 5000
+);
+/* zindex map use example
+.header {
+  z-index: map-get($zindex, header);
+}
+*/

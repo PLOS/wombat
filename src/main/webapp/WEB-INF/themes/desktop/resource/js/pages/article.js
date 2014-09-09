@@ -8,9 +8,8 @@
   articlePubDate = dateParse(rawDate, true);
 
   $( document ).ready(function() {
-   //create the  floating title div
-    var floater = $(".titleFloater").clone().appendTo( document.body).css("top","-100px");
-    $(floater).find("h1").removeAttr('id');
+   //cache the floating title div
+    var floater = $("#floatTitleTop");
 
     $(window).on('scroll', function (){
       //if floater has been removed, no need to run function
@@ -27,18 +26,22 @@
           topLimit = 420;
 
         if ( top > topLimit ) {
-          $(floater).addClass('topVisible').css('top',0);
+          $(floater).addClass('topVisible');
 
           $(floater).find('.logo-close').on('click', function () {
             $(floater).remove();
           });
 
         } else if ( top < topLimit ) {
-          $(floater).removeClass('topVisible').css('top','-100px');
+          $(floater).removeClass('topVisible');
         }
     };
     // initialize toggle for author list view more
     toggle.init();
+    // initialize tooltip for author info
+    tooltip.init(); 
   });
+
+
 }(jQuery));
 

@@ -6,7 +6,8 @@
 <#assign depth = 0 />
 <#assign title = '' />
 <#include "../common/head.ftl" />
-<body class="home ${journalKey?lower_case}">
+<#include "../common/journalStyle.ftl" />
+<body class="home ${journalStyle}">
 
 <#include "../common/header/header.ftl" />
 

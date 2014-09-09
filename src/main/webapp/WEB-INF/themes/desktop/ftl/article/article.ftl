@@ -25,6 +25,16 @@
         </#if>
 
         <div class="article-type" id="artType">${article.articleType!""}</div>
+        <#include "articleTypes.ftl" />
+        <#macro articleTypeDescription typeKey>
+          <#if article.articleType == typeKey>
+          <div class="article-type">
+            ${article.articleType!""}<#nested/>
+          </div>
+          </#if>
+        </#macro>
+
+
       </div>
       <#include "articleTitle.ftl" />
 

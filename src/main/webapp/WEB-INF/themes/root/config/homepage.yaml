@@ -33,6 +33,11 @@ sections:
     # Filter articles by these types. If enough have been published after the "since" threshold, sort them by type in
     # this order.
 
+    articleTypesToExclude: null
+    # Ignored unless "name" is "recent" and "since" is non-null.
+    #
+    # Never show any articles with these types as recent articles, regardless of other criteria.
+
     cacheTtl: null
     # Ignored unless "name" is "recent" and "since" is non-null.
     #

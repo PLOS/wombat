@@ -30,8 +30,7 @@ sections:
     articleTypes: null
     # Ignored unless "name" is "recent" and "since" is non-null.
     #
-    # Filter articles by these types. If enough have been published after the "since" threshold, sort them by type in
-    # this order.
+    # Filter articles by these types. Sort articles with the same publication date by type, in this order.
 
     articleTypesToExclude: null
     # Ignored unless "name" is "recent" and "since" is non-null.

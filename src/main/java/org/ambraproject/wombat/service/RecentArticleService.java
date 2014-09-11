@@ -28,11 +28,9 @@ public interface RecentArticleService {
    *                              {@code false}, keep them in chronological order and truncate down to {@code
    *                              articleCount}. Ignored if the number of articles published in the time window does not
    *                              exceed {@code articleCount}.
-   * @param articleTypes          The article types to return, in order of preference. If enough articles of these types
-   *                              have been published in the time window to fulfill {@code articleCount}, they are
-   *                              sorted by type in this order, then in chronological order. If the query went beyond
-   *                              the time window, the order is ignored and the results are sorted in chronological
-   *                              order. The string {@code "*"} means "all article types".
+   * @param articleTypes          The article types to return, in order of preference. Articles with the same
+   *                              publication date are ordered by type, in the same order as this list. The string
+   *                              {@code "*"} means "all article types".
    * @param articleTypesToExclude Article types to exclude from results, taking precedence over all other criteria. An
    *                              article with both one of these types and a type in {@code articleTypes} will not be
    *                              matched. Articles of these types will also not be matched by {@code "*"}.

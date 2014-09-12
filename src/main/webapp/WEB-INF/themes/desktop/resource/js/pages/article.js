@@ -12,19 +12,8 @@
 
     floater = $("#floatTitleTop");
 
-    showFloater = function() {
-      var top = $(window).scrollTop(),
-        topLimit = 420;
 
-      if ( top > topLimit ) {
-        $(floater).addClass('topVisible');
-        floatHeader();
 
-      } else if ( top < topLimit ) {
-        $(floater).removeClass('topVisible');
-      }
-
-    };
     floatHeader = function(){
       var floaterList, floaterListEl, floaterListHeight, toTruncate, listEnding;
 
@@ -50,7 +39,8 @@
     };
     if ( $(floater).length > 0 ) {
       $(window).on('scroll', function () {
-        showFloater();
+        //show_floater is in js/components/
+       var runit = show_floater(floater, "topVisible", 420);
       });
     }
 

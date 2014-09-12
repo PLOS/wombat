@@ -68,6 +68,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
                                         double numberOfDaysAgo,
                                         boolean shuffle,
                                         List<String> articleTypes,
+                                        List<String> articleTypesToExclude,
                                         Optional<Integer> cacheDuration)
       throws IOException {
     String journalKey = site.getJournalKey();
@@ -77,7 +78,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       articles = (List<Object>) cache.get(cacheKey); // remains null if not cached
     }
     if (articles == null) {
-      articles = retrieveRecentArticles(journalKey, articleCount, numberOfDaysAgo, articleTypes);
+      articles = retrieveRecentArticles(journalKey, articleCount, numberOfDaysAgo, articleTypes, articleTypesToExclude);
       if (cacheDuration.isPresent()) {
         /*
          * Casting to Serializable relies on all data structures that Gson uses to be serializable, which is safe
@@ -105,7 +106,8 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   private List<Object> retrieveRecentArticles(String journalKey,
                                               int articleCount,
                                               double numberOfDaysAgo,
-                                              List<String> articleTypes)
+                                              List<String> articleTypes,
+                                              List<String> articleTypesToExclude)
       throws IOException {
     Calendar threshold = Calendar.getInstance();
     threshold.add(Calendar.SECOND, (int) (-numberOfDaysAgo * SECONDS_PER_DAY));
@@ -117,6 +119,11 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     if (articleTypes != null) {
       for (String articleType : articleTypes) {
         params.add("type", articleType);
+      }
+    }
+    if (articleTypesToExclude != null) {
+      for (String articleType : articleTypesToExclude) {
+        params.add("exclude", articleType);
       }
     }
 

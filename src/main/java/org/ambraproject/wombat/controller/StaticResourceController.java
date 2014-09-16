@@ -64,7 +64,7 @@ public class StaticResourceController extends WombatController {
     Theme theme = site.getTheme();
 
     // Kludge to get "resource/**"
-    String servletPath = request.getServletPath();
+    String servletPath = request.getRequestURI();
     String filePath = pathFrom(servletPath, RESOURCE_NAMESPACE);
     if (filePath.length() <= RESOURCE_NAMESPACE.length() + 1) {
       throw new NotFoundException(); // in case of a request to "resource/" root
@@ -117,10 +117,10 @@ public class StaticResourceController extends WombatController {
         // splitting hairs, but this is most appropriate since we don't use a fingerprint of the contents
         // here (instead concatenating length and mtime).  This is what the legacy ambra does for all
         // resources.
-        String etag = String.format("W/\"%d-%d\"", attributes.contentLength, attributes.lastModified);
-        if (checkIfModifiedSince(request, attributes.lastModified, etag)) {
+        String etag = String.format("W/\"%d-%d\"", attributes.getContentLength(), attributes.getLastModified());
+        if (checkIfModifiedSince(request, attributes.getLastModified(), etag)) {
           response.setHeader("Etag", etag);
-          setLastModified(response, attributes.lastModified);
+          setLastModified(response, attributes.getLastModified());
           try (OutputStream outputStream = response.getOutputStream()) {
             IOUtils.copy(inputStream, outputStream);
           }

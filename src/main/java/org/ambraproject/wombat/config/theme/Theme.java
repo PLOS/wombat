@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.URLConnection;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
@@ -94,7 +93,7 @@ public abstract class Theme {
    * @return the stream to a static resource
    * @throws IOException if an error occurs accessing the resource
    */
-  public final InputStream getStaticResource(String path) throws IOException {
+  public InputStream getStaticResource(String path) throws IOException {
     Preconditions.checkNotNull(path);
     for (Theme theme : getChain()) {
       InputStream stream = theme.fetchStaticResource(path);
@@ -119,27 +118,16 @@ public abstract class Theme {
   /**
    * Result class for fetchResourceAttributes.
    */
-  public static final class ResourceAttributes {
+  public static interface ResourceAttributes {
+    /**
+     * @return last modified time of the given resource
+     */
+    long getLastModified();
 
     /**
-     * Last modified time of the given resource.
+     * @return length of the requested resource
      */
-    public final long lastModified;
-
-    /**
-     * Length of the requested resource.
-     */
-    public final long contentLength;
-
-    protected ResourceAttributes(File file) {
-      contentLength = file.length();
-      lastModified = file.lastModified();
-    }
-
-    protected ResourceAttributes(URLConnection conn) {
-      contentLength = conn.getContentLengthLong();
-      lastModified = conn.getLastModified();
-    }
+    long getContentLength();
   }
 
   /**
@@ -227,7 +215,7 @@ public abstract class Theme {
    * @param path a path within the theme's {@code config/} directory
    * @return a map of overridden values
    */
-  public final Map<String, Object> getConfigMap(String path) throws IOException {
+  public Map<String, Object> getConfigMap(String path) throws IOException {
     String configPath = "config/" + path;
     Map<String, Object> values = Maps.newLinkedHashMap();
     for (Theme theme : getChain()) {

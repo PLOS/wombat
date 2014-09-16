@@ -93,7 +93,7 @@ public abstract class Theme {
    * @return the stream to a static resource
    * @throws IOException if an error occurs accessing the resource
    */
-  public InputStream getStaticResource(String path) throws IOException {
+  public final InputStream getStaticResource(String path) throws IOException {
     Preconditions.checkNotNull(path);
     for (Theme theme : getChain()) {
       InputStream stream = theme.fetchStaticResource(path);
@@ -215,7 +215,7 @@ public abstract class Theme {
    * @param path a path within the theme's {@code config/} directory
    * @return a map of overridden values
    */
-  public Map<String, Object> getConfigMap(String path) throws IOException {
+  public final Map<String, Object> getConfigMap(String path) throws IOException {
     String configPath = "config/" + path;
     Map<String, Object> values = Maps.newLinkedHashMap();
     for (Theme theme : getChain()) {

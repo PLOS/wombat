@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.AssetService;
@@ -20,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -64,6 +66,13 @@ public class StaticResourceController extends WombatController {
     // Kludge to get "resource/**"
     String servletPath = request.getServletPath();
     String filePath = pathFrom(servletPath, RESOURCE_NAMESPACE);
+    if (filePath.length() <= RESOURCE_NAMESPACE.length() + 1) {
+      throw new NotFoundException(); // in case of a request to "resource/" root
+    }
+
+    if (corsEnabled(site, filePath)) {
+      response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+    }
 
     response.setContentType(session.getServletContext().getMimeType(servletPath));
     if (filePath.startsWith(COMPILED_NAMESPACE)) {
@@ -71,6 +80,20 @@ public class StaticResourceController extends WombatController {
     } else {
       serveFile(filePath, request, response, theme);
     }
+  }
+
+  private static boolean corsEnabled(Site site, String filePath) throws IOException {
+    Map<String, Object> resourceConfig = site.getTheme().getConfigMap("resource");
+    List<String> corsPrefixes = (List<String>) resourceConfig.get("cors");
+    if (corsPrefixes == null) return false;
+
+    String resourceName = filePath.substring(RESOURCE_NAMESPACE.length() + 1);
+    for (String prefix : corsPrefixes) {
+      if (resourceName.startsWith(prefix)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**

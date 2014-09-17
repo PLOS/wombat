@@ -31,7 +31,7 @@ category: components
   @include rounded-pill();
 }
 
-.pill-small{
+.pill-small {
   @include rounded-pill($padding: $pad-small,  $hover: false);
 }
 
@@ -81,25 +81,25 @@ variable  | result   | default
   // set block padding
   @if $padding == default {
     padding: $pad-small;
-  } @else if $padding == none{
+  } @else if $padding == none {
     padding: 0;
   } @else {
     padding: $padding;
 }
   // set block shadow
-  @if $shadow == default{
+  @if $shadow == default {
     @include single-box-shadow();
-  } @if $shadow == none{
+  } @if $shadow == none {
     // no shadow
   }
   margin-bottom: $grid-gutter;
   background: $color;
 }
 
-.block{
+.block {
   @include blocks();
 }
-.block-noshadow{
+.block-noshadow {
   @include blocks($shadow: none);
 
 }
@@ -297,7 +297,7 @@ example | extension
 }
 /// use with span
 // $width and $height use rem calc so only pixels are needed, $width, $height, $img are required  .
-@mixin icon-image($width, $height,$img, $offset: 0 0, $align: middle){
+@mixin icon-image($width, $height,$img, $offset: 0 0, $align: middle) {
   background: image-url($img) no-repeat $offset;
   vertical-align: $align;
   display: inline-block;
@@ -305,7 +305,7 @@ example | extension
   height: rem-calc($height);
 }
 
-@mixin icon-offscreen{
+@mixin icon-offscreen {
   text-indent: 9999px;
 }
 
@@ -313,14 +313,14 @@ $icn-tiny-width: 15;
 $icn-tiny-height: 13;
 $icn-tiny-align: middle;
 
-.icon-author-contribute{
+.icon-author-contribute {
   @include icon-image($icn-tiny-width, $icn-tiny-height, 'icon.author.co.gif', $align: $icn-tiny-align );
 }
 
-.icon-author-footnotes{
+.icon-author-footnotes {
   @include icon-image($icn-tiny-width, $icn-tiny-height, 'icon.author.grp.png', $align: $icn-tiny-align );
 }
-.icon-author-address{
+.icon-author-address {
   @include icon-image($icn-tiny-width, $icn-tiny-height, 'icon.author.email.png', $align: $icn-tiny-align );
 }
 
@@ -330,7 +330,7 @@ $icn-tiny-align: middle;
   @include icon-offscreen;
 }
 
-.closer-brand{
+.closer-brand {
   @extend .closer;
   @extend %brand-background;
   border-radius: $border-radius-small;

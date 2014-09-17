@@ -17,25 +17,32 @@
   <#include "../common/header/header.ftl" />
   <div class="set-grid">
     <section class="article-body">
-      <div class="classifications">
-        <p class="license-short" id="licenseShort">Open Access</p>
+      <#--<div class="classifications">-->
+        <#--<p class="license-short" id="licenseShort">Open Access</p>-->
 
-        <#if article.articleType=="Research Article">
-        <p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>
-        </#if>
+        <#--<#if article.articleType=="Research Article">-->
+        <#--<p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>-->
+        <#--</#if>-->
 
-        <div class="article-type" id="artType">${article.articleType!""}</div>
-        <#include "articleTypes.ftl" />
-        <#macro articleTypeDescription typeKey>
-          <#if article.articleType == typeKey>
-          <div class="article-type">
-            ${article.articleType!""}<#nested/>
-          </div>
-          </#if>
-        </#macro>
+        <#--<div class="article-type" id="artType">${article.articleType!""}</div>-->
+      <#--<#assign article.articleType = articleType/>-->
+      <#macro setArticleType classType >
+
+      </#macro>
+      <#include "articleClassifications.ftl" />
 
 
-      </div>
+      <#--<#include "articleTypes.ftl" />-->
+        <#--<#macro articleTypeDescription typeKey>-->
+          <#--<#if article.articleType == typeKey>-->
+          <#--<div class="article-type">-->
+            <#--${article.articleType!""}<#nested/>-->
+          <#--</div>-->
+          <#--</#if>-->
+        <#--</#macro>-->
+
+
+      <#--</div>-->
       <#include "articleTitle.ftl" />
 
       <ul class="date-doi">
@@ -86,6 +93,8 @@
 
   <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
   <@js src="resource/js/pages/article.js"/>
+  <@js src="resource/js/components/tooltip_hover.js"/>
+
   <@renderJs />
 
   </body>

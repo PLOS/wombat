@@ -219,6 +219,8 @@ example | extension
 
 // Hide elements so we dont' get a flash of unstyled content
 [data-visibility= 'none']{@extend .hide;}
+[data-js-tooltip=tooltip_trigger]:focus{outline: 0;}
+
 
 
 $zindex: (

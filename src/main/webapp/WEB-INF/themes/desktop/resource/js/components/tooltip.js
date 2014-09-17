@@ -44,8 +44,6 @@ tooltip = {
       $(this).parent(s.tooltip_trigger).removeClass('active');
     });
 
-  },
-
-
+  }
 
 };

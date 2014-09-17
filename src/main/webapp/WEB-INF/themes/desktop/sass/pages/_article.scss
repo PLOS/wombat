@@ -31,7 +31,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   @extend %txt-transform;
   margin-top: $pad-default + $pad-xsmall;
   margin-bottom: $pad-smallish;
-  p {
+  > p {
     font-size: $txt-size-xxxsmall;
     display: inline-block;
     padding-left: $pad-smallish;
@@ -45,9 +45,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   .peer-reviewed {
     background: image-url('icon.pr.gif') no-repeat 0 3px;
   }
-  .article-type {
+  .article-type > p{       ///TODO strange
     margin-top: $pad-xsmall;
-    font-family: $font-face-fancy;
     font-size: $txt-size-xxsmall;
   }
 }
@@ -259,7 +258,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 $icon-space: rem-calc(2);
- .author-info {
+ .author-info{
      @extend .pill-small;
      padding-right: ($pad-small + $pad-small);
      width: rem-calc(450);
@@ -290,9 +289,7 @@ $icon-space: rem-calc(2);
    a, a:hover{color: $white;}
    .author-name{
      @include rounded-pill($padding: rem-calc(2 4),$hover: false);
-
    }
-
    .author-info {
      opacity: 1;
      z-index: map-get($zindex, dropdown);
@@ -305,12 +302,39 @@ $icon-space: rem-calc(2);
    }
  }
 
- .posRight .author-info {
-   right: 0;
- }
+//.type-desc {
+//  @extend .pill-small;
+//  padding-right: ($pad-small + $pad-small);
+//  width: rem-calc(450);
+//  top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
+//  height: auto;
+//  position:absolute;
+//  margin-top: $pad-small;
+//  opacity: 0;
+//  @include single-transition(opacity);
+//  z-index: 100;
+//
+// .posRight .author-info {
+//   right: 0;
+// }
+//}
 
- [data-js-tooltip=tooltip_trigger]:focus{
- outline: 0;
- }
+.article-type{
+    position:relative;
+}
+
+.type-desc{
+   @include tooltip( $top: ($txt-size-xxxsmall * 3));
+  p{
+    color: #a7bee9;
+    text-transform: none;
+  }
+}
+
+.article-type-tooltip{
+   @include tooltip-trigger($outside-box: yes);
+   font-family: $font-face-plain;
+   font-size: $txt-size-xxxsmall;
+}
 
 

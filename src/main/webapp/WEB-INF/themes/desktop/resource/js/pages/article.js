@@ -39,7 +39,9 @@
     // initialize toggle for author list view more
     toggle.init();
     // initialize tooltip for author info
-    tooltip.init(); 
+    tooltip.init();
+    tooltip_hover.init();
+
   });
 
 

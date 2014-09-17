@@ -17,6 +17,7 @@ category: components
   padding: $padding;
   border-radius: $border-radius;
   color: $clr-btn-text;
+  display: inline-block;
 
   @if $hover == true {
     &:hover {
@@ -331,26 +332,59 @@ $icn-tiny-align: middle;
   border-radius: $border-radius-small;
 }
 
-$zindex: (
-  modal     : 9000,
-  overlay   : 8000,
-  dropdown  : 7000,
-  titleTopFixed: 6999,
-  header    : 6000,
-  footer    : 5000
-);
-/* zindex map use example
-.header {
-  z-index: map-get($zindex, header);
-}
-*/
-
 // for one-line truncates 
 @mixin truncated ($width: 100%) {
   width: $width;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+
+/// for regular text that gets highlighted. For text that is already highlighted in some way you can just use the sass code that reflects that element.
+
+@mixin tooltip-trigger( $padding: $pad-xsmall, $outside-box:none){
+  padding: $padding;
+  @if $outside-box == yes {
+    padding-left: 0;
+  }
+  .active & {
+    a, a:hover{color: $white;}
+    @include rounded-pill( $padding: $padding, $hover: false);
+    @if $outside-box == yes {
+      margin-left: -$padding;
+    }
+    @include single-transition(color);
+
+    .author-name{
+      @include rounded-pill($padding: rem-calc(2 4),$hover: false);
+    }
+
+  }
+}
+@mixin tooltip($width: 320, $top: $pad-default, $outside-box:none){
+  @extend .pill-small;
+  padding-right: ($pad-small + $pad-small);   //TODO put padding in closer
+  width: rem-calc($width);
+  top: 0;   // need to make this a tad more dynamic.
+  left: 0;
+  height: auto;
+  position:absolute;
+  margin-top: $top;   /// margin cause then there is no blinking between the trigger and the tooltip
+  opacity: 0;
+  z-index: -1;
+  @include single-transition(opacity);
+
+  .close{
+    @extend .closer;
+    position: absolute;
+    top: $pad-xsmall;
+    right: $pad-xsmall;
+  }
+  .active & {
+    opacity: 1;
+    z-index: map-get($zindex, dropdown);
+  }
 }
 
 

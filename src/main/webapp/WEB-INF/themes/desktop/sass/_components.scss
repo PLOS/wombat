@@ -285,6 +285,11 @@ example | extension
   line-height: normal;
   content: '\f00d';
 }
+.icon-caret-down {
+  @extend .icon-fa;
+  @extend .fa-caret-down;
+  font-size: $txt-size-medium-large;
+}
 .aria-text {
   position: absolute;
   top: -9999px;

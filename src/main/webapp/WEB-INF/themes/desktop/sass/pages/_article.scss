@@ -19,15 +19,23 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .article-body {
   @include plos-grid-column(755, $gutter: none);
 }
-.article-column {
+.article-aside {
   @include plos-grid-column(180, $gutter: none);
   float: right; /* temporary */
   margin-left: $pad-default; /* temporary */
-  //remove the following when content is added
-  background-color: #808080;
-  height: 800px;
+}
+
+.title-block {
+  //@include plos-grid-column(980, $gutter: $pad-small);
+  @extend %width-full;
+  background: $white;
+
+}
+.article-meta {
+  @include plos-grid-column(980, $gutter: none);
 }
 .classifications {
+  @include plos-grid-column(600, $gutter: none);
   @extend %txt-transform;
   margin-top: $pad-default + $pad-xsmall;
   margin-bottom: $pad-smallish;
@@ -51,12 +59,26 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-size: $txt-size-xxsmall;
   }
 }
-
-
-
-.article-body {
+.signposts {  //TEMPORARY STYLES
+  @include plos-grid-column(360, $gutter: none);
+  @extend .inline-list;
+  margin: 0;
+  float: right;
+  text-align: center;
+  height: 60px;
+  li {
+    float: right;
+    border-right: 1px solid $grey-med-light;
+    border-left: 1px solid $grey-med-light;
+    padding: $pad-small $pad-default;
+    margin: 0;
+    font-weight: bold;
+  }
+}
+.article-title-etc {
+  @include plos-grid-column(900, $gutter: none);
   h1 {
-    font-size: $txt-size-27large;  // TEMP-PROD: needs to be 26px or 28px
+    font-size: $txt-size-27large; // TEMP-PROD: needs to be 26px or 28px
     margin-bottom: $pad-small;
     line-height: normal;
 
@@ -64,7 +86,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       font-style: italic;
     }
   }
-
   .date-doi {
     @include clearfix();
     @extend .text-article-intro;
@@ -211,7 +232,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-
 .author-list{
    @extend .text-article-intro;
    @extend .inline-list;
@@ -312,3 +332,30 @@ $icon-space: rem-calc(2);
  }
 
 
+//RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
+.article-downloads {
+  .dload-pilly {
+    @extend .pill;
+    margin-bottom: $pad-xsmall;
+  }
+  span {
+      display: inline;
+  }
+  .dload-pdf {
+    @include link-text($color: $white);
+    font-size: $txt-size-mediumish;
+    font-weight: bold;
+  }
+  .dload-hover {
+    @extend .icon-caret-down;
+    padding: 0 10px;
+    height: 10px;
+    width: 35px;
+  }
+  .dload-xml {
+    @extend .pill;
+    ul li {
+      font-size: $txt-size-medium-large;
+    }
+  }
+}

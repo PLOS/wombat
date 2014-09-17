@@ -16,16 +16,22 @@
 
   <#include "../common/header/header.ftl" />
   <div class="set-grid">
-    <section class="article-body">
-      <div class="classifications">
-        <p class="license-short" id="licenseShort">Open Access</p>
+    <header class="title-block">
+      <div class="article-meta">
+        <div class="classifications">
+          <p class="license-short" id="licenseShort">Open Access</p>
 
         <#if article.articleType=="Research Article">
-        <p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>
+          <p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>
         </#if>
 
-        <div class="article-type" id="artType">${article.articleType!""}</div>
+          <div class="article-type" id="artType">${article.articleType!""}</div>
+        </div>
+       <ul id="almSignposts" class="signposts">
+         <li>1 billion<br>views</li>
+       </ul>
       </div>
+      <div class="article-title-etc">
       <#include "articleTitle.ftl" />
 
       <ul class="date-doi">
@@ -58,6 +64,10 @@
       </#if>
 
       </ul>
+      </div>
+    </header>
+    <section class="article-body">
+
 
       <#include "tabs.ftl" />
 
@@ -67,8 +77,8 @@
 
 
     </section>
-    <aside class="article-column">
-
+    <aside class="article-aside">
+    <#include "aside/sidebar.ftl" />
     </aside>
   </div>
   <#include "../common/footer/footer.ftl" />

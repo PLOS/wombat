@@ -95,6 +95,20 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   border-bottom: 1px solid $grey-med-light;
   background-color: $white;
   z-index: map-get($zindex, titleTopFixed);
+
+  #floatAuthorList {
+    height: rem-calc(16);
+    width: rem-calc(760);
+    @extend .inline-list;
+    margin: 0;
+    padding-left: 0;
+    li {
+      margin-left: 0;
+      line-height: 16px;
+      font-size: rem-calc($txt-size-xsmall);
+    }
+
+  }
 }
 .topVisible {
   visibility: visible;
@@ -119,19 +133,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
         font-style: italic;
       }
     }
-    #floatAuthorList {
-      height: rem-calc(16);
-      width: rem-calc(760);
-      @extend .inline-list;
-      margin: 0;
-      padding-left: 0;
-      li {
-        margin-left: 0;
-        line-height: 16px;
-        font-size: rem-calc($txt-size-xsmall);
-      }
 
-    }
 
   }
 

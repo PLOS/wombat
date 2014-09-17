@@ -1,3 +1,4 @@
+var tooltip;
 tooltip = {
 
   settings: {

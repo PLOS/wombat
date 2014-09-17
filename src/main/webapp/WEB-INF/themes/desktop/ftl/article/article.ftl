@@ -24,11 +24,7 @@
         <#--<p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>-->
         <#--</#if>-->
 
-        <#--<div class="article-type" id="artType">${article.articleType!""}</div>-->
-      <#--<#assign article.articleType = articleType/>-->
-      <#macro setArticleType classType >
 
-      </#macro>
       <#include "articleClassifications.ftl" />
 
 
@@ -92,6 +88,9 @@
 
 
   <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
+  <@js src="resource/js/components/show_onscroll.js"/>
+  <@js src="resource/js/components/truncate_elem.js"/>
+  <@js src="resource/js/components/float_header.js"/>
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/components/tooltip_hover.js"/>
 

@@ -1,3 +1,4 @@
+var tooltip_hover;
 tooltip_hover = {
 
   settings: {

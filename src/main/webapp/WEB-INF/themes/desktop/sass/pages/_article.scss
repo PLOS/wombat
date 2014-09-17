@@ -267,7 +267,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 $icon-space: rem-calc(2);
  .author-info{
      @extend .pill-small;
-     padding-right: ($pad-small + $pad-small);
+     padding-right: ($pad-default);
      width: rem-calc(450);
      top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
      height: auto;
@@ -308,23 +308,6 @@ $icon-space: rem-calc(2);
      right: $pad-xsmall;
    }
  }
-
-//.type-desc {
-//  @extend .pill-small;
-//  padding-right: ($pad-small + $pad-small);
-//  width: rem-calc(450);
-//  top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
-//  height: auto;
-//  position:absolute;
-//  margin-top: $pad-small;
-//  opacity: 0;
-//  @include single-transition(opacity);
-//  z-index: 100;
-//
-// .posRight .author-info {
-//   right: 0;
-// }
-//}
 
 .article-type{
   position:relative;

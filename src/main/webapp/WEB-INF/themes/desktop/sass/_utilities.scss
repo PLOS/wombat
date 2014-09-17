@@ -229,7 +229,9 @@ $zindex: (
   dropdown  : 7000,
   topVisible: 6999,
   header    : 6000,
-  footer    : 5000
+  footer    : 5000,
+  invisible : -1,
+
 );
 /* zindex map use example
 .header {

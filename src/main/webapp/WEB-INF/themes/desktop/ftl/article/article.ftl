@@ -17,28 +17,9 @@
   <#include "../common/header/header.ftl" />
   <div class="set-grid">
     <section class="article-body">
-      <#--<div class="classifications">-->
-        <#--<p class="license-short" id="licenseShort">Open Access</p>-->
-
-        <#--<#if article.articleType=="Research Article">-->
-        <#--<p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>-->
-        <#--</#if>-->
-
 
       <#include "articleClassifications.ftl" />
 
-
-      <#--<#include "articleTypes.ftl" />-->
-        <#--<#macro articleTypeDescription typeKey>-->
-          <#--<#if article.articleType == typeKey>-->
-          <#--<div class="article-type">-->
-            <#--${article.articleType!""}<#nested/>-->
-          <#--</div>-->
-          <#--</#if>-->
-        <#--</#macro>-->
-
-
-      <#--</div>-->
       <#include "articleTitle.ftl" />
 
       <ul class="date-doi">

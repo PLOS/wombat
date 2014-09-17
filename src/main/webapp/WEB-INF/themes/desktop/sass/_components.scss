@@ -372,7 +372,7 @@ $icn-tiny-align: middle;
   position:absolute;
   margin-top: $top;   /// margin cause then there is no blinking between the trigger and the tooltip
   opacity: 0;
-  z-index: -1;
+  z-index: z-index: map-get($zindex, invisible);
   @include single-transition(opacity);
 
   .close{

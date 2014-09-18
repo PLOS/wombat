@@ -1,3 +1,4 @@
+<#-- for generic sites -->
 <div class="titleFloater">
   <div class="set-grid">
     <div class="title-authors">

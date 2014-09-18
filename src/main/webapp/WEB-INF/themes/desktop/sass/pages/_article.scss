@@ -240,11 +240,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    @extend .inline-list;
   overflow: visible;
   margin-left: 0;// needed t overwrite the inline-list
-   margin-bottom: $pad-default - $pad-small;
+   margin-bottom: $pad-small;
    li {
      position: relative;
      margin-left: 0;  // needed to overwrite the inline-list
+     &.active{
 
+       a:hover{text-decoration: none;}
+     }
      > a {
      display: inline-block;   // needed to overwrite the inline-list
      padding: rem-calc(2 4); //TODO line-height;
@@ -255,9 +258,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
          color: $clr-highlight;
        }
      }
-     .active{
-        a:hover{text-decoration: none;}
-     }
+
 
    }
   .contribute{

@@ -346,7 +346,8 @@ $icn-tiny-align: middle;
 }
 
 
-/// for regular text that gets highlighted. For text that is already highlighted in some way you can just use the sass code that reflects that element.
+/// for regular text that gets highlighted. For text that is already highlighted in some way you can
+// just use the sass code that reflects that element.
 
 @mixin tooltip-trigger( $padding: $pad-xsmall, $outside-box:none){
   padding: $padding;

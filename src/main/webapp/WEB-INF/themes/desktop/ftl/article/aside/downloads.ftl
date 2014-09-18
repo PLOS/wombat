@@ -1,7 +1,7 @@
 <#include "../articleLinks.ftl" />
 <#assign downloadPrefix = legacyUrlPrefix + 'article/' + articleId  />
 <#-- TODO: add links below. needs backend -->
-<div class="dloads-container">
+<div class="dloads-container" data-js-tooltip-hover="trigger" ><#-- -->
   <div class="dload-pilly">
     <a href="" class="dload-pdf" id="downloadPdf" target="_blank">Download PDF</a>
     <div class="dload-hover">&nbsp;</div>

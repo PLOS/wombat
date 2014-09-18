@@ -27,14 +27,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .title-block {
-  //@include plos-grid-column(980, $gutter: $pad-small);
-  @extend %width-full;
+  width: 100%;
   background: $white;
 
 }
-.article-meta {
-  @include plos-grid-column(980, $gutter: none);
-}
+
 .classifications {
   @include plos-grid-column(600, $gutter: none);
   @extend %txt-transform;
@@ -252,17 +249,17 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    @extend .text-article-intro;
    @extend .inline-list;
   overflow: visible;
-  margin-left: 0;// needed t overwrite the inline-list
-   margin-bottom: $pad-default - $pad-small;
+  margin-left: 0;// needed to overwrite the inline-list
+   margin-bottom: $pad-small;
 
    li {
      position: relative;
      margin-left: 0;  // needed to overwrite the inline-list
      > a {
-     display: inline-block;   // needed t overwrite the inline-list
+     display: inline-block;   // needed to overwrite the inline-list
      padding: rem-calc(2 4); //TODO line-height;
       &:hover {
-        text-decoration: none;
+       // text-decoration: none;
       }
       &[data-js='toggle_trigger'] {
          color: $clr-highlight;
@@ -357,7 +354,7 @@ $icon-space: rem-calc(2);
    @include tooltip( $top: rem-calc(35));
 
   p{
-    color: #a7bee9;
+    color: $clr-tooltip-text;
     text-transform: none;
   }
 }
@@ -371,11 +368,11 @@ $icon-space: rem-calc(2);
 
 //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
 .dloads-container {
-
+  position: relative;
   .dload-pilly {
     @include plos-grid-column(160, $gutter: none);
     display: table;
-    margin-bottom: $pad-xsmall;
+
   }
 
   .dload-pdf {
@@ -387,6 +384,7 @@ $icon-space: rem-calc(2);
   }
 
   .dload-hover {
+    @include tooltip-trigger($outside-box: yes);
     @include plos-grid-column(30, $gutter: none);
     @include rounded-pill($background: $plos-default, $padding: 0 0 0 $pad-small, $border-radius: 0 5px 5px 0, $hover: true);
     @extend .icon-caret-down;
@@ -397,25 +395,23 @@ $icon-space: rem-calc(2);
       cursor: pointer;
     }
   }
+}
 
-  .dload-xml {
-   // display: none;
-    @include rounded-pill($background: $plos-default, $padding: $pad-small $pad-small $pad-smallish, $hover: false);
-    @include plos-grid-column(160, $gutter: none);
+.dload-xml {
+  @include tooltip($width: 160, $top: rem-calc(40));
 
-    li {
-      margin-bottom: $pad-xsmall;
-      font-size: $txt-size-medium-large;
+  li {
+    margin-bottom: $pad-xsmall;
+    font-size: $txt-size-medium-large;
+    font-weight: bold;
+
+    a {
+      @extend %link-text-body;
+      color: $white;
       font-weight: bold;
 
-      a {
-        @extend %link-text-body;
-        color: $white;
-        font-weight: bold;
-
-        &:hover {
-          color: $clr-tooltip-text;
-        }
+      &:hover {
+        color: $clr-tooltip-text;
       }
     }
   }

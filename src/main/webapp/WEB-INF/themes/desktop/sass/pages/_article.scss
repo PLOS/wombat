@@ -398,7 +398,7 @@ $icon-space: rem-calc(2);
 }
 
 .dload-xml {
-  @include tooltip($width: 160, $top: rem-calc(40));
+  @include tooltip($width: 160, $top: rem-calc(35));
 
   li {
     margin-bottom: $pad-xsmall;

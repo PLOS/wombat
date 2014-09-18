@@ -44,7 +44,27 @@ public class FileTheme extends Theme {
   @Override
   protected ResourceAttributes fetchResourceAttributes(String path) {
     File file = new File(root, path);
-    return file.exists() ? new ResourceAttributes(file) : null;
+    return file.exists() ? new FileResourceAttributes(file) : null;
+  }
+
+  private static class FileResourceAttributes implements ResourceAttributes {
+    private final long lastModified;
+    private final long contentLength;
+
+    protected FileResourceAttributes(File file) {
+      contentLength = file.length();
+      lastModified = file.lastModified();
+    }
+
+    @Override
+    public long getLastModified() {
+      return lastModified;
+    }
+
+    @Override
+    public long getContentLength() {
+      return contentLength;
+    }
   }
 
   protected Collection<String> fetchStaticResourcePaths(String searchRoot) throws IOException {

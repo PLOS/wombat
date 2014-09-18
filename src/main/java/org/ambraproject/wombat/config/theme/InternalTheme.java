@@ -52,7 +52,27 @@ public class InternalTheme extends Theme {
       return null;
     }
     URLConnection conn = resource.openConnection();
-    return conn.getContentLengthLong() > 0 ? new ResourceAttributes(conn) : null;
+    return conn.getContentLengthLong() > 0 ? new UrlConnFileResourceAttributes(conn) : null;
+  }
+
+  private static class UrlConnFileResourceAttributes implements ResourceAttributes {
+    private final long lastModified;
+    private final long contentLength;
+
+    protected UrlConnFileResourceAttributes(URLConnection conn) {
+      contentLength = conn.getContentLengthLong();
+      lastModified = conn.getLastModified();
+    }
+
+    @Override
+    public long getLastModified() {
+      return lastModified;
+    }
+
+    @Override
+    public long getContentLength() {
+      return contentLength;
+    }
   }
 
   @Override

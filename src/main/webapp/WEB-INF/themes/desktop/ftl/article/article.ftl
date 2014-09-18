@@ -16,10 +16,14 @@
 
   <#include "../common/header/header.ftl" />
   <div class="set-grid">
-    <section class="article-body">
-
+    <header class="title-block">
+      <div class="article-meta">
       <#include "articleClassifications.ftl" />
-
+       <ul id="almSignposts" class="signposts">
+         <li>1 billion<br>views</li>
+       </ul>
+      </div>
+      <div class="article-title-etc">
       <#include "articleTitle.ftl" />
 
       <ul class="date-doi">
@@ -52,6 +56,10 @@
       </#if>
 
       </ul>
+      </div>
+    </header>
+    <section class="article-body">
+
 
       <#include "tabs.ftl" />
 
@@ -61,8 +69,8 @@
 
 
     </section>
-    <aside class="article-column">
-
+    <aside class="article-aside">
+    <#include "aside/sidebar.ftl" />
     </aside>
   </div>
   <#include "../common/footer/footer.ftl" />
@@ -73,8 +81,6 @@
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/float_header.js"/>
   <@js src="resource/js/pages/article.js"/>
-  <@js src="resource/js/components/tooltip_hover.js"/>
-
   <@renderJs />
 
   </body>

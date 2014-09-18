@@ -1,3 +1,4 @@
+var tooltip;
 tooltip = {
 
   settings: {
@@ -44,8 +45,6 @@ tooltip = {
       $(this).parent(s.tooltip_trigger).removeClass('active');
     });
 
-  },
-
-
+  }
 
 };

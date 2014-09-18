@@ -41,7 +41,7 @@
             </#list>
           </span>
         <@authorItem authors[authors?size - 1] authors?size - 1 false /><#-- Last one after expander -->
-        <a class="author-less" class="less-authors"  data-js="hide">[ view less ]</a>
+        <a class="author-less" data-js="hide">[ view less ]</a>
 
       <#else>
       <#-- List authors with no expander -->

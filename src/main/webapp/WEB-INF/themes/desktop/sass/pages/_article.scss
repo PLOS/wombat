@@ -41,7 +41,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   margin-top: $pad-default + $pad-xsmall;
   margin-bottom: $pad-smallish;
 
-  p {
+  > p {
     font-size: $txt-size-xxxsmall;
     display: inline-block;
     padding-left: $pad-smallish;
@@ -51,15 +51,17 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   .license-short {
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
+    font-family: $font-face-fancy;
    }
 
   .peer-reviewed {
     background: image-url('icon.pr.gif') no-repeat 0 3px;
+    font-family: $font-face-fancy;
+
   }
 
-  .article-type {
+  .article-type > p {
     margin-top: $pad-xsmall;
-    font-family: $font-face-fancy;
     font-size: $txt-size-xxsmall;
   }
 }
@@ -291,10 +293,15 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 //  }
  }
 
+
+.tooltip{
+
+}
+
 $icon-space: rem-calc(2);
- .author-info {
+ .author-info{
      @extend .pill-small;
-     padding-right: ($pad-small + $pad-small);
+     padding-right: ($pad-default);
      width: rem-calc(450);
      top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
      height: auto;
@@ -324,9 +331,7 @@ $icon-space: rem-calc(2);
 
    .author-name {
      @include rounded-pill($padding: rem-calc(2 4),$hover: false);
-
    }
-
    .author-info {
      opacity: 1;
      z-index: map-get($zindex, dropdown);
@@ -340,14 +345,29 @@ $icon-space: rem-calc(2);
    }
  }
 
- .posRight .author-info {
-   right: 0;
- }
+.article-type{
+  position:relative;
+  @extend .clearfix;
+  height: auto;
+  width: auto;
+}
 
- [data-js-tooltip=tooltip_trigger]:focus {
- outline: 0;
- }
+.type-desc{
 
+   @include tooltip( $top: rem-calc(35));
+
+  p{
+    color: #a7bee9;
+    text-transform: none;
+  }
+}
+
+.article-type-tooltip{
+   @include tooltip-trigger($outside-box: yes);
+   font-family: $font-face-plain;
+   font-size: $txt-size-xxxsmall;
+
+}
 
 //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
 .dloads-container {

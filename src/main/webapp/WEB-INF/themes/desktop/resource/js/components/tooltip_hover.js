@@ -1,38 +1,28 @@
+var tooltip_hover;
 tooltip_hover = {
 
   settings: {
-    tooltip_hover_trigger: '[data-js=tooltip_hover_trigger]',
-    tooltip_hover_target:  '[data-js=tooltip_hover_target]',
-    tooltip_hover_hidden:  '[data-initial=hide]',
-    tooltip_container: '[data-js=tooltip_container]',
-    tooltip_class: 'active',
-    speed:           0
-  },
+  tooltip_hover_trigger: '[data-js-tooltip-hover=trigger]',
+  tooltip_hover_target:  '[data-js-tooltip-hover=target]',
+  tooltip_hover_hidden: '[data-initial=hide]',
+  tooltip_class: 'active',
+  speed:           0
+},
 
-  init: function (options) {
+
+  init: function(options) {
     // kick things off
     this.settings = $.extend(this.settings, options);
     var s = this.settings;
-    this.tooltip();
-    this.click_elsewhere();
+    this.action();
   },
 
-  tooltip: function () {
+  action: function() {
     var s = this.settings;
-
-    $(s.tooltip_trigger).on('hover', function () {
-
+    $(s.tooltip_hover_trigger).hover( function () {
+         $(this).toggleClass(s.tooltip_class);
     });
-
-  },
-  remove_all: function(){
-    var s = this.settings;
-    $(s.tooltip_trigger).removeClass(s.tooltip_class);
-  },
-
-  click_elsewhere: function () {
-    var s = this.settings;
-    $(s.tooltip_trigger).blur(s.remove_all);
-
   }
 };
+
+

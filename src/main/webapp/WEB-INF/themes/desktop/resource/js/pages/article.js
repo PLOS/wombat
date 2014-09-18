@@ -93,6 +93,8 @@
     toggle.init();
     // initialize tooltip for author info
     tooltip.init();
+    // initialize tooltip_hover for everything
+    tooltip_hover.init();
   });
 
 }(jQuery));

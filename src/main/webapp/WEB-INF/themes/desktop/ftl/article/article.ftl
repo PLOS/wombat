@@ -18,15 +18,7 @@
   <div class="set-grid">
     <header class="title-block">
       <div class="article-meta">
-        <div class="classifications">
-          <p class="license-short" id="licenseShort">Open Access</p>
-
-        <#if article.articleType=="Research Article">
-          <p class="peer-reviewed" id="peerReviewed">Peer-reviewed</p>
-        </#if>
-
-          <div class="article-type" id="artType">${article.articleType!""}</div>
-        </div>
+      <#include "articleClassifications.ftl" />
        <ul id="almSignposts" class="signposts">
          <li>1 billion<br>views</li>
        </ul>

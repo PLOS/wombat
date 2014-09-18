@@ -1,9 +1,13 @@
 <ul class="author-list clearfix" data-js-tooltip="tooltip_container">
 <#include "maxAuthorsToShow.ftl" />
 <#macro authorItem author author_index author_has_next hidden=false>
+  <#assign hasMeta = author.equalContrib?? || author.deceased?? || author.corresponding??
+  || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
+  || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
 
 
-  <li data-js-tooltip="tooltip_trigger" <#if hidden> data-js-toggle="toggle_target"
+
+  <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if> <#if hidden> data-js-toggle="toggle_target"
       data-initial="hide"</#if> >
     <a data-author-id="${author_index?c}" class="author-name" >
     ${author.fullName}<#-- no space
@@ -14,9 +18,7 @@
  --><#if author_has_next><#-- no space -->,</#if><#-- no space
     --></a>
 
-    <#assign hasMeta = author.equalContrib?? || author.deceased?? || author.corresponding??
-    || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
-    || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
+
     <#if hasMeta>
       <div id="author-meta-${author_index?c}" class="author-info" data-js-tooltip="tooltip_target">
         <#if author.equalContrib>
@@ -28,8 +30,8 @@
           </p>
         </#if>
 
-        <#if author.deceased><p>&#8224 Deceased.</p></#if>
-        <#if author.corresponding??><p> ${author.corresponding}</p></#if>
+        <#if author.deceased><p>&dagger; Deceased.</p></#if>
+        <#if author.corresponding??>hello<p> ${author.corresponding}</p></#if>
         <#if author.affiliations?? && author.affiliations?size gt 0>
           <p><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
             <#list author.affiliations as affil>

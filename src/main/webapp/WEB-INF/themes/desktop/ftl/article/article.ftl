@@ -78,6 +78,7 @@
 
   <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
   <@js src="resource/js/components/show_onscroll.js"/>
+  <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/float_header.js"/>
   <@js src="resource/js/pages/article.js"/>

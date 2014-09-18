@@ -1,0 +1,10 @@
+cors: null
+# Controls cross-origin resource sharing (CORS) headers on static resources. Uses only the global
+# "Access-Control-Allow-Origin: *" header. To never set that header, leave null.
+#
+# To set the CORS header, override with a list of resource path prefixes. For example, to serve the header on all
+# requests to .../resource/fonts/* and .../resource/images/*, set
+#
+#   cors:
+#     - fonts/
+#     - images/

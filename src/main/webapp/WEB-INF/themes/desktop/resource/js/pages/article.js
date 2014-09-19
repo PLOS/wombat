@@ -1,6 +1,7 @@
 /**
  * Created by ddowell on 8/14/14.
- * DEPENDENCY:  resource/js/components/truncate_elem  & resource/js/components/show_onscroll
+ * requires:  resource/js/components/truncate_elem.js
+ *            resource/js/components/show_onscroll.js
  */
 
 (function ($) {
@@ -70,7 +71,7 @@
     },
 
     run_it : function () {
-      console.log(this.overflown());
+
       if (this.overflown() === true) {
         // truncate_elem is in resource/js/components
         return truncate_elem.init();

@@ -409,6 +409,7 @@ $icon-space: rem-calc(2);
       @extend %link-text-body;
       color: $white;
       font-weight: bold;
+      display: block;
 
       &:hover {
         color: $clr-tooltip-text;

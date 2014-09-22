@@ -55,7 +55,7 @@ example | extension
 
 */
 
-%header-allcaps{
+%header-allcaps {
  font-size: rem-calc($txt-size-medium);
  font-family: $font-face-fancy;
  @extend %txt-transform;
@@ -125,31 +125,31 @@ example | extension
  `$decoration:underline` | text stays the same color but has an underline
 
 */
-@mixin link-text($color: $clr-body-text, $decoration: none){
+@mixin link-text($color: $clr-body-text, $decoration: none) {
   color: $color;
   text-decoration: none;
 
-  &:hover, a:hover{
-    @if $decoration == none{
+  &:hover, a:hover {
+    @if $decoration == none {
     color: $plos-default;
     text-decoration: none;
   }
-    @else if $decoration == underline{
+    @else if $decoration == underline {
       color: $color;
       text-decoration: underline;
     }
   }
 }
 
-%link-text-body, %link-text-body a{
+%link-text-body, %link-text-body a {
   @include link-text();
 }
 
-%link-text-white, %link-text-white a{
+%link-text-white, %link-text-white a {
   @include link-text($color: $white,$decoration: underline);
 }
 
-%link-text-underline, %link-text-underline a{
+%link-text-underline, %link-text-underline a {
   @include link-text($decoration: underline);
 }
 
@@ -157,7 +157,7 @@ example | extension
 //utility styles
 ///////////////
 
-%small-italic{
+%small-italic {
   font-size: rem-calc($txt-size-xxxsmall);
   font-style: italic;
 }
@@ -167,7 +167,7 @@ example | extension
 %txt-transform {
   text-transform: uppercase;
 }
-.no-margin{ margin-bottom: 0;}
+.no-margin { margin-bottom: 0;}
 
 //////////////
 //form styles
@@ -211,6 +211,6 @@ This is one place not to use @extend, since this is a semantic class name
 
 */
 
-.note,.caption, figcaption{ color: $grey-med-light;}
+.note,.caption, figcaption { color: $grey-med-light;}
 
 %text-size-large {font-size: $txt-size-large;}

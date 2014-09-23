@@ -55,6 +55,12 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "dateRange", required = false) String dateRangeParam,
                        @RequestParam(value = "legacy", required = false) String legacy)
       throws IOException {
+    if (query == null) {
+      log.warn("Received search request in {} with null query param (possible apache rewrite issue)", site);
+      // May be due to apache rewrite config issue which needs attention. Meanwhile, set query to
+      // empty string which will direct the user to a search error page instead of a hard NPE trace
+      query="";
+    }
     if (booleanParameter(legacy)) {
       return "redirect:" + redirectToLegacySearch(site, query);
     }

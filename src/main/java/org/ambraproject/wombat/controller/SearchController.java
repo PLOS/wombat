@@ -54,7 +54,13 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
                        @RequestParam(value = "dateRange", required = false) String dateRangeParam,
                        @RequestParam(value = "legacy", required = false) String legacy)
-      throws IOException {
+          throws IOException {
+    if (query == null) {
+      log.warn("Received search request in {} with null query param (possible apache rewrite issue)", site);
+      // May be due to apache rewrite config issue which needs attention. Meanwhile, set query to
+      // empty string which will direct the user to a search error page instead of a hard NPE trace
+      query="";
+    }
     if (booleanParameter(legacy)) {
       return "redirect:" + redirectToLegacySearch(site, query);
     }
@@ -106,13 +112,13 @@ public class SearchController extends WombatController {
     String legacyUrlPrefix = (String) theme.getConfigMap("legacy").get("urlPrefix");
     if (legacyUrlPrefix == null) {
       String message = String.format("Site \"%s\" supports legacy search, but does not provide a legacy URL prefix",
-          site.getKey());
+              site.getKey());
       throw new RuntimeException(message);
     }
 
     String redirectUrl = legacyUrlPrefix + legacySearchPattern
-        .replace("{query}", escapeParameter(query))
-        .replace("{journalKey}", site.getJournalKey());
+            .replace("{query}", escapeParameter(query))
+            .replace("{journalKey}", site.getJournalKey());
 
     try {
       return new URL(redirectUrl);

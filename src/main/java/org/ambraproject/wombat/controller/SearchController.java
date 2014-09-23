@@ -112,13 +112,13 @@ public class SearchController extends WombatController {
     String legacyUrlPrefix = (String) theme.getConfigMap("legacy").get("urlPrefix");
     if (legacyUrlPrefix == null) {
       String message = String.format("Site \"%s\" supports legacy search, but does not provide a legacy URL prefix",
-              site.getKey());
+          site.getKey());
       throw new RuntimeException(message);
     }
 
     String redirectUrl = legacyUrlPrefix + legacySearchPattern
-            .replace("{query}", escapeParameter(query))
-            .replace("{journalKey}", site.getJournalKey());
+        .replace("{query}", escapeParameter(query))
+        .replace("{journalKey}", site.getJournalKey());
 
     try {
       return new URL(redirectUrl);

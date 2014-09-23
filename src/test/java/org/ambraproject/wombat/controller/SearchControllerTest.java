@@ -39,7 +39,8 @@ public class SearchControllerTest extends ControllerTest {
   private static final String TEST_SITE_JOURNAL_KEY = "PLoSBiology";
 
   private static final String LEGACY_URL_PREFIX = String.format("http://www.%s.org/",TEST_SITE);
-  private static final String LEGACY_SEARCH_PATTERN = "search/simple?from=globalSimpleSearch&filterJournals={journalKey}&query={query}";
+  private static final String LEGACY_SEARCH_PATTERN = "search/simple?from=globalSimpleSearch&filterJournals=" +
+      "{journalKey}&query={query}";
 
   @BeforeMethod
   public void setUp() throws IOException {

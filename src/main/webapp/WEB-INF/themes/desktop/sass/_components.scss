@@ -307,7 +307,7 @@ example | extension
 }
 
 @mixin icon-offscreen {
-  text-indent: 9999px;
+  text-indent: -9999px;
 }
 
 $icn-tiny-width: 15;

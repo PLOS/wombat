@@ -46,6 +46,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     padding-left: $pad-smallish;
     line-height: 17px; // TEMP-PROD: change to 18px ($txt-size-large)
   }
+
   .license-short {
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
@@ -57,7 +58,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-family: $font-face-fancy;
 
   }
-  .article-type > p{
+
+  .article-type > p {
     margin-top: $pad-xsmall;
     font-size: $txt-size-xxsmall;
   }
@@ -286,9 +288,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
  }
 
 
-.tooltip{
-
-}
 
 $icon-space: rem-calc(2);
  .author-info{
@@ -336,20 +335,23 @@ $icon-space: rem-calc(2);
  }
 
 .article-type{
-  position:relative;
-  @extend .clearfix;
   height: auto;
   width: auto;
+  display:table;
+  @include js-tooltip-container();
 }
 
 .type-desc{
-
-   @include tooltip( $top: rem-calc(35));
-
+  @include tooltip();
+  @include js-tooltip-target($top: rem-calc(35));
   p{
-    color: #a7bee9;
+    color: $clr-tooltip-text;
     text-transform: none;
+    a{
+      @extend %link-text-white;
+    }
   }
+
 }
 
 .article-type-tooltip{
@@ -361,29 +363,64 @@ $icon-space: rem-calc(2);
 
 
 //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
-.article-downloads {
+.dloads-container {
+  position: relative;
+  display:block;
   .dload-pilly {
-    @extend .pill;
-    margin-bottom: $pad-xsmall;
+    @include plos-grid-column(160, $gutter: none);
+    display: table;
+
   }
-  span {
-      display: inline;
-  }
+
   .dload-pdf {
-    @include link-text($color: $white);
+    @include plos-grid-column(130, $gutter: none);
+    @include rounded-pill($background: $plos-default, $padding: $pad-small 11px, $border-radius: 5px 0 0 5px, $hover: true);
+    display: table-cell;
     font-size: $txt-size-mediumish;
     font-weight: bold;
   }
   .dload-hover {
+    @include tooltip-trigger($outside-box: yes);
+    @include plos-grid-column(30, $gutter: none);
+    @include rounded-pill($background: $plos-default, $padding: 0 0 0 $pad-small, $border-radius: 0 5px 5px 0, $hover: true);
     @extend .icon-caret-down;
-    padding: 0 10px;
-    height: 10px;
-    width: 35px;
-  }
-  .dload-xml {
-    @extend .pill;
-    ul li {
-      font-size: $txt-size-medium-large;
+    display: table-cell;
+    line-height: rem-calc(35);
+
+    &:hover {
+      cursor: pointer;
     }
   }
+}
+
+.dload-xml {
+  @include tooltip($width: 160, $top: rem-calc(35));
+
+  li {
+    margin-bottom: $pad-xsmall;
+    font-size: $txt-size-medium-large;
+    font-weight: bold;
+
+    a {
+      @extend %link-text-body;
+      color: $white;
+      font-weight: bold;
+      display: block;
+
+      &:hover {
+        color: $clr-tooltip-text;
+      }
+    }
+  }
+}
+
+.print-article{
+  @extend .button-big;
+  @include js-tooltip-container;
+  @include plos-grid-column(77);}
+
+.print-options{
+  @extend .tooltip-aside;
+  @include js-tooltip-target( $top: rem-calc(40));
+
 }

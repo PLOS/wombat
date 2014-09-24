@@ -1,6 +1,6 @@
 <ul class="author-list clearfix" data-js-tooltip="tooltip_container">
 <#include "maxAuthorsToShow.ftl" />
-<#macro authorItem author author_index author_has_next hidden=false>
+<#macro authorItem author author_index author_has_next if_expander=false hidden=false>
   <#assign hasMeta = author.equalContrib?? || author.deceased?? || author.corresponding??
   || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
   || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
@@ -15,7 +15,7 @@
  --><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if><#-- no space
  --><#if author.corresponding??> <span class="email">  </span></#if><#-- no space
  --><#if author.deceased>&#8224</#if><#-- no space
- --><#if author_has_next><#-- no space -->,</#if><#-- no space
+ --><#if author_has_next || if_expander><#-- no space -->,</#if><#-- no space
     --></a>
 
 
@@ -68,13 +68,13 @@
   -->
   <#list authors as author><#-- Before the expander -->
     <#if author_index lt (maxAuthorsToShow - 1) >
-      <@authorItem author author_index author_has_next />
+      <@authorItem author author_index author_has_next true false />
     </#if>
   </#list>
       <#list authors as author><#-- Inside the expander -->
 
         <#if author_index gte (maxAuthorsToShow - 1) && author_index lt (authors?size - 1) >
-        <@authorItem author author_index author_has_next true />
+        <@authorItem author author_index author_has_next true true />
       </#if>
 
      </#list>
@@ -84,7 +84,7 @@
   [ ... ],
 </li>
 
-  <@authorItem authors[authors?size - 1] authors?size - 1 false /><#-- Last one after expander -->
+  <@authorItem authors[authors?size - 1] authors?size - 1 true false /><#-- Last one after expander -->
   <li data-js-toggle="toggle_trigger" >
   <#--there was no way to not do this. -->
     <a class="more-authors active" id="authors-show">[ view all ]</a>

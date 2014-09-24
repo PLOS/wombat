@@ -26,14 +26,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .title-block {
-  //@include plos-grid-column(980, $gutter: $pad-small);
-  @extend %width-full;
+  width: 100%;
   background: $white;
 
 }
-.article-meta {
-  @include plos-grid-column(980, $gutter: none);
-}
+
 .classifications {
   @include plos-grid-column(600, $gutter: none);
   @extend %txt-transform;
@@ -71,6 +68,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   float: right;
   text-align: center;
   height: 60px;
+
   li {
     float: right;
     border-right: 1px solid $grey-med-light;
@@ -82,6 +80,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 .article-title-etc {
   @include plos-grid-column(900, $gutter: none);
+
   h1 {
     font-size: $txt-size-27large; // TEMP-PROD: needs to be 26px or 28px
     margin-bottom: $pad-small;
@@ -128,6 +127,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     @extend .inline-list;
     margin: 0;
     padding-left: 0;
+
     li {
       margin-left: 0;
       line-height: 16px;
@@ -187,6 +187,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   margin-bottom: $pad-default;
   width: 100%;
   margin-left: 0;
+
   .tab-title {
     margin-left: 0;
     display: table-cell;
@@ -208,6 +209,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     a.article-tab-5 {
       background: lighten($tabs-base-color, 40%);
     }
+
     a {
       display: block;
       height: 75px;
@@ -254,7 +256,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      display: inline-block;   // needed to overwrite the inline-list
      padding: rem-calc(2 4); //TODO line-height;
       &:hover{
-       // text-decoration: none;
+    
       }
       &[data-js='toggle_trigger']{
          color: $clr-highlight;
@@ -288,6 +290,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
  }
 
 
+.tooltip{
+
+}
 
 $icon-space: rem-calc(2);
  .author-info{
@@ -318,8 +323,9 @@ $icon-space: rem-calc(2);
    }
  }
  .active {
-   a, a:hover{color: $white;}
-   .author-name{
+   a, a:hover { color: $white; }
+
+   .author-name {
      @include rounded-pill($padding: rem-calc(2 4),$hover: false);
    }
    .author-info {
@@ -346,6 +352,7 @@ $icon-space: rem-calc(2);
   @include js-tooltip-target($top: rem-calc(35));
   p{
     color: $clr-tooltip-text;
+   
     text-transform: none;
     a{
       @extend %link-text-white;
@@ -361,11 +368,9 @@ $icon-space: rem-calc(2);
 
 }
 
-
 //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
 .dloads-container {
   position: relative;
-  display:block;
   .dload-pilly {
     @include plos-grid-column(160, $gutter: none);
     display: table;
@@ -379,6 +384,7 @@ $icon-space: rem-calc(2);
     font-size: $txt-size-mediumish;
     font-weight: bold;
   }
+
   .dload-hover {
     @include tooltip-trigger($outside-box: yes);
     @include plos-grid-column(30, $gutter: none);
@@ -394,7 +400,9 @@ $icon-space: rem-calc(2);
 }
 
 .dload-xml {
-  @include tooltip($width: 160, $top: rem-calc(35));
+  @include js-tooltip-target($top: rem-calc(35));
+
+  @include tooltip($width: 160);
 
   li {
     margin-bottom: $pad-xsmall;
@@ -413,11 +421,12 @@ $icon-space: rem-calc(2);
     }
   }
 }
-
 .print-article{
   @extend .button-big;
   @include js-tooltip-container;
-  @include plos-grid-column(77);}
+  @include plos-grid-column(77, $gutter:right,$gutter-width: $pad-small);
+margin-top: $pad-small; ///!!!! very temprorary - this is just so the thing doesnt' look broken - handle for all things on the left.
+}
 
 .print-options{
   @extend .tooltip-aside;

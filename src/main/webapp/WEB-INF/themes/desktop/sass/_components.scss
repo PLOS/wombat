@@ -390,7 +390,7 @@ $icn-tiny-align: middle;
   @include rounded-pill($padding: $tooltip-padding, $hover: false);
   padding-right: $pad-default;   //TODO put padding in closer
   width: rem-calc($width);
- /// is this in a different style?
+
   .close{
     @extend .closer;
     position: absolute;

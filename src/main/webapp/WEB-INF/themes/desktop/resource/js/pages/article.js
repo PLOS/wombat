@@ -85,6 +85,10 @@
 
   $( document ).ready(function() {
 
+    $(".dloads-container").on('click', 'a', function () {
+      this.preventDefault();
+    });
+
     parse_xml_date.init();
     check_authors_truncation.init();
     float_header.init();

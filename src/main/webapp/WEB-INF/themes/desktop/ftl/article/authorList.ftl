@@ -53,7 +53,7 @@
           ${note}
           </#list>
         </#if>
-        <a data-js-tooltip="tooltip_close" class="close" id="tooltipClose"> &#x02A2F </a>
+        <a data-js-tooltip="tooltip_close" class="close" id="tooltipClose${author_index?c}"> &#x02A2F </a>
       </div>
     </#if>
   </li>

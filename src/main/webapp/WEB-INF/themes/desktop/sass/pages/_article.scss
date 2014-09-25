@@ -1,8 +1,8 @@
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
-$temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
+$temp-pad-tabs: rem-calc(8) rem-calc(9);
+// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
 
-
- // extensible layout styles
+// extensible layout styles
 
 .text-article-intro {
   font-size: $txt-size-default;
@@ -51,7 +51,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
     font-family: $font-face-fancy;
-   }
+  }
 
   .peer-reviewed {
     background: image-url('icon.pr.gif') no-repeat 0 3px;
@@ -221,7 +221,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     a {
       display: block;
       height: 75px;
-      padding: $temp-pad-tabs;  // TEMP-PROD: use $pad-small;
+      padding: $temp-pad-tabs; // TEMP-PROD: use $pad-small;
       border-right: 1px solid $white;
       font-weight: bold;
       color: $white;
@@ -239,7 +239,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       background-image: image-url("icon.tabs.active.white.png");
       background-repeat: no-repeat;
       background-position: 9px 65px;
-     
+
       &:hover {
         @extend %brand-background;
         cursor: inherit;
@@ -248,33 +248,34 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.author-list{
-   @extend .text-article-intro;
-   @extend .inline-list;
+.author-list {
+  @extend .text-article-intro;
+  @extend .inline-list;
   overflow: visible;
-  margin-left: 0;// needed t overwrite the inline-list
-   margin-bottom: $pad-small;
-   li {
-     position: relative;
-     margin-left: 0;  // needed to overwrite the inline-list
-     &.active{
+  margin-left: 0; // needed t overwrite the inline-list
+  margin-bottom: $pad-small;
+  li {
+    position: relative;
+    margin-left: 0; // needed to overwrite the inline-list
+    &.active {
 
-       a:hover{text-decoration: none;}
-     }
-     > a {
-     display: inline-block;   // needed to overwrite the inline-list
-     padding: rem-calc(2 4); //TODO line-height;
-      &:hover{
-    
+      a:hover {
+        text-decoration: none;
       }
-      &[data-js='toggle_trigger']{
-         color: $clr-highlight;
-       }
-     }
+    }
+    > a {
+      display: inline-block; // needed to overwrite the inline-list
+      padding: rem-calc(2 4); //TODO line-height;
+      &:hover {
 
+      }
+      &[data-js='toggle_trigger'] {
+        color: $clr-highlight;
+      }
+    }
 
-   }
-  .contribute{
+  }
+  .contribute {
     @extend .icon-author-contribute;
 
   }
@@ -286,156 +287,142 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     @extend .icon-author-address;
 
   }
-//  .contribute::after {
-//
-//    @extend .icon-author-contribute;
-//  }
-//  .footnotes::after {
-//    @extend .icon-author-footnotes;
-//  }
-//  .address::after {
-//    @extend .icon-author-address;
-//  }
- }
 
+  $icon-space: rem-calc(2);
+  .author-info {
+    @extend .pill-small;
+    padding-right: ($pad-default);
+    width: rem-calc(450);
+    top: rem-calc($txt-size-default + 2); // need to make this a tad more dynamic.
+    height: auto;
+    position: absolute;
+    margin-top: $pad-small;
+    opacity: 0;
+    @include single-transition(opacity);
+    z-index: -1;
 
-.tooltip{
-
-}
-
-$icon-space: rem-calc(2);
- .author-info{
-     @extend .pill-small;
-     padding-right: ($pad-default);
-     width: rem-calc(450);
-     top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
-     height: auto;
-     position:absolute;
-     margin-top: $pad-small;
-     opacity: 0;
-     @include single-transition(opacity);
-     z-index: -1;
-
-   p{
+    p {
       border-top: rem-calc(2) solid $grey-med;
       padding: $pad-small 0;
       &:first-child {
         border-top: none;
       }
-   }
+    }
 
-   .email, .rel-footnote {
-     @include icon-offscreen;
-   }
-   .rel-footnote{
-     margin-right: $icon-space;
-   }
- }
- .active {
-   a, a:hover { color: $white; }
-
-   .author-name {
-     @include rounded-pill($padding: rem-calc(2 4),$hover: false);
-   }
-   .author-info {
-     opacity: 1;
-     z-index: map-get($zindex, dropdown);
-   }
-   .close{
-    @extend .closer;
-     position: absolute;
-     top: $pad-xsmall;
-     right: $pad-xsmall;
-   }
- }
-
-.article-type{
-  height: auto;
-  width: auto;
-  display:table;
-  @include js-tooltip-container();
-}
-
-.type-desc{
-  @include tooltip();
-  @include js-tooltip-target($top: rem-calc(35));
-  p{
-    color: $clr-tooltip-text;
-    text-transform: none;
-    a{
-      @extend %link-text-white;
+    .email, .rel-footnote {
+      @include icon-offscreen;
+    }
+    .rel-footnote {
+      margin-right: $icon-space;
     }
   }
-}
-
-.article-type-tooltip{
-   @include tooltip-trigger($outside-box: yes);
-   font-family: $font-face-plain;
-   font-size: $txt-size-xxxsmall;
-
-}
-
-//RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
-.dloads-container {
-  position: relative;
-  .dload-pilly {
-    @include plos-grid-column(160, $gutter: none);
-    display: table;
-
-  }
-
-  .dload-pdf {
-    @include plos-grid-column(130, $gutter: none);
-    @include rounded-pill($background: $plos-default, $padding: $pad-small 11px, $border-radius: 5px 0 0 5px, $hover: true);
-    display: table-cell;
-    font-size: $txt-size-mediumish;
-    font-weight: bold;
-  }
-
-  .dload-hover {
-    @include tooltip-trigger($outside-box: yes);
-    @include plos-grid-column(30, $gutter: none);
-    @include rounded-pill($background: $plos-default, $padding: 0 0 0 $pad-small, $border-radius: 0 5px 5px 0, $hover: true);
-    @extend .icon-caret-down;
-    display: table-cell;
-    line-height: rem-calc(35);
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-
-.dload-xml {
-  @include js-tooltip-target($top: rem-calc(35));
-  @include tooltip($width: 160);
-
-  li {
-    margin-bottom: $pad-xsmall;
-    font-size: $txt-size-medium-large;
-    font-weight: bold;
-
-    a {
-      @extend %link-text-body;
+  .active {
+    a, a:hover {
       color: $white;
-      font-weight: bold;
-      display: block;
+    }
 
-      &:hover {
-        color: $clr-tooltip-text;
+    .author-name {
+      @include rounded-pill($padding: rem-calc(2 4), $hover: false);
+    }
+    .author-info {
+      opacity: 1;
+      z-index: map-get($zindex, dropdown);
+    }
+    .close {
+      @extend .closer;
+      position: absolute;
+      top: $pad-xsmall;
+      right: $pad-xsmall;
+    }
+  }
+
+  .article-type {
+    height: auto;
+    width: auto;
+    display: table;
+    @include js-tooltip-container();
+  }
+
+  .type-desc {
+    @include tooltip();
+    @include js-tooltip-target($top: rem-calc(35));
+    p {
+      color: $clr-tooltip-text;
+      text-transform: none;
+      a {
+        @extend %link-text-white;
       }
     }
   }
-}
-.print-article{
-  @extend .button-big;
-  @include js-tooltip-container;
-  @include plos-grid-column(77, $gutter:right,$gutter-width: $pad-small);
-margin-top: $pad-small; ///!!!! very temprorary - this is just so the thing doesnt' look broken - handle for all things on the left.
-}
 
-.print-options{
-  @extend .tooltip-aside;
-  @include js-tooltip-target( $top: rem-calc(40));
+  .article-type-tooltip {
+    @include tooltip-trigger($outside-box: yes);
+    font-family: $font-face-plain;
+    font-size: $txt-size-xxxsmall;
 
-}
+  }
+
+  //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
+  .dloads-container {
+    position: relative;
+    .dload-pilly {
+      @include plos-grid-column(160, $gutter: none);
+      display: table;
+
+    }
+
+    .dload-pdf {
+      @include plos-grid-column(130, $gutter: none);
+      @include rounded-pill($background: $plos-default, $padding: $pad-small 11px, $border-radius: 5px 0 0 5px, $hover: true);
+      display: table-cell;
+      font-size: $txt-size-mediumish;
+      font-weight: bold;
+    }
+
+    .dload-hover {
+      @include tooltip-trigger($outside-box: yes);
+      @include plos-grid-column(30, $gutter: none);
+      @include rounded-pill($background: $plos-default, $padding: 0 0 0 $pad-small, $border-radius: 0 5px 5px 0, $hover: true);
+      @extend .icon-caret-down;
+      display: table-cell;
+      line-height: rem-calc(35);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .dload-xml {
+    @include js-tooltip-target($top: rem-calc(35));
+    @include tooltip($width: 160);
+
+    li {
+      margin-bottom: $pad-xsmall;
+      font-size: $txt-size-medium-large;
+      font-weight: bold;
+
+      a {
+        @extend %link-text-body;
+        color: $white;
+        font-weight: bold;
+        display: block;
+
+        &:hover {
+          color: $clr-tooltip-text;
+        }
+      }
+    }
+  }
+  .print-article {
+    @extend .button-big;
+    @include js-tooltip-container;
+    @include plos-grid-column(77, $gutter: right, $gutter-width: $pad-small);
+    margin-top: $pad-small; ///!!!! very temprorary - this is just so the thing doesnt' look broken - handle for all things on the left.
+  }
+
+  .print-options {
+    @extend .tooltip-aside;
+    @include js-tooltip-target($top: rem-calc(40));
+
+  }

@@ -307,7 +307,7 @@ example | extension
 }
 
 @mixin icon-offscreen {
-  text-indent: 9999px;
+  text-indent: -9999px;
 }
 
 $icn-tiny-width: 15;
@@ -391,7 +391,11 @@ $icn-tiny-align: middle;
     opacity: 1;
     z-index: map-get($zindex, dropdown);
   }
+
+
 }
 
+// js utilities
+.pos-right{right:0}   // used in tooltip.js
 
 

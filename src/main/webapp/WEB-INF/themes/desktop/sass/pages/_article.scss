@@ -1,8 +1,8 @@
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
-$temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
+$temp-pad-tabs: rem-calc(8) rem-calc(9);
+// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
 
-
- // extensible layout styles
+// extensible layout styles
 
 .text-article-intro {
   font-size: $txt-size-default;
@@ -17,9 +17,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .set-grid {
   @extend .plos-row;
 }
+
 .article-body {
   @include plos-grid-column(755, $gutter: none);
 }
+
 .article-aside {
   @include plos-grid-column(180, $gutter: none);
   float: right; /* temporary */
@@ -49,7 +51,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
     font-family: $font-face-fancy;
-   }
+  }
 
   .peer-reviewed {
     background: image-url('icon.pr.gif') no-repeat 0 3px;
@@ -62,7 +64,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-size: $txt-size-xxsmall;
   }
 }
-.signposts {  //TEMPORARY STYLES
+
+.signposts {
+  //TEMPORARY STYLES
   @include plos-grid-column(360, $gutter: none);
   @extend .inline-list;
   margin: 0;
@@ -79,6 +83,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-weight: bold;
   }
 }
+
 .article-title-etc {
   @include plos-grid-column(900, $gutter: none);
 
@@ -137,6 +142,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
   }
 }
+
 .topVisible {
   visibility: visible;
   top: 0;
@@ -160,7 +166,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
         font-style: italic;
       }
     }
-
 
   }
 
@@ -216,7 +221,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     a {
       display: block;
       height: 75px;
-      padding: $temp-pad-tabs;  // TEMP-PROD: use $pad-small;
+      padding: $temp-pad-tabs; // TEMP-PROD: use $pad-small;
       border-right: 1px solid $white;
       font-weight: bold;
       color: $white;
@@ -246,26 +251,25 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .author-list {
-   @extend .text-article-intro;
-   @extend .inline-list;
+  @extend .text-article-intro;
+  @extend .inline-list;
   overflow: visible;
-  margin-left: 0;// needed to overwrite the inline-list
-   margin-bottom: $pad-small;
+  margin-left: 0; // needed to overwrite the inline-list
+  margin-bottom: $pad-small;
 
-   li {
-     position: relative;
-     margin-left: 0;  // needed to overwrite the inline-list
-     > a {
-     display: inline-block;   // needed to overwrite the inline-list
-     padding: rem-calc(2 4); //TODO line-height;
-      &:hover {
-       // text-decoration: none;
-      }
-      &[data-js='toggle_trigger'] {
-         color: $clr-highlight;
-       }
-     }
-   }
+  li {
+    position: relative;
+    margin-left: 0; // needed to overwrite the inline-list
+    &[data-js-toggle='toggle_trigger'] a{
+      color: $clr-highlight;
+    }
+    > a {
+      display: inline-block; // needed to overwrite the inline-list
+      padding: rem-calc(2 4); //TODO line-height;
+
+
+    }
+  }
   .contribute {
     @extend .icon-author-contribute;
 
@@ -278,92 +282,93 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     @extend .icon-author-address;
 
   }
-//  .contribute::after {
-//
-//    @extend .icon-author-contribute;
-//  }
-//  .footnotes::after {
-//    @extend .icon-author-footnotes;
-//  }
-//  .address::after {
-//    @extend .icon-author-address;
-//  }
- }
+  //  .contribute::after {
+  //
+  //    @extend .icon-author-contribute;
+  //  }
+  //  .footnotes::after {
+  //    @extend .icon-author-footnotes;
+  //  }
+  //  .address::after {
+  //    @extend .icon-author-address;
+  //  }
+}
 
-
-.tooltip{
+.tooltip {
 
 }
 
 $icon-space: rem-calc(2);
- .author-info{
-     @extend .pill-small;
-     padding-right: ($pad-default);
-     width: rem-calc(450);
-     top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
-     height: auto;
-     position:absolute;
-     margin-top: $pad-small;
-     opacity: 0;
-     @include single-transition(opacity);
-     z-index: -1;
+.author-info {
+  @extend .pill-small;
+  padding-right: ($pad-default);
+  width: rem-calc(450);
+  top: rem-calc($txt-size-default + 2); // need to make this a tad more dynamic.
+  height: auto;
+  position: absolute;
+  margin-top: $pad-small;
+  opacity: 0;
+  @include single-transition(opacity);
+  z-index: -1;
 
-   p {
-      border-top: rem-calc(2) solid $grey-med;
-      padding: $pad-small 0;
-      &:first-child {
-        border-top: none;
-      }
-   }
+  p {
+    border-top: rem-calc(2) solid $grey-med;
+    padding: $pad-small 0;
+    &:first-child {
+      border-top: none;
+    }
+  }
 
-   .email, .rel-footnote {
-     @include icon-offscreen;
-   }
-   .rel-footnote {
-     margin-right: $icon-space;
-   }
- }
- .active {
-   a, a:hover { color: $white; }
+  .email, .rel-footnote {
+    @include icon-offscreen;
+  }
+  .rel-footnote {
+    margin-right: $icon-space;
+  }
+}
 
-   .author-name {
-     @include rounded-pill($padding: rem-calc(2 4),$hover: false);
-   }
-   .author-info {
-     opacity: 1;
-     z-index: map-get($zindex, dropdown);
-   }
+.active {
+  a, a:hover {
+    color: $white;
+  }
 
-   .close {
+  .author-name {
+    @include rounded-pill($padding: rem-calc(2 4), $hover: false);
+  }
+  .author-info {
+    opacity: 1;
+    z-index: map-get($zindex, dropdown);
+  }
+
+  .close {
     @extend .closer;
-     position: absolute;
-     top: $pad-xsmall;
-     right: $pad-xsmall;
-   }
- }
+    position: absolute;
+    top: $pad-xsmall;
+    right: $pad-xsmall;
+  }
+}
 
-.article-type{
-  position:relative;
+.article-type {
+  position: relative;
   @extend .clearfix;
   height: auto;
   width: auto;
 }
 
-.type-desc{
+.type-desc {
 
-   @include tooltip( $top: rem-calc(35));
+  @include tooltip($top: rem-calc(35));
 
-  p{
+  p {
     color: $clr-tooltip-text;
     text-transform: none;
   }
 }
 
-.article-type-tooltip{
-   @include tooltip-trigger($outside-box: yes);
-   font-family: $font-face-plain;
-   font-size: $txt-size-xxxsmall;
-
+.article-type-tooltip {
+  @include tooltip-trigger($outside-box: yes);
+  font-family: $font-face-plain;
+  font-size: $txt-size-xxxsmall;
 }
 
 //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE

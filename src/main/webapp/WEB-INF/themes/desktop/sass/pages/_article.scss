@@ -374,38 +374,49 @@ $icon-space: rem-calc(2);
 //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
 .dloads-container {
   position: relative;
-  .dload-pilly {
-    @include plos-grid-column(160, $gutter: none);
+  .dload-menu {
+    width: rem-calc(160);
     display: table;
-
+    position: relative;
   }
-
-  .dload-pdf {
-    @include plos-grid-column(130, $gutter: none);
-    @include rounded-pill($background: $plos-default, $padding: $pad-small 11px, $border-radius: 5px 0 0 5px, $hover: true);
+  .dload-menu > li {
     display: table-cell;
+    float: left;
+  }
+  .dload-pdf {
+
+    @include rounded-pill($background: $plos-default, $padding: $pad-small 11px, $border-radius: 5px 0 0 5px, $hover: true);
+
     font-size: $txt-size-mediumish;
     font-weight: bold;
   }
 
   .dload-hover {
-    @include tooltip-trigger($outside-box: yes);
-    @include plos-grid-column(30, $gutter: none);
+
     @include rounded-pill($background: $plos-default, $padding: 0 0 0 $pad-small, $border-radius: 0 5px 5px 0, $hover: true);
     @extend .icon-caret-down;
-    display: table-cell;
+    //display: table-cell;
     line-height: rem-calc(35);
 
     &:hover {
       cursor: pointer;
     }
+    &.maintainHover {
+      background: black;
+    }
   }
 }
 
-.dload-xml {
-  @include tooltip($width: 160, $top: rem-calc(35));
 
+.dload-xml {
+  background: $plos-default;
+ // @include rounded-pill($background: $plos-default, $padding: $pad-small $pad-small $pad-smallish, $hover: false);
+  width: rem-calc(160);
+  height: rem-calc(52);
+  margin-left: 0;
+  display: none;
   li {
+    padding-left: 10px;
     margin-bottom: $pad-xsmall;
     font-size: $txt-size-medium-large;
     font-weight: bold;
@@ -414,11 +425,65 @@ $icon-space: rem-calc(2);
       @extend %link-text-body;
       color: $white;
       font-weight: bold;
-      display: block;
 
       &:hover {
         color: $clr-tooltip-text;
       }
     }
   }
+}
+
+.navbar .popover {
+  width: 400px;
+  -webkit-border-top-left-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  overflow: hidden;
+}
+
+.navbar .popover-content {
+  text-align: center;
+}
+
+.navbar .popover-content img {
+  height: 212px;
+  max-width: 250px;
+}
+
+.navbar .dropdown-menu {
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .dropdown-menu > li > a:hover {
+  background-image: none;
+  color: white;
+  background-color: rgb(0, 129, 194);
+  background-color: rgba(0, 129, 194, 0.5);
+}
+
+.navbar .dropdown-menu > li > a.maintainHover {
+  color: white;
+  background-color: #0081C2;
+}
+.active .dropdown-toggle{color: black;}
+
+.dropdown-menu > li > a {color: black !important;}
+.dropdown-menu > li > a:hover {
+  background-image: none;
+  color: black;
+  background-color: rgb(0, 129, 194);
+  background-color: rgba(0, 129, 194, 0.5);
+}
+
+.navbar .dropdown-menu > li > a.maintainHover {
+  color: black;
+  background-color: #0081C2;
 }

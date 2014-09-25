@@ -1,6 +1,7 @@
 /**
  * Created by ddowell on 8/14/14.
- * DEPENDENCY:  resource/js/components/truncate_elem  & resource/js/components/show_onscroll
+ * DEPENDENCY:  resource/js/components/truncate_elem
+ *              resource/js/components/show_onscroll
  */
 
 (function ($) {
@@ -70,7 +71,6 @@
     },
 
     run_it : function () {
-      console.log(this.overflown());
       if (this.overflown() === true) {
         // truncate_elem is in resource/js/components
         return truncate_elem.init();
@@ -83,23 +83,22 @@
     }
   };
 
-  $( document ).ready(function() {
+ $( document ).ready(function() {
+   $(".dloads-container").on('click', 'a', function () {
+     this.preventDefault();
+   });
+   parse_xml_date.init();
+   check_authors_truncation.init();
+   float_header.init();
 
-    $(".dloads-container").on('click', 'a', function () {
-      this.preventDefault();
-    });
-
-    parse_xml_date.init();
-    check_authors_truncation.init();
-    float_header.init();
-
-    // initialize toggle for author list view more
-    toggle.init();
-    // initialize tooltip for author info
-    tooltip.init();
-    // initialize tooltip_hover for everything
-    tooltip_hover.init();
-  });
-
+   // initialize toggle for author list view more
+   toggle.init();
+   // initialize tooltip for author info
+   tooltip.init();
+   // initialize tooltip_hover for everything
+   tooltip_hover.init();
+   // initialize the xml & citations dropdown
+   var downloads_menu = menuAimInit();
+ });
 }(jQuery));
 

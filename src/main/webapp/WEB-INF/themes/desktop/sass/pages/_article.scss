@@ -311,8 +311,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);
 
     .email, .rel-footnote {
       @include icon-offscreen;
-    }
-    .rel-footnote {
       margin-right: $icon-space;
     }
   }

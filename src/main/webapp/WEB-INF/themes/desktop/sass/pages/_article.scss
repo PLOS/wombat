@@ -260,47 +260,34 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);
   li {
     position: relative;
     margin-left: 0; // needed to overwrite the inline-list
+    padding: rem-calc(2 4); //TODO line-height;
+
     &[data-js-toggle='toggle_trigger'] a{
       color: $clr-highlight;
     }
+
     > a {
       display: inline-block; // needed to overwrite the inline-list
-      padding: rem-calc(2 4); //TODO line-height;
-
-
     }
   }
+
   .contribute {
     @extend .icon-author-contribute;
-
   }
+
   .rel-footnote {
     @extend .icon-author-footnotes;
-
   }
+
   .email {
     @extend .icon-author-address;
-
   }
-  //  .contribute::after {
-  //
-  //    @extend .icon-author-contribute;
-  //  }
-  //  .footnotes::after {
-  //    @extend .icon-author-footnotes;
-  //  }
-  //  .address::after {
-  //    @extend .icon-author-address;
-  //  }
-}
-
-.tooltip {
-
 }
 
 $icon-space: rem-calc(2);
 .author-info {
   @extend .pill-small;
+  @include single-transition(opacity);
   padding-right: ($pad-default);
   width: rem-calc(450);
   top: rem-calc($txt-size-default + 2); // need to make this a tad more dynamic.
@@ -308,8 +295,7 @@ $icon-space: rem-calc(2);
   position: absolute;
   margin-top: $pad-small;
   opacity: 0;
-  @include single-transition(opacity);
-  z-index: -1;
+  z-index: map-get($zindex, invisible);
 
   p {
     border-top: rem-calc(2) solid $grey-med;
@@ -328,13 +314,11 @@ $icon-space: rem-calc(2);
 }
 
 .active {
+  @include rounded-pill($padding: rem-calc(2 4), $hover: false);
   a, a:hover {
     color: $white;
   }
 
-  .author-name {
-    @include rounded-pill($padding: rem-calc(2 4), $hover: false);
-  }
   .author-info {
     opacity: 1;
     z-index: map-get($zindex, dropdown);

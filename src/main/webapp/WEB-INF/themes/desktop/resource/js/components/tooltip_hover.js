@@ -35,7 +35,7 @@ this widget assumes that your trigger and your tooltip are within the same conta
  .print-article{
  @extend .button-big;
  @include js-tooltip-container;
- @include plos-grid-column(77);}           pul
+ @include plos-grid-column(77);}
 
  .print-options{
  @extend .tooltip-aside;

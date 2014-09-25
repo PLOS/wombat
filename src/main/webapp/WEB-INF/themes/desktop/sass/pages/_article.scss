@@ -151,7 +151,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   overflow: hidden;
   box-sizing: border-box;
-
+  z-index: map-get($zindex, topVisible);
   .float-title-inner {
     @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
 
@@ -408,7 +408,6 @@ $icon-space: rem-calc(2);
 
 .dload-xml {
   @include js-tooltip-target($top: rem-calc(35));
-
   @include tooltip($width: 160);
 
   li {

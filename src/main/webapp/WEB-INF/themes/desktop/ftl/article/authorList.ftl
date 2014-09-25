@@ -6,7 +6,6 @@
   || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
 
 
-
   <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if> <#if hidden> data-js-toggle="toggle_target"
       data-initial="hide"</#if> >
     <a data-author-id="${author_index?c}" class="author-name" >

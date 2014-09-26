@@ -94,12 +94,8 @@ $default-header-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
 $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
 $default-transition-duration: .3s;
 $default-transition-function: linear;
+
 // typography
-
-
-
-
-
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px
 $pad-smallish: $pad-small + $pad-xsmall; //15px
@@ -108,9 +104,10 @@ $pad-medium: ($grid-gutter * 1.5); //30px
 $pad-large: ($grid-gutter * 2);   //40px
 
 // these are from small padding around highlighted elements such as tooltip hover states
-$pad-icon-space: rem-calc(2);
-$pad-highlight: rem-calc(2);
+$pad-icon-space: 2px;
+$pad-highlight: 2px;
 $pad-highlight-x: ($pad-highlight *2);
+$icon-space: 2px;
 
 
 // typography

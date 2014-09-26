@@ -107,6 +107,12 @@ $pad-default: $grid-gutter;       //20px
 $pad-medium: ($grid-gutter * 1.5); //30px
 $pad-large: ($grid-gutter * 2);   //40px
 
+// these are from small padding around highlighted elements such as tooltip hover states
+$pad-icon-space: rem-calc(2);
+$pad-highlight: rem-calc(2);
+$pad-highlight-x: ($pad-highlight *2);
+
+
 // typography
 $font-face-plain: "arial";
 $font-face-fancy: "albert";

@@ -256,14 +256,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    margin-bottom: $pad-small;
    li {
      position: relative;
-     margin-left: 0;  // needed to overwrite the inline-list
+     margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
      &.active{
 
        a:hover{text-decoration: none;}
      }
      > a {
      display: inline-block;   // needed to overwrite the inline-list
-     padding: rem-calc(2 4); //TODO line-height;
+     padding: $pad-highlight $pad-highlight-x; //TODO line-height;
       &:hover{
     
       }
@@ -276,34 +276,16 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    }
   .contribute{
     @extend .icon-author-contribute;
-
   }
   .rel-footnote {
     @extend .icon-author-footnotes;
-
   }
   .email {
     @extend .icon-author-address;
-
   }
-//  .contribute::after {
-//
-//    @extend .icon-author-contribute;
-//  }
-//  .footnotes::after {
-//    @extend .icon-author-footnotes;
-//  }
-//  .address::after {
-//    @extend .icon-author-address;
-//  }
- }
-
-
-.tooltip{
-
 }
 
-$icon-space: rem-calc(2);
+
  .author-info{
      @extend .pill-small;
      padding-right: ($pad-default);
@@ -326,8 +308,6 @@ $icon-space: rem-calc(2);
 
    .email, .rel-footnote {
      @include icon-offscreen;
-   }
-   .rel-footnote{
      margin-right: $icon-space;
    }
  }
@@ -335,12 +315,14 @@ $icon-space: rem-calc(2);
    a, a:hover { color: $white; }
 
    .author-name {
-     @include rounded-pill($padding: rem-calc(2 4),$hover: false);
+     @include rounded-pill($padding: $pad-highlight $pad-highlight-x,$hover: false);
    }
+
    .author-info {
      opacity: 1;
      z-index: map-get($zindex, dropdown);
    }
+
    .close{
     @extend .closer;
      position: absolute;

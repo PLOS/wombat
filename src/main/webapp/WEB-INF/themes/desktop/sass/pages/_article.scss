@@ -341,7 +341,7 @@ $icon-space: rem-calc(2);
      opacity: 1;
      z-index: map-get($zindex, dropdown);
    }
-   .close{
+   .close {
     @extend .closer;
      position: absolute;
      top: $pad-xsmall;
@@ -349,7 +349,7 @@ $icon-space: rem-calc(2);
    }
  }
 
-.article-type{
+.article-type {
   height: auto;
   width: auto;
   display:table;
@@ -382,60 +382,69 @@ $icon-space: rem-calc(2);
     width: rem-calc(160);
     display: table;
     position: relative;
-  }
-  .dload-menu > li {
-    display: table-cell;
-    float: left;
-  }
-  .dload-pdf {
+    li {
+      display: inline;
+      float: left;
+      background: $clr-body-text;
+      line-height: rem-calc(35);
+      color: $white;
+      .dload-pdf {
+        padding: 0 11px;
+        border-radius: 5px 0 0 5px;
+        font-size: $txt-size-mediumish;
+        font-weight: bold;
+        display: inline-block;
+      }
 
-    @include rounded-pill($background: $plos-default, $padding: $pad-small 11px, $border-radius: 5px 0 0 5px, $hover: true);
+      .dload-hover {
 
-    font-size: $txt-size-mediumish;
-    font-weight: bold;
-  }
+        //@include rounded-pill($background: $plos-default, $padding: 0 $pad-xsmall, $border-radius: 0 5px 5px 0, $hover: true);
+        @extend .icon-caret-down;
+        padding: 0 $pad-xsmall;
+        border-radius: 5px 0 0 5px;
+        display: inline-block;
 
-  .dload-hover {
-
-    @include rounded-pill($background: $plos-default, $padding: 0 0 0 $pad-small, $border-radius: 0 5px 5px 0, $hover: true);
-    @extend .icon-caret-down;
-    //display: table-cell;
-    line-height: rem-calc(35);
-
-    &:hover {
-      cursor: pointer;
+      }
+      &:hover {
+        background: $plos-default;
+      }
+      &.maintainHover {
+         background: $plos-default;
+       }
     }
-    &.maintainHover {
-      background: black;
-    }
-  }
-}
+
+
 
 .dload-xml {
   background: $plos-default;
- // @include rounded-pill($background: $plos-default, $padding: $pad-small $pad-small $pad-smallish, $hover: false);
+  border-radius: 5px;
+  padding: $pad-small $pad-default;
+  //@include rounded-pill($background: $plos-default, $padding: $pad-small $pad-small $pad-smallish, $hover: false);
+
   width: rem-calc(160);
-  height: rem-calc(52);
-  margin-left: 0;
+  //height: rem-calc(52);
+  position: relative;
+
   display: none;
   li {
-    padding-left: 10px;
+    padding-left: 20px;
     margin-bottom: $pad-xsmall;
     font-size: $txt-size-medium-large;
     font-weight: bold;
-
+    color: $white;
     a {
       @extend %link-text-body;
       color: $white;
       font-weight: bold;
-
+      display: block;
       &:hover {
         color: $clr-tooltip-text;
       }
     }
   }
 }
-
+  }
+}
 
 .print-article{
   @extend .button-big;

@@ -17,10 +17,10 @@ var menuAimInit = function() {
 
     // Show the submenu
     $submenu.css({
-      display: "block",
+      display: "block"/*,
       top: 15,
       left: 0,  // main should overlay submenu
-      height: height + 5
+      height: height + 5*/
     });
 
     // Keep the currently activated link's highlighted look

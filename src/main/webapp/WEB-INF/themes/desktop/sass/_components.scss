@@ -8,11 +8,15 @@ category: components
 
 ##pill
 <p class="pill">I am a pill</p>
-`@extend %pill`
+`@extend .pill`
+<p class="pill-small">I am a small pill</p>
+`@extend .pill-small`
+<p class="button-big">I am button </p>
+`@extend .button-big`
 */
 
 
-@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default, $hover: true) {
+@mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default, $hover-color: $clr-link-hover, $hover: true) {
   background: $background;
   padding: $padding;
   border-radius: $border-radius;
@@ -35,6 +39,18 @@ category: components
 .pill-small {
   @include rounded-pill($padding: $pad-small,  $hover: false);
 }
+
+.button-big{
+  @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small);
+  line-height: rem-calc(35px);
+  font-weight: bold;
+  font-size: $txt-size-mediumish;
+  text-align: center;
+  &.highlighted{
+     background-color: $clr-highlight;
+  }
+}
+
 
 /*doc
 ---
@@ -82,25 +98,25 @@ variable  | result   | default
   // set block padding
   @if $padding == default {
     padding: $pad-small;
-  } @else if $padding == none {
+  } @else if $padding == none{
     padding: 0;
   } @else {
     padding: $padding;
 }
   // set block shadow
-  @if $shadow == default {
+  @if $shadow == default{
     @include single-box-shadow();
-  } @if $shadow == none {
+  } @if $shadow == none{
     // no shadow
   }
   margin-bottom: $grid-gutter;
   background: $color;
 }
 
-.block {
+.block{
   @include blocks();
 }
-.block-noshadow {
+.block-noshadow{
   @include blocks($shadow: none);
 
 }
@@ -349,18 +365,19 @@ $icn-tiny-align: middle;
 /// for regular text that gets highlighted. For text that is already highlighted in some way you can
 // just use the sass code that reflects that element.
 
+
 @mixin tooltip-trigger( $padding: $pad-xsmall, $outside-box:none){
   padding: $padding;
+  @include single-transition(background-color);
   @if $outside-box == yes {
     padding-left: 0;
   }
-  .active & {
+  .active &, &.highlighted,  .highlighted &{
     a, a:hover{color: $white;}
     @include rounded-pill( $padding: $padding, $hover: false);
     @if $outside-box == yes {
       margin-left: -$padding;
     }
-    @include single-transition(color);
 
     .author-name{
       @include rounded-pill($padding: rem-calc(2 4),$hover: false);
@@ -368,18 +385,12 @@ $icn-tiny-align: middle;
 
   }
 }
-@mixin tooltip($width: 320, $top: $pad-default, $outside-box:none){
-  @extend .pill-small;
-  padding-right: ($pad-small + $pad-small);   //TODO put padding in closer
+
+// creates a standard tooltip blue box etc....
+@mixin tooltip($width: 320, $outside-box:none, $tooltip-padding: $pad-small){
+  @include rounded-pill($padding: $tooltip-padding, $hover: false);
+  padding-right: $pad-default;   //TODO put padding in closer
   width: rem-calc($width);
-  top: 0;   // need to make this a tad more dynamic.
-  left: 0;
-  height: auto;
-  position:absolute;
-  margin-top: $top;   /// margin cause then there is no blinking between the trigger and the tooltip
-  opacity: 0;
-  z-index: map-get($zindex, invisible);
-  @include single-transition(opacity);
 
   .close{
     @extend .closer;
@@ -387,15 +398,63 @@ $icn-tiny-align: middle;
     top: $pad-xsmall;
     right: $pad-xsmall;
   }
-  .active & {
+   margin-left: 0;
+}
+
+ // this is for asides.
+
+.tooltip-aside{
+  @include tooltip($width: 180, $tooltip-padding: rem-calc(15 10 10 20));
+  min-height: 100px;
+  display:block;
+  li {
+    margin-bottom: $pad-xsmall;
+    font-size: $txt-size-medium-large;
+    font-weight: bold;
+    text-align: left;
+    list-style-type: disc;
+    list-style-position: inside;
+    a {
+      @extend %link-text-body;
+      font-weight: bold;
+      color:$white;
+
+      &:hover {
+        color: $clr-tooltip-text;
+      }
+    }
+
+  }
+}
+
+
+//// for JS widgets - these are to separate
+
+@mixin js-tooltip-container{
+  position:relative;
+}
+@mixin js-tooltip-target($top: $pad-default){
+  top: 0;   // need to make this a tad more dynamic.
+  left: 0;
+  height: 0;
+  position:absolute;
+  margin-top: $top;   /// margin cause then there is no blinking between the trigger and the tooltip
+  opacity: 0;
+  //  visibility: hidden;
+  z-index: map-get($zindex, invisible);
+  @include single-transition(opacity);
+  &.visible{
     opacity: 1;
     z-index: map-get($zindex, dropdown);
+    height:auto;
   }
-
-
 }
 
 // js utilities
 .pos-right{right:0}   // used in tooltip.js
 
-
+ .shim{
+   height: 50px;   //TODO - make this  dynamic
+   position:absolute;
+   width: 100%;
+ }

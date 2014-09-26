@@ -1,6 +1,7 @@
-<span>Print</span><#-- TODO: Style as button -->
-<span><#-- TODO: Code as dropdown when button is hovered over -->
-  <ul>
+<div class="print-article" id="printArticle" data-js-tooltip-hover="trigger">
+
+  Print
+  <ul class="print-options" data-js-tooltip-hover="target">
     <li>
       <a title="Print Article"
          onclick="window.print(); return false;">
@@ -9,4 +10,4 @@
     </li>
   <#include "printService.ftl" />
   </ul>
-</span>
+</div>

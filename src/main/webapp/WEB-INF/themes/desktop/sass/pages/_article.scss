@@ -85,7 +85,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .article-title-etc {
-  @include plos-grid-column(900, $gutter: left, $gutter-width: $pad-small);
+  @include plos-grid-column(900, $gutter: none);
 
   h1 {
     font-size: $txt-size-27large; // TEMP-PROD: needs to be 26px or 28px

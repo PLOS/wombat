@@ -35,7 +35,6 @@
           <p id="authAffiliations-${author_index?c}"><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
             <#list author.affiliations as affil>
             ${affil}<#if affil_has_next>, </#if>
-
             </#list>
           </p>
         </#if>

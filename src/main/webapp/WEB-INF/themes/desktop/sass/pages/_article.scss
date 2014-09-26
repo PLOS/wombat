@@ -248,8 +248,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-$highlight-pad: rem-calc(2);
-$highlight-pad-x: ($highlight-pad *2);
 .author-list{
    @extend .text-article-intro;
    @extend .inline-list;
@@ -258,14 +256,14 @@ $highlight-pad-x: ($highlight-pad *2);
    margin-bottom: $pad-small;
    li {
      position: relative;
-     margin-left: -($highlight-pad * 1.5);  // needed to overwrite the inline-list
+     margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
      &.active{
 
        a:hover{text-decoration: none;}
      }
      > a {
      display: inline-block;   // needed to overwrite the inline-list
-     padding: $highlight-pad $highlight-pad-x; //TODO line-height;
+     padding: $pad-highlight $pad-highlight-x; //TODO line-height;
       &:hover{
     
       }
@@ -287,7 +285,7 @@ $highlight-pad-x: ($highlight-pad *2);
   }
 }
 
-$icon-space: rem-calc(2);
+
  .author-info{
      @extend .pill-small;
      padding-right: ($pad-default);
@@ -317,7 +315,7 @@ $icon-space: rem-calc(2);
    a, a:hover { color: $white; }
 
    .author-name {
-     @include rounded-pill($padding: $highlight-pad $highlight-pad-x,$hover: false);
+     @include rounded-pill($padding: $pad-highlight $pad-highlight-x,$hover: false);
    }
 
    .author-info {

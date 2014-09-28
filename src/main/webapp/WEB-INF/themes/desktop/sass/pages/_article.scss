@@ -378,60 +378,53 @@ $icon-space: rem-calc(2);
 //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
 .dloads-container {
   position: relative;
+  
   .dload-menu {
     width: rem-calc(160);
     display: table;
     position: relative;
+
     li {
       display: inline;
       float: left;
       background: $clr-body-text;
       line-height: rem-calc(35);
       color: $white;
+
       .dload-pdf {
         padding: 0 11px;
         border-radius: 5px 0 0 5px;
         font-size: $txt-size-mediumish;
         font-weight: bold;
-        display: inline-block;
       }
 
       .dload-hover {
-
-        //@include rounded-pill($background: $plos-default, $padding: 0 $pad-xsmall, $border-radius: 0 5px 5px 0, $hover: true);
+        @include js-tooltip-container();
         @extend .icon-caret-down;
         padding: 0 $pad-xsmall;
         border-radius: 5px 0 0 5px;
-        display: inline-block;
-
       }
       &:hover {
         background: $plos-default;
       }
-      &.maintainHover {
-         background: $plos-default;
-       }
     }
 
 
 
 .dload-xml {
-  background: $plos-default;
-  border-radius: 5px;
-  padding: $pad-small $pad-default;
-  //@include rounded-pill($background: $plos-default, $padding: $pad-small $pad-small $pad-smallish, $hover: false);
-
+  @include js-tooltip-target();
+  @extend .tooltip-aside;
   width: rem-calc(160);
-  //height: rem-calc(52);
   position: relative;
-
   display: none;
+
   li {
     padding-left: 20px;
     margin-bottom: $pad-xsmall;
     font-size: $txt-size-medium-large;
     font-weight: bold;
     color: $white;
+
     a {
       @extend %link-text-body;
       color: $white;

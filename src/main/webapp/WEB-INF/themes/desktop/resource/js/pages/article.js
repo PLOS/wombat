@@ -97,8 +97,7 @@
    tooltip.init();
    // initialize tooltip_hover for everything
    tooltip_hover.init();
-   // initialize the xml & citations dropdown
-   var downloads_menu = menuAimInit();
+
  });
 }(jQuery));
 

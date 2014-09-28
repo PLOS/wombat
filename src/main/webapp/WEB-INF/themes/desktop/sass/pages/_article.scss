@@ -17,9 +17,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .set-grid {
   @extend .plos-row;
 }
+
 .article-body {
   @include plos-grid-column(755, $gutter: none);
 }
+
 .article-aside {
   @include plos-grid-column(180, $gutter: none);
   float: right; /* temporary */
@@ -58,11 +60,13 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 
   .article-type > p {
-    margin-top: $pad-xsmall;
+//    margin-top: $pad-xsmall;
     font-size: $txt-size-xxsmall;
   }
 }
-.signposts {  //TEMPORARY STYLES
+
+.signposts {
+  //TEMPORARY STYLES
   @include plos-grid-column(360, $gutter: none);
   @extend .inline-list;
   margin: 0;
@@ -79,6 +83,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-weight: bold;
   }
 }
+
 .article-title-etc {
   @include plos-grid-column(900, $gutter: none);
 
@@ -137,6 +142,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
   }
 }
+
 .topVisible {
   visibility: visible;
   top: 0;
@@ -145,7 +151,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   overflow: hidden;
   box-sizing: border-box;
-
+  z-index: map-get($zindex, topVisible);
   .float-title-inner {
     @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
 
@@ -160,7 +166,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
         font-style: italic;
       }
     }
-
 
   }
 
@@ -220,13 +225,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       border-right: 1px solid $white;
       font-weight: bold;
       color: $white;
-
       &:hover {
         background: $plos-default;
         color: $white;
       }
     }
-
     &.active a {
       position: relative;
       @extend %brand-background;
@@ -236,7 +239,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       background-image: image-url("icon.tabs.active.white.png");
       background-repeat: no-repeat;
       background-position: 9px 65px;
-
+     
       &:hover {
         @extend %brand-background;
         cursor: inherit;
@@ -245,57 +248,44 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.author-list {
+.author-list{
    @extend .text-article-intro;
    @extend .inline-list;
   overflow: visible;
-  margin-left: 0;// needed to overwrite the inline-list
+  margin-left: 0;// needed t overwrite the inline-list
    margin-bottom: $pad-small;
-
    li {
      position: relative;
-     margin-left: 0;  // needed to overwrite the inline-list
+     margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
+     &.active{
+
+       a:hover{text-decoration: none;}
+     }
      > a {
      display: inline-block;   // needed to overwrite the inline-list
-     padding: rem-calc(2 4); //TODO line-height;
-      &:hover {
-       // text-decoration: none;
+     padding: $pad-highlight $pad-highlight-x; //TODO line-height;
+      &:hover{
+    
       }
-      &[data-js='toggle_trigger'] {
+      &[data-js='toggle_trigger']{
          color: $clr-highlight;
        }
      }
-   }
-  .contribute {
-    @extend .icon-author-contribute;
 
+
+   }
+  .contribute{
+    @extend .icon-author-contribute;
   }
   .rel-footnote {
     @extend .icon-author-footnotes;
-
   }
   .email {
     @extend .icon-author-address;
-
   }
-//  .contribute::after {
-//
-//    @extend .icon-author-contribute;
-//  }
-//  .footnotes::after {
-//    @extend .icon-author-footnotes;
-//  }
-//  .address::after {
-//    @extend .icon-author-address;
-//  }
- }
-
-
-.tooltip{
-
 }
 
-$icon-space: rem-calc(2);
+
  .author-info{
      @extend .pill-small;
      padding-right: ($pad-default);
@@ -308,7 +298,7 @@ $icon-space: rem-calc(2);
      @include single-transition(opacity);
      z-index: -1;
 
-   p {
+   p{
       border-top: rem-calc(2) solid $grey-med;
       padding: $pad-small 0;
       &:first-child {
@@ -318,8 +308,6 @@ $icon-space: rem-calc(2);
 
    .email, .rel-footnote {
      @include icon-offscreen;
-   }
-   .rel-footnote {
      margin-right: $icon-space;
    }
  }
@@ -327,14 +315,15 @@ $icon-space: rem-calc(2);
    a, a:hover { color: $white; }
 
    .author-name {
-     @include rounded-pill($padding: rem-calc(2 4),$hover: false);
+     @include rounded-pill($padding: $pad-highlight $pad-highlight-x,$hover: false);
    }
+
    .author-info {
      opacity: 1;
      z-index: map-get($zindex, dropdown);
    }
 
-   .close {
+   .close{
     @extend .closer;
      position: absolute;
      top: $pad-xsmall;
@@ -343,19 +332,21 @@ $icon-space: rem-calc(2);
  }
 
 .article-type{
-  position:relative;
-  @extend .clearfix;
   height: auto;
   width: auto;
+  display:table;
+  @include js-tooltip-container();
 }
 
 .type-desc{
-
-   @include tooltip( $top: rem-calc(35));
-
+  @include tooltip();
+  @include js-tooltip-target($top: rem-calc(35));
   p{
     color: $clr-tooltip-text;
     text-transform: none;
+    a{
+      @extend %link-text-white;
+    }
   }
 }
 
@@ -398,7 +389,8 @@ $icon-space: rem-calc(2);
 }
 
 .dload-xml {
-  @include tooltip($width: 160, $top: rem-calc(35));
+  @include js-tooltip-target($top: rem-calc(35));
+  @include tooltip($width: 160);
 
   li {
     margin-bottom: $pad-xsmall;
@@ -409,10 +401,23 @@ $icon-space: rem-calc(2);
       @extend %link-text-body;
       color: $white;
       font-weight: bold;
+      display: block;
 
       &:hover {
         color: $clr-tooltip-text;
       }
     }
   }
+}
+.print-article{
+  @extend .button-big;
+  @include js-tooltip-container;
+  @include plos-grid-column(77, $gutter:right,$gutter-width: $pad-small);
+margin-top: $pad-small; ///!!!! very temprorary - this is just so the thing doesnt' look broken - handle for all things on the left.
+}
+
+.print-options{
+  @extend .tooltip-aside;
+  @include js-tooltip-target( $top: rem-calc(40));
+
 }

@@ -1,3 +1,3 @@
-<#-- for generic sites -->
+<#include "downloads.ftl" />
+<#include "print.ftl" />
 
-<div>includes here</div>

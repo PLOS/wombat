@@ -63,6 +63,8 @@
 
       <#include "tabs.ftl" />
 
+      <#include "nav.ftl" />
+
       <div class="article-text" id="artText">
          ${articleText}
       </div>
@@ -82,6 +84,7 @@
   <@js src="resource/js/vendor/jquery.menu-aim.js"/>
   <@js src="resource/js/components/menu_aim_downloads.js"/>
   <@js src="resource/js/pages/article.js"/>
+  <@js src="resource/js/pages/article_body.js"/>
   <@renderJs />
 
   </body>

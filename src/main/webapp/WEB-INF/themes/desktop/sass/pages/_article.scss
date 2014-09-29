@@ -31,6 +31,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .title-block {
   width: 100%;
   background: $white;
+  padding-left: $pad-small;
 
 }
 
@@ -38,7 +39,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   @include plos-grid-column(600, $gutter: none);
   @extend %txt-transform;
   margin-top: $pad-default + $pad-xsmall;
-  margin-bottom: $pad-smallish;
 
   > p {
     font-size: $txt-size-xxxsmall;
@@ -89,7 +89,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
   h1 {
     font-size: $txt-size-27large; // TEMP-PROD: needs to be 26px or 28px
-    margin-bottom: $pad-small;
     line-height: normal;
 
     i, italic, named-content {
@@ -254,6 +253,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   overflow: visible;
   margin-left: 0;// needed t overwrite the inline-list
    margin-bottom: $pad-small;
+
    li {
      position: relative;
      margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
@@ -264,9 +264,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      > a {
      display: inline-block;   // needed to overwrite the inline-list
      padding: $pad-highlight $pad-highlight-x; //TODO line-height;
-      &:hover{
-    
-      }
+
       &[data-js='toggle_trigger']{
          color: $clr-highlight;
        }

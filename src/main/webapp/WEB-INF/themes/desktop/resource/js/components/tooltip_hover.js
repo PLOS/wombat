@@ -12,8 +12,8 @@ this widget assumes that your trigger and your tooltip are within the same conta
 ** add `[data-js-tooltip-hover=trigger]` to the container
 ** add `[data-js-tooltip-hover=target]` to the target
 * include the scss needed - from components.scss
-**add `@include js-tooltip-container` to the container
-**add `@include js-tooltip-target` to the target
+**add `@include js-tooltip-container();` to the container
+**add `@include js-tooltip-target();` to the target
 **style accordingly
 
 ```html_example

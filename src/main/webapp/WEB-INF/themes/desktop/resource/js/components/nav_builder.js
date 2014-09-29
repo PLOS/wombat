@@ -1,6 +1,6 @@
 (function ($) {
   $.fn.buildNav = function (options) {
-    defaults = {
+    var defaults = {
       content: '',
       margin: 70
     };
@@ -11,11 +11,11 @@
       var $anchors = (options.content).find('a[toc]');
       if ($anchors.length > 0) {
         $anchors.each(function () {
-          this_a = $(this);
-          title = this_a.attr('title');
-          target = this_a.attr('toc');
-          itemClass = this_a.attr('id');
-          new_li = $('<li><a href="#' + target + '" class="scroll">' + title + '</a></li>').addClass(itemClass).appendTo($new_ul);
+          var this_a = $(this),
+            title = this_a.attr('title'),
+            target = this_a.attr('toc'),
+            itemClass = this_a.attr('id');
+          $('<li><a href="#' + target + '" class="scroll">' + title + '</a></li>').addClass(itemClass).appendTo($new_ul);
         });
         $new_ul.find('li').eq(0).addClass('active');
 

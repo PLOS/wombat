@@ -36,7 +36,8 @@ tooltip = {
       $(this).toggleClass(s.tooltip_class);
 
       if (this_position.left >= parent_width_offset) {
-        $(this).addClass('posRight');
+        $(this).find(s.tooltip_target).addClass('pos-right');
+
       }
 
     });

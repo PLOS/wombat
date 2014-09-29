@@ -8,12 +8,12 @@
     return this.each(function () {
       var $this = $(this);
       var $new_ul = $('<ul class="nav-page" />')
-      var $anchors = (options.content).find('a[toc]');
+      var $anchors = (options.content).find('a[data-toc]');
       if ($anchors.length > 0) {
         $anchors.each(function () {
           var this_a = $(this),
             title = this_a.attr('title'),
-            target = this_a.attr('toc'),
+            target = this_a.attr('data-toc'),
             itemClass = this_a.attr('id');
           $('<li><a href="#' + target + '" class="scroll">' + title + '</a></li>').addClass(itemClass).appendTo($new_ul);
         });

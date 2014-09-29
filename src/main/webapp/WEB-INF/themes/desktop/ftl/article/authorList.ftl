@@ -1,10 +1,9 @@
 <ul class="author-list clearfix" data-js-tooltip="tooltip_container">
 <#include "maxAuthorsToShow.ftl" />
 <#macro authorItem author author_index author_has_next if_expander=false hidden=false>
-  <#assign hasMeta = author.equalContrib?? || author.deceased?? || author.corresponding??
+  <#assign hasMeta = author.equalContrib || author.deceased || author.corresponding??
   || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
   || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
-
 
   <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if> <#if hidden> data-js-toggle="toggle_target"
       data-initial="hide"</#if> >
@@ -35,7 +34,6 @@
           <p id="authAffiliations-${author_index?c}"><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
             <#list author.affiliations as affil>
             ${affil}<#if affil_has_next>, </#if>
-
             </#list>
           </p>
         </#if>

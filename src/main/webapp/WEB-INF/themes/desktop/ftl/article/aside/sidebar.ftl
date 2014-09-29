@@ -1,4 +1,1 @@
-
-<#include "downloads.ftl" />
-<#include "print.ftl" />
-
+<#-- for generic sites -->

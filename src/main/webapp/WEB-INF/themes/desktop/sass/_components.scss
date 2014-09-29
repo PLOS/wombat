@@ -307,6 +307,7 @@ example | extension
   @extend .icon-fa;
   @extend .fa-caret-down;
   font-size: $txt-size-medium-large;
+  line-height: rem-calc(35);  // .fa-etc default to 44
 }
 .aria-text {
   position: absolute;
@@ -405,16 +406,17 @@ $icn-tiny-align: middle;
  // this is for asides.
 
 .tooltip-aside{
-  @include tooltip($width: 180, $tooltip-padding: rem-calc(15 10 10 20));
-  min-height: 100px;
+  @include tooltip($width: 160, $tooltip-padding: rem-calc(15 10 10 20));
   display:block;
+
   li {
-    margin-bottom: $pad-xsmall;
     font-size: $txt-size-medium-large;
     font-weight: bold;
     text-align: left;
     list-style-type: disc;
     list-style-position: inside;
+    padding-bottom: rem-calc(8);
+
     a {
       @extend %link-text-body;
       font-weight: bold;
@@ -441,21 +443,25 @@ $icn-tiny-align: middle;
   position:absolute;
   margin-top: $top;   /// margin cause then there is no blinking between the trigger and the tooltip
   opacity: 0;
-  //  visibility: hidden;
+    visibility: hidden;
   z-index: map-get($zindex, invisible);
   @include single-transition(opacity);
   &.visible{
     opacity: 1;
     z-index: map-get($zindex, dropdown);
+    visibility: visible;
     height:auto;
   }
 }
 
 // js utilities
-.pos-right{right:0}   // used in tooltip.js
+.pos-right {   // used in tooltip.js
+  right:0
+}
 
- .shim{
+ .shim {
+
    height: 50px;   //TODO - make this  dynamic
-   position:absolute;
+   position: absolute;
    width: 100%;
  }

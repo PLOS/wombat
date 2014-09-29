@@ -84,7 +84,7 @@
   };
 
  $( document ).ready(function() {
-   $(".dloads-container").on('click', 'a', function () {
+   $(".dload-menu").on('click', 'a', function () {
      this.preventDefault();
    });
    parse_xml_date.init();

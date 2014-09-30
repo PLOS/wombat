@@ -1,9 +1,9 @@
 <#include "../../common/hashTag.ftl" />
 <#setting url_escaping_charset="UTF-8">
 
-<div class="share-container">
-    <a href="" class="share" id="share">Share</a>
-    <ul>
+<div class="share-article" id="shareArticle" data-js-tooltip-hover="trigger">
+    Share
+    <ul data-js-tooltip-hover="target">
     <#--
     some notes about social media buttons:
 

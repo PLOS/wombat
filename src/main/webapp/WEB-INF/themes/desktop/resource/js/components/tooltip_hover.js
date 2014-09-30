@@ -46,35 +46,35 @@ this widget assumes that your trigger and your tooltip are within the same conta
  ```
  */
 
-var tooltip_hover;
-tooltip_hover = {
+;(function ($) {
+  var s;
+  tooltip_hover = {
 
-  settings: {
-    hover_trigger: '[data-js-tooltip-hover=trigger]',
-    hover_target:  '[data-js-tooltip-hover=target]',
-    class_trigger: 'highlighted',
-    class_target:  'visible',
-    class_shim: 'shim'
-  },
+    settings: {
+      hover_trigger: '[data-js-tooltip-hover=trigger]',
+      hover_target: '[data-js-tooltip-hover=target]',
+      class_trigger: 'highlighted',
+      class_target: 'visible',
+      class_shim: 'shim'
+    },
 
-  init: function (options) {
-    // kick things off
-    this.settings = $.extend(this.settings, options);
-    var s = this.settings;
-    this.action();
-  },
+    init: function () {
+      // kick things off
+      //this.settings = $.extend(this.settings, options);
+      //  s = this.settings;
+      this.action();
+    },
 
-  action: function () {
-    var s = this.settings;
-    $(s.hover_trigger).mouseenter(function () {
-          $(this).addClass(s.class_trigger).find(s.hover_target).addClass(s.class_target).before('<div class='+ s.class_shim +'> </div>');  //TODO: make the shim get the height
-        }).mouseleave(function () {
+    action: function () {
+      s = this.settings;
+      $(s.hover_trigger).mouseenter(function () {
+        $(this).addClass(s.class_trigger).find(s.hover_target).addClass(s.class_target).before('<div class=' + s.class_shim + '> </div>');  //TODO: make the shim get the height
+      }).mouseleave(function () {
           $(this).removeClass(s.class_trigger).find(s.hover_target).removeClass(s.class_target);
           $('.shim').remove();
-        }
-    );
-}
+        });
+    }
 
-};
-
+  };
+})(jQuery);
 

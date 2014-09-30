@@ -322,6 +322,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    }
 
    .close{
+
     @extend .closer;
      position: absolute;
      top: $pad-xsmall;
@@ -329,7 +330,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    }
  }
 
-.article-type{
+.article-type {
   height: auto;
   width: auto;
   display:table;
@@ -356,68 +357,78 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
-.dloads-container {
-  position: relative;
-  .dload-pilly {
-    @include plos-grid-column(160, $gutter: none);
-    display: table;
 
-  }
+.dload-menu {
+  width: rem-calc(160);
 
-  .dload-pdf {
-    @include plos-grid-column(130, $gutter: none);
-    @include rounded-pill($background: $plos-default, $padding: $pad-small 11px, $border-radius: 5px 0 0 5px, $hover: true);
-    display: table-cell;
+  div {
+    display: inline;
+    float: left;
+    line-height: rem-calc(35);
     font-size: $txt-size-mediumish;
     font-weight: bold;
+    color: $white;
+    &:hover {
+      background: $plos-default;
+    }
+  }
+  .dload-pdf {
+    @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small, $border-radius: 5px 0 0 5px, $hover: false);
+    &:hover {
+      background: $plos-default;
+    }
+    a {
+      color: $white;
+    }
   }
 
   .dload-hover {
-    @include tooltip-trigger($outside-box: yes);
-    @include plos-grid-column(30, $gutter: none);
-    @include rounded-pill($background: $plos-default, $padding: 0 0 0 $pad-small, $border-radius: 0 5px 5px 0, $hover: true);
+    @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-inbetween 0 $pad-small, $border-radius: 0 5px 5px 0, $hover: false);
+    @include js-tooltip-container();
     @extend .icon-caret-down;
-    display: table-cell;
-    line-height: rem-calc(35);
+
+    &:hover {cursor: pointer;
+      background: $plos-default;;
+    }
+  }
+
+  .shim {
+    height: 5px;
+    display: block;
+    position: absolute;
 
     &:hover {
-      cursor: pointer;
+      background: transparent !important;
     }
   }
 }
 
 .dload-xml {
-  @include js-tooltip-target($top: rem-calc(35));
-  @include tooltip($width: 160);
+  @extend .tooltip-aside;
+  @include js-tooltip-target( $top: rem-calc(40));
+  opacity: 1;
+  z-index: map-get($zindex, dropdown);
+  left: -127px;
+  cursor: default;
 
-  li {
-    margin-bottom: $pad-xsmall;
-    font-size: $txt-size-medium-large;
-    font-weight: bold;
-
-    a {
-      @extend %link-text-body;
-      color: $white;
-      font-weight: bold;
-      display: block;
-
-      &:hover {
-        color: $clr-tooltip-text;
-      }
-    }
+  a { //firefox
+    font-family: $font-face-plain;
   }
 }
+
 .print-article{
   @extend .button-big;
   @include js-tooltip-container;
-  @include plos-grid-column(77, $gutter:right,$gutter-width: $pad-small);
-margin-top: $pad-small; ///!!!! very temprorary - this is just so the thing doesnt' look broken - handle for all things on the left.
+  @include plos-grid-column(77, $gutter:right, $gutter-width: $pad-small);
+  margin-top: $pad-xsmall;
+  cursor: pointer;
 }
 
-.print-options{
+.print-options {
   @extend .tooltip-aside;
   @include js-tooltip-target( $top: rem-calc(40));
-
+  opacity: 1;
+  z-index: map-get($zindex, dropdown);
 }
 
 .aside-container {

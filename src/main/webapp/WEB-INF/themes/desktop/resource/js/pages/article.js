@@ -1,7 +1,7 @@
 /**
  * Created by ddowell on 8/14/14.
- * requires:  resource/js/components/truncate_elem.js
- *            resource/js/components/show_onscroll.js
+ * DEPENDENCY:  resource/js/components/truncate_elem
+ *              resource/js/components/show_onscroll
  */
 
 (function ($) {

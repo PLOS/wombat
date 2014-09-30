@@ -6,10 +6,10 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .text-article-intro {
   font-size: $txt-size-default;
-  color: $grey-med;
+  color: $grey-med-dark;
 
   a {
-    @include link-text($decoration: underline, $color: $grey-med);
+    @include link-text($decoration: underline, $color: $grey-med-dark);
   }
 }
 
@@ -297,7 +297,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      z-index: -1;
 
    p{
-      border-top: rem-calc(2) solid $grey-med;
+      border-top: rem-calc(2) solid $grey-med-dark;
       padding: $pad-small 0;
       &:first-child {
         border-top: none;

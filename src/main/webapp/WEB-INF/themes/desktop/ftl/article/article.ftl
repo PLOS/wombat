@@ -3,11 +3,13 @@
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-
+  <#--crossmark identifier-->
+  <meta name="dc.identifier" content="doi:${article.doi}”>
 <#assign title = article.title />
 <#assign depth = 0 />
 
 <#include "../common/head.ftl" />
+
 
 <#include "../common/journalStyle.ftl" />
 
@@ -79,10 +81,13 @@
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/float_header.js"/>
-  <@js src="resource/js/vendor/jquery.menu-aim.js"/>
-  <@js src="resource/js/components/menu_aim_downloads.js"/>
   <@js src="resource/js/pages/article.js"/>
   <@renderJs />
 
-  </body>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
+  <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
+
+  <#include "aside/crossmarkIframe.ftl" />
+
+</body>
 </html>

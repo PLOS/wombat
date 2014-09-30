@@ -5,3 +5,4 @@
   </ul>
 </div>
 <@js src="resource/js/components/nav_builder.js"/>
+<@js src="resource/js/components/floating_nav.js"/>

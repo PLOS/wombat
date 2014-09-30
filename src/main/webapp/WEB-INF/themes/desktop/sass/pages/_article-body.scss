@@ -10,7 +10,7 @@
 }
 
 .article-text {
-  @include plos-grid-column(550, $gutter: none)
+  @include plos-grid-column(550, $gutter: none, $float:right)
 }
 
 // TODO - write some docs

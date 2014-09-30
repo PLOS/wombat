@@ -17,10 +17,24 @@ $(document).foundation({
 });
 
 (function ($) {
+
+  var searchCheck = function (){
+
+    if (!Modernizr.input.required) {
+      $("form[name='searchForm']").submit(function() {
+        var searchTerm = $("#search").val();
+        if (!searchTerm) return false;
+      });
+    }
+
+  };
+
   $(document).ready(function () {
+    var runSearchCheck = searchCheck();
     // hover delay for menu
     hover_delay.init();
     //placeholder style change
     placeholder_style.init();
   });
+
 })(jQuery);

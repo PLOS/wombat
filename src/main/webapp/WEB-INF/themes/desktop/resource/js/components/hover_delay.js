@@ -27,11 +27,11 @@
         }
         });
       } else {
-        /*//HoverIntent.js is used for the main navigation delay on hover
+        //HoverIntent.js is used for the main navigation delay on hover
         $menu_drop_selector.hoverIntent(
           function () {$(this).menu_drop("show");},
           function () {$(this).menu_drop("hide");}
-        );*/
+        );
       }
     }
   }

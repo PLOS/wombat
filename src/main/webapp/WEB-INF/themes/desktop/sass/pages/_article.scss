@@ -340,9 +340,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .type-desc{
   @include tooltip();
   @include js-tooltip-target($top: rem-calc(35));
+
   p{
     color: $clr-tooltip-text;
     text-transform: none;
+
     a{
       @extend %link-text-white;
     }
@@ -368,10 +370,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-size: $txt-size-mediumish;
     font-weight: bold;
     color: $white;
+
     &:hover {
       background: $plos-default;
     }
   }
+
   .dload-pdf {
     @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small, $border-radius: 5px 0 0 5px, $hover: false);
     &:hover {
@@ -387,7 +391,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     @include js-tooltip-container();
     @extend .icon-caret-down;
 
-    &:hover {cursor: pointer;
+    &:hover {
+      cursor: pointer;
       background: $plos-default;;
     }
   }
@@ -434,7 +439,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .aside-container {
   @include clearfix();
   width: rem-calc(160);
- // display: block;
 }
 
 .crossmark-container {
@@ -447,14 +451,17 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
   }
 }
+
 .article #crossmark-tooltip-130 {
   z-index: map-get($zindex, crossmark-tooltip);
 }
+
 .article .crossmark-ui-dialog .ui-dialog-titlebar-close {
   &:focus {
     outline: none;
   }
 }
+
 body.article .ui-widget-overlay {
   position: fixed;
   top: 0;

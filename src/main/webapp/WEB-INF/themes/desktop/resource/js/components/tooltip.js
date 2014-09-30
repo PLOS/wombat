@@ -1,5 +1,6 @@
-var tooltip;
-tooltip = {
+;(function ($) {
+  var s;
+plos_tooltip = {
 
   settings: {
     tooltip_trigger: '[data-js-tooltip=tooltip_trigger]',
@@ -12,15 +13,13 @@ tooltip = {
     speed:           0
   },
 
-  init: function (options) {
-    // kick things off
-    this.settings = $.extend(this.settings, options);
-    var s = this.settings;
+  init: function () {
+   // this.settings = $.extend(this.settings, options);
     this.tooltip();
   },
 
   tooltip: function () {
-    var s = this.settings;
+    s = this.settings;
 
     $(s.tooltip_trigger).blur(function(){
       $(s.tooltip_trigger).removeClass(s.tooltip_class);
@@ -36,7 +35,8 @@ tooltip = {
       $(this).toggleClass(s.tooltip_class);
 
       if (this_position.left >= parent_width_offset) {
-        $(this).addClass('posRight');
+        $(this).find(s.tooltip_target).addClass('pos-right');
+
       }
 
     });
@@ -48,3 +48,4 @@ tooltip = {
   }
 
 };
+})(jQuery);

@@ -224,8 +224,9 @@ example | extension
 $zindex: (
   modal     : 9000,
   overlay   : 8000,
-  dropdown  : 7000,
-  topVisible: 6999,
+  topVisible: 7000,
+  crossmark-tooltip: 6999,
+  dropdown  : 6998,
   header    : 6000,
   footer    : 5000,
   invisible : -1,

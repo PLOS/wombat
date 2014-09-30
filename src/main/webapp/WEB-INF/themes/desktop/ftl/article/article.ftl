@@ -3,13 +3,16 @@
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-
+  <#--crossmark identifier-->
+  <meta name="dc.identifier" content="doi:${article.doi}”>
 <#assign title = article.title />
 <#assign depth = 0 />
 
 <#include "../common/head.ftl" />
 
+
 <#include "../common/journalStyle.ftl" />
+
   <body class="article ${journalStyle}">
 
   <input type="hidden" id="rawPubDate" value="${article.date}" />
@@ -60,13 +63,11 @@
     </header>
     <section class="article-body">
 
-
       <#include "tabs.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}
       </div>
-
 
     </section>
     <aside class="article-aside">
@@ -75,8 +76,7 @@
   </div>
   <#include "../common/footer/footer.ftl" />
 
-
-  <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
+  <@js src="resource/js/components/dateparse.js"/>
   <@js src="resource/js/components/show_onscroll.js"/>
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
@@ -84,5 +84,10 @@
   <@js src="resource/js/pages/article.js"/>
   <@renderJs />
 
-  </body>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
+  <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
+
+  <#include "aside/crossmarkIframe.ftl" />
+
+</body>
 </html>

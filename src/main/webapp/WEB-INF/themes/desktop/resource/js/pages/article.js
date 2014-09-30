@@ -1,6 +1,7 @@
 /**
  * Created by ddowell on 8/14/14.
- * DEPENDENCY:  resource/js/components/truncate_elem  & resource/js/components/show_onscroll
+ * DEPENDENCY:  resource/js/components/truncate_elem
+ *              resource/js/components/show_onscroll
  */
 
 (function ($) {
@@ -46,7 +47,7 @@
       if (this.check_div() > 0) {
         return $(window).on('scroll', function () {
           //show_onscroll is in resource/js/components/
-          var show_header = show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
+          show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
         });
       }
     },
@@ -70,7 +71,7 @@
     },
 
     run_it : function () {
-      console.log(this.overflown());
+
       if (this.overflown() === true) {
         // truncate_elem is in resource/js/components
         return truncate_elem.init();
@@ -85,14 +86,19 @@
 
   $( document ).ready(function() {
 
+    $(".preventDefault").on('click', function (e) {
+      e.preventDefault();
+
+    });
+
     parse_xml_date.init();
     check_authors_truncation.init();
     float_header.init();
 
     // initialize toggle for author list view more
-    toggle.init();
+    plos_toggle.init();
     // initialize tooltip for author info
-    tooltip.init();
+    plos_tooltip.init();
     // initialize tooltip_hover for everything
     tooltip_hover.init();
   });

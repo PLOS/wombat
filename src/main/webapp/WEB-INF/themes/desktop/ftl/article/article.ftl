@@ -81,14 +81,13 @@
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/float_header.js"/>
-
   <@js src="resource/js/pages/article.js"/>
   <@renderJs />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
-<script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
-<div id="crossmark-dialog" style="display: none;" title="">
-  <!-- the external CrossMark data is loaded inside this iframe -->
-  <iframe id="crossmark-dialog-frame" frameborder="0"></iframe>
-</div>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
+  <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
+
+  <#include "aside/crossmarkIframe.ftl" />
+
 </body>
 </html>

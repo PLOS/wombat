@@ -47,7 +47,7 @@
       if (this.check_div() > 0) {
         return $(window).on('scroll', function () {
           //show_onscroll is in resource/js/components/
-          var show_header = show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
+          show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
         });
       }
     },
@@ -86,8 +86,9 @@
 
   $( document ).ready(function() {
 
-    $(".dloads-container").on('click', 'a', function () {
-      this.preventDefault();
+    $(".preventDefault").on('click', function (e) {
+      e.preventDefault();
+
     });
 
     parse_xml_date.init();
@@ -95,9 +96,9 @@
     float_header.init();
 
     // initialize toggle for author list view more
-    toggle.init();
+    plos_toggle.init();
     // initialize tooltip for author info
-    tooltip.init();
+    plos_tooltip.init();
     // initialize tooltip_hover for everything
     tooltip_hover.init();
   });

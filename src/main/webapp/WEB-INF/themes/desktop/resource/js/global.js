@@ -1,5 +1,5 @@
 
-var s;
+//var s;
 
 //Setting up global foundation settings - you can override these the documentation is here:
 // http://foundation.zurb.com/docs/javascript.html#configure-on-the-fly
@@ -16,9 +16,11 @@ $(document).foundation({
   }
 });
 
-$(document).ready(function () {
-  // hover delay for menu
-  hover_delay.init();
-  //placeholder style change
-  placeholder_style.init();
-});
+(function ($) {
+  $(document).ready(function () {
+    // hover delay for menu
+    hover_delay.init();
+    //placeholder style change
+    placeholder_style.init();
+  });
+})(jQuery);

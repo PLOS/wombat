@@ -419,3 +419,38 @@ margin-top: $pad-small; ///!!!! very temprorary - this is just so the thing does
   @include js-tooltip-target( $top: rem-calc(40));
 
 }
+
+.aside-container {
+  @include clearfix();
+  width: rem-calc(160);
+ // display: block;
+}
+
+.crossmark-container {
+  @extend .aside-container;
+  margin-top: $pad-smallish;
+
+  img {
+      padding: $pad-small 0;
+      display: block;
+
+  }
+}
+.article #crossmark-tooltip-130 {
+  z-index: map-get($zindex, crossmark-tooltip);
+}
+.article .crossmark-ui-dialog .ui-dialog-titlebar-close {
+  &:focus {
+    outline: none;
+  }
+}
+body.article .ui-widget-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  background: transparent url(http://crossmark.crossref.org/images/bg_overlay.png) top left repeat;
+  opacity: .3;
+  filter: Alpha(Opacity - 30);
+}

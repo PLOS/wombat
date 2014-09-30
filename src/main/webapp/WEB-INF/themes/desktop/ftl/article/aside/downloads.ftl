@@ -3,7 +3,7 @@
 
 <div class="dloads-container" data-js-tooltip-hover="trigger" >
   <div class="dload-pilly">
-    <a href="${downloadPrefix}.PDF" class="dload-pdf" id="downloadPdf">Download PDF</a>
+    <a href="${downloadPrefix}.PDF" class="dload-pdf preventDefault" id="downloadPdf">Download PDF</a>
     <div class="dload-hover">&nbsp;</div>
   </div>
   <div class="dload-xml">

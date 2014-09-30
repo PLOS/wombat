@@ -3,13 +3,13 @@
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-
+<#--crossmark identifier-->
+<meta name="dc.identifier" content="doi:${article.doi}”>
 <#assign title = article.title />
 <#assign depth = 0 />
 
 <#include "../common/head.ftl" />
-<#--crossmark identifier-->
-<meta name="dc.identifier" content="doi:${article.doi}”>
+
 
 <#include "../common/journalStyle.ftl" />
   <body class="article ${journalStyle}">
@@ -83,11 +83,15 @@
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/float_header.js"/>
+<#--<@js src="resource/js/vendor/jquery-ui-1.8.7.min.js"/>-->
+
   <@js src="resource/js/pages/article.js"/>
   <@renderJs />
-<#--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js" ></script>
-<script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>-->
-<#--<script src="<@siteLink path="resource/js/vendor/crossmark.js"/>"></script>-->
-
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
+<script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
+<div id="crossmark-dialog" style="display: none;" title="">
+  <!-- the external CrossMark data is loaded inside this iframe -->
+  <iframe id="crossmark-dialog-frame" frameborder="0"></iframe>
+</div>
 </body>
 </html>

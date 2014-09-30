@@ -1,4 +1,6 @@
-var s, truncate_elem = { // TODO: make extensible so elem_list & trunc_ending can be set as options
+;(function ($) {
+var s;
+  truncate_elem = { // TODO: make extensible so elem_list & trunc_ending can be set as options
   settings: {
     elem_list : $("#floatAuthorList"), // TODO: use data-js-floater as selector
     //using hard number for now. getting the offsetTop from elem_list isn't working cuz either/both separate file / object literal format
@@ -27,3 +29,4 @@ var s, truncate_elem = { // TODO: make extensible so elem_list & trunc_ending ca
   }
 }
 
+})(jQuery);

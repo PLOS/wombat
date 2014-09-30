@@ -1,28 +1,80 @@
+/*doc
+ ---
+ title: tooltip - hover
+ name: hover_tooltip
+ category: js widgets
+ ---
+
+---
+
+this widget assumes that your trigger and your tooltip are within the same container
+* add your hooks to the markup:
+** add `[data-js-tooltip-hover=trigger]` to the container
+** add `[data-js-tooltip-hover=target]` to the target
+* include the scss needed - from components.scss
+**add `@include js-tooltip-container();` to the container
+**add `@include js-tooltip-target();` to the target
+**style accordingly
+
+```html_example
+ <div class="print-article" id="printArticle" data-js-tooltip-hover="trigger">
+
+ Print
+ <ul class="print-options" data-js-tooltip-hover="target">
+ <li>
+ <a title="Print Article">
+ Print article
+ </a>
+ </li>
+ </ul>
+ </div>
+
+```
+
+ ```sass_example
+ .print-article{
+ @extend .button-big;
+ @include js-tooltip-container;
+ @include plos-grid-column(77);}
+
+ .print-options{
+ @extend .tooltip-aside;
+ @include js-tooltip-target( $top: rem-calc(40));
+
+ }
+
+ ```
+ */
+
 var tooltip_hover;
 tooltip_hover = {
 
   settings: {
-  tooltip_hover_trigger: '[data-js-tooltip-hover=trigger]',
-  tooltip_hover_target:  '[data-js-tooltip-hover=target]',
-  tooltip_hover_hidden: '[data-initial=hide]',
-  tooltip_class: 'active',
-  speed:           0
-},
+    hover_trigger: '[data-js-tooltip-hover=trigger]',
+    hover_target:  '[data-js-tooltip-hover=target]',
+    class_trigger: 'highlighted',
+    class_target:  'visible',
+    class_shim: 'shim'
+  },
 
-
-  init: function(options) {
+  init: function (options) {
     // kick things off
     this.settings = $.extend(this.settings, options);
     var s = this.settings;
     this.action();
   },
 
-  action: function() {
+  action: function () {
     var s = this.settings;
-    $(s.tooltip_hover_trigger).hover( function () {
-         $(this).toggleClass(s.tooltip_class);
-    });
-  }
+    $(s.hover_trigger).mouseenter(function () {
+          $(this).addClass(s.class_trigger).find(s.hover_target).addClass(s.class_target).before('<div class='+ s.class_shim +'> </div>');  //TODO: make the shim get the height
+        }).mouseleave(function () {
+          $(this).removeClass(s.class_trigger).find(s.hover_target).removeClass(s.class_target);
+          $('.shim').remove();
+        }
+    );
+}
+
 };
 
 

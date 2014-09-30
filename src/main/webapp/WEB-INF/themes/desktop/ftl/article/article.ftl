@@ -10,6 +10,7 @@
 <#include "../common/head.ftl" />
 
 <#include "../common/journalStyle.ftl" />
+
   <body class="article ${journalStyle}">
 
   <input type="hidden" id="rawPubDate" value="${article.date}" />
@@ -60,13 +61,11 @@
     </header>
     <section class="article-body">
 
-
       <#include "tabs.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}
       </div>
-
 
     </section>
     <aside class="article-aside">
@@ -75,12 +74,13 @@
   </div>
   <#include "../common/footer/footer.ftl" />
 
-
-  <script src="<@siteLink path="resource/js/components/dateparse.js"/>"></script>
+  <@js src="resource/js/components/dateparse.js"/>
   <@js src="resource/js/components/show_onscroll.js"/>
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/float_header.js"/>
+  <@js src="resource/js/vendor/jquery.menu-aim.js"/>
+  <@js src="resource/js/components/menu_aim_downloads.js"/>
   <@js src="resource/js/pages/article.js"/>
   <@renderJs />
 

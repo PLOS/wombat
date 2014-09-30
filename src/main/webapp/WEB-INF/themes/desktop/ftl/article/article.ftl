@@ -62,11 +62,13 @@
     <section class="article-body">
 
       <#include "tabs.ftl" />
+      <div class="article-container">
 
       <#include "nav.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}
+      </div>
       </div>
 
     </section>

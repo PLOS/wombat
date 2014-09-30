@@ -1,0 +1,62 @@
+// layout the page
+
+.article-container {
+  @extend .plos-row;
+  position: relative;
+}
+
+#nav-article {
+  @include plos-grid-column(160, $gutter: right, $gutter-width: 45);
+}
+
+.article-text {
+  @include plos-grid-column(550, $gutter: none)
+}
+
+// nav
+
+@mixin border-width-adjust($border-width: rem-calc(2), $spacing: $pad-small, $border-color: $clr-highlight) {
+  border-left: $border-width solid $border-color;
+  padding-left: ($spacing - $border-width);
+}
+
+@mixin nav-enhanced($spacing-left: $pad-small, $txt-color: $grey-med, $txt-color-hover: $clr-body-text) {
+
+  li {
+    padding-left: $spacing-left;
+    margin: $pad-small 0;
+
+    a {
+      @include link-text($color: $txt-color);
+    }
+
+    &:hover {
+      @include border-width-adjust($border-width: rem-calc(1), $spacing: $spacing-left);
+      a {
+        color: $txt-color-hover;
+      }
+    }
+
+    &.active {
+      @include border-width-adjust($spacing: $spacing-left);
+      a {
+        color: $txt-color-hover;
+        font-weight: bold;
+      }
+    }
+  }
+  border-bottom: 1px solid $txt-color;
+}
+
+#nav-article {
+  position: relative;
+
+  .nav-page {
+    @extend .no-bullet;
+    @include nav-enhanced();
+  }
+
+}
+
+
+

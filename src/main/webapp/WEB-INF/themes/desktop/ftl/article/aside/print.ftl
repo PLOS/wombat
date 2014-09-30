@@ -3,7 +3,7 @@
   Print
   <ul class="print-options" data-js-tooltip-hover="target">
     <li>
-      <a title="Print Article" onclick="window.print(); return false;">
+      <a title="Print Article" class="preventDefault">
         Print article
       </a>
     </li>

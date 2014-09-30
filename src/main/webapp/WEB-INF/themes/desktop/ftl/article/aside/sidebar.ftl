@@ -1,4 +1,10 @@
 <#include "downloads.ftl" />
-<#include "print.ftl" />
-<#include "relatedArticles.ftl" />
 
+<div class="aside-container">
+  <#include "print.ftl">
+  <#--<#include "share.ftl">-->
+</div>
+
+<#include "crossmark.ftl" />
+
+<#include "relatedArticles.ftl" />

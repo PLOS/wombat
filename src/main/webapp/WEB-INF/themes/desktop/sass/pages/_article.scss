@@ -439,12 +439,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .aside-container {
   @include clearfix();
   width: rem-calc(160);
+  margin-bottom: $pad-default;
 }
 
 .crossmark-container {
   @extend .aside-container;
-  margin-top: $pad-smallish;
-
+  margin-bottom: $pad-xsmall;
   img {
       padding: $pad-small 0;
       display: block;
@@ -456,12 +456,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   z-index: map-get($zindex, crossmark-tooltip);
 }
 
+// overrides for crossmark's jquery ui
 .article .crossmark-ui-dialog .ui-dialog-titlebar-close {
   &:focus {
     outline: none;
   }
 }
 
+// overrides for crossmark's jquery ui
 body.article .ui-widget-overlay {
   position: fixed;
   top: 0;
@@ -471,4 +473,32 @@ body.article .ui-widget-overlay {
   background: transparent url(http://crossmark.crossref.org/images/bg_overlay.png) top left repeat;
   opacity: .3;
   filter: Alpha(Opacity - 30);
+}
+
+.related-articles-container {
+  @extend .aside-container;
+
+  h3 {
+    font-size: $txt-size-medium;//$txt-size-h3;
+    font-family: $font-face-plain;
+    font-weight: bold;
+    line-height: rem-calc(17); // TEMP PROD: use 18px;
+    border-bottom: 1px solid #dedede;
+    padding-bottom: $pad-small;
+    margin-bottom: rem-calc(8); // TEMP PROD: use 10px;
+  }
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+
+    li {
+      margin-bottom: rem-calc(12);// TEMP PROD: use 10 or 15;
+
+      a {
+        @include link-text($color: $plos-default, $decoration: underline);
+      }
+    }
+  }
+
 }

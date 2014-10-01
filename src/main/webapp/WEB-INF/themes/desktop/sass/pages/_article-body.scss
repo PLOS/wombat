@@ -23,9 +23,11 @@
   @extend .no-bullet;
   margin-bottom: ($margin-bottom * 2);
   padding-bottom: ($margin-bottom * 2);
+
   li{ padding: $pad-y 0;
     padding-left: $pad-left;
     margin: 0 0 $margin-bottom 0;
+
     a {
       @include link-text($color: $txt-color);
     }
@@ -38,6 +40,7 @@
 
     &:hover {
       @include border-width-adjust($border-width: rem-calc(1), $spacing: $spacing-left);
+
       a {
         color: $txt-color;
       }
@@ -45,9 +48,11 @@
 
     &.active {
       @include border-width-adjust($spacing: $spacing-left);
+
       a {
         color: $txt-color-hover;
         font-weight: bold;
+        letter-spacing: -.5px;
       }
     }
   }
@@ -60,8 +65,8 @@
   .nav-page {
     @include nav-enhanced();
     border-bottom: 1px solid $grey-med;
-
   }
+
   .nav-secondary{
     @extend .no-bullet;
     @include nav-side($txt-color: $clr-body-text);

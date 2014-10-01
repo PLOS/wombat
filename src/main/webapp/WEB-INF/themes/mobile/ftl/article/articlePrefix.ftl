@@ -9,7 +9,8 @@
     <a class="save-article circular coloration-text-color" data-list-type="individual">x</a>
     -->
 
-      <h5 class="item-title lead-in">${article.articleType!""}</h5>
+      <#assign articleTypeHeading = (article.articleType??)?string(article.articleType.heading, '') />
+      <h5 class="item-title lead-in">${articleTypeHeading}</h5>
 
       <h2 class="article-title">${article.title}</h2>
 

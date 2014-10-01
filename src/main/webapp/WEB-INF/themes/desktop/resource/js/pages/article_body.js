@@ -1,6 +1,5 @@
 (function ($) {
 
-
   /// write article nav
   $article = $('#artText');
 
@@ -9,7 +8,7 @@
   });
 
   $('#nav-article').floatingNav({
-    sections: $article.find('div.section')
+    sections: $article.children()
   });
 
 })(jQuery);

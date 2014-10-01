@@ -1,5 +1,5 @@
 (function ($) {
-  $(document).ready(function () {
+
 
   /// write article nav
   $article = $('#artText');
@@ -12,5 +12,4 @@
     sections: $article.find('div.section')
   });
 
-  });
 })(jQuery);

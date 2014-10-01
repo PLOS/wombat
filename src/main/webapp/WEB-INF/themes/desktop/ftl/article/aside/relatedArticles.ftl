@@ -7,7 +7,7 @@
   <#list article.relatedArticles as relatedArticle>
       <li>
         <a href="<@siteLink path="article?id=" + relatedArticle.doi />">
-      ${relatedArticle.title}  a title goes here
+      ${relatedArticle.title}
         </a>
       </li>
   </#list>

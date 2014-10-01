@@ -7,6 +7,8 @@
     };
     var options = $.extend(defaults, options);
     return this.each(function () {
+
+
       var $this = $(this);
       var ftr_top = $('#pageftr').offset().top;
       var el_top = $this.offset().top;
@@ -17,6 +19,20 @@
       }
       var win_top = 0;
       var lnks = $this.find('a.scroll');
+
+      var hilite = function () {
+        (options.sections).each(function () {
+          this_sec = $(this);
+          if (win_top > (this_sec.offset().top - options.margin)) {
+
+            var this_sec_ref = this_sec.find('a[data-toc]').attr('data-toc');
+            lnks.closest('li').removeClass('active');
+            $this.find('a[href="#' + this_sec_ref + '"]').closest('li').addClass('active');
+          }
+        });
+      }
+
+
       var positionEl = function () {
         win_top = $win.scrollTop();
         ftr_top = $('#pageftr').offset().top;
@@ -40,16 +56,7 @@
           }
         }
       }
-      var hilite = function () {
-        (options.sections).each(function () {
-          this_sec = $(this);
-          if (win_top > (this_sec.offset().top - options.margin)) {
-            var this_sec_ref = this_sec.find('a[toc]').attr('toc');
-            lnks.closest('li').removeClass('active');
-            $this.find('a[href="#' + this_sec_ref + '"]').closest('li').addClass('active');
-          }
-        });
-      }
+
 
       var marginFix = function () {
         var lastSection = $('div.article div').last();

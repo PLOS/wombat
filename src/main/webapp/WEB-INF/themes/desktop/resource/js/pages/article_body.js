@@ -1,14 +1,16 @@
-$(document).ready(function () {
+(function ($) {
+  $(document).ready(function () {
 
   /// write article nav
- var $article = $('#artText');
+  $article = $('#artText');
 
   $('#nav-article').buildNav({
     content: $article
   });
 
   $('#nav-article').floatingNav({
-    sections:  $article.find('div.section')
+    sections: $article.find('div.section')
   });
 
-});
+  });
+})(jQuery);

@@ -28,7 +28,7 @@
 
  <#if article??>
 <#--//crossmark identifier-->
-  <meta name="dc.identifier" content="${article.doi}” />
+  <meta name="dc.identifier" content="${article.doi}" />
 </#if>
 </head>
 <#-- //references js that is foundational like jquery and foundation.js. JS output is printed at the bottom of the body.

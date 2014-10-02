@@ -2,10 +2,71 @@
 ---
 title: utilities.scss
 name: utilities
-category: Files
+category: files
 ---
-  This file has wombat specific mixins and extensible styles
+  this file has wombat specific mixins and extensible styles
   and ties in with plos-themes and setting each journal color
+*/
+
+
+/*doc
+---
+title: interaction and animation utilities
+name:  animation
+category: utilities
+---
+
+example | extension
+--------|----------
+hide something | data-visibility= 'none']
+
+### z-index - rather than just making up a z-index we use this map so that we dont' have any surprises when elements appear on top of each other.
+
+
+type | value
+--------|----------
+  modal     | '9000'
+  overlay   | '8000'
+  topvisible| '7000'
+  crossmark-tooltip| '6999'
+  dropdown  | '6998'
+  header    | '6000'
+  footer    | '5000'
+  invisible | '-1'
+
+```sass_example
+.header {
+  z-index: map-get($zindex, header);
+}
+ ```
+
+
+*/
+
+
+// hide elements so we dont' get a flash of unstyled content
+p,div,span,li,ul, ol{
+  [data-visibility= "none"]{display:none;}
+}
+
+[data-js-tooltip=tooltip_trigger]:focus{outline: 0;}
+
+
+$zindex: (
+  modal     : 9000,
+  overlay   : 8000,
+  topvisible: 7000,
+  crossmark-tooltip: 6999,
+  dropdown  : 6998,
+  header    : 6000,
+  footer    : 5000,
+  invisible : -1,
+
+);
+/* zindex map use example
+.header {
+  z-index: map-get($zindex, header);
+}
 */
 
 
@@ -46,7 +107,7 @@ $clr-highlight-text: $white) {
 
 /*doc
 ---
-title: Colors
+title: colors
 name: color
 category: utilities
 ---
@@ -57,13 +118,13 @@ category: utilities
 
 example | extension
 --------|----------
-<p class="example-bg-dark">I have a dark background</p> | `@extend %bg-dark`
-<p class="example-highlight-color">My text is the highlight color</p> | `@extend %highlight-color`
-<a class="example-highlight-background">I have a highlighted background - hover over me</a> | `@extend %highlight-background`
-<p class="example-highlight-border">I have a highlighted border </p> | `@extend %highlight-border`
-<p class="example-brand-color">My text is the brand color</p> | `@extend %brand-color`
-<p class="example-brand-background">I have a branded background - hover over me</p> | `@extend %brand-background`
-<p class="example-brand-border">I have a branded border </p> | `@extend %brand-border`
+<p class="example-bg-dark">i have a dark background</p> | `@extend %bg-dark`
+<p class="example-highlight-color">my text is the highlight color</p> | `@extend %highlight-color`
+<a class="example-highlight-background">i have a highlighted background - hover over me</a> | `@extend %highlight-background`
+<p class="example-highlight-border">i have a highlighted border </p> | `@extend %highlight-border`
+<p class="example-brand-color">my text is the brand color</p> | `@extend %brand-color`
+<p class="example-brand-background">i have a branded background - hover over me</p> | `@extend %brand-background`
+<p class="example-brand-border">i have a branded border </p> | `@extend %brand-border`
 
 
 */
@@ -93,21 +154,21 @@ example | extension
 
 
 
-@mixin brandColor($setColor: $plos-default ) {
+@mixin brandcolor($setcolor: $plos-default ) {
   %more-icon {
-    color: $setColor;
+    color: $setcolor;
   }
   %brand-color {
-    color: $setColor;
+    color: $setcolor;
   }
   %brand-border {
-    border-color: $setColor;
+    border-color: $setcolor;
   }
   %brand-background {
-    background-color: $setColor;
+    background-color: $setcolor;
   }
   %brand-background-hover {
-    background-color: $setColor;
+    background-color: $setcolor;
     &:hover {
       background-color: $plos-default;
     }
@@ -116,11 +177,11 @@ example | extension
   %brand-shading {
     &:first-child {
       .block-header {
-        background-color: darken($setColor, 18%);
+        background-color: darken($setcolor, 18%);
       }
       .jcarousel-prev,
       .jcarousel-next {
-        color: darken($setColor, 18%);
+        color: darken($setcolor, 18%);
         &:hover {
           color: $plos-default;
         }
@@ -128,11 +189,11 @@ example | extension
     }
     &:first-child + .carousel-wrap {
       .block-header {
-        background-color: darken($setColor, 13%);
+        background-color: darken($setcolor, 13%);
       }
       .jcarousel-prev,
       .jcarousel-next {
-        color: darken($setColor, 13%);
+        color: darken($setcolor, 13%);
         &:hover {
           color: $plos-default;
         }
@@ -141,19 +202,19 @@ example | extension
   }
 }
 
-// set the journal-specific colors - PS this is a good example of things that can be pulled into themes or a separate scss file when the maven sass compiler is installed & working
+// set the journal-specific colors - ps this is a good example of things that can be pulled into themes or a separate scss file when the maven sass compiler is installed & working
 .plosbiology, .ploscompbiol, .plosgenetics {
-  @include brandColor($setColor: $plos-bio);
+  @include brandcolor($setcolor: $plos-bio);
 }
 .plosmedicine, .plospathogens, .plosntd {
-  @include brandColor($setColor: $plos-med);
+  @include brandcolor($setcolor: $plos-med);
 }
 
 .ploscollections, .plosclinicaltrials {
-  @include brandColor($setColor: $plos-default);
+  @include brandcolor($setcolor: $plos-default);
 }
 .plosone {
-  @include brandColor($setColor: $plos-one);
+  @include brandcolor($setcolor: $plos-one);
 }
 
 //////////////
@@ -169,11 +230,11 @@ category: utilities
 
 example | extension
 --------|----------
-<p class="center-simple" style="width: 50%">I have am centered in the middle</p> | `@extend .center-simple`
-<p class="pad-xsmall-x">I have a small amount of padding ???? we dont' use this much, should we? </p> | `@extend .pad-xsmall-x`
-<div class="example-border-radius">I have a border radius</div> | ` @include border-radius()`
-<div class="example-border-radius-large">I have a large border radius</div> | ` @include border-radius($border-radius-large)`
-<div class="example-box-shadow">I have box-shadow</div> | ` @include box-shadow()`
+<p class="center-simple" style="width: 50%">i have am centered in the middle</p> | `@extend .center-simple`
+<p class="pad-xsmall-x">i have a small amount of padding ???? we dont' use this much, should we? </p> | `@extend .pad-xsmall-x`
+<div class="example-border-radius">i have a border radius</div> | ` @include border-radius()`
+<div class="example-border-radius-large">i have a large border radius</div> | ` @include border-radius($border-radius-large)`
+<div class="example-box-shadow">i have box-shadow</div> | ` @include box-shadow()`
 
 */
 
@@ -186,10 +247,10 @@ example | extension
   padding: 0 $pad-default;
 }
 //
-// You need to use :before pseudo selector like this:
-//  .DIV_THAT_NEEDS_OVERLAY:before{
+// you need to use :before pseudo selector like this:
+//  .div_that_needs_overlay:before{
 //    @extend .overlay;
-//    background: OVERLAY DETAILS
+//    background: overlay details
 //  }
 //
 .overlay {
@@ -202,38 +263,4 @@ example | extension
   left: 0;
 }
 
-/*doc
----
-title: interaction and animation utilities
-name:  animation
-category: utilities
----
 
-example | extension
---------|----------
-
-*/
-
-
-// Hide elements so we dont' get a flash of unstyled content
-[data-visibility= 'none']{@extend .hide;}
-[data-js-tooltip=tooltip_trigger]:focus{outline: 0;}
-
-
-
-$zindex: (
-  modal     : 9000,
-  overlay   : 8000,
-  topVisible: 7000,
-  crossmark-tooltip: 6999,
-  dropdown  : 6998,
-  header    : 6000,
-  footer    : 5000,
-  invisible : -1,
-
-);
-/* zindex map use example
-.header {
-  z-index: map-get($zindex, header);
-}
-*/

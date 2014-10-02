@@ -86,7 +86,7 @@
   <#--there was no way to not do this. -->
     <a class="more-authors active" id="authors-show">[ view all ]</a>
     </li>
-  <li data-js-toggle="toggle_trigger" data-visibility= "none">
+  <li data-js-toggle="toggle_trigger" data-visibility="none">
     <a class="author-less" id="author-hide">[ view less ]</a>
   </li>
 <#else>

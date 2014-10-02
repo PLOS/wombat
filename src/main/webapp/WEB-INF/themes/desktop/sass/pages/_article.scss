@@ -497,6 +497,7 @@ body.article .ui-widget-overlay {
 
       a {
         @include link-text($color: $plos-default, $decoration: underline);
+        font-size: $txt-size-xsmall;
       }
     }
   }

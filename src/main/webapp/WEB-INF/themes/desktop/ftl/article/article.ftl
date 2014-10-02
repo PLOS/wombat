@@ -3,15 +3,11 @@
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-  <#--crossmark identifier-->
-  <meta name="dc.identifier" content="${article.doi}”>
 <#assign title = article.title />
 <#assign depth = 0 />
-
 <#include "../common/head.ftl" />
 
 <#include "../common/journalStyle.ftl" />
-
   <body class="article ${journalStyle}">
 
   <input type="hidden" id="rawPubDate" value="${article.date}" />

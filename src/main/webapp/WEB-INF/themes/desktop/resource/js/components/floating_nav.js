@@ -56,21 +56,7 @@
         }
       }
 
-      var marginFix = function () {
-        var lastSection = $('div.article div').last();
-        if (lastSection.length > 0) {
-          var offset = lastSection.offset().top;
-          var docHeight = $(document).height();
-          var z = (docHeight - offset) + options.margin;
-          if (z < $win.height()) {
-            var margin = Math.ceil(($win.height() - z) + options.margin);
-            lastSection.css({ 'margin-bottom': margin + 'px'});
-          }
-        }
-      }
-
       positionEl();
-      marginFix();
       $win.scroll(positionEl);
       $win.resize(positionEl);
     });

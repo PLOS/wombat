@@ -4,12 +4,11 @@
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
   <#--crossmark identifier-->
-  <meta name="dc.identifier" content="doi:${article.doi}”>
+  <meta name="dc.identifier" content="${article.doi}”>
 <#assign title = article.title />
 <#assign depth = 0 />
 
 <#include "../common/head.ftl" />
-
 
 <#include "../common/journalStyle.ftl" />
 

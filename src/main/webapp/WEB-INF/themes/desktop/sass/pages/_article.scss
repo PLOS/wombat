@@ -269,15 +269,16 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
          color: $clr-highlight;
        }
      }
-
-
    }
+
   .contribute{
     @extend .icon-author-contribute;
   }
+
   .rel-footnote {
     @extend .icon-author-footnotes;
   }
+
   .email {
     @extend .icon-author-address;
   }
@@ -377,17 +378,19 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 
   .dload-pdf {
-    @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small, $border-radius: 5px 0 0 5px, $hover: false);
+    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 11), $border-radius: 5px 0 0 5px, $hover: false);
+
     &:hover {
       background: $plos-default;
     }
+
     a {
       color: $white;
     }
   }
 
   .dload-hover {
-    @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-inbetween 0 $pad-small, $border-radius: 0 5px 5px 0, $hover: false);
+    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 8 0 11), $border-radius: 0 5px 5px 0, $hover: false);
     @include js-tooltip-container();
     @extend .icon-caret-down;
 
@@ -398,7 +401,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 
   .shim {
-    height: 5px;
+    height: rem-calc(10);
     display: block;
     position: absolute;
 
@@ -424,7 +427,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .print-article{
   @extend .button-big;
   @include js-tooltip-container;
-  @include plos-grid-column(77, $gutter:right, $gutter-width: $pad-small);
+  @include plos-grid-column(77, $gutter:right, $gutter-width: 5px);
   margin-top: $pad-xsmall;
   cursor: pointer;
 }
@@ -442,13 +445,43 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   margin-bottom: $pad-default;
 }
 
+.share-article {
+  @extend .button-big;
+  @include js-tooltip-container;
+  @include plos-grid-column(77, $gutter: none);
+  margin-top: $pad-xsmall;
+  cursor: pointer;
+}
+
+.share-options {
+  @extend .tooltip-aside;
+  @include js-tooltip-target($top: rem-calc(40));
+  padding-left: $pad-small;
+  opacity: 1;
+  z-index: map-get($zindex, dropdown);
+  left: -82px;
+  list-style-type: none;
+
+  li {
+    list-style-position: outside; // firefox
+    list-style-type: none;
+
+     a img {
+       width: 16px;
+       height: 16px;
+       margin-right: rem-calc(3);
+       margin-bottom: rem-calc(4);
+     }
+  }
+}
+
+
 .crossmark-container {
   @extend .aside-container;
   margin-bottom: $pad-xsmall;
   img {
-      padding: $pad-small 0;
-      display: block;
-
+    padding: $pad-small 0;
+    display: block;
   }
 }
 
@@ -502,4 +535,14 @@ body.article .ui-widget-overlay {
     }
   }
 
+}
+
+.skyscraper-container {
+  @extend .aside-container;
+  .title {
+    @extend .header-allcaps-smallest;
+    margin-bottom: $pad-xsmall;
+    text-align: center;
+    color: $grey-tinytext; // TEMP PROD: change to grey-med-light
+  }
 }

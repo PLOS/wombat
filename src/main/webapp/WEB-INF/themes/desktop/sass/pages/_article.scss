@@ -257,17 +257,19 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    li {
      position: relative;
      margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
+
      &.active{
 
        a:hover{text-decoration: none;}
      }
+
+     &[data-js-toggle='toggle_trigger'] a{
+       color: $clr-highlight;
+     }
+
      > a {
      display: inline-block;   // needed to overwrite the inline-list
      padding: $pad-highlight $pad-highlight-x; //TODO line-height;
-
-      &[data-js='toggle_trigger']{
-         color: $clr-highlight;
-       }
      }
    }
 

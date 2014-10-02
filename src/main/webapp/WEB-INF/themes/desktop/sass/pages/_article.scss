@@ -150,7 +150,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   overflow: hidden;
   box-sizing: border-box;
-  z-index: map-get($zindex, topVisible);
+  z-index: map-get($zindex, topvisible);
   .float-title-inner {
     @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
 
@@ -182,6 +182,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
     .close-floater {
       @extend .closer-brand;
+      text-indent: 9999px;
     }
   }
 }

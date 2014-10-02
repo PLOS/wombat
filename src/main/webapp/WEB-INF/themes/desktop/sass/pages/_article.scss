@@ -535,3 +535,13 @@ body.article .ui-widget-overlay {
   }
 
 }
+
+.skyscraper-container {
+  @extend .aside-container;
+  .title {
+    @extend .header-allcaps-smallest;
+    margin-bottom: $pad-xsmall;
+    text-align: center;
+    color: $grey-tinytext; // TEMP PROD: change to grey-med-light
+  }
+}

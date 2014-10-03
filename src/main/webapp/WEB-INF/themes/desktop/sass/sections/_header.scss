@@ -38,8 +38,8 @@ header { background: $clr-header; }
   }
 }
 
-$width-logo: 5;
-$width-search: 4;
+$width-logo: 4;
+$width-search: 5;
 $width-nav: $block-grid-elements - $width-logo;
 
 .nav {
@@ -74,7 +74,7 @@ $width-nav: $block-grid-elements - $width-logo;
 .logo {
   @include plos-grid-column($pixelwidth: columns, $columns: $width-logo);
   @extend .title-area; // foundation
-  text-indent: -9999px;
+  @include icon-offscreen;
   height: 41px;
   //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
   background: image-url('logo.png') no-repeat 0 0;

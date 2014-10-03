@@ -22,14 +22,16 @@
   <link rel="shortcut icon" href="<@siteLink path="resource/img/favicon.ico"/>" type="image/x-icon"/>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<#-- // TODO: NEEDS BACKEND <meta name="description" content="${freemarker_config.getMetaDescription(journalContext)}"/>
+<#-- // TODO: NEED BACKEND
+  <meta name="description" content="${freemarker_config.getMetaDescription(journalContext)}"/>
   <meta name="keywords" content="${freemarker_config.getMetaKeywords(journalContext)}"/>-->
-<#include "analytics.ftl" />
-
- <#if article??>
+<#if article??>
 <#--//crossmark identifier-->
   <meta name="dc.identifier" content="${article.doi}” />
 </#if>
+<#include "analytics.ftl" />
+
+
 </head>
 <#-- //references js that is foundational like jquery and foundation.js. JS output is printed at the bottom of the body.
 -->

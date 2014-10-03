@@ -6,7 +6,7 @@
 
 (function ($) {
 
- var s, parse_xml_date, float_header, check_authors_truncation;
+ var s, parse_xml_date, float_header, check_authors_truncation, twitter_module, t;
    parse_xml_date = {
     settings: {
       raw_date : document.getElementById("rawPubDate").value
@@ -58,7 +58,19 @@
       });
     }
   };
+  twitter_module = {
+    settings: {
+      plos_twitter: null,
+      doi: $("meta[name='dc.identifier']").attr("content")
+    },
 
+  init: function() {
+   t = this.settings;
+
+    plos_twitter = twitter();
+    plos_twitter.displayTwitterCites(doi);
+  }
+  }
   check_authors_truncation = {
 
     settings : {
@@ -94,6 +106,7 @@
     parse_xml_date.init();
     check_authors_truncation.init();
     float_header.init();
+    twitter_module.init();
 
     // initialize toggle for author list view more
     plos_toggle.init();

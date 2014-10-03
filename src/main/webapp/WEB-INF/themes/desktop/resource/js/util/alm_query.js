@@ -21,7 +21,8 @@
   $.fn.getArticleSummary = function (doi, callback) {
     var config = ALM_CONFIG; // expect to import value from alm_config.js
     if (config.host == null) {
-      console.log('ALM API is not configured');
+      // TODO: Replace with better console logging
+      // console.log('ALM API is not configured');
       return;
     }
 
@@ -35,7 +36,8 @@
         callback(response.data[0]);
       },
       failure: function () {
-        console.log('ALM request failed: ' + requestUrl);
+        // TODO: Replace with better console logging
+        // console.log('ALM request failed: ' + requestUrl);
       }
     })
   };

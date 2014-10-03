@@ -8,7 +8,7 @@
   <#macro mediaCoverageLink href>
     <li class="nav-media" id="nav-media" data-doi="${article.doi}">
       <a href="${href}">
-        Media Coverage <span id="media-coverage-count" data-visibility="none"></span>
+        Media Coverage <span id="media-coverage-count"></span>
       </a>
     </li>
   </#macro>

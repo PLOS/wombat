@@ -15,9 +15,7 @@
     $media.getArticleSummary(doi,
         function (data) {
           var mediaCoverageCount = getMediaCoverageCount(data);
-          $media.find('#media-coverage-count')
-              .text('(' + mediaCoverageCount + ')')
-              .removeAttr('data-visibility');
+          $media.find('#media-coverage-count').text('(' + mediaCoverageCount + ')');
         });
   }
 

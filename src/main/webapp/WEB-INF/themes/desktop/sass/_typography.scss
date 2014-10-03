@@ -59,6 +59,10 @@ example | extension
   @extend %header-allcaps;
   font-family: $font-face-plain;
 }
+.header-allcaps-smallest {
+  @extend %header-allcaps-plain;
+  font-size: $txt-size-xxxsmall;
+}
 %header-allcaps-xlarge {
   @extend %header-allcaps;
   font-size: rem-calc($txt-size-xlarge);

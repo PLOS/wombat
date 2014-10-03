@@ -18,6 +18,7 @@ import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
+import org.ambraproject.wombat.util.TextUtil;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,7 @@ import java.util.Collection;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 /**
@@ -359,7 +361,7 @@ public class ArticleController extends WombatController {
     List<String> correspondingAuthors = new ArrayList<>();
     List<String> equalContributors = new ArrayList<>();
     for (Object o : authors) {
-      Map<?, ?> author = (Map<?, ?>) o;
+      Map<String, Object> author = (Map<String, Object>) o;
       if (author.containsKey("corresponding")) {
         correspondingAuthors.add((String) author.get("corresponding"));
       }
@@ -367,7 +369,15 @@ public class ArticleController extends WombatController {
       if (obj != null && (boolean) obj) {
         equalContributors.add((String) author.get("fullName"));
       }
+
+      // remove the footnote marker from the current address
+      List<String> currentAddresses = (List<String>) author.get("currentAddresses");
+      for (ListIterator<String> iterator = currentAddresses.listIterator(); iterator.hasNext(); ) {
+        String currentAddress = iterator.next();
+        iterator.set(TextUtil.removeFootnoteMarker(currentAddress));
+      }
     }
+
     model.addAttribute("correspondingAuthors", correspondingAuthors);
     model.addAttribute("equalContributors", equalContributors);
   }

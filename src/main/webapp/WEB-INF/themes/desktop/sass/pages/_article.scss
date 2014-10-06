@@ -132,6 +132,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   z-index: map-get($zindex, titleTopFixed);
 
   #floatAuthorList {
+    @extend .hide-for-print;
     height: rem-calc(16);
     width: rem-calc(760);
     @extend .inline-list;
@@ -174,7 +175,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 
   .logo-close {
-    @extend .hide-for-print;
     @include plos-grid-column(160, $gutter: none);
     padding: 0 $pad-small $pad-xsmall 0;
     display: block;
@@ -569,7 +569,8 @@ body.article .ui-widget-overlay {
     &:before {
       content: image-url('logo.png') !important;
     }
-    margin-left: -10px;
+    margin-left: -$pad-small;
+
     h1 {
       padding-top: $pad-default;
     }
@@ -584,15 +585,13 @@ body.article .ui-widget-overlay {
     margin-left: 1in;
 
     .float-title-inner h1 {
-      font-size: 11px;
+      font-size: $txt-size-small;
     }
 
-    #floatAuthorList {
-      display: none;
-    }
+
   }
 
-  .logo-close {
+  .logo-close { //     @extend .hide-for-print; didn't work for logo-close
     display: none;
   }
 

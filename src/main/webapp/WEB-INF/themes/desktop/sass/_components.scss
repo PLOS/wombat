@@ -309,6 +309,10 @@ example | extension
   font-size: $txt-size-medium-large;
   line-height: rem-calc(35);  // .fa-etc default to 44
 }
+.icon-paw {
+@extend .icon-fa;
+@extend .fa-paw;
+}
 .aria-text {
   position: absolute;
   top: -9999px;

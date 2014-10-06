@@ -445,6 +445,15 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   @include clearfix();
   width: rem-calc(160);
   margin-bottom: $pad-default;
+  h3 {
+    font-size: $txt-size-medium;//$txt-size-h3;
+    font-family: $font-face-plain;
+    font-weight: bold;
+    line-height: rem-calc(17); // TEMP PROD: use 18px;
+    border-bottom: 1px solid #dedede;
+    padding-bottom: $pad-small;
+    margin-bottom: rem-calc(8); // TEMP PROD: use 10px;
+  }
 }
 
 .share-article {
@@ -513,15 +522,7 @@ body.article .ui-widget-overlay {
 .related-articles-container {
   @extend .aside-container;
 
-  h3 {
-    font-size: $txt-size-medium;//$txt-size-h3;
-    font-family: $font-face-plain;
-    font-weight: bold;
-    line-height: rem-calc(17); // TEMP PROD: use 18px;
-    border-bottom: 1px solid #dedede;
-    padding-bottom: $pad-small;
-    margin-bottom: rem-calc(8); // TEMP PROD: use 10px;
-  }
+
 
   ul {
     list-style: none;
@@ -541,10 +542,57 @@ body.article .ui-widget-overlay {
 
 .skyscraper-container {
   @extend .aside-container;
+
   .title {
     @extend .header-allcaps-smallest;
     margin-bottom: $pad-xsmall;
     text-align: center;
     color: $grey-tinytext; // TEMP PROD: change to grey-med-light
+  }
+}
+#subjInfoText {display: none;} //temporary
+
+.subject-areas-container {
+  @extend .aside-container;
+  h3 span {
+    //for the question mark
+  }
+
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+
+    li {
+      @include clearfix;
+      list-style-type: none;
+      padding: 5px 0;
+
+      a {
+      display: inline-block;
+      float: left;
+      width: 140px;
+      padding-right: 5px;
+      }
+
+      span {
+      display: inline-block;
+      float: right;
+      width: 16px;
+      height: 16px;
+      background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
+      cursor: pointer;
+      &:hover, &.flagged {
+        background-position: 0 -16px;
+      }
+     /* @extend .icon-paw;
+      line-height: 10px;
+      font-size: 20px;
+
+      color: $grey-light;
+      &:hover {
+          color: $plos-default;
+        }*/
+      }
+    }
   }
 }

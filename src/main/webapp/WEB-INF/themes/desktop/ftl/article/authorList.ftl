@@ -5,8 +5,8 @@
   || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
   || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
 
-  <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if> <#if hidden> data-js-toggle="toggle_target"
-      data-initial="hide"</#if> >
+  <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if>
+       <#if hidden> data-js-toggle="toggle_target" data-visibility= "none"</#if> >
     <a data-author-id="${author_index?c}" class="author-name" >
     ${author.fullName}<#-- no space
  --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space
@@ -86,7 +86,7 @@
   <#--there was no way to not do this. -->
     <a class="more-authors active" id="authors-show">[ view all ]</a>
     </li>
-  <li data-js-toggle="toggle_trigger" data-initial="hide">
+  <li data-js-toggle="toggle_trigger" data-visibility="none">
     <a class="author-less" id="author-hide">[ view less ]</a>
   </li>
 <#else>

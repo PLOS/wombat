@@ -3,11 +3,13 @@
 <div id="article-amendment-${type}">
   <h3 class="${type}">${title}</h3>
   <#list amendmentObjects as amendment>
-    <div class="amendment-body">
-    ${amendment.body}
-    </div>
+    <#if type != "correction">
+      <div class="amendment-body">
+      ${amendment.body}
+      </div>
+    </#if>
     <div class="amendment-citation">
-      <@displayCitation amendment/>
+      <@displayCitation amendment false />
       |
       <@siteLink path="article?id=" ; path>
         <a href="${path + amendment.doi}">${linkText}</a>

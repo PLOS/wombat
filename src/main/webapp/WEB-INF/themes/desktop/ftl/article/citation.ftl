@@ -1,4 +1,13 @@
-<#macro displayCitation citation>
+<#--
+    Prints a text block containing a citation for an article.
+
+    Parameters:
+      citation - The article to be cited. Must be an object containing a subset of the normal article
+                 metadata fields.
+      useUrlDoiStyle - Boolean. True to format the DOI as a URL at http://dx.doi.org/; false to
+                       just prefix it with "doi:".
+  -->
+<#macro displayCitation citation useUrlDoiStyle>
 <span class="citation">
 <span class="authorList">
 <#assign maxAuthors = 5 /><#-- May want this to be configurable in the future. -->
@@ -51,8 +60,15 @@
   <#if citation.eLocationId??>
     <span class="citation_start_page">${citation.eLocationId}.</span>
   </#if>
-
-<#-- TODO: Add DOI -->
+  <#if citation.doi??>
+    <span class="citation_doi">
+      <#if useUrlDoiStyle>
+        http://dx.doi.org/${citation.doi}
+      <#else>
+        doi: ${citation.doi}
+      </#if>
+    </span>
+  </#if>
 
 </span>
 </#macro>

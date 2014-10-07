@@ -30,29 +30,16 @@ public class AbbreviatedNameDirective implements TemplateDirectiveModel {
   }
 
   private static final Splitter WHITESPACE_SPLITTER = Splitter.on(CharMatcher.WHITESPACE);
-  private static final Pattern GIVEN_NAME_PATTERN = Pattern.compile(".*\\p{Pd}\\p{L}.*");
-  private static final Pattern DASH_PATTERN = Pattern.compile("\\p{Pd}");
+  private static final Splitter DASH_SPLITTER = Splitter.on(Pattern.compile("\\p{Pd}"));
 
   private static String abbreviate(String rawGivenNameString) {
     Iterable<String> givenNames = WHITESPACE_SPLITTER.split(rawGivenNameString);
     StringBuilder abbreviation = new StringBuilder();
     for (String givenName : givenNames) {
-      if (givenName.length() > 0) {
-        if (GIVEN_NAME_PATTERN.matcher(givenName).matches()) {
-          // Handle names with dash
-          String[] sarr = DASH_PATTERN.split(givenName);
-          for (int i = 0; i < sarr.length; i++) {
-            if (i > 0) {
-              abbreviation.append('-');
-            }
-
-            if (sarr[i].length() > 0) {
-              abbreviation.append(sarr[i].charAt(0));
-            }
-          }
-        } else {
-          abbreviation.append(givenName.charAt(0));
-        }
+      Iterable<String> nameParts = DASH_SPLITTER.split(givenName);
+      for (String namePart : nameParts) {
+        char initial = namePart.charAt(0);
+        abbreviation.append(initial);
       }
     }
 

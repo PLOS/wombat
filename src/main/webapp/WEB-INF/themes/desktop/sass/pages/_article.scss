@@ -156,7 +156,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   overflow: hidden;
   box-sizing: border-box;
-  z-index: map-get($zindex, topVisible);
+  z-index: map-get($zindex, topvisible);
   .float-title-inner {
     @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
 
@@ -575,24 +575,4 @@ body.article .ui-widget-overlay {
       padding-top: $pad-default;
     }
   }
-
-  #floatTitleTop.float-title {
-    visibility: visible;
-    border-bottom: none;
-    position: fixed;
-    top: -3.5cm;
-    width: 7in;
-    margin-left: 1in;
-
-    .float-title-inner h1 {
-      font-size: $txt-size-small;
-    }
-
-
-  }
-
-  .logo-close { //     @extend .hide-for-print; didn't work for logo-close
-    display: none;
-  }
-
 }

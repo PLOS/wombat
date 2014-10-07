@@ -321,10 +321,8 @@ $width-nav: $block-grid-elements - $width-logo;
     text-decoration: underline;
   }
 }
-// print items (styles are in _utilities.scss)
+// print items (styles are in _type.scss)
 #user, #topslot {
   @extend .hide-for-print;
 }
-@media print {
 
-}

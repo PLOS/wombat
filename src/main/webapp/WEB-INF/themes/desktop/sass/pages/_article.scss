@@ -369,7 +369,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);
 
 .type-desc {
   @include tooltip();
-  @include js-tooltip-target($top: rem-calc(35));
+  @include js-tooltip-target($top: rem-calc(25));
 
   p {
     color: $clr-tooltip-text;

@@ -34,7 +34,25 @@
   </#if>
 </span>
 
-<#-- TODO: Finish implementing -->
+  <#if citation.year??>
+    <span class="citation_date">(${citation.year})</span>
+  </#if>
+  <#if citation.title??>
+    <span class="citation_article_title">
+    ${citation.title}<#if !citation.title?ends_with('?')>.</#if>
+    </span>
+  </#if>
+  <#if citation.journal??>
+    <span class="citation_journal_title">${citation.journal}</span>
+  </#if>
+  <span class="citation_issue">
+  ${citation.volume!}<#if citation.issue??>(${citation.issue})</#if>:
+  </span>
+  <#if citation.eLocationId??>
+    <span class="citation_start_page">${citation.eLocationId}.</span>
+  </#if>
+
+<#-- TODO: Add DOI -->
 
 </span>
 </#macro>

@@ -11,12 +11,14 @@
 
   function addMediaCoverageLink() {
     var $media = $('#nav-media');
-    var doi = $media.data('doi');
-    $media.getArticleSummary(doi,
-        function (data) {
-          var mediaCoverageCount = getMediaCoverageCount(data);
-          $media.find('#media-coverage-count').text('(' + mediaCoverageCount + ')');
-        });
+    if ($media.length) {
+      var doi = $media.data('doi');
+      $media.getArticleSummary(doi,
+          function (data) {
+            var mediaCoverageCount = getMediaCoverageCount(data);
+            $media.find('#media-coverage-count').text('(' + mediaCoverageCount + ')');
+          });
+    }
   }
 
   /// write article nav

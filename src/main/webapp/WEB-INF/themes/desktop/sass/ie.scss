@@ -65,9 +65,7 @@ This is for IE specific styles mostly ie9 and below.
   }
 }
 
-//div[data-visibility=none]{display:none;}
-
-//div.author-info{ display: none;}
+// for tooltip
 div[data-js-tooltip="tooltip_target"]{ display: none;}
 [data-js-tooltip="tooltip_trigger"].active div[data-js-tooltip="tooltip_target"] {display: block;}
 

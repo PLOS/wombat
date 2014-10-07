@@ -27,7 +27,11 @@ plos_tooltip = {
           parent_width_offset = parent_width * .75,
           this_position = $(this).position();
       // add event listener for clicking outside of body
-      document.body.addEventListener('click', boxCloser, false);
+      if( document.body.addEventListener)
+        document.body.addEventListener("click",boxCloser,false);
+      else
+        document.body.attachEvent("onclick",boxCloser);
+//      document.body.addEventListener('click', boxCloser, false);
     // closes all other tooltips
       $(s.tooltip_trigger).not(this).removeClass(s.tooltip_class);
       // toggles the active class to show and hide
@@ -48,7 +52,10 @@ plos_tooltip = {
       var subject = $(s.tooltip_container);
       if(e.target.id != subject.attr('id') && !subject.has(e.target).length)
       {
-        document.body.removeEventListener('click', boxCloser, false);
+        if( document.body.removeEventListener)
+          document.body.removeEventListener("click",boxCloser,false);
+        else
+          document.body.detachEvent("onclick",boxCloser);
         $(s.tooltip_trigger).removeClass(s.tooltip_class);
       }
     }

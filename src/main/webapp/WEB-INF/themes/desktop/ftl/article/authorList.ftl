@@ -1,4 +1,4 @@
-<ul class="author-list clearfix" data-js-tooltip="tooltip_container">
+<ul class="author-list clearfix"  data-js-tooltip="tooltip_container" id="author-list">
 <#include "maxAuthorsToShow.ftl" />
 <#macro authorItem author author_index author_has_next if_expander=false hidden=false>
   <#assign hasMeta = author.equalContrib || author.deceased || author.corresponding??

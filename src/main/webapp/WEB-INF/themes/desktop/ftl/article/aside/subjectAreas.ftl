@@ -1,12 +1,49 @@
 
-<#if articleInfoX.orderedCategories?? && articleType.heading != "Correction" && articleType.heading != "Expression of Concern" && articleType.heading != "Retraction" >
-<div class="aside-container">
+<#--<#if articleInfoX.orderedCategories?? && articleType.heading != "Correction" && articleType.heading != "Expression of Concern" && articleType.heading != "Retraction" >-->
+<div class="subject-areas-container">
   <h3>Subject Areas <span id="subjInfo">&nbsp;</span></h3>
   <div id="subjInfoText">
     <span class="inline-intro">We want your feedback.</span> Do these subject areas make sense for this article? If not, click the flag next to the incorrect subject area and we will review it. Thanks for your help!
   </div>
 
- <ul id="subjectList"> <#-- temporary test code: <li><a>subject area</a><div>flag</div></li></ul>-->
+ <ul id="subjectList">
+   <li>
+     <a href='${legacyUrlPrefix}/search/advanced?unformattedQuery=subject%3A"Antiretroviral+therapy"'>antiretroviraal</a>
+     <span data-categoryid="54321<#--${categoryModel.categoryID?c}-->"
+           data-articleid="12345av<#--${ articleInfoX.id?c}-->"
+           data-categoryname="antiretroviraal<#--${categoryNames[categoryModel_index]}-->"
+           class="taxo-flag<#--<#if categoryModel.flagged> flagged"</#if>-->">&nbsp;</span>
+   </li>
+   <li>
+     <a href='${legacyUrlPrefix}/search/advanced?unformattedQuery=subject%3A"Blood+plasma"'>blood plasma</a>
+     <span>&nbsp;</span>
+   </li>
+   <li>
+     <a>cholesterol</a>
+     <span>&nbsp;</span>
+   </li>
+   <li>
+     <a>drug therapy</a>
+     <span>&nbsp;</span>
+   </li>
+   <li>
+     <a>hiv-1</a>
+     <span>&nbsp;</span>
+   </li>
+   <li>
+     <a>lipid analysis</a>
+     <span>&nbsp;</span>
+   </li>
+   <li>
+     <a>lipds</a>
+     <span>&nbsp;</span>
+   </li>
+   <li>
+     <a>lipoproteins</a>
+     <span>&nbsp;</span>
+   </li>
+
+ </ul>
   <#--  TODO: delete the following after John F reviews
     This bit of logic is a bit odd and perhaps should be moved to another tier due to its complexity
     For speed of retrieval, we store categories like so in the database:
@@ -32,7 +69,7 @@
     Though all three may be associated with an article.  When reporting on this data, it's imperative we don't group by ID, but the
     last term in the path.
   -->
-    <#assign categoryNames = [] />
+  <#--  <#assign categoryNames = [] />
     <#assign finalCategories = [] />
     <#list articleInfoX.orderedCategories as categoryModel>
       <#if (finalCategories?size) gt max_categories>
@@ -61,4 +98,4 @@
     </#list>
   </ul>
 </div>
-</#if>
+</#if>-->

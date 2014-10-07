@@ -1,5 +1,5 @@
 /**
- * Created by ddowell on 8/14/14.
+ *
  * DEPENDENCY:  resource/js/components/truncate_elem
  *              resource/js/components/show_onscroll
  */

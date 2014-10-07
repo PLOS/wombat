@@ -9,6 +9,9 @@
       </div>
     </#if>
     <div class="amendment-citation">
+      <span class="amendmentDate">
+        <@formatJsonDate date="${amendment.date}" format="d MMM yyyy" />:
+      </span>
       <@displayCitation amendment false />
       |
       <@siteLink path="article?id=" ; path>

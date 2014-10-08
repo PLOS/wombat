@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
 
 import java.util.EnumSet;
 import java.util.regex.Pattern;
@@ -57,6 +57,9 @@ public class XmlExcerptTransformation {
       String nlmXmlTag = name().toLowerCase();
 
       this.pattern = Pattern.compile("" +
+          // Not sure why we are checking for HTML-escaped "&lt;" and "&gt;" in what is supposed to be XML.
+          // The legacy impl did it (only for <italic>), so surely there was a special case at some point.
+          // The special case likely doesn't exist on this platform, so investigate removing it.
           "\"(?:<|&lt;)" + nlmXmlTag + "(?:>|&gt;)" +
           "(.*?)" +
           "(?:<|&lt;)/" + nlmXmlTag + "(?:>|&gt;)\"");
@@ -114,7 +117,7 @@ public class XmlExcerptTransformation {
     }
   }
 
-  private static final ImmutableSet<TextReplacement> REPLACEMENTS = ImmutableSet.<TextReplacement>builder()
+  private static final ImmutableCollection<TextReplacement> REPLACEMENTS = ImmutableList.<TextReplacement>builder()
       .addAll(EnumSet.allOf(SimpleElementType.class))
       .addAll(EnumSet.allOf(LegacyKludge.class))
       .build();

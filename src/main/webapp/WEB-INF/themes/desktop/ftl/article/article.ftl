@@ -59,9 +59,13 @@
     <section class="article-body">
 
       <#include "tabs.ftl" />
+      <div class="article-container">
+
+      <#include "nav.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}
+      </div>
       </div>
 
     </section>
@@ -77,7 +81,10 @@
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/float_header.js"/>
   <@js src="resource/js/components/subject_flag.js"/>
+  <@js src="resource/js/util/alm_config.js"/>
+  <@js src="resource/js/util/alm_query.js"/>
   <@js src="resource/js/pages/article.js"/>
+  <@js src="resource/js/pages/article_body.js"/>
   <@renderJs />
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>

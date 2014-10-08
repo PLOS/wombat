@@ -18,6 +18,7 @@
 header { background: $clr-header; }
 
 .head-top {
+
   @extend %bg-dark;
   @extend .text-center;
   @extend %brand-border;
@@ -38,8 +39,8 @@ header { background: $clr-header; }
   }
 }
 
-$width-logo: 5;
-$width-search: 4;
+$width-logo: 4;
+$width-search: 5;
 $width-nav: $block-grid-elements - $width-logo;
 
 .nav {
@@ -74,7 +75,7 @@ $width-nav: $block-grid-elements - $width-logo;
 .logo {
   @include plos-grid-column($pixelwidth: columns, $columns: $width-logo);
   @extend .title-area; // foundation
-  text-indent: -9999px;
+  @include icon-offscreen;
   height: 41px;
   //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
   background: image-url('logo.png') no-repeat 0 0;
@@ -99,6 +100,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
 
 .top-bar-section {
+  @extend .hide-for-print;
   // foundation
   @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right);
 
@@ -318,5 +320,9 @@ $width-nav: $block-grid-elements - $width-logo;
   &:hover {
     text-decoration: underline;
   }
+}
+// print items (styles are in _type.scss)
+#user, #topslot {
+  @extend .hide-for-print;
 }
 

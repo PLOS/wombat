@@ -94,7 +94,7 @@
     <xsl:for-each select="front/article-meta">
       <xsl:apply-templates select="title-group" mode="metadata"/>
       <!-- abstracts -->
-      <xsl:for-each select="abstract[not(@abstract-type) or (@abstract-type !='toc' and @abstract-type != 'teaser'
+      <xsl:for-each select="abstract[not(@abstract-type) or (@abstract-type !='data-toc' and @abstract-type != 'teaser'
              and @abstract-type != 'editor' and @abstract-type != 'patient')]">
         <div class="abstract">
           <xsl:call-template name="abstract-title"/>
@@ -775,7 +775,7 @@
           <xsl:attribute name="name">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
-          <xsl:attribute name="toc">
+          <xsl:attribute name="data-toc">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
           <xsl:attribute name="title">
@@ -804,7 +804,7 @@
     <div>
       <xsl:choose>
         <xsl:when test="not(title)">
-          <a id="refs" name="refs" toc="refs" title="References"/>
+          <a id="refs" name="refs" data-toc="refs" title="References"/>
           <h3>References</h3>
           <xsl:call-template name="newline1"/>
         </xsl:when>
@@ -964,7 +964,7 @@
           <xsl:attribute name="name">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
-          <xsl:attribute name="toc">
+          <xsl:attribute name="data-toc">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
           <xsl:attribute name="title">
@@ -982,7 +982,7 @@
           <xsl:attribute name="name">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
-          <xsl:attribute name="toc">
+          <xsl:attribute name="data-toc">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
           <xsl:attribute name="title">Abstract</xsl:attribute>
@@ -1056,7 +1056,7 @@
       <xsl:attribute name="name">
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
-      <xsl:attribute name="toc">
+      <xsl:attribute name="data-toc">
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
       <xsl:attribute name="title">
@@ -2489,7 +2489,7 @@
       <xsl:call-template name="newline1"/>
       <xsl:for-each select="//abstract[@abstract-type='patient']">
         <div class="patient">
-          <a id="patient" name="patient" toc="patient" title="Patient Summary"/>
+          <a id="patient" name="patient" data-toc="patient" title="Patient Summary"/>
           <h3>
             <xsl:value-of select="title"/>
           </h3>
@@ -2503,7 +2503,7 @@
   <xsl:template name="author-contrib">
     <xsl:if test="../front/article-meta/author-notes/fn[@fn-type='con']">
       <div class="contributions">
-        <a id="authcontrib" name="authcontrib" toc="authcontrib"
+        <a id="authcontrib" name="authcontrib" data-toc="authcontrib"
            title="Author Contributions"/>
         <h3>Author Contributions</h3>
         <p>
@@ -2527,7 +2527,7 @@
     <div>
       <xsl:call-template name="assign-id"/>
       <xsl:if test="not(title)">
-        <a id="ack" name="ack" toc="ack" title="Acknowledgments"/>
+        <a id="ack" name="ack" data-toc="ack" title="Acknowledgments"/>
         <h3>Acknowledgments</h3>
         <xsl:call-template name="newline1"/>
       </xsl:if>

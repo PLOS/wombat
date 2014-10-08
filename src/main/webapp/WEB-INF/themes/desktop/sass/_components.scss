@@ -216,7 +216,7 @@ have a fixed width and height (but it's not required).
     }
     .numbers {
       @extend %small-italic;
-      color: $grey-med;
+      color: $grey-med-dark;
       display: inline-block;
       padding: 0 $pad-xsmall;
       vertical-align: top;

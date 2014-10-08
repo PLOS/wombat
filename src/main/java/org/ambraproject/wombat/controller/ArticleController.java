@@ -19,6 +19,7 @@ import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.TextUtil;
+import org.ambraproject.wombat.util.XmlExcerptTransformation;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,6 +49,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Controller for rendering an article.
@@ -428,16 +430,36 @@ public class ArticleController extends WombatController {
           throw new RuntimeException("Invalid XML syntax for: " + articleId, e);
         }
 
-        /*
-         * This deletes all markup and is not really what we want. In here as a placeholder.
-         * TODO: Retrieve text with markup
-         */
-        String body = document.getElementsByTagName("body").item(0).getTextContent();
+        // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
+        Node bodyNode = document.getElementsByTagName("body").item(0);
 
-        return body;
+        // Convert XML excerpt to renderable HTML. Undesirable hacks follow.
+        // See class-level Javadoc on XmlExcerptTransformation.
+        String bodyXml = TextUtil.recoverXml(bodyNode);
+        String bodyHtml = XmlExcerptTransformation.transform(bodyXml);
+
+        /*
+         * Remove outermost body tags. (Leaving them in would be a huge bug because a browser would interpret it as the
+         * HTML <body> element.)
+         *
+         * This is a kludge ported over from legacy Ambra. It sucks for all the same reasons documented at
+         * XmlExcerptTransformation. Additionally, we expect TextUtil.recoverXml to place XML namespace declarations on
+         * the body tags that we are stripping (e.g., 'xmlns:xlink="http://www.w3.org/1999/xlink"',
+         * 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'); it's important that they not placed and left
+         * behind anywhere else, because they definitely aren't valid HTML. Would really, really like to obviate this.
+         *
+         * The original kludge appears in Ambra 2.* at org.ambraproject.rhino.shared.AuthorsXmlExtractor and seems to
+         * have been reused for amendment bodies (as opposed to author lists). The original solution searched for a lot
+         * of other tags that presumably are unique to the author list, hence they are ignored here.
+         */
+        bodyHtml = BODY_TAG_PATTERN.matcher(bodyHtml).replaceAll("");
+
+        return bodyHtml;
       }
     });
   }
+
+  private static final Pattern BODY_TAG_PATTERN = Pattern.compile("<body[^>]*>|</body\\s*>");
 
   /**
    * Retrieves article XML from the SOA server, transforms it into HTML, and returns it. Result will be stored in

@@ -57,12 +57,13 @@ public class XmlExcerptTransformation {
       String nlmXmlTag = name().toLowerCase();
 
       this.pattern = Pattern.compile("" +
-          // Not sure why we are checking for HTML-escaped "&lt;" and "&gt;" in what is supposed to be XML.
-          // The legacy impl did it (only for <italic>), so surely there was a special case at some point.
-          // The special case likely doesn't exist on this platform, so investigate removing it.
-          "\"(?:<|&lt;)" + nlmXmlTag + "(?:>|&gt;)" +
-          "(.*?)" +
-          "(?:<|&lt;)/" + nlmXmlTag + "(?:>|&gt;)\"");
+              // Not sure why we are checking for HTML-escaped "&lt;" and "&gt;" in what is supposed to be XML.
+              // The legacy impl did it (only for <italic>), so surely there was a special case at some point.
+              // The special case likely doesn't exist on this platform, so investigate removing it.
+              "(?:<|&lt;)" + nlmXmlTag + "(?:>|&gt;)" +
+              "(.*?)" +
+              "(?:<|&lt;)/" + nlmXmlTag + "(?:>|&gt;)",
+          Pattern.DOTALL);
       this.replacement = String.format("<%s class=\"nlm-%s\">$1</%s>",
           htmlTag, nlmXmlTag, htmlTag);
     }

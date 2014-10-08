@@ -395,7 +395,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 //RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
 
 .dload-menu {
+  @include clearfix;
   width: rem-calc(160);
+  padding-bottom: 5px;
 
   div {
     display: inline;
@@ -434,9 +436,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 
   .shim {
-    height: rem-calc(10);
+    height: rem-calc(100);
     display: block;
     position: absolute;
+    left: -50px;
+    top: -10px;
+    width: 80px;
 
     &:hover {
       background: transparent !important;
@@ -461,7 +466,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   @extend .button-big;
   @include js-tooltip-container;
   @include plos-grid-column(77, $gutter:right, $gutter-width: 5px);
-  margin-top: $pad-xsmall;
   cursor: pointer;
 }
 
@@ -476,13 +480,13 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   @include clearfix();
   width: rem-calc(160);
   margin-bottom: $pad-default;
+
 }
 
 .share-article {
   @extend .button-big;
   @include js-tooltip-container;
   @include plos-grid-column(77, $gutter: none);
-  margin-top: $pad-xsmall;
   cursor: pointer;
 }
 
@@ -512,6 +516,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .crossmark-container {
   @extend .aside-container;
   margin-bottom: $pad-xsmall;
+
   img {
     padding: $pad-small 0;
     display: block;

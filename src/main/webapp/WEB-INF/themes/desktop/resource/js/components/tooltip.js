@@ -10,7 +10,7 @@ plos_tooltip = {
     tooltip_target:  '[data-js-tooltip=tooltip_target]',
     tooltip_hidden:  '[data-initial=hide]',
     tooltip_close:   '[data-js-tooltip=tooltip_close]',
-    tooltip_container: '[data-js-tooltip=tooltip_container]',  // the container needs an id TODO add to documentation.
+    tooltip_container: '[data-js-tooltip=tooltip_container]',
     tooltip_class: 'active',
     tooltip_container_class: 'tooltip-container-active'
   },
@@ -19,47 +19,35 @@ plos_tooltip = {
    // this.settings = $.extend(this.settings, options);
     this.tooltip();
   },
-  tooltip: function (e) {
+  tooltip: function () {
 
     s = this.settings;
     $(s.tooltip_trigger).on('click', function () {
       var parent_width = $(this).parents(s.tooltip_container).innerWidth(),
           parent_width_offset = parent_width * .75,
-          this_position = $(this).position();
-      // add event listener for clicking outside of body
-      if( document.body.addEventListener)
-        document.body.addEventListener("click",boxCloser,false);
-      else
-        document.body.attachEvent("onclick",boxCloser);
-//      document.body.addEventListener('click', boxCloser, false);
-    // closes all other tooltips
-      $(s.tooltip_trigger).not(this).removeClass(s.tooltip_class);
-      // toggles the active class to show and hide
-      $(this).toggleClass(s.tooltip_class);
+          this_position = $(this).position(),
+          $target = $(event.target),
+          $self = $(this);
+
+    // remove tooltip class
+     $(s.tooltip_trigger).not(this).removeClass(s.tooltip_class);
+
+   //   check if the target is tooltip close OR parents
+      if(!$target.parents(s.tooltip_target).length | $target.is(s.tooltip_close)){
+        $self.toggleClass(s.tooltip_class);
+      }
+
     /// ads the position class on the tooltip
       if (this_position.left >= parent_width_offset) {
         $(this).find(s.tooltip_target).addClass('pos-right');
       }
-
+    /// closes all i am binding this for the click event if no one clicks on the trigger it will never fire
+      $(document).on('click', function(event) {
+        if (!$(event.target).closest(s.tooltip_trigger).length) {
+          $self.removeClass(s.tooltip_class);
+        }
+      });
     });
-   // close on click
-    $(this).on('click', s.tooltip_close, function () {
-      $(this).parent(s.tooltip_trigger).removeClass(s.tooltip_class);
-    });
-   /// closes the whole box
-   // TODO: put outside this function
-    function boxCloser(e) {
-      var subject = $(s.tooltip_container);
-      if(e.target.id != subject.attr('id') && !subject.has(e.target).length)
-      {
-        if( document.body.removeEventListener)
-          document.body.removeEventListener("click",boxCloser,false);
-        else
-          document.body.detachEvent("onclick",boxCloser);
-        $(s.tooltip_trigger).removeClass(s.tooltip_class);
-      }
-    }
-
   }
 };
 })(jQuery);

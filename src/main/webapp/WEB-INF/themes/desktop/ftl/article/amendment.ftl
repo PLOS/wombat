@@ -9,14 +9,20 @@
       </div>
     </#if>
     <div class="amendment-citation">
-      <span class="amendmentDate">
+      <#if amendment.date??>
+        <span class="amendmentDate">
         <@formatJsonDate date="${amendment.date}" format="d MMM yyyy" />:
       </span>
+      </#if>
+
       <@displayCitation amendment false />
-      |
-      <@siteLink path="article?id=" ; path>
-        <a href="${path + amendment.doi}">${linkText}</a>
-      </@siteLink>
+
+      <#if amendment.doi??>
+        |
+        <@siteLink path="article?id=" ; path>
+          <a href="${path + amendment.doi}">${linkText}</a>
+        </@siteLink>
+      </#if>
     </div>
   </#list>
 </div>

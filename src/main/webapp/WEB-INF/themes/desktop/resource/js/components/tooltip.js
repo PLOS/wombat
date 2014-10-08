@@ -22,7 +22,7 @@ plos_tooltip = {
   tooltip: function () {
 
     s = this.settings;
-    $(s.tooltip_trigger).on('click', function () {
+    $(s.tooltip_trigger).on('click', function (event) {
       var parent_width = $(this).parents(s.tooltip_container).innerWidth(),
           parent_width_offset = parent_width * .75,
           this_position = $(this).position(),

@@ -9,11 +9,11 @@
     var options = $.extend(defaults, options);
     return this.each(function () {
 
-      var $this = $(this);
-      var ftr_top = $('#pageftr').offset().top;
-      var el_top = $this.offset().top;
-      var el_h = $this.innerHeight();
-      var bnr_h = 0;
+      var $this = $(this),
+          ftr_top = $('#pageftr').offset().top,
+          el_top = $this.offset().top,
+          el_h = $this.innerHeight(),
+          bnr_h = 0;
       if ($('#banner-ftr').length) {
         bnr_h = $('#banner-ftr').innerHeight();
       }
@@ -28,7 +28,7 @@
             var this_sec_ref = this_sec.find('a[data-toc]').attr('data-toc');
             links.closest('li').removeClass('active');
             $this.find('a[href="#' + this_sec_ref + '"]').closest('li').addClass('active');
-          }
+          } else { }
         });
       }
 

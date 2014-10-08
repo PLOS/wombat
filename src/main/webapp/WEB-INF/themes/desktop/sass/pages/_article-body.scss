@@ -6,6 +6,7 @@
 
 #nav-article {
   @include plos-grid-column(160, $gutter: right, $gutter-width: 45);
+  @extend .hide-for-print;
 }
 
 .article-text {
@@ -74,3 +75,8 @@
 
 
 
+@media print {
+  .article-text {
+    width: 100%;
+  }
+}

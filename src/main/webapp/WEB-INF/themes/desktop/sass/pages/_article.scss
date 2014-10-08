@@ -23,9 +23,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .article-aside {
+  @extend .hide-for-print;
   @include plos-grid-column(180, $gutter: none);
   float: right; /* temporary */
   margin-left: $pad-default; /* temporary */
+}
+
+.article-meta {
+  @extend .hide-for-print;
 }
 
 .title-block {
@@ -38,13 +43,13 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .classifications {
   @include plos-grid-column(600, $gutter: none);
   @extend %txt-transform;
-  margin-top: $pad-default + $pad-xsmall;
+  margin-top: $pad-smallish;
 
   > p {
     font-size: $txt-size-xxxsmall;
     display: inline-block;
     padding-left: $pad-smallish;
-    line-height: 17px; // TEMP-PROD: change to 18px ($txt-size-large)
+    line-height: $txt-size-large;
   }
 
   .license-short {
@@ -56,12 +61,35 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   .peer-reviewed {
     background: image-url('icon.pr.gif') no-repeat 0 3px;
     font-family: $font-face-fancy;
+  }
+
+  .type-concern-retraction {
+    color: $clr-warning;
+
+    &:before {
+      @extend .icon-alert;
+      font-size: rem-calc(15);
+      margin-right: 3px;
+      line-height: rem-calc(15);
+    }
+  }
+
+  .type-correction {
+    &::before {
+      content: '';
+      @extend .icon-correction;
+    }
 
   }
 
-  .article-type > p {
-//    margin-top: $pad-xsmall;
-    font-size: $txt-size-xxsmall;
+  .article-type {
+    margin-top: $pad-xsmall;
+
+    > p {
+      vertical-align: bottom;
+      line-height: $txt-size-xxxsmall;
+      font-size: $txt-size-xxxsmall;
+    }
   }
 }
 
@@ -86,7 +114,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .article-title-etc {
   @include plos-grid-column(900, $gutter: none);
-
+  margin-top: $pad-small;
   h1 {
     font-size: $txt-size-27large; // TEMP-PROD: needs to be 26px or 28px
     line-height: normal;
@@ -127,6 +155,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   z-index: map-get($zindex, titleTopFixed);
 
   #floatAuthorList {
+    @extend .hide-for-print;
     height: rem-calc(16);
     width: rem-calc(760);
     @extend .inline-list;
@@ -190,6 +219,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 // TABS
 
 .article-tabs {
+  @extend .hide-for-print;
   display: table;
   table-layout: fixed;
   margin-bottom: $pad-default;
@@ -260,7 +290,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
 
      &.active{
-
        a:hover{text-decoration: none;}
      }
 
@@ -272,8 +301,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      display: inline-block;   // needed to overwrite the inline-list
      padding: $pad-highlight $pad-highlight-x; //TODO line-height;
      }
-   }
 
+   }
   .contribute{
     @extend .icon-author-contribute;
   }
@@ -286,6 +315,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     @extend .icon-author-address;
   }
 }
+
 
 
  .author-info{
@@ -301,7 +331,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      z-index: -1;
 
    p{
-      border-top: rem-calc(2) solid $grey-med-dark;
+      border-top: rem-calc(2) solid $grey-med;
       padding: $pad-small 0;
       &:first-child {
         border-top: none;
@@ -312,7 +342,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      @include icon-offscreen;
      margin-right: $icon-space;
    }
- }
+ } 
  .active {
    a, a:hover { color: $white; }
 
@@ -549,3 +579,25 @@ body.article .ui-widget-overlay {
     color: $grey-tinytext; // TEMP PROD: change to grey-med-light
   }
 }
+
+@media print {
+   @page {
+     margin: .75in;
+   }
+  .article-body {
+    width: 100%;
+  }
+
+  .title-block {
+     margin-top: $pad-xsmall;
+    &:before {
+      content: image-url('logo.png') !important;
+    }
+    margin-left: -$pad-small;
+
+    h1 {
+      padding-top: $pad-default;
+    }
+  }
+}
+ 

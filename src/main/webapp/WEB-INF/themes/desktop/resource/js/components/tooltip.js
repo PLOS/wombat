@@ -20,9 +20,8 @@ plos_tooltip = {
 
   tooltip: function () {
     s = this.settings;
-
     $(s.tooltip_trigger).blur(function(){
-      $(s.tooltip_trigger).removeClass(s.tooltip_class);
+      setTimeout(function(){$(s.tooltip_trigger).removeClass(s.tooltip_class);},500);
     });
 
     $(s.tooltip_trigger).on('click', function () {
@@ -31,12 +30,12 @@ plos_tooltip = {
           this_position = $(this).position();
 
       $(s.tooltip_trigger).attr('tabindex','0');
+
       $(s.tooltip_trigger).not(this).removeClass(s.tooltip_class);
       $(this).toggleClass(s.tooltip_class);
 
       if (this_position.left >= parent_width_offset) {
         $(this).find(s.tooltip_target).addClass('pos-right');
-
       }
 
     });

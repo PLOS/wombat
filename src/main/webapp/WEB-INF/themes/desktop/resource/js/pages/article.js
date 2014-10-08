@@ -6,7 +6,7 @@
 
 (function ($) {
 
- var s, parse_xml_date, float_header, check_authors_truncation;
+ var s, parse_xml_date, float_header, isAuthorList, check_authors_truncation;
    parse_xml_date = {
     settings: {
       raw_date : document.getElementById("rawPubDate").value
@@ -81,6 +81,7 @@
     overflown : function(){
       var e = s.toTruncate[0];
       return e.scrollHeight > e.clientHeight;
+
     }
   };
 
@@ -92,13 +93,19 @@
     });
 
     parse_xml_date.init();
-    check_authors_truncation.init();
+
+    isAuthorList = document.getElementById("floatAuthorList");
+    if ( isAuthorList != null) {
+      check_authors_truncation.init();
+      // initialize tooltip for author info
+      plos_tooltip.init();
+    }
+
     float_header.init();
 
     // initialize toggle for author list view more
     plos_toggle.init();
-    // initialize tooltip for author info
-    plos_tooltip.init();
+
     // initialize tooltip_hover for everything
     tooltip_hover.init();
   });

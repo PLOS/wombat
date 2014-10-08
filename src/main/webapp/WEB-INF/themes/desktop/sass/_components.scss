@@ -303,6 +303,11 @@ example | extension
   line-height: normal;
   content: '\f00d';
 }
+.icon-alert{
+  @extend .icon-fa;
+  @extend .fa-exclamation-triangle;
+  color: $clr-warning;
+}
 .icon-caret-down {
   @extend .icon-fa;
   @extend .fa-caret-down;
@@ -342,6 +347,11 @@ $icn-tiny-align: middle;
 .icon-author-address {
   @include icon-image($icn-tiny-width, $icn-tiny-height, 'icon.author.email.png', $align: $icn-tiny-align );
 }
+.icon-correction {
+  @include icon-image($icn-tiny-width, 15, 'icon.correction.png', $align: $icn-tiny-align );
+}
+
+
 
 .closer {
   @include icon-image(25, 25,'icon.sprite.close.png', 0 -24px);

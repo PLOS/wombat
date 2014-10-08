@@ -26,9 +26,9 @@
   <meta name="keywords" content="${freemarker_config.getMetaKeywords(journalContext)}"/>-->
 <#include "analytics.ftl" />
 
- <#if article??>
-<#--//crossmark identifier-->
-  <meta name="dc.identifier" content="${article.doi}" />
+<#if article??>
+<#-- // citation meta tags -->
+<#include "../article/metaTags.ftl" />
 </#if>
 </head>
 <#-- //references js that is foundational like jquery and foundation.js. JS output is printed at the bottom of the body.

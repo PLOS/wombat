@@ -420,18 +420,22 @@ public class ArticleController extends WombatController {
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override
       public String read(InputStream stream) throws IOException {
-        DocumentBuilder documentBuilder; // not thread-safe
-        try {
-          documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        } catch (ParserConfigurationException e) {
-          throw new RuntimeException(e); // using default configuration; should be impossible
-        }
-
         Document document;
         try {
-          document = documentBuilder.parse(stream);
-        } catch (SAXException e) {
-          throw new RuntimeException("Invalid XML syntax for: " + articleId, e);
+          DocumentBuilder documentBuilder; // not thread-safe
+          try {
+            documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+          } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e); // using default configuration; should be impossible
+          }
+
+          try {
+            document = documentBuilder.parse(stream);
+          } catch (SAXException e) {
+            throw new RuntimeException("Invalid XML syntax for: " + articleId, e);
+          }
+        } finally {
+          stream.close();
         }
 
         // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.

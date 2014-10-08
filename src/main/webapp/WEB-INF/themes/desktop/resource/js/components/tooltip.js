@@ -8,7 +8,6 @@ plos_tooltip = {
   settings: {
     tooltip_trigger: '[data-js-tooltip=tooltip_trigger]',
     tooltip_target:  '[data-js-tooltip=tooltip_target]',
-    tooltip_hidden:  '[data-initial=hide]',
     tooltip_close:   '[data-js-tooltip=tooltip_close]',
     tooltip_container: '[data-js-tooltip=tooltip_container]',
     tooltip_class: 'active',

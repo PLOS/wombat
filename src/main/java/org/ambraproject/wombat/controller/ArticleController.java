@@ -190,8 +190,12 @@ public class ArticleController extends WombatController {
       Map<String, ?> amendmentMetadata = (Map<String, ?>) requestArticleMetadata(amendmentId);
       amendment.putAll(amendmentMetadata);
 
-      String body = getAmendmentBody(amendmentId);
-      amendment.put("body", body);
+      // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
+      String amendmentType = (String) amendment.get("type");
+      if (!amendmentType.equals(AmendmentType.CORRECTION.getLabel())) {
+        String body = getAmendmentBody(amendmentId);
+        amendment.put("body", body);
+      }
     }
 
     return Multimaps.asMap(amendments);

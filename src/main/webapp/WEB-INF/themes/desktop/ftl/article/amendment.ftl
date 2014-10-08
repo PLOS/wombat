@@ -3,7 +3,7 @@
 <div id="article-amendment-${type}">
   <h3 class="${type}">${title}</h3>
   <#list amendmentObjects as amendment>
-    <#if type != "correction">
+    <#if amendment.body??>
       <div class="amendment-body">
       ${amendment.body}
       </div>

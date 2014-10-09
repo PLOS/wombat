@@ -619,6 +619,7 @@ body.article .ui-widget-overlay {
     top: 3px;
     right: 1px;
     z-index: map-get($zindex, header); //share dropdown had this content on it; had to lower this one.
+    padding-top: 1px;
 
     &:hover {
       & + #subjInfoText {

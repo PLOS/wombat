@@ -11,7 +11,7 @@
     <#list categoryTerms as categoryTerm>
 
       <li>
-        <a class="taxo-term" href='${legacyUrlPrefix}search/advanced?unformattedQuery=subject%3A%22${categoryTerm?url}%22'>${categoryTerm}</a>
+        <a class="taxo-term" title="Search for articles about ${categoryTerm}" href='${legacyUrlPrefix}search/advanced?unformattedQuery=subject%3A%22${categoryTerm?url}%22'>${categoryTerm}</a>
           <span
             data-articleDoi="${article.doi}"
             data-categoryname="${categoryTerm}"

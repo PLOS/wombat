@@ -603,7 +603,7 @@ body.article .ui-widget-overlay {
     font-size: $txt-size-xsmall;
     font-weight: 100 !important;
     line-height: $txt-size-medium-large;
-    z-index: map-get($zindex, dropdown);
+    z-index: map-get($zindex, footer);  //had to lower the trigger, so also lower the target
     display: none;
     &:hover {
       display: block;
@@ -618,7 +618,7 @@ body.article .ui-widget-overlay {
     position: absolute;
     top: 3px;
     right: 1px;
-    z-index: map-get($zindex, topvisible);
+    z-index: map-get($zindex, header); //share dropdown had this content on it; had to lower this one.
 
     &:hover {
       & + #subjInfoText {
@@ -656,7 +656,8 @@ body.article .ui-widget-overlay {
         right: 0;
         visibility: hidden;
         opacity: 1;
-        z-index: map-get($zindex, dropdown);
+        @include single-transition(opacity);
+        z-index: map-get($zindex, crossmark-tooltip);
 
         strong {
           display: block;
@@ -692,15 +693,6 @@ body.article .ui-widget-overlay {
         &:hover, &.flagged {
           background-position: 0 -16px;
         }
-
-     /* @extend .icon-paw;
-      line-height: 10px;
-      font-size: 20px;
-
-      color: $grey-light;
-      &:hover {
-          color: $plos-default;
-        }*/
       }
     }
   }
@@ -713,16 +705,18 @@ body.article .ui-widget-overlay {
    @page {
      margin: .75in;
    }
+
   .article-body {
     width: 100%;
   }
 
   .title-block {
-     margin-top: $pad-xsmall;
+    margin-top: $pad-xsmall;
+    margin-left: -$pad-small;
+
     &:before {
       content: image-url('logo.png') !important;
     }
-    margin-left: -$pad-small;
 
     h1 {
       padding-top: $pad-default;

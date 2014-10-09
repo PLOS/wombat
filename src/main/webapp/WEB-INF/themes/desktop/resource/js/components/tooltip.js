@@ -41,9 +41,11 @@ plos_tooltip = {
         $(this).find(s.tooltip_target).addClass('pos-right');
       }
     /// closes all i am binding this for the click event if no one clicks on the trigger it will never fire
-      $(document).on('click', function(event) {
+      $(document).on('click.closeOutside', function(event) {
         if (!$(event.target).closest(s.tooltip_trigger).length) {
           $self.removeClass(s.tooltip_class);
+          $(document).off("click.closeOutside");
+
         }
       });
     });

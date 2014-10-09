@@ -6,7 +6,7 @@
 
 (function ($) {
 
- var s, parse_xml_date, float_header, isAuthorList, check_authors_truncation;
+ var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_areas;
    parse_xml_date = {
     settings: {
       raw_date : document.getElementById("rawPubDate").value
@@ -85,6 +85,17 @@
     }
   };
 
+subject_areas = function() {
+  //apply truncation via js because the css width needs to be auto
+  $("#subjectList li").each(function () {
+    var truncTerm = $(this).find('.taxo-term');
+    var getWidth = $(truncTerm).width();
+    if (getWidth > 135) {
+      return $(truncTerm).css('width', '140px');
+    }
+  });
+}
+
   $( document ).ready(function() {
 
     $(".preventDefault").on('click', function (e) {
@@ -94,29 +105,14 @@
 
     parse_xml_date.init();
 
-    isAuthorList = document.getElementById("floatAuthorList");
-    if ( isAuthorList != null) {
+    is_author_list = document.getElementById("floatAuthorList");
+    if ( is_author_list != null) {
       check_authors_truncation.init();
       // initialize tooltip for author info
       plos_tooltip.init();
     }
 
-    $(".taxo-flag").on("click", function(){
-      $(this).next().css('visibility','visible');
-    });
-    $(".taxo-tooltip").on("click", function(){
-      $(this).css('visibility','hidden');
-    });
-
-    //apply truncation via js because the css width needs to be auto
-    $("#subjectList li").each(function(){ console.log('hi');
-      var kiddo = $(this).find('.taxo-term');
-      var getWidth = $(kiddo).width(); console.log(getWidth);
-      if (getWidth > 135) {
-        return $(kiddo).css('width','140px');
-      }
-
-    });
+    var init_subject_truncation = subject_areas();
 
 
     float_header.init();

@@ -94,7 +94,7 @@
     <xsl:for-each select="front/article-meta">
       <xsl:apply-templates select="title-group" mode="metadata"/>
       <!-- abstracts -->
-      <xsl:for-each select="abstract[not(@abstract-type) or (@abstract-type !='data-toc' and @abstract-type != 'teaser'
+      <xsl:for-each select="abstract[not(@abstract-type) or (@abstract-type !='toc' and @abstract-type != 'teaser'
              and @abstract-type != 'editor' and @abstract-type != 'patient')]">
         <div class="abstract">
           <xsl:call-template name="abstract-title"/>

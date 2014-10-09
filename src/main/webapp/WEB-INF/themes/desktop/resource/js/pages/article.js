@@ -58,19 +58,19 @@
       });
     }
   };
-  twitter_module = {
+  /*twitter_module = {
     settings: {
       plos_twitter: null,
       doi: $("meta[name='dc.identifier']").attr("content")
     },
 
-  init: function() {
-   t = this.settings;
+    init: function() {
+     t = this.settings;
 
-    plos_twitter = twitter();
-    plos_twitter.displayTwitterCites(doi);
-  }
-  }
+      plos_twitter = twitter();
+      plos_twitter.displayTwitterCites(doi);
+    }
+  };*/
   check_authors_truncation = {
 
     settings : {
@@ -97,7 +97,11 @@
   };
 
   $( document ).ready(function() {
-
+    if ($.fn.twitter && !$("#twitter-alm-timeline div.tweet-header").is(":visible")) {
+      var doi = $('meta[name=citation_doi]').attr("content");
+      var twitter = new $.fn.twitter();
+      twitter.displayTweetsArticleSidebar(doi);
+    }
     $(".preventDefault").on('click', function (e) {
       e.preventDefault();
 

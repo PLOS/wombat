@@ -5,6 +5,7 @@
       class="no-js">
 <#assign title = article.title />
 <#assign depth = 0 />
+<meta name="citation_doi" content="${article.doi?replace('info:doi/','')}" />
 <#include "../common/head.ftl" />
 
 <#include "../common/journalStyle.ftl" />

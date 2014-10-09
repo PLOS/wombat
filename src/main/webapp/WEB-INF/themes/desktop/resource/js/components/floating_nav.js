@@ -33,7 +33,6 @@
         (options.sections).each(function () {
           this_sec = $(this);
           if (win_top > (this_sec.offset().top - options.margin)) {
-            console.log('hilite');
             var this_sec_ref = this_sec.find(options.sectionAnchor).attr(options.sectionAnchorAttr);
             links.closest('li').removeClass(options.classActive);
             $this.find('a[href="#' + this_sec_ref + '"]').closest('li').addClass(options.classActive);

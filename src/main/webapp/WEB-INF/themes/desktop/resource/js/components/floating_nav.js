@@ -4,31 +4,41 @@
   $.fn.floatingNav = function (options) {
     defaults = {
       margin:   90,
-      sections: ''
+      sections: '',
+      parentContainer: '.article-container',
+      sectionAnchor: 'a[data-toc]',
+      sectionAnchorAttr : 'data-toc',
+      classActive: 'active',
+      footer: '#pageftr',
+      alternateBottomDiv: '#banner-ftr',
+      linkSelector: 'a.scroll'
+
     };
     var options = $.extend(defaults, options);
     return this.each(function () {
 
       var $this = $(this),
-          ftr_top = $('#pageftr').offset().top,
+          ftr_top = $(options.footer).offset().top,
           el_top = $this.offset().top,
           el_h = $this.innerHeight(),
-          bnr_h = 0;
-      if ($('#banner-ftr').length) {
-        bnr_h = $('#banner-ftr').innerHeight();
+          bnr_h = 0,
+       win_top = 0,
+      links = $this.find(options.linkSelector);
+
+      if ($(options.alternativeBottomDiv).length) {
+        bnr_h = $(options.alternativeBottomDiv).innerHeight();
       }
-      var win_top = 0;
-      var links = $this.find('a.scroll');
+
 
 
       var hilite = function () {
         (options.sections).each(function () {
           this_sec = $(this);
           if (win_top > (this_sec.offset().top - options.margin)) {
-            console.log('this');
-            var this_sec_ref = this_sec.find('a[data-toc]').attr('data-toc');
-            links.closest('li').removeClass('active');
-            $this.find('a[href="#' + this_sec_ref + '"]').closest('li').addClass('active');
+            console.log('hilite');
+            var this_sec_ref = this_sec.find(options.sectionAnchor).attr(options.sectionAnchorAttr);
+            links.closest('li').removeClass(options.classActive);
+            $this.find('a[href="#' + this_sec_ref + '"]').closest('li').addClass(options.classActive);
           } else { }
         });
       }
@@ -36,17 +46,9 @@
       var positionEl = function () {
 
         win_top = $win.scrollTop();
-        article_top = $('.article-container').offset().top;    /// this is the ticket
-        ftr_top = $('#pageftr').offset().top;
-        var el_top_now = $this.offset().top;    /// do not use
+        article_top = $(options.parentContainer).offset().top;
+        ftr_top = $(options.footer).offset().top;
 
-        console.log("el_top : " + el_top);
-        console.log("el_top_now : " + el_top_now);
-        console.log("win_top : " + win_top);
-        console.log("win_top final : " + (el_top_now - options.margin));
-        console.log("$win.height() : " + $win.height());
-        console.log("$this.position.top() : " + $this.position().top);
-        console.log("$('article-container').position().top: " + $('.article-container').offset().top);
         var el_view_out = (win_top > (article_top - options.margin)),  //the top of the element is out of the viewport
             view_height = ((el_h + options.margin + bnr_h) < $win.height()), //the viewport is tall enough-
             el_overlap = (win_top < (ftr_top - (el_h + options.margin))), //the element is not overlapping the footer
@@ -58,15 +60,21 @@
 
           $this.css({ 'position': 'fixed', 'top': options.margin + 'px' });
           hilite();
+          console.log('test1')
+
         } else if (win_top > (ftr_top - (el_h + options.margin))) {
           //Adjust the position here a bit to stop the footer from being overlapped
+          console.log('test2')
+
           var tt = ftr_top - win_top - el_h - options.margin + 35;
           hilite();
           $this.css({ 'position': 'fixed', 'top': tt + 'px' });
         } else {
           //We're above the article
+  console.log('test3')
           $this.css({ 'position': 'static'});
         }
+        console.log('***********')
       }
 
       positionEl();

@@ -15,7 +15,7 @@
  --><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if><#-- no space
  --><#if author.corresponding??> <span class="email">  </span></#if><#-- no space
  --><#if author.deceased>&#8224</#if><#-- no space
- --><#if author_has_next || if_expander><#-- no space -->,</#if><#-- no space
+ --><#if author_has_next><#-- no space -->,</#if><#-- no space
     --><#if hasMeta> </a>  <#else> </span> </#if>
 
 
@@ -81,7 +81,7 @@
 
 <li data-js-toggle="toggle_add">&nbsp;[ ... ],</li>
 
-  <@authorItem authors[authors?size - 1] authors?size - 1 true false /><#-- Last one after expander -->
+  <@authorItem authors[authors?size - 1] authors?size - 1 false false /><#-- Last one after expander -->
   <li data-js-toggle="toggle_trigger" >
   <#--there was no way to not do this. -->
     <a class="more-authors active" id="authors-show">[ view all ]</a>

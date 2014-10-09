@@ -636,23 +636,63 @@ body.article .ui-widget-overlay {
       list-style-type: none;
       padding: 0 0 4px;  // TEMP PROD: change to 5px;
       line-height: normal;
-      a {
-        @extend .button;
-      //display: inline-block;
-        float: left;
+      position: relative;
 
-      }
+      .taxo-term {
+         @extend .button;
+         width: auto;
+         float: left;
+        //the next three elements are for truncation. width is needed and is being set with js
+        //because the width needs to be auto when truncation isn't needed
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+       }
 
-      span {
-      display: inline-block;
-      float: right;
-      width: 16px;
-      height: 16px;
-      background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
-      cursor: pointer;
-      &:hover, &.flagged {
-        background-position: 0 -16px;
+      .taxo-tooltip {
+        @include tooltip($width: 160px);
+        position: absolute;
+        top: 0;
+        right: 0;
+        visibility: hidden;
+        opacity: 1;
+        z-index: map-get($zindex, dropdown);
+
+        strong {
+          display: block;
+        }
+
+        p {
+          font-size: $txt-size-xxsmall;
+          line-height: $txt-size-large;
+        }
+
+        button {
+          margin-right: $pad-xsmall;
+          line-height: 20px;
+          background-color: $white;
+          border: none;
+          border-radius: 4px;
+          font-size: $txt-size-xxsmall;
+          font-weight: bold;
+          color: $plos-default;
+          cursor: pointer;
+        }
       }
+      .taxo-flag {
+        margin-top: 5px;
+        display: inline-block;
+        float: right;
+        width: 16px;
+        height: 16px;
+
+        background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
+        cursor: pointer;
+
+        &:hover, &.flagged {
+          background-position: 0 -16px;
+        }
+
      /* @extend .icon-paw;
       line-height: 10px;
       font-size: 20px;
@@ -665,7 +705,9 @@ body.article .ui-widget-overlay {
     }
   }
 }
-
+.truncate_term {
+  @include truncated($width: 140px);
+}
 
 @media print {
    @page {

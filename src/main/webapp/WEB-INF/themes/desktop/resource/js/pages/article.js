@@ -101,6 +101,24 @@
       plos_tooltip.init();
     }
 
+    $(".taxo-flag").on("click", function(){
+      $(this).next().css('visibility','visible');
+    });
+    $(".taxo-tooltip").on("click", function(){
+      $(this).css('visibility','hidden');
+    });
+
+    //apply truncation via js because the css width needs to be auto
+    $("#subjectList li").each(function(){ console.log('hi');
+      var kiddo = $(this).find('.taxo-term');
+      var getWidth = $(kiddo).width(); console.log(getWidth);
+      if (getWidth > 135) {
+        return $(kiddo).css('width','140px');
+      }
+
+    });
+
+
     float_header.init();
 
     // initialize toggle for author list view more

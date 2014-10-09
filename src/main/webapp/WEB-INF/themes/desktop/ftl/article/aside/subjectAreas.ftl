@@ -1,5 +1,4 @@
 
-${categoryTerms?size}
 <#assign articleTypeHeading = (article.articleType??)?string(article.articleType.heading, '') />
 <#if categoryTerms?? && articleTypeHeading?? && articleTypeHeading != "Correction" && articleTypeHeading != "Expression of Concern" && articleTypeHeading != "Retraction" >
 <div class="subject-areas-container">
@@ -12,13 +11,16 @@ ${categoryTerms?size}
     <#list categoryTerms as categoryTerm>
 
       <li>
-        <a href='${legacyUrlPrefix}search/advanced?unformattedQuery=subject%3A%22${categoryTerm?url}%22'>${categoryTerm}</a>
+        <a class="taxo-term" href='${legacyUrlPrefix}search/advanced?unformattedQuery=subject%3A%22${categoryTerm?url}%22'>${categoryTerm}</a>
           <span
             data-articleDoi="${article.doi}"
             data-categoryname="${categoryTerm}"
             class="taxo-flag">
           </span>
+          <div class="taxo-tooltip"><p>Is the Subject Area <strong>"${categoryTerm}"</strong> applicable to this article?</p>
+          <button id="flagYes" value="yes">Yes</button><button id="flagNo" value="no">No</button> </div>
       </li>
     </#list>
   </ul>
+  </div>
 </#if>

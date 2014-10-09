@@ -13,8 +13,9 @@ category: components
 `@extend .pill-small`
 <p class="button-big">I am button </p>
 `@extend .button-big`
+<p class="button">I am hoverable button</p>
+`@extend .button`
 */
-
 
 @mixin rounded-pill($background: $clr-highlight, $padding: $pad-default, $border-radius: $border-radius-default, $hover-color: $clr-link-hover, $hover: true) {
   background: $background;
@@ -54,14 +55,17 @@ category: components
 
 .button {
   @extend %brand-background-hover;
-  border-radius: $border-radius-default;
+  border-radius: 4px;     //matches production
   width: auto;
   padding: $pad-xsmall;
-  color: $white;
+  height: auto;
+  line-height: rem-calc(17);
+  font-size: $txt-size-xsmall;
   font-weight: bold;
+  color: $white;
 }
 
-@mixin circle($circumference: 16, $background: $plos-default) {
+@mixin circle($circumference: 18, $background: $plos-default) {
   width: $circumference+px;
   height: $circumference+px;
   background: $background;
@@ -392,7 +396,6 @@ $icn-tiny-align: middle;
   text-overflow: ellipsis;
 }
 
-
 /// for regular text that gets highlighted. For text that is already highlighted in some way you can
 // just use the sass code that reflects that element.
 
@@ -432,7 +435,7 @@ $icn-tiny-align: middle;
    margin-left: 0;
 }
 
- // this is for asides.
+ // this is for a tooltip with a bullet list.
 
 .tooltip-aside{
   @include tooltip($width: 160, $tooltip-padding: rem-calc(15 10 10 20));

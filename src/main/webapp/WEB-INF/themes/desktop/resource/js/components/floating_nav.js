@@ -11,7 +11,8 @@
       classActive:        'active',
       footer:             '#pageftr',
       alternateBottomDiv: '#banner-ftr',
-      linkSelector:       'a.scroll'
+      linkSelector:       'a.scroll',
+      alternativeBottomDiv: '#banner-ftr'
 
     };
     var options = $.extend(defaults, options);

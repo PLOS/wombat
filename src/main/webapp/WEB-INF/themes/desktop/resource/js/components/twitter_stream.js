@@ -43,7 +43,7 @@ $.fn.twitter = function () {
   };
 
   this.showTweetsPage = function (currentPage) {
-    //console.log("Currentpage:" + currentPage);
+    console.log("Currentpage:" + currentPage);
     var json = window.tweetsResponse;
     var numTweets = 0;
 
@@ -393,7 +393,7 @@ $.fn.twitter = function () {
               $("#twitter-alm-timeline li.tweet-entry.hide").removeClass("hide").addClass("display");
               var a = $("<a></a>").attr("href", '/article/twitter/info:doi/' + doi).html("View all tweets");
               $(this).html("").append(a);
-              $(this).css("background-image", "none")
+              $(this).css("background-image", "none");
             }
           )
         );

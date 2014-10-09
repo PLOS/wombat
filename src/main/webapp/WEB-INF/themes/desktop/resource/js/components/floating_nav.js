@@ -54,8 +54,6 @@
             el_overlap = (win_top < (ftr_top - (el_h + options.margin))), //the element is not overlapping the footer
             view_width = ($win.width() >= 960); //the viewport is wide enough
 
-        console.log(el_view_out);
-
         if (el_view_out && view_height && el_overlap && view_width) {
 
           $this.css({ 'position': 'fixed', 'top': options.margin + 'px' });
@@ -71,10 +69,8 @@
           $this.css({ 'position': 'fixed', 'top': tt + 'px' });
         } else {
           //We're above the article
-  console.log('test3')
           $this.css({ 'position': 'static'});
         }
-        console.log('***********')
       }
 
       positionEl();

@@ -29,7 +29,7 @@
   });
 
   $('#nav-article').floatingNav({
-    sections: $article.find('div.section')
+    sections: $article.find('div.toc-section')
   });
 
   addMediaCoverageLink();

@@ -1,11 +1,11 @@
 
 <#--<#if articleInfoX.orderedCategories?? && articleType.heading != "Correction" && articleType.heading != "Expression of Concern" && articleType.heading != "Retraction" >-->
 <div class="subject-areas-container">
-  <h3>Subject Areas <span id="subjInfo">&nbsp;</span></h3>
+  <h3>Subject Areas <div id="subjInfo">?</div>
   <div id="subjInfoText">
-    <span class="inline-intro">We want your feedback.</span> Do these subject areas make sense for this article? If not, click the flag next to the incorrect subject area and we will review it. Thanks for your help!
+  <span class="inline-intro">We want your feedback.</span> Do these subject areas make sense for this article? If not, click the flag next to the incorrect subject area and we will review it. Thanks for your help!
   </div>
-
+  </h3>
  <ul id="subjectList">
    <li>
      <a href='${legacyUrlPrefix}/search/advanced?unformattedQuery=subject%3A"Antiretroviral+therapy"'>antiretroviraal</a>

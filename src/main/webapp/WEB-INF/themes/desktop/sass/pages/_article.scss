@@ -588,12 +588,43 @@ body.article .ui-widget-overlay {
   }
 }
 
-#subjInfoText {display: none;} //temporary
+
 
 .subject-areas-container {
   @extend .aside-container;
-  h3 span {
-    //for the question mark
+  position: relative;
+
+  h3 #subjInfoText {
+    position: absolute;
+    top: 3px;
+    left: -215px;
+    @include tooltip($width: 375);
+    padding-right: $pad-small;
+    font-size: $txt-size-xsmall;
+    font-weight: 100 !important;
+    line-height: $txt-size-medium-large;
+    z-index: map-get($zindex, dropdown);
+    display: none;
+    &:hover {
+      display: block;
+    }
+  }
+  h3 #subjInfo {
+    @include circle;
+    color: $white;
+    display: inline-block;
+    font-size: $txt-size-xxsmall;
+    float: right;
+    position: absolute;
+    top: 3px;
+    right: 1px;
+    z-index: map-get($zindex, topvisible);
+
+    &:hover {
+      & + #subjInfoText {
+        display: block;
+      }
+    }
   }
 
   ul {
@@ -603,13 +634,13 @@ body.article .ui-widget-overlay {
     li {
       @include clearfix;
       list-style-type: none;
-      padding: 5px 0;
-
+      padding: 0 0 4px;  // TEMP PROD: change to 5px;
+      line-height: normal;
       a {
-      display: inline-block;
-      float: left;
-      width: 140px;
-      padding-right: 5px;
+        @extend .button;
+      //display: inline-block;
+        float: left;
+
       }
 
       span {

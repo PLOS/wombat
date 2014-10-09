@@ -52,7 +52,22 @@ category: components
   }
 }
 
+.button {
+  @extend %brand-background-hover;
+  border-radius: $border-radius-default;
+  width: auto;
+  padding: $pad-xsmall;
+  color: $white;
+  font-weight: bold;
+}
 
+@mixin circle($circumference: 16, $background: $plos-default) {
+  width: $circumference+px;
+  height: $circumference+px;
+  background: $background;
+  border-radius: ($circumference/2)+px;
+  text-align: center;
+}
 /*doc
 ---
 title: blocks

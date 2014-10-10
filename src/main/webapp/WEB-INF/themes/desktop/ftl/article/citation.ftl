@@ -27,7 +27,7 @@
   <#assign maxCollabAuthors = maxAuthors - citation.authors?size />
   <#list citation.collaborativeAuthors as author>
     <#if author_index lt maxCollabAuthors>
-      <#assign isCommaShown = author_has_next || collaborativeAuthors?size lt maxCollabAuthors />
+      <#assign isCommaShown = author_has_next || citation.collaborativeAuthors?size lt maxCollabAuthors />
     ${author}<#if isCommaShown>,</#if>
     </#if>
   </#list>

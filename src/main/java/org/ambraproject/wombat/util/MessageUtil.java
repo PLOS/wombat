@@ -28,7 +28,7 @@ import java.util.List;
 /**
   A utility class for creation and management of HTTP requests
  */
-public class RequestUtil {
+public class MessageUtil {
 
   /**
    * Names of headers that, on a request from the client, should be passed through on our request to the service

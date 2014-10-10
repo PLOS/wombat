@@ -680,6 +680,11 @@ body.article .ui-widget-overlay {
           color: $plos-default;
           cursor: pointer;
         }
+        p.taxo-confirm {
+          display: none;
+          margin-top: 5px;
+          line-height: 75px;
+        }
       }
       .taxo-flag {
         margin-top: 5px;
@@ -695,11 +700,9 @@ body.article .ui-widget-overlay {
           background-position: 0 -16px;
         }
       }
+
     }
   }
-}
-.truncate_term {
-  @include truncated($width: 140px);
 }
 
 @media print {

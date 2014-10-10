@@ -6,9 +6,9 @@
 
 (function ($) {
 
- var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_flags, subject_areas;
+  var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_flags, subject_areas;
 
-   parse_xml_date = {
+  parse_xml_date = {
     settings: {
       raw_date : document.getElementById("rawPubDate").value
     },
@@ -24,7 +24,7 @@
     }
   };
 
-   float_header = {
+  float_header = {
 
     settings: {
       floater : $("#floatTitleTop"),
@@ -88,16 +88,41 @@
 
 
   subject_flags = function(){
-
     $(".taxo-flag").on("click", function(){
       $(this).next().css('visibility','visible');
+     // if ( $(".taxo-tooltip:visible") ){console.log('yes')}
     });
-    $(".taxo-tooltip").on("click", function(e){
-      e.stopPropagation();
+
+    $(".taxo-tooltip button").on("click", function(e){
+        var flagValue = $(this).val();
+        var articleDoi = $("meta[name='dc.identifier']").attr('content');
+        articleJournal = articleDoi.replace(/[/.]/g,"");
+   /*   var showing = $('.taxo-confirm').attr("display"); //console.log(showing);
+      if ( showing === "block" ) {console.log('yes thanks')}*/
+      // if localStorage is present, use that
+      if (('localStorage' in window) && window.localStorage !== null) {
+
+        // easy object property API
+        localStorage[articleJournal] = flagValue;
+
+      } else {
+
+        // without sessionStorage we'll have to use a far-future cookie
+        //   with document.cookie's awkward API :(
+        var date = new Date();
+        date.setTime(date.getTime()+(365*24*60*60*1000));
+        var expires = date.toGMTString();
+        var cookiestr = "'"+articleJournal +"="+ flagValue+
+          ' expires='+expires+'; path=/';
+        document.cookie = cookiestr;
+      }
+       $('.taxo-confirm').css('display','block');
+       $('.taxo-explain').css('display','none');
     });
-    $('html').on('click', function(){
+
+   /* $('html').on('click', function(){
        $('.taxo-tooltip').css('visibility','hidden');
-    });
+    });*/
   };
 
   subject_areas = function() {

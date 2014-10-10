@@ -17,8 +17,10 @@
             data-categoryname="${categoryTerm}"
             class="taxo-flag">
           </span>
-          <div class="taxo-tooltip"><p>Is the Subject Area <strong>"${categoryTerm}"</strong> applicable to this article?</p>
-          <button id="flagYes" value="yes">Yes</button><button id="flagNo" value="no">No</button> </div>
+          <div class="taxo-tooltip"><p class="taxo-explain">Is the Subject Area <strong>"${categoryTerm}"</strong> applicable to this article?
+          <button data-js-toggle="toggle_trigger" id="flagYes" value="${categoryTerm}">Yes</button>
+          <button data-js-toggle="toggle_trigger" id="flagNo" value="flagno">No</button></p>
+          <p data-visibility="none" data-js-toggle="toggle_trigger" class="taxo-confirm">Thanks for your feedback.</p></div>
       </li>
     </#list>
   </ul>

@@ -10,7 +10,23 @@
 }
 
 .article-text {
-  @include plos-grid-column(550, $gutter: none, $float:right)
+  @include plos-grid-column(550, $gutter: none, $float:right);
+  $line-height: rem-calc(18);
+  $line-height-large: ($line-height * 2);
+  $line-height-med: ($line-height * 1.5);
+
+  p, ul, ol, li, h2, h3, h4, h5 { line-height: $line-height; margin-bottom: $line-height; }
+  ul.nlm-list, ul.bulletlist {
+    list-style-type: none;
+    li {padding-left: $pad-default;}
+    li:before{ content: '>'; font-size: rem-calc(6); margin-right: $pad-small; line-height: $txt-size-default;} // to do put in variables
+  }
+    h2, h3, h4, h5 { font-family:  $font-face-plain;
+   font-weight: bold;
+  }
+    h2,h3{ font-size: $txt-size-h3; margin-bottom: $line-height-med }
+    h3{ font-weight: normal  }
+
 }
 
 // TODO - write some docs

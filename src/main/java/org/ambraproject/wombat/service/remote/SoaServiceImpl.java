@@ -7,6 +7,7 @@ import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,6 +16,7 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.net.URL;
 
 public class SoaServiceImpl implements SoaService {
 
@@ -28,6 +30,11 @@ public class SoaServiceImpl implements SoaService {
   private CachedRemoteService<Reader> cachedRemoteReader;
 
   @Override
+  public URL getServerUrl() {
+    return runtimeConfiguration.getServer();
+  }
+
+  @Override
   public InputStream requestStream(String address) throws IOException {
     return cachedRemoteStreamer.request(buildGet(address));
   }
@@ -35,6 +42,16 @@ public class SoaServiceImpl implements SoaService {
   @Override
   public Reader requestReader(String address) throws IOException {
     return cachedRemoteReader.request(buildGet(address));
+  }
+
+  @Override
+  public InputStream requestStream(HttpUriRequest target) throws IOException {
+    return cachedRemoteStreamer.request(target);
+  }
+
+  @Override
+  public Reader requestReader(HttpUriRequest target) throws IOException {
+    return cachedRemoteReader.request(target);
   }
 
   @Override
@@ -55,6 +72,11 @@ public class SoaServiceImpl implements SoaService {
 
     try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(post)) {
     }
+  }
+
+  @Override
+  public CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException {
+    return cachedRemoteReader.getResponse(target);
   }
 
   @Override
@@ -85,7 +107,7 @@ public class SoaServiceImpl implements SoaService {
   }
 
   private URI buildUri(String address) {
-    return UriUtil.concatenate(runtimeConfiguration.getServer(), address);
+    return UriUtil.concatenate(this.getServerUrl(), address);
   }
 
 }

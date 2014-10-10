@@ -87,7 +87,7 @@ public class XmlExcerptTransformation {
    * Tags to delete, leaving the element content behind.
    */
   private static enum TagToDelete implements TextReplacement {
-    BODY, SEC;
+    BODY, SEC, TITLE;
     private final Pattern pattern;
 
     private TagToDelete() {

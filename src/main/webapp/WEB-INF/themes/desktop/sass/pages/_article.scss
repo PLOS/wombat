@@ -584,7 +584,13 @@ body.article .ui-widget-overlay {
     color: $grey-tinytext; // TEMP PROD: change to grey-med-light
   }
 }
-
+.twitter-container {
+  @extend .aside-container;
+  h3 {
+    background: image-url('icon.twtr.32.png') no-repeat 0 0;
+    padding-left: 40px;
+  }
+}
 @media print {
    @page {
      margin: .75in;

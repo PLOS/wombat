@@ -10,3 +10,5 @@
 <#include "relatedArticles.ftl" />
 
 <#include "adSlotAside.ftl" />
+
+<#include "twitterModule.ftl" />

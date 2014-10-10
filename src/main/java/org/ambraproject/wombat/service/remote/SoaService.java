@@ -3,10 +3,12 @@ package org.ambraproject.wombat.service.remote;
 import org.ambraproject.wombat.util.CacheParams;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpUriRequest;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.net.URL;
 
 /**
  * A service for retrieving data from the SOA's RESTful server.
@@ -18,6 +20,13 @@ import java.io.Reader;
 public interface SoaService {
 
   /**
+   *  Return the host, port, and optionally part of the path.  For example "http://www.example.com/" or
+   *                "https://plos.org/api/"
+   */
+
+  public abstract URL getServerUrl();
+
+  /**
    * Send a REST request and open a stream as the response.
    *
    * @param address the path to which to send the REST request
@@ -27,8 +36,10 @@ public interface SoaService {
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   public abstract InputStream requestStream(String address) throws IOException;
+  public abstract InputStream requestStream(HttpUriRequest target) throws IOException;
 
   public abstract Reader requestReader(String address) throws IOException;
+  public abstract Reader requestReader(HttpUriRequest target) throws IOException;
 
   /**
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
@@ -97,5 +108,6 @@ public interface SoaService {
    */
   public abstract CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException;
 
+  public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 
 }

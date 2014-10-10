@@ -15,17 +15,35 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.util.RequestUtil;
+import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.IOUtils;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,7 +61,7 @@ public class TaxonomyController {
   @Autowired
   private SiteSet siteSet;
 
-  @RequestMapping(value = {TAXONOMY_TEMPLATE, "/{site}" + TAXONOMY_TEMPLATE})
+  @RequestMapping(value = {TAXONOMY_TEMPLATE, "/{site}" + TAXONOMY_TEMPLATE}, method = RequestMethod.GET)
   public void read(@SiteParam Site site, HttpServletRequest request, HttpServletResponse response)
       throws IOException {
     Map<String, Object> taxonomyBrowserConfig = site.getTheme().getConfigMap("taxonomyBrowser");
@@ -56,13 +74,7 @@ public class TaxonomyController {
     // approach would be to have the taxonomy browser issue JSONP requests directly
     // to rhino, but we've decided that rhino should be internal-only for now.
 
-    // The string manipulation is a little ugly here, but the alternative would be have wombat
-    // share a bunch of code with rhino in order to extract portions of the servlet path in
-    // a way that plays nicely with spring
-    // (specifically org.ambraproject.rhino.rest.controller.abstr.RestController).
-
-    String uri = request.getRequestURI();
-    String req = uri.substring(uri.indexOf(TAXONOMY_NAMESPACE) + 1);  // Remove first slash
+    String req = UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE);
     req += "?";
     String query = request.getQueryString();
     if (query != null) {
@@ -75,4 +87,24 @@ public class TaxonomyController {
       IOUtils.copy(input, output);
     }
   }
+
+  @RequestMapping(value = {TAXONOMY_NAMESPACE + "flag/{action:add|remove}",
+                          "/{site}" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}"}, method = { RequestMethod.POST })
+  public @ResponseBody void setFlag(HttpServletRequest request, HttpServletResponse responseToClient,
+                                    @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
+                                    @RequestParam(value = "articleDoi", required = true) String articleDoi)
+          throws IOException {
+    // pass through any article category flagging ajax traffic to/from rhino
+    URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
+    HttpUriRequest req = RequestUtil.buildRequest(forwardedUrl, "POST", RequestUtil.getRequestHeaders(request),
+            RequestUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
+    try (CloseableHttpResponse responseFromService = soaService.getResponse(req)) {
+      RequestUtil.copyResponseWithHeaders(responseFromService, responseToClient);
+    } catch (ServiceRequestException e) {
+      responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+    } catch (EntityNotFoundException e) {
+      responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND)
+    }
+  }
+
 }

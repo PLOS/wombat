@@ -9,4 +9,6 @@
 
 <#include "relatedArticles.ftl" />
 
+<#include "subjectAreas.ftl" />
+
 <#include "adSlotAside.ftl" />

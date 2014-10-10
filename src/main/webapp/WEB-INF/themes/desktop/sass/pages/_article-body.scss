@@ -11,9 +11,10 @@
 
 .article-torso {
 
-  @include plos-grid-column(550, $gutter: none, $float:right);
+  @include plos-grid-column(550, $gutter: none, $float: right);
 }
- /// TODO This needs to be in more genral css this is just to work out the kinks so i can check into master - that work will be done in ticket DPRO-477 which is being worked on concurrently
+
+/// TODO This needs to be in more genral css this is just to work out the kinks so i can check into master - that work will be done in ticket DPRO-477 which is being worked on concurrently
 
 $line-height: rem-calc(18);
 $line-height-large: ($line-height * 2);
@@ -21,64 +22,97 @@ $line-height-med: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
 .article-torso {
 
-
-  p, ul, ol, li, h2, h3, h4, h5,div { line-height: $line-height; margin-bottom: $line-height; }
+  p, ul, ol, li, h2, h3, h4, h5, div {
+    line-height: $line-height;
+    margin-bottom: $line-height;
+  }
   ul.nlm-list, ul.bulletlist {
     list-style-type: none;
-    padding-left: $pad-small;
-    li {padding-left: $pad-small; }
-    li:before{ content: '>'; font-size: rem-calc(8); line-height: $txt-size-default; display: inline-block; left: 0; position: absolute} // to do put in variables
+    li {
+      padding-left: $pad-default;
+    }
+    li:before {
+      content: '>';
+      font-size: rem-calc(8);
+      line-height: $line-height;
+      display: inline-block;
+      margin-left: -$pad-small;
+      position: absolute
+    }
+    // to do put in variables
   }
-    h2, h3, h4, h5 { font-family:  $font-face-plain;
-   font-weight: bold;
+  h2, h3, h4, h5 {
+    font-family: $font-face-plain;
+    font-weight: bold;
   }
-    h2,h3{ font-size: $txt-size-h3; margin-top: $line-height-small }
-    h3{ font-weight: normal }
+  h2, h3 {
+    font-size: $txt-size-h3;
+    margin-top: $line-height-small
+  }
+  h3 {
+    font-weight: normal
+  }
 
 }
 
-@mixin callout($clr-body: $clr-separator){
-      padding: $line-height $pad-default 0 $pad-default;
-      background: $clr-body;
-      margin-bottom: $line-height;
+@mixin callout($clr-body: $clr-callout-bg) {
+  padding: $line-height $pad-default 1px $pad-default;  //TODO -
+  background: $clr-body;
+  margin-bottom: $line-height;
 }
-.callout-standard{
+
+.callout-standard {
   @include callout();
 }
 
-.callout-alert{
+.callout-alert {
   @include callout(#fce2e5); // TODO - do i just lighten colors?
 }
 
-.amendment{
-  .amendment-link{
+.amendment {
+  .amendment-link {
     font-weight: bold;
-    &:before{
+    &:before {
       content: '| ';
       color: $clr-body-text;
       font-weight: normal;
     }
 
   }
-  .amendment-date{
+  .amendment-date {
     font-weight: bold;
   }
 }
 
-.amendment-eoc,.amendment-retraction{ @extend .callout-alert;
-  h2{
-   color: $clr-warning;
-   margin-top:0;
-  &:before{     //TODO - make this a mixin? do we adjust line-height on all icons?
-    @extend .icon-alert;
+.amendment-eoc, .amendment-retraction {
+  @extend .callout-alert;
+  h2 {
+    color: $clr-warning;
+    margin-top: 0;
+    &:before {
+      //TODO - make this a mixin? do we adjust line-height on all icons?
+      @extend .icon-alert;
       font-size: $txt-size-medium;
       padding-right: $pad-xsmall;
       vertical-align: top;
       line-height: $line-height;
-  }
+    }
   }
 }
-.amendment-correction{ @extend .callout-standard;}
+
+.amendment-correction {
+  @extend .callout-standard;
+  h2{
+    &:before{
+      content: '';
+      @extend .icon-correction;
+      margin-right: $pad-xsmall;
+      vertical-align: top;
+      line-height: $line-height;
+
+    }
+  }
+}
 
 // TODO - write some docs
 @mixin border-width-adjust($border-width: rem-calc(2), $spacing: $pad-small, $border-color: $clr-highlight) {
@@ -86,12 +120,13 @@ $line-height-small: ($line-height * .5);
   padding-left: ($spacing - $border-width);
 }
 
-@mixin nav-side( $txt-color: $grey-med, $pad-left: $pad-small, $pad-y:rem-calc(2), $margin-bottom: $pad-xsmall) {
+@mixin nav-side($txt-color: $grey-med, $pad-left: $pad-small, $pad-y: rem-calc(2), $margin-bottom: $pad-xsmall) {
   @extend .no-bullet;
   margin-bottom: ($margin-bottom * 2);
   padding-bottom: ($margin-bottom * 2);
 
-  li{ padding: $pad-y 0;
+  li {
+    padding: $pad-y 0;
     padding-left: $pad-left;
     margin: 0 0 $margin-bottom 0;
 
@@ -101,7 +136,7 @@ $line-height-small: ($line-height * .5);
   }
 }
 
-@mixin nav-enhanced( $txt-color-hover: $clr-body-text, $spacing-left: $pad-small, $txt-color: $grey-med) {
+@mixin nav-enhanced($txt-color-hover: $clr-body-text, $spacing-left: $pad-small, $txt-color: $grey-med) {
   @include nav-side;
   li {
 
@@ -134,13 +169,11 @@ $line-height-small: ($line-height * .5);
     border-bottom: 1px solid $grey-med;
   }
 
-  .nav-secondary{
+  .nav-secondary {
     @extend .no-bullet;
     @include nav-side($txt-color: $clr-body-text);
   }
 }
-
-
 
 @media print {
   .article-text {

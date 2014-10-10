@@ -63,6 +63,8 @@
 
       <#include "nav.ftl" />
 
+      <#include "amendment.ftl" />
+
       <div class="article-text" id="artText">
          ${articleText}
       </div>

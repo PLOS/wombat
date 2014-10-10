@@ -27,6 +27,7 @@ import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.SiteResolver;
+import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
@@ -148,6 +149,7 @@ public class SpringConfiguration {
     variables.put("fetchHtml", fetchHtmlDirective);
     variables.put("themeConfig", themeConfigDirective);
     variables.put("appLink", appLinkDirective);
+    variables.put("abbreviatedName", new AbbreviatedNameDirective());
     config.setFreemarkerVariables(variables.build());
     return config;
   }

@@ -73,28 +73,29 @@
       </div>
     </div>
 
-  </section>
-  <aside class="article-aside">
-  <#include "aside/sidebar.ftl" />
-  </aside>
-</div>
-<#include "../common/footer/footer.ftl" />
+    </section>
+    <aside class="article-aside">
+    <#include "aside/sidebar.ftl" />
+    </aside>
+  </div>
+  <#include "../common/footer/footer.ftl" />
 
-<@js src="resource/js/components/dateparse.js"/>
-<@js src="resource/js/components/show_onscroll.js"/>
-<@js src="resource/js/components/tooltip_hover.js"/>
-<@js src="resource/js/components/truncate_elem.js"/>
-<@js src="resource/js/components/float_header.js"/>
-<@js src="resource/js/util/alm_config.js"/>
-<@js src="resource/js/util/alm_query.js"/>
-<@js src="resource/js/pages/article.js"/>
-<@js src="resource/js/pages/article_body.js"/>
-<@renderJs />
+  <@js src="resource/js/components/dateparse.js"/>
+  <@js src="resource/js/components/show_onscroll.js"/>
+  <@js src="resource/js/components/tooltip_hover.js"/>
+  <@js src="resource/js/components/truncate_elem.js"/>
+  <@js src="resource/js/components/float_header.js"/>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
+  <@js src="resource/js/util/alm_config.js"/>
+  <@js src="resource/js/util/alm_query.js"/>
+  <@js src="resource/js/pages/article.js"/>
+  <@js src="resource/js/pages/article_body.js"/>
+  <@renderJs />
 
-<#include "aside/crossmarkIframe.ftl" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
+  <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
+
+  <#include "aside/crossmarkIframe.ftl" />
 
 </body>
 </html>

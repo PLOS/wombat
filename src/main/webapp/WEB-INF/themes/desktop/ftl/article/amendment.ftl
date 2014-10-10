@@ -1,7 +1,7 @@
 <#include "citation.ftl" />
 <#macro amendmentNotice amendmentObjects type title linkText>
-<div id="article-amendment-${type}">
-  <h3 class="${type}">${title}</h3>
+<div class="amendment amendment-${type}" id="amendment-${type}">
+  <h2>${title}</h2>
   <#list amendmentObjects as amendment>
     <#if amendment.body??>
       <div class="amendment-body">
@@ -9,8 +9,9 @@
       </div>
     </#if>
     <div class="amendment-citation">
+      <p>
       <#if amendment.date??>
-        <span class="amendmentDate">
+        <span class="amendment-date">
         <@formatJsonDate date="${amendment.date}" format="d MMM yyyy" />:
       </span>
       </#if>
@@ -18,11 +19,12 @@
       <@displayCitation amendment false />
 
       <#if amendment.doi??>
-        |
+
         <@siteLink path="article?id=" ; path>
-          <a href="${path + amendment.doi}">${linkText}</a>
+          <a href="${path + amendment.doi}" class="amendment-link">${linkText}</a>
         </@siteLink>
       </#if>
+      </p>
     </div>
   </#list>
 </div>

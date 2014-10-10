@@ -1,12 +1,14 @@
 /**
- * Created by ddowell on 8/14/14.
+ *
  * DEPENDENCY:  resource/js/components/truncate_elem
  *              resource/js/components/show_onscroll
  */
 
 (function ($) {
 
- var s, parse_xml_date, float_header, check_authors_truncation, twitter_module, t;
+ var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_areas,
+twitter_module, t;
+
    parse_xml_date = {
     settings: {
       raw_date : document.getElementById("rawPubDate").value
@@ -96,6 +98,17 @@
     }
   };
 
+subject_areas = function() {
+  //apply truncation via js because the css width needs to be auto
+  $("#subjectList li").each(function () {
+    var truncTerm = $(this).find('.taxo-term');
+    var getWidth = $(truncTerm).width();
+    if (getWidth > 135) {
+      return $(truncTerm).css('width', '140px');
+    }
+  });
+}
+
   $( document ).ready(function() {
     if ($.fn.twitter && !$("#twitter-alm-timeline div.tweet-header").is(":visible")) {
       var doi = $('meta[name=citation_doi]').attr("content");
@@ -108,7 +121,16 @@
     });
 
     parse_xml_date.init();
-    check_authors_truncation.init();
+
+    is_author_list = document.getElementById("floatAuthorList");
+    if ( is_author_list != null) {
+      check_authors_truncation.init();
+      // initialize tooltip for author info
+      plos_tooltip.init();
+    }
+
+    var init_subject_truncation = subject_areas();
+
     float_header.init();
     twitter_module.init();
 

@@ -14,11 +14,6 @@ category: Files
 
 @include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf",  "fontawesome-webfont.svg",  "fontawesome-webfont.woff"));
 
-
-//////////////
-//header styles
-///////////////
-
 /*doc
 ---
 title: other text styles
@@ -100,10 +95,6 @@ example | extension
 }
 
 
-//////////////
-//link styles
-///////////////
-
 /*doc
 ---
 title: link styles
@@ -158,7 +149,7 @@ example | extension
 }
 
 //////////////
-//utility styles
+//font decorations
 ///////////////
 
 %small-italic {
@@ -170,6 +161,10 @@ example | extension
 }
 %txt-transform {
   text-transform: uppercase;
+}
+
+.inline-intro {
+  font-weight: bold;
 }
 .no-margin { margin-bottom: 0;}
 

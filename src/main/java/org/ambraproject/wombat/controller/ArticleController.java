@@ -1,14 +1,9 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Function;
+import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimaps;
+import com.google.common.collect.*;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -35,13 +30,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Controller for rendering an article.
@@ -87,6 +76,7 @@ public class ArticleController extends WombatController {
       throw new ArticleNotFoundException(articleId);
     }
     model.addAttribute("article", articleMetadata);
+    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(articleMetadata));
     addCrossPublishedJournals(request, model, site, articleMetadata);
@@ -150,6 +140,35 @@ public class ArticleController extends WombatController {
         }
     );
   }
+
+  /**
+   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a given
+   * category path)
+   * @param articleMetadata
+   * @return a sorted list of category terms
+   */
+  private List<String> getCategoryTerms(Map<?, ?> articleMetadata) {
+    List<Map<String, ?>> categories = (List<Map<String, ?>>) articleMetadata.get("categories");
+    if (categories == null || categories.isEmpty()) {
+      return ImmutableList.of();
+    }
+
+    // create a map of terms/weights (effectively removes duplicate terms through the mapping)
+    Map<String, Double> termsMap = new HashMap<>();
+    for (Map<String, ?> category: categories){
+      String[] categoryTerms = ((String)category.get("path")).split("/");
+      String categoryTerm = categoryTerms[categoryTerms.length - 1];
+      termsMap.put(categoryTerm, (Double)category.get("weight"));
+    }
+
+    // use Guava for sorting, first on weight (descending), then on category term
+    Comparator valueComparator = Ordering.natural().reverse().onResultOf(Functions.forMap(termsMap)).compound(Ordering.natural());
+    SortedMap<String, Double> sortedTermsMap = ImmutableSortedMap.copyOf(termsMap, valueComparator);
+
+    return new ArrayList<>(sortedTermsMap.keySet());
+
+  }
+
 
   /**
    * Check related articles for ones that amend this article and return them for special display.

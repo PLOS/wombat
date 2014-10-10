@@ -481,6 +481,16 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   width: rem-calc(160);
   margin-bottom: $pad-default;
 
+  h3 {
+    font-size: $txt-size-medium;//$txt-size-h3;
+    font-family: $font-face-plain;
+    font-weight: bold;
+    line-height: rem-calc(17); // TEMP PROD: use 18px;
+    border-bottom: 1px solid #dedede;
+    padding-bottom: $pad-small;
+    margin-bottom: rem-calc(8); // TEMP PROD: use 10px;
+  }
+
 }
 
 .share-article {
@@ -549,15 +559,7 @@ body.article .ui-widget-overlay {
 .related-articles-container {
   @extend .aside-container;
 
-  h3 {
-    font-size: $txt-size-medium;//$txt-size-h3;
-    font-family: $font-face-plain;
-    font-weight: bold;
-    line-height: rem-calc(17); // TEMP PROD: use 18px;
-    border-bottom: 1px solid #dedede;
-    padding-bottom: $pad-small;
-    margin-bottom: rem-calc(8); // TEMP PROD: use 10px;
-  }
+
 
   ul {
     list-style: none;
@@ -577,6 +579,7 @@ body.article .ui-widget-overlay {
 
 .skyscraper-container {
   @extend .aside-container;
+
   .title {
     @extend .header-allcaps-smallest;
     margin-bottom: $pad-xsmall;
@@ -584,6 +587,7 @@ body.article .ui-widget-overlay {
     color: $grey-tinytext; // TEMP PROD: change to grey-med-light
   }
 }
+
 .twitter-container {
   @extend .aside-container;
   h3 {
@@ -591,20 +595,136 @@ body.article .ui-widget-overlay {
     padding-left: 40px;
   }
 }
+
+.subject-areas-container {
+  @extend .aside-container;
+  position: relative;
+
+  h3 #subjInfoText {
+    position: absolute;
+    top: 3px;
+    left: -215px;
+    @include tooltip($width: 375);
+    padding-right: $pad-small;
+    font-size: $txt-size-xsmall;
+    font-weight: 100 !important;
+    line-height: $txt-size-medium-large;
+    z-index: map-get($zindex, footer);  //had to lower the trigger, so also lower the target
+    display: none;
+    &:hover {
+      display: block;
+    }
+  }
+  h3 #subjInfo {
+    @include circle;
+    color: $white;
+    display: inline-block;
+    font-size: $txt-size-xxsmall;
+    float: right;
+    position: absolute;
+    top: 3px;
+    right: 1px;
+    z-index: map-get($zindex, header); //share dropdown had this content on it; had to lower this one.
+    padding-top: 1px;
+
+    &:hover {
+      & + #subjInfoText {
+        display: block;
+      }
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+
+    li {
+      @include clearfix;
+      list-style-type: none;
+      padding: 0 0 4px;  // TEMP PROD: change to 5px;
+      line-height: normal;
+      position: relative;
+
+      .taxo-term {
+         @extend .button;
+         width: auto;
+         float: left;
+        //the next three elements are for truncation. width is needed and is being set with js
+        //because the width needs to be auto when truncation isn't needed
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+       }
+
+      .taxo-tooltip {
+        @include tooltip($width: 160px);
+        position: absolute;
+        top: 0;
+        right: 0;
+        visibility: hidden;
+        opacity: 1;
+        @include single-transition(opacity);
+        z-index: map-get($zindex, crossmark-tooltip);
+
+        strong {
+          display: block;
+        }
+
+        p {
+          font-size: $txt-size-xxsmall;
+          line-height: $txt-size-large;
+        }
+
+        button {
+          margin-right: $pad-xsmall;
+          line-height: 20px;
+          background-color: $white;
+          border: none;
+          border-radius: 4px;
+          font-size: $txt-size-xxsmall;
+          font-weight: bold;
+          color: $plos-default;
+          cursor: pointer;
+        }
+      }
+      .taxo-flag {
+        margin-top: 5px;
+        display: inline-block;
+        float: right;
+        width: 16px;
+        height: 16px;
+
+        background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
+        cursor: pointer;
+
+        &:hover, &.flagged {
+          background-position: 0 -16px;
+        }
+      }
+    }
+  }
+}
+.truncate_term {
+  @include truncated($width: 140px);
+}
+
+
 @media print {
    @page {
      margin: .75in;
    }
+
   .article-body {
     width: 100%;
   }
 
   .title-block {
-     margin-top: $pad-xsmall;
+    margin-top: $pad-xsmall;
+    margin-left: -$pad-small;
+
     &:before {
       content: image-url('logo.png') !important;
     }
-    margin-left: -$pad-small;
 
     h1 {
       padding-top: $pad-default;
@@ -612,3 +732,4 @@ body.article .ui-widget-overlay {
   }
 }
  
+

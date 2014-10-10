@@ -18,14 +18,10 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.util.RequestUtil;
+import org.ambraproject.wombat.util.MessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +37,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -96,14 +89,14 @@ public class TaxonomyController {
           throws IOException {
     // pass through any article category flagging ajax traffic to/from rhino
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
-    HttpUriRequest req = RequestUtil.buildRequest(forwardedUrl, "POST", RequestUtil.getRequestHeaders(request),
-            RequestUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
+    HttpUriRequest req = MessageUtil.buildRequest(forwardedUrl, "POST", MessageUtil.getRequestHeaders(request),
+            MessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
     try (CloseableHttpResponse responseFromService = soaService.getResponse(req)) {
-      RequestUtil.copyResponseWithHeaders(responseFromService, responseToClient);
+      MessageUtil.copyResponseWithHeaders(responseFromService, responseToClient);
     } catch (ServiceRequestException e) {
       responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
     } catch (EntityNotFoundException e) {
-      responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND)
+      responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
     }
   }
 

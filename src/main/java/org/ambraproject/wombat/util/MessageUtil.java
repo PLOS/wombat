@@ -26,7 +26,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 /**
-  A utility class for creation and management of HTTP requests
+  A utility class for creation and management of HTTP messages
  */
 public class MessageUtil {
 

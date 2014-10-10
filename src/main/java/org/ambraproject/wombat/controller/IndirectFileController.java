@@ -4,7 +4,7 @@ import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ContentRepoService;
-import org.ambraproject.wombat.util.RequestUtil;
+import org.ambraproject.wombat.util.MessageUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +53,9 @@ public class IndirectFileController extends WombatController {
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
                      String key, Optional<Integer> version)
       throws IOException {
-    Header[] assetHeaders = RequestUtil.getRequestHeaders(requestFromClient);
+    Header[] assetHeaders = MessageUtil.getRequestHeaders(requestFromClient);
     try (CloseableHttpResponse repoResponse = contentRepoService.request(key, version, assetHeaders)) {
-      RequestUtil.copyResponseWithHeaders(repoResponse, responseToClient);
+      MessageUtil.copyResponseWithHeaders(repoResponse, responseToClient);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",
           key, version.orNull());

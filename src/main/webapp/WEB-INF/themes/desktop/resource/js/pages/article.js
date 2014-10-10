@@ -1,12 +1,12 @@
 /**
- * Created by ddowell on 8/14/14.
+ *
  * DEPENDENCY:  resource/js/components/truncate_elem
  *              resource/js/components/show_onscroll
  */
 
 (function ($) {
 
- var s, parse_xml_date, float_header, check_authors_truncation;
+ var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_areas;
    parse_xml_date = {
     settings: {
       raw_date : document.getElementById("rawPubDate").value
@@ -81,8 +81,20 @@
     overflown : function(){
       var e = s.toTruncate[0];
       return e.scrollHeight > e.clientHeight;
+
     }
   };
+
+subject_areas = function() {
+  //apply truncation via js because the css width needs to be auto
+  $("#subjectList li").each(function () {
+    var truncTerm = $(this).find('.taxo-term');
+    var getWidth = $(truncTerm).width();
+    if (getWidth > 135) {
+      return $(truncTerm).css('width', '140px');
+    }
+  });
+}
 
   $( document ).ready(function() {
 
@@ -92,13 +104,22 @@
     });
 
     parse_xml_date.init();
-    check_authors_truncation.init();
+
+    is_author_list = document.getElementById("floatAuthorList");
+    if ( is_author_list != null) {
+      check_authors_truncation.init();
+      // initialize tooltip for author info
+      plos_tooltip.init();
+    }
+
+    var init_subject_truncation = subject_areas();
+
+
     float_header.init();
 
     // initialize toggle for author list view more
     plos_toggle.init();
-    // initialize tooltip for author info
-    plos_tooltip.init();
+
     // initialize tooltip_hover for everything
     tooltip_hover.init();
   });

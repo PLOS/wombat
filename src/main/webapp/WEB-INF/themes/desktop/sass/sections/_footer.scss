@@ -2,7 +2,7 @@
  *      styles for the footer
  */
 footer {
-
+  @extend .hide-for-print;
   // widths
   .brand-column{
     @extend .plos-column-5 }

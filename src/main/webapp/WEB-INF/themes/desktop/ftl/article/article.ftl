@@ -3,16 +3,11 @@
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-  <#--crossmark identifier-->
-  <meta name="dc.identifier" content="doi:${article.doi}”>
 <#assign title = article.title />
 <#assign depth = 0 />
-
 <#include "../common/head.ftl" />
 
-
 <#include "../common/journalStyle.ftl" />
-
   <body class="article ${journalStyle}">
 
   <input type="hidden" id="rawPubDate" value="${article.date}" />
@@ -64,9 +59,13 @@
     <section class="article-body">
 
       <#include "tabs.ftl" />
+      <div class="article-container">
+
+      <#include "nav.ftl" />
 
       <div class="article-text" id="artText">
          ${articleText}
+      </div>
       </div>
 
     </section>
@@ -81,7 +80,11 @@
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/float_header.js"/>
+
+  <@js src="resource/js/util/alm_config.js"/>
+  <@js src="resource/js/util/alm_query.js"/>
   <@js src="resource/js/pages/article.js"/>
+  <@js src="resource/js/pages/article_body.js"/>
   <@renderJs />
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>

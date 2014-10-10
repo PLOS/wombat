@@ -1,20 +1,22 @@
-<ul class="author-list clearfix" data-js-tooltip="tooltip_container">
+<ul class="author-list clearfix"  data-js-tooltip="tooltip_container" id="author-list">
 <#include "maxAuthorsToShow.ftl" />
 <#macro authorItem author author_index author_has_next if_expander=false hidden=false>
-  <#assign hasMeta = author.equalContrib || author.deceased || author.corresponding??
+  <#assign hasMeta =
+  author.equalContrib || author.deceased || author.corresponding??
   || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
-  || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
+  || (author.customFootnotes?? && author.customFootnotes?size gt 0)  />
 
-  <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if> <#if hidden> data-js-toggle="toggle_target"
-      data-initial="hide"</#if> >
-    <a data-author-id="${author_index?c}" class="author-name" >
+  <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if>
+       <#if hidden> data-js-toggle="toggle_target" data-visibility= "none"</#if> >
+  <#if hasMeta> <a  <#else> <span </#if>data-author-id="${author_index?c}" class="author-name" >
+
     ${author.fullName}<#-- no space
  --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space
  --><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if><#-- no space
  --><#if author.corresponding??> <span class="email">  </span></#if><#-- no space
  --><#if author.deceased>&#8224</#if><#-- no space
- --><#if author_has_next || if_expander><#-- no space -->,</#if><#-- no space
-    --></a>
+ --><#if author_has_next><#-- no space -->,</#if><#-- no space
+    --><#if hasMeta> </a>  <#else> </span> </#if>
 
 
     <#if hasMeta>
@@ -77,16 +79,14 @@
      </#list>
 
 
-<li data-js-toggle="toggle_add">
-  [ ... ],
-</li>
+<li data-js-toggle="toggle_add">&nbsp;[ ... ],</li>
 
-  <@authorItem authors[authors?size - 1] authors?size - 1 true false /><#-- Last one after expander -->
+  <@authorItem authors[authors?size - 1] authors?size - 1 false false /><#-- Last one after expander -->
   <li data-js-toggle="toggle_trigger" >
   <#--there was no way to not do this. -->
     <a class="more-authors active" id="authors-show">[ view all ]</a>
     </li>
-  <li data-js-toggle="toggle_trigger" data-initial="hide">
+  <li data-js-toggle="toggle_trigger" data-visibility="none">
     <a class="author-less" id="author-hide">[ view less ]</a>
   </li>
 <#else>

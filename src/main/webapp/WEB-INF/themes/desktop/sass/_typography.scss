@@ -14,11 +14,6 @@ category: Files
 
 @include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf",  "fontawesome-webfont.svg",  "fontawesome-webfont.woff"));
 
-
-//////////////
-//header styles
-///////////////
-
 /*doc
 ---
 title: other text styles
@@ -64,6 +59,10 @@ example | extension
   @extend %header-allcaps;
   font-family: $font-face-plain;
 }
+.header-allcaps-smallest {
+  @extend %header-allcaps-plain;
+  font-size: $txt-size-xxxsmall;
+}
 %header-allcaps-xlarge {
   @extend %header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
@@ -95,10 +94,6 @@ example | extension
   line-height: $pad-large;
 }
 
-
-//////////////
-//link styles
-///////////////
 
 /*doc
 ---
@@ -154,7 +149,7 @@ example | extension
 }
 
 //////////////
-//utility styles
+//font decorations
 ///////////////
 
 %small-italic {
@@ -166,6 +161,10 @@ example | extension
 }
 %txt-transform {
   text-transform: uppercase;
+}
+
+.inline-intro {
+  font-weight: bold;
 }
 .no-margin { margin-bottom: 0;}
 

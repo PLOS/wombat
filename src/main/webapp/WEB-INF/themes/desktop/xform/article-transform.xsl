@@ -759,6 +759,7 @@
 
   <xsl:template name="make-section-class">
     <xsl:attribute name="class">section</xsl:attribute>
+    <xsl:attribute name="class">toc-section</xsl:attribute>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
@@ -768,6 +769,7 @@
       <xsl:call-template name="make-section-id"/>
       <xsl:call-template name="make-section-class"/>
       <xsl:if test="descendant::title[1] != ''">
+        <xsl:attribute name="class">toc-section</xsl:attribute>
         <xsl:element name="a">
           <xsl:attribute name="id">
             <xsl:value-of select="@id"/>
@@ -775,7 +777,7 @@
           <xsl:attribute name="name">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
-          <xsl:attribute name="toc">
+          <xsl:attribute name="data-toc">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
           <xsl:attribute name="title">
@@ -802,9 +804,10 @@
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template match="ref-list" name="ref-list">
     <div>
+      <xsl:attribute name="class">toc-section</xsl:attribute>
       <xsl:choose>
         <xsl:when test="not(title)">
-          <a id="refs" name="refs" toc="refs" title="References"/>
+          <a id="refs" name="refs" data-toc="refs" title="References"/>
           <h3>References</h3>
           <xsl:call-template name="newline1"/>
         </xsl:when>
@@ -954,6 +957,7 @@
     <xsl:variable name="idx" select="count(preceding-sibling::abstract)"/>
     <xsl:variable name="abs_id">abstract<xsl:value-of select="$idx"/>
     </xsl:variable>
+    <xsl:attribute name="class">toc-section</xsl:attribute>
     <xsl:choose>
       <!-- if there's a title, use it -->
       <xsl:when test="title">
@@ -964,7 +968,7 @@
           <xsl:attribute name="name">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
-          <xsl:attribute name="toc">
+          <xsl:attribute name="data-toc">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
           <xsl:attribute name="title">
@@ -982,7 +986,7 @@
           <xsl:attribute name="name">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
-          <xsl:attribute name="toc">
+          <xsl:attribute name="data-toc">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
           <xsl:attribute name="title">Abstract</xsl:attribute>
@@ -1056,7 +1060,7 @@
       <xsl:attribute name="name">
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
-      <xsl:attribute name="toc">
+      <xsl:attribute name="data-toc">
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
       <xsl:attribute name="title">
@@ -2489,7 +2493,8 @@
       <xsl:call-template name="newline1"/>
       <xsl:for-each select="//abstract[@abstract-type='patient']">
         <div class="patient">
-          <a id="patient" name="patient" toc="patient" title="Patient Summary"/>
+          <xsl:attribute name="class">toc-section</xsl:attribute>
+          <a id="patient" name="patient" data-toc="patient" title="Patient Summary"/>
           <h3>
             <xsl:value-of select="title"/>
           </h3>
@@ -2503,7 +2508,8 @@
   <xsl:template name="author-contrib">
     <xsl:if test="../front/article-meta/author-notes/fn[@fn-type='con']">
       <div class="contributions">
-        <a id="authcontrib" name="authcontrib" toc="authcontrib"
+        <xsl:attribute name="class">toc-section</xsl:attribute>
+        <a id="authcontrib" name="authcontrib" data-toc="authcontrib"
            title="Author Contributions"/>
         <h3>Author Contributions</h3>
         <p>
@@ -2527,7 +2533,8 @@
     <div>
       <xsl:call-template name="assign-id"/>
       <xsl:if test="not(title)">
-        <a id="ack" name="ack" toc="ack" title="Acknowledgments"/>
+        <xsl:attribute name="class">toc-section</xsl:attribute>
+        <a id="ack" name="ack" data-toc="ack" title="Acknowledgments"/>
         <h3>Acknowledgments</h3>
         <xsl:call-template name="newline1"/>
       </xsl:if>

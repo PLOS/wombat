@@ -1,0 +1,82 @@
+// layout the page
+
+.article-container {
+  @extend .plos-row;
+}
+
+#nav-article {
+  @include plos-grid-column(160, $gutter: right, $gutter-width: 45);
+  @extend .hide-for-print;
+}
+
+.article-text {
+  @include plos-grid-column(550, $gutter: none, $float:right)
+}
+
+// TODO - write some docs
+@mixin border-width-adjust($border-width: rem-calc(2), $spacing: $pad-small, $border-color: $clr-highlight) {
+  border-left: $border-width solid $border-color;
+  padding-left: ($spacing - $border-width);
+}
+
+@mixin nav-side( $txt-color: $grey-med, $pad-left: $pad-small, $pad-y:rem-calc(2), $margin-bottom: $pad-xsmall) {
+  @extend .no-bullet;
+  margin-bottom: ($margin-bottom * 2);
+  padding-bottom: ($margin-bottom * 2);
+
+  li{ padding: $pad-y 0;
+    padding-left: $pad-left;
+    margin: 0 0 $margin-bottom 0;
+
+    a {
+      @include link-text($color: $txt-color);
+    }
+  }
+}
+
+@mixin nav-enhanced( $txt-color-hover: $clr-body-text, $spacing-left: $pad-small, $txt-color: $grey-med) {
+  @include nav-side;
+  li {
+
+    &:hover {
+      @include border-width-adjust($border-width: rem-calc(1), $spacing: $spacing-left);
+
+      a {
+        color: $txt-color;
+      }
+    }
+
+    &.active {
+      @include border-width-adjust($spacing: $spacing-left);
+
+      a {
+        color: $txt-color-hover;
+        font-weight: bold;
+        letter-spacing: -.5px;
+      }
+    }
+  }
+
+}
+
+#nav-article {
+  position: relative;
+
+  .nav-page {
+    @include nav-enhanced();
+    border-bottom: 1px solid $grey-med;
+  }
+
+  .nav-secondary{
+    @extend .no-bullet;
+    @include nav-side($txt-color: $clr-body-text);
+  }
+}
+
+
+
+@media print {
+  .article-text {
+    width: 100%;
+  }
+}

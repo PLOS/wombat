@@ -146,7 +146,7 @@ $image-container: ($image-width + $pad-small);
   position: relative;
   height: $block-height;
   .blurb{
-    color: $grey-med;
+    color: $grey-med-dark;
     a {
       @include link-text($color: $plos-default, $decoration: underline);
     }
@@ -270,7 +270,7 @@ $image-container: ($image-width + $pad-small);
       a {
         font-family: $font-face-fancy-bold;
         font-size: rem-calc($txt-size-medium);
-        @include link-text($color: $grey-med);
+        @include link-text($color: $grey-med-dark);
       }
     }
   }
@@ -425,7 +425,7 @@ $image-container: ($image-width + $pad-small);
     height: 40px;
     text-align: center;
     &:first-child {
-      border-right: 1px solid $grey-med;
+      border-right: 1px solid $grey-med-dark;
     }
     a {
       @include link-text($color: #89a0d0, $decoration: underline);

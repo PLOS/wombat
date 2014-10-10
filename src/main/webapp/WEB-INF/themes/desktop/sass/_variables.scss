@@ -28,9 +28,12 @@ $clr-brand: $plos-default;
 $black: #000;
 $white: #fff;
 $grey-dark: #333;
-$grey-med: #666;
+$grey-med-dark: #666;
+$grey-med: #707070;
+
 $grey-med-light: #ccc;
 $grey-light: #efefef;
+$grey-tinytext: #bbb;// TEMP PROD: change uses to grey-med-light
 
 $tabs-base-color: #2b2b2b;
 
@@ -53,7 +56,7 @@ $clr-separator: $grey-med-light;
 $clr-link: $clr-highlight;
 $clr-body-text: $grey-dark;
 $clr-link-hover: $grey-dark;
-$clr-muted: $grey-med;
+$clr-muted: $grey-med-dark;
 $clr-light-text: $white;
 
 $clr-warning: $warning;
@@ -65,7 +68,7 @@ $clr-btn-disabled: $grey-light;
 $clr-btn-text: $white;
 
 $clr-input-placeholder: $grey-dark;
-$clr-input-active: $grey-med;
+$clr-input-active: $grey-med-dark;
 
 // GRID OPTIONS
 // Options are in scaffold.scss

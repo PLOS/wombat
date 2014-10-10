@@ -297,7 +297,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
        color: $clr-highlight;
      }
 
-     > a {
+     > a, > span{
      display: inline-block;   // needed to overwrite the inline-list
      padding: $pad-highlight $pad-highlight-x; //TODO line-height;
      }

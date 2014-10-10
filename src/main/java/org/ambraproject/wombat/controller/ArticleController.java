@@ -49,7 +49,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * Controller for rendering an article.
@@ -446,28 +445,10 @@ public class ArticleController extends WombatController {
         String bodyXml = TextUtil.recoverXml(bodyNode);
         String bodyHtml = XmlExcerptTransformation.transform(bodyXml);
 
-        /*
-         * Remove outermost body tags. (Leaving them in would be a huge bug because a browser would interpret it as the
-         * HTML <body> element.)
-         *
-         * This is a kludge ported over from legacy Ambra. It sucks for all the same reasons documented at
-         * XmlExcerptTransformation. Additionally, we expect TextUtil.recoverXml to place XML namespace declarations on
-         * the body tags that we are stripping (e.g., 'xmlns:xlink="http://www.w3.org/1999/xlink"',
-         * 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'); it's important that they not placed and left
-         * behind anywhere else, because they definitely aren't valid HTML. Would really, really like to obviate this.
-         *
-         * The original kludge appears in Ambra 2.* at org.ambraproject.rhino.shared.AuthorsXmlExtractor and seems to
-         * have been reused for amendment bodies (as opposed to author lists). The original solution searched for a lot
-         * of other tags that presumably are unique to the author list, hence they are ignored here.
-         */
-        bodyHtml = BODY_TAG_PATTERN.matcher(bodyHtml).replaceAll("");
-
         return bodyHtml;
       }
     });
   }
-
-  private static final Pattern BODY_TAG_PATTERN = Pattern.compile("<body[^>]*>|</body\\s*>");
 
   /**
    * Retrieves article XML from the SOA server, transforms it into HTML, and returns it. Result will be stored in

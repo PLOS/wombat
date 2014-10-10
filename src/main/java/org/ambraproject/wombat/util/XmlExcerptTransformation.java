@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
 
 import java.util.EnumSet;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -45,7 +46,9 @@ public class XmlExcerptTransformation {
     OVERLINE("span"),
     SC("span"),
     STRIKE("del"),
-    UNDERLINE("span");
+    UNDERLINE("span"),
+    LIST_ITEM("li"),
+    P("p"); // leave the element type alone but add class="nlm-p"
 
     private final Pattern pattern;
     private final String replacement;
@@ -54,7 +57,7 @@ public class XmlExcerptTransformation {
      * @param htmlTag the HTML tag type to replace XML tags of this type
      */
     private SimpleElementType(String htmlTag) {
-      String nlmXmlTag = name().toLowerCase();
+      String nlmXmlTag = name().toLowerCase().replace('_', '-');
 
       this.pattern = Pattern.compile("" +
               // Not sure why we are checking for HTML-escaped "&lt;" and "&gt;" in what is supposed to be XML.
@@ -81,6 +84,28 @@ public class XmlExcerptTransformation {
   }
 
   /**
+   * Tags to delete, leaving the element content behind.
+   */
+  private static enum TagToDelete implements TextReplacement {
+    BODY, SEC;
+    private final Pattern pattern;
+
+    private TagToDelete() {
+      String nlmXmlTag = name().toLowerCase();
+      this.pattern = Pattern.compile("" +
+              "<" + nlmXmlTag + ".*?>" + // match any attributes
+              "|" +
+              "</" + nlmXmlTag + "\\s*>",
+          Pattern.DOTALL);
+    }
+
+    @Override
+    public String replace(String input) {
+      return pattern.matcher(input).replaceAll("");
+    }
+  }
+
+  /**
    * Ad-hoc regexes from the legacy Ambra implementation.
    */
   private static enum LegacyKludge implements TextReplacement {
@@ -98,10 +123,6 @@ public class XmlExcerptTransformation {
             "(?:\\s+xlink:type\\s*=\\s*\"simple\"\\s*)" +
             ")*>(.*?)</email>",
         "<a class=\"nlm-email\" href=\"mailto:$1\">$1</a>"
-    ),
-    SEC_TITLE(
-        "<sec id=\\\"st1\\\">[\n\t ]*<title ?/>", // What is special about id="st1"?
-        "" // Just delete it
     );
 
     private final Pattern pattern;
@@ -120,8 +141,42 @@ public class XmlExcerptTransformation {
 
   private static final ImmutableCollection<TextReplacement> REPLACEMENTS = ImmutableList.<TextReplacement>builder()
       .addAll(EnumSet.allOf(SimpleElementType.class))
+      .addAll(EnumSet.allOf(TagToDelete.class))
       .addAll(EnumSet.allOf(LegacyKludge.class))
       .build();
+
+
+  private static final Pattern LIST_PATTERN = Pattern.compile("" +
+          "<list" +
+          "(?:\\s+list-type\\s*=\\s*\"([-\\w_]*?)\")?" +
+          "\\s*>" +
+          "(.*?)" +
+          "</list\\s*>",
+      Pattern.DOTALL);
+
+  /**
+   * Replace 'list' XML tags with HTML 'ul' or 'ol'.
+   * <p/>
+   * This one is a bit more complicated than the above because we depend on an attribute of the input tag to know
+   * whether to replace it with 'ul' or 'ol'. In our crude searching, we conveniently assume that the opening tag will
+   * have only a "list-type" attribute or no attributes at all. So this is even more brittle than the above.
+   *
+   * @param text the XML text to search for lists
+   * @return the text with lists transformed to HTML
+   */
+  private static String transformLists(String text) {
+    StringBuffer transformed = new StringBuffer(text.length());
+    Matcher matcher = LIST_PATTERN.matcher(text);
+    while (matcher.find()) {
+      String xmlListType = matcher.group(1); // may be null
+      String htmlListType = "bullet".equals(xmlListType) ? "ul" : "ol";
+      String replacement = String.format("<%s class=\"nlm-list\">$2</%s>", htmlListType, htmlListType);
+      matcher.appendReplacement(transformed, replacement);
+    }
+    matcher.appendTail(transformed);
+    return transformed.toString();
+  }
+
 
   /**
    * Transform NLM XML text to generic HTML. Applies a simplified transformation that looks only for XML elements in
@@ -134,6 +189,7 @@ public class XmlExcerptTransformation {
     for (TextReplacement replacement : REPLACEMENTS) {
       text = replacement.replace(text);
     }
+    text = transformLists(text);
     return text;
   }
 

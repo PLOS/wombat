@@ -1,6 +1,7 @@
 <#include "citation.ftl" />
 <#macro amendmentNotice amendmentObjects type title linkText>
-<div class="amendment amendment-${type}" id="amendment-${type}">
+<div class="amendment amendment-${type} toc-section" id="amendment-${type}">
+  <a data-toc="amendment-${type}" title="${title}"></a>
   <h2>${title}</h2>
   <#list amendmentObjects as amendment>
     <#if amendment.body??>

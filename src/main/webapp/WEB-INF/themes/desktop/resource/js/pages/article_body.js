@@ -22,7 +22,7 @@
   }
 
   /// write article nav
-  $article = $('#artText');
+  $article = $('.article-torso');
 
   $('#nav-article').buildNav({
     content: $article

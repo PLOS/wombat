@@ -6,7 +6,7 @@
 
 (function ($) {
 
- var s, parse_xml_date, float_header, isAuthorList, check_authors_truncation;
+ var s, parse_xml_date, float_header, isAuthorList, check_authors_truncation, subject_flags;
    parse_xml_date = {
     settings: {
       raw_date : document.getElementById("rawPubDate").value
@@ -85,6 +85,19 @@
     }
   };
 
+  subject_flags = function(){
+
+    $(".taxo-flag").on("click", function(){
+      $(this).next().css('visibility','visible');
+    });
+    $(".taxo-tooltip").on("click", function(e){
+      e.stopPropagation();
+    });
+    $('html').on('click', function(){
+       $('.taxo-tooltip').css('visibility','hidden');
+    });
+  };
+
   $( document ).ready(function() {
 
     $(".preventDefault").on('click', function (e) {
@@ -108,6 +121,8 @@
 
     // initialize tooltip_hover for everything
     tooltip_hover.init();
+
+    var init_subject_flags = subject_flags();
   });
 
 }(jQuery));

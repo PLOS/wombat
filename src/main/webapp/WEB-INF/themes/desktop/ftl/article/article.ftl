@@ -82,6 +82,7 @@
   <@js src="resource/js/components/float_header.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
+  <@js src="resource/js/vendor/jquery.cookie.js" />
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@renderJs />

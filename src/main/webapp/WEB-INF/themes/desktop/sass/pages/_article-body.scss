@@ -53,6 +53,50 @@ $line-height-small: ($line-height * .5);
     font-weight: normal
   }
 
+
+  .amendment-eoc, .amendment-retraction {
+    @extend .callout-alert;
+    h2 {
+      color: $clr-warning;
+      margin-top: 0;
+      &:before {
+        //TODO - make this a mixin? do we adjust line-height on all icons?
+        @extend .icon-alert;
+        font-size: $txt-size-medium;
+        padding-right: $pad-xsmall;
+        vertical-align: top;
+        line-height: $line-height;
+      }
+    }
+  }
+
+  .amendment-correction {
+    @extend .callout-standard;
+    h2{
+      &:before{
+        content: '';
+        @extend .icon-correction;
+        margin-right: $pad-xsmall;
+        vertical-align: top;
+        line-height: $line-height;
+
+      }
+    }
+  }
+
+  .amendment {
+    .amendment-link {
+      font-weight: bold;
+      &:before {
+        content: '| ';
+        color: $clr-body-text;
+        font-weight: normal;
+      }
+    }
+    .amendment-date {
+      font-weight: bold;
+    }
+  }
 }
 
 @mixin callout($clr-body: $clr-callout-bg) {
@@ -69,50 +113,7 @@ $line-height-small: ($line-height * .5);
   @include callout(#fce2e5); // TODO - do i just lighten colors?
 }
 
-.amendment {
-  .amendment-link {
-    font-weight: bold;
-    &:before {
-      content: '| ';
-      color: $clr-body-text;
-      font-weight: normal;
-    }
 
-  }
-  .amendment-date {
-    font-weight: bold;
-  }
-}
-
-.amendment-eoc, .amendment-retraction {
-  @extend .callout-alert;
-  h2 {
-    color: $clr-warning;
-    margin-top: 0;
-    &:before {
-      //TODO - make this a mixin? do we adjust line-height on all icons?
-      @extend .icon-alert;
-      font-size: $txt-size-medium;
-      padding-right: $pad-xsmall;
-      vertical-align: top;
-      line-height: $line-height;
-    }
-  }
-}
-
-.amendment-correction {
-  @extend .callout-standard;
-  h2{
-    &:before{
-      content: '';
-      @extend .icon-correction;
-      margin-right: $pad-xsmall;
-      vertical-align: top;
-      line-height: $line-height;
-
-    }
-  }
-}
 
 // TODO - write some docs
 @mixin border-width-adjust($border-width: rem-calc(2), $spacing: $pad-small, $border-color: $clr-highlight) {
@@ -167,6 +168,19 @@ $line-height-small: ($line-height * .5);
   .nav-page {
     @include nav-enhanced();
     border-bottom: 1px solid $grey-med;
+    li{
+      &.amendment-correction{
+        font-weight: bold;
+      }
+      &.amendment-eoc a{
+        font-weight: bold;
+        color:$clr-warning
+      }
+      &.amendment-retraction a{
+        font-weight: bold;
+        color:$clr-warning
+      }
+    }
   }
 
   .nav-secondary {

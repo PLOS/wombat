@@ -1,27 +1,28 @@
-/**
- * Subject area feedback mechanism
- */
-var handleFlagClick = function(event) {
-    var categoryName = this.dataset("categoryname");
-    var articleDoi = this.dataset("articledoi");
-    var action = $(event.target).hasClass("flagged") ? "remove" : "add";
 
-    $.ajax({
-        type: 'POST',
-        url:'/taxonomy/flag/' + action,
-        data: { 'categoryName': categoryName, 'articleDoi': articleDoi },
-        dataType:'json',
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(errorThrown);
-        },
-        success:function (data) {
-            if (action == "remove") {
-                $(event.target).removeClass("flagged");
-            else
-                $(event.target).addClass("flagged");
+(function ($) {
+
+    /**
+     * Subject area feedback mechanism
+     */
+    var handleFlagClick = function (event) {
+        var categoryTerm = $(event.target).data("categoryname");
+        var articleDoi = $(event.target).data("articledoi");
+        var action = $(event.target).hasClass("flagged") ? "remove" : "add";
+
+        $.ajax({
+            type: 'POST',
+            url: siteUrlPrefix + 'taxonomy/flag/' + action,
+            data: { 'categoryTerm': categoryTerm, 'articleDoi': articleDoi },
+            dataType: 'json',
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            },
+            success: function (data) {
+                action == "remove" ? $(event.target).removeClass("flagged") : $(event.target).addClass("flagged");
             }
-        }
-    });
-};
+        });
+    };
 
-$('#subject-areas-container span.taxo-flag').on('click', handleFlagClick());
+    $('span.taxo-flag').on('click', handleFlagClick);
+
+})(jQuery);

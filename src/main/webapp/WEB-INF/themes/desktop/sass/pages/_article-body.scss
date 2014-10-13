@@ -1,6 +1,6 @@
 // layout the page
 
-.article-container {
+.article-body {
   @extend .plos-row;
 }
 
@@ -9,18 +9,33 @@
   @extend .hide-for-print;
 }
 
-.article-torso {
+.article-content {
 
   @include plos-grid-column(550, $gutter: none, $float: right);
 }
 
-/// TODO This needs to be in more genral css this is just to work out the kinks so i can check into master - that work will be done in ticket DPRO-477 which is being worked on concurrently
+/// TODO - PG- This needs to be in more general css. I'm just to work out the kinks so I can check this styling for the amendment notice into master - that work will be done in ticket DPRO-477 which is being worked on concurrently
 
 $line-height: rem-calc(18);
 $line-height-large: ($line-height * 2);
 $line-height-med: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
-.article-torso {
+
+// callout is for blockquotes.
+@mixin callout($clr-body: $clr-callout-bg) {
+  padding: $line-height $pad-default 1px $pad-default;  //TODO -  why is this 1px - not sure but its the only thing that seems to work
+  background: $clr-body;
+  margin-bottom: $line-height;
+}
+
+.callout-standard {
+  @include callout();
+}
+
+.callout-alert {
+  @include callout($clr-warning-bg);
+}
+.article-content {
 
   p, ul, ol, li, h2, h3, h4, h5, div {
     line-height: $line-height;
@@ -97,14 +112,6 @@ $line-height-small: ($line-height * .5);
       font-weight: bold;
     }
   }
-}
-
-.callout-standard {
-  @include callout();
-}
-
-.callout-alert {
-  @include callout(#fce2e5); // TODO - do i just lighten colors?
 }
 
 

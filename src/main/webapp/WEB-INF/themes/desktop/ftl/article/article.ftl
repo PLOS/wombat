@@ -63,7 +63,7 @@
 
     <#include "nav.ftl" />
 
-      <div class="article-torso">
+      <div class="article-content">
 
       <#include "amendment.ftl" />
 

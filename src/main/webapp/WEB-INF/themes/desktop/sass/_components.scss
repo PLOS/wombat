@@ -143,12 +143,7 @@ variable  | result   | default
 .block-card {
   @include blocks($radius: none, $padding: none);
 }
- // callout is for blockquotes.
-@mixin callout($clr-body: $clr-callout-bg) {
-  padding: $line-height $pad-default 1px $pad-default;  //TODO -
-  background: $clr-body;
-  margin-bottom: $line-height;
-}
+
 
 ///PLACEHOLDER STYLES
 

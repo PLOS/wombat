@@ -5,7 +5,7 @@
     defaults = {
       margin:             90,
       sections:           '',
-      parentContainer:    '.article-container',
+      parentContainer:    '.article-body',
       sectionAnchor:      'a[data-toc]',
       sectionAnchorAttr:  'data-toc',
       classActive:        'active',
@@ -20,7 +20,6 @@
 
       var $this = $(this),
           ftr_top = $(options.footer).offset().top,
-          el_top = $this.offset().top,
           el_h = $this.innerHeight(),
           bnr_h = 0,
           win_top = 0,

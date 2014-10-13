@@ -99,12 +99,6 @@ $line-height-small: ($line-height * .5);
   }
 }
 
-@mixin callout($clr-body: $clr-callout-bg) {
-  padding: $line-height $pad-default 1px $pad-default;  //TODO -
-  background: $clr-body;
-  margin-bottom: $line-height;
-}
-
 .callout-standard {
   @include callout();
 }

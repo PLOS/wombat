@@ -81,9 +81,10 @@
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/float_header.js"/>
-  <@js src="resource/js/components/twitter_stream.js"/>
+  <@js src="resource/js/util/ajax_tool.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
+  <@js src="resource/js/components/twitter_module.js"/>
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@renderJs />

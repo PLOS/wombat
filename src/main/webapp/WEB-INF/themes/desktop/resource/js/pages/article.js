@@ -60,7 +60,7 @@ twitter_module, t;
       });
     }
   };
-  /*twitter_module = {
+ /* twitter_module = {
     settings: {
       plos_twitter: null,
       doi: $("meta[name='dc.identifier']").attr("content")
@@ -69,10 +69,11 @@ twitter_module, t;
     init: function() {
      t = this.settings;
 
-      plos_twitter = twitter();
-      plos_twitter.displayTwitterCites(doi);
+      plos_twitter = twitter(doi);
+
     }
   };*/
+
   check_authors_truncation = {
 
     settings : {
@@ -110,8 +111,9 @@ subject_areas = function() {
 }
 
   $( document ).ready(function() {
-    if ($.fn.twitter && !$("#twitter-alm-timeline div.tweet-header").is(":visible")) {
-      var doi = $('meta[name=citation_doi]').attr("content");
+    if ($.fn.twitter) {// && !$("#twitter-alm-timeline div.tweet-header").is(":visible")
+     // var doi = $('meta[name=citation_doi]').attr("content");
+      var doi = $("meta[name='dc.identifier']").attr("content");
       var twitter = new $.fn.twitter();
       twitter.displayTweetsArticleSidebar(doi);
     }
@@ -132,7 +134,12 @@ subject_areas = function() {
     var init_subject_truncation = subject_areas();
 
     float_header.init();
-    twitter_module.init();
+    //&& !$("#twitter-alm-timeline div.tweet-header").is(":visible")
+    if ($.fn.twitter ) {
+      var doi = $('meta[name=citation_doi]').attr("content");
+      var twitter = new $.fn.twitter();
+      twitter.displayTweetsArticleSidebar(doi);
+    }
 
     // initialize toggle for author list view more
     plos_toggle.init();

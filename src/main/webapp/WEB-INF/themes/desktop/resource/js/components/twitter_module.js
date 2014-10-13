@@ -19,31 +19,34 @@
  * limitations under the License.
  */
 
-$.fn.twitter = function () {
+// http://alm.plos.org/api/v3/articles?api_key=3pezRBRXdyzYW6ztfwft&ids=10.1371%2Fjournal.ppat.1003133&source=twitter&info=event
+//var url = this.almHost + '?api_key=' + this.almAPIKey + '&ids=' + request;
+$.fn.twitter = function (doi) {
+
   this.displayTwitterCites = function (doi) {
-    var alm = new $.fn.alm();
-    alm.getCitesTwitterOnly(doi, jQuery.proxy(this.setTweets, this), jQuery.proxy(this.setError, this));
+
+    requestUrl.getCitesTwitterOnly(doi, jQuery.proxy(this.setTweets, this), jQuery.proxy(this.setError, this));
   }
 
   this.setError = function (xOptions, textStatus) {
-    $("#twitterError").text("Our system is having a bad day. We are working on it. Please check back later.");
-    $("#twitterError").show("blind", 1000);
+    $('#twitterError').text('Our system is having a bad day. We are working on it. Please check back later.');
+    $('#twitterError').show('blind', 1000);
   };
 
   this.setTweets = function (json, textStatus, xOptions) {
     window.tweetsResponse = json;
 
-    $(".spinner").fadeOut(1000);
+    $('.spinner').fadeOut(1000);
 
-    $("#tweets").css("display", "none");
+    $('#tweets').css('display', 'none');
 
     this.showTweetsPage(0);
 
-    $("#tweets").show("blind", 1000);
+    $('#tweets').show('blind', 1000);
   };
 
   this.showTweetsPage = function (currentPage) {
-    console.log("Currentpage:" + currentPage);
+    console.log('Currentpage:' + currentPage);
     var json = window.tweetsResponse;
     var numTweets = 0;
 
@@ -52,7 +55,7 @@ $.fn.twitter = function () {
 
     var pageSize = 50;
 
-    $("#tweets").empty();
+    $('#tweets').empty();
 
     if (twitterResponse && twitterResponse.metrics.total > 0) {
 
@@ -77,40 +80,40 @@ $.fn.twitter = function () {
         var tweet_url = events[i].event_url;
 
         var created_dt = isNaN(Date.parse(tweet.created_at)) ?
-          $.datepicker.formatDate("M d, yy", this.parseTwitterDate(tweet.created_at)) :
-          $.datepicker.formatDate("M d, yy", new Date(tweet.created_at));
+          $.datepicker.formatDate('M d, yy', this.parseTwitterDate(tweet.created_at)) :
+          $.datepicker.formatDate('M d, yy', new Date(tweet.created_at));
 
-        ol.append("<li><div><img src=\"" + tweet.user_profile_image
-          + "\"/><span class=\"text\"><a href=\"https://twitter.com/#!/" + tweet.user
+        ol.append('<li><div><img src=\'' + tweet.user_profile_image
+          + "\'/><span class=\"text\"><a href=\"https://twitter.com/#!/" + tweet.user
           + "\">" + tweet.user + "</a> " + this.linkify(tweet.text) + "</span><br/><a target='_blank' href=\""
           + tweet_url + "\"><span class=\"text\">" + created_dt + "</span></a></div></li>");
 
       }
 
-      ol.attr("start", currentPage * pageSize + 1);
-      ol.css("counter-reset", "item " + (currentPage * pageSize));
+      ol.attr('start', currentPage * pageSize + 1);
+      ol.css('counter-reset', 'item ' + (currentPage * pageSize));
 
       var pagination = this.paging(totalPages, currentPage);
-      $("#tweets").append(pagination.clone(), ol, pagination);
+      $('#tweets').append(pagination.clone(), ol, pagination);
     }
 
-    var statusMsg = "";
+    var statusMsg = '';
     if (numTweets < 1) {
-      statusMsg = "No tweets found";
+      statusMsg = 'No tweets found';
     } else {
-      var pluralization = "";
+      var pluralization = '';
       if (numTweets > 1) { // This page should never be displayed if less than 1 citation.
-        pluralization = "s";
+        pluralization = 's';
       }
 
-      statusMsg = numTweets + " tweet" + pluralization
-        + " as recorded by Twitter.  Article published "
-        + $.datepicker.formatDate("M d, yy", new Date(json[0].publication_date))
-        + ". Tweets updated "
-        + $.datepicker.formatDate("M d, yy", new Date(twitterResponse.update_date)) + ".";
+      statusMsg = numTweets + ' tweet' + pluralization
+        + ' as recorded by Twitter.  Article published '
+        + $.datepicker.formatDate('M d, yy', new Date(json[0].publication_date))
+        + '. Tweets updated '
+        + $.datepicker.formatDate('M d, yy', new Date(twitterResponse.update_date)) + '.';
     }
 
-    $("#tweets").prepend(statusMsg);
+    $('#tweets').prepend(statusMsg);
   }
 
   this.parseTwitterDate = function (tweetdate) {
@@ -131,7 +134,7 @@ $.fn.twitter = function () {
 
   this.linkify = function (tweetText) {
     //Add an extra space so we capture urls/tags/usernames that end on the final character
-    tweetText = tweetText + " ";
+    tweetText = tweetText + ' ';
 
     //Replace URLs with a real link
     var urlRegex = /((ht|f)tp(s?):\/\/[a-zA-Z0-9\-\.\/]+?)([\s])/g;
@@ -142,7 +145,7 @@ $.fn.twitter = function () {
     //Replace tags with a link to a search for the tag
     var tagRegex = /#([A-Za-z0-9/-]+?)([:\s])/g;
     newValue = newValue.replace(tagRegex, function (match, tag, spacer, offset, original) {
-      return "<a href=\"https://twitter.com/#!/search/%23" + tag + "\">#" + tag + "</a>" + spacer;
+      return "<a href=\"https://twitter.com/#!/search/%23" + tag + "\">#" + tag + "</a>"+ spacer;
     });
 
     //Replace Retweet username with a link to the user profile
@@ -155,7 +158,7 @@ $.fn.twitter = function () {
   };
 
   this.paging = function (totalPages, currentPage) {
-    var pagination = $("<div></div>");
+    var pagination = $('<div></div>');
 
     // no pagination if only one page
     if (totalPages > 1) {
@@ -185,7 +188,7 @@ $.fn.twitter = function () {
        < 1 2 3 4 ... 10 >
        */
 
-      pagination.attr("class", "pagination");
+      pagination.attr('class', 'pagination');
 
       var ellipsis = '<span>...</span>';
       var prev = '<span class="prev">&lt;</span>';
@@ -195,7 +198,7 @@ $.fn.twitter = function () {
         // if less than 4 pages, do not put "..."
         // put < with or without link depending on whether this is first page.
         if (currentPage > 0) {
-          pagination.append(this.pagingAnchor((currentPage - 1), "&lt;", "prev"));
+          pagination.append(this.pagingAnchor((currentPage - 1), '&lt;', 'prev'));
         }
         else {
           pagination.append(prev);
@@ -205,7 +208,7 @@ $.fn.twitter = function () {
         // do not put link for current page.
         for (var pageNumber = 0; pageNumber < totalPages; ++pageNumber) {
           if (pageNumber == currentPage) {
-            pagination.append("<strong>" + (currentPage + 1) + "</strong>");
+            pagination.append('<strong>' + (currentPage + 1) + '</strong>');
           }
           else {
             pagination.append(this.pagingAnchor(pageNumber, pageNumber + 1));
@@ -214,7 +217,7 @@ $.fn.twitter = function () {
 
         // put > at the end with or without link depending on whether it is the last page.
         if (currentPage < (totalPages - 1)) {
-          pagination.append(this.pagingAnchor(currentPage + 1, "&gt;", "next"));
+          pagination.append(this.pagingAnchor(currentPage + 1, '&gt;', 'next'));
         }
         else {
           pagination.append(next);
@@ -224,7 +227,7 @@ $.fn.twitter = function () {
         // put < and first page number always.
         // The link is present if this is not the first page.
         if (currentPage > 0) {
-          pagination.append(this.pagingAnchor((currentPage - 1), "&lt;", "prev"));
+          pagination.append(this.pagingAnchor((currentPage - 1), '&lt;', 'prev'));
           pagination.append(this.pagingAnchor(0, 1));
         }
         else {
@@ -239,7 +242,7 @@ $.fn.twitter = function () {
           if ((pageNumber > 1 && pageNumber < totalPages && pageNumber > (currentPage - 1)
             || ((pageNumber == (totalPages - 2)) && (pageNumber > (currentPage - 2))))) {
             if ((currentPage + 1) == pageNumber) {
-              pagination.append("<strong>" + pageNumber + "</strong>");
+              pagination.append('<strong>' + pageNumber + '</strong>');
             }
             else {
               pagination.append(this.pagingAnchor(pageNumber - 1, pageNumber));
@@ -254,7 +257,7 @@ $.fn.twitter = function () {
         // The link depends of whether this is the last page.
         if (currentPage < (totalPages - 1)) {
           pagination.append(this.pagingAnchor(totalPages - 1, totalPages));
-          pagination.append(this.pagingAnchor(currentPage + 1, "&gt;", "next"));
+          pagination.append(this.pagingAnchor(currentPage + 1, '&gt;', 'next'));
         }
         else {
           pagination.append('<strong>' + totalPages + '</strong>' + next);
@@ -267,21 +270,37 @@ $.fn.twitter = function () {
 
   this.pagingAnchor = function (pageNumber, pagingText, className) {
     var anchor = $('<a></a>').attr({
-      href: "#",
-      title: "(" + (pageNumber + 1) + ")",
-      onclick: "twitter.showTweetsPage(" + pageNumber + "); return false;"
+      href: '#',
+      title: '(' + (pageNumber + 1) + ')',
+      onclick: 'twitter.showTweetsPage(' + pageNumber + '); return false;'
     }).html(pagingText);
 
     if (className) {
-      anchor.attr("class", className);
+      anchor.attr('class', className);
     }
 
     return anchor;
   };
+  function validateDOI(doi) {
+    if (doi == null) {
+      throw new Error('DOI is null.');
+    }
 
+    doi = encodeURI(doi);
+
+    return doi.replace(new RegExp('/', 'g'), '%2F').replace(new RegExp(':', 'g'), '%3A');
+  }
+  function getCitesTwitterOnly(doi, callBack, errorCallback) {
+    doi = validateDOI(doi);
+
+    var request = doi + '&source=twitter&info=event';
+
+    return new $.fn.getData(request, callBack, errorCallback);
+  }
   this.displayTweetsArticleSidebar = function (doi) {
-    var alm = new $.fn.alm();
-    alm.getCitesTwitterOnly(doi, jQuery.proxy(this.showTweetsArticleSidebar, this), jQuery.proxy(this.setError, this));
+    var config =  ALM_CONFIG; //new $.fn.alm();
+    var requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=';// + doi;
+    return getCitesTwitterOnly(doi, jQuery.proxy(this.showTweetsArticleSidebar, this), jQuery.proxy(this.setError, this));
   }
 
   this.showTweetsArticleSidebar = function (json) {
@@ -308,106 +327,106 @@ $.fn.twitter = function () {
         tweet = events[i].event;
 
         created_dt = isNaN(Date.parse(tweet.created_at)) ?
-          $.datepicker.formatDate("M d, yy", this.parseTwitterDate(tweet.created_at)) :
-          $.datepicker.formatDate("M d, yy", new Date(tweet.created_at));
+          $.datepicker.formatDate('M d, yy', this.parseTwitterDate(tweet.created_at)) :
+          $.datepicker.formatDate('M d, yy', new Date(tweet.created_at));
 
         if (i < minDisplayEventCount) {
-          li = $("<li></li>").addClass("tweet-entry display");
+          li = $('<li></li>').addClass('tweet-entry display');
         } else {
-          li = $("<li></li>").addClass("tweet-entry hide");
+          li = $('<li></li>').addClass('tweet-entry hide');
         }
 
         li.hover(
           function () {
             // in
-            $(this).find("ul.tweet-actions").css("visibility", "visible");
+            $(this).find('ul.tweet-actions').css('visibility', 'visible');
           },
           function () {
             // out
-            $(this).find("ul.tweet-actions").css("visibility", "hidden");
+            $(this).find('ul.tweet-actions').css('visibility', 'hidden');
           });
 
         tweetPostTime = this.getTweetTimeDisplay(tweet.created_at);
         linkToTweet = "<a href=\"https://twitter.com/" + tweet.user + "/statuses/" + tweet.id + "\">" + tweetPostTime + "</a>";
         // TODO add the twitter user full name once we have it
-        div = $("<div></div>")
-          .addClass("tweet-user")
-          .append($("<div></div>")
-            .addClass("twitter-posttime")
+        div = $('<div></div>')
+          .addClass('tweet-user')
+          .append($('<div></div>')
+            .addClass('twitter-posttime')
             .html(linkToTweet))
-          .append($("<a></a>")
-            .attr("href", "https://twitter.com/" + tweet.user)
-            .append($("<img>")
-              .attr("src", tweet.user_profile_image))
-            .append($("<div></div>")
-              .append($("<span></span>")
-                .addClass("twitter-fullname")
+          .append($('<a></a>')
+            .attr('href', 'https://twitter.com/' + tweet.user)
+            .append($('<img>')
+              .attr('src', tweet.user_profile_image))
+            .append($('<div></div>')
+              .append($('<span></span>')
+                .addClass('twitter-fullname')
                 .html(tweet.user_name))
-              .append($("<span></span>")
-                .addClass("twitter-username")
-                .html("@" + tweet.user))));
+              .append($('<span></span>')
+                .addClass('twitter-username')
+                .html('@' + tweet.user))));
         li.append(div);
 
-        tweetText = $("<div></div>")
-          .addClass("tweet-text")
+        tweetText = $('<div></div>')
+          .addClass('tweet-text')
           .html(this.linkify(tweet.text));
         li.append(tweetText);
 
-        replyLink = $("<a></a>")
-          .attr("href", "https://twitter.com/intent/favorite?in_reply_to=" + tweet.id)
-          .addClass("tweet-reply-action")
-          .attr("title", "Reply")
-          .html("<span></span>Reply");
+        replyLink = $('<a></a>')
+          .attr('href', 'https://twitter.com/intent/favorite?in_reply_to=' + tweet.id)
+          .addClass('tweet-reply-action')
+          .attr('title', 'Reply')
+          .html('<span></span>Reply');
 
-        reTweetLink = $("<a></a>")
-          .attr("href", "https://twitter.com/intent/retweet?tweet_id=" + tweet.id)
-          .addClass("tweet-retweet-action")
-          .attr("title", "Retweet")
-          .html("<span></span>Retweet");
+        reTweetLink = $('<a></a>')
+          .attr('href', 'https://twitter.com/intent/retweet?tweet_id=' + tweet.id)
+          .addClass('tweet-retweet-action')
+          .attr('title', 'Retweet')
+          .html('<span></span>Retweet');
 
-        favoriteLink = $("<a></a>")
-          .attr("href", "https://twitter.com/intent/favorite?tweet_id=" + tweet.id)
-          .addClass("tweet-favorite-action")
-          .attr("title", "Favorite")
-          .html("<span></span>Favorite");
+        favoriteLink = $('<a></a>')
+          .attr('href', 'https://twitter.com/intent/favorite?tweet_id=' + tweet.id)
+          .addClass('tweet-favorite-action')
+          .attr('title', 'Favorite')
+          .html('<span></span>Favorite');
 
-        ul = $("<ul></ul>").addClass("tweet-actions")
-          .append($("<li></li>").append(replyLink))
-          .append($("<li></li>").append(reTweetLink))
-          .append($("<li></li>").append(favoriteLink));
+        ul = $('<ul></ul>').addClass('tweet-actions')
+          .append($('<li></li>').append(replyLink))
+          .append($('<li></li>').append(reTweetLink))
+          .append($('<li></li>').append(favoriteLink));
 
-        div = $("<div></div>").append(ul);
+        div = $('<div></div>').append(ul);
         li.append(div);
 
         ol.append(li);
       }
 
-      $("#twitter-alm-timeline").append(ol);
+      $('#twitter-alm-timeline').append(ol);
 
-      var doi = encodeURI($('meta[name=citation_doi]').attr("content"));
+      var doi = encodeURI($('meta[name=citation_doi]').attr('content'));
       if (events.length > minDisplayEventCount) {
-        $("#twitter-alm-timeline").append(
-          $("<button></button>")
-            .html("Load More")
+        $('#twitter-alm-timeline').append(
+          $('<button></button>')
+            .html('Load More')
             .click(function () {
-              $("#twitter-alm-timeline li.tweet-entry.hide").removeClass("hide").addClass("display");
-              var a = $("<a></a>").attr("href", '/article/twitter/info:doi/' + doi).html("View all tweets");
-              $(this).html("").append(a);
-              $(this).css("background-image", "none");
+              $('#twitter-alm-timeline li.tweet-entry.hide').removeClass('hide').addClass('display');
+              var a = $('<a></a>').attr('href', '/article/twitter/info:doi/' + doi).html('View all tweets');
+              $(this).html('').append(a);
+              $(this).css('background-image', 'none');
             }
           )
         );
       } else {
-        $("#twitter-alm-timeline").append(
-          $("<button></button>").append($("<a></a>").attr("href", '/article/twitter/info:doi/' + doi).html("View all tweets")).css("background-image", "none")
+        $('#twitter-alm-timeline').append(
+          $('<button></button>').append($('<a></a>').attr('href', '/article/twitter/info:doi/' + doi).html('View all tweets')).css('background-image', 'none')
         );
       }
 
-      $("#twitter-alm-timeline").prepend(
-        $("<div></div>")
-          .addClass("tweet-header")
-          .append($("<img>").addClass("tweet-header-logo").attr("src", "/images/tweet_bird_blue_32.png"))
-          .append($("<b></b>").html("Archived Tweets"))
+      $('#twitter-alm-timeline').prepend(
+        $('<div></div>')
+          .addClass('tweet-header')
+          .append($('<img>').addClass('tweet-header-logo').attr('src', '/images/tweet_bird_blue_32.png'))
+          .append($('<b></b>').html('Archived Tweets'))
       );
     }
   }
@@ -417,27 +436,27 @@ $.fn.twitter = function () {
     var now = new Date().getTime();
     // difference in hours
     var timeDiff = Math.round((now - tweetDate) / 1000 / 60 / 60);
-    var output = "";
+    var output = '';
     var yearInHours = 365 * 24;
 
     if (timeDiff > yearInHours) {
-      output = $.datepicker.formatDate("d M y", tweetDate);
+      output = $.datepicker.formatDate('d M y', tweetDate);
     } else if (timeDiff >= 24.0) {
       // day month
-      output = $.datepicker.formatDate("d M", tweetDate);
+      output = $.datepicker.formatDate('d M', tweetDate);
     } else {
       if (timeDiff >= 1.0) {
         // hour
-        output = Math.round(timeDiff) + "h";
+        output = Math.round(timeDiff) + 'h';
       } else {
         // minute
         timeDiff = (now - tweetDate) / 1000 / 60;
         if (timeDiff >= 1.0) {
-          output = Math.round(timeDiff) + "m";
+          output = Math.round(timeDiff) + 'm';
         } else {
           // second
           timeDiff = (now - tweetDate) / 1000;
-          output = Math.round(timeDiff) + "s";
+          output = Math.round(timeDiff) + 's';
         }
       }
     }

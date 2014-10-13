@@ -392,7 +392,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 }
 
-//RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
+// RIGHT COLUMN STYLES
 
 .dload-menu {
   @include clearfix;
@@ -588,13 +588,6 @@ body.article .ui-widget-overlay {
   }
 }
 
-.twitter-container {
-  @extend .aside-container;
-  h3 {
-    background: image-url('icon.twtr.32.png') no-repeat 0 0;
-    padding-left: 40px;
-  }
-}
 
 .subject-areas-container {
   @extend .aside-container;
@@ -704,8 +697,16 @@ body.article .ui-widget-overlay {
     }
   }
 }
-.truncate_term {
-  @include truncated($width: 140px);
+
+
+.twitter-container {
+  @extend .aside-container;
+
+  h3 {
+    background: image-url('icon.twtr.32.png') no-repeat 0 0;
+    background-size: 20px;
+    padding-left: 25px;
+  }
 }
 
 

@@ -30,7 +30,7 @@ import java.util.List;
 /**
   A utility class for creation and management of HTTP messages
  */
-public class MessageUtil {
+public class HttpMessageUtil {
 
   /**
    * Names of headers that, on a request from the client, should be passed through on our request to the service

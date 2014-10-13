@@ -6,6 +6,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Lists;
 import com.google.common.net.HttpHeaders;
+import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.*;
 import org.apache.http.client.methods.*;
@@ -26,9 +28,9 @@ import java.util.Enumeration;
 import java.util.List;
 
 /**
-  A utility class for creation and management of HTTP requests
+  A utility class for creation and management of HTTP messages
  */
-public class RequestUtil {
+public class MessageUtil {
 
   /**
    * Names of headers that, on a request from the client, should be passed through on our request to the service
@@ -69,6 +71,7 @@ public class RequestUtil {
       IOUtils.copy(streamFromService, streamToClient);
     }
   }
+
 
   /**
    * Return a list of headers from a request, using an optional whitelist

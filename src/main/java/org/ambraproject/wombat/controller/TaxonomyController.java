@@ -91,13 +91,7 @@ public class TaxonomyController {
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
     HttpUriRequest req = MessageUtil.buildRequest(forwardedUrl, "POST", MessageUtil.getRequestHeaders(request),
             MessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
-    try (CloseableHttpResponse responseFromService = soaService.getResponse(req)) {
-      MessageUtil.copyResponseWithHeaders(responseFromService, responseToClient);
-    } catch (ServiceRequestException e) {
-      responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-    } catch (EntityNotFoundException e) {
-      responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
-    }
+    soaService.forwardResponse(req, responseToClient);
   }
 
 }

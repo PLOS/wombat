@@ -6,6 +6,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Lists;
 import com.google.common.net.HttpHeaders;
+import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.*;
 import org.apache.http.client.methods.*;
@@ -69,6 +71,7 @@ public class MessageUtil {
       IOUtils.copy(streamFromService, streamToClient);
     }
   }
+
 
   /**
    * Return a list of headers from a request, using an optional whitelist

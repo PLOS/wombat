@@ -3,7 +3,15 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.*;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.LinkedListMultimap;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Multimaps;
+import com.google.common.collect.Ordering;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -14,7 +22,6 @@ import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.TextUtil;
-import org.ambraproject.wombat.util.XmlExcerptTransformation;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +44,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.SortedMap;
 
 /**
  * Controller for rendering an article.
@@ -85,7 +100,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("article", articleMetadata);
     model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     model.addAttribute("articleText", articleHtml);
-    model.addAttribute("amendments", fillAmendments(articleMetadata));
+    model.addAttribute("amendments", fillAmendments(site, articleMetadata));
     addCrossPublishedJournals(request, model, site, articleMetadata);
     requestAuthors(model, articleId);
     requestComments(model, articleId);
@@ -184,7 +199,7 @@ public class ArticleController extends WombatController {
    * @param articleMetadata the article metadata
    * @return a map from amendment type labels to related article objects
    */
-  private Map<String, List<Object>> fillAmendments(Map<?, ?> articleMetadata) throws IOException {
+  private Map<String, List<Object>> fillAmendments(Site site, Map<?, ?> articleMetadata) throws IOException {
     List<Map<String, ?>> relatedArticles = (List<Map<String, ?>>) articleMetadata.get("relatedArticles");
     if (relatedArticles == null || relatedArticles.isEmpty()) {
       return ImmutableMap.of();
@@ -211,7 +226,7 @@ public class ArticleController extends WombatController {
       // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
       String amendmentType = (String) amendment.get("type");
       if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
-        String body = getAmendmentBody(amendmentId);
+        String body = getAmendmentBody(site, amendmentId);
         amendment.put("body", body);
       }
     }
@@ -430,7 +445,8 @@ public class ArticleController extends WombatController {
    *
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
-  private String getAmendmentBody(final String articleId) throws IOException {
+  private String getAmendmentBody(final Site site, final String articleId) throws IOException {
+    Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(articleId);
     String cacheKey = "amendmentBody:" + articleId;
     String xmlAssetPath = "assetfiles/" + articleId + ".xml";
@@ -459,12 +475,14 @@ public class ArticleController extends WombatController {
         // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
         Node bodyNode = document.getElementsByTagName("body").item(0);
 
-        // Convert XML excerpt to renderable HTML. Undesirable hacks follow.
-        // See class-level Javadoc on XmlExcerptTransformation.
+        // Convert XML excerpt to renderable HTML.
+        // TODO: Transform without intermediate buffering into String?
         String bodyXml = TextUtil.recoverXml(bodyNode);
-        String bodyHtml = XmlExcerptTransformation.transform(bodyXml);
-
-        return bodyHtml;
+        try {
+          return articleTransformService.transformExcerpt(site, bodyXml, null);
+        } catch (TransformerException e) {
+          throw new RuntimeException(e);
+        }
       }
     });
   }

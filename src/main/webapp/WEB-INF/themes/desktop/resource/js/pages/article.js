@@ -87,57 +87,11 @@
   };
 
 
-  subject_flags = function(){
-    $(".taxo-flag").on("click", function(){
-      $(this).next().css('visibility','visible');
-     // if ( $(".taxo-tooltip:visible") ){console.log('yes')}
-    });
-
-    $(".taxo-tooltip button").on("click", function(e){
-        var flagValue = $(this).val();
-        var articleDoi = $("meta[name='dc.identifier']").attr('content');
-        articleJournal = articleDoi.replace(/[/.]/g,"");
-   /*   var showing = $('.taxo-confirm').attr("display"); //console.log(showing);
-      if ( showing === "block" ) {console.log('yes thanks')}*/
-      // if localStorage is present, use that
-      if (('localStorage' in window) && window.localStorage !== null) {
-
-        // easy object property API
-        localStorage[articleJournal] = flagValue;
-
-      } else {
-
-        // without sessionStorage we'll have to use a far-future cookie
-        //   with document.cookie's awkward API :(
-        var date = new Date();
-        date.setTime(date.getTime()+(365*24*60*60*1000));
-        var expires = date.toGMTString();
-        var cookiestr = "'"+articleJournal +"="+ flagValue+
-          ' expires='+expires+'; path=/';
-        document.cookie = cookiestr;
-      }
-       $('.taxo-confirm').css('display','block');
-       $('.taxo-explain').css('display','none');
-    });
-
-   /* $('html').on('click', function(){
-       $('.taxo-tooltip').css('visibility','hidden');
-    });*/
-  };
-
-  subject_areas = function() {
-    //apply truncation via js because the css width needs to be auto
-    $("#subjectList li").each(function () {
-      var truncTerm = $(this).find('.taxo-term');
-      var getWidth = $(truncTerm).width();
-      if (getWidth > 135) {
-        return $(truncTerm).css('width', '140px');
-      }
-    });
-  };
 
 
   $( document ).ready(function() {
+    //global variable because it's used in several scripts for the article section
+    article_doi = $("meta[name='dc.identifier']").attr('content');
 
     $(".preventDefault").on('click', function (e) {
       e.preventDefault();
@@ -161,9 +115,13 @@
     // initialize tooltip_hover for everything
     tooltip_hover.init();
 
-    var init_subject_truncation = subject_areas();
-    var init_subject_flags = subject_flags();
+
+
+
+
   });
 
 }(jQuery));
+
+
 

@@ -12,15 +12,13 @@
 
       <li>
         <a class="taxo-term" title="Search for articles about ${categoryTerm}" href='${legacyUrlPrefix}search/advanced?unformattedQuery=subject%3A%22${categoryTerm?url}%22'>${categoryTerm}</a>
-          <span
-            data-articleDoi="${article.doi}"
-            data-categoryname="${categoryTerm}"
-            class="taxo-flag">
-          </span>
+          <span class="taxo-flag"
+                data-categoryname="${categoryTerm}">&nbsp;</span>
           <div class="taxo-tooltip"><p class="taxo-explain">Is the Subject Area <strong>"${categoryTerm}"</strong> applicable to this article?
-          <button data-js-toggle="toggle_trigger" id="flagYes" value="${categoryTerm}">Yes</button>
-          <button data-js-toggle="toggle_trigger" id="flagNo" value="flagno">No</button></p>
-          <p data-visibility="none" data-js-toggle="toggle_trigger" class="taxo-confirm">Thanks for your feedback.</p></div>
+            <button id="noFlag" data-action="remove">Yes</button>
+            <button id="flagIt" value="flagno" data-action="add">No</button></p>
+            <p class="taxo-confirm">Thanks for your feedback.</p>
+          </div>
       </li>
     </#list>
   </ul>

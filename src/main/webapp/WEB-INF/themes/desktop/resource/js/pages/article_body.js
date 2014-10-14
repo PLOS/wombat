@@ -22,14 +22,14 @@
   }
 
   /// write article nav
-  $article = $('#artText');
+  $article = $('.article-content');
 
   $('#nav-article').buildNav({
     content: $article
   });
 
   $('#nav-article').floatingNav({
-    sections: $article.children()
+    sections: $article.find('div.toc-section')
   });
 
   addMediaCoverageLink();

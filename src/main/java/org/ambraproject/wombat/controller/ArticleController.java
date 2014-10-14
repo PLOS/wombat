@@ -1,14 +1,9 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Function;
+import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimaps;
+import com.google.common.collect.*;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -19,6 +14,7 @@ import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.TextUtil;
+import org.ambraproject.wombat.util.XmlExcerptTransformation;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,21 +23,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Controller for rendering an article.
@@ -87,6 +83,7 @@ public class ArticleController extends WombatController {
       throw new ArticleNotFoundException(articleId);
     }
     model.addAttribute("article", articleMetadata);
+    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(articleMetadata));
     addCrossPublishedJournals(request, model, site, articleMetadata);
@@ -152,12 +149,42 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Check related articles for ones that amend this article and return them for special display.
+   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a given
+   * category path)
+   * @param articleMetadata
+   * @return a sorted list of category terms
+   */
+  private List<String> getCategoryTerms(Map<?, ?> articleMetadata) {
+    List<Map<String, ?>> categories = (List<Map<String, ?>>) articleMetadata.get("categories");
+    if (categories == null || categories.isEmpty()) {
+      return ImmutableList.of();
+    }
+
+    // create a map of terms/weights (effectively removes duplicate terms through the mapping)
+    Map<String, Double> termsMap = new HashMap<>();
+    for (Map<String, ?> category: categories){
+      String[] categoryTerms = ((String)category.get("path")).split("/");
+      String categoryTerm = categoryTerms[categoryTerms.length - 1];
+      termsMap.put(categoryTerm, (Double)category.get("weight"));
+    }
+
+    // use Guava for sorting, first on weight (descending), then on category term
+    Comparator valueComparator = Ordering.natural().reverse().onResultOf(Functions.forMap(termsMap)).compound(Ordering.natural());
+    SortedMap<String, Double> sortedTermsMap = ImmutableSortedMap.copyOf(termsMap, valueComparator);
+
+    return new ArrayList<>(sortedTermsMap.keySet());
+
+  }
+
+
+  /**
+   * Check related articles for ones that amend this article. Set them up for special display, and retrieve additional
+   * data about those articles from the service tier.
    *
    * @param articleMetadata the article metadata
    * @return a map from amendment type labels to related article objects
    */
-  private static Map<String, List<Object>> fillAmendments(Map<?, ?> articleMetadata) {
+  private Map<String, List<Object>> fillAmendments(Map<?, ?> articleMetadata) throws IOException {
     List<Map<String, ?>> relatedArticles = (List<Map<String, ?>>) articleMetadata.get("relatedArticles");
     if (relatedArticles == null || relatedArticles.isEmpty()) {
       return ImmutableMap.of();
@@ -173,6 +200,22 @@ public class ArticleController extends WombatController {
     if (amendments.keySet().size() > 1) {
       applyAmendmentPrecedence(amendments);
     }
+
+    for (Object amendmentObj : amendments.values()) {
+      Map<String, Object> amendment = (Map<String, Object>) amendmentObj;
+      String amendmentId = (String) amendment.get("doi");
+
+      Map<String, ?> amendmentMetadata = (Map<String, ?>) requestArticleMetadata(amendmentId);
+      amendment.putAll(amendmentMetadata);
+
+      // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
+      String amendmentType = (String) amendment.get("type");
+      if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
+        String body = getAmendmentBody(amendmentId);
+        amendment.put("body", body);
+      }
+    }
+
     return Multimaps.asMap(amendments);
   }
 
@@ -380,6 +423,50 @@ public class ArticleController extends WombatController {
 
     model.addAttribute("correspondingAuthors", correspondingAuthors);
     model.addAttribute("equalContributors", equalContributors);
+  }
+
+  /**
+   * Retrieve the body of an amendment article from its XML file. The returned value is cached.
+   *
+   * @return
+   */
+  private String getAmendmentBody(final String articleId) throws IOException {
+    Preconditions.checkNotNull(articleId);
+    String cacheKey = "amendmentBody:" + articleId;
+    String xmlAssetPath = "assetfiles/" + articleId + ".xml";
+
+    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
+      @Override
+      public String read(InputStream stream) throws IOException {
+        Document document;
+        try {
+          DocumentBuilder documentBuilder; // not thread-safe
+          try {
+            documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+          } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e); // using default configuration; should be impossible
+          }
+
+          try {
+            document = documentBuilder.parse(stream);
+          } catch (SAXException e) {
+            throw new RuntimeException("Invalid XML syntax for: " + articleId, e);
+          }
+        } finally {
+          stream.close();
+        }
+
+        // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
+        Node bodyNode = document.getElementsByTagName("body").item(0);
+
+        // Convert XML excerpt to renderable HTML. Undesirable hacks follow.
+        // See class-level Javadoc on XmlExcerptTransformation.
+        String bodyXml = TextUtil.recoverXml(bodyNode);
+        String bodyHtml = XmlExcerptTransformation.transform(bodyXml);
+
+        return bodyHtml;
+      }
+    });
   }
 
   /**

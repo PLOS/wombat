@@ -1,6 +1,6 @@
 // layout the page
 
-.article-container {
+.article-body {
   @extend .plos-row;
 }
 
@@ -9,9 +9,112 @@
   @extend .hide-for-print;
 }
 
-.article-text {
-  @include plos-grid-column(550, $gutter: none, $float:right)
+.article-content {
+
+  @include plos-grid-column(550, $gutter: none, $float: right);
 }
+
+/// TODO - PG- This needs to be in more general css. I'm just to work out the kinks so I can check this styling for the amendment notice into master - that work will be done in ticket DPRO-477 which is being worked on concurrently
+
+$line-height: rem-calc(18);
+$line-height-large: ($line-height * 2);
+$line-height-med: ($line-height * 1.5);
+$line-height-small: ($line-height * .5);
+
+// callout is for blockquotes.
+@mixin callout($clr-body: $clr-callout-bg) {
+  padding: $line-height $pad-default 1px $pad-default;  //TODO -  why is this 1px - not sure but its the only thing that seems to work
+  background: $clr-body;
+  margin-bottom: $line-height;
+}
+
+.callout-standard {
+  @include callout();
+}
+
+.callout-alert {
+  @include callout($clr-warning-bg);
+}
+.article-content {
+
+  p, ul, ol, li, h2, h3, h4, h5, div {
+    line-height: $line-height;
+    margin-bottom: $line-height;
+  }
+  ul.nlm-list, ul.bulletlist {
+    list-style-type: none;
+    li {
+      padding-left: $pad-default;
+    }
+    li:before {
+      content: '>';
+      font-size: rem-calc(8);
+      line-height: $line-height;
+      display: inline-block;
+      margin-left: -$pad-small;
+      position: absolute
+    }
+    // to do put in variables
+  }
+  h2, h3, h4, h5 {
+    font-family: $font-face-plain;
+    font-weight: bold;
+  }
+  h2, h3 {
+    font-size: $txt-size-h3;
+    margin-top: $line-height-small
+  }
+  h3 {
+    font-weight: normal
+  }
+
+
+  .amendment-eoc, .amendment-retraction {
+    @extend .callout-alert;
+    h2 {
+      color: $clr-warning;
+      margin-top: 0;
+      &:before {
+        //TODO - make this a mixin? do we adjust line-height on all icons?
+        @extend .icon-alert;
+        font-size: $txt-size-medium;
+        padding-right: $pad-xsmall;
+        vertical-align: top;
+        line-height: $line-height;
+      }
+    }
+  }
+
+  .amendment-correction {
+    @extend .callout-standard;
+    h2{
+      &:before{
+        content: '';
+        @extend .icon-correction;
+        margin-right: $pad-xsmall;
+        vertical-align: top;
+        line-height: $line-height;
+
+      }
+    }
+  }
+
+  .amendment {
+    .amendment-link {
+      font-weight: bold;
+      &:before {
+        content: '| ';
+        color: $clr-body-text;
+        font-weight: normal;
+      }
+    }
+    .amendment-date {
+      font-weight: bold;
+    }
+  }
+}
+
+
 
 // TODO - write some docs
 @mixin border-width-adjust($border-width: rem-calc(2), $spacing: $pad-small, $border-color: $clr-highlight) {
@@ -19,12 +122,13 @@
   padding-left: ($spacing - $border-width);
 }
 
-@mixin nav-side( $txt-color: $grey-med, $pad-left: $pad-small, $pad-y:$pad-xsmall, $margin-bottom: $pad-xsmall) {
+@mixin nav-side($txt-color: $grey-med, $pad-left: $pad-small, $pad-y: rem-calc(2), $margin-bottom: $pad-xsmall) {
   @extend .no-bullet;
   margin-bottom: ($margin-bottom * 2);
   padding-bottom: ($margin-bottom * 2);
 
-  li{ padding: $pad-y 0;
+  li {
+    padding: $pad-y 0;
     padding-left: $pad-left;
     margin: 0 0 $margin-bottom 0;
 
@@ -34,7 +138,7 @@
   }
 }
 
-@mixin nav-enhanced( $txt-color-hover: $clr-body-text, $spacing-left: $pad-small, $txt-color: $grey-med) {
+@mixin nav-enhanced($txt-color-hover: $clr-body-text, $spacing-left: $pad-small, $txt-color: $grey-med) {
   @include nav-side;
   li {
 
@@ -65,15 +169,26 @@
   .nav-page {
     @include nav-enhanced();
     border-bottom: 1px solid $grey-med;
+    li{
+      &.amendment-correction{
+        font-weight: bold;
+      }
+      &.amendment-eoc a{
+        font-weight: bold;
+        color:$clr-warning
+      }
+      &.amendment-retraction a{
+        font-weight: bold;
+        color:$clr-warning
+      }
+    }
   }
 
-  .nav-secondary{
+  .nav-secondary {
     @extend .no-bullet;
     @include nav-side($txt-color: $clr-body-text);
   }
 }
-
-
 
 @media print {
   .article-text {

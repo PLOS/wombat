@@ -2,7 +2,7 @@
 <#macro amendmentNotice amendmentObjects type title linkText showCount>
 <div class="amendment amendment-${type} toc-section">
   <#assign tocTitle>
-  <#t/>${title}<#if showCount> (${amendmentObjects?size})</#if>
+    <#t/>${title}<#if showCount> (${amendmentObjects?size})</#if>
   </#assign>
   <a data-toc="amendment-${type}" title="${tocTitle}" id="amendment-${type}"></a>
 
@@ -15,20 +15,20 @@
     </#if>
     <div class="amendment-citation">
       <p>
-      <#if amendment.date??>
-        <span class="amendment-date">
-        <@formatJsonDate date="${amendment.date}" format="d MMM yyyy" />:
-      </span>
-      </#if>
+        <#if amendment.date??>
+          <span class="amendment-date">
+            <@formatJsonDate date="${amendment.date}" format="d MMM yyyy" />:
+          </span>
+        </#if>
 
-      <@displayCitation amendment false />
+        <@displayCitation amendment false />
 
-      <#if amendment.doi??>
+        <#if amendment.doi??>
 
-        <@siteLink path="article?id=" ; path>
-          <a href="${path + amendment.doi}" class="amendment-link">${linkText}</a>
-        </@siteLink>
-      </#if>
+          <@siteLink path="article?id=" ; path>
+            <a href="${path + amendment.doi}" class="amendment-link">${linkText}</a>
+          </@siteLink>
+        </#if>
       </p>
     </div>
   </#list>

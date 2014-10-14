@@ -90,8 +90,6 @@
 
 
   $( document ).ready(function() {
-    //global variable because it's used in several scripts for the article section
-    article_doi = $("meta[name='dc.identifier']").attr('content');
 
     $(".preventDefault").on('click', function (e) {
       e.preventDefault();
@@ -114,10 +112,6 @@
 
     // initialize tooltip_hover for everything
     tooltip_hover.init();
-
-
-
-
 
   });
 

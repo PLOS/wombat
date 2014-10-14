@@ -5,7 +5,7 @@
     defaults = {
       margin:             90,
       sections:           '',
-      parentContainer:    '.article-body',
+      parentContainer:    '.article-content',
       sectionAnchor:      'a[data-toc]',
       sectionAnchorAttr:  'data-toc',
       classActive:        'active',

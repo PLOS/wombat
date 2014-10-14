@@ -32,6 +32,8 @@
       div_exists : 1
     },
 
+
+
     init: function () {
       s = this.settings;
       this.scroll_it();
@@ -44,13 +46,31 @@
     },
 
     scroll_it :  function () {
+
       if (this.check_div() > 0) {
+         $(window).on('load',
+            function () {
+
+              var this_height = $(body).scrollTop(),
+              total_height = this_height + 100;
+$(this).animate({scrollTop: total_height}, 400, function() {
+          // location.hash = targetOffset;
+        });
+
+            });
         return $(window).on('scroll', function () {
           //show_onscroll is in resource/js/components/
           show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
-        });
-      }
-    },
+         var height = $(s.hidden_div).innerHeight();
+
+      });
+
+
+
+
+      };
+      },
+
 
     close_floater : function () {
       s.floater.find('.logo-close').on('click', function () {

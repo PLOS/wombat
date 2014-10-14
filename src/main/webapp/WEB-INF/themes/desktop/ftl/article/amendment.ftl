@@ -36,7 +36,9 @@
 </#macro>
 
 <#if amendments.correction??>
-  <@amendmentNotice amendments.correction "correction" "Corrections" "View correction" true />
+  <@amendmentNotice amendments.correction, "correction",
+  (amendments.correction?size == 1)?string("Correction", "Corrections"),
+  "View correction", true />
 </#if>
 <#if amendments.eoc??>
   <@amendmentNotice amendments.eoc "eoc" "Expression of Concern" "View expression of concern" false />

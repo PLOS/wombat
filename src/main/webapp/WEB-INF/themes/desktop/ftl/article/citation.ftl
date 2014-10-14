@@ -36,7 +36,7 @@
   et al.
   </#if>
 
-  <#if citation.year??>(${citation.year})</#if>
+  <#if citation.date??>(<@formatJsonDate date="${citation.date}" format="yyyy" />)</#if>
 
   <#if citation.title??>
   ${citation.title}<#if !citation.title?ends_with('?')>.</#if>

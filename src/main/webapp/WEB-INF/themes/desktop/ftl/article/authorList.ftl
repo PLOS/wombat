@@ -8,7 +8,8 @@
 
   <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if>
        <#if hidden> data-js-toggle="toggle_target" data-visibility= "none"</#if> >
-  <#if hasMeta> <a  <#else> <span </#if>data-author-id="${author_index?c}" class="author-name" >
+  <#if hasMeta> <a  <#else> <span </#if>data-author-id="${author_index?c}" class="author-name<#if
+!hasMeta> no-author-data</#if>" >
 
     ${author.fullName}<#-- no space
  --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space

@@ -41,7 +41,7 @@ $line-height-small: ($line-height * .5);
     line-height: $line-height;
     margin-bottom: $line-height;
   }
-  ul.nlm-list, ul.bulletlist {
+  ul {
     list-style-type: none;
     li {
       padding-left: $pad-default;

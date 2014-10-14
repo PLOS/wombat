@@ -1,7 +1,11 @@
 <#include "citation.ftl" />
-<#macro amendmentNotice amendmentObjects type title linkText>
+<#macro amendmentNotice amendmentObjects type title linkText showCount>
 <div class="amendment amendment-${type} toc-section">
-  <a data-toc="amendment-${type}" title="${title}" id="amendment-${type}"></a>
+  <#assign tocTitle>
+  <#t/>${title}<#if showCount> (${amendmentObjects?size})</#if>
+  </#assign>
+  <a data-toc="amendment-${type}" title="${tocTitle}" id="amendment-${type}"></a>
+
   <h2>${title}</h2>
   <#list amendmentObjects as amendment>
     <#if amendment.body??>
@@ -32,11 +36,11 @@
 </#macro>
 
 <#if amendments.correction??>
-  <@amendmentNotice amendments.correction "correction" "Corrections" "View correction" />
+  <@amendmentNotice amendments.correction "correction" "Corrections" "View correction" true />
 </#if>
 <#if amendments.eoc??>
-  <@amendmentNotice amendments.eoc "eoc" "Expression of Concern" "View expression of concern" />
+  <@amendmentNotice amendments.eoc "eoc" "Expression of Concern" "View expression of concern" false />
 </#if>
 <#if amendments.retraction??>
-  <@amendmentNotice amendments.retraction "retraction" "Retraction" "View retraction" />
+  <@amendmentNotice amendments.retraction "retraction" "Retraction" "View retraction" false />
 </#if>

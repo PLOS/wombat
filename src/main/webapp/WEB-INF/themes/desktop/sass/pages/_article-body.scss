@@ -112,6 +112,12 @@ $line-height-small: ($line-height * .5);
       font-weight: bold;
     }
   }
+
+  //  special handling for xml transforms.
+  ol.references{
+    span.label{@extend .hide;}
+  }
+
 }
 
 

@@ -15,13 +15,10 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.util.MessageUtil;
+import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,8 +86,8 @@ public class TaxonomyController {
           throws IOException {
     // pass through any article category flagging ajax traffic to/from rhino
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
-    HttpUriRequest req = MessageUtil.buildRequest(forwardedUrl, "POST", MessageUtil.getRequestHeaders(request),
-            MessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
+    HttpUriRequest req = HttpMessageUtil.buildRequest(forwardedUrl, "POST", HttpMessageUtil.getRequestHeaders(request),
+            HttpMessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
     soaService.forwardResponse(req, responseToClient);
   }
 

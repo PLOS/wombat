@@ -3,7 +3,7 @@ package org.ambraproject.wombat.service.remote;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.util.CacheParams;
-import org.ambraproject.wombat.util.MessageUtil;
+import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -13,7 +13,6 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,7 +80,7 @@ public class SoaServiceImpl implements SoaService {
   @Override
   public void forwardResponse(HttpUriRequest requestToService, HttpServletResponse responseToClient) throws IOException {
       try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {
-        MessageUtil.copyResponseWithHeaders(responseFromService, responseToClient);
+        HttpMessageUtil.copyResponseWithHeaders(responseFromService, responseToClient);
       } catch (EntityNotFoundException e) {
         responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
       } catch (Exception e) {

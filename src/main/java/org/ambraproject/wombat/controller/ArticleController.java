@@ -426,9 +426,9 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Retrieve the body of an amendment article from its XML file. The returned value is cached.
+   * Retrieve and transform the body of an amendment article from its XML file. The returned value is cached.
    *
-   * @return
+   * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
   private String getAmendmentBody(final String articleId) throws IOException {
     Preconditions.checkNotNull(articleId);

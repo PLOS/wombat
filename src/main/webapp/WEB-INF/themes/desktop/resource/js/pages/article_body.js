@@ -23,22 +23,16 @@
 //  var hash = window.location.hash.substring(1);
 //  console.log("hash : " + hash);
 
-
-
-
     $('.article-body').click(function(event) {
       var $target = $(event.target),
           target_hash = $(event.target.hash),
-          target_hash_data = $target.attr('href'),
-
-
           title_height = $('.topVisible').innerHeight();
+      console.log("target_hash : " + target_hash);
       if (target_hash) {
-        var target_link = target_hash_data.replace('#', ''),
+        var target_hash_data = $target.attr('href'),
+            target_link = target_hash_data.replace('#', ''),
             a_tag = $("a[name='"+ target_link +"']");
-        console.log("target_hash : " + target_link);
 
-        console.log("a_tag : " + a_tag.attr('name'));
       var targetOffset = a_tag.offset().top - (title_height + 20 );
         event.preventDefault();
       $('body').animate({scrollTop: targetOffset}, 400, function() {

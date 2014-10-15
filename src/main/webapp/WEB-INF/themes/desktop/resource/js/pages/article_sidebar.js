@@ -1,6 +1,6 @@
 
 (function ($) {
-  var subject_areas, handleFlagClick;
+  var subject_areas, openTermTooltip, handleFlagClick;
 
   subject_areas = (function () {
 
@@ -23,15 +23,10 @@
    });
   })();
 
-  handleFlagClick = function () {
-
-   /* // get the data & containers needed*/
-    var targetSpan, categoryTerm, action, toolContainer, closeIt, flagButton, article_doi;
+  openTermTooltip = function () {
+    var targetSpan, toolContainer;
     targetSpan = this;
-    categoryTerm = $(targetSpan).data("categoryname");
-    action = $(targetSpan).hasClass("flagged") ? "remove" : "add";
     toolContainer = $(targetSpan).next();
-    article_doi = $("meta[name='dc.identifier']").attr('content');
 
     /*// show the tooltip*/
     $(toolContainer).addClass('activate');
@@ -52,9 +47,19 @@
       }
     });
 
+  };
+  $('.taxo-flag').on('click', openTermTooltip);
+
+  handleFlagClick = (function() {
     /*// handle the yes/no clicks, show confirmation, then close tooltip */
-    $(toolContainer).find('button').on('click', function () {
+    $('.taxo-tooltip button').on('click', function () {
+      /* // get the data & containers needed*/
+      var targetSpan, categoryTerm, action, toolContainer, closeIt, flagButton, article_doi;
       flagButton = this;
+      toolContainer = $(flagButton).parent().parent();
+      categoryTerm = $(toolContainer).data("categoryname");
+      targetSpan = $(toolContainer).prev();
+      article_doi = $("meta[name='dc.identifier']").attr('content');
       action = $(flagButton).data("action");
 
       $.ajax({
@@ -62,33 +67,32 @@
         url: siteUrlPrefix + 'taxonomy/flag/' + action,
         data: { 'categoryTerm': categoryTerm, 'articleDoi': article_doi },
         dataType: 'json',
-        error: function (jqXHR, textStatus, errorThrown) {
-          //console.log(errorThrown);
+        error: function (errorThrown) {
           $('#subjectErrors').append(errorThrown);
         },
         success: function () {
           action === "remove" ? $(targetSpan).removeClass("flagged") : $(targetSpan).addClass("flagged");
         }
       });
+
+      /* // add/remove from localStorage */
       action === "add" ? localStorage.setItem(categoryTerm, article_doi) : localStorage.removeItem(categoryTerm, article_doi);
 
       /*//hide p with buttons, show p with confirmation*/
       $(flagButton).parent().toggle().next().toggle();
 
-     /* //hide tooltip, set p with buttons back to block*/
+      /* //hide tooltip, set p with buttons back to block*/
       closeIt = window.setTimeout(function () {
-          $(toolContainer).removeClass('activate');
-          $(toolContainer).children('.taxo-explain').toggle();
-          $(toolContainer).children('.taxo-confirm').toggle();
-        }, 1000);
+        $(toolContainer).removeClass('activate');
+        $(toolContainer).children('.taxo-explain').toggle();
+        $(toolContainer).children('.taxo-confirm').toggle();
+        $('.taxo-flag').on('click', handleFlagClick);
+      }, 1000);
 
       var runTimeout = closeIt;
 
     });
-  };
-
-  $('.taxo-flag').on('click', handleFlagClick);
-
+  })();
 })(jQuery);
 
 

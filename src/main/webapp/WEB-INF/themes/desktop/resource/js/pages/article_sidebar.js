@@ -1,47 +1,46 @@
 
 (function ($) {
-  var subject_areas, handleFlagClick, init_subject_truncation;
-  article_doi = $("meta[name='dc.identifier']").attr('content');
+  var subject_areas, handleFlagClick;
 
-  subject_areas = function () {
-    var truncTerm, targetSpan, getWidth, categoryTerm, checkStorage;
+  subject_areas = (function () {
 
-    $("#subjectList li").each(function () {
+   var truncTerm, targetSpan, getWidth, categoryTerm, checkStorage;
+   $("#subjectList li").each(function () {
      /* //apply width via js if truncation is needed because the css width needs to be auto otherwise*/
-      truncTerm = $(this).find('.taxo-term');
-      targetSpan = $(truncTerm).next();
-      getWidth = $(truncTerm).width();
-      if (getWidth > 135) {
-        return $(truncTerm).css('width', '140px');
-      }
+     truncTerm = $(this).find('.taxo-term');
+     targetSpan = $(truncTerm).next();
+     getWidth = $(truncTerm).width();
+     if (getWidth > 134) {
+       return $(truncTerm).css('width', '140px');
+     }
 
-      /*//check in localstorage if any thing has already been flagged*/
-      categoryTerm = $(targetSpan).data("categoryname");
-      checkStorage = localStorage[categoryTerm];
-      if (checkStorage !== undefined) {
-        return $(targetSpan).addClass('flagged');
-      }
-    });
-  };
+     /*//check in localstorage if any thing has already been flagged*/
+     categoryTerm = $(targetSpan).data("categoryname");
+     checkStorage = localStorage[categoryTerm];
+     if (checkStorage !== undefined) {
+       return $(targetSpan).addClass('flagged');
+     }
+   });
+  })();
 
   handleFlagClick = function () {
 
    /* // get the data & containers needed*/
-    var targetSpan, categoryTerm, action, toolContainer, closeIt, flagButton;
+    var targetSpan, categoryTerm, action, toolContainer, closeIt, flagButton, article_doi;
     targetSpan = this;
     categoryTerm = $(targetSpan).data("categoryname");
     action = $(targetSpan).hasClass("flagged") ? "remove" : "add";
     toolContainer = $(targetSpan).next();
+    article_doi = $("meta[name='dc.identifier']").attr('content');
 
     /*// show the tooltip*/
-    //$(toolContainer).css('visibility', 'visible');
     $(toolContainer).addClass('activate');
+
     /*// close other open tooltips*/
     if ( $(toolContainer).parent().siblings().children('div').hasClass('activate') ){
-      $(toolContainer).parent().siblings().children('div').removeClass('activate')
+      $(toolContainer).parent().siblings().children('div').removeClass('activate');
       window.clearTimeout(closeIt);
     }
-
 
     /*// close tooltip if click outside of it*/
     $(document).on('click.closeOutside', function (event) {
@@ -53,7 +52,7 @@
       }
     });
 
-    /*// handle the yes/no clicks*/
+    /*// handle the yes/no clicks, show confirmation, then close tooltip */
     $(toolContainer).find('button').on('click', function () {
       flagButton = this;
       action = $(flagButton).data("action");
@@ -78,17 +77,18 @@
 
      /* //hide tooltip, set p with buttons back to block*/
       closeIt = window.setTimeout(function () {
-        $(toolContainer).removeClass('activate');
-        $(toolContainer).children('.taxo-explain').toggle();
-        $(toolContainer).children('.taxo-confirm').toggle();
-      }, 1000);
-      var checky = closeIt;
+          $(toolContainer).removeClass('activate');
+          $(toolContainer).children('.taxo-explain').toggle();
+          $(toolContainer).children('.taxo-confirm').toggle();
+        }, 1000);
+
+      var runTimeout = closeIt;
 
     });
   };
 
   $('.taxo-flag').on('click', handleFlagClick);
-  init_subject_truncation = subject_areas();
+
 })(jQuery);
 
 

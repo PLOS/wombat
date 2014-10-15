@@ -997,9 +997,9 @@
   <!-- 1/4/12: Ambra-specific template (creates article second-level heading) -->
   <xsl:template match="body/sec/sec/title">
     <xsl:call-template name="newline1"/>
-    <h4>
+    <h3>
       <xsl:apply-templates/>
-    </h4>
+    </h3>
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
@@ -1011,10 +1011,10 @@
 
   <!-- 1/4/12: Ambra-specific template (creates article third-level heading) -->
   <xsl:template match="body/sec/sec/sec/title">
-    <h5>
+    <h4>
       <xsl:apply-templates/>
       <xsl:call-template name="punctuation"/>
-    </h5>
+    </h4>
   </xsl:template>
 
   <!-- 1/4/12: BLOCK AND MISC TITLES -->
@@ -1026,9 +1026,9 @@
   <!-- 1/12/12: Ambra-specific template -->
   <xsl:template match="ack/sec/title">
     <xsl:call-template name="newline1"/>
-    <h4>
+    <h3>
       <xsl:apply-templates/>
-    </h4>
+    </h3>
     <xsl:call-template name="newline1"/>
   </xsl:template>
 

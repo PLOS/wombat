@@ -3,8 +3,8 @@
   var subject_areas, openTermTooltip, handleFlagClick;
 
   subject_areas = (function () {
-
    var truncTerm, targetSpan, getWidth, categoryTerm, checkStorage;
+
    $("#subjectList li").each(function () {
      /* //apply width via js if truncation is needed because the css width needs to be auto otherwise*/
      truncTerm = $(this).find('.taxo-term');
@@ -90,9 +90,9 @@
       }, 1000);
 
       var runTimeout = closeIt;
-
     });
   })();
+
 })(jQuery);
 
 

@@ -392,7 +392,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 }
 
-//RIGHT COLUMN STYLES. MIGHT SHOULD BE IN A SEPARATE FILE
+//RIGHT COLUMN STYLES
 
 .dload-menu {
   @include clearfix;
@@ -559,8 +559,6 @@ body.article .ui-widget-overlay {
 .related-articles-container {
   @extend .aside-container;
 
-
-
   ul {
     list-style: none;
     margin-left: 0;
@@ -587,8 +585,6 @@ body.article .ui-widget-overlay {
     color: $grey-tinytext; // TEMP PROD: change to grey-med-light
   }
 }
-
-
 
 .subject-areas-container {
   @extend .aside-container;
@@ -672,6 +668,7 @@ body.article .ui-widget-overlay {
         }
 
         button {
+          margin-top: $pad-small;
           margin-right: $pad-xsmall;
           line-height: 20px;
           background-color: $white;
@@ -682,12 +679,14 @@ body.article .ui-widget-overlay {
           color: $plos-default;
           cursor: pointer;
         }
+
         p.taxo-confirm {
           display: none;
           margin-top: 5px;
           line-height: 75px;
         }
       }
+
       .taxo-flag {
         margin-top: 5px;
         display: inline-block;

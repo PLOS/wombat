@@ -56,13 +56,19 @@ $line-height-small: ($line-height * .5);
     }
     // to do put in variables
   }
+
+  h1{
+
+  }
   h3, h4, h5 {
     font-family: $font-face-plain;
     font-weight: bold;
+    margin-bottom: $line-height-small;
   }
-  h2{font-family: $font-face-fancy; }
-  h3, h4 {
-    font-size: $txt-size-h3;
+  h2{font-family: $font-face-fancy;
+    margin-bottom: $line-height-med;}
+  h3,h4 {
+    font-size: $txt-size-medium;
     margin-top: $line-height-small
   }
   h4 {
@@ -74,7 +80,18 @@ $line-height-small: ($line-height * .5);
     margin:  $line-height 0;
   }
 
+ .articleinfo{
+   border:1px solid $clr-separator;
+   p{
+     margin-bottom: 0;
+     border-top: 1px solid $clr-separator;
+     padding: $line-height-small $pad-default;
+     &:first-child{
+       border-top: 0px none;
+     }
 
+   }
+ }
   .amendment-eoc, .amendment-retraction {
     @extend .callout-alert;
     h2 {

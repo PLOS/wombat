@@ -659,7 +659,9 @@ body.article .ui-widget-overlay {
         opacity: 1;
         @include single-transition(opacity);
         z-index: map-get($zindex, crossmark-tooltip);
-
+        &.activate {
+          visibility: visible;
+        }
         strong {
           display: block;
         }

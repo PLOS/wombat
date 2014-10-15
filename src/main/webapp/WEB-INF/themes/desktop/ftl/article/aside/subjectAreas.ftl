@@ -23,4 +23,5 @@
     </#list>
   </ul>
   </div>
+<div id="subjectErrors"></div>
 </#if>

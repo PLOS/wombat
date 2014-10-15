@@ -96,7 +96,7 @@
       <!-- abstracts -->
       <xsl:for-each select="abstract[not(@abstract-type) or (@abstract-type !='toc' and @abstract-type != 'teaser'
              and @abstract-type != 'editor' and @abstract-type != 'patient')]">
-        <div class="abstract">
+        <div class="abstract toc-section">
           <xsl:call-template name="abstract-title"/>
           <xsl:apply-templates select="*[not(self::title)]"/>
         </div>
@@ -758,8 +758,7 @@
   </xsl:template>
 
   <xsl:template name="make-section-class">
-    <xsl:attribute name="class">section</xsl:attribute>
-    <xsl:attribute name="class">toc-section</xsl:attribute>
+    <xsl:attribute name="class">section toc-section</xsl:attribute>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
@@ -769,7 +768,6 @@
       <xsl:call-template name="make-section-id"/>
       <xsl:call-template name="make-section-class"/>
       <xsl:if test="descendant::title[1] != ''">
-        <xsl:attribute name="class">toc-section</xsl:attribute>
         <xsl:element name="a">
           <xsl:attribute name="id">
             <xsl:value-of select="@id"/>
@@ -803,8 +801,7 @@
 
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template match="ref-list" name="ref-list">
-    <div>
-      <xsl:attribute name="class">toc-section</xsl:attribute>
+    <div class="toc-section">
       <xsl:choose>
         <xsl:when test="not(title)">
           <a id="refs" name="refs" data-toc="refs" title="References"/>
@@ -957,7 +954,6 @@
     <xsl:variable name="idx" select="count(preceding-sibling::abstract)"/>
     <xsl:variable name="abs_id">abstract<xsl:value-of select="$idx"/>
     </xsl:variable>
-    <xsl:attribute name="class">toc-section</xsl:attribute>
     <xsl:choose>
       <!-- if there's a title, use it -->
       <xsl:when test="title">
@@ -2492,8 +2488,7 @@
           select="*[not(self::title) and not(self::fn-group) and not(self::ack) and not(self::notes)]"/>
       <xsl:call-template name="newline1"/>
       <xsl:for-each select="//abstract[@abstract-type='patient']">
-        <div class="patient">
-          <xsl:attribute name="class">toc-section</xsl:attribute>
+        <div class="patient toc-section">
           <a id="patient" name="patient" data-toc="patient" title="Patient Summary"/>
           <h3>
             <xsl:value-of select="title"/>
@@ -2507,8 +2502,7 @@
   <!-- 1/4/12: Ambra-specific template (creates author contributions section) -->
   <xsl:template name="author-contrib">
     <xsl:if test="../front/article-meta/author-notes/fn[@fn-type='con']">
-      <div class="contributions">
-        <xsl:attribute name="class">toc-section</xsl:attribute>
+      <div class="contributions toc-section">
         <a id="authcontrib" name="authcontrib" data-toc="authcontrib"
            title="Author Contributions"/>
         <h3>Author Contributions</h3>
@@ -2530,10 +2524,9 @@
       <hr class="section-rule"/>
     </xsl:if>
     <xsl:call-template name="newline1"/>
-    <div>
+    <div class="toc-section">
       <xsl:call-template name="assign-id"/>
       <xsl:if test="not(title)">
-        <xsl:attribute name="class">toc-section</xsl:attribute>
         <a id="ack" name="ack" data-toc="ack" title="Acknowledgments"/>
         <h3>Acknowledgments</h3>
         <xsl:call-template name="newline1"/>

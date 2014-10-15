@@ -56,16 +56,22 @@ $line-height-small: ($line-height * .5);
     }
     // to do put in variables
   }
-  h2, h3, h4, h5 {
+  h3, h4, h5 {
     font-family: $font-face-plain;
     font-weight: bold;
   }
-  h2, h3 {
+  h2{font-family: $font-face-fancy; }
+  h3, h4 {
     font-size: $txt-size-h3;
     margin-top: $line-height-small
   }
-  h3 {
+  h4 {
     font-weight: normal
+  }
+
+  blockquote{
+    border-left: $pad-xsmall solid $clr-separator;
+    margin:  $line-height 0;
   }
 
 
@@ -100,6 +106,7 @@ $line-height-small: ($line-height * .5);
   }
 
   .amendment {
+    margin-bottom: $line-height-med;
     .amendment-link {
       font-weight: bold;
       &:before {

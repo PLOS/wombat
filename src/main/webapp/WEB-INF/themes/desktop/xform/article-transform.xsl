@@ -805,7 +805,7 @@
       <xsl:choose>
         <xsl:when test="not(title)">
           <a id="refs" name="refs" data-toc="refs" title="References"/>
-          <h3>References</h3>
+          <h2>References</h2>
           <xsl:call-template name="newline1"/>
         </xsl:when>
         <xsl:otherwise>
@@ -926,9 +926,9 @@
   <xsl:template match="body/sec/title">
     <!-- only output an h3 if the body/sec/title has content -->
     <xsl:if test="string(.)">
-      <h3>
+      <h2>
         <xsl:apply-templates/>
-      </h3>
+      </h2>
     </xsl:if>
   </xsl:template>
 
@@ -1042,9 +1042,9 @@
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
     </a>
-    <h3>
+    <h2>
       <xsl:apply-templates/>
-    </h3>
+    </h2>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
@@ -1070,16 +1070,16 @@
         </xsl:choose>
       </xsl:attribute>
     </a>
-    <h3>
+    <h2>
       <xsl:apply-templates/>
-    </h3>
+    </h2>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template match="notes/sec/title">
-    <h3>
+    <h2>
       <xsl:value-of select="."/>
-    </h3>
+    </h2>
   </xsl:template>
 
   <!-- 1/4/12: Ambra modifications (creates any other titles not already specified) -->
@@ -1088,16 +1088,16 @@
       <!-- if there's a title, use it -->
       <xsl:when test="count(ancestor::sec) > 1">
         <xsl:call-template name="newline1"/>
-        <h4>
+        <h3>
           <xsl:apply-templates/>
-        </h4>
+        </h3>
         <xsl:call-template name="newline1"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="newline1"/>
-        <h3>
+        <h2>
           <xsl:apply-templates/>
-        </h3>
+        </h2>
         <xsl:call-template name="newline1"/>
       </xsl:otherwise>
     </xsl:choose>
@@ -2489,9 +2489,9 @@
       <xsl:for-each select="//abstract[@abstract-type='patient']">
         <div class="patient toc-section">
           <a id="patient" name="patient" data-toc="patient" title="Patient Summary"/>
-          <h3>
+          <h2>
             <xsl:value-of select="title"/>
-          </h3>
+          </h2>
           <xsl:apply-templates select="*[not(self::title)]"/>
         </div>
       </xsl:for-each>
@@ -2504,7 +2504,7 @@
       <div class="contributions toc-section">
         <a id="authcontrib" name="authcontrib" data-toc="authcontrib"
            title="Author Contributions"/>
-        <h3>Author Contributions</h3>
+        <h2>Author Contributions</h2>
         <p>
           <xsl:apply-templates select="../front/article-meta/author-notes/fn[@fn-type='con']"/>
         </p>
@@ -2527,7 +2527,7 @@
       <xsl:call-template name="assign-id"/>
       <xsl:if test="not(title)">
         <a id="ack" name="ack" data-toc="ack" title="Acknowledgments"/>
-        <h3>Acknowledgments</h3>
+        <h2>Acknowledgments</h2>
         <xsl:call-template name="newline1"/>
       </xsl:if>
       <xsl:apply-templates/>

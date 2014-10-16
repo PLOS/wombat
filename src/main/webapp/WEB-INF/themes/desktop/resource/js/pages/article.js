@@ -111,11 +111,11 @@ subject_areas = function() {
 }
 
   $( document ).ready(function() {
-    if ($.fn.twitter) {// && !$("#twitter-alm-timeline div.tweet-header").is(":visible")
+    if ($.fn.twitter) {
+    // && !$("#twitter-alm-timeline div.tweet-header").is(":visible")
      // var doi = $('meta[name=citation_doi]').attr("content");
       var doi = $("meta[name='dc.identifier']").attr("content");
       var twitter = new $.fn.twitter();
-      twitter.displayTweetsArticleSidebar(doi);
     }
     $(".preventDefault").on('click', function (e) {
       e.preventDefault();

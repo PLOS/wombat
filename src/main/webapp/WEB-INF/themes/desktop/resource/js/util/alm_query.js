@@ -29,7 +29,7 @@
 
     doi = validateDOI(doi);
     var requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi;
-    console.log(requestUrl);
+
     $.ajax({
       url: requestUrl,
       jsonp: 'callback',

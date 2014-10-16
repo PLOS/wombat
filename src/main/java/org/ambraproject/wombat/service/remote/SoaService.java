@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.net.URL;
+import java.util.Collection;
 
 /**
  * A service for retrieving data from the SOA's RESTful server.
@@ -110,7 +111,7 @@ public interface SoaService {
    * @return
    * @throws IOException
    */
-  public abstract CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException;
+  public abstract CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 

@@ -20,6 +20,7 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URL;
+import java.util.Collection;
 
 public class SoaServiceImpl implements SoaService {
 
@@ -80,7 +81,7 @@ public class SoaServiceImpl implements SoaService {
   @Override
   public void forwardResponse(HttpUriRequest requestToService, HttpServletResponse responseToClient) throws IOException {
       try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {
-        HttpMessageUtil.copyResponseWithHeaders(responseFromService, responseToClient);
+        HttpMessageUtil.copyResponse(responseFromService, responseToClient);
       } catch (EntityNotFoundException e) {
         responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
       } catch (Exception e) {
@@ -111,18 +112,20 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public CloseableHttpResponse requestAsset(String assetId, Header... headers)
+  public CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers)
       throws IOException {
     HttpGet get = buildGet("assetfiles/" + assetId);
-    get.setHeaders(headers);
+    get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }
 
   private HttpGet buildGet(String address) {
+
     return new HttpGet(buildUri(address));
   }
 
   private URI buildUri(String address) {
+
     return UriUtil.concatenate(this.getServerUrl(), address);
   }
 

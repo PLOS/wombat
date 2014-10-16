@@ -13,6 +13,9 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSortedSet;
+import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.UnresolvedSiteException;
@@ -29,6 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 
@@ -147,5 +151,22 @@ public abstract class WombatController {
     return (parameterValue != null) && !Boolean.toString(false).equalsIgnoreCase(parameterValue);
   }
 
+  /**
+   * Names of headers that, on a request from the client, should be passed through on our request to the service tier
+   * (Rhino or Content Repo).
+   */
+  protected static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet("X-Proxy-Capabilities");
 
+  /**
+   * Names of headers that, in a response from the service tier (Rhino or Content Repo), should be passed through to the
+   * client.
+   */
+  protected static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
+          HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, "X-Reproxy-URL", "X-Reproxy-Cache-For");
+
+
+  // Inconsistent with equals. See Javadoc for java.util.SortedSet.
+  private static ImmutableSortedSet<String> caseInsensitiveImmutableSet(String... strings) {
+    return ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, Arrays.asList(strings));
+  }
 }

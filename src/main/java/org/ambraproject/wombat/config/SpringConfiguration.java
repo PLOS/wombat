@@ -48,6 +48,8 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
+import org.ambraproject.wombat.service.PowerPointService;
+import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
 import org.ambraproject.wombat.service.remote.ContentRepoService;
@@ -213,6 +215,11 @@ public class SpringConfiguration {
   @Bean
   public ContentRepoService contentRepoService() {
     return new ContentRepoServiceImpl();
+  }
+
+  @Bean
+  public PowerPointService powerPointService() {
+    return new PowerPointServiceImpl();
   }
 
 }

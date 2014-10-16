@@ -98,6 +98,11 @@
       <artifactId>jsoup</artifactId>
       <version>1.7.3</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-scratchpad</artifactId>
+      <version>3.8</version>
+    </dependency>
 
     <!-- Spring -->
     <dependency>

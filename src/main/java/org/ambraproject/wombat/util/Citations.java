@@ -23,15 +23,12 @@ public class Citations {
   /*
    * TODO: Deduplicate org.ambraproject.wombat.freemarker.AbbreviatedNameDirective
    */
-  private static String getAbbreviatedName(Map<String,Object> author) {
+  private static String getAbbreviatedName(Map<String, Object> author) {
     return (String) author.get("fullName"); // TODO: Implement
   }
 
-  /*
-   * TODO: Deduplicate org.ambraproject.wombat.freemarker.Iso8601DateDirective
-   */
   private static String extractYear(String date) {
-    return ""; // TODO Implement
+    return CalendarUtil.formatIso8601Date(date, "yyyy");
   }
 
   /*

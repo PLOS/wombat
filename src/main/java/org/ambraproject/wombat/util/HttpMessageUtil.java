@@ -108,9 +108,17 @@ public class HttpMessageUtil {
 
   public static HttpUriRequest buildRequest(URI fullUrl, String method, Header[] headers, NameValuePair[] params, NameValuePair... additionalParams) {
     RequestBuilder reqBuilder = RequestBuilder.create(method).setUri(fullUrl);
-    if (headers != null) {for (Header header : headers) reqBuilder.addHeader(header);}
+    if (headers != null) {
+      for (Header header : headers) {
+        reqBuilder.addHeader(header);
+      }
+    }
     if (params != null) {reqBuilder.addParameters(params);}
-    if (additionalParams != null) {for (NameValuePair param: additionalParams) reqBuilder.addParameter(param);}
+    if (additionalParams != null) {
+      for (NameValuePair param: additionalParams) {
+        reqBuilder.addParameter(param);
+      }
+    }
     return reqBuilder.build();
   }
 

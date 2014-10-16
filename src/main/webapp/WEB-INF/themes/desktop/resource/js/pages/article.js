@@ -6,8 +6,9 @@
 
 (function ($) {
 
- var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_areas;
-   parse_xml_date = {
+  var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_flags, subject_areas;
+
+  parse_xml_date = {
     settings: {
       raw_date : document.getElementById("rawPubDate").value
     },
@@ -23,7 +24,7 @@
     }
   };
 
-   float_header = {
+  float_header = {
 
     settings: {
       floater : $("#floatTitleTop"),
@@ -85,16 +86,8 @@
     }
   };
 
-subject_areas = function() {
-  //apply truncation via js because the css width needs to be auto
-  $("#subjectList li").each(function () {
-    var truncTerm = $(this).find('.taxo-term');
-    var getWidth = $(truncTerm).width();
-    if (getWidth > 135) {
-      return $(truncTerm).css('width', '140px');
-    }
-  });
-}
+
+
 
   $( document ).ready(function() {
 
@@ -112,9 +105,6 @@ subject_areas = function() {
       plos_tooltip.init();
     }
 
-    var init_subject_truncation = subject_areas();
-
-
     float_header.init();
 
     // initialize toggle for author list view more
@@ -122,7 +112,10 @@ subject_areas = function() {
 
     // initialize tooltip_hover for everything
     tooltip_hover.init();
+
   });
 
 }(jQuery));
+
+
 

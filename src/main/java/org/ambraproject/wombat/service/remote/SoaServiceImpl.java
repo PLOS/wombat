@@ -1,20 +1,26 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.net.URL;
+import java.util.Collection;
 
 public class SoaServiceImpl implements SoaService {
 
@@ -28,6 +34,11 @@ public class SoaServiceImpl implements SoaService {
   private CachedRemoteService<Reader> cachedRemoteReader;
 
   @Override
+  public URL getServerUrl() {
+    return runtimeConfiguration.getServer();
+  }
+
+  @Override
   public InputStream requestStream(String address) throws IOException {
     return cachedRemoteStreamer.request(buildGet(address));
   }
@@ -35,6 +46,16 @@ public class SoaServiceImpl implements SoaService {
   @Override
   public Reader requestReader(String address) throws IOException {
     return cachedRemoteReader.request(buildGet(address));
+  }
+
+  @Override
+  public InputStream requestStream(HttpUriRequest target) throws IOException {
+    return cachedRemoteStreamer.request(target);
+  }
+
+  @Override
+  public Reader requestReader(HttpUriRequest target) throws IOException {
+    return cachedRemoteReader.request(target);
   }
 
   @Override
@@ -58,12 +79,30 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public <T> T requestCachedStream(CacheParams cacheParams, String address, CacheDeserializer<InputStream, T> callback) throws IOException {
+  public void forwardResponse(HttpUriRequest requestToService, HttpServletResponse responseToClient) throws IOException {
+      try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {
+        HttpMessageUtil.copyResponse(responseFromService, responseToClient);
+      } catch (EntityNotFoundException e) {
+        responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
+      } catch (Exception e) {
+        responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+      }
+  }
+
+  @Override
+  public CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException {
+    return cachedRemoteReader.getResponse(target);
+  }
+
+  @Override
+  public <T> T requestCachedStream(CacheParams cacheParams, String address,
+                                   CacheDeserializer<InputStream, T> callback) throws IOException {
     return cachedRemoteStreamer.requestCached(cacheParams, buildGet(address), callback);
   }
 
   @Override
-  public <T> T requestCachedReader(CacheParams cacheParams, String address, CacheDeserializer<Reader, T> callback) throws IOException {
+  public <T> T requestCachedReader(CacheParams cacheParams, String address,
+                                   CacheDeserializer<Reader, T> callback) throws IOException {
     return cachedRemoteReader.requestCached(cacheParams, buildGet(address), callback);
   }
 
@@ -73,19 +112,21 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public CloseableHttpResponse requestAsset(String assetId, Header... headers)
+  public CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers)
       throws IOException {
     HttpGet get = buildGet("assetfiles/" + assetId);
-    get.setHeaders(headers);
+    get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }
 
   private HttpGet buildGet(String address) {
+
     return new HttpGet(buildUri(address));
   }
 
   private URI buildUri(String address) {
-    return UriUtil.concatenate(runtimeConfiguration.getServer(), address);
+
+    return UriUtil.concatenate(this.getServerUrl(), address);
   }
 
 }

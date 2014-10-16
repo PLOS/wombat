@@ -39,7 +39,7 @@ $line-height-small: ($line-height * .5);
 
 .article-content {
 
-  p, ul, ol, h2, h3, h4, h5, div {
+  p, ul, ol, div {
     margin-bottom: $line-height;
   }
 
@@ -88,7 +88,7 @@ $line-height-small: ($line-height * .5);
     margin: $line-height-med 0 $line-height 0;
 
   }
-
+  //NOTE: if we want to have only the first thing marked "abstract" to have this styling  change the below line to:  .abstract:first-child {
   .abstract {
     h2 {
       font-family: $font-face-fancy;

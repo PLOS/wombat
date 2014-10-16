@@ -32,8 +32,6 @@
       div_exists : 1
     },
 
-
-
     init: function () {
       s = this.settings;
       this.scroll_it();
@@ -44,41 +42,15 @@
       s.div_exists = s.floater.length;
       return s.div_exists;
     },
-     scroll_to_anchor : function() {
-       s = this.settings;
 
-             var this_height = $(window).scrollTop(),
-                 total_height = this_height - $(s.hidden_div).innerHeight();
-
-       return $(window).load(  function() {
-           $('body').animate({scrollTop: total_height}, 100, function() {
-                  alert('hello');
-             })
-
-       } )
-
-     },
-
-     scroll_it :  function () {
-
+    scroll_it :  function () {
       if (this.check_div() > 0) {
-    //    this.scroll_to_anchor();
         return $(window).on('scroll', function () {
           //show_onscroll is in resource/js/components/
-
           show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
-
-          return  height = $(s.hidden_div).innerHeight();
-          this.scroll_to_anchor();
-
-
-      });
-
-
-
-
-      };
-      },
+        });
+      }
+    },
 
     close_floater : function () {
       s.floater.find('.logo-close').on('click', function () {

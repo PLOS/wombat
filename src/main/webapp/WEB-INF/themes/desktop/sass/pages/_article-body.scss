@@ -157,15 +157,39 @@ $line-height-small: ($line-height * .5);
     }
   }
 
-  //  special handling for xml transforms.
+  //  SPECIAL HANDLING FOR XML TRANSFORM
   ol.references{
     span.label{@extend .hide;}
   }
+
+  span.gene{
+    word-break: break-all;
+  }
+  span.inline-formula{
+    display: inline-block;
+    vertical-align: text-bottom; //NOTE: I like this but set it to "middle" if the equations seem off.
+
+
+  }
+  span.equation{
+    display: block;
+    text-align: center;
+    font-size: $txt-size-medium;
+    margin: $line-height 0;
+     .note{
+       color: $clr-body-text;
+       font-size: $txt-size-xxsmall;
+       display: block;
+       text-align: right;
+       font-weight: bold;
+     }
+
+  }
+
+
 }
 
-span.gene{
-  word-break: break-all;
-}
+
 
 
 

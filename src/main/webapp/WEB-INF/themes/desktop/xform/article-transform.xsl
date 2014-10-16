@@ -1399,7 +1399,6 @@
       <xsl:apply-templates select="*[not(self::label)]"/>
       <xsl:apply-templates select="label"/>
     </span>
-    <br/>
   </xsl:template>
 
   <!-- 1/4/12: suppress, we don't use -->

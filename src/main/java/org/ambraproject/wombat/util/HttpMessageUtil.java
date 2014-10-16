@@ -95,7 +95,7 @@ public class HttpMessageUtil {
     Enumeration allParamNames = request.getParameterNames();
     while (allParamNames.hasMoreElements()) {
       String paramName = (String) allParamNames.nextElement();
-      if (paramNames.contains(paramName)) {
+      if (paramNames.isEmpty() || paramNames.contains(paramName)) {
         paramList.add(new BasicNameValuePair(paramName, request.getParameter(paramName)));
       }
     }
@@ -103,8 +103,19 @@ public class HttpMessageUtil {
   }
 
 
-  public static HttpUriRequest buildRequest(URI fullUrl,
-                                            String method,
+  public static HttpUriRequest buildRequest(URI fullUrl, String method) {
+    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), ImmutableSet.<NameValuePair>of());
+  }
+
+
+  public static HttpUriRequest buildRequest(URI fullUrl, String method,
+                                            Collection<? extends NameValuePair> params,
+                                            NameValuePair... additionalParams) {
+    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), params, additionalParams);
+  }
+
+
+  public static HttpUriRequest buildRequest(URI fullUrl, String method,
                                             Collection<? extends Header> headers,
                                             Collection<? extends NameValuePair> params,
                                             NameValuePair... additionalParams) {
@@ -125,15 +136,4 @@ public class HttpMessageUtil {
   }
 
 
-  public static HttpUriRequest buildRequest(URI fullUrl,
-                                            String method,
-                                            Collection<? extends NameValuePair> params,
-                                            NameValuePair... additionalParams) {
-    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), params, additionalParams);
-  }
-
-
-  public static HttpUriRequest buildRequest(URI fullUrl, String method) {
-    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), ImmutableSet.<NameValuePair>of());
-  }
 }

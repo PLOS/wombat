@@ -24,7 +24,7 @@ $line-height-small: ($line-height * .5);
 
 // callout is for blockquotes.
 @mixin callout($clr-body: $clr-callout-bg) {
-  padding: $line-height $pad-default 1px $pad-default;  //TODO -  why is this 1px - not sure but its the only thing that seems to work
+  padding: $line-height $pad-default 1px $pad-default; //TODO -  why is this 1px - not sure but its the only thing that seems to work
   background: $clr-body;
   margin-bottom: $line-height;
 }
@@ -36,16 +36,20 @@ $line-height-small: ($line-height * .5);
 .callout-alert {
   @include callout($clr-warning-bg);
 }
+
 .article-content {
 
-  p, ul, ol, li, h2, h3, h4, h5, div {
-    line-height: $line-height;
+  p, ul, ol, h2, h3, h4, h5, div {
     margin-bottom: $line-height;
   }
 
-  p{ margin-bottom: $txt-size-default; }
+  p, li {
+    margin-bottom: $txt-size-default;
+    line-height: $line-height;
+  }
   ul.nlm-list, ul.bulletlist {
     list-style-type: none;
+
     li {
       padding-left: $pad-default;
     }
@@ -60,18 +64,18 @@ $line-height-small: ($line-height * .5);
     // to do put in variables
   }
 
-
-  h2,h3, h4, h5 {
+  h2, h3, h4, h5 {
     font-family: $font-face-plain;
     margin-bottom: $line-height-small;
     margin-top: $line-height-med;
     line-height: normal;
   }
-  h2{
+  h2 {
     font-size: $txt-size-large;
     margin-bottom: $line-height;
-    font-weight: bold;}
-  h3,h4 {
+    font-weight: bold;
+  }
+  h3, h4 {
     font-size: $txt-size-medium-large;
     margin-top: $line-height-small
   }
@@ -79,35 +83,36 @@ $line-height-small: ($line-height * .5);
     font-weight: normal
   }
 
-  blockquote{
+  blockquote {
     border-left: $pad-xsmall solid $clr-separator;
-    margin:  $line-height-med 0 $line-height 0;
+    margin: $line-height-med 0 $line-height 0;
 
   }
 
-  .abstract{
-    h2{font-family: $font-face-fancy;
-      font-weight:normal;
+  .abstract {
+    h2 {
+      font-family: $font-face-fancy;
+      font-weight: normal;
       font-size: $txt-size-xxlarge;
       margin-bottom: $line-height;
       margin-top: $line-height-small;
     }
   }
 
- .articleinfo{
-   border:1px solid $clr-separator;
-   margin-bottom: $line-height;
+  .articleinfo {
+    border: 1px solid $clr-separator;
+    margin-bottom: $line-height;
 
-   p{
-     margin-bottom: 0;
-     border-top: 1px solid $clr-separator;
-     padding: $line-height-small $pad-default;
-     &:first-child{
-       border-top: 0px none;
-     }
+    p {
+      margin-bottom: 0;
+      border-top: 1px solid $clr-separator;
+      padding: $line-height-small $pad-default;
+      &:first-child {
+        border-top: 0px none;
+      }
 
-   }
- }
+    }
+  }
   .amendment-eoc, .amendment-retraction {
     @extend .callout-alert;
     h2 {
@@ -127,8 +132,8 @@ $line-height-small: ($line-height * .5);
   .amendment-correction {
     @extend .callout-standard;
 
-    h2{
-      &:before{
+    h2 {
+      &:before {
         content: '';
         @extend .icon-correction;
         margin-right: $pad-xsmall;
@@ -141,7 +146,9 @@ $line-height-small: ($line-height * .5);
   .amendment {
     margin-bottom: $line-height-med;
 
-    h2{margin-top: 0;}
+    h2 {
+      margin-top: 0;
+    }
 
     .amendment-link {
       font-weight: bold;
@@ -158,38 +165,36 @@ $line-height-small: ($line-height * .5);
   }
 
   //  SPECIAL HANDLING FOR XML TRANSFORM
-  ol.references{
-    span.label{@extend .hide;}
+  ol.references {
+    span.label {
+      @extend .hide;
+    }
   }
 
-  span.gene{
+  span.gene {
     word-break: break-all;
   }
-  span.inline-formula{
+  span.inline-formula {
     display: inline-block;
     vertical-align: middle; //NOTE: I like this but set it to "text-top" is another option.
 
-
   }
-  span.equation{
+  span.equation {
     display: block;
     text-align: center;
     font-size: $txt-size-medium;
     margin: $line-height 0;
-     .note{
-       color: $clr-body-text;
-       font-size: $txt-size-xxsmall;
-       display: block;
-       text-align: right;
-       font-weight: bold;
-     }
+    .note {
+      color: $clr-body-text;
+      font-size: $txt-size-xxsmall;
+      display: block;
+      text-align: right;
+      font-weight: bold;
+    }
 
   }
 
-
 }
-
-
 
 // TODO - write some docs
 @mixin border-width-adjust($border-width: rem-calc(2), $spacing: $pad-small, $border-color: $clr-highlight) {
@@ -244,17 +249,17 @@ $line-height-small: ($line-height * .5);
   .nav-page {
     @include nav-enhanced();
     border-bottom: 1px solid $grey-med;
-    li{
-      &.amendment-correction{
+    li {
+      &.amendment-correction {
         font-weight: bold;
       }
-      &.amendment-eoc a{
+      &.amendment-eoc a {
         font-weight: bold;
-        color:$clr-warning
+        color: $clr-warning
       }
-      &.amendment-retraction a{
+      &.amendment-retraction a {
         font-weight: bold;
-        color:$clr-warning
+        color: $clr-warning
       }
     }
   }

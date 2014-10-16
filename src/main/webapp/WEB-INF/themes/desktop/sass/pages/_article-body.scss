@@ -167,7 +167,7 @@ $line-height-small: ($line-height * .5);
   }
   span.inline-formula{
     display: inline-block;
-    vertical-align: text-bottom; //NOTE: I like this but set it to "middle" if the equations seem off.
+    vertical-align: middle; //NOTE: I like this but set it to "text-top" is another option.
 
 
   }
@@ -188,8 +188,6 @@ $line-height-small: ($line-height * .5);
 
 
 }
-
-
 
 
 

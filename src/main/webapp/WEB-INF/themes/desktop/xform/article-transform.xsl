@@ -1416,7 +1416,7 @@
         </xsl:variable>
         <xsl:attribute name="src">
           <xsl:value-of
-              select="concat($pubAppContext,'/article/fetchObject.action?uri=',$graphicDOI,'&amp;representation=PNG')"/>
+              select="concat('article/asset?id=',$graphicDOI,'.PNG')"/><!-- TODO: Avoid hard-coding 'PNG' -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">

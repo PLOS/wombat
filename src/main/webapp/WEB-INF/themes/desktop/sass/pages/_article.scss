@@ -707,8 +707,70 @@ body.article .ui-widget-overlay {
     background-size: 20px;
     padding-left: 25px;
   }
-}
+  .tweetList {
+    list-style-type: none;
+    margin-left: 0;
+    li {
 
+      .tweet-info {
+        a {
+        position: relative;
+        @include clearfix;
+      }
+      img {
+        display: inline;
+        float: left;
+      }
+      .tweetDate {
+        display: inline;
+        float: right;
+      }
+      .tweetUser {
+        clear: both;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+      .tweetText {
+      }
+    }
+  }
+}
+#tweetActions {
+
+  a {
+    padding-left:0;
+    padding-right: 10px;
+    display: inline;
+
+    @include link-text($color: $grey-med, $decoration: underline);
+    div {
+      background: image-url('sprite.twitter.actions.png') no-repeat 0 0;
+      width: 17px;
+      height: 15px;
+     display: inline-block;
+    }
+  }
+  .tweet-reply div {
+    background-position: -16px 0;
+  }
+  .tweet-retweet div {
+    background-position: -96px 0;
+  }
+  .tweet-favorite {
+    display: block;
+    div {
+      background-position: -32px 0;
+    }
+  }
+ // visibility: hidden;
+  height: 34px;
+
+  &.active {
+    visibility: visible;
+  }
+}
 
 @media print {
    @page {

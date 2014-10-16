@@ -15,7 +15,7 @@
      }
 
      /*//check in localstorage if any thing has already been flagged*/
-     categoryTerm = $(targetSpan).data("categoryname");
+     categoryTerm = $(targetSpan).next().data("categoryname");
      checkStorage = localStorage[categoryTerm];
      if (checkStorage !== undefined) {
        return $(targetSpan).addClass('flagged');

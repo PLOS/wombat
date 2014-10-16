@@ -2,6 +2,8 @@ package org.ambraproject.wombat.util;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
@@ -86,16 +88,20 @@ public class HttpMessageUtil {
 
 
   public static Collection<NameValuePair> getRequestParameters(HttpServletRequest request) {
-    return getRequestParameters(request, ImmutableSet.<String>of());
+    return getRequestParameters(request, Predicates.<String>alwaysTrue());
   }
 
   public static Collection<NameValuePair> getRequestParameters(HttpServletRequest request, Set<String> paramNames) {
-    Preconditions.checkNotNull(paramNames);
+    return getRequestParameters(request, Predicates.in(paramNames));
+  }
+
+  private static Collection<NameValuePair> getRequestParameters(HttpServletRequest request, Predicate<String> includeParam) {
+    Preconditions.checkNotNull(includeParam);
     List<NameValuePair> paramList = new ArrayList<>();
     Enumeration allParamNames = request.getParameterNames();
     while (allParamNames.hasMoreElements()) {
       String paramName = (String) allParamNames.nextElement();
-      if (paramNames.isEmpty() || paramNames.contains(paramName)) {
+      if (includeParam.apply(paramName)) {
         paramList.add(new BasicNameValuePair(paramName, request.getParameter(paramName)));
       }
     }

@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.util.Citations;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.hslf.model.Hyperlink;
 import org.apache.poi.hslf.model.Picture;
@@ -70,7 +71,7 @@ public class PowerPointServiceImpl implements PowerPointService {
 
     addTitle(figureMetadata, slide);
 
-    TextBox pptCitationText = buildCitation(downloadLink, slideShow);
+    TextBox pptCitationText = buildCitation(figureMetadata, downloadLink, slideShow);
     slide.addShape(pptCitationText);
 
     Picture logo = buildLogo(logoCallback, slideShow);
@@ -160,11 +161,11 @@ public class PowerPointServiceImpl implements PowerPointService {
     return String.format("%s. %s", title, description);
   }
 
-  private static TextBox buildCitation(URL articleLink, SlideShow slideShow) {
+  private TextBox buildCitation(Map<String, Object> figureMetadata, URL articleLink, SlideShow slideShow) {
     String pptUrl = articleLink.toString();
     TextBox pptCitationText = new TextBox();
 
-    String citation = getCitationText();
+    String citation = getCitationText(figureMetadata);
     pptCitationText.setText(citation + "\n" + pptUrl);
     pptCitationText.setAnchor(new Rectangle(35, 513, 723, 26));
 
@@ -181,8 +182,19 @@ public class PowerPointServiceImpl implements PowerPointService {
     return pptCitationText;
   }
 
-  private static String getCitationText() {
-    return ""; // TODO
+  private String getCitationText(Map<String, Object> figureMetadata) {
+    Map<String, Object> parentArticle = getParentArticleMetadata(figureMetadata);
+    return Citations.buildCitation(parentArticle);
+  }
+
+  private Map<String, Object> getParentArticleMetadata(Map<String, Object> figureMetadata) {
+    Map<String, Object> parentArticleSummary = (Map<String, Object>) figureMetadata.get("parentArticle");
+    String parentArticleDoi = (String) parentArticleSummary.get("doi");
+    try {
+      return soaService.requestObject("articles/" + parentArticleDoi, Map.class);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   private static Picture buildLogo(JournalLogoCallback logoCallback, SlideShow slideShow) throws IOException {

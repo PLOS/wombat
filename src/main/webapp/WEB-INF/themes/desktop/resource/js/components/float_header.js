@@ -23,9 +23,11 @@ var s, float_header = {   // TODO: make extensible so floater, hidden_div, & scr
 
   scroll_stuff :  function () {
     if (this.check_div() > 0) {
+
       return $(window).on('scroll', function () {
         //show_onscroll is in resource/js/components/
         var show_header = show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
+
       });
     }
   },

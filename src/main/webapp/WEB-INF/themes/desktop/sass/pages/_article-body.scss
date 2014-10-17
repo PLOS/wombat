@@ -1,6 +1,6 @@
 // layout the page
 
-.article-container {
+.article-body {
   @extend .plos-row;
 }
 
@@ -9,8 +9,191 @@
   @extend .hide-for-print;
 }
 
-.article-text {
-  @include plos-grid-column(550, $gutter: none, $float:right)
+.article-content {
+
+  @include plos-grid-column(550, $gutter: none, $float: right);
+}
+
+/// TODO - PG- This needs to be in more general css. I'm just to work out the kinks so I can check this styling for the amendment notice into master - that work will be done in ticket DPRO-477 which is being worked on concurrently
+//TODO - set up better math for vertical rhythm.
+
+$line-height: rem-calc(18);
+$line-height-large: ($line-height * 2);
+$line-height-med: ($line-height * 1.5);
+$line-height-small: ($line-height * .5);
+
+// callout is for blockquotes.
+@mixin callout($clr-body: $clr-callout-bg) {
+  padding: $line-height $pad-default 1px $pad-default; //TODO -  why is this 1px - not sure but its the only thing that seems to work
+  background: $clr-body;
+  margin-bottom: $line-height;
+}
+
+.callout-standard {
+  @include callout();
+}
+
+.callout-alert {
+  @include callout($clr-warning-bg);
+}
+
+.article-content {
+
+  p, ul, ol, div {
+    margin-bottom: $line-height;
+  }
+
+  p, li {
+    margin-bottom: $txt-size-default;
+    line-height: $line-height;
+  }
+  ul.nlm-list, ul.bulletlist {
+    list-style-type: none;
+
+    li {
+      padding-left: $pad-default;
+    }
+    li:before {
+      content: '>';
+      font-size: rem-calc(10);
+      line-height: $line-height;
+      display: inline-block;
+      margin-left: -$pad-smallish;
+      position: absolute
+    }
+    // to do put in variables
+  }
+
+  h2, h3, h4, h5 {
+    font-family: $font-face-plain;
+    margin-bottom: $line-height-small;
+    margin-top: $line-height-med;
+    line-height: normal;
+  }
+  h2 {
+    font-size: $txt-size-large;
+    margin-bottom: $line-height;
+    font-weight: bold;
+  }
+  h3, h4 {
+    font-size: $txt-size-medium-large;
+    margin-top: $line-height-small
+  }
+  h4 {
+    font-weight: normal
+  }
+
+  blockquote {
+    border-left: $pad-xsmall solid $clr-separator;
+    margin: $line-height-med 0 $line-height 0;
+
+  }
+  //NOTE: if we want to have only the first thing marked "abstract" to have this styling  change the below line to:  .abstract:first-child {
+  .abstract {
+    h2 {
+      font-family: $font-face-fancy;
+      font-weight: normal;
+      font-size: $txt-size-xxlarge;
+      margin-bottom: $line-height;
+      margin-top: $line-height-small;
+    }
+  }
+
+  .articleinfo {
+    border: 1px solid $clr-separator;
+    margin-bottom: $line-height;
+
+    p {
+      margin-bottom: 0;
+      border-top: 1px solid $clr-separator;
+      padding: $line-height-small $pad-default;
+      &:first-child {
+        border-top: 0px none;
+      }
+
+    }
+  }
+  .amendment-eoc, .amendment-retraction {
+    @extend .callout-alert;
+    h2 {
+      color: $clr-warning;
+      margin-top: 0;
+      &:before {
+        //TODO - make this a mixin? do we adjust line-height on all icons?
+        @extend .icon-alert;
+        font-size: $txt-size-medium;
+        padding-right: $pad-xsmall;
+        vertical-align: top;
+        line-height: $line-height;
+      }
+    }
+  }
+
+  .amendment-correction {
+    @extend .callout-standard;
+
+    h2 {
+      &:before {
+        content: '';
+        @extend .icon-correction;
+        margin-right: $pad-xsmall;
+        vertical-align: top;
+        line-height: $line-height;
+      }
+    }
+  }
+
+  .amendment {
+    margin-bottom: $line-height-med;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .amendment-link {
+      font-weight: bold;
+      &:before {
+        content: '| ';
+        color: $clr-body-text;
+        font-weight: normal;
+      }
+    }
+
+    .amendment-date {
+      font-weight: bold;
+    }
+  }
+
+  //  SPECIAL HANDLING FOR XML TRANSFORM
+  ol.references {
+    span.label {
+      @extend .hide;
+    }
+  }
+
+  span.gene {
+    word-break: break-all;
+  }
+  span.inline-formula {
+    display: inline-block;
+    vertical-align: middle; //NOTE: I like this but set it to "text-top" is another option.
+
+  }
+  span.equation {
+    display: block;
+    text-align: center;
+    font-size: $txt-size-medium;
+    margin: $line-height 0;
+    .note {
+      color: $clr-body-text;
+      font-size: $txt-size-xxsmall;
+      display: block;
+      text-align: right;
+      font-weight: bold;
+    }
+
+  }
+
 }
 
 // TODO - write some docs
@@ -19,12 +202,13 @@
   padding-left: ($spacing - $border-width);
 }
 
-@mixin nav-side( $txt-color: $grey-med, $pad-left: $pad-small, $pad-y:rem-calc(2), $margin-bottom: $pad-xsmall) {
+@mixin nav-side($txt-color: $grey-med, $pad-left: $pad-small, $pad-y: rem-calc(2), $margin-bottom: $pad-xsmall) {
   @extend .no-bullet;
   margin-bottom: ($margin-bottom * 2);
   padding-bottom: ($margin-bottom * 2);
 
-  li{ padding: $pad-y 0;
+  li {
+    padding: $pad-y 0;
     padding-left: $pad-left;
     margin: 0 0 $margin-bottom 0;
 
@@ -34,7 +218,7 @@
   }
 }
 
-@mixin nav-enhanced( $txt-color-hover: $clr-body-text, $spacing-left: $pad-small, $txt-color: $grey-med) {
+@mixin nav-enhanced($txt-color-hover: $clr-body-text, $spacing-left: $pad-small, $txt-color: $grey-med) {
   @include nav-side;
   li {
 
@@ -65,15 +249,26 @@
   .nav-page {
     @include nav-enhanced();
     border-bottom: 1px solid $grey-med;
+    li {
+      &.amendment-correction {
+        font-weight: bold;
+      }
+      &.amendment-eoc a {
+        font-weight: bold;
+        color: $clr-warning
+      }
+      &.amendment-retraction a {
+        font-weight: bold;
+        color: $clr-warning
+      }
+    }
   }
 
-  .nav-secondary{
+  .nav-secondary {
     @extend .no-bullet;
     @include nav-side($txt-color: $clr-body-text);
   }
 }
-
-
 
 @media print {
   .article-text {

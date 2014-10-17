@@ -805,7 +805,7 @@
       <xsl:choose>
         <xsl:when test="not(title)">
           <a id="refs" name="refs" data-toc="refs" title="References"/>
-          <h3>References</h3>
+          <h2>References</h2>
           <xsl:call-template name="newline1"/>
         </xsl:when>
         <xsl:otherwise>
@@ -926,9 +926,9 @@
   <xsl:template match="body/sec/title">
     <!-- only output an h3 if the body/sec/title has content -->
     <xsl:if test="string(.)">
-      <h3>
+      <h2>
         <xsl:apply-templates/>
-      </h3>
+      </h2>
     </xsl:if>
   </xsl:template>
 
@@ -997,9 +997,9 @@
   <!-- 1/4/12: Ambra-specific template (creates article second-level heading) -->
   <xsl:template match="body/sec/sec/title">
     <xsl:call-template name="newline1"/>
-    <h4>
+    <h3>
       <xsl:apply-templates/>
-    </h4>
+    </h3>
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
@@ -1011,10 +1011,10 @@
 
   <!-- 1/4/12: Ambra-specific template (creates article third-level heading) -->
   <xsl:template match="body/sec/sec/sec/title">
-    <h5>
+    <h4>
       <xsl:apply-templates/>
       <xsl:call-template name="punctuation"/>
-    </h5>
+    </h4>
   </xsl:template>
 
   <!-- 1/4/12: BLOCK AND MISC TITLES -->
@@ -1026,9 +1026,9 @@
   <!-- 1/12/12: Ambra-specific template -->
   <xsl:template match="ack/sec/title">
     <xsl:call-template name="newline1"/>
-    <h4>
+    <h3>
       <xsl:apply-templates/>
-    </h4>
+    </h3>
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
@@ -1042,9 +1042,9 @@
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
     </a>
-    <h3>
+    <h2>
       <xsl:apply-templates/>
-    </h3>
+    </h2>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
@@ -1070,16 +1070,16 @@
         </xsl:choose>
       </xsl:attribute>
     </a>
-    <h3>
+    <h2>
       <xsl:apply-templates/>
-    </h3>
+    </h2>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template match="notes/sec/title">
-    <h3>
+    <h2>
       <xsl:value-of select="."/>
-    </h3>
+    </h2>
   </xsl:template>
 
   <!-- 1/4/12: Ambra modifications (creates any other titles not already specified) -->
@@ -1088,16 +1088,16 @@
       <!-- if there's a title, use it -->
       <xsl:when test="count(ancestor::sec) > 1">
         <xsl:call-template name="newline1"/>
-        <h4>
+        <h3>
           <xsl:apply-templates/>
-        </h4>
+        </h3>
         <xsl:call-template name="newline1"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="newline1"/>
-        <h3>
+        <h2>
           <xsl:apply-templates/>
-        </h3>
+        </h2>
         <xsl:call-template name="newline1"/>
       </xsl:otherwise>
     </xsl:choose>
@@ -1140,8 +1140,7 @@
         <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>
       </xsl:variable>
       <xsl:variable name="slideshowURL">
-        <xsl:value-of select="concat($pubAppContext, '/article/fetchObject.action?uri=',
-                  $imageURI,'&amp;representation=PNG_M')"/>
+        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="pptURL">
@@ -1198,7 +1197,7 @@
             <xsl:element name="img">
               <xsl:attribute name="src">
                 <xsl:value-of
-                    select="concat($pubAppContext,'/article/fetchObject.action?uri=',$imageURI,'&amp;representation=PNG_I')"/>
+                    select="concat('article/figure/image?size=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>
@@ -1400,7 +1399,6 @@
       <xsl:apply-templates select="*[not(self::label)]"/>
       <xsl:apply-templates select="label"/>
     </span>
-    <br/>
   </xsl:template>
 
   <!-- 1/4/12: suppress, we don't use -->
@@ -1417,7 +1415,7 @@
         </xsl:variable>
         <xsl:attribute name="src">
           <xsl:value-of
-              select="concat($pubAppContext,'/article/fetchObject.action?uri=',$graphicDOI,'&amp;representation=PNG')"/>
+              select="concat('article/asset?id=',$graphicDOI,'.PNG')"/><!-- TODO: Avoid hard-coding 'PNG' -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -2490,9 +2488,9 @@
       <xsl:for-each select="//abstract[@abstract-type='patient']">
         <div class="patient toc-section">
           <a id="patient" name="patient" data-toc="patient" title="Patient Summary"/>
-          <h3>
+          <h2>
             <xsl:value-of select="title"/>
-          </h3>
+          </h2>
           <xsl:apply-templates select="*[not(self::title)]"/>
         </div>
       </xsl:for-each>
@@ -2505,7 +2503,7 @@
       <div class="contributions toc-section">
         <a id="authcontrib" name="authcontrib" data-toc="authcontrib"
            title="Author Contributions"/>
-        <h3>Author Contributions</h3>
+        <h2>Author Contributions</h2>
         <p>
           <xsl:apply-templates select="../front/article-meta/author-notes/fn[@fn-type='con']"/>
         </p>
@@ -2528,7 +2526,7 @@
       <xsl:call-template name="assign-id"/>
       <xsl:if test="not(title)">
         <a id="ack" name="ack" data-toc="ack" title="Acknowledgments"/>
-        <h3>Acknowledgments</h3>
+        <h2>Acknowledgments</h2>
         <xsl:call-template name="newline1"/>
       </xsl:if>
       <xsl:apply-templates/>

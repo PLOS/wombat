@@ -569,7 +569,7 @@ body.article .ui-widget-overlay {
       margin-bottom: rem-calc(12);// TEMP PROD: use 10 or 15;
 
       a {
-        @include link-text($color: $plos-default, $decoration: underline);
+        @include link-text($plos-default, underline);
         font-size: $txt-size-xsmall;
       }
     }
@@ -706,11 +706,15 @@ body.article .ui-widget-overlay {
     background: image-url('icon.twtr.32.png') no-repeat 0 0;
     background-size: 20px;
     padding-left: 25px;
+    border: none;
   }
-  .tweetList {
+  #tweetList {
     list-style-type: none;
     margin-left: 0;
     li {
+      border-top: 1px solid #dedede;
+      margin-bottom: $pad-small;
+      padding-top: $pad-small;
 
       .tweet-info {
         a {
@@ -727,8 +731,19 @@ body.article .ui-widget-overlay {
       }
       .tweetUser {
         clear: both;
+        color: $clr-body-text;
+        font-weight: bold;
+
+        &:hover{
+        text-decoration: underline;
+        }
+
+        &:hover span{
+          text-decoration: none;
+        }
         span {
-          font-weight: bold;
+          font-weight: normal;
+          font-size: $txt-size-xxxsmall;
         }
       }
     }
@@ -736,15 +751,30 @@ body.article .ui-widget-overlay {
       }
     }
   }
+  .more-tweets {
+    display: none;
+  }
+  .load-more {
+    display: none;
+    text-align: center;
+    cursor: pointer;
+    @include link-text($plos-default, underline);
+  }
+  .view-all {
+    display: none;
+    text-align: center;
+    @include link-text($plos-default, underline);
+  }
 }
 #tweetActions {
-
+  list-style-type: none;
+  margin-left: 0;
   a {
     padding-left:0;
     padding-right: 10px;
     display: inline;
 
-    @include link-text($color: $grey-med, $decoration: underline);
+    @include link-text($grey-med, underline);
     div {
       background: image-url('sprite.twitter.actions.png') no-repeat 0 0;
       width: 17px;
@@ -770,6 +800,7 @@ body.article .ui-widget-overlay {
   &.active {
     visibility: visible;
   }
+
 }
 
 @media print {

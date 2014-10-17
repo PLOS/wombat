@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:doi="http://dx.doi.org/"
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
 <#assign title = article.title />
 <#assign depth = 0 />
+
 <#include "../common/head.ftl" />
 
 <#include "../common/journalStyle.ftl" />
@@ -88,8 +91,10 @@
 
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
+  <@js src="resource/js/vendor/jquery.cookie.js" />
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
+  <@js src="resource/js/pages/article_sidebar.js"/>
   <@renderJs />
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>

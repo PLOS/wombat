@@ -34,4 +34,8 @@
 
   addMediaCoverageLink();
 
+
+  /// build figure carousel
+  $('#figure-carousel').buildFigureCarousel();
+
 })(jQuery);

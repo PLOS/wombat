@@ -2,15 +2,13 @@
 <div id="figure-carousel">
   <#list article.figures as figure>
 
-  <#--
-      TODO: In JavaScript, set href to anchor of the inline figure
+    <a class="carousel-item" data-doi="${figure.doi}">
+    <#--
+      JavaScript will set the href, by finding the div.figure whose data-doi attr matches this one.
+      The figure ID is defined in the XML, and we don't know it in this context,
+      but can find it by inspecting the transformed HTML below here.
+      -->
 
-      The legacy implementation relied on PLOS typesetting conventions in order to infer the figure ID from its DOI.
-      Instead, we should have JavaScript match the figure's DOI (which we know right now) to the figure element's ID
-      (which is defined in XML, so we must find it by inspecting the transformed HTML).
-    -->
-    <a href="#"
-       data-doi="${figure.doi}">
       <@siteLink path=("article/figure/image?size=inline&amp;id=" + figure.doi) ; src>
         <img src="${src}" alt=""/>
       </@siteLink>
@@ -18,3 +16,4 @@
   </#list>
 </div>
 </#if>
+<@js src="resource/js/components/figure_carousel.js" />

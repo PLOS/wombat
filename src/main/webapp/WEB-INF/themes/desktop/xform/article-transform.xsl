@@ -1178,6 +1178,9 @@
         <xsl:attribute name="id">
           <xsl:value-of select="translate($figId, '.', '-')"/>
         </xsl:attribute>
+        <xsl:attribute name="data-doi">
+          <xsl:value-of select="object-id[@pub-id-type='doi']"/>
+        </xsl:attribute>
         <div class="img">
           <xsl:element name="a">
             <!-- 6/13/12: added translate so names and ids have dash (for figure enhancement) -->

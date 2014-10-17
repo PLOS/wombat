@@ -27,7 +27,7 @@
   <#assign maxCollabAuthors = maxAuthors - citation.authors?size />
   <#list citation.collaborativeAuthors as author>
     <#if author_index lt maxCollabAuthors>
-      <#assign isCommaShown = author_has_next || citation.collaborativeAuthors?size lt maxCollabAuthors />
+      <#assign isCommaShown = author_has_next || citation.collaborativeAuthors?size gt maxCollabAuthors />
     ${author}<#if isCommaShown>,</#if>
     </#if>
   </#list>
@@ -36,7 +36,7 @@
   et al.
   </#if>
 
-  <#if citation.year??>(${citation.year})</#if>
+  <#if citation.date??>(<@formatJsonDate date="${citation.date}" format="yyyy" />)</#if>
 
   <#if citation.title??>
   ${citation.title}<#if !citation.title?ends_with('?')>.</#if>

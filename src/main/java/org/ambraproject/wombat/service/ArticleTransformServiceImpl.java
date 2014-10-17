@@ -195,16 +195,20 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(xmlExcerpt);
     Preconditions.checkNotNull(html);
-    Preconditions.checkArgument(!Strings.isNullOrEmpty(enclosingTag));
 
-    // Build a stream that contains the original stream surrounded by tags.
-    // To avoid dumping the original stream into memory, append two mini-streams.
-    InputStream prefix = IOUtils.toInputStream('<' + enclosingTag + '>', charset);
-    InputStream suffix = IOUtils.toInputStream("</" + enclosingTag + '>', charset);
-    List<InputStream> streams = ImmutableList.of(prefix, xmlExcerpt, suffix);
-    InputStream concatenated = new SequenceInputStream(Iterators.asEnumeration(streams.iterator()));
+    InputStream streamToTransform;
+    if (Strings.isNullOrEmpty(enclosingTag)) {
+      streamToTransform = xmlExcerpt;
+    } else {
+      // Build a stream that contains the original stream surrounded by tags.
+      // To avoid dumping the original stream into memory, append two mini-streams.
+      InputStream prefix = IOUtils.toInputStream('<' + enclosingTag + '>', charset);
+      InputStream suffix = IOUtils.toInputStream("</" + enclosingTag + '>', charset);
+      List<InputStream> concatenation = ImmutableList.of(prefix, xmlExcerpt, suffix);
+      streamToTransform = new SequenceInputStream(Iterators.asEnumeration(concatenation.iterator()));
+    }
 
-    transform(site, concatenated, html);
+    transform(site, streamToTransform, html);
   }
 
   @Override

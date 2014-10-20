@@ -682,7 +682,7 @@ body.article .ui-widget-overlay {
 
         p.taxo-confirm {
           display: none;
-          margin-top: 5px;
+          margin-top: $pad-xsmall;
           line-height: 75px;
         }
       }
@@ -709,13 +709,18 @@ body.article .ui-widget-overlay {
 
 .twitter-container {
   @extend .aside-container;
+  display: none;
 
   h3 {
     background: image-url('icon.twtr.32.png') no-repeat 0 0;
     background-size: 20px;
-    padding-left: 25px;
+    padding-left: $pad-default + $pad-xsmall;
     border: none;
+    padding-bottom: 0;
+    margin-bottom: $pad-xsmall;
+    font-size: $txt-size-xsmall !important;
   }
+
   #tweetList {
     list-style-type: none;
     margin-left: 0;
@@ -730,6 +735,7 @@ body.article .ui-widget-overlay {
         position: relative;
         @include clearfix;
       }
+
       img {
         display: inline;
         float: left;
@@ -740,8 +746,10 @@ body.article .ui-widget-overlay {
         display: inline;
         float: right;
       }
+
       .tweetUser {
         clear: both;
+
         strong {
           font-weight: bold;
           &:hover {
@@ -757,15 +765,26 @@ body.article .ui-widget-overlay {
       }
     }
   }
+
    .more-tweets, .placeholderPic {
      display: none;
    }
+
   .load-more, .view-all {
     @include link-text($plos-default, underline);
     font-family: $font-face-fancy;
+    font-size: $txt-size-large;
     display: none;
     text-align: center;
     cursor: pointer;
+  }
+
+  .load-more span {
+    @extend .icon-caret-down;
+    display: inline-block;
+    padding-left: $pad-xsmall;
+    width: $pad-small;
+    color: $plos-default;
   }
 
 }
@@ -778,7 +797,7 @@ body.article .ui-widget-overlay {
     @include link-text($grey-med, underline);
     visibility: hidden;
     padding-left:0;
-    padding-right: 10px;
+    padding-right: $pad-small;
     display: inline;
 
     div {

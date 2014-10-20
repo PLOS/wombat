@@ -6,8 +6,7 @@
 
 (function ($) {
 
- var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_areas,
-twitter_module, t;
+ var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_areas;
 
    parse_xml_date = {
     settings: {
@@ -60,19 +59,7 @@ twitter_module, t;
       });
     }
   };
- /* twitter_module = {
-    settings: {
-      plos_twitter: null,
-      doi: $("meta[name='dc.identifier']").attr("content")
-    },
 
-    init: function() {
-     t = this.settings;
-
-      plos_twitter = twitter(doi);
-
-    }
-  };*/
 
   check_authors_truncation = {
 
@@ -100,10 +87,6 @@ twitter_module, t;
   };
 
   $( document ).ready(function() {
-   /* if ($.fn.twitter) {
-      var doi = $("meta[name='dc.identifier']").attr("content");
-      var twitter = new $.fn.twitter();
-    }*/
 
     $(".preventDefault").on('click', function (e) {
       e.preventDefault();
@@ -119,7 +102,7 @@ twitter_module, t;
       plos_tooltip.init();
     }
 
-    var init_subject_truncation = subject_areas();
+
 
 
     float_header.init();

@@ -27,20 +27,18 @@
         json: 'callback',
         dataType: 'json',
         success: function(responseText) {
-          // console.log(responseText[0].sources[0].events[0].event.text);
-          response = responseText[0].sources[0];//.events[0].event.text;
-
+          response = responseText[0].sources[0];
           return showTweetsArticleSidebar(response);
         },
         failure: function () {
           console.log('ALM request failed: ' + errorText+ " "+ url);
-          $('#twitter-aside').append(errorText);
+          $('#twitter-container').append(errorText);
         }
       });
 
     };
 
-    // linkify is from Ambra hallelujah
+    // linkify is from Ambra
     var linkify = function (tweetText) {
       //Add an extra space so we capture urls/tags/usernames that end on the final character
       tweetText = tweetText + " ";
@@ -67,7 +65,7 @@
     };
 
     var showTweetsArticleSidebar = function (almTweetData) {
-      var tweet, tweetText, replyLink, retweetLink, favoriteLink,
+      var tweet, tweetText,
         totalTweets, minDisplayTweets, maxDisplayTweets,
         tweetDate,
         tweetInfo,
@@ -79,7 +77,6 @@
         retweetLink,
         favoriteLink,
         tweetActions,
-        tweetAvatar,
         tweetUserName,
         tweetHandle,
         dataPrefix,
@@ -92,7 +89,7 @@
       maxDisplayTweets = 5;
 
 
-      function showit(stuff, limity) {
+      function enableTwitterStream(stuff, limity) {
 
         //get the data
         function dataPass(i) {
@@ -110,10 +107,10 @@
           if (tweetAvatarParse === "a0") {
             tweetAvatar = "http://pbs"+tweetAvatar.slice(9);
           }
-          console.log(tweetAvatar);
-          //http://a0.twimg.com/profile_images/1379367446/macarthur_olduvai_profile_cropped_normal.jpg
+
           // user photo, date of post, user names
           tweetPlaceholder = 'resource/img/icon.avatar.placeholder.png';
+          // TODO: put in placeholder conditional
           tweetInfo = '<a href="http://twitter.com/' + tweetHandle + '"' + '>' +
             '<img src="' + tweetAvatar + '"/>' +
             '<div class="tweetDate">' + tweetDate + '</div>' +
@@ -134,14 +131,14 @@
             '<div id="tweetActions">' + tweetActions + '</div>';
         }
 
-        for (var i=0; i < 2; i++){
+        for (var i=0; i < minDisplayTweets; i++){
           dataPass(i);
           wholeTweet = '<li>'+listBody+'</li>';
           $('#tweetList').append(wholeTweet);
 
         }
 
-        for (var i=2; i <= 4; i++){
+        for (var i=minDisplayTweets; i <= 4; i++){
           dataPass(i);
           wholeTweet = '<li class="more-tweets">'+listBody+'</li>';
           $('#tweetList').append(wholeTweet);
@@ -152,15 +149,15 @@
         $('.more-tweets').css('display','block');
         $(this).css('display','none');
 
-        if (totalTweets > 5) {
+        if (totalTweets > maxDisplayTweets {
           $('.view-all').css('display', 'block');
         }
       });
 
       if (almTweetData && totalTweets > 0) {
-        //if totaltweets <= 5, limit = totaltweets
-        //if totaltweets  > 5, limit = 5 & append li view all
-        showit(almTweetData.events, totalTweets);
+
+        $('.twitter-container').css('display','block');
+        enableTwitterStream(almTweetData.events, totalTweets);
       }
     }
   };

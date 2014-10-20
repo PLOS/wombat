@@ -4,7 +4,6 @@
   <#include "print.ftl" />
   <#include "share.ftl" />
 </div>
-<#--
 
 <#include "crossmark.ftl" />
 
@@ -13,6 +12,6 @@
 <#include "subjectAreas.ftl" />
 
 <#include "adSlotAside.ftl" />
--->
+
 
 <#include "twitterModule.ftl" />

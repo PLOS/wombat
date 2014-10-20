@@ -717,75 +717,79 @@ body.article .ui-widget-overlay {
       padding-top: $pad-small;
 
       .tweet-info {
-        a {
+      a {
+        color: $clr-body-text;
         position: relative;
         @include clearfix;
       }
       img {
         display: inline;
         float: left;
+        margin-bottom: $pad-xsmall;
       }
+
       .tweetDate {
         display: inline;
         float: right;
       }
       .tweetUser {
         clear: both;
-        color: $clr-body-text;
-        font-weight: bold;
-
-        &:hover{
-        text-decoration: underline;
+        strong {
+          font-weight: bold;
+          &:hover {
+            text-decoration: underline;
+          }
         }
-
-        &:hover span{
-          text-decoration: none;
-        }
+      }
         span {
-          font-weight: normal;
           font-size: $txt-size-xxxsmall;
-        }
       }
     }
       .tweetText {
       }
     }
   }
-  .more-tweets {
-    display: none;
-  }
-  .load-more {
+   .more-tweets, .placeholderPic {
+     display: none;
+   }
+  .load-more, .view-all {
+    @include link-text($plos-default, underline);
+    font-family: $font-face-fancy;
     display: none;
     text-align: center;
     cursor: pointer;
-    @include link-text($plos-default, underline);
   }
-  .view-all {
-    display: none;
-    text-align: center;
-    @include link-text($plos-default, underline);
-  }
+
 }
+
 #tweetActions {
   list-style-type: none;
   margin-left: 0;
+
   a {
+    @include link-text($grey-med, underline);
+    visibility: hidden;
     padding-left:0;
     padding-right: 10px;
     display: inline;
 
-    @include link-text($grey-med, underline);
     div {
       background: image-url('sprite.twitter.actions.png') no-repeat 0 0;
       width: 17px;
       height: 15px;
-     display: inline-block;
+      display: inline-block;
     }
   }
   .tweet-reply div {
+    background-position: 0 0;
+  }
+  .tweet-reply:hover div {
     background-position: -16px 0;
   }
   .tweet-retweet div {
+    background-position: -80px 0;
+  }
+  .tweet-retweet:hover div {
     background-position: -96px 0;
   }
   .tweet-favorite {
@@ -794,11 +798,14 @@ body.article .ui-widget-overlay {
       background-position: -32px 0;
     }
   }
- // visibility: hidden;
-  height: 34px;
+  .tweet-favorite:hover div {
+    background-position: -48px 0;
+  }
 
-  &.active {
-    visibility: visible;
+  &:hover {
+    a {
+      visibility: visible;
+    }
   }
 
 }

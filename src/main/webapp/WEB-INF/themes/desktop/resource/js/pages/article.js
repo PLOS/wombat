@@ -20,7 +20,7 @@ twitter_module, t;
     },
 
     article_pub_date : function () {
-      var article_pub_date = dateParse(s.raw_date, true);
+      var article_pub_date = dateParse(s.raw_date, true, false);
       $("#artPubDate").append(article_pub_date);
     }
   };

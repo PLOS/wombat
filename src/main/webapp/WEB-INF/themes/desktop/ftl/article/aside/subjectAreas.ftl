@@ -3,8 +3,10 @@
 <#if categoryTerms?? && articleTypeHeading?? && articleTypeHeading != "Correction" && articleTypeHeading != "Expression of Concern" && articleTypeHeading != "Retraction" >
 <div class="subject-areas-container">
   <h3>Subject Areas <div id="subjInfo">?</div>
-    <div id="subjInfoText">
-      <span class="inline-intro">We want your feedback.</span> Do these subject areas make sense for this article? If not, click the flag next to the incorrect subject area and we will review it. Thanks for your help!
+    <div id="subjInfoText"><p>For more information about PLOS Subject Areas, click <a href="${legacyUrlPrefix}static/help#subjectAreas">here</a>.</p>
+      <span class="inline-intro">We want your feedback.</span> Do these Subject Areas make sense for this article? Click the target next to the incorrect Subject Area and let us know. Thanks for your help!
+
+
     </div>
   </h3>
   <ul id="subjectList">

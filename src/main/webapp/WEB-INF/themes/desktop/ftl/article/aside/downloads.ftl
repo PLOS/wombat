@@ -1,5 +1,5 @@
 
-<#include "../../common/legacyLink.ftl" />
+
 <#assign articleURI = 'info:doi/' + article.doi  />
  <#assign downloadObject> ${legacyUrlPrefix}article/fetchObject.action?uri=info:doi/${article.doi}&representation=</#assign>
 <!--[if IE 9]>

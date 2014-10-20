@@ -96,7 +96,7 @@
       <!-- abstracts -->
       <xsl:for-each select="abstract[not(@abstract-type) or (@abstract-type !='toc' and @abstract-type != 'teaser'
              and @abstract-type != 'editor' and @abstract-type != 'patient')]">
-        <div class="abstract">
+        <div class="abstract toc-section">
           <xsl:call-template name="abstract-title"/>
           <xsl:apply-templates select="*[not(self::title)]"/>
         </div>
@@ -758,8 +758,7 @@
   </xsl:template>
 
   <xsl:template name="make-section-class">
-    <xsl:attribute name="class">section</xsl:attribute>
-    <xsl:attribute name="class">toc-section</xsl:attribute>
+    <xsl:attribute name="class">section toc-section</xsl:attribute>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
@@ -769,7 +768,6 @@
       <xsl:call-template name="make-section-id"/>
       <xsl:call-template name="make-section-class"/>
       <xsl:if test="descendant::title[1] != ''">
-        <xsl:attribute name="class">toc-section</xsl:attribute>
         <xsl:element name="a">
           <xsl:attribute name="id">
             <xsl:value-of select="@id"/>
@@ -803,12 +801,11 @@
 
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template match="ref-list" name="ref-list">
-    <div>
-      <xsl:attribute name="class">toc-section</xsl:attribute>
+    <div class="toc-section">
       <xsl:choose>
         <xsl:when test="not(title)">
           <a id="refs" name="refs" data-toc="refs" title="References"/>
-          <h3>References</h3>
+          <h2>References</h2>
           <xsl:call-template name="newline1"/>
         </xsl:when>
         <xsl:otherwise>
@@ -929,9 +926,9 @@
   <xsl:template match="body/sec/title">
     <!-- only output an h3 if the body/sec/title has content -->
     <xsl:if test="string(.)">
-      <h3>
+      <h2>
         <xsl:apply-templates/>
-      </h3>
+      </h2>
     </xsl:if>
   </xsl:template>
 
@@ -957,7 +954,6 @@
     <xsl:variable name="idx" select="count(preceding-sibling::abstract)"/>
     <xsl:variable name="abs_id">abstract<xsl:value-of select="$idx"/>
     </xsl:variable>
-    <xsl:attribute name="class">toc-section</xsl:attribute>
     <xsl:choose>
       <!-- if there's a title, use it -->
       <xsl:when test="title">
@@ -1001,9 +997,9 @@
   <!-- 1/4/12: Ambra-specific template (creates article second-level heading) -->
   <xsl:template match="body/sec/sec/title">
     <xsl:call-template name="newline1"/>
-    <h4>
+    <h3>
       <xsl:apply-templates/>
-    </h4>
+    </h3>
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
@@ -1015,10 +1011,10 @@
 
   <!-- 1/4/12: Ambra-specific template (creates article third-level heading) -->
   <xsl:template match="body/sec/sec/sec/title">
-    <h5>
+    <h4>
       <xsl:apply-templates/>
       <xsl:call-template name="punctuation"/>
-    </h5>
+    </h4>
   </xsl:template>
 
   <!-- 1/4/12: BLOCK AND MISC TITLES -->
@@ -1030,9 +1026,9 @@
   <!-- 1/12/12: Ambra-specific template -->
   <xsl:template match="ack/sec/title">
     <xsl:call-template name="newline1"/>
-    <h4>
+    <h3>
       <xsl:apply-templates/>
-    </h4>
+    </h3>
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
@@ -1046,9 +1042,9 @@
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
     </a>
-    <h3>
+    <h2>
       <xsl:apply-templates/>
-    </h3>
+    </h2>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
@@ -1074,16 +1070,16 @@
         </xsl:choose>
       </xsl:attribute>
     </a>
-    <h3>
+    <h2>
       <xsl:apply-templates/>
-    </h3>
+    </h2>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template match="notes/sec/title">
-    <h3>
+    <h2>
       <xsl:value-of select="."/>
-    </h3>
+    </h2>
   </xsl:template>
 
   <!-- 1/4/12: Ambra modifications (creates any other titles not already specified) -->
@@ -1092,16 +1088,16 @@
       <!-- if there's a title, use it -->
       <xsl:when test="count(ancestor::sec) > 1">
         <xsl:call-template name="newline1"/>
-        <h4>
+        <h3>
           <xsl:apply-templates/>
-        </h4>
+        </h3>
         <xsl:call-template name="newline1"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="newline1"/>
-        <h3>
+        <h2>
           <xsl:apply-templates/>
-        </h3>
+        </h2>
         <xsl:call-template name="newline1"/>
       </xsl:otherwise>
     </xsl:choose>
@@ -1144,8 +1140,7 @@
         <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>
       </xsl:variable>
       <xsl:variable name="slideshowURL">
-        <xsl:value-of select="concat($pubAppContext, '/article/fetchObject.action?uri=',
-                  $imageURI,'&amp;representation=PNG_M')"/>
+        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="pptURL">
@@ -1202,7 +1197,7 @@
             <xsl:element name="img">
               <xsl:attribute name="src">
                 <xsl:value-of
-                    select="concat($pubAppContext,'/article/fetchObject.action?uri=',$imageURI,'&amp;representation=PNG_I')"/>
+                    select="concat('article/figure/image?size=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>
@@ -1404,7 +1399,6 @@
       <xsl:apply-templates select="*[not(self::label)]"/>
       <xsl:apply-templates select="label"/>
     </span>
-    <br/>
   </xsl:template>
 
   <!-- 1/4/12: suppress, we don't use -->
@@ -1421,7 +1415,7 @@
         </xsl:variable>
         <xsl:attribute name="src">
           <xsl:value-of
-              select="concat($pubAppContext,'/article/fetchObject.action?uri=',$graphicDOI,'&amp;representation=PNG')"/>
+              select="concat('article/asset?id=',$graphicDOI,'.PNG')"/><!-- TODO: Avoid hard-coding 'PNG' -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -1438,7 +1432,7 @@
     <xsl:choose>
       <xsl:when test="@list-type='bullet'">
         <xsl:call-template name="newline1"/>
-        <ul class="bulletlist">
+        <ul>
           <xsl:call-template name="newline1"/>
           <xsl:apply-templates/>
           <xsl:call-template name="newline1"/>
@@ -2492,12 +2486,11 @@
           select="*[not(self::title) and not(self::fn-group) and not(self::ack) and not(self::notes)]"/>
       <xsl:call-template name="newline1"/>
       <xsl:for-each select="//abstract[@abstract-type='patient']">
-        <div class="patient">
-          <xsl:attribute name="class">toc-section</xsl:attribute>
+        <div class="patient toc-section">
           <a id="patient" name="patient" data-toc="patient" title="Patient Summary"/>
-          <h3>
+          <h2>
             <xsl:value-of select="title"/>
-          </h3>
+          </h2>
           <xsl:apply-templates select="*[not(self::title)]"/>
         </div>
       </xsl:for-each>
@@ -2507,11 +2500,10 @@
   <!-- 1/4/12: Ambra-specific template (creates author contributions section) -->
   <xsl:template name="author-contrib">
     <xsl:if test="../front/article-meta/author-notes/fn[@fn-type='con']">
-      <div class="contributions">
-        <xsl:attribute name="class">toc-section</xsl:attribute>
+      <div class="contributions toc-section">
         <a id="authcontrib" name="authcontrib" data-toc="authcontrib"
            title="Author Contributions"/>
-        <h3>Author Contributions</h3>
+        <h2>Author Contributions</h2>
         <p>
           <xsl:apply-templates select="../front/article-meta/author-notes/fn[@fn-type='con']"/>
         </p>
@@ -2530,12 +2522,11 @@
       <hr class="section-rule"/>
     </xsl:if>
     <xsl:call-template name="newline1"/>
-    <div>
+    <div class="toc-section">
       <xsl:call-template name="assign-id"/>
       <xsl:if test="not(title)">
-        <xsl:attribute name="class">toc-section</xsl:attribute>
         <a id="ack" name="ack" data-toc="ack" title="Acknowledgments"/>
-        <h3>Acknowledgments</h3>
+        <h2>Acknowledgments</h2>
         <xsl:call-template name="newline1"/>
       </xsl:if>
       <xsl:apply-templates/>

@@ -25,7 +25,7 @@ twitter_module, t;
     }
   };
 
-   float_header = {
+  float_header = {
 
     settings: {
       floater : $("#floatTitleTop"),
@@ -99,23 +99,12 @@ twitter_module, t;
     }
   };
 
-subject_areas = function() {
-  //apply truncation via js because the css width needs to be auto
-  $("#subjectList li").each(function () {
-    var truncTerm = $(this).find('.taxo-term');
-    var getWidth = $(truncTerm).width();
-    if (getWidth > 135) {
-      return $(truncTerm).css('width', '140px');
-    }
-  });
-}
-
   $( document ).ready(function() {
-    if ($.fn.twitter) {
+   /* if ($.fn.twitter) {
       var doi = $("meta[name='dc.identifier']").attr("content");
       var twitter = new $.fn.twitter();
-    }
-   // $('.clone').clone().removeClass('clone.appendTo("#tweetList");
+    }*/
+
     $(".preventDefault").on('click', function (e) {
       e.preventDefault();
 
@@ -132,8 +121,9 @@ subject_areas = function() {
 
     var init_subject_truncation = subject_areas();
 
+
     float_header.init();
-    //&& !$("#twitter-alm-timeline div.tweet-header").is(":visible")
+
     if ($.fn.twitter ) {
       var doi = $('meta[name=citation_doi]').attr("content");
       var twitter = new $.fn.twitter();
@@ -146,7 +136,10 @@ subject_areas = function() {
     plos_tooltip.init();
     // initialize tooltip_hover for everything
     tooltip_hover.init();
+
   });
 
 }(jQuery));
+
+
 

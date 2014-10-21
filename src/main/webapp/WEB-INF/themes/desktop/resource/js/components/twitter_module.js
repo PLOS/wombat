@@ -119,7 +119,7 @@
 
           //twitter reply/retweet/favorite links
           tweetActionLink = 'https://twitter.com/intent/';
-          replyLink = tweetActionLink + 'tweet?in_reply_to' + tweetId;
+          replyLink = tweetActionLink + 'tweet?in_reply_to' + tweetId+'&text=@'+tweetHandle;
           retweetLink = tweetActionLink + 'retweet?tweet_id=' + tweetId;
           favoriteLink = tweetActionLink + 'favorite?tweet_id=' + tweetId;
 
@@ -149,7 +149,7 @@
         $('.more-tweets').css('display','block');
         $(this).css('display','none');
 
-        if (totalTweets > maxDisplayTweets {
+        if (totalTweets > maxDisplayTweets) {
           $('.view-all').css('display', 'block');
         }
       });

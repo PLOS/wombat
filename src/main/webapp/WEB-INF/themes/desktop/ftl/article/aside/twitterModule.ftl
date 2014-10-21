@@ -5,5 +5,5 @@
 
   </ul>
   <div class="load-more">Load more <span></span></div>
-  <a href="${legacyUrlPrefix}article/twitter/info:doi/${article.doi}" class="view-all">View all tweets</a>
+  <a href="${baseUrl}article/twitter/info:doi/${article.doi}" class="view-all">View all tweets</a>
 </div>

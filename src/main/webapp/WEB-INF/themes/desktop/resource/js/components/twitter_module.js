@@ -19,7 +19,7 @@
 
       var config = ALM_CONFIG;
 
-      var requestUrl = 'http://alm.plos.org/api/v3/articles?api_key=' + config.apiKey + '&ids=' + request;
+      var requestUrl = config.twitterhost +'?api_key=' + config.apiKey + '&ids=' + request;
       var response = '';
       $.ajax({
         type: "GET",

@@ -39,7 +39,7 @@
       },
       failure: function () {
         // TODO: Replace with better console logging
-         console.log('ALM request failed: ' + requestUrl);
+        // console.log('ALM request failed: ' + requestUrl);
       }
     })
   };

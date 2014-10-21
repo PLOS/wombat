@@ -6,10 +6,10 @@
 
 (function ($) {
 
- var s, parse_xml_date, float_header, is_author_list, check_authors_truncation, subject_areas;
+  var s, parse_xml_date, float_header, is_author_list, check_authors_truncation;
 
    parse_xml_date = {
-    settings: {
+    settings : {
       raw_date : document.getElementById("rawPubDate").value
     },
 
@@ -26,17 +26,18 @@
 
   float_header = {
 
-    settings: {
+    settings : {
       floater : $("#floatTitleTop"),
       hidden_div : "topVisible",
       scroll_trigger : 420,
       div_exists : 1
     },
 
-    init: function () {
+    init : function () {
       s = this.settings;
       this.scroll_it();
       this.close_floater();
+      this.get_width();
     },
 
     check_div : function () {
@@ -46,13 +47,26 @@
 
     scroll_it :  function () {
       if (this.check_div() > 0) {
-        return $(window).on('scroll', function () {
-          //show_onscroll is in resource/js/components/
-          show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
+        if ($(window).width() > 960) {
+          return $(window).on('scroll', function () {
+            //show_onscroll is in resource/js/components/
+            show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
+          });
+        }
+      }
+    },
+    get_width : function(){
+      if (this.check_div() > 0) {
+        $(window).resize(function () {
+          var new_width = $(window).width();
+          if (new_width < 960) {
+            $(s.floater).removeClass(s.hidden_div);
+          } else if (new_width > 960) {
+            $(s.floater).addClass(s.hidden_div);
+          }
         });
       }
     },
-
     close_floater : function () {
       s.floater.find('.logo-close').on('click', function () {
         s.floater.remove();

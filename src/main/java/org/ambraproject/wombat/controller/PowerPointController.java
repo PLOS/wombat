@@ -4,7 +4,6 @@ import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
@@ -60,7 +59,7 @@ public class PowerPointController extends WombatController {
          * We might need a more explicit way for the service API to say, "that asset exists but isn't a figure", rather
          * than just assuming that's the only thing that causes a 400 status.
          */
-        throw new EntityNotFoundException(figureId);
+        throw new NotFoundException(figureId);
       } else throw e;
     }
 

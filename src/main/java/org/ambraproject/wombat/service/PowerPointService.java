@@ -5,6 +5,7 @@ import org.apache.poi.hslf.usermodel.SlideShow;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Map;
 
 public interface PowerPointService {
 
@@ -28,13 +29,13 @@ public interface PowerPointService {
   /**
    * Create a Microsoft PowerPoint slide show object that presents a figure.
    *
-   * @param figureId     the ID of the figure to feature in the slide show
-   * @param articleLink  an absolute path to the figure's article
-   * @param logoCallback provides the journal logo for the figure
+   * @param figureMetadata the metadata of the figure to feature in the slide show
+   * @param articleLink    an absolute path to the figure's article
+   * @param logoCallback   provides the journal logo for the figure
    * @return the slide show object
    * @throws IOException
    */
-  public abstract SlideShow createPowerPointFile(String figureId,
+  public abstract SlideShow createPowerPointFile(Map<String, Object> figureMetadata,
                                                  URL articleLink,
                                                  JournalLogoCallback logoCallback)
       throws IOException;

@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.Citations;
 import org.apache.commons.io.IOUtils;
@@ -13,7 +12,6 @@ import org.apache.poi.hslf.usermodel.SlideShow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
@@ -33,31 +31,9 @@ public class PowerPointServiceImpl implements PowerPointService {
   private SoaService soaService;
 
   @Override
-  public SlideShow createPowerPointFile(String figureId,
-                                        URL articleLink,
+  public SlideShow createPowerPointFile(Map<String, Object> figureMetadata,
+                                        URL downloadLink,
                                         JournalLogoCallback logoCallback)
-      throws IOException {
-    Map<String, Object> figureMetadata;
-    try {
-      figureMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
-    } catch (ServiceRequestException e) {
-      if (e.getStatusCode() == HttpStatus.BAD_REQUEST.value()) {
-        /*
-         * Probably a request for a non-figure asset. Could easily be caused by an application bug, but technically
-         * could just be a bogus URL from the user, so give them a 404.
-         *
-         * We might need a more explicit way for the service API to say, "that asset exists but isn't a figure", rather
-         * than just assuming that's the only thing that causes a 400 status.
-         */
-        throw new EntityNotFoundException(figureId);
-      } else throw e;
-    }
-    return createPowerPointFile(figureMetadata, articleLink, logoCallback);
-  }
-
-  private SlideShow createPowerPointFile(Map<String, Object> figureMetadata,
-                                         URL downloadLink,
-                                         JournalLogoCallback logoCallback)
       throws IOException {
     //make the new slide
     SlideShow slideShow = new SlideShow();

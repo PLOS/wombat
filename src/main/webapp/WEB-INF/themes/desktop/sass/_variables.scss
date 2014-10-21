@@ -38,6 +38,7 @@ $grey-tinytext: #bbb;// TEMP PROD: change uses to grey-med-light
 $tabs-base-color: #2b2b2b;
 
 $warning: #e53350;
+
 $success: #16a127;
 
 //colors
@@ -58,14 +59,17 @@ $clr-body-text: $grey-dark;
 $clr-link-hover: $grey-dark;
 $clr-muted: $grey-med-dark;
 $clr-light-text: $white;
+$clr-callout-bg: $grey-light;
 
 $clr-warning: $warning;
+$clr-warning-bg: #fce2e5;
 $clr-success: $success;
 
 $clr-btn-primary: $clr-highlight;
 $clr-btn-secondary: $grey-dark;
 $clr-btn-disabled: $grey-light;
 $clr-btn-text: $white;
+$clr-callout-bg:  $grey-light;
 
 $clr-input-placeholder: $grey-dark;
 $clr-input-active: $grey-med-dark;

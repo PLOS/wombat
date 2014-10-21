@@ -3,10 +3,14 @@ package org.ambraproject.wombat.service.remote;
 import org.ambraproject.wombat.util.CacheParams;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpUriRequest;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.net.URL;
+import java.util.Collection;
 
 /**
  * A service for retrieving data from the SOA's RESTful server.
@@ -18,6 +22,13 @@ import java.io.Reader;
 public interface SoaService {
 
   /**
+   *  Return the host, port, and optionally part of the path.  For example "http://www.example.com/" or
+   *                "https://plos.org/api/"
+   */
+
+  public abstract URL getServerUrl();
+
+  /**
    * Send a REST request and open a stream as the response.
    *
    * @param address the path to which to send the REST request
@@ -27,8 +38,10 @@ public interface SoaService {
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   public abstract InputStream requestStream(String address) throws IOException;
+  public abstract InputStream requestStream(HttpUriRequest target) throws IOException;
 
   public abstract Reader requestReader(String address) throws IOException;
+  public abstract Reader requestReader(HttpUriRequest target) throws IOException;
 
   /**
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
@@ -66,9 +79,11 @@ public interface SoaService {
    * @return the value from the service or cache
    * @throws IOException
    */
-  public abstract <T> T requestCachedStream(CacheParams cacheParams, String address, CacheDeserializer<InputStream, T> callback) throws IOException;
+  public abstract <T> T requestCachedStream(CacheParams cacheParams, String address,
+                                            CacheDeserializer<InputStream, T> callback) throws IOException;
 
-  public abstract <T> T requestCachedReader(CacheParams cacheParams, String address, CacheDeserializer<Reader, T> callback) throws IOException;
+  public abstract <T> T requestCachedReader(CacheParams cacheParams, String address,
+                                            CacheDeserializer<Reader, T> callback) throws IOException;
 
   /**
    * Serialize an object either through a REST request or from the cache. If there is a cached value, and the REST
@@ -82,7 +97,8 @@ public interface SoaService {
    * @return the deserialized object
    * @throws IOException
    */
-  public abstract <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException;
+  public abstract <T> T requestCachedObject(CacheParams cacheParams, String address,
+                                            Class<T> responseClass) throws IOException;
 
   /**
    * Requests an asset, returning both the headers and stream.
@@ -95,7 +111,18 @@ public interface SoaService {
    * @return
    * @throws IOException
    */
-  public abstract CloseableHttpResponse requestAsset(String assetId, Header... headers) throws IOException;
+  public abstract CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers) throws IOException;
 
+  public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
+
+  /**
+   * Forward the remote service response from a given request to a client
+   * @param target the remote service request message
+   * @param responseTo the response wrapper object the server response will be copied into
+   * @return
+   * @throws IOException
+   */
+  public abstract void forwardResponse(HttpUriRequest requestToService,
+                                       HttpServletResponse responseToClient) throws IOException;
 
 }

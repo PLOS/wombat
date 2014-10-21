@@ -9,7 +9,12 @@
     <!--[if IE 8]>
   <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />"/>
     <![endif]-->
+
   <link media="print" rel="stylesheet" type="text/css"  href="<@siteLink path="resource/css/print.css"/>"/>
+  <#-- hack to put make global vars accessible in javascript. Would be good to come up with a better solution -->
+    <script type="text/javascript">
+        var siteUrlPrefix = "<@siteLink path=''/>";
+    </script>
 
   <script type="text/javascript" src="<@siteLink path="resource/js/vendor/modernizr-v2.7.1.js"/>"></script>
   <#-- //html5shiv. js and respond.js - enable the use of foundation's dropdowns to work in IE8 -->

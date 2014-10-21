@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.Map;
 
 public class ContentRepoServiceImpl implements ContentRepoService {
@@ -77,11 +78,11 @@ public class ContentRepoServiceImpl implements ContentRepoService {
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the repository does not provide the file
    */
   @Override
-  public CloseableHttpResponse request(String key, Optional<Integer> version, Header... headers)
+  public CloseableHttpResponse request(String key, Optional<Integer> version, Collection<? extends Header> headers)
       throws IOException {
     URI requestAddress = buildUri(key, version);
     HttpGet get = new HttpGet(requestAddress);
-    get.setHeaders(headers);
+    get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }
 

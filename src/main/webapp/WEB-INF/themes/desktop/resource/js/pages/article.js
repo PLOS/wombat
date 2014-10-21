@@ -30,8 +30,7 @@
       floater : $("#floatTitleTop"),
       hidden_div : "topVisible",
       scroll_trigger : 420,
-      div_exists : 1,
-      window_width: $(window).width()
+      div_exists : 1
     },
 
     init: function () {
@@ -47,11 +46,13 @@
     },
 
     scroll_it :  function () {
-      if (this.check_div() > 0 && $(window).width() > 960) {
-        return $(window).on('scroll', function () {
-          //show_onscroll is in resource/js/components/
-          show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
-        });
+      if (this.check_div() > 0) {
+        if ($(window).width() > 960) {
+          return $(window).on('scroll', function () {
+            //show_onscroll is in resource/js/components/
+            show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
+          });
+        }
       }
     },
     get_width : function(){

@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.base.CharMatcher;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.Citations;
 import org.apache.commons.io.IOUtils;
@@ -23,6 +24,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PowerPointServiceImpl implements PowerPointService {
   private static final Logger log = LoggerFactory.getLogger(PowerPointServiceImpl.class);
@@ -130,11 +133,34 @@ public class PowerPointServiceImpl implements PowerPointService {
     }
   }
 
+  private static final Pattern TITLE_EXTRACTOR = Pattern.compile("<title[^>]*?>(.*?)</title\\s*>");
+  private static final Pattern TAG_PATTERN = Pattern.compile("</?\\w.*?>");
+
   private static String getTitleText(Map<String, Object> figureMetadata) {
     String title = (String) figureMetadata.get("title");
     String description = (String) figureMetadata.get("description");
-    // TODO: Deal with markup
-    return String.format("%s. %s", title, description);
+
+    /*
+     * The description is an excerpt of article XML. Use quick-and-dirty regexes to get the text of the <title> element
+     * with internal markup removed. We expect we expect there never to be another nested pair of <title> tags, so we
+     * should be able to get away without context-free parsing.
+     *
+     * If bugs or shortcomings are found, consider using an XML parser instead.
+     */
+
+    // Extract title from description
+    Matcher titleElement = TITLE_EXTRACTOR.matcher(description);
+    if (!titleElement.find()) throw new RuntimeException();
+    String descriptionTitleText = titleElement.group(1);
+
+    // Remove internal markup
+    Matcher tagMatcher = TAG_PATTERN.matcher(descriptionTitleText);
+    descriptionTitleText = tagMatcher.replaceAll("");
+
+    // Convert free whitespace to human-friendly.
+    descriptionTitleText = CharMatcher.WHITESPACE.trimAndCollapseFrom(descriptionTitleText, ' ');
+
+    return String.format("%s. %s", title, descriptionTitleText);
   }
 
   private TextBox buildCitation(Map<String, Object> figureMetadata, URL articleLink, SlideShow slideShow) {

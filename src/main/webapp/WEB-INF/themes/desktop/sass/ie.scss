@@ -71,4 +71,44 @@ div[data-js-tooltip="tooltip_target"]{ display: none;}
 
 
 
+//ie8 doesn't support @media; need to override the print settings in _article.scss
+
+
+  @page {
+    margin: .75in;
+  }
+
+  .article-body {
+    width: auto;
+  }
+
+  .title-block {
+    margin-top: auto;
+    margin-left: auto;
+
+    &:before {
+      content: '';
+    }
+
+    h1 {
+      padding-top: 0 !important;
+    }
+  }
+  // override .inline-list
+#floatAuthorList, .author-list {
+  margin: 0;
+  padding-left: 22px !important;
+}
+.author-list {
+  margin: 0;
+  padding-left: 18px !important;
+}
+#floatAuthorList li, .author-list li {
+  margin-left: 0 !important;
+}
+
+
+
+
+
 

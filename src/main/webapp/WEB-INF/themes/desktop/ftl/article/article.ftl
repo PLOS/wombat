@@ -5,7 +5,7 @@
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-<#assign title = article.title />
+<#assign title = article.title, articleDoi = article.doi />
 <#assign depth = 0 />
 
 <#include "../common/head.ftl" />

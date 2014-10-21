@@ -9,7 +9,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   color: $grey-med-dark;
 
   a {
-    @include link-text($decoration: underline, $color: $grey-med-dark);
+    @include link-text($grey-med-dark, underline);
   }
 }
 
@@ -190,6 +190,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       font-family: $font-face-plain;
       line-height: rem-calc(16);
       margin: rem-calc(2) 0; //TEMP-PROD: change this
+
       i, italic, named-content {
         font-style: italic;
       }
@@ -255,6 +256,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       border-right: 1px solid $white;
       font-weight: bold;
       color: $white;
+
       &:hover {
         background: $plos-default;
         color: $white;
@@ -567,7 +569,7 @@ body.article .ui-widget-overlay {
       margin-bottom: rem-calc(12);// TEMP PROD: use 10 or 15;
 
       a {
-        @include link-text($color: $plos-default, $decoration: underline);
+        @extend %link-color-plos-default;
         font-size: $txt-size-xsmall;
       }
     }
@@ -702,6 +704,24 @@ body.article .ui-widget-overlay {
         }
       }
 
+    }
+  }
+}
+.comments-container {
+  @extend .aside-container;
+
+  ul {
+    margin-left: 0;
+    list-style-type: none;
+
+    li {
+      margin-left: 0;
+      padding-bottom: rem-calc(7); // TEMP PROD: change to $pad-xsmall (p has 5px)
+    }
+
+    a {
+      @extend %link-color-plos-default;
+      display: block;
     }
   }
 }

@@ -61,9 +61,12 @@ public class PowerPointServiceImpl implements PowerPointService {
     return slideShow;
   }
 
+  // Letter size = 11 inches by 8.5 inches. One inch = 72 pixels.
+  private static final int LETTER_SIZE_WIDTH = 792;
+  private static final int LETTER_SIZE_HEIGHT = 612;
+
   private static Dimension constructLetterSizeDimension() {
-    // Letter size = 11 inches by 8.5 inches. One inch = 72 pixels.
-    return new Dimension(792, 612);
+    return new Dimension(LETTER_SIZE_WIDTH, LETTER_SIZE_HEIGHT);
   }
 
   private byte[] readFigureImage(Map<String, Object> figureMetadata) throws IOException {
@@ -90,30 +93,36 @@ public class PowerPointServiceImpl implements PowerPointService {
     Dimension dimension = getImageDimension(image);
 
     //get the image size
-    int imW = dimension.width;
-    int imH = dimension.height;
+    int imageWidth = dimension.width;
+    int imageHeight = dimension.height;
+    double imageRatio = (double) imageWidth / (double) imageHeight;
 
     //add the image to picture and add picture to shape
     Picture picture = new Picture(index);
 
     // Image box size 750x432 at xy=21,68
+    final int boxWidth = 750;
+    final int boxHeight = 432;
+    final double boxRatio = (double) boxWidth / (double) boxHeight;
+    final int boxHorizontal = 21;
+    final int boxVertical = 68;
 
-    if (imW > 0 && imH > 0) {
-      double pgRatio = 750.0 / 432.0;
-      double imRatio = (double) imW / (double) imH;
-      if (pgRatio >= imRatio) {
+    if (imageWidth > 0 && imageHeight > 0) {
+      Rectangle anchor;
+      if (boxRatio >= imageRatio) {
         // horizontal center
-        int mw = (int) ((double) imW * 432.0 / (double) imH);
-        int mx = 21 + (750 - mw) / 2;
+        int mw = (int) ((double) boxHeight * imageRatio);
+        int mx = boxHorizontal + (boxWidth - mw) / 2;
 
-        picture.setAnchor(new Rectangle(mx, 68, mw, 432));
+        anchor = new Rectangle(mx, boxVertical, mw, boxHeight);
       } else {
         // vertical center
-        int mh = (int) ((double) imH * 750.0 / (double) imW);
-        int my = 68 + (432 - mh) / 2;
+        int mh = (int) ((double) boxWidth / imageRatio);
+        int my = boxVertical + (boxHeight - mh) / 2;
 
-        picture.setAnchor(new Rectangle(21, my, 750, mh));
+        anchor = new Rectangle(boxHorizontal, my, boxWidth, mh);
       }
+      picture.setAnchor(anchor);
     }
 
     return picture;
@@ -215,7 +224,12 @@ public class PowerPointServiceImpl implements PowerPointService {
     int logoIdx = slideShow.addPicture(logoImage, Picture.PNG);
     Picture logo = new Picture(logoIdx);
     Dimension dimension = getImageDimension(logoImage);
-    logo.setAnchor(new Rectangle(792 - 5 - dimension.width, 612 - 5 - dimension.height, dimension.width, dimension.height));
+
+    final int margin = 5;
+    int horizontalPosition = LETTER_SIZE_WIDTH - margin - dimension.width;
+    int verticalPosition = LETTER_SIZE_HEIGHT - margin - dimension.height;
+    logo.setAnchor(new Rectangle(horizontalPosition, verticalPosition, dimension.width, dimension.height));
+
     return logo;
   }
 

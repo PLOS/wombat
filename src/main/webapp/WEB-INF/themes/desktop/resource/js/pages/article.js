@@ -117,14 +117,13 @@
     }
 
 
-
-
     float_header.init();
 
     if ($.fn.twitter ) {
       var doi = $('meta[name=citation_doi]').attr("content");
       var twitter = new $.fn.twitter();
-      twitter.displayTweetsArticleSidebar(doi);
+      //twitter.displayTweetsArticleSidebar(doi);
+
     }
 
     // initialize toggle for author list view more

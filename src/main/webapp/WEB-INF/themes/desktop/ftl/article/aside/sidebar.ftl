@@ -5,7 +5,7 @@
   <#include "share.ftl" />
 </div>
 
-<#include "crossmark.ftl" />
+
 
 <#include "relatedArticles.ftl" />
 

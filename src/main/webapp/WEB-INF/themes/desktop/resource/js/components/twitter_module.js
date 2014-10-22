@@ -31,7 +31,7 @@
           return showTweetsArticleSidebar(response);
         },
         failure: function () {
-          console.log('ALM request failed: ' + errorText+ " "+ url);
+         // console.log('ALM request failed: ' + errorText+ " "+ url);
           $('#twitter-container').append(errorText);
         }
       });
@@ -89,11 +89,12 @@
       maxDisplayTweets = 5;
 
 
-      function enableTwitterStream(stuff, limity) {
+      function enableTwitterStream(somedata, limity) {
 
         //get the data
         function dataPass(i) {
-          dataPrefix = stuff[i].event;
+
+          dataPrefix = somedata.events[i].event;
           tweetDate = dateParse(dataPrefix.created_at, false, true);
           tweetAvatar = dataPrefix.user_profile_image;
           tweetUserName = dataPrefix.user_name;
@@ -157,7 +158,7 @@
       if (almTweetData && totalTweets > 0) {
 
         $('.twitter-container').css('display','block');
-        enableTwitterStream(almTweetData.events, totalTweets);
+        enableTwitterStream(almTweetData, totalTweets);
       }
     }
   };

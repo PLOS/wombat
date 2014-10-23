@@ -16,18 +16,19 @@
       doi = validateDOI(doi);
       var config, requestUrl, errorText;
       config = ALM_CONFIG;
-      requestUrl = config.twitterhost +'?api_key=' + config.apiKey + '&ids=' + doi + '&source=twitter&info=event';
+
+      requestUrl = config.host +'?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source=twitter';
       errorText = '<li>Our system is having a bad day. Please check back later.</li>';
 
       $.ajax({
         url: requestUrl,
         dataType: 'json'
       }).done(function (response){
-        totalTweets = response[0].sources[0].events.length;
+        totalTweets = response.data[0].sources[0].events.length;
+        console.log(totalTweets);
+        $.each(response.data[0].sources[0].events, function(index){
 
-        $.each(response[0].sources[0].events, function(index){
-
-          dataPrefix = response[0].sources[0].events[index].event;
+          dataPrefix = response.data[0].sources[0].events[index].event;
           //get all the twitter data & put into html tags
           dataPass(dataPrefix);
 
@@ -47,7 +48,6 @@
         } else {}
 
         $('.twitter-container').css('display','block');
-
       }).fail(function(){
         $('#tweetList').append(errorText);
       });

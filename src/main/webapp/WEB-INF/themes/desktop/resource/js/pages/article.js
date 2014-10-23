@@ -122,7 +122,7 @@
     if ($.fn.twitter ) {
       var doi = $('meta[name=citation_doi]').attr("content");
       var twitter = new $.fn.twitter();
-      //twitter.displayTweetsArticleSidebar(doi);
+      twitter.getSidebarTweets(doi);
 
     }
 

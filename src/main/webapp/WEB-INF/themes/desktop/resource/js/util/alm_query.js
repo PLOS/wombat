@@ -48,32 +48,4 @@
    * TODO: Support querying for multiple article summaries in efficient batches.
    * See getArticleSummaries in legacy Ambra.
    */
-  $.fn.getTweetsArticleSidebar = function (doi, callback) {
-    doi = validateDOI(doi);
-    var request, config, requestUrl, response;
-    request = doi + '&source=twitter&info=event';
-
-    config = ALM_CONFIG;
-
-    requestUrl = config.twitterhost +'?api_key=' + config.apiKey + '&ids=' + request;
-
-    $.ajax({
-      type: "GET",
-      url: requestUrl,
-      json: 'callback',
-      dataType: 'json',
-      success: function(response) {
-        // response = responseText[0].sources[0];
-        //return showTweetsArticleSidebar(response);
-        // return enableTwitterStream(response);
-        callback(response.data[0])
-      },
-      failure: function () {
-        // console.log('ALM request failed: ' + errorText+ " "+ url);
-        $('#twitter-container').append(errorText);
-      }
-    });
-
-  };
-
 })(jQuery);

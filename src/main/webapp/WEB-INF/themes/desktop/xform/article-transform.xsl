@@ -1238,13 +1238,14 @@
                   <xsl:value-of select="$bigImgURL"/>
                 </xsl:attribute>
                 larger image
-                (
                 <xsl:element name="span">
-                  <xsl:attribute name="id">
-                    <xsl:value-of select="$bigImgDOI"/>
+                  <xsl:attribute name="class">file-size</xsl:attribute>
+                  <xsl:attribute name="data-size">large</xsl:attribute>
+                  <xsl:attribute name="data-doi">
+                    <xsl:value-of select="$imageURI"/>
                   </xsl:attribute>
+                  ()
                 </xsl:element>
-                )
               </xsl:element>
             </li>
             <li>
@@ -1261,13 +1262,14 @@
                   <xsl:value-of select="$origImgURL"/>
                 </xsl:attribute>
                 original image
-                (
                 <xsl:element name="span">
-                  <xsl:attribute name="id">
-                    <xsl:value-of select="$origImgDOI"/>
+                  <xsl:attribute name="class">file-size</xsl:attribute>
+                  <xsl:attribute name="data-size">original</xsl:attribute>
+                  <xsl:attribute name="data-doi">
+                    <xsl:value-of select="$imageURI"/>
                   </xsl:attribute>
+                  ()
                 </xsl:element>
-                )
               </xsl:element>
             </li>
           </ul>

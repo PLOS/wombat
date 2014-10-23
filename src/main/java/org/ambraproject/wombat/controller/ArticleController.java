@@ -6,12 +6,14 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -101,6 +103,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetadata));
+    model.addAttribute("assetSizes", buildAssetSizeTable(articleMetadata));
     addCrossPublishedJournals(request, model, site, articleMetadata);
     requestAuthors(model, articleId);
     requestComments(model, articleId);
@@ -164,8 +167,9 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a given
-   * category path)
+   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a
+   * given category path)
+   *
    * @param articleMetadata
    * @return a sorted list of category terms
    */
@@ -177,10 +181,10 @@ public class ArticleController extends WombatController {
 
     // create a map of terms/weights (effectively removes duplicate terms through the mapping)
     Map<String, Double> termsMap = new HashMap<>();
-    for (Map<String, ?> category: categories){
-      String[] categoryTerms = ((String)category.get("path")).split("/");
+    for (Map<String, ?> category : categories) {
+      String[] categoryTerms = ((String) category.get("path")).split("/");
       String categoryTerm = categoryTerms[categoryTerms.length - 1];
-      termsMap.put(categoryTerm, (Double)category.get("weight"));
+      termsMap.put(categoryTerm, (Double) category.get("weight"));
     }
 
     // use Guava for sorting, first on weight (descending), then on category term
@@ -232,6 +236,35 @@ public class ArticleController extends WombatController {
     }
 
     return Multimaps.asMap(amendments);
+  }
+
+  private static Iterable<Map.Entry<String, Map<String, Object>>> iterateOverFigureFiles(Map<?, ?> figure) {
+    Map<String, Object> original = (Map<String, Object>) figure.get("original");
+    Map.Entry<String, Map<String, Object>> originalEntry = Maps.immutableEntry("original", original);
+
+    Map<String, Map<String, Object>> thumbnails = (Map<String, Map<String, Object>>) figure.get("thumbnails");
+
+    return Iterables.concat(
+        ImmutableList.of(originalEntry),
+        thumbnails.entrySet());
+  }
+
+  private static String buildAssetSizeTable(Map<?, ?> articleMetadata) {
+    Map<String, Map<String, Integer>> table = Maps.newLinkedHashMap();
+    Collection<Map> figures = (Collection<Map>) articleMetadata.get("figures");
+    for (Map<?, ?> figure : figures) {
+      String figureDoi = (String) figure.get("doi");
+      Map<String, Integer> sizes = Maps.newLinkedHashMap();
+      for (Map.Entry<String, Map<String, Object>> entry : iterateOverFigureFiles(figure)) {
+        String fileType = entry.getKey();
+        Map<String, Object> fileObject = entry.getValue();
+        Map<String, Object> fileMetadata = (Map<String, Object>) fileObject.get("metadata");
+        int size = ((Number) fileMetadata.get("size")).intValue();
+        sizes.put(fileType, size);
+      }
+      table.put(figureDoi, sizes);
+    }
+    return new Gson().toJson(table);
   }
 
   /**

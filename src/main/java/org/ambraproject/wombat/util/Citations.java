@@ -1,10 +1,15 @@
 package org.ambraproject.wombat.util;
 
+import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
+import com.google.common.base.Preconditions;
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Utility methods for building article citations.
@@ -16,16 +21,44 @@ public class Citations {
     throw new AssertionError("Not instantiable");
   }
 
+  private static final Splitter WHITESPACE_SPLITTER = Splitter.on(CharMatcher.WHITESPACE);
+  private static final Splitter DASH_SPLITTER = Splitter.on(Pattern.compile("\\p{Pd}"));
+
+  public static String abbreviateAuthorGivenNames(String givenNames) {
+    Iterable<String> givenNameTokens = WHITESPACE_SPLITTER.split(givenNames);
+    StringBuilder abbreviation = new StringBuilder();
+    for (String givenName : givenNameTokens) {
+      Iterable<String> nameParts = DASH_SPLITTER.split(givenName);
+      for (String namePart : nameParts) {
+        char initial = namePart.charAt(0);
+        abbreviation.append(initial);
+      }
+    }
+
+    return abbreviation.toString();
+  }
+
+  private static String getAbbreviatedName(Map<String, Object> author) {
+    String surnames = (String) author.get("surnames");
+    String givenNames = (String) author.get("givenNames");
+    String suffix = (String) author.get("suffix");
+
+    StringBuilder name = new StringBuilder();
+    name.append(Preconditions.checkNotNull(surnames));
+    if (!Strings.isNullOrEmpty(givenNames)) {
+      name.append(' ').append(abbreviateAuthorGivenNames(givenNames));
+    }
+    if (!Strings.isNullOrEmpty(suffix)) {
+      suffix = suffix.replace(".", "");
+      name.append(' ').append(suffix);
+    }
+    return name.toString();
+  }
+
+
   private static final int MAX_AUTHORS = 5;
 
   private static final Joiner COMMA_JOINER = Joiner.on(", ");
-
-  /*
-   * TODO: Deduplicate org.ambraproject.wombat.freemarker.AbbreviatedNameDirective
-   */
-  private static String getAbbreviatedName(Map<String, Object> author) {
-    return (String) author.get("fullName"); // TODO: Implement
-  }
 
   private static String extractYear(String date) {
     return CalendarUtil.formatIso8601Date(date, "yyyy");

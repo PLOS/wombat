@@ -99,7 +99,7 @@
 
   <script type="text/javascript">
     (function ($) {
-      $('#artText').populateFileSizes(${assetSizes});
+      $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
     })(jQuery);
   </script>
 

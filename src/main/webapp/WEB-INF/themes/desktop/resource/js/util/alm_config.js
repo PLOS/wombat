@@ -5,6 +5,5 @@
  */
 ALM_CONFIG = {
   host: null,
-  apiKey: null,
-  twitterhost: null
+  apiKey: null
 };

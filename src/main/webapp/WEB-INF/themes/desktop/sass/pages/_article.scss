@@ -604,6 +604,10 @@ body.article .ui-widget-overlay {
     &:hover {
       display: block;
     }
+    a {
+      @extend %link-text-white;
+      font-weight: bold;
+    }
   }
   h3 #subjInfo {
     @include circle;

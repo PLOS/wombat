@@ -396,7 +396,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .dload-menu {
   @include clearfix;
-  width: rem-calc(160);
   padding-bottom: 5px;
 
   div {

@@ -12,7 +12,6 @@
       //replace semicolons
       mod_cut = cutit.replace(/;/g,'%3B');
       newhref = parts[0] + mod_cut;
-      console.log($('#twitter-share-link').attr('href', newhref));
       return $('#twitter-share-link').attr('href', newhref);
     }
   })();

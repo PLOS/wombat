@@ -555,6 +555,14 @@ body.article .ui-widget-overlay {
   filter: Alpha(Opacity - 30);
 }
 
+#collectionList {
+  list-style-type: none;
+  margin-left: 0;
+  li a {
+    @include link-text($plos-default, underline);
+  }
+}
+
 .related-articles-container {
   @extend .aside-container;
 

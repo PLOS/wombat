@@ -22,7 +22,7 @@ public class Citations {
   }
 
   private static final Splitter WHITESPACE_SPLITTER = Splitter.on(CharMatcher.WHITESPACE);
-  private static final Splitter DASH_SPLITTER = Splitter.on(Pattern.compile("\\p{Pd}"));
+  private static final Splitter DASH_SPLITTER = Splitter.on(Pattern.compile("\\p{Pd}")).omitEmptyStrings();
 
   public static String abbreviateAuthorGivenNames(String givenNames) {
     Iterable<String> givenNameTokens = WHITESPACE_SPLITTER.split(givenNames);

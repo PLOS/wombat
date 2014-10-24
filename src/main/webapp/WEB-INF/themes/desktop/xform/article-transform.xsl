@@ -1178,7 +1178,7 @@
         <xsl:attribute name="id">
           <xsl:value-of select="translate($figId, '.', '-')"/>
         </xsl:attribute>
-        <div class="img">
+        <div class="img-box">
           <xsl:element name="a">
             <!-- 6/13/12: added translate so names and ids have dash (for figure enhancement) -->
             <xsl:attribute name="name">
@@ -1203,13 +1203,14 @@
               <xsl:attribute name="class">thumbnail</xsl:attribute>
             </xsl:element>
           </xsl:element>
+          <div class="expand"/>
         </div>
         <!--start figure download-->
         <div class="figure-inline-download">
           Download:
           <ul>
             <li>
-              <div class="icon">
+              <div class="def">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$pptURL"/>
@@ -1225,7 +1226,7 @@
               </xsl:element>
             </li>
             <li>
-              <div class="icon">
+              <div class="def">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$bigImgURL"/>
@@ -1249,7 +1250,7 @@
               </xsl:element>
             </li>
             <li>
-              <div class="icon">
+              <div class="def">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$origImgURL"/>
@@ -1275,22 +1276,24 @@
           </ul>
         </div>
         <!--end figure download-->
-        <p>
-          <strong>
+          <div class="figcaption">
+
             <xsl:apply-templates select="label"/>
             <xsl:if test="caption/title">
               <xsl:text> </xsl:text>
-              <span>
+
                 <xsl:apply-templates select="caption/title"/>
-              </span>
+
             </xsl:if>
-          </strong>
-        </p>
-        <xsl:apply-templates select="caption/node()[not(self::title)]"/>
-        <xsl:if test="object-id[@pub-id-type='doi']">
-          <span>
+
+          </div>
+          <p>
+            <xsl:apply-templates select="caption/node()[not(self::title)]"/>
+          </p>
+          <xsl:if test="object-id[@pub-id-type='doi']">
+          <p>
             <xsl:apply-templates select="object-id[@pub-id-type='doi']"/>
-          </span>
+          </p>
         </xsl:if>
       </div>
     </xsl:if>

@@ -269,35 +269,6 @@ $line-height-small: ($line-height * .5);
     @include nav-side($txt-color: $clr-body-text);
   }
 }
- //inline figures
-.figure {
-  .figure-box {
-    background: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 320px;
-    float: left;
-    min-height: 120px;
-    display: block;
-  }
-  .figure-downloads {
-    dt {
-      @extend %brand-background;
-      font-color: $white;
-      font-size: $txt-size-xxxxsmall;
-      width: 30px;
-    }
-    dd {
-      a {
-
-        padding-right: $pad-xsmall;
-        font-size: $txt-size-xsmall;
-        @extend %link-text-default;
-        line-height: 15px;
-      }
-    }
-  }
-}
 
 // specificity is needed to override ul & div styles
 .article-content .figure {
@@ -362,28 +333,27 @@ $line-height-small: ($line-height * .5);
           content: "";
         }
         @include clearfix;
-      //  margin: 0;
         padding: 8px 0 0;
         line-height: 15px;
-        width: rem-calc(165px);
+        width: rem-calc(165);
 
-        .def {display:inline-block;
+        .def {
+          display:inline-block;
           float: left;
           margin-right: 4px;
+          @extend %brand-background;
+          border-radius: 2px;
 
           a {
-            @extend %brand-background;
-            border-radius: 2px;
             width: $pad-medium;
-            height: 15px;
-            line-height: 15px;
             text-align: center;
             color: $white;
             font-size: $txt-size-xxxxsmall;
           }
         }
+
         a {
-          display: block;
+          display: inline-block;
           float: left;
           @extend %link-text-default;
           font-size: $txt-size-xsmall;

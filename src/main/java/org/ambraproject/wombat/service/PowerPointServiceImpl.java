@@ -1,8 +1,8 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.CharMatcher;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.Citations;
+import org.ambraproject.wombat.util.TextUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.hslf.model.Hyperlink;
 import org.apache.poi.hslf.model.Picture;
@@ -143,7 +143,6 @@ public class PowerPointServiceImpl implements PowerPointService {
   }
 
   private static final Pattern TITLE_EXTRACTOR = Pattern.compile("<title[^>]*?>(.*?)</title\\s*>");
-  private static final Pattern TAG_PATTERN = Pattern.compile("</?\\w.*?>");
 
   private static String getTitleText(Map<String, Object> figureMetadata) {
     String title = (String) figureMetadata.get("title");
@@ -161,13 +160,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     Matcher titleElement = TITLE_EXTRACTOR.matcher(description);
     if (!titleElement.find()) throw new RuntimeException();
     String descriptionTitleText = titleElement.group(1);
-
-    // Remove internal markup
-    Matcher tagMatcher = TAG_PATTERN.matcher(descriptionTitleText);
-    descriptionTitleText = tagMatcher.replaceAll("");
-
-    // Convert free whitespace to human-friendly.
-    descriptionTitleText = CharMatcher.WHITESPACE.trimAndCollapseFrom(descriptionTitleText, ' ');
+    descriptionTitleText = TextUtil.removeMarkup(descriptionTitleText);
 
     return String.format("%s. %s", title, descriptionTitleText);
   }

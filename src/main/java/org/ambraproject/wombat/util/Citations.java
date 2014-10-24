@@ -91,7 +91,8 @@ public class Citations {
     String year = extractYear(date);
     citation.append(" (").append(year).append(')');
 
-    String title = (String) articleMetadata.get("title"); // TODO: Remove markup
+    String title = (String) articleMetadata.get("title");
+    title = TextUtil.removeMarkup(title);
     citation.append(' ').append(title).append('.');
 
     String journal = (String) articleMetadata.get("journal");

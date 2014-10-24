@@ -269,20 +269,62 @@ $line-height-small: ($line-height * .5);
     @include nav-side($txt-color: $clr-body-text);
   }
 }
+ //inline figures
+.figure {
+  .figure-box {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 320px;
+    float: left;
+    min-height: 120px;
+    display: block;
+  }
+  .figure-downloads {
+    dt {
+      @extend %brand-background;
+      font-color: $white;
+      font-size: $txt-size-xxxxsmall;
+      width: 30px;
+    }
+    dd {
+      a {
 
-// specificity is needed to override ul styles
+        padding-right: $pad-xsmall;
+        font-size: $txt-size-xsmall;
+        @extend %link-text-default;
+        line-height: 15px;
+      }
+    }
+  }
+}
+
+// specificity is needed to override ul & div styles
 .article-content .figure {
-  font-family: $font-face-plain;
-  background: $grey-light;
-  padding: 18px 20px 15px;
   div {
     margin-bottom: 0;
   }
+  ul {
+    margin: 0;
+    li {
+      margin: 0;
+      &:before {
+        content: "";
+      }
+    }
+  }
+}
+
+.article-content .figure {
+  font-family: $font-face-plain;
+  background: $grey-light;
+  padding: 18px $pad-default $pad-smallish;
+
   .img-box {
     display: table-cell;
     background: #fff;
     padding: $pad-small;
-    width: 320px;
+    width: rem-calc(320);
     min-height: 120px;
     position: relative;
 
@@ -293,6 +335,7 @@ $line-height-small: ($line-height * .5);
       position: absolute;
       top: -8px;
       right: -8px;
+
       &:hover {
         background-position: 0 -25px;
         cursor: pointer;
@@ -306,7 +349,7 @@ $line-height-small: ($line-height * .5);
     vertical-align: top;
     padding-top: $pad-medium;
     padding-left: $pad-xsmall;
-    width: 190px;
+    width: rem-calc(190);
 
     ul {
 
@@ -319,10 +362,10 @@ $line-height-small: ($line-height * .5);
           content: "";
         }
         @include clearfix;
-        margin: 0;
+      //  margin: 0;
         padding: 8px 0 0;
         line-height: 15px;
-        width: 165px;
+        width: rem-calc(165px);
 
         .def {display:inline-block;
           float: left;
@@ -331,9 +374,9 @@ $line-height-small: ($line-height * .5);
           a {
             @extend %brand-background;
             border-radius: 2px;
-            width: 30px;
+            width: $pad-medium;
             height: 15px;
-            padding-top: 1px;
+            line-height: 15px;
             text-align: center;
             color: $white;
             font-size: $txt-size-xxxxsmall;

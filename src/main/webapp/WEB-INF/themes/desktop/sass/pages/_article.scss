@@ -566,6 +566,7 @@ body.article .ui-widget-overlay {
       margin-bottom: rem-calc(12);// TEMP PROD: use 10 or 15;
 
       a {
+        //@include link-text($plos-default, underline);
         @extend %link-text-default;
         font-size: $txt-size-xsmall;
       }
@@ -772,6 +773,7 @@ body.article .ui-widget-overlay {
    }
 
   .load-more, .view-all {
+   // @include link-text($plos-default, underline);
     @extend %link-text-default;
     font-family: $font-face-fancy;
     font-size: $txt-size-large;

@@ -1144,7 +1144,7 @@
       </xsl:variable>
 
       <xsl:variable name="pptURL">
-        <xsl:value-of select="concat('/article/',$imageURI, '/powerpoint')"/>
+        <xsl:value-of select="concat('article/figure/powerpoint?id=',$imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">

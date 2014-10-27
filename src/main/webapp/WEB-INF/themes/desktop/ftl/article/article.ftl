@@ -5,7 +5,7 @@
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-<#assign title = article.title />
+<#assign title = article.title, articleDoi = article.doi />
 <#assign depth = 0 />
 
 <#include "../common/head.ftl" />
@@ -90,16 +90,24 @@
   <@js src="resource/js/components/show_onscroll.js"/>
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
-  <@js src="resource/js/components/float_header.js"/>
 
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
-  <@js src="resource/js/vendor/jquery.cookie.js" />
+
+  <@js src="resource/js/components/twitter_module.js"/>
+
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>
   <@renderJs />
 
+  <script type="text/javascript">
+    (function ($) {
+      $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
+    })(jQuery);
+  </script>
+
+  <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
   <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
 

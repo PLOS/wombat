@@ -1144,18 +1144,18 @@
       </xsl:variable>
 
       <xsl:variable name="pptURL">
-        <xsl:value-of select="concat('/article/',$imageURI, '/powerpoint')"/>
+        <xsl:value-of select="concat('article/figure/powerpoint?id=',$imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('/article/',$imageURI,'/largerimage')"/>
+        <xsl:value-of select="concat('article/figure/image?size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
       <xsl:variable name="bigImgDOI">
         <xsl:value-of select="concat($imageURI,'.PNG_L')"/>
       </xsl:variable>
 
       <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('/article/',$imageURI,'/originalimage')"/>
+        <xsl:value-of select="concat('article/figure/image?size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
       <xsl:variable name="origImgDOI">
         <xsl:value-of select="concat($imageURI,'.TIF')"/>
@@ -1241,13 +1241,14 @@
                   <xsl:value-of select="$bigImgURL"/>
                 </xsl:attribute>
                 larger image
-                (
                 <xsl:element name="span">
-                  <xsl:attribute name="id">
-                    <xsl:value-of select="$bigImgDOI"/>
+                  <xsl:attribute name="class">file-size</xsl:attribute>
+                  <xsl:attribute name="data-size">large</xsl:attribute>
+                  <xsl:attribute name="data-doi">
+                    <xsl:value-of select="$imageURI"/>
                   </xsl:attribute>
+                  ()
                 </xsl:element>
-                )
               </xsl:element>
             </li>
             <li>
@@ -1264,13 +1265,14 @@
                   <xsl:value-of select="$origImgURL"/>
                 </xsl:attribute>
                 original image
-                (
                 <xsl:element name="span">
-                  <xsl:attribute name="id">
-                    <xsl:value-of select="$origImgDOI"/>
+                  <xsl:attribute name="class">file-size</xsl:attribute>
+                  <xsl:attribute name="data-size">original</xsl:attribute>
+                  <xsl:attribute name="data-doi">
+                    <xsl:value-of select="$imageURI"/>
                   </xsl:attribute>
+                  ()
                 </xsl:element>
-                )
               </xsl:element>
             </li>
           </ul>

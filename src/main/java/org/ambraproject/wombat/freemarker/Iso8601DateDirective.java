@@ -17,13 +17,10 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
+import org.ambraproject.wombat.util.CalendarUtil;
 
-import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Map;
-import java.util.TimeZone;
 
 /**
  * FreeMarker custom directive that parses a ISO 8601 date representation and formats it appropriately.
@@ -44,8 +41,7 @@ public class Iso8601DateDirective implements TemplateDirectiveModel {
       throw new TemplateModelException("format parameter is required");
     }
     String format = params.get("format").toString();
-    Calendar calendar = DatatypeConverter.parseDateTime(jsonDate);
-    calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
-    environment.getOut().write(new SimpleDateFormat(format).format(calendar.getTime()));
+    String formattedDate = CalendarUtil.formatIso8601Date(jsonDate, format);
+    environment.getOut().write(formattedDate);
   }
 }

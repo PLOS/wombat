@@ -392,11 +392,10 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 }
 
-//RIGHT COLUMN STYLES
+// RIGHT COLUMN STYLES
 
 .dload-menu {
   @include clearfix;
-  width: rem-calc(160);
   padding-bottom: 5px;
 
   div {
@@ -567,7 +566,7 @@ body.article .ui-widget-overlay {
       margin-bottom: rem-calc(12);// TEMP PROD: use 10 or 15;
 
       a {
-        @include link-text($color: $plos-default, $decoration: underline);
+        @include link-text($plos-default, underline);
         font-size: $txt-size-xsmall;
       }
     }
@@ -603,6 +602,10 @@ body.article .ui-widget-overlay {
     display: none;
     &:hover {
       display: block;
+    }
+    a {
+      @extend %link-text-white;
+      font-weight: bold;
     }
   }
   h3 #subjInfo {
@@ -682,7 +685,7 @@ body.article .ui-widget-overlay {
 
         p.taxo-confirm {
           display: none;
-          margin-top: 5px;
+          margin-top: $pad-xsmall;
           line-height: 75px;
         }
       }
@@ -705,6 +708,137 @@ body.article .ui-widget-overlay {
     }
   }
 }
+
+
+.twitter-container {
+  @extend .aside-container;
+  display: none;
+
+  h3 {
+    background: image-url('icon.twtr.32.png') no-repeat 0 0;
+    background-size: 20px;
+    padding-left: $pad-default + $pad-xsmall;
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: $pad-xsmall;
+    font-size: $txt-size-xsmall !important;
+  }
+
+  #tweetList {
+    list-style-type: none;
+    margin-left: 0;
+    li {
+      border-top: 1px solid #dedede;
+      margin-bottom: $pad-small;
+      padding-top: $pad-small;
+
+      .tweet-info {
+      a {
+        color: $clr-body-text;
+        position: relative;
+        @include clearfix;
+      }
+
+      img {
+        display: inline;
+        float: left;
+        margin-bottom: $pad-xsmall;
+      }
+
+      .tweetDate {
+        display: inline;
+        float: right;
+      }
+
+      .tweetUser {
+        clear: both;
+
+        strong {
+          font-weight: bold;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+        span {
+          font-size: $txt-size-xxxsmall;
+      }
+    }
+    }
+  }
+
+   .more-tweets, .placeholderPic {
+     display: none;
+   }
+
+  .load-more, .view-all {
+    @include link-text($plos-default, underline);
+    font-family: $font-face-fancy;
+    font-size: $txt-size-large;
+    display: none;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .load-more span {
+    @extend .icon-caret-down;
+    display: inline-block;
+    padding-left: $pad-xsmall;
+    width: $pad-small;
+    color: $plos-default;
+  }
+
+}
+
+#tweetActions {
+  list-style-type: none;
+  margin-left: 0;
+
+  a {
+    @include link-text($grey-med, underline);
+    visibility: hidden;
+    padding-left:0;
+    padding-right: $pad-small;
+    display: inline;
+
+    div {
+      background: image-url('sprite.twitter.actions.png') no-repeat 0 0;
+      width: 17px;
+      height: 15px;
+      display: inline-block;
+    }
+  }
+  .tweet-reply div {
+    background-position: 0 0;
+  }
+  .tweet-reply:hover div {
+    background-position: -16px 0;
+  }
+  .tweet-retweet div {
+    background-position: -80px 0;
+  }
+  .tweet-retweet:hover div {
+    background-position: -96px 0;
+  }
+  .tweet-favorite {
+    display: block;
+    div {
+      background-position: -32px 0;
+    }
+  }
+  .tweet-favorite:hover div {
+    background-position: -48px 0;
+  }
+
+  &:hover {
+    a {
+      visibility: visible;
+    }
+  }
+
+}
+
+
 
 @media print {
    @page {

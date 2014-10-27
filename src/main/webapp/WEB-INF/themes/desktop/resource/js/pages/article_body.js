@@ -38,4 +38,34 @@
   /// build figure carousel
   $('#figure-carousel').buildFigureCarousel();
 
+  function formatHumanReadableByteSize(bytes) {
+    var suffices = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+    var increment = 1000; // could change to 1024
+    var precision = 100;
+
+    var n = bytes;
+    var suffix;
+    for (var i = 0; i < suffices.length; i++) {
+      suffix = suffices[i];
+      if (n >= increment) {
+        n /= increment;
+      } else break;
+    }
+
+    n = Math.round(n * precision) / precision;
+
+    return n + ' ' + suffix;
+  }
+
+  // Will be invoked directly from article HTML, where the templating engine will inject the fileSizeTable data.
+  $.fn.populateFileSizes = function (fileSizeTable) {
+    $('.file-size').each(function (index, element) {
+      var $el = $(element);
+      var doi = $el.attr('data-doi');
+      var fileSize = $el.attr('data-size');
+      var size = fileSizeTable[ doi][ fileSize];
+      $el.text('(' + formatHumanReadableByteSize(size) + ')');
+    });
+  };
+
 })(jQuery);

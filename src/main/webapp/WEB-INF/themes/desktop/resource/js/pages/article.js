@@ -36,7 +36,7 @@
     init : function () {
       s = this.settings;
       this.scroll_it();
-      this.close_floater();
+      this.sayhi();
       this.get_width();
     },
 
@@ -44,10 +44,13 @@
       s.div_exists = s.floater.length;
       return s.div_exists;
     },
-
+    sayhi : function () {
+      console.log('hi');
+    },
     scroll_it :  function () {
       if (this.check_div() > 0) {
-        if ($(window).width() > 960) {
+        var new_width = $(window).width();
+        if (new_width > 960) {
           return $(window).on('scroll', function () {
             //show_onscroll is in resource/js/components/
             show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
@@ -116,8 +119,8 @@
       plos_tooltip.init();
     }
 
-
     float_header.init();
+
 
     if ($.fn.twitter ) {
       var doi = $('meta[name=citation_doi]').attr("content");
@@ -128,8 +131,7 @@
 
     // initialize toggle for author list view more
     plos_toggle.init();
-    // initialize tooltip for author info
-    plos_tooltip.init();
+
     // initialize tooltip_hover for everything
     tooltip_hover.init();
 

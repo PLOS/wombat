@@ -16,6 +16,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 // layout elements
 .set-grid {
   @extend .plos-row;
+  width: rem-calc(980);
 }
 
 .article-body {
@@ -25,8 +26,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .article-aside {
   @extend .hide-for-print;
   @include plos-grid-column(180, $gutter: none);
-  float: right; /* temporary */
-  margin-left: $pad-default; /* temporary */
+  float: right;
 }
 
 .article-meta {

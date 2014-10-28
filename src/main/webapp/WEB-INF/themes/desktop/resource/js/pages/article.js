@@ -30,15 +30,15 @@
       floater : $('#floatTitleTop'),
       hidden_div : 'topVisible',
       scroll_trigger : 420,
-      div_exists : 1,
-      get_offset : $('.article_tabs')
+      width_trigger : 960,
+      div_exists : 1
     },
 
     init : function () {
       s = this.settings;
       this.scroll_it();
-      this.get_width();
       this.close_floater();
+      this.get_width();
       this.check_positions();
     },
 
@@ -50,7 +50,7 @@
     check_positions : function () {
       var trigger_header = $(window).scrollTop();
       var new_width = $(window).width();
-      if (trigger_header > 420 && new_width > 960) {
+      if (trigger_header > s.scroll_trigger && new_width > s.width_trigger) {
         return s.floater.addClass(s.hidden_div);
       }
     },
@@ -59,7 +59,7 @@
       if (this.check_div() > 0) {
           return $(window).on('scroll', function () {
             var new_width = $(window).width();
-            if (new_width > 960) {
+            if (new_width > s.width_trigger) {
             show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
             }
           });
@@ -73,7 +73,7 @@
           var trigger_header = $(window).scrollTop();
           if (new_width < 960) {
             $(s.floater).removeClass(s.hidden_div);
-          } else if (trigger_header > 420 && new_width > 960) {
+          } else if (trigger_header > s.scroll_trigger && new_width > s.width_trigger) {
               $(s.floater).addClass(s.hidden_div);
           }
         });

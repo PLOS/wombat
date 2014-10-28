@@ -550,7 +550,7 @@ body.article .ui-widget-overlay {
   left: 0;
   bottom: 0;
   height: 100%;
-  background: transparent url(http://crossmark.crossref.org/images/bg_overlay.png) top left repeat;
+  background: transparent url('http://crossmark.crossref.org/images/bg_overlay.png') top left repeat;
   opacity: .3;
   filter: Alpha(Opacity - 30);
 }
@@ -566,7 +566,7 @@ body.article .ui-widget-overlay {
       margin-bottom: rem-calc(12);// TEMP PROD: use 10 or 15;
 
       a {
-        @include link-text($plos-default, underline);
+        @extend %link-text-default;
         font-size: $txt-size-xsmall;
       }
     }
@@ -772,7 +772,7 @@ body.article .ui-widget-overlay {
    }
 
   .load-more, .view-all {
-    @include link-text($plos-default, underline);
+    @extend %link-text-default;
     font-family: $font-face-fancy;
     font-size: $txt-size-large;
     display: none;

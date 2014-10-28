@@ -148,6 +148,9 @@ example | extension
   @include link-text($decoration: underline);
 }
 
+%link-text-default, %link-text-default a {
+  @include link-text($plos-default, underline);
+}
 //////////////
 //font decorations
 ///////////////

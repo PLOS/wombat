@@ -19,8 +19,8 @@
     },
 
     article_pub_date : function () {
-      var article_pub_date = dateParse(s.raw_date, true, false);
-      $('#artPubDate').append(article_pub_date);
+      var article_pub_date = dateParse(s.raw_date, true, false, "en-US");
+      $("#artPubDate").append(article_pub_date);
     }
   };
 

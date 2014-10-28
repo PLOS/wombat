@@ -270,6 +270,110 @@ $line-height-small: ($line-height * .5);
   }
 }
 
+// specificity is needed to override ul & div styles
+.article-content .figure {
+  div {
+    margin-bottom: 0;
+  }
+  ul {
+    margin: 0;
+    li {
+      margin: 0;
+      &:before {
+        content: "";
+      }
+    }
+  }
+}
+
+.article-content .figure {
+  font-family: $font-face-plain;
+  background: $grey-light;
+  padding: 18px $pad-default $pad-smallish;
+
+  .img-box {
+    display: table-cell;
+    background: #fff;
+    padding: $pad-small;
+    width: rem-calc(320);
+    min-height: 120px;
+    position: relative;
+
+    .expand {
+      background: image-url('icon.sprite.expand.png') no-repeat 0 0;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: -8px;
+      right: -8px;
+
+      &:hover {
+        background-position: 0 -25px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .figure-inline-download {
+    display: table-cell;
+    font-size: $txt-size-xsmall;
+    vertical-align: top;
+    padding-top: $pad-medium;
+    padding-left: $pad-xsmall;
+    width: rem-calc(190);
+
+    ul {
+
+      margin: $pad-xsmall 0 0 $pad-xsmall;
+      padding-left: 0;
+
+
+      li {
+        &:before {
+          content: "";
+        }
+        @include clearfix;
+        padding: 8px 0 0;
+        line-height: 15px;
+        width: rem-calc(165);
+
+        .def {
+          display:inline-block;
+          float: left;
+          margin-right: 4px;
+          @extend %brand-background;
+          border-radius: 2px;
+
+          a {
+            width: $pad-medium;
+            text-align: center;
+            color: $white;
+            font-size: $txt-size-xxxxsmall;
+          }
+        }
+
+        a {
+          display: inline-block;
+          float: left;
+          @extend %link-text-default;
+          font-size: $txt-size-xsmall;
+        }
+      }
+    }
+  }
+    .figcaption {
+      margin-top: $pad-small;
+      margin-bottom: 0;
+      line-height: 18px;
+      font-weight: bold;
+      font-size: $txt-size-small;
+    }
+    p {
+      margin: 0;
+    }
+  }
+
+
 @media print {
   .article-text {
     width: 100%;

@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.util;
 
+import com.google.common.base.CharMatcher;
 import org.w3c.dom.Node;
 
 import javax.xml.transform.OutputKeys;
@@ -10,6 +11,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.StringWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TextUtil {
 
@@ -52,6 +55,30 @@ public class TextUtil {
       throw new RuntimeException(e);
     }
     return xml.toString();
+  }
+
+  /*
+   * Matches an opening or closing tag in XML, HTML, etc. This quick and dirty solution looks only for
+   * the closing '>' character. It may get tripped up by edge cases, such as a '>' appearing inside an attribute.
+   * Consider replacing with a proper XML parser if there's trouble.
+   */
+  private static final Pattern TAG_PATTERN = Pattern.compile("</?\\w.*?>");
+
+  /**
+   * Remove all XML or HTML markup tags and return the unadorned text. Collapses free whitespace in text.
+   *
+   * @param code markup code
+   * @return the text with no markup
+   */
+  public static String removeMarkup(String code) {
+    // Remove internal markup
+    Matcher tagMatcher = TAG_PATTERN.matcher(code);
+    String text = tagMatcher.replaceAll("");
+
+    // Convert free whitespace to human-friendly.
+    text = CharMatcher.WHITESPACE.trimAndCollapseFrom(text, ' ');
+
+    return text;
   }
 
 }

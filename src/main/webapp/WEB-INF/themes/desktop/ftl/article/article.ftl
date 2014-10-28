@@ -98,7 +98,7 @@
   <@js src="resource/js/pages/article_sidebar.js"/>
   <@renderJs />
 
-  <script type="text/javascript">
+  <script type="text/javascript">  /*filesizetable*/
     (function ($) {
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
     })(jQuery);

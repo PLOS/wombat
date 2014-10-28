@@ -54,9 +54,9 @@
       } else break;
     }
 
-    n = Math.round(n * precision) / precision;
-
-    return n + ' ' + suffix;
+    n = (n * precision) / precision;
+    n = Math.round(n);
+    return n + suffix;
   }
 
   // Will be invoked directly from article HTML, where the templating engine will inject the fileSizeTable data.

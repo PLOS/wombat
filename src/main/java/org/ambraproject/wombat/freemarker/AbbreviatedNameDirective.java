@@ -7,6 +7,7 @@ import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import org.ambraproject.wombat.util.Citations;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -25,25 +26,8 @@ public class AbbreviatedNameDirective implements TemplateDirectiveModel {
       throws TemplateException, IOException {
     StringWriter givenNames = new StringWriter();
     body.render(givenNames);
-    String abbreviation = abbreviate(givenNames.toString());
+    String abbreviation = Citations.abbreviateAuthorGivenNames(givenNames.toString());
     env.getOut().write(abbreviation);
-  }
-
-  private static final Splitter WHITESPACE_SPLITTER = Splitter.on(CharMatcher.WHITESPACE);
-  private static final Splitter DASH_SPLITTER = Splitter.on(Pattern.compile("\\p{Pd}"));
-
-  private static String abbreviate(String rawGivenNameString) {
-    Iterable<String> givenNames = WHITESPACE_SPLITTER.split(rawGivenNameString);
-    StringBuilder abbreviation = new StringBuilder();
-    for (String givenName : givenNames) {
-      Iterable<String> nameParts = DASH_SPLITTER.split(givenName);
-      for (String namePart : nameParts) {
-        char initial = namePart.charAt(0);
-        abbreviation.append(initial);
-      }
-    }
-
-    return abbreviation.toString();
   }
 
 }

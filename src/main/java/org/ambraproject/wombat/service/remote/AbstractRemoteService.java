@@ -64,7 +64,7 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
         } else {
           String message = String.format("Request to \"%s\" failed (%d): %s",
               address, statusCode, statusLine.getReasonPhrase());
-          throw new ServiceRequestException(message);
+          throw new ServiceRequestException(statusCode, message);
         }
       }
       returningResponse = true;

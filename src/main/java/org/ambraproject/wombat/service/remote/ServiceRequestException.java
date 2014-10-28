@@ -6,11 +6,21 @@ import java.io.IOException;
  * Indicates that a request from this webapp to the service component failed.
  */
 public class ServiceRequestException extends IOException {
-  ServiceRequestException(String message) {
+
+  private final int statusCode;
+
+  ServiceRequestException(int statusCode, String message) {
     super(message);
+    this.statusCode = statusCode;
   }
 
-  ServiceRequestException(String message, Throwable cause) {
+  ServiceRequestException(int statusCode, String message, Throwable cause) {
     super(message, cause);
+    this.statusCode = statusCode;
   }
+
+  public int getStatusCode() {
+    return statusCode;
+  }
+
 }

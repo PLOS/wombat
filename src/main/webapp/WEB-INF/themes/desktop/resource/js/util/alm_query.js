@@ -20,6 +20,7 @@
    */
   $.fn.getArticleSummary = function (doi, callback) {
     var config = ALM_CONFIG; // expect to import value from alm_config.js
+
     if (config.host == null) {
       // TODO: Replace with better console logging
       // console.log('ALM API is not configured');
@@ -28,6 +29,7 @@
 
     doi = validateDOI(doi);
     var requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi;
+
     $.ajax({
       url: requestUrl,
       jsonp: 'callback',
@@ -46,5 +48,4 @@
    * TODO: Support querying for multiple article summaries in efficient batches.
    * See getArticleSummaries in legacy Ambra.
    */
-
 })(jQuery);

@@ -13,4 +13,9 @@
 
 <#include "adSlotAside.ftl" />
 
+<#if articleComments?size gt 0  >
+<#include "comments.ftl"  />
+</#if>
+
 <#include "twitterModule.ftl" />
+

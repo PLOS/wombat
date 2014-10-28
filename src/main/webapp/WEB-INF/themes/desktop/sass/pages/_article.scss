@@ -115,6 +115,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .article-title-etc {
   @include plos-grid-column(900, $gutter: none);
   margin-top: $pad-small;
+
   h1 {
     font-size: $txt-size-27large; // TEMP-PROD: needs to be 26px or 28px
     line-height: normal;
@@ -167,7 +168,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       line-height: 16px;
       font-size: rem-calc($txt-size-xsmall);
     }
-
   }
 }
 
@@ -180,6 +180,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   overflow: hidden;
   box-sizing: border-box;
   z-index: map-get($zindex, topvisible);
+
   .float-title-inner {
     @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
 
@@ -189,12 +190,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       font-weight: bold;
       font-family: $font-face-plain;
       line-height: rem-calc(16);
-      margin: rem-calc(2) 0; //TEMP-PROD: change this
+      margin: rem-calc(2) 0;
+
       i, italic, named-content {
         font-style: italic;
       }
     }
-
   }
 
   .logo-close {

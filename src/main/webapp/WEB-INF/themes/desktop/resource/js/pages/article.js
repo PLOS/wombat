@@ -10,7 +10,7 @@
 
    parse_xml_date = {
     settings : {
-      raw_date : document.getElementById("rawPubDate").value
+      raw_date : document.getElementById('rawPubDate').value
     },
 
     init : function () {
@@ -20,56 +20,66 @@
 
     article_pub_date : function () {
       var article_pub_date = dateParse(s.raw_date, true, false);
-      $("#artPubDate").append(article_pub_date);
+      $('#artPubDate').append(article_pub_date);
     }
   };
 
   float_header = {
 
     settings : {
-      floater : $("#floatTitleTop"),
-      hidden_div : "topVisible",
+      floater : $('#floatTitleTop'),
+      hidden_div : 'topVisible',
       scroll_trigger : 420,
-      div_exists : 1
+      div_exists : 1,
+      get_offset : $('.article_tabs')
     },
 
     init : function () {
       s = this.settings;
       this.scroll_it();
-      this.sayhi();
       this.get_width();
+      this.close_floater();
+      this.check_positions();
     },
 
     check_div : function () {
       s.div_exists = s.floater.length;
       return s.div_exists;
     },
-    sayhi : function () {
-      console.log('hi');
-    },
-    scroll_it :  function () {
-      if (this.check_div() > 0) {
-        var new_width = $(window).width();
-        if (new_width > 960) {
-          return $(window).on('scroll', function () {
-            //show_onscroll is in resource/js/components/
-            show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
-          });
-        }
+
+    check_positions : function () {
+      var trigger_header = $(window).scrollTop();
+      var new_width = $(window).width();
+      if (trigger_header > 420 && new_width > 960) {
+        return s.floater.addClass(s.hidden_div);
       }
     },
+
+    scroll_it :  function () {
+      if (this.check_div() > 0) {
+          return $(window).on('scroll', function () {
+            var new_width = $(window).width();
+            if (new_width > 960) {
+            show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
+            }
+          });
+      }
+    },
+
     get_width : function(){
       if (this.check_div() > 0) {
         $(window).resize(function () {
           var new_width = $(window).width();
+          var trigger_header = $(window).scrollTop();
           if (new_width < 960) {
             $(s.floater).removeClass(s.hidden_div);
-          } else if (new_width > 960) {
-            $(s.floater).addClass(s.hidden_div);
+          } else if (trigger_header > 420 && new_width > 960) {
+              $(s.floater).addClass(s.hidden_div);
           }
         });
       }
     },
+
     close_floater : function () {
       s.floater.find('.logo-close').on('click', function () {
         s.floater.remove();
@@ -81,7 +91,7 @@
   check_authors_truncation = {
 
     settings : {
-      toTruncate : $("#floatAuthorList")
+      toTruncate : $('#floatAuthorList')
     },
 
     init : function () {
@@ -105,14 +115,14 @@
 
   $( document ).ready(function() {
 
-    $(".preventDefault").on('click', function (e) {
+    $('.preventDefault').on('click', function (e) {
       e.preventDefault();
 
     });
 
     parse_xml_date.init();
 
-    is_author_list = document.getElementById("floatAuthorList");
+    is_author_list = document.getElementById('floatAuthorList');
     if ( is_author_list != null) {
       check_authors_truncation.init();
       // initialize tooltip for author info
@@ -121,12 +131,10 @@
 
     float_header.init();
 
-
     if ($.fn.twitter ) {
-      var doi = $('meta[name=citation_doi]').attr("content");
+      var doi = $('meta[name=citation_doi]').attr('content');
       var twitter = new $.fn.twitter();
       twitter.getSidebarTweets(doi);
-
     }
 
     // initialize toggle for author list view more

@@ -1,6 +1,25 @@
 
 (function ($) {
   $.fn.twitter = function (doi) {
+    var tweet, tweetText,
+      totalTweets, minDisplayTweets, maxDisplayTweets,
+      dataSort,
+      dataPrefix,
+      tweetDate,
+      tweetInfo,
+      tweetActionLink,
+      tweetAvatar,
+      tweetPlaceholder,
+      tweetId,
+      replyLink,
+      retweetLink,
+      favoriteLink,
+      tweetActions,
+      tweetUserName,
+      tweetHandle,
+      wholeTweet,
+      listBody,
+      tweetAvatarParse;
 
     function validateDOI(doi) {
       if (doi == null) {
@@ -15,9 +34,12 @@
     this.getSidebarTweets = function (doi) {
       doi = validateDOI(doi);
       var config, requestUrl, errorText;
+
+
       config = ALM_CONFIG;
 
       requestUrl = config.host +'?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source=twitter';
+
       errorText = '<li>Our system is having a bad day. Please check back later.</li>';
 
       $.ajax({
@@ -25,16 +47,42 @@
         dataType: 'json'
       }).done(function (response){
         totalTweets = response.data[0].sources[0].events.length;
+
         if (totalTweets === 0) {
 
         } else {
-          $.each(response.data[0].sources[0].events, function (index) {
+          minDisplayTweets = 2;
+          maxDisplayTweets = 5;
+          dataSort = response.data[0].sources[0].events;
 
-            dataPrefix = response.data[0].sources[0].events[index].event;
-            //get all the twitter data & put into html tags
+          //parse the date to be able to sort by date
+          this.parseTwitterDate = function (tweetdate) {
+            //running regex to grab everything after the time
+            var newdate = tweetdate.replace(/(\d{1,2}[:]\d{2}[:]\d{2}) (.*)/, '$2 $1');
+            //moving the time code to the end
+            newdate = newdate.replace(/(\+\S+) (.*)/, '$2 $1')
+
+            return new Date(Date.parse(newdate));
+          }
+          //sort by date
+          this.sort_tweets_by_date = function (a, b) {
+            var aDt = isNaN(a.event.created_at) ? this.parseTwitterDate(a.event.created_at) : a.event.created_at;
+            var bDt = isNaN(b.event.created_at) ? this.parseTwitterDate(b.event.created_at) : b.event.created_at;
+
+            return (new Date(bDt).getTime()) - (new Date(aDt).getTime());
+          }
+          //pull the data & run the sort fn
+          dataSort = dataSort.sort(jQuery.proxy(this.sort_tweets_by_date, this));
+           // only show 5, so cut the json results to 5
+          if (dataSort.length > maxDisplayTweets){
+          dataSort = dataSort.slice(0, 5);
+          } else { }
+
+          $.each(dataSort, function (index) {
+            dataPrefix = dataSort[index].event;
+            //run through dataPass to get all the data
             dataPass(dataPrefix);
-
-            //test for how many to display
+            //show only 2 and then 5
             if (index < minDisplayTweets) {
               wholeTweet = '<li>' + listBody + '</li>';
             } else {
@@ -44,12 +92,11 @@
 
           });
 
+          $('.twitter-container').css('display', 'block');
           if (totalTweets > minDisplayTweets) {
             var show_link = more_tweets();
 
           } else {}
-
-          $('.twitter-container').css('display', 'block');
         }
       }).fail(function(){
         $('#tweetList').append(errorText);
@@ -57,31 +104,9 @@
 
     };
 
-  var tweet, tweetText,
-    totalTweets, minDisplayTweets, maxDisplayTweets,
-    tweetDate,
-    tweetInfo,
-    tweetActionLink,
-    tweetAvatar,
-    tweetPlaceholder,
-    tweetId,
-    replyLink,
-    retweetLink,
-    favoriteLink,
-    tweetActions,
-    tweetUserName,
-    tweetHandle,
-    dataPrefix,
-    wholeTweet,
-    listBody,
-    tweetAvatarParse;
-
     function dataPass(dataPrefix) {
 
-      minDisplayTweets = 2;
-      maxDisplayTweets = 4; //max display is 5, 4 is for array index
-
-      tweetDate = dateParse(dataPrefix.created_at, false, true);
+      tweetDate = dateParse(dataPrefix.created_at, false, true, "en-GB");
       tweetAvatar = dataPrefix.user_profile_image;
       tweetUserName = dataPrefix.user_name;
       tweetHandle = dataPrefix.user;
@@ -124,7 +149,7 @@
       $('.load-more').css('display', 'block').on('click', function () {
         $('.more-tweets').css('display', 'block');
         $(this).css('display', 'none');
-        if (totalTweets === maxDisplayTweets) {
+        if (totalTweets > maxDisplayTweets) {
           return $('.view-all').css('display', 'block');
         }
       });

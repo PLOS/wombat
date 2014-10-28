@@ -723,7 +723,7 @@ body.article .ui-widget-overlay {
     }
 
     a {
-      @extend %link-color-plos-default;
+      @extend %link-text-default;
       display: block;
     }
   }

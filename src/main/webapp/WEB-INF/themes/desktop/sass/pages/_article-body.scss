@@ -108,7 +108,7 @@ $line-height-small: ($line-height * .5);
       border-top: 1px solid $clr-separator;
       padding: $line-height-small $pad-default;
       &:first-child {
-        border-top: 0px none;
+        border-top: 0 none;
       }
 
     }
@@ -300,9 +300,7 @@ $line-height-small: ($line-height * .5);
     position: relative;
 
     .expand {
-      background: image-url('icon.sprite.expand.png') no-repeat 0 0;
-      width: 25px;
-      height: 25px;
+      @extend .icon-expand;
       position: absolute;
       top: -8px;
       right: -8px;
@@ -327,22 +325,21 @@ $line-height-small: ($line-height * .5);
       margin: $pad-xsmall 0 0 $pad-xsmall;
       padding-left: 0;
 
-
       li {
         &:before {
           content: "";
         }
         @include clearfix;
-        padding: 8px 0 0;
+        padding: rem-calc(8) 0 0;
         line-height: 15px;
         width: rem-calc(165);
 
         .def {
           display:inline-block;
           float: left;
-          margin-right: 4px;
+          margin-right: rem-calc(4);
           @extend %brand-background;
-          border-radius: 2px;
+          border-radius: $border-radius-smaller;
 
           a {
             width: $pad-medium;
@@ -373,6 +370,107 @@ $line-height-small: ($line-height * .5);
     }
   }
 
+//from ambra
+
+.article-body .table-wrap {
+  margin-top: $pad-medium;
+  margin-bottom: $pad-small;
+
+  .table {
+    max-height: 550px;
+
+    .table-download {
+      display: block;
+    }
+
+    .expand {
+      @extend .icon-expand;
+      position: absolute;
+      top: -$pad-medium;
+      right: 0;
+    }
+  }
+}
+
+.table-wrap {
+  position: relative;
+
+  .table {
+    overflow: auto;
+    border: solid 1px $grey-light;
+  }
+
+  table {
+    margin: 0;
+    width: 100%;
+
+    td {
+      padding: rem-calc(2);
+    }
+
+    thead tr:first-child {
+      background-color: $table-header-bg;
+      font-weight: bold;
+    }
+
+    thead tr:first-child td {
+      color: $white;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: $white;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: $grey-light;
+    }
+
+    p.caption {
+      font-weight: bold;
+      margin-top: rem-calc(8);
+      margin-bottom: rem-calc(4);
+    }
+  }
+
+  .table-download {
+    display: none;
+    vertical-align: middle;
+
+    .icon {
+      @extend %brand-background;
+      color: $grey-dark;
+      position: relative;
+      width: $pad-medium;
+      height: 15px;
+      text-align: center;
+      font-size: $txt-size-xxxxsmall;
+      border-radius: $border-radius-smaller;
+      padding-top: rem-calc(3);
+      cursor: pointer;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .label {
+      cursor: pointer;
+    }
+  }
+
+  .expand {
+    display: none;
+  }
+
+  .table-footnote {
+    font-size: $pad-small;
+  }
+
+  .table-footnote .fn-label {
+    vertical-align: super;
+    font-size: $txt-size-xxxsmall;
+  }
+}
 
 @media print {
   .article-text {

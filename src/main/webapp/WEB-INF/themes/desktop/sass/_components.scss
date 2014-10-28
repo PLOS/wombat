@@ -374,7 +374,12 @@ $icn-tiny-align: middle;
 .icon-correction {
   @include icon-image($icn-tiny-width, 15, 'icon.correction.png', $align: $icn-tiny-align );
 }
-
+.icon-expand {
+  @include icon-image(25, 25, 'icon.sprite.expand.png', 0 0, middle);
+  &:hover {
+    background-position: 0 -25px;
+  }
+}
 
 
 .closer {

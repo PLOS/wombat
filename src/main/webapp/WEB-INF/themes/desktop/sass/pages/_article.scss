@@ -693,10 +693,10 @@ body.article .ui-widget-overlay {
       }
 
       .taxo-flag {
-        margin-top: 5px;
+        margin-top: $pad-xsmall;
         display: inline-block;
         float: right;
-        width: 16px;
+        width: rem-calc(16);
         height: 16px;
 
         background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
@@ -822,9 +822,7 @@ body.article .ui-widget-overlay {
     display: inline;
 
     div {
-      background: image-url('sprite.twitter.actions.png') no-repeat 0 0;
-      width: 17px;
-      height: 15px;
+      @include icon-image(17, 15,'icon.twitter.actions.png', 0 0);
       display: inline-block;
     }
   }

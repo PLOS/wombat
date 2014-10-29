@@ -48,8 +48,8 @@
       } else break;
     }
 
-    n = (n * precision) / precision;
-    n = Math.round(n);
+    n = Math.round(n * precision) / precision;
+
     return n + suffix;
   }
 

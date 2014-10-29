@@ -35,7 +35,7 @@
   addMediaCoverageLink();
 
   function formatHumanReadableByteSize(bytes) {
-    var suffices = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+    var suffices = [' Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
     var increment = 1000; // could change to 1024
     var precision = 100;
 

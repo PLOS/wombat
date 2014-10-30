@@ -63,7 +63,7 @@
 
             return new Date(Date.parse(newdate));
           }
-          //sort by date
+          //sort by date from Ambra
           this.sort_tweets_by_date = function (a, b) {
             var aDt = isNaN(a.event.created_at) ? this.parseTwitterDate(a.event.created_at) : a.event.created_at;
             var bDt = isNaN(b.event.created_at) ? this.parseTwitterDate(b.event.created_at) : b.event.created_at;
@@ -72,9 +72,9 @@
           }
           //pull the data & run the sort function
           dataSort = dataSort.sort(jQuery.proxy(this.sort_tweets_by_date, this));
-           // only show 5, so cut the json results to 5
+          // only show 5, so cut the json results to 5
           if (dataSort.length > maxDisplayTweets){
-          dataSort = dataSort.slice(0, 5);
+            dataSort = dataSort.slice(0, 5);
           } else { }
 
           $.each(dataSort, function (index) {
@@ -90,7 +90,7 @@
 
 
             $('#tweetList').append(wholeTweet);
-            fixAvatar(listBody);
+            checkAvatar(listBody);
 
           });
 
@@ -107,30 +107,17 @@
 
     };
 
-    function fixAvatar(listappend) {
-      //fix twitter user avatar url
+    function checkAvatar(listappend) {
       var checkImg = $(listappend).find('.imgLoad');
-
-      $(checkImg).on('error', function(){
-        $( this ).hide();
-      }).attr('src', checkImg);
-
-
+      $(checkImg).on('error', changeAvatar );
     }
-    function replaceImg(checkImg){
-      $(checkImg).attr('src', tweetPlaceholder);
-    }
-    /*function fixAvatar(listappend) {
-      //fix twitter user avatar url
-      var checkImg = $(listappend).find('.imgLoad');
-      var checkSrc = $(checkImg).attr('src');
-      //console.log($(listappend).find('.imgLoad').attr('src'));
-    $(checkSrc).on('error',function() {
-      console.log("error loading image");
-     // $(this).src('attr',tweetPlaceholder);
-    });
 
-    }*/
+    function changeAvatar(event) {
+      if (event) {
+        var newthing = $(this).attr('src',tweetPlaceholder);
+        return $('.imgholder').html(newthing);
+      }
+    }
 
     function dataPass(dataPrefix) {
 
@@ -141,8 +128,8 @@
       tweetText = linkify(dataPrefix.text);
       tweetId = dataPrefix.id;
 
+      //change twitter avatar url if an old one ("a0") is stored
       tweetAvatarParse = tweetAvatar.slice(7,9);
-
       if (tweetAvatarParse === "a0") {
         tweetAvatar = "http://pbs"+tweetAvatar.slice(9);
       }
@@ -150,7 +137,7 @@
       tweetPlaceholder = 'resource/img/icon.avatar.placeholder.png';
       // TODO: put in placeholder conditional
       tweetInfo = '<a href="http://twitter.com/' + tweetHandle + '"' + '>' +
-        '<img class="imgLoad" src="' + tweetAvatar + '"/>' +
+        '<span class="imgholder"><img class="imgLoad" src="' + tweetAvatar + '"/></span>' +
         '<div class="tweetDate">' + tweetDate + '</div>' +
         '<div class="tweetUser"><strong>' + tweetUserName + ' </strong><span>@' +
         tweetHandle + '</span></div></a>';

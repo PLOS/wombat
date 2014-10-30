@@ -9,7 +9,7 @@
         <#list article.figures as figure>
 
           <div class="carousel-item" data-doi="${figure.doi}">
-            <a>
+            <a title="${figure.title?html}">
             <#--
               JavaScript will set the href, by finding the div.figure whose data-doi attr matches this one.
               The figure ID is defined in the XML, and we don't know it in this context,
@@ -17,7 +17,7 @@
               -->
 
               <@siteLink path=("article/figure/image?size=inline&amp;id=" + figure.doi) ; src>
-                <img src="${src}" alt=""/>
+                <img src="${src}" alt="${figure.title?html}" />
               </@siteLink>
             </a>
           </div>

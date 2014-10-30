@@ -23,8 +23,13 @@
           </div>
         </#list>
       </div>
-
     </div>
+
+    <div class="carousel-control">
+      <span class="button previous">&larr;</span>
+      <span class="button next">&rarr;</span>
+    </div>
+    <div class="carousel-page-buttons"></div>
   </div>
 </div>
 </#if>

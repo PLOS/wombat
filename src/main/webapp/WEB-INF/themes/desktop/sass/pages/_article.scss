@@ -421,6 +421,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     width: 172px;
     height: 112px;
   }
+
+  .carousel-page-buttons {
+    .active {
+      text-decoration: underline; // DEBUG: Temporary value, pending actual styling
+    }
+  }
 }
 
 // RIGHT COLUMN STYLES

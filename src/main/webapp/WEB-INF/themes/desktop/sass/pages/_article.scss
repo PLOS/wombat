@@ -539,13 +539,15 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 // overrides for crossmark's jquery ui
-.article .crossmark-ui-dialog .ui-dialog-titlebar-close {
+.crossmark-ui-dialog .ui-dialog-titlebar-close {
   &:focus {
-    outline: none;
+    outline: none !important;
   }
 }
+.ui-button.ui-button-icon-only.ui-dialog-titlebar-close {
+  border: none !important;
+}
 
-// overrides for crossmark's jquery ui
 body.article .ui-widget-overlay {
   position: fixed;
   top: 0;
@@ -556,6 +558,7 @@ body.article .ui-widget-overlay {
   opacity: .3;
   filter: Alpha(Opacity - 30);
 }
+// end overrides for crossmark's jquery ui
 
 .related-articles-container {
   @extend .aside-container;

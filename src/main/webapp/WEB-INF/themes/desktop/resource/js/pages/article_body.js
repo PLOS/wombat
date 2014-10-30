@@ -36,23 +36,23 @@
 
   function formatHumanReadableByteSize(bytes) {
     // Space before "Bytes". All others are concatenated to number with no space.
-    var suffices = [' Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+    var units = [' Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
 
     var increment = 1000; // could change to 1024
-    var precision = 100;
+    var roundingThreshold = units.indexOf('MB'); // for smaller units than this, show integers
+    var precision = 100; // round to this precision if unit is >= roundingThreshold
 
     var n = bytes;
-    var suffix;
-    for (var i = 0; i < suffices.length; i++) {
-      suffix = suffices[i];
+    var unitIndex = 0;
+    for (; unitIndex < units.length; unitIndex++) {
       if (n >= increment) {
         n /= increment;
       } else break;
     }
 
-    n = Math.round(n * precision) / precision;
+    n = (unitIndex < roundingThreshold) ? Math.round(n) : Math.round(n * precision) / precision;
 
-    return n + suffix;
+    return n + units[unitIndex];
   }
 
   // Will be invoked directly from article HTML, where the templating engine will inject the fileSizeTable data.

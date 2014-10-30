@@ -35,7 +35,9 @@
   addMediaCoverageLink();
 
   function formatHumanReadableByteSize(bytes) {
+    // Space before "Bytes". All others are concatenated to number with no space.
     var suffices = [' Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+
     var increment = 1000; // could change to 1024
     var precision = 100;
 

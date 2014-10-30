@@ -21,15 +21,7 @@ noRedirectUrl = "http://www."+journalStyle+".org/article/info:doi/"+articleDoi/>
   deprecated share.php (which redirects to /sharer/sharer.php) -->
     <li><a href="http://www.facebook.com/share.php?u=${urlFix}&amp;t=${titleFix}" id="shareFacebook" target="_blank" title="Share on Facebook"><img src="<@siteLink path="/resource/img/icon.fb.16.png"/>" width="16" height="16" alt="Facebook">Facebook</a></li>
 
-    <li><a href="http://www.linkedin.com/shareArticle?url=${urlFix}&title=${titleFix}&summary=${"Checkout this article I found"}"  id="shareLinkedIn" target="_blank" title="Add to LinkedIn"><img src="<@siteLink path="/resource/img/icon.linkedin.16.png"/>" width="16" height="16" alt="LinkedIn">LinkedIn</a></li>
 
-  <#-- citeulike, as per <http://www.citeulike.org/bookmarklets.adp>
-  and <http://wiki.citeulike.org/index.php/Organizing_your_library#Any_other_posting_tricks.3F> -->
-    <li><a href="http://www.citeulike.org/posturl?url=${urlFix}&amp;title=${titleFix}"  id="shareCiteULike" target="_blank" title="Add to CiteULike"><img src="<@siteLink path="/resource/img/icon.cul.16.png"/>" width="16" height="16" alt="CiteULike">CiteULike</a></li>
-
-  <#-- mendeley, as per previous implementation. no current public
-  documentation can be found on their site or elsewhere. -->
-    <li><a href="http://www.mendeley.com/import/?url=${urlFix}"  id="shareMendeley" target="_blank" title="Add to Mendeley"><img src="<@siteLink path="/resource/img/icon.mendeley.16.png"/>" width="16" height="16" alt="Mendeley">Mendeley</a></li>
 
    <#include 'shareInserts.ftl' />
   </ul>

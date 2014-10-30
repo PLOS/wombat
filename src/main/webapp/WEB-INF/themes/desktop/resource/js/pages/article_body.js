@@ -39,7 +39,7 @@
   var $carouselSection = $('#figure-carousel-section');
   $carouselSection.buildFigureCarouselLinks();
   $carouselSection.moveFigureCarouselSection();
-  $carouselSection.buildFigureCarouselSlider();
+  $carouselSection.buildFigureCarouselSlider({});
 
   function formatHumanReadableByteSize(bytes) {
     var suffices = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];

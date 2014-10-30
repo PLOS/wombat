@@ -26,7 +26,17 @@
     }
   };
 
-  $.fn.buildFigureCarouselSlider = function () {
+  $.fn.buildFigureCarouselSlider = function (options) {
+    var defaults = {
+      speed: 500,
+      access: false,
+      autoplay: false,
+      delay: 10000,
+      defaultpaddingbottom: 10
+    };
+    options = $.extend(defaults, options);
+
+
     var $wrapper = $('.carousel-wrapper');
     var $slider = $wrapper.find('.slider');
 
@@ -38,6 +48,7 @@
     var $items = getItems();
     var itemWidth = $items.eq(0).outerWidth();
     var visibleSize = Math.ceil($wrapper.innerWidth() / itemWidth);
+    var pageCount = Math.ceil($items.length / visibleSize);
 
     // TODO: Special case where $items.length <= visibleSize ?
 
@@ -56,6 +67,40 @@
 
     // TODO: Embed videos?
     // (Legacy impl hard-codes YouTube links here. Might want to extract into child themes.)
+
+    function updateButtons(page) {
+      // TODO: Import?
+    }
+
+    var currentPage = 1;
+
+    function goToPage(page) {
+      var direction = page < currentPage ? -1 : 1;
+      var pagesToMove = Math.abs(currentPage - page);
+      var distance = itemWidth * visibleSize * direction * pagesToMove;
+
+      $wrapper.filter(':not(:animated)').animate(
+          {scrollLeft: '+=' + distance},
+          options.speed,
+
+          // When animation is complete
+          function () {
+            // If at the end or beginning (one of the cloned pages), reposition to the original page it was cloned from for infinite effect
+            if (page == 0) {
+              $wrapper.scrollLeft(itemWidth * visibleSize * pageCount);
+              currentPage = pageCount;
+            } else if (page > pageCount) {
+              $wrapper.scrollLeft(itemWidth * visibleSize);
+              currentPage = 1;
+            } else {
+              currentPage = page;
+            }
+
+            if (options.access) {
+              updateButtons(page);
+            }
+          });
+    }
 
     // TODO: Finish implementing
   };

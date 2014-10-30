@@ -52,6 +52,7 @@
     $items.filter(':first').before($items.slice(-visibleSize).clone().addClass('clone'));
     $items.filter(':last').after($items.slice(0, visibleSize).clone().addClass('clone'));
     $items = getItems();
+    $wrapper.scrollLeft(itemWidth * visibleSize); // Scroll past the cloned chunk at the beginning
 
     // TODO: Embed videos?
     // (Legacy impl hard-codes YouTube links here. Might want to extract into child themes.)

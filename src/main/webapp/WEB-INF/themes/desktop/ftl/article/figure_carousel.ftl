@@ -4,8 +4,8 @@
 
   <div id="figure-carousel">
 
-    <div class="carousel-wrapper">
-      <div class="slider">
+    <div class="carousel-wrapper"><#-- Horizontally scrolling view window -->
+      <div class="slider"><#-- Large-width container -->
         <#list article.figures as figure>
 
           <div class="carousel-item" data-doi="${figure.doi}">

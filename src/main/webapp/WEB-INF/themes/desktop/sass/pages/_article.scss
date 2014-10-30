@@ -400,11 +400,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   margin-bottom: 20px;
   padding: 20px 0 30px;
   width: 514px;
-  overflow: hidden;
+  float: left;
 
-  .slider {
-    width: 99999px;
-    overflow: hidden;
+  .carousel-wrapper {
+    overflow: hidden; // carousel-wrapper is the scrolling view window for everything in slider
+
+    .slider {
+      width: 99999px; // contain all figures in a big horizontal row
+    }
   }
 
   .carousel-item {

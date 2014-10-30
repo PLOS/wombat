@@ -130,7 +130,29 @@
     plos_toggle.init();
     // initialize tooltip_hover for everything
     tooltip_hover.init();
+   /* function fixAvatar(img) {
+      // During the onload event, IE correctly identifies any images that
+      // weren’t downloaded as not complete. Others should too. Gecko-based
+      // browsers act like NS4 in that they report this incorrectly.
+      if (!img.complete) {
+        console.log(img);
+        return false;
+      }
 
+      // However, they do have two very useful properties: naturalWidth and
+      // naturalHeight. These give the true size of the image. If it failed
+      // to load, either of these should be zero.
+
+      if (typeof img.naturalWidth !== "undefined" && img.naturalWidth === 0) {
+        console.log('natwidth no ');
+        return false;
+      }
+
+      // No other way of checking: assume it’s ok.
+      return true;
+    }
+    var checkImg = $(listappend).find('.imgLoad');
+    fixAvatar(checkImg);*/
   });
 
 }(jQuery));

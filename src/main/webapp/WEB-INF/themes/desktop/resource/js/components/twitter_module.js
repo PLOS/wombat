@@ -35,7 +35,6 @@
       doi = validateDOI(doi);
       var config, requestUrl, errorText;
 
-
       config = ALM_CONFIG;
 
       requestUrl = config.host +'?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source=twitter';
@@ -71,7 +70,7 @@
 
             return (new Date(bDt).getTime()) - (new Date(aDt).getTime());
           }
-          //pull the data & run the sort fn
+          //pull the data & run the sort function
           dataSort = dataSort.sort(jQuery.proxy(this.sort_tweets_by_date, this));
            // only show 5, so cut the json results to 5
           if (dataSort.length > maxDisplayTweets){
@@ -88,7 +87,10 @@
             } else {
               wholeTweet = '<li class="more-tweets">' + listBody + '</li>';
             }
+
+
             $('#tweetList').append(wholeTweet);
+            fixAvatar(listBody);
 
           });
 
@@ -99,10 +101,36 @@
           } else {}
         }
       }).fail(function(){
+        $('.twitter-container').css('display', 'block');
         $('#tweetList').append(errorText);
       });
 
     };
+
+    function fixAvatar(listappend) {
+      //fix twitter user avatar url
+      var checkImg = $(listappend).find('.imgLoad');
+
+      $(checkImg).on('error', function(){
+        $( this ).hide();
+      }).attr('src', checkImg);
+
+
+    }
+    function replaceImg(checkImg){
+      $(checkImg).attr('src', tweetPlaceholder);
+    }
+    /*function fixAvatar(listappend) {
+      //fix twitter user avatar url
+      var checkImg = $(listappend).find('.imgLoad');
+      var checkSrc = $(checkImg).attr('src');
+      //console.log($(listappend).find('.imgLoad').attr('src'));
+    $(checkSrc).on('error',function() {
+      console.log("error loading image");
+     // $(this).src('attr',tweetPlaceholder);
+    });
+
+    }*/
 
     function dataPass(dataPrefix) {
 
@@ -113,18 +141,16 @@
       tweetText = linkify(dataPrefix.text);
       tweetId = dataPrefix.id;
 
-      //fix twitter user avatar url
       tweetAvatarParse = tweetAvatar.slice(7,9);
 
       if (tweetAvatarParse === "a0") {
         tweetAvatar = "http://pbs"+tweetAvatar.slice(9);
       }
-
       // user photo, date of post, user names
       tweetPlaceholder = 'resource/img/icon.avatar.placeholder.png';
       // TODO: put in placeholder conditional
       tweetInfo = '<a href="http://twitter.com/' + tweetHandle + '"' + '>' +
-        '<img src="' + tweetAvatar + '"/>' +
+        '<img class="imgLoad" src="' + tweetAvatar + '"/>' +
         '<div class="tweetDate">' + tweetDate + '</div>' +
         '<div class="tweetUser"><strong>' + tweetUserName + ' </strong><span>@' +
         tweetHandle + '</span></div></a>';

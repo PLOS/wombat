@@ -1210,7 +1210,7 @@
           Download:
           <ul>
             <li>
-              <div class="def">
+              <div class="definition-label">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$pptURL"/>
@@ -1226,7 +1226,7 @@
               </xsl:element>
             </li>
             <li>
-              <div class="def">
+              <div class="definition-label">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$bigImgURL"/>
@@ -1250,7 +1250,7 @@
               </xsl:element>
             </li>
             <li>
-              <div class="def">
+              <div class="definition-label">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$origImgURL"/>
@@ -1319,7 +1319,7 @@
           <div class="table">
             <xsl:apply-templates select=".//table"/>
           </div>
-          <p class="caption">
+          <p class="table-caption">
             <xsl:apply-templates select="label"/>
             <xsl:if test="caption/title">
               <xsl:text> </xsl:text>
@@ -1342,19 +1342,20 @@
             </xsl:for-each>
           </xsl:if>
           <div class="table-download">
-            <div class="icon">
+            <div class="definition-label">
               <xsl:attribute name="onclick">
                 return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
               </xsl:attribute>
               CSV
             </div>
-            <a class="label">
+            <a>
               <xsl:attribute name="onclick">
                 return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
               </xsl:attribute>
               Download CSV
             </a>
           </div>
+          <div class="expand"/>
         </div>
       </xsl:if>
     </xsl:if>

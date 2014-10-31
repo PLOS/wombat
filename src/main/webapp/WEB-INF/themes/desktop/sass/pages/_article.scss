@@ -13,7 +13,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-// layout elements
 .set-grid {
   @extend .plos-row;
   width: rem-calc(980);
@@ -281,30 +280,30 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .author-list{
-   @extend .text-article-intro;
-   @extend .inline-list;
+  @extend .text-article-intro;
+  @extend .inline-list;
   overflow: visible;
   margin-left: 0;// needed t overwrite the inline-list
-   margin-bottom: $pad-small;
+  margin-bottom: $pad-small;
 
-   li {
-     position: relative;
-     margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
+  li {
+   position: relative;
+   margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
 
-     &.active{
-       a:hover{text-decoration: none;}
-     }
-
-     &[data-js-toggle='toggle_trigger'] a{
-       color: $clr-highlight;
-     }
-
-     > a, > span{
-     display: inline-block;   // needed to overwrite the inline-list
-     padding: $pad-highlight $pad-highlight-x; //TODO line-height;
-     }
-
+   &.active{
+     a:hover{text-decoration: none;}
    }
+
+   &[data-js-toggle='toggle_trigger'] a{
+     color: $clr-highlight;
+   }
+
+   > a, > span{
+   display: inline-block;   // needed to overwrite the inline-list
+   padding: $pad-highlight $pad-highlight-x; //TODO line-height;
+   }
+
+  }
   .contribute{
     @extend .icon-author-contribute;
   }
@@ -317,8 +316,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     @extend .icon-author-address;
   }
 }
-
-
 
  .author-info{
      @extend .pill-small;
@@ -344,7 +341,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
      @include icon-offscreen;
      margin-right: $icon-space;
    }
- } 
+ }
+
  .active {
    a, a:hover { color: $white; }
 
@@ -391,7 +389,6 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    @include tooltip-trigger($outside-box: yes);
    font-family: $font-face-plain;
    font-size: $txt-size-xxxsmall;
-
 }
 
 // RIGHT COLUMN STYLES
@@ -605,14 +602,17 @@ body.article .ui-widget-overlay {
     line-height: $txt-size-medium-large;
     z-index: map-get($zindex, footer);  //had to lower the trigger, so also lower the target
     display: none;
+
     &:hover {
       display: block;
     }
+
     a {
       @extend %link-text-white;
       font-weight: bold;
     }
   }
+
   h3 #subjInfo {
     @include circle;
     color: $white;
@@ -663,6 +663,7 @@ body.article .ui-widget-overlay {
         opacity: 1;
         @include single-transition(opacity);
         z-index: map-get($zindex, crossmark-tooltip);
+
         &.activate {
           visibility: visible;
         }
@@ -701,7 +702,6 @@ body.article .ui-widget-overlay {
         float: right;
         width: rem-calc(16);
         height: 16px;
-
         background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
         cursor: pointer;
 
@@ -713,6 +713,7 @@ body.article .ui-widget-overlay {
     }
   }
 }
+
 .comments-container {
   @extend .aside-container;
 
@@ -733,7 +734,6 @@ body.article .ui-widget-overlay {
   }
 }
 
-
 .twitter-container {
   @extend .aside-container;
   display: none;
@@ -751,44 +751,45 @@ body.article .ui-widget-overlay {
   #tweetList {
     list-style-type: none;
     margin-left: 0;
+
     li {
       border-top: 1px solid #dedede;
       margin-bottom: $pad-small;
       padding-top: $pad-small;
       font-size: $txt-size-xsmall;
 
-      .tweet-info {
-      a {
-        color: $clr-body-text;
-        position: relative;
-        @include clearfix;
-      }
+        .tweet-info {
+        a {
+          color: $clr-body-text;
+          position: relative;
+          @include clearfix;
+        }
 
-      img {
-        display: inline;
-        float: left;
-        margin-bottom: $pad-xsmall;
-      }
+        img {
+          display: inline;
+          float: left;
+          margin-bottom: $pad-xsmall;
+        }
 
-      .tweetDate {
-        display: inline;
-        float: right;
-      }
+        .tweetDate {
+          display: inline;
+          float: right;
+        }
 
-      .tweetUser {
-        clear: both;
+        .tweetUser {
+          clear: both;
 
-        strong {
-          font-weight: bold;
-          &:hover {
-            text-decoration: underline;
+          strong {
+            font-weight: bold;
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
+          span {
+            font-size: $txt-size-xxxsmall;
+        }
       }
-        span {
-          font-size: $txt-size-xxxsmall;
-      }
-    }
     }
   }
 
@@ -812,7 +813,6 @@ body.article .ui-widget-overlay {
     width: $pad-small;
     color: $plos-default;
   }
-
 }
 
 #tweetActions {
@@ -827,7 +827,9 @@ body.article .ui-widget-overlay {
     display: inline;
 
     div {
-      @include icon-image(17, 15,'icon.twitter.actions.png', 0 0);
+      background: image-url('sprite.twitter.actions.png') no-repeat 0 0;
+      width: rem-calc(17);
+      height: 15px;
       display: inline-block;
     }
   }
@@ -860,8 +862,6 @@ body.article .ui-widget-overlay {
   }
 
 }
-
-
 
 @media print {
    @page {

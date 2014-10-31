@@ -289,7 +289,7 @@ $line-height-small: ($line-height * .5);
 .article-content .figure {
   font-family: $font-face-plain;
   background: $grey-light;
-  padding: 18px $pad-default $pad-smallish;
+  padding: $line-height $pad-default $pad-smallish;
 
   .img-box {
     display: table-cell;
@@ -307,7 +307,6 @@ $line-height-small: ($line-height * .5);
 
       &:hover {
         background-position: 0 -25px;
-        cursor: pointer;
       }
     }
   }
@@ -334,12 +333,8 @@ $line-height-small: ($line-height * .5);
         line-height: 15px;
         width: rem-calc(165);
 
-        .def {
-          display:inline-block;
-          float: left;
-          margin-right: rem-calc(4);
-          @extend %brand-background;
-          border-radius: $border-radius-smaller;
+        .definition-label {
+          @extend .action-label;
 
           a {
             width: $pad-medium;
@@ -358,13 +353,13 @@ $line-height-small: ($line-height * .5);
       }
     }
   }
-    .figcaption {
-      margin-top: $pad-small;
-      margin-bottom: 0;
-      line-height: 18px;
-      font-weight: bold;
-      font-size: $txt-size-small;
-    }
+  .figcaption {
+    margin-top: $pad-small;
+    margin-bottom: 0;
+    line-height: $line-height;
+    font-weight: bold;
+    font-size: $txt-size-small;
+  }
     p {
       margin: 0;
     }
@@ -372,42 +367,32 @@ $line-height-small: ($line-height * .5);
 
 //from ambra
 
-.article-body .table-wrap {
+.article-content .table-wrap {
   margin-top: $pad-medium;
-  margin-bottom: $pad-small;
-
-  .table {
-    max-height: 550px;
-
-    .table-download {
-      display: block;
-    }
-
-    .expand {
-      @extend .icon-expand;
-      position: absolute;
-      top: -$pad-medium;
-      right: 0;
-    }
-  }
-}
-
-.table-wrap {
   position: relative;
 
-  .table {
-    overflow: auto;
-    border: solid 1px $grey-light;
+  div, p {
+    margin: 0 0 8px;
   }
 
   table {
     margin: 0;
     width: 100%;
-
+    font-size: 12px;
+    line-height: 1.333;
+    border-collapse: collapse;
+    border-spacing: 0;
     td {
       padding: rem-calc(2);
+      color: #666;
+      border: 1px solid $grey-med-light;
     }
-
+    th {
+      border: 1px solid $grey-med-light;
+      padding: 8px $line-height;
+      background: #efefef;
+      text-align: left;
+    }
     thead tr:first-child {
       background-color: $table-header-bg;
       font-weight: bold;
@@ -424,53 +409,54 @@ $line-height-small: ($line-height * .5);
     tbody tr:nth-child(even) {
       background-color: $grey-light;
     }
-
-    p.caption {
-      font-weight: bold;
-      margin-top: rem-calc(8);
-      margin-bottom: rem-calc(4);
-    }
   }
 
+  .table {
+    max-height: 550px;
+    overflow: auto;
+    border: solid 1px $grey-light;
+  }
+  .table-caption {
+    line-height: $line-height;
+    font-weight: bold;
+    font-size: $txt-size-small;
+  }
+  .table-footnote {
+    margin-bottom: 0;
+    font-size: $pad-small;
+    line-height: rem-calc(14);
+
+    .fn-label {
+      vertical-align: super;
+      font-size: $txt-size-xxxsmall;
+    }
+  }
   .table-download {
-    display: none;
+    display: block;
     vertical-align: middle;
 
-    .icon {
-      @extend %brand-background;
-      color: $grey-dark;
-      position: relative;
+    .definition-label {
+      @extend .action-label;
       width: $pad-medium;
-      height: 15px;
       text-align: center;
+      color: $white;
       font-size: $txt-size-xxxxsmall;
-      border-radius: $border-radius-smaller;
-      padding-top: rem-calc(3);
-      cursor: pointer;
-      display: inline-block;
-      vertical-align: middle;
-      text-align: center;
-      text-decoration: none;
+      line-height: $line-height;
     }
 
-    .label {
-      cursor: pointer;
+    a {
+      @extend %link-text-default;
+      font-size: $txt-size-xsmall;
     }
   }
-
   .expand {
-    display: none;
-  }
-
-  .table-footnote {
-    font-size: $pad-small;
-  }
-
-  .table-footnote .fn-label {
-    vertical-align: super;
-    font-size: $txt-size-xxxsmall;
+    @extend .icon-expand;
+    position: absolute;
+    top: -$pad-medium;
+    right: 0;
   }
 }
+
 
 @media print {
   .article-text {

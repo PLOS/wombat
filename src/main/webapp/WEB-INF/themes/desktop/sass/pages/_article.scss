@@ -543,6 +543,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 .ui-button.ui-button-icon-only.ui-dialog-titlebar-close {
   border: none !important;
+  border: 0 !important; //ie 9
 }
 
 body.article .ui-widget-overlay {
@@ -554,6 +555,8 @@ body.article .ui-widget-overlay {
   background: transparent url('http://crossmark.crossref.org/images/bg_overlay.png') top left repeat;
   opacity: .3;
   filter: Alpha(Opacity - 30);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  z-index: map-get($zindex, titleTopFixed);
 }
 // end overrides for crossmark's jquery ui
 
@@ -739,8 +742,7 @@ body.article .ui-widget-overlay {
   display: none;
 
   h3 {
-    background: image-url('icon.twtr.32.png') no-repeat 0 0;
-    background-size: 20px;
+    background: image-url('icon.twtr.20.png') no-repeat 0 0;
     padding-left: $pad-default + $pad-xsmall;
     border: none;
     padding-bottom: 0;

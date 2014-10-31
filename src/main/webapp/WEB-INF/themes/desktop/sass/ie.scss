@@ -94,6 +94,12 @@ div[data-js-tooltip="tooltip_target"]{ display: none;}
       padding-top: 0 !important;
     }
   }
+.twitter-container h3 {
+  margin-bottom: 5px !important;
+  padding-left: 25px;
+  padding-bottom: 0 !important;
+}
+
   // override .inline-list
 #floatAuthorList, .author-list {
   margin: 0;
@@ -135,6 +141,9 @@ div[data-js-tooltip="tooltip_target"]{ display: none;}
   }
 }
 
+body.article .ui-widget-overlay {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+}
 
 
 

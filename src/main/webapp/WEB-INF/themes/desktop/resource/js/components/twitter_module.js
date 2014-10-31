@@ -3,9 +3,10 @@
   $.fn.twitter = function (doi) {
     var tweet, tweetText,
       totalTweets, minDisplayTweets, maxDisplayTweets,
-      dataSort,
+      dataSort, datePrefix,
       dataPrefix,
       tweetDate,
+      tweetDateOther,
       tweetInfo,
       tweetActionLink,
       tweetAvatar,
@@ -35,7 +36,6 @@
       doi = validateDOI(doi);
       var config, requestUrl, errorText;
 
-
       config = ALM_CONFIG;
 
       requestUrl = config.host +'?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source=twitter';
@@ -44,51 +44,57 @@
 
       $.ajax({
         url: requestUrl,
-        dataType: 'json'
-      }).done(function (response){
-        totalTweets = response.data[0].sources[0].events.length;
+        dataType: 'jsonp',
+        contentType: "text/json; charset=utf-8",
+        type: "GET"
+      }).done(function (data){
+        var initData = data.data[0].sources[0].events[0].event.user_name;
+        totalTweets = data.data[0].sources[0].metrics.total;
 
         if (totalTweets === 0) {
 
         } else {
           minDisplayTweets = 2;
           maxDisplayTweets = 5;
-          dataSort = response.data[0].sources[0].events;
+          dataSort = data.data[0].sources[0].events;
 
           //parse the date to be able to sort by date
           this.parseTwitterDate = function (tweetdate) {
             //running regex to grab everything after the time
             var newdate = tweetdate.replace(/(\d{1,2}[:]\d{2}[:]\d{2}) (.*)/, '$2 $1');
             //moving the time code to the end
-            newdate = newdate.replace(/(\+\S+) (.*)/, '$2 $1')
+            newdate = newdate.replace(/(\+\S+) (.*)/, '$2 $1');
 
             return new Date(Date.parse(newdate));
           }
-          //sort by date
+          //sort by date from Ambra
           this.sort_tweets_by_date = function (a, b) {
             var aDt = isNaN(a.event.created_at) ? this.parseTwitterDate(a.event.created_at) : a.event.created_at;
             var bDt = isNaN(b.event.created_at) ? this.parseTwitterDate(b.event.created_at) : b.event.created_at;
 
             return (new Date(bDt).getTime()) - (new Date(aDt).getTime());
           }
-          //pull the data & run the sort fn
+          //pull the data & run the sort function
           dataSort = dataSort.sort(jQuery.proxy(this.sort_tweets_by_date, this));
-           // only show 5, so cut the json results to 5
+          // only show 5, so cut the json results to 5
           if (dataSort.length > maxDisplayTweets){
-          dataSort = dataSort.slice(0, 5);
+            dataSort = dataSort.slice(0, 5);
           } else { }
 
           $.each(dataSort, function (index) {
             dataPrefix = dataSort[index].event;
+            datePrefix = dataSort[index];
             //run through dataPass to get all the data
-            dataPass(dataPrefix);
+            dataPass(dataPrefix, datePrefix);
             //show only 2 and then 5
             if (index < minDisplayTweets) {
               wholeTweet = '<li>' + listBody + '</li>';
             } else {
               wholeTweet = '<li class="more-tweets">' + listBody + '</li>';
             }
+
             $('#tweetList').append(wholeTweet);
+            checkAvatar(listBody);
 
           });
 
@@ -98,33 +104,64 @@
 
           } else {}
         }
-      }).fail(function(){
+      }).fail(function(){ alert('fail');
+        $('.twitter-container').css('display', 'block');
         $('#tweetList').append(errorText);
       });
 
     };
 
+    function checkAvatar(listappend) {
+      var checkImg = $(listappend).find('.imgLoad');
+      $(checkImg).on('error', changeAvatar );
+    }
+
+    function changeAvatar(event) {
+      if (event) {
+        var newthing = $(this).attr('src',tweetPlaceholder);
+        return $('.imgholder').html(newthing);
+      }
+    }
+
+    function dateFiddle(tweetDate){
+      var dateraw, dateoptions, prettydate, iedate, ugh, months, toNum;
+      if (!document.all) {
+        dateraw = new Date(tweetDate);
+        dateoptions = {day: "numeric", month: "short", year: "numeric"};
+        prettydate = dateraw.toLocaleString("en-GB", dateoptions);
+
+      }  else {  //alert(tweetDate.indexOf(","));
+        iedate = tweetDate.toString();
+        ugh = iedate.split(',');
+        months = new Array();
+        months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        toNum = ugh[1];
+
+        prettydate = ugh[2]+' '+ months[toNum]+' '+ugh[0];
+      }
+      return prettydate;
+    }
     function dataPass(dataPrefix) {
 
-      tweetDate = dateParse(dataPrefix.created_at, false, true, "en-GB");
+      tweetDateOther = dataPrefix.created_at;//dateParse(dataPrefix.created_at, false, true, "en-GB");
+      tweetDate = datePrefix.event_csl.issued['date-parts'];
       tweetAvatar = dataPrefix.user_profile_image;
       tweetUserName = dataPrefix.user_name;
       tweetHandle = dataPrefix.user;
       tweetText = linkify(dataPrefix.text);
       tweetId = dataPrefix.id;
 
-      //fix twitter user avatar url
+      tweetDate = dateFiddle(tweetDate);
+      //change twitter avatar url if an old one ("a0") is stored
       tweetAvatarParse = tweetAvatar.slice(7,9);
-
       if (tweetAvatarParse === "a0") {
         tweetAvatar = "http://pbs"+tweetAvatar.slice(9);
       }
-
       // user photo, date of post, user names
       tweetPlaceholder = 'resource/img/icon.avatar.placeholder.png';
       // TODO: put in placeholder conditional
       tweetInfo = '<a href="http://twitter.com/' + tweetHandle + '"' + '>' +
-        '<img src="' + tweetAvatar + '"/>' +
+        '<span class="imgholder"><img class="imgLoad" src="' + tweetAvatar + '"/></span>' +
         '<div class="tweetDate">' + tweetDate + '</div>' +
         '<div class="tweetUser"><strong>' + tweetUserName + ' </strong><span>@' +
         tweetHandle + '</span></div></a>';

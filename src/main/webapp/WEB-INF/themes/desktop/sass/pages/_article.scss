@@ -557,6 +557,8 @@ body.article .ui-widget-overlay {
   background: transparent url('http://crossmark.crossref.org/images/bg_overlay.png') top left repeat;
   opacity: .3;
   filter: Alpha(Opacity - 30);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  z-index: map-get($zindex, titleTopFixed);
 }
 // end overrides for crossmark's jquery ui
 
@@ -751,6 +753,7 @@ body.article .ui-widget-overlay {
   #tweetList {
     list-style-type: none;
     margin-left: 0;
+
     li {
       border-top: 1px solid #dedede;
       margin-bottom: $pad-small;

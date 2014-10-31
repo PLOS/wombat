@@ -115,6 +115,9 @@ div[data-js-tooltip="tooltip_target"]{ display: none;}
   background-color: #fff !important;
 }
 
+body.article .ui-widget-overlay {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+}
 
 
 

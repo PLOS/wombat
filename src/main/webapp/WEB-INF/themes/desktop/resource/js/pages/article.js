@@ -6,23 +6,7 @@
 
 (function ($) {
 
-  var s, parse_xml_date, float_header, is_author_list, check_authors_truncation;
-
-   parse_xml_date = {
-    settings : {
-      raw_date : document.getElementById('rawPubDate').value
-    },
-
-    init : function () {
-      s = this.settings;
-      this.article_pub_date();
-    },
-
-    article_pub_date : function () {
-      var article_pub_date = dateParse(s.raw_date, true, false, "en-US");
-      $("#artPubDate").append(article_pub_date);
-    }
-  };
+  var s, float_header, is_author_list, check_authors_truncation;
 
   float_header = {
 
@@ -119,8 +103,6 @@
       e.preventDefault();
 
     });
-
-    parse_xml_date.init();
 
     is_author_list = document.getElementById('floatAuthorList');
     if ( is_author_list != null) {

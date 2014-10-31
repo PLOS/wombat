@@ -13,8 +13,6 @@
 <#include "../common/journalStyle.ftl" />
 <body class="article ${journalStyle}">
 
-<input type="hidden" id="rawPubDate" value="${article.date}"/>
-
 <#include "../common/header/header.ftl" />
 <div class="set-grid">
   <header class="title-block">
@@ -28,7 +26,7 @@
     <#include "articleTitle.ftl" />
 
       <ul class="date-doi">
-        <li id="artPubDate">Published:</li>
+        <li id="artPubDate">Published: <@formatJsonDate date="${article.date}" format="MMMM d, yyyy" /></li>
         <li id="artDoi">DOI: ${article.doi} </li>
 
       <#macro crossPubTitle pub>
@@ -83,7 +81,6 @@
   </div>
   <#include "../common/footer/footer.ftl" />
 
-  <@js src="resource/js/components/dateparse.js"/>
   <@js src="resource/js/components/show_onscroll.js"/>
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>

@@ -2,7 +2,7 @@
 (function ($) {
   $.fn.twitter = function (doi) {
     var tweet, tweetText,
-      totalTweets, minDisplayTweets, maxDisplayTweets,
+      totalTweets, initData, minDisplayTweets, maxDisplayTweets,
       dataSort, datePrefix,
       dataPrefix,
       tweetDate,
@@ -40,7 +40,7 @@
 
       requestUrl = config.host +'?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source=twitter';
 
-      errorText = '<li>Our system is having a bad day. Please check back later.</li>';
+      errorText = '<li>Our system is having a bad day. We are working on it. Please check back later.</li>';
 
       $.ajax({
         url: requestUrl,
@@ -48,7 +48,8 @@
         contentType: "text/json; charset=utf-8",
         type: "GET"
       }).done(function (data){
-        var initData = data.data[0].sources[0].events[0].event.user_name;
+        initData = data.data[0];
+
         totalTweets = data.data[0].sources[0].metrics.total;
 
         if (totalTweets === 0) {
@@ -56,7 +57,7 @@
         } else {
           minDisplayTweets = 2;
           maxDisplayTweets = 5;
-          dataSort = data.data[0].sources[0].events;
+          dataSort = initData.sources[0].events;
 
           //parse the date to be able to sort by date
           this.parseTwitterDate = function (tweetdate) {

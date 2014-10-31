@@ -546,6 +546,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 .ui-button.ui-button-icon-only.ui-dialog-titlebar-close {
   border: none !important;
+  border: 0 !important; //ie 9
 }
 
 body.article .ui-widget-overlay {

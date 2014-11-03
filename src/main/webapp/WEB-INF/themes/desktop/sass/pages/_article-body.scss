@@ -341,6 +341,10 @@ $line-height-small: ($line-height * .5);
             text-align: center;
             color: $white;
             font-size: $txt-size-xxxxsmall;
+
+            &:hover {
+              text-decoration: none;
+            }
           }
         }
 
@@ -365,11 +369,10 @@ $line-height-small: ($line-height * .5);
     }
   }
 
-//from ambra
-
-.article-content .table-wrap {
+.table-wrap {
   margin-top: $pad-medium;
   position: relative;
+  font-family: $font-face-plain;  //for table expand link
 
   div, p {
     margin: 0 0 8px;
@@ -431,30 +434,36 @@ $line-height-small: ($line-height * .5);
       font-size: $txt-size-xxxsmall;
     }
   }
-  .table-download {
-    display: block;
-    vertical-align: middle;
 
-    .definition-label {
-      @extend .action-label;
-      width: $pad-medium;
-      text-align: center;
-      color: $white;
-      font-size: $txt-size-xxxxsmall;
-      line-height: $line-height;
-    }
-
-    a {
-      @extend %link-text-default;
-      font-size: $txt-size-xsmall;
-    }
-  }
   .expand {
     @extend .icon-expand;
     position: absolute;
     top: -$pad-medium;
     right: 0;
   }
+}
+
+.article-content .table-download {
+  display: block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 125px;
+
+  .definition-label {
+    @extend .action-label;
+    width: $pad-medium;
+    text-align: center;
+    color: $white;
+    font-size: $txt-size-xxxxsmall;
+    line-height: $line-height;
+  }
+
+  span {
+    @extend %link-text-default;
+    font-size: $txt-size-xsmall;
+
+  }
+
 }
 
 

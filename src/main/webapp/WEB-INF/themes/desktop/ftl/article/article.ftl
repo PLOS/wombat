@@ -96,9 +96,9 @@
   <@renderJs />
 
   <script type="text/javascript">  /*filesizetable*/
-    (function ($) {
+   /* (function ($) {
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
-    })(jQuery);
+    })(jQuery);*/
   </script>
 
   <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>

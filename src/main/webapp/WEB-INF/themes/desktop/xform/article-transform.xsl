@@ -1312,9 +1312,10 @@
             </xsl:attribute>
           </a>
           <div class="expand">
-            <xsl:attribute name="onclick">
-              return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "HTML");
+            <xsl:attribute name="data-tableopen">
+              <xsl:value-of select="$figId"/>
             </xsl:attribute>
+            <xsl:attribute name="data-download-type">HTML</xsl:attribute>
           </div>
           <div class="table">
             <xsl:apply-templates select=".//table"/>
@@ -1342,20 +1343,21 @@
             </xsl:for-each>
           </xsl:if>
           <div class="table-download">
+            <xsl:attribute name="data-download-type">CSV</xsl:attribute>
+            <xsl:attribute name="data-tableopen">
+              <xsl:value-of select="$figId"/>
+            </xsl:attribute>
             <div class="definition-label">
-              <xsl:attribute name="onclick">
-                return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
-              </xsl:attribute>
               CSV
             </div>
-            <a>
-              <xsl:attribute name="onclick">
-                return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
-              </xsl:attribute>
+            <span>
+            <xsl:attribute name="data-tableopen">
+              <xsl:value-of select="$figId"/>
+            </xsl:attribute>
               Download CSV
-            </a>
+            </span>
           </div>
-          <div class="expand"/>
+
         </div>
       </xsl:if>
     </xsl:if>

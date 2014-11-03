@@ -155,12 +155,14 @@ example | extension
   %brand-color {
     color: $setcolor;
   }
+
   %brand-border {
     border-color: $setcolor;
   }
   %brand-background {
     background-color: $setcolor;
   }
+
   %brand-background-hover {
     background-color: $setcolor;
     &:hover {
@@ -207,9 +209,22 @@ example | extension
 .ploscollections, .plosclinicaltrials {
   @include brandcolor($setcolor: $plos-default);
 }
+
 .plosone {
   @include brandcolor($setcolor: $plos-one);
+
+  .article-content .table-download .definition-label {
+    color: $grey-dark;
+  }
+  .article-content .figure .definition-label a {
+    color: $grey-dark;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
+
 
 //////////////
 // layout utilities

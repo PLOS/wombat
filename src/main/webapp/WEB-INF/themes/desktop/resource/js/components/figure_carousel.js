@@ -3,30 +3,29 @@
   /**
    * Find the figure carousel (existing markup) and populate its links.
    */
-  $.fn.buildFigureCarouselLinks = function () {
-    $('.carousel-item').each(function (index, carouselItem) {
+  function buildFigureCarouselLinks($carouselSection) {
+    $carouselSection.find('.carousel-item').each(function (index, carouselItem) {
       var $carouselItem = $(carouselItem);
       var figureDoi = $carouselItem.attr('data-doi');
       figureDoi = figureDoi.replace(/^info:doi\//, ''); // TODO: Fix in service layer
-      var $inlineFigure = $(document).find('.figure[data-doi="' + figureDoi + '"]');
+      var $inlineFigure = $('.figure[data-doi="' + figureDoi + '"]');
       $carouselItem.find('a').attr('href', '#' + $inlineFigure.attr('id'));
     });
-  };
+  }
 
   /**
    * Move the figure carousel from its static position (defined in FreeMarker templates) to its desired position (which
    * is midway through post-transformation HTML).
    */
-  $.fn.moveFigureCarouselSection = function () {
-    var $carousel = $('#figure-carousel-section');
+  function moveFigureCarouselSection($carouselSection) {
     var $new_position = $('.articleinfo');
     if ($new_position.length) {
-      $carousel.detach();
-      $carousel.insertBefore($new_position);
+      $carouselSection.detach();
+      $carouselSection.insertBefore($new_position);
     }
-  };
+  }
 
-  $.fn.buildFigureCarouselSlider = function (options) {
+  $.fn.buildFigureCarousel = function (options) {
     var defaults = {
       speed: 500,
       access: false,
@@ -35,8 +34,11 @@
       defaultpaddingbottom: 10
     };
     options = $.extend(defaults, options);
-
     var $this = $(this);
+
+    buildFigureCarouselLinks($this);
+    moveFigureCarouselSection($this);
+
     var $wrapper = $this.find('.carousel-wrapper');
     var $slider = $wrapper.find('.slider');
 

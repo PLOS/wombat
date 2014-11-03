@@ -35,11 +35,8 @@
   addMediaCoverageLink();
 
 
-  /// build figure carousel
-  var $carouselSection = $('#figure-carousel-section');
-  $carouselSection.buildFigureCarouselLinks();
-  $carouselSection.moveFigureCarouselSection();
-  $carouselSection.buildFigureCarouselSlider({});
+  $('#figure-carousel-section').buildFigureCarousel({});
+
 
   function formatHumanReadableByteSize(bytes) {
     var suffices = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];

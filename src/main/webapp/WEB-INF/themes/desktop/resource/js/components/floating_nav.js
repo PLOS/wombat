@@ -47,20 +47,17 @@
         if (view_height && view_width) {
 
           if (el_view_out && el_overlap) {
-            console.log('yes');
             $this.css({ 'position': 'fixed', 'top': options.margin + 'px' });
             hilite();
 
           } else if (win_top > (ftr_top - (el_h + options.margin))) {
             //Adjust the position here a bit to stop the footer from being overlapped
-            console.log('no');
 
             var tt = ftr_top - win_top - el_h - options.margin + 35;
             hilite();
             $this.css({ 'position': 'fixed', 'top': tt + 'px' });
           } else {
             //We're above the article
-            console.log('other');
 
             $this.css({ 'position': 'static'});
           }

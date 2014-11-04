@@ -26,7 +26,8 @@
         <#if amendment.doi??>
 
           <@siteLink path="article?id=" ; path>
-            <a href="${path + amendment.doi}" class="amendment-link">${linkText}</a>
+            <a href="${path + amendment.doi}" class="amendment-link"> <span class="link-separator"> </span>
+            ${linkText}</a>
           </@siteLink>
         </#if>
       </p>

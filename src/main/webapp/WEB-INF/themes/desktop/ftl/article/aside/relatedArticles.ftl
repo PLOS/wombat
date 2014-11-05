@@ -1,6 +1,5 @@
 <div class="related-articles-container">
   <h3><#include "relatedArticleTitle.ftl"/></h3>
-  ${article.relatedArticles.title}
   <ul>
   <#if article.relatedArticles?size gt 1>
     <#list article.relatedArticles?sort_by("doi")?reverse as relatedArticle>
@@ -19,7 +18,6 @@
       </li>
     </#list>
   </#if>
-
   </ul>
 </div>
 

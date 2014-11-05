@@ -1315,7 +1315,6 @@
             <xsl:attribute name="data-tableopen">
               <xsl:value-of select="$figId"/>
             </xsl:attribute>
-            <xsl:attribute name="data-download-type">HTML</xsl:attribute>
           </div>
           <div class="table">
             <xsl:apply-templates select=".//table"/>
@@ -1343,7 +1342,6 @@
             </xsl:for-each>
           </xsl:if>
           <div class="table-download">
-            <xsl:attribute name="data-download-type">CSV</xsl:attribute>
             <xsl:attribute name="data-tableopen">
               <xsl:value-of select="$figId"/>
             </xsl:attribute>
@@ -1351,9 +1349,6 @@
               CSV
             </div>
             <span>
-            <xsl:attribute name="data-tableopen">
-              <xsl:value-of select="$figId"/>
-            </xsl:attribute>
               Download CSV
             </span>
           </div>
@@ -2420,12 +2415,12 @@
       <xsl:apply-templates/>
     </a>
   </xsl:template>
-
+  <!-- ************ removed the <strong> tags from below 11/4/2014 ********************-->
   <!-- 1/4/12: Ambra modifications (transform to <strong> instead of <b>) -->
   <xsl:template match="bold">
-    <strong>
+
       <xsl:apply-templates/>
-    </strong>
+
   </xsl:template>
 
   <!-- 1/4/12: Ambra modifications (transform to <em> instead of <i>) -->

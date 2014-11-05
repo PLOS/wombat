@@ -216,7 +216,7 @@ example | extension
   .article-content .table-download .definition-label {
     color: $grey-dark;
   }
-  .article-content .figure .definition-label a {
+  .article-content .figure-inline-download ul li .definition-label a {
     color: $grey-dark;
 
     &:hover {

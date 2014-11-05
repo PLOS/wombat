@@ -32,20 +32,37 @@ import java.util.*;
  */
 public class HttpMessageUtil {
 
+  /**
+   * Describes how to filter or modify a header while copying a response.
+   */
+  public static interface HeaderFilter {
+    /**
+     * Return the header value to copy into the outgoing response, under the same header name as the incoming response.
+     * Return {@code null} to copy no header with this name.
+     * <p/>
+     * To copy the header value unchanged, do {@code return header.getValue();}.
+     *
+     * @param header a header for an incoming response
+     * @return the header value to copy into the outgoing response, or {@code null} to not copy this header
+     */
+    public String getValue(Header header);
+  }
 
   /**
    * Copy content with whitelisted headers between responses
    *
-   * @param responseTo
-   * @param headerWhitelist
+   * @param responseFrom an incoming response to copy from
+   * @param responseTo   an outgoing response to copy into
+   * @param headerFilter describes whether and how to copy headers
    * @throws IOException
    */
   public static void copyResponseWithHeaders(CloseableHttpResponse responseFrom, HttpServletResponse responseTo,
-                                             ImmutableSet<String> headerWhitelist)
-          throws IOException {
+                                             HeaderFilter headerFilter)
+      throws IOException {
     for (Header header : responseFrom.getAllHeaders()) {
-      if (headerWhitelist.contains(header.getName())) {
-        responseTo.setHeader(header.getName(), header.getValue());
+      String newValue = headerFilter.getValue(header);
+      if (newValue != null) {
+        responseTo.setHeader(header.getName(), newValue);
       }
     }
     copyResponse(responseFrom, responseTo);

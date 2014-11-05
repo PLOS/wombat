@@ -19,6 +19,8 @@ import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.UnresolvedSiteException;
+import org.ambraproject.wombat.util.HttpMessageUtil;
+import org.apache.http.Header;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -161,8 +163,14 @@ public abstract class WombatController {
    * Names of headers that, in a response from the service tier (Rhino or Content Repo), should be passed through to the
    * client.
    */
-  protected static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-          HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, "X-Reproxy-URL", "X-Reproxy-Cache-For");
+  private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
+      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, "X-Reproxy-URL", "X-Reproxy-Cache-For");
+  protected static final HttpMessageUtil.HeaderFilter ASSET_RESPONSE_HEADER_FILTER = new HttpMessageUtil.HeaderFilter() {
+    @Override
+    public String getValue(Header header) {
+      return (ASSET_RESPONSE_HEADER_WHITELIST.contains(header.getName())) ? header.getValue() : null;
+    }
+  };
 
 
   // Inconsistent with equals. See Javadoc for java.util.SortedSet.

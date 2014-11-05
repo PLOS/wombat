@@ -107,7 +107,6 @@ $line-height-small: ($line-height * .5);
       margin-bottom: $line-height;
       margin-top: $line-height-small;
     }
-
   }
 
   .articleinfo {
@@ -124,6 +123,34 @@ $line-height-small: ($line-height * .5);
 
     }
   }
+
+
+  .amendment {
+    margin-bottom: $line-height-med;
+
+    h2 {
+      margin-top: 0;
+
+      &:before {
+        // for icons
+        margin-right: $pad-xsmall;
+        vertical-align: baseline;
+        line-height: inherit;
+      }
+    }
+
+    .link-separator::after{
+      content: '| ';
+      color: $clr-body-text;
+      font-weight: normal;
+    }
+    
+    .amendment-link,
+    .amendment-date{
+      font-weight: bold;
+    }
+  }
+
   .amendment-eoc, .amendment-retraction {
     @extend .callout-alert;
     h2 {
@@ -132,10 +159,8 @@ $line-height-small: ($line-height * .5);
       &:before {
         //TODO - make this a mixin? do we adjust line-height on all icons?
         @extend .icon-alert;
-        font-size: $txt-size-medium;
-        padding-right: $pad-xsmall;
-        vertical-align: top;
-        line-height: $line-height;
+        font-size: $txt-size-medium-large;
+
       }
     }
   }
@@ -147,27 +172,8 @@ $line-height-small: ($line-height * .5);
       &:before {
         content: '';
         @extend .icon-correction;
-        margin-right: $pad-xsmall;
-        vertical-align: top;
-        line-height: $line-height;
+
       }
-    }
-  }
-
-  .amendment {
-    margin-bottom: $line-height-med;
-
-    h2 {
-      margin-top: 0;
-    }
-    .link-separator::after{
-      content: '| ';
-      color: $clr-body-text;
-      font-weight: normal;
-    }
-    .amendment-link,
-    .amendment-date{
-      font-weight: bold;
     }
   }
 

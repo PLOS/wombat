@@ -4,9 +4,9 @@
   <ul id="collectionList">
   <#list collectionIssues?keys as issueDoi>
     <li>
-      ${issueDoi}
+     <a href="http://www.ploscollections.org/article/browse/issue/info%3Adoi%2F${issueDoi?url}">
+        ${collectionIssues[issueDoi]["displayName"]}</a>
     </li>
   </#list>
   </ul>
 </div>
-</#if>

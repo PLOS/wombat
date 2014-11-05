@@ -7,7 +7,7 @@
 
 <#include "crossmark.ftl" />
 
-<#if collectionIssues??>
+<#if collectionIssues?keys?size gt 0>
 <#include "asideCollections.ftl" />
 </#if>
 

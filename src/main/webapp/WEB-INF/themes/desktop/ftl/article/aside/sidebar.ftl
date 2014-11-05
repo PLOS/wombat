@@ -7,7 +7,9 @@
 
 <#include "crossmark.ftl" />
 
-<#include "relatedArticles.ftl" />
+<#if article.relatedArticles?size gt 0>
+  <#include "relatedArticles.ftl" />
+</#if>
 
 <#include "subjectAreas.ftl" />
 

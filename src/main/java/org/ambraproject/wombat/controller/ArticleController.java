@@ -175,7 +175,8 @@ public class ArticleController extends WombatController {
    */
   private Map<?, ?> getCollectionIssues(Map<?, ?> articleMetadata, final Site site) {
 
-    Predicate<Map.Entry<String,Map<String, Object>>> collectionsJournalFilter = new Predicate<Map.Entry<String,Map<String, Object>>>() {
+    Predicate<Map.Entry<String,Map<String, Object>>> collectionsJournalFilter =
+     new Predicate<Map.Entry<String,Map<String, Object>>>() {
       public boolean apply(Map.Entry<String,Map<String, Object>> entry) {
         Map<String, String> parentJournal = ((Map<String, String>) entry.getValue().get("parentJournal"));
         if (parentJournal != null) {

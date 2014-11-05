@@ -3,27 +3,22 @@
   var $win = $(window);
   $.fn.floatingNav = function (options) {
     defaults = {
-      margin:             90,
-      sections:           '',
-      parentContainer:    '.article-content',
-      sectionAnchor:      'a[data-toc]',
-      sectionAnchorAttr:  'data-toc',
-      classActive:        'active',
-      footer:             '#pageftr',
-      alternateBottomDiv: '#banner-ftr',
-      linkSelector:       'a.scroll',
+      margin:               90,
+      sections:             '',
+      parentContainer:      '.article-content',
+      sectionAnchor:        'a[data-toc]',
+      sectionAnchorAttr:    'data-toc',
+      classActive:          'active',
+      footer:               '#pageftr',
+      alternateBottomDiv:   '#banner-ftr',
+      linkSelector:         'a.scroll',
       alternativeBottomDiv: '#banner-ftr'
 
     };
     var options = $.extend(defaults, options);
     return this.each(function () {
 
-      var $this = $(this),
-          ftr_top = $(options.footer).offset().top,
-          el_h = $this.innerHeight(),
-          bnr_h = 0,
-          win_top = 0,
-          links = $this.find(options.linkSelector);
+      var $this = $(this), ftr_top = $(options.footer).offset().top, el_h = $this.innerHeight(), bnr_h = 0, win_top = 0, links = $this.find(options.linkSelector);
 
       if ($(options.alternativeBottomDiv).length) {
         bnr_h = $(options.alternativeBottomDiv).innerHeight();
@@ -45,25 +40,29 @@
         win_top = $win.scrollTop();
         ftr_top = $(options.footer).offset().top;
 
-        var article_top = $(options.parentContainer).offset().top,
-            el_view_out = (win_top > (article_top - options.margin)),  //the top of the element is out of the viewport
+        var article_top = $(options.parentContainer).offset().top, el_view_out = (win_top > (article_top - options.margin)),  //the top of the element is out of the viewport
             view_height = ((el_h + options.margin + bnr_h) < $win.height()), //the viewport is tall enough-
             el_overlap = (win_top < (ftr_top - (el_h + options.margin))), //the element is not overlapping the footer
             view_width = ($win.width() >= 960); //the viewport is wide enough
+        if (view_height && view_width) {
 
-        if (el_view_out && view_height && el_overlap && view_width) {
+          if (el_view_out && el_overlap) {
 
-          $this.css({ 'position': 'fixed', 'top': options.margin + 'px' });
-          hilite();
+            $this.css({ 'position': 'fixed', 'top': options.margin + 'px' });
+            hilite();
 
-        } else if (win_top > (ftr_top - (el_h + options.margin))) {
-          //Adjust the position here a bit to stop the footer from being overlapped
-          var tt = ftr_top - win_top - el_h - options.margin + 35;
-          hilite();
-          $this.css({ 'position': 'fixed', 'top': tt + 'px' });
+          } else if (win_top > (ftr_top - (el_h + options.margin))) {
+            //Adjust the position here a bit to stop the footer from being overlapped
+            var tt = ftr_top - win_top - el_h - options.margin + 35;
+            hilite();
+            $this.css({ 'position': 'fixed', 'top': tt + 'px' });
+          } else {
+            //We're above the article
+            $this.css({ 'position': 'static'});
+          }
         } else {
-          //We're above the article
           $this.css({ 'position': 'static'});
+          hilite();
         }
       }
 

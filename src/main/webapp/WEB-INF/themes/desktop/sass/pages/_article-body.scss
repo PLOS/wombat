@@ -43,6 +43,10 @@ $line-height-small: ($line-height * .5);
     margin-bottom: $line-height;
   }
 
+  a {
+    @extend %link-text-default;
+  }
+
   p, li {
     margin-bottom: $txt-size-default;
     line-height: $line-height;
@@ -70,14 +74,20 @@ $line-height-small: ($line-height * .5);
     margin-top: $line-height-med;
     line-height: normal;
   }
+
   h2 {
     font-size: $txt-size-large;
     margin-bottom: $line-height;
     font-weight: bold;
   }
+
   h3, h4 {
     font-size: $txt-size-medium-large;
     margin-top: $line-height-small
+  }
+
+  h3 {
+    font-weight: bold;
   }
   h4 {
     font-weight: normal
@@ -88,7 +98,7 @@ $line-height-small: ($line-height * .5);
     margin: $line-height-med 0 $line-height 0;
 
   }
-  //NOTE: if we want to have only the first thing marked "abstract" to have this styling  change the below line to:  .abstract:first-child {
+
   .abstract {
     h2 {
       font-family: $font-face-fancy;
@@ -113,6 +123,34 @@ $line-height-small: ($line-height * .5);
 
     }
   }
+
+
+  .amendment {
+    margin-bottom: $line-height-med;
+
+    h2 {
+      margin-top: 0;
+
+      &:before {
+        // for icons
+        margin-right: $pad-xsmall;
+        vertical-align: baseline;
+        line-height: inherit;
+      }
+    }
+
+    .link-separator::after{
+      content: '| ';
+      color: $clr-body-text;
+      font-weight: normal;
+    }
+    
+    .amendment-link,
+    .amendment-date{
+      font-weight: bold;
+    }
+  }
+
   .amendment-eoc, .amendment-retraction {
     @extend .callout-alert;
     h2 {
@@ -121,10 +159,8 @@ $line-height-small: ($line-height * .5);
       &:before {
         //TODO - make this a mixin? do we adjust line-height on all icons?
         @extend .icon-alert;
-        font-size: $txt-size-medium;
-        padding-right: $pad-xsmall;
-        vertical-align: top;
-        line-height: $line-height;
+        font-size: $txt-size-medium-large;
+
       }
     }
   }
@@ -136,31 +172,8 @@ $line-height-small: ($line-height * .5);
       &:before {
         content: '';
         @extend .icon-correction;
-        margin-right: $pad-xsmall;
-        vertical-align: top;
-        line-height: $line-height;
+
       }
-    }
-  }
-
-  .amendment {
-    margin-bottom: $line-height-med;
-
-    h2 {
-      margin-top: 0;
-    }
-
-    .amendment-link {
-      font-weight: bold;
-      &:before {
-        content: '| ';
-        color: $clr-body-text;
-        font-weight: normal;
-      }
-    }
-
-    .amendment-date {
-      font-weight: bold;
     }
   }
 

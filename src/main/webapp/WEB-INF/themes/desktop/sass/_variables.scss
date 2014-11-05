@@ -36,7 +36,7 @@ $grey-light: #efefef;
 $grey-tinytext: #bbb;// TEMP PROD: change uses to grey-med-light
 
 $tabs-base-color: #2b2b2b;
-
+$table-header-bg: #a0a0a0;
 $warning: #e53350;
 
 $success: #16a127;
@@ -87,6 +87,7 @@ $grid-columns: 12;
 
 
 // layout patterns
+$border-radius-smaller: 2px;
 $border-radius-small: 3px; //icon backgrounds
 $border-radius-default: 5px;
 $border-radius-large: 8px;
@@ -145,6 +146,7 @@ $txt-size-small: 13px;
 $txt-size-xsmall: 12px;
 $txt-size-xxsmall: 11px;
 $txt-size-xxxsmall: 10px;
+$txt-size-xxxxsmall: 9px;
 
 $txt-size-pgtitle: $txt-size-giant;
 $txt-size-default: $txt-size-small;

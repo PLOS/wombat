@@ -62,7 +62,7 @@
     <xsl:call-template name="make-front"/>
     <xsl:call-template name="newline1"/>
     <xsl:if
-        test="not((@article-type='correction') or (@article-type='retraction') or (@article-type='expression-of-concern'))">
+      test="not((@article-type='correction') or (@article-type='retraction') or (@article-type='expression-of-concern'))">
       <div class="articleinfo">
         <xsl:call-template name="make-article-meta"/>
       </div>
@@ -76,7 +76,7 @@
     <xsl:call-template name="make-back"/>
     <xsl:call-template name="newline1"/>
     <xsl:if
-        test="(@article-type='correction') or (@article-type='retraction') or (@article-type='expression-of-concern')">
+      test="(@article-type='correction') or (@article-type='retraction') or (@article-type='expression-of-concern')">
       <div class="articleinfo">
         <xsl:call-template name="make-article-meta"/>
       </div>
@@ -162,7 +162,7 @@
         <xsl:variable name="at" select="normalize-space(title-group/article-title)"/>
         <!-- add a period unless there's other valid punctuation -->
         <xsl:if
-            test="substring($at,string-length($at))!='?' and substring($at,string-length($at))!='!' and substring($at,string-length($at))!='.'">
+          test="substring($at,string-length($at))!='?' and substring($at,string-length($at))!='!' and substring($at,string-length($at))!='.'">
           <xsl:text>.</xsl:text>
         </xsl:if>
         <xsl:text> </xsl:text>
@@ -475,7 +475,7 @@
     <xsl:apply-templates select="../xref[@ref-type='fn']" mode="metadata-inline"/>
     <!-- if the deceased attribute is set and there isn't already a deceased footnote, output a dagger -->
     <xsl:if
-        test="../@deceased='yes' and not(../xref/sup='‡') and not(../ref/sup='&amp;dagger;') and not(../ref/sup='&amp;Dagger;')">
+      test="../@deceased='yes' and not(../xref/sup='‡') and not(../ref/sup='&amp;dagger;') and not(../ref/sup='&amp;Dagger;')">
       <sup>
         <a href="#deceased">&#x2020;</a>
       </sup>
@@ -1122,7 +1122,7 @@
 
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template
-      match="array | disp-formula-group | fig-group | fn-group | license | long-desc | open-access | sig-block | table-wrap-foot | table-wrap-group"/>
+    match="array | disp-formula-group | fig-group | fn-group | license | long-desc | open-access | sig-block | table-wrap-foot | table-wrap-group"/>
   <xsl:template match="attrib"/>
 
   <!-- 1/4/12: suppress, we don't use (removed fig, table-wrap, and boxed-text here, process them independently) -->
@@ -1144,18 +1144,18 @@
       </xsl:variable>
 
       <xsl:variable name="pptURL">
-        <xsl:value-of select="concat('/article/',$imageURI, '/powerpoint')"/>
+        <xsl:value-of select="concat('article/figure/powerpoint?id=',$imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('/article/',$imageURI,'/largerimage')"/>
+        <xsl:value-of select="concat('article/figure/image?size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
       <xsl:variable name="bigImgDOI">
         <xsl:value-of select="concat($imageURI,'.PNG_L')"/>
       </xsl:variable>
 
       <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('/article/',$imageURI,'/originalimage')"/>
+        <xsl:value-of select="concat('article/figure/image?size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
       <xsl:variable name="origImgDOI">
         <xsl:value-of select="concat($imageURI,'.TIF')"/>
@@ -1178,7 +1178,7 @@
         <xsl:attribute name="id">
           <xsl:value-of select="translate($figId, '.', '-')"/>
         </xsl:attribute>
-        <div class="img">
+        <div class="img-box">
           <xsl:element name="a">
             <!-- 6/13/12: added translate so names and ids have dash (for figure enhancement) -->
             <xsl:attribute name="name">
@@ -1197,19 +1197,20 @@
             <xsl:element name="img">
               <xsl:attribute name="src">
                 <xsl:value-of
-                    select="concat('article/figure/image?size=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+                  select="concat('article/figure/image?size=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>
             </xsl:element>
           </xsl:element>
+          <div class="expand"/>
         </div>
         <!--start figure download-->
         <div class="figure-inline-download">
           Download:
           <ul>
             <li>
-              <div class="icon">
+              <div class="definition-label">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$pptURL"/>
@@ -1225,7 +1226,7 @@
               </xsl:element>
             </li>
             <li>
-              <div class="icon">
+              <div class="definition-label">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$bigImgURL"/>
@@ -1238,17 +1239,18 @@
                   <xsl:value-of select="$bigImgURL"/>
                 </xsl:attribute>
                 larger image
-                (
                 <xsl:element name="span">
-                  <xsl:attribute name="id">
-                    <xsl:value-of select="$bigImgDOI"/>
+                  <xsl:attribute name="class">file-size</xsl:attribute>
+                  <xsl:attribute name="data-size">large</xsl:attribute>
+                  <xsl:attribute name="data-doi">
+                    <xsl:value-of select="$imageURI"/>
                   </xsl:attribute>
+                  ()
                 </xsl:element>
-                )
               </xsl:element>
             </li>
             <li>
-              <div class="icon">
+              <div class="definition-label">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$origImgURL"/>
@@ -1261,34 +1263,37 @@
                   <xsl:value-of select="$origImgURL"/>
                 </xsl:attribute>
                 original image
-                (
                 <xsl:element name="span">
-                  <xsl:attribute name="id">
-                    <xsl:value-of select="$origImgDOI"/>
+                  <xsl:attribute name="class">file-size</xsl:attribute>
+                  <xsl:attribute name="data-size">original</xsl:attribute>
+                  <xsl:attribute name="data-doi">
+                    <xsl:value-of select="$imageURI"/>
                   </xsl:attribute>
+                  ()
                 </xsl:element>
-                )
               </xsl:element>
             </li>
           </ul>
         </div>
         <!--end figure download-->
+        <div class="figcaption">
+
+          <xsl:apply-templates select="label"/>
+          <xsl:if test="caption/title">
+            <xsl:text> </xsl:text>
+
+            <xsl:apply-templates select="caption/title"/>
+
+          </xsl:if>
+
+        </div>
         <p>
-          <strong>
-            <xsl:apply-templates select="label"/>
-            <xsl:if test="caption/title">
-              <xsl:text> </xsl:text>
-              <span>
-                <xsl:apply-templates select="caption/title"/>
-              </span>
-            </xsl:if>
-          </strong>
+          <xsl:apply-templates select="caption/node()[not(self::title)]"/>
         </p>
-        <xsl:apply-templates select="caption/node()[not(self::title)]"/>
         <xsl:if test="object-id[@pub-id-type='doi']">
-          <span>
+          <p>
             <xsl:apply-templates select="object-id[@pub-id-type='doi']"/>
-          </span>
+          </p>
         </xsl:if>
       </div>
     </xsl:if>
@@ -1314,7 +1319,7 @@
           <div class="table">
             <xsl:apply-templates select=".//table"/>
           </div>
-          <p class="caption">
+          <p class="table-caption">
             <xsl:apply-templates select="label"/>
             <xsl:if test="caption/title">
               <xsl:text> </xsl:text>
@@ -1337,19 +1342,20 @@
             </xsl:for-each>
           </xsl:if>
           <div class="table-download">
-            <div class="icon">
+            <div class="definition-label">
               <xsl:attribute name="onclick">
                 return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
               </xsl:attribute>
               CSV
             </div>
-            <a class="label">
+            <a>
               <xsl:attribute name="onclick">
                 return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
               </xsl:attribute>
               Download CSV
             </a>
           </div>
+          <div class="expand"/>
         </div>
       </xsl:if>
     </xsl:if>
@@ -1415,7 +1421,7 @@
         </xsl:variable>
         <xsl:attribute name="src">
           <xsl:value-of
-              select="concat('article/asset?id=',$graphicDOI,'.PNG')"/><!-- TODO: Avoid hard-coding 'PNG' -->
+            select="concat('article/asset?id=',$graphicDOI,'.PNG')"/><!-- TODO: Avoid hard-coding 'PNG' -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -1640,8 +1646,8 @@
     <xsl:apply-templates select="person-group" mode="book"/>
     <xsl:apply-templates select="collab" mode="book"/>
     <xsl:apply-templates
-        select="*[not(self::edition) and not(self::person-group) and not(self::collab) and not(self::comment)] | text()"
-        mode="none"/>
+      select="*[not(self::edition) and not(self::person-group) and not(self::collab) and not(self::comment)] | text()"
+      mode="none"/>
     <xsl:call-template name="citationComment"/>
   </xsl:template>
 
@@ -2058,9 +2064,9 @@
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template match="ref/note" priority="2"/>
   <xsl:template
-      match="app/related-article | app-group/related-article | bio/related-article | body/related-article | boxed-text/related-article | disp-quote/related-article | glossary/related-article | ref-list/related-article | sec/related-article"/>
+    match="app/related-article | app-group/related-article | bio/related-article | body/related-article | boxed-text/related-article | disp-quote/related-article | glossary/related-article | ref-list/related-article | sec/related-article"/>
   <xsl:template
-      match="app/related-object | app-group/related-object | bio/related-object | body/related-object | boxed-text/related-object | disp-quote/related-object | glossary/related-object | ref-list/related-object | sec/related-object"/>
+    match="app/related-object | app-group/related-object | bio/related-object | body/related-object | boxed-text/related-object | disp-quote/related-object | glossary/related-object | ref-list/related-object | sec/related-object"/>
   <xsl:template match="speech"/>
   <!-- 1/4/12: speech/speaker mode speech already suppressed in nlm -->
   <xsl:template match="speech/p" mode="speech"/>
@@ -2483,7 +2489,7 @@
       <xsl:call-template name="author-contrib"/>
       <xsl:apply-templates select="notes"/>
       <xsl:apply-templates
-          select="*[not(self::title) and not(self::fn-group) and not(self::ack) and not(self::notes)]"/>
+        select="*[not(self::title) and not(self::fn-group) and not(self::ack) and not(self::notes)]"/>
       <xsl:call-template name="newline1"/>
       <xsl:for-each select="//abstract[@abstract-type='patient']">
         <div class="patient toc-section">
@@ -2712,7 +2718,7 @@
   <!-- 1/4/12: Ambra-specific template (prevents double punctuation if xml contains valid punctuation already) -->
   <xsl:template name="punctuation">
     <xsl:if
-        test="not(ends-with(normalize-space(),'.')) and not(ends-with(normalize-space(),'?')) and not(ends-with(normalize-space(),'!'))">
+      test="not(ends-with(normalize-space(),'.')) and not(ends-with(normalize-space(),'?')) and not(ends-with(normalize-space(),'!'))">
       <xsl:text>.</xsl:text>
     </xsl:if>
   </xsl:template>

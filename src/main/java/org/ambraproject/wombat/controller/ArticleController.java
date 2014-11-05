@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
@@ -101,6 +102,8 @@ public class ArticleController extends WombatController {
     model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetadata));
+    model.addAttribute("collectionIssues", getCollectionIssues(articleMetadata, site));
+
     addCrossPublishedJournals(request, model, site, articleMetadata);
     requestAuthors(model, articleId);
     requestComments(model, articleId);
@@ -161,6 +164,38 @@ public class ArticleController extends WombatController {
           }
         }
     );
+  }
+
+  /**
+   * filter a map of article issues (containing associated journal and volume info), only keeping issues published in
+   * journals identified as a collection
+   * @param articleMetadata
+   * @param site
+   * @return
+   */
+  private Map<?, ?> getCollectionIssues(Map<?, ?> articleMetadata, final Site site) {
+
+    Predicate<Map.Entry<String,Map<String, Object>>> collectionsJournalFilter = new Predicate<Map.Entry<String,Map<String, Object>>>() {
+      public boolean apply(Map.Entry<String,Map<String, Object>> entry) {
+        Map<String, String> parentJournal = ((Map<String, String>) entry.getValue().get("parentJournal"));
+        if (parentJournal != null) {
+          String journalKey = parentJournal.get("journalKey");
+          if (journalKey != null){
+            Site publishedSite;
+            try {
+              publishedSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
+              return (boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection");
+            } catch (Exception e) {
+              return false;
+            }
+          }
+        }
+        return false;
+      }
+    };
+
+    Map<String, Map<String, Object>> articleIssues = (Map<String, Map<String, Object>>)articleMetadata.get("issues");
+    return Maps.filterEntries(articleIssues, collectionsJournalFilter);
   }
 
   /**

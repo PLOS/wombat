@@ -34,4 +34,36 @@
 
   addMediaCoverageLink();
 
+  function formatHumanReadableByteSize(bytes) {
+    // Space before "Bytes". All others are concatenated to number with no space.
+    var units = [' Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+
+    var increment = 1000; // could change to 1024
+    var roundingThreshold = units.indexOf('MB'); // for smaller units than this, show integers
+    var precision = 100; // round to this precision if unit is >= roundingThreshold
+
+    var n = bytes;
+    var unitIndex = 0;
+    for (; unitIndex < units.length; unitIndex++) {
+      if (n >= increment) {
+        n /= increment;
+      } else break;
+    }
+
+    n = (unitIndex < roundingThreshold) ? Math.round(n) : Math.round(n * precision) / precision;
+
+    return n + units[unitIndex];
+  }
+
+  // Will be invoked directly from article HTML, where the templating engine will inject the fileSizeTable data.
+  $.fn.populateFileSizes = function (fileSizeTable) {
+    $('.file-size').each(function (index, element) {
+      var $el = $(element);
+      var doi = $el.attr('data-doi');
+      var fileSize = $el.attr('data-size');
+      var size = fileSizeTable[ doi][ fileSize];
+      $el.text('(' + formatHumanReadableByteSize(size) + ')');
+    });
+  };
+
 })(jQuery);

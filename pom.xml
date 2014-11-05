@@ -6,7 +6,7 @@
   <artifactId>wombat</artifactId>
   <name>wombat</name>
   <packaging>war</packaging>
-  <version>1.1.7</version>
+  <version>1.1.8</version>
   <url>https://github.com/PLOS/wombat</url>
   <scm>
     <connection>scm:git:git@github.com:PLOS/wombat.git</connection>
@@ -97,6 +97,11 @@
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
       <version>1.7.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-scratchpad</artifactId>
+      <version>3.8</version>
     </dependency>
 
     <!-- Spring -->

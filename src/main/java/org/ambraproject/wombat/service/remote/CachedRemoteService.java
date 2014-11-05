@@ -135,7 +135,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    */
   private <T> CachedObject<T> getCachedObject(String cacheKey) {
     try {
-      log.debug("Accessing cache using key: %s", cacheKey);
+      log.error("Accessing cache using key: %s", cacheKey);
       return cache.get(Preconditions.checkNotNull(cacheKey));
     } catch (Exception e) {
       // Unexpected, but to degrade gracefully, treat it the same as a cache miss

@@ -107,6 +107,7 @@ $line-height-small: ($line-height * .5);
       margin-bottom: $line-height;
       margin-top: $line-height-small;
     }
+
   }
 
   .articleinfo {
@@ -159,14 +160,14 @@ $line-height-small: ($line-height * .5);
     h2 {
       margin-top: 0;
     }
+    .link-separator::after{
+      content: '| ';
+      color: $clr-body-text;
+      font-weight: normal;
+    }
     .amendment-link,
     .amendment-date{
       font-weight: bold;
-    }
-    .amendment-link{
-      .link-separator::after{
-
-      }
     }
   }
 

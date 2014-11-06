@@ -67,14 +67,14 @@
   };
 
   $('.table-download').on('click', function(){
-    var table = $(this).parent();
-    var figId = $(this).data('tableopen');
+    var table = $(this).parent(),
+    figId = $(this).data('tableopen');
     return tableOpen(figId, "CSV", table);
   });
 
   $('.table-wrap .expand').on('click', function(){
-    var table = $(this).parent();
-    var figId = $(this).data('tableopen');
+    var table = $(this).parent(),
+    figId = $(this).data('tableopen');
     return tableOpen(figId, "HTML", table);
   });
 })(jQuery);

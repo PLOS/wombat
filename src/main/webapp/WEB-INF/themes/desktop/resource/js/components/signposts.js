@@ -1,7 +1,7 @@
 
 (function ($) {
   $.fn.signposts = function (doi) {
-    var errorText, tooSoonText, initData, issued, compareDate, todaysDate,
+    var errorText, tooSoonText, initData, issued, date_check, compareDate, isThree, plural_check, isPlural,
       views, saves, shares, citations, listBody;
 
     function validateDOI(doi) {
@@ -14,12 +14,36 @@
       return doi.replace(new RegExp('/', 'g'), '%2F').replace(new RegExp(':', 'g'), '%3A');
     }
 
-      function formatNumberComma(num) {
-        var fixNum = num.toString()
-        fixNum = fixNum.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        return fixNum;
-      };
+    function formatNumberComma(num) {
+      var fixNum = num.toString()
+      fixNum = fixNum.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return fixNum;
+    };
 
+    Date.prototype.addDays = function (days) {
+      this.setDate(this.getDate() + days);
+      return this;
+    };
+
+    date_check = function (input, numDays) {
+      var inputDate = new Date(input);
+      var dateWeek = new Date().addDays(numDays);
+      console.log(inputDate, dateWeek);
+      if (inputDate < dateWeek) {
+        return false;
+
+      } else {
+        // The selected time is more than numDays days from now
+        return true;
+      }
+    }
+    plural_check = function(input){
+      if (input === 1){
+        return false;
+      } else {
+        +'s';
+      }
+    }
 
     this.getSignpostData = function (doi) {
       doi = validateDOI(doi);
@@ -29,8 +53,7 @@
 
       requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail';
       console.log(requestUrl);
-      errorText = '<li class="alm-error">Article metrics are unavailable at this time. Please try again later.</li>';
-
+      errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
 
       $.ajax({
         url: requestUrl,
@@ -40,18 +63,16 @@
       }).done(function (data) {
         initData = data.data[0];
 
-
         if (initData === undefined) {
           $('#almSignposts').append(errorText);
 
-        } else {
+        } else { // is date less than 3 days ago
           issued = data.data[0].issued["date-parts"];
           compareDate = new Date(issued);
-          todaysDate = new Date();
-console.log(todaysDate.getDate() - 3);
-          console.log(compareDate.getDate());
-          if (todaysDate - compareDate < 4) {
-            tooSoonText = '<li></li><li></li><li class="too-soon">Article metrics are unavailable up to 3 days after publication</li>';
+          isThree = date_check(compareDate, 3);
+
+          if (isThree === true) {
+            tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to 3 days after publication</li>';
             $('#almSignposts').append(tooSoonText);
 
           } else {
@@ -61,10 +82,13 @@ console.log(todaysDate.getDate() - 3);
             shares = formatNumberComma(data.data[0].discussed);
             citations = formatNumberComma(data.data[0].cited);
 
-            listBody = '<li>' + saves + '<span>Saves</span></li>' +
+
+            $('#almViews').append(views)
+           /* listBody = '<li>' + saves + '<span>Saves</span></li>' +
               '<li>' + citations + '<span>Citations</span></li>' +
               '<li>' + views + '<span>Views</span></li>' +
-              '<li>' + shares + '<span>Shares</span></li>';
+              '<li>' + shares + '<span>Shares</span></li>';*/
+            $('#loadingMetrics').css('display','none');
             $('#almSignposts').append(listBody);
 
           }

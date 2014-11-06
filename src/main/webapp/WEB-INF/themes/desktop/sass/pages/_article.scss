@@ -93,45 +93,68 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.article-meta .signposts {
-  @include plos-grid-column(160, $gutter: none);
-  @extend .inline-list;
-  margin: $pad-default 0;
-  float: right;
-  text-align: center;
-  height: 159px;
+.article-meta {
 
-  .unavailable {
-    color: $grey-med-dark;
-    background: $grey-light;
-    font-size: $txt-size-xsmall;
-  }
 
-  li {
-    @extend %brand-shading-variation;
-    float: left;
-    border-bottom: 1px solid $white;
-    padding: $pad-default $pad-xsmall;
-    vertical-align: middle;
+  .signposts {
+    @include plos-grid-column(160, $gutter: none);
+    @extend .inline-list;
+    margin: $pad-default 0 0;
+    float: right;
     text-align: center;
-    margin: 0;
-    font-weight: bold;
-    font-size: $txt-size-medium-large;
-    color: $grey-dark;
-    width: 80px;
-    height: 80px;
+    height: 159px;
 
-    span {
+    li {
+      @extend %brand-shading-variation;
+      float: left;
+      border-right: 1px solid $white;
+      border-bottom: 1px solid $white;
+      padding: $pad-default $pad-xsmall;
+      vertical-align: middle;
+      text-align: center;
+      margin: 0;
+      font-weight: bold;
+      font-size: $txt-size-medium-large;
+      color: $grey-dark;
+      width: 80px;
+      height: 80px;
+
+      span {
+        font-size: $txt-size-xsmall;
+        line-height: $txt-size-medium;
+      }
+      &.noshow {
+        display: none;
+      }
+    }
+    .unavailable {
+      width: 160px;
+      border-right: 0;
+      border-bottom: 0;
       font-size: $txt-size-xsmall;
-      line-height: $txt-size-medium;
+      font-weight: normal;
+      text-align: right;
+      color: $grey-med-dark;
+    }
+    #loadingMetrics {
+      @extend .unavailable;
+      height: 160px;
+      font-size: $txt-size-medium-large;
+      text-align: center;
+      padding-top: 50px;
+    }
+    #tooSoon {
+      @extend .unavailable;
+      padding: 25px 10px 10px 30px;
+    }
+    #metricsError {
+      @extend .unavailable;
+      padding: 105px 10px 10px 20px;
+      background: $grey-light;
+      height: 160px;
     }
   }
-
-  li:first-child, li:nth-child(3){
-    border-right: 1px solid $white;
-  }
 }
-
 .article-title-etc {
   @include plos-grid-column(755, $gutter: none);
   margin-top: $pad-small;

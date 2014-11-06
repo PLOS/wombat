@@ -197,13 +197,13 @@ example | extension
     }
   }
   %brand-shading-variation {
-    &:first-child {
+    &:first-child, &:nth-child(2) {
       background-color: hsl($sethue, 54%, 80%);
     }
-    &:nth-child(2) {
+    &:nth-child(3) {
       background-color: hsl($sethue, 56%, 74%);
     }
-    &:nth-child(3) {
+    &:nth-child(4) {
       background-color: hsl($sethue, 31%, 84%);
     }
     &:last-child {
@@ -230,13 +230,13 @@ example | extension
   @include brandcolor($plos-one);
   .article-meta .signposts {
     li {
-      &:first-child {
+      &:first-child,&:nth-child(2) {
         background-color: #fcd5a3;
       }
-      &:nth-child(2) {
+      &:nth-child(3) {
         background-color: #fbe989;
       }
-      &:nth-child(3) {
+      &:nth-child(4) {
         background-color: #fadfbe;
       }
       &:last-child {

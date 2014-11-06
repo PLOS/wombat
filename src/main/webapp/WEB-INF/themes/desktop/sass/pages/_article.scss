@@ -93,11 +93,10 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.signposts {
-  //TEMPORARY STYLES
+.article-meta .signposts {
   @include plos-grid-column(160, $gutter: none);
   @extend .inline-list;
-  margin: $pad-default 0 0;
+  margin: $pad-default 0;
   float: right;
   text-align: center;
   height: 159px;
@@ -112,16 +111,19 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     @extend %brand-shading-variation;
     float: left;
     border-bottom: 1px solid $white;
-    padding: $pad-small $pad-default;
+    padding: $pad-default $pad-xsmall;
+    vertical-align: middle;
+    text-align: center;
     margin: 0;
     font-weight: bold;
-    font-size: $txt-size-xsmall;
+    font-size: $txt-size-medium-large;
     color: $grey-dark;
     width: 80px;
     height: 80px;
 
     span {
-      font-size: $txt-size-medium-large;
+      font-size: $txt-size-xsmall;
+      line-height: $txt-size-medium;
     }
   }
 

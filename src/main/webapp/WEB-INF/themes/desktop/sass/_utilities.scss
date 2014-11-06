@@ -224,6 +224,22 @@ example | extension
 }
 .plosone {
   @include brandcolor($plos-one, $plos-one-hue);
+  .article-meta .signposts {
+    li {
+      &:first-child {
+        background-color: #fcd5a3;
+      }
+      &:nth-child(2) {
+        background-color: #fbe989;
+      }
+      &:nth-child(3) {
+        background-color: #fadfbe;
+      }
+      &:last-child {
+        background-color: #fcd5a3;
+      }
+    }
+  }
 }
 
 //////////////

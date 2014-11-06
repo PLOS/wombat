@@ -11,14 +11,14 @@
 <#include "../common/head.ftl" />
 
 <#include "../common/journalStyle.ftl" />
-<body class="article plosone">
+<body class="article ${journalStyle}">
 
 <#include "../common/header/header.ftl" />
 <div class="set-grid">
   <header class="title-block">
     <div class="article-meta">
     <#include "articleClassifications.ftl" />
-    <#include "almSignposts.ftl" />
+    <#include "signposts.ftl" />
     </div>
     <div class="article-title-etc">
     <#include "articleTitle.ftl" />
@@ -87,7 +87,7 @@
   <@js src="resource/js/util/alm_query.js"/>
 
   <@js src="resource/js/components/twitter_module.js"/>
-
+  <@js src="resource/js/components/signposts.js"/>
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>

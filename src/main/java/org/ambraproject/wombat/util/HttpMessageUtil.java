@@ -1,20 +1,16 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Lists;
-import com.google.common.net.HttpHeaders;
-import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.*;
-import org.apache.http.client.methods.*;
-import org.apache.http.entity.InputStreamEntity;
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -24,8 +20,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
-import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Set;
 
 /**
  * A utility class for creation and management of HTTP messages
@@ -56,7 +55,7 @@ public class HttpMessageUtil {
    * @param headerFilter describes whether and how to copy headers
    * @throws IOException
    */
-  public static void copyResponseWithHeaders(CloseableHttpResponse responseFrom, HttpServletResponse responseTo,
+  public static void copyResponseWithHeaders(HttpResponse responseFrom, HttpServletResponse responseTo,
                                              HeaderFilter headerFilter)
       throws IOException {
     for (Header header : responseFrom.getAllHeaders()) {
@@ -74,7 +73,7 @@ public class HttpMessageUtil {
    * @param responseTo
    * @throws IOException
    */
-  public static void copyResponse(CloseableHttpResponse responseFrom, HttpServletResponse responseTo)
+  public static void copyResponse(HttpResponse responseFrom, HttpServletResponse responseTo)
           throws IOException {
 
     try (InputStream streamFromService = responseFrom.getEntity().getContent();

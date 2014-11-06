@@ -49,12 +49,10 @@
         type: "GET"
       }).done(function (data){
         initData = data.data[0];
-
-        totalTweets = data.data[0].sources[0].metrics.total;
-
-        if (totalTweets === 0) {
-
+        if (initData.sources === undefined) {
+           //do nothing
         } else {
+          totalTweets = data.data[0].sources[0].metrics.total;
           minDisplayTweets = 2;
           maxDisplayTweets = 5;
           dataSort = initData.sources[0].events;

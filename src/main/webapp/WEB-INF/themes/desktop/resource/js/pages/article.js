@@ -129,9 +129,7 @@
     // initialize tooltip_hover for everything
     tooltip_hover.init();
 
+
   });
 
 }(jQuery));
-
-
-

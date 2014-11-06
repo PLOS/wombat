@@ -85,7 +85,6 @@
   <@js src="resource/js/components/table_open.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
-
   <@js src="resource/js/components/twitter_module.js"/>
   <@js src="resource/js/components/signposts.js"/>
   <@js src="resource/js/pages/article.js"/>
@@ -94,9 +93,9 @@
   <@renderJs />
 
   <script type="text/javascript">  /*filesizetable*/
-    (function ($) {
+   (function ($) {
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
-    })(jQuery);
+   })(jQuery);
   </script>
 
   <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>

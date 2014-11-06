@@ -155,12 +155,14 @@ example | extension
   %brand-color {
     color: $setcolor;
   }
+
   %brand-border {
     border-color: $setcolor;
   }
   %brand-background {
     background-color: $setcolor;
   }
+
   %brand-background-hover {
     background-color: $setcolor;
     &:hover {
@@ -222,8 +224,10 @@ example | extension
 .ploscollections, .plosclinicaltrials {
   @include brandcolor($plos-default, $plos-default-hue);
 }
+
 .plosone {
-  @include brandcolor($plos-one, $plos-one-hue);
+
+  @include brandcolor($plos-one);
   .article-meta .signposts {
     li {
       &:first-child {
@@ -240,7 +244,18 @@ example | extension
       }
     }
   }
-}
+    .article-content .table-download .definition-label {
+      color: $grey-dark;
+    }
+    .article-content .figure-inline-download ul li .definition-label a {
+      color: $grey-dark;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
 
 //////////////
 // layout utilities

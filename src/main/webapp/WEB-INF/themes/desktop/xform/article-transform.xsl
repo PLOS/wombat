@@ -1312,8 +1312,8 @@
             </xsl:attribute>
           </a>
           <div class="expand">
-            <xsl:attribute name="onclick">
-              return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "HTML");
+            <xsl:attribute name="data-tableopen">
+              <xsl:value-of select="$figId"/>
             </xsl:attribute>
           </div>
           <div class="table">
@@ -1342,20 +1342,17 @@
             </xsl:for-each>
           </xsl:if>
           <div class="table-download">
+            <xsl:attribute name="data-tableopen">
+              <xsl:value-of select="$figId"/>
+            </xsl:attribute>
             <div class="definition-label">
-              <xsl:attribute name="onclick">
-                return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
-              </xsl:attribute>
               CSV
             </div>
-            <a>
-              <xsl:attribute name="onclick">
-                return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
-              </xsl:attribute>
+            <span>
               Download CSV
-            </a>
+            </span>
           </div>
-          <div class="expand"/>
+
         </div>
       </xsl:if>
     </xsl:if>
@@ -2418,12 +2415,12 @@
       <xsl:apply-templates/>
     </a>
   </xsl:template>
-
+  <!-- ************ removed the <strong> tags from below 11/4/2014 ********************-->
   <!-- 1/4/12: Ambra modifications (transform to <strong> instead of <b>) -->
   <xsl:template match="bold">
-    <strong>
+
       <xsl:apply-templates/>
-    </strong>
+
   </xsl:template>
 
   <!-- 1/4/12: Ambra modifications (transform to <em> instead of <i>) -->

@@ -374,7 +374,13 @@ $icn-tiny-align: middle;
 .icon-correction {
   @include icon-image($icn-tiny-width, 15, 'icon.correction.png', $align: $icn-tiny-align );
 }
-
+.icon-expand {
+  @include icon-image(25, 25, 'icon.sprite.expand.png', 0 0, middle);
+  &:hover {
+    background-position: 0 -25px;
+    cursor: pointer;
+  }
+}
 
 
 .closer {
@@ -388,7 +394,13 @@ $icn-tiny-align: middle;
   @extend %brand-background;
   border-radius: $border-radius-small;
 }
-
+.action-label {
+  display:inline-block;
+  float: left;
+  margin-right: rem-calc(4);
+  @extend %brand-background;
+  border-radius: $border-radius-smaller;
+}
 // for one-line truncates 
 @mixin truncated ($width: 100%) {
   width: $width;

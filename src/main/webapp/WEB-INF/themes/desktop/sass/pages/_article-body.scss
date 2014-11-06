@@ -43,6 +43,10 @@ $line-height-small: ($line-height * .5);
     margin-bottom: $line-height;
   }
 
+  a {
+    @extend %link-text-default;
+  }
+
   p, li {
     margin-bottom: $txt-size-default;
     line-height: $line-height;
@@ -70,14 +74,20 @@ $line-height-small: ($line-height * .5);
     margin-top: $line-height-med;
     line-height: normal;
   }
+
   h2 {
     font-size: $txt-size-large;
     margin-bottom: $line-height;
     font-weight: bold;
   }
+
   h3, h4 {
     font-size: $txt-size-medium-large;
     margin-top: $line-height-small
+  }
+
+  h3 {
+    font-weight: bold;
   }
   h4 {
     font-weight: normal
@@ -88,7 +98,7 @@ $line-height-small: ($line-height * .5);
     margin: $line-height-med 0 $line-height 0;
 
   }
-  //NOTE: if we want to have only the first thing marked "abstract" to have this styling  change the below line to:  .abstract:first-child {
+
   .abstract {
     h2 {
       font-family: $font-face-fancy;
@@ -108,11 +118,39 @@ $line-height-small: ($line-height * .5);
       border-top: 1px solid $clr-separator;
       padding: $line-height-small $pad-default;
       &:first-child {
-        border-top: 0px none;
+        border-top: 0 none;
       }
 
     }
   }
+
+
+  .amendment {
+    margin-bottom: $line-height-med;
+
+    h2 {
+      margin-top: 0;
+
+      &:before {
+        // for icons
+        margin-right: $pad-xsmall;
+        vertical-align: baseline;
+        line-height: inherit;
+      }
+    }
+
+    .link-separator::after{
+      content: '| ';
+      color: $clr-body-text;
+      font-weight: normal;
+    }
+    
+    .amendment-link,
+    .amendment-date{
+      font-weight: bold;
+    }
+  }
+
   .amendment-eoc, .amendment-retraction {
     @extend .callout-alert;
     h2 {
@@ -121,10 +159,8 @@ $line-height-small: ($line-height * .5);
       &:before {
         //TODO - make this a mixin? do we adjust line-height on all icons?
         @extend .icon-alert;
-        font-size: $txt-size-medium;
-        padding-right: $pad-xsmall;
-        vertical-align: top;
-        line-height: $line-height;
+        font-size: $txt-size-medium-large;
+
       }
     }
   }
@@ -136,31 +172,8 @@ $line-height-small: ($line-height * .5);
       &:before {
         content: '';
         @extend .icon-correction;
-        margin-right: $pad-xsmall;
-        vertical-align: top;
-        line-height: $line-height;
+
       }
-    }
-  }
-
-  .amendment {
-    margin-bottom: $line-height-med;
-
-    h2 {
-      margin-top: 0;
-    }
-
-    .amendment-link {
-      font-weight: bold;
-      &:before {
-        content: '| ';
-        color: $clr-body-text;
-        font-weight: normal;
-      }
-    }
-
-    .amendment-date {
-      font-weight: bold;
     }
   }
 
@@ -289,7 +302,7 @@ $line-height-small: ($line-height * .5);
 .article-content .figure {
   font-family: $font-face-plain;
   background: $grey-light;
-  padding: 18px $pad-default $pad-smallish;
+  padding: $line-height $pad-default $pad-smallish;
 
   .img-box {
     display: table-cell;
@@ -300,78 +313,181 @@ $line-height-small: ($line-height * .5);
     position: relative;
 
     .expand {
-      background: image-url('icon.sprite.expand.png') no-repeat 0 0;
-      width: 25px;
-      height: 25px;
+      @extend .icon-expand;
       position: absolute;
       top: -8px;
       right: -8px;
 
       &:hover {
         background-position: 0 -25px;
-        cursor: pointer;
       }
     }
   }
 
-  .figure-inline-download {
-    display: table-cell;
-    font-size: $txt-size-xsmall;
-    vertical-align: top;
-    padding-top: $pad-medium;
-    padding-left: $pad-xsmall;
-    width: rem-calc(190);
-
-    ul {
-
-      margin: $pad-xsmall 0 0 $pad-xsmall;
-      padding-left: 0;
-
-
-      li {
-        &:before {
-          content: "";
-        }
-        @include clearfix;
-        padding: 8px 0 0;
-        line-height: 15px;
-        width: rem-calc(165);
-
-        .def {
-          display:inline-block;
-          float: left;
-          margin-right: 4px;
-          @extend %brand-background;
-          border-radius: 2px;
-
-          a {
-            width: $pad-medium;
-            text-align: center;
-            color: $white;
-            font-size: $txt-size-xxxxsmall;
-          }
-        }
-
-        a {
-          display: inline-block;
-          float: left;
-          @extend %link-text-default;
-          font-size: $txt-size-xsmall;
-        }
-      }
-    }
+  .figcaption {
+    margin-top: $pad-small;
+    margin-bottom: 0;
+    line-height: $line-height;
+    font-weight: bold;
+    font-size: $txt-size-small;
   }
-    .figcaption {
-      margin-top: $pad-small;
-      margin-bottom: 0;
-      line-height: 18px;
-      font-weight: bold;
-      font-size: $txt-size-small;
-    }
     p {
       margin: 0;
     }
   }
+
+
+.article-content .figure-inline-download {
+  display: table-cell;
+  font-size: $txt-size-xsmall;
+  vertical-align: top;
+  padding-top: $pad-medium;
+  padding-left: $pad-xsmall;
+  width: rem-calc(190);
+
+  ul {
+
+    margin: $pad-xsmall 0 0 $pad-xsmall;
+    padding-left: 0;
+
+    li {
+      &:before {
+        content: "";
+      }
+      @include clearfix;
+      padding: rem-calc(8) 0 0;
+      line-height: 15px;
+      width: rem-calc(165);
+
+      .definition-label {
+        @extend .action-label;
+
+        a {
+          width: $pad-medium;
+          text-align: center;
+          color: $white;
+          font-size: $txt-size-xxxxsmall;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      a {
+        display: inline-block;
+        float: left;
+        @extend %link-text-default;
+        font-size: $txt-size-xsmall;
+      }
+    }
+  }
+}
+
+.table-wrap {
+  margin-top: $pad-medium;
+  position: relative;
+  font-family: $font-face-plain;  //for table expand link
+
+  div, p {
+    margin: 0 0 8px;
+  }
+
+  table {
+    margin: 0;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.333;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    td {
+      padding: rem-calc(2);
+      color: #666;
+      border: 1px solid $grey-med-light;
+    }
+
+    th {
+      border: 1px solid $grey-med-light;
+      padding: 8px $line-height;
+      background: #efefef;
+      text-align: left;
+    }
+
+    thead tr:first-child {
+      background-color: $table-header-bg;
+      font-weight: bold;
+    }
+
+    thead tr:first-child td {
+      color: $white;
+    }
+
+    tbody tr td:first-child {
+      font-weight: bold;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: $white;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: $grey-light;
+    }
+  }
+
+  .table {
+    max-height: 550px;
+    overflow: auto;
+    border: solid 1px $grey-light;
+  }
+
+  .table-caption {
+    line-height: $line-height;
+    font-weight: bold;
+    font-size: $txt-size-small;
+  }
+
+  .table-footnote {
+    margin-bottom: 0;
+    font-size: $pad-small;
+    line-height: rem-calc(14);
+
+    .fn-label {
+      vertical-align: super;
+      font-size: $txt-size-xxxsmall;
+    }
+  }
+
+  .expand {
+    @extend .icon-expand;
+    position: absolute;
+    top: -$pad-medium;
+    right: 0;
+  }
+}
+
+.article-content .table-download {
+  display: block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 125px;
+
+  .definition-label {
+    @extend .action-label;
+    width: $pad-medium;
+    text-align: center;
+    color: $white;
+    font-size: $txt-size-xxxxsmall;
+    line-height: $line-height;
+  }
+
+  span {
+    @extend %link-text-default;
+    font-size: $txt-size-small;
+
+  }
+}
 
 
 @media print {

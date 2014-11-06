@@ -1213,7 +1213,7 @@
           Download:
           <ul>
             <li>
-              <div class="def">
+              <div class="definition-label">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$pptURL"/>
@@ -1229,7 +1229,7 @@
               </xsl:element>
             </li>
             <li>
-              <div class="def">
+              <div class="definition-label">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$bigImgURL"/>
@@ -1253,7 +1253,7 @@
               </xsl:element>
             </li>
             <li>
-              <div class="def">
+              <div class="definition-label">
                 <xsl:element name="a">
                   <xsl:attribute name="href">
                     <xsl:value-of select="$origImgURL"/>
@@ -1315,14 +1315,14 @@
             </xsl:attribute>
           </a>
           <div class="expand">
-            <xsl:attribute name="onclick">
-              return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "HTML");
+            <xsl:attribute name="data-tableopen">
+              <xsl:value-of select="$figId"/>
             </xsl:attribute>
           </div>
           <div class="table">
             <xsl:apply-templates select=".//table"/>
           </div>
-          <p class="caption">
+          <p class="table-caption">
             <xsl:apply-templates select="label"/>
             <xsl:if test="caption/title">
               <xsl:text> </xsl:text>
@@ -1345,19 +1345,17 @@
             </xsl:for-each>
           </xsl:if>
           <div class="table-download">
-            <div class="icon">
-              <xsl:attribute name="onclick">
-                return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
-              </xsl:attribute>
+            <xsl:attribute name="data-tableopen">
+              <xsl:value-of select="$figId"/>
+            </xsl:attribute>
+            <div class="definition-label">
               CSV
             </div>
-            <a class="label">
-              <xsl:attribute name="onclick">
-                return tableOpen(<xsl:value-of select="concat($apos, $figId, $apos)"/>, "CSV");
-              </xsl:attribute>
+            <span>
               Download CSV
-            </a>
+            </span>
           </div>
+
         </div>
       </xsl:if>
     </xsl:if>
@@ -2420,12 +2418,12 @@
       <xsl:apply-templates/>
     </a>
   </xsl:template>
-
+  <!-- ************ removed the <strong> tags from below 11/4/2014 ********************-->
   <!-- 1/4/12: Ambra modifications (transform to <strong> instead of <b>) -->
   <xsl:template match="bold">
-    <strong>
+
       <xsl:apply-templates/>
-    </strong>
+
   </xsl:template>
 
   <!-- 1/4/12: Ambra modifications (transform to <em> instead of <i>) -->

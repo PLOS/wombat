@@ -30,6 +30,7 @@
       }
 
       var hilite = function () {
+        win_top = $win.scrollTop();
         (options.sections).each(function () {
           this_sec = $(this);
           if (win_top > (this_sec.offset().top - options.margin)) {
@@ -50,8 +51,9 @@
             view_height = ((el_h + options.margin + bnr_h) < $win.height()), //the viewport is tall enough-
             el_overlap = (win_top < (ftr_top - (el_h + options.margin))), //the element is not overlapping the footer
             view_width = ($win.width() >= 960); //the viewport is wide enough
+        if (view_height && view_width ) {
 
-        if (el_view_out && view_height && el_overlap && view_width) {
+        if (el_view_out && el_overlap) {
 
           $this.css({ 'position': 'fixed', 'top': options.margin + 'px' });
           hilite();
@@ -65,11 +67,23 @@
           //We're above the article
           $this.css({ 'position': 'static'});
         }
+        } else {
+          $this.css({ 'position': 'static'});
+          hilite();
+        }
       }
 
-      positionEl();
-      $win.scroll(positionEl);
-      $win.resize(positionEl);
+      if ($('html.no-touch').length === 1){ // it is not a touch screen
+        positionEl();
+        $win.scroll(positionEl);
+        $win.resize(positionEl);
+      } else {
+      // it is a touch screen only use hilite
+        hilite();
+        $win.scroll(hilite);
+      }
+
+
     });
   };
 })(jQuery);

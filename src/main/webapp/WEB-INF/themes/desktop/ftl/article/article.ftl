@@ -13,8 +13,6 @@
 <#include "../common/journalStyle.ftl" />
 <body class="article ${journalStyle}">
 
-<input type="hidden" id="rawPubDate" value="${article.date}"/>
-
 <#include "../common/header/header.ftl" />
 <div class="set-grid">
   <header class="title-block">
@@ -28,7 +26,7 @@
     <#include "articleTitle.ftl" />
 
       <ul class="date-doi">
-        <li id="artPubDate">Published:</li>
+        <li id="artPubDate">Published: <@formatJsonDate date="${article.date}" format="MMMM d, yyyy" /></li>
         <li id="artDoi">DOI: ${article.doi} </li>
 
       <#macro crossPubTitle pub>
@@ -86,14 +84,12 @@
   </div>
   <#include "../common/footer/footer.ftl" />
 
-  <@js src="resource/js/components/dateparse.js"/>
   <@js src="resource/js/components/show_onscroll.js"/>
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
-
+  <@js src="resource/js/components/table_open.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
-
   <@js src="resource/js/components/twitter_module.js"/>
 
   <@js src="resource/js/pages/article.js"/>
@@ -102,9 +98,9 @@
   <@renderJs />
 
   <script type="text/javascript">  /*filesizetable*/
-    (function ($) {
+   (function ($) {
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
-    })(jQuery);
+   })(jQuery);
   </script>
 
   <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>

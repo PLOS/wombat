@@ -6,30 +6,15 @@
 
 (function ($) {
 
-  var s, parse_xml_date, float_header, is_author_list, check_authors_truncation;
-
-   parse_xml_date = {
-    settings : {
-      raw_date : document.getElementById("rawPubDate").value
-    },
-
-    init : function () {
-      s = this.settings;
-      this.article_pub_date();
-    },
-
-    article_pub_date : function () {
-      var article_pub_date = dateParse(s.raw_date, true, false, "en-US");
-      $("#artPubDate").append(article_pub_date);
-    }
-  };
+  var s, float_header, is_author_list, check_authors_truncation;
 
   float_header = {
 
     settings : {
-      floater : $("#floatTitleTop"),
-      hidden_div : "topVisible",
+      floater : $('#floatTitleTop'),
+      hidden_div : 'topVisible',
       scroll_trigger : 420,
+      width_trigger : 960,
       div_exists : 1
     },
 
@@ -38,6 +23,7 @@
       this.scroll_it();
       this.close_floater();
       this.get_width();
+      this.check_positions();
     },
 
     check_div : function () {
@@ -45,28 +31,39 @@
       return s.div_exists;
     },
 
-    scroll_it :  function () {
-      if (this.check_div() > 0) {
-        if ($(window).width() > 960) {
-          return $(window).on('scroll', function () {
-            //show_onscroll is in resource/js/components/
-            show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
-          });
-        }
+    check_positions : function () {
+      var trigger_header = $(window).scrollTop();
+      var new_width = $(window).width();
+      if (trigger_header > s.scroll_trigger && new_width > s.width_trigger) {
+        return s.floater.addClass(s.hidden_div);
       }
     },
+
+    scroll_it :  function () {
+      if (this.check_div() > 0) {
+          return $(window).on('scroll', function () {
+            var new_width = $(window).width();
+            if (new_width > s.width_trigger) {
+            show_onscroll(s.floater, s.hidden_div, s.scroll_trigger);
+            }
+          });
+      }
+    },
+
     get_width : function(){
       if (this.check_div() > 0) {
         $(window).resize(function () {
           var new_width = $(window).width();
+          var trigger_header = $(window).scrollTop();
           if (new_width < 960) {
             $(s.floater).removeClass(s.hidden_div);
-          } else if (new_width > 960) {
-            $(s.floater).addClass(s.hidden_div);
+          } else if (trigger_header > s.scroll_trigger && new_width > s.width_trigger) {
+              $(s.floater).addClass(s.hidden_div);
           }
         });
       }
     },
+
     close_floater : function () {
       s.floater.find('.logo-close').on('click', function () {
         s.floater.remove();
@@ -78,7 +75,7 @@
   check_authors_truncation = {
 
     settings : {
-      toTruncate : $("#floatAuthorList")
+      toTruncate : $('#floatAuthorList')
     },
 
     init : function () {
@@ -102,38 +99,33 @@
 
   $( document ).ready(function() {
 
-    $(".preventDefault").on('click', function (e) {
+    $('.preventDefault').on('click', function (e) {
       e.preventDefault();
 
     });
 
-    parse_xml_date.init();
-
-    is_author_list = document.getElementById("floatAuthorList");
+    is_author_list = document.getElementById('floatAuthorList');
     if ( is_author_list != null) {
       check_authors_truncation.init();
       // initialize tooltip for author info
       plos_tooltip.init();
     }
 
-
     float_header.init();
 
     if ($.fn.twitter ) {
-      var doi = $('meta[name=citation_doi]').attr("content");
+      var doi = $('meta[name=citation_doi]').attr('content');
       var twitter = new $.fn.twitter();
       twitter.getSidebarTweets(doi);
-
     }
 
     // initialize toggle for author list view more
     plos_toggle.init();
+
     // initialize tooltip_hover for everything
     tooltip_hover.init();
+
 
   });
 
 }(jQuery));
-
-
-

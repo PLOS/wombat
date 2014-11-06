@@ -94,6 +94,12 @@ div[data-js-tooltip="tooltip_target"]{ display: none;}
       padding-top: 0 !important;
     }
   }
+.twitter-container h3 {
+  margin-bottom: 5px !important;
+  padding-left: 25px;
+  padding-bottom: 0 !important;
+}
+
   // override .inline-list
 #floatAuthorList, .author-list {
   margin: 0;
@@ -107,8 +113,37 @@ div[data-js-tooltip="tooltip_target"]{ display: none;}
   margin-left: 0 !important;
 }
 
+.close-floater {
+  width: 25px;
+  height: 25px;
+}
+.float-title.topVisible {
+  background-color: #fff !important;
+}
+.article-content .table-wrap {
+   .table-caption {
+      margin-bottom: 0;
+   }
+  .table-footnote {
+    margin-bottom: 2px;
+  }
+}
+.article-content .expand {
+  background: image-url('icon.sprite.expand.png') no-repeat 0 0;
+  vertical-align: middle;
+  display: inline-block;
+  width:25px;
+  height: 25px;
 
+  &:hover {
+    background-position: 0 -25px;
+    cursor: pointer;
+  }
+}
 
+body.article .ui-widget-overlay {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+}
 
 
 

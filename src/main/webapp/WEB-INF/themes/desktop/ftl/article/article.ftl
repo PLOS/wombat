@@ -11,16 +11,14 @@
 <#include "../common/head.ftl" />
 
 <#include "../common/journalStyle.ftl" />
-<body class="article ${journalStyle}">
+<body class="article plosone">
 
 <#include "../common/header/header.ftl" />
 <div class="set-grid">
   <header class="title-block">
     <div class="article-meta">
     <#include "articleClassifications.ftl" />
-      <ul id="almSignposts" class="signposts">
-        <li>1 billion<br>views</li>
-      </ul>
+    <#include "almSignposts.ftl" />
     </div>
     <div class="article-title-etc">
     <#include "articleTitle.ftl" />

@@ -29,6 +29,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .article-meta {
+  padding-right: $pad-default;
   @extend .hide-for-print;
 }
 
@@ -40,7 +41,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .classifications {
-  @include plos-grid-column(600, $gutter: none);
+  @include plos-grid-column(755, $gutter: none);
   @extend %txt-transform;
   margin-top: $pad-smallish;
 
@@ -94,25 +95,43 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .signposts {
   //TEMPORARY STYLES
-  @include plos-grid-column(360, $gutter: none);
+  @include plos-grid-column(160, $gutter: none);
   @extend .inline-list;
-  margin: 0;
+  margin: $pad-default 0 0;
   float: right;
   text-align: center;
-  height: 60px;
+  height: 159px;
+
+  .unavailable {
+    color: $grey-med-dark;
+    background: $grey-light;
+    font-size: $txt-size-xsmall;
+  }
 
   li {
-    float: right;
-    border-right: 1px solid $grey-med-light;
-    border-left: 1px solid $grey-med-light;
+    @extend %brand-shading-variation;
+    float: left;
+    border-bottom: 1px solid $white;
     padding: $pad-small $pad-default;
     margin: 0;
     font-weight: bold;
+    font-size: $txt-size-xsmall;
+    color: $grey-dark;
+    width: 80px;
+    height: 80px;
+
+    span {
+      font-size: $txt-size-medium-large;
+    }
+  }
+
+  li:first-child, li:nth-child(3){
+    border-right: 1px solid $white;
   }
 }
 
 .article-title-etc {
-  @include plos-grid-column(900, $gutter: none);
+  @include plos-grid-column(755, $gutter: none);
   margin-top: $pad-small;
 
   h1 {

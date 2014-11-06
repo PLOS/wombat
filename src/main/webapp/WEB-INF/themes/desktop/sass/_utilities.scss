@@ -148,7 +148,7 @@ example | extension
 
 
 
-@mixin brandcolor($setcolor: $plos-default ) {
+@mixin brandcolor($setcolor: $plos-default, $sethue: $plos-default-hue ) {
   %more-icon {
     color: $setcolor;
   }
@@ -194,21 +194,36 @@ example | extension
       }
     }
   }
+  %brand-shading-variation {
+    &:first-child {
+      background-color: hsl($sethue, 54%, 80%);
+    }
+    &:nth-child(2) {
+      background-color: hsl($sethue, 56%, 74%);
+    }
+    &:nth-child(3) {
+      background-color: hsl($sethue, 31%, 84%);
+    }
+    &:last-child {
+      background-color: hsl($sethue, 54%, 80%);
+    }
+  }
+
 }
 
 // set the journal-specific colors - ps this is a good example of things that can be pulled into themes or a separate scss file when the maven sass compiler is installed & working
 .plosbiology, .ploscompbiol, .plosgenetics {
-  @include brandcolor($setcolor: $plos-bio);
+  @include brandcolor($plos-bio, $plos-bio-hue);
 }
 .plosmedicine, .plospathogens, .plosntd {
-  @include brandcolor($setcolor: $plos-med);
+  @include brandcolor($plos-med, $plos-med-hue);
 }
 
 .ploscollections, .plosclinicaltrials {
-  @include brandcolor($setcolor: $plos-default);
+  @include brandcolor($plos-default, $plos-default-hue);
 }
 .plosone {
-  @include brandcolor($setcolor: $plos-one);
+  @include brandcolor($plos-one, $plos-one-hue);
 }
 
 //////////////

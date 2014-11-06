@@ -60,7 +60,6 @@ $line-height-small: ($line-height * .5);
     li:before {
       content: '>';
       font-size: rem-calc(10);
-      line-height: $line-height;
       display: inline-block;
       margin-left: -$pad-smallish;
       position: absolute

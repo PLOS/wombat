@@ -61,7 +61,7 @@ public class SoaServiceImpl implements SoaService {
   @Override
   public <T> T requestObject(String address, Class<T> responseClass) throws IOException {
     // Just try to cache everything. We may want to narrow this in the future.
-    return requestCachedObject(CacheParams.create("obj:" + address), address, responseClass);
+    return requestCachedObject(CacheParams.create("obj:" + CacheParams.createKeyHash(address)), address, responseClass);
   }
 
   @Override

@@ -148,7 +148,7 @@ example | extension
 
 
 
-@mixin brandcolor($setcolor: $plos-default, $sethue: $plos-default-hue ) {
+@mixin brandcolor($setcolor: $plos-default, $shade1: $plos-default-shade1, $shade2: $plos-default-shade2, $shade3: $plos-default-shade3) {
   %more-icon {
     color: $setcolor;
   }
@@ -196,65 +196,50 @@ example | extension
       }
     }
   }
-  %brand-shading-variation {
-    &:first-child, &:nth-child(2) {
-      background-color: hsl($sethue, 54%, 80%);
+
+  %brand-shaded-blocks {
+
+    &:first-child, &:nth-child(2), &:last-child {
+      background-color: $shade1;
     }
     &:nth-child(3) {
-      background-color: hsl($sethue, 56%, 74%);
+      background-color: $shade2;
     }
     &:nth-child(4) {
-      background-color: hsl($sethue, 31%, 84%);
-    }
-    &:last-child {
-      background-color: hsl($sethue, 54%, 80%);
+      background-color: $shade3;
     }
   }
 
 }
 
-// set the journal-specific colors - ps this is a good example of things that can be pulled into themes or a separate scss file when the maven sass compiler is installed & working
+// set the journal-specific colors - ps this is a good example of things that can be
+// pulled into themes or a separate scss file when the maven sass compiler is installed & working
 .plosbiology, .ploscompbiol, .plosgenetics {
-  @include brandcolor($plos-bio, $plos-bio-hue);
+  @include brandcolor($plos-bio, $plos-bio-shade1, $plos-bio-shade2, $plos-bio-shade3);
 }
 .plosmedicine, .plospathogens, .plosntd {
-  @include brandcolor($plos-med, $plos-med-hue);
+  @include brandcolor($plos-med, $plos-med-shade1, $plos-med-shade2, $plos-med-shade3);
 }
 
 .ploscollections, .plosclinicaltrials {
-  @include brandcolor($plos-default, $plos-default-hue);
+  @include brandcolor();
 }
 
 .plosone {
 
-  @include brandcolor($plos-one);
-  .article-meta .signposts {
-    li {
-      &:first-child,&:nth-child(2) {
-        background-color: #fcd5a3;
-      }
-      &:nth-child(3) {
-        background-color: #fbe989;
-      }
-      &:nth-child(4) {
-        background-color: #fadfbe;
-      }
-      &:last-child {
-        background-color: #fcd5a3;
-      }
-    }
-  }
-    .article-content .table-download .definition-label {
-      color: $grey-dark;
-    }
-    .article-content .figure-inline-download ul li .definition-label a {
-      color: $grey-dark;
+  @include brandcolor($plos-one, $plos-one-shade1, $plos-one-shade2, $plos-one-shade3);
 
-      &:hover {
-        text-decoration: none;
-      }
+  .article-content .table-download .definition-label {
+    color: $grey-dark;
+  }
+  .article-content .figure-inline-download ul li .definition-label a {
+    color: $grey-dark;
+
+    &:hover {
+      text-decoration: none;
     }
   }
+}
 
 
 //////////////

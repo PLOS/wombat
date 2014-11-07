@@ -1,7 +1,7 @@
 
 (function ($) {
   $.fn.signposts = function (doi) {
-    var errorText, tooSoonText, initData, issued, date_check, compareDate, isThree, plural_check, isPlural,
+    var errorText, tooSoonText, initData, issued, date_check, compareDate, isThree, plural_check,
       views, saves, shares, citations, listBody;
 
     function validateDOI(doi) {
@@ -28,7 +28,7 @@
     date_check = function (input, numDays) {
       var inputDate = new Date(input);
       var dateWeek = new Date().addDays(numDays);
-      console.log(inputDate, dateWeek);
+
       if (inputDate < dateWeek) {
         return false;
 
@@ -36,14 +36,15 @@
         // The selected time is more than numDays days from now
         return true;
       }
-    }
+    };
+
     plural_check = function(input){
       if (input === 1){
-        return false;
+        //do nothing
       } else {
-        +'s';
+        return true;
       }
-    }
+    };
 
     this.getSignpostData = function (doi) {
       doi = validateDOI(doi);
@@ -52,7 +53,7 @@
       config = ALM_CONFIG;
 
       requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail';
-      console.log(requestUrl);
+
       errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
 
       $.ajax({
@@ -66,7 +67,8 @@
         if (initData === undefined) {
           $('#almSignposts').append(errorText);
 
-        } else { // is date less than 3 days ago
+        } else {
+        // is date less than 3 days ago
           issued = data.data[0].issued["date-parts"];
           compareDate = new Date(issued);
           isThree = date_check(compareDate, 3);
@@ -76,24 +78,35 @@
             $('#almSignposts').append(tooSoonText);
 
           } else {
-
-            views = formatNumberComma(data.data[0].viewed);
+            //get the numbers & add commas where needed
             saves = formatNumberComma(data.data[0].saved);
-            shares = formatNumberComma(data.data[0].discussed);
             citations = formatNumberComma(data.data[0].cited);
+            views = formatNumberComma(data.data[0].viewed);
+            shares = formatNumberComma(data.data[0].discussed);
 
+            //check if term needs to be plural
 
-            $('#almViews').append(views)
-           /* listBody = '<li>' + saves + '<span>Saves</span></li>' +
-              '<li>' + citations + '<span>Citations</span></li>' +
-              '<li>' + views + '<span>Views</span></li>' +
-              '<li>' + shares + '<span>Shares</span></li>';*/
+            function build_parts(li_id, metric){
+                var plural = plural_check(metric);
+                if(plural === true) {
+                  $(li_id).prepend(metric).find('.metric-term').append('s');
+                } else {
+                  $(li_id).prepend(metric);
+                }
+            }
+            build_parts('#almSaves',saves);
+            build_parts('#almCitations',citations);
+            build_parts('#almViews',views);
+            build_parts('#almShares', shares);
+
             $('#loadingMetrics').css('display','none');
-            $('#almSignposts').append(listBody);
+
+            $('#almSignposts li').removeClass('noshow');
 
           }
         }
       }).fail(function () {
+        $('#loadingMetrics').css('display','none');
         $('#almSignposts').append(errorText);
       });
 

@@ -94,7 +94,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .article-meta {
-
+   position: relative;
 
   .signposts {
     @include plos-grid-column(160, $gutter: none);
@@ -103,9 +103,10 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     float: right;
     text-align: center;
     height: 159px;
+    @include single-transition(opacity);
 
     li {
-      @extend %brand-shading-variation;
+      @extend %brand-shaded-blocks;
       float: left;
       border-right: 1px solid $white;
       border-bottom: 1px solid $white;
@@ -118,15 +119,60 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       color: $grey-dark;
       width: 80px;
       height: 80px;
-
-      span {
+      a {
+        @include tooltip-trigger();
         font-size: $txt-size-xsmall;
         line-height: $txt-size-medium;
+        color: $grey-dark;
+
+        &:hover {
+          @include rounded-pill($padding: rem-calc(2 4),$hover: false);
+          //text-decoration: underline;
+        }
       }
       &.noshow {
         display: none;
       }
+
+      p {
+        @include tooltip();
+        @include js-tooltip-target();
+        width: 280px;
+        position: absolute;
+        padding: $pad-xsmall;
+        text-align: left;
+        z-index: map-get($zindex, overlay);
+
+        a {
+          color: $white;
+          padding-left: 0;
+          line-height: normal;
+          &:hover {
+            text-decoration: underline;
+            padding: 0;
+            line-height: normal;
+          }
+        }
+      }
+
+      p.saves-tip {
+        top: 70px;
+        right: 120px;
+      }
+      p.citations-tip {
+        top: 70px;
+        right: 31px;
+      }
+      p.views-tip {
+        top: 151px;
+        right: 120px;
+      }
+      p.shares-tip {
+        top: 151px;
+        right: 37px;
+      }
     }
+
     .unavailable {
       width: 160px;
       border-right: 0;
@@ -417,7 +463,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .type-desc{
   @include tooltip();
-  @include js-tooltip-target($top: rem-calc(35));
+  @include js-tooltip-target($margintop: rem-calc(35));
+  left: 0;
 
   p{
     color: $clr-tooltip-text;
@@ -514,6 +561,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 .print-options {
   @extend .tooltip-aside;
   @include js-tooltip-target( $top: rem-calc(40));
+  left: 0;
   opacity: 1;
   z-index: map-get($zindex, dropdown);
 }
@@ -544,7 +592,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .share-options {
   @extend .tooltip-aside;
-  @include js-tooltip-target($top: rem-calc(40));
+  @include js-tooltip-target($margintop: rem-calc(40));
   padding-left: $pad-small;
   opacity: 1;
   z-index: map-get($zindex, dropdown);

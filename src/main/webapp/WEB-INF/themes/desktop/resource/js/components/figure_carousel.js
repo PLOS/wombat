@@ -94,7 +94,7 @@
               currentPage = page;
             }
 
-            var $pageButtons = $this.find('.carousel-page-buttons .button');
+            var $pageButtons = $this.find('.carousel-page-buttons .index');
             $pageButtons.removeClass('active');
             $pageButtons.eq(currentPage).addClass('active');
           });
@@ -110,7 +110,7 @@
     });
     if ($items.length > visibleSize) {
       function createPageButton(pageNumber) {
-        var $pageButton = $('<span class="button"/>').text(pageNumber + 1);
+        var $pageButton = $('<span class="index">');
         $pageButton.click(function () {
           goToPage(pageNumber);
         });

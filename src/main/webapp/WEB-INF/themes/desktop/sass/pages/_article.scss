@@ -391,40 +391,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
    font-size: $txt-size-xxxsmall;
 }
 
-#figure-carousel {
-  background: $grey-light;
-  position: relative;
-  margin-bottom: 20px;
-  padding: 20px 0 30px;
-  width: 514px;
-  float: left;
 
-  .carousel-wrapper {
-    overflow: hidden; // carousel-wrapper is the scrolling view window for everything in slider
-
-    .slider {
-      width: 99999px; // contain all figures in a big horizontal row
-    }
-  }
-
-  .carousel-item {
-    float: left;
-    padding: 0 10px 10px 0;
-    width: 172px;
-    height: 112px;
-  }
-
-  .carousel-item img {
-    width: 172px;
-    height: 112px;
-  }
-
-  .carousel-page-buttons {
-    .active {
-      text-decoration: underline; // DEBUG: Temporary value, pending actual styling
-    }
-  }
-}
 
 // RIGHT COLUMN STYLES
 

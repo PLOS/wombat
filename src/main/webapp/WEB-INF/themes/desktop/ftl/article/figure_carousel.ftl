@@ -26,8 +26,8 @@
     </div>
 
     <div class="carousel-control">
-      <span class="button previous">&larr;</span>
-      <span class="button next">&rarr;</span>
+      <span class="button previous">&#xf0d9</span>
+      <span class="button next">&#xf0da;</span>
     </div>
     <div class="carousel-page-buttons"></div>
   </div>

@@ -56,7 +56,7 @@ public class IndirectFileController extends WombatController {
       throws IOException {
     Collection<Header> assetHeaders = HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST);
     try (CloseableHttpResponse repoResponse = contentRepoService.request(key, version, assetHeaders)) {
-      HttpMessageUtil.copyResponseWithHeaders(repoResponse, responseToClient, ASSET_RESPONSE_HEADER_WHITELIST);
+      HttpMessageUtil.copyResponseWithHeaders(repoResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",
           key, version.orNull());

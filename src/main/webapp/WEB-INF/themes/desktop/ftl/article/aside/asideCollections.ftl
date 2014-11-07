@@ -4,7 +4,8 @@
   <ul id="collectionList">
   <#list collectionIssues?keys as issueDoi>
     <li>
-     <a href="http://www.ploscollections.org/article/browse/issue/info%3Adoi%2F${issueDoi?url}">
+     <a href="<@siteLink path="article/browse/issue/info:doi/" + issueDoi
+                         journalKey=collectionIssues[issueDoi]["parentJournal"]["journalKey"]/>">
         ${collectionIssues[issueDoi]["displayName"]}</a>
     </li>
   </#list>

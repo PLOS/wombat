@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class SitePageContext {
 
-  private static HttpServletRequest extractRequest(Environment environment) throws TemplateModelException {
+  public static HttpServletRequest extractRequest(Environment environment) throws TemplateModelException {
     return ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
   }
 

@@ -186,8 +186,10 @@ public class ArticleController extends WombatController {
             try {
               publishedSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
               return (boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection");
+            } catch (UnmatchedSiteException use) {
+              throw new RuntimeException("Could not resolve collections pub site using journalKey: " + journalKey, use);
             } catch (Exception e) {
-              return false;
+              throw new RuntimeException(e);
             }
           }
         }

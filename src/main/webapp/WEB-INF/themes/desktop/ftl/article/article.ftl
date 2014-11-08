@@ -16,9 +16,9 @@
 <#include "../common/header/header.ftl" />
 <div class="set-grid">
   <header class="title-block">
+  <#include "signposts.ftl" />
     <div class="article-meta">
     <#include "articleClassifications.ftl" />
-    <#include "signposts.ftl" />
     </div>
     <div class="article-title-etc">
     <#include "articleTitle.ftl" />

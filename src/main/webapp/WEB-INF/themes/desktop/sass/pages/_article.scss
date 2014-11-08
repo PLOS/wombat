@@ -1,8 +1,9 @@
+
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
 $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
 
 
- // extensible layout styles
+// extensible layout styles
 
 .text-article-intro {
   font-size: $txt-size-default;
@@ -28,16 +29,154 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   float: right;
 }
 
-.article-meta {
-  padding-right: $pad-default;
-  @extend .hide-for-print;
-}
-
 .title-block {
   width: 100%;
   background: $white;
   padding-left: $pad-small;
+}
 
+.signposts {
+  .noshow {
+    display: none;
+  }
+
+  .anime-hide {
+    opacity: 0;
+  }
+  @include plos-grid-column(160, $gutter: none);
+  @extend .inline-list;
+  margin: $pad-default $pad-default 0 0;
+  float: right;
+  text-align: center;
+  height: 159px;
+  opacity: 1;
+  @include single-transition(opacity);
+
+  li {
+    @extend %brand-shaded-blocks;
+    float: left;
+    border-right: 1px solid $white;
+    border-bottom: 1px solid $white;
+    padding: $pad-default $pad-xsmall;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+    font-size: $txt-size-medium-large;
+    color: $grey-dark;
+    width: 80px;
+    height: 80px;
+
+    .tools {
+      height: 100px;
+
+      a {
+        font-size: $txt-size-xsmall;
+        color: $grey-dark;
+        padding: 5px;
+
+        &:hover, &.active {
+          background-color: $plos-default;
+          border-radius: $border-radius-default;
+          color: $white;
+          text-decoration: underline;
+        }
+      }
+
+      p {
+        background-color: $plos-default;
+        border-radius: $border-radius-default;
+        width: 280px;
+        position: absolute;
+        text-align: left;
+        z-index: map-get($zindex, overlay);
+        padding: 5px;
+        @include single-transition(opacity);
+
+        a {
+          color: $white;
+          padding: 0;
+          &:hover {
+
+          }
+        }
+      }
+
+      p.saves-tip {
+        top: 325px;
+        right: 311px;
+      }
+
+      p.citations-tip {
+        top: 325px;
+        right: 223px;
+
+        .scopus, .crossref {
+          display: none;
+        }
+      }
+
+      p.views-tip {
+        top: 406px;
+        right: 311px;
+      }
+
+      p.shares-tip {
+        top: 406px;
+        right: 223px;
+      }
+    }
+
+    .tools.active {
+
+      > a {
+        background-color: $plos-default;
+        border-radius: $border-radius-default;
+        color: $white;
+        text-decoration: underline;
+      }
+      p > a {
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+    }
+  }
+
+  .unavailable {
+    width: 160px;
+    border-right: 0;
+    border-bottom: 0;
+    font-size: $txt-size-xsmall;
+    font-weight: normal;
+    text-align: right;
+    color: $grey-med-dark;
+  }
+  #loadingMetrics {
+    @extend .unavailable;
+    height: 160px;
+    font-size: $txt-size-medium-large;
+    text-align: center;
+    padding-top: 50px;
+  }
+  #tooSoon {
+    @extend .unavailable;
+    padding: 25px 10px 10px 30px;
+  }
+  #metricsError {
+    @extend .unavailable;
+    padding: 105px 10px 10px 20px;
+    background: $grey-light;
+    height: 160px;
+  }
+}
+
+.article-meta {
+//  padding-right: $pad-default;
+  @extend .hide-for-print;
 }
 
 .classifications {
@@ -56,7 +195,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
     font-family: $font-face-fancy;
-   }
+  }
 
   .peer-reviewed {
     background: image-url('icon.pr.gif') no-repeat 0 3px;
@@ -93,114 +232,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.article-meta {
-   position: relative;
 
-  .signposts {
-    @include plos-grid-column(160, $gutter: none);
-    @extend .inline-list;
-    margin: $pad-default 0 0;
-    float: right;
-    text-align: center;
-    height: 159px;
-    @include single-transition(opacity);
 
-    li {
-      @extend %brand-shaded-blocks;
-      float: left;
-      border-right: 1px solid $white;
-      border-bottom: 1px solid $white;
-      padding: $pad-default $pad-xsmall;
-      vertical-align: middle;
-      text-align: center;
-      margin: 0;
-      font-weight: bold;
-      font-size: $txt-size-medium-large;
-      color: $grey-dark;
-      width: 80px;
-      height: 80px;
-      a {
-        @include tooltip-trigger();
-        font-size: $txt-size-xsmall;
-        line-height: $txt-size-medium;
-        color: $grey-dark;
 
-        &:hover {
-          @include rounded-pill($padding: rem-calc(2 4),$hover: false);
-          //text-decoration: underline;
-        }
-      }
-      &.noshow {
-        display: none;
-      }
-
-      p {
-        @include tooltip();
-        @include js-tooltip-target();
-        width: 280px;
-        position: absolute;
-        padding: $pad-xsmall;
-        text-align: left;
-        z-index: map-get($zindex, overlay);
-
-        a {
-          color: $white;
-          padding-left: 0;
-          line-height: normal;
-          &:hover {
-            text-decoration: underline;
-            padding: 0;
-            line-height: normal;
-          }
-        }
-      }
-
-      p.saves-tip {
-        top: 70px;
-        right: 120px;
-      }
-      p.citations-tip {
-        top: 70px;
-        right: 31px;
-      }
-      p.views-tip {
-        top: 151px;
-        right: 120px;
-      }
-      p.shares-tip {
-        top: 151px;
-        right: 37px;
-      }
-    }
-
-    .unavailable {
-      width: 160px;
-      border-right: 0;
-      border-bottom: 0;
-      font-size: $txt-size-xsmall;
-      font-weight: normal;
-      text-align: right;
-      color: $grey-med-dark;
-    }
-    #loadingMetrics {
-      @extend .unavailable;
-      height: 160px;
-      font-size: $txt-size-medium-large;
-      text-align: center;
-      padding-top: 50px;
-    }
-    #tooSoon {
-      @extend .unavailable;
-      padding: 25px 10px 10px 30px;
-    }
-    #metricsError {
-      @extend .unavailable;
-      padding: 105px 10px 10px 20px;
-      background: $grey-light;
-      height: 160px;
-    }
-  }
-}
 .article-title-etc {
   @include plos-grid-column(755, $gutter: none);
   margin-top: $pad-small;
@@ -360,7 +394,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       background-image: image-url("icon.tabs.active.white.png");
       background-repeat: no-repeat;
       background-position: 9px 65px;
-     
+
       &:hover {
         @extend %brand-background;
         cursor: inherit;
@@ -377,21 +411,21 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   margin-bottom: $pad-small;
 
   li {
-   position: relative;
-   margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
+    position: relative;
+    margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
 
-   &.active{
-     a:hover{text-decoration: none;}
-   }
+    &.active{
+      a:hover{text-decoration: none;}
+    }
 
-   &[data-js-toggle='toggle_trigger'] a{
-     color: $clr-highlight;
-   }
+    &[data-js-toggle='toggle_trigger'] a{
+      color: $clr-highlight;
+    }
 
-   > a, > span{
-   display: inline-block;   // needed to overwrite the inline-list
-   padding: $pad-highlight $pad-highlight-x; //TODO line-height;
-   }
+    > a, > span{
+      display: inline-block;   // needed to overwrite the inline-list
+      padding: $pad-highlight $pad-highlight-x; //TODO line-height;
+    }
 
   }
   .contribute{
@@ -407,52 +441,52 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
- .author-info{
-     @extend .pill-small;
-     padding-right: ($pad-default);
-     width: rem-calc(450);
-     top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
-     height: auto;
-     position:absolute;
-     margin-top: $pad-small;
-     opacity: 0;
-     @include single-transition(opacity);
-     z-index: -1;
+.author-info{
+  @extend .pill-small;
+  padding-right: ($pad-default);
+  width: rem-calc(450);
+  top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
+  height: auto;
+  position:absolute;
+  margin-top: $pad-small;
+  opacity: 0;
+  @include single-transition(opacity);
+  z-index: -1;
 
-   p{
-      border-top: rem-calc(2) solid $grey-med;
-      padding: $pad-small 0;
-      &:first-child {
-        border-top: none;
-      }
-   }
+  p{
+    border-top: rem-calc(2) solid $grey-med;
+    padding: $pad-small 0;
+    &:first-child {
+      border-top: none;
+    }
+  }
 
-   .email, .rel-footnote {
-     @include icon-offscreen;
-     margin-right: $icon-space;
-   }
- }
+  .email, .rel-footnote {
+    @include icon-offscreen;
+    margin-right: $icon-space;
+  }
+}
 
- .active {
-   a, a:hover { color: $white; }
+.active {
+  a, a:hover { color: $white; }
 
-   .author-name {
-     @include rounded-pill($padding: $pad-highlight $pad-highlight-x,$hover: false);
-   }
+  .author-name {
+    @include rounded-pill($padding: $pad-highlight $pad-highlight-x,$hover: false);
+  }
 
-   .author-info {
-     opacity: 1;
-     z-index: map-get($zindex, dropdown);
-   }
+  .author-info {
+    opacity: 1;
+    z-index: map-get($zindex, dropdown);
+  }
 
-   .close{
+  .close{
 
     @extend .closer;
-     position: absolute;
-     top: $pad-xsmall;
-     right: $pad-xsmall;
-   }
- }
+    position: absolute;
+    top: $pad-xsmall;
+    right: $pad-xsmall;
+  }
+}
 
 .article-type {
   height: auto;
@@ -477,9 +511,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .article-type-tooltip{
-   @include tooltip-trigger($outside-box: yes);
-   font-family: $font-face-plain;
-   font-size: $txt-size-xxxsmall;
+  @include tooltip-trigger($outside-box: yes);
+  font-family: $font-face-plain;
+  font-size: $txt-size-xxxsmall;
 }
 
 // RIGHT COLUMN STYLES
@@ -603,12 +637,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     list-style-position: outside; // firefox
     list-style-type: none;
 
-     a img {
-       width: 16px;
-       height: 16px;
-       margin-right: rem-calc(3);
-       margin-bottom: rem-calc(4);
-     }
+    a img {
+      width: 16px;
+      height: 16px;
+      margin-right: rem-calc(3);
+      margin-bottom: rem-calc(4);
+    }
   }
 }
 
@@ -739,15 +773,15 @@ body.article .ui-widget-overlay {
       position: relative;
 
       .taxo-term {
-         @extend .button;
-         width: auto;
-         float: left;
+        @extend .button;
+        width: auto;
+        float: left;
         //the next three elements are for truncation. width is needed and is being set with js
         //because the width needs to be auto when truncation isn't needed
-         white-space: nowrap;
-         overflow: hidden;
-         text-overflow: ellipsis;
-       }
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
       .taxo-tooltip {
         @include tooltip($width: 160px);
@@ -852,7 +886,7 @@ body.article .ui-widget-overlay {
       padding-top: $pad-small;
       font-size: $txt-size-xsmall;
 
-        .tweet-info {
+      .tweet-info {
         a {
           color: $clr-body-text;
           position: relative;
@@ -880,16 +914,16 @@ body.article .ui-widget-overlay {
             }
           }
         }
-          span {
-            font-size: $txt-size-xxxsmall;
+        span {
+          font-size: $txt-size-xxxsmall;
         }
       }
     }
   }
 
-   .more-tweets, .placeholderPic {
-     display: none;
-   }
+  .more-tweets, .placeholderPic {
+    display: none;
+  }
 
   .load-more, .view-all {
     @extend %link-text-default;
@@ -958,9 +992,9 @@ body.article .ui-widget-overlay {
 }
 
 @media print {
-   @page {
-     margin: .75in;
-   }
+  @page {
+    margin: .75in;
+  }
 
   .article-body {
     width: 100%;

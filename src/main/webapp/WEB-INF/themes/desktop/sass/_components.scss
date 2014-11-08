@@ -481,7 +481,7 @@ $icn-tiny-align: middle;
 @mixin js-tooltip-container{
   position:relative;
 }
-@mixin js-tooltip-target($top: 0, $margintop: $pad-default){
+@mixin js-tooltip-target($top:0, $margintop: $pad-default){
   top: $top;
   height: 0;
   position: absolute;
@@ -490,7 +490,6 @@ $icn-tiny-align: middle;
   visibility: hidden;
   z-index: map-get($zindex, invisible);
   @include single-transition(opacity);
-
   &.visible{
     opacity: 1;
     z-index: map-get($zindex, dropdown);

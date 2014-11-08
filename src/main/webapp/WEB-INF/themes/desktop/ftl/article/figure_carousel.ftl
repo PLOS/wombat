@@ -1,6 +1,6 @@
 <#if article.figures?has_content>
 <div id="figure-carousel-section">
-  <h3>Figures</h3>
+  <h2>Figures</h2>
 
   <div id="figure-carousel">
 
@@ -26,11 +26,14 @@
     </div>
 
     <div class="carousel-control">
-      <span class="button previous">&#xf0d9</span>
-      <span class="button next">&#xf0da;</span>
+      <span class="button previous"></span>
+      <span class="button next"></span>
     </div>
-    <div class="carousel-page-buttons"></div>
+    <div class="carousel-page-buttons">
+
+    </div>
   </div>
 </div>
-</#if>
 <@js src="resource/js/components/figure_carousel.js" />
+</#if>
+

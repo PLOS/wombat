@@ -305,16 +305,15 @@ $line-height-small: ($line-height * .5);
   $fc-colorbg-item: $white;
   $fc-pad-item-between: $pad-small;
   $fc-pad-container-vertical: $pad-default;
+  $fc-pager-size: rem-calc(8);
   $fc-pad-item-inside: rem-calc(8);
   $fc-size-item-width: rem-calc(164);
   $fc-size-item-height: rem-calc(112);
   $fc-button-pad: ($fc-pad-item-inside /2);
 
-
-
   background: $fc-colorbg-container;
   position: relative;
-  margin-bottom: $line-height;
+  margin-bottom: $line-height-large;
   padding: $fc-pad-container-vertical 0;
   text-align: center;
   width: 100%;
@@ -337,6 +336,7 @@ $line-height-small: ($line-height * .5);
     width: ($fc-size-item-width + $fc-pad-item-between);
     height: $fc-size-item-height;
     background-color: $fc-colorbg-item;
+
     img {
       height: auto;
       width: auto;
@@ -344,6 +344,10 @@ $line-height-small: ($line-height * .5);
       max-height: ($fc-size-item-height - $fc-pad-item-inside);
       display: block;
       margin: 0 auto;
+    }
+
+    &.empty{
+      background-color: $fc-colorbg-container;
     }
   }
 
@@ -363,6 +367,8 @@ $line-height-small: ($line-height * .5);
       padding: 0;
       text-align: center;
       cursor: pointer;
+      &.previous{ @extend .fa-caret-left; }
+      &.next{ @extend .fa-caret-right;}
       &:hover{
         background-color: $plos-default;
       }
@@ -374,14 +380,13 @@ $line-height-small: ($line-height * .5);
 
   .carousel-page-buttons {
     text-align: center;
-    $circle-size: rem-calc(8);
-    line-height: $circle-size;
+    line-height: $fc-pager-size;
     .index {
       @extend .fa;
       @extend .fa-circle;
-      font-size: $circle-size;
-      margin: 0 ($circle-size/2);
-
+      font-size: $fc-pager-size;
+      margin: 0 ($fc-pager-size/2);
+      display: inline-block;
       color: $grey-med;
 
       &.active, &:hover {

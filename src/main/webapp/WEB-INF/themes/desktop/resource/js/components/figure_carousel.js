@@ -110,7 +110,9 @@
     });
     if ($items.length > visibleSize) {
       function createPageButton(pageNumber) {
-        var $pageButton = $('<span class="index">');
+        //for IE8 you have to put the closing span AND the &nbsp
+        var $pageButton = $('<span class="index">&nbsp;</span>');
+
         $pageButton.click(function () {
           goToPage(pageNumber);
         });

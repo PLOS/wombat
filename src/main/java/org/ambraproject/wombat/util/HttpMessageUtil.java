@@ -1,20 +1,16 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Lists;
-import com.google.common.net.HttpHeaders;
-import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.*;
-import org.apache.http.client.methods.*;
-import org.apache.http.entity.InputStreamEntity;
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -24,28 +20,48 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
-import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Set;
 
 /**
  * A utility class for creation and management of HTTP messages
  */
 public class HttpMessageUtil {
 
+  /**
+   * Describes how to filter or modify a header while copying a response.
+   */
+  public static interface HeaderFilter {
+    /**
+     * Return the header value to copy into the outgoing response, under the same header name as the incoming response.
+     * Return {@code null} to copy no header with this name.
+     * <p/>
+     * To copy the header value unchanged, do {@code return header.getValue();}.
+     *
+     * @param header a header for an incoming response
+     * @return the header value to copy into the outgoing response, or {@code null} to not copy this header
+     */
+    public String getValue(Header header);
+  }
 
   /**
    * Copy content with whitelisted headers between responses
    *
-   * @param responseTo
-   * @param headerWhitelist
+   * @param responseFrom an incoming response to copy from
+   * @param responseTo   an outgoing response to copy into
+   * @param headerFilter describes whether and how to copy headers
    * @throws IOException
    */
-  public static void copyResponseWithHeaders(CloseableHttpResponse responseFrom, HttpServletResponse responseTo,
-                                             ImmutableSet<String> headerWhitelist)
-          throws IOException {
+  public static void copyResponseWithHeaders(HttpResponse responseFrom, HttpServletResponse responseTo,
+                                             HeaderFilter headerFilter)
+      throws IOException {
     for (Header header : responseFrom.getAllHeaders()) {
-      if (headerWhitelist.contains(header.getName())) {
-        responseTo.setHeader(header.getName(), header.getValue());
+      String newValue = headerFilter.getValue(header);
+      if (newValue != null) {
+        responseTo.setHeader(header.getName(), newValue);
       }
     }
     copyResponse(responseFrom, responseTo);
@@ -57,7 +73,7 @@ public class HttpMessageUtil {
    * @param responseTo
    * @throws IOException
    */
-  public static void copyResponse(CloseableHttpResponse responseFrom, HttpServletResponse responseTo)
+  public static void copyResponse(HttpResponse responseFrom, HttpServletResponse responseTo)
           throws IOException {
 
     try (InputStream streamFromService = responseFrom.getEntity().getContent();

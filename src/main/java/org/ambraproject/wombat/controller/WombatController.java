@@ -19,6 +19,8 @@ import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.UnresolvedSiteException;
+import org.ambraproject.wombat.util.HttpMessageUtil;
+import org.apache.http.Header;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,8 @@ import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Base class with common functionality for all controllers in the application.
@@ -161,8 +165,40 @@ public abstract class WombatController {
    * Names of headers that, in a response from the service tier (Rhino or Content Repo), should be passed through to the
    * client.
    */
-  protected static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-          HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, "X-Reproxy-URL", "X-Reproxy-Cache-For");
+  private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
+      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, "X-Reproxy-URL", "X-Reproxy-Cache-For");
+  protected static final HttpMessageUtil.HeaderFilter ASSET_RESPONSE_HEADER_FILTER = new HttpMessageUtil.HeaderFilter() {
+    @Override
+    public String getValue(Header header) {
+      String name = header.getName();
+      if (!ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
+        return null;
+      }
+      String value = header.getValue();
+      if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
+        return sanitizeAssetFilename(value);
+      }
+      return value;
+    }
+  };
+
+
+  private static final Pattern BAD_THUMBNAIL_EXTENSION = Pattern.compile("\\.PNG_\\w+$", Pattern.CASE_INSENSITIVE);
+
+  /**
+   * Edit a "Content-Disposition" header value by changing a ".PNG_*" file extension to ".png". (The ".PNG_*" file
+   * extensions are an ugly system quirk that we don't want to expose to the user.)
+   *
+   * @param contentDispositionValue a "Content-Disposition" header value
+   * @return an edited value if it's bad; else the same value
+   */
+  private static String sanitizeAssetFilename(String contentDispositionValue) {
+    Matcher matcher = BAD_THUMBNAIL_EXTENSION.matcher(contentDispositionValue);
+    if (matcher.find()) {
+      return matcher.replaceFirst(".png");
+    }
+    return contentDispositionValue;
+  }
 
 
   // Inconsistent with equals. See Javadoc for java.util.SortedSet.

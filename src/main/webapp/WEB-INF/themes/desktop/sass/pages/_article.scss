@@ -136,12 +136,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
         text-decoration: underline;
       }
       p > a {
-          text-decoration: none;
+        text-decoration: none;
 
-          &:hover {
-            text-decoration: underline;
-          }
+        &:hover {
+          text-decoration: underline;
         }
+      }
 
     }
   }
@@ -175,7 +175,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .article-meta {
-//  padding-right: $pad-default;
+  //  padding-right: $pad-default;
   @extend .hide-for-print;
 }
 

@@ -104,7 +104,7 @@
             }
 
             $('#loadingMetrics').css('display','none');
-             console.log();
+
             $('#almSignposts li').removeClass('noshow');
 
           }
@@ -117,68 +117,53 @@
 
     }
   };
- /* var item_focus;
-  $('.metric-term').mouseenter(function(){
-    $(this).parent().addClass('active');
-  });
 
-    $('p.noshow').mouseenter(function () {
-      item_focus = $(this).parent();// console.log(item_focus)
-      $(item_focus).hasClass('active') ? $(item_focus).addClass('active') : '';
-    }).mouseleave(function (){
-
-      $(item_focus).removeClass('active');
-
-    });*/
- /* $('.tools').mouseleave(function (){// console.log('tools out');
-    $(this).removeClass('active');
-  });*/
   var tippy, boxtop;
-
+  // the following is based on this: http://www.impressivewebs.com/animate-display-block-none/
+  //use two classes with timeout to achieve the fade out/in effect:
+  // noshow handles display block/none & anime-hide handles opacity transition
   $('.metric-term').mouseenter(function () {
-    boxtop = $(this).parent();
-    if (boxtop.hasClass('active')){
-      // do nothing
-    } else {
-      $(this).parent().addClass('active');
-    }
+    boxtop = $(this);
     tippy = $(this).next();
-    if (tippy.hasClass('noshow')) {
-
-      tippy.removeClass('noshow');
-      setTimeout(function () {
-        tippy.removeClass('anime-hide');
-      }, 20);
+    if (boxtop.hasClass('active')){
+      // all is good, do nothing
     } else {
+      boxtop.addClass('active');
+      // get the paragraph following and show it if not showing already
 
-      tippy.addClass('anime-hide');
-      tippy.one('transitionend', function(e) {
-        tippy.addClass('noshow');
-      });
+        if (tippy.hasClass('noshow')) {
+          tippy.removeClass('noshow');
+          //remove opacity 0 class after timeout
+          setTimeout(function () {
+            tippy.removeClass('anime-hide');
+          }, 20);
+        } else { // already showing, do nothing
+        }
     }
   }).mouseleave(function (){
-     setTimeout(function () {
-       tippymouse();
-       }, 20);
-     });
-  //run it on its own also
-  tippymouse();
+    boxtop = $(this);
+    tippy = $(this).next();
 
-  function tippymouse(){
-      tippy.mouseover(function(){
-        //status quo
-      }).mouseleave(function(){
-
-        if (boxtop.hasClass('active')){
-          $(boxtop).removeClass('active');
-
-        } else {
-          //do nothing
-        }
-        tippy.removeClass('noshow'); console.log(this);
+    setTimeout(function () {
+      boxtop.removeClass('active');
+      if (!tippy.hasClass('noshow')) {console.log('nohasclass');
+        tippy.addClass('noshow');
+        //remove class for opacity 0 after timeout
         setTimeout(function () {
-          this.removeClass('anime-hide');
+          tippy.addClass('anime-hide');
         }, 20);
-      });
-    }
+
+
+        tippy.mouseleave(function () {
+          //boxtop.removeClass('active'); console.log(boxtop);
+          tippy.addClass('noshow');
+          setTimeout(function () {
+            tippy.addClass('anime-hide');
+          }, 10);
+        });
+      }
+    }, 300);
+
+  });
+
 })(jQuery);

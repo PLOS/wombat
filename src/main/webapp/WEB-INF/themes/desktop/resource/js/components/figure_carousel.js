@@ -39,20 +39,18 @@
     buildFigureCarouselLinks($this);
     moveFigureCarouselSection($this);
 
-    var $wrapper = $this.find('.carousel-wrapper');
-    var $slider = $wrapper.find('.slider');
+    var $wrapper = $this.find('.carousel-wrapper'),
+        $slider = $wrapper.find('.slider');
 
     // Find all items in the slider. (Call this after altering the slider to refresh.)
     function getItems() {
       return $slider.find('.carousel-item');
     }
 
-    var $items = getItems();
-    var itemWidth = $items.eq(0).outerWidth();
-    var visibleSize = Math.ceil($wrapper.innerWidth() / itemWidth);
-    var pageCount = Math.ceil($items.length / visibleSize);
-
-    // TODO: Special case where $items.length <= visibleSize ?
+    var $items = getItems(),
+        itemWidth = $items.eq(0).outerWidth(),
+        visibleSize = Math.ceil($wrapper.innerWidth() / itemWidth),
+        pageCount = Math.ceil($items.length / visibleSize);
 
     // Pad the slider so that the number of items is divisible by visibleSize
     var padding = (visibleSize - ($items.length % visibleSize)) % visibleSize;
@@ -67,8 +65,6 @@
     $items = getItems();
     $wrapper.scrollLeft(itemWidth * visibleSize); // Scroll past the cloned chunk at the beginning
 
-    // TODO: Embed videos?
-    // (Legacy impl hard-codes YouTube links here. Might want to extract into child themes.)
 
     var currentPage = 0;
 
@@ -150,7 +146,6 @@
       }
     }
 
-    // TODO: Implement autoplay, touch events
   };
 
 })(jQuery);

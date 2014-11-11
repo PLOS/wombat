@@ -360,7 +360,7 @@ $line-height-small: ($line-height * .5);
       display: none;
       position: absolute;
       background-color: $clr-body-text;
-      line-height: rem-calc(50); //TODO: is this right?
+      line-height: rem-calc(50);
       height: rem-calc(50);
       width: rem-calc(23);
       font-size: $txt-size-large;

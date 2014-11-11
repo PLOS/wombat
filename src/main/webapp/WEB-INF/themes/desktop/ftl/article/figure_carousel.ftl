@@ -16,8 +16,8 @@
               but can find it by inspecting the transformed HTML below here.
               -->
 
-              <@siteLink path=("article/figure/image?size=inline&amp;id=" + figure.doi) ; src>
-                <img src="${src}" alt="${figure.title?html}" />
+              <@siteLink path=("article/figure/image?size=inline&id=" + figure.doi) ; src>
+                <img src="${src?html}" alt="${figure.title?html}" />
               </@siteLink>
             </a>
           </div>

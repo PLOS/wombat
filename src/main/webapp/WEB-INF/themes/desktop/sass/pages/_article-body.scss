@@ -182,7 +182,9 @@ $line-height-small: ($line-height * .5);
       @extend .hide;
     }
   }
-
+  ol.simple {
+    li{list-style: none;}
+  }
   span.gene {
     word-break: break-all;
   }
@@ -194,8 +196,8 @@ $line-height-small: ($line-height * .5);
   span.equation {
     display: block;
     text-align: center;
-    font-size: $txt-size-medium;
     margin: $line-height 0;
+    font-size: $txt-size-xlarge;
     .note {
       color: $clr-body-text;
       font-size: $txt-size-xxsmall;
@@ -203,8 +205,6 @@ $line-height-small: ($line-height * .5);
       text-align: right;
       font-weight: bold;
     }
-
-  }
 
 }
 

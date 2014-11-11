@@ -481,8 +481,8 @@ $icn-tiny-align: middle;
 @mixin js-tooltip-container{
   position:relative;
 }
-@mixin js-tooltip-target($top:0, $margintop: $pad-default){
-  top: $top;
+@mixin js-tooltip-target($margintop: $pad-default){
+  top: 0;
   height: 0;
   position: absolute;
   margin-top: $margintop;   /// margin to prevent blinking between the trigger and the tooltip

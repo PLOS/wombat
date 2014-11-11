@@ -33,6 +33,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   width: 100%;
   background: $white;
   padding-left: $pad-small;
+  min-height: rem-calc(100);
+  position: relative;
 }
 
 .signposts {
@@ -41,14 +43,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 
   .anime-hide {
-    opacity: 0;
+     opacity: 0;
   }
   @include plos-grid-column(160, $gutter: none);
   @extend .inline-list;
   margin: $pad-default $pad-default 0 0;
   float: right;
   text-align: center;
-  height: 159px;
+  height: rem-calc(159);
   opacity: 1;
   @include single-transition(opacity);
 
@@ -64,18 +66,26 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     font-weight: bold;
     font-size: $txt-size-medium-large;
     color: $grey-dark;
-    width: 80px;
-    height: 80px;
+    width: rem-calc(80);
+    height: rem-calc(80);
 
     .tools {
-      height: 100px;
 
       a {
         font-size: $txt-size-xsmall;
         color: $grey-dark;
-        padding: 5px;
+        padding: $pad-xsmall;
+       // @include single-transition(background-color);
+        transition-property: all;
+        transition-duration: .5s;
+        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 
-        &:hover, &.active {
+        &.show-tip {
+          background-color: $plos-default;
+          border-radius: $border-radius-default;
+          color: $white;
+        }
+        &:hover {
           background-color: $plos-default;
           border-radius: $border-radius-default;
           color: $white;
@@ -84,95 +94,75 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       }
 
       p {
+
         background-color: $plos-default;
         border-radius: $border-radius-default;
-        width: 280px;
+        width: rem-calc(280);
         position: absolute;
         text-align: left;
         z-index: map-get($zindex, overlay);
-        padding: 5px;
-        @include single-transition(opacity);
+        padding: $pad-xsmall;
+        display: none;
 
-        a {
+        > a {
           color: $white;
           padding: 0;
-          &:hover {
-
-          }
+          display: block;
         }
       }
 
       p.saves-tip {
-        top: 325px;
-        right: 311px;
+        top: rem-calc(93);
+        right: rem-calc(118);
       }
-
       p.citations-tip {
-        top: 325px;
-        right: 223px;
-
+        top: rem-calc(93);
+        right: rem-calc(30);
         .scopus, .crossref {
           display: none;
         }
       }
-
       p.views-tip {
-        top: 406px;
-        right: 311px;
+        top: rem-calc(174);
+        right: rem-calc(118);
       }
-
       p.shares-tip {
-        top: 406px;
-        right: 223px;
+        top: rem-calc(174);
+        right: rem-calc(36);
       }
     }
+  }
+    .unavailable {
+      width: rem-calc(160);
+      border-right: 0;
+      border-bottom: 0;
+      font-size: $txt-size-xsmall;
+      font-weight: normal;
+      text-align: right;
+      color: $grey-med-dark;
+    }
+    #loadingMetrics {
+      @extend .unavailable;
+      position: relative;
+      height: rem-calc(160);
 
-    .tools.active {
-
-      > a {
-        background-color: $plos-default;
-        border-radius: $border-radius-default;
-        color: $white;
-        text-decoration: underline;
+      text-align: center;
+      p {
+        padding-top: rem-calc(75);
+        font-size: $txt-size-medium-large;
       }
-      p > a {
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
+    }
+    #tooSoon {
+      @extend .unavailable;
+      padding: rem-calc(25) $pad-small $pad-small $pad-medium;
+    }
+    #metricsError {
+      @extend .unavailable;
+      padding: rem-calc(105) $pad-small $pad-small $pad-default;
+      background: $grey-light;
+      height: rem-calc(160);
     }
   }
-
-  .unavailable {
-    width: 160px;
-    border-right: 0;
-    border-bottom: 0;
-    font-size: $txt-size-xsmall;
-    font-weight: normal;
-    text-align: right;
-    color: $grey-med-dark;
-  }
-  #loadingMetrics {
-    @extend .unavailable;
-    height: 160px;
-    font-size: $txt-size-medium-large;
-    text-align: center;
-    padding-top: 50px;
-  }
-  #tooSoon {
-    @extend .unavailable;
-    padding: 25px 10px 10px 30px;
-  }
-  #metricsError {
-    @extend .unavailable;
-    padding: 105px 10px 10px 20px;
-    background: $grey-light;
-    height: 160px;
-  }
-}
 
 .article-meta {
   //  padding-right: $pad-default;
@@ -288,7 +278,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
     li {
       margin-left: 0;
-      line-height: 16px;
+      line-height: rem-calc(16);
       font-size: rem-calc($txt-size-xsmall);
     }
   }
@@ -574,7 +564,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .dload-xml {
   @extend .tooltip-aside;
-  @include js-tooltip-target( $top: rem-calc(40));
+  @include js-tooltip-target(rem-calc(40));
   opacity: 1;
   z-index: map-get($zindex, dropdown);
   left: -127px;
@@ -594,7 +584,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .print-options {
   @extend .tooltip-aside;
-  @include js-tooltip-target( $top: rem-calc(40));
+  @include js-tooltip-target(rem-calc(40));
   left: 0;
   opacity: 1;
   z-index: map-get($zindex, dropdown);
@@ -626,7 +616,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .share-options {
   @extend .tooltip-aside;
-  @include js-tooltip-target($margintop: rem-calc(40));
+  @include js-tooltip-target(rem-calc(40));
   padding-left: $pad-small;
   opacity: 1;
   z-index: map-get($zindex, dropdown);
@@ -808,7 +798,7 @@ body.article .ui-widget-overlay {
         button {
           margin-top: $pad-small;
           margin-right: $pad-xsmall;
-          line-height: 20px;
+          line-height: $txt-size-xlarge;
           background-color: $white;
           border: none;
           border-radius: 4px;
@@ -821,7 +811,7 @@ body.article .ui-widget-overlay {
         p.taxo-confirm {
           display: none;
           margin-top: $pad-xsmall;
-          line-height: 75px;
+          line-height: rem-calc(75);
         }
       }
 
@@ -830,7 +820,7 @@ body.article .ui-widget-overlay {
         display: inline-block;
         float: right;
         width: rem-calc(16);
-        height: 16px;
+        height: rem-calc(16);
         background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
         cursor: pointer;
 
@@ -957,7 +947,7 @@ body.article .ui-widget-overlay {
     div {
       background: image-url('sprite.twitter.actions.png') no-repeat 0 0;
       width: rem-calc(17);
-      height: 15px;
+      height: rem-calc(15);
       display: inline-block;
     }
   }
@@ -1013,5 +1003,3 @@ body.article .ui-widget-overlay {
     }
   }
 }
- 
-

@@ -6,7 +6,7 @@
 
 (function ($) {
 
-  var s, float_header, is_author_list, check_authors_truncation;
+  var s, float_header, is_author_list, check_authors_truncation, spin_target, spin_opts, almspinner;
 
   float_header = {
 
@@ -97,6 +97,7 @@
     }
   };
 
+
   $( document ).ready(function() {
 
     $('.preventDefault').on('click', function (e) {
@@ -129,6 +130,13 @@
     // initialize tooltip_hover for everything
     tooltip_hover.init();
 
+    spin_opts = {
+      width: 1,
+      top: '40%', // Top position relative to parent
+      left: '50%' // Left position relative to parent
+    };
+    spin_target = document.getElementById('loadingMetrics');
+    almspinner = new Spinner(spin_opts).spin(spin_target);
 
   });
 

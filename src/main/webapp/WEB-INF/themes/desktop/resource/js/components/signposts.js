@@ -25,11 +25,11 @@
       return this;
     };
 
-    date_check = function (input, numDays) {
-      var inputDate = new Date(input);
+    date_check = function (logDate, numDays) {
+
       var dateWeek = new Date().addDays(numDays);
 
-      if (inputDate < dateWeek) {
+      if (logDate < dateWeek) {
         return false;
 
       } else {
@@ -68,7 +68,9 @@
         } else {
         // is date less than 3 days ago
           issued = data.data[0].issued["date-parts"];
-          compareDate = new Date(issued);
+
+          compareDate = moment(issued, "YYYY,MM,DD");
+
           isThree = date_check(compareDate, 3);
 
           if (isThree === true) {
@@ -118,52 +120,42 @@
     }
   };
 
-  var tippy, boxtop;
-  // the following is based on this: http://www.impressivewebs.com/animate-display-block-none/
-  //use two classes with timeout to achieve the fade out/in effect:
-  // noshow handles display block/none & anime-hide handles opacity transition
   $('.metric-term').mouseenter(function () {
-    boxtop = $(this);
-    tippy = $(this).next();
-    if (boxtop.hasClass('active')){
-      // all is good, do nothing
-    } else {
-      boxtop.addClass('active');
-      // get the paragraph following and show it if not showing already
 
-        if (tippy.hasClass('noshow')) {
-          tippy.removeClass('noshow');
-          //remove opacity 0 class after timeout
-          setTimeout(function () {
-            tippy.removeClass('anime-hide');
-          }, 20);
-        } else { // already showing, do nothing
-        }
-    }
+    clearTimeout($(this).data('mouseId'));
+    $(this).addClass('show-tip');
+    var tippy = $(this).next();
+
+    $(tippy).fadeIn('fast').addClass('tippy');
+
   }).mouseleave(function (){
-    boxtop = $(this);
-    tippy = $(this).next();
+    var boxtop = $(this);
+    var tippy = $(this).next();
 
-    setTimeout(function () {
-      boxtop.removeClass('active');
-      if (!tippy.hasClass('noshow')) {console.log('nohasclass');
-        tippy.addClass('noshow');
-        //remove class for opacity 0 after timeout
-        setTimeout(function () {
-          tippy.addClass('anime-hide');
-        }, 20);
+      $(tippy).mouseenter(function(){
 
+      var boxtop = $(tippy).prev();
+        clearTimeout($(boxtop).data('mouseId'));
+        if($(boxtop).hasClass('show-tip')){} else {$(boxtop).addClass('show-tip');}
 
-        tippy.mouseleave(function () {
-          //boxtop.removeClass('active'); console.log(boxtop);
-          tippy.addClass('noshow');
-          setTimeout(function () {
-            tippy.addClass('anime-hide');
-          }, 10);
+      }).mouseleave(function () {
+        var boxtop = $(tippy).prev();
+
+        $(boxtop).removeClass('show-tip');
+
+        $(tippy).fadeOut('fast');
         });
-      }
-    }, 300);
 
+    var mouseId = setTimeout(function(){
+
+        $(tippy).fadeOut('fast');
+
+      $(boxtop).removeClass('show-tip');
+    }, 250);
+
+      $(boxtop).data('mouseId', mouseId);
   });
 
 })(jQuery);
+
+

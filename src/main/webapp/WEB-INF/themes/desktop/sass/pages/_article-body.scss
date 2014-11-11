@@ -304,12 +304,12 @@ $line-height-small: ($line-height * .5);
   $fc-colorbg-container: $grey-light;
   $fc-colorbg-item: $white;
   $fc-pad-item-between: $pad-small;
-  $fc-pad-container-vertical: $pad-default;
-  $fc-pager-size: rem-calc(8);
-  $fc-pad-item-inside: rem-calc(8);
+  $fc-pad-container-vertical: $line-height;
+  $fc-pager-size: $txt-size-xxxsmall;
+  $fc-pad-item-inside: rem-calc(4);
   $fc-size-item-width: rem-calc(164);
   $fc-size-item-height: rem-calc(112);
-  $fc-button-pad: ($fc-pad-item-inside /2);
+  $fc-button-pad: $fc-pad-item-inside;
 
   background: $fc-colorbg-container;
   position: relative;
@@ -317,7 +317,8 @@ $line-height-small: ($line-height * .5);
   padding: $fc-pad-container-vertical 0;
   text-align: center;
   width: 100%;
-  &:hover .carousel-control .button{
+  &:hover .carousel-control .button,
+ .carousel-control.controls-show  button{
     display: block;
   }
   .carousel-wrapper {
@@ -340,10 +341,10 @@ $line-height-small: ($line-height * .5);
     img {
       height: auto;
       width: auto;
-      max-width: ($fc-size-item-width - $fc-pad-item-inside);
-      max-height: ($fc-size-item-height - $fc-pad-item-inside);
+      max-width: ($fc-size-item-width - ($fc-pad-item-inside * 2));
+      max-height: ($fc-size-item-height - ($fc-pad-item-inside * 2));
       display: block;
-      margin: 0 auto;
+      margin: $fc-pad-item-inside auto;
     }
 
     &.empty{
@@ -358,7 +359,6 @@ $line-height-small: ($line-height * .5);
       right:$fc-button-pad;
       display: none;
       position: absolute;
-      font-size: rem-calc(14);
       background-color: $clr-body-text;
       line-height: rem-calc(50); //TODO: is this right?
       height: rem-calc(50);

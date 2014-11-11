@@ -108,6 +108,27 @@
     $control.find('.button.next').click(function () {
       goToPage(currentPage + 1);
     });
+  // TOUCH EVENTS uses jquery.touchswipe.js
+    if ($('html.touch').length) {
+
+      $wrapper.swipe( {
+        //Generic swipe handler for all directions
+        swipe:function(event,target) {
+        $control.addClass('controls-show');
+      },
+        swipeLeft:function(event,target) {
+          goToPage(currentPage - 1);
+        },
+        swipeRight:function(event,target) {
+          goToPage(currentPage + 1);
+        },
+        tap:function(event,target) {
+          $control.addClass('controls-show');
+        },
+        threshold: 20
+      });
+    } else { // do nothing
+     };
     if ($items.length > visibleSize) {
       function createPageButton(pageNumber) {
         //for IE8 you have to put the closing span AND the &nbsp

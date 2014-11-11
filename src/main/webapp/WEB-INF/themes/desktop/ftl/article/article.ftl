@@ -92,6 +92,7 @@
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>
+<script type="text/javascript" src="resource/js/vendor/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"/></script>
   <@renderJs />
 
   <script type="text/javascript">  /*filesizetable*/

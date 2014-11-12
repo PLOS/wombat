@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.util;
 
 
+import com.google.common.hash.Hashing;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,19 +23,25 @@ public class CacheParamsTest {
      "lude=http%3A%2F%2Frdf.plos.org%2FRDF%2FarticleType%2FRetraction&exclude=http%3A%2F%2Frdf.plos.org%2FRDF%" +
      "2FarticleType%2FExpression%2520of%2520Concern";
 
-    Map<String, Integer> keyLenMap = new HashMap<>();
-    keyLenMap.put("SHA-256", 64); // 256 bits = 64 hex chars
-    keyLenMap.put("SHA-1", 40); // 160 bits = 40 hex chars
-    keyLenMap.put("MD5", 32); // 128 bits = 32 hex chars;
+    int keyLen = CacheParams.HASH_ALGORITHM.bits() / 4;
 
     String hash1 = CacheParams.createKeyHash(exampleUrl1);
     String hash2 = CacheParams.createKeyHash(exampleUrl2);
 
     Assert.assertFalse(hash1.contentEquals(exampleUrl1), "Hash key generation failure");
-    Assert.assertFalse(hash1.contentEquals(CacheParams.createKeyHash(exampleUrl1)), "Non-deterministic hash key");
+    Assert.assertTrue(hash1.contentEquals(CacheParams.createKeyHash(exampleUrl1)), "Non-deterministic hash key");
     Assert.assertFalse(hash1.contentEquals(hash2), "Hash keys are not unique");
-    Assert.assertTrue(keyLenMap.containsKey(CacheParams.HASH_ALGORITHM), "Invalid hashing algorithm");
-    Assert.assertTrue(Pattern.matches("^[0-9a-f]+$", hash1), "Hash keys are not hex string format");
-    Assert.assertTrue(hash1.length() == keyLenMap.get(CacheParams.HASH_ALGORITHM), "Incorrect hash length");
+    Assert.assertTrue(Pattern.matches("^[0-9A-F]+$", hash1), "Hash keys are not hex string format");
+    Assert.assertTrue(hash1.length() == keyLen, "Incorrect hash length");
+
+    Map<Object, String> expectedHashes = new HashMap<>();
+    expectedHashes.put(Hashing.md5(), "25FF3F5D3A44A1C19DD9F54773C4D32D");
+    expectedHashes.put(Hashing.sha1(), "4E435D1AB8B9F08B36D1F4A76F0628644452A339");
+    expectedHashes.put(Hashing.sha256(), "63B957877D9909518BAA5FB4F6DDC200AB494E0819887AD96CB6A98B2CADA3FA");
+    expectedHashes.put(Hashing.sha512(), "B0D827FF43389ECC322022EBB2A447C045313804CECD324560CD9727285A3AAD87A822C23" +
+            "F763BAB884DA75F91A0768DAD30D0E6F5E5AA2361A0B3F5AEF757B7");
+    if (expectedHashes.keySet().contains(CacheParams.HASH_ALGORITHM)){
+      Assert.assertEquals(hash1, expectedHashes.get(CacheParams.HASH_ALGORITHM), "Incorrect hash");
+    }
   }
 }

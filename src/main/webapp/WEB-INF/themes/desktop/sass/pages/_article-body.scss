@@ -197,7 +197,7 @@ $line-height-small: ($line-height * .5);
     display: block;
     text-align: center;
     margin: $line-height 0;
-    font-size: $txt-size-xlarge;
+   font-size: $txt-size-xlarge;
     .note {
       color: $clr-body-text;
       font-size: $txt-size-xxsmall;
@@ -495,3 +495,21 @@ $line-height-small: ($line-height * .5);
     width: 100%;
   }
 }
+
+
+
+/*doc
+---
+title: Article Page
+name:  article_page
+category: article page
+---
+
+
+
+```html_example
+  <
+
+```
+
+*/

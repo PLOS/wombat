@@ -560,6 +560,14 @@ body.article .ui-widget-overlay {
 }
 // end overrides for crossmark's jquery ui
 
+#collectionList {
+  list-style-type: none;
+  margin-left: 0;
+  li a {
+    @include link-text($plos-default, underline);
+  }
+}
+
 .related-articles-container {
   @extend .aside-container;
 

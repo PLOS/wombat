@@ -3,9 +3,13 @@ package org.ambraproject.wombat.freemarker;
 import freemarker.core.Environment;
 import freemarker.template.TemplateModelException;
 import freemarker.template.TemplateScalarModel;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.UnresolvedSiteException;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -27,15 +31,25 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
 
   @Autowired
   private SiteResolver siteResolver;
+  @Autowired
+  protected SiteSet siteSet;
 
   @Override
-  protected String getValue(Environment env, Map params) throws TemplateModelException {
+  protected String getValue(Environment env, Map params) throws TemplateModelException, IOException {
     Object pathObj = params.get("path");
     if (!(pathObj instanceof TemplateScalarModel)) {
       throw new RuntimeException("path parameter required");
     }
     String path = ((TemplateScalarModel) pathObj).getAsString();
-    return new SitePageContext(siteResolver, env).buildLink(path);
+    Object targetJournalObj = params.get("journalKey");
+
+    SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
+    if (targetJournalObj instanceof TemplateScalarModel) {
+      String targetJournal = ((TemplateScalarModel) targetJournalObj).getAsString();
+      Site targetSite = sitePageContext.getSite().getTheme().resolveForeignJournalKey(siteSet, targetJournal);
+      return targetSite.getRequestScheme().buildLink(SitePageContext.extractRequest(env), path);
+    }
+    return sitePageContext.buildLink(path);
   }
 
 }

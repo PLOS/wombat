@@ -19,7 +19,10 @@ import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
@@ -101,6 +104,17 @@ public class WombatControllerTestConfig extends WebMvcConfigurerAdapter {
     resolver.setSuffix(".ftl");
     resolver.setRequestContextAttribute("requestContext");
     return resolver;
+  }
+
+  /* This type of view resolver will always return a view, so needs to be the last in the chain.
+   It has been left unconfigured intentionally simply to allow for MockMvc-based testing
+   of controllers that return a logical view name where rendering of an actual template is
+   not desired or necessary
+   */
+  @Bean
+  public ViewResolver internalResViewResolver() {
+    InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+    return viewResolver;
   }
 
   @Bean

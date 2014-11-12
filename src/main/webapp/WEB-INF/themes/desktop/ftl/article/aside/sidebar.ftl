@@ -7,6 +7,10 @@
 
 <#include "crossmark.ftl" />
 
+<#if collectionIssues?keys?size gt 0>
+<#include "asideCollections.ftl" />
+</#if>
+
 <#include "relatedArticles.ftl" />
 
 <#include "subjectAreas.ftl" />

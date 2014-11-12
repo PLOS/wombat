@@ -50,6 +50,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -175,30 +176,27 @@ public class ArticleController extends WombatController {
    */
   private Map<?, ?> getCollectionIssues(Map<?, ?> articleMetadata, final Site site) {
 
-    Predicate<Map.Entry<String,Map<String, Object>>> collectionsJournalFilter =
-     new Predicate<Map.Entry<String,Map<String, Object>>>() {
-      public boolean apply(Map.Entry<String,Map<String, Object>> entry) {
-        Map<String, String> parentJournal = ((Map<String, String>) entry.getValue().get("parentJournal"));
-        if (parentJournal != null) {
-          String journalKey = parentJournal.get("journalKey");
-          if (journalKey != null){
-            Site publishedSite;
-            try {
-              publishedSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
-              return (boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection");
-            } catch (UnmatchedSiteException use) {
-              throw new RuntimeException("Could not resolve collections pub site using journalKey: " + journalKey, use);
-            } catch (Exception e) {
-              throw new RuntimeException(e);
-            }
+    Map<String, Map<String, Object>> articleIssues = (Map<String, Map<String, Object>>)articleMetadata.get("issues");
+    for (Iterator<Map.Entry<String, Map<String, Object>>> iter = articleIssues.entrySet().iterator(); iter.hasNext();) {
+      Map.Entry<String, Map<String, Object>> entry = iter.next();
+      Map<String, String> parentJournal = ((Map<String, String>) entry.getValue().get("parentJournal"));
+      if (parentJournal != null) {
+        String journalKey = parentJournal.get("journalKey");
+        if (journalKey != null){
+          Site publishedSite;
+          try {
+            publishedSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
+            if ((boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection")) { continue; }; // keep
+          } catch (UnmatchedSiteException use) {
+            throw new RuntimeException("Could not resolve collections pub site using journalKey: " + journalKey, use);
+          } catch (Exception e) {
+            throw new RuntimeException(e);
           }
         }
-        return false;
       }
-    };
-
-    Map<String, Map<String, Object>> articleIssues = (Map<String, Map<String, Object>>)articleMetadata.get("issues");
-    return Maps.filterEntries(articleIssues, collectionsJournalFilter);
+      iter.remove(); // filter out any non-collection issues
+    }
+    return articleIssues;
   }
 
   /**

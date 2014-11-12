@@ -207,6 +207,7 @@ $line-height-small: ($line-height * .5);
     }
 
 }
+}
 
 // TODO - write some docs
 @mixin border-width-adjust($border-width: rem-calc(2), $spacing: $pad-small, $border-color: $clr-highlight) {

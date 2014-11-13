@@ -567,6 +567,7 @@ body.article .ui-widget-overlay {
   margin-left: 0;
   li a {
     @include link-text($plos-default, underline);
+    font-size: $txt-size-xsmall;
   }
 }
 

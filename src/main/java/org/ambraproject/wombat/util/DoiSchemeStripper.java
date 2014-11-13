@@ -50,10 +50,22 @@ public final class DoiSchemeStripper {
     Object doiObj = map.get(doiFieldName);
     if (doiObj != null) {
       String doi = (String) doiObj;
-      if (doi.startsWith(DOI_URI_SCHEME)) {
-        map.put(doiFieldName, doi.substring(DOI_URI_SCHEME.length()));
+      String stripped = strip(doi);
+      if (!stripped.equals(doi)) {
+        map.put(doiFieldName, stripped);
       }
     }
     return map;
   }
+
+  /**
+   * Removes the URI scheme, if present, from a DOI.
+   *
+   * @param doi a DOI in URI format or a DOI name
+   * @return a DOI name with no URI scheme
+   */
+  public static String strip(String doi) {
+    return doi.startsWith(DOI_URI_SCHEME) ? doi.substring(DOI_URI_SCHEME.length()) : doi;
+  }
+
 }

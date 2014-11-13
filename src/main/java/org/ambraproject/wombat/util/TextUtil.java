@@ -76,9 +76,21 @@ public class TextUtil {
     String text = tagMatcher.replaceAll("");
 
     // Convert free whitespace to human-friendly.
-    text = CharMatcher.WHITESPACE.trimAndCollapseFrom(text, ' ');
+    text = sanitizeWhitespace(text);
 
     return text;
+  }
+
+  /**
+   * Remove leading and trailing whitespace, and collapse all other whitespace into single spaces. Given marked-up text
+   * (such as from XML or HTML), this condenses indentations and line breaks into a human-readable form, as a web
+   * browser would show it.
+   *
+   * @param text some text
+   * @return the same text with whitespace trimmed and collapsed
+   */
+  public static String sanitizeWhitespace(String text) {
+    return CharMatcher.WHITESPACE.trimAndCollapseFrom(text, ' ');
   }
 
 }

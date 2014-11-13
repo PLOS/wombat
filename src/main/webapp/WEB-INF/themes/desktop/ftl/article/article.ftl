@@ -96,10 +96,9 @@
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
 "HTML-CSS": {
-scale: 150,
 linebreaks: {
   automatic: true,
-   width: "container"
+  width: "85% container"
 }
 }
 });

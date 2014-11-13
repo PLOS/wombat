@@ -92,21 +92,7 @@
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>
-<!--  mathjax configuration options  -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-"HTML-CSS": {
-linebreaks: {
-  automatic: true,
-  width: "85% container"
-}
-}
-});
-</script>
-
-<script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+  <#include mathjax.ftl>
   <@renderJs />
 
   <script type="text/javascript">  /*filesizetable*/

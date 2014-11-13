@@ -1438,7 +1438,7 @@
     <xsl:choose>
       <xsl:when test="@list-type='bullet'">
         <xsl:call-template name="newline1"/>
-        <ul>
+        <ul class="bulleted">
           <xsl:call-template name="newline1"/>
           <xsl:apply-templates/>
           <xsl:call-template name="newline1"/>

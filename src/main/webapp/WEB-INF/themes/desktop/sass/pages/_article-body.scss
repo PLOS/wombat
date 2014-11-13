@@ -51,7 +51,7 @@ $line-height-small: ($line-height * .5);
     margin-bottom: $txt-size-default;
     line-height: $line-height;
   }
-  ul {
+  ul.bulleted {
     list-style-type: none;
 
     li {

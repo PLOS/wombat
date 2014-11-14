@@ -92,8 +92,9 @@
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>
-  <#include "mathjax.ftl">
   <@renderJs />
+
+<#include "mathjax.ftl">
 
   <script type="text/javascript">  /*filesizetable*/
    (function ($) {

@@ -98,6 +98,8 @@
   <@js src="resource/js/pages/article_sidebar.js"/>
   <@renderJs />
 
+<#include "mathjax.ftl">
+
   <script type="text/javascript">  /*filesizetable*/
    (function ($) {
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);

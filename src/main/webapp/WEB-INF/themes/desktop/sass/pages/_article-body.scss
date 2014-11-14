@@ -91,6 +91,10 @@ $line-height-small: ($line-height * .5);
   h4 {
     font-weight: normal
   }
+  .title-small {
+    font-size: $txt-size-default;
+    font-weight: bold;
+  }
 
   blockquote {
     border-left: $pad-xsmall solid $clr-separator;
@@ -206,6 +210,18 @@ $line-height-small: ($line-height * .5);
 
   }
 
+  // supplementary materials - need to have no margin between paragraphs just below the box
+  .supplementary-material{
+    margin-bottom: $line-height;
+    p {margin-bottom: 0;}
+
+  }
+
+}
+
+// fig share widget needs content-box sizing to space everything properly.
+#figshare_enlarge * {
+  box-sizing: content-box;
 }
 
 // TODO - write some docs

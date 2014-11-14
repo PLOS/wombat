@@ -144,6 +144,35 @@ div[data-js-tooltip="tooltip_target"]{ display: none;}
 body.article .ui-widget-overlay {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
 }
-
+.article-meta {
+  width: 100% !important;
+}
+.article-meta .classifications {
+  width: 600px !important;
+}
+.article-meta .signposts {
+  width: 320px !important;
+  height: 80px;
+  float: right;
+  margin-top: -6px !important;
+}
+.article-meta .signposts li {
+  background-color: #fff !important;
+  display: inline-block !important;
+  float: left;
+  border-bottom: 1px solid #efefef;
+  border-right: 1px solid #efefef;
+  padding: 20px 5px 0 !important;
+  text-align: center;
+  margin: 0 !important;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  width: 80px;
+  height: 80px;
+}
+.article-meta .signposts li:first-child {
+  border-left: 1px solid #efefef;
+}
 
 

@@ -16,11 +16,9 @@
 <#include "../common/header/header.ftl" />
 <div class="set-grid">
   <header class="title-block">
+  <#include "signposts.ftl" />
     <div class="article-meta">
     <#include "articleClassifications.ftl" />
-      <ul id="almSignposts" class="signposts">
-        <li>1 billion<br>views</li>
-      </ul>
     </div>
     <div class="article-title-etc">
     <#include "articleTitle.ftl" />
@@ -90,7 +88,10 @@
   <@js src="resource/js/components/table_open.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
+  <@js src="resource/js/vendor/moment.js"/>
   <@js src="resource/js/components/twitter_module.js"/>
+  <@js src="resource/js/components/signposts.js"/>
+  <@js src="resource/js/vendor/spin.js"/>
 
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>

@@ -144,35 +144,91 @@ div[data-js-tooltip="tooltip_target"]{ display: none;}
 body.article .ui-widget-overlay {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
 }
-.article-meta {
-  width: 100% !important;
-}
-.article-meta .classifications {
-  width: 600px !important;
-}
-.article-meta .signposts {
-  width: 320px !important;
-  height: 80px;
+
+.article .title-block .signposts {
+  width: 322px !important;
+  height: 80px !important;
   float: right;
-  margin-top: -6px !important;
+  margin: -5px 0 0 -40px !important;
+  padding: 0;
+  border-left: 1px solid #efefef !important;
 }
-.article-meta .signposts li {
+
+.article .title-block ul.signposts li {
   background-color: #fff !important;
-  display: inline-block !important;
+  display: inline !important;
   float: left;
   border-bottom: 1px solid #efefef;
   border-right: 1px solid #efefef;
   padding: 20px 5px 0 !important;
-  text-align: center;
-  margin: 0 !important;
-  font-weight: bold;
-  font-size: 16px;
-  color: #333;
-  width: 80px;
-  height: 80px;
+  margin: 0;
 }
-.article-meta .signposts li:first-child {
-  border-left: 1px solid #efefef;
+.article .title-block .signposts li:first-child {
+  border-left: 1px solid #efefef !important;
 }
 
+.article-meta, .article-meta .classifications {
+  width: 600px !important;
+}
+
+.article .signposts #loadingMetrics {
+  display: none !important;
+  font-size: 12px;
+  font-weight: normal;
+  color: #666;
+  position: relative;
+  background-color: #fff !important;
+  width: 320px !important;
+  height: 80px !important;
+  text-align: center;
+  border: 1px #efefef solid !important;
+
+}
+.article .signposts #loadingMetrics p {
+  padding: 30px 15px 0 0;
+  font-size: 20px;
+  width: 180px;
+  float: right;
+   }
+.article .signposts #tooSoon {
+  background-color: #efefef !important;
+  width: 320px !important;
+  height: 80px !important;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: left !important;
+  color: #666;
+  padding: 10px;
+}
+.article .signposts #metricsError {
+
+  font-size: 12px;
+  font-weight: normal;
+  text-align: left !important;
+  color: #666;
+  padding: 10px;
+  background-color: #efefef !important;
+  width: 320px !important;
+  height: 80px !important;
+
+}
+.article .signposts p.saves-tip {
+  top: 70px !important;
+  right: 40px !important;
+}
+.article .signposts p.citations-tip {
+  top: 70px !important;
+  right: 40px !important;
+  .scopus, .crossref {
+    display: none;
+  }
+}
+.article .signposts p.views-tip {
+  top: 70px !important;
+  right: 40px !important;
+}
+.article .signposts p.shares-tip {
+  top: 70px !important;
+  right: 40px !important;
+}
 

@@ -66,6 +66,9 @@
 
       <#include "amendment.ftl" />
 
+      <#-- Figure carousel is placed here, then inserted midway through article text by JavaScript -->
+      <#include "figure_carousel.ftl" />
+
         <div class="article-text" id="artText">
         ${articleText}
         </div>

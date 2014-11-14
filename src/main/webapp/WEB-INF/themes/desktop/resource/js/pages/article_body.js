@@ -34,6 +34,10 @@
 
   addMediaCoverageLink();
 
+
+  $('#figure-carousel-section').buildFigureCarousel({});
+
+
   function formatHumanReadableByteSize(bytes) {
     // Space before "Bytes". All others are concatenated to number with no space.
     var units = [' Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];

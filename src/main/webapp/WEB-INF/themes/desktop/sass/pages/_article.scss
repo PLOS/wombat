@@ -506,6 +506,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   font-size: $txt-size-xxxsmall;
 }
 
+
+
 // RIGHT COLUMN STYLES
 
 .dload-menu {
@@ -675,6 +677,15 @@ body.article .ui-widget-overlay {
   z-index: map-get($zindex, titleTopFixed);
 }
 // end overrides for crossmark's jquery ui
+
+#collectionList {
+  list-style-type: none;
+  margin-left: 0;
+  li a {
+    @include link-text($plos-default, underline);
+    font-size: $txt-size-xsmall;
+  }
+}
 
 .related-articles-container {
   @extend .aside-container;

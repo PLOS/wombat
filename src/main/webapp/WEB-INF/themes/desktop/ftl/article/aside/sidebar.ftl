@@ -9,6 +9,10 @@
 
 <#include "relatedArticles.ftl" />
 
+<#if collectionIssues?keys?size gt 0>
+  <#include "asideCollections.ftl" />
+</#if>
+
 <#include "subjectAreas.ftl" />
 
 <#include "adSlotAside.ftl" />

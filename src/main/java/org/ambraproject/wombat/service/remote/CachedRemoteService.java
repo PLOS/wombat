@@ -138,7 +138,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
       return cache.get(Preconditions.checkNotNull(cacheKey));
     } catch (Exception e) {
       // Unexpected, but to degrade gracefully, treat it the same as a cache miss
-      log.error("Error accessing cache", e);
+      log.error("Error accessing cache using key: {}", cacheKey, e);
       return null;
     }
   }

@@ -103,7 +103,7 @@
 
           } else {}
         }
-      }).fail(function(){ alert('fail');
+      }).fail(function(){
         $('.twitter-container').css('display', 'block');
         $('#tweetList').append(errorText);
       });

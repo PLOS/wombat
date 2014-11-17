@@ -103,6 +103,7 @@ public class Citations {
     citation.append(' ').append(pubInfo);
 
     String doi = (String) articleMetadata.get("doi");
+    doi = DoiSchemeStripper.strip(doi);
     citation.append(" doi:").append(doi);
 
     return citation.toString();

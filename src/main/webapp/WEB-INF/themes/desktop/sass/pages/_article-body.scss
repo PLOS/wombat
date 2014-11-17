@@ -51,7 +51,7 @@ $line-height-small: ($line-height * .5);
     margin-bottom: $txt-size-default;
     line-height: $line-height;
   }
-  ul {
+  ul.bulleted {
     list-style-type: none;
 
     li {
@@ -90,6 +90,10 @@ $line-height-small: ($line-height * .5);
   }
   h4 {
     font-weight: normal
+  }
+  .title-small {
+    font-size: $txt-size-default;
+    font-weight: bold;
   }
 
   blockquote {
@@ -182,9 +186,7 @@ $line-height-small: ($line-height * .5);
       @extend .hide;
     }
   }
-  ol.simple {
-    li{list-style: none;}
-  }
+
   span.gene {
     word-break: break-all;
   }
@@ -196,8 +198,8 @@ $line-height-small: ($line-height * .5);
   span.equation {
     display: block;
     text-align: center;
+    font-size: $txt-size-medium;
     margin: $line-height 0;
-   font-size: $txt-size-large;
     .note {
       color: $clr-body-text;
       font-size: $txt-size-xxsmall;
@@ -206,7 +208,20 @@ $line-height-small: ($line-height * .5);
       font-weight: bold;
     }
 
+  }
+
+  // supplementary materials - need to have no margin between paragraphs just below the box
+  .supplementary-material{
+    margin-bottom: $line-height;
+    p {margin-bottom: 0;}
+
+  }
+
 }
+
+// fig share widget needs content-box sizing to space everything properly.
+#figshare_enlarge * {
+  box-sizing: content-box;
 }
 
 // TODO - write some docs
@@ -585,6 +600,7 @@ $line-height-small: ($line-height * .5);
   span {
     @extend %link-text-default;
     font-size: $txt-size-small;
+
   }
 }
 
@@ -594,5 +610,3 @@ $line-height-small: ($line-height * .5);
     width: 100%;
   }
 }
-
-

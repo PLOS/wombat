@@ -86,6 +86,7 @@
   <@js src="resource/js/components/tooltip_hover.js"/>
   <@js src="resource/js/components/truncate_elem.js"/>
   <@js src="resource/js/components/table_open.js"/>
+  <@js src="resource/js/components/figshare.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
   <@js src="resource/js/vendor/moment.js"/>
@@ -104,7 +105,10 @@
    (function ($) {
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
    })(jQuery);
+
+
   </script>
+
 
   <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>

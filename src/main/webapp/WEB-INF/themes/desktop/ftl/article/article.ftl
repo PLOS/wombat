@@ -80,6 +80,7 @@
     <#include "aside/sidebar.ftl" />
     </aside>
   </div>
+
   <#include "../common/footer/footer.ftl" />
 
   <@js src="resource/js/components/show_onscroll.js"/>
@@ -100,6 +101,7 @@
 
   <script type="text/javascript">  /*filesizetable*/
    (function ($) {
+     $(document).foundation();
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
    })(jQuery);
   </script>

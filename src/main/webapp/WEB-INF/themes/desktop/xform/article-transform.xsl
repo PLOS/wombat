@@ -1438,7 +1438,7 @@
     <xsl:choose>
       <xsl:when test="@list-type='bullet'">
         <xsl:call-template name="newline1"/>
-        <ul>
+        <ul class="bulleted">
           <xsl:call-template name="newline1"/>
           <xsl:apply-templates/>
           <xsl:call-template name="newline1"/>
@@ -2085,6 +2085,7 @@
 
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template match="supplementary-material" name="supplementary-material">
+    <div class="supplementary-material">
     <xsl:variable name="the-label">
       <xsl:choose>
         <xsl:when test="label">
@@ -2106,17 +2107,16 @@
     <xsl:variable name="objURI">
       <xsl:value-of select="@xlink:href"/>
     </xsl:variable>
-    <p class="siTitle">
-      <strong>
+    <h3 class="siTitle title-small">
+
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat($pubAppContext,'/article/fetchSingleRepresentation.action?uri=',$objURI)"/>
+            <xsl:value-of select="concat('article/asset?unique&amp;id=', $objURI)"/>
           </xsl:attribute>
           <xsl:apply-templates select="label"/>
         </xsl:element>
         <xsl:apply-templates select="caption/title"/>
-      </strong>
-    </p>
+    </h3>
 
     <!--here, we're appending SI DOI after the caption but before the file type-->
     <xsl:variable name="siDOI">
@@ -2177,7 +2177,7 @@
       </xsl:when>
 
     </xsl:choose>
-
+  </div>
   </xsl:template>
 
   <!-- 1/4/12: suppress, we don't use -->

@@ -27,10 +27,10 @@
 
   $.fn.buildFigureCarousel = function (options) {
     var defaults = {
-      speed: 500,
-      access: false,
-      autoplay: false,
-      delay: 10000,
+      speed:                500,
+      access:               false,
+      autoplay:             false,
+      delay:                10000,
       defaultpaddingbottom: 10
     };
     options = $.extend(defaults, options);
@@ -39,19 +39,14 @@
     buildFigureCarouselLinks($this);
     moveFigureCarouselSection($this);
 
-    var $wrapper = $this.find('.carousel-wrapper'),
-        $slider = $wrapper.find('.slider');
+    var $wrapper = $this.find('.carousel-wrapper'), $slider = $wrapper.find('.slider');
 
     // Find all items in the slider. (Call this after altering the slider to refresh.)
     function getItems() {
       return $slider.find('.carousel-item');
     }
 
-    var $items = getItems(),
-        itemWidth = $items.eq(0).outerWidth(),
-        visibleSize = Math.ceil($wrapper.innerWidth() / itemWidth),
-        pageCount = Math.ceil($items.length / visibleSize);
-
+    var $items = getItems(), itemWidth = $items.eq(0).outerWidth(), visibleSize = Math.ceil($wrapper.innerWidth() / itemWidth), pageCount = Math.ceil($items.length / visibleSize);
     // Pad the slider so that the number of items is divisible by visibleSize
     var padding = (visibleSize - ($items.length % visibleSize)) % visibleSize;
     for (var i = 0; i < padding; i++) {
@@ -65,7 +60,6 @@
     $items = getItems();
     $wrapper.scrollLeft(itemWidth * visibleSize); // Scroll past the cloned chunk at the beginning
 
-
     var currentPage = 0;
 
     function goToPage(page) {
@@ -73,9 +67,7 @@
       if (pageDifference == 0) return;
       var pixelDifference = itemWidth * visibleSize * pageDifference;
 
-      $wrapper.filter(':not(:animated)').animate(
-          {scrollLeft: '+=' + pixelDifference},
-          options.speed,
+      $wrapper.filter(':not(:animated)').animate({scrollLeft: '+=' + pixelDifference}, options.speed,
 
           // When animation is complete
           function () {
@@ -96,36 +88,44 @@
           });
     }
 
-    // Wire controls
+    // Wire in next and previous controls
+
     var $control = $this.find('.carousel-control');
-    $control.find('.button.previous').click(function () {
-      goToPage(currentPage - 1);
-    });
-    $control.find('.button.next').click(function () {
-      goToPage(currentPage + 1);
-    });
-  // TOUCH EVENTS uses jquery.touchswipe.js
+    if (pageCount > 1) {
+      $control.find('.button.previous').click(function () {
+        goToPage(currentPage - 1);
+      });
+      $control.find('.button.next').click(function () {
+        goToPage(currentPage + 1);
+      });
+    } else {
+      $control.hide(); // if there is only one page then hide the control
+    }
+    // TOUCH EVENTS uses jquery.touchswipe.js
     if ($('html.touch').length) {
 
-      $wrapper.swipe( {
+      $wrapper.swipe({
         //Generic swipe handler for all directions
-        swipe:function(event,target) {
-        $control.addClass('controls-show');
-      },
-        swipeLeft:function(event,target) {
-          goToPage(currentPage - 1);
-        },
-        swipeRight:function(event,target) {
-          goToPage(currentPage + 1);
-        },
-        tap:function(event,target) {
+        swipe:      function (event, target) {
           $control.addClass('controls-show');
         },
-        threshold: 20
+        swipeLeft:  function (event, target) {
+          goToPage(currentPage - 1);
+        },
+        swipeRight: function (event, target) {
+          goToPage(currentPage + 1);
+        },
+        tap:        function (event, target) {
+          $control.addClass('controls-show');
+        },
+        threshold:  20
       });
     } else { // do nothing
-     };
-    if ($items.length > visibleSize) {
+    }
+    ;
+
+    if (pageCount > 1) {
+
       function createPageButton(pageNumber) {
         //for IE8 you have to put the closing span AND the &nbsp
         var $pageButton = $('<span class="index">&nbsp;</span>');

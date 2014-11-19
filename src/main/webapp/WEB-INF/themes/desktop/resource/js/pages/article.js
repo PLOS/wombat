@@ -80,7 +80,6 @@
 
     is_author_list = document.getElementById('floatAuthorList');
     if ( is_author_list != null) {
-    // check_authors_truncation.init();
       truncate_elem.remove_overflowed('#floatAuthorList');
 
       // initialize tooltip for author info

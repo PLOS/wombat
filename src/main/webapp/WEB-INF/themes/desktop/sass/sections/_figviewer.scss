@@ -48,7 +48,8 @@ $fv-grey-light: #eae9e9;
 
   #fvAuthors {
     @extend .inline-list;
-    height: rem-calc(14);
+    height: rem-calc(15);
+    line-height: rem-calc(15);
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -58,21 +59,23 @@ $fv-grey-light: #eae9e9;
 
     li {
       margin-left: 0;
+      line-height: rem-calc(15);
+      padding-right: rem-calc(3);
       display: inline-block;
       font-family: $font-face-fancy;
       font-size: $txt-size-xxsmall;
       color: $grey-med-light;
-      overflow: hidden;
-      text-overflow: ellipsis;
       white-space: nowrap;
-    }
-    li:not(:last-child):after {
-      content: ", ";
+
+      &:last-child {
+        padding-right: 0;
+      }
     }
 
-    li .author_meta {
-      display: none;
+    li:not(:last-child):after {
+      content: ",";
     }
+
   }
   .equal-contrib {
     display: none;

@@ -14,6 +14,19 @@ category: Files
 
 @include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf",  "fontawesome-webfont.svg",  "fontawesome-webfont.woff"));
 
+sup, sub {
+  vertical-align: 0;
+  position: relative;
+}
+
+sub {
+  top: $sub-sup-alignment;
+}
+
+sup {
+  bottom: $sub-sup-alignment;
+}
+
 /*doc
 ---
 title: other text styles

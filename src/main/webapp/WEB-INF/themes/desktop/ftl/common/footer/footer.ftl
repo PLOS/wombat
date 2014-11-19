@@ -7,7 +7,6 @@
 
   <div class="row">
     <div class="brand-column">
-      <a  data-reveal-id="fig-viewer" data-doi="">FIGURE VIEWER</a>
     <#macro footerLogo src alt>
       <img src="${src}" alt="${alt}" class="logo-footer"/>
     </#macro>

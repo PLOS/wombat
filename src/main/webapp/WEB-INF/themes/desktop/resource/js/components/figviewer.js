@@ -246,7 +246,7 @@ var FigViewerInit = function(doi, ref, pane, external_page) {
    });
    */
   loadJSON();
-  //truncate_elem.remove_overflowed('.fv-authors');
+
 };
 
 var FVSize = function () {
@@ -284,9 +284,10 @@ var FVBuildHdr = function(title, authors, articleDoi) {
 
   $.each(authArray, function (index, author) {
     var auth = $('<li> ' + author.trim() + '</li>');
-    auth.appendTo(authorList);
+    $(auth).appendTo(authorList);
   });
 
+  truncate_elem.remove_overflowed('#fvAuthors');
 };
 
 // build figures pane
@@ -298,7 +299,7 @@ var FVBuildFigs = function(data) {
   $FV.slides_el = $('#fig-viewer-slides');
   $FV.staging_el = $('<div class="staging" />'); // hidden container for loading large images
   $FV.figs_set = [];  // all figures array
-  var path = '/article/figure/image?size='
+  var path = '/article/figure/image?size=';
   //http://localhost:8081/wombat/DesktopPlosMedicine/article/figure/image?size=large&id=info:doi/10.1371/journal.pmed.0010019.t001
   var showInContext = function (uri) {
     uri = uri.split('/');

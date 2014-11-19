@@ -8,26 +8,25 @@
 
  ---
 
- pass two arguments:
- * container element for what needs truncating,
- * what the truncation mark should be
- * used on article.js for floating header authors and on figviewer.js for header authors
- truncate_elem.remove_overflowed('#floatAuthorList', "<li>&hellip;</li>");
+ pass the container element for what needs truncating
+
+ used on article.js for floating header authors and on figviewer.js for header authors
+ truncate_elem.remove_overflowed('#floatAuthorList');
 
 */
 ;(function ($) {
   truncate_elem = {
 
-
+   //TODO: add options for the trunc ending
     remove_overflowed : function (to_truncate) {
       var elem_list_height;
       var trunc_ending = "<li>&hellip;</li>";
       var elem_list = $(to_truncate);
 
-      elem_list_height = elem_list[0].offsetTop;
+      elem_list_height = $(elem_list[0]).offset().top;
       elem_list.children().each(function () {
 
-        if (this.offsetTop > elem_list_height ) {
+        if ($(this).offset().top > elem_list_height ) {
           return $(this).addClass("remove");
         }
       });
@@ -36,11 +35,7 @@
 
       $(elem_list).append(trunc_ending);
 
-    }/*,
-    add_ellips: function () {
-      $(elem_list).append(trunc_ending);
-    }*/
-
+    }
 
   }
 

@@ -52,7 +52,7 @@
 
       config = ALM_CONFIG;
 
-      requestUrl ;//= config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail';
+      requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail';
 
       $.ajax({
         url: requestUrl,

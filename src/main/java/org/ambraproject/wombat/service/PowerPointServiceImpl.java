@@ -150,8 +150,8 @@ public class PowerPointServiceImpl implements PowerPointService {
 
     /*
      * The description is an excerpt of article XML. Use quick-and-dirty regexes to get the text of the <title> element
-     * with internal markup removed. We expect we expect there never to be another nested pair of <title> tags, so we
-     * should be able to get away without context-free parsing.
+     * with internal markup removed. We expect there never to be another nested pair of <title> tags, so we should be
+     * able to get away without context-free parsing.
      *
      * If bugs or shortcomings are found, consider using an XML parser instead.
      */

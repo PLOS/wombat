@@ -95,31 +95,6 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
 
-  private final Map<String, Transformer> cache = Maps.newHashMap();
-
-  /**
-   * Access the transformer for a site. Either builds it or retrieves it from a cache.
-   *
-   * @param site the site key
-   * @return the transformer
-   * @throws IOException
-   */
-  private Transformer getTransformer(Site site) throws IOException {
-    /*
-     * Use a simple, hashtable-based cache. This assumes that the number of sites (and the size of the transfomers)
-     * will never be so large that evicting a cached transformer makes sense.
-     *
-     * This prevents the application from picking up any dynamic changes to the transform in a theme (such as an *.xsl
-     * file on disk being overwritten at runtime).
-     */
-    String siteKey = site.getKey();
-    Transformer transformer = cache.get(siteKey);
-    if (transformer == null) {
-      transformer = buildTransformer(site);
-      cache.put(siteKey, transformer);
-    }
-    return transformer;
-  }
 
   /**
    * Build a new transformer for a site.
@@ -150,7 +125,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
 
-    Transformer transformer = getTransformer(site);
+    Transformer transformer = buildTransformer(site);
     log.debug("Starting XML transformation");
     SAXParserFactory spf = SAXParserFactory.newInstance();
     XMLReader xmlr;

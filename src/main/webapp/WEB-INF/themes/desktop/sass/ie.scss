@@ -10,6 +10,9 @@ This is for IE specific styles mostly ie9 and below.
 */
 
 //for ie8; couldn't get compass font-face mixin to work with ie8 even following the use specified
+
+@import "variables"; // basic settings for type, size and colors
+
 @font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.1.0');
@@ -230,5 +233,14 @@ body.article .ui-widget-overlay {
 .article .signposts p.shares-tip {
   top: 70px !important;
   right: 40px !important;
+}
+
+
+// Target Offset: This is so that when the browser jumps to the target, we
+// Using "name" on IE8 because it doesnt' recognize target.
+.article-content a[name] {
+  margin-top: -$target-offset;
+  padding-top: $target-offset;
+  display:inline-block;
 }
 

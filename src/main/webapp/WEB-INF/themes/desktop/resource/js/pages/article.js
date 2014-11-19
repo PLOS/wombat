@@ -71,34 +71,7 @@
     }
   };
 
-
-  check_authors_truncation = {
-
-    settings : {
-      toTruncate : $('#floatAuthorList')
-    },
-
-    init : function () {
-      s = this.settings;
-      this.run_it();
-    },
-
-    run_it : function () {
-
-      if (this.overflown() === true) {
-        // truncate_elem is in resource/js/components
-        return truncate_elem.init();
-      }
-    },
-
-    overflown : function(){
-      var e = s.toTruncate[0];
-      return e.scrollHeight > e.clientHeight;
-    }
-  };
-
-
-  $( document ).ready(function() {
+ $( document ).ready(function() {
 
     $('.preventDefault').on('click', function (e) {
       e.preventDefault();
@@ -107,7 +80,9 @@
 
     is_author_list = document.getElementById('floatAuthorList');
     if ( is_author_list != null) {
-      check_authors_truncation.init();
+    // check_authors_truncation.init();
+      truncate_elem.remove_overflowed('#floatAuthorList');
+
       // initialize tooltip for author info
       plos_tooltip.init();
     }

@@ -865,8 +865,8 @@ $include-html-pricing-classes: false;
 $include-html-reveal-classes: true;
 
 // We use these to control the style of the reveal overlay.
- $reveal-overlay-bg: rgba(#000, .45);
- $reveal-overlay-bg-old: #000;
+ /*$reveal-overlay-bg: rgba(#000, .45);
+ $reveal-overlay-bg-old: #000;*/
 
 // We use these to control the style of the modal itself.
  $reveal-modal-bg: #fff;
@@ -1057,7 +1057,7 @@ $include-html-table-classes: false;
 // TABS
 //
 
- $include-html-tabs-classes: false;
+ $include-html-tabs-classes: true;
 
 // $tabs-navigation-padding: rem-calc(16);
 // $tabs-navigation-bg-color: #efefef  ;

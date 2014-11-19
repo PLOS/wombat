@@ -22,7 +22,7 @@
     <#include "footerTertiaryLinks.ftl" />
     </div>
   </div>
-<@js src="resource/js/components/figviewer.js"/>
+
 <@js src="resource/js/global.js" />
 
 </footer>

@@ -1,0 +1,660 @@
+$fv-small: rem-calc(7);
+$fv-grey-light: #eae9e9;
+
+#fig-viewer {
+  //foundation reveal modal
+  @include reveal-modal-base(
+    // Provides reveal base styles, can be set to false to override.
+  $base-style: true,
+    // Sets reveal width Default: $reveal-default-width or 80%
+  $width: 100%
+  );
+  background: $grey-dark;
+  padding: 0;
+  z-index: map-get($zindex, modal);
+
+  #fig-viewer-content {
+    background: $grey-light;
+    margin: $pad-small;
+    position: relative;
+    height: 750px;//***TEMPORARY; WILL BE ADDED VIA JS
+  }
+
+  .fv-header {
+    font-family: $font-face-fancy;
+    padding: $fv-small 272px 0 1.1%;
+    min-height: 46px;
+    line-height: 18px;
+    background: $grey-dark;
+    position: relative;
+    border-right: rem-calc(46) solid transparent;
+
+  h1, h1 a {
+    font-size: $txt-size-medium;
+    margin-bottom: rem-calc(2);
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $grey-light;
+    line-height: normal;
+  }
+
+    a:hover {
+      color: $grey-light;
+      text-decoration: none;
+    }
+}
+
+  #fvAuthors {
+    @extend .inline-list;
+    height: rem-calc(14);
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+    margin: 0 0 $fv-small;
+    white-space: nowrap;
+
+    li {
+      margin-left: 0;
+      display: inline-block;
+      font-family: $font-face-fancy;
+      font-size: $txt-size-xxsmall;
+      color: $grey-med-light;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    li:not(:last-child):after {
+      content: ", ";
+    }
+
+    li .author_meta {
+      display: none;
+    }
+  }
+  .equal-contrib {
+    display: none;
+  }
+
+  .fv-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    li {
+      display: inline-block;
+      float: left;
+      line-height: rem-calc(45);
+      border-right: 1px solid $grey-med-dark;
+      padding: 0 $pad-smallish;
+
+      &.active {
+        @extend %brand-background;
+        cursor: default;
+      }
+
+      &:hover {
+        background: $plos-default;
+      }
+
+      a {
+        color: $white;
+        font-size: $txt-size-medium-large;
+        line-height: rem-calc(45);
+
+        &:hover {
+          color: $white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .fv-close {
+    background: image-url('sprite.fv.png') no-repeat -40px 0;
+    position: absolute;
+    right: -46px;
+    top: 0;
+    width: rem-calc(46);
+    height: rem-calc(46);
+    cursor: pointer;
+    color: $grey-light;
+    &:hover {
+      @extend %brand-background;
+    }
+  }
+
+  .pane {
+    display: block;
+  }
+}
+
+
+.figs #fig-viewer-figs {
+  display: block;
+  position: relative;
+}
+
+.abst #fig-viewer-abst {
+  display: block;
+}
+
+.refs #fig-viewer-refs {
+  display: block;
+  overflow: auto;
+}
+
+#fig-viewer-controls {
+  @extend %brand-background;
+  position: absolute;
+  bottom: rem-calc(90);
+  width: 100%;
+  height: rem-calc(30);
+}
+//code is from ambra
+#fig-viewer-controls .loading-bar {
+  position: absolute;
+  left: 50%;
+  top: rem-calc(11);
+  width: rem-calc(218);
+  height: rem-calc(10);
+  margin-left: -109px;
+  text-align: center;
+  background-color: rgba(255,255,255,0.39);
+  border-radius: $border-radius-default;
+  background-image: -webkit-linear-gradient(-45deg, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.4) 25%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(255,255,255,0.4) 75%, rgba(255,255,255,0.4));
+  background-image: linear-gradient(-45deg, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.4) 25%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(255,255,255,0.4) 75%, rgba(255,255,255,0.4));
+  background-size: 10px 10px;
+  -webkit-animation: lb_move 3s linear infinite;
+  animation: lb_move 3s linear infinite;
+}
+
+@-webkit-keyframes lb_move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes lb_move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+#fv-zoom {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: $fv-small;
+  width: rem-calc(256);
+  margin-left: -128px;
+  padding-top: $pad-xsmall;
+}
+
+#fv-zoom-sldr {
+  width: rem-calc(206);
+  margin: 0 auto;
+  height: $fv-small;
+  border: 0;
+  border-radius: $border-radius-small;
+  background: #ccc;
+  background: rgba(255,255,255,0.64);
+}
+#fv-zoom-sldr .ui-slider-handle {
+  width: rem-calc(14);
+  height: rem-calc(14);
+  border-radius: 50%;
+  background: $white;
+  border: 0;
+  margin-left: -7px;
+  top: -4px;
+  cursor: ew-resize;
+}
+#fv-zoom-min,
+#fv-zoom-max {
+  width: rem-calc(16);
+  height: rem-calc(16);
+  background: image-url('sprite.fv.png');
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+}
+#fv-zoom-min {
+  left: 0;
+  background-position: -110px 0;
+  cursor: -webkit-zoom-out;
+  cursor: -moz-zoom-out;
+}
+
+#fv-zoom-max {
+  right: 0;
+  background-position: -90px 0;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+}
+
+#fig-viewer-controls .fig-btn {
+  display: block;
+  float: right;
+  padding: 0 $pad-small;
+  border-left: 1px solid #666;
+  border-color: rgba(51,51,51,0.25);
+  line-height: $pad-medium;
+  font-family: $font-face-fancy;
+  font-size: $txt-size-medium;
+  color: $white;
+  cursor: pointer;
+}
+
+.fig-btn .icn {
+  background-image: image-url('sprite.fv.png');
+}
+
+#fig-viewer-controls .thmb-btn {
+  padding: 0;
+  width: rem-calc(162);
+  text-align: center;
+  font-weight: bold;
+}
+
+#fig-viewer-controls .thmb-btn .icn {
+  display: inline-block;
+  width: rem-calc(16);
+  height: rem-calc(16);
+  vertical-align: middle;
+  background-position: -90px -20px;
+  margin-right: rem-calc(2);
+}
+
+#fig-viewer-controls .fig-btn:hover,
+.thmbs-vis #fig-viewer-controls .thmb-btn {
+  background-color: $plos-default;
+  color: $white;
+}
+
+#fig-viewer-controls .thmb-btn:hover .icn,
+.thmbs-vis #fig-viewer-controls .thmb-btn .icn {
+  background-position: -110px -20px;
+}
+
+.fig-btn.next .icn,
+.fig-btn.prev .icn {
+  display: block;
+  width: $fv-small;
+  height: 11px;
+  margin-top: 10px;
+}
+
+.fig-btn.next .icn {
+  background-position: -140px -20px;
+  float: right;
+  margin-left: 6px;
+}
+
+.fig-btn.next:hover .icn {
+  background-position: -140px -20px;
+}
+
+.fig-btn.prev .icn {
+  background-position: -130px -20px;
+  float: left;
+  margin-right: 6px;
+}
+
+.fig-btn.prev:hover .icn {
+  background-position: -130px -20px;
+}
+
+#fig-viewer-slides .slide {
+  overflow: hidden;
+  display: none;
+  position: relative;
+}
+
+#fig-viewer-slides .figure {
+  overflow: hidden;
+  border: solid 2px $grey-light;
+  position: relative;
+}
+
+#fig-viewer-slides .figure img {
+  display: block;
+}
+
+#fig-viewer-slides .ui-draggable {
+  cursor: move;
+}
+
+#fig-viewer-figs .drag-bx {
+  position: absolute;
+}
+
+#fig-viewer-figs .staging {
+  display: none;
+}
+
+#fig-viewer-slides .data {
+  position: relative;
+  padding-top: 30px;
+  height: 90px;
+  text-align: center;
+  background: $grey-light;
+}
+
+#fig-viewer-slides .txt {
+  width: 34.4%;
+  background: $grey-light;
+  background: rgba(239,239,239,0.95);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  z-index: 10;
+}
+
+#fig-viewer-slides .txt .content,
+#fig-viewer-slides .txt .text-more {
+  height: 88px;
+  padding: 0 5% 0 3.1%;
+  font-family: 'FS Albert Web Regular', Verdana, sans-serif;
+}
+
+#fig-viewer-slides .txt .title {
+  padding-top: rem-calc(3);
+  font-size: 1.077em;
+  font-weight: bold;
+  line-height: 1.143;
+}
+
+#fig-viewer-slides .txt .title.test-height {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#fig-viewer-slides .txt .title b {
+  color: #636363;
+  text-transform: uppercase;
+}
+
+#fig-viewer-slides.txt-expand .txt .title {
+  line-height: 1.286;
+  padding-right: 16px;
+}
+
+#fig-viewer-slides.txt-expand .content {
+  display: none;
+}
+
+#fig-viewer-slides .txt .toggle.more {
+  padding: 0 5% $pad-smallish 3.1%;
+  font-weight: normal;
+  text-decoration: underline;
+  color: $plos-default;
+  margin-top: 1px;
+  cursor: pointer;
+}
+
+#fig-viewer-slides .txt .toggle.less {
+  width: 11px;
+  height: 11px;
+  background: image-url('sprite.fv.png') -20px 0;
+  position: absolute;
+  top: 9px;
+  right: 0.9%;
+  margin-right: 14px;
+  cursor: pointer;
+  display: none;
+  border-radius: 2px;
+}
+
+#fig-viewer-slides .txt .toggle.less:hover {
+  background-color: $plos-default;
+  background-position: -20px -20px;
+}
+
+#fig-viewer-slides.txt-expand .txt .toggle.more {
+  display: none;
+}
+
+#fig-viewer-slides.txt-expand .txt .toggle.less {
+  display: block;
+}
+
+#fig-viewer-slides .text-more {
+  display: none;
+  font-size: 0.923em;
+  line-height: 1.167;
+  padding: 0 5% $pad-smallish 3.1%;
+}
+
+#fig-viewer-slides .text-more .desc {
+  padding: $pad-xsmall 0 0 0;
+}
+
+#fig-viewer-slides .text-more .doi {
+  padding: $pad-smallish 0;
+}
+
+#fig-viewer-slides .tease {
+  padding-top: 1px;
+}
+
+#fig-viewer-slides.txt-expand .text-more {
+  display: block;
+  height: 190px;
+  overflow-y: auto;
+  border-top: 1px solid #bbb;
+  border-color: rgba(0,0,0,0.2);
+}
+
+#fig-viewer-slides.txt-expand .tease {
+  display: none;
+}
+
+#fig-viewer-slides .txt p {
+  margin: 0;
+}
+
+#fig-viewer-slides .data .btn {
+  font-size: $txt-size-small;
+  line-height: rem-calc(27);
+  padding: 0 $pad-smallish;
+}
+
+#fig-viewer-slides .lnk_context {
+  margin-top: rem-calc(11);
+}
+
+#fig-viewer-figs .download {
+  position: absolute;
+  top: rem-calc(41);
+  right: 2.7%;
+}
+
+#fig-viewer-figs .download h3 {
+  float: left;
+  font-size: $txt-size-small;
+  line-height: rem-calc(27);
+  margin: 0;
+}
+
+#fig-viewer-figs .download .item {
+  float: left;
+  margin-left: $pad-default + $pad-xsmall;
+}
+#fig-viewer-figs .download .item a {
+  display: block;
+  color: $grey-dark;
+  text-decoration: none;
+}
+#fig-viewer-figs .download .size {
+  display: block;
+  font-size: 0.769em;
+  margin-top: $pad-xsmall;
+}
+#fig-viewer-figs .download .item a:hover .btn {
+  background: $plos-default;
+  color: $white;
+}
+
+#fig-viewer-thmbs {
+  display: none;
+  padding-top: 35px;
+  width: 163px;
+  position: absolute;
+  bottom: 120px;
+  right: 0;
+  background: $fv-grey-light;
+}
+
+.thmbs-vis #fig-viewer-thmbs {
+  display: block;
+}
+
+#fig-viewer-thmbs .btn-thmb-close {
+  background: image-url('sprite.fv.png') 0 0;
+  width: $pad-smallish;
+  height: $pad-smallish;
+  border-radius: $border-radius-small;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+#fig-viewer-thmbs .btn-thmb-close:hover {
+  background-color: $plos-default;
+  background-position: 0 -20px;
+}
+
+#fig-viewer-thmbs-content {
+  padding-left: 17px;
+  overflow: auto;
+  background: $fv-grey-light;
+  background: -webkit-linear-gradient(left,  $fv-grey-light 0%,$fv-grey-light 20px,$grey-light 20px,$grey-light 143px,$fv-grey-light 143px,$fv-grey-light 100%);
+  background: linear-gradient(to right,  $fv-grey-light 0%,$fv-grey-light 20px,$grey-light 20px,$grey-light 143px,$fv-grey-light 143px,$fv-grey-light 100%);
+  height: 750px;
+}
+
+#fig-viewer-thmbs .thmb {
+  width: 129px;
+  height: 96px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: $pad-xsmall;
+  background-color: $white;
+}
+
+#fig-viewer-thmbs .thmb .thmb-wrap {
+  width: 129px;
+  height: 96px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#fig-viewer-thmbs .thmb.active {
+  cursor: default;
+}
+
+#fig-viewer-thmbs .thmb img {
+  border: 3px solid transparent;
+  height: auto;
+  width: auto;
+  max-width: 123px;
+  max-height: 90px;
+  display: block;
+  margin: 0 auto;
+}
+
+#fig-viewer-abst {
+  overflow: auto;
+  font-family: $font-face-fancy;
+
+}
+#fig-viewer-abst .abstract {
+  float: left;
+  width: 59.7%;
+  margin-left: 1.1%;
+  padding: 37px 0 75px;
+  font-size: 1.462em;
+  line-height: 1.158;
+}
+
+#fig-viewer-abst .abstract p {
+  margin-bottom: $pad-default + $pad-xsmall;
+  font-family: $font-face-fancy;
+  font-size: $txt-size-medium-large;
+  line-height: 1.25;
+}
+
+#fig-viewer-abst .info {
+  float: right;
+  width: 34.8%;
+  margin-right: 1.1%;
+  padding: 40px 0 75px;
+  line-height: 1.077;
+}
+
+#fig-viewer-abst .info p {
+  border: 1px solid #e1e1e1;
+  border-top-width: 0;
+  margin: 0;
+  padding: 6px 8px 9px;
+}
+
+#fig-viewer-abst .info p:first-child {
+  border-top-width: 1px;
+}
+#fig-viewer-abst .info p:nth-child(odd) {
+  background: #e8e8e8;
+  border-right-color: #e8e8e8;
+  border-left-color: #e8e8e8;
+}
+
+#fig-viewer-abst .info p:nth-child(1) {
+  border-top-color: #e8e8e8;
+}
+
+#fig-viewer-abst .info p strong {
+  font-size: 1.077em;
+  display: block;
+  color: #636363;
+}
+
+.fv-lnk-pdf a {
+  padding: 0 rem-calc(23);
+  font-size: $txt-size-medium-large;
+  line-height: rem-calc(28);
+  font-weight: normal;
+  background: #636363;
+}
+
+
+#fig-viewer-refs h3 {
+  margin: ($pad-default + $pad-xsmall) 0 $fv-small 21px;
+}
+
+#fig-viewer-refs ol {
+  padding-left: 3.077em;
+  width: 87.5%;
+  margin-top: 0;
+}
+#fig-viewer-refs ol > li {
+  font-size: 1.231em;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-bottom: $fv-small;
+}
+
+#fig-viewer-refs .find {
+  font-size: 0.813em;
+  font-weight: normal;
+}

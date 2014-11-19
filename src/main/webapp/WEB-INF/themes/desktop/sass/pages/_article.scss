@@ -271,7 +271,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   #floatAuthorList {
     @extend .hide-for-print;
     height: rem-calc(16);
-    width: rem-calc(760);
+    width: rem-calc(770);
     @extend .inline-list;
     margin: 0;
     padding-left: 0;
@@ -295,7 +295,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   z-index: map-get($zindex, topvisible);
 
   .float-title-inner {
-    @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
+    @include plos-grid-column(770, $gutter: left, $gutter-width: 18px);
 
     h1 {
       @include truncated();

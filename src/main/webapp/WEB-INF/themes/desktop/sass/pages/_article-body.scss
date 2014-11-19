@@ -37,7 +37,17 @@ $line-height-small: ($line-height * .5);
   @include callout($clr-warning-bg);
 }
 
+
+
+a:target{
+
+  margin-top: -$target-offset;
+  padding-top: $target-offset;
+    display:inline-block;
+  }
+
 .article-content {
+
 
   p, ul, ol, > div {
     margin-bottom: $line-height;

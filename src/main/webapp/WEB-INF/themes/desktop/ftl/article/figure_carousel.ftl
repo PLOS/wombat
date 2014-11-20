@@ -21,7 +21,11 @@
               <#--&ndash;&gt;-->
 
               <@siteLink path=("article/figure/image?size=inline&id=" + figure.doi) ; src>
-                <img src="${src?html}" alt="${figure.title?html}" />
+                <img src="${src?html}"
+                     <#if figure.title?has_content >
+                     alt="${figure.title?html}"
+                     </#if>
+                />
               </@siteLink>
             <#--</a>-->
           </div>

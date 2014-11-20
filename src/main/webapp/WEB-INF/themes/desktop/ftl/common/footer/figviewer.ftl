@@ -19,10 +19,15 @@
 
     <section role="tabpanel" aria-hidden="false" class="content active" id="panel-figs">
       <div id="fig-viewer-figs" class="pane">
-        <div id="fig-viewer-slides"></div>
+        <div id="fig-viewer-slides">
+          <div class="figure" data-img-src="/wombat/DesktopPlosPathogens/resource/img/journal.ppat.1000621.g001m.png" data-img-lg-src="/wombat/DesktopPlosPathogens/resource/img/journal.ppat.1000621.g001l.png" data-img-txt="downloaded image"><div class="drag-bx"><img src="/wombat/DesktopPlosPathogens/resource/img/journal.ppat.1000621.g001m.png" title="Figure 1
+Diffusional motions cover larger surface areas than directed drifts and confined motions." alt="Figure 1
+Diffusional motions cover larger surface areas than directed drifts and confined motions." class="lg" style="height: 573px; margin-top: 0px; margin-left: 296px;"></div></div>
+
+        </div>
       </div>
       <div id="fig-viewer-thmbs">
-        <div id="fig-viewer-thmbs-content"></div>
+        <div id="fig-viewer-thmbs-content"><img src="/wombat/DesktopPlosPathogens/resource/img/journal.ppat.1000621.g001m.png" /></div>
       </div>
 
       <div id="fig-viewer-controls">

@@ -27,9 +27,9 @@
 
     date_check = function (logDate, numDays) {
 
-      var dateWeek = new Date().addDays(numDays);
+      var testDate = new Date().addDays(numDays);
 
-      if (logDate < dateWeek) {
+      if (logDate < testDate) {
         return false;
 
       } else {
@@ -39,7 +39,7 @@
     };
 
     plural_check = function(input){
-      if (input === 1){
+      if (input == 1){
         //do nothing
       } else {
         return true;
@@ -76,7 +76,7 @@
           if (isThree === true) {
             tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to 3 days after publication</li>';
             $('#almSignposts').html(tooSoonText);
-
+            $('#loadingMetrics').css('display','none');
           } else {
             //get the numbers & add commas where needed
             saves = formatNumberComma(data.data[0].saved);

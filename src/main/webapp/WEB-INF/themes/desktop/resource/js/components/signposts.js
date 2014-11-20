@@ -39,7 +39,8 @@
     };
 
     plural_check = function(input){
-      if (input == 1){
+      input = parseInt(input);
+      if (input === 1){
         //do nothing
       } else {
         return true;

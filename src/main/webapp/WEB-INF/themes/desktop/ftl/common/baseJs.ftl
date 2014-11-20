@@ -11,10 +11,12 @@ fast click is required for mobile interactions for foundation.
 should include it in the ftl file that needs it. -->
 <@js src="resource/js/vendor/foundation/foundation.tooltip.js"/>
 <@js src="resource/js/vendor/foundation/foundation.tab.js" />
+<@js src="resource/js/vendor/foundation/foundation.reveal.js"/>
 
+<#-- // include components used universally here -->
 <@js src="resource/js/components/toggle.js"/>
-
-
+<@js src="resource/js/components/truncate_elem.js"/>
+<@js src="resource/js/components/figviewer.js"/>
 
 
 

@@ -80,11 +80,12 @@
     <#include "aside/sidebar.ftl" />
     </aside>
   </div>
+
   <#include "../common/footer/footer.ftl" />
 
   <@js src="resource/js/components/show_onscroll.js"/>
   <@js src="resource/js/components/tooltip_hover.js"/>
-  <@js src="resource/js/components/truncate_elem.js"/>
+
   <@js src="resource/js/components/table_open.js"/>
   <@js src="resource/js/components/figshare.js"/>
   <@js src="resource/js/util/alm_config.js"/>
@@ -103,6 +104,7 @@
 
   <script type="text/javascript">  /*filesizetable*/
    (function ($) {
+     $(document).foundation();
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
    })(jQuery);
 

@@ -486,7 +486,7 @@ $line-height-small: ($line-height * .5);
           text-align: center;
           color: $white;
           font-size: $txt-size-xxxxsmall;
-          line-height: $line-height;
+          line-height: $txt-size-large;
           &:hover {
             text-decoration: none;
           }

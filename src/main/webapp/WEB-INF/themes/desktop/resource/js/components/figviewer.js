@@ -20,7 +20,7 @@
 
 (function($) {
 
-  var $FV, $FVPending, selected_tab, $win, FigViewerInit, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVFigDescripton, FVThumbPos;
+  var $FV, $FVPending, selected_tab, $win, FigViewerInit, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVFigDescripton, FVThumbPos, FVDisplayFig, FVLoadMedImg, FVLoadLargeImg, FVSizeImgToFit, FVSwitchImg, FVFigFunctions, FVDragInit, FVDragStop, FVSizeDragBox;
 
   $FV = {};
   $FVPending = false;
@@ -73,10 +73,11 @@
 
     loadJSON = function() {
       //var apiurl = '/article/lightbox.action?uri=' + doi;
-      var apiurl = 'http://localhost:8081/wombat/DesktopPlosPathogens/article?id=' + doi;
+      apiurl = $win.href;
+      //'http://localhost:8081/wombat/DesktopPlosPathogens/article?id=' + doi;
                     //journal.pmed.0010019
 //      /wombat/DesktopPlosPathogens/article/figure/image?size=inline&amp;id=info:doi/10.1371/journal.ppat.1000621.g001
-        console.log(apiurl);
+        //console.log(apiurl);
       $.ajax({
         url:apiurl,
         dataFilter:function (data, type) {
@@ -104,6 +105,9 @@
           if (typeof selected_tab != 'undefined' && selected_tab == 'tabArticle') {
             $FVPending = false;
             FVBuildAbs(doi, $('.article .abstract'), $('.article .articleinfo'));
+            /*would it be better to use a class buried further into the DOM like .article-body or .article-content? maybe make that a var or something.
+
+             Would it be worth the to grab the different article text elements and make them or just variables in one place? Might make it easier to troubleshoot later or deal with elements if the class names or the dom changes for some reason.*/
             FVBuildRefs($('.article .references'));
             displayModal();
 
@@ -324,12 +328,12 @@
       FVChangeSlide($FV.thumbs.active.prev());
     });
 
-    /*$FV.loading = $('<div class="loading-bar"></div>').appendTo($FV.controls_el);
+    $FV.loading = $('<div class="loading-bar"></div>').appendTo($FV.controls_el);
     $FV.zoom = $('<div id="fv-zoom" />');
     $FV.zoom.min = $('<div id="fv-zoom-min" />').appendTo($FV.zoom);
     $FV.zoom.sldr = $('<div id="fv-zoom-sldr" />').appendTo($FV.zoom);
     $FV.zoom.max = $('<div id="fv-zoom-max" />').appendTo($FV.zoom);
-    $FV.controls_el.append($FV.zoom);*/
+    $FV.controls_el.append($FV.zoom);
 
     $FV.figs_pane.append($FV.slides_el);
     $FV.figs_pane.append($FV.thumbs_el);
@@ -514,7 +518,7 @@ FVThumbPos = function($thmb) {
 
 
 // this function checks the status of figure image building/resizing, and directs to appropriate next step
-var FVDisplayFig = function(i) {
+FVDisplayFig = function(i) {
   $FV.loading.show();
   $FV.zoom.hide();
   var this_fig = $FV.figs_set[i];
@@ -560,7 +564,7 @@ var FVDisplayFig = function(i) {
 
 
 // build medium image, when loaded - size to fit, call load large image function
-var FVLoadMedImg = function(i) {
+FVLoadMedImg = function(i) {
   var src = $FV.figs_set[i].data('img-src');
   var txt = $FV.figs_set[i].data('img-txt');
   var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="med invisible">');
@@ -579,7 +583,7 @@ var FVLoadMedImg = function(i) {
 
 
 // load large images in div.staging
-var FVLoadLargeImg = function(i) {
+FVLoadLargeImg = function(i) {
   var src = $FV.figs_set[i].data('img-lg-src');
   var txt = $FV.figs_set[i].data('img-txt');
   var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="lg invisible">');
@@ -595,7 +599,7 @@ var FVLoadLargeImg = function(i) {
 };
 
 // size images to fit in parent element
-var FVSizeImgToFit = function(el, down_only) {
+FVSizeImgToFit = function(el, down_only) {
   var img = el.find('img');
   var el_h = el.height();
   var el_w = el.width();
@@ -632,7 +636,7 @@ var FVSizeImgToFit = function(el, down_only) {
 }
 
 // switch medium image with large image
-var FVSwitchImg = function($fig) {
+FVSwitchImg = function($fig) {
   var $img_m = $fig.find('img');
   var img_m_h = $img_m.height();
   var $img_l = $fig.next('div.staging').find('img');
@@ -661,7 +665,7 @@ var FVSwitchImg = function($fig) {
 // this is called following either
 // on the visible slide, a large image that is bigger than the slide has finished loading
 // OR navigating to a slide whose large image is bigger than the slide and has already loaded.
-var FVFigFunctions = function($fig) {
+FVFigFunctions = function($fig) {
   var $img = $fig.find('img');
   var real_h = $fig.data('img_l_h'); // native height of image
   var real_w = $fig.data('img_l_w'); // native width of image
@@ -755,7 +759,7 @@ var FVFigFunctions = function($fig) {
   });
 };
 
-var FVDragInit = function($fig, $img) {
+FVDragInit = function($fig, $img) {
   $img.draggable({
     containment: 'parent',
     stop: function(e, ui) {
@@ -770,7 +774,7 @@ var FVDragInit = function($fig, $img) {
   });
 };
 
-var FVDragStop = function($fig, $img) {
+FVDragStop = function($fig, $img) {
   $img.draggable('destroy');
   // reset
   $img.css({'top' : 0, 'left' : 0,});
@@ -782,7 +786,7 @@ var FVDragStop = function($fig, $img) {
 // Size & position div to contain figure dragging
 // adds top/left declarations to image so that image remains in same position following containing div sizing/positioning
 // runs following figure resize
-var FVSizeDragBox = function($fig, $img) {
+FVSizeDragBox = function($fig, $img) {
   var $drgbx = $fig.find('div.drag-bx');
   var fig_h = $fig.height();
   var fig_w = $fig.width();
@@ -959,8 +963,9 @@ function initMainContainer() {
     }
   }
 
-  // inline figures
-  var $fig_inline = $('#article-block').find('div.figure');
+  // inline figures on article page
+  // this gets the uri & doi then triggers a click on the thumbnail in the thumbnail list
+  var $fig_inline = $('#artText').find('div.figure');
   if ($fig_inline.length) {
     $lnks = $fig_inline.find('.img a');
     $lnks.on('click', function (e) {

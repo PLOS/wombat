@@ -7,15 +7,22 @@ $(document).foundation({
   //Tooltips
   tooltip: {
     'wrap': 'word',
-   // 'disable_for_touch': 'true',
+    // 'disable_for_touch': 'true',
     tip_template: function (selector, content) {
       return '<span data-selector="' + selector + '" class="'
         + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
         + '">' + content + '</span>';
     }
+  },
+  reveal: {
+    settings: {
+      animation: false,//'fadeAndPop',
+      open: function () {$('body').css('overflow', 'hidden');},
+      close: function () {$('body').css('overflow', 'auto');}
+    }
   }
-});
 
+});
 (function ($) {
 
   var searchCheck = function (){

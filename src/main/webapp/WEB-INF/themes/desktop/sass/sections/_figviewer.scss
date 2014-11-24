@@ -1,23 +1,29 @@
 $fv-small: rem-calc(7);
 $fv-grey-light: #eae9e9;
+$fv-grey-bg: darken($grey-light, 3%);
 
 #fig-viewer {
   //foundation reveal modal
   @include reveal-modal-base(
-    // Provides reveal base styles, can be set to false to override.
-  $base-style: true,
-    // Sets reveal width Default: $reveal-default-width or 80%
-  $width: 100%
+    $base-style: false
   );
-  background: $grey-dark;
-  padding: 0;
+
+  @include reveal-modal-style(
+    $bg:$reveal-modal-bg,
+    $border:true,
+    $border-style:$reveal-border-style,
+    $border-width: 10px,
+    $border-color:$grey-dark,
+    $box-shadow:false,
+    $top-offset: 0
+  );
+
+  position: fixed;
   z-index: map-get($zindex, modal);
+  top: 0;
 
   #fig-viewer-content {
     background: $grey-light;
-    margin: $pad-small;
-    position: relative;
-    height: 750px;//***TEMPORARY; WILL BE ADDED VIA JS
   }
 
   .fv-header {
@@ -29,56 +35,21 @@ $fv-grey-light: #eae9e9;
     position: relative;
     border-right: rem-calc(46) solid transparent;
 
-  h1, h1 a {
-    font-size: $txt-size-medium;
-    margin-bottom: rem-calc(2);
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: $grey-light;
-    line-height: normal;
-  }
+    h1, h1 a {
+      font-size: $txt-size-medium;
+      margin: 0 0 rem-calc(2);
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: $grey-light;
+      line-height: normal;
+    }
 
     a:hover {
       color: $grey-light;
       text-decoration: none;
     }
-}
-
-  #fvAuthors {
-    @extend .inline-list;
-    height: rem-calc(15);
-    line-height: rem-calc(15);
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0;
-    margin: 0 0 $fv-small;
-    white-space: nowrap;
-
-    li {
-      margin-left: 0;
-      line-height: rem-calc(15);
-      padding-right: rem-calc(3);
-      display: inline-block;
-      font-family: $font-face-fancy;
-      font-size: $txt-size-xxsmall;
-      color: $grey-med-light;
-      white-space: nowrap;
-
-      &:last-child {
-        padding-right: 0;
-      }
-    }
-
-    li:not(:last-child):after {
-      content: ",";
-    }
-
-  }
-  .equal-contrib {
-    display: none;
   }
 
   .fv-nav {
@@ -92,7 +63,6 @@ $fv-grey-light: #eae9e9;
     li {
       display: inline-block;
       float: left;
-      line-height: rem-calc(45);
       border-right: 1px solid $grey-med-dark;
       padding: 0 $pad-smallish;
 
@@ -108,7 +78,9 @@ $fv-grey-light: #eae9e9;
       a {
         color: $white;
         font-size: $txt-size-medium-large;
-        line-height: rem-calc(45);
+        line-height: rem-calc(46);
+        display: block;
+        outline: 0;
 
         &:hover {
           color: $white;
@@ -134,8 +106,43 @@ $fv-grey-light: #eae9e9;
   .pane {
     display: block;
   }
+  section {
+    padding: 0;
+  }
 }
+#fvAuthors {
+  @extend .inline-list;
+  height: rem-calc(15);
+  line-height: rem-calc(15);
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  font-size: $txt-size-xxsmall;
 
+  li {
+    margin-left: 0;
+    line-height: rem-calc(15);
+    height: rem-calc(15);
+    padding-right: rem-calc(3);
+    display: inline-block;
+    font-family: $font-face-fancy;
+    font-size: $txt-size-xxsmall;
+    color: $grey-med-light;
+    white-space: nowrap;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  li:not(:last-child):after {
+    content: ",";
+  }
+
+}
 
 .figs #fig-viewer-figs {
   display: block;
@@ -144,6 +151,8 @@ $fv-grey-light: #eae9e9;
 
 .abst #fig-viewer-abst {
   display: block;
+  overflow: auto;
+
 }
 
 .refs #fig-viewer-refs {
@@ -580,64 +589,87 @@ $fv-grey-light: #eae9e9;
 #fig-viewer-abst {
   overflow: auto;
   font-family: $font-face-fancy;
-
-}
-#fig-viewer-abst .abstract {
-  float: left;
-  width: 59.7%;
-  margin-left: 1.1%;
   padding: 37px 0 75px;
-  font-size: 1.462em;
-  line-height: 1.158;
-}
+  h3 {
+    margin-bottom: $pad-default;
+    font-size: $txt-size-large;
+    font-weight: bold;
+    color: $grey-dark;
+  }
 
-#fig-viewer-abst .abstract p {
-  margin-bottom: $pad-default + $pad-xsmall;
-  font-family: $font-face-fancy;
-  font-size: $txt-size-medium-large;
-  line-height: 1.25;
-}
+  .abstract {
+    float: left;
+    width: 59.7%;
+    margin-left: 1.1%;
+    padding: 0;
+    font-size: 1.462em;
+    line-height: 1.158;
+  }
 
-#fig-viewer-abst .info {
-  float: right;
-  width: 34.8%;
-  margin-right: 1.1%;
-  padding: 40px 0 75px;
-  line-height: 1.077;
-}
+  .abstract p {
+    margin-bottom: $pad-default + $pad-xsmall;
+    font-family: $font-face-fancy;
+    font-size: $txt-size-medium-large;
+    line-height: 1.25;
+  }
 
-#fig-viewer-abst .info p {
-  border: 1px solid #e1e1e1;
-  border-top-width: 0;
-  margin: 0;
-  padding: 6px 8px 9px;
-}
+   .info {
+     position: relative;
+     float: right;
+     font-size: 14px;
+     width: 34.8%;
+     margin-right: 1.1%;
+     padding: 3px 0 0x;
+     line-height: rem-calc(14);
+     p {
+       border: 1px solid #e1e1e1;
+       border-top-width: 0;
+       margin: 0;
+       padding: 6px 8px 9px;
+       line-height: rem-calc(14);
+     }
+   }
+  .info p:first-child {
+    border-top-width: 1px;
+  }
 
-#fig-viewer-abst .info p:first-child {
-  border-top-width: 1px;
-}
-#fig-viewer-abst .info p:nth-child(odd) {
-  background: #e8e8e8;
-  border-right-color: #e8e8e8;
-  border-left-color: #e8e8e8;
-}
+  .info p:nth-child(odd) {
+    background: $fv-grey-bg;
+    border-right-color: $fv-grey-bg;
+    border-left-color: $fv-grey-bg;
+  }
 
-#fig-viewer-abst .info p:nth-child(1) {
-  border-top-color: #e8e8e8;
+  .info p:nth-child(1) {
+    border-top-color: $fv-grey-bg;
+  }
 }
+/*
+download pdf button: change 636363 to 666666?
+change rounded corner radius from 4px to 5px
 
+color of bolded paragraph headings change from 636363 to 666666
+
+info box on the right darker grey background & border: change from e8e8e8 to e7e7e7
+(to use sass darken mixin of our grey-light variable of efefef)
+*/
 #fig-viewer-abst .info p strong {
-  font-size: 1.077em;
+  font-size: $txt-size-medium;
+  font-weight: bold;
   display: block;
-  color: #636363;
+  color: $grey-med-dark;//#636363;
+  line-height: rem-calc(15);
 }
 
 .fv-lnk-pdf a {
-  padding: 0 rem-calc(23);
+  @include rounded-pill($background: $grey-med-dark, $padding: 0 rem-calc(23));
+  font-family: $font-face-plain;
   font-size: $txt-size-medium-large;
   line-height: rem-calc(28);
-  font-weight: normal;
-  background: #636363;
+  /*
+   background: #636363;*/
+  &:hover {
+    background: $plos-default;
+  }
 }
 
 

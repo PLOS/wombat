@@ -236,6 +236,15 @@ body.article .ui-widget-overlay {
 }
 
 
+.article-content .figure-inline-download ul li {
+  list-style-type: none;
+  width: 165px;
+  & > div,  & > a{
+    float: left;
+  }
+
+}
+
 // Target Offset: This is so that when the browser jumps to the target, we
 // Using "name" on IE8 because it doesnt' recognize target.
 .article-content a[name] {

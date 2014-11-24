@@ -20,7 +20,7 @@
 
     <section role="tabpanel" aria-hidden="false" class="content active" id="panel-figs">
       <div id="fig-viewer-figs" class="pane">
-        <div id="fig-viewer-slides"><img src="resource/img/journal.ppat.1000621.g001m.png"/></div>
+        <div id="fig-viewer-slides"></div>
       </div>
       <div id="fig-viewer-thmbs">
         <div id="fig-viewer-thmbs-content"></div>

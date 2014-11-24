@@ -4,6 +4,7 @@
 //Setting up global foundation settings - you can override these the documentation is here:
 // http://foundation.zurb.com/docs/javascript.html#configure-on-the-fly
 $(document).foundation({
+
   //Tooltips
   tooltip: {
     'wrap': 'word',
@@ -14,12 +15,9 @@ $(document).foundation({
         + '">' + content + '</span>';
     }
   },
+  // reveal is used for the figure viewer modal
   reveal: {
-    settings: {
-      animation: false,//'fadeAndPop',
-      open: function () {$('body').css('overflow', 'hidden');},
-      close: function () {$('body').css('overflow', 'auto');}
-    }
+    animation: false
   }
 
 });

@@ -107,8 +107,10 @@
           var authList = $(authors).text();
 
           FVBuildHdr(articleTitle, authList, doi);
+
          // FVBuildHdr(data.articleTitle, data.authors, data.uri);
          // FVBuildFigs(data);
+
 
           // from article tab where references,abstract and metadata exists, no need to fetch
           // them again from the server.
@@ -153,6 +155,7 @@
 
       FVSize();
 
+
       //FVDisplayPane(state);
       $FV.removeClass('abst figs refs').addClass(pane);
       // debounce resize event
@@ -160,9 +163,7 @@
       $win.bind('resize.modal', function() {
         clearTimeout(resizeDelay);
         resizeDelay = setTimeout(function() {
-
            FVSize();
-
         }, 100);
       });
     };
@@ -195,11 +196,11 @@
     win_h = $win.height();
     frame_h = 20;// parseInt($FV.cont.css('marginTop')) + parseInt($FV.cont.css('marginTop'));
     hdr_h = $('.fv-header').innerHeight();
-        //var fig_h = win_h - frame_h - $FV.slides.eq(0).find('div.data').innerHeight() - hdr_h;
+    //var fig_h = win_h - frame_h - $FV.slides.eq(0).find('div.data').innerHeight() - hdr_h;
     fig_h = win_h - frame_h - 90 - hdr_h;
     $FV.cont.css('height', win_h - frame_h);
-   // $FV.figs.css('height', fig_h - 4); // added border of 2px
-   // $FV.thumbs_cont.css('height', fig_h - parseInt($FV.thumbs_el.css('paddingTop')));
+    // $FV.figs.css('height', fig_h - 4); // added border of 2px
+    // $FV.thumbs_cont.css('height', fig_h - parseInt($FV.thumbs_el.css('paddingTop')));
     $FV.abst_pane.css('height', win_h - frame_h - hdr_h - 1);
 
     $FV.refs_pane.css('height', win_h - frame_h - hdr_h);
@@ -229,16 +230,22 @@
 
     $('#fvTitle').html(h1);
     authorList = $('#fvAuthors');
-
+    var get_last = authArray.length-1;
     $.each(authArray, function (index, author) {
 
       trimAuth = trimIt(author);
-      auth = $('<li> ' + trimAuth + '</li>');
+
+      if (index !== get_last) {
+        auth = $('<span>' + trimAuth + ', </span>');
+      } else { console.log(index);
+        auth = $('<span>' + trimAuth + ' </span>');
+      }
 
       $(auth).appendTo(authorList);
+
     });
 
-    truncate_elem.remove_overflowed('#fvAuthors');
+
   };
 
   // build figures pane
@@ -291,9 +298,9 @@
     // we're not building the images here, just divs with the src of medium & large verisons in data attributes  <img src="resource/img/journal.pntd.0000085.g002.png"/>
     /* $fig = $('<div class="figure" data-img-src="' + path+ 'medium&id=' + this.uri  + '" data-img-lg-src="' + path +'large&id=' +this.uri+'" data-img-txt="' + image_title + '"></div>');
      */
-     $fig.data_sect('state', 0) // track image loading state of figure
-     .data_sect('off-top', 0)
-     .data_sect('off-left', 0);
+    $fig.data_sect('state', 0) // track image loading state of figure
+      .data_sect('off-top', 0)
+      .data_sect('off-left', 0);
     // $FV.figs_set.push($fig);
 
     staging = '<div class="staging" />'; // hidden container for loading large image
@@ -391,7 +398,9 @@
   }
 
 
+
   // build abstract pane
+
   FVBuildAbs = function(doi, abstractText, metadata) {
     $FV.abst_pane = $('<div id="fig-viewer-abst" class="pane" />');
     var lnk_pdf, $abst_info, $abst_content = $('<div class="abstract" />');
@@ -876,20 +885,20 @@
 
 // close
   var FVClose = function() {
-   // $FV.hide();
+    // $FV.hide();
+
 
    //re-enable scrolling
-   $('body').css('overflow','auto')
-     .unbind('touchmove');
+   $('body').css('overflow','auto').unbind('touchmove');
 
-   $win.unbind('resize.modal');
-   /*//will record the timeStamp for when the modal is closed
-   if(typeof event !== 'undefined') {
-   close_time = event.timeStamp;
-   }*/
+    $win.unbind('resize.modal');
+    /*//will record the timeStamp for when the modal is closed
+     if(typeof event !== 'undefined') {
+     close_time = event.timeStamp;
+     }*/
 
-   $FVPending = false;
-   };
+    $FVPending = false;
+  };
 
   /**
    * Drop words until the element selected fits within its container and then append an ellipsis
@@ -987,7 +996,7 @@
         return this.replace(/^\s+|\s+$/g, '');
       }
     }  else {
-       return trimItem.trim();
+      return trimItem.trim();
     }
   }
 
@@ -1066,9 +1075,11 @@
       });
     }
 
+
    $('.fv-close').on('click',function(){
        FVClose();
    });
+
 
   }
   initMainContainer();

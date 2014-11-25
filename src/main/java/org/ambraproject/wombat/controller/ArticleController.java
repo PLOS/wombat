@@ -531,7 +531,7 @@ public class ArticleController extends WombatController {
    * @return String of the article HTML
    * @throws IOException
    */
-  private String getArticleHtml(String articleId, final Site site) throws IOException {
+  private String getArticleHtml(final String articleId, final Site site) throws IOException {
     Preconditions.checkNotNull(articleId);
     Preconditions.checkNotNull(site);
 
@@ -543,7 +543,7 @@ public class ArticleController extends WombatController {
       public String read(InputStream stream) throws IOException {
         StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
         try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-          articleTransformService.transform(site, stream, outputStream);
+          articleTransformService.transformWithMetadata(site, articleId, stream, outputStream);
         } catch (TransformerException e) {
           throw new RuntimeException(e);
         }

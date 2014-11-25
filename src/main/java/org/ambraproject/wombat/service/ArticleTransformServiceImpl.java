@@ -4,8 +4,10 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Maps;
 import com.google.common.io.Closer;
+import com.google.gson.Gson;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -19,6 +21,7 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
+import net.sf.json.xml.XMLSerializer;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -33,6 +36,7 @@ import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.Closeable;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -42,6 +46,8 @@ import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
+
+;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
@@ -55,6 +61,10 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private RuntimeConfiguration runtimeConfiguration;
   @Autowired
   private Charset charset;
+  @Autowired
+  private ArticleService articleService;
+  @Autowired
+  private Gson gson;
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
@@ -117,9 +127,18 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     }
   }
 
-
   @Override
   public void transform(Site site, InputStream xml, OutputStream html)
+          throws IOException, TransformerException {
+    Preconditions.checkNotNull(site);
+    Preconditions.checkNotNull(xml);
+    Preconditions.checkNotNull(html);
+
+    transformWithMetadata(site, null, xml, html);
+  }
+
+  @Override
+  public void transformWithMetadata(Site site, String articleId, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
     Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(xml);
@@ -159,6 +178,19 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       }
     });
     SAXSource saxSource = new SAXSource(xmlr, new InputSource(xml));
+    if (articleId != null) {
+      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(articleId, true);
+      Object citedArticles = articleMetadata.get("citedArticles");
+      JSONArray jsonArr = JSONArray.fromObject(citedArticles);
+      String metadataXml = new XMLSerializer().write(jsonArr);
+      FileWriter file = new FileWriter("test.xml");
+      file.write(metadataXml);
+      file.close();
+      SAXSource saxSourceMeta = new SAXSource(xmlr, new InputSource(IOUtils.toInputStream(metadataXml)));
+      transformer.setParameter("citedArticles", saxSourceMeta);
+    }
+
+
     transformer.transform(saxSource, new StreamResult(html));
 
     log.debug("Finished XML transformation");

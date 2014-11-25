@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.Site;
 
 import javax.xml.transform.TransformerException;
@@ -11,6 +12,20 @@ public interface ArticleTransformService {
 
   /**
    * Transform an article's XML document into presentation HTML, using the XSL transformation specified for a site.
+   * Article metadata is acquired via the provided articleId to generate secondary data sources for the XML transform
+   *
+   * @param site the site whose XSL transformation is to be used
+   * @param articleId the DOI for the article
+   * @param xml  a stream containing article XML
+   * @param html the stream that will receive the presentation HTML
+   * @throws IOException          if either stream cannot be read
+   * @throws TransformerException if an error occurs when applying the transformation
+   */
+  public abstract void transformWithMetadata(Site site, String articleId, InputStream xml, OutputStream html)
+      throws IOException, TransformerException;
+
+  /**
+   * Transform an article's XML document into presentation HTML, using the XSL transformation specified for a site.
    *
    * @param site the site whose XSL transformation is to be used
    * @param xml  a stream containing article XML
@@ -19,7 +34,7 @@ public interface ArticleTransformService {
    * @throws TransformerException if an error occurs when applying the transformation
    */
   public abstract void transform(Site site, InputStream xml, OutputStream html)
-      throws IOException, TransformerException;
+          throws IOException, TransformerException;
 
   /**
    * Enclose an excerpt from article XML in a tag pair, then transform the created element into presentation HTML using

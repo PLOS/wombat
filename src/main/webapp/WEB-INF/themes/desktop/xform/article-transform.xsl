@@ -30,6 +30,8 @@
   <!-- 1/4/12: Ambra-specific global param (pub config, passed into stylesheet from elsewhere in the pipeline) -->
   <xsl:param name="pubAppContext"/>
 
+  <xsl:param name="citedArticles"/>
+
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
   <!-- ============================================================= -->
@@ -159,6 +161,7 @@
         <xsl:text>) </xsl:text>
         <!-- article title -->
         <xsl:apply-templates select="title-group/article-title" mode="metadata-citation"/>
+        <xsl:variable name="at" select="normalize-space(title-group/article-title)"/>
         <xsl:variable name="at" select="normalize-space(title-group/article-title)"/>
         <!-- add a period unless there's other valid punctuation -->
         <xsl:if
@@ -799,6 +802,7 @@
   <xsl:template match="title | sec-meta" mode="drop-title"/>
   <xsl:template match="app"/>
 
+
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template match="ref-list" name="ref-list">
     <div class="toc-section">
@@ -833,61 +837,67 @@
             <xsl:text> </xsl:text>
             <xsl:if test="$cit[@publication-type='journal']">
               <xsl:variable name="apos">'</xsl:variable>
-              <xsl:if test="$cit/extraCitationInfo">
+              <xsl:variable name="idx" as="xs:integer" select="position()"/>
+              <xsl:variable name="dbCit" select="$citedArticles/a/e[$idx]"/>
+              <xsl:variable name="doi" select="$dbCit/doi"/>
+              <xsl:variable name="author" select="replace($dbCit/authors/e[1]/surnames,' ','+')"/>
+              <xsl:if test="not($author)">
+                <xsl:variable name="author" select="replace($cit//name[1]/surname,' ','+')"/>
+              </xsl:if>
+              <xsl:variable name="title" select="replace($dbCit/title,' ','+')"/>
+              <xsl:if test="not($title)">
+                <xsl:variable name="title" select="replace($cit/article-title,' ','+')"/>
+              </xsl:if>
                 <xsl:element name="ul">
                   <xsl:attribute name="class">find</xsl:attribute>
-                  <xsl:attribute name="data-citedArticleID">
-                    <xsl:value-of select="$cit/extraCitationInfo/@citedArticleID"/>
-                  </xsl:attribute>
-                  <xsl:if test="$cit/extraCitationInfo/@doi">
+                  <xsl:if test="$doi">
                     <xsl:attribute name="data-doi">
-                      <xsl:value-of select="$cit/extraCitationInfo/@doi"/>
+                      <xsl:value-of select="$doi"/>
                     </xsl:attribute>
                   </xsl:if>
-                  <xsl:if test="$cit/extraCitationInfo/@crossRefUrl">
                     <xsl:element name="li">
                       <xsl:element name="a">
                         <xsl:attribute name="href">
-                          <xsl:value-of select="$cit/extraCitationInfo/@crossRefUrl"/>
+                          <xsl:choose>
+                            <xsl:when test="$doi">
+                              <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:value-of select="concat('http://www.crossref.org/guestquery?auth2=', $author,
+                                      '&amp;atitle2=', $title, '&amp;auth=', $author, '&amp;atitle=', $title)"/>
+                            </xsl:otherwise>
+                          </xsl:choose>
                         </xsl:attribute>
                         <xsl:attribute name="target">_new</xsl:attribute>
                         <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
                         View Article
                       </xsl:element>
                     </xsl:element>
-                  </xsl:if>
-                  <xsl:if test="$cit/extraCitationInfo/@pubMedUrl">
                     <xsl:element name="li">
                       <xsl:element name="a">
                         <xsl:attribute name="href">
-                          <xsl:value-of select="$cit/extraCitationInfo/@pubMedUrl"/>
+                          <xsl:value-of select="concat('http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?',
+                          'db=PubMed&amp;cmd=Search&amp;doptcmdl=Citation&amp;defaultField=Title+Word&amp;term=',
+                          $author, '[author] AND ', $title)"/>
                         </xsl:attribute>
                         <xsl:attribute name="target">_new</xsl:attribute>
                         <xsl:attribute name="title">Go to article in PubMed</xsl:attribute>
                         PubMed/NCBI
                       </xsl:element>
                     </xsl:element>
-                  </xsl:if>
-                  <xsl:if test="$cit/extraCitationInfo/@googleScholarUrl">
                     <xsl:element name="li">
                       <xsl:element name="a">
                         <xsl:attribute name="href">
-                          <xsl:value-of select="$cit/extraCitationInfo/@googleScholarUrl"/>
+                          <xsl:value-of select="concat('http://scholar.google.com/scholar_lookup?title=', $title,
+                          '&amp;author=', $author, '&amp;year=', $cit/year)"/>
                         </xsl:attribute>
                         <xsl:attribute name="target">_new</xsl:attribute>
                         <xsl:attribute name="title">Go to article in Google Scholar</xsl:attribute>
                         Google Scholar
                       </xsl:element>
                     </xsl:element>
-                  </xsl:if>
                 </xsl:element>
               </xsl:if>
-              <xsl:if test="not($cit/extraCitationInfo)">
-                <xsl:element name="ul">
-                  <xsl:attribute name="class">find-nolinks</xsl:attribute>
-                </xsl:element>
-              </xsl:if>
-            </xsl:if>
             <xsl:if test="$cit[@publication-type!='journal']">
               <xsl:element name="ul">
                 <xsl:attribute name="class">find-nolinks</xsl:attribute>

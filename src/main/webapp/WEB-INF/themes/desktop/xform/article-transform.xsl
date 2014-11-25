@@ -13,6 +13,7 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:aml="http://topazproject.org/aml/"
                 xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:plos="http://www.plos.org"
                 exclude-result-prefixes="util xsl xlink mml xs aml dc">
 
   <!-- 1/4/12: Ambra-specific instruction. import nlm -->
@@ -836,67 +837,71 @@
             <xsl:apply-templates select="$cit"/>
             <xsl:text> </xsl:text>
             <xsl:if test="$cit[@publication-type='journal']">
-              <xsl:variable name="apos">'</xsl:variable>
+
+              <!-- create reference links -->
               <xsl:variable name="idx" as="xs:integer" select="position()"/>
               <xsl:variable name="dbCit" select="$citedArticles/a/e[$idx]"/>
               <xsl:variable name="doi" select="$dbCit/doi"/>
-              <xsl:variable name="author" select="replace($dbCit/authors/e[1]/surnames,' ','+')"/>
-              <xsl:if test="not($author)">
-                <xsl:variable name="author" select="replace($cit//name[1]/surname,' ','+')"/>
-              </xsl:if>
-              <xsl:variable name="title" select="replace($dbCit/title,' ','+')"/>
-              <xsl:if test="not($title)">
-                <xsl:variable name="title" select="replace($cit/article-title,' ','+')"/>
-              </xsl:if>
-                <xsl:element name="ul">
-                  <xsl:attribute name="class">find</xsl:attribute>
-                  <xsl:if test="$doi">
-                    <xsl:attribute name="data-doi">
-                      <xsl:value-of select="$doi"/>
-                    </xsl:attribute>
-                  </xsl:if>
-                    <xsl:element name="li">
-                      <xsl:element name="a">
-                        <xsl:attribute name="href">
-                          <xsl:choose>
-                            <xsl:when test="$doi">
-                              <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
-                            </xsl:when>
-                            <xsl:otherwise>
-                              <xsl:value-of select="concat('http://www.crossref.org/guestquery?auth2=', $author,
-                                      '&amp;atitle2=', $title, '&amp;auth=', $author, '&amp;atitle=', $title)"/>
-                            </xsl:otherwise>
-                          </xsl:choose>
-                        </xsl:attribute>
-                        <xsl:attribute name="target">_new</xsl:attribute>
-                        <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
-                        View Article
-                      </xsl:element>
+              <xsl:variable name="pubYear" select="$cit/year[1]"/>
+              <!-- use author and title preferentially from database, then XML -->
+              <!--<xsl:variable name="author" select="plos:if-empty($dbCit/authors/e[1]/surnames,'bogus_author')"/>-->
+              <!--<xsl:variable name="title" select="plos:if-empty($dbCit/title,'bogus_title')"/>-->
+              <xsl:variable name="author" select="plos:if-empty($dbCit/authors/e[1]/surnames,
+                                                  plos:if-empty($cit//name[1]/surname,''))"/>
+              <xsl:variable name="title" select="plos:if-empty($dbCit/title,
+                                                 plos:if-empty($cit/article-title,''))"/>
+              <!-- remove any HTML tags from title (e.g. italics) -->
+              <xsl:variable name="title" select="replace($title, '&lt;/?\w+?&gt;', '')"/>
+              <xsl:element name="ul">
+                <xsl:attribute name="class">find</xsl:attribute>
+                <xsl:if test="$doi">
+                  <xsl:attribute name="data-doi">
+                    <xsl:value-of select="$doi"/>
+                  </xsl:attribute>
+                </xsl:if>
+                  <xsl:element name="li">
+                    <xsl:element name="a">
+                      <xsl:attribute name="href">
+                        <xsl:choose>
+                          <xsl:when test="$doi">
+                            <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <xsl:value-of select="concat('http://www.crossref.org/guestquery?auth2=',
+                            encode-for-uri(concat($author, '&amp;atitle2=', $title, '&amp;auth=', $author,
+                            '&amp;atitle=', $title)))"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:attribute>
+                      <xsl:attribute name="target">_new</xsl:attribute>
+                      <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
+                      View Article
                     </xsl:element>
-                    <xsl:element name="li">
-                      <xsl:element name="a">
-                        <xsl:attribute name="href">
-                          <xsl:value-of select="concat('http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?',
-                          'db=PubMed&amp;cmd=Search&amp;doptcmdl=Citation&amp;defaultField=Title+Word&amp;term=',
-                          $author, '[author] AND ', $title)"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="target">_new</xsl:attribute>
-                        <xsl:attribute name="title">Go to article in PubMed</xsl:attribute>
-                        PubMed/NCBI
-                      </xsl:element>
+                  </xsl:element>
+                  <xsl:element name="li">
+                    <xsl:element name="a">
+                      <xsl:attribute name="href">
+                        <xsl:value-of select="concat('http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?',
+                        'db=PubMed&amp;cmd=Search&amp;doptcmdl=Citation&amp;defaultField=Title%20Word&amp;term=',
+                        encode-for-uri(concat($author, '[author] AND ', $title)))"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="target">_new</xsl:attribute>
+                      <xsl:attribute name="title">Go to article in PubMed</xsl:attribute>
+                      PubMed/NCBI
                     </xsl:element>
-                    <xsl:element name="li">
-                      <xsl:element name="a">
-                        <xsl:attribute name="href">
-                          <xsl:value-of select="concat('http://scholar.google.com/scholar_lookup?title=', $title,
-                          '&amp;author=', $author, '&amp;year=', $cit/year)"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="target">_new</xsl:attribute>
-                        <xsl:attribute name="title">Go to article in Google Scholar</xsl:attribute>
-                        Google Scholar
-                      </xsl:element>
+                  </xsl:element>
+                  <xsl:element name="li">
+                    <xsl:element name="a">
+                      <xsl:attribute name="href">
+                        <xsl:value-of select="concat('http://scholar.google.com/scholar_lookup?title=',
+                        encode-for-uri(concat($title,'&amp;author=', $author, '&amp;year=', $pubYear)))"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="target">_new</xsl:attribute>
+                      <xsl:attribute name="title">Go to article in Google Scholar</xsl:attribute>
+                      Google Scholar
                     </xsl:element>
-                </xsl:element>
+                  </xsl:element>
+              </xsl:element>
               </xsl:if>
             <xsl:if test="$cit[@publication-type!='journal']">
               <xsl:element name="ul">
@@ -2672,6 +2677,24 @@
 
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template match="string-name"/>
+
+  <!-- ============================================================= -->
+  <!--  CUSTOM FUNCTIONS                                             -->
+  <!-- ============================================================= -->
+
+  <xsl:function name="plos:if-empty" as="xs:anyAtomicType*">
+    <xsl:param name="node" as="node()?"/>
+    <xsl:param name="value" as="xs:anyAtomicType"/>
+    <xsl:choose>
+      <xsl:when test="$node and $node/child::node()">
+        <xsl:sequence select="data($node)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:sequence select="$value"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
 
   <!-- ============================================================= -->
   <!--  UTILITY TEMPLATES                                           -->

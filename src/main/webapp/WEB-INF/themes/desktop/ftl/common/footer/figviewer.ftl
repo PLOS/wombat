@@ -1,3 +1,4 @@
+
 <div id="fig-viewer-content">
   <div class="fv-header">
     <h1 id="fvTitle"> </h1>

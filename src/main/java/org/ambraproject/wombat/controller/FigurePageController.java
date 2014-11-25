@@ -69,7 +69,7 @@ public class FigurePageController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = articleService.requestArticleMetadata(articleId);
+      articleMetadata = articleService.requestArticleMetadata(articleId, true);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }

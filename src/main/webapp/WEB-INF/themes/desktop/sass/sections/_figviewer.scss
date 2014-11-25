@@ -111,37 +111,21 @@ $fv-grey-bg: darken($grey-light, 3%);
   }
 }
 #fvAuthors {
-  @extend .inline-list;
   height: rem-calc(15);
   line-height: rem-calc(15);
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0;
-  margin: 0;
-  white-space: nowrap;
   font-size: $txt-size-xxsmall;
+  color: $grey-med-light;
 
-  li {
-    margin-left: 0;
-    line-height: rem-calc(15);
-    height: rem-calc(15);
-    padding-right: rem-calc(3);
-    display: inline-block;
-    font-family: $font-face-fancy;
-    font-size: $txt-size-xxsmall;
-    color: $grey-med-light;
+  span {
     white-space: nowrap;
-
-    &:last-child {
-      padding-right: 0;
-    }
+    padding-right: rem-calc(3);
   }
-
-  li:not(:last-child):after {
-    content: ",";
+  span:last-child {
+    padding-right: 0;
   }
-
 }
 
 .figs #fig-viewer-figs {

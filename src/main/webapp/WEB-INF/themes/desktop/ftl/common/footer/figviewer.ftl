@@ -2,7 +2,7 @@
 <div id="fig-viewer-content">
   <div class="fv-header">
     <h1 id="fvTitle"> </h1>
-    <ul id="fvAuthors"> </ul>
+    <div id="fvAuthors"></div>
 
     <ul class="fv-nav tabs" data-tab role="tablist">
       <li class="abst tab-title"><a href="#panel-abst" controls="panel-abst">Abstract</a></li>

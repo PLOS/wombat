@@ -482,7 +482,7 @@ public class ArticleController extends WombatController {
    * @return the service path to the correspond article XML asset file
    */
   private static String getArticleXmlAssetPath(String articleId) {
-    return "assetfiles/" + articleId + ".XML";
+    return "articles/" + articleId + "?xml";
   }
 
   /**

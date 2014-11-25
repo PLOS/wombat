@@ -823,9 +823,7 @@
         <xsl:for-each select="ref">
           <xsl:sort data-type="number" select="label"/>
           <li>
-            <span class="label">
-              <xsl:value-of select="label"/>.
-            </span>
+
             <a>
               <xsl:attribute name="name">
                 <xsl:value-of select="@id"/>
@@ -852,7 +850,7 @@
                 <xsl:variable name="title" select="replace($cit/article-title,' ','+')"/>
               </xsl:if>
                 <xsl:element name="ul">
-                  <xsl:attribute name="class">find</xsl:attribute>
+                  <xsl:attribute name="class">reflinks</xsl:attribute>
                   <xsl:if test="$doi">
                     <xsl:attribute name="data-doi">
                       <xsl:value-of select="$doi"/>

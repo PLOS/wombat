@@ -10,6 +10,9 @@ This is for IE specific styles mostly ie9 and below.
 */
 
 //for ie8; couldn't get compass font-face mixin to work with ie8 even following the use specified
+
+@import "variables"; // basic settings for type, size and colors
+
 @font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.1.0');
@@ -145,5 +148,123 @@ body.article .ui-widget-overlay {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
 }
 
+.article .title-block .signposts {
+  width: 322px !important;
+  height: 80px !important;
+  float: right;
+  margin: -5px 0 0 -40px !important;
+  padding: 0;
+  border-left: 1px solid #efefef !important;
+}
+
+.article .title-block ul.signposts li {
+  background-color: #fff !important;
+  display: inline !important;
+  float: left;
+  border-bottom: 1px solid #efefef;
+  border-right: 1px solid #efefef;
+  padding: 20px 5px 0 !important;
+  margin: 0;
+}
+.article .title-block .signposts li:first-child {
+  border-left: 1px solid #efefef !important;
+}
+
+.article-meta, .article-meta .classifications {
+  width: 600px !important;
+}
+
+.article .signposts #loadingMetrics {
+  display: none !important;
+  font-size: 12px;
+  font-weight: normal;
+  color: #666;
+  position: relative;
+  background-color: #fff !important;
+  width: 320px !important;
+  height: 80px !important;
+  text-align: center;
+  border: 1px #efefef solid !important;
+
+}
+.article .signposts #loadingMetrics p {
+  padding: 30px 15px 0 0;
+  font-size: 20px;
+  width: 180px;
+  float: right;
+   }
+.article .signposts #tooSoon {
+  background-color: #efefef !important;
+  width: 320px !important;
+  height: 80px !important;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: left !important;
+  color: #666;
+  padding: 10px;
+}
+.article .signposts #metricsError {
+
+  font-size: 12px;
+  font-weight: normal;
+  text-align: left !important;
+  color: #666;
+  padding: 10px;
+  background-color: #efefef !important;
+  width: 320px !important;
+  height: 80px !important;
+
+}
+.article .signposts p.saves-tip {
+  top: 70px !important;
+  right: 40px !important;
+}
+.article .signposts p.citations-tip {
+  top: 70px !important;
+  right: 40px !important;
+  .scopus, .crossref {
+    display: none;
+  }
+}
+.article .signposts p.views-tip {
+  top: 70px !important;
+  right: 40px !important;
+}
+.article .signposts p.shares-tip {
+  top: 70px !important;
+  right: 40px !important;
+}
 
 
+.article-content .figure-inline-download ul li {
+  list-style-type: none;
+  width: 165px;
+  & > div,  & > a{
+    float: left;
+  }
+
+}
+
+// Target Offset: This is so that when the browser jumps to the target, we
+// Using "name" on IE8 because it doesn't recognize target.
+.article-content a[name] {
+  margin-top: -$target-offset;
+  padding-top: $target-offset;
+  display:inline-block;
+}
+
+//figure viewer
+/* didn't fix the issues. leaving in for now in case there is time to troubleshoot ie8
+#fvAuthors li {
+  padding: 0;
+  display: inline;
+}
+#fig-viewer {
+z-index: map-get($zindex, overlay);
+}
+#fig-viewer-abst {
+  display: block;
+  overflow: auto;
+  z-index: map-get($zindex, modal);
+
+}*/

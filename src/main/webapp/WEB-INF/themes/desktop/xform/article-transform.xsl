@@ -685,6 +685,7 @@
       <xsl:attribute name="name">
         <xsl:value-of select="@id"/>
       </xsl:attribute>
+      <xsl:attribute name="class">link-target</xsl:attribute>
     </xsl:element>
     <xsl:apply-templates/>
   </xsl:template>
@@ -781,6 +782,7 @@
           <xsl:attribute name="data-toc">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
+          <xsl:attribute name="class">link-target</xsl:attribute>
           <xsl:attribute name="title">
             <xsl:value-of select="descendant::title[1]"/>
           </xsl:attribute>
@@ -831,6 +833,7 @@
               <xsl:attribute name="id">
                 <xsl:value-of select="@id"/>
               </xsl:attribute>
+              <xsl:attribute name="class">link-target</xsl:attribute>
             </a>
             <xsl:variable name="cit" select="element-citation | mixed-citation | nlm-citation"/>
             <xsl:apply-templates select="$cit"/>
@@ -974,6 +977,7 @@
           <xsl:attribute name="name">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
+          <xsl:attribute name="class">link-target</xsl:attribute>
           <xsl:attribute name="data-toc">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
@@ -995,6 +999,7 @@
           <xsl:attribute name="data-toc">
             <xsl:value-of select="$abs_id"/>
           </xsl:attribute>
+          <xsl:attribute name="class">link-target</xsl:attribute>
           <xsl:attribute name="title">Abstract</xsl:attribute>
         </xsl:element>
         <h2>
@@ -1051,6 +1056,7 @@
       <xsl:attribute name="name">
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
+      <xsl:attribute name="class">link-target</xsl:attribute>
     </a>
     <h2>
       <xsl:apply-templates/>
@@ -1066,6 +1072,7 @@
       <xsl:attribute name="name">
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
+      <xsl:attribute name="class">link-target</xsl:attribute>
       <xsl:attribute name="data-toc">
         <xsl:value-of select="replace(lower-case(.),' ','')"/>
       </xsl:attribute>
@@ -1183,20 +1190,28 @@
         </xsl:choose>
       </xsl:variable>
 
-      <div class="figure">
-        <!--id needs to be attached to "figure" div for proper anchor linking-->
-        <xsl:attribute name="id">
+      <xsl:element name="a">
+        <xsl:attribute name="class">link-target</xsl:attribute>
+      <xsl:attribute name="id">
+        <xsl:value-of select="translate($figId, '.', '-')"/>
+      </xsl:attribute>
+        <xsl:attribute name="name">
           <xsl:value-of select="translate($figId, '.', '-')"/>
         </xsl:attribute>
+
+      </xsl:element>
+      <div class="figure">
+        <!--id needs to be attached to "figure" div for proper anchor linking-->
+        <!--<xsl:attribute name="id">-->
+          <!--<xsl:value-of select="translate($figId, '.', '-')"/>-->
+        <!--</xsl:attribute>-->
         <xsl:attribute name="data-doi">
           <xsl:value-of select="object-id[@pub-id-type='doi']"/>
         </xsl:attribute>
         <div class="img-box">
           <xsl:element name="a">
             <!-- 6/13/12: added translate so names and ids have dash (for figure enhancement) -->
-            <xsl:attribute name="name">
-              <xsl:value-of select="translate($figId, '.', '-')"/>
-            </xsl:attribute>
+
             <xsl:attribute name="title">Click for larger image</xsl:attribute>
             <xsl:attribute name="href">
               <xsl:value-of select="$slideshowURL"/>
@@ -1323,6 +1338,7 @@
             <xsl:attribute name="name">
               <xsl:value-of select="$figId"/>
             </xsl:attribute>
+            <xsl:attribute name="class">link-target</xsl:attribute>
           </a>
           <div class="expand">
             <xsl:attribute name="data-tableopen">
@@ -1380,6 +1396,7 @@
       <xsl:attribute name="id">
         <xsl:value-of select="@id"/>
       </xsl:attribute>
+      <xsl:attribute name="class">link-target</xsl:attribute>
     </xsl:element>
     <xsl:element name="div">
       <xsl:attribute name="class">box</xsl:attribute>
@@ -1409,6 +1426,7 @@
       <xsl:attribute name="id">
         <xsl:value-of select="@id"/>
       </xsl:attribute>
+      <xsl:attribute name="class">link-target</xsl:attribute>
     </xsl:element>
     <!-- span class='equation' goes around equations -->
     <span class="equation">
@@ -1448,7 +1466,7 @@
     <xsl:choose>
       <xsl:when test="@list-type='bullet'">
         <xsl:call-template name="newline1"/>
-        <ul>
+        <ul class="bulleted">
           <xsl:call-template name="newline1"/>
           <xsl:apply-templates/>
           <xsl:call-template name="newline1"/>
@@ -2095,6 +2113,7 @@
 
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template match="supplementary-material" name="supplementary-material">
+    <div class="supplementary-material">
     <xsl:variable name="the-label">
       <xsl:choose>
         <xsl:when test="label">
@@ -2112,21 +2131,21 @@
       <xsl:attribute name="id">
         <xsl:value-of select="@id"/>
       </xsl:attribute>
+      <xsl:attribute name="class">link-target</xsl:attribute>
     </xsl:element>
     <xsl:variable name="objURI">
       <xsl:value-of select="@xlink:href"/>
     </xsl:variable>
-    <p class="siTitle">
-      <strong>
+    <h3 class="siTitle title-small">
+
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat($pubAppContext,'/article/fetchSingleRepresentation.action?uri=',$objURI)"/>
+            <xsl:value-of select="concat('article/asset?unique&amp;id=', $objURI)"/>
           </xsl:attribute>
           <xsl:apply-templates select="label"/>
         </xsl:element>
         <xsl:apply-templates select="caption/title"/>
-      </strong>
-    </p>
+    </h3>
 
     <!--here, we're appending SI DOI after the caption but before the file type-->
     <xsl:variable name="siDOI">
@@ -2187,7 +2206,7 @@
       </xsl:when>
 
     </xsl:choose>
-
+  </div>
   </xsl:template>
 
   <!-- 1/4/12: suppress, we don't use -->
@@ -2689,6 +2708,7 @@
     <xsl:attribute name="name">
       <xsl:value-of select="substring($idFromXpath, 2)"/>
     </xsl:attribute>
+    <xsl:attribute name="class">link-target</xsl:attribute>
   </xsl:template>
 
   <xsl:template name="createIdNameXpath">

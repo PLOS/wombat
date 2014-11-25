@@ -1,3 +1,6 @@
+<div id="fig-viewer" class="reveal-modal" data-reveal>
+<#include "figviewer.ftl" />
+</div>
 </main><#-- opened in header.ftl -->
 
 <footer id="pageftr">

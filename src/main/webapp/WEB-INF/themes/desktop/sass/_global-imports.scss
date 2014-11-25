@@ -30,4 +30,5 @@ These are the files that need to be on each stand alone stylesheet, this is the 
 @import "utilities"; // mixins and extensible styles specific to wombat and journals
 @import "components"; // wombat and journal specific layout styles for large layouts
 @import "forms";      // forms styles
+
 //@import "journal"; //journal-specific  use this when the maven sass compiler is installed

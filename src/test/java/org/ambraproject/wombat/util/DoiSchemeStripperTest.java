@@ -23,7 +23,7 @@ import static org.testng.Assert.assertEquals;
 public class DoiSchemeStripperTest {
 
   @Test
-  public void testStrip() throws Exception {
+  public void testMapStrip() throws Exception {
     {
       Map<String, Object> map = new HashMap<>();
       map.put("foo", "fooValue");
@@ -45,4 +45,13 @@ public class DoiSchemeStripperTest {
       assertEquals(map.get("doi"), "10.1234/kjhrnjlrtj/lkjlrtre");
     }
   }
+
+  @Test
+  public void testStringStrip() {
+    assertEquals(DoiSchemeStripper.strip("info:doi/10.1371/journal.pone.0091290"), "10.1371/journal.pone.0091290");
+    assertEquals(DoiSchemeStripper.strip("fooValue"), "fooValue");
+    assertEquals(DoiSchemeStripper.strip("info:doi/10.1234/kjhrnjlrtj/werwljkd"), "10.1234/kjhrnjlrtj/werwljkd");
+    assertEquals(DoiSchemeStripper.strip("10.1234/kjhrnjlrtj/lkjlrtre"), "10.1234/kjhrnjlrtj/lkjlrtre");
+  }
+
 }

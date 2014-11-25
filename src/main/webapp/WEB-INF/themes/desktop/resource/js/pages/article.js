@@ -6,7 +6,7 @@
 
 (function ($) {
 
-  var s, float_header, is_author_list, check_authors_truncation;
+  var s, float_header, is_author_list, check_authors_truncation, spin_target, spin_opts, almspinner;
 
   float_header = {
 
@@ -71,33 +71,7 @@
     }
   };
 
-
-  check_authors_truncation = {
-
-    settings : {
-      toTruncate : $('#floatAuthorList')
-    },
-
-    init : function () {
-      s = this.settings;
-      this.run_it();
-    },
-
-    run_it : function () {
-
-      if (this.overflown() === true) {
-        // truncate_elem is in resource/js/components
-        return truncate_elem.init();
-      }
-    },
-
-    overflown : function(){
-      var e = s.toTruncate[0];
-      return e.scrollHeight > e.clientHeight;
-    }
-  };
-
-  $( document ).ready(function() {
+ $( document ).ready(function() {
 
     $('.preventDefault').on('click', function (e) {
       e.preventDefault();
@@ -106,7 +80,8 @@
 
     is_author_list = document.getElementById('floatAuthorList');
     if ( is_author_list != null) {
-      check_authors_truncation.init();
+      truncate_elem.remove_overflowed('#floatAuthorList');
+
       // initialize tooltip for author info
       plos_tooltip.init();
     }
@@ -118,13 +93,24 @@
       var twitter = new $.fn.twitter();
       twitter.getSidebarTweets(doi);
     }
-
+    if ($.fn.signposts ) {
+      var doi = $('meta[name=citation_doi]').attr('content');
+      var signposts = new $.fn.signposts();
+      signposts.getSignpostData(doi);
+    }
     // initialize toggle for author list view more
     plos_toggle.init();
 
     // initialize tooltip_hover for everything
     tooltip_hover.init();
 
+    spin_opts = {
+      width: 1,
+      top: '40%', // Top position relative to parent
+      left: '50%' // Left position relative to parent
+    };
+    spin_target = document.getElementById('loadingMetrics');
+    almspinner = new Spinner(spin_opts).spin(spin_target);
 
   });
 

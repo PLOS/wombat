@@ -9,17 +9,25 @@
         <#list article.figures as figure>
 
           <div class="carousel-item" data-doi="${figure.doi}">
-            <a title="${figure.title?html}">
-            <#--
-              JavaScript will set the href, by finding the div.figure whose data-doi attr matches this one.
-              The figure ID is defined in the XML, and we don't know it in this context,
-              but can find it by inspecting the transformed HTML below here.
-              -->
+            <#--<a title="${figure.title?html}">-->
+
+            <#--&lt;#&ndash;-->
+
+            <#-- When we implement the figure viewer: -->
+              <#--JavaScript will set the href, by finding the div.figure whose data-doi attr matches this one.-->
+              <#--The figure ID is defined in the XML, and we don't know it in this context,-->
+
+              <#--but can find it by inspecting the transformed HTML below here.-->
+              <#--&ndash;&gt;-->
 
               <@siteLink path=("article/figure/image?size=inline&id=" + figure.doi) ; src>
-                <img src="${src?html}" alt="${figure.title?html}" />
+                <img src="${src?html}"
+                     <#if figure.title?has_content >
+                     alt="${figure.title?html}"
+                     </#if>
+                />
               </@siteLink>
-            </a>
+            <#--</a>-->
           </div>
         </#list>
       </div>

@@ -62,16 +62,27 @@ $width-nav: $block-grid-elements - $width-logo;
           color: $clr-highlight-text;
           background: $plos-default;
         }
+
       }
     }
     li.highlighted {
       > a {
         color: $clr-highlight-text;
+
+        body.plosone & {
+          color:  $plos-default;
+
+          &:hover {
+            color: $clr-highlight-text;
+          }
+        }
+
         @extend %brand-background-hover;
       }
     }
   }
 }
+
 
 .logo {
   @include plos-grid-column($pixelwidth: columns, $columns: $width-logo);

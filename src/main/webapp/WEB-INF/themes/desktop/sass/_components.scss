@@ -444,6 +444,21 @@ $icn-tiny-align: middle;
    margin-left: 0;
 }
 
+@mixin arrow-bottom($arrow-size: 8, $arrow-color:$plos-default) {&:after {
+  content: '\A';
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-top-color: $arrow-color;
+  border-width: rem-calc($arrow-size);
+  margin-left: -rem-calc($arrow-size);
+}}
+
  // this is for a tooltip with a bullet list.
 
 .tooltip-aside{

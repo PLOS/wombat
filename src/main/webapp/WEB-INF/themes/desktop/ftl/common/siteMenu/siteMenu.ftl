@@ -4,6 +4,7 @@
   <#macro siteMenuCalloutHeadline>
   <h3><#nested/></h3>
   </#macro>
+
   <#macro siteMenuCalloutBulletList>
   <ul>
     <#nested/>
@@ -16,8 +17,9 @@
   </#macro>
 
   <#macro menuSection title containsCallout=false>
-  <li class="has-dropdown" id="${title?lower_case?replace(" ","-")}">
-    ${title}
+  <li  class="has-dropdown"
+      id="${title?lower_case?replace(" ","-")}">
+${title}
 
     <#if containsCallout>
     <div class="calloutcontainer dropdown">
@@ -43,6 +45,19 @@
   <li>
     <a href="${href}"><#nested/></a>
   </li>
+  </#macro>
+
+  <#macro menuSpecialSection title>
+   <li data-js-tooltip-hover="trigger" class="subject-area">
+    ${title}
+     <#nested/>
+  </li>
+  </#macro>
+
+  <#macro tooltip >
+  <p data-js-tooltip-hover="target" class="subject-area-info" >
+    <#nested/>
+  </p>
   </#macro>
 
 <#--Markup starts here

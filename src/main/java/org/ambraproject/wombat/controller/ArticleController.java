@@ -476,6 +476,16 @@ public class ArticleController extends WombatController {
   }
 
   /**
+   * Build the path to request the article XML asset for an article.
+   *
+   * @param articleId the ID of an article
+   * @return the service path to the correspond article XML asset file
+   */
+  private static String getArticleXmlAssetPath(String articleId) {
+    return "articles/" + articleId + "?xml";
+  }
+
+  /**
    * Retrieve and transform the body of an amendment article from its XML file. The returned value is cached.
    *
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
@@ -484,7 +494,7 @@ public class ArticleController extends WombatController {
     Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(articleId);
     String cacheKey = "amendmentBody:" + articleId;
-    String xmlAssetPath = "assetfiles/" + articleId + ".xml";
+    String xmlAssetPath = getArticleXmlAssetPath(articleId);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override
@@ -536,7 +546,7 @@ public class ArticleController extends WombatController {
     Preconditions.checkNotNull(site);
 
     String cacheKey = "html:" + articleId;
-    String xmlAssetPath = "assetfiles/" + articleId + ".xml";
+    String xmlAssetPath = getArticleXmlAssetPath(articleId);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override

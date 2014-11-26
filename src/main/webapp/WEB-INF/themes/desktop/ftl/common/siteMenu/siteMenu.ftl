@@ -41,13 +41,6 @@ ${title}
   </li>
   </#macro>
 
-
-  <#macro popOver >
-  <div data-js-tooltip-hover="target" class="popover-thing">
-  <#nested/>
-    </div>
-  </#macro>
-
   <#macro menuLink href>
   <li>
     <a href="${href}"><#nested/></a>
@@ -55,12 +48,16 @@ ${title}
   </#macro>
 
   <#macro menuSpecialSection title>
-   <li>
-     <div data-js-tooltip-hover="trigger" class="popover">
-    <p>${title}</p>
+   <li data-js-tooltip-hover="trigger" class="subject-area">
+    ${title}
      <#nested/>
-   </div>
   </li>
+  </#macro>
+
+  <#macro tooltip >
+  <p data-js-tooltip-hover="target" class="subject-area-info" >
+    <#nested/>
+  </p>
   </#macro>
 
 <#--Markup starts here

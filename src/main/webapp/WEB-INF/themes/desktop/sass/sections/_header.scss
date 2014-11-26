@@ -1,4 +1,3 @@
-
 /*
  *       These are the header styles
   header
@@ -15,7 +14,9 @@
                'about us'
                'search'
  */
-header { background: $clr-header; }
+header {
+  background: $clr-header;
+}
 
 .head-top {
 
@@ -80,10 +81,10 @@ $width-nav: $block-grid-elements - $width-logo;
   //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
   background: image-url('logo.png') no-repeat 0 0;
 }
+
 .home-link {
   @extend .name; // foundation
 }
-
 
 /* using Foundation Top Bar
  all @extend .class are Foundation
@@ -98,7 +99,6 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 }
 
-
 .top-bar-section {
   @extend .hide-for-print;
   // foundation
@@ -109,7 +109,7 @@ $width-nav: $block-grid-elements - $width-logo;
     padding-right: 0;
   }
   //this level of specificity is needed to override foundation styles
-  ul > li.has-dropdown {
+  ul.nav-elements > li {
     float: left;
     cursor: pointer;
     margin-left: 3px;
@@ -126,6 +126,26 @@ $width-nav: $block-grid-elements - $width-logo;
     &:last-child {
       border-left: 1px solid $grey-light;
     }
+    &.subject-area {
+      @include js-tooltip-container();
+      color: $grey-med;
+      cursor: pointer;
+    }
+  }
+
+  .subject-area-info {
+    @include js-tooltip-target();
+    @include tooltip($width: 350px, $tooltip-padding: $pad-xsmall);
+    top: -50px;
+    left: -60%;
+    text-align: center;
+    font-size: $txt-size-small;
+    background-color: $white;
+    color: $grey-med;
+    font-family: $font-face-plain;
+
+@include arrow-bottom($arrow-color: $white);
+
   }
 
   ul > li.has-dropdown.hover {
@@ -268,7 +288,7 @@ $width-nav: $block-grid-elements - $width-logo;
   ul > li.head-search:not(.has-form) > a {
     line-height: 32px;
     padding: 0;
-    font-size:  rem-calc($txt-size-small);
+    font-size: rem-calc($txt-size-small);
     @include link-text($clr-highlight-hover, underline);
   }
   // this is the only way I could find to override the white background on hover
@@ -308,6 +328,7 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 
 }
+
 // this seems excessive but it is necessary to override foundation
 // by referencing 'top-bar-section dropdown'
 .top-bar-section .dropdown .submit li a {
@@ -321,6 +342,7 @@ $width-nav: $block-grid-elements - $width-logo;
     text-decoration: underline;
   }
 }
+
 // print items (styles are in _type.scss)
 #user, #topslot {
   @extend .hide-for-print;

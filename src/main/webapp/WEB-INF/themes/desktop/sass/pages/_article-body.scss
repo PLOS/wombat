@@ -1,11 +1,5 @@
 // layout the page
 
-.popover{@include js-tooltip-container();}
-
-.popover-thing{@include js-tooltip-target();}
-
-
-
 .article-body {
   @extend .plos-row;
 }
@@ -16,7 +10,6 @@
 }
 
 .article-content {
-
   @include plos-grid-column(550, $gutter: none, $float: right);
 }
 

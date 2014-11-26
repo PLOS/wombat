@@ -851,8 +851,9 @@
                                                   plos:if-empty($cit//name[1]/surname,''))"/>
               <xsl:variable name="title" select="plos:if-empty($dbCit/title,
                                                  plos:if-empty($cit/article-title,''))"/>
-              <!-- remove any HTML tags from title (e.g. italics) -->
-              <xsl:variable name="title" select="replace($title, '&lt;/?\w+?&gt;', '')"/>
+              <!-- remove any HTML tags from title (e.g. italics) and encode author and title for url-->
+              <xsl:variable name="title" select="encode-for-uri(replace($title, '&lt;/?\w+?&gt;', ''))"/>
+              <xsl:variable name="author" select="encode-for-uri($author)"/>
               <xsl:element name="ul">
                 <xsl:attribute name="class">find</xsl:attribute>
                 <xsl:if test="$doi">
@@ -868,9 +869,8 @@
                             <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
                           </xsl:when>
                           <xsl:otherwise>
-                            <xsl:value-of select="concat('http://www.crossref.org/guestquery?auth2=',
-                            encode-for-uri(concat($author, '&amp;atitle2=', $title, '&amp;auth=', $author,
-                            '&amp;atitle=', $title)))"/>
+                            <xsl:value-of select="concat('http://www.crossref.org/guestquery?auth2=', $author,
+                            '&amp;atitle2=', $title, '&amp;auth=', $author, '&amp;atitle=', $title)"/>
                           </xsl:otherwise>
                         </xsl:choose>
                       </xsl:attribute>
@@ -882,9 +882,16 @@
                   <xsl:element name="li">
                     <xsl:element name="a">
                       <xsl:attribute name="href">
+                        <xsl:variable name="author_clause">
+                          <xsl:choose>
+                            <xsl:when test="$author">
+                              <xsl:value-of select="concat($author, encode-for-uri('[author] AND '))"/>
+                            </xsl:when>
+                          </xsl:choose>
+                        </xsl:variable>
                         <xsl:value-of select="concat('http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?',
                         'db=PubMed&amp;cmd=Search&amp;doptcmdl=Citation&amp;defaultField=Title%20Word&amp;term=',
-                        encode-for-uri(concat($author, '[author] AND ', $title)))"/>
+                        $author_clause, $title)"/>
                       </xsl:attribute>
                       <xsl:attribute name="target">_new</xsl:attribute>
                       <xsl:attribute name="title">Go to article in PubMed</xsl:attribute>
@@ -895,7 +902,7 @@
                     <xsl:element name="a">
                       <xsl:attribute name="href">
                         <xsl:value-of select="concat('http://scholar.google.com/scholar_lookup?title=',
-                        encode-for-uri(concat($title,'&amp;author=', $author, '&amp;year=', $pubYear)))"/>
+                        $title,'&amp;author=', $author, '&amp;year=', $pubYear)"/>
                       </xsl:attribute>
                       <xsl:attribute name="target">_new</xsl:attribute>
                       <xsl:attribute name="title">Go to article in Google Scholar</xsl:attribute>

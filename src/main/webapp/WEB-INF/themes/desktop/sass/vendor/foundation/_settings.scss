@@ -862,7 +862,7 @@ $include-html-pricing-classes: false;
 
 // Reveal
 
-$include-html-reveal-classes: false;
+$include-html-reveal-classes: true;
 
 // We use these to control the style of the reveal overlay.
 // $reveal-overlay-bg: rgba(#000, .45);
@@ -870,10 +870,10 @@ $include-html-reveal-classes: false;
 
 // We use these to control the style of the modal itself.
 // $reveal-modal-bg: #fff;
-// $reveal-position-top: 50px;
-// $reveal-default-width: 80%;
-// $reveal-modal-padding: rem-calc(20);
-// $reveal-box-shadow: 0 0 10px rgba(#000,.4);
+$reveal-position-top: 0;
+$reveal-default-width: 100%;
+$reveal-modal-padding: 0;
+$reveal-box-shadow: 0;
 
 // We use these to style the reveal close button
 // $reveal-close-font-size: rem-calc(22);
@@ -884,7 +884,7 @@ $include-html-reveal-classes: false;
 
 // We use these to control the modal border
 // $reveal-border-style: solid;
-// $reveal-border-width: 1px;
+//$reveal-border-width: 1px;
 // $reveal-border-color: #666;
 
 // $reveal-modal-class: "reveal-modal";
@@ -1057,7 +1057,7 @@ $include-html-table-classes: false;
 // TABS
 //
 
- $include-html-tabs-classes: false;
+ $include-html-tabs-classes: true;
 
 // $tabs-navigation-padding: rem-calc(16);
 // $tabs-navigation-bg-color: #efefef  ;

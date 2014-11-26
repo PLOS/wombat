@@ -1,8 +1,9 @@
+
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
 $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
 
 
- // extensible layout styles
+// extensible layout styles
 
 .text-article-intro {
   font-size: $txt-size-default;
@@ -28,19 +29,148 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   float: right;
 }
 
-.article-meta {
-  @extend .hide-for-print;
-}
-
 .title-block {
   width: 100%;
   background: $white;
   padding-left: $pad-small;
+  min-height: rem-calc(100);
+  position: relative;
+}
 
+.signposts {
+  .noshow {
+    display: none;
+  }
+
+  .anime-hide {
+     opacity: 0;
+  }
+  @include plos-grid-column(160, $gutter: none);
+  @extend .inline-list;
+  margin: $pad-default $pad-default 0 0;
+  float: right;
+  text-align: center;
+  height: rem-calc(159);
+  opacity: 1;
+  @include single-transition(opacity);
+
+  li {
+    @extend %brand-shaded-blocks;
+    float: left;
+    border-right: 1px solid $white;
+    border-bottom: 1px solid $white;
+    padding: $pad-default $pad-xsmall;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+    font-size: $txt-size-medium-large;
+    color: $grey-dark;
+    width: rem-calc(80);
+    height: rem-calc(80);
+
+    .tools {
+
+      a {
+        font-size: $txt-size-xsmall;
+        color: $grey-dark;
+        padding: $pad-xsmall;
+       // @include single-transition(background-color);
+        transition-property: all;
+        transition-duration: .5s;
+        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+        &.show-tip {
+          background-color: $plos-default;
+          border-radius: $border-radius-default;
+          color: $white;
+        }
+        &:hover {
+          background-color: $plos-default;
+          border-radius: $border-radius-default;
+          color: $white;
+          text-decoration: underline;
+        }
+      }
+
+      p {
+
+        background-color: $plos-default;
+        border-radius: $border-radius-default;
+        width: rem-calc(280);
+        position: absolute;
+        text-align: left;
+        z-index: map-get($zindex, overlay);
+        padding: $pad-xsmall;
+        display: none;
+
+        > a {
+          color: $white;
+          padding: 0;
+          display: block;
+        }
+      }
+
+      p.saves-tip {
+        top: rem-calc(93);
+        right: rem-calc(118);
+      }
+      p.citations-tip {
+        top: rem-calc(93);
+        right: rem-calc(30);
+        .scopus, .crossref {
+          display: none;
+        }
+      }
+      p.views-tip {
+        top: rem-calc(174);
+        right: rem-calc(118);
+      }
+      p.shares-tip {
+        top: rem-calc(174);
+        right: rem-calc(36);
+      }
+    }
+  }
+    .unavailable {
+      width: rem-calc(160);
+      border-right: 0;
+      border-bottom: 0;
+      font-size: $txt-size-xsmall;
+      font-weight: normal;
+      text-align: right;
+      color: $grey-med-dark;
+    }
+    #loadingMetrics {
+      @extend .unavailable;
+      position: relative;
+      height: rem-calc(160);
+
+      text-align: center;
+      p {
+        padding-top: rem-calc(75);
+        font-size: $txt-size-medium-large;
+      }
+    }
+    #tooSoon {
+      @extend .unavailable;
+      padding: rem-calc(25) $pad-small $pad-small $pad-medium;
+    }
+    #metricsError {
+      @extend .unavailable;
+      padding: rem-calc(105) $pad-small $pad-small $pad-default;
+      background: $grey-light;
+      height: rem-calc(160);
+    }
+  }
+
+.article-meta {
+  //  padding-right: $pad-default;
+  @extend .hide-for-print;
 }
 
 .classifications {
-  @include plos-grid-column(600, $gutter: none);
+  @include plos-grid-column(755, $gutter: none);
   @extend %txt-transform;
   margin-top: $pad-smallish;
 
@@ -55,7 +185,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     background: image-url('icon.oa.gif') no-repeat 0 3px;
     padding-right: $pad-small;
     font-family: $font-face-fancy;
-   }
+  }
 
   .peer-reviewed {
     background: image-url('icon.pr.gif') no-repeat 0 3px;
@@ -92,27 +222,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.signposts {
-  //TEMPORARY STYLES
-  @include plos-grid-column(360, $gutter: none);
-  @extend .inline-list;
-  margin: 0;
-  float: right;
-  text-align: center;
-  height: 60px;
 
-  li {
-    float: right;
-    border-right: 1px solid $grey-med-light;
-    border-left: 1px solid $grey-med-light;
-    padding: $pad-small $pad-default;
-    margin: 0;
-    font-weight: bold;
-  }
-}
+
 
 .article-title-etc {
-  @include plos-grid-column(900, $gutter: none);
+  @include plos-grid-column(755, $gutter: none);
   margin-top: $pad-small;
 
   h1 {
@@ -157,14 +271,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   #floatAuthorList {
     @extend .hide-for-print;
     height: rem-calc(16);
-    width: rem-calc(760);
+    width: rem-calc(770);
     @extend .inline-list;
     margin: 0;
     padding-left: 0;
 
     li {
       margin-left: 0;
-      line-height: 16px;
+      line-height: rem-calc(16);
       font-size: rem-calc($txt-size-xsmall);
     }
   }
@@ -181,7 +295,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   z-index: map-get($zindex, topvisible);
 
   .float-title-inner {
-    @include plos-grid-column(760, $gutter: left, $gutter-width: 18px);
+    @include plos-grid-column(770, $gutter: left, $gutter-width: 18px);
 
     h1 {
       @include truncated();
@@ -270,7 +384,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       background-image: image-url("icon.tabs.active.white.png");
       background-repeat: no-repeat;
       background-position: 9px 65px;
-     
+
       &:hover {
         @extend %brand-background;
         cursor: inherit;
@@ -287,21 +401,21 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   margin-bottom: $pad-small;
 
   li {
-   position: relative;
-   margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
+    position: relative;
+    margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
 
-   &.active{
-     a:hover{text-decoration: none;}
-   }
+    &.active{
+      a:hover{text-decoration: none;}
+    }
 
-   &[data-js-toggle='toggle_trigger'] a{
-     color: $clr-highlight;
-   }
+    &[data-js-toggle='toggle_trigger'] a{
+      color: $clr-highlight;
+    }
 
-   > a, > span{
-   display: inline-block;   // needed to overwrite the inline-list
-   padding: $pad-highlight $pad-highlight-x; //TODO line-height;
-   }
+    > a, > span{
+      display: inline-block;   // needed to overwrite the inline-list
+      padding: $pad-highlight $pad-highlight-x; //TODO line-height;
+    }
 
   }
   .contribute{
@@ -317,52 +431,52 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
- .author-info{
-     @extend .pill-small;
-     padding-right: ($pad-default);
-     width: rem-calc(450);
-     top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
-     height: auto;
-     position:absolute;
-     margin-top: $pad-small;
-     opacity: 0;
-     @include single-transition(opacity);
-     z-index: -1;
+.author-info{
+  @extend .pill-small;
+  padding-right: ($pad-default);
+  width: rem-calc(450);
+  top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
+  height: auto;
+  position:absolute;
+  margin-top: $pad-small;
+  opacity: 0;
+  @include single-transition(opacity);
+  z-index: -1;
 
-   p{
-      border-top: rem-calc(2) solid $grey-med;
-      padding: $pad-small 0;
-      &:first-child {
-        border-top: none;
-      }
-   }
+  p{
+    border-top: rem-calc(2) solid $grey-med;
+    padding: $pad-small 0;
+    &:first-child {
+      border-top: none;
+    }
+  }
 
-   .email, .rel-footnote {
-     @include icon-offscreen;
-     margin-right: $icon-space;
-   }
- }
+  .email, .rel-footnote {
+    @include icon-offscreen;
+    margin-right: $icon-space;
+  }
+}
 
- .active {
-   a, a:hover { color: $white; }
+.active {
+  a, a:hover { color: $white; }
 
-   .author-name {
-     @include rounded-pill($padding: $pad-highlight $pad-highlight-x,$hover: false);
-   }
+  .author-name {
+    @include rounded-pill($padding: $pad-highlight $pad-highlight-x,$hover: false);
+  }
 
-   .author-info {
-     opacity: 1;
-     z-index: map-get($zindex, dropdown);
-   }
+  .author-info {
+    opacity: 1;
+    z-index: map-get($zindex, dropdown);
+  }
 
-   .close{
+  .close{
 
     @extend .closer;
-     position: absolute;
-     top: $pad-xsmall;
-     right: $pad-xsmall;
-   }
- }
+    position: absolute;
+    top: $pad-xsmall;
+    right: $pad-xsmall;
+  }
+}
 
 .article-type {
   height: auto;
@@ -373,7 +487,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .type-desc{
   @include tooltip();
-  @include js-tooltip-target($top: rem-calc(35));
+  @include js-tooltip-target($margintop: rem-calc(35));
+  left: 0;
 
   p{
     color: $clr-tooltip-text;
@@ -386,9 +501,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .article-type-tooltip{
-   @include tooltip-trigger($outside-box: yes);
-   font-family: $font-face-plain;
-   font-size: $txt-size-xxxsmall;
+  @include tooltip-trigger($outside-box: yes);
+  font-family: $font-face-plain;
+  font-size: $txt-size-xxxsmall;
 }
 
 
@@ -451,7 +566,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .dload-xml {
   @extend .tooltip-aside;
-  @include js-tooltip-target( $top: rem-calc(40));
+  @include js-tooltip-target(rem-calc(40));
   opacity: 1;
   z-index: map-get($zindex, dropdown);
   left: -127px;
@@ -471,7 +586,8 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .print-options {
   @extend .tooltip-aside;
-  @include js-tooltip-target( $top: rem-calc(40));
+  @include js-tooltip-target(rem-calc(40));
+  left: 0;
   opacity: 1;
   z-index: map-get($zindex, dropdown);
 }
@@ -502,7 +618,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .share-options {
   @extend .tooltip-aside;
-  @include js-tooltip-target($top: rem-calc(40));
+  @include js-tooltip-target(rem-calc(40));
   padding-left: $pad-small;
   opacity: 1;
   z-index: map-get($zindex, dropdown);
@@ -513,12 +629,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     list-style-position: outside; // firefox
     list-style-type: none;
 
-     a img {
-       width: 16px;
-       height: 16px;
-       margin-right: rem-calc(3);
-       margin-bottom: rem-calc(4);
-     }
+    a img {
+      width: 16px;
+      height: 16px;
+      margin-right: rem-calc(3);
+      margin-bottom: rem-calc(4);
+    }
   }
 }
 
@@ -658,15 +774,15 @@ body.article .ui-widget-overlay {
       position: relative;
 
       .taxo-term {
-         @extend .button;
-         width: auto;
-         float: left;
+        @extend .button;
+        width: auto;
+        float: left;
         //the next three elements are for truncation. width is needed and is being set with js
         //because the width needs to be auto when truncation isn't needed
-         white-space: nowrap;
-         overflow: hidden;
-         text-overflow: ellipsis;
-       }
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
       .taxo-tooltip {
         @include tooltip($width: 160px);
@@ -687,13 +803,13 @@ body.article .ui-widget-overlay {
 
         p {
           font-size: $txt-size-xxsmall;
-          line-height: $txt-size-large;
+          line-height: $pad-default;
         }
 
         button {
           margin-top: $pad-small;
           margin-right: $pad-xsmall;
-          line-height: 20px;
+          line-height: $txt-size-xlarge;
           background-color: $white;
           border: none;
           border-radius: 4px;
@@ -706,7 +822,7 @@ body.article .ui-widget-overlay {
         p.taxo-confirm {
           display: none;
           margin-top: $pad-xsmall;
-          line-height: 75px;
+          line-height: rem-calc(75);
         }
       }
 
@@ -715,7 +831,7 @@ body.article .ui-widget-overlay {
         display: inline-block;
         float: right;
         width: rem-calc(16);
-        height: 16px;
+        height: rem-calc(16);
         background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
         cursor: pointer;
 
@@ -771,7 +887,7 @@ body.article .ui-widget-overlay {
       padding-top: $pad-small;
       font-size: $txt-size-xsmall;
 
-        .tweet-info {
+      .tweet-info {
         a {
           color: $clr-body-text;
           position: relative;
@@ -799,16 +915,16 @@ body.article .ui-widget-overlay {
             }
           }
         }
-          span {
-            font-size: $txt-size-xxxsmall;
+        span {
+          font-size: $txt-size-xxxsmall;
         }
       }
     }
   }
 
-   .more-tweets, .placeholderPic {
-     display: none;
-   }
+  .more-tweets, .placeholderPic {
+    display: none;
+  }
 
   .load-more, .view-all {
     @extend %link-text-default;
@@ -842,7 +958,7 @@ body.article .ui-widget-overlay {
     div {
       background: image-url('sprite.twitter.actions.png') no-repeat 0 0;
       width: rem-calc(17);
-      height: 15px;
+      height: rem-calc(15);
       display: inline-block;
     }
   }
@@ -877,9 +993,9 @@ body.article .ui-widget-overlay {
 }
 
 @media print {
-   @page {
-     margin: .75in;
-   }
+  @page {
+    margin: .75in;
+  }
 
   .article-body {
     width: 100%;
@@ -898,5 +1014,3 @@ body.article .ui-widget-overlay {
     }
   }
 }
- 
-

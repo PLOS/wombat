@@ -16,11 +16,9 @@
 <#include "../common/header/header.ftl" />
 <div class="set-grid">
   <header class="title-block">
+  <#include "signposts.ftl" />
     <div class="article-meta">
     <#include "articleClassifications.ftl" />
-      <ul id="almSignposts" class="signposts">
-        <li>1 billion<br>views</li>
-      </ul>
     </div>
     <div class="article-title-etc">
     <#include "articleTitle.ftl" />
@@ -82,26 +80,37 @@
     <#include "aside/sidebar.ftl" />
     </aside>
   </div>
+
   <#include "../common/footer/footer.ftl" />
 
   <@js src="resource/js/components/show_onscroll.js"/>
   <@js src="resource/js/components/tooltip_hover.js"/>
-  <@js src="resource/js/components/truncate_elem.js"/>
+
   <@js src="resource/js/components/table_open.js"/>
+  <@js src="resource/js/components/figshare.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
+  <@js src="resource/js/vendor/moment.js"/>
   <@js src="resource/js/components/twitter_module.js"/>
+  <@js src="resource/js/components/signposts.js"/>
+  <@js src="resource/js/vendor/spin.js"/>
 
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>
   <@renderJs />
 
+<#include "mathjax.ftl">
+
   <script type="text/javascript">  /*filesizetable*/
    (function ($) {
+     $(document).foundation();
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
    })(jQuery);
+
+
   </script>
+
 
   <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>

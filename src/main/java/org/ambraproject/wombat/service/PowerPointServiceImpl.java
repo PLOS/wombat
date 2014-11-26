@@ -145,20 +145,20 @@ public class PowerPointServiceImpl implements PowerPointService {
   private static final Pattern TITLE_EXTRACTOR = Pattern.compile("<title[^>]*?>(.*?)</title\\s*>");
 
   private static String getTitleText(Map<String, Object> figureMetadata) {
-    String title = (String) figureMetadata.get("title");
-    String description = (String) figureMetadata.get("description");
+    String title = TextUtil.sanitizeWhitespace((String) figureMetadata.get("title"));
+    String description = TextUtil.sanitizeWhitespace((String) figureMetadata.get("description"));
 
     /*
      * The description is an excerpt of article XML. Use quick-and-dirty regexes to get the text of the <title> element
-     * with internal markup removed. We expect we expect there never to be another nested pair of <title> tags, so we
-     * should be able to get away without context-free parsing.
+     * with internal markup removed. We expect there never to be another nested pair of <title> tags, so we should be
+     * able to get away without context-free parsing.
      *
      * If bugs or shortcomings are found, consider using an XML parser instead.
      */
 
     // Extract title from description
     Matcher titleElement = TITLE_EXTRACTOR.matcher(description);
-    if (!titleElement.find()) throw new RuntimeException();
+    if (!titleElement.find()) throw new RuntimeException("Title not found in description");
     String descriptionTitleText = titleElement.group(1);
     descriptionTitleText = TextUtil.removeMarkup(descriptionTitleText);
 

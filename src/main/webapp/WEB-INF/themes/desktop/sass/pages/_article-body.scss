@@ -37,9 +37,16 @@ $line-height-small: ($line-height * .5);
   @include callout($clr-warning-bg);
 }
 
+// this is the amount we want to offset the target so it doesn't butt up against the top of the window OR the floating header.
+.article-content a:target{
+  margin-top: -$target-offset;
+  padding-top: $target-offset;
+    display:inline-block;
+  }
+
 .article-content {
 
-  p, ul, ol, > div {
+  p, ul, ol, .section > div {
     margin-bottom: $line-height;
   }
 
@@ -51,7 +58,7 @@ $line-height-small: ($line-height * .5);
     margin-bottom: $txt-size-default;
     line-height: $line-height;
   }
-  ul {
+  ul.bulleted {
     list-style-type: none;
 
     li {
@@ -91,11 +98,14 @@ $line-height-small: ($line-height * .5);
   h4 {
     font-weight: normal
   }
+  .title-small {
+    font-size: $txt-size-default;
+    font-weight: bold;
+  }
 
   blockquote {
     border-left: $pad-xsmall solid $clr-separator;
     margin: $line-height-med 0 $line-height 0;
-
   }
 
   .abstract {
@@ -122,7 +132,6 @@ $line-height-small: ($line-height * .5);
 
     }
   }
-
 
   .amendment {
     margin-bottom: $line-height-med;
@@ -206,6 +215,18 @@ $line-height-small: ($line-height * .5);
 
   }
 
+  // supplementary materials - need to have no margin between paragraphs just below the box
+  .supplementary-material{
+    margin-bottom: $line-height;
+    p {margin-bottom: 0;}
+
+  }
+
+}
+
+// fig share widget needs content-box sizing to space everything properly.
+#figshare_enlarge * {
+  box-sizing: content-box;
 }
 
 // TODO - write some docs
@@ -455,7 +476,6 @@ $line-height-small: ($line-height * .5);
       }
       @include clearfix;
       padding: rem-calc(8) 0 0;
-      line-height: 15px;
       width: rem-calc(165);
 
       .definition-label {
@@ -466,7 +486,7 @@ $line-height-small: ($line-height * .5);
           text-align: center;
           color: $white;
           font-size: $txt-size-xxxxsmall;
-
+          line-height: $txt-size-large;
           &:hover {
             text-decoration: none;
           }
@@ -588,6 +608,27 @@ $line-height-small: ($line-height * .5);
   }
 }
 
+.article-content .reflinks {
+  @include clearfix;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 0;
+  height: rem-calc(25);
+  line-height: $line-height;
+
+  li {
+    float: left;
+    margin: 0 rem-calc(4) $pad-small $pad-default;
+    padding: 0;
+    list-style-type: disc;
+    line-height: $line-height;
+
+  }
+  li:first-child {
+    list-style-type: none;
+    margin-left: 0;
+  }
+}
 
 @media print {
   .article-text {

@@ -1,32 +1,43 @@
+
+/*doc
+ ---
+ title: truncate elements
+ name: truncate_elem
+ category: js widgets
+ ---
+
+ ---
+
+ pass the container element for what needs truncating
+
+ used on article.js for floating header authors and on figviewer.js for header authors
+ truncate_elem.remove_overflowed('#floatAuthorList');
+
+*/
 ;(function ($) {
-var s;
-  truncate_elem = { // TODO: make extensible so elem_list & trunc_ending can be set as options
-  settings: {
-    elem_list : $("#floatAuthorList"), // TODO: use data-js-floater as selector
-    //using hard number for now. getting the offsetTop from elem_list isn't working cuz either/both separate file / object literal format
-    elem_list_height : null,
-    trunc_ending : "<li>&hellip;</li>"
-  },
+  truncate_elem = {
 
-  init: function () {
-    s = this.settings;
-    this.remove_overflowed();
-    this.add_ellips();
-  },
+   //TODO: add options for the trunc ending
+    remove_overflowed : function (to_truncate) {
+      var elem_list_height;
+      var trunc_ending = "<li>&hellip;</li>";
+      var elem_list = $(to_truncate);
 
-  remove_overflowed : function () {
-    s.elem_list_height = s.elem_list[0].offsetTop;
-    s.elem_list.children().each(function () {
-      if (this.offsetTop > s.elem_list_height ) {
-        return $(this).addClass("remove");
-      }
-    });
-    $(".remove").remove();
-  },
+      elem_list_height = $(elem_list[0]).offset().top;
+      elem_list.children().each(function () {
 
-  add_ellips: function () {
-    $(s.elem_list).append(s.trunc_ending);
+        if ($(this).offset().top > elem_list_height ) {
+          return $(this).addClass("remove");
+        }
+      });
+
+      $(".remove").remove();
+
+      $(elem_list).append(trunc_ending);
+
+    }
+
   }
-}
 
 })(jQuery);
+

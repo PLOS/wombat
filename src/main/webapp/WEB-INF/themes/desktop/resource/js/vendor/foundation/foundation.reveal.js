@@ -138,7 +138,7 @@
     open : function (target, ajax_settings) {
       var self = this,
           modal;
-
+      $('body').css('overflow','hidden');
       if (target) {
         if (typeof target.selector !== 'undefined') {
           // Find the named node; only use the first one found, since the rest of the code assumes there's only one node
@@ -217,6 +217,8 @@
           open_modals = this.S('[' + this.attr_name() + '].open'),
           settings = modal.data(this.attr_name(true) + '-init') || this.settings;
 
+      $('body').css('overflow','scroll');
+
       if (open_modals.length > 0) {
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
@@ -276,7 +278,7 @@
         if (animData.pop) {
           css.top = $(window).scrollTop() - el.data('offset') + 'px';
           var end_css = {
-            top: $(window).scrollTop() + el.data('css-top') + 'px',
+            top: $(window).scrollTop(),// + el.data('css-top') + 'px',
             opacity: 1
           };
 
@@ -292,7 +294,7 @@
         }
 
         if (animData.fade) {
-          css.top = $(window).scrollTop() + el.data('css-top') + 'px';
+          css.top = $(window).scrollTop();// + el.data('css-top') + 'px';
           var end_css = {opacity: 1};
 
           return setTimeout(function () {

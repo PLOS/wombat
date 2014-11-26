@@ -23,6 +23,23 @@ $plos-bio: #16a127; //green: biology, comp-bio, genetics
 $plos-med: #891fb1; // purple: medicine, pathogens, ntds
 $plos-currents: #1dbfe0; // light blue
 
+//hues for background shading
+$plos-default-shade1: #abc2e8;
+$plos-default-shade2: #93aad0;
+$plos-default-shade3: #c6d7f2;
+// the shades aren't straight percentages or hue variations, so it is necessary to list each one
+$plos-one-shade1: #fcd5a3;
+$plos-one-shade2: #fbe989;
+$plos-one-shade3: #fadfbe;
+
+$plos-bio-shade1: #a8e2be;
+$plos-bio-shade2: #92e5ab;
+$plos-bio-shade3: #caeed7;
+
+$plos-med-shade1: #d4afe0;
+$plos-med-shade2: #c493d4;
+$plos-med-shade3: #decbe4;
+
 $clr-brand: $plos-default;
 
 $black: #000;
@@ -102,6 +119,7 @@ $default-header-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
 $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
 $default-transition-duration: .3s;
 $default-transition-function: linear;
+$target-offset: 60px; // this is the amount we want to offset the target so it doesn't butt up against the top of the window OR the floating header.
 
 // typography
 $pad-xsmall: ($grid-gutter / 4);  //5px
@@ -158,6 +176,7 @@ $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
+$sub-sup-alignment: .5ex; //controls sub and super text
 
 /*doc
 ---

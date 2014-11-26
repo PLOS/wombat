@@ -319,7 +319,6 @@ example | extension
 }
 .icon-close {
   @extend .icon-fa;
- // @extend .fa-close;
   line-height: normal;
   content: '\f00d';
 }
@@ -334,10 +333,7 @@ example | extension
   font-size: $txt-size-medium-large;
   line-height: rem-calc(35);  // .fa-etc default to 44
 }
-.icon-paw {
-@extend .icon-fa;
-@extend .fa-paw;
-}
+
 .aria-text {
   position: absolute;
   top: -9999px;
@@ -481,12 +477,11 @@ $icn-tiny-align: middle;
 @mixin js-tooltip-container{
   position:relative;
 }
-@mixin js-tooltip-target($top: $pad-default){
-  top: 0;   // need to make this a tad more dynamic.
-  left: 0;
+@mixin js-tooltip-target($margintop: $pad-default){
+  top: 0;
   height: 0;
-  position:absolute;
-  margin-top: $top;   /// margin cause then there is no blinking between the trigger and the tooltip
+  position: absolute;
+  margin-top: $margintop;   /// margin to prevent blinking between the trigger and the tooltip
   opacity: 0;
   visibility: hidden;
   z-index: map-get($zindex, invisible);

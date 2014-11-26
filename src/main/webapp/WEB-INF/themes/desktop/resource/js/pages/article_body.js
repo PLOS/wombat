@@ -33,6 +33,7 @@
   });
 
   addMediaCoverageLink();
+  figshareWidget();
 
 
   $('#figure-carousel-section').buildFigureCarousel({});

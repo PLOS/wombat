@@ -277,9 +277,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     padding-left: 0;
 
     li {
+      padding-right: rem-calc(3);
       margin-left: 0;
       line-height: rem-calc(16);
       font-size: rem-calc($txt-size-xsmall);
+    }
+
+    li:last-child {
+      padding-right: 0;
     }
   }
 }

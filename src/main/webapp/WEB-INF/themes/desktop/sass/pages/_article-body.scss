@@ -10,7 +10,6 @@
 }
 
 .article-content {
-
   @include plos-grid-column(550, $gutter: none, $float: right);
 }
 

@@ -7,7 +7,6 @@ import com.google.common.collect.Iterators;
 import com.google.common.io.Closer;
 import com.google.gson.Gson;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -36,7 +35,6 @@ import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.Closeable;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -107,44 +105,48 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
 
   /**
-   * Build a new transformer for a site.
+   * Build a new transformer and attach any required parameters, including secondary SAX sources, that
+   * may be required for the given render context
    *
-   * @param site the site key
+   * @param renderContext the context for the transform which wraps the site object and optional context values
    * @return the transformer
    * @throws IOException
    */
-  private Transformer buildTransformer(Site site) throws IOException {
-    Theme theme = site.getTheme();
-    log.info("Building transformer for: {}", site);
+  private Transformer buildTransformer(RenderContext renderContext, XMLReader xmlr) throws IOException {
+    Theme theme = renderContext.getSite().getTheme();
+    log.info("Building transformer for: {}", renderContext.getSite());
     TransformerFactory factory = newTransformerFactory();
 
+    Transformer transformer;
     try (ThemeUriResolver resolver = new ThemeUriResolver(theme);
          InputStream transformFile = theme.getStaticResource(TRANSFORM_TEMPLATE_PATH)) {
       factory.setURIResolver(resolver);
-      return factory.newTransformer(new StreamSource(transformFile));
+      transformer = factory.newTransformer(new StreamSource(transformFile));
     } catch (TransformerConfigurationException e) {
       throw new RuntimeException(e);
     }
+
+    // Add cited articles metadata for inclusion of DOI links in reference list
+    // TODO: abstract out into a strategy pattern when and if render options become more complex
+    if (theme.getKey().startsWith("Desktop") && renderContext.getArticleId() != null) {
+      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId(), true);
+      Object citedArticles = articleMetadata.get("citedArticles");
+      JSONArray jsonArr = JSONArray.fromObject(citedArticles);
+      String metadataXml = new XMLSerializer().write(jsonArr);
+      SAXSource saxSourceMeta = new SAXSource(xmlr, new InputSource(IOUtils.toInputStream(metadataXml)));
+      transformer.setParameter("citedArticles", saxSourceMeta);
+    }
+    return transformer;
   }
 
-  @Override
-  public void transform(Site site, InputStream xml, OutputStream html)
-          throws IOException, TransformerException {
-    Preconditions.checkNotNull(site);
-    Preconditions.checkNotNull(xml);
-    Preconditions.checkNotNull(html);
-
-    transformWithMetadata(site, null, xml, html);
-  }
 
   @Override
-  public void transformWithMetadata(Site site, String articleId, InputStream xml, OutputStream html)
+  public void transform(RenderContext renderContext, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(site);
+    Preconditions.checkNotNull(renderContext);
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
 
-    Transformer transformer = buildTransformer(site);
     log.debug("Starting XML transformation");
     SAXParserFactory spf = SAXParserFactory.newInstance();
     XMLReader xmlr;
@@ -177,29 +179,19 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
         }
       }
     });
+    // build the transformer and add any context-dependent parameters required for the transform
+    // NOTE: the XMLReader is passed here for use in creating any required secondary SAX sources
+    Transformer transformer = buildTransformer(renderContext, xmlr);
     SAXSource saxSource = new SAXSource(xmlr, new InputSource(xml));
-    if (articleId != null) {
-      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(articleId, true);
-      Object citedArticles = articleMetadata.get("citedArticles");
-      JSONArray jsonArr = JSONArray.fromObject(citedArticles);
-      String metadataXml = new XMLSerializer().write(jsonArr);
-      FileWriter file = new FileWriter("test.xml");
-      file.write(metadataXml);
-      file.close();
-      SAXSource saxSourceMeta = new SAXSource(xmlr, new InputSource(IOUtils.toInputStream(metadataXml)));
-      transformer.setParameter("citedArticles", saxSourceMeta);
-    }
-
-
     transformer.transform(saxSource, new StreamResult(html));
 
     log.debug("Finished XML transformation");
   }
 
   @Override
-  public void transformExcerpt(Site site, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
+  public void transformExcerpt(RenderContext renderContext, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(site);
+    Preconditions.checkNotNull(renderContext);
     Preconditions.checkNotNull(xmlExcerpt);
     Preconditions.checkNotNull(html);
 
@@ -215,16 +207,18 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       streamToTransform = new SequenceInputStream(Iterators.asEnumeration(concatenation.iterator()));
     }
 
-    transform(site, streamToTransform, html);
+    transform(renderContext, streamToTransform, html);
   }
 
   @Override
-  public String transformExcerpt(Site site, String xmlExcerpt, String enclosingTag) throws TransformerException {
+  public String transformExcerpt(RenderContext renderContext, String xmlExcerpt, String enclosingTag) throws TransformerException {
+    Preconditions.checkNotNull(renderContext);
+    Preconditions.checkNotNull(xmlExcerpt);
     StringWriter html = new StringWriter();
     OutputStream outputStream = new WriterOutputStream(html, charset);
     InputStream inputStream = IOUtils.toInputStream(xmlExcerpt, charset);
     try {
-      transformExcerpt(site, inputStream, outputStream, enclosingTag);
+      transformExcerpt(renderContext, inputStream, outputStream, enclosingTag);
       outputStream.close(); // to flush (StringWriter doesn't require a finally block)
     } catch (IOException e) {
       throw new RuntimeException(e); // unexpected, since both streams are in memory

@@ -10,7 +10,6 @@
 }
 
 .article-content {
-
   @include plos-grid-column(550, $gutter: none, $float: right);
 }
 
@@ -477,6 +476,7 @@ $line-height-small: ($line-height * .5);
       @include clearfix;
       padding: rem-calc(8) 0 0;
       width: rem-calc(165);
+      list-style-type: none;
 
       .definition-label {
         @extend .action-label;

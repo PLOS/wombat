@@ -608,7 +608,7 @@ $line-height-small: ($line-height * .5);
   }
 }
 
-.article-content .reflinks {
+.article-content .reflinks, #fig-viewer-refs .reflinks {
   @include clearfix;
   margin-bottom: 0;
   margin-left: 0;

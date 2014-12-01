@@ -238,6 +238,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-controls .fig-btn {
+
   display: block;
   float: right;
   padding: 0 $pad-small;
@@ -308,15 +309,18 @@ $fv-grey-bg: darken($grey-light, 3%);
 .fig-btn.prev:hover .icn {
   background-position: -130px -20px;
 }
-
+#fig-viewer-slides {
+  position: relative;
+  height: auto;
+}
 #fig-viewer-slides .slide {
-  overflow: hidden;
+ // overflow: hidden;
   display: none;
   position: relative;
 }
 
 #fig-viewer-slides .figure {
-  overflow: hidden;
+ // overflow: hidden;
   border: solid 2px $grey-light;
   position: relative;
 }
@@ -330,7 +334,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-figs .drag-bx {
-  position: absolute;
+  position: relative;
 }
 
 #fig-viewer-figs .staging {
@@ -460,6 +464,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-slides .data .btn {
+  @extend .button-big;
   font-size: $txt-size-small;
   line-height: rem-calc(27);
   padding: 0 $pad-smallish;
@@ -502,11 +507,12 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-thmbs {
-  display: none;
+ // display: none;
   padding-top: 35px;
   width: 163px;
   position: absolute;
-  bottom: 120px;
+ // bottom: 120px;
+  top: 0;
   right: 0;
   background: $fv-grey-light;
 }
@@ -525,6 +531,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   right: 10px;
   cursor: pointer;
 }
+
 #fig-viewer-thmbs .btn-thmb-close:hover {
   background-color: $plos-default;
   background-position: 0 -20px;
@@ -534,7 +541,6 @@ $fv-grey-bg: darken($grey-light, 3%);
   padding-left: 17px;
   overflow: auto;
   background: $fv-grey-light;
-  background: -webkit-linear-gradient(left,  $fv-grey-light 0%,$fv-grey-light 20px,$grey-light 20px,$grey-light 143px,$fv-grey-light 143px,$fv-grey-light 100%);
   background: linear-gradient(to right,  $fv-grey-light 0%,$fv-grey-light 20px,$grey-light 20px,$grey-light 143px,$fv-grey-light 143px,$fv-grey-light 100%);
   height: 750px;
 }
@@ -662,13 +668,18 @@ info box on the right darker grey background & border: change from e8e8e8 to e7e
 #fig-viewer-refs ol {
   padding-left: 3.077em;
   width: 87.5%;
-  margin-top: 0;
+  margin: 0;
 }
 #fig-viewer-refs ol > li {
   font-size: 1.231em;
   font-weight: bold;
   line-height: 1.25;
   margin-bottom: $fv-small;
+
+  a {
+    @include link-text($color: $plos-default, $decoration: underline);
+    font-weight: normal;
+  }
 }
 
 #fig-viewer-refs .find {

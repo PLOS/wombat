@@ -879,7 +879,7 @@
               <xsl:variable name="title" select="encode-for-uri(replace($title, '&lt;/?\w+?&gt;', ''))"/>
               <xsl:variable name="author" select="encode-for-uri($author)"/>
               <xsl:element name="ul">
-                <xsl:attribute name="class">find</xsl:attribute>
+                <xsl:attribute name="class">reflinks</xsl:attribute>
                 <xsl:if test="$doi">
                   <xsl:attribute name="data-doi">
                     <xsl:value-of select="$doi"/>

@@ -30,11 +30,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .title-block {
-  width: 100%;
+  @extend .plos-row;
   background: $white;
-  padding-left: $pad-small;
   min-height: rem-calc(100);
-  position: relative;
 }
 
 .signposts {
@@ -47,7 +45,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
   @include plos-grid-column(160, $gutter: none);
   @extend .inline-list;
-  margin: $pad-default $pad-default 0 0;
+  margin: $pad-default $pad-default $pad-default 0;
   float: right;
   text-align: center;
   height: rem-calc(159);

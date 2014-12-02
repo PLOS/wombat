@@ -16,6 +16,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.SoaService;
@@ -91,10 +92,12 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
+    RenderContext renderContext = new RenderContext(site);
+    renderContext.setArticleId(articleId);
 
     String articleHtml;
     try {
-      articleHtml = getArticleHtml(articleId, site);
+      articleHtml = getArticleHtml(renderContext);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
@@ -261,7 +264,9 @@ public class ArticleController extends WombatController {
       // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
       String amendmentType = (String) amendment.get("type");
       if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
-        String body = getAmendmentBody(site, amendmentId);
+        RenderContext renderContext = new RenderContext(site);
+        renderContext.setArticleId(amendmentId);
+        String body = getAmendmentBody(renderContext);
         amendment.put("body", body);
       }
     }
@@ -418,7 +423,7 @@ public class ArticleController extends WombatController {
   private Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = articleService.requestArticleMetadata(articleId);
+      articleMetadata = articleService.requestArticleMetadata(articleId, true);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
@@ -481,8 +486,8 @@ public class ArticleController extends WombatController {
    * @param articleId the ID of an article
    * @return the service path to the correspond article XML asset file
    */
-  private static String getArticleXmlAssetPath(String articleId) {
-    return "articles/" + articleId + "?xml";
+  private static String getArticleXmlAssetPath(RenderContext renderContext) {
+    return "articles/" + Preconditions.checkNotNull(renderContext.getArticleId()) + "?xml";
   }
 
   /**
@@ -490,11 +495,10 @@ public class ArticleController extends WombatController {
    *
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
-  private String getAmendmentBody(final Site site, final String articleId) throws IOException {
-    Preconditions.checkNotNull(site);
-    Preconditions.checkNotNull(articleId);
-    String cacheKey = "amendmentBody:" + articleId;
-    String xmlAssetPath = getArticleXmlAssetPath(articleId);
+  private String getAmendmentBody(final RenderContext renderContext) throws IOException {
+
+    String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
+    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override
@@ -511,7 +515,7 @@ public class ArticleController extends WombatController {
           try {
             document = documentBuilder.parse(stream);
           } catch (SAXException e) {
-            throw new RuntimeException("Invalid XML syntax for: " + articleId, e);
+            throw new RuntimeException("Invalid XML syntax for: " + renderContext.getArticleId(), e);
           }
         } finally {
           stream.close();
@@ -524,7 +528,7 @@ public class ArticleController extends WombatController {
         // TODO: Transform without intermediate buffering into String?
         String bodyXml = TextUtil.recoverXml(bodyNode);
         try {
-          return articleTransformService.transformExcerpt(site, bodyXml, null);
+          return articleTransformService.transformExcerpt(renderContext, bodyXml, null);
         } catch (TransformerException e) {
           throw new RuntimeException(e);
         }
@@ -541,19 +545,17 @@ public class ArticleController extends WombatController {
    * @return String of the article HTML
    * @throws IOException
    */
-  private String getArticleHtml(String articleId, final Site site) throws IOException {
-    Preconditions.checkNotNull(articleId);
-    Preconditions.checkNotNull(site);
+  private String getArticleHtml(final RenderContext renderContext) throws IOException {
 
-    String cacheKey = "html:" + articleId;
-    String xmlAssetPath = getArticleXmlAssetPath(articleId);
+    String cacheKey = "html:" + Preconditions.checkNotNull(renderContext.getArticleId());
+    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override
       public String read(InputStream stream) throws IOException {
         StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
         try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-          articleTransformService.transform(site, stream, outputStream);
+          articleTransformService.transform(renderContext, stream, outputStream);
         } catch (TransformerException e) {
           throw new RuntimeException(e);
         }

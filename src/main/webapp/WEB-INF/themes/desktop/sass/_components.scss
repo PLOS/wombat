@@ -383,12 +383,15 @@ $icn-tiny-align: middle;
   @include icon-image(25, 25,'icon.sprite.close.png', 0 -24px);
   color: $white;
   @include icon-offscreen;
+
 }
 
 .closer-brand {
   @extend .closer;
   @extend %brand-background;
   border-radius: $border-radius-small;
+
+  .plosone & {  background-position: 0 0;}
 }
 .action-label {
   display:inline-block;

@@ -105,14 +105,18 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
 
   /**
-   * Build a new transformer and attach any required parameters, including secondary SAX sources, that
-   * may be required for the given render context
+   * Build a new transformer and attach any required parameters for the given render context
    *
-   * @param renderContext the context for the transform which wraps the site object and optional context values
+   * @param renderContext The render context contains information (such as the site object and articleId, and
+   *                      potentially other variables related to client side capabilities or identifiers of specific
+   *                      excerpts targeted for rendering) that may be used to determine which parameters to pass to
+   *                      the transformer object.
+   * @param xmlReader An XML reader instance which is provided to parse XML-formatted strings for the purpose of
+   *                  creating any secondary SAX sources for the transform (passed to the transformer as parameters)
    * @return the transformer
    * @throws IOException
    */
-  private Transformer buildTransformer(RenderContext renderContext, XMLReader xmlr) throws IOException {
+  private Transformer buildTransformer(RenderContext renderContext, XMLReader xmlReader) throws IOException {
     Theme theme = renderContext.getSite().getTheme();
     log.info("Building transformer for: {}", renderContext.getSite());
     TransformerFactory factory = newTransformerFactory();
@@ -133,7 +137,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       Object citedArticles = articleMetadata.get("citedArticles");
       JSONArray jsonArr = JSONArray.fromObject(citedArticles);
       String metadataXml = new XMLSerializer().write(jsonArr);
-      SAXSource saxSourceMeta = new SAXSource(xmlr, new InputSource(IOUtils.toInputStream(metadataXml)));
+      SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
       transformer.setParameter("citedArticles", saxSourceMeta);
     }
     return transformer;

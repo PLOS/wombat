@@ -30,6 +30,8 @@
   <!-- 1/4/12: Ambra-specific global param (pub config, passed into stylesheet from elsewhere in the pipeline) -->
   <xsl:param name="pubAppContext"/>
 
+  <!-- 11/26/14: Secondary XML data source generated from citedArticles article metadata
+                  used to provide DOIs and author/title overrides for reference links -->
   <xsl:param name="citedArticles"/>
 
   <!-- ============================================================= -->
@@ -161,7 +163,6 @@
         <xsl:text>) </xsl:text>
         <!-- article title -->
         <xsl:apply-templates select="title-group/article-title" mode="metadata-citation"/>
-        <xsl:variable name="at" select="normalize-space(title-group/article-title)"/>
         <xsl:variable name="at" select="normalize-space(title-group/article-title)"/>
         <!-- add a period unless there's other valid punctuation -->
         <xsl:if
@@ -837,67 +838,105 @@
             <xsl:apply-templates select="$cit"/>
             <xsl:text> </xsl:text>
             <xsl:if test="$cit[@publication-type='journal']">
-              <xsl:variable name="apos">'</xsl:variable>
+
+              <!-- create reference links -->
+              <!-- if citedArticles parameter has not been set, fail gracefully and use XML-based data for links -->
               <xsl:variable name="idx" as="xs:integer" select="position()"/>
-              <xsl:variable name="dbCit" select="$citedArticles/a/e[$idx]"/>
-              <xsl:variable name="doi" select="$dbCit/doi"/>
-              <xsl:variable name="author" select="replace($dbCit/authors/e[1]/surnames,' ','+')"/>
-              <xsl:if test="not($author)">
-                <xsl:variable name="author" select="replace($cit//name[1]/surname,' ','+')"/>
-              </xsl:if>
-              <xsl:variable name="title" select="replace($dbCit/title,' ','+')"/>
-              <xsl:if test="not($title)">
-                <xsl:variable name="title" select="replace($cit/article-title,' ','+')"/>
-              </xsl:if>
-                <xsl:element name="ul">
-                  <xsl:attribute name="class">reflinks</xsl:attribute>
-                  <xsl:if test="$doi">
-                    <xsl:attribute name="data-doi">
-                      <xsl:value-of select="$doi"/>
-                    </xsl:attribute>
-                  </xsl:if>
-                    <xsl:element name="li">
-                      <xsl:element name="a">
-                        <xsl:attribute name="href">
+              <xsl:variable name="dbCit">
+                <xsl:choose>
+                  <xsl:when test="$citedArticles">
+                    <xsl:value-of select="$citedArticles/a/e[$idx]"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="node()"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:variable>
+              <xsl:variable name="doi" select="$citedArticles/a/e[$idx]/doi"/>
+              <xsl:variable name="pubYear" select="$cit/year[1]"/>
+              <!-- use author and title preferentially from database, then XML -->
+              <xsl:variable name="author">
+              <xsl:choose>
+                <xsl:when test="$dbCit/authors/e[1]/surnames">
+                  <xsl:value-of select="$dbCit/authors/e[1]/surnames"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="$cit//name[1]/surname"/>
+                </xsl:otherwise>
+              </xsl:choose>
+              </xsl:variable>
+              <xsl:variable name="title">
+              <xsl:choose>
+                <xsl:when test="$dbCit/title">
+                  <xsl:value-of select="$dbCit/title"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="$cit/article-title"/>
+                </xsl:otherwise>
+              </xsl:choose>
+              </xsl:variable>
+              <!-- remove any HTML tags from title (e.g. italics) and encode author and title for url-->
+              <xsl:variable name="title" select="encode-for-uri(replace($title, '&lt;/?\w+?&gt;', ''))"/>
+              <xsl:variable name="author" select="encode-for-uri($author)"/>
+              <xsl:element name="ul">
+                <xsl:attribute name="class">reflinks</xsl:attribute>
+                <xsl:if test="$doi">
+                  <xsl:attribute name="data-doi">
+                    <xsl:value-of select="$doi"/>
+                  </xsl:attribute>
+                </xsl:if>
+                  <xsl:element name="li">
+                    <xsl:element name="a">
+                      <xsl:attribute name="href">
+                        <xsl:choose>
+                          <xsl:when test="$doi">
+                            <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <!-- build link and use + for spaces for consistency with Ambra -->
+                            <xsl:value-of select="replace(concat('http://www.crossref.org/guestquery?auth2=', $author,
+                            '&amp;atitle2=', $title, '&amp;auth=', $author, '&amp;atitle=', $title),'%20','+')"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:attribute>
+                      <xsl:attribute name="target">_new</xsl:attribute>
+                      <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
+                      View Article
+                    </xsl:element>
+                  </xsl:element>
+                  <xsl:element name="li">
+                    <xsl:element name="a">
+                      <xsl:attribute name="href">
+                        <xsl:variable name="author_clause">
                           <xsl:choose>
-                            <xsl:when test="$doi">
-                              <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
+                            <xsl:when test="$author">
+                              <xsl:value-of select="concat($author, encode-for-uri('[author] AND '))"/>
                             </xsl:when>
-                            <xsl:otherwise>
-                              <xsl:value-of select="concat('http://www.crossref.org/guestquery?auth2=', $author,
-                                      '&amp;atitle2=', $title, '&amp;auth=', $author, '&amp;atitle=', $title)"/>
-                            </xsl:otherwise>
                           </xsl:choose>
-                        </xsl:attribute>
-                        <xsl:attribute name="target">_new</xsl:attribute>
-                        <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
-                        View Article
-                      </xsl:element>
+                        </xsl:variable>
+                        <!-- build link and use + for spaces for consistency with Ambra -->
+                        <xsl:value-of select="replace(concat('http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?',
+                        'db=PubMed&amp;cmd=Search&amp;doptcmdl=Citation&amp;defaultField=Title%20Word&amp;term=',
+                        $author_clause, $title),'%20','+')"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="target">_new</xsl:attribute>
+                      <xsl:attribute name="title">Go to article in PubMed</xsl:attribute>
+                      PubMed/NCBI
                     </xsl:element>
-                    <xsl:element name="li">
-                      <xsl:element name="a">
-                        <xsl:attribute name="href">
-                          <xsl:value-of select="concat('http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?',
-                          'db=PubMed&amp;cmd=Search&amp;doptcmdl=Citation&amp;defaultField=Title+Word&amp;term=',
-                          $author, '[author] AND ', $title)"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="target">_new</xsl:attribute>
-                        <xsl:attribute name="title">Go to article in PubMed</xsl:attribute>
-                        PubMed/NCBI
-                      </xsl:element>
+                  </xsl:element>
+                  <xsl:element name="li">
+                    <xsl:element name="a">
+                      <xsl:attribute name="href">
+                        <!-- build link and use + for spaces for consistency with Ambra -->
+                        <xsl:value-of select="replace(concat('http://scholar.google.com/scholar_lookup?title=',
+                        $title,'&amp;author=', $author, '&amp;year=', $pubYear),'%20','+')"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="target">_new</xsl:attribute>
+                      <xsl:attribute name="title">Go to article in Google Scholar</xsl:attribute>
+                      Google Scholar
                     </xsl:element>
-                    <xsl:element name="li">
-                      <xsl:element name="a">
-                        <xsl:attribute name="href">
-                          <xsl:value-of select="concat('http://scholar.google.com/scholar_lookup?title=', $title,
-                          '&amp;author=', $author, '&amp;year=', $cit/year)"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="target">_new</xsl:attribute>
-                        <xsl:attribute name="title">Go to article in Google Scholar</xsl:attribute>
-                        Google Scholar
-                      </xsl:element>
-                    </xsl:element>
-                </xsl:element>
+                  </xsl:element>
+              </xsl:element>
               </xsl:if>
             <xsl:if test="$cit[@publication-type!='journal']">
               <xsl:element name="ul">

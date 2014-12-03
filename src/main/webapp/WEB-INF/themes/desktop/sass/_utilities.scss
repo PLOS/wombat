@@ -148,7 +148,7 @@ example | extension
 
 
 
-@mixin brandcolor($setcolor: $plos-default, $shade1: $plos-default-shade1, $shade2: $plos-default-shade2, $shade3: $plos-default-shade3) {
+@mixin brandcolor($setcolor: $plos-default, $shade1: $plos-default-shade1, $shade2: $plos-default-shade2, $shade3: $plos-default-shade3, $text-color: $white, $text-color-hover: $white) {
   %more-icon {
     color: $setcolor;
   }
@@ -161,12 +161,15 @@ example | extension
   }
   %brand-background {
     background-color: $setcolor;
+    color: $text-color;
   }
 
   %brand-background-hover {
     background-color: $setcolor;
+    color:  $text-color;
     &:hover {
       background-color: $plos-default;
+      color: $text-color-hover;
     }
   }
   //color shading variations on adjacent box headers
@@ -227,7 +230,7 @@ example | extension
 
 .plosone {
 
-  @include brandcolor($setcolor: $plos-one, $shade1: $plos-one-shade1, $shade2: $plos-one-shade2, $shade3: $plos-one-shade3);
+  @include brandcolor($setcolor: $plos-one, $shade1: $plos-one-shade1, $shade2: $plos-one-shade2, $shade3: $plos-one-shade3, $text-color: $clr-body-text, $text-color-hover: $white);
 
   .article-content .table-download .definition-label {
     color: $grey-dark;

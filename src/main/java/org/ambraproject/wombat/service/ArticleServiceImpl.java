@@ -26,9 +26,9 @@ public class ArticleServiceImpl implements ArticleService {
   private SoaService soaService;
 
   @Override
-  public Map<String, Object> requestArticleMetadata(String articleId) throws IOException {
+  public Map<String, Object> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
     Map<String, Object> map = (Map<String, Object>) soaService.requestObject(String.format(
-        "articles/%s?excludeCitations=true", articleId), Map.class);
+        "articles/%s?excludeCitations=" + excludeCitations.toString(), articleId), Map.class);
     return DoiSchemeStripper.strip(map);
   }
 }

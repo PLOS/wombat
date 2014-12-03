@@ -187,8 +187,14 @@ $line-height-small: ($line-height * .5);
 
   //  SPECIAL HANDLING FOR XML TRANSFORM
   ol.references {
-    span.label {
-      @extend .hide;
+    list-style-type: none;
+    padding-left: rem-calc(25);
+    span.order {
+      margin-left: -26px;
+      float: left;
+      width: 20px;
+      text-align: right;
+      font-weight: bold;
     }
   }
 

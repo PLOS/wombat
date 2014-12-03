@@ -119,7 +119,7 @@ $width-nav: $block-grid-elements - $width-logo;
     @extend .right; // foundation
     padding-right: 0;
     ul.dropdown li a,  ul.dropdowncallout li a{
-       line-height: 1.5em;
+       line-height: 1.5em !important;  // this line is needed to overide foundation stuff.
     }
   }
   //this level of specificity is needed to override foundation styles

@@ -4,6 +4,7 @@
   <#macro siteMenuCalloutHeadline>
   <h3><#nested/></h3>
   </#macro>
+
   <#macro siteMenuCalloutBulletList>
   <ul>
     <#nested/>
@@ -16,24 +17,24 @@
   </#macro>
 
   <#macro menuSection title containsCallout=false>
-  <li class="has-dropdown" id="${title?lower_case?replace(" ","-")}">
-    ${title}
+  <li class="has-dropdown"  id="${title?lower_case?replace(" ","-")}">
+  ${title}
 
     <#if containsCallout>
-    <div class="calloutcontainer dropdown">
-      <div class="submit" id="dropdown-callout-submit">
-        <#include "siteMenuCallout.ftl" />
-      </div>
+      <div class="calloutcontainer dropdown">
+        <div class="submit" id="dropdown-callout-submit">
+          <#include "siteMenuCallout.ftl" />
+        </div>
 
-      <ul class="dropdowncallout" id="${title?lower_case?replace(" ","-")}-dropdown-list">
-        <#nested/>
-      </ul>
-    </div>
+        <ul class="dropdowncallout" id="${title?lower_case?replace(" ","-")}-dropdown-list">
+          <#nested/>
+        </ul>
+      </div>
     <#else>
 
-    <ul class="dropdown" id="${title?lower_case?replace(" ","-")}-dropdown-list">
-      <#nested/>
-    </ul>
+      <ul class="dropdown" id="${title?lower_case?replace(" ","-")}-dropdown-list">
+        <#nested/>
+      </ul>
     </#if>
 
   </li>
@@ -45,17 +46,30 @@
   </li>
   </#macro>
 
+  <#macro menuSpecialSection title>
+  <li data-js-tooltip-hover="trigger" class="subject-area">
+    ${title}
+     <#nested/>
+  </li>
+  </#macro>
+
+  <#macro tooltip >
+  <p data-js-tooltip-hover="target" class="subject-area-info">
+    <#nested/>
+  </p>
+  </#macro>
+
 <#--Markup starts here
 MARKUP: using Foundation Top Bar for navigation -->
-  <ul class="logo">
-    <li class="home-link">
-      <h1><a href="<@siteLink path="." />">${siteTitle}</a></h1>
-    </li>
-  </ul>
-  <section class="top-bar-section"> <#--closed in header.ftl-->
+<ul class="logo">
+  <li class="home-link">
+    <h1><a href="<@siteLink path="." />">${siteTitle}</a></h1>
+  </li>
+</ul>
+<section class="top-bar-section"> <#--closed in header.ftl-->
 
-  <ul class="nav-elements">
-    <#include "siteMenuItems.ftl" />
+<ul class="nav-elements">
+  <#include "siteMenuItems.ftl" />
 </#if>
 
 <@js src="resource/js/vendor/jquery.hoverIntent.js"/>

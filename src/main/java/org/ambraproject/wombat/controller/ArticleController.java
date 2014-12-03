@@ -423,7 +423,7 @@ public class ArticleController extends WombatController {
   private Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = articleService.requestArticleMetadata(articleId, false);
+      articleMetadata = articleService.requestArticleMetadata(articleId, true);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }

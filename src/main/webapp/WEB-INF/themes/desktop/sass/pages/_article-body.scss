@@ -215,6 +215,7 @@ $line-height-small: ($line-height * .5);
     }
 
   }
+  span.underline{ text-decoration: underline;}
 
   // supplementary materials - need to have no margin between paragraphs just below the box
   .supplementary-material{
@@ -477,6 +478,7 @@ $line-height-small: ($line-height * .5);
       @include clearfix;
       padding: rem-calc(8) 0 0;
       width: rem-calc(165);
+      list-style-type: none;
 
       .definition-label {
         @extend .action-label;
@@ -608,6 +610,27 @@ $line-height-small: ($line-height * .5);
   }
 }
 
+.article-content .reflinks {
+  @include clearfix;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 0;
+  height: rem-calc(25);
+  line-height: $line-height;
+
+  li {
+    float: left;
+    margin: 0 rem-calc(4) $pad-small $pad-default;
+    padding: 0;
+    list-style-type: disc;
+    line-height: $line-height;
+
+  }
+  li:first-child {
+    list-style-type: none;
+    margin-left: 0;
+  }
+}
 
 @media print {
   .article-text {

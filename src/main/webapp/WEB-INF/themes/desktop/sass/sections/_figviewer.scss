@@ -102,7 +102,9 @@ $fv-grey-bg: darken($grey-light, 3%);
       @extend %brand-background;
     }
   }
-
+  #figs-viewer-content .tabs-content {
+    margin-bottom: 0 !important;
+  }
   .pane {
     display: block;
   }
@@ -146,7 +148,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 #fig-viewer-controls {
   @extend %brand-background;
   position: absolute;
-  bottom: rem-calc(90);
+  bottom: rem-calc(60);
   width: 100%;
   height: rem-calc(30);
 }
@@ -334,7 +336,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-figs .drag-bx {
-  position: relative;
+  position: absolute;
 }
 
 #fig-viewer-figs .staging {
@@ -343,7 +345,6 @@ $fv-grey-bg: darken($grey-light, 3%);
 
 #fig-viewer-slides .data {
   position: relative;
-  padding-top: 30px;
   height: 90px;
   text-align: center;
   background: $grey-light;
@@ -354,7 +355,8 @@ $fv-grey-bg: darken($grey-light, 3%);
   background: $grey-light;
   background: rgba(239,239,239,0.95);
   position: absolute;
-  bottom: 0;
+  top: 34px;
+
   left: 0;
   text-align: left;
   z-index: 10;
@@ -367,24 +369,24 @@ $fv-grey-bg: darken($grey-light, 3%);
   font-family: 'FS Albert Web Regular', Verdana, sans-serif;
 }
 
-#fig-viewer-slides .txt .title {
+#fig-viewer-slides .txt .fig_title {
   padding-top: rem-calc(3);
-  font-size: 1.077em;
+  font-size: $txt-size-small;
   font-weight: bold;
-  line-height: 1.143;
+  line-height:rem-calc(17);
 }
 
-#fig-viewer-slides .txt .title.test-height {
+#fig-viewer-slides .txt .fig_title.test-height {
   overflow: hidden;
   white-space: nowrap;
 }
 
-#fig-viewer-slides .txt .title b {
-  color: #636363;
+#fig-viewer-slides .txt .fig_title b {
+  color: $grey-med-dark;//#636363
   text-transform: uppercase;
 }
 
-#fig-viewer-slides.txt-expand .txt .title {
+#fig-viewer-slides.txt-expand .txt .fig_title {
   line-height: 1.286;
   padding-right: 16px;
 }
@@ -471,7 +473,8 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-slides .lnk_context {
-  margin-top: rem-calc(11);
+  margin-top: rem-calc(33);
+  position: relative !important;
 }
 
 #fig-viewer-figs .download {
@@ -507,7 +510,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-thmbs {
- // display: none;
+  display: none;
   padding-top: 35px;
   width: 163px;
   position: absolute;

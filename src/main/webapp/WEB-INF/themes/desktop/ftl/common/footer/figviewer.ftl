@@ -1,15 +1,20 @@
 
 <div id="fig-viewer-content">
+  <div class="range-slider" data-slider>
+    <span class="range-slider-handle" role="slider" tabindex="0"></span>
+    <span class="range-slider-active-segment"></span>
+    <input type="hidden">
+  </div>
   <div class="fv-header">
     <h1 id="fvTitle"> </h1>
     <div id="fvAuthors"></div>
 
-    <ul class="fv-nav tabs" data-tab role="tablist" data-options="deep_linking:true">
-      <li class="abst tab-title"><a href="#panel-abst" controls="panel-abst">Abstract</a></li>
-      <li class="figs tab-title"><a href="#panel-figs" controls="panel-figs">Figures</a></li>
-      <li class="refs tab-title"><a href="#panel-refs"controls="panel-refs">References</a></li>
+    <ul class="fv-nav tabs" data-tab role="tablist">
+      <li class="abst tab-title" role="presentational"><a href="#panel-abst" role="tab" tabindex="0" aria-selected="true" controls="panel-abst">Abstract</a></li>
+      <li class="figs tab-title" role="presentational"><a href="#panel-figs" role="tab" tabindex="0" aria-selected="true" controls="panel-figs">Figures</a></li>
+      <li class="refs tab-title" role="presentational"><a href="#panel-refs" role="tab" tabindex="0" aria-selected="true" controls="panel-refs">References</a></li>
     </ul>
-
+    <#--<a href="#panel2-4" role="tab" tabindex="0" aria-selected="false" controls="panel2-4">Tab 4</a></li>-->
 
     <div class="fv-close close-reveal-modal" title="close">&nbsp;</div>
   </div>
@@ -27,7 +32,9 @@
     <#-- content is appended with js in figviewer.js -->
     </section>
   </div>
-</div><#--
+
+</div>
+<#--
 <div class="figure" data-doi="10.1371/journal.pmed.0010019.t002">
   <div class="img-box">
     <a title="Click for larger image" href="article/figure/image?size=medium&amp;id=info:doi/10.1371/journal.pmed.0010019.t002" data-doi="info:doi/10.1371/journal.pmed.0010019" data-uri="info:doi/10.1371/journal.pmed.0010019.t002">

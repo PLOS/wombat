@@ -1,12 +1,14 @@
 <div id="fig-viewer" class="reveal-modal" data-reveal>
 <#include "figviewer.ftl" />
 </div>
+<div class="range-slider" data-slider>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
 </main><#-- opened in header.ftl -->
 
 <footer id="pageftr">
-  <div id="fig-search-results">
-  <a class="figures" data-reveal-id="fig-viewer" data-doi="10.1371/journal.pmed.0010019">Figures</a>
-  </div>
   <div class="row">
     <div class="brand-column">
     <#macro footerLogo src alt>

@@ -104,7 +104,7 @@
 
   <script type="text/javascript">  /*filesizetable*/
    (function ($) {
-     $(document).foundation();
+     $(document).foundation({tab: {toggleable: true, deep_linking: false}});
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
    })(jQuery);
 
@@ -117,6 +117,8 @@
   <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
 
   <#include "aside/crossmarkIframe.ftl" />
-
+  <#--<div id="fig-viewer" class="reveal-modal" data-reveal>
+  <#include "../common/footer/figviewer.ftl" />
+  </div>-->
 </body>
 </html>

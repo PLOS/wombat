@@ -191,7 +191,7 @@ $line-height-small: ($line-height * .5);
     list-style-type: none;
     padding-left: rem-calc(25);
     span.order {
-      margin-left: -26px;
+      margin-left: rem-calc(-26);
       float: left;
       width: 20px;
       text-align: right;

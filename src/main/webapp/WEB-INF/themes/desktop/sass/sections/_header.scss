@@ -16,10 +16,10 @@
  */
 header {
   background: $clr-header;
+
 }
 
 .head-top {
-
   @extend %bg-dark;
   @extend .text-center;
   @extend %brand-border;

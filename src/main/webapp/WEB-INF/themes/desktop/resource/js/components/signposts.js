@@ -39,9 +39,9 @@
     };
 
     plural_check = function(input){
-      input = parseInt(input);
+      input = parseInt(input.replace(/[^0-9]/g, ''));
       if (input === 1){
-        //do nothing
+        return false;
       } else {
         return true;
       }

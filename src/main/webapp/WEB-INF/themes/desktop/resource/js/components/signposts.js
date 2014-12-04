@@ -59,7 +59,8 @@
         url: requestUrl,
         dataType: 'jsonp',
         contentType: "text/json; charset=utf-8",
-        type: "GET"
+        type: "GET",
+        timeout: 20000
       }).done(function (data) {
         initData = data.data[0];
 
@@ -112,7 +113,7 @@
 
           }
         }
-      }).fail(function () {
+      }).fail(function ( jqXHR) {
         errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
         $('#loadingMetrics').css('display','none');
         $('#almSignposts').html(errorText);

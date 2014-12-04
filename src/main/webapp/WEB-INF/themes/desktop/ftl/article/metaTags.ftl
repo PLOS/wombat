@@ -1,3 +1,5 @@
+<#include "../common/hashTag.ftl" />
+<#include "../common/pubUrlPrefix.ftl" />
 <#-- need backend for these
 <meta name="citation_publisher" content="${article.publisher}" />
 
@@ -39,3 +41,18 @@
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${articleDoi}" />
 
+<link rel="canonical" href="${pubUrlPrefix}article?id=${articleDoi}" />
+
+<#if (article.description??)>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="${twitterUsername}"/>
+<meta name="twitter:title" content="${article.title?replace('<.+?>',' ','r')}"/>
+<meta name="twitter:description" content="${article.description?replace('<.+?>',' ','r')}"/>
+  <#if (article.strkImgURI?? && (article.strkImgURI?length > 0)) >
+  <meta name="twitter:image" content="http://dx.plos.org/${article.strkImgURI?replace('info:doi/','')}"/>
+  </#if>
+</#if>
+
+<meta property="og:title" content="${article.title?replace('<.+?>',' ','r')}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="${pubUrlPrefix}article?id=${articleDoi}"/>

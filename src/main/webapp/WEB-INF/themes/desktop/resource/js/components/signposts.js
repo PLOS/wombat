@@ -113,7 +113,7 @@
 
           }
         }
-      }).fail(function ( jqXHR) {
+      }).fail(function() {
         errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
         $('#loadingMetrics').css('display','none');
         $('#almSignposts').html(errorText);

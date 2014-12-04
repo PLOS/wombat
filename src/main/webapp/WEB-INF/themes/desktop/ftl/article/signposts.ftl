@@ -29,8 +29,8 @@
 
   <li id="almShares" class="noshow">
     <div class="tools">
-      <a class="metric-term" href="${metricsUrl}#sharedHeader">Share</a>
-      <p class="shares-tip"><a href="${metricsUrl}#sharedHeader">Sum of Facebook and Twitter activity.</a></p>
+      <a class="metric-term" href="${metricsUrl}#discussedHeader">Share</a>
+      <p class="shares-tip"><a href="${metricsUrl}#discussedHeader">Sum of Facebook and Twitter activity.</a></p>
     </div>
   </li>
 </ul>

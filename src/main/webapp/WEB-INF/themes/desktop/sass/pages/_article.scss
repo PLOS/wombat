@@ -31,6 +31,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .title-block {
   @extend .plos-row;
+  position: relative;
   background: $white;
   min-height: rem-calc(100);
 }

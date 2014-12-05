@@ -1345,8 +1345,9 @@
         <!--end figure download-->
         <div class="figcaption">
 
-          <xsl:apply-templates select="label"/>
+          <span><xsl:apply-templates select="label"/></span>
           <xsl:if test="caption/title">
+
             <xsl:text> </xsl:text>
 
             <xsl:apply-templates select="caption/title"/>
@@ -1354,11 +1355,11 @@
           </xsl:if>
 
         </div>
-        <p>
+        <p class="caption_target">
           <xsl:apply-templates select="caption/node()[not(self::title)]"/>
         </p>
         <xsl:if test="object-id[@pub-id-type='doi']">
-          <p>
+          <p class="caption_object">
             <xsl:apply-templates select="object-id[@pub-id-type='doi']"/>
           </p>
         </xsl:if>
@@ -2205,7 +2206,7 @@
         </xsl:for-each>
       </xsl:when>
 
-      <!--if 2 caption/p elements, each needs it's own class for styling-->
+      <!--if 2 caption/p elements, each needs its own class for styling-->
       <xsl:when test="count(caption/p) = 2">
         <!--the first -->
         <xsl:for-each select="caption/p[position() = 1]">

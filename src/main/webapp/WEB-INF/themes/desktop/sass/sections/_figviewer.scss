@@ -34,6 +34,7 @@ $fv-grey-bg: darken($grey-light, 3%);
     background: $grey-dark;
     position: relative;
     border-right: rem-calc(46) solid transparent;
+    z-index: map_get($zindex, topvisible);
 
     h1, h1 a {
       font-size: $txt-size-medium;
@@ -89,6 +90,7 @@ $fv-grey-bg: darken($grey-light, 3%);
       }
     }
   }
+
   .fv-close {
     background: image-url('sprite.fv.png') no-repeat -40px 0;
     position: absolute;
@@ -102,16 +104,21 @@ $fv-grey-bg: darken($grey-light, 3%);
       @extend %brand-background;
     }
   }
+
   #figs-viewer-content .tabs-content {
-    margin-bottom: 0 !important;
+  //  margin-bottom: 0 !important;
+    height: 100%;
   }
+
   .pane {
     display: block;
   }
+
   section {
     padding: 0;
   }
 }
+
 #fvAuthors {
   height: rem-calc(15);
   line-height: rem-calc(15);
@@ -207,14 +214,19 @@ $fv-grey-bg: darken($grey-light, 3%);
   background: rgba(255,255,255,0.64);
 }
 #fv-zoom-sldr .ui-slider-handle {
+  position: relative;
+  display: block;
   width: rem-calc(14);
   height: rem-calc(14);
   border-radius: 50%;
-  background: $white;
-  border: 0;
-  margin-left: -7px;
-  top: -4px;
+  background-color: $white;
+  border: 0 none;
+  margin-left: rem-calc(-3);
   cursor: ew-resize;
+  top: rem-calc(-3);
+  &:focus {
+    outline: 0;
+  }
 }
 #fv-zoom-min,
 #fv-zoom-max {
@@ -343,11 +355,12 @@ $fv-grey-bg: darken($grey-light, 3%);
   display: none;
 }
 
-#fig-viewer-slides .data {
+#fig-viewer-slides .controls {
   position: relative;
   height: 90px;
   text-align: center;
   background: $grey-light;
+  bottom: -30px;
 }
 
 #fig-viewer-slides .txt {
@@ -355,8 +368,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   background: $grey-light;
   background: rgba(239,239,239,0.95);
   position: absolute;
-  top: 34px;
-
+  bottom: 0;//: 32px;
   left: 0;
   text-align: left;
   z-index: 10;
@@ -374,6 +386,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   font-size: $txt-size-small;
   font-weight: bold;
   line-height:rem-calc(17);
+  font-family: 'FS Albert Web Regular', Verdana, sans-serif;
 }
 
 #fig-viewer-slides .txt .fig_title.test-height {
@@ -381,7 +394,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   white-space: nowrap;
 }
 
-#fig-viewer-slides .txt .fig_title b {
+#fig-viewer-slides .txt .fig_title span {
   color: $grey-med-dark;//#636363
   text-transform: uppercase;
 }
@@ -437,8 +450,11 @@ $fv-grey-bg: darken($grey-light, 3%);
   padding: 0 5% $pad-smallish 3.1%;
 }
 
-#fig-viewer-slides .text-more .desc {
+#fig-viewer-slides .content .desc {
+  font-size: $txt-size-small;
+  font-family: $font-face-fancy;
   padding: $pad-xsmall 0 0 0;
+  line-height: rem-calc(18);
 }
 
 #fig-viewer-slides .text-more .doi {
@@ -465,7 +481,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   margin: 0;
 }
 
-#fig-viewer-slides .data .btn {
+#fig-viewer-slides .controls .btn {
   @extend .button-big;
   font-size: $txt-size-small;
   line-height: rem-calc(27);

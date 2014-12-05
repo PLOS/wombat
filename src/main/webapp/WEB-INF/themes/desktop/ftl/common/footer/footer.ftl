@@ -1,11 +1,5 @@
-<div id="fig-viewer" class="reveal-modal" data-reveal>
-<#include "figviewer.ftl" />
-</div>
-<div class="range-slider" data-slider>
-  <span class="range-slider-handle" role="slider" tabindex="0"></span>
-  <span class="range-slider-active-segment"></span>
-  <input type="hidden">
-</div>
+
+
 </main><#-- opened in header.ftl -->
 
 <footer id="pageftr">
@@ -28,5 +22,8 @@
 
 <@js src="resource/js/global.js" />
 
+  <div id="fig-viewer" class="reveal-modal" data-reveal>
+  <#include "figviewer.ftl" />
+  </div>
 </footer>
 

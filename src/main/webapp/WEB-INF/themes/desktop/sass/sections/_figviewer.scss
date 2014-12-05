@@ -681,13 +681,16 @@ info box on the right darker grey background & border: change from e8e8e8 to e7e
 }
 
 #fig-viewer-refs h3 {
-  margin: ($pad-default + $pad-xsmall) 0 $fv-small 21px;
+  margin: ($pad-default + $pad-xsmall) 0 $fv-small rem-calc(21);
+  font-family: $font-face-plain;
+  font-weight: bold;
 }
 
 #fig-viewer-refs ol {
   padding-left: 3.077em;
   width: 87.5%;
   margin: 0;
+  list-style-type: none;
 }
 #fig-viewer-refs ol > li {
   font-size: 1.231em;
@@ -700,7 +703,13 @@ info box on the right darker grey background & border: change from e8e8e8 to e7e
     font-weight: normal;
   }
 }
-
+#fig-viewer-refs span.order {
+  margin-left: -26px;
+  float: left;
+  width: 20px;
+  text-align: right;
+  font-weight: bold;
+}
 #fig-viewer-refs .find {
   font-size: 0.813em;
   font-weight: normal;

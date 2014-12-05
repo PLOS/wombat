@@ -86,31 +86,28 @@
           $FVPending = false;
         },
         success:function (data) {
-          var articleTitle, authors, authList;
-          $FV.url = data.URL;
+          var article_title, authors, auth_list, article_body;
 
-          articleTitle = $('#artTitle').text();
+          article_title = $('#artTitle').text();
+
           authors = $('#author-list').find('.author-name');
-          authList = $(authors).text();
 
-          FVBuildHdr(articleTitle, authList, doi);
+          auth_list = $(authors).text();
 
-         // FVBuildHdr(data.articleTitle, data.authors, data.uri);
+          FVBuildHdr(article_title, auth_list, doi);
+
           FVBuildFigs(data, doi);
-
 
           // from article tab where references,abstract and metadata exists, no need to fetch
           // them again from the server.
          // if (typeof selected_tab != 'undefined' && selected_tab == 'tabArticle') {
-            $FVPending = false;
-            FVBuildAbs(doi, $('.abstract'), $('.articleinfo'));
-          //FVBuildAbs(doi, data.find('.article .abstract'), data.find('.article .articleinfo'));
-            /*would it be better to use a class buried further into the DOM like .article-body or .article-content? maybe make that a var or something.
+          $FVPending = false;
+          article_body = $('#artText');
+          FVBuildAbs(doi, $(article_body).find('.abstract'), $(article_body).find('.articleinfo'));
 
-             Would it be worth the to grab the different article text elements and make them or just variables in one place? Might make it easier to troubleshoot later or deal with elements if the class names or the dom changes for some reason.*/
+          FVBuildRefs($(article_body).find('.references'));
 
-            FVBuildRefs($('.toc-section .references'));
-            displayModal();
+          displayModal();
 
             //rerunMathjax();
           //}
@@ -425,7 +422,6 @@
     pdf_href = $('#downloadPdf').attr('href');
     lnk_pdf = '<div class="fv-lnk-pdf"><a href="' + pdf_href + '" target="_blank" class="btn">Download: Full Article PDF Version</a></div>';
     $abst_content.append(lnk_pdf);
-
     $abst_info = $('<div class="info" />');
     $abst_info.html(metadata.html());
     $FV.abst_pane.append($abst_info);
@@ -437,9 +433,11 @@
 
   // build references pane
   FVBuildRefs = function(references) {
+    var refs_content = references.html();
+
     $FV.refs_pane = $('<div id="fig-viewer-refs" class="pane"/>');
     $FV.refs_pane.append('<h3>References</h3>');
-    $FV.refs_pane.append(references);
+    $FV.refs_pane.append('<ol class="references">'+ refs_content +'</ol>');
     $('#panel-refs').append($FV.refs_pane);
   };
 

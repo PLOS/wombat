@@ -18,7 +18,7 @@ should include it in the ftl file that needs it. -->
 <#-- // include components used universally here -->
 <@js src="resource/js/components/toggle.js"/>
 <@js src="resource/js/components/truncate_elem.js"/>
-<@js src="resource/js/components/figviewer.js"/>
+<@js src="resource/js/components/figure_viewer.js"/>
 
 
 

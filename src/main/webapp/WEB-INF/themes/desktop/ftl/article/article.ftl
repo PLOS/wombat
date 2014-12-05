@@ -87,7 +87,7 @@
   <@js src="resource/js/components/tooltip_hover.js"/>
 
   <@js src="resource/js/components/table_open.js"/>
-  <@js src="resource/js/components/figviewer.js"/>
+  <@js src="resource/js/components/figure_viewer.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
   <@js src="resource/js/vendor/moment.js"/>

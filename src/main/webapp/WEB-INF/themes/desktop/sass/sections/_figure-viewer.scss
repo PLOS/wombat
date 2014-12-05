@@ -151,7 +151,9 @@ $fv-grey-bg: darken($grey-light, 3%);
   display: block;
   overflow: auto;
 }
-
+.invisible {
+  visibility: hidden;
+}
 #fig-viewer-controls {
   @extend %brand-background;
   position: absolute;
@@ -541,6 +543,8 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-thmbs .btn-thmb-close {
+  @extend %brand-background;
+  color: $white;
   background: image-url('sprite.fv.png') 0 0;
   width: $pad-smallish;
   height: $pad-smallish;
@@ -549,6 +553,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   top: 10px;
   right: 10px;
   cursor: pointer;
+
 }
 
 #fig-viewer-thmbs .btn-thmb-close:hover {
@@ -582,6 +587,9 @@ $fv-grey-bg: darken($grey-light, 3%);
 
 #fig-viewer-thmbs .thmb.active {
   cursor: default;
+  img {
+    @extend %brand-border;
+  }
 }
 
 #fig-viewer-thmbs .thmb img {

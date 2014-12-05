@@ -16,15 +16,15 @@
 
   <div class="tabs-content">
     <section role="tabpanel" aria-hidden="true" class="content" id="panel-abst">
-    <#-- content is appended with js in figviewer.js -->
+    <#-- content is appended with js in figure_viewer.js -->
     </section>
 
     <section role="tabpanel" aria-hidden="true" class="content" id="panel-figs">
-    <#-- content is appended with js in figviewer.js -->
+    <#-- content is appended with js in figure_viewer.js -->
     </section>
 
     <section role="tabpanel" aria-hidden="true" class="content" id="panel-refs">
-    <#-- content is appended with js in figviewer.js -->
+    <#-- content is appended with js in figure_viewer.js -->
     </section>
   </div>
 

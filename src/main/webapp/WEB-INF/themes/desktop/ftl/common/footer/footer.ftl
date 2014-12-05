@@ -23,7 +23,7 @@
 <@js src="resource/js/global.js" />
 
   <div id="fig-viewer" class="reveal-modal" data-reveal>
-  <#include "figviewer.ftl" />
+  <#include "figureViewer.ftl" />
   </div>
 </footer>
 

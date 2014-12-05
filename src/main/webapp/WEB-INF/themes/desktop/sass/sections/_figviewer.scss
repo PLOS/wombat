@@ -1,5 +1,8 @@
 /*
 style changes to review with s, p & p
+
+#fig-viewer-refs h3 normalize margins
+
 #fig-viewer-abst: padding top from 37px to 25px
 
 download pdf button: change 636363 to 666666?
@@ -18,17 +21,17 @@ $fv-grey-bg: darken($grey-light, 3%);
 #fig-viewer {
   //foundation reveal modal
   @include reveal-modal-base(
-  $base-style: false
+    $base-style: false
   );
 
   @include reveal-modal-style(
-  $bg:$reveal-modal-bg,
-  $border:true,
-  $border-style:$reveal-border-style,
-  $border-width: 10px,
-  $border-color:$grey-dark,
-  $box-shadow:false,
-  $top-offset: 0
+    $bg:$reveal-modal-bg,
+    $border:true,
+    $border-style:$reveal-border-style,
+    $border-width: 10px,
+    $border-color:$grey-dark,
+    $box-shadow:false,
+    $top-offset: 0
   );
 
   position: fixed;
@@ -130,6 +133,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   section {
     padding: 0;
   }
+
   h3 {
     margin-bottom: $pad-default;
     font-family: $font-face-plain;
@@ -233,6 +237,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   background: #ccc;
   background: rgba(255,255,255,0.64);
 }
+
 #fv-zoom-sldr .ui-slider-handle {
   position: relative;
   display: block;
@@ -248,6 +253,7 @@ $fv-grey-bg: darken($grey-light, 3%);
     outline: 0;
   }
 }
+
 #fv-zoom-min,
 #fv-zoom-max {
   width: rem-calc(16);
@@ -257,6 +263,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   position: absolute;
   top: 0;
 }
+
 #fv-zoom-min {
   left: 0;
   background-position: -110px 0;
@@ -617,7 +624,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 #fig-viewer-abst {
   overflow: auto;
   font-family: $font-face-fancy;
-  padding: $pad-default + $pad-xsmall 0 rem-calc(75); // production has top padding at 37px
+  padding: rem-calc(37) 0 rem-calc(75);
 
   .abstract {
     float: left;
@@ -626,6 +633,10 @@ $fv-grey-bg: darken($grey-light, 3%);
     padding: 0;
     font-size: 1.462em;
     line-height: 1.158;
+
+    a {
+      @extend %link-text-default;
+    }
   }
 
   .abstract p {
@@ -674,33 +685,39 @@ $fv-grey-bg: darken($grey-light, 3%);
   line-height: rem-calc(15);
 }
 
-.fv-lnk-pdf a {
+#fig-viewer-abst .fv-lnk-pdf a {
   @include rounded-pill($background: $grey-med-dark, $padding: 0 rem-calc(23));
+  color: $white;
   font-family: $font-face-plain;
   font-size: $txt-size-medium-large;
   line-height: rem-calc(28);
   /*
    background: #636363;*/
   &:hover {
+    color: $white;
     background: $plos-default;
+    text-decoration: none;
   }
 }
+
 #fig-viewer-refs {
   padding-top: $pad-default + $pad-xsmall;
 }
+
 #fig-viewer-refs h3 {
-//  margin: 0 0 $fv-small ;
-  margin-left: rem-calc(21);
+  margin: 0 0 rem-calc(7) rem-calc(21);
+  line-height: rem-calc(24);
 }
 
 #fig-viewer-refs ol {
-  padding-left: 3.077em;
+  padding-left: rem-calc(40);
   width: 87.5%;
   margin: 0;
   list-style-type: none;
 }
+
 #fig-viewer-refs ol > li {
-  font-size: 1.231em;
+  font-size: $txt-size-medium-large;
   font-weight: bold;
   line-height: 1.25;
   margin-bottom: $fv-small;
@@ -708,16 +725,19 @@ $fv-grey-bg: darken($grey-light, 3%);
   a {
     @include link-text($color: $plos-default, $decoration: underline);
     font-weight: normal;
+
   }
 }
+
 #fig-viewer-refs span.order {
-  margin-left: -26px;
+  margin-left: rem-calc(-26);
   float: left;
-  width: 20px;
+  width: $pad-default;
   text-align: right;
   font-weight: bold;
 }
-#fig-viewer-refs .find {
-  font-size: 0.813em;
+
+#fig-viewer-refs .reflinks {
   font-weight: normal;
+  font-size: $txt-size-small;
 }

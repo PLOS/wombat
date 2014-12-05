@@ -39,9 +39,9 @@
     };
 
     plural_check = function(input){
-      input = parseInt(input);
+      input = parseInt(input.replace(/[^0-9]/g, ''));
       if (input === 1){
-        //do nothing
+        return false;
       } else {
         return true;
       }
@@ -59,7 +59,8 @@
         url: requestUrl,
         dataType: 'jsonp',
         contentType: "text/json; charset=utf-8",
-        type: "GET"
+        type: "GET",
+        timeout: 20000
       }).done(function (data) {
         initData = data.data[0];
 
@@ -112,7 +113,7 @@
 
           }
         }
-      }).fail(function () {
+      }).fail(function() {
         errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
         $('#loadingMetrics').css('display','none');
         $('#almSignposts').html(errorText);

@@ -8,6 +8,7 @@
 @import "pages/home";
 @import "pages/static";
 @import "pages/article";
+@import "pages/article-body";
 
 body.styleguide {
   background-color: $grey-light;
@@ -30,23 +31,27 @@ body.styleguide {
 
 section.content {
   @extend .plos-row;
-  h1, h2, h3 {
-    margin: 1em 0 .5em -5px;
+  article > h1 {
+    font-size: $txt-size-xxlarge;
+    border-top: 2px solid $plos-default;
+
+
+  }
+  > h1, > h2, > h3 {
+    margin: 1em 0 .5em -.1em;
     text-transform: capitalize;
     font-family: $font-face-plain;
   }
-  h1 {
-    font-size: $txt-size-xxxlarge;
-  }
-  h2 {
+
+  > h2 {
     font-size: $txt-size-medium-large;
     font-family: $font-face-plain;
     font-weight: 400;
   }
-  h3 {
+  > h3 {
     font-size: $txt-size-medium-large;
   }
-  aside {
+  > aside {
     @extend .plos-column-2;
     @extend .block;
     height: 100%;
@@ -56,16 +61,16 @@ section.content {
       }
     }
   }
-  article {
+  > article {
     @extend .plos-column-9;
     @extend .block;
     height: 100%;
   }
-  table {
+  > table {
     padding-bottom: .25em;
     line-height: 140%;
   }
-  table {
+  > table {
     border-collapse: collapse;
     width: 100%;
     td {
@@ -240,5 +245,11 @@ section.content {
 .example-box-shadow {
   @extend .padded-example;
   @include box-shadow();   /// hey box shadow
+}
+
+.article-content{
+  width: 100%;
+  border-bottom: 2px solid $plos-default;
+  margin-bottom: $pad-default;
 }
 

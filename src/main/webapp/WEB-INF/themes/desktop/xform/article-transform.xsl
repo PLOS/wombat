@@ -824,7 +824,7 @@
         <xsl:for-each select="ref">
           <xsl:sort data-type="number" select="label"/>
           <li>
-            <span class="label">
+            <span class="order">
               <xsl:value-of select="label"/>.
             </span>
             <a>
@@ -931,7 +931,7 @@
                       <xsl:attribute name="href">
                         <!-- build link and use + for spaces for consistency with Ambra -->
                         <xsl:value-of select="replace(concat('http://scholar.google.com/scholar_lookup?title=',
-                        $title,'&amp;author=', $author, '&amp;year=', $pubYear),'%20','+')"/>
+                        $title,'&amp;author=', $author, '&amp;publication_year=', $pubYear),'%20','+')"/>
                       </xsl:attribute>
                       <xsl:attribute name="target">_new</xsl:attribute>
                       <xsl:attribute name="title">Go to article in Google Scholar</xsl:attribute>

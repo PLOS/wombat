@@ -30,11 +30,10 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .title-block {
-  width: 100%;
-  background: $white;
-  padding-left: $pad-small;
-  min-height: rem-calc(100);
+  @extend .plos-row;
   position: relative;
+  background: $white;
+  min-height: rem-calc(100);
 }
 
 .signposts {
@@ -47,7 +46,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
   @include plos-grid-column(160, $gutter: none);
   @extend .inline-list;
-  margin: $pad-default $pad-default 0 0;
+  margin: $pad-default $pad-default $pad-default 0;
   float: right;
   text-align: center;
   height: rem-calc(159);
@@ -386,10 +385,15 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       height: 83px;
       font-weight: bold;
       font-family: $font-face-plain;
-      background-image: image-url("icon.tabs.active.white.png");
-      background-repeat: no-repeat;
-      background-position: 9px 65px;
 
+      &:after{
+        content:"\f103";
+        position: absolute;
+        bottom: $pad-xsmall;
+        left: rem-calc(8);
+        @extend .fa;
+        font-size: $txt-size-medium-large;
+      }
       &:hover {
         @extend %brand-background;
         cursor: inherit;

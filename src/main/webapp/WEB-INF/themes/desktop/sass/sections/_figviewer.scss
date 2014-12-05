@@ -1,3 +1,16 @@
+/*
+style changes to review with s, p & p
+#fig-viewer-abst: padding top from 37px to 25px
+
+download pdf button: change 636363 to 666666?
+change rounded corner radius from 4px to 5px
+
+color of bolded paragraph headings change from 636363 to 666666
+
+info box on the right darker grey background & border: change from e8e8e8 to e7e7e7
+(to use sass darken mixin of our grey-light variable of efefef)
+*/
+
 $fv-small: rem-calc(7);
 $fv-grey-light: #eae9e9;
 $fv-grey-bg: darken($grey-light, 3%);
@@ -5,17 +18,17 @@ $fv-grey-bg: darken($grey-light, 3%);
 #fig-viewer {
   //foundation reveal modal
   @include reveal-modal-base(
-    $base-style: false
+  $base-style: false
   );
 
   @include reveal-modal-style(
-    $bg:$reveal-modal-bg,
-    $border:true,
-    $border-style:$reveal-border-style,
-    $border-width: 10px,
-    $border-color:$grey-dark,
-    $box-shadow:false,
-    $top-offset: 0
+  $bg:$reveal-modal-bg,
+  $border:true,
+  $border-style:$reveal-border-style,
+  $border-width: 10px,
+  $border-color:$grey-dark,
+  $box-shadow:false,
+  $top-offset: 0
   );
 
   position: fixed;
@@ -34,6 +47,7 @@ $fv-grey-bg: darken($grey-light, 3%);
     background: $grey-dark;
     position: relative;
     border-right: rem-calc(46) solid transparent;
+    z-index: map_get($zindex, topvisible);
 
     h1, h1 a {
       font-size: $txt-size-medium;
@@ -89,6 +103,7 @@ $fv-grey-bg: darken($grey-light, 3%);
       }
     }
   }
+
   .fv-close {
     background: image-url('sprite.fv.png') no-repeat -40px 0;
     position: absolute;
@@ -103,13 +118,27 @@ $fv-grey-bg: darken($grey-light, 3%);
     }
   }
 
+  #figs-viewer-content .tabs-content {
+  //  margin-bottom: 0 !important;
+    height: 100%;
+  }
+
   .pane {
     display: block;
   }
+
   section {
     padding: 0;
   }
+  h3 {
+    margin-bottom: $pad-default;
+    font-family: $font-face-plain;
+    font-size: $txt-size-large;
+    font-weight: bold;
+    color: $grey-dark;
+  }
 }
+
 #fvAuthors {
   height: rem-calc(15);
   line-height: rem-calc(15);
@@ -146,7 +175,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 #fig-viewer-controls {
   @extend %brand-background;
   position: absolute;
-  bottom: rem-calc(90);
+  bottom: rem-calc(60);
   width: 100%;
   height: rem-calc(30);
 }
@@ -205,14 +234,19 @@ $fv-grey-bg: darken($grey-light, 3%);
   background: rgba(255,255,255,0.64);
 }
 #fv-zoom-sldr .ui-slider-handle {
+  position: relative;
+  display: block;
   width: rem-calc(14);
   height: rem-calc(14);
   border-radius: 50%;
-  background: $white;
-  border: 0;
-  margin-left: -7px;
-  top: -4px;
+  background-color: $white;
+  border: 0 none;
+  margin-left: rem-calc(-3);
   cursor: ew-resize;
+  top: rem-calc(-3);
+  &:focus {
+    outline: 0;
+  }
 }
 #fv-zoom-min,
 #fv-zoom-max {
@@ -238,6 +272,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-controls .fig-btn {
+
   display: block;
   float: right;
   padding: 0 $pad-small;
@@ -308,15 +343,18 @@ $fv-grey-bg: darken($grey-light, 3%);
 .fig-btn.prev:hover .icn {
   background-position: -130px -20px;
 }
-
+#fig-viewer-slides {
+  position: relative;
+  height: auto;
+}
 #fig-viewer-slides .slide {
-  overflow: hidden;
+ // overflow: hidden;
   display: none;
   position: relative;
 }
 
 #fig-viewer-slides .figure {
-  overflow: hidden;
+ // overflow: hidden;
   border: solid 2px $grey-light;
   position: relative;
 }
@@ -337,12 +375,12 @@ $fv-grey-bg: darken($grey-light, 3%);
   display: none;
 }
 
-#fig-viewer-slides .data {
+#fig-viewer-slides .controls {
   position: relative;
-  padding-top: 30px;
   height: 90px;
   text-align: center;
   background: $grey-light;
+  bottom: -30px;
 }
 
 #fig-viewer-slides .txt {
@@ -350,7 +388,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   background: $grey-light;
   background: rgba(239,239,239,0.95);
   position: absolute;
-  bottom: 0;
+  bottom: 0;//: 32px;
   left: 0;
   text-align: left;
   z-index: 10;
@@ -363,24 +401,25 @@ $fv-grey-bg: darken($grey-light, 3%);
   font-family: 'FS Albert Web Regular', Verdana, sans-serif;
 }
 
-#fig-viewer-slides .txt .title {
+#fig-viewer-slides .txt .fig_title {
   padding-top: rem-calc(3);
-  font-size: 1.077em;
+  font-size: $txt-size-small;
   font-weight: bold;
-  line-height: 1.143;
+  line-height:rem-calc(17);
+  font-family: 'FS Albert Web Regular', Verdana, sans-serif;
 }
 
-#fig-viewer-slides .txt .title.test-height {
+#fig-viewer-slides .txt .fig_title.test-height {
   overflow: hidden;
   white-space: nowrap;
 }
 
-#fig-viewer-slides .txt .title b {
-  color: #636363;
+#fig-viewer-slides .txt .fig_title span {
+  color: $grey-med-dark;//#636363
   text-transform: uppercase;
 }
 
-#fig-viewer-slides.txt-expand .txt .title {
+#fig-viewer-slides.txt-expand .txt .fig_title {
   line-height: 1.286;
   padding-right: 16px;
 }
@@ -431,8 +470,11 @@ $fv-grey-bg: darken($grey-light, 3%);
   padding: 0 5% $pad-smallish 3.1%;
 }
 
-#fig-viewer-slides .text-more .desc {
+#fig-viewer-slides .content .desc {
+  font-size: $txt-size-small;
+  font-family: $font-face-fancy;
   padding: $pad-xsmall 0 0 0;
+  line-height: rem-calc(18);
 }
 
 #fig-viewer-slides .text-more .doi {
@@ -459,14 +501,16 @@ $fv-grey-bg: darken($grey-light, 3%);
   margin: 0;
 }
 
-#fig-viewer-slides .data .btn {
+#fig-viewer-slides .controls .btn {
+  @extend .button-big;
   font-size: $txt-size-small;
   line-height: rem-calc(27);
   padding: 0 $pad-smallish;
 }
 
 #fig-viewer-slides .lnk_context {
-  margin-top: rem-calc(11);
+  margin-top: rem-calc(33);
+  position: relative !important;
 }
 
 #fig-viewer-figs .download {
@@ -506,7 +550,8 @@ $fv-grey-bg: darken($grey-light, 3%);
   padding-top: 35px;
   width: 163px;
   position: absolute;
-  bottom: 120px;
+ // bottom: 120px;
+  top: 0;
   right: 0;
   background: $fv-grey-light;
 }
@@ -525,6 +570,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   right: 10px;
   cursor: pointer;
 }
+
 #fig-viewer-thmbs .btn-thmb-close:hover {
   background-color: $plos-default;
   background-position: 0 -20px;
@@ -534,7 +580,6 @@ $fv-grey-bg: darken($grey-light, 3%);
   padding-left: 17px;
   overflow: auto;
   background: $fv-grey-light;
-  background: -webkit-linear-gradient(left,  $fv-grey-light 0%,$fv-grey-light 20px,$grey-light 20px,$grey-light 143px,$fv-grey-light 143px,$fv-grey-light 100%);
   background: linear-gradient(to right,  $fv-grey-light 0%,$fv-grey-light 20px,$grey-light 20px,$grey-light 143px,$fv-grey-light 143px,$fv-grey-light 100%);
   height: 750px;
 }
@@ -572,13 +617,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 #fig-viewer-abst {
   overflow: auto;
   font-family: $font-face-fancy;
-  padding: 37px 0 75px;
-  h3 {
-    margin-bottom: $pad-default;
-    font-size: $txt-size-large;
-    font-weight: bold;
-    color: $grey-dark;
-  }
+  padding: $pad-default + $pad-xsmall 0 rem-calc(75); // production has top padding at 37px
 
   .abstract {
     float: left;
@@ -596,22 +635,22 @@ $fv-grey-bg: darken($grey-light, 3%);
     line-height: 1.25;
   }
 
-   .info {
-     position: relative;
-     float: right;
-     font-size: 14px;
-     width: 34.8%;
-     margin-right: 1.1%;
-     padding: 3px 0 0x;
-     line-height: rem-calc(14);
-     p {
-       border: 1px solid #e1e1e1;
-       border-top-width: 0;
-       margin: 0;
-       padding: 6px 8px 9px;
-       line-height: rem-calc(14);
-     }
-   }
+  .info {
+    position: relative;
+    float: right;
+    font-size: 14px;
+    width: 34.8%;
+    margin-right: 1.1%;
+    padding: 3px 0 0x;
+    line-height: rem-calc(14);
+    p {
+      border: 1px solid #e1e1e1;
+      border-top-width: 0;
+      margin: 0;
+      padding: 6px 8px 9px;
+      line-height: rem-calc(14);
+    }
+  }
   .info p:first-child {
     border-top-width: 1px;
   }
@@ -626,15 +665,7 @@ $fv-grey-bg: darken($grey-light, 3%);
     border-top-color: $fv-grey-bg;
   }
 }
-/*
-download pdf button: change 636363 to 666666?
-change rounded corner radius from 4px to 5px
 
-color of bolded paragraph headings change from 636363 to 666666
-
-info box on the right darker grey background & border: change from e8e8e8 to e7e7e7
-(to use sass darken mixin of our grey-light variable of efefef)
-*/
 #fig-viewer-abst .info p strong {
   font-size: $txt-size-medium;
   font-weight: bold;
@@ -654,24 +685,38 @@ info box on the right darker grey background & border: change from e8e8e8 to e7e
     background: $plos-default;
   }
 }
-
-
+#fig-viewer-refs {
+  padding-top: $pad-default + $pad-xsmall;
+}
 #fig-viewer-refs h3 {
-  margin: ($pad-default + $pad-xsmall) 0 $fv-small 21px;
+//  margin: 0 0 $fv-small ;
+  margin-left: rem-calc(21);
 }
 
 #fig-viewer-refs ol {
   padding-left: 3.077em;
   width: 87.5%;
-  margin-top: 0;
+  margin: 0;
+  list-style-type: none;
 }
 #fig-viewer-refs ol > li {
   font-size: 1.231em;
   font-weight: bold;
   line-height: 1.25;
   margin-bottom: $fv-small;
-}
 
+  a {
+    @include link-text($color: $plos-default, $decoration: underline);
+    font-weight: normal;
+  }
+}
+#fig-viewer-refs span.order {
+  margin-left: -26px;
+  float: left;
+  width: 20px;
+  text-align: right;
+  font-weight: bold;
+}
 #fig-viewer-refs .find {
   font-size: 0.813em;
   font-weight: normal;

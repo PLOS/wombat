@@ -66,7 +66,7 @@
       var $el = $(element);
       var doi = $el.attr('data-doi');
       var fileSize = $el.attr('data-size');
-      var size = fileSizeTable[ doi][ fileSize];
+      var size = fileSizeTable[ doi][ /**/fileSize];
       $el.text('(' + formatHumanReadableByteSize(size) + ')');
     });
   };
@@ -82,4 +82,9 @@
     figId = $(this).data('tableopen');
     return tableOpen(figId, "HTML", table);
   });
+
+  $('.figure-inline-download').find('a').on('click', function(e){
+    e.preventDefault();
+  });
+ // $('')
 })(jQuery);

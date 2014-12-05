@@ -1,10 +1,8 @@
-<div id="fig-viewer" class="reveal-modal" data-reveal>
-<#include "figviewer.ftl" />
-</div>
+
+
 </main><#-- opened in header.ftl -->
 
 <footer id="pageftr">
-
   <div class="row">
     <div class="brand-column">
     <#macro footerLogo src alt>
@@ -24,5 +22,8 @@
 
 <@js src="resource/js/global.js" />
 
+  <div id="fig-viewer" class="reveal-modal" data-reveal>
+  <#include "figviewer.ftl" />
+  </div>
 </footer>
 

@@ -1067,7 +1067,7 @@ $include-html-table-classes: false;
 // $tabs-navigation-font-size: rem-calc(16);
 // $tabs-navigation-font-family: $body-font-family;
 
-// $tabs-content-margin-bottom: rem-calc(24);
+  $tabs-content-margin-bottom: 0; //rem-calc(24);
 //$tabs-content-padding: $column-gutter/2;
 
 // $tabs-vertical-navigation-margin-bottom: 1.25rem;
@@ -1202,7 +1202,7 @@ $include-legacy-visibility-classes: false;
 // RANGE SLIDER
 //
 
-$include-html-range-slider-classes: false;
+$include-html-range-slider-classes: true;
 
 // These variabels define the slider bar styles
 // $range-slider-bar-width: 100%;

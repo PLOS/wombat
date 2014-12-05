@@ -1,26 +1,6 @@
-
 (function ($) {
   $.fn.twitter = function (doi) {
-    var tweet, tweetText,
-      totalTweets, initData, minDisplayTweets, maxDisplayTweets,
-      dataSort, datePrefix,
-      dataPrefix,
-      tweetDate,
-      tweetDateOther,
-      tweetInfo,
-      tweetActionLink,
-      tweetAvatar,
-      tweetPlaceholder,
-      tweetId,
-      replyLink,
-      retweetLink,
-      favoriteLink,
-      tweetActions,
-      tweetUserName,
-      tweetHandle,
-      wholeTweet,
-      listBody,
-      tweetAvatarParse;
+    var tweet, tweetText, totalTweets, initData, minDisplayTweets, maxDisplayTweets, dataSort, datePrefix, dataPrefix, tweetDate, tweetDateOther, tweetInfo, tweetActionLink, tweetAvatar, tweetPlaceholder, tweetId, replyLink, retweetLink, favoriteLink, tweetActions, tweetUserName, tweetHandle, wholeTweet, listBody, tweetAvatarParse;
 
     function validateDOI(doi) {
       if (doi == null) {
@@ -38,19 +18,19 @@
 
       config = ALM_CONFIG;
 
-      requestUrl = config.host +'?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source=twitter';
+      requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source=twitter';
 
       errorText = '<li>Our system is having a bad day. We are working on it. Please check back later.</li>';
 
       $.ajax({
-        url: requestUrl,
-        dataType: 'jsonp',
+        url:         requestUrl,
+        dataType:    'jsonp',
         contentType: "text/json; charset=utf-8",
-        type: "GET"
-      }).done(function (data){
+        type:        "GET"
+      }).done(function (data) {
         initData = data.data[0];
         if (initData.sources === undefined) {
-           //do nothing
+          //do nothing
         } else {
           totalTweets = data.data[0].sources[0].metrics.total;
           minDisplayTweets = 2;
@@ -76,7 +56,7 @@
           //pull the data & run the sort function
           dataSort = dataSort.sort(jQuery.proxy(this.sort_tweets_by_date, this));
           // only show 5, so cut the json results to 5
-          if (dataSort.length > maxDisplayTweets){
+          if (dataSort.length > maxDisplayTweets) {
             dataSort = dataSort.slice(0, 5);
           } else { }
 
@@ -97,13 +77,22 @@
 
           });
 
-          $('.twitter-container').css('display', 'block');
-          if (totalTweets > minDisplayTweets) {
-            var show_link = more_tweets();
+          // and finally, display the tweets
+          if (totalTweets > 0) {
+            $('.twitter-container').css('display', 'block');
+            // display the more tweets if there are any.
+            if (totalTweets > minDisplayTweets) {
+              var show_link = more_tweets();
 
-          } else {}
+            } else {
+              // do nothing
+            }
+          } else {
+            // do nothing
+          }
+
         }
-      }).fail(function(){
+      }).fail(function () {
         $('.twitter-container').css('display', 'block');
         $('#tweetList').append(errorText);
       });
@@ -112,34 +101,35 @@
 
     function checkAvatar(listappend) {
       var checkImg = $(listappend).find('.imgLoad');
-      $(checkImg).on('error', changeAvatar );
+      $(checkImg).on('error', changeAvatar);
     }
 
     function changeAvatar(event) {
       if (event) {
-        var newthing = $(this).attr('src',tweetPlaceholder);
+        var newthing = $(this).attr('src', tweetPlaceholder);
         return $('.imgholder').html(newthing);
       }
     }
 
-    function dateFiddle(tweetDate){
+    function dateFiddle(tweetDate) {
       var dateraw, dateoptions, prettydate, iedate, ugh, months, toNum;
       if (!document.all) {
         dateraw = new Date(tweetDate);
         dateoptions = {day: "numeric", month: "short", year: "numeric"};
         prettydate = dateraw.toLocaleString("en-GB", dateoptions);
 
-      }  else {  //alert(tweetDate.indexOf(","));
+      } else {  //alert(tweetDate.indexOf(","));
         iedate = tweetDate.toString();
         ugh = iedate.split(',');
         months = new Array();
-        months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         toNum = ugh[1];
 
-        prettydate = ugh[2]+' '+ months[toNum]+' '+ugh[0];
+        prettydate = ugh[2] + ' ' + months[toNum] + ' ' + ugh[0];
       }
       return prettydate;
     }
+
     function dataPass(dataPrefix) {
 
       tweetDateOther = dataPrefix.created_at;//dateParse(dataPrefix.created_at, false, true, "en-GB");
@@ -152,31 +142,24 @@
 
       tweetDate = dateFiddle(tweetDate);
       //change twitter avatar url if an old one ("a0") is stored
-      tweetAvatarParse = tweetAvatar.slice(7,9);
+      tweetAvatarParse = tweetAvatar.slice(7, 9);
       if (tweetAvatarParse === "a0") {
-        tweetAvatar = "http://pbs"+tweetAvatar.slice(9);
+        tweetAvatar = "http://pbs" + tweetAvatar.slice(9);
       }
       // user photo, date of post, user names
       tweetPlaceholder = 'resource/img/icon.avatar.placeholder.png';
       // TODO: put in placeholder conditional
-      tweetInfo = '<a href="http://twitter.com/' + tweetHandle + '"' + '>' +
-        '<span class="imgholder"><img class="imgLoad" src="' + tweetAvatar + '"/></span>' +
-        '<div class="tweetDate">' + tweetDate + '</div>' +
-        '<div class="tweetUser"><strong>' + tweetUserName + ' </strong><span>@' +
-        tweetHandle + '</span></div></a>';
+      tweetInfo = '<a href="http://twitter.com/' + tweetHandle + '"' + '>' + '<span class="imgholder"><img class="imgLoad" src="' + tweetAvatar + '"/></span>' + '<div class="tweetDate">' + tweetDate + '</div>' + '<div class="tweetUser"><strong>' + tweetUserName + ' </strong><span>@' + tweetHandle + '</span></div></a>';
 
       //twitter reply/retweet/favorite links
       tweetActionLink = 'https://twitter.com/intent/';
-      replyLink = tweetActionLink + 'tweet?in_reply_to' + tweetId+'&text=@'+tweetHandle;
+      replyLink = tweetActionLink + 'tweet?in_reply_to' + tweetId + '&text=@' + tweetHandle;
       retweetLink = tweetActionLink + 'retweet?tweet_id=' + tweetId;
       favoriteLink = tweetActionLink + 'favorite?tweet_id=' + tweetId;
 
-      tweetActions = '<a class="tweet-reply" href="' + replyLink + '"><div>&nbsp;</div>Reply</a>' +
-        '<a class="tweet-retweet" href="' + retweetLink + '"><div>&nbsp;</div>Retweet</a>' +
-        '<a class="tweet-favorite" href="' + favoriteLink + '"><div>&nbsp;</div>Favorite</a>';
+      tweetActions = '<a class="tweet-reply" href="' + replyLink + '"><div>&nbsp;</div>Reply</a>' + '<a class="tweet-retweet" href="' + retweetLink + '"><div>&nbsp;</div>Retweet</a>' + '<a class="tweet-favorite" href="' + favoriteLink + '"><div>&nbsp;</div>Favorite</a>';
 
-      return listBody = '<div class="tweet-info">' + tweetInfo + '</div><div class="tweetText">' + tweetText + '</div>' +
-        '<div id="tweetActions">' + tweetActions + '</div>';
+      return listBody = '<div class="tweet-info">' + tweetInfo + '</div><div class="tweetText">' + tweetText + '</div>' + '<div id="tweetActions">' + tweetActions + '</div>';
 
     }
 

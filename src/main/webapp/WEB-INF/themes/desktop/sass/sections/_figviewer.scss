@@ -1,3 +1,16 @@
+/*
+style changes to review with s, p & p
+#fig-viewer-abst: padding top from 37px to 25px
+
+download pdf button: change 636363 to 666666?
+change rounded corner radius from 4px to 5px
+
+color of bolded paragraph headings change from 636363 to 666666
+
+info box on the right darker grey background & border: change from e8e8e8 to e7e7e7
+(to use sass darken mixin of our grey-light variable of efefef)
+*/
+
 $fv-small: rem-calc(7);
 $fv-grey-light: #eae9e9;
 $fv-grey-bg: darken($grey-light, 3%);
@@ -116,6 +129,13 @@ $fv-grey-bg: darken($grey-light, 3%);
 
   section {
     padding: 0;
+  }
+  h3 {
+    margin-bottom: $pad-default;
+    font-family: $font-face-plain;
+    font-size: $txt-size-large;
+    font-weight: bold;
+    color: $grey-dark;
   }
 }
 
@@ -597,13 +617,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 #fig-viewer-abst {
   overflow: auto;
   font-family: $font-face-fancy;
-  padding: 37px 0 75px;
-  h3 {
-    margin-bottom: $pad-default;
-    font-size: $txt-size-large;
-    font-weight: bold;
-    color: $grey-dark;
-  }
+  padding: $pad-default + $pad-xsmall 0 rem-calc(75); // production has top padding at 37px
 
   .abstract {
     float: left;
@@ -651,15 +665,7 @@ $fv-grey-bg: darken($grey-light, 3%);
     border-top-color: $fv-grey-bg;
   }
 }
-/*
-download pdf button: change 636363 to 666666?
-change rounded corner radius from 4px to 5px
 
-color of bolded paragraph headings change from 636363 to 666666
-
-info box on the right darker grey background & border: change from e8e8e8 to e7e7e7
-(to use sass darken mixin of our grey-light variable of efefef)
-*/
 #fig-viewer-abst .info p strong {
   font-size: $txt-size-medium;
   font-weight: bold;
@@ -679,11 +685,12 @@ info box on the right darker grey background & border: change from e8e8e8 to e7e
     background: $plos-default;
   }
 }
-
+#fig-viewer-refs {
+  padding-top: $pad-default + $pad-xsmall;
+}
 #fig-viewer-refs h3 {
-  margin: ($pad-default + $pad-xsmall) 0 $fv-small rem-calc(21);
-  font-family: $font-face-plain;
-  font-weight: bold;
+//  margin: 0 0 $fv-small ;
+  margin-left: rem-calc(21);
 }
 
 #fig-viewer-refs ol {

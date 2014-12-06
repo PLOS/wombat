@@ -283,7 +283,7 @@
   <!-- 1/4/12: Ambra-specific template (creates editors summary) -->
   <xsl:template name="make-editors-summary">
     <xsl:for-each select="front/article-meta/abstract[@abstract-type='editor']">
-      <div class="editorsAbstract">
+      <div class="box">
         <xsl:call-template name="abstract-title"/>
         <xsl:apply-templates select="*[not(self::title)]"/>
       </div>

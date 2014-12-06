@@ -240,14 +240,14 @@ $fv-grey-bg: darken($grey-light, 3%);
   top: 0;
 }
 #fv-zoom-min {
-  left: 0;
+  left: -2px;
   background-position: -110px 0;
   cursor: -webkit-zoom-out;
   cursor: -moz-zoom-out;
 }
 
 #fv-zoom-max {
-  right: 0;
+  right: -2px;
   background-position: -90px 0;
   cursor: -webkit-zoom-in;
   cursor: -moz-zoom-in;
@@ -491,13 +491,13 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-slides .lnk_context {
-  margin-top: rem-calc(33);
+  margin-top: rem-calc(3);
   position: relative !important;
 }
 
 #fig-viewer-figs .download {
   position: absolute;
-  top: rem-calc(41);
+  top: rem-calc(10);
   right: 2.7%;
 }
 
@@ -565,8 +565,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   padding-left: 17px;
   overflow: auto;
   background: $fv-grey-light;
-  background: linear-gradient(to right,  $fv-grey-light 0%,$fv-grey-light 20px,$grey-light 20px,$grey-light 143px,$fv-grey-light 143px,$fv-grey-light 100%);
-  height: 750px;
+  background: linear-gradient(to right, $fv-grey-light 0%, $fv-grey-light 20px, $grey-light 20px, $grey-light 143px,$fv-grey-light 143px, $fv-grey-light 100%);
 }
 
 #fig-viewer-thmbs .thmb {

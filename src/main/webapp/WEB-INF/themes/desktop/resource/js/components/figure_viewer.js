@@ -166,6 +166,7 @@
     //  based on the browser window height
     win_h = $win.height();
     frame_h = 20; //account for the 10 pixel border
+
     //Set the height of the fig-viewer container: window height - border size
     $FV.cont.css('height', win_h - frame_h);
     hdr_h = 46; //height of title & nav header
@@ -173,15 +174,17 @@
 
     // set the height of the figure divs: window - border -
     parts_h = hdr_h + data_h + frame_h;
-    fig_h = win_h -parts_h;
+    fig_h = win_h - parts_h;
     //figure height is window minus frame, header, frame, and data heights
     $FV.figs.css('height', fig_h);
 
     $FV.abst_pane.css('height', win_h - frame_h - hdr_h - 1);
+
     $FV.refs_pane.css('height', win_h - frame_h - hdr_h);
 
     if ($FV.thmbs_vis) {
       FVThumbPos($FV.thumbs.active);
+
     }
 
   };
@@ -356,19 +359,6 @@
     $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
     $FV.thumbs.active = null; // used to track active thumb & figure
 
-    // figures controls in thumb panel
-    /*$('.thmb-btn').on('click',function() {
-      $FV.figs_pane.toggleClass('thmbs-vis');
-      $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
-      FVThumbPos($FV.thumbs.active);
-    });*/
-    /*$FV.nxt = $('.next').on('click',function() {
-      FVChangeSlide($FV.thumbs.active.next());
-    });
-    $FV.prv = $('.prev').on('click',function() {
-      FVChangeSlide($FV.thumbs.active.prev());
-    });*/
-
     $FV.loading = $('<div class="loading-bar"></div>').appendTo($FV.controls_el);
     $FV.zoom = $('<div id="fv-zoom" />');
     $FV.zoom.min = $('<div id="fv-zoom-min" />').appendTo($FV.zoom);
@@ -451,14 +441,12 @@
       if ($FV.thumbs.active == null) { // no thumb is active so this is the 1st figure displayed
         // call FVChangeSlide() via thumbnail click, to display correct figure
         if ($FV.figs_ref) { // specific figure is requested
-         //console.log($FV.thumbs_cont.find('div[data-uri="' + $FV.figs_ref + '"]'));
-          //selector: "div[data-uri="info:doi/10.1371/journal.pntd.0001053.g001"]"
-          //<div class="thmb" data-uri="10.1371/journal.pntd.0001053.g002">
-         // $FV.cont.find('#data-reveal-id')
-          //$FV.cont.find('.reveal-figs').trigger('click');
+
           $('#fig-viewer').foundation('reveal', 'open');
           $FV.thumbs_cont.find('div[data-uri="' + $FV.figs_ref + '"]').css('background','red').trigger('click');
+
         } else { // default to first figure
+
           $FV.thumbs.eq(0).trigger('click');
         }
       } else {
@@ -524,6 +512,7 @@
       // right / down arrow keys
       if (e.which == 39 || e.which == 40) {
         if ($FV.thumbs.active.next().length) {
+
           var t = $FV.thumbs.active.next();
           FVChangeSlide(t);
         }
@@ -533,7 +522,7 @@
   };
 
   // figure description
-  FVFigDescripton = function(sld) { console.log('figdesc');
+  FVFigDescripton = function(sld) {
 
     var $btn_less, $content, truncate;
     $btn_less = sld.find('div.toggle.less');
@@ -618,7 +607,6 @@
         $img.removeClass('invisible');
         this_fig.data('state', 3);
         FVLoadLargeImg(i);
-
         break;
       case 3:
         // waiting on large image to load
@@ -658,9 +646,10 @@
 
 
 // load large images in div.staging
-  FVLoadLargeImg = function(i) {
+  FVLoadLargeImg = function(i) {      ///////////////////// PROBLEM MIGHT BE HERE
     var src = $FV.figs_set[i].data('img-lg-src');
     var txt = $FV.figs_set[i].data('img-txt');
+    console.log(src);
     var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="lg invisible">');
     $FV.figs_set[i].next('div.staging').append($img); // load large img into 'staging' div
     $FV.figs_set[i].next('div.staging').imagesLoaded(function() {
@@ -675,14 +664,19 @@
 
 // size images to fit in parent element
   FVSizeImgToFit = function(el, down_only) {
-    var img = el.find('img');
-    var el_h = el.height();
-    var el_w = el.width();
-    var i_h = img.height();
-    var i_w = img.width();
-
-    // sizes image to fit, scalling up or down, and centering
+    var img, el_h, el_w, i_h, i_w;
+    img = el.find('img');
+    el_h = el.height();
+    el_w = el.width();
+    i_h = img.height();
+    i_w = img.width();
+     ///////////////////// PROBLEM MIGHT BE HERE
+     console.log(el_h+ ' ' +el_w+ ' ' +i_h+ ' ' +i_w);
+    //console.log(el_w / el_h +' '+ i_w / i_h);
+    // sizes image to fit, scaling up or down, and centering
     // setting size with height
+    //console.log(Math.round((el_w -  img.width()) / 2));
+    //console.log(Math.round(el_w * (i_h / i_w)));
     var sizeAndCenter = function() {
       // compare aspect ratios of parent and image and set dimensions accordingly
       if (el_w / el_h > i_w / i_h) {
@@ -713,14 +707,15 @@
 // switch medium image with large image
 
   FVSwitchImg = function($fig) {
-    var $img_m = $fig.find('img');
-    var img_m_h = $img_m.height();
-    var $img_l = $fig.next('div.staging').find('img');
+    var $img_m, img_m_h, $img_l, img_l_h, img_l_w, drag_bx;
+    $img_m = $fig.find('img');
+    img_m_h = $img_m.height();
+    $img_l = $fig.next('div.staging').find('img');
     // move large image into figure div (image hidden by css)
     $fig.append($img_l);
-    var img_l_erg = $fig.find($img_l);
-    var img_l_h = $(img_l_erg).height();//css('height');
-    var img_l_w = $img_l.width();
+    img_l_erg = $fig.find($img_l); console.log(img_l_erg);
+    img_l_h = $img_l.height();//css('height');
+    img_l_w = $img_l.width();
     // store native dimensions
     $fig.data('img_l_w', img_l_w).data('img_l_h', img_l_h);
 
@@ -731,13 +726,12 @@
       $fig.addClass('zoom'); // zoomable & draggable
     }
     $fig.html($img_l.removeClass('invisible')); // replace
-    var drag_bx = $('<div class="drag-bx" />'); // insert drag containment element
+    drag_bx = $('<div class="drag-bx" />'); // insert drag containment element
     $fig.wrapInner(drag_bx);
     if ($fig.hasClass('zoom')) {
       FVFigFunctions($fig);
     }
   };
-
 
 // zoom & drag figure
 // this is called following either
@@ -745,14 +739,15 @@
 // OR navigating to a slide whose large image is bigger than the slide and has already loaded.
 
   FVFigFunctions = function($fig) {
-    var $img = $fig.find('img');
-    var real_h = $fig.data('img_l_h'); // native height of image
-    var real_w = $fig.data('img_l_w'); // native width of image
-    var img_mt = parseInt($img.css('marginTop')); // top margin of sized to fit image
-    var img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
-    var resize_h = $img.height(); // height of sized to fit image
-    var drag = false; // dragging not enabled
-    var $drgbx = $fig.find('div.drag-bx');
+    var $img, real_h, real_w, img_mt, img_ml, resize_h, drag, $drgbx;
+    $img = $fig.find('img');
+    real_h = $fig.data('img_l_h'); // native height of image
+    real_w = $fig.data('img_l_w'); // native width of image
+    img_mt = parseInt($img.css('marginTop')); // top margin of sized to fit image
+    img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
+    resize_h = $img.height(); // height of sized to fit image
+    drag = false; // dragging not enabled
+    $drgbx = $fig.find('div.drag-bx');
 
     $FV.zoom.show();
     $FV.zoom.sldr.slider({
@@ -857,7 +852,7 @@
   FVDragStop = function($fig, $img) {
     $img.draggable('destroy');
     // reset
-    $img.css({'top' : 0, 'left' : 0,});
+    $img.css({'top' : 0, 'left' : 0});
     $fig.find('div.drag-bx').removeAttr('style');
     $fig.data('off-top', 0)
       .data('off-left', 0);
@@ -869,15 +864,17 @@
 // runs following figure resize
 
   FVSizeDragBox = function($fig, $img) {
-    var $drgbx = $fig.find('div.drag-bx');
-    var fig_h = $fig.height();
-    var fig_w = $fig.width();
-    var img_h = $img.height();
-    var img_w = $img.width()
-    var img_mt = parseInt($img.css('marginTop'));
-    var img_ml = parseInt($img.css('marginLeft'));
-    var img_tp = isNaN(parseInt($img.css('top'))) ? 0 : parseInt($img.css('top'));
-    var img_lt = isNaN(parseInt($img.css('left'))) ? 0 : parseInt($img.css('left'));
+    var $drgbx, fig_h, fig_w, img_h, img_w, img_mt, img_ml, img_tp, img_lt;
+    $drgbx = $fig.find('div.drag-bx');
+    fig_h = $fig.height();
+    fig_w = $fig.width();
+    img_h = $img.height();
+    img_w = $img.width()
+    img_mt = parseInt($img.css('marginTop'));
+    img_ml = parseInt($img.css('marginLeft'));
+    img_tp = isNaN(parseInt($img.css('top'))) ? 0 : parseInt($img.css('top'));
+    img_lt = isNaN(parseInt($img.css('left'))) ? 0 : parseInt($img.css('left'));
+
     if (fig_h > img_h) {
       $drgbx.css({
         'top' : img_mt * -1,

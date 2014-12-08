@@ -126,7 +126,7 @@ $line-height-small: ($line-height * .5);
 
   .callout-standard, .box {
     @include callout();
-    h2,h3 { margin-top: 0;}
+    h2:first-child, h3:first-child { margin-top: 0;}
   }
 
   .callout-alert {

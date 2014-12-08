@@ -41,15 +41,21 @@
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${articleDoi}" />
 
+<#if pubUrlPrefix??>
 <link rel="canonical" href="${pubUrlPrefix}article?id=${articleDoi}" />
+</#if>
 
-<#if (article.description??)>
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:site" content="${twitterUsername}"/>
-<meta property="og:type" content="article" />
-<meta property="og:url" content="${pubUrlPrefix}article?id=${articleDoi}"/>
-<meta property="og:title" content="${article.title?replace('<.+?>',' ','r')}"/>
-<meta property="og:description" content="${article.description?replace('<.+?>',' ','r')}"/>
+<#if article.description??>
+  <#if twitterUsername??>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="${twitterUsername}"/>
+  </#if>
+  <meta property="og:type" content="article" />
+  <#if pubUrlPrefix??>
+    <meta property="og:url" content="${pubUrlPrefix}article?id=${articleDoi}"/>
+  </#if>
+  <meta property="og:title" content="${article.title?replace('<.+?>',' ','r')}"/>
+  <meta property="og:description" content="${article.description?replace('<.+?>',' ','r')}"/>
   <#if (article.strkImgURI?? && (article.strkImgURI?length > 0)) >
   <meta property="og:image" content="http://dx.plos.org/${article.strkImgURI?replace('info:doi/','')}"/>
   </#if>

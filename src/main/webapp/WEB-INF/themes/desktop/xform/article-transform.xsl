@@ -840,7 +840,6 @@
             <xsl:apply-templates select="$cit"/>
             <xsl:text> </xsl:text>
             <xsl:if test="$cit[@publication-type='journal']">
-
               <!-- create reference links -->
               <!-- if citedArticles parameter has not been set, fail gracefully and use XML-based data for links -->
               <xsl:variable name="idx" as="xs:integer" select="position()"/>
@@ -877,6 +876,10 @@
                 </xsl:otherwise>
               </xsl:choose>
               </xsl:variable>
+              <!-- add doi at end of mixed-citation reference -->
+              <xsl:if test="$doi and name($cit) = 'mixed-citation'">
+                doi: <xsl:value-of select="$doi"/>
+              </xsl:if>
               <!-- remove any HTML tags from title (e.g. italics) and encode author and title for url-->
               <xsl:variable name="title" select="encode-for-uri(replace($title, '&lt;/?\w+?&gt;', ''))"/>
               <xsl:variable name="author" select="encode-for-uri($author)"/>
@@ -1678,10 +1681,6 @@
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template match="mixed-citation">
     <xsl:apply-templates/>
-    <xsl:if test="extraCitationInfo/@doi and not(ext-link) and not(comment/ext-link)">
-      doi:
-      <xsl:value-of select="extraCitationInfo/@doi"/>
-    </xsl:if>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template (formats mixed-citation names, most mixed-citation formatting is in the xml) -->

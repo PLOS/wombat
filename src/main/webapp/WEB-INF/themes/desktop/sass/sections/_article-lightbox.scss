@@ -17,36 +17,27 @@ info box on the right darker grey background & border: change from e8e8e8 to e7e
 $fv-small: rem-calc(7);
 $fv-grey-light: #eae9e9;
 $fv-grey-bg: darken($grey-light, 3%);
+// using the following until the variables get sorted out.
+$font-face-fancy: 'FS Albert Web Regular', Verdana, sans-serif;
 
 #fig-viewer {
-  //foundation reveal modal
-  @include reveal-modal-base(
-    $base-style: false
-  );
-
-  @include reveal-modal-style(
-    $bg:$reveal-modal-bg,
-    $border:true,
-    $border-style:$reveal-border-style,
-    $border-width: 10px,
-    $border-color:$grey-dark,
-    $box-shadow:false,
-    $top-offset: 0
-  );
-
+  background: rgba(0,0,0,0.8);
   position: fixed;
   z-index: map-get($zindex, modal);
   top: 0;
-
+  &.reveal-modal {
+    border: 0 none;
+  }
   #fig-viewer-content {
     background: $grey-light;
+    margin: 10px;
+    position: relative;
   }
 
   .fv-header {
     font-family: $font-face-fancy;
     padding: $fv-small 272px 0 1.1%;
-    min-height: 46px;
-    line-height: 18px;
+    height: 46px;
     background: $grey-dark;
     position: relative;
     border-right: rem-calc(46) solid transparent;
@@ -123,15 +114,11 @@ $fv-grey-bg: darken($grey-light, 3%);
 
   #figs-viewer-content .tabs-content {
   //  margin-bottom: 0 !important;
-    height: 100%;
+  //  height: 100%;
   }
 
-  .pane {
-    display: block;
-  }
-
-  section {
-    padding: 0;
+  > .content {
+    padding: 0 !important;
   }
 
   h3 {
@@ -178,13 +165,261 @@ $fv-grey-bg: darken($grey-light, 3%);
 .invisible {
   visibility: hidden;
 }
+
+#fig-viewer-slides {
+position: relative;
+
+}
+#fig-viewer-slides .slide {
+  overflow: hidden;
+  display: none;
+  position: relative;
+}
+
+#fig-viewer-slides .figure {
+  overflow: hidden;
+  border: solid 2px $grey-light;
+  position: relative;
+}
+
+#fig-viewer-slides .figure img {
+  display: block;
+}
+
+#fig-viewer-slides .ui-draggable {
+  cursor: move;
+}
+
+#fig-viewer-figs .drag-bx {
+  position: absolute;
+}
+
+#fig-viewer-figs .staging {
+  display: none;
+}
+
+#fig-viewer-slides .datacon {
+  position: relative;
+  height: rem-calc(120);
+  padding-top: $pad-medium;
+  text-align: center;
+  background: $grey-light;
+  bottom: 0;
+}
+
+//FIGURE DESCRIPTION CONTAINER
+#fig-viewer-slides .txt {
+  width: 34.4%;
+  background: $grey-light;
+  background: rgba(239,239,239,0.95);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  font-family: $font-face-plain;
+  font-size: $txt-size-small;
+  line-height:rem-calc(18);
+  z-index: map-get($zindex, header);
+
+  a {
+    color: $plos-default;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+//expand/collapse controls
+#fig-viewer-slides .txt .more {
+  padding: 0 5% $pad-smallish 3.1%;
+  font-weight: normal;
+  text-decoration: underline;
+  color: $plos-default;
+  margin-top: 1px;
+  cursor: pointer;
+}
+
+// closer 'x' in upper right corner
+#fig-viewer-slides .txt .less {
+
+  @extend %brand-background;
+  width: rem-calc(11);
+  height: rem-calc(11);
+  background: image-url('sprite.fv.png') -20px -20px;
+  position: absolute;
+  top: rem-calc(9);
+  right: 0.9%;
+  margin-right: rem-calc(14);
+  cursor: pointer;
+  display: none;
+  border-radius: 2px;
+  &:hover {
+    background-color: $plos-default;
+  }
+}
+// class .expanded is added via js
+#fig-viewer-slides.expanded .text-less,
+#fig-viewer-slides.expanded .more,
+#fig-viewer-slides .text-more {
+  display: none;
+}
+
+#fig-viewer-slides.expanded .less {
+  display: block;
+}
+
+#fig-viewer-slides .txt .fig_title {
+  padding-top: rem-calc(3);
+  margin-bottom: $pad-xsmall;
+  font-weight: bold;
+  line-height: rem-calc(18);
+  max-height: rem-calc(32);
+}
+
+#fig-viewer-slides .txt .text-less {
+  height: rem-calc(88);
+}
+
+#fig-viewer-slides .txt > div {
+  padding: 0 5% 0 3.1%;
+}
+
+#fig-viewer-slides.expanded .text-more {
+  display: block;
+  height: rem-calc(190);
+  overflow-y: auto;
+  border-top: 1px solid #ccc; // was #bbb
+  border-color: rgba(0, 0, 0, 0.2);
+  }
+
+
+
+#fig-viewer-slides .datacon .btn {
+  @extend .button-big;
+  font-size: $txt-size-small;
+  line-height: rem-calc(27);
+  padding: 0 $pad-smallish;
+}
+
+#fig-viewer-slides .lnk_context {
+  margin-top: rem-calc(3);
+  position: relative !important;
+}
+
+#fig-viewer-figs .download {
+  position: absolute;
+  top: rem-calc(40);
+  right: 2.7%;
+}
+
+#fig-viewer-figs .download h3 {
+  float: left;
+  font-size: $txt-size-small;
+  line-height: rem-calc(27);
+  margin: 0;
+}
+
+#fig-viewer-figs .download .item {
+  float: left;
+  margin-left: $pad-default + $pad-xsmall;
+}
+#fig-viewer-figs .download .item a {
+  display: block;
+  color: $grey-dark;
+  text-decoration: none;
+}
+#fig-viewer-figs .download .size {
+  display: block;
+  font-size: 0.769em;
+  margin-top: $pad-xsmall;
+}
+#fig-viewer-figs .download .item a:hover .btn {
+  background: $plos-default;
+  color: $white;
+}
+
+#fig-viewer-thmbs {
+  display: none;
+  padding-top: 35px;
+  width: 163px;
+  position: absolute;
+ // bottom: 120px;
+  top: 0;
+  right: 0;
+  background: $fv-grey-light;
+}
+
+.thmbs-vis #fig-viewer-thmbs {
+  display: block;
+}
+
+#fig-viewer-thmbs .btn-thmb-close {
+  @extend %brand-background;
+  color: $white;
+  background: image-url('sprite.fv.png') 0 -20px;
+  width: $pad-smallish;
+  height: $pad-smallish;
+  border-radius: $border-radius-small;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+
+}
+
+#fig-viewer-thmbs .btn-thmb-close:hover {
+  background-color: $plos-default;
+  background-position: 0 -20px;
+}
+
+#fig-viewer-thmbs-content {
+  padding-left: 17px;
+  overflow: auto;
+  background: $fv-grey-light;
+  background: linear-gradient(to right, $fv-grey-light 0%, $fv-grey-light 20px, $grey-light 20px, $grey-light 143px,$fv-grey-light 143px, $fv-grey-light 100%);
+}
+
+#fig-viewer-thmbs .thmb {
+  width: 129px;
+  height: 96px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: $pad-xsmall;
+  background-color: $white;
+}
+
+#fig-viewer-thmbs .thmb .thmb-wrap {
+  width: 129px;
+  height: 96px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#fig-viewer-thmbs .thmb.active {
+  cursor: default;
+  img {
+    @extend %brand-border;
+  }
+}
+
+#fig-viewer-thmbs .thmb img {
+  border: 3px solid transparent;
+  height: auto;
+  width: auto;
+  max-width: 123px;
+  max-height: 90px;
+  display: block;
+  margin: 0 auto;
+}
+
 #fig-viewer-controls {
   @extend %brand-background;
   position: absolute;
-  bottom: rem-calc(60);
+  bottom: rem-calc(90);
   width: 100%;
   height: rem-calc(30);
 }
+
 //code is from ambra
 #fig-viewer-controls .loading-bar {
   position: absolute;
@@ -352,282 +587,6 @@ $fv-grey-bg: darken($grey-light, 3%);
 .fig-btn.prev:hover .icn {
   background-position: -130px -20px;
 }
-#fig-viewer-slides {
-  position: relative;
-  height: auto;
-}
-#fig-viewer-slides .slide {
- // overflow: hidden;
-  display: none;
-  position: relative;
-}
-
-#fig-viewer-slides .figure {
- // overflow: hidden;
-  border: solid 2px $grey-light;
-  position: relative;
-}
-
-#fig-viewer-slides .figure img {
-  display: block;
-}
-
-#fig-viewer-slides .ui-draggable {
-  cursor: move;
-}
-
-#fig-viewer-figs .drag-bx {
-  position: absolute;
-}
-
-#fig-viewer-figs .staging {
-  display: none;
-}
-
-#fig-viewer-slides .controls {
-  position: relative;
-  height: 90px;
-  text-align: center;
-  background: $grey-light;
-  bottom: -30px;
-}
-
-#fig-viewer-slides .txt {
-  width: 34.4%;
-  background: $grey-light;
-  background: rgba(239,239,239,0.95);
-  position: absolute;
-  bottom: 0;//: 32px;
-  left: 0;
-  text-align: left;
-  z-index: 10;
-}
-
-#fig-viewer-slides .txt .content,
-#fig-viewer-slides .txt .text-more {
-  height: 88px;
-  padding: 0 5% 0 3.1%;
-  font-family: 'FS Albert Web Regular', Verdana, sans-serif;
-}
-
-#fig-viewer-slides .txt .fig_title {
-  padding-top: rem-calc(3);
-  font-size: $txt-size-small;
-  font-weight: bold;
-  line-height:rem-calc(17);
-  font-family: 'FS Albert Web Regular', Verdana, sans-serif;
-}
-
-#fig-viewer-slides .txt .fig_title.test-height {
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-#fig-viewer-slides .txt .fig_title span {
-  color: $grey-med-dark;//#636363
-  text-transform: uppercase;
-}
-
-#fig-viewer-slides.txt-expand .txt .fig_title {
-  line-height: 1.286;
-  padding-right: 16px;
-}
-
-#fig-viewer-slides.txt-expand .content {
-  display: none;
-}
-
-#fig-viewer-slides .txt .toggle.more {
-  padding: 0 5% $pad-smallish 3.1%;
-  font-weight: normal;
-  text-decoration: underline;
-  color: $plos-default;
-  margin-top: 1px;
-  cursor: pointer;
-}
-
-#fig-viewer-slides .txt .toggle.less {
-  width: 11px;
-  height: 11px;
-  background: image-url('sprite.fv.png') -20px 0;
-  position: absolute;
-  top: 9px;
-  right: 0.9%;
-  margin-right: 14px;
-  cursor: pointer;
-  display: none;
-  border-radius: 2px;
-}
-
-#fig-viewer-slides .txt .toggle.less:hover {
-  background-color: $plos-default;
-  background-position: -20px -20px;
-}
-
-#fig-viewer-slides.txt-expand .txt .toggle.more {
-  display: none;
-}
-
-#fig-viewer-slides.txt-expand .txt .toggle.less {
-  display: block;
-}
-
-#fig-viewer-slides .text-more {
-  display: none;
-  font-size: 0.923em;
-  line-height: 1.167;
-  padding: 0 5% $pad-smallish 3.1%;
-}
-
-#fig-viewer-slides .content .desc {
-  font-size: $txt-size-small;
-  font-family: $font-face-fancy;
-  padding: $pad-xsmall 0 0 0;
-  line-height: rem-calc(18);
-}
-
-#fig-viewer-slides .text-more .doi {
-  padding: $pad-smallish 0;
-}
-
-#fig-viewer-slides .tease {
-  padding-top: 1px;
-}
-
-#fig-viewer-slides.txt-expand .text-more {
-  display: block;
-  height: 190px;
-  overflow-y: auto;
-  border-top: 1px solid #bbb;
-  border-color: rgba(0,0,0,0.2);
-}
-
-#fig-viewer-slides.txt-expand .tease {
-  display: none;
-}
-
-#fig-viewer-slides .txt p {
-  margin: 0;
-}
-
-#fig-viewer-slides .controls .btn {
-  @extend .button-big;
-  font-size: $txt-size-small;
-  line-height: rem-calc(27);
-  padding: 0 $pad-smallish;
-}
-
-#fig-viewer-slides .lnk_context {
-  margin-top: rem-calc(3);
-  position: relative !important;
-}
-
-#fig-viewer-figs .download {
-  position: absolute;
-  top: rem-calc(10);
-  right: 2.7%;
-}
-
-#fig-viewer-figs .download h3 {
-  float: left;
-  font-size: $txt-size-small;
-  line-height: rem-calc(27);
-  margin: 0;
-}
-
-#fig-viewer-figs .download .item {
-  float: left;
-  margin-left: $pad-default + $pad-xsmall;
-}
-#fig-viewer-figs .download .item a {
-  display: block;
-  color: $grey-dark;
-  text-decoration: none;
-}
-#fig-viewer-figs .download .size {
-  display: block;
-  font-size: 0.769em;
-  margin-top: $pad-xsmall;
-}
-#fig-viewer-figs .download .item a:hover .btn {
-  background: $plos-default;
-  color: $white;
-}
-
-#fig-viewer-thmbs {
-  display: none;
-  padding-top: 35px;
-  width: 163px;
-  position: absolute;
- // bottom: 120px;
-  top: 0;
-  right: 0;
-  background: $fv-grey-light;
-}
-
-.thmbs-vis #fig-viewer-thmbs {
-  display: block;
-}
-
-#fig-viewer-thmbs .btn-thmb-close {
-  @extend %brand-background;
-  color: $white;
-  background: image-url('sprite.fv.png') 0 0;
-  width: $pad-smallish;
-  height: $pad-smallish;
-  border-radius: $border-radius-small;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-
-}
-
-#fig-viewer-thmbs .btn-thmb-close:hover {
-  background-color: $plos-default;
-  background-position: 0 -20px;
-}
-
-#fig-viewer-thmbs-content {
-  padding-left: 17px;
-  overflow: auto;
-  background: $fv-grey-light;
-  background: linear-gradient(to right, $fv-grey-light 0%, $fv-grey-light 20px, $grey-light 20px, $grey-light 143px,$fv-grey-light 143px, $fv-grey-light 100%);
-}
-
-#fig-viewer-thmbs .thmb {
-  width: 129px;
-  height: 96px;
-  overflow: hidden;
-  cursor: pointer;
-  margin-bottom: $pad-xsmall;
-  background-color: $white;
-}
-
-#fig-viewer-thmbs .thmb .thmb-wrap {
-  width: 129px;
-  height: 96px;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-#fig-viewer-thmbs .thmb.active {
-  cursor: default;
-  img {
-    @extend %brand-border;
-  }
-}
-
-#fig-viewer-thmbs .thmb img {
-  border: 3px solid transparent;
-  height: auto;
-  width: auto;
-  max-width: 123px;
-  max-height: 90px;
-  display: block;
-  margin: 0 auto;
-}
-
 #fig-viewer-abst {
   overflow: auto;
   font-family: $font-face-fancy;

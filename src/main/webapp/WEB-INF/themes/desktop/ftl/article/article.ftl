@@ -87,7 +87,8 @@
   <@js src="resource/js/components/tooltip_hover.js"/>
 
   <@js src="resource/js/components/table_open.js"/>
-  <@js src="resource/js/components/figure_viewer.js"/>
+<#--move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide-->
+  <@js src="resource/js/components/article_lightbox.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
   <@js src="resource/js/vendor/moment.js"/>
@@ -102,12 +103,12 @@
 
 <#include "mathjax.ftl">
 
-  <script type="text/javascript">  /*filesizetable*/
-   (function ($) {
-     $(document).foundation({tab: {toggleable: true, deep_linking: false}});
+  <script type="text/javascript">
+    (function ($) {
+      /*filesizetable*/
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
-   })(jQuery);
-
+      $(document).foundation({tab: {toggleable: true}});
+    })(jQuery);
 
   </script>
 
@@ -117,8 +118,12 @@
   <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
 
   <#include "aside/crossmarkIframe.ftl" />
-  <#--<div id="fig-viewer" class="reveal-modal" data-reveal>
-  <#include "../common/footer/figviewer.ftl" />
-  </div>-->
+
+<#-- move the new article-lightbox to footer.ftl when it is implemented throughout the site.
+currently it is only used on article.ftl
+  <div class="reveal-modal-bg" style="display: none"></div>
+  <div id="fig-viewer" class="reveal-modal full" data-reveal>
+  <#include "../common/footer/articleLightbox.ftl" />
+  </div> -->
 </body>
 </html>

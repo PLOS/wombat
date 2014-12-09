@@ -12,15 +12,15 @@
 $include-html-reveal-classes: $include-html-classes !default;
 
 // We use these to control the style of the reveal overlay.
-$reveal-overlay-bg: rgba(#000, .45) !default;
+$reveal-overlay-bg: transparent !default;//rgba(#000, .45) !default;
 $reveal-overlay-bg-old: #000 !default;
 
 // We use these to control the style of the modal itself.
-$reveal-modal-bg: #fff !default;
-$reveal-position-top: rem-calc(100) !default;
-$reveal-default-width: 80% !default;
-$reveal-modal-padding: rem-calc(20) !default;
-$reveal-box-shadow: 0 0 10px rgba(#000,.4) !default;
+$reveal-modal-bg: $grey-dark !default;//#fff !default;
+$reveal-position-top: 0 !default;//rem-calc(100) !default;
+$reveal-default-width: 100%  !default;//80% !default;
+$reveal-modal-padding: 0  !default;//rem-calc(20) !default;
+$reveal-box-shadow: 0 !default;// 0 0 10px rgba(#000,.4) !default;
 
 // We use these to style the reveal close button
 $reveal-close-font-size: rem-calc(40) !default;
@@ -34,8 +34,8 @@ $reveal-radius: $global-radius !default;
 $reveal-round: $global-rounded !default;
 
 // We use these to control the modal border
-$reveal-border-style: solid !default;
-$reveal-border-width: 1px !default;
+$reveal-border-style: none !default; //solid !default;
+$reveal-border-width: 0  !default;//1px !default;
 $reveal-border-color: #666 !default;
 
 $reveal-modal-class: "reveal-modal" !default;
@@ -166,10 +166,10 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
       @include reveal-modal-style(
         $bg:$reveal-modal-bg,
         $padding:$reveal-modal-padding,
-        $border:true,
-        $box-shadow:true,
+        $border:false,
+        $box-shadow:false,
         $radius:false,
-        $top-offset:$reveal-position-top);
+        $top-offset:0);//$reveal-position-top);
 
       .#{$close-reveal-modal-class} { @include reveal-close; }
     }
@@ -182,9 +182,9 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     @media #{$medium-up} {
 
       dialog, .#{$reveal-modal-class} {
-        @include reveal-modal-style($padding:$reveal-modal-padding * 1.5);
+        @include reveal-modal-style($padding: 0);//$reveal-modal-padding * 1.5);
 
-        &.radius { @include reveal-modal-style($radius:true); }
+        &.radius { @include reveal-modal-style($radius:false); }
         &.round  { @include reveal-modal-style($radius:$reveal-round); }
         
         &.collapse { @include reveal-modal-style($padding:0); }
@@ -193,7 +193,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
         &.small { @include reveal-modal-base(false, 40%); }
         &.medium  { @include reveal-modal-base(false, 60%); }
         &.large { @include reveal-modal-base(false, 70%); }
-        &.xlarge { @include reveal-modal-base(false, 95%); }
+        &.xlarge { @include reveal-modal-base(false, 100%); }
       }
 
       dialog, .#{$reveal-modal-class} {

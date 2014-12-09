@@ -836,25 +836,23 @@
               </xsl:attribute>
               <xsl:attribute name="class">link-target</xsl:attribute>
             </a>
-            <xsl:variable name="cit" select="element-citation | mixed-citation | nlm-citation"/>
-            <xsl:apply-templates select="$cit"/>
-            <xsl:text> </xsl:text>
-            <xsl:if test="$cit[@publication-type='journal']">
 
+            <!-- retrieve extra citation data for the current reference node (sourced from the database and provided as
+            a secondary XML source via the citedArticles parameter) -->
+            <xsl:variable name="idx" as="xs:integer" select="position()"/>
+            <xsl:variable name="dbCit" select="if ($citedArticles) then $citedArticles/a/e[$idx] else node()"/>
+            <xsl:variable name="doi" select="$dbCit/doi"/>
+
+            <!-- build reference text, providing templates with doi when available -->
+            <xsl:variable name="cit" select="element-citation | mixed-citation | nlm-citation"/>
+            <xsl:apply-templates select="$cit">
+              <xsl:with-param name="doi" select="$doi"/>
+            </xsl:apply-templates>
+            <xsl:text> </xsl:text>
+
+            <xsl:if test="$cit[@publication-type='journal']">
               <!-- create reference links -->
               <!-- if citedArticles parameter has not been set, fail gracefully and use XML-based data for links -->
-              <xsl:variable name="idx" as="xs:integer" select="position()"/>
-              <xsl:variable name="dbCit">
-                <xsl:choose>
-                  <xsl:when test="$citedArticles">
-                    <xsl:value-of select="$citedArticles/a/e[$idx]"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:value-of select="node()"/>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:variable>
-              <xsl:variable name="doi" select="$citedArticles/a/e[$idx]/doi"/>
               <xsl:variable name="pubYear" select="$cit/year[1]"/>
               <!-- use author and title preferentially from database, then XML -->
               <xsl:variable name="author">
@@ -1677,10 +1675,11 @@
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template match="mixed-citation">
+    <xsl:param name="doi"/>
     <xsl:apply-templates/>
-    <xsl:if test="extraCitationInfo/@doi and not(ext-link) and not(comment/ext-link)">
+    <xsl:if test="$doi and not(ext-link) and not(comment/ext-link)">
       doi:
-      <xsl:value-of select="extraCitationInfo/@doi"/>
+      <xsl:value-of select="$doi"/>
     </xsl:if>
   </xsl:template>
 

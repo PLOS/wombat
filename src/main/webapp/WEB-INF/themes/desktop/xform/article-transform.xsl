@@ -272,8 +272,17 @@
         <xsl:apply-templates/>
       </p>
     </xsl:for-each>
-    <!--Fix for FEND-886-->
-    <xsl:for-each select="//front/article-meta/author-notes/fn[@fn-type='other']/node()">
+    <xsl:for-each select="//front/article-meta/author-notes/fn[@fn-type='other' and not(@id)]/node()">
+      <!--
+          "and not(@id)" is a PLOS-specific hack. Assume that any <fn fn-type="other"> element with an 'id' attribute
+          is an actual footnote, and that all those with no 'id' attribute are supposed to show up in article metadata
+          (for example: "Provenance" statements; lists of editorial authors), because this is how it happens to be done
+          in the PLOS corpus. This is brittle because behavior would change if someone ever added to ids those elements
+          for whatever reason. It would be better if the XML distinguished between the two types of
+          <fn fn-type="other"> element more explicitly, but we're stuck with the input we have for now.
+
+          Relevant PLOS Jira tickets: DPRO-392; AMEC-1396 (formerly FEND-886)
+        -->
       <p>
         <xsl:apply-templates/>
       </p>

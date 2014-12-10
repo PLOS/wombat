@@ -230,8 +230,9 @@
 
   // build figures pane
   FVBuildFigs = function(data, doi) {
-    var path, showInContext, fig_container, title_txt, image_title, img_ref, $thmb, slide, datacon, txt, txt_less, txt_more, title, toggleLess, context_hash, doip, $fig, staging, dl, context_lnk, text_description;
+    var path, showInContext, fig_container, title_txt, image_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, context_hash, doip, $fig, staging, download_btns, context_lnk, text_description;
 
+    //set the markup
     $FV.figs_pane = $('<div id="fig-viewer-figs" class="pane" />');
     $FV.thumbs_el = $('<div id="fig-viewer-thmbs" />');
     $FV.thumbs_cont = $('<div id="fig-viewer-thmbs-content" />');
@@ -251,66 +252,77 @@
     };
 
     fig_container = $('.figure');
-
+    //iterate through each image
     $.each(fig_container, function () {
+
 
       //title_txt = ( ? '<strong>' +this.title + ':</strong> ' : '') + this.transformedCaptionTitle;
       // CAPTION text handling is here
       title_txt = $(this).find('.figcaption');
-      //the image long description is hard to find in the article-transform.xml. the following method of finding the text might be brittle.
+      //the image long description is hard to find in the article-transform.xml
       text_description = $(this).find('.caption_target').next().html();
+
+      //need to strip html from this
       image_title = $(title_txt).html();// + ' ' + this.plainCaptionTitle;
       img_ref = $(this).data('doi');
       context_hash = showInContext(img_ref);
 
-      $thmb = $('<div class="thmb"' + ' data-uri="' + img_ref + '"><div class="thmb-wrap"><img src="' + path +'inline&id=info:doi/'+ img_ref + '" alt="' + image_title + '" title="' + image_title + '"></div></div>').on('click', function () {
-        FVChangeSlide($(this));
-        FVArrowKeys($(this));
-      });
+      /* save this for later
+       if ($FV.external_page) { // the image is on another page
+       context_hash = '/article/' + $FV.url + context_hash;
+       }*/
+
+      // build an empty div with the references of medium & large img versions from the data attributes
+      $fig = $('<div class="figure" data-img-src="' + path + 'medium&id=info:doi/' + img_ref + '" data-img-lg-src="' + path +'large&id=info:doi/' + img_ref + '" data-img-txt="' + image_title + '"></div>');
+
+      // track image loading state of figure
+      $fig.data('state', 0)
+        .data('off-top', 0)
+        .data('off-left', 0);
+
+      //add the empty $fig div with the image info to the $FV.figs_set array
+      $FV.figs_set.push($fig);
+
+      //build thumbnail for thumbnail strip
+      $thmb = $('<div class="thmb"' + ' data-uri="' + img_ref + '"><div class="thmb-wrap"><img src="' + path +'inline&id=info:doi/'+ img_ref + '" alt="' + image_title + '" title="' + image_title + '"></div></div>');
+
+      // thumbnail close button
+      thmb_close = $('<span class="btn-thmb-close" title="close" />');
+
+      $(thmb_close).appendTo($FV.thumbs_el);
+      $FV.thumbs_el.append($FV.thumbs_cont);
       $FV.thumbs_cont.append($thmb);
+
+
+
+      //the markup for the slide caption (which should really be done with backbone or similar)
       slide = $('<div class="slide" />');
       datacon = $('<div class="datacon" />');
       txt = $('<div class="txt" />');
       txt_less = $('<div class="text-less" />');
       txt_more = $('<div class="text-more" />');
       title = '<div class="fig_title">' + image_title + '</div>';
-      toggleLess = $('<div class="toggle less" title="view less" />');
-
-      /* save this for later: first version is for article page only
-       if ($FV.external_page) { // the image is on another page
-       context_hash = '/article/' + $FV.url + context_hash;
-       }*/
-
+      view_less = $('<div class="less" title="view less" />');
       doip = '<p class="doi">doi:'+img_ref+'</p>';
-
-      // build div with the references of medium & large versions in data attributes
-      $fig = $('<div class="figure" data-img-src="' + path+ 'medium&id=info:doi/' +img_ref  + '" data-img-lg-src="' + path +'large&id=info:doi/' +img_ref+'" data-img-txt="' + image_title + '"></div>');
-
-      $fig.data('state', 0) // track image loading state of figure
-        .data('off-top', 0)
-        .data('off-left', 0);
-      $FV.figs_set.push($fig);
-
       staging = '<div class="staging" />'; // hidden container for loading large image
-
-      dl = '<div class="download">'
+      context_lnk = '<a class="btn lnk_context close-reveal-modal" href="' + context_hash + '">Show in Context</a>';
+      download_btns = '<div class="download">'
         + '<h3>Download:</h3>'
         + '<div class="item"><a href="' + "article/figure/powerpoint?id=info:doi/" + img_ref + '" title="PowerPoint slide"><span class="btn">PPT</span></a></div>'
         + '<div class="item"><a href="' + "article/figure/image?size=large&id=info:doi/" + img_ref + '" title="large image"><span class="btn">PNG</span><span class="size">' + /*convertToBytes(this.sizeLarge)*/  '</span></a></div>'
         + '<div class="item"><a href="' + "article/figure/image?size=original&id=info:doi/" + img_ref + '" title="original image"><span class="btn">TIFF</span><span class="size">' + /*convertToBytes(this.sizeTiff)*/  '</span></a></div>'
         + '</div>';
 
-      context_lnk = '<a class="btn lnk_context close-reveal-modal" href="' + context_hash + '">Show in Context</a>';
-
+      //combine the markup & add to the slide
       slide.append($fig);
       slide.append(staging);
       txt_less.append(title);
-      txt_more.append(toggleLess);
+      txt_more.append(view_less);
       txt_more.append(title);
 
       if (text_description !== null) {
-        txt_more.append('<div class="desc">' + text_description + '</div>');
-        txt_less.append('<div class="desc">' + text_description + '</div>');
+        txt_more.append('<p>' + text_description + '</p>');
+        txt_less.append('<p>' + text_description + '</p>');
       }
 
       txt_more.append(doip);
@@ -318,18 +330,23 @@
       txt.append(txt_more);
       datacon.append(txt);
       datacon.append(context_lnk);
-      datacon.append(dl);
+      datacon.append(download_btns);
       slide.append(datacon);
+
       $FV.slides_el.append(slide);
+
+      $thmb.on('click', function () {
+        FVChangeSlide($(this));
+        FVArrowKeys($(this));
+      });
+
+      $(thmb_close).on('click',function() {
+        $FV.figs_pane.toggleClass('thmbs-vis');
+        $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
+      });
     });
 
-    // thumbnail close button
-    $('<span class="btn-thmb-close" title="close" />').on('click',function() {
-      $FV.figs_pane.toggleClass('thmbs-vis');
-      $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
-    }).appendTo($FV.thumbs_el);
 
-    $FV.thumbs_el.append($FV.thumbs_cont);
 
     $FV.slides = $FV.slides_el.find('div.slide'); // all slides
     $FV.figs = $FV.slides_el.find('div.figure'); // all figures
@@ -377,17 +394,18 @@
 
     $('#panel-figs').append($FV.figs_pane);
     if ($.support.touchEvents) {
+      var th;
       $FV.slides_el.swipe({
         swipeLeft:function(event, direction, distance, duration, fingerCount) {
           if ($FV.thumbs.active.next().length) {
-            t = $FV.thumbs.active.next();
-            FVChangeSlide(t);
+            th = $FV.thumbs.active.next();
+            FVChangeSlide(th);
           }
         },
         swipeRight:function(event, direction, distance, duration, fingerCount) {
           if ($FV.thumbs.active.prev().length) {
-            t = $FV.thumbs.active.prev();
-            FVChangeSlide(t);
+            th = $FV.thumbs.active.prev();
+            FVChangeSlide(th);
           }
         },
         tap:function(event, target) {
@@ -397,7 +415,7 @@
       });
     }
 
-  };
+  }; //end FVBuildFigs
 
   // build abstract pane
   FVBuildAbs = function(doi, abstractText, metadata) {
@@ -445,36 +463,40 @@
       if ($FV.thumbs.active == null) { // no thumb is active so this is the 1st figure displayed
 
         if ($FV.figs_ref) { // specific figure is requested
+
           $('#fig-viewer').foundation('reveal', 'open');
-          $FV.thumbs_cont.find('div[data-uri="' + $FV.figs_ref + '"]').css('background','red').trigger('click');
+
+          $FV.thumbs_cont.find('div[data-uri="' + $FV.figs_ref + '"]').trigger('click');
 
         } else { // default to first figure
 
           $FV.thumbs.eq(0).trigger('click');
         }
-      } else {
+      } else { // see FVChangeSlide: the following is a backup plan:
         // A figure was displayed, then a different pane was selected and then user returned to the figure pane
         // If a medium or large image finished loading while the figure pane was not visible -
         // figure building would stop (it requires figure pane to be visible to access image dimensions)
         // run FVDisplayFig() again to update figure status
         FVDisplayFig($FV.thumbs.index($FV.thumbs.active));
+
       }
-    }
+    } else { }
   };
 
   // display figure slides functionality
   FVChangeSlide = function($thmb) {
 
-    if(typeof(_gaq) !== 'undefined'){
+    if (typeof(_gaq) !== 'undefined') {
       _gaq.push(['_trackEvent',"Lightbox", "Slide Changed", ""]);
     }
 
-    if ($FV.thumbs.active !== null) { // not the initial slide
+    if ($FV.thumbs.active !== null) {
 
       var old_fig, old_img, i, this_sld;
-      $FV.thumbs.active.removeClass('active');
+
       old_fig = $FV.figs_set[$FV.thumbs.index($FV.thumbs.active)];
       old_img = old_fig.find('img');
+      $FV.thumbs.active.removeClass('active');
 
       if (old_img.hasClass('ui-draggable')) { // the slide we are leaving had a drag-enabled figure, reset it
         FVDragStop(old_fig, old_fig.find('img'));
@@ -547,7 +569,7 @@
       }
     };
 
-    // check display of descriptions
+    // check display of descriptions expanded or not
     if (!$FV.txt_expanded) { // landed on slide and descriptions are hidden.
       truncate();
       $btn_less.click(function() {
@@ -656,12 +678,10 @@
     });
   };
 
-
 // load large images in div.staging
   FVLoadLargeImg = function(i) {      ///////////////////// PROBLEM MIGHT BE HERE
     var src = $FV.figs_set[i].data('img-lg-src');
     var txt = $FV.figs_set[i].data('img-txt');
-    //console.log(src);
     var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="lg invisible">');
     $FV.figs_set[i].next('div.staging').append($img); // load large img into 'staging' div
     $FV.figs_set[i].next('div.staging').imagesLoaded(function() {
@@ -714,7 +734,7 @@
     } else { // this is a medium image, we will scale up or down
       sizeAndCenter();
     }
-  }
+  };
 
 // switch medium image with large image
 
@@ -735,12 +755,12 @@
       $img_l.css({'marginTop' : Math.round(($fig.height() - img_l_h) / 2), 'marginLeft' : Math.round(($fig.width() - img_l_w) / 2)}); // center
     } else {
       $img_l.css({'height' : img_m_h, 'marginTop' : $img_m.css('marginTop'), 'marginLeft' : $img_m.css('marginLeft')}); // match dimensions and position of medium image
-      $fig.addClass('zoom'); // zoomable & draggable
+      $fig.addClass('zoom'); //console.log('large has been loaded, dimensions matched to medium. add zoom');// zoomable & draggable
     }
     $fig.html($img_l.removeClass('invisible')); // replace
     drag_bx = $('<div class="drag-bx" />'); // insert drag containment element
     $fig.wrapInner(drag_bx);
-    if ($fig.hasClass('zoom')) {
+    if ($fig.hasClass('zoom')) {   //console.log('hasclass zoom');
       FVFigFunctions($fig);
     }
   };

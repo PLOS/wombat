@@ -1,4 +1,4 @@
-<#include "../common/hashTag.ftl" />
+<#include "../common/twitterConfig.ftl" />
 <#include "../common/pubUrlPrefix.ftl" />
 <#-- need backend for these
 <meta name="citation_publisher" content="${article.publisher}" />

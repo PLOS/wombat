@@ -11,9 +11,9 @@
   $win = $(window);
 
   // FigViewerInit is initiated when user clicks on anything to open the lightbox. Click events are at the bottom of this page.
-  // ref=uri of specific figure clicked on; if not specific figure, is set to null
+  // ref=src of specific figure clicked on; if not specific figure, is set to null
   // state=abst, figs, or refs; external_page = true if not on article page
-    FigViewerInit = function(doi, ref, pane, external_page) {
+  FigViewerInit = function(doi, ref, pane, external_page) {
     var findActive, rerunMathjax, loadJSON;
 
     //disable scrolling on web page behind fig viewer
@@ -80,7 +80,7 @@
         },
         dataType:'html',
         error: function (jqXHR, textStatus, errorThrown) {
-         //TODO: change this
+          //TODO: change this
           console.log(errorThrown);
 
           $FVPending = false;
@@ -100,7 +100,7 @@
 
           // from article tab where references,abstract and metadata exists, no need to fetch
           // them again from the server.
-         // if (typeof selected_tab != 'undefined' && selected_tab == 'tabArticle') {
+          // if (typeof selected_tab != 'undefined' && selected_tab == 'tabArticle') {
           $FVPending = false;
           article_body = $('#artText');
           FVBuildAbs(doi, $(article_body).find('.abstract'), $(article_body).find('.articleinfo'));
@@ -109,40 +109,41 @@
 
           displayModal();
 
-            //rerunMathjax();
+          //rerunMathjax();
           //}
-         /* else {
+          /* else {
 
-            var article, articleUrl = $win.href + '/article?id=' + doi;console.log(articleUrl);
-            console.log('fetch full article: ' + articleUrl);
-            $.ajax({
-              url: articleUrl,
-              success: function(fullArticleHtml) {
-                $FVPending = false;
-                article = $(fullArticleHtml);
+           var article, articleUrl = $win.href + '/article?id=' + doi;console.log(articleUrl);
+           console.log('fetch full article: ' + articleUrl);
+           $.ajax({
+           url: articleUrl,
+           success: function(fullArticleHtml) {
+           $FVPending = false;
+           article = $(fullArticleHtml);
 
-                FVBuildAbs(doi, article.find('.article .abstract'), article.find('.article .articleinfo'));
-                FVBuildRefs(article.find('ol.references'));
-                displayModal();
-                //rerunMathjax();
-                },
-              error: function() {
-              $FVPending = false;
-            }});
-          }*/
+           FVBuildAbs(doi, article.find('.article .abstract'), article.find('.article .articleinfo'));
+           FVBuildRefs(article.find('ol.references'));
+           displayModal();
+           //rerunMathjax();
+           },
+           error: function() {
+           $FVPending = false;
+           }});
+           }*/
         }
       });
     };
     displayModal = function () {
 
-      /* if(typeof(_gaq) !== 'undefined'){
-       _gaq.push(['_trackEvent',"Lightbox", "Display Modal", ""]);
-       }*/
+      if(typeof(_gaq) !== 'undefined'){
+        _gaq.push(['_trackEvent',"Lightbox", "Display Modal", ""]);
+      }
 
       FVSize();
       FVDisplayPane(pane);
 
       $FV.removeClass('abst figs refs').addClass(pane);
+
       if (pane === 'figs') {$('#panel-figs').addClass('active');}
       // debounce resize event
       var resizeDelay;
@@ -153,8 +154,6 @@
         }, 100);
       });
     };
-
-
 
     loadJSON();
   };
@@ -167,22 +166,27 @@
     //  based on the browser window height
     win_h = $win.height();
     frame_h = 20; //account for the 10 pixel border
+    var main_h = win_h - frame_h;
     //Set the height of the fig-viewer container: window height - border size
-    $FV.cont.css('height', win_h - frame_h);
+    $FV.cont.css('height', main_h);
+
     hdr_h = 46; //height of title & nav header
     data_h = 120; // height of bottom controls
-
+    $('.tabs-content').css('height', main_h - hdr_h);
+    $('#panel-figs').css('height', main_h - hdr_h);
     // set the height of the figure divs: window - border -
     parts_h = hdr_h + data_h + frame_h;
-    fig_h = win_h -parts_h;
+    fig_h = win_h - parts_h;     //console.log(fig_h);
     //figure height is window minus frame, header, frame, and data heights
     $FV.figs.css('height', fig_h);
 
     $FV.abst_pane.css('height', win_h - frame_h - hdr_h - 1);
+
     $FV.refs_pane.css('height', win_h - frame_h - hdr_h);
 
     if ($FV.thmbs_vis) {
       FVThumbPos($FV.thumbs.active);
+
     }
 
   };
@@ -207,6 +211,7 @@
     $('#fvTitle').html(h1);
     authorList = $('#fvAuthors');
     var get_last = authArray.length-1;
+
     $.each(authArray, function (index, author) {
 
       trimAuth = trimIt(author);
@@ -225,7 +230,7 @@
 
   // build figures pane
   FVBuildFigs = function(data, doi) {
-    var path, showInContext, fig_container, title_txt, image_title, img_ref, $thmb, slide, controls, txt, content, txt_more, title, toggleLess, context_hash, doip, $fig, staging, dl, context_lnk, text_description;
+    var path, showInContext, fig_container, title_txt, image_title, img_ref, $thmb, slide, datacon, txt, txt_less, txt_more, title, toggleLess, context_hash, doip, $fig, staging, dl, context_lnk, text_description;
 
     $FV.figs_pane = $('<div id="fig-viewer-figs" class="pane" />');
     $FV.thumbs_el = $('<div id="fig-viewer-thmbs" />');
@@ -250,9 +255,9 @@
     $.each(fig_container, function () {
 
       //title_txt = ( ? '<strong>' +this.title + ':</strong> ' : '') + this.transformedCaptionTitle;
-
+      // CAPTION text handling is here
       title_txt = $(this).find('.figcaption');
-      //the image long description is not labelled with a class or anything, and it's hard to find in the article-transform.xml. the following method of finding the text might be brittle.
+      //the image long description is hard to find in the article-transform.xml. the following method of finding the text might be brittle.
       text_description = $(this).find('.caption_target').next().html();
       image_title = $(title_txt).html();// + ' ' + this.plainCaptionTitle;
       img_ref = $(this).data('doi');
@@ -264,9 +269,9 @@
       });
       $FV.thumbs_cont.append($thmb);
       slide = $('<div class="slide" />');
-      controls = $('<div class="controls" />');
+      datacon = $('<div class="datacon" />');
       txt = $('<div class="txt" />');
-      content = $('<div class="content" />');
+      txt_less = $('<div class="text-less" />');
       txt_more = $('<div class="text-more" />');
       title = '<div class="fig_title">' + image_title + '</div>';
       toggleLess = $('<div class="toggle less" title="view less" />');
@@ -279,11 +284,11 @@
       doip = '<p class="doi">doi:'+img_ref+'</p>';
 
       // build div with the references of medium & large versions in data attributes
-       $fig = $('<div class="figure" data-img-src="' + path+ 'medium&id=info:doi/' +img_ref  + '" data-img-lg-src="' + path +'large&id=info:doi/' +img_ref+'" data-img-txt="' + image_title + '"></div>');
+      $fig = $('<div class="figure" data-img-src="' + path+ 'medium&id=info:doi/' +img_ref  + '" data-img-lg-src="' + path +'large&id=info:doi/' +img_ref+'" data-img-txt="' + image_title + '"></div>');
 
       $fig.data('state', 0) // track image loading state of figure
-      .data('off-top', 0)
-      .data('off-left', 0);
+        .data('off-top', 0)
+        .data('off-left', 0);
       $FV.figs_set.push($fig);
 
       staging = '<div class="staging" />'; // hidden container for loading large image
@@ -299,22 +304,22 @@
 
       slide.append($fig);
       slide.append(staging);
-      content.append(title);
+      txt_less.append(title);
       txt_more.append(toggleLess);
       txt_more.append(title);
 
       if (text_description !== null) {
         txt_more.append('<div class="desc">' + text_description + '</div>');
-        content.append('<div class="desc">' + text_description + '</div>');
+        txt_less.append('<div class="desc">' + text_description + '</div>');
       }
 
-      txt_more.append(doi);
-      txt.append(content);
+      txt_more.append(doip);
+      txt.append(txt_less);
       txt.append(txt_more);
-      controls.append(txt);
-      controls.append(context_lnk);
-      controls.append(dl);
-      slide.append(controls);
+      datacon.append(txt);
+      datacon.append(context_lnk);
+      datacon.append(dl);
+      slide.append(datacon);
       $FV.slides_el.append(slide);
     });
 
@@ -337,36 +342,24 @@
       $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
       FVThumbPos($FV.thumbs.active);
     }).appendTo($FV.controls_el);
-    $FV.nxt = $('<span class="fig-btn next"><i class="icn"></i> Next</span>').on('click',function() {
+
+    $FV.nxt = $('<span class="fig-btn next invisible"><i class="icn"></i> Next</span>');
+
+    $FV.nxt.on('click',function() {
       FVChangeSlide($FV.thumbs.active.next());
     }).appendTo($FV.controls_el);
-    $FV.prv = $('<span class="fig-btn prev"><i class="icn"></i> Previous</span>').on('click',function() {
+
+    $FV.prv = $('<span class="fig-btn prev invisible"><i class="icn"></i> Previous</span>');
+
+    $FV.prv.on('click',function() {
       FVChangeSlide($FV.thumbs.active.prev());
     }).appendTo($FV.controls_el);
 
-    // thumbnail close button
-    $('.btn-thmb-close').on('click',function() {
-      $FV.figs_pane.toggleClass('thmbs-vis');
-      $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
-    });
     $FV.thumbs_el.append($FV.thumbs_cont);
     $FV.slides = $FV.slides_el.find('div.slide'); // all slides
     $FV.figs = $FV.slides_el.find('div.figure'); // all figures
     $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
     $FV.thumbs.active = null; // used to track active thumb & figure
-
-    // figures controls in thumb panel
-    $('.thmb-btn').on('click',function() {
-      $FV.figs_pane.toggleClass('thmbs-vis');
-      $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
-      FVThumbPos($FV.thumbs.active);
-    });
-    $FV.nxt = $('.next').on('click',function() {
-      FVChangeSlide($FV.thumbs.active.next());
-    });
-    $FV.prv = $('.prev').on('click',function() {
-      FVChangeSlide($FV.thumbs.active.prev());
-    });
 
     $FV.loading = $('<div class="loading-bar"></div>').appendTo($FV.controls_el);
     $FV.zoom = $('<div id="fv-zoom" />');
@@ -375,9 +368,11 @@
     $FV.zoom.max = $('<div id="fv-zoom-max" />').appendTo($FV.zoom);
     $FV.controls_el.append($FV.zoom);
 
+
+
+    $FV.slides_el.append($FV.controls_el);
     $FV.figs_pane.append($FV.slides_el);
     $FV.figs_pane.append($FV.thumbs_el);
-    $FV.figs_pane.append($FV.controls_el);
     $FV.figs_pane.append($FV.staging_el);
 
     $('#panel-figs').append($FV.figs_pane);
@@ -448,16 +443,13 @@
     if (pane == 'figs') {
 
       if ($FV.thumbs.active == null) { // no thumb is active so this is the 1st figure displayed
-        // call FVChangeSlide() via thumbnail click, to display correct figure
+
         if ($FV.figs_ref) { // specific figure is requested
-         //console.log($FV.thumbs_cont.find('div[data-uri="' + $FV.figs_ref + '"]'));
-          //selector: "div[data-uri="info:doi/10.1371/journal.pntd.0001053.g001"]"
-          //<div class="thmb" data-uri="10.1371/journal.pntd.0001053.g002">
-         // $FV.cont.find('#data-reveal-id')
-          //$FV.cont.find('.reveal-figs').trigger('click');
           $('#fig-viewer').foundation('reveal', 'open');
           $FV.thumbs_cont.find('div[data-uri="' + $FV.figs_ref + '"]').css('background','red').trigger('click');
+
         } else { // default to first figure
+
           $FV.thumbs.eq(0).trigger('click');
         }
       } else {
@@ -470,12 +462,12 @@
     }
   };
 
-  // change figure slides functionality
+  // display figure slides functionality
   FVChangeSlide = function($thmb) {
 
-   /* if(typeof(_gaq) !== 'undefined'){
+    if(typeof(_gaq) !== 'undefined'){
       _gaq.push(['_trackEvent',"Lightbox", "Slide Changed", ""]);
-    }*/
+    }
 
     if ($FV.thumbs.active !== null) { // not the initial slide
 
@@ -494,7 +486,7 @@
     $FV.slides.hide();
 
     i = $FV.thumbs.index($thmb);
-    this_sld = $FV.slides.eq(i);
+    this_sld = $FV.slides.eq(i);// console.log(this_sld);
 
     this_sld.show();
     FVDisplayFig(i);
@@ -509,11 +501,11 @@
   };
 
   FVArrowKeys = function() {
-    // arrow keys operate the next / previous image
+    // arrow keys operate the next / previous slide
     // keydown is unbound in FVClose() so up/down works on web page
-    $(this).on('keydown', function (e) {// this = window, bind calls jquery
+    $(this).on('keydown', function (e) {// this = window, .on calls jquery
       // left / up arrow keys
-      if (e.which == 37 || e.which == 38) {  console.log('down left');
+      if (e.which == 37 || e.which == 38) {
         if ($FV.thumbs.active.prev().length) {
           var t = $FV.thumbs.active.prev();
           FVChangeSlide(t);
@@ -523,6 +515,7 @@
       // right / down arrow keys
       if (e.which == 39 || e.which == 40) {
         if ($FV.thumbs.active.next().length) {
+
           var t = $FV.thumbs.active.next();
           FVChangeSlide(t);
         }
@@ -531,20 +524,23 @@
     });
   };
 
-  // figure description
+  // figure description expand/reduce controls
+  // called in FVChangeSlide
   FVFigDescripton = function(sld) {
 
-    var $btn_less, $content, truncate;
-    $btn_less = sld.find('div.toggle.less');
-    $content = sld.find('div.content');
+    var $btn_less, $content, truncate, desc_link;
+    $btn_less = sld.find('div.less');
+    $content = sld.find('div.text-less');
 
     truncate = function() {
 
-      //If called on the same element twice, ignore second call
-      if($content.data('ellipsis_appended') != 'true') {
+      //If called on the same element twice, igntruecond call
+      if($content.data('ellipsis_appended') !== true) {
+
         $content.ellipsis({ ellipsis_text:'<span class="toggle more">... show more</span>' });
+
         $content.find('span.more').click(function() {
-          $FV.slides_el.addClass('txt-expand');
+          $FV.slides_el.addClass('expanded');
           $FV.txt_expanded = true;
         });
         $content.data('ellipsis_appended','true');
@@ -552,23 +548,29 @@
     };
 
     // check display of descriptions
-    if (!$FV.txt_expanded) { // landed on this slide and descriptions are hidden.
+    if (!$FV.txt_expanded) { // landed on slide and descriptions are hidden.
       truncate();
       $btn_less.click(function() {
-        $FV.slides_el.removeClass('txt-expand');
+        $FV.slides_el.removeClass('expanded');
         $FV.txt_expanded = false;
       });
     } else { // landed on this slide and descriptions are visible.
       // truncate following description reveal
       $btn_less.click(function() {
-        $FV.slides_el.removeClass('txt-expand');
+        $FV.slides_el.removeClass('expanded');
         $FV.txt_expanded = false;
         truncate();
       });
     }
+
+    //close lightbox if link in description is clicked on
+    desc_link = sld.find('.desc').children('a');
+
+    $(desc_link).on('click',function(){
+      $('#fig-viewer').foundation('reveal', 'close');
+    });
+
   };
-
-
 
   /**
    * Bring a thumbnail image into view if it's scrolled out of view.
@@ -617,7 +619,6 @@
         $img.removeClass('invisible');
         this_fig.data('state', 3);
         FVLoadLargeImg(i);
-        console.log('case2');
         break;
       case 3:
         // waiting on large image to load
@@ -636,7 +637,6 @@
         break;
     }
   };
-
 
 // build medium image, when loaded - size to fit, call load large image function
   FVLoadMedImg = function(i) {
@@ -658,9 +658,10 @@
 
 
 // load large images in div.staging
-  FVLoadLargeImg = function(i) {
+  FVLoadLargeImg = function(i) {      ///////////////////// PROBLEM MIGHT BE HERE
     var src = $FV.figs_set[i].data('img-lg-src');
     var txt = $FV.figs_set[i].data('img-txt');
+    //console.log(src);
     var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="lg invisible">');
     $FV.figs_set[i].next('div.staging').append($img); // load large img into 'staging' div
     $FV.figs_set[i].next('div.staging').imagesLoaded(function() {
@@ -675,14 +676,19 @@
 
 // size images to fit in parent element
   FVSizeImgToFit = function(el, down_only) {
-    var img = el.find('img');
-    var el_h = el.height();
-    var el_w = el.width();
-    var i_h = img.height();
-    var i_w = img.width();
-
-    // sizes image to fit, scalling up or down, and centering
+    var img, el_h, el_w, i_h, i_w;
+    img = el.find('img');
+    el_h = el.height();
+    el_w = el.width();
+    i_h = img.height();
+    i_w = img.width();
+    ///////////////////// PROBLEM MIGHT BE HERE
+    //console.log(el_h+ ' ' +el_w+ ' ' +i_h+ ' ' +i_w);
+    //console.log(el_w / el_h +' '+ i_w / i_h);
+    // sizes image to fit, scaling up or down, and centering
     // setting size with height
+    //console.log(Math.round((el_w -  img.width()) / 2));
+    //console.log(Math.round(el_w * (i_h / i_w)));
     var sizeAndCenter = function() {
       // compare aspect ratios of parent and image and set dimensions accordingly
       if (el_w / el_h > i_w / i_h) {
@@ -713,14 +719,15 @@
 // switch medium image with large image
 
   FVSwitchImg = function($fig) {
-    var $img_m = $fig.find('img');
-    var img_m_h = $img_m.height();    console.log(img_m_h);
-    var $img_l = $fig.next('div.staging').find('img');   console.log($img_l);
+    var $img_m, img_m_h, $img_l, img_l_h, img_l_w, drag_bx;
+    $img_m = $fig.find('img');
+    img_m_h = $img_m.height();
+    $img_l = $fig.next('div.staging').find('img');
     // move large image into figure div (image hidden by css)
     $fig.append($img_l);
-    var img_l_erg = $fig.find($img_l); console.log(img_l_erg);
-    var img_l_h = $(img_l_erg).height();//css('height');
-    var img_l_w = $img_l.width();console.log(img_l_h);
+    //img_l_erg = $fig.find($img_l); console.log(img_l_erg);
+    img_l_h = $img_l.height();//css('height');
+    img_l_w = $img_l.width();
     // store native dimensions
     $fig.data('img_l_w', img_l_w).data('img_l_h', img_l_h);
 
@@ -731,13 +738,12 @@
       $fig.addClass('zoom'); // zoomable & draggable
     }
     $fig.html($img_l.removeClass('invisible')); // replace
-    var drag_bx = $('<div class="drag-bx" />'); // insert drag containment element
+    drag_bx = $('<div class="drag-bx" />'); // insert drag containment element
     $fig.wrapInner(drag_bx);
     if ($fig.hasClass('zoom')) {
       FVFigFunctions($fig);
     }
   };
-
 
 // zoom & drag figure
 // this is called following either
@@ -745,14 +751,15 @@
 // OR navigating to a slide whose large image is bigger than the slide and has already loaded.
 
   FVFigFunctions = function($fig) {
-    var $img = $fig.find('img');
-    var real_h = $fig.data('img_l_h'); // native height of image
-    var real_w = $fig.data('img_l_w'); // native width of image
-    var img_mt = parseInt($img.css('marginTop')); // top margin of sized to fit image
-    var img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
-    var resize_h = $img.height(); // height of sized to fit image
-    var drag = false; // dragging not enabled
-    var $drgbx = $fig.find('div.drag-bx');
+    var $img, real_h, real_w, img_mt, img_ml, resize_h, drag, $drgbx;
+    $img = $fig.find('img');
+    real_h = $fig.data('img_l_h'); // native height of image
+    real_w = $fig.data('img_l_w'); // native width of image
+    img_mt = parseInt($img.css('marginTop')); // top margin of sized to fit image
+    img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
+    resize_h = $img.height(); // height of sized to fit image
+    drag = false; // dragging not enabled
+    $drgbx = $fig.find('div.drag-bx');
 
     $FV.zoom.show();
     $FV.zoom.sldr.slider({
@@ -767,7 +774,7 @@
           // enable dragging
           FVDragInit($fig, $img);
 
-       }
+        }
         if (ui.value == resize_h) { // slider is at minimum value
           // kill drag
           FVDragStop($fig, $img);
@@ -781,7 +788,7 @@
 
     // max(+) buttton
     $FV.zoom.max.on('click', function() {
-      var value = $FV.zoom.sldr.slider("value");  console.log('slider');
+      var value = $FV.zoom.sldr.slider("value");
       value = resize_h + (real_h - resize_h) / 4 * Math.ceil((value - resize_h) * 4 / (real_h - resize_h) + 0.1);
       value = Math.min(Math.ceil(value), real_h);
 
@@ -857,7 +864,7 @@
   FVDragStop = function($fig, $img) {
     $img.draggable('destroy');
     // reset
-    $img.css({'top' : 0, 'left' : 0,});
+    $img.css({'top' : 0, 'left' : 0});
     $fig.find('div.drag-bx').removeAttr('style');
     $fig.data('off-top', 0)
       .data('off-left', 0);
@@ -869,15 +876,17 @@
 // runs following figure resize
 
   FVSizeDragBox = function($fig, $img) {
-    var $drgbx = $fig.find('div.drag-bx');
-    var fig_h = $fig.height();
-    var fig_w = $fig.width();
-    var img_h = $img.height();
-    var img_w = $img.width()
-    var img_mt = parseInt($img.css('marginTop'));
-    var img_ml = parseInt($img.css('marginLeft'));
-    var img_tp = isNaN(parseInt($img.css('top'))) ? 0 : parseInt($img.css('top'));
-    var img_lt = isNaN(parseInt($img.css('left'))) ? 0 : parseInt($img.css('left'));
+    var $drgbx, fig_h, fig_w, img_h, img_w, img_mt, img_ml, img_tp, img_lt;
+    $drgbx = $fig.find('div.drag-bx');
+    fig_h = $fig.height();
+    fig_w = $fig.width();
+    img_h = $img.height();
+    img_w = $img.width()
+    img_mt = parseInt($img.css('marginTop'));
+    img_ml = parseInt($img.css('marginLeft'));
+    img_tp = isNaN(parseInt($img.css('top'))) ? 0 : parseInt($img.css('top'));
+    img_lt = isNaN(parseInt($img.css('left'))) ? 0 : parseInt($img.css('left'));
+
     if (fig_h > img_h) {
       $drgbx.css({
         'top' : img_mt * -1,
@@ -931,9 +940,8 @@
     /*//will record the timeStamp for when the modal is closed
      if(typeof event !== 'undefined') {
      close_time = event.timeStamp;
-     }*//*$('#fig-viewer').each('section', function(){
-      $(this).empty();
-    });*/
+     }*/
+
     $('#fig-viewer').foundation('reveal', 'close');
 
     $FVPending = false;
@@ -952,14 +960,13 @@
     //traverse from the last element up
     for(var a = parts.length - 1; a > -1; a--) {
       var element = parts[a];
-
+      //  console.log(element);
       //ellipsis added, no need to keep going
       if(ellipsis_added) {
         break;
       }
 
       //If this is a text node, work on it, otherwise recurse
-      //http://www.w3schools.com/jsref/prop_node_nodetype.asp
       if(element.nodeType != 3) {
         ellipsis_added = ellipsis_recurse(topElement, $(element).contents());
 
@@ -1012,13 +1019,17 @@
    * Drop words until the element selected fits within its container and then append an ellipsis
    */
   $.fn.ellipsis = function(options) {
+
     $.fn.ellipsis.settings = $.extend({}, $.fn.ellipsis.settings, options);
+
     ellipsis_recurse(this[0], $(this).contents());
+
     return this;
+
   };
 
   $.fn.ellipsis.settings = {
-    ellipsis_text : '<span>...</span>'
+    ellipsis_text : '&hellip;'
   };
 
 //Why is this bound universally?  That seems strange.
@@ -1042,24 +1053,24 @@
 
   function initMainContainer() {
 
-  // carousel images on article page
-  // this triggers a click on the corresponding lightbox thumbnail
-  var $fig_carousel = $('#figure-carousel').find('div.carousel-item');
-  if ($fig_carousel.length) {
-   $lnks = $fig_carousel.find('a');
-    $fig_carousel.on('click', function (e) {
+    // carousel images on article page
+    // this triggers a click on the corresponding lightbox thumbnail
+    var $fig_carousel = $('#figure-carousel').find('div.carousel-item');
+    if ($fig_carousel.length) {
+      $lnks = $fig_carousel.find('a');
+      $fig_carousel.on('click', function (e) {
 
-      get_ref = $(this).data('doi');
+        get_ref = $(this).data('doi');
 
-      get_doi = get_ref.slice(0, -5);
+        get_doi = get_ref.slice(0, -5);
 
-      FigViewerInit(get_doi, get_ref, 'figs');
+        FigViewerInit(get_doi, get_ref, 'figs');
 
-      e.preventDefault();
+        e.preventDefault();
 
-    });
-   // $lnks.append('<div class="expand" />');
-  }
+      });
+      // $lnks.append('<div class="expand" />');
+    }
     // article inline images
     var $fig_inline = $('#artText').find('div.figure');
     if ($fig_inline.length) {
@@ -1067,14 +1078,14 @@
       $lnks.on('click', function (e) {
         get_ref = $(this).data('uri'); //image reference
 
-        get_doi = $(this).data('doi');  console.log(get_doi);
+        get_doi = $(this).data('doi');
 
         FigViewerInit(get_doi, get_ref, 'figs');
 
         e.preventDefault();
 
       });
-     // $lnks.append('<div class="expand" />');
+      // $lnks.append('<div class="expand" />');
     }
 
     // 'figure' item in article floating nav
@@ -1117,9 +1128,9 @@
       });
     }
 
-   $('.fv-close').on('click',function(){
-       FVClose();
-   });
+    $('.fv-close').on('click',function(){
+      FVClose();
+    });
 
   }
   initMainContainer();

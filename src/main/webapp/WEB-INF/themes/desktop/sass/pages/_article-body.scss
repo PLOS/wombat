@@ -364,6 +364,7 @@ $line-height-small: ($line-height * .5);
     width: ($fc-size-item-width + $fc-pad-item-between);
     height: $fc-size-item-height;
     background-color: $fc-colorbg-item;
+    cursor: pointer;
 
     img {
       height: auto;

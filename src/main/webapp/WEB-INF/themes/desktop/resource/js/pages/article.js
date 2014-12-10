@@ -6,7 +6,7 @@
 
 (function ($) {
 
-  var s, float_header, is_author_list, check_authors_truncation, spin_target, spin_opts, almspinner;
+  var s, float_header, is_author_list, spin_target, spin_opts, almspinner;
 
   float_header = {
 

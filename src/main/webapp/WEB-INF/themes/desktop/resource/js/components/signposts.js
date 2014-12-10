@@ -26,10 +26,10 @@
     };
 
     date_check = function (logDate, numDays) {
+      ///requires moment.js
+      var testDate = new Date().addDays(numDays), testDateFormat = moment(testDate).format("YYYYMMDD"), logDateFormat = moment(logDate).format("YYYYMMDD");
 
-      var testDate = new Date().addDays(numDays);
-
-      if (logDate < testDate) {
+      if (logDateFormat > testDateFormat) {
         return false;
 
       } else {
@@ -63,23 +63,35 @@
         timeout: 20000
       }).done(function (data) {
         initData = data.data[0];
-
+        alert('Hello');
         if (initData === undefined) {
-          $('#almSignposts').append(errorText);
 
-        } else {
-        // is date less than 3 days ago
-          issued = data.data[0].issued["date-parts"];
-
-          compareDate = moment(issued, "YYYY,MM,DD");
-
-          isThree = date_check(compareDate, 3);
+          var initDate = $('meta[name=citation_date]').attr("content");
+          isThree = date_check(initDate, -3);
+          alert(isThree);
 
           if (isThree === true) {
             tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to 3 days after publication</li>';
             $('#almSignposts').html(tooSoonText);
             $('#loadingMetrics').css('display','none');
           } else {
+            errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
+            $('#loadingMetrics').css('display','none');
+            $('#almSignposts').html(errorText);
+        }
+        } else {
+        // is date less than 3 days ago
+//          issued = data.data[0].issued["date-parts"];
+//
+//          compareDate = moment(issued, "YYYY,MM,DD");
+//
+//          isThree = date_check(compareDate, 3);
+
+//          if (isThree === true) {
+//            tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to 3 days after publication</li>';
+//            $('#almSignposts').html(tooSoonText);
+//            $('#loadingMetrics').css('display','none');
+//          } else {
             //get the numbers & add commas where needed
             saves = formatNumberComma(data.data[0].saved);
             citations = formatNumberComma(data.data[0].cited);
@@ -111,7 +123,7 @@
 
             $('#almSignposts li').removeClass('noshow');
 
-          }
+//          }
         }
       }).fail(function() {
         errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';

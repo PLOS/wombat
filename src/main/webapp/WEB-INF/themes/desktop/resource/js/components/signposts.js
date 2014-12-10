@@ -25,7 +25,10 @@
 
     date_check = function (logDate, numDays) {
       ///requires moment.js
-      var testDate = new Date().addDays(numDays), newFormat = "YYYYMMDD", testDateFormat = moment(testDate).format(newFormat), logDateFormat = moment(logDate).format(newFormat);
+      var testDate = new Date().addDays(numDays),
+          newFormat = "YYYYMMDD",
+          testDateFormat = moment(testDate).format(newFormat),
+          logDateFormat = moment(logDate).format(newFormat);
 
       if (logDateFormat > testDateFormat) {
         return false;
@@ -51,7 +54,7 @@
 
       pubDate = $('meta[name=citation_date]').attr("content");
 
-      offsetDays = 3; // if this number is one then add some logic to make it days singular
+      offsetDays = 3; // TODO: if this number is one then add some logic to make it days singular - not an issue now.
       tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to ' + offsetDays + '  days after publication</li>';
       errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
 

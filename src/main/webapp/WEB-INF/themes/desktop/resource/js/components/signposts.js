@@ -1,8 +1,6 @@
-
 (function ($) {
   $.fn.signposts = function (doi) {
-    var errorText, tooSoonText, initData, issued, date_check, compareDate, isThree, plural_check,
-      views, saves, shares, citations, listBody;
+    var errorText, tooSoonText, initData, issued, date_check, compareDate, isThree, plural_check, views, saves, shares, citations, listBody;
 
     function validateDOI(doi) {
       if (doi == null) {
@@ -27,10 +25,7 @@
 
     date_check = function (logDate, numDays) {
       ///requires moment.js
-      var testDate = new Date().addDays(numDays),
-          newFormat = "YYYYMMDD",
-          testDateFormat = moment(testDate).format(newFormat),
-          logDateFormat = moment(logDate).format(newFormat);
+      var testDate = new Date().addDays(numDays), newFormat = "YYYYMMDD", testDateFormat = moment(testDate).format(newFormat), logDateFormat = moment(logDate).format(newFormat);
 
       if (logDateFormat > testDateFormat) {
         return false;
@@ -41,9 +36,9 @@
       }
     };
 
-    plural_check = function(input){
+    plural_check = function (input) {
       input = parseInt(input.replace(/[^0-9]/g, ''));
-      if (input === 1){
+      if (input === 1) {
         return false;
       } else {
         return true;
@@ -64,32 +59,31 @@
 
       requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail';
 
-      function displayError(message){
+      function displayError(message) {
         $('#almSignposts').html(message);
-        $('#loadingMetrics').css('display','none');
+        $('#loadingMetrics').css('display', 'none');
       }
 
       $.ajax({
-        url: requestUrl,
-        dataType: 'jsonp',
+        url:         requestUrl,
+        dataType:    'jsonp',
         contentType: "text/json; charset=utf-8",
-        type: "GET",
-        timeout: 20000
+        type:        "GET",
+        timeout:     20000
       }).done(function (data) {
         initData = data.data[0];
-
         if (initData === undefined) {
           // is date less than "offsetDays" number of  days ago
 
           numberOfDays = date_check(pubDate, offsetDays);
 
           if (numberOfDays === true) {
-           displayError(tooSoonText);
+            displayError(tooSoonText);
           } else {
             displayError(errorText);
           }
         } else {
-        // is date less than 3 days ago
+          // is date less than 3 days ago
 //          issued = data.data[0].issued["date-parts"];
 //
 //          compareDate = moment(issued, "YYYY,MM,DD");
@@ -101,40 +95,41 @@
 //            $('#almSignposts').html(tooSoonText);
 //            $('#loadingMetrics').css('display','none');
 //          } else {
-            //get the numbers & add commas where needed
-            saves = formatNumberComma(data.data[0].saved);
-            citations = formatNumberComma(data.data[0].cited);
-            views = formatNumberComma(data.data[0].viewed);
-            shares = formatNumberComma(data.data[0].discussed);
+          //get the numbers & add commas where needed
+          saves = formatNumberComma(data.data[0].saved);
+          citations = formatNumberComma(data.data[0].cited);
+          views = formatNumberComma(data.data[0].viewed);
+          shares = formatNumberComma(data.data[0].discussed);
 
-            //check if term needs to be plural
-            function build_parts(li_id, metric){
-              var plural = plural_check(metric);
-              if(plural === true) {
-                $(li_id).prepend(metric).find('.metric-term').append('s');
-              } else {
-                $(li_id).prepend(metric);
-              }
-            }
-            build_parts('#almSaves',saves);
-            build_parts('#almCitations',citations);
-            build_parts('#almViews',views);
-            build_parts('#almShares', shares);
-
-            var scopus = data.data[0].sources[4].metrics.total;
-            if (scopus > 0){
-              $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
+          //check if term needs to be plural
+          function build_parts(li_id, metric) {
+            var plural = plural_check(metric);
+            if (plural === true) {
+              $(li_id).prepend(metric).find('.metric-term').append('s');
             } else {
-              //
+              $(li_id).prepend(metric);
             }
+          }
 
-            $('#loadingMetrics').css('display','none');
+          build_parts('#almSaves', saves);
+          build_parts('#almCitations', citations);
+          build_parts('#almViews', views);
+          build_parts('#almShares', shares);
 
-            $('#almSignposts li').removeClass('noshow');
+          var scopus = data.data[0].sources[4].metrics.total;
+          if (scopus > 0) {
+            $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
+          } else {
+            //
+          }
+
+          $('#loadingMetrics').css('display', 'none');
+
+          $('#almSignposts li').removeClass('noshow');
 
 //          }
         }
-      }).fail(function() {
+      }).fail(function () {
         displayError(errorText);
       });
 
@@ -149,32 +144,32 @@
 
     $(tippy).fadeIn('fast').addClass('tippy');
 
-  }).mouseleave(function (){
+  }).mouseleave(function () {
     var boxtop = $(this);
     var tippy = $(this).next();
 
-      $(tippy).mouseenter(function(){
+    $(tippy).mouseenter(function () {
 
       var boxtop = $(tippy).prev();
-        clearTimeout($(boxtop).data('mouseId'));
-        if($(boxtop).hasClass('show-tip')){} else {$(boxtop).addClass('show-tip');}
+      clearTimeout($(boxtop).data('mouseId'));
+      if ($(boxtop).hasClass('show-tip')) {} else {$(boxtop).addClass('show-tip');}
 
-      }).mouseleave(function () {
-        var boxtop = $(tippy).prev();
+    }).mouseleave(function () {
+      var boxtop = $(tippy).prev();
 
-        $(boxtop).removeClass('show-tip');
+      $(boxtop).removeClass('show-tip');
 
-        $(tippy).fadeOut('fast');
-        });
+      $(tippy).fadeOut('fast');
+    });
 
-    var mouseId = setTimeout(function(){
+    var mouseId = setTimeout(function () {
 
-        $(tippy).fadeOut('fast');
+      $(tippy).fadeOut('fast');
 
       $(boxtop).removeClass('show-tip');
     }, 250);
 
-      $(boxtop).data('mouseId', mouseId);
+    $(boxtop).data('mouseId', mouseId);
   });
 
 })(jQuery);

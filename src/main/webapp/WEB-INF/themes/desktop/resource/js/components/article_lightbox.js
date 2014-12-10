@@ -569,7 +569,6 @@
     $(desc_link).on('click',function(){
       $('#fig-viewer').foundation('reveal', 'close');
     });
-
   };
 
   /**

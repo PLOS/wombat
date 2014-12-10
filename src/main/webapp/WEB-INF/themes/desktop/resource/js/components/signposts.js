@@ -1,8 +1,6 @@
-
 (function ($) {
   $.fn.signposts = function (doi) {
-    var errorText, tooSoonText, initData, issued, date_check, compareDate, isThree, plural_check,
-      views, saves, shares, citations, listBody;
+    var errorText, tooSoonText, initData, issued, date_check, compareDate, isThree, plural_check, views, saves, shares, citations, listBody;
 
     function validateDOI(doi) {
       if (doi == null) {
@@ -26,10 +24,13 @@
     };
 
     date_check = function (logDate, numDays) {
+      ///requires moment.js
+      var testDate = new Date().addDays(numDays),
+          newFormat = "YYYYMMDD",
+          testDateFormat = moment(testDate).format(newFormat),
+          logDateFormat = moment(logDate).format(newFormat);
 
-      var testDate = new Date().addDays(numDays);
-
-      if (logDate < testDate) {
+      if (logDateFormat > testDateFormat) {
         return false;
 
       } else {
@@ -38,9 +39,9 @@
       }
     };
 
-    plural_check = function(input){
+    plural_check = function (input) {
       input = parseInt(input.replace(/[^0-9]/g, ''));
-      if (input === 1){
+      if (input === 1) {
         return false;
       } else {
         return true;
@@ -49,74 +50,79 @@
 
     this.getSignpostData = function (doi) {
       doi = validateDOI(doi);
-      var config, requestUrl, errorText;
+      var config, requestUrl, errorText, tooSoonText, pubDate, offsetDays;
+
+      pubDate = $('meta[name=citation_date]').attr("content");
+
+      offsetDays = 3; // TODO: if this number is one then add some logic to make it days singular - not an issue now.
+      tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to ' + offsetDays + '  days after publication</li>';
+      errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
 
       config = ALM_CONFIG;
 
       requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail';
 
+      function displayError(message) {
+        $('#almSignposts').html(message);
+        $('#loadingMetrics').css('display', 'none');
+      }
+
       $.ajax({
-        url: requestUrl,
-        dataType: 'jsonp',
+        url:         requestUrl,
+        dataType:    'jsonp',
         contentType: "text/json; charset=utf-8",
-        type: "GET",
-        timeout: 20000
+        type:        "GET",
+        timeout:     20000
       }).done(function (data) {
         initData = data.data[0];
-
         if (initData === undefined) {
-          $('#almSignposts').append(errorText);
+          // is date less than "offsetDays" number of  days ago
 
-        } else {
-        // is date less than 3 days ago
-          issued = data.data[0].issued["date-parts"];
+          numberOfDays = date_check(pubDate, offsetDays);
 
-          compareDate = moment(issued, "YYYY,MM,DD");
-
-          isThree = date_check(compareDate, 3);
-
-          if (isThree === true) {
-            tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to 3 days after publication</li>';
-            $('#almSignposts').html(tooSoonText);
-            $('#loadingMetrics').css('display','none');
+          if (numberOfDays === true) {
+            displayError(tooSoonText);
           } else {
-            //get the numbers & add commas where needed
-            saves = formatNumberComma(data.data[0].saved);
-            citations = formatNumberComma(data.data[0].cited);
-            views = formatNumberComma(data.data[0].viewed);
-            shares = formatNumberComma(data.data[0].discussed);
-
-            //check if term needs to be plural
-            function build_parts(li_id, metric){
-              var plural = plural_check(metric);
-              if(plural === true) {
-                $(li_id).prepend(metric).find('.metric-term').append('s');
-              } else {
-                $(li_id).prepend(metric);
-              }
-            }
-            build_parts('#almSaves',saves);
-            build_parts('#almCitations',citations);
-            build_parts('#almViews',views);
-            build_parts('#almShares', shares);
-
-            var scopus = data.data[0].sources[4].metrics.total;
-            if (scopus > 0){
-              $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
-            } else {
-              //
-            }
-
-            $('#loadingMetrics').css('display','none');
-
-            $('#almSignposts li').removeClass('noshow');
-
+            displayError(errorText);
           }
+        } else {
+
+          //get the numbers & add commas where needed
+          saves = formatNumberComma(data.data[0].saved);
+          citations = formatNumberComma(data.data[0].cited);
+          views = formatNumberComma(data.data[0].viewed);
+          shares = formatNumberComma(data.data[0].discussed);
+
+          //check if term needs to be plural
+          function build_parts(li_id, metric) {
+            var plural = plural_check(metric);
+            if (plural === true) {
+              $(li_id).prepend(metric).find('.metric-term').append('s');
+            } else {
+              $(li_id).prepend(metric);
+            }
+          }
+
+          build_parts('#almSaves', saves);
+          build_parts('#almCitations', citations);
+          build_parts('#almViews', views);
+          build_parts('#almShares', shares);
+
+          var scopus = data.data[0].sources[4].metrics.total;
+          if (scopus > 0) {
+            $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
+          } else {
+            //
+          }
+
+          $('#loadingMetrics').css('display', 'none');
+
+          $('#almSignposts li').removeClass('noshow');
+
+//          }
         }
-      }).fail(function() {
-        errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
-        $('#loadingMetrics').css('display','none');
-        $('#almSignposts').html(errorText);
+      }).fail(function () {
+        displayError(errorText);
       });
 
     }
@@ -130,32 +136,32 @@
 
     $(tippy).fadeIn('fast').addClass('tippy');
 
-  }).mouseleave(function (){
+  }).mouseleave(function () {
     var boxtop = $(this);
     var tippy = $(this).next();
 
-      $(tippy).mouseenter(function(){
+    $(tippy).mouseenter(function () {
 
       var boxtop = $(tippy).prev();
-        clearTimeout($(boxtop).data('mouseId'));
-        if($(boxtop).hasClass('show-tip')){} else {$(boxtop).addClass('show-tip');}
+      clearTimeout($(boxtop).data('mouseId'));
+      if ($(boxtop).hasClass('show-tip')) {} else {$(boxtop).addClass('show-tip');}
 
-      }).mouseleave(function () {
-        var boxtop = $(tippy).prev();
+    }).mouseleave(function () {
+      var boxtop = $(tippy).prev();
 
-        $(boxtop).removeClass('show-tip');
+      $(boxtop).removeClass('show-tip');
 
-        $(tippy).fadeOut('fast');
-        });
+      $(tippy).fadeOut('fast');
+    });
 
-    var mouseId = setTimeout(function(){
+    var mouseId = setTimeout(function () {
 
-        $(tippy).fadeOut('fast');
+      $(tippy).fadeOut('fast');
 
       $(boxtop).removeClass('show-tip');
     }, 250);
 
-      $(boxtop).data('mouseId', mouseId);
+    $(boxtop).data('mouseId', mouseId);
   });
 
 })(jQuery);

@@ -87,6 +87,7 @@
   <@js src="resource/js/components/tooltip_hover.js"/>
 
   <@js src="resource/js/components/table_open.js"/>
+  <@js src="resource/js/components/figshare.js"/>
 <#--move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide-->
   <@js src="resource/js/components/article_lightbox.js"/>
   <@js src="resource/js/util/alm_config.js"/>
@@ -119,11 +120,5 @@
 
   <#include "aside/crossmarkIframe.ftl" />
 
-<#-- move the new article-lightbox to footer.ftl when it is implemented throughout the site.
-currently it is only used on article.ftl
-  <div class="reveal-modal-bg" style="display: none"></div>
-  <div id="fig-viewer" class="reveal-modal full" data-reveal>
-  <#include "../common/footer/articleLightbox.ftl" />
-  </div> -->
 </body>
 </html>

@@ -272,8 +272,17 @@
         <xsl:apply-templates/>
       </p>
     </xsl:for-each>
-    <!--Fix for FEND-886-->
-    <xsl:for-each select="//front/article-meta/author-notes/fn[@fn-type='other']/node()">
+    <xsl:for-each select="//front/article-meta/author-notes/fn[@fn-type='other' and not(@id)]/node()">
+      <!--
+          "and not(@id)" is a PLOS-specific hack. Assume that any <fn fn-type="other"> element with an 'id' attribute
+          is an actual footnote, and that all those with no 'id' attribute are supposed to show up in article metadata
+          (for example: "Provenance" statements; lists of editorial authors), because this is how it happens to be done
+          in the PLOS corpus. This is brittle because behavior would change if someone ever added to ids those elements
+          for whatever reason. It would be better if the XML distinguished between the two types of
+          <fn fn-type="other"> element more explicitly, but we're stuck with the input we have for now.
+
+          Relevant PLOS Jira tickets: DPRO-392; AMEC-1396 (formerly FEND-886)
+        -->
       <p>
         <xsl:apply-templates/>
       </p>
@@ -836,25 +845,23 @@
               </xsl:attribute>
               <xsl:attribute name="class">link-target</xsl:attribute>
             </a>
-            <xsl:variable name="cit" select="element-citation | mixed-citation | nlm-citation"/>
-            <xsl:apply-templates select="$cit"/>
-            <xsl:text> </xsl:text>
-            <xsl:if test="$cit[@publication-type='journal']">
 
+            <!-- retrieve extra citation data for the current reference node (sourced from the database and provided as
+            a secondary XML source via the citedArticles parameter) -->
+            <xsl:variable name="idx" as="xs:integer" select="position()"/>
+            <xsl:variable name="dbCit" select="if ($citedArticles) then $citedArticles/a/e[$idx] else node()"/>
+            <xsl:variable name="doi" select="$dbCit/doi"/>
+
+            <!-- build reference text, providing templates with doi when available -->
+            <xsl:variable name="cit" select="element-citation | mixed-citation | nlm-citation"/>
+            <xsl:apply-templates select="$cit">
+              <xsl:with-param name="doi" select="$doi"/>
+            </xsl:apply-templates>
+            <xsl:text> </xsl:text>
+
+            <xsl:if test="$cit[@publication-type='journal']">
               <!-- create reference links -->
               <!-- if citedArticles parameter has not been set, fail gracefully and use XML-based data for links -->
-              <xsl:variable name="idx" as="xs:integer" select="position()"/>
-              <xsl:variable name="dbCit">
-                <xsl:choose>
-                  <xsl:when test="$citedArticles">
-                    <xsl:value-of select="$citedArticles/a/e[$idx]"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:value-of select="node()"/>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:variable>
-              <xsl:variable name="doi" select="$citedArticles/a/e[$idx]/doi"/>
               <xsl:variable name="pubYear" select="$cit/year[1]"/>
               <!-- use author and title preferentially from database, then XML -->
               <xsl:variable name="author">
@@ -1677,10 +1684,11 @@
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template match="mixed-citation">
+    <xsl:param name="doi"/>
     <xsl:apply-templates/>
-    <xsl:if test="extraCitationInfo/@doi and not(ext-link) and not(comment/ext-link)">
+    <xsl:if test="$doi and not(ext-link) and not(comment/ext-link)">
       doi:
-      <xsl:value-of select="extraCitationInfo/@doi"/>
+      <xsl:value-of select="$doi"/>
     </xsl:if>
   </xsl:template>
 

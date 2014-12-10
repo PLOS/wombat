@@ -41,17 +41,17 @@
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${articleDoi}" />
 
-<#if pubUrlPrefix??>
+<#if pubUrlPrefix?has_content>
 <link rel="canonical" href="${pubUrlPrefix}article?id=${articleDoi}" />
 </#if>
 
 <#if article.description??>
-  <#if twitterUsername??>
+  <#if twitterUsername?has_content>
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="${twitterUsername}"/>
   </#if>
   <meta property="og:type" content="article" />
-  <#if pubUrlPrefix??>
+  <#if pubUrlPrefix?has_content>
     <meta property="og:url" content="${pubUrlPrefix}article?id=${articleDoi}"/>
   </#if>
   <meta property="og:title" content="${article.title?replace('<.+?>',' ','r')}"/>

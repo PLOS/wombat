@@ -49,7 +49,13 @@
 
     this.getSignpostData = function (doi) {
       doi = validateDOI(doi);
-      var config, requestUrl, errorText;
+      var config, requestUrl, errorText, tooSoonText, pubDate, offsetDays;
+
+      pubDate = $('meta[name=citation_date]').attr("content");
+
+      offsetDays = 3; // if this number is one then add some logic to make it days singular
+      tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to ' + offsetDays + '  days after publication</li>';
+      errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
 
       config = ALM_CONFIG;
 
@@ -63,19 +69,18 @@
         timeout: 20000
       }).done(function (data) {
         initData = data.data[0];
-        alert('Hello');
+
         if (initData === undefined) {
+          // is date less than "offsetDays" number of  days ago
 
-          var initDate = $('meta[name=citation_date]').attr("content");
-          isThree = date_check(initDate, -3);
-          alert(isThree);
+          numberOfDays = date_check(pubDate, offsetDays);
 
-          if (isThree === true) {
-            tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to 3 days after publication</li>';
+          if (numberOfDays === true) {
+            
             $('#almSignposts').html(tooSoonText);
             $('#loadingMetrics').css('display','none');
           } else {
-            errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
+          
             $('#loadingMetrics').css('display','none');
             $('#almSignposts').html(errorText);
         }

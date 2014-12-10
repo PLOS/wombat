@@ -27,7 +27,10 @@
 
     date_check = function (logDate, numDays) {
       ///requires moment.js
-      var testDate = new Date().addDays(numDays), testDateFormat = moment(testDate).format("YYYYMMDD"), logDateFormat = moment(logDate).format("YYYYMMDD");
+      var testDate = new Date().addDays(numDays),
+          newFormat = "YYYYMMDD",
+          testDateFormat = moment(testDate).format(newFormat),
+          logDateFormat = moment(logDate).format(newFormat);
 
       if (logDateFormat > testDateFormat) {
         return false;
@@ -61,6 +64,11 @@
 
       requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail';
 
+      function displayError(message){
+        $('#almSignposts').html(message);
+        $('#loadingMetrics').css('display','none');
+      }
+
       $.ajax({
         url: requestUrl,
         dataType: 'jsonp',
@@ -76,14 +84,10 @@
           numberOfDays = date_check(pubDate, offsetDays);
 
           if (numberOfDays === true) {
-            
-            $('#almSignposts').html(tooSoonText);
-            $('#loadingMetrics').css('display','none');
+           displayError(tooSoonText);
           } else {
-          
-            $('#loadingMetrics').css('display','none');
-            $('#almSignposts').html(errorText);
-        }
+            displayError(errorText);
+          }
         } else {
         // is date less than 3 days ago
 //          issued = data.data[0].issued["date-parts"];
@@ -131,9 +135,7 @@
 //          }
         }
       }).fail(function() {
-        errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
-        $('#loadingMetrics').css('display','none');
-        $('#almSignposts').html(errorText);
+        displayError(errorText);
       });
 
     }

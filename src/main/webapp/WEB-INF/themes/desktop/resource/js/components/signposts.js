@@ -86,18 +86,7 @@
             displayError(errorText);
           }
         } else {
-          // is date less than 3 days ago
-//          issued = data.data[0].issued["date-parts"];
-//
-//          compareDate = moment(issued, "YYYY,MM,DD");
-//
-//          isThree = date_check(compareDate, 3);
 
-//          if (isThree === true) {
-//            tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to 3 days after publication</li>';
-//            $('#almSignposts').html(tooSoonText);
-//            $('#loadingMetrics').css('display','none');
-//          } else {
           //get the numbers & add commas where needed
           saves = formatNumberComma(data.data[0].saved);
           citations = formatNumberComma(data.data[0].cited);

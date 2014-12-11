@@ -1,6 +1,5 @@
 <#if article.figures?has_content>
-<#-- Hidden in its original position. Will be shown by figure_carousel.js after it is moved. -->
-<div id="figure-carousel-section" style="display: none">
+<div id="figure-carousel-section">
   <h2>Figures</h2>
 
   <div id="figure-carousel">

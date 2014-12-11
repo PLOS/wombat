@@ -229,11 +229,15 @@ $line-height-small: ($line-height * .5);
     p {margin-bottom: 0;}
 
   }
+  .figshare_widget{
+    @extend .hide-for-print;
+  }
 }
 
 // fig share widget needs content-box sizing to space everything properly.
 #figshare_enlarge * {
   box-sizing: content-box;
+  @extend .hide-for-print;
 }
 
 // TODO - write some docs
@@ -466,6 +470,7 @@ $line-height-small: ($line-height * .5);
 
 
 .article-content .figure-inline-download {
+ @extend .hide-for-print;
   display: table-cell;
   font-size: $txt-size-xsmall;
   vertical-align: top;
@@ -588,6 +593,7 @@ $line-height-small: ($line-height * .5);
   }
 
   .expand {
+    @extend .hide-for-print;
     @extend .icon-expand;
     position: absolute;
     top: -$pad-medium;
@@ -596,6 +602,7 @@ $line-height-small: ($line-height * .5);
 }
 
 .article-content .table-download {
+  @extend .hide-for-print;
   display: block;
   vertical-align: middle;
   cursor: pointer;
@@ -640,7 +647,7 @@ $line-height-small: ($line-height * .5);
 }
 
 @media print {
-  .article-text {
+  .article-content {
     width: 100%;
   }
 }

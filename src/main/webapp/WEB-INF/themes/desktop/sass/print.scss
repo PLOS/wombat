@@ -2,9 +2,10 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
 
+@import "global-imports";
 /*the following is copied from foundation/components/_type.scss */
 * {
-  background: transparent !important;
+  // background: transparent !important;   PG-  I really hate to do this cause it will break if we update
   color: #000 !important; /* Black prints faster: h5bp.com/s */
   box-shadow: none !important;
   text-shadow: none !important;
@@ -12,7 +13,7 @@
 
 a,
 a:visited { text-decoration: underline;}
-a[href]:after { content: " (" attr(href) ")"; }
+//a[href]:after { content: " (" attr(href) ")"; }
 
 abbr[title]:after { content: " (" attr(title) ")"; }
 
@@ -46,4 +47,10 @@ h3 {
 h2,
 h3 { page-break-after: avoid; }
 
+
 /* end portion from foundation/components/_type.scss */
+
+.article-tabs, #nav-article, .signposts, .article-content #figure-carousel-section,#pagehdr, #floatTitleTop{@extend .hide-for-print;}
+//.article-content{
+//  width: 100%;
+//}

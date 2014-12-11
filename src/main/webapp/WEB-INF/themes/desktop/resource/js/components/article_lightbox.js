@@ -182,7 +182,7 @@
     fig_h = win_h - parts_h;     //console.log(fig_h);
     //figure height is window minus frame, header, frame, and data heights
     $FV.figs.css('height', fig_h);
-
+    $FV.thumbs_cont.css('height', fig_h - parseInt($FV.thumbs_el.css('paddingTop')));
     $FV.abst_pane.css('height', win_h - frame_h - hdr_h - 1);
 
     $FV.refs_pane.css('height', win_h - frame_h - hdr_h);
@@ -598,7 +598,6 @@
     $(desc_link).on('click',function(){
       $('#fig-viewer').foundation('reveal', 'close');
     });
-
   };
 
   /**

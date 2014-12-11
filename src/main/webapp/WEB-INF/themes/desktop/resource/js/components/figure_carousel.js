@@ -15,13 +15,14 @@
 
   /**
    * Move the figure carousel from its static position (defined in FreeMarker templates) to its desired position (which
-   * is midway through post-transformation HTML).
+   * is midway through post-transformation HTML) and unhide it.
    */
   function moveFigureCarouselSection($carouselSection) {
     var $new_position = $('.articleinfo');
     if ($new_position.length) {
       $carouselSection.detach();
       $carouselSection.insertBefore($new_position);
+      $carouselSection.show();
     }
   }
 

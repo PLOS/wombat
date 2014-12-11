@@ -22,8 +22,8 @@
     if ($new_position.length) {
       $carouselSection.detach();
       $carouselSection.insertBefore($new_position);
-      $carouselSection.show();
     }
+    $carouselSection.show();
   }
 
   $.fn.buildFigureCarousel = function (options) {

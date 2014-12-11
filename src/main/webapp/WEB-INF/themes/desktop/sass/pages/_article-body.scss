@@ -330,6 +330,14 @@ $line-height-small: ($line-height * .5);
   }
 }
 
+#figure-carousel-section {
+  /*
+   * This section begins in an arbitrary position on the page, then is inserted into the article body by JavaScript.
+   * Don't display it until JavaScript shows it after moving it.
+   */
+  @extend .hide;
+}
+
 #figure-carousel {
   // creating local variables to make editing and bug fixing easier
   $fc-colorbg-container: $grey-light;

@@ -52,6 +52,6 @@ h3 { page-break-after: avoid; }
 .signposts,
 .article-content #figure-carousel-section,
 #pagehdr,
-#floatTitleTop{
+#floatTitleTop {
   @extend .hide-for-print;
 }

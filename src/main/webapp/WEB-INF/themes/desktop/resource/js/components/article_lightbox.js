@@ -109,7 +109,7 @@
 
           displayModal();
 
-          //rerunMathjax();
+          rerunMathjax();
           //}
           /* else {
 
@@ -133,6 +133,7 @@
         }
       });
     };
+
     displayModal = function () {
 
       if(typeof(_gaq) !== 'undefined'){
@@ -144,10 +145,12 @@
 
       $FV.removeClass('abst figs refs').addClass(pane);
 
-      if (pane === 'figs') {$('#panel-figs').addClass('active');}
+      if (pane === 'figs') {
+        $('#panel-figs').addClass('active');
+      }
       // debounce resize event
       var resizeDelay;
-      $win.on('resize.modal', function() {
+      $(window).bind('resize.modal', function() {
         clearTimeout(resizeDelay);
         resizeDelay = setTimeout(function() {
           FVSize();
@@ -228,9 +231,9 @@
 
   };
 
-  // build figures pane
+  // build figures pane. needs to be broken up.
   FVBuildFigs = function(data, doi) {
-    var path, showInContext, fig_container, title_txt, image_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, context_hash, doip, $fig, staging, download_btns, context_lnk, text_description;
+    var path, showInContext, fig_container, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, context_hash, doip, $fig, staging, download_btns, context_lnk, chk_desc, text_description;
 
     //set the markup
     $FV.figs_pane = $('<div id="fig-viewer-figs" class="pane" />');
@@ -256,14 +259,14 @@
     $.each(fig_container, function () {
 
 
-      //title_txt = ( ? '<strong>' +this.title + ':</strong> ' : '') + this.transformedCaptionTitle;
       // CAPTION text handling is here
       title_txt = $(this).find('.figcaption');
       //the image long description is hard to find in the article-transform.xml
       text_description = $(this).find('.caption_target').next().html();
 
       //need to strip html from this
-      image_title = $(title_txt).html();// + ' ' + this.plainCaptionTitle;
+      image_title = $(title_txt).text();// + ' ' + this.plainCaptionTitle;
+      text_title = $(title_txt).html();
       img_ref = $(this).data('doi');
       context_hash = showInContext(img_ref);
 
@@ -301,7 +304,7 @@
       txt = $('<div class="txt" />');
       txt_less = $('<div class="text-less" />');
       txt_more = $('<div class="text-more" />');
-      title = '<div class="fig_title">' + image_title + '</div>';
+      title = '<div class="fig_title">' + text_title + '</div>';
       view_less = $('<div class="less" title="view less" />');
       doip = '<p class="doi">doi:'+img_ref+'</p>';
       staging = '<div class="staging" />'; // hidden container for loading large image
@@ -321,8 +324,11 @@
       txt_more.append(title);
 
       if (text_description !== null) {
-        txt_more.append('<p>' + text_description + '</p>');
-        txt_less.append('<p>' + text_description + '</p>');
+        chk_desc = text_description.slice(0,3);
+        if (chk_desc !== 'doi') {
+          txt_more.append('<p>' + text_description + '</p>');
+          txt_less.append('<p>' + text_description + '</p>');
+        }
       }
 
       txt_more.append(doip);
@@ -559,12 +565,13 @@
       //If called on the same element twice, igntruecond call
       if($content.data('ellipsis_appended') !== true) {
 
-        $content.ellipsis({ ellipsis_text:'<span class="toggle more">... show more</span>' });
+        $content.ellipsis({ ellipsis_text:'<span class="more">... show more</span>' });
 
         $content.find('span.more').click(function() {
           $FV.slides_el.addClass('expanded');
           $FV.txt_expanded = true;
         });
+
         $content.data('ellipsis_appended','true');
       }
     };
@@ -634,7 +641,6 @@
         FVLoadMedImg(i);
         break;
       case 1:
-        // waiting on medium image to load
         break;
       case 2:
         FVSizeImgToFit(this_fig, false);
@@ -654,7 +660,7 @@
         $FV.loading.hide();
         FVSizeImgToFit(this_fig, true);
         if (this_fig.hasClass('zoom')) {
-          FVFigFunctions(this_fig);
+          return FVFigFunctions(this_fig);
         }
         break;
     }
@@ -679,7 +685,7 @@
   };
 
 // load large images in div.staging
-  FVLoadLargeImg = function(i) {      ///////////////////// PROBLEM MIGHT BE HERE
+  FVLoadLargeImg = function(i) {
     var src = $FV.figs_set[i].data('img-lg-src');
     var txt = $FV.figs_set[i].data('img-txt');
     var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="lg invisible">');
@@ -696,42 +702,46 @@
 
 // size images to fit in parent element
   FVSizeImgToFit = function(el, down_only) {
-    var img, el_h, el_w, i_h, i_w;
+    var img, el_h, el_w, i_h, i_w, sizeAndCenter;
     img = el.find('img');
     el_h = el.height();
     el_w = el.width();
     i_h = img.height();
     i_w = img.width();
-    ///////////////////// PROBLEM MIGHT BE HERE
-    //console.log(el_h+ ' ' +el_w+ ' ' +i_h+ ' ' +i_w);
-    //console.log(el_w / el_h +' '+ i_w / i_h);
+    console.log(el_h + ' element height:sizeimgtofit');
+    console.log(i_h + ' image height:sizeimgtofit');
     // sizes image to fit, scaling up or down, and centering
-    // setting size with height
-    //console.log(Math.round((el_w -  img.width()) / 2));
-    //console.log(Math.round(el_w * (i_h / i_w)));
-    var sizeAndCenter = function() {
+
+    sizeAndCenter = function() {
       // compare aspect ratios of parent and image and set dimensions accordingly
       if (el_w / el_h > i_w / i_h) {
         img.css({'height': el_h});
         // horizontally center after resizing, (zoom uses margin values so can't use auto)
         img.css({'marginLeft' : Math.round((el_w -  img.width()) / 2), 'marginTop' : 0});
+
       } else {
         // calculate height to make width match parent
         img.css({'height' : Math.round(el_w * (i_h / i_w))});
         // vertically center after resizing
         img.css({'marginTop' : Math.round((el_h - img.height()) / 2), 'marginLeft' : 0});
+
       }
     };
 
     if (down_only) { // this is a large image and we don't want to scale up.
       if (el_h > el.data('img_l_h') && el_w > el.data('img_l_w')) { // native size smaller than viewport
+
         img.css({'marginTop' : Math.round((el_h - i_h) / 2), 'marginLeft' : Math.round((el_w - i_w) / 2)}); // center
+
         el.removeClass('zoom'); // too small to zoom
       } else {
+
         sizeAndCenter();
+
         el.addClass('zoom');
       }
-    } else { // this is a medium image, we will scale up or down
+    } else { console.log('size center not down_only');// this is a medium image, we will scale up or down
+
       sizeAndCenter();
     }
   };
@@ -739,30 +749,68 @@
 // switch medium image with large image
 
   FVSwitchImg = function($fig) {
-    var $img_m, img_m_h, $img_l, img_l_h, img_l_w, drag_bx;
-    $img_m = $fig.find('img');
-    img_m_h = $img_m.height();
-    $img_l = $fig.next('div.staging').find('img');
-    // move large image into figure div (image hidden by css)
-    $fig.append($img_l);
-    //img_l_erg = $fig.find($img_l); console.log(img_l_erg);
-    img_l_h = $img_l.height();//css('height');
-    img_l_w = $img_l.width();
-    // store native dimensions
-    $fig.data('img_l_w', img_l_w).data('img_l_h', img_l_h);
+    var img_m, img_m_h, img_l, img_l_h, img_l_w, drag_bx;
+    img_m = $fig.find('img');
+    img_m_h = img_m.height();
 
-    if (img_l_h < img_m_h) { // large image smaller than resized medium image
-      $img_l.css({'marginTop' : Math.round(($fig.height() - img_l_h) / 2), 'marginLeft' : Math.round(($fig.width() - img_l_w) / 2)}); // center
+    img_l = $fig.next('div.staging').find('img');
+    // move large image into figure div (image hidden by css)
+    $fig.append(img_l);
+
+    img_l_h = img_l.height();//css('height');
+    img_l_w = img_l.width();
+    // if (img_l_h !== 0) {
+       // store native dimensions
+       $fig.data('img_l_w', img_l_w).data('img_l_h', img_l_h);
+    if (img_l_h === 0) { console.log('0');
+      // large image smaller than resized medium image
+      img_l.css({  //center the image
+        'marginTop': Math.round(($fig.height()) / 2),
+        'marginLeft': Math.round(($fig.width()) / 2)
+      });
+    } else if ((img_l_h +1) < img_m_h) {
+         // large image smaller than resized medium image
+         img_l.css({  //center the image
+           'marginTop': Math.round(($fig.height() - img_l_h) / 2),
+           'marginLeft': Math.round(($fig.width() - img_l_w) / 2)
+         });
+       } else {
+         // set large image with dimensions and position of medium image
+         img_l.css({
+           'height': img_m_h,
+           'marginTop': img_m.css('marginTop'),
+           'marginLeft': img_m.css('marginLeft')
+         });
+         $fig.addClass('zoom'); // zoomable & draggable
+       }
+    /* } else {
+       img_l_h = $fig.height;
+
+     }*/
+    $fig.html(img_l.removeClass('invisible')); // replace
+
+    drag_bx = $('<div class="drag-bx" />'); // insert drag containment element
+
+    $fig.wrapInner(drag_bx);
+
+    if ($fig.hasClass('zoom')) {
+      FVFigFunctions($fig);
+    }
+
+    /*if (img_l_h < img_m_h) { // large image smaller than resized medium image
+      $img_l.css({'marginTop' : Math.round(($fig.height() - img_l_h) / 2), 'marginLeft' : Math.round(($fig.width() - img_l_w) / 2)});
+      console.log('set martop&marleft'); // center
     } else {
       $img_l.css({'height' : img_m_h, 'marginTop' : $img_m.css('marginTop'), 'marginLeft' : $img_m.css('marginLeft')}); // match dimensions and position of medium image
-      $fig.addClass('zoom'); //console.log('large has been loaded, dimensions matched to medium. add zoom');// zoomable & draggable
+      console.log('match dimensions of medium image');
+      $fig.addClass('zoom'); console.log('large has been loaded, dimensions matched to medium. add zoom');// zoomable & draggable
     }
     $fig.html($img_l.removeClass('invisible')); // replace
     drag_bx = $('<div class="drag-bx" />'); // insert drag containment element
     $fig.wrapInner(drag_bx);
     if ($fig.hasClass('zoom')) {   //console.log('hasclass zoom');
       FVFigFunctions($fig);
-    }
+    }*/
   };
 
 // zoom & drag figure
@@ -779,7 +827,7 @@
     img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
     resize_h = $img.height(); // height of sized to fit image
     drag = false; // dragging not enabled
-    $drgbx = $fig.find('div.drag-bx');
+    //$drgbx = $fig.find('div.drag-bx');
 
     $FV.zoom.show();
     $FV.zoom.sldr.slider({
@@ -947,23 +995,28 @@
 
 // close
   var FVClose = function() {
-
+    // $FV.remove();
     //re-enable scrolling
     $('body').css('overflow','auto').off('touchmove');
-    //re-set the foundation tabs
+    //reset the foundation tabs
     $('.fv-nav').find('li').removeClass('active');
     //reset the figures content
-    $('.tabs-content').find('section').removeClass('active').empty();
+
     //unbind the resizing and the arrow key bindings
-    $win.off('resize.modal keydown');
+    $(window).off('resize.modal keydown');
 
     /*//will record the timeStamp for when the modal is closed
      if(typeof event !== 'undefined') {
      close_time = event.timeStamp;
      }*/
 
-    $('#fig-viewer').foundation('reveal', 'close');
 
+    $('#fig-viewer').on('close', function () {
+      $('.tabs-content').find('section').removeClass('active').empty();
+
+      console.log('emty?');
+    });
+    $('#fig-viewer').foundation('reveal', 'close');
     $FVPending = false;
 
   };

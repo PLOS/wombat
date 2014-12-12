@@ -100,6 +100,7 @@
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>
+<@js src="resource/js/pages/analytics_article.js"/>
   <@renderJs />
 
 <#include "mathjax.ftl">

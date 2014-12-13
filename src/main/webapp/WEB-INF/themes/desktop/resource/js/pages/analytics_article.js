@@ -73,7 +73,7 @@
       // perform _trackEvent
       el.click(function () {
 // Leaving this debugging in here commented  for now because I want to keep debugging info in here until we are sure we have hit all the items we need to
-       alert('__________test:' + test +'__________elEv.category:' + elEv.category +':' + ' __________elEv.action:' + elEv.action +':'  + ' __________elEv.label:' + elEv.label +':'  + ' __________elEv.value:' + elEv.value +':'  + ' __________elEv.non_i:' + elEv.non_i );
+   //    alert('__________test:' + test +'__________elEv.category:' + elEv.category +':' + ' __________elEv.action:' + elEv.action +':'  + ' __________elEv.label:' + elEv.label +':'  + ' __________elEv.value:' + elEv.value +':'  + ' __________elEv.non_i:' + elEv.non_i );
        if (trace) {
         ga('send', 'event', elEv.category, elEv.action, elEv.label, elEv.value, elEv.non_i);
        }

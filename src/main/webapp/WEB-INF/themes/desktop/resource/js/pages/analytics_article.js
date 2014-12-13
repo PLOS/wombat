@@ -1,81 +1,39 @@
 /**
  * Created by pgrinbaum on 12/11/14.
+ * Some of this code is taken from plos-themes/desktop/Plos/resource/js/ga.js we might want to remove this file
  */
 (function ($) {
 
- //   function handleSocialClick(event) {
- //     alert($(e.target).attr('title'));
-//      ga('send', 'event', 'Article', 'Share', $(event.target).attr('title') 4);
-//    };
-
-  var sharelink = '.share-article ul li a',
-      printlink = '#printArticle #printBrowser';
-
-//  var ga_track = function ( ga_category, ga_action, ga_label) {
-//    ga('send', 'event', ga_category, ga_action, ga_label);
-//  };
+  var sharelink = '.share-article ul li a', printlink = '#printArticle #printBrowser';
 
 // shareLink
-  $(sharelink).on('click', function(event) {    //TODO: abstract this out
+  $(sharelink).on('click', function (event) {    //TODO: abstract this out
         var title = $(event.target).attr('title');
         ga('send', 'event', 'Article', 'Share', title);
-      }
-  );
+      });
 
-$(printlink).on('click', function(event) {    //TODO: abstract this out
-  ga('send', 'event','Article', 'Print', 'Click');
-});
-
+  $(printlink).on('click', function (event) {    //TODO: abstract this out
+    ga('send', 'event', 'Article', 'Print', 'Click');
+  });
 
   $('a').each(function (e) {
     var el = $(this);
     var href = (typeof(el.attr('href')) != 'undefined' ) ? el.attr('href') : "";
     var curOnClick = '' + el.attr('onclick');
-
-//    var linkServer = (href.match(/^https?\:/i)) ? href.match(/^(([a-z]+:)?(\/\/)?[^\/]+).*$/)[1] : "";
-//    var linkDomain = (linkServer != "") ? _bamGA.getDomain(linkServer) : "";
-//    var inDomains = (jQuery.inArray(linkDomain, bamGAcrossDomains) >= 0) ? true : false;
-//    var isThisDomain = (_bamGA.thisDomain == linkDomain) ? true : false;
-
+    var elClass = el.attr('class');
     var elEv = [];
     elEv.delay = (el.attr('target') == undefined || el.attr('target').toLowerCase() != '_blank') ? true : false;
 
-    if (!href.match(/^javascript:/i)
+    if (!href.match(/^javascript:/i)) {
+      var trace = true,
+          filetypes = /\.(zip|exe|dmg|pdf|doc*|xls*|ppt*|mp3|slxb|pps*|vsd|vxd|txt|rar|wma|mov|avi|wmv|flv|wav|xml)$/i,
+          taxonomyLink = "subject",
+          taxonomyLocator = 'taxo-term';
 
-//        && !curOnClick.match(/_bamGA.track.*Redirect/)
-        )
-    {
-      var trace = true;
-
-      var filetypes = /\.(zip|exe|dmg|pdf|doc*|xls*|ppt*|mp3|slxb|pps*|vsd|vxd|txt|rar|wma|mov|avi|wmv|flv|wav)$/i;
+      //TODO - add filetypes?
       var baseHref = '';
-//      if (linkDomain != "" && inDomains && !isThisDomain) {
-//        _gaq.push(function () {
-//          var t = _gat._getTrackerByName();
-//          el.attr('href', t._getLinkerUrl(el.attr('href')));
-//        });
-//      }
-
-      //outbound - non-interaction event
-//      if (href.match(/^https?\:/i) && !isThisDomain && !inDomains) {
-//        elEv.category = "external";
-//        elEv.action = "click";
-//        elEv.label = href.replace(/^https?\:\/\//i, '');
-//        elEv.value = undefined;
-//        elEv.non_i = true;
-//        elEv.loc = href;
-//      }
-      //redirect script tracking
-//      else if (typeof(bamGAreDirect) != 'undefined' && href.match(bamGAreDirect)) {
-//        elEv.category = "external";
-//        elEv.action = "redirect";
-//        elEv.label = _bamGA.getParameterInURL(href, bamGAreDirectPar).replace(/^https?\:\/\//i, '');
-//        elEv.value = undefined;
-//        elEv.non_i = true;
-//        elEv.loc = href;
-//      }
       //mailto
-       if (href.match(/^mailto\:/i)) {
+      if (href.match(/^mailto\:/i)) {
         elEv.category = "email";
         elEv.action = "click";
         elEv.label = href.replace(/^mailto\:/i, '');
@@ -85,7 +43,6 @@ $(printlink).on('click', function(event) {    //TODO: abstract this out
       //file downloads
       else if (href.match(filetypes)) {
         var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
-         alert(extension);
         elEv.category = "download";
         elEv.action = "click-" + extension;
         elEv.label = href;
@@ -93,38 +50,33 @@ $(printlink).on('click', function(event) {    //TODO: abstract this out
         elEv.non_i = false;
         elEv.loc = baseHref + href;
       }
-      else if (this.host !== location.host) {
+      //taxonomy terms
+      else if (elClass === taxonomyLocator ) {
+        var term = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
+        var myRegexp = /taxonomyLink(.*)/;
+        var match = myRegexp.exec(href);
+        var test= elClass;
+        elEv.category = "taxonomyTerms";
+      elEv.action = "click";  //TODO LABEL!!!
+        elEv.label = match;
+        elEv.value = undefined;
+        elEv.non_i = false;
+        elEv.loc = baseHref + href;
+      } else if (this.host !== location.host) {
         elEv.category = "external";
         elEv.action = "click";
         elEv.label = href;
-//        elEv.value = undefined;
-//        elEv.non_i = true;
+        elEv.value = undefined;
+        elEv.non_i = true;
         elEv.loc = baseHref + href;
-       }
-//      //track link clicks on any page that has bamGATrackPageClicks set to true
-//      else if (typeof(bamGATrackPageClicks) != 'undefined' && bamGATrackPageClicks == true) {
-//        elEv.category = "click-tracking";
-//        elEv.action = document.location.hostname + document.location.pathname;
-//        elEv.label = href;
-//        elEv.value = undefined;
-//        elEv.non_i = true;
-//        elEv.loc = baseHref + href;
-//      }
-      else trace = false;
+      } else trace = false;
       // perform _trackEvent
       el.click(function () {
-        alert('elEv.category:' + elEv.category +':' + ' elEv.action:' + elEv.action +':'  + ' elEv.label:' + elEv.label +':'  + ' elEv.value:' + elEv.value +':'  + ' elEv.non_i:' + elEv.non_i );
-//        if (trace) {
-        ga('send', 'event',elEv.category, elEv.action, elEv.label, elEv.value, elEv.non_i);
-
-//        _gaq.push(['_trackEvent', elEv.category, elEv.action, elEv.label, elEv.value, elEv.non_i]);
-//          if (elEv.loc && elEv.delay) {
-//            setTimeout(function () {
-//              location.href = elEv.loc;
-//            }, _bamGA.delay);
-//            return false;
-//          }
-
+// Leaving this debugging in here commented  for now because I want to keep debugging info in here until we are sure we have hit all the items we need to
+       alert('__________test:' + test +'__________elEv.category:' + elEv.category +':' + ' __________elEv.action:' + elEv.action +':'  + ' __________elEv.label:' + elEv.label +':'  + ' __________elEv.value:' + elEv.value +':'  + ' __________elEv.non_i:' + elEv.non_i );
+       if (trace) {
+        ga('send', 'event', elEv.category, elEv.action, elEv.label, elEv.value, elEv.non_i);
+       }
       });
     } // end if javascript or Redirect
   }); // end a.each

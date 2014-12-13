@@ -15,7 +15,7 @@
   <#include "mediaCoverageLink.ftl" />
 
   <#if article.figures?? && article.figures?size &gt; 0 >
-    <li id="nav-figures"><a class="reveal-figs" href="#panel-figs" data-doi="${article.doi}">Figures</a></li>
+    <li id="nav-figures"><a class="reveal-figs" href="" data-doi="${article.doi}">Figures</a></li>
   </#if>
   </ul>
 </div>

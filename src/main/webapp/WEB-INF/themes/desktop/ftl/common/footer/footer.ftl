@@ -21,7 +21,7 @@
   </div>
 
 <@js src="resource/js/global.js" />
-  <div class="reveal-modal-bg" style="display: none"></div>
+  <div class="reveal-modal-bg"></div>
   <div id="fig-viewer" class="reveal-modal" data-reveal>
   <#include "articleLightbox.ftl" />
   </div>

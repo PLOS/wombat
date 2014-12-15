@@ -466,7 +466,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.active {
+.author-list .active {
   a, a:hover { color: $white; }
 
   .author-name {
@@ -478,7 +478,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     z-index: map-get($zindex, dropdown);
   }
 
-  .close{
+  .close {
 
     @extend .closer;
     position: absolute;

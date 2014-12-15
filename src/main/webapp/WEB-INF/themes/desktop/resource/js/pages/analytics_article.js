@@ -52,13 +52,12 @@
       }
       //taxonomy terms
       else if (elClass === taxonomyLocator ) {
-        var term = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
-        var myRegexp = /taxonomyLink(.*)/;
-        var match = myRegexp.exec(href);
+        var stringAction = href.split('subject', 2);
+        var terms = (decodeURIComponent(stringAction[1]));
         var test= elClass;
         elEv.category = "taxonomyTerms";
-      elEv.action = "click";  //TODO LABEL!!!
-        elEv.label = match;
+        elEv.action = "click";
+        elEv.label = terms;
         elEv.value = undefined;
         elEv.non_i = false;
         elEv.loc = baseHref + href;
@@ -72,8 +71,8 @@
       } else trace = false;
       // perform _trackEvent
       el.click(function () {
-// Leaving this debugging in here commented  for now because I want to keep debugging info in here until we are sure we have hit all the items we need to
-   //    alert('__________test:' + test +'__________elEv.category:' + elEv.category +':' + ' __________elEv.action:' + elEv.action +':'  + ' __________elEv.label:' + elEv.label +':'  + ' __________elEv.value:' + elEv.value +':'  + ' __________elEv.non_i:' + elEv.non_i );
+//Leaving this debugging in here commented  for now because I want to keep debugging info in here until we are sure we have hit all the items we need to
+//       alert('__________test:' + test +'__________elEv.category:' + elEv.category +':' + ' __________elEv.action:' + elEv.action +':'  + ' __________elEv.label:' + elEv.label +':'  + ' __________elEv.value:' + elEv.value +':'  + ' __________elEv.non_i:' + elEv.non_i );
        if (trace) {
         ga('send', 'event', elEv.category, elEv.action, elEv.label, elEv.value, elEv.non_i);
        }

@@ -689,9 +689,12 @@ position: relative;
   margin-bottom: $fv-small;
 
   a {
-    @include link-text($color: $plos-default, $decoration: underline);
+    color: $plos-default;
     font-weight: normal;
-
+    &:hover {
+      color: $plos-default;
+      text-decoration: underline;
+    }
   }
 }
 

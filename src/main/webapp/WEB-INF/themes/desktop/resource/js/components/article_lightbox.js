@@ -135,8 +135,8 @@
     };
     displayModal = function () {
 
-      if(typeof(_gaq) !== 'undefined'){
-        _gaq.push(['_trackEvent',"Lightbox", "Display Modal", ""]);
+      if(typeof(ga) !== 'undefined'){
+        ga('send', 'event', 'Lightbox', 'Display Modal', '');
       }
 
       FVSize();
@@ -465,8 +465,9 @@
   // display figure slides functionality
   FVChangeSlide = function($thmb) {
 
-    if(typeof(_gaq) !== 'undefined'){
-      _gaq.push(['_trackEvent',"Lightbox", "Slide Changed", ""]);
+
+    if(typeof(ga) !== 'undefined'){
+      ga('send', 'event', 'Lightbox', 'Slide Changed', '');
     }
 
     if ($FV.thumbs.active !== null) { // not the initial slide

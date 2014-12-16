@@ -18,7 +18,7 @@ $fv-small: rem-calc(7);
 $fv-grey-light: #eae9e9;
 $fv-grey-bg: darken($grey-light, 3%);
 // using the following until the variables get sorted out.
-$font-face-fancy: 'FS Albert Web Regular', Verdana, sans-serif;
+//$font-face-fancy: 'FS Albert Web Regular', Verdana, sans-serif;
 
 #fig-viewer {
   background: rgba(0,0,0,0.8);
@@ -73,7 +73,7 @@ $font-face-fancy: 'FS Albert Web Regular', Verdana, sans-serif;
       float: left;
       border-right: 1px solid $grey-med-dark;
       padding: 0 $pad-smallish;
-
+      //plos one special handling is in _utilities.scss in the brand color section
       &.active {
         @extend %brand-background;
         cursor: default;

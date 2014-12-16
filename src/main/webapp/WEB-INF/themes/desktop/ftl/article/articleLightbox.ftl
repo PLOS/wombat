@@ -19,7 +19,7 @@
     <#-- content is appended with js in article_lightbox.js -->
     </section>
 
-    <section role="tabpanel" aria-hidden="true" class="content" id="panel-figs">
+    <section role="tabpanel" aria-hidden="true" class="content active" id="panel-figs">
     <#-- content is appended with js in article_lightbox.js -->
     </section>
 

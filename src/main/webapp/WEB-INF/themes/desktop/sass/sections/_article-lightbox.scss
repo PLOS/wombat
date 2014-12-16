@@ -18,26 +18,27 @@ $fv-small: rem-calc(7);
 $fv-grey-light: #eae9e9;
 $fv-grey-bg: darken($grey-light, 3%);
 // using the following until the variables get sorted out.
-$font-face-fancy: 'FS Albert Web Regular', Verdana, sans-serif;
 
 #fig-viewer {
   background: rgba(0,0,0,0.8);
   position: fixed;
   z-index: map-get($zindex, modal);
   top: 0;
+
   &.reveal-modal {
     border: 0 none;
   }
+
   #fig-viewer-content {
     background: $grey-light;
-    margin: 10px;
+    margin: $pad-small;
     position: relative;
   }
 
   .fv-header {
     font-family: $font-face-fancy;
-    padding: $fv-small 272px 0 1.1%;
-    height: 46px;
+    padding: $fv-small rem-calc(280) 0 1.1%;
+    height: rem-calc(46);
     background: $grey-dark;
     position: relative;
     border-right: rem-calc(46) solid transparent;
@@ -73,7 +74,7 @@ $font-face-fancy: 'FS Albert Web Regular', Verdana, sans-serif;
       float: left;
       border-right: 1px solid $grey-med-dark;
       padding: 0 $pad-smallish;
-
+      //plos one special handling is in _utilities.scss in the brand color section
       &.active {
         @extend %brand-background;
         cursor: default;
@@ -101,7 +102,7 @@ $font-face-fancy: 'FS Albert Web Regular', Verdana, sans-serif;
   .fv-close {
     background: image-url('sprite.fv.png') no-repeat -40px 0;
     position: absolute;
-    right: -46px;
+    right: rem-calc(-46);
     top: 0;
     width: rem-calc(46);
     height: rem-calc(46);
@@ -112,12 +113,7 @@ $font-face-fancy: 'FS Albert Web Regular', Verdana, sans-serif;
     }
   }
 
-  #figs-viewer-content .tabs-content {
-  //  margin-bottom: 0 !important;
-  //  height: 100%;
-  }
-
-  > .content {
+   > .content {
     padding: 0 !important;
   }
 
@@ -252,7 +248,7 @@ position: relative;
   margin-right: rem-calc(14);
   cursor: pointer;
   display: none;
-  border-radius: 2px;
+  border-radius: $border-radius-smaller;
   &:hover {
     background-color: $plos-default;
   }
@@ -373,15 +369,15 @@ position: relative;
 }
 
 #fig-viewer-thmbs-content {
-  padding-left: 17px;
+  padding-left: rem-calc(17);
   overflow: auto;
   background: $fv-grey-light;
   background: linear-gradient(to right, $fv-grey-light 0%, $fv-grey-light 20px, $grey-light 20px, $grey-light 143px,$fv-grey-light 143px, $fv-grey-light 100%);
 }
 
 #fig-viewer-thmbs .thmb {
-  width: 129px;
-  height: 96px;
+  width: rem-calc(129);
+  height: rem-calc(96);
   overflow: hidden;
   cursor: pointer;
   margin-bottom: $pad-xsmall;
@@ -389,8 +385,8 @@ position: relative;
 }
 
 #fig-viewer-thmbs .thmb .thmb-wrap {
-  width: 129px;
-  height: 96px;
+  width: rem-calc(129);
+  height: rem-calc(96);
   display: table-cell;
   vertical-align: middle;
 }
@@ -406,8 +402,8 @@ position: relative;
   border: 3px solid transparent;
   height: auto;
   width: auto;
-  max-width: 123px;
-  max-height: 90px;
+  max-width: rem-calc(123);
+  max-height: rem-calc(90);
   display: block;
   margin: 0 auto;
 }
@@ -427,7 +423,7 @@ position: relative;
   top: rem-calc(11);
   width: rem-calc(218);
   height: rem-calc(10);
-  margin-left: -109px;
+  margin-left: rem-calc(-109);
   text-align: center;
   background-color: rgba(255,255,255,0.39);
   border-radius: $border-radius-default;
@@ -461,7 +457,7 @@ position: relative;
   left: 50%;
   top: $fv-small;
   width: rem-calc(256);
-  margin-left: -128px;
+  margin-left: rem-calc(-128);
   padding-top: $pad-xsmall;
 }
 
@@ -564,8 +560,8 @@ position: relative;
 .fig-btn.prev .icn {
   display: block;
   width: $fv-small;
-  height: 11px;
-  margin-top: 10px;
+  height: rem-calc(11);
+  margin-top: $pad-small;
 }
 
 .fig-btn.next .icn {
@@ -581,7 +577,7 @@ position: relative;
 .fig-btn.prev .icn {
   background-position: -130px -20px;
   float: left;
-  margin-right: 6px;
+  margin-right: rem-calc(6);
 }
 
 .fig-btn.prev:hover .icn {
@@ -597,8 +593,8 @@ position: relative;
     width: 59.7%;
     margin-left: 1.1%;
     padding: 0;
-    font-size: 1.462em;
-    line-height: 1.158;
+    font-size: rem-calc(19);
+    line-height: rem-calc(22);
 
     a {
       @extend %link-text-default;
@@ -609,22 +605,22 @@ position: relative;
     margin-bottom: $pad-default + $pad-xsmall;
     font-family: $font-face-fancy;
     font-size: $txt-size-medium-large;
-    line-height: 1.25;
+    line-height: rem-calc(20);
   }
 
   .info {
     position: relative;
     float: right;
-    font-size: 14px;
+    font-size: $txt-size-medium;
     width: 34.8%;
     margin-right: 1.1%;
-    padding: 3px 0 0x;
+    padding: 3px 0 0;
     line-height: rem-calc(14);
     p {
       border: 1px solid #e1e1e1;
       border-top-width: 0;
       margin: 0;
-      padding: 6px 8px 9px;
+      padding: rem-calc(6) rem-calc(8) rem-calc(9);
       line-height: rem-calc(14);
     }
   }
@@ -685,7 +681,7 @@ position: relative;
 #fig-viewer-refs ol > li {
   font-size: $txt-size-medium-large;
   font-weight: bold;
-  line-height: 1.25;
+  line-height: rem-calc(20);
   margin-bottom: $fv-small;
 
   a {

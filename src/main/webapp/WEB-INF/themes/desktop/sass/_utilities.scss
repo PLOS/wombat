@@ -243,6 +243,10 @@ example | extension
       text-decoration: none;
     }
   }
+  //tabs on article lightbox
+  #fig-viewer .fv-nav li.active a {
+    color: $clr-body-text;
+  }
 }
 
 

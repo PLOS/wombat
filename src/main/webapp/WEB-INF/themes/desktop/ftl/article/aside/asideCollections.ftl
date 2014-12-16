@@ -4,7 +4,8 @@
   <ul id="collectionList">
   <#list collectionIssues?keys as issueDoi>
     <li>
-     <a href="<@siteLink path="article/browse/issue/info:doi/" + issueDoi
+     <#-- TODO: Implement issue-browsing and point the link to it (this placeholder is currently a 404) -->
+     <a href="<@siteLink path="issue?id=" + issueDoi
                          journalKey=collectionIssues[issueDoi]["parentJournal"]["journalKey"]/>">
         ${collectionIssues[issueDoi]["displayName"]}</a>
     </li>

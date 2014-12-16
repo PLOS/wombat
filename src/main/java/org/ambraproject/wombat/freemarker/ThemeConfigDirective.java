@@ -3,6 +3,7 @@ package org.ambraproject.wombat.freemarker;
 import freemarker.core.Environment;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModelException;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,14 @@ import java.util.Map;
  * </pre>
  * This would read the {@code widget.yaml} (or {@code widget.json}) from the current page's theme, extract the {@code
  * "widgetCount"} value from that map, and set that value as {@code c} for the interior of the body.
+ * <p/>
+ * The optional {@code "journal"} param will look up the theme for another site, based on the site's configured journal
+ * key, and return a config value from that theme instead.
  */
 public class ThemeConfigDirective extends VariableLookupDirective<Object> {
 
+  @Autowired
+  private SiteSet siteSet;
   @Autowired
   private SiteResolver siteResolver;
 
@@ -37,7 +43,12 @@ public class ThemeConfigDirective extends VariableLookupDirective<Object> {
     Object valueNameObj = params.get("value");
     if (valueNameObj == null) throw new TemplateModelException("value param required");
 
+    Object journalKeyObj = params.get("journal");
+
     Theme theme = new SitePageContext(siteResolver, env).getSite().getTheme();
+    if (journalKeyObj != null) {
+      theme = theme.resolveForeignJournalKey(siteSet, journalKeyObj.toString()).getTheme();
+    }
     Map<String, Object> configMap = theme.getConfigMap(mapNameObj.toString());
     if (configMap == null) {
       throw new TemplateModelException("No config map exists for: " + mapNameObj);

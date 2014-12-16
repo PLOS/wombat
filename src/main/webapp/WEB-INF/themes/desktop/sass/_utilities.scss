@@ -46,7 +46,8 @@ type | value
 
 // hide elements so we dont' get a flash of unstyled content
 p,div,span,li,ul, ol{
-  [data-visibility= "none"]{display:none;}
+  [data-visibility= "none"]{display:none;
+  }
 }
 
 [data-js-tooltip=tooltip_trigger]:focus{outline: 0;}

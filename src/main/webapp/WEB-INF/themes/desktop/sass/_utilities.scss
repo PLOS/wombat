@@ -247,6 +247,29 @@ example | extension
   #fig-viewer .fv-nav li.active a {
     color: $clr-body-text;
   }
+  #fig-viewer-controls .fig-btn {
+    color: $grey-dark;
+
+    &.next {
+      .icn {
+        background-position: -140px 0;
+      }
+
+      &:hover .icn {
+        background-position: -140px 0;
+      }
+    }
+
+    &.prev {
+      .icn {
+        background-position: -130px 0;
+      }
+
+      &:hover .icn {
+        background-position: -130px 0;
+      }
+    }
+  }
 }
 
 

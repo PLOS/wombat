@@ -3,18 +3,19 @@
 
 (function($) {
 
-  var $FV, $FVPending, selected_tab, $win, FigViewerInit, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVArrowKeys, FVFigDescription, FVThumbPos, FVDisplayFig, FVLoadMedImg, FVLoadLargeImg, FVSizeImgToFit, FVSwitchImg, FVFigFunctions, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi;
+  var $FV, $FVPending, selected_tab, $win, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVArrowKeys, FVFigDescription, FVThumbPos, FVDisplayFig, FVLoadMedImg, FVLoadLargeImg, FVSizeImgToFit, FVSwitchImg, FVFigFunctions, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi;
 
   $FV = {};
   $FVPending = false;
   selected_tab = $('.tab-title.active').attr('id');
   $win = $(window);
 
+  var lightbox = {};
   // FigViewerInit is initiated when user clicks on anything to open the lightbox. Click events are at the bottom of this page.
   // ref=src of specific figure clicked on; if not specific figure, is set to null
   // state=abst, figs, or refs; external_page = true if not on article page
-  FigViewerInit = function(doi, ref, state, external_page) {
-    var findActive, rerunMathjax, loadJSON;
+  lightbox.FigViewerInit = function(doi, ref, state, external_page) {
+    var rerunMathjax, loadJSON;
 
     //disable scrolling on web page behind fig viewer
     $('body').css('overflow', 'hidden');
@@ -23,7 +24,6 @@
       url: 'article/lightbox',
       success: function(data) {
         //alert('modal data loaded');
-
       },
       error: function() {
         // alert('failed loading modal');
@@ -80,12 +80,13 @@
           var authors = $(data).find('.author-name');
           var auth_list = $(authors).text();
           var article_body = $(data).find('#artText').html();
-
+          var abstract = $(data).find('.abstract');
+          var abstract_info = $(data).find('.articleinfo');
           FVBuildHdr(article_title, auth_list, doi, state);
 
           FVBuildFigs(article_body, doi);
 
-          FVBuildAbs(doi, $(data).find('.abstract'), $(data).find('.articleinfo'));
+          FVBuildAbs(doi, abstract, abstract_info);
 
           FVBuildRefs($(data).find('.references'));
 
@@ -111,10 +112,12 @@
     };
 
     displayModal = function () {
+/*    commented out because event analytics aren't in use yet
 
       if(typeof(_gaq) !== 'undefined'){
         _gaq.push(['_trackEvent',"Lightbox", "Display Modal", ""]);
       }
+*/
 
       FVSize();
       FVDisplayPane(state);
@@ -204,7 +207,6 @@
 
     }  else { }
     $('.fv-close').on('click',function(){
-      $('#fig-viewer').foundation('reveal', 'close');
       FVClose();
     });
   };
@@ -469,10 +471,12 @@
 
   // display figure slides functionality
   FVChangeSlide = function($thmb) {
+/*  commented out because event analytics aren't in use yet
 
     if (typeof(_gaq) !== 'undefined') {
       _gaq.push(['_trackEvent',"Lightbox", "Slide Changed", ""]);
     }
+*/
 
     if ($FV.thumbs.active !== null) {
 
@@ -567,10 +571,10 @@
     }
 
     //close lightbox if link in description is clicked on
-    desc_link = sld.find('.desc').children('a');
+    desc_link = sld.find('.fig_title').next();
 
-    $(desc_link).on('click',function(){
-      $('#fig-viewer').foundation('reveal', 'close');
+    $(desc_link).find('a').on('click',function(){
+      FVClose();
     });
   };
 
@@ -966,12 +970,13 @@
 
     $FVPending = false;
     $FV.empty();
+    $('#fig-viewer').foundation('reveal', 'close');
   };
 
   $(document).on('keydown', function (e) {
     //27 = escape key
     if (e.which == 27) {
-      $('#fig-viewer').foundation('reveal', 'close');
+      FVClose();
     }
   });
 
@@ -1080,7 +1085,7 @@
 
         get_doi = get_ref.slice(0, -5);
 
-        FigViewerInit(get_doi, get_ref, 'figs');
+        lightbox.FigViewerInit(get_doi, get_ref, 'figs');
 
         e.preventDefault();
 
@@ -1097,7 +1102,7 @@
 
         get_doi = $(this).data('doi');
 
-        FigViewerInit(get_doi, get_ref, 'figs');
+        lightbox.FigViewerInit(get_doi, get_ref, 'figs');
 
         e.preventDefault();
        });
@@ -1110,11 +1115,13 @@
 
         var doi = $nav_figs.data('doi');
 
-        FigViewerInit(doi, null, 'figs');
+        lightbox.FigViewerInit(doi, null, 'figs');
 
         e.preventDefault();
       });
     }
+/*
+     Sitewide links: hidden for initial article page release
 
     // links on external pages: figure search results
     var $fig_results = $('#fig-search-results, .article-block .actions, #subject-list-view .actions');
@@ -1123,7 +1130,7 @@
 
         var doi = $(this).data('doi');
 
-        FigViewerInit(doi, null, 'abst', true);
+        lightbox.FigViewerInit(doi, null, 'abst', true);
 
         e.preventDefault();
       });
@@ -1139,10 +1146,11 @@
 
       $toc_block_links.find('a.abstract').on('click', function () {
         var doi = $(this).data('doi');
-        FigViewerInit(doi, null, 'abst', true);
+        lightbox.FigViewerInit(doi, null, 'abst', true);
       });
     }
 
+*/
 
 
   }

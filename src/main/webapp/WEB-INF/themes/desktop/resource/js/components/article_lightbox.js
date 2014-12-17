@@ -539,17 +539,13 @@
     $content = sld.find('div.text-less');
 
     truncate = function() {
-
-      //If called on the same element twice, igntruecond call
-      if($content.data('ellipsis_appended') !== true) {
-
-        $content.ellipsis({ ellipsis_text:'<span class="more">... show more</span>' });
-
+      //If called on the same element twice, ignore second call
+      if($content.data('ellipsis_appended') != 'true') {
+        $content.ellipsis({ ellipsis_text:'<span class="toggle more">... show more</span>' });
         $content.find('span.more').click(function() {
-          $FV.slides_el.addClass('expanded');
+          $FV.slides_el.addClass('txt-expand');
           $FV.txt_expanded = true;
         });
-
         $content.data('ellipsis_appended','true');
       }
     };
@@ -558,13 +554,13 @@
     if (!$FV.txt_expanded) { // landed on slide and descriptions are hidden.
       truncate();
       $btn_less.click(function() {
-        $FV.slides_el.removeClass('expanded');
+        $FV.slides_el.removeClass('txt-expand');
         $FV.txt_expanded = false;
       });
     } else { // landed on this slide and descriptions are visible.
       // truncate following description reveal
       $btn_less.click(function() {
-        $FV.slides_el.removeClass('expanded');
+        $FV.slides_el.removeClass('txt-expand');
         $FV.txt_expanded = false;
         truncate();
       });
@@ -978,6 +974,7 @@
       $('#fig-viewer').foundation('reveal', 'close');
     }
   });
+
   /**
    * Drop words until the element selected fits within its container and then append an ellipsis
    *
@@ -997,11 +994,13 @@
       }
 
       //If this is a text node, work on it, otherwise recurse
+
       if(element.nodeType != 3) {
         ellipsis_added = ellipsis_recurse(topElement, $(element).contents());
 
         if(ellipsis_added) {
           //ellipsis added, no need to keep looping
+          //return true;
           break;
         }
       } else {
@@ -1049,13 +1048,9 @@
    * Drop words until the element selected fits within its container and then append an ellipsis
    */
   $.fn.ellipsis = function(options) {
-
     $.fn.ellipsis.settings = $.extend({}, $.fn.ellipsis.settings, options);
-
     ellipsis_recurse(this[0], $(this).contents());
-
     return this;
-
   };
 
   $.fn.ellipsis.settings = {

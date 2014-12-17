@@ -223,6 +223,10 @@ position: relative;
       text-decoration: underline;
     }
   }
+
+  p {
+    padding-top: $pad-xsmall;
+  }
 }
 
 //expand/collapse controls
@@ -233,6 +237,7 @@ position: relative;
   color: $plos-default;
   margin-top: 1px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 // closer 'x' in upper right corner
@@ -254,22 +259,22 @@ position: relative;
   }
 }
 // class .expanded is added via js
-#fig-viewer-slides.expanded .text-less,
-#fig-viewer-slides.expanded .more,
+#fig-viewer-slides.txt-expand .text-less,
+#fig-viewer-slides.txt-expand .more,
 #fig-viewer-slides .text-more {
   display: none;
 }
 
-#fig-viewer-slides.expanded .less {
+#fig-viewer-slides.txt-expand .less {
   display: block;
 }
 
 #fig-viewer-slides .txt .fig_title {
   padding-top: rem-calc(3);
-  margin-bottom: $pad-xsmall;
+  padding-right: rem-calc(16);
+  margin-bottom: 0;
   font-weight: bold;
-  line-height: rem-calc(18);
-  max-height: rem-calc(32);
+  line-height: rem-calc(16);
 }
 
 #fig-viewer-slides .txt .text-less {
@@ -280,7 +285,7 @@ position: relative;
   padding: 0 5% 0 3.1%;
 }
 
-#fig-viewer-slides.expanded .text-more {
+#fig-viewer-slides.txt-expand .text-more {
   display: block;
   height: rem-calc(190);
   overflow-y: auto;

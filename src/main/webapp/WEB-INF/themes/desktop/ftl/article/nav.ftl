@@ -2,7 +2,7 @@
   <ul class="nav-secondary">
 
     <li class="nav-comments" id="nav-comments">
-      <a href="comments?id=${article.doi}">Reader Comments (${articleComments?size})</a>
+      <a href="article/comments?id=${article.doi}">Reader Comments (${articleComments?size})</a>
     </li>
 
   <#macro mediaCoverageLink href>

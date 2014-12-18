@@ -231,6 +231,9 @@ $line-height-small: ($line-height * .5);
   }
   .figshare_widget{
     @extend .hide-for-print;
+    .fw-download-trigger-one-file:hover{
+      color: $white;   //sadly have to force this to overide styles.
+    }
   }
 }
 

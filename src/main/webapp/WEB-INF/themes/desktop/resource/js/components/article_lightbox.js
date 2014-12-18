@@ -399,8 +399,6 @@
       });
     });
 
-
-
     $FV.slides = $FV.slides_el.find('div.slide'); // all slides
     $FV.figs = $FV.slides_el.find('div.lbfigure'); // all figures
     $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
@@ -1097,6 +1095,7 @@
     var $fig_inline = $('#artText').find('div.figure');
     if ($fig_inline.length) {
       $lnks = $fig_inline.find('a');
+
       $lnks.on('click', function (e) {
         get_ref = $(this).data('uri'); //image reference
 
@@ -1106,8 +1105,28 @@
 
         e.preventDefault();
        });
-    }
+      $popout = $fig_inline.find('.expand');
+      $popout.on('click', function (e) {
+        get_ref = $(this).prev().data('uri'); //image reference
 
+        get_doi = $(this).prev().data('doi');
+
+        lightbox.FigViewerInit(get_doi, get_ref, 'figs');
+
+        e.preventDefault();
+      });
+    }
+    function inlinefigs() {
+        $(this).on('click', function (e) {
+          get_ref = $(this).data('uri'); //image reference
+
+          get_doi = $(this).data('doi');
+
+          lightbox.FigViewerInit(get_doi, get_ref, 'figs');
+
+          e.preventDefault();
+        });
+    }
     // 'figure' item in article floating nav
     var $nav_figs = $('#nav-figures').find('a');
     if ($nav_figs.length) {

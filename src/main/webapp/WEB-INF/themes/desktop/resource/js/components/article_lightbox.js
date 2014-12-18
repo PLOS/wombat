@@ -1092,41 +1092,23 @@
 
     // article inline images
     // this triggers a click on the corresponding lightbox thumbnail
-    var $fig_inline = $('#artText').find('div.figure');
+    var $fig_inline = $('#artText').find('div.img-box');
     if ($fig_inline.length) {
-      $lnks = $fig_inline.find('a');
 
-      $lnks.on('click', function (e) {
-        get_ref = $(this).data('uri'); //image reference
+      $fig_inline.on('click', function (e) {
 
-        get_doi = $(this).data('doi');
+        $href = $(this).find('a');
+
+        get_ref = $href.data('uri'); //image reference
+
+        get_doi = $href.data('doi');
 
         lightbox.FigViewerInit(get_doi, get_ref, 'figs');
 
         e.preventDefault();
        });
-      $popout = $fig_inline.find('.expand');
-      $popout.on('click', function (e) {
-        get_ref = $(this).prev().data('uri'); //image reference
-
-        get_doi = $(this).prev().data('doi');
-
-        lightbox.FigViewerInit(get_doi, get_ref, 'figs');
-
-        e.preventDefault();
-      });
     }
-    function inlinefigs() {
-        $(this).on('click', function (e) {
-          get_ref = $(this).data('uri'); //image reference
 
-          get_doi = $(this).data('doi');
-
-          lightbox.FigViewerInit(get_doi, get_ref, 'figs');
-
-          e.preventDefault();
-        });
-    }
     // 'figure' item in article floating nav
     var $nav_figs = $('#nav-figures').find('a');
     if ($nav_figs.length) {

@@ -399,8 +399,6 @@
       });
     });
 
-
-
     $FV.slides = $FV.slides_el.find('div.slide'); // all slides
     $FV.figs = $FV.slides_el.find('div.lbfigure'); // all figures
     $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
@@ -1094,13 +1092,16 @@
 
     // article inline images
     // this triggers a click on the corresponding lightbox thumbnail
-    var $fig_inline = $('#artText').find('div.figure');
+    var $fig_inline = $('#artText').find('div.img-box');
     if ($fig_inline.length) {
-      $lnks = $fig_inline.find('a');
-      $lnks.on('click', function (e) {
-        get_ref = $(this).data('uri'); //image reference
 
-        get_doi = $(this).data('doi');
+      $fig_inline.on('click', function (e) {
+
+        $href = $(this).find('a');
+
+        get_ref = $href.data('uri'); //image reference
+
+        get_doi = $href.data('doi');
 
         lightbox.FigViewerInit(get_doi, get_ref, 'figs');
 

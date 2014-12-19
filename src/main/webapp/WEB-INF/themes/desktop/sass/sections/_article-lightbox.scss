@@ -158,6 +158,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   display: block;
   overflow: auto;
 }
+
 .invisible {
   visibility: hidden;
 }
@@ -173,13 +174,14 @@ position: relative;
 }
 
 #fig-viewer-slides .figure {
-  overflow: hidden;
+//  overflow: hidden;
   border: solid 2px $grey-light;
-  position: relative;
+position: relative;
 }
 
 #fig-viewer-slides .figure img {
   display: block;
+
 }
 
 #fig-viewer-slides .ui-draggable {
@@ -190,7 +192,7 @@ position: relative;
   position: absolute;
 }
 
-#fig-viewer-figs .staging {
+#fig-viewer-figs .loading {
   display: none;
 }
 

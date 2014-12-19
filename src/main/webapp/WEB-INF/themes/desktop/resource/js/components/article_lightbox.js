@@ -112,12 +112,12 @@
     };
 
     displayModal = function () {
-/*    commented out because event analytics aren't in use yet
+      /*    commented out because event analytics aren't in use yet
 
-      if(typeof(_gaq) !== 'undefined'){
-        _gaq.push(['_trackEvent',"Lightbox", "Display Modal", ""]);
-      }
-*/
+       if(typeof(_gaq) !== 'undefined'){
+       _gaq.push(['_trackEvent',"Lightbox", "Display Modal", ""]);
+       }
+       */
 
       FVSize();
       FVDisplayPane(state);
@@ -215,7 +215,7 @@
   FVBuildAbs = function(doi, abstractText, metadata) {
     $FV.abst_pane = $('<div id="fig-viewer-abst" class="pane" />');
     var hdr, lnk_pdf, pdf_href, $abst_info, $abst_content = $('<div class="abstract" />');
-   // hdr = $()
+    // hdr = $()
     if (abstractText.size() == 0) {
       // There is no abstract. Hide the "view abstract" button created in FVBuildHdr.
       $FV.hdr.find('li.abst').hide();
@@ -288,7 +288,7 @@
     $FV.controls_el = $('<div id="fig-viewer-controls" />');
     $FV.slides_el = $('<div id="fig-viewer-slides" />');
     $FV.staging_el = $('<div class="staging" />'); // hidden container for loading large images
-    $FV.figs_set = [];  // all figures array
+    $FV.figs_array = [];  // array for the .figure divs: .slide > .figure.zoom > .drag-bx > displayed img
     path = siteUrlPrefix+'article/figure/image?size=';
 
     // /wombat/DesktopPlosPathogens/article/figure/image?size=inline&amp;id=info:doi/10.1371/journal.ppat.1000621.g001
@@ -302,18 +302,17 @@
 
     fig_container = $(data).find('.figure');
 
-    //iterate through each image
+    //iterate through each image and build a slide div for it with the controls (next,prev, thumbs)
     $.each(fig_container, function () {
 
       var fig_data = $(this);
       // CAPTION text handling is here
       title_txt = $(fig_data).find('.figcaption');
 
-      //the image long description is hard to find in the article-transform.xml
       text_description = $(fig_data).find('.caption_target').next().html();
 
       //need to strip html from this
-      image_title = title_txt.text();//$(title_txt).text();// + ' ' + this.plainCaptionTitle;
+      image_title = title_txt.text();
       text_title = $(title_txt).html();
       img_ref = $(fig_data).data('doi');
       context_hash = showInContext(img_ref);
@@ -324,19 +323,23 @@
        }*/
 
       // build an empty div with the references of medium & large img versions from the data attributes
-      $fig = $('<div class="lbfigure" data-img-src="' + path + 'medium&id=info:doi/' + img_ref + '" data-img-lg-src="' + path +'large&id=info:doi/' + img_ref + '" data-img-txt="' + image_title + '"></div>');
+      $figure_div = $('<div class="figure" data-img-src="' + path + 'medium&id=info:doi/'
+        + img_ref + '" data-img-lg-src="' + path +'large&id=info:doi/'
+        + img_ref + '" data-img-txt="' + image_title + '"></div>');
 
       // track image loading state of figure
-
-      $fig.data('state', 0)
+      $figure_div.data('state', 0)
         .data('off-top', 0)
         .data('off-left', 0);
 
-      //add the empty $fig div with the image info to the $FV.figs_set array
-      $FV.figs_set.push($fig);
+      //add the empty $figure_div div with the image info to the $FV.figs_array array
+      $FV.figs_array.push($figure_div);
 
       //build thumbnail for thumbnail strip
-      $thmb = $('<div class="thmb"' + ' data-uri="' + img_ref + '"><div class="thmb-wrap"><img src="' + path +'inline&id=info:doi/'+ img_ref + '" alt="' + image_title + '" title="' + image_title + '"></div></div>');
+      $thmb = $('<div class="thmb" data-uri="' + img_ref + '">'
+        + '<div class="thmb-wrap">'
+        + '<img src="' + path +'inline&id=info:doi/'+ img_ref + '" alt="' + image_title + '" title="' + image_title+ '">'
+        + '</div></div>');
 
       // thumbnail close button
       thmb_close = $('<span class="btn-thmb-close" title="close" />');
@@ -355,16 +358,26 @@
       view_less = $('<div class="less" title="view less" />');
       doip = '<p class="doi">doi:'+img_ref+'</p>';
       staging = '<div class="staging" />'; // hidden container for loading large image
-     // context_lnk = '<a class="btn lnk_context close-reveal-modal" href="' + context_hash + '">Show in Context</a>';
+      // context_lnk = '<a class="btn lnk_context close-reveal-modal" href="' + context_hash + '">Show in Context</a>';
       download_btns = '<div class="download">'
         + '<h3>Download:</h3>'
-        + '<div class="item"><a href="' + "article/figure/powerpoint?id=info:doi/" + img_ref + '" title="PowerPoint slide"><span class="btn">PPT</span></a></div>'
-        + '<div class="item"><a href="' + "article/figure/image?size=large&id=info:doi/" + img_ref + '" title="large image"><span class="btn">PNG</span><span class="size">' + /*convertToBytes(this.sizeLarge)*/  '</span></a></div>'
-        + '<div class="item"><a href="' + "article/figure/image?size=original&id=info:doi/" + img_ref + '" title="original image"><span class="btn">TIFF</span><span class="size">' + /*convertToBytes(this.sizeTiff)*/  '</span></a></div>'
+        + '<div class="item">'
+        + '<a href="' + "article/figure/powerpoint?id=info:doi/" + img_ref + '" title="PowerPoint slide">'
+        + '<span class="btn">PPT</span></a>'
+        + '</div>'
+        + '<div class="item">'
+        + '<a href="' + "article/figure/image?size=large&id=info:doi/" + img_ref + '" title="large image">'
+        + '<span class="btn">PNG</span>'
+        /* + '<span class="size">' +convertToBytes(this.sizeLarge)  '</span></a>' */
+        + '</div>'
+        + '<div class="item">'
+        + '<a href="' + "article/figure/image?size=original&id=info:doi/" + img_ref + '" title="original image"><span class="btn">TIFF</span>'
+        /* + '<span class="size">' + convertToBytes(this.sizeTiff)  '</span>'*/
+        +'</a></div>'
         + '</div>';
 
       //combine the markup & add to the slide
-      slide.append($fig);
+      slide.append($figure_div);
       slide.append(staging);
       txt_less.append(title);
       txt_more.append(view_less);
@@ -400,7 +413,7 @@
     });
 
     $FV.slides = $FV.slides_el.find('div.slide'); // all slides
-    $FV.figs = $FV.slides_el.find('div.lbfigure'); // all figures
+    $FV.figs = $FV.slides_el.find('div.figure'); // all figures
     $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
     $FV.thumbs.active = null; // used to track active thumb & figure
 
@@ -425,7 +438,7 @@
 
     $FV.thumbs_el.append($FV.thumbs_cont);
     $FV.slides = $FV.slides_el.find('div.slide'); // all slides
-    $FV.figs = $FV.slides_el.find('div.lbfigure'); // all figures
+    $FV.figs = $FV.slides_el.find('div.figure'); // all figures
     $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
     $FV.thumbs.active = null; // used to track active thumb & figure
 
@@ -469,18 +482,19 @@
 
   // display figure slides functionality
   FVChangeSlide = function($thmb) {
-/*  commented out because event analytics aren't in use yet
 
-    if (typeof(_gaq) !== 'undefined') {
-      _gaq.push(['_trackEvent',"Lightbox", "Slide Changed", ""]);
-    }
-*/
+    /*  commented out because event analytics aren't in use yet
+
+     if (typeof(_gaq) !== 'undefined') {
+     _gaq.push(['_trackEvent',"Lightbox", "Slide Changed", ""]);
+     }
+     */
 
     if ($FV.thumbs.active !== null) {
 
       var old_fig, old_img, i, this_sld;
 
-      old_fig = $FV.figs_set[$FV.thumbs.index($FV.thumbs.active)];
+      old_fig = $FV.figs_array[$FV.thumbs.index($FV.thumbs.active)];
       old_img = old_fig.find('img');
       $FV.thumbs.active.removeClass('active');
 
@@ -601,7 +615,7 @@
   FVDisplayFig = function(i) {
     $FV.loading.show();
     $FV.zoom.hide();
-    var this_fig = $FV.figs_set[i];
+    var this_fig = $FV.figs_array[i];
     var $img = this_fig.find('img');
     var state = this_fig.data('state');
     // state of figure
@@ -627,7 +641,7 @@
         // waiting on large image to load
         break;
       case 4:
-        FVSwitchImg($FV.figs_set[i]);
+        FVSwitchImg($FV.figs_array[i]);
         $FV.loading.hide();
         this_fig.data('state', 5);
         break;
@@ -643,17 +657,17 @@
 
 // build medium image, when loaded - size to fit, call load large image function
   FVLoadMedImg = function(i) {
-    var src = $FV.figs_set[i].data('img-src');
-    var txt = $FV.figs_set[i].data('img-txt');
+    var src = $FV.figs_array[i].data('img-src');
+    var txt = $FV.figs_array[i].data('img-txt');
     var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="med invisible">');
-    $FV.figs_set[i].append($img); // add medium image (set to hidden in css)
-    $FV.figs_set[i].data('state', 1);
-    $FV.figs_set[i].imagesLoaded(function() {
-      $FV.figs_set[i].data('state', 2);
+    $FV.figs_array[i].append($img); // add medium image (set to hidden in css)
+    $FV.figs_array[i].data('state', 1);
+    $FV.figs_array[i].imagesLoaded(function() {
+      $FV.figs_array[i].data('state', 2);
       if (i == $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
-        FVSizeImgToFit($FV.figs_set[i], false);
-        $FV.figs_set[i].find('img').removeClass('invisible');
-        $FV.figs_set[i].data('state', 3);
+        FVSizeImgToFit($FV.figs_array[i], false);
+        $FV.figs_array[i].find('img').removeClass('invisible');
+        $FV.figs_array[i].data('state', 3);
         FVLoadLargeImg(i);
       }
     });
@@ -662,18 +676,18 @@
 // load large images in div.staging
   FVLoadLargeImg = function(i) {
 
-    var src = $FV.figs_set[i].data('img-lg-src');
-    var txt = $FV.figs_set[i].data('img-txt');
-    var stage = $FV.figs_set[i].next('div.staging');
+    var src = $FV.figs_array[i].data('img-lg-src');
+    var txt = $FV.figs_array[i].data('img-txt');
+    var stage = $FV.figs_array[i].next('div.staging');
     var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="lg invisible">');
 
     $(stage).append($img); // load large img into 'staging' div
-    $(stage).imagesLoaded(function() {
-      $FV.figs_set[i].data('state', 4);
+    $(stage).imagesLoaded(function() {   console.log($img.height());
+      $FV.figs_array[i].data('state', 4);
       if (i == $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
-        FVSwitchImg($FV.figs_set[i]);
+        FVSwitchImg($FV.figs_array[i]);
         $FV.loading.hide();
-        $FV.figs_set[i].data('state', 5);
+        $FV.figs_array[i].data('state', 5);
       }
     });
   };
@@ -723,18 +737,20 @@
 // switch medium image with large image
 
   FVSwitchImg = function($fig) {
-    var img_m, img_m_h, img_l, timer, img_l_h, img_l_w, drag_bx;
+    var img_m, img_m_h, img_l, img_l_h, img_l_w, drag_bx;
     img_m = $fig.find('img');
     img_m_h = img_m.height();
 
     img_l = $fig.next().find('img');
+    img_l_h = img_l.height();// this returns the *&% client width
+    img_l_w = img_l.width();
 
     // move large image into figure div (image hidden by css)
     function timer() {
       window.setTimeout(function () {
         $fig.append(img_l);
-        img_l_h = $fig.find(img_l).height();
-        img_l_w = $fig.find(img_l).width();
+       /* img_l_h = $fig.find(img_l).height();   console.log(img_l_h);
+        img_l_w = $fig.find(img_l).width();*/
         $fig.data('img_l_w', img_l_w).data('img_l_h', img_l_h);
 
         if (img_l_h < img_m_h) {
@@ -785,8 +801,9 @@
     img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
     resize_h = $img.height(); // height of sized to fit image
     drag = false; // dragging not enabled
-
+    console.log($img);
     $FV.zoom.show();
+
     $FV.zoom.sldr.slider({
       min: resize_h,
       max: real_h,
@@ -816,7 +833,7 @@
       var value = $FV.zoom.sldr.slider("value");
       value = resize_h + (real_h - resize_h) / 4 * Math.ceil((value - resize_h) * 4 / (real_h - resize_h) + 0.1);
       value = Math.min(Math.ceil(value), real_h);
-
+      console.log(value);
       $FV.zoom.sldr.slider('value', value );
       imgResize(value);
       FVDragInit($fig, $img);
@@ -949,8 +966,6 @@
 
   };
 
-
-// close
   var FVClose = function() {
 
     //re-enable scrolling
@@ -960,11 +975,6 @@
 
     //unbind the resizing and the arrow key bindings
     $(window).off('resize.modal keydown');
-
-    //will record the timeStamp for when the modal is closed
-     if(typeof event !== 'undefined') {
-     close_time = event.timeStamp;
-     }
 
     $FVPending = false;
     $FV.empty();
@@ -984,6 +994,7 @@
    * @param topElement the very top element being worked on
    * @param parts the elements currently being worked on
    */
+  // TODO: replace this truncate function
   var ellipsis_recurse = function(topElement, parts) {
     var ellipsis_added = false;
 
@@ -1106,7 +1117,7 @@
         lightbox.FigViewerInit(get_doi, get_ref, 'figs');
 
         e.preventDefault();
-       });
+      });
     }
 
     // 'figure' item in article floating nav
@@ -1121,37 +1132,37 @@
         e.preventDefault();
       });
     }
-/*
+    /*
      Sitewide links: hidden for initial article page release
 
-    // links on external pages: figure search results
-    var $fig_results = $('#fig-search-results, .article-block .actions, #subject-list-view .actions');
-    if ($fig_results.length) {
-      $fig_results.find('a.figures').on('click', function (e) {
+     // links on external pages: figure search results
+     var $fig_results = $('#fig-search-results, .article-block .actions, #subject-list-view .actions');
+     if ($fig_results.length) {
+     $fig_results.find('a.figures').on('click', function (e) {
 
-        var doi = $(this).data('doi');
+     var doi = $(this).data('doi');
 
-        lightbox.FigViewerInit(doi, null, 'abst', true);
+     lightbox.FigViewerInit(doi, null, 'abst', true);
 
-        e.preventDefault();
-      });
-    }
+     e.preventDefault();
+     });
+     }
 
-    // links on external pages: figure link in the toc
-    var $toc_block_links = $('#toc-block div.links');
-    if ($toc_block_links.length) {
-      $toc_block_links.find('a.figures').on('click', function () {
-        var doi = $(this).data('doi');
-        FigViewerInit(doi, null, 'figs', true);
-      });
+     // links on external pages: figure link in the toc
+     var $toc_block_links = $('#toc-block div.links');
+     if ($toc_block_links.length) {
+     $toc_block_links.find('a.figures').on('click', function () {
+     var doi = $(this).data('doi');
+     FigViewerInit(doi, null, 'figs', true);
+     });
 
-      $toc_block_links.find('a.abstract').on('click', function () {
-        var doi = $(this).data('doi');
-        lightbox.FigViewerInit(doi, null, 'abst', true);
-      });
-    }
+     $toc_block_links.find('a.abstract').on('click', function () {
+     var doi = $(this).data('doi');
+     lightbox.FigViewerInit(doi, null, 'abst', true);
+     });
+     }
 
-*/
+     */
 
 
   }

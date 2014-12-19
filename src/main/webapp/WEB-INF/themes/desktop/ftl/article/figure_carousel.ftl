@@ -8,7 +8,10 @@
       <div class="slider"><#-- Large-width container -->
         <#list article.figures as figure>
 
-          <div class="carousel-item" data-doi="${figure.doi}">
+          <#-- Omit figures that don't appear in article body (e.g. a striking image) -->
+          <#if figure.contextElement?has_content>
+
+            <div class="carousel-item" data-doi="${figure.doi}">
 
               <@siteLink path=("article/figure/image?size=inline&id=" + figure.doi) ; src>
                 <img src="${src?html}"
@@ -18,8 +21,8 @@
                 />
               </@siteLink>
 
-          </div>
-
+            </div>
+          </#if>
         </#list>
       </div>
     </div>

@@ -179,22 +179,22 @@ public class AssetServiceImpl implements AssetService {
 
     @Override
     public void error(String message, String sourceName, int line, String lineSource, int lineOffset) {
-      throw new AssetCompilationException(getErrorMessage(sourceName, line, message, "error"));
+      throw new AssetCompilationException(getErrorMessage(sourceName, line, message, "error", lineSource));
     }
 
     @Override
     public void warning(String message, String sourceName, int line, String lineSource, int lineOffset) {
-      logger.warn(getErrorMessage(sourceName, line, message, "warning"));
+      logger.warn(getErrorMessage(sourceName, line, message, "warning", lineSource));
     }
 
     @Override
     public EvaluatorException runtimeError(String message, String sourceName, int line, String lineSource,
                                            int lineOffset) {
-      return new EvaluatorException(getErrorMessage(sourceName, line, message, "runtime error"));
+      return new EvaluatorException(getErrorMessage(sourceName, line, message, "runtime error", lineSource));
     }
 
-    private String getErrorMessage(String sourceFile, int line, String message, String errorType) {
-      return String.format("Javascript %s in %s: %d: %s", errorType, sourceFile, line, message);
+    private String getErrorMessage(String sourceFile, int line, String message, String errorType, String lineSource) {
+      return String.format("Javascript %s in %s: %d: %s. Line source: %s", errorType, sourceFile, line, message, lineSource);
     }
   }
 

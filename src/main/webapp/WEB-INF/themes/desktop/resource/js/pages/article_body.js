@@ -83,8 +83,4 @@
     return tableOpen(figId, "HTML", table);
   });
 
-  $('.figure-inline-download').find('a').on('click', function(e){
-    e.preventDefault();
-  });
- // $('')
 })(jQuery);

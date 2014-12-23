@@ -1,9 +1,9 @@
 /*
 style changes to review with s, p & p
 
-#fig-viewer-refs h3 normalize margins
+#lightbox-refs (#lightbox-refs) h3 normalize margins
 
-#fig-viewer-abst: padding top from 37px to 25px
+#lightbox-abst (#lightbox-abst): padding top from 37px to 25px
 
 download pdf button: change 636363 to 666666?
 change rounded corner radius from 4px to 5px
@@ -19,7 +19,7 @@ $fv-grey-light: #eae9e9;
 $fv-grey-bg: darken($grey-light, 3%);
 // using the following until the variables get sorted out.
 
-#fig-viewer {
+#article-lightbox {
   background: rgba(0,0,0,0.8);
   position: fixed;
   z-index: map-get($zindex, modal);
@@ -29,7 +29,7 @@ $fv-grey-bg: darken($grey-light, 3%);
     border: 0 none;
   }
 
-  #fig-viewer-content {
+  #lightbox-content {
     background: $grey-light;
     margin: $pad-small;
     position: relative;
@@ -144,17 +144,17 @@ $fv-grey-bg: darken($grey-light, 3%);
   }
 }
 
-.figs #fig-viewer-figs {
+.figs #lightbox-figs {
   display: block;
   position: relative;
 }
 
-.abst #fig-viewer-abst {
+.abst #lightbox-abst {
   display: block;
   overflow: auto;
 }
 
-.refs #fig-viewer-refs {
+.refs #lightbox-refs {
   display: block;
   overflow: auto;
 }
@@ -186,11 +186,11 @@ position: relative;
   cursor: move;
 }
 
-#fig-viewer-figs .drag-bx {
+#lightbox-figs .drag-bx {
   position: absolute;
 }
 
-#fig-viewer-figs .staging {
+#lightbox-figs .staging {
   display: none;
 }
 
@@ -307,34 +307,34 @@ position: relative;
   position: relative !important;
 }
 
-#fig-viewer-figs .download {
+#lightbox-figs .download {
   position: absolute;
   top: rem-calc(40);
   right: 2.7%;
 }
 
-#fig-viewer-figs .download h3 {
+#lightbox-figs .download h3 {
   float: left;
   font-size: $txt-size-small;
   line-height: rem-calc(27);
   margin: 0;
 }
 
-#fig-viewer-figs .download .item {
+#lightbox-figs .download .item {
   float: left;
   margin-left: $pad-default + $pad-xsmall;
 }
-#fig-viewer-figs .download .item a {
+#lightbox-figs .download .item a {
   display: block;
   color: $grey-dark;
   text-decoration: none;
 }
-#fig-viewer-figs .download .size {
+#lightbox-figs .download .size {
   display: block;
   font-size: 0.769em;
   margin-top: $pad-xsmall;
 }
-#fig-viewer-figs .download .item a:hover .btn {
+#lightbox-figs .download .item a:hover .btn {
   background: $plos-default;
   color: $white;
 }
@@ -588,7 +588,8 @@ position: relative;
 .fig-btn.prev:hover .icn {
   background-position: -130px -20px;
 }
-#fig-viewer-abst {
+#lightbox-abst {
+  display: none;
   overflow: auto;
   font-family: $font-face-fancy;
   padding: rem-calc(37) 0 rem-calc(75);
@@ -644,7 +645,7 @@ position: relative;
   }
 }
 
-#fig-viewer-abst .info p strong {
+#lightbox-abst .info p strong {
   font-size: $txt-size-medium;
   font-weight: bold;
   display: block;
@@ -652,7 +653,7 @@ position: relative;
   line-height: rem-calc(15);
 }
 
-#fig-viewer-abst .fv-lnk-pdf a {
+#lightbox-abst .fv-lnk-pdf a {
   @include rounded-pill($background: $grey-med-dark, $padding: 0 rem-calc(23));
   color: $white;
   font-family: $font-face-plain;
@@ -667,23 +668,24 @@ position: relative;
   }
 }
 
-#fig-viewer-refs {
+#lightbox-refs {
+  display: none;
   padding-top: $pad-default + $pad-xsmall;
 }
 
-#fig-viewer-refs h3 {
+#lightbox-refs h3 {
   margin: 0 0 rem-calc(7) rem-calc(21);
   line-height: rem-calc(24);
 }
 
-#fig-viewer-refs ol {
+#lightbox-refs ol {
   padding-left: rem-calc(40);
   width: 87.5%;
   margin: 0;
   list-style-type: none;
 }
 
-#fig-viewer-refs ol > li {
+#lightbox-refs ol > li {
   font-size: $txt-size-medium-large;
   font-weight: bold;
   line-height: rem-calc(20);
@@ -699,7 +701,7 @@ position: relative;
   }
 }
 
-#fig-viewer-refs span.order {
+#lightbox-refs span.order {
   margin-left: rem-calc(-26);
   float: left;
   width: $pad-default;
@@ -707,7 +709,7 @@ position: relative;
   font-weight: bold;
 }
 
-#fig-viewer-refs .reflinks {
+#lightbox-refs .reflinks {
   font-weight: normal;
   font-size: $txt-size-small;
 }

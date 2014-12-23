@@ -20,10 +20,13 @@
     //disable scrolling on web page behind fig viewer
     $('body').css('overflow', 'hidden');
     $('body').on('touchmove', function(e){e.preventDefault()});
-    $('#fig-viewer').foundation('reveal', 'open', {
+    $FV = $('body').find('#article-lightbox');
+    $FV.cont = $('#lightbox-content');
+
+    $('#article-lightbox').foundation('reveal', 'open', {
       url: 'article/lightbox',
       success: function(data) {
-        //alert('modal data loaded');
+        console.log('modal data loaded');
       },
       error: function() {
         // alert('failed loading modal');
@@ -37,8 +40,7 @@
     $FVPending = true;
 
 
-    $FV = $('#fig-viewer');
-    $FV.cont = $('#fig-viewer-content');
+
     $FV.hdr = $('.fv-header');
 
     if (ref) {
@@ -51,7 +53,7 @@
     $FV.txt_expanded = false; // figure descriptions are closed
     $FV.thmbs_vis = false; // figure thumbnails are hidden
     $FV.external_page = external_page ? true : false;
-    $(document).foundation({tab: {toggleable: true}});
+   // $(document).foundation({tab: {toggleable: true}});
 
 
     loadJSON = function() {
@@ -80,13 +82,14 @@
           var authors = $(data).find('.author-name');
           var auth_list = $(authors).text();
           var article_body = $(data).find('#artText').html();
-          var abstract = $(data).find('.abstract');
+          var abstract_data = $(data).find('.abstract');
           var abstract_info = $(data).find('.articleinfo');
+
           FVBuildHdr(article_title, auth_list, doi, state);
 
           FVBuildFigs(article_body, doi);
 
-          FVBuildAbs(doi, abstract, abstract_info);
+          FVBuildAbs(doi, abstract_data, abstract_info);
 
           FVBuildRefs($(data).find('.references'));
 
@@ -123,13 +126,13 @@
       FVDisplayPane(state);
 
       // debounce resize event
-      var resizeDelay;
+     /* var resizeDelay;
       $(window).on('resize.modal', function() {
         clearTimeout(resizeDelay);
         resizeDelay = setTimeout(function() {
           FVSize();
         }, 100);
-      });
+      });*/
     };
 
     loadJSON();
@@ -172,7 +175,9 @@
         $(this).addClass('active').find('a').trigger('click');
       }
     });
-
+    /*$findActive.on('click', function(){
+         target show();
+    });*/
     if ($FV.external_page) {
       articleLink = "http://dx.plos.org/" + articleDoi.replace("info:doi/", "");
       h1 = '<a href="' + articleLink + '">' + title + '</a>';
@@ -213,7 +218,7 @@
 
   // build abstract pane
   FVBuildAbs = function(doi, abstractText, metadata) {
-    $FV.abst_pane = $('<div id="fig-viewer-abst" class="pane" />');
+    $FV.abst_pane = $('<div id="lightbox-abst" class="pane" />');
     var hdr, lnk_pdf, pdf_href, $abst_info, $abst_content = $('<div class="abstract" />');
    // hdr = $()
     if (abstractText.size() == 0) {
@@ -234,7 +239,7 @@
     $FV.abst_pane.append($abst_info);
     $FV.abst_pane.append($abst_content);
 
-    $('#panel-abst').append($FV.abst_pane);
+    $('#lightbox-content').append($FV.abst_pane);
 
   };
 
@@ -242,18 +247,18 @@
   FVBuildRefs = function(references) {
     var refs_content = references.html();
 
-    $FV.refs_pane = $('<div id="fig-viewer-refs" class="pane"/>');
+    $FV.refs_pane = $('<div id="lightbox-refs" class="pane"/>');
     $FV.refs_pane.append('<h3>References</h3>');
     $FV.refs_pane.append('<ol class="references">'+ refs_content +'</ol>');
-    $('#panel-refs').append($FV.refs_pane);
+    $('#lightbox-content').append($FV.refs_pane);
   };
 
   // add panel name to fig-viewer tag & display figure chosen (if on figs panel)
   FVDisplayPane = function(pane) {
 
-    $FV.removeClass('abst figs refs').addClass(pane);
+    $FV.addClass(pane);
 
-    if (pane == 'figs') {
+   // if (pane == 'figs') {
 
       if ($FV.thumbs.active === null) { // no thumb is active
 
@@ -273,7 +278,7 @@
         FVDisplayFig($FV.thumbs.index($FV.thumbs.active));
 
       }
-    } else { }
+   // } else { }
   };
 
 
@@ -282,7 +287,7 @@
     var path, showInContext, fig_container, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, context_hash, doip, $fig, staging, download_btns, context_lnk, chk_desc, text_description;
 
     //set the markup
-    $FV.figs_pane = $('<div id="fig-viewer-figs" class="pane" />');
+    $FV.figs_pane = $('<div id="lightbox-figs" class="pane" />');
     $FV.thumbs_el = $('<div id="fig-viewer-thmbs" />');
     $FV.thumbs_cont = $('<div id="fig-viewer-thmbs-content" />');
     $FV.controls_el = $('<div id="fig-viewer-controls" />');
@@ -324,7 +329,7 @@
        }*/
 
       // build an empty div with the references of medium & large img versions from the data attributes
-      $fig = $('<div class="lbfigure" data-img-src="' + path + 'medium&id=info:doi/' + img_ref + '" data-img-lg-src="' + path +'large&id=info:doi/' + img_ref + '" data-img-txt="' + image_title + '"></div>');
+      $fig = $('<div class="figure" data-img-src="' + path + 'medium&id=info:doi/' + img_ref + '" data-img-lg-src="' + path +'large&id=info:doi/' + img_ref + '" data-img-txt="' + image_title + '"></div>');
 
       // track image loading state of figure
 
@@ -399,11 +404,6 @@
       });
     });
 
-    $FV.slides = $FV.slides_el.find('div.slide'); // all slides
-    $FV.figs = $FV.slides_el.find('div.lbfigure'); // all figures
-    $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
-    $FV.thumbs.active = null; // used to track active thumb & figure
-
     // figures controls in control bar
     $('<span class="fig-btn thmb-btn"><i class="icn"></i> All Figures</span>').on('click',function() {
       $FV.figs_pane.toggleClass('thmbs-vis');
@@ -425,7 +425,7 @@
 
     $FV.thumbs_el.append($FV.thumbs_cont);
     $FV.slides = $FV.slides_el.find('div.slide'); // all slides
-    $FV.figs = $FV.slides_el.find('div.lbfigure'); // all figures
+    $FV.figs = $FV.slides_el.find('div.figure'); // all figures
     $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
     $FV.thumbs.active = null; // used to track active thumb & figure
 
@@ -440,8 +440,9 @@
     $FV.figs_pane.append($FV.slides_el);
     $FV.figs_pane.append($FV.thumbs_el);
     $FV.figs_pane.append($FV.staging_el);
-
-    $('#panel-figs').append($FV.figs_pane);
+    $('#lightbox-content').append($FV.figs_pane);
+    //$FV.cont.append($FV.figs_pane);
+/*
 
     if ($.support.touchEvents) {
       var th;
@@ -464,6 +465,7 @@
         threshold:25
       });
     }
+*/
 
   }; //end FVBuildFigs
 
@@ -495,13 +497,13 @@
 
     i = $FV.thumbs.index($thmb);
     this_sld = $FV.slides.eq(i);
-
     this_sld.show();
     FVDisplayFig(i);
     FVFigDescription(this_sld);
 
     $FV.thumbs.active.next().length ? $FV.nxt.removeClass('invisible') : $FV.nxt.addClass('invisible');
     $FV.thumbs.active.prev().length ? $FV.prv.removeClass('invisible') : $FV.prv.addClass('invisible');
+
     if ($FV.thmbs_vis) {
       FVThumbPos($thmb);
     }
@@ -968,7 +970,7 @@
 
     $FVPending = false;
     $FV.empty();
-    $('#fig-viewer').foundation('reveal', 'close');
+    $('#article-lightbox').foundation('reveal', 'close');
   };
 
   $(document).on('keydown', function (e) {

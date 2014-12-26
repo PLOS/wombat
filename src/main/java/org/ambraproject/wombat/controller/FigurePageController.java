@@ -118,4 +118,14 @@ public class FigurePageController extends WombatController {
     return site + "/ftl/article/figure";
   }
 
+  /**
+   * Figure lightbox
+   */
+  @RequestMapping(value = {"/article/lightbox", "/{site}/article/lightbox"})
+  public String renderLightbox(Model model, @SiteParam Site site)
+          throws IOException {
+
+    return site + "/ftl/article/articleLightbox";
+  }
+
 }

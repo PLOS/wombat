@@ -106,6 +106,7 @@
 
     spin_opts = {
       width: 1,
+      zIndex: 5000,
       top: '40%', // Top position relative to parent
       left: '50%' // Left position relative to parent
     };

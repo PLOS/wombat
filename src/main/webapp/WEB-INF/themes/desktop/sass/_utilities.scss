@@ -46,7 +46,8 @@ type | value
 
 // hide elements so we dont' get a flash of unstyled content
 p,div,span,li,ul, ol{
-  [data-visibility= "none"]{display:none;}
+  [data-visibility= "none"]{display:none;
+  }
 }
 
 [data-js-tooltip=tooltip_trigger]:focus{outline: 0;}
@@ -240,6 +241,33 @@ example | extension
 
     &:hover {
       text-decoration: none;
+    }
+  }
+  //tabs on article lightbox
+  #fig-viewer .fv-nav li.active a {
+    color: $clr-body-text;
+  }
+  #fig-viewer-controls .fig-btn {
+    color: $grey-dark;
+
+    &.next {
+      .icn {
+        background-position: -140px 0;
+      }
+
+      &:hover .icn {
+        background-position: -140px -20px;
+      }
+    }
+
+    &.prev {
+      .icn {
+        background-position: -130px 0;
+      }
+
+      &:hover .icn {
+        background-position: -130px -20px;
+      }
     }
   }
 }

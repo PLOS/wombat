@@ -10,6 +10,11 @@
   text-shadow: none !important;
 }
 
+body{
+  margin: 2em auto;
+  p{font-size: 1em}
+}
+
 a,
 a:visited { text-decoration: underline;}
 
@@ -33,7 +38,7 @@ img { page-break-inside: avoid; }
 
 img { max-width: 100% !important; }
 
-@page { margin: 0.5cm; }
+@page{ margin: .75in; }
 
 p,
 h2,
@@ -55,3 +60,4 @@ h3 { page-break-after: avoid; }
 #floatTitleTop {
   @extend .hide-for-print;
 }
+

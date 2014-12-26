@@ -438,6 +438,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   .email {
     @extend .icon-author-address;
   }
+
+  ///print styles
+  [data-js-toggle="toggle_trigger"], [data-js-toggle="toggle_add"]{
+    @extend .hide-for-print;
+  }
+  [data-js-toggle="toggle_target"]{
+    @extend .show-for-print;
+  }
 }
 
 .author-info{
@@ -466,7 +474,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.active {
+.author-list .active {
   a, a:hover { color: $white; }
 
   .author-name {
@@ -478,7 +486,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     z-index: map-get($zindex, dropdown);
   }
 
-  .close{
+  .close {
 
     @extend .closer;
     position: absolute;
@@ -1002,17 +1010,13 @@ body.article .ui-widget-overlay {
 }
 
 @media print {
-  @page {
-    margin: .75in;
-  }
 
   .article-body {
-    width: 100%;
+    width: 95%;
   }
 
   .title-block {
     margin-top: $pad-xsmall;
-    margin-left: -$pad-small;
 
     &:before {
       content: image-url('logo.png') !important;

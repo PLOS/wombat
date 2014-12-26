@@ -54,8 +54,8 @@
   <#if pubUrlPrefix?has_content>
     <meta property="og:url" content="${pubUrlPrefix}article?id=${articleDoi}"/>
   </#if>
-  <meta property="og:title" content="${article.title?replace('<.+?>',' ','r')}"/>
-  <meta property="og:description" content="${article.description?replace('<.+?>',' ','r')}"/>
+  <meta property="og:title" content="${article.title?replace('<.+?>',' ','r')?html}"/>
+  <meta property="og:description" content="${article.description?replace('<.+?>',' ','r')?html}"/>
   <#if (article.strkImgURI?? && (article.strkImgURI?length > 0)) >
   <meta property="og:image" content="http://dx.plos.org/${article.strkImgURI?replace('info:doi/','')}"/>
   </#if>

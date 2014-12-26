@@ -88,7 +88,7 @@
 
   <@js src="resource/js/components/table_open.js"/>
   <@js src="resource/js/components/figshare.js"/>
-<#--move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide-->
+<#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
   <@js src="resource/js/components/article_lightbox.js"/>
   <@js src="resource/js/util/alm_config.js"/>
   <@js src="resource/js/util/alm_query.js"/>
@@ -100,7 +100,6 @@
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>
-<@js src="resource/js/pages/analytics_article.js"/>
   <@renderJs />
 
 <#include "mathjax.ftl">
@@ -109,7 +108,7 @@
     (function ($) {
       /*filesizetable*/
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
-      $(document).foundation({tab: {toggleable: true}});
+
     })(jQuery);
 
   </script>
@@ -120,6 +119,12 @@
   <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
 
   <#include "aside/crossmarkIframe.ftl" />
-
+<#--
+TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide
+-->
+<div class="reveal-modal-bg"></div>
+<div id="fig-viewer" class="reveal-modal" data-reveal>
+  <#--<#include "articleLightbox.ftl" />-->
+</div>
 </body>
 </html>

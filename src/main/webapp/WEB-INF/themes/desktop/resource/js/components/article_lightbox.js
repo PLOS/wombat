@@ -3,22 +3,32 @@
 
 (function($) {
 
-  var $FV, $FVPending, selected_tab, $win, FigViewerInit, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVArrowKeys, FVFigDescripton, FVThumbPos, FVDisplayFig, FVLoadMedImg, FVLoadLargeImg, FVSizeImgToFit, FVSwitchImg, FVFigFunctions, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi;
+  var $FV, $FVPending, selected_tab, $win, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVArrowKeys, FVFigDescription, FVThumbPos, FVDisplayFig, FVLoadMedImg, FVLoadLargeImg, FVSizeImgToFit, FVSwitchImg, FVFigFunctions, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi;
 
   $FV = {};
   $FVPending = false;
   selected_tab = $('.tab-title.active').attr('id');
   $win = $(window);
 
+  var lightbox = {};
   // FigViewerInit is initiated when user clicks on anything to open the lightbox. Click events are at the bottom of this page.
   // ref=src of specific figure clicked on; if not specific figure, is set to null
   // state=abst, figs, or refs; external_page = true if not on article page
-  FigViewerInit = function(doi, ref, pane, external_page) {
-    var findActive, rerunMathjax, loadJSON;
+  lightbox.FigViewerInit = function(doi, ref, state, external_page) {
+    var rerunMathjax, loadJSON;
 
     //disable scrolling on web page behind fig viewer
     $('body').css('overflow', 'hidden');
     $('body').on('touchmove', function(e){e.preventDefault()});
+    $('#fig-viewer').foundation('reveal', 'open', {
+      url: 'article/lightbox',
+      success: function(data) {
+        //alert('modal data loaded');
+      },
+      error: function() {
+        // alert('failed loading modal');
+      }
+    });
 
     // allow only one instance of FigViewerInit to be pending.
     if ($FVPending) {
@@ -26,25 +36,11 @@
     }
     $FVPending = true;
 
-    //find the container divs in figviewer.ftl
+
     $FV = $('#fig-viewer');
     $FV.cont = $('#fig-viewer-content');
-    $FV.nav = $('.fv-nav');
+    $FV.hdr = $('.fv-header');
 
-    findActive = $('.fv-nav').find('li');
-
-    //highlight the active nav item. even though foundation tabs is used for navigation when the lightbox is open,
-    // the initial tab needs to be registered manually: this part is not handled by foundation.
-    $.each(findActive, function(){
-      var activateLi = $(this).hasClass(pane);
-      if (activateLi === true){
-        $(this).addClass('active');
-      }
-    });
-
-    $(findActive).on('click', function(){
-      FVDisplayPane(this.className);
-    });
     if (ref) {
       ref = ref.slice(9);
     }  else {
@@ -55,7 +51,54 @@
     $FV.txt_expanded = false; // figure descriptions are closed
     $FV.thmbs_vis = false; // figure thumbnails are hidden
     $FV.external_page = external_page ? true : false;
+    $(document).foundation({tab: {toggleable: true}});
 
+
+    loadJSON = function() {
+
+      var apiurl = siteUrlPrefix + 'article?id=' + doi;
+
+      $.ajax({
+        url:apiurl,
+        dataFilter:function (data, type) {
+          return data.replace(/(^\/<\*|\*\/$)/g, '');
+        },
+        cache: false,
+        dataType:'html',
+        error: function (jqXHR, textStatus, errorThrown) {
+
+          //TODO: put in proper error handling
+          //console.log(errorThrown);
+
+          $FVPending = false;
+        },
+        success:function (data) {
+
+          var data_body = $(data).find('body').html();
+
+          var article_title = $(data).find('#artTitle').text();
+          var authors = $(data).find('.author-name');
+          var auth_list = $(authors).text();
+          var article_body = $(data).find('#artText').html();
+          var abstract = $(data).find('.abstract');
+          var abstract_info = $(data).find('.articleinfo');
+          FVBuildHdr(article_title, auth_list, doi, state);
+
+          FVBuildFigs(article_body, doi);
+
+          FVBuildAbs(doi, abstract, abstract_info);
+
+          FVBuildRefs($(data).find('.references'));
+
+          $FVPending = false;
+
+          displayModal();
+
+          rerunMathjax();
+
+        }
+      });
+    };
     rerunMathjax = function() {
       // rerun mathjax
       try {
@@ -68,86 +111,18 @@
       }
     };
 
-    loadJSON = function() {
-
-      var apiurl = siteUrlPrefix + 'article?id=' + doi;
-      //var apiurl = '/article/lightbox.action?uri=' + doi;
-
-      $.ajax({
-        url:apiurl,
-        dataFilter:function (data, type) {
-          return data.replace(/(^\/<\*|\*\/$)/g, '');
-        },
-        dataType:'html',
-        error: function (jqXHR, textStatus, errorThrown) {
-          //TODO: change this
-          console.log(errorThrown);
-
-          $FVPending = false;
-        },
-        success:function (data) {
-          var article_title, authors, auth_list, article_body;
-
-          article_title = $('#artTitle').text();
-
-          authors = $('#author-list').find('.author-name');
-
-          auth_list = $(authors).text();
-
-          FVBuildHdr(article_title, auth_list, doi);
-
-          FVBuildFigs(data, doi);
-
-          // from article tab where references,abstract and metadata exists, no need to fetch
-          // them again from the server.
-          // if (typeof selected_tab != 'undefined' && selected_tab == 'tabArticle') {
-          $FVPending = false;
-          article_body = $('#artText');
-          FVBuildAbs(doi, $(article_body).find('.abstract'), $(article_body).find('.articleinfo'));
-
-          FVBuildRefs($(article_body).find('.references'));
-
-          displayModal();
-
-          //rerunMathjax();
-          //}
-          /* else {
-
-           var article, articleUrl = $win.href + '/article?id=' + doi;console.log(articleUrl);
-           console.log('fetch full article: ' + articleUrl);
-           $.ajax({
-           url: articleUrl,
-           success: function(fullArticleHtml) {
-           $FVPending = false;
-           article = $(fullArticleHtml);
-
-           FVBuildAbs(doi, article.find('.article .abstract'), article.find('.article .articleinfo'));
-           FVBuildRefs(article.find('ol.references'));
-           displayModal();
-           //rerunMathjax();
-           },
-           error: function() {
-           $FVPending = false;
-           }});
-           }*/
-        }
-      });
-    };
     displayModal = function () {
 
-      if(typeof(ga) !== 'undefined'){
-        ga('send', 'event', 'Lightbox', 'Display Modal', '');
-      }
+     if(typeof(ga) !== 'undefined'){
+     ga('send', 'event', 'Lightbox', 'Display Modal', '');
+     }
 
       FVSize();
-      FVDisplayPane(pane);
+      FVDisplayPane(state);
 
-      $FV.removeClass('abst figs refs').addClass(pane);
-
-      if (pane === 'figs') {$('#panel-figs').addClass('active');}
       // debounce resize event
       var resizeDelay;
-      $win.on('resize.modal', function() {
+      $(window).on('resize.modal', function() {
         clearTimeout(resizeDelay);
         resizeDelay = setTimeout(function() {
           FVSize();
@@ -158,46 +133,43 @@
     loadJSON();
   };
 
-
-
   FVSize = function () {
+    var win_h = $win.height();
+    var frame_h = 20; //account for the 10 pixel border
+    var hdr_h = 46; //height of title header
+    var data_h = 120; // height of bottom controls
+    var modal_h = win_h - frame_h;
+    var base_h = modal_h - hdr_h;
+    var fig_h = base_h - data_h;
 
-    var win_h, frame_h, hdr_h, fig_h, data_h, parts_h;
-    //  based on the browser window height
-    win_h = $win.height();
-    frame_h = 20; //account for the 10 pixel border
-    var main_h = win_h - frame_h;
     //Set the height of the fig-viewer container: window height - border size
-    $FV.cont.css('height', main_h);
-
-    hdr_h = 46; //height of title & nav header
-    data_h = 120; // height of bottom controls
-    $('.tabs-content').css('height', main_h - hdr_h);
-    $('#panel-figs').css('height', main_h - hdr_h);
-    // set the height of the figure divs: window - border -
-    parts_h = hdr_h + data_h + frame_h;
-    fig_h = win_h - parts_h;     //console.log(fig_h);
-    //figure height is window minus frame, header, frame, and data heights
+    $FV.cont.css('height', modal_h);
+    //figure height is window minus 10px border, header, and the controls heights
     $FV.figs.css('height', fig_h);
     $FV.thumbs_cont.css('height', fig_h - parseInt($FV.thumbs_el.css('paddingTop')));
-    $FV.abst_pane.css('height', win_h - frame_h - hdr_h - 1);
-
-    $FV.refs_pane.css('height', win_h - frame_h - hdr_h);
+    $FV.abst_pane.css('height', base_h - 1);
+    $FV.refs_pane.css('height', base_h);
 
     if ($FV.thmbs_vis) {
       FVThumbPos($FV.thumbs.active);
-
     }
 
   };
 
   // build header elements
-  FVBuildHdr = function(title, authors, articleDoi) {
-    var authArray, articleLink, h1, authorList, trimAuth, auth;
+  FVBuildHdr = function(title, authors, articleDoi, state) {
+    var findActive, authArray, articleLink, h1, authorList, trimAuth, auth;
 
-    $FV.hdr = $('.fv-title');
+    findActive = $('.fv-nav').find('li');
 
-    authArray = authors.split(',');
+    /* highlight the active nav item. even though foundation tabs is used for navigation when the lightbox is open,
+     the initial tab needs to be registered manually: this part is not handled by foundation.*/
+    $.each(findActive, function(){
+      var activateLi = $(this).hasClass(state);
+      if (activateLi === true){
+        $(this).addClass('active').find('a').trigger('click');
+      }
+    });
 
     if ($FV.external_page) {
       articleLink = "http://dx.plos.org/" + articleDoi.replace("info:doi/", "");
@@ -205,205 +177,43 @@
 
     } else {
 
-      h1 =  title;
+      h1 = title;
     }
 
-    $('#fvTitle').html(h1);
-    authorList = $('#fvAuthors');
-    var get_last = authArray.length-1;
+    $('#fvTitle').append(h1);
 
-    $.each(authArray, function (index, author) {
+    if (authors) {
+      authArray = authors.split(',');
 
-      trimAuth = trimIt(author);
+      authorList = $('#fvAuthors');
 
-      if (index !== get_last) {
-        auth = $('<span>' + trimAuth + ', </span>');
-      } else {
-        auth = $('<span>' + trimAuth + ' </span>');
-      }
+      var get_last = authArray.length - 1;
 
-      $(auth).appendTo(authorList);
+      $.each(authArray, function (index, author) {
 
-    });
+        trimAuth = trimIt(author);
 
-  };
+        if (index !== get_last) {
+          auth = $('<span>' + trimAuth + ', </span>');
+        } else {
+          auth = $('<span>' + trimAuth + ' </span>');
+        }
 
-  // build figures pane
-  FVBuildFigs = function(data, doi) {
-    var path, showInContext, fig_container, title_txt, image_title, img_ref, $thmb, slide, datacon, txt, txt_less, txt_more, title, toggleLess, context_hash, doip, $fig, staging, dl, context_lnk, text_description;
+        $(auth).appendTo(authorList);
 
-    $FV.figs_pane = $('<div id="fig-viewer-figs" class="pane" />');
-    $FV.thumbs_el = $('<div id="fig-viewer-thmbs" />');
-    $FV.thumbs_cont = $('<div id="fig-viewer-thmbs-content" />');
-    $FV.controls_el = $('<div id="fig-viewer-controls" />');
-    $FV.slides_el = $('<div id="fig-viewer-slides" />');
-    $FV.staging_el = $('<div class="staging" />'); // hidden container for loading large images
-    $FV.figs_set = [];  // all figures array
-    path = siteUrlPrefix+'article/figure/image?size=';
-
-    // /wombat/DesktopPlosPathogens/article/figure/image?size=inline&amp;id=info:doi/10.1371/journal.ppat.1000621.g001
-    //http://localhost:8081/wombat/DesktopPlosMedicine/article/figure/image?size=large&id=info:doi/10.1371/journal.pmed.0010019.t001
-    showInContext = function (uri) {
-      uri = uri.split('/');
-      uri = uri[1].slice(8);
-      uri = uri.replace(/\./g,'-');
-      return '#' + uri;
-    };
-
-    fig_container = $('.figure');
-
-    $.each(fig_container, function () {
-
-      //title_txt = ( ? '<strong>' +this.title + ':</strong> ' : '') + this.transformedCaptionTitle;
-      // CAPTION text handling is here
-      title_txt = $(this).find('.figcaption');
-      //the image long description is hard to find in the article-transform.xml. the following method of finding the text might be brittle.
-      text_description = $(this).find('.caption_target').next().html();
-      image_title = $(title_txt).html();// + ' ' + this.plainCaptionTitle;
-      img_ref = $(this).data('doi');
-      context_hash = showInContext(img_ref);
-
-      $thmb = $('<div class="thmb"' + ' data-uri="' + img_ref + '"><div class="thmb-wrap"><img src="' + path +'inline&id=info:doi/'+ img_ref + '" alt="' + image_title + '" title="' + image_title + '"></div></div>').on('click', function () {
-        FVChangeSlide($(this));
-        FVArrowKeys($(this));
       });
-      $FV.thumbs_cont.append($thmb);
-      slide = $('<div class="slide" />');
-      datacon = $('<div class="datacon" />');
-      txt = $('<div class="txt" />');
-      txt_less = $('<div class="text-less" />');
-      txt_more = $('<div class="text-more" />');
-      title = '<div class="fig_title">' + image_title + '</div>';
-      toggleLess = $('<div class="toggle less" title="view less" />');
 
-      /* save this for later: first version is for article page only
-       if ($FV.external_page) { // the image is on another page
-       context_hash = '/article/' + $FV.url + context_hash;
-       }*/
-
-      doip = '<p class="doi">doi:'+img_ref+'</p>';
-
-      // build div with the references of medium & large versions in data attributes
-      $fig = $('<div class="figure" data-img-src="' + path+ 'medium&id=info:doi/' +img_ref  + '" data-img-lg-src="' + path +'large&id=info:doi/' +img_ref+'" data-img-txt="' + image_title + '"></div>');
-
-      $fig.data('state', 0) // track image loading state of figure
-        .data('off-top', 0)
-        .data('off-left', 0);
-      $FV.figs_set.push($fig);
-
-      staging = '<div class="staging" />'; // hidden container for loading large image
-
-      dl = '<div class="download">'
-        + '<h3>Download:</h3>'
-        + '<div class="item"><a href="' + "article/figure/powerpoint?id=info:doi/" + img_ref + '" title="PowerPoint slide"><span class="btn">PPT</span></a></div>'
-        + '<div class="item"><a href="' + "article/figure/image?size=large&id=info:doi/" + img_ref + '" title="large image"><span class="btn">PNG</span><span class="size">' + /*convertToBytes(this.sizeLarge)*/  '</span></a></div>'
-        + '<div class="item"><a href="' + "article/figure/image?size=original&id=info:doi/" + img_ref + '" title="original image"><span class="btn">TIFF</span><span class="size">' + /*convertToBytes(this.sizeTiff)*/  '</span></a></div>'
-        + '</div>';
-
-      context_lnk = '<a class="btn lnk_context close-reveal-modal" href="' + context_hash + '">Show in Context</a>';
-
-      slide.append($fig);
-      slide.append(staging);
-      txt_less.append(title);
-      txt_more.append(toggleLess);
-      txt_more.append(title);
-
-      if (text_description !== null) {
-        txt_more.append('<div class="desc">' + text_description + '</div>');
-        txt_less.append('<div class="desc">' + text_description + '</div>');
-      }
-
-      txt_more.append(doip);
-      txt.append(txt_less);
-      txt.append(txt_more);
-      datacon.append(txt);
-      datacon.append(context_lnk);
-      datacon.append(dl);
-      slide.append(datacon);
-      $FV.slides_el.append(slide);
+    }  else { }
+    $('.fv-close').on('click',function(){
+      FVClose();
     });
-
-    // thumbnail close button
-    $('<span class="btn-thmb-close" title="close" />').on('click',function() {
-      $FV.figs_pane.toggleClass('thmbs-vis');
-      $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
-    }).appendTo($FV.thumbs_el);
-
-    $FV.thumbs_el.append($FV.thumbs_cont);
-
-    $FV.slides = $FV.slides_el.find('div.slide'); // all slides
-    $FV.figs = $FV.slides_el.find('div.figure'); // all figures
-    $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
-    $FV.thumbs.active = null; // used to track active thumb & figure
-
-    // figures controls in control bar
-    $('<span class="fig-btn thmb-btn"><i class="icn"></i> All Figures</span>').on('click',function() {
-      $FV.figs_pane.toggleClass('thmbs-vis');
-      $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
-      FVThumbPos($FV.thumbs.active);
-    }).appendTo($FV.controls_el);
-
-    $FV.nxt = $('<span class="fig-btn next invisible"><i class="icn"></i> Next</span>');
-
-    $FV.nxt.on('click',function() {
-      FVChangeSlide($FV.thumbs.active.next());
-    }).appendTo($FV.controls_el);
-
-    $FV.prv = $('<span class="fig-btn prev invisible"><i class="icn"></i> Previous</span>');
-
-    $FV.prv.on('click',function() {
-      FVChangeSlide($FV.thumbs.active.prev());
-    }).appendTo($FV.controls_el);
-
-    $FV.thumbs_el.append($FV.thumbs_cont);
-    $FV.slides = $FV.slides_el.find('div.slide'); // all slides
-    $FV.figs = $FV.slides_el.find('div.figure'); // all figures
-    $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
-    $FV.thumbs.active = null; // used to track active thumb & figure
-
-    $FV.loading = $('<div class="loading-bar"></div>').appendTo($FV.controls_el);
-    $FV.zoom = $('<div id="fv-zoom" />');
-    $FV.zoom.min = $('<div id="fv-zoom-min" />').appendTo($FV.zoom);
-    $FV.zoom.sldr = $('<div id="fv-zoom-sldr" />').appendTo($FV.zoom);
-    $FV.zoom.max = $('<div id="fv-zoom-max" />').appendTo($FV.zoom);
-    $FV.controls_el.append($FV.zoom);
-
-
-
-    $FV.slides_el.append($FV.controls_el);
-    $FV.figs_pane.append($FV.slides_el);
-    $FV.figs_pane.append($FV.thumbs_el);
-    $FV.figs_pane.append($FV.staging_el);
-
-    $('#panel-figs').append($FV.figs_pane);
-    if ($.support.touchEvents) {
-      $FV.slides_el.swipe({
-        swipeLeft:function(event, direction, distance, duration, fingerCount) {
-          if ($FV.thumbs.active.next().length) {
-            t = $FV.thumbs.active.next();
-            FVChangeSlide(t);
-          }
-        },
-        swipeRight:function(event, direction, distance, duration, fingerCount) {
-          if ($FV.thumbs.active.prev().length) {
-            t = $FV.thumbs.active.prev();
-            FVChangeSlide(t);
-          }
-        },
-        tap:function(event, target) {
-          target.click();
-        },
-        threshold:25
-      });
-    }
-
   };
 
   // build abstract pane
   FVBuildAbs = function(doi, abstractText, metadata) {
     $FV.abst_pane = $('<div id="fig-viewer-abst" class="pane" />');
-    var lnk_pdf, pdf_href, $abst_info, $abst_content = $('<div class="abstract" />');
-
+    var hdr, lnk_pdf, pdf_href, $abst_info, $abst_content = $('<div class="abstract" />');
+   // hdr = $()
     if (abstractText.size() == 0) {
       // There is no abstract. Hide the "view abstract" button created in FVBuildHdr.
       $FV.hdr.find('li.abst').hide();
@@ -438,44 +248,237 @@
 
   // add panel name to fig-viewer tag & display figure chosen (if on figs panel)
   FVDisplayPane = function(pane) {
+
     $FV.removeClass('abst figs refs').addClass(pane);
 
     if (pane == 'figs') {
 
-      if ($FV.thumbs.active == null) { // no thumb is active so this is the 1st figure displayed
+      if ($FV.thumbs.active === null) { // no thumb is active
 
-        if ($FV.figs_ref) { // specific figure is requested
-          $('#fig-viewer').foundation('reveal', 'open');
+        if ($FV.figs_ref) { // specific figure is requested, trigger corresponding thumb click:
+
           $FV.thumbs_cont.find('div[data-uri="' + $FV.figs_ref + '"]').trigger('click');
 
         } else { // default to first figure
 
           $FV.thumbs.eq(0).trigger('click');
         }
-      } else {
+      } else { // the following is a backup plan. see FVChangeSlide for first line of defense
         // A figure was displayed, then a different pane was selected and then user returned to the figure pane
         // If a medium or large image finished loading while the figure pane was not visible -
         // figure building would stop (it requires figure pane to be visible to access image dimensions)
         // run FVDisplayFig() again to update figure status
         FVDisplayFig($FV.thumbs.index($FV.thumbs.active));
+
       }
-    }
+    } else { }
   };
+
+
+  // build figures pane. needs to be broken into smaller parts.
+  FVBuildFigs = function(data, doi) {
+    var path, showInContext, fig_container, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, context_hash, doip, $fig, staging, download_btns, context_lnk, chk_desc, text_description;
+
+    //set the markup
+    $FV.figs_pane = $('<div id="fig-viewer-figs" class="pane" />');
+    $FV.thumbs_el = $('<div id="fig-viewer-thmbs" />');
+    $FV.thumbs_cont = $('<div id="fig-viewer-thmbs-content" />');
+    $FV.controls_el = $('<div id="fig-viewer-controls" />');
+    $FV.slides_el = $('<div id="fig-viewer-slides" />');
+    $FV.staging_el = $('<div class="staging" />'); // hidden container for loading large images
+    $FV.figs_set = [];  // all figures array
+    path = siteUrlPrefix+'article/figure/image?size=';
+
+    // /wombat/DesktopPlosPathogens/article/figure/image?size=inline&amp;id=info:doi/10.1371/journal.ppat.1000621.g001
+    //http://localhost:8081/wombat/DesktopPlosMedicine/article/figure/image?size=large&id=info:doi/10.1371/journal.pmed.0010019.t001
+    showInContext = function (uri) {
+      uri = uri.split('/');
+      uri = uri[1].slice(8);
+      uri = uri.replace(/\./g,'-');
+      return '#' + uri;
+    };
+
+    fig_container = $(data).find('.figure');
+
+    //iterate through each image
+    $.each(fig_container, function () {
+
+      var fig_data = $(this);
+      // CAPTION text handling is here
+      title_txt = $(fig_data).find('.figcaption');
+
+      //the image long description is hard to find in the article-transform.xml
+      text_description = $(fig_data).find('.caption_target').next().html();
+
+      //need to strip html from this
+      image_title = title_txt.text();//$(title_txt).text();// + ' ' + this.plainCaptionTitle;
+      text_title = $(title_txt).html();
+      img_ref = $(fig_data).data('doi');
+      context_hash = showInContext(img_ref);
+
+      /* save this for later
+       if ($FV.external_page) { // the image is on another page
+       context_hash = '/article/' + $FV.url + context_hash;
+       }*/
+
+      // build an empty div with the references of medium & large img versions from the data attributes
+      $fig = $('<div class="lbfigure" data-img-src="' + path + 'medium&id=info:doi/' + img_ref + '" data-img-lg-src="' + path +'large&id=info:doi/' + img_ref + '" data-img-txt="' + image_title + '"></div>');
+
+      // track image loading state of figure
+
+      $fig.data('state', 0)
+        .data('off-top', 0)
+        .data('off-left', 0);
+
+      //add the empty $fig div with the image info to the $FV.figs_set array
+      $FV.figs_set.push($fig);
+
+      //build thumbnail for thumbnail strip
+      $thmb = $('<div class="thmb"' + ' data-uri="' + img_ref + '"><div class="thmb-wrap"><img src="' + path +'inline&id=info:doi/'+ img_ref + '" alt="' + image_title + '" title="' + image_title + '"></div></div>');
+
+      // thumbnail close button
+      thmb_close = $('<span class="btn-thmb-close" title="close" />');
+
+      $(thmb_close).appendTo($FV.thumbs_el);
+      $FV.thumbs_el.append($FV.thumbs_cont);
+      $FV.thumbs_cont.append($thmb);
+
+      //the markup for the slide caption (which should really be done with backbone or similar)
+      slide = $('<div class="slide" />');
+      datacon = $('<div class="datacon" />');
+      txt = $('<div class="txt" />');
+      txt_less = $('<div class="text-less" />');
+      txt_more = $('<div class="text-more" />');
+      title = '<div class="fig_title">' + text_title + '</div>';
+      view_less = $('<div class="less" title="view less" />');
+      doip = '<p class="doi">doi:'+img_ref+'</p>';
+      staging = '<div class="staging" />'; // hidden container for loading large image
+     // context_lnk = '<a class="btn lnk_context close-reveal-modal" href="' + context_hash + '">Show in Context</a>';
+      download_btns = '<div class="download">'
+        + '<h3>Download:</h3>'
+        + '<div class="item"><a href="' + "article/figure/powerpoint?id=info:doi/" + img_ref + '" title="PowerPoint slide"><span class="btn">PPT</span></a></div>'
+        + '<div class="item"><a href="' + "article/figure/image?size=large&id=info:doi/" + img_ref + '" title="large image"><span class="btn">PNG</span><span class="size">' + /*convertToBytes(this.sizeLarge)*/  '</span></a></div>'
+        + '<div class="item"><a href="' + "article/figure/image?size=original&id=info:doi/" + img_ref + '" title="original image"><span class="btn">TIFF</span><span class="size">' + /*convertToBytes(this.sizeTiff)*/  '</span></a></div>'
+        + '</div>';
+
+      //combine the markup & add to the slide
+      slide.append($fig);
+      slide.append(staging);
+      txt_less.append(title);
+      txt_more.append(view_less);
+      txt_more.append(title);
+
+      if (text_description !== null) {
+        chk_desc = text_description.slice(0,3);
+        if (chk_desc !== 'doi') {
+          txt_more.append('<p>' + text_description + '</p>');
+          txt_less.append('<p>' + text_description + '</p>');
+        }
+      }
+
+      txt_more.append(doip);
+      txt.append(txt_less);
+      txt.append(txt_more);
+      datacon.append(txt);
+      //datacon.append(context_lnk);
+      datacon.append(download_btns);
+      slide.append(datacon);
+
+      $FV.slides_el.append(slide);
+
+      $thmb.on('click', function () {
+        FVChangeSlide($(this));
+        FVArrowKeys($(this));
+      });
+
+      $(thmb_close).on('click',function() {
+        $FV.figs_pane.toggleClass('thmbs-vis');
+        $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
+      });
+    });
+
+    $FV.slides = $FV.slides_el.find('div.slide'); // all slides
+    $FV.figs = $FV.slides_el.find('div.lbfigure'); // all figures
+    $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
+    $FV.thumbs.active = null; // used to track active thumb & figure
+
+    // figures controls in control bar
+    $('<span class="fig-btn thmb-btn"><i class="icn"></i> All Figures</span>').on('click',function() {
+      $FV.figs_pane.toggleClass('thmbs-vis');
+      $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
+      FVThumbPos($FV.thumbs.active);
+    }).appendTo($FV.controls_el);
+
+    $FV.nxt = $('<span class="fig-btn next invisible"><i class="icn"></i> Next</span>');
+
+    $FV.nxt.on('click',function() {
+      FVChangeSlide($FV.thumbs.active.next());
+    }).appendTo($FV.controls_el);
+
+    $FV.prv = $('<span class="fig-btn prev invisible"><i class="icn"></i> Previous</span>');
+
+    $FV.prv.on('click',function() {
+      FVChangeSlide($FV.thumbs.active.prev());
+    }).appendTo($FV.controls_el);
+
+    $FV.thumbs_el.append($FV.thumbs_cont);
+    $FV.slides = $FV.slides_el.find('div.slide'); // all slides
+    $FV.figs = $FV.slides_el.find('div.lbfigure'); // all figures
+    $FV.thumbs = $FV.thumbs_el.find('div.thmb'); // all thumbnails
+    $FV.thumbs.active = null; // used to track active thumb & figure
+
+    $FV.loading = $('<div class="loading-bar"></div>').appendTo($FV.controls_el);
+    $FV.zoom = $('<div id="fv-zoom" />');
+    $FV.zoom.min = $('<div id="fv-zoom-min" />').appendTo($FV.zoom);
+    $FV.zoom.sldr = $('<div id="fv-zoom-sldr" />').appendTo($FV.zoom);
+    $FV.zoom.max = $('<div id="fv-zoom-max" />').appendTo($FV.zoom);
+
+    $FV.controls_el.append($FV.zoom);
+    $FV.slides_el.append($FV.controls_el);
+    $FV.figs_pane.append($FV.slides_el);
+    $FV.figs_pane.append($FV.thumbs_el);
+    $FV.figs_pane.append($FV.staging_el);
+
+    $('#panel-figs').append($FV.figs_pane);
+
+    if ($.support.touchEvents) {
+      var th;
+      $FV.slides_el.swipe({
+        swipeLeft:function(event, direction, distance, duration, fingerCount) {
+          if ($FV.thumbs.active.next().length) {
+            th = $FV.thumbs.active.next();
+            FVChangeSlide(th);
+          }
+        },
+        swipeRight:function(event, direction, distance, duration, fingerCount) {
+          if ($FV.thumbs.active.prev().length) {
+            th = $FV.thumbs.active.prev();
+            FVChangeSlide(th);
+          }
+        },
+        tap:function(event, target) {
+          target.click();
+        },
+        threshold:25
+      });
+    }
+
+  }; //end FVBuildFigs
 
   // display figure slides functionality
   FVChangeSlide = function($thmb) {
 
+     if (typeof(ga) !== 'undefined'){
+     ga('send', 'event', 'Lightbox', 'Slide Changed', '');
+     }
 
-    if(typeof(ga) !== 'undefined'){
-      ga('send', 'event', 'Lightbox', 'Slide Changed', '');
-    }
-
-    if ($FV.thumbs.active !== null) { // not the initial slide
+    if ($FV.thumbs.active !== null) {
 
       var old_fig, old_img, i, this_sld;
-      $FV.thumbs.active.removeClass('active');
+
       old_fig = $FV.figs_set[$FV.thumbs.index($FV.thumbs.active)];
       old_img = old_fig.find('img');
+      $FV.thumbs.active.removeClass('active');
 
       if (old_img.hasClass('ui-draggable')) { // the slide we are leaving had a drag-enabled figure, reset it
         FVDragStop(old_fig, old_fig.find('img'));
@@ -487,11 +490,11 @@
     $FV.slides.hide();
 
     i = $FV.thumbs.index($thmb);
-    this_sld = $FV.slides.eq(i);// console.log(this_sld);
+    this_sld = $FV.slides.eq(i);
 
     this_sld.show();
     FVDisplayFig(i);
-    FVFigDescripton(this_sld);
+    FVFigDescription(this_sld);
 
     $FV.thumbs.active.next().length ? $FV.nxt.removeClass('invisible') : $FV.nxt.addClass('invisible');
     $FV.thumbs.active.prev().length ? $FV.prv.removeClass('invisible') : $FV.prv.addClass('invisible');
@@ -508,8 +511,8 @@
       // left / up arrow keys
       if (e.which == 37 || e.which == 38) {
         if ($FV.thumbs.active.prev().length) {
-          var t = $FV.thumbs.active.prev();
-          FVChangeSlide(t);
+          var sl = $FV.thumbs.active.prev();
+          FVChangeSlide(sl);
         }
         return false;
       }
@@ -517,8 +520,8 @@
       if (e.which == 39 || e.which == 40) {
         if ($FV.thumbs.active.next().length) {
 
-          var t = $FV.thumbs.active.next();
-          FVChangeSlide(t);
+          var sl = $FV.thumbs.active.next();
+          FVChangeSlide(sl);
         }
         return false;
       }
@@ -527,48 +530,45 @@
 
   // figure description expand/reduce controls
   // called in FVChangeSlide
-  FVFigDescripton = function(sld) {
+  FVFigDescription = function(sld) {
 
     var $btn_less, $content, truncate, desc_link;
     $btn_less = sld.find('div.less');
     $content = sld.find('div.text-less');
 
     truncate = function() {
-
-      //If called on the same element twice, igntruecond call
-      if($content.data('ellipsis_appended') !== true) {
-
+      //If called on the same element twice, ignore second call
+      if($content.data('ellipsis_appended') != 'true') {
         $content.ellipsis({ ellipsis_text:'<span class="toggle more">... show more</span>' });
-
         $content.find('span.more').click(function() {
-          $FV.slides_el.addClass('expanded');
+          $FV.slides_el.addClass('txt-expand');
           $FV.txt_expanded = true;
         });
         $content.data('ellipsis_appended','true');
       }
     };
 
-    // check display of descriptions
+    // check display of descriptions expanded or not
     if (!$FV.txt_expanded) { // landed on slide and descriptions are hidden.
       truncate();
       $btn_less.click(function() {
-        $FV.slides_el.removeClass('expanded');
+        $FV.slides_el.removeClass('txt-expand');
         $FV.txt_expanded = false;
       });
     } else { // landed on this slide and descriptions are visible.
       // truncate following description reveal
       $btn_less.click(function() {
-        $FV.slides_el.removeClass('expanded');
+        $FV.slides_el.removeClass('txt-expand');
         $FV.txt_expanded = false;
         truncate();
       });
     }
 
     //close lightbox if link in description is clicked on
-    desc_link = sld.find('.desc').children('a');
+    desc_link = sld.find('.fig_title').next();
 
-    $(desc_link).on('click',function(){
-      $('#fig-viewer').foundation('reveal', 'close');
+    $(desc_link).find('a').on('click',function(){
+      FVClose();
     });
   };
 
@@ -612,7 +612,6 @@
         FVLoadMedImg(i);
         break;
       case 1:
-        // waiting on medium image to load
         break;
       case 2:
         FVSizeImgToFit(this_fig, false);
@@ -632,7 +631,7 @@
         $FV.loading.hide();
         FVSizeImgToFit(this_fig, true);
         if (this_fig.hasClass('zoom')) {
-          FVFigFunctions(this_fig);
+          return FVFigFunctions(this_fig);
         }
         break;
     }
@@ -656,15 +655,16 @@
     });
   };
 
-
 // load large images in div.staging
-  FVLoadLargeImg = function(i) {      ///////////////////// PROBLEM MIGHT BE HERE
+  FVLoadLargeImg = function(i) {
+
     var src = $FV.figs_set[i].data('img-lg-src');
     var txt = $FV.figs_set[i].data('img-txt');
-    //console.log(src);
+    var stage = $FV.figs_set[i].next('div.staging');
     var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="lg invisible">');
-    $FV.figs_set[i].next('div.staging').append($img); // load large img into 'staging' div
-    $FV.figs_set[i].next('div.staging').imagesLoaded(function() {
+
+    $(stage).append($img); // load large img into 'staging' div
+    $(stage).imagesLoaded(function() {
       $FV.figs_set[i].data('state', 4);
       if (i == $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
         FVSwitchImg($FV.figs_set[i]);
@@ -676,73 +676,95 @@
 
 // size images to fit in parent element
   FVSizeImgToFit = function(el, down_only) {
-    var img, el_h, el_w, i_h, i_w;
+    var img, el_h, el_w, i_h, i_w, sizeAndCenter;
     img = el.find('img');
     el_h = el.height();
     el_w = el.width();
     i_h = img.height();
     i_w = img.width();
-    ///////////////////// PROBLEM MIGHT BE HERE
-    //console.log(el_h+ ' ' +el_w+ ' ' +i_h+ ' ' +i_w);
-    //console.log(el_w / el_h +' '+ i_w / i_h);
+
     // sizes image to fit, scaling up or down, and centering
-    // setting size with height
-    //console.log(Math.round((el_w -  img.width()) / 2));
-    //console.log(Math.round(el_w * (i_h / i_w)));
-    var sizeAndCenter = function() {
+    sizeAndCenter = function() {
       // compare aspect ratios of parent and image and set dimensions accordingly
       if (el_w / el_h > i_w / i_h) {
         img.css({'height': el_h});
         // horizontally center after resizing, (zoom uses margin values so can't use auto)
         img.css({'marginLeft' : Math.round((el_w -  img.width()) / 2), 'marginTop' : 0});
+
       } else {
         // calculate height to make width match parent
         img.css({'height' : Math.round(el_w * (i_h / i_w))});
         // vertically center after resizing
         img.css({'marginTop' : Math.round((el_h - img.height()) / 2), 'marginLeft' : 0});
+
       }
     };
 
-    if (down_only) { // this is a large image and we don't want to scale up.
+    if (down_only) {// this is a large image and we don't want to scale up.
       if (el_h > el.data('img_l_h') && el_w > el.data('img_l_w')) { // native size smaller than viewport
+
         img.css({'marginTop' : Math.round((el_h - i_h) / 2), 'marginLeft' : Math.round((el_w - i_w) / 2)}); // center
         el.removeClass('zoom'); // too small to zoom
+
       } else {
+
         sizeAndCenter();
         el.addClass('zoom');
       }
-    } else { // this is a medium image, we will scale up or down
+    } else {
       sizeAndCenter();
     }
-  }
+  };
 
 // switch medium image with large image
 
   FVSwitchImg = function($fig) {
-    var $img_m, img_m_h, $img_l, img_l_h, img_l_w, drag_bx;
-    $img_m = $fig.find('img');
-    img_m_h = $img_m.height();
-    $img_l = $fig.next('div.staging').find('img');
-    // move large image into figure div (image hidden by css)
-    $fig.append($img_l);
-    //img_l_erg = $fig.find($img_l); console.log(img_l_erg);
-    img_l_h = $img_l.height();//css('height');
-    img_l_w = $img_l.width();
-    // store native dimensions
-    $fig.data('img_l_w', img_l_w).data('img_l_h', img_l_h);
+    var img_m, img_m_h, img_l, timer, img_l_h, img_l_w, drag_bx;
+    img_m = $fig.find('img');
+    img_m_h = img_m.height();
 
-    if (img_l_h < img_m_h) { // large image smaller than resized medium image
-      $img_l.css({'marginTop' : Math.round(($fig.height() - img_l_h) / 2), 'marginLeft' : Math.round(($fig.width() - img_l_w) / 2)}); // center
-    } else {
-      $img_l.css({'height' : img_m_h, 'marginTop' : $img_m.css('marginTop'), 'marginLeft' : $img_m.css('marginLeft')}); // match dimensions and position of medium image
-      $fig.addClass('zoom'); // zoomable & draggable
-    }
-    $fig.html($img_l.removeClass('invisible')); // replace
-    drag_bx = $('<div class="drag-bx" />'); // insert drag containment element
-    $fig.wrapInner(drag_bx);
-    if ($fig.hasClass('zoom')) {
-      FVFigFunctions($fig);
-    }
+    img_l = $fig.next().find('img');
+
+    // move large image into figure div (image hidden by css)
+    function timer() {
+      window.setTimeout(function () {
+        $fig.append(img_l);
+        img_l_h = $fig.find(img_l).height();
+        img_l_w = $fig.find(img_l).width();
+        $fig.data('img_l_w', img_l_w).data('img_l_h', img_l_h);
+
+        if (img_l_h < img_m_h) {
+          // large image smaller than resized medium image
+          img_l.css({  //center the image
+            'marginTop': Math.round(($fig.height() - img_l_h) / 2),
+            'marginLeft': Math.round(($fig.width() - img_l_w) / 2)
+          });
+
+        } else {
+          // set large image with dimensions and position of medium image
+          img_l.css({
+            'height': img_m_h,
+            'marginTop': img_m.css('marginTop'),
+            'marginLeft': img_m.css('marginLeft')
+          });
+          $fig.addClass('zoom'); // zoomable & draggable
+
+        }
+
+        $fig.html(img_l.removeClass('invisible'));
+
+        drag_bx = $('<div class="drag-bx" />'); // insert drag containment element
+
+        $fig.wrapInner(drag_bx);
+
+        if ($fig.hasClass('zoom')) {
+
+          FVFigFunctions($fig);
+        }
+      }, 100);
+    };
+    timer();
+    clearTimeout(timer);
   };
 
 // zoom & drag figure
@@ -751,7 +773,7 @@
 // OR navigating to a slide whose large image is bigger than the slide and has already loaded.
 
   FVFigFunctions = function($fig) {
-    var $img, real_h, real_w, img_mt, img_ml, resize_h, drag, $drgbx;
+    var $img, real_h, real_w, img_mt, img_ml, resize_h, drag;
     $img = $fig.find('img');
     real_h = $fig.data('img_l_h'); // native height of image
     real_w = $fig.data('img_l_w'); // native width of image
@@ -759,7 +781,6 @@
     img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
     resize_h = $img.height(); // height of sized to fit image
     drag = false; // dragging not enabled
-    $drgbx = $fig.find('div.drag-bx');
 
     $FV.zoom.show();
     $FV.zoom.sldr.slider({
@@ -823,13 +844,13 @@
       }
     });
 
-    var imgResize = function(x) {
+    var imgResize = function(m) {
       $img.css({
-        'height': x,
-        'marginTop': img_mt - Math.round((x - resize_h) / 2),
-        'marginLeft': img_ml - Math.round(((x - resize_h) / 2) * (real_w / real_h))
+        'height': m,
+        'marginTop': img_mt - Math.round((m - resize_h) / 2),
+        'marginLeft': img_ml - Math.round(((m - resize_h) / 2) * (real_w / real_h))
       });
-    }
+    };
 
     $fig.on('DOMMouseScroll mousewheel', function (event) {
       var value = $FV.zoom.sldr.slider("value");
@@ -930,23 +951,28 @@
 
     //re-enable scrolling
     $('body').css('overflow','auto').off('touchmove');
-    //re-set the foundation tabs
+    //reset the foundation tabs
     $('.fv-nav').find('li').removeClass('active');
-    //reset the figures content
-    $('.tabs-content').find('section').removeClass('active').empty();
-    //unbind the resizing and the arrow key bindings
-    $win.off('resize.modal keydown');
 
-    /*//will record the timeStamp for when the modal is closed
+    //unbind the resizing and the arrow key bindings
+    $(window).off('resize.modal keydown');
+
+    //will record the timeStamp for when the modal is closed
      if(typeof event !== 'undefined') {
      close_time = event.timeStamp;
-     }*/
-
-    $('#fig-viewer').foundation('reveal', 'close');
+     }
 
     $FVPending = false;
-
+    $FV.empty();
+    $('#fig-viewer').foundation('reveal', 'close');
   };
+
+  $(document).on('keydown', function (e) {
+    //27 = escape key
+    if (e.which == 27) {
+      FVClose();
+    }
+  });
 
   /**
    * Drop words until the element selected fits within its container and then append an ellipsis
@@ -960,18 +986,20 @@
     //traverse from the last element up
     for(var a = parts.length - 1; a > -1; a--) {
       var element = parts[a];
-      //  console.log(element);
+
       //ellipsis added, no need to keep going
       if(ellipsis_added) {
         break;
       }
 
       //If this is a text node, work on it, otherwise recurse
+
       if(element.nodeType != 3) {
         ellipsis_added = ellipsis_recurse(topElement, $(element).contents());
 
         if(ellipsis_added) {
           //ellipsis added, no need to keep looping
+          //return true;
           break;
         }
       } else {
@@ -1019,27 +1047,14 @@
    * Drop words until the element selected fits within its container and then append an ellipsis
    */
   $.fn.ellipsis = function(options) {
-
     $.fn.ellipsis.settings = $.extend({}, $.fn.ellipsis.settings, options);
-
     ellipsis_recurse(this[0], $(this).contents());
-
     return this;
-
   };
 
   $.fn.ellipsis.settings = {
     ellipsis_text : '&hellip;'
   };
-
-//Why is this bound universally?  That seems strange.
-//-Joe
-  $(document).bind('keydown', function (e) {
-    //27 = escape key
-    if (e.which == 27) {
-      FVClose();
-    }
-  });
 
   function trimIt (trimItem) {
     if (typeof String.prototype.trim !== 'function') {
@@ -1051,65 +1066,69 @@
     }
   }
 
-  function initMainContainer() {
+  function lightboxOpeners() {
 
     // carousel images on article page
     // this triggers a click on the corresponding lightbox thumbnail
     var $fig_carousel = $('#figure-carousel').find('div.carousel-item');
     if ($fig_carousel.length) {
-      $lnks = $fig_carousel.find('a');
+
       $fig_carousel.on('click', function (e) {
 
         get_ref = $(this).data('doi');
 
         get_doi = get_ref.slice(0, -5);
 
-        FigViewerInit(get_doi, get_ref, 'figs');
+        lightbox.FigViewerInit(get_doi, get_ref, 'figs');
 
         e.preventDefault();
 
       });
-      // $lnks.append('<div class="expand" />');
     }
+
     // article inline images
-    var $fig_inline = $('#artText').find('div.figure');
+    // this triggers a click on the corresponding lightbox thumbnail
+    var $fig_inline = $('#artText').find('div.img-box');
     if ($fig_inline.length) {
-      $lnks = $fig_inline.find('a');
-      $lnks.on('click', function (e) {
-        get_ref = $(this).data('uri'); //image reference
 
-        get_doi = $(this).data('doi');
+      $fig_inline.on('click', function (e) {
 
-        FigViewerInit(get_doi, get_ref, 'figs');
+        $href = $(this).find('a');
+
+        get_ref = $href.data('uri'); //image reference
+
+        get_doi = $href.data('doi');
+
+        lightbox.FigViewerInit(get_doi, get_ref, 'figs');
 
         e.preventDefault();
-
-      });
-      // $lnks.append('<div class="expand" />');
+       });
     }
 
     // 'figure' item in article floating nav
     var $nav_figs = $('#nav-figures').find('a');
     if ($nav_figs.length) {
       $nav_figs.on('click', function (e) {
-        $('#fig-viewer').foundation('reveal', 'open');
 
         var doi = $nav_figs.data('doi');
 
-        FigViewerInit(doi, null, 'figs');
+        lightbox.FigViewerInit(doi, null, 'figs');
 
         e.preventDefault();
-
       });
     }
+/*
+     Sitewide links: hidden for initial article page release
 
     // links on external pages: figure search results
     var $fig_results = $('#fig-search-results, .article-block .actions, #subject-list-view .actions');
     if ($fig_results.length) {
       $fig_results.find('a.figures').on('click', function (e) {
+
         var doi = $(this).data('doi');
 
-        FigViewerInit(doi, null, 'abst', true);
+        lightbox.FigViewerInit(doi, null, 'abst', true);
+
         e.preventDefault();
       });
     }
@@ -1124,15 +1143,14 @@
 
       $toc_block_links.find('a.abstract').on('click', function () {
         var doi = $(this).data('doi');
-        FigViewerInit(doi, null, 'abst', true);
+        lightbox.FigViewerInit(doi, null, 'abst', true);
       });
     }
 
-    $('.fv-close').on('click',function(){
-      FVClose();
-    });
+*/
+
 
   }
-  initMainContainer();
+  lightboxOpeners();
 
 })(jQuery);

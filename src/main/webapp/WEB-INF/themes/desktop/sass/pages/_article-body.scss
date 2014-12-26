@@ -231,6 +231,9 @@ $line-height-small: ($line-height * .5);
   }
   .figshare_widget{
     @extend .hide-for-print;
+    .fw-download-trigger-one-file:hover, .fw-download-trigger:hover{
+      color: $white;   //sadly have to force this to overide styles. Yeah, it HS ot be this specific.
+    }
   }
 }
 
@@ -407,6 +410,7 @@ $line-height-small: ($line-height * .5);
       padding: 0;
       text-align: center;
       cursor: pointer;
+      color: $white; //TODO- use buttons
       &.previous{ @extend .fa-caret-left; }
       &.next{ @extend .fa-caret-right;}
       &:hover{

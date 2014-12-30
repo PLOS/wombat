@@ -105,7 +105,9 @@
 <#include "mathjax.ftl">
 
   <script type="text/javascript">
+
     (function ($) {
+
       /*filesizetable*/
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
 

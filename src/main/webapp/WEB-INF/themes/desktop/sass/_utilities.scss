@@ -243,10 +243,12 @@ example | extension
       text-decoration: none;
     }
   }
+
   //tabs on article lightbox
-  #fig-viewer .fv-nav li.active a {
+  #fig-viewer .fv-nav li.tab_active {
     color: $clr-body-text;
   }
+
   #fig-viewer-controls .fig-btn {
     color: $grey-dark;
 

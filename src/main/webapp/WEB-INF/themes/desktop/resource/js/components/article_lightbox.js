@@ -1,5 +1,5 @@
 
-//dependencies: jquery.touchswipe.js, foundation tabs, foundation reveal
+//dependencies: jquery.touchswipe.js, foundation reveal
 
 (function($) {
 
@@ -26,7 +26,7 @@
     $('#article-lightbox').foundation('reveal', 'open', {
       url: 'article/lightbox',
       success: function(data) {
-        console.log('modal data loaded');
+       // console.log('modal data loaded');
       },
       error: function() {
         // alert('failed loading modal');
@@ -87,9 +87,9 @@
 
           FVBuildHdr(article_title, auth_list, doi, state);
 
-          FVBuildFigs(article_body, doi);
-
           FVBuildAbs(doi, abstract_data, abstract_info);
+
+          FVBuildFigs(article_body, doi);
 
           FVBuildRefs($(data).find('.references'));
 
@@ -126,13 +126,13 @@
       FVDisplayPane(state);
 
       // debounce resize event
-     /* var resizeDelay;
+      var resizeDelay;
       $(window).on('resize.modal', function() {
         clearTimeout(resizeDelay);
         resizeDelay = setTimeout(function() {
           FVSize();
         }, 100);
-      });*/
+      });
     };
 
     loadJSON();
@@ -163,21 +163,41 @@
 
   // build header elements
   FVBuildHdr = function(title, authors, articleDoi, state) {
-    var findActive, authArray, articleLink, h1, authorList, trimAuth, auth;
+    var $findActive, articleLink, h1, trimAuth, auth;
 
-    findActive = $('.fv-nav').find('li');
+    $findActive = $('.fv-nav').find('li');
 
-    /* highlight the active nav item. even though foundation tabs is used for navigation when the lightbox is open,
-     the initial tab needs to be registered manually: this part is not handled by foundation.*/
-    $.each(findActive, function(){
-      var activateLi = $(this).hasClass(state);
-      if (activateLi === true){
-        $(this).addClass('active').find('a').trigger('click');
+    $.each($findActive, function(){
+
+      var $panel_class = $(this).attr('class');
+
+      if (state === $panel_class){
+        $(this).addClass('tab_active').trigger('click');
+
       }
     });
-    /*$findActive.on('click', function(){
-         target show();
-    });*/
+
+    $findActive.on('click', function(){
+
+      var $tab_clicked = $(this);
+      var $tab_sibs = $(this).siblings();
+      var $panel_name = '#lightbox-'+ $tab_clicked.attr('class');
+
+      if ( $tab_sibs.hasClass('tab_active') ){
+        $tab_sibs.removeClass('tab_active');
+      }
+
+      $($panel_name).css('display','block');
+
+      $.each($tab_sibs, function(){
+        var $panel_sib = '#lightbox-'+$(this).attr('class');
+        $($panel_sib).css('display','none');
+      });
+
+      $tab_clicked.addClass('tab_active');
+
+    });
+
     if ($FV.external_page) {
       articleLink = "http://dx.plos.org/" + articleDoi.replace("info:doi/", "");
       h1 = '<a href="' + articleLink + '">' + title + '</a>';
@@ -190,9 +210,9 @@
     $('#fvTitle').append(h1);
 
     if (authors) {
-      authArray = authors.split(',');
+      var authArray = authors.split(',');
 
-      authorList = $('#fvAuthors');
+      var authorList = $('#fvAuthors');
 
       var get_last = authArray.length - 1;
 
@@ -685,7 +705,7 @@
     var $img = $('<img src="' + src + '" title="' + txt + '" alt="' + txt + '" class="lg invisible">');
 
     $(stage).append($img); // load large img into 'staging' div
-    $(stage).imagesLoaded(function() {   console.log($img.height());
+    $(stage).imagesLoaded(function() {   //console.log($img.height());
       $FV.figs_array[i].data('state', 4);
       if (i == $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
         FVSwitchImg($FV.figs_array[i]);
@@ -804,7 +824,7 @@
     img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
     resize_h = $img.height(); // height of sized to fit image
     drag = false; // dragging not enabled
-    console.log($img);
+    //console.log($img);
     $FV.zoom.show();
 
     $FV.zoom.sldr.slider({
@@ -836,7 +856,7 @@
       var value = $FV.zoom.sldr.slider("value");
       value = resize_h + (real_h - resize_h) / 4 * Math.ceil((value - resize_h) * 4 / (real_h - resize_h) + 0.1);
       value = Math.min(Math.ceil(value), real_h);
-      console.log(value);
+      //console.log(value);
       $FV.zoom.sldr.slider('value', value );
       imgResize(value);
       FVDragInit($fig, $img);

@@ -5,9 +5,9 @@
     <div id="fvAuthors"></div>
 
     <ul class="fv-nav">
-      <li class="abst"><a href="#lightbox-abst">Abstract</a></li>
-      <li class="figs"><a href="#lightbox-figs">Figures</a></li>
-      <li class="refs"><a href="#lightbox-refs">References</a></li>
+      <li class="abst">Abstract</li>
+      <li class="figs">Figures</li>
+      <li class="refs">References</li>
     </ul>
 
 

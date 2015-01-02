@@ -74,27 +74,20 @@ $fv-grey-bg: darken($grey-light, 3%);
       float: left;
       border-right: 1px solid $grey-med-dark;
       padding: 0 $pad-smallish;
-      //plos one special handling is in _utilities.scss in the brand color section
-      &.active {
+      font-size: $txt-size-medium-large;
+      line-height: rem-calc(46);
+      color: $white;
+      cursor: pointer;
+      outline: 0;
+
+      // special handling for PLOSOne is in _utilities.scss in the brand color section
+      &.tab_active {
         @extend %brand-background;
-        cursor: default;
       }
 
       &:hover {
         background: $plos-default;
-      }
-
-      a {
         color: $white;
-        font-size: $txt-size-medium-large;
-        line-height: rem-calc(46);
-        display: block;
-        outline: 0;
-
-        &:hover {
-          color: $white;
-          text-decoration: none;
-        }
       }
     }
   }
@@ -145,17 +138,17 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 .figs #lightbox-figs {
-  display: block;
+//  display: block;
   position: relative;
 }
 
 .abst #lightbox-abst {
-  display: block;
+//  display: block;
   overflow: auto;
 }
 
 .refs #lightbox-refs {
-  display: block;
+//  display: block;
   overflow: auto;
 }
 

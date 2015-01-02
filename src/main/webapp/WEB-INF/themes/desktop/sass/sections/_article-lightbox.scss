@@ -689,7 +689,7 @@ position: relative;
 
   a {
     color: $plos-default;
-    font-weight: normal;
+    font-weight: bold;
     &:hover {
       color: $plos-default;
       text-decoration: underline;
@@ -705,7 +705,7 @@ position: relative;
   font-weight: bold;
 }
 
-#lightbox-refs .reflinks {
+#lightbox-refs .reflinks a {
   font-weight: normal;
   font-size: $txt-size-small;
 }

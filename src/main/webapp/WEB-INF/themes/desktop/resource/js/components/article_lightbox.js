@@ -12,9 +12,9 @@
 
   var lightbox = {};
   // FigViewerInit is initiated when user clicks on anything to open the lightbox. Click events are at the bottom of this page.
-  // ref=src of specific figure clicked on; if not specific figure, is set to null
-  // state=abst, figs, or refs; external_page = true if not on article page
-  lightbox.FigViewerInit = function(doi, ref, state, external_page) {
+  // ref_figure = source of specific figure clicked on; if not a specific figure, is set to null
+  // state = abst, figs, or refs; external_page = true if not on article page
+  lightbox.FigViewerInit = function(doi, ref_figure, state, external_page) {
     var rerunMathjax, loadJSON;
 
     //disable scrolling on web page behind fig viewer
@@ -37,24 +37,21 @@
     if ($FVPending) {
       return;
     }
+
     $FVPending = true;
-
-
 
     $FV.hdr = $('.fv-header');
 
-    if (ref) {
-      ref = ref.slice(9);
+    if (ref_figure) {
+      ref_figure = ref_figure.slice(9);
     }  else {
-      ref = null;
+      ref_figure = null;
     }
 
-    $FV.figs_ref = ref; // reference for specific figure, if null, defaults to first figure
+    $FV.figs_ref = ref_figure; // reference for specific figure, if null, defaults to first figure
     $FV.txt_expanded = false; // figure descriptions are closed
     $FV.thmbs_vis = false; // figure thumbnails are hidden
     $FV.external_page = external_page ? true : false;
-   // $(document).foundation({tab: {toggleable: true}});
-
 
     loadJSON = function() {
 
@@ -75,8 +72,6 @@
           $FVPending = false;
         },
         success:function (data) {
-
-          var data_body = $(data).find('body').html();
 
           var article_title = $(data).find('#artTitle').text();
           var authors = $(data).find('.author-name');
@@ -102,6 +97,7 @@
         }
       });
     };
+
     rerunMathjax = function() {
       // rerun mathjax
       try {
@@ -140,7 +136,7 @@
 
   FVSize = function () {
     var win_h = $win.height();
-    var frame_h = 20; //account for the 10 pixel border
+    var frame_h = 20; //account for the 10px border
     var hdr_h = 46; //height of title header
     var data_h = 120; // height of bottom controls
     var modal_h = win_h - frame_h;
@@ -173,7 +169,6 @@
 
       if (state === $panel_class){
         $(this).addClass('tab_active').trigger('click');
-
       }
     });
 

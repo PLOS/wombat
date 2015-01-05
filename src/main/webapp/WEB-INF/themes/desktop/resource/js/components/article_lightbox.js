@@ -112,12 +112,10 @@
     };
 
     displayModal = function () {
-/*    commented out because event analytics aren't in use yet
 
-      if(typeof(_gaq) !== 'undefined'){
-        _gaq.push(['_trackEvent',"Lightbox", "Display Modal", ""]);
-      }
-*/
+     if(typeof(ga) !== 'undefined'){
+     ga('send', 'event', 'Lightbox', 'Display Modal', '');
+     }
 
       FVSize();
       FVDisplayPane(state);
@@ -469,12 +467,10 @@
 
   // display figure slides functionality
   FVChangeSlide = function($thmb) {
-/*  commented out because event analytics aren't in use yet
 
-    if (typeof(_gaq) !== 'undefined') {
-      _gaq.push(['_trackEvent',"Lightbox", "Slide Changed", ""]);
-    }
-*/
+     if (typeof(ga) !== 'undefined'){
+     ga('send', 'event', 'Lightbox', 'Slide Changed', '');
+     }
 
     if ($FV.thumbs.active !== null) {
 

@@ -68,7 +68,6 @@
   $.fn.populateFileSizes = function (fileSizeTable) {
 
     if(hasFigures){
-      alert('hello');
     $('.file-size').each(function (index, element) {
       var $el = $(element);
       var doi = $el.attr('data-doi');

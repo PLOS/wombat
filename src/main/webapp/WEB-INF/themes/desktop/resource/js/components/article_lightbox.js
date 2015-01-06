@@ -79,14 +79,14 @@
           var article_title = $(data).find('#artTitle').text();
           var authors = $(data).find('.author-name');
           var auth_list = $(authors).text();
-          var article_body = $(data).find('#artText').html();
-          var abstract = $(data).find('.abstract');
+          var article_body = $(data).find('#artText');
+          var abstract_data = $(data).find('.abstract');
           var abstract_info = $(data).find('.articleinfo');
           FVBuildHdr(article_title, auth_list, doi, state);
 
           FVBuildFigs(article_body, doi);
 
-          FVBuildAbs(doi, abstract, abstract_info);
+          FVBuildAbs(doi, abstract_data, abstract_info);
 
           FVBuildRefs($(data).find('.references'));
 
@@ -298,7 +298,7 @@
       return '#' + uri;
     };
 
-    fig_container = $(data).find('.figure');
+    fig_container = data.find('.figure');
 
     //iterate through each image
     $.each(fig_container, function () {

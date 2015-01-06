@@ -138,17 +138,10 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 .figs #lightbox-figs {
-//  display: block;
-  position: relative;
+ // position: relative;
 }
 
-.abst #lightbox-abst {
-//  display: block;
-  overflow: auto;
-}
-
-.refs #lightbox-refs {
-//  display: block;
+#lightbox-abst, #lightbox-refs {
   overflow: auto;
 }
 

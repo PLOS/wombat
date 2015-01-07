@@ -857,9 +857,9 @@
     img_mt = parseInt($img.css('marginTop')); // top margin of sized to fit image
     img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
     resize_h = $img.height(); // height of sized to fit image
-    console.log(resize_h);
+
     drag = false; // dragging not enabled
-    //console.log($img);
+
     $FV.zoom.show();
 
     $FV.zoom.sldr.slider({

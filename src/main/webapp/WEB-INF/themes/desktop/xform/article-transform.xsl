@@ -2494,7 +2494,7 @@
     <a href="#{translate(@rid, '.', '-')}">
       <xsl:apply-templates/>
     </a>
-  </xsl:template
+  </xsl:template>
   <!-- 1/4/12: Ambra modifications (transform to <strong> instead of <b>) -->
   <xsl:template match="bold">
     <strong>

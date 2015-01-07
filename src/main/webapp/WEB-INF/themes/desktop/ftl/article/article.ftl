@@ -83,6 +83,13 @@
 
   <#include "../common/footer/footer.ftl" />
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='resource/js/vendor/jquery-1.11.0.js' type='text/javascript'%3E%3C/script%3E"));
+  }
+</script>
+
   <@js src="resource/js/components/show_onscroll.js"/>
   <@js src="resource/js/components/tooltip_hover.js"/>
 
@@ -105,7 +112,9 @@
 <#include "mathjax.ftl">
 
   <script type="text/javascript">
+
     (function ($) {
+
       /*filesizetable*/
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
 

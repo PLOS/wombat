@@ -379,10 +379,7 @@
         + '<img src="' + path +'inline&id=info:doi/'+ img_ref + '" alt="' + image_title + '" title="' + image_title+ '">'
         + '</div></div>');
 
-      // thumbnail close button
-      thmb_close = $('<span class="btn-thmb-close" title="close" />');
 
-      $(thmb_close).appendTo($FV.thumbs_el);
       $FV.thumbs_el.append($FV.thumbs_cont);
       $FV.thumbs_cont.append($thmb);
 
@@ -444,10 +441,7 @@
         FVArrowKeys($(this));
       });
 
-      $(thmb_close).on('click',function() {
-        $FV.figs_pane.toggleClass('thmbs-vis');
-        $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
-      });
+
     });
 
     // figures controls in control bar
@@ -483,33 +477,40 @@
 
     $FV.controls_el.append($FV.zoom);
     $FV.slides_el.append($FV.controls_el);
+    // thumbnail close button
+    thmb_close = $('<span class="btn-thmb-close" title="close" />');
+    $FV.thumbs_el.prepend(thmb_close);
     $FV.figs_pane.append($FV.slides_el);
     $FV.figs_pane.append($FV.thumbs_el);
     //  $FV.figs_pane.append($FV.staging_el); Two div.stagings are built; not sure this one is necessary
     $('#lightbox-content').append($FV.figs_pane);
 
+    $(thmb_close).on('click',function() {
+      $FV.figs_pane.toggleClass('thmbs-vis');
+      $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
+    });
 
-     if ($.support.touchEvents) {
-     var th;
-     $FV.slides_el.swipe({
-     swipeLeft:function(event, direction, distance, duration, fingerCount) {
-     if ($FV.thumbs.active.next().length) {
-     th = $FV.thumbs.active.next();
-     FVChangeSlide(th);
-     }
-     },
-     swipeRight:function(event, direction, distance, duration, fingerCount) {
-     if ($FV.thumbs.active.prev().length) {
-     th = $FV.thumbs.active.prev();
-     FVChangeSlide(th);
-     }
-     },
-     tap:function(event, target) {
-     target.click();
-     },
-     threshold:25
-     });
-     }
+    if ($.support.touchEvents) {
+      var th;
+      $FV.slides_el.swipe({
+      swipeLeft:function(event, direction, distance, duration, fingerCount) {
+      if ($FV.thumbs.active.next().length) {
+      th = $FV.thumbs.active.next();
+      FVChangeSlide(th);
+      }
+      },
+      swipeRight:function(event, direction, distance, duration, fingerCount) {
+      if ($FV.thumbs.active.prev().length) {
+      th = $FV.thumbs.active.prev();
+      FVChangeSlide(th);
+      }
+      },
+      tap:function(event, target) {
+      target.click();
+      },
+      threshold:25
+      });
+    }
 
   }; //end FVBuildFigs
 
@@ -554,9 +555,10 @@
   };
 
   FVArrowKeys = function() {
+
     // arrow keys operate the next / previous slide
     // keydown is unbound in FVClose() so up/down works on web page
-    $(this).on('keydown', function (e) {// this = window, .on calls jquery
+    $win.on('keydown', function (e) {
       // left / up arrow keys
       if (e.which == 37 || e.which == 38) {
         if ($FV.thumbs.active.prev().length) {
@@ -738,7 +740,7 @@
 
 // size images to fit in div.lb-figure element
   FVSizeImgToFit = function (fig_div, down_only) {
-    var fig_img, fig_div_h, fig_div_w, i_h, i_w, sizeAndCenter;
+    var fig_img, fig_div_h, fig_div_w, i_h, i_w, sizeAndCenter, resized_i_w;
 
     fig_img = fig_div.find('img');
     fig_div_h = fig_div.height();
@@ -750,10 +752,15 @@
     sizeAndCenter = function() {
       // compare aspect ratios of parent and image and set dimensions accordingly
       if (fig_div_w / fig_div_h > i_w / i_h) {
-        fig_img.css({'height': fig_div_h,
-          // horizontally center after resizing, (zoom uses margin values so can't use auto)
-          'marginLeft' : Math.round((fig_div_w -  fig_img.width()) / 2), 'marginTop' : 0});
-
+        //resize the image height
+        fig_img.css('height', fig_div_h);
+        //get the new width
+        resized_i_w = fig_img.width();
+        //calculate and set the left margin for centering
+        fig_img.css({
+          'marginLeft': Math.round((fig_div_w - resized_i_w) / 2),
+          'marginTop': 0
+        });
       } else {
         // calculate height to make width match parent
         fig_img.css({
@@ -790,6 +797,7 @@
 
     img_m = lb_fig_div.find('img.med');
     img_m_h = img_m.height();
+    console.log(img_m.width());
     img_l = lb_fig_div.next().find('img.lg');
 
     // move large image into figure div (image hidden by css)
@@ -849,6 +857,7 @@
     img_mt = parseInt($img.css('marginTop')); // top margin of sized to fit image
     img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
     resize_h = $img.height(); // height of sized to fit image
+    console.log(resize_h);
     drag = false; // dragging not enabled
     //console.log($img);
     $FV.zoom.show();
@@ -866,7 +875,7 @@
           FVDragInit($fig, $img);
 
         }
-        if (ui.value == resize_h) { // slider is at minimum value
+        if (ui.value === resize_h) { // slider is at minimum value
           // kill drag
           FVDragStop($fig, $img);
           drag = false;
@@ -918,7 +927,8 @@
         'height': m,
         'marginTop': img_mt - Math.round((m - resize_h) / 2),
         'marginLeft': img_ml - Math.round(((m - resize_h) / 2) * (real_w / real_h))
-      });
+      }); console.log(img_mt - Math.round((m - resize_h) / 2));
+      console.log(img_ml - Math.round(((m - resize_h) / 2) * (real_w / real_h)));
     };
 
     $fig.on('DOMMouseScroll mousewheel', function (event) {

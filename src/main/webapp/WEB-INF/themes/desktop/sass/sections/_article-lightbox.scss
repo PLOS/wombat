@@ -333,8 +333,7 @@ position: relative;
   padding-top: 35px;
   width: 163px;
   position: absolute;
- // bottom: 120px;
-  top: 0;
+  top: 46px;
   right: 0;
   background: $fv-grey-light;
 }
@@ -366,6 +365,7 @@ position: relative;
   padding-left: rem-calc(17);
   overflow: auto;
   background: $fv-grey-light;
+  //Ambra code
   background: linear-gradient(to right, $fv-grey-light 0%, $fv-grey-light 20px, $grey-light 20px, $grey-light 143px,$fv-grey-light 143px, $fv-grey-light 100%);
 }
 

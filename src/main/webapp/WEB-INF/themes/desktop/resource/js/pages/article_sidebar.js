@@ -10,7 +10,7 @@
      truncTerm = $(this).find('.taxo-term');
      targetSpan = $(truncTerm).next();
      getWidth = $(truncTerm).width();
-     if (getWidth > 134) {
+     if (getWidth > 133) {
        return $(truncTerm).css('width', '140px');
      }
 

@@ -1968,7 +1968,7 @@
       <xsl:otherwise>
         <xsl:choose>
           <xsl:when test="position()=last()"></xsl:when>
-          <xsl:otherwise>,</xsl:otherwise>
+          <xsl:otherwise>,&#032;</xsl:otherwise>
         </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>

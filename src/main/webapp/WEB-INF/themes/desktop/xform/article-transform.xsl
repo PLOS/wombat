@@ -2326,6 +2326,8 @@
     <xsl:copy-of copy-namespaces="no" select="."/>
   </xsl:template>
 
+
+
   <!-- ============================================================= -->
   <!--  INLINE MISCELLANEOUS                                         -->
   <!-- ============================================================= -->
@@ -2493,12 +2495,15 @@
       <xsl:apply-templates/>
     </a>
   </xsl:template>
-  <!-- ************ removed the <strong> tags from below 11/4/2014 ********************-->
   <!-- 1/4/12: Ambra modifications (transform to <strong> instead of <b>) -->
   <xsl:template match="bold">
-
+    <strong>
       <xsl:apply-templates/>
-
+    </strong>
+  </xsl:template>
+  <!-- ************ stripped  the <bold> tags from th 1/7/2015 ********************-->
+  <xsl:template match="th/bold">
+    <xsl:apply-templates/>
   </xsl:template>
 
   <!-- 1/4/12: Ambra modifications (transform to <em> instead of <i>) -->

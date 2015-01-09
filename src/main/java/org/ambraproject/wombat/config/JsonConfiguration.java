@@ -154,7 +154,19 @@ public class JsonConfiguration implements RuntimeConfiguration {
 
     @Override
     public String getLogoutUrl() {
-      return (input.cas == null) ? null : input.cas.logoutUrl;
+      if (input.cas == null || Strings.isNullOrEmpty(input.cas.logoutUrl)) {
+        return null;
+      }
+
+      if (Strings.isNullOrEmpty(input.cas.logoutServiceUrl)) {
+        return input.cas.logoutUrl;
+      } else {
+        try {
+          return input.cas.logoutUrl + "?service=" + URLEncoder.encode(input.cas.logoutServiceUrl, Charsets.UTF_8.name());
+        } catch (UnsupportedEncodingException e) {
+          throw new RuntimeException(e);
+        }
+      }
     }
 
     @Override
@@ -200,16 +212,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
     }
     if ((input.devModeAssets == null || !input.devModeAssets) && Strings.isNullOrEmpty(input.compiledAssetDir)) {
       throw new RuntimeConfigurationException("If devModeAssets is false, compiledAssetDir must be specified");
-    }
-
-    if (input.cas != null) {
-      if (!Strings.isNullOrEmpty(input.cas.logoutUrl) && !Strings.isNullOrEmpty(input.cas.logoutServiceUrl)) {
-        try {
-          input.cas.logoutUrl = input.cas.logoutUrl + "?service=" + URLEncoder.encode(input.cas.logoutServiceUrl, Charsets.UTF_8.name());
-        } catch (UnsupportedEncodingException e) {
-          throw new RuntimeException(e);
-        }
-      }
     }
   }
 

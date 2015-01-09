@@ -67,11 +67,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
 
 
   @Override
-  public boolean devModeAssets() {
-    return input.devModeAssets == null ? false : input.devModeAssets;
-  }
-
-  @Override
   public String getCompiledAssetDir() {
     return input.compiledAssetDir;
   }
@@ -210,9 +205,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
         throw new RuntimeConfigurationException("If memcachedHost is specified, cacheAppPrefix must be as well");
       }
     }
-    if ((input.devModeAssets == null || !input.devModeAssets) && Strings.isNullOrEmpty(input.compiledAssetDir)) {
-      throw new RuntimeConfigurationException("If devModeAssets is false, compiledAssetDir must be specified");
-    }
   }
 
 
@@ -242,7 +234,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
 
     private String server;
     private String solrServer;
-    private Boolean devModeAssets;
     private String compiledAssetDir;
     private List<Map<String, ?>> themes;
     private List<Map<String, ?>> sites;
@@ -265,14 +256,6 @@ public class JsonConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setSolrServer(String solrServer) {
       this.solrServer = solrServer;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setDevModeAssets(Boolean devModeAssets) {
-      this.devModeAssets = devModeAssets;
     }
 
     /**

@@ -24,14 +24,8 @@ import java.util.Collection;
 public interface RuntimeConfiguration {
 
   /**
-   * @return true if we are running in "dev mode" for .js and .css, and compilation/minification should not happen for
-   * these files
-   */
-  boolean devModeAssets();
-
-  /**
-   * @return the directory in which to write and serve compiled assets (.js and .css).  Not relevant if devModeAssets is
-   * true.
+   * @return the directory in which to write and serve compiled assets (.js and .css), or {@code null} to not compile
+   * assets due to being in dev mode
    */
   String getCompiledAssetDir();
 

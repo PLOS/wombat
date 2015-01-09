@@ -32,11 +32,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   private ImmutableMap<String, Theme> themeMap;
 
   @Override
-  public boolean devModeAssets() {
-    return false;
-  }
-
-  @Override
   public String getCompiledAssetDir() {
     return System.getProperty("java.io.tmpdir");
   }

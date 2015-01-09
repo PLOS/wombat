@@ -80,7 +80,7 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
     assetNodes.clear(); // Reset in case new assets get put in for a second render
 
     if (assetPaths != null && !assetPaths.isEmpty()) {
-      if (runtimeConfiguration.devModeAssets()) {
+      if (runtimeConfiguration.getCompiledAssetDir() == null) {
         for (String assetPath : assetPaths) {
           String assetAddress = new SitePageContext(siteResolver, environment).buildLink(assetPath);
           environment.getOut().write(getHtml(assetAddress));

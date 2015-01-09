@@ -118,7 +118,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    */
   private Transformer buildTransformer(RenderContext renderContext, XMLReader xmlReader) throws IOException {
     Theme theme = renderContext.getSite().getTheme();
-    log.info("Building transformer for: {}", renderContext.getSite());
+    log.debug("Building transformer for: {}", renderContext.getSite());
     TransformerFactory factory = newTransformerFactory();
 
     Transformer transformer;

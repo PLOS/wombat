@@ -31,75 +31,26 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
 
   private ImmutableMap<String, Theme> themeMap;
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public boolean devModeAssets() {
     return false;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String getCompiledAssetDir() {
     return System.getProperty("java.io.tmpdir");
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getMemcachedHost() {
-    return null;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public int getMemcachedPort() {
-    return -1;
-  }
-
-  @Override
-  public Integer getConnectionPoolMaxTotal() {
-    return null;
-  }
-
-  @Override
-  public Integer getConnectionPoolDefaultMaxPerRoute() {
-    return null;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getCacheAppPrefix() {
-    return "testWombat:";
-  }
-
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public URL getServer() {
     return null;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public URL getSolrServer() {
     return null;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {
     Map<String, Theme> mutable = new HashMap<>();
@@ -115,22 +66,67 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getCasServiceUrl() {
-    return null;
+  public CacheConfiguration getCacheConfiguration() {
+    return new CacheConfiguration() {
+      @Override
+      public String getMemcachedHost() {
+        return null;
+      }
+
+      @Override
+      public int getMemcachedPort() {
+        return -1;
+      }
+
+      @Override
+      public String getCacheAppPrefix() {
+        return "testWombat";
+      }
+    };
   }
 
   @Override
-  public String getCasUrl() {
-    return null;
+  public HttpConnectionPoolConfiguration getHttpConnectionPoolConfiguration() {
+    return new HttpConnectionPoolConfiguration() {
+      @Override
+      public Integer getMaxTotal() {
+        return null;
+      }
+
+      @Override
+      public Integer getDefaultMaxPerRoute() {
+        return null;
+      }
+    };
   }
 
   @Override
-  public String getCasLoginUrl() {
-    return null;
-  }
+  public CasConfiguration getCasConfiguration() {
+    return new CasConfiguration() {
+      @Override
+      public String getCasUrl() {
+        return null;
+      }
 
-  @Override
-  public String getCasLogoutUrl() {
-    return null;
+      @Override
+      public String getServiceUrl() {
+        return null;
+      }
+
+      @Override
+      public String getLoginUrl() {
+        return null;
+      }
+
+      @Override
+      public String getLogoutUrl() {
+        return null;
+      }
+
+      @Override
+      public String getLogoutServiceUrl() {
+        return null;
+      }
+    };
   }
 }

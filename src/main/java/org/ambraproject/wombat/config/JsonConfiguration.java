@@ -44,203 +44,10 @@ public class JsonConfiguration implements RuntimeConfiguration {
   @Autowired
   private SearchService searchService;
 
-  private final UserFields uf;
-  private String casLogoutUrl;
+  private final ConfigurationInput input;
 
-  public JsonConfiguration(UserFields uf) {
-    this.uf = uf;
-  }
-
-  public static class UserFields {
-    /**
-     * @deprecated should only be called reflectively by a deserialization library
-     */
-    @Deprecated
-    public UserFields() {
-    }
-
-    // Fields are immutable by convention. They should be modified only during deserialization.
-    private String server;
-    private String solrServer;
-    private String memcachedHost;
-    private Integer memcachedPort;
-    private Map<String, ?> httpConnectionPool;
-    private String cacheAppPrefix;
-    private Boolean devModeAssets;
-    private String compiledAssetDir;
-    private List<Map<String, ?>> themes;
-    private List<Map<String, ?>> sites;
-    private String casServiceUrl;
-    private String casUrl;
-    private String casLoginUrl;
-    private String casLogoutUrl;
-    private String casLogoutServiceUrl;
-
-    public void setServer(String server) {
-      this.server = server;
-    }
-
-    public void setSolrServer(String solrServer) {
-      this.solrServer = solrServer;
-    }
-
-    public void setMemcachedHost(String memcachedHost) {
-      this.memcachedHost = memcachedHost;
-    }
-
-    public void setMemcachedPort(Integer memcachedPort) {
-      this.memcachedPort = memcachedPort;
-    }
-
-    public void setHttpConnectionPool(Map<String, ?> httpConnectionPool) {
-      this.httpConnectionPool = httpConnectionPool;
-    }
-
-    public void setCacheAppPrefix(String cacheAppPrefix) {
-      this.cacheAppPrefix = cacheAppPrefix;
-    }
-
-    public void setDevModeAssets(Boolean devModeAssets) {
-      this.devModeAssets = devModeAssets;
-    }
-
-    public void setCompiledAssetDir(String compiledAssetDir) {
-      this.compiledAssetDir = compiledAssetDir;
-    }
-
-    public void setThemes(List<Map<String, ?>> themes) {
-      this.themes = themes;
-    }
-
-    public void setSites(List<Map<String, ?>> sites) {
-      this.sites = sites;
-    }
-
-    public void setCasServiceUrl(String casServiceUrl) {
-      this.casServiceUrl = casServiceUrl;
-    }
-
-    public void setCasUrl(String casUrl) {
-      this.casUrl = casUrl;
-    }
-
-    public void setCasLoginUrl(String casLoginUrl) {
-      this.casLoginUrl = casLoginUrl;
-    }
-
-    public void setCasLogoutUrl(String casLogoutUrl) {
-      this.casLogoutUrl = casLogoutUrl;
-    }
-
-    public void setCasLogoutServiceUrl(String casLogoutServiceUrl) {
-      this.casLogoutServiceUrl = casLogoutServiceUrl;
-    }
-  }
-
-  /**
-   * Validate values after deserializing.
-   *
-   * @throws RuntimeConfigurationException if a value is invalid
-   */
-  public void validate() {
-    if (Strings.isNullOrEmpty(uf.server)) {
-      throw new RuntimeConfigurationException("Server address required");
-    }
-    try {
-      new URL(uf.server);
-    } catch (MalformedURLException e) {
-      throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
-    }
-    if (!Strings.isNullOrEmpty(uf.solrServer)) {
-      try {
-        new URL(uf.solrServer);
-      } catch (MalformedURLException e) {
-        throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
-      }
-    }
-    if (!Strings.isNullOrEmpty(uf.memcachedHost) && uf.memcachedPort == null) {
-      throw new RuntimeConfigurationException("No memcachedPort specified");
-    }
-    if (!Strings.isNullOrEmpty(uf.memcachedHost) && Strings.isNullOrEmpty(uf.cacheAppPrefix)) {
-      throw new RuntimeConfigurationException("If memcachedHost is specified, cacheAppPrefix must be as well");
-    }
-    if ((uf.devModeAssets == null || !uf.devModeAssets) && Strings.isNullOrEmpty(uf.compiledAssetDir)) {
-      throw new RuntimeConfigurationException("If devModeAssets is false, compiledAssetDir must be specified");
-    }
-
-    if (!Strings.isNullOrEmpty(uf.casLogoutUrl) && !Strings.isNullOrEmpty(uf.casLogoutServiceUrl)) {
-      try {
-        this.casLogoutUrl = uf.casLogoutUrl + "?service=" + URLEncoder.encode(uf.casLogoutServiceUrl, Charsets.UTF_8.name());
-      } catch (UnsupportedEncodingException e) {
-        throw new RuntimeException(e);
-      }
-    }
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean devModeAssets() {
-    return (uf.devModeAssets == null) ? false : uf.devModeAssets;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getCompiledAssetDir() {
-    return uf.compiledAssetDir;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getMemcachedHost() {
-    return uf.memcachedHost;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public int getMemcachedPort() {
-    return uf.memcachedPort == null ? -1 : uf.memcachedPort;
-  }
-
-  @Override
-  public Integer getConnectionPoolMaxTotal() {
-    return uf.httpConnectionPool == null ? null : (Integer) uf.httpConnectionPool.get("maxTotal");
-  }
-
-  @Override
-  public Integer getConnectionPoolDefaultMaxPerRoute() {
-    return uf.httpConnectionPool == null ? null : (Integer) uf.httpConnectionPool.get("defaultMaxPerRoute");
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getCacheAppPrefix() {
-    return uf.cacheAppPrefix;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public URL getServer() {
-    return buildUrl(uf.server, null);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public URL getSolrServer() {
-    return buildUrl(uf.solrServer, "http://localhost:8983/solr/select/");
+  public JsonConfiguration(ConfigurationInput input) {
+    this.input = input;
   }
 
   private static URL buildUrl(String address, String defaultValue) {
@@ -258,50 +65,359 @@ public class JsonConfiguration implements RuntimeConfiguration {
     }
   }
 
-  /**
-   * {@inheritDoc}
-   */
+
   @Override
-  public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme)
-      throws ThemeTree.ThemeConfigurationException {
-    return ThemeTree.parse(uf.themes, internalThemes, rootTheme);
+  public boolean devModeAssets() {
+    return input.devModeAssets == null ? false : input.devModeAssets;
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  @Override
+  public String getCompiledAssetDir() {
+    return input.compiledAssetDir;
+  }
+
+  @Override
+  public URL getServer() {
+    return buildUrl(input.server, null);
+  }
+
+  @Override
+  public URL getSolrServer() {
+    return buildUrl(input.solrServer, "http://localhost:8983/solr/select/");
+  }
+
+  @Override
+  public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {
+    return ThemeTree.parse(input.themes, internalThemes, rootTheme);
+  }
+
   @Override
   public SiteSet getSites(ThemeTree themeTree) {
-    return SiteSet.create(uf.sites, themeTree);
+    return SiteSet.create(input.sites, themeTree);
   }
+
+  private final CacheConfiguration cacheConfiguration = new CacheConfiguration() {
+    @Override
+    public String getMemcachedHost() {
+      return (input.cache == null) ? null : input.cache.memcachedHost;
+    }
+
+    @Override
+    public int getMemcachedPort() {
+      return (input.cache == null || input.cache.memcachedPort == null) ? -1
+          : input.cache.memcachedPort;
+    }
+
+    @Override
+    public String getCacheAppPrefix() {
+      return (input.cache == null) ? null : input.cache.cacheAppPrefix;
+    }
+  };
 
   @Override
-  public String getCasServiceUrl() {
-    return uf.casServiceUrl;
+  public CacheConfiguration getCacheConfiguration() {
+    return cacheConfiguration;
   }
+
+  private final HttpConnectionPoolConfiguration httpConnectionPoolConfiguration = new HttpConnectionPoolConfiguration() {
+    @Override
+    public Integer getMaxTotal() {
+      return (input.httpConnectionPool == null) ? null : input.httpConnectionPool.maxTotal;
+    }
+
+    @Override
+    public Integer getDefaultMaxPerRoute() {
+      return (input.httpConnectionPool == null) ? null : input.httpConnectionPool.defaultMaxPerRoute;
+    }
+  };
 
   @Override
-  public String getCasUrl() {
-    return uf.casUrl;
+  public HttpConnectionPoolConfiguration getHttpConnectionPoolConfiguration() {
+    return httpConnectionPoolConfiguration;
   }
+
+  private final CasConfiguration casConfiguration = new CasConfiguration() {
+    @Override
+    public String getCasUrl() {
+      return (input.cas == null) ? null : input.cas.casUrl;
+    }
+
+    @Override
+    public String getServiceUrl() {
+      return (input.cas == null) ? null : input.cas.serviceUrl;
+    }
+
+    @Override
+    public String getLoginUrl() {
+      return (input.cas == null) ? null : input.cas.loginUrl;
+    }
+
+    @Override
+    public String getLogoutUrl() {
+      return (input.cas == null) ? null : input.cas.logoutUrl;
+    }
+
+    @Override
+    public String getLogoutServiceUrl() {
+      return (input.cas == null) ? null : input.cas.logoutServiceUrl;
+    }
+  };
 
   @Override
-  public String getCasLoginUrl() {
-    return uf.casLoginUrl;
+  public CasConfiguration getCasConfiguration() {
+    return casConfiguration;
   }
 
-  @Override
-  public String getCasLogoutUrl() {
-    return this.casLogoutUrl;
-  }
 
-  /*
-   * For debugger-friendliness only. If there is a need to serialize back to JSON in production, it would be more
-   * efficient to use the Gson bean.
+  /**
+   * Validate values after deserializing.
+   *
+   * @throws RuntimeConfigurationException if a value is invalid
    */
-  @Override
-  public String toString() {
-    return new GsonBuilder().create().toJson(this);
+  public void validate() {
+    if (Strings.isNullOrEmpty(input.server)) {
+      throw new RuntimeConfigurationException("Server address required");
+    }
+    try {
+      new URL(input.server);
+    } catch (MalformedURLException e) {
+      throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
+    }
+    if (!Strings.isNullOrEmpty(input.solrServer)) {
+      try {
+        new URL(input.solrServer);
+      } catch (MalformedURLException e) {
+        throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
+      }
+    }
+    if (input.cache != null) {
+      if (!Strings.isNullOrEmpty(input.cache.memcachedHost) && input.cache.memcachedPort == null) {
+        throw new RuntimeConfigurationException("No memcachedPort specified");
+      }
+      if (!Strings.isNullOrEmpty(input.cache.memcachedHost) && Strings.isNullOrEmpty(input.cache.cacheAppPrefix)) {
+        throw new RuntimeConfigurationException("If memcachedHost is specified, cacheAppPrefix must be as well");
+      }
+    }
+    if ((input.devModeAssets == null || !input.devModeAssets) && Strings.isNullOrEmpty(input.compiledAssetDir)) {
+      throw new RuntimeConfigurationException("If devModeAssets is false, compiledAssetDir must be specified");
+    }
+
+    if (input.cas != null) {
+      if (!Strings.isNullOrEmpty(input.cas.logoutUrl) && !Strings.isNullOrEmpty(input.cas.logoutServiceUrl)) {
+        try {
+          input.cas.logoutUrl = input.cas.logoutUrl + "?service=" + URLEncoder.encode(input.cas.logoutServiceUrl, Charsets.UTF_8.name());
+        } catch (UnsupportedEncodingException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    }
   }
 
+
+  public static class ConfigurationInput {
+    /**
+     * @deprecated should only be called reflectively by a deserialization library
+     */
+    @Deprecated
+    public ConfigurationInput() {
+    }
+
+    /*
+     * For debugger-friendliness only. If there is a need to serialize back to JSON in production, it would be more
+     * efficient to use the Gson bean.
+     */
+    @Override
+    public String toString() {
+      return new GsonBuilder().create().toJson(this);
+    }
+
+
+    // Input-defining fields appear below.
+    // SnakeYAML will reflectively inspect the names of these fields and use them as the input contract.
+    // All such fields are immutable by convention. They should be set only by the YAML deserializer.
+
+    // ---------------- Input fields (and boring boilerplate setters) are below this line ----------------
+
+    private String server;
+    private String solrServer;
+    private Boolean devModeAssets;
+    private String compiledAssetDir;
+    private List<Map<String, ?>> themes;
+    private List<Map<String, ?>> sites;
+
+    private CacheConfigurationInput cache;
+    private HttpConnectionPoolConfigurationInput httpConnectionPool;
+    private CasConfigurationInput cas;
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setServer(String server) {
+      this.server = server;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setSolrServer(String solrServer) {
+      this.solrServer = solrServer;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setDevModeAssets(Boolean devModeAssets) {
+      this.devModeAssets = devModeAssets;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setCompiledAssetDir(String compiledAssetDir) {
+      this.compiledAssetDir = compiledAssetDir;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setThemes(List<Map<String, ?>> themes) {
+      this.themes = themes;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setSites(List<Map<String, ?>> sites) {
+      this.sites = sites;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setCache(CacheConfigurationInput cache) {
+      this.cache = cache;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setHttpConnectionPool(HttpConnectionPoolConfigurationInput httpConnectionPool) {
+      this.httpConnectionPool = httpConnectionPool;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setCas(CasConfigurationInput cas) {
+      this.cas = cas;
+    }
+  }
+
+  public static class CacheConfigurationInput {
+    private String memcachedHost;
+    private Integer memcachedPort;
+    private String cacheAppPrefix;
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setMemcachedHost(String memcachedHost) {
+      this.memcachedHost = memcachedHost;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setMemcachedPort(Integer memcachedPort) {
+      this.memcachedPort = memcachedPort;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setCacheAppPrefix(String cacheAppPrefix) {
+      this.cacheAppPrefix = cacheAppPrefix;
+    }
+  }
+
+  public static class HttpConnectionPoolConfigurationInput {
+    private Integer maxTotal;
+    private Integer defaultMaxPerRoute;
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setMaxTotal(Integer maxTotal) {
+      this.maxTotal = maxTotal;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setDefaultMaxPerRoute(Integer defaultMaxPerRoute) {
+      this.defaultMaxPerRoute = defaultMaxPerRoute;
+    }
+  }
+
+  public static class CasConfigurationInput {
+    private String casUrl;
+    private String serviceUrl;
+    private String loginUrl;
+    private String logoutUrl;
+    private String logoutServiceUrl;
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setCasUrl(String casUrl) {
+      this.casUrl = casUrl;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setServiceUrl(String serviceUrl) {
+      this.serviceUrl = serviceUrl;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setLoginUrl(String loginUrl) {
+      this.loginUrl = loginUrl;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setLogoutUrl(String logoutUrl) {
+      this.logoutUrl = logoutUrl;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setLogoutServiceUrl(String logoutServiceUrl) {
+      this.logoutServiceUrl = logoutServiceUrl;
+    }
+  }
 }

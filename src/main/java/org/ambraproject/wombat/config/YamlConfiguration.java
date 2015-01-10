@@ -30,13 +30,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Configuration for the webapp's runtime behavior. Because most configuration of application behavior should be behind
- * the service layer, this class ought to be concerned only with the minimal set of values that concern how this Spring
- * app interacts with the service API.
+ * Configuration for the webapp's runtime behavior as read from a YAML file.
+ * <p/>
+ * Because most configuration of application behavior should be behind the service layer, this class ought to be
+ * concerned only with the minimal set of values that concern how this Spring app interacts with the service API.
  *
- * @see SpringConfiguration#runtimeConfiguration
+ * @see RootConfiguration#runtimeConfiguration
  */
-public class JsonConfiguration implements RuntimeConfiguration {
+public class YamlConfiguration implements RuntimeConfiguration {
 
   @Autowired
   private SoaService soaService;
@@ -46,7 +47,7 @@ public class JsonConfiguration implements RuntimeConfiguration {
 
   private final ConfigurationInput input;
 
-  public JsonConfiguration(ConfigurationInput input) {
+  public YamlConfiguration(ConfigurationInput input) {
     this.input = input;
   }
 

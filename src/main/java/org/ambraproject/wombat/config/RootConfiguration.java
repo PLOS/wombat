@@ -45,9 +45,9 @@ public class RootConfiguration {
       throw new RuntimeConfigurationException(configPath.getPath() + " not found");
     }
 
-    JsonConfiguration runtimeConfiguration;
+    YamlConfiguration runtimeConfiguration;
     try (Reader reader = new BufferedReader(new FileReader(configPath))) {
-      runtimeConfiguration = new JsonConfiguration(yaml.loadAs(reader, JsonConfiguration.ConfigurationInput.class));
+      runtimeConfiguration = new YamlConfiguration(yaml.loadAs(reader, YamlConfiguration.ConfigurationInput.class));
     } catch (JsonSyntaxException e) {
       throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
     }

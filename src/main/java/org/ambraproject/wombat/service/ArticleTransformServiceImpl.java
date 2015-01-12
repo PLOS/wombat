@@ -118,7 +118,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    */
   private Transformer buildTransformer(RenderContext renderContext, XMLReader xmlReader) throws IOException {
     Theme theme = renderContext.getSite().getTheme();
-    log.info("Building transformer for: {}", renderContext.getSite());
+    log.debug("Building transformer for: {}", renderContext.getSite());
     TransformerFactory factory = newTransformerFactory();
 
     Transformer transformer;
@@ -132,7 +132,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
     // Add cited articles metadata for inclusion of DOI links in reference list
     // TODO: abstract out into a strategy pattern when and if render options become more complex
-    if (theme.getKey().startsWith("Desktop") && renderContext.getArticleId() != null) {
+    boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
+    if (showsCitedArticles && renderContext.getArticleId() != null) {
       Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId(), false);
       Object citedArticles = articleMetadata.get("citedArticles");
       JSONArray jsonArr = JSONArray.fromObject(citedArticles);

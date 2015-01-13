@@ -2,20 +2,21 @@
   var subject_areas, openTermTooltip, handleFlagClick;
 
   subject_areas = (function () {
-    var truncTerm, targetSpan, getWidth, categoryTerm, checkStorage, columnWidth, columnPadding, truncationWidth;
+    var truncTerm, targetSpan, getWidth, categoryTerm, checkStorage;
 
-    $("#subjectList li").each(function () {
-      columnWidth = 140;
-      columnPadding = 5 * 2;
-      truncationWidth = (columnWidth - columnPadding);
-
-      truncTerm = $(this).find('.taxo-term');
-      targetSpan = $(truncTerm).next();
+    $('#subjectList li').each(function () {
+      var iconWidth = $('.taxo-flag').outerWidth(true),
+      columnWidth = $(this).width() - iconWidth,
+      columnPadding = 5 * 2, //TODO - get this auto-magically
+      truncationWidth = (columnWidth - columnPadding),
+      truncTerm = $(this).find('.taxo-term'),
+      targetSpan = $(truncTerm).next(),
       getWidth = $(truncTerm).width();
+
       /* //apply width via js if truncation is needed because the css width needs to be auto otherwise */
 
       if (getWidth > truncationWidth) {
-        return $(truncTerm).css('width', columnWidth + 'px');
+        return $(truncTerm).css('width', columnWidth  + 'px');
       }
 
       /*//check in localstorage if any thing has already been flagged*/

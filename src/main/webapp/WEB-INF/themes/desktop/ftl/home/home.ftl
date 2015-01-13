@@ -22,12 +22,6 @@
 
 <@js src="resource/js/pages/home.js" />
 <@js src="resource/js/components/dateparse.js" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>
-  if (typeof jQuery == 'undefined') {
-    document.write(unescape("%3Cscript src='resource/js/vendor/jquery-1.11.0.js' type='text/javascript'%3E%3C/script%3E"));
-  }
-</script>
 
 <@renderJs />
 

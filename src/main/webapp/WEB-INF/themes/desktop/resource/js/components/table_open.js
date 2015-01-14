@@ -4,11 +4,8 @@
       var table = tabled.find(".table"),
           caption = tabled.find(".table-caption");
       if (type == "HTML") {    //open table in new browser window
-        var w = window.open(),
-            blockquote =  w.document.createElement('blockquote');
+        var w = window.open();
         w.document.open();
-
-
         w.document.writeln('<html><head><title>' + caption.text() + '</title><link rel="stylesheet" type="text/css" href="resource/css/screen.css"><link rel="shortcut icon" href="resource/img/favicon.ico" type="image/x-icon"></head>');
         w.document.writeln('<body style="background-color: #ffffff;">');
         w.document.writeln('<div class="table-wrap">' +  table.html() + '<div class="table-caption">'+caption.html() +'</div> </div>');

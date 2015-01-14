@@ -69,7 +69,7 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
     jsFiles.add("resource/js/test1.js");
     jsFiles.add("resource/js/test2.js");
     String compiledJsPath = assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles,
-        siteSet.getSite("default"), "meaninglessCacheKey");
+        siteSet.getSite("default"));
     String[] fields = compiledJsPath.split("/");
     String basename = fields[fields.length - 1];
 
@@ -90,7 +90,6 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
   public void testJsError() throws Exception {
     List<String> jsFiles = new ArrayList<>();
     jsFiles.add("resource/js/error.js");
-    assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles,
-        siteSet.getSite("default"), "meaninglessCacheKey");
+    assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles, siteSet.getSite("default"));
   }
 }

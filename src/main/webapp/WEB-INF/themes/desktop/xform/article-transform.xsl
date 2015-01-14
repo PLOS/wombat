@@ -258,7 +258,7 @@
           <xsl:for-each select="../../back/glossary/def-list/def-item">
             <xsl:apply-templates select="term"/>,
             <xsl:apply-templates select="def "/>
-            <xsl:if test="position() != last()">;</xsl:if>
+            <xsl:if test="position() != last()">;&#032;</xsl:if>
           </xsl:for-each>
         </p>
       </xsl:if>

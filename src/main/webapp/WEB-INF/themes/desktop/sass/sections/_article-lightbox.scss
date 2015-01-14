@@ -10,6 +10,7 @@ change rounded corner radius from 4px to 5px
 
 color of bolded paragraph headings change from 636363 to 666666
 
+
 info box on the right darker grey background & border: change from e8e8e8 to e7e7e7
 (to use sass darken mixin of our grey-light variable of efefef)
 */
@@ -669,6 +670,7 @@ position: relative;
 
 #fig-viewer-refs {
   padding-top: $pad-default + $pad-xsmall;
+  overflow:auto;
 }
 
 #fig-viewer-refs h3 {

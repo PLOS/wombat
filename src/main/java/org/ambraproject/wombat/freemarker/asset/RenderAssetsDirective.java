@@ -87,7 +87,7 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
         }
       } else {
         Site site = new SitePageContext(siteResolver, environment).getSite();
-        String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site, request.getServletPath());
+        String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site);
         String assetAddress = site.getRequestScheme().buildLink(request,
             PathUtil.JOINER.join(StaticResourceController.RESOURCE_NAMESPACE, assetLink));
         environment.getOut().write(getHtml(assetAddress));

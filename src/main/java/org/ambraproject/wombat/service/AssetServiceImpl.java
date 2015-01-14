@@ -12,6 +12,10 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hasher;
+import com.google.common.hash.Hashing;
 import com.google.common.io.BaseEncoding;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
@@ -40,6 +44,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -74,13 +79,28 @@ public class AssetServiceImpl implements AssetService {
   @Autowired
   private Cache cache;
 
+  private static final HashFunction FILENAME_DIGEST_FUNCTION = Hashing.sha1();
+  private static final char FILENAME_DIGEST_TERMINATOR = '\0';
+
+  private static String generateCacheKey(AssetType assetType, Site site, List<String> filenames) {
+    Hasher hasher = FILENAME_DIGEST_FUNCTION.newHasher();
+    for (String filename : filenames) {
+      hasher.putString(filename, Charsets.ISO_8859_1);
+      hasher.putChar(FILENAME_DIGEST_TERMINATOR);
+    }
+    String filenameDigest = BaseEncoding.base32().encode(hasher.hash().asBytes());
+
+    return String.format("compiledAsset:%s:%s:%s",
+        assetType, site, filenameDigest);
+  }
+
   /**
    * {@inheritDoc}
    */
   @Override
-  public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site, String cacheKey)
+  public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site)
       throws IOException {
-    String fileCacheKey = site.getKey() + ":" + assetType.getFileCacheKey(cacheKey);
+    String fileCacheKey = generateCacheKey(assetType, site, filenames);
     String filename = cache.get(fileCacheKey);
     if (filename == null) {
       File concatenated = concatenateFiles(filenames, site, assetType.getExtension());
@@ -94,7 +114,8 @@ public class AssetServiceImpl implements AssetService {
       // you need the contents of the compiled file, which is why we do it this way.
       cache.put(fileCacheKey, filename, CACHE_TTL);
       if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
-        cache.put(assetType.getContentsCacheKey(filename), compiled.contents, CACHE_TTL);
+        String contentsCacheKey = assetType.getContentsCacheKey(filename);
+        cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
       }
     }
     return COMPILED_PATH_PREFIX + filename;

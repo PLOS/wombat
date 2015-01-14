@@ -39,27 +39,6 @@ public interface AssetService {
     public String getExtension() {
       return "." + name().toLowerCase();
     }
-
-    /**
-     * Builds a cache key to store the filename of a compiled asset.  (We cache these since their name includes a hash,
-     * which can be potentially expensive to compute.)
-     *
-     * @param cacheKey cache key for the overall request
-     * @return cache key where we can store/retrieve the compiled filename
-     */
-    public String getFileCacheKey(String cacheKey) {
-      return String.format("%sFile:%s", name().toLowerCase(), cacheKey);
-    }
-
-    /**
-     * Builds a cache key to store the contents of a compiled asset.
-     *
-     * @param filename base filename of the compiled asset
-     * @return cache key where we can store/retrieve the contents of the compiled asset
-     */
-    public String getContentsCacheKey(String filename) {
-      return String.format("%sContents:%s", name().toLowerCase(), filename);
-    }
   }
 
   /**

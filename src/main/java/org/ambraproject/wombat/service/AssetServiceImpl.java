@@ -112,8 +112,7 @@ public class AssetServiceImpl implements AssetService {
       }
       String filenameDigest = BaseEncoding.base32().encode(hasher.hash().asBytes());
 
-      return String.format("compiledAsset:%s:%s:%s",
-          assetType, site, filenameDigest);
+      return String.format("%sFile:%s:%s", assetType.name().toLowerCase(), site, filenameDigest);
     }
   }
 
@@ -142,6 +141,16 @@ public class AssetServiceImpl implements AssetService {
     private File getFile() {
       return new File(runtimeConfiguration.getCompiledAssetDir(), name);
     }
+
+    /**
+     * @return cache key where we can store/retrieve the contents of the compiled asset
+     */
+    private String getCacheKey() {
+      int dotIndex = name.lastIndexOf('.');
+      String assetType = name.substring(dotIndex + 1).toLowerCase();
+      return String.format("%sContents:%s", assetType, name);
+    }
+
   }
 
   private static final String COMPILED_NAME_PREFIX = "asset_";
@@ -168,7 +177,7 @@ public class AssetServiceImpl implements AssetService {
       // you need the contents of the compiled file, which is why we do it this way.
       cache.put(sourceCacheKey, compiledFilename, CACHE_TTL);
       if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
-        String contentsCacheKey = assetType.getContentsCacheKey(compiledFilename);
+        String contentsCacheKey = compiled.digest.getCacheKey();
         cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
       }
     }
@@ -181,15 +190,11 @@ public class AssetServiceImpl implements AssetService {
   @Override
   public void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException {
     try {
-      // Determine AssetType based on file extension.
-      String[] fields = assetFilename.split("/");
-      String basename = fields[fields.length - 1];
-      AssetType assetType = AssetType.valueOf(AssetType.class,
-          basename.substring(basename.lastIndexOf('.') + 1).toUpperCase());
-      byte[] cached = cache.get(assetType.getContentsCacheKey(basename));
+      CompiledDigest digest = new CompiledDigest(assetFilename);
+      byte[] cached = cache.get(digest.getCacheKey());
       try (InputStream is =
                (cached == null)
-                   ? new FileInputStream(new CompiledDigest(assetFilename).getFile())
+                   ? new FileInputStream(digest.getFile())
                    : new ByteArrayInputStream(cached)) {
         IOUtils.copy(is, outputStream);
       }

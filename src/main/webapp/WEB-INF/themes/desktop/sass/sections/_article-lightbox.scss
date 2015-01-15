@@ -295,7 +295,9 @@ position: relative;
   margin-top: rem-calc(3);
   position: relative !important;
 }
-
+.lb-figure {
+  padding-top: 2px;
+}
 #lightbox-figs .download {
   position: absolute;
   top: rem-calc(40);

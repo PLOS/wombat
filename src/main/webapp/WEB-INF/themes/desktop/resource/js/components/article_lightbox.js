@@ -544,7 +544,7 @@
       }
 
       if (old_img.hasClass('ui-draggable')) { // the slide we are leaving had a drag-enabled figure, reset it
-        //FVDragStop(old_fig, old_fig.find('img'));
+        FVDragStop(old_fig, old_fig.find('img'));
       }
 
     $FV.thumbs.active = $thmb;
@@ -751,33 +751,41 @@
 
 // size images to fit in div.lb-figure element
   FVSizeImgToFit = function ($fig_div, down_only) {
-    var fig_img, fig_div_h, fig_div_w, i_h, i_w, sizeAndCenter, resized_i_w;
+    var sizeAndCenter, fig_img, fig_div_h, fig_div_w, i_h, i_w, resized_i_w, resized_i_h;
     $fig_div.imagesLoaded(function(){
     fig_img = $fig_div.find('img');
     fig_div_h = $fig_div.height();
     fig_div_w = $fig_div.width();
     i_h = fig_img.height();
     i_w = fig_img.width();
-
+    var fig_div_aspect_ratio = fig_div_w / fig_div_h;
+    var img_aspect_ratio = i_w / i_h;
+   /*   console.log(fig_div_aspect_ratio);
+      console.log(img_aspect_ratio);*/
     // sizes image to fit, scaling up or down, and centering
     sizeAndCenter = function() {
-      // compare aspect ratios of parent and image and set dimensions accordingly
-      if (fig_div_w / fig_div_h > i_w / i_h) {
-        //resize the image height
+      // compare aspect ratios of parent and image
+
+      if (fig_div_aspect_ratio > img_aspect_ratio) {
+        //make the image fill parent, calculate the left margin
         fig_img.css('height', fig_div_h);
         //get the new width
-        resized_i_w = fig_img.width();
-
+        resized_i_w = fig_div_h * img_aspect_ratio;
+        console.log(fig_div_w + ' ' + resized_i_w);
         //calculate and set the left margin for centering
-        /*fig_img.css({
+        fig_img.css({
           'marginLeft': Math.round((fig_div_w - resized_i_w) / 2),
           'marginTop': 0
-        });*/
+        });
       } else {
-        // calculate height to make width match parent
-        fig_img.css('height', Math.round( fig_div_w / (i_w / i_h)));
-        resized_i_w = fig_img.width();
-       // fig_img.css({ 'marginTop' : Math.round((fig_div_h - fig_img.height()) / 2), 'marginLeft' : 0 });
+        // set height using the image aspect ratio, calculate the top margin
+        fig_img.css('height', Math.round( fig_div_w / (img_aspect_ratio)));
+        //resized_i_w = fig_img.width();
+        resized_i_h = fig_img.height();
+        fig_img.css({
+          'marginTop' : Math.round((fig_div_h - resized_i_h) / 2),
+          'marginLeft' : 0
+        });
       }
     };
 
@@ -788,7 +796,7 @@
           'marginTop' : Math.round((fig_div_h - i_h) / 2),
           'marginLeft' : Math.round((fig_div_w - i_w) / 2)
         });
-        console.log('remove zoom in down_only');
+
         $fig_div.removeClass('zoom'); // too small to zoom
 
       } else {
@@ -805,7 +813,7 @@
 // switch medium image with large image
 
   FVSwitchImg = function($fig_div) {
-    var img_m, img_m_h, img_l, img_l_h, img_l_w, img_l_t, img_l_l, drag_bx;
+    var img_m, img_m_h, img_l, img_l_h, img_l_w, drag_bx;
 
     img_m = $fig_div.find('img');
     img_m_h = img_m.height();
@@ -817,36 +825,10 @@
 
       img_l_h = img_l.get(0).naturalHeight;
       img_l_w = img_l.get(0).naturalWidth;
-      img_l_t = parseInt(img_m.css('marginTop'));
-      img_l_l = parseInt(img_m.css('marginLeft'));
-     /* $fig_div.data({
-        'img_l_w' : img_l_w,
-        'img_l_h' : img_l_h
-      });
 
-      if (img_l_h < img_m_h) {
-        // large image smaller than resized medium image
-        img_l.css({  //center the image
-          'marginTop': Math.round(($fig_div.height() - img_l_h) / 2),
-          'marginLeft': Math.round(($fig_div.width() - img_l_w) / 2)
-        });
-      } else {
-        // set large image with dimensions and position of medium image
-        img_l.css({
-          'height': img_m_h,
-          'marginTop': img_m.css('marginTop'),
-          'marginLeft': img_m.css('marginLeft')
-        });
-
-        $fig_div.addClass('zoom'); // zoomable & draggable
-
-      }*/
-     // $fig_div.data('img_l_w', img_l_w).data('img_l_h', img_l_h);
       $fig_div.data({
         'img_l_w' : img_l_w,
-        'img_l_h' : img_l_h,
-        'img_l_t' : img_l_t,
-        'img_l_l' : img_l_l
+        'img_l_h' : img_l_h
       });
       if (img_l_h < img_m_h) { // large image smaller than resized medium image
         img_l.css({
@@ -880,147 +862,129 @@
  this is called following either a large image that is bigger than the slide div has finished loading
  OR navigating to a slide whose large image is bigger than the slide and has already loaded.*/
 
-  FVZoomControls = function($fig) {
-  //  var $img, real_h, real_w, img_mt, img_ml, resized_h, drag;
+  FVZoomControls = function($fig_div) {
+    var $img, fig_div_h, fig_div_w, real_h, real_w, img_aspect_ratio, img_mt, img_ml, resize_h, drag;
 
-    var $img = $fig.find('img');
-    var curr_width = $img.height();
-    console.log(curr_width);
-    var real_h = $fig.data('img_l_h'); // native height of image
-    var real_w = $fig.data('img_l_w'); // native width of image
-    var aspect_ratio = real_w/real_h;
-    console.log(aspect_ratio);
-    var img_mt =  $fig.data('img_l_t'); // top margin of sized to fit image
-    var img_ml =  $fig.data('img_l_l'); // left margin of sized to fit image
-    var resize_h = $img.height(); // height of sized to fit image
-    var drag = false; // dragging not enabled
-    var $drgbx = $fig.find('div.drag-bx');
-    console.log(img_ml + ' zoomcontrols img_ml');
-    console.log(real_w + ' realw '+ real_h + ' realh');
+    $img = $fig_div.find('img');
+    fig_div_h = $fig_div.height();
+    fig_div_w = $fig_div.width();
+    real_h = $fig_div.data('img_l_h'); // native height of image
+    console.log(real_h);
+    real_w = $fig_div.data('img_l_w'); // native width of image
+    img_mt = parseInt($img.css('marginTop')); // top margin of sized to fit image
+    img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
+    console.log(img_ml);
+    img_aspect_ratio = real_w/real_h;
+    resize_h = $img.height(); // height of sized to fit image
     $FV.zoom.show();
+    drag = false; // dragging not enabled
+    var $drgbx = $fig_div.find('div.drag-bx');
+
     $FV.zoom.sldr.slider({
       min: resize_h,
       max: real_h,
       value: resize_h,
       slide: function(e, ui) {
-        imgResize(ui.value);
+        imgResize(ui.value, img_aspect_ratio);
       },
       stop: function(e, ui) {
         if (!drag) {
           // enable dragging
-         // FVDragInit($fig, $img);
+          FVDragInit($fig_div, $img);
         }
         if (ui.value === resize_h) { // slider is at minimum value
           // kill drag
-        //  FVDragStop($fig, $img);
-        //  drag = false;
+          FVDragStop($fig_div, $img);
+          drag = false;
         } else {
-        //  FVSizeDragBox($fig, $img);
-        //  drag = true;
+          FVSizeDragBox($fig_div, $img);
+          drag = true;
         }
       }
     });
 
     // max(+) button
     $FV.zoom.max.on('click', function() {
-      var new_value = $FV.zoom.sldr.slider("value");
-      new_value = resize_h + (real_h - resize_h) / 4 * Math.ceil((new_value - resize_h) * 4 / (real_h - resize_h) + 0.1);
+      var new_value = $FV.zoom.sldr.slider("value"); console.log(new_value);
+      new_value = resize_h + ((real_h - resize_h) / 4) * Math.ceil((new_value - resize_h) * 4 / (real_h - resize_h) + 0.1);
       new_value = Math.min(Math.ceil(new_value), real_h);
-      console.log(new_value + ' newval' + resize_h);
+      console.log(new_value - resize_h + ' newv-res-h');
+      console.log(real_h - resize_h + ' realh - res-h');
+      console.log((new_value - resize_h) *4);
+      console.log(Math.ceil((new_value - resize_h) * 4 / (real_h - resize_h) + 0.1));
+      console.log(Math.floor((new_value - resize_h) * 4 / (real_h - resize_h) + 0.1));
       $FV.zoom.sldr.slider('value', new_value );
-
-      imgResize(new_value, aspect_ratio);
-    //  FVDragInit($fig, $img);
-    //  FVSizeDragBox($fig, $img);
-    //  drag = true;
+      var new_width = new_value * img_aspect_ratio;
+      imgResize(new_value, img_aspect_ratio);
+      FVDragInit($fig_div, $img);
+      FVSizeDragBox($fig_div, $img, new_width);
+      drag = true;
     });
 
     // min(-) button
     $FV.zoom.min.on('click', function() {
-      /*if (!drag) { // dragging is not enabled, so image must be zoomed in, nothing to do here
+
+      if (!drag) { // dragging is not enabled, so image must be zoomed in, nothing to do here
         return false;
-      }*/
-      var new_value = $FV.zoom.sldr.slider("value");
+      }
+      var new_value = $FV.zoom.sldr.slider("value"); console.log(new_value);
       new_value = resize_h + (real_h - resize_h) / 4 * Math.floor((new_value - resize_h) * 4 / (real_h - resize_h) - 0.1);
       new_value = Math.max(Math.floor(new_value), resize_h);
       console.log(new_value + ' newval' + resize_h);
       $FV.zoom.sldr.slider('value', new_value );
-
+      //imgResize(new_value, img_aspect_ratio);
+      /*FVDragStop($fig_div, $img);
+       drag = false;*/
       if (new_value <= resize_h) {
         $img.css({
           'height': new_value,
           'marginTop': img_mt,
           'marginLeft': img_ml
         });
-      //  FVDragStop($fig, $img);
+      //  FVDragStop($fig_div, $img);
        // drag = false;
       }
       else {   console.log(new_value);
-        imgResize(new_value, aspect_ratio);
+        imgResize(new_value, img_aspect_ratio);
       }
     });
 
-   /* var imgResize = function(height_value) {
-    //  console.log(resize_h + ' ' + height_value + ' imgResize resize_h & passed height_value');//var resize_calc =
-      console.log(img_ml + ' ' + img_mt +' imgR img_ml');
-      console.log(Math.round((height_value - resize_h) / 2));
-      console.log(img_ml + ' ' + (height_value - resize_h) / 2 + ' ' + (real_w / real_h));
-
-      $img.css({
-        'height': height_value,
-        'marginTop': img_mt - Math.round((height_value - resize_h) / 2),
-        'marginLeft': img_ml - Math.round((height_value - resize_h) / 2 * (real_w / real_h))
-      });
-      console.log($img.css('marginLeft'));
-    }*/
     var imgResize = function(new_height, aspect_ratio) {
       var new_width = new_height * aspect_ratio;
-     /* var ratio = [maxWidth / srcWidth, maxHeight / srcHeight ];
-      ratio = Math.min(ratio[0], ratio[1]);*/
-      $img.css({
-        'height': new_height,
-        'width': new_width,
-        'marginTop': 'auto', //img_mt - Math.round((height_value - resize_h) / 2),
-        'marginLeft': 'auto'//img_ml - Math.round((height_value - resize_h) / 2 * (real_w / real_h))
-      });
-     // return { width:srcWidth*ratio, height:srcHeight*ratio };
+      console.log(new_width + ' imgR new-w');
+      console.log(fig_div_w + ' imgR figdiv-w');
+      var mar_top = (fig_div_h - new_height) / 2;
+      var mar_left = (fig_div_w - new_width) / 2;
+      console.log(mar_left);
+
+      if (fig_div_w >= new_width) {
+        $img.css({
+          'height': new_height,
+          // 'width': new_width,
+          'marginTop': mar_top, //img_mt - Math.round((height_value - resize_h) / 2),
+          'marginLeft': mar_left//img_ml - Math.round((height_value - resize_h) / 2 * (real_w / real_h))
+        });
+      } else {
+        $img.css({
+          'height': new_height,
+          'width': new_width,
+          'marginTop': mar_top,
+          'marginLeft' : mar_left
+        });
+      }
+
     };
-    /*
-     **
-     * Resize arbitary width x height region to fit inside another region.
-     *
-     * Conserve aspect ratio of the orignal region. Useful when shrinking/enlarging
-     * images to fit into a certain area.
-     *
-     * @param {Number} srcWidth Source area width
-     *
-     * @param {Number} srcHeight Source area height
-     *
-     * @param {Number} maxWidth Fittable area maximum available width
-     *
-     * @param {Number} srcWidth Fittable area maximum available height
-     *
-     * @return {Object} { width, heigth }
-     *
 
-    var calculateAspectRatioFit = function(srcWidth, srcHeight, maxWidth, maxHeight) {
-
-      var ratio = [maxWidth / srcWidth, maxHeight / srcHeight ];
-      ratio = Math.min(ratio[0], ratio[1]);
-
-      return { width:srcWidth*ratio, height:srcHeight*ratio };
-    };
-    */
-    $fig.on('DOMMouseScroll mousewheel', function (event) {
+    $fig_div.on('DOMMouseScroll mousewheel', function (event) {
       var new_value = $FV.zoom.sldr.slider("value");
       if (event.originalEvent.wheelDeltaY < 0) {
         new_value = Math.min(new_value + 20, real_h);
-        imgResize(new_value);
+        imgResize(new_value, img_aspect_ratio);
         $FV.zoom.sldr.slider('value', new_value );
       }
       else if (event.originalEvent.wheelDeltaY > 0) {
         new_value = Math.max(new_value - 20, resize_h);
-        imgResize(new_value);
+        imgResize(new_value, img_aspect_ratio);
         $FV.zoom.sldr.slider('value', new_value );
       }
     });
@@ -1028,7 +992,7 @@
 
   FVDragInit = function($fig_div, $img) {
     $img.draggable({
-      containment: 'parent',
+     // containment: 'parent',
       stop: function(e, ui) {
         // FVSizeDragBox() sets top/left values to match margins of figure
         // following dragging these are no longer in sync, top/left have changed
@@ -1060,19 +1024,19 @@
 // adds top/left declarations to image so that image remains in same position following containing div sizing/positioning
 // runs following figure resize
 
-  FVSizeDragBox = function($fig_div, $img) {
-    var $drgbx, fig_h, fig_w, img_h, img_w, img_mt, img_ml, img_tp, img_lt;
+  FVSizeDragBox = function($fig_div, $img, img_w) {
+    var $drgbx, fig_h, fig_w, img_h, /*img_w,*/ img_mt, img_ml, img_tp, img_lt;
 
     $drgbx = $fig_div.find('div.drag-bx');
     fig_h = $fig_div.height();
     fig_w = $fig_div.width();
     img_h = $img.height();
-    img_w = $img.width();
+    //img_w = $img.width();
     img_mt = parseInt($img.css('marginTop'));
     img_ml = parseInt($img.css('marginLeft'));
     img_tp = isNaN(parseInt($img.css('top'))) ? 0 : parseInt($img.css('top'));
     img_lt = isNaN(parseInt($img.css('left'))) ? 0 : parseInt($img.css('left'));
-
+    console.log(img_w);
     if (fig_h > img_h) {
       $drgbx.css({
         'top' : img_mt * -1,
@@ -1101,7 +1065,7 @@
     } else {
       $drgbx.css({
         'left' : (img_w - fig_w + img_ml) * -1,
-        'width': ((img_w * 2) - fig_w) + img_ml
+        'width': img_w //((img_w * 2) - fig_w) + img_ml
       });
       $img.css({
         'left' : img_w - fig_w + img_ml - $fig_div.data('off-left')

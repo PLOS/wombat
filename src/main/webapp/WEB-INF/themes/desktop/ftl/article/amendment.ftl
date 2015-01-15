@@ -4,7 +4,7 @@
   <#assign tocTitle>
     <#t/>${title}<#if showCount> (${amendmentObjects?size})</#if>
   </#assign>
-  <a data-toc="amendment-${type}" title="${tocTitle}" id="amendment-${type}"></a>
+  <a data-toc="amendment-${type}" title="${tocTitle}" id="amendment-${type}" name="amendment-${type}"></a>
 
   <h2>${title}</h2>
   <#list amendmentObjects as amendment>

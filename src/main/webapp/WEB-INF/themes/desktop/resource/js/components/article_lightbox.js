@@ -1,22 +1,10 @@
 
-<<<<<<< HEAD
 //dependencies: jquery.touchswipe.js, foundation tabs, foundation reveal
 
 (function($) {
 
   var $FV, $FVPending, selected_tab, $win, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVArrowKeys, FVFigDescription, FVThumbPos, FVDisplayFig, FVLoadMedImg, FVLoadLargeImg, FVSizeImgToFit, FVSwitchImg, FVFigFunctions, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi;
 
-=======
-//dependencies: jquery.touchswipe.js, jquery.dotdotdot.js, foundation reveal
-// 'lb' = lightbox and is wombat terminology;
-// 'FV' = figure viewer and is ambra terminology
-(function($) {
-  "use strict";
-  var $FV, $FVPending, selected_tab, $win, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize,
-      FVChangeSlide, FVArrowKeys, FVFigDescription, FVThumbPos, FVDisplayFig, FVLoadMedImg, FVLoadLargeImg,
-      FVSizeImgToFit, FVSwitchImg, FVFigFunctions, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi;
-  var close_time;
->>>>>>> d512bfd... DPRO-686: replaced Ambra ellipsis code with jquery.dotdotdot
   $FV = {};
   $FVPending = false;
   selected_tab = $('.tab-title.active').attr('id');
@@ -288,15 +276,8 @@
 
 
   // build figures pane. needs to be broken into smaller parts.
-<<<<<<< HEAD
   FVBuildFigs = function(data, doi) {
-    var path, showInContext, fig_container, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, context_hash, doip, $fig, staging, download_btns, context_lnk, chk_desc, text_description;
-=======
-  FVBuildFigs = function($data, doi) {
-    var path, showInContext, article_page_figure, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide,
-        datacon, txt, txt_less, txt_more, fig_title, context_lnk, view_more, view_less, context_hash, doip,
-        lb_figure_div, staging, download_btns, chk_desc, text_description;
->>>>>>> d512bfd... DPRO-686: replaced Ambra ellipsis code with jquery.dotdotdot
+    var path, showInContext, fig_container, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, view_more, context_hash, doip, $fig, staging, download_btns, context_lnk, chk_desc, text_description;
 
     //set the markup
     $FV.figs_pane = $('<div id="fig-viewer-figs" class="pane" />');
@@ -368,12 +349,8 @@
       txt = $('<div class="txt" />');
       txt_less = $('<div class="text-less" />');
       txt_more = $('<div class="text-more" />');
-<<<<<<< HEAD
       title = '<div class="fig_title">' + text_title + '</div>';
-=======
-      fig_title = '<div class="fig_title">' + text_title + '</div>';
       view_more = '<span class="toggle more">... show more</span>';
->>>>>>> d512bfd... DPRO-686: replaced Ambra ellipsis code with jquery.dotdotdot
       view_less = $('<div class="less" title="view less" />');
       doip = '<p class="doi">doi:'+img_ref+'</p>';
       staging = '<div class="staging" />'; // hidden container for loading large image
@@ -999,90 +976,6 @@
     }
   });
 
-<<<<<<< HEAD
-  /**
-   * Drop words until the element selected fits within its container and then append an ellipsis
-   *
-   * @param topElement the very top element being worked on
-   * @param parts the elements currently being worked on
-   */
-  var ellipsis_recurse = function(topElement, parts) {
-    var ellipsis_added = false;
-
-    //traverse from the last element up
-    for(var a = parts.length - 1; a > -1; a--) {
-      var element = parts[a];
-
-      //ellipsis added, no need to keep going
-      if(ellipsis_added) {
-        break;
-      }
-
-      //If this is a text node, work on it, otherwise recurse
-
-      if(element.nodeType != 3) {
-        ellipsis_added = ellipsis_recurse(topElement, $(element).contents());
-
-        if(ellipsis_added) {
-          //ellipsis added, no need to keep looping
-          //return true;
-          break;
-        }
-      } else {
-        var words = $(element).text().split(" ");
-
-        while(ellipsis_added == false && words.length > 0) {
-          //Keep popping words until things fit, or the length is zero
-          //Could get a performance increase by doing this by halves instead of one by one?
-          words.pop();
-
-          $(element).text(function() {
-            this.nodeValue = words.join(" ");
-          });
-
-          //If all words have been popped that need to be, append the new node for the ellipsis
-          if(topElement.scrollHeight <= topElement.clientHeight) {
-
-            var ellipsis = $($.fn.ellipsis.settings.ellipsis_text).uniqueId();
-            $(element).after(ellipsis);
-            ellipsis_added = true;
-
-            //The new text has introduced a line break, pop more words!
-            while(topElement.scrollHeight > topElement.clientHeight) {
-              if(words.length > 0) {
-                words.pop();
-
-                $(element).text(function() {
-                  this.nodeValue = words.join(" ");
-                });
-              } else {
-                //No more words to pop. Remove the element, pass through and add the ellipsis someplace else
-                $('#' + ellipsis.attr('id')).remove();
-                ellipsis_added = false;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    return ellipsis_added;
-  }
-
-  /**
-   * Drop words until the element selected fits within its container and then append an ellipsis
-   */
-  $.fn.ellipsis = function(options) {
-    $.fn.ellipsis.settings = $.extend({}, $.fn.ellipsis.settings, options);
-    ellipsis_recurse(this[0], $(this).contents());
-    return this;
-  };
-
-  $.fn.ellipsis.settings = {
-    ellipsis_text : '&hellip;'
-  };
-=======
->>>>>>> d512bfd... DPRO-686: replaced Ambra ellipsis code with jquery.dotdotdot
 
   function trimIt (trimItem) {
     if (typeof String.prototype.trim !== 'function') {

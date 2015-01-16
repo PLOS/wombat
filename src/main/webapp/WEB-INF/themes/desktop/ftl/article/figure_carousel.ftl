@@ -38,5 +38,6 @@
 </div>
 <@js src="resource/js/vendor/jquery.touchswipe.js" />
 <@js src="resource/js/components/figure_carousel.js" />
+<@js src="resource/js/vendor/jquery.dotdotdot.js" />
 </#if>
 

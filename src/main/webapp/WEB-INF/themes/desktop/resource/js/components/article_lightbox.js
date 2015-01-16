@@ -1,10 +1,22 @@
 
+<<<<<<< HEAD
 //dependencies: jquery.touchswipe.js, foundation tabs, foundation reveal
 
 (function($) {
 
   var $FV, $FVPending, selected_tab, $win, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVArrowKeys, FVFigDescription, FVThumbPos, FVDisplayFig, FVLoadMedImg, FVLoadLargeImg, FVSizeImgToFit, FVSwitchImg, FVFigFunctions, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi;
 
+=======
+//dependencies: jquery.touchswipe.js, jquery.dotdotdot.js, foundation reveal
+// 'lb' = lightbox and is wombat terminology;
+// 'FV' = figure viewer and is ambra terminology
+(function($) {
+  "use strict";
+  var $FV, $FVPending, selected_tab, $win, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize,
+      FVChangeSlide, FVArrowKeys, FVFigDescription, FVThumbPos, FVDisplayFig, FVLoadMedImg, FVLoadLargeImg,
+      FVSizeImgToFit, FVSwitchImg, FVFigFunctions, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi;
+  var close_time;
+>>>>>>> d512bfd... DPRO-686: replaced Ambra ellipsis code with jquery.dotdotdot
   $FV = {};
   $FVPending = false;
   selected_tab = $('.tab-title.active').attr('id');
@@ -276,8 +288,15 @@
 
 
   // build figures pane. needs to be broken into smaller parts.
+<<<<<<< HEAD
   FVBuildFigs = function(data, doi) {
     var path, showInContext, fig_container, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, context_hash, doip, $fig, staging, download_btns, context_lnk, chk_desc, text_description;
+=======
+  FVBuildFigs = function($data, doi) {
+    var path, showInContext, article_page_figure, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide,
+        datacon, txt, txt_less, txt_more, fig_title, context_lnk, view_more, view_less, context_hash, doip,
+        lb_figure_div, staging, download_btns, chk_desc, text_description;
+>>>>>>> d512bfd... DPRO-686: replaced Ambra ellipsis code with jquery.dotdotdot
 
     //set the markup
     $FV.figs_pane = $('<div id="fig-viewer-figs" class="pane" />');
@@ -349,7 +368,12 @@
       txt = $('<div class="txt" />');
       txt_less = $('<div class="text-less" />');
       txt_more = $('<div class="text-more" />');
+<<<<<<< HEAD
       title = '<div class="fig_title">' + text_title + '</div>';
+=======
+      fig_title = '<div class="fig_title">' + text_title + '</div>';
+      view_more = '<span class="toggle more">... show more</span>';
+>>>>>>> d512bfd... DPRO-686: replaced Ambra ellipsis code with jquery.dotdotdot
       view_less = $('<div class="less" title="view less" />');
       doip = '<p class="doi">doi:'+img_ref+'</p>';
       staging = '<div class="staging" />'; // hidden container for loading large image
@@ -376,6 +400,7 @@
         }
       }
 
+      txt_less.append(view_more);
       txt_more.append(doip);
       txt.append(txt_less);
       txt.append(txt_more);
@@ -539,7 +564,7 @@
     truncate = function() {
       //If called on the same element twice, ignore second call
       if($content.data('ellipsis_appended') != 'true') {
-        $content.ellipsis({ ellipsis_text:'<span class="toggle more">... show more</span>' });
+        $content.dotdotdot({after: "span.more", ellipsis: ""});
         $content.find('span.more').click(function() {
           $FV.slides_el.addClass('txt-expand');
           $FV.txt_expanded = true;
@@ -974,6 +999,7 @@
     }
   });
 
+<<<<<<< HEAD
   /**
    * Drop words until the element selected fits within its container and then append an ellipsis
    *
@@ -1055,6 +1081,8 @@
   $.fn.ellipsis.settings = {
     ellipsis_text : '&hellip;'
   };
+=======
+>>>>>>> d512bfd... DPRO-686: replaced Ambra ellipsis code with jquery.dotdotdot
 
   function trimIt (trimItem) {
     if (typeof String.prototype.trim !== 'function') {

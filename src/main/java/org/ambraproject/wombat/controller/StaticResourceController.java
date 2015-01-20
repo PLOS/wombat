@@ -137,7 +137,7 @@ public class StaticResourceController extends WombatController {
 
   private static final Pattern COMPILED_ASSET_PATTERN = Pattern.compile(""
       + COMPILED_NAMESPACE + "asset_"
-      + "([+\\w]+)" // The asset hash in modified base 64. May contain '_' and '+' chars. ('_' replaces '/'; see getFingerprint)
+      + "(\\w+)" // The asset hash in base 32
       + "\\.\\w+"); // The file extension.
 
   /**

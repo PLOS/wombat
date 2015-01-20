@@ -11,12 +11,7 @@
 
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Charsets;
 import com.google.common.base.Preconditions;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hasher;
-import com.google.common.hash.Hashing;
-import com.google.common.io.BaseEncoding;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
 import org.ambraproject.rhombat.cache.Cache;
@@ -24,6 +19,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.util.CacheParams;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
 import org.mozilla.javascript.EvaluatorException;
@@ -42,8 +38,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -101,16 +95,15 @@ public class AssetServiceImpl implements AssetService {
       this.filenames = filenames;
     }
 
-    private static final HashFunction HASH_FUNCTION = Hashing.sha1();
-    private static final char HASH_TERMINATOR = '\0';
+    private static final char FILENAME_TERMINATOR = '\0';
 
     private String generateCacheKey() {
-      Hasher hasher = HASH_FUNCTION.newHasher();
+      StringBuilder filenameList = new StringBuilder();
       for (String filename : filenames) {
-        hasher.putString(filename, Charsets.ISO_8859_1);
-        hasher.putChar(HASH_TERMINATOR);
+        filenameList.append(filename);
+        filenameList.append(FILENAME_TERMINATOR);
       }
-      String filenameDigest = BaseEncoding.base32().encode(hasher.hash().asBytes());
+      String filenameDigest = CacheParams.createKeyHash(filenameList.toString());
 
       return String.format("%sFile:%s:%s", assetType.name().toLowerCase(), site, filenameDigest);
     }
@@ -118,7 +111,7 @@ public class AssetServiceImpl implements AssetService {
 
   /*
    * A hash representing the content of a compiled file. Used in two ways:
-   * (1) as a filename to write the content to the disk local disk; and
+   * (1) as a filename to write the content to the local disk; and
    * (2) as a cache key to read the content from Memcached (which is faster than reading from disk).
    *
    * The actual hashing is done by the compileAsset method. This class may be instantiated either there (writing the
@@ -302,7 +295,8 @@ public class AssetServiceImpl implements AssetService {
     }
     byte[] contents = baos.toByteArray();
 
-    CompiledDigest digest = new CompiledDigest(COMPILED_NAME_PREFIX + getFingerprint(contents) + assetType.getExtension());
+    String contentHash = CacheParams.createContentHash(contents);
+    CompiledDigest digest = new CompiledDigest(COMPILED_NAME_PREFIX + contentHash + assetType.getExtension());
     File file = digest.getFile();
 
     // Overwrite if the file already exists.
@@ -313,29 +307,6 @@ public class AssetServiceImpl implements AssetService {
       IOUtils.write(contents, os);
     }
     return new CompiledAsset(digest, contents);
-  }
-
-  private static final BaseEncoding FINGERPRINT_ENCODING = BaseEncoding.base64();
-
-  /**
-   * Generates a fingerprint based on the data passed in that is suitable for use in a filename or servlet path.
-   *
-   * @param bytes data to fingerprint
-   * @return fingerprint
-   */
-  private String getFingerprint(byte[] bytes) {
-    try {
-      MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
-      messageDigest.update(bytes);
-      bytes = messageDigest.digest();
-    } catch (NoSuchAlgorithmException ex) {
-      throw new RuntimeException(ex);
-    }
-    String result = FINGERPRINT_ENCODING.encode(bytes);
-
-    // Replace slashes with underscores and removing the trailing "=".
-    result = result.replace('/', '_').trim();
-    return result.substring(0, result.length() - 1);
   }
 
 }

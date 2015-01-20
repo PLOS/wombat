@@ -547,7 +547,8 @@ public class ArticleController extends WombatController {
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
 
-    String cacheKey = "html:" + Preconditions.checkNotNull(renderContext.getArticleId());
+    String cacheKey = String.format("html:%s:%s",
+        Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {

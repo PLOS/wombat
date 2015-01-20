@@ -277,7 +277,7 @@
 
   // build figures pane. needs to be broken into smaller parts.
   FVBuildFigs = function(data, doi) {
-    var path, showInContext, fig_container, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, context_hash, doip, $fig, staging, download_btns, context_lnk, chk_desc, text_description;
+    var path, showInContext, fig_container, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, title, view_less, view_more, context_hash, doip, $fig, staging, download_btns, context_lnk, chk_desc, text_description;
 
     //set the markup
     $FV.figs_pane = $('<div id="fig-viewer-figs" class="pane" />');
@@ -350,6 +350,7 @@
       txt_less = $('<div class="text-less" />');
       txt_more = $('<div class="text-more" />');
       title = '<div class="fig_title">' + text_title + '</div>';
+      view_more = '<span class="toggle more">... show more</span>';
       view_less = $('<div class="less" title="view less" />');
       doip = '<p class="doi">doi:'+img_ref+'</p>';
       staging = '<div class="staging" />'; // hidden container for loading large image
@@ -376,6 +377,7 @@
         }
       }
 
+      txt_less.append(view_more);
       txt_more.append(doip);
       txt.append(txt_less);
       txt.append(txt_more);
@@ -539,7 +541,7 @@
     truncate = function() {
       //If called on the same element twice, ignore second call
       if($content.data('ellipsis_appended') != 'true') {
-        $content.ellipsis({ ellipsis_text:'<span class="toggle more">... show more</span>' });
+        $content.dotdotdot({after: "span.more", ellipsis: ""});
         $content.find('span.more').click(function() {
           $FV.slides_el.addClass('txt-expand');
           $FV.txt_expanded = true;
@@ -974,87 +976,6 @@
     }
   });
 
-  /**
-   * Drop words until the element selected fits within its container and then append an ellipsis
-   *
-   * @param topElement the very top element being worked on
-   * @param parts the elements currently being worked on
-   */
-  var ellipsis_recurse = function(topElement, parts) {
-    var ellipsis_added = false;
-
-    //traverse from the last element up
-    for(var a = parts.length - 1; a > -1; a--) {
-      var element = parts[a];
-
-      //ellipsis added, no need to keep going
-      if(ellipsis_added) {
-        break;
-      }
-
-      //If this is a text node, work on it, otherwise recurse
-
-      if(element.nodeType != 3) {
-        ellipsis_added = ellipsis_recurse(topElement, $(element).contents());
-
-        if(ellipsis_added) {
-          //ellipsis added, no need to keep looping
-          //return true;
-          break;
-        }
-      } else {
-        var words = $(element).text().split(" ");
-
-        while(ellipsis_added == false && words.length > 0) {
-          //Keep popping words until things fit, or the length is zero
-          //Could get a performance increase by doing this by halves instead of one by one?
-          words.pop();
-
-          $(element).text(function() {
-            this.nodeValue = words.join(" ");
-          });
-
-          //If all words have been popped that need to be, append the new node for the ellipsis
-          if(topElement.scrollHeight <= topElement.clientHeight) {
-
-            var ellipsis = $($.fn.ellipsis.settings.ellipsis_text).uniqueId();
-            $(element).after(ellipsis);
-            ellipsis_added = true;
-
-            //The new text has introduced a line break, pop more words!
-            while(topElement.scrollHeight > topElement.clientHeight) {
-              if(words.length > 0) {
-                words.pop();
-
-                $(element).text(function() {
-                  this.nodeValue = words.join(" ");
-                });
-              } else {
-                //No more words to pop. Remove the element, pass through and add the ellipsis someplace else
-                $('#' + ellipsis.attr('id')).remove();
-                ellipsis_added = false;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    return ellipsis_added;
-  }
-
-  /**
-   * Drop words until the element selected fits within its container and then append an ellipsis
-   */
-  $.fn.ellipsis = function(options) {
-    $.fn.ellipsis.settings = $.extend({}, $.fn.ellipsis.settings, options);
-    ellipsis_recurse(this[0], $(this).contents());
-    return this;
-  };
-
-  $.fn.ellipsis.settings = {
-    ellipsis_text : '&hellip;'
-  };
 
   function trimIt (trimItem) {
     if (typeof String.prototype.trim !== 'function') {

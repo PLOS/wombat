@@ -19,6 +19,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.controller.StaticResourceController;
 import org.ambraproject.wombat.util.CacheParams;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
@@ -121,7 +122,7 @@ public class AssetServiceImpl implements AssetService {
     private final String name;
 
     private CompiledDigest(String name) {
-      Preconditions.checkArgument(name.startsWith(COMPILED_NAME_PREFIX));
+      Preconditions.checkArgument(name.startsWith(StaticResourceController.COMPILED_NAME_PREFIX));
       this.name = name;
     }
 
@@ -145,8 +146,6 @@ public class AssetServiceImpl implements AssetService {
     }
 
   }
-
-  private static final String COMPILED_NAME_PREFIX = "asset_";
 
   /**
    * {@inheritDoc}
@@ -174,7 +173,7 @@ public class AssetServiceImpl implements AssetService {
         cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
       }
     }
-    return COMPILED_PATH_PREFIX + compiledFilename;
+    return StaticResourceController.COMPILED_PATH_PREFIX + compiledFilename;
   }
 
   /**
@@ -296,7 +295,8 @@ public class AssetServiceImpl implements AssetService {
     byte[] contents = baos.toByteArray();
 
     String contentHash = CacheParams.createContentHash(contents);
-    CompiledDigest digest = new CompiledDigest(COMPILED_NAME_PREFIX + contentHash + assetType.getExtension());
+    CompiledDigest digest = new CompiledDigest(StaticResourceController.COMPILED_NAME_PREFIX
+        + contentHash + assetType.getExtension());
     File file = digest.getFile();
 
     // Overwrite if the file already exists.

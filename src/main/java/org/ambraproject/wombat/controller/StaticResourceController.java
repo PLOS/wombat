@@ -32,9 +32,19 @@ public class StaticResourceController extends WombatController {
   public static final String RESOURCE_NAMESPACE = "resource";
 
   /**
+   * The logical (servlet-relative) directory in which compiled asset files are served from.
+   */
+  public static final String COMPILED_PATH_PREFIX = "compiled/";
+
+  /**
+   * The prefix for file names of compiled assets.
+   */
+  public static final String COMPILED_NAME_PREFIX = "asset_";
+
+  /**
    * Path prefix for compiled assets (.js and .css).
    */
-  private static final String COMPILED_NAMESPACE = RESOURCE_NAMESPACE + '/' + AssetService.COMPILED_PATH_PREFIX;
+  private static final String COMPILED_NAMESPACE = RESOURCE_NAMESPACE + '/' + COMPILED_PATH_PREFIX;
 
   @Autowired
   private AssetService assetService;
@@ -136,7 +146,7 @@ public class StaticResourceController extends WombatController {
   }
 
   private static final Pattern COMPILED_ASSET_PATTERN = Pattern.compile(""
-      + COMPILED_NAMESPACE + "asset_"
+      + COMPILED_NAMESPACE + COMPILED_NAME_PREFIX
       + "(\\w+)" // The asset hash in base 32
       + "\\.\\w+"); // The file extension.
 

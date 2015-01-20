@@ -24,11 +24,6 @@ import java.util.List;
 public interface AssetService {
 
   /**
-   * The logical (servlet-relative) directory in which compiled asset files are served from.
-   */
-  static final String COMPILED_PATH_PREFIX = "compiled/";
-
-  /**
    * Represents the types of asset files processed by this service.
    */
   public static enum AssetType {

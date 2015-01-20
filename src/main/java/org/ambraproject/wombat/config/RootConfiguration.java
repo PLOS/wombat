@@ -45,9 +45,9 @@ public class RootConfiguration {
       throw new RuntimeConfigurationException(configPath.getPath() + " not found");
     }
 
-    JsonConfiguration runtimeConfiguration;
+    YamlConfiguration runtimeConfiguration;
     try (Reader reader = new BufferedReader(new FileReader(configPath))) {
-      runtimeConfiguration = new JsonConfiguration(yaml.loadAs(reader, JsonConfiguration.UserFields.class));
+      runtimeConfiguration = new YamlConfiguration(yaml.loadAs(reader, YamlConfiguration.ConfigurationInput.class));
     } catch (JsonSyntaxException e) {
       throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
     }
@@ -72,9 +72,10 @@ public class RootConfiguration {
   public HttpClientConnectionManager httpClientConnectionManager(RuntimeConfiguration runtimeConfiguration) {
     PoolingHttpClientConnectionManager manager = new PoolingHttpClientConnectionManager();
 
-    Integer maxTotal = runtimeConfiguration.getConnectionPoolMaxTotal();
+    final RuntimeConfiguration.HttpConnectionPoolConfiguration httpConnectionPoolConfiguration = runtimeConfiguration.getHttpConnectionPoolConfiguration();
+    Integer maxTotal = httpConnectionPoolConfiguration.getMaxTotal();
     if (maxTotal != null) manager.setMaxTotal(maxTotal);
-    Integer defaultMaxPerRoute = runtimeConfiguration.getConnectionPoolDefaultMaxPerRoute();
+    Integer defaultMaxPerRoute = httpConnectionPoolConfiguration.getDefaultMaxPerRoute();
     if (defaultMaxPerRoute != null) manager.setDefaultMaxPerRoute(defaultMaxPerRoute);
 
     return manager;
@@ -82,12 +83,13 @@ public class RootConfiguration {
 
   @Bean
   public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
-    if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedHost())) {
+    final RuntimeConfiguration.CacheConfiguration cacheConfiguration = runtimeConfiguration.getCacheConfiguration();
+    if (!Strings.isNullOrEmpty(cacheConfiguration.getMemcachedHost())) {
 
       // TODO: consider defining this in wombat.yaml instead.
       final int cacheTimeout = 60 * 60;
-      MemcacheClient result = new MemcacheClient(runtimeConfiguration.getMemcachedHost(),
-          runtimeConfiguration.getMemcachedPort(), runtimeConfiguration.getCacheAppPrefix(), cacheTimeout);
+      MemcacheClient result = new MemcacheClient(cacheConfiguration.getMemcachedHost(),
+          cacheConfiguration.getMemcachedPort(), cacheConfiguration.getCacheAppPrefix(), cacheTimeout);
       result.connect();
       return result;
     } else {

@@ -5,7 +5,7 @@
 (function($) {
   "use strict";
 
-  var $FV, $FVPending, selected_tab, $win, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVArrowKeys, FVFigDescription, FVThumbPos, FVImgController, FVLoadMedImg, FVLoadLargeImg, FVSizeImgToFit, FVSwitchImg, FVZoomControls, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi, close_time;
+  var $FV, $FVPending, selected_tab, $win, FVBuildHdr, FVBuildAbs, FVBuildRefs, FVDisplayPane, FVBuildFigs, FVSize, FVChangeSlide, FVArrowKeys, FVFigDescription, FVThumbPos, FigController, FVLoadMedImg, FVLoadLargeImg, FVSizeImgToFit, FVSwitchImg, FVZoomControls, FVDragInit, FVDragStop, FVSizeDragBox, displayModal, get_ref, get_doi, close_time;
 
   $FV = {};
   $FVPending = false;
@@ -300,7 +300,7 @@
           $FV.thumbs.eq(0).trigger('click');
         }
       } else {
-        // run FVImgController() again to update figure status
+        // run FigController() again to update figure status
         /* (the following is a backup plan. see FVChangeSlide for first line of defense.)
          1. User is on the Figures pane
          2. then Abstract or Reference panel is invoked,
@@ -308,7 +308,7 @@
          a. If a medium or large image finished loading while the figure pane was not visible,
          figure building would stop (it requires figure pane to be visible to access image dimensions)
          */
-        FVImgController($FV.thumbs.index($FV.thumbs.active));
+        FigController($FV.thumbs.index($FV.thumbs.active));
 
       }
     } else { }
@@ -317,7 +317,7 @@
 
   // build figures pane. needs to be broken into smaller parts.
   FVBuildFigs = function($data, doi) {
-    var path, showInContext, article_page_figure, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, fig_title, context_lnk, view_less, context_hash, doip, $fig_div, staging, download_btns, chk_desc, text_description;
+    var path, showInContext, article_page_figure, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, fig_title, context_lnk, view_more, view_less, context_hash, doip, $fig_div, staging, download_btns, chk_desc, text_description;
 
     //set the markup
     $FV.figs_pane = $('<div id="lightbox-figs" class="pane" />');
@@ -396,6 +396,8 @@
       txt_less = $('<div class="text-less" />');
       txt_more = $('<div class="text-more" />');
       fig_title = '<div class="fig_title">' + text_title + '</div>';
+      view_more = '<span class="toggle more">... show more</span>';
+
       view_less = $('<div class="less" title="view less" />');
       doip = '<p class="doi">doi:'+img_ref+'</p>';
       staging = '<div class="staging" />'; // hidden container for loading large image
@@ -432,6 +434,7 @@
         }
       }
 
+      txt_less.append(view_more);
       txt_more.append(doip);
       txt.append(txt_less);
       txt.append(txt_more);
@@ -529,25 +532,22 @@
       ga('send', 'event', 'Lightbox', 'Slide Changed', '');
     }
 
-    fig_div = $FV.figs_array[$FV.thumbs.index($FV.thumbs.active)];
-    console.log(fig_div);
-    console.log($thmb);
-    fig_img = fig_div.find('img');
-    fig_img.css({
-      'marginLeft' : 0,
-      'marginTop' : 0,
-      'height' : fig_div.data('img_m_h'),
-      'width' : fig_div.data('img_m_w')
-    });
+    /*fig_img.css({
+     'marginLeft' : 0,
+     'marginTop' : 0,
+     'height' : fig_div.data('img_sized_h'),
+     'width' : fig_div.data('img_sized_w')
+     });*/
 
     if ($FV.thumbs.active !== null) {
       $FV.thumbs.active.removeClass('active');
-    }
+      fig_div = $FV.figs_array[$FV.thumbs.index($FV.thumbs.active)];
+      fig_img = fig_div.find('img');
 
-    if (fig_img.hasClass('ui-draggable')) {
-      FVDragStop(fig_div, fig_div.find('img'));
+      if (fig_img.hasClass('ui-draggable')) {
+        FVDragStop(fig_div, fig_div.find('img'));
+      }
     }
-
     $FV.thumbs.active = $thmb;
     $FV.thumbs.active.addClass('active');
 
@@ -556,7 +556,7 @@
     i = $FV.thumbs.index($thmb);
     this_sld = $FV.slides.eq(i);
     this_sld.show();
-    FVImgController(i);
+    FigController(i);
     FVFigDescription(this_sld);
 
     $FV.thumbs.active.next().length ? $FV.nxt.removeClass('invisible') : $FV.nxt.addClass('invisible');
@@ -603,7 +603,7 @@
     truncate = function() {
       //If called on the same element twice, ignore second call
       if($content.data('ellipsis_appended') != 'true') {
-        $content.ellipsis({ ellipsis_text:'<span class="toggle more">... show more</span>' });
+        $content.dotdotdot({after: "span.more", ellipsis: ""});
         $content.find('span.more').click(function() {
           $FV.slides_el.addClass('txt-expand');
           $FV.txt_expanded = true;
@@ -658,7 +658,7 @@
 
 
 // this function checks the status of figure image building/resizing, and directs to appropriate step
-  FVImgController = function(i) {
+  FigController = function(i) {
     $FV.loading.show();
     $FV.zoom.hide();
     var this_fig = $FV.figs_array[i];
@@ -675,18 +675,18 @@
       case 0:
         FVLoadMedImg(i);
         break;
-      case 1:
+      case 1:  // waiting on medium image to load
         break;
       case 2:
         FVSizeImgToFit(this_fig, false);
-       // $img.removeClass('invisible');
+        $img.removeClass('invisible');
         this_fig.data('state', 3);
-        FVLoadLargeImg(i);
+        //FVLoadLargeImg(i);
         break;
       case 3:
         // waiting on large image to load
         break;
-      case 4:
+      case 4: // case 4 comes from FVLoadLargeImg
         FVSwitchImg($FV.figs_array[i]);
         $FV.loading.hide();
         this_fig.data('state', 5);
@@ -703,7 +703,7 @@
 
 // build medium image, when loaded - size to fit, call load large image function
   FVLoadMedImg = function(i) {
-    var $fig_div, src_med, txt, img_med;
+    var sizeAndCenter, $fig_div, src_med, txt, img_med, fig_div_h, fig_div_w, img_aspect_ratio;
     $fig_div  = $FV.figs_array[i];
     src_med = $fig_div.data('img-src');
     txt = $fig_div.data('img-txt');
@@ -716,11 +716,43 @@
 
       $fig_div.data('state', 2);
 
-      if (i == $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
-        FVSizeImgToFit($fig_div, false);
-        $fig_div.find('img').removeClass('invisible');
-        $fig_div.data('state', 3);
-        FVLoadLargeImg(i);
+      if (i === $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
+        console.log('med loaded');
+        // FVSizeImgToFit($fig_div, false);
+
+        // compare aspect ratios of parent and image
+        fig_div_h = $fig_div.height();
+        fig_div_w = $fig_div.width();
+        var imgmedw = img_med.width();
+        var imgmedh = img_med.height();
+        img_aspect_ratio = imgmedw / imgmedh;
+        if (fig_div_w / fig_div_h > img_aspect_ratio) {    console.log('figdiv asp-ratio larger');
+          //make the image fill parent, calculate the left margin
+          img_med.css('height', fig_div_h);
+          //calculate the new width
+          var resized_i_w = fig_div_h * img_aspect_ratio;
+          //calculate and set the left margin for centering
+          img_med.css({
+            'marginLeft': Math.round((fig_div_w - resized_i_w) / 2),
+            'marginTop': 0
+          });
+        } else { //img is very wide and not very tall, center horizontally
+          // set height using the image aspect ratio, calculate the top margin
+          img_med.css({
+            'height': Math.round(fig_div_w / img_aspect_ratio),
+            'width': Math.round(fig_div_h * img_aspect_ratio)
+          });
+
+          var resized_i_h = img_med.height();
+          img_med.css({
+            'marginTop' : Math.round((fig_div_h - resized_i_h) / 2),
+            'marginLeft' : 0
+          });
+        }
+
+        img_med.removeClass('invisible');
+        //$fig_div.data('state', 3);
+        // FVLoadLargeImg(i);
       }
     });
   };
@@ -739,6 +771,7 @@
 
     stage.append(img_lg); // load large img into 'staging' div
     stage.imagesLoaded(function() {
+
       $fig_div.data('state', 4);
 
       if (i == $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
@@ -761,35 +794,31 @@
       fig_div_w = $fig_div.width();
       i_h = fig_img.height();
       i_w = fig_img.width();
-      console.log($fig_div.data('img_m_h') + ' '+ $fig_div.data('img_m_w') + ' data medh & medw');
-      console.log(fig_img + ' img in SizeImgToFit');
-      console.log(i_h + ' ' + i_w + ' sizeImgToFit imgh & w');
+
       var fig_div_aspect_ratio = fig_div_w / fig_div_h;
       var img_aspect_ratio = i_w / i_h;
-      /*   console.log(fig_div_aspect_ratio);
-       console.log(img_aspect_ratio);*/
+
       // sizes image to fit, scaling up or down, and centering
       sizeAndCenter = function() {
         // compare aspect ratios of parent and image
 
-        if (fig_div_aspect_ratio > img_aspect_ratio) { console.log('larger');
+        if (fig_div_aspect_ratio > img_aspect_ratio) {    console.log('larger');
           //make the image fill parent, calculate the left margin
           fig_img.css('height', fig_div_h);
-          //get the new width
+          //calculate the new width
           resized_i_w = fig_div_h * img_aspect_ratio;
-          //  console.log(fig_div_w + ' ' + resized_i_w + ' widths');
           //calculate and set the left margin for centering
           fig_img.css({
             'marginLeft': Math.round((fig_div_w - resized_i_w) / 2),
             'marginTop': 0
           });
-        } else {     console.log('smaller');
+        } else {                                    console.log('smaller');
           // set height using the image aspect ratio, calculate the top margin
           fig_img.css({
             'height': Math.round(fig_div_w / img_aspect_ratio),
             'width': Math.round(fig_div_h * img_aspect_ratio)
           });
-          //resized_i_w = fig_img.width();
+
           resized_i_h = fig_img.height();
           fig_img.css({
             'marginTop' : Math.round((fig_div_h - resized_i_h) / 2),
@@ -822,11 +851,9 @@
 // switch medium image with large image
 
   FVSwitchImg = function($fig_div) {
-    var img_m, img_m_h, img_m_w, img_l, img_l_h, img_l_w, drag_bx;
+    var img_m, img_sized_h, img_sized_w, img_l, img_l_h, img_l_w, drag_bx;
 
     img_m = $fig_div.find('img');
-    img_m_h = img_m.height();
-    img_m_w = img_m.width();
     img_l = $fig_div.next().find('img.lg');
 
     // move large image into figure div (image hidden by css)
@@ -835,21 +862,28 @@
 
       img_l_h = img_l.get(0).naturalHeight;
       img_l_w = img_l.get(0).naturalWidth;
-
+      if (img_l.get(0).clientHeight === undefined) {
+        img_sized_h = img_m.get(0).clientHeight;
+        img_sized_w = img_m.get(0).clientWidth;
+      } else {
+        img_sized_h = img_l.get(0).clientHeight;
+        img_sized_w = img_l.get(0).clientWidth;
+      }
+      console.log(img_sized_h);
       $fig_div.data({
         'img_l_w' : img_l_w,
         'img_l_h' : img_l_h,
-        'img_m_w' : img_m_w,
-        'img_m_h' : img_m_h
+        'img_sized_w' : img_sized_w,
+        'img_sized_h' : img_sized_h
       });
-      if (img_l_h < img_m_h) { // large image smaller than resized medium image
+      if (img_l_h < img_sized_h) { // large image smaller than resized medium image
         img_l.css({
           'marginTop' : Math.round(($fig_div.height() - img_l_h) / 2),
           'marginLeft' : Math.round(($fig_div.width() - img_l_w) / 2)
         }); // center
       } else {// set large image dimensions and position to that of the medium image
         img_l.css({
-          'height' : img_m_h,
+          'height' : img_sized_h,
           'marginTop' : img_m.css('marginTop'),
           'marginLeft' : img_m.css('marginLeft')
         });
@@ -875,7 +909,7 @@
    OR navigating to a slide whose large image is bigger than the slide and has already loaded.*/
 
   FVZoomControls = function($fig_div) {
-    var $img, fig_div_h, fig_div_w, real_h, real_w, img_aspect_ratio, img_mt, img_ml, resize_h, drag;
+    var $img, fig_div_h, fig_div_w, real_h, real_w, img_aspect_ratio, img_mt, img_ml, resize_h, drag, resize_w;
 
     $img = $fig_div.find('img');
     fig_div_h = $fig_div.height();
@@ -885,12 +919,11 @@
     console.log(real_h + ' '+real_w +' real-h & -w in zoomcontrols');
     img_mt = parseInt($img.css('marginTop')); // top margin of sized to fit image
     img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
-    //  console.log(img_ml + ' med marLeft');
     img_aspect_ratio = real_w/real_h; //
     resize_h = $img.height(); // height of sized to fit image
     $FV.zoom.show();
     drag = false; // dragging not enabled
-    var $drgbx = $fig_div.find('div.drag-bx');
+    //var $drgbx = $fig_div.find('div.drag-bx');
 
     $FV.zoom.sldr.slider({
       min: resize_h,
@@ -909,7 +942,8 @@
           FVDragStop($fig_div, $img);
           drag = false;
         } else {
-          FVSizeDragBox($fig_div, $img);
+          resize_w = resize_h * img_aspect_ratio;
+          FVSizeDragBox($fig_div, $img, resize_w);
           drag = true;
         }
       }
@@ -917,21 +951,22 @@
 
     // max(+) button
     $FV.zoom.max.on('click', function() {
-        console.log( $FV.zoom.sldr.slider("value") + ' slider value 1st');
+      console.log( $FV.zoom.sldr.slider("value") + ' slider value 1st');
       var curr_height = $FV.zoom.sldr.slider("value");
       var new_height = resize_h + ((real_h - resize_h) / 4) * Math.ceil((curr_height - resize_h) * 4 / (real_h - resize_h) + 0.1);
       new_height = Math.min(Math.ceil(new_height), real_h);
-
+      var new_width = new_height * img_aspect_ratio;
+      console.log(new_height + ' newheight in zmax');
       $FV.zoom.sldr.slider({
         'value': new_height
       });
-      var new_width = new_height * img_aspect_ratio;
+
       imgResize(new_height, img_aspect_ratio);
       FVDragInit($fig_div, $img);
       FVSizeDragBox($fig_div, $img, new_width);
       drag = true;
-        console.log(new_height + ' end of zmax new value');
       new_height = null;
+      new_width = null;
     });
 
     // min(-) button
@@ -954,8 +989,8 @@
           'marginTop': img_mt,
           'marginLeft': img_ml
         });
-        //  FVDragStop($fig_div, $img);
-        // drag = false;
+        FVDragStop($fig_div, $img);
+        drag = false;
       }
       else {   console.log(new_height);
         imgResize(new_height, img_aspect_ratio);

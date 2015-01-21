@@ -85,12 +85,12 @@ public class AssetServiceImpl implements AssetService {
    * A hash representing a list of asset source filenames (and the site they belong to).
    * Cached in order to tell whether we need to compile them.
    */
-  private static class SourceDigest {
+  private static class SourceFilenamesDigest {
     private final AssetType assetType;
     private final Site site;
     private final List<String> filenames;
 
-    private SourceDigest(AssetType assetType, Site site, List<String> filenames) {
+    private SourceFilenamesDigest(AssetType assetType, Site site, List<String> filenames) {
       this.assetType = assetType;
       this.site = site;
       this.filenames = filenames;
@@ -153,8 +153,8 @@ public class AssetServiceImpl implements AssetService {
   @Override
   public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site)
       throws IOException {
-    SourceDigest sourceDigest = new SourceDigest(assetType, site, filenames);
-    String sourceCacheKey = sourceDigest.generateCacheKey();
+    SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
+    String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
 
     String compiledFilename = cache.get(sourceCacheKey);
     if (compiledFilename == null) {

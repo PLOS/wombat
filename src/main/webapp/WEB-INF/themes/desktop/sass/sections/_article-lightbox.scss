@@ -164,7 +164,9 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-slides {
-position: relative;
+  position: relative;
+  padding-top: 2px;
+  padding-bottom: 2px;
 
 }
 #fig-viewer-slides .slide {

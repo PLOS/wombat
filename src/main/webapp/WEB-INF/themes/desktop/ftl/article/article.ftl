@@ -11,6 +11,9 @@
 <#include "../common/head.ftl" />
 
 <#include "../common/journalStyle.ftl" />
+
+<#include "analyticsArticleJS.ftl" />
+
 <body class="article ${journalStyle}">
 
 <#include "../common/header/header.ftl" />

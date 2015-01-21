@@ -60,6 +60,19 @@ $fv-grey-bg: darken($grey-light, 3%);
       color: $grey-light;
       text-decoration: none;
     }
+    .fv-close {
+      background: image-url('sprite.fv.png') no-repeat -40px 0;
+      position: absolute;
+      right: rem-calc(-46);
+      top: 0;
+      width: rem-calc(46);
+      height: rem-calc(46);
+      cursor: pointer;
+      color: $grey-light;
+      &:hover {
+        @extend %brand-background;
+      }
+    }
   }
 
   .fv-nav {
@@ -100,19 +113,7 @@ $fv-grey-bg: darken($grey-light, 3%);
     }
   }
 
-  .fv-close {
-    background: image-url('sprite.fv.png') no-repeat -40px 0;
-    position: absolute;
-    right: rem-calc(-46);
-    top: 0;
-    width: rem-calc(46);
-    height: rem-calc(46);
-    cursor: pointer;
-    color: $grey-light;
-    &:hover {
-      @extend %brand-background;
-    }
-  }
+
 
    > .content {
     padding: 0 !important;
@@ -306,7 +307,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   padding: 0 $pad-smallish;
 }
 
-#fig-viewer-slides .lnk_context {
+#fig-viewer-slides .show_context {
   margin-top: rem-calc(3);
   position: relative !important;
 }

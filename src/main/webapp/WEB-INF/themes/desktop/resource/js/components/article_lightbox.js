@@ -289,9 +289,7 @@
     $FV.figs_set = [];  // all figures array
     path = siteUrlPrefix+'article/figure/image?size=';
 
-    // /wombat/DesktopPlosPathogens/article/figure/image?size=inline&amp;id=info:doi/10.1371/journal.ppat.1000621.g001
-    //http://localhost:8081/wombat/DesktopPlosMedicine/article/figure/image?size=large&id=info:doi/10.1371/journal.pmed.0010019.t001
-    showInContext = function (uri) {
+showInContext = function (uri) {
       uri = uri.split('/');
       uri = uri[1].slice(8);
       uri = uri.replace(/\./g,'-');
@@ -325,7 +323,6 @@
       $fig = $('<div class="lbfigure" data-img-src="' + path + 'medium&id=info:doi/' + img_ref + '" data-img-lg-src="' + path +'large&id=info:doi/' + img_ref + '" data-img-txt="' + image_title + '"></div>');
 
       // track image loading state of figure
-
       $fig.data('state', 0)
         .data('off-top', 0)
         .data('off-left', 0);
@@ -354,13 +351,14 @@
       view_less = $('<div class="less" title="view less" />');
       doip = '<p class="doi">doi:'+img_ref+'</p>';
       staging = '<div class="staging" />'; // hidden container for loading large image
-     // context_lnk = '<a class="btn lnk_context close-reveal-modal" href="' + context_hash + '">Show in Context</a>';
+      context_lnk = '<a class="btn show_context" href="' + context_hash + '">Show in Context</a>';
       download_btns = '<div class="download">'
         + '<h3>Download:</h3>'
         + '<div class="item"><a href="' + "article/figure/powerpoint?id=info:doi/" + img_ref + '" title="PowerPoint slide"><span class="btn">PPT</span></a></div>'
         + '<div class="item"><a href="' + "article/figure/image?size=large&id=info:doi/" + img_ref + '" title="large image"><span class="btn">PNG</span><span class="size">' + /*convertToBytes(this.sizeLarge)*/  '</span></a></div>'
         + '<div class="item"><a href="' + "article/figure/image?size=original&id=info:doi/" + img_ref + '" title="original image"><span class="btn">TIFF</span><span class="size">' + /*convertToBytes(this.sizeTiff)*/  '</span></a></div>'
         + '</div>';
+
 
       //combine the markup & add to the slide
       slide.append($fig);
@@ -382,7 +380,7 @@
       txt.append(txt_less);
       txt.append(txt_more);
       datacon.append(txt);
-      //datacon.append(context_lnk);
+      datacon.append(context_lnk);
       datacon.append(download_btns);
       slide.append(datacon);
 
@@ -423,6 +421,8 @@
       FVChangeSlide($FV.thumbs.active.prev());
     }).appendTo($FV.controls_el);
 
+
+
     $FV.thumbs_el.append($FV.thumbs_cont);
     $FV.slides = $FV.slides_el.find('div.slide'); // all slides
     $FV.figs = $FV.slides_el.find('div.lbfigure'); // all figures
@@ -442,6 +442,11 @@
     $FV.figs_pane.append($FV.staging_el);
 
     $('#panel-figs').append($FV.figs_pane);
+    var whatta = $('.datacon').find('a');
+    $('.datacon').find('a').on('click', function(){ console.log('hi');
+     FVClose();
+     });
+
 
     if ($.support.touchEvents) {
       var th;

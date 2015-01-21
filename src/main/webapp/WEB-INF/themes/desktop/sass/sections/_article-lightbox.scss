@@ -1,9 +1,9 @@
 /*
 style changes to review with s, p & p
 
-#fig-viewer-refs h3 normalize margins
+#lightbox-refs (#lightbox-refs) h3 normalize margins
 
-#fig-viewer-abst: padding top from 37px to 25px
+#lightbox-abst (#lightbox-abst): padding top from 37px to 25px
 
 download pdf button: change 636363 to 666666?
 change rounded corner radius from 4px to 5px
@@ -20,7 +20,7 @@ $fv-grey-light: #eae9e9;
 $fv-grey-bg: darken($grey-light, 3%);
 // using the following until the variables get sorted out.
 
-#fig-viewer {
+#article-lightbox {
   background: rgba(0,0,0,0.8);
   position: fixed;
   z-index: map-get($zindex, modal);
@@ -30,7 +30,7 @@ $fv-grey-bg: darken($grey-light, 3%);
     border: 0 none;
   }
 
-  #fig-viewer-content {
+  #lightbox-content {
     background: $grey-light;
     margin: $pad-small;
     position: relative;
@@ -60,19 +60,6 @@ $fv-grey-bg: darken($grey-light, 3%);
       color: $grey-light;
       text-decoration: none;
     }
-    .fv-close {
-      background: image-url('sprite.fv.png') no-repeat -40px 0;
-      position: absolute;
-      right: rem-calc(-46);
-      top: 0;
-      width: rem-calc(46);
-      height: rem-calc(46);
-      cursor: pointer;
-      color: $grey-light;
-      &:hover {
-        @extend %brand-background;
-      }
-    }
   }
 
   .fv-nav {
@@ -88,34 +75,39 @@ $fv-grey-bg: darken($grey-light, 3%);
       float: left;
       border-right: 1px solid $grey-med-dark;
       padding: 0 $pad-smallish;
-      //plos one special handling is in _utilities.scss in the brand color section
-      &.active {
+      font-size: $txt-size-medium-large;
+      line-height: rem-calc(46);
+      color: $white;
+      cursor: pointer;
+      outline: 0;
+
+      // special handling for PLOSOne is in _utilities.scss in the brand color section
+      &.tab_active {
         @extend %brand-background;
-        cursor: default;
       }
 
       &:hover {
         background: $plos-default;
-      }
-
-      a {
         color: $white;
-        font-size: $txt-size-medium-large;
-        line-height: rem-calc(46);
-        display: block;
-        outline: 0;
-
-        &:hover {
-          color: $white;
-          text-decoration: none;
-        }
       }
     }
   }
 
+  .fv-close {
+    background: image-url('sprite.fv.png') no-repeat -40px 0;
+    position: absolute;
+    right: rem-calc(-46);
+    top: 0;
+    width: rem-calc(46);
+    height: rem-calc(46);
+    cursor: pointer;
+    color: $grey-light;
+    &:hover {
+      @extend %brand-background;
+    }
+  }
 
-
-   > .content {
+  > .content {
     padding: 0 !important;
   }
 
@@ -146,30 +138,24 @@ $fv-grey-bg: darken($grey-light, 3%);
   }
 }
 
-.figs #fig-viewer-figs {
-  display: block;
-  position: relative;
+.figs #lightbox-figs {
+  // position: relative;
 }
 
-.abst #fig-viewer-abst {
-  display: block;
+#lightbox-abst, #lightbox-refs {
   overflow: auto;
 }
 
-.refs #fig-viewer-refs {
-  display: block;
-  overflow: auto;
-}
 .invisible {
   visibility: hidden;
 }
 
 #fig-viewer-slides {
   position: relative;
-  padding-top: 2px;
-  padding-bottom: 2px;
-
+  padding-top: rem-calc(2);
+  padding-bottom: rem-calc(2);
 }
+
 #fig-viewer-slides .slide {
   overflow: hidden;
   display: none;
@@ -177,24 +163,26 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-slides .figure {
-  overflow: hidden;
+  //  overflow: hidden;
   border: solid 2px $grey-light;
   position: relative;
 }
 
 #fig-viewer-slides .figure img {
   display: block;
+
 }
 
 #fig-viewer-slides .ui-draggable {
   cursor: move;
 }
 
-#fig-viewer-figs .drag-bx {
+#lightbox-figs .drag-bx {
   position: absolute;
 }
 
-#fig-viewer-figs .staging {
+
+#lightbox-figs .staging {
   display: none;
 }
 
@@ -237,7 +225,6 @@ $fv-grey-bg: darken($grey-light, 3%);
 #fig-viewer-slides .txt .more {
   padding: 0 5% $pad-smallish 3.1%;
   font-weight: normal;
-  font-style: normal;
   text-decoration: underline;
   color: $plos-default;
   margin-top: 1px;
@@ -296,7 +283,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   overflow-y: auto;
   border-top: 1px solid #ccc; // was #bbb
   border-color: rgba(0, 0, 0, 0.2);
-  }
+}
 
 
 
@@ -308,38 +295,38 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 #fig-viewer-slides .show_context {
-  margin-top: rem-calc(3);
+  margin-top: rem-calc(10);
   position: relative !important;
 }
 
-#fig-viewer-figs .download {
+#lightbox-figs .download {
   position: absolute;
   top: rem-calc(40);
   right: 2.7%;
 }
 
-#fig-viewer-figs .download h3 {
+#lightbox-figs .download h3 {
   float: left;
   font-size: $txt-size-small;
   line-height: rem-calc(27);
   margin: 0;
 }
 
-#fig-viewer-figs .download .item {
+#lightbox-figs .download .item {
   float: left;
   margin-left: $pad-default + $pad-xsmall;
 }
-#fig-viewer-figs .download .item a {
+#lightbox-figs .download .item a {
   display: block;
   color: $grey-dark;
   text-decoration: none;
 }
-#fig-viewer-figs .download .size {
+#lightbox-figs .download .size {
   display: block;
   font-size: 0.769em;
   margin-top: $pad-xsmall;
 }
-#fig-viewer-figs .download .item a:hover .btn {
+#lightbox-figs .download .item a:hover .btn {
   background: $plos-default;
   color: $white;
 }
@@ -349,8 +336,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   padding-top: 35px;
   width: 163px;
   position: absolute;
- // bottom: 120px;
-  top: 0;
+  top: 46px;
   right: 0;
   background: $fv-grey-light;
 }
@@ -382,6 +368,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   padding-left: rem-calc(17);
   overflow: auto;
   background: $fv-grey-light;
+  //Ambra code
   background: linear-gradient(to right, $fv-grey-light 0%, $fv-grey-light 20px, $grey-light 20px, $grey-light 143px,$fv-grey-light 143px, $fv-grey-light 100%);
 }
 
@@ -593,7 +580,8 @@ $fv-grey-bg: darken($grey-light, 3%);
 .fig-btn.prev:hover .icn {
   background-position: -130px -20px;
 }
-#fig-viewer-abst {
+#lightbox-abst {
+  display: none;
   overflow: auto;
   font-family: $font-face-fancy;
   padding: rem-calc(37) 0 rem-calc(75);
@@ -649,7 +637,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   }
 }
 
-#fig-viewer-abst .info p strong {
+#lightbox-abst .info p strong {
   font-size: $txt-size-medium;
   font-weight: bold;
   display: block;
@@ -657,7 +645,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   line-height: rem-calc(15);
 }
 
-#fig-viewer-abst .fv-lnk-pdf a {
+#lightbox-abst .fv-lnk-pdf a {
   @include rounded-pill($background: $grey-med-dark, $padding: 0 rem-calc(23));
   color: $white;
   font-family: $font-face-plain;
@@ -672,24 +660,25 @@ $fv-grey-bg: darken($grey-light, 3%);
   }
 }
 
-#fig-viewer-refs {
+#lightbox-refs {
+  display: none;
   padding-top: $pad-default + $pad-xsmall;
   overflow:auto;
 }
 
-#fig-viewer-refs h3 {
+#lightbox-refs h3 {
   margin: 0 0 rem-calc(7) rem-calc(21);
   line-height: rem-calc(24);
 }
 
-#fig-viewer-refs ol {
+#lightbox-refs ol {
   padding-left: rem-calc(40);
   width: 87.5%;
   margin: 0;
   list-style-type: none;
 }
 
-#fig-viewer-refs ol > li {
+#lightbox-refs ol > li {
   font-size: $txt-size-medium-large;
   font-weight: bold;
   line-height: rem-calc(20);
@@ -697,7 +686,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 
   a {
     color: $plos-default;
-    font-weight: normal;
+    font-weight: bold;
     &:hover {
       color: $plos-default;
       text-decoration: underline;
@@ -705,7 +694,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   }
 }
 
-#fig-viewer-refs span.order {
+#lightbox-refs span.order {
   margin-left: rem-calc(-26);
   float: left;
   width: $pad-default;
@@ -713,7 +702,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   font-weight: bold;
 }
 
-#fig-viewer-refs .reflinks {
+#lightbox-refs .reflinks a {
   font-weight: normal;
   font-size: $txt-size-small;
 }

@@ -19,7 +19,7 @@ public class CacheParams {
 
   static final HashFunction HASH_ALGORITHM = Hashing.sha1();
   static final Charset HASH_CHARSET = Charsets.UTF_8;
-  static final BaseEncoding HASH_BASE = BaseEncoding.base16();
+  static final BaseEncoding HASH_BASE = BaseEncoding.base32();
 
   private CacheParams(String cacheKey, Optional<Integer> timeToLive) {
     this.cacheKey = Preconditions.checkNotNull(cacheKey);

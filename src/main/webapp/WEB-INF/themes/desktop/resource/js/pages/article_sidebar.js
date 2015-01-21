@@ -1,26 +1,31 @@
-
 (function ($) {
   var subject_areas, openTermTooltip, handleFlagClick;
 
   subject_areas = (function () {
-   var truncTerm, targetSpan, getWidth, categoryTerm, checkStorage;
+    var truncTerm, targetSpan, getWidth, categoryTerm, checkStorage;
 
-   $("#subjectList li").each(function () {
-     /* //apply width via js if truncation is needed because the css width needs to be auto otherwise*/
-     truncTerm = $(this).find('.taxo-term');
-     targetSpan = $(truncTerm).next();
-     getWidth = $(truncTerm).width();
-     if (getWidth > 134) {
-       return $(truncTerm).css('width', '140px');
-     }
+    $('#subjectList li').each(function () {
+      var iconWidth = $('.taxo-flag').outerWidth(true),
+      columnWidth = $(this).width() - iconWidth,
+      columnPadding = 5 * 2, //TODO - get this auto-magically
+      truncationWidth = (columnWidth - columnPadding),
+      truncTerm = $(this).find('.taxo-term'),
+      targetSpan = $(truncTerm).next(),
+      getWidth = $(truncTerm).width();
 
-     /*//check in localstorage if any thing has already been flagged*/
-     categoryTerm = $(targetSpan).next().data("categoryname");
-     checkStorage = localStorage[categoryTerm];
-     if (checkStorage !== undefined) {
-       return $(targetSpan).addClass('flagged');
-     }
-   });
+      /* //apply width via js if truncation is needed because the css width needs to be auto otherwise */
+
+      if (getWidth > truncationWidth) {
+        return $(truncTerm).css('width', columnWidth  + 'px');
+      }
+
+      /*//check in localstorage if any thing has already been flagged*/
+      categoryTerm = $(targetSpan).next().data('categoryname');
+      checkStorage = localStorage[categoryTerm];
+      if (checkStorage !== undefined) {
+        return $(targetSpan).addClass('flagged');
+      }
+    });
   })();
 
   openTermTooltip = function () {
@@ -32,7 +37,7 @@
     $(toolContainer).addClass('activate');
 
     /*// close other open tooltips*/
-    if ( $(toolContainer).parent().siblings().children('div').hasClass('activate') ){
+    if ($(toolContainer).parent().siblings().children('div').hasClass('activate')) {
       $(toolContainer).parent().siblings().children('div').removeClass('activate');
       window.clearTimeout(closeIt);
     }
@@ -50,7 +55,7 @@
   };
   $('.taxo-flag').on('click', openTermTooltip);
 
-  handleFlagClick = (function() {
+  handleFlagClick = (function () {
     /*// handle the yes/no clicks, show confirmation, then close tooltip */
     $('.taxo-tooltip button').on('click', function () {
       /* // get the data & containers needed*/
@@ -63,14 +68,14 @@
       action = $(flagButton).data("action");
 
       $.ajax({
-        type: 'POST',
-        url: siteUrlPrefix + 'taxonomy/flag/' + action,
-        data: { 'categoryTerm': categoryTerm, 'articleDoi': article_doi },
+        type:     'POST',
+        url:      siteUrlPrefix + 'taxonomy/flag/' + action,
+        data:     { 'categoryTerm': categoryTerm, 'articleDoi': article_doi },
         dataType: 'json',
-        error: function (errorThrown) {
+        error:    function (errorThrown) {
           $('#subjectErrors').append(errorThrown);
         },
-        success: function () {
+        success:  function () {
           action === "remove" ? $(targetSpan).removeClass("flagged") : $(targetSpan).addClass("flagged");
         }
       });

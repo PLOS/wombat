@@ -94,9 +94,13 @@ $line-height-small: ($line-height * .5);
     font-weight: bold;
   }
 
-  blockquote {
+  blockquote, .pullquote {
     border-left: $pad-xsmall solid $clr-separator;
     margin: $line-height-med 0 $line-height 0;
+  }
+  .pullquote{
+    @extend blockquote;
+    font-style: italic;
   }
 
   .abstract {

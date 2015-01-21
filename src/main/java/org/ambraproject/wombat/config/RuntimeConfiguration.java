@@ -11,7 +11,6 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
@@ -25,42 +24,44 @@ import java.util.Collection;
 public interface RuntimeConfiguration {
 
   /**
-   * @return true if we are running in "dev mode" for .js and .css, and compilation/minification should not happen for
-   * these files
-   */
-  boolean devModeAssets();
-
-  /**
-   * @return the directory in which to write and serve compiled assets (.js and .css).  Not relevant if devModeAssets is
-   * true.
+   * @return the directory in which to write and serve compiled assets (.js and .css), or {@code null} to not compile
+   * assets due to being in dev mode
    */
   String getCompiledAssetDir();
 
-  /**
-   * @return the memcached host, or null if it is not present in the config
-   */
-  String getMemcachedHost();
+  interface CacheConfiguration {
+    /**
+     * @return the memcached host, or null if it is not present in the config
+     */
+    String getMemcachedHost();
 
-  /**
-   * @return the memcached port, or -1 if it is not present in the config
-   */
-  int getMemcachedPort();
+    /**
+     * @return the memcached port, or -1 if it is not present in the config
+     */
+    int getMemcachedPort();
 
-  /**
-   * @see org.apache.http.pool.ConnPoolControl
-   */
-  Integer getConnectionPoolMaxTotal();
+    /**
+     * @return the cacheAppPrefix value, or null if it is not defined in the config.  This should be a String that is
+     * shared by all wombat app servers, defining a namespace for them.
+     */
+    String getCacheAppPrefix();
+  }
 
-  /**
-   * @see org.apache.http.pool.ConnPoolControl
-   */
-  Integer getConnectionPoolDefaultMaxPerRoute();
+  CacheConfiguration getCacheConfiguration();
 
-  /**
-   * @return the cacheAppPrefix value, or null if it is not defined in the config.  This should be a String that is
-   * shared by all wombat app servers, defining a namespace for them.
-   */
-  String getCacheAppPrefix();
+  interface HttpConnectionPoolConfiguration {
+    /**
+     * @see org.apache.http.pool.ConnPoolControl
+     */
+    Integer getMaxTotal();
+
+    /**
+     * @see org.apache.http.pool.ConnPoolControl
+     */
+    Integer getDefaultMaxPerRoute();
+  }
+
+  HttpConnectionPoolConfiguration getHttpConnectionPoolConfiguration();
 
   /**
    * Get the URL of the SOA server.
@@ -96,8 +97,17 @@ public interface RuntimeConfiguration {
    */
   SiteSet getSites(ThemeTree themeTree);
 
-  String getCasServiceUrl();
-  String getCasUrl();
-  String getCasLoginUrl();
-  String getCasLogoutUrl();
+  interface CasConfiguration {
+    String getCasUrl();
+
+    String getServiceUrl();
+
+    String getLoginUrl();
+
+    String getLogoutUrl();
+
+    String getLogoutServiceUrl();
+  }
+
+  CasConfiguration getCasConfiguration();
 }

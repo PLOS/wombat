@@ -11,6 +11,9 @@
 <#include "../common/head.ftl" />
 
 <#include "../common/journalStyle.ftl" />
+
+<#include "analyticsArticleJS.ftl" />
+
 <body class="article ${journalStyle}">
 
 <#include "../common/header/header.ftl" />
@@ -105,7 +108,9 @@
 <#include "mathjax.ftl">
 
   <script type="text/javascript">
+
     (function ($) {
+
       /*filesizetable*/
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
 

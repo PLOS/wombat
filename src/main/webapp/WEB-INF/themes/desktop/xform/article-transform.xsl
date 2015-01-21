@@ -114,7 +114,7 @@
     <xsl:for-each select="front/article-meta">
       <!-- article citation -->
       <p>
-        <strong>Citation:</strong>
+        <strong>Citation:&#032;</strong>
         <!-- authors -->
         <xsl:for-each select="contrib-group/contrib[@contrib-type='author'][position() &lt; 7]">
           <xsl:choose>
@@ -190,22 +190,20 @@
       <!-- history/date, pub-date -->
       <p>
         <xsl:if test="history/date[@date-type='received']">
-          <strong>Received:</strong>
-          <xsl:text> </xsl:text>
+          <strong>Received:&#032;</strong>
           <xsl:apply-templates select="history/date[@date-type='received']/month" mode="map"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="history/date[@date-type='received']/day"/><xsl:text>, </xsl:text>
           <xsl:value-of select="history/date[@date-type='received']/year"/><xsl:text>; </xsl:text>
         </xsl:if>
         <xsl:if test="history/date[@date-type='accepted']">
-          <strong>Accepted:</strong>
-          <xsl:text> </xsl:text>
+          <strong>Accepted:&#032;</strong>
           <xsl:apply-templates select="history/date[@date-type='accepted']/month" mode="map"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="history/date[@date-type='accepted']/day"/><xsl:text>, </xsl:text>
           <xsl:value-of select="history/date[@date-type='accepted']/year"/><xsl:text>; </xsl:text>
         </xsl:if>
-        <strong>Published:</strong>
+        <strong>Published:&#032;</strong>
         <xsl:text> </xsl:text>
         <xsl:apply-templates select="pub-date[@pub-type='epub']/month" mode="map"/>
         <xsl:text> </xsl:text>
@@ -221,7 +219,7 @@
             <xsl:apply-templates select="permissions/license" mode="metadata"/>
           </xsl:when>
           <xsl:otherwise>
-            <strong>Copyright:</strong>
+            <strong>Copyright:&#032;</strong>
             <xsl:text> &#169; </xsl:text>
             <xsl:apply-templates select="permissions/copyright-year"/>
             <xsl:text> </xsl:text>
@@ -247,7 +245,7 @@
       <!-- competing interests -->
       <xsl:if test="author-notes/fn[@fn-type='conflict']">
         <p>
-          <strong>Competing interests:</strong>
+          <strong>Competing interests:&#032;</strong>
           <xsl:text> </xsl:text>
           <xsl:apply-templates select="author-notes/fn[@fn-type='conflict']"/>
         </p>
@@ -260,7 +258,7 @@
           <xsl:for-each select="../../back/glossary/def-list/def-item">
             <xsl:apply-templates select="term"/>,
             <xsl:apply-templates select="def "/>
-            <xsl:if test="position() != last()">;</xsl:if>
+            <xsl:if test="position() != last()">;&#032;</xsl:if>
           </xsl:for-each>
         </p>
       </xsl:if>
@@ -341,7 +339,7 @@
 
   <!-- 5/20/14: Ambra modifications -->
   <xsl:template match="custom-meta-group/custom-meta[@id='data-availability']/meta-value" mode="metadata">
-    <strong>Data Availability:</strong>
+    <strong>Data Availability:&#032;</strong>
     <xsl:apply-templates/>
   </xsl:template>
 
@@ -397,7 +395,7 @@
 
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template match="funding-statement" mode="metadata">
-    <strong>Funding:</strong>
+    <strong>Funding:&#032;</strong>
     <xsl:apply-templates/>
   </xsl:template>
 
@@ -1739,7 +1737,7 @@
         <xsl:apply-templates select="collab" mode="book"/>
         <xsl:apply-templates select="year | month" mode="book"/>
         <xsl:apply-templates select="article-title" mode="editedbook"/>
-        <xsl:text> In:</xsl:text>
+        <xsl:text> In:&#032;</xsl:text>
         <xsl:apply-templates select="person-group[@person-group-type='editor']" mode="book"/>
         <xsl:apply-templates select="source" mode="book"/>
         <xsl:apply-templates select="edition" mode="book"/>
@@ -1970,7 +1968,7 @@
       <xsl:otherwise>
         <xsl:choose>
           <xsl:when test="position()=last()"></xsl:when>
-          <xsl:otherwise>,</xsl:otherwise>
+          <xsl:otherwise>,&#032;</xsl:otherwise>
         </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
@@ -2328,6 +2326,8 @@
     <xsl:copy-of copy-namespaces="no" select="."/>
   </xsl:template>
 
+
+
   <!-- ============================================================= -->
   <!--  INLINE MISCELLANEOUS                                         -->
   <!-- ============================================================= -->
@@ -2495,12 +2495,15 @@
       <xsl:apply-templates/>
     </a>
   </xsl:template>
-  <!-- ************ removed the <strong> tags from below 11/4/2014 ********************-->
   <!-- 1/4/12: Ambra modifications (transform to <strong> instead of <b>) -->
   <xsl:template match="bold">
-
+    <strong>
       <xsl:apply-templates/>
-
+    </strong>
+  </xsl:template>
+  <!-- ************ stripped  the <bold> tags from th 1/7/2015 ********************-->
+  <xsl:template match="th/bold">
+    <xsl:apply-templates/>
   </xsl:template>
 
   <!-- 1/4/12: Ambra modifications (transform to <em> instead of <i>) -->

@@ -35,9 +35,13 @@
   addMediaCoverageLink();
   figshareWidget();
 
+  var hasFigures = $('#artText .figure').length;
+
+  if(hasFigures){
 
   $('#figure-carousel-section').buildFigureCarousel({});
 
+  };
 
   function formatHumanReadableByteSize(bytes) {
     // Space before "Bytes". All others are concatenated to number with no space.
@@ -62,6 +66,8 @@
 
   // Will be invoked directly from article HTML, where the templating engine will inject the fileSizeTable data.
   $.fn.populateFileSizes = function (fileSizeTable) {
+
+    if(hasFigures){
     $('.file-size').each(function (index, element) {
       var $el = $(element);
       var doi = $el.attr('data-doi');
@@ -69,6 +75,7 @@
       var size = fileSizeTable[ doi][ /**/fileSize];
       $el.text('(' + formatHumanReadableByteSize(size) + ')');
     });
+    }
   };
 
   $('.table-download').on('click', function(){

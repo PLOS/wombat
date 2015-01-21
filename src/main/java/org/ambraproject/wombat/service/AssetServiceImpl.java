@@ -96,15 +96,8 @@ public class AssetServiceImpl implements AssetService {
       this.filenames = filenames;
     }
 
-    private static final char FILENAME_TERMINATOR = '\0';
-
     private String generateCacheKey() {
-      StringBuilder filenameList = new StringBuilder();
-      for (String filename : filenames) {
-        filenameList.append(filename);
-        filenameList.append(FILENAME_TERMINATOR);
-      }
-      String filenameDigest = CacheParams.createKeyHash(filenameList.toString());
+      String filenameDigest = CacheParams.createKeyHash(filenames);
 
       return String.format("%sFile:%s:%s", assetType.name().toLowerCase(), site, filenameDigest);
     }

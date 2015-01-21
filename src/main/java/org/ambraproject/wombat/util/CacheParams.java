@@ -4,6 +4,7 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 import com.google.common.io.BaseEncoding;
 import org.slf4j.Logger;
@@ -44,13 +45,34 @@ public class CacheParams {
 
   /**
    * Create a hash from a given string and return it as a string for use as a cache key. This is useful when a string
-   * value may be too long (>250 chars) to be used directly as a key
+   * value may be too long (by environmental default, >250 chars) to be used directly as a key.
    *
    * @param value a potentially long key string
    * @return a digest of bounded length
    */
   public static String createKeyHash(String value) {
     return createContentHash(value.getBytes(HASH_CHARSET));
+  }
+
+  private static final char HASH_TERMINATOR = '\0';
+
+  /**
+   * Create a hash from a sequence of strings and return it as a string for use as a cache key. This is useful when the
+   * strings, concatenated, may be too long (by environmental default, >250 chars) to be used directly as a key.
+   * <p/>
+   * For consistent hashes, the argument must have a well-defined iteration order. Passing in, for example, a {@link
+   * java.util.HashSet} is a bad idea.
+   *
+   * @param values a potentially long sequence of key strings
+   * @return a digest of bounded length
+   */
+  public static String createKeyHash(Iterable<String> values) {
+    Hasher hasher = HASH_ALGORITHM.newHasher();
+    for (String value : values) {
+      hasher.putString(value, HASH_CHARSET);
+      hasher.putChar(HASH_TERMINATOR);
+    }
+    return HASH_BASE.encode(hasher.hash().asBytes());
   }
 
   /**

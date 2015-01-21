@@ -149,6 +149,9 @@ public class AssetServiceImpl implements AssetService {
     try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(result))) {
       for (String filename : filenames) {
         try (InputStream is = theme.getStaticResource(filename)) {
+          if (is == null) {
+            throw new RuntimeException(String.format("Static resource missing from %s: %s", site, filename));
+          }
           IOUtils.copy(is, bos);
           bos.write('\n');  // just in case
         }

@@ -1,7 +1,7 @@
 
 //dependencies: jquery.touchswipe.js, foundation reveal
 // 'lb' = lightbox and is wombat terminology;
-// 'FV' = figure viewer and is ambra terminology
+// 'FV' = figure viewer and is ambra terminology but most of the FV functions have been re-worked quite a bit for wombat
 (function($) {
   "use strict";
 
@@ -316,8 +316,9 @@
 
 
   // build figures pane. needs to be broken into smaller parts.
+  // backbone with underscore's built in _template would be great here
   FVBuildFigs = function($data, doi) {
-    var path, showInContext, article_page_figure, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, fig_title, context_lnk, view_more, view_less, context_hash, doip, $fig_div, staging, download_btns, chk_desc, text_description;
+    var path, showInContext, article_page_figure, title_txt, image_title, text_title, img_ref, $thmb, thmb_close, slide, datacon, txt, txt_less, txt_more, fig_title, show_context, view_less, view_more, context_hash, doip, $fig_div, staging, download_btns, chk_desc, text_description;
 
     //set the markup
     $FV.figs_pane = $('<div id="lightbox-figs" class="pane" />');
@@ -397,11 +398,10 @@
       txt_more = $('<div class="text-more" />');
       fig_title = '<div class="fig_title">' + text_title + '</div>';
       view_more = '<span class="toggle more">... show more</span>';
-
       view_less = $('<div class="less" title="view less" />');
       doip = '<p class="doi">doi:'+img_ref+'</p>';
       staging = '<div class="staging" />'; // hidden container for loading large image
-      // context_lnk = '<a class="btn lnk_context close-reveal-modal" href="' + context_hash + '">Show in Context</a>';
+      show_context = '<a class="btn show_context" href="' + context_hash + '">Show in Context</a>';
       download_btns = '<div class="download">'
         + '<h3>Download:</h3>'
         + '<div class="item">'
@@ -439,7 +439,7 @@
       txt.append(txt_less);
       txt.append(txt_more);
       datacon.append(txt);
-      //datacon.append(context_lnk);
+      datacon.append(show_context);
       datacon.append(download_btns);
       slide.append(datacon);
 
@@ -499,7 +499,9 @@
       $FV.figs_pane.toggleClass('thmbs-vis');
       $FV.thmbs_vis = $FV.thmbs_vis ? false : true;
     });
-
+    $('.datacon').find('a.show_context').on('click', function(){
+      FVClose();
+    });
     if ($.support.touchEvents) {
       var th;
       $FV.slides_el.swipe({
@@ -675,18 +677,18 @@
       case 0:
         FVLoadMedImg(i);
         break;
-      case 1:  // waiting on medium image to load
+      case 1:
         break;
       case 2:
         FVSizeImgToFit(this_fig, false);
-        $img.removeClass('invisible');
+        // $img.removeClass('invisible');
         this_fig.data('state', 3);
-        //FVLoadLargeImg(i);
+        FVLoadLargeImg(i);
         break;
       case 3:
         // waiting on large image to load
         break;
-      case 4: // case 4 comes from FVLoadLargeImg
+      case 4:
         FVSwitchImg($FV.figs_array[i]);
         $FV.loading.hide();
         this_fig.data('state', 5);
@@ -703,7 +705,8 @@
 
 // build medium image, when loaded - size to fit, call load large image function
   FVLoadMedImg = function(i) {
-    var sizeAndCenter, $fig_div, src_med, txt, img_med, fig_div_h, fig_div_w, img_aspect_ratio;
+    var $fig_div, src_med, txt, img_med;
+
     $fig_div  = $FV.figs_array[i];
     src_med = $fig_div.data('img-src');
     txt = $fig_div.data('img-txt');
@@ -716,62 +719,29 @@
 
       $fig_div.data('state', 2);
 
-      if (i === $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
-        console.log('med loaded');
-        // FVSizeImgToFit($fig_div, false);
-
-        // compare aspect ratios of parent and image
-        fig_div_h = $fig_div.height();
-        fig_div_w = $fig_div.width();
-        var imgmedw = img_med.width();
-        var imgmedh = img_med.height();
-        img_aspect_ratio = imgmedw / imgmedh;
-        if (fig_div_w / fig_div_h > img_aspect_ratio) {    console.log('figdiv asp-ratio larger');
-          //make the image fill parent, calculate the left margin
-          img_med.css('height', fig_div_h);
-          //calculate the new width
-          var resized_i_w = fig_div_h * img_aspect_ratio;
-          //calculate and set the left margin for centering
-          img_med.css({
-            'marginLeft': Math.round((fig_div_w - resized_i_w) / 2),
-            'marginTop': 0
-          });
-        } else { //img is very wide and not very tall, center horizontally
-          // set height using the image aspect ratio, calculate the top margin
-          img_med.css({
-            'height': Math.round(fig_div_w / img_aspect_ratio),
-            'width': Math.round(fig_div_h * img_aspect_ratio)
-          });
-
-          var resized_i_h = img_med.height();
-          img_med.css({
-            'marginTop' : Math.round((fig_div_h - resized_i_h) / 2),
-            'marginLeft' : 0
-          });
-        }
-
-        img_med.removeClass('invisible');
-        //$fig_div.data('state', 3);
-        // FVLoadLargeImg(i);
+      if (i == $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
+        FVSizeImgToFit($fig_div, false);
+        $fig_div.find('img').removeClass('invisible');
+        $fig_div.data('state', 3);
+        FVLoadLargeImg(i);
       }
     });
   };
 
 // load large images in div.staging
   FVLoadLargeImg = function(i) {
-    //$FV.figs_array[i] refers to the div.lb-figure container with the data-img-src and data-img-lg-src info
+    var $fig_div, src_lg, img_txt, stage, img_lg;
 
-    var $fig_div = $FV.figs_array[i];
+    $fig_div = $FV.figs_array[i];
 
-    var src_lg = $fig_div.data('img-lg-src');
-    var txt = $fig_div.data('img-txt');
-    var stage = $fig_div.next('.staging');
+    src_lg = $fig_div.data('img-lg-src');
+    img_txt = $fig_div.data('img-txt');
+    stage = $fig_div.next('.staging');
 
-    var img_lg = '<img src="' + src_lg + '" title="' + txt + '" alt="' + txt + '" class="lg invisible"/>';
+    img_lg = '<img src="' + src_lg + '" title="' + img_txt + '" alt="' + img_txt + '" class="lg invisible"/>';
 
-    stage.append(img_lg); // load large img into 'staging' div
+    stage.append(img_lg); // load large img into 'staging' div & append to fig_div when it is finished loading
     stage.imagesLoaded(function() {
-
       $fig_div.data('state', 4);
 
       if (i == $FV.thumbs.index($FV.thumbs.active) && $FV.hasClass('figs')) { // true if this slide is still visible
@@ -794,36 +764,36 @@
       fig_div_w = $fig_div.width();
       i_h = fig_img.height();
       i_w = fig_img.width();
-
       var fig_div_aspect_ratio = fig_div_w / fig_div_h;
       var img_aspect_ratio = i_w / i_h;
-
       // sizes image to fit, scaling up or down, and centering
       sizeAndCenter = function() {
         // compare aspect ratios of parent and image
 
-        if (fig_div_aspect_ratio > img_aspect_ratio) {    console.log('larger');
+        if (fig_div_aspect_ratio > img_aspect_ratio) { // fig div is wider than high, img is higher than wide
           //make the image fill parent, calculate the left margin
           fig_img.css('height', fig_div_h);
-          //calculate the new width
+          //get the new width
           resized_i_w = fig_div_h * img_aspect_ratio;
           //calculate and set the left margin for centering
           fig_img.css({
             'marginLeft': Math.round((fig_div_w - resized_i_w) / 2),
             'marginTop': 0
           });
-        } else {                                    console.log('smaller');
-          // set height using the image aspect ratio, calculate the top margin
-          fig_img.css({
-            'height': Math.round(fig_div_w / img_aspect_ratio),
-            'width': Math.round(fig_div_h * img_aspect_ratio)
-          });
+        } else {  // img is way wider than high
 
-          resized_i_h = fig_img.height();
-          fig_img.css({
-            'marginTop' : Math.round((fig_div_h - resized_i_h) / 2),
-            'marginLeft' : 0
-          });
+          if (i_w !== fig_div_w && i_w < fig_div_w) {
+            fig_img.css({
+              'height': Math.round(fig_div_w / img_aspect_ratio),
+              'width': Math.round(fig_div_h * img_aspect_ratio)
+            });
+            //resized_i_w = fig_img.width();
+            resized_i_h = fig_img.height();
+            fig_img.css({
+              'marginTop': Math.round((fig_div_h - resized_i_h) / 2),
+              'marginLeft': 0
+            });
+          } else { }
         }
       };
 
@@ -851,9 +821,11 @@
 // switch medium image with large image
 
   FVSwitchImg = function($fig_div) {
-    var img_m, img_sized_h, img_sized_w, img_l, img_l_h, img_l_w, drag_bx;
+    var img_m, img_m_h, img_m_w, img_l, img_l_h, img_l_w, drag_bx;
 
     img_m = $fig_div.find('img');
+    img_m_h = img_m.height();
+    img_m_w = img_m.width();
     img_l = $fig_div.next().find('img.lg');
 
     // move large image into figure div (image hidden by css)
@@ -862,28 +834,21 @@
 
       img_l_h = img_l.get(0).naturalHeight;
       img_l_w = img_l.get(0).naturalWidth;
-      if (img_l.get(0).clientHeight === undefined) {
-        img_sized_h = img_m.get(0).clientHeight;
-        img_sized_w = img_m.get(0).clientWidth;
-      } else {
-        img_sized_h = img_l.get(0).clientHeight;
-        img_sized_w = img_l.get(0).clientWidth;
-      }
-      console.log(img_sized_h);
+
       $fig_div.data({
         'img_l_w' : img_l_w,
         'img_l_h' : img_l_h,
-        'img_sized_w' : img_sized_w,
-        'img_sized_h' : img_sized_h
+        'img_m_w' : img_m_w,
+        'img_m_h' : img_m_h
       });
-      if (img_l_h < img_sized_h) { // large image smaller than resized medium image
+      if (img_l_h < img_m_h) { // large image smaller than resized medium image
         img_l.css({
           'marginTop' : Math.round(($fig_div.height() - img_l_h) / 2),
           'marginLeft' : Math.round(($fig_div.width() - img_l_w) / 2)
         }); // center
       } else {// set large image dimensions and position to that of the medium image
         img_l.css({
-          'height' : img_sized_h,
+          'height' : img_m_h,
           'marginTop' : img_m.css('marginTop'),
           'marginLeft' : img_m.css('marginLeft')
         });
@@ -909,21 +874,20 @@
    OR navigating to a slide whose large image is bigger than the slide and has already loaded.*/
 
   FVZoomControls = function($fig_div) {
-    var $img, fig_div_h, fig_div_w, real_h, real_w, img_aspect_ratio, img_mt, img_ml, resize_h, drag, resize_w;
+    var $img, fig_div_h, fig_div_w, real_h, real_w, img_aspect_ratio, img_mt, img_ml, resize_h, drag;
 
     $img = $fig_div.find('img');
     fig_div_h = $fig_div.height();
     fig_div_w = $fig_div.width();
     real_h = $fig_div.data('img_l_h'); // native height of image
     real_w = $fig_div.data('img_l_w'); // native width of image
-    console.log(real_h + ' '+real_w +' real-h & -w in zoomcontrols');
-    img_mt = parseInt($img.css('marginTop')); // top margin of sized to fit image
-    img_ml = parseInt($img.css('marginLeft')); // left margin of sized to fit image
+    img_mt = parseInt($img.css('marginTop')); // top margin of sized-to-fit image
+    img_ml = parseInt($img.css('marginLeft')); // left margin of sized-to-fit image
     img_aspect_ratio = real_w/real_h; //
     resize_h = $img.height(); // height of sized to fit image
     $FV.zoom.show();
     drag = false; // dragging not enabled
-    //var $drgbx = $fig_div.find('div.drag-bx');
+    var $drgbx = $fig_div.find('div.drag-bx');
 
     $FV.zoom.sldr.slider({
       min: resize_h,
@@ -942,47 +906,44 @@
           FVDragStop($fig_div, $img);
           drag = false;
         } else {
-          resize_w = resize_h * img_aspect_ratio;
-          FVSizeDragBox($fig_div, $img, resize_w);
+          FVSizeDragBox($fig_div, $img);
           drag = true;
         }
       }
     });
-
+    // look into pulling the max & min functions out of FVZoomControls
     // max(+) button
     $FV.zoom.max.on('click', function() {
-      console.log( $FV.zoom.sldr.slider("value") + ' slider value 1st');
       var curr_height = $FV.zoom.sldr.slider("value");
       var new_height = resize_h + ((real_h - resize_h) / 4) * Math.ceil((curr_height - resize_h) * 4 / (real_h - resize_h) + 0.1);
       new_height = Math.min(Math.ceil(new_height), real_h);
-      var new_width = new_height * img_aspect_ratio;
-      console.log(new_height + ' newheight in zmax');
+
       $FV.zoom.sldr.slider({
         'value': new_height
       });
-
+       console.log(img_aspect_ratio);
       imgResize(new_height, img_aspect_ratio);
       FVDragInit($fig_div, $img);
+      // it is better to set dragbox at same time as image is set, ie in imgResize
+      // also, I don't think the drag box needs to be sized
       FVSizeDragBox($fig_div, $img, new_width);
       drag = true;
       new_height = null;
-      new_width = null;
+      //curr_height = null;
     });
 
     // min(-) button
     $FV.zoom.min.on('click', function() {
 
-      if (!drag) { // dragging is not enabled, so image must be zoomed in, nothing to do here
+      if (!drag) {
         return false;
       }
-      var new_height = $FV.zoom.sldr.slider("value"); console.log(new_height + ' min new_height');
-      new_height = resize_h + (real_h - resize_h) / 4 * Math.floor((new_height - resize_h) * 4 / (real_h - resize_h) - 0.1);
+      var curr_height = $FV.zoom.sldr.slider("value");
+      var new_height = resize_h + (real_h - resize_h) / 4 * Math.floor((curr_height - resize_h) * 4 / (real_h - resize_h) - 0.1);
       new_height = Math.max(Math.floor(new_height), resize_h);
-      console.log(new_height + ' z-min newval' + resize_h + ' resizeh');
+
       $FV.zoom.sldr.slider('value', new_height );
-      //imgResize(new_height, img_aspect_ratio);
-      /*FVDragStop($fig_div, $img);
-       drag = false;*/
+
       if (new_height <= resize_h) {
         $img.css({
           'height': new_height,
@@ -992,20 +953,19 @@
         FVDragStop($fig_div, $img);
         drag = false;
       }
-      else {   console.log(new_height);
+      else {
         imgResize(new_height, img_aspect_ratio);
       }
+      new_height = null;
+
     });
 
     var imgResize = function(new_height, aspect_ratio) {
       var new_width = new_height * aspect_ratio;
-      //   console.log(new_width + ' imgR new-w');
-      //   console.log(fig_div_w + ' imgR figdiv-w');
       var mar_top = (fig_div_h - new_height) / 2;
       var mar_left = (fig_div_w - new_width) / 2;
-      //   console.log(mar_left + ' imgR marLeft');
 
-      if (fig_div_w >= new_width) {
+      if (fig_div_w > new_width) {
         $img.css({
           'height': new_height,
           // 'width': new_width,
@@ -1047,8 +1007,7 @@
         // storing the difference between values, (if no dragging value is 0)
         // when a figure is resized the margins are updated and then the drag box is resized
         // to calculate dimensions/position of resized drag bax, the difference in values prior to figure resize is required
-        /* $fig_div.data('off-top', Math.abs(parseInt($img.css('marginTop'))) - parseInt($img.css('top')))
-         .data('off-left', Math.abs(parseInt($img.css('marginLeft'))) - parseInt($img.css('left')))*/
+
         $fig_div.data({
           'off-top': Math.abs(parseInt($img.css('marginTop'))) - parseInt($img.css('top')),
           'off-left': Math.abs(parseInt($img.css('marginLeft'))) - parseInt($img.css('left'))
@@ -1070,7 +1029,6 @@
 
 // Size & position div to contain figure dragging
 // adds top/left declarations to image so that image remains in same position following containing div sizing/positioning
-// runs following figure resize
 
   FVSizeDragBox = function($fig_div, $img, img_w) {
     var $drgbx, fig_h, fig_w, img_h, /*img_w,*/ img_mt, img_ml, img_tp, img_lt;
@@ -1079,25 +1037,25 @@
     fig_h = $fig_div.height();
     fig_w = $fig_div.width();
     img_h = $img.height();
-    //img_w = $img.width();
+    img_w = $img.width();
     img_mt = parseInt($img.css('marginTop'));
     img_ml = parseInt($img.css('marginLeft'));
     img_tp = isNaN(parseInt($img.css('top'))) ? 0 : parseInt($img.css('top'));
     img_lt = isNaN(parseInt($img.css('left'))) ? 0 : parseInt($img.css('left'));
-    //  console.log(img_w + ' sizeDragBx img width');
-    if (fig_h > img_h) {   console.log('dragbox: figh > imgh, set dragboxcss top '+img_mt * -1+' negative & height '+fig_h + img_mt+' = figh + medMarTop');
+
+    if (fig_h > img_h) {
       $drgbx.css({
         'top' : img_mt * -1,
         'height': fig_h + img_mt
       });
       $img.css({
         'top' : img_mt - $fig_div.data('off-top')
-      }); // console.log(img_mt - $fig_div.data('off-top')+' & set img top to medMarTop - off-top ');
-    } else { //console.log('drgbx: figh < imgh, so top '+((img_h - fig_h + img_mt) * -1)+' = -(imgh - figh + medMarTop)'); console.log('& drgbx h '+((img_h * 2) - fig_h) + img_mt+' = imgh * 2 - figh + medMarTop');
+      });
+    } else {
       $drgbx.css({
         'top' :  (img_h - fig_h + img_mt) * -1,
         'height': ((img_h * 2) - fig_h) + img_mt
-      });  //console.log(img_h - fig_h + img_mt - $fig_div.data('off-top')+' & img top = imgh - figh + medMarTop - off-top');
+      });
       $img.css({
         'top' : img_h - fig_h + img_mt - $fig_div.data('off-top')
       });
@@ -1148,89 +1106,6 @@
       FVClose();
     }
   });
-
-  /**
-   * Drop words until the element selected fits within its container and then append an ellipsis
-   *
-   * @param topElement the very top element being worked on
-   * @param parts the elements currently being worked on
-   */
-  // TODO: replace this truncate function
-  var ellipsis_recurse = function(topElement, parts) {
-    var ellipsis_added = false;
-
-    //traverse from the last element up
-    for(var a = parts.length - 1; a > -1; a--) {
-      var element = parts[a];
-
-      //ellipsis added, no need to keep going
-      if(ellipsis_added) {
-        break;
-      }
-
-      //If this is a text node, work on it, otherwise recurse
-
-      if(element.nodeType != 3) {
-        ellipsis_added = ellipsis_recurse(topElement, $(element).contents());
-
-        if(ellipsis_added) {
-          //ellipsis added, no need to keep looping
-          //return true;
-          break;
-        }
-      } else {
-        var words = $(element).text().split(" ");
-
-        while(ellipsis_added == false && words.length > 0) {
-          //Keep popping words until things fit, or the length is zero
-          //Could get a performance increase by doing this by halves instead of one by one?
-          words.pop();
-
-          $(element).text(function() {
-            this.nodeValue = words.join(" ");
-          });
-
-          //If all words have been popped that need to be, append the new node for the ellipsis
-          if(topElement.scrollHeight <= topElement.clientHeight) {
-
-            var ellipsis = $($.fn.ellipsis.settings.ellipsis_text).uniqueId();
-            $(element).after(ellipsis);
-            ellipsis_added = true;
-
-            //The new text has introduced a line break, pop more words!
-            while(topElement.scrollHeight > topElement.clientHeight) {
-              if(words.length > 0) {
-                words.pop();
-
-                $(element).text(function() {
-                  this.nodeValue = words.join(" ");
-                });
-              } else {
-                //No more words to pop. Remove the element, pass through and add the ellipsis someplace else
-                $('#' + ellipsis.attr('id')).remove();
-                ellipsis_added = false;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    return ellipsis_added;
-  }
-
-  /**
-   * Drop words until the element selected fits within its container and then append an ellipsis
-   */
-  $.fn.ellipsis = function(options) {
-    $.fn.ellipsis.settings = $.extend({}, $.fn.ellipsis.settings, options);
-    ellipsis_recurse(this[0], $(this).contents());
-    return this;
-  };
-
-  $.fn.ellipsis.settings = {
-    ellipsis_text : '&hellip;'
-  };
 
   function trimIt (trimItem) {
     if (typeof String.prototype.trim !== 'function') {

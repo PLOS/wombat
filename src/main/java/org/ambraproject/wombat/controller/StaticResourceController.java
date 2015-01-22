@@ -4,6 +4,7 @@ import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.AssetService;
+import org.ambraproject.wombat.service.AssetService.AssetUrls;
 import org.ambraproject.wombat.util.PathUtil;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,22 +30,10 @@ import java.util.regex.Pattern;
 @Controller
 public class StaticResourceController extends WombatController {
 
-  public static final String RESOURCE_NAMESPACE = "resource";
-
-  /**
-   * The logical (servlet-relative) directory in which compiled asset files are served from.
-   */
-  public static final String COMPILED_PATH_PREFIX = "compiled/";
-
-  /**
-   * The prefix for file names of compiled assets.
-   */
-  public static final String COMPILED_NAME_PREFIX = "asset_";
-
   /**
    * Path prefix for compiled assets (.js and .css).
    */
-  private static final String COMPILED_NAMESPACE = RESOURCE_NAMESPACE + '/' + COMPILED_PATH_PREFIX;
+  private static final String COMPILED_NAMESPACE = AssetUrls.RESOURCE_NAMESPACE + '/' + AssetUrls.COMPILED_PATH_PREFIX;
 
   @Autowired
   private AssetService assetService;
@@ -67,7 +56,7 @@ public class StaticResourceController extends WombatController {
     return PathUtil.JOINER.join(targetTokens);
   }
 
-  @RequestMapping(value = {"/" + RESOURCE_NAMESPACE + "/**", "/{site}/" + RESOURCE_NAMESPACE + "/**"})
+  @RequestMapping(value = {"/" + AssetUrls.RESOURCE_NAMESPACE + "/**", "/{site}/" + AssetUrls.RESOURCE_NAMESPACE + "/**"})
   public void serveResource(HttpServletRequest request, HttpServletResponse response,
                             HttpSession session, @SiteParam Site site)
       throws IOException {
@@ -75,8 +64,8 @@ public class StaticResourceController extends WombatController {
 
     // Kludge to get "resource/**"
     String servletPath = request.getRequestURI();
-    String filePath = pathFrom(servletPath, RESOURCE_NAMESPACE);
-    if (filePath.length() <= RESOURCE_NAMESPACE.length() + 1) {
+    String filePath = pathFrom(servletPath, AssetUrls.RESOURCE_NAMESPACE);
+    if (filePath.length() <= AssetUrls.RESOURCE_NAMESPACE.length() + 1) {
       throw new NotFoundException(); // in case of a request to "resource/" root
     }
 
@@ -97,7 +86,7 @@ public class StaticResourceController extends WombatController {
     List<String> corsPrefixes = (List<String>) resourceConfig.get("cors");
     if (corsPrefixes == null) return false;
 
-    String resourceName = filePath.substring(RESOURCE_NAMESPACE.length() + 1);
+    String resourceName = filePath.substring(AssetUrls.RESOURCE_NAMESPACE.length() + 1);
     for (String prefix : corsPrefixes) {
       if (resourceName.startsWith(prefix)) {
         return true;
@@ -146,7 +135,7 @@ public class StaticResourceController extends WombatController {
   }
 
   private static final Pattern COMPILED_ASSET_PATTERN = Pattern.compile(""
-      + COMPILED_NAMESPACE + COMPILED_NAME_PREFIX
+      + COMPILED_NAMESPACE + AssetUrls.COMPILED_NAME_PREFIX
       + "(\\w+)" // The asset hash in base 32
       + "\\.\\w+"); // The file extension.
 

@@ -24,6 +24,34 @@ import java.util.List;
 public interface AssetService {
 
   /**
+   * The service's scope includes emitting URLs for the assets that it compiles. These strings define the scheme for
+   * those URLs, which are used both here are in the corresponding controller.
+   */
+  public static interface AssetUrls {
+
+    /**
+     * The URL namespace for webpage resources.
+     * <p/>
+     * The name "resource" is more general than "asset", as it encompasses fonts (as well as, potentially, other things
+     * such as images). This value belongs in the service layer, but {@code AssetService} logically excludes resources
+     * other than assets ("assets" meaning JS and CSS in this context). May want to move this string elsewhere if there
+     * is ever a ResourceService or such.
+     */
+    public static final String RESOURCE_NAMESPACE = "resource";
+
+    /**
+     * The logical (servlet-relative) directory in which compiled asset files are served from.
+     */
+    public static final String COMPILED_PATH_PREFIX = "compiled/";
+
+    /**
+     * The prefix for file names of compiled assets.
+     */
+    public static final String COMPILED_NAME_PREFIX = "asset_";
+
+  }
+
+  /**
    * Represents the types of asset files processed by this service.
    */
   public static enum AssetType {

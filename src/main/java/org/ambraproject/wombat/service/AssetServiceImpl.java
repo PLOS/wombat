@@ -115,7 +115,7 @@ public class AssetServiceImpl implements AssetService {
     private final String name;
 
     private CompiledDigest(String name) {
-      Preconditions.checkArgument(name.startsWith(StaticResourceController.COMPILED_NAME_PREFIX));
+      Preconditions.checkArgument(name.startsWith(AssetUrls.COMPILED_NAME_PREFIX));
       this.name = name;
     }
 
@@ -166,7 +166,7 @@ public class AssetServiceImpl implements AssetService {
         cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
       }
     }
-    return StaticResourceController.COMPILED_PATH_PREFIX + compiledFilename;
+    return AssetUrls.COMPILED_PATH_PREFIX + compiledFilename;
   }
 
   /**
@@ -288,7 +288,7 @@ public class AssetServiceImpl implements AssetService {
     byte[] contents = baos.toByteArray();
 
     String contentHash = CacheParams.createContentHash(contents);
-    CompiledDigest digest = new CompiledDigest(StaticResourceController.COMPILED_NAME_PREFIX
+    CompiledDigest digest = new CompiledDigest(AssetUrls.COMPILED_NAME_PREFIX
         + contentHash + assetType.getExtension());
     File file = digest.getFile();
 

@@ -35,7 +35,7 @@ import static org.testng.Assert.assertEquals;
 public class AssetServiceTest extends AbstractTestNGSpringContextTests {
 
   private static final String DATA_PATH = Joiner.on(File.separator).join("src", "test", "resources",
-      StaticResourceController.RESOURCE_NAMESPACE, "js") + File.separator;
+      AssetService.AssetUrls.RESOURCE_NAMESPACE, "js") + File.separator;
 
   @Autowired
   private AssetService assetService;

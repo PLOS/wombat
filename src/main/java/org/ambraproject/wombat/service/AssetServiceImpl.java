@@ -85,26 +85,19 @@ public class AssetServiceImpl implements AssetService {
    * A hash representing a list of asset source filenames (and the site they belong to).
    * Cached in order to tell whether we need to compile them.
    */
-  private static class SourceDigest {
+  private static class SourceFilenamesDigest {
     private final AssetType assetType;
     private final Site site;
     private final List<String> filenames;
 
-    private SourceDigest(AssetType assetType, Site site, List<String> filenames) {
+    private SourceFilenamesDigest(AssetType assetType, Site site, List<String> filenames) {
       this.assetType = assetType;
       this.site = site;
       this.filenames = filenames;
     }
 
-    private static final char FILENAME_TERMINATOR = '\0';
-
     private String generateCacheKey() {
-      StringBuilder filenameList = new StringBuilder();
-      for (String filename : filenames) {
-        filenameList.append(filename);
-        filenameList.append(FILENAME_TERMINATOR);
-      }
-      String filenameDigest = CacheParams.createKeyHash(filenameList.toString());
+      String filenameDigest = CacheParams.createKeyHash(filenames);
 
       return String.format("%sFile:%s:%s", assetType.name().toLowerCase(), site, filenameDigest);
     }
@@ -122,7 +115,7 @@ public class AssetServiceImpl implements AssetService {
     private final String name;
 
     private CompiledDigest(String name) {
-      Preconditions.checkArgument(name.startsWith(StaticResourceController.COMPILED_NAME_PREFIX));
+      Preconditions.checkArgument(name.startsWith(AssetUrls.COMPILED_NAME_PREFIX));
       this.name = name;
     }
 
@@ -153,8 +146,8 @@ public class AssetServiceImpl implements AssetService {
   @Override
   public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site)
       throws IOException {
-    SourceDigest sourceDigest = new SourceDigest(assetType, site, filenames);
-    String sourceCacheKey = sourceDigest.generateCacheKey();
+    SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
+    String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
 
     String compiledFilename = cache.get(sourceCacheKey);
     if (compiledFilename == null) {
@@ -173,7 +166,7 @@ public class AssetServiceImpl implements AssetService {
         cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
       }
     }
-    return StaticResourceController.COMPILED_PATH_PREFIX + compiledFilename;
+    return AssetUrls.COMPILED_PATH_PREFIX + compiledFilename;
   }
 
   /**
@@ -295,7 +288,7 @@ public class AssetServiceImpl implements AssetService {
     byte[] contents = baos.toByteArray();
 
     String contentHash = CacheParams.createContentHash(contents);
-    CompiledDigest digest = new CompiledDigest(StaticResourceController.COMPILED_NAME_PREFIX
+    CompiledDigest digest = new CompiledDigest(AssetUrls.COMPILED_NAME_PREFIX
         + contentHash + assetType.getExtension());
     File file = digest.getFile();
 

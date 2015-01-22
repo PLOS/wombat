@@ -17,8 +17,8 @@
       var config, requestUrl, errorText;
 
       config = ALM_CONFIG;
-
-      requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source=twitter';
+      // if twitter stream stops working, check the api for parameter changes: http://alm.plos.org/docs/api
+      requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source_id=twitter';
 
       errorText = '<li>Our system is having a bad day. We are working on it. Please check back later.</li>';
 
@@ -28,11 +28,14 @@
         contentType: "text/json; charset=utf-8",
         type:        "GET"
       }).done(function (data) {
+
         initData = data.data[0];
-        if (initData.sources === undefined) {
-          //do nothing
+        totalTweets = initData.sources[0].metrics.total;
+
+        if (totalTweets === 0) {
+        //no tweets to display, do nothing further
         } else {
-          totalTweets = data.data[0].sources[0].metrics.total;
+
           minDisplayTweets = 2;
           maxDisplayTweets = 5;
           dataSort = initData.sources[0].events;
@@ -77,21 +80,17 @@
 
           });
 
-          // and finally, display the tweets
-          if (totalTweets > 0) {
-            $('.twitter-container').css('display', 'block');
-            // display the more tweets if there are any.
-            if (totalTweets > minDisplayTweets) {
-              var show_link = more_tweets();
+          //display tweets
+          $('.twitter-container').css('display', 'block');
 
-            } else {
-              // do nothing
-            }
-          } else {
-            // do nothing
+          // display the more tweets if there are any.
+          if (totalTweets > minDisplayTweets) {
+            var show_link = more_tweets();
+            return show_link;
           }
 
         }
+
       }).fail(function () {
         $('.twitter-container').css('display', 'block');
         $('#tweetList').append(errorText);

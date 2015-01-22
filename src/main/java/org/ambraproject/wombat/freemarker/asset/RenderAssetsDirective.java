@@ -23,7 +23,6 @@ import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.controller.SiteResolver;
-import org.ambraproject.wombat.controller.StaticResourceController;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.util.PathUtil;
@@ -87,9 +86,9 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
         }
       } else {
         Site site = new SitePageContext(siteResolver, environment).getSite();
-        String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site, request.getServletPath());
+        String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site);
         String assetAddress = site.getRequestScheme().buildLink(request,
-            PathUtil.JOINER.join(StaticResourceController.RESOURCE_NAMESPACE, assetLink));
+            PathUtil.JOINER.join(AssetService.AssetUrls.RESOURCE_NAMESPACE, assetLink));
         environment.getOut().write(getHtml(assetAddress));
       }
     }

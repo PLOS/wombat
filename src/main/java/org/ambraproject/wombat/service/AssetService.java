@@ -24,9 +24,32 @@ import java.util.List;
 public interface AssetService {
 
   /**
-   * The logical (servlet-relative) directory in which compiled asset files are served from.
+   * The service's scope includes emitting URLs for the assets that it compiles. These strings define the scheme for
+   * those URLs, which are used both here are in the corresponding controller.
    */
-  static final String COMPILED_PATH_PREFIX = "compiled/";
+  public static interface AssetUrls {
+
+    /**
+     * The URL namespace for webpage resources.
+     * <p/>
+     * The name "resource" is more general than "asset", as it encompasses fonts (as well as, potentially, other things
+     * such as images). This value belongs in the service layer, but {@code AssetService} logically excludes resources
+     * other than assets ("assets" meaning JS and CSS in this context). May want to move this string elsewhere if there
+     * is ever a ResourceService or such.
+     */
+    public static final String RESOURCE_NAMESPACE = "resource";
+
+    /**
+     * The logical (servlet-relative) directory in which compiled asset files are served from.
+     */
+    public static final String COMPILED_PATH_PREFIX = "compiled/";
+
+    /**
+     * The prefix for file names of compiled assets.
+     */
+    public static final String COMPILED_NAME_PREFIX = "asset_";
+
+  }
 
   /**
    * Represents the types of asset files processed by this service.
@@ -39,27 +62,6 @@ public interface AssetService {
     public String getExtension() {
       return "." + name().toLowerCase();
     }
-
-    /**
-     * Builds a cache key to store the filename of a compiled asset.  (We cache these since their name includes a hash,
-     * which can be potentially expensive to compute.)
-     *
-     * @param cacheKey cache key for the overall request
-     * @return cache key where we can store/retrieve the compiled filename
-     */
-    public String getFileCacheKey(String cacheKey) {
-      return String.format("%sFile:%s", name().toLowerCase(), cacheKey);
-    }
-
-    /**
-     * Builds a cache key to store the contents of a compiled asset.
-     *
-     * @param filename base filename of the compiled asset
-     * @return cache key where we can store/retrieve the contents of the compiled asset
-     */
-    public String getContentsCacheKey(String filename) {
-      return String.format("%sContents:%s", name().toLowerCase(), filename);
-    }
   }
 
   /**
@@ -69,11 +71,10 @@ public interface AssetService {
    * @param assetType specifies whether the asset is javascript or CSS
    * @param filenames list of servlet paths that correspond to asset files to compile
    * @param site      the journal/site
-   * @param cacheKey  key that will be used to cache the results
    * @return servlet path to the single, compiled asset file
    * @throws IOException
    */
-  String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site, String cacheKey)
+  String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site)
       throws IOException;
 
   /**

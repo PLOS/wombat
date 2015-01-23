@@ -30,67 +30,72 @@
       }).done(function (data) {
 
         initData = data.data[0];
-        totalTweets = initData.sources[0].metrics.total;
 
-        if (totalTweets === 0) {
-        //no tweets to display, do nothing further
+        
+        if (initData === undefined) {
+        // no data, do nothing further
         } else {
 
-          minDisplayTweets = 2;
-          maxDisplayTweets = 5;
-          dataSort = initData.sources[0].events;
+          totalTweets = initData.sources[0].metrics.total;
 
-          //parse the date to be able to sort by date
-          this.parseTwitterDate = function (tweetdate) {
-            //running regex to grab everything after the time
-            var newdate = tweetdate.replace(/(\d{1,2}[:]\d{2}[:]\d{2}) (.*)/, '$2 $1');
-            //moving the time code to the end
-            newdate = newdate.replace(/(\+\S+) (.*)/, '$2 $1');
+          if (totalTweets === 0) {
+            //no tweets to display, do nothing further
+          } else {
+            minDisplayTweets = 2;
+            maxDisplayTweets = 5;
+            dataSort = initData.sources[0].events;
 
-            return new Date(Date.parse(newdate));
-          }
-          //sort by date from Ambra
-          this.sort_tweets_by_date = function (a, b) {
-            var aDt = isNaN(a.event.created_at) ? this.parseTwitterDate(a.event.created_at) : a.event.created_at;
-            var bDt = isNaN(b.event.created_at) ? this.parseTwitterDate(b.event.created_at) : b.event.created_at;
+            //parse the date to be able to sort by date
+            this.parseTwitterDate = function (tweetdate) {
+              //running regex to grab everything after the time
+              var newdate = tweetdate.replace(/(\d{1,2}[:]\d{2}[:]\d{2}) (.*)/, '$2 $1');
+              //moving the time code to the end
+              newdate = newdate.replace(/(\+\S+) (.*)/, '$2 $1');
 
-            return (new Date(bDt).getTime()) - (new Date(aDt).getTime());
-          }
-          //pull the data & run the sort function
-          dataSort = dataSort.sort(jQuery.proxy(this.sort_tweets_by_date, this));
-          // only show 5, so cut the json results to 5
-          if (dataSort.length > maxDisplayTweets) {
-            dataSort = dataSort.slice(0, 5);
-          } else { }
+              return new Date(Date.parse(newdate));
+            }
+            //sort by date from Ambra
+            this.sort_tweets_by_date = function (a, b) {
+              var aDt = isNaN(a.event.created_at) ? this.parseTwitterDate(a.event.created_at) : a.event.created_at;
+              var bDt = isNaN(b.event.created_at) ? this.parseTwitterDate(b.event.created_at) : b.event.created_at;
 
-          $.each(dataSort, function (index) {
-            dataPrefix = dataSort[index].event;
-            datePrefix = dataSort[index];
-            //run through dataPass to get all the data
-            dataPass(dataPrefix, datePrefix);
-            //show only 2 and then 5
-            if (index < minDisplayTweets) {
-              wholeTweet = '<li>' + listBody + '</li>';
-            } else {
-              wholeTweet = '<li class="more-tweets">' + listBody + '</li>';
+              return (new Date(bDt).getTime()) - (new Date(aDt).getTime());
+            }
+            //pull the data & run the sort function
+            dataSort = dataSort.sort(jQuery.proxy(this.sort_tweets_by_date, this));
+            // only show 5, so cut the json results to 5
+            if (dataSort.length > maxDisplayTweets) {
+              dataSort = dataSort.slice(0, 5);
+            } else { }
+
+            $.each(dataSort, function (index) {
+              dataPrefix = dataSort[index].event;
+              datePrefix = dataSort[index];
+              //run through dataPass to get all the data
+              dataPass(dataPrefix, datePrefix);
+              //show only 2 and then 5
+              if (index < minDisplayTweets) {
+                wholeTweet = '<li>' + listBody + '</li>';
+              } else {
+                wholeTweet = '<li class="more-tweets">' + listBody + '</li>';
+              }
+
+              $('#tweetList').append(wholeTweet);
+              checkAvatar(listBody);
+
+            });
+
+            //display tweets
+            $('.twitter-container').css('display', 'block');
+
+            // display the more tweets if there are any.
+            if (totalTweets > minDisplayTweets) {
+              var show_link = more_tweets();
+              return show_link;
             }
 
-            $('#tweetList').append(wholeTweet);
-            checkAvatar(listBody);
-
-          });
-
-          //display tweets
-          $('.twitter-container').css('display', 'block');
-
-          // display the more tweets if there are any.
-          if (totalTweets > minDisplayTweets) {
-            var show_link = more_tweets();
-            return show_link;
           }
-
         }
-
       }).fail(function () {
         $('.twitter-container').css('display', 'block');
         $('#tweetList').append(errorText);

@@ -17,9 +17,9 @@
   lightbox.FigViewerInit = function(doi, ref, state, external_page) {
     var rerunMathjax, loadJSON;
 
-    //disable scrolling on web page behind fig viewer
-    $('body').css('overflow', 'hidden');
-    $('body').on('touchmove', function(e){e.preventDefault()});
+    //disable scrolling on web page behind fig viewer except for the references which need to scroll
+    $('body').css('overflow', 'hidden').addClass('stop-scroll');
+
     $('#fig-viewer').foundation('reveal', 'open', {
       url: 'article/lightbox',
       success: function(data) {
@@ -952,7 +952,7 @@
   var FVClose = function() {
 
     //re-enable scrolling
-    $('body').css('overflow','auto').off('touchmove');
+    $('body').css('overflow','auto').removeClass('stop-scroll');
     //reset the foundation tabs
     $('.fv-nav').find('li').removeClass('active');
 

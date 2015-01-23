@@ -20,6 +20,10 @@ $fv-grey-light: #eae9e9;
 $fv-grey-bg: darken($grey-light, 3%);
 // using the following until the variables get sorted out.
 
+html.touch .stop-scroll{
+   position: fixed;
+}
+
 #fig-viewer {
   background: rgba(0,0,0,0.8);
   position: fixed;

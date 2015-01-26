@@ -2,15 +2,17 @@
   function tableOpen(tableId, type, tabled) {
     try {
       var table = tabled.find(".table"),
-          caption = tabled.find(".table-caption");
+          caption = tabled.find(".table-caption"),
+          footnote = tabled.find(".table-footnote");
       if (type == "HTML") {    //open table in new browser window
         var w = window.open();
         w.document.open();
         w.document.writeln('<html><head><title>' + caption.text() + '</title><link rel="stylesheet" type="text/css" href="resource/css/screen.css"><link rel="shortcut icon" href="resource/img/favicon.ico" type="image/x-icon"></head>');
         w.document.writeln('<body style="background-color: #ffffff;">');
-        w.document.writeln('<div class="table-wrap">' +  table.html() + '<div class="table-caption">'+caption.html() +'</div> </div>');
+        w.document.writeln('<div class="table-wrap">' +  table.html() + '<div class="table-caption">'+caption.html() +'</div>' + '<div class="table-footnote">'+footnote.html() +'</div>');
         w.document.writeln('</body></html>');
         w.document.close();
+
       }
       else
         if (type == "CSV") {  //download table data in a csv file

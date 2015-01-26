@@ -128,8 +128,8 @@
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide
 -->
 <div class="reveal-modal-bg"></div>
-<div id="fig-viewer" class="reveal-modal" data-reveal>
-  <#--<#include "articleLightbox.ftl" />-->
+<div id="article-lightbox" class="reveal-modal" data-reveal>
+
 </div>
 </body>
 </html>

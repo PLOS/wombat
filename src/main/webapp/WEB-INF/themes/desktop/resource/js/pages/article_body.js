@@ -35,20 +35,16 @@
   addMediaCoverageLink();
   figshareWidget();
 
-  var hasFigures = $('#artText .figure').length;
-
-  if(hasFigures){
 
   $('#figure-carousel-section').buildFigureCarousel({});
 
-  };
 
   function formatHumanReadableByteSize(bytes) {
     // Space before "Bytes". All others are concatenated to number with no space.
     var units = [' Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
 
     var increment = 1000; // could change to 1024
-    var roundingThreshold = units.indexOf('MB'); // for smaller units than this, show integers
+    var roundingThreshold = 0;//units.indexOf('MB'); // for smaller units than this, show integers
     var precision = 100; // round to this precision if unit is >= roundingThreshold
 
     var n = bytes;
@@ -66,8 +62,6 @@
 
   // Will be invoked directly from article HTML, where the templating engine will inject the fileSizeTable data.
   $.fn.populateFileSizes = function (fileSizeTable) {
-
-    if(hasFigures){
     $('.file-size').each(function (index, element) {
       var $el = $(element);
       var doi = $el.attr('data-doi');
@@ -75,7 +69,6 @@
       var size = fileSizeTable[ doi][ /**/fileSize];
       $el.text('(' + formatHumanReadableByteSize(size) + ')');
     });
-    }
   };
 
   $('.table-download').on('click', function(){
@@ -90,4 +83,8 @@
     return tableOpen(figId, "HTML", table);
   });
 
+  $('.figure-inline-download').find('a').on('click', function(e){
+    e.preventDefault();
+  });
+ // $('')
 })(jQuery);

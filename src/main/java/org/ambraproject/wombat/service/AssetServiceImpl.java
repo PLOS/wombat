@@ -11,8 +11,7 @@
 
 package org.ambraproject.wombat.service;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.io.BaseEncoding;
+import com.google.common.base.Preconditions;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
 import org.ambraproject.rhombat.cache.Cache;
@@ -20,6 +19,8 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.controller.StaticResourceController;
+import org.ambraproject.wombat.util.CacheParams;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
 import org.mozilla.javascript.EvaluatorException;
@@ -38,8 +39,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -74,30 +73,100 @@ public class AssetServiceImpl implements AssetService {
   @Autowired
   private Cache cache;
 
+  /*
+   * We cache data at two steps in the process of compiling assets:
+   * (1) mapping source filenames onto compiled content, so that we don't have to compile them more than once; and
+   * (2) mapping compiled filenames onto their content, so that we can read them from Memcached instead of from disk.
+   *
+   * The two classes below are used to make this distinction explicit.
+   */
+
+  /*
+   * A hash representing a list of asset source filenames (and the site they belong to).
+   * Cached in order to tell whether we need to compile them.
+   */
+  private static class SourceFilenamesDigest {
+    private final AssetType assetType;
+    private final Site site;
+    private final List<String> filenames;
+
+    private SourceFilenamesDigest(AssetType assetType, Site site, List<String> filenames) {
+      this.assetType = assetType;
+      this.site = site;
+      this.filenames = filenames;
+    }
+
+    private String generateCacheKey() {
+      String filenameDigest = CacheParams.createKeyHash(filenames);
+
+      return String.format("%sFile:%s:%s", assetType.name().toLowerCase(), site, filenameDigest);
+    }
+  }
+
+  /*
+   * A hash representing the content of a compiled file. Used in two ways:
+   * (1) as a filename to write the content to the local disk; and
+   * (2) as a cache key to read the content from Memcached (which is faster than reading from disk).
+   *
+   * The actual hashing is done by the compileAsset method. This class may be instantiated either there (writing the
+   * asset) or in response to a user request (reading the asset).
+   */
+  private class CompiledDigest {
+    private final String name;
+
+    private CompiledDigest(String name) {
+      Preconditions.checkArgument(name.startsWith(AssetUrls.COMPILED_NAME_PREFIX));
+      this.name = name;
+    }
+
+    /**
+     * Returns the absolute, filesystem path to where a compiled asset should be. Note that this only indicates the
+     * path, and does not validate that the file actually exists.
+     *
+     * @return absolute path to the asset file
+     */
+    private File getFile() {
+      return new File(runtimeConfiguration.getCompiledAssetDir(), name);
+    }
+
+    /**
+     * @return cache key where we can store/retrieve the contents of the compiled asset
+     */
+    private String getCacheKey() {
+      int dotIndex = name.lastIndexOf('.');
+      String assetType = name.substring(dotIndex + 1).toLowerCase();
+      return String.format("%sContents:%s", assetType, name);
+    }
+
+  }
+
   /**
    * {@inheritDoc}
    */
   @Override
-  public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site, String cacheKey)
+  public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site)
       throws IOException {
-    String fileCacheKey = site.getKey() + ":" + assetType.getFileCacheKey(cacheKey);
-    String filename = cache.get(fileCacheKey);
-    if (filename == null) {
+    SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
+    String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
+
+    String compiledFilename = cache.get(sourceCacheKey);
+    if (compiledFilename == null) {
       File concatenated = concatenateFiles(filenames, site, assetType.getExtension());
-      FileAndContents compiled = compileAsset(assetType, concatenated);
+      CompiledAsset compiled = compileAsset(assetType, concatenated);
       concatenated.delete();
-      filename = compiled.file.getName();
+      compiledFilename = compiled.digest.getFile().getName();
 
       // We cache both the file name and the file contents (if it is small enough) in memcache.
       // In an ideal world, we would use the filename (including the hash of its contents) as
       // the only cache key.  However, it's potentially expensive to calculate that key since
       // you need the contents of the compiled file, which is why we do it this way.
-      cache.put(fileCacheKey, filename, CACHE_TTL);
+      cache.put(sourceCacheKey, compiledFilename, CACHE_TTL);
       if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
-        cache.put(assetType.getContentsCacheKey(filename), compiled.contents, CACHE_TTL);
+        String contentsCacheKey = compiled.digest.getCacheKey();
+        cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
       }
     }
-    return COMPILED_PATH_PREFIX + filename;
+    return AssetUrls.COMPILED_PATH_PREFIX + compiledFilename;
   }
 
   /**
@@ -106,15 +175,11 @@ public class AssetServiceImpl implements AssetService {
   @Override
   public void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException {
     try {
-      // Determine AssetType based on file extension.
-      String[] fields = assetFilename.split("/");
-      String basename = fields[fields.length - 1];
-      AssetType assetType = AssetType.valueOf(AssetType.class,
-          basename.substring(basename.lastIndexOf('.') + 1).toUpperCase());
-      byte[] cached = cache.get(assetType.getContentsCacheKey(basename));
+      CompiledDigest digest = new CompiledDigest(assetFilename);
+      byte[] cached = cache.get(digest.getCacheKey());
       try (InputStream is =
                (cached == null)
-                   ? new FileInputStream(new File(getCompiledFilePath(assetFilename)))
+                   ? new FileInputStream(digest.getFile())
                    : new ByteArrayInputStream(cached)) {
         IOUtils.copy(is, outputStream);
       }
@@ -128,8 +193,7 @@ public class AssetServiceImpl implements AssetService {
    */
   @Override
   public long getLastModifiedTime(String assetFilename) {
-    File f = new File(getCompiledFilePath(assetFilename));
-    return f.lastModified();
+    return new CompiledDigest(assetFilename).getFile().lastModified();
   }
 
   /**
@@ -149,6 +213,9 @@ public class AssetServiceImpl implements AssetService {
     try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(result))) {
       for (String filename : filenames) {
         try (InputStream is = theme.getStaticResource(filename)) {
+          if (is == null) {
+            throw new RuntimeException(String.format("Static resource missing from %s: %s", site, filename));
+          }
           IOUtils.copy(is, bos);
           bos.write('\n');  // just in case
         }
@@ -161,14 +228,13 @@ public class AssetServiceImpl implements AssetService {
    * Simple class representing a File and its contents.  Useful since compile has to load the file into memory anyway,
    * and the caller also needs the contents.
    */
-  @VisibleForTesting
-  static final class FileAndContents {
-    final File file;
-    final byte[] contents;
+  private static final class CompiledAsset {
+    private final CompiledDigest digest;
+    private final byte[] contents;
 
-    FileAndContents(File file, byte[] contents) {
-      this.file = file;
-      this.contents = contents;
+    public CompiledAsset(CompiledDigest digest, byte[] contents) {
+      this.digest = Preconditions.checkNotNull(digest);
+      this.contents = Preconditions.checkNotNull(contents);
     }
   }
 
@@ -205,7 +271,7 @@ public class AssetServiceImpl implements AssetService {
    * @return File that has been minified.  The file name will contain a hash reflecting the file's contents.
    * @throws IOException
    */
-  private FileAndContents compileAsset(AssetType assetType, File uncompiled) throws IOException {
+  private CompiledAsset compileAsset(AssetType assetType, File uncompiled) throws IOException {
 
     // Compile to memory instead of a file directly, since we will need the raw bytes
     // in order to generate a hash (which appears in the filename).
@@ -224,50 +290,19 @@ public class AssetServiceImpl implements AssetService {
     }
     byte[] contents = baos.toByteArray();
 
-    String name = String.format("asset_%s%s", getFingerprint(contents), assetType.getExtension());
-    File result = new File(getCompiledFilePath(name));
+    String contentHash = CacheParams.createContentHash(contents);
+    CompiledDigest digest = new CompiledDigest(AssetUrls.COMPILED_NAME_PREFIX
+        + contentHash + assetType.getExtension());
+    File file = digest.getFile();
 
     // Overwrite if the file already exists.
-    if (result.exists()) {
-      result.delete();
+    if (file.exists()) {
+      file.delete();
     }
-    try (OutputStream os = new FileOutputStream(result)) {
+    try (OutputStream os = new FileOutputStream(file)) {
       IOUtils.write(contents, os);
     }
-    return new FileAndContents(result, contents);
+    return new CompiledAsset(digest, contents);
   }
 
-  private static final BaseEncoding FINGERPRINT_ENCODING = BaseEncoding.base64();
-
-  /**
-   * Generates a fingerprint based on the data passed in that is suitable for use in a filename or servlet path.
-   *
-   * @param bytes data to fingerprint
-   * @return fingerprint
-   */
-  private String getFingerprint(byte[] bytes) {
-    try {
-      MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
-      messageDigest.update(bytes);
-      bytes = messageDigest.digest();
-    } catch (NoSuchAlgorithmException ex) {
-      throw new RuntimeException(ex);
-    }
-    String result = FINGERPRINT_ENCODING.encode(bytes);
-
-    // Replace slashes with underscores and removing the trailing "=".
-    result = result.replace('/', '_').trim();
-    return result.substring(0, result.length() - 1);
-  }
-
-  /**
-   * Returns the absolute, filesystem path to where a compiled asset should be. Note that this only calculates the path,
-   * and does not validate that the file actually exists.
-   *
-   * @param basename filename of the asset
-   * @return absolute path to the asset file
-   */
-  private String getCompiledFilePath(String basename) {
-    return runtimeConfiguration.getCompiledAssetDir() + File.separator + basename;
-  }
 }

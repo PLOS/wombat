@@ -38,7 +38,6 @@
 </#if>
 <#include "analytics.ftl" />
 
-
 </head>
 <#-- //references js that is foundational like jquery and foundation.js. JS output is printed at the bottom of the body.
 -->

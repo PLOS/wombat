@@ -1,7 +1,8 @@
 
-//dependencies: jquery.touchswipe.js, foundation reveal
+//dependencies: jquery.touchswipe.js, foundation reveal, jQuery UI .slide, jQuery UI .draggable, imagesLoaded
 // 'lb' = lightbox and is wombat terminology;
 // 'FV' = figure viewer and is ambra terminology but most of the FV functions have been re-worked quite a bit for wombat
+// OUTLINE: https://developer.plos.org/confluence/display/WEBDLVRY/DIPRO+Lightbox+Function+Outline
 (function($) {
   "use strict";
 
@@ -122,11 +123,9 @@
 
     displayModal = function () {
 
-
       if(typeof(ga) !== 'undefined'){
         ga('send', 'event', 'Lightbox', 'Display Modal', '');
       }
-
 
       FVSize();
       FVDisplayPane(state);
@@ -322,10 +321,10 @@
 
     //set the markup
     $FV.figs_pane = $('<div id="lightbox-figs" class="pane" />');
-    $FV.thumbs_el = $('<div id="fig-viewer-thmbs" />');
-    $FV.thumbs_cont = $('<div id="fig-viewer-thmbs-content" />');
-    $FV.controls_el = $('<div id="fig-viewer-controls" />');
-    $FV.slides_el = $('<div id="fig-viewer-slides" />');
+    $FV.thumbs_el = $('<div id="lightbox-thmbs" />');
+    $FV.thumbs_cont = $('<div id="lightbox-thmbs-content" />');
+    $FV.controls_el = $('<div id="lightbox-controls" />');
+    $FV.slides_el = $('<div id="lightbox-slides" />');
     $FV.staging_el = $('<div class="staging" />'); // hidden container for loading large images
     $FV.figs_array = [];  // array for all div.figure: .figure > .drag-bx > img. parent is .slide
 
@@ -534,20 +533,13 @@
       ga('send', 'event', 'Lightbox', 'Slide Changed', '');
     }
 
-    /*fig_img.css({
-     'marginLeft' : 0,
-     'marginTop' : 0,
-     'height' : fig_div.data('img_sized_h'),
-     'width' : fig_div.data('img_sized_w')
-     });*/
-
     if ($FV.thumbs.active !== null) {
       $FV.thumbs.active.removeClass('active');
       fig_div = $FV.figs_array[$FV.thumbs.index($FV.thumbs.active)];
       fig_img = fig_div.find('img');
 
       if (fig_img.hasClass('ui-draggable')) {
-        FVDragStop(fig_div, fig_div.find('img'));
+       FVDragStop(fig_div, fig_div.find('img'));
       }
     }
     $FV.thumbs.active = $thmb;
@@ -664,7 +656,7 @@
     $FV.loading.show();
     $FV.zoom.hide();
     var this_fig = $FV.figs_array[i];
-    var $img =  this_fig.find('img');
+    //var $img =  this_fig.find('img');
     var img_state = this_fig.data('state');
     // state of figure
     // 0 - no image loaded
@@ -703,7 +695,7 @@
     }
   };
 
-// build medium image, when loaded - size to fit, call load large image function
+// build medium image; when loaded: size to fit, call load large image function
   FVLoadMedImg = function(i) {
     var $fig_div, src_med, txt, img_med;
 
@@ -755,7 +747,7 @@
 
 // size images to fit in div.lb-figure element
   FVSizeImgToFit = function ($fig_div, down_only) {
-    var sizeAndCenter, fig_img, fig_div_h, fig_div_w, i_h, i_w, resized_i_w, resized_i_h;
+    var sizeAndCenter, fig_img, fig_div_h, fig_div_w, i_h, i_w, resized_i_w, resized_i_h, fig_div_aspect_ratio, img_aspect_ratio;
 
     $fig_div.imagesLoaded(function(){
 
@@ -764,8 +756,8 @@
       fig_div_w = $fig_div.width();
       i_h = fig_img.height();
       i_w = fig_img.width();
-      var fig_div_aspect_ratio = fig_div_w / fig_div_h;
-      var img_aspect_ratio = i_w / i_h;
+      fig_div_aspect_ratio = fig_div_w / fig_div_h;
+      img_aspect_ratio = i_w / i_h;
       // sizes image to fit, scaling up or down, and centering
       sizeAndCenter = function() {
         // compare aspect ratios of parent and image
@@ -787,7 +779,7 @@
               'height': Math.round(fig_div_w / img_aspect_ratio),
               'width': Math.round(fig_div_h * img_aspect_ratio)
             });
-            //resized_i_w = fig_img.width();
+
             resized_i_h = fig_img.height();
             fig_img.css({
               'marginTop': Math.round((fig_div_h - resized_i_h) / 2),
@@ -874,27 +866,25 @@
    OR navigating to a slide whose large image is bigger than the slide and has already loaded.*/
 
   FVZoomControls = function($fig_div) {
-    var $img, fig_div_h, fig_div_w, real_h, real_w, img_aspect_ratio, img_mt, img_ml, resize_h, drag;
+    var $img, real_h, real_w, img_mt, img_ml, resize_h, drag, $drgbx;
 
     $img = $fig_div.find('img');
-    fig_div_h = $fig_div.height();
-    fig_div_w = $fig_div.width();
     real_h = $fig_div.data('img_l_h'); // native height of image
     real_w = $fig_div.data('img_l_w'); // native width of image
     img_mt = parseInt($img.css('marginTop')); // top margin of sized-to-fit image
     img_ml = parseInt($img.css('marginLeft')); // left margin of sized-to-fit image
-    img_aspect_ratio = real_w/real_h; //
-    resize_h = $img.height(); // height of sized to fit image
-    $FV.zoom.show();
-    drag = false; // dragging not enabled
-    var $drgbx = $fig_div.find('div.drag-bx');
 
+    resize_h = $img.height(); // height of sized to fit image
+    drag = false; // dragging not enabled
+    $drgbx = $fig_div.find('div.drag-bx');
+
+    $FV.zoom.show();
     $FV.zoom.sldr.slider({
       min: resize_h,
       max: real_h,
       value: resize_h,
       slide: function(e, ui) {
-        imgResize(ui.value, img_aspect_ratio);
+        imgResize(ui.value);
       },
       stop: function(e, ui) {
         if (!drag) {
@@ -903,7 +893,7 @@
         }
         if (ui.value === resize_h) { // slider is at minimum value
           // kill drag
-          FVDragStop($fig_div, $img);
+         FVDragStop($fig_div, $img);
           drag = false;
         } else {
           FVSizeDragBox($fig_div, $img);
@@ -914,22 +904,16 @@
     // look into pulling the max & min functions out of FVZoomControls
     // max(+) button
     $FV.zoom.max.on('click', function() {
-      var curr_height = $FV.zoom.sldr.slider("value");
-      var new_height = resize_h + ((real_h - resize_h) / 4) * Math.ceil((curr_height - resize_h) * 4 / (real_h - resize_h) + 0.1);
+      var value = $FV.zoom.sldr.slider("value");
+      var new_height = resize_h + (real_h - resize_h) / 4 * Math.ceil((value - resize_h) * 4 / (real_h - resize_h) + 0.1);
       new_height = Math.min(Math.ceil(new_height), real_h);
 
-      $FV.zoom.sldr.slider({
-        'value': new_height
-      });
-       console.log(img_aspect_ratio);
-      imgResize(new_height, img_aspect_ratio);
+      $FV.zoom.sldr.slider('value', new_height);
+
+      imgResize(new_height);
       FVDragInit($fig_div, $img);
-      // it is better to set dragbox at same time as image is set, ie in imgResize
-      // also, I don't think the drag box needs to be sized
-      FVSizeDragBox($fig_div, $img, new_width);
+      FVSizeDragBox($fig_div, $img);
       drag = true;
-      new_height = null;
-      //curr_height = null;
     });
 
     // min(-) button
@@ -938,8 +922,8 @@
       if (!drag) {
         return false;
       }
-      var curr_height = $FV.zoom.sldr.slider("value");
-      var new_height = resize_h + (real_h - resize_h) / 4 * Math.floor((curr_height - resize_h) * 4 / (real_h - resize_h) - 0.1);
+      var value = $FV.zoom.sldr.slider("value");
+      var new_height = resize_h + (real_h - resize_h) / 4 * Math.floor((value - resize_h) * 4 / (real_h - resize_h) - 0.1);
       new_height = Math.max(Math.floor(new_height), resize_h);
 
       $FV.zoom.sldr.slider('value', new_height );
@@ -950,49 +934,34 @@
           'marginTop': img_mt,
           'marginLeft': img_ml
         });
+
         FVDragStop($fig_div, $img);
         drag = false;
       }
       else {
-        imgResize(new_height, img_aspect_ratio);
+        imgResize(new_height);
       }
-      new_height = null;
 
     });
 
-    var imgResize = function(new_height, aspect_ratio) {
-      var new_width = new_height * aspect_ratio;
-      var mar_top = (fig_div_h - new_height) / 2;
-      var mar_left = (fig_div_w - new_width) / 2;
-
-      if (fig_div_w > new_width) {
-        $img.css({
-          'height': new_height,
-          // 'width': new_width,
-          'marginTop': mar_top, //img_mt - Math.round((height_value - resize_h) / 2),
-          'marginLeft': mar_left//img_ml - Math.round((height_value - resize_h) / 2 * (real_w / real_h))
-        });
-      } else {
-        $img.css({
-          'height': new_height,
-          'width': new_width,
-          'marginTop': mar_top,
-          'marginLeft' : mar_left
-        });
-      }
-
-    };
+    var imgResize = function(new_height) {
+      $img.css({
+        'height': new_height,
+        'marginTop': img_mt - Math.round((new_height - resize_h) / 2),
+        'marginLeft': img_ml - Math.round((new_height - resize_h) / 2 * (real_w / real_h))
+      });
+     };
 
     $fig_div.on('DOMMouseScroll mousewheel', function (event) {
       var new_value = $FV.zoom.sldr.slider("value");
       if (event.originalEvent.wheelDeltaY < 0) {
         new_value = Math.min(new_value + 20, real_h);
-        imgResize(new_value, img_aspect_ratio);
+        imgResize(new_value);
         $FV.zoom.sldr.slider('value', new_value );
       }
       else if (event.originalEvent.wheelDeltaY > 0) {
         new_value = Math.max(new_value - 20, resize_h);
-        imgResize(new_value, img_aspect_ratio);
+        imgResize(new_value);
         $FV.zoom.sldr.slider('value', new_value );
       }
     });
@@ -1030,8 +999,8 @@
 // Size & position div to contain figure dragging
 // adds top/left declarations to image so that image remains in same position following containing div sizing/positioning
 
-  FVSizeDragBox = function($fig_div, $img, img_w) {
-    var $drgbx, fig_h, fig_w, img_h, /*img_w,*/ img_mt, img_ml, img_tp, img_lt;
+  FVSizeDragBox = function($fig_div, $img) {
+    var $drgbx, fig_h, fig_w, img_h, img_w, img_mt, img_ml, img_tp, img_lt;
 
     $drgbx = $fig_div.find('div.drag-bx');
     fig_h = $fig_div.height();
@@ -1071,7 +1040,7 @@
     } else {
       $drgbx.css({
         'left' : (img_w - fig_w + img_ml) * -1,
-        'width': img_w //((img_w * 2) - fig_w) + img_ml
+         'width' : img_w
       });
       $img.css({
         'left' : img_w - fig_w + img_ml - $fig_div.data('off-left')

@@ -14,10 +14,10 @@
     if ($media.length) {
       var doi = $media.data('doi');
       $media.getArticleSummary(doi,
-          function (data) {
-            var mediaCoverageCount = getMediaCoverageCount(data);
-            $media.find('#media-coverage-count').text('(' + mediaCoverageCount + ')');
-          });
+        function (data) {
+          var mediaCoverageCount = getMediaCoverageCount(data);
+          $media.find('#media-coverage-count').text('(' + mediaCoverageCount + ')');
+        });
     }
   }
 
@@ -35,16 +35,20 @@
   addMediaCoverageLink();
   figshareWidget();
 
+  var hasFigures = $('#artText .figure').length;
 
-  $('#figure-carousel-section').buildFigureCarousel({});
+  if(hasFigures){
 
+    $('#figure-carousel-section').buildFigureCarousel({});
+
+  };
 
   function formatHumanReadableByteSize(bytes) {
     // Space before "Bytes". All others are concatenated to number with no space.
     var units = [' Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
 
     var increment = 1000; // could change to 1024
-    var roundingThreshold = 0;//units.indexOf('MB'); // for smaller units than this, show integers
+    var roundingThreshold = units.indexOf('MB'); // for smaller units than this, show integers
     var precision = 100; // round to this precision if unit is >= roundingThreshold
 
     var n = bytes;
@@ -62,29 +66,28 @@
 
   // Will be invoked directly from article HTML, where the templating engine will inject the fileSizeTable data.
   $.fn.populateFileSizes = function (fileSizeTable) {
-    $('.file-size').each(function (index, element) {
-      var $el = $(element);
-      var doi = $el.attr('data-doi');
-      var fileSize = $el.attr('data-size');
-      var size = fileSizeTable[ doi][ /**/fileSize];
-      $el.text('(' + formatHumanReadableByteSize(size) + ')');
-    });
+
+    if(hasFigures){
+      $('.file-size').each(function (index, element) {
+        var $el = $(element);
+        var doi = $el.attr('data-doi');
+        var fileSize = $el.attr('data-size');
+        var size = fileSizeTable[ doi][ /**/fileSize];
+        $el.text('(' + formatHumanReadableByteSize(size) + ')');
+      });
+    }
   };
 
   $('.table-download').on('click', function(){
     var table = $(this).parent(),
-    figId = $(this).data('tableopen');
+      figId = $(this).data('tableopen');
     return tableOpen(figId, "CSV", table);
   });
 
   $('.table-wrap .expand').on('click', function(){
     var table = $(this).parent(),
-    figId = $(this).data('tableopen');
+      figId = $(this).data('tableopen');
     return tableOpen(figId, "HTML", table);
   });
 
-  $('.figure-inline-download').find('a').on('click', function(e){
-    e.preventDefault();
-  });
- // $('')
 })(jQuery);

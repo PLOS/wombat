@@ -491,7 +491,6 @@
     $FV.thumbs_el.prepend(thmb_close);
     $FV.figs_pane.append($FV.slides_el);
     $FV.figs_pane.append($FV.thumbs_el);
-    //  $FV.figs_pane.append($FV.staging_el); Two div.stagings are built; not sure this one is necessary
     $('#lightbox-content').append($FV.figs_pane);
 
     $(thmb_close).on('click',function() {
@@ -947,6 +946,7 @@
     var imgResize = function(new_height) {
       $img.css({
         'height': new_height,
+        'width': new_height * (real_w/real_h),
         'marginTop': img_mt - Math.round((new_height - resize_h) / 2),
         'marginLeft': img_ml - Math.round((new_height - resize_h) / 2 * (real_w / real_h))
       });
@@ -1040,11 +1040,12 @@
     } else {
       $drgbx.css({
         'left' : (img_w - fig_w + img_ml) * -1,
-         'width' : img_w
+         'width': ((img_w * 2) - fig_w) + img_ml
       });
       $img.css({
-        'left' : img_w - fig_w + img_ml - $fig_div.data('off-left')
+        'left' : img_ml * -1// - $fig_div.data('off-left')
       });
+
     }
 
   };

@@ -20,7 +20,7 @@
     var rerunMathjax, loadJSON;
 
     //disable scrolling on web page behind fig viewer
-    $('body').css('overflow', 'hidden').on('touchmove', function(e){ e.preventDefault() });
+    $('body').css('overflow', 'hidden').addClass('stop-scroll');
 
     $FV = $('body').find('#article-lightbox');
 
@@ -1088,7 +1088,7 @@
   var FVClose = function() {
 
     //re-enable scrolling
-    $('body').css('overflow','auto').off('touchmove');
+    $('body').css('overflow', 'hidden').removeClass('stop-scroll');
     //reset the foundation tabs
     $('.fv-nav').find('li').removeClass('active');
 

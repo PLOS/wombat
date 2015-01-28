@@ -14,10 +14,10 @@
     if ($media.length) {
       var doi = $media.data('doi');
       $media.getArticleSummary(doi,
-          function (data) {
-            var mediaCoverageCount = getMediaCoverageCount(data);
-            $media.find('#media-coverage-count').text('(' + mediaCoverageCount + ')');
-          });
+        function (data) {
+          var mediaCoverageCount = getMediaCoverageCount(data);
+          $media.find('#media-coverage-count').text('(' + mediaCoverageCount + ')');
+        });
     }
   }
 
@@ -39,7 +39,7 @@
 
   if(hasFigures){
 
-  $('#figure-carousel-section').buildFigureCarousel({});
+    $('#figure-carousel-section').buildFigureCarousel({});
 
   };
 
@@ -68,25 +68,25 @@
   $.fn.populateFileSizes = function (fileSizeTable) {
 
     if(hasFigures){
-    $('.file-size').each(function (index, element) {
-      var $el = $(element);
-      var doi = $el.attr('data-doi');
-      var fileSize = $el.attr('data-size');
-      var size = fileSizeTable[ doi][ /**/fileSize];
-      $el.text('(' + formatHumanReadableByteSize(size) + ')');
-    });
+      $('.file-size').each(function (index, element) {
+        var $el = $(element);
+        var doi = $el.attr('data-doi');
+        var fileSize = $el.attr('data-size');
+        var size = fileSizeTable[ doi][ /**/fileSize];
+        $el.text('(' + formatHumanReadableByteSize(size) + ')');
+      });
     }
   };
 
   $('.table-download').on('click', function(){
     var table = $(this).parent(),
-    figId = $(this).data('tableopen');
+      figId = $(this).data('tableopen');
     return tableOpen(figId, "CSV", table);
   });
 
   $('.table-wrap .expand').on('click', function(){
     var table = $(this).parent(),
-    figId = $(this).data('tableopen');
+      figId = $(this).data('tableopen');
     return tableOpen(figId, "HTML", table);
   });
 

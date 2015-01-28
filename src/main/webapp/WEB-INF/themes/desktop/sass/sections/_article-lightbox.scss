@@ -109,7 +109,7 @@ $fv-grey-bg: darken($grey-light, 3%);
     }
   }
 
-  > .content {
+   > .content {
     padding: 0 !important;
   }
 
@@ -140,10 +140,6 @@ $fv-grey-bg: darken($grey-light, 3%);
   }
 }
 
-.figs #lightbox-figs {
-  // position: relative;
-}
-
 #lightbox-abst, #lightbox-refs {
   overflow: auto;
 }
@@ -152,30 +148,30 @@ $fv-grey-bg: darken($grey-light, 3%);
   visibility: hidden;
 }
 
-#fig-viewer-slides {
+#lightbox-slides {
   position: relative;
   padding-top: rem-calc(2);
   padding-bottom: rem-calc(2);
 }
 
-#fig-viewer-slides .slide {
+#lightbox-slides .slide {
   overflow: hidden;
   display: none;
   position: relative;
 }
 
-#fig-viewer-slides .figure {
-  //  overflow: hidden;
+#lightbox-slides .figure {
+//  overflow: hidden;
   border: solid 2px $grey-light;
   position: relative;
 }
 
-#fig-viewer-slides .figure img {
+#lightbox-slides .figure img {
   display: block;
 
 }
 
-#fig-viewer-slides .ui-draggable {
+#lightbox-slides .ui-draggable {
   cursor: move;
 }
 
@@ -188,7 +184,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   display: none;
 }
 
-#fig-viewer-slides .datacon {
+#lightbox-slides .datacon {
   position: relative;
   height: rem-calc(120);
   padding-top: $pad-medium;
@@ -198,7 +194,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 //FIGURE DESCRIPTION CONTAINER
-#fig-viewer-slides .txt {
+#lightbox-slides .txt {
   width: 34.4%;
   background: $grey-light;
   background: rgba(239,239,239,0.95);
@@ -224,7 +220,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 //expand/collapse controls
-#fig-viewer-slides .txt .more {
+#lightbox-slides .txt .more {
   padding: 0 5% $pad-smallish 3.1%;
   font-weight: normal;
   font-style: normal;
@@ -236,7 +232,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 // closer 'x' in upper right corner
-#fig-viewer-slides .txt .less {
+#lightbox-slides .txt .less {
 
   @extend %brand-background;
   width: rem-calc(11);
@@ -254,17 +250,17 @@ $fv-grey-bg: darken($grey-light, 3%);
   }
 }
 // class .expanded is added via js
-#fig-viewer-slides.txt-expand .text-less,
-#fig-viewer-slides.txt-expand .more,
-#fig-viewer-slides .text-more {
+#lightbox-slides.txt-expand .text-less,
+#lightbox-slides.txt-expand .more,
+#lightbox-slides .text-more {
   display: none;
 }
 
-#fig-viewer-slides.txt-expand .less {
+#lightbox-slides.txt-expand .less {
   display: block;
 }
 
-#fig-viewer-slides .txt .fig_title {
+#lightbox-slides .txt .fig_title {
   padding-top: rem-calc(3);
   padding-right: rem-calc(16);
   margin-bottom: 0;
@@ -272,32 +268,30 @@ $fv-grey-bg: darken($grey-light, 3%);
   line-height: rem-calc(16);
 }
 
-#fig-viewer-slides .txt .text-less {
+#lightbox-slides .txt .text-less {
   height: rem-calc(88);
 }
 
-#fig-viewer-slides .txt > div {
+#lightbox-slides .txt > div {
   padding: 0 5% 0 3.1%;
 }
 
-#fig-viewer-slides.txt-expand .text-more {
+#lightbox-slides.txt-expand .text-more {
   display: block;
   height: rem-calc(190);
   overflow-y: auto;
   border-top: 1px solid #ccc; // was #bbb
   border-color: rgba(0, 0, 0, 0.2);
-}
+  }
 
-
-
-#fig-viewer-slides .datacon .btn {
+#lightbox-slides .datacon .btn {
   @extend .button-big;
   font-size: $txt-size-small;
   line-height: rem-calc(27);
   padding: 0 $pad-smallish;
 }
 
-#fig-viewer-slides .show_context {
+#lightbox-slides .show_context {
   margin-top: rem-calc(10);
   position: relative !important;
 }
@@ -334,7 +328,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   color: $white;
 }
 
-#fig-viewer-thmbs {
+#lightbox-thmbs {
   display: none;
   padding-top: 35px;
   width: 163px;
@@ -344,11 +338,11 @@ $fv-grey-bg: darken($grey-light, 3%);
   background: $fv-grey-light;
 }
 
-.thmbs-vis #fig-viewer-thmbs {
+.thmbs-vis #lightbox-thmbs {
   display: block;
 }
 
-#fig-viewer-thmbs .btn-thmb-close {
+#lightbox-thmbs .btn-thmb-close {
   @extend %brand-background;
   color: $white;
   background: image-url('sprite.fv.png') 0 -20px;
@@ -362,12 +356,12 @@ $fv-grey-bg: darken($grey-light, 3%);
 
 }
 
-#fig-viewer-thmbs .btn-thmb-close:hover {
+#lightbox-thmbs .btn-thmb-close:hover {
   background-color: $plos-default;
   background-position: 0 -20px;
 }
 
-#fig-viewer-thmbs-content {
+#lightbox-thmbs-content {
   padding-left: rem-calc(17);
   overflow: auto;
   background: $fv-grey-light;
@@ -375,7 +369,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   background: linear-gradient(to right, $fv-grey-light 0%, $fv-grey-light 20px, $grey-light 20px, $grey-light 143px,$fv-grey-light 143px, $fv-grey-light 100%);
 }
 
-#fig-viewer-thmbs .thmb {
+#lightbox-thmbs .thmb {
   width: rem-calc(129);
   height: rem-calc(96);
   overflow: hidden;
@@ -384,21 +378,21 @@ $fv-grey-bg: darken($grey-light, 3%);
   background-color: $white;
 }
 
-#fig-viewer-thmbs .thmb .thmb-wrap {
+#lightbox-thmbs .thmb .thmb-wrap {
   width: rem-calc(129);
   height: rem-calc(96);
   display: table-cell;
   vertical-align: middle;
 }
 
-#fig-viewer-thmbs .thmb.active {
+#lightbox-thmbs .thmb.active {
   cursor: default;
   img {
     @extend %brand-border;
   }
 }
 
-#fig-viewer-thmbs .thmb img {
+#lightbox-thmbs .thmb img {
   border: 3px solid transparent;
   height: auto;
   width: auto;
@@ -408,7 +402,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   margin: 0 auto;
 }
 
-#fig-viewer-controls {
+#lightbox-controls {
   @extend %brand-background;
   position: absolute;
   bottom: rem-calc(90);
@@ -417,7 +411,7 @@ $fv-grey-bg: darken($grey-light, 3%);
 }
 
 //code is from ambra
-#fig-viewer-controls .loading-bar {
+#lightbox-controls .loading-bar {
   position: absolute;
   left: 50%;
   top: rem-calc(11);
@@ -511,7 +505,7 @@ $fv-grey-bg: darken($grey-light, 3%);
   cursor: -moz-zoom-in;
 }
 
-#fig-viewer-controls .fig-btn {
+#lightbox-controls .fig-btn {
 
   display: block;
   float: right;
@@ -529,14 +523,14 @@ $fv-grey-bg: darken($grey-light, 3%);
   background-image: image-url('sprite.fv.png');
 }
 
-#fig-viewer-controls .thmb-btn {
+#lightbox-controls .thmb-btn {
   padding: 0;
   width: rem-calc(162);
   text-align: center;
   font-weight: bold;
 }
 
-#fig-viewer-controls .thmb-btn .icn {
+#lightbox-controls .thmb-btn .icn {
   display: inline-block;
   width: rem-calc(16);
   height: rem-calc(16);
@@ -545,14 +539,14 @@ $fv-grey-bg: darken($grey-light, 3%);
   margin-right: rem-calc(2);
 }
 
-#fig-viewer-controls .fig-btn:hover,
-.thmbs-vis #fig-viewer-controls .thmb-btn {
+#lightbox-controls .fig-btn:hover,
+.thmbs-vis #lightbox-controls .thmb-btn {
   background-color: $plos-default;
   color: $white;
 }
 
-#fig-viewer-controls .thmb-btn:hover .icn,
-.thmbs-vis #fig-viewer-controls .thmb-btn .icn {
+#lightbox-controls .thmb-btn:hover .icn,
+.thmbs-vis #lightbox-controls .thmb-btn .icn {
   background-position: -110px -20px;
 }
 
@@ -714,3 +708,4 @@ $fv-grey-bg: darken($grey-light, 3%);
 html.touch .stop-scroll{
   position: fixed;
 }
+

@@ -95,12 +95,7 @@ public class ArticleController extends WombatController {
     RenderContext renderContext = new RenderContext(site);
     renderContext.setArticleId(articleId);
 
-    String articleHtml;
-    try {
-      articleHtml = getArticleHtml(renderContext);
-    } catch (EntityNotFoundException enfe) {
-      throw new ArticleNotFoundException(articleId);
-    }
+    String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("article", articleMetadata);
     model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     model.addAttribute("articleText", articleHtml);

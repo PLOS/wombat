@@ -1,4 +1,5 @@
 (function ($) {
+var tooltip_references, initTooltipReference;
 
   function getMediaCoverageCount(almData) {
     for (var i = 0; i < almData.sources.length; i++) {
@@ -89,5 +90,37 @@
     figId = $(this).data('tableopen');
     return tableOpen(figId, "HTML", table);
   });
+
+// tooltips for the links to references in the article body eg '[4]'
+  tooltip_references = function () {
+
+  $('.ref-tip').hover(
+    function () {
+      var $ref_link = $(this);  // hovered over link
+      var $position = $ref_link.position();
+      var $link_width = $ref_link.width();
+      var $ref_number = $ref_link.text().slice(1, -1);  //drop the brackets [4]
+      var ref_label = '#ref' + $ref_number;  // form the id in the references li.s
+      var $matching_ref = $(ref_label).html(); //get the reference content
+      var $ref_tooltip = $('.ref-tooltip');  //find the tooltip div
+      var $ref_content = $ref_tooltip.find('.ref_tooltip-content').html($matching_ref); //add the references content
+      var $ref_link_top = $position.top;
+      var $ref_link_left = $position.left;
+      var $tooltip_height = $ref_tooltip.height();
+      var $tooltip_width = $ref_tooltip.width();
+
+      $ref_link_top = ($ref_link_top - $tooltip_height)-20;//top of ref link - height of the tooltip - 20px margin
+      //left position of ref link - tooltip width - link width/2 so can center over link:
+      $ref_link_left = $ref_link_left - ($tooltip_width - $link_width)/2;
+
+      $ref_tooltip.css({ //place the tooltip 20px above & centered over the ref link
+        'top': $ref_link_top,
+        'left': $ref_link_left}).html($ref_content).fadeIn('fast');
+    },
+    function () {
+      $('.ref-tooltip').fadeOut('fast');
+    });
+  };
+  initTooltipReference = tooltip_references();
 
 })(jQuery);

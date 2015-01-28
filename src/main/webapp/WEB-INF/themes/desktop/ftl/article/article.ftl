@@ -74,6 +74,13 @@
 
         <div class="article-text" id="artText">
         ${articleText}
+
+          <div class="ref-tooltip">
+             <div class="ref_tooltip-content">
+
+             </div>
+          </div>
+
         </div>
       </div>
     </div>

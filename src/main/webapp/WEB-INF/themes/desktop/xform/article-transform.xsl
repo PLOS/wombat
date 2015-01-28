@@ -831,6 +831,9 @@
         <xsl:for-each select="ref">
           <xsl:sort data-type="number" select="label"/>
           <li>
+            <xsl:attribute name="id">
+              <xsl:value-of select="concat('ref',label)"/>
+            </xsl:attribute>
             <span class="order">
               <xsl:value-of select="label"/>.
             </span>
@@ -2483,7 +2486,7 @@
     <xsl:if test="local-name(preceding-sibling::node()[1])='xref'">
       <xsl:text>,</xsl:text>
     </xsl:if>
-    <a href="#{@rid}">
+    <a href="#{@rid}" class="ref-tip">
       <xsl:apply-templates/>
     </a>
   </xsl:template>

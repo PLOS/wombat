@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Collection;
 
-public interface ContentRepoService {
+public interface EditorialContentService {
 
   public abstract CloseableHttpResponse request(String key, Optional<Integer> version, Collection<? extends Header> headers)
       throws IOException;

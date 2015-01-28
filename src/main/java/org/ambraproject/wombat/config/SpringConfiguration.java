@@ -52,8 +52,8 @@ import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
-import org.ambraproject.wombat.service.remote.ContentRepoService;
-import org.ambraproject.wombat.service.remote.ContentRepoServiceImpl;
+import org.ambraproject.wombat.service.remote.EditorialContentService;
+import org.ambraproject.wombat.service.remote.EditorialContentServiceImpl;
 import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.springframework.context.annotation.Bean;
@@ -213,8 +213,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public ContentRepoService contentRepoService() {
-    return new ContentRepoServiceImpl();
+  public EditorialContentService editorialRepoService() {
+    return new EditorialContentServiceImpl();
   }
 
   @Bean

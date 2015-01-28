@@ -3,7 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.ContentRepoService;
+import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -24,7 +24,7 @@ import java.util.Collection;
 public class IndirectFileController extends WombatController {
 
   @Autowired
-  private ContentRepoService contentRepoService;
+  private EditorialContentService editorialContentService;
 
   @RequestMapping(value = {"indirect/{key}", "{site}/indirect/{key}"})
   public void serve(HttpServletResponse response,
@@ -55,7 +55,7 @@ public class IndirectFileController extends WombatController {
                      String key, Optional<Integer> version)
       throws IOException {
     Collection<Header> assetHeaders = HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST);
-    try (CloseableHttpResponse repoResponse = contentRepoService.request(key, version, assetHeaders)) {
+    try (CloseableHttpResponse repoResponse = editorialContentService.request(key, version, assetHeaders)) {
       HttpMessageUtil.copyResponseWithHeaders(repoResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",

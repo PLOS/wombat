@@ -8,18 +8,16 @@ import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.io.Reader;
-import java.io.InputStreamReader;
-import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
 
-public class ContentRepoServiceImpl implements ContentRepoService {
+public class EditorialContentServiceImpl implements EditorialContentService {
 
   @Autowired
   private SoaService soaService;
@@ -32,9 +30,9 @@ public class ContentRepoServiceImpl implements ContentRepoService {
   private String repoBucketName;
 
   private void setRepoConfig() throws IOException {
-    Map<String,Object> repoConfig = (Map<String, Object>) soaService.requestObject("config?type=repo", Map.class);
+    Map<String, Object> repoConfig = (Map<String, Object>) soaService.requestObject("config?type=repo", Map.class);
     Object address = repoConfig.get("contentRepoAddress");
-    if (address != null){
+    if (address != null) {
       try {
         contentRepoAddress = new URI(address.toString());
       } catch (URISyntaxException e) {
@@ -42,7 +40,7 @@ public class ContentRepoServiceImpl implements ContentRepoService {
       }
     }
     Object bucket = repoConfig.get("repoBucketName");
-    if (bucket != null){
+    if (bucket != null) {
       repoBucketName = bucket.toString();
     }
 

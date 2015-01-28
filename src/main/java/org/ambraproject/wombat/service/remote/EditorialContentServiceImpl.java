@@ -31,29 +31,26 @@ public class EditorialContentServiceImpl implements EditorialContentService {
 
   private void setRepoConfig() throws IOException {
     Map<String, Object> repoConfig = (Map<String, Object>) soaService.requestObject("config?type=repo", Map.class);
-    Object address = repoConfig.get("contentRepoAddress");
-    if (address != null) {
-      try {
-        contentRepoAddress = new URI(address.toString());
-      } catch (URISyntaxException e) {
-        throw new RuntimeException("Invalid content repo URI returned from service", e);
-      }
-    }
-    Object bucket = repoConfig.get("repoBucketName");
-    if (bucket != null) {
-      repoBucketName = bucket.toString();
-    }
+    Map<String, Object> editorialConfig = (Map<String, Object>) repoConfig.get("editorial");
+    if (editorialConfig == null) throw new RuntimeException("config?type=repo did not provide \"editorial\" config");
+    String address = (String) editorialConfig.get("address");
+    if (address == null) throw new RuntimeException("config?type=repo did not provide \"editorial.address\"");
+    String bucket = (String) editorialConfig.get("bucket");
+    if (bucket == null) throw new RuntimeException("config?type=repo did not provide \"editorial.bucket\"");
 
+    try {
+      contentRepoAddress = new URI(address);
+    } catch (URISyntaxException e) {
+      throw new RuntimeException("Invalid content repo URI returned from service", e);
+    }
+    repoBucketName = bucket;
   }
 
   private URI getContentRepoAddress() throws IOException {
     if (contentRepoAddress == null) {
       setRepoConfig();
-      if (contentRepoAddress == null) {
-        throw new RuntimeException("No content repo URI returned from service");
-      }
     }
-    return contentRepoAddress;
+    return Preconditions.checkNotNull(contentRepoAddress);
   }
 
   private String getRepoBucketName() throws IOException {
@@ -63,7 +60,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
         throw new RuntimeException("No repository bucket name returned from service");
       }
     }
-    return repoBucketName;
+    return Preconditions.checkNotNull(repoBucketName);
   }
 
   /**

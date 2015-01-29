@@ -72,8 +72,24 @@ This is for IE specific styles mostly ie9 and below.
 div[data-js-tooltip="tooltip_target"]{ display: none;}
 [data-js-tooltip="tooltip_trigger"].active div[data-js-tooltip="tooltip_target"] {display: block;}
 
+#author-list {
+  margin-left:-20px;
+  padding-left: 0;
 
+}
+#author-list li {
+  margin-left: 0;
+  padding-left: 0;
+}
+#author-list .active {
+  a, a:hover {
+    color: $white;
+  }
 
+}
+#author-list .active .author-info {
+  display: block;
+}
 //ie8 doesn't support @media; need to override the print settings in _article.scss
 
 

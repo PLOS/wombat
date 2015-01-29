@@ -1053,7 +1053,7 @@
   var FVClose = function() {
 
     //re-enable scrolling
-    $('body').css('overflow', 'hidden').removeClass('stop-scroll');
+    $('body').css('overflow', 'auto').removeClass('stop-scroll');
     //reset the foundation tabs
     $('.fv-nav').find('li').removeClass('active');
 

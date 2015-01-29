@@ -40,6 +40,10 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.ambraproject.wombat.util.ReproxyUtil.X_PROXY_CAPABILITIES;
+import static org.ambraproject.wombat.util.ReproxyUtil.X_REPROXY_CACHE_FOR;
+import static org.ambraproject.wombat.util.ReproxyUtil.X_REPROXY_URL;
+
 /**
  * Base class with common functionality for all controllers in the application.
  */
@@ -159,14 +163,14 @@ public abstract class WombatController {
    * Names of headers that, on a request from the client, should be passed through on our request to the service tier
    * (Rhino or Content Repo).
    */
-  protected static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet("X-Proxy-Capabilities");
+  protected static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet(X_PROXY_CAPABILITIES);
 
   /**
    * Names of headers that, in a response from the service tier (Rhino or Content Repo), should be passed through to the
    * client.
    */
   private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, "X-Reproxy-URL", "X-Reproxy-Cache-For");
+      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, X_REPROXY_URL, X_REPROXY_CACHE_FOR);
   protected static final HttpMessageUtil.HeaderFilter ASSET_RESPONSE_HEADER_FILTER = new HttpMessageUtil.HeaderFilter() {
     @Override
     public String getValue(Header header) {

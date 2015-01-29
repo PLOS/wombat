@@ -8,6 +8,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Collection;
+import java.util.Map;
 
 public interface EditorialContentService {
 
@@ -15,5 +16,7 @@ public interface EditorialContentService {
       throws IOException;
 
   public abstract <T> T requestCachedReader(CacheParams cacheParams, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException;
+
+  public abstract Map<String, Object> requestMetadata(CacheParams cacheParams, String key, Optional<Integer> version) throws IOException;
 
 }

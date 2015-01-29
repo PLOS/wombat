@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.Header;
@@ -25,6 +26,8 @@ public class EditorialContentServiceImpl implements EditorialContentService {
   private CachedRemoteService<InputStream> cachedRemoteStreamer;
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
+  @Autowired
+  private Gson gson;
 
   private URI contentRepoAddress;
   private String repoBucketName;
@@ -75,13 +78,28 @@ public class EditorialContentServiceImpl implements EditorialContentService {
   @Override
   public CloseableHttpResponse request(String key, Optional<Integer> version, Collection<? extends Header> headers)
       throws IOException {
-    URI requestAddress = buildUri(key, version);
+    URI requestAddress = buildUri(key, version, RequestMode.OBJECT);
     HttpGet get = new HttpGet(requestAddress);
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }
 
-  private URI buildUri(String key, Optional<Integer> version) throws IOException {
+  private static enum RequestMode {
+    OBJECT, METADATA;
+
+    private String getPathComponent() {
+      switch (this) {
+        case OBJECT:
+          return "objects";
+        case METADATA:
+          return "objects/meta";
+        default:
+          throw new AssertionError();
+      }
+    }
+  }
+
+  private URI buildUri(String key, Optional<Integer> version, RequestMode mode) throws IOException {
     String contentRepoAddressStr = getContentRepoAddress().toString();
     if (contentRepoAddressStr.endsWith("/")) {
       contentRepoAddressStr = contentRepoAddressStr.substring(0, contentRepoAddressStr.length() - 1);
@@ -91,13 +109,25 @@ public class EditorialContentServiceImpl implements EditorialContentService {
       requestParams.add("version", version.get().toString());
     }
     String repoBucketName = getRepoBucketName();
-    return URI.create(String.format("%s/objects/%s?%s", contentRepoAddressStr, repoBucketName, requestParams.format()));
+    return URI.create(String.format("%s/%s/%s?%s",
+        contentRepoAddressStr, mode.getPathComponent(), repoBucketName, requestParams.format()));
   }
 
   @Override
   public <T> T requestCachedReader(CacheParams cacheParams, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
     Preconditions.checkNotNull(callback);
-    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version)), callback);
+    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version, RequestMode.OBJECT)), callback);
+  }
+
+  @Override
+  public Map<String, Object> requestMetadata(CacheParams cacheParams, String key, Optional<Integer> version) throws IOException {
+    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version, RequestMode.METADATA)),
+        new CacheDeserializer<Reader, Map<String, Object>>() {
+          @Override
+          public Map<String, Object> read(Reader stream) throws IOException {
+            return gson.fromJson(stream, Map.class);
+          }
+        });
   }
 
 }

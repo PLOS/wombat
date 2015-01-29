@@ -3,6 +3,8 @@ package org.ambraproject.wombat.util;
 import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
@@ -11,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.charset.Charset;
+import java.util.Arrays;
 
 public class CacheParams {
 
@@ -73,6 +76,15 @@ public class CacheParams {
       hasher.putChar(HASH_TERMINATOR);
     }
     return HASH_BASE.encode(hasher.hash().asBytes());
+  }
+
+  /**
+   * Create a hash from a sequence of strings and return it as a string for use as a cache key.
+   *
+   * @return a digest of bounded length
+   */
+  public static String createKeyHash(String first, String second, String... more) {
+    return createKeyHash(Iterables.concat(ImmutableList.of(first, second), Arrays.asList(more)));
   }
 
   /**

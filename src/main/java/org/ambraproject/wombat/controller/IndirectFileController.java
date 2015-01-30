@@ -63,18 +63,19 @@ public class IndirectFileController extends WombatController {
       throws IOException {
     String cacheKey = "indirect:" + CacheParams.createKeyHash(key, String.valueOf(version.orNull()));
     Map<String, Object> fileMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey), key, version);
+
+    String contentType = (String) fileMetadata.get("contentType");
+    if (contentType != null) {
+      responseToClient.setHeader(HttpHeaders.CONTENT_TYPE, contentType);
+    }
+
+    String downloadName = (String) fileMetadata.get("downloadName");
+    if (downloadName != null) {
+      responseToClient.setHeader(HttpHeaders.CONTENT_DISPOSITION, "filename=" + downloadName);
+    }
+
     List<String> reproxyUrls = (List<String>) fileMetadata.get("reproxyURL");
     if (ReproxyUtil.applyReproxy(requestFromClient, responseToClient, reproxyUrls, REPROXY_CACHE_FOR)) {
-      String contentType = (String) fileMetadata.get("contentType");
-      if (contentType != null) {
-        responseToClient.setHeader(HttpHeaders.CONTENT_TYPE, contentType);
-      }
-
-      String downloadName = (String) fileMetadata.get("downloadName");
-      if (downloadName != null) {
-        responseToClient.setHeader(HttpHeaders.CONTENT_DISPOSITION, "filename=" + downloadName);
-      }
-
       return;
     }
 

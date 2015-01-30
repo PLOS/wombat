@@ -157,7 +157,7 @@ $line-height-small: ($line-height * .5);
       color: $clr-body-text;
       font-weight: normal;
     }
-    
+
     .amendment-link,
     .amendment-date{
       font-weight: bold;
@@ -364,7 +364,7 @@ $line-height-small: ($line-height * .5);
   text-align: center;
   width: 100%;
   &:hover .carousel-control .button,
- .carousel-control.controls-show  button{
+  .carousel-control.controls-show  button{
     display: block;
   }
   .carousel-wrapper {
@@ -479,14 +479,14 @@ $line-height-small: ($line-height * .5);
     font-weight: bold;
     font-size: $txt-size-small;
   }
-    p {
-      margin: 0;
-    }
+  p {
+    margin: 0;
   }
+}
 
 
 .article-content .figure-inline-download {
- @extend .hide-for-print;
+  @extend .hide-for-print;
   display: table-cell;
   font-size: $txt-size-xsmall;
   vertical-align: top;
@@ -659,6 +659,69 @@ $line-height-small: ($line-height * .5);
   li:first-child {
     list-style-type: none;
     margin-left: 0;
+  }
+}
+/*tooltips for page links (eg "[4]") to references at bottom of page */
+
+.ref-tooltip {
+  @include plos-grid-column(550, $gutter: none);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  border-radius: $border-radius-default;
+  border-bottom: 1px solid $grey-light;
+  position: absolute;
+  margin: 0;
+  font-size: $txt-size-xsmall;
+  line-height: $line-height;
+  min-height: rem-calc(61);
+  z-index: map-get($zindex, dropdown);
+
+  .ref_tooltip-content {
+    border-radius: $border-radius-default;
+    background: $white;
+    border-top: 1px solid $grey-light;
+    border-right: 1px solid $grey-light;
+    border-bottom: 1px solid $white;
+    border-left: 1px solid $grey-light;
+    padding: $pad-smallish $pad-default $pad-smallish $pad-large;
+    min-height: rem-calc(61);
+    z-index: map-get($zindex, dropdown);
+
+    span.order {
+      margin-left: rem-calc(-25);
+      float: left;
+      width: $pad-default;
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .find-nolinks {
+      display: none;
+    }
+  }
+  //for the arrow
+  &:after, &:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #fff;
+    border-width: rem-calc(12);
+    margin-left: rem-calc(-12);
+  }
+
+  &:before {
+    border-color: rgba(204, 204, 204, 0);
+    border-top-color: $grey-med-light;
+    border-width: rem-calc(13);
+    margin-left: rem-calc(-13);
   }
 }
 

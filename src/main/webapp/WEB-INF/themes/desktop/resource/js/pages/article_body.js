@@ -1,5 +1,5 @@
 (function ($) {
-var tooltip_references, initTooltipReference;
+var tooltip_references, initReferenceTooltip;
 
   function getMediaCoverageCount(almData) {
     for (var i = 0; i < almData.sources.length; i++) {
@@ -94,16 +94,60 @@ var tooltip_references, initTooltipReference;
 // tooltips for the links to references in the article body eg '[4]'
   tooltip_references = function () {
 
+    function removeBrackets(content) {
+      var contentReady;
+
+      var checkFirst = content.indexOf('[');
+      var checkLast = content.indexOf(']');
+
+      if (checkFirst === -1 && checkLast === -1) {
+
+        contentReady = content;
+      } else if (checkFirst === 0 && checkLast === -1) {
+
+        contentReady = content.slice(1);
+      } else if (checkFirst === -1 && checkLast !== -1) {
+
+        contentReady = content.slice(0,-1);
+      } else {
+
+        contentReady = content.slice(1,-1);
+      }
+      return contentReady;
+
+    }
+
+    function slice_o_matic(copy, charFind, sliceStart, sliceEnd){
+      var checky = copy.indexOf(charFind);
+      var contentReady;
+
+      if (checky === -1) {
+
+        contentReady = copy;
+        return contentReady;
+      } else {
+
+        sliceEnd = checky - sliceEnd;
+        contentReady = copy.slice(sliceStart, sliceEnd);
+        return contentReady;
+      }
+
+    }
+
   $('.ref-tip').hover(
     function () {
       var $ref_link = $(this);  // hovered over link
-      var $position = $ref_link.position();
+      var $position = $ref_link.position(); // find out where it is so the tooltip can show up above it
       var $link_width = $ref_link.width();
-      var $ref_number = $ref_link.text().slice(1, -1);  //drop the brackets [4]
-      var ref_label = '#ref' + $ref_number;  // form the id in the references li.s
-      var $matching_ref = $(ref_label).html(); //get the reference content
+      var ref_number = $ref_link.text();
+      ref_number = removeBrackets(ref_number);
+
+      var ref_label = '#ref' + ref_number;  // form the References section li id eg 'id=ref4'
+      var matching_ref = $(ref_label).html(); // get the reference content
+      matching_ref = slice_o_matic(matching_ref, 'reflinks', 0, 11);
+
       var $ref_tooltip = $('.ref-tooltip');  //find the tooltip div
-      var $ref_content = $ref_tooltip.find('.ref_tooltip-content').html($matching_ref); //add the references content
+      var $ref_content = $ref_tooltip.find('.ref_tooltip-content').html(matching_ref); //add the references content
       var $ref_link_top = $position.top;
       var $ref_link_left = $position.left;
       var $tooltip_height = $ref_tooltip.height();
@@ -121,6 +165,6 @@ var tooltip_references, initTooltipReference;
       $('.ref-tooltip').fadeOut('fast');
     });
   };
-  initTooltipReference = tooltip_references();
+  initReferenceTooltip = tooltip_references();
 
 })(jQuery);

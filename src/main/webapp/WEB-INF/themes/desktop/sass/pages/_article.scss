@@ -402,16 +402,17 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 }
 
-.author-list{
+.author-list {
   @extend .text-article-intro;
-  @extend .inline-list;
   overflow: visible;
-  margin-left: 0;// needed t overwrite the inline-list
+  margin-left: 0;
   margin-bottom: $pad-small;
 
   li {
+    float: left;
+    list-style-type: none;
     position: relative;
-    margin-left: -($pad-highlight * 1.5);  // needed to overwrite the inline-list
+    margin-left: -($pad-highlight * 1.5);
 
     &.active{
       a:hover{text-decoration: none;}
@@ -456,9 +457,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   height: auto;
   position:absolute;
   margin-top: $pad-small;
-  opacity: 0;
-  @include single-transition(opacity);
-  z-index: -1;
+  display: none;
 
   p{
     border-top: rem-calc(2) solid $grey-med;
@@ -482,8 +481,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 
   .author-info {
-    opacity: 1;
-    z-index: map-get($zindex, dropdown);
+    z-index: map_get($zindex, dropdown);
   }
 
   .close {

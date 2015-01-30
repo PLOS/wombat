@@ -1,8 +1,12 @@
 
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
 $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
-
-
+body {
+  // This overrides a Foundation setting on body in _global.scss
+  // TODO: this should be set in _settings.scss: $cursor-default-value: auto
+  // (the above TODO change also affects the home page, testing of which is not included in current project scope)
+  cursor: auto;
+}
 // extensible layout styles
 
 .text-article-intro {

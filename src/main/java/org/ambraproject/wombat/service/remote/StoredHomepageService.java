@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
-import com.google.common.primitives.Ints;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective.ElementSubstitution;
 import org.ambraproject.wombat.freemarker.SitePageContext;
@@ -26,7 +25,7 @@ public class StoredHomepageService implements FetchHtmlService {
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
   @Autowired
-  private ContentRepoService contentRepoService;
+  private EditorialContentService editorialContentService;
 
   /**
    * {@inheritDoc}
@@ -42,7 +41,7 @@ public class StoredHomepageService implements FetchHtmlService {
     CacheParams cacheParams = CacheParams.create(cacheKey, (cacheTtl == null) ? null : cacheTtl.intValue());
     Optional<Integer> version = Optional.absent();     // TODO May want to support homepage versioning at some point using fetchHtmlDirective
 
-    String transformedHtml = contentRepoService.requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
+    String transformedHtml = editorialContentService.requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
       @Override
       public String read(Reader htmlReader) throws IOException {
         // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.

@@ -2,24 +2,23 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.io.Reader;
-import java.io.InputStreamReader;
-import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
 
-public class ContentRepoServiceImpl implements ContentRepoService {
+public class EditorialContentServiceImpl implements EditorialContentService {
 
   @Autowired
   private SoaService soaService;
@@ -27,35 +26,34 @@ public class ContentRepoServiceImpl implements ContentRepoService {
   private CachedRemoteService<InputStream> cachedRemoteStreamer;
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
+  @Autowired
+  private Gson gson;
 
   private URI contentRepoAddress;
   private String repoBucketName;
 
   private void setRepoConfig() throws IOException {
-    Map<String,Object> repoConfig = (Map<String, Object>) soaService.requestObject("config?type=repo", Map.class);
-    Object address = repoConfig.get("contentRepoAddress");
-    if (address != null){
-      try {
-        contentRepoAddress = new URI(address.toString());
-      } catch (URISyntaxException e) {
-        throw new RuntimeException("Invalid content repo URI returned from service", e);
-      }
-    }
-    Object bucket = repoConfig.get("repoBucketName");
-    if (bucket != null){
-      repoBucketName = bucket.toString();
-    }
+    Map<String, Object> repoConfig = (Map<String, Object>) soaService.requestObject("config?type=repo", Map.class);
+    Map<String, Object> editorialConfig = (Map<String, Object>) repoConfig.get("editorial");
+    if (editorialConfig == null) throw new RuntimeException("config?type=repo did not provide \"editorial\" config");
+    String address = (String) editorialConfig.get("address");
+    if (address == null) throw new RuntimeException("config?type=repo did not provide \"editorial.address\"");
+    String bucket = (String) editorialConfig.get("bucket");
+    if (bucket == null) throw new RuntimeException("config?type=repo did not provide \"editorial.bucket\"");
 
+    try {
+      contentRepoAddress = new URI(address);
+    } catch (URISyntaxException e) {
+      throw new RuntimeException("Invalid content repo URI returned from service", e);
+    }
+    repoBucketName = bucket;
   }
 
   private URI getContentRepoAddress() throws IOException {
     if (contentRepoAddress == null) {
       setRepoConfig();
-      if (contentRepoAddress == null) {
-        throw new RuntimeException("No content repo URI returned from service");
-      }
     }
-    return contentRepoAddress;
+    return Preconditions.checkNotNull(contentRepoAddress);
   }
 
   private String getRepoBucketName() throws IOException {
@@ -65,7 +63,7 @@ public class ContentRepoServiceImpl implements ContentRepoService {
         throw new RuntimeException("No repository bucket name returned from service");
       }
     }
-    return repoBucketName;
+    return Preconditions.checkNotNull(repoBucketName);
   }
 
   /**
@@ -80,13 +78,28 @@ public class ContentRepoServiceImpl implements ContentRepoService {
   @Override
   public CloseableHttpResponse request(String key, Optional<Integer> version, Collection<? extends Header> headers)
       throws IOException {
-    URI requestAddress = buildUri(key, version);
+    URI requestAddress = buildUri(key, version, RequestMode.OBJECT);
     HttpGet get = new HttpGet(requestAddress);
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }
 
-  private URI buildUri(String key, Optional<Integer> version) throws IOException {
+  private static enum RequestMode {
+    OBJECT, METADATA;
+
+    private String getPathComponent() {
+      switch (this) {
+        case OBJECT:
+          return "objects";
+        case METADATA:
+          return "objects/meta";
+        default:
+          throw new AssertionError();
+      }
+    }
+  }
+
+  private URI buildUri(String key, Optional<Integer> version, RequestMode mode) throws IOException {
     String contentRepoAddressStr = getContentRepoAddress().toString();
     if (contentRepoAddressStr.endsWith("/")) {
       contentRepoAddressStr = contentRepoAddressStr.substring(0, contentRepoAddressStr.length() - 1);
@@ -96,13 +109,25 @@ public class ContentRepoServiceImpl implements ContentRepoService {
       requestParams.add("version", version.get().toString());
     }
     String repoBucketName = getRepoBucketName();
-    return URI.create(String.format("%s/objects/%s?%s", contentRepoAddressStr, repoBucketName, requestParams.format()));
+    return URI.create(String.format("%s/%s/%s?%s",
+        contentRepoAddressStr, mode.getPathComponent(), repoBucketName, requestParams.format()));
   }
 
   @Override
   public <T> T requestCachedReader(CacheParams cacheParams, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
     Preconditions.checkNotNull(callback);
-    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version)), callback);
+    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version, RequestMode.OBJECT)), callback);
+  }
+
+  @Override
+  public Map<String, Object> requestMetadata(CacheParams cacheParams, String key, Optional<Integer> version) throws IOException {
+    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version, RequestMode.METADATA)),
+        new CacheDeserializer<Reader, Map<String, Object>>() {
+          @Override
+          public Map<String, Object> read(Reader stream) throws IOException {
+            return gson.fromJson(stream, Map.class);
+          }
+        });
   }
 
 }

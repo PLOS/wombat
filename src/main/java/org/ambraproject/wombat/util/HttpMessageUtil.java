@@ -48,7 +48,8 @@ public class HttpMessageUtil {
   }
 
   /**
-   * Copy content with whitelisted headers between responses
+   * Copy content with whitelisted headers between responses. Headers already written to {@code responseTo} are
+   * <em>not</em> overwritten if {@code responseFrom} has a header with the same name.
    *
    * @param responseFrom an incoming response to copy from
    * @param responseTo   an outgoing response to copy into
@@ -59,9 +60,12 @@ public class HttpMessageUtil {
                                              HeaderFilter headerFilter)
       throws IOException {
     for (Header header : responseFrom.getAllHeaders()) {
-      String newValue = headerFilter.getValue(header);
-      if (newValue != null) {
-        responseTo.setHeader(header.getName(), newValue);
+      String headerName = header.getName();
+      if (!responseTo.containsHeader(headerName)) {
+        String newValue = headerFilter.getValue(header);
+        if (newValue != null) {
+          responseTo.setHeader(headerName, newValue);
+        }
       }
     }
     copyResponse(responseFrom, responseTo);
@@ -69,12 +73,13 @@ public class HttpMessageUtil {
 
   /**
    * Copy content between responses
+   *
    * @param responseFrom
    * @param responseTo
    * @throws IOException
    */
   public static void copyResponse(HttpResponse responseFrom, HttpServletResponse responseTo)
-          throws IOException {
+      throws IOException {
 
     try (InputStream streamFromService = responseFrom.getEntity().getContent();
          OutputStream streamToClient = responseTo.getOutputStream()) {
@@ -100,7 +105,6 @@ public class HttpMessageUtil {
     }
     return headers;
   }
-
 
 
   public static Collection<NameValuePair> getRequestParameters(HttpServletRequest request) {

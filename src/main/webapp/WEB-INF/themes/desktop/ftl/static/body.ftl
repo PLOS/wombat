@@ -1,1 +1,3 @@
+<main>
 THIS IS THE BODY FOR STATIC PAGES
+</main>

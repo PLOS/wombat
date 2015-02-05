@@ -5,7 +5,7 @@
 			class="no-js">
 <#assign depth = 0 />
 <#assign title = '' />
-<#assign cssFile="pages/static.css"/>
+<#assign cssFile="static.css"/>
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />

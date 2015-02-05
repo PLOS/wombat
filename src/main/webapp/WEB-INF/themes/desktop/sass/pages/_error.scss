@@ -1,8 +1,6 @@
-
-@charset "UTF-8";
-@import "global-imports";
-@import "sections/footer";
-@import "sections/header";
+/* 
+ *    This is for Error pages
+ */
 
 .static {
   main{ margin-top: rem-calc(30); margin-bottom: rem-calc(70); }
@@ -10,7 +8,6 @@
 
   }
   background-color: $white;
-
 }
 .error-page {
   @extend .plos-row;
@@ -25,6 +22,3 @@
   }
 
 }
-
-
-

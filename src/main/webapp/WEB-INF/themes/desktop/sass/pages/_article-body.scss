@@ -440,9 +440,7 @@ $line-height-small: ($line-height * .5);
       &.active, &:hover {
         color: $plos-default;
       }
-      &:hover{
-        cursor: hand
-      }
+
     }
   }
 }

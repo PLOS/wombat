@@ -1,3 +1,3 @@
 <main>
-THIS IS THE BODY FOR STATIC PAGES
+<#include "sample.ftl" />
 </main>

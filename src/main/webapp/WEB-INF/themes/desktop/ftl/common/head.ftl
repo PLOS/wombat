@@ -1,10 +1,22 @@
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 
+<#macro pageCSS>
+
+  <#if !cssFile?has_content>
+    <#assign cssFile="screen.css"/>
+  </#if>
+
+  <@cssLink target="resource/css/${cssFile}"/>
+
+</#macro>
+
+
 <head prefix="og: http://ogp.me/ns#">
   <title><@titleFormat removeTags(title) /></title>
 
-  <@cssLink target="resource/css/screen.css"/>
+  <@pageCSS/>
+
   <@renderCssLinks />
     <!--[if IE 8]>
   <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />"/>

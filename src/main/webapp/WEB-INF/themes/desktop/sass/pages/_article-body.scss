@@ -672,6 +672,7 @@ $line-height-small: ($line-height * .5);
   line-height: $line-height;
   min-height: rem-calc(61);
   z-index: map-get($zindex, dropdown);
+  display: none;
 
   .ref_tooltip-content {
     border-radius: $border-radius-default;

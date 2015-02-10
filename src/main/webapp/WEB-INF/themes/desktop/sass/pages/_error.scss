@@ -1,14 +1,13 @@
+/* 
+ *    This is for Error pages
+ */
 
-/*%width-full {
-  @include plos-grid-column($pixelwidth: full-width);
-}*/
 .static {
   main{ margin-top: rem-calc(30); margin-bottom: rem-calc(70); }
   h1{margin-bottom: rem-calc(30)
 
   }
   background-color: $white;
-
 }
 .error-page {
   @extend .plos-row;
@@ -23,6 +22,3 @@
   }
 
 }
-
-
-

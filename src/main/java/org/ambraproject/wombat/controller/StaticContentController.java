@@ -29,7 +29,7 @@ import java.io.IOException;
 public class StaticContentController extends WombatController {
 
   @RequestMapping(value = {"/s", "/{site}/s"})
-  public String renderLightbox(Model model, @SiteParam Site site)
+  public String renderStaticContent(Model model, @SiteParam Site site)
           throws IOException {
 
     return site + "/ftl/static/container";

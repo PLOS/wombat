@@ -1,3 +1,4 @@
+@import "vendor/foundation/functions";
 
 /*doc
 ---
@@ -100,8 +101,6 @@ $grid-type: fixed;
 $grid-gutter: 1.25rem; //TODO: figure out this whole rem thing
 $grid-width: 980px;
 $grid-columns: 12;
-
-
 
 // layout patterns
 $border-radius-smaller: 2px;

@@ -121,35 +121,6 @@ ul.bullet {
     font-style: italic;
   }
 
-/////////
-/// homepage font styles
-////////
-%header-allcaps {
- font-size: rem-calc($txt-size-medium);
- font-family: $font-face-fancy;
- @extend %txt-transform;
-}
-%header-allcaps-plain {
-  @extend %header-allcaps;
-  font-family: $font-face-plain;
-}
-%header-allcaps-xlarge {
-  @extend %header-allcaps;
-  font-size: rem-calc($txt-size-xlarge);
-}
-
-%header-xlarge-light {     ///never used at all
-  font-size: rem-calc($txt-size-xlarge);
-  color: $clr-light-text;
-  font-family: $font-face-fancy;
-}
-
-%header-bottom-shadow {  //not used
-  padding-bottom: rem-calc(17);
-  margin-bottom: rem-calc(17);
-  box-shadow: $default-header-shadow;
-  text-align: center;
-}
 
 
 %brand-title {
@@ -288,3 +259,34 @@ This is one place not to use @extend, since this is a semantic class name
 
 .note,.caption, figcaption { color: $grey-med-light;}
 
+
+
+/////////
+/// homepage font styles
+////////
+%header-allcaps {
+  font-size: rem-calc($txt-size-medium);
+  font-family: $font-face-fancy;
+  @extend %txt-transform;
+}
+%header-allcaps-plain {
+  @extend %header-allcaps;
+  font-family: $font-face-plain;
+}
+%header-allcaps-xlarge {
+  @extend %header-allcaps;
+  font-size: rem-calc($txt-size-xlarge);
+}
+
+%header-xlarge-light {     ///never used at all
+  font-size: rem-calc($txt-size-xlarge);
+  color: $clr-light-text;
+  font-family: $font-face-fancy;
+}
+
+%header-bottom-shadow {  //not used
+  padding-bottom: rem-calc(17);
+  margin-bottom: rem-calc(17);
+  box-shadow: $default-header-shadow;
+  text-align: center;
+}

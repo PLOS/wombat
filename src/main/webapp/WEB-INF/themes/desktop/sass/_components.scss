@@ -200,14 +200,14 @@ have a fixed width and height (but it's not required).
   .block-header {
     @extend %brand-header;
   }
-  .carousel {
+  .carousel {  //TODO: do we move this into home?
     li {
       width: $carousel-width;
       padding: $pad-default;
       height: 145px;
       h3 {
-        @extend h2;
-        @extend %link-text-body;
+        @extend %home-subheader;
+       @extend  %header-xxlarge;
       }
       p {
         font-size: rem-calc($txt-size-medium);
@@ -226,6 +226,7 @@ have a fixed width and height (but it's not required).
       font-size: $icon-height;
       &:hover {
         @extend .fa-inverse;
+        text-decoration: none;
       }
     }
     .jcarousel-prev {

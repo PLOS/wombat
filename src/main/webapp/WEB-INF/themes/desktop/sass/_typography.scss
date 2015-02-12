@@ -138,6 +138,11 @@ ul.bullet {
 }
 
 
+.header-allcaps-smallest {
+  @extend %header-allcaps-plain;
+  font-size: $txt-size-xxxsmall;
+}
+
 /*doc
 ---
 title: link styles
@@ -179,7 +184,7 @@ example | extension
   }
 }
 
-%link-text-body, %link-text-body a {
+%link-text-body, %link-text-body a { //TODO- should this be link text home?
   @include link-text();
 }
 
@@ -278,9 +283,21 @@ This is one place not to use @extend, since this is a semantic class name
   font-size: rem-calc($txt-size-xlarge);
 }
 
-%header-xlarge-light {     ///never used at all
+%header-medium-bold{
+  font-size: rem-calc($txt-size-medium);
+  font-family: $font-face-fancy;
+  font-weight:bold;
+
+}
+
+%header-xlarge-light {
   font-size: rem-calc($txt-size-xlarge);
   color: $clr-light-text;
+  font-family: $font-face-fancy;
+}
+
+%header-xxlarge {
+  font-size: rem-calc($txt-size-xxlarge);
   font-family: $font-face-fancy;
 }
 

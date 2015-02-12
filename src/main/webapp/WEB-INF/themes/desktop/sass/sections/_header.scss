@@ -116,7 +116,13 @@ $width-nav: $block-grid-elements - $width-logo;
   @extend .hide-for-print;
   // foundation
   @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right);
-
+  h2,h3{
+    font-family:  $font-face-navigation;
+    line-height: 1;
+  }
+ ul{
+   line-height: 1.35;
+ }
   ul.nav-elements {
     @extend .right; // foundation
     padding-right: 0;

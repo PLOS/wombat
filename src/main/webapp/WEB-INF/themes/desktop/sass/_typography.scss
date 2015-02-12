@@ -63,9 +63,7 @@ example | extension
 */
 
 /* basic styles  */
-a {
-  @extend %link-text-default;
-}
+
 
 ul.bullet {
     list-style-type: none;

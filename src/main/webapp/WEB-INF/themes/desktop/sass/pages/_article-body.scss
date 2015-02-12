@@ -37,58 +37,58 @@ $line-height-small: ($line-height * .5);
 
 .article-content {
 
-  p, ul, ol, .section > div {
-    margin-bottom: $line-height;
-  }
+//  p, ul, ol, .section > div {
+//    margin-bottom: $line-height;
+//  }
 
   a {
     @extend %link-text-default;
   }
 
-  p, li {
-    margin-bottom: $txt-size-default;
-    line-height: $line-height;
-  }
-  ul.bulleted {
-    list-style-type: none;
-
-    li {
-      padding-left: $pad-default;
-    }
-    li:before {
-      content: '>';
-      font-size: rem-calc(10);
-      display: inline-block;
-      margin-left: -$pad-smallish;
-      position: absolute
-    }
-    // to do put in variables
-  }
-
-  h2, h3, h4, h5 {
-    font-family: $font-face-plain;
-    margin-bottom: $line-height-small;
-    margin-top: $line-height-med;
-    line-height: normal;
-  }
-
-  h2 {
-    font-size: $txt-size-large;
-    margin-bottom: $line-height;
-    font-weight: bold;
-  }
-
-  h3, h4 {
-    font-size: $txt-size-medium-large;
-    margin-top: $line-height-small;
-  }
-
-  h3 {
-    font-weight: bold;
-  }
-  h4 {
-    font-weight: normal
-  }
+//  p, li {
+//    margin-bottom: $txt-size-default;
+//    line-height: $line-height;
+//  }
+//  ul.bulleted {
+//    list-style-type: none;
+//
+//    li {
+//      padding-left: $pad-default;
+//    }
+//    li:before {
+//      content: '>';
+//      font-size: rem-calc(10);
+//      display: inline-block;
+//      margin-left: -$pad-smallish;
+//      position: absolute
+//    }
+//    // to do put in variables
+//  }
+//
+//  h2, h3, h4, h5 {
+//    font-family: $font-face-plain;
+//    margin-bottom: $line-height-small;
+//    margin-top: $line-height-med;
+//    line-height: normal;
+//  }
+//
+//  h2 {
+//    font-size: $txt-size-large;
+//    margin-bottom: $line-height;
+//    font-weight: bold;
+//  }
+//
+//  h3, h4 {
+//    font-size: $txt-size-medium-large;
+//    margin-top: $line-height-small;
+//  }
+//
+//  h3 {
+//    font-weight: bold;
+//  }
+//  h4 {
+//    font-weight: normal
+//  }
   .title-small {
     font-size: $txt-size-default;
     font-weight: bold;

@@ -166,8 +166,8 @@ $paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style anchors
 $anchor-text-decoration: none;
-$anchor-font-color: $plos-default;
-$anchor-font-color-hover: $grey-dark;
+$anchor-font-color: $clr-link;
+$anchor-font-color-hover: $clr-body-text;
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;

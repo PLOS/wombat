@@ -116,10 +116,10 @@ $global-radius: $border-radius-default;
 $header-font-family: $font-face-fancy;
 $header-font-weight: normal;
 $header-font-style: normal;
-$header-font-color: $grey-dark;
-$header-line-height: 1;
-//$header-top-margin: .2rem;
-$header-bottom-margin: .2rem;
+$header-font-color: $clr-body-text;
+$header-line-height: 1.3;
+$header-top-margin: $line-height-small;
+$header-bottom-margin: $line-height;
 $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
@@ -131,11 +131,18 @@ $h5-font-size: rem-calc($txt-size-h5);
 $h6-font-size: rem-calc($txt-size-h6);
 
 // These control how subheaders are styled.
-$subheader-line-height: 1.1;
+//TODO remove these values
+//$subheader-line-height: 1.3;
+//$subheader-font-color: $clr-body-text;
+//$subheader-font-weight: 300;
+//$subheader-top-margin: .2rem;
+//$subheader-bottom-margin: .2rem;
+
+$subheader-line-height: 1.3;
 $subheader-font-color: $clr-body-text;
-$subheader-font-weight: 300;
-$subheader-top-margin: .2rem;
-$subheader-bottom-margin: .2rem;
+$subheader-font-weight: bold;
+$subheader-top-margin:  $line-height-med;
+$subheader-bottom-margin: $line-height-small;
 
 // A general <small> styling
 $small-font-size: rem-calc($txt-size-xsmall);
@@ -145,10 +152,10 @@ $small-font-color: $body-font-color;
 $paragraph-font-family: inherit;
 $paragraph-font-weight: normal;
 $paragraph-font-size: rem-calc($txt-size-default);
-$paragraph-line-height: 1.35;
-$paragraph-margin-bottom: rem-calc(5);
-$paragraph-aside-font-size: rem-calc(14);
-$paragraph-aside-line-height: 1.35;
+$paragraph-line-height: rem-calc($line-height);
+$paragraph-margin-bottom:  rem-calc($txt-size-default);
+$paragraph-aside-font-size: $paragraph-font-size;
+$paragraph-aside-line-height: $paragraph-line-height;
 $paragraph-aside-font-style: italic;
 $paragraph-text-rendering: optimizeLegibility;
 
@@ -169,14 +176,14 @@ $anchor-font-color-hover: $grey-dark;
 // $hr-margin: rem-calc(20);
 
 // We use these to style lists
-// $list-style-position: outside;
-// $list-side-margin: 1.1rem;
-// $list-ordered-side-margin: 1.4rem;
-// $list-side-margin-no-bullet: 0;
-// $list-nested-margin: rem-calc(20);
-// $definition-list-header-weight: bold;
-// $definition-list-header-margin-bottom: .3rem;
-// $definition-list-margin-bottom: rem-calc(12);
+$list-style-position: outside;
+$list-side-margin: $pad-default;
+$list-ordered-side-margin: $pad-default;
+$list-side-margin-no-bullet: 0;
+$list-nested-margin: $pad-default;
+$definition-list-header-weight: bold;
+$definition-list-header-margin-bottom: $paragraph-margin-bottom;
+$definition-list-margin-bottom: rem-calc(12);
 
 // We use these to style blockquotes
 $blockquote-font-color: $clr-body-text;

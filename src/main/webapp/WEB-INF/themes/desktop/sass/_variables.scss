@@ -166,17 +166,22 @@ $txt-size-xxsmall: 11px;
 $txt-size-xxxsmall: 10px;
 $txt-size-xxxxsmall: 9px;
 
-$txt-size-pgtitle: $txt-size-giant;
+$txt-size-pgtitle: $txt-size-27large;
 $txt-size-default: $txt-size-small;
 $txt-size-h1: $txt-size-xlarge;
-$txt-size-h2: $txt-size-xxlarge;
-$txt-size-h3: $txt-size-large;
-$txt-size-h4: $txt-size-default;
+$txt-size-h2: $txt-size-large;
+$txt-size-h3: $txt-size-medium-large;
+$txt-size-h4: $txt-size-medium-large;
 $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
 $sub-sup-alignment: .5ex; //controls sub and super text
+
+$line-height: 18;
+$line-height-large: ($line-height * 2);
+$line-height-med: ($line-height * 1.5);
+$line-height-small: ($line-height * .5);
 
 /*doc
 ---

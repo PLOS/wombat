@@ -60,9 +60,70 @@ example | extension
 <p class="example-header-allcaps-xlarge">I am x-large</p> | `@extend %header-allcaps-xlarge`
 <p class="example-brand-title">I am the color of the journal</p> | `@extend %brand-title`
 
-
 */
 
+/* basic styles  */
+a {
+  @extend %link-text-default;
+}
+
+ul.bullet {
+    list-style-type: none;
+
+    li {
+      padding-left: $pad-default;
+    }
+    li:before {
+      content: '>';
+      font-size: rem-calc(10);
+      display: inline-block;
+      margin-left: -$pad-smallish;
+      position: absolute
+    }
+    // to do put in variables
+  }
+
+  h2, h3, h4, h5 {
+    font-family: $font-face-plain;
+    margin-bottom: $line-height-small;
+    margin-top: $line-height-med;
+    line-height: normal;
+  }
+
+  h2 {
+    font-size: $txt-size-large;
+    margin-bottom: $line-height;
+    font-weight: bold;
+  }
+
+  h3, h4 {
+    font-size: $txt-size-medium-large;
+    margin-top: $line-height-small;
+  }
+
+  h3 {
+    font-weight: bold;
+  }
+  h4 {
+    font-weight: normal
+  }
+  .title-small {
+    font-size: $txt-size-default;
+    font-weight: bold;
+  }
+
+  blockquote, .pullquote {
+    border-left: $pad-xsmall solid $clr-separator;
+    margin: $line-height-med 0 $line-height 0;
+  }
+  .pullquote{
+    @extend blockquote;
+    font-style: italic;
+  }
+
+/////////
+/// homepage font styles
+////////
 %header-allcaps {
  font-size: rem-calc($txt-size-medium);
  font-family: $font-face-fancy;
@@ -72,27 +133,25 @@ example | extension
   @extend %header-allcaps;
   font-family: $font-face-plain;
 }
-.header-allcaps-smallest {
-  @extend %header-allcaps-plain;
-  font-size: $txt-size-xxxsmall;
-}
 %header-allcaps-xlarge {
   @extend %header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
 }
 
-%header-xlarge-light {
+%header-xlarge-light {     ///never used at all
   font-size: rem-calc($txt-size-xlarge);
   color: $clr-light-text;
   font-family: $font-face-fancy;
 }
 
-%header-bottom-shadow {
+%header-bottom-shadow {  //not used
   padding-bottom: rem-calc(17);
   margin-bottom: rem-calc(17);
   box-shadow: $default-header-shadow;
   text-align: center;
 }
+
+
 %brand-title {
   @extend %header-allcaps;
   @extend %brand-color;
@@ -229,4 +288,3 @@ This is one place not to use @extend, since this is a semantic class name
 
 .note,.caption, figcaption { color: $grey-med-light;}
 
-%text-size-large {font-size: $txt-size-large;}

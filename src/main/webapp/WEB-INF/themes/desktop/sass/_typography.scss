@@ -263,11 +263,19 @@ This is one place not to use @extend, since this is a semantic class name
 
 .note,.caption, figcaption { color: $grey-med-light;}
 
-
-
 /////////
 /// homepage font styles
 ////////
+
+%home-subheader{
+  line-height: 1;
+  color: $grey-dark;
+  font-weight: normal;
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+  @extend %link-text-body;
+}
+
 %header-allcaps {
   font-size: rem-calc($txt-size-medium);
   font-family: $font-face-fancy;
@@ -300,7 +308,7 @@ This is one place not to use @extend, since this is a semantic class name
   font-family: $font-face-fancy;
 }
 
-%header-bottom-shadow {  //not used
+%header-bottom-shadow {  //not used ?
   padding-bottom: rem-calc(17);
   margin-bottom: rem-calc(17);
   box-shadow: $default-header-shadow;

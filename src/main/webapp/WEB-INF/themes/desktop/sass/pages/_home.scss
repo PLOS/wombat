@@ -51,15 +51,6 @@ $image-container: ($image-width + $pad-small);
 ////////
 // font sizes and styles
 ////////////
-%home-subheader{
-  line-height: 1;
-  color: $grey-dark;
-  font-weight: normal;
-  margin-top: .2rem;
-  margin-bottom: .2rem;
-  @extend %link-text-body;
-
-}
 
 .home main{
   color: $grey-dark;

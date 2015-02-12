@@ -207,7 +207,7 @@ have a fixed width and height (but it's not required).
       height: 145px;
       h3 {
         @extend %home-subheader;
-       @extend  %header-xxlarge;
+        @extend  %header-xxlarge;
       }
       p {
         font-size: rem-calc($txt-size-medium);

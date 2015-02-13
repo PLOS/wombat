@@ -1,11 +1,13 @@
 package org.ambraproject.wombat.service.remote;
 
-import org.ambraproject.wombat.freemarker.FetchHtmlDirective.ElementSubstitution;
 import org.ambraproject.wombat.freemarker.SitePageContext;
+import org.ambraproject.wombat.util.HtmlAttributeTransformation;
+import org.ambraproject.wombat.util.HtmlElementSubstitution;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Collection;
+import java.util.EnumSet;
 
 public interface FetchHtmlService {
 
@@ -23,7 +25,8 @@ public interface FetchHtmlService {
    * @return an HTML block
    * @throws IOException
    */
-  public abstract Reader readHtml(SitePageContext sitePageContext, String key, Collection<ElementSubstitution> substitutions)
-      throws IOException;
+  public Reader readHtml(SitePageContext sitePageContext, String pageType, String key,
+                                  EnumSet<HtmlAttributeTransformation> transformations,
+                                  Collection<HtmlElementSubstitution> substitutions) throws IOException;
 
 }

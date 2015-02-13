@@ -191,17 +191,7 @@ $line-height-small: ($line-height * .5);
   }
 
   //  SPECIAL HANDLING FOR XML TRANSFORM
-  ol.references {
-    list-style-type: none;
-    padding-left: rem-calc(25);
-    span.order {
-      margin-left: rem-calc(-26);
-      float: left;
-      width: 20px;
-      text-align: right;
-      font-weight: bold;
-    }
-  }
+
 
   span.gene {
     word-break: break-all;
@@ -638,27 +628,48 @@ $line-height-small: ($line-height * .5);
   }
 }
 
+
+
 .article-content .reflinks, #lightbox-refs .reflinks {
   @include clearfix;
   margin-bottom: 0;
   margin-left: 0;
   padding: 0;
-  height: rem-calc(25);
-  line-height: $line-height;
+//  height: rem-calc(25);
 
   li {
-    float: left;
+   float: left;
     margin: 0 rem-calc(4) $pad-small $pad-default;
     padding: 0;
     list-style-type: disc;
-    line-height: $line-height;
-
   }
   li:first-child {
     list-style-type: none;
     margin-left: 0;
   }
+
 }
+
+
+$number-margin:  rem-calc(25);
+ol.references {
+
+  list-style-type: none;
+  padding-left: $number-margin;
+  > li{
+    @include clearfix;
+    margin-bottom: $line-height;
+  }
+
+  span.order {
+    margin-left: rem-calc(-26);
+    float: left;
+    width: rem-calc(20);
+    text-align: right;
+    font-weight: bold;
+  }
+}
+
 /*tooltips for page links (eg "[4]") to references at bottom of page */
 
 .ref-tooltip {

@@ -335,7 +335,7 @@ $width-nav: $block-grid-elements - $width-logo;
   h3 {
     @extend %header-bottom-shadow;
     margin-top: $pad-xsmall;
-    font-size: rem-calc($txt-size-23large);
+    font-size: rem-calc($txt-size-xxlarge);
   }
   ul {
     margin-left: rem-calc(15);
@@ -346,7 +346,6 @@ $width-nav: $block-grid-elements - $width-logo;
       margin-left: rem-calc(15);
       width: auto;
       cursor: default;
-
     }
   }
 

@@ -4,6 +4,14 @@
 @import "sections/footer";
 @import "sections/header";
 
+main{ @extend .plos-row; margin-top: rem-calc($line-height-large);   margin-bottom: rem-calc($line-height-large);
+nav{ @include plos-grid-column($pixelwidth: columns, $columns: 2);
+
+}
+  article{ @include plos-grid-column($pixelwidth: columns, $columns: 9);}
+}
+
+
 
 
 

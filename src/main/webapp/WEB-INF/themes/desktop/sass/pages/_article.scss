@@ -68,11 +68,11 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     height: rem-calc(80);
 
     .tools {
-
       a {
         font-size: $txt-size-xsmall;
         color: $grey-dark;
         padding: $pad-xsmall;
+        margin-bottom: rem-calc(2);
        // @include single-transition(background-color);
         transition-property: all;
         transition-duration: .5s;

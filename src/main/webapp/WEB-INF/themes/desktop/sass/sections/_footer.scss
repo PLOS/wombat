@@ -3,6 +3,7 @@
  */
 footer {
   @extend .hide-for-print;
+  .row {@extend .plos-row;}
   // widths
   .brand-column{
     @extend .plos-column-5 }

@@ -183,7 +183,7 @@ $list-side-margin-no-bullet: 0;
 $list-nested-margin: $pad-default;
 $definition-list-header-weight: bold;
 $definition-list-header-margin-bottom: $paragraph-margin-bottom;
-$definition-list-margin-bottom: rem-calc(12);
+$definition-list-margin-bottom: $paragraph-margin-bottom;
 
 // We use these to style blockquotes
 $blockquote-font-color: $clr-body-text;

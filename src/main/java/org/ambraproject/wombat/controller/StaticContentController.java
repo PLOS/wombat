@@ -55,7 +55,7 @@ public class StaticContentController extends WombatController {
     if (cacheKeyPrefix == null) {
       throw new RuntimeConfigurationException("No cache key prefix configured for page type: staticContent");
     }
-    String cacheKey = cacheKeyPrefix.concat(":").concat(repoKey);
+    String cacheKey = cacheKeyPrefix.concat("_meta:").concat(repoKey);
 
     Optional<Integer> version = Optional.absent();
     try {

@@ -57,10 +57,11 @@ public class StaticContentController extends WombatController {
     }
     String cacheKey = cacheKeyPrefix.concat(":").concat(repoKey);
 
-    CacheParams cacheParams = CacheParams.create(cacheKey);
     Optional<Integer> version = Optional.absent();
     try {
-      Map<String, Object> pageMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey), repoKey, version);
+      // Check for validity of the content repo key prior to rendering page. Return a 404 if no object found.
+      Map<String, Object> pageMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey),
+              repoKey, version);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException();
     }

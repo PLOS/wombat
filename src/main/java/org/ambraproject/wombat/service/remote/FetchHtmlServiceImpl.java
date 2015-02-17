@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.util.CacheParams;

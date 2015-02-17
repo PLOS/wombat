@@ -13,10 +13,13 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
+import org.ambraproject.wombat.util.CacheParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +27,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Controller intended to serve static pages
@@ -39,12 +43,27 @@ public class StaticContentController extends WombatController {
           throws IOException {
 
     Theme theme = site.getTheme();
-    String repoKeyPrefix = (String) theme.getConfigMap("staticContent").get("contentRepoKeyPrefix");
+    Map<String, Object> pageConfig = theme.getConfigMap("staticContent");
+
+    String repoKeyPrefix = (String) pageConfig.get("contentRepoKeyPrefix");
     if (repoKeyPrefix == null) {
       throw new RuntimeConfigurationException("Content repo prefix not configured for theme " + theme.toString());
     }
     String repoKey = repoKeyPrefix.concat(".").concat(staticPage);
 
+    String cacheKeyPrefix = (String) pageConfig.get("cacheKeyPrefix");
+    if (cacheKeyPrefix == null) {
+      throw new RuntimeConfigurationException("No cache key prefix configured for page type: staticContent");
+    }
+    String cacheKey = cacheKeyPrefix.concat(":").concat(repoKey);
+
+    CacheParams cacheParams = CacheParams.create(cacheKey);
+    Optional<Integer> version = Optional.absent();
+    try {
+      Map<String, Object> pageMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey), repoKey, version);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException();
+    }
     model.addAttribute("staticContentRepoKey", repoKey);
     return site + "/ftl/static/container";
   }

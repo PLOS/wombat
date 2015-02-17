@@ -1,6 +1,8 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.HtmlAttributeTransformation;
@@ -37,7 +39,11 @@ public class FetchHtmlServiceImpl implements FetchHtmlService {
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
-    String cacheKey = pageType + ":" + key;
+    String cacheKeyPrefix = (String) pageConfig.get("cacheKeyPrefix");
+    if (cacheKeyPrefix == null) {
+      throw new RuntimeConfigurationException("No cache key prefix configured for page type: " + pageType);
+    }
+    String cacheKey = cacheKeyPrefix.concat(":").concat(key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl");
     CacheParams cacheParams = CacheParams.create(cacheKey, (cacheTtl == null) ? null : cacheTtl.intValue());
     Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective

@@ -65,22 +65,24 @@ example | extension
 /* basic styles  */
 
 
+ol {
+  padding-left: $pad-default;
+}
 
 ul.bullet {
-    list-style-type: none;
-
-    li {
-      padding-left: $pad-default;
-    }
-    li:before {
-      content: '>';
-      font-size: rem-calc(10);
-      display: inline-block;
-      margin-left: -$pad-smallish;
-      position: absolute
-    }
-    // to do put in variables
+  list-style-type: none;
+  li {
+    padding-left: $pad-default;
   }
+  li:before {
+    content: '>';
+    font-size: rem-calc(10);
+    display: inline-block;
+    margin-left: -$pad-smallish;
+    position: absolute
+  }
+  // to do put in variables
+}
   /// sizes are set in foundation.
   h2, h3, h4, h5 {
      font-family:  $font-face-plain;

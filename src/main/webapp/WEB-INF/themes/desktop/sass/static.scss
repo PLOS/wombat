@@ -1,17 +1,29 @@
-
 @charset "UTF-8";
 @import "global-imports";
 @import "sections/footer";
 @import "sections/header";
+/// scaffolding
+main {
+  @extend .plos-row;
+  margin-top: rem-calc($line-height-large);
+  margin-bottom: rem-calc($line-height-large);
+  nav {
+    @include plos-grid-column($pixelwidth: columns, $columns: 2);
 
-main{ @extend .plos-row; margin-top: rem-calc($line-height-large);   margin-bottom: rem-calc($line-height-large);
-nav{ @include plos-grid-column($pixelwidth: columns, $columns: 2);
-
+  }
+  article {
+    @include plos-grid-column($pixelwidth: columns, $columns: 9);
+  }
 }
-  article{ @include plos-grid-column($pixelwidth: columns, $columns: 9);}
+
+/// typefaces
+
+article{
+  a {     //TODO: redo links so that underline is standard
+    @extend %link-text-default;
+  }
+  ol{}
 }
-
-
 
 
 

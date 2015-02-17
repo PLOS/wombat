@@ -13,9 +13,14 @@
 
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.service.remote.EditorialContentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
@@ -26,10 +31,21 @@ import java.io.IOException;
 @Controller
 public class StaticContentController extends WombatController {
 
-  @RequestMapping(value = {"/s/*", "/{site}/s/*"})
-  public String renderStaticContent(Model model, @SiteParam Site site)
+  @Autowired
+  private EditorialContentService editorialContentService;
+
+  @RequestMapping(value = {"/s/{staticPage}", "/{site}/s/{staticPage}"})
+  public String renderStaticContent(Model model, @SiteParam Site site, @PathVariable String staticPage)
           throws IOException {
 
+    Theme theme = site.getTheme();
+    String repoKeyPrefix = (String) theme.getConfigMap("staticContent").get("contentRepoKeyPrefix");
+    if (repoKeyPrefix == null) {
+      throw new RuntimeConfigurationException("Content repo prefix not configured for theme " + theme.toString());
+    }
+    String repoKey = repoKeyPrefix.concat(".").concat(staticPage);
+
+    model.addAttribute("staticContentRepoKey", repoKey);
     return site + "/ftl/static/container";
   }
 

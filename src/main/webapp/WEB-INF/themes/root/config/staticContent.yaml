@@ -1,0 +1,3 @@
+contentRepoKeyPrefix: s
+# prefix for content repo keys pointing to static page content. The page name is appended to this prefix.
+# This should be replaced with a valid site-level key prefix in themes (e.g. desktop.biology.s)

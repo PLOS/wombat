@@ -10,9 +10,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 
 /**
  * Encapsulates FreeMarker environment info in order to represent site-specific information.

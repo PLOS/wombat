@@ -1,10 +1,6 @@
 package org.ambraproject.wombat.freemarker;
 
-import freemarker.template.TemplateModelException;
-import java.io.IOException;
-import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 

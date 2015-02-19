@@ -11,8 +11,6 @@ import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.FetchHtmlService;
-import org.ambraproject.wombat.util.HtmlAttributeTransformation;
-import org.ambraproject.wombat.util.HtmlElementSubstitution;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +34,8 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
   private static final Map<String, EnumSet<HtmlAttributeTransformation>> attributeTransforms = ImmutableMap.of(
           "homepage", EnumSet.of(HtmlAttributeTransformation.IMAGE,
                   HtmlAttributeTransformation.ARTICLE),
-          "staticContent", EnumSet.of(HtmlAttributeTransformation.IMAGE)
+          "staticContent", EnumSet.of(HtmlAttributeTransformation.IMAGE,
+                  HtmlAttributeTransformation.LINK, HtmlAttributeTransformation.ASSET)
   );
 
   @Override

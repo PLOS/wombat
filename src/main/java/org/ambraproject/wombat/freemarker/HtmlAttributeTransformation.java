@@ -1,13 +1,18 @@
-package org.ambraproject.wombat.util;
+package org.ambraproject.wombat.freemarker;
 
+import freemarker.template.TemplateModelException;
+import java.io.IOException;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+
 public enum HtmlAttributeTransformation {
   IMAGE("img", "data-lemur-key", "src") {
     @Override
-    protected String transformAttribute(SitePageContext sitePageContext, String value) {
+    protected String transformAttribute(SitePageContext sitePageContext, SiteSet siteSet, String value) {
       String path = "indirect/" + value;
       return sitePageContext.buildLink(path);
     }
@@ -15,8 +20,30 @@ public enum HtmlAttributeTransformation {
 
   ARTICLE("a", "data-lemur-doi", "href") {
     @Override
-    protected String transformAttribute(SitePageContext sitePageContext, String value) {
+    protected String transformAttribute(SitePageContext sitePageContext, SiteSet siteSet, String value) {
       return sitePageContext.buildLink("article?id=" + value);
+    }
+  },
+
+  ASSET("a", "data-lemur-key", "href") {
+    @Override
+    protected String transformAttribute(SitePageContext sitePageContext, SiteSet siteSet, String value) {
+      String path = "indirect/" + value;
+      return sitePageContext.buildLink(path);
+    }
+  },
+
+  LINK("a", "data-lemur-link", "href") {
+    @Override
+    protected String transformAttribute(SitePageContext sitePageContext, SiteSet siteSet, String value) {
+      int sepIdx = value.indexOf("|");
+      if (sepIdx >= 0) {
+        // cross-journal link, so extract journal key
+        String path = value.substring(sepIdx + 1);
+        String journalKey = value.substring(0, sepIdx);
+        return sitePageContext.buildLink(siteSet, journalKey, path);
+      }
+      return sitePageContext.buildLink(value);
     }
   };
 
@@ -31,7 +58,7 @@ public enum HtmlAttributeTransformation {
    * @param value           the source attribute value
    * @return the target attribute value
    */
-  protected abstract String transformAttribute(SitePageContext sitePageContext, String value);
+  protected abstract String transformAttribute(SitePageContext sitePageContext, SiteSet siteSet, String value);
 
   private HtmlAttributeTransformation(String tagName, String sourceAttributeKey, String targetAttributeKey) {
     this.tagName = tagName;
@@ -45,11 +72,11 @@ public enum HtmlAttributeTransformation {
    *
    * @param document the document to modify in place
    */
-  public void apply(SitePageContext sitePageContext, Document document) {
+  public void apply(SitePageContext sitePageContext, SiteSet siteSet, Document document) {
     for (Element element : document.getElementsByAttribute(sourceAttributeKey)) {
       if (element.tagName().equals(tagName)) {
         String oldValue = element.attr(sourceAttributeKey);
-        String newValue = transformAttribute(sitePageContext, oldValue);
+        String newValue = transformAttribute(sitePageContext, siteSet, oldValue);
 
         element.removeAttr(sourceAttributeKey);
         element.attr(targetAttributeKey, newValue);

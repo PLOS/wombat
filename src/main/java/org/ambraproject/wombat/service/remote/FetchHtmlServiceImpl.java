@@ -2,10 +2,11 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.util.CacheParams;
-import org.ambraproject.wombat.util.HtmlAttributeTransformation;
-import org.ambraproject.wombat.util.HtmlElementSubstitution;
+import org.ambraproject.wombat.freemarker.HtmlAttributeTransformation;
+import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,6 +27,8 @@ public class FetchHtmlServiceImpl implements FetchHtmlService {
 
   @Autowired
   private EditorialContentService editorialContentService;
+  @Autowired
+  private SiteSet siteSet;
 
   /**
    * {@inheritDoc}
@@ -56,7 +59,7 @@ public class FetchHtmlServiceImpl implements FetchHtmlService {
         Document document = Jsoup.parseBodyFragment(htmlString);
 
         for (HtmlAttributeTransformation transformation : transformations) {
-          transformation.apply(sitePageContext, document);
+          transformation.apply(sitePageContext, siteSet, document);
         }
         for (HtmlElementSubstitution substitution : substitutions) {
           substitution.substitute(document);

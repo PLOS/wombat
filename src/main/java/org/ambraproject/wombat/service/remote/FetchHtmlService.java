@@ -1,8 +1,8 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.freemarker.SitePageContext;
-import org.ambraproject.wombat.util.HtmlAttributeTransformation;
-import org.ambraproject.wombat.util.HtmlElementSubstitution;
+import org.ambraproject.wombat.freemarker.HtmlAttributeTransformation;
+import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 
 import java.io.IOException;
 import java.io.Reader;

@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.util;
+package org.ambraproject.wombat.freemarker;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;

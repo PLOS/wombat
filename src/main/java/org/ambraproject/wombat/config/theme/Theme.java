@@ -267,7 +267,7 @@ public abstract class Theme {
    * @return a site for the journal key, using preferences defined for this theme if any
    * @throws IOException if the theme's config values can't be read
    */
-  public Site resolveForeignJournalKey(SiteSet siteSet, String journalKey) throws IOException {
+  public Site resolveForeignJournalKey(SiteSet siteSet, String journalKey) throws IOException, UnmatchedSiteException {
     Preconditions.checkArgument(!Strings.isNullOrEmpty(journalKey));
     Map<?, ?> otherJournals = (Map<?, ?>) getConfigMap("journal").get("otherJournals");
     if (otherJournals != null) {

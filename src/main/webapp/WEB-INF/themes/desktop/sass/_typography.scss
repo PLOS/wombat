@@ -38,7 +38,7 @@ Other text-styles
 example | extension
 --------|----------
 <p class="example-condense">I am condensed</p> | `@extend %condense`
-<p class="example-text-size-large">I am a size larger than most text</p> | `@extend %text-size-large`
+
 
 
 
@@ -60,39 +60,71 @@ example | extension
 <p class="example-header-allcaps-xlarge">I am x-large</p> | `@extend %header-allcaps-xlarge`
 <p class="example-brand-title">I am the color of the journal</p> | `@extend %brand-title`
 
-
 */
 
-%header-allcaps {
- font-size: rem-calc($txt-size-medium);
- font-family: $font-face-fancy;
- @extend %txt-transform;
-}
-%header-allcaps-plain {
-  @extend %header-allcaps;
-  font-family: $font-face-plain;
-}
-.header-allcaps-smallest {
-  @extend %header-allcaps-plain;
-  font-size: $txt-size-xxxsmall;
-}
-%header-allcaps-xlarge {
-  @extend %header-allcaps;
-  font-size: rem-calc($txt-size-xlarge);
+/* basic styles  */
+
+
+ol {
+  padding-left: $pad-default;
 }
 
-%header-xlarge-light {
-  font-size: rem-calc($txt-size-xlarge);
-  color: $clr-light-text;
-  font-family: $font-face-fancy;
+ul.bullet {
+  list-style-type: none;
+  li {
+    padding-left: $pad-default;
+  }
+  li:before {
+    content: '>';
+    font-size: rem-calc(10);
+    display: inline-block;
+    margin-left: -$pad-smallish;
+    position: absolute
+  }
+  // to do put in variables
 }
+  /// sizes are set in foundation.
+  h2, h3, h4, h5 {
+     font-family:  $font-face-plain;
+  }
+ // font-weights
+h2, h3 {
+  font-weight: bold;
+}
+h4,h5{
+  font-weight: normal;
+}
+ //spacing
+  h2, h3, h4, h5 {
+    margin-bottom: rem-calc($line-height-small);
+    margin-top: rem-calc($line-height-med);
+    line-height: normal;
+  }
+  h2 {
+    margin-bottom: rem-calc($line-height);
+  }
 
-%header-bottom-shadow {
-  padding-bottom: rem-calc(17);
-  margin-bottom: rem-calc(17);
-  box-shadow: $default-header-shadow;
-  text-align: center;
-}
+  h3, h4 {
+    margin-top: rem-calc($line-height-small);
+  }
+ //special styles
+
+  .title-small {
+    font-size: $txt-size-default;
+    font-weight: bold;
+  }
+
+  blockquote, .pullquote {
+    border-left: $pad-xsmall solid $clr-separator;
+    margin: $line-height-med 0 $line-height 0;
+  }
+  .pullquote{
+    @extend blockquote;
+    font-style: italic;
+  }
+
+
+
 %brand-title {
   @extend %header-allcaps;
   @extend %brand-color;
@@ -107,6 +139,11 @@ example | extension
   line-height: $pad-large;
 }
 
+
+.header-allcaps-smallest {
+  @extend %header-allcaps-plain;
+  font-size: $txt-size-xxxsmall;
+}
 
 /*doc
 ---
@@ -149,7 +186,7 @@ example | extension
   }
 }
 
-%link-text-body, %link-text-body a {
+%link-text-body, %link-text-body a { //TODO- should this be link text home?
   @include link-text();
 }
 
@@ -229,4 +266,54 @@ This is one place not to use @extend, since this is a semantic class name
 
 .note,.caption, figcaption { color: $grey-med-light;}
 
-%text-size-large {font-size: $txt-size-large;}
+/////////
+/// homepage font styles
+////////
+
+%home-subheader{
+  line-height: 1;
+  color: $grey-dark;
+  font-weight: normal;
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+  @extend %link-text-body;
+}
+
+%header-allcaps {
+  font-size: rem-calc($txt-size-medium);
+  font-family: $font-face-fancy;
+  @extend %txt-transform;
+}
+%header-allcaps-plain {
+  @extend %header-allcaps;
+  font-family: $font-face-plain;
+}
+%header-allcaps-xlarge {
+  @extend %header-allcaps;
+  font-size: rem-calc($txt-size-xlarge);
+}
+
+%header-medium-bold{
+  font-size: rem-calc($txt-size-medium);
+  font-family: $font-face-fancy;
+  font-weight:bold;
+
+}
+
+%header-xlarge-light {
+  font-size: rem-calc($txt-size-xlarge);
+  color: $clr-light-text;
+  font-family: $font-face-fancy;
+}
+
+%header-xxlarge {
+  font-size: rem-calc($txt-size-xxlarge);
+  font-family: $font-face-fancy;
+}
+
+%header-bottom-shadow {  //not used ?
+  padding-bottom: rem-calc(17);
+  margin-bottom: rem-calc(17);
+  box-shadow: $default-header-shadow;
+  text-align: center;
+}

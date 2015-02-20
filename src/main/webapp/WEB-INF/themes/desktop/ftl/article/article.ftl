@@ -9,8 +9,8 @@
 <#assign depth = 0 />
 
 <#include "../common/head.ftl" />
-
 <#include "../common/journalStyle.ftl" />
+<#include "../common/article/articleType.ftl" />
 
 <#include "analyticsArticleJS.ftl" />
 

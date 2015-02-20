@@ -304,6 +304,11 @@ example | extension
 .pad-xsmall-x{
   padding: 0 $pad-default;
 }
+
+.margins-reset{
+  margin:0;
+  padding:0;
+}
 //
 // you need to use :before pseudo selector like this:
 //  .div_that_needs_overlay:before{

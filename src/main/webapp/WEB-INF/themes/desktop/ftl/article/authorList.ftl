@@ -19,7 +19,6 @@
  --><#if author_has_next><#-- no space -->,</#if><#-- no space
     --><#if hasMeta> </a>  <#else> </span> </#if>
 
-
     <#if hasMeta>
       <div id="author-meta-${author_index?c}" class="author-info" data-js-tooltip="tooltip_target">
         <#if author.equalContrib>

@@ -1,3 +1,4 @@
+@import "vendor/foundation/functions";
 
 /*doc
 ---
@@ -101,8 +102,6 @@ $grid-gutter: 1.25rem; //TODO: figure out this whole rem thing
 $grid-width: 980px;
 $grid-columns: 12;
 
-
-
 // layout patterns
 $border-radius-smaller: 2px;
 $border-radius-small: 3px; //icon backgrounds
@@ -150,10 +149,8 @@ $font-face-headings: $font-face-fancy;
 //Type Sizes
 $txt-size-giant: 36px;
 $txt-size-xxxxlarge: 28px;
-//27 is for article title on article page
-$txt-size-27large: 27px;
-$txt-size-xxxlarge: 26px;
-$txt-size-23large: 23px;
+// TODO - put the outliers in Homepage
+$txt-size-xxxlarge: 27px;
 $txt-size-xxlarge: 22px;
 $txt-size-xlarge: 20px;
 $txt-size-large: 18px;
@@ -166,17 +163,22 @@ $txt-size-xxsmall: 11px;
 $txt-size-xxxsmall: 10px;
 $txt-size-xxxxsmall: 9px;
 
-$txt-size-pgtitle: $txt-size-giant;
+$txt-size-pgtitle: $txt-size-xxxlarge;
 $txt-size-default: $txt-size-small;
-$txt-size-h1: $txt-size-xlarge;
-$txt-size-h2: $txt-size-xxlarge;
-$txt-size-h3: $txt-size-large;
-$txt-size-h4: $txt-size-default;
+$txt-size-h1: $txt-size-xlarge;  //TODO- shoudl this be page title?
+$txt-size-h2: $txt-size-large;
+$txt-size-h3: $txt-size-medium-large;
+$txt-size-h4: $txt-size-medium-large;
 $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
 $sub-sup-alignment: .5ex; //controls sub and super text
+
+$line-height: 18;
+$line-height-large: ($line-height * 2);
+$line-height-med: ($line-height * 1.5);
+$line-height-small: ($line-height * .5);
 
 /*doc
 ---

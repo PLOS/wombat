@@ -188,7 +188,7 @@ $one-half: ($total-columns / 2);
 
 // body layout
 main,
-#pagehdr {
+#pagehdr{
   @include plos-grid-container;
 }
 

@@ -15,7 +15,7 @@
 
 <h3>Header Level 3</h3>
 
-<ul>
+<ul class="bullet">
   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
   <li>Aliquam tincidunt mauris eu risus.</li>
 </ul>

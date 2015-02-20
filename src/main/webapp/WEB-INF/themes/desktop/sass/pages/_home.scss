@@ -48,6 +48,34 @@ $image-container: ($image-width + $pad-small);
   height: $block-height;
 }
 
+////////
+// font sizes and styles
+////////////
+
+.home main{
+  color: $grey-dark;
+  h1,h2,h3,h5,h6{
+    font-family: $font-face-fancy;
+    line-height:1;
+  }
+  h1{
+    font-size: $txt-size-giant;
+    a:hover{ text-decoration:none;}
+  }
+  h2,h3,h4, h5{
+    @extend %home-subheader;
+
+  }
+  p {
+    line-height: 1.35;
+    margin-bottom: 0.3125rem;
+
+  }
+
+
+
+}
+
 ///////
 //page scaffolding
 /////
@@ -86,6 +114,7 @@ $image-container: ($image-width + $pad-small);
 
 
 .hero{
+
   // overlay colors
   &.overlay-dark > a:before {
     @extend .overlay;
@@ -119,7 +148,7 @@ $image-container: ($image-width + $pad-small);
     padding: $pad-small $pad-default;
     font-size: rem-calc($txt-size-medium-large);
     h4 {
-      font-size: $txt-size-h1;
+      font-size: $txt-size-giant;
       @extend .no-margin;
     }
     .authors {
@@ -185,8 +214,7 @@ $image-container: ($image-width + $pad-small);
     margin-bottom: $pad-xsmall;
   }
   .title {
-    //@extend h2;
-    font-size: $txt-size-h2;
+    @extend %header-xxlarge;
     margin-bottom: $pad-xsmall;
     @extend %link-text-body;
 
@@ -205,10 +233,10 @@ $image-container: ($image-width + $pad-small);
 
   &.small {
     .title {
-     // @extend h4;
-      font-size: $txt-size-h4;
-      @extend .subheader;
-      font-family: $font-face-fancy;
+      @extend %home-subheader;
+      @extend %header-medium-bold;
+      line-height: 1.1;
+
     }
   }
 
@@ -285,7 +313,7 @@ $image-container: ($image-width + $pad-small);
     color: $white;
   }
   h3 {
-    font-size: $txt-size-h2;
+    font-size: $txt-size-xxlarge;
   }
   h4 {
     font-family: $font-face-plain;
@@ -387,7 +415,7 @@ $image-container: ($image-width + $pad-small);
 .linkbox {
   @extend .block-card;
   @extend %width-small;
-  height: rem-calc(410); // PG-we have to set this height to be standard so that we know how tall to make the twitter feed.
+  height: rem-calc(410); // we have to set this height to be standard so that we know how tall to make the twitter feed.
   .image-header{
     background-color: #1c2e5e;
     text-align: center;

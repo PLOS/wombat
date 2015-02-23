@@ -55,6 +55,3 @@ showsIssue: false
 cacheTtl: null
 # If this is non-null and the homepage uses any FetchHtmlDirectives, cache the written HTML for this many seconds.
 # Has no effect if the homepage does not use a FetchHtmlDirective.
-
-cacheKeyPrefix: homepage
-# prefix used for the cache key

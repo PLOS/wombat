@@ -51,11 +51,7 @@ public class SiteContentController extends WombatController {
     }
     String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
-    String cacheKeyPrefix = (String) pageConfig.get("cacheKeyPrefix");
-    if (cacheKeyPrefix == null) {
-      throw new RuntimeConfigurationException("No cache key prefix configured for page type: siteContent");
-    }
-    String cacheKey = cacheKeyPrefix.concat("_meta:").concat(repoKey);
+    String cacheKey = "siteContent_meta:" + repoKey;
 
     Optional<Integer> version = Optional.absent(); // versioning is not supported for site content
     try {

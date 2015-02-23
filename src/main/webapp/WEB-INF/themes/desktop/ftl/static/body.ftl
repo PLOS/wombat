@@ -1,1 +1,0 @@
-<@fetchHtml type="staticContent" path=staticContentRepoKey/>

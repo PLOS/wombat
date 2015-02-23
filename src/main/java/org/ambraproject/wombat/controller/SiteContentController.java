@@ -33,27 +33,27 @@ import java.util.Map;
  * Controller intended to serve static pages
  */
 @Controller
-public class StaticContentController extends WombatController {
+public class SiteContentController extends WombatController {
 
   @Autowired
   private EditorialContentService editorialContentService;
 
   @RequestMapping(value = {"/s/{staticPage}", "/{site}/s/{staticPage}"})
-  public String renderStaticContent(Model model, @SiteParam Site site, @PathVariable String staticPage)
+  public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 
     Theme theme = site.getTheme();
-    Map<String, Object> pageConfig = theme.getConfigMap("staticContent");
+    Map<String, Object> pageConfig = theme.getConfigMap("siteContent");
 
     String repoKeyPrefix = (String) pageConfig.get("contentRepoKeyPrefix");
     if (repoKeyPrefix == null) {
       throw new RuntimeConfigurationException("Content repo prefix not configured for theme " + theme.toString());
     }
-    String repoKey = repoKeyPrefix.concat(".").concat(staticPage);
+    String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
     String cacheKeyPrefix = (String) pageConfig.get("cacheKeyPrefix");
     if (cacheKeyPrefix == null) {
-      throw new RuntimeConfigurationException("No cache key prefix configured for page type: staticContent");
+      throw new RuntimeConfigurationException("No cache key prefix configured for page type: siteContent");
     }
     String cacheKey = cacheKeyPrefix.concat("_meta:").concat(repoKey);
 
@@ -65,8 +65,8 @@ public class StaticContentController extends WombatController {
     } catch (EntityNotFoundException e) {
       throw new NotFoundException();
     }
-    model.addAttribute("staticContentRepoKey", repoKey);
-    return site + "/ftl/static/container";
+    model.addAttribute("siteContentRepoKey", repoKey);
+    return site + "/ftl/siteContent/container";
   }
 
 }

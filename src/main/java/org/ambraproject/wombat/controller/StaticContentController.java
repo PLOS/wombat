@@ -57,7 +57,7 @@ public class StaticContentController extends WombatController {
     }
     String cacheKey = cacheKeyPrefix.concat("_meta:").concat(repoKey);
 
-    Optional<Integer> version = Optional.absent();
+    Optional<Integer> version = Optional.absent(); // versioning is not supported for site content
     try {
       // Check for validity of the content repo key prior to rendering page. Return a 404 if no object found.
       Map<String, Object> pageMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey),

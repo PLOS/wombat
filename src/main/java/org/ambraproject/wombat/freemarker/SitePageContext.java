@@ -71,24 +71,4 @@ public class SitePageContext {
   }
 
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    SitePageContext that = (SitePageContext) o;
-
-    if (!request.equals(that.request)) return false;
-    if (!site.equals(that.site)) return false;
-    if (!environment.equals(that.environment)) return false;
-    return true;
-  }
-
-  @Override
-  public int hashCode() {
-    int result = site.hashCode();
-    result = 31 * result + request.hashCode();
-    return result;
-  }
-
 }

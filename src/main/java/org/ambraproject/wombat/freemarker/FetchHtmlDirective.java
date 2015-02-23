@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.freemarker;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSetMultimap;
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
@@ -15,10 +15,11 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.IOException;
 import java.io.Reader;
-import java.util.EnumSet;
 import java.util.Map;
+import java.util.Set;
 
 public class FetchHtmlDirective implements TemplateDirectiveModel {
   private static final Logger log = LoggerFactory.getLogger(FetchHtmlDirective.class);
@@ -30,12 +31,14 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
 
   private static final String SUBST_ATTR_NAME = "data-subst";
 
-  private static final Map<String, EnumSet<HtmlAttributeTransformation>> attributeTransforms = ImmutableMap.of(
-          "homepage", EnumSet.of(HtmlAttributeTransformation.IMAGE,
-                  HtmlAttributeTransformation.ARTICLE),
-          "staticContent", EnumSet.of(HtmlAttributeTransformation.IMAGE,
-                  HtmlAttributeTransformation.LINK, HtmlAttributeTransformation.ASSET)
-  );
+  private static final ImmutableSetMultimap<String, HtmlAttributeTransformation> attributeTransforms =
+          ImmutableSetMultimap.of(
+                  "homepage", HtmlAttributeTransformation.IMAGE,
+                  "homepage", HtmlAttributeTransformation.ARTICLE,
+                  "staticContent", HtmlAttributeTransformation.IMAGE,
+                  "staticContent", HtmlAttributeTransformation.LINK,
+                  "staticContent", HtmlAttributeTransformation.ASSET
+                  );
 
   @Override
   public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
@@ -52,7 +55,7 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
 
     String pageType = typeObj.toString();
 
-    EnumSet<HtmlAttributeTransformation> transformations = attributeTransforms.get(pageType);
+    Set<HtmlAttributeTransformation> transformations = attributeTransforms.get(pageType);
     if (transformations == null) {
       throw new TemplateModelException(String.format("type parameter '%s' is invalid.", pageType));
     }

@@ -7,7 +7,7 @@ import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Collection;
-import java.util.EnumSet;
+import java.util.Set;
 
 public interface FetchHtmlService {
 
@@ -26,7 +26,7 @@ public interface FetchHtmlService {
    * @throws IOException
    */
   public Reader readHtml(SitePageContext sitePageContext, String pageType, String key,
-                                  EnumSet<HtmlAttributeTransformation> transformations,
+                                  Set<HtmlAttributeTransformation> transformations,
                                   Collection<HtmlElementSubstitution> substitutions) throws IOException;
 
 }

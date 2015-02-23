@@ -3,20 +3,21 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.freemarker.SitePageContext;
-import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.freemarker.HtmlAttributeTransformation;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
+import org.ambraproject.wombat.freemarker.SitePageContext;
+import org.ambraproject.wombat.util.CacheParams;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.Collection;
-import java.util.EnumSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Retrieves stored blocks of homepage content from a remote service.
@@ -36,7 +37,7 @@ public class FetchHtmlServiceImpl implements FetchHtmlService {
    */
   @Override
   public Reader readHtml(final SitePageContext sitePageContext, String pageType, String key,
-                         final EnumSet<HtmlAttributeTransformation> transformations,
+                         final Set<HtmlAttributeTransformation> transformations,
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);

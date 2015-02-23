@@ -3,20 +3,29 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.freemarker.HtmlAttributeTransformation;
+import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
+import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.UrlParamBuilder;
+import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 public class EditorialContentServiceImpl implements EditorialContentService {
 
@@ -28,6 +37,8 @@ public class EditorialContentServiceImpl implements EditorialContentService {
   private CachedRemoteService<Reader> cachedRemoteReader;
   @Autowired
   private Gson gson;
+  @Autowired
+  private SiteSet siteSet;
 
   private URI contentRepoAddress;
   private String repoBucketName;
@@ -66,15 +77,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
     return Preconditions.checkNotNull(repoBucketName);
   }
 
-  /**
-   * Requests a file from the content repository. Returns the full response.
-   *
-   * @param key     content repo key
-   * @param version content repo version
-   * @return the response from the content repo
-   * @throws IOException
-   * @throws org.ambraproject.wombat.service.EntityNotFoundException if the repository does not provide the file
-   */
+
   @Override
   public CloseableHttpResponse request(String key, Optional<Integer> version, Collection<? extends Header> headers)
       throws IOException {
@@ -130,4 +133,42 @@ public class EditorialContentServiceImpl implements EditorialContentService {
         });
   }
 
+  /**
+   * {@inheritDoc}
+   * <p/>
+   * Applies transforms to HTML attributes and performs substitution of placeholder HTML elements with stored content
+   */
+  @Override
+  public Reader readHtml(final SitePageContext sitePageContext, String pageType, String key,
+                         final Set<HtmlAttributeTransformation> transformations,
+                         final Collection<HtmlElementSubstitution> substitutions)
+          throws IOException {
+    Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
+    String cacheKey = pageType.concat(":").concat(key);
+    Number cacheTtl = (Number) pageConfig.get("cacheTtl");
+    CacheParams cacheParams = CacheParams.create(cacheKey, (cacheTtl == null) ? null : cacheTtl.intValue());
+    Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective
+
+    String transformedHtml = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
+      @Override
+      public String read(Reader htmlReader) throws IOException {
+        // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
+        // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.
+        String htmlString = IOUtils.toString(htmlReader);
+        Document document = Jsoup.parseBodyFragment(htmlString);
+
+        for (HtmlAttributeTransformation transformation : transformations) {
+          transformation.apply(sitePageContext, siteSet, document);
+        }
+        for (HtmlElementSubstitution substitution : substitutions) {
+          substitution.substitute(document);
+        }
+
+        // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
+        // We want to return only the transformed snippet, so retrieve it from the body tag.
+        return document.getElementsByTag("body").html();
+      }
+    });
+    return new StringReader(transformedHtml);
+  }
 }

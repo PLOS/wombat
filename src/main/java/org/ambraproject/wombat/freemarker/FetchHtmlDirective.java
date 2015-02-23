@@ -10,7 +10,7 @@ import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.FetchHtmlService;
+import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
   @Autowired
   private SiteResolver siteResolver;
   @Autowired
-  private FetchHtmlService fetchHtmlService;
+  private EditorialContentService editorialContentService;
 
   private static final String SUBST_ATTR_NAME = "data-subst";
 
@@ -64,7 +64,7 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
 
     SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
 
-    try (Reader html = fetchHtmlService.readHtml(sitePageContext, pageType, pathObj.toString(),
+    try (Reader html = editorialContentService.readHtml(sitePageContext, pageType, pathObj.toString(),
             transformations, substitutions)) {
       IOUtils.copy(html, env.getOut());
     } catch (EntityNotFoundException e) {

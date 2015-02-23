@@ -35,9 +35,9 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
           ImmutableSetMultimap.of(
                   "homepage", HtmlAttributeTransformation.IMAGE,
                   "homepage", HtmlAttributeTransformation.ARTICLE,
-                  "staticContent", HtmlAttributeTransformation.IMAGE,
-                  "staticContent", HtmlAttributeTransformation.LINK,
-                  "staticContent", HtmlAttributeTransformation.ASSET
+                  "siteContent", HtmlAttributeTransformation.IMAGE,
+                  "siteContent", HtmlAttributeTransformation.LINK,
+                  "siteContent", HtmlAttributeTransformation.ASSET
                   );
 
   @Override

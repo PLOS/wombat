@@ -59,7 +59,7 @@ public class SiteContentController extends WombatController {
       Map<String, Object> pageMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey),
               repoKey, version);
     } catch (EntityNotFoundException e) {
-      throw new NotFoundException();
+      throw new NotFoundException(e);
     }
     model.addAttribute("siteContentRepoKey", repoKey);
     return site + "/ftl/siteContent/container";

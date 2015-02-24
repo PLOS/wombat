@@ -31,7 +31,7 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
 
   private static final String SUBST_ATTR_NAME = "data-subst";
 
-  private static final ImmutableSetMultimap<String, HtmlElementTransformation> elementTransforms =
+  private static final ImmutableSetMultimap<String, HtmlElementTransformation> ELEMENT_TRANSFORMS =
           ImmutableSetMultimap.of(
                   "homepage", HtmlElementTransformation.IMAGE,
                   "homepage", HtmlElementTransformation.ARTICLE,
@@ -55,7 +55,7 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
 
     String pageType = typeObj.toString();
 
-    Set<HtmlElementTransformation> transformations = elementTransforms.get(pageType);
+    Set<HtmlElementTransformation> transformations = ELEMENT_TRANSFORMS.get(pageType);
     if (transformations == null) {
       throw new TemplateModelException(String.format("type parameter '%s' is invalid.", pageType));
     }

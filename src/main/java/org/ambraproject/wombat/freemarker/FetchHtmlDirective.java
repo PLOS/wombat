@@ -32,13 +32,13 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
   private static final String SUBST_ATTR_NAME = "data-subst";
 
   private static final ImmutableSetMultimap<String, HtmlElementTransformation> ELEMENT_TRANSFORMS =
-          ImmutableSetMultimap.of(
-                  "homepage", HtmlElementTransformation.IMAGE,
-                  "homepage", HtmlElementTransformation.ARTICLE,
-                  "siteContent", HtmlElementTransformation.IMAGE,
-                  "siteContent", HtmlElementTransformation.LINK,
-                  "siteContent", HtmlElementTransformation.ASSET
-                  );
+          ImmutableSetMultimap.<String, HtmlElementTransformation>builder()
+                  .putAll("homepage", HtmlElementTransformation.IMAGE,
+                                      HtmlElementTransformation.ARTICLE)
+                  .putAll("siteContent", HtmlElementTransformation.IMAGE,
+                                         HtmlElementTransformation.LINK,
+                                         HtmlElementTransformation.ASSET)
+                  .build();
 
   @Override
   public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)

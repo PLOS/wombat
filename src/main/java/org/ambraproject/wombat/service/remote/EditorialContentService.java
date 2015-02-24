@@ -39,7 +39,7 @@ public interface EditorialContentService {
    * @param sitePageContext the site of the context into which the HTML will be inserted
    * @param key             a key identifying the HTML to fetch
    * @param substitutions   substitutions to apply to the HTML
-   * @param transformations
+   * @param transformations transformations to apply to the HTML elements
    * @return an HTML block
    * @throws IOException
    */

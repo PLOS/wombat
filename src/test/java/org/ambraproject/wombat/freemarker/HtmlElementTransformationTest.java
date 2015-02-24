@@ -41,10 +41,9 @@ public class HtmlElementTransformationTest {
 
     ArgumentCaptor<String> pathArg = ArgumentCaptor.forClass(String.class);
     ArgumentCaptor<String> journalKeyArg = ArgumentCaptor.forClass(String.class);
-    ArgumentCaptor<SiteSet> siteSetArg = ArgumentCaptor.forClass(SiteSet.class);
 
     verify(sitePageContext, times(4)).buildLink(pathArg.capture());
-    verify(sitePageContext).buildLink(siteSetArg.capture(), journalKeyArg.capture(), pathArg.capture());
+    verify(sitePageContext).buildLink(any(SiteSet.class), journalKeyArg.capture(), pathArg.capture());
 
     List<String> pathArgs = pathArg.getAllValues();
     assertEquals(pathArgs.get(0), "s/lorum_ipsum");

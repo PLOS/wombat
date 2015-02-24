@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
-import org.ambraproject.wombat.freemarker.HtmlAttributeTransformation;
+import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.util.CacheParams;
@@ -44,7 +44,7 @@ public interface EditorialContentService {
    * @throws IOException
    */
   public Reader readHtml(SitePageContext sitePageContext, String pageType, String key,
-                         Set<HtmlAttributeTransformation> transformations,
+                         Set<HtmlElementTransformation> transformations,
                          Collection<HtmlElementSubstitution> substitutions) throws IOException;
 
 }

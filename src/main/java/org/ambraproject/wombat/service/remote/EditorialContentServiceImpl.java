@@ -4,7 +4,7 @@ import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.freemarker.HtmlAttributeTransformation;
+import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.util.CacheParams;
@@ -140,7 +140,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
    */
   @Override
   public Reader readHtml(final SitePageContext sitePageContext, String pageType, String key,
-                         final Set<HtmlAttributeTransformation> transformations,
+                         final Set<HtmlElementTransformation> transformations,
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
@@ -157,7 +157,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
         String htmlString = IOUtils.toString(htmlReader);
         Document document = Jsoup.parseBodyFragment(htmlString);
 
-        for (HtmlAttributeTransformation transformation : transformations) {
+        for (HtmlElementTransformation transformation : transformations) {
           transformation.apply(sitePageContext, siteSet, document);
         }
         for (HtmlElementSubstitution substitution : substitutions) {

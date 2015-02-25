@@ -46,8 +46,7 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
     SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
     if (targetJournalObj instanceof TemplateScalarModel) {
       String targetJournal = ((TemplateScalarModel) targetJournalObj).getAsString();
-      Site targetSite = sitePageContext.getSite().getTheme().resolveForeignJournalKey(siteSet, targetJournal);
-      return targetSite.getRequestScheme().buildLink(SitePageContext.extractRequest(env), path);
+      return sitePageContext.buildLink(siteSet, targetJournal, path);
     }
     return sitePageContext.buildLink(path);
   }

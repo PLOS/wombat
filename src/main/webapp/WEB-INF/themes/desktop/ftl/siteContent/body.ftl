@@ -1,0 +1,1 @@
+<@fetchHtml type="siteContent" path=siteContentRepoKey/>

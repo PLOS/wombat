@@ -527,11 +527,12 @@ $icn-tiny-align: middle;
   padding-bottom: ($margin-bottom * 2);
 
   li {
-    padding: $pad-y 0;
-    padding-left: $pad-left;
+
     margin: 0 0 $margin-bottom 0;
 
     a {
+      padding: $pad-y 0;
+      padding-left: $pad-left;
       @include link-text($color: $txt-color);
     }
   }
@@ -539,27 +540,31 @@ $icn-tiny-align: middle;
 
 @mixin nav-enhanced($txt-color-hover: $clr-body-text, $spacing-left: $pad-small, $txt-color: $grey-med) {
   @include nav-side;
+  margin-right: 0;
   li {
-    ul {
+    > ul {
       display: none;
+      margin-left: 0;
+      a {padding-left: $spacing-left * 2;}
     }
     &:hover {
-      @include border-width-adjust($border-width: rem-calc(1), $spacing: $spacing-left);
-
-      a {
+     > a {
         color: $txt-color;
+        @include border-width-adjust($border-width: rem-calc(1), $spacing: $spacing-left);
+      }
+      > ul {
+         > a {@include border-width-adjust($border-width: rem-calc(1), $spacing: ($spacing-left * 2));}
       }
     }
 
     &.active {
-      @include border-width-adjust($spacing: $spacing-left);
-
-      a {
+      > a {
+        @include border-width-adjust($spacing: $spacing-left);
         color: $txt-color-hover;
         font-weight: bold;
         letter-spacing: -.5px;
       }
-      ul {
+      > ul {
         display: block;
       }
     }

@@ -9,11 +9,16 @@ main {
   margin-bottom: rem-calc($line-height-large);
   nav {
     @include plos-grid-column($pixelwidth: columns, $columns: 2);
-
+    position: relative;
   }
   article {
-    @include plos-grid-column($pixelwidth: columns, $columns: 9);
+    @include plos-grid-column($pixelwidth: columns, $columns: 9, $float: right);
   }
+}
+
+/// navigation
+main nav>ul {
+  @include nav-enhanced;
 }
 
 /// typefaces
@@ -23,6 +28,7 @@ article{
     @extend %link-text-default;
   }
   ol{}
+
 }
 
 

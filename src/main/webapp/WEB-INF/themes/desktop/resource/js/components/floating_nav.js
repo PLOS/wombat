@@ -16,6 +16,17 @@
 
     };
     var options = $.extend(defaults, options);
+
+      $('body').on("click", "nav a", function (event) {
+          var link = $(this);
+          //window.history.pushState is not on all browsers
+          if (window.history.pushState) {
+              window.history.pushState({}, document.title, event.target.href);
+          } else {  }
+
+          event.preventDefault();
+          $('html,body').animate({scrollTop: $('#' + this.hash.substring(1) ).offset().top}, 500);
+      });
     return this.each(function () {
 
       var $this = $(this),
@@ -39,6 +50,7 @@
             $this.find('a[href="#' + this_sec_ref + '"]').closest('li').addClass(options.classActive);
           } else { }
         });
+
       }
 
       var positionEl = function () {

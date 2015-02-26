@@ -165,11 +165,10 @@ blockquote, .pullquote, .block-quote {
   font-style: italic;
 }
 
-.box {
+.global-alert {
   @extend %callout-default;
   background: $plos-default-shade1;
   font-weight: bold;
-
 }
 
 .tip {

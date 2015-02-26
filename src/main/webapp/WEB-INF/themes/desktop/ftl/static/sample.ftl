@@ -23,7 +23,7 @@
 <h3>block quote</h3>
 <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
 <h3>box</h3>
-<div class="box">The colour should be a mixture of grey and black. The undercoat should be very pale grey or cream (not tawny). The hair of the outer coat is black tipped, the length of the black tips producing the characteristic shading of colour. The colour may vary from light to dark, but any pronounced deviation from the grey colour is not permissible. The plume of the tail should be very light grey when curled on back and the tip of the tail should be black. Legs and feet should be cream. Ears should be very dark - almost black.
+<div class="global-alert">The colour should be a mixture of grey and black. The undercoat should be very pale grey or cream (not tawny). The hair of the outer coat is black tipped, the length of the black tips producing the characteristic shading of colour. The colour may vary from light to dark, but any pronounced deviation from the grey colour is not permissible. The plume of the tail should be very light grey when curled on back and the tip of the tail should be black. Legs and feet should be cream. Ears should be very dark - almost black.
 </div>
 <h3>tip</h3>
 <div class="tip">

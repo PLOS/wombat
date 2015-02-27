@@ -17,7 +17,7 @@ main {
 }
 
 /// navigation
-main nav>ul {
+nav ul {
   @include nav-enhanced;
 }
 

@@ -30,7 +30,7 @@ var tooltip_references, initReferenceTooltip;
   });
 
   $('#nav-article').floatingNav({
-    sections: $article.find('div.toc-section')
+    content: $article
   });
 
   addMediaCoverageLink();

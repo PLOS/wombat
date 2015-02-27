@@ -4,8 +4,7 @@
   $.fn.floatingNav = function (options) {
     defaults = {
       margin:             90,
-      sections:           '',
-      parentContainer:    '.article-content',
+      content:            '',
       sectionAnchor:      'a[data-toc]',
       sectionAnchorAttr:  'data-toc',
       classActive:        'active',
@@ -42,12 +41,12 @@
 
       var hilite = function () {
         win_top = $win.scrollTop();
-        (options.sections).each(function () {
-          this_sec = $(this);
-          if (win_top > (this_sec.offset().top - options.margin)) {
-            var this_sec_ref = this_sec.find(options.sectionAnchor).attr(options.sectionAnchorAttr);
+        options.content.find(options.sectionAnchor).each(function () {
+          this_a = $(this);
+          if (win_top > (this_a.offset().top - options.margin)) {
+            var this_a_ref = this_a.attr(options.sectionAnchorAttr);
             links.closest('li').removeClass(options.classActive);
-            $this.find('a[href="#' + this_sec_ref + '"]').closest('li').addClass(options.classActive);
+            $this.find('a[href="#' + this_a_ref + '"]').closest('li').addClass(options.classActive);
           } else { }
         });
 
@@ -58,7 +57,7 @@
         win_top = $win.scrollTop();
         ftr_top = $(options.footer).offset().top;
 
-        var article_top = $(options.parentContainer).offset().top,
+        var article_top = options.content.offset().top,
             el_view_out = (win_top > (article_top - options.margin)),  //the top of the element is out of the viewport
             view_height = ((el_h + options.margin + bnr_h) < $win.height()), //the viewport is tall enough-
             el_overlap = (win_top < (ftr_top - (el_h + options.margin))), //the element is not overlapping the footer

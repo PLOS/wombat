@@ -2,11 +2,8 @@
 
     /// floating nav
 
-    $body = $('.body-content');
-
-    $('nav.site-content').floatingNav({
-        parentContainer: '.body-content',
-        sections: $body.find('div[data-section-id]'),
+    $('nav.site-content-nav').floatingNav({
+        content: $('.body-content'),
         linkSelector: 'a',
         sectionAnchor: 'h2, h3',
         sectionAnchorAttr: 'id'

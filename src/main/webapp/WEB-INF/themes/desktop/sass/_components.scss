@@ -542,32 +542,33 @@ $icn-tiny-align: middle;
   @include nav-side;
   margin-right: 0;
   li {
-    > ul {
-      display: none;
-      margin-left: 0;
-      a {padding-left: $spacing-left * 2;}
-    }
+
     &:hover {
      > a {
         color: $txt-color;
         @include border-width-adjust($border-width: rem-calc(1), $spacing: $spacing-left);
       }
-      > ul {
-         > a {@include border-width-adjust($border-width: rem-calc(1), $spacing: ($spacing-left * 2));}
-      }
+    }
+    &.secondary{
+      display: none;
+
     }
 
     &.active {
+      display: block;
       > a {
         @include border-width-adjust($spacing: $spacing-left);
         color: $txt-color-hover;
         font-weight: bold;
         letter-spacing: -.5px;
       }
-      > ul {
-        display: block;
-      }
+
+
+
     }
+
+
+
   }
 
 }

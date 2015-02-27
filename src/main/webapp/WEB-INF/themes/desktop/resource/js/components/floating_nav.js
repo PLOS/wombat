@@ -45,8 +45,14 @@
           this_a = $(this);
           if (win_top > (this_a.offset().top - options.margin)) {
             var this_a_ref = this_a.attr(options.sectionAnchorAttr);
+            var $closest_li = $this.find('a[href="#' + this_a_ref + '"]').closest('li');
             links.closest('li').removeClass(options.classActive);
-            $this.find('a[href="#' + this_a_ref + '"]').closest('li').addClass(options.classActive);
+            $closest_li.closest('li').addClass(options.classActive);
+            if (
+                $closest_li.hasClass('secondary')){
+              $closest_li.prevAll('.primary:first').addClass(options.classActive);
+            }
+
           } else { }
         });
 

@@ -6,8 +6,10 @@ import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.controller.SiteResolver;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -15,11 +17,13 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class SitePageContext {
 
-  public static HttpServletRequest extractRequest(Environment environment) throws TemplateModelException {
+  private static final Logger log = LoggerFactory.getLogger(SitePageContext.class);
+
+  private HttpServletRequest extractRequest() throws TemplateModelException {
     return ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();
   }
 
-  private static Site findSite(SiteResolver siteResolver, Environment environment, HttpServletRequest request)
+  private Site findSite(SiteResolver siteResolver)
       throws TemplateModelException {
     // Recover it from the model if possible
     TemplateModel site = environment.getDataModel().get("site");
@@ -36,11 +40,13 @@ public class SitePageContext {
 
   private final Site site;
   private final HttpServletRequest request;
+  private final Environment environment;
 
   public SitePageContext(SiteResolver siteResolver, Environment environment) {
     try {
-      this.request = extractRequest(environment);
-      this.site = findSite(siteResolver, environment, request);
+      this.environment = environment;
+      this.request = extractRequest();
+      this.site = findSite(siteResolver);
     } catch (TemplateModelException e) {
       throw new RuntimeException(e);
     }
@@ -54,25 +60,15 @@ public class SitePageContext {
     return site.getRequestScheme().buildLink(request, path);
   }
 
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    SitePageContext that = (SitePageContext) o;
-
-    if (!request.equals(that.request)) return false;
-    if (!site.equals(that.site)) return false;
-
-    return true;
+  public String buildLink(SiteSet siteSet, String journalKey, String path) {
+    try {
+      Site targetSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
+      return targetSite.getRequestScheme().buildLink(extractRequest(), path);
+    } catch (Exception e) {
+      log.error("Error building link for path={}. Error detail:{}", path, e.getMessage());
+      return buildLink(path);
+    }
   }
 
-  @Override
-  public int hashCode() {
-    int result = site.hashCode();
-    result = 31 * result + request.hashCode();
-    return result;
-  }
 
 }

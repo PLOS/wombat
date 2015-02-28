@@ -54,7 +54,6 @@ import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.service.remote.EditorialContentServiceImpl;
-import org.ambraproject.wombat.service.remote.StoredHomepageService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -185,11 +184,6 @@ public class SpringConfiguration {
   @Bean
   public AssetService assetService() {
     return new AssetServiceImpl();
-  }
-
-  @Bean
-  public StoredHomepageService storedHomepageService() {
-    return new StoredHomepageService();
   }
 
   @Bean

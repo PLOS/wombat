@@ -328,11 +328,27 @@ example | extension
   @extend .fa-exclamation-triangle;
   color: $clr-warning;
 }
+.icon-important{
+  @extend .icon-fa;
+  @extend .fa-exclamation-circle;
+  content: "\f06a";
+}
 .icon-caret-down {
   @extend .icon-fa;
   @extend .fa-caret-down;
   font-size: $txt-size-medium-large;
   line-height: rem-calc(35);  // .fa-etc default to 44
+}
+
+.icon-pointer{
+  @extend .icon-fa;
+  @extend .fa-hand-o-right;
+  content: "\f0a4";
+}
+.icon-info{
+  @extend .icon-fa;
+  @extend .fa-info-circle;
+  content: "\f05a";
 }
 
 .aria-text {

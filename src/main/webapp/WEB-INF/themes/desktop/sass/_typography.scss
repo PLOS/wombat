@@ -7,12 +7,11 @@ category: Files
  type styles including sizes and vertical spacing
 */
 
-@include font-face("albert", font-files("fs_albert.ttf", "fs_albert.otf",  "fs_albert.svg",  "fs_albert.woff"));
+@include font-face("albert", font-files("fs_albert.ttf", "fs_albert.otf", "fs_albert.svg", "fs_albert.woff"));
 
+@include font-face("albert-bold", font-files("fs_albert-bold-webfont.ttf", "fs_albert-bold-webfont.otf", "fs_albert-bold-webfont.svg", "fs_albert-bold-webfont.woff"));
 
-@include font-face("albert-bold", font-files("fs_albert-bold-webfont.ttf", "fs_albert-bold-webfont.otf",  "fs_albert-bold-webfont.svg",  "fs_albert-bold-webfont.woff"));
-
-@include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf",  "fontawesome-webfont.svg",  "fontawesome-webfont.woff"));
+@include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf", "fontawesome-webfont.svg", "fontawesome-webfont.woff"));
 
 sup, sub {
   vertical-align: 0;
@@ -64,7 +63,6 @@ example | extension
 
 /* basic styles  */
 
-
 ol {
   padding-left: $pad-default;
 }
@@ -83,53 +81,116 @@ ul.bullet {
   }
   // to do put in variables
 }
-  /// sizes are set in foundation.
-  h2, h3, h4, h5 {
-     font-family:  $font-face-plain;
-  }
- // font-weights
+
+/// sizes are set in foundation.
+h2, h3, h4, h5 {
+  font-family: $font-face-plain;
+}
+
+// font-weights
 h2, h3 {
   font-weight: bold;
 }
-h4,h5{
+
+h4, h5 {
   font-weight: normal;
 }
- //spacing
-  h2, h3, h4, h5 {
-    margin-bottom: rem-calc($line-height-small);
-    margin-top: rem-calc($line-height-med);
-    line-height: normal;
-  }
-  h2 {
-    margin-bottom: rem-calc($line-height);
-  }
 
-  h3, h4 {
-    margin-top: rem-calc($line-height-small);
-  }
- //special styles
+//spacing
+h2, h3, h4, h5 {
+  margin-bottom: rem-calc($line-height-small);
+  margin-top: rem-calc($line-height-med);
+  line-height: normal;
+}
 
-  .title-small {
-    font-size: $txt-size-default;
-    font-weight: bold;
-  }
+h2 {
+  margin-bottom: rem-calc($line-height);
+}
 
-  blockquote, .pullquote {
-    border-left: $pad-xsmall solid $clr-separator;
-    margin: $line-height-med 0 $line-height 0;
-  }
-  .pullquote{
-    @extend blockquote;
-    font-style: italic;
-  }
+h3, h4 {
+  margin-top: rem-calc($line-height-small);
+}
+
+//special styles
+
+.title-small {
+  font-size: $txt-size-default;
+  font-weight: bold;
+}
 
 
+//callout styles
+//%callout {
+//  margin: $line-height-med 0 $line-height 0;
+//  padding: rem-calc($line-height) $pad-default;
+//}
+
+@mixin callout(
+  $margin-top: rem-calc($line-height-med),
+  $margin-bottom: rem-calc($line-height),
+  $padding-x: rem-calc($line-height),
+  $padding-y: $pad-default,
+  $icon-type: 'none',
+  $icon-width: $pad-medium
+
+) {
+  margin: $margin-top 0 $margin-bottom 0;
+  padding: $padding-x $padding-y;
+
+  @if $icon-type != 'none' {
+    padding-left: ($padding-x + $icon-width);
+    position: relative;
+    &::after {
+      @extend .icon-#{$icon-type};
+      display: block;
+      position: absolute;
+      left: $padding-x;
+      top: ($padding-y - rem-calc(2));
+      line-height: 1 !important;
+    }
+  }
+}
+//
+%callout-default {
+  @include callout();
+}
+
+blockquote, .pullquote, .block-quote {
+  border-left: $pad-xsmall solid $clr-separator;
+  margin: rem-calc($line-height-med 0 $line-height 0);
+}
+
+.pullquote {
+  @extend blockquote;
+  font-style: italic;
+}
+
+.global-alert {
+  @extend %callout-default;
+  background: $plos-default-shade1;
+  font-weight: bold;
+}
+
+.tip {
+  @include callout($icon-type: 'pointer');
+}
+
+.important {
+  @include callout($icon-type: 'important');
+  background: $clr-alert;
+}
+//
+.more-information {
+  @include callout($icon-type: 'info');
+  background: $clr-callout-bg;
+}
 
 %brand-title {
   @extend %header-allcaps;
   @extend %brand-color;
   margin-bottom: $pad-small;
 }
+
 %brand-header {
   @extend %brand-background;
   color: $clr-highlight-text;
@@ -138,7 +199,6 @@ h4,h5{
   font-size: rem-calc($txt-size-medium-large);
   line-height: $pad-large;
 }
-
 
 .header-allcaps-smallest {
   @extend %header-allcaps-plain;
@@ -176,22 +236,22 @@ example | extension
 
   &:hover, a:hover {
     @if $decoration == none {
-    color: $plos-default;
-    text-decoration: none;
-  }
-    @else if $decoration == underline {
+      color: $plos-default;
+      text-decoration: none;
+    } @else if $decoration == underline {
       color: $color;
       text-decoration: underline;
     }
   }
 }
 
-%link-text-body, %link-text-body a { //TODO- should this be link text home?
+%link-text-body, %link-text-body a {
+  //TODO- should this be link text home?
   @include link-text();
 }
 
 %link-text-white, %link-text-white a {
-  @include link-text($color: $white,$decoration: underline);
+  @include link-text($color: $white, $decoration: underline);
 }
 
 %link-text-underline, %link-text-underline a {
@@ -210,9 +270,11 @@ example | extension
   font-size: rem-calc($txt-size-xxxsmall);
   font-style: italic;
 }
+
 %condense {
   letter-spacing: -0.5px;
 }
+
 %txt-transform {
   text-transform: uppercase;
 }
@@ -220,13 +282,16 @@ example | extension
 .inline-intro {
   font-weight: bold;
 }
-.no-margin { margin-bottom: 0;}
+
+.no-margin {
+  margin-bottom: 0;
+}
 
 //////////////
 //form styles
 ///////////////
 
-@mixin input-placeholder-color ($color: $clr-input-placeholder) {
+@mixin input-placeholder-color($color: $clr-input-placeholder) {
   ::-webkit-input-placeholder {
     color: $color;
   }
@@ -264,13 +329,15 @@ This is one place not to use @extend, since this is a semantic class name
 
 */
 
-.note,.caption, figcaption { color: $grey-med-light;}
+.note, .caption, figcaption {
+  color: $grey-med-light;
+}
 
 /////////
 /// homepage font styles
 ////////
 
-%home-subheader{
+%home-subheader {
   line-height: 1;
   color: $grey-dark;
   font-weight: normal;
@@ -284,19 +351,21 @@ This is one place not to use @extend, since this is a semantic class name
   font-family: $font-face-fancy;
   @extend %txt-transform;
 }
+
 %header-allcaps-plain {
   @extend %header-allcaps;
   font-family: $font-face-plain;
 }
+
 %header-allcaps-xlarge {
   @extend %header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
 }
 
-%header-medium-bold{
+%header-medium-bold {
   font-size: rem-calc($txt-size-medium);
   font-family: $font-face-fancy;
-  font-weight:bold;
+  font-weight: bold;
 
 }
 
@@ -311,7 +380,8 @@ This is one place not to use @extend, since this is a semantic class name
   font-family: $font-face-fancy;
 }
 
-%header-bottom-shadow {  //not used ?
+%header-bottom-shadow {
+  //not used ?
   padding-bottom: rem-calc(17);
   margin-bottom: rem-calc(17);
   box-shadow: $default-header-shadow;

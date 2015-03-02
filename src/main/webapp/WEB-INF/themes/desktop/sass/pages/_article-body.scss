@@ -28,6 +28,10 @@ $line-height-small: ($line-height * .5);
   margin-bottom: $line-height;
 }
 
+
+h1#artTitle{
+  margin-bottom: $pad-small;
+}
 // this is the amount we want to offset the target so it doesn't butt up against the top of the window OR the floating header.
 .article-content a:target{
   margin-top: -$target-offset;
@@ -36,6 +40,8 @@ $line-height-small: ($line-height * .5);
 }
 
 .article-content {
+
+
 
  .section > div {
     margin-bottom: $line-height;

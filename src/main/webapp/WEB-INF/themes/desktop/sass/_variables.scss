@@ -56,6 +56,7 @@ $grey-tinytext: #bbb;// TEMP PROD: change uses to grey-med-light
 $tabs-base-color: #2b2b2b;
 $table-header-bg: #a0a0a0;
 $warning: #e53350;
+$alert: #ffd87a;
 
 $success: #16a127;
 
@@ -78,9 +79,10 @@ $clr-link-hover: $grey-dark;
 $clr-muted: $grey-med-dark;
 $clr-light-text: $white;
 $clr-callout-bg: $grey-light;
-
+$clr-alert: $alert;
 $clr-warning: $warning;
 $clr-warning-bg: #fce2e5;
+
 $clr-success: $success;
 
 $clr-btn-primary: $clr-highlight;
@@ -175,7 +177,7 @@ $txt-size-note: $txt-size-small;
 
 $sub-sup-alignment: .5ex; //controls sub and super text
 
-$line-height: 18;
+$line-height: 18px;
 $line-height-large: ($line-height * 2);
 $line-height-med: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
@@ -218,21 +220,4 @@ option          | result
 `$clr-brand`| sets the journal color
 `$clr-highlight`| sets the plos-default color
                                                                                                                                                      */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -527,7 +527,6 @@ $icn-tiny-align: middle;
   padding-bottom: ($margin-bottom * 2);
 
   li {
-
     margin: 0 0 $margin-bottom 0;
 
     a {
@@ -541,32 +540,45 @@ $icn-tiny-align: middle;
 @mixin nav-enhanced($txt-color-hover: $clr-body-text, $spacing-left: $pad-small, $txt-color: $grey-med) {
   @include nav-side;
   margin-right: 0;
-  li {
 
-    &:hover {
-     > a {
+  > li {
+    > a {
+      color: $txt-color;
+      &:hover {
+        @include border-width-adjust($border-width: rem-calc(1),$spacing: $spacing-left);
         color: $txt-color;
-        @include border-width-adjust($border-width: rem-calc(1), $spacing: $spacing-left);
       }
     }
-    &.secondary{
+    > ul {
       display: none;
-
+      margin:0;
+      margin-bottom:0;
+      margin-top: $pad-xsmall;
+      padding-bottom:0;
     }
 
     &.active {
-      display: block;
-      > a {
+       > a {
         @include border-width-adjust($spacing: $spacing-left);
         color: $txt-color-hover;
         font-weight: bold;
         letter-spacing: -.5px;
       }
-
+      > ul {
+        display: block;
+        li a {
+          padding-left: ($spacing-left * 2);
+          &:hover {
+            @include border-width-adjust($border-width: rem-calc(1), $spacing: ($spacing-left * 2));
+          }
+        }
+        li.active a{
+          @include border-width-adjust($spacing:($spacing-left * 2));
+        }
+      }
 
 
     }
-
 
 
   }

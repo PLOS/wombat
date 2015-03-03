@@ -1,24 +1,23 @@
-
 (function ($) {
   var $win = $(window);
   $.fn.floatingNav = function (options) {
     var defaults = {
       margin:               90,
       content:              '',
-      ulClass:              'nav-page',
-      sectionAnchor:        'a[data-toc]',
-      sectionAnchorAttr:    'data-toc',
-      classActive:          'active',
+      ul_class:             'nav-page',
+      section_anchor:       'a[data-toc]',
+      section_anchor_attr:  'data-toc',
+      class_active:         'active',
       footer:               '#pageftr',
-      alternateBottomDiv:   '#banner-ftr',
-      linkSelector:         'a.scroll'
+      alternate_bottom_div: '#banner-ftr',
+      link_selector:        'a.scroll'
 
     };
     var opts = $.extend(defaults, options);
 
     $('body').on(
-        'click', 'ul.' + opts.ulClass + ' a', function (event) {
-
+        'click', 'ul.' + opts.ul_class + ' a',
+        function (event) {
           //window.history.pushState is not on all browsers
           if (window.history.pushState) {
             window.history.pushState({}, document.title, event.target.href);
@@ -27,12 +26,11 @@
           event.preventDefault();
           // suppress distracting expansion/collapse of any nested list items during animation-triggered
           // traversal of the nav
-          $('ul.' + opts.ulClass + ' li:not(.' + opts.classActive + ') ul').addClass('suppress_expansion');
+          $('ul.' + opts.ul_class + ' li:not(.' + opts.class_active + ') ul').hide();
 
           $('html,body').animate(
-              {scrollTop: $('#' + this.hash.substring(1)).offset().top}, 500, 
-              function () {
-                $('ul.' + opts.ulClass + ' li ul').removeClass('suppress_expansion');
+              {scrollTop: $('#' + this.hash.substring(1)).offset().top}, 500, function () {
+                $('ul.' + opts.ul_class + ' li ul').show();
               }
           );
         }
@@ -43,7 +41,7 @@
           var $this = $(this);
           var $ftr_top = $(opts.footer).offset().top;
           var $el_h = $this.innerHeight();
-          var $links = $this.find(opts.linkSelector);
+          var $links = $this.find(opts.link_selector);
           var bnr_h = 0;
           var win_top = 0;
 
@@ -53,17 +51,17 @@
 
           var hilite = function () {
             win_top = $win.scrollTop();
-            opts.content.find(opts.sectionAnchor).each(
+            opts.content.find(opts.section_anchor).each(
                 function () {
                   var $this_a = $(this);
                   if (win_top > ($this_a.offset().top - opts.margin)) {
-                    
-                    var $this_a_ref = $this_a.attr(opts.sectionAnchorAttr);
+
+                    var $this_a_ref = $this_a.attr(opts.section_anchor_attr);
                     var $closest_li = $this.find('a[href="#' + $this_a_ref + '"]').closest('li');
-                    
-                    $links.closest('li').removeClass(opts.classActive);
-                    $closest_li.addClass(opts.classActive);
-                    $closest_li.parents('li').addClass(opts.classActive);
+
+                    $links.closest('li').removeClass(opts.class_active);
+                    $closest_li.addClass(opts.class_active);
+                    $closest_li.parents('li').addClass(opts.class_active);
 
                   } else { }
                 }

@@ -118,12 +118,7 @@ h3, h4 {
   font-weight: bold;
 }
 
-
 //callout styles
-//%callout {
-//  margin: $line-height-med 0 $line-height 0;
-//  padding: rem-calc($line-height) $pad-default;
-//}
 
 @mixin callout(
   $margin-top: rem-calc($line-height-med),

@@ -5,7 +5,7 @@
     defaults = {
       margin:             90,
       content:            '',
-      navClass:           'nav-page',
+      ulClass:           'nav-page',
       sectionAnchor:      'a[data-toc]',
       sectionAnchorAttr:  'data-toc',
       classActive:        'active',
@@ -17,7 +17,7 @@
     };
     var options = $.extend(defaults, options);
 
-      $('body').on("click", "nav ul." + options.navClass + " a", function (event) {
+      $('body').on("click", "nav ul." + options.ulClass + " a", function (event) {
           var link = $(this);
           //window.history.pushState is not on all browsers
           if (window.history.pushState) {
@@ -27,11 +27,11 @@
           event.preventDefault();
           // suppress distracting expansion/collapse of any nested list items during animation-triggered
           // traversal of the nav
-          $('ul.' + options.navClass + ' li:not(.' + options.classActive + ') ul').addClass('suppress_expansion');
+          $('ul.' + options.ulClass + ' li:not(.' + options.classActive + ') ul').addClass('suppress_expansion');
 
           $('html,body').animate({scrollTop: $('#' + this.hash.substring(1) ).offset().top}, 500,
               // re-enable expansion/collapse behavior of nested list items (for use during page scrolling)
-              function(){$('ul.' + options.navClass + ' li ul').removeClass('suppress_expansion')});
+              function(){$('ul.' + options.ulClass + ' li ul').removeClass('suppress_expansion')});
       });
     return this.each(function () {
 

@@ -591,11 +591,14 @@ $icn-tiny-align: middle;
         li.active a{
           @include border-width-adjust($spacing:($spacing-left * 2));
         }
+
+        &.suppress_expansion {
+          display: none;
+        }
+
       }
 
-
     }
-
 
   }
 

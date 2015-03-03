@@ -28,7 +28,6 @@ $line-height-small: ($line-height * .5);
   margin-bottom: $line-height;
 }
 
-
 h1#artTitle{
   margin-bottom: $pad-small;
 }
@@ -40,8 +39,6 @@ h1#artTitle{
 }
 
 .article-content {
-
-
 
  .section > div {
     margin-bottom: $line-height;
@@ -55,7 +52,6 @@ h1#artTitle{
     font-size: $txt-size-default;
     font-weight: bold;
   }
-
 
   .abstract {
     h2 {

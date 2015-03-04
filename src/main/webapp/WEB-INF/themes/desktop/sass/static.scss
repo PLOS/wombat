@@ -22,4 +22,10 @@ article{
   a {     //TODO: redo links so that underline is standard
     @extend %link-text-default;
   }
+
+    table {
+      @include table; //from foundation
+      border-collapse: collapse;
+      width: 100%;
+      }
 }

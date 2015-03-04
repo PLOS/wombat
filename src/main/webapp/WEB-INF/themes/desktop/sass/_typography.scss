@@ -334,6 +334,52 @@ This is one place not to use @extend, since this is a semantic class name
 }
 
 /////////
+/// table styles
+////////
+
+article table {
+  @include table; //from foundation
+  border-collapse: collapse;
+  width: 100%;
+  }
+
+table.table-basic{
+  border-width:0;
+   thead th{ border-bottom: rem-calc(1) solid $clr-body-text;}
+   tbody td{ border-bottom: rem-calc(1) solid $clr-separator;}
+   tbody tr:last-child td{ border-bottom: 0}
+  }
+
+table.table-borders{
+  border: rem-calc(1) solid $clr-separator;
+   td, th {
+    border: rem-calc(1) solid $clr-separator;
+    }
+  thead th{ border-bottom: rem-calc(1) solid $clr-body-text;}
+
+  }
+
+table.table-striped {
+  td, th {
+    border-left: rem-calc(1) solid $clr-body-bg;
+    }
+  thead th{
+    background: $grey-med-dark;
+    color: $clr-body-bg;
+    }
+  tr{background: $grey-light;}
+  tr {
+    &.even,
+    &.alt,
+    &:nth-of-type(even) {
+      background: $grey-med-light;
+      }
+    }
+  }
+
+
+
+/////////
 /// homepage font styles
 ////////
 

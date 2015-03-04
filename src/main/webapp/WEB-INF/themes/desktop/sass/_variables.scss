@@ -55,9 +55,9 @@ $grey-tinytext: #bbb;// TEMP PROD: change uses to grey-med-light
 
 $tabs-base-color: #2b2b2b;
 $table-header-bg: #a0a0a0;
+
 $warning: #e53350;
 $alert: #ffd87a;
-
 $success: #16a127;
 
 //colors
@@ -93,6 +93,8 @@ $clr-callout-bg:  $grey-light;
 
 $clr-input-placeholder: $grey-dark;
 $clr-input-active: $grey-med-dark;
+
+$table-separator-color: $clr-separator;
 
 // GRID OPTIONS
 // Options are in scaffold.scss
@@ -167,7 +169,7 @@ $txt-size-xxxxsmall: 9px;
 
 $txt-size-pgtitle: $txt-size-xxxlarge;
 $txt-size-default: $txt-size-small;
-$txt-size-h1: $txt-size-xlarge;  //TODO- shoudl this be page title?
+$txt-size-h1: $txt-size-xlarge;  //TODO- should this be page title?
 $txt-size-h2: $txt-size-large;
 $txt-size-h3: $txt-size-medium-large;
 $txt-size-h4: $txt-size-medium-large;

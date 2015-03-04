@@ -360,6 +360,7 @@ table.table-borders{
   }
 
 table.table-striped {
+  border-width:0;
   td, th {
     border-left: rem-calc(1) solid $clr-body-bg;
     }

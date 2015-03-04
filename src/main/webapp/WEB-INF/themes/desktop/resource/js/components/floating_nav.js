@@ -3,7 +3,7 @@
   $.fn.floatingNav = function (options) {
     var defaults = {
       margin:               90,
-      reading_space:               35,
+      margin_bottom:               35,
       page_width:           960,
       scroll_speed: 500,
       content:              '',
@@ -96,7 +96,7 @@
               } else if (win_top > ($ftr_top - ($el_h + opts.margin))) {
 
                 //Adjust the position here a bit to stop the footer from being overlapped
-                var tt = $ftr_top - win_top - $el_h - opts.margin + opts.reading_space;
+                var tt = $ftr_top - win_top - $el_h - opts.margin + opts.margin_bottom;
                 hilite();
                 $this.css({'position': 'fixed', 'top': tt + 'px'});
               } else {

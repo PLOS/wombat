@@ -23,7 +23,7 @@ var tooltip_references, initReferenceTooltip;
   }
 
   /// write article nav
-  $article = $('.article-content');
+  var $article = $('.article-content');
 
   $('#nav-article').buildNav({
     content: $article

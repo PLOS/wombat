@@ -23,14 +23,14 @@ var tooltip_references, initReferenceTooltip;
   }
 
   /// write article nav
-  $article = $('.article-content');
+  var $article = $('.article-content');
 
   $('#nav-article').buildNav({
     content: $article
   });
 
   $('#nav-article').floatingNav({
-    sections: $article.find('div.toc-section')
+    content: $article
   });
 
   addMediaCoverageLink();

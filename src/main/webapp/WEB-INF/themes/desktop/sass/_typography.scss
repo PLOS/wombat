@@ -345,7 +345,6 @@ This is one place not to use @extend, since this is a semantic class name
   width: 100%;
   }
 
-
 table.table-basic{
    @extend %table-fancy;
    border-width:0;
@@ -369,10 +368,6 @@ table.table-striped {
   td, th {
     border-left: $table-separator-width solid $clr-body-bg;
     }
-  thead th{
-    background: $grey-med-dark;
-    color: $clr-body-bg;
-    }
   tr{background: $grey-light;}
   tr {
     &.even,
@@ -380,6 +375,10 @@ table.table-striped {
     &:nth-of-type(even) {
       background: $grey-med-light;
       }
+    }
+  thead tr th{
+    background: $grey-med-dark;
+    color: $clr-body-bg;
     }
   }
 

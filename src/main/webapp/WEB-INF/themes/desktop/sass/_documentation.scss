@@ -101,3 +101,115 @@ category:  article
 
 
 */
+
+/*doc
+---
+title: Tables
+name: tables
+category: static
+---
+      <h2>Tables</h2>
+                <h3>basic</h3>
+
+   ```html_example
+                <table class="table-basic">
+                    <thead>
+                      <tr>
+                        <th>Entry Header 1</th>
+                        <th>Entry Header 2</th>
+                        <th>Entry Header 3</th>
+                        <th>Entry Header 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Entry First Line 1</td>
+                        <td>Entry First Line 2</td>
+                        <td>Entry First Line 3</td>
+                        <td>Entry First Line 4</td>
+                    </tr>
+                    <tr>
+                        <td>Entry Line 1</td>
+                        <td>Entry Line 2</td>
+                        <td>Entry Line 3</td>
+                        <td>Entry Line 4</td>
+                    </tr>
+                    <tr>
+                        <td>Entry Last Line 1</td>
+                        <td>Entry Last Line 2</td>
+                        <td>Entry Last Line 3</td>
+                        <td>Entry Last Line 4</td>
+                    </tr>
+                </tbody>
+            </table>
+            ```
+            <h3>borders</h3>
+
+    ```html_example
+            <table class="table-borders">
+              <thead>
+                  <tr>
+                    <th>Entry Header 1</th>
+                    <th>Entry Header 2</th>
+                    <th>Entry Header 3</th>
+                    <th>Entry Header 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Entry First Line 1</td>
+                    <td>Entry First Line 2</td>
+                    <td>Entry First Line 3</td>
+                    <td>Entry First Line 4</td>
+                </tr>
+                <tr>
+                    <td>Entry Line 1</td>
+                    <td>Entry Line 2</td>
+                    <td>Entry Line 3</td>
+                    <td>Entry Line 4</td>
+                </tr>
+                <tr>
+                    <td>Entry Last Line 1</td>
+                    <td>Entry Last Line 2</td>
+                    <td>Entry Last Line 3</td>
+                    <td>Entry Last Line 4</td>
+                </tr>
+            </tbody>
+        </table>
+  ```
+        <h3>striped</h3>
+   ```html_example
+
+        <table class="table-striped">
+         <thead>
+          <tr>
+            <th>Entry Header 1</th>
+            <th>Entry Header 2</th>
+            <th>Entry Header 3</th>
+            <th>Entry Header 4</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Entry First Line 1</td>
+            <td>Entry First Line 2</td>
+            <td>Entry First Line 3</td>
+            <td>Entry First Line 4</td>
+        </tr>
+        <tr>
+            <td>Entry Line 1</td>
+            <td>Entry Line 2</td>
+            <td>Entry Line 3</td>
+            <td>Entry Line 4</td>
+        </tr>
+        <tr>
+            <td>Entry Last Line 1</td>
+            <td>Entry Last Line 2</td>
+            <td>Entry Last Line 3</td>
+            <td>Entry Last Line 4</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+*/

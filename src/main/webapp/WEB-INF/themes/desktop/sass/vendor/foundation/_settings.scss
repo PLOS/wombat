@@ -1034,31 +1034,31 @@ $include-html-nav-classes: false;
 
 $include-html-table-classes: false;
 
-// These control the background color for the table and even rows
-// $table-bg: #fff;
-// $table-even-row-bg: #f9f9f9  ;
+//These control the background color for the table and even rows
+$table-bg: $clr-body-bg;
+$table-even-row-bg:  $clr-body-bg;
 
-// These control the table cell border style
-// $table-border-style: solid;
-// $table-border-size: 1px;
-// $table-border-color: #ddd;
+//These control the table cell border style
+$table-border-style: solid;
+$table-border-size: rem-calc(1);//TODO does this belong in variables
+$table-border-color: $table-separator-color;
 
-// These control the table head styles
-// $table-head-bg: #f5f5f5  ;
-// $table-head-font-size: rem-calc(14);
-// $table-head-font-color: #222;
-// $table-head-font-weight: bold;
-// $table-head-padding: rem-calc(8 10 10);
+//These control the table head styles
+$table-head-bg: $clr-body-bg;
+$table-head-font-size: rem-calc($txt-size-default);
+$table-head-font-color: $clr-body-text;
+$table-head-font-weight: bold;
+$table-head-padding: rem-calc($line-height-small) $pad-small;
 
-// These control the row padding and font styles
-// $table-row-padding: rem-calc(9 10);
-// $table-row-font-size: rem-calc(14);
-// $table-row-font-color: #222;
-// $table-line-height: rem-calc(18);
+//These control the row padding and font styles
+$table-row-padding: rem-calc($line-height-small) $pad-small;
+$table-row-font-size: rem-calc($txt-size-default);
+$table-row-font-color: $clr-body-text;
+$table-line-height: rem-calc($line-height);
 
-// These are for controlling the display and margin of tables
-// $table-display: table-cell;
-// $table-margin-bottom: rem-calc(20);
+//These are for controlling the display and margin of tables
+$table-display: table-cell;
+$table-margin-bottom: rem-calc(20);
 
 //
 // TABS

@@ -145,10 +145,17 @@ h3, h4 {
     }
   }
 }
-//
+//////////
+// BLOCKS AND CALLOUTS
+//////////
+
 %callout-default {
   @include callout();
 }
+
+.block-quote {
+  @extend blockquote; //for lemur
+  }
 
 blockquote, .pullquote, .block-quote {
   border-left: $pad-xsmall solid $clr-separator;
@@ -332,32 +339,35 @@ This is one place not to use @extend, since this is a semantic class name
 /// table styles
 ////////
 
-article table {
+%table-fancy {
   @include table; //from foundation
   border-collapse: collapse;
   width: 100%;
   }
 
+
 table.table-basic{
-  border-width:0;
-   thead th{ border-bottom: rem-calc(1) solid $clr-body-text;}
-   tbody td{ border-bottom: rem-calc(1) solid $clr-separator;}
+   @extend %table-fancy;
+   border-width:0;
+   thead th{ border-bottom: $table-separator-header;}
+   tbody td{ border-bottom: $table-separator;}
    tbody tr:last-child td{ border-bottom: 0}
   }
 
 table.table-borders{
-  border: rem-calc(1) solid $clr-separator;
+  @extend %table-fancy;
+  border: $table-separator;
    td, th {
-    border: rem-calc(1) solid $clr-separator;
+    border: $table-separator;
     }
-  thead th{ border-bottom: rem-calc(1) solid $clr-body-text;}
-
+  thead th{ border-bottom: $table-separator-header;}
   }
 
 table.table-striped {
+  @extend %table-fancy;
   border-width:0;
   td, th {
-    border-left: rem-calc(1) solid $clr-body-bg;
+    border-left: $table-separator-width solid $clr-body-bg;
     }
   thead th{
     background: $grey-med-dark;

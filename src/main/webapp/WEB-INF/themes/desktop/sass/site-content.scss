@@ -28,9 +28,4 @@ article{
     @extend %link-text-default;
   }
 
-    table {
-      @include table; //from foundation
-      border-collapse: collapse;
-      width: 100%;
-      }
 }

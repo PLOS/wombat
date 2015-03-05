@@ -95,6 +95,11 @@ $clr-input-placeholder: $grey-dark;
 $clr-input-active: $grey-med-dark;
 
 $table-separator-color: $clr-separator;
+$table-separator-width: 1px;
+$table-separator-header-color: $clr-body-text;
+$table-separator: $table-separator-width solid $table-separator-color;
+$table-separator-header: $table-separator-width solid $table-separator-header-color;
+
 
 // GRID OPTIONS
 // Options are in scaffold.scss

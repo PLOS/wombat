@@ -1,31 +1,33 @@
-
 @import "global-imports";
 @import "sections/footer";
 @import "sections/header";
+
 /// scaffolding
 main {
   @extend .plos-row;
   margin-top: rem-calc($line-height-large);
   margin-bottom: rem-calc($line-height-large);
+
   nav {
     @include plos-grid-column($pixelwidth: columns, $columns: 2);
     position: relative;
-  }
+    }
+
   article {
     @include plos-grid-column($pixelwidth: columns, $columns: 9, $float: right);
+    }
   }
-}
 
 /// navigation
 nav ul {
   @include nav-enhanced;
-}
+  }
 
 /// typefaces
 
-article{
-  a {     //TODO: redo links so that underline is standard
+article {
+  a {
+    //TODO: redo links so that underline is standard
     @extend %link-text-default;
+    }
   }
-
-}

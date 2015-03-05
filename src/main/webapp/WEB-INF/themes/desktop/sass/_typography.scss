@@ -16,15 +16,15 @@ category: Files
 sup, sub {
   vertical-align: 0;
   position: relative;
-}
+  }
 
 sub {
   top: $sub-sup-alignment;
-}
+  }
 
 sup {
   bottom: $sub-sup-alignment;
-}
+  }
 
 /*doc
 ---
@@ -65,76 +65,74 @@ example | extension
 
 ol {
   padding-left: $pad-default;
-}
+  }
 
 ul.bullet {
   list-style-type: none;
   li {
     padding-left: $pad-default;
-  }
+    }
   li:before {
     content: '>';
     font-size: rem-calc(10);
     display: inline-block;
     margin-left: -$pad-smallish;
     position: absolute
-  }
+    }
   // to do put in variables
-}
+  }
 
 /// sizes are set in foundation.
 h2, h3, h4, h5 {
   font-family: $font-face-plain;
-}
+  }
 
 // font-weights
 h2, h3 {
   font-weight: bold;
-}
+  }
 
 h4, h5 {
   font-weight: normal;
-}
+  }
 
 //spacing
 h2, h3, h4, h5 {
   margin-bottom: rem-calc($line-height-small);
   margin-top: rem-calc($line-height-med);
   line-height: normal;
-}
+  }
 
 h2 {
   margin-bottom: rem-calc($line-height);
-}
+  }
 
 h3, h4 {
   margin-top: rem-calc($line-height-small);
-}
+  }
 
 //special styles
 
 .title-small {
   font-size: $txt-size-default;
   font-weight: bold;
-}
+  }
 
 //callout styles
 
-@mixin callout(
-  $margin-top: rem-calc($line-height-med),
-  $margin-bottom: rem-calc($line-height),
-  $padding-x: rem-calc($line-height),
-  $padding-y: $pad-default,
-  $icon-type: 'none',
-  $icon-width: $pad-medium
-
-) {
+@mixin callout($margin-top: rem-calc($line-height-med),
+$margin-bottom: rem-calc($line-height),
+$padding-x: rem-calc($line-height),
+$padding-y: $pad-default,
+$icon-type: 'none',
+$icon-width: $pad-medium) {
   margin: $margin-top 0 $margin-bottom 0;
   padding: $padding-x $padding-y;
 
   @if $icon-type != 'none' {
     padding-left: ($padding-x + $icon-width);
     position: relative;
+
     &::after {
       @extend .icon-#{$icon-type};
       display: block;
@@ -142,16 +140,17 @@ h3, h4 {
       left: $padding-x;
       top: ($padding-y - rem-calc(2));
       line-height: 1 !important;
+      }
     }
   }
-}
+
 //////////
 // BLOCKS AND CALLOUTS
 //////////
 
 %callout-default {
   @include callout();
-}
+  }
 
 .block-quote {
   @extend blockquote; //for lemur
@@ -160,38 +159,39 @@ h3, h4 {
 blockquote, .pullquote, .block-quote {
   border-left: $pad-xsmall solid $clr-separator;
   margin: rem-calc($line-height-med 0 $line-height 0);
-}
+  }
 
 .pullquote {
   @extend blockquote;
   font-style: italic;
-}
+  }
 
 .global-alert {
   @extend %callout-default;
   background: $plos-default-shade1;
   font-weight: bold;
-}
+  }
 
 .tip {
   @include callout($icon-type: 'pointer');
-}
+  }
 
 .important {
   @include callout($icon-type: 'important');
   background: $clr-alert;
-}
+  }
+
 //
 .more-information {
   @include callout($icon-type: 'info');
   background: $clr-callout-bg;
-}
+  }
 
 %brand-title {
   @extend %header-allcaps;
   @extend %brand-color;
   margin-bottom: $pad-small;
-}
+  }
 
 %brand-header {
   @extend %brand-background;
@@ -200,12 +200,12 @@ blockquote, .pullquote, .block-quote {
   font-family: $font-face-fancy;
   font-size: rem-calc($txt-size-medium-large);
   line-height: $pad-large;
-}
+  }
 
 .header-allcaps-smallest {
   @extend %header-allcaps-plain;
   font-size: $txt-size-xxxsmall;
-}
+  }
 
 /*doc
 ---
@@ -240,29 +240,29 @@ example | extension
     @if $decoration == none {
       color: $plos-default;
       text-decoration: none;
-    } @else if $decoration == underline {
+      } @else if $decoration == underline {
       color: $color;
       text-decoration: underline;
+      }
     }
   }
-}
 
 %link-text-body, %link-text-body a {
   //TODO- should this be link text home?
   @include link-text();
-}
+  }
 
 %link-text-white, %link-text-white a {
   @include link-text($color: $white, $decoration: underline);
-}
+  }
 
 %link-text-underline, %link-text-underline a {
   @include link-text($decoration: underline);
-}
+  }
 
 %link-text-default, %link-text-default a {
   @include link-text($plos-default, underline);
-}
+  }
 
 //////////////
 //font decorations
@@ -271,23 +271,23 @@ example | extension
 %small-italic {
   font-size: rem-calc($txt-size-xxxsmall);
   font-style: italic;
-}
+  }
 
 %condense {
   letter-spacing: -0.5px;
-}
+  }
 
 %txt-transform {
   text-transform: uppercase;
-}
+  }
 
 .inline-intro {
   font-weight: bold;
-}
+  }
 
 .no-margin {
   margin-bottom: 0;
-}
+  }
 
 //////////////
 //form styles
@@ -296,19 +296,19 @@ example | extension
 @mixin input-placeholder-color($color: $clr-input-placeholder) {
   ::-webkit-input-placeholder {
     color: $color;
-  }
+    }
   :-moz-placeholder {
     /* Firefox 18- */
     color: $color;
-  }
+    }
   ::-moz-placeholder {
     /* Firefox 19+ */
     color: $color;
-  }
+    }
   :-ms-input-placeholder {
     color: $color;
+    }
   }
-}
 
 //////////////
 //font-sizes styles
@@ -333,7 +333,7 @@ This is one place not to use @extend, since this is a semantic class name
 
 .note, .caption, figcaption {
   color: $grey-med-light;
-}
+  }
 
 /////////
 /// table styles
@@ -345,30 +345,48 @@ This is one place not to use @extend, since this is a semantic class name
   width: 100%;
   }
 
-table.table-basic{
-   @extend %table-fancy;
-   border-width:0;
-   thead th{ border-bottom: $table-separator-header;}
-   tbody td{ border-bottom: $table-separator;}
-   tbody tr:last-child td{ border-bottom: 0}
+table.table-basic {
+  @extend %table-fancy;
+  border-width: 0;
+
+  thead th {
+    border-bottom: $table-separator-header;
+    }
+
+  tbody td {
+    border-bottom: $table-separator;
+    }
+
+  tbody tr:last-child td {
+    border-bottom: 0
+    }
   }
 
-table.table-borders{
+table.table-borders {
   @extend %table-fancy;
   border: $table-separator;
-   td, th {
+
+  td, th {
     border: $table-separator;
     }
-  thead th{ border-bottom: $table-separator-header;}
+
+  thead th {
+    border-bottom: $table-separator-header;
+    }
   }
 
 table.table-striped {
   @extend %table-fancy;
-  border-width:0;
+  border-width: 0;
+
   td, th {
     border-left: $table-separator-width solid $clr-body-bg;
     }
-  tr{background: $grey-light;}
+
+  tr {
+    background: $grey-light;
+    }
+
   tr {
     &.even,
     &.alt,
@@ -376,13 +394,12 @@ table.table-striped {
       background: $grey-med-light;
       }
     }
-  thead tr th{
+
+  thead tr th {
     background: $grey-med-dark;
     color: $clr-body-bg;
     }
   }
-
-
 
 /////////
 /// homepage font styles
@@ -395,41 +412,40 @@ table.table-striped {
   margin-top: .2rem;
   margin-bottom: .2rem;
   @extend %link-text-body;
-}
+  }
 
 %header-allcaps {
   font-size: rem-calc($txt-size-medium);
   font-family: $font-face-fancy;
   @extend %txt-transform;
-}
+  }
 
 %header-allcaps-plain {
   @extend %header-allcaps;
   font-family: $font-face-plain;
-}
+  }
 
 %header-allcaps-xlarge {
   @extend %header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
-}
+  }
 
 %header-medium-bold {
   font-size: rem-calc($txt-size-medium);
   font-family: $font-face-fancy;
   font-weight: bold;
-
-}
+  }
 
 %header-xlarge-light {
   font-size: rem-calc($txt-size-xlarge);
   color: $clr-light-text;
   font-family: $font-face-fancy;
-}
+  }
 
 %header-xxlarge {
   font-size: rem-calc($txt-size-xxlarge);
   font-family: $font-face-fancy;
-}
+  }
 
 %header-bottom-shadow {
   //not used ?
@@ -437,4 +453,4 @@ table.table-striped {
   margin-bottom: rem-calc(17);
   box-shadow: $default-header-shadow;
   text-align: center;
-}
+  }

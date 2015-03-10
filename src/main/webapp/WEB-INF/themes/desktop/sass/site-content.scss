@@ -23,9 +23,9 @@ nav ul {
   @include nav-enhanced;
   }
 
-/// typefaces
+/// site content specific styles
 
-article {
+article, .cms-editor{      // to work on ck editor editing
 
   p {overflow:auto;}  //for image floating
 

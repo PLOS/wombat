@@ -1232,9 +1232,9 @@ category: Files
 .cms-preview sub { top: 0.5ex; }
 .cms-preview sup { bottom: 0.5ex; }
 .cms-preview ol { padding-left: 1.25rem; }
-.cms-preview ul.list-bullet { list-style-type: none; }
-.cms-preview ul.list-bullet li { padding-left: 1.25rem; }
-.cms-preview ul.list-bullet li:before { content: '>'; font-size: 0.625rem; display: inline-block; margin-left: -0.9375rem; position: absolute; }
+.cms-preview ul.list-bullet, .cms-preview ul { list-style-type: none; }
+.cms-preview ul.list-bullet li, .cms-preview ul li { padding-left: 1.25rem; }
+.cms-preview ul.list-bullet li:before, .cms-preview ul li:before { content: '>'; font-size: 0.625rem; display: inline-block; margin-left: -0.9375rem; position: absolute; }
 .cms-preview h2, .cms-preview h3, .cms-preview h4, .cms-preview h5 { font-family: "arial"; }
 .cms-preview h2, .cms-preview h3 { font-weight: bold; }
 .cms-preview h4, .cms-preview h5 { font-weight: normal; }

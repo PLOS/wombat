@@ -1257,19 +1257,19 @@ category: Files
 .cms-preview .header-allcaps-smallest { font-size: 10px; }
 .cms-preview .carousel-wrap.small .carousel li h3, .cms-preview .tooltip-aside li a, .cms-preview .carousel-wrap.small .carousel li h3 a, .cms-preview .tooltip-aside li a a { color: #333333; text-decoration: none; }
 .cms-preview .carousel-wrap.small .carousel li h3:hover, .cms-preview .tooltip-aside li a:hover, .cms-preview .carousel-wrap.small .carousel li h3 a:hover, .cms-preview .tooltip-aside li a a:hover, .cms-preview .carousel-wrap.small .carousel li h3 a:hover, .cms-preview .tooltip-aside li a a:hover, .cms-preview .carousel-wrap.small .carousel li h3 a a:hover, .cms-preview .tooltip-aside li a a a:hover { color: #3c63af; text-decoration: none; }
-.cms-preview article a, .cms-preview .cms-editor a, .cms-preview article a a, .cms-preview .cms-editor a a { color: #3c63af; text-decoration: none; }
-.cms-preview article a:hover, .cms-preview .cms-editor a:hover, .cms-preview article a a:hover, .cms-preview .cms-editor a a:hover, .cms-preview article a a:hover, .cms-preview .cms-editor a a:hover, .cms-preview article a a a:hover, .cms-preview .cms-editor a a a:hover { color: #3c63af; text-decoration: underline; }
+.cms-preview article a, .cms-preview a, .cms-preview a a { color: #3c63af; text-decoration: none; }
+.cms-preview a:hover, .cms-preview a a:hover, .cms-preview a a:hover, .cms-preview a a a:hover { color: #3c63af; text-decoration: underline; }
 .cms-preview .carousel-wrap.small .carousel-control .numbers { font-size: 0.625rem; font-style: italic; }
 .cms-preview .header-allcaps-smallest { text-transform: uppercase; }
 .cms-preview .inline-intro { font-weight: bold; }
 .cms-preview .no-margin { margin-bottom: 0; }
 .cms-preview .note, .cms-preview .caption, .cms-preview figcaption { color: #cccccc; }
-.cms-preview table.table-basic, .cms-preview table.table-borders, .cms-preview table.table-striped { background: white; margin-bottom: 1.25rem; border: solid 0.0625rem #cccccc; border-collapse: collapse; width: 100%; }
-.cms-preview table.table-basic thead, .cms-preview table.table-borders thead, .cms-preview table.table-striped thead, .cms-preview table.table-basic tfoot, .cms-preview table.table-borders tfoot, .cms-preview table.table-striped tfoot { background: white; }
-.cms-preview table.table-basic thead tr th, .cms-preview table.table-borders thead tr th, .cms-preview table.table-striped thead tr th, .cms-preview table.table-basic thead tr td, .cms-preview table.table-borders thead tr td, .cms-preview table.table-striped thead tr td, .cms-preview table.table-basic tfoot tr th, .cms-preview table.table-borders tfoot tr th, .cms-preview table.table-striped tfoot tr th, .cms-preview table.table-basic tfoot tr td, .cms-preview table.table-borders tfoot tr td, .cms-preview table.table-striped tfoot tr td { padding: 0.5625rem 0.625rem; font-size: 0.8125rem; font-weight: bold; color: #333333; text-align: left; }
-.cms-preview table.table-basic tr th, .cms-preview table.table-borders tr th, .cms-preview table.table-striped tr th, .cms-preview table.table-basic tr td, .cms-preview table.table-borders tr td, .cms-preview table.table-striped tr td { padding: 0.5625rem 0.625rem; font-size: 0.8125rem; color: #333333; }
-.cms-preview table.table-basic tr.even, .cms-preview table.table-borders tr.even, .cms-preview table.table-striped tr.even, .cms-preview table.table-basic tr.alt, .cms-preview table.table-borders tr.alt, .cms-preview table.table-striped tr.alt, .cms-preview table.table-basic tr:nth-of-type(even), .cms-preview table.table-borders tr:nth-of-type(even), .cms-preview table.table-striped tr:nth-of-type(even) { background: white; }
-.cms-preview table.table-basic thead tr th, .cms-preview table.table-borders thead tr th, .cms-preview table.table-striped thead tr th, .cms-preview table.table-basic tfoot tr th, .cms-preview table.table-borders tfoot tr th, .cms-preview table.table-striped tfoot tr th, .cms-preview table.table-basic tbody tr td, .cms-preview table.table-borders tbody tr td, .cms-preview table.table-striped tbody tr td, .cms-preview table.table-basic tr td, .cms-preview table.table-borders tr td, .cms-preview table.table-striped tr td, .cms-preview table.table-basic tfoot tr td, .cms-preview table.table-borders tfoot tr td, .cms-preview table.table-striped tfoot tr td { display: table-cell; line-height: 1.125rem; }
+.cms-preview table.table-basic, .cms-preview table.table-borders, .cms-preview table.table-zebra-stripes { background: white; margin-bottom: 1.25rem; border: solid 0.0625rem #cccccc; border-collapse: collapse; width: 100%; }
+.cms-preview table.table-basic thead, .cms-preview table.table-borders thead, .cms-preview table.table-zebra-stripes thead, .cms-preview table.table-basic tfoot, .cms-preview table.table-borders tfoot, .cms-preview table.table-zebra-stripes tfoot { background: white; }
+.cms-preview table.table-basic thead tr th, .cms-preview table.table-borders thead tr th, .cms-preview table.table-zebra-stripes thead tr th, .cms-preview table.table-basic thead tr td, .cms-preview table.table-borders thead tr td, .cms-preview table.table-zebra-stripes thead tr td, .cms-preview table.table-basic tfoot tr th, .cms-preview table.table-borders tfoot tr th, .cms-preview table.table-zebra-stripes tfoot tr th, .cms-preview table.table-basic tfoot tr td, .cms-preview table.table-borders tfoot tr td, .cms-preview table.table-zebra-stripes tfoot tr td { padding: 0.5625rem 0.625rem; font-size: 0.8125rem; font-weight: bold; color: #333333; text-align: left; }
+.cms-preview table.table-basic tr th, .cms-preview table.table-borders tr th, .cms-preview table.table-zebra-stripes tr th, .cms-preview table.table-basic tr td, .cms-preview table.table-borders tr td, .cms-preview table.table-zebra-stripes tr td { padding: 0.5625rem 0.625rem; font-size: 0.8125rem; color: #333333; }
+.cms-preview table.table-basic tr.even, .cms-preview table.table-borders tr.even, .cms-preview table.table-zebra-stripes tr.even, .cms-preview table.table-basic tr.alt, .cms-preview table.table-borders tr.alt, .cms-preview table.table-zebra-stripes tr.alt, .cms-preview table.table-basic tr:nth-of-type(even), .cms-preview table.table-borders tr:nth-of-type(even), .cms-preview table.table-zebra-stripes tr:nth-of-type(even) { background: white; }
+.cms-preview table.table-basic thead tr th, .cms-preview table.table-borders thead tr th, .cms-preview table.table-zebra-stripes thead tr th, .cms-preview table.table-basic tfoot tr th, .cms-preview table.table-borders tfoot tr th, .cms-preview table.table-zebra-stripes tfoot tr th, .cms-preview table.table-basic tbody tr td, .cms-preview table.table-borders tbody tr td, .cms-preview table.table-zebra-stripes tbody tr td, .cms-preview table.table-basic tr td, .cms-preview table.table-borders tr td, .cms-preview table.table-zebra-stripes tr td, .cms-preview table.table-basic tfoot tr td, .cms-preview table.table-borders tfoot tr td, .cms-preview table.table-zebra-stripes tfoot tr td { display: table-cell; line-height: 1.125rem; }
 .cms-preview table.table-basic { border-width: 0; }
 .cms-preview table.table-basic thead th { border-bottom: 1px solid #333333; }
 .cms-preview table.table-basic tbody td { border-bottom: 1px solid #cccccc; }
@@ -1277,11 +1277,11 @@ category: Files
 .cms-preview table.table-borders { border: 1px solid #cccccc; }
 .cms-preview table.table-borders td, .cms-preview table.table-borders th { border: 1px solid #cccccc; }
 .cms-preview table.table-borders thead th { border-bottom: 1px solid #333333; }
-.cms-preview table.table-striped { border-width: 0; }
-.cms-preview table.table-striped td, .cms-preview table.table-striped th { border-left: 1px solid white; }
-.cms-preview table.table-striped tr { background: #efefef; }
-.cms-preview table.table-striped tr.even, .cms-preview table.table-striped tr.alt, .cms-preview table.table-striped tr:nth-of-type(even) { background: #cccccc; }
-.cms-preview table.table-striped thead tr th { background: #666666; color: white; }
+.cms-preview table.table-zebra-stripes { border-width: 0; }
+.cms-preview table.table-zebra-stripes td, .cms-preview table.table-zebra-stripes th { border-left: 1px solid white; }
+.cms-preview table.table-zebra-stripes tr { background: #efefef; }
+.cms-preview table.table-zebra-stripes tr.even, .cms-preview table.table-zebra-stripes tr.alt, .cms-preview table.table-zebra-stripes tr:nth-of-type(even) { background: #cccccc; }
+.cms-preview table.table-zebra-stripes thead tr th { background: #666666; color: white; }
 .cms-preview .carousel-wrap.small .carousel li h3 { line-height: 1; color: #333333; font-weight: normal; margin-top: .2rem; margin-bottom: .2rem; }
 .cms-preview .header-allcaps-smallest { font-size: 0.875rem; font-family: "albert"; }
 .cms-preview .header-allcaps-smallest { font-family: "arial"; }
@@ -1495,6 +1495,9 @@ body.plosone .cms-preview .nav .nav-user li.highlighted > a:hover { color: white
 .cms-preview nav ul > li.active > ul li a:hover { border-left: 0.0625rem solid #3c63af; padding-left: 1.1875rem; }
 .cms-preview nav ul > li.active > ul li.active a { border-left: 0.125rem solid #3c63af; padding-left: 1.125rem; }
 .cms-preview nav ul > li.active > ul.suppress_expansion { display: none; }
-.cms-preview article p, .cms-preview .cms-editor p { overflow: auto; }
-.cms-preview article img.img-default, .cms-preview .cms-editor img.img-default { display: block; clear: both; margin: 9px auto; }
-.cms-preview article img.img-left, .cms-preview article table img.img-default, .cms-preview article .cms-editor table img.img-default, .cms-preview .cms-editor table article img.img-default, .cms-preview .cms-editor img.img-left, .cms-preview article table .cms-editor img.img-default, .cms-preview .cms-editor table img.img-default { display: inline-block; margin: 0 0.625rem 9px 0; text-align: left; float: left; }
+.cms-preview article p { overflow: auto; }
+.cms-preview article img.img-default { display: block; clear: both; margin: 9px auto; }
+.cms-preview article img.img-left, .cms-preview article table img.img-default, .cms-preview table article img.img-default { display: inline-block; margin: 0 0.625rem 9px 0; text-align: left; float: left; }
+.cms-preview p { overflow: auto; }
+.cms-preview img.img-default { display: block; clear: both; margin: 9px auto; }
+.cms-preview img.img-left, .cms-preview article table img.img-default, .cms-preview table img.img-default { display: inline-block; margin: 0 0.625rem 9px 0; text-align: left; float: left; }

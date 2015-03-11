@@ -10,7 +10,7 @@ images_dir = "resource/img"
 javascripts_dir = "resource/js"
 fonts_dir = "resource/fonts"
 
-output_style = :compressed
+output_style = :compact
 
 environment = :development
 

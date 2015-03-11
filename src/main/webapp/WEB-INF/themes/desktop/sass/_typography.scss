@@ -67,10 +67,11 @@ ol {
   padding-left: $pad-default;
   }
 
-ul.bullet {
+ul.list-bullet {
   list-style-type: none;
   li {
     padding-left: $pad-default;
+    position: relative;
     }
   li:before {
     content: '>';
@@ -166,23 +167,27 @@ blockquote, .pullquote, .block-quote {
   font-style: italic;
   }
 
-.global-alert {
+.block-basic {
+  @include callout();
+  background: $clr-callout-bg;
+  }
+
+.block-global-alert {
   @extend %callout-default;
   background: $plos-default-shade1;
   font-weight: bold;
   }
 
-.tip {
+.block-tip {
   @include callout($icon-type: 'pointer');
   }
 
-.important {
+.block-important {
   @include callout($icon-type: 'important');
   background: $clr-alert;
   }
 
-//
-.more-information {
+.block-more-information {
   @include callout($icon-type: 'info');
   background: $clr-callout-bg;
   }
@@ -375,7 +380,7 @@ table.table-borders {
     }
   }
 
-table.table-striped {
+table.table-zebra-stripes {
   @extend %table-fancy;
   border-width: 0;
 

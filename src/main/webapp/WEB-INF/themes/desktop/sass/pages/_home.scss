@@ -113,7 +113,6 @@ $image-container: ($image-width + $pad-small);
   }
 
 .hero {
-
   // overlay colors
   &.overlay-dark > a:before {
     @extend .overlay;
@@ -136,7 +135,6 @@ $image-container: ($image-width + $pad-small);
   &.dark-text,
   &.dark-text a {
     color: $clr-body-text;
-
     }
 
   // hero text
@@ -165,6 +163,7 @@ $image-container: ($image-width + $pad-small);
         width: 23%;
         vertical-align: bottom;
         display: inline-block;
+        line-height: 1;
         }
       }
     }

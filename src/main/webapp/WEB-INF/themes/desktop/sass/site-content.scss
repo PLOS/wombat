@@ -23,31 +23,36 @@ nav ul {
   @include nav-enhanced;
   }
 
-/// typefaces
+/// site content specific styles
+@mixin site-content {
 
-article {
-
-  p {overflow:auto;}  //for image floating
+  p {
+    overflow: auto;
+    }
+  //for image floating
 
   a {
     //TODO: redo links so that underline is standard
     @extend %link-text-default;
     }
 
-  img.img-default{
-     display: block;
-     clear: both;
-     margin: $line-height-small auto;
+  img.img-default {
+    display: block;
+    clear: both;
+    margin: $line-height-small auto;
     }
 
-  img.img-left{
+  img.img-left {
     display: inline-block;
     margin: 0 $pad-small $line-height-small 0;
     text-align: left;
-    float:left;
+    float: left;
     }
 
-  table img.img-default{
-     @extend .img-left;
+  table img.img-default {
+    @extend .img-left;
     }
+  }
+article {      // to work on ck editor editing
+     @include site-content;
   }

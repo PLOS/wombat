@@ -1,6 +1,6 @@
 <#include "siteMenuFlag.ftl" />
 <#if hasSiteMenu>
-  <#macro menuGroup title singleColumn=false>
+  <#macro menuGroup title singleColumn=false containsCallout=false>
     <#nested/>
   </#macro>
 

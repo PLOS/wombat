@@ -1,5 +1,9 @@
 <#include "siteMenuFlag.ftl" />
 <#if hasSiteMenu>
+  <#macro menuGroup title singleColumn=false>
+    <#nested/>
+  </#macro>
+
   <#macro menuSection title containsSubmit=false>
   <li class="accordion-item">
     <a class="expander">

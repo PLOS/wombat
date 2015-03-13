@@ -1486,7 +1486,7 @@ body.plosone .cms-preview .nav .nav-user li.highlighted > a:hover { color: white
 .cms-preview nav ul li { margin: 0 0 0.3125rem 0; }
 .cms-preview nav ul li a { padding: 0.125rem 0; padding-left: 0.625rem; color: #707070; text-decoration: none; }
 .cms-preview nav ul li a:hover, .cms-preview nav ul li a a:hover { color: #3c63af; text-decoration: none; }
-.cms-preview nav ul > li > a { color: #707070; }
+.cms-preview nav ul > li > a { display: block; color: #707070; }
 .cms-preview nav ul > li > a:hover { border-left: 0.0625rem solid #3c63af; padding-left: 0.5625rem; color: #707070; }
 .cms-preview nav ul > li > ul { display: none; margin: 0; margin-bottom: 0; margin-top: 0.3125rem; padding-bottom: 0; }
 .cms-preview nav ul > li.active > a { border-left: 0.125rem solid #3c63af; padding-left: 0.5rem; color: #333333; font-weight: bold; letter-spacing: -.5px; }

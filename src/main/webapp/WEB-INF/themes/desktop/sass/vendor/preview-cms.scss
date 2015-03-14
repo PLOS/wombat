@@ -4,7 +4,12 @@
 
   @import "site-content";
   @include site-content;
-  div ul {@extend .list-bullet}
+/// ck-editor specific over rides
+  div ul {@extend .list-bullet;}
+  .cke_panel_list{
+      @extend .list-bullet-over-ride;
+    }
+
 
 
 

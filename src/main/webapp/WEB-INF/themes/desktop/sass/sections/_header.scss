@@ -126,19 +126,6 @@ $width-nav: $block-grid-elements - $width-logo;
   ul.nav-elements {
     @extend .right; // foundation
     padding-right: 0;
-    //THIS IS FOR DEV!
-    >li > ul {
-      display:none;
-    }
-    li.multi-col-parent{
-      width: 960px;
-      .multi-col{
-        display: inline-block;
-        width: 30%;
-        float:right;
-          font-size: 10px;
-      }
-    }
     ul.dropdown li a,  ul.dropdowncallout li a{
        line-height: 1.5em !important;  // this line is needed to overide foundation stuff.
     }

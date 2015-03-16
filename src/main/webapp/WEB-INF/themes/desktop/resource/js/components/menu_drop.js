@@ -11,18 +11,18 @@
     options = $.extend({}, defaults, options);
 
     var defaults = {
-      child: 'ul.nav-elements >li>ul'
+      child: '.dropdown'
     };
 
     if (action === "show") {
       this.addClass("hover");
-      $(options.child, this).show();
+      $(options.child, this).css('visibility', 'visible');
       return this;
     }
 
     if (action === "hide") {
       this.removeClass("hover");
-      $(options.child, this).hide();
+      $(options.child, this).css('visibility', 'hidden');
       return this;
     }
 

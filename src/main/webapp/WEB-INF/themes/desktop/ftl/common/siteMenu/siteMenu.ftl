@@ -14,20 +14,20 @@
   <a class="btn" href="${href}">
     <#nested/>
   </a>
-  </#macro>
+  </#macro>                                                                                                                                                                                                                            `
 
   <#macro menuGroup title singleColumn=false containsCallout=false>
 
   <ul class="dropdown" id="${title?lower_case?replace(" ","-")}-dropdown-list">
-    <#nested/>
-  </ul>
 
     <#if singleColumn>
+      <#assign column="single">
       <#nested/>
     <#else>
-    <li class="multi-col-parent">
+      <#assign column="group">
+    <li class="multi-col-parent has-dropdown">
     ${title}
-      <ul class="multi-col">
+      <ul class="multi-col dropdown">
         <#nested/>
       </ul>
       <#if containsCallout>
@@ -39,19 +39,21 @@
       </#if>
     </li>
     </#if>
+  </ul>
 
   </#macro>
-
   <#macro menuSection title >
-  <li class="menu-section-header" id="${title?lower_case?replace(" ","-")}">
-  ${title}
 
-    <ul class="menu-section" id="${title?lower_case?replace(" ","-")}-dropdown-list">
+  <li class="menu-section-header <#if column="single">has-dropdown </#if>" id="${title?lower_case?replace(" ","-")}">
+     ${title}
+
+    <ul class="menu-section <#if column="single">dropdown </#if>" id="${title?lower_case?replace(" ","-")}-dropdown-list">
       <#nested/>
     </ul>
 
   </li>
   </#macro>
+
 
   <#macro menuLink href>
   <li>

@@ -1435,6 +1435,9 @@ body.plosone .cms-preview .nav .nav-user li.highlighted > a:hover { color: white
 .cms-preview .top-bar-section h2, .cms-preview .top-bar-section h3 { font-family: "albert"; line-height: 1; }
 .cms-preview .top-bar-section ul { line-height: 1.35; }
 .cms-preview .top-bar-section ul.nav-elements { padding-right: 0; }
+.cms-preview .top-bar-section ul.nav-elements > li > ul { display: none; }
+.cms-preview .top-bar-section ul.nav-elements li.multi-col-parent { width: 960px; }
+.cms-preview .top-bar-section ul.nav-elements li.multi-col-parent .multi-col { display: inline-block; width: 30%; float: right; font-size: 10px; }
 .cms-preview .top-bar-section ul.nav-elements ul.dropdown li a, .cms-preview .top-bar-section ul.nav-elements ul.dropdowncallout li a { line-height: 1.5em !important; }
 .cms-preview .top-bar-section ul.nav-elements > li { float: left; cursor: pointer; margin-left: 3px; border-left: 1px solid #cccccc; line-height: 30px; padding: 0.4375rem 0.9375rem; font-family: "albert"; font-size: 20px; color: #3c63af; }
 .cms-preview .top-bar-section ul.nav-elements > li:first-child { border-left: none; margin-left: 0; }
@@ -1486,7 +1489,7 @@ body.plosone .cms-preview .nav .nav-user li.highlighted > a:hover { color: white
 .cms-preview nav ul li { margin: 0 0 0.3125rem 0; }
 .cms-preview nav ul li a { padding: 0.125rem 0; padding-left: 0.625rem; color: #707070; text-decoration: none; }
 .cms-preview nav ul li a:hover, .cms-preview nav ul li a a:hover { color: #3c63af; text-decoration: none; }
-.cms-preview nav ul > li > a { color: #707070; }
+.cms-preview nav ul > li > a { display: block; color: #707070; }
 .cms-preview nav ul > li > a:hover { border-left: 0.0625rem solid #3c63af; padding-left: 0.5625rem; color: #707070; }
 .cms-preview nav ul > li > ul { display: none; margin: 0; margin-bottom: 0; margin-top: 0.3125rem; padding-bottom: 0; }
 .cms-preview nav ul > li.active > a { border-left: 0.125rem solid #3c63af; padding-left: 0.5rem; color: #333333; font-weight: bold; letter-spacing: -.5px; }

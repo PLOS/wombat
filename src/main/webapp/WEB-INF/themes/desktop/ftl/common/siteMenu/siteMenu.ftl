@@ -18,37 +18,37 @@
 
   <#macro menuGroup title singleColumn=false containsCallout=false>
 
-    <ul class="dropdown" id="${title?lower_case?replace(" ","-")}-dropdown-list">
-      <#nested/>
-    </ul>
-
-  <#if singleColumn>
+  <ul class="dropdown" id="${title?lower_case?replace(" ","-")}-dropdown-list">
     <#nested/>
-  <#else>
+  </ul>
+
+    <#if singleColumn>
+      <#nested/>
+    <#else>
     <li class="multi-col-parent">
-      ${title}
-        <ul class="multi-col" >
-            <#nested/>
-        </ul>
-        <#if containsCallout>
-            <div class="calloutcontainer dropdown">
-                <div class="submit" id="dropdown-callout-submit">
-                  <#include "siteMenuCallout.ftl" />
-                </div>
-            </div>
-        </#if>
+    ${title}
+      <ul class="multi-col">
+        <#nested/>
+      </ul>
+      <#if containsCallout>
+        <div class="calloutcontainer dropdown">
+          <div class="submit" id="dropdown-callout-submit">
+            <#include "siteMenuCallout.ftl" />
+          </div>
+        </div>
+      </#if>
     </li>
-  </#if>
+    </#if>
 
   </#macro>
 
-  <#macro menuSection title>
-  <li class="menu-section-header"  id="${title?lower_case?replace(" ","-")}">
+  <#macro menuSection title >
+  <li class="menu-section-header" id="${title?lower_case?replace(" ","-")}">
   ${title}
 
-      <ul class="menu-section" id="${title?lower_case?replace(" ","-")}-dropdown-list">
-        <#nested/>
-      </ul>
+    <ul class="menu-section" id="${title?lower_case?replace(" ","-")}-dropdown-list">
+      <#nested/>
+    </ul>
 
   </li>
   </#macro>
@@ -61,7 +61,7 @@
 
   <#macro menuSpecialSection title>
   <li data-js-tooltip-hover="trigger" class="subject-area">
-    ${title}
+  ${title}
      <#nested/>
   </li>
   </#macro>

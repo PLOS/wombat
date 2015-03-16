@@ -1,14 +1,16 @@
 /*  This is a preview specific page for internal/external tools
  *
  */
+@import "site-content";
+@include site-content;
 
-  @import "site-content";
-  @include site-content;
+ul {
+  @extend .list-bullet
+  }
 
-  div ul {@extend .list-bullet}
-  .cke_panel_list{
-      @extend .list-bullet-over-ride;
-    }
+.cke_panel_list {
+  @extend .list-bullet-over-ride;
+  }
 
 
 

@@ -3,9 +3,12 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:aop="http://www.springframework.org/schema/aop"
              xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
   <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
@@ -30,5 +33,33 @@
 
   <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
   <resources mapping="/resources/**" location="/resources/"/>
+
+  <!-- Performance monitoring  -->
+  <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+  <beans:bean id="performanceMonitor"
+        class="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" />
+
+  <aop:config>
+    <aop:pointcut id="allServiceMethods" expression="execution(* org.ambraproject.wombat.service.*.*(..))"/>
+    <aop:advisor pointcut-ref="allServiceMethods" advice-ref="performanceMonitor" order="2"/>
+  </aop:config>
+
+  <!--<aop:config>-->
+    <!--<aop:pointcut id="allTemplateMethods" expression="execution(* org.ambraproject.wombat.freemarker.*.*(..))"/>-->
+    <!--<aop:advisor pointcut-ref="allTemplateMethods" advice-ref="performanceMonitor" order="3"/>-->
+  <!--</aop:config>-->
+
+  <!--<beans:bean id="customizableTraceInterceptor"-->
+              <!--class="org.springframework.aop.interceptor.CustomizableTraceInterceptor">-->
+    <!--<beans:property name="enterMessage" value="Entering $[methodName]($[arguments])"/>-->
+    <!--<beans:property name="exitMessage" value="Leaving $[methodName](): $[returnValue]"/>-->
+  <!--</beans:bean>-->
+
+  <!--<aop:config>-->
+    <!--<aop:pointcut id="allMethods" expression="execution(* org.ambraproject.wombat.*.*.*(..))"/>-->
+    <!--<aop:advisor advice-ref="customizableTraceInterceptor"-->
+                 <!--pointcut-ref="allMethods"/>-->
+  <!--</aop:config>-->
 
 </beans:beans>

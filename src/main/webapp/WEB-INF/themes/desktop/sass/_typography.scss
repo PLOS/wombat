@@ -66,14 +66,14 @@ example | extension
 ol {
   padding-left: $pad-default;
   }
-
-ul.list-bullet {
+/// this should be used on a ul but I wanted to make it extensible
+.list-bullet {
   list-style-type: none;
   li {
     padding-left: $pad-default;
     position: relative;
     }
-  li:before {
+  li::before {
     content: '>';
     font-size: rem-calc(10);
     display: inline-block;
@@ -81,6 +81,15 @@ ul.list-bullet {
     position: absolute
     }
   // to do put in variables
+  }
+.list-bullet-over-ride{
+  li::before{
+    content: '';
+    font-size: inherit;
+    display: inline-block;
+    margin-left: 0;
+    position: relative;
+    }
   }
 
 /// sizes are set in foundation.

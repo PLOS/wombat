@@ -118,7 +118,7 @@ $width-nav: $block-grid-elements - $width-logo;
   @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right);
   h2,h3{
     font-family:  $font-face-navigation;
-    line-height: 1;
+    font-size: $txt-size-xlarge;
   }
  ul{
    line-height: 1.35;
@@ -167,7 +167,7 @@ $width-nav: $block-grid-elements - $width-logo;
     color: $grey-med;
     font-family: $font-face-plain;
 
-@include arrow-bottom($arrow-color: $white);
+  @include arrow-bottom($arrow-color: $white);
 
   }
 
@@ -182,8 +182,7 @@ $width-nav: $block-grid-elements - $width-logo;
     &:hover + li {
       border-left: 1px solid scale-color(#666, $lightness: 82%);
     }
-    > ul.dropdown {
-
+    > .dropdown {
       top: 45px;
       @include border-radius();
       width: rem-calc(240);
@@ -193,33 +192,50 @@ $width-nav: $block-grid-elements - $width-logo;
       background: $white;
       box-shadow: $nav-main-box-shadow;
     }
+   .mega {
+     width: rem-calc(960); //width of page
+     left: -530px; //TODO- where do we get this value from?
+     position: relative;
+     }
 
     ul.dropdown li a {
       @extend .dropdownanchor;
     }
 
-    .calloutcontainer {
-      width: rem-calc(530);
-      top: 46px;
-      right: -103px;
-      padding: rem-calc(20 0 30);
-      background: $white;
-      box-shadow: $nav-main-box-shadow;
-      @include border-radius();
-      cursor: default;
-      .dropdowncallout {
-        float: right;
-        display: inline-block;
-        width: rem-calc(240);
-        border-left: 1px solid $grey-light;
-        background: $white;
-        @include border-radius();
-        li a {
-          @extend .dropdownanchor;
+
+
+
+    ul.multi-col{
+      @extend .plos-row;
+      > li{
+        @extend .plos-column-third;
+        width: 32%;
+        margin-right: 0;
+        display: block;
+        position:relative;
+        border-left: 1px solid $clr-separator;
+        height: 100%;
+        &::first-child{
+          border-left:0;
+          }
+        a{ padding-left: 0;}
+        >ul{
+          margin:0;
+          }
         }
+
       }
-    }
-    a.btn {
+
+  }
+  .calloutcontainer {
+    @extend .plos-row;
+    width: 100%;
+    bottom: 0;
+    padding: rem-calc(20 0 30);
+    background: $grey-dark;
+    cursor: default;
+    *{color: $clr-body-bg}
+    a.btn {  //TODO - whynot use our standard button?
       @include rounded-pill($background: $clr-btn-secondary);
       display: inline-block;
       margin-top: rem-calc(20);
@@ -228,9 +244,10 @@ $width-nav: $block-grid-elements - $width-logo;
       line-height: 35px;
       &:hover {
         background: $clr-btn-primary;
+        }
       }
+
     }
-  }
   .dropdownanchor {
     width: 100%;
     line-height: 1;
@@ -322,7 +339,7 @@ $width-nav: $block-grid-elements - $width-logo;
 }
 
 .submit {
-  //'Submit your manuscript' callout
+  //TODO _ DELETE!!!!!!! 'Submit your manuscript' callout
   position: relative;
   float: left;
   display: inline !important;

@@ -18,28 +18,27 @@
 
   <#macro menuGroup title singleColumn=false containsCallout=false>
 
-  <ul class="dropdown" id="${title?lower_case?replace(" ","-")}-dropdown-list">
 
     <#if singleColumn>
       <#assign column="single">
       <#nested/>
     <#else>
       <#assign column="group">
-    <li class="multi-col-parent has-dropdown">
+    <li class="multi-col-parent has-dropdown hover" id="${title?lower_case?replace(" ","-")}">
     ${title}
-      <ul class="multi-col dropdown">
+      <div class="dropdown mega">
+      <ul class="multi-col"  id="${title?lower_case?replace(" ","-")}-dropdown-list">
         <#nested/>
       </ul>
       <#if containsCallout>
-        <div class="calloutcontainer dropdown">
-          <div class="submit" id="dropdown-callout-submit">
+        <div class="calloutcontainer">
             <#include "siteMenuCallout.ftl" />
           </div>
-        </div>
       </#if>
+      </div>
     </li>
     </#if>
-  </ul>
+  <#--</li>-->
 
   </#macro>
   <#macro menuSection title >

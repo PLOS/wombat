@@ -114,15 +114,39 @@ $width-nav: $block-grid-elements - $width-logo;
 
 .top-bar-section {
   @extend .hide-for-print;
+  %nav-header-type{
+    font-family: $font-face-navigation;
+    font-size: $txt-size-xlarge;
+    }
+  %nav-element-type {
+    width: 100%;
+    padding: rem-calc(7 30 8 30);
+ //   font-family: $font-face-plain;
+    font-size: $txt-size-medium;
+    white-space: pre-wrap;
+    &:hover {
+      color: $clr-highlight-text !important;
+      background: $clr-highlight-hover !important;
+      }
+    }
+
   // foundation
   @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right);
   h2,h3{
     font-family:  $font-face-navigation;
     font-size: $txt-size-xlarge;
   }
- ul{
-   line-height: 1.35;
- }
+ /// typography style stuff
+
+  ul.nav-elements {
+     .menu-section-header {
+       @extend %nav-header-type;
+        }
+     .menu-section li a{
+       @extend %nav-element-type;
+       }
+    }
+
   ul.nav-elements {
     @extend .right; // foundation
     padding-right: 0;
@@ -134,14 +158,11 @@ $width-nav: $block-grid-elements - $width-logo;
 
   ul.nav-elements > li {
     float: left;
-    cursor: pointer;
+  //  cursor: pointer;
     margin-left: 3px;
     border-left: 1px solid $clr-separator;
     line-height: 30px;
     padding: rem-calc(7 15);
-    font-family: $font-face-navigation;
-    font-size: $txt-size-xlarge;
-    color: $plos-default;
     &:first-child {
       border-left: none;
       margin-left: 0;
@@ -158,7 +179,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
   .subject-area-info {
     @include js-tooltip-target();
-    @include tooltip($width: 350px, $tooltip-padding: $pad-xsmall);
+    @include tooltip($width: rem-calc(350), $tooltip-padding: $pad-xsmall);
     top: -50px;
     left: -60%;
     text-align: center;
@@ -166,7 +187,6 @@ $width-nav: $block-grid-elements - $width-logo;
     background-color: $white;
     color: $grey-med;
     font-family: $font-face-plain;
-
   @include arrow-bottom($arrow-color: $white);
 
   }
@@ -202,14 +222,11 @@ $width-nav: $block-grid-elements - $width-logo;
       @extend .dropdownanchor;
     }
 
-
-
-
     ul.multi-col{
       @extend .plos-row;
       > li{
         @extend .plos-column-third;
-        width: 32%;
+        width: 32%;   /// tODO- clean this out
         margin-right: 0;
         display: block;
         position:relative;
@@ -225,7 +242,6 @@ $width-nav: $block-grid-elements - $width-logo;
         }
 
       }
-
   }
   .calloutcontainer {
     @extend .plos-row;
@@ -249,17 +265,10 @@ $width-nav: $block-grid-elements - $width-logo;
 
     }
   .dropdownanchor {
-    width: 100%;
-    line-height: 1;
-    padding: rem-calc(7 30 8 30);
-    font-family: $font-face-plain;
-    font-size: $txt-size-medium;
-    white-space: pre-wrap;
-    &:hover {
-      color: $clr-highlight-text;
-      background: $clr-highlight-hover;
-    }
+     @extend %nav-element-type;
   }
+
+
   .head-search {
     @extend .right;
     padding-top: 2px;

@@ -14,19 +14,18 @@
   <a class="btn" href="${href}">
     <#nested/>
   </a>
-  </#macro>                                                                                                                                                                                                                            `
+  </#macro>
 
   <#macro menuGroup title singleColumn=false containsCallout=false>
-
 
     <#if singleColumn>
       <#assign column="single">
       <#nested/>
     <#else>
       <#assign column="group">
-    <li class="multi-col-parent has-dropdown hover" id="${title?lower_case?replace(" ","-")}">
+    <li class="multi-col-parent menu-section-header has-dropdown hover" id="${title?lower_case?replace(" ","-")}">
     ${title}
-      <div class="dropdown mega">
+      <div class="dropdown mega" style="border: 1px solid">
       <ul class="multi-col"  id="${title?lower_case?replace(" ","-")}-dropdown-list">
         <#nested/>
       </ul>
@@ -56,7 +55,7 @@
 
   <#macro menuLink href>
   <li>
-    <a href="${href}"><#nested/></a>
+    <a href="${href}" style="border: 1px solid; z-index: 100"><#nested/></a>
   </li>
   </#macro>
 

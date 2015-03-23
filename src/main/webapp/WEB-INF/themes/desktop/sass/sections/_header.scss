@@ -16,8 +16,6 @@
  */
 header {
   background: $clr-header;
-
-
 }
 
 .head-top {
@@ -120,13 +118,13 @@ $width-nav: $block-grid-elements - $width-logo;
     }
   %nav-element-type {
     width: 100%;
-    padding: rem-calc(7 30 8 30);
+ //   padding: rem-calc(7 30 8 30);
  //   font-family: $font-face-plain;
     font-size: $txt-size-medium;
     white-space: pre-wrap;
     &:hover {
-      color: $clr-highlight-text !important;
-      background: $clr-highlight-hover !important;
+      color: $clr-highlight-text;
+      background: $clr-highlight-hover;
       }
     }
 
@@ -160,7 +158,7 @@ $width-nav: $block-grid-elements - $width-logo;
     float: left;
   //  cursor: pointer;
     margin-left: 3px;
-    border-left: 1px solid $clr-separator;
+  //  border-left: 1px solid $clr-separator;
     line-height: 30px;
     padding: rem-calc(7 15);
     &:first-child {

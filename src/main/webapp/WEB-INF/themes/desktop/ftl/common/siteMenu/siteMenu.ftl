@@ -25,7 +25,7 @@
       <#assign column="group">
     <li class="multi-col-parent menu-section-header has-dropdown hover" id="${title?lower_case?replace(" ","-")}">
     ${title}
-      <div class="dropdown mega" style="border: 1px solid">
+      <div class="dropdown mega">
       <ul class="multi-col"  id="${title?lower_case?replace(" ","-")}-dropdown-list">
         <#nested/>
       </ul>
@@ -55,7 +55,7 @@
 
   <#macro menuLink href>
   <li>
-    <a href="${href}" style="border: 1px solid; z-index: 100"><#nested/></a>
+    <a href="${href}" ><#nested/></a>
   </li>
   </#macro>
 

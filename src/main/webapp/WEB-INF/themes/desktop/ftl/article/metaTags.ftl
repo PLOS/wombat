@@ -19,14 +19,34 @@
   </#list>
 </#if>
 
+
+<!--Citation title maybe?-->
+<meta name="citation_title" content="${article.title?replace('<.+?>',' ','r')?html}"/>
+<meta itemprop="name" content="${article.title?replace('<.+?>',' ','r')?html}"/>
+
+
+
+
+
+
+<#--<#list references as reference>-->
+<#--<meta name="citation_reference" content="${reference.referenceContent}" />-->
+<#--</#list>-->
+
+
+
 <#if article.date??>
 <meta name="citation_date" content="${article.date}"/>
 </#if>
-<#if article.references??>
-  <#list references as reference>
-  <meta name="citation_reference" content="${reference.referenceContent}" />
+
+
+<#if article.citedArticles??>
+  <#list article.citedArticles as citedArticle>
+  <meta name="citation_reference" content="${citedArticle.title}" />
   </#list>
 </#if>
+
+
 <#if article.publishedJournal??>
 <meta name="citation_journal_title" content="${article.publishedJournal}" />
 </#if>

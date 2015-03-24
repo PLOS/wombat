@@ -118,8 +118,7 @@ $width-nav: $block-grid-elements - $width-logo;
     }
   %nav-element-type {
     width: 100%;
- //   padding: rem-calc(7 30 8 30);
- //   font-family: $font-face-plain;
+    padding: rem-calc(7 15) !important;  //normalise
     font-size: $txt-size-medium;
     white-space: pre-wrap;
     &:hover {
@@ -135,14 +134,36 @@ $width-nav: $block-grid-elements - $width-logo;
     font-size: $txt-size-xlarge;
   }
  /// typography style stuff
-
+ $nav-spacing: 15px;
   ul.nav-elements {
-     .menu-section-header {
+    .menu-section-header
+      {
        @extend %nav-header-type;
-        }
-     .menu-section li a{
-       @extend %nav-element-type;
        }
+    .mega .menu-section-header-title {
+      margin-left: rem-calc($nav-spacing);
+      margin-bottom: $line-height;
+      display: block;
+      }
+    .menu-section {
+       li {
+         padding: 0;
+         a {
+           @extend %nav-element-type;
+           }
+         }
+       }
+    }
+
+
+
+  //this level of specificity is needed to override foundation styles
+  ul.nav-elements > li {
+    margin-left: 3px;
+    //  border-left: 1px solid $clr-separator;
+    line-height: 30px;
+    padding: rem-calc(7 $nav-spacing);
+
     }
 
   ul.nav-elements {
@@ -152,15 +173,11 @@ $width-nav: $block-grid-elements - $width-logo;
        line-height: 1.5em !important;  // this line is needed to overide foundation stuff.
     }
   }
-  //this level of specificity is needed to override foundation styles
 
   ul.nav-elements > li {
     float: left;
   //  cursor: pointer;
-    margin-left: 3px;
-  //  border-left: 1px solid $clr-separator;
-    line-height: 30px;
-    padding: rem-calc(7 15);
+
     &:first-child {
       border-left: none;
       margin-left: 0;
@@ -211,9 +228,10 @@ $width-nav: $block-grid-elements - $width-logo;
       box-shadow: $nav-main-box-shadow;
     }
    .mega {
-     width: rem-calc(960); //width of page
-     left: -530px; //TODO- where do we get this value from?
+     width: rem-calc(980); //width of page
+     left: -560px; //TODO- where do we get this value from?
      position: relative;
+     padding-bottom: 0;
      }
 
     ul.dropdown li a {
@@ -221,33 +239,36 @@ $width-nav: $block-grid-elements - $width-logo;
     }
 
     ul.multi-col{
-      @extend .plos-row;
+      display: table;
+      background: $white; //normalise
       > li{
-        @extend .plos-column-third;
-        width: 32%;   /// tODO- clean this out
+        display: table-cell;  //normalise
+        width: 33%;   /// tODO- clean this out
         margin-right: 0;
-        display: block;
-        position:relative;
+        margin-left: 0;
+        float: none;
+      //  display: block;
         border-left: 1px solid $clr-separator;
         height: 100%;
-        &::first-child{
-          border-left:0;
+        &:first-child{
+          border-left:none;
           }
         a{ padding-left: 0;}
         >ul{
           margin:0;
           }
         }
-
+       margin-bottom: rem-calc(30);
       }
   }
   .calloutcontainer {
     @extend .plos-row;
     width: 100%;
     bottom: 0;
-    padding: rem-calc(20 0 30);
+    padding: rem-calc($nav-spacing);
     background: $grey-dark;
     cursor: default;
+    @include border-bottom-radius();
     *{color: $clr-body-bg}
     a.btn {  //TODO - whynot use our standard button?
       @include rounded-pill($background: $clr-btn-secondary);

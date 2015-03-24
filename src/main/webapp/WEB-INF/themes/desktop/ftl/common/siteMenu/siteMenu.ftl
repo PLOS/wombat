@@ -24,8 +24,8 @@
     <#else>
       <#assign column="group">
     <li class="multi-col-parent menu-section-header has-dropdown hover" id="${title?lower_case?replace(" ","-")}">
-    ${title}
-      <div class="dropdown mega">
+  ${title}
+      <div class="dropdown mega hover">
       <ul class="multi-col"  id="${title?lower_case?replace(" ","-")}-dropdown-list">
         <#nested/>
       </ul>
@@ -42,8 +42,8 @@
   </#macro>
   <#macro menuSection title >
 
-  <li class="menu-section-header <#if column="single">has-dropdown </#if>" id="${title?lower_case?replace(" ","-")}">
-     ${title}
+  <li class="menu-section-header hover <#if column="single">has-dropdown </#if>" id="${title?lower_case?replace(" ","-")}">
+     <span class="menu-section-header-title">  ${title} </span>
 
     <ul class="menu-section <#if column="single">dropdown </#if>" id="${title?lower_case?replace(" ","-")}-dropdown-list">
       <#nested/>

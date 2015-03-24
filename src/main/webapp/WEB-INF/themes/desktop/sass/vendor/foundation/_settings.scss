@@ -1134,7 +1134,7 @@ $topbar-bg-color: $clr-header;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: 45px;
+$topbar-height:auto;
 $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
@@ -1163,7 +1163,7 @@ $topbar-link-bg-active: $clr-alert;
 $topbar-link-bg-active-hover: $clr-highlight;
 $topbar-link-font-family: $body-font-family;
 $topbar-link-text-transform: none;
-$topbar-link-padding: $topbar-height / 3;
+$topbar-link-padding: 0;
 
 // $topbar-button-font-size: 0.75rem;
 // $topbar-button-top: 7px;

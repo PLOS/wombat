@@ -5,7 +5,7 @@
   <h3><#nested/></h3>
   </#macro>
 
-  <#macro siteMenuCalloutBulletList>
+  <#macro siteMenuCalloutDescription>
   <ul>
     <#nested/>
   </ul>

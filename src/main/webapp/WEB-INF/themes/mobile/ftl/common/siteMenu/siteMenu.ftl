@@ -54,7 +54,7 @@
     <#macro siteMenuCalloutHeadline>
       <h4 class="coloration-light-text"><#nested/></h4>
     </#macro>
-    <#macro siteMenuCalloutBulletList>
+    <#macro siteMenuCalloutDescription>
       <ul class="std">
         <#nested/>
       </ul>

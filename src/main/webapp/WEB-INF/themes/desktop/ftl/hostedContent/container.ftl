@@ -27,7 +27,7 @@
 <@renderJs />
 
 <#list hostedData.js_sources as js_source>
-<script src="http://sfo-cms-devbox01.int.plos.org:8080/repo/objects/plive-test?key=${js_source}" type="text/javascript"></script>
+<script src="<@siteLink path='indirect/'/>${js_source}" type="text/javascript"></script>
 </#list>
 
 </body>

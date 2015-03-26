@@ -19,17 +19,17 @@
 
 <@renderCssLinks />
 
-    <meta name="asset-url-prefix" content="http://sfo-cms-devbox01.int.plos.org:8080/repo/objects/plive-test?key="/>
+    <meta name="asset-url-prefix" content="<@siteLink path='indirect/'/>"/>
     <!-- LEMUR CSS -->
 <#list hostedData.css_sources as css_source>
     <link rel="stylesheet" type="text/css"
-          href="http://sfo-cms-devbox01.int.plos.org:8080/repo/objects/plive-test?key=${css_source}"/>
+          href="<@siteLink path='indirect/'/>${css_source}"/>
 </#list>
 
     <meta name="root-url" content="/wombat/DesktopPlosBiology/h/ember-app/">
 
     <!--[if IE 8]>
-  <link rel="stylesheet" type="text/css" href="<@siteLink path="resource           " />
+  <link rel="stylesheet" type="text/css" href="<@siteLink path="resource" />
     <![endif]-->
 
     <link media="print" rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/print.css"/>"/>

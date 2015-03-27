@@ -2184,9 +2184,9 @@ body.plosone .nav .nav-user li.highlighted > a:hover { color: white; }
 .top-bar-section .dropdown .submit li a { display: inline !important; line-height: normal !important; padding: 0; font-family: "albert"; font-size: 1rem; color: #3c63af !important; }
 .top-bar-section .dropdown .submit li a:hover { text-decoration: underline; }
 
-main { margin-top: 2.25rem; margin-bottom: 2.25rem; }
-main nav { width: 10.20833rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; position: relative; }
-main article { width: 45.9375rem; float: right; margin-left: 0.625rem; margin-right: 0.625rem; }
+main { width: 60rem; margin-top: 2.25rem; margin-bottom: 2.25rem; }
+main nav { float: left; width: 11.25rem; margin-right: 1.25rem; position: relative; }
+main article { float: left; width: 47.5rem; }
 
 nav ul { margin-bottom: 0.625rem; padding-bottom: 0.625rem; margin-right: 0; }
 nav ul li { margin: 0 0 0.3125rem 0; }

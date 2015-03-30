@@ -2302,7 +2302,7 @@ body.plosone .nav .nav-user li.highlighted > a:hover { color: white; }
 #issue { height: 15.625rem; }
 #issue .current-img { width: 10rem; }
 #issue .boxtitle { margin-top: 0.3125rem; }
-#issue .boxtitle a { display: block; margin-bottom: -0.3125rem; font-weight: 900; }
+#issue .boxtitle a { display: block; margin-bottom: 0.3125rem; font-weight: 900; }
 #issue .boxtitle .subhead { font-face: "arial"; font-size: 16px; }
 
 #twitter { margin-bottom: 1rem; }

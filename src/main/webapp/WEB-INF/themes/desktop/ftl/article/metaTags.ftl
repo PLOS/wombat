@@ -1,13 +1,5 @@
 <#include "../common/twitterConfig.ftl" />
 <#include "../common/pubUrlPrefix.ftl" />
-<#-- need backend for these
-<meta name="citation_publisher" content="${article.publisher}" />
-
-  <#if article.unformattedTitle??>
-  <meta name="citation_title" content="${article.unformattedTitle}"/>
-  <meta itemprop="name" content="${article.unformattedTitle}"/>
-  </#if>
-  -->
 
 <meta name="citation_doi" content="${articleDoi}" />
 <#if article.authors?? >
@@ -19,33 +11,26 @@
   </#list>
 </#if>
 
-
-<!--Citation title maybe?-->
 <meta name="citation_title" content="${article.title?replace('<.+?>',' ','r')?html}"/>
 <meta itemprop="name" content="${article.title?replace('<.+?>',' ','r')?html}"/>
-
-
-
-
-
-
-<#--<#list references as reference>-->
-<#--<meta name="citation_reference" content="${reference.referenceContent}" />-->
-<#--</#list>-->
-
-
 
 <#if article.date??>
 <meta name="citation_date" content="${article.date}"/>
 </#if>
 
-
 <#if article.citedArticles??>
   <#list article.citedArticles as citedArticle>
-  <meta name="citation_reference" content="${citedArticle.title}" />
+  <meta name="citation_reference"
+        content="
+        <#if citedArticle.title??>citation_title=${citedArticle.title};</#if>
+        <#if citedArticle.authors??>citation_author=<#list citedArticle.authors as author>${author.fullName};</#list></#if>
+        <#if citedArticle.journal??>citation_journal_title=${citedArticle.journal};</#if>
+        <#if citedArticle.volume??>citation_volume=${citedArticle.volume};</#if>
+        <#if citedArticle.volumeNumber??>citation_number=${citedArticle.volumeNumber};</#if>
+        <#if citedArticle.pages??>citation_pages=${citedArticle.pages};</#if>
+        <#if citedArticle.created??>citation_date=${citedArticle.created};</#if>" />
   </#list>
 </#if>
-
 
 <#if article.publishedJournal??>
 <meta name="citation_journal_title" content="${article.publishedJournal}" />

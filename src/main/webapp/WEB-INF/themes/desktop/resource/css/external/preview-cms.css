@@ -1648,12 +1648,13 @@ example | extension
 */
 /* basic styles  */
 ol { padding-left: 1.25rem; }
+ol li { font-size: 0.8125rem; line-height: 1.125rem; margin-bottom: 0.5625rem; }
 
 article ul, ul, .list-bullet { list-style-type: none; }
 ul li, .list-bullet li { padding-left: 1.25rem; position: relative; }
-ul li::before, .list-bullet li::before { content: "\f054"; font-size: 0.625rem; display: inline-block; margin-left: -0.9375rem; position: absolute; line-height: 1.125rem; }
+ul li::before, .list-bullet li::before { content: "\f054"; font-size: 0.625rem; display: inline-block; margin-left: -1.0625rem; position: absolute; line-height: 1.125rem; }
 
-.list-bullet-over-ride li::before, .cke_panel_list li::before { content: ''; font-size: inherit; display: inline-block; margin-left: 0; position: relative; }
+.list-bullet-over-ride li::before, nav .list-bullet li::before, nav article ul li::before, article nav ul li::before, nav ul li::before, .cke_panel_list li::before { content: ''; font-size: inherit; display: inline-block; margin-left: 0; position: relative; }
 
 h2, h3, h4, h5 { font-family: "arial"; }
 

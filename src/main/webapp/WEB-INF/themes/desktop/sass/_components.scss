@@ -539,6 +539,8 @@ $icn-tiny-align: middle;
 
 @mixin nav-side($txt-color: $grey-med, $pad-left: $pad-small, $pad-y: rem-calc(2), $margin-bottom: $pad-xsmall) {
   @extend .no-bullet;
+  @extend .list-bullet-over-ride;
+
   margin-bottom: ($margin-bottom * 2);
   padding-bottom: ($margin-bottom * 2);
 
@@ -558,6 +560,7 @@ $icn-tiny-align: middle;
   margin-right: 0;
 
   > li {
+
     > a {
       display: block;
       color: $txt-color;

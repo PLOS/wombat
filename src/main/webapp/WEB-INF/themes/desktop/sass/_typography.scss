@@ -66,6 +66,7 @@ example | extension
   font-size: rem-calc($txt-size-default);
   line-height: rem-calc($line-height);
   }
+
 ol {
   padding-left: $pad-default;
   li{
@@ -76,9 +77,9 @@ ol {
 /// this should be used on a ul but I wanted to make it extensible
 .list-bullet {
   list-style-type: none;
-  @extend ul;
   li {
     padding-left: $pad-default;
+    margin-bottom: rem-calc($line-height-small);
     position: relative;
     }
   li::before {
@@ -102,6 +103,7 @@ ol {
     position: relative;
     }
   }
+.bulleted {@extend .list-bullet;}
 
 /// sizes are set in foundation.
 h2, h3, h4, h5 {

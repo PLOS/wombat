@@ -6,7 +6,13 @@
   @import "site-content";
   @include site-content;
   ul {
-    @extend .list-bullet
+    @extend .list-bullet;
+    li {
+
+      }
+    }
+  nav ul{
+    @extend .list-bullet-over-ride;
     }
   }
 

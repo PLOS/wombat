@@ -15,6 +15,11 @@
     <#nested/>
   </a>
   </#macro>
+  <#macro siteMenuCalloutLink href>
+  <a href="${href}">
+    <#nested/>
+  </a>
+  </#macro>
 
   <#macro menuGroup title singleColumn=false containsCallout=false>
 

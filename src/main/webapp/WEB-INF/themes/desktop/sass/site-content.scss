@@ -5,16 +5,17 @@
 /// scaffolding
 main {
   @extend .plos-row;
+  width: (rem-calc($grid-width) - $grid-gutter);
   margin-top: rem-calc($line-height-large);
   margin-bottom: rem-calc($line-height-large);
 
   nav {
-    @include plos-grid-column($pixelwidth: columns, $columns: 2);
+    @include plos-grid-column($pixelwidth: 180, $gutter: right);
     position: relative;
     }
 
   article {
-    @include plos-grid-column($pixelwidth: columns, $columns: 9, $float: right);
+    @include plos-grid-column($pixelwidth: 760, $gutter: none, $float: left);
     }
   }
 

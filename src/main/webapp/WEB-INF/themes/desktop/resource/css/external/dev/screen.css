@@ -1,4 +1,5 @@
-/* Welcome to Compass. In this file you should write your main styles. (or centralize your imports) Import this file using the following HTML or equivalent: <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* This is the centralized import file for the main screen.css.
+*/
 /*doc
 ---
 title: Files
@@ -157,7 +158,7 @@ img { -ms-interpolation-mode: bicubic; }
 
 .left { float: left !important; }
 
-.right, .nav .nav-user, .top-bar-section ul.nav-elements, .top-bar-section .head-search, .block .date, #article-list .date, #issue .date, section.content > aside .date, section.content > article .date { float: right !important; }
+.right, .nav .nav-user, .top-bar-section ul.nav-elements, .top-bar-section .head-search, .block .date, #article-list .date, #issue .date { float: right !important; }
 
 .clearfix { *zoom: 1; }
 .clearfix:before, .clearfix:after { content: " "; display: table; }
@@ -173,9 +174,9 @@ textarea { height: auto; min-height: 50px; }
 
 select { width: 100%; }
 
-footer .nav-aux, .nav .nav-user, #submission-links .split-container, .signposts, .float-title #floatAuthorList, .inline-list { margin: 0 auto 1.0625rem auto; margin-left: -1.375rem; margin-right: 0; padding: 0; list-style: none; overflow: hidden; }
-footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, .signposts > li, .float-title #floatAuthorList > li, .inline-list > li { list-style: none; float: left; margin-left: 1.375rem; display: block; }
-footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, .signposts > li > *, .float-title #floatAuthorList > li > *, .inline-list > li > * { display: block; }
+.inline-list, footer .nav-aux, .nav .nav-user, #submission-links .split-container, .signposts, .float-title #floatAuthorList { margin: 0 auto 1.0625rem auto; margin-left: -1.375rem; margin-right: 0; padding: 0; list-style: none; overflow: hidden; }
+.inline-list > li, footer .nav-aux > li, .nav .nav-user > li, #submission-links .split-container > li, .signposts > li, .float-title #floatAuthorList > li { list-style: none; float: left; margin-left: 1.375rem; display: block; }
+.inline-list > li > *, footer .nav-aux > li > *, .nav .nav-user > li > *, #submission-links .split-container > li > *, .signposts > li > *, .float-title #floatAuthorList > li > * { display: block; }
 
 .label { font-weight: normal; font-family: "arial"; text-align: center; text-decoration: none; line-height: 1; white-space: nowrap; display: inline-block; position: relative; margin-bottom: inherit; padding: 0.25rem 0.5rem 0.375rem; font-size: 0.6875rem; background-color: #3c63af; color: white; }
 .label.radius { border-radius: 5px; }
@@ -365,8 +366,8 @@ meta.foundation-mq-topbar { font-family: "/only screen and (min-width:0em)/"; wi
   .top-bar-section .dropdown li .dropdown { left: 100%; top: 0; }
   .top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] { border-bottom: none; border-top: none; border-right: solid 1px #f1f1f1; clear: none; height: 45px; width: 0; }
   .top-bar-section .has-form { background: #efefef; padding: 0 15px; height: 45px; }
-  .top-bar-section .right li .dropdown, .top-bar-section .nav .nav-user li .dropdown, .nav .top-bar-section .nav-user li .dropdown, .top-bar-section ul.nav-elements li .dropdown, .top-bar-section .head-search li .dropdown, .top-bar-section .block .date li .dropdown, .block .top-bar-section .date li .dropdown, .top-bar-section #article-list .date li .dropdown, #article-list .top-bar-section .date li .dropdown, .top-bar-section #issue .date li .dropdown, #issue .top-bar-section .date li .dropdown, .top-bar-section section.content > aside .date li .dropdown, section.content > aside .top-bar-section .date li .dropdown, .top-bar-section section.content > article .date li .dropdown, section.content > article .top-bar-section .date li .dropdown { left: auto; right: 0; }
-  .top-bar-section .right li .dropdown li .dropdown, .top-bar-section .nav .nav-user li .dropdown li .dropdown, .nav .top-bar-section .nav-user li .dropdown li .dropdown, .top-bar-section ul.nav-elements li .dropdown li .dropdown, .top-bar-section .head-search li .dropdown li .dropdown, .top-bar-section .block .date li .dropdown li .dropdown, .block .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #article-list .date li .dropdown li .dropdown, #article-list .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #issue .date li .dropdown li .dropdown, #issue .top-bar-section .date li .dropdown li .dropdown, .top-bar-section section.content > aside .date li .dropdown li .dropdown, section.content > aside .top-bar-section .date li .dropdown li .dropdown, .top-bar-section section.content > article .date li .dropdown li .dropdown, section.content > article .top-bar-section .date li .dropdown li .dropdown { right: 100%; }
+  .top-bar-section .right li .dropdown, .top-bar-section .nav .nav-user li .dropdown, .nav .top-bar-section .nav-user li .dropdown, .top-bar-section ul.nav-elements li .dropdown, .top-bar-section .head-search li .dropdown, .top-bar-section .block .date li .dropdown, .block .top-bar-section .date li .dropdown, .top-bar-section #article-list .date li .dropdown, #article-list .top-bar-section .date li .dropdown, .top-bar-section #issue .date li .dropdown, #issue .top-bar-section .date li .dropdown { left: auto; right: 0; }
+  .top-bar-section .right li .dropdown li .dropdown, .top-bar-section .nav .nav-user li .dropdown li .dropdown, .nav .top-bar-section .nav-user li .dropdown li .dropdown, .top-bar-section ul.nav-elements li .dropdown li .dropdown, .top-bar-section .head-search li .dropdown li .dropdown, .top-bar-section .block .date li .dropdown li .dropdown, .block .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #article-list .date li .dropdown li .dropdown, #article-list .top-bar-section .date li .dropdown li .dropdown, .top-bar-section #issue .date li .dropdown li .dropdown, #issue .top-bar-section .date li .dropdown li .dropdown { right: 100%; }
   .top-bar-section .left li .dropdown { right: auto; left: 0; }
   .top-bar-section .left li .dropdown li .dropdown { left: 100%; }
   .no-js .top-bar-section ul li:hover > a { background: white; color: #333333; }
@@ -544,17 +545,17 @@ column classes                            | result
 `@extend %width-full`               |   sets the column the full-width of teh container with default margins on either side.
 */
 /* sets up the body container */
-.plos-row, footer .row, .nav, .nav-main, .row, #ad-slot-bottom, .error-page, .set-grid, .title-block, .article-body, section.content, .grid-example-simple, .grid-example-complex { width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 61.25rem; *zoom: 1; }
-.plos-row:before, .nav:before, .nav-main:before, .row:before, #ad-slot-bottom:before, .error-page:before, .set-grid:before, .title-block:before, .article-body:before, section.content:before, .grid-example-simple:before, .grid-example-complex:before, .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after, .set-grid:after, .title-block:after, .article-body:after, section.content:after, .grid-example-simple:after, .grid-example-complex:after { content: " "; display: table; }
-.plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after, .set-grid:after, .title-block:after, .article-body:after, section.content:after, .grid-example-simple:after, .grid-example-complex:after { clear: both; }
+.plos-row, footer .row, .nav, .nav-main, .row, #ad-slot-bottom, .error-page, .set-grid, .title-block, .article-body { width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 61.25rem; *zoom: 1; }
+.plos-row:before, .nav:before, .nav-main:before, .row:before, #ad-slot-bottom:before, .error-page:before, .set-grid:before, .title-block:before, .article-body:before, .plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after, .set-grid:after, .title-block:after, .article-body:after { content: " "; display: table; }
+.plos-row:after, .nav:after, .nav-main:after, .row:after, #ad-slot-bottom:after, .error-page:after, .set-grid:after, .title-block:after, .article-body:after { clear: both; }
 
 .plos-column-0 { width: 0rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
 
 .plos-column-1 { width: 5.10417rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
 
-.plos-column-2, section.content > aside { width: 10.20833rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
+.plos-column-2 { width: 10.20833rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
 
-.plos-column-3, footer .link-column, .grid-example-simple .grid-example-column-1 { width: 15.3125rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
+.plos-column-3, footer .link-column { width: 15.3125rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
 
 .plos-column-4, .error-page .image { width: 20.41667rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
 
@@ -564,9 +565,9 @@ column classes                            | result
 
 .plos-column-7 { width: 35.72917rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
 
-.plos-column-8, .grid-example-simple .grid-example-column-2 { width: 40.83333rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
+.plos-column-8 { width: 40.83333rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
 
-.plos-column-9, section.content > article { width: 45.9375rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
+.plos-column-9 { width: 45.9375rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
 
 .plos-column-10 { width: 51.04167rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; }
 
@@ -578,7 +579,7 @@ column classes                            | result
 
 .hero, #billboard { float: left; width: 60rem; margin-left: 0.625rem; margin-right: 0.625rem; }
 
-.block.xx-small, .xx-small#article-list, section.content > aside.xx-small, section.content > article.xx-small, #issue { float: left; width: 10rem; }
+.block.xx-small, .xx-small#article-list, #issue { float: left; width: 10rem; }
 
 /*
 
@@ -591,7 +592,7 @@ column classes                            | result
 %width-medium { @include plos-grid-column(470);
 }
 */
-.block.large, .large#article-list, .large#issue, section.content > aside.large, section.content > article.large { float: left; width: 47.5rem; }
+.block.large, .large#article-list, .large#issue { float: left; width: 47.5rem; }
 
 main, #pagehdr { width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 61.25rem; *zoom: 1; min-width: 61.25rem; max-width: 61.25rem; margin: 0 auto; }
 main:before, main:after, #pagehdr:before, #pagehdr:after { content: " "; display: table; }
@@ -661,7 +662,7 @@ This file contains the code for the grid and general layout.
 /* FONT PATH -------------------------- */
 /*@font-face { font-family: 'FontAwesome'; src: url('../fonts/fontawesome-webfont.eot?v=4.1.0'); src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg'); font-weight: normal; font-style: normal;
 }*/
-.fa, .carousel-wrap.small .carousel-control .jcarousel-prev, .carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .example-more-link::after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus, .icon-close, .icon-alert, .classifications .type-concern-retraction:before, .article-content .amendment-eoc h2:before, .article-content .amendment-retraction h2:before, .icon-important, .block-important::after, .icon-caret-down, .dload-menu .dload-hover, .twitter-container .load-more span, .icon-pointer, .block-tip::after, .icon-info, .block-more-information::after, .top-bar-section .head-search form button[type="submit"] .search-icon, .article-tabs .tab-title.active a:after, #figure-carousel .carousel-control .button, #figure-carousel .carousel-control .subject-areas-container ul li .taxo-term, .subject-areas-container ul li #figure-carousel .carousel-control .taxo-term, #figure-carousel .carousel-page-buttons .index { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.fa, .list-bullet li::before, .bulleted li::before, .carousel-wrap.small .carousel-control .jcarousel-prev, .carousel-wrap.small .carousel-control .jcarousel-next, .more-icon, .more-link:after, .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus, .icon-close, .icon-alert, .classifications .type-concern-retraction:before, .article-content .amendment-eoc h2:before, .article-content .amendment-retraction h2:before, .icon-important, .block-important::after, .icon-caret-down, .dload-menu .dload-hover, .twitter-container .load-more span, .icon-pointer, .block-tip::after, .icon-info, .block-more-information::after, .top-bar-section .head-search form button[type="submit"] .search-icon, .article-tabs .tab-title.active a:after, #figure-carousel .carousel-control .button, #figure-carousel .carousel-control .subject-areas-container ul li .taxo-term, .subject-areas-container ul li #figure-carousel .carousel-control .taxo-term, #figure-carousel .carousel-page-buttons .index { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 /* makes the font 33% larger relative to the icon container */
 .fa-lg { font-size: 1.33333333em; line-height: 0.75em; vertical-align: -15%; }
@@ -690,9 +691,9 @@ This file contains the code for the grid and general layout.
 
 .pull-left { float: left; }
 
-.fa.pull-left, .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev, .carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.example-more-link::after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .pull-left.icon-plus, .pull-left.icon-close, .pull-left.icon-alert, .classifications .pull-left.type-concern-retraction:before, .article-content .amendment-eoc h2.pull-left:before, .article-content .amendment-retraction h2.pull-left:before, .pull-left.icon-important, .pull-left.block-important::after, .pull-left.icon-caret-down, .dload-menu .pull-left.dload-hover, .twitter-container .load-more span.pull-left, .pull-left.icon-pointer, .pull-left.block-tip::after, .pull-left.icon-info, .pull-left.block-more-information::after, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon, .article-tabs .tab-title.active a.pull-left:after, #figure-carousel .carousel-control .pull-left.button, #figure-carousel .carousel-control .subject-areas-container ul li .pull-left.taxo-term, .subject-areas-container ul li #figure-carousel .carousel-control .pull-left.taxo-term, #figure-carousel .carousel-page-buttons .pull-left.index { margin-right: .3em; }
+.fa.pull-left, .list-bullet li.pull-left::before, .bulleted li.pull-left::before, .carousel-wrap.small .carousel-control .pull-left.jcarousel-prev, .carousel-wrap.small .carousel-control .pull-left.jcarousel-next, .pull-left.more-icon, .pull-left.more-link:after, .pull-left.icon-fa, .pull-left.icon-twitter, .pull-left.icon-facebook, .pull-left.icon-rss, .pull-left.icon-email, .pull-left.icon-plus, .pull-left.icon-close, .pull-left.icon-alert, .classifications .pull-left.type-concern-retraction:before, .article-content .amendment-eoc h2.pull-left:before, .article-content .amendment-retraction h2.pull-left:before, .pull-left.icon-important, .pull-left.block-important::after, .pull-left.icon-caret-down, .dload-menu .pull-left.dload-hover, .twitter-container .load-more span.pull-left, .pull-left.icon-pointer, .pull-left.block-tip::after, .pull-left.icon-info, .pull-left.block-more-information::after, .top-bar-section .head-search form button[type="submit"] .pull-left.search-icon, .article-tabs .tab-title.active a.pull-left:after, #figure-carousel .carousel-control .pull-left.button, #figure-carousel .carousel-control .subject-areas-container ul li .pull-left.taxo-term, .subject-areas-container ul li #figure-carousel .carousel-control .pull-left.taxo-term, #figure-carousel .carousel-page-buttons .pull-left.index { margin-right: .3em; }
 
-.fa.pull-right, .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev, .carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.example-more-link::after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .pull-right.icon-plus, .pull-right.icon-close, .pull-right.icon-alert, .classifications .pull-right.type-concern-retraction:before, .article-content .amendment-eoc h2.pull-right:before, .article-content .amendment-retraction h2.pull-right:before, .pull-right.icon-important, .pull-right.block-important::after, .pull-right.icon-caret-down, .dload-menu .pull-right.dload-hover, .twitter-container .load-more span.pull-right, .pull-right.icon-pointer, .pull-right.block-tip::after, .pull-right.icon-info, .pull-right.block-more-information::after, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon, .article-tabs .tab-title.active a.pull-right:after, #figure-carousel .carousel-control .pull-right.button, #figure-carousel .carousel-control .subject-areas-container ul li .pull-right.taxo-term, .subject-areas-container ul li #figure-carousel .carousel-control .pull-right.taxo-term, #figure-carousel .carousel-page-buttons .pull-right.index { margin-left: .3em; }
+.fa.pull-right, .list-bullet li.pull-right::before, .bulleted li.pull-right::before, .carousel-wrap.small .carousel-control .pull-right.jcarousel-prev, .carousel-wrap.small .carousel-control .pull-right.jcarousel-next, .pull-right.more-icon, .pull-right.more-link:after, .pull-right.icon-fa, .pull-right.icon-twitter, .pull-right.icon-facebook, .pull-right.icon-rss, .pull-right.icon-email, .pull-right.icon-plus, .pull-right.icon-close, .pull-right.icon-alert, .classifications .pull-right.type-concern-retraction:before, .article-content .amendment-eoc h2.pull-right:before, .article-content .amendment-retraction h2.pull-right:before, .pull-right.icon-important, .pull-right.block-important::after, .pull-right.icon-caret-down, .dload-menu .pull-right.dload-hover, .twitter-container .load-more span.pull-right, .pull-right.icon-pointer, .pull-right.block-tip::after, .pull-right.icon-info, .pull-right.block-more-information::after, .top-bar-section .head-search form button[type="submit"] .pull-right.search-icon, .article-tabs .tab-title.active a.pull-right:after, #figure-carousel .carousel-control .pull-right.button, #figure-carousel .carousel-control .subject-areas-container ul li .pull-right.taxo-term, .subject-areas-container ul li #figure-carousel .carousel-control .pull-right.taxo-term, #figure-carousel .carousel-page-buttons .pull-right.index { margin-left: .3em; }
 
 .fa-spin { -webkit-animation: spin 2s infinite linear; -moz-animation: spin 2s infinite linear; -o-animation: spin 2s infinite linear; animation: spin 2s infinite linear; }
 
@@ -722,7 +723,7 @@ This file contains the code for the grid and general layout.
 
 .fa-stack-2x { font-size: 2em; }
 
-.fa-inverse, .carousel-wrap.small .carousel-control .jcarousel-prev:hover, .carousel-wrap.small .carousel-control .jcarousel-next:hover, .more-icon, .more-link:after, .example-more-link::after { color: #3c63af; }
+.fa-inverse, .carousel-wrap.small .carousel-control .jcarousel-prev:hover, .carousel-wrap.small .carousel-control .jcarousel-next:hover, .more-icon, .more-link:after { color: #3c63af; }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen readers do not read off random characters that represent icons */
 .fa-glass:before { content: "\f000"; }
@@ -883,7 +884,7 @@ This file contains the code for the grid and general layout.
 
 .fa-chevron-left:before { content: "\f053"; }
 
-.fa-chevron-right:before { content: "\f054"; }
+.fa-chevron-right:before, .list-bullet li::before:before, .bulleted li::before:before { content: "\f054"; }
 
 .fa-plus-circle:before { content: "\f055"; }
 
@@ -1610,9 +1611,9 @@ name: typography
 category: Files
 --- type styles including sizes and vertical spacing
 */
-@font-face { font-family: "albert"; src: url('/wombat/DesktopPlosBiology/resource/fonts/fs_albert.ttf') format('truetype'), url('/wombat/DesktopPlosBiology/resource/fonts/fs_albert.otf') format('opentype'), url('/wombat/DesktopPlosBiology/resource/fonts/fs_albert.svg') format('svg'), url('/wombat/DesktopPlosBiology/resource/fonts/fs_albert.woff') format('woff'); }
-@font-face { font-family: "albert-bold"; src: url('/wombat/DesktopPlosBiology/resource/fonts/fs_albert-bold-webfont.ttf') format('truetype'), url('/wombat/DesktopPlosBiology/resource/fonts/fs_albert-bold-webfont.otf') format('opentype'), url('/wombat/DesktopPlosBiology/resource/fonts/fs_albert-bold-webfont.svg') format('svg'), url('/wombat/DesktopPlosBiology/resource/fonts/fs_albert-bold-webfont.woff') format('woff'); }
-@font-face { font-family: "FontAwesome"; src: url('/wombat/DesktopPlosBiology/resource/fonts/fontawesome-webfont.ttf') format('truetype'), url('/wombat/DesktopPlosBiology/resource/fonts/FontAwesome.otf') format('opentype'), url('/wombat/DesktopPlosBiology/resource/fonts/fontawesome-webfont.svg') format('svg'), url('/wombat/DesktopPlosBiology/resource/fonts/fontawesome-webfont.woff') format('woff'); }
+@font-face { font-family: "albert"; src: url('/PLOS-internal-style-guide/journals/resource/fonts/fs_albert.ttf') format('truetype'), url('/PLOS-internal-style-guide/journals/resource/fonts/fs_albert.otf') format('opentype'), url('/PLOS-internal-style-guide/journals/resource/fonts/fs_albert.svg') format('svg'), url('/PLOS-internal-style-guide/journals/resource/fonts/fs_albert.woff') format('woff'); }
+@font-face { font-family: "albert-bold"; src: url('/PLOS-internal-style-guide/journals/resource/fonts/fs_albert-bold-webfont.ttf') format('truetype'), url('/PLOS-internal-style-guide/journals/resource/fonts/fs_albert-bold-webfont.otf') format('opentype'), url('/PLOS-internal-style-guide/journals/resource/fonts/fs_albert-bold-webfont.svg') format('svg'), url('/PLOS-internal-style-guide/journals/resource/fonts/fs_albert-bold-webfont.woff') format('woff'); }
+@font-face { font-family: "FontAwesome"; src: url('/PLOS-internal-style-guide/journals/resource/fonts/fontawesome-webfont.ttf') format('truetype'), url('/PLOS-internal-style-guide/journals/resource/fonts/FontAwesome.otf') format('opentype'), url('/PLOS-internal-style-guide/journals/resource/fonts/fontawesome-webfont.svg') format('svg'), url('/PLOS-internal-style-guide/journals/resource/fonts/fontawesome-webfont.woff') format('woff'); }
 sup, sub { vertical-align: 0; position: relative; }
 
 sub { top: 0.5ex; }
@@ -1654,49 +1655,50 @@ example | extension
 */
 /* basic styles  */
 ol { padding-left: 1.25rem; }
+ol li { font-size: 0.8125rem; line-height: 1.125rem; margin-bottom: 9px; }
 
-.list-bullet { list-style-type: none; }
-.list-bullet li { padding-left: 1.25rem; position: relative; }
-.list-bullet li::before { content: '>'; font-size: 0.625rem; display: inline-block; margin-left: -0.9375rem; position: absolute; }
+.list-bullet, .bulleted { list-style-type: none; }
+.list-bullet li, .bulleted li { padding-left: 1.25rem; margin-bottom: 0.5625rem; position: relative; }
+.list-bullet li::before, .bulleted li::before { content: "\f054"; font-size: 0.625rem; display: inline-block; margin-left: -1.0625rem; position: absolute; line-height: 1.125rem; }
 
 .list-bullet-over-ride li::before { content: ''; font-size: inherit; display: inline-block; margin-left: 0; position: relative; }
 
 h2, h3, h4, h5 { font-family: "arial"; }
 
-h2, h3 { font-weight: bold; }
+h2, h3, h5 { font-weight: bold; }
 
-h4, h5 { font-weight: normal; }
+h4 { font-weight: normal; }
 
 h2, h3, h4, h5 { margin-bottom: 0.5625rem; margin-top: 1.6875rem; line-height: normal; }
 
 h2 { margin-bottom: 1.125rem; }
 
-h3, h4 { margin-top: 0.5625rem; }
+h3, h4, h5 { margin-top: 0.5625rem; }
 
 .title-small { font-size: 13px; font-weight: bold; }
 
-.block-global-alert { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; }
+.block-global-alert { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; font-size: 0.8125rem; line-height: 1.125rem; }
 
-blockquote, .block-quote, .pullquote, .pullquote, .block-quote { border-left: 0.3125rem solid #cccccc; margin: 1.6875rem 0 1.125rem 0; }
+blockquote, .block-quote, .pullquote, .pullquote, .block-quote { font-size: 0.8125rem; line-height: 1.125rem; border-left: 0.3125rem solid #cccccc; margin: 1.6875rem 0 1.125rem 0; }
 
 .pullquote { font-style: italic; }
 
-.block-basic { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; background: #efefef; }
+.block-basic { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; font-size: 0.8125rem; line-height: 1.125rem; background: #efefef; }
 
 .block-global-alert { background: #abc2e8; font-weight: bold; }
 
-.block-tip { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; padding-left: 3rem; position: relative; }
+.block-tip { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; font-size: 0.8125rem; line-height: 1.125rem; padding-left: 3rem; position: relative; }
 .block-tip::after { display: block; position: absolute; left: 1.125rem; top: 1.125rem; line-height: 1 !important; }
 
-.block-important { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; padding-left: 3rem; position: relative; background: #ffd87a; }
+.block-important { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; font-size: 0.8125rem; line-height: 1.125rem; padding-left: 3rem; position: relative; background: #ffd87a; }
 .block-important::after { display: block; position: absolute; left: 1.125rem; top: 1.125rem; line-height: 1 !important; }
 
-.block-more-information { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; padding-left: 3rem; position: relative; background: #efefef; }
+.block-more-information { margin: 1.6875rem 0 1.125rem 0; padding: 1.125rem 1.25rem; font-size: 0.8125rem; line-height: 1.125rem; padding-left: 3rem; position: relative; background: #efefef; }
 .block-more-information::after { display: block; position: absolute; left: 1.125rem; top: 1.125rem; line-height: 1 !important; }
 
-.block .category, #article-list .category, #issue .category, section.content > aside .category, section.content > article .category, #article-list h3, .example-brand-title { margin-bottom: 0.625rem; }
+.block .category, #article-list .category, #issue .category, #article-list h3 { margin-bottom: 0.625rem; }
 
-.carousel-wrap.small .block-header, #blogs .block-header, .example-brand-header { color: white; padding: 0 1.25rem; font-family: "albert"; font-size: 1rem; line-height: 2.5rem; }
+.carousel-wrap.small .block-header, #blogs .block-header { color: white; padding: 0 1.25rem; font-family: "albert"; font-size: 1rem; line-height: 2.5rem; }
 
 .header-allcaps-smallest, .skyscraper-container .title { font-size: 10px; }
 
@@ -1720,20 +1722,20 @@ example | extension
  option  | result -----------|------------------ `$decoration:none` | there is NO underline and the text turns the highlight color `$decoration:underline` | text stays the same color but has an underline
 
 */
-.carousel-wrap.small .carousel li h3, .home main h2, .home main h3, .home main h4, .home main h5, .block.small .title, section.content > aside.small .title, section.content > article.small .title, .tooltip-aside li a, .dload-xml li a, .print-options li a, .share-options li a, .block .title, #article-list .title, #issue .title, section.content > aside .title, section.content > article .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .example-link, .carousel-wrap.small .carousel li h3 a, .home main h2 a, .home main h3 a, .home main h4 a, .home main h5 a, .block.small .title a, section.content > aside.small .title a, section.content > article.small .title a, .tooltip-aside li a a, .dload-xml li a a, .print-options li a a, .share-options li a a, .block .title a, #article-list .title a, #issue .title a, section.content > aside .title a, section.content > article .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a, .example-link a { color: #333333; text-decoration: none; }
-.carousel-wrap.small .carousel li h3:hover, .home main h2:hover, .home main h3:hover, .home main h4:hover, .home main h5:hover, .tooltip-aside li a:hover, .dload-xml li a:hover, .print-options li a:hover, .share-options li a:hover, .block .title:hover, #article-list .title:hover, #issue .title:hover, section.content > aside .title:hover, section.content > article .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .example-link:hover, .carousel-wrap.small .carousel li h3 a:hover, .home main h2 a:hover, .home main h3 a:hover, .home main h4 a:hover, .home main h5 a:hover, .tooltip-aside li a a:hover, .dload-xml li a a:hover, .print-options li a a:hover, .share-options li a a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, section.content > aside .title a:hover, section.content > article .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .example-link a:hover, .carousel-wrap.small .carousel li h3 a:hover, .home main h2 a:hover, .home main h3 a:hover, .home main h4 a:hover, .home main h5 a:hover, .tooltip-aside li a a:hover, .dload-xml li a a:hover, .print-options li a a:hover, .share-options li a a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, section.content > aside .title a:hover, section.content > article .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .example-link a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .home main h2 a a:hover, .home main h3 a a:hover, .home main h4 a a:hover, .home main h5 a a:hover, .tooltip-aside li a a a:hover, .dload-xml li a a a:hover, .print-options li a a a:hover, .share-options li a a a:hover, .block .title a a:hover, #article-list .title a a:hover, #issue .title a a:hover, section.content > aside .title a a:hover, section.content > article .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover, .example-link a a:hover { color: #3c63af; text-decoration: none; }
+.carousel-wrap.small .carousel li h3, .home main h2, .home main h3, .home main h4, .home main h5, .block.small .title, .tooltip-aside li a, .dload-xml li a, .print-options li a, .share-options li a, .block .title, #article-list .title, #issue .title, #article-list ul.list-plain li a, .more-link > a, #issue .boxtitle a, .linkbox ul li, #blogs #blogrss .posttitle a, .carousel-wrap.small .carousel li h3 a, .home main h2 a, .home main h3 a, .home main h4 a, .home main h5 a, .block.small .title a, .tooltip-aside li a a, .dload-xml li a a, .print-options li a a, .share-options li a a, .block .title a, #article-list .title a, #issue .title a, #article-list ul.list-plain li a a, .more-link > a a, #issue .boxtitle a a, .linkbox ul li a, #blogs #blogrss .posttitle a a { color: #333333; text-decoration: none; }
+.carousel-wrap.small .carousel li h3:hover, .home main h2:hover, .home main h3:hover, .home main h4:hover, .home main h5:hover, .tooltip-aside li a:hover, .dload-xml li a:hover, .print-options li a:hover, .share-options li a:hover, .block .title:hover, #article-list .title:hover, #issue .title:hover, #article-list ul.list-plain li a:hover, .more-link > a:hover, #issue .boxtitle a:hover, .linkbox ul li:hover, #blogs #blogrss .posttitle a:hover, .carousel-wrap.small .carousel li h3 a:hover, .home main h2 a:hover, .home main h3 a:hover, .home main h4 a:hover, .home main h5 a:hover, .tooltip-aside li a a:hover, .dload-xml li a a:hover, .print-options li a a:hover, .share-options li a a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a:hover, .home main h2 a:hover, .home main h3 a:hover, .home main h4 a:hover, .home main h5 a:hover, .tooltip-aside li a a:hover, .dload-xml li a a:hover, .print-options li a a:hover, .share-options li a a:hover, .block .title a:hover, #article-list .title a:hover, #issue .title a:hover, #article-list ul.list-plain li a a:hover, .more-link > a a:hover, #issue .boxtitle a a:hover, .linkbox ul li a:hover, #blogs #blogrss .posttitle a a:hover, .carousel-wrap.small .carousel li h3 a a:hover, .home main h2 a a:hover, .home main h3 a a:hover, .home main h4 a a:hover, .home main h5 a a:hover, .tooltip-aside li a a a:hover, .dload-xml li a a a:hover, .print-options li a a a:hover, .share-options li a a a:hover, .block .title a a:hover, #article-list .title a a:hover, #issue .title a a:hover, #article-list ul.list-plain li a a a:hover, .more-link > a a a:hover, #issue .boxtitle a a a:hover, .linkbox ul li a a:hover, #blogs #blogrss .posttitle a a a:hover { color: #3c63af; text-decoration: none; }
 
-#blogs .block-header, .type-desc p a, .subject-areas-container h3 #subjInfoText a, .example-link-text-white, #blogs .block-header a, .type-desc p a a, .subject-areas-container h3 #subjInfoText a a, .example-link-text-white a { color: white; text-decoration: none; }
-#blogs .block-header:hover, .type-desc p a:hover, .subject-areas-container h3 #subjInfoText a:hover, .example-link-text-white:hover, #blogs .block-header a:hover, .type-desc p a a:hover, .subject-areas-container h3 #subjInfoText a a:hover, .example-link-text-white a:hover, #blogs .block-header a:hover, .type-desc p a a:hover, .subject-areas-container h3 #subjInfoText a a:hover, .example-link-text-white a:hover, #blogs .block-header a a:hover, .type-desc p a a a:hover, .subject-areas-container h3 #subjInfoText a a a:hover, .example-link-text-white a a:hover { color: white; text-decoration: underline; }
+#blogs .block-header, .type-desc p a, .subject-areas-container h3 #subjInfoText a, #blogs .block-header a, .type-desc p a a, .subject-areas-container h3 #subjInfoText a a { color: white; text-decoration: none; }
+#blogs .block-header:hover, .type-desc p a:hover, .subject-areas-container h3 #subjInfoText a:hover, #blogs .block-header a:hover, .type-desc p a a:hover, .subject-areas-container h3 #subjInfoText a a:hover, #blogs .block-header a:hover, .type-desc p a a:hover, .subject-areas-container h3 #subjInfoText a a:hover, #blogs .block-header a a:hover, .type-desc p a a a:hover, .subject-areas-container h3 #subjInfoText a a a:hover { color: white; text-decoration: underline; }
 
-.related-articles-container ul li a, .comments-container ul a, .twitter-container .load-more, .twitter-container .view-all, .article-content a, .article-content .figure-inline-download ul li a, .article-content .table-download span, .related-articles-container ul li a a, .comments-container ul a a, .twitter-container .load-more a, .twitter-container .view-all a, .article-content a a, .article-content .figure-inline-download ul li a a, .article-content .table-download span a { color: #3c63af; text-decoration: none; }
-.related-articles-container ul li a:hover, .comments-container ul a:hover, .twitter-container .load-more:hover, .twitter-container .view-all:hover, .article-content a:hover, .article-content .figure-inline-download ul li a:hover, .article-content .table-download span:hover, .related-articles-container ul li a a:hover, .comments-container ul a a:hover, .twitter-container .load-more a:hover, .twitter-container .view-all a:hover, .article-content a a:hover, .article-content .figure-inline-download ul li a a:hover, .article-content .table-download span a:hover, .related-articles-container ul li a a:hover, .comments-container ul a a:hover, .twitter-container .load-more a:hover, .twitter-container .view-all a:hover, .article-content a a:hover, .article-content .figure-inline-download ul li a a:hover, .article-content .table-download span a:hover, .related-articles-container ul li a a a:hover, .comments-container ul a a a:hover, .twitter-container .load-more a a:hover, .twitter-container .view-all a a:hover, .article-content a a a:hover, .article-content .table-download span a a:hover { color: #3c63af; text-decoration: underline; }
+#lightbox-abst .abstract a, .related-articles-container ul li a, .comments-container ul a, .twitter-container .load-more, .twitter-container .view-all, .article-content a, .article-content .figure-inline-download ul li a, .article-content .table-download span, #lightbox-abst .abstract a a, .related-articles-container ul li a a, .comments-container ul a a, .twitter-container .load-more a, .twitter-container .view-all a, .article-content a a, .article-content .figure-inline-download ul li a a, .article-content .table-download span a { color: #3c63af; text-decoration: none; }
+#lightbox-abst .abstract a:hover, .related-articles-container ul li a:hover, .comments-container ul a:hover, .twitter-container .load-more:hover, .twitter-container .view-all:hover, .article-content a:hover, .article-content .figure-inline-download ul li a:hover, .article-content .table-download span:hover, #lightbox-abst .abstract a a:hover, .related-articles-container ul li a a:hover, .comments-container ul a a:hover, .twitter-container .load-more a:hover, .twitter-container .view-all a:hover, .article-content a a:hover, .article-content .figure-inline-download ul li a a:hover, .article-content .table-download span a:hover, #lightbox-abst .abstract a a:hover, .related-articles-container ul li a a:hover, .comments-container ul a a:hover, .twitter-container .load-more a:hover, .twitter-container .view-all a:hover, .article-content a a:hover, .article-content .figure-inline-download ul li a a:hover, .article-content .table-download span a:hover, #lightbox-abst .abstract a a a:hover, .related-articles-container ul li a a a:hover, .comments-container ul a a a:hover, .twitter-container .load-more a a:hover, .twitter-container .view-all a a:hover, .article-content a a a:hover, .article-content .table-download span a a:hover { color: #3c63af; text-decoration: underline; }
 
-.carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, #article-list .date, #issue .date, section.content > aside .date, section.content > article .date, .block .credits, #article-list .credits, #issue .credits, section.content > aside .credits, section.content > article .credits, #blogs #blogrss .postauthor, .example-small-italic { font-size: 0.625rem; font-style: italic; }
+.carousel-wrap.small .carousel-control .numbers, .hero .hero-content p.credit, .block .date, #article-list .date, #issue .date, .block .credits, #article-list .credits, #issue .credits, #blogs #blogrss .postauthor { font-size: 0.625rem; font-style: italic; }
 
-#issue .boxtitle a, .example-condense { letter-spacing: -0.5px; }
+#issue .boxtitle a { letter-spacing: -0.5px; }
 
-.block .category, #article-list .category, #issue .category, section.content > aside .category, section.content > article .category, #article-list h3, .example-brand-title, .header-allcaps-smallest, .skyscraper-container .title, .more-link > a, body.styleguide header nav li, .example-header-allcaps-plain, #issue .boxtitle a, .example-header-allcaps-xlarge, .example-header-allcaps, .classifications { text-transform: uppercase; }
+.block .category, #article-list .category, #issue .category, #article-list h3, .header-allcaps-smallest, .skyscraper-container .title, .more-link > a, #issue .boxtitle a, .classifications { text-transform: uppercase; }
 
 .inline-intro { font-weight: bold; }
 
@@ -1775,19 +1777,19 @@ table.table-zebra-stripes tr { background: #efefef; }
 table.table-zebra-stripes tr.even, table.table-zebra-stripes tr.alt, table.table-zebra-stripes tr:nth-of-type(even) { background: #cccccc; }
 table.table-zebra-stripes thead tr th { background: #666666; color: white; }
 
-.carousel-wrap.small .carousel li h3, .home main h2, .home main h3, .home main h4, .home main h5, .block.small .title, .small#article-list .title, .small#issue .title, section.content > aside.small .title, section.content > article.small .title { line-height: 1; color: #333333; font-weight: normal; margin-top: .2rem; margin-bottom: .2rem; }
+.carousel-wrap.small .carousel li h3, .home main h2, .home main h3, .home main h4, .home main h5, .block.small .title, .small#article-list .title, .small#issue .title { line-height: 1; color: #333333; font-weight: normal; margin-top: .2rem; margin-bottom: .2rem; }
 
-.block .category, #article-list .category, #issue .category, section.content > aside .category, section.content > article .category, #article-list h3, .example-brand-title, .header-allcaps-smallest, .skyscraper-container .title, .more-link > a, body.styleguide header nav li, .example-header-allcaps-plain, #issue .boxtitle a, .example-header-allcaps-xlarge, .example-header-allcaps { font-size: 0.875rem; font-family: "albert"; }
+.block .category, #article-list .category, #issue .category, #article-list h3, .header-allcaps-smallest, .skyscraper-container .title, .more-link > a, #issue .boxtitle a { font-size: 0.875rem; font-family: "albert"; }
 
-.header-allcaps-smallest, .skyscraper-container .title, .more-link > a, body.styleguide header nav li, .example-header-allcaps-plain { font-family: "arial"; }
+.header-allcaps-smallest, .skyscraper-container .title, .more-link > a { font-family: "arial"; }
 
-#issue .boxtitle a, .example-header-allcaps-xlarge { font-size: 1.25rem; }
+#issue .boxtitle a { font-size: 1.25rem; }
 
-.block.small .title, .small#article-list .title, .small#issue .title, section.content > aside.small .title, section.content > article.small .title { font-size: 0.875rem; font-family: "albert"; font-weight: bold; }
+.block.small .title, .small#article-list .title, .small#issue .title { font-size: 0.875rem; font-family: "albert"; font-weight: bold; }
 
 #submission-links h3, #social-links h3 { font-size: 1.25rem; color: white; font-family: "albert"; }
 
-.carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title, section.content > aside .title, section.content > article .title { font-size: 1.375rem; font-family: "albert"; }
+.carousel-wrap.small .carousel li h3, .block .title, #article-list .title, #issue .title { font-size: 1.375rem; font-family: "albert"; }
 
 .submit h3, #submission-links h3 { padding-bottom: 1.0625rem; margin-bottom: 1.0625rem; box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3); text-align: center; }
 
@@ -1849,18 +1851,11 @@ example | extension
 
 
 */
-footer, .head-top, .padded-example, .example-border-radius, .example-border-radius-large, .example-box-shadow, .example-bg-dark { background: #333333; }
+footer, .head-top { background: #333333; }
 
-.example-highlight-color { color: #3c63af; }
-
-.example-highlight-background { background: #3c63af; color: white; }
-.example-highlight-background:hover { background: #3c63af; }
-
-.example-highlight-border { border-color: #3c63af; }
-
-.plosbiology .block .category, .block .plosbiology .category, .plosbiology #article-list .category, #article-list .plosbiology .category, .plosbiology #issue .category, #issue .plosbiology .category, .plosbiology section.content > aside .category, section.content > aside .plosbiology .category, .plosbiology section.content > article .category, section.content > article .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .example-brand-title, .plosbiology .more-icon, .plosbiology .more-link:after, .plosbiology .example-more-link::after, .plosbiology .example-brand-color, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #article-list .category, #article-list .ploscompbiol .category, .ploscompbiol #issue .category, #issue .ploscompbiol .category, .ploscompbiol section.content > aside .category, section.content > aside .ploscompbiol .category, .ploscompbiol section.content > article .category, section.content > article .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .example-brand-title, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .ploscompbiol .example-more-link::after, .ploscompbiol .example-brand-color, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #article-list .category, #article-list .plosgenetics .category, .plosgenetics #issue .category, #issue .plosgenetics .category, .plosgenetics section.content > aside .category, section.content > aside .plosgenetics .category, .plosgenetics section.content > article .category, section.content > article .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .example-brand-title, .plosgenetics .more-icon, .plosgenetics .more-link:after, .plosgenetics .example-more-link::after, .plosgenetics .example-brand-color { color: #16a127; }
-.plosbiology .head-top, .plosbiology .example-brand-border, .ploscompbiol .head-top, .ploscompbiol .example-brand-border, .plosgenetics .head-top, .plosgenetics .example-brand-border { border-color: #16a127; }
-.plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology .example-brand-header, .plosbiology .closer-brand, .plosbiology .topVisible .logo-close .close-floater, .topVisible .logo-close .plosbiology .close-floater, .plosbiology .action-label, .plosbiology .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosbiology .definition-label, .plosbiology .article-content .table-download .definition-label, .article-content .table-download .plosbiology .definition-label, .plosbiology .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosbiology a, .plosbiology .example-brand-background, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol .example-brand-header, .ploscompbiol .closer-brand, .ploscompbiol .topVisible .logo-close .close-floater, .topVisible .logo-close .ploscompbiol .close-floater, .ploscompbiol .action-label, .ploscompbiol .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .ploscompbiol .definition-label, .ploscompbiol .article-content .table-download .definition-label, .article-content .table-download .ploscompbiol .definition-label, .ploscompbiol .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscompbiol a, .ploscompbiol .example-brand-background, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics .example-brand-header, .plosgenetics .closer-brand, .plosgenetics .topVisible .logo-close .close-floater, .topVisible .logo-close .plosgenetics .close-floater, .plosgenetics .action-label, .plosgenetics .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosgenetics .definition-label, .plosgenetics .article-content .table-download .definition-label, .article-content .table-download .plosgenetics .definition-label, .plosgenetics .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosgenetics a, .plosgenetics .example-brand-background { background-color: #16a127; color: white; }
+.plosbiology .block .category, .block .plosbiology .category, .plosbiology #article-list .category, #article-list .plosbiology .category, .plosbiology #issue .category, #issue .plosbiology .category, .plosbiology #article-list h3, #article-list .plosbiology h3, .plosbiology .more-icon, .plosbiology .more-link:after, .ploscompbiol .block .category, .block .ploscompbiol .category, .ploscompbiol #article-list .category, #article-list .ploscompbiol .category, .ploscompbiol #issue .category, #issue .ploscompbiol .category, .ploscompbiol #article-list h3, #article-list .ploscompbiol h3, .ploscompbiol .more-icon, .ploscompbiol .more-link:after, .plosgenetics .block .category, .block .plosgenetics .category, .plosgenetics #article-list .category, #article-list .plosgenetics .category, .plosgenetics #issue .category, #issue .plosgenetics .category, .plosgenetics #article-list h3, #article-list .plosgenetics h3, .plosgenetics .more-icon, .plosgenetics .more-link:after { color: #16a127; }
+.plosbiology .head-top, .plosbiology #lightbox-thmbs .thmb.active img, #lightbox-thmbs .thmb.active .plosbiology img, .ploscompbiol .head-top, .ploscompbiol #lightbox-thmbs .thmb.active img, #lightbox-thmbs .thmb.active .ploscompbiol img, .plosgenetics .head-top, .plosgenetics #lightbox-thmbs .thmb.active img, #lightbox-thmbs .thmb.active .plosgenetics img { border-color: #16a127; }
+.plosbiology .carousel-wrap.small .block-header, .carousel-wrap.small .plosbiology .block-header, .plosbiology #blogs .block-header, #blogs .plosbiology .block-header, .plosbiology .closer-brand, .plosbiology .topVisible .logo-close .close-floater, .topVisible .logo-close .plosbiology .close-floater, .plosbiology .action-label, .plosbiology .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosbiology .definition-label, .plosbiology .article-content .table-download .definition-label, .article-content .table-download .plosbiology .definition-label, .plosbiology #article-lightbox .fv-nav li.tab_active, #article-lightbox .fv-nav .plosbiology li.tab_active, .plosbiology #article-lightbox .fv-close:hover, #article-lightbox .plosbiology .fv-close:hover, .plosbiology #lightbox-slides .txt .less, #lightbox-slides .txt .plosbiology .less, .plosbiology #lightbox-thmbs .btn-thmb-close, #lightbox-thmbs .plosbiology .btn-thmb-close, .plosbiology #lightbox-controls, .plosbiology .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosbiology a, .ploscompbiol .carousel-wrap.small .block-header, .carousel-wrap.small .ploscompbiol .block-header, .ploscompbiol #blogs .block-header, #blogs .ploscompbiol .block-header, .ploscompbiol .closer-brand, .ploscompbiol .topVisible .logo-close .close-floater, .topVisible .logo-close .ploscompbiol .close-floater, .ploscompbiol .action-label, .ploscompbiol .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .ploscompbiol .definition-label, .ploscompbiol .article-content .table-download .definition-label, .article-content .table-download .ploscompbiol .definition-label, .ploscompbiol #article-lightbox .fv-nav li.tab_active, #article-lightbox .fv-nav .ploscompbiol li.tab_active, .ploscompbiol #article-lightbox .fv-close:hover, #article-lightbox .ploscompbiol .fv-close:hover, .ploscompbiol #lightbox-slides .txt .less, #lightbox-slides .txt .ploscompbiol .less, .ploscompbiol #lightbox-thmbs .btn-thmb-close, #lightbox-thmbs .ploscompbiol .btn-thmb-close, .ploscompbiol #lightbox-controls, .ploscompbiol .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscompbiol a, .plosgenetics .carousel-wrap.small .block-header, .carousel-wrap.small .plosgenetics .block-header, .plosgenetics #blogs .block-header, #blogs .plosgenetics .block-header, .plosgenetics .closer-brand, .plosgenetics .topVisible .logo-close .close-floater, .topVisible .logo-close .plosgenetics .close-floater, .plosgenetics .action-label, .plosgenetics .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosgenetics .definition-label, .plosgenetics .article-content .table-download .definition-label, .article-content .table-download .plosgenetics .definition-label, .plosgenetics #article-lightbox .fv-nav li.tab_active, #article-lightbox .fv-nav .plosgenetics li.tab_active, .plosgenetics #article-lightbox .fv-close:hover, #article-lightbox .plosgenetics .fv-close:hover, .plosgenetics #lightbox-slides .txt .less, #lightbox-slides .txt .plosgenetics .less, .plosgenetics #lightbox-thmbs .btn-thmb-close, #lightbox-thmbs .plosgenetics .btn-thmb-close, .plosgenetics #lightbox-controls, .plosgenetics .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosgenetics a { background-color: #16a127; color: white; }
 .plosbiology .button, .plosbiology .subject-areas-container ul li .taxo-term, .subject-areas-container ul li .plosbiology .taxo-term, .plosbiology .nav .nav-user li.highlighted > a, .nav .nav-user .plosbiology li.highlighted > a, .plosbiology #billboard a, #billboard .plosbiology a, .ploscompbiol .button, .ploscompbiol .subject-areas-container ul li .taxo-term, .subject-areas-container ul li .ploscompbiol .taxo-term, .ploscompbiol .nav .nav-user li.highlighted > a, .nav .nav-user .ploscompbiol li.highlighted > a, .ploscompbiol #billboard a, #billboard .ploscompbiol a, .plosgenetics .button, .plosgenetics .subject-areas-container ul li .taxo-term, .subject-areas-container ul li .plosgenetics .taxo-term, .plosgenetics .nav .nav-user li.highlighted > a, .nav .nav-user .plosgenetics li.highlighted > a, .plosgenetics #billboard a, #billboard .plosgenetics a { background-color: #16a127; color: white; }
 .plosbiology .button:hover, .plosbiology .subject-areas-container ul li .taxo-term:hover, .subject-areas-container ul li .plosbiology .taxo-term:hover, .plosbiology .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosbiology li.highlighted > a:hover, .plosbiology #billboard a:hover, #billboard .plosbiology a:hover, .ploscompbiol .button:hover, .ploscompbiol .subject-areas-container ul li .taxo-term:hover, .subject-areas-container ul li .ploscompbiol .taxo-term:hover, .ploscompbiol .nav .nav-user li.highlighted > a:hover, .nav .nav-user .ploscompbiol li.highlighted > a:hover, .ploscompbiol #billboard a:hover, #billboard .ploscompbiol a:hover, .plosgenetics .button:hover, .plosgenetics .subject-areas-container ul li .taxo-term:hover, .subject-areas-container ul li .plosgenetics .taxo-term:hover, .plosgenetics .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosgenetics li.highlighted > a:hover, .plosgenetics #billboard a:hover, #billboard .plosgenetics a:hover { background-color: #3c63af; color: white; }
 .plosbiology .carousel-wrap.small:first-child .block-header, .ploscompbiol .carousel-wrap.small:first-child .block-header, .plosgenetics .carousel-wrap.small:first-child .block-header { background-color: #0b5013; }
@@ -1873,9 +1868,9 @@ footer, .head-top, .padded-example, .example-border-radius, .example-border-radi
 .plosbiology .signposts li:nth-child(3), .signposts .plosbiology li:nth-child(3), .ploscompbiol .signposts li:nth-child(3), .signposts .ploscompbiol li:nth-child(3), .plosgenetics .signposts li:nth-child(3), .signposts .plosgenetics li:nth-child(3) { background-color: #92e5ab; }
 .plosbiology .signposts li:nth-child(4), .signposts .plosbiology li:nth-child(4), .ploscompbiol .signposts li:nth-child(4), .signposts .ploscompbiol li:nth-child(4), .plosgenetics .signposts li:nth-child(4), .signposts .plosgenetics li:nth-child(4) { background-color: #caeed7; }
 
-.plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #article-list .category, #article-list .plosmedicine .category, .plosmedicine #issue .category, #issue .plosmedicine .category, .plosmedicine section.content > aside .category, section.content > aside .plosmedicine .category, .plosmedicine section.content > article .category, section.content > article .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .example-brand-title, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plosmedicine .example-more-link::after, .plosmedicine .example-brand-color, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #article-list .category, #article-list .plospathogens .category, .plospathogens #issue .category, #issue .plospathogens .category, .plospathogens section.content > aside .category, section.content > aside .plospathogens .category, .plospathogens section.content > article .category, section.content > article .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .example-brand-title, .plospathogens .more-icon, .plospathogens .more-link:after, .plospathogens .example-more-link::after, .plospathogens .example-brand-color, .plosntd .block .category, .block .plosntd .category, .plosntd #article-list .category, #article-list .plosntd .category, .plosntd #issue .category, #issue .plosntd .category, .plosntd section.content > aside .category, section.content > aside .plosntd .category, .plosntd section.content > article .category, section.content > article .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .example-brand-title, .plosntd .more-icon, .plosntd .more-link:after, .plosntd .example-more-link::after, .plosntd .example-brand-color { color: #891fb1; }
-.plosmedicine .head-top, .plosmedicine .example-brand-border, .plospathogens .head-top, .plospathogens .example-brand-border, .plosntd .head-top, .plosntd .example-brand-border { border-color: #891fb1; }
-.plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine .example-brand-header, .plosmedicine .closer-brand, .plosmedicine .topVisible .logo-close .close-floater, .topVisible .logo-close .plosmedicine .close-floater, .plosmedicine .action-label, .plosmedicine .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosmedicine .definition-label, .plosmedicine .article-content .table-download .definition-label, .article-content .table-download .plosmedicine .definition-label, .plosmedicine .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosmedicine a, .plosmedicine .example-brand-background, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens .example-brand-header, .plospathogens .closer-brand, .plospathogens .topVisible .logo-close .close-floater, .topVisible .logo-close .plospathogens .close-floater, .plospathogens .action-label, .plospathogens .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plospathogens .definition-label, .plospathogens .article-content .table-download .definition-label, .article-content .table-download .plospathogens .definition-label, .plospathogens .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plospathogens a, .plospathogens .example-brand-background, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd .example-brand-header, .plosntd .closer-brand, .plosntd .topVisible .logo-close .close-floater, .topVisible .logo-close .plosntd .close-floater, .plosntd .action-label, .plosntd .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosntd .definition-label, .plosntd .article-content .table-download .definition-label, .article-content .table-download .plosntd .definition-label, .plosntd .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosntd a, .plosntd .example-brand-background { background-color: #891fb1; color: white; }
+.plosmedicine .block .category, .block .plosmedicine .category, .plosmedicine #article-list .category, #article-list .plosmedicine .category, .plosmedicine #issue .category, #issue .plosmedicine .category, .plosmedicine #article-list h3, #article-list .plosmedicine h3, .plosmedicine .more-icon, .plosmedicine .more-link:after, .plospathogens .block .category, .block .plospathogens .category, .plospathogens #article-list .category, #article-list .plospathogens .category, .plospathogens #issue .category, #issue .plospathogens .category, .plospathogens #article-list h3, #article-list .plospathogens h3, .plospathogens .more-icon, .plospathogens .more-link:after, .plosntd .block .category, .block .plosntd .category, .plosntd #article-list .category, #article-list .plosntd .category, .plosntd #issue .category, #issue .plosntd .category, .plosntd #article-list h3, #article-list .plosntd h3, .plosntd .more-icon, .plosntd .more-link:after { color: #891fb1; }
+.plosmedicine .head-top, .plosmedicine #lightbox-thmbs .thmb.active img, #lightbox-thmbs .thmb.active .plosmedicine img, .plospathogens .head-top, .plospathogens #lightbox-thmbs .thmb.active img, #lightbox-thmbs .thmb.active .plospathogens img, .plosntd .head-top, .plosntd #lightbox-thmbs .thmb.active img, #lightbox-thmbs .thmb.active .plosntd img { border-color: #891fb1; }
+.plosmedicine .carousel-wrap.small .block-header, .carousel-wrap.small .plosmedicine .block-header, .plosmedicine #blogs .block-header, #blogs .plosmedicine .block-header, .plosmedicine .closer-brand, .plosmedicine .topVisible .logo-close .close-floater, .topVisible .logo-close .plosmedicine .close-floater, .plosmedicine .action-label, .plosmedicine .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosmedicine .definition-label, .plosmedicine .article-content .table-download .definition-label, .article-content .table-download .plosmedicine .definition-label, .plosmedicine #article-lightbox .fv-nav li.tab_active, #article-lightbox .fv-nav .plosmedicine li.tab_active, .plosmedicine #article-lightbox .fv-close:hover, #article-lightbox .plosmedicine .fv-close:hover, .plosmedicine #lightbox-slides .txt .less, #lightbox-slides .txt .plosmedicine .less, .plosmedicine #lightbox-thmbs .btn-thmb-close, #lightbox-thmbs .plosmedicine .btn-thmb-close, .plosmedicine #lightbox-controls, .plosmedicine .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosmedicine a, .plospathogens .carousel-wrap.small .block-header, .carousel-wrap.small .plospathogens .block-header, .plospathogens #blogs .block-header, #blogs .plospathogens .block-header, .plospathogens .closer-brand, .plospathogens .topVisible .logo-close .close-floater, .topVisible .logo-close .plospathogens .close-floater, .plospathogens .action-label, .plospathogens .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plospathogens .definition-label, .plospathogens .article-content .table-download .definition-label, .article-content .table-download .plospathogens .definition-label, .plospathogens #article-lightbox .fv-nav li.tab_active, #article-lightbox .fv-nav .plospathogens li.tab_active, .plospathogens #article-lightbox .fv-close:hover, #article-lightbox .plospathogens .fv-close:hover, .plospathogens #lightbox-slides .txt .less, #lightbox-slides .txt .plospathogens .less, .plospathogens #lightbox-thmbs .btn-thmb-close, #lightbox-thmbs .plospathogens .btn-thmb-close, .plospathogens #lightbox-controls, .plospathogens .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plospathogens a, .plosntd .carousel-wrap.small .block-header, .carousel-wrap.small .plosntd .block-header, .plosntd #blogs .block-header, #blogs .plosntd .block-header, .plosntd .closer-brand, .plosntd .topVisible .logo-close .close-floater, .topVisible .logo-close .plosntd .close-floater, .plosntd .action-label, .plosntd .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosntd .definition-label, .plosntd .article-content .table-download .definition-label, .article-content .table-download .plosntd .definition-label, .plosntd #article-lightbox .fv-nav li.tab_active, #article-lightbox .fv-nav .plosntd li.tab_active, .plosntd #article-lightbox .fv-close:hover, #article-lightbox .plosntd .fv-close:hover, .plosntd #lightbox-slides .txt .less, #lightbox-slides .txt .plosntd .less, .plosntd #lightbox-thmbs .btn-thmb-close, #lightbox-thmbs .plosntd .btn-thmb-close, .plosntd #lightbox-controls, .plosntd .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosntd a { background-color: #891fb1; color: white; }
 .plosmedicine .button, .plosmedicine .subject-areas-container ul li .taxo-term, .subject-areas-container ul li .plosmedicine .taxo-term, .plosmedicine .nav .nav-user li.highlighted > a, .nav .nav-user .plosmedicine li.highlighted > a, .plosmedicine #billboard a, #billboard .plosmedicine a, .plospathogens .button, .plospathogens .subject-areas-container ul li .taxo-term, .subject-areas-container ul li .plospathogens .taxo-term, .plospathogens .nav .nav-user li.highlighted > a, .nav .nav-user .plospathogens li.highlighted > a, .plospathogens #billboard a, #billboard .plospathogens a, .plosntd .button, .plosntd .subject-areas-container ul li .taxo-term, .subject-areas-container ul li .plosntd .taxo-term, .plosntd .nav .nav-user li.highlighted > a, .nav .nav-user .plosntd li.highlighted > a, .plosntd #billboard a, #billboard .plosntd a { background-color: #891fb1; color: white; }
 .plosmedicine .button:hover, .plosmedicine .subject-areas-container ul li .taxo-term:hover, .subject-areas-container ul li .plosmedicine .taxo-term:hover, .plosmedicine .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosmedicine li.highlighted > a:hover, .plosmedicine #billboard a:hover, #billboard .plosmedicine a:hover, .plospathogens .button:hover, .plospathogens .subject-areas-container ul li .taxo-term:hover, .subject-areas-container ul li .plospathogens .taxo-term:hover, .plospathogens .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plospathogens li.highlighted > a:hover, .plospathogens #billboard a:hover, #billboard .plospathogens a:hover, .plosntd .button:hover, .plosntd .subject-areas-container ul li .taxo-term:hover, .subject-areas-container ul li .plosntd .taxo-term:hover, .plosntd .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosntd li.highlighted > a:hover, .plosntd #billboard a:hover, #billboard .plosntd a:hover { background-color: #3c63af; color: white; }
 .plosmedicine .carousel-wrap.small:first-child .block-header, .plospathogens .carousel-wrap.small:first-child .block-header, .plosntd .carousel-wrap.small:first-child .block-header { background-color: #4d1163; }
@@ -1888,9 +1883,9 @@ footer, .head-top, .padded-example, .example-border-radius, .example-border-radi
 .plosmedicine .signposts li:nth-child(3), .signposts .plosmedicine li:nth-child(3), .plospathogens .signposts li:nth-child(3), .signposts .plospathogens li:nth-child(3), .plosntd .signposts li:nth-child(3), .signposts .plosntd li:nth-child(3) { background-color: #c493d4; }
 .plosmedicine .signposts li:nth-child(4), .signposts .plosmedicine li:nth-child(4), .plospathogens .signposts li:nth-child(4), .signposts .plospathogens li:nth-child(4), .plosntd .signposts li:nth-child(4), .signposts .plosntd li:nth-child(4) { background-color: #decbe4; }
 
-.ploscollections .block .category, .block .ploscollections .category, .ploscollections #article-list .category, #article-list .ploscollections .category, .ploscollections #issue .category, #issue .ploscollections .category, .ploscollections section.content > aside .category, section.content > aside .ploscollections .category, .ploscollections section.content > article .category, section.content > article .ploscollections .category, .ploscollections #article-list h3, #article-list .ploscollections h3, .ploscollections .example-brand-title, .ploscollections .more-icon, .ploscollections .more-link:after, .ploscollections .example-more-link::after, .ploscollections .example-brand-color, .plosclinicaltrials .block .category, .block .plosclinicaltrials .category, .plosclinicaltrials #article-list .category, #article-list .plosclinicaltrials .category, .plosclinicaltrials #issue .category, #issue .plosclinicaltrials .category, .plosclinicaltrials section.content > aside .category, section.content > aside .plosclinicaltrials .category, .plosclinicaltrials section.content > article .category, section.content > article .plosclinicaltrials .category, .plosclinicaltrials #article-list h3, #article-list .plosclinicaltrials h3, .plosclinicaltrials .example-brand-title, .plosclinicaltrials .more-icon, .plosclinicaltrials .more-link:after, .plosclinicaltrials .example-more-link::after, .plosclinicaltrials .example-brand-color { color: #3c63af; }
-.ploscollections .head-top, .ploscollections .example-brand-border, .plosclinicaltrials .head-top, .plosclinicaltrials .example-brand-border { border-color: #3c63af; }
-.ploscollections .carousel-wrap.small .block-header, .carousel-wrap.small .ploscollections .block-header, .ploscollections #blogs .block-header, #blogs .ploscollections .block-header, .ploscollections .example-brand-header, .ploscollections .closer-brand, .ploscollections .topVisible .logo-close .close-floater, .topVisible .logo-close .ploscollections .close-floater, .ploscollections .action-label, .ploscollections .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .ploscollections .definition-label, .ploscollections .article-content .table-download .definition-label, .article-content .table-download .ploscollections .definition-label, .ploscollections .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscollections a, .ploscollections .example-brand-background, .plosclinicaltrials .carousel-wrap.small .block-header, .carousel-wrap.small .plosclinicaltrials .block-header, .plosclinicaltrials #blogs .block-header, #blogs .plosclinicaltrials .block-header, .plosclinicaltrials .example-brand-header, .plosclinicaltrials .closer-brand, .plosclinicaltrials .topVisible .logo-close .close-floater, .topVisible .logo-close .plosclinicaltrials .close-floater, .plosclinicaltrials .action-label, .plosclinicaltrials .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosclinicaltrials .definition-label, .plosclinicaltrials .article-content .table-download .definition-label, .article-content .table-download .plosclinicaltrials .definition-label, .plosclinicaltrials .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosclinicaltrials a, .plosclinicaltrials .example-brand-background { background-color: #3c63af; color: white; }
+.ploscollections .block .category, .block .ploscollections .category, .ploscollections #article-list .category, #article-list .ploscollections .category, .ploscollections #issue .category, #issue .ploscollections .category, .ploscollections #article-list h3, #article-list .ploscollections h3, .ploscollections .more-icon, .ploscollections .more-link:after, .plosclinicaltrials .block .category, .block .plosclinicaltrials .category, .plosclinicaltrials #article-list .category, #article-list .plosclinicaltrials .category, .plosclinicaltrials #issue .category, #issue .plosclinicaltrials .category, .plosclinicaltrials #article-list h3, #article-list .plosclinicaltrials h3, .plosclinicaltrials .more-icon, .plosclinicaltrials .more-link:after { color: #3c63af; }
+.ploscollections .head-top, .ploscollections #lightbox-thmbs .thmb.active img, #lightbox-thmbs .thmb.active .ploscollections img, .plosclinicaltrials .head-top, .plosclinicaltrials #lightbox-thmbs .thmb.active img, #lightbox-thmbs .thmb.active .plosclinicaltrials img { border-color: #3c63af; }
+.ploscollections .carousel-wrap.small .block-header, .carousel-wrap.small .ploscollections .block-header, .ploscollections #blogs .block-header, #blogs .ploscollections .block-header, .ploscollections .closer-brand, .ploscollections .topVisible .logo-close .close-floater, .topVisible .logo-close .ploscollections .close-floater, .ploscollections .action-label, .ploscollections .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .ploscollections .definition-label, .ploscollections .article-content .table-download .definition-label, .article-content .table-download .ploscollections .definition-label, .ploscollections #article-lightbox .fv-nav li.tab_active, #article-lightbox .fv-nav .ploscollections li.tab_active, .ploscollections #article-lightbox .fv-close:hover, #article-lightbox .ploscollections .fv-close:hover, .ploscollections #lightbox-slides .txt .less, #lightbox-slides .txt .ploscollections .less, .ploscollections #lightbox-thmbs .btn-thmb-close, #lightbox-thmbs .ploscollections .btn-thmb-close, .ploscollections #lightbox-controls, .ploscollections .article-tabs .tab-title.active a, .article-tabs .tab-title.active .ploscollections a, .plosclinicaltrials .carousel-wrap.small .block-header, .carousel-wrap.small .plosclinicaltrials .block-header, .plosclinicaltrials #blogs .block-header, #blogs .plosclinicaltrials .block-header, .plosclinicaltrials .closer-brand, .plosclinicaltrials .topVisible .logo-close .close-floater, .topVisible .logo-close .plosclinicaltrials .close-floater, .plosclinicaltrials .action-label, .plosclinicaltrials .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosclinicaltrials .definition-label, .plosclinicaltrials .article-content .table-download .definition-label, .article-content .table-download .plosclinicaltrials .definition-label, .plosclinicaltrials #article-lightbox .fv-nav li.tab_active, #article-lightbox .fv-nav .plosclinicaltrials li.tab_active, .plosclinicaltrials #article-lightbox .fv-close:hover, #article-lightbox .plosclinicaltrials .fv-close:hover, .plosclinicaltrials #lightbox-slides .txt .less, #lightbox-slides .txt .plosclinicaltrials .less, .plosclinicaltrials #lightbox-thmbs .btn-thmb-close, #lightbox-thmbs .plosclinicaltrials .btn-thmb-close, .plosclinicaltrials #lightbox-controls, .plosclinicaltrials .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosclinicaltrials a { background-color: #3c63af; color: white; }
 .ploscollections .button, .ploscollections .subject-areas-container ul li .taxo-term, .subject-areas-container ul li .ploscollections .taxo-term, .ploscollections .nav .nav-user li.highlighted > a, .nav .nav-user .ploscollections li.highlighted > a, .ploscollections #billboard a, #billboard .ploscollections a, .plosclinicaltrials .button, .plosclinicaltrials .subject-areas-container ul li .taxo-term, .subject-areas-container ul li .plosclinicaltrials .taxo-term, .plosclinicaltrials .nav .nav-user li.highlighted > a, .nav .nav-user .plosclinicaltrials li.highlighted > a, .plosclinicaltrials #billboard a, #billboard .plosclinicaltrials a { background-color: #3c63af; color: white; }
 .ploscollections .button:hover, .ploscollections .subject-areas-container ul li .taxo-term:hover, .subject-areas-container ul li .ploscollections .taxo-term:hover, .ploscollections .nav .nav-user li.highlighted > a:hover, .nav .nav-user .ploscollections li.highlighted > a:hover, .ploscollections #billboard a:hover, #billboard .ploscollections a:hover, .plosclinicaltrials .button:hover, .plosclinicaltrials .subject-areas-container ul li .taxo-term:hover, .subject-areas-container ul li .plosclinicaltrials .taxo-term:hover, .plosclinicaltrials .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosclinicaltrials li.highlighted > a:hover, .plosclinicaltrials #billboard a:hover, #billboard .plosclinicaltrials a:hover { background-color: #3c63af; color: white; }
 .ploscollections .carousel-wrap.small:first-child .block-header, .plosclinicaltrials .carousel-wrap.small:first-child .block-header { background-color: #253c6b; }
@@ -1903,9 +1898,9 @@ footer, .head-top, .padded-example, .example-border-radius, .example-border-radi
 .ploscollections .signposts li:nth-child(3), .signposts .ploscollections li:nth-child(3), .plosclinicaltrials .signposts li:nth-child(3), .signposts .plosclinicaltrials li:nth-child(3) { background-color: #93aad0; }
 .ploscollections .signposts li:nth-child(4), .signposts .ploscollections li:nth-child(4), .plosclinicaltrials .signposts li:nth-child(4), .signposts .plosclinicaltrials li:nth-child(4) { background-color: #c6d7f2; }
 
-.plosone .block .category, .block .plosone .category, .plosone #article-list .category, #article-list .plosone .category, .plosone #issue .category, #issue .plosone .category, .plosone section.content > aside .category, section.content > aside .plosone .category, .plosone section.content > article .category, section.content > article .plosone .category, .plosone #article-list h3, #article-list .plosone h3, .plosone .example-brand-title, .plosone .more-icon, .plosone .more-link:after, .plosone .example-more-link::after, .plosone .example-brand-color { color: #f8af2d; }
-.plosone .head-top, .plosone .example-brand-border { border-color: #f8af2d; }
-.plosone .carousel-wrap.small .block-header, .carousel-wrap.small .plosone .block-header, .plosone #blogs .block-header, #blogs .plosone .block-header, .plosone .example-brand-header, .plosone .closer-brand, .plosone .topVisible .logo-close .close-floater, .topVisible .logo-close .plosone .close-floater, .plosone .action-label, .plosone .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosone .definition-label, .plosone .article-content .table-download .definition-label, .article-content .table-download .plosone .definition-label, .plosone .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosone a, .plosone .example-brand-background { background-color: #f8af2d; color: #333333; }
+.plosone .block .category, .block .plosone .category, .plosone #article-list .category, #article-list .plosone .category, .plosone #issue .category, #issue .plosone .category, .plosone #article-list h3, #article-list .plosone h3, .plosone .more-icon, .plosone .more-link:after { color: #f8af2d; }
+.plosone .head-top, .plosone #lightbox-thmbs .thmb.active img, #lightbox-thmbs .thmb.active .plosone img { border-color: #f8af2d; }
+.plosone .carousel-wrap.small .block-header, .carousel-wrap.small .plosone .block-header, .plosone #blogs .block-header, #blogs .plosone .block-header, .plosone .closer-brand, .plosone .topVisible .logo-close .close-floater, .topVisible .logo-close .plosone .close-floater, .plosone .action-label, .plosone .article-content .figure-inline-download ul li .definition-label, .article-content .figure-inline-download ul li .plosone .definition-label, .plosone .article-content .table-download .definition-label, .article-content .table-download .plosone .definition-label, .plosone #article-lightbox .fv-nav li.tab_active, #article-lightbox .fv-nav .plosone li.tab_active, .plosone #article-lightbox .fv-close:hover, #article-lightbox .plosone .fv-close:hover, .plosone #lightbox-slides .txt .less, #lightbox-slides .txt .plosone .less, .plosone #lightbox-thmbs .btn-thmb-close, #lightbox-thmbs .plosone .btn-thmb-close, .plosone #lightbox-controls, .plosone .article-tabs .tab-title.active a, .article-tabs .tab-title.active .plosone a { background-color: #f8af2d; color: #333333; }
 .plosone .button, .plosone .subject-areas-container ul li .taxo-term, .subject-areas-container ul li .plosone .taxo-term, .plosone .nav .nav-user li.highlighted > a, .nav .nav-user .plosone li.highlighted > a, .plosone #billboard a, #billboard .plosone a { background-color: #f8af2d; color: #333333; }
 .plosone .button:hover, .plosone .subject-areas-container ul li .taxo-term:hover, .subject-areas-container ul li .plosone .taxo-term:hover, .plosone .nav .nav-user li.highlighted > a:hover, .nav .nav-user .plosone li.highlighted > a:hover, .plosone #billboard a:hover, #billboard .plosone a:hover { background-color: #3c63af; color: white; }
 .plosone .carousel-wrap.small:first-child .block-header { background-color: #c37f06; }
@@ -1979,9 +1974,9 @@ category: components
 
 .pill-small, .author-info { background: #3c63af; padding: 0.625rem; border-radius: 5px; color: white; display: inline-block; }
 
-.button-big, .print-article, .share-article { background: #333333; padding: 0 0.625rem; border-radius: 5px; color: white; display: inline-block; line-height: 2.1875rem; font-weight: bold; font-size: 15px; text-align: center; }
-.button-big:hover, .print-article:hover, .share-article:hover { background: #333333; }
-.button-big.highlighted, .highlighted.print-article, .highlighted.share-article { background-color: #3c63af; }
+.button-big, #lightbox-slides .datacon .btn, .print-article, .share-article { background: #333333; padding: 0 0.625rem; border-radius: 5px; color: white; display: inline-block; line-height: 2.1875rem; font-weight: bold; font-size: 15px; text-align: center; }
+.button-big:hover, #lightbox-slides .datacon .btn:hover, .print-article:hover, .share-article:hover { background: #333333; }
+.button-big.highlighted, #lightbox-slides .datacon .highlighted.btn, .highlighted.print-article, .highlighted.share-article { background-color: #3c63af; }
 
 .button, .subject-areas-container ul li .taxo-term { border-radius: 4px; width: auto; padding: 0.3125rem; height: auto; line-height: 1.0625rem; font-size: 12px; font-weight: bold; color: white; }
 
@@ -2018,7 +2013,7 @@ variable  | result   | default
 `$color: COLOR` | sets the background color   |   `$white`
 
 */
-.block, #article-list, #issue, section.content > aside, section.content > article { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-right-radius: 5px; padding: 0.625rem; -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15); -webkit-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15); box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15); margin-bottom: 1.25rem; background: white; }
+.block, #article-list, #issue { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-right-radius: 5px; padding: 0.625rem; -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15); -webkit-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15); box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15); margin-bottom: 1.25rem; background: white; }
 
 .block-noshadow { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-right-radius: 5px; padding: 0.625rem; margin-bottom: 1.25rem; background: white; }
 
@@ -2073,7 +2068,7 @@ example | extension
 <p class="icon-email"> email</p> | `@extend .icon-email`
 
 */
-.more-icon, .more-link:after, .example-more-link::after { content: '\f138'; padding-left: 0.1875rem; }
+.more-icon, .more-link:after { content: '\f138'; padding-left: 0.1875rem; }
 
 .icon-fa, .icon-twitter, .icon-facebook, .icon-rss, .icon-email, .icon-plus, .icon-close, .icon-alert, .classifications .type-concern-retraction:before, .article-content .amendment-eoc h2:before, .article-content .amendment-retraction h2:before, .icon-important, .block-important::after, .icon-caret-down, .dload-menu .dload-hover, .twitter-container .load-more span, .icon-pointer, .block-tip::after, .icon-info, .block-more-information::after { line-height: 44px; font-size: 22px; }
 
@@ -2101,18 +2096,18 @@ example | extension
 
 .aria-text, #social-links ul > li .icon-text { position: absolute; top: -9999px; left: -9999px; }
 
-.icon-author-contribute, .author-list .contribute { background: url('/wombat/DesktopPlosBiology/resource/img/icon.author.co.gif?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 0.9375rem; height: 0.8125rem; }
+.icon-author-contribute, .author-list .contribute { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.author.co.gif?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 0.9375rem; height: 0.8125rem; }
 
-.icon-author-footnotes, .author-list .rel-footnote { background: url('/wombat/DesktopPlosBiology/resource/img/icon.author.grp.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 0.9375rem; height: 0.8125rem; }
+.icon-author-footnotes, .author-list .rel-footnote { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.author.grp.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 0.9375rem; height: 0.8125rem; }
 
-.icon-author-address, .author-list .email { background: url('/wombat/DesktopPlosBiology/resource/img/icon.author.email.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 0.9375rem; height: 0.8125rem; }
+.icon-author-address, .author-list .email { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.author.email.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 0.9375rem; height: 0.8125rem; }
 
-.icon-correction, .classifications .type-correction::before, .article-content .amendment-correction h2:before { background: url('/wombat/DesktopPlosBiology/resource/img/icon.correction.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 0.9375rem; height: 0.9375rem; }
+.icon-correction, .classifications .type-correction::before, .article-content .amendment-correction h2:before { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.correction.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 0.9375rem; height: 0.9375rem; }
 
-.icon-expand, .article-content .figure .img-box .expand, .table-wrap .expand { background: url('/wombat/DesktopPlosBiology/resource/img/icon.sprite.expand.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 1.5625rem; height: 1.5625rem; }
+.icon-expand, .article-content .figure .img-box .expand, .table-wrap .expand { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.sprite.expand.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 1.5625rem; height: 1.5625rem; }
 .icon-expand:hover, .article-content .figure .img-box .expand:hover, .table-wrap .expand:hover { background-position: 0 -25px; cursor: pointer; }
 
-.closer, .closer-brand, .topVisible .logo-close .close-floater, .tooltip-aside .close, .dload-xml .close, .print-options .close, .share-options .close, .top-bar-section .subject-area-info .close, .author-list .active .close, .type-desc .close, .subject-areas-container h3 #subjInfoText .close, .subject-areas-container ul li .taxo-tooltip .close { background: url('/wombat/DesktopPlosBiology/resource/img/icon.sprite.close.png?1420507155') no-repeat 0 -24px; vertical-align: middle; display: inline-block; width: 1.5625rem; height: 1.5625rem; color: white; text-indent: -9999px; }
+.closer, .closer-brand, .topVisible .logo-close .close-floater, .tooltip-aside .close, .dload-xml .close, .print-options .close, .share-options .close, .top-bar-section .subject-area-info .close, .author-list .active .close, .type-desc .close, .subject-areas-container h3 #subjInfoText .close, .subject-areas-container ul li .taxo-tooltip .close { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.sprite.close.png?1420507155') no-repeat 0 -24px; vertical-align: middle; display: inline-block; width: 1.5625rem; height: 1.5625rem; color: white; text-indent: -9999px; }
 
 .closer-brand, .topVisible .logo-close .close-floater { border-radius: 3px; }
 .plosone .closer-brand, .plosone .topVisible .logo-close .close-floater, .topVisible .logo-close .plosone .close-floater { background-position: 0 0; }
@@ -2157,7 +2152,7 @@ header { background: #efefef; }
 
 .head-top { border-bottom-width: 6px; border-bottom-style: solid; padding: 0.3125rem 0.625rem; }
 .head-top .center { width: 748px; margin: 0 auto; height: 90px; }
-.head-top .title { width: 18px; height: 88px; text-indent: -9999px; background: url('/wombat/DesktopPlosBiology/resource/img/text.vert.ad.gif?1420507155') no-repeat 0 6px; float: left; }
+.head-top .title { width: 18px; height: 88px; text-indent: -9999px; background: url('/PLOS-internal-style-guide/journals/resource/img/text.vert.ad.gif?1420507155') no-repeat 0 6px; float: left; }
 
 .nav .nav-user { font-weight: bold; }
 .nav .nav-user > li { margin-top: -0.3125rem; margin-left: 0.25rem; }
@@ -2168,7 +2163,7 @@ header { background: #efefef; }
 body.plosone .nav .nav-user li.highlighted > a { color: #3c63af; }
 body.plosone .nav .nav-user li.highlighted > a:hover { color: white; }
 
-.logo { width: 20.41667rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; text-indent: -9999px; height: 41px; background: url('/wombat/DesktopPlosBiology/resource/img/logo.png') no-repeat 0 0; }
+.logo { width: 20.41667rem; float: left; margin-left: 0.625rem; margin-right: 0.625rem; text-indent: -9999px; height: 41px; background: url('/PLOS-internal-style-guide/journals/resource/img/logo.png') no-repeat 0 0; }
 
 /* using Foundation Top Bar all @extend .class are Foundation */
 .nav-main { font-family: "albert"; }
@@ -2225,13 +2220,196 @@ body.plosone .nav .nav-user li.highlighted > a:hover { color: white; }
 .top-bar-section .dropdown .submit li a { display: inline !important; line-height: normal !important; padding: 0; font-family: "albert"; font-size: 1rem; color: #3c63af !important; }
 .top-bar-section .dropdown .submit li a:hover { text-decoration: underline; }
 
+/*
+style changes to review with s, p & p
+
+#lightbox-refs (#lightbox-refs) h3 normalize margins
+
+#lightbox-abst (#lightbox-abst): padding top from 37px to 25px
+
+download pdf button: change 636363 to 666666?
+change rounded corner radius from 4px to 5px
+
+color of bolded paragraph headings change from 636363 to 666666
+
+
+info box on the right darker grey background & border: change from e8e8e8 to e7e7e7
+(to use sass darken mixin of our grey-light variable of efefef)
+*/
+#article-lightbox { background: rgba(0, 0, 0, 0.8); position: fixed; z-index: 9000; top: 0; }
+#article-lightbox.reveal-modal { border: 0 none; }
+#article-lightbox #lightbox-content { background: #efefef; margin: 0.625rem; position: relative; }
+#article-lightbox .fv-header { font-family: "albert"; padding: 0.4375rem 17.5rem 0 1.1%; height: 2.875rem; background: #333333; position: relative; border-right: 2.875rem solid transparent; z-index: 7000; }
+#article-lightbox .fv-header h1, #article-lightbox .fv-header h1 a { font-size: 14px; margin: 0 0 0.125rem; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #efefef; line-height: normal; }
+#article-lightbox .fv-header a:hover { color: #efefef; text-decoration: none; }
+#article-lightbox .fv-nav { margin: 0; padding: 0; list-style: none; position: absolute; right: 0; top: 0; }
+#article-lightbox .fv-nav li { display: inline-block; float: left; border-right: 1px solid #666666; padding: 0 0.9375rem; font-size: 16px; line-height: 2.875rem; color: white; cursor: pointer; outline: 0; }
+#article-lightbox .fv-nav li:hover { background: #3c63af; color: white; }
+#article-lightbox .fv-close { background: url('/PLOS-internal-style-guide/journals/resource/img/sprite.fv.png?1420507155') no-repeat -40px 0; position: absolute; right: -2.875rem; top: 0; width: 2.875rem; height: 2.875rem; cursor: pointer; color: #efefef; }
+#article-lightbox > .content { padding: 0 !important; }
+#article-lightbox h3 { margin-bottom: 1.25rem; font-family: "arial"; font-size: 18px; font-weight: bold; color: #333333; }
+
+#fvAuthors { height: 0.9375rem; line-height: 0.9375rem; width: 100%; overflow: hidden; text-overflow: ellipsis; font-size: 11px; color: #cccccc; }
+#fvAuthors span { white-space: nowrap; padding-right: 0.1875rem; }
+#fvAuthors span:last-child { padding-right: 0; }
+
+#lightbox-abst, #lightbox-refs { overflow: auto; }
+
+.invisible { visibility: hidden; }
+
+#lightbox-slides { position: relative; padding-top: 0.125rem; padding-bottom: 0.125rem; }
+
+#lightbox-slides .slide { overflow: hidden; display: none; position: relative; }
+
+#lightbox-slides .figure { border: solid 2px #efefef; position: relative; }
+
+#lightbox-slides .figure img { display: block; }
+
+#lightbox-slides .ui-draggable { cursor: move; }
+
+#lightbox-figs .drag-bx { position: absolute; }
+
+#lightbox-figs .staging { display: none; }
+
+#lightbox-slides .datacon { position: relative; height: 7.5rem; padding-top: 1.875rem; text-align: center; background: #efefef; bottom: 0; }
+
+#lightbox-slides .txt { width: 34.4%; background: #efefef; background: rgba(239, 239, 239, 0.95); position: absolute; bottom: 0; left: 0; text-align: left; font-family: "arial"; font-size: 13px; line-height: 1.125rem; z-index: 6000; }
+#lightbox-slides .txt a { color: #3c63af; }
+#lightbox-slides .txt a:hover { text-decoration: underline; }
+#lightbox-slides .txt p { padding-top: 0.3125rem; }
+
+#lightbox-slides .txt .more { padding: 0 5% 0.9375rem 3.1%; font-weight: normal; font-style: normal; text-decoration: underline; color: #3c63af; margin-top: 1px; cursor: pointer; white-space: nowrap; }
+
+#lightbox-slides .txt .less { width: 0.6875rem; height: 0.6875rem; background: url('/PLOS-internal-style-guide/journals/resource/img/sprite.fv.png?1420507155') -20px -20px; position: absolute; top: 0.5625rem; right: 0.9%; margin-right: 0.875rem; cursor: pointer; display: none; border-radius: 2px; }
+#lightbox-slides .txt .less:hover { background-color: #3c63af; }
+
+#lightbox-slides.txt-expand .text-less, #lightbox-slides.txt-expand .more, #lightbox-slides .text-more { display: none; }
+
+#lightbox-slides.txt-expand .less { display: block; }
+
+#lightbox-slides .txt .fig_title { padding-top: 0.1875rem; padding-right: 1rem; margin-bottom: 0; font-weight: bold; line-height: 1rem; }
+
+#lightbox-slides .txt .text-less { height: 5.5rem; }
+
+#lightbox-slides .txt > div { padding: 0 5% 0 3.1%; }
+
+#lightbox-slides.txt-expand .text-more { display: block; height: 11.875rem; overflow-y: auto; border-top: 1px solid #ccc; border-color: rgba(0, 0, 0, 0.2); }
+
+#lightbox-slides .datacon .btn { font-size: 13px; line-height: 1.6875rem; padding: 0 0.9375rem; }
+
+#lightbox-slides .show_context { margin-top: 0.625rem; position: relative !important; }
+
+#lightbox-figs .download { position: absolute; top: 2.5rem; right: 2.7%; }
+
+#lightbox-figs .download h3 { float: left; font-size: 13px; line-height: 1.6875rem; margin: 0; }
+
+#lightbox-figs .download .item { float: left; margin-left: 1.5625rem; }
+
+#lightbox-figs .download .item a { display: block; color: #333333; text-decoration: none; }
+
+#lightbox-figs .download .size { display: block; font-size: 0.769em; margin-top: 0.3125rem; }
+
+#lightbox-figs .download .item a:hover .btn { background: #3c63af; color: white; }
+
+#lightbox-thmbs { display: none; padding-top: 35px; width: 163px; position: absolute; top: 46px; right: 0; background: #eae9e9; }
+
+.thmbs-vis #lightbox-thmbs { display: block; }
+
+#lightbox-thmbs .btn-thmb-close { color: white; background: url('/PLOS-internal-style-guide/journals/resource/img/sprite.fv.png?1420507155') 0 -20px; width: 0.9375rem; height: 0.9375rem; border-radius: 3px; position: absolute; top: 10px; right: 10px; cursor: pointer; }
+
+#lightbox-thmbs .btn-thmb-close:hover { background-color: #3c63af; background-position: 0 -20px; }
+
+#lightbox-thmbs-content { padding-left: 1.0625rem; overflow: auto; background: #eae9e9; background: linear-gradient(to right, #eae9e9 0%, #eae9e9 20px, #efefef 20px, #efefef 143px, #eae9e9 143px, #eae9e9 100%); }
+
+#lightbox-thmbs .thmb { width: 8.0625rem; height: 6rem; overflow: hidden; cursor: pointer; margin-bottom: 0.3125rem; background-color: white; }
+
+#lightbox-thmbs .thmb .thmb-wrap { width: 8.0625rem; height: 6rem; display: table-cell; vertical-align: middle; }
+
+#lightbox-thmbs .thmb.active { cursor: default; }
+
+#lightbox-thmbs .thmb img { border: 3px solid transparent; height: auto; width: auto; max-width: 7.6875rem; max-height: 5.625rem; display: block; margin: 0 auto; }
+
+#lightbox-controls { position: absolute; bottom: 5.625rem; width: 100%; height: 1.875rem; }
+
+#lightbox-controls .loading-bar { position: absolute; left: 50%; top: 0.6875rem; width: 13.625rem; height: 0.625rem; margin-left: -6.8125rem; text-align: center; background-color: rgba(255, 255, 255, 0.39); border-radius: 5px; background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.4) 25%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0.4) 75%, rgba(255, 255, 255, 0.4)); background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.4) 25%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0.4) 75%, rgba(255, 255, 255, 0.4)); background-size: 10px 10px; -webkit-animation: lb_move 3s linear infinite; animation: lb_move 3s linear infinite; }
+
+@-webkit-keyframes lb_move { 0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; } }
+@keyframes lb_move { 0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; } }
+#fv-zoom { display: none; position: absolute; left: 50%; top: 0.4375rem; width: 16rem; margin-left: -8rem; padding-top: 0.3125rem; }
+
+#fv-zoom-sldr { width: 12.875rem; margin: 0 auto; height: 0.4375rem; border: 0; border-radius: 3px; background: #ccc; background: rgba(255, 255, 255, 0.64); }
+
+#fv-zoom-sldr .ui-slider-handle { position: relative; display: block; width: 0.875rem; height: 0.875rem; border-radius: 50%; background-color: white; border: 0 none; margin-left: -0.1875rem; cursor: ew-resize; top: -0.1875rem; }
+#fv-zoom-sldr .ui-slider-handle:focus { outline: 0; }
+
+#fv-zoom-min, #fv-zoom-max { width: 1rem; height: 1rem; background: url('/PLOS-internal-style-guide/journals/resource/img/sprite.fv.png?1420507155'); cursor: pointer; position: absolute; top: 0; }
+
+#fv-zoom-min { left: -2px; background-position: -110px 0; cursor: -webkit-zoom-out; cursor: -moz-zoom-out; }
+
+#fv-zoom-max { right: -2px; background-position: -90px 0; cursor: -webkit-zoom-in; cursor: -moz-zoom-in; }
+
+#lightbox-controls .fig-btn { display: block; float: right; padding: 0 0.625rem; border-left: 1px solid #666; border-color: rgba(51, 51, 51, 0.25); line-height: 1.875rem; font-family: "albert"; font-size: 14px; color: white; cursor: pointer; }
+
+.fig-btn .icn { background-image: url('/PLOS-internal-style-guide/journals/resource/img/sprite.fv.png?1420507155'); }
+
+#lightbox-controls .thmb-btn { padding: 0; width: 10.125rem; text-align: center; font-weight: bold; }
+
+#lightbox-controls .thmb-btn .icn { display: inline-block; width: 1rem; height: 1rem; vertical-align: middle; background-position: -90px -20px; margin-right: 0.125rem; }
+
+#lightbox-controls .fig-btn:hover, .thmbs-vis #lightbox-controls .thmb-btn { background-color: #3c63af; color: white; }
+
+#lightbox-controls .thmb-btn:hover .icn, .thmbs-vis #lightbox-controls .thmb-btn .icn { background-position: -110px -20px; }
+
+.fig-btn.next .icn, .fig-btn.prev .icn { display: block; width: 0.4375rem; height: 0.6875rem; margin-top: 0.625rem; }
+
+.fig-btn.next .icn { background-position: -140px -20px; float: right; margin-left: 6px; }
+
+.fig-btn.next:hover .icn { background-position: -140px -20px; }
+
+.fig-btn.prev .icn { background-position: -130px -20px; float: left; margin-right: 0.375rem; }
+
+.fig-btn.prev:hover .icn { background-position: -130px -20px; }
+
+#lightbox-abst { display: none; overflow: auto; font-family: "albert"; padding: 2.3125rem 0 4.6875rem; }
+#lightbox-abst .abstract { float: left; width: 59.7%; margin-left: 1.1%; padding: 0; font-size: 1.1875rem; line-height: 1.375rem; }
+#lightbox-abst .abstract p { margin-bottom: 1.5625rem; font-family: "albert"; font-size: 16px; line-height: 1.25rem; }
+#lightbox-abst .info { position: relative; float: right; font-size: 14px; width: 34.8%; margin-right: 1.1%; padding: 3px 0 0; line-height: 0.875rem; }
+#lightbox-abst .info p { border: 1px solid #e1e1e1; border-top-width: 0; margin: 0; padding: 0.375rem 0.5rem 0.5625rem; line-height: 0.875rem; }
+#lightbox-abst .info p:first-child { border-top-width: 1px; }
+#lightbox-abst .info p:nth-child(odd) { background: #e7e7e7; border-right-color: #e7e7e7; border-left-color: #e7e7e7; }
+#lightbox-abst .info p:nth-child(1) { border-top-color: #e7e7e7; }
+
+#lightbox-abst .info p strong { font-size: 14px; font-weight: bold; display: block; color: #666666; line-height: 0.9375rem; }
+
+#lightbox-abst .fv-lnk-pdf a { background: #666666; padding: 0 1.4375rem; border-radius: 5px; color: white; display: inline-block; color: white; font-family: "arial"; font-size: 16px; line-height: 1.75rem; /* background: #636363;*/ }
+#lightbox-abst .fv-lnk-pdf a:hover { background: #333333; }
+#lightbox-abst .fv-lnk-pdf a:hover { color: white; background: #3c63af; text-decoration: none; }
+
+#lightbox-refs { display: none; padding-top: 1.5625rem; overflow: auto; }
+
+#lightbox-refs h3 { margin: 0 0 0.4375rem 1.3125rem; line-height: 1.5rem; }
+
+#lightbox-refs ol { padding-left: 2.5rem; width: 87.5%; margin: 0; list-style-type: none; }
+
+#lightbox-refs ol > li { font-size: 16px; font-weight: bold; line-height: 1.25rem; margin-bottom: 0.4375rem; }
+#lightbox-refs ol > li a { color: #3c63af; font-weight: bold; }
+#lightbox-refs ol > li a:hover { color: #3c63af; text-decoration: underline; }
+
+#lightbox-refs span.order { margin-left: -1.625rem; float: left; width: 1.25rem; text-align: right; font-weight: bold; }
+
+#lightbox-refs .reflinks a { font-weight: normal; font-size: 13px; }
+
+html.touch .stop-scroll { position: fixed; }
+
 .home { background: #efefef; }
 .home .hero, .home #billboard { float: left; width: 60rem; margin-left: 0.625rem; margin-right: 0.625rem; }
-.home .block.xx-small, .home .xx-small#article-list, .home section.content > aside.xx-small, .home section.content > article.xx-small, .home #issue { float: left; width: 11.4375rem; margin-left: 0.625rem; margin-right: 0.625rem; }
-.home .block.x-small, .home .x-small#issue, .home section.content > aside.x-small, .home section.content > article.x-small, .home #article-list { float: left; width: 16.6875rem; margin-left: 0.625rem; margin-right: 0.625rem; }
-.home .carousel-wrap.small, .home .block.small, .home .small#article-list, .home .small#issue, .home section.content > aside.small, .home section.content > article.small, .home #twitter, .home .linkbox, .home #submission-links, .home #social-links, .home #blogs, .home #ad-slot-bottom .ad-item, #ad-slot-bottom .home .ad-item { float: left; width: 19.125rem; margin-left: 0.625rem; margin-right: 0.625rem; }
-.home .block.medium, .home .medium#article-list, .home .medium#issue, .home section.content > aside.medium, .home section.content > article.medium { float: left; width: 29.375rem; margin-left: 0.625rem; margin-right: 0.625rem; }
-.home .block.large, .home .large#article-list, .home .large#issue, .home section.content > aside.large, .home section.content > article.large { float: left; width: 39.5625rem; margin-left: 0.625rem; margin-right: 0.625rem; }
+.home .block.xx-small, .home .xx-small#article-list, .home #issue { float: left; width: 11.4375rem; margin-left: 0.625rem; margin-right: 0.625rem; }
+.home .block.x-small, .home .x-small#issue, .home #article-list { float: left; width: 16.6875rem; margin-left: 0.625rem; margin-right: 0.625rem; }
+.home .carousel-wrap.small, .home .block.small, .home .small#article-list, .home .small#issue, .home #twitter, .home .linkbox, .home #submission-links, .home #social-links, .home #blogs, .home #ad-slot-bottom .ad-item, #ad-slot-bottom .home .ad-item { float: left; width: 19.125rem; margin-left: 0.625rem; margin-right: 0.625rem; }
+.home .block.medium, .home .medium#article-list, .home .medium#issue { float: left; width: 29.375rem; margin-left: 0.625rem; margin-right: 0.625rem; }
+.home .block.large, .home .large#article-list, .home .large#issue { float: left; width: 39.5625rem; margin-left: 0.625rem; margin-right: 0.625rem; }
 
 .carousel-wrap.small { height: 15.625rem; }
 
@@ -2244,8 +2422,8 @@ body.plosone .nav .nav-user li.highlighted > a:hover { color: white; }
 .hero { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-right-radius: 5px; padding: 0; margin-bottom: 1.25rem; background: white; position: relative; background: transparent; }
 
 .hero { color: white; }
-.hero.overlay-dark > a:before { background: url('/wombat/DesktopPlosBiology/resource/img/gradient-dark_1x364.png?1420507155') repeat-x bottom; }
-.hero.overlay-light > a:before { background: url('/wombat/DesktopPlosBiology/resource/img/gradient-light_1x364.png?1420507155') repeat-x bottom; }
+.hero.overlay-dark > a:before { background: url('/PLOS-internal-style-guide/journals/resource/img/gradient-dark_1x364.png?1420507155') repeat-x bottom; }
+.hero.overlay-light > a:before { background: url('/PLOS-internal-style-guide/journals/resource/img/gradient-light_1x364.png?1420507155') repeat-x bottom; }
 .hero img { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-right-radius: 5px; width: 100%; }
 .hero a { color: white; }
 .hero.dark-text, .hero.dark-text a { color: #333333; }
@@ -2255,28 +2433,28 @@ body.plosone .nav .nav-user li.highlighted > a:hover { color: white; }
 .hero .hero-content p { font-size: 1rem; line-height: 20px; }
 .hero .hero-content p.credit { text-align: right; width: 23%; vertical-align: bottom; display: inline-block; line-height: 1; }
 
-.block, #article-list, #issue, section.content > aside, section.content > article { position: relative; height: 15.625rem; }
-.block .blurb, #article-list .blurb, #issue .blurb, section.content > aside .blurb, section.content > article .blurb { color: #666666; }
-.block .blurb a, #article-list .blurb a, #issue .blurb a, section.content > aside .blurb a, section.content > article .blurb a { color: #3c63af; text-decoration: none; }
-.block .blurb a:hover, #article-list .blurb a:hover, #issue .blurb a:hover, section.content > aside .blurb a:hover, section.content > article .blurb a:hover, .block .blurb a a:hover, #article-list .blurb a a:hover, #issue .blurb a a:hover, section.content > aside .blurb a a:hover, section.content > article .blurb a a:hover { color: #3c63af; text-decoration: underline; }
-.block .block-image, #article-list .block-image, #issue .block-image, section.content > aside .block-image, section.content > article .block-image { width: 5rem; display: block; position: absolute; left: 0.625rem; top: 0.625rem; }
-.block.image .block-content, .image#article-list .block-content, .image#issue .block-content, section.content > aside.image .block-content, section.content > article.image .block-content { margin-left: 5.625rem; margin-right: 0.625rem; height: 14.375rem; overflow: hidden; }
-.block .date, #article-list .date, #issue .date, section.content > aside .date, section.content > article .date { margin-right: -1.25rem; }
-.block .credits, #article-list .credits, #issue .credits, section.content > aside .credits, section.content > article .credits { position: absolute; bottom: 0.625rem; left: 6.25rem; margin: 0 0.9375rem 0 0; }
-.block .category, #article-list .category, #issue .category, section.content > aside .category, section.content > article .category { margin-bottom: 0.3125rem; }
-.block .title, #article-list .title, #issue .title, section.content > aside .title, section.content > article .title { margin-bottom: 0.3125rem; }
-.block .title p, #article-list .title p, #issue .title p, section.content > aside .title p, section.content > article .title p { font-size: inherit; line-height: inherit; }
-.block .block-content, #article-list .block-content, #issue .block-content, section.content > aside .block-content, section.content > article .block-content { position: relative; padding-right: 1.25rem; font-size: 0.8125rem; }
-.block.small .title, .small#article-list .title, .small#issue .title, section.content > aside.small .title, section.content > article.small .title { line-height: 1.1; }
+.block, #article-list, #issue { position: relative; height: 15.625rem; }
+.block .blurb, #article-list .blurb, #issue .blurb { color: #666666; }
+.block .blurb a, #article-list .blurb a, #issue .blurb a { color: #3c63af; text-decoration: none; }
+.block .blurb a:hover, #article-list .blurb a:hover, #issue .blurb a:hover, .block .blurb a a:hover, #article-list .blurb a a:hover, #issue .blurb a a:hover { color: #3c63af; text-decoration: underline; }
+.block .block-image, #article-list .block-image, #issue .block-image { width: 5rem; display: block; position: absolute; left: 0.625rem; top: 0.625rem; }
+.block.image .block-content, .image#article-list .block-content, .image#issue .block-content { margin-left: 5.625rem; margin-right: 0.625rem; height: 14.375rem; overflow: hidden; }
+.block .date, #article-list .date, #issue .date { margin-right: -1.25rem; }
+.block .credits, #article-list .credits, #issue .credits { position: absolute; bottom: 0.625rem; left: 6.25rem; margin: 0 0.9375rem 0 0; }
+.block .category, #article-list .category, #issue .category { margin-bottom: 0.3125rem; }
+.block .title, #article-list .title, #issue .title { margin-bottom: 0.3125rem; }
+.block .title p, #article-list .title p, #issue .title p { font-size: inherit; line-height: inherit; }
+.block .block-content, #article-list .block-content, #issue .block-content { position: relative; padding-right: 1.25rem; font-size: 0.8125rem; }
+.block.small .title, .small#article-list .title, .small#issue .title { line-height: 1.1; }
 
 .row.three .column:first-child { width: 40.83333rem; float: left; }
-.row.three .column:first-child + .column.right, .row.three .nav .column:first-child + .column.nav-user, .nav .row.three .column:first-child + .column.nav-user, .row.three .top-bar-section .column:first-child + ul.column.nav-elements, .top-bar-section .row.three .column:first-child + ul.column.nav-elements, .row.three .top-bar-section .column:first-child + .column.head-search, .top-bar-section .row.three .column:first-child + .column.head-search, .row.three .block .column:first-child + .column.date, .block .row.three .column:first-child + .column.date, .row.three #article-list .column:first-child + .column.date, #article-list .row.three .column:first-child + .column.date, .row.three #issue .column:first-child + .column.date, #issue .row.three .column:first-child + .column.date, .row.three section.content > aside .column:first-child + .column.date, section.content > aside .row.three .column:first-child + .column.date, .row.three section.content > article .column:first-child + .column.date, section.content > article .row.three .column:first-child + .column.date { width: 20.41667rem; float: left; position: relative; }
-.row.three .column:first-child + .column.right > div > div, .row.three .nav .column:first-child + .column.nav-user > div > div, .nav .row.three .column:first-child + .column.nav-user > div > div, .row.three .top-bar-section .column:first-child + ul.column.nav-elements > div > div, .top-bar-section .row.three .column:first-child + ul.column.nav-elements > div > div, .row.three .top-bar-section .column:first-child + .column.head-search > div > div, .top-bar-section .row.three .column:first-child + .column.head-search > div > div, .row.three .block .column:first-child + .column.date > div > div, .block .row.three .column:first-child + .column.date > div > div, .row.three #article-list .column:first-child + .column.date > div > div, #article-list .row.three .column:first-child + .column.date > div > div, .row.three #issue .column:first-child + .column.date > div > div, #issue .row.three .column:first-child + .column.date > div > div, .row.three section.content > aside .column:first-child + .column.date > div > div, section.content > aside .row.three .column:first-child + .column.date > div > div, .row.three section.content > article .column:first-child + .column.date > div > div, section.content > article .row.three .column:first-child + .column.date > div > div { float: none; }
+.row.three .column:first-child + .column.right, .row.three .nav .column:first-child + .column.nav-user, .nav .row.three .column:first-child + .column.nav-user, .row.three .top-bar-section .column:first-child + ul.column.nav-elements, .top-bar-section .row.three .column:first-child + ul.column.nav-elements, .row.three .top-bar-section .column:first-child + .column.head-search, .top-bar-section .row.three .column:first-child + .column.head-search, .row.three .block .column:first-child + .column.date, .block .row.three .column:first-child + .column.date, .row.three #article-list .column:first-child + .column.date, #article-list .row.three .column:first-child + .column.date, .row.three #issue .column:first-child + .column.date, #issue .row.three .column:first-child + .column.date { width: 20.41667rem; float: left; position: relative; }
+.row.three .column:first-child + .column.right > div > div, .row.three .nav .column:first-child + .column.nav-user > div > div, .nav .row.three .column:first-child + .column.nav-user > div > div, .row.three .top-bar-section .column:first-child + ul.column.nav-elements > div > div, .top-bar-section .row.three .column:first-child + ul.column.nav-elements > div > div, .row.three .top-bar-section .column:first-child + .column.head-search > div > div, .top-bar-section .row.three .column:first-child + .column.head-search > div > div, .row.three .block .column:first-child + .column.date > div > div, .block .row.three .column:first-child + .column.date > div > div, .row.three #article-list .column:first-child + .column.date > div > div, #article-list .row.three .column:first-child + .column.date > div > div, .row.three #issue .column:first-child + .column.date > div > div, #issue .row.three .column:first-child + .column.date > div > div { float: none; }
 
-.row.three .column:first-child .block.large, .row.three .column:first-child .large#article-list, .row.three .column:first-child .large#issue, .row.three .column:first-child section.content > aside.large, .row.three .column:first-child section.content > article.large { height: 11.25rem; }
-.row.three .column:first-child .block.large .block-image, .row.three .column:first-child .large#article-list .block-image, .row.three .column:first-child .large#issue .block-image, .row.three .column:first-child section.content > aside.large .block-image, .row.three .column:first-child section.content > article.large .block-image { height: 10rem; overflow: hidden; }
-.row.three .column:first-child .block.small, .row.three .column:first-child .small#article-list, .row.three .column:first-child .small#issue, .row.three .column:first-child section.content > aside.small, .row.three .column:first-child section.content > article.small { height: 15.625rem; }
-.row.three .column:first-child .block.small .block-image, .row.three .column:first-child .small#article-list .block-image, .row.three .column:first-child .small#issue .block-image, .row.three .column:first-child section.content > aside.small .block-image, .row.three .column:first-child section.content > article.small .block-image { height: 14.375rem; overflow: hidden; }
+.row.three .column:first-child .block.large, .row.three .column:first-child .large#article-list, .row.three .column:first-child .large#issue { height: 11.25rem; }
+.row.three .column:first-child .block.large .block-image, .row.three .column:first-child .large#article-list .block-image, .row.three .column:first-child .large#issue .block-image { height: 10rem; overflow: hidden; }
+.row.three .column:first-child .block.small, .row.three .column:first-child .small#article-list, .row.three .column:first-child .small#issue { height: 15.625rem; }
+.row.three .column:first-child .block.small .block-image, .row.three .column:first-child .small#article-list .block-image, .row.three .column:first-child .small#issue .block-image { height: 14.375rem; overflow: hidden; }
 
 .row.three .row-small-blocks .small .date, .row.three .row-small-blocks .small .category { margin-bottom: 0.15625rem; }
 .row.three .row-small-blocks .small .date { float: none !important; margin-right: 0; }
@@ -2302,7 +2480,7 @@ body.plosone .nav .nav-user li.highlighted > a:hover { color: white; }
 #issue { height: 15.625rem; }
 #issue .current-img { width: 10rem; }
 #issue .boxtitle { margin-top: 0.3125rem; }
-#issue .boxtitle a { display: block; margin-bottom: -0.3125rem; font-weight: 900; }
+#issue .boxtitle a { display: block; margin-bottom: 0.3125rem; font-weight: 900; }
 #issue .boxtitle .subhead { font-face: "arial"; font-size: 16px; }
 
 #twitter { margin-bottom: 1rem; }
@@ -2381,8 +2559,8 @@ body.plosone .nav .nav-user li.highlighted > a:hover { color: white; }
 
 .classifications { float: left; width: 47.1875rem; margin-top: 0.9375rem; }
 .classifications > p { font-size: 10px; display: inline-block; padding-left: 0.9375rem; line-height: 18px; }
-.classifications .license-short { background: url('/wombat/DesktopPlosBiology/resource/img/icon.oa.gif?1420507155') no-repeat 0 3px; padding-right: 0.625rem; font-family: "albert"; }
-.classifications .peer-reviewed { background: url('/wombat/DesktopPlosBiology/resource/img/icon.pr.gif?1420507155') no-repeat 0 3px; font-family: "albert"; }
+.classifications .license-short { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.oa.gif?1420507155') no-repeat 0 3px; padding-right: 0.625rem; font-family: "albert"; }
+.classifications .peer-reviewed { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.pr.gif?1420507155') no-repeat 0 3px; font-family: "albert"; }
 .classifications .type-concern-retraction { color: #e53350; }
 .classifications .type-concern-retraction:before { font-size: 0.9375rem; margin-right: 3px; line-height: 0.9375rem; }
 .classifications .type-correction::before { content: ''; }
@@ -2526,7 +2704,7 @@ body.article .ui-widget-overlay { position: fixed; top: 0; left: 0; bottom: 0; h
 .subject-areas-container ul li .taxo-tooltip p { font-size: 11px; line-height: 1.25rem; }
 .subject-areas-container ul li .taxo-tooltip button { margin-top: 0.625rem; margin-right: 0.3125rem; line-height: 20px; background-color: white; border: none; border-radius: 4px; font-size: 11px; font-weight: bold; color: #3c63af; cursor: pointer; }
 .subject-areas-container ul li .taxo-tooltip p.taxo-confirm { display: none; margin-top: 0.3125rem; line-height: 4.6875rem; }
-.subject-areas-container ul li .taxo-flag { margin-top: 0.3125rem; margin-left: 0.25rem; display: inline-block; float: right; width: 1rem; height: 1rem; background: url('/wombat/DesktopPlosBiology/resource/img/icon.taxonomy.target.png?1420507155') no-repeat 0 0; cursor: pointer; }
+.subject-areas-container ul li .taxo-flag { margin-top: 0.3125rem; margin-left: 0.25rem; display: inline-block; float: right; width: 1rem; height: 1rem; background: url('/PLOS-internal-style-guide/journals/resource/img/icon.taxonomy.target.png?1420507155') no-repeat 0 0; cursor: pointer; }
 .subject-areas-container ul li .taxo-flag:hover, .subject-areas-container ul li .taxo-flag.flagged { background-position: 0 -16px; }
 
 .comments-container ul { margin-left: 0; list-style-type: none; }
@@ -2534,7 +2712,7 @@ body.article .ui-widget-overlay { position: fixed; top: 0; left: 0; bottom: 0; h
 .comments-container ul a { display: block; }
 
 .twitter-container { display: none; }
-.twitter-container h3 { background: url('/wombat/DesktopPlosBiology/resource/img/icon.twtr.20.png?1420507155') no-repeat 0 0; padding-left: 1.5625rem; border: none; padding-bottom: 0; margin-bottom: 0.3125rem; font-size: 12px !important; }
+.twitter-container h3 { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.twtr.20.png?1420507155') no-repeat 0 0; padding-left: 1.5625rem; border: none; padding-bottom: 0; margin-bottom: 0.3125rem; font-size: 12px !important; }
 .twitter-container #tweetList { list-style-type: none; margin-left: 0; }
 .twitter-container #tweetList li { border-top: 1px solid #dedede; margin-bottom: 0.625rem; padding-top: 0.625rem; font-size: 12px; }
 .twitter-container #tweetList li .tweet-info a { color: #333333; position: relative; *zoom: 1; }
@@ -2553,7 +2731,7 @@ body.article .ui-widget-overlay { position: fixed; top: 0; left: 0; bottom: 0; h
 #tweetActions { list-style-type: none; margin-left: 0; }
 #tweetActions a { color: #707070; text-decoration: none; visibility: hidden; padding-left: 0; padding-right: 0.625rem; display: inline; }
 #tweetActions a:hover, #tweetActions a a:hover { color: #707070; text-decoration: underline; }
-#tweetActions a div { background: url('/wombat/DesktopPlosBiology/resource/img/sprite.twitter.actions.png?1420507155') no-repeat 0 0; width: 1.0625rem; height: 0.9375rem; display: inline-block; }
+#tweetActions a div { background: url('/PLOS-internal-style-guide/journals/resource/img/sprite.twitter.actions.png?1420507155') no-repeat 0 0; width: 1.0625rem; height: 0.9375rem; display: inline-block; }
 #tweetActions .tweet-reply div { background-position: 0 0; }
 #tweetActions .tweet-reply:hover div { background-position: -16px 0; }
 #tweetActions .tweet-retweet div { background-position: -80px 0; }
@@ -2565,7 +2743,7 @@ body.article .ui-widget-overlay { position: fixed; top: 0; left: 0; bottom: 0; h
 
 @media print { .article-body { width: 95%; }
   .title-block { margin-top: 0.3125rem; }
-  .title-block:before { content: url('/wombat/DesktopPlosBiology/resource/img/logo.png') !important; }
+  .title-block:before { content: url('/PLOS-internal-style-guide/journals/resource/img/logo.png') !important; }
   .title-block h1 { padding-top: 1.25rem; } }
 #nav-article { float: left; width: 10rem; margin-right: 2.8125rem; }
 
@@ -2704,52 +2882,3 @@ ol.references span.order { margin-left: -1.625rem; float: left; width: 1.25rem; 
 .ref-tooltip:before { border-color: rgba(204, 204, 204, 0); border-top-color: #cccccc; border-width: 0.8125rem; margin-left: -0.8125rem; }
 
 @media print { .article-content { width: 100%; } }
-body.styleguide { background-color: #efefef; }
-body.styleguide header { width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 61.25rem; *zoom: 1; min-width: 61.25rem; max-width: 61.25rem; margin: 0 auto; margin-bottom: 1em; }
-body.styleguide header:before, body.styleguide header:after { content: " "; display: table; }
-body.styleguide header:after { clear: both; }
-body.styleguide header h1 { margin-bottom: .25em; padding-bottom: .25em; border-bottom: 5px solid #3c63af; }
-body.styleguide header nav li { padding: .25em; }
-
-section.content article > h1 { font-size: 22px; border-top: 2px solid #3c63af; }
-section.content > h1, section.content > h2, section.content > h3 { margin: 1em 0 .5em -.1em; text-transform: capitalize; font-family: "arial"; }
-section.content > h2 { font-size: 16px; font-family: "arial"; font-weight: 400; }
-section.content > h3 { font-size: 16px; }
-section.content > aside { height: 100%; }
-section.content > aside nav li { padding-bottom: .25em; }
-section.content > article { height: 100%; }
-section.content > table { padding-bottom: .25em; line-height: 140%; }
-section.content > table { border-collapse: collapse; width: 100%; }
-section.content > table td { font-size: 13px; }
-section.content > table th { text-align: left; background-color: #efefef; }
-section.content div.codeExample:before { width: 100%; border-radius: 0; }
-
-.rounded { background: #3c63af; padding: 1.25rem; border-radius: 5px; color: white; display: inline-block; }
-.rounded:hover { background: #333333; }
-
-.box-example, .grid-example-simple div, .grid-example-complex div { background-color: #efefef; border: 1px solid #cccccc; margin-bottom: 0.3125rem; }
-
-.grid-example-complex .grid-example-one { float: left; width: 7.5rem; margin-left: 0.625rem; margin-right: 0.625rem; }
-.grid-example-complex .grid-example-two { float: left; width: 7.5rem; margin-left: 3.125rem; }
-.grid-example-complex .grid-example-three { float: left; width: 7.5rem; margin-left: 1.25rem; }
-.grid-example-complex .grid-example-four { float: left; width: 7.5rem; margin-right: 3.125rem; }
-.grid-example-complex .grid-example-five { float: left; width: 7.5rem; margin-right: 1.25rem; }
-.grid-example-complex .grid-example-six { float: left; width: 7.5rem; }
-
-.padded-example, .example-border-radius, .example-border-radius-large, .example-box-shadow { padding: .5em; color: white; }
-
-.example-link-text-white { background: #3c63af; padding: 0.625rem; }
-
-.example-bg-dark { color: white; }
-
-.example-highlight-border { border-width: 1px; border-style: solid; display: block; }
-
-.example-brand-border { border-width: 1px; border-style: solid; display: block; }
-
-.example-border-radius { -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
-
-.example-border-radius-large { -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
-
-.example-box-shadow { -moz-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.15); -webkit-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.15); box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.15); }
-
-.article-content { width: 100%; border-bottom: 2px solid #3c63af; margin-bottom: 1.25rem; }

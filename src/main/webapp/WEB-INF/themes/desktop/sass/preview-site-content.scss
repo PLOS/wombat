@@ -7,9 +7,7 @@
   @include site-content;
   ul {
     @extend .list-bullet;
-    li {
 
-      }
     }
   nav ul{
     @extend .list-bullet-over-ride;

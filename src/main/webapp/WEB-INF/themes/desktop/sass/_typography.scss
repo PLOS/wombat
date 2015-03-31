@@ -62,17 +62,21 @@ example | extension
 */
 
 /* basic styles  */
-@mixin default-text{
+@mixin text-default{
   font-size: rem-calc($txt-size-default);
   line-height: rem-calc($line-height);
+  }
+@mixin text-below{margin-bottom: $paragraph-spacing;}
+@mixin default-list{
+    li{
+      @include text-default;
+      @include text-below;
+      }
   }
 
 ol {
   padding-left: $pad-default;
-  li{
-    @include default-text;
-    margin-bottom: rem-calc($line-height-small);
-    }
+   @include default-list;
   }
 /// this should be used on a ul but I wanted to make it extensible
 .list-bullet {
@@ -151,7 +155,7 @@ $icon-type: 'none',
 $icon-width: $pad-medium) {
   margin: $margin-top 0 $margin-bottom 0;
   padding: $padding-x $padding-y;
-  @include default-text;
+  @include text-default;
   @if $icon-type != 'none' {
     padding-left: ($padding-x + $icon-width);
     position: relative;
@@ -180,7 +184,7 @@ $icon-width: $pad-medium) {
   }
 
 blockquote, .pullquote, .block-quote {
-  @include default-text;
+  @include text-default;
   border-left: $pad-xsmall solid $clr-separator;
   margin: rem-calc($line-height-med 0 $line-height 0);
   }

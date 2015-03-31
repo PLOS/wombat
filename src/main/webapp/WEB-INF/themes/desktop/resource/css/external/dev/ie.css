@@ -66,9 +66,9 @@ option          | result
 
 .hero.overlay-dark > a:before, .hero.overlay-light > a:before { background: none !important; }
 
-.hero.overlay-dark .hero-content:before { position: absolute; width: 100%; height: 234px; background: url('/wombat/DesktopPlosBiology/resource/img/gradient-dark_1x364.png?1420507155') repeat-x bottom; top: 0; left: 0; content: " "; }
+.hero.overlay-dark .hero-content:before { position: absolute; width: 100%; height: 234px; background: url('/PLOS-internal-style-guide/journals/resource/img/gradient-dark_1x364.png?1420507155') repeat-x bottom; top: 0; left: 0; content: " "; }
 
-.hero.overlay-light .hero-content:before { position: absolute; width: 100%; height: 234px; background: url('/wombat/DesktopPlosBiology/resource/img/gradient-light_1x364.png?1420507155') repeat-x; top: 0; left: 0; content: " "; }
+.hero.overlay-light .hero-content:before { position: absolute; width: 100%; height: 234px; background: url('/PLOS-internal-style-guide/journals/resource/img/gradient-light_1x364.png?1420507155') repeat-x; top: 0; left: 0; content: " "; }
 
 .hero .hero-content { height: 234px !important; padding-top: 103px !important; }
 
@@ -108,7 +108,7 @@ div[data-js-tooltip="tooltip_target"] { display: none; }
 .article-content .table-wrap .table-caption { margin-bottom: 0; }
 .article-content .table-wrap .table-footnote { margin-bottom: 2px; }
 
-.article-content .expand { background: url('/wombat/DesktopPlosBiology/resource/img/icon.sprite.expand.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 25px; height: 25px; }
+.article-content .expand { background: url('/PLOS-internal-style-guide/journals/resource/img/icon.sprite.expand.png?1420507155') no-repeat 0 0; vertical-align: middle; display: inline-block; width: 25px; height: 25px; }
 .article-content .expand:hover { background-position: 0 -25px; cursor: pointer; }
 
 body.article .ui-widget-overlay { -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)"; }

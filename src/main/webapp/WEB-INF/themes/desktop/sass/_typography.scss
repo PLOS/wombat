@@ -94,20 +94,20 @@ ol {
     display: inline-block;
     margin-left: rem-calc(-17);
     position: absolute;
-    line-height: rem-calc($line-height);
+    line-height: rem-calc($line-height) !important;// needed to ovewrite anyother line-height in other styles.
     }
   // to do put in variables
   }
 .list-bullet-over-ride{
   li::before{
-    content: '';
+    content: none;
     font-size: inherit;
     display: inline-block;
     margin-left: 0;
     position: relative;
     }
   }
-.bulleted {@extend .list-bullet;}
+.bulleted {@extend .list-bullet;}    /// used for article pages
 
 /// sizes are set in foundation.
 h2, h3, h4, h5 {

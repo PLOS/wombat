@@ -5,9 +5,8 @@
 .cms-preview {
   @import "site-content";
   @include site-content;
-  ul {
+   ul {
     @extend .list-bullet;
-
     }
   nav ul{
     @extend .list-bullet-over-ride;

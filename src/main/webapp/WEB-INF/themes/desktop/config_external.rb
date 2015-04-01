@@ -4,7 +4,7 @@
 
 # Set this to the root of your project when deployed:
 http_path = "/PLOS-internal-style-guide/journals"
-css_dir = "resource/css/external/dev/"
+css_dir = "resource/css/external/"
 sass_dir = "sass"
 images_dir = "resource/img"
 javascripts_dir = "resource/js"

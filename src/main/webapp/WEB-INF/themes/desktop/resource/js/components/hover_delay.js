@@ -10,7 +10,7 @@
 
     init: function () {
       // kick things off
-      var $menu_drop_selector = $('li.has-dropdown2');
+      var $menu_drop_selector = $('li.has-dropdown');
       // if mobile, use modernizer to check for touch events. If so then:
 //      1. add needsclick class so fastclick won't do it's magic
 //      2. use hover instead of hoverIntent - hoverIntent adds timing to the hover we don't want for touch devices. '

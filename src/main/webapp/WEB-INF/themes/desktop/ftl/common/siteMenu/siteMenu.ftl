@@ -2,23 +2,27 @@
 <#if hasSiteMenu>
 
   <#macro siteMenuCalloutHeadline>
-  <h3><#nested/></h3>
+  <h3  class="callout-headline"><#nested/></h3>
   </#macro>
 
   <#macro siteMenuCalloutDescription>
-  <ul>
+  <p class="callout-content">
     <#nested/>
-  </ul>
+  </p>
   </#macro>
   <#macro siteMenuCalloutButton href>
-  <a class="btn" href="${href}">
-    <#nested/>
-  </a>
+  <p class="button-contain">
+    <a class="button button-default" href="${href}">
+     <#nested/>
+   </a>
+  </p>
   </#macro>
   <#macro siteMenuCalloutLink href>
+
   <a href="${href}">
     <#nested/>
   </a>
+
   </#macro>
 
   <#macro menuGroup title singleColumn=false containsCallout=false>

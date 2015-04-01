@@ -1649,9 +1649,11 @@ example | extension
 /* basic styles  */
 ol { padding-left: 1.25rem; }
 
-ul.list-bullet, div ul { list-style-type: none; }
-ul.list-bullet li, div ul li { padding-left: 1.25rem; position: relative; }
-ul.list-bullet li:before, div ul li:before { content: '>'; font-size: 0.625rem; display: inline-block; margin-left: -0.9375rem; position: absolute; }
+.list-bullet, ul { list-style-type: none; }
+.list-bullet li, ul li { padding-left: 1.25rem; position: relative; }
+.list-bullet li::before, ul li::before { content: '>'; font-size: 0.625rem; display: inline-block; margin-left: -0.9375rem; position: absolute; }
+
+.list-bullet-over-ride li::before, .cke_panel_list li::before { content: ''; font-size: inherit; display: inline-block; margin-left: 0; position: relative; }
 
 h2, h3, h4, h5 { font-family: "arial"; }
 

@@ -2,10 +2,12 @@
  *
  */
 
-.cms-preview{
+.cms-preview {
   @import "site-content";
   @include site-content;
-  div ul {@extend .list-bullet}
+  ul {
+    @extend .list-bullet
+    }
   }
 
 

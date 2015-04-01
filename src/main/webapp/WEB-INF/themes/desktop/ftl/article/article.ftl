@@ -94,7 +94,6 @@
   <#include "../common/footer/footer.ftl" />
 
   <@js src="resource/js/components/show_onscroll.js"/>
-  <@js src="resource/js/components/tooltip_hover.js"/>
 
   <@js src="resource/js/components/table_open.js"/>
   <@js src="resource/js/components/figshare.js"/>

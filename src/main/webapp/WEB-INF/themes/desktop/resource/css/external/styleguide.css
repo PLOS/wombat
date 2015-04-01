@@ -1655,9 +1655,11 @@ example | extension
 /* basic styles  */
 ol { padding-left: 1.25rem; }
 
-ul.list-bullet { list-style-type: none; }
-ul.list-bullet li { padding-left: 1.25rem; position: relative; }
-ul.list-bullet li:before { content: '>'; font-size: 0.625rem; display: inline-block; margin-left: -0.9375rem; position: absolute; }
+.list-bullet { list-style-type: none; }
+.list-bullet li { padding-left: 1.25rem; position: relative; }
+.list-bullet li::before { content: '>'; font-size: 0.625rem; display: inline-block; margin-left: -0.9375rem; position: absolute; }
+
+.list-bullet-over-ride li::before { content: ''; font-size: inherit; display: inline-block; margin-left: 0; position: relative; }
 
 h2, h3, h4, h5 { font-family: "arial"; }
 
@@ -2176,9 +2178,6 @@ body.plosone .nav .nav-user li.highlighted > a:hover { color: white; }
 .top-bar-section h2, .top-bar-section h3 { font-family: "albert"; line-height: 1; }
 .top-bar-section ul { line-height: 1.35; }
 .top-bar-section ul.nav-elements { padding-right: 0; }
-.top-bar-section ul.nav-elements > li > ul { display: none; }
-.top-bar-section ul.nav-elements li.multi-col-parent { width: 960px; }
-.top-bar-section ul.nav-elements li.multi-col-parent .multi-col { display: inline-block; width: 30%; float: right; font-size: 10px; }
 .top-bar-section ul.nav-elements ul.dropdown li a, .top-bar-section ul.nav-elements ul.dropdowncallout li a { line-height: 1.5em !important; }
 .top-bar-section ul.nav-elements > li { float: left; cursor: pointer; margin-left: 3px; border-left: 1px solid #cccccc; line-height: 30px; padding: 0.4375rem 0.9375rem; font-family: "albert"; font-size: 20px; color: #3c63af; }
 .top-bar-section ul.nav-elements > li:first-child { border-left: none; margin-left: 0; }

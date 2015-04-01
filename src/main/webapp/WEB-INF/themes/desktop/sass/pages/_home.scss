@@ -401,7 +401,7 @@ $image-container: ($image-width + $pad-small);
       @extend %header-allcaps-xlarge;
       @extend %condense;
       display: block;
-      margin-bottom: rem-calc(-5);
+      margin-bottom: rem-calc(5);
       font-weight: 900;
       }
     .subhead {

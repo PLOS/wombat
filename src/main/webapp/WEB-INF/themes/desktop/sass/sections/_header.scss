@@ -194,7 +194,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
   .subject-area-info {
     @include js-tooltip-target();
-    @include tooltip($width: rem-calc(350), $tooltip-padding: $pad-xsmall);
+    @include tooltip($width: 350, $tooltip-padding: $pad-xsmall);
     top: -50px;
     left: -60%;
     text-align: center;
@@ -202,6 +202,7 @@ $width-nav: $block-grid-elements - $width-logo;
     background-color: $white;
     color: $grey-med;
     font-family: $font-face-plain;
+    width: 350px;
   @include arrow-bottom($arrow-color: $white);
 
   }

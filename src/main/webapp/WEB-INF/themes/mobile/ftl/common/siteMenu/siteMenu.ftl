@@ -1,5 +1,10 @@
 <#include "siteMenuFlag.ftl" />
 <#if hasSiteMenu>
+
+  <#macro menuSpecialSection title>
+  <!-- dont' do anything for mobile -->
+
+  </#macro>
   <#macro menuGroup title singleColumn=false containsCallout=false>
     <#nested/>
   </#macro>
@@ -55,14 +60,18 @@
       <h4 class="coloration-light-text"><#nested/></h4>
     </#macro>
     <#macro siteMenuCalloutDescription>
-      <ul class="std">
-        <#nested/>
-      </ul>
+      <div>
+        <h5><#nested/></h5>
+        <br />
+      </div>
     </#macro>
     <#macro siteMenuCalloutButton href>
       <div><a class="rounded coloration-white-on-color" href="${href}">
         <#nested/>
       </a></div>
+    </#macro>
+    <#macro siteMenuCalloutLink href>
+     <!-- do nothing -->
     </#macro>
     <div id="submit-manuscript-container">
       <#include "siteMenuCallout.ftl" />
@@ -70,4 +79,5 @@
   </div>
 
 </div>
+
 </#if>

@@ -69,7 +69,7 @@
   </#macro>
 
   <#macro menuSpecialSection title>
-  <li data-js-tooltip-hover="trigger" class="subject-area">
+  <li data-js-tooltip-hover="trigger" class="subject-area menu-section-header">
   ${title}
      <#nested/>
   </li>

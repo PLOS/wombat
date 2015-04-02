@@ -2,15 +2,21 @@
  *
  */
 @import "site-content";
-@include site-content;
 
-ul {
-  @extend .list-bullet
+body.cms-preview {
+  @include site-content;
+
+  ul {
+    @extend .list-bullet;
+    @include default-list;
+    }
   }
 
 .cke_panel_list {
   @extend .list-bullet-over-ride;
   }
+
+
 
 
 

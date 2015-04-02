@@ -15,7 +15,7 @@ main {
     }
 
   article {
-    @include plos-grid-column($pixelwidth: 760, $gutter: none, $float: left);
+    @include plos-grid-column($pixelwidth: 760, $gutter: none, $float: right);
     }
   }
 
@@ -56,4 +56,5 @@ nav ul {
   }
 article {      // to work on ck editor editing
      @include site-content;
+  ul{@extend .list-bullet;}
   }

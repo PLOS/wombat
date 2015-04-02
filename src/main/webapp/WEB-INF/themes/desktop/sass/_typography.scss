@@ -62,35 +62,52 @@ example | extension
 */
 
 /* basic styles  */
+@mixin text-default{
+  font-size: rem-calc($txt-size-default);
+  line-height: rem-calc($line-height);
+  }
+@mixin text-below{margin-bottom: $paragraph-spacing;}
+@mixin default-list{
+    li{
+      @include text-default;
+      @include text-below;
+      }
+  }
 
 ol {
   padding-left: $pad-default;
+   @include default-list;
   }
 /// this should be used on a ul but I wanted to make it extensible
 .list-bullet {
   list-style-type: none;
   li {
     padding-left: $pad-default;
+    margin-bottom: rem-calc($line-height-small);
     position: relative;
     }
   li::before {
-    content: '>';
+    content: "\f054";
+    @extend .fa;
+    @extend .fa-chevron-right;
     font-size: rem-calc(10);
     display: inline-block;
-    margin-left: -$pad-smallish;
-    position: absolute
+    margin-left: rem-calc(-17);
+    position: absolute;
+    line-height: rem-calc($line-height) !important;// needed to ovewrite anyother line-height in other styles.
     }
   // to do put in variables
   }
 .list-bullet-over-ride{
   li::before{
-    content: '';
+    content: none;
     font-size: inherit;
     display: inline-block;
     margin-left: 0;
     position: relative;
     }
   }
+.bulleted {@extend .list-bullet;}    /// used for article pages
 
 /// sizes are set in foundation.
 h2, h3, h4, h5 {
@@ -98,11 +115,11 @@ h2, h3, h4, h5 {
   }
 
 // font-weights
-h2, h3 {
+h2, h3, h5 {
   font-weight: bold;
   }
 
-h4, h5 {
+h4 {
   font-weight: normal;
   }
 
@@ -117,7 +134,7 @@ h2 {
   margin-bottom: rem-calc($line-height);
   }
 
-h3, h4 {
+h3, h4, h5 {
   margin-top: rem-calc($line-height-small);
   }
 
@@ -138,7 +155,7 @@ $icon-type: 'none',
 $icon-width: $pad-medium) {
   margin: $margin-top 0 $margin-bottom 0;
   padding: $padding-x $padding-y;
-
+  @include text-default;
   @if $icon-type != 'none' {
     padding-left: ($padding-x + $icon-width);
     position: relative;
@@ -167,6 +184,7 @@ $icon-width: $pad-medium) {
   }
 
 blockquote, .pullquote, .block-quote {
+  @include text-default;
   border-left: $pad-xsmall solid $clr-separator;
   margin: rem-calc($line-height-med 0 $line-height 0);
   }

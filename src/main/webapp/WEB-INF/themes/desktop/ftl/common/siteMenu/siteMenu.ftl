@@ -2,7 +2,7 @@
 <#if hasSiteMenu>
 
   <#macro siteMenuCalloutHeadline>
-  <h3  class="callout-headline"><#nested/></h3>
+  <h3 class="callout-headline"><#nested/></h3>
   </#macro>
 
   <#macro siteMenuCalloutDescription>
@@ -10,20 +10,21 @@
     <#nested/>
   </p>
   </#macro>
+  <#macro siteMenuCalloutLink href>
+  <p class="link-contain">
+    <a href="${href}">
+      <#nested/>
+    </a>
+  </p>
+  </#macro>
   <#macro siteMenuCalloutButton href>
   <p class="button-contain">
     <a class="button button-default" href="${href}">
-     <#nested/>
-   </a>
+      <#nested/>
+    </a>
   </p>
   </#macro>
-  <#macro siteMenuCalloutLink href>
 
-  <a href="${href}">
-    <#nested/>
-  </a>
-
-  </#macro>
 
   <#macro menuGroup title singleColumn=false containsCallout=false>
 
@@ -33,16 +34,16 @@
     <#else>
       <#assign column="group">
     <li class="multi-col-parent menu-section-header has-dropdown" id="${title?lower_case?replace(" ","-")}">
-  ${title}
+    ${title}
       <div class="dropdown mega ">
-      <ul class="multi-col"  id="${title?lower_case?replace(" ","-")}-dropdown-list">
-        <#nested/>
-      </ul>
-      <#if containsCallout>
-        <div class="calloutcontainer">
+        <ul class="multi-col" id="${title?lower_case?replace(" ","-")}-dropdown-list">
+          <#nested/>
+        </ul>
+        <#if containsCallout>
+          <div class="calloutcontainer">
             <#include "siteMenuCallout.ftl" />
           </div>
-      </#if>
+        </#if>
       </div>
     </li>
     </#if>
@@ -52,9 +53,10 @@
   <#macro menuSection title >
 
   <li class="menu-section-header <#if column="single">has-dropdown </#if>" id="${title?lower_case?replace(" ","-")}">
-     <span class="menu-section-header-title">  ${title} </span>
+    <span class="menu-section-header-title">  ${title} </span>
 
-    <ul class="menu-section <#if column="single">dropdown </#if>" id="${title?lower_case?replace(" ","-")}-dropdown-list">
+    <ul class="menu-section <#if column="single">dropdown </#if>"
+        id="${title?lower_case?replace(" ","-")}-dropdown-list">
       <#nested/>
     </ul>
 
@@ -64,7 +66,7 @@
 
   <#macro menuLink href>
   <li>
-    <a href="${href}" ><#nested/></a>
+    <a href="${href}"><#nested/></a>
   </li>
   </#macro>
 

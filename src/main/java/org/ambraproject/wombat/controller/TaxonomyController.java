@@ -13,13 +13,16 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Charsets;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,16 +67,15 @@ public class TaxonomyController {
     // approach would be to have the taxonomy browser issue JSONP requests directly
     // to rhino, but we've decided that rhino should be internal-only for now.
 
-    String req = UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE);
-    req += "?";
+    SoaRequest.Builder req = SoaRequest.request(UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
     String query = request.getQueryString();
     if (query != null) {
-      req += query + "&";
+      req.addParameters(URLEncodedUtils.parse(query, Charsets.UTF_8));
     }
-    req += "journal=" + site.getJournalKey();
+    req.addParameter("journal", site.getJournalKey());
     response.setContentType("application/json");
     try (OutputStream output = response.getOutputStream();
-         InputStream input = soaService.requestStream(req)) {
+         InputStream input = soaService.requestStream(req.build())) {
       IOUtils.copy(input, output);
     }
   }

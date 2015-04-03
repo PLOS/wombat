@@ -19,6 +19,7 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
@@ -377,7 +378,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(commentId);
     Map<String, Object> comment;
     try {
-      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+      comment = soaService.requestObject(SoaRequest.request("comments/" + commentId).build(), Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new NotFoundException(enfe);
     }
@@ -433,7 +434,9 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private void requestComments(Model model, String doi) throws IOException {
-    List<?> comments = soaService.requestObject(String.format("articles/%s?comments", doi), List.class);
+    List<?> comments = soaService.requestObject(
+        SoaRequest.request("articles/" + doi).addParameter("comments").build(),
+        List.class);
     model.addAttribute("articleComments", comments);
   }
 
@@ -446,7 +449,9 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private void requestAuthors(Model model, String doi) throws IOException {
-    List<?> authors = soaService.requestObject(String.format("articles/%s?authors", doi), List.class);
+    List<?> authors = soaService.requestObject(
+        SoaRequest.request("articles/" + doi).addParameter("authors").build(),
+        List.class);
     model.addAttribute("authors", authors);
 
     // Putting this here was a judgement call.  One could make the argument that this logic belongs
@@ -481,8 +486,10 @@ public class ArticleController extends WombatController {
    * @param articleId the ID of an article
    * @return the service path to the correspond article XML asset file
    */
-  private static String getArticleXmlAssetPath(RenderContext renderContext) {
-    return "articles/" + Preconditions.checkNotNull(renderContext.getArticleId()) + "?xml";
+  private static SoaRequest getArticleXmlAssetPath(RenderContext renderContext) {
+    return SoaRequest.request("articles/" + Preconditions.checkNotNull(renderContext.getArticleId()))
+        .addParameter("xml")
+        .build();
   }
 
   /**
@@ -493,7 +500,7 @@ public class ArticleController extends WombatController {
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
     String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    SoaRequest xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override
@@ -544,7 +551,7 @@ public class ArticleController extends WombatController {
 
     String cacheKey = String.format("html:%s:%s",
         Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    SoaRequest xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override

@@ -39,35 +39,34 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public InputStream requestStream(String address) throws IOException {
-    return cachedRemoteStreamer.request(buildGet(address));
+  public InputStream requestStream(SoaRequest request) throws IOException {
+    return cachedRemoteStreamer.request(buildGet(request));
   }
 
   @Override
-  public Reader requestReader(String address) throws IOException {
-    return cachedRemoteReader.request(buildGet(address));
+  public Reader requestReader(SoaRequest request) throws IOException {
+    return cachedRemoteReader.request(buildGet(request));
   }
 
-  @Override
-  public InputStream requestStream(HttpUriRequest target) throws IOException {
+  private InputStream requestStream(HttpUriRequest target) throws IOException {
     return cachedRemoteStreamer.request(target);
   }
 
-  @Override
-  public Reader requestReader(HttpUriRequest target) throws IOException {
+  private Reader requestReader(HttpUriRequest target) throws IOException {
     return cachedRemoteReader.request(target);
   }
 
   @Override
-  public <T> T requestObject(String address, Class<T> responseClass) throws IOException {
+  public <T> T requestObject(SoaRequest request, Class<T> responseClass) throws IOException {
     // Just try to cache everything. We may want to narrow this in the future.
-    return requestCachedObject(CacheParams.create("obj:" + CacheParams.createKeyHash(address)), address, responseClass);
+    String keyHash = CacheParams.createKeyHash(request.toString());
+    return requestCachedObject(CacheParams.create("obj:" + keyHash), request, responseClass);
   }
 
   @Override
-  public void postObject(String address, Object object) throws IOException {
+  public void postObject(SoaRequest request, Object object) throws IOException {
     String json = jsonService.serialize(object);
-    HttpPost post = new HttpPost(buildUri(address));
+    HttpPost post = new HttpPost(request.buildUri(this));
     try {
       post.setEntity(new StringEntity(json));
     } catch (UnsupportedEncodingException e) {
@@ -95,38 +94,32 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public <T> T requestCachedStream(CacheParams cacheParams, String address,
+  public <T> T requestCachedStream(CacheParams cacheParams, SoaRequest request,
                                    CacheDeserializer<InputStream, T> callback) throws IOException {
-    return cachedRemoteStreamer.requestCached(cacheParams, buildGet(address), callback);
+    return cachedRemoteStreamer.requestCached(cacheParams, buildGet(request), callback);
   }
 
   @Override
-  public <T> T requestCachedReader(CacheParams cacheParams, String address,
+  public <T> T requestCachedReader(CacheParams cacheParams, SoaRequest request,
                                    CacheDeserializer<Reader, T> callback) throws IOException {
-    return cachedRemoteReader.requestCached(cacheParams, buildGet(address), callback);
+    return cachedRemoteReader.requestCached(cacheParams, buildGet(request), callback);
   }
 
   @Override
-  public <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException {
-    return jsonService.requestCachedObject(cachedRemoteReader, cacheParams, buildUri(address), responseClass);
+  public <T> T requestCachedObject(CacheParams cacheParams, SoaRequest request, Class<T> responseClass) throws IOException {
+    return jsonService.requestCachedObject(cachedRemoteReader, cacheParams, request.buildUri(this), responseClass);
   }
 
   @Override
   public CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers)
       throws IOException {
-    HttpGet get = buildGet("assetfiles/" + assetId);
+    HttpGet get = buildGet(SoaRequest.request("assetfiles/" + assetId).build());
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }
 
-  private HttpGet buildGet(String address) {
-
-    return new HttpGet(buildUri(address));
-  }
-
-  private URI buildUri(String address) {
-
-    return UriUtil.concatenate(this.getServerUrl(), address);
+  private HttpGet buildGet(SoaRequest request) {
+    return new HttpGet(request.buildUri(this));
   }
 
 }

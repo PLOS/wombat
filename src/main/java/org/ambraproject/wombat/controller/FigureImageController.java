@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.ambraproject.wombat.util.HttpMessageUtil;
@@ -69,11 +70,15 @@ public class FigureImageController extends WombatController {
       if (!booleanParameter(unique)) {
         // The request directly identifies an asset file.
         assetFileId = id;
-        assetFileMetadata = soaService.requestObject("assetfiles/" + id + "?metadata", Map.class);
+        assetFileMetadata = soaService.requestObject(
+            SoaRequest.request("assetfiles/" + id).addParameter("metadata").build(),
+            Map.class);
       } else {
         // The request identifies an asset and asserts that the asset has exactly one file. Get the ID of that file.
 
-        Map<String, Map<String, ?>> assetMetadata = soaService.requestObject("assets/" + id + "?metadata", Map.class);
+        Map<String, Map<String, ?>> assetMetadata = soaService.requestObject(
+            SoaRequest.request("assets/" + id).addParameter("metadata").build(),
+            Map.class);
         if (assetMetadata.size() != 1) {
           /*
            * The user queried for the unique file of a non-unique asset. Because they might have manually punched in an
@@ -113,7 +118,9 @@ public class FigureImageController extends WombatController {
     requireNonemptyParameter(figureId);
     Map<String, ?> assetMetadata;
     try {
-      assetMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+      assetMetadata = soaService.requestObject(
+          SoaRequest.request("assets/" + figureId).addParameter("figure").build(),
+          Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

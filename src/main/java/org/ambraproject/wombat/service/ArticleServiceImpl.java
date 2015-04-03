@@ -13,6 +13,7 @@
 
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,10 @@ public class ArticleServiceImpl implements ArticleService {
 
   @Override
   public Map<String, Object> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
-    Map<String, Object> map = (Map<String, Object>) soaService.requestObject(String.format(
-        "articles/%s?excludeCitations=" + excludeCitations.toString(), articleId), Map.class);
+    SoaRequest request = SoaRequest.request("articles/" + articleId)
+        .addParameter("excludeCitations", excludeCitations.toString())
+        .build();
+    Map<String, Object> map = (Map<String, Object>) soaService.requestObject(request, Map.class);
     return DoiSchemeStripper.strip(map);
   }
 }

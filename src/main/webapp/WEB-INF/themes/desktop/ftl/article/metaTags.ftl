@@ -18,16 +18,20 @@
 <meta name="citation_date" content="${article.date}" />
 </#if>
 
+<#--All of this data must be HTML char stripped to compensate for some XML in the database. If not, an ending tag can
+ break out of the head and input all of the citation data directly into the visible dom. To further optimize,
+ consider using a macro or function instead of the regex replace used below, or try to clean the data that's returned
+ on the rhino side.-->
 <#if article.citedArticles??>
   <#list article.citedArticles as citedArticle>
   <meta name="citation_reference" content="
-    <#if citedArticle.title??>citation_title=${citedArticle.title};</#if><#if citedArticle.authors?has_content>
-    citation_author=<#list citedArticle.authors as author>${author.fullName};</#list></#if><#if citedArticle.editors?has_content>
-    citation_editors=<#list citedArticle.editors as editor>${editor.fullName};</#list></#if><#if citedArticle.journal??>
-    citation_journal_title=${citedArticle.journal};</#if><#if citedArticle.volume??>
-    citation_volume=${citedArticle.volume};</#if><#if citedArticle.volumeNumber??>
+    <#if citedArticle.title??>citation_title=${citedArticle.title?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.authors?has_content>
+    citation_author=<#list citedArticle.authors as author>${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.editors?has_content>
+    citation_editors=<#list citedArticle.editors as editor>${editor.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.journal??>
+    citation_journal_title=${citedArticle.journal?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volume??>
+    citation_volume=${citedArticle.volume?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volumeNumber??>
     citation_number=${citedArticle.volumeNumber};</#if><#if citedArticle.pages??>
-    citation_pages=${citedArticle.pages};</#if><#if citedArticle.year??>
+    citation_pages=${citedArticle.pages?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.year??>
     citation_date=${citedArticle.year?string.computer};</#if>" />
   </#list>
 </#if>

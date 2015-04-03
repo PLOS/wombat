@@ -4,6 +4,7 @@ import org.ambraproject.wombat.util.CacheParams;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.springframework.http.HttpMethod;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -120,7 +121,8 @@ public interface SoaService {
    * @return
    * @throws IOException
    */
-  public abstract void forwardResponse(HttpUriRequest requestToService,
-                                       HttpServletResponse responseToClient) throws IOException;
+  public abstract void forwardResponse(SoaRequest requestToService, HttpMethod method,
+                                       HttpServletResponse responseToClient)
+      throws IOException;
 
 }

@@ -10,8 +10,10 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -78,14 +80,18 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public void forwardResponse(HttpUriRequest requestToService, HttpServletResponse responseToClient) throws IOException {
-      try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {
-        HttpMessageUtil.copyResponse(responseFromService, responseToClient);
-      } catch (EntityNotFoundException e) {
-        responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
-      } catch (Exception e) {
-        responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-      }
+  public void forwardResponse(SoaRequest requestToService, HttpMethod method,
+                              HttpServletResponse responseToClient)
+      throws IOException {
+    URI requestUri = requestToService.buildUri(this);
+    HttpUriRequest httpRequest = RequestBuilder.create(method.name()).setUri(requestUri).build();
+    try (CloseableHttpResponse responseFromService = this.getResponse(httpRequest)) {
+      HttpMessageUtil.copyResponse(responseFromService, responseToClient);
+    } catch (EntityNotFoundException e) {
+      responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
+    } catch (Exception e) {
+      responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+    }
   }
 
   @Override

@@ -17,7 +17,6 @@ import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public final class SoaRequest {
@@ -98,11 +97,6 @@ public final class SoaRequest {
 
     public Builder addParameter(String name, String value) {
       params.add(new BasicNameValuePair(name, value));
-      return this;
-    }
-
-    public Builder addParameters(Collection<? extends NameValuePair> pairs) {
-      params.addAll(pairs);
       return this;
     }
 

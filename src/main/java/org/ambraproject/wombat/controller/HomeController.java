@@ -239,7 +239,7 @@ public class HomeController extends WombatController {
 
   private void populateCurrentIssue(Model model, Site site) throws IOException {
     Map<String, Object> currentIssue = soaService.requestObject(
-        SoaRequest.request("journals/" + site.getJournalKey() + "?currentIssue").build(),
+        SoaRequest.request("journals/" + site.getJournalKey()).addParameter("currentIssue").build(),
         Map.class);
     model.addAttribute("currentIssue", currentIssue);
     Map<String, Object> issueImageMetadata = soaService.requestObject(
@@ -251,7 +251,7 @@ public class HomeController extends WombatController {
   private static List<?> getInTheNewsArticles(SoaService soaService, String journalKey) throws IOException {
     List<Map<String, Object>> inTheNewsArticles = (List<Map<String, Object>>)
         soaService.requestObject(
-            SoaRequest.request("journals/" + journalKey + "?inTheNewsArticles").build(),
+            SoaRequest.request("journals/" + journalKey).addParameter("inTheNewsArticles").build(),
             List.class);
 
     return inTheNewsArticles;

@@ -101,7 +101,7 @@ public class FigurePageController extends WombatController {
     Map<String, Object> figureMetadata;
     try {
       figureMetadata = (Map<String, Object>) soaService.requestObject(
-          SoaRequest.request("assets/" + figureId).addParameter("figure").build(),
+          SoaRequest.request("assets").addParameter("id", figureId).addParameter("figure").build(),
           Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);

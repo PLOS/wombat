@@ -72,7 +72,7 @@ public class UserController extends WombatController {
     persist.put("sessionId", sessionId);
     persist.put("IP", ipAddress);
     persist.put("userAgent", userAgent);
-    soaService.postObject(SoaRequest.request("users/" + remoteUser).build(), persist);
+    soaService.postObject(SoaRequest.request("users").addParameter("id", remoteUser).build(), persist);
   }
 
   @RequestMapping(value = {"/user/logout", "/{site}/user/logout"})

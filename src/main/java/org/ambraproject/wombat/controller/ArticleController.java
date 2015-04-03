@@ -378,7 +378,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(commentId);
     Map<String, Object> comment;
     try {
-      comment = soaService.requestObject(SoaRequest.request("comments/" + commentId).build(), Map.class);
+      comment = soaService.requestObject(SoaRequest.request("comments").addParameter("id", commentId).build(), Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new NotFoundException(enfe);
     }
@@ -435,7 +435,7 @@ public class ArticleController extends WombatController {
    */
   private void requestComments(Model model, String doi) throws IOException {
     List<?> comments = soaService.requestObject(
-        SoaRequest.request("articles/" + doi).addParameter("comments").build(),
+        SoaRequest.request("articles").addParameter("id", doi).addParameter("comments").build(),
         List.class);
     model.addAttribute("articleComments", comments);
   }
@@ -450,7 +450,7 @@ public class ArticleController extends WombatController {
    */
   private void requestAuthors(Model model, String doi) throws IOException {
     List<?> authors = soaService.requestObject(
-        SoaRequest.request("articles/" + doi).addParameter("authors").build(),
+        SoaRequest.request("articles").addParameter("id", doi).addParameter("authors").build(),
         List.class);
     model.addAttribute("authors", authors);
 
@@ -487,7 +487,7 @@ public class ArticleController extends WombatController {
    * @return the service path to the correspond article XML asset file
    */
   private static SoaRequest getArticleXmlAssetPath(RenderContext renderContext) {
-    return SoaRequest.request("articles/" + Preconditions.checkNotNull(renderContext.getArticleId()))
+    return SoaRequest.request("articles").addParameter("id", Preconditions.checkNotNull(renderContext.getArticleId()))
         .addParameter("xml")
         .build();
   }

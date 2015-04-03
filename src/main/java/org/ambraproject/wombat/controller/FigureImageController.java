@@ -71,13 +71,13 @@ public class FigureImageController extends WombatController {
         // The request directly identifies an asset file.
         assetFileId = id;
         assetFileMetadata = soaService.requestObject(
-            SoaRequest.request("assetfiles/" + id).addParameter("metadata").build(),
+            SoaRequest.request("assetfiles").addParameter("id", id).addParameter("metadata").build(),
             Map.class);
       } else {
         // The request identifies an asset and asserts that the asset has exactly one file. Get the ID of that file.
 
         Map<String, Map<String, ?>> assetMetadata = soaService.requestObject(
-            SoaRequest.request("assets/" + id).addParameter("metadata").build(),
+            SoaRequest.request("assets").addParameter("id", id).addParameter("metadata").build(),
             Map.class);
         if (assetMetadata.size() != 1) {
           /*
@@ -119,7 +119,7 @@ public class FigureImageController extends WombatController {
     Map<String, ?> assetMetadata;
     try {
       assetMetadata = soaService.requestObject(
-          SoaRequest.request("assets/" + figureId).addParameter("figure").build(),
+          SoaRequest.request("assets").addParameter("id", figureId).addParameter("figure").build(),
           Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);

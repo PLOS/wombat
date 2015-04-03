@@ -51,7 +51,7 @@ public class PowerPointController extends WombatController {
     Map<String, Object> figureMetadata;
     try {
       figureMetadata = soaService.requestObject(
-          SoaRequest.request("assets/" + figureId).addParameter("figure").build(),
+          SoaRequest.request("assets").addParameter("id", figureId).addParameter("figure").build(),
           Map.class);
     } catch (ServiceRequestException e) {
       if (e.getStatusCode() == HttpStatus.BAD_REQUEST.value()) {

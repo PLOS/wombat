@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Charsets;
+import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.util.UriUtil;
@@ -10,19 +11,25 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public final class SoaRequest {
 
+  private static final Joiner PATH_JOINER = Joiner.on('/');
+  public static final Charset CHARSET = Charsets.UTF_8;
+
   private final String path;
   private final ImmutableList<NameValuePair> params;
 
   private SoaRequest(Builder builder) {
-    this.path = builder.path;
+    this.path = PATH_JOINER.join(builder.pathTokens);
     this.params = ImmutableList.copyOf(builder.params);
   }
 
@@ -54,7 +61,7 @@ public final class SoaRequest {
   @Override
   public String toString() {
     return params.isEmpty() ? path :
-        path + "?" + URLEncodedUtils.format(params, Charsets.UTF_8);
+        path + "?" + URLEncodedUtils.format(params, CHARSET);
   }
 
 
@@ -63,13 +70,26 @@ public final class SoaRequest {
   }
 
   public static class Builder {
-    private final String path;
+    private final List<String> pathTokens;
     private final List<NameValuePair> params;
 
     private Builder(String path) {
+      this.pathTokens = new ArrayList<>(2);
       Preconditions.checkArgument(!path.contains("?"));
-      this.path = Preconditions.checkNotNull(path);
-      this.params = new ArrayList<>();
+      this.pathTokens.add(path);
+
+      this.params = new ArrayList<>(4);
+    }
+
+    public Builder addPathToken(String token) {
+      Preconditions.checkArgument(!token.contains("/"));
+      Preconditions.checkArgument(!token.contains("?"));
+      try {
+        pathTokens.add(URLEncoder.encode(token, CHARSET.toString()));
+      } catch (UnsupportedEncodingException e) {
+        throw new RuntimeException(e);
+      }
+      return this;
     }
 
     public Builder addParameter(String name) {

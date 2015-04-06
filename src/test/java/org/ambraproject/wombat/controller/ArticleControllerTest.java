@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -13,10 +15,9 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.TestArticleServiceImpl;
 import org.ambraproject.wombat.service.remote.SoaRequest;
+import org.ambraproject.wombat.service.remote.SoaRequestTestUtil;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.apache.http.NameValuePair;
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.mockito.Matchers;
 import org.springframework.context.annotation.Bean;
@@ -33,7 +34,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.mockito.Matchers.any;
@@ -134,21 +134,14 @@ public class ArticleControllerTest extends ControllerTest {
 
   }
 
-  private static final Matcher<SoaRequest> IS_FOR_AUTHORS = new BaseMatcher<SoaRequest>() {
-    @Override
-    public boolean matches(Object item) {
-      SoaRequest request = (SoaRequest) item;
-      List<NameValuePair> params = request.getParams();
-      for (NameValuePair param : params) {
-        if (param.getName().equals("authors")) return true;
-      }
-      return false;
-    }
-
-    @Override
-    public void describeTo(Description description) {
-    }
-  };
+  private static final Matcher<SoaRequest> IS_FOR_ARTICLE_AUTHORS = SoaRequestTestUtil.buildMatcher(
+      Predicates.equalTo("articles"),
+      new Predicate<NameValuePair>() {
+        @Override
+        public boolean apply(NameValuePair input) {
+          return "authors".equals(input.getName());
+        }
+      });
 
   @Configuration
   @EnableWebMvc
@@ -162,7 +155,7 @@ public class ArticleControllerTest extends ControllerTest {
     @Bean
     public SoaService soaService() throws IOException {
       SoaService soaService = mock(SoaService.class);
-      when(soaService.requestObject(Matchers.argThat(IS_FOR_AUTHORS), any(Class.class))).thenReturn(ImmutableList.of());
+      when(soaService.requestObject(Matchers.argThat(IS_FOR_ARTICLE_AUTHORS), any(Class.class))).thenReturn(ImmutableList.of());
       return soaService;
     }
 

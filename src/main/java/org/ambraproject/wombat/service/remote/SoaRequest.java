@@ -33,12 +33,12 @@ public final class SoaRequest {
   }
 
   @VisibleForTesting
-  public String getPath() {
+  String getPath() {
     return path;
   }
 
   @VisibleForTesting
-  public ImmutableList<NameValuePair> getParams() {
+  ImmutableList<NameValuePair> getParams() {
     return params;
   }
 

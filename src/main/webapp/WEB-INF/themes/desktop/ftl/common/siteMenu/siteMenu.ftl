@@ -10,13 +10,7 @@
     <#nested/>
   </p>
   </#macro>
-  <#macro siteMenuCalloutLink href>
-  <p class="link-contain">
-    <a href="${href}">
-      <#nested/>
-    </a>
-  </p>
-  </#macro>
+
   <#macro siteMenuCalloutButton href>
   <p class="button-contain">
     <a class="button button-default" href="${href}">
@@ -24,7 +18,13 @@
     </a>
   </p>
   </#macro>
-
+  <#macro siteMenuCalloutLink href>
+  <p class="link-contain">
+    <a href="${href}">
+      <#nested/>
+    </a>
+  </p>
+  </#macro>
 
   <#macro menuGroup title singleColumn=false containsCallout=false>
 

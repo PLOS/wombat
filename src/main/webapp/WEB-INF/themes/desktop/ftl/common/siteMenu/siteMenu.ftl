@@ -1,4 +1,5 @@
 <#include "siteMenuFlag.ftl" />
+<#include "../siteContentLink.ftl" />
 <#if hasSiteMenu>
 
   <#macro siteMenuCalloutHeadline>
@@ -13,7 +14,7 @@
 
   <#macro siteMenuCalloutButton href>
   <p class="button-contain">
-    <a class="button button-default" href="${href}">
+    <a class="button button-default" href="<@siteLink path='s/' + href/>">
       <#nested/>
     </a>
   </p>
@@ -26,6 +27,17 @@
   </p>
   </#macro>
 
+  <#macro siteMenuCalloutSpecial buttonText buttonTarget linkText linkTarget>
+  <p class="button-contain special">
+    <a class="button button-default" href="${buttonTarget}">
+     ${buttonText}
+    </a>
+    <a class="button-link" href="${linkTarget}">
+      ${linkText}
+    </a>
+  </p>
+  </#macro>
+
   <#macro menuGroup title singleColumn=false containsCallout=false>
 
     <#if singleColumn>
@@ -33,7 +45,7 @@
       <#nested/>
     <#else>
       <#assign column="group">
-    <li class="multi-col-parent menu-section-header has-dropdown" id="${title?lower_case?replace(" ","-")}">
+    <li class="multi-col-parent menu-section-header has-dropdown hover" id="${title?lower_case?replace(" ","-")}">
     ${title}
       <div class="dropdown mega ">
         <ul class="multi-col" id="${title?lower_case?replace(" ","-")}-dropdown-list">

@@ -45,7 +45,7 @@
       <#nested/>
     <#else>
       <#assign column="group">
-    <li class="multi-col-parent menu-section-header has-dropdown hover" id="${title?lower_case?replace(" ","-")}">
+    <li class="multi-col-parent menu-section-header has-dropdown" id="${title?lower_case?replace(" ","-")}">
     ${title}
       <div class="dropdown mega ">
         <ul class="multi-col" id="${title?lower_case?replace(" ","-")}-dropdown-list">
@@ -53,6 +53,7 @@
         </ul>
         <#if containsCallout>
           <div class="calloutcontainer">
+
             <#include "siteMenuCallout.ftl" />
           </div>
         </#if>

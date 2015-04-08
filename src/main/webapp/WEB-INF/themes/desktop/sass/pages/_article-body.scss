@@ -634,7 +634,26 @@ ol.references {
     margin-left: rem-calc(-13);
   }
 }
-
+.article-content{
+  ol.simple{
+    list-style:none;
+    }
+  ol.roman-lower{
+    list-style:lower-roman;
+  }
+  ol.roman-upper{
+    list-style:upper-roman;
+  }
+  ol.alpha-lower{
+    list-style:lower-alpha;
+  }
+  ol.alpha-upper{
+    list-style:upper-alpha;
+  }
+  ol.order{
+    list-style:decimal;
+  }
+}
 @media print {
   .article-content {
     width: 100%;

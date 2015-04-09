@@ -24,7 +24,7 @@ public enum HtmlElementTransformation {
   ASSET("a", "data-lemur-key") {
     @Override
     protected void transformElement(Element element, SitePageContext sitePageContext, SiteSet siteSet) {
-      String newValue = sitePageContext.buildLink("indirect/" + getAttrValueAndRemove(element));
+      String newValue = sitePageContext.buildLink("s/file?id=" + getAttrValueAndRemove(element));
       element.attr("href", newValue);
     }
   },

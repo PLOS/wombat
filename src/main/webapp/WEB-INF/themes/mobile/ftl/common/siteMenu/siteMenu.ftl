@@ -5,6 +5,10 @@
   <!-- dont' do anything for mobile -->
 
   </#macro>
+  <#macro siteMenuCalloutSpecial  buttonText buttonTarget linkText linkTarget >
+  <!-- dont' do anything for mobile -->
+
+  </#macro>
   <#macro menuGroup title singleColumn=false containsCallout=false>
     <#nested/>
   </#macro>

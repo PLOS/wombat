@@ -9,6 +9,7 @@ import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
+import org.ambraproject.wombat.util.RevisionId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +35,7 @@ public class FigurePageController extends WombatController {
    * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
    * descriptionHtml} member.
    *
-   * @param renderContext the context for the transform which wraps the site object and optional context values
+   * @param renderContext  the context for the transform which wraps the site object and optional context values
    * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
    */
   private void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
@@ -69,17 +70,18 @@ public class FigurePageController extends WombatController {
                                   @RequestParam("id") String articleId)
       throws IOException {
     requireNonemptyParameter(articleId);
+    RevisionId revisionId = RevisionId.parse(articleId, null); // TODO Versions
+
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = articleService.requestArticleMetadata(articleId, true);
+      articleMetadata = articleService.requestArticleMetadata(revisionId, true);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
 
-    RenderContext renderContext = new RenderContext(site);
-    renderContext.setArticleId(articleId);
+    RenderContext renderContext = new RenderContext(site, revisionId);
     List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
     for (Map<String, Object> figureMetadata : figureMetadataList) {
       figureMetadata = DoiSchemeStripper.strip(figureMetadata);
@@ -113,8 +115,8 @@ public class FigurePageController extends WombatController {
     String parentArticleDoi = (String) parentArticle.get("doi");
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));
 
-    RenderContext renderContext = new RenderContext(site);
-    renderContext.setArticleId(parentArticleDoi);
+    RevisionId revisionId = RevisionId.parse(parentArticleDoi, null); // TODO Versions
+    RenderContext renderContext = new RenderContext(site, revisionId);
     transformFigureDescription(renderContext, figureMetadata);
     model.addAttribute("figure", figureMetadata);
 
@@ -126,7 +128,7 @@ public class FigurePageController extends WombatController {
    */
   @RequestMapping(value = {"/article/lightbox", "/{site}/article/lightbox"})
   public String renderLightbox(Model model, @SiteParam Site site)
-          throws IOException {
+      throws IOException {
 
     return site + "/ftl/article/articleLightbox";
   }

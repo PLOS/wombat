@@ -97,6 +97,8 @@
       </#if>
     </#list>
 
+    <#include "revisionMenu.ftl" />
+
     <#macro amendment amendmentObjects amendmentType>
       <div class="retraction red-alert">
         <span><h3>

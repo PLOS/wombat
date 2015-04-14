@@ -64,6 +64,7 @@
     <div class="article-container">
 
     <#include "nav.ftl" />
+    <#include "revisionMenu.ftl" />
 
       <div class="article-content">
 

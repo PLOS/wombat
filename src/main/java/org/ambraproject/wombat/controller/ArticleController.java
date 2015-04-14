@@ -56,6 +56,8 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Controller for rendering an article.
@@ -100,6 +102,12 @@ public class ArticleController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
     RenderContext renderContext = new RenderContext(site, revisionId);
 
+    SortedSet<Integer> revisionNumbers = getRevisionNumbers(revisionId);
+    if (!revisionNumbers.isEmpty()) {
+      model.addAttribute("revisionNumbers", revisionNumbers);
+      model.addAttribute("currentRevision", revisionId.getRevisionNumber().or(revisionNumbers.last()));
+    }
+
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("article", articleMetadata);
     model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
@@ -111,6 +119,19 @@ public class ArticleController extends WombatController {
     requestAuthors(model, revisionId);
     requestComments(model, revisionId);
     return site + "/ftl/article/article";
+  }
+
+  private SortedSet<Integer> getRevisionNumbers(RevisionId revisionId) throws IOException {
+    SortedSet<Integer> revisionNumbers = new TreeSet<>();
+    Collection<Map<?, ?>> revisionData = soaService.requestObject(revisionId.makeSoaRequest("articles/revisions").build(),
+        Collection.class);
+    for (Map<?, ?> revisionObj : revisionData) {
+      Collection<?> revisionList = (Collection<?>) revisionObj.get("revisionNumbers");
+      for (Object revisionValue : revisionList) {
+        revisionNumbers.add(((Number) revisionValue).intValue());
+      }
+    }
+    return revisionNumbers;
   }
 
   /**

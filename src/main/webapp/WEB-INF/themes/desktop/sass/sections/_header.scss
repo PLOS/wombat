@@ -140,7 +140,7 @@ $width-nav: $block-grid-elements - $width-logo;
       color: $clr-link;
       cursor: pointer;
       border-left: 1px solid $clr-separator;
-      &:first-child{
+      &:first-child {
         border-left: none;
         }
 
@@ -156,9 +156,9 @@ $width-nav: $block-grid-elements - $width-logo;
       li {
         padding: 0;
         margin-bottom: 0;
-      & > a {
+        & > a {
           @extend %nav-element-type;
-         padding: rem-calc(4 15) !important;
+          padding: rem-calc(4 15) !important;
           }
         }
       }
@@ -276,7 +276,7 @@ $width-nav: $block-grid-elements - $width-logo;
     // foundation seems to require this
 
     @include border-bottom-radius();
-    h3,p {
+    h3, p {
       color: $clr-body-bg
       }
 
@@ -309,14 +309,15 @@ $width-nav: $block-grid-elements - $width-logo;
       text-align: right;
       white-space: nowrap;
       height: rem-calc(35);
-      a{padding-top: 0;
-        padding-bottom:0;
+      a {
+        padding-top: 0;
+        padding-bottom: 0;
         }
-      a.button{
-        top:0 ///overide foundation top-bar
+      a.button {
+        top: 0 ///overide foundation top-bar
         }
-      a.button-link{
-        @extend  %brand-color;
+      a.button-link {
+        @extend %brand-color;
         font-family: $font-face-fancy;
         font-size: $txt-size-large;
         background: $grey-dark !important; /// This has to stand until i dig out foundation

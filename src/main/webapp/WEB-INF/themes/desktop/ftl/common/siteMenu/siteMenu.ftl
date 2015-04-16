@@ -7,6 +7,7 @@
   </#macro>
 
   <#macro siteMenuCalloutDescription>
+  <div class="action-contain">
   <p class="callout-content">
     <#nested/>
   </p>
@@ -18,13 +19,7 @@
       <#nested/>
     </a>
   </p>
-  </#macro>
-  <#macro siteMenuCalloutLink href>
-  <p class="link-contain">
-    <a href="${href}">
-      <#nested/>
-    </a>
-  </p>
+  </div> <!-- opens in siteMenuCalloutDescription -->
   </#macro>
 
   <#macro siteMenuCalloutSpecial buttonText buttonTarget linkText linkTarget>
@@ -36,6 +31,8 @@
       ${linkText}
     </a>
   </p>
+  </div>  <!-- opens in siteMenuCalloutDescription -->
+
   </#macro>
 
   <#macro menuGroup title singleColumn=false containsCallout=false>

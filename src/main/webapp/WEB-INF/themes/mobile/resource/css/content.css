@@ -8,7 +8,7 @@
   width: 97%;
   }
 
-#content h1,h2,h3, h4, h5, p, ul, ol, table{
+#content p, ul, ol, table{
   margin-bottom: .5em;
   margin-top: .5em;
   }

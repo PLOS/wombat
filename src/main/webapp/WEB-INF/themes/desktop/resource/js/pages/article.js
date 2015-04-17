@@ -101,9 +101,6 @@
     // initialize toggle for author list view more
     plos_toggle.init();
 
-    // initialize tooltip_hover for everything
-    tooltip_hover.init();
-
     spin_opts = {
       width: 1,
       zIndex: 5000,

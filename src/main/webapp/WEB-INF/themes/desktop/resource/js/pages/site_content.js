@@ -11,4 +11,6 @@
     });
 
 
+  // initialize tooltip_hover for everything
+
 })(jQuery);

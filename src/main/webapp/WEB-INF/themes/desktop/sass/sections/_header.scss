@@ -14,6 +14,11 @@
                'about us'
                'search'
  */
+
+/// nav spacing stuff
+$nav-spacing: 15px;
+$nav-spacing-full: 25px;
+
 header {
   background: $clr-header;
   }
@@ -117,7 +122,7 @@ $width-nav: $block-grid-elements - $width-logo;
     }
   %nav-element-type {
     width: 100%;
-    padding: rem-calc(7 15) !important; //normalise
+    padding: rem-calc(4 $nav-spacing-full) !important; //normalise
     font-size: $txt-size-medium;
     white-space: pre-wrap;
     &:hover {
@@ -131,37 +136,6 @@ $width-nav: $block-grid-elements - $width-logo;
   h2, h3 {
     font-family: $font-face-navigation;
     font-size: $txt-size-xlarge;
-    }
-  /// typography style stuff
-  $nav-spacing: 15px;
-  ul.nav-elements {
-    .menu-section-header {
-      @extend %nav-header-type;
-      color: $clr-link;
-      cursor: pointer;
-      border-left: 1px solid $clr-separator;
-      &:first-child {
-        border-left: none;
-        }
-
-      }
-    .mega .menu-section-header-title {
-      margin-left: rem-calc($nav-spacing);
-      margin-bottom: $line-height;
-      display: block;
-      color: $clr-body-text;
-      cursor: default;
-      }
-    .menu-section {
-      li {
-        padding: 0;
-        margin-bottom: 0;
-        & > a {
-          @extend %nav-element-type;
-          padding: rem-calc(4 15) !important;
-          }
-        }
-      }
     }
 
   //this level of specificity is needed to override foundation styles
@@ -196,6 +170,56 @@ $width-nav: $block-grid-elements - $width-logo;
       cursor: pointer;
       }
     }
+
+  ul.nav-elements {
+    .menu-section-header {
+      @extend %nav-header-type;
+      color: $clr-link;
+      cursor: pointer;
+      border-left: 1px solid $clr-separator;
+      &:first-child {
+        border-left: none;
+        }
+
+      }
+
+    .menu-section {
+      li {
+        padding: 0;
+        margin-bottom: 0;
+        & > a {
+          @extend %nav-element-type;
+          }
+        }
+      }
+
+    .mega {
+      .menu-section-header-title {
+        margin-left: rem-calc($nav-spacing);
+        margin-bottom: $line-height;
+        display: block;
+        color: $clr-body-text;
+        cursor: default;
+        }
+
+      .menu-section {
+         li > a {
+          padding-left: rem-calc($nav-spacing) !important;
+          }
+        }
+
+      #submissions {
+        .menu-section-header-title {
+          margin-left: rem-calc($nav-spacing-full);
+          }
+        .menu-section {
+          li > a {
+            padding-left: rem-calc($nav-spacing-full) !important;
+            }
+          }
+        }
+      }
+        }
 
   .subject-area-info {
     @include js-tooltip-target();
@@ -263,7 +287,8 @@ $width-nav: $block-grid-elements - $width-logo;
           margin: 0;
           }
         }
-      margin: 0 $pad-small $pad-default $pad-small;
+      margin: 0;
+      margin-bottom: $pad-small;
       }
     }
   .calloutcontainer {
@@ -416,49 +441,7 @@ $width-nav: $block-grid-elements - $width-logo;
     }
   }
 
-.submit {
-  //TODO _ DELETE!!!!!!! 'Submit your manuscript' callout
-  position: relative;
-  float: left;
-  display: inline !important;
-  width: rem-calc(280);
-  margin-right: $pad-small;
-  padding: rem-calc(0 20 30 15);
-  font-family: $font-face-navigation;
-  font-size: rem-calc($txt-size-medium);
-  cursor: default;
-  h3 {
-    @extend %header-bottom-shadow;
-    margin-top: $pad-xsmall;
-    font-size: rem-calc($txt-size-xxlarge);
-    }
-  ul {
-    margin-left: rem-calc(15);
-    display: block !important;
-    list-style-type: disc;
-    width: auto;
-    li {
-      margin-left: rem-calc(15);
-      width: auto;
-      cursor: default;
-      }
-    }
 
-  }
-
-// this seems excessive but it is necessary to override foundation
-// by referencing 'top-bar-section dropdown'
-.top-bar-section .dropdown .submit li a {
-  display: inline !important;
-  line-height: normal !important;
-  padding: 0;
-  font-family: $font-face-navigation;
-  font-size: rem-calc($txt-size-medium-large);
-  color: $plos-default !important;
-  &:hover {
-    text-decoration: underline;
-    }
-  }
 
 // print items (styles are in _type.scss)
 #user, #topslot {

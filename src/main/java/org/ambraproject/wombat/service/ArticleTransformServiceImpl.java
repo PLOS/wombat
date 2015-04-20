@@ -8,7 +8,6 @@ import com.google.common.io.Closer;
 import com.google.gson.Gson;
 import net.sf.json.JSONArray;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.apache.commons.io.IOUtils;
@@ -133,8 +132,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     // Add cited articles metadata for inclusion of DOI links in reference list
     // TODO: abstract out into a strategy pattern when and if render options become more complex
     boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
-    if (showsCitedArticles && renderContext.getArticleId() != null) {
-      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId(), false);
+    if (showsCitedArticles && renderContext.getRevisionId() != null) {
+      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getRevisionId(), false);
       Object citedArticles = articleMetadata.get("citedArticles");
       JSONArray jsonArr = JSONArray.fromObject(citedArticles);
       String metadataXml = new XMLSerializer().write(jsonArr);

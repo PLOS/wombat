@@ -4,6 +4,7 @@ import org.ambraproject.wombat.util.CacheParams;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.springframework.http.HttpMethod;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -37,11 +38,9 @@ public interface SoaService {
    * @throws NullPointerException                                    if the address is null
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
-  public abstract InputStream requestStream(String address) throws IOException;
-  public abstract InputStream requestStream(HttpUriRequest target) throws IOException;
+  public abstract InputStream requestStream(SoaRequest request) throws IOException;
 
-  public abstract Reader requestReader(String address) throws IOException;
-  public abstract Reader requestReader(HttpUriRequest target) throws IOException;
+  public abstract Reader requestReader(SoaRequest request) throws IOException;
 
   /**
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
@@ -55,7 +54,7 @@ public interface SoaService {
    * @throws NullPointerException                                    if either argument is null
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
-  public abstract <T> T requestObject(String address, Class<T> responseClass) throws IOException;
+  public abstract <T> T requestObject(SoaRequest request, Class<T> responseClass) throws IOException;
 
   /**
    * Serialize an object to JSON and POST the JSON to a service path.
@@ -64,7 +63,7 @@ public interface SoaService {
    * @param object  the object to serialize to product JSON
    * @throws IOException
    */
-  public abstract void postObject(String address, Object object) throws IOException;
+  public abstract void postObject(SoaRequest request, Object object) throws IOException;
 
   /**
    * Get a stream either through a REST request or from the cache. If there is a cached value, and the REST service does
@@ -79,10 +78,10 @@ public interface SoaService {
    * @return the value from the service or cache
    * @throws IOException
    */
-  public abstract <T> T requestCachedStream(CacheParams cacheParams, String address,
+  public abstract <T> T requestCachedStream(CacheParams cacheParams, SoaRequest request,
                                             CacheDeserializer<InputStream, T> callback) throws IOException;
 
-  public abstract <T> T requestCachedReader(CacheParams cacheParams, String address,
+  public abstract <T> T requestCachedReader(CacheParams cacheParams, SoaRequest request,
                                             CacheDeserializer<Reader, T> callback) throws IOException;
 
   /**
@@ -97,7 +96,7 @@ public interface SoaService {
    * @return the deserialized object
    * @throws IOException
    */
-  public abstract <T> T requestCachedObject(CacheParams cacheParams, String address,
+  public abstract <T> T requestCachedObject(CacheParams cacheParams, SoaRequest request,
                                             Class<T> responseClass) throws IOException;
 
   /**
@@ -122,7 +121,8 @@ public interface SoaService {
    * @return
    * @throws IOException
    */
-  public abstract void forwardResponse(HttpUriRequest requestToService,
-                                       HttpServletResponse responseToClient) throws IOException;
+  public abstract void forwardResponse(SoaRequest requestToService, HttpMethod method,
+                                       HttpServletResponse responseToClient)
+      throws IOException;
 
 }

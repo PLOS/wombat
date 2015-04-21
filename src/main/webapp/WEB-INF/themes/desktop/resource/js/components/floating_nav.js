@@ -18,6 +18,7 @@
 
 
     };
+    var $floating_nav_menu = $(this);
     var opts = $.extend(defaults, options);
 
     $('body').on(
@@ -78,6 +79,7 @@
 
             win_top = $win.scrollTop();
             $ftr_top = $(opts.footer).offset().top;
+            $el_h = $floating_nav_menu.innerHeight();
             var article_top = opts.content.offset().top;
             //the top of the element is out of the viewport
             var el_view_out = (win_top > (article_top - opts.margin));
@@ -96,7 +98,7 @@
               } else if (win_top > ($ftr_top - ($el_h + opts.margin))) {
 
                 //Adjust the position here a bit to stop the footer from being overlapped
-                var tt = $ftr_top - win_top - $el_h - opts.margin + opts.margin_bottom;
+                var tt = $ftr_top - win_top - $el_h;
                 hilite();
                 $this.css({'position': 'fixed', 'top': tt + 'px'});
               } else {

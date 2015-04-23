@@ -6,7 +6,14 @@
 
   </#macro>
   <#macro siteMenuCalloutSpecial  buttonText buttonTarget linkText linkTarget >
-  <!-- dont' do anything for mobile -->
+  <p class="button-contain special">
+    <a class="button button-default" href="${buttonTarget}">
+    ${buttonText}
+    </a>
+    <a class="button-link" href="${linkTarget}">
+    ${linkText}
+    </a>
+  </p>
 
   </#macro>
   <#macro menuGroup title singleColumn=false containsCallout=false>
@@ -19,6 +26,7 @@
       <span class="arrow">Expand</span>
     ${title}
     </a>
+
     <ul class="secondary accordion-content">
       <#nested>
     </ul>
@@ -61,22 +69,34 @@
 
   <div class="full-menu-tout">
     <#macro siteMenuCalloutHeadline>
-      <h4 class="coloration-light-text"><#nested/></h4>
+      <h4 id="callout-headline" class="coloration-light-text"><#nested/></h4>
     </#macro>
     <#macro siteMenuCalloutDescription>
-      <div>
-        <h5><#nested/></h5>
-        <br />
-      </div>
+
+        <h5 id="callout-description"  class="pad-below"><#nested/></h5>
+
     </#macro>
     <#macro siteMenuCalloutButton href>
-      <div><a class="rounded coloration-white-on-color" href="s/${href}">
+      <div><a class="rounded coloration-white-on-color" href="s/${href}" id="callout-button">
         <#nested/>
       </a></div>
     </#macro>
-    <#macro siteMenuCalloutLink href>
-     <!-- do nothing -->
+    <#macro siteMenuCalloutSpecial  buttonText buttonTarget linkText linkTarget >
+      <div>
+        <p class="pad-below">
+          <a class="rounded coloration-white-on-color"  id="callout-button" href="${buttonTarget}">
+          ${buttonText}
+          </a>
+        </p>
+        <p>
+          <a class="coloration-light-text header-style" id="callout-link" href="${linkTarget}">
+          ${linkText}
+          </a>
+        </p>
+      </div>
+
     </#macro>
+
     <div id="submit-manuscript-container">
       <#include "siteMenuCallout.ftl" />
     </div>

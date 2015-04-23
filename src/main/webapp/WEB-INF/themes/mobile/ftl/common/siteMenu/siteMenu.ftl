@@ -70,7 +70,7 @@
       </div>
     </#macro>
     <#macro siteMenuCalloutButton href>
-      <div><a class="rounded coloration-white-on-color" href="${href}">
+      <div><a class="rounded coloration-white-on-color" href="s/${href}">
         <#nested/>
       </a></div>
     </#macro>

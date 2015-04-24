@@ -103,9 +103,9 @@
         <strong>Citation:</strong>
         <xsl:text> </xsl:text>
         <!-- authors -->
-        <xsl:for-each select="contrib-group/contrib[@contrib-type='author'][position() &lt; 7]">
+        <xsl:for-each select="contrib-group/contrib[@contrib-type='author'][position() &lt; 8]">
           <xsl:choose>
-            <xsl:when test="position() = 6">
+            <xsl:when test="position() = 7">
               <xsl:text>et al. </xsl:text>
             </xsl:when>
             <xsl:otherwise>
@@ -218,6 +218,12 @@
           </xsl:otherwise>
         </xsl:choose>
       </p>
+      <!-- Data Availability -->
+      <xsl:if test="custom-meta-group/custom-meta[@id='data-availability']">
+        <p>
+        <xsl:apply-templates select="custom-meta-group/custom-meta[@id='data-availability']/meta-value" mode="metadata"/>
+        </p>
+      </xsl:if>
       <!-- funding statement -->
       <xsl:if test="funding-group">
         <p>
@@ -310,6 +316,12 @@
   <xsl:template match="permissions" mode="metadata"/>
   <xsl:template match="copyright-statement" mode="metadata"/>
 
+  <!-- 5/20/14: plos modifications -->
+  <xsl:template match="custom-meta-group/custom-meta[@id='data-availability']/meta-value" mode="metadata">
+    <strong>Data Availability: </strong>
+    <xsl:apply-templates />
+  </xsl:template>
+  
   <!-- Ambra modifications -->
   <xsl:template match="license" mode="metadata">
     <xsl:apply-templates mode="metadata"/>

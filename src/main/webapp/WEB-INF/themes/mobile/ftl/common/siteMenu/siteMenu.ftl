@@ -77,7 +77,7 @@
 
     </#macro>
     <#macro siteMenuCalloutButton href>
-      <div><a class="rounded coloration-white-on-color" href="<@siteLink path='s/' + href/> id="callout-button">
+      <div><a class="rounded coloration-white-on-color" href="<@siteLink path='s/' + href/>" id="callout-button">
         <#nested/>
       </a></div>
     </#macro>

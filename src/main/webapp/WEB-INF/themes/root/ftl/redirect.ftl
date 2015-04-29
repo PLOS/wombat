@@ -9,7 +9,7 @@ This page has moved. Please click <a href="<@siteLink path='${defaultTarget}'/>"
         'figureGuidelines#ccal': 's/figures#loc-content-license',
         'figureGuidelines#policies ': 's/figures#loc-policies',
         'figureGuidelines#supportinginformation': 's/figures#loc-supporting-information-si-figures',
-        'figureGuidelines#tables ': 's/tables',
+        'figureGuidelines#tables': 's/tables',
         'figureGuidelines': 's/figures',
         'figureInstructions#convertingfigs': 's/figures#loc-converting-files-to-tiff-or-eps',
         'figureInstructions#step2eps': 's/figures#loc-converting-files-to-tiff-or-eps',

@@ -34,7 +34,6 @@ public class RedirectController extends WombatController {
                        @RequestParam(value="defaultTarget", required = false) String defaultTarget)
           throws IOException {
 
-    model.addAttribute("journalKey", site.getJournalKey());
     model.addAttribute("sourcePage", sourcePage);
     model.addAttribute("defaultTarget", defaultTarget != null ? defaultTarget : sourcePage);
     return site + "/ftl/redirect";

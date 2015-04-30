@@ -48,7 +48,7 @@ public class SolrSearchService implements SearchService {
   /**
    * Enumerates sort orders that we want to expose in the UI.
    */
-  public enum SolrSortOrder implements SearchCriterion {
+  public static enum SolrSortOrder implements SearchCriterion {
 
     // The order here determines the order in the UI.
     RELEVANCE("Relevance", "score desc,publication_date desc"),
@@ -83,7 +83,7 @@ public class SolrSearchService implements SearchService {
   /**
    * Enumerates date ranges to expose in the UI.  Currently, these all start at some prior date and extend to today.
    */
-  public enum SolrDateRange implements SearchCriterion {
+  public static enum SolrDateRange implements SearchCriterion {
 
     ALL_TIME("All time", -1),
     LAST_YEAR("Last year", 365),

@@ -55,7 +55,7 @@ public class HomeController extends WombatController {
   /**
    * Enumerates the allowed values for the section parameter for this page.
    */
-  private enum SectionType {
+  private static enum SectionType {
     RECENT {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {

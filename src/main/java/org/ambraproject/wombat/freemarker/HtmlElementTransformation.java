@@ -87,7 +87,7 @@ public enum HtmlElementTransformation {
     return getAttrValueAndRemove(element, this.matchingAttributeName);
   }
 
-  HtmlElementTransformation(String tagName, String attributeName) {
+  private HtmlElementTransformation(String tagName, String attributeName) {
     this.matchingTagName = tagName;
     this.matchingAttributeName = attributeName;
   }

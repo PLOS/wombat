@@ -13,7 +13,6 @@
 
 package org.ambraproject.wombat.controller;
 
-import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.ambraproject.wombat.config.site.Site;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.naming.ConfigurationException;
 import java.io.IOException;
 import java.util.Map;
 

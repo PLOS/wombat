@@ -1,8 +1,18 @@
 This page has moved. Please click <a href="<@siteLink path='${defaultTarget}'/>">here</a> if you are not redirected automatically.
 
+
+
+<#include "redirectList.ftl"/>
+
+<#include "journalRedirectList.ftl"/>
+
 <script type="text/javascript">
 
-    var redirects = JSON.parse("${redirects?js_string}");
+    // override with any journal-specific redirects
+    for (var key in journal_redirects) {
+        redirects[key] = journal_redirects[key];
+    }
+
     var current_anchor = window.location.hash;
     var target = "${defaultTarget}";
     for (var anchor_regex in redirects) {

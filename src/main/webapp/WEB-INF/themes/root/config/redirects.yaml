@@ -1,2 +1,0 @@
-# place any client-side redirects here (necessary when redirects take url anchors into account)
-# the key is a regular expression and the value is a redirect url that can be used with the siteLink directive

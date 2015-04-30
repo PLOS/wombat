@@ -66,8 +66,8 @@ public class ReplaceParametersDirective implements TemplateDirectiveModel {
       outputParams.put(name.toString(), params.get("value").toString());
     }
     List<NameValuePair> paramList = new ArrayList<>(outputParams.size());
-    for (Object key : outputParams.keySet()) {
-      paramList.add(new BasicNameValuePair((String) key, outputParams.get(key)));
+    for (String key : outputParams.keySet()) {
+      paramList.add(new BasicNameValuePair(key, outputParams.get(key)));
     }
     environment.getOut().write(URLEncodedUtils.format(paramList, "UTF-8"));
   }

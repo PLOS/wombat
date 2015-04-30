@@ -87,7 +87,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
     return cachedRemoteStreamer.getResponse(get);
   }
 
-  private static enum RequestMode {
+  private enum RequestMode {
     OBJECT, METADATA;
 
     private String getPathComponent() {

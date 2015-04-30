@@ -1,8 +1,5 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Optional;
-import org.ambraproject.wombat.config.site.Site;
-
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;

@@ -55,7 +55,7 @@ public class HomeController extends WombatController {
   /**
    * Enumerates the allowed values for the section parameter for this page.
    */
-  private static enum SectionType {
+  private enum SectionType {
     RECENT {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
@@ -107,7 +107,7 @@ public class HomeController extends WombatController {
       this.since = (shuffleThreshold == null) ? null : shuffleThreshold.doubleValue();
 
       Boolean shuffle = (Boolean) configuration.get("shuffle");
-      this.shuffle = (shuffle == null) ? false : shuffle.booleanValue();
+      this.shuffle = (shuffle != null) && shuffle;
 
       this.articleTypes = (List<String>) configuration.get("articleTypes");
       this.articleTypesToExclude = (List<String>) configuration.get("articleTypesToExclude");
@@ -246,10 +246,7 @@ public class HomeController extends WombatController {
 
   private static List<?> getInTheNewsArticles(SoaService soaService, String journalKey) throws IOException {
     String requestAddress = "journals/" + journalKey + "?inTheNewsArticles";
-    List<Map<String, Object>> inTheNewsArticles = (List<Map<String, Object>>)
-        soaService.requestObject(requestAddress, List.class);
-
-    return inTheNewsArticles;
+    return (List<Map<String, Object>>) soaService.requestObject(requestAddress, List.class);
   }
 
 }

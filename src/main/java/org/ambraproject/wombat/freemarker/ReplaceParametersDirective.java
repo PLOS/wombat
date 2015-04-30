@@ -58,7 +58,7 @@ public class ReplaceParametersDirective implements TemplateDirectiveModel {
     TemplateModelIterator iter = requestParams.keys().iterator();
     while (iter.hasNext()) {
       String key = iter.next().toString();
-      TemplateModel value = requestParams.get(key.toString());
+      TemplateModel value = requestParams.get(key);
       outputParams.put(key, value.toString());
     }
     Object name = params.get("name");
@@ -67,7 +67,7 @@ public class ReplaceParametersDirective implements TemplateDirectiveModel {
     }
     List<NameValuePair> paramList = new ArrayList<>(outputParams.size());
     for (Object key : outputParams.keySet()) {
-      paramList.add(new BasicNameValuePair((String) key, (String) outputParams.get(key)));
+      paramList.add(new BasicNameValuePair((String) key, outputParams.get(key)));
     }
     environment.getOut().write(URLEncodedUtils.format(paramList, "UTF-8"));
   }

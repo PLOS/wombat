@@ -54,7 +54,7 @@ public interface AssetService {
   /**
    * Represents the types of asset files processed by this service.
    */
-  public static enum AssetType {
+  public enum AssetType {
 
     CSS,
     JS;

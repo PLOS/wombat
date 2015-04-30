@@ -48,7 +48,7 @@ public class SolrSearchService implements SearchService {
   /**
    * Enumerates sort orders that we want to expose in the UI.
    */
-  public static enum SolrSortOrder implements SearchCriterion {
+  public enum SolrSortOrder implements SearchCriterion {
 
     // The order here determines the order in the UI.
     RELEVANCE("Relevance", "score desc,publication_date desc"),
@@ -83,7 +83,7 @@ public class SolrSearchService implements SearchService {
   /**
    * Enumerates date ranges to expose in the UI.  Currently, these all start at some prior date and extend to today.
    */
-  public static enum SolrDateRange implements SearchCriterion {
+  public enum SolrDateRange implements SearchCriterion {
 
     ALL_TIME("All time", -1),
     LAST_YEAR("Last year", 365),
@@ -206,7 +206,7 @@ public class SolrSearchService implements SearchService {
 
     // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
     // This is the easiest way I found...
-    List<NameValuePair> params = new ArrayList<NameValuePair>();
+    List<NameValuePair> params = new ArrayList<>();
     params.add(new BasicNameValuePair("wt", "json"));
     params.add(new BasicNameValuePair("fl", FL));
     params.add(new BasicNameValuePair("fq", "doc_type:full"));
@@ -239,9 +239,7 @@ public class SolrSearchService implements SearchService {
     URI uri;
     try {
       uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
-    } catch (MalformedURLException e) {
-      throw new IllegalArgumentException(e);
-    } catch (URISyntaxException e) {
+    } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);

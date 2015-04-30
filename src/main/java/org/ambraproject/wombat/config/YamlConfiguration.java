@@ -17,9 +17,6 @@ import com.google.gson.GsonBuilder;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
-import org.ambraproject.wombat.service.remote.SearchService;
-import org.ambraproject.wombat.service.remote.SoaService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -38,12 +35,6 @@ import java.util.Map;
  * @see RootConfiguration#runtimeConfiguration
  */
 public class YamlConfiguration implements RuntimeConfiguration {
-
-  @Autowired
-  private SoaService soaService;
-
-  @Autowired
-  private SearchService searchService;
 
   private final ConfigurationInput input;
 

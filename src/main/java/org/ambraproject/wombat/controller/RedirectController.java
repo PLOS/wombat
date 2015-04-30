@@ -13,14 +13,7 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
-import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.EditorialContentService;
-import org.ambraproject.wombat.util.CacheParams;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * Controller for client-side redirect page

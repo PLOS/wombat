@@ -13,6 +13,8 @@
 
 package org.ambraproject.wombat.controller;
 
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
 import org.ambraproject.wombat.config.site.Site;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.naming.ConfigurationException;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Controller for client-side redirect page
@@ -34,7 +38,11 @@ public class RedirectController extends WombatController {
                        @RequestParam(value="defaultTarget", required = false) String defaultTarget)
           throws IOException {
 
-    model.addAttribute("journalKey", site.getJournalKey());
+
+    Map<String, Object> redirectMap = site.getTheme().getConfigMap("redirects");
+    JSONObject redirects = new JSONObject();
+    redirects.accumulateAll(redirectMap);
+    model.addAttribute("redirects", redirects.toString());
     model.addAttribute("sourcePage", sourcePage);
     model.addAttribute("defaultTarget", defaultTarget != null ? defaultTarget : sourcePage);
     return site + "/ftl/redirect";

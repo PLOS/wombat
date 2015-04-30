@@ -71,6 +71,9 @@ public class AssetServiceImpl implements AssetService {
    * (2) mapping compiled filenames onto their content, so that we can read them from Memcached instead of from disk.
    *
    * The two classes below are used to make this distinction explicit.
+   */
+
+  /*
    *
    * A hash representing a list of asset source filenames (and the site they belong to).
    * Cached in order to tell whether we need to compile them.

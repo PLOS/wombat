@@ -36,8 +36,8 @@
   </#list>
 </#if>
 
-<#if article.publishedJournal??>
-<meta name="citation_journal_title" content="${article.publishedJournal}" />
+<#if article.journal??>
+<meta name="citation_journal_title" content="${article.journal?replace('PLoS','PLOS')}" />
 </#if>
 <meta name="citation_firstpage" content="${article.eLocationId!}" />
 <meta name="citation_issue" content="${article.issue}" />

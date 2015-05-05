@@ -26,7 +26,7 @@
   <#list article.citedArticles as citedArticle>
   <meta name="citation_reference" content="
     <#if citedArticle.title??>citation_title=${citedArticle.title?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.authors?has_content>
-    citation_author=<#list citedArticle.authors as author>${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.editors?has_content>
+    <#list citedArticle.authors as author>citation_author=${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.editors?has_content>
     citation_editors=<#list citedArticle.editors as editor>${editor.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.journal??>
     citation_journal_title=${citedArticle.journal?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volume??>
     citation_volume=${citedArticle.volume?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volumeNumber??>

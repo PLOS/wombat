@@ -61,11 +61,23 @@
   color: #ffffff;
 }
 
+.header-style {
+  font-size: 1.5em;
+  font-family: Verdana, 'Arial', sans-serif;
+  font-weight: normal;
+  }
+
+.pad-below{
+    margin-bottom: 20px;
+  }
+
 /* GENERAL STYLES AND RESETS */
 h1, h2, h3, h4 {
   font-family: Verdana, 'Arial', sans-serif;
   font-weight: normal;
 }
+
+
 
 a {
   color: #336699;

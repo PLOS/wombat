@@ -75,7 +75,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     String cacheKey = "recentArticles:" + journalKey;
     List<Object> articles = null;
     if (cacheDuration.isPresent()) {
-      articles = (List<Object>) cache.get(cacheKey); // remains null if not cached
+      articles = cache.get(cacheKey); // remains null if not cached
     }
     if (articles == null) {
       articles = retrieveRecentArticles(journalKey, articleCount, numberOfDaysAgo, articleTypes, articleTypesToExclude);

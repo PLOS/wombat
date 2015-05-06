@@ -6,8 +6,11 @@
         content: $('.lemur-content '),
         link_selector: 'a',
         section_anchor: 'a[name]',
-        section_anchor_attr: 'id'
+        section_anchor_attr: 'id',
+        margin: 10
     });
 
+
+  // initialize tooltip_hover for everything
 
 })(jQuery);

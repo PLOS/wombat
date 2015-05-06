@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,13 +57,30 @@ public class IndirectFileController extends WombatController {
     serve(response, request, key, Optional.of(versionInt));
   }
 
+  @RequestMapping(value = {"/s/file", "{site}/s/file"})
+  public void serveWithPublicUrl(HttpServletResponse response,
+                                 HttpServletRequest request,
+                                 @SiteParam Site site,
+                                 @RequestParam(value = "id", required = true) String key)
+          throws IOException {
+    serve(response, request, key, Optional.<Integer>absent());
+  }
+
   private static final int REPROXY_CACHE_FOR = 6 * 60 * 60; // 6 hours
 
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
                      String key, Optional<Integer> version)
       throws IOException {
     String cacheKey = "indirect:" + CacheParams.createKeyHash(key, String.valueOf(version.orNull()));
-    Map<String, Object> fileMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey), key, version);
+    Map<String, Object> fileMetadata;
+
+    try {
+      fileMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey), key, version);
+        } catch (EntityNotFoundException e) {
+    String message = String.format("Not found in repo: [key: %s, version: %s]",
+            key, version.orNull());
+    throw new NotFoundException(message, e);
+  }
 
     String contentType = (String) fileMetadata.get("contentType");
     if (contentType != null) {

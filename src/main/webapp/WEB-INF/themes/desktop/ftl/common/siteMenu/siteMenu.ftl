@@ -1,44 +1,78 @@
 <#include "siteMenuFlag.ftl" />
+<#include "../siteContentLink.ftl" />
 <#if hasSiteMenu>
 
   <#macro siteMenuCalloutHeadline>
-  <h3><#nested/></h3>
+  <h3 class="callout-headline"><#nested/></h3>
   </#macro>
 
-  <#macro siteMenuCalloutBulletList>
-  <ul>
+  <#macro siteMenuCalloutDescription>
+  <div class="action-contain">
+  <p class="callout-content">
     <#nested/>
-  </ul>
+  </p>
   </#macro>
+
   <#macro siteMenuCalloutButton href>
-  <a class="btn" href="${href}">
-    <#nested/>
-  </a>
+  <p class="button-contain">
+    <a class="button button-default" href="<@siteLink path='s/' + href/>">
+      <#nested/>
+    </a>
+  </p>
+  </div> <!-- opens in siteMenuCalloutDescription -->
   </#macro>
 
-  <#macro menuSection title containsCallout=false>
-  <li class="has-dropdown"  id="${title?lower_case?replace(" ","-")}">
-  ${title}
+  <#macro siteMenuCalloutSpecial buttonText buttonTarget linkText linkTarget>
+  <p class="button-contain special">
+    <a class="button button-default" href="${buttonTarget}">
+     ${buttonText}
+    </a>
+    <a class="button-link" href="${linkTarget}">
+      ${linkText}
+    </a>
+  </p>
+  </div>  <!-- opens in siteMenuCalloutDescription -->
 
-    <#if containsCallout>
-      <div class="calloutcontainer dropdown">
-        <div class="submit" id="dropdown-callout-submit">
-          <#include "siteMenuCallout.ftl" />
-        </div>
+  </#macro>
 
-        <ul class="dropdowncallout" id="${title?lower_case?replace(" ","-")}-dropdown-list">
+  <#macro menuGroup title singleColumn=false containsCallout=false>
+
+    <#if singleColumn>
+      <#assign column="single">
+      <#nested/>
+    <#else>
+      <#assign column="group">
+    <li class="multi-col-parent menu-section-header has-dropdown" id="${title?lower_case?replace(" ","-")}">
+    ${title}
+      <div class="dropdown mega ">
+        <ul class="multi-col" id="${title?lower_case?replace(" ","-")}-dropdown-list">
           <#nested/>
         </ul>
-      </div>
-    <#else>
+        <#if containsCallout>
+          <div class="calloutcontainer">
 
-      <ul class="dropdown" id="${title?lower_case?replace(" ","-")}-dropdown-list">
-        <#nested/>
-      </ul>
+            <#include "siteMenuCallout.ftl" />
+          </div>
+        </#if>
+      </div>
+    </li>
     </#if>
+  <#--</li>-->
+
+  </#macro>
+  <#macro menuSection title >
+
+  <li class="menu-section-header <#if column="single">has-dropdown </#if>" id="${title?lower_case?replace(" ","-")}">
+    <span class="menu-section-header-title">  ${title} </span>
+
+    <ul class="menu-section <#if column="single">dropdown </#if>"
+        id="${title?lower_case?replace(" ","-")}-dropdown-list">
+      <#nested/>
+    </ul>
 
   </li>
   </#macro>
+
 
   <#macro menuLink href>
   <li>
@@ -47,8 +81,8 @@
   </#macro>
 
   <#macro menuSpecialSection title>
-  <li data-js-tooltip-hover="trigger" class="subject-area">
-    ${title}
+  <li data-js-tooltip-hover="trigger" class="subject-area menu-section-header">
+  ${title}
      <#nested/>
   </li>
   </#macro>

@@ -108,7 +108,7 @@ public class HomeController extends WombatController {
       this.since = (shuffleThreshold == null) ? null : shuffleThreshold.doubleValue();
 
       Boolean shuffle = (Boolean) configuration.get("shuffle");
-      this.shuffle = (shuffle == null) ? false : shuffle.booleanValue();
+      this.shuffle = (shuffle != null) && shuffle;
 
       this.articleTypes = (List<String>) configuration.get("articleTypes");
       this.articleTypesToExclude = (List<String>) configuration.get("articleTypesToExclude");
@@ -249,12 +249,9 @@ public class HomeController extends WombatController {
   }
 
   private static List<?> getInTheNewsArticles(SoaService soaService, String journalKey) throws IOException {
-    List<Map<String, Object>> inTheNewsArticles = (List<Map<String, Object>>)
-        soaService.requestObject(
-            SoaRequest.request("journals").addPathToken(journalKey).addParameter("inTheNewsArticles").build(),
-            List.class);
-
-    return inTheNewsArticles;
+    return (List<Map<String, Object>>) soaService.requestObject(
+        SoaRequest.request("journals").addPathToken(journalKey).addParameter("inTheNewsArticles").build(),
+        List.class);
   }
 
 }

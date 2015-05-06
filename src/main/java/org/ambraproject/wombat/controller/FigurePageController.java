@@ -65,8 +65,7 @@ public class FigurePageController extends WombatController {
    * Serve a page listing all figures for an article.
    */
   @RequestMapping(value = {"/article/figures", "/{site}/article/figures"})
-  public String renderFiguresPage(Model model,
-                                  @SiteParam Site site,
+  public String renderFiguresPage(Model model, @SiteParam Site site,
                                   @RequestParam("id") String articleId)
       throws IOException {
     requireNonemptyParameter(articleId);
@@ -95,8 +94,7 @@ public class FigurePageController extends WombatController {
    * Serve a page displaying a single figure.
    */
   @RequestMapping(value = {"/article/figure", "/{site}/article/figure"})
-  public String renderFigurePage(Model model,
-                                 @SiteParam Site site,
+  public String renderFigurePage(Model model, @SiteParam Site site,
                                  @RequestParam("id") String figureId)
       throws IOException {
     requireNonemptyParameter(figureId);

@@ -31,7 +31,7 @@
     <@themeConfig map="taxonomyBrowser" value="hasTaxonomyBrowser" ; hasTaxonomyBrowser>
       <#if hasTaxonomyBrowser>
         <li>
-          <a href="browse" id="menu-browse">Browse Topics</a>
+          <a href="<@siteLink path="/browse" />" id="menu-browse">Browse Topics</a>
         </li>
       </#if>
     </@themeConfig>

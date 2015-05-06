@@ -12,11 +12,12 @@ main {
   nav {
     @include plos-grid-column($pixelwidth: 180, $gutter: right);
     position: relative;
+    & + article {
+      @include plos-grid-column($pixelwidth: 760, $gutter: none, $float: right);
+      }
     }
 
-  article {
-    @include plos-grid-column($pixelwidth: 760, $gutter: none, $float: right);
-    }
+
   }
 
 /// navigation

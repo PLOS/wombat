@@ -14,7 +14,6 @@
 package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.apache.commons.io.IOUtils;
@@ -44,9 +43,6 @@ public class TaxonomyController {
 
   @Autowired
   private SoaService soaService;
-
-  @Autowired
-  private SiteSet siteSet;
 
   @RequestMapping(value = {TAXONOMY_ROOT, "/{site}" + TAXONOMY_ROOT}, method = RequestMethod.GET)
   public void read(@SiteParam Site site,

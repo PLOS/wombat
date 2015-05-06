@@ -5,10 +5,8 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
 import com.google.common.io.Closer;
-import com.google.gson.Gson;
 import net.sf.json.JSONArray;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.site.SiteSet;
+import net.sf.json.xml.XMLSerializer;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
@@ -19,7 +17,6 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import net.sf.json.xml.XMLSerializer;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -44,8 +41,6 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 
-;
-
 public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
 
@@ -53,15 +48,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final String TRANSFORM_TEMPLATE_PATH = TEMPLATE_ROOT_PATH + "article-transform.xsl";
 
   @Autowired
-  private SiteSet siteSet;
-  @Autowired
-  private RuntimeConfiguration runtimeConfiguration;
-  @Autowired
   private Charset charset;
   @Autowired
   private ArticleService articleService;
-  @Autowired
-  private Gson gson;
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here

@@ -41,17 +41,6 @@ category: components
   @include rounded-pill($padding: $pad-small,  $hover: false);
 }
 
-// to be used with tooltip_hover.js
-.button-big{
-  @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small);
-  line-height: rem-calc(35px);
-  font-weight: bold;
-  font-size: $txt-size-mediumish;
-  text-align: center;
-  &.highlighted{
-     background-color: $clr-highlight;
-  }
-}
 
 .button {
   @extend %brand-background-hover;
@@ -64,6 +53,27 @@ category: components
   font-weight: bold;
   color: $white;
 }
+
+// to be used with tooltip_hover.js
+.button-big{
+  @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small);
+  line-height: rem-calc($button-height);
+  font-weight: bold;
+  font-size: $txt-size-mediumish;
+  text-align: center;
+  &.highlighted{
+    background-color: $clr-highlight;
+    }
+  }
+
+.button-default{
+  @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small);
+  line-height: rem-calc($button-height);
+  font-family: $font-face-plain;
+  font-size: $txt-size-medium;
+  text-align: center;
+  @extend %brand-background-hover;
+  }
 
 @mixin circle($circumference: 18, $background: $plos-default) {
   width: $circumference+px;

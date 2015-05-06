@@ -17,9 +17,7 @@ import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.controller.StaticResourceController;
 import org.ambraproject.wombat.util.CacheParams;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
@@ -41,9 +39,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
-/**
- *
- */
 public class AssetServiceImpl implements AssetService {
 
   private static final Logger logger = LoggerFactory.getLogger(AssetServiceImpl.class);
@@ -65,9 +60,6 @@ public class AssetServiceImpl implements AssetService {
   private static final int CACHE_TTL = 15 * 60;
 
   @Autowired
-  private SiteSet siteSet;
-
-  @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
   @Autowired
@@ -82,6 +74,7 @@ public class AssetServiceImpl implements AssetService {
    */
 
   /*
+   *
    * A hash representing a list of asset source filenames (and the site they belong to).
    * Cached in order to tell whether we need to compile them.
    */

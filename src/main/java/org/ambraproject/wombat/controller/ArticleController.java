@@ -478,7 +478,6 @@ public class ArticleController extends WombatController {
   /**
    * Build the path to request the article XML asset for an article.
    *
-   * @param articleId the ID of an article
    * @return the service path to the correspond article XML asset file
    */
   private static String getArticleXmlAssetPath(RenderContext renderContext) {
@@ -535,8 +534,6 @@ public class ArticleController extends WombatController {
    * Retrieves article XML from the SOA server, transforms it into HTML, and returns it. Result will be stored in
    * memcache.
    *
-   * @param articleId identifies the article
-   * @param site      identifies the journal site
    * @return String of the article HTML
    * @throws IOException
    */

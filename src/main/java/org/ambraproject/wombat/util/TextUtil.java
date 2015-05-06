@@ -27,9 +27,7 @@ public class TextUtil {
    */
   public static String removeFootnoteMarker(final String text) {
     // \b word boundary doesn't work because of the ¤ character
-    String replaced = text.replaceAll("(?<=(^|\\s))¤\\w+(?=($|\\s))", "");
-
-    return replaced;
+    return text.replaceAll("(?<=(^|\\s))¤\\w+(?=($|\\s))", "");
   }
 
   /**

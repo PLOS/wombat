@@ -206,7 +206,7 @@ public class SolrSearchService implements SearchService {
 
     // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
     // This is the easiest way I found...
-    List<NameValuePair> params = new ArrayList<NameValuePair>();
+    List<NameValuePair> params = new ArrayList<>();
     params.add(new BasicNameValuePair("wt", "json"));
     params.add(new BasicNameValuePair("fl", FL));
     params.add(new BasicNameValuePair("fq", "doc_type:full"));
@@ -239,9 +239,7 @@ public class SolrSearchService implements SearchService {
     URI uri;
     try {
       uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
-    } catch (MalformedURLException e) {
-      throw new IllegalArgumentException(e);
-    } catch (URISyntaxException e) {
+    } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);

@@ -2,7 +2,6 @@ package org.ambraproject.wombat.util;
 
 import com.google.common.base.Preconditions;
 
-import javax.servlet.http.HttpServletRequest;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;

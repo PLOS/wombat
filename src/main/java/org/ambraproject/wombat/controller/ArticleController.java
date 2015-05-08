@@ -81,9 +81,6 @@ public class ArticleController extends WombatController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
-  private static final String ID_PARAM = "id";
-  private static final String REVISION_PARAM = "r";
-
   @RequestMapping(value = {"/article", "/{site}/article"})
   public String renderArticle(HttpServletRequest request,
                               Model model,
@@ -100,12 +97,17 @@ public class ArticleController extends WombatController {
     RevisionId revisionId = RevisionId.parse(articleId, revision);
     Map<?, ?> articleMetadata = requestArticleMetadata(revisionId);
     validateArticleVisibility(site, articleMetadata);
-    RenderContext renderContext = new RenderContext(site, revisionId);
+
+    RenderContext renderContext = null;
 
     SortedSet<Integer> revisionNumbers = getRevisionNumbers(revisionId);
     if (!revisionNumbers.isEmpty()) {
       model.addAttribute("revisionNumbers", revisionNumbers);
-      model.addAttribute("currentRevision", revisionId.getRevisionNumber().or(revisionNumbers.last()));
+
+      Integer currentRevision = revisionId.getRevisionNumber().isPresent() ?revisionId.getRevisionNumber().get() : revisionNumbers.last();
+
+      model.addAttribute("currentRevision", currentRevision);
+      renderContext = new RenderContext(site, RevisionId.parse(articleId, String.valueOf(currentRevision)));
     }
 
     String articleHtml = getArticleHtml(renderContext);

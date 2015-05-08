@@ -49,6 +49,7 @@ public class FigureImageController extends WombatController {
     }
   }
 
+
   /**
    * Serve the identified asset file.
    *
@@ -108,7 +109,7 @@ public class FigureImageController extends WombatController {
   /**
    * Serve the asset file for an identified figure thumbnail.
    */
-  @RequestMapping(value = {"/article/figure/image", "/{site}/article/figure/image"})
+/*  @RequestMapping(value = {"/article/figure/image", "/{site}/article/figure/image"})
   public void serveFigureImage(HttpServletRequest request,
                                HttpServletResponse response,
                                @SiteParam Site site,
@@ -135,6 +136,38 @@ public class FigureImageController extends WombatController {
     String assetFileId = (String) figureObject.get("file");
 
     serveAssetFile(request, response, assetFileId);
+  }*/
+
+  @RequestMapping(value = {"/article/figure/image", "/{site}/article/figure/image"})
+  public void serveFigureImage(HttpServletRequest request,
+                               HttpServletResponse response,
+                               @SiteParam Site site,
+                               @RequestParam("id") String figureId,
+                               @RequestParam("size") String figureSize,
+                               @RequestParam("r") String revisionNumber
+  )
+      throws IOException {
+    /*requireNonemptyParameter(figureId);
+    Map<String, ?> assetMetadata;
+    try {
+      assetMetadata = soaService.requestObject(
+          SoaRequest.request("assets").addParameter("id", figureId).addParameter("figure").build(),
+          Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
+    }
+    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
+
+    List<String> pathToFigureObject = ORIGINAL_FIGURE.equals(figureSize)
+        ? ORIGINAL_FIGURE_PATH : ImmutableList.of("thumbnails", figureSize);
+    Map<String, ?> figureObject = (Map<String, ?>) DeserializedJsonUtil.readField(assetMetadata, pathToFigureObject);
+    if (figureObject == null) {
+      throw new NotFoundException("Not a valid size: " + figureSize);
+    }
+    String assetFileId = (String) figureObject.get("file");
+*/
+    serveAssetFile(request, response, figureId);
   }
+
 
 }

@@ -38,6 +38,7 @@ import java.io.SequenceInputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -121,14 +122,24 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     // Add cited articles metadata for inclusion of DOI links in reference list
     // TODO: abstract out into a strategy pattern when and if render options become more complex
     boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
-    if (showsCitedArticles && renderContext.getRevisionId() != null) {
-      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getRevisionId(), false);
-      Object citedArticles = articleMetadata.get("citedArticles");
-      JSONArray jsonArr = JSONArray.fromObject(citedArticles);
-      String metadataXml = new XMLSerializer().write(jsonArr);
-      SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
-      transformer.setParameter("citedArticles", saxSourceMeta);
+
+    if (renderContext.getRevisionId() != null){
+
+      if (showsCitedArticles) {
+
+        Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getRevisionId(), false);
+        Object citedArticles = articleMetadata.get("citedArticles");
+        JSONArray jsonArr = JSONArray.fromObject(citedArticles);
+        String metadataXml = new XMLSerializer().write(jsonArr);
+        SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
+        transformer.setParameter("citedArticles", saxSourceMeta);
+
+      }
+
+      // add revisionNumber as a parameter to the transformation
+      transformer.setParameter("articleRevision", renderContext.getRevisionId().getRevisionNumber().get());
     }
+
     return transformer;
   }
 

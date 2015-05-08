@@ -34,6 +34,8 @@
                   used to provide DOIs and author/title overrides for reference links -->
   <xsl:param name="citedArticles"/>
 
+  <xsl:param name="articleRevision"/>
+
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
   <!-- ============================================================= -->
@@ -1199,12 +1201,20 @@
     </xsl:variable>
     <xsl:variable name="apos">'</xsl:variable>
     <!-- Fix here for AMEC-2351 only pick graphic nodes that are immediate children of the fig or table-wrap nodes -->
+
+    <xsl:variable name="revisionURL">
+      <xsl:value-of select="concat('&amp;r=', $articleRevision)"/>
+    </xsl:variable>
+
     <xsl:if test="./graphic|./alternatives/graphic">
       <xsl:variable name="imageURI">
         <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>
       </xsl:variable>
       <xsl:variable name="slideshowURL">
-        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI, $revisionURL)"/><!-- TODO: Avoid relative path -->
+
+        <!-- TODO LU : Get the version id using the figId from the new parameters  -->
+
       </xsl:variable>
 
       <xsl:variable name="pptURL">

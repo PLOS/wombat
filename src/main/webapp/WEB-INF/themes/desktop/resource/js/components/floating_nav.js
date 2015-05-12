@@ -13,35 +13,40 @@
       class_active:         'active',
       footer:               '#pageftr',
       alternate_bottom_div: '#banner-ftr',
-      link_selector:        'a.scroll',
-
-
-
+      link_selector:        'a.scroll'
     };
+
     var $floating_nav_menu = $(this);
     var opts = $.extend(defaults, options);
+    var isAutoScrolling = false;
 
-    $('body').on(
-        'click', 'ul.' + opts.ul_class + ' a',
-        function (event) {
-          //window.history.pushState is not on all browsers
-          if (window.history.pushState) {
-            window.history.pushState({}, document.title, event.target.href);
-          } else { }
+    $('body').on('click', 'ul.' + opts.ul_class + ' a', AutoScroll);
 
-          event.preventDefault();
-          // suppress distracting expansion/collapse of any nested list items during animation-triggered
-          // traversal of the nav
-          $('ul.' + opts.ul_class + ' li:not(.' + opts.class_active + ') ul').hide();
+    function AutoScroll(event) {
+      //window.history.pushState is not on all browsers
+      if (window.history.pushState) {
+        window.history.pushState({}, document.title, event.target.href);
+      } else { }
 
-          $('html,body').animate(
-              {scrollTop: $('#' + this.hash.substring(1)).offset().top}, opts.scroll_speed,
-              function () {
-                $('ul.' + opts.ul_class + ' li.' + opts.class_active + ' ul').show();
-              }
-          );
+      event.preventDefault();
+      isAutoScrolling = true;
+      // suppress  expansion/collapse of any nested list items during animation-triggered
+      // traversal of the nav
+      $('ul.' + opts.ul_class + ' li:not(.' + opts.class_active + ') ul').hide();
+
+      $('html,body').animate(
+        {scrollTop: $('#' + this.hash.substring(1)).offset().top}, opts.scroll_speed,
+        function () {
+          isAutoScrolling = false;
+          showActiveSublist();
         }
-    );
+      );
+    }
+
+    function showActiveSublist() {
+      $('ul.' + opts.ul_class + ' li.' + opts.class_active + ' ul').show();
+    }
+
     return this.each(
         function () {
 
@@ -61,21 +66,24 @@
             opts.content.find(opts.section_anchor).each(
                 function () {
                   var $this_a = $(this);
-                  if (win_top > ($this_a.offset().top - opts.margin)) {
+                  var parentTag = $this_a.parent().prop('tagName');
+                  if (win_top > ($this_a.offset().top - opts.margin) && parentTag != 'H4') {
 
                     var $this_a_ref = $this_a.attr(opts.section_anchor_attr);
                     var $closest_li = $this.find('a[href="#' + $this_a_ref + '"]').closest('li');
 
                     $links.closest('li').removeClass(opts.class_active);
                     $closest_li.addClass(opts.class_active).parents('li').addClass(opts.class_active);
-
                   }
                 }
             );
-
           };
 
-          var positionEl = function () {
+          var positionUpdated = function () {
+
+            if (!isAutoScrolling) {
+              showActiveSublist();
+            }
 
             win_top = $win.scrollTop();
             $ftr_top = $(opts.footer).offset().top;
@@ -112,15 +120,14 @@
           };
 
           if ($('html.no-touch').length === 1) { // it is not a touch screen
-            positionEl();
-            $win.scroll(positionEl);
-            $win.resize(positionEl);
+            positionUpdated();
+            $win.scroll(positionUpdated);
+            $win.resize(positionUpdated);
           } else {
             // it is a touch screen only use hilite
             hilite();
             $win.scroll(hilite);
           }
-
         }
     );
   };

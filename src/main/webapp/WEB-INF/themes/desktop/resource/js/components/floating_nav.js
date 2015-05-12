@@ -13,7 +13,8 @@
       class_active:         'active',
       footer:               '#pageftr',
       alternate_bottom_div: '#banner-ftr',
-      link_selector:        'a.scroll'
+      link_selector:        'a.scroll',
+      ignored_sections:     ''
     };
 
     var $floating_nav_menu = $(this);
@@ -67,7 +68,8 @@
                 function () {
                   var $this_a = $(this);
                   var parentTag = $this_a.parent().prop('tagName');
-                  if (win_top > ($this_a.offset().top - opts.margin) && parentTag != 'H4') {
+                  var isIgnoredSection = opts.ignored_sections.contains(parentTag);
+                  if (win_top > ($this_a.offset().top - opts.margin) && !isIgnoredSection) {
 
                     var $this_a_ref = $this_a.attr(opts.section_anchor_attr);
                     var $closest_li = $this.find('a[href="#' + $this_a_ref + '"]').closest('li');

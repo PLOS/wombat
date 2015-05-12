@@ -33,6 +33,14 @@ This is for IE specific styles mostly ie9 and below.
   text-decoration: underline;
 }
 
+.nav-main {
+  overflow: visible;
+
+  .dropdown.mega {
+    border: 1px solid $clr-separator;
+    }
+  }
+
 .hero.overlay-dark > a:before, .hero.overlay-light > a:before {
   background: none !important;
 }

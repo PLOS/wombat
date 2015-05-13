@@ -26,6 +26,11 @@
 <#if journalAbbrev??>
 <meta name="citation_journal_abbrev" content="${journalAbbrev}" />
 </#if>
+<#if article.publisherName??>
+<meta name="citation_publisher" content="${article.publisherName}" />
+</#if>
+<meta name="citation_pdf_url" content="${pubUrlPrefix}article/asset?id=${article.doi}.PDF">
+
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${articleDoi}" />
 
@@ -55,14 +60,16 @@
  on the rhino side.-->
 <#if article.citedArticles??>
   <#list article.citedArticles as citedArticle>
-  <meta name="citation_reference" content="
-    <#if citedArticle.title??>citation_title=${citedArticle.title?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.authors?has_content>
-    <#list citedArticle.authors as author>citation_author=${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.editors?has_content>
-    citation_editors=<#list citedArticle.editors as editor>${editor.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.journal??>
-    citation_journal_title=${citedArticle.journal?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volume??>
-    citation_volume=${citedArticle.volume?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volumeNumber??>
-    citation_number=${citedArticle.volumeNumber};</#if><#if citedArticle.pages??>
-    citation_pages=${citedArticle.pages?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.year??>
-    citation_date=${citedArticle.year?string.computer};</#if>" />
+    <#if citedArticle.title??>
+    <meta name="citation_reference" content="
+      <#if citedArticle.title??>citation_title=${citedArticle.title?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.authors?has_content>
+      <#list citedArticle.authors as author>citation_author=${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.editors?has_content>
+      citation_editors=<#list citedArticle.editors as editor>${editor.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.journal??>
+      citation_journal_title=${citedArticle.journal?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volume??>
+      citation_volume=${citedArticle.volume?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volumeNumber??>
+      citation_number=${citedArticle.volumeNumber};</#if><#if citedArticle.pages??>
+      citation_pages=${citedArticle.pages?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.year??>
+      citation_date=${citedArticle.year?string.computer};</#if>" />
+    </#if>
   </#list>
 </#if>

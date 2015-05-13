@@ -1213,8 +1213,6 @@
       <xsl:variable name="slideshowURL">
         <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI, $revisionURL)"/><!-- TODO: Avoid relative path -->
 
-        <!-- TODO LU : Get the version id using the figId from the new parameters  -->
-
       </xsl:variable>
 
       <xsl:variable name="pptURL">

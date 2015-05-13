@@ -147,11 +147,12 @@ public class FigureImageController extends WombatController {
                                @RequestParam("r") String revisionNumber
   )
       throws IOException {
-    /*requireNonemptyParameter(figureId);
+    requireNonemptyParameter(figureId);
     Map<String, ?> assetMetadata;
     try {
       assetMetadata = soaService.requestObject(
-          SoaRequest.request("assets").addParameter("id", figureId).addParameter("figure").build(),
+          SoaRequest.request("assets").addParameter("id", figureId)
+              .addParameter("figure").addParameter("r",revisionNumber).build(),
           Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
@@ -165,7 +166,7 @@ public class FigureImageController extends WombatController {
       throw new NotFoundException("Not a valid size: " + figureSize);
     }
     String assetFileId = (String) figureObject.get("file");
-*/
+
     serveAssetFile(request, response, figureId);
   }
 

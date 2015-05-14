@@ -39,10 +39,13 @@ public class FigureImageController extends WombatController {
    */
   private void serveAssetFile(HttpServletRequest requestFromClient,
                               HttpServletResponse responseToClient,
-                              String assetId)
+                              String assetId,
+                              String figureType,
+                              String revisionNumber)
       throws IOException {
-    try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId,
-            HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST))) {
+    try (CloseableHttpResponse responseFromService =
+             soaService.requestAsset(assetId, figureType,
+                 revisionNumber, HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST))) {
       HttpMessageUtil.copyResponseWithHeaders(responseFromService, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
@@ -100,7 +103,7 @@ public class FigureImageController extends WombatController {
     Map<?, ?> parentArticleMetadata = (Map<String, ?>) assetFileMetadata.get("parentArticle");
     validateArticleVisibility(site, parentArticleMetadata);
 
-    serveAssetFile(request, response, assetFileId);
+    serveAssetFile(request, response, assetFileId, null, null);
   }
 
   private static final String ORIGINAL_FIGURE = "original";
@@ -147,31 +150,9 @@ public class FigureImageController extends WombatController {
                                @RequestParam("r") String revisionNumber
   )
       throws IOException {
-    requireNonemptyParameter(figureId);
-    Map<String, ?> assetMetadata;
-    try {
-      assetMetadata = soaService.requestObject(
-          SoaRequest.request("assets")
-              .addParameter("id", figureId)
-              .addParameter("figure")
-              .addParameter("r", revisionNumber)
-              .addParameter("file", figureSize)
-              .build(),
-          Map.class);
-    } catch (EntityNotFoundException e) {
-      throw new NotFoundException(e);
-    }
-    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
 
-    List<String> pathToFigureObject = ORIGINAL_FIGURE.equals(figureSize)
-        ? ORIGINAL_FIGURE_PATH : ImmutableList.of("thumbnails", figureSize);
-    Map<String, ?> figureObject = (Map<String, ?>) DeserializedJsonUtil.readField(assetMetadata, pathToFigureObject);
-    if (figureObject == null) {
-      throw new NotFoundException("Not a valid size: " + figureSize);
-    }
-    String assetFileId = (String) figureObject.get("file");
+    serveAssetFile(request, response, figureId, figureSize, revisionNumber);
 
-    serveAssetFile(request, response, figureId);
   }
 
 

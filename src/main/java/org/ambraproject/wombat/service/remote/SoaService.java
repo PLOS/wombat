@@ -110,7 +110,8 @@ public interface SoaService {
    * @return
    * @throws IOException
    */
-  public abstract CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers) throws IOException;
+  public abstract CloseableHttpResponse requestAsset(String assetId, String figureType,
+                                                     String revisionNumber, Collection<? extends Header> headers) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 

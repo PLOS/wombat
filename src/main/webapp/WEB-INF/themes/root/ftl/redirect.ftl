@@ -31,6 +31,6 @@ This page has moved. Please click <a href="<@siteLink path='${defaultTarget}'/>"
   xmlhttp.open('POST', url, true /*async*/);
   xmlhttp.send();
 
-  //window.location.replace("<@siteLink path='" + target + "'/>");
+  window.location.replace("<@siteLink path='" + target + "'/>");
 
 </script>

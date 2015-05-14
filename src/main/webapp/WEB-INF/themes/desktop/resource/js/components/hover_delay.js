@@ -17,20 +17,28 @@
       // 3. we need to invoke the hide action AFTER the click because safari on mobile will persist hover state when you go to another page.
 
       if ($('html.touch').length) {
-        $menu_drop_selector.addClass('needsclick').hover(
-          function () {$(this).menu_drop("show");},
-          function () {$(this).menu_drop("hide");}
-        );
+        $menu_drop_selector.addClass('needsclick').on('touchstart',
+          function () {
+            $(this).menu_drop('show').siblings().menu_drop('hide');
+          }
+        ).bind('touchstart', function(event){
+              event.stopPropagation(); //Make all touch events stop at the .filters ul.children container element
+            });
+
+        $(document).bind('touchstart', function(e) {
+          $menu_drop_selector.menu_drop('hide'); //Close filters drop-downs if user taps ANYWHERE in the page
+        });
+
         // invoke the hide menu
         $('.dropdown a').on({ 'click': function () {
-          $.Deferred().done($menu_drop_selector.menu_drop("hide"));
+          $.Deferred().done($menu_drop_selector.menu_drop('hide'));
         }
         });
       } else {
         //HoverIntent.js is used for the main navigation delay on hover
         $menu_drop_selector.hoverIntent(
-          function () {$(this).menu_drop("show");},
-          function () {$(this).menu_drop("hide");}
+          function () {$(this).menu_drop('show');},
+          function () {$(this).menu_drop('hide');}
         );
       }
     }

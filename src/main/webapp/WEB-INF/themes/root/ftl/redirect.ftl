@@ -26,8 +26,8 @@ This page has moved. Please click <a href="<@siteLink path='${defaultTarget}'/>"
   // response is ignored. This request will allow logging of Javascript-based redirects as if
   // they were standard Apache redirects.
   var xmlhttp = new XMLHttpRequest();
-  var url = "<@siteLink path=''/>" + 'logRedirect?source=' + encodeURIComponent(source)
-      + "&anchor=" + encodeURIComponent(current_anchor);
+  var url = "<@siteLink path=''/>" + 'logRedirect/' + encodeURIComponent(source)
+      + '/' + encodeURIComponent(current_anchor.replace('#', ''));
   xmlhttp.open('POST', url, true /*async*/);
   xmlhttp.send();
 

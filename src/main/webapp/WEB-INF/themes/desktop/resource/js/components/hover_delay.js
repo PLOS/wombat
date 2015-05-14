@@ -20,7 +20,8 @@
               $(this).menu_drop('show').
                   siblings(selected_state).
                   menu_drop('hide');
-             //  Make all touch events stop at the menu so we don't hide the menu when we want click.
+
+             //  Make all touch events stop so we don't hide the menu when we want click.
               event.stopPropagation();
               //make sure we close the menus when you click anywhere else, but only do it once so that the touchstart event is not bound for all eternity.
               $(document).one(

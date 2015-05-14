@@ -12,8 +12,7 @@
       // kick things off
       var $menu_drop_selector = $('li.has-dropdown');
       var selected_state = '.hover';
-      // if mobile, use modernizer to check for touch events. If so then:
- //Don't use hoverIntent - hoverIntent adds timing to the hover we don't want for touch devices.
+      // if mobile, use modernizer to check for touch events. If so then: use "touchstart" instead of hover  and make sure the menu is closeable
 
       if ($('html.touch').length) {
         $menu_drop_selector.on(

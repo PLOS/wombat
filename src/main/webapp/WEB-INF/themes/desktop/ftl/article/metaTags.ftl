@@ -23,8 +23,8 @@
 <meta name="citation_issue" content="${article.issue}" />
 <meta name="citation_volume" content="${article.volume}" />
 <meta name="citation_issn" content="${article.eIssn}" />
-<#if journalAbbrev??>
-<meta name="citation_journal_abbrev" content="${journalAbbrev}" />
+<#if article.journal??>
+<meta name="citation_journal_abbrev" content="${article.journal?replace('PLoS','PLOS')}" />
 </#if>
 <#if article.publisherName??>
 <meta name="citation_publisher" content="${article.publisherName}" />

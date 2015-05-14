@@ -151,8 +151,12 @@ public class FigureImageController extends WombatController {
     Map<String, ?> assetMetadata;
     try {
       assetMetadata = soaService.requestObject(
-          SoaRequest.request("assets").addParameter("id", figureId)
-              .addParameter("figure").addParameter("r",revisionNumber).build(),
+          SoaRequest.request("assets")
+              .addParameter("id", figureId)
+              .addParameter("figure")
+              .addParameter("r", revisionNumber)
+              .addParameter("file", figureSize)
+              .build(),
           Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);

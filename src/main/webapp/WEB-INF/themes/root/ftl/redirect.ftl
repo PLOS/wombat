@@ -28,7 +28,7 @@ This page has moved. Please click <a href="<@siteLink path='${defaultTarget}'/>"
   var xmlhttp = new XMLHttpRequest();
   var url = "<@siteLink path=''/>" + 'logRedirect/' + encodeURIComponent(source)
       + '/' + encodeURIComponent(current_anchor.replace('#', ''));
-  xmlhttp.open('POST', url, true /*async*/);
+  xmlhttp.open('POST', url, false /*async*/);
   xmlhttp.send();
 
   window.location.replace("<@siteLink path='" + target + "'/>");

@@ -147,7 +147,7 @@ public class FigureImageController extends WombatController {
                                @SiteParam Site site,
                                @RequestParam("id") String figureId,
                                @RequestParam("size") String figureSize,
-                               @RequestParam("r") String revisionNumber
+                               @RequestParam(value="r", required = false) String revisionNumber
   )
       throws IOException {
 

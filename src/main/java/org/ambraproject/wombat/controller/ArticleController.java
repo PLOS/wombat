@@ -99,16 +99,18 @@ public class ArticleController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
 
     RenderContext renderContext = null;
+    Integer currentRevision = null;
 
     SortedSet<Integer> revisionNumbers = getRevisionNumbers(revisionId);
     if (!revisionNumbers.isEmpty()) {
       model.addAttribute("revisionNumbers", revisionNumbers);
 
-      Integer currentRevision = revisionId.getRevisionNumber().isPresent() ?revisionId.getRevisionNumber().get() : revisionNumbers.last();
+      currentRevision = revisionId.getRevisionNumber().isPresent() ? revisionId.getRevisionNumber().get() : revisionNumbers.last();
 
       model.addAttribute("currentRevision", currentRevision);
-      renderContext = new RenderContext(site, RevisionId.parse(articleId, String.valueOf(currentRevision)));
     }
+
+    renderContext = new RenderContext(site, RevisionId.parse(articleId, currentRevision != null ? String.valueOf(currentRevision) : ""));
 
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("article", articleMetadata);

@@ -1206,6 +1206,12 @@
       <xsl:value-of select="concat('&amp;r=', $articleRevision)"/>
     </xsl:variable>
 
+    <xsl:variable name="revisionURL">
+        <xsl:if test="$articleRevision">
+          <xsl:value-of select="concat('&amp;r=', $articleRevision)"/>
+        </xsl:if>
+    </xsl:variable>
+
     <xsl:if test="./graphic|./alternatives/graphic">
       <xsl:variable name="imageURI">
         <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>

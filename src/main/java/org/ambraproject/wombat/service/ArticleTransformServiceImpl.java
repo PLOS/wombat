@@ -137,7 +137,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       }
 
       // add revisionNumber as a parameter to the transformation
-      transformer.setParameter("articleRevision", renderContext.getRevisionId().getRevisionNumber().get());
+      if(renderContext.getRevisionId().getRevisionNumber().isPresent()) {
+        transformer.setParameter("articleRevision", renderContext.getRevisionId().getRevisionNumber().get());
+      }
     }
 
     return transformer;

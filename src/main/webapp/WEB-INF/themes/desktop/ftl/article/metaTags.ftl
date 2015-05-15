@@ -14,7 +14,7 @@
 <meta name="citation_title" content="${article.title?replace('<.+?>',' ','r')?html}" />
 <meta itemprop="name" content="${article.title?replace('<.+?>',' ','r')?html}" />
 <#if article.journal??>
-<meta name="citation_journal_title" content="${article.journal}" />
+<meta name="citation_journal_title" content="${article.journal?replace('PLoS','PLOS')}" />
 </#if>
 <#if article.date??>
 <meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}" />
@@ -24,7 +24,7 @@
 <meta name="citation_volume" content="${article.volume}" />
 <meta name="citation_issn" content="${article.eIssn}" />
 <#if article.journal??>
-<meta name="citation_journal_abbrev" content="${article.journal}" />
+<meta name="citation_journal_abbrev" content="${article.journal?replace('PLoS','PLOS')}" />
 </#if>
 <#if article.publisherName??>
 <meta name="citation_publisher" content="${article.publisherName}" />

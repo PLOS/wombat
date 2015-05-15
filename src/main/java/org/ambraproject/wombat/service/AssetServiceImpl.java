@@ -65,7 +65,7 @@ public class AssetServiceImpl implements AssetService {
   @Autowired
   private Cache cache;
 
-  private Object assetCompilationLock = new Object();
+  private final Object assetCompilationLock = new Object();
 
   /*
    * We cache data at two steps in the process of compiling assets:

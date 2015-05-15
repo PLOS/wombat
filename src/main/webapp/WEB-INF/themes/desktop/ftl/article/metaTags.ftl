@@ -31,7 +31,7 @@
 <#if article.publisherName??>
 <meta name="citation_publisher" content="${article.publisherName}" />
 </#if>
-<meta name="citation_pdf_url" content="${pubUrlPrefix}article/asset?id=${article.doi}.PDF">
+<meta name="citation_pdf_url" content="${pubUrlPrefix}article/asset?id=${article.articlePdf.file}">
 
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${articleDoi}" />

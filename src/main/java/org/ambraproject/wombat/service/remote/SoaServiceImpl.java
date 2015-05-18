@@ -5,7 +5,6 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
-import org.apache.commons.lang.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -13,7 +12,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.StringEntity;
-import org.apache.poi.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 
@@ -119,21 +117,9 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public CloseableHttpResponse requestAsset(String assetId, String figureType,
-                                            String revisionNumber, Collection<? extends Header> headers)
+  public CloseableHttpResponse requestAsset(SoaRequest request, Collection<? extends Header> headers)
       throws IOException {
-    SoaRequest.Builder soaRequest = SoaRequest.request("assetfiles")
-        .addParameter("id", assetId);
-
-    if (!StringUtils.isEmpty(figureType)){
-      soaRequest.addParameter("fileType", figureType);
-    }
-
-    if (!StringUtils.isEmpty(revisionNumber)){
-      soaRequest.addParameter("r", revisionNumber);
-    }
-
-    HttpGet get = buildGet(soaRequest.build());
+    HttpGet get = buildGet(request);
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }

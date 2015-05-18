@@ -39,19 +39,16 @@ public class FigureImageController extends WombatController {
    */
   private void serveAssetFile(HttpServletRequest requestFromClient,
                               HttpServletResponse responseToClient,
-                              String assetId,
-                              String figureType,
-                              String revisionNumber)
+                              String assetId)
       throws IOException {
-    try (CloseableHttpResponse responseFromService =
-             soaService.requestAsset(assetId, figureType,
-                 revisionNumber, HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST))) {
+    SoaRequest request = SoaRequest.request("assetfiles").addParameter("id", assetId).build();
+    try (CloseableHttpResponse responseFromService = soaService.requestAsset(request,
+            HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST))) {
       HttpMessageUtil.copyResponseWithHeaders(responseFromService, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
   }
-
 
   /**
    * Serve the identified asset file.
@@ -103,7 +100,7 @@ public class FigureImageController extends WombatController {
     Map<?, ?> parentArticleMetadata = (Map<String, ?>) assetFileMetadata.get("parentArticle");
     validateArticleVisibility(site, parentArticleMetadata);
 
-    serveAssetFile(request, response, assetFileId, null, null);
+    serveAssetFile(request, response, assetFileId);
   }
 
   private static final String ORIGINAL_FIGURE = "original";
@@ -112,7 +109,7 @@ public class FigureImageController extends WombatController {
   /**
    * Serve the asset file for an identified figure thumbnail.
    */
-/*  @RequestMapping(value = {"/article/figure/image", "/{site}/article/figure/image"})
+  @RequestMapping(value = {"/article/figure/image", "/{site}/article/figure/image"})
   public void serveFigureImage(HttpServletRequest request,
                                HttpServletResponse response,
                                @SiteParam Site site,
@@ -139,21 +136,6 @@ public class FigureImageController extends WombatController {
     String assetFileId = (String) figureObject.get("file");
 
     serveAssetFile(request, response, assetFileId);
-  }*/
-
-  @RequestMapping(value = {"/article/figure/image", "/{site}/article/figure/image"})
-  public void serveFigureImage(HttpServletRequest request,
-                               HttpServletResponse response,
-                               @SiteParam Site site,
-                               @RequestParam("id") String figureId,
-                               @RequestParam("size") String figureSize,
-                               @RequestParam(value="r", required = false) String revisionNumber
-  )
-      throws IOException {
-
-    serveAssetFile(request, response, figureId, figureSize, revisionNumber);
-
   }
-
 
 }

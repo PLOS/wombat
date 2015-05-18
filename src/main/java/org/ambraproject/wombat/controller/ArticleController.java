@@ -78,9 +78,6 @@ public class ArticleController extends ArticleSpaceController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
-  private static final String ID_PARAM = "id";
-  private static final String REVISION_PARAM = "r";
-
   @RequestMapping(value = {"/article", "/{site}/article"})
   public String renderArticle(HttpServletRequest request,
                               Model model,

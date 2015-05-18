@@ -1,11 +1,16 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.RevisionId;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
@@ -13,6 +18,9 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 class ArticleSpaceController extends WombatController {
+
+  protected static final String ID_PARAM = "id";
+  protected static final String REVISION_PARAM = "r";
 
   @Autowired
   protected SoaService soaService;

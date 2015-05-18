@@ -65,7 +65,7 @@ public class AssetServiceImpl implements AssetService {
   @Autowired
   private Cache cache;
 
-  private final Object assetCompilationLock = new Object();
+  private static final Object ASSET_COMPILATION_LOCK = new Object();
 
   /*
    * We cache data at two steps in the process of compiling assets:
@@ -147,7 +147,7 @@ public class AssetServiceImpl implements AssetService {
     // to high load.
     // It might be possible to lock in a more granular fashion here (such as by assetType or
     // sourceCacheKey), but that might be prone to deadlock.
-    synchronized (assetCompilationLock) {
+    synchronized (ASSET_COMPILATION_LOCK) {
       SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
       String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
 

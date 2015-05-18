@@ -66,11 +66,6 @@
     return this.each(
       function () {
 
-        var bnr_h = 0;
-        if ($(opts.alternativeBottomDiv).length) {
-          bnr_h = $(opts.alternativeBottomDiv).innerHeight();
-        }
-
         var hilite = function () {
           opts.content.find(opts.section_anchor).each(function() {
             hiliteLink($(this))
@@ -87,17 +82,15 @@
           var $ftr_top = $(opts.footer).offset().top;
           var $el_h = $floating_nav_menu.innerHeight();
           var article_top = opts.content.offset().top;
+
           //the top of the element is out of the viewport
           var el_view_out = (win_top > (article_top - opts.margin));
-          //the viewport is tall enough-
-          var view_height = (($el_h + opts.margin + bnr_h) < $win.height());
           //the element is not overlapping the footer
           var el_overlap = (win_top < ($ftr_top - ($el_h + opts.margin)));
           //the viewport is wide enough
           var view_width = ($win.width() >= opts.page_width);
 
-          if (view_height && view_width) {
-
+          if (view_width) {
             if (el_view_out && el_overlap) {
               $floating_nav_menu.css({'position': 'fixed', 'top': opts.margin + 'px'});
               hilite();

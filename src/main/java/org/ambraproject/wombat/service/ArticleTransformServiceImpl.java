@@ -8,6 +8,7 @@ import com.google.common.io.Closer;
 import net.sf.json.JSONArray;
 import net.sf.json.xml.XMLSerializer;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.util.RevisionId;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
@@ -38,7 +39,6 @@ import java.io.SequenceInputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -119,28 +119,21 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       throw new RuntimeException(e);
     }
 
+    RevisionId revisionId = renderContext.getRevisionId();
+
     // Add cited articles metadata for inclusion of DOI links in reference list
     // TODO: abstract out into a strategy pattern when and if render options become more complex
     boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
-
-    if (renderContext.getRevisionId() != null){
-
-      if (showsCitedArticles) {
-
-        Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getRevisionId(), false);
-        Object citedArticles = articleMetadata.get("citedArticles");
-        JSONArray jsonArr = JSONArray.fromObject(citedArticles);
-        String metadataXml = new XMLSerializer().write(jsonArr);
-        SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
-        transformer.setParameter("citedArticles", saxSourceMeta);
-
-      }
-
-      // add revisionNumber as a parameter to the transformation
-      if(renderContext.getRevisionId().getRevisionNumber().isPresent()) {
-        transformer.setParameter("articleRevision", renderContext.getRevisionId().getRevisionNumber().get());
-      }
+    if (showsCitedArticles) {
+      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(revisionId, false);
+      Object citedArticles = articleMetadata.get("citedArticles");
+      JSONArray jsonArr = JSONArray.fromObject(citedArticles);
+      String metadataXml = new XMLSerializer().write(jsonArr);
+      SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
+      transformer.setParameter("citedArticles", saxSourceMeta);
     }
+
+    transformer.setParameter("articleRevision", revisionId.getRevisionNumber());
 
     return transformer;
   }

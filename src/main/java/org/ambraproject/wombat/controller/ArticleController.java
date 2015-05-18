@@ -200,23 +200,26 @@ public class ArticleController extends WombatController {
   /**
    * filter a map of article issues (containing associated journal and volume info), only keeping issues published in
    * journals identified as a collection
+   *
    * @param articleMetadata
    * @param site
    * @return
    */
   private Map<?, ?> getCollectionIssues(Map<?, ?> articleMetadata, final Site site) {
 
-    Map<String, Map<String, Object>> articleIssues = (Map<String, Map<String, Object>>)articleMetadata.get("issues");
-    for (Iterator<Map.Entry<String, Map<String, Object>>> iter = articleIssues.entrySet().iterator(); iter.hasNext();) {
+    Map<String, Map<String, Object>> articleIssues = (Map<String, Map<String, Object>>) articleMetadata.get("issues");
+    for (Iterator<Map.Entry<String, Map<String, Object>>> iter = articleIssues.entrySet().iterator(); iter.hasNext(); ) {
       Map.Entry<String, Map<String, Object>> entry = iter.next();
       Map<String, String> parentJournal = ((Map<String, String>) entry.getValue().get("parentJournal"));
       if (parentJournal != null) {
         String journalKey = parentJournal.get("journalKey");
-        if (journalKey != null){
+        if (journalKey != null) {
           Site publishedSite;
           try {
             publishedSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
-            if ((boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection")) { continue; }; // keep
+            if ((boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection")) {
+              continue; // keep
+            }
           } catch (UnmatchedSiteException use) {
             throw new RuntimeException("Could not resolve collections pub site using journalKey: " + journalKey, use);
           } catch (Exception e) {
@@ -230,8 +233,9 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a given
-   * category path)
+   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a
+   * given category path)
+   *
    * @param articleMetadata
    * @return a sorted list of category terms
    */
@@ -243,10 +247,10 @@ public class ArticleController extends WombatController {
 
     // create a map of terms/weights (effectively removes duplicate terms through the mapping)
     Map<String, Double> termsMap = new HashMap<>();
-    for (Map<String, ?> category: categories){
-      String[] categoryTerms = ((String)category.get("path")).split("/");
+    for (Map<String, ?> category : categories) {
+      String[] categoryTerms = ((String) category.get("path")).split("/");
       String categoryTerm = categoryTerms[categoryTerms.length - 1];
-      termsMap.put(categoryTerm, (Double)category.get("weight"));
+      termsMap.put(categoryTerm, (Double) category.get("weight"));
     }
 
     // use Guava for sorting, first on weight (descending), then on category term
@@ -304,7 +308,7 @@ public class ArticleController extends WombatController {
 
   /**
    * Add links to cross-published journals to the model.
-   * <p/>
+   * <p>
    * Each journal in which the article was published (according to the supplied article metadata) will be represented in
    * the model, other than the journal belonging to the site being browsed. If that journal is the only one, nothing is
    * added to the model. The journal of original publication (according to the article metadata's eISSN) is added under
@@ -377,7 +381,7 @@ public class ArticleController extends WombatController {
 
   /**
    * Apply the display logic for different amendment types taking precedence over each other.
-   * <p/>
+   * <p>
    * Retractions take precedence over all else (i.e., don't show them if there is a retraction) and EOCs take precedence
    * over corrections. This logic could conceivably vary between sites (e.g., some journals might want to show all
    * amendments side-by-side), so this is a good candidate for making it controllable through config. But for now,

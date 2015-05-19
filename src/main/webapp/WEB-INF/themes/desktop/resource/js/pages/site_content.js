@@ -7,7 +7,8 @@
         link_selector: 'a',
         section_anchor: 'a[name]',
         section_anchor_attr: 'id',
-        margin: 10
+        margin: 10,
+        ignored_sections: 'H4'
     });
 
 

@@ -8,10 +8,10 @@ category: Files
 This is for IE specific styles mostly ie9 and below.
 
 */
-
 //for ie8; couldn't get compass font-face mixin to work with ie8 even following the use specified
+@import "variables";
 
-@import "variables"; // basic settings for type, size and colors
+// basic settings for type, size and colors
 
 @font-face {
   font-family: 'FontAwesome';
@@ -19,23 +19,34 @@ This is for IE specific styles mostly ie9 and below.
   src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype');
   font-weight: normal;
   font-style: normal;
-}
+  }
 
 .top-bar-section .head-search form input[type="text"] {
   padding: 10px 0;
-}
+  }
+
 .top-bar-section ul > li.head-search > a {
   line-height: 32px !important;
   padding: 0 !important;
-  font-size:  12px;
-}
+  font-size: 12px;
+  }
+
 .top-bar-section ul > li.head-search > a:hover {
   text-decoration: underline;
-}
+  }
+
+.nav-main {
+  overflow: visible;
+
+  .dropdown.mega {
+    border: 1px solid $clr-separator;
+    }
+  }
 
 .hero.overlay-dark > a:before, .hero.overlay-light > a:before {
   background: none !important;
-}
+  }
+
 .hero.overlay-dark .hero-content:before {
   position: absolute;
   width: 100%;
@@ -45,7 +56,8 @@ This is for IE specific styles mostly ie9 and below.
   top: 0;
   left: 0;
   content: " ";
-}
+  }
+
 .hero.overlay-light .hero-content:before {
   position: absolute;
   width: 100%;
@@ -54,115 +66,130 @@ This is for IE specific styles mostly ie9 and below.
   top: 0;
   left: 0;
   content: " ";
-}
+  }
+
 .hero .hero-content {
   height: 234px !important;
   padding-top: 103px !important;
-}
+  }
 
 .carousel-wrap.small .carousel-control {
   $icon-height: 30px;
   .jcarousel-prev,
   .jcarousel-next {
     font-size: $icon-height !important;
+    }
   }
-}
 
 // for tooltip
-div[data-js-tooltip="tooltip_target"]{ display: none;}
-[data-js-tooltip="tooltip_trigger"].active div[data-js-tooltip="tooltip_target"] {display: block;}
+div[data-js-tooltip="tooltip_target"] {
+  display: none;
+  }
+
+[data-js-tooltip="tooltip_trigger"].active div[data-js-tooltip="tooltip_target"] {
+  display: block;
+  }
 
 #author-list {
-  margin-left:-20px;
+  margin-left: -20px;
   padding-left: 0;
 
-}
+  }
+
 #author-list li {
   margin-left: 0;
   padding-left: 0;
-}
+  }
+
 #author-list .active {
   a, a:hover {
     color: $white;
+    }
+
   }
 
-}
 #author-list .active .author-info {
   display: block;
-}
+  }
+
 //ie8 doesn't support @media; need to override the print settings in _article.scss
 
-
-  @page {
-    margin: .75in;
+@page {
+  margin: .75in;
   }
 
-  .article-body {
-    width: auto;
+.article-body {
+  width: auto;
   }
 
-  .title-block {
-    margin-top: auto;
-    margin-left: auto;
+.title-block {
+  margin-top: auto;
+  margin-left: auto;
 
-    &:before {
-      content: '';
+  &:before {
+    content: '';
     }
 
-    h1 {
-      padding-top: 0 !important;
+  h1 {
+    padding-top: 0 !important;
     }
   }
+
 .twitter-container h3 {
   margin-bottom: 5px !important;
   padding-left: 25px;
   padding-bottom: 0 !important;
-}
+  }
 
-  // override .inline-list
+// override .inline-list
 #floatAuthorList, .author-list {
   margin: 0;
   padding-left: 22px !important;
-}
+  }
+
 .author-list {
   margin: 0;
   padding-left: 18px !important;
-}
+  }
+
 #floatAuthorList li, .author-list li {
   margin-left: 0 !important;
-}
+  }
 
 .close-floater {
   width: 25px;
   height: 25px;
-}
+  }
+
 .float-title.topVisible {
   background-color: #fff !important;
-}
+  }
+
 .article-content .table-wrap {
-   .table-caption {
-      margin-bottom: 0;
-   }
+  .table-caption {
+    margin-bottom: 0;
+    }
   .table-footnote {
     margin-bottom: 2px;
+    }
   }
-}
+
 .article-content .expand {
   background: image-url('icon.sprite.expand.png') no-repeat 0 0;
   vertical-align: middle;
   display: inline-block;
-  width:25px;
+  width: 25px;
   height: 25px;
 
   &:hover {
     background-position: 0 -25px;
     cursor: pointer;
+    }
   }
-}
 
 body.article .ui-widget-overlay {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-}
+  }
 
 .article .title-block .signposts {
   width: 322px !important;
@@ -171,7 +198,7 @@ body.article .ui-widget-overlay {
   margin: -5px 0 0 -40px !important;
   padding: 0;
   border-left: 1px solid #efefef !important;
-}
+  }
 
 .article .title-block ul.signposts li {
   background-color: #fff !important;
@@ -181,14 +208,15 @@ body.article .ui-widget-overlay {
   border-right: 1px solid #efefef;
   padding: 20px 5px 0 !important;
   margin: 0;
-}
+  }
+
 .article .title-block .signposts li:first-child {
   border-left: 1px solid #efefef !important;
-}
+  }
 
 .article-meta, .article-meta .classifications {
   width: 600px !important;
-}
+  }
 
 .article .signposts #loadingMetrics {
   display: none !important;
@@ -202,13 +230,15 @@ body.article .ui-widget-overlay {
   text-align: center;
   border: 1px #efefef solid !important;
 
-}
+  }
+
 .article .signposts #loadingMetrics p {
   padding: 30px 15px 0 0;
   font-size: 20px;
   width: 180px;
   float: right;
-   }
+  }
+
 .article .signposts #tooSoon {
   background-color: #efefef !important;
   width: 320px !important;
@@ -218,7 +248,8 @@ body.article .ui-widget-overlay {
   text-align: left !important;
   color: #666;
   padding: 10px;
-}
+  }
+
 .article .signposts #metricsError {
 
   font-size: 12px;
@@ -230,44 +261,47 @@ body.article .ui-widget-overlay {
   width: 320px !important;
   height: 80px !important;
 
-}
+  }
+
 .article .signposts p.saves-tip {
   top: 70px !important;
   right: 40px !important;
-}
+  }
+
 .article .signposts p.citations-tip {
   top: 70px !important;
   right: 40px !important;
   .scopus, .crossref {
     display: none;
+    }
   }
-}
+
 .article .signposts p.views-tip {
   top: 70px !important;
   right: 40px !important;
-}
+  }
+
 .article .signposts p.shares-tip {
   top: 70px !important;
   right: 40px !important;
-}
-
+  }
 
 .article-content .figure-inline-download ul li {
   list-style-type: none;
   width: 165px;
-  & > div,  & > a{
+  & > div, & > a {
     float: left;
-  }
+    }
 
-}
+  }
 
 // Target Offset: This is so that when the browser jumps to the target, we
 // Using "name" on IE8 because it doesn't recognize target.
 .article-content a[name] {
   margin-top: -$target-offset;
   padding-top: $target-offset;
-  display:inline-block;
-}
+  display: inline-block;
+  }
 
 //figure viewer
 /* didn't fix the issues. leaving in for now in case there is time to troubleshoot ie8

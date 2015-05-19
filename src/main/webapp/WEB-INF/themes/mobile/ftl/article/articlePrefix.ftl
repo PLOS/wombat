@@ -18,7 +18,7 @@
       <#include "maxAuthorsToShow.ftl" />
       <#macro authorItem author author_index author_has_next>
         <a href="#" class="author-info" data-author-id="${author_index?c}">
-        ${author.fullName}</a><#if author_has_next><#-- no space -->,</#if>
+        ${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if></a><#if author_has_next><#-- no space -->,</#if>
       </#macro>
 
       <#if authors?size gt maxAuthorsToShow + 1>
@@ -63,7 +63,7 @@
       || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
       <#if hasMeta>
         <div id="author-meta-${author_index?c}" style="display:none;">
-          <h2 class="author-full-name">${author.fullName}</h2>
+          <h2 class="author-full-name">${author.fullName}<#if author.onBehalfOf??>, on behalf of ${author.onBehalfOf}</#if></h2>
           <#if author.equalContrib>
             <p>
               Contributed equally to this work with:

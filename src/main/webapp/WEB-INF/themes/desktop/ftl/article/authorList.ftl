@@ -4,14 +4,14 @@
   <#assign hasMeta =
   author.equalContrib || author.deceased || author.corresponding??
   || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
-  || (author.customFootnotes?? && author.customFootnotes?size gt 0)  />
+  || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
 
   <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if>
        <#if hidden> data-js-toggle="toggle_target" data-visibility= "none"</#if> >
   <#if hasMeta> <a  <#else> <span </#if>data-author-id="${author_index?c}" class="author-name<#if
 !hasMeta> no-author-data</#if>" >
 
-    ${author.fullName}<#-- no space
+  ${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if><#-- no space
  --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space
  --><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if><#-- no space
  --><#if author.corresponding??> <span class="email">  </span></#if><#-- no space

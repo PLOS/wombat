@@ -106,11 +106,11 @@ public interface SoaService {
    * InputStream} to the response body. This is very important, because leaving responses hanging open can starve the
    * connection pool and cause horrible timeouts.
    *
-   * @param assetId the asset ID within the SOA service's "assetfiles/" namespace
+   * @param request the service request that will provide the asset
    * @return
    * @throws IOException
    */
-  public abstract CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers) throws IOException;
+  public abstract CloseableHttpResponse requestAsset(SoaRequest request, Collection<? extends Header> headers) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 

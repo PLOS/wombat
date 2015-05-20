@@ -34,6 +34,8 @@
                   used to provide DOIs and author/title overrides for reference links -->
   <xsl:param name="citedArticles"/>
 
+  <xsl:param name="articleRevision"/>
+
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
   <!-- ============================================================= -->
@@ -1199,12 +1201,17 @@
     </xsl:variable>
     <xsl:variable name="apos">'</xsl:variable>
     <!-- Fix here for AMEC-2351 only pick graphic nodes that are immediate children of the fig or table-wrap nodes -->
+
     <xsl:if test="./graphic|./alternatives/graphic">
       <xsl:variable name="imageURI">
         <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>
       </xsl:variable>
+      <xsl:variable name="revisionParams">
+        <xsl:value-of select="concat('id=', $imageURI, '&amp;r=', $articleRevision)"/>
+      </xsl:variable>
+
       <xsl:variable name="slideshowURL">
-        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/file?type=medium&amp;', $revisionParams)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="pptURL">
@@ -1212,14 +1219,11 @@
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('article/figure/image?size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
-      </xsl:variable>
-      <xsl:variable name="bigImgDOI">
-        <xsl:value-of select="concat($imageURI,'.PNG_L')"/>
+        <xsl:value-of select="concat('article/file?type=large&amp;', $revisionParams)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('article/figure/image?size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/file?type=original&amp;', $revisionParams)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
       <xsl:variable name="origImgDOI">
         <xsl:value-of select="concat($imageURI,'.TIF')"/>
@@ -1272,7 +1276,7 @@
             <xsl:element name="img">
               <xsl:attribute name="src">
                 <xsl:value-of
-                  select="concat('article/figure/image?size=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+                  select="concat('article/file?type=inline&amp;', $revisionParams)"/><!-- TODO: Avoid relative path -->
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>

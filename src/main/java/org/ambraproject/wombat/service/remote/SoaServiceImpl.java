@@ -117,9 +117,9 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers)
+  public CloseableHttpResponse requestAsset(SoaRequest request, Collection<? extends Header> headers)
       throws IOException {
-    HttpGet get = buildGet(SoaRequest.request("assetfiles").addParameter("id", assetId).build());
+    HttpGet get = buildGet(request);
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }

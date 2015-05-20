@@ -11,7 +11,7 @@ public class RenderContext {
 
   public RenderContext(Site site, RevisionId revisionId) {
     this.site = Preconditions.checkNotNull(site);
-    this.revisionId = revisionId; // nullable
+    this.revisionId = Preconditions.checkNotNull(revisionId);
   }
 
   public Site getSite() {

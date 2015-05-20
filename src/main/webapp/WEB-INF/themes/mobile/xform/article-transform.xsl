@@ -30,6 +30,8 @@
   <!-- Ambra-specific global param (pub config, passed into stylesheet from elsewhere in the pipeline) -->
   <xsl:param name="pubAppContext"/>
 
+  <xsl:param name="articleRevision"/>
+
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
   <!-- ============================================================= -->
@@ -1149,6 +1151,10 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
+      <xsl:variable name="revisionParams">
+        <xsl:value-of select="concat('id=', $imageURI, '&amp;r=', $articleRevision)"/>
+      </xsl:variable>
+
       <figure class="figure-small">
         <!--id needs to be attached to "figure" div for proper anchor linking-->
         <xsl:attribute name="id">
@@ -1162,7 +1168,7 @@
           <span class="figure-expand">Expand</span>
           <img alt="thumbnail" class="figure-image">
             <xsl:attribute name="src">
-              <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/>
+              <xsl:value-of select="concat('article/file?type=medium&amp;', $revisionParams)"/>
             </xsl:attribute>
           </img>
         </a>

@@ -7,7 +7,6 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.remote.SoaRequest;
-import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.RevisionId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +21,8 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class FigurePageController extends WombatController {
+public class FigurePageController extends ArticleSpaceController {
 
-  @Autowired
-  private SoaService soaService;
   @Autowired
   private ArticleService articleService;
   @Autowired
@@ -69,7 +66,7 @@ public class FigurePageController extends WombatController {
                                   @RequestParam("id") String articleId)
       throws IOException {
     requireNonemptyParameter(articleId);
-    RevisionId revisionId = RevisionId.parse(articleId, null); // TODO Versions
+    RevisionId revisionId = parseRevision(articleId, null); // TODO Versions
 
     Map<?, ?> articleMetadata;
     try {
@@ -113,7 +110,7 @@ public class FigurePageController extends WombatController {
     String parentArticleDoi = (String) parentArticle.get("doi");
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));
 
-    RevisionId revisionId = RevisionId.parse(parentArticleDoi, null); // TODO Versions
+    RevisionId revisionId = parseRevision(parentArticleDoi, null); // TODO Versions
     RenderContext renderContext = new RenderContext(site, revisionId);
     transformFigureDescription(renderContext, figureMetadata);
     model.addAttribute("figure", figureMetadata);

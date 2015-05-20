@@ -2,6 +2,7 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
@@ -19,7 +20,6 @@ import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.SoaRequest;
-import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.RevisionId;
@@ -57,13 +57,12 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.SortedSet;
-import java.util.TreeSet;
 
 /**
  * Controller for rendering an article.
  */
 @Controller
-public class ArticleController extends WombatController {
+public class ArticleController extends ArticleSpaceController {
 
   private static final Logger log = LoggerFactory.getLogger(ArticleController.class);
 
@@ -75,14 +74,9 @@ public class ArticleController extends WombatController {
   @Autowired
   private Charset charset;
   @Autowired
-  private SoaService soaService;
-  @Autowired
   private ArticleService articleService;
   @Autowired
   private ArticleTransformService articleTransformService;
-
-  private static final String ID_PARAM = "id";
-  private static final String REVISION_PARAM = "r";
 
   @RequestMapping(value = {"/article", "/{site}/article"})
   public String renderArticle(HttpServletRequest request,
@@ -91,21 +85,28 @@ public class ArticleController extends WombatController {
                               @RequestParam(value = ID_PARAM, required = true) String articleId,
                               @RequestParam(value = REVISION_PARAM, required = false) String revision)
       throws IOException {
+    requireNonemptyParameter(articleId);
 
-    // TODO: this method currently makes 5 backend RPCs, all sequentially.
+    // TODO: this method currently makes many backend RPCs, all sequentially.
     // Explore reducing this number, or doing them in parallel, if this is
     // a performance bottleneck.
 
-    requireNonemptyParameter(articleId);
-    RevisionId revisionId = RevisionId.parse(articleId, revision);
+    SortedSet<Integer> revisionNumbers = getRevisionNumbers(articleId);
+    RevisionId revisionId;
+    if (Strings.isNullOrEmpty(revision)) {
+      // Construct here instead of in parseRevision to avoid a redundant call to getRevisionNumbers
+      revisionId = RevisionId.create(articleId, revisionNumbers.last());
+    } else {
+      revisionId = parseRevision(articleId, revision);
+    }
+
     Map<?, ?> articleMetadata = requestArticleMetadata(revisionId);
     validateArticleVisibility(site, articleMetadata);
     RenderContext renderContext = new RenderContext(site, revisionId);
 
-    SortedSet<Integer> revisionNumbers = getRevisionNumbers(revisionId);
     if (!revisionNumbers.isEmpty()) {
       model.addAttribute("revisionNumbers", revisionNumbers);
-      model.addAttribute("currentRevision", revisionId.getRevisionNumber().or(revisionNumbers.last()));
+      model.addAttribute("currentRevision", revisionId.getRevisionNumber());
     }
 
     String articleHtml = getArticleHtml(renderContext);
@@ -119,19 +120,6 @@ public class ArticleController extends WombatController {
     requestAuthors(model, revisionId);
     requestComments(model, revisionId);
     return site + "/ftl/article/article";
-  }
-
-  private SortedSet<Integer> getRevisionNumbers(RevisionId revisionId) throws IOException {
-    SortedSet<Integer> revisionNumbers = new TreeSet<>();
-    Collection<Map<?, ?>> revisionData = soaService.requestObject(revisionId.makeSoaRequest("articles/revisions").build(),
-        Collection.class);
-    for (Map<?, ?> revisionObj : revisionData) {
-      Collection<?> revisionList = (Collection<?>) revisionObj.get("revisionNumbers");
-      for (Object revisionValue : revisionList) {
-        revisionNumbers.add(((Number) revisionValue).intValue());
-      }
-    }
-    return revisionNumbers;
   }
 
   /**
@@ -149,7 +137,7 @@ public class ArticleController extends WombatController {
                                       @RequestParam(value = REVISION_PARAM, required = false) String revision)
       throws IOException {
     requireNonemptyParameter(articleId);
-    RevisionId revisionId = RevisionId.parse(articleId, revision);
+    RevisionId revisionId = parseRevision(articleId, revision);
     Map<?, ?> articleMetadata = requestArticleMetadata(revisionId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
@@ -196,23 +184,26 @@ public class ArticleController extends WombatController {
   /**
    * filter a map of article issues (containing associated journal and volume info), only keeping issues published in
    * journals identified as a collection
+   *
    * @param articleMetadata
    * @param site
    * @return
    */
   private Map<?, ?> getCollectionIssues(Map<?, ?> articleMetadata, final Site site) {
 
-    Map<String, Map<String, Object>> articleIssues = (Map<String, Map<String, Object>>)articleMetadata.get("issues");
-    for (Iterator<Map.Entry<String, Map<String, Object>>> iter = articleIssues.entrySet().iterator(); iter.hasNext();) {
+    Map<String, Map<String, Object>> articleIssues = (Map<String, Map<String, Object>>) articleMetadata.get("issues");
+    for (Iterator<Map.Entry<String, Map<String, Object>>> iter = articleIssues.entrySet().iterator(); iter.hasNext(); ) {
       Map.Entry<String, Map<String, Object>> entry = iter.next();
       Map<String, String> parentJournal = ((Map<String, String>) entry.getValue().get("parentJournal"));
       if (parentJournal != null) {
         String journalKey = parentJournal.get("journalKey");
-        if (journalKey != null){
+        if (journalKey != null) {
           Site publishedSite;
           try {
             publishedSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
-            if ((boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection")) { continue; }; // keep
+            if ((boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection")) {
+              continue; // keep
+            }
           } catch (UnmatchedSiteException use) {
             throw new RuntimeException("Could not resolve collections pub site using journalKey: " + journalKey, use);
           } catch (Exception e) {
@@ -226,8 +217,9 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a given
-   * category path)
+   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a
+   * given category path)
+   *
    * @param articleMetadata
    * @return a sorted list of category terms
    */
@@ -239,10 +231,10 @@ public class ArticleController extends WombatController {
 
     // create a map of terms/weights (effectively removes duplicate terms through the mapping)
     Map<String, Double> termsMap = new HashMap<>();
-    for (Map<String, ?> category: categories){
-      String[] categoryTerms = ((String)category.get("path")).split("/");
+    for (Map<String, ?> category : categories) {
+      String[] categoryTerms = ((String) category.get("path")).split("/");
       String categoryTerm = categoryTerms[categoryTerms.length - 1];
-      termsMap.put(categoryTerm, (Double)category.get("weight"));
+      termsMap.put(categoryTerm, (Double) category.get("weight"));
     }
 
     // use Guava for sorting, first on weight (descending), then on category term
@@ -281,7 +273,7 @@ public class ArticleController extends WombatController {
     for (Object amendmentObj : amendments.values()) {
       Map<String, Object> amendment = (Map<String, Object>) amendmentObj;
       String amendmentId = (String) amendment.get("doi");
-      RevisionId amendmentRevisionId = RevisionId.parse(amendmentId, null); // TODO Versions
+      RevisionId amendmentRevisionId = parseRevision(amendmentId, null); // TODO Versions
 
       Map<String, ?> amendmentMetadata = (Map<String, ?>) requestArticleMetadata(amendmentRevisionId);
       amendment.putAll(amendmentMetadata);
@@ -300,7 +292,7 @@ public class ArticleController extends WombatController {
 
   /**
    * Add links to cross-published journals to the model.
-   * <p/>
+   * <p>
    * Each journal in which the article was published (according to the supplied article metadata) will be represented in
    * the model, other than the journal belonging to the site being browsed. If that journal is the only one, nothing is
    * added to the model. The journal of original publication (according to the article metadata's eISSN) is added under
@@ -373,7 +365,7 @@ public class ArticleController extends WombatController {
 
   /**
    * Apply the display logic for different amendment types taking precedence over each other.
-   * <p/>
+   * <p>
    * Retractions take precedence over all else (i.e., don't show them if there is a retraction) and EOCs take precedence
    * over corrections. This logic could conceivably vary between sites (e.g., some journals might want to show all
    * amendments side-by-side), so this is a good candidate for making it controllable through config. But for now,
@@ -432,7 +424,7 @@ public class ArticleController extends WombatController {
                                      @RequestParam(value = ID_PARAM, required = true) String articleId,
                                      @RequestParam(value = REVISION_PARAM, required = false) String revision)
       throws IOException {
-    RevisionId revisionId = RevisionId.parse(articleId, revision);
+    RevisionId revisionId = parseRevision(articleId, revision);
     Map<?, ?> articleMetadata = requestArticleMetadata(revisionId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);

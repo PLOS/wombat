@@ -95,11 +95,14 @@ $width-nav: $block-grid-elements - $width-logo;
   height: rem-calc(41);
   //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
   background: image-url('logo.png') no-repeat 0 0;
+
+  a{
+    display:block;
+    height: 100%;
+    }
   }
 
-.home-link {
-  @extend .name; // foundation
-  }
+
 
 /* using Foundation Top Bar
  all @extend .class are Foundation

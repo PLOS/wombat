@@ -95,11 +95,11 @@
 
 <#--Markup starts here
 MARKUP: using Foundation Top Bar for navigation -->
-<ul class="logo">
-  <li class="home-link">
-    <h1><a href="<@siteLink path="." />">${siteTitle}</a></h1>
-  </li>
-</ul>
+
+<h1 class="logo">
+  <a href="<@siteLink path="." />">${siteTitle}</a>
+</h1>
+
 <section class="top-bar-section"> <#--closed in header.ftl-->
 
 <ul class="nav-elements">

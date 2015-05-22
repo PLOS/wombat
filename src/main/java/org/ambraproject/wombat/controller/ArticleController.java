@@ -123,8 +123,13 @@ public class ArticleController extends WombatController {
 
   private SortedSet<Integer> getRevisionNumbers(RevisionId revisionId) throws IOException {
     SortedSet<Integer> revisionNumbers = new TreeSet<>();
-    Collection<Map<?, ?>> revisionData = soaService.requestObject(revisionId.makeSoaRequest("articles/revisions").build(),
-        Collection.class);
+    Collection<Map<?, ?>> revisionData;
+    try {
+      revisionData = soaService.requestObject(revisionId.makeSoaRequest("articles/revisions").build(),
+          Collection.class);
+    } catch (EntityNotFoundException nfe) {
+      throw new NotFoundException(nfe);
+    }
     for (Map<?, ?> revisionObj : revisionData) {
       Collection<?> revisionList = (Collection<?>) revisionObj.get("revisionNumbers");
       for (Object revisionValue : revisionList) {

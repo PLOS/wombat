@@ -2,6 +2,12 @@
 <#assign urlFix = "http://dx.doi.org/${article.doi}"?url,
 titleFix = article.title?replace("<[^>]*>", "", "r") />
 
+<#-- There are some old articles that have titles saved in the DB with long stretches
+     of spaces and/or newlines.  This appears to be due to an old ingestion bug
+     (that has been fixed).                                                  -->
+<#assign titleFix = titleFix?replace("\\n", " ", "r") />
+<#assign titleFix = titleFix?replace("\\s{2,}", " ", "r") />
+
 <div class="share-article" id="shareArticle" data-js-tooltip-hover="trigger">
   Share
   <ul data-js-tooltip-hover="target" class="share-options">

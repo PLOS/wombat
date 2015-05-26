@@ -14,25 +14,22 @@
 package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URI;
 import java.util.Map;
 
 /**
@@ -41,14 +38,16 @@ import java.util.Map;
 @Controller
 public class TaxonomyController {
 
-  private static final String TAXONOMY_NAMESPACE = "/taxonomy/";
-  private static final String TAXONOMY_TEMPLATE = TAXONOMY_NAMESPACE + "**";
+  private static final String TAXONOMY_ROOT = "/taxonomy";
+  private static final String TAXONOMY_NAMESPACE = TAXONOMY_ROOT + "/";
 
   @Autowired
   private SoaService soaService;
 
-  @RequestMapping(value = {TAXONOMY_TEMPLATE, "/{site}" + TAXONOMY_TEMPLATE}, method = RequestMethod.GET)
-  public void read(@SiteParam Site site, HttpServletRequest request, HttpServletResponse response)
+  @RequestMapping(value = {TAXONOMY_ROOT, "/{site}" + TAXONOMY_ROOT}, method = RequestMethod.GET)
+  public void read(@SiteParam Site site,
+                   HttpServletResponse response,
+                   @RequestParam("parent") String parent)
       throws IOException {
     Map<String, Object> taxonomyBrowserConfig = site.getTheme().getConfigMap("taxonomyBrowser");
     boolean hasTaxonomyBrowser = (boolean) taxonomyBrowserConfig.get("hasTaxonomyBrowser");
@@ -60,13 +59,10 @@ public class TaxonomyController {
     // approach would be to have the taxonomy browser issue JSONP requests directly
     // to rhino, but we've decided that rhino should be internal-only for now.
 
-    String req = UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE);
-    req += "?";
-    String query = request.getQueryString();
-    if (query != null) {
-      req += query + "&";
-    }
-    req += "journal=" + site.getJournalKey();
+    SoaRequest req = SoaRequest.request("taxonomy")
+        .addParameter("parent", parent)
+        .addParameter("journal", site.getJournalKey())
+        .build();
     response.setContentType("application/json");
     try (OutputStream output = response.getOutputStream();
          InputStream input = soaService.requestStream(req)) {
@@ -75,16 +71,22 @@ public class TaxonomyController {
   }
 
   @RequestMapping(value = {TAXONOMY_NAMESPACE + "flag/{action:add|remove}",
-                          "/{site}" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}"}, method = { RequestMethod.POST })
-  public @ResponseBody void setFlag(HttpServletRequest request, HttpServletResponse responseToClient,
-                                    @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
-                                    @RequestParam(value = "articleDoi", required = true) String articleDoi)
-          throws IOException {
+      "/{site}" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}"}, method = {RequestMethod.POST})
+  @ResponseBody
+  public void setFlag(HttpServletResponse responseToClient,
+                      @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
+                      @RequestParam(value = "articleDoi", required = true) String articleDoi,
+                      @RequestParam(value = "authId", required = true) String authId,
+                      @PathVariable("action") String action)
+      throws IOException {
     // pass through any article category flagging ajax traffic to/from rhino
-    URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
-    HttpUriRequest req = HttpMessageUtil.buildRequest(forwardedUrl, "POST",
-            HttpMessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
-    soaService.forwardResponse(req, responseToClient);
+    SoaRequest req = SoaRequest.request("taxonomy/flag")
+        .addPathToken(action)
+        .addParameter("categoryTerm", categoryTerm)
+        .addParameter("articleDoi", articleDoi)
+        .addParameter("authId", authId)
+        .build();
+    soaService.forwardResponse(req, HttpMethod.POST, responseToClient);
   }
 
 }

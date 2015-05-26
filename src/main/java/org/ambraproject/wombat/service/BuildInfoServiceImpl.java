@@ -18,6 +18,7 @@
 
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.BuildInfo;
 import org.ambraproject.wombat.util.GitInfo;
@@ -67,7 +68,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Each service bean makes only one remote call during its lifecycle (or maybe a small number in edge cases with
    * concurrency).
    */
@@ -94,7 +95,9 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   }
 
   private BuildInfo fetchServiceBuildInfo() throws IOException {
-    return parse(soaService.requestObject("config?type=build", Map.class));
+    return parse(soaService.requestObject(
+        SoaRequest.request("config").addParameter("type", "build").build(),
+        Map.class));
   }
 
   private static BuildInfo parse(Map<?, ?> propertyMap) {

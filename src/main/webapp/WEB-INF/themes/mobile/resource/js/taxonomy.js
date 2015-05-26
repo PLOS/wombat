@@ -92,12 +92,10 @@ var TaxonomyBrowser = function () {
   // Loads the child terms given a parent term.  If the parent evaluates to false,
   // the root taxonomy terms will be loaded.
   self.loadTerms = function (parent, pushState) {
-    var url = 'taxonomy';
-    if (parent) {
-      url += parent;
-    } else {
-      url += '/';
+    if (!parent) {
+      parent = '/';
     }
+    var url = 'taxonomy?parent=' + encodeURIComponent(parent);
     $.ajax(url, {
       type: 'GET',
       success: function (data) {

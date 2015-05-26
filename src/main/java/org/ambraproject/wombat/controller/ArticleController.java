@@ -2,7 +2,6 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
@@ -19,9 +18,11 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
+import org.ambraproject.wombat.util.RevisionId;
 import org.ambraproject.wombat.util.TextUtil;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
@@ -55,6 +56,8 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Controller for rendering an article.
@@ -78,11 +81,15 @@ public class ArticleController extends WombatController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
+  private static final String ID_PARAM = "id";
+  private static final String REVISION_PARAM = "r";
+
   @RequestMapping(value = {"/article", "/{site}/article"})
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
-                              @RequestParam("id") String articleId)
+                              @RequestParam(value = ID_PARAM, required = true) String articleId,
+                              @RequestParam(value = REVISION_PARAM, required = false) String revision)
       throws IOException {
 
     // TODO: this method currently makes 5 backend RPCs, all sequentially.
@@ -90,10 +97,16 @@ public class ArticleController extends WombatController {
     // a performance bottleneck.
 
     requireNonemptyParameter(articleId);
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    RevisionId revisionId = RevisionId.parse(articleId, revision);
+    Map<?, ?> articleMetadata = requestArticleMetadata(revisionId);
     validateArticleVisibility(site, articleMetadata);
-    RenderContext renderContext = new RenderContext(site);
-    renderContext.setArticleId(articleId);
+    RenderContext renderContext = new RenderContext(site, revisionId);
+
+    SortedSet<Integer> revisionNumbers = getRevisionNumbers(revisionId);
+    if (!revisionNumbers.isEmpty()) {
+      model.addAttribute("revisionNumbers", revisionNumbers);
+      model.addAttribute("currentRevision", revisionId.getRevisionNumber().or(revisionNumbers.last()));
+    }
 
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("article", articleMetadata);
@@ -103,9 +116,27 @@ public class ArticleController extends WombatController {
     model.addAttribute("collectionIssues", getCollectionIssues(articleMetadata, site));
 
     addCrossPublishedJournals(request, model, site, articleMetadata);
-    requestAuthors(model, articleId);
-    requestComments(model, articleId);
+    requestAuthors(model, revisionId);
+    requestComments(model, revisionId);
     return site + "/ftl/article/article";
+  }
+
+  private SortedSet<Integer> getRevisionNumbers(RevisionId revisionId) throws IOException {
+    SortedSet<Integer> revisionNumbers = new TreeSet<>();
+    Collection<Map<?, ?>> revisionData;
+    try {
+      revisionData = soaService.requestObject(revisionId.makeSoaRequest("articles/revisions").build(),
+          Collection.class);
+    } catch (EntityNotFoundException nfe) {
+      throw new NotFoundException(nfe);
+    }
+    for (Map<?, ?> revisionObj : revisionData) {
+      Collection<?> revisionList = (Collection<?>) revisionObj.get("revisionNumbers");
+      for (Object revisionValue : revisionList) {
+        revisionNumbers.add(((Number) revisionValue).intValue());
+      }
+    }
+    return revisionNumbers;
   }
 
   /**
@@ -119,12 +150,15 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(value = {"/article/comments", "/{site}/article/comments"})
   public String renderArticleComments(Model model, @SiteParam Site site,
-                                      @RequestParam("id") String articleId) throws IOException {
+                                      @RequestParam(value = ID_PARAM, required = true) String articleId,
+                                      @RequestParam(value = REVISION_PARAM, required = false) String revision)
+      throws IOException {
     requireNonemptyParameter(articleId);
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    RevisionId revisionId = RevisionId.parse(articleId, revision);
+    Map<?, ?> articleMetadata = requestArticleMetadata(revisionId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
-    requestComments(model, articleId);
+    requestComments(model, revisionId);
     return site + "/ftl/article/comments";
   }
 
@@ -252,15 +286,15 @@ public class ArticleController extends WombatController {
     for (Object amendmentObj : amendments.values()) {
       Map<String, Object> amendment = (Map<String, Object>) amendmentObj;
       String amendmentId = (String) amendment.get("doi");
+      RevisionId amendmentRevisionId = RevisionId.parse(amendmentId, null); // TODO Versions
 
-      Map<String, ?> amendmentMetadata = (Map<String, ?>) requestArticleMetadata(amendmentId);
+      Map<String, ?> amendmentMetadata = (Map<String, ?>) requestArticleMetadata(amendmentRevisionId);
       amendment.putAll(amendmentMetadata);
 
       // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
       String amendmentType = (String) amendment.get("type");
       if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
-        RenderContext renderContext = new RenderContext(site);
-        renderContext.setArticleId(amendmentId);
+        RenderContext renderContext = new RenderContext(site, amendmentRevisionId);
         String body = getAmendmentBody(renderContext);
         amendment.put("body", body);
       }
@@ -377,7 +411,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(commentId);
     Map<String, Object> comment;
     try {
-      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+      comment = soaService.requestObject(SoaRequest.request("comments").addParameter("id", commentId).build(), Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new NotFoundException(enfe);
     }
@@ -400,27 +434,30 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(value = {"/article/authors", "/{site}/article/authors"})
   public String renderArticleAuthors(Model model, @SiteParam Site site,
-                                     @RequestParam("id") String articleId) throws IOException {
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+                                     @RequestParam(value = ID_PARAM, required = true) String articleId,
+                                     @RequestParam(value = REVISION_PARAM, required = false) String revision)
+      throws IOException {
+    RevisionId revisionId = RevisionId.parse(articleId, revision);
+    Map<?, ?> articleMetadata = requestArticleMetadata(revisionId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
-    requestAuthors(model, articleId);
+    requestAuthors(model, revisionId);
     return site + "/ftl/article/authors";
   }
 
   /**
    * Loads article metadata from the SOA layer.
    *
-   * @param articleId DOI identifying the article
+   * @param revisionId DOI identifying the article
    * @return Map of JSON representing the article
    * @throws IOException
    */
-  private Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
+  private Map<?, ?> requestArticleMetadata(RevisionId revisionId) throws IOException {
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = articleService.requestArticleMetadata(articleId, false);
+      articleMetadata = articleService.requestArticleMetadata(revisionId, false);
     } catch (EntityNotFoundException enfe) {
-      throw new ArticleNotFoundException(articleId);
+      throw new ArticleNotFoundException(revisionId);
     }
     return articleMetadata;
   }
@@ -428,25 +465,31 @@ public class ArticleController extends WombatController {
   /**
    * Checks whether any comments are associated with the given article, and appends them to the model if so.
    *
-   * @param model model to be passed to the view
-   * @param doi   identifies the article
+   * @param doi        identifies the article
+   * @param model      model to be passed to the view
+   * @param revisionId
    * @throws IOException
    */
-  private void requestComments(Model model, String doi) throws IOException {
-    List<?> comments = soaService.requestObject(String.format("articles/%s?comments", doi), List.class);
+  private void requestComments(Model model, RevisionId revisionId) throws IOException {
+    List<?> comments = soaService.requestObject(
+        revisionId.makeSoaRequest("articles").addParameter("comments").build(),
+        List.class);
     model.addAttribute("articleComments", comments);
   }
 
   /**
    * Appends additional info about article authors to the model.
    *
-   * @param model model to be passed to the view
-   * @param doi   identifies the article
+   * @param doi        identifies the article
+   * @param model      model to be passed to the view
+   * @param revisionId
    * @return the list of authors appended to the model
    * @throws IOException
    */
-  private void requestAuthors(Model model, String doi) throws IOException {
-    List<?> authors = soaService.requestObject(String.format("articles/%s?authors", doi), List.class);
+  private void requestAuthors(Model model, RevisionId revisionId) throws IOException {
+    List<?> authors = soaService.requestObject(
+        revisionId.makeSoaRequest("articles").addParameter("authors").build(),
+        List.class);
     model.addAttribute("authors", authors);
 
     // Putting this here was a judgement call.  One could make the argument that this logic belongs
@@ -480,8 +523,10 @@ public class ArticleController extends WombatController {
    *
    * @return the service path to the correspond article XML asset file
    */
-  private static String getArticleXmlAssetPath(RenderContext renderContext) {
-    return "articles/" + Preconditions.checkNotNull(renderContext.getArticleId()) + "?xml";
+  private static SoaRequest getArticleXmlAssetPath(RenderContext renderContext) {
+    return renderContext.getRevisionId().makeSoaRequest("articles")
+        .addParameter("xml")
+        .build();
   }
 
   /**
@@ -490,9 +535,9 @@ public class ArticleController extends WombatController {
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
-
-    String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    final RevisionId revisionId = renderContext.getRevisionId();
+    String cacheKey = "amendmentBody:" + revisionId.getCacheKey();
+    SoaRequest xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override
@@ -509,7 +554,7 @@ public class ArticleController extends WombatController {
           try {
             document = documentBuilder.parse(stream);
           } catch (SAXException e) {
-            throw new RuntimeException("Invalid XML syntax for: " + renderContext.getArticleId(), e);
+            throw new RuntimeException("Invalid XML syntax for: " + revisionId, e);
           }
         } finally {
           stream.close();
@@ -538,10 +583,9 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
-
-    String cacheKey = String.format("html:%s:%s",
-        Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    RevisionId revisionId = renderContext.getRevisionId();
+    String cacheKey = "html:" + revisionId.getCacheKey();
+    SoaRequest xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
       @Override

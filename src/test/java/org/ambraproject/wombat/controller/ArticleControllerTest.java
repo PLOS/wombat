@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -12,7 +14,11 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.TestArticleServiceImpl;
+import org.ambraproject.wombat.service.remote.SoaRequest;
+import org.ambraproject.wombat.service.remote.SoaRequestTestUtil;
 import org.ambraproject.wombat.service.remote.SoaService;
+import org.apache.http.NameValuePair;
+import org.hamcrest.Matcher;
 import org.mockito.Matchers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -128,6 +134,15 @@ public class ArticleControllerTest extends ControllerTest {
 
   }
 
+  private static final Matcher<SoaRequest> IS_FOR_ARTICLE_AUTHORS = SoaRequestTestUtil.buildMatcher(
+      Predicates.equalTo("articles"),
+      new Predicate<NameValuePair>() {
+        @Override
+        public boolean apply(NameValuePair input) {
+          return "authors".equals(input.getName());
+        }
+      });
+
   @Configuration
   @EnableWebMvc
   static class TestConfig extends WombatControllerTestConfig {
@@ -140,7 +155,7 @@ public class ArticleControllerTest extends ControllerTest {
     @Bean
     public SoaService soaService() throws IOException {
       SoaService soaService = mock(SoaService.class);
-      when(soaService.requestObject(Matchers.endsWith("authors"), any(Class.class))).thenReturn(ImmutableList.of());
+      when(soaService.requestObject(Matchers.argThat(IS_FOR_ARTICLE_AUTHORS), any(Class.class))).thenReturn(ImmutableList.of());
       return soaService;
     }
 

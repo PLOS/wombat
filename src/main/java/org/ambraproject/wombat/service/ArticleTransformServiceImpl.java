@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
 import com.google.common.io.Closer;
 import net.sf.json.JSONArray;
+import net.sf.json.xml.XMLSerializer;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
@@ -16,7 +17,6 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import net.sf.json.xml.XMLSerializer;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -121,8 +121,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     // Add cited articles metadata for inclusion of DOI links in reference list
     // TODO: abstract out into a strategy pattern when and if render options become more complex
     boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
-    if (showsCitedArticles && renderContext.getArticleId() != null) {
-      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId(), false);
+    if (showsCitedArticles && renderContext.getRevisionId() != null) {
+      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getRevisionId(), false);
       Object citedArticles = articleMetadata.get("citedArticles");
       JSONArray jsonArr = JSONArray.fromObject(citedArticles);
       String metadataXml = new XMLSerializer().write(jsonArr);

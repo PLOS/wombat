@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.Maps;
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.HttpDebug;
 import org.apache.http.HttpHeaders;
@@ -71,7 +72,7 @@ public class UserController extends WombatController {
     persist.put("sessionId", sessionId);
     persist.put("IP", ipAddress);
     persist.put("userAgent", userAgent);
-    soaService.postObject("users/" + remoteUser, persist);
+    soaService.postObject(SoaRequest.request("users").addParameter("id", remoteUser).build(), persist);
   }
 
   @RequestMapping(value = {"/user/logout", "/{site}/user/logout"})

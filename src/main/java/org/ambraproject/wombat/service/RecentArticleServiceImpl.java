@@ -5,8 +5,8 @@ import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +40,9 @@ public class RecentArticleServiceImpl implements RecentArticleService {
 
   /**
    * Select a random subset of elements and shuffle their order.
-   * <p/>
+   * <p>
    * The argument {@code sequence} is not mutated.
-   * <p/>
+   * <p>
    * This is more efficient than using {@link Collections#shuffle(List)} if {@code n} is much smaller than {@code
    * sequence.size()}, as it shuffles only part of the list.
    *
@@ -112,22 +112,22 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     Calendar threshold = Calendar.getInstance();
     threshold.add(Calendar.SECOND, (int) (-numberOfDaysAgo * SECONDS_PER_DAY));
 
-    UrlParamBuilder params = UrlParamBuilder.params()
-        .add("journal", journalKey)
-        .add("min", Integer.toString(articleCount))
-        .add("since", HttpDateUtil.format(threshold));
+    SoaRequest.Builder builder = SoaRequest.request("articles")
+        .addParameter("journal", journalKey)
+        .addParameter("min", Integer.toString(articleCount))
+        .addParameter("since", HttpDateUtil.format(threshold));
     if (articleTypes != null) {
       for (String articleType : articleTypes) {
-        params.add("type", articleType);
+        builder.addParameter("type", articleType);
       }
     }
     if (articleTypesToExclude != null) {
       for (String articleType : articleTypesToExclude) {
-        params.add("exclude", articleType);
+        builder.addParameter("exclude", articleType);
       }
     }
 
-    return soaService.requestObject("articles?" + params.format(), List.class);
+    return soaService.requestObject(builder.build(), List.class);
   }
 
 }

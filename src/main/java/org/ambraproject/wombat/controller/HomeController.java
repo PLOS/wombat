@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.RecentArticleService;
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.slf4j.Logger;
@@ -237,16 +238,20 @@ public class HomeController extends WombatController {
   }
 
   private void populateCurrentIssue(Model model, Site site) throws IOException {
-    String issueAddress = "journals/" + site.getJournalKey() + "?currentIssue";
-    Map<String, Object> currentIssue = soaService.requestObject(issueAddress, Map.class);
+    Map<String, Object> currentIssue = soaService.requestObject(
+        SoaRequest.request("journals").addPathToken(site.getJournalKey()).addParameter("currentIssue").build(),
+        Map.class);
     model.addAttribute("currentIssue", currentIssue);
-    Map<String, Object> issueImageMetadata = soaService.requestObject("articles/" + currentIssue.get("imageUri"), Map.class);
+    Map<String, Object> issueImageMetadata = soaService.requestObject(
+        SoaRequest.request("articles").addParameter("id", currentIssue.get("imageUri").toString()).build(),
+        Map.class);
     model.addAttribute("issueImage", issueImageMetadata);
   }
 
   private static List<?> getInTheNewsArticles(SoaService soaService, String journalKey) throws IOException {
-    String requestAddress = "journals/" + journalKey + "?inTheNewsArticles";
-    return (List<Map<String, Object>>) soaService.requestObject(requestAddress, List.class);
+    return (List<Map<String, Object>>) soaService.requestObject(
+        SoaRequest.request("journals").addPathToken(journalKey).addParameter("inTheNewsArticles").build(),
+        List.class);
   }
 
 }

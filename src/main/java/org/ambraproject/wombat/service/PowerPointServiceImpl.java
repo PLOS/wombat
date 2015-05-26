@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.service.remote.SoaRequest;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.Citations;
 import org.ambraproject.wombat.util.TextUtil;
@@ -73,7 +74,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     Map<String, Object> thumbnails = (Map<String, Object>) figureMetadata.get("thumbnails");
     Map<String, Object> medium = (Map<String, Object>) thumbnails.get("medium");
     String file = (String) medium.get("file");
-    try (InputStream stream = soaService.requestStream("assetfiles/" + file)) {
+    try (InputStream stream = soaService.requestStream(SoaRequest.request("assetfiles").addParameter("id", file).build())) {
       return IOUtils.toByteArray(stream);
     }
   }
@@ -195,7 +196,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     Map<String, Object> parentArticleSummary = (Map<String, Object>) figureMetadata.get("parentArticle");
     String parentArticleDoi = (String) parentArticleSummary.get("doi");
     try {
-      return soaService.requestObject("articles/" + parentArticleDoi, Map.class);
+      return soaService.requestObject(SoaRequest.request("articles").addParameter("id", parentArticleDoi).build(), Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

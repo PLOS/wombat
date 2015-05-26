@@ -1,18 +1,21 @@
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
+import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.util.CacheParams;
-import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,9 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -44,7 +49,9 @@ public class EditorialContentServiceImpl implements EditorialContentService {
   private String repoBucketName;
 
   private void setRepoConfig() throws IOException {
-    Map<String, Object> repoConfig = (Map<String, Object>) soaService.requestObject("config?type=repo", Map.class);
+    Map<String, Object> repoConfig = (Map<String, Object>) soaService.requestObject(
+        SoaRequest.request("config").addParameter("type", "repo").build(),
+        Map.class);
     Map<String, Object> editorialConfig = (Map<String, Object>) repoConfig.get("editorial");
     if (editorialConfig == null) throw new RuntimeException("config?type=repo did not provide \"editorial\" config");
     String address = (String) editorialConfig.get("address");
@@ -107,13 +114,17 @@ public class EditorialContentServiceImpl implements EditorialContentService {
     if (contentRepoAddressStr.endsWith("/")) {
       contentRepoAddressStr = contentRepoAddressStr.substring(0, contentRepoAddressStr.length() - 1);
     }
-    UrlParamBuilder requestParams = UrlParamBuilder.params().add("key", key);
+
+    List<NameValuePair> requestParams = new ArrayList<>(2);
+    requestParams.add(new BasicNameValuePair("key", key));
     if (version.isPresent()) {
-      requestParams.add("version", version.get().toString());
+      requestParams.add(new BasicNameValuePair("version", version.get().toString()));
     }
+    String formattedParams = URLEncodedUtils.format(requestParams, Charsets.UTF_8);
+
     String repoBucketName = getRepoBucketName();
     return URI.create(String.format("%s/%s/%s?%s",
-        contentRepoAddressStr, mode.getPathComponent(), repoBucketName, requestParams.format()));
+        contentRepoAddressStr, mode.getPathComponent(), repoBucketName, formattedParams));
   }
 
   @Override
@@ -135,14 +146,14 @@ public class EditorialContentServiceImpl implements EditorialContentService {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Applies transforms to HTML attributes and performs substitution of placeholder HTML elements with stored content
    */
   @Override
   public Reader readHtml(final SitePageContext sitePageContext, String pageType, String key,
                          final Set<HtmlElementTransformation> transformations,
                          final Collection<HtmlElementSubstitution> substitutions)
-          throws IOException {
+      throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
     String cacheKey = pageType.concat(":").concat(key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl");

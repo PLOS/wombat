@@ -2,26 +2,24 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.util.RevisionId;
 
 public class RenderContext {
 
   private final Site site;
-  private String articleId;
+  private final RevisionId revisionId;
 
-  public RenderContext(Site site){
+  public RenderContext(Site site, RevisionId revisionId) {
     this.site = Preconditions.checkNotNull(site);
+    this.revisionId = revisionId; // nullable
   }
 
   public Site getSite() {
     return site;
   }
 
-  public String getArticleId() {
-    return articleId;
-  }
-
-  public void setArticleId(String articleId) {
-    this.articleId = articleId;
+  public RevisionId getRevisionId() {
+    return revisionId;
   }
 
   @Override
@@ -31,7 +29,7 @@ public class RenderContext {
 
     RenderContext that = (RenderContext) o;
 
-    if (articleId != null ? !articleId.equals(that.articleId) : that.articleId != null) return false;
+    if (revisionId != null ? !revisionId.equals(that.revisionId) : that.revisionId != null) return false;
     if (!site.equals(that.site)) return false;
 
     return true;
@@ -40,7 +38,7 @@ public class RenderContext {
   @Override
   public int hashCode() {
     int result = site.hashCode();
-    result = 31 * result + (articleId != null ? articleId.hashCode() : 0);
+    result = 31 * result + (revisionId != null ? revisionId.hashCode() : 0);
     return result;
   }
 }

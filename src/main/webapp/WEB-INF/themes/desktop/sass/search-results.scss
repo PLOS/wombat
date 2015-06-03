@@ -2,41 +2,33 @@
 @import "sections/footer";
 @import "sections/header";
 
-.search-results-body {
-  width: 960px;
-  margin: 0 auto;
-  overflow-x: hidden;
-}
+main.search-results-body {
+  @extend .plos-row;
+  width: (rem-calc($grid-width) - $grid-gutter);
+  margin-top: rem-calc($line-height-large);
+  margin-bottom: rem-calc($line-height-large);
 
-.search-results-container {
-  width: 600px;
-  float: left;
-//  padding-left: 41px;
-  font: 81.25%/1.385 arial, sans-serif;
+  article {
+    @include plos-grid-column($pixelwidth: 600, $gutter: left);
+  }
+
+  aside {
+    @include plos-grid-column($pixelwidth: 200);
+  }
 }
 
 .search-results-list {
-  margin: 15px 0 45px;
-  padding: 0;
-  list-style: none;
-  font-size: 0.923em;
-}
-
-li {
-  margin-bottom: 25px;
+  margin: rem-calc(15px 0 45px);
 }
 
 .search-results-title {
-  display: block;
-  font-size: 1.167em;
-  font-weight: bold;
-  line-height: 1.286;
-  margin-bottom: 3px;
+  margin-bottom: rem-calc(3px);
 }
 
 .search-results-title a {
-  color: $grey-dark;
+  font-size: $txt-size-large;
   text-decoration: underline;
+  color: $grey-dark;
 }
 
 .search-results-title a:hover {
@@ -44,11 +36,10 @@ li {
 }
 
 .search-results-authors {
-  display: block;
-  color: #666;
+  color: $grey-med-dark;
+  margin-bottom: rem-calc(3px);
 }
 
 .search-results-doi {
-  display: block;
-  margin-bottom: 15px;
+  margin-bottom: $line-height;
 }

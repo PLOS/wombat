@@ -11,30 +11,32 @@
 
   <#include "../common/header/header.ftl" />
 
-  <div class="search-results-body">
-    <div class="search-results-container">
-      <ul class="search-results-list">
-      <#list searchResults.docs as doc>
-        <li data-doi="${doc.id}">
-          <span class="search-results-title"><a href="article?id=${doc.id}">${doc.title}</a></span>
-          <span class="search-results-authors">
-            <#list doc.author_display![] as author>
-              ${author}<#if author_has_next>,</#if>
-            </#list>
-          </span>
-          <#if doc.article_type??>
-            ${doc.article_type} |
-          </#if>
-          published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" /> |
-          <#if doc.cross_published_journal_name??>
-            ${doc.cross_published_journal_name[0]}
-          </#if>
-          <span class="search-results-doi">${doc.id}</span>
-        </li>
-      </#list>
-      </ul>
-    </div>
-  </div>
+  <main class="search-results-body">
+    <article>
+      <dl class="search-results-list">
+        <#list searchResults.docs as doc>
+          <dt data-doi="${doc.id}"  class="search-results-title">
+            <a href="article?id=${doc.id}">${doc.title}</a>
+          </dt>
+          <dd>
+            <p class="search-results-authors">
+              <#list doc.author_display![] as author>
+                ${author}<#if author_has_next>,</#if>
+              </#list>
+            </p>
+            <#if doc.article_type??>
+              ${doc.article_type} |
+            </#if>
+            published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" /> |
+            <#if doc.cross_published_journal_name??>
+              ${doc.cross_published_journal_name[0]}
+            </#if>
+            <p class="search-results-doi">${doc.id}</p>
+          </dd>
+        </#list>
+      </dl>
+    </article>
+  </main>
 
   <#include "../common/footer/footer.ftl" />
   <@renderJs />

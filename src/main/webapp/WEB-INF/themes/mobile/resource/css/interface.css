@@ -138,15 +138,16 @@ a {
 #site-header-container #site-menu-button {
   float: left;
   background-position: -112px 0px;
-  width: 42px;
+  width: 27px;
   height: 21px;
   background-repeat: no-repeat;
   background-image: url('../img/sprites/structure.png');
   background-size: 300px 75px;
-  overflow: hidden;
+  box-sizing: content-box;
   text-indent: -1000px;
   display: block;
   margin: 13px 0 0 10px;
+  border-right: 20px solid #efefef;
 }
 
 #site-header-container .site-search-button {

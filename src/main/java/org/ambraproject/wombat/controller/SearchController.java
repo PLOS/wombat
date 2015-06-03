@@ -13,13 +13,10 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
-import org.apache.commons.codec.binary.Hex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Map;
 
 /**
@@ -52,17 +47,13 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "author", required = false) String author,
                        @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
-                       @RequestParam(value = "dateRange", required = false) String dateRangeParam,
-                       @RequestParam(value = "legacy", required = false) String legacy)
+                       @RequestParam(value = "dateRange", required = false) String dateRangeParam)
           throws IOException {
     if (query == null) {
       log.warn("Received search request in {} with null query param (possible apache rewrite issue)", site);
       // May be due to apache rewrite config issue which needs attention. Meanwhile, set query to
       // empty string which will direct the user to a search error page instead of a hard NPE trace
       query="";
-    }
-    if (booleanParameter(legacy)) {
-      return "redirect:" + redirectToLegacySearch(site, query);
     }
     int start = 0;
     if (page != null) {
@@ -99,56 +90,4 @@ public class SearchController extends WombatController {
     model.addAttribute("searchResults", searchResults);
     return site.getKey() + "/ftl/search/searchResults";
   }
-
-  private static URL redirectToLegacySearch(Site site, String query) throws IOException {
-    Theme theme = site.getTheme();
-    String legacySearchPattern = (String) theme.getConfigMap("search").get("legacyPattern");
-    if (legacySearchPattern == null) {
-      log.warn("Received legacy search request in {}, which does not provide a legacy search pattern", site);
-      // Throw NotFoundException because it might have just been caused by a user requesting weird URLs
-      throw new NotFoundException();
-    }
-
-    String legacyUrlPrefix = (String) theme.getConfigMap("legacy").get("urlPrefix");
-    if (legacyUrlPrefix == null) {
-      String message = String.format("Site \"%s\" supports legacy search, but does not provide a legacy URL prefix",
-          site.getKey());
-      throw new RuntimeException(message);
-    }
-
-    String redirectUrl = legacyUrlPrefix + legacySearchPattern
-        .replace("{query}", escapeParameter(query))
-        .replace("{journalKey}", site.getJournalKey());
-
-    try {
-      return new URL(redirectUrl);
-    } catch (MalformedURLException e) {
-      throw new RuntimeException("Could not form URL from legacy search pattern for " + site, e);
-    }
-  }
-
-  private static final CharMatcher URL_DELIMITERS = CharMatcher.anyOf("!#$%&'()*+,/:;=?@[]");
-
-  /**
-   * Replace delimiter characters with hex escapes, as required in a URL parameter value.
-   *
-   * @param parameterValue the parameter value
-   * @return the same value with delimiters escaped
-   */
-  private static String escapeParameter(String parameterValue) {
-    if (parameterValue.isEmpty()) return "";
-    StringBuilder escaped = new StringBuilder(parameterValue.length() + 4);
-    for (int i = 0; i < parameterValue.length(); i++) {
-      char c = parameterValue.charAt(i);
-      if (URL_DELIMITERS.matches(c)) {
-        byte[] charAsByte = {(byte) c}; // Downcasting is safe because all chars in URL_DELIMITERS are < 0x80
-        char[] charAsHex = Hex.encodeHex(charAsByte, false);
-        escaped.append('%').append(charAsHex);
-      } else {
-        escaped.append(c);
-      }
-    }
-    return escaped.toString();
-  }
-
 }

@@ -1,0 +1,54 @@
+@import "global-imports";
+@import "sections/footer";
+@import "sections/header";
+
+.search-results-body {
+  width: 960px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.search-results-container {
+  width: 600px;
+  float: left;
+//  padding-left: 41px;
+  font: 81.25%/1.385 arial, sans-serif;
+}
+
+.search-results-list {
+  margin: 15px 0 45px;
+  padding: 0;
+  list-style: none;
+  font-size: 0.923em;
+}
+
+li {
+  margin-bottom: 25px;
+}
+
+.search-results-title {
+  display: block;
+  font-size: 1.167em;
+  font-weight: bold;
+  line-height: 1.286;
+  margin-bottom: 3px;
+}
+
+.search-results-title a {
+  color: $grey-dark;
+  text-decoration: underline;
+}
+
+.search-results-title a:hover {
+  color: $plos-default;
+}
+
+.search-results-authors {
+  display: block;
+  color: #666;
+}
+
+.search-results-doi {
+  display: block;
+  margin-bottom: 15px;
+}

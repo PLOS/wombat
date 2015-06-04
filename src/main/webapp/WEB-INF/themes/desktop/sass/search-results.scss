@@ -26,13 +26,9 @@ main.search-results-body {
 }
 
 .search-results-title a {
+  @include link-text($color: $grey-dark, $color-hover: $plos-default, $decoration-hover: underline,
+      $decoration-text: underline);
   font-size: $txt-size-large;
-  text-decoration: underline;
-  color: $grey-dark;
-}
-
-.search-results-title a:hover {
-  color: $plos-default;
 }
 
 .search-results-authors {

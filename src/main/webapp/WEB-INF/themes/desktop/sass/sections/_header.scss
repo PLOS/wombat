@@ -324,7 +324,7 @@ $width-nav: $block-grid-elements - $width-logo;
       @include plos-grid-column(680, $gutter: none);
       a {
         background: none !important;
-        @include link-text($color: $clr-link-against-dark, $decoration: underline);
+        @include link-text($color: $clr-link-against-dark, $decoration-hover: underline);
         }
       }
 

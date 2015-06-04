@@ -175,7 +175,7 @@ $image-container: ($image-width + $pad-small);
   .blurb {
     color: $grey-med-dark;
     a {
-      @include link-text($color: $plos-default, $decoration: underline);
+      @include link-text($color: $plos-default, $decoration-hover: underline);
       }
     }
   .block-image {
@@ -461,7 +461,7 @@ $image-container: ($image-width + $pad-small);
       border-right: 1px solid $grey-med-dark;
       }
     a {
-      @include link-text($color: $clr-link-against-dark, $decoration: underline);
+      @include link-text($color: $clr-link-against-dark, $decoration-hover: underline);
       font-size: $txt-size-medium-large;
       font-family: $font-face-fancy;
       }

@@ -1,0 +1,41 @@
+@import "global-imports";
+@import "sections/footer";
+@import "sections/header";
+
+main.search-results-body {
+  @extend .plos-row;
+  width: (rem-calc($grid-width) - $grid-gutter);
+  margin-top: rem-calc($line-height-large);
+  margin-bottom: rem-calc($line-height-large);
+
+  article {
+    @include plos-grid-column($pixelwidth: 600, $gutter: left);
+  }
+
+  aside {
+    @include plos-grid-column($pixelwidth: 200);
+  }
+}
+
+.search-results-list {
+  margin: rem-calc(15px 0 45px);
+}
+
+.search-results-title {
+  margin-bottom: rem-calc(3px);
+}
+
+.search-results-title a {
+  @include link-text($color: $grey-dark, $color-hover: $plos-default, $decoration-hover: underline,
+      $decoration-text: underline);
+  font-size: $txt-size-large;
+}
+
+.search-results-authors {
+  color: $grey-med-dark;
+  margin-bottom: rem-calc(3px);
+}
+
+.search-results-doi {
+  margin-bottom: $line-height;
+}

@@ -171,4 +171,24 @@ public class EditorialContentServiceImpl implements EditorialContentService {
     });
     return new StringReader(transformedHtml);
   }
+
+  /**
+   * {@inheritDoc}
+   * <p/>
+   * Returns a JSON string from a remote service
+   */
+  @Override
+  public String getJson(String pageType, String key) throws IOException {
+    String cacheKey = pageType.concat(":").concat(key);
+    CacheParams cacheParams = CacheParams.create(cacheKey);
+    Optional<Integer> version = Optional.absent();
+    String jsonString = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
+      @Override
+      public String read(Reader jsonReader) throws IOException {
+        return IOUtils.toString(jsonReader);
+      }
+    });
+    //TODO: validate json
+    return jsonString;
+  }
 }

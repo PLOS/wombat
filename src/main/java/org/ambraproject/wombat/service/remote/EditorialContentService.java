@@ -47,4 +47,13 @@ public interface EditorialContentService {
                          Set<HtmlElementTransformation> transformations,
                          Collection<HtmlElementSubstitution> substitutions) throws IOException;
 
+  /**
+   * Fetch a JSON string from a remote service.
+   *
+   * @param key             a key identifying the JSON string to fetch
+   * @return an HTML block
+   * @throws IOException
+   */
+  public String getJson(String pageType, String key) throws IOException;
+
 }

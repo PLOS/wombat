@@ -41,12 +41,12 @@ import java.util.Map;
  * Controller serves a container page for externally generated content
  */
 @Controller
-public class HostedContentController extends WombatController {
+public class CollectionsContentController extends WombatController {
 
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(value = {"/h/{pageName}", "/{site}/h/{pageName}"})
+  @RequestMapping(value = {"/collection/{pageName}", "/{site}/collection/{pageName}"})
   public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 
@@ -54,7 +54,7 @@ public class HostedContentController extends WombatController {
 //    Map<String, Object> pageConfig = theme.getConfigMap("siteContent");
 //
 //    String repoKeyPrefix = (String) pageConfig.get("contentRepoKeyPrefix");
-    String repoKeyPrefix = "h";
+    String repoKeyPrefix = "desktop.collections";
 //    if (repoKeyPrefix == null) {
 //      throw new RuntimeConfigurationException("Content repo prefix not configured for theme " + theme.toString());
 //    }

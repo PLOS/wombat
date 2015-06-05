@@ -41,13 +41,9 @@
         class="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" />
 
   <aop:config>
-    <aop:pointcut id="allServiceMethods" expression="execution(* org.ambraproject.wombat.service.*.*(..))"/>
-    <aop:advisor pointcut-ref="allServiceMethods" advice-ref="performanceMonitor" order="2"/>
-  </aop:config>
-
-  <aop:config>
-    <aop:pointcut id="allControllerMethods" expression="execution(* org.ambraproject.wombat.controller.*.*(..))"/>
-    <aop:advisor pointcut-ref="allControllerMethods" advice-ref="performanceMonitor" order="4"/>
+    <aop:pointcut id="allWombatMethods" expression="execution(* org.ambraproject.wombat.*.*.*(..)) &amp;&amp;
+      !execution(* org.ambraproject.wombat.config.*.*(..))"/>
+    <aop:advisor pointcut-ref="allWombatMethods" advice-ref="performanceMonitor" order="1"/>
   </aop:config>
 
   <!--<beans:bean id="customizableTraceInterceptor"-->

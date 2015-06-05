@@ -228,8 +228,7 @@
 
     // bail out if the term is a leaf node, so the link can go through normally
     if (clicked_el.hasClass('no-children')) {
-      alert('nochild');
-      //return true;
+      return true;
     }
 
     // cancel the event
@@ -575,14 +574,11 @@
    */
   function loadTerms(parent_term) {
 
-    //terms is a simple list of strings but code expects a map - term to children terms
-    //todo: Need to make multiple API calls to fill out child terms for each term
     function handleSuccess(terms, textStatus, xhr) {
 
-      console.log("JSON load successful");
+      //console.log("JSON load successful");
 
       var child_terms = [];
-      var parent = '/';
       for (var i = 0; i < terms.length; i++) {
         var fullPath = terms[i].subject;
         var levels = fullPath.split('/');
@@ -595,18 +591,7 @@
         } else {
           term_counts[leaf] = 0;
         }
-        term_cache[leaf] = [];//loadTerms(fullPath);//todo?: load children once here -- getChildren(fullPath);???
-
-        // Get parent term if there is one.  Only do this once for efficiency since all terms
-        // will have the same parent.
-        if (i == 0 && levels.length > 2) {
-          for (var j = 0; j < levels.length - 1; j++) {
-            if (j > 1) {
-              parent += '/';
-            }
-            parent += levels[j];
-          }
-        }
+        term_cache[leaf] = [];
       }
 
       // add the (sorted) child_terms for this parent to the cache
@@ -618,11 +603,11 @@
       console.log("JSON load unsuccessful");
 
       //Disable the taxonomy browser
-      $('#mn-01 a').unbind('click', displayBrowser);
-      $('#mn-01 a').attr("title", "Error: No subject terms available!");
-      $('#mn-01 a').addClass("disabled");
+      $('.subject-area').unbind('click', displayBrowser);
+      $('subject-area').attr("title", "Error: No subject terms available!");
+      $('subject-area').addClass("disabled");
 
-      $('#mn-01 a').on('click', function(e) {
+      $('subject-area').on('click', function(e) {
         e.preventDefault();
         return false;
       });
@@ -634,7 +619,7 @@
     // the children due to the "has children" arrow (we can render the list
     // of terms, but we can't add the arrows without an additional request)
 
-    var url = 'taxonomy/' + createUrlFromTermStack();
+    var url = createUrlFromTermStack();
     if (parent_term != '/') {
       url += parent_term;
     }
@@ -650,7 +635,7 @@
   }
 
   function createUrlFromTermStack() {
-    var url = ""
+    var url =  'taxonomy/';
     for (var i = 1; i < term_stack.length; i++) {
       url += term_stack[i] + "/";
     }
@@ -725,7 +710,7 @@
     });
 
     // attach an event to the main menu to show the TB
-    $('#mn-01 a').on('click', displayBrowser);
+    $('.subject-area').on('click', displayBrowser);
 
     // any click outside the subject area close it
     $(document).bind('click', function (event) {

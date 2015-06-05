@@ -167,11 +167,6 @@ $width-nav: $block-grid-elements - $width-logo;
       border-left: 1px solid transparent;
       margin-left: 0;
       }
-    &.subject-area {
-      @include js-tooltip-container();
-      color: $grey-med;
-      cursor: pointer;
-      }
     }
 
   ul.nav-elements {

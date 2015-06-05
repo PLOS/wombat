@@ -401,7 +401,7 @@ $image-container: ($image-width + $pad-small);
       @extend %header-allcaps-xlarge;
       @extend %condense;
       display: block;
-      margin-bottom: rem-calc(-5);
+      margin-bottom: rem-calc(5);
       font-weight: 900;
       }
     .subhead {
@@ -461,7 +461,7 @@ $image-container: ($image-width + $pad-small);
       border-right: 1px solid $grey-med-dark;
       }
     a {
-      @include link-text($color: #89a0d0, $decoration: underline);
+      @include link-text($color: $clr-link-against-dark, $decoration: underline);
       font-size: $txt-size-medium-large;
       font-family: $font-face-fancy;
       }

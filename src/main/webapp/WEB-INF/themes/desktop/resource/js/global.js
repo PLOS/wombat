@@ -36,10 +36,15 @@ $(document).foundation({
 
   $(document).ready(function () {
     var runSearchCheck = searchCheck();
+
     // hover delay for menu
     hover_delay.init();
+
     //placeholder style change
     placeholder_style.init();
-  });
 
+    // initialize tooltip_hover for everything
+    tooltip_hover.init();
+
+  });
 })(jQuery);

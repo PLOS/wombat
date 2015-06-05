@@ -67,6 +67,7 @@ $clr-highlight-hover: $plos-default !default;
 $clr-highlight-text: $white !default;
 
 $clr-tooltip-text: #a7bee9;
+$clr-link-against-dark: #89a0d0;
 
 $clr-body-bg: $white;
 $clr-panel: $white;
@@ -184,10 +185,15 @@ $txt-size-note: $txt-size-small;
 
 $sub-sup-alignment: .5ex; //controls sub and super text
 
-$line-height: 18px;
+$line-height: 18px; // applies to parapgraphs and lists by default
 $line-height-large: ($line-height * 2);
 $line-height-med: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
+$paragraph-spacing: ($line-height * .5);
+$list-spacing: $paragraph-spacing;
+
+
+$button-height: 35px;
 
 /*doc
 ---

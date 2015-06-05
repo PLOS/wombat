@@ -116,9 +116,9 @@
       <p>
         <strong>Citation:&#032;</strong>
         <!-- authors -->
-        <xsl:for-each select="contrib-group/contrib[@contrib-type='author'][position() &lt; 7]">
+        <xsl:for-each select="contrib-group/contrib[@contrib-type='author'][position() &lt; 8]">
           <xsl:choose>
-            <xsl:when test="position() = 6">
+            <xsl:when test="position() = 7">
               <xsl:text>et al. </xsl:text>
             </xsl:when>
             <xsl:otherwise>
@@ -1509,27 +1509,27 @@
   <!-- 1/4/12: nlm contains alt-text (suppressed here, processed within graphic|inline-graphic) -->
 
   <!-- 1/4/12: Ambra modifications -->
-  <xsl:template match="list">
-    <xsl:call-template name="newline1"/>
-    <xsl:choose>
-      <xsl:when test="@list-type='bullet'">
+    <xsl:template match="list">
         <xsl:call-template name="newline1"/>
-        <ul class="bulleted">
-          <xsl:call-template name="newline1"/>
-          <xsl:apply-templates/>
-          <xsl:call-template name="newline1"/>
-        </ul>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:call-template name="newline1"/>
-        <ol class="{@list-type}">
-          <xsl:call-template name="newline1"/>
-          <xsl:apply-templates/>
-          <xsl:call-template name="newline1"/>
-        </ol>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
+        <xsl:choose>
+            <xsl:when test="@list-type='bullet'">
+                <xsl:call-template name="newline1"/>
+                <ul class="bulleted">
+                    <xsl:call-template name="newline1"/>
+                    <xsl:apply-templates/>
+                    <xsl:call-template name="newline1"/>
+                </ul>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:call-template name="newline1"/>
+                <ol class="{@list-type}">
+                    <xsl:call-template name="newline1"/>
+                    <xsl:apply-templates/>
+                    <xsl:call-template name="newline1"/>
+                </ol>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
 
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template priority="2" mode="list" match="list[@list-type='simple' or list-item/label]"/>

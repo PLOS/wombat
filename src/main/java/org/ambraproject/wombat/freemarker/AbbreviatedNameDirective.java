@@ -1,7 +1,5 @@
 package org.ambraproject.wombat.freemarker;
 
-import com.google.common.base.CharMatcher;
-import com.google.common.base.Splitter;
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
@@ -11,9 +9,7 @@ import org.ambraproject.wombat.util.Citations;
 
 import java.io.IOException;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * Applies standard formatting for abbreviations of authors' given names. Abbreviates names to initials, with hyphens

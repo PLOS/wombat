@@ -117,8 +117,6 @@ public interface SoaService {
 
   /**
    * Forward the remote service response from a given request to a client
-   * @param target the remote service request message
-   * @param responseTo the response wrapper object the server response will be copied into
    * @return
    * @throws IOException
    */

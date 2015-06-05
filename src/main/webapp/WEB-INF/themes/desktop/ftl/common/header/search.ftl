@@ -2,7 +2,7 @@
 <li id="navsearch" class="head-search">
 
 <#macro searchForm>
-  <form name="searchForm" action="search" method="get">
+  <form name="searchForm" action="<@siteLink path='search'/>" method="get">
     <#nested/>
     <fieldset>
       <legend>Search</legend>

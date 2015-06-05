@@ -1134,17 +1134,17 @@ $topbar-bg-color: $clr-header;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: 45px;
+$topbar-height:auto;
 $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: normal;
-$topbar-title-font-size: rem-calc(17);
+$topbar-title-font-size: $txt-size-default;
 
-// Style the top bar dropdown elements   $clr-highlight-text
+// Style the top bar dropdown elements
 $topbar-dropdown-bg: $topbar-bg-color;
-$topbar-dropdown-link-color: $clr-link-hover;
-$topbar-dropdown-link-bg: $white;
+$topbar-dropdown-link-color: $clr-body-text;
+$topbar-dropdown-link-bg: transparent;
 $topbar-dropdown-link-weight: normal;
  $topbar-dropdown-toggle-size: false;
  $topbar-dropdown-toggle-color: false;
@@ -1152,18 +1152,18 @@ $topbar-dropdown-link-weight: normal;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $plos-default;
-$topbar-link-color-hover: $grey-dark;
-$topbar-link-color-active: $grey-dark;
-$topbar-link-color-active-hover: $grey-dark;
+$topbar-link-color-hover: $clr-light-text;
+$topbar-link-color-active:  $clr-alert;
+$topbar-link-color-active-hover: $clr-light-text;
 $topbar-link-weight: normal;
-$topbar-link-font-size: rem-calc(20);
+$topbar-link-font-size: $txt-size-default;
 $topbar-link-hover-lightness: 0; //-10%; // Darken by 10%
-$topbar-link-bg-hover: $white;
-$topbar-link-bg-active: $white;
-$topbar-link-bg-active-hover: $white;
+$topbar-link-bg-hover:  $clr-highlight;
+$topbar-link-bg-active: $clr-alert;
+$topbar-link-bg-active-hover: $clr-highlight;
 $topbar-link-font-family: $body-font-family;
 $topbar-link-text-transform: none;
-$topbar-link-padding: $topbar-height / 3;
+$topbar-link-padding: 0;
 
 // $topbar-button-font-size: 0.75rem;
 // $topbar-button-top: 7px;

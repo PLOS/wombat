@@ -17,9 +17,7 @@ import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.controller.StaticResourceController;
 import org.ambraproject.wombat.util.CacheParams;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
@@ -41,9 +39,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
-/**
- *
- */
 public class AssetServiceImpl implements AssetService {
 
   private static final Logger logger = LoggerFactory.getLogger(AssetServiceImpl.class);
@@ -65,13 +60,12 @@ public class AssetServiceImpl implements AssetService {
   private static final int CACHE_TTL = 15 * 60;
 
   @Autowired
-  private SiteSet siteSet;
-
-  @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
   @Autowired
   private Cache cache;
+
+  private static final Object ASSET_COMPILATION_LOCK = new Object();
 
   /*
    * We cache data at two steps in the process of compiling assets:
@@ -82,6 +76,7 @@ public class AssetServiceImpl implements AssetService {
    */
 
   /*
+   *
    * A hash representing a list of asset source filenames (and the site they belong to).
    * Cached in order to tell whether we need to compile them.
    */
@@ -146,27 +141,35 @@ public class AssetServiceImpl implements AssetService {
   @Override
   public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site)
       throws IOException {
-    SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
-    String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
 
-    String compiledFilename = cache.get(sourceCacheKey);
-    if (compiledFilename == null) {
-      File concatenated = concatenateFiles(filenames, site, assetType.getExtension());
-      CompiledAsset compiled = compileAsset(assetType, concatenated);
-      concatenated.delete();
-      compiledFilename = compiled.digest.getFile().getName();
+    // Keep a global lock on asset compilation.  We do this because we've had a problem when we
+    // bring up wombat, and all the requests attempt to compile assets simultaneously, leading
+    // to high load.
+    // It might be possible to lock in a more granular fashion here (such as by assetType or
+    // sourceCacheKey), but that might be prone to deadlock.
+    synchronized (ASSET_COMPILATION_LOCK) {
+      SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
+      String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
 
-      // We cache both the file name and the file contents (if it is small enough) in memcache.
-      // In an ideal world, we would use the filename (including the hash of its contents) as
-      // the only cache key.  However, it's potentially expensive to calculate that key since
-      // you need the contents of the compiled file, which is why we do it this way.
-      cache.put(sourceCacheKey, compiledFilename, CACHE_TTL);
-      if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
-        String contentsCacheKey = compiled.digest.getCacheKey();
-        cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
+      String compiledFilename = cache.get(sourceCacheKey);
+      if (compiledFilename == null) {
+        File concatenated = concatenateFiles(filenames, site, assetType.getExtension());
+        CompiledAsset compiled = compileAsset(assetType, concatenated);
+        concatenated.delete();
+        compiledFilename = compiled.digest.getFile().getName();
+
+        // We cache both the file name and the file contents (if it is small enough) in memcache.
+        // In an ideal world, we would use the filename (including the hash of its contents) as
+        // the only cache key.  However, it's potentially expensive to calculate that key since
+        // you need the contents of the compiled file, which is why we do it this way.
+        cache.put(sourceCacheKey, compiledFilename, CACHE_TTL);
+        if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
+          String contentsCacheKey = compiled.digest.getCacheKey();
+          cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
+        }
       }
+      return AssetUrls.COMPILED_PATH_PREFIX + compiledFilename;
     }
-    return AssetUrls.COMPILED_PATH_PREFIX + compiledFilename;
   }
 
   /**

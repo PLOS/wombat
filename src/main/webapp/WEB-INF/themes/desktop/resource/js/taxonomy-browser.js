@@ -475,7 +475,7 @@
     ];
 
     // append our skeleton to the DOM
-    $('main').after(markup.join("\n"));
+    $('#taxonomyContainer').append(markup.join("\n"));
   }
 
   function buildColumnMarkup(data) {
@@ -635,7 +635,7 @@
   }
 
   function createUrlFromTermStack() {
-    var url =  'taxonomy/';
+    var url =  '/wombat/DesktopPlosOne/taxonomy/';
     for (var i = 1; i < term_stack.length; i++) {
       url += term_stack[i] + "/";
     }

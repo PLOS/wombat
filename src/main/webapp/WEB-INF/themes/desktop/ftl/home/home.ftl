@@ -9,7 +9,7 @@
 <#include "../common/journalStyle.ftl" />
 <body class="home ${journalStyle}">
 
-<#include "../common/header/header.ftl" />
+<#include "../common/header/headerContainer.ftl" />
 
 <#include "body.ftl" />
 <#include "cmsJS.ftl" />

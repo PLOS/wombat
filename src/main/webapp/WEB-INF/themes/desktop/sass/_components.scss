@@ -350,6 +350,13 @@ example | extension
   line-height: rem-calc(35);  // .fa-etc default to 44
 }
 
+.icon-caret-right {
+  @extend .icon-fa;
+  @extend .fa-caret-right;
+  font-size: $txt-size-medium-large;
+  line-height: rem-calc(35);  // .fa-etc default to 44
+}
+
 .icon-pointer{
   @extend .icon-fa;
   @extend .fa-hand-o-right;

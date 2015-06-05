@@ -129,7 +129,7 @@
 
     // catch unknown terms for debugging purposes
     if (typeof(term_cache[term]) == 'undefined') {
-      // console.log('term "' + term + '" not in cache.');
+      console.log('term "' + term + '" not in cache.');
     }
 
     var child_terms = getChildren(term);
@@ -144,12 +144,10 @@
 
   /**
    * a one-stop shop for displaying the children of the clicked term,
-   * handling breadcrumb updating, rendering, left/right arrow logic, etc.
+   * handling rendering, left/right arrow logic, etc.
    * once the data has been requested and made available to us.
    */
   function displayChildren(term, child_terms) {
-    // update breadcrumbs
-    generateBreadcrumbs();
 
     // generate new child list based term_cache keying off last item in term_stack
     // renderChildren(term_cache[term_stack[term_stack.length - 1]]);
@@ -172,9 +170,7 @@
     if ((hidden_right_cols > 0)) {
       animateCarousel('-=' + (column_width * hidden_right_cols));
     }
-
   }
-
 
   /**
    * Renders the list for the given children
@@ -188,7 +184,7 @@
       var data = $.map(terms_array, function (term) {
         return {
           'name': term,
-          'hasChild': (term_cache[term].length > 0),
+          'isLeaf': term_counts[term] == 0,
           'link': buildSubjectUrl(term),
           'count': term_counts[term]
         };
@@ -221,44 +217,6 @@
     turnColumnOn($('.level').last());
   }
 
-
-  /**
-   * Generates the breadcrumb template from the given items in the collection
-   * tag stack
-   */
-  function generateBreadcrumbs() {
-    // console.log("generateBreadcrumbs with term_stack = " + term_stack.join(" -> "));
-
-    // transforms the stack of terms into an array of objects that look like this
-    //   [
-    //     { level: '', label: '' }
-    //   ]
-    function createDataObject(term_stack) {
-      var data = $.map(term_stack, function (term, idx) {
-        return {
-          label: term,
-          level: idx // level is 1-based
-        }
-      });
-
-      // remove the first item ("/"); we don't need it in the breadcrumb
-      data.shift();
-
-      // console.log("breadcrumb data object (post-shift): ",  data);
-
-      return data;
-    }
-
-    // create the breadcrumb markup
-    var markup = buildBreadcrumbMarkup({
-      items: createDataObject(term_stack)
-    });
-
-    // update the breadcrumb div with the new content
-    $('.breadcrumb').replaceWith(markup);
-  }
-
-
   // EVENT HANDLERS ==========================================================
 
   /**
@@ -270,7 +228,8 @@
 
     // bail out if the term is a leaf node, so the link can go through normally
     if (clicked_el.hasClass('no-children')) {
-      return true;
+      alert('nochild');
+      //return true;
     }
 
     // cancel the event
@@ -286,38 +245,6 @@
     var closest_level_el = clicked_el.closest('.level');
     closest_level_el.find('a').removeClass('active');
     clicked_el.addClass('active');
-  }
-
-  /**
-   * Handles the click event on the breadcrumb links
-   */
-  function handleBreadcrumbClick(event) {
-    // console.log(">>>> CLICK <<<<<")
-    var clicked_el = $(event.target);
-
-    // cancel the event
-    event.preventDefault();
-
-    // determine what level we're at
-    var clicked_level_num = clicked_el.data('level');
-
-    // pan the columns to allow us to show the children without animating
-    // again later. basically, whatever it takes to get the clicked column to
-    // the #2 pos.
-    var left_pos = (clicked_level_num >= 2) ? ((clicked_level_num - 2) * -column_width) : 0;
-
-    animateCarousel(left_pos);
-
-    // if we're clicking on a term in the breadcrubm, we should not
-    // remove the immediate children of the term, as that is what we'll be
-    // showing. therefore increase the level num by 1.
-    removeTermsAboveLevel(clicked_level_num + 1);
-
-    // update breadcrumbs
-    generateBreadcrumbs();
-
-    // enable the last level
-    turnColumnOn($('.level').last());
   }
 
   /**
@@ -537,7 +464,6 @@
     var markup = [
       '<div id="taxonomy-browser" class="areas">',
       '<div class="wrapper">',
-      '<p class="breadcrumb"></p>',
       '<div class="levels">',
       '<div class="levels-container cf">',
       '<div class="levels-position"></div>',
@@ -550,15 +476,15 @@
     ];
 
     // append our skeleton to the DOM
-    $('#pagehdr-wrap').after(markup.join("\n"));
+    $('main').after(markup.join("\n"));
   }
 
   function buildColumnMarkup(data) {
     var terms = $.map(data.items, function (item, idx) {
       return [
         '<li>',
-        '<a href="' + item.link + '"' + (item.hasChild ? '' : ' class="no-children"') + ' data-level="' + data.level + '">',
-        item.name + (item.hasChild ? '' : ' (' + item.count + ')'),
+        '<a href="' + item.link + '"' + (item.isLeaf ? ' class="no-children"' : '') + ' data-level="' + data.level + '">',
+        item.name + (item.isLeaf ? '' : ' (' + item.count + ')'),
         '</a>',
         '</li>'
       ].join("\n");
@@ -588,29 +514,7 @@
   }
 
 
-  function buildBreadcrumbMarkup(data) {
-    var crumbs = $.map(data.items, function (name, index) {
-      return [
-        '<span class="level' + name.level + '">',
-        '<a href="' + buildSubjectUrl(name.label) + '" data-level="' + name.level + '">' + name.label + '</a>',
-        (((index + 1) < data.items.length) ? " / " : ""),
-        '</span>'
-      ].join("\n");
-    });
-
-    var markup = [
-      '<p class="breadcrumb">',
-      '<strong>Browse Subject Areas:</strong>',
-      crumbs.join("\n"),
-      '</p>'
-    ].join("\n");
-
-    // console.log(markup);
-
-    return markup;
-  }
-
-  /**
+    /**
    * Build out the api string based on which items are in the collection
    *
    * @param string path_prefix URL prefix (including trailing slash)
@@ -651,6 +555,7 @@
 
     //Replace all spaces with "_" and encode the special characters
     if ((typeof(last_term) !== 'undefined') && (last_term !== '/')) {
+      last_term = "" + last_term;
       url = url + encodeURIComponent(last_term.replace(new RegExp("\\s", 'g'), "_").toLowerCase());
     }
 
@@ -659,10 +564,10 @@
   }
 
 
-  // get the term from the markup and trim it of whitespace.
+  // get the term from the markup and trim it of whitespace and child count
   function getTermFromElement(el) {
     // FIXME: this will get more complicated if we need to deal with entities, etc.
-    return $.trim(el.html());
+    return $.trim(el.html().replace(/\(.*?\)/g, ""));
   }
 
   /**
@@ -670,12 +575,27 @@
    */
   function loadTerms(parent_term) {
 
+    //terms is a simple list of strings but code expects a map - term to children terms
+    //todo: Need to make multiple API calls to fill out child terms for each term
     function handleSuccess(terms, textStatus, xhr) {
 
+      console.log("JSON load successful");
+
+      var child_terms = [];
+      var parent = '/';
       for (var i = 0; i < terms.length; i++) {
         var fullPath = terms[i].subject;
         var levels = fullPath.split('/');
         var leaf = levels[levels.length - 1];
+        child_terms.push(leaf);
+
+        var childCount = terms[i].childCount;
+        if (childCount != undefined && childCount > 0) {
+          term_counts[leaf] = childCount;
+        } else {
+          term_counts[leaf] = 0;
+        }
+        term_cache[leaf] = [];//loadTerms(fullPath);//todo?: load children once here -- getChildren(fullPath);???
 
         // Get parent term if there is one.  Only do this once for efficiency since all terms
         // will have the same parent.
@@ -689,29 +609,9 @@
         }
       }
 
-      // iterate over the returned terms, pulling out the child and
-      // grandchild terms
-      //
-      // NOTE: 'terms' are referred to as 'categories' in the API response
-      var child_terms = $.map(terms, function (grandchild_terms, term) {
-        // store the grandchild terms in the cache. (no children will be
-        // stored as an empty array)
-        if (grandchild_terms.length > 0) {
-          term_cache[term] = grandchild_terms;
-        } else {
-          term_cache[term] = [];
-        }
-        return term;
-      });
-
-      $.each(data.counts, function(k, v) {
-        term_counts[k] = v;
-      });
-
       // add the (sorted) child_terms for this parent to the cache
       term_cache[parent_term] = child_terms.sort();
 
-      console.log("JSON load successful");
     }
 
     function handleFailure(jqXHR, textStatus, errorThrown) {
@@ -734,11 +634,9 @@
     // the children due to the "has children" arrow (we can render the list
     // of terms, but we can't add the arrows without an additional request)
 
-    var url = 'taxonomy';
-    if (parent_term) {
+    var url = 'taxonomy/' + createUrlFromTermStack();
+    if (parent_term != '/') {
       url += parent_term;
-    } else {
-      url += '/';
     }
 
     $.ajax({
@@ -751,26 +649,13 @@
     return true;
   }
 
-  // Loads the child terms given a parent term.  If the parent evaluates to false,
-  // the root taxonomy terms will be loaded.
-  self.loadTerms = function (parent, pushState) {
-    var url = 'taxonomy';
-    if (parent) {
-      url += parent;
-    } else {
-      url += '/';
+  function createUrlFromTermStack() {
+    var url = ""
+    for (var i = 1; i < term_stack.length; i++) {
+      url += term_stack[i] + "/";
     }
-    $.ajax(url, {
-      type: 'GET',
-      success: function (data) {
-        self.renderTerms(data, pushState);
-      },
-      error: function (xOptions, textStatus) {
-        console.log('Error loading term ' + parent + ': ' + textStatus);
-      }
-    });
-  };
-
+    return url;
+  }
 
   function removeTermsAboveLevel(dest_level) {
     // console.log("term_stack BEFORE removing to level " + dest_level + " " + term_stack.join(" -> "));
@@ -898,9 +783,6 @@
     // for clicking on terms in columns
     $delegate.on('click', 'ul li a', handleTermClick);
 
-    // for clicking on the terms in the breadcrumb
-    $('.wrapper').on('click', '.breadcrumb a', handleBreadcrumbClick);
-
     // for panning the carousel left and right (navigating up and down the hierarchy)
     $el.on('click', '.prev', handleCarouselClick);
     $el.on('click', '.next', handleCarouselClick);
@@ -927,9 +809,8 @@
     attachEventHandlers();
 
     // immediately get the root-level terms and render the children so it's
-    // ready for action when the user reveals it. note: the hardcoded 0
-    // refers to the "level" we're currently displaying.
-    displayTerm('/', 0);
+    // ready for action when the user reveals it.
+    displayTerm('/', 0 /*level*/);
 
     // grab the column width for use later
     column_width = $('.levels-position .level').outerWidth(true);

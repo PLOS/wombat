@@ -47,34 +47,27 @@ public class CollectionsContentController extends WombatController {
   private EditorialContentService editorialContentService;
 
   @RequestMapping(value = {"/collection/{pageName}", "/{site}/collection/{pageName}"})
-  public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
+  public String renderCollectionsContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 
-//    Theme theme = site.getTheme();
-//    Map<String, Object> pageConfig = theme.getConfigMap("siteContent");
-//
-//    String repoKeyPrefix = (String) pageConfig.get("contentRepoKeyPrefix");
     String repoKeyPrefix = "desktop.collections";
-//    if (repoKeyPrefix == null) {
-//      throw new RuntimeConfigurationException("Content repo prefix not configured for theme " + theme.toString());
-//    }
     String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
-    String cacheKey = "hostedContent:" + repoKey;
+    String cacheKey = "collectionsContent:" + repoKey;
 
-    Optional<Integer> version = Optional.absent(); // versioning is not supported for site content
+    Optional<Integer> version = Optional.absent(); // versioning is not supported for collections content
     try {
 
-      String jsonString = editorialContentService.getJson("hostedContent", repoKey);
-      model.addAttribute("hostedContentRepoKey", repoKey);
-      model.addAttribute("hostedData", JSON.parse(jsonString));
+      String jsonString = editorialContentService.getJson("collectionsContent", repoKey);
+      model.addAttribute("collectionsContentRepoKey", repoKey);
+      model.addAttribute("collectionsData", JSON.parse(jsonString));
 
     } catch (EntityNotFoundException e) {
       // Return a 404 if no object found.
       throw new NotFoundException(e);
     }
 
-    return site + "/ftl/hostedContent/container";
+    return site + "/ftl/collectionsContent/container";
   }
 
 }

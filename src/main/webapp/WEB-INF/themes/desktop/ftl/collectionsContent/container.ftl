@@ -13,11 +13,11 @@
 
 <#include "../common/header/header.ftl" />
 
-<#if hostedData.content??>
-  ${hostedData.content}
+<#if collectionsData.content??>
+  ${collectionsData.content}
 </#if>
 
-<div data-service="ember" data-${hostedData.name}-container>
+<div data-service="ember" data-${collectionsData.name}-container>
     LEMURS!!!!
 </div>
 
@@ -26,7 +26,7 @@
 
 <@renderJs />
 
-<#list hostedData.js_sources as js_source>
+<#list collectionsData.js_sources as js_source>
 <script src="<@siteLink path='indirect/'/>${js_source}" type="text/javascript"></script>
 </#list>
 

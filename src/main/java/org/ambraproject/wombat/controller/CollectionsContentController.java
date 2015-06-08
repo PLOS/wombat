@@ -46,7 +46,7 @@ public class CollectionsContentController extends WombatController {
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(value = {"/collection/{pageName}", "/{site}/collection/{pageName}"})
+  @RequestMapping(value = {"/c/{pageName}", "/{site}/c/{pageName}"})
   public String renderCollectionsContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 

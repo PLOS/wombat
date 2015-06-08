@@ -40,6 +40,23 @@
       <#assign currentPage = (RequestParameters.page!1)?number />
       <#assign path = "search" />
       <#include "../common/paging.ftl" />
+
+      <#if numPages gt 1>
+        <div class="search-results-num-per-page">
+          Results per page
+          <div class="search-results-num-per-page-selector">
+
+            <#-- TODO: wire this up so it acutally works.  Waiting to do that until the other
+                 form-related widgets (relevance, date, etc) are present.                     -->
+            <select name="resultsPerPage" id="resultsPerPage" onchange="this.form.submit()">
+              <option value="15" <#if (selectedResultsPerPage == 15)>selected="selected"</#if>>15</option>
+              <option value="30" <#if (selectedResultsPerPage == 30)>selected="selected"</#if>>30</option>
+              <option value="60" <#if (selectedResultsPerPage == 60)>selected="selected"</#if>>60</option>
+            </select>
+          </div>
+        </div>
+      </#if>
+
     </article>
   </main>
 

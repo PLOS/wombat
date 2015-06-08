@@ -41,17 +41,24 @@ main.search-results-body {
 }
 
 // Paging controls (shared with mobile).
+.nav-pagination {
+  display: inline;
+}
 
-.number, .switch, .skip {
-  background-color: #c2c2c2;
+@mixin search-results-rounded-control {
   display: inline-block;
-  text-align: center;
   font-weight: bold;
   font-size: $txt-size-medium;
   line-height: rem-calc(20px);
   padding: rem-calc(0 6px);
   min-width: rem-calc(16px);
   border-radius: rem-calc(4px);
+}
+
+.number, .switch, .skip {
+  @include search-results-rounded-control;
+  background-color: #c2c2c2;
+  text-align: center;
   margin: rem-calc(0 1px);
 }
 
@@ -79,3 +86,27 @@ main.search-results-body {
 .active {
   @extend %brand-background;
 }
+
+.search-results-num-per-page {
+  display: inline-block;
+  float: right;
+  vertical-align: top;
+  width: rem-calc(160px);
+  margin: 0 0 0 0;
+  font-size: $txt-size-medium-large;
+}
+
+.search-results-num-per-page-selector {
+  padding: 0;
+  width: auto;
+
+  select {
+    @include search-results-rounded-control;
+    @extend %brand-background;
+    width: 100px;
+    option {
+      background-color: #c2c2c2;
+    }
+  }
+}
+

@@ -35,8 +35,6 @@ import java.util.Map;
 public class SearchController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(SearchController.class);
 
-  private static final int RESULTS_PER_PAGE = 15;
-
   @Autowired
   private SearchService searchService;
 
@@ -47,7 +45,9 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "author", required = false) String author,
                        @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
-                       @RequestParam(value = "dateRange", required = false) String dateRangeParam)
+                       @RequestParam(value = "dateRange", required = false) String dateRangeParam,
+                       @RequestParam(value = "resultsPerPage", required = false, defaultValue = "15")
+                       Integer resultsPerPage)
           throws IOException {
     if (query == null) {
       log.warn("Received search request in {} with null query param (possible apache rewrite issue)", site);
@@ -57,9 +57,9 @@ public class SearchController extends WombatController {
     }
     int start = 0;
     if (page != null) {
-      start = (page - 1) * RESULTS_PER_PAGE;
+      start = (page - 1) * resultsPerPage;
     }
-    model.addAttribute("resultsPerPage", RESULTS_PER_PAGE);
+    model.addAttribute("resultsPerPage", resultsPerPage);
 
     SolrSearchService.SolrSortOrder sortOrder = SolrSearchService.SolrSortOrder.RELEVANCE;
     if (!Strings.isNullOrEmpty(sortOrderParam)) {
@@ -78,14 +78,15 @@ public class SearchController extends WombatController {
     // http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/view.html#view-velocity
     model.addAttribute("selectedSortOrder", sortOrder);
     model.addAttribute("selectedDateRange", dateRange);
+    model.addAttribute("selectedResultsPerPage", resultsPerPage);
 
     Map<?, ?> searchResults;
     if (!Strings.isNullOrEmpty(subject)) {
-      searchResults = searchService.subjectSearch(subject, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);
+      searchResults = searchService.subjectSearch(subject, site, start, resultsPerPage, sortOrder, dateRange);
     } else if (!Strings.isNullOrEmpty(author)) {
-      searchResults = searchService.authorSearch(author, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);
+      searchResults = searchService.authorSearch(author, site, start, resultsPerPage, sortOrder, dateRange);
     } else {
-      searchResults = searchService.simpleSearch(query, site, start, RESULTS_PER_PAGE, sortOrder, dateRange);
+      searchResults = searchService.simpleSearch(query, site, start, resultsPerPage, sortOrder, dateRange);
     }
     model.addAttribute("searchResults", searchResults);
     return site.getKey() + "/ftl/search/searchResults";

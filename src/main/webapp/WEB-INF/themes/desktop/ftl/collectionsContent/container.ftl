@@ -6,6 +6,7 @@
 <#assign depth = 0 />
 <#assign title = '' />
 <#assign cssFile="site-content.css"/>
+<#assign externalCssFile="true"/>
 
 <#include "head.ftl" />
 <#include "../common/journalStyle.ftl" />
@@ -16,6 +17,8 @@
 <#if collectionsData.content??>
   ${collectionsData.content}
 </#if>
+
+
 
 <div data-service="ember" data-${collectionsData.name}-container>
     LEMURS!!!!

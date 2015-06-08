@@ -1,6 +1,6 @@
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
-
+<#--allows for page specific css-->
 <#macro pageCSS>
 
   <#if !cssFile?has_content>
@@ -8,6 +8,17 @@
   </#if>
 
   <@cssLink target="resource/css/${cssFile}"/>
+
+</#macro>
+<#--allows for external css to be brought in via the content repo-->
+<#macro externalCSS>
+
+  <#if externalCssFile?if_exists>
+    <#list collectionsData.css_sources as css_source>
+    <link rel="stylesheet" type="text/css"
+          href="<@siteLink path='indirect/'/>${css_source}"/>
+    </#list>
+  </#if>
 
 </#macro>
 
@@ -18,6 +29,8 @@
   <@pageCSS/>
 
   <@renderCssLinks />
+
+  <@externalCSS />
     <!--[if IE 8]>
   <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />"/>
     <![endif]-->

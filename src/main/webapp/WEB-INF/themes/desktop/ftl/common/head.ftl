@@ -21,6 +21,12 @@
   </#if>
 
 </#macro>
+<#--allows for external MEta tags-->
+<#macro externalMetaTags>
+  <#--<#list collectionsData.meta_tag as meta_tag>-->
+  <#--<meta name="${meta_tag.name}" content="${meta_tag.content}" />-->
+<#--</#list>-->
+</#macro>
 
 
 <head prefix="og: http://ogp.me/ns#">
@@ -55,6 +61,10 @@
 <#-- // TODO: NEED BACKEND
   <meta name="description" content="${freemarker_config.getMetaDescription(journalContext)}"/>
   <meta name="keywords" content="${freemarker_config.getMetaKeywords(journalContext)}"/>-->
+
+
+<#--External MetaTags-->
+<@externalMetaTags />
 
 <#if article??>
 <#-- // citation meta tags -->

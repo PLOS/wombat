@@ -7,6 +7,7 @@
 <#assign title = '' />
 <#assign cssFile="site-content.css"/>
 <#assign externalCssFile="true"/>
+<#assign externalMetaTags="true"/>
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />

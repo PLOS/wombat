@@ -23,9 +23,13 @@
 </#macro>
 <#--allows for external MEta tags-->
 <#macro externalMetaTags>
-  <#--<#list collectionsData.meta_tag as meta_tag>-->
-  <#--<meta name="${meta_tag.name}" content="${meta_tag.content}" />-->
-<#--</#list>-->
+  <#if externalMetaTags??>
+
+  <#list collectionsData.meta_tags as meta_tag>
+  <meta name="${meta_tag.name}" content="${meta_tag.content}" />
+ </#list>
+  </#if>
+
 </#macro>
 
 

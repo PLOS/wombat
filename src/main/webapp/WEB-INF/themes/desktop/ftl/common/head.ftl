@@ -13,7 +13,7 @@
 <#--allows for external css to be brought in via the content repo-->
 <#macro externalCSS>
 
-  <#if externalCssFile?if_exists>
+  <#if externalCssFile??>
     <#list collectionsData.css_sources as css_source>
     <link rel="stylesheet" type="text/css"
           href="<@siteLink path='indirect/'/>${css_source}"/>

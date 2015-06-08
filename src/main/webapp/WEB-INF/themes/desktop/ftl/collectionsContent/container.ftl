@@ -8,7 +8,7 @@
 <#assign cssFile="site-content.css"/>
 <#assign externalCssFile="true"/>
 
-<#include "head.ftl" />
+<#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <body class="static ${journalStyle}">
 

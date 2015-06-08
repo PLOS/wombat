@@ -50,7 +50,7 @@ public class CollectionsContentController extends WombatController {
   public String renderCollectionsContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 
-    String repoKeyPrefix = "desktop.collections";
+    String repoKeyPrefix = "c";
     String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
     String cacheKey = "collectionsContent:" + repoKey;

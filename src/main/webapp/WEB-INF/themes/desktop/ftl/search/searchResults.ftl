@@ -35,6 +35,11 @@
           </dd>
         </#list>
       </dl>
+
+      <#assign numPages = (searchResults.numFound / resultsPerPage)?ceiling />
+      <#assign currentPage = (RequestParameters.page!1)?number />
+      <#assign path = "search" />
+      <#include "../common/paging.ftl" />
     </article>
   </main>
 

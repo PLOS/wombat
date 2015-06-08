@@ -39,3 +39,43 @@ main.search-results-body {
 .search-results-doi {
   margin-bottom: $line-height;
 }
+
+// Paging controls (shared with mobile).
+
+.number, .switch, .skip {
+  background-color: #c2c2c2;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  font-size: $txt-size-medium;
+  line-height: rem-calc(20px);
+  padding: rem-calc(0 6px);
+  min-width: rem-calc(16px);
+  border-radius: rem-calc(4px);
+  margin: rem-calc(0 1px);
+}
+
+.switch {
+
+  // Hide the text that is embedded and display an icon instead.
+  text-indent: -9999px;
+  height: rem-calc(20px);
+  width: rem-calc(20px);
+  white-space: nowrap;
+  background-color: $black !important;
+}
+
+.previous {
+  background: image-url('icon.sprite.page.gif') no-repeat 0 0;
+  background-position: 0 -24px;
+  margin: rem-calc(0 50px 0 0);
+}
+
+.next {
+  background: image-url('icon.sprite.page.gif') no-repeat 0 0;
+  margin: rem-calc(0 0 0 50px);
+}
+
+.active {
+  @extend %brand-background;
+}

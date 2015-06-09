@@ -1,3 +1,9 @@
+.rounded {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
 .areas {
   background: #242424;
 }
@@ -8,238 +14,237 @@
   margin: 0 auto;
 }
 
-/* breadcrumb */
-.areas .breadcrumb {
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 18px;
-  color: #fff;
-  margin: 0 0 31px;
-}
-
-.areas .breadcrumb strong {
-  color: #ccc;
-  padding: 0 5px 0 0;
-}
-
-.areas .breadcrumb a {
-  color: #f8af2d;
-}
-
 /* levels */
 #taxonomy-browser {
   /*display: none;*/
   border-bottom: solid #efefef 21px;
-}
 
-.levels {
-  padding: 0 41px;
-  position: relative;
-}
+  .next {
+    @extend .icon-chevron-right;
+    color: white;
+    text-align: center;
+    //todo: figure out why we need this content in IE and FF
+    &:before{
+      content: "\f054";
+    }
+  }
 
-.levels .prev, .levels .next {
-  display: none;
-  width: 35px;
-  height: 41px;
-  @extend .icon-caret-right;
-  cursor: default;
-  position: absolute;
-  top: 97px;
-  left: 0;
-}
+  .prev {
+    @extend .icon-chevron-left;
+    color: white;
+    text-align: center;
+  }
 
-.levels .next {
-  background-position: -35px 0;
-  left: auto;
-  right: 0;
-}
+  .levels {
+    padding: 0 41px;
+    position: relative;
+  }
 
-.levels .prev.active {
-  background-position: 0 -41px;
-  cursor: pointer;
-}
+  .levels .prev, .levels .next {
+    display: none;
+    width: 35px;
+    height: 41px;
+    cursor: default;
+    position: absolute;
+    top: 97px;
+    left: 0;
+  }
 
-.levels .next.active {
-  background-position: -35px -41px;
-  cursor: pointer;
-}
+  .levels .next {
+    left: auto;
+    right: 0;
+  }
 
-.levels .prev.active:hover {
-  background-position: 0 -82px;
-}
+  .levels .prev.active, .levels .next.active {
+    cursor: pointer;
+  }
 
-.levels .next.active:hover {
-  background-position: -35px -82px;
-}
+  .levels-container {
+    width: 878px;
+    height: 232px;
+    overflow: hidden;
+    position: relative;
+  }
 
-.levels-container {
-  width: 878px;
-  height: 232px;
-  overflow: hidden;
-  position: relative;
-}
+  .touch .levels-container {
+    overflow-x: auto;
+  }
 
-.touch .levels-container {
-  overflow-x: auto;
-}
+  .levels-container::-webkit-scrollbar {
+    display: none;
+  }
 
-.levels-container::-webkit-scrollbar {
-  display: none;
-}
+  .levels-position {
+    width: 99999px;
+    padding: 21px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
-.levels-position {
-  width: 99999px;
-  padding: 21px 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+  .level {
+    float: left;
+    width: 286px;
+    height: 164px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #666;
+    padding: 12px 15px;
+    border: 1px solid #616161;
+    margin: 0 7px 0 0;
+    position: relative;
+    @extend .rounded;
+  }
 
-.level {
-  float: left;
-  width: 256px;
-  height: 164px;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 18px;
-  color: #666;
-  padding: 12px 15px;
-  border: 1px solid #616161;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  margin: 0 7px 0 0;
-  position: relative;
-}
+  .level-scroll {
+    width: 286px;
+    height: 158px;
+    margin: -12px -15px;
+    overflow: hidden;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    @extend .rounded;
+  }
 
-.level-scroll {
-  width: 286px;
-  height: 188px;
-  margin: -12px -15px;
-  overflow: hidden;
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-}
+  .touch .level-scroll {
+    overflow: auto;
+  }
 
-.touch .level-scroll {
-  overflow: auto;
-}
+  .level-scroll::-webkit-scrollbar {
+    display: none;
+  }
 
-.level-scroll::-webkit-scrollbar {
-  display: none;
-}
+  .level ul {
+    width: 286px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
-.level ul {
-  width: 286px;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+  .level ul li {
+    margin: 0 0 2px;
+  }
 
-.level ul li {
-  margin: 0 0 2px;
-}
+  .level ul li a {
+    display: block;
+    padding: 9px 20px 9px 15px;
+  }
 
-.level ul li a {
-  display: block;
-  padding: 9px 20px 9px 15px;
-}
+  .level .level-scroll a {
+    text-decoration: none;
+    color: #333;
+  }
 
-.level .level-scroll a {
-  text-decoration: none;
-  color: #333;
-}
+  .no-touch .level .level-scroll a:hover {
+    color: #fff;
+    background: #3c63af;
+    &::after{
+      @extend .icon-caret-right;
+      @extend .menu-icon-right;
+    }
+  }
 
-.no-touch .level .level-scroll a:hover {
-  color: #fff;
-  background: url(../resource/img/level-arrow-selected.png) right 50% no-repeat #3c63af;
-}
+  a.no-children {
+    background-image: none !important;
+  }
 
-a.no-children {
-  background-image: none !important;
-}
+  /* active levels */
+  .level-active {
+    border: 1px solid $grey-light;
+    background: $grey-light;
+  }
 
-/* active levels */
-.level-active {
-  border: 1px solid #efefef;
-  background: #efefef;
-}
+  .level-active li a {
+    &::after{
+      @extend .icon-caret-right;
+      @extend .menu-icon-right;
+    }
+  }
 
-.level-active a {
-  background: image-url("level-arrow-active.png") right 50% no-repeat;
-}
+  .level-active-scroll {
+    display: none;
+    width: 286px;
+    height: 24px;
+    position: absolute;
+    top: -18px;
+    left: -1px;
+    text-align: center;
+    background-color: $grey-light;
+    line-height: 20px;
+    @extend .rounded;
+  }
 
-.level-active .up, .level-active .down {
-  display: none;
-  width: 288px;
-  height: 21px;
-  background: url(../resource/img/level-scroll.png) no-repeat;
-  position: absolute;
-  top: -22px;
-  left: -1px;
-}
+  .level-active .up {
+    border-bottom: 3px solid $grey-light;
+    @extend .level-active-scroll;
+    @extend .icon-angle-up;
+    @extend .rounded;
+  }
 
-.level-active-over .up, .level-active-over .down {
-  display: block;
-}
+  .level-active .down {
+    @extend .level-active-scroll;
+    @extend .icon-angle-down;
+    @extend .rounded;
+    border-top: 3px solid $grey-light;
+    top: auto;
+    bottom: -18px;
+  }
 
-.level-active .up {
-  border-bottom: 3px solid #efefef;
-}
+  .level-active-over .up, .level-active-over .down {
+    display: block;
+  }
 
-.level-active .down {
-  border-top: 3px solid #efefef;
-  background-position: 0 -21px;
-  top: auto;
-  bottom: -22px;
-}
+  .level-active .up:hover {
+    background-position: 0 -42px;
+  }
 
-.level-active .up:hover {
-  background-position: 0 -42px;
-}
+  .level-active .down:hover {
+    background-position: 0 -63px;
+  }
 
-.level-active .down:hover {
-  background-position: 0 -63px;
-}
+  /* levels with selections made */
+  .level-selection {
+    border: 1px solid #3b3b3b;
+    background: #3b3b3b;
+  }
 
-/* levels with selections made */
-.level-selection {
-  border: 1px solid #3b3b3b;
-  background: #3b3b3b;
-}
+  .level-selection .level-scroll a {
+    color: #999;
+    &::after{
+      @extend .icon-caret-right;
+      @extend .menu-icon-right;
+    }
+  }
 
-.level-selection .level-scroll a {
-  color: #999;
-  background: url(../resource/img/level-arrow-selection.png) right 50% no-repeat;
-}
+  .level-selection .level-scroll a.active {
+    color: #fff;
+    background: #3c63af;
+  }
 
-.level-selection .level-scroll a.active {
-  color: #fff;
-  background: url(../resource/img/level-arrow-selected.png) right 50% no-repeat #3c63af;
-}
+  /* levels disabled */
+  .areas .disabled {
+    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+  }
 
-/* levels disabled */
-.areas .disabled {
-  -webkit-opacity: 0.5;
-  -moz-opacity: 0.5;
-  filter: alpha(opacity=50);
-  opacity: 0.5;
-}
+  .areas .disabled a {
+    text-decoration: none;
+    cursor: default;
+  }
 
-.areas .disabled a {
-  text-decoration: none;
-  cursor: default;
-}
+  .areas .disabled a:hover {
+    color: #999;
+    background: url(../resource/img/level-arrow-selection.png) right 50% no-repeat;
+  }
 
-.areas .disabled a:hover {
-  color: #999;
-  background: url(../resource/img/level-arrow-selection.png) right 50% no-repeat;
-}
-
-.areas .disabled .selected a {
-  color: #fff;
-  background: url(../resource/img/level-arrow-selected.png) right 50% no-repeat #3c63af;
+  .areas .disabled .selected a {
+    color: #fff;
+    background: url(../resource/img/level-arrow-selected.png) right 50% no-repeat #3c63af;
+  }
 }

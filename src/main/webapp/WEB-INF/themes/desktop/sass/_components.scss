@@ -261,10 +261,6 @@ have a fixed width and height (but it's not required).
   }
 }
 
-//font awesome icon: arrow after link
-//use with ::after
-//example: .more-link::after { @extend .more-icon }
-
 /*doc
 ---
 title: icons
@@ -275,6 +271,14 @@ category: typography
 We use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
 For icons after text:
 use  with `::after` example: `.more-link::after { @extend .more-icon }`
+.next {
+    @extend .icon-chevron-right;
+    color: white;
+
+    &:before{
+      content: "\f054";
+    }
+  }
 
 example | extension
 --------|----------
@@ -350,10 +354,45 @@ example | extension
   line-height: rem-calc(35);  // .fa-etc default to 44
 }
 
+.icon-caret-left {
+  @extend .icon-fa;
+  content: '\f0d9';
+  font-size: $txt-size-medium-large;
+  line-height: rem-calc(35);  // .fa-etc default to 44
+}
+
 .icon-caret-right {
   @extend .icon-fa;
-  @extend .fa-caret-right;
+  content: '\f0da';
   font-size: $txt-size-medium-large;
+  line-height: rem-calc(35);  // .fa-etc default to 44
+}
+
+.icon-angle-up {
+  @extend .icon-fa;
+  @extend .fa-angle-up;
+  font-size: $txt-size-medium-large;
+  line-height: rem-calc(35);  // .fa-etc default to 44
+}
+
+.icon-angle-down {
+  @extend .icon-fa;
+  @extend .fa-angle-down;
+  font-size: $txt-size-medium-large;
+  line-height: rem-calc(35);  // .fa-etc default to 44
+}
+
+.icon-chevron-left {
+  @extend .icon-fa;
+  @extend .fa-chevron-left;
+  font-size: $txt-size-xlarge;
+  line-height: rem-calc(35);  // .fa-etc default to 44
+}
+
+.icon-chevron-right {
+  @extend .icon-fa;
+  @extend .fa-chevron-right;
+  font-size: $txt-size-xlarge;
   line-height: rem-calc(35);  // .fa-etc default to 44
 }
 
@@ -373,6 +412,12 @@ example | extension
   top: -9999px;
   left: -9999px;
 }
+
+.menu-icon-right {
+  float: right;
+  line-height: 20px;
+}
+
 /// use with span
 // $width and $height use rem calc so only pixels are needed, $width, $height, $img are required  .
 @mixin icon-image($width, $height,$img, $offset: 0 0, $align: middle) {

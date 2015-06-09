@@ -467,8 +467,8 @@
       '<div class="levels-container cf">',
       '<div class="levels-position"></div>',
       '</div>',
-      '<a href="#" class="prev"></a>',
-      '<a href="#" class="next active"></a>',
+      '<a href="#" class="prev">&nbsp;</a>',
+      '<a href="#" class="next active">&nbsp; </a>',
       '</div>',
       '</div>',
       '</div>'
@@ -483,7 +483,7 @@
       return [
         '<li>',
         '<a href="' + item.link + '"' + (item.isLeaf ? ' class="no-children"' : '') + ' data-level="' + data.level + '">',
-        item.name + (item.isLeaf ? '' : ' (' + item.count + ')'),
+        item.name + (item.isLeaf ? ' (' + item.count + ')' : ''),
         '</a>',
         '</li>'
       ].join("\n");
@@ -498,11 +498,11 @@
       '</ul>',
       '</div>' ];
 
-    //We don't need the up / down arrows for less then 4 items
+    //We don't need the up / down arrows for less then 3 items
     //console.log(data.items.length);
 
-    if(data.items.length > 4) {
-      markup.push(['<a href="#" class="up"></a>', '<a href="#" class="down"></a>']);
+    if(data.items.length > 3) {
+      markup.push(['<a href="#" class="up"></a> <a href="#" class="down"></a>']);
     }
 
     markup.push(['</div>']);

@@ -6,8 +6,8 @@
 <#assign depth = 0 />
 <#assign title = '' />
 <#assign cssFile="site-content.css"/>
-<#assign externalCssFile="true"/>
-<#assign externalMetaTags="true"/>
+<#assign externalCssFile=true/>
+<#assign externalMetaTags=true/>
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
@@ -15,14 +15,13 @@
 
 <#include "../common/header/header.ftl" />
 
-<#if collectionsData.content??>
-  ${collectionsData.content}
+<#if externalData.content??>
+  ${externalData.content}
 </#if>
 
 
 
-<div data-service="ember" data-${collectionsData.name}-container>
-    LEMURS!!!!
+<div data-service="ember" data-${externalData.name}-container>
 </div>
 
 <#include "../common/footer/footer.ftl" />
@@ -30,7 +29,7 @@
 
 <@renderJs />
 
-<#list collectionsData.js_sources as js_source>
+<#list externalData.js_sources as js_source>
 <script src="<@siteLink path='indirect/'/>${js_source}" type="text/javascript"></script>
 </#list>
 

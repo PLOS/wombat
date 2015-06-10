@@ -21,7 +21,7 @@
 
 
 <#if externalData.name??>
-  <div data-service="ember" data-${externalData.name}-container/>
+  <div data-service="${externalServiceName}" data-${externalData.name}-container/>
 </#if>
 
 <#include "../common/footer/footer.ftl" />

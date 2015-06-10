@@ -13,19 +13,9 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
-import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
-import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
-import org.ambraproject.wombat.util.CacheParams;
-import org.apache.commons.io.IOUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.mortbay.util.ajax.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,38 +24,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
-import java.io.Reader;
-import java.util.Map;
 
 /**
  * Controller serves a container page for externally generated content
  */
 @Controller
-public class CollectionsContentController extends WombatController {
+public class ExternalContentController extends WombatController {
 
   @Autowired
   private EditorialContentService editorialContentService;
 
   @RequestMapping(value = {"/c/{pageName}", "/{site}/c/{pageName}"})
-  public String renderCollectionsContent(Model model, @SiteParam Site site, @PathVariable String pageName)
+  public String renderExternalContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 
     String repoKeyPrefix = "c";
     String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
-    Optional<Integer> version = Optional.absent(); // versioning is not supported for collections content
     try {
 
-      String jsonString = editorialContentService.getJson("collectionsContent", repoKey);
-      model.addAttribute("collectionsContentRepoKey", repoKey);
-      model.addAttribute("collectionsData", JSON.parse(jsonString));
+      String jsonString = editorialContentService.getJson("externalContent", repoKey);
+      model.addAttribute("externalContentRepoKey", repoKey);
+      model.addAttribute("externalData", JSON.parse(jsonString));
 
     } catch (EntityNotFoundException e) {
       // Return a 404 if no object found.
       throw new NotFoundException(e);
     }
 
-    return site + "/ftl/collectionsContent/container";
+    return site + "/ftl/externalContent/container";
   }
 
 }

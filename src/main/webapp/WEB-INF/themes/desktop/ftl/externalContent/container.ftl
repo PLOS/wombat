@@ -20,18 +20,19 @@
 </#if>
 
 
-
-<div data-service="ember" data-${externalData.name}-container>
-</div>
+<#if externalData.name??>
+  <div data-service="ember" data-${externalData.name}-container/>
+</#if>
 
 <#include "../common/footer/footer.ftl" />
 
-
 <@renderJs />
 
-<#list externalData.js_sources as js_source>
-<script src="<@siteLink path='indirect/'/>${js_source}" type="text/javascript"></script>
-</#list>
+<#if externalData.js_sources??>
+  <#list externalData.js_sources as js_source>
+    <script src="<@siteLink path='indirect/'/>${js_source}" type="text/javascript"></script>
+  </#list>
+</#if>
 
 </body>
 </html>

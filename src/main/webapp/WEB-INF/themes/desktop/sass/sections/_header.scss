@@ -191,6 +191,14 @@ $width-nav: $block-grid-elements - $width-logo;
         }
       }
 
+    .subject-area {
+      border: none;
+      margin-left: rem-calc(40);
+      padding-bottom: rem-calc(3);
+      background-color: $grey-med-light;
+      @extend .rounded;
+    }
+
     .mega {
       .menu-section-header-title {
         margin-left: rem-calc($nav-spacing);

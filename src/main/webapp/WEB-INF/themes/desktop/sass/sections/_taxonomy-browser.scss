@@ -1,7 +1,7 @@
 .rounded {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: $border-radius-default;
+  -moz-border-radius: $border-radius-default;
+  border-radius: $border-radius-default;
 }
 
 .areas {
@@ -14,18 +14,23 @@
   margin: 0 auto;
 }
 
-/* levels */
 #taxonomy-browser {
-  /*display: none;*/
+  display: none;
   border-bottom: solid #efefef 21px;
 
   .next {
     @extend .icon-chevron-right;
     color: white;
-    text-align: center;
-    //todo: figure out why we need this content in IE and FF
+    text-align: right;
+    line-height: rem-calc(44);
+    //todo: figure out why we need this &:before content in IE and FF
     &:before{
       content: "\f054";
+    }
+    &:hover {
+      background-color: $grey-light;
+      @extend .fa-inverse;
+      @extend .rounded;
     }
   }
 
@@ -33,6 +38,12 @@
     @extend .icon-chevron-left;
     color: white;
     text-align: center;
+    line-height: rem-calc(44);
+    &:hover {
+      background-color: $grey-light;
+      @extend .fa-inverse;
+      @extend .rounded;
+    }
   }
 
   .levels {
@@ -183,12 +194,14 @@
     @extend .level-active-scroll;
     @extend .icon-angle-up;
     @extend .rounded;
+    color: $black;
   }
 
   .level-active .down {
     @extend .level-active-scroll;
     @extend .icon-angle-down;
     @extend .rounded;
+    color: $black;
     border-top: 3px solid $grey-light;
     top: auto;
     bottom: -18px;
@@ -198,12 +211,8 @@
     display: block;
   }
 
-  .level-active .up:hover {
-    background-position: 0 -42px;
-  }
-
-  .level-active .down:hover {
-    background-position: 0 -63px;
+  .level-active .down:hover, .level-active .up:hover {
+    @extend .fa-inverse;
   }
 
   /* levels with selections made */

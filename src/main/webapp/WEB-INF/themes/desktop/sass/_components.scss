@@ -270,12 +270,12 @@ category: typography
 
 We use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
 For icons after text:
-use  with `::after` example: `.more-link::after { @extend .more-icon }`
+use  with `::after` example:
 .next {
     @extend .icon-chevron-right;
     color: white;
 
-    &:before{
+    &:after{
       content: "\f054";
     }
   }
@@ -371,28 +371,28 @@ example | extension
 .icon-angle-up {
   @extend .icon-fa;
   @extend .fa-angle-up;
-  font-size: $txt-size-medium-large;
+  font-size: $txt-size-large;
   line-height: rem-calc(35);  // .fa-etc default to 44
 }
 
 .icon-angle-down {
   @extend .icon-fa;
   @extend .fa-angle-down;
-  font-size: $txt-size-medium-large;
+  font-size: $txt-size-large;
   line-height: rem-calc(35);  // .fa-etc default to 44
 }
 
 .icon-chevron-left {
   @extend .icon-fa;
   @extend .fa-chevron-left;
-  font-size: $txt-size-xlarge;
+  font-size: $txt-size-xxxlarge;
   line-height: rem-calc(35);  // .fa-etc default to 44
 }
 
 .icon-chevron-right {
   @extend .icon-fa;
   @extend .fa-chevron-right;
-  font-size: $txt-size-xlarge;
+  font-size: $txt-size-xxxlarge;
   line-height: rem-calc(35);  // .fa-etc default to 44
 }
 

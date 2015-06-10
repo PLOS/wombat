@@ -175,20 +175,19 @@ public class EditorialContentServiceImpl implements EditorialContentService {
   /**
    * {@inheritDoc}
    * <p/>
-   * Returns a JSON string from a remote service
+   * Returns a JSON object from a remote service
    */
   @Override
-  public String getJson(String pageType, String key) throws IOException {
+  public Object getJson(String pageType, String key) throws IOException {
     String cacheKey = pageType.concat(":").concat(key);
     CacheParams cacheParams = CacheParams.create(cacheKey);
     Optional<Integer> version = Optional.absent();
-    String jsonString = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
+    Object jsonObj = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, Object>() {
       @Override
-      public String read(Reader jsonReader) throws IOException {
-        return IOUtils.toString(jsonReader);
+      public Object read(Reader jsonReader) throws IOException {
+        return gson.fromJson(jsonReader, Object.class);
       }
     });
-    //TODO: validate json
-    return jsonString;
+    return jsonObj;
   }
 }

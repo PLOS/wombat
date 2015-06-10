@@ -42,11 +42,8 @@ public class ExternalContentController extends WombatController {
     String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
     try {
-
-      String jsonString = editorialContentService.getJson("externalContent", repoKey);
       model.addAttribute("externalContentRepoKey", repoKey);
-      model.addAttribute("externalData", JSON.parse(jsonString));
-
+      model.addAttribute("externalData", editorialContentService.getJson("externalContent", repoKey));
     } catch (EntityNotFoundException e) {
       // Return a 404 if no object found.
       throw new NotFoundException(e);

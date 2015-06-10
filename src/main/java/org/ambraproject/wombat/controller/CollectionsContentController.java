@@ -53,8 +53,6 @@ public class CollectionsContentController extends WombatController {
     String repoKeyPrefix = "c";
     String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
-    String cacheKey = "collectionsContent:" + repoKey;
-
     Optional<Integer> version = Optional.absent(); // versioning is not supported for collections content
     try {
 

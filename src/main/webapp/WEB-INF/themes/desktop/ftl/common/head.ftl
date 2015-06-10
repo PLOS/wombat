@@ -11,22 +11,20 @@
 
 </#macro>
 <#--allows for external css to be brought in via the content repo-->
-<#macro externalCSS>
-
-  <#if externalCssFile??>
-    <#list collectionsData.css_sources as css_source>
-    <link rel="stylesheet" type="text/css"
-          href="<@siteLink path='indirect/'/>${css_source}"/>
+<#macro externalCSS externalCssProvided=false>
+  <#if externalCssProvided>
+    <#list externalData.css_sources as css_source>
+      <link rel="stylesheet" type="text/css"
+            href="<@siteLink path='indirect/'/>${css_source}"/>
     </#list>
   </#if>
 
 </#macro>
 <#--allows for external MEta tags-->
-<#macro externalMetaTags>
-  <#if externalMetaTags??>
-
-  <#list collectionsData.meta_tags as meta_tag>
-  <meta name="${meta_tag.name}" content="${meta_tag.content}" />
+<#macro externalMetaTags externalMetatagsProvided=false>
+  <#if externalMetatagsProvided>
+    <#list externalData.meta_tags as meta_tag>
+      <meta name="${meta_tag.name}" content="${meta_tag.content}" />
  </#list>
   </#if>
 

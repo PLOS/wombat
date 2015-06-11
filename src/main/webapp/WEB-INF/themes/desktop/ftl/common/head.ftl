@@ -21,12 +21,12 @@
 
 </#macro>
 <#--allows for external MEta tags-->
-<#macro externalMetaTags externalMetatagsProvided=false>
-  <#if externalMetatagsProvided>
-    <#list externalData.meta_tags as meta_tag>
-      <meta name="${meta_tag.name}" content="${meta_tag.content}" />
- </#list>
-  </#if>
+<#macro externalMetaTags externalMetaTagsProvided=false>
+  <#--<#if externalMetaTagsProvided>-->
+    <#--<#list externalData.meta_tags as meta_tag>-->
+      <#--<meta name="${meta_tag.name}" content="${meta_tag.content}" />-->
+ <#--</#list>-->
+  <#--</#if>-->
 
 </#macro>
 

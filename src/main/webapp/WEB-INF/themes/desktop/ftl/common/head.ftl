@@ -20,15 +20,6 @@
   </#if>
 
 </#macro>
-<#--allows for external MEta tags-->
-<#macro externalMetaTags externalMetaTagsProvided=false>
-  <#--<#if externalMetaTagsProvided>-->
-    <#--<#list externalData.meta_tags as meta_tag>-->
-      <#--<meta name="${meta_tag.name}" content="${meta_tag.content}" />-->
- <#--</#list>-->
-  <#--</#if>-->
-
-</#macro>
 
 
 <head prefix="og: http://ogp.me/ns#">

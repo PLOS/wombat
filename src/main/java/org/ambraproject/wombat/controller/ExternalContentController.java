@@ -42,7 +42,6 @@ public class ExternalContentController extends WombatController {
     String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
     try {
-      model.addAttribute("externalContentRepoKey", repoKey);
       model.addAttribute("externalServiceName", "ember"); // may not need, but kept for prototype
       model.addAttribute("externalData", editorialContentService.getJson("externalContent", repoKey));
     } catch (EntityNotFoundException e) {

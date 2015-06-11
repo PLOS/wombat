@@ -11,14 +11,15 @@
 
 </#macro>
 <#--allows for external css to be brought in via the content repo-->
-<#macro externalCSS externalCssProvided=false>
-  <#if externalCssProvided>
-    <#list externalData.css_sources as css_source>
-      <link rel="stylesheet" type="text/css"
-            href="<@siteLink path='indirect/'/>${css_source}"/>
-    </#list>
+<#macro externalCSS>
+  <#if externalData??>
+    <#if externalData.css_sources??>
+      <#list externalData.css_sources as css_source>
+        <link rel="stylesheet" type="text/css"
+              href="<@siteLink path='indirect/'/>${css_source}"/>
+      </#list>
+    </#if>
   </#if>
-
 </#macro>
 
 
@@ -55,9 +56,6 @@
   <meta name="description" content="${freemarker_config.getMetaDescription(journalContext)}"/>
   <meta name="keywords" content="${freemarker_config.getMetaKeywords(journalContext)}"/>-->
 
-
-<#--External MetaTags-->
-<@externalMetaTags />
 
 <#if article??>
 <#-- // citation meta tags -->

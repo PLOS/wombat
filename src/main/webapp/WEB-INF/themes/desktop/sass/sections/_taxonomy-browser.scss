@@ -63,7 +63,7 @@
 
   .levels .next {
     left: auto;
-    right: 0;
+    right: rem-calc(5);
   }
 
   .levels .prev.active, .levels .next.active {
@@ -72,7 +72,7 @@
 
   .levels-container {
     width: 878px;
-    height: 232px;
+    height: 257px;
     overflow: hidden;
     position: relative;
   }
@@ -97,12 +97,9 @@
     float: left;
     width: 286px;
     height: 164px;
-    font-size: 16px;
     font-weight: bold;
-    line-height: 18px;
     color: #666;
     padding: 12px 15px;
-    border: 1px solid #616161;
     margin: 0 7px 0 0;
     position: relative;
     @extend .rounded;
@@ -118,6 +115,20 @@
     @extend .rounded;
   }
 
+  .level-top {
+    @extend .level;
+    float: none;
+    background-color: $grey-light;
+    height: rem-calc(30);
+    margin-bottom: rem-calc(25);
+    line-height: rem-calc(9);
+    font-size: 14px;
+  }
+
+  .level-top a {
+    color: #333;
+  }
+
   .touch .level-scroll {
     overflow: auto;
   }
@@ -127,6 +138,7 @@
   }
 
   .level ul {
+    font-size: 14px;
     width: 286px;
     list-style-type: none;
     padding: 0;
@@ -176,7 +188,7 @@
     }
   }
 
-  .level-active-scroll {
+  %level-active-scroll {
     display: none;
     width: 286px;
     height: 24px;
@@ -191,14 +203,14 @@
 
   .level-active .up {
     border-bottom: 3px solid $grey-light;
-    @extend .level-active-scroll;
+    @extend %level-active-scroll;
     @extend .icon-angle-up;
     @extend .rounded;
     color: $black;
   }
 
   .level-active .down {
-    @extend .level-active-scroll;
+    @extend %level-active-scroll;
     @extend .icon-angle-down;
     @extend .rounded;
     color: $black;
@@ -207,7 +219,7 @@
     bottom: -18px;
   }
 
-  .level-active-over .up, .level-active-over .down {
+  .level-active-over .up, .level-active-over .down, .level-active-over .level-top {
     display: block;
   }
 

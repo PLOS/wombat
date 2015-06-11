@@ -409,6 +409,7 @@
 
     // always remove the hover class
     el.removeClass('level-active-over');
+    el.closest('.level-top').removeClass('level-active-over');;
 
     // turn off the column
     if (
@@ -418,7 +419,9 @@
         (requestor && (requestor.data('level') < el.data('level')))
       ) {
       el.removeClass('level-active');
+      el.closest('.level-top').removeClass('level-active');
       el.addClass('level-selection');
+      el.closest('.level-top').addClass('level-selection');
     }
 
     $last_column_active = null;
@@ -450,7 +453,9 @@
 
     // turn it from a regular column into an active column
     el.removeClass('level-selection');
+    el.closest('.level-top').removeClass('level-selection');
     el.addClass("level-active level-active-over");
+    el.closest('.level-top').addClass("level-active level-active-over");
 
     // mark this column as the last one active
     $last_column_active = el;
@@ -491,18 +496,21 @@
 
     var markup = [
       '<div class="level" data-level="' + data.level + '">',
+      '<div class="level-top">',
+      '<a href="' + data.view_all_link + '" class="no-children">View All Articles (' + data.view_all_total + ')</a>',
+      '</div>',
       '<div class="level-scroll">',
       '<ul>',
-      '<li><a href="' + data.view_all_link + '" class="no-children">View All Articles (' + data.view_all_total + ')</a></li>',
+      //'<li><a href="' + data.view_all_link + '" class="no-children">View All Articles (' + data.view_all_total + ')</a></li>',
       terms.join("\n"),
       '</ul>',
       '</div>' ];
 
-    //We don't need the up / down arrows for less then 3 items
+    //We don't need the up / down arrows for less then 4 items
     //console.log(data.items.length);
 
-    if(data.items.length > 3) {
-      markup.push(['<a href="#" class="up"></a> <a href="#" class="down"></a>']);
+    if(data.items.length > 4) {
+      markup.splice(9, 0, ['<a href="#" class="up"></a> <a href="#" class="down"></a>']);
     }
 
     markup.push(['</div>']);

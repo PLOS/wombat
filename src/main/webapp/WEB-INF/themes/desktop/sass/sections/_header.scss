@@ -196,7 +196,7 @@ $width-nav: $block-grid-elements - $width-logo;
       margin-left: rem-calc(40);
       padding-bottom: rem-calc(3);
       background-color: $grey-med-light;
-      @extend .rounded;
+      @extend %rounded-default;
     }
 
     .mega {

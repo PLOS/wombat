@@ -1,11 +1,21 @@
-.rounded {
-  -webkit-border-radius: $border-radius-default;
-  -moz-border-radius: $border-radius-default;
-  border-radius: $border-radius-default;
-}
+$level-title-height: rem-calc(14);
+$level-title-margin-bottom: rem-calc(9);
+$level-top-height: rem-calc(30);
+$level-scroll-height: rem-calc(158);
+$level-up-down-height: rem-calc(20);
+$level-margin-bottom: rem-calc(7);
+$level-container-height: $level-title-height + $level-title-margin-bottom + $level-scroll-height
+ + $level-top-height + (2 * $level-up-down-height) + $level-margin-bottom;
+
+$level-width: rem-calc(286);
+$level-margin-right: rem-calc(7);
+$level-container-width: ($level-width * 3 + $level-margin-right * 2);
+
+$areas-bg: #242424;
+$level-selection-bg: #3b3b3b;
 
 .areas {
-  background: #242424;
+  background: $areas-bg;
 }
 
 .areas .wrapper {
@@ -16,33 +26,36 @@
 
 #taxonomy-browser {
   display: none;
-  border-bottom: solid #efefef 21px;
+  border-bottom: solid $grey-light 21px;
 
   .next {
     @extend .icon-chevron-right;
-    color: white;
+    color: $white;
     text-align: right;
     line-height: rem-calc(44);
+
     //todo: figure out why we need this &:before content in IE and FF
     &:before{
       content: "\f054";
     }
+
     &:hover {
       background-color: $grey-light;
       @extend .fa-inverse;
-      @extend .rounded;
+      @extend %rounded-default;
     }
   }
 
   .prev {
     @extend .icon-chevron-left;
-    color: white;
+    color: $white;
     text-align: center;
     line-height: rem-calc(44);
+
     &:hover {
       background-color: $grey-light;
       @extend .fa-inverse;
-      @extend .rounded;
+      @extend %rounded-default;
     }
   }
 
@@ -51,28 +64,28 @@
     position: relative;
   }
 
-  .levels .prev, .levels .next {
+  .prev, .next {
     display: none;
-    width: 35px;
-    height: 41px;
+    width: rem-calc(35);
+    height: rem-calc(41);
     cursor: default;
     position: absolute;
-    top: 97px;
+    top: rem-calc(97);
     left: 0;
   }
 
-  .levels .next {
+  .next {
     left: auto;
-    right: rem-calc(5);
+    right: $level-margin-right;
   }
 
-  .levels .prev.active, .levels .next.active {
+  .prev.active, .next.active {
     cursor: pointer;
   }
 
   .levels-container {
-    width: 878px;
-    height: 257px;
+    width: $level-container-width;
+    height: $level-container-height;
     overflow: hidden;
     position: relative;
   }
@@ -87,46 +100,76 @@
 
   .levels-position {
     width: 99999px;
-    padding: 21px 0;
     position: absolute;
-    top: 0;
-    left: 0;
   }
 
   .level {
     float: left;
-    width: 286px;
-    height: 164px;
+    width: $level-width;
+    height: $level-up-down-height * 2 + $level-scroll-height + $level-margin-bottom;
     font-weight: bold;
-    color: #666;
-    padding: 12px 15px;
-    margin: 0 7px 0 0;
+    color: $grey-med-dark;
+    margin-right: $level-margin-right;
     position: relative;
-    @extend .rounded;
+
+    ul {
+      font-size: rem-calc(14);
+      width: $level-width;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      top: 0;
+      left: 0;
+    }
+
+    ul li {
+      margin-bottom: rem-calc(2);
+
+      a {
+        display: block;
+        padding: 9px 20px 9px 15px;
+      }
+    }
+
+    .level-scroll a {
+      text-decoration: none;
+      color: $grey-dark;
+    }
+  }
+
+  .no-touch .level .level-scroll a:hover {
+    color: $white;
+    background: $plos-default;
   }
 
   .level-scroll {
-    width: 286px;
-    height: 158px;
-    margin: -12px -15px;
+    width: $level-width;
+    height: $level-scroll-height;
     overflow: hidden;
-    position: relative;
     -webkit-overflow-scrolling: touch;
-    @extend .rounded;
+    border: 1px solid $grey-light;
+    background: $grey-light;
+  }
+
+  .level-title {
+    font-size: $level-title-height;
+    margin-bottom: $level-title-margin-bottom;
   }
 
   .level-top {
     @extend .level;
+    @extend %rounded-default;
     float: none;
     background-color: $grey-light;
-    height: rem-calc(30);
-    margin-bottom: rem-calc(25);
-    line-height: rem-calc(9);
-    font-size: 14px;
-  }
+    height: $level-top-height;
+    margin-bottom: $level-margin-bottom;
+    line-height: rem-calc(30);
+    font-size: rem-calc(14);
 
-  .level-top a {
-    color: #333;
+    a {
+      color: $grey-dark;
+      padding-left: rem-calc(15);
+    }
   }
 
   .touch .level-scroll {
@@ -137,135 +180,106 @@
     display: none;
   }
 
-  .level ul {
-    font-size: 14px;
-    width: 286px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .level ul li {
-    margin: 0 0 2px;
-  }
-
-  .level ul li a {
-    display: block;
-    padding: 9px 20px 9px 15px;
-  }
-
-  .level .level-scroll a {
-    text-decoration: none;
-    color: #333;
-  }
-
-  .no-touch .level .level-scroll a:hover {
-    color: #fff;
-    background: #3c63af;
-    &::after{
-      @extend .icon-caret-right;
-      @extend .menu-icon-right;
-    }
-  }
-
-  a.no-children {
-    background-image: none !important;
-  }
-
   /* active levels */
   .level-active {
-    border: 1px solid $grey-light;
-    background: $grey-light;
-  }
 
-  .level-active li a {
-    &::after{
-      @extend .icon-caret-right;
+    li a {
+      &::after {
+        @extend .icon-caret-right;
+        @extend .menu-icon-right;
+      }
+    }
+
+    .no-children::after {
+      @extend .icon-circle;
       @extend .menu-icon-right;
+    }
+
+    .down:hover, .up:hover {
+      @extend .fa-inverse;
+    }
+
+    .level-top {
+      background-color: $plos-one;
+    }
+
+    .level-title {
+      color: $plos-one;
     }
   }
 
   %level-active-scroll {
-    display: none;
-    width: 286px;
-    height: 24px;
-    position: absolute;
-    top: -18px;
-    left: -1px;
+    width: $level-width;
+    height: $level-up-down-height;
     text-align: center;
     background-color: $grey-light;
-    line-height: 20px;
-    @extend .rounded;
+    line-height: rem-calc(20);
+    color: $black;
   }
 
-  .level-active .up {
-    border-bottom: 3px solid $grey-light;
+  .hide-active-scroll {
+    cursor: default;
+    &::before {
+      color: $grey-light;
+    }
+  }
+
+  .up {
     @extend %level-active-scroll;
     @extend .icon-angle-up;
-    @extend .rounded;
-    color: $black;
+    @extend %rounded-default-top;
   }
 
-  .level-active .down {
+  .down {
     @extend %level-active-scroll;
     @extend .icon-angle-down;
-    @extend .rounded;
-    color: $black;
-    border-top: 3px solid $grey-light;
-    top: auto;
-    bottom: -18px;
-  }
-
-  .level-active-over .up, .level-active-over .down, .level-active-over .level-top {
-    display: block;
-  }
-
-  .level-active .down:hover, .level-active .up:hover {
-    @extend .fa-inverse;
+    @extend %rounded-default-bottom;
   }
 
   /* levels with selections made */
   .level-selection {
-    border: 1px solid #3b3b3b;
-    background: #3b3b3b;
-  }
 
-  .level-selection .level-scroll a {
-    color: #999;
-    &::after{
-      @extend .icon-caret-right;
-      @extend .menu-icon-right;
+    .level-scroll, .level-top {
+      border: 1px solid $level-selection-bg;
+      background: $level-selection-bg;
     }
-  }
 
-  .level-selection .level-scroll a.active {
-    color: #fff;
-    background: #3c63af;
-  }
+    .hide-active-scroll::before {
+      color: $level-selection-bg;
+    }
 
-  /* levels disabled */
-  .areas .disabled {
-    -webkit-opacity: 0.5;
-    -moz-opacity: 0.5;
-    filter: alpha(opacity=50);
-    opacity: 0.5;
-  }
+    .level-title {
+      color: $grey-med-light;
+    }
 
-  .areas .disabled a {
-    text-decoration: none;
-    cursor: default;
-  }
+    .level-top a {
+      color: $table-header-bg;
+    }
 
-  .areas .disabled a:hover {
-    color: #999;
-    background: url(../resource/img/level-arrow-selection.png) right 50% no-repeat;
-  }
+    .up, .down {
+      background: $level-selection-bg;
+      color: $table-header-bg;
+    }
 
-  .areas .disabled .selected a {
-    color: #fff;
-    background: url(../resource/img/level-arrow-selected.png) right 50% no-repeat #3c63af;
+    .level-scroll {
+
+      a {
+        color: $table-header-bg;
+        &::after {
+          @extend .icon-caret-right;
+          @extend .menu-icon-right;
+        }
+      }
+
+      .no-children::after {
+          @extend .icon-circle;
+          @extend .menu-icon-right;
+      }
+
+      a.active {
+        color: $white;
+        background: $plos-default;
+      }
+    }
   }
 }

@@ -203,6 +203,7 @@
 
     // create the column markup
     var markup = buildColumnMarkup({
+      parent_term: term,
       items: createDataObject(child_terms),
       level: term_stack.length, // level is 1-based, array length is 0-based
       view_all_link: buildSubjectUrl(term),
@@ -409,7 +410,6 @@
 
     // always remove the hover class
     el.removeClass('level-active-over');
-    el.closest('.level-top').removeClass('level-active-over');;
 
     // turn off the column
     if (
@@ -419,9 +419,7 @@
         (requestor && (requestor.data('level') < el.data('level')))
       ) {
       el.removeClass('level-active');
-      el.closest('.level-top').removeClass('level-active');
       el.addClass('level-selection');
-      el.closest('.level-top').addClass('level-selection');
     }
 
     $last_column_active = null;
@@ -453,9 +451,7 @@
 
     // turn it from a regular column into an active column
     el.removeClass('level-selection');
-    el.closest('.level-top').removeClass('level-selection');
     el.addClass("level-active level-active-over");
-    el.closest('.level-top').addClass("level-active level-active-over");
 
     // mark this column as the last one active
     $last_column_active = el;
@@ -473,7 +469,7 @@
       '<div class="levels-position"></div>',
       '</div>',
       '<a href="#" class="prev">&nbsp;</a>',
-      '<a href="#" class="next active">&nbsp; </a>',
+      '<a href="#" class="next active">&nbsp;</a>',
       '</div>',
       '</div>',
       '</div>'
@@ -488,73 +484,44 @@
       return [
         '<li>',
         '<a href="' + item.link + '"' + (item.isLeaf ? ' class="no-children"' : '') + ' data-level="' + data.level + '">',
-        item.name + (item.isLeaf ? ' (' + item.count + ')' : ''),
+        item.name,
         '</a>',
         '</li>'
       ].join("\n");
     });
 
+    var parentTerm = data.parent_term;
+    if (parentTerm == '/') {
+      parentTerm = 'All subject areas';
+    }
+
     var markup = [
       '<div class="level" data-level="' + data.level + '">',
+      '<div class="level-title">' + parentTerm + '</div>',
       '<div class="level-top">',
-      '<a href="' + data.view_all_link + '" class="no-children">View All Articles (' + data.view_all_total + ')</a>',
+      '<a href="' + data.view_all_link + '">View All Articles</a>',
       '</div>',
+      '<a href="#" class="up"></a>',
       '<div class="level-scroll">',
       '<ul>',
-      //'<li><a href="' + data.view_all_link + '" class="no-children">View All Articles (' + data.view_all_total + ')</a></li>',
       terms.join("\n"),
       '</ul>',
-      '</div>' ];
+      '</div>',
+      '<a href="#" class="down"></a>'];
 
-    //We don't need the up / down arrows for less then 4 items
-    //console.log(data.items.length);
-
-    if(data.items.length > 4) {
-      markup.splice(9, 0, ['<a href="#" class="up"></a> <a href="#" class="down"></a>']);
+    //We don't need the up / down arrows for less then 5 items
+    if(data.items.length < 5) {
+      markup[5] = '<a href="#" class="up hide-active-scroll"></a>';
+      markup[11] = '<a href="#" class="down hide-active-scroll"></a>';
     }
 
     markup.push(['</div>']);
 
-    //console.log(markup.join("\n"));
-
     return markup.join("\n");
   }
 
-
-    /**
-   * Build out the api string based on which items are in the collection
-   *
-   * @param string path_prefix URL prefix (including trailing slash)
-   * @param string item An optional item to push on to end of collection
-   */
-  function buildAPIUrl(last_term) {
-    // create a temp clone of the term_stack to build a URL with
-    var all_terms = $.extend([], term_stack);
-
-    // console.log("before: all_terms = ", all_terms);
-
-    // add the last term to the array if we pass it in, ignoring root level
-    // (trailing slash is already handled)
-    if ((typeof(last_term) !== 'undefined') && (last_term !== '/')) {
-      all_terms.push(last_term);
-    }
-
-    // remove the first item of the stack, which is always a "/"
-    all_terms.shift();
-
-    // console.log("after: all_terms = ", all_terms);
-
-    // return an encoded version of the URL
-    return API_URL + encodeURIComponent(all_terms.join("/"))
-        + "?journal=" + $('meta[name=currentJournal]').attr("content")
-        + "&showCounts=true";
-  }
-
   /**
-   * Build out the api string based on which items are in the collection
-   *
-   * @param string path_prefix URL prefix (including trailing slash)
-   * @param string item An optional item to push on to end of collection
+   * Build out the api url string based on which items are in the collection
    */
   function buildSubjectUrl(last_term) {
     // create a temp clone of the term_stack to build a URL with
@@ -569,7 +536,6 @@
     //console.log("Url = ", url);
     return url;
   }
-
 
   // get the term from the markup and trim it of whitespace and child count
   function getTermFromElement(el) {
@@ -611,9 +577,9 @@
       console.log("JSON load unsuccessful");
 
       //Disable the taxonomy browser
-      $('.subject-area').unbind('click', displayBrowser);
-      $('subject-area').attr("title", "Error: No subject terms available!");
-      $('subject-area').addClass("disabled");
+      $('.subject-area').unbind('click', displayBrowser)
+        .attr("title", "Error: No subject terms available!")
+        .addClass("disabled");
 
       $('subject-area').on('click', function(e) {
         e.preventDefault();

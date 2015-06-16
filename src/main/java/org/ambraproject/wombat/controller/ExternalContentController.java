@@ -34,15 +34,15 @@ public class ExternalContentController extends WombatController {
   @Autowired
   private EditorialContentService editorialContentService;
 
+  private final String REPO_KEY_PREFIX = "c";
   @RequestMapping(value = {"/c/{pageName}", "/{site}/c/{pageName}"})
   public String renderExternalContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 
-    String repoKeyPrefix = "c";
-    String repoKey = repoKeyPrefix.concat(".").concat(pageName);
+    String repoKey = REPO_KEY_PREFIX.concat(".").concat(pageName);
+    model.addAttribute("externalServiceName", "ember"); // may not need, but kept for prototype
 
     try {
-      model.addAttribute("externalServiceName", "ember"); // may not need, but kept for prototype
       model.addAttribute("externalData", editorialContentService.getJson("externalContent", repoKey));
     } catch (EntityNotFoundException e) {
       // Return a 404 if no object found.

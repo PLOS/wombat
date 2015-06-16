@@ -50,8 +50,8 @@
   var ANIMATION_TIME = 200; // in ms
 
   // URL of the taxonomy API
-  var API_URL = '/taxonomy';
-  var REST_URL = '/browse/';
+  var API_URL = '/wombat/DesktopPlosOne/taxonomy/'; //todo: add generic site prefixes
+  var SEARCH_URL = '/wombat/DesktopPlosOne/search?subject=';
 
   // store the term as a key with its children terms as an array of strings,
   // emulating the same data structure as the API response. the key '/'
@@ -244,7 +244,8 @@
     // update the 'active' state for parent/child terms
     var closest_level_el = clicked_el.closest('.level');
     closest_level_el.find('a').removeClass('active');
-    clicked_el.addClass('active');
+    closest_level_el.find('li').removeClass('active');
+    clicked_el.closest('li').addClass('active');
   }
 
   /**
@@ -457,13 +458,15 @@
     $last_column_active = el;
   }
 
-
   // UTLITY FUNCTIONS ========================================================
 
   function insertTaxonomyBrowserSkeleton() {
     var markup = [
       '<div id="taxonomy-browser" class="areas">',
       '<div class="wrapper">',
+      '<div class="taxonomy-header">Browse Subject Areas <div id="subjInfo">?</div>',
+      '<div id="subjInfoText"><p>Click through the PLOS taxonomy to find articles in your field.</p><p>For more information about PLOS Subject Areas, click <a href="${legacyUrlPrefix}static/help#subjectAreas">here</a>.</p></div>',
+      '</div>',
       '<div class="levels">',
       '<div class="levels-container cf">',
       '<div class="levels-position"></div>',
@@ -525,21 +528,18 @@
    */
   function buildSubjectUrl(last_term) {
     // create a temp clone of the term_stack to build a URL with
-    var url = REST_URL;
+    var url = SEARCH_URL;
 
-    //Replace all spaces with "_" and encode the special characters
     if ((typeof(last_term) !== 'undefined') && (last_term !== '/')) {
       last_term = "" + last_term;
-      url = url + encodeURIComponent(last_term.replace(new RegExp("\\s", 'g'), "_").toLowerCase());
+      url = url + encodeURIComponent(last_term);
     }
 
-    //console.log("Url = ", url);
     return url;
   }
 
   // get the term from the markup and trim it of whitespace and child count
   function getTermFromElement(el) {
-    // FIXME: this will get more complicated if we need to deal with entities, etc.
     return $.trim(el.html().replace(/\(.*?\)/g, ""));
   }
 
@@ -609,7 +609,7 @@
   }
 
   function createUrlFromTermStack() {
-    var url =  '/wombat/DesktopPlosOne/taxonomy/';
+    var url =  API_URL;
     for (var i = 1; i < term_stack.length; i++) {
       url += term_stack[i] + "/";
     }

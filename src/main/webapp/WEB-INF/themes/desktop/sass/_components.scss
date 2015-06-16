@@ -420,13 +420,6 @@ example | extension
   left: -9999px;
 }
 
-.menu-icon-right {
-  float: right;
-  position: relative;
-  left: rem-calc(10);
-  line-height: rem-calc(20);
-}
-
 /// use with span
 // $width and $height use rem calc so only pixels are needed, $width, $height, $img are required  .
 @mixin icon-image($width, $height,$img, $offset: 0 0, $align: middle) {

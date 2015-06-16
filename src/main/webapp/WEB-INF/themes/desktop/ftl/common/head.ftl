@@ -1,6 +1,6 @@
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
-
+<#--allows for page specific css-->
 <#macro pageCSS>
 
   <#if !cssFile?has_content>
@@ -10,6 +10,17 @@
   <@cssLink target="resource/css/${cssFile}"/>
 
 </#macro>
+<#--allows for external css to be brought in via the content repo-->
+<#macro externalCSS>
+  <#if externalData??>
+    <#if externalData.css_sources??>
+      <#list externalData.css_sources as css_source>
+        <link rel="stylesheet" type="text/css"
+              href="<@siteLink path='indirect/'/>${css_source}"/>
+      </#list>
+    </#if>
+  </#if>
+</#macro>
 
 
 <head prefix="og: http://ogp.me/ns#">
@@ -18,6 +29,8 @@
   <@pageCSS/>
 
   <@renderCssLinks />
+
+  <@externalCSS />
     <!--[if IE 8]>
   <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />"/>
     <![endif]-->
@@ -42,6 +55,7 @@
 <#-- // TODO: NEED BACKEND
   <meta name="description" content="${freemarker_config.getMetaDescription(journalContext)}"/>
   <meta name="keywords" content="${freemarker_config.getMetaKeywords(journalContext)}"/>-->
+
 
 <#if article??>
 <#-- // citation meta tags -->

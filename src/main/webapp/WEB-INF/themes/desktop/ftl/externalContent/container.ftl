@@ -7,6 +7,16 @@
 <#assign title = '' />
 <#assign cssFile="site-content.css"/>
 
+<#if externalData??>
+  <#if externalData.css_sources??>
+    <#list externalData.css_sources as css_source>
+      <@addCustomHeaderTag>
+        <link rel="stylesheet" type="text/css" href="<@siteLink path='indirect/'/>${css_source}"/>
+      </@addCustomHeaderTag>
+    </#list>
+  </#if>
+</#if>
+
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <body class="static ${journalStyle}">

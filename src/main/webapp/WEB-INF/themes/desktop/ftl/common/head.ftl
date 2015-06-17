@@ -10,16 +10,11 @@
   <@cssLink target="resource/css/${cssFile}"/>
 
 </#macro>
-<#--allows for external css to be brought in via the content repo-->
-<#macro externalCSS>
-  <#if externalData??>
-    <#if externalData.css_sources??>
-      <#list externalData.css_sources as css_source>
-        <link rel="stylesheet" type="text/css"
-              href="<@siteLink path='indirect/'/>${css_source}"/>
-      </#list>
-    </#if>
-  </#if>
+
+<#--allows for custom tags to be added from the container template-->
+<#assign customHeaderTags=[]/>
+<#macro addCustomHeaderTag>
+  <#assign customHeaderTags = customHeaderTags + ["<#nested>"]/>
 </#macro>
 
 

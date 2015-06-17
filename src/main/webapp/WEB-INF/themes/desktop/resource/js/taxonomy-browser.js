@@ -85,14 +85,8 @@
    * Return the children for a given term.
    */
   function getChildren(term) {
-    // console.log("getChildren: " + term);
-    // if the item does not exist in the cache, make ajax call to api
-    // all terms should be in the cache, even those with no children (empty array).
-    // if ( typeof(term_cache[term]) == 'undefined') {
-    loadTerms(term);
-    // }
 
-    // console.log("term_cache now: ", term_cache);
+    loadTerms(term);
 
     if ((typeof(term_cache[term]) != 'undefined')) {
       return term_cache[term];

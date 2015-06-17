@@ -28,12 +28,12 @@ $level-selection-bg: #3b3b3b;
 
 .areas {
   background: $areas-bg;
-}
 
-.areas .wrapper {
-  width: $level-wrapper-width;
-  padding: rem-calc(17) 0 rem-calc(30);
-  margin: 0 auto;
+   .wrapper {
+    width: $level-wrapper-width;
+    padding: rem-calc(17) 0 rem-calc(30);
+    margin: 0 auto;
+   }
 }
 
 .menu-icon-right {
@@ -100,9 +100,10 @@ $level-selection-bg: #3b3b3b;
     display: none;
     width: $level-carousel-button-width;
     height: $level-carousel-button-height;
-    cursor: default;
     position: absolute;
     top: rem-calc(120);
+    text-align: center;
+    cursor: pointer;
 
     &:hover {
       background-color: $grey-light;
@@ -115,7 +116,6 @@ $level-selection-bg: #3b3b3b;
     @extend .icon-chevron-right;
     @extend %carousel-button;
     left: $level-container-width + $level-margin-right + $level-padding-left;
-    text-align: center;
 
     //todo: figure out why we need this &:before content in IE and FF
     &:before{
@@ -126,17 +126,12 @@ $level-selection-bg: #3b3b3b;
   .prev {
     @extend .icon-chevron-left;
     @extend %carousel-button;
-    text-align: center;
     left: 0;
   }
 
   .levels {
     padding-left: $level-padding-left;
     position: relative;
-  }
-
-  .prev.active, .next.active {
-    cursor: pointer;
   }
 
   .levels-container {
@@ -148,10 +143,6 @@ $level-selection-bg: #3b3b3b;
 
   .touch .levels-container {
     overflow-x: auto;
-  }
-
-  .levels-container::-webkit-scrollbar {
-    display: none;
   }
 
   .levels-position {
@@ -169,28 +160,16 @@ $level-selection-bg: #3b3b3b;
     position: relative;
 
     ul {
-      font-size: rem-calc(14);
+      font-size: $txt-size-medium;
       width: $level-width;
-      list-style-type: none;
-      padding: 0;
       margin: 0;
-      top: 0;
-      left: 0;
-    }
 
-    ul li {
-
-      a {
+      li a {
         display: block;
         position: relative;
         width: 94%;
         padding: $level-li-padding-vertical $level-li-padding-horizontal;
       }
-    }
-
-    .level-scroll a {
-      text-decoration: none;
-      color: $grey-dark;
     }
   }
 
@@ -203,13 +182,17 @@ $level-selection-bg: #3b3b3b;
     width: $level-width;
     height: $level-scroll-height;
     overflow: hidden;
-    -webkit-overflow-scrolling: touch;
     border: 1px solid $grey-light;
     background: $grey-light;
+
+    a {
+      text-decoration: none;
+      color: $grey-dark;
+    }
   }
 
   .level-title {
-    font-size: $level-title-height;
+    font-size: $txt-size-medium;
     margin-bottom: $level-title-margin-bottom;
   }
 
@@ -221,7 +204,7 @@ $level-selection-bg: #3b3b3b;
     height: $level-top-height;
     margin-bottom: $level-margin-bottom;
     line-height: rem-calc(30);
-    font-size: rem-calc(14);
+    font-size: $txt-size-medium;
 
     a {
       display: block;
@@ -234,10 +217,6 @@ $level-selection-bg: #3b3b3b;
 
   .touch .level-scroll {
     overflow: auto;
-  }
-
-  .level-scroll::-webkit-scrollbar {
-    display: none;
   }
 
   /* active levels */

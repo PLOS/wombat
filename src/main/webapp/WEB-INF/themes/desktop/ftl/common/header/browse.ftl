@@ -2,12 +2,13 @@
 <#include "../legacyLink.ftl" />
 <div id="taxonomy-browser" class="areas" data-url-prefix="${legacyUrlPrefix}">
   <div class="wrapper">
-    <div class="taxonomy-header">Browse Subject Areas
+    <div class="taxonomy-header">
+      Browse Subject Areas
       <div id="subjInfo">?</div>
       <div id="subjInfoText">
         <p>Click through the PLOS taxonomy to find articles in your field.</p>
         <p>For more information about PLOS Subject Areas, click
-          <a href="<@siteLink path=''/>s/help-using-this-site#loc-subject-areas">here</a>.
+          <a href="<@siteLink path='s/help-using-this-site#loc-subject-areas'/>">here</a>.
         </p>
       </div>
     </div>

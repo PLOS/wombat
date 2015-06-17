@@ -9,7 +9,8 @@ $level-container-height: $level-title-height + $level-title-margin-bottom + $lev
 
 $taxonomy-header-height: rem-calc(30);
 $taxonomy-header-width: rem-calc(30);
-$taxonomy-header-margin-bottom: rem-calc(65) - $level-title-height - $level-title-margin-bottom;
+$taxonomy-header-margin-bottom: rem-calc(65) - $level-title-height - $level-title-margin-bottom
+ - ($level-title-height / 2);
 
 $level-li-padding-vertical: rem-calc(9);
 $level-li-padding-horizontal: rem-calc(15);
@@ -31,7 +32,7 @@ $level-selection-bg: #3b3b3b;
 
 .areas .wrapper {
   width: $level-wrapper-width;
-  padding: rem-calc(17) 0 rem-calc(21);
+  padding: rem-calc(17) 0 rem-calc(30);
   margin: 0 auto;
 }
 
@@ -45,7 +46,6 @@ $level-selection-bg: #3b3b3b;
 
 #taxonomy-browser {
   display: none;
-  border-bottom: rem-calc(21) solid $grey-light;
 
   .taxonomy-header {
     color: $white;
@@ -115,7 +115,7 @@ $level-selection-bg: #3b3b3b;
     @extend .icon-chevron-right;
     @extend %carousel-button;
     left: $level-container-width + $level-margin-right + $level-padding-left;
-    text-align: right;
+    text-align: center;
 
     //todo: figure out why we need this &:before content in IE and FF
     &:before{
@@ -224,6 +224,9 @@ $level-selection-bg: #3b3b3b;
     font-size: rem-calc(14);
 
     a {
+      display: block;
+      position: relative;
+      width: 100%;
       color: $grey-dark;
       padding-left: rem-calc(15);
     }
@@ -341,5 +344,11 @@ $level-selection-bg: #3b3b3b;
         background: $plos-default;
       }
     }
+  }
+
+  .taxonomy-browser-border-bottom {
+    width: 100%;
+    height: rem-calc(21);
+    background: $grey-light;
   }
 }

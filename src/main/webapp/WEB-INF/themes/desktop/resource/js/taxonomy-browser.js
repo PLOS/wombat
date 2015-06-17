@@ -27,31 +27,26 @@
 
   var o, n, l = ["wheel", "mousewheel", "DOMMouseScroll", "MozMousePixelScroll"], i = "onwheel"in document || document.documentMode >= 9 ? ["wheel"] : ["mousewheel", "DomMouseScroll", "MozMousePixelScroll"];
   if (e.event.fixHooks)for (var s = l.length; s;)e.event.fixHooks[l[--s]] = e.event.mouseHooks;
-  e.event.special.mousewheel = {setup: function () {
-    if (this.addEventListener)for (var e = i.length; e;)this.addEventListener(i[--e], t, !1); else this.onmousewheel = t
-  }, teardown: function () {
-    if (this.removeEventListener)for (var e = i.length; e;)this.removeEventListener(i[--e], t, !1); else this.onmousewheel = null
-  }}, e.fn.extend({mousewheel: function (e) {
-    return e ? this.bind("mousewheel", e) : this.trigger("mousewheel")
-  }, unmousewheel: function (e) {
-    return this.unbind("mousewheel", e)
-  }})
+  e.event.special.mousewheel = {
+    setup: function () {
+      if (this.addEventListener)for (var e = i.length; e;)this.addEventListener(i[--e], t, !1); else this.onmousewheel = t
+    }, teardown: function () {
+      if (this.removeEventListener)for (var e = i.length; e;)this.removeEventListener(i[--e], t, !1); else this.onmousewheel = null
+    }
+  }, e.fn.extend({
+    mousewheel: function (e) {
+      return e ? this.bind("mousewheel", e) : this.trigger("mousewheel")
+    }, unmousewheel: function (e) {
+      return this.unbind("mousewheel", e)
+    }
+  })
 });
-
-
-// ===========================================================================
-
 
 (function TaxonomyBrowser() {
 
-  // "GLOBAL" VARIABLES ======================================================
-
-  // constant used for various animations
   var ANIMATION_TIME = 200; // in ms
-
-  // URL of the taxonomy API
-  var API_URL = '/wombat/DesktopPlosOne/taxonomy/'; //todo: add generic site prefixes
-  var SEARCH_URL = '/wombat/DesktopPlosOne/search?subject=';
+  var API_URL = siteUrlPrefix + 'taxonomy/';
+  var SEARCH_URL = $('#taxonomy-browser').attr('data-url-prefix') + 'browse/';
 
   // store the term as a key with its children terms as an array of strings,
   // emulating the same data structure as the API response. the key '/'
@@ -99,48 +94,32 @@
 
     // console.log("term_cache now: ", term_cache);
 
-    if((typeof(term_cache[term]) != 'undefined')) {
+    if ((typeof(term_cache[term]) != 'undefined')) {
       return term_cache[term];
     } else {
       return [];
     }
   }
 
-
   /**
    * Displays the given term at the given level
    */
   function displayTerm(term, level) {
-    if(level > 0) {
-      if(typeof(_gaq) !== 'undefined'){
-        _gaq.push(['_trackEvent',"Taxonomy Browser", "Subject Clicked", term, true]);
+    if (level > 0) {
+      if (typeof(_gaq) !== 'undefined') {
+        _gaq.push(['_trackEvent', "Taxonomy Browser", "Subject Clicked", term, true]);
       }
     }
 
-    // if we clcked a lower-level item
-    // (ignore the root term in the stack for length calcs)
+    // if we clcked a lower-level item (ignore the root term in the stack for length calculations)
     if (level <= (term_stack.length - 1)) {
-      // console.log('clicked lower- or equal-level term; removing terms...');
       removeTermsAboveLevel(level);
-    }
-    else {
-      // console.log("no need to remove terms; will add children as last level");
-    }
-
-    // catch unknown terms for debugging purposes
-    if (typeof(term_cache[term]) == 'undefined') {
-      console.log('term "' + term + '" not in cache.');
     }
 
     var child_terms = getChildren(term);
-    // console.log("children to display: " + child_terms.join(", "));
-
     term_stack.push(term);
-    // console.log("pushed " + term + " onto term_stack (" + term_stack.join(" -> ") + ")");
-
     displayChildren(term, child_terms);
   }
-
 
   /**
    * a one-stop shop for displaying the children of the clicked term,
@@ -150,7 +129,6 @@
   function displayChildren(term, child_terms) {
 
     // generate new child list based term_cache keying off last item in term_stack
-    // renderChildren(term_cache[term_stack[term_stack.length - 1]]);
     renderChildren(term, child_terms);
 
     // get some metrics about our current display state (before animation)
@@ -158,13 +136,6 @@
     var current_depth = $('.levels-position .level').length;
     var hidden_left_cols = Math.abs(left_position / column_width);
     var hidden_right_cols = current_depth - (3 /* visible columns */) - hidden_left_cols;
-
-    // console.log([
-    // 	"POSITION BEFORE ANIMATION",
-    // 	"current_depth = " + current_depth,
-    // 	"hidden_left_cols = " + hidden_left_cols,
-    // 	"hidden_right_cols = " + hidden_right_cols
-    // ].join("\n"));
 
     // slide the carousel over if there's no room to the right
     if ((hidden_right_cols > 0)) {
@@ -174,13 +145,13 @@
 
   /**
    * Renders the list for the given children
-   * @param array child_terms an array of terms, taken from the term_cache
+   * @param term the parent term
+   * @param child_terms an array of terms, taken from the term_cache
    */
   function renderChildren(term, child_terms) {
 
     function createDataObject(terms_array) {
-      // loop through each item to find out if they have children and build
-      // out object of data for the template
+      // loop through each item to see if they have children. Build out object data for the template
       var data = $.map(terms_array, function (term) {
         return {
           'name': term,
@@ -189,8 +160,6 @@
           'count': term_counts[term]
         };
       });
-
-      // console.log("render children data object: ", data);
 
       return data;
     }
@@ -210,11 +179,7 @@
       view_all_total: term_count
     });
 
-    // insert the markup into the doc
     $('.levels-position').append(markup);
-    // console.log("children added to DOM");
-
-    // enable the newly-added column
     turnColumnOn($('.level').last());
   }
 
@@ -224,7 +189,6 @@
    * Handles the click event on terms in columns (levels)
    */
   function handleTermClick(event) {
-    // console.log(">>>> CLICK <<<<<")
     var clicked_el = $(event.target);
 
     // bail out if the term is a leaf node, so the link can go through normally
@@ -232,16 +196,11 @@
       return true;
     }
 
-    // cancel the event
     event.preventDefault();
 
-    // determine what level we're at
     var clicked_level_num = clicked_el.data('level');
-
-    // now show the term
     displayTerm(getTermFromElement(clicked_el), clicked_level_num);
 
-    // update the 'active' state for parent/child terms
     var closest_level_el = clicked_el.closest('.level');
     closest_level_el.find('a').removeClass('active');
     closest_level_el.find('li').removeClass('active');
@@ -255,9 +214,6 @@
     event.preventDefault();
 
     var clicked_el = $(event.target);
-    // console.log(">>> carousel click " + clicked_el.className);
-
-    // detect if the target has a class of active
     if (!clicked_el.hasClass('active')) {
       return false;
     }
@@ -318,14 +274,8 @@
     // NOTE: we're using deltaY here as delta and deltaY sometimes differ,
     // and deltaY seems to be the better choice. probably has something to do
     // with trackpads and x/y scrolling.
-    var normalized_delta = Math[(deltaY < 0 ? 'floor' : 'ceil')](deltaY/60);
-
-    // multiply by 10 to move faster (1px at a time is not much fun)
+    var normalized_delta = Math[(deltaY < 0 ? 'floor' : 'ceil')](deltaY / 60);
     var distance_to_scroll = normalized_delta * 10;
-
-    // console.log(delta, deltaY, distance_to_scroll);
-
-    // set the scrollTop (i.e. - scroll the element)
     var scrollTop = $(this).scrollTop();
     $(this).scrollTop(scrollTop - distance_to_scroll);
   }
@@ -335,7 +285,8 @@
 
   /**
    * Pans the carousel left and right
-   * @param  {string} delta The parameter that gets passed to the actual animate function, which is either number or an offset (+/-=)
+   * @param  {string} delta The parameter that gets passed to the actual animate function,
+   * which is either number or an offset (+/-=)
    */
   function animateCarousel(delta) {
     $('.levels-position').stop().animate({
@@ -347,30 +298,20 @@
    * Determines if the carousel previous and next buttons should display
    */
   function updateCarouselButtons() {
-    // get some metrics about our current display state
     var left_position = $('.levels-position').position().left;
     var current_depth = $('.levels-position .level').length;
     var hidden_left_cols = Math.abs(left_position / column_width);
     var hidden_right_cols = current_depth - 3 - hidden_left_cols;
 
-    // console.log([
-    // 	"POSITION AFTER ANIMATION",
-    // 	"current_depth = " + current_depth,
-    // 	"hidden_left_cols = " + hidden_left_cols,
-    // 	"hidden_right_cols = " + hidden_right_cols
-    // ].join("\n"));
-
     var prev_button = $el.find('.prev');
     var next_button = $el.find('.next');
 
-    // show the left/prev arrow if we're panned right (shifted left) at all
     if (hidden_left_cols > 0) {
       prev_button.show().addClass('active');
     } else {
       prev_button.hide().removeClass('active');
     }
 
-    // show the next arrow if right cols are out of view
     if (hidden_right_cols > 0) {
       next_button.show().addClass('active');
     } else {
@@ -405,82 +346,42 @@
    *  - it may be easier to just (re)set all columns all the time. the rules
    *    are pretty simple: the last column is "level-active"
    */
-  function turnColumnOff(el, requestor) {
-    // clear timeout, for good measure (this may be redundant)
-    clearTimeout(column_timeout);
+  function turnColumnOff(el, requester) {
 
-    // always remove the hover class
+    clearTimeout(column_timeout);
     el.removeClass('level-active-over');
 
-    // turn off the column
-    if (
-    // if it's not the last one
-      (el.data('level') <= term_stack.length) ||
-        // or if a lower column is trying to be active
-        (requestor && (requestor.data('level') < el.data('level')))
-      ) {
+    var isNotLastLevel = (el.data('level') <= term_stack.length);
+    var isLowerColumnActive = (requester && (requester.data('level') < el.data('level')));
+    if (isNotLastLevel || isLowerColumnActive) {
       el.removeClass('level-active');
       el.addClass('level-selection');
     }
 
     $last_column_active = null;
 
-    // if there's no reequestor and the element is not equal to the last one, turn on the last one
+    // if there's no requester and the element is not equal to the last one, turn on the last one
     var last_col = $('.level').last();
-    if (!requestor && (el !== last_col)) {
+    if (!requester && (el !== last_col)) {
       turnColumnOn(last_col);
     }
   }
 
   function turnColumnOn(el) {
-    // console.log("turnColumnOfflumnOn = ", el.data('level'), el.attr('class'));
 
     clearTimeout(column_timeout);
 
-    // before enabling this column, turn off the other columns (only allow
-    // one column active at a time)
-    if (
-    // don't try to turn off a column that doesn't exist
-      $last_column_active !== null &&
-        // don't try to turn off the column we're hovering over.
-        // note: comapring levels seems to be the best bet. jquery elements
-        // don't compare well
-        ($last_column_active.data('level') !== el.data('level'))
-      ) {
+    if ($last_column_active !== null && $last_column_active.data('level') !== el.data('level')) {
       turnColumnOff($last_column_active, el);
     }
 
-    // turn it from a regular column into an active column
     el.removeClass('level-selection');
     el.addClass("level-active level-active-over");
 
-    // mark this column as the last one active
     $last_column_active = el;
   }
 
   // UTLITY FUNCTIONS ========================================================
-
-  function insertTaxonomyBrowserSkeleton() {
-    var markup = [
-      '<div id="taxonomy-browser" class="areas">',
-      '<div class="wrapper">',
-      '<div class="taxonomy-header">Browse Subject Areas <div id="subjInfo">?</div>',
-      '<div id="subjInfoText"><p>Click through the PLOS taxonomy to find articles in your field.</p><p>For more information about PLOS Subject Areas, click <a href="${legacyUrlPrefix}static/help#subjectAreas">here</a>.</p></div>',
-      '</div>',
-      '<div class="levels">',
-      '<div class="levels-container cf">',
-      '<div class="levels-position"></div>',
-      '</div>',
-      '<a href="#" class="prev">&nbsp;</a>',
-      '<a href="#" class="next active">&nbsp;</a>',
-      '</div>',
-      '</div>',
-      '</div>'
-    ];
-
-    // append our skeleton to the DOM
-    $('#taxonomyContainer').append(markup.join("\n"));
-  }
 
   function buildColumnMarkup(data) {
     var terms = $.map(data.items, function (item, idx) {
@@ -513,7 +414,7 @@
       '<a href="#" class="down"></a>'];
 
     //We don't need the up / down arrows for less then 5 items
-    if(data.items.length < 5) {
+    if (data.items.length < 5) {
       markup[5] = '<a href="#" class="up hide-active-scroll"></a>';
       markup[11] = '<a href="#" class="down hide-active-scroll"></a>';
     }
@@ -527,12 +428,13 @@
    * Build out the api url string based on which items are in the collection
    */
   function buildSubjectUrl(last_term) {
-    // create a temp clone of the term_stack to build a URL with
+
     var url = SEARCH_URL;
 
+    //Replace all spaces with "_" and encode the special characters
     if ((typeof(last_term) !== 'undefined') && (last_term !== '/')) {
       last_term = "" + last_term;
-      url = url + encodeURIComponent(last_term);
+      url = url + encodeURIComponent(last_term.replace(new RegExp("\\s", 'g'), "_").toLowerCase());
     }
 
     return url;
@@ -550,8 +452,6 @@
 
     function handleSuccess(terms, textStatus, xhr) {
 
-      //console.log("JSON load successful");
-
       var child_terms = [];
       for (var i = 0; i < terms.length; i++) {
         var fullPath = terms[i].subject;
@@ -568,30 +468,21 @@
         term_cache[leaf] = [];
       }
 
-      // add the (sorted) child_terms for this parent to the cache
       term_cache[parent_term] = child_terms.sort();
 
     }
 
     function handleFailure(jqXHR, textStatus, errorThrown) {
-      console.log("JSON load unsuccessful");
 
-      //Disable the taxonomy browser
       $('.subject-area').unbind('click', displayBrowser)
         .attr("title", "Error: No subject terms available!")
         .addClass("disabled");
 
-      $('subject-area').on('click', function(e) {
+      $('subject-area').on('click', function (e) {
         e.preventDefault();
         return false;
       });
     }
-
-    // fetch the child terms for the given parent
-    //
-    // NOTE: async is set to false as we need the data immediately to render
-    // the children due to the "has children" arrow (we can render the list
-    // of terms, but we can't add the arrows without an additional request)
 
     var url = createUrlFromTermStack();
     if (parent_term != '/') {
@@ -609,7 +500,7 @@
   }
 
   function createUrlFromTermStack() {
-    var url =  API_URL;
+    var url = API_URL;
     for (var i = 1; i < term_stack.length; i++) {
       url += term_stack[i] + "/";
     }
@@ -617,20 +508,12 @@
   }
 
   function removeTermsAboveLevel(dest_level) {
-    // console.log("term_stack BEFORE removing to level " + dest_level + " " + term_stack.join(" -> "));
 
-    // discard all levels deeper than we clicked, before we show any more children
     while ($('.levels .level').length > dest_level) {
-      // discard the last list
       $('.levels .level').last().remove();
-
-      // if ((term_stack.length - 1) > dest_level) { term_stack.pop(); }
       term_stack.pop();
     }
-
-    // console.log("term_stack AFTER removing to level " + dest_level + " " + term_stack.join(" -> "));
   }
-
 
   function toggleTaxonomyBrowser(force_close) {
     // bail if we're already animating
@@ -641,137 +524,92 @@
     // set a sensible default
     force_close = force_close || false;
 
-    // are we open?
     var tb_closed = $tb.is(':hidden');
 
     if (force_close || !tb_closed) {
-      // optional slight optimization if no search pane; required if search
-      // pane is present since the effects are run in parallel
       if (!tb_closed) {
-        // close the TB and open the search pane, if it exists
         $tb.slideUp();
-        $('#searchStripForm').slideDown();
       }
     } else {
-      // open the TB and close the search pane, if it exists
       $tb.slideDown();
-      $('#searchStripForm').slideUp();
     }
   }
 
   function displayBrowser(event) {
-    if(typeof(_gaq) !== 'undefined'){
-      _gaq.push(['_trackEvent',"Taxonomy Browser", "Browser Opened", "", true]);
+    if (typeof(_gaq) !== 'undefined') {
+      _gaq.push(['_trackEvent', "Taxonomy Browser", "Browser Opened", "", true]);
     }
 
-    // stop the link
     event.preventDefault();
-
-    // don't let the events get to 'document'
     event.stopPropagation();
 
-    // toggle the TB
     toggleTaxonomyBrowser();
   }
 
   function attachEventHandlers() {
 
-    // add hover states for the columns
     $('.level-active').hover(function () {
       $(this).addClass('level-active-over');
     }, function () {
       $(this).removeClass('level-active-over');
     });
 
-    // attach an event to the main menu to show the TB
     $('.subject-area').on('click', displayBrowser);
 
-    // any click outside the subject area close it
     $(document).bind('click', function (event) {
-      // force close the TB
       toggleTaxonomyBrowser(true);
 
-      if(typeof(_gaq) !== 'undefined'){
-        _gaq.push(['_trackEvent',"Taxonomy Browser", "Browser Closed", "", true]);
+      if (typeof(_gaq) !== 'undefined') {
+        _gaq.push(['_trackEvent', "Taxonomy Browser", "Browser Closed", "", true]);
       }
     });
 
-    // bind a listener to the TB parent node to prevents the closing
-    // of the TB due to the event handler above
     $tb.click(function (event) {
-      // don't let the events get to 'document'
       event.stopPropagation();
     });
 
-
-    // cache this query (it's used a lot below)
-    var $delegate = $('.levels-position');
+    var $levelsPosition = $('.levels-position');
 
     // no column hover events for touch devices
     if (!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch)) {
-      // turn column on immediately
-      $delegate.on('mouseenter', '.level', function (e) {
+      $levelsPosition.on('mouseenter', '.level', function (e) {
         turnColumnOn($(e.currentTarget));
       });
 
       // wait 500ms before turning column off, to provide time for sloppy
       // mousing by user. note that we're not using hoverintent here as it
       // doesn't support this configuration.
-      $delegate.on('mouseleave', '.level', function (e) {
+      $levelsPosition.on('mouseleave', '.level', function (e) {
         column_timeout = setTimeout(function () {
           turnColumnOff($(e.currentTarget));
         }, 500);
       });
 
-      // scroll the list up and down
       // FIXME: should always scroll by a minimum amount
-      $delegate.on('mousedown', '.level > a', handleScrollColumnMousedown);
-      $delegate.on('mouseup', '.level > a', handleScrollColumnMouseup);
+      $levelsPosition.on('mousedown', '.level > a', handleScrollColumnMousedown);
+      $levelsPosition.on('mouseup', '.level > a', handleScrollColumnMouseup);
     }
 
-    // all ui variants get the following events
+    $levelsPosition.on('mousewheel', '.level-scroll', handleMousewheel);
 
-    // scrollwheel support
-    $delegate.on('mousewheel', '.level-scroll', handleMousewheel);
-
-    // ???
-    $delegate.on('click', '.level > a', function (e) {
+    $levelsPosition.on('click', '.level > a', function (e) {
       e.preventDefault();
     });
 
-    // for clicking on terms in columns
-    $delegate.on('click', 'ul li a', handleTermClick);
+    $levelsPosition.on('click', 'ul li a', handleTermClick);
 
-    // for panning the carousel left and right (navigating up and down the hierarchy)
     $el.on('click', '.prev', handleCarouselClick);
     $el.on('click', '.next', handleCarouselClick);
   }
 
-  // call us on DOM ready. (if we're included, we must be needed.)
-  $(document).ready(function() {
-    /**
-     * Attach event handlers and kick off the rendering by making an API
-     * request for the initial term list
-     */
+  $(document).ready(function () {
 
-    // insert the required markup
-    insertTaxonomyBrowserSkeleton();
-
-    // grab a root-ish level element for later use
-    // FIXME: this could probably be removed/refactored
     $el = $('.levels');
-
-    // cache the ref to the TB root element
     $tb = $('#taxonomy-browser');
 
-    // set up the event handlers so we can interact with it
     attachEventHandlers();
-
-    // immediately get the root-level terms and render the children so it's
-    // ready for action when the user reveals it.
     displayTerm('/', 0 /*level*/);
 
-    // grab the column width for use later
     column_width = $('.levels-position .level').outerWidth(true);
   });
 })();

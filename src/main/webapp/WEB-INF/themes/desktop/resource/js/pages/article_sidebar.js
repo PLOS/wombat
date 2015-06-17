@@ -47,16 +47,13 @@
     }
 
     /*// close tooltip if click outside of it*/
-    $(document).on(
-        'click.closeOutside', function (event) {
-          if ($(event.target).closest('.taxo-flag').length === 1 || $(event.target).closest('.taxo-tooltip').length === 1) {
-            // do nothing
-          } else {
-            $(toolContainer).removeClass('activate');
-            $(document).off("click.closeOutside");
-          }
-        }
-    );
+    $(document).on('click.closeOutside', function (event) {
+      if ($(event.target).closest('.taxo-flag').length !== 1
+        && $(event.target).closest('.taxo-tooltip').length !== 1) {
+        $(toolContainer).removeClass('activate');
+        $(document).off("click.closeOutside");
+      }
+    });
 
   };
   $('.taxo-flag').on('click', openTermTooltip);

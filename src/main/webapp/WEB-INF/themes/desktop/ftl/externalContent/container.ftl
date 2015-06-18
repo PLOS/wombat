@@ -6,7 +6,7 @@
 <#assign depth = 0 />
 <#assign title = '' />
 <#assign cssFile="site-content.css"/>
-<#include "../common/customHeaderTags.ftl" />
+<#include "../common/customHeadTags.ftl" />
 
 <#if externalData??>
   <#if externalData.css_sources??>

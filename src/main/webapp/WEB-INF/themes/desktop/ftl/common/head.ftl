@@ -19,9 +19,11 @@
 
   <@renderCssLinks />
 
-  <@printCustomTags/>
+  <!-- allows for  extra head tags -->
+  <#if customHeadTags??>
+    <@printCustomTags/>
+  </#if>
 
-<#--<@externalCSS />-->
     <!--[if IE 8]>
   <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />"/>
     <![endif]-->

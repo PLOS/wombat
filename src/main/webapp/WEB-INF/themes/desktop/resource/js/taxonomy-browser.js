@@ -100,8 +100,8 @@
    */
   function displayTerm(term, level) {
     if (level > 0) {
-      if (typeof(_gaq) !== 'undefined') {
-        _gaq.push(['_trackEvent', "Taxonomy Browser", "Subject Clicked", term, true]);
+      if (typeof(ga) !== 'undefined') {
+        ga('send', 'event', 'Taxonomy Browser', 'Subject Clicked', term);
       }
     }
 
@@ -530,8 +530,8 @@
   }
 
   function displayBrowser(event) {
-    if (typeof(_gaq) !== 'undefined') {
-      _gaq.push(['_trackEvent', "Taxonomy Browser", "Browser Opened", "", true]);
+    if (typeof(ga) !== 'undefined') {
+      ga('send', 'event', 'Taxonomy Browser', 'Browser Opened', '');
     }
 
     event.preventDefault();
@@ -553,8 +553,8 @@
     $(document).bind('click', function (event) {
       toggleTaxonomyBrowser(true);
 
-      if (typeof(_gaq) !== 'undefined') {
-        _gaq.push(['_trackEvent', "Taxonomy Browser", "Browser Closed", "", true]);
+      if (typeof(ga) !== 'undefined') {
+        ga('send', 'event', 'Taxonomy Browser', 'Browser Closed', '');
       }
     });
 

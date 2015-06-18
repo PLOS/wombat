@@ -6,48 +6,20 @@
 <#assign depth = 0 />
 <#assign title = '' />
 <#assign cssFile="site-content.css"/>
-
-<#--<#include "../common/customHeaderTags.ftl" />-->
-
-<#--allows for custom tags to be added from the container template-->
-<#assign customHeaderTags=[]/>
-<#macro addCustomHeaderTag>
-  <#assign customHeaderTag>
-    <#nested>
-  </#assign>
-  <#assign customHeaderTags=customHeaderTags + [customHeaderTag] />
-</#macro>
+<#include "../common/customHeaderTags.ftl" />
 
 <#if externalData??>
   <#if externalData.css_sources??>
     <#list externalData.css_sources as css_source>
-      <@addCustomHeaderTag>
-        <link rel="stylesheet" type="text/css" href="<@siteLink path='indirect/'/>${css_source}"/>
-      </@addCustomHeaderTag> </#list>
+      <@addCustomHeadTag>
+      <link rel="stylesheet" type="text/css" href="<@siteLink path='indirect/'/>${css_source}"/>
+      </@addCustomHeadTag> </#list>
   </#if>
 </#if>
 
-<@addCustomHeaderTag>
-<meta name="feelings" content="I love Johny"/>
-</@addCustomHeaderTag>
-
-<@addCustomHeaderTag>
-
-</@addCustomHeaderTag>
-
-
-<#--allows for custom tags to be added from the container template-->
-
-<#macro printCustomTags>
-
-  <#list customHeaderTags as customTag>
-  ${customTag}
-  </#list>
-
-</#macro>
-
-
-
+<@addCustomHeadTag>
+<meta name="asset-url-prefix" content="/lala/indirect/">
+</@addCustomHeadTag>
 
 <#include "../common/head.ftl" />
 

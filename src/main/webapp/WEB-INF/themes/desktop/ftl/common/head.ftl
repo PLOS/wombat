@@ -19,7 +19,7 @@
 
   <@renderCssLinks />
 
-<@printCustomTags/>
+  <@printCustomTags/>
 
 <#--<@externalCSS />-->
     <!--[if IE 8]>

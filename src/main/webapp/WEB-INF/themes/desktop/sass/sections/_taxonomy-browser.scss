@@ -223,15 +223,10 @@ $level-selection-bg: #3b3b3b;
   .level-active {
 
     li a {
-      &::after {
+      &::after:not(.no-children) {
         @extend .icon-caret-right;
         @extend .menu-icon-right;
       }
-    }
-
-    .no-children::after {
-      @extend .icon-circle;
-      @extend .menu-icon-right;
     }
 
     .down:hover, .up:hover {
@@ -304,15 +299,10 @@ $level-selection-bg: #3b3b3b;
 
       a {
         color: $table-header-bg;
-        &::after {
+        &::after:not(.no-children) {
           @extend .icon-caret-right;
           @extend .menu-icon-right;
         }
-      }
-
-      .no-children::after {
-          @extend .icon-circle;
-          @extend .menu-icon-right;
       }
 
       li.active a {

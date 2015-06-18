@@ -11,12 +11,6 @@
 
 </#macro>
 
-<#--allows for custom tags to be added from the container template-->
-<#assign customHeaderTags=[]/>
-<#macro addCustomHeaderTag>
-  <#assign customHeaderTags = customHeaderTags + ["<#nested>"]/>
-</#macro>
-
 
 <head prefix="og: http://ogp.me/ns#">
   <title><@titleFormat removeTags(title) /></title>
@@ -25,7 +19,9 @@
 
   <@renderCssLinks />
 
-  <@externalCSS />
+<@printCustomTags/>
+
+<#--<@externalCSS />-->
     <!--[if IE 8]>
   <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />"/>
     <![endif]-->

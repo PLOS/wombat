@@ -1,19 +1,19 @@
 $level-title-height: rem-calc(14);
 $level-title-margin-bottom: rem-calc(9);
-$level-top-height: rem-calc(30);
+$level-top-height: $pad-medium;
 $level-scroll-height: rem-calc(158);
 $level-up-down-height: rem-calc(20);
 $level-margin-bottom: rem-calc(7);
 $level-container-height: $level-title-height + $level-title-margin-bottom + $level-scroll-height
  + $level-top-height + (2 * $level-up-down-height) + $level-margin-bottom;
 
-$taxonomy-header-height: rem-calc(30);
-$taxonomy-header-width: rem-calc(30);
+$taxonomy-header-height: $pad-medium;
+$taxonomy-header-width: $pad-medium;
 $taxonomy-header-margin-bottom: rem-calc(65) - $level-title-height - $level-title-margin-bottom
  - ($level-title-height / 2);
 
 $level-li-padding-vertical: rem-calc(9);
-$level-li-padding-horizontal: rem-calc(15);
+$level-li-padding-horizontal: $pad-smallish;
 
 $level-width: rem-calc(286);
 $level-margin-right: rem-calc(7);
@@ -30,7 +30,7 @@ $level-selection-bg: $grey-dark;
 
    .wrapper {
     width: $level-wrapper-width;
-    padding: rem-calc(17) 0 rem-calc(30);
+    padding: $pad-smallish 0 $pad-medium;
     margin: 0 auto;
    }
 }
@@ -208,7 +208,7 @@ $level-selection-bg: $grey-dark;
   background-color: $grey-light;
   height: $level-top-height;
   margin-bottom: $level-margin-bottom;
-  line-height: rem-calc(30);
+  line-height: $pad-medium;
   font-size: $txt-size-medium;
 
   a {
@@ -216,7 +216,7 @@ $level-selection-bg: $grey-dark;
     position: relative;
     width: 100%;
     color: $grey-dark;
-    padding-left: rem-calc(15);
+    padding-left: $pad-smallish;
   }
 }
 

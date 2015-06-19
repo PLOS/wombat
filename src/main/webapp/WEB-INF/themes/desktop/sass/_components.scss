@@ -351,56 +351,56 @@ example | extension
   @extend .icon-fa;
   @extend .fa-caret-down;
   font-size: $txt-size-medium-large;
-  line-height: rem-calc(35);  // .fa-etc default to 44
+  line-height: $line-height-icon;
 }
 
 .icon-caret-left {
   @extend .icon-fa;
   content: '\f0d9';
   font-size: $txt-size-medium-large;
-  line-height: rem-calc(35);  // .fa-etc default to 44
+  line-height: $line-height-icon;
 }
 
 .icon-caret-right {
   @extend .icon-fa;
   content: '\f0da';
   font-size: $txt-size-medium-large;
-  line-height: rem-calc(35);  // .fa-etc default to 44
+  line-height: $line-height-icon;
 }
 
 .icon-angle-up {
   @extend .icon-fa;
   @extend .fa-angle-up;
   font-size: $txt-size-large;
-  line-height: rem-calc(35);  // .fa-etc default to 44
+  line-height: $line-height-icon;
 }
 
 .icon-angle-down {
   @extend .icon-fa;
   @extend .fa-angle-down;
   font-size: $txt-size-large;
-  line-height: rem-calc(35);  // .fa-etc default to 44
+  line-height: $line-height-icon;
 }
 
 .icon-chevron-left {
   @extend .icon-fa;
   @extend .fa-chevron-left;
   font-size: $txt-size-xxxlarge;
-  line-height: rem-calc(35);  // .fa-etc default to 44
+  line-height: $line-height-icon;
 }
 
 .icon-chevron-right {
   @extend .icon-fa;
   @extend .fa-chevron-right;
   font-size: $txt-size-xxxlarge;
-  line-height: rem-calc(35);  // .fa-etc default to 44
+  line-height: $line-height-icon;
 }
 
 .icon-circle {
   @extend .icon-fa;
   content: '\f111';
   font-size: $txt-size-xxxsmall;
-  line-height: rem-calc(35);  // .fa-etc default to 44
+  line-height: $line-height-icon;
 }
 
 .icon-pointer{

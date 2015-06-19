@@ -10,17 +10,6 @@
   <@cssLink target="resource/css/${cssFile}"/>
 
 </#macro>
-<#--allows for external css to be brought in via the content repo-->
-<#macro externalCSS>
-  <#if externalData??>
-    <#if externalData.css_sources??>
-      <#list externalData.css_sources as css_source>
-        <link rel="stylesheet" type="text/css"
-              href="<@siteLink path='indirect/'/>${css_source}"/>
-      </#list>
-    </#if>
-  </#if>
-</#macro>
 
 
 <head prefix="og: http://ogp.me/ns#">
@@ -30,7 +19,11 @@
 
   <@renderCssLinks />
 
-  <@externalCSS />
+  <!-- allows for  extra head tags -->
+  <#if customHeadTags??>
+    <@printCustomTags/>
+  </#if>
+
     <!--[if IE 8]>
   <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />"/>
     <![endif]-->

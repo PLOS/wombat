@@ -34,7 +34,7 @@
 <nav id="article-pagination" class="nav-pagination">
   <#if currentPage gt 1>
     <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage - 1 />"
-       class="previous switch">Previous Page</a>
+       class="previous-page switch">Previous Page</a>
   </#if>
   <#if numPages lt 10>
     <@pageLinkRange first=1 last=numPages selected=currentPage />
@@ -54,7 +54,7 @@
     </#if>
   </#if>
   <#if currentPage lt numPages>
-    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage + 1 />" class="next switch">
+    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage + 1 />" class="next-page switch">
       Next Page</a>
   </#if>
 </nav>

@@ -9,7 +9,7 @@
 
 <body class="static ${journalStyle}">
 
-  <#include "../common/header/header.ftl" />
+  <#include "../common/header/headerContainer.ftl" />
 
   <main class="search-results-body">
     <article>

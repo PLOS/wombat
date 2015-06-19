@@ -34,7 +34,7 @@
 
 
 <#if externalData.name??>
-  <div data-service="${externalServiceName}" data-${externalData.name}-container/>
+  <div id="external-content-container" data-service="${externalServiceName}" data-${externalData.name}-container/>
 </#if>
 
 <#include "../common/footer/footer.ftl" />
@@ -46,6 +46,7 @@
     <script src="<@siteLink path='indirect/'/>${js_source}" type="text/javascript"></script>
   </#list>
 </#if>
+
 
 </body>
 </html>

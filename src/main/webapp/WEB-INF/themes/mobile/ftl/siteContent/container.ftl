@@ -7,7 +7,7 @@
 <body>
 <div id="container-main">
 
-<#include "../common/header/header.ftl" />
+<#include "../common/header/headerContainer.ftl" />
 
   <div id="content">
 

@@ -1,0 +1,337 @@
+$level-title-height: rem-calc(14);
+$level-title-margin-bottom: rem-calc(9);
+$level-top-height: $pad-medium;
+$level-scroll-height: rem-calc(158);
+$level-up-down-height: rem-calc(20);
+$level-margin-bottom: rem-calc(7);
+$level-container-height: $level-title-height + $level-title-margin-bottom + $level-scroll-height
+ + $level-top-height + (2 * $level-up-down-height) + $level-margin-bottom;
+
+$taxonomy-header-height: $pad-medium;
+$taxonomy-header-width: $pad-medium;
+$taxonomy-header-margin-bottom: rem-calc(65) - $level-title-height - $level-title-margin-bottom
+ - ($level-title-height / 2);
+
+$level-li-padding-vertical: rem-calc(9);
+$level-li-padding-horizontal: $pad-smallish;
+
+$level-width: rem-calc(286);
+$level-margin-right: rem-calc(7);
+$level-padding-left: rem-calc(41);
+$level-container-width: ($level-width * 3 + $level-margin-right * 2);
+$level-carousel-button-width: rem-calc(35);
+$level-carousel-button-height: rem-calc(41);
+$level-wrapper-width: $level-container-width + rem-calc(88);
+
+$level-selection-bg: $grey-dark;
+
+.areas {
+  background: $tabs-base-color;
+
+   .wrapper {
+    width: $level-wrapper-width;
+    padding: $pad-smallish 0 $pad-medium;
+    margin: 0 auto;
+   }
+}
+
+.menu-icon-right {
+  position: absolute;
+  display: inline-block;
+  line-height: rem-calc(14);
+  top: rem-calc(12);
+  left: 100%;
+}
+
+#taxonomy-browser {
+  display: none;
+}
+
+.taxonomy-header {
+  color: $white;
+  font-size: $txt-size-large;
+  font-weight: bold;
+  background: image-url('icon-subjAreas.png') no-repeat;
+  height: $taxonomy-header-height;
+  padding-left: $taxonomy-header-width + rem-calc(3);
+  margin: auto auto $taxonomy-header-margin-bottom rem-calc(8);
+  line-height: $taxonomy-header-height;
+
+  #subjInfoText {
+    @include tooltip($width: 400);
+    display: none;
+    position: relative;
+    top: rem-calc(-25);
+    left: rem-calc(202);
+    padding-left: rem-calc(20);
+    z-index: map-get($zindex, footer);
+
+    &:hover {
+      display: block;
+    }
+
+    a {
+      @extend %link-text-white;
+      font-weight: bold;
+    }
+  }
+
+  #subjInfo {
+    @include circle;
+    display: inline-block;
+    font-size: $txt-size-xsmall;
+    position: relative;
+    left: $level-margin-right;
+    top: rem-calc(-2);
+    line-height: $line-height;
+    z-index: map-get($zindex, header);
+
+    &:hover {
+      & + #subjInfoText {
+        display: block;
+      }
+    }
+  }
+}
+
+%carousel-button {
+  color: $white;
+  line-height: rem-calc(44);
+  display: none;
+  width: $level-carousel-button-width;
+  height: $level-carousel-button-height;
+  position: absolute;
+  top: rem-calc(120);
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    @extend .fa-inverse;
+    @extend %rounded-default;
+    background-color: $grey-light;
+  }
+}
+
+.next {
+  @extend .icon-chevron-right;
+  @extend %carousel-button;
+  left: $level-container-width + $level-margin-right + $level-padding-left;
+
+  //todo: figure out why we need this &:before content in IE and FF
+  &:before{
+    content: "\f054";
+  }
+}
+
+.prev {
+  @extend .icon-chevron-left;
+  @extend %carousel-button;
+  left: 0;
+}
+
+.levels {
+  padding-left: $level-padding-left;
+  position: relative;
+}
+
+.levels-container {
+  width: $level-container-width;
+  height: $level-container-height;
+  overflow: hidden;
+  position: relative;
+}
+
+.touch .levels-container {
+  overflow-x: auto;
+}
+
+.levels-position {
+  width: 99999px;
+  position: absolute;
+}
+
+.level {
+  float: left;
+  width: $level-width;
+  height: $level-up-down-height * 2 + $level-scroll-height + $level-margin-bottom;
+  font-weight: bold;
+  color: $grey-med-dark;
+  margin-right: $level-margin-right;
+  position: relative;
+
+  ul {
+    font-size: $txt-size-medium;
+    width: $level-width;
+    margin: 0;
+
+    li a {
+      display: block;
+      position: relative;
+      width: 94%; //leave 6% for the :after menu icon
+      padding: $level-li-padding-vertical $level-li-padding-horizontal;
+    }
+  }
+}
+
+.no-touch .level .level-scroll {
+
+  li:hover {
+    background: $plos-default;
+  }
+
+  a:hover {
+    color: $white;
+  }
+}
+
+.level-scroll {
+  width: $level-width;
+  height: $level-scroll-height;
+  overflow: hidden;
+  background: $grey-light;
+
+  a {
+    text-decoration: none;
+    color: $grey-dark;
+  }
+}
+
+.level-title {
+  font-size: $txt-size-medium;
+  margin-bottom: $level-title-margin-bottom;
+}
+
+.level-top {
+  @extend .level;
+  @extend %rounded-default;
+  float: none;
+  background-color: $grey-light;
+  height: $level-top-height;
+  margin-bottom: $level-margin-bottom;
+  line-height: $pad-medium;
+  font-size: $txt-size-medium;
+
+  a {
+    display: block;
+    position: relative;
+    width: 100%;
+    color: $grey-dark;
+    padding-left: $pad-smallish;
+  }
+}
+
+.touch .level-scroll {
+  overflow: auto;
+}
+
+/* active levels */
+.level-active {
+
+  li a {
+    &::after {
+      @extend .icon-caret-right;
+      @extend .menu-icon-right;
+    }
+  }
+
+  .no-children::after {
+    @extend .icon-circle;
+    @extend .menu-icon-right;
+  }
+
+  .down:hover, .up:hover {
+    @extend .fa-inverse;
+  }
+
+  .level-top {
+    background-color: $plos-one;
+  }
+
+  .level-title {
+    color: $plos-one;
+  }
+}
+
+%level-active-scroll {
+  width: $level-width;
+  height: $level-up-down-height;
+  text-align: center;
+  background-color: $grey-light;
+  line-height: rem-calc(20);
+  color: $black;
+}
+
+.hide-active-scroll {
+  cursor: default;
+  &::before {
+    color: $grey-light;
+  }
+}
+
+.up {
+  @extend %level-active-scroll;
+  @extend .icon-angle-up;
+  @extend %rounded-default-top;
+}
+
+.down {
+  @extend %level-active-scroll;
+  @extend .icon-angle-down;
+  @extend %rounded-default-bottom;
+}
+
+/* levels with selections made */
+.level-selection {
+
+  .level-scroll, .level-top {
+    border: 1px solid $level-selection-bg;
+    background: $level-selection-bg;
+  }
+
+  .hide-active-scroll::before {
+    color: $level-selection-bg;
+  }
+
+  .level-title {
+    color: $grey-med-light;
+  }
+
+  .level-top a {
+    color: $table-header-bg;
+  }
+
+  .up, .down {
+    background: $level-selection-bg;
+    color: $table-header-bg;
+  }
+
+  .level-scroll {
+
+    a {
+      color: $table-header-bg;
+      &::after {
+        @extend .icon-caret-right;
+        @extend .menu-icon-right;
+      }
+    }
+
+    .no-children::after {
+        @extend .icon-circle;
+        @extend .menu-icon-right;
+    }
+
+    li.active a {
+      color: $white;
+    }
+
+    li.active {
+      background: $plos-default;
+    }
+  }
+}
+
+.taxonomy-browser-border-bottom {
+  width: 100%;
+  height: rem-calc(21);
+  background: $grey-light;
+}

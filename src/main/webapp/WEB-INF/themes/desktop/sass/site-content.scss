@@ -1,6 +1,5 @@
-@import "global-imports";
-@import "sections/footer";
-@import "sections/header";
+@import "global-library-imports";
+@import "global-section-imports";
 
 /// scaffolding
 main {
@@ -16,14 +15,12 @@ main {
       @include plos-grid-column($pixelwidth: 760, $gutter: none, $float: right);
       }
     }
-
-
   }
 
 /// navigation
-article nav ul {
-  @include nav-enhanced;
-  }
+main nav ul {
+    @include nav-enhanced;
+    }
 
 /// site content specific styles
 @mixin site-content {

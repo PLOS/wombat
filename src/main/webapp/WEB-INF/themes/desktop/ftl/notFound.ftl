@@ -9,7 +9,7 @@
 
 <#include "common/journalStyle.ftl" />
 <body class="static ${journalStyle}">
-<#include "common/header/header.ftl" />
+<#include "common/header/headerContainer.ftl" />
 
 <article class="error-page">
   <h1>Page Not Found</h1>

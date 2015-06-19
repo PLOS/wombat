@@ -1,0 +1,26 @@
+/*doc
+---
+title: Files
+name: files
+category: Files
+
+These are the common files we use in our framework.
+
+*/
+
+/*doc
+---
+title: global-section-imports.scss
+name: global-section-imports.scss
+category: Files
+---
+
+This is a centralized import file that covers the sections that have to be on every page.
+you should import this into any new standalone .css
+These are the files that need to be on each stand alone stylesheet
+
+*/
+
+@import "sections/footer";
+@import "sections/header";
+@import "sections/taxonomy-browser";

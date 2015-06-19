@@ -167,11 +167,6 @@ $width-nav: $block-grid-elements - $width-logo;
       border-left: 1px solid transparent;
       margin-left: 0;
       }
-    &.subject-area {
-      @include js-tooltip-container();
-      color: $grey-med;
-      cursor: pointer;
-      }
     }
 
   ul.nav-elements {
@@ -195,6 +190,14 @@ $width-nav: $block-grid-elements - $width-logo;
           }
         }
       }
+
+    .subject-area {
+      border: none;
+      margin-left: rem-calc(40);
+      padding-bottom: rem-calc(3);
+      background-color: $grey-med-light;
+      @extend %rounded-default;
+    }
 
     .mega {
       .menu-section-header-title {

@@ -42,7 +42,8 @@
   })
 });
 
-(function TaxonomyBrowser() {
+(function ($) {
+  (function TaxonomyBrowser() {
 
   var ANIMATION_TIME = 200; // in ms
   var API_URL = siteUrlPrefix + 'taxonomy/';
@@ -216,6 +217,7 @@
     var delta = operator + $('.level').outerWidth(true);
 
     animateCarousel(delta);
+    $(':focus').blur();
   }
 
   /**
@@ -606,4 +608,5 @@
 
     column_width = $('.levels-position .level').outerWidth(true);
   });
-})();
+})()
+})(jQuery);

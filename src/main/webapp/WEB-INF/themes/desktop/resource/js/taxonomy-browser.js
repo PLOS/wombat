@@ -211,6 +211,9 @@
     var delta = operator + $('.level').outerWidth(true);
 
     animateCarousel(delta);
+
+    //carousel buttons are links and will receive focus after clicking, breaking the styling.
+    //todo: create a :focus & :active override in the CSS to handle this case
     $(':focus').blur();
   }
 

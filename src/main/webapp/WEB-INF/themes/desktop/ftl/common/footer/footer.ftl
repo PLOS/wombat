@@ -1,6 +1,6 @@
 
 
-</main><#-- opened in header.ftl -->
+</main><#-- opened in headerContainer.ftl -->
 
 <footer id="pageftr">
   <div class="row">

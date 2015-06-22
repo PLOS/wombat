@@ -1,6 +1,6 @@
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
-
+<#--allows for page specific css-->
 <#macro pageCSS>
 
   <#if !cssFile?has_content>
@@ -18,6 +18,12 @@
   <@pageCSS/>
 
   <@renderCssLinks />
+
+  <!-- allows for  extra head tags -->
+  <#if customHeadTags??>
+    <@printCustomTags/>
+  </#if>
+
     <!--[if IE 8]>
   <link rel="stylesheet" type="text/css" href="<@siteLink path="resource/css/ie.css" />"/>
     <![endif]-->
@@ -42,6 +48,7 @@
 <#-- // TODO: NEED BACKEND
   <meta name="description" content="${freemarker_config.getMetaDescription(journalContext)}"/>
   <meta name="keywords" content="${freemarker_config.getMetaKeywords(journalContext)}"/>-->
+
 
 <#if article??>
 <#-- // citation meta tags -->

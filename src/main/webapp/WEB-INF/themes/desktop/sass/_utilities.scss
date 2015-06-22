@@ -69,7 +69,16 @@ $zindex: (
 
 $default-border-radius: $border-radius-default;
 // that name space convention in compass just really bugs me.
+%rounded-default {
+  @include border-radius();
+}
 
+%rounded-default-top {
+  @include border-top-radius();
+}
+%rounded-default-bottom {
+  @include border-bottom-radius();
+}
 // color mixin:
 @mixin highlight-color($clr-highlight: $plos-default) {
   color: $clr-highlight;

@@ -7,7 +7,7 @@
 <body id="page-browse" class="plosone">
 
 <div id="container-main">
-<#include "common/header/header.ftl" />
+<#include "common/header/headerContainer.ftl" />
 
   <div id="browse-content" class="content">
     <div id="browse-container"></div>

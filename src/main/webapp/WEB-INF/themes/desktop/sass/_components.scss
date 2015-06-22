@@ -261,10 +261,6 @@ have a fixed width and height (but it's not required).
   }
 }
 
-//font awesome icon: arrow after link
-//use with ::after
-//example: .more-link::after { @extend .more-icon }
-
 /*doc
 ---
 title: icons
@@ -274,7 +270,15 @@ category: typography
 
 We use the fantastic FontAwesome library for most icons. There are a few manipulation functions, found in the documentation.
 For icons after text:
-use  with `::after` example: `.more-link::after { @extend .more-icon }`
+use  with `::after` example:
+.next {
+    @extend .icon-chevron-right;
+    color: white;
+
+    &:after{
+      content: "\f054";
+    }
+  }
 
 example | extension
 --------|----------
@@ -347,7 +351,56 @@ example | extension
   @extend .icon-fa;
   @extend .fa-caret-down;
   font-size: $txt-size-medium-large;
-  line-height: rem-calc(35);  // .fa-etc default to 44
+  line-height: $line-height-icon;
+}
+
+.icon-caret-left {
+  @extend .icon-fa;
+  content: '\f0d9';
+  font-size: $txt-size-medium-large;
+  line-height: $line-height-icon;
+}
+
+.icon-caret-right {
+  @extend .icon-fa;
+  content: '\f0da';
+  font-size: $txt-size-medium-large;
+  line-height: $line-height-icon;
+}
+
+.icon-angle-up {
+  @extend .icon-fa;
+  @extend .fa-angle-up;
+  font-size: $txt-size-large;
+  line-height: $line-height-icon;
+}
+
+.icon-angle-down {
+  @extend .icon-fa;
+  @extend .fa-angle-down;
+  font-size: $txt-size-large;
+  line-height: $line-height-icon;
+}
+
+.icon-chevron-left {
+  @extend .icon-fa;
+  @extend .fa-chevron-left;
+  font-size: $txt-size-xxxlarge;
+  line-height: $line-height-icon;
+}
+
+.icon-chevron-right {
+  @extend .icon-fa;
+  @extend .fa-chevron-right;
+  font-size: $txt-size-xxxlarge;
+  line-height: $line-height-icon;
+}
+
+.icon-circle {
+  @extend .icon-fa;
+  content: '\f111';
+  font-size: $txt-size-xxxsmall;
+  line-height: $line-height-icon;
 }
 
 .icon-pointer{
@@ -366,6 +419,7 @@ example | extension
   top: -9999px;
   left: -9999px;
 }
+
 /// use with span
 // $width and $height use rem calc so only pixels are needed, $width, $height, $img are required  .
 @mixin icon-image($width, $height,$img, $offset: 0 0, $align: middle) {

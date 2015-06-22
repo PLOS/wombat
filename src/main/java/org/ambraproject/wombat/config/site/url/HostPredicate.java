@@ -1,10 +1,8 @@
 package org.ambraproject.wombat.config.site.url;
 
 import com.google.common.base.Preconditions;
-import org.ambraproject.wombat.util.PathUtil;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.Iterator;
+
 
 class HostPredicate implements SiteRequestPredicate {
 

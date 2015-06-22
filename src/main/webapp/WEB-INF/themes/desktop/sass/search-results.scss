@@ -40,6 +40,9 @@ main.search-results-body {
 }
 
 // Paging controls (shared with mobile).
+
+$inactive-background-color: #c2c2c2;
+
 .nav-pagination {
   display: inline;
 }
@@ -48,7 +51,7 @@ main.search-results-body {
   display: inline-block;
   font-weight: bold;
   font-size: $txt-size-medium;
-  line-height: rem-calc(20px);
+  line-height: $pad-default;
   padding: rem-calc(0 6px);
   min-width: rem-calc(16px);
   border-radius: rem-calc(4px);
@@ -56,7 +59,7 @@ main.search-results-body {
 
 .number, .switch, .skip {
   @include search-results-rounded-control;
-  background-color: #c2c2c2;
+  background-color: $inactive-background-color;
   text-align: center;
   margin: rem-calc(0 1px);
 }
@@ -64,9 +67,9 @@ main.search-results-body {
 .switch {
 
   // Hide the text that is embedded and display an icon instead.
-  text-indent: -9999px;
-  height: rem-calc(20px);
-  width: rem-calc(20px);
+  @include icon-offscreen;
+  height: $pad-default;
+  width: $pad-default;
   white-space: nowrap;
   background-color: $black !important;
 }
@@ -104,7 +107,7 @@ main.search-results-body {
     @extend %brand-background;
     width: 100px;
     option {
-      background-color: #c2c2c2;
+      background-color: $inactive-background-color;
     }
   }
 }

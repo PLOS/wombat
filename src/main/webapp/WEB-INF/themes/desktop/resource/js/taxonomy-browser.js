@@ -209,7 +209,8 @@
     event.preventDefault();
 
     var clicked_el = $(event.target);
-    if (!clicked_el.hasClass('active')) {
+    //do not trigger an event if the carousel is currently animating
+    if (!clicked_el.hasClass('active') || $('.levels-position').queue().length > 0) {
       return false;
     }
 

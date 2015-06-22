@@ -6,12 +6,27 @@
 <#assign depth = 0 />
 <#assign title = '' />
 <#assign cssFile="site-content.css"/>
+<#include "../common/customHeadTags.ftl" />
+
+<#if externalData??>
+  <#if externalData.css_sources??>
+    <#list externalData.css_sources as css_source>
+      <@addCustomHeadTag>
+      <link rel="stylesheet" type="text/css" href="<@siteLink path='indirect/'/>${css_source}"/>
+      </@addCustomHeadTag> </#list>
+  </#if>
+</#if>
+
+<@addCustomHeadTag>
+<meta name="asset-url-prefix" content="/lala/indirect/">
+</@addCustomHeadTag>
 
 <#include "../common/head.ftl" />
+
 <#include "../common/journalStyle.ftl" />
 <body class="static ${journalStyle}">
 
-<#include "../common/header/header.ftl" />
+<#include "../common/header/headerContainer.ftl" />
 
 <#if externalData.content??>
   ${externalData.content}
@@ -19,7 +34,7 @@
 
 
 <#if externalData.name??>
-  <div data-service="${externalServiceName}" data-${externalData.name}-container/>
+  <div id="external-content-container" data-service="${externalServiceName}" data-${externalData.name}-container/>
 </#if>
 
 <#include "../common/footer/footer.ftl" />
@@ -31,6 +46,7 @@
     <script src="<@siteLink path='indirect/'/>${js_source}" type="text/javascript"></script>
   </#list>
 </#if>
+
 
 </body>
 </html>

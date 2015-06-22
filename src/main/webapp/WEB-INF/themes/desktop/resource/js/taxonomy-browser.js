@@ -210,7 +210,7 @@
 
     var clicked_el = $(event.target);
     //do not trigger an event if the carousel is currently animating
-    if (!clicked_el.hasClass('active') || $('.levels-position').queue().length > 0) {
+    if (!clicked_el.hasClass('active') || $('.levels-position').is(':animated')) {
       return false;
     }
 

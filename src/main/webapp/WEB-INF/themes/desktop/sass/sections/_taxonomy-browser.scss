@@ -40,7 +40,7 @@ $level-selection-bg: $grey-dark;
   display: inline-block;
   line-height: rem-calc(14);
   top: rem-calc(12);
-  left: 100%;
+  right: rem-calc(8);
 }
 
 #taxonomy-browser {
@@ -167,7 +167,7 @@ $level-selection-bg: $grey-dark;
     li a {
       display: block;
       position: relative;
-      width: 94%; //leave 6% for the :after menu icon
+      width: 100%;
       padding: $level-li-padding-vertical $level-li-padding-horizontal;
     }
   }

@@ -42,7 +42,8 @@
   })
 });
 
-(function TaxonomyBrowser() {
+(function ($) {
+  (function TaxonomyBrowser() {
 
   var ANIMATION_TIME = 200; // in ms
   var API_URL = siteUrlPrefix + 'taxonomy/';
@@ -201,7 +202,8 @@
     event.preventDefault();
 
     var clicked_el = $(event.target);
-    if (!clicked_el.hasClass('active')) {
+    //do not trigger an event if the carousel is currently animating
+    if (!clicked_el.hasClass('active') || $('.levels-position').is(':animated')) {
       return false;
     }
 
@@ -209,6 +211,7 @@
     var delta = operator + $('.level').outerWidth(true);
 
     animateCarousel(delta);
+    $(':focus').blur();
   }
 
   /**
@@ -607,4 +610,5 @@
     attachEventHandlers();
     displayTerm('/', 0 /*level*/);
   });
-})();
+})()
+})(jQuery);

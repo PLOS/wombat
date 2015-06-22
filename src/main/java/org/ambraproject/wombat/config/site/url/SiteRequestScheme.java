@@ -47,7 +47,7 @@ public class SiteRequestScheme implements SiteRequestPredicate {
     private final Collection<SiteRequestPredicate> requestPredicates;
 
     private Builder() {
-      requestPredicates = Lists.newArrayListWithCapacity(2);
+      requestPredicates = Lists.newArrayListWithCapacity(3);
     }
 
     /**
@@ -76,6 +76,11 @@ public class SiteRequestScheme implements SiteRequestPredicate {
      */
     public Builder requireHeader(String headerName, String requiredValue) {
       requestPredicates.add(new HeaderPredicate(headerName, requiredValue));
+      return this;
+    }
+
+    public Builder specifyHost(String hostName) {
+      requestPredicates.add(new HostPredicate(hostName));
       return this;
     }
 

@@ -143,7 +143,7 @@
       var data = $.map(terms_array, function (term) {
         return {
           'name': term,
-          'isLeaf': child_counts[term] == 0,
+          'isLeaf': child_counts[term] === 0,
           'link': buildSubjectUrl(term),
           'count': term_counts[term]
         };
@@ -382,7 +382,7 @@
     });
 
     var parentTerm = data.parent_term;
-    if (parentTerm == '/') {
+    if (parentTerm === '/') {
       parentTerm = 'All subject areas';
     }
 
@@ -465,7 +465,7 @@
         term_cache[leaf] = [];
       }
 
-      if (parent_term == '/') {
+      if (parent_term === '/') {
         term_counts['ROOT'] = total_articles;
       }
 

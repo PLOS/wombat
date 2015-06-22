@@ -54,8 +54,8 @@ var TaxonomyBrowser = function () {
       }
 
       var termHtml = $('#subject-term-template').html();
-      termHtml = termHtml.replace('__TAXONOMY_TERM_ESCAPED__', leaf);
-      termHtml = termHtml.replace('__TAXONOMY_TERM_LEAF__', leaf.replace(/ /g, '+'));
+      termHtml = termHtml.replace('__TAXONOMY_TERM_ESCAPED__', leaf.replace(/ /g, '+'));
+      termHtml = termHtml.replace('__TAXONOMY_TERM_LEAF__', leaf);
       termHtml = termHtml.replace('__TAXONOMY_TERM_FULL_PATH__', fullPath);
       var childLinkStyle = 'browse-further browse-right';
       if (terms[i].childCount === 0) {

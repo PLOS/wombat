@@ -67,6 +67,11 @@ public class SiteSet {
       }
     }
 
+    String hostName = (String) resolveDefinition.get("host");
+    if (hostName != null) {
+      builder.specifyHost(hostName);
+    }
+
     return builder.build();
   }
 

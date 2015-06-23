@@ -42,17 +42,16 @@
   })
 });
 
-(function TaxonomyBrowser() {
+(function ($) {
+  (function TaxonomyBrowser() {
 
   var ANIMATION_TIME = 200; // in ms
   var API_URL = siteUrlPrefix + 'taxonomy/';
-  var SEARCH_URL = $('#taxonomy-browser').attr('data-url-prefix') + 'browse/';
+  var SEARCH_URL = $('#taxonomy-browser').attr('data-legacy-url-prefix') + 'browse/';
 
   // store the term as a key with its children terms as an array of strings,
   // emulating the same data structure as the API response. the key '/'
   // holds top-level terms.
-  //
-  // NOTE: that this is sort of deprecated and not well-used anymore.
   var term_cache = {
     // 'term' : ['array', 'of', 'child', 'terms']
   };
@@ -66,18 +65,14 @@
   // Maps subject terms to article count for display in the menus
   var term_counts = {};
 
-  // holds the main element of the taxonomy browser, assigned in initialize()
-  var $el = null;
+  // Maps subject terms to child term count for determining if term is a leaf in the taxonomy tree
+  var child_counts = {};
 
   // holds a DOM reference to the last active column
   var $last_column_active = null;
 
   // holds a timeout ref used when turning columns on and off
   var column_timeout = null;
-
-  // holds the width of the column for animation calculations
-  var column_width = null;
-
 
   // MAIN FUNCTIONS ==========================================================
 
@@ -105,7 +100,7 @@
       }
     }
 
-    // if we clcked a lower-level item (ignore the root term in the stack for length calculations)
+    // if we clicked a lower-level item (ignore the root term in the stack for length calculations)
     if (level <= (term_stack.length - 1)) {
       removeTermsAboveLevel(level);
     }
@@ -125,9 +120,9 @@
     // generate new child list based term_cache keying off last item in term_stack
     renderChildren(term, child_terms);
 
-    // get some metrics about our current display state (before animation)
-    var left_position = $('.levels-position').position().left;
+    var column_width = $('.levels-position .level').outerWidth(true);
     var current_depth = $('.levels-position .level').length;
+    var left_position = $('.levels-position').position().left;
     var hidden_left_cols = Math.abs(left_position / column_width);
     var hidden_right_cols = current_depth - (3 /* visible columns */) - hidden_left_cols;
 
@@ -149,7 +144,7 @@
       var data = $.map(terms_array, function (term) {
         return {
           'name': term,
-          'isLeaf': term_counts[term] == 0,
+          'isLeaf': child_counts[term] === 0,
           'link': buildSubjectUrl(term),
           'count': term_counts[term]
         };
@@ -158,13 +153,13 @@
       return data;
     }
 
+    var term_count;
     if (term === '/') {
-      var term_count = term_counts['ROOT'];
+      term_count = term_counts['ROOT'];
     } else {
-      var term_count = term_counts[term];
+      term_count = term_counts[term];
     }
 
-    // create the column markup
     var markup = buildColumnMarkup({
       parent_term: term,
       items: createDataObject(child_terms),
@@ -196,7 +191,6 @@
     displayTerm(getTermFromElement(clicked_el), clicked_level_num);
 
     var closest_level_el = clicked_el.closest('.level');
-    closest_level_el.find('a').removeClass('active');
     closest_level_el.find('li').removeClass('active');
     clicked_el.closest('li').addClass('active');
   }
@@ -208,7 +202,8 @@
     event.preventDefault();
 
     var clicked_el = $(event.target);
-    if (!clicked_el.hasClass('active')) {
+    //do not trigger an event if the carousel is currently animating
+    if (!clicked_el.hasClass('active') || $('.levels-position').is(':animated')) {
       return false;
     }
 
@@ -216,6 +211,10 @@
     var delta = operator + $('.level').outerWidth(true);
 
     animateCarousel(delta);
+
+    //carousel buttons are links and will receive focus after clicking, breaking the styling.
+    //todo: create a :focus & :active override in the CSS to handle this case
+    $(':focus').blur();
   }
 
   /**
@@ -226,7 +225,6 @@
 
     var el = $(event.target);
     var column = el.siblings('.level-scroll');
-    // cache these properties since they're used multiple times
     var column_height = column.children('ul').height();
     var column_scroll_top = column.scrollTop();
 
@@ -294,11 +292,12 @@
   function updateCarouselButtons() {
     var left_position = $('.levels-position').position().left;
     var current_depth = $('.levels-position .level').length;
+    var column_width = $('.levels-position .level').outerWidth(true);
     var hidden_left_cols = Math.abs(left_position / column_width);
     var hidden_right_cols = current_depth - 3 - hidden_left_cols;
 
-    var prev_button = $el.find('.prev');
-    var next_button = $el.find('.next');
+    var prev_button = $('.prev');
+    var next_button = $('.next');
 
     if (hidden_left_cols > 0) {
       prev_button.show().addClass('active');
@@ -382,14 +381,14 @@
       return [
         '<li>',
         '<a href="' + item.link + '"' + (item.isLeaf ? ' class="no-children"' : '') + ' data-level="' + data.level + '">',
-        item.name,
+        item.name + ' ' + (item.isLeaf ? '(' + item.count + ')' : ''),
         '</a>',
         '</li>'
       ].join("\n");
     });
 
     var parentTerm = data.parent_term;
-    if (parentTerm == '/') {
+    if (parentTerm === '/') {
       parentTerm = 'All subject areas';
     }
 
@@ -397,7 +396,7 @@
       '<div class="level" data-level="' + data.level + '">',
       '<div class="level-title">' + parentTerm + '</div>',
       '<div class="level-top">',
-      '<a href="' + data.view_all_link + '">View All Articles</a>',
+      '<a href="' + data.view_all_link + '">View All Articles (' + data.view_all_total + ')</a>',
       '</div>',
       '<a href="#" class="up"></a>',
       '<div class="level-scroll">',
@@ -447,23 +446,36 @@
     function handleSuccess(terms, textStatus, xhr) {
 
       var child_terms = [];
+      var total_articles = 0;
       for (var i = 0; i < terms.length; i++) {
         var fullPath = terms[i].subject;
         var levels = fullPath.split('/');
         var leaf = levels[levels.length - 1];
         child_terms.push(leaf);
 
-        var childCount = terms[i].childCount;
-        if (childCount != undefined && childCount > 0) {
-          term_counts[leaf] = childCount;
+        var articleCount = terms[i].articleCount;
+        if (articleCount != undefined && articleCount > 0) {
+          term_counts[leaf] = articleCount;
+          total_articles += articleCount;
         } else {
           term_counts[leaf] = 0;
         }
+
+        var childCount = terms[i].childCount;
+        if (childCount != undefined && childCount > 0) {
+          child_counts[leaf] = childCount;
+        } else {
+          child_counts[leaf] = 0;
+        }
+
         term_cache[leaf] = [];
       }
 
-      term_cache[parent_term] = child_terms.sort();
+      if (parent_term === '/') {
+        term_counts['ROOT'] = total_articles;
+      }
 
+      term_cache[parent_term] = child_terms.sort();
     }
 
     function handleFailure(jqXHR, textStatus, errorThrown) {
@@ -515,7 +527,6 @@
       return;
     }
 
-    // set a sensible default
     force_close = force_close || false;
 
     var tb_closed = $tb.is(':hidden');
@@ -592,18 +603,15 @@
 
     $levelsPosition.on('click', 'ul li a', handleTermClick);
 
-    $el.on('click', '.prev', handleCarouselClick);
-    $el.on('click', '.next', handleCarouselClick);
+    $('.prev, .next').click(handleCarouselClick);
   }
 
   $(document).ready(function () {
 
-    $el = $('.levels');
     $tb = $('#taxonomy-browser');
 
     attachEventHandlers();
     displayTerm('/', 0 /*level*/);
-
-    column_width = $('.levels-position .level').outerWidth(true);
   });
-})();
+})()
+})(jQuery);

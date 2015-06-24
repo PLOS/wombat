@@ -296,6 +296,31 @@ $inactive-background-color: #c2c2c2;
   }
 }
 
+.search-results-eoc {
+  background: $clr-warning-bg;
+  width: 18em;
+  height: 2.5em;
+  margin-top: -0.4em;
+  padding-top: 0.5em;
+
+  span {
+    width: 14px;
+    height: 15px;
+    display: inline-block;
+    margin-left: 0.8em;
+    margin-right: 0.6em;
+    background: image-url("icon-ExpOfConcern-retraction.png") no-repeat;
+  }
+
+  a {
+    color: $warning;
+    font-size: $txt-size-mediumish;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-bottom: rem-calc(20);
+  }
+}
+
 .search-results-alm-container {
   height: rem-calc($line-height);
 }
@@ -303,4 +328,3 @@ $inactive-background-color: #c2c2c2;
 .search-results-alm {
   display: none;
 }
-

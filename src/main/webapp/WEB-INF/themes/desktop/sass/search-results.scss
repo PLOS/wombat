@@ -296,3 +296,11 @@ $inactive-background-color: #c2c2c2;
   }
 }
 
+.search-results-alm-container {
+  height: rem-calc($line-height);
+}
+
+.search-results-alm {
+  display: none;
+}
+

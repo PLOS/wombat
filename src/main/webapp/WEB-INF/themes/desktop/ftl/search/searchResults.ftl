@@ -6,6 +6,7 @@
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
+<#include "../common/legacyLink.ftl" />
 
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
@@ -73,18 +74,22 @@
               ${doc.cross_published_journal_name[0]}
             </#if>
             <p class="search-results-doi">${doc.id}</p>
-            <p class="search-results-alm" id="search-results-alm-${doc_index}">
-              <#--todo: link to old ambra-->
-              <a href="article/metrics/info:doi/${doc.id}#views">Views: </a> •
-              <a href="article/metrics/info:doi/${doc.id}#citations">Citations: </a> •
-              <a href="article/metrics/info:doi/${doc.id}#saves">Saves: </a> •
-              <a href="article/metrics/info:doi/${doc.id}#shares">Shares: </a>
-              <script type="text/javascript">
-                (function ($) {
-                  $(this).displayALMSummary('${doc.id}', ${doc_index});
-                })(jQuery);
-              </script>
-            </p>
+            <div class="search-results-alm-container">
+              <p class="search-results-alm-loading">
+                Loading metrics information...
+              </p>
+              <p class="search-results-alm" id="search-results-alm-${doc_index}">
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#viewedHeader">Views: </a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#citedHeader">Citations: </a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#savedHeader">Saves: </a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#discussedHeader">Shares: </a>
+                <script type="text/javascript">
+                  (function ($) {
+                    $(this).displayALMSummary('${doc.id}', ${doc_index});
+                  })(jQuery);
+                </script>
+              </p>
+            </div>
           </dd>
         </#list>
       </dl>

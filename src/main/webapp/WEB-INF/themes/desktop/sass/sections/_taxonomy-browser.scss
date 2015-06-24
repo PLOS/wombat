@@ -37,9 +37,8 @@ $level-selection-bg: $grey-dark;
 
 .menu-icon-right {
   position: absolute;
-  display: inline-block;
-  line-height: rem-calc(14);
-  top: rem-calc(12);
+  top: 54%;
+  line-height: 0;
   right: rem-calc(8);
 }
 
@@ -54,7 +53,7 @@ $level-selection-bg: $grey-dark;
   background: image-url('icon-subjAreas.png') no-repeat;
   height: $taxonomy-header-height;
   padding-left: $taxonomy-header-width + rem-calc(3);
-  margin: auto auto $taxonomy-header-margin-bottom rem-calc(8);
+  margin: rem-calc(10) auto $taxonomy-header-margin-bottom rem-calc(8);
   line-height: $taxonomy-header-height;
 
   #subjInfoText {
@@ -227,16 +226,11 @@ $level-selection-bg: $grey-dark;
 /* active levels */
 .level-active {
 
-  li a {
+  li a:not(.no-children) {
     &::after {
       @extend .icon-caret-right;
       @extend .menu-icon-right;
     }
-  }
-
-  .no-children::after {
-    @extend .icon-circle;
-    @extend .menu-icon-right;
   }
 
   .down:hover, .up:hover {
@@ -261,8 +255,14 @@ $level-selection-bg: $grey-dark;
   color: $black;
 }
 
-.hide-active-scroll {
+a.hide-active-scroll {
+
   cursor: default;
+
+  &:hover {
+    cursor: default;
+  }
+
   &::before {
     color: $grey-light;
   }
@@ -309,15 +309,10 @@ $level-selection-bg: $grey-dark;
 
     a {
       color: $table-header-bg;
-      &::after {
+      &::after:not(.no-children) {
         @extend .icon-caret-right;
         @extend .menu-icon-right;
       }
-    }
-
-    .no-children::after {
-        @extend .icon-circle;
-        @extend .menu-icon-right;
     }
 
     li.active a {

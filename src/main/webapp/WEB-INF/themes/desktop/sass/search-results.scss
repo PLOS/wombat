@@ -14,6 +14,182 @@ main.search-results-body {
   aside {
     @include plos-grid-column($pixelwidth: 200);
   }
+
+  .search-results-controls {
+    @include plos-grid-column($pixelwidth: 600, $gutter: left);
+  }
+}
+
+@mixin search-results-button($font-size: $txt-size-mediumish) {
+  padding: rem-calc(7 20 7 20);
+  margin-left: $pad-default;
+  font-size: $font-size;
+  font-weight: bold;
+  border-radius: $border-radius-default;
+}
+
+.search-results-button-branded {
+  @include search-results-button;
+  @extend %brand-background;
+}
+
+.search-results-button-hover-branded {
+  @include search-results-button;
+  @extend %brand-background;
+
+  &:hover {
+    background-color: $plos-default;
+  }
+}
+
+.search-results-button-hover-branded-small {
+  @include search-results-button($txt-size-small);
+  @extend %brand-background;
+
+  &:hover {
+    background-color: $plos-default;
+  }
+}
+
+.search-results-button-gray-small {
+  @include search-results-button($txt-size-small);
+  color: $white;
+  background-color: #646464;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+// TODO: this isn't quite styled right yet.  The idea (replicated from ambra) is to
+// have a span that overlays a select, where the select has opacity 0.  This allows
+// us to use black or white text (depending on brand) for the default select element.
+// We might want to explore other approaches, too.
+.search-results-select {
+  @include search-results-button;
+  @extend %brand-background;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  float: right;
+  width: 200px;
+  height: 30px;
+  overflow: hidden;
+  padding: 0;
+
+  select {
+//    background: transparent;
+//    opacity: 0;
+    appearance: none;
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 30;
+    border: 0;
+  }
+
+  &:after {
+    @extend .icon-caret-down;
+    color: red;
+  }
+}
+
+.search-results-controls {
+  background: $grey-verydark;
+  padding: rem-calc(20 20 20 20);
+  margin-bottom: rem-calc(15px);
+  position: relative;
+
+  > form {
+    @include plos-grid-column($pixelwidth: 600, $gutter: left);
+
+    &:before, &:after {
+      content: "";
+      display: block;
+      position: absolute;
+
+      // fill vertically
+      top: 0;
+      bottom: 0;
+      width: 300%;
+      background:  $grey-verydark;
+      height: 100%;
+      z-index: -1;
+    }
+
+    &:before {
+      right: 0;
+    }
+
+    &:after {
+      left: 0
+    }
+
+    .search-results-controls-first-row {
+      margin-bottom: rem-calc(30);
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    legend, label {
+      display: none;
+    }
+
+    fieldset {
+      display: inline;
+      border: none;
+      margin: 0;
+      background-color: $white;
+    }
+
+    input[type="text"] {
+      margin: 0;
+      border: none;
+      outline: 0;
+      display: inline-block;
+      width: rem-calc(400);
+      font-family: $font-face-fancy;
+      font-size: $txt-size-xlarge;
+      color: $clr-input-active;
+      top: 0 !important;
+    }
+    @include input-placeholder-color();
+
+    button[type="submit"] {
+      @include postfix($white, $white);  // foundation
+      padding: 0;
+      margin: 0;
+      border: none;
+      display: inline-block;
+
+      // overwriting foundation styles
+      top: 0 !important;
+      .search-icon {
+        @extend .fa;
+        @extend .fa-search;
+        font-size: rem-calc($txt-size-xlarge);
+      }
+    }
+
+    .search-results-flush-left {
+      margin-left: 0;
+    }
+
+    .search-results-controls-second-row {
+
+    }
+  }
+}
+
+.search-results-num-found {
+  font-size: $txt-size-medium-large;
+
+  span {
+    font-weight: bold;
+  }
 }
 
 .search-results-list {
@@ -38,3 +214,85 @@ main.search-results-body {
 .search-results-doi {
   margin-bottom: $line-height;
 }
+
+// Paging controls (shared with mobile).
+
+$inactive-background-color: #c2c2c2;
+
+.nav-pagination {
+  display: inline;
+}
+
+@mixin search-results-rounded-control {
+  display: inline-block;
+  font-weight: bold;
+  font-size: $txt-size-medium;
+  line-height: $pad-default;
+  padding: rem-calc(0 6px);
+  min-width: rem-calc(16px);
+  border-radius: rem-calc(4px);
+}
+
+.number, .switch, .skip {
+  @include search-results-rounded-control;
+  background-color: $inactive-background-color;
+  text-align: center;
+  margin: rem-calc(0 1px);
+}
+
+.switch {
+  margin: rem-calc(0 50 0 0);
+  background: $black;
+  padding: 0;
+  .icon-text {
+    @extend .aria-text;
+  }
+
+  // Hide the text that is embedded and display an icon instead.
+  .icon:before {
+    width: $pad-default;
+    white-space: nowrap;
+    color: $white;
+  }
+}
+
+.previous-page {
+ .icon:before {
+   @extend .icon-caret-left;
+   margin-left: -2px;
+ }
+}
+
+.next-page {
+  .icon:before {
+    @extend .icon-caret-right;
+  }
+}
+
+.active {
+  @extend %brand-background;
+}
+
+.search-results-num-per-page {
+  display: inline-block;
+  float: right;
+  vertical-align: top;
+  width: rem-calc(160px);
+  margin: 0 0 0 0;
+  font-size: $txt-size-medium-large;
+}
+
+.search-results-num-per-page-selector {
+  padding: 0;
+  width: auto;
+
+  select {
+    @include search-results-rounded-control;
+    @extend %brand-background;
+    width: 100px;
+    option {
+      background-color: $inactive-background-color;
+    }
+  }
+}
+

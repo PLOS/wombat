@@ -7,6 +7,11 @@
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 
+<@js src="resource/js/util/alm_config.js"/>
+<@js src="resource/js/util/alm_query.js"/>
+<@js src="resource/js/pages/search_results.js"/>
+<@renderJs />
+
 <body class="static ${journalStyle}">
 
   <#include "../common/header/headerContainer.ftl" />
@@ -32,6 +37,18 @@
               ${doc.cross_published_journal_name[0]}
             </#if>
             <p class="search-results-doi">${doc.id}</p>
+            <p class="search-results-alm" id="search-results-alm-${doc_index}">
+              <#--todo: link to old ambra-->
+              <a href="article/metrics/info:doi/${doc.id}#views">Views: </a> •
+              <a href="article/metrics/info:doi/${doc.id}#citations">Citations: </a> •
+              <a href="article/metrics/info:doi/${doc.id}#saves">Saves: </a> •
+              <a href="article/metrics/info:doi/${doc.id}#shares">Shares: </a>
+              <script type="text/javascript">
+                (function ($) {
+                  $(this).displayALMSummary('${doc.id}', ${doc_index});
+                })(jQuery);
+              </script>
+            </p>
           </dd>
         </#list>
       </dl>
@@ -39,6 +56,6 @@
   </main>
 
   <#include "../common/footer/footer.ftl" />
-  <@renderJs />
+
 </body>
 </html>

@@ -49,6 +49,14 @@
     </div>
 
     <article>
+      <div class="search-results-num-found">${searchResults.numFound}
+        <#if searchResults.numFound == 1>
+          result
+        <#else>
+          results
+        </#if>
+        for <span>${RequestParameters.q?html}</span>
+      </div>
       <dl class="search-results-list">
         <#list searchResults.docs as doc>
           <dt data-doi="${doc.id}"  class="search-results-title">
@@ -68,6 +76,16 @@
               ${doc.cross_published_journal_name[0]}
             </#if>
             <p class="search-results-doi">${doc.id}</p>
+            <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
+              <div class="search-results-eoc">
+                <span></span>
+                <#if doc.retraction?length gt 0>
+                  <a href="article?id=${doc.retraction}">This article has been retracted.</a>
+                <#else>
+                  <a href="article?id=${doc.id}">View Expression of Concern</a>
+                </#if>
+              </div>
+            </#if>
           </dd>
         </#list>
       </dl>

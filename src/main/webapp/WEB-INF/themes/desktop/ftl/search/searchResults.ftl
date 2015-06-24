@@ -49,6 +49,14 @@
     </div>
 
     <article>
+      <div class="search-results-num-found">${searchResults.numFound}
+        <#if searchResults.numFound == 1>
+          result
+        <#else>
+          results
+        </#if>
+        for <span>${RequestParameters.q?html}</span>
+      </div>
       <dl class="search-results-list">
         <#list searchResults.docs as doc>
           <dt data-doi="${doc.id}"  class="search-results-title">

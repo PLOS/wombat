@@ -7,11 +7,47 @@
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 
+<@themeConfig map="journal" value="journalKey" ; v>
+  <#assign journalKey = v />
+</@themeConfig>
+
 <body class="static ${journalStyle}">
 
+  <#assign headerOmitMain = true />
   <#include "../common/header/headerContainer.ftl" />
 
   <main class="search-results-body">
+    <div class="search-results-controls">
+      <form name="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
+        <div class="search-results-controls-first-row">
+          <fieldset>
+            <legend>Search</legend>
+            <label for="controlBarSearch">Search</label>
+            <input id="controlBarSearch" type="text" name="q" value="${RequestParameters.q?html}" required />
+            <button type="submit"><span class="search-icon"></span></button>
+          </fieldset>
+          <a class="search-results-button-hover-branded" href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${RequestParameters.q?html}&noSearchFlag=set">advanced</a>
+        </div>
+
+        <div class="search-results-controls-second-row">
+
+        <#-- TODO: wire up the following controls.  -->
+        <a class="search-results-button-hover-branded-small search-results-flush-left" href="#">filter by +</a>
+        <a class="search-results-button-gray-small search-results-flush-left" href="#">Clear all filters</a>
+
+        <#-- TODO: fis this select dropdown.  See comments in the .scss.  -->
+        <div class="search-results-select">
+          <span>Relevance</span>
+          <select name="sortOrder" id="sortOrder">
+            <#list sortOrders as sortOrder>
+              <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)> selected="selected"</#if>>${sortOrder.description}</option>
+            </#list>
+          </select>
+        </div>
+        </div>
+      </form>
+    </div>
+
     <article>
       <dl class="search-results-list">
         <#list searchResults.docs as doc>

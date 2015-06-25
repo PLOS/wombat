@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="no-js">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" lang="en" xml:lang="en" class="no-js">
 <#assign depth = 0 />
 <#assign title = "Search Results" />
 <#assign cssFile="search-results.css"/>
@@ -9,6 +9,9 @@
 
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />
+</@themeConfig>
+<@themeConfig map="journal" value="journalName" ; v>
+  <#assign journalName = v />
 </@themeConfig>
 
 <body class="static ${journalStyle}">
@@ -49,46 +52,58 @@
     </div>
 
     <article>
-      <div class="search-results-num-found">${searchResults.numFound}
-        <#if searchResults.numFound == 1>
-          result
-        <#else>
-          results
-        </#if>
-        for <span>${RequestParameters.q?html}</span>
-      </div>
-      <dl class="search-results-list">
-        <#list searchResults.docs as doc>
-          <dt data-doi="${doc.id}"  class="search-results-title">
-            <a href="article?id=${doc.id}">${doc.title}</a>
-          </dt>
-          <dd>
-            <p class="search-results-authors">
-              <#list doc.author_display![] as author>
-                ${author}<#if author_has_next>,</#if>
-              </#list>
-            </p>
-            <#if doc.article_type??>
-              ${doc.article_type} |
-            </#if>
-            published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" /> |
-            <#if doc.cross_published_journal_name??>
-              ${doc.cross_published_journal_name[0]}
-            </#if>
-            <p class="search-results-doi">${doc.id}</p>
-            <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
-              <div class="search-results-eoc">
-                <span></span>
-                <#if doc.retraction?length gt 0>
-                  <a href="article?id=${doc.retraction}">This article has been retracted.</a>
-                <#else>
-                  <a href="article?id=${doc.id}">View Expression of Concern</a>
-                </#if>
-              </div>
-            </#if>
-          </dd>
-        </#list>
-      </dl>
+      <#if searchResults.numFound == 0>
+        <div class="search-results-none-found">
+          <p>You searched for articles that have all of the following:</p>
+          <p>Search Term: "<span>${RequestParameters.q?html}</span>"</p>
+          <p>Journal: "<span>${journalName}</span>"</p>
+          <p>
+            There were no results; please
+            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${RequestParameters.q?html}&noSearchFlag=set">refine your search</a>
+            and try again.</p>
+        </div>
+      <#else>
+        <div class="search-results-num-found">${searchResults.numFound}
+          <#if searchResults.numFound == 1>
+            result
+          <#else>
+            results
+          </#if>
+          for <span>${RequestParameters.q?html}</span>
+        </div>
+        <dl class="search-results-list">
+          <#list searchResults.docs as doc>
+            <dt data-doi="${doc.id}"  class="search-results-title">
+              <a href="article?id=${doc.id}">${doc.title}</a>
+            </dt>
+            <dd>
+              <p class="search-results-authors">
+                <#list doc.author_display![] as author>
+                  ${author}<#if author_has_next>,</#if>
+                </#list>
+              </p>
+              <#if doc.article_type??>
+                ${doc.article_type} |
+              </#if>
+              published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" /> |
+              <#if doc.cross_published_journal_name??>
+                ${doc.cross_published_journal_name[0]}
+              </#if>
+              <p class="search-results-doi">${doc.id}</p>
+              <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
+                <div class="search-results-eoc">
+                  <span></span>
+                  <#if doc.retraction?length gt 0>
+                    <a href="article?id=${doc.retraction}">This article has been retracted.</a>
+                  <#else>
+                    <a href="article?id=${doc.id}">View Expression of Concern</a>
+                  </#if>
+                </div>
+              </#if>
+            </dd>
+          </#list>
+        </dl>
+      </#if>
 
       <#assign numPages = (searchResults.numFound / resultsPerPage)?ceiling />
       <#assign currentPage = (RequestParameters.page!1)?number />

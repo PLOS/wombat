@@ -292,7 +292,7 @@
    * Determines if the carousel previous and next buttons should display
    */
   function updateCarouselButtons() {
-    var left_position = $('.levels-position').position().left;
+    var left_position = Math.round($('.levels-position').position().left);
     var current_depth = $('.levels-position .level').length;
     var hidden_left_cols = Math.abs(left_position / column_width);
     var hidden_right_cols = current_depth - 3 - hidden_left_cols;
@@ -599,7 +599,7 @@
     attachEventHandlers();
     displayTerm('/', 0 /*level*/);
 
-    column_width = $('.levels-position .level').outerWidth(true);
+    column_width = Math.round($('.levels-position .level').outerWidth(true));
   });
 })()
 })(jQuery);

@@ -1,7 +1,7 @@
 (function ($) {
 
   $.fn.displayALMSummary = function (doi, index) {
-    $(this).getArticleSummary(doi, function (almData) {
+    $(this).getArticleSummary(doi, function (almData) { //success function
       var $alm = $('#search-results-alm-' + index);
 
       var almLinks = $alm.find('a');
@@ -20,7 +20,7 @@
       $('.search-results-alm-loading').fadeOut('slow', function() {
         $('.search-results-alm').fadeIn();
       })
-    }, function() {
+    }, function() { //error function
       $('.search-results-alm-loading').fadeOut('slow', function() {
         $('.search-results-alm-error').fadeIn();
       })

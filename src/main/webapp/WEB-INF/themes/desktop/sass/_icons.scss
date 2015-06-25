@@ -177,10 +177,18 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   @extend .fa-hand-o-right;
   content: "\f0a4";
 }
+
 .icon-info{
   @extend .icon-fa;
   @extend .fa-info-circle;
   content: "\f05a";
+}
+
+.icon-warning{
+  @extend .icon-fa;
+  @extend .fa-warning;
+  font-size: $txt-size-small;
+  line-height: $line-height-icon;
 }
 
 .aria-text {

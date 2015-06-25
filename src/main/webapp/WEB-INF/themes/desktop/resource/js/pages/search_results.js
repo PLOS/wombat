@@ -1,6 +1,6 @@
 (function ($) {
 
-  $.fn.displayALMSummary = function (doi, index) {
+  $.fn.displayAlmSummary = function (doi, index) {
     $(this).getArticleSummary(doi, function (almData) { //success function
       var $alm = $('#search-results-alm-' + index);
 

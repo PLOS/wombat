@@ -100,7 +100,7 @@
               </p>
               <script type="text/javascript">
                 (function ($) {
-                  $(this).displayALMSummary('${doc.id}', ${doc_index});
+                  $(this).displayAlmSummary('${doc.id}', ${doc_index});
                 })(jQuery);
               </script>
             </div>

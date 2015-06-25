@@ -6,9 +6,18 @@
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
+<#include "../common/legacyLink.ftl" />
+
+<@js src="resource/js/util/alm_config.js"/>
+<@js src="resource/js/util/alm_query.js"/>
+<@js src="resource/js/pages/search_results.js"/>
+<@renderJs />
 
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />
+</@themeConfig>
+<@themeConfig map="journal" value="journalName" ; v>
+  <#assign journalName = v />
 </@themeConfig>
 
 <body class="static ${journalStyle}">
@@ -51,6 +60,25 @@
     </div>
 
     <article>
+      <#if searchResults.numFound == 0>
+        <div class="search-results-none-found">
+          <p>You searched for articles that have all of the following:</p>
+          <p>Search Term: "<span>${RequestParameters.q?html}</span>"</p>
+          <p>Journal: "<span>${journalName}</span>"</p>
+          <p>
+            There were no results; please
+            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${RequestParameters.q?html}&noSearchFlag=set">refine your search</a>
+            and try again.</p>
+        </div>
+      <#else>
+      <div class="search-results-num-found">${searchResults.numFound}
+        <#if searchResults.numFound == 1>
+          result
+        <#else>
+          results
+        </#if>
+        for <span>${RequestParameters.q?html}</span>
+      </div>
       <dl class="search-results-list">
         <#list searchResults.docs as doc>
           <dt data-doi="${doc.id}"  class="search-results-title">
@@ -70,9 +98,42 @@
               ${doc.cross_published_journal_name[0]}
             </#if>
             <p class="search-results-doi">${doc.id}</p>
+            <div class="search-results-alm-container">
+              <p class="search-results-alm-loading">
+                Loading metrics information...
+              </p>
+              <p class="search-results-alm" id="search-results-alm-${doc_index}">
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#viewedHeader">Views: </a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#citedHeader">Citations: </a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#savedHeader">Saves: </a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#discussedHeader">Shares: </a>
+              </p>
+              <p class="search-results-alm-error" id="search-results-alm-error-${doc_index}">
+                <span class="fa-stack icon-warning-stack">
+                  <i class="fa fa-exclamation fa-stack-1x icon-b"></i>
+                  <i class="fa icon-warning fa-stack-1x icon-a"></i>
+                </span>Metrics unavailable. Please check back later.
+              </p>
+              <script type="text/javascript">
+                (function ($) {
+                  $(this).displayAlmSummary('${doc.id}', ${doc_index});
+                })(jQuery);
+              </script>
+            </div>
+            <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
+              <div class="search-results-eoc">
+                <span></span>
+                <#if doc.retraction?length gt 0>
+                  <a href="article?id=${doc.retraction}">This article has been retracted.</a>
+                <#else>
+                  <a href="article?id=${doc.id}">View Expression of Concern</a>
+                </#if>
+              </div>
+            </#if>
           </dd>
         </#list>
       </dl>
+      </#if>
 
       <#assign numPages = (searchResults.numFound / resultsPerPage)?ceiling />
       <#assign currentPage = (RequestParameters.page!1)?number />

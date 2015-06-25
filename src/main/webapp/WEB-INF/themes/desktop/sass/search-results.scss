@@ -46,18 +46,19 @@ main.search-results-body {
 .search-results-button-branded-small {
   @include search-results-button($txt-size-small);
   @extend %brand-background;
-}
+} 
 .search-results-button-hover-branded-small {
  @extend .search-results-button-branded-small;
   &:hover {
     background-color: $plos-default;
-    }
   }
+}  
 
 .search-results-button-gray-small {
   @extend .search-results-button-branded-small;
   color: $white;
   background-color: #646464;
+
   &:hover {
     color: $white;
   }
@@ -96,6 +97,7 @@ main.search-results-body {
 //    color: red;
 //  }
 //}
+
 
 .search-results-controls {
   background: $grey-verydark;
@@ -183,6 +185,18 @@ main.search-results-body {
     .search-results-controls-second-row {
 
     }
+  }
+}
+
+.search-results-none-found {
+  padding: rem-calc(30 0 30 40);
+
+  p {
+    font-size: $txt-size-xlarge;
+  }
+
+  span {
+    font-weight: bold;
   }
 }
 
@@ -291,7 +305,6 @@ $inactive-background-color: #c2c2c2;
   select {
     @include search-results-rounded-control;
     @extend %brand-background;
-    border-color: $plos-med;
     width: 100px;
     option {
       background-color: $inactive-background-color;
@@ -357,3 +370,47 @@ $inactive-background-color: #c2c2c2;
 
   }
 
+.search-results-eoc {
+  background: $clr-warning-bg;
+  width: 18em;
+  height: 2.5em;
+  margin-top: -0.4em;
+  padding-top: 0.5em;
+
+  span {
+    width: 14px;
+    height: 15px;
+    display: inline-block;
+    margin-left: 0.8em;
+    margin-right: 0.6em;
+    background: image-url("icon-ExpOfConcern-retraction.png") no-repeat;
+  }
+
+  a {
+    color: $warning;
+    font-size: $txt-size-mediumish;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-bottom: rem-calc(20);
+  }
+}
+
+.search-results-alm-container {
+  height: rem-calc($line-height);
+}
+
+.search-results-alm, .search-results-alm-error {
+  display: none;
+  font-weight: bold;
+  font-size: $txt-size-xxsmall;
+}
+
+.icon-warning-stack {
+  .icon-warning {
+    color: $alert;
+  }
+  .fa-exclamation {
+    color: $black;
+    font-size: $txt-size-xxxsmall;
+  }
+}

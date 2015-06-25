@@ -184,6 +184,18 @@ main.search-results-body {
   }
 }
 
+.search-results-none-found {
+  padding: rem-calc(30 0 30 40);
+
+  p {
+    font-size: $txt-size-xlarge;
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+
 .search-results-num-found {
   font-size: $txt-size-medium-large;
 

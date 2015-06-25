@@ -4,27 +4,26 @@
     $(this).getArticleSummary(doi, function (almData) {
       var $alm = $('#search-results-alm-' + index);
 
-      var viewsLink = $alm.find('a').first();
+      var almLinks = $alm.find('a');
+      var viewsLink = $(almLinks[0]);
       appendOrRemoveLink(viewsLink, almData.viewed);
 
-      var citationsLink = $alm.find('a:nth-child(2)');
+      var citationsLink = $(almLinks[1]);
       appendOrRemoveLink(citationsLink, almData.cited);
 
-      var savesLink = $alm.find('a:nth-child(3)');
+      var savesLink = $(almLinks[2]);
       appendOrRemoveLink(savesLink, almData.saved);
 
-      var sharesLink = $alm.find('a').last();
+      var sharesLink = $(almLinks[3]);
       appendOrRemoveLink(sharesLink, almData.shared);
 
       $('.search-results-alm-loading').fadeOut('slow', function() {
         $('.search-results-alm').fadeIn();
       })
-    }, function(textStatus) {
-      if(textStatus==='timeout') {
-        // handle timeout
-      } else {
-        // handle general error
-      }
+    }, function() {
+      $('.search-results-alm-loading').fadeOut('slow', function() {
+        $('.search-results-alm-error').fadeIn();
+      })
     });
   };
 

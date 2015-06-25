@@ -39,7 +39,7 @@
       success: function (response) {
         successCallback(response.data[0]);
       },
-      failure: function (jqXHR, textStatus) {
+      error: function (jqXHR, textStatus) {
         // TODO: Replace with better console logging
         // console.log('ALM request failed: ' + requestUrl);
         errorCallback(textStatus);

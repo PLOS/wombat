@@ -37,13 +37,15 @@
 
         <#-- TODO: fis this select dropdown.  See comments in the .scss.  -->
         <div class="search-results-select">
-          <span>Relevance</span>
+          <label for="sortOrder">
           <select name="sortOrder" id="sortOrder">
             <#list sortOrders as sortOrder>
               <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)> selected="selected"</#if>>${sortOrder.description}</option>
             </#list>
           </select>
+          </label>
         </div>
+
         </div>
       </form>
     </div>

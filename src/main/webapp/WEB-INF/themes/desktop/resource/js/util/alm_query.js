@@ -16,9 +16,10 @@
   /**
    * Query for one article's ALM summary.
    * @param doi       the article's DOI
-   * @param callback  the callback to which to send the summary
+   * @param successCallback  the callback to which to send the summary
+   * @param errorCallback  the callback in which we handle errors
    */
-  $.fn.getArticleSummary = function (doi, callback) {
+  $.fn.getArticleSummary = function (doi, successCallback, errorCallback) {
     var config = ALM_CONFIG; // expect to import value from alm_config.js
 
     if (config.host == null) {
@@ -34,12 +35,14 @@
       url: requestUrl,
       jsonp: 'callback',
       dataType: 'jsonp',
+      timeout: 20000,
       success: function (response) {
-        callback(response.data[0]);
+        successCallback(response.data[0]);
       },
-      failure: function () {
+      failure: function (jqXHR, textStatus) {
         // TODO: Replace with better console logging
         // console.log('ALM request failed: ' + requestUrl);
+        errorCallback(textStatus);
       }
     })
   };

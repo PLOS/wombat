@@ -15,10 +15,17 @@
 
       var sharesLink = $alm.find('a').last();
       appendOrRemoveLink(sharesLink, almData.shared);
+
+      $('.search-results-alm-loading').fadeOut('slow', function() {
+        $('.search-results-alm').fadeIn();
+      })
+    }, function(textStatus) {
+      if(textStatus==='timeout') {
+        // handle timeout
+      } else {
+        // handle general error
+      }
     });
-    $('.search-results-alm-loading').fadeOut(function() {
-      $('.search-results-alm').fadeIn();
-    })
   };
 
   function handleUndefinedMetric(metric) {

@@ -2533,7 +2533,6 @@
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template match="price"/>
   <xsl:template match="roman"/>
-  <xsl:template match="sans-serif"/>
 
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template match="sc">

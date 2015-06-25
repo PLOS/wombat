@@ -2699,7 +2699,7 @@
 
 
   <xsl:template match="sans-serif">
-    <span style="font-family: sans-serif; font-size: 80%">
+    <span style="font-family: sans-serif;">
       <xsl:apply-templates/>
     </span>
   </xsl:template>

@@ -18,6 +18,8 @@ var tooltip_references, initReferenceTooltip;
         function (data) {
           var mediaCoverageCount = getMediaCoverageCount(data);
           $media.find('#media-coverage-count').text('(' + mediaCoverageCount + ')');
+        }, function() {
+          //todo: error handling
         });
     }
   }

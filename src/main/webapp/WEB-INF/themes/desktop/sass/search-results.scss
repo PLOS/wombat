@@ -320,3 +320,23 @@ $inactive-background-color: #c2c2c2;
     padding-bottom: rem-calc(20);
   }
 }
+
+.search-results-alm-container {
+  height: rem-calc($line-height);
+}
+
+.search-results-alm, .search-results-alm-error {
+  display: none;
+  font-weight: bold;
+  font-size: $txt-size-xxsmall;
+}
+
+.icon-warning-stack {
+  .icon-warning {
+    color: $alert;
+  }
+  .fa-exclamation {
+    color: $black;
+    font-size: $txt-size-xxxsmall;
+  }
+}

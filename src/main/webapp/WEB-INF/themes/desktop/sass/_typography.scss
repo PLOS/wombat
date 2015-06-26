@@ -255,29 +255,35 @@ example | extension
 
 
 ### mixin
-`@mixin link-text($color, $decoration)`
- `$decoration` sets the hover style:
+`@mixin link-text($color, $color-hover, $decoration-hover, $decoration-text)`
+ `$decoration-hover` sets the hover style:
 
  option  | result
  -----------|------------------
- `$decoration:none` | there is NO underline and the text turns the highlight color
- `$decoration:underline` | text stays the same color but has an underline
+ `$decoration-hover:none` | there is NO underline and the text turns the highlight color
+ `$decoration-hover:underline` | text stays the same color but has an underline
 
+  `$color-hover` will set the color on hover *only if* `$decoration-hover` is underline
+  (to preserve backwards compatibility).
 */
-@mixin link-text($color: $clr-body-text, $decoration: none) {
+@mixin link-text($color: $clr-body-text, $color-hover: none, $decoration-hover: none, $decoration-text: none) {
   color: $color;
-  text-decoration: none;
+  text-decoration: $decoration-text;
 
   &:hover, a:hover {
-    @if $decoration == none {
+    @if $decoration-hover == none {
       color: $plos-default;
       text-decoration: none;
-      } @else if $decoration == underline {
-      color: $color;
-      text-decoration: underline;
+    } @else if $decoration-hover == underline {
+      @if $color-hover != none {
+        color: $color-hover;
+      } @else {
+        color: $color;
       }
+      text-decoration: underline;
     }
   }
+}
 
 %link-text-body, %link-text-body a {
   //TODO- should this be link text home?
@@ -285,15 +291,15 @@ example | extension
   }
 
 %link-text-white, %link-text-white a {
-  @include link-text($color: $white, $decoration: underline);
+  @include link-text($color: $white, $decoration-hover: underline);
   }
 
 %link-text-underline, %link-text-underline a {
-  @include link-text($decoration: underline);
+  @include link-text($decoration-hover: underline);
   }
 
 %link-text-default, %link-text-default a {
-  @include link-text($plos-default, underline);
+  @include link-text($color: $plos-default, $decoration-hover: underline);
   }
 
 //////////////

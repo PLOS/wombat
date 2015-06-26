@@ -5,6 +5,10 @@ journalKey: null
 #
 # This configuration value is mandatory and must be overridden with a non-null string in order for the site to work.
 
+journalName: null
+# The full, human-readable name of the journal.
+# This configuration value is mandatory and must be overridden with a non-null string in order for the site to work.
+
 otherJournals: null
 # May be overridden with a map from journal keys to other sites, in order to specify how links on this site should point
 # to other sites based on journal keys.

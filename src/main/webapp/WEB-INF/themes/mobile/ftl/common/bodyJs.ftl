@@ -4,5 +4,6 @@
 <@js src="resource/js/navigation.js" />
 <@js src="resource/js/content.js" />
 <@js src="resource/js/share.js" />
+<@js src="resource/js/taxonomy.js" />
 
 <@renderJs />

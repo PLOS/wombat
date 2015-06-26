@@ -19,7 +19,7 @@ footer {
   }
   //pseudo elements are for Firefox
   a, a:visited, a:focus, a:active {
-    @include link-text($color: $grey-med-light, $decoration: underline){
+    @include link-text($color: $grey-med-light, $decoration-hover: underline){
   }
   .nav {
     position: relative;

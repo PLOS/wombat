@@ -22,10 +22,13 @@ main.search-results-body {
 
 @mixin search-results-button($font-size: $txt-size-mediumish) {
   padding: rem-calc(7 20 7 20);
-  margin-left: $pad-default;
+  margin-right: $pad-default;
   font-size: $font-size;
+  line-height: $font-size;
   font-weight: bold;
   border-radius: $border-radius-default;
+  display: inline-block;
+
 }
 
 .search-results-button-branded {
@@ -34,25 +37,25 @@ main.search-results-body {
 }
 
 .search-results-button-hover-branded {
-  @include search-results-button;
-  @extend %brand-background;
-
+ @extend .search-results-button-branded;
   &:hover {
     background-color: $plos-default;
   }
 }
 
-.search-results-button-hover-branded-small {
+.search-results-button-branded-small {
   @include search-results-button($txt-size-small);
   @extend %brand-background;
-
+} 
+.search-results-button-hover-branded-small {
+ @extend .search-results-button-branded-small;
   &:hover {
     background-color: $plos-default;
   }
-}
+}  
 
 .search-results-button-gray-small {
-  @include search-results-button($txt-size-small);
+  @extend .search-results-button-branded-small;
   color: $white;
   background-color: #646464;
 
@@ -61,39 +64,7 @@ main.search-results-body {
   }
 }
 
-// TODO: this isn't quite styled right yet.  The idea (replicated from ambra) is to
-// have a span that overlays a select, where the select has opacity 0.  This allows
-// us to use black or white text (depending on brand) for the default select element.
-// We might want to explore other approaches, too.
-.search-results-select {
-  @include search-results-button;
-  @extend %brand-background;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  float: right;
-  width: 200px;
-  height: 30px;
-  overflow: hidden;
-  padding: 0;
 
-  select {
-//    background: transparent;
-//    opacity: 0;
-    appearance: none;
-    width: 200px;
-    height: 30px;
-    padding: 5px;
-    font-size: 16px;
-    line-height: 30;
-    border: 0;
-  }
-
-  &:after {
-    @extend .icon-caret-down;
-    color: red;
-  }
-}
 
 .search-results-controls {
   background: $grey-verydark;
@@ -242,7 +213,7 @@ $inactive-background-color: #c2c2c2;
   line-height: $pad-default;
   padding: rem-calc(0 6px);
   min-width: rem-calc(16px);
-  border-radius: rem-calc(4px);
+  border-radius: $default-border-radius;
 }
 
 .number, .switch, .skip {
@@ -307,6 +278,64 @@ $inactive-background-color: #c2c2c2;
     }
   }
 }
+
+
+.search-results-select {
+    float: right;
+  select, label{
+    @extend .search-results-button-branded-small;
+    }
+
+  label select{
+    border-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: rem-calc(180);
+    padding: 0;
+    margin: 0;
+    &:focus, &:active {
+      outline: none;
+      }
+    }
+
+  label{
+    position: relative;
+    display: block !important;
+    width: rem-calc(195);
+    overflow: hidden;
+    cursor: pointer;
+    padding-left: $pad-small;
+    @extend .icon-caret-down;
+
+    }
+
+  label::before {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    text-align: right;
+    line-height: rem-calc(29);  /* from search-results-button */
+    position: absolute;
+    right: rem-calc(6);/* from search-results-button */
+    top: 0;
+    display: block !important;
+    pointer-events: none;
+    }
+
+  label select::-ms-expand {
+    display: none;
+    }
+
+  label:-moz-any(select) {
+    width: 110%;
+    }
+
+  &html.ie9 label select {
+    width: 110%;
+    }
+
+  }
 
 .search-results-eoc {
   background: $clr-warning-bg;

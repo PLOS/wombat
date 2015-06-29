@@ -6,6 +6,7 @@
     <label for="search">Search</label>
       <input id="search" type="text" name="q" placeholder="Search" required />
       <button type="submit"><span class="search-icon"></span></button>
+
   </fieldset>
 </form>
 <@js src="resource/js/components/placeholder_style.js"/>

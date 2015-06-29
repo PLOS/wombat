@@ -64,39 +64,6 @@ main.search-results-body {
   }
 }
 
-// TODO: this isn't quite styled right yet.  The idea (replicated from ambra) is to
-// have a span that overlays a select, where the select has opacity 0.  This allows
-// us to use black or white text (depending on brand) for the default select element.
-// We might want to explore other approaches, too.
-//.search-results-select {
-//  @include search-results-button;
-//  @extend %brand-background;
-//  display: inline-block;
-//  vertical-align: middle;
-//  position: relative;
-//  float: right;
-//  width: 200px;
-//  height: 30px;
-//  overflow: hidden;
-//  padding: 0;
-//
-//  select {
-////    background: transparent;
-////    opacity: 0;
-//    appearance: none;
-//    width: 200px;
-//    height: 30px;
-//    padding: 5px;
-//    font-size: 16px;
-//    line-height: 30;
-//    border: 0;
-//  }
-//
-//  &:after {
-//    @extend .icon-caret-down;
-//    color: red;
-//  }
-//}
 
 
 .search-results-controls {

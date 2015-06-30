@@ -1,7 +1,8 @@
-package org.ambraproject.wombat.config;
+package org.ambraproject.wombat.config.site;
 
 import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.controller.SiteMapping;
+import org.ambraproject.wombat.controller.SiteResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
@@ -13,13 +14,16 @@ import java.lang.reflect.Method;
  */
 public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
 
+  @Autowired
+  SiteResolver siteResolver;
+
   @Override
   protected RequestCondition<?> getCustomTypeCondition(Class<?> handlerType) {
     SiteMapping typeAnnotation = AnnotationUtils.findAnnotation(handlerType, SiteMapping.class);
     if (typeAnnotation == null) {
       return null;
     }
-    return  new SiteRequestCondition(ImmutableSet.copyOf(typeAnnotation.value()),
+    return  new SiteRequestCondition(siteResolver, ImmutableSet.copyOf(typeAnnotation.value()),
             ImmutableSet.copyOf(typeAnnotation.excluded()));
   }
 
@@ -29,7 +33,7 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
     if (methodAnnotation == null) {
       return null;
     }
-    return  new SiteRequestCondition(ImmutableSet.copyOf(methodAnnotation.value()),
+    return  new SiteRequestCondition(siteResolver, ImmutableSet.copyOf(methodAnnotation.value()),
             ImmutableSet.copyOf(methodAnnotation.excluded()));
   }
 }

@@ -1,10 +1,8 @@
-package org.ambraproject.wombat.config;
+package org.ambraproject.wombat.config.site;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.controller.SiteResolver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
@@ -15,24 +13,25 @@ import java.util.Set;
  */
 public class SiteRequestCondition implements RequestCondition <SiteRequestCondition> {
 
-  @Autowired
-  private SiteResolver siteResolver;
-
   private final ImmutableSet<String> includedSites;
   private final ImmutableSet<String> excludedSites;
+  private final SiteResolver siteResolver;
 
-  public SiteRequestCondition(Set<String> includedSites, Set<String> excludedSites){
+  public SiteRequestCondition(SiteResolver siteResolver, Set<String> includedSites, Set<String> excludedSites){
     Preconditions.checkNotNull(includedSites);
+    Preconditions.checkNotNull(siteResolver);
+    this.siteResolver = siteResolver;
     this.includedSites = ImmutableSet.copyOf(includedSites);
     this.excludedSites = excludedSites == null ? ImmutableSet.<String>of() : ImmutableSet.copyOf(excludedSites);
   }
 
-  public SiteRequestCondition(Set<String> includedSites) {
-    this(includedSites, null);
+  public SiteRequestCondition(SiteResolver siteResolver, Set<String> includedSites) {
+    this(siteResolver, includedSites, null);
   }
 
   @Override
   public SiteRequestCondition getMatchingCondition(HttpServletRequest request) {
+
     Site site = siteResolver.resolveSite(request);
     if (site == null) {
       return null;
@@ -54,7 +53,7 @@ public class SiteRequestCondition implements RequestCondition <SiteRequestCondit
             .addAll(excludedSites)
             .addAll(other.excludedSites)
             .build();
-    return new SiteRequestCondition(combinedIncludedSites, combinedExcludedSites);
+    return new SiteRequestCondition(siteResolver, combinedIncludedSites, combinedExcludedSites);
   }
 
 

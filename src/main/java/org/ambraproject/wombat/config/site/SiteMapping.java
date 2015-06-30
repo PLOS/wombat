@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.controller;
+package org.ambraproject.wombat.config.site;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * Annotates a {@link org.springframework.stereotype.Controller} class or method in order to restrict it for use with
  * only the designated {@link org.ambraproject.wombat.config.site.Site} keys
  *
- * @see
+ * @see {@link org.ambraproject.wombat.config.site.SiteMappingHandlerMapping}
  */
 
 @Target( {ElementType.TYPE, ElementType.METHOD } )

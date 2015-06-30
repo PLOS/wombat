@@ -19,8 +19,14 @@ import org.ambraproject.wombat.config.theme.TestClasspathTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
+import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.SearchService;
+import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.io.Reader;
 
 /**
  * Defines spring beans needed by tests.
@@ -53,5 +59,24 @@ public class TestSpringConfiguration {
   @Bean
   public Cache cache() {
     return new NullCache();
+  }
+
+  @Bean
+  public JsonService jsonService() {
+
+    // TODO: stub out if necessary for any test.
+    return null;
+  }
+
+  @Bean
+  public CachedRemoteService<Reader> cachedRemoteReader() {
+
+    // TODO: stub out if necessary for any test.
+    return null;
+  }
+
+  @Bean
+  public SolrSearchService getSearchService() {
+    return new SolrSearchService();
   }
 }

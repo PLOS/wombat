@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -59,7 +60,8 @@ public class HomeController extends WombatController {
     RECENT {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site, start, section.resultCount,
+        Map<?, ?> result = context.solrSearchService.getHomePageArticles(
+            Collections.singletonList(site.getJournalKey()), start, section.resultCount,
             SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
         return sanitizeSolrResults(result);
       }
@@ -67,7 +69,8 @@ public class HomeController extends WombatController {
     POPULAR {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site, start, section.resultCount,
+        Map<?, ?> result = context.solrSearchService.getHomePageArticles(
+            Collections.singletonList(site.getJournalKey()), start, section.resultCount,
             SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
         return sanitizeSolrResults(result);
       }

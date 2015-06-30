@@ -7,7 +7,7 @@ import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.controller.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;

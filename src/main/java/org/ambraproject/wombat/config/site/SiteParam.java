@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.controller;
+package org.ambraproject.wombat.config.site;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,9 +7,9 @@ import java.lang.annotation.Target;
 
 /**
  * Annotates a {@link org.springframework.stereotype.Controller} method parameter that should be injected with a {@link
- * org.ambraproject.wombat.config.Site} object, to indicate which site the request belongs to.
+ * org.ambraproject.wombat.config.site.Site} object, to indicate which site the request belongs to.
  *
- * @see org.ambraproject.wombat.controller.SiteResolver
+ * @see SiteResolver
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)

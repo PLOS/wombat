@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.config;
 
 import org.ambraproject.wombat.config.site.SiteMappingHandlerMapping;
-import org.ambraproject.wombat.controller.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

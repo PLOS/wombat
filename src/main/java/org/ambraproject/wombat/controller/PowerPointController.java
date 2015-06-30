@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;

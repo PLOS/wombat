@@ -1,8 +1,5 @@
-package org.ambraproject.wombat.controller;
+package org.ambraproject.wombat.config.site;
 
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.site.UnresolvedSiteException;
 import org.ambraproject.wombat.util.HttpDebug;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

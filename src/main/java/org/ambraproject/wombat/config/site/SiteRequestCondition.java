@@ -2,7 +2,6 @@ package org.ambraproject.wombat.config.site;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.controller.SiteResolver;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Set;

@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Optional;
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.util.CacheParams;

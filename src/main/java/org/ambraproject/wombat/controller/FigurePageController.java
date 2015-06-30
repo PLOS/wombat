@@ -2,6 +2,7 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;

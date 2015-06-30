@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
 import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.controller.SiteResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;

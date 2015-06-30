@@ -18,7 +18,7 @@
 </#if>
 
 <@addCustomHeadTag>
-<meta name="asset-url-prefix" content="/lala/indirect/">
+<meta name="asset-url-prefix" content="<@siteLink path='indirect/'/>">
 </@addCustomHeadTag>
 
 <#include "../common/head.ftl" />

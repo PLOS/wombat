@@ -14,8 +14,8 @@
     }
   }
 
-  $(document).ready(function(){
-    $('.search-results-alm').each(function(){
+  $(document).ready(function() {
+    $('.search-results-alm').each(function () {
       var $alm = $(this);
       var doi = $alm.data('doi');
       $alm.getArticleSummary(doi, function (almData) { //success function
@@ -33,15 +33,14 @@
         var sharesLink = $(almLinks[3]);
         appendOrRemoveLink(sharesLink, almData.shared);
 
-        $alm.siblings('.search-results-alm-loading').fadeOut('slow', function() {
+        $alm.siblings('.search-results-alm-loading').fadeOut('slow', function () {
           $alm.fadeIn();
         })
-      }, function() { //error function
-        $alm.siblings('.search-results-alm-loading').fadeOut('slow', function() {
+      }, function () { //error function
+        $alm.siblings('.search-results-alm-loading').fadeOut('slow', function () {
           $alm.siblings('.search-results-alm-error').fadeIn();
         })
       });
     });
   });
-
 })(jQuery);

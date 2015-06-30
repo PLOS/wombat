@@ -15,6 +15,9 @@
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />
 </@themeConfig>
+<@themeConfig map="journal" value="journalName" ; v>
+  <#assign journalName = v />
+</@themeConfig>
 
 <body class="static ${journalStyle}">
 
@@ -42,18 +45,31 @@
 
         <#-- TODO: fis this select dropdown.  See comments in the .scss.  -->
         <div class="search-results-select">
-          <span>Relevance</span>
+          <label for="sortOrder">
           <select name="sortOrder" id="sortOrder">
             <#list sortOrders as sortOrder>
               <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)> selected="selected"</#if>>${sortOrder.description}</option>
             </#list>
           </select>
+          </label>
         </div>
+
         </div>
       </form>
     </div>
 
     <article>
+      <#if searchResults.numFound == 0>
+        <div class="search-results-none-found">
+          <p>You searched for articles that have all of the following:</p>
+          <p>Search Term: "<span>${RequestParameters.q?html}</span>"</p>
+          <p>Journal: "<span>${journalName}</span>"</p>
+          <p>
+            There were no results; please
+            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${RequestParameters.q?html}&noSearchFlag=set">refine your search</a>
+            and try again.</p>
+        </div>
+      <#else>
       <div class="search-results-num-found">${searchResults.numFound}
         <#if searchResults.numFound == 1>
           result
@@ -111,6 +127,7 @@
           </dd>
         </#list>
       </dl>
+      </#if>
 
       <#assign numPages = (searchResults.numFound / resultsPerPage)?ceiling />
       <#assign currentPage = (RequestParameters.page!1)?number />

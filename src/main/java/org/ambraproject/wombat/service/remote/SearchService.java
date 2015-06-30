@@ -90,13 +90,13 @@ public interface SearchService {
   /**
    * Retrieves articles for display on a journal home page, where there is no actual query.
    *
-   * @param journalKeys list of the journals in which to search
+   * @param journalKey journal in which to search
    * @param start     starting result, zero-based.  0 will start at the first result.
    * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> getHomePageArticles(List<String> journalKeys, int start, int rows, SearchCriterion sortOrder)
+  public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows, SearchCriterion sortOrder)
       throws IOException;
 }

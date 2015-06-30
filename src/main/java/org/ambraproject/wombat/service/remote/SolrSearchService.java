@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
@@ -186,9 +187,10 @@ public class SolrSearchService implements SearchService {
   }
 
   @Override
-  public Map<?, ?> getHomePageArticles(List<String> journalKeys, int start, int rows, SearchCriterion sortOrder)
+  public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows, SearchCriterion sortOrder)
       throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, SolrDateRange.ALL_TIME, true);
+    List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey), start, rows, sortOrder,
+        SolrDateRange.ALL_TIME, true);
     params.add(new BasicNameValuePair("q", "*:*"));
     return executeQuery(params);
   }
@@ -236,15 +238,12 @@ public class SolrSearchService implements SearchService {
     if (!Strings.isNullOrEmpty(dateRangeStr)) {
       params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
     }
-    StringBuilder crossPublishedJournals = new StringBuilder();
-    for (int i = 0; i < journalKeys.size(); i++) {
-      crossPublishedJournals.append("cross_published_journal_key:");
-      crossPublishedJournals.append(journalKeys.get(i));
-      if (i < journalKeys.size() - 1) {
-        crossPublishedJournals.append(" OR ");
-      }
+    List<String> crossPublishedJournals = new ArrayList<>();
+    for (String journalKey : journalKeys) {
+      crossPublishedJournals.add("cross_published_journal_key:" + journalKey);
     }
-    params.add(new BasicNameValuePair("fq", crossPublishedJournals.toString()));
+    params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
+
     return params;
   }
 

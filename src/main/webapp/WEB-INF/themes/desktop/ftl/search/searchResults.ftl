@@ -11,7 +11,6 @@
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/pages/search_results.js"/>
-<@renderJs />
 
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />
@@ -102,23 +101,18 @@
               <p class="search-results-alm-loading">
                 Loading metrics information...
               </p>
-              <p class="search-results-alm" id="search-results-alm-${doc_index}">
+              <p class="search-results-alm" data-doi="${doc.id}">
                 <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#viewedHeader">Views: </a> •
                 <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#citedHeader">Citations: </a> •
                 <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#savedHeader">Saves: </a> •
                 <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#discussedHeader">Shares: </a>
               </p>
-              <p class="search-results-alm-error" id="search-results-alm-error-${doc_index}">
+              <p class="search-results-alm-error">
                 <span class="fa-stack icon-warning-stack">
                   <i class="fa fa-exclamation fa-stack-1x icon-b"></i>
                   <i class="fa icon-warning fa-stack-1x icon-a"></i>
                 </span>Metrics unavailable. Please check back later.
               </p>
-              <script type="text/javascript">
-                (function ($) {
-                  $(this).displayAlmSummary('${doc.id}', ${doc_index});
-                })(jQuery);
-              </script>
             </div>
             <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
               <div class="search-results-eoc">

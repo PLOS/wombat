@@ -59,16 +59,16 @@ public class HomeController extends WombatController {
     RECENT {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site, start, section.resultCount,
-            SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
+        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site.getJournalKey(), start,
+            section.resultCount, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
         return sanitizeSolrResults(result);
       }
     },
     POPULAR {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site, start, section.resultCount,
-            SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
+        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site.getJournalKey(), start,
+            section.resultCount, SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
         return sanitizeSolrResults(result);
       }
     },

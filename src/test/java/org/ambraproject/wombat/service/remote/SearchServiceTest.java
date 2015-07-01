@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
 
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
 public class SearchServiceTest extends AbstractTestNGSpringContextTests {
@@ -54,6 +55,18 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     assertSingle(actualMap.get("start"), "20");
     assertSingle(actualMap.get("sort"), "score desc,publication_date desc,id desc");
     assertJournals(actualMap.get("fq"), "foo", "bar", "blaz");
+
+    // null date range
+    actual = searchService.buildCommonParams(Collections.singletonList("foo"), 0, 15,
+        SolrSearchService.SolrSortOrder.RELEVANCE, null, false);
+    actualMap = convertToMap(actual);
+    assertCommonParams(actualMap, 3);
+    Set<String> fq = actualMap.get("fq");
+    for (String s : fq) {
+      if (s.startsWith("publication_date:")) {
+        fail(s);
+      }
+    }
   }
 
   /**

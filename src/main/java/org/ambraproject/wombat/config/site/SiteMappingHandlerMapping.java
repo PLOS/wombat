@@ -16,13 +16,16 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
   @Autowired
   SiteResolver siteResolver;
 
+  @Autowired
+  SiteSet siteSet;
+
   @Override
   protected RequestCondition<?> getCustomTypeCondition(Class<?> handlerType) {
     SiteMapping typeAnnotation = AnnotationUtils.findAnnotation(handlerType, SiteMapping.class);
     if (typeAnnotation == null) {
       return null;
     }
-    return  new SiteRequestCondition(siteResolver, ImmutableSet.copyOf(typeAnnotation.value()),
+    return  new SiteRequestCondition(siteSet, siteResolver, ImmutableSet.copyOf(typeAnnotation.value()),
             ImmutableSet.copyOf(typeAnnotation.excluded()));
   }
 
@@ -32,7 +35,7 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
     if (methodAnnotation == null) {
       return null;
     }
-    return  new SiteRequestCondition(siteResolver, ImmutableSet.copyOf(methodAnnotation.value()),
+    return  new SiteRequestCondition(siteSet, siteResolver, ImmutableSet.copyOf(methodAnnotation.value()),
             ImmutableSet.copyOf(methodAnnotation.excluded()));
   }
 }

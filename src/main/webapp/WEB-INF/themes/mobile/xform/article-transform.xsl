@@ -2349,7 +2349,6 @@
   <!-- suppress, we don't use -->
   <xsl:template match="price"/>
   <xsl:template match="roman"/>
-  <xsl:template match="sans-serif"/>
 
   <!-- Ambra modifications -->
   <xsl:template match="sc">

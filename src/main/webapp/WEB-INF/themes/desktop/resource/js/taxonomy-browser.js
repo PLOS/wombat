@@ -74,6 +74,9 @@
   // holds a timeout ref used when turning columns on and off
   var column_timeout = null;
 
+  // holds the width of the column for animation calculations
+  var column_width = null;
+
   // MAIN FUNCTIONS ==========================================================
 
   /**
@@ -120,7 +123,6 @@
     // generate new child list based term_cache keying off last item in term_stack
     renderChildren(term, child_terms);
 
-    var column_width = $('.levels-position .level').outerWidth(true);
     var current_depth = $('.levels-position .level').length;
     var left_position = $('.levels-position').position().left;
     var hidden_left_cols = Math.abs(left_position / column_width);
@@ -290,9 +292,8 @@
    * Determines if the carousel previous and next buttons should display
    */
   function updateCarouselButtons() {
-    var left_position = $('.levels-position').position().left;
+    var left_position = Math.round($('.levels-position').position().left);
     var current_depth = $('.levels-position .level').length;
-    var column_width = $('.levels-position .level').outerWidth(true);
     var hidden_left_cols = Math.abs(left_position / column_width);
     var hidden_right_cols = current_depth - 3 - hidden_left_cols;
 
@@ -352,12 +353,6 @@
     }
 
     $last_column_active = null;
-
-    // if there's no requester and the element is not equal to the last one, turn on the last one
-    var last_col = $('.level').last();
-    if (!requester && (el !== last_col)) {
-      turnColumnOn(last_col);
-    }
   }
 
   function turnColumnOn(el) {
@@ -435,7 +430,7 @@
 
   // get the term from the markup and trim it of whitespace and child count
   function getTermFromElement(el) {
-    return $.trim(el.html().replace(/\(.*?\)/g, ""));
+    return $.trim(el.html().replace(/\([0-9]+\)/g, ""));
   }
 
   /**
@@ -581,15 +576,6 @@
         turnColumnOn($(e.currentTarget));
       });
 
-      // wait 500ms before turning column off, to provide time for sloppy
-      // mousing by user. note that we're not using hoverintent here as it
-      // doesn't support this configuration.
-      $levelsPosition.on('mouseleave', '.level', function (e) {
-        column_timeout = setTimeout(function () {
-          turnColumnOff($(e.currentTarget));
-        }, 500);
-      });
-
       // FIXME: should always scroll by a minimum amount
       $levelsPosition.on('mousedown', '.level > a', handleScrollColumnMousedown);
       $levelsPosition.on('mouseup', '.level > a', handleScrollColumnMouseup);
@@ -612,6 +598,8 @@
 
     attachEventHandlers();
     displayTerm('/', 0 /*level*/);
+
+    column_width = Math.round($('.levels-position .level').outerWidth(true));
   });
 })()
 })(jQuery);

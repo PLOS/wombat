@@ -183,7 +183,7 @@ public class HomeController extends WombatController {
     }
   }
 
-  @SiteMapping(excluded={"DesktopPlosCollections", "MobilePlosCollections"})
+  @SiteMapping(excluded={"DesktopPlosCollections"})
   @RequestMapping(value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
   public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam(value = "section", required = false) String sectionParam,

@@ -46,7 +46,7 @@ public class RootController extends WombatController {
    * page is more useful than an error message. But all end-user-facing pages should belong to one of the sites in
    * {@code siteSet}.
    */
-  @SiteMapping(excluded={"DesktopPlosCollections","MobilePlosCollections"}) // temporary (see tempCollectionsHome below)
+  @SiteMapping(excluded={"DesktopPlosCollections"}) // temporary (see tempCollectionsHome below)
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String home(Model model) throws Exception {
     model.addAttribute("siteKeys", siteSet.getSiteKeys());
@@ -65,7 +65,7 @@ public class RootController extends WombatController {
    * NOTE: This is a temporary solution until DPRO-1238 is completed this sprint
    * TODO: specify SiteContentController and "/" namespace for DesktopPlosCollections in wombat.yaml config
    */
-  @SiteMapping(value={"DesktopPlosCollections","MobilePlosCollections"})
+  @SiteMapping(value={"DesktopPlosCollections"})
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String tempCollectionsHome(Model model, @SiteParam Site site) throws Exception {
     String repoKey = "desktop.collections.s.homepage";

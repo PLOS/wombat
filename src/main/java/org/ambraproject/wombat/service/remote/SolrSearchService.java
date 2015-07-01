@@ -17,7 +17,6 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.site.Site;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
@@ -30,12 +29,9 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Implementation of SearchService that queries a solr backend.
@@ -86,7 +82,7 @@ public class SolrSearchService implements SearchService {
   /**
    * Enumerates date ranges to expose in the UI.  Currently, these all start at some prior date and extend to today.
    */
-  public static enum SolrDateRange implements SearchCriterion {
+  public static enum SolrEnumeratedDateRange implements SearchCriterion {
 
     ALL_TIME("All time", -1),
     LAST_YEAR("Last year", 365),
@@ -99,7 +95,7 @@ public class SolrSearchService implements SearchService {
 
     private int daysAgo;
 
-    SolrDateRange(String description, int daysAgo) {
+    SolrEnumeratedDateRange(String description, int daysAgo) {
       this.description = description;
       this.daysAgo = daysAgo;
     }
@@ -130,6 +126,51 @@ public class SolrSearchService implements SearchService {
         return null;
       }
     }
+  }
+
+  public static class SolrExplicitDateRange implements SearchCriterion {
+
+    private String description;
+    private Calendar startDate;
+    private Calendar endDate;
+
+    public SolrExplicitDateRange(String description, String startDate, String endDate) throws IOException {
+      this.description = description;
+
+      Calendar startCal = Calendar.getInstance();
+      Calendar endCal = Calendar.getInstance();
+      startCal.setTimeZone(TimeZone.getTimeZone("UTC"));
+      endCal.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+      SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+      try {
+        startCal.setTime(simpleDateFormat.parse(startDate));
+        endCal.setTime(simpleDateFormat.parse(endDate));
+      } catch (ParseException e) {
+        throw new IOException(e);
+      }
+
+      this.startDate = startCal;
+      this.endDate = endCal;
+    }
+
+    @Override
+    public String getDescription() {
+      return description;
+    }
+
+    /**
+     * @return a String representing part of the "fq" param to pass to solr that will restrict the date range
+     * appropriately.  For example, "[2013-02-14T21:00:29.942Z TO 2013-08-15T21:00:29.942Z]". The String must be escaped
+     * appropriately before being included in the URL.  The final http param passed to solr should look like
+     * "fq=publication_date:[2013-02-14T21:00:29.942Z+TO+2013-08-15T21:00:29.942Z]".
+     */
+    @Override
+    public String getValue() {
+      return String.format("[%s TO %s]", DatatypeConverter.printDateTime(startDate),
+          DatatypeConverter.printDateTime(endDate));
+    }
+
   }
 
   /**
@@ -190,7 +231,7 @@ public class SolrSearchService implements SearchService {
   public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows, SearchCriterion sortOrder)
       throws IOException {
     List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey), start, rows, sortOrder,
-        SolrDateRange.ALL_TIME, true);
+        SolrEnumeratedDateRange.ALL_TIME, true);
     params.add(new BasicNameValuePair("q", "*:*"));
     return executeQuery(params);
   }

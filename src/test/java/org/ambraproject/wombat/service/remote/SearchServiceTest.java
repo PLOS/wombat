@@ -11,17 +11,14 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
 public class SearchServiceTest extends AbstractTestNGSpringContextTests {
@@ -34,7 +31,7 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
 
     // Single journal
     List<NameValuePair> actual = searchService.buildCommonParams(Collections.singletonList("foo"), 0, 10,
-        SolrSearchService.SolrSortOrder.MOST_CITED, SolrSearchService.SolrDateRange.LAST_6_MONTHS, true);
+        SolrSearchService.SolrSortOrder.MOST_CITED, SolrSearchService.SolrEnumeratedDateRange.LAST_6_MONTHS, true);
     SetMultimap<String, String> actualMap = convertToMap(actual);
     assertCommonParams(actualMap, 4);
     assertSingle(actualMap.get("rows"), "10");
@@ -47,13 +44,28 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
 
     // Multiple journals
     actual = searchService.buildCommonParams(Arrays.asList("foo", "bar", "blaz"), 20, 25,
-        SolrSearchService.SolrSortOrder.RELEVANCE, SolrSearchService.SolrDateRange.ALL_TIME, false);
+        SolrSearchService.SolrSortOrder.RELEVANCE, SolrSearchService.SolrEnumeratedDateRange.ALL_TIME, false);
     actualMap = convertToMap(actual);
     assertCommonParams(actualMap, 3);
     assertSingle(actualMap.get("rows"), "25");
     assertSingle(actualMap.get("start"), "20");
     assertSingle(actualMap.get("sort"), "score desc,publication_date desc,id desc");
     assertJournals(actualMap.get("fq"), "foo", "bar", "blaz");
+  }
+
+  @Test
+  public void testBuildCommonParams_ExplicitDateRange() throws IOException {
+    SolrSearchService.SolrExplicitDateRange edr
+        = new SolrSearchService.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    List<NameValuePair> actual = searchService.buildCommonParams(Collections.singletonList("foo"),
+        0, 10, SolrSearchService.SolrSortOrder.MOST_CITED, edr, true);
+    SetMultimap<String, String> actualMap = convertToMap(actual);
+    assertCommonParams(actualMap, 4);
+    assertSingle(actualMap.get("rows"), "10");
+    assertEquals(actualMap.get("start").size(), 0);
+    assertSingle(actualMap.get("sort"), "alm_scopusCiteCount desc");
+    assertPubDate(actualMap.get("fq"));
+    assertJournals(actualMap.get("fq"), "foo");
   }
 
   /**
@@ -95,7 +107,7 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
   // Regex used to validate the publication_date fq param.  This is not very strict, since we only
   // look for anything that appears to resemble a date range, without actually parsing the dates.
 
-  private static final String TIMESTAMP_RE = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}\\:\\d{2}\\.\\d+Z";
+  private static final String TIMESTAMP_RE = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}\\:\\d{2}(\\.\\d+)?Z";
 
   private static final Pattern PUB_DATE_RE = Pattern.compile(String.format("publication_date:\\[%s TO %s\\]",
       TIMESTAMP_RE, TIMESTAMP_RE));

@@ -26,9 +26,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Controller class for user-initiated searches.
@@ -48,6 +48,8 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
                        @RequestParam(value = "dateRange", required = false) String dateRangeParam,
+                       @RequestParam(value = "filterStartDate", required = false) String startDate,
+                       @RequestParam(value = "filterEndDate", required = false) String endDate,
                        @RequestParam(value = "resultsPerPage", required = false, defaultValue = "15")
                        Integer resultsPerPage,
                        @RequestParam(value = "filterJournals", required = false) List<String> journals)
@@ -71,28 +73,40 @@ public class SearchController extends WombatController {
     if (!Strings.isNullOrEmpty(sortOrderParam)) {
       sortOrder = SolrSearchService.SolrSortOrder.valueOf(sortOrderParam);
     }
-    SolrSearchService.SolrDateRange dateRange = SolrSearchService.SolrDateRange.ALL_TIME;
+
+    //Mobile search only provides the enumerated dateRangeParam field, while desktop search provides
+    //explicit fields for start and end dates. The parameters are mutually exclusive.
+    SearchService.SearchCriterion dateRange = SolrSearchService.SolrEnumeratedDateRange.ALL_TIME;
+    SolrSearchService.SolrEnumeratedDateRange enumeratedDateRange
+        = SolrSearchService.SolrEnumeratedDateRange.ALL_TIME;
     if (!Strings.isNullOrEmpty(dateRangeParam)) {
-      dateRange = SolrSearchService.SolrDateRange.valueOf(dateRangeParam);
+      dateRange = SolrSearchService.SolrEnumeratedDateRange.valueOf(dateRangeParam);
+    } else if (!Strings.isNullOrEmpty(startDate) && !Strings.isNullOrEmpty(endDate)) {
+      dateRange = new SolrSearchService.SolrExplicitDateRange("explicit date range", startDate,
+          endDate);
     }
 
+    //TODO: split or share model assignments between mobile and desktop
     model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
-    model.addAttribute("dateRanges", SolrSearchService.SolrDateRange.values());
+    model.addAttribute("dateRanges", SolrSearchService.SolrEnumeratedDateRange.values());
 
     // TODO: bind sticky form params using Spring MVC support for Freemarker.  I think we have to add
     // some more dependencies to do this.  See
     // http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/view.html#view-velocity
     model.addAttribute("selectedSortOrder", sortOrder);
-    model.addAttribute("selectedDateRange", dateRange);
+    model.addAttribute("selectedDateRange", enumeratedDateRange);
     model.addAttribute("selectedResultsPerPage", resultsPerPage);
 
     Map<?, ?> searchResults;
     if (!Strings.isNullOrEmpty(subject)) {
-      searchResults = searchService.subjectSearch(subject, journals, start, resultsPerPage, sortOrder, dateRange);
+      searchResults = searchService.subjectSearch(subject, journals, start, resultsPerPage,
+          sortOrder, dateRange);
     } else if (!Strings.isNullOrEmpty(author)) {
-      searchResults = searchService.authorSearch(author, journals, start, resultsPerPage, sortOrder, dateRange);
+      searchResults = searchService.authorSearch(author, journals, start, resultsPerPage,
+          sortOrder, dateRange);
     } else {
-      searchResults = searchService.simpleSearch(query, journals, start, resultsPerPage, sortOrder, dateRange);
+      searchResults = searchService.simpleSearch(query, journals, start, resultsPerPage,
+          sortOrder, dateRange);
     }
     model.addAttribute("searchResults", searchResults);
     return site.getKey() + "/ftl/search/searchResults";

@@ -5,6 +5,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteMapping;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.remote.SoaService;
@@ -29,7 +30,6 @@ import java.util.Map;
  * Handles requests for a site home page.
  */
 @Controller
-@SiteMapping(excluded={"DesktopPlosGenetics"})
 public class HomeController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
@@ -183,6 +183,7 @@ public class HomeController extends WombatController {
     }
   }
 
+  @SiteMapping(excluded={"DesktopPlosCollections", "MobilePlosCollections"})
   @RequestMapping(value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
   public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam(value = "section", required = false) String sectionParam,

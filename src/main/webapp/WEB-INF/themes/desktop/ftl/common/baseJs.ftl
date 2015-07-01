@@ -19,7 +19,6 @@ should include it in the ftl file that needs it. -->
 <@js src="resource/js/components/toggle.js"/>
 <@js src="resource/js/components/truncate_elem.js"/>
 <@js src="resource/js/components/tooltip_hover.js"/>
-<@js src="resource/js/taxonomy-browser.js" />
 
 
 

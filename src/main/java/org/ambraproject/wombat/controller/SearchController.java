@@ -15,6 +15,8 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.slf4j.Logger;
@@ -26,9 +28,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Controller class for user-initiated searches.
@@ -36,6 +42,9 @@ import java.util.Map;
 @Controller
 public class SearchController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(SearchController.class);
+
+  @Autowired
+  private SiteSet siteSet;
 
   @Autowired
   private SearchService searchService;
@@ -86,7 +95,17 @@ public class SearchController extends WombatController {
           endDate);
     }
 
+    Set<String> journalNames = new HashSet<>();
+    for (String journalKey : journals) {
+      journalNames.add(siteSet.getJournalName(journalKey));
+    }
+    model.addAttribute("journalNames", journalNames);
+
     //TODO: split or share model assignments between mobile and desktop
+    model.addAttribute("filterJournals", journals);
+    model.addAttribute("filterStartDate",startDate);
+    model.addAttribute("filterEndDate", endDate);
+
     model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
     model.addAttribute("dateRanges", SolrSearchService.SolrEnumeratedDateRange.values());
 

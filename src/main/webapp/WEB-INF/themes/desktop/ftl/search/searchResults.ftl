@@ -55,9 +55,24 @@
         </div>
 
         </div>
-      </form>
-    </div>
-
+        <#if (filterJournals?size > 0 || (filterStartDate?? && filterEndDate??))>
+          <div class="filter-block">
+            <#if (filterStartDate??)>
+              <div class="filter-item">
+                ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
+              </div>
+            </#if>
+            <#if (filterJournals?size > 0)>
+              <#list journalNames as journalName>
+                <div class="filter-item">
+                  ${journalName}
+                </div>
+              </#list>
+            </#if>
+          </div>
+        </#if>
+      </div>
+    </form>
     <article>
       <#if searchResults.numFound == 0>
         <div class="search-results-none-found">

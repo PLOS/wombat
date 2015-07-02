@@ -12,7 +12,6 @@ import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;

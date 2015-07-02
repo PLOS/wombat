@@ -63,7 +63,7 @@
               </div>
             </#if>
             <#if (filterJournals?size > 0)>
-              <#list journalNames as journalName>
+              <#list filterJournalNames as journalName>
                 <div class="filter-item">
                   ${journalName}
                 </div>

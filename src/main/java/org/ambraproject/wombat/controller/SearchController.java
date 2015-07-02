@@ -92,13 +92,13 @@ public class SearchController extends WombatController {
           endDate);
     }
 
-    //Journal name is identical between mobile and desktop sites, so the first site matched is enough
-    Set<String> journalNames = new HashSet<>();
+    //Journal name is identical between mobile and desktop sites, so the first site matched is sufficient
+    Set<String> filterJournalNames = new HashSet<>();
     for (String journalKey : journals) {
-      journalNames.add(siteSet.getSites(journalKey).get(0).getJournalName());
+      filterJournalNames.add(siteSet.getSites(journalKey).get(0).getJournalName());
     }
 
-    model.addAttribute("journalNames", journalNames);
+    model.addAttribute("filterJournalNames", filterJournalNames);
 
     //TODO: split or share model assignments between mobile and desktop
     model.addAttribute("filterJournals", journals);

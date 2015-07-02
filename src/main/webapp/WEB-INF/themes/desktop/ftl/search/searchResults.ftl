@@ -19,6 +19,14 @@
   <#assign journalName = v />
 </@themeConfig>
 
+<#if RequestParameters.q??>
+  <#assign query = RequestParameters.q?html />
+  <#assign advancedSearch = false />
+<#else>
+  <#assign query = RequestParameters.unformattedQuery?html />
+  <#assign advancedSearch = true />
+</#if>
+
 <body class="static ${journalStyle}">
 
   <#assign headerOmitMain = true />
@@ -31,10 +39,10 @@
           <fieldset>
             <legend>Search</legend>
             <label for="controlBarSearch">Search</label>
-            <input id="controlBarSearch" type="text" name="q" value="${RequestParameters.q?html}" required />
+            <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}" value="${query}" required />
             <button type="submit"><span class="search-icon"></span></button>
           </fieldset>
-          <a class="search-results-button-hover-branded" href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${RequestParameters.q?html}&noSearchFlag=set">advanced</a>
+          <a class="search-results-button-hover-branded" href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${query}&noSearchFlag=set">advanced</a>
         </div>
 
         <div class="search-results-controls-second-row">
@@ -62,11 +70,11 @@
       <#if searchResults.numFound == 0>
         <div class="search-results-none-found">
           <p>You searched for articles that have all of the following:</p>
-          <p>Search Term: "<span>${RequestParameters.q?html}</span>"</p>
+          <p>Search Term: "<span>${query}</span>"</p>
           <p>Journal: "<span>${journalName}</span>"</p>
           <p>
             There were no results; please
-            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${RequestParameters.q?html}&noSearchFlag=set">refine your search</a>
+            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${query}&noSearchFlag=set">refine your search</a>
             and try again.</p>
         </div>
       <#else>
@@ -76,7 +84,7 @@
         <#else>
           results
         </#if>
-        for <span>${RequestParameters.q?html}</span>
+        for <span>${query}</span>
       </div>
       <dl class="search-results-list">
         <#list searchResults.docs as doc>

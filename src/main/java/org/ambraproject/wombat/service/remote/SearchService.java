@@ -58,6 +58,21 @@ public interface SearchService {
                                 SearchCriterion dateRange) throws IOException;
 
   /**
+   * Performs an "advanced search": the query parameter will be directly parsed by solr.
+   *
+   * @param query specifies the solr fields and the values we are searching for; may be a boolean
+   *     combination of these.  Example: "(abstract:gene) AND author:smith".
+   * @param journalKeys list of the journals in which to search
+   * @param start starting result, zero-based.  0 will start at the first result.
+   * @param rows max number of results to return
+   * @param sortOrder specifies the desired ordering for results
+   * @return deserialized JSON returned by the search server
+   * @throws IOException
+   */
+  public Map<?, ?> advancedSearch(String query, List<String> journalKeys, int start, int rows,
+      SearchCriterion sortOrder) throws IOException;
+
+  /**
    * Performs a search by the subject fields.
    *
    * @param subject   taxonomy term the search will be restricted to

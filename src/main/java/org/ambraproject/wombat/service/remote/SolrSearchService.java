@@ -210,6 +210,14 @@ public class SolrSearchService implements SearchService {
     return executeQuery(params);
   }
 
+  @Override
+  public Map<?, ?> advancedSearch(String query, List<String> journalKeys, int start, int rows,
+      SearchCriterion sortOrder) throws IOException {
+    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, null, false);
+    params.add(new BasicNameValuePair("q", query));
+    return executeQuery(params);
+  }
+
   /**
    * {@inheritDoc}
    */
@@ -281,9 +289,11 @@ public class SolrSearchService implements SearchService {
       sortOrderStr += ",id desc";
     }
     params.add(new BasicNameValuePair("sort", sortOrderStr));
-    String dateRangeStr = dateRange.getValue();
-    if (!Strings.isNullOrEmpty(dateRangeStr)) {
-      params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
+    if (dateRange != null) {
+      String dateRangeStr = dateRange.getValue();
+      if (!Strings.isNullOrEmpty(dateRangeStr)) {
+        params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
+      }
     }
     List<String> crossPublishedJournals = new ArrayList<>();
     for (String journalKey : journalKeys) {

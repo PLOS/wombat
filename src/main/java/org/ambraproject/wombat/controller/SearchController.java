@@ -40,9 +40,36 @@ public class SearchController extends WombatController {
   @Autowired
   private SearchService searchService;
 
+  /**
+   * Performs a search.
+   *
+   * @param model information to be sent to the template
+   * @param site the current site
+   * @param query "simple search" query.  This word or phrase will be searched against all
+   *     solr fields.
+   * @param unformattedQuery "advanced search" query.  This may be a boolean combination of any
+   *     predicates that query any of the solr fields.  This is the boolean expression that can
+   *     be built on the advanced search page.  If present, query will be ignored.
+   * @param subject if present, a subject search will be performed on this subject, and query and
+   *     unformattedQuery will be ignored.
+   * @param author if present, an author search will be performed on this author, and query and
+   *     unformattedQuery will be ignored.
+   * @param page results page we are requesting (1-based).  If absent, the first page of results
+   *     will be returned.
+   * @param sortOrderParam specifies the sort order of results.  If absent, the sort order will
+   *     default to relevance.
+   * @param dateRangeParam specifies the publication date range for the results.  If absent, results
+   *     from all time will be returned.
+   * @param resultsPerPage maximum number of results to return (for the given results page).
+   * @param journals list of journal keys in which to search.  If absent, the search will only
+   *     be over the current site.
+   * @return path to the search results freemarker template
+   * @throws IOException
+   */
   @RequestMapping(value = {"/search", "/{site}/search"})
   public String search(Model model, @SiteParam Site site,
                        @RequestParam(value = "q", required = false) String query,
+                       @RequestParam(value = "unformattedQuery", required = false) String unformattedQuery,
                        @RequestParam(value = "subject", required = false) String subject,
                        @RequestParam(value = "author", required = false) String author,
                        @RequestParam(value = "page", required = false) Integer page,
@@ -98,9 +125,10 @@ public class SearchController extends WombatController {
     model.addAttribute("selectedResultsPerPage", resultsPerPage);
 
     Map<?, ?> searchResults;
-    if (!Strings.isNullOrEmpty(subject)) {
-      searchResults = searchService.subjectSearch(subject, journals, start, resultsPerPage,
-          sortOrder, dateRange);
+    if (!Strings.isNullOrEmpty(unformattedQuery)) {
+      searchResults = searchService.advancedSearch(unformattedQuery, journals, start, resultsPerPage, sortOrder);
+    } else if (!Strings.isNullOrEmpty(subject)) {
+      searchResults = searchService.subjectSearch(subject, journals, start, resultsPerPage, sortOrder, dateRange);
     } else if (!Strings.isNullOrEmpty(author)) {
       searchResults = searchService.authorSearch(author, journals, start, resultsPerPage,
           sortOrder, dateRange);

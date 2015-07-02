@@ -140,7 +140,7 @@ public class SolrSearchService implements SearchService {
     private Calendar startDate;
     private Calendar endDate;
 
-    public SolrExplicitDateRange(String description, String startDate, String endDate) throws IOException {
+    public SolrExplicitDateRange(String description, String startDate, String endDate) {
       this.description = description;
 
       Calendar startCal = Calendar.getInstance();
@@ -153,7 +153,7 @@ public class SolrSearchService implements SearchService {
         startCal.setTime(simpleDateFormat.parse(startDate));
         endCal.setTime(simpleDateFormat.parse(endDate));
       } catch (ParseException e) {
-        throw new IOException(e);
+        throw new RuntimeException(e);
       }
 
       this.startDate = startCal;

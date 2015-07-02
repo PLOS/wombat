@@ -11,6 +11,8 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -103,6 +105,24 @@ public class SiteSet {
         throw new RuntimeConfigurationException(message);
       }
     }
+  }
+
+  /**
+   * @param journalKey specifies the journal
+   * @return Site List containing any sites that match the journalKey
+   * @throws UnmatchedSiteException if no journal is found
+   */
+  public ArrayList<Site> getSites(String journalKey) throws UnmatchedSiteException, IOException {
+    ArrayList<Site> sitesToReturn = new ArrayList<>();
+    for (Site site : sites.values()) {
+      if (site.getJournalKey().equals(journalKey)) {
+        sitesToReturn.add(site);
+      }
+    }
+    if (sitesToReturn.isEmpty()) {
+      throw new UnmatchedSiteException("Journal key not matched to any journal: " + journalKey);
+    }
+    return sitesToReturn;
   }
 
   /**

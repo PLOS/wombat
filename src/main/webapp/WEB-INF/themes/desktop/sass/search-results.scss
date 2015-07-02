@@ -381,3 +381,21 @@ $inactive-background-color: #c2c2c2;
     font-size: $txt-size-xxxsmall;
   }
 }
+
+.filter-block {
+  padding-top: $pad-small;
+}
+
+.filter-item {
+  @extend %rounded-default;
+  font-size: $txt-size-small;
+  line-height: $line-height-med;
+  float: left;
+  color: $white;
+  background: $grey-blah;
+  font-weight: bold;
+  margin-right: $pad-xsmall;
+  margin-bottom: $pad-xsmall;
+  padding-right: $pad-small;
+  padding-left: $pad-small;
+}

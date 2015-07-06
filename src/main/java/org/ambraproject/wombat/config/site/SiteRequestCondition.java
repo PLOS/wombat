@@ -18,13 +18,10 @@ public class SiteRequestCondition implements RequestCondition <SiteRequestCondit
   private SiteSet siteSet;
 
   private SiteRequestCondition(SiteSet siteSet, SiteResolver siteResolver, Set<String> includedSites, Set<String> excludedSites){
-    Preconditions.checkNotNull(siteResolver);
-    Preconditions.checkNotNull(siteSet);
-    Preconditions.checkNotNull(includedSites);
-    this.siteSet = siteSet;
-    this.siteResolver = siteResolver;
-    this.includedSites = ImmutableSet.copyOf(includedSites);
-    this.excludedSites = excludedSites == null ? ImmutableSet.<String>of() : ImmutableSet.copyOf(excludedSites);
+    this.siteSet = Preconditions.checkNotNull(siteSet);
+    this.siteResolver = Preconditions.checkNotNull(siteResolver);
+    this.includedSites = ImmutableSet.copyOf(Preconditions.checkNotNull(includedSites));
+    this.excludedSites = ImmutableSet.copyOf(Preconditions.checkNotNull(excludedSites));
   }
 
   public static SiteRequestCondition createByExcluded(SiteSet siteSet, SiteResolver siteResolver, Set<String> excludedSites) {
@@ -59,7 +56,7 @@ public class SiteRequestCondition implements RequestCondition <SiteRequestCondit
             .addAll(excludedSites)
             .addAll(other.excludedSites)
             .build();
-    return new SiteRequestCondition(siteSet, siteResolver, combinedIncludedSites, combinedExcludedSites);
+    return create(siteSet, siteResolver, combinedIncludedSites, combinedExcludedSites);
   }
 
 

@@ -17,18 +17,22 @@ public class SiteRequestCondition implements RequestCondition <SiteRequestCondit
   private SiteResolver siteResolver;
   private SiteSet siteSet;
 
-  public SiteRequestCondition(SiteSet siteSet, SiteResolver siteResolver, Set<String> includedSites, Set<String> excludedSites){
+  private SiteRequestCondition(SiteSet siteSet, SiteResolver siteResolver, Set<String> includedSites, Set<String> excludedSites){
     Preconditions.checkNotNull(siteResolver);
     Preconditions.checkNotNull(siteSet);
     Preconditions.checkNotNull(includedSites);
     this.siteSet = siteSet;
     this.siteResolver = siteResolver;
-    this.includedSites = includedSites.isEmpty() ? siteSet.getSiteKeys() : ImmutableSet.copyOf(includedSites);
+    this.includedSites = ImmutableSet.copyOf(includedSites);
     this.excludedSites = excludedSites == null ? ImmutableSet.<String>of() : ImmutableSet.copyOf(excludedSites);
   }
 
-  public SiteRequestCondition(SiteSet siteSet, SiteResolver siteResolver, Set<String> includedSites) {
-    this(siteSet, siteResolver, includedSites, null);
+  public static SiteRequestCondition createByExcluded(SiteSet siteSet, SiteResolver siteResolver, Set<String> excludedSites) {
+    return new SiteRequestCondition(siteSet, siteResolver, siteSet.getSiteKeys(), excludedSites);
+  }
+
+  public static SiteRequestCondition create(SiteSet siteSet, SiteResolver siteResolver, Set<String> includedSites, Set<String> excludedSites) {
+    return new SiteRequestCondition(siteSet, siteResolver, includedSites, excludedSites);
   }
 
   @Override

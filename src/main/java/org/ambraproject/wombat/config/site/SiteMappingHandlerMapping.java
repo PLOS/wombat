@@ -25,7 +25,11 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
     if (typeAnnotation == null) {
       return null;
     }
-    return new SiteRequestCondition(siteSet, siteResolver, ImmutableSet.copyOf(typeAnnotation.value()),
+    if (typeAnnotation.value().length == 0) {
+      return SiteRequestCondition.createByExcluded(siteSet, siteResolver,
+          ImmutableSet.copyOf(typeAnnotation.excluded()));
+    }
+    return SiteRequestCondition.create(siteSet, siteResolver, ImmutableSet.copyOf(typeAnnotation.value()),
         ImmutableSet.copyOf(typeAnnotation.excluded()));
   }
 
@@ -35,7 +39,11 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
     if (methodAnnotation == null) {
       return null;
     }
-    return new SiteRequestCondition(siteSet, siteResolver, ImmutableSet.copyOf(methodAnnotation.value()),
+    if (methodAnnotation.value().length == 0) {
+       return SiteRequestCondition.createByExcluded(siteSet, siteResolver,
+           ImmutableSet.copyOf(methodAnnotation.excluded()));
+    }
+    return SiteRequestCondition.create(siteSet, siteResolver, ImmutableSet.copyOf(methodAnnotation.value()),
         ImmutableSet.copyOf(methodAnnotation.excluded()));
   }
 }

@@ -114,11 +114,15 @@
               </#list>
             </p>
             <#if doc.article_type??>
-              ${doc.article_type} |
+              <span id="article-result-${doc_index}-type">${doc.article_type}</span> |
             </#if>
-            published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" /> |
+              <span id="article-result-${doc_index}-date">
+                published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" /> |
+              </span>
             <#if doc.cross_published_journal_name??>
-              ${doc.cross_published_journal_name[0]}
+              <span id="article-result-${doc_index}-journal-name">
+                ${doc.cross_published_journal_name[0]}
+              </span>
             </#if>
             <p class="search-results-doi">${doc.id}</p>
             <div class="search-results-alm-container">

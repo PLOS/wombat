@@ -107,7 +107,7 @@
           <dt data-doi="${doc.id}"  class="search-results-title">
             <a href="article?id=${doc.id}">${doc.title}</a>
           </dt>
-          <dd>
+          <dd id="article-result-${doc_index}">
             <p class="search-results-authors">
               <#list doc.author_display![] as author>
                 ${author}<#if author_has_next>,</#if>

@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -88,8 +89,7 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "filterJournals", required = false) List<String> journals)
           throws IOException {
 
-    // If no filterJournals param is present, default to the current site.
-    journals = journals == null || journals.isEmpty() ? Collections.singletonList(site.getJournalKey()) : journals;
+    journals = parseJournals(site, journals, unformattedQuery);
     if (query == null) {
       log.warn("Received search request in {} with null query param (possible apache rewrite issue)", site);
       // May be due to apache rewrite config issue which needs attention. Meanwhile, set query to
@@ -156,5 +156,30 @@ public class SearchController extends WombatController {
     }
     model.addAttribute("searchResults", searchResults);
     return site.getKey() + "/ftl/search/searchResults";
+  }
+
+  /**
+   * Determines what journal keys to use in the search.
+   *
+   * @param site the site the request is associated with
+   * @param journalParams journal keys passed as URL parameters, if any
+   * @param unformattedQuery the value of the unformattedQuery param (used in advanced search)
+   * @return if unformattedQuery is non-empty, and journalParams is empty, all journal keys will be
+   *     returned.  Otherwise, if journalParams is non-empty, those will be returned; otherwise
+   *     the current site's journal key will be returned.
+   */
+  private List<String> parseJournals(Site site, List<String> journalParams, String unformattedQuery) {
+
+    // If we are in advanced search mode (unformattedQuery populated), and no journals are specified,
+    // we default to all journals.
+    if (!Strings.isNullOrEmpty(unformattedQuery) && (journalParams == null || journalParams.isEmpty())) {
+      return new ArrayList(siteSet.getJournalKeys());
+    } else {
+
+      // If no filterJournals param is present, default to the current site.
+      return journalParams == null || journalParams.isEmpty()
+          ? Collections.singletonList(site.getJournalKey())
+          : journalParams;
+    }
   }
 }

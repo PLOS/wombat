@@ -13,4 +13,17 @@
   </fieldset>
   <input type="hidden" name="filterJournals" value="${journalKey}" />
 </form>
+
+<@themeConfig map="legacy" value="urlPrefix" ; legacyUrlPrefix>
+  <#if legacyUrlPrefix??>
+    <@themeConfig map="journal" value="journalKey" ; filterJournal>
+      <a id="advSearch"
+         href="${legacyUrlPrefix}search/advanced?noSearchFlag=true&query=&filterJournals=${filterJournal}">
+        advanced search
+      </a>
+    </@themeConfig>
+  </#if>
+</@themeConfig>
+</li>
+
 <@js src="resource/js/components/placeholder_style.js"/>

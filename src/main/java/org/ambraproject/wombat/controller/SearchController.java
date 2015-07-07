@@ -14,7 +14,6 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.remote.SearchService;
@@ -28,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -58,6 +56,8 @@ public class SearchController extends WombatController {
    * @param unformattedQuery "advanced search" query.  This may be a boolean combination of any
    *     predicates that query any of the solr fields.  This is the boolean expression that can
    *     be built on the advanced search page.  If present, query will be ignored.
+   * @param subject if present, a subject search will be performed on this subject, and query and
+   *     unformattedQuery will be ignored. Mobile only.
    * @param author if present, an author search will be performed on this author, and query and
    *     unformattedQuery will be ignored.
    * @param page results page we are requesting (1-based).  If absent, the first page of results
@@ -78,6 +78,7 @@ public class SearchController extends WombatController {
   public String search(Model model, @SiteParam Site site,
                        @RequestParam(value = "q", required = false) String query,
                        @RequestParam(value = "unformattedQuery", required = false) String unformattedQuery,
+                       @RequestParam(value = "subject", required = false) String subject,
                        @RequestParam(value = "author", required = false) String author,
                        @RequestParam(value = "page", required = false) Integer page,
                        @RequestParam(value = "sortOrder", required = false) String sortOrderParam,
@@ -134,15 +135,9 @@ public class SearchController extends WombatController {
     model.addAttribute("filterStartDate",startDate);
     model.addAttribute("filterEndDate", endDate);
 
-    //TODO: enable searching by multiple subjects
-    List<String> filterSubjects = new ArrayList<>();
-    String subject = "";
-    if (subjects != null && subjects.size() > 0 && !Strings.isNullOrEmpty(subjects.get(0))) {
-      subject = subjects.get(0);
-      filterSubjects = Collections.singletonList(subject);
-    }
+    subject = parseSubjects(subject, subjects);
+    model.addAttribute("filterSubjects", Collections.singletonList(subject));
 
-    model.addAttribute("filterSubjects", filterSubjects);
     model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
     model.addAttribute("dateRanges", SolrSearchService.SolrEnumeratedDateRange.values());
 
@@ -167,5 +162,15 @@ public class SearchController extends WombatController {
     }
     model.addAttribute("searchResults", searchResults);
     return site.getKey() + "/ftl/search/searchResults";
+  }
+
+  //TODO: allow filtering by multiple subjects
+  //subject is a mobile-only parameter, while subjects is a desktop-only parameter
+  private String parseSubjects(String subject, List<String> subjects) {
+    if (Strings.isNullOrEmpty(subject) && subjects != null && subjects.size() > 0
+        && !Strings.isNullOrEmpty(subjects.get(0))) {
+      subject = subjects.get(0);
+    }
+    return subject;
   }
 }

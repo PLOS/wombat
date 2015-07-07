@@ -135,6 +135,18 @@ $level-selection-bg: $grey-dark;
     @extend %carousel-button;
     left: 0;
     }
+
+  .up {
+   @extend %level-active-scroll;
+    @extend .icon-angle-up;
+    @extend %rounded-default-top;
+  }
+
+  .down {
+    @extend %level-active-scroll;
+    @extend .icon-angle-down;
+    @extend %rounded-default-bottom;
+  }
 }
 
 .levels-container {

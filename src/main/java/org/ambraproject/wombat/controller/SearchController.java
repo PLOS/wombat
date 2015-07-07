@@ -57,7 +57,7 @@ public class SearchController extends WombatController {
    *     predicates that query any of the solr fields.  This is the boolean expression that can
    *     be built on the advanced search page.  If present, query will be ignored.
    * @param subject if present, a subject search will be performed on this subject, and query and
-   *     unformattedQuery will be ignored.
+   *     unformattedQuery will be ignored. Mobile only.
    * @param author if present, an author search will be performed on this author, and query and
    *     unformattedQuery will be ignored.
    * @param page results page we are requesting (1-based).  If absent, the first page of results
@@ -69,6 +69,8 @@ public class SearchController extends WombatController {
    * @param resultsPerPage maximum number of results to return (for the given results page).
    * @param journals list of journal keys in which to search.  If absent, the search will only
    *     be over the current site.
+   * @param subjects if present, a subject search will be performed on this subject, and query and
+   *     unformattedQuery will be ignored. Only the first subject provided is used.
    * @return path to the search results freemarker template
    * @throws IOException
    */
@@ -85,7 +87,8 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "filterEndDate", required = false) String endDate,
                        @RequestParam(value = "resultsPerPage", required = false, defaultValue = "15")
                        Integer resultsPerPage,
-                       @RequestParam(value = "filterJournals", required = false) List<String> journals)
+                       @RequestParam(value = "filterJournals", required = false) List<String> journals,
+                       @RequestParam(value = "filterSubjects", required = false) List<String> subjects)
           throws IOException {
 
     // If no filterJournals param is present, default to the current site.
@@ -132,6 +135,9 @@ public class SearchController extends WombatController {
     model.addAttribute("filterStartDate",startDate);
     model.addAttribute("filterEndDate", endDate);
 
+    subject = parseSubjects(subject, subjects);
+    model.addAttribute("filterSubjects", Collections.singletonList(subject));
+
     model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
     model.addAttribute("dateRanges", SolrSearchService.SolrEnumeratedDateRange.values());
 
@@ -156,5 +162,15 @@ public class SearchController extends WombatController {
     }
     model.addAttribute("searchResults", searchResults);
     return site.getKey() + "/ftl/search/searchResults";
+  }
+
+  //TODO: allow filtering by multiple subjects
+  //subject is a mobile-only parameter, while subjects is a desktop-only parameter
+  private String parseSubjects(String subject, List<String> subjects) {
+    if (Strings.isNullOrEmpty(subject) && subjects != null && subjects.size() > 0
+        && !Strings.isNullOrEmpty(subjects.get(0))) {
+      subject = subjects.get(0);
+    }
+    return subject;
   }
 }

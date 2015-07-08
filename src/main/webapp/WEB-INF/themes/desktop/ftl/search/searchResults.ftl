@@ -40,7 +40,7 @@
             <legend>Search</legend>
             <label for="controlBarSearch">Search</label>
             <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}" value="${query}" required />
-            <button type="submit"><span class="search-icon"></span></button>
+            <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
           </fieldset>
           <a class="search-results-button-hover-branded" href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">advanced</a>
         </div>
@@ -48,8 +48,8 @@
         <div class="search-results-controls-second-row">
 
         <#-- TODO: wire up the following controls.  -->
-        <a class="search-results-button-hover-branded-small search-results-flush-left" href="#">filter by +</a>
-        <a class="search-results-button-gray-small search-results-flush-left" href="#">Clear all filters</a>
+        <a id="filterByButton" class="search-results-button-hover-branded-small search-results-flush-left" href="#">filter by +</a>
+        <a id="clearAllFiltersButton" class="search-results-button-gray-small search-results-flush-left" href="#">Clear all filters</a>
 
         <#-- TODO: fis this select dropdown.  See comments in the .scss.  -->
         <div class="search-results-select">
@@ -100,7 +100,7 @@
             and try again.</p>
         </div>
       <#else>
-      <div class="search-results-num-found">${searchResults.numFound}
+      <div id="numberFound" class="search-results-num-found">${searchResults.numFound}
         <#if searchResults.numFound == 1>
           result
         <#else>
@@ -108,23 +108,27 @@
         </#if>
         for <span>${query}</span>
       </div>
-      <dl class="search-results-list">
+      <dl id="searchResultsList" class="search-results-list">
         <#list searchResults.docs as doc>
           <dt data-doi="${doc.id}"  class="search-results-title">
             <a href="article?id=${doc.id}">${doc.title}</a>
           </dt>
-          <dd>
+          <dd id="article-result-${doc_index}">
             <p class="search-results-authors">
               <#list doc.author_display![] as author>
                 ${author}<#if author_has_next>,</#if>
               </#list>
             </p>
             <#if doc.article_type??>
-              ${doc.article_type} |
+              <span id="article-result-${doc_index}-type">${doc.article_type}</span> |
             </#if>
-            published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" /> |
+              <span id="article-result-${doc_index}-date">
+                published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" /> |
+              </span>
             <#if doc.cross_published_journal_name??>
-              ${doc.cross_published_journal_name[0]}
+              <span id="article-result-${doc_index}-journal-name">
+                ${doc.cross_published_journal_name[0]}
+              </span>
             </#if>
             <p class="search-results-doi">${doc.id}</p>
             <div class="search-results-alm-container">

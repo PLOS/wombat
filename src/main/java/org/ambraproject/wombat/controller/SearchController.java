@@ -136,7 +136,9 @@ public class SearchController extends WombatController {
     model.addAttribute("filterEndDate", endDate);
 
     subject = parseSubjects(subject, subjects);
-    model.addAttribute("filterSubjects", Collections.singletonList(subject));
+    if (!Strings.isNullOrEmpty(subject)) {
+      model.addAttribute("filterSubjects", Collections.singletonList(subject));
+    }
 
     model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
     model.addAttribute("dateRanges", SolrSearchService.SolrEnumeratedDateRange.values());
@@ -167,10 +169,12 @@ public class SearchController extends WombatController {
   //TODO: allow filtering by multiple subjects
   //subject is a mobile-only parameter, while subjects is a desktop-only parameter
   private String parseSubjects(String subject, List<String> subjects) {
-    if (Strings.isNullOrEmpty(subject) && subjects != null && subjects.size() > 0
-        && !Strings.isNullOrEmpty(subjects.get(0))) {
-      subject = subjects.get(0);
+    String subjectForModel = "";
+    if (!Strings.isNullOrEmpty(subject)) {
+      subjectForModel = subject;
+    } else if (subjects != null && subjects.size() > 0 && !Strings.isNullOrEmpty(subjects.get(0))) {
+      subjectForModel = subjects.get(0);
     }
-    return subject;
+    return subjectForModel;
   }
 }

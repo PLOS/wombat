@@ -10,7 +10,9 @@
     <#if months??>
       <ul>
         <#list months as month>
-          <li><a href="<@siteLink path="lockss-manifest/vol_" + year + "/" + month />"> ${month} </a></li>
+          <#if month?has_content>
+            <li><a href="<@siteLink path="lockss-manifest/vol_" + year + "/" + month />"> ${month} </a></li>
+          </#if>
         </#list>
       </ul>
     </#if>

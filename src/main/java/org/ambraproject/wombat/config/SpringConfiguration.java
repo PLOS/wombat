@@ -48,7 +48,7 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
-import org.ambraproject.wombat.service.LockssService;
+import org.ambraproject.wombat.service.LockssServiceImpl;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
@@ -218,8 +218,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public LockssService lockssService() {
-    return new LockssService();
+  public LockssServiceImpl lockssService() {
+    return new LockssServiceImpl();
   }
 
 }

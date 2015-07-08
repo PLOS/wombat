@@ -1,23 +1,29 @@
 package org.ambraproject.wombat.service;
 
-import java.util.Arrays;
-import java.util.Calendar;
+import org.ambraproject.wombat.config.site.Site;
 
-public class LockssService {
+import java.io.IOException;
 
-  private static final String MONTHS[] = {"January", "February", "March", "April", "May", "June", "July",
-      "September", "October", "November", "December"};
+/**
+ * Responsible for returning the DOIs of article published in a given year and month
+ */
+public interface LockssService {
 
-  public String[] getMonthsForYear(String requestedYear) {
-    int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-    if (Integer.parseInt(requestedYear) < currentYear) {
-      return MONTHS;
-    } else if (Integer.parseInt(requestedYear) == currentYear) {
-      // Months are 0-based on Calendar
-      int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
-      String[] months = Arrays.copyOf(MONTHS, currentMonth + 1);
-      return months;
-    }
-    return null;
-  }
+  /**
+   *
+   * @param requestedYear
+   * @return
+   */
+  public abstract String[] getMonthsForYear(String requestedYear);
+
+  /**
+   *
+   * @param site
+   * @param year
+   * @param month
+   * @return
+   * @throws IOException
+   */
+  public abstract String[] getArticleDoisPerMonth(Site site, String year, String month) throws IOException;
+
 }

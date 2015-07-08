@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;

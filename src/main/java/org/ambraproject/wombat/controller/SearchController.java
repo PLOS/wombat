@@ -16,6 +16,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;

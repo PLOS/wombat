@@ -5,9 +5,14 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteMapping;
+import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RecentArticleService;
+import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.util.CacheParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +44,9 @@ public class HomeController extends WombatController {
 
   @Autowired
   private RecentArticleService recentArticleService;
+
+  @Autowired
+  private EditorialContentService editorialContentService;
 
   /**
    * Extract {@code docs} element; rename {@code "id"} to {@code "doi"} to match the service API.
@@ -181,6 +189,7 @@ public class HomeController extends WombatController {
     }
   }
 
+  @SiteMapping(excluded={"DesktopPlosCollections"})
   @RequestMapping(value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
   public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam(value = "section", required = false) String sectionParam,
@@ -234,6 +243,29 @@ public class HomeController extends WombatController {
 
     model.addAttribute("sections", sectionsForModel);
     return site.getKey() + "/ftl/home/home";
+  }
+
+  /**
+   * Home controller for PLOS Collections (which uses site content with a reserved slug called "homepage")
+   * NOTE: This is a temporary solution until DPRO-1238 is completed this sprint
+   * TODO: specify SiteContentController and "/" namespace for DesktopPlosCollections in wombat.yaml config
+   */
+  @Deprecated
+  @SiteMapping(value={"DesktopPlosCollections"})
+  @RequestMapping(value = "/", method = RequestMethod.GET)
+  public String tempCollectionsHome(Model model, @SiteParam Site site) throws IOException {
+    String repoKey = "desktop.collections.s.homepage";
+
+    String cacheKey = "siteContent_meta:" + repoKey;
+
+    try {
+      // Check for validity of the content repo key prior to rendering page. Return a 404 if no object found.
+      editorialContentService.requestMetadata(CacheParams.create(cacheKey), repoKey, Optional.<Integer>absent());
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
+    }
+    model.addAttribute("siteContentRepoKey", repoKey);
+    return site + "/ftl/siteContent/container";
   }
 
   private void populateCurrentIssue(Model model, Site site) throws IOException {

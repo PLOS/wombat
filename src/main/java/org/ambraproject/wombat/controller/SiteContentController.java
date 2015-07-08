@@ -16,6 +16,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
@@ -38,7 +39,7 @@ public class SiteContentController extends WombatController {
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(value = {"/s/{pageName}", "/{site}/s/{pageName}"})
+  @RequestMapping(value = {"/t/{pageName}", "/s/{pageName}", "/{site}/s/{pageName}"})
   public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 

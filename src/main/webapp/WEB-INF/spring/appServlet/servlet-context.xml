@@ -13,22 +13,6 @@
 
   <beans:bean class="org.ambraproject.wombat.config.SpringConfiguration" />
 
-  <!-- Define a default controller that handles all requests not matched by any other
-       controller.  This controller serves the 404 page.  We have to do it this way,
-       instead of using the error-page directive in web.xml, because we want to preserve
-       any site path variable present so we can render the 404 page with site-specific styling.  -->
-  <beans:bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-    <beans:property name="defaultHandler" ref="notFoundController"/>
-  </beans:bean>
-
-  <!-- Enables the Spring MVC @Controller programming model -->
-  <annotation-driven>
-    <argument-resolvers>
-      <beans:bean class="org.ambraproject.wombat.controller.SiteResolver" />
-    </argument-resolvers>
-  </annotation-driven>
-
-  <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-  <resources mapping="/resources/**" location="/resources/"/>
+  <beans:bean class="org.ambraproject.wombat.config.SpringMvcConfiguration" />
 
 </beans:beans>

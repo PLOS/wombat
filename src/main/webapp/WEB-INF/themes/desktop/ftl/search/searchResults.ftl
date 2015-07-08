@@ -42,8 +42,7 @@
             <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}" value="${query}" required />
             <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
           </fieldset>
-          <a id="advancedSearchButton" class="search-results-button-hover-branded"
-            href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${query}&noSearchFlag=set">advanced</a>
+          <a class="search-results-button-hover-branded" href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">advanced</a>
         </div>
 
         <div class="search-results-controls-second-row">

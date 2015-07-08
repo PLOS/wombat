@@ -148,6 +148,18 @@ public class SiteSet {
     return sites.keySet();
   }
 
+  /**
+   * @return a set of all journal keys for this SiteSet.  Note that there may be fewer of
+   *     these than siteKeys, since a journal can have multiple sites.
+   */
+  public ImmutableSet<String> getJournalKeys() {
+    ImmutableSet.Builder<String> result = ImmutableSet.builder();
+    for (Site site : sites.values()) {
+      result.add(site.getJournalKey());
+    }
+    return result.build();
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

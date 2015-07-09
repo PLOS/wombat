@@ -116,6 +116,6 @@ public interface SearchService {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> getHomePageArticles(String journalKey, int start,
-      int rows, SearchCriterion sortOrder) throws IOException;
+  public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows,
+      SearchCriterion sortOrder) throws IOException;
 }

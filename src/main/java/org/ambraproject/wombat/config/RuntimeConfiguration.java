@@ -17,6 +17,7 @@ import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * Interface that represents configurable values that are only known at server startup time.
@@ -110,4 +111,8 @@ public interface RuntimeConfiguration {
   }
 
   CasConfiguration getCasConfiguration();
+
+  HandlerMappingConfiguration getHandlerMappingConfiguration();
+
+
 }

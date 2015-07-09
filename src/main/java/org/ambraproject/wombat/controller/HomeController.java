@@ -5,7 +5,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteMapping;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RecentArticleService;
@@ -189,7 +188,6 @@ public class HomeController extends WombatController {
     }
   }
 
-  @SiteMapping(excluded={"DesktopPlosCollections"})
   @RequestMapping(value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
   public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam(value = "section", required = false) String sectionParam,
@@ -251,7 +249,6 @@ public class HomeController extends WombatController {
    * TODO: specify SiteContentController and "/" namespace for DesktopPlosCollections in wombat.yaml config
    */
   @Deprecated
-  @SiteMapping(value={"DesktopPlosCollections"})
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String tempCollectionsHome(Model model, @SiteParam Site site) throws IOException {
     String repoKey = "desktop.collections.s.homepage";

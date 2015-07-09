@@ -1,12 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteMapping;
-import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.EditorialContentService;
-import org.ambraproject.wombat.util.CacheParams;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +36,6 @@ public class RootController extends WombatController {
    * page is more useful than an error message. But all end-user-facing pages should belong to one of the sites in
    * {@code siteSet}.
    */
-  @SiteMapping(excluded={"DesktopPlosCollections"}) // temporary (see tempCollectionsHome in HomeController)
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String home(Model model) throws Exception {
     model.addAttribute("siteKeys", siteSet.getSiteKeys());

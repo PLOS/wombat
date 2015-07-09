@@ -4,19 +4,15 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.SimpleTimeZone;
-import java.util.TimeZone;
 
-public class LockssServiceImpl implements LockssService {
+public class ArticleArchiveServiceImpl implements ArticleArchiveService {
 
   private static final String MONTHS[] = new DateFormatSymbols().getMonths();
 

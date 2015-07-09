@@ -16,5 +16,6 @@
         </#list>
       </ul>
     </#if>
+  <#include "permission.ftl" />
   </body>
 </html>

@@ -40,6 +40,7 @@ import org.ambraproject.wombat.freemarker.asset.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.asset.JsDirective;
 import org.ambraproject.wombat.freemarker.asset.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.asset.RenderJsDirective;
+import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -48,7 +49,6 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
-import org.ambraproject.wombat.service.LockssServiceImpl;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
@@ -218,8 +218,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public LockssServiceImpl lockssService() {
-    return new LockssServiceImpl();
+  public ArticleArchiveServiceImpl articleArchiveService() {
+    return new ArticleArchiveServiceImpl();
   }
 
 }

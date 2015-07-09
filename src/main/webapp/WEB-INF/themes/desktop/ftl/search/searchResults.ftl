@@ -131,6 +131,16 @@
               </span>
             </#if>
             <p class="search-results-doi">${doc.id}</p>
+            <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
+              <div class="search-results-eoc">
+                <span></span>
+                <#if doc.retraction?length gt 0>
+                  <a href="article?id=${doc.retraction}">This article has been retracted.</a>
+                <#else>
+                  <a href="article?id=${doc.id}">View Expression of Concern</a>
+                </#if>
+              </div>
+            </#if>
             <div class="search-results-alm-container">
               <p class="search-results-alm-loading">
                 Loading metrics information...
@@ -148,16 +158,6 @@
                 </span>Metrics unavailable. Please check back later.
               </p>
             </div>
-            <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
-              <div class="search-results-eoc">
-                <span></span>
-                <#if doc.retraction?length gt 0>
-                  <a href="article?id=${doc.retraction}">This article has been retracted.</a>
-                <#else>
-                  <a href="article?id=${doc.id}">View Expression of Concern</a>
-                </#if>
-              </div>
-            </#if>
           </dd>
         </#list>
       </dl>

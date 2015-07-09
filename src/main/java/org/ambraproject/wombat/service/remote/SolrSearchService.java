@@ -224,9 +224,9 @@ public class SolrSearchService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys,  List<String> articleTypes,
+  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys,
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
+    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder,
         dateRange, false);
     params.add(new BasicNameValuePair("q", "*:*"));
     params.add(new BasicNameValuePair("fq", String.format("subject:\"%s\"", subject)));
@@ -237,9 +237,9 @@ public class SolrSearchService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> authorSearch(String author, List<String> journalKeys,  List<String> articleTypes,
+  public Map<?, ?> authorSearch(String author, List<String> journalKeys,
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder, dateRange, false);
+    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
     params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
     return executeQuery(params);
   }
@@ -247,11 +247,18 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows,
       SearchCriterion sortOrder) throws IOException {
-    ArrayList<String> articleTypes = new ArrayList<>(); //empty for homepage articles
-    List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey),
-      articleTypes, start, rows, sortOrder, SolrEnumeratedDateRange.ALL_TIME, true);
+    List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey), start,
+        rows, sortOrder, SolrEnumeratedDateRange.ALL_TIME, true);
     params.add(new BasicNameValuePair("q", "*:*"));
     return executeQuery(params);
+  }
+
+  //Override for buildCommonParams with no article types
+  @VisibleForTesting
+  List<NameValuePair> buildCommonParams(List<String> journalKeys, int start, int rows,
+      SearchCriterion sortOrder, SearchCriterion dateRange, boolean forHomePage) {
+    return buildCommonParams(journalKeys, new ArrayList<String>(), start, rows, sortOrder,
+        dateRange, forHomePage);
   }
 
   /**

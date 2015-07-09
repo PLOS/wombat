@@ -144,8 +144,8 @@ public class SearchController extends WombatController {
     model.addAttribute("selectedDateRange", dateRange);
     model.addAttribute("selectedResultsPerPage", resultsPerPage);
 
-    Boolean isFiltered = !filterJournalNames.isEmpty() || dateRange != SolrSearchService.SolrEnumeratedDateRange.ALL_TIME
-        || !subjectList.isEmpty() || !articleTypes.isEmpty();
+    boolean isFiltered = !filterJournalNames.isEmpty() || !subjectList.isEmpty()
+        || !articleTypes.isEmpty() || dateRange != SolrSearchService.SolrEnumeratedDateRange.ALL_TIME;
     model.addAttribute("isFiltered", isFiltered);
 
     Map<?, ?> searchResults;
@@ -153,11 +153,11 @@ public class SearchController extends WombatController {
       searchResults = searchService.advancedSearch(unformattedQuery, journals, articleTypes, start,
           resultsPerPage, sortOrder);
     } else if (!Strings.isNullOrEmpty(subject)) {
-      searchResults = searchService.subjectSearch(subject, journals, articleTypes, start,
-          resultsPerPage, sortOrder, dateRange);
+      searchResults = searchService.subjectSearch(subject, journals, start, resultsPerPage,
+          sortOrder, dateRange);
     } else if (!Strings.isNullOrEmpty(author)) {
-      searchResults = searchService.authorSearch(author, journals, articleTypes, start,
-          resultsPerPage, sortOrder, dateRange);
+      searchResults = searchService.authorSearch(author, journals, start, resultsPerPage, sortOrder,
+          dateRange);
     } else {
       searchResults = searchService.simpleSearch(query, journals, articleTypes, start,
           resultsPerPage, sortOrder, dateRange);

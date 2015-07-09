@@ -79,7 +79,6 @@ public interface SearchService {
    *
    * @param subject   taxonomy term the search will be restricted to
    * @param journalKeys list of the journals in which to search
-   * @param articleTypes types of articles in which to search
    * @param start     starting result, zero-based.  0 will start at the first result.
    * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
@@ -87,7 +86,7 @@ public interface SearchService {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys, List<String> articleTypes,
+  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys,
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
@@ -95,7 +94,6 @@ public interface SearchService {
    *
    * @param author    full or partial author name
    * @param journalKeys list of the journals in which to search
-   * @param articleTypes types of articles in which to search
    * @param start     starting result, zero-based.  0 will start at the first result.
    * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
@@ -103,8 +101,8 @@ public interface SearchService {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> authorSearch(String author, List<String> journalKeys, List<String> articleTypes,
-      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
+  public Map<?, ?> authorSearch(String author, List<String> journalKeys, int start, int rows,
+      SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
    * Retrieves articles for display on a journal home page, where there is no actual query.

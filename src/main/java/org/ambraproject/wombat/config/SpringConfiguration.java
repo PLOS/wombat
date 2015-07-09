@@ -40,6 +40,7 @@ import org.ambraproject.wombat.freemarker.asset.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.asset.JsDirective;
 import org.ambraproject.wombat.freemarker.asset.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.asset.RenderJsDirective;
+import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -214,6 +215,11 @@ public class SpringConfiguration {
   @Bean
   public PowerPointService powerPointService() {
     return new PowerPointServiceImpl();
+  }
+
+  @Bean
+  public ArticleArchiveServiceImpl articleArchiveService() {
+    return new ArticleArchiveServiceImpl();
   }
 
 }

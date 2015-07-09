@@ -17,6 +17,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.Site;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
@@ -149,6 +150,10 @@ public class SolrSearchService implements SearchService {
       endCal.setTimeZone(TimeZone.getTimeZone("UTC"));
 
       SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+      // getValue() method uses DatatypeConverter.printDateTime to convert the calendar object to a string.
+      // However, this method uses the local time zone. Setting the time zone for the Calendar object doesn't
+      // enforce UTC in the result of the printDateTime method but setting it in the simpleDateFormat does.
+      simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
       try {
         startCal.setTime(simpleDateFormat.parse(startDate));
         endCal.setTime(simpleDateFormat.parse(endDate));

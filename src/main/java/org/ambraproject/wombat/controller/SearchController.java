@@ -26,6 +26,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,6 +51,7 @@ public class SearchController extends WombatController {
   /**
    * Performs a search.
    *
+   * @param request the incoming request
    * @param model information to be sent to the template
    * @param site the current site
    * @param query "simple search" query.  This word or phrase will be searched against all
@@ -76,7 +78,7 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(value = {"/search", "/{site}/search"})
-  public String search(Model model, @SiteParam Site site,
+  public String search(HttpServletRequest request, Model model, @SiteParam Site site,
                        @RequestParam(value = "q", required = false) String query,
                        @RequestParam(value = "unformattedQuery", required = false) String unformattedQuery,
                        @RequestParam(value = "subject", required = false) String subject,
@@ -162,6 +164,12 @@ public class SearchController extends WombatController {
           sortOrder, dateRange);
     }
     model.addAttribute("searchResults", searchResults);
+
+    // We pass in the request parameters here, because they are needed by paging.ftl.
+    // The normal way to get request parameters from a freemarker template is to use the
+    // RequestParameters variable, but due to a bug in freemarker, this does not handle
+    // multi-valued parameters correctly.  See http://sourceforge.net/p/freemarker/bugs/324/
+    model.addAttribute("parameterMap", request.getParameterMap());
     return site.getKey() + "/ftl/search/searchResults";
   }
 

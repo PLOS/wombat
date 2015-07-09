@@ -4,6 +4,7 @@
      numPages: total number of results pages
      currentPage: the current page (1-based)
      path: the URL path that clicks on the paging links will be sent to
+     parameterMap: Map<String, String[]> of all request parameters to their value.
 
      A request parameter named "page" will be added to any requests generated when
      clicking on the paging links.                                              -->
@@ -18,7 +19,7 @@
     <#-- TODO: this should really be a span, not an a, but that messes up the styling right now. -->
     <a class="${linkClass}" data-page="${i}">${i}</a>
     <#else>
-    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=i />" class="${linkClass}"
+    <a href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=i />" class="${linkClass}"
        data-page="${i}">${i}</a>
     </#if>
   </#list>
@@ -33,7 +34,7 @@
 <#if numPages gt 1>
 <nav id="article-pagination" class="nav-pagination">
   <#if currentPage gt 1>
-    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage - 1 />"
+    <a href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage - 1 />"
        class="previous-page switch"><span class="icon"></span><span class="icon-text">Previous Page</span>
     </a>
   </#if>
@@ -55,7 +56,7 @@
     </#if>
   </#if>
   <#if currentPage lt numPages>
-    <a href="${path}?<@replaceParams params=RequestParameters name="page" value=currentPage + 1 />" class="next-page switch">
+    <a href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage + 1 />" class="next-page switch">
       <span class="icon"></span><span class="icon-text">Next Page</span>
     </a>
   </#if>

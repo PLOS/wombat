@@ -1,11 +1,11 @@
 (function ($) {
 
-  function handleUndefinedMetric(metric) {
-    return metric == undefined ? 'None' : metric;
+  function handleUndefinedOrZeroMetric(metric) {
+    return metric == undefined || metric == 0 ? 'None' : metric;
   }
 
   function appendOrRemoveLink(link, metric) {
-    metric = handleUndefinedMetric(metric);
+    metric = handleUndefinedOrZeroMetric(metric);
     if (metric == 'None') {
       link.html(link.html() + ' ' + metric);
       link.contents().unwrap();

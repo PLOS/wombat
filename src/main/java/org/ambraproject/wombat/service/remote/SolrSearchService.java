@@ -193,9 +193,10 @@ public class SolrSearchService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> simpleSearch(String query, List<String> journalKeys, int start, int rows, SearchCriterion sortOrder,
-                                SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
+  public Map<?, ?> simpleSearch(String query, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
+        dateRange, false);
 
     // TODO: escape/quote the q param if needed.
     if (Strings.isNullOrEmpty(query)) {
@@ -211,9 +212,10 @@ public class SolrSearchService implements SearchService {
   }
 
   @Override
-  public Map<?, ?> advancedSearch(String query, List<String> journalKeys, int start, int rows,
-      SearchCriterion sortOrder) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, null, false);
+  public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder) throws IOException {
+    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
+        null, false);
     params.add(new BasicNameValuePair("q", query));
     return executeQuery(params);
   }
@@ -222,9 +224,10 @@ public class SolrSearchService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys, int start, int rows,
-      SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
+  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys,  List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
+        dateRange, false);
     params.add(new BasicNameValuePair("q", "*:*"));
     params.add(new BasicNameValuePair("fq", String.format("subject:\"%s\"", subject)));
     return executeQuery(params);
@@ -234,18 +237,19 @@ public class SolrSearchService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> authorSearch(String author, List<String> journalKeys, int start, int rows, SearchCriterion sortOrder,
-                                SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
+  public Map<?, ?> authorSearch(String author, List<String> journalKeys,  List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder, dateRange, false);
     params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
     return executeQuery(params);
   }
 
   @Override
-  public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows, SearchCriterion sortOrder)
-      throws IOException {
-    List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey), start, rows, sortOrder,
-        SolrEnumeratedDateRange.ALL_TIME, true);
+  public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows,
+      SearchCriterion sortOrder) throws IOException {
+    ArrayList<String> articleTypes = new ArrayList<>(); //empty for homepage articles
+    List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey),
+      articleTypes, start, rows, sortOrder, SolrEnumeratedDateRange.ALL_TIME, true);
     params.add(new BasicNameValuePair("q", "*:*"));
     return executeQuery(params);
   }
@@ -254,6 +258,7 @@ public class SolrSearchService implements SearchService {
    * Populates the SOLR parameters with values used across all searchs in the application.
    *
    * @param journalKeys names of the journals in which to search.
+   * @param articleTypes types of articles in which to search. An empty list will search all article types.
    * @param start       starting result, zero-based.  0 will start at the first result.
    * @param rows        max number of results to return
    * @param sortOrder   specifies the desired ordering for results
@@ -263,8 +268,8 @@ public class SolrSearchService implements SearchService {
    * @return populated list of parameters
    */
   @VisibleForTesting
-  List<NameValuePair> buildCommonParams(List<String> journalKeys, int start, int rows,
-      SearchCriterion sortOrder, SearchCriterion dateRange, boolean forHomePage) {
+  List<NameValuePair> buildCommonParams(List<String> journalKeys, List<String> articleTypes, int start, int rows,
+        SearchCriterion sortOrder, SearchCriterion dateRange, boolean forHomePage) {
 
     // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
     // This is the easiest way I found...
@@ -300,6 +305,14 @@ public class SolrSearchService implements SearchService {
       crossPublishedJournals.add("cross_published_journal_key:" + journalKey);
     }
     params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
+
+    if (articleTypes != null && !articleTypes.isEmpty()) {
+      List<String> articleTypeQueryList = new ArrayList<>();
+      for (String articleType : articleTypes) {
+        articleTypeQueryList.add("article_type_facet:\"" + articleType + "\"");
+      }
+      params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
+    }
 
     return params;
   }

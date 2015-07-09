@@ -47,6 +47,7 @@ public interface SearchService {
    * @param query     term we are searching for.  If this is null, all articles will be returned (modulo sortOrder,
    *                  start, rows, and dateRange).
    * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
    * @param start     starting result, zero-based.  0 will start at the first result.
    * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
@@ -54,8 +55,8 @@ public interface SearchService {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> simpleSearch(String query, List<String> journalKeys, int start, int rows, SearchCriterion sortOrder,
-                                SearchCriterion dateRange) throws IOException;
+  public Map<?, ?> simpleSearch(String query, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
    * Performs an "advanced search": the query parameter will be directly parsed by solr.
@@ -63,20 +64,22 @@ public interface SearchService {
    * @param query specifies the solr fields and the values we are searching for; may be a boolean
    *     combination of these.  Example: "(abstract:gene) AND author:smith".
    * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
    * @param start starting result, zero-based.  0 will start at the first result.
    * @param rows max number of results to return
    * @param sortOrder specifies the desired ordering for results
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> advancedSearch(String query, List<String> journalKeys, int start, int rows,
-      SearchCriterion sortOrder) throws IOException;
+  public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder) throws IOException;
 
   /**
    * Performs a search by the subject fields.
    *
    * @param subject   taxonomy term the search will be restricted to
    * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
    * @param start     starting result, zero-based.  0 will start at the first result.
    * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
@@ -84,14 +87,15 @@ public interface SearchService {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys, int start, int rows, SearchCriterion sortOrder,
-                                 SearchCriterion dateRange) throws IOException;
+  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
    * Performs a search for an author's name.
    *
    * @param author    full or partial author name
    * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
    * @param start     starting result, zero-based.  0 will start at the first result.
    * @param rows      max number of results to return
    * @param sortOrder specifies the desired ordering for results
@@ -99,8 +103,8 @@ public interface SearchService {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> authorSearch(String author, List<String> journalKeys, int start, int rows, SearchCriterion sortOrder,
-                                SearchCriterion dateRange) throws IOException;
+  public Map<?, ?> authorSearch(String author, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
    * Retrieves articles for display on a journal home page, where there is no actual query.
@@ -112,6 +116,6 @@ public interface SearchService {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows, SearchCriterion sortOrder)
-      throws IOException;
+  public Map<?, ?> getHomePageArticles(String journalKey, int start,
+      int rows, SearchCriterion sortOrder) throws IOException;
 }

@@ -91,10 +91,10 @@ public class SearchController extends WombatController {
                        @RequestParam(value = "resultsPerPage", required = false, defaultValue = "15")
                        Integer resultsPerPage,
                        @RequestParam(value = "filterJournals", required = false) List<String> journals,
-                       @RequestParam(value = "filterSubjects", required = false) List<String> subjects)
+                       @RequestParam(value = "filterSubjects", required = false) List<String> subjects,
+                       @RequestParam(value = "filterArticleTypes", required = false) List<String> articleTypes)
           throws IOException {
 
-    journals = parseJournals(site, journals, unformattedQuery);
     if (query == null) {
       log.warn("Received search request in {} with null query param (possible apache rewrite issue)", site);
       // May be due to apache rewrite config issue which needs attention. Meanwhile, set query to
@@ -112,24 +112,14 @@ public class SearchController extends WombatController {
       sortOrder = SolrSearchService.SolrSortOrder.valueOf(sortOrderParam);
     }
 
-    //Mobile search only provides the enumerated dateRangeParam field, while desktop search provides
-    //explicit fields for start and end dates. The parameters are mutually exclusive.
-    SearchService.SearchCriterion dateRange = SolrSearchService.SolrEnumeratedDateRange.ALL_TIME;
-    SolrSearchService.SolrEnumeratedDateRange enumeratedDateRange
-        = SolrSearchService.SolrEnumeratedDateRange.ALL_TIME;
-    if (!Strings.isNullOrEmpty(dateRangeParam)) {
-      dateRange = SolrSearchService.SolrEnumeratedDateRange.valueOf(dateRangeParam);
-    } else if (!Strings.isNullOrEmpty(startDate) && !Strings.isNullOrEmpty(endDate)) {
-      dateRange = new SolrSearchService.SolrExplicitDateRange("explicit date range", startDate,
-          endDate);
-    }
+    SearchService.SearchCriterion dateRange = parseDateRange(dateRangeParam, startDate, endDate);
 
+    journals = parseJournals(site, journals, unformattedQuery);
     //Journal name is identical between mobile and desktop sites, so the first site matched is sufficient
     Set<String> filterJournalNames = new HashSet<>();
     for (String journalKey : journals) {
       filterJournalNames.add(siteSet.getSites(journalKey).get(0).getJournalName());
     }
-
     model.addAttribute("filterJournalNames", filterJournalNames);
 
     //TODO: split or share model assignments between mobile and desktop
@@ -144,24 +134,33 @@ public class SearchController extends WombatController {
     model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
     model.addAttribute("dateRanges", SolrSearchService.SolrEnumeratedDateRange.values());
 
+    articleTypes = articleTypes == null ? new ArrayList<String>() : articleTypes;
+    model.addAttribute("filterArticleTypes", articleTypes);
+
     // TODO: bind sticky form params using Spring MVC support for Freemarker.  I think we have to add
     // some more dependencies to do this.  See
     // http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/view.html#view-velocity
     model.addAttribute("selectedSortOrder", sortOrder);
-    model.addAttribute("selectedDateRange", enumeratedDateRange);
+    model.addAttribute("selectedDateRange", dateRange);
     model.addAttribute("selectedResultsPerPage", resultsPerPage);
+
+    Boolean isFiltered = !filterJournalNames.isEmpty() || dateRange != SolrSearchService.SolrEnumeratedDateRange.ALL_TIME
+        || !subjectList.isEmpty() || !articleTypes.isEmpty();
+    model.addAttribute("isFiltered", isFiltered);
 
     Map<?, ?> searchResults;
     if (!Strings.isNullOrEmpty(unformattedQuery)) {
-      searchResults = searchService.advancedSearch(unformattedQuery, journals, start, resultsPerPage, sortOrder);
+      searchResults = searchService.advancedSearch(unformattedQuery, journals, articleTypes, start,
+          resultsPerPage, sortOrder);
     } else if (!Strings.isNullOrEmpty(subject)) {
-      searchResults = searchService.subjectSearch(subject, journals, start, resultsPerPage, sortOrder, dateRange);
+      searchResults = searchService.subjectSearch(subject, journals, articleTypes, start,
+          resultsPerPage, sortOrder, dateRange);
     } else if (!Strings.isNullOrEmpty(author)) {
-      searchResults = searchService.authorSearch(author, journals, start, resultsPerPage,
-          sortOrder, dateRange);
+      searchResults = searchService.authorSearch(author, journals, articleTypes, start,
+          resultsPerPage, sortOrder, dateRange);
     } else {
-      searchResults = searchService.simpleSearch(query, journals, start, resultsPerPage,
-          sortOrder, dateRange);
+      searchResults = searchService.simpleSearch(query, journals, articleTypes, start,
+          resultsPerPage, sortOrder, dateRange);
     }
     model.addAttribute("searchResults", searchResults);
 
@@ -171,6 +170,27 @@ public class SearchController extends WombatController {
     // multi-valued parameters correctly.  See http://sourceforge.net/p/freemarker/bugs/324/
     model.addAttribute("parameterMap", request.getParameterMap());
     return site.getKey() + "/ftl/search/searchResults";
+  }
+
+  /**
+   * Determines which publication dates to filter by in the search.
+   * If no dates are input, a default date range of All Time will be used.
+   * Mobile search only provides the enumerated dateRangeParam field, while desktop search provides
+   * explicit fields for start and end dates. The parameters are mutually exclusive.
+   * @param dateRangeParam mobile date range enumeration value
+   * @param startDate desktop start date value
+   * @param endDate desktop end date value
+   * @return A generic @SearchCriterion object used by Solr
+   */
+  private SearchService.SearchCriterion parseDateRange(String dateRangeParam, String startDate, String endDate) {
+    SearchService.SearchCriterion dateRange = SolrSearchService.SolrEnumeratedDateRange.ALL_TIME;
+    if (!Strings.isNullOrEmpty(dateRangeParam)) {
+      dateRange = SolrSearchService.SolrEnumeratedDateRange.valueOf(dateRangeParam);
+    } else if (!Strings.isNullOrEmpty(startDate) && !Strings.isNullOrEmpty(endDate)) {
+      dateRange = new SolrSearchService.SolrExplicitDateRange("explicit date range", startDate,
+          endDate);
+    }
+    return dateRange;
   }
 
   /**
@@ -199,7 +219,12 @@ public class SearchController extends WombatController {
   }
 
   //TODO: allow filtering by multiple subjects
-  //subject is a mobile-only parameter, while subjects is a desktop-only parameter
+  /**
+   * subject is a mobile-only parameter, while subjects is a desktop-only parameter
+   * @param subject mobile subject area value
+   * @param subjects desktop list of subject area values
+   * @return String subject if subjects is null or empty else return subjects[0]
+   */
   private String parseSubjects(String subject, List<String> subjects) {
     if (Strings.isNullOrEmpty(subject) && subjects != null && subjects.size() > 0
         && !Strings.isNullOrEmpty(subjects.get(0))) {

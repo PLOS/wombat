@@ -12,6 +12,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -33,9 +34,10 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
 
   @Test
   public void testBuildCommonParams() {
+    List<String> articleTypes = new ArrayList<>();
 
     // Single journal
-    List<NameValuePair> actual = searchService.buildCommonParams(Collections.singletonList("foo"), 0, 10,
+    List<NameValuePair> actual = searchService.buildCommonParams(Collections.singletonList("foo"), articleTypes, 0, 10,
         SolrSearchService.SolrSortOrder.MOST_CITED, SolrSearchService.SolrEnumeratedDateRange.LAST_6_MONTHS, true);
     SetMultimap<String, String> actualMap = convertToMap(actual);
     assertCommonParams(actualMap, 4);
@@ -48,7 +50,7 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     assertJournals(actualMap.get("fq"), "foo");
 
     // Multiple journals
-    actual = searchService.buildCommonParams(Arrays.asList("foo", "bar", "blaz"), 20, 25,
+    actual = searchService.buildCommonParams(Arrays.asList("foo", "bar", "blaz"), articleTypes, 20, 25,
         SolrSearchService.SolrSortOrder.RELEVANCE, SolrSearchService.SolrEnumeratedDateRange.ALL_TIME, false);
     actualMap = convertToMap(actual);
     assertCommonParams(actualMap, 3);
@@ -58,7 +60,7 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     assertJournals(actualMap.get("fq"), "foo", "bar", "blaz");
 
     // null date range
-    actual = searchService.buildCommonParams(Collections.singletonList("foo"), 0, 15,
+    actual = searchService.buildCommonParams(Collections.singletonList("foo"), articleTypes, 0, 15,
         SolrSearchService.SolrSortOrder.RELEVANCE, null, false);
     actualMap = convertToMap(actual);
     assertCommonParams(actualMap, 3);
@@ -75,7 +77,7 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     SolrSearchService.SolrExplicitDateRange edr
         = new SolrSearchService.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     List<NameValuePair> actual = searchService.buildCommonParams(Collections.singletonList("foo"),
-        0, 10, SolrSearchService.SolrSortOrder.MOST_CITED, edr, true);
+        new ArrayList<String>(), 0, 10, SolrSearchService.SolrSortOrder.MOST_CITED, edr, true);
     SetMultimap<String, String> actualMap = convertToMap(actual);
     assertCommonParams(actualMap, 4);
     assertSingle(actualMap.get("rows"), "10");
@@ -83,6 +85,24 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     assertSingle(actualMap.get("sort"), "alm_scopusCiteCount desc");
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
+  }
+
+  @Test
+  public void testBuildCommonParams_IncludeArticleTypes() throws IOException {
+    SolrSearchService.SolrExplicitDateRange edr
+        = new SolrSearchService.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    ArrayList<String> articleTypes = new ArrayList<>();
+    articleTypes.add("Research Article");
+    List<NameValuePair> actual = searchService.buildCommonParams(Collections.singletonList("foo"),
+      articleTypes, 0, 10, SolrSearchService.SolrSortOrder.MOST_CITED, edr, true);
+    SetMultimap<String, String> actualMap = convertToMap(actual);
+    assertCommonParams(actualMap, 5);
+    assertSingle(actualMap.get("rows"), "10");
+    assertEquals(actualMap.get("start").size(), 0);
+    assertSingle(actualMap.get("sort"), "alm_scopusCiteCount desc");
+    assertPubDate(actualMap.get("fq"));
+    assertJournals(actualMap.get("fq"), "foo");
+    assertArticleTypes(actualMap.get("fq"));
   }
 
   /**
@@ -129,6 +149,8 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
   private static final Pattern PUB_DATE_RE = Pattern.compile(String.format("publication_date:\\[%s TO %s\\]",
       TIMESTAMP_RE, TIMESTAMP_RE));
 
+  private static final Pattern ARTICLE_TYPE_RE = Pattern.compile(String.format("article_type_facet:\"[A-z ]+\""));
+
   private void assertPubDate(Set<String> actualFq) {
     String pubDate = null;
     for (String s : actualFq) {
@@ -163,5 +185,18 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     for (String expected : expectedJournals) {
       assertTrue(actualJournals.contains(expected));
     }
+  }
+
+  private void assertArticleTypes(Set<String> actualFq) {
+    String articleType = null;
+    for (String s : actualFq) {
+      if (s.startsWith("article_type_facet:")) {
+        articleType = s;
+        break;
+      }
+    }
+    assertNotNull(articleType);
+    Matcher matcher = ARTICLE_TYPE_RE.matcher(articleType);
+    assertTrue(matcher.matches());
   }
 }

@@ -63,7 +63,7 @@
         </div>
 
         </div>
-        <#if (filterJournals?size > 0 || (filterStartDate?? && filterEndDate??) || filterSubjects?size > 0)>
+        <#if (isFiltered)>
           <div class="filter-block">
             <#if (filterStartDate??)>
               <div class="filter-item">
@@ -81,6 +81,13 @@
               <#list filterSubjects as subject>
                 <div class="filter-item">
                   Subject areas: "${subject}"
+                </div>
+              </#list>
+            </#if>
+            <#if (filterArticleTypes?size > 0)>
+              <#list filterArticleTypes as articleType>
+                <div class="filter-item">
+                  Article Type: "${articleType}"
                 </div>
               </#list>
             </#if>

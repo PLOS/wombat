@@ -189,6 +189,7 @@ $one-half: ($total-columns / 2);
 // body layout
 main,
 #pagehdr{
+  display: block; //apparently MSedge does not treat main as a block level element.
   @include plos-grid-container;
 }
 

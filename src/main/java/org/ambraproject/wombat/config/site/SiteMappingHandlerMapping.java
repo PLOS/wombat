@@ -6,7 +6,14 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.condition.ConsumesRequestCondition;
+import org.springframework.web.servlet.mvc.condition.HeadersRequestCondition;
+import org.springframework.web.servlet.mvc.condition.ParamsRequestCondition;
+import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
+import org.springframework.web.servlet.mvc.condition.ProducesRequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
+import org.springframework.web.servlet.mvc.condition.RequestMethodsRequestCondition;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.lang.reflect.Method;
@@ -40,5 +47,22 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
       return null;
     }
     return new SiteRequestCondition(siteResolver, handlerMappingConfiguration.getValidSites(siteSet, method));
+  }
+
+  @Override
+  /**
+   * Created a RequestMappingInfo from a RequestMapping annotation.
+   */
+  protected RequestMappingInfo createRequestMappingInfo(RequestMapping annotation, RequestCondition<?> customCondition) {
+    String[] patterns = resolveEmbeddedValuesInPatterns(annotation.value());
+    return new RequestMappingInfo(
+            annotation.name(),
+            new PatternsRequestCondition(patterns, null, null, true, true, null),
+            new RequestMethodsRequestCondition(annotation.method()),
+            new ParamsRequestCondition(annotation.params()),
+            new HeadersRequestCondition(annotation.headers()),
+            new ConsumesRequestCondition(annotation.consumes(), annotation.headers()),
+            new ProducesRequestCondition(annotation.produces(), annotation.headers(), null),
+            customCondition);
   }
 }

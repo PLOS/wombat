@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -45,6 +46,13 @@ public class HandlerMappingConfiguration {
     return ImmutableSet.copyOf(Sets.difference(
             includedSites != null ? ImmutableSet.copyOf(includedSites) : siteSet.getSiteKeys(),
             excludedSites != null ? ImmutableSet.copyOf(excludedSites) : ImmutableSet.of()));
+  }
+
+  public ImmutableMap<String, ImmutableSet<String>> getValidPatterns(SiteSet siteSet, Method method) {
+    String handlerName = getHandlerName(method);
+    if (!hasSiteMapping(method)) {
+      return siteSet.getSiteKeys();
+    }
   }
 
   private String getHandlerName(Method method) {

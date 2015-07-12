@@ -18,7 +18,7 @@ public class HandlerMappingConfiguration {
   private static final String KEYNAME_EXCLUDESITES = "excludeSites";
   private static final String KEYNAME_PATTERNS = "patterns";
   private static final String KEYNAME_EXCLUDEPATTERNS = "excludePatterns";
-  private static final String KEYNAME_SITEPATTERNS = "sitePatterns";
+  private static final String KEYNAME_SITEOVERRIDES = "siteOverrides";
 
   private Map<String, Map<String, ?>> handlerMapping;
 
@@ -28,34 +28,19 @@ public class HandlerMappingConfiguration {
 
   public ImmutableSet<String> getValidPatternsForSite(String siteKey, SiteSet siteSet, Method method) {
 
-    String handlerName = getHandlerName(method);
     Set<String> validSites = getValidSites(siteSet, method);
     if (!validSites.contains(siteKey)) {
       return ImmutableSet.of();
     }
 
     ImmutableSet<String> sharedPatterns = getSharedPatterns(method);
-    if (!hasSitePatternsMapping(method)) {
+    if (!hasSiteOverrides(method)) {
       return sharedPatterns;
     }
 
-    // iterate through the site-pattern mappings and accumulate patterns for the given site
-    List<Map<String, List<String>>> sitePatternMappings =
-      (List<Map<String, List<String>>>) handlerMapping.get(handlerName).get(KEYNAME_SITEPATTERNS);
-
-    Set<String> includedPatterns = new HashSet<>();
-    Set<String> excludedPatterns = new HashSet<>();
-    for (Map<String, List<String>> siteMapping : sitePatternMappings) {
-      if (siteMapping.get(KEYNAME_SITES) == null) {
-        throw new RuntimeConfigurationException(
-                String.format("HandlerMappingConfiguration ERROR: Site-patterns handler mapping for " +
-                                "method \"%s\" must include a \"%s\" key value", handlerName, KEYNAME_SITES));
-      }
-      if ((siteMapping.get(KEYNAME_SITES)).contains(siteKey)) {
-        siteMapping.get(KEYNAME_PATTERNS)
-      }
-    }
-
+    return ImmutableSet.copyOf(Sets.difference(
+            Sets.union(sharedPatterns, getSiteOverride(method, siteKey, KEYNAME_PATTERNS)),
+            getSiteOverride(method, siteKey, KEYNAME_EXCLUDEPATTERNS)));
   }
 
   private boolean hasSiteMapping(Method method) {
@@ -64,10 +49,10 @@ public class HandlerMappingConfiguration {
             handlerMapping.get(handlerName).get(KEYNAME_EXCLUDESITES) != null));
   }
 
-  private boolean hasSitePatternsMapping(Method method) {
+  private boolean hasSiteOverrides(Method method) {
     String handlerName = getHandlerName(method);
     return handlerMapping.get(handlerName) != null &&
-            (handlerMapping.get(handlerName).get(KEYNAME_SITEPATTERNS) != null;
+            handlerMapping.get(handlerName).get(KEYNAME_SITEOVERRIDES) != null;
   }
 
   private boolean hasPatternsMapping(Method method) {
@@ -110,7 +95,6 @@ public class HandlerMappingConfiguration {
 
   }
 
-
   private ImmutableSet<String> getMethodConfig(Method method, String key) {
     return getMethodConfig(method, key, ImmutableSet.<String>of());
   }
@@ -121,20 +105,37 @@ public class HandlerMappingConfiguration {
     return methodVal != null ? ImmutableSet.copyOf(methodVal) : ImmutableSet.copyOf((List<String>)defaultVal);
   }
 
-  private ImmutableSet<String> getSitePatternConfig(Method method, String siteKey, String key) {
+  private ImmutableSet<String> getSiteOverride(Method method, String siteKey, String key) {
     String handlerName = getHandlerName(method);
-    List<Map<String, List<String>>> sitePatternMappings =
-            (List<Map<String, List<String>>>) handlerMapping.get(handlerName).get(KEYNAME_SITEPATTERNS);
+    List<Map<String, List<String>>> siteOverrides =
+            (List<Map<String, List<String>>>) handlerMapping.get(handlerName).get(KEYNAME_SITEOVERRIDES);
 
-    List<String> methodVal = (List<String>) handlerMapping.get(handlerName).get(KEYNAME_SITEPATTERNS);
-    return methodVal != null ? ImmutableSet.copyOf(methodVal) : ImmutableSet.copyOf((List<String>)defaultVal);
+    Set<String> overrideValue = new HashSet<>();
+    for (Map<String, List<String>> siteOverride : siteOverrides) {
+      if (siteOverride.get(KEYNAME_SITES) == null) {
+        throw new RuntimeConfigurationException(
+                String.format("HandlerMappingConfiguration ERROR: Site override handler mappings for " +
+                        "method \"%s\" must all include a \"%s\" key value", handlerName, KEYNAME_SITES));
+      }
+      if ((siteOverride.get(KEYNAME_SITES)).contains(siteKey)) {
+        overrideValue.addAll(siteOverride.get(key));
+      }
+    }
+
+    return ImmutableSet.copyOf(overrideValue);
   }
 
 
   private String getHandlerName(Method method) {
-    String fullClassName = method.getDeclaringClass().getName();
-    String className = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
-    return className + "#" + method.getName();
+    // use name property on associated RequestMapping annotation if present, otherwise, use class#method as name
+    RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
+    if (methodAnnotation !=null && !methodAnnotation.name().isEmpty()) {
+      return methodAnnotation.name();
+    } else {
+      String fullClassName = method.getDeclaringClass().getName();
+      String className = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
+      return className + "#" + method.getName();
+    }
   }
 
 }

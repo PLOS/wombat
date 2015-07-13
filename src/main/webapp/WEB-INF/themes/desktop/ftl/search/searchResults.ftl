@@ -75,6 +75,7 @@
                 <div class="filter-item">
                   ${journalName}
                 </div>
+                <input type="hidden" name="filterJournals" value="${filterJournals[journalName_index]}" />
               </#list>
             </#if>
             <#if (filterSubjects?size > 0)>
@@ -82,6 +83,7 @@
                 <div class="filter-item">
                   Subject areas: "${subject}"
                 </div>
+                <input type="hidden" name="filterSubjects" value="${filterSubjects[subject_index]}" />
               </#list>
             </#if>
             <#if (filterArticleTypes?size > 0)>
@@ -89,11 +91,15 @@
                 <div class="filter-item">
                   Article Type: "${articleType}"
                 </div>
+                <input type="hidden" name="filterArticleTypes" value="${filterArticleTypes[articleType_index]}" />
               </#list>
             </#if>
           </div>
         </#if>
-        <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="15" />
+        <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}" />
+        <#if RequestParameters.page??>
+          <input type="hidden" name="page" value="${RequestParameters.page}" />
+        </#if>
       </form>
     </div>
     <article>

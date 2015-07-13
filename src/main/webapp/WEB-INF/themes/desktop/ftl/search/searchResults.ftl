@@ -34,7 +34,7 @@
 
   <main class="search-results-body">
     <div class="search-results-controls">
-      <form name="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
+      <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
         <div class="search-results-controls-first-row">
           <fieldset>
             <legend>Search</legend>
@@ -93,8 +93,9 @@
             </#if>
           </div>
         </#if>
-      </div>
-    </form>
+        <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="15" />
+      </form>
+    </div>
     <article>
       <#if searchResults.numFound == 0>
         <div class="search-results-none-found">
@@ -179,10 +180,7 @@
         <div class="search-results-num-per-page">
           Results per page
           <div class="search-results-num-per-page-selector">
-
-            <#-- TODO: wire this up so it acutally works.  Waiting to do that until the other
-                 form-related widgets (relevance, date, etc) are present.                     -->
-            <select name="resultsPerPage" id="resultsPerPage" onchange="this.form.submit()">
+            <select name="resultsPerPageDropdown" id="resultsPerPageDropdown">
               <option value="15" <#if (selectedResultsPerPage == 15)>selected="selected"</#if>>15</option>
               <option value="30" <#if (selectedResultsPerPage == 30)>selected="selected"</#if>>30</option>
               <option value="60" <#if (selectedResultsPerPage == 60)>selected="selected"</#if>>60</option>

@@ -46,5 +46,13 @@
     $('#sortOrder').on('change', function() {
       $(this).parents('form').submit();
     });
+
+    $('#resultsPerPageDropdown').on('change', function() {
+
+      // Due to the way the CSS for the page currently works, it's difficult to have the <form>
+      // extend all the way down to this dropdown, so we instead set a hidden field here.
+      $('#resultsPerPage').val($('#resultsPerPageDropdown').val());
+      $('#searchControlBarForm').submit();
+    });
   });
 })(jQuery);

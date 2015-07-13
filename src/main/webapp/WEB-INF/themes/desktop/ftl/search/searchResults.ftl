@@ -83,7 +83,7 @@
                 <div class="filter-item">
                   Subject areas: "${subject}"
                 </div>
-                <input type="hidden" name="filterSubjects" value="${filterSubjects[subject_index]}" />
+                <input type="hidden" name="filterSubjects" value="${subject}" />
               </#list>
             </#if>
             <#if (filterArticleTypes?size > 0)>
@@ -91,7 +91,7 @@
                 <div class="filter-item">
                   Article Type: "${articleType}"
                 </div>
-                <input type="hidden" name="filterArticleTypes" value="${filterArticleTypes[articleType_index]}" />
+                <input type="hidden" name="filterArticleTypes" value="${articleType}" />
               </#list>
             </#if>
           </div>

@@ -227,7 +227,7 @@ public class SearchController extends WombatController {
     if (Strings.isNullOrEmpty(subject) && subjects != null && subjects.size() > 0) {
       return subjects;
     } else {
-      return subject == null ? Collections.singletonList(subject) : new ArrayList<String>();
+      return subject != null ? Collections.singletonList(subject) : new ArrayList<String>();
     }
   }
 }

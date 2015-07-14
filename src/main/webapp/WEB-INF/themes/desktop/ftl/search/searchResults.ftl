@@ -149,7 +149,8 @@
                 </#if>
               </div>
             </#if>
-            <div class="search-results-alm-container">
+            <div>
+<!--
               <p class="search-results-alm-loading">
                 Loading metrics information...
               </p>
@@ -159,6 +160,15 @@
                 <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#savedHeader">Saves: </a> •
                 <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#discussedHeader">Shares: </a>
               </p>
+-->
+              <p>
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#viewedHeader">Views (all time): ${doc.counter_total_all}</a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#viewedHeader">Views (last 30 days): ${doc.counter_total_month}</a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#citedHeader">Citations: ${doc.alm_scopusCiteCount}</a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#savedHeader">Saves: ${doc.alm_citeulikeCount + doc.alm_mendeleyCount}</a> •
+                <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#discussedHeader">Shares: ${doc.alm_twitterCount + doc.alm_facebookCount}</a>
+              </p>
+
               <p class="search-results-alm-error">
                 <span class="fa-stack icon-warning-stack">
                   <i class="fa fa-exclamation fa-stack-1x icon-b"></i>

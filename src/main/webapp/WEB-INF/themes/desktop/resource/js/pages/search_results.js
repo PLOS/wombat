@@ -15,6 +15,7 @@
   }
 
   $(document).ready(function() {
+/*
     $('.search-results-alm').each(function () {
       var $alm = $(this);
       var doi = $alm.data('doi');
@@ -42,7 +43,7 @@
         })
       });
     });
-
+*/
     $('#sortOrder').on('change', function() {
       $(this).parents('form').submit();
     });

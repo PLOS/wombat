@@ -188,8 +188,8 @@ public class SolrSearchService implements SearchService {
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
   private static final String FL = "id,publication_date,title,cross_published_journal_name,author_display,article_type,"
-      + "counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,"
-      + "alm_facebookCount,retraction,expression_of_concern";
+      + "counter_total_all,counter_total_month,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,"
+      + "alm_twitterCount,alm_facebookCount,retraction,expression_of_concern";
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;

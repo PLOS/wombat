@@ -41,7 +41,6 @@ category: components
   @include rounded-pill($padding: $pad-small,  $hover: false);
 }
 
-
 .button {
   @extend %brand-background-hover;
   border-radius: 4px;     //matches production

@@ -22,7 +22,6 @@ These are the files that need to be on each stand alone stylesheet, this is the 
 
 @import "compass";  //an external library of usefull mixins - reset
 @import "variables"; // basic settings for type, size and colors
-@import "icons"; // all the icons
 @import "foundation"; //using the foundation library
 @import "scaffold";  // grids and basic setup
 @import "vendor/font-awesome"; // icons
@@ -30,6 +29,7 @@ These are the files that need to be on each stand alone stylesheet, this is the 
 @import "sprites";   // icons and logos
 @import "utilities"; // mixins and extensible styles specific to wombat and journals
 @import "components"; // wombat and journal specific layout styles for large layouts
+@import "icons"; // all the icons
 @import "forms";      // forms styles
 
 //@import "journal"; //journal-specific  use this when the maven sass compiler is installed

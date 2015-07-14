@@ -1,7 +1,5 @@
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -43,7 +41,7 @@ public class HandlerMappingConfiguration {
             getSiteOverride(method, siteKey, KEYNAME_EXCLUDEPATTERNS)));
   }
 
-  private boolean hasSiteMapping(Method method) {
+  public boolean hasSiteMapping(Method method) {
     String handlerName = getHandlerName(method);
     return handlerMapping.get(handlerName) != null && ((handlerMapping.get(handlerName).get(KEYNAME_SITES) != null ||
             handlerMapping.get(handlerName).get(KEYNAME_EXCLUDESITES) != null));
@@ -61,7 +59,7 @@ public class HandlerMappingConfiguration {
             handlerMapping.get(handlerName).get(KEYNAME_EXCLUDEPATTERNS) != null));
   }
 
-  private ImmutableSet<String> getValidSites(SiteSet siteSet, Method method) {
+  public ImmutableSet<String> getValidSites(SiteSet siteSet, Method method) {
 
     if (!hasSiteMapping(method)) {
       return siteSet.getSiteKeys();
@@ -99,10 +97,10 @@ public class HandlerMappingConfiguration {
     return getMethodConfig(method, key, ImmutableSet.<String>of());
   }
 
-  private ImmutableSet<String> getMethodConfig(Method method, String key, Object defaultVal) {
+  private ImmutableSet<String> getMethodConfig(Method method, String key, Collection<String> defaultVal) {
     String handlerName = getHandlerName(method);
     List<String> methodVal = (List<String>) handlerMapping.get(handlerName).get(key);
-    return methodVal != null ? ImmutableSet.copyOf(methodVal) : ImmutableSet.copyOf((List<String>)defaultVal);
+    return methodVal != null ? ImmutableSet.copyOf(methodVal) : ImmutableSet.copyOf(defaultVal);
   }
 
   private ImmutableSet<String> getSiteOverride(Method method, String siteKey, String key) {

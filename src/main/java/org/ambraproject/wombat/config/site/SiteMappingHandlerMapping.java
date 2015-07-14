@@ -6,6 +6,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.condition.CompositeRequestCondition;
 import org.springframework.web.servlet.mvc.condition.ConsumesRequestCondition;
 import org.springframework.web.servlet.mvc.condition.HeadersRequestCondition;
 import org.springframework.web.servlet.mvc.condition.ParamsRequestCondition;
@@ -15,11 +16,8 @@ import org.springframework.web.servlet.mvc.condition.RequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestMethodsRequestCondition;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-
 import java.lang.reflect.Method;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+
 
 /**
  * Handler mapping class that incorporates custom {@link SiteRequestCondition}
@@ -43,10 +41,14 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
   @Override
   protected RequestCondition<?> getCustomMethodCondition(Method method) {
     RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
-    if (methodAnnotation == null || !handlerMappingConfiguration.hasSiteMapping(method)) {
+    if (methodAnnotation == null) {
       return null;
     }
-    return new SiteRequestCondition(siteResolver, handlerMappingConfiguration.getValidSites(siteSet, method));
+    SiteRequestCondition siteRC = new SiteRequestCondition(siteResolver,
+            handlerMappingConfiguration.getValidSites(siteSet, method));
+    SitePatternsRequestCondition sitePatternsRC = SitePatternsRequestCondition.create(handlerMappingConfiguration,
+            siteSet, siteResolver, method);
+    return new CompositeRequestCondition(siteRC, sitePatternsRC);
   }
 
   @Override

@@ -77,6 +77,21 @@
   // holds the width of the column for animation calculations
   var column_width = null;
 
+  //We must support a click as well as a mousedown hold to scroll through the taxonomy browser
+  //This flag is checked to see if the "click" action can happen
+  var clickIsValid = true;
+
+  //milliseconds allowed after the start of a mousedown event for the click action to fire
+  var delay = 100;
+
+  var clickAnimationSpeed = 300;
+
+  var clickAnimationAmount = 100;
+
+  var dontClick = function(){
+    clickIsValid = false;
+  };
+
   // MAIN FUNCTIONS ==========================================================
 
   /**
@@ -225,6 +240,8 @@
   function handleScrollColumnMousedown(event) {
     event.preventDefault();
 
+    cancelClick = setTimeout( dontClick, delay );
+
     var el = $(event.target);
     var column = el.siblings('.level-scroll');
     var column_height = column.children('ul').height();
@@ -245,7 +262,18 @@
 
     var el = $(event.target);
     var column = el.siblings('.level-scroll');
+
+    clearTimeout(cancelClick);
     column.stop();
+
+    if (clickIsValid) {
+      var y = column.scrollTop();
+      column.animate({
+        'scrollTop': el.hasClass('up') ? y - clickAnimationAmount : y + clickAnimationAmount
+      }, clickAnimationSpeed);
+    }
+
+    clickIsValid = true;
   }
 
   /**
@@ -273,7 +301,6 @@
     var scrollTop = $(this).scrollTop();
     $(this).scrollTop(scrollTop - distance_to_scroll);
   }
-
 
   // UI FUNCTIONS ============================================================
 
@@ -576,7 +603,6 @@
         turnColumnOn($(e.currentTarget));
       });
 
-      // FIXME: should always scroll by a minimum amount
       $levelsPosition.on('mousedown', '.level > a', handleScrollColumnMousedown);
       $levelsPosition.on('mouseup', '.level > a', handleScrollColumnMouseup);
     }

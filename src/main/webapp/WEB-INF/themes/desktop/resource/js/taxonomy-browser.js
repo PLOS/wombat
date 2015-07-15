@@ -384,7 +384,7 @@
 
     var parentTerm = data.parent_term;
     if (parentTerm === '/') {
-      parentTerm = 'All subject areas';
+      parentTerm = 'All Subject Areas';
     }
 
     var markup = [

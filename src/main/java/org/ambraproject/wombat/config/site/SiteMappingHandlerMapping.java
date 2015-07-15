@@ -1,8 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
-import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.HandlerMappingConfiguration;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +15,8 @@ import org.springframework.web.servlet.mvc.condition.RequestMethodsRequestCondit
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -45,9 +45,9 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
       return null;
     }
     SiteRequestCondition siteRC = new SiteRequestCondition(siteResolver,
-            handlerMappingConfiguration.getValidSites(siteSet, method));
+            handlerMappingConfiguration.getValidSites(methodAnnotation, siteSet));
     SitePatternsRequestCondition sitePatternsRC = SitePatternsRequestCondition.create(handlerMappingConfiguration,
-            siteSet, siteResolver, method);
+            methodAnnotation, siteSet, siteResolver);
     return new CompositeRequestCondition(siteRC, sitePatternsRC);
   }
 
@@ -56,7 +56,11 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
    * Created a RequestMappingInfo from a RequestMapping annotation.
    */
   protected RequestMappingInfo createRequestMappingInfo(RequestMapping annotation, RequestCondition<?> customCondition) {
-    String[] patterns = resolveEmbeddedValuesInPatterns(annotation.value());
+    Set<String> allPatterns = new HashSet<>();
+    for (String siteKey: siteSet.getSiteKeys()) {
+      allPatterns.addAll(handlerMappingConfiguration.getValidPatternsForSite(annotation, siteSet, siteKey));
+    }
+    String[] patterns = resolveEmbeddedValuesInPatterns(allPatterns.toArray(new String[allPatterns.size()]));
     return new RequestMappingInfo(
             annotation.name(),
             new PatternsRequestCondition(patterns, null, null, true, true, null),
@@ -67,4 +71,6 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
             new ProducesRequestCondition(annotation.produces(), annotation.headers(), null),
             customCondition);
   }
+
+
 }

@@ -5,10 +5,10 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.HandlerMappingConfiguration;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Method;
 import java.util.Set;
 
 
@@ -22,10 +22,10 @@ public class SitePatternsRequestCondition implements RequestCondition <SitePatte
   }
 
   private void setRequestConditionMap(HandlerMappingConfiguration handlerMappingConfiguration,
-                                                          SiteSet siteSet, Method method, Set<String> siteKeys) {
+                                      RequestMapping handlerAnnotation, SiteSet siteSet, Set<String> siteKeys) {
     ImmutableMap.Builder<String, PatternsRequestCondition> mapBuilder = ImmutableMap.builder();
     for (String siteKey: siteKeys) {
-      Set<String> patterns = handlerMappingConfiguration.getValidPatternsForSite(siteKey, siteSet, method);
+      Set<String> patterns = handlerMappingConfiguration.getValidPatternsForSite(handlerAnnotation, siteSet, siteKey);
       mapBuilder.put(siteKey,
           new PatternsRequestCondition(patterns.toArray(new String[patterns.size()]), null, null, true, true, null));
     }
@@ -33,10 +33,10 @@ public class SitePatternsRequestCondition implements RequestCondition <SitePatte
   }
 
   public static SitePatternsRequestCondition create(HandlerMappingConfiguration handlerMappingConfiguration,
-                SiteSet siteSet, SiteResolver siteResolver, Method method) {
+                RequestMapping handlerAnnotation, SiteSet siteSet, SiteResolver siteResolver) {
     SitePatternsRequestCondition sitePatternRC = new SitePatternsRequestCondition(siteResolver);
     sitePatternRC.setRequestConditionMap(Preconditions.checkNotNull(handlerMappingConfiguration),
-            Preconditions.checkNotNull(siteSet), Preconditions.checkNotNull(method), siteSet.getSiteKeys());
+            Preconditions.checkNotNull(handlerAnnotation), Preconditions.checkNotNull(siteSet), siteSet.getSiteKeys());
     return sitePatternRC;
   }
 
@@ -67,6 +67,9 @@ public class SitePatternsRequestCondition implements RequestCondition <SitePatte
       return null;
     }
     PatternsRequestCondition patternsRC = requestConditionMap.get(site.getKey()).getMatchingCondition(request);
+    if (patternsRC == null) {
+      return null;
+    }
     SitePatternsRequestCondition sitePatternsRC = new SitePatternsRequestCondition(siteResolver);
     sitePatternsRC.requestConditionMap = ImmutableMap.of(site.getKey(), patternsRC);
     return sitePatternsRC;
@@ -74,6 +77,20 @@ public class SitePatternsRequestCondition implements RequestCondition <SitePatte
 
   @Override
   public int compareTo(SitePatternsRequestCondition other, HttpServletRequest request) {
-    return 0;
+    Site site = siteResolver.resolveSite(request);
+    if (site == null) {
+      return 0;
+    }
+    PatternsRequestCondition thisRC = requestConditionMap.get(site.getKey());
+    PatternsRequestCondition otherRC = other.requestConditionMap.get(site.getKey());
+    if (thisRC == null && otherRC == null) {
+      return 0;
+    } else if (thisRC == null) {
+      return 1;
+    } else if (otherRC == null) {
+      return -1;
+    } else {
+      return thisRC.compareTo(otherRC, request);
+    }
   }
 }

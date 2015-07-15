@@ -3,10 +3,7 @@ package org.ambraproject.wombat.config;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.lang.reflect.Method;
 import java.util.*;
 
 
@@ -24,87 +21,81 @@ public class HandlerMappingConfiguration {
     this.handlerMapping = handlerMapping;
   }
 
-  public ImmutableSet<String> getValidPatternsForSite(String siteKey, SiteSet siteSet, Method method) {
+  public ImmutableSet<String> getValidPatternsForSite(RequestMapping handlerAnnotation, SiteSet siteSet, String siteKey) {
 
-    Set<String> validSites = getValidSites(siteSet, method);
+    Set<String> validSites = getValidSites(handlerAnnotation, siteSet);
     if (!validSites.contains(siteKey)) {
       return ImmutableSet.of();
     }
 
-    ImmutableSet<String> sharedPatterns = getSharedPatterns(method);
-    if (!hasSiteOverrides(method)) {
+    ImmutableSet<String> sharedPatterns = getSharedPatterns(handlerAnnotation);
+    if (!hasSiteOverrides(handlerAnnotation)) {
       return sharedPatterns;
     }
 
     return ImmutableSet.copyOf(Sets.difference(
-            Sets.union(sharedPatterns, getSiteOverride(method, siteKey, KEYNAME_PATTERNS)),
-            getSiteOverride(method, siteKey, KEYNAME_EXCLUDEPATTERNS)));
+            Sets.union(sharedPatterns, getSiteOverride(handlerAnnotation, siteKey, KEYNAME_PATTERNS)),
+            getSiteOverride(handlerAnnotation, siteKey, KEYNAME_EXCLUDEPATTERNS)));
   }
 
-  public boolean hasSiteMapping(Method method) {
-    String handlerName = getHandlerName(method);
+  public boolean hasSiteMapping(RequestMapping handlerAnnotation) {
+    String handlerName = getHandlerName(handlerAnnotation);
     return handlerMapping.get(handlerName) != null && ((handlerMapping.get(handlerName).get(KEYNAME_SITES) != null ||
             handlerMapping.get(handlerName).get(KEYNAME_EXCLUDESITES) != null));
   }
 
-  private boolean hasSiteOverrides(Method method) {
-    String handlerName = getHandlerName(method);
+  private boolean hasSiteOverrides(RequestMapping handlerAnnotation) {
+    String handlerName = getHandlerName(handlerAnnotation);
     return handlerMapping.get(handlerName) != null &&
             handlerMapping.get(handlerName).get(KEYNAME_SITEOVERRIDES) != null;
   }
 
-  private boolean hasPatternsMapping(Method method) {
-    String handlerName = getHandlerName(method);
+  private boolean hasPatternsMapping(RequestMapping handlerAnnotation) {
+    String handlerName = getHandlerName(handlerAnnotation);
     return handlerMapping.get(handlerName) != null && ((handlerMapping.get(handlerName).get(KEYNAME_PATTERNS) != null ||
             handlerMapping.get(handlerName).get(KEYNAME_EXCLUDEPATTERNS) != null));
   }
 
-  public ImmutableSet<String> getValidSites(SiteSet siteSet, Method method) {
+  public ImmutableSet<String> getValidSites(RequestMapping handlerAnnotation, SiteSet siteSet) {
 
-    if (!hasSiteMapping(method)) {
+    if (!hasSiteMapping(handlerAnnotation)) {
       return siteSet.getSiteKeys();
     }
 
     return ImmutableSet.copyOf(Sets.difference(
-            getMethodConfig(method, KEYNAME_SITES, siteSet.getSiteKeys()),
-            getMethodConfig(method, KEYNAME_EXCLUDESITES)));
+            getMethodConfig(handlerAnnotation, KEYNAME_SITES, siteSet.getSiteKeys()),
+            getMethodConfig(handlerAnnotation, KEYNAME_EXCLUDESITES)));
   }
 
-  private ImmutableSet<String> getSharedPatterns(Method method) {
+  private ImmutableSet<String> getSharedPatterns(RequestMapping handlerAnnotation) {
     // returns mapped patterns for the given method that are shared across all sites
 
     // retrieve default patterns defined in the RequestMapping annotation
-    ImmutableSet<String> annotationDefinedPatterns;
-    RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
-    if (methodAnnotation == null) {
-      annotationDefinedPatterns = ImmutableSet.of();
-    } else {
-      annotationDefinedPatterns = ImmutableSet.copyOf(methodAnnotation.value());
-    }
+    ImmutableSet<String> annotationDefinedPatterns = ImmutableSet.copyOf(handlerAnnotation.value());
 
-    if (!hasPatternsMapping(method)) {
+    if (!hasPatternsMapping(handlerAnnotation)) {
       return annotationDefinedPatterns;
     }
 
     // override with patterns from this config
     return ImmutableSet.copyOf(Sets.difference(
-                Sets.union(annotationDefinedPatterns, getMethodConfig(method, KEYNAME_PATTERNS)),
-                getMethodConfig(method, KEYNAME_EXCLUDEPATTERNS)));
+                Sets.union(annotationDefinedPatterns, getMethodConfig(handlerAnnotation, KEYNAME_PATTERNS)),
+                getMethodConfig(handlerAnnotation, KEYNAME_EXCLUDEPATTERNS)));
 
   }
 
-  private ImmutableSet<String> getMethodConfig(Method method, String key) {
-    return getMethodConfig(method, key, ImmutableSet.<String>of());
+  private ImmutableSet<String> getMethodConfig(RequestMapping handlerAnnotation, String key) {
+    return getMethodConfig(handlerAnnotation, key, ImmutableSet.<String>of());
   }
 
-  private ImmutableSet<String> getMethodConfig(Method method, String key, Collection<String> defaultVal) {
-    String handlerName = getHandlerName(method);
+  private ImmutableSet<String> getMethodConfig(RequestMapping handlerAnnotation, String key, Collection<String> defaultVal) {
+    String handlerName = getHandlerName(handlerAnnotation);
     List<String> methodVal = (List<String>) handlerMapping.get(handlerName).get(key);
     return methodVal != null ? ImmutableSet.copyOf(methodVal) : ImmutableSet.copyOf(defaultVal);
   }
 
-  private ImmutableSet<String> getSiteOverride(Method method, String siteKey, String key) {
-    String handlerName = getHandlerName(method);
+  private ImmutableSet<String> getSiteOverride(RequestMapping handlerAnnotation, String siteKey, String key) {
+    String handlerName = getHandlerName(handlerAnnotation);
     List<Map<String, List<String>>> siteOverrides =
             (List<Map<String, List<String>>>) handlerMapping.get(handlerName).get(KEYNAME_SITEOVERRIDES);
 
@@ -115,7 +106,7 @@ public class HandlerMappingConfiguration {
                 String.format("HandlerMappingConfiguration ERROR: Site override handler mappings for " +
                         "method \"%s\" must all include a \"%s\" key value", handlerName, KEYNAME_SITES));
       }
-      if ((siteOverride.get(KEYNAME_SITES)).contains(siteKey)) {
+      if ((siteOverride.get(KEYNAME_SITES)).contains(siteKey) && siteOverride.containsKey(key)) {
         overrideValue.addAll(siteOverride.get(key));
       }
     }
@@ -124,16 +115,12 @@ public class HandlerMappingConfiguration {
   }
 
 
-  private String getHandlerName(Method method) {
+  private String getHandlerName(RequestMapping handlerAnnotation) {
     // use name property on associated RequestMapping annotation if present, otherwise, use class#method as name
-    RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
-    if (methodAnnotation !=null && !methodAnnotation.name().isEmpty()) {
-      return methodAnnotation.name();
-    } else {
-      String fullClassName = method.getDeclaringClass().getName();
-      String className = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
-      return className + "#" + method.getName();
+    if (handlerAnnotation.name().isEmpty()) {
+      throw new RuntimeConfigurationException("Error: missing RequestMapping annotation name property");
     }
-  }
+    return handlerAnnotation.name();
+    }
 
 }

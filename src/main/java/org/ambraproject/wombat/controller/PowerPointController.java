@@ -42,7 +42,7 @@ public class PowerPointController extends WombatController {
   @Autowired
   private PowerPointService powerPointService;
 
-  @RequestMapping({"/article/figure/powerpoint", "/{site}/article/figure/powerpoint"})
+  @RequestMapping(name = "powerPoint", value = {"/article/figure/powerpoint", "/{site}/article/figure/powerpoint"})
   public void download(HttpServletRequest request, HttpServletResponse response,
                        @SiteParam Site site,
                        @RequestParam(value = "id", required = true) String figureId)

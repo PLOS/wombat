@@ -27,7 +27,7 @@ public class UserController extends WombatController {
   @Autowired
   private SoaService soaService;
 
-  @RequestMapping(value = {"/user/secure/login", "/{site}/user/secure/login"})
+  @RequestMapping(name = "userLogin", value = {"/user/secure/login", "/{site}/user/secure/login"})
   public ModelAndView redirectToOriginalLink(HttpServletRequest request, @RequestParam("page") String page) {
     // page param should contain the url to the location we want to send the user to
     String contextPath = request.getContextPath();
@@ -74,7 +74,7 @@ public class UserController extends WombatController {
     soaService.postObject("users/" + remoteUser, persist);
   }
 
-  @RequestMapping(value = {"/user/logout", "/{site}/user/logout"})
+  @RequestMapping(name = "userLogout", value = {"/user/logout", "/{site}/user/logout"})
   public ModelAndView redirectToSignOut(HttpServletRequest request) {
     return new ModelAndView("redirect:" + request.getHeader("Referer"));
   }

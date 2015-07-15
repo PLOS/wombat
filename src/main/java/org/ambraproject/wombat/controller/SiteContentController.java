@@ -39,7 +39,7 @@ public class SiteContentController extends WombatController {
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(name="siteContent", value = {"/t/{pageName}", "/s/{pageName}", "/{site}/s/{pageName}"})
+  @RequestMapping(name="siteContent")
   public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 

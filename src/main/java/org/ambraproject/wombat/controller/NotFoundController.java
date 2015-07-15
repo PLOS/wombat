@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class NotFoundController extends WombatController {
 
-  @RequestMapping
+  @RequestMapping(name = "notFound")
   public String handle404(HttpServletRequest request, HttpServletResponse response) {
     return handleNotFound(request, response);
   }

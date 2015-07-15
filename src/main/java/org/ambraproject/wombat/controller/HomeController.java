@@ -188,7 +188,7 @@ public class HomeController extends WombatController {
     }
   }
 
-  @RequestMapping(value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
+  @RequestMapping(name = "homePage", value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
   public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam(value = "section", required = false) String sectionParam,
                               @RequestParam(value = "page", required = false) String pageParam)
@@ -249,7 +249,7 @@ public class HomeController extends WombatController {
    * TODO: specify SiteContentController and "/" namespace for DesktopPlosCollections in wombat.yaml config
    */
   @Deprecated
-  @RequestMapping(value = "/", method = RequestMethod.GET)
+  @RequestMapping(name = "collectionsHome", value = "/", method = RequestMethod.GET)
   public String tempCollectionsHome(Model model, @SiteParam Site site) throws IOException {
     String repoKey = "desktop.collections.s.homepage";
 

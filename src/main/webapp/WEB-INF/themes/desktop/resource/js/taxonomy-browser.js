@@ -77,11 +77,11 @@
   // holds the width of the column for animation calculations
   var column_width = null;
 
-  //We must support clicking as well as mousedown holding to scroll through the taxonomy browser
-  //This flag is checked  to see if the "click" function can happen instead of mousedown/up
+  //We must support a click as well as a mousedown hold to scroll through the taxonomy browser
+  //This flag is checked to see if the "click" action can happen
   var clickIsValid = true;
 
-  //milliseconds allowed before click doesn't register, on mouse down
+  //milliseconds allowed after the start of a mousedown event for the click action to fire
   var delay = 100;
 
   var clickAnimationSpeed = 300;
@@ -267,7 +267,10 @@
     column.stop();
 
     if (clickIsValid) {
-      handleScrollColumnClick(event);
+      var y = column.scrollTop();
+      column.animate({
+        'scrollTop': el.hasClass('up') ? y - clickAnimationAmount : y + clickAnimationAmount
+      }, clickAnimationSpeed);
     }
 
     clickIsValid = true;
@@ -298,19 +301,6 @@
     var scrollTop = $(this).scrollTop();
     $(this).scrollTop(scrollTop - distance_to_scroll);
   }
-
-  function handleScrollColumnClick(event) {
-    event.preventDefault();
-
-    var el = $(event.target);
-    var column = el.siblings('.level-scroll');
-    var y = column.scrollTop();
-
-    column.animate({
-      'scrollTop': el.hasClass('up') ? y - clickAnimationAmount : y + clickAnimationAmount
-    }, clickAnimationSpeed);
-  }
-
 
   // UI FUNCTIONS ============================================================
 

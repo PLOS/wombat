@@ -77,6 +77,21 @@
   // holds the width of the column for animation calculations
   var column_width = null;
 
+  //We must support clicking as well as mousedown holding to scroll through the taxonomy browser
+  //This flag is checked  to see if the "click" function can happen instead of mousedown/up
+  var clickIsValid = true;
+
+  //milliseconds allowed before click doesn't register, on mouse down
+  var delay = 100;
+
+  var clickAnimationSpeed = 300;
+
+  var clickAnimationAmount = 100;
+
+  var dontClick = function(){
+    clickIsValid = false;
+  };
+
   // MAIN FUNCTIONS ==========================================================
 
   /**
@@ -225,6 +240,8 @@
   function handleScrollColumnMousedown(event) {
     event.preventDefault();
 
+    cancelClick = setTimeout( dontClick, delay );
+
     var el = $(event.target);
     var column = el.siblings('.level-scroll');
     var column_height = column.children('ul').height();
@@ -245,7 +262,15 @@
 
     var el = $(event.target);
     var column = el.siblings('.level-scroll');
+
+    clearTimeout(cancelClick);
     column.stop();
+
+    if (clickIsValid) {
+      handleScrollColumnClick(event);
+    }
+
+    clickIsValid = true;
   }
 
   /**
@@ -272,6 +297,18 @@
     var distance_to_scroll = normalized_delta * 10;
     var scrollTop = $(this).scrollTop();
     $(this).scrollTop(scrollTop - distance_to_scroll);
+  }
+
+  function handleScrollColumnClick(event) {
+    event.preventDefault();
+
+    var el = $(event.target);
+    var column = el.siblings('.level-scroll');
+    var y = column.scrollTop();
+
+    column.animate({
+      'scrollTop': el.hasClass('up') ? y - clickAnimationAmount : y + clickAnimationAmount
+    }, clickAnimationSpeed);
   }
 
 
@@ -576,7 +613,6 @@
         turnColumnOn($(e.currentTarget));
       });
 
-      // FIXME: should always scroll by a minimum amount
       $levelsPosition.on('mousedown', '.level > a', handleScrollColumnMousedown);
       $levelsPosition.on('mouseup', '.level > a', handleScrollColumnMouseup);
     }

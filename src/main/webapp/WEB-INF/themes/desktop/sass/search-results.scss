@@ -8,7 +8,7 @@ main.search-results-body {
   margin-bottom: rem-calc($line-height-large);
 
   article {
-    @include plos-grid-column($pixelwidth: 600, $gutter: left);
+    @include plos-grid-column($pixelwidth: 760, $gutter: left);
   }
 
   aside {
@@ -16,7 +16,7 @@ main.search-results-body {
   }
 
   .search-results-controls {
-    @include plos-grid-column($pixelwidth: 600, $gutter: left);
+    @include plos-grid-column($pixelwidth: 760, $gutter: none);
   }
 }
 
@@ -68,12 +68,11 @@ main.search-results-body {
 
 .search-results-controls {
   background: $grey-verydark;
-  padding: rem-calc(20 20 20 20);
-  margin-bottom: rem-calc(15px);
+  padding: rem-calc($line-height 0);
+  margin-bottom: rem-calc($line-height-medium);
   position: relative;
 
   > form {
-    @include plos-grid-column($pixelwidth: 600, $gutter: left);
 
     &:before, &:after {
       content: "";
@@ -176,17 +175,22 @@ main.search-results-body {
 }
 
 .search-results-list {
-  margin: rem-calc(15px 0 45px);
+  margin: rem-calc($line-height-medium 0 $line-height-large);
+  dd, dt{
+    display:block;
+    line-height: $line-height;
+    }
 }
 
 .search-results-title {
   margin-bottom: rem-calc(3px);
-}
+  margin-top: $line-height;
+  }
 
 .search-results-title a {
   @include link-text($color: $grey-dark, $color-hover: $plos-default, $decoration-hover: underline,
       $decoration-text: underline);
-  font-size: $txt-size-large;
+  font-size: $txt-size-medium-large;
 }
 
 .search-results-authors {
@@ -195,7 +199,7 @@ main.search-results-body {
 }
 
 .search-results-doi {
-  margin-bottom: $line-height;
+ margin-bottom: $line-height-small;
 }
 
 // Paging controls (shared with mobile).
@@ -362,10 +366,6 @@ $inactive-background-color: #c2c2c2;
   }
 }
 
-.search-results-alm-container {
-  height: rem-calc($line-height);
-}
-
 .search-results-alm, .search-results-alm-error {
   display: none;
   font-weight: bold;
@@ -389,7 +389,7 @@ $inactive-background-color: #c2c2c2;
 .filter-item {
   @extend %rounded-default;
   font-size: $txt-size-small;
-  line-height: $line-height-med;
+  line-height: $line-height-medium;
   float: left;
   color: $white;
   background: $grey-blah;

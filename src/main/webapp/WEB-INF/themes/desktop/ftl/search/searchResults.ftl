@@ -180,6 +180,7 @@
       <#assign numPages = (searchResults.numFound / resultsPerPage)?ceiling />
       <#assign currentPage = (RequestParameters.page!1)?number />
       <#assign path = "search" />
+      <#assign alwaysShow = "true" />
       <#include "../common/paging.ftl" />
 
       <#if numPages gt 1>

@@ -203,6 +203,21 @@
       </#if>
 
     </article>
+
+    <aside>
+      <div class="search-alert" data-js-tooltip-hover="trigger">
+        Search Alert
+        <div class="search-alert-tooltip" data-js-tooltip-hover="target">
+          This feature temporarily unavailable.
+        </div>
+      </div>
+      <div class="search-feed" data-js-tooltip-hover="trigger">
+        <div class="search-feed-tooltip" data-js-tooltip-hover="target">
+          This feature temporarily unavailable.
+        </div>
+      </div>
+    </aside>
+
   </main>
 
   <#include "../common/footer/footer.ftl" />

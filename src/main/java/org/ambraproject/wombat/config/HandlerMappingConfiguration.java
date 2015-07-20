@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -15,18 +14,22 @@ public class HandlerMappingConfiguration {
   private static final String KEYNAME_PATTERNS = "patterns";
   private static final String KEYNAME_EXCLUDEPATTERNS = "excludePatterns";
   private static final String KEYNAME_SITEOVERRIDES = "siteOverrides";
+  public static final String VALUE_NULLSITE = "null";
 
-  private SiteSet siteSet;
+  private ImmutableSet<String> siteKeys;
   private Map<String, Map<String, ?>> handlerMapping;
 
   public HandlerMappingConfiguration(Map<String, Map<String, ?>> handlerMapping, SiteSet siteSet) {
     this.handlerMapping = handlerMapping;
-    this.siteSet = Preconditions.checkNotNull(siteSet);
+    this.siteKeys = ImmutableSet.<String>builder()
+            .addAll(Preconditions.checkNotNull(siteSet).getSiteKeys())
+            .add(VALUE_NULLSITE)
+            .build();
   }
 
   public ImmutableSet<String> getValidPatternsForSite(RequestMapping handlerAnnotation, String siteKey) {
 
-    if (!siteSet.getSiteKeys().contains(siteKey)) {
+    if (!siteKeys.contains(siteKey)) {
       throw new RuntimeConfigurationException(String.format("HandlerMappingConfiguration ERROR: " +
               "Requested handler mapping configuration for non-existing site: \"%s\"", siteKey));
     }
@@ -69,11 +72,11 @@ public class HandlerMappingConfiguration {
   public ImmutableSet<String> getValidSites(RequestMapping handlerAnnotation) {
 
     if (!hasSiteMapping(handlerAnnotation)) {
-      return siteSet.getSiteKeys();
+      return siteKeys;
     }
 
     return ImmutableSet.copyOf(Sets.difference(
-            getMethodConfig(handlerAnnotation, KEYNAME_SITES, siteSet.getSiteKeys()),
+            getMethodConfig(handlerAnnotation, KEYNAME_SITES, siteKeys),
             getMethodConfig(handlerAnnotation, KEYNAME_EXCLUDESITES)));
   }
 

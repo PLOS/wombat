@@ -3,6 +3,7 @@ package org.ambraproject.wombat.config.site;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
+import org.ambraproject.wombat.config.HandlerMappingConfiguration;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
@@ -25,10 +26,8 @@ public class SiteRequestCondition implements RequestCondition <SiteRequestCondit
   public SiteRequestCondition getMatchingCondition(HttpServletRequest request) {
 
     Site site = siteResolver.resolveSite(request);
-    if (site == null) {
-      return null;
-    }
-    if (validSites.contains(site.getKey())) {
+    String siteKey = site != null ? site.getKey() : HandlerMappingConfiguration.VALUE_NULLSITE;
+    if (validSites.contains(siteKey)) {
       return this;
     }
     return null;

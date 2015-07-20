@@ -63,26 +63,25 @@ public class SitePatternsRequestCondition implements RequestCondition <SitePatte
   @Override
   public SitePatternsRequestCondition getMatchingCondition(HttpServletRequest request) {
     Site site = siteResolver.resolveSite(request);
-    if (site == null || requestConditionMap.get(site.getKey()) == null) {
+    String siteKey = site != null ? site.getKey() : HandlerMappingConfiguration.VALUE_NULLSITE;
+    if (requestConditionMap.get(siteKey) == null) {
       return null;
     }
-    PatternsRequestCondition patternsRC = requestConditionMap.get(site.getKey()).getMatchingCondition(request);
+    PatternsRequestCondition patternsRC = requestConditionMap.get(siteKey).getMatchingCondition(request);
     if (patternsRC == null) {
       return null;
     }
     SitePatternsRequestCondition sitePatternsRC = new SitePatternsRequestCondition(siteResolver);
-    sitePatternsRC.requestConditionMap = ImmutableMap.of(site.getKey(), patternsRC);
+    sitePatternsRC.requestConditionMap = ImmutableMap.of(siteKey, patternsRC);
     return sitePatternsRC;
   }
 
   @Override
   public int compareTo(SitePatternsRequestCondition other, HttpServletRequest request) {
     Site site = siteResolver.resolveSite(request);
-    if (site == null) {
-      return 0;
-    }
-    PatternsRequestCondition thisRC = requestConditionMap.get(site.getKey());
-    PatternsRequestCondition otherRC = other.requestConditionMap.get(site.getKey());
+    String siteKey = site != null ? site.getKey() : HandlerMappingConfiguration.VALUE_NULLSITE;
+    PatternsRequestCondition thisRC = requestConditionMap.get(siteKey);
+    PatternsRequestCondition otherRC = other.requestConditionMap.get(siteKey);
     if (thisRC == null && otherRC == null) {
       return 0;
     } else if (thisRC == null) {

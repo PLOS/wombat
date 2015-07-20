@@ -182,7 +182,7 @@ public class HomeController extends WombatController {
     }
   }
 
-  @RequestMapping(name = "homePage", value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
+  @RequestMapping(name = "homePage", value = "/*", method = RequestMethod.GET)
   public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam(value = "section", required = false) String sectionParam,
                               @RequestParam(value = "page", required = false) String pageParam)

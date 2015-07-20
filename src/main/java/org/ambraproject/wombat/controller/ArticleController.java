@@ -372,7 +372,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleCommentTree", value = {"/article/comment", "/{site}/article/comment"})
+  @RequestMapping(name = "articleCommentTree", value = {"/article/comment", "/*/article/comment"})
   public String renderArticleCommentTree(Model model, @SiteParam Site site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
@@ -399,7 +399,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleAuthors", value = {"/article/authors", "/{site}/article/authors"})
+  @RequestMapping(name = "articleAuthors", value = {"/article/authors", "/*/article/authors"})
   public String renderArticleAuthors(Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);

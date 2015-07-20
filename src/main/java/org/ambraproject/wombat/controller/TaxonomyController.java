@@ -48,7 +48,7 @@ public class TaxonomyController {
   @Autowired
   private SoaService soaService;
 
-  @RequestMapping(name = "taxonomy", value = {TAXONOMY_TEMPLATE, "/{site}" + TAXONOMY_TEMPLATE}, method = RequestMethod.GET)
+  @RequestMapping(name = "taxonomy", value = {TAXONOMY_TEMPLATE, "/*" + TAXONOMY_TEMPLATE}, method = RequestMethod.GET)
   public void read(@SiteParam Site site, HttpServletRequest request, HttpServletResponse response)
       throws IOException {
     Map<String, Object> taxonomyBrowserConfig = site.getTheme().getConfigMap("taxonomyBrowser");
@@ -76,7 +76,7 @@ public class TaxonomyController {
   }
 
   @RequestMapping(name = "taxonomyCategoryFlag", value = {TAXONOMY_NAMESPACE + "flag/{action:add|remove}",
-                          "/{site}" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}"}, method = { RequestMethod.POST })
+                          "/*" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}"}, method = { RequestMethod.POST })
   public @ResponseBody void setFlag(HttpServletRequest request, HttpServletResponse responseToClient,
                                     @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
                                     @RequestParam(value = "articleDoi", required = true) String articleDoi)

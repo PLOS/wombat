@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
@@ -41,7 +42,7 @@ public class PowerPointController extends WombatController {
   @Autowired
   private PowerPointService powerPointService;
 
-  @RequestMapping({"/article/figure/powerpoint", "/{site}/article/figure/powerpoint"})
+  @RequestMapping(name = "powerPoint", value = {"/article/figure/powerpoint", "/*/article/figure/powerpoint"})
   public void download(HttpServletRequest request, HttpServletResponse response,
                        @SiteParam Site site,
                        @RequestParam(value = "id", required = true) String figureId)

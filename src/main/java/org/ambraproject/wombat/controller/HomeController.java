@@ -5,6 +5,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -181,7 +182,7 @@ public class HomeController extends WombatController {
     }
   }
 
-  @RequestMapping(value = "/{site}", method = RequestMethod.GET) // TODO Map to "/"
+  @RequestMapping(name = "homePage", value = "/*", method = RequestMethod.GET)
   public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam(value = "section", required = false) String sectionParam,
                               @RequestParam(value = "page", required = false) String pageParam)

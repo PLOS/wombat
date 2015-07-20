@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Optional;
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.util.CacheParams;
@@ -32,7 +33,7 @@ public class IndirectFileController extends WombatController {
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(value = {"indirect/{key}", "{site}/indirect/{key}"})
+  @RequestMapping(name = "repoObject", value = {"indirect/{key}", "*/indirect/{key}"})
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,
@@ -41,7 +42,7 @@ public class IndirectFileController extends WombatController {
     serve(response, request, key, Optional.<Integer>absent());
   }
 
-  @RequestMapping(value = {"indirect/{key}/{version}", "{site}/indirect/{key}/{version}"})
+  @RequestMapping(name = "versionedRepoObject", value = {"indirect/{key}/{version}", "*/indirect/{key}/{version}"})
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,
@@ -57,7 +58,7 @@ public class IndirectFileController extends WombatController {
     serve(response, request, key, Optional.of(versionInt));
   }
 
-  @RequestMapping(value = {"/s/file", "{site}/s/file"})
+  @RequestMapping(name = "repoObjectUsingPublicUrl", value = {"/s/file", "*/s/file"})
   public void serveWithPublicUrl(HttpServletResponse response,
                                  HttpServletRequest request,
                                  @SiteParam Site site,

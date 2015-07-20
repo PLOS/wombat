@@ -26,7 +26,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
-import org.ambraproject.wombat.controller.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;

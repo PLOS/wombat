@@ -4,7 +4,7 @@ import freemarker.core.Environment;
 import freemarker.template.TemplateModelException;
 import freemarker.template.TemplateScalarModel;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.controller.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;

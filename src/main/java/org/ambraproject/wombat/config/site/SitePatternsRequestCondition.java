@@ -22,10 +22,10 @@ public class SitePatternsRequestCondition implements RequestCondition <SitePatte
   }
 
   private void setRequestConditionMap(HandlerMappingConfiguration handlerMappingConfiguration,
-                                      RequestMapping handlerAnnotation, SiteSet siteSet, Set<String> siteKeys) {
+                                      RequestMapping handlerAnnotation, Set<String> siteKeys) {
     ImmutableMap.Builder<String, PatternsRequestCondition> mapBuilder = ImmutableMap.builder();
     for (String siteKey: siteKeys) {
-      Set<String> patterns = handlerMappingConfiguration.getValidPatternsForSite(handlerAnnotation, siteSet, siteKey);
+      Set<String> patterns = handlerMappingConfiguration.getValidPatternsForSite(handlerAnnotation, siteKey);
       mapBuilder.put(siteKey,
           new PatternsRequestCondition(patterns.toArray(new String[patterns.size()]), null, null, true, true, null));
     }
@@ -33,10 +33,10 @@ public class SitePatternsRequestCondition implements RequestCondition <SitePatte
   }
 
   public static SitePatternsRequestCondition create(HandlerMappingConfiguration handlerMappingConfiguration,
-                RequestMapping handlerAnnotation, SiteSet siteSet, SiteResolver siteResolver) {
+                RequestMapping handlerAnnotation, SiteResolver siteResolver, Set<String> siteKeys) {
     SitePatternsRequestCondition sitePatternRC = new SitePatternsRequestCondition(siteResolver);
     sitePatternRC.setRequestConditionMap(Preconditions.checkNotNull(handlerMappingConfiguration),
-            Preconditions.checkNotNull(handlerAnnotation), Preconditions.checkNotNull(siteSet), siteSet.getSiteKeys());
+            Preconditions.checkNotNull(handlerAnnotation), Preconditions.checkNotNull(siteKeys));
     return sitePatternRC;
   }
 
@@ -63,7 +63,7 @@ public class SitePatternsRequestCondition implements RequestCondition <SitePatte
   @Override
   public SitePatternsRequestCondition getMatchingCondition(HttpServletRequest request) {
     Site site = siteResolver.resolveSite(request);
-    if (site == null || !requestConditionMap.containsKey(site.getKey())) {
+    if (site == null || requestConditionMap.get(site.getKey()) == null) {
       return null;
     }
     PatternsRequestCondition patternsRC = requestConditionMap.get(site.getKey()).getMatchingCondition(request);

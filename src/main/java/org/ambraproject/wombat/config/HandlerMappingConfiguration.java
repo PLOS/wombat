@@ -1,11 +1,12 @@
 package org.ambraproject.wombat.config;
 
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.*;
-
 
 public class HandlerMappingConfiguration {
 
@@ -15,15 +16,22 @@ public class HandlerMappingConfiguration {
   private static final String KEYNAME_EXCLUDEPATTERNS = "excludePatterns";
   private static final String KEYNAME_SITEOVERRIDES = "siteOverrides";
 
+  private SiteSet siteSet;
   private Map<String, Map<String, ?>> handlerMapping;
 
-  public HandlerMappingConfiguration(Map<String, Map<String, ?>> handlerMapping) {
+  public HandlerMappingConfiguration(Map<String, Map<String, ?>> handlerMapping, SiteSet siteSet) {
     this.handlerMapping = handlerMapping;
+    this.siteSet = Preconditions.checkNotNull(siteSet);
   }
 
-  public ImmutableSet<String> getValidPatternsForSite(RequestMapping handlerAnnotation, SiteSet siteSet, String siteKey) {
+  public ImmutableSet<String> getValidPatternsForSite(RequestMapping handlerAnnotation, String siteKey) {
 
-    Set<String> validSites = getValidSites(handlerAnnotation, siteSet);
+    if (!siteSet.getSiteKeys().contains(siteKey)) {
+      throw new RuntimeConfigurationException(String.format("HandlerMappingConfiguration ERROR: " +
+              "Requested handler mapping configuration for non-existing site: \"%s\"", siteKey));
+    }
+
+    Set<String> validSites = getValidSites(handlerAnnotation);
     if (!validSites.contains(siteKey)) {
       return ImmutableSet.of();
     }
@@ -40,23 +48,25 @@ public class HandlerMappingConfiguration {
 
   public boolean hasSiteMapping(RequestMapping handlerAnnotation) {
     String handlerName = getHandlerName(handlerAnnotation);
-    return handlerMapping.get(handlerName) != null && ((handlerMapping.get(handlerName).get(KEYNAME_SITES) != null ||
+    return handlerMapping != null && handlerMapping.get(handlerName) != null &&
+            ((handlerMapping.get(handlerName).get(KEYNAME_SITES) != null ||
             handlerMapping.get(handlerName).get(KEYNAME_EXCLUDESITES) != null));
   }
 
-  private boolean hasSiteOverrides(RequestMapping handlerAnnotation) {
+  public boolean hasSiteOverrides(RequestMapping handlerAnnotation) {
     String handlerName = getHandlerName(handlerAnnotation);
-    return handlerMapping.get(handlerName) != null &&
+    return handlerMapping != null && handlerMapping.get(handlerName) != null &&
             handlerMapping.get(handlerName).get(KEYNAME_SITEOVERRIDES) != null;
   }
 
   private boolean hasPatternsMapping(RequestMapping handlerAnnotation) {
     String handlerName = getHandlerName(handlerAnnotation);
-    return handlerMapping.get(handlerName) != null && ((handlerMapping.get(handlerName).get(KEYNAME_PATTERNS) != null ||
+    return handlerMapping != null && handlerMapping.get(handlerName) != null &&
+            ((handlerMapping.get(handlerName).get(KEYNAME_PATTERNS) != null ||
             handlerMapping.get(handlerName).get(KEYNAME_EXCLUDEPATTERNS) != null));
   }
 
-  public ImmutableSet<String> getValidSites(RequestMapping handlerAnnotation, SiteSet siteSet) {
+  public ImmutableSet<String> getValidSites(RequestMapping handlerAnnotation) {
 
     if (!hasSiteMapping(handlerAnnotation)) {
       return siteSet.getSiteKeys();
@@ -67,7 +77,7 @@ public class HandlerMappingConfiguration {
             getMethodConfig(handlerAnnotation, KEYNAME_EXCLUDESITES)));
   }
 
-  private ImmutableSet<String> getSharedPatterns(RequestMapping handlerAnnotation) {
+  public ImmutableSet<String> getSharedPatterns(RequestMapping handlerAnnotation) {
     // returns mapped patterns for the given method that are shared across all sites
 
     // retrieve default patterns defined in the RequestMapping annotation
@@ -116,10 +126,6 @@ public class HandlerMappingConfiguration {
 
 
   private String getHandlerName(RequestMapping handlerAnnotation) {
-    // use name property on associated RequestMapping annotation if present, otherwise, use class#method as name
-    if (handlerAnnotation.name().isEmpty()) {
-      throw new RuntimeConfigurationException("Error: missing RequestMapping annotation name property");
-    }
     return handlerAnnotation.name();
     }
 

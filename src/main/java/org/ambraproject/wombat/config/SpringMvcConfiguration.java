@@ -1,8 +1,8 @@
 package org.ambraproject.wombat.config;
 
 import org.ambraproject.wombat.config.site.SiteMappingHandlerMapping;
-import org.ambraproject.wombat.config.site.SitePathMatcher;
 import org.ambraproject.wombat.config.site.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,13 +20,15 @@ public class SpringMvcConfiguration extends WebMvcConfigurationSupport{
   @Autowired
   SiteResolver siteResolver;
 
+  @Autowired
+  SiteSet siteSet;
+
   @Bean
   public RequestMappingHandlerMapping requestMappingHandlerMapping() {
     RequestMappingHandlerMapping handlerMapping = new SiteMappingHandlerMapping();
     handlerMapping.setOrder(0);
     handlerMapping.setInterceptors(getInterceptors());
     handlerMapping.setContentNegotiationManager(mvcContentNegotiationManager());
-    handlerMapping.setPathMatcher(new SitePathMatcher(siteResolver));
     return handlerMapping;
   }
 
@@ -43,7 +45,7 @@ public class SpringMvcConfiguration extends WebMvcConfigurationSupport{
 
   @Bean
   public HandlerMappingConfiguration handlerMappingConfiguration(RuntimeConfiguration runtimeConfiguration) {
-    return runtimeConfiguration.getHandlerMappingConfiguration();
+    return runtimeConfiguration.getHandlerMappingConfiguration(siteSet);
   }
 
 }

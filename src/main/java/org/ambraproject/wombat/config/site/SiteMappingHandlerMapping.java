@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.condition.ParamsRequestCondition;
 import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
 import org.springframework.web.servlet.mvc.condition.ProducesRequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
+import org.springframework.web.servlet.mvc.condition.RequestConditionHolder;
 import org.springframework.web.servlet.mvc.condition.RequestMethodsRequestCondition;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
@@ -44,11 +45,16 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
     if (methodAnnotation == null) {
       return null;
     }
-    SiteRequestCondition siteRC = new SiteRequestCondition(siteResolver,
-            handlerMappingConfiguration.getValidSites(methodAnnotation, siteSet));
-    SitePatternsRequestCondition sitePatternsRC = SitePatternsRequestCondition.create(handlerMappingConfiguration,
-            methodAnnotation, siteSet, siteResolver);
-    return new CompositeRequestCondition(siteRC, sitePatternsRC);
+    SitePatternsRequestCondition sitePatternsRC = null;
+    SiteRequestCondition siteRC = null;
+    if (handlerMappingConfiguration.hasSiteOverrides(methodAnnotation)) {
+      sitePatternsRC = SitePatternsRequestCondition.create(handlerMappingConfiguration,
+              methodAnnotation, siteResolver, handlerMappingConfiguration.getValidSites(methodAnnotation));
+    } else if (handlerMappingConfiguration.hasSiteMapping(methodAnnotation)) {
+      siteRC = new SiteRequestCondition(siteResolver, handlerMappingConfiguration.getValidSites(methodAnnotation));
+    }
+    return new CompositeRequestCondition(new RequestConditionHolder(siteRC),
+            new RequestConditionHolder(sitePatternsRC));
   }
 
   @Override
@@ -57,8 +63,12 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
    */
   protected RequestMappingInfo createRequestMappingInfo(RequestMapping annotation, RequestCondition<?> customCondition) {
     Set<String> allPatterns = new HashSet<>();
-    for (String siteKey: siteSet.getSiteKeys()) {
-      allPatterns.addAll(handlerMappingConfiguration.getValidPatternsForSite(annotation, siteSet, siteKey));
+    if (handlerMappingConfiguration.hasSiteOverrides(annotation)) {
+      for (String siteKey : siteSet.getSiteKeys()) {
+        allPatterns.addAll(handlerMappingConfiguration.getValidPatternsForSite(annotation, siteKey));
+      }
+    } else {
+      allPatterns.addAll(handlerMappingConfiguration.getSharedPatterns(annotation));
     }
     String[] patterns = resolveEmbeddedValuesInPatterns(allPatterns.toArray(new String[allPatterns.size()]));
     return new RequestMappingInfo(

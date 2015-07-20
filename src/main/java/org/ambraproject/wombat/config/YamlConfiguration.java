@@ -84,8 +84,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public HandlerMappingConfiguration getHandlerMappingConfiguration() {
-    return new HandlerMappingConfiguration(input.handlerMapping);
+  public HandlerMappingConfiguration getHandlerMappingConfiguration(SiteSet siteSet) {
+    return new HandlerMappingConfiguration(input.handlerMapping, siteSet);
   }
 
   private final CacheConfiguration cacheConfiguration = new CacheConfiguration() {

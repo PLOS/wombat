@@ -4,8 +4,11 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.SetMultimap;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.apache.http.NameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -15,8 +18,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,6 +36,9 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
 
   @Autowired
   private SolrSearchService searchService;
+
+  @Autowired
+  private SiteSet siteSet;
 
   @Test
   public void testBuildCommonParams() {
@@ -103,6 +111,45 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
     assertArticleTypes(actualMap.get("fq"));
+  }
+
+  @Test
+  public void testAddArticleLinks() throws IOException {
+    Map<String, List<Map>> searchResults = new HashMap<>();
+    List<Map> docs = new ArrayList<>(1);
+    Map doc = new HashMap();
+    List<String> crossPubbedJournals = new ArrayList<>(1);
+    crossPubbedJournals.add("journal1Key");
+    doc.put("cross_published_journal_key", crossPubbedJournals);
+    doc.put("id", "12345");
+    docs.add(doc);
+    searchResults.put("docs", docs);
+    MockHttpServletRequest request = new MockHttpServletRequest();
+    request.setContextPath("someContextPath");
+    List<Site> sites = siteSet.getSites("journal2Key");
+    assertEquals(sites.size(), 1);  // For the purposes of this test
+
+    Map<?, ?> actual = searchService.addArticleLinks(searchResults, request, sites.get(0), siteSet);
+    List<Map> actualDocs = (List) actual.get("docs");
+    assertEquals(actualDocs.size(), 1);
+    Map actualDoc = (Map) actualDocs.get(0);
+    assertEquals(actualDoc.get("id"), "12345");
+    assertEquals(actualDoc.get("link"), "someContextPath/site1/article?id=12345");
+
+    // Test an edge case where the first journal listed in cross_published_journal_key
+    // is a collection.  We want the non-collection site.
+    crossPubbedJournals = new ArrayList<>(2);
+    crossPubbedJournals.add("collectionJournalKey");
+    crossPubbedJournals.add("journal2Key");
+    doc.put("cross_published_journal_key", crossPubbedJournals);
+    sites = siteSet.getSites("journal1Key");
+    assertEquals(sites.size(), 1);
+
+    actual = searchService.addArticleLinks(searchResults, request, sites.get(0), siteSet);
+    actualDocs = (List) actual.get("docs");
+    assertEquals(actualDocs.size(), 1);
+    actualDoc = (Map) actualDocs.get(0);
+    assertEquals(actualDoc.get("link"), "someContextPath/site2/article?id=12345");
   }
 
   /**

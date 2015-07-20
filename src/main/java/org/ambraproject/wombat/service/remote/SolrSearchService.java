@@ -18,11 +18,13 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.io.Reader;
@@ -49,7 +51,6 @@ public class SolrSearchService implements SearchService {
   private JsonService jsonService;
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
-
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -187,9 +188,9 @@ public class SolrSearchService implements SearchService {
   /**
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
-  private static final String FL = "id,publication_date,title,cross_published_journal_name,author_display,article_type,"
-      + "counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,"
-      + "alm_facebookCount,retraction,expression_of_concern";
+  private static final String FL = "id,publication_date,title,cross_published_journal_key,"
+      + "cross_published_journal_name,author_display,article_type,counter_total_all,alm_scopusCiteCount,"
+      + "alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,alm_facebookCount,retraction,expression_of_concern";
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
@@ -256,6 +257,29 @@ public class SolrSearchService implements SearchService {
         rows, sortOrder, SolrEnumeratedDateRange.ALL_TIME, true);
     params.add(new BasicNameValuePair("q", "*:*"));
     return executeQuery(params);
+  }
+
+  @Override
+  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet)
+      throws IOException {
+    List<Map> docs = (List<Map>) searchResults.get("docs");
+    for (Map doc : docs) {
+      String doi = (String) doc.get("id");
+      List<String> crossPubbedJournals = (List<String>) doc.get("cross_published_journal_key");
+      Site resultSite = null;
+
+      // Iterate through the journal keys, and choose the first key that is not a collection site.
+      // (We want to link to the "real" journal the article was published in, not the collection.)
+      for (String journalKey : crossPubbedJournals) {
+        resultSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
+        boolean isCollection = (boolean) resultSite.getTheme().getConfigMap("journal").get("isCollection");
+        if (!isCollection) {
+          break;
+        }
+      }
+      doc.put("link", resultSite.getRequestScheme().buildLink(request, "/article?id=" + doi));
+    }
+    return searchResults;
   }
 
   //Override for buildCommonParams with no article types

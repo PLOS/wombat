@@ -11,13 +11,14 @@
 
 package org.ambraproject.wombat.config.theme;
 
+import com.google.common.base.Joiner;
 import freemarker.cache.TemplateLoader;
-import org.ambraproject.wombat.config.site.Site;
 
-import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Implementation of {@link org.ambraproject.wombat.config.theme.Theme} suitable for tests.  All resources are loaded
@@ -25,8 +26,10 @@ import java.util.Collection;
  */
 public class TestClasspathTheme extends Theme {
 
-  public TestClasspathTheme() {
-    super("test", null);
+  private static final String TEST_RESOURCE_DIR = "test_themes";
+
+  public TestClasspathTheme(String key, List<? extends Theme> parents) {
+    super(key, parents);
   }
 
   @Override
@@ -36,15 +39,8 @@ public class TestClasspathTheme extends Theme {
 
   @Override
   protected InputStream fetchStaticResource(String path) throws IOException {
-
-    // Huge hack: the "real" themes include a file that specifies the theme
-    // key.  Instead of including a test version, we just look for the filename.
-    if (path.equals("config/" + Site.JOURNAL_KEY_PATH + ".json")) {
-      String dummyJson = String.format("{\"%s\": \"%s\"}", Site.CONFIG_KEY_FOR_JOURNAL, "default");
-      return new ByteArrayInputStream(dummyJson.getBytes());
-    } else {
-      return Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
-    }
+    String fullPath = Joiner.on(File.separator).join(TEST_RESOURCE_DIR, getKey(), path);
+    return Thread.currentThread().getContextClassLoader().getResourceAsStream(fullPath);
   }
 
   @Override

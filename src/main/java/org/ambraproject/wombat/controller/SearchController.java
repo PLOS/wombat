@@ -161,7 +161,7 @@ public class SearchController extends WombatController {
       searchResults = searchService.simpleSearch(query, journals, articleTypes, start,
           resultsPerPage, sortOrder, dateRange);
     }
-    model.addAttribute("searchResults", searchResults);
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
 
     // We pass in the request parameters here, because they are needed by paging.ftl.
     // The normal way to get request parameters from a freemarker template is to use the

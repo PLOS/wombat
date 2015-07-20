@@ -7,7 +7,6 @@ import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.RecentArticleService;
-import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.slf4j.Logger;
@@ -41,9 +40,6 @@ public class HomeController extends WombatController {
 
   @Autowired
   private RecentArticleService recentArticleService;
-
-  @Autowired
-  private EditorialContentService editorialContentService;
 
   /**
    * Extract {@code docs} element; rename {@code "id"} to {@code "doi"} to match the service API.

@@ -59,7 +59,7 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
 
   @Override
   /**
-   * Created a RequestMappingInfo from a RequestMapping annotation.
+   * Create a RequestMappingInfo from a RequestMapping annotation.
    */
   protected RequestMappingInfo createRequestMappingInfo(RequestMapping annotation, RequestCondition<?> customCondition) {
     Set<String> allPatterns = new HashSet<>();

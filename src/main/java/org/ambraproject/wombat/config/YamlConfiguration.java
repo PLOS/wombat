@@ -173,7 +173,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
 
-
   /**
    * Validate values after deserializing.
    *

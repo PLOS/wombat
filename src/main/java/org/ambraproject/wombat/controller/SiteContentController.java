@@ -69,7 +69,7 @@ public class SiteContentController extends WombatController {
   /**
    * controller for site content home pages
    */
-  @RequestMapping(name = "siteContentHome", value = "/*/s", method = RequestMethod.GET)
+  @RequestMapping(name = "siteContentHome", value = {"/s", "/*/s"}, method = RequestMethod.GET)
   public String siteContentHomePage(Model model, @SiteParam Site site) throws IOException {
 
     Theme theme = site.getTheme();

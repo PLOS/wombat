@@ -193,7 +193,9 @@ $line-height: 18px; // applies to parapgraphs and lists by default
 $line-height-large: ($line-height * 2);
 $line-height-medium: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
+$line-height-xsmall: 3px;
 $paragraph-spacing: ($line-height * .5);
+
 $list-spacing: $paragraph-spacing;
 $line-height-icon: rem-calc(35);
 

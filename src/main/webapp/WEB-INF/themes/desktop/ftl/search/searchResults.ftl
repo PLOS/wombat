@@ -27,22 +27,21 @@
   <#assign advancedSearch = true />
 </#if>
 
-<body class="static ${journalStyle}">
+<body class="static ${journalStyle} search-results-body">
 
   <#assign headerOmitMain = true />
   <#include "../common/header/headerContainer.ftl" />
 
-  <main class="search-results-body">
     <div class="search-results-controls">
       <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
         <div class="search-results-controls-first-row">
-          <fieldset>
+          <fieldset class="search-field">
             <legend>Search</legend>
             <label for="controlBarSearch">Search</label>
             <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}" value="${query}" required />
             <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
           </fieldset>
-          <a class="search-results-button-hover-branded" href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">advanced</a>
+          <fieldset class="search-button"><a class="search-results-button-hover-branded" href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">advanced</a> </fieldset>
         </div>
 
         <div class="search-results-controls-second-row">
@@ -133,6 +132,7 @@
                 ${author}<#if author_has_next>,</#if>
               </#list>
             </p>
+            <p>
             <#if doc.article_type??>
               <span id="article-result-${doc_index}-type">${doc.article_type}</span> |
             </#if>
@@ -144,6 +144,7 @@
                 ${doc.cross_published_journal_name[0]}
               </span>
             </#if>
+            </p>
             <p class="search-results-doi">${doc.id}</p>
             <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
               <div class="search-results-eoc">

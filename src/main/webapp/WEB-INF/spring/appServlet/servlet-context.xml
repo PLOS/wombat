@@ -46,6 +46,11 @@
     <aop:advisor pointcut-ref="allWombatMethods" advice-ref="performanceMonitor" order="1"/>
   </aop:config>
 
+  <aop:config>
+    <aop:pointcut id="springHandlerMethods" expression="execution(* org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.*(..))"/>
+    <aop:advisor pointcut-ref="springHandlerMethods" advice-ref="performanceMonitor" order="2"/>
+  </aop:config>
+
   <!--<beans:bean id="customizableTraceInterceptor"-->
               <!--class="org.springframework.aop.interceptor.CustomizableTraceInterceptor">-->
     <!--<beans:property name="enterMessage" value="Entering $[methodName]($[arguments])"/>-->

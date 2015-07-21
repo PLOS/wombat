@@ -61,14 +61,14 @@
 .search-results-button-gray-small {
   @extend .search-results-button-branded-small;
   color: $white;
-  background-color: #646464;
+  background-color: $grey-med-dark;
 
   &:hover {
     color: $white;
     }
   }
 
-$controls-gray: #cccccc;
+$controls-gray: $grey-med-light;
 
 .search-results-controls {
   background: $grey-verydark;

@@ -19,7 +19,7 @@ public class SiteRequestCondition implements RequestCondition <SiteRequestCondit
 
   public SiteRequestCondition(SiteResolver siteResolver, Set<String> validSites){
     this.siteResolver = Preconditions.checkNotNull(siteResolver);
-    this.validSites = ImmutableSet.copyOf(Preconditions.checkNotNull(validSites));
+    this.validSites = ImmutableSet.copyOf(validSites);
   }
 
   @Override

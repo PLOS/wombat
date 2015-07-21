@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -14,15 +15,16 @@ public class HandlerMappingConfiguration {
   private static final String KEYNAME_PATTERNS = "patterns";
   private static final String KEYNAME_EXCLUDEPATTERNS = "excludePatterns";
   private static final String KEYNAME_SITEOVERRIDES = "siteOverrides";
-  public static final String VALUE_NULLSITE = "null";
+  public static final String VALUE_NULLSITE = "undefined";
 
-  private ImmutableSet<String> siteKeys;
-  private Map<String, Map<String, ?>> handlerMapping;
+  private final ImmutableSet<String> siteKeys;
+  private final Map<String, Map<String, ?>> handlerMapping;
 
   public HandlerMappingConfiguration(Map<String, Map<String, ?>> handlerMapping, SiteSet siteSet) {
-    this.handlerMapping = handlerMapping;
+    this.handlerMapping = handlerMapping != null ? handlerMapping :
+            ImmutableMap.<String, Map<String, ?>>of("", ImmutableMap.<String, Object>of());
     this.siteKeys = ImmutableSet.<String>builder()
-            .addAll(Preconditions.checkNotNull(siteSet).getSiteKeys())
+            .addAll(siteSet.getSiteKeys())
             .add(VALUE_NULLSITE)
             .build();
   }
@@ -51,20 +53,20 @@ public class HandlerMappingConfiguration {
 
   public boolean hasSiteMapping(RequestMapping handlerAnnotation) {
     String handlerName = getHandlerName(handlerAnnotation);
-    return handlerMapping != null && handlerMapping.get(handlerName) != null &&
+    return handlerMapping.get(handlerName) != null &&
             ((handlerMapping.get(handlerName).get(KEYNAME_SITES) != null ||
             handlerMapping.get(handlerName).get(KEYNAME_EXCLUDESITES) != null));
   }
 
   public boolean hasSiteOverrides(RequestMapping handlerAnnotation) {
     String handlerName = getHandlerName(handlerAnnotation);
-    return handlerMapping != null && handlerMapping.get(handlerName) != null &&
+    return handlerMapping.get(handlerName) != null &&
             handlerMapping.get(handlerName).get(KEYNAME_SITEOVERRIDES) != null;
   }
 
   private boolean hasPatternsMapping(RequestMapping handlerAnnotation) {
     String handlerName = getHandlerName(handlerAnnotation);
-    return handlerMapping != null && handlerMapping.get(handlerName) != null &&
+    return handlerMapping.get(handlerName) != null &&
             ((handlerMapping.get(handlerName).get(KEYNAME_PATTERNS) != null ||
             handlerMapping.get(handlerName).get(KEYNAME_EXCLUDEPATTERNS) != null));
   }

@@ -26,6 +26,7 @@
   <#assign query = RequestParameters.unformattedQuery?html />
   <#assign advancedSearch = true />
 </#if>
+<#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set" />
 
 <body class="static ${journalStyle} search-results-body">
 
@@ -41,14 +42,21 @@
             <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}" value="${query}" required />
             <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
           </fieldset>
-          <fieldset class="search-button"><a class="search-results-button-hover-branded" href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">advanced</a> </fieldset>
+          <fieldset class="search-button">
+            <a class="search-results-button-hover-branded search-results-advanced-search-submit" href="${advancedSearchLink}">advanced</a>
+          </fieldset>
         </div>
 
         <div class="search-results-controls-second-row">
 
-        <#-- TODO: wire up the following controls.  -->
+        <#-- TODO: implement the following controls.
         <a id="filterByButton" class="search-results-button-hover-branded-small search-results-flush-left" href="#">filter by +</a>
         <a id="clearAllFiltersButton" class="search-results-button-gray-small search-results-flush-left" href="#">Clear all filters</a>
+        -->
+        <span class='search-results-disabled-message'>
+          Search filters are temporarily unavailable. Please use <a href="${advancedSearchLink}">Advanced Search</a>
+          to construct more specific queries.
+        </span>
 
         <#-- TODO: fis this select dropdown.  See comments in the .scss.  -->
         <div class="search-results-select">
@@ -64,6 +72,7 @@
         </div>
         <#if (isFiltered)>
           <div class="filter-block">
+            <span>Results from:</span>
             <#if (filterStartDate??)>
               <div class="filter-item">
                 ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
@@ -197,7 +206,21 @@
       </#if>
 
     </article>
-  </main>
+
+    <aside>
+      <div class="search-alert" data-js-tooltip-hover="trigger">
+        Search Alert
+        <div class="search-alert-tooltip" data-js-tooltip-hover="target">
+          This feature temporarily unavailable.
+        </div>
+      </div>
+      <div class="search-feed" data-js-tooltip-hover="trigger">
+        <div class="search-feed-tooltip" data-js-tooltip-hover="target">
+          This feature temporarily unavailable.
+        </div>
+      </div>
+    </aside>
+  
 
   <#include "../common/footer/footer.ftl" />
   <@renderJs />

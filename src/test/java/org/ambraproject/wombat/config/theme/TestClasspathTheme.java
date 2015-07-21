@@ -14,7 +14,9 @@ package org.ambraproject.wombat.config.theme;
 import com.google.common.base.Joiner;
 import freemarker.cache.TemplateLoader;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
@@ -28,6 +30,13 @@ public class TestClasspathTheme extends Theme {
 
   private static final String TEST_RESOURCE_DIR = "test_themes";
 
+  /**
+   * Constructor intended for simple tests where a theme has no parent (or is the parent).
+   */
+  public TestClasspathTheme() {
+    super("test", null);
+  }
+
   public TestClasspathTheme(String key, List<? extends Theme> parents) {
     super(key, parents);
   }
@@ -39,8 +48,17 @@ public class TestClasspathTheme extends Theme {
 
   @Override
   protected InputStream fetchStaticResource(String path) throws IOException {
-    String fullPath = Joiner.on(File.separator).join(TEST_RESOURCE_DIR, getKey(), path);
-    return Thread.currentThread().getContextClassLoader().getResourceAsStream(fullPath);
+
+    // In order to use the "live" config files for the root theme, we treat it
+    // differently here.
+    if ("root".equals(getKey())) {
+      String fullPath = Joiner.on(File.separator).join("src", "main", "webapp", "WEB-INF", "themes", "root", path);
+      File file = new File(fullPath);
+      return file.exists() ? new BufferedInputStream(new FileInputStream(fullPath)) : null;
+    } else {
+      String fullPath = Joiner.on(File.separator).join(TEST_RESOURCE_DIR, getKey(), path);
+      return Thread.currentThread().getContextClassLoader().getResourceAsStream(fullPath);
+    }
   }
 
   @Override

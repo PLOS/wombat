@@ -1,6 +1,6 @@
 <header>
   <div id="topslot" class="head-top">
-    <#include "adSlotTop.ftl" />
+  <#include "adSlotTop.ftl" />
   </div>
 
   <div id="user" class="nav">
@@ -8,7 +8,7 @@
     <#macro navTopItem href highlighted=false>
       <li <#if highlighted>class="highlighted"</#if>><a href="${href}"><#nested/></a></li>
     </#macro>
-      <#include "navTop.ftl" />
+    <#include "navTop.ftl" />
     </ul>
   </div>
   <div id="pagehdr">
@@ -19,13 +19,9 @@
 
     <#include "search.ftl" />
 
-        </ul>     <#--opened in siteMenu.ftl -->
+      </ul>     <#--opened in siteMenu.ftl -->
       </section>  <#--opened in siteMenu.ftl -->
     </nav>
   </div><#-- pagehdr-->
 
 </header>
-
-<main> <#-- closed in footer.ftl -->
-
-

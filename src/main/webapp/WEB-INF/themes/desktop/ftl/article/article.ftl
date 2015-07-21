@@ -16,7 +16,7 @@
 
 <body class="article ${journalStyle}">
 
-<#include "../common/header/header.ftl" />
+<#include "../common/header/headerContainer.ftl" />
 <div class="set-grid">
   <header class="title-block">
   <#include "signposts.ftl" />

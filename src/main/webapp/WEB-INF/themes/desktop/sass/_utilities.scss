@@ -54,13 +54,13 @@ p,div,span,li,ul, ol{
 
 
 $zindex: (
-  modal     : 9000,
-  overlay   : 8000,
-  topvisible: 7000,
-  crossmark-tooltip: 6999,
-  dropdown  : 6998,
-  header    : 6000,
-  footer    : 5000,
+  modal     : 90,
+  overlay   : 80,
+  topvisible: 70,
+  crossmark-tooltip: 69,
+  dropdown  : 68,
+  header    : 60,
+  footer    : 50,
   invisible : -1,
 
 );
@@ -69,7 +69,16 @@ $zindex: (
 
 $default-border-radius: $border-radius-default;
 // that name space convention in compass just really bugs me.
+%rounded-default {
+  @include border-radius();
+}
 
+%rounded-default-top {
+  @include border-top-radius();
+}
+%rounded-default-bottom {
+  @include border-bottom-radius();
+}
 // color mixin:
 @mixin highlight-color($clr-highlight: $plos-default) {
   color: $clr-highlight;

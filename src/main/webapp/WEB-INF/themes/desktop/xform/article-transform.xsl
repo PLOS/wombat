@@ -863,7 +863,6 @@
             <xsl:if test="$cit[@publication-type='journal']">
               <!-- create reference links -->
               <!-- if citedArticles parameter has not been set, fail gracefully and use XML-based data for links -->
-              <xsl:variable name="pubYear" select="$cit/year[1]"/>
               <!-- use author and title preferentially from database, then XML -->
               <xsl:variable name="author">
               <xsl:choose>
@@ -938,6 +937,7 @@
                     <xsl:element name="a">
                       <xsl:attribute name="href">
                         <!-- build link and use + for spaces for consistency with Ambra -->
+                        <xsl:variable name="pubYear" select="($cit/year)[1]"/>
                         <xsl:value-of select="replace(concat('http://scholar.google.com/scholar_lookup?title=',
                         $title,'&amp;author=', $author, '&amp;publication_year=', $pubYear),'%20','+')"/>
                       </xsl:attribute>
@@ -2533,7 +2533,6 @@
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template match="price"/>
   <xsl:template match="roman"/>
-  <xsl:template match="sans-serif"/>
 
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template match="sc">

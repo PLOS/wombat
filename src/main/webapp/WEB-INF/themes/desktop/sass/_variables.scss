@@ -46,8 +46,11 @@ $clr-brand: $plos-default;
 $black: #000;
 $white: #fff;
 $grey-dark: #333;
+$grey-blah: #3b3b3b;
+
 $grey-med-dark: #666;
 $grey-med: #707070;
+$grey-blah: #3b3b3b;
 
 $grey-med-light: #ccc;
 $grey-light: #efefef;
@@ -191,7 +194,7 @@ $line-height-med: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
 $paragraph-spacing: ($line-height * .5);
 $list-spacing: $paragraph-spacing;
-
+$line-height-icon: rem-calc(35);
 
 $button-height: 35px;
 

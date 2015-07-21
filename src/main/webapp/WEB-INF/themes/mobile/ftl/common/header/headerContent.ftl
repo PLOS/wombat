@@ -23,11 +23,11 @@
   </div>
   <nav id="article-menu" class="menu-bar">
     <ul>
-       <li>
-           <noscript>
-               <a href="http://www.activatejavascript.org" target="_blank">For full functionality of this site, please enable JavaScript.</a>
-           </noscript>
-       </li>
+      <li>
+        <noscript>
+          <a href="http://www.activatejavascript.org" target="_blank">For full functionality of this site, please enable JavaScript.</a>
+        </noscript>
+      </li>
     <@themeConfig map="taxonomyBrowser" value="hasTaxonomyBrowser" ; hasTaxonomyBrowser>
       <#if hasTaxonomyBrowser>
         <li>

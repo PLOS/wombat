@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.SetMultimap;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.ambraproject.wombat.config.site.Site;
@@ -113,15 +114,28 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     assertArticleTypes(actualMap.get("fq"));
   }
 
+  private static class SearchServiceForAddArticleLinksTest extends SolrSearchService {
+
+    @Override
+    protected void initializeEIssnToSiteMap(SiteSet siteSet, Site currentSite) throws IOException {
+      ImmutableMap.Builder<String, Site> builder = new ImmutableMap.Builder<>();
+      builder.put("123", siteSet.getSites("journal1Key").get(0))
+          .put("456", siteSet.getSites("journal2Key").get(0))
+          .put("789", siteSet.getSites("collectionJournalKey").get(0));
+      eIssnToSite = builder.build();
+    }
+  }
+
   @Test
   public void testAddArticleLinks() throws IOException {
+    SearchService searchServiceForTest = new SearchServiceForAddArticleLinksTest();
     Map<String, List<Map>> searchResults = new HashMap<>();
     List<Map> docs = new ArrayList<>(1);
     Map doc = new HashMap();
     List<String> crossPubbedJournals = new ArrayList<>(1);
     crossPubbedJournals.add("journal1Key");
-    doc.put("cross_published_journal_key", crossPubbedJournals);
     doc.put("id", "12345");
+    doc.put("eissn", "123");
     docs.add(doc);
     searchResults.put("docs", docs);
     MockHttpServletRequest request = new MockHttpServletRequest();
@@ -129,27 +143,12 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     List<Site> sites = siteSet.getSites("journal2Key");
     assertEquals(sites.size(), 1);  // For the purposes of this test
 
-    Map<?, ?> actual = searchService.addArticleLinks(searchResults, request, sites.get(0), siteSet);
+    Map<?, ?> actual = searchServiceForTest.addArticleLinks(searchResults, request, sites.get(0), siteSet);
     List<Map> actualDocs = (List) actual.get("docs");
     assertEquals(actualDocs.size(), 1);
     Map actualDoc = (Map) actualDocs.get(0);
     assertEquals(actualDoc.get("id"), "12345");
     assertEquals(actualDoc.get("link"), "someContextPath/site1/article?id=12345");
-
-    // Test an edge case where the first journal listed in cross_published_journal_key
-    // is a collection.  We want the non-collection site.
-    crossPubbedJournals = new ArrayList<>(2);
-    crossPubbedJournals.add("collectionJournalKey");
-    crossPubbedJournals.add("journal2Key");
-    doc.put("cross_published_journal_key", crossPubbedJournals);
-    sites = siteSet.getSites("journal1Key");
-    assertEquals(sites.size(), 1);
-
-    actual = searchService.addArticleLinks(searchResults, request, sites.get(0), siteSet);
-    actualDocs = (List) actual.get("docs");
-    assertEquals(actualDocs.size(), 1);
-    actualDoc = (Map) actualDocs.get(0);
-    assertEquals(actualDoc.get("link"), "someContextPath/site2/article?id=12345");
   }
 
   /**

@@ -16,6 +16,7 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -37,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -51,6 +53,12 @@ public class SolrSearchService implements SearchService {
   private JsonService jsonService;
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
+
+  @Autowired
+  private SoaService soaService;
+
+  @VisibleForTesting
+  protected Map<String, Site> eIssnToSite;
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -188,9 +196,9 @@ public class SolrSearchService implements SearchService {
   /**
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
-  private static final String FL = "id,publication_date,title,cross_published_journal_key,"
-      + "cross_published_journal_name,author_display,article_type,counter_total_all,alm_scopusCiteCount,"
-      + "alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,alm_facebookCount,retraction,expression_of_concern";
+  private static final String FL = "id,eissn,publication_date,title,cross_published_journal_name,author_display,"
+      + "article_type,counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,"
+      + "alm_facebookCount,retraction,expression_of_concern";
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
@@ -262,24 +270,44 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet)
       throws IOException {
+    initializeEIssnToSiteMap(siteSet, site);
     List<Map> docs = (List<Map>) searchResults.get("docs");
     for (Map doc : docs) {
       String doi = (String) doc.get("id");
-      List<String> crossPubbedJournals = (List<String>) doc.get("cross_published_journal_key");
-      Site resultSite = null;
-
-      // Iterate through the journal keys, and choose the first key that is not a collection site.
-      // (We want to link to the "real" journal the article was published in, not the collection.)
-      for (String journalKey : crossPubbedJournals) {
-        resultSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
-        boolean isCollection = (boolean) resultSite.getTheme().getConfigMap("journal").get("isCollection");
-        if (!isCollection) {
-          break;
-        }
-      }
+      String eIssn = (String) doc.get("eissn");
+      Site resultSite = eIssnToSite.get(eIssn);
       doc.put("link", resultSite.getRequestScheme().buildLink(request, "/article?id=" + doi));
     }
     return searchResults;
+  }
+
+  /**
+   * Initializes the eIssnToSite map if necessary by calling rhino to get eISSNs for all journals.
+   *
+   * @param siteSet set of all sites
+   * @param currentSite site associated with the current request
+   * @throws IOException
+   */
+  @VisibleForTesting
+  protected synchronized void initializeEIssnToSiteMap(SiteSet siteSet, Site currentSite) throws IOException {
+    if (eIssnToSite == null) {
+      Map<String, Site> mutable = new HashMap<>();
+      for (Site site : siteSet.getSites()) {
+        Map<String, String> rhinoResult = (Map<String, String>) soaService.requestObject(
+            "journals/" + site.getJournalKey(), Map.class);
+
+        // We have to call Theme.resolveForeignJournalKey(), instead of using the site that
+        // comes from the loop, since resolveForeignJournalKey() contains logic to only return
+        // the same "type" of site (desktop or mobile).
+
+        // Note that this logic will have to be changed if mobile ever calls this method.  Currently,
+        // mobile search results links always point within the same site, so they can be generated
+        // in the templates.
+        mutable.put(rhinoResult.get("eIssn"),
+            currentSite.getTheme().resolveForeignJournalKey(siteSet, site.getJournalKey()));
+      }
+      eIssnToSite = ImmutableMap.copyOf(mutable);
+    }
   }
 
   //Override for buildCommonParams with no article types

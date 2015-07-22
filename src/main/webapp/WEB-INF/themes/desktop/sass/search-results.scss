@@ -257,11 +257,19 @@ $controls-gray: $grey-med-light;
 
 // Paging controls (shared with mobile).
 
-$inactive-background-color: #c2c2c2;
+$inactive-background-color: $grey-med-light;
+$pagination-height: 24px;
 
 .nav-pagination {
   display: inline;
+
+  a {
+    line-height: rem-calc($pagination-height);
+    padding: rem-calc(0 4px);
+    box-sizing: content-box;
+    color: $clr-body-text;
   }
+}
 
 @mixin search-results-rounded-control {
   display: inline-block;
@@ -281,8 +289,18 @@ $inactive-background-color: #c2c2c2;
 }
 
 .switch {
-  margin: rem-calc(0 50 0 0);
-  background: $black;
+  background: $clr-body-text;
+  &.previous-page {
+    margin: rem-calc(0 50 0 0);
+  }
+  &.next-page {
+    margin: rem-calc(0 0 0 50);
+  }
+  &.disabled {
+    background-color: $inactive-background-color;
+    cursor: default;
+  }
+
   padding: 0;
   .icon-text {
     @extend .aria-text;
@@ -290,7 +308,8 @@ $inactive-background-color: #c2c2c2;
 
   // Hide the text that is embedded and display an icon instead.
   .icon:before {
-    width: $pad-default;
+    width: $pagination-height;
+    line-height: $pagination-height;
     white-space: nowrap;
     color: $white;
     }
@@ -316,25 +335,45 @@ $inactive-background-color: #c2c2c2;
 .search-results-num-per-page {
   display: inline-block;
   float: right;
-  vertical-align: top;
+  vertical-align: middle;
   width: rem-calc(160px);
-  margin: 0 0 0 0;
-  font-size: $txt-size-medium-large;
-  }
+  margin: 0;
+  font-size: $txt-size-small;
+}
 
 .search-results-num-per-page-selector {
   padding: 0;
   width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  line-height: $pagination-height;
 
   select {
     @include search-results-rounded-control;
     @extend %brand-background;
-    width: 100px;
+    width: rem-calc(55px);
+    border-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    &:focus, &:active {
+      outline: none;
+    }
     option {
       background-color: $inactive-background-color;
       }
     }
+
+  @extend .icon-caret-down;
+
+  &:before {
+    position: absolute;
+    right: rem-calc(6);/* from search-results-button */
+    pointer-events: none;
+    line-height: 1.5rem;
   }
+}
 
 .search-results-select {
   float: right;

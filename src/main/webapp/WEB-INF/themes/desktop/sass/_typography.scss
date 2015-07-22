@@ -85,19 +85,18 @@ ol {
     padding-left: $pad-default;
     margin-bottom: rem-calc($line-height-small);
     position: relative;
-    }
+  }
   li::before {
-    content: "\f054";
     @extend .fa;
     @extend .fa-chevron-right;
+    @extend .list-icon;
+    content: "\f054";
     font-size: rem-calc(10);
     display: inline-block;
     margin-left: rem-calc(-17);
-    position: absolute;
-    line-height: rem-calc($line-height) !important;// needed to ovewrite anyother line-height in other styles.
-    }
-  // to do put in variables
   }
+  // to do put in variables
+}
 .list-bullet-over-ride{
   li::before{
     content: none;

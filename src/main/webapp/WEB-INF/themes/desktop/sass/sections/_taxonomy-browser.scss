@@ -36,9 +36,8 @@ $level-selection-bg: $grey-dark;
 }
 
 .menu-icon-right {
-  position: absolute;
+  @extend .list-icon;
   top: 54%;
-  line-height: 0;
   right: rem-calc(8);
 }
 

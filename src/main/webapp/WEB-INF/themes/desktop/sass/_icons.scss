@@ -172,23 +172,35 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   line-height: $line-height-icon;
 }
 
-.icon-pointer{
+.icon-pointer {
   @extend .icon-fa;
   @extend .fa-hand-o-right;
   content: "\f0a4";
 }
 
-.icon-info{
+.icon-info {
   @extend .icon-fa;
   @extend .fa-info-circle;
   content: "\f05a";
 }
 
-.icon-warning{
+.icon-warning {
   @extend .icon-fa;
   @extend .fa-warning;
   font-size: $txt-size-small;
   line-height: $line-height-icon;
+}
+
+.icon-bell {
+  @extend .icon-fa;
+  @extend .fa-bell;
+  content: '\f0f3';
+}
+
+.list-icon {
+  position: absolute;
+  top: $list-spacing;
+  line-height: 0;
 }
 
 .aria-text {

@@ -126,7 +126,7 @@ h4 {
 //spacing
 h2, h3, h4, h5 {
   margin-bottom: rem-calc($line-height-small);
-  margin-top: rem-calc($line-height-med);
+  margin-top: rem-calc($line-height-medium);
   line-height: normal;
   }
 
@@ -147,7 +147,7 @@ h3, h4, h5 {
 
 //callout styles
 
-@mixin callout($margin-top: rem-calc($line-height-med),
+@mixin callout($margin-top: rem-calc($line-height-medium),
 $margin-bottom: rem-calc($line-height),
 $padding-x: rem-calc($line-height),
 $padding-y: $pad-default,
@@ -186,7 +186,7 @@ $icon-width: $pad-medium) {
 blockquote, .pullquote, .block-quote {
   @include text-default;
   border-left: $pad-xsmall solid $clr-separator;
-  margin: rem-calc($line-height-med 0 $line-height 0);
+  margin: rem-calc($line-height-medium 0 $line-height 0);
   }
 
 .pullquote {

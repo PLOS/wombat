@@ -120,7 +120,7 @@ $header-font-style: normal;
 $header-font-color: $clr-body-text;
 $header-line-height: 1.3;
 $header-top-margin: 0;
-$header-bottom-margin: rem-calc($line-height-med);
+$header-bottom-margin: rem-calc($line-height-medium);
 $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
@@ -142,7 +142,7 @@ $h6-font-size: rem-calc($txt-size-h6);
 $subheader-line-height: 1.3;
 $subheader-font-color: $clr-body-text;
 $subheader-font-weight: bold;
-$subheader-top-margin:  rem-calc($line-height-med);
+$subheader-top-margin:  rem-calc($line-height-medium);
 $subheader-bottom-margin: rem-calc($line-height-small);
 
 // A general <small> styling

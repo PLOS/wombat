@@ -1,24 +1,27 @@
 @import "global-library-imports";
 @import "global-section-imports";
 
-main.search-results-body {
-  @extend .plos-row;
-  width: (rem-calc($grid-width) - $grid-gutter);
-  margin-top: rem-calc($line-height-large);
-  margin-bottom: rem-calc($line-height-large);
+.search-results-body {
+  background-color: $clr-header;
 
-  article {
-    @include plos-grid-column($pixelwidth: 600, $gutter: left);
-  }
+  main {
+    @extend .plos-row;
+    width: (rem-calc($grid-width) - $grid-gutter);
+    margin-bottom: rem-calc($line-height-large);
 
-  aside {
-    @include plos-grid-column($pixelwidth: 200);
-  }
+    article {
+      @include plos-grid-column($pixelwidth: 760, $gutter: right);
+      }
 
-  .search-results-controls {
-    @include plos-grid-column($pixelwidth: 600, $gutter: left);
+    aside {
+      @include plos-grid-column($pixelwidth: 180);
+      }
+
+    .search-results-controls {
+      @include plos-grid-column($pixelwidth: 980, $gutter: none);
+      }
+    }
   }
-}
 
 @mixin search-results-button($font-size: $txt-size-mediumish) {
   padding: rem-calc(7 20 7 20);
@@ -29,51 +32,51 @@ main.search-results-body {
   border-radius: $border-radius-default;
   display: inline-block;
 
-}
+  }
 
 .search-results-button-branded {
   @include search-results-button;
   @extend %brand-background;
-}
+  }
 
 .search-results-button-hover-branded {
- @extend .search-results-button-branded;
+  @extend .search-results-button-branded;
   &:hover {
     background-color: $plos-default;
+    }
   }
-}
 
 .search-results-button-branded-small {
   @include search-results-button($txt-size-small);
   @extend %brand-background;
-} 
+  }
+
 .search-results-button-hover-branded-small {
- @extend .search-results-button-branded-small;
+  @extend .search-results-button-branded-small;
   &:hover {
     background-color: $plos-default;
+    }
   }
-}  
 
 .search-results-button-gray-small {
   @extend .search-results-button-branded-small;
   color: $white;
-  background-color: #646464;
+  background-color: $grey-med-dark;
 
   &:hover {
     color: $white;
+    }
   }
-}
 
-$controls-gray: #cccccc;
+$controls-gray: $grey-med-light;
 
 .search-results-controls {
   background: $grey-verydark;
-  padding: rem-calc(20 20 20 20);
-  margin-bottom: rem-calc(15px);
+  padding: rem-calc($line-height 0);
+  margin-bottom: rem-calc($line-height-medium);
   position: relative;
 
   > form {
-    @include plos-grid-column($pixelwidth: 600, $gutter: left);
 
     &:before, &:after {
       content: "";
@@ -84,70 +87,89 @@ $controls-gray: #cccccc;
       top: 0;
       bottom: 0;
       width: 300%;
-      background:  $grey-verydark;
+      background: $grey-verydark;
       height: 100%;
       z-index: -1;
-    }
+      }
 
     &:before {
       right: 0;
-    }
+      }
 
     &:after {
       left: 0
-    }
+      }
 
     .search-results-controls-first-row {
-      margin-bottom: rem-calc(30);
-    }
+      @extend .plos-row;
+      margin-bottom: rem-calc($line-height-medium);
+
+      .search-field {
+        @include plos-grid-column($pixelwidth: 760, $gutter: none);
+        }
+
+      .search-button {
+        @include plos-grid-column($pixelwidth: 150, $gutter: none, $float: right);
+        text-align: right;
+        padding: 0;
+
+        a {
+          padding: $line-height-small $pad-medium;
+          margin-right: 0;
+          }
+        }
+      }
 
     button:focus {
       outline: none;
-    }
+      }
 
     legend, label {
       display: none;
-    }
-
+      }
     fieldset {
+      border: none;
+      }
+
+    fieldset.search-field {
       display: inline;
       border: none;
       margin: 0;
       background-color: $white;
-    }
+
+      }
 
     input[type="text"] {
       margin: 0;
       border: none;
       outline: 0;
       display: inline-block;
-      width: rem-calc(400);
+      width: rem-calc(700);
       font-family: $font-face-fancy;
       font-size: $txt-size-xlarge;
       color: $clr-input-active;
       top: 0 !important;
-    }
+      }
     @include input-placeholder-color();
 
     button[type="submit"] {
-      @include postfix($white, $white);  // foundation
+      @include postfix($white, $white); // foundation
       padding: 0;
       margin: 0;
       border: none;
       display: inline-block;
+      float: right;
 
-      // overwriting foundation styles
-      top: 0 !important;
       .search-icon {
         @extend .fa;
         @extend .fa-search;
         font-size: rem-calc($txt-size-xlarge);
+        }
       }
-    }
 
     .search-results-flush-left {
       margin-left: 0;
-    }
+      }
 
     .search-results-controls-second-row {
       padding-bottom: $pad-default;
@@ -155,7 +177,8 @@ $controls-gray: #cccccc;
 
     .search-results-advanced-search-submit {
       float: right;
-      line-height: rem-calc(15);
+      line-height: rem-calc(15); //?
+      }
     }
 
     .search-results-disabled-message {
@@ -175,41 +198,53 @@ $controls-gray: #cccccc;
       }
     }
   }
-}
 
 .search-results-none-found {
   padding: rem-calc(30 0 30 40);
 
   p {
     font-size: $txt-size-xlarge;
-  }
+    }
 
   span {
     font-weight: bold;
+    }
   }
-}
 
 .search-results-num-found {
   font-size: $txt-size-medium-large;
 
   span {
     font-weight: bold;
+    }
   }
-}
+
 
 .search-results-list {
-  margin: rem-calc(15px 0 45px);
-}
+  margin: rem-calc($line-height-small 0 $line-height-large);
+  dd, dt {
+    display: block;
+    line-height: $line-height;
+    }
+  dt {
+    margin-bottom: rem-calc($line-height-xsmall);
+    }
+  p {
+    margin-bottom: rem-calc($line-height-xsmall);
+    }
+  }
 
 .search-results-title {
-  margin-bottom: rem-calc(3px);
-}
+  padding-bottom: rem-calc(0);
+  padding-top: $line-height;
+
+  }
 
 .search-results-title a {
   @include link-text($color: $grey-dark, $color-hover: $plos-default, $decoration-hover: underline,
-      $decoration-text: underline);
-  font-size: $txt-size-large;
-}
+  $decoration-text: underline);
+  font-size: $txt-size-medium-large;
+  }
 
 .search-results-authors {
   color: $grey-med-dark;
@@ -217,8 +252,8 @@ $controls-gray: #cccccc;
 }
 
 .search-results-doi {
-  margin-bottom: $line-height;
-}
+  //padding-bottom: $line-height-small;
+  }
 
 // Paging controls (shared with mobile).
 
@@ -226,7 +261,7 @@ $inactive-background-color: #c2c2c2;
 
 .nav-pagination {
   display: inline;
-}
+  }
 
 @mixin search-results-rounded-control {
   display: inline-block;
@@ -236,7 +271,7 @@ $inactive-background-color: #c2c2c2;
   padding: rem-calc(0 6px);
   min-width: rem-calc(16px);
   border-radius: $default-border-radius;
-}
+  }
 
 .number, .switch, .skip {
   @include search-results-rounded-control;
@@ -251,32 +286,32 @@ $inactive-background-color: #c2c2c2;
   padding: 0;
   .icon-text {
     @extend .aria-text;
-  }
+    }
 
   // Hide the text that is embedded and display an icon instead.
   .icon:before {
     width: $pad-default;
     white-space: nowrap;
     color: $white;
+    }
   }
-}
 
 .previous-page {
- .icon:before {
-   @extend .icon-caret-left;
-   margin-left: -2px;
- }
-}
+  .icon:before {
+    @extend .icon-caret-left;
+    margin-left: -2px;
+    }
+  }
 
 .next-page {
   .icon:before {
     @extend .icon-caret-right;
+    }
   }
-}
 
 .active {
   @extend %brand-background;
-}
+  }
 
 .search-results-num-per-page {
   display: inline-block;
@@ -285,7 +320,7 @@ $inactive-background-color: #c2c2c2;
   width: rem-calc(160px);
   margin: 0 0 0 0;
   font-size: $txt-size-medium-large;
-}
+  }
 
 .search-results-num-per-page-selector {
   padding: 0;
@@ -297,19 +332,19 @@ $inactive-background-color: #c2c2c2;
     width: 100px;
     option {
       background-color: $inactive-background-color;
+      }
     }
   }
-}
-
 
 .search-results-select {
   float: right;
   display: inline;
   select, label{
     @extend .search-results-button-branded-small;
+    margin-right: 0;
     }
 
-  label select{
+  label select {
     border-color: transparent;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -322,7 +357,7 @@ $inactive-background-color: #c2c2c2;
       }
     }
 
-  label{
+  label {
     position: relative;
     display: block !important;
     width: rem-calc(195);
@@ -338,9 +373,9 @@ $inactive-background-color: #c2c2c2;
     vertical-align: middle;
     width: 100%;
     text-align: right;
-    line-height: rem-calc(29);  /* from search-results-button */
+    line-height: rem-calc(29); /* from search-results-button */
     position: absolute;
-    right: rem-calc(6);/* from search-results-button */
+    right: rem-calc(6); /* from search-results-button */
     top: 0;
     display: block !important;
     pointer-events: none;
@@ -374,7 +409,7 @@ $inactive-background-color: #c2c2c2;
     margin-left: 0.8em;
     margin-right: 0.6em;
     background: image-url("icon-ExpOfConcern-retraction.png") no-repeat;
-  }
+    }
 
   a {
     color: $warning;
@@ -382,28 +417,24 @@ $inactive-background-color: #c2c2c2;
     text-decoration: underline;
     font-weight: bold;
     padding-bottom: rem-calc(20);
+    }
   }
-}
-
-.search-results-alm-container {
-  height: rem-calc($line-height);
-}
 
 .search-results-alm, .search-results-alm-error {
   display: none;
   font-weight: bold;
   font-size: $txt-size-xxsmall;
-}
+  }
 
 .icon-warning-stack {
   .icon-warning {
     color: $alert;
-  }
+    }
   .fa-exclamation {
     color: $black;
     font-size: $txt-size-xxxsmall;
+    }
   }
-}
 
 .filter-block {
   padding-top: $pad-small;
@@ -421,7 +452,7 @@ $inactive-background-color: #c2c2c2;
 .filter-item {
   @extend %rounded-default;
   font-size: $txt-size-small;
-  line-height: $line-height-med;
+  line-height: $line-height-medium;
   float: left;
   color: $white;
   background: $grey-blah;
@@ -490,3 +521,4 @@ $search-icon-pad-default: 8;
     font-weight: bold;
   }
 }
+

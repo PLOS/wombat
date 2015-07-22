@@ -191,9 +191,15 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   line-height: $line-height-icon;
 }
 
+.icon-bell {
+  @extend .icon-fa;
+  @extend .fa-bell;
+  content: '\f0f3';
+}
+
 .list-icon {
   position: absolute;
-  top: $line-height / 2;
+  top: $list-spacing;
   line-height: 0;
 }
 

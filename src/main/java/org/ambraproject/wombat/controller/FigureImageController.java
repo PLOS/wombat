@@ -55,7 +55,7 @@ public class FigureImageController extends WombatController {
    * @param id     an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
    * @param unique if present, assume the asset has a single file and serve that file; else, serve an identified file
    */
-  @RequestMapping(value = {"/article/asset", "/{site}/article/asset"})
+  @RequestMapping(name = "asset", value = {"/article/asset", "/*/article/asset"})
   public void serveAsset(HttpServletRequest request,
                          HttpServletResponse response,
                          @SiteParam Site site,
@@ -104,7 +104,7 @@ public class FigureImageController extends WombatController {
   /**
    * Serve the asset file for an identified figure thumbnail.
    */
-  @RequestMapping(value = {"/article/figure/image", "/{site}/article/figure/image"})
+  @RequestMapping(name = "figureImage", value = {"/article/figure/image", "/*/article/figure/image"})
   public void serveFigureImage(HttpServletRequest request,
                                HttpServletResponse response,
                                @SiteParam Site site,

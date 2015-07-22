@@ -29,7 +29,7 @@ import java.io.IOException;
 @Controller
 public class RedirectController extends WombatController {
 
-  @RequestMapping(value = {"/{site}/redirect/{sourcePage}"})
+  @RequestMapping(name = "redirect", value = {"/*/redirect/{sourcePage}"})
   public String render(Model model, @SiteParam Site site,
                        @PathVariable String sourcePage,
                        @RequestParam(value="defaultTarget", required = false) String defaultTarget)

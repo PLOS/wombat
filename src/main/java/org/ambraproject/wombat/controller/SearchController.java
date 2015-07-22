@@ -46,7 +46,7 @@ public class SearchController extends WombatController {
   @Autowired
   private SearchService searchService;
 
-  @RequestMapping(value = {"/search", "/{site}/search"})
+  @RequestMapping(name = "search", value = {"/search", "/*/search"})
   public String search(Model model, @SiteParam Site site,
                        @RequestParam(value = "q", required = false) String query,
                        @RequestParam(value = "subject", required = false) String subject,

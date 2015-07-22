@@ -26,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.IOException;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class SiteContentController extends WombatController {
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(value = {"/t/{pageName}", "/s/{pageName}", "/{site}/s/{pageName}"})
+  @RequestMapping(name="siteContent", value={"/s/{pageName}", "/*/s/{pageName}"})
   public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 
@@ -63,6 +64,23 @@ public class SiteContentController extends WombatController {
     }
     model.addAttribute("siteContentRepoKey", repoKey);
     return site + "/ftl/siteContent/container";
+  }
+
+  /**
+   * controller for site content home pages
+   */
+  @RequestMapping(name = "siteContentHome", value = {"/s", "/*/s"}, method = RequestMethod.GET)
+  public String siteContentHomePage(Model model, @SiteParam Site site) throws IOException {
+
+    Theme theme = site.getTheme();
+    Map<String, Object> pageConfig = theme.getConfigMap("siteContent");
+
+    String homeRepoKey = (String) pageConfig.get("homeRepoKey");
+    if (homeRepoKey == null) {
+      throw new RuntimeConfigurationException("Content repo key for site content home page not configured for theme " +
+              theme.toString());
+    }
+    return renderSiteContent(model, site, homeRepoKey);
   }
 
 }

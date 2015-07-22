@@ -57,7 +57,7 @@ public class StaticResourceController extends WombatController {
     return PathUtil.JOINER.join(targetTokens);
   }
 
-  @RequestMapping(value = {"/" + AssetUrls.RESOURCE_NAMESPACE + "/**", "/{site}/" + AssetUrls.RESOURCE_NAMESPACE + "/**"})
+  @RequestMapping(name = "staticResource", value = {"/" + AssetUrls.RESOURCE_NAMESPACE + "/**", "/*/" + AssetUrls.RESOURCE_NAMESPACE + "/**"})
   public void serveResource(HttpServletRequest request, HttpServletResponse response,
                             HttpSession session, @SiteParam Site site)
       throws IOException {

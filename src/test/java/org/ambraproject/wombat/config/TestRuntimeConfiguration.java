@@ -61,6 +61,11 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
+  public HandlerMappingConfiguration getHandlerMappingConfiguration(SiteSet siteSet) {
+    return null;
+  }
+
+  @Override
   public CacheConfiguration getCacheConfiguration() {
     return new CacheConfiguration() {
       @Override

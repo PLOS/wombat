@@ -109,28 +109,44 @@ $level-selection-bg: $grey-dark;
     @extend %rounded-default;
     background-color: $grey-light;
   }
+
+
 }
 
-.next {
-  @extend .icon-chevron-right;
-  @extend %carousel-button;
-  left: $level-container-width + $level-margin-right + $level-padding-left;
 
-  //todo: figure out why we need this &:before content in IE and FF
-  &:before{
-    content: "\f054";
-  }
-}
-
-.prev {
-  @extend .icon-chevron-left;
-  @extend %carousel-button;
-  left: 0;
-}
 
 .levels {
   padding-left: $level-padding-left;
   position: relative;
+
+  .next {
+    @extend .icon-chevron-right;
+    @extend %carousel-button;
+    left: $level-container-width + $level-margin-right + $level-padding-left;
+
+    //todo: figure out why we need this &:before content in IE and FF
+    &:before{
+      content: "\f054";
+      }
+    }
+
+  .prev {
+    @extend .icon-chevron-left;
+    @extend %carousel-button;
+    left: 0;
+    }
+
+  .up {
+   @extend %level-active-scroll;
+    @extend .icon-angle-up;
+    @extend %rounded-default-top;
+  }
+
+  .down {
+    @extend %level-active-scroll;
+    @extend .icon-angle-down;
+    @extend %rounded-default-bottom;
+  }
 }
 
 .levels-container {
@@ -268,17 +284,7 @@ a.hide-active-scroll {
   }
 }
 
-.up {
-  @extend %level-active-scroll;
-  @extend .icon-angle-up;
-  @extend %rounded-default-top;
-}
 
-.down {
-  @extend %level-active-scroll;
-  @extend .icon-angle-down;
-  @extend %rounded-default-bottom;
-}
 
 /* levels with selections made */
 .level-selection {

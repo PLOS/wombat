@@ -28,9 +28,12 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
@@ -127,6 +130,55 @@ public class SolrSearchService implements SearchService {
         return null;
       }
     }
+  }
+
+  public static class SolrExplicitDateRange implements SearchCriterion {
+
+    private String description;
+    private Calendar startDate;
+    private Calendar endDate;
+
+    public SolrExplicitDateRange(String description, String startDate, String endDate) {
+      this.description = description;
+
+      Calendar startCal = Calendar.getInstance();
+      Calendar endCal = Calendar.getInstance();
+      startCal.setTimeZone(TimeZone.getTimeZone("UTC"));
+      endCal.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+      SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+      // getValue() method uses DatatypeConverter.printDateTime to convert the calendar object to a string.
+      // However, this method uses the local time zone. Setting the time zone for the Calendar object doesn't
+      // enforce UTC in the result of the printDateTime method but setting it in the simpleDateFormat does.
+      simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+      try {
+        startCal.setTime(simpleDateFormat.parse(startDate));
+        endCal.setTime(simpleDateFormat.parse(endDate));
+      } catch (ParseException e) {
+        throw new RuntimeException(e);
+      }
+
+      this.startDate = startCal;
+      this.endDate = endCal;
+    }
+
+    @Override
+    public String getDescription() {
+      return description;
+    }
+
+    /**
+     * @return a String representing part of the "fq" param to pass to solr that will restrict the date range
+     * appropriately.  For example, "[2013-02-14T21:00:29.942Z TO 2013-08-15T21:00:29.942Z]". The String must be escaped
+     * appropriately before being included in the URL.  The final http param passed to solr should look like
+     * "fq=publication_date:[2013-02-14T21:00:29.942Z+TO+2013-08-15T21:00:29.942Z]".
+     */
+    @Override
+    public String getValue() {
+      return String.format("[%s TO %s]", DatatypeConverter.printDateTime(startDate),
+          DatatypeConverter.printDateTime(endDate));
+    }
+
   }
 
   /**

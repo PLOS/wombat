@@ -389,12 +389,10 @@ $pagination-height: 24px;
     -moz-appearance: none;
     appearance: none;
     background: transparent;
-    padding-left: rem-calc($pad-small);
-    width: rem-calc(190);
+    width: rem-calc(200);
     &:focus, &:active {
       outline: none;
       }
-
     }
 
   option{
@@ -405,7 +403,7 @@ $pagination-height: 24px;
 
   label {
     position: relative;
-    display: block !important;
+    display: table !important;
     overflow: hidden;
     cursor: pointer;
     padding: 0;
@@ -415,19 +413,17 @@ $pagination-height: 24px;
 
     }
 
-
-
   label::before {
-    display: inline-block;
     vertical-align: middle;
     width: 100%;
     text-align: right;
     position: absolute;
     right: 0;
-    padding-right: rem-calc(6);
-    top: 0;
-    display: block !important;
+    margin: rem-calc(7 20 7 20);
+    top: .27em;
     pointer-events: none;
+    display: table-cell;
+    vertical-align: middle;
     }
 
   label select::-ms-expand {
@@ -517,7 +513,7 @@ $pagination-height: 24px;
 @mixin search-disabled-control {
   @extend %rounded-default;
   @include js-tooltip-container;
-  background: #757575;
+  background: $clr-btn-disabled;
   color: $grey-light;
   cursor: default;
 }

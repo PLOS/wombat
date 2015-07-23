@@ -58,7 +58,7 @@ public class SolrSearchService implements SearchService {
   private SoaService soaService;
 
   @VisibleForTesting
-  protected Map<String, Site> eIssnToSite;
+  protected Map<String, String> eIssnToJournalKey;
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -270,43 +270,34 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet)
       throws IOException {
-    initializeEIssnToSiteMap(siteSet, site);
+    initializeEIssnToJournalKeyMap(siteSet, site);
     List<Map> docs = (List<Map>) searchResults.get("docs");
     for (Map doc : docs) {
       String doi = (String) doc.get("id");
       String eIssn = (String) doc.get("eissn");
-      Site resultSite = eIssnToSite.get(eIssn);
+      Site resultSite = site.getTheme().resolveForeignJournalKey(siteSet, eIssnToJournalKey.get(eIssn));
       doc.put("link", resultSite.getRequestScheme().buildLink(request, "/article?id=" + doi));
     }
     return searchResults;
   }
 
   /**
-   * Initializes the eIssnToSite map if necessary by calling rhino to get eISSNs for all journals.
+   * Initializes the eIssnToJournalKey map if necessary by calling rhino to get eISSNs for all journals.
    *
    * @param siteSet set of all sites
    * @param currentSite site associated with the current request
    * @throws IOException
    */
   @VisibleForTesting
-  protected synchronized void initializeEIssnToSiteMap(SiteSet siteSet, Site currentSite) throws IOException {
-    if (eIssnToSite == null) {
-      Map<String, Site> mutable = new HashMap<>();
+  protected synchronized void initializeEIssnToJournalKeyMap(SiteSet siteSet, Site currentSite) throws IOException {
+    if (eIssnToJournalKey == null) {
+      Map<String, String> mutable = new HashMap<>();
       for (Site site : siteSet.getSites()) {
         Map<String, String> rhinoResult = (Map<String, String>) soaService.requestObject(
             "journals/" + site.getJournalKey(), Map.class);
-
-        // We have to call Theme.resolveForeignJournalKey(), instead of using the site that
-        // comes from the loop, since resolveForeignJournalKey() contains logic to only return
-        // the same "type" of site (desktop or mobile).
-
-        // Note that this logic will have to be changed if mobile ever calls this method.  Currently,
-        // mobile search results links always point within the same site, so they can be generated
-        // in the templates.
-        mutable.put(rhinoResult.get("eIssn"),
-            currentSite.getTheme().resolveForeignJournalKey(siteSet, site.getJournalKey()));
+        mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
       }
-      eIssnToSite = ImmutableMap.copyOf(mutable);
+      eIssnToJournalKey = ImmutableMap.copyOf(mutable);
     }
   }
 

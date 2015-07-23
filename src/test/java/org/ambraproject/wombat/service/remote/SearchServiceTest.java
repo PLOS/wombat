@@ -117,12 +117,12 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
   private static class SearchServiceForAddArticleLinksTest extends SolrSearchService {
 
     @Override
-    protected void initializeEIssnToSiteMap(SiteSet siteSet, Site currentSite) throws IOException {
-      ImmutableMap.Builder<String, Site> builder = new ImmutableMap.Builder<>();
-      builder.put("123", siteSet.getSites("journal1Key").get(0))
-          .put("456", siteSet.getSites("journal2Key").get(0))
-          .put("789", siteSet.getSites("collectionJournalKey").get(0));
-      eIssnToSite = builder.build();
+    protected void initializeEIssnToJournalKeyMap(SiteSet siteSet, Site currentSite) throws IOException {
+      ImmutableMap.Builder<String, String> builder = new ImmutableMap.Builder<>();
+      builder.put("123", "journal1Key")
+          .put("456", "journal2Key")
+          .put("789", "collectionJournalKey");
+      eIssnToJournalKey = builder.build();
     }
   }
 

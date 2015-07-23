@@ -378,7 +378,7 @@ $pagination-height: 24px;
 .search-results-select {
   float: right;
   display: inline;
-  select{
+  select, label{
     @extend .search-results-button-branded-small;
     margin-right: 0;
     }
@@ -389,6 +389,7 @@ $pagination-height: 24px;
     -moz-appearance: none;
     appearance: none;
     background: transparent;
+    padding-left: rem-calc($pad-small);
     width: rem-calc(190);
     &:focus, &:active {
       outline: none;

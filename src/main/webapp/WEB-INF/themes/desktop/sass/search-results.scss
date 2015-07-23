@@ -378,7 +378,7 @@ $pagination-height: 24px;
 .search-results-select {
   float: right;
   display: inline;
-  select, label{
+  select{
     @extend .search-results-button-branded-small;
     margin-right: 0;
     }
@@ -388,33 +388,42 @@ $pagination-height: 24px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: rem-calc(180);
-    padding: 0;
-    margin: 0;
+    background: transparent;
+    width: rem-calc(190);
     &:focus, &:active {
       outline: none;
       }
+
+    }
+
+  option{
+    background: $grey-med-light;
+    color: black;
+    outline: none;
     }
 
   label {
     position: relative;
     display: block !important;
-    width: rem-calc(195);
     overflow: hidden;
     cursor: pointer;
-    padding-left: $pad-small;
+    padding: 0;
+    margin: 0;
+    //padding-left: $pad-small;
     @extend .icon-caret-down;
 
     }
+
+
 
   label::before {
     display: inline-block;
     vertical-align: middle;
     width: 100%;
     text-align: right;
-    line-height: rem-calc(29); /* from search-results-button */
     position: absolute;
-    right: rem-calc(6); /* from search-results-button */
+    right: 0;
+    padding-right: rem-calc(6);
     top: 0;
     display: block !important;
     pointer-events: none;

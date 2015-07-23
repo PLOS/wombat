@@ -251,10 +251,6 @@ $controls-gray: $grey-med-light;
   margin-bottom: rem-calc(3px);
 }
 
-.search-results-doi {
-  //padding-bottom: $line-height-small;
-  }
-
 // Paging controls (shared with mobile).
 
 $inactive-background-color: $grey-med-light;
@@ -408,7 +404,6 @@ $pagination-height: 24px;
     cursor: pointer;
     padding: 0;
     margin: 0;
-    //padding-left: $pad-small;
     @extend .icon-caret-down;
 
     }

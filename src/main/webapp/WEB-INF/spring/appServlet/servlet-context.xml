@@ -38,7 +38,7 @@
   <aop:aspectj-autoproxy proxy-target-class="true"/>
 
   <beans:bean id="performanceMonitor"
-        class="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" />
+        class="org.ambraproject.wombat.config.CustomPerformanceMonitorInterceptor" />
 
   <aop:config>
     <aop:pointcut id="allWombatMethods" expression="execution(* org.ambraproject.wombat.*.*.*(..)) &amp;&amp;

@@ -466,6 +466,11 @@ $pagination-height: 24px;
   }
 
 .icon-warning-stack {
+
+  .icon-warning, .fa-exclamation {
+    @extend .list-icon;
+  }
+
   .icon-warning {
     color: $alert;
     }

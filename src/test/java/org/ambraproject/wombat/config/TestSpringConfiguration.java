@@ -11,22 +11,25 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableSet;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.TestClasspathTheme;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.SearchService;
+import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.Reader;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Defines spring beans needed by tests.
@@ -42,8 +45,16 @@ public class TestSpringConfiguration {
   @Bean
   public ThemeTree themeTree(RuntimeConfiguration runtimeConfiguration)
       throws ThemeTree.ThemeConfigurationException {
-    TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
-    return runtimeConfiguration.getThemes(ImmutableSet.of(testClasspathTheme), testClasspathTheme);
+    Set<Theme> themes = new HashSet<>();
+    TestClasspathTheme rootTheme = new TestClasspathTheme("root", null);
+    themes.add(rootTheme);
+    TestClasspathTheme theme1 = new TestClasspathTheme("site1", Collections.singletonList(rootTheme));
+    themes.add(theme1);
+    TestClasspathTheme theme2 = new TestClasspathTheme("site2", Collections.singletonList(rootTheme));
+    themes.add(theme2);
+    TestClasspathTheme collectionTheme = new TestClasspathTheme("collectionSite", Collections.singletonList(rootTheme));
+    themes.add(collectionTheme);
+    return runtimeConfiguration.getThemes(themes, rootTheme);
   }
 
   @Bean
@@ -70,6 +81,13 @@ public class TestSpringConfiguration {
 
   @Bean
   public CachedRemoteService<Reader> cachedRemoteReader() {
+
+    // TODO: stub out if necessary for any test.
+    return null;
+  }
+
+  @Bean
+  public SoaService soaService() {
 
     // TODO: stub out if necessary for any test.
     return null;

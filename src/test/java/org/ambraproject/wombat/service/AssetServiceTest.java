@@ -34,8 +34,8 @@ import static org.testng.Assert.assertEquals;
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
 public class AssetServiceTest extends AbstractTestNGSpringContextTests {
 
-  private static final String DATA_PATH = Joiner.on(File.separator).join("src", "test", "resources",
-      AssetService.AssetUrls.RESOURCE_NAMESPACE, "js") + File.separator;
+  private static final String DATA_PATH = Joiner.on(File.separator).join("src", "test", "resources", "test_themes",
+      "site1", AssetService.AssetUrls.RESOURCE_NAMESPACE, "js") + File.separator;
 
   @Autowired
   private AssetService assetService;
@@ -69,7 +69,7 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
     jsFiles.add("resource/js/test1.js");
     jsFiles.add("resource/js/test2.js");
     String compiledJsPath = assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles,
-        siteSet.getSite("default"));
+        siteSet.getSite("site1"));
     String[] fields = compiledJsPath.split("/");
     String basename = fields[fields.length - 1];
 
@@ -90,6 +90,6 @@ public class AssetServiceTest extends AbstractTestNGSpringContextTests {
   public void testJsError() throws Exception {
     List<String> jsFiles = new ArrayList<>();
     jsFiles.add("resource/js/error.js");
-    assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles, siteSet.getSite("default"));
+    assetService.getCompiledAssetLink(AssetService.AssetType.JS, jsFiles, siteSet.getSite("site1"));
   }
 }

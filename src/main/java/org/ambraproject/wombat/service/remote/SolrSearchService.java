@@ -16,13 +16,16 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.io.Reader;
@@ -35,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -50,6 +54,11 @@ public class SolrSearchService implements SearchService {
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
 
+  @Autowired
+  private SoaService soaService;
+
+  @VisibleForTesting
+  protected Map<String, String> eIssnToJournalKey;
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -187,8 +196,8 @@ public class SolrSearchService implements SearchService {
   /**
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
-  private static final String FL = "id,publication_date,title,cross_published_journal_name,author_display,article_type,"
-      + "counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,"
+  private static final String FL = "id,eissn,publication_date,title,cross_published_journal_name,author_display,"
+      + "article_type,counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,"
       + "alm_facebookCount,retraction,expression_of_concern";
 
   @Autowired
@@ -256,6 +265,40 @@ public class SolrSearchService implements SearchService {
         rows, sortOrder, SolrEnumeratedDateRange.ALL_TIME, true);
     params.add(new BasicNameValuePair("q", "*:*"));
     return executeQuery(params);
+  }
+
+  @Override
+  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet)
+      throws IOException {
+    initializeEIssnToJournalKeyMap(siteSet, site);
+    List<Map> docs = (List<Map>) searchResults.get("docs");
+    for (Map doc : docs) {
+      String doi = (String) doc.get("id");
+      String eIssn = (String) doc.get("eissn");
+      Site resultSite = site.getTheme().resolveForeignJournalKey(siteSet, eIssnToJournalKey.get(eIssn));
+      doc.put("link", resultSite.getRequestScheme().buildLink(request, "/article?id=" + doi));
+    }
+    return searchResults;
+  }
+
+  /**
+   * Initializes the eIssnToJournalKey map if necessary by calling rhino to get eISSNs for all journals.
+   *
+   * @param siteSet set of all sites
+   * @param currentSite site associated with the current request
+   * @throws IOException
+   */
+  @VisibleForTesting
+  protected synchronized void initializeEIssnToJournalKeyMap(SiteSet siteSet, Site currentSite) throws IOException {
+    if (eIssnToJournalKey == null) {
+      Map<String, String> mutable = new HashMap<>();
+      for (Site site : siteSet.getSites()) {
+        Map<String, String> rhinoResult = (Map<String, String>) soaService.requestObject(
+            "journals/" + site.getJournalKey(), Map.class);
+        mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
+      }
+      eIssnToJournalKey = ImmutableMap.copyOf(mutable);
+    }
   }
 
   //Override for buildCommonParams with no article types

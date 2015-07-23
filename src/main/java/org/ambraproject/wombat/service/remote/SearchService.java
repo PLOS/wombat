@@ -14,7 +14,9 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -116,4 +118,20 @@ public interface SearchService {
    */
   public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows,
       SearchCriterion sortOrder) throws IOException;
+
+  /**
+   * Adds a new property, link, to each search result passed in.  The value of this property
+   * is the correct URL to the article on this environment.  Calling this method is necessary
+   * since article URLs need to be specific to the site of the journal the article is published
+   * in, not the site in which the search results are being viewed.
+   *
+   * @param searchResults deserialized search results JSON
+   * @param request current request
+   * @param site site of the current request (for the search results)
+   * @param siteSet site set of the current request
+   * @return searchResults decorated with the new property
+   * @throws IOException
+   */
+  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet)
+      throws IOException;
 }

@@ -133,7 +133,7 @@
       <dl id="searchResultsList" class="search-results-list">
         <#list searchResults.docs as doc>
           <dt data-doi="${doc.id}"  class="search-results-title">
-            <a href="article?id=${doc.id}">${doc.title}</a>
+            <a href="${doc.link}">${doc.title}</a>
           </dt>
           <dd id="article-result-${doc_index}">
             <p class="search-results-authors">

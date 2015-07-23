@@ -41,7 +41,7 @@ public class ThemeTree {
   }
 
   @VisibleForTesting
-  ImmutableSet<Theme> getThemes() {
+  public ImmutableSet<Theme> getThemes() {
     return themes.values();
   }
 

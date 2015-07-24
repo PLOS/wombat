@@ -288,9 +288,11 @@ $pagination-height: 24px;
   background: $clr-body-text;
   &.previous-page {
     margin: rem-calc(0 50 0 0);
+    padding: 0;
   }
   &.next-page {
     margin: rem-calc(0 0 0 50);
+    padding: 0;
   }
   &.disabled {
     background-color: $inactive-background-color;

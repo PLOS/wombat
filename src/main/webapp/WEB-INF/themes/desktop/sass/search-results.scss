@@ -334,43 +334,79 @@ $pagination-height: 24px;
   display: inline-block;
   float: right;
   vertical-align: middle;
+  line-height: 24px;
   width: rem-calc(160px);
   margin: 0;
   font-size: $txt-size-small;
 }
 
 .search-results-num-per-page-selector {
-  padding: 0;
-  width: auto;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  line-height: $pagination-height;
+  float: right;
+  display: inline;
+  select, label{
+    @extend .search-results-button-branded-small;
+    margin-right: 0;
+  }
 
-  select {
-    @include search-results-rounded-control;
-    @extend %brand-background;
-    width: rem-calc(55px);
+  label select {
     border-color: transparent;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    background: transparent;
+    padding: 0px;
+    width: 55px;
+    height: rem-calc(24px);
+    padding: rem-calc(0 0 0 10px);
     &:focus, &:active {
       outline: none;
     }
-    option {
-      background-color: $inactive-background-color;
-      }
-    }
-
-  @extend .icon-caret-down;
-
-  &:before {
-    position: absolute;
-    right: rem-calc(6);/* from search-results-button */
-    pointer-events: none;
-    line-height: 1.5rem;
   }
+
+  option{
+    background: $grey-med-light;
+    color: black;
+    outline: none;
+  }
+
+  label {
+    position: relative;
+    display: table !important;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    @extend .icon-caret-down;
+
+  }
+
+  label::before {
+    vertical-align: middle;
+    width: 100%;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    margin: rem-calc(0 10px 0 0);
+    top: .38em;
+    pointer-events: none;
+    display: table-cell;
+    vertical-align: middle;
+    width: 55px;
+    height: 24px;
+  }
+
+  label select::-ms-expand {
+    display: none;
+  }
+
+  label:-moz-any(select) {
+    width: 110%;
+  }
+
+  &html.ie9 label select {
+    width: 110%;
+  }
+
 }
 
 .search-results-select {

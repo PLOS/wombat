@@ -59,27 +59,15 @@
 
     var $visibleTooltip;
 
-    function hideTooltip($tooltip) {
-      $tooltip.css('opacity', '0');
-      $tooltip.css('visibility', 'hidden');
-      $tooltip.css('z-index', '-1');
-    }
-
-    function showTooltip($tooltip) {
-      $tooltip.css('opacity', '1.0');
-      $tooltip.css('visibility', 'visible');
-      $tooltip.css('z-index', '1');
-    }
-
     $('[data-js-tooltip-hover=trigger]').on('click', function() {
 
       // Since the two icons are close together, we have to hide the adjacent
       // tooltip first if it is visible.
       if ($visibleTooltip !== undefined) {
-        hideTooltip($visibleTooltip);
+        $visibleTooltip.removeClass('visible');
       }
       $visibleTooltip = $(this).find('[data-js-tooltip-hover=target]');
-      showTooltip($visibleTooltip);
+      $visibleTooltip.addClass('visible');
     });
   });
 })(jQuery);

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.ArticleArchiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +21,12 @@ public class LockssController extends WombatController {
   @Autowired
   ArticleArchiveService articleArchiveServiceImpl;
 
-  @RequestMapping(value={"{site}/lockss.txt"}, method = RequestMethod.GET)
+  @RequestMapping(name="lockssPermission", value={"{site}/lockss.txt"}, method = RequestMethod.GET)
   public String getLockssPermission(@SiteParam Site site) {
     return site + "/ftl/lockss/permission";
   }
 
-  @RequestMapping(value={"{site}/lockss-manifest/vol_{year}"}, method = RequestMethod.GET)
+  @RequestMapping(name="lockssMonths", value={"{site}/lockss-manifest/vol_{year}"}, method = RequestMethod.GET)
   public String getMonthsForYear(@SiteParam Site site, @PathVariable String year, Model model) {
     String[] months = articleArchiveServiceImpl.getMonthsForYear(year);
     model.addAttribute("year", year);
@@ -33,7 +34,7 @@ public class LockssController extends WombatController {
     return site + "/ftl/lockss/lockss";
   }
 
-  @RequestMapping(value={"{site}/lockss-manifest/vol_{year}/{month}"}, method = RequestMethod.GET)
+  @RequestMapping(name="lockssArticles", value={"{site}/lockss-manifest/vol_{year}/{month}"}, method = RequestMethod.GET)
   public String getArticlesPerMonth(@SiteParam Site site, @PathVariable String year,
                                     @PathVariable String month, Model model) throws IOException {
     String[] dois = articleArchiveServiceImpl.getArticleDoisPerMonth(site, year, month);

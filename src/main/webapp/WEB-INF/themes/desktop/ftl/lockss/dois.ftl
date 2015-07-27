@@ -10,7 +10,7 @@
     <#if dois??>
       <ol>
         <#list dois as doi>
-          <li style="b"><a href="<@siteLink path="article/?id=" + doi/>"> ${doi} </a></li>
+          <li style="b"><a href="http://dx.plos.org/${doi}"> ${doi} </a></li>
         </#list>
       </ol>
     </#if>

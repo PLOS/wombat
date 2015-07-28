@@ -54,5 +54,20 @@
       $('#resultsPerPage').val($('#resultsPerPageDropdown').val());
       $('#searchControlBarForm').submit();
     });
+
+    // Code to make tooltips around disabled controls work on tablets.
+
+    var $visibleTooltip;
+
+    $('[data-js-tooltip-hover=trigger]').on('click', function() {
+
+      // Since the two icons are close together, we have to hide the adjacent
+      // tooltip first if it is visible.
+      if ($visibleTooltip !== undefined) {
+        $visibleTooltip.removeClass('visible');
+      }
+      $visibleTooltip = $(this).find('[data-js-tooltip-hover=target]');
+      $visibleTooltip.addClass('visible');
+    });
   });
 })(jQuery);

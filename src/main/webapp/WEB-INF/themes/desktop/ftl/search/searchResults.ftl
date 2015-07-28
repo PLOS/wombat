@@ -43,7 +43,7 @@
             <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
           </fieldset>
           <fieldset class="search-button">
-            <a class="search-results-button-hover-branded search-results-advanced-search-submit" href="${advancedSearchLink}">advanced</a>
+            <a id="advancedSearchLink" class="search-results-button-hover-branded search-results-advanced-search-submit" href="${advancedSearchLink}">advanced</a>
           </fieldset>
         </div>
 

@@ -34,7 +34,7 @@
 <#if numPages gt 1>
 <nav id="article-pagination" class="nav-pagination">
   <#if currentPage gt 1 || alwaysShow == "true">
-    <a href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage - 1 />"
+    <a id="prevPageLink" href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage - 1 />"
        class="previous-page switch${((currentPage == 1) && (alwaysShow == 'true'))?string(' disabled','')}"><span class="icon"></span><span class="icon-text">Previous Page</span>
     </a>
   </#if>
@@ -56,7 +56,7 @@
     </#if>
   </#if>
   <#if currentPage lt numPages || alwaysShow == "true">
-    <a href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage + 1 />"
+    <a id="nextPageLink" href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage + 1 />"
        class="next-page switch${((currentPage == numPages) && (alwaysShow == 'true'))?string(' disabled','')}"><span class="icon"></span><span class="icon-text">Next Page</span>
     </a>
   </#if>

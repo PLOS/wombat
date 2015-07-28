@@ -33,6 +33,81 @@
   display: inline-block;
 
   }
+// div.BLAH > label > select
+
+@mixin dropdown-styled($width:200, $height:false, $padding:false, $margin: 7 20 7 20, $caret-spacing:.27em ) {
+  float: right;
+  display: inline;
+  select, label{
+    @extend .search-results-button-branded-small;
+    margin-right: 0;
+  }
+
+  label select {
+    border-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    &:focus, &:active {
+      outline: none;
+    }
+    width: rem-calc($width);
+    @if $height {
+      height: rem-calc($height);
+    }
+    @if $padding {
+      padding: rem-calc($padding);
+    }
+
+  }
+
+  option{
+    background: $grey-med-light;
+    color: black;
+    outline: none;
+  }
+
+  label {
+    position: relative;
+    display: table !important;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    @extend .icon-caret-down;
+
+  }
+
+  label::before {
+    vertical-align: middle;
+    width: 100%;
+    @if $height {
+      height: rem-calc($height);
+    }
+    text-align: right;
+    position: absolute;
+    right: 0;
+    margin: rem-calc($margin);//*
+    top: $caret-spacing;//*
+    pointer-events: none;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  label select::-ms-expand {
+    display: none;
+  }
+
+  label:-moz-any(select) {
+    width: 110%;
+  }
+
+  &html.ie9 label select {
+    width: 110%;
+  }
+
+}
 
 .search-results-button-branded {
   @include search-results-button;
@@ -341,137 +416,12 @@ $pagination-height: 24px;
 }
 
 .search-results-num-per-page-selector {
-  float: right;
-  display: inline;
-  select, label{
-    @extend .search-results-button-branded-small;
-    margin-right: 0;
-  }
-
-  label select {
-    border-color: transparent;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: transparent;
-    padding: 0px;
-    width: 55px;
-    height: rem-calc(24px);
-    padding: rem-calc(0 0 0 10px);
-    &:focus, &:active {
-      outline: none;
-    }
-  }
-
-  option{
-    background: $grey-med-light;
-    color: black;
-    outline: none;
-  }
-
-  label {
-    position: relative;
-    display: table !important;
-    overflow: hidden;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    @extend .icon-caret-down;
-
-  }
-
-  label::before {
-    vertical-align: middle;
-    width: 100%;
-    text-align: right;
-    position: absolute;
-    right: 0;
-    margin: rem-calc(0 10px 0 0);
-    top: .38em;
-    pointer-events: none;
-    display: table-cell;
-    vertical-align: middle;
-    width: 55px;
-    height: 24px;
-  }
-
-  label select::-ms-expand {
-    display: none;
-  }
-
-  label:-moz-any(select) {
-    width: 110%;
-  }
-
-  &html.ie9 label select {
-    width: 110%;
-  }
-
+  @include dropdown-styled($width:55, $height:24, $padding:0 0 0 10, $margin: 0 10 0 0, $caret-spacing:.38em);
 }
 
 .search-results-select {
-  float: right;
-  display: inline;
-  select, label{
-    @extend .search-results-button-branded-small;
-    margin-right: 0;
-    }
-
-  label select {
-    border-color: transparent;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: transparent;
-    width: rem-calc(200);
-    &:focus, &:active {
-      outline: none;
-      }
-    }
-
-  option{
-    background: $grey-med-light;
-    color: black;
-    outline: none;
-    }
-
-  label {
-    position: relative;
-    display: table !important;
-    overflow: hidden;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    @extend .icon-caret-down;
-
-    }
-
-  label::before {
-    vertical-align: middle;
-    width: 100%;
-    text-align: right;
-    position: absolute;
-    right: 0;
-    margin: rem-calc(7 20 7 20);
-    top: .27em;
-    pointer-events: none;
-    display: table-cell;
-    vertical-align: middle;
-    }
-
-  label select::-ms-expand {
-    display: none;
-    }
-
-  label:-moz-any(select) {
-    width: 110%;
-    }
-
-  &html.ie9 label select {
-    width: 110%;
-    }
-
-  }
+  @include dropdown-styled;
+}
 
 .search-results-eoc {
   background: $clr-warning-bg;

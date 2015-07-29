@@ -8,7 +8,7 @@
     <legend>Search</legend>
     <label for="search">Search</label>
       <input id="search" type="text" name="q" placeholder="Search" required />
-      <button type="submit"><span class="search-icon"></span></button>
+      <button id="headerSearchButton" type="submit"><span class="search-icon"></span></button>
 
   </fieldset>
   <input type="hidden" name="filterJournals" value="${journalKey}" />

@@ -197,11 +197,13 @@
         <div class="search-results-num-per-page">
           Results per page
           <div class="search-results-num-per-page-selector">
-            <select name="resultsPerPageDropdown" id="resultsPerPageDropdown">
-              <option value="15" <#if (selectedResultsPerPage == 15)>selected="selected"</#if>>15</option>
-              <option value="30" <#if (selectedResultsPerPage == 30)>selected="selected"</#if>>30</option>
-              <option value="60" <#if (selectedResultsPerPage == 60)>selected="selected"</#if>>60</option>
-            </select>
+            <label for="paging">
+              <select name="resultsPerPageDropdown" id="resultsPerPageDropdown">
+                <option value="15" <#if (selectedResultsPerPage == 15)>selected="selected"</#if>>15</option>
+                <option value="30" <#if (selectedResultsPerPage == 30)>selected="selected"</#if>>30</option>
+                <option value="60" <#if (selectedResultsPerPage == 60)>selected="selected"</#if>>60</option>
+              </select>
+            </label>
           </div>
         </div>
       </#if>

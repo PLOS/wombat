@@ -9,6 +9,10 @@
      A request parameter named "page" will be added to any requests generated when
      clicking on the paging links.                                              -->
 
+<#if !(alwaysShow??)>
+  <#assign alwaysShow = false />
+</#if>
+
 <#-- This is the basic macro that displays a series of numbered page links.
      We use various combinations of it and ellipses below.  -->
 <#macro pageLinkRange first last selected>
@@ -37,7 +41,7 @@
     <a id="prevPageLink" href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage - 1 />"
        class="previous-page switch"><span class="icon"></span><span class="icon-text">Previous Page</span>
     </a>
-  <#elseif alwaysShow == "true">
+  <#elseif alwaysShow>
       <span id="prevPageLink" class="previous-page switch disabled"><span class="icon"></span><span class="icon-text">Previous Page</span></span>
   </#if>
   <#if numPages lt 10>
@@ -61,7 +65,7 @@
     <a id="nextPageLink" href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage + 1 />"
        class="next-page switch"><span class="icon"></span><span class="icon-text">Next Page</span>
     </a>
-  <#elseif alwaysShow == "true">
+  <#elseif alwaysShow>
        <span id="nextPageLink" class="next-page switch disabled"><span class="icon"></span><span class="icon-text">Next Page</span></span>
   </#if>
 </nav>

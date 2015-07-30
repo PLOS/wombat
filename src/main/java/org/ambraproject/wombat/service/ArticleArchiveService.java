@@ -3,11 +3,14 @@ package org.ambraproject.wombat.service;
 import org.ambraproject.wombat.config.site.Site;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 /**
  * Responsible for returning the DOIs of article published in a given year and month
  */
 public interface ArticleArchiveService {
+
+  public abstract int[] getYearForJournal(Site site) throws IOException, ParseException;
 
   /**
    * Returns all of the months for the requested year. If it's the current year,

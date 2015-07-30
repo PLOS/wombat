@@ -56,6 +56,9 @@ public interface SearchService {
   public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
                                 SearchCriterion dateRange) throws IOException;
 
+  public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
+                                SearchCriterion dateRange, Map<String, String> rawQueryParams) throws IOException;
+
   /**
    * Performs a search by the subject fields.
    *

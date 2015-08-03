@@ -5,11 +5,15 @@
       lang="en" xml:lang="en"
       class="no-js">
 
-<body>
-<#list yearRange as year>
-    <#if year?has_content>
-       ${year}
+  <body>
+    <h1>Publication Years</h1>
+    <#if yearRange??>
+      <ul>
+        <#list yearRange[0]..yearRange[1] as year>
+          <li><a href="<@siteLink path="lockss-manifest/vol_${year?c}"/>">${year?c}</a></li>
+        </#list>
+      </ul>
     </#if>
-</#list>
-</body>
+    <#include "permission.ftl" />
+  </body>
 </html>

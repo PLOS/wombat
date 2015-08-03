@@ -55,7 +55,6 @@ public interface SearchService {
    */
   public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
                                 SearchCriterion dateRange) throws IOException;
-
   /**
    * Performs a "simple" search (against all article fields) and returns the results. It allows to pass raw
    * query parameters to Solr

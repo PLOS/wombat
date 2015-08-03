@@ -322,6 +322,7 @@ public class SolrSearchService implements SearchService {
    * @param rawQueryParams specifies the raw query parameters passed as name/value pairs
    * @return populated list of parameters
    */
+
   private List<NameValuePair> buildCommonParams(Site site, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange, boolean forHomePage, Map<String, String> rawQueryParams) {
 

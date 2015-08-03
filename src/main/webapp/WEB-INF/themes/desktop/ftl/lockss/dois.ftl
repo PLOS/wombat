@@ -7,10 +7,12 @@
 
   <body>
     <h1>${month} ${year}</h1>
-    <#if dois??>
+    <#if searchResult??>
+      <#assign docs = searchResult["docs"] />
       <ol>
-        <#list dois as doi>
-          <li style="b"><a href="<@siteLink path="article/?id=" + doi/>"> ${doi} </a></li>
+        <#list docs as doc>
+          <#assign doi = doc["id"] />
+          <li style="b"><a href="http://dx.plos.org/${doi}"> ${doi} </a></li>
         </#list>
       </ol>
     </#if>

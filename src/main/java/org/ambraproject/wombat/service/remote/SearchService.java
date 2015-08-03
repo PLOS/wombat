@@ -114,4 +114,14 @@ public interface SearchService {
    * @throws IOException
    */
   public Map<?, ?> getHomePageArticles(Site site, int start, int rows, SearchCriterion sortOrder) throws IOException;
+
+  /**
+   * Retrieves Solr stats for a given field in a given journal
+   *
+   * @param fieldName specifies the name of the field
+   * @param site specifies the name of the journal
+   * @return Solr stats for the given field
+   * @throws IOException
+   */
+  public Map<?, ?> getStats(String fieldName, Site site) throws IOException;
 }

@@ -8,8 +8,10 @@
   <body>
     <h1>Publication Years</h1>
     <#if yearRange??>
+      <#assign min = yearRange["min"] />
+      <#assign max = yearRange["max"] />
       <ul>
-        <#list yearRange[0]..yearRange[1] as year>
+        <#list min[0..3]?number..max[0..3]?number as year>
           <li><a href="<@siteLink path="lockss-manifest/vol_${year?c}"/>">${year?c}</a></li>
         </#list>
       </ul>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Map;
 
 /**
  * Responsible for providing the publication year range, months and article DOIs published in a
@@ -29,7 +30,7 @@ public class LockssController extends WombatController {
 
   @RequestMapping(value="{site}/lockss-manifest", method = RequestMethod.GET)
   public String getYearsForJournal(@SiteParam Site site, Model model) throws IOException, ParseException {
-    int[] yearRange = articleArchiveServiceImpl.getYearsForJournal(site);
+    Map<String, String> yearRange = (Map<String, String>) articleArchiveServiceImpl.getYearsForJournal(site);
     model.addAttribute("yearRange", yearRange);
     return site + "/ftl/lockss/years";
   }
@@ -45,10 +46,11 @@ public class LockssController extends WombatController {
   @RequestMapping(value={"{site}/lockss-manifest/vol_{year}/{month}"}, method = RequestMethod.GET)
   public String getArticlesPerMonth(@SiteParam Site site, @PathVariable String year,
                                     @PathVariable String month, Model model) throws IOException {
-    String[] dois = articleArchiveServiceImpl.getArticleDoisPerMonth(site, year, month);
+    Map<String, Map> searchResult = (Map<String, Map>) articleArchiveServiceImpl.getArticleDoisPerMonth(site,
+        year, month);
     model.addAttribute("month", month);
     model.addAttribute("year", year);
-    model.addAttribute("dois", dois);
+    model.addAttribute("searchResult", searchResult);
 
     return site + "/ftl/lockss/dois";
   }

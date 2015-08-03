@@ -22,27 +22,8 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
   SolrSearchService solrSearchService;
 
   @Override
-  public int[] getYearsForJournal(Site site) throws IOException, ParseException {
-    Map<String, String> rawQueryParams = new HashMap();
-    rawQueryParams.put("stats", "true");
-    rawQueryParams.put("stats.field", "publication_date");
-
-    Map<String, Map> rawResult = (Map<String, Map>) solrSearchService.simpleSearch("", site, 0, 0,
-        SolrSearchService.SolrSortOrder .RELEVANCE, SolrSearchService.SolrDateRange.ALL_TIME,rawQueryParams);
-
-    Map<String, Map> statsField = (Map<String, Map>) rawResult.get("stats").get("stats_fields");
-    Map<String, String> publicationDate = (Map<String, String>) statsField.get("publication_date");
-
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-    Calendar date = Calendar.getInstance();
-    date.setTime(dateFormat.parse(publicationDate.get("min")));
-    int minYear = date.get(Calendar.YEAR);
-    date.setTime(dateFormat.parse(publicationDate.get("max")));
-    int maxYear = date.get(Calendar.YEAR);
-
-    int[] yearRange = {minYear, maxYear};
-
+  public Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException {
+    Map<String, String> yearRange = (Map<String, String>) solrSearchService.getStats("publication_date", site);
     return yearRange;
   }
 
@@ -67,7 +48,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
    * {@inheritDoc}
    */
   @Override
-  public String[] getArticleDoisPerMonth(Site site, String year, String month) throws IOException {
+  public Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     Calendar startDate = Calendar.getInstance();
@@ -79,17 +60,8 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
     SolrSearchService.SolrExplicitDateRange dateRange = new SolrSearchService.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
-    Map searchResult = solrSearchService.simpleSearch("", site, 0, 1000000,
+    Map<String, Map> searchResult = (Map<String, Map>) solrSearchService.simpleSearch("", site, 0, 1000000,
         SolrSearchService.SolrSortOrder.DATE_OLDEST_FIRST, dateRange);
-
-    List docs = (List) searchResult.get("docs");
-
-    String dois[] = new String[docs.size()];
-
-    for (int i = 0; i < docs.size(); i++) {
-      Map<?,?> doc = (Map) docs.get(i);
-      dois[i] = (String) doc.get("id");
-    }
-    return dois;
+    return searchResult;
   }
 }

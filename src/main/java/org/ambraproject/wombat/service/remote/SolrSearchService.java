@@ -32,6 +32,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -262,6 +263,20 @@ public class SolrSearchService implements SearchService {
     return executeQuery(params);
   }
 
+  @Override
+  public Map<?, ?> getStats(String fieldName, Site site) throws IOException {
+    Map<String, String> rawQueryParams = new HashMap();
+    rawQueryParams.put("stats", "true");
+    rawQueryParams.put("stats.field", fieldName);
+
+    Map<String, Map> rawResult = (Map<String, Map>) simpleSearch("", site, 0, 0,
+        SolrSearchService.SolrSortOrder.RELEVANCE, SolrSearchService.SolrDateRange.ALL_TIME,rawQueryParams);
+
+    Map<String, Map> statsField = (Map<String, Map>) rawResult.get("stats").get("stats_fields");
+    Map<String, String> field = (Map<String, String>) statsField.get(fieldName);
+    return field;
+  }
+
   /**
    * Populates the SOLR parameters with values used across all searchs in the application.
    *
@@ -327,10 +342,8 @@ public class SolrSearchService implements SearchService {
       SearchCriterion dateRange, boolean forHomePage, Map<String, String> rawQueryParams) {
 
     List<NameValuePair> params = buildCommonParams(site, start,rows,sortOrder, dateRange, forHomePage);
-    Iterator it = rawQueryParams.entrySet().iterator();
 
-    while (it.hasNext()) {
-      Map.Entry<String, String> entry = (Map.Entry<String, String>)it.next();
+    for (Map.Entry<String, String> entry: rawQueryParams.entrySet()) {
       params.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
     }
     return params;

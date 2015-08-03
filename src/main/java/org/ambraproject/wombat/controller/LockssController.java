@@ -13,7 +13,8 @@ import java.io.IOException;
 import java.text.ParseException;
 
 /**
- * Responsible for providing the article DOIs published in a given year and month
+ * Responsible for providing the publication year range, months and article DOIs published in a
+ * given year and month
  */
 @Controller
 public class LockssController extends WombatController {
@@ -28,7 +29,7 @@ public class LockssController extends WombatController {
 
   @RequestMapping(value="{site}/lockss-manifest", method = RequestMethod.GET)
   public String getYearsForJournal(@SiteParam Site site, Model model) throws IOException, ParseException {
-    int[] yearRange = articleArchiveServiceImpl.getYearForJournal(site);
+    int[] yearRange = articleArchiveServiceImpl.getYearsForJournal(site);
     model.addAttribute("yearRange", yearRange);
     return site + "/ftl/lockss/years";
   }

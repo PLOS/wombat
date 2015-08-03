@@ -308,6 +308,20 @@ public class SolrSearchService implements SearchService {
     return params;
   }
 
+  /**
+   * Populates the Solr parameters with values used across all searches in the application. It is able to
+   * parse the raw query parameters as well.
+   *
+   * @param site        name of the site in which to search
+   * @param start       starting result, zero-based. 0 will start at the first result.
+   * @param rows        max number of results to return
+   * @param sortOrder   specifies the desired ordering for results
+   * @param dateRange   specifies the date range for the results
+   * @param forHomePage if true, this search is for articles on a journal home page; if false it is for a specific
+   *                    query
+   * @param rawQueryParams specifies the raw query parameters passed as name/value pairs
+   * @return populated list of parameters
+   */
   private List<NameValuePair> buildCommonParams(Site site, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange, boolean forHomePage, Map<String, String> rawQueryParams) {
 
@@ -332,6 +346,13 @@ public class SolrSearchService implements SearchService {
     return (Map<?, ?>) rawResults.get("response");
   }
 
+  /**
+   * Queries Solr and returns the raw results
+   *
+   * @param params Solr query parameters
+   * @return raw results from Solr
+   * @throws IOException
+   */
   private Map<?, ?> getRawResults (List<NameValuePair> params) throws IOException {
     URI uri;
     try {

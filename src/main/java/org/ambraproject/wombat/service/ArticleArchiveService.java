@@ -10,7 +10,15 @@ import java.text.ParseException;
  */
 public interface ArticleArchiveService {
 
-  public abstract int[] getYearForJournal(Site site) throws IOException, ParseException;
+  /**
+   * Returns the publication year range for a given journal
+   *
+   * @param site specifies the name of the journal
+   * @return an array containing the start and end years
+   * @throws IOException
+   * @throws ParseException
+   */
+  public abstract int[] getYearsForJournal(Site site) throws IOException, ParseException;
 
   /**
    * Returns all of the months for the requested year. If it's the current year,

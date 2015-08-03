@@ -56,6 +56,21 @@ public interface SearchService {
   public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
                                 SearchCriterion dateRange) throws IOException;
 
+  /**
+   * Performs a "simple" search (against all article fields) and returns the results. It allows to pass raw
+   * query parameters to Solr
+   *
+   * @param query     term we are searching for.  If this is null, all articles will be returned (modulo sortOrder,
+   *                  start, rows, and dateRange).
+   * @param site      name of the site in which to search.
+   * @param start     starting result, zero-based.  0 will start at the first result.
+   * @param rows      max number of results to return
+   * @param sortOrder specifies the desired ordering for results
+   * @param dateRange specifies the date range for the results
+   * @param rawQueryParams specifies the raw query parameters passed as name/value pairs
+   * @return deserialized JSON returned by the search server
+   * @throws IOException
+   */
   public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
                                 SearchCriterion dateRange, Map<String, String> rawQueryParams) throws IOException;
 

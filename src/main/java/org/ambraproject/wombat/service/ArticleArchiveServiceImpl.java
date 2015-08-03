@@ -22,7 +22,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
   SolrSearchService solrSearchService;
 
   @Override
-  public int[] getYearForJournal(Site site) throws IOException, ParseException {
+  public int[] getYearsForJournal(Site site) throws IOException, ParseException {
     Map<String, String> rawQueryParams = new HashMap();
     rawQueryParams.put("stats", "true");
     rawQueryParams.put("stats.field", "publication_date");

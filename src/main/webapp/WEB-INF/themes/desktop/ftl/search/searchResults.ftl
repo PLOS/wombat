@@ -22,9 +22,12 @@
 <#if RequestParameters.q??>
   <#assign query = RequestParameters.q?html />
   <#assign advancedSearch = false />
-<#else>
+<#elseif RequestParameters.unformattedQuery??>
   <#assign query = RequestParameters.unformattedQuery?html />
   <#assign advancedSearch = true />
+<#else>
+  <#assign query = otherQuery />
+<#assign advancedSearch = true />
 </#if>
 <#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set" />
 

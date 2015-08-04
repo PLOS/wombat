@@ -90,7 +90,6 @@ public interface SearchService {
    */
   public Map<?, ?> subjectSearch(String subject, List<String> journalKeys,
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
-
   /**
    * Performs a search for an author's name.
    *
@@ -107,6 +106,22 @@ public interface SearchService {
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
+   * Searches for articles within a volume of a journal.
+   *
+   * @param volume the volume number
+   * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
+   * @param start starting result, zero-based.  0 will start at the first result.
+   * @param rows max number of results to return
+   * @param sortOrder specifies the desired ordering for results
+   * @param dateRange specifies the date range for the results
+   * @return deserialized JSON returned by the search server
+   * @throws IOException
+   */
+  public Map<?, ?> volumeSearch(int volume, List<String> journalKeys, List<String> articleTypes, int start, int rows,
+      SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
+
+  /**
    * Retrieves articles for display on a journal home page, where there is no actual query.
    *
    * @param journalKey journal in which to search
@@ -120,6 +135,25 @@ public interface SearchService {
       SearchCriterion sortOrder) throws IOException;
 
   /**
+   * Attempts to retrieve information about an article based on the DOI.
+   *
+   * @param doi identifies the article
+   * @return information about the article, if it exists; otherwise an empty result set
+   * @throws IOException
+   */
+  public Map<?, ?> lookupArticleByDoi(String doi) throws IOException;
+
+  /**
+   * Attempts to retrieve information about an article based on the journal key and eLocationId.
+   *
+   * @param eLocationId identifies the article within a journal
+   * @param journalKey the journal in which to search
+   * @return information about the article, if it exists; otherwise an empty result set
+   * @throws IOException
+   */
+  public Map<?, ?> lookupArticleByELocationId(String eLocationId, String journalKey) throws IOException;
+
+  /**
    * Adds a new property, link, to each search result passed in.  The value of this property
    * is the correct URL to the article on this environment.  Calling this method is necessary
    * since article URLs need to be specific to the site of the journal the article is published
@@ -129,9 +163,13 @@ public interface SearchService {
    * @param request current request
    * @param site site of the current request (for the search results)
    * @param siteSet site set of the current request
+   * @param includeApplicationRoot if true, the root context path of the application will be included
+   *     in the link; if false, it will not.  If you are generating a link to use in template code,
+   *     this should be true; if you are using this value for a "redirect:" string returned from a
+   *     spring controller, it should be false.
    * @return searchResults decorated with the new property
    * @throws IOException
    */
-  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet)
-      throws IOException;
+  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet,
+      boolean includeApplicationRoot) throws IOException;
 }

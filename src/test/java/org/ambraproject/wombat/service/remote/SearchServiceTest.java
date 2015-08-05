@@ -143,12 +143,19 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     List<Site> sites = siteSet.getSites("journal2Key");
     assertEquals(sites.size(), 1);  // For the purposes of this test
 
-    Map<?, ?> actual = searchServiceForTest.addArticleLinks(searchResults, request, sites.get(0), siteSet);
+    Map<?, ?> actual = searchServiceForTest.addArticleLinks(searchResults, request, sites.get(0), siteSet, true);
     List<Map> actualDocs = (List) actual.get("docs");
     assertEquals(actualDocs.size(), 1);
     Map actualDoc = (Map) actualDocs.get(0);
     assertEquals(actualDoc.get("id"), "12345");
     assertEquals(actualDoc.get("link"), "someContextPath/site1/article?id=12345");
+
+    actual = searchServiceForTest.addArticleLinks(searchResults, request, sites.get(0), siteSet, false);
+    actualDocs = (List) actual.get("docs");
+    assertEquals(actualDocs.size(), 1);
+    actualDoc = (Map) actualDocs.get(0);
+    assertEquals(actualDoc.get("id"), "12345");
+    assertEquals(actualDoc.get("link"), "/site1/article?id=12345");
   }
 
   /**

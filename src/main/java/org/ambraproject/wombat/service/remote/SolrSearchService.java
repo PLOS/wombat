@@ -259,6 +259,15 @@ public class SolrSearchService implements SearchService {
   }
 
   @Override
+  public Map<?, ?> volumeSearch(int volume, List<String> journalKeys, List<String> articleTypes, int start, int rows,
+      SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
+        dateRange, false);
+    params.add(new BasicNameValuePair("q", String.format("volume:%d", volume)));
+    return executeQuery(params);
+  }
+
+  @Override
   public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows,
       SearchCriterion sortOrder) throws IOException {
     List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey), start,
@@ -268,15 +277,44 @@ public class SolrSearchService implements SearchService {
   }
 
   @Override
-  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet)
-      throws IOException {
+  public Map<?, ?> lookupArticleByDoi(String doi) throws IOException {
+    List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("wt", "json"));
+    params.add(new BasicNameValuePair("fl", "id,eissn"));
+    params.add(new BasicNameValuePair("q", String.format("id:\"%s\"", doi)));
+    return executeQuery(params);
+  }
+
+  @Override
+  public Map<?, ?> lookupArticleByELocationId(String eLocationId, String journalKey) throws IOException {
+    List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("wt", "json"));
+    params.add(new BasicNameValuePair("fl", "id,eissn"));
+
+    // Many eLocationIds may be associated with an article (for example, one for each section).  So
+    // we need to set this parameter to get at most one result.
+    params.add(new BasicNameValuePair("fq", "doc_type:full"));
+    params.add(new BasicNameValuePair("fq", "cross_published_journal_key:" + journalKey));
+    params.add(new BasicNameValuePair("q", "elocation_id:" + eLocationId));
+    return executeQuery(params);
+  }
+
+  @Override
+  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet,
+      boolean includeApplicationRoot) throws IOException {
     initializeEIssnToJournalKeyMap(siteSet, site);
     List<Map> docs = (List<Map>) searchResults.get("docs");
     for (Map doc : docs) {
       String doi = (String) doc.get("id");
       String eIssn = (String) doc.get("eissn");
       Site resultSite = site.getTheme().resolveForeignJournalKey(siteSet, eIssnToJournalKey.get(eIssn));
-      doc.put("link", resultSite.getRequestScheme().buildLink(request, "/article?id=" + doi));
+      String link;
+      if (includeApplicationRoot) {
+        link = resultSite.getRequestScheme().buildLink(request, "/article?id=" + doi);
+      } else {
+        link = resultSite.getRequestScheme().buildLink("/article?id=" + doi);
+      }
+      doc.put("link", link);
     }
     return searchResults;
   }

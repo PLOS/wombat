@@ -116,16 +116,16 @@ public class SiteRequestScheme implements SiteRequestPredicate {
   }
 
   /**
-   * Build a link to a path within a site.
+   * Build an absolute link to a path within a site.
    * <p/>
-   * The link always starts with {@code '/'} and is usable as a domain-absolute link to a path on the current site.
+   * The link always starts with {@code 'http(s)://'} and is usable as an absolute link to a path on the current site.
    *
    * @param request a request to the current site
    * @param path    a site-independent path
    * @return a link to that path within the same site
    */
   public String buildLink(HttpServletRequest request, String path) {
-    StringBuilder link = new StringBuilder("http://");
+    StringBuilder link = new StringBuilder(request.getScheme() + "://");
 
     if (hostName.isPresent()) {
       link.append(hostName.get());

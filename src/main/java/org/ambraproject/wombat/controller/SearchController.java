@@ -248,9 +248,10 @@ public class SearchController extends WombatController {
     }
   }
 
-  // I have no idea why, but I get "ambiguous handler method" exceptions from spring if I
-  // don't include the "!volume" in the params.  This is puzzling because when these
-  // exceptions happen, volume is not a URL parameter!  This might be a bug in spring...
+  // Unless the "!volume" part is included in the params in the next few methods, you will
+  // get an "ambiguous handler method" exception from spring.  I think this is because all
+  // of these methods (including volumeSearch) use a MultiValueMap for @RequestParam, instead
+  // of individually listing the params.
 
   /**
    * Performs a "simple" search, where the q parameter's value is a single search term.
@@ -386,8 +387,8 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(value = {"search", "/{site}/search"}, params = {"eLocationId!="})
   public String eLocationSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam(value = "eLocationId") String eLocationId, @RequestParam(value = "filterJournals") String journal)
-      throws IOException {
+      @RequestParam(value = "eLocationId", required = true) String eLocationId,
+      @RequestParam(value = "filterJournals", required = true) String journal) throws IOException {
     Map<?, ?> searchResults = searchService.lookupArticleByELocationId(eLocationId, journal);
     return renderSingleResult(searchResults, "elocation_id:" + eLocationId, request, model, site);
   }

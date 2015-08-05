@@ -67,6 +67,7 @@ public interface SearchService {
    *     combination of these.  Example: "(abstract:gene) AND author:smith".
    * @param journalKeys list of the journals in which to search
    * @param articleTypes types of articles in which to search
+   * @param subjectList only articles associated with these subjects will be returned
    * @param start starting result, zero-based.  0 will start at the first result.
    * @param rows max number of results to return
    * @param sortOrder specifies the desired ordering for results
@@ -74,7 +75,7 @@ public interface SearchService {
    * @throws IOException
    */
   public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
-      int start, int rows, SearchCriterion sortOrder) throws IOException;
+      List<String> subjectList, int start, int rows, SearchCriterion sortOrder) throws IOException;
 
   /**
    * Performs a search by the subject fields.

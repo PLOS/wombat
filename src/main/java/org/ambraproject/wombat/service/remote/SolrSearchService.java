@@ -227,11 +227,25 @@ public class SolrSearchService implements SearchService {
 
   @Override
   public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
-      int start, int rows, SearchCriterion sortOrder) throws IOException {
+      List<String> subjectList, int start, int rows, SearchCriterion sortOrder) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
         null, false);
     params.add(new BasicNameValuePair("q", query));
+    params.add(new BasicNameValuePair("fq", buildSubjectClause(subjectList)));
     return executeQuery(params);
+  }
+
+  @VisibleForTesting
+  static String buildSubjectClause(List<String> subjects) {
+    List<String> quotedSubjects = new ArrayList<>();
+    for (String subject : subjects) {
+      StringBuilder sb = new StringBuilder();
+      sb.append("subject:\"");
+      sb.append(subject);
+      sb.append('"');
+      quotedSubjects.add(sb.toString());
+    }
+    return Joiner.on(" AND ").join(quotedSubjects);
   }
 
   /**

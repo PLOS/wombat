@@ -263,7 +263,8 @@ public class SolrSearchService implements SearchService {
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
         dateRange, false);
-    params.add(new BasicNameValuePair("q", String.format("volume:%d", volume)));
+    params.add(new BasicNameValuePair("q", "*:*"));
+    params.add(new BasicNameValuePair("fq", String.format("volume:%d", volume)));
     return executeQuery(params);
   }
 

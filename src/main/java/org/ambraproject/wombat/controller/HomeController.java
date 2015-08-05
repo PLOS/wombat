@@ -188,7 +188,7 @@ public class HomeController extends WombatController {
                               @RequestParam(value = "page", required = false) String pageParam)
       throws IOException {
     if (!request.getServletPath().endsWith("/")) {
-      return "redirect:" + site.getRequestScheme().buildLink("/");
+      return "redirect:" + request.getServletPath() + "/";
     }
 
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");

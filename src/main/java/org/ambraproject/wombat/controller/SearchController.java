@@ -296,8 +296,8 @@ public class SearchController extends WombatController {
     commonParams.addToModel(model, request);
     addOptionsToModel(model);
     Map<?, ?> searchResults = searchService.advancedSearch(params.getFirst("unformattedQuery"),
-        commonParams.journalKeys, commonParams.articleTypes, commonParams.start, commonParams.resultsPerPage,
-        commonParams.sortOrder);
+        commonParams.journalKeys, commonParams.articleTypes, commonParams.subjectList, commonParams.start,
+        commonParams.resultsPerPage, commonParams.sortOrder);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
     return site.getKey() + "/ftl/search/searchResults";
   }

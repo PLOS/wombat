@@ -158,6 +158,13 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     assertEquals(actualDoc.get("link"), "/site1/article?id=12345");
   }
 
+  @Test
+  public void testBuildSubjectClause() {
+    assertEquals(SolrSearchService.buildSubjectClause(Arrays.asList("foo")), "subject:\"foo\"");
+    assertEquals(SolrSearchService.buildSubjectClause(Arrays.asList("foo", "2nd subject")),
+        "subject:\"foo\" AND subject:\"2nd subject\"");
+  }
+
   /**
    * Converts a list of params to a multimap from key to value(s).
    */

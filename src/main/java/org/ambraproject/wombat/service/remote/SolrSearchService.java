@@ -226,6 +226,27 @@ public class SolrSearchService implements SearchService {
   }
 
   @Override
+  public Map<?, ?> simpleSearch(String query, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange, Map<String, String> rawQueryParams)
+      throws IOException {
+
+    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder, dateRange, false,
+        rawQueryParams);
+
+    // TODO: escape/quote the q param if needed.
+    if (Strings.isNullOrEmpty(query)) {
+      query = "*:*";
+    } else {
+
+      // Use the dismax query parser, recommended for all user-entered queries.
+      // See https://wiki.apache.org/solr/DisMax
+      params.add(new BasicNameValuePair("defType", "dismax"));
+    }
+    params.add(new BasicNameValuePair("q", query));
+    return getRawResults(params);
+  }
+
+  @Override
   public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
       List<String> subjectList, int start, int rows, SearchCriterion sortOrder) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
@@ -252,10 +273,9 @@ public class SolrSearchService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys,
-      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder,
-        dateRange, false);
+  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys, int start, int rows,
+      SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
     params.add(new BasicNameValuePair("q", "*:*"));
     params.add(new BasicNameValuePair("fq", String.format("subject:\"%s\"", subject)));
     return executeQuery(params);
@@ -265,8 +285,8 @@ public class SolrSearchService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> authorSearch(String author, List<String> journalKeys,
-      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
+  public Map<?, ?> authorSearch(String author, List<String> journalKeys, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
     params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
     return executeQuery(params);
@@ -283,10 +303,10 @@ public class SolrSearchService implements SearchService {
   }
 
   @Override
-  public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows,
-      SearchCriterion sortOrder) throws IOException {
-    List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey), start,
-        rows, sortOrder, SolrEnumeratedDateRange.ALL_TIME, true);
+  public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows, SearchCriterion sortOrder)
+      throws IOException {
+    List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey), start, rows, sortOrder,
+        SolrEnumeratedDateRange.ALL_TIME, true);
     params.add(new BasicNameValuePair("q", "*:*"));
     return executeQuery(params);
   }
@@ -362,6 +382,22 @@ public class SolrSearchService implements SearchService {
         dateRange, forHomePage);
   }
 
+
+  @Override
+  public Map<?, ?> getStats(String fieldName, String journalKey) throws IOException {
+    Map<String, String> rawQueryParams = new HashMap();
+    rawQueryParams.put("stats", "true");
+    rawQueryParams.put("stats.field", fieldName);
+
+    Map<String, Map> rawResult = (Map<String, Map>) simpleSearch("", Collections.singletonList(journalKey),
+        new ArrayList<String>(), 0, 0, SolrSearchService.SolrSortOrder.RELEVANCE,
+        SolrSearchService.SolrEnumeratedDateRange.ALL_TIME, rawQueryParams);
+
+    Map<String, Map> statsField = (Map<String, Map>) rawResult.get("stats").get("stats_fields");
+    Map<String, String> field = (Map<String, String>) statsField.get(fieldName);
+    return field;
+  }
+
   /**
    * Populates the SOLR parameters with values used across all searchs in the application.
    *
@@ -421,7 +457,32 @@ public class SolrSearchService implements SearchService {
       }
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
     }
+    return params;
+  }
 
+  /**
+   * Populates the Solr parameters with values used across all searches in the application. It is able to
+   * parse the raw query parameters as well.
+   *
+   * @param journalKeys names of the journals in which to search.
+   * @param articleTypes types of articles in which to search. An empty list will search all article types.
+   * @param start       starting result, zero-based.  0 will start at the first result.
+   * @param rows        max number of results to return
+   * @param sortOrder   specifies the desired ordering for results
+   * @param dateRange   specifies the date range for the results
+   * @param forHomePage if true, this search is for articles on a journal home page; if false it is for a specific
+   *                    query
+   * @param rawQueryParams specifies the raw query parameters passed as name/value pairs
+   * @return populated list of parameters
+   */
+  private List<NameValuePair> buildCommonParams(List<String> journalKeys, List<String> articleTypes, int start,
+      int rows, SearchCriterion sortOrder, SearchCriterion dateRange, boolean forHomePage,
+      Map<String, String> rawQueryParams) {
+    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder, dateRange,
+        forHomePage);
+    for (Map.Entry<String, String> entry: rawQueryParams.entrySet()) {
+      params.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+    }
     return params;
   }
 
@@ -434,5 +495,23 @@ public class SolrSearchService implements SearchService {
     }
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
     return (Map<?, ?>) rawResults.get("response");
+  }
+
+  /**
+   * Queries Solr and returns the raw results
+   *
+   * @param params Solr query parameters
+   * @return raw results from Solr
+   * @throws IOException
+   */
+  private Map<?, ?> getRawResults (List<NameValuePair> params) throws IOException {
+    URI uri;
+    try {
+      uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+    } catch (MalformedURLException | URISyntaxException e) {
+      throw new IllegalArgumentException(e);
+    }
+    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
+    return rawResults;
   }
 }

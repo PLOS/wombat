@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.text.DateFormatSymbols;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 public class ArticleArchiveServiceImpl implements ArticleArchiveService {
@@ -20,6 +20,13 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
 
   @Autowired
   SolrSearchService solrSearchService;
+
+  @Override
+  public Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException {
+    Map<String, String> yearRange = (Map<String, String>) solrSearchService.getStats("publication_date",
+        site.getJournalKey());
+    return yearRange;
+  }
 
   /**
    * {@inheritDoc}
@@ -42,7 +49,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
    * {@inheritDoc}
    */
   @Override
-  public String[] getArticleDoisPerMonth(Site site, String year, String month) throws IOException {
+  public Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     Calendar startDate = Calendar.getInstance();
@@ -54,17 +61,9 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
     SolrSearchService.SolrExplicitDateRange dateRange = new SolrSearchService.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
-    Map searchResult = solrSearchService.simpleSearch("", Collections.singletonList(site.getJournalKey()),
-        new ArrayList<String>(), 0, 1000000, SolrSearchService.SolrSortOrder.DATE_OLDEST_FIRST, dateRange);
-
-    List docs = (List) searchResult.get("docs");
-
-    String dois[] = new String[docs.size()];
-
-    for (int i = 0; i < docs.size(); i++) {
-      Map<?,?> doc = (Map) docs.get(i);
-      dois[i] = (String) doc.get("id");
-    }
-    return dois;
+    Map<String, Map> searchResult = (Map<String, Map>) solrSearchService.simpleSearch("",
+        Collections.singletonList(site.getJournalKey()), new ArrayList<String>(), 0, 1000000,
+        SolrSearchService.SolrSortOrder.DATE_OLDEST_FIRST, dateRange);
+    return searchResult;
   }
 }

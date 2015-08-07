@@ -61,6 +61,26 @@ public interface SearchService {
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
+   * Performs a "simple" search (against all article fields) and returns the results. It allows to pass raw
+   * query parameters to Solr
+   *
+   * @param query     term we are searching for.  If this is null, all articles will be returned (modulo sortOrder,
+   *                  start, rows, and dateRange).
+   * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
+   * @param start     starting result, zero-based.  0 will start at the first result.
+   * @param rows      max number of results to return
+   * @param sortOrder specifies the desired ordering for results
+   * @param dateRange specifies the date range for the results
+   * @param rawQueryParams specifies the raw query parameters passed as name/value pairs
+   * @return deserialized JSON returned by the search server
+   * @throws IOException
+   */
+  public Map<?, ?> simpleSearch(String query, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange, Map<String, String> rawQueryParams)
+      throws IOException;
+
+  /**
    * Performs an "advanced search": the query parameter will be directly parsed by solr.
    *
    * @param query specifies the solr fields and the values we are searching for; may be a boolean
@@ -173,4 +193,14 @@ public interface SearchService {
    */
   public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet,
       boolean includeApplicationRoot) throws IOException;
+
+  /**
+   * Retrieves Solr stats for a given field in a given journal
+   *
+   * @param fieldName specifies the name of the field
+   * @param journalKey specifies the name of the journal
+   * @return Solr stats for the given field
+   * @throws IOException
+   */
+  public Map<?, ?> getStats(String fieldName, String journalKey) throws IOException;
 }

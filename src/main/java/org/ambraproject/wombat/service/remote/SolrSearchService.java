@@ -32,9 +32,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.TimeZone;
 
 /**
@@ -211,6 +214,25 @@ public class SolrSearchService implements SearchService {
     return executeQuery(params);
   }
 
+  @Override
+  public Map<?, ?> simpleSearch(String query, Site site, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange, Map<String, String> rawQueryParams) throws IOException {
+
+    List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, dateRange, false, rawQueryParams);
+
+    // TODO: escape/quote the q param if needed.
+    if (Strings.isNullOrEmpty(query)) {
+      query = "*:*";
+    } else {
+
+      // Use the dismax query parser, recommended for all user-entered queries.
+      // See https://wiki.apache.org/solr/DisMax
+      params.add(new BasicNameValuePair("defType", "dismax"));
+    }
+    params.add(new BasicNameValuePair("q", query));
+    return getRawResults(params);
+  }
+
   /**
    * {@inheritDoc}
    */
@@ -239,6 +261,20 @@ public class SolrSearchService implements SearchService {
     List<NameValuePair> params = buildCommonParams(site, start, rows, sortOrder, SolrDateRange.ALL_TIME, true);
     params.add(new BasicNameValuePair("q", "*:*"));
     return executeQuery(params);
+  }
+
+  @Override
+  public Map<?, ?> getStats(String fieldName, Site site) throws IOException {
+    Map<String, String> rawQueryParams = new HashMap();
+    rawQueryParams.put("stats", "true");
+    rawQueryParams.put("stats.field", fieldName);
+
+    Map<String, Map> rawResult = (Map<String, Map>) simpleSearch("", site, 0, 0,
+        SolrSearchService.SolrSortOrder.RELEVANCE, SolrSearchService.SolrDateRange.ALL_TIME,rawQueryParams);
+
+    Map<String, Map> statsField = (Map<String, Map>) rawResult.get("stats").get("stats_fields");
+    Map<String, String> field = (Map<String, String>) statsField.get(fieldName);
+    return field;
   }
 
   /**
@@ -287,6 +323,32 @@ public class SolrSearchService implements SearchService {
     return params;
   }
 
+  /**
+   * Populates the Solr parameters with values used across all searches in the application. It is able to
+   * parse the raw query parameters as well.
+   *
+   * @param site        name of the site in which to search
+   * @param start       starting result, zero-based. 0 will start at the first result.
+   * @param rows        max number of results to return
+   * @param sortOrder   specifies the desired ordering for results
+   * @param dateRange   specifies the date range for the results
+   * @param forHomePage if true, this search is for articles on a journal home page; if false it is for a specific
+   *                    query
+   * @param rawQueryParams specifies the raw query parameters passed as name/value pairs
+   * @return populated list of parameters
+   */
+
+  private List<NameValuePair> buildCommonParams(Site site, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange, boolean forHomePage, Map<String, String> rawQueryParams) {
+
+    List<NameValuePair> params = buildCommonParams(site, start,rows,sortOrder, dateRange, forHomePage);
+
+    for (Map.Entry<String, String> entry: rawQueryParams.entrySet()) {
+      params.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+    }
+    return params;
+  }
+
   private Map<?, ?> executeQuery(List<NameValuePair> params) throws IOException {
     URI uri;
     try {
@@ -297,4 +359,23 @@ public class SolrSearchService implements SearchService {
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
     return (Map<?, ?>) rawResults.get("response");
   }
+
+  /**
+   * Queries Solr and returns the raw results
+   *
+   * @param params Solr query parameters
+   * @return raw results from Solr
+   * @throws IOException
+   */
+  private Map<?, ?> getRawResults (List<NameValuePair> params) throws IOException {
+    URI uri;
+    try {
+      uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+    } catch (MalformedURLException | URISyntaxException e) {
+      throw new IllegalArgumentException(e);
+    }
+    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
+    return rawResults;
+  }
+
 }

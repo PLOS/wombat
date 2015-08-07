@@ -104,7 +104,8 @@
   <@js src="resource/js/vendor/moment.js"/>
   <@js src="resource/js/components/twitter_module.js"/>
   <@js src="resource/js/components/signposts.js"/>
-  <@js src="resource/js/vendor/spin.js"/>
+<@js src="resource/js/components/scroll.js"/>
+
 
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>

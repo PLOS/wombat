@@ -2,6 +2,7 @@
  *
  * DEPENDENCY:  resource/js/components/truncate_elem
  *              resource/js/components/show_onscroll
+ *
  */
 
 (function ($) {
@@ -77,6 +78,8 @@
       e.preventDefault();
 
     });
+
+
 
     is_author_list = document.getElementById('floatAuthorList');
     if ( is_author_list != null) {

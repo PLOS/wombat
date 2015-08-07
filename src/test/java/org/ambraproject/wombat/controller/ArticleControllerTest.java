@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import freemarker.cache.TemplateLoader;
-import junit.framework.Assert;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
@@ -17,10 +16,7 @@ import org.mockito.Matchers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayInputStream;
@@ -33,10 +29,6 @@ import java.util.Map;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.handler;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ContextConfiguration
 public class ArticleControllerTest extends ControllerTest {
@@ -49,49 +41,6 @@ public class ArticleControllerTest extends ControllerTest {
           .build();
   private static Map<String, String> MOCK_CONFIG_MAP = new HashMap<>();
 
-  @DataProvider
-  public Object[][] collectionIssuesConfig() {
-    String articleDoi = "10.1371/journal.pone.0008083";
-
-    Map<String, String> configMap1 = new HashMap<>();
-    configMap1.put("DesktopPlosOne", "{'isCollection': false, 'italicizeTitle': false, " +
-                    "'otherJournals': {'PLoSCollections': 'DesktopPlosCollections'}}");
-    configMap1.put("DesktopPlosCollections", "{'isCollection': true, 'italicizeTitle': false, " +
-                    "'otherJournals': {'PLoSONE': 'DesktopPlosOne'}}");
-
-    Map<String, String> configMap2 = new HashMap<>();
-    configMap2.put("DesktopPlosOne", "{'isCollection': false, 'italicizeTitle': false, " +
-                    "'otherJournals': {'PLoSCollections': 'DesktopPlosCollections'}}");
-    configMap2.put("DesktopPlosCollections", "{'isCollection': false, 'italicizeTitle': false, " +
-                    "'otherJournals': {'PLoSONE': 'DesktopPlosOne'}}");
-    ImmutableMap<String, Object> expectations1 = ImmutableMap.<String, Object>of("issuesCount", 3);
-    ImmutableMap<String, Object> expectations2 = ImmutableMap.<String, Object>of("issuesCount", 0);
-
-    return new Object[][]{{articleDoi, configMap1, expectations1},
-                          {articleDoi, configMap2, expectations2}
-    };
-  }
-
-
-  @Test (dataProvider = "collectionIssuesConfig")
-  public void testGetCollectionIssues(String articleDoi, Map<String, String> configMap,
-                                      ImmutableMap<String, Object> expectations) throws Exception {
-
-    // TODO: use spring to reset context with each test invocation for iteration of environment config values
-    MOCK_CONFIG_MAP = configMap;
-
-    MvcResult result = mockMvc.perform(get("/" + SITE_UNDER_TEST + "/article").param("id", articleDoi))
-            .andExpect(handler().handlerType(ArticleController.class))
-            .andExpect(handler().methodName("renderArticle"))
-            .andExpect(status().isOk())
-            .andExpect(model().attributeExists("collectionIssues"))
-            .andReturn();
-
-    Map<String, Object> collectionIssues = (Map<String,Object>) result.getModelAndView().getModel().get("collectionIssues");
-    Assert.assertEquals(collectionIssues.size(), expectations.get("issuesCount"));
-
-
-  }
 
   private static class MockTheme extends Theme {
 

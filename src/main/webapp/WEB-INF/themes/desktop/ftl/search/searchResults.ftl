@@ -149,7 +149,7 @@
               <span id="article-result-${doc_index}-type">${doc.article_type}</span> |
             </#if>
               <span id="article-result-${doc_index}-date">
-                published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" /> |
+                published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" interpretDateAsLocalTime="true" /> |
               </span>
             <#if doc.cross_published_journal_name??>
               <span id="article-result-${doc_index}-journal-name">

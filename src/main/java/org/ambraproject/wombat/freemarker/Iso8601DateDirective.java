@@ -24,6 +24,12 @@ import java.util.Map;
 
 /**
  * FreeMarker custom directive that parses a ISO 8601 date representation and formats it appropriately.
+ *
+ * This directive accepts the following parameters:
+ *   - date (required): a date string in the ISO 8601 format
+ *   - format (required): format string to use for output
+ *   - interpretDateAsLocalTime: if true, the timezone in the date string will be ignored, and the
+ *     timezone of the local server will be used instead (this is to work around DPRO-1388)
  */
 public class Iso8601DateDirective implements TemplateDirectiveModel {
 
@@ -41,7 +47,10 @@ public class Iso8601DateDirective implements TemplateDirectiveModel {
       throw new TemplateModelException("format parameter is required");
     }
     String format = params.get("format").toString();
-    String formattedDate = CalendarUtil.formatIso8601Date(jsonDate, format);
+    Object interpretDateAsLocalTimeParam = params.get("interpretDateAsLocalTime");
+    boolean interpretDateAsLocalTime = interpretDateAsLocalTimeParam != null &&
+        !Boolean.FALSE.toString().equalsIgnoreCase(interpretDateAsLocalTimeParam.toString());
+    String formattedDate = CalendarUtil.formatIso8601Date(jsonDate, format, interpretDateAsLocalTime);
     environment.getOut().write(formattedDate);
   }
 }

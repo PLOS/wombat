@@ -273,11 +273,11 @@ public class SolrSearchService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> subjectSearch(String subject, List<String> journalKeys, int start, int rows,
+  public Map<?, ?> subjectSearch(List<String> subjects, List<String> journalKeys, int start, int rows,
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
     params.add(new BasicNameValuePair("q", "*:*"));
-    params.add(new BasicNameValuePair("fq", String.format("subject:\"%s\"", subject)));
+    params.add(new BasicNameValuePair("fq", buildSubjectClause(subjects)));
     return executeQuery(params);
   }
 

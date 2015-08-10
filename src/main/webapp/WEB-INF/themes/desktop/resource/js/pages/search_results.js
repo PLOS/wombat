@@ -68,6 +68,14 @@
       }
       $visibleTooltip = $(this).find('[data-js-tooltip-hover=target]');
       $visibleTooltip.addClass('visible');
+
+      // handling click on whole document is not working, and
+      // probably not a good idea anyway. So I am auto-hiding the
+      // tooltip after a timeout.
+      var $toolTip = $visibleTooltip;
+      setTimeout(function() {
+        $toolTip.removeClass('visible');
+      }, 5000);
     });
   });
 })(jQuery);

@@ -312,14 +312,38 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"subject", "!volume"})
+  @RequestMapping(value = {"search", "/{site}/search"}, params = {"subject", "!filterSubjects", "!volume",
+      "!unformattedQuery"})
   public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
+    return doSubjectsSearch(request, model, site, params);
+  }
+
+  /**
+   * Performs a subject search, where the subject param is expected to be a term from our taxonomy.
+   * Multiple subjects are allowed in the filterSubjects params.
+   *
+   * @param request HttpServletRequest
+   * @param model model that will be passed to the template
+   * @param site site the request originates from
+   * @param params all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
+  @RequestMapping(value = {"search", "/{site}/search"}, params = {"filterSubjects", "!subject", "!volume",
+      "!unformattedQuery"})
+  public String subjectsSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
+    return doSubjectsSearch(request, model, site, params);
+  }
+
+  private String doSubjectsSearch(HttpServletRequest request, Model model, Site site,
+      MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
     addOptionsToModel(model);
-    Map<?, ?> searchResults = searchService.subjectSearch(params.getFirst("subject"), commonParams.journalKeys,
+    Map<?, ?> searchResults = searchService.subjectSearch(commonParams.subjectList, commonParams.journalKeys,
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
     return site.getKey() + "/ftl/search/searchResults";

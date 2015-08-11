@@ -191,6 +191,11 @@ main,
 #pagehdr{
   display: block; //apparently MSedge does not treat main as a block level element.
   @include plos-grid-container;
+  //main usually is a fixed width element that floats in the middle.  if you want it to ignore those properties extend .width-full in your page stylesheet
+  &.width-full {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 /*doc

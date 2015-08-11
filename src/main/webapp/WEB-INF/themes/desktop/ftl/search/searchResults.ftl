@@ -113,6 +113,7 @@
         </#if>
       </form>
     </div>
+  <section>
     <article>
       <#if searchResults.numFound == 0>
         <div class="search-results-none-found">
@@ -227,7 +228,7 @@
       </div>
     </aside>
   
-
+   </section>
   <#include "../common/footer/footer.ftl" />
   <@renderJs />
 </body>

@@ -3,25 +3,28 @@
 
 .search-results-body {
   background-color: $clr-header;
-
   main {
-    @extend .plos-row;
-    width: (rem-calc($grid-width) - $grid-gutter);
+    @extend .width-full;  //from scaffold.scss
     margin-bottom: rem-calc($line-height-large);
-
+    section {
+      margin: 0 auto;
+      @extend .plos-row;
+    }
     article {
       @include plos-grid-column($pixelwidth: 760, $gutter: right);
-      }
+    }
 
     aside {
       @include plos-grid-column($pixelwidth: 180);
-      }
+    }
 
     .search-results-controls {
-      @include plos-grid-column($pixelwidth: 980, $gutter: none);
+      form {
+        @extend .plos-row;
       }
     }
   }
+}
 
 @mixin search-results-button($font-size: $txt-size-mediumish) {
   padding: rem-calc(7 20 7 20);
@@ -32,13 +35,14 @@
   border-radius: $border-radius-default;
   display: inline-block;
 
-  }
+}
+
 // div.BLAH > label > select
 
 @mixin dropdown-styled($width:200, $height:false, $padding:false, $margin: 7 20 7 20, $caret-spacing:.27em ) {
   float: right;
   display: inline;
-  select, label{
+  select, label {
     @extend .search-results-button-branded-small;
     margin-right: 0;
   }
@@ -62,7 +66,7 @@
 
   }
 
-  option{
+  option {
     background: $grey-med-light;
     color: black;
     outline: none;
@@ -88,8 +92,8 @@
     text-align: right;
     position: absolute;
     right: 0;
-    margin: rem-calc($margin);//*
-    top: $caret-spacing;//*
+    margin: rem-calc($margin); //*
+    top: $caret-spacing; //*
     pointer-events: none;
     display: table-cell;
     vertical-align: middle;
@@ -112,26 +116,26 @@
 .search-results-button-branded {
   @include search-results-button;
   @extend %brand-background;
-  }
+}
 
 .search-results-button-hover-branded {
   @extend .search-results-button-branded;
   &:hover {
     background-color: $plos-default;
-    }
   }
+}
 
 .search-results-button-branded-small {
   @include search-results-button($txt-size-small);
   @extend %brand-background;
-  }
+}
 
 .search-results-button-hover-branded-small {
   @extend .search-results-button-branded-small;
   &:hover {
     background-color: $plos-default;
-    }
   }
+}
 
 .search-results-button-gray-small {
   @extend .search-results-button-branded-small;
@@ -140,40 +144,22 @@
 
   &:hover {
     color: $white;
-    }
   }
+}
 
 $controls-gray: $grey-med-light;
 
 .search-results-controls {
-  background: $grey-verydark;
+  background: $grey-dark;
   padding: rem-calc($line-height 0);
   margin-bottom: rem-calc($line-height-medium);
   position: relative;
 
   > form {
-
-    &:before, &:after {
-      content: "";
-      display: block;
-      position: absolute;
-
-      // fill vertically
-      top: 0;
-      bottom: 0;
-      width: 300%;
-      background: $grey-verydark;
-      height: 100%;
-      z-index: -1;
-      }
-
-    &:before {
-      right: 0;
-      }
-
-    &:after {
-      left: 0
-      }
+    //   margin: 0 auto;
+    position: relative;
+    display: block;
+    height: 100%;
 
     .search-results-controls-first-row {
       @extend .plos-row;
@@ -181,7 +167,7 @@ $controls-gray: $grey-med-light;
 
       .search-field {
         @include plos-grid-column($pixelwidth: 760, $gutter: none);
-        }
+      }
 
       .search-button {
         @include plos-grid-column($pixelwidth: 150, $gutter: none, $float: right);
@@ -191,20 +177,20 @@ $controls-gray: $grey-med-light;
         a {
           padding: $line-height-small $pad-medium;
           margin-right: 0;
-          }
         }
       }
+    }
 
     button:focus {
       outline: none;
-      }
+    }
 
     legend, label {
       display: none;
-      }
+    }
     fieldset {
       border: none;
-      }
+    }
 
     fieldset.search-field {
       display: inline;
@@ -212,7 +198,7 @@ $controls-gray: $grey-med-light;
       margin: 0;
       background-color: $white;
 
-      }
+    }
 
     input[type="text"] {
       margin: 0;
@@ -224,7 +210,7 @@ $controls-gray: $grey-med-light;
       font-size: $txt-size-xlarge;
       color: $clr-input-active;
       top: 0 !important;
-      }
+    }
     @include input-placeholder-color();
 
     button[type="submit"] {
@@ -239,12 +225,12 @@ $controls-gray: $grey-med-light;
         @extend .fa;
         @extend .fa-search;
         font-size: rem-calc($txt-size-xlarge);
-        }
       }
+    }
 
     .search-results-flush-left {
       margin-left: 0;
-      }
+    }
 
     .search-results-controls-second-row {
       padding-bottom: $pad-default;
@@ -253,73 +239,72 @@ $controls-gray: $grey-med-light;
     .search-results-advanced-search-submit {
       float: right;
       line-height: rem-calc(15); //?
-      }
     }
+  }
 
-    .search-results-disabled-message {
-      width: rem-calc(350);
-      line-height: rem-calc(15);
-      display: inline-block;
+  .search-results-disabled-message {
+    width: rem-calc(350);
+    line-height: rem-calc(15);
+    display: inline-block;
+    color: $controls-gray;
+    font-size: $txt-size-small;
+
+    a {
       color: $controls-gray;
-      font-size: $txt-size-small;
+      text-decoration: underline;
 
-      a {
+      &:hover {
         color: $controls-gray;
-        text-decoration: underline;
-
-        &:hover {
-          color: $controls-gray;
-        }
       }
     }
   }
+}
 
 .search-results-none-found {
   padding: rem-calc(30 0 30 40);
 
   p {
     font-size: $txt-size-xlarge;
-    }
+  }
 
   span {
     font-weight: bold;
-    }
   }
+}
 
 .search-results-num-found {
   font-size: $txt-size-medium-large;
 
   span {
     font-weight: bold;
-    }
   }
-
+}
 
 .search-results-list {
   margin: rem-calc($line-height-small 0 $line-height-large);
   dd, dt {
     display: block;
     line-height: $line-height;
-    }
+  }
   dt {
     margin-bottom: rem-calc($line-height-xsmall);
-    }
+  }
   p {
     margin-bottom: rem-calc($line-height-xsmall);
-    }
   }
+}
 
 .search-results-title {
   padding-bottom: rem-calc(0);
   padding-top: $line-height;
 
-  }
+}
 
 .search-results-title a {
   @include link-text($color: $grey-dark, $color-hover: $plos-default, $decoration-hover: underline,
   $decoration-text: underline);
   font-size: $txt-size-medium-large;
-  }
+}
 
 .search-results-authors {
   color: $grey-med-dark;
@@ -350,7 +335,7 @@ $pagination-height: 24px;
   padding: rem-calc(0 6px);
   min-width: rem-calc(16px);
   border-radius: $default-border-radius;
-  }
+}
 
 .number, .switch, .skip {
   @include search-results-rounded-control;
@@ -377,7 +362,7 @@ $pagination-height: 24px;
   padding: 0;
   .icon-text {
     @extend .aria-text;
-    }
+  }
 
   // Hide the text that is embedded and display an icon instead.
   .icon:before {
@@ -385,25 +370,25 @@ $pagination-height: 24px;
     line-height: $pagination-height;
     white-space: nowrap;
     color: $white;
-    }
   }
+}
 
 .previous-page {
   .icon:before {
     @extend .icon-caret-left;
     margin-left: -2px;
-    }
   }
+}
 
 .next-page {
   .icon:before {
     @extend .icon-caret-right;
-    }
   }
+}
 
 .active {
   @extend %brand-background;
-  }
+}
 
 .search-results-num-per-page {
   display: inline-block;
@@ -416,7 +401,7 @@ $pagination-height: 24px;
 }
 
 .search-results-num-per-page-selector {
-  @include dropdown-styled($width:55, $height:24, $padding:0 0 0 10, $margin: 0 10 0 0, $caret-spacing:.38em);
+  @include dropdown-styled($width: 55, $height: 24, $padding: 0 0 0 10, $margin: 0 10 0 0, $caret-spacing: .38em);
 }
 
 .search-results-select {
@@ -437,7 +422,7 @@ $pagination-height: 24px;
     margin-left: 0.8em;
     margin-right: 0.6em;
     background: image-url("icon-ExpOfConcern-retraction.png") no-repeat;
-    }
+  }
 
   a {
     color: $warning;
@@ -445,14 +430,14 @@ $pagination-height: 24px;
     text-decoration: underline;
     font-weight: bold;
     padding-bottom: rem-calc(20);
-    }
   }
+}
 
 .search-results-alm, .search-results-alm-error {
   display: none;
   font-weight: bold;
   font-size: $txt-size-xxsmall;
-  }
+}
 
 .icon-warning-stack {
 
@@ -462,12 +447,12 @@ $pagination-height: 24px;
 
   .icon-warning {
     color: $alert;
-    }
+  }
   .fa-exclamation {
     color: $black;
     font-size: $txt-size-xxxsmall;
-    }
   }
+}
 
 .filter-block {
   padding-top: $pad-small;

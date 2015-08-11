@@ -155,23 +155,6 @@ $controls-gray: $grey-med-light;
   margin-bottom: rem-calc($line-height-medium);
   position: relative;
 
-  //&:before, &:after{
-  //  content: "";
-  //  height: 100%;
-  //  position: absolute;
-  //  width: 100vw;
-  //  background: $grey-dark;
-  //  z-index: -1;
-  //  top:0;
-  //}
-  //
-  //&:before {
-  //  left: -50vw;
-  //}
-  //&:after {
-  // // right: 0;
-  //}
-
   > form {
     //   margin: 0 auto;
     position: relative;

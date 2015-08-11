@@ -3,7 +3,9 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterators;
+import com.google.common.collect.UnmodifiableIterator;
 import com.google.common.io.Closer;
 import net.sf.json.JSONArray;
 import org.ambraproject.wombat.config.theme.Theme;
@@ -38,6 +40,7 @@ import java.io.SequenceInputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -51,6 +54,10 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private Charset charset;
   @Autowired
   private ArticleService articleService;
+
+  private static final ImmutableSet<String> VALID_DTDS =
+      ImmutableSet.of("http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd",
+          "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd");
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
@@ -165,7 +172,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
         // Note: returning null here will cause the HTTP request to be made.
 
-        if ("http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd".equals(systemId)) {
+        if (VALID_DTDS.contains(systemId)) {
           return new InputSource(new StringReader(""));
         } else {
           throw new IllegalArgumentException("Unexpected entity encountered: " + systemId);

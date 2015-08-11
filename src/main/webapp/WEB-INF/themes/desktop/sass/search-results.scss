@@ -35,7 +35,7 @@
   }
 // div.BLAH > label > select
 
-@mixin dropdown-styled($width:200, $height:false, $padding:false, $margin: 7 20 7 20, $caret-spacing:.27em ) {
+@mixin dropdown-styled($width:200, $height:false, $padding:false, $margin: 7 10 7 20, $caret-spacing:.20em ) {
   float: right;
   display: inline;
   select, label{
@@ -409,14 +409,14 @@ $pagination-height: 24px;
   display: inline-block;
   float: right;
   vertical-align: middle;
-  line-height: 24px;
+  line-height: rem-calc(24px);
   width: rem-calc(160px);
   margin: 0;
   font-size: $txt-size-small;
 }
 
 .search-results-num-per-page-selector {
-  @include dropdown-styled($width:55, $height:24, $padding:0 0 0 10, $margin: 0 10 0 0, $caret-spacing:.38em);
+  @include dropdown-styled($width:60, $height:24, $padding:0 0 0 10, $margin: 0 10 0 0, $caret-spacing:.38em);
 }
 
 .search-results-select {

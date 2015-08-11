@@ -5,7 +5,6 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.UnmodifiableIterator;
 import com.google.common.io.Closer;
 import net.sf.json.JSONArray;
 import org.ambraproject.wombat.config.theme.Theme;

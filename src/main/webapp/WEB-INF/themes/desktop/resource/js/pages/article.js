@@ -76,10 +76,7 @@
 
     $('.preventDefault').on('click', function (e) {
       e.preventDefault();
-
     });
-
-
 
     is_author_list = document.getElementById('floatAuthorList');
     if ( is_author_list != null) {

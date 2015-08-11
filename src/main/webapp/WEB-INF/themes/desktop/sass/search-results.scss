@@ -3,25 +3,28 @@
 
 .search-results-body {
   background-color: $clr-header;
-
   main {
-    @extend .plos-row;
-    width: (rem-calc($grid-width) - $grid-gutter);
+    @extend .width-full;  //from scaffold.scss
     margin-bottom: rem-calc($line-height-large);
-
+    section {
+      margin: 0 auto;
+      @extend .plos-row;
+    }
     article {
       @include plos-grid-column($pixelwidth: 760, $gutter: right);
-      }
+    }
 
     aside {
       @include plos-grid-column($pixelwidth: 180);
-      }
+    }
 
     .search-results-controls {
-      @include plos-grid-column($pixelwidth: 980, $gutter: none);
+      form {
+        @extend .plos-row;
       }
     }
   }
+}
 
 @mixin search-results-button($font-size: $txt-size-mediumish) {
   padding: rem-calc(7 20 7 20);
@@ -32,13 +35,14 @@
   border-radius: $border-radius-default;
   display: inline-block;
 
-  }
+}
+
 // div.BLAH > label > select
 
 @mixin dropdown-styled($width:200, $height:false, $padding:false, $margin: 7 10 7 20, $caret-spacing:.20em ) {
   float: right;
   display: inline;
-  select, label{
+  select, label {
     @extend .search-results-button-branded-small;
     margin-right: 0;
   }
@@ -88,8 +92,8 @@
     text-align: right;
     position: absolute;
     right: 0;
-    margin: rem-calc($margin);//*
-    top: $caret-spacing;//*
+    margin: rem-calc($margin);
+    top: $caret-spacing;
     pointer-events: none;
     display: table-cell;
     vertical-align: middle;
@@ -146,34 +150,16 @@
 $controls-gray: $grey-med-light;
 
 .search-results-controls {
-  background: $grey-verydark;
+  background: $grey-dark;
   padding: rem-calc($line-height 0);
   margin-bottom: rem-calc($line-height-medium);
   position: relative;
 
   > form {
-
-    &:before, &:after {
-      content: "";
-      display: block;
-      position: absolute;
-
-      // fill vertically
-      top: 0;
-      bottom: 0;
-      width: 300%;
-      background: $grey-verydark;
-      height: 100%;
-      z-index: -1;
-      }
-
-    &:before {
-      right: 0;
-      }
-
-    &:after {
-      left: 0
-      }
+    //   margin: 0 auto;
+    position: relative;
+    display: block;
+    height: 100%;
 
     .search-results-controls-first-row {
       @extend .plos-row;
@@ -181,7 +167,7 @@ $controls-gray: $grey-med-light;
 
       .search-field {
         @include plos-grid-column($pixelwidth: 760, $gutter: none);
-        }
+      }
 
       .search-button {
         @include plos-grid-column($pixelwidth: 150, $gutter: none, $float: right);
@@ -191,9 +177,9 @@ $controls-gray: $grey-med-light;
         a {
           padding: $line-height-small $pad-medium;
           margin-right: 0;
-          }
         }
       }
+    }
 
     button:focus {
       outline: none;
@@ -416,7 +402,7 @@ $pagination-height: 24px;
 }
 
 .search-results-num-per-page-selector {
-  @include dropdown-styled($width:60, $height:24, $padding:0 0 0 10, $margin: 0 10 0 0, $caret-spacing:.38em);
+  @include dropdown-styled($width: 55, $height: 24, $padding: 0 0 0 10, $margin: 0 10 0 0, $caret-spacing: .38em);
 }
 
 .search-results-select {

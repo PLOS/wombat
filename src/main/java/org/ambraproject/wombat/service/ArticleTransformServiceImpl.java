@@ -55,6 +55,14 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   @Autowired
   private ArticleService articleService;
 
+  /*
+  JATS (Journal Archiving Tag Suite) is a continuation of the work to create and support the "NLM DTDs".
+  JATS is fully backward compatible with NLM version 3.0 and is being maintained by NISO as the NLM working
+  group was disbanded. You can read more at: http://jats.nlm.nih.gov/about.html
+  We decided to whitelist the valid dtds instead of letting everything through and log the exceptions later
+  in the workflow, because the list is short and it doesn't seem to grow often and it is better to prevent
+  bugs than looking for them.
+  */
   private static final ImmutableSet<String> VALID_DTDS =
       ImmutableSet.of("http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd",
           "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd");
@@ -159,7 +167,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
     // This is a little unorthodox.  Without setting this custom EntityResolver, the transform will
     // make ~50 HTTP calls to nlm.nih.gov to retrieve the DTD and various entity files referenced
-    // in the article XML.  By setting a custom EntityResolver that just returns an empty string
+    // in the article XML. By setting a custom EntityResolver that just returns an empty string
     // for each of these, we prevent that.  This seems to have no ill effects on the transformation
     // itself.  This is a roundabout way of turning off DTD validation, which is more
     // straightforward to do with a Document/DocumentBuilder, but the saxon library we're using

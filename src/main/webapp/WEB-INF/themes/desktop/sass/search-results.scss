@@ -39,7 +39,7 @@
 
 // div.BLAH > label > select
 
-@mixin dropdown-styled($width:200, $height:false, $padding:false, $margin: 7 10 7 20, $caret-spacing:.20em ) {
+@mixin dropdown-styled($width:225, $height:false, $padding:false, $margin: 7 10 7 20, $caret-spacing:.20em ) {
   float: right;
   display: inline;
   select, label {

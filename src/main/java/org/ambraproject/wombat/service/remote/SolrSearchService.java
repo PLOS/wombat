@@ -23,6 +23,8 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,6 +50,7 @@ import java.util.TimeZone;
  * Implementation of SearchService that queries a solr backend.
  */
 public class SolrSearchService implements SearchService {
+  private static final Logger log = LoggerFactory.getLogger(SolrSearchService.class);
 
   @Autowired
   private JsonService jsonService;
@@ -366,10 +369,10 @@ public class SolrSearchService implements SearchService {
     if (eIssnToJournalKey == null) {
       Map<String, String> mutable = new HashMap<>();
       for (Site site : siteSet.getSites()) {
+        log.info(site.getJournalKey());
         Map<String, String> rhinoResult = (Map<String, String>) soaService.requestObject(
             "journals/" + site.getJournalKey(), Map.class);
-        System.out.println("rhinoresult:::" + rhinoResult.get("eIssn"));
-        System.out.println("journalkey::::" + site.getJournalKey());
+        log.info(rhinoResult.get("eIssn"));
         mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
       }
       eIssnToJournalKey = ImmutableMap.copyOf(mutable);

@@ -368,6 +368,8 @@ public class SolrSearchService implements SearchService {
       for (Site site : siteSet.getSites()) {
         Map<String, String> rhinoResult = (Map<String, String>) soaService.requestObject(
             "journals/" + site.getJournalKey(), Map.class);
+        System.out.println("rhinoresult:::" + rhinoResult.get("eIssn"));
+        System.out.println("journalkey::::" + site.getJournalKey());
         mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
       }
       eIssnToJournalKey = ImmutableMap.copyOf(mutable);

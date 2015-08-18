@@ -11,6 +11,8 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -106,6 +108,24 @@ public class SiteSet {
   }
 
   /**
+   * @param journalKey specifies the journal
+   * @return Site List containing any sites that match the journalKey
+   * @throws UnmatchedSiteException if no journal is found
+   */
+  public ArrayList<Site> getSites(String journalKey) throws UnmatchedSiteException, IOException {
+    ArrayList<Site> sitesToReturn = new ArrayList<>();
+    for (Site site : sites.values()) {
+      if (site.getJournalKey().equals(journalKey)) {
+        sitesToReturn.add(site);
+      }
+    }
+    if (sitesToReturn.isEmpty()) {
+      throw new UnmatchedSiteException("Journal key not matched to any journal: " + journalKey);
+    }
+    return sitesToReturn;
+  }
+
+  /**
    * Attempts to load a site based on site key.
    *
    * @param key specifies the site
@@ -126,6 +146,18 @@ public class SiteSet {
 
   public ImmutableSet<String> getSiteKeys() {
     return sites.keySet();
+  }
+
+  /**
+   * @return a set of all journal keys for this SiteSet.  Note that there may be fewer of
+   *     these than siteKeys, since a journal can have multiple sites.
+   */
+  public ImmutableSet<String> getJournalKeys() {
+    ImmutableSet.Builder<String> result = ImmutableSet.builder();
+    for (Site site : sites.values()) {
+      result.add(site.getJournalKey());
+    }
+    return result.build();
   }
 
   @Override

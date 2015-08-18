@@ -18,7 +18,7 @@
 
 $line-height: rem-calc(18);
 $line-height-large: ($line-height * 2);
-$line-height-med: ($line-height * 1.5);
+$line-height-medium: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
 
 // callout is for blockquotes.
@@ -85,7 +85,7 @@ h1#artTitle{
 
 
   .amendment {
-    margin-bottom: $line-height-med;
+    margin-bottom: $line-height-medium;
 
     h2 {
       margin-top: 0;

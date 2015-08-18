@@ -2,11 +2,27 @@ package org.ambraproject.wombat.config.theme;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.config.TestSpringConfiguration;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import java.io.IOException;
+import java.util.List;
 
-public class TestThemeTree {
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertNotNull;
+
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
+public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
+
+  @Autowired
+  private SiteSet siteSet;
 
   /**
    * Create a dummy theme.
@@ -82,4 +98,12 @@ public class TestThemeTree {
     ThemeTree.parse(THEME_TREE_CYCLE_CASE, ImmutableList.of(testClasspathTheme), testClasspathTheme);
   }
 
+  @Test
+  public void testInheritPropertyFromRoot() throws IOException {
+    List<Site> sites = siteSet.getSites("journal1Key");
+    assertEquals(sites.size(), 1);  // For the purposes of this test
+    Object inheritedValue = sites.get(0).getTheme().getConfigMap("journal").get("isCollection");
+    assertNotNull(inheritedValue);
+    assertFalse((boolean) inheritedValue);
+  }
 }

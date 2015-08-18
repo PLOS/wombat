@@ -12,12 +12,12 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +30,8 @@ import java.util.Map;
 public class TestRuntimeConfiguration implements RuntimeConfiguration {
 
   private ImmutableMap<String, Theme> themeMap;
+
+  private ThemeTree themeTree;
 
   @Override
   public String getCompiledAssetDir() {
@@ -49,14 +51,28 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   @Override
   public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {
     Map<String, Theme> mutable = new HashMap<>();
-    mutable.put("default", rootTheme);
+    mutable.put("root", rootTheme);
+    for (Theme theme : internalThemes) {
+      if (!theme.equals(rootTheme)) {
+        mutable.put(theme.getKey(), theme);
+      }
+    }
     themeMap = ImmutableMap.copyOf(mutable);
-    return new ThemeTree(themeMap);
+    themeTree = new ThemeTree(themeMap);
+    return themeTree;
   }
 
   @Override
   public SiteSet getSites(ThemeTree themeTree) {
-    List<Map<String, ?>> spec = new Gson().fromJson("[ { \"key\": \"default\", \"theme\": \"default\" } ]", List.class);
+    List<Map<String, ?>> spec = new ArrayList<>();
+    for (Theme theme : themeTree.getThemes()) {
+      if (!"root".equals(theme.getKey())) {
+        Map<String, String> map = new HashMap<>();
+        map.put("key", theme.getKey());
+        map.put("theme", theme.getKey());
+        spec.add(map);
+      }
+    }
     return SiteSet.create(spec, themeTree);
   }
 

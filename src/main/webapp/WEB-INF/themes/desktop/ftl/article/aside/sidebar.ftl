@@ -9,9 +9,9 @@
 
 <#include "relatedArticles.ftl" />
 
-<#if article.collections?size gt 0>
-  <#include "asideCollections.ftl" />
-</#if>
+<#--<#if article.collections?size gt 0>-->
+  <#--<#include "asideCollections.ftl" />-->
+<#--</#if>-->
 
 <#include "subjectAreas.ftl" />
 

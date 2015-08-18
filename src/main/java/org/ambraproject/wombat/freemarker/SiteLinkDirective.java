@@ -1,9 +1,6 @@
 package org.ambraproject.wombat.freemarker;
 
-import com.google.common.base.Optional;
-import com.google.common.collect.ImmutableMap;
 import freemarker.core.Environment;
-import freemarker.template.TemplateHashModel;
 import freemarker.template.TemplateModelException;
 import freemarker.template.TemplateScalarModel;
 import org.ambraproject.wombat.config.HandlerMappingConfiguration;

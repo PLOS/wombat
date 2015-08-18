@@ -20,6 +20,7 @@ import freemarker.core.Environment;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
+import org.ambraproject.wombat.config.HandlerMappingConfiguration;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
@@ -51,6 +52,8 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
   private AssetService assetService;
   @Autowired
   private SiteResolver siteResolver;
+  @Autowired
+  private HandlerMappingConfiguration handlerMappingConfig;
 
   /**
    * Renders queued asset links as HTML. If in dev mode, the rendered output will be a sequence of plain links to the
@@ -81,11 +84,11 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
     if (assetPaths != null && !assetPaths.isEmpty()) {
       if (runtimeConfiguration.getCompiledAssetDir() == null) {
         for (String assetPath : assetPaths) {
-          String assetAddress = new SitePageContext(siteResolver, environment).buildLink(assetPath);
+          String assetAddress = new SitePageContext(siteResolver, handlerMappingConfig, environment).buildLink(assetPath);
           environment.getOut().write(getHtml(assetAddress));
         }
       } else {
-        Site site = new SitePageContext(siteResolver, environment).getSite();
+        Site site = new SitePageContext(siteResolver, handlerMappingConfig, environment).getSite();
         String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site);
         String assetAddress = site.getRequestScheme().buildLink(request,
             PathUtil.JOINER.join(AssetService.AssetUrls.RESOURCE_NAMESPACE, assetLink));

@@ -124,7 +124,7 @@ public class SiteRequestScheme implements SiteRequestPredicate {
    * @param path    a site-independent path
    * @return a link to that path within the same site
    */
-  public String buildLink(HttpServletRequest request, String path) {
+  public String buildLink(HttpServletRequest request, String path, boolean pathIncludesSiteToken) {
     StringBuilder link = new StringBuilder(request.getScheme() + "://");
 
     if (hostName.isPresent()) {
@@ -133,13 +133,13 @@ public class SiteRequestScheme implements SiteRequestPredicate {
       link.append(request.getServerName());
     }
 
-    if (request.getServerPort() != 80){ // TODO: grab from Java constant?
+    if (request.getServerPort() != (request.isSecure() ? 443 : 80)){ // no static constants exist for these defaults
       link.append(":").append(String.valueOf(request.getServerPort()));
     }
 
     link.append(request.getContextPath());
 
-    if (pathToken.isPresent()) {
+    if (pathToken.isPresent() && !pathIncludesSiteToken) {
       link.append('/').append(pathToken.get());
     }
 
@@ -150,6 +150,10 @@ public class SiteRequestScheme implements SiteRequestPredicate {
     link.append(path);
 
     return link.toString();
+  }
+
+  public String buildLink(HttpServletRequest request, String path) {
+    return buildLink(request, path, false);
   }
 
   @Override

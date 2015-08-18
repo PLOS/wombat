@@ -63,7 +63,7 @@ public class FigurePageController extends WombatController {
   /**
    * Serve a page listing all figures for an article.
    */
-  @RequestMapping(name = "figuresPage", value = {"/article/figures", "/{site}/article/figures"})
+  @RequestMapping(name = "figuresPage", value = "/{site}/article/figures")
   public String renderFiguresPage(Model model, @SiteParam Site site,
                                   @RequestParam("id") String articleId)
       throws IOException {
@@ -91,7 +91,7 @@ public class FigurePageController extends WombatController {
   /**
    * Serve a page displaying a single figure.
    */
-  @RequestMapping(name = "figurePage", value = {"/article/figure", "/{site}/article/figure"})
+  @RequestMapping(name = "figurePage", value = "/{site}/article/figure")
   public String renderFigurePage(Model model, @SiteParam Site site,
                                  @RequestParam("id") String figureId)
       throws IOException {
@@ -120,7 +120,7 @@ public class FigurePageController extends WombatController {
   /**
    * Figure lightbox
    */
-  @RequestMapping(name = "lightbox", value = {"/article/lightbox", "/{site}/article/lightbox"})
+  @RequestMapping(name = "lightbox", value = "/{site}/article/lightbox")
   public String renderLightbox(Model model, @SiteParam Site site)
           throws IOException {
 

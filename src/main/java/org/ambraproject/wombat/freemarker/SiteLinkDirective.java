@@ -1,10 +1,14 @@
 package org.ambraproject.wombat.freemarker;
 
+import com.google.common.base.Optional;
+import com.google.common.collect.ImmutableMap;
 import freemarker.core.Environment;
+import freemarker.template.TemplateHashModel;
 import freemarker.template.TemplateModelException;
 import freemarker.template.TemplateScalarModel;
-import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.HandlerMappingConfiguration;
 import org.ambraproject.wombat.config.site.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -31,22 +35,29 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
   private SiteResolver siteResolver;
   @Autowired
   protected SiteSet siteSet;
+  @Autowired
+  private HandlerMappingConfiguration handlerMappingConfig;
 
   @Override
   protected String getValue(Environment env, Map params) throws TemplateModelException, IOException {
-    Object pathObj = params.get("path");
-    if (!(pathObj instanceof TemplateScalarModel)) {
-      throw new RuntimeException("path parameter required");
-    }
-    String path = ((TemplateScalarModel) pathObj).getAsString();
-    Object targetJournalObj = params.get("journalKey");
+    String path = getStringValue(params.get("path"));
+    String targetJournal = getStringValue(params.remove("journalKey")); // never used for url creation so remove
+    String handlerName = getStringValue(params.remove("handlerName")); // never used for url creation so remove
+    SitePageContext sitePageContext = new SitePageContext(siteResolver, handlerMappingConfig, env);
 
-    SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
-    if (targetJournalObj instanceof TemplateScalarModel) {
-      String targetJournal = ((TemplateScalarModel) targetJournalObj).getAsString();
-      return sitePageContext.buildLink(siteSet, targetJournal, path);
+    if (handlerName != null) {
+      return targetJournal == null ? sitePageContext.buildLink(handlerName, params) :
+              sitePageContext.buildLink(siteSet, targetJournal, handlerName, params);
+    } else if (path != null) {
+      return targetJournal == null ? sitePageContext.buildLink(path) :
+              sitePageContext.buildLink(siteSet, targetJournal, path);
+    } else {
+      throw new RuntimeException("Either a path or handlerName parameter is required");
     }
-    return sitePageContext.buildLink(path);
+  }
+
+  private String getStringValue(Object valueObj) throws TemplateModelException {
+    return valueObj instanceof TemplateScalarModel ? ((TemplateScalarModel) valueObj).getAsString() : null;
   }
 
 }

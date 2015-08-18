@@ -48,7 +48,7 @@ public class TaxonomyController {
   @Autowired
   private SoaService soaService;
 
-  @RequestMapping(name = "taxonomy", value = {TAXONOMY_TEMPLATE, "/*" + TAXONOMY_TEMPLATE}, method = RequestMethod.GET)
+  @RequestMapping(name = "taxonomy", value = "/{site}" + TAXONOMY_TEMPLATE, method = RequestMethod.GET)
   public void read(@SiteParam Site site, HttpServletRequest request, HttpServletResponse response)
       throws IOException {
     Map<String, Object> taxonomyBrowserConfig = site.getTheme().getConfigMap("taxonomyBrowser");

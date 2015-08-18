@@ -5,20 +5,31 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.*;
+import org.springframework.web.method.HandlerMethod;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class HandlerMappingConfiguration {
 
   private static final String KEYNAME_SITES = "sites";
   private static final String KEYNAME_EXCLUDESITES = "excludeSites";
   private static final String KEYNAME_PATTERNS = "patterns";
+  private static final String KEYNAME_INCLUDEPATTERNS = "includePatterns";
   private static final String KEYNAME_EXCLUDEPATTERNS = "excludePatterns";
+  private static final String KEYNAME_REPLACEPATTERNS = "replacePatterns";
   private static final String KEYNAME_SITEOVERRIDES = "siteOverrides";
   public static final String VALUE_NULLSITE = "undefined";
 
   private final ImmutableSet<String> siteKeys;
   private final Map<String, Map<String, ?>> handlerMapping;
+  // handlerMethods lookup is set by SiteMappingHandlerMapping during that bean's post processing
+  public ImmutableMap<String, HandlerMethod> handlerMethods;
 
   public HandlerMappingConfiguration(Map<String, Map<String, ?>> handlerMapping, SiteSet siteSet) {
     this.handlerMapping = handlerMapping != null ? handlerMapping :
@@ -27,6 +38,10 @@ public class HandlerMappingConfiguration {
             .addAll(siteSet.getSiteKeys())
             .add(VALUE_NULLSITE)
             .build();
+  }
+
+  public ImmutableSet<String> getValidPatternsForSite(String handlerName, String siteKey) {
+    return getValidPatternsForSite(getRequestMapping(handlerName), siteKey);
   }
 
   public ImmutableSet<String> getValidPatternsForSite(RequestMapping handlerAnnotation, String siteKey) {
@@ -46,8 +61,10 @@ public class HandlerMappingConfiguration {
       return sharedPatterns;
     }
 
-    return ImmutableSet.copyOf(Sets.difference(
-            Sets.union(sharedPatterns, getSiteOverride(handlerAnnotation, siteKey, KEYNAME_PATTERNS)),
+    ImmutableSet<String> replacedPatterns = getSiteOverride(handlerAnnotation, siteKey, KEYNAME_REPLACEPATTERNS);
+
+    return !replacedPatterns.isEmpty() ? replacedPatterns : ImmutableSet.copyOf(Sets.difference(
+            Sets.union(sharedPatterns, getSiteOverride(handlerAnnotation, siteKey, KEYNAME_INCLUDEPATTERNS)),
             getSiteOverride(handlerAnnotation, siteKey, KEYNAME_EXCLUDEPATTERNS)));
   }
 
@@ -110,28 +127,40 @@ public class HandlerMappingConfiguration {
   }
 
   private ImmutableSet<String> getSiteOverride(RequestMapping handlerAnnotation, String siteKey, String key) {
-    String handlerName = getHandlerName(handlerAnnotation);
-    List<Map<String, List<String>>> siteOverrides =
-            (List<Map<String, List<String>>>) handlerMapping.get(handlerName).get(KEYNAME_SITEOVERRIDES);
-
     Set<String> overrideValue = new HashSet<>();
-    for (Map<String, List<String>> siteOverride : siteOverrides) {
-      if (siteOverride.get(KEYNAME_SITES) == null) {
-        throw new RuntimeConfigurationException(
-                String.format("HandlerMappingConfiguration ERROR: Site override handler mappings for " +
-                        "method \"%s\" must all include a \"%s\" key value", handlerName, KEYNAME_SITES));
-      }
-      if ((siteOverride.get(KEYNAME_SITES)).contains(siteKey) && siteOverride.containsKey(key)) {
-        overrideValue.addAll(siteOverride.get(key));
+    if (hasSiteOverrides(handlerAnnotation)) {
+      String handlerName = getHandlerName(handlerAnnotation);
+      List<Map<String, List<String>>> siteOverrides =
+              (List<Map<String, List<String>>>) handlerMapping.get(handlerName).get(KEYNAME_SITEOVERRIDES);
+      for (Map<String, List<String>> siteOverride : siteOverrides) {
+        if (siteOverride.get(KEYNAME_SITES) == null) {
+          throw new RuntimeConfigurationException(
+                  String.format("HandlerMappingConfiguration ERROR: Site override handler mappings for " +
+                          "method \"%s\" must all include a \"%s\" key value", handlerName, KEYNAME_SITES));
+        }
+        if ((siteOverride.get(KEYNAME_SITES)).contains(siteKey) && siteOverride.containsKey(key)) {
+          overrideValue.addAll(siteOverride.get(key));
+        }
       }
     }
-
     return ImmutableSet.copyOf(overrideValue);
   }
-
 
   private String getHandlerName(RequestMapping handlerAnnotation) {
     return handlerAnnotation.name();
     }
+
+  private RequestMapping getRequestMapping(String handlerName) {
+    HandlerMethod handlerMethod = handlerMethods.get(handlerName);
+    if (handlerMethod == null) {
+      throw new RuntimeConfigurationException(String.format("HandlerMappingConfiguration ERROR: " +
+              "Requested handler mapping configuration for non-existing handler: \"%s\"", handlerName));
+    }
+    return AnnotationUtils.findAnnotation(handlerMethod.getMethod(), RequestMapping.class);
+  }
+
+  public void setHandlerMethods(Map<String, HandlerMethod> handlerMethods) {
+    this.handlerMethods = ImmutableMap.copyOf(Preconditions.checkNotNull(handlerMethods));
+  }
 
 }

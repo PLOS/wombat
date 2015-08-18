@@ -13,7 +13,7 @@ import java.io.InputStream;
 @Controller
 public class TemplatePageController extends WombatController {
 
-  @RequestMapping(name = "templatePage", value = {"/page/{pageName}", "/*/page/{pageName}"})
+  @RequestMapping(name = "templatePage", value = "/{site}/page/{pageName}")
   public String servePage(@SiteParam Site site,
                           @PathVariable("pageName") String pageName)
       throws IOException {

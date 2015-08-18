@@ -4,6 +4,7 @@ import org.ambraproject.wombat.config.HandlerMappingConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.condition.CompositeRequestCondition;
 import org.springframework.web.servlet.mvc.condition.ConsumesRequestCondition;
 import org.springframework.web.servlet.mvc.condition.HeadersRequestCondition;
@@ -15,8 +16,11 @@ import org.springframework.web.servlet.mvc.condition.RequestConditionHolder;
 import org.springframework.web.servlet.mvc.condition.RequestMethodsRequestCondition;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -33,6 +37,23 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
 
   @Autowired
   HandlerMappingConfiguration handlerMappingConfiguration;
+
+  @Override
+  public void afterPropertiesSet() {
+    super.afterPropertiesSet();
+    setHandlerMappingConfigHandlerMethods();
+  }
+
+  public void setHandlerMappingConfigHandlerMethods(){
+    Map<String, HandlerMethod> handlerMethods = new HashMap<>();
+    for (HandlerMethod handlerMethod : getHandlerMethods().values()) {
+      RequestMapping requestMapping = AnnotationUtils.findAnnotation(handlerMethod.getMethod(), RequestMapping.class);
+      if (requestMapping !=null && !requestMapping.name().isEmpty()) {
+        handlerMethods.put(requestMapping.name(), handlerMethod);
+      }
+    }
+    handlerMappingConfiguration.setHandlerMethods(handlerMethods);
+  }
 
   @Override
   protected RequestCondition<?> getCustomTypeCondition(Class<?> handlerType) {

@@ -274,7 +274,7 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = searchService.simpleSearch(params.getFirst("q"), commonParams.journalKeys,
         commonParams.articleTypes, commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder,
         commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -299,7 +299,7 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = searchService.advancedSearch(params.getFirst("unformattedQuery"),
         commonParams.journalKeys, commonParams.articleTypes, commonParams.subjectList, commonParams.start,
         commonParams.resultsPerPage, commonParams.sortOrder);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -346,7 +346,7 @@ public class SearchController extends WombatController {
     addOptionsToModel(model);
     Map<?, ?> searchResults = searchService.subjectSearch(commonParams.subjectList, commonParams.journalKeys,
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -369,7 +369,7 @@ public class SearchController extends WombatController {
     addOptionsToModel(model);
     Map<?, ?> searchResults = searchService.authorSearch(params.getFirst("author"), commonParams.journalKeys,
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -443,7 +443,7 @@ public class SearchController extends WombatController {
     }
     Map<?, ?> searchResults = searchService.volumeSearch(volume, commonParams.journalKeys, commonParams.articleTypes,
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("otherQuery", String.format("volume:%d", volume));
     return site.getKey() + "/ftl/search/searchResults";
   }
@@ -466,7 +466,7 @@ public class SearchController extends WombatController {
       throw new IllegalStateException("Valid DOIs should return exactly one article");
     }
     if (numFound == 1) {
-      searchResults = searchService.addArticleLinks(searchResults, request, site, siteSet, false);
+      searchResults = searchService.addArticleLinks(searchResults, request, site, siteSet);
       List docs = (List) searchResults.get("docs");
       Map doc = (Map) docs.get(0);
       return "redirect:" + doc.get("link");

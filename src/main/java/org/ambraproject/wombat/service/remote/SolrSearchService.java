@@ -335,8 +335,8 @@ public class SolrSearchService implements SearchService {
   }
 
   @Override
-  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet,
-      boolean includeApplicationRoot) throws IOException {
+  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site,
+                                   SiteSet siteSet) throws IOException {
     initializeEIssnToJournalKeyMap(siteSet, site);
     List<Map> docs = (List<Map>) searchResults.get("docs");
     for (Map doc : docs) {
@@ -344,11 +344,7 @@ public class SolrSearchService implements SearchService {
       String eIssn = (String) doc.get("eissn");
       Site resultSite = site.getTheme().resolveForeignJournalKey(siteSet, eIssnToJournalKey.get(eIssn));
       String link;
-      if (includeApplicationRoot) {
-        link = resultSite.getRequestScheme().buildLink(request, "/article?id=" + doi);
-      } else {
-        link = resultSite.getRequestScheme().buildLink("/article?id=" + doi);
-      }
+      link = resultSite.getRequestScheme().buildLink(request, "/article?id=" + doi);
       doc.put("link", link);
     }
     return searchResults;

@@ -62,15 +62,17 @@
         </span>
 
         <#-- TODO: fis this select dropdown.  See comments in the .scss.  -->
-        <div class="search-results-select">
-          <label for="sortOrder">
-          <select name="sortOrder" id="sortOrder">
-            <#list sortOrders as sortOrder>
-              <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)> selected="selected"</#if>>${sortOrder.description}</option>
-            </#list>
-          </select>
-          </label>
-        </div>
+        <#if searchResults.numFound != 0>
+          <div class="search-results-select">
+            <label for="sortOrder">
+            <select name="sortOrder" id="sortOrder">
+              <#list sortOrders as sortOrder>
+                <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)> selected="selected"</#if>>${sortOrder.description}</option>
+              </#list>
+            </select>
+            </label>
+          </div>
+        </#if>
 
         </div>
         <#if (isFiltered)>
@@ -214,19 +216,21 @@
 
     </article>
 
-    <aside>
-      <div class="search-alert" data-js-tooltip-hover="trigger">
-        Search Alert
-        <div class="search-alert-tooltip" data-js-tooltip-hover="target">
-          This feature temporarily unavailable.
+    <#if searchResults.numFound != 0>
+      <aside>
+        <div class="search-alert" data-js-tooltip-hover="trigger">
+          Search Alert
+          <div class="search-alert-tooltip" data-js-tooltip-hover="target">
+            This feature temporarily unavailable.
+          </div>
         </div>
-      </div>
-      <div class="search-feed" data-js-tooltip-hover="trigger">
-        <div class="search-feed-tooltip" data-js-tooltip-hover="target">
-          This feature temporarily unavailable.
+        <div class="search-feed" data-js-tooltip-hover="trigger">
+          <div class="search-feed-tooltip" data-js-tooltip-hover="target">
+            This feature temporarily unavailable.
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </#if>
   
    </section>
   <#include "../common/footer/footer.ftl" />

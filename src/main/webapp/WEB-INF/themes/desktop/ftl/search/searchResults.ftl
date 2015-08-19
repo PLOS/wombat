@@ -134,7 +134,9 @@
         <#else>
           results
         </#if>
-        for <span>${query}</span>
+        <#if query?? && query?length gt 0>
+          for <span>${query}</span>
+        </#if>
       </div>
       <dl id="searchResultsList" class="search-results-list">
         <#list searchResults.docs as doc>

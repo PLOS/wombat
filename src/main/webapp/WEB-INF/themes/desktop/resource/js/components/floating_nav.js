@@ -44,8 +44,8 @@
       // traversal of the nav
       $('ul.' + opts.ul_class + ' li:not(.' + opts.class_active + ') ul').hide();
 
-      scrollLocation = '#' + this.hash.substring(1);
-      $(scrollLocation).scrollTo({
+      var scrollLocation = '#' + this.hash.substring(1);
+      $(scrollLocation).scrollTo(event,{
         callback: function () {
           isAutoScrolling = false;
           showActiveSublist();

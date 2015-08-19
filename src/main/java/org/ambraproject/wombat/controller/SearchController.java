@@ -264,7 +264,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"q", "!volume"})
+  @RequestMapping(name = "simpleSearch", value = "/{site}/search", params = {"q", "!volume"})
   public String simpleSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
@@ -289,7 +289,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"unformattedQuery", "!volume"})
+  @RequestMapping(name = "advancedSearch", value = "/{site}/search", params = {"unformattedQuery", "!volume"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
@@ -313,7 +313,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"subject", "!filterSubjects", "!volume",
+  @RequestMapping(name = "subjectSearch", value = "/{site}/search", params = {"subject", "!filterSubjects", "!volume",
       "!unformattedQuery"})
   public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
@@ -331,7 +331,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"filterSubjects", "!subject", "!volume",
+  @RequestMapping(name = "subjectsSearch", value = "/{site}/search", params = {"filterSubjects", "!subject", "!volume",
       "!unformattedQuery"})
   public String subjectsSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
@@ -360,7 +360,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"author", "!volume"})
+  @RequestMapping(name = "authorSearch", value = "/{site}/search", params = {"author", "!volume"})
   public String authorSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
@@ -390,7 +390,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"id!="})
+  @RequestMapping(name = "doiSearch", value = "/{site}/search", params = {"id!="})
   public String doiSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam(value = "id", required = true) String doi) throws IOException {
     Map<?, ?> searchResults = searchService.lookupArticleByDoi(doi);
@@ -410,7 +410,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"eLocationId!="})
+  @RequestMapping(name = "eLocationSearch", value = "/{site}/search", params = {"eLocationId!="})
   public String eLocationSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam(value = "eLocationId", required = true) String eLocationId,
       @RequestParam(value = "filterJournals", required = true) String journal) throws IOException {
@@ -428,7 +428,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"volume!="})
+  @RequestMapping(name = "volumeSearch", value = "/{site}/search", params = {"volume!="})
   public String volumeSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);

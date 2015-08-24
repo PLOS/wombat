@@ -55,7 +55,7 @@ public class StaticResourceControllerTest extends ControllerTest {
 
   @Test
   public void testServeResource() throws Exception {
-    mockMvc.perform(get(format("/resource/%s", "testResource")))
+    mockMvc.perform(get(format("/site/resource/%s", "testResource")))
         .andExpect(handler().handlerType(StaticResourceController.class))
         .andExpect(handler().methodName("serveResource"))
         .andExpect(status().is(SC_OK))
@@ -68,7 +68,7 @@ public class StaticResourceControllerTest extends ControllerTest {
 
   @Test
   public void testServeResourceWithCors() throws Exception {
-    mockMvc.perform(get(format("/resource/allow/%s", "testResource")))
+    mockMvc.perform(get(format("/site/resource/allow/%s", "testResource")))
         .andExpect(handler().handlerType(StaticResourceController.class))
         .andExpect(handler().methodName("serveResource"))
         .andExpect(status().is(SC_OK))

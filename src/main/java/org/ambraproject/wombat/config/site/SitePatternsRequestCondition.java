@@ -10,41 +10,47 @@ import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 import java.util.Set;
 
 
 public class SitePatternsRequestCondition implements RequestCondition<SitePatternsRequestCondition> {
 
-  private SiteResolver siteResolver;
-  private ImmutableMap<String, PatternsRequestCondition> requestConditionMap;
+  private final SiteResolver siteResolver;
+  private final ImmutableMap<String, PatternsRequestCondition> requestConditionMap;
 
-  private SitePatternsRequestCondition(SiteResolver siteResolver) {
+  private SitePatternsRequestCondition(SiteResolver siteResolver, Map<String, PatternsRequestCondition> requestConditionMap) {
     this.siteResolver = Preconditions.checkNotNull(siteResolver);
+    this.requestConditionMap = ImmutableMap.copyOf(requestConditionMap);
   }
 
-  private void setRequestConditionMap(HandlerMappingConfiguration handlerMappingConfiguration,
-                                      RequestMapping handlerAnnotation, Set<String> siteKeys) {
+  private static ImmutableMap<String, PatternsRequestCondition> buildRequestConditionMap(
+      HandlerMappingConfiguration handlerMappingConfiguration,
+      RequestMapping handlerAnnotation,
+      Set<String> siteKeys) {
+    Preconditions.checkNotNull(handlerMappingConfiguration);
+    Preconditions.checkNotNull(handlerAnnotation);
+
     ImmutableMap.Builder<String, PatternsRequestCondition> mapBuilder = ImmutableMap.builder();
     for (String siteKey : siteKeys) {
       Set<String> patterns = handlerMappingConfiguration.getValidPatternsForSite(handlerAnnotation, siteKey);
-      mapBuilder.put(siteKey,
-          new PatternsRequestCondition(patterns.toArray(new String[patterns.size()]), null, null, true, true, null));
+      PatternsRequestCondition condition = new PatternsRequestCondition(patterns.toArray(new String[patterns.size()]), null, null, true, true, null);
+      mapBuilder.put(siteKey, condition);
     }
-    requestConditionMap = mapBuilder.build();
+    return mapBuilder.build();
   }
 
   public static SitePatternsRequestCondition create(HandlerMappingConfiguration handlerMappingConfiguration,
-                                                    RequestMapping handlerAnnotation, SiteResolver siteResolver, Set<String> siteKeys) {
-    SitePatternsRequestCondition sitePatternRC = new SitePatternsRequestCondition(siteResolver);
-    sitePatternRC.setRequestConditionMap(Preconditions.checkNotNull(handlerMappingConfiguration),
-        Preconditions.checkNotNull(handlerAnnotation), Preconditions.checkNotNull(siteKeys));
-    return sitePatternRC;
+                                                    RequestMapping handlerAnnotation,
+                                                    SiteResolver siteResolver,
+                                                    Set<String> siteKeys) {
+    return new SitePatternsRequestCondition(siteResolver,
+        buildRequestConditionMap(handlerMappingConfiguration, handlerAnnotation, siteKeys));
   }
 
   @Override
   public SitePatternsRequestCondition combine(SitePatternsRequestCondition other) {
     Set<String> siteKeys = Sets.union(requestConditionMap.keySet(), other.requestConditionMap.keySet());
-    SitePatternsRequestCondition sitePatternsRC = new SitePatternsRequestCondition(siteResolver);
     ImmutableMap.Builder<String, PatternsRequestCondition> mapBuilder = ImmutableMap.builder();
     for (String siteKey : siteKeys) {
       PatternsRequestCondition thisRC = requestConditionMap.get(siteKey);
@@ -57,8 +63,7 @@ public class SitePatternsRequestCondition implements RequestCondition<SitePatter
         mapBuilder.put(siteKey, thisRC.combine(otherRC));
       }
     }
-    sitePatternsRC.requestConditionMap = mapBuilder.build();
-    return sitePatternsRC;
+    return new SitePatternsRequestCondition(siteResolver, mapBuilder.build());
   }
 
   @Override
@@ -72,9 +77,7 @@ public class SitePatternsRequestCondition implements RequestCondition<SitePatter
     if (patternsRC == null) {
       return null;
     }
-    SitePatternsRequestCondition sitePatternsRC = new SitePatternsRequestCondition(siteResolver);
-    sitePatternsRC.requestConditionMap = ImmutableMap.of(siteKey, patternsRC);
-    return sitePatternsRC;
+    return new SitePatternsRequestCondition(siteResolver, ImmutableMap.of(siteKey, patternsRC));
   }
 
   @Override

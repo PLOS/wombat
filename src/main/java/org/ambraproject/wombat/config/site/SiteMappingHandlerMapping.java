@@ -70,18 +70,18 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
     SiteRequestCondition siteRC = null;
     if (handlerMappingConfiguration.hasSiteOverrides(methodAnnotation)) {
       sitePatternsRC = SitePatternsRequestCondition.create(handlerMappingConfiguration,
-              methodAnnotation, siteResolver, handlerMappingConfiguration.getValidSites(methodAnnotation));
+          methodAnnotation, siteResolver, handlerMappingConfiguration.getValidSites(methodAnnotation));
     } else if (handlerMappingConfiguration.hasSiteMapping(methodAnnotation)) {
       siteRC = new SiteRequestCondition(siteResolver, handlerMappingConfiguration.getValidSites(methodAnnotation));
     }
     return new CompositeRequestCondition(new RequestConditionHolder(siteRC),
-            new RequestConditionHolder(sitePatternsRC));
+        new RequestConditionHolder(sitePatternsRC));
   }
 
-  @Override
   /**
    * Create a RequestMappingInfo from a RequestMapping annotation.
    */
+  @Override
   protected RequestMappingInfo createRequestMappingInfo(RequestMapping annotation, RequestCondition<?> customCondition) {
     Set<String> allPatterns = new HashSet<>();
     if (handlerMappingConfiguration.hasSiteOverrides(annotation)) {
@@ -93,14 +93,14 @@ public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
     }
     String[] patterns = resolveEmbeddedValuesInPatterns(allPatterns.toArray(new String[allPatterns.size()]));
     return new RequestMappingInfo(
-            annotation.name(),
-            new PatternsRequestCondition(patterns, null, null, true, true, null),
-            new RequestMethodsRequestCondition(annotation.method()),
-            new ParamsRequestCondition(annotation.params()),
-            new HeadersRequestCondition(annotation.headers()),
-            new ConsumesRequestCondition(annotation.consumes(), annotation.headers()),
-            new ProducesRequestCondition(annotation.produces(), annotation.headers(), null),
-            customCondition);
+        annotation.name(),
+        new PatternsRequestCondition(patterns, null, null, true, true, null),
+        new RequestMethodsRequestCondition(annotation.method()),
+        new ParamsRequestCondition(annotation.params()),
+        new HeadersRequestCondition(annotation.headers()),
+        new ConsumesRequestCondition(annotation.consumes(), annotation.headers()),
+        new ProducesRequestCondition(annotation.produces(), annotation.headers(), null),
+        customCondition);
   }
 
 

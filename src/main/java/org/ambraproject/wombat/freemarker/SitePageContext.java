@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.freemarker;
 
+import com.google.common.collect.Iterables;
 import freemarker.core.Environment;
 import freemarker.ext.beans.BeanModel;
 import freemarker.ext.servlet.HttpRequestHashModel;
@@ -109,14 +110,13 @@ public class SitePageContext {
           targetSite, handlerName);
       throw new RuntimeException(message);
     }
-    String urlPattern = urlPatterns.iterator().next(); // TODO: Sort via AntPathMatcher.AntPatternComparator first?
     if (urlPatterns.size() > 1) {
-      // Technically there is no reason a controller can't be reached using several namespaces, so it seemed best
-      // to make this a warning instead of an error condition, however, it's probably best practice not to do so.
-      log.warn("Warning building link for site:handlerName={}. Warning detail: {}",
-          targetSite + ":" + handlerName,
-          urlPatterns.size() + " URL patterns returned from handler mapping: " + urlPatterns + " Used pattern: " + urlPattern);
+      String message = String.format(
+          "Error building link for site:handlerName=%s:%s. Error detail: %d URL patterns returned from handler mapping: %s",
+          targetSite, handlerName, urlPatterns.size(), urlPatterns);
+      throw new RuntimeException(message);
     }
+    String urlPattern = Iterables.getOnlyElement(urlPatterns);
 
     // replace * or ** with the path URI template var to allow expansion when using ANT-style wildcards
     // TODO: support multiple wildcards using {path__0}, {path__1}?

@@ -12,7 +12,9 @@
  scrollSpeed: 500 -  the speed at which one scrolls to the object
  changeUrl: false,- if true changes the location hash to the object id
  stopDefault: true - prevents the default behaviour of the bound event.
-                    change to false if you the default event behaviour
+                    change to false if you the default event behaviour - IF USING you have to pass back the event into the function like so:
+ $(scrollLocation).scrollTo(event,{
+
  *
  */
 
@@ -30,7 +32,7 @@
   }
 }
 (function ($) {
-  $.fn.scrollTo=function () {
+  $.fn.scrollTo=function (event) {
 
     var scrollLocationId=this.attr('id');
 
@@ -43,7 +45,7 @@
     }, arguments[0] || {});
 
     if (options.stopDefault) {
-      event.preventDefault();
+      event.preventDefault(event);
     }
     $('html,body').stop().animate(
         {

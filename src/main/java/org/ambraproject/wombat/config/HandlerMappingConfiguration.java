@@ -61,10 +61,13 @@ public class HandlerMappingConfiguration {
     }
 
     ImmutableSet<String> replacedPatterns = getSiteOverride(handlerAnnotation, siteKey, KEYNAME_REPLACEPATTERNS);
+    if (!replacedPatterns.isEmpty()) {
+      return replacedPatterns;
+    }
 
-    return !replacedPatterns.isEmpty() ? replacedPatterns : ImmutableSet.copyOf(Sets.difference(
-        Sets.union(sharedPatterns, getSiteOverride(handlerAnnotation, siteKey, KEYNAME_INCLUDEPATTERNS)),
-        getSiteOverride(handlerAnnotation, siteKey, KEYNAME_EXCLUDEPATTERNS)));
+    ImmutableSet<String> included = getSiteOverride(handlerAnnotation, siteKey, KEYNAME_INCLUDEPATTERNS);
+    ImmutableSet<String> excluded = getSiteOverride(handlerAnnotation, siteKey, KEYNAME_EXCLUDEPATTERNS);
+    return ImmutableSet.copyOf(Sets.difference(Sets.union(sharedPatterns, included), excluded));
   }
 
   public boolean hasSiteMapping(RequestMapping handlerAnnotation) {

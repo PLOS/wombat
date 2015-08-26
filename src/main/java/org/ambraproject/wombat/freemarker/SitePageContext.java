@@ -93,7 +93,7 @@ public class SitePageContext {
       return buildLinkToSite(targetSite, handlerName, params);
     } catch (Exception e) {
       log.error("Error building link for journalKey:handlerName={}. Error detail:{}",
-          journalKey.concat(":").concat(handlerName), e.getMessage());
+          journalKey + ":" + handlerName, e.getMessage());
       return buildLinkToSite(site, handlerName, params);
     }
   }
@@ -110,16 +110,15 @@ public class SitePageContext {
         // Technically there is no reason a controller can't be reached using several namespaces, so it seemed best
         // to make this a warning instead of an error condition, however, it's probably best practice not to do so.
         log.warn("Warning building link for site:handlerName={}. Warning detail: {}",
-            targetSite.toString().concat(":").concat(handlerName), String.valueOf(urlPatterns.size()).
-                concat(" URL patterns returned from handler mapping: ".concat(urlPatterns.toString())).
-                concat(" Used pattern: ").concat(urlPattern));
+            targetSite + ":" + handlerName,
+            urlPatterns.size() + " URL patterns returned from handler mapping: " + urlPatterns + " Used pattern: " + urlPattern);
       }
 
       // replace * or ** with the path URI template var to allow expansion when using ANT-style wildcards
       // TODO: support multiple wildcards using {path__0}, {path__1}?
-      urlPattern = urlPattern.replaceFirst("\\*+", "{".concat(PATH_TEMPLATE_VAR).concat("}"));
+      urlPattern = urlPattern.replaceFirst("\\*+", "{" + PATH_TEMPLATE_VAR + "}");
 
-      boolean pathIncludesSiteToken = urlPattern.matches(".*\\{".concat(SITE_TEMPLATE_VAR).concat("\\}.*"));
+      boolean pathIncludesSiteToken = urlPattern.matches(".*\\{" + SITE_TEMPLATE_VAR + "\\}.*");
 
       UriComponentsBuilder builder = ServletUriComponentsBuilder.fromPath(urlPattern);
       UriComponents.UriTemplateVariables uriVariables = new UriComponents.UriTemplateVariables() {
@@ -144,14 +143,14 @@ public class SitePageContext {
         for (Map.Entry<String, Object> paramEntry : params.entrySet()) {
           paramBuilder.add(paramEntry.getKey(), paramEntry.getValue().toString());
         }
-        path = path.concat("?").concat(paramBuilder.format());
+        path = path + "?" + paramBuilder.format();
       }
 
       return targetSite.getRequestScheme().buildLink(extractRequest(), path, pathIncludesSiteToken);
 
     } catch (Exception e) {
       log.error("Error building link for site:handlerName={}. Error detail:{}",
-          targetSite.toString().concat(":").concat(handlerName), e.getMessage());
+          targetSite + ":" + handlerName, e.getMessage());
       return buildLink(DEFAULT_URL_PATH);
     }
   }

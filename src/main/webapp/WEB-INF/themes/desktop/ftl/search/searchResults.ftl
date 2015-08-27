@@ -82,6 +82,10 @@
               <div class="filter-item" id="filter-date">
                 ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
               </div>
+              <input type="hidden" name="filterStartDate" value="${filterStartDate}" />
+              <#if (filterEndDate??)>
+                <input type="hidden" name="filterEndDate" value="${filterEndDate}" />
+              </#if>
             </#if>
             <#if (filterJournals?size > 0)>
               <#list filterJournalNames as journalName>

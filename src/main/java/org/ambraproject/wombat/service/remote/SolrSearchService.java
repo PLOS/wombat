@@ -248,9 +248,10 @@ public class SolrSearchService implements SearchService {
 
   @Override
   public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
-      List<String> subjectList, int start, int rows, SearchCriterion sortOrder) throws IOException {
+      List<String> subjectList, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
-        null, false);
+        dateRange, false);
     params.add(new BasicNameValuePair("q", query));
     params.add(new BasicNameValuePair("fq", buildSubjectClause(subjectList)));
     return executeQuery(params);

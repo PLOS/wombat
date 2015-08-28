@@ -32,7 +32,8 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     return buildPatternMap(siteSet, mappingAnnotation).keySet();
   }
 
-  public static SiteRequestCondition create(SiteResolver siteResolver, SiteSet siteSet, RequestMapping mappingAnnotation) {
+  public static SiteRequestCondition create(SiteResolver siteResolver, SiteSet siteSet, RequestMapping mappingAnnotation,
+                                            HandlerDirectory handlerDirectory) {
     Multimap<String, Site> patternMap = buildPatternMap(siteSet, mappingAnnotation);
 
     ImmutableMap.Builder<Site, PatternsRequestCondition> requestConditionMap = ImmutableMap.builder();
@@ -42,6 +43,9 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
           null, null, true, true, null);
       for (Site site : entry.getValue()) {
         requestConditionMap.put(site, condition);
+        if (!mappingAnnotation.name().isEmpty()) {
+          handlerDirectory.register(mappingAnnotation, site, pattern);
+        }
       }
     }
 

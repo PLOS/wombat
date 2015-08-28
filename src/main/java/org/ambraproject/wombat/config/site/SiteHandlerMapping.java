@@ -25,7 +25,8 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
 
   @Autowired
   SiteResolver siteResolver;
-
+  @Autowired
+  HandlerDirectory handlerDirectory;
   @Autowired
   SiteSet siteSet;
 
@@ -46,7 +47,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
     if (methodAnnotation.value().length == 0) {
       return null;
     }
-    return SiteRequestCondition.create(siteResolver, siteSet, methodAnnotation);
+    return SiteRequestCondition.create(siteResolver, siteSet, methodAnnotation, handlerDirectory);
   }
 
   /**

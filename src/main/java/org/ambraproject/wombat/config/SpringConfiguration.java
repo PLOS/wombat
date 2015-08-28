@@ -22,11 +22,12 @@ import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import org.ambraproject.wombat.config.site.HandlerDirectory;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
-import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
@@ -89,6 +90,11 @@ public class SpringConfiguration {
   @Bean
   public SiteResolver siteResolver() {
     return new SiteResolver();
+  }
+
+  @Bean
+  public HandlerDirectory handlerDirectory() {
+    return new HandlerDirectory();
   }
 
   @Bean

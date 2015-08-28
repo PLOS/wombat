@@ -8,7 +8,6 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
-import org.ambraproject.wombat.config.HandlerMappingConfiguration;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
@@ -29,8 +28,6 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
   private SiteResolver siteResolver;
   @Autowired
   private EditorialContentService editorialContentService;
-  @Autowired
-  private HandlerMappingConfiguration handlerMappingConfig;
 
   private static final String SUBST_ATTR_NAME = "data-subst";
 
@@ -65,7 +62,7 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
 
     ImmutableList<HtmlElementSubstitution> substitutions = HtmlElementSubstitution.buildList(body, SUBST_ATTR_NAME);
 
-    SitePageContext sitePageContext = new SitePageContext(siteResolver, handlerMappingConfig, env);
+    SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
 
     try (Reader html = editorialContentService.readHtml(sitePageContext, pageType, pathObj.toString(),
             transformations, substitutions)) {

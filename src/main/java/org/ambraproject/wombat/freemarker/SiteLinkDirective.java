@@ -3,7 +3,6 @@ package org.ambraproject.wombat.freemarker;
 import freemarker.core.Environment;
 import freemarker.template.TemplateModelException;
 import freemarker.template.TemplateScalarModel;
-import org.ambraproject.wombat.config.HandlerMappingConfiguration;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +31,18 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
   private SiteResolver siteResolver;
   @Autowired
   protected SiteSet siteSet;
-  @Autowired
-  private HandlerMappingConfiguration handlerMappingConfig;
 
   @Override
   protected String getValue(Environment env, Map params) throws TemplateModelException, IOException {
     String path = getStringValue(params.get("path"));
     String targetJournal = getStringValue(params.remove("journalKey")); // never used for url creation so remove
     String handlerName = getStringValue(params.remove("handlerName")); // never used for url creation so remove
-    SitePageContext sitePageContext = new SitePageContext(siteResolver, handlerMappingConfig, env);
+    SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
 
     if (handlerName != null) {
-      return targetJournal == null ? sitePageContext.buildLink(handlerName, params) :
-              sitePageContext.buildLink(siteSet, targetJournal, handlerName, params);
+      return null; // TODO
+//      return targetJournal == null ? sitePageContext.buildLink(handlerName, params) :
+//              sitePageContext.buildLink(siteSet, targetJournal, handlerName, params);
     } else if (path != null) {
       return targetJournal == null ? sitePageContext.buildLink(path) :
               sitePageContext.buildLink(siteSet, targetJournal, path);

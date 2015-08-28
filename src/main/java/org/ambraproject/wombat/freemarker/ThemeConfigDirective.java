@@ -3,10 +3,9 @@ package org.ambraproject.wombat.freemarker;
 import freemarker.core.Environment;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModelException;
-import org.ambraproject.wombat.config.HandlerMappingConfiguration;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.config.site.SiteResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -35,8 +34,6 @@ public class ThemeConfigDirective extends VariableLookupDirective<Object> {
   private SiteSet siteSet;
   @Autowired
   private SiteResolver siteResolver;
-  @Autowired
-  private HandlerMappingConfiguration handlerMappingConfig;
 
   @Override
   protected Object getValue(Environment env, Map params) throws TemplateException, IOException {
@@ -48,7 +45,7 @@ public class ThemeConfigDirective extends VariableLookupDirective<Object> {
 
     Object journalKeyObj = params.get("journal");
 
-    Theme theme = new SitePageContext(siteResolver, handlerMappingConfig, env).getSite().getTheme();
+    Theme theme = new SitePageContext(siteResolver, env).getSite().getTheme();
     if (journalKeyObj != null) {
       theme = theme.resolveForeignJournalKey(siteSet, journalKeyObj.toString()).getTheme();
     }

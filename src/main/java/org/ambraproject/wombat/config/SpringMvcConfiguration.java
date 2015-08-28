@@ -43,9 +43,4 @@ public class SpringMvcConfiguration extends WebMvcConfigurationSupport{
     registration.addResourceLocations("/resources/");
   }
 
-  @Bean
-  public HandlerMappingConfiguration handlerMappingConfiguration(RuntimeConfiguration runtimeConfiguration) {
-    return runtimeConfiguration.getHandlerMappingConfiguration(siteSet);
-  }
-
 }

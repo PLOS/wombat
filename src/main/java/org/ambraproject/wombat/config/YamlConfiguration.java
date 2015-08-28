@@ -83,11 +83,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return SiteSet.create(input.sites, themeTree);
   }
 
-  @Override
-  public HandlerMappingConfiguration getHandlerMappingConfiguration(SiteSet siteSet) {
-    return new HandlerMappingConfiguration(input.handlerMapping, siteSet);
-  }
-
   private final CacheConfiguration cacheConfiguration = new CacheConfiguration() {
     @Override
     public String getMemcachedHost() {

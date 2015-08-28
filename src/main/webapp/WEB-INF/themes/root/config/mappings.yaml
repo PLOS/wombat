@@ -1,0 +1,43 @@
+# Overrides of this file change the Spring request mappings from their default values. That is,
+# you can customize the way that URLs map to particular controller methods for each theme. You can
+# also disable controller methods for a theme,
+#
+# Each dictionary key is the `name` value of a `@RequestMapping` annotation on a controller
+# method. (This allows you to override individual controller methods in subthemes, as with any
+# other dictionary key in config files like this one.) The value of each entry describes the
+# custom request mapping that replaces the mapping from the webapp.
+#
+# For example, request mappings that look like this in the webapp's source code:
+#
+#     @RequestMapping(name = "articleAuthors", value = "/article/authors")
+#     public String renderArticleAuthors(...)
+#
+#     @RequestMapping(name = "articleCommentTree", value = "/article/comment")
+#     public String renderArticleCommentTree(...)
+#
+# could be customized by a config file that looks like this:
+#
+#     {
+#       "articleAuthors": {
+#         "pattern": "/a/auth"
+#       },
+#       "articleCommentTree": {
+#         "pattern": "/a/remarks"
+#       }
+#     }
+#
+# There are two keys that may appear in the value.
+#
+# * `pattern`: A mapping pattern that directly replaces the `value` attribute of the
+#   `@RequestMapping` annotation. If omitted, use the default that is defined by the webapp.
+#
+# * `enabled`: A boolean value indicating whether the mapped page should show up in this theme at
+#   all. If it is `false`, requests that would otherwise be mapped to the controller will go to a
+#   404 page instead. If omitted, defaults to `true`.
+#
+# Note that, if `enabled` is `false`, the pattern will be ignored. So config values will generally
+# have either a `pattern` value or `"enabled": false`, never both. (We could have accomplished the
+# same thing by having a null pattern mean "disabled", but this way gives us the flexibility to
+# add more values in the future.)
+
+{}

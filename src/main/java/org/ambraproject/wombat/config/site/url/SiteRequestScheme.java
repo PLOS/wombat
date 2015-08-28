@@ -64,6 +64,7 @@ public class SiteRequestScheme implements SiteRequestPredicate {
 
     /**
      * Identify the host name for the site
+     *
      * @param hostName
      */
     public Builder specifyHost(String hostName) {
@@ -103,6 +104,10 @@ public class SiteRequestScheme implements SiteRequestPredicate {
     public SiteRequestScheme build() {
       return new SiteRequestScheme(hostName, pathToken, requestPredicates);
     }
+  }
+
+  public boolean hasPathToken() {
+    return pathToken.isPresent();
   }
 
   @Override

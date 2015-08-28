@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BrowseController extends WombatController {
 
-  @RequestMapping(name = "browse", value = "/{site}/browse")
+  @RequestMapping(name = "browse", value = "/browse")
   public String browse(Model model, @SiteParam Site site) {
     model.addAttribute("journalKey", site.getKey());
     return site.getKey() + "/ftl/browse";

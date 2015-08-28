@@ -78,7 +78,7 @@ public class ArticleController extends WombatController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
-  @RequestMapping(name = "article", value = "/{site}/article")
+  @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
@@ -116,7 +116,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleComments", value = "/{site}/article/comments")
+  @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(Model model, @SiteParam Site site,
                                       @RequestParam("id") String articleId) throws IOException {
     requireNonemptyParameter(articleId);
@@ -338,7 +338,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleCommentTree", value = "/{site}/article/comment")
+  @RequestMapping(name = "articleCommentTree", value = "/article/comment")
   public String renderArticleCommentTree(Model model, @SiteParam Site site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
@@ -365,7 +365,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleAuthors", value = "/{site}/article/authors")
+  @RequestMapping(name = "articleAuthors", value = "/article/authors")
   public String renderArticleAuthors(Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);

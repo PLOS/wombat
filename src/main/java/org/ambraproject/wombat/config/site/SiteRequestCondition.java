@@ -87,13 +87,8 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   }
 
   private static String checkSitePathToken(Site site, String pattern) {
-    if (true) {
-      // TEMPORARY while RequestMappings have not been modified yet
-      // TODO: Remove '/{site}' or '/*' from beginning of all RequestMapping patterns, then delete this
-      return pattern;
-    }
     return site.getRequestScheme().hasPathToken()
-        ? (pattern.startsWith("/") ? "/*" : "/*/") + pattern
+        ? "/{site}" + (pattern.startsWith("/") ? "" : "/") + pattern
         : pattern;
   }
 

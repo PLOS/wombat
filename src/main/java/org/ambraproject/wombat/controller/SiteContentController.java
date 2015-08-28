@@ -40,7 +40,7 @@ public class SiteContentController extends WombatController {
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(name="siteContent", value={"/*/s/{pageName}"})
+  @RequestMapping(name="siteContent", value="/s/{pageName}")
   public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 
@@ -69,7 +69,7 @@ public class SiteContentController extends WombatController {
   /**
    * controller for site content home pages
    */
-  @RequestMapping(name = "siteContentHome", value = {"/*/s"}, method = RequestMethod.GET)
+  @RequestMapping(name = "siteContentHome", value = "/s", method = RequestMethod.GET)
   public String siteContentHomePage(Model model, @SiteParam Site site) throws IOException {
 
     Theme theme = site.getTheme();

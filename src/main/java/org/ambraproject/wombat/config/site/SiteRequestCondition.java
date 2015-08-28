@@ -87,9 +87,17 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   }
 
   private static String checkSitePathToken(Site site, String pattern) {
-    return site.getRequestScheme().hasPathToken()
-        ? "/{site}" + (pattern.startsWith("/") ? "" : "/") + pattern
-        : pattern;
+    if (site.getRequestScheme().hasPathToken()) {
+      StringBuilder modified = new StringBuilder(pattern.length() + 8);
+      modified.append("/{site}");
+      if (!pattern.isEmpty() && !pattern.startsWith("/")) {
+        modified.append('/');
+      }
+      modified.append(pattern);
+      return modified.toString();
+    } else {
+      return pattern;
+    }
   }
 
   @Override

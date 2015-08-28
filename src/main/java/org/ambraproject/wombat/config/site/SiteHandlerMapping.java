@@ -21,7 +21,7 @@ import java.util.Set;
 /**
  * Handler mapping class that incorporates custom {@link SiteRequestCondition}
  */
-public class SiteMappingHandlerMapping extends RequestMappingHandlerMapping {
+public class SiteHandlerMapping extends RequestMappingHandlerMapping {
 
   @Autowired
   SiteResolver siteResolver;

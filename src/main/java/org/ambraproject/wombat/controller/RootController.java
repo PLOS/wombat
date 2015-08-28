@@ -36,7 +36,9 @@ public class RootController extends WombatController {
    * page is more useful than an error message. But all end-user-facing pages should belong to one of the sites in
    * {@code siteSet}.
    */
-  @RequestMapping(name="root", value = "/", method = RequestMethod.GET)
+  // Temporarily disabled while figuring out how to reconcile with custom handler mapping code
+  // TODO: Fix and uncomment
+  // @RequestMapping(name="root", value = "/", method = RequestMethod.GET)
   public String home(Model model) throws Exception {
     model.addAttribute("siteKeys", siteSet.getSiteKeys());
 

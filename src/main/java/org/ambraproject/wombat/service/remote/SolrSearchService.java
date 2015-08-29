@@ -18,6 +18,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.apache.http.NameValuePair;
@@ -342,9 +343,7 @@ public class SolrSearchService implements SearchService {
     for (Map doc : docs) {
       String doi = (String) doc.get("id");
       String eIssn = (String) doc.get("eissn");
-      Site resultSite = site.getTheme().resolveForeignJournalKey(siteSet, eIssnToJournalKey.get(eIssn));
-      String link;
-      link = resultSite.getRequestScheme().buildLink(request, "/article?id=" + doi);
+      String link = Link.toForeignSite(site, eIssnToJournalKey.get(eIssn), siteSet).toPath("/article?id=" + doi).get(request);
       doc.put("link", link);
     }
     return searchResults;

@@ -2,6 +2,7 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
@@ -111,7 +112,7 @@ public class PowerPointController extends WombatController {
    */
   private static URL buildArticleUrl(HttpServletRequest request, Site site, String parentArticleDoi) {
     // Build the path to the article. (Doesn't include host.)
-    String articlePath = site.getRequestScheme().buildLink(request, "article?id=" + parentArticleDoi);
+    String articlePath = Link.toLocalSite(site).toPath("article?id=" + parentArticleDoi).get(request);
 
     // Recover everything up to the path (scheme, host, port) from the request's raw URL.
     Matcher urlMatcher = URL_PREFIX_PATTERN.matcher(request.getRequestURL().toString());

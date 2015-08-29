@@ -12,6 +12,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.ArticleService;
@@ -287,7 +288,7 @@ public class ArticleController extends WombatController {
         }
         if (crossPublishedSite != null) {
           // Set up an href link to the other site's homepage
-          String homepageLink = crossPublishedSite.getRequestScheme().buildLink(request, "/");
+          String homepageLink = Link.toForeignSite(site,crossPublishedSite).toPath("/").get(request);
           crossPublishedJournalMetadata.put("href", homepageLink);
 
           // Look up whether the other site wants its journal title italicized

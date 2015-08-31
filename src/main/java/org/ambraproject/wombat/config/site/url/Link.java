@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config.site.url;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.HandlerDirectory;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -61,20 +62,26 @@ public class Link {
       return new Link(site, path, isAbsolute);
     }
 
-    public Link toPattern(HandlerDirectory handlerDirectory, String handlerName, Map<String, ?> params) {
+    public Link toPattern(HandlerDirectory handlerDirectory, String handlerName,
+                          Map<String, ?> variables, Multimap<String, ?> queryParameters) {
       String pattern = handlerDirectory.getPattern(handlerName, site);
       if (pattern == null) {
         String message = String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.getKey());
         throw new IllegalArgumentException(message);
       }
-      return toPath(buildPathFromPattern(pattern, site, params));
+      return toPath(buildPathFromPattern(pattern, site, variables, queryParameters));
     }
   }
 
   private static final String PATH_TEMPLATE_VAR = "path";
   private static final String SITE_TEMPLATE_VAR = "site";
 
-  private static String buildPathFromPattern(String pattern, final Site site, final Map<String, ?> params) {
+  private static String buildPathFromPattern(String pattern, final Site site,
+                                             final Map<String, ?> variables, Multimap<String, ?> queryParameters) {
+    Preconditions.checkNotNull(site);
+    Preconditions.checkNotNull(variables);
+    Preconditions.checkNotNull(queryParameters);
+
     // replace * or ** with the path URI template var to allow expansion when using ANT-style wildcards
     // TODO: support multiple wildcards using {path__0}, {path__1}?
     pattern = pattern.replaceFirst("\\*+", "{" + PATH_TEMPLATE_VAR + "}");
@@ -83,23 +90,22 @@ public class Link {
     UriComponents.UriTemplateVariables uriVariables = new UriComponents.UriTemplateVariables() {
       @Override
       public Object getValue(String name) {
-        if (!params.containsKey(name)) {
-          if (name.equals(SITE_TEMPLATE_VAR)) {
-            return site.getKey();
-          } else {
-            throw new RuntimeException("Missing required parameter " + name);
-          }
+        if (name.equals(SITE_TEMPLATE_VAR)) {
+          return site.getKey(); // TODO: Is this right?
         }
-        return params.remove(name); // consume params as they are used
+        Object value = variables.get(name);
+        if (value == null) {
+          throw new IllegalArgumentException("Missing required parameter " + name);
+        }
+        return value;
       }
     };
 
     String path = builder.build().expand(uriVariables).encode().toString();
 
-    if (!params.isEmpty()) {
-      // any parameters not consumed by the path variable assignment process are assumed to be query params
+    if (!queryParameters.isEmpty()) {
       UrlParamBuilder paramBuilder = UrlParamBuilder.params();
-      for (Map.Entry<String, ?> paramEntry : params.entrySet()) {
+      for (Map.Entry<String, ?> paramEntry : queryParameters.entries()) {
         paramBuilder.add(paramEntry.getKey(), paramEntry.getValue().toString());
       }
       path = path + "?" + paramBuilder.format();

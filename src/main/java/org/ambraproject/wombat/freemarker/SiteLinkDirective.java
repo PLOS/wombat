@@ -1,13 +1,20 @@
 package org.ambraproject.wombat.freemarker;
 
+import com.google.common.collect.ImmutableListMultimap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ListMultimap;
 import freemarker.core.Environment;
+import freemarker.template.TemplateHashModelEx;
+import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
+import freemarker.template.TemplateModelIterator;
 import freemarker.template.TemplateScalarModel;
+import freemarker.template.TemplateSequenceModel;
 import org.ambraproject.wombat.config.site.HandlerDirectory;
-import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -40,8 +47,8 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
   @Override
   protected String getValue(Environment env, Map params) throws TemplateModelException, IOException {
     String path = getStringValue(params.get("path"));
-    String targetJournal = getStringValue(params.remove("journalKey")); // never used for url creation so remove
-    String handlerName = getStringValue(params.remove("handlerName")); // never used for url creation so remove
+    String targetJournal = getStringValue(params.get("journalKey"));
+    String handlerName = getStringValue(params.get("handlerName"));
 
     SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
     Site site = sitePageContext.getSite();
@@ -51,7 +58,9 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
         : Link.toForeignSite(site, targetJournal, siteSet);
     final Link link;
     if (handlerName != null) {
-      link = linkFactory.toPattern(handlerDirectory, handlerName, params);
+      Map<String, ?> variables = getValueAsMap(params.get("variables"));
+      ListMultimap<String, ?> queryParameters = getValueAsMultimap(params.get("queryParameters"));
+      link = linkFactory.toPattern(handlerDirectory, handlerName, variables, queryParameters);
     } else if (path != null) {
       link = linkFactory.toPath(path);
     } else {
@@ -61,8 +70,45 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
     return link.get(sitePageContext.getRequest());
   }
 
-  private String getStringValue(Object valueObj) throws TemplateModelException {
+  private static String getStringValue(Object valueObj) throws TemplateModelException {
     return valueObj instanceof TemplateScalarModel ? ((TemplateScalarModel) valueObj).getAsString() : null;
+  }
+
+  private static ImmutableMap<String, ?> getValueAsMap(Object value) throws TemplateModelException {
+    if (value == null) return ImmutableMap.of();
+    if (value instanceof TemplateHashModelEx) {
+      TemplateHashModelEx ftlHash = (TemplateHashModelEx) value;
+      ImmutableMap.Builder<String, Object> builder = ImmutableMap.builder();
+      for (TemplateModelIterator iterator = ftlHash.keys().iterator(); iterator.hasNext(); ) {
+        String key = iterator.next().toString();
+        builder.put(key, ftlHash.get(key));
+      }
+      return builder.build();
+    }
+    throw new TemplateModelException("Hash type expected");
+  }
+
+  private static ImmutableListMultimap<String, ?> getValueAsMultimap(Object value) throws TemplateModelException {
+    if (value == null) return ImmutableListMultimap.of();
+    if (value instanceof TemplateHashModelEx) {
+      TemplateHashModelEx ftlHash = (TemplateHashModelEx) value;
+      ImmutableListMultimap.Builder<String, Object> builder = ImmutableListMultimap.builder();
+      for (TemplateModelIterator iterator = ftlHash.keys().iterator(); iterator.hasNext(); ) {
+        String key = iterator.next().toString();
+        TemplateModel model = ftlHash.get(key);
+        if (model instanceof TemplateSequenceModel) {
+          TemplateSequenceModel sequenceModel = (TemplateSequenceModel) model;
+          int size = sequenceModel.size();
+          for (int i = 0; i < size; i++) {
+            builder.put(key, sequenceModel.get(i));
+          }
+        } else {
+          builder.put(key, model);
+        }
+      }
+      return builder.build();
+    }
+    throw new TemplateModelException("Hash type expected");
   }
 
 }

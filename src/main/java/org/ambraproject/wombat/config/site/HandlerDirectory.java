@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public final class HandlerDirectory {
 
-  private final Object lock = new Object();
-
-  private ImmutableTable.Builder<String, Site, String> registry;
+  private final ImmutableTable.Builder<String, Site, String> registry;
   private ImmutableTable<String, Site, String> table;
 
   public HandlerDirectory() {
@@ -21,26 +19,19 @@ public final class HandlerDirectory {
     Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(pattern);
 
-    synchronized (lock) {
-      if (registry == null) {
-        throw new IllegalStateException("Cannot register more methods after directory has been read");
-      }
+    if (table != null) {
+      throw new IllegalStateException("Cannot register more methods after directory has been read");
+    }
+    synchronized (registry) {
       registry.put(handlerName, site, pattern);
     }
   }
 
   public String getPattern(String handlerName, Site site) {
-    Preconditions.checkNotNull(handlerName);
-    Preconditions.checkNotNull(site);
-
-    synchronized (lock) { // Make sure nothing else sneaks into the registry before we've dropped it
-      if (table == null) {
-        table = registry.build();
-        registry = null;
-      }
+    if (table == null) {
+      table = registry.build();
     }
-
-    return table.get(handlerName, site);
+    return table.get(Preconditions.checkNotNull(handlerName), Preconditions.checkNotNull(site));
   }
 
 }

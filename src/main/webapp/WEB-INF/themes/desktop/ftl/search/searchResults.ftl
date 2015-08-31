@@ -62,24 +62,30 @@
         </span>
 
         <#-- TODO: fis this select dropdown.  See comments in the .scss.  -->
-        <div class="search-results-select">
-          <label for="sortOrder">
-          <select name="sortOrder" id="sortOrder">
-            <#list sortOrders as sortOrder>
-              <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)> selected="selected"</#if>>${sortOrder.description}</option>
-            </#list>
-          </select>
-          </label>
-        </div>
+        <#if searchResults.numFound != 0>
+          <div class="search-results-select">
+            <label for="sortOrder">
+            <select name="sortOrder" id="sortOrder">
+              <#list sortOrders as sortOrder>
+                <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)> selected="selected"</#if>>${sortOrder.description}</option>
+              </#list>
+            </select>
+            </label>
+          </div>
+        </#if>
 
         </div>
         <#if (isFiltered)>
           <div class="filter-block">
             <span>Results from:</span>
             <#if (filterStartDate??)>
-              <div class="filter-item">
+              <div class="filter-item" id="filter-date">
                 ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
               </div>
+              <input type="hidden" name="filterStartDate" value="${filterStartDate}" />
+              <#if (filterEndDate??)>
+                <input type="hidden" name="filterEndDate" value="${filterEndDate}" />
+              </#if>
             </#if>
             <#if (filterJournals?size > 0)>
               <#list filterJournalNames as journalName>
@@ -132,7 +138,9 @@
         <#else>
           results
         </#if>
-        for <span>${query}</span>
+        <#if query?? && query?length gt 0>
+          for <span>${query}</span>
+        </#if>
       </div>
       <dl id="searchResultsList" class="search-results-list">
         <#list searchResults.docs as doc>
@@ -214,19 +222,21 @@
 
     </article>
 
-    <aside>
-      <div class="search-alert" data-js-tooltip-hover="trigger">
-        Search Alert
-        <div class="search-alert-tooltip" data-js-tooltip-hover="target">
-          This feature temporarily unavailable.
+    <#if searchResults.numFound != 0>
+      <aside>
+        <div class="search-alert" data-js-tooltip-hover="trigger">
+          Search Alert
+          <div class="search-alert-tooltip" data-js-tooltip-hover="target">
+            This feature temporarily unavailable.
+          </div>
         </div>
-      </div>
-      <div class="search-feed" data-js-tooltip-hover="trigger">
-        <div class="search-feed-tooltip" data-js-tooltip-hover="target">
-          This feature temporarily unavailable.
+        <div class="search-feed" data-js-tooltip-hover="trigger">
+          <div class="search-feed-tooltip" data-js-tooltip-hover="target">
+            This feature temporarily unavailable.
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </#if>
   
    </section>
   <#include "../common/footer/footer.ftl" />

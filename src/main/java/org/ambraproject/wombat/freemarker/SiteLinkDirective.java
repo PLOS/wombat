@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.freemarker;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ListMultimap;
@@ -18,6 +19,7 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -60,7 +62,8 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
     if (handlerName != null) {
       Map<String, ?> variables = getValueAsMap(params.get("variables"));
       ListMultimap<String, ?> queryParameters = getValueAsMultimap(params.get("queryParameters"));
-      link = linkFactory.toPattern(handlerDirectory, handlerName, variables, queryParameters);
+      List<?> wildcardValues = getValueAsList(params.get("wildcardValues"));
+      link = linkFactory.toPattern(handlerDirectory, handlerName, variables, queryParameters, wildcardValues);
     } else if (path != null) {
       link = linkFactory.toPath(path);
     } else {
@@ -72,6 +75,21 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
 
   private static String getStringValue(Object valueObj) throws TemplateModelException {
     return valueObj instanceof TemplateScalarModel ? ((TemplateScalarModel) valueObj).getAsString() : null;
+  }
+
+  private static ImmutableList<?> getValueAsList(Object value) throws TemplateModelException {
+    if (value == null) return ImmutableList.of();
+    if (value instanceof TemplateSequenceModel) {
+      ImmutableList.Builder<Object> builder = ImmutableList.builder();
+      TemplateSequenceModel sequenceModel = (TemplateSequenceModel) value;
+      int size = sequenceModel.size();
+      for (int i = 0; i < size; i++) {
+        builder.add(sequenceModel.get(i));
+      }
+      return builder.build();
+    } else {
+      return ImmutableList.of(value);
+    }
   }
 
   private static ImmutableMap<String, ?> getValueAsMap(Object value) throws TemplateModelException {

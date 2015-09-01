@@ -13,7 +13,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Link {
 
@@ -63,20 +67,23 @@ public class Link {
     }
 
     public Link toPattern(HandlerDirectory handlerDirectory, String handlerName,
-                          Map<String, ?> variables, Multimap<String, ?> queryParameters) {
+                          Map<String, ?> variables, Multimap<String, ?> queryParameters, List<?> wildcardValues) {
       String pattern = handlerDirectory.getPattern(handlerName, site);
       if (pattern == null) {
         String message = String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.getKey());
         throw new IllegalArgumentException(message);
       }
-      return toPath(buildPathFromPattern(pattern, site, variables, queryParameters));
+      return toPath(buildPathFromPattern(pattern, site, variables, queryParameters, wildcardValues));
     }
   }
 
-  private static final String PATH_TEMPLATE_VAR = "path";
+  // Match path wildcards of one or two asterisks
+  private static final Pattern WILDCARD = Pattern.compile("\\*\\*?");
 
-  private static String buildPathFromPattern(String pattern, final Site site,
-                                             final Map<String, ?> variables, Multimap<String, ?> queryParameters) {
+  private static String buildPathFromPattern(String pattern, Site site,
+                                             Map<String, ?> variables,
+                                             Multimap<String, ?> queryParameters,
+                                             List<?> wildcardValues) {
     Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(variables);
     Preconditions.checkNotNull(queryParameters);
@@ -88,11 +95,15 @@ public class Link {
       pattern = pattern.substring(2);
     }
 
-    // replace * or ** with the path URI template var to allow expansion when using ANT-style wildcards
-    // TODO: support multiple wildcards using {path__0}, {path__1}?
-    pattern = pattern.replaceFirst("\\*+", "{" + PATH_TEMPLATE_VAR + "}");
+    String path = fillVariables(pattern, variables);
+    path = fillWildcardValues(path, wildcardValues);
+    path = appendQueryParameters(queryParameters, path);
 
-    UriComponentsBuilder builder = ServletUriComponentsBuilder.fromPath(pattern);
+    return path;
+  }
+
+  private static String fillVariables(String path, final Map<String, ?> variables) {
+    UriComponentsBuilder builder = ServletUriComponentsBuilder.fromPath(path);
     UriComponents.UriTemplateVariables uriVariables = new UriComponents.UriTemplateVariables() {
       @Override
       public Object getValue(String name) {
@@ -104,8 +115,52 @@ public class Link {
       }
     };
 
-    String path = builder.build().expand(uriVariables).encode().toString();
+    return builder.build().expand(uriVariables).encode().toString();
+  }
 
+  private static String fillWildcardValues(String path, List<?> wildcardValues) {
+    Matcher matcher = WILDCARD.matcher(path);
+    boolean hasAtLeastOneWildcard = matcher.find();
+    if (!hasAtLeastOneWildcard) {
+      if (wildcardValues.isEmpty()) {
+        return path;
+      } else {
+        throw complainAboutNumberOfWildcards(path, wildcardValues);
+      }
+    }
+
+    StringBuffer filled = new StringBuffer(path.length() * 2);
+    Iterator<?> valueIterator = wildcardValues.iterator();
+    do {
+      if (!valueIterator.hasNext()) throw complainAboutNumberOfWildcards(path, wildcardValues);
+      String wildcardValue = valueIterator.next().toString();
+      if (!matcher.group().equals("**") && wildcardValue.contains("/")) {
+        String message = String.format("Cannot fill a multi-token value into a single-token wildcard. Value: \"%s\" Path: \"%s\"",
+            wildcardValue, path);
+        throw new IllegalArgumentException(message);
+      }
+      matcher.appendReplacement(filled, wildcardValue);
+    } while (matcher.find());
+    if (valueIterator.hasNext()) throw complainAboutNumberOfWildcards(path, wildcardValues);
+    matcher.appendTail(filled);
+    return filled.toString();
+  }
+
+  private static IllegalArgumentException complainAboutNumberOfWildcards(String path, List<?> wildcardValues) {
+    int wildcardCount = 0;
+    Matcher matcher = WILDCARD.matcher(path);
+    while (matcher.find()) {
+      wildcardCount++;
+    }
+
+    String message = String.format("Path has %d wildcard%s but was supplied %d value%s. Path=\"%s\" Values=%s",
+        wildcardCount, (wildcardCount == 1 ? "" : "s"),
+        wildcardValues.size(), (wildcardValues.size() == 1 ? "" : "s"),
+        path, wildcardValues.toString());
+    return new IllegalArgumentException(message);
+  }
+
+  private static String appendQueryParameters(Multimap<String, ?> queryParameters, String path) {
     if (!queryParameters.isEmpty()) {
       UrlParamBuilder paramBuilder = UrlParamBuilder.params();
       for (Map.Entry<String, ?> paramEntry : queryParameters.entries()) {
@@ -113,7 +168,6 @@ public class Link {
       }
       path = path + "?" + paramBuilder.format();
     }
-
     return path;
   }
 

@@ -37,9 +37,17 @@ public class Link {
   }
 
   public static Factory toForeignSite(Site localSite, Site foreignSite) {
-    Optional<String> localHostname = localSite.getRequestScheme().getHostName();
-    Optional<String> foreignHostname = foreignSite.getRequestScheme().getHostName();
-    boolean isAbsolute = !localHostname.equals(foreignHostname);
+    final boolean isAbsolute;
+    if (foreignSite.getRequestScheme().getHostName().isPresent()) {
+      isAbsolute = true;
+    } else if (!localSite.getRequestScheme().getHostName().isPresent()) {
+      isAbsolute = false;
+    } else {
+      throw new RuntimeException(String.format(""
+              + "Cannot link to a site with a configured hostname (%s) from a site without one (%s). "
+              + "(Note: This error can be prevented by configuring a hostname either on every site or none.)",
+          foreignSite.getKey(), localSite.getKey()));
+    }
     return new Factory(foreignSite, isAbsolute);
   }
 

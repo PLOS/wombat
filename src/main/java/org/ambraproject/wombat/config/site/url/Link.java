@@ -32,8 +32,9 @@ public class Link {
   }
 
   public static Factory toForeignSite(Site localSite, Site foreignSite) {
-    boolean isAbsolute = localSite.getRequestScheme().getHostName().isPresent()
-        || foreignSite.getRequestScheme().getHostName().isPresent();
+    Optional<String> localHostname = localSite.getRequestScheme().getHostName();
+    Optional<String> foreignHostname = foreignSite.getRequestScheme().getHostName();
+    boolean isAbsolute = !localHostname.equals(foreignHostname);
     return new Factory(foreignSite, isAbsolute);
   }
 

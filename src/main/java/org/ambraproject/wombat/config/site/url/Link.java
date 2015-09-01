@@ -82,6 +82,13 @@ public class Link {
     Preconditions.checkNotNull(variables);
     Preconditions.checkNotNull(queryParameters);
 
+    if (site.getRequestScheme().hasPathToken()) {
+      if (!pattern.equals("/{site}") && !pattern.startsWith("/{site}/")) {
+        throw new RuntimeException("Pattern is inconsistent with site's request scheme");
+      }
+      pattern = pattern.substring("/{site}".length());
+    }
+
     // replace * or ** with the path URI template var to allow expansion when using ANT-style wildcards
     // TODO: support multiple wildcards using {path__0}, {path__1}?
     pattern = pattern.replaceFirst("\\*+", "{" + PATH_TEMPLATE_VAR + "}");
@@ -91,7 +98,7 @@ public class Link {
       @Override
       public Object getValue(String name) {
         if (name.equals(SITE_TEMPLATE_VAR)) {
-          return site.getKey(); // TODO: Is this right?
+          throw new RuntimeException();
         }
         Object value = variables.get(name);
         if (value == null) {
@@ -124,7 +131,10 @@ public class Link {
 
     Optional<String> pathToken = site.getRequestScheme().getPathToken();
     if (pathToken.isPresent()) {
-      sb.append(pathToken.get()).append('/');
+      sb.append(pathToken.get());
+      if (!path.startsWith("/")) {
+        sb.append('/');
+      }
     }
 
     sb.append(path);

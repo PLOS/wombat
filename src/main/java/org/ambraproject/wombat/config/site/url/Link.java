@@ -74,7 +74,6 @@ public class Link {
   }
 
   private static final String PATH_TEMPLATE_VAR = "path";
-  private static final String SITE_TEMPLATE_VAR = "site";
 
   private static String buildPathFromPattern(String pattern, final Site site,
                                              final Map<String, ?> variables, Multimap<String, ?> queryParameters) {
@@ -83,10 +82,10 @@ public class Link {
     Preconditions.checkNotNull(queryParameters);
 
     if (site.getRequestScheme().hasPathToken()) {
-      if (!pattern.equals("/{site}") && !pattern.startsWith("/{site}/")) {
+      if (!pattern.equals("/*") && !pattern.startsWith("/*/")) {
         throw new RuntimeException("Pattern is inconsistent with site's request scheme");
       }
-      pattern = pattern.substring("/{site}".length());
+      pattern = pattern.substring(2);
     }
 
     // replace * or ** with the path URI template var to allow expansion when using ANT-style wildcards
@@ -97,9 +96,6 @@ public class Link {
     UriComponents.UriTemplateVariables uriVariables = new UriComponents.UriTemplateVariables() {
       @Override
       public Object getValue(String name) {
-        if (name.equals(SITE_TEMPLATE_VAR)) {
-          throw new RuntimeException();
-        }
         Object value = variables.get(name);
         if (value == null) {
           throw new IllegalArgumentException("Missing required parameter " + name);

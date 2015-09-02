@@ -99,10 +99,11 @@ public class Link {
     Preconditions.checkNotNull(queryParameters);
 
     if (site.getRequestScheme().hasPathToken()) {
-      if (!pattern.equals("/*") && !pattern.startsWith("/*/")) {
+      if (pattern.equals("/*") || pattern.startsWith("/*/")) {
+        pattern = pattern.substring(2);
+      } else {
         throw new RuntimeException("Pattern is inconsistent with site's request scheme");
       }
-      pattern = pattern.substring(2);
     }
 
     String path = fillVariables(pattern, variables);

@@ -25,7 +25,7 @@ public class Link {
   private final String path;
   private final boolean isAbsolute;
 
-  public Link(Site site, String path, boolean isAbsolute) {
+  private Link(Site site, String path, boolean isAbsolute) {
     this.site = Preconditions.checkNotNull(site);
     this.path = Preconditions.checkNotNull(path);
     this.isAbsolute = isAbsolute;

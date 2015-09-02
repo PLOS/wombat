@@ -44,7 +44,7 @@ public class Link {
       isAbsolute = false;
     } else {
       throw new RuntimeException(String.format(""
-              + "Cannot link to a site with a configured hostname (%s) from a site without one (%s). "
+              + "Cannot link to a site with no configured hostname (%s) from a site with one (%s). "
               + "(Note: This error can be prevented by configuring a hostname either on every site or none.)",
           foreignSite.getKey(), localSite.getKey()));
     }

@@ -18,6 +18,10 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * One instance of this class encapsulates, for one request mapping, the pattern conditions for all applicable sites. It
+ * also represents which sites disable the request mapping, by not having a pattern condition for those sites.
+ */
 public class SiteRequestCondition implements RequestCondition<SiteRequestCondition> {
 
   private final SiteResolver siteResolver;
@@ -28,11 +32,31 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     this.requestConditionMap = ImmutableMap.copyOf(requestConditionMap);
   }
 
+  /**
+   * Get the set of patterns mapped for a request handler across all sites.
+   *
+   * @param siteSet           the set of all sites
+   * @param mappingAnnotation the annotation representing to the request handler
+   * @return all patterns that are mapped to the request handler for any site in the set
+   */
   public static Set<String> getAllPatterns(SiteSet siteSet, RequestMapping mappingAnnotation) {
     return buildPatternMap(siteSet, mappingAnnotation).keySet();
   }
 
-  public static SiteRequestCondition create(SiteResolver siteResolver, SiteSet siteSet, RequestMapping mappingAnnotation,
+  /**
+   * Create a condition, representing all sites, for a single request handler.
+   * <p/>
+   * Writes to the {@link HandlerDirectory} object as a side effect. To avoid redundant writes, this method must be
+   * called only once per {@link RequestMapping} object.
+   *
+   * @param siteResolver      the global site resolver
+   * @param siteSet           the set of all sites in the system
+   * @param mappingAnnotation the annotation representing the request handler
+   * @param handlerDirectory  the global handler directory, which must be in a writable state
+   * @return the new condition object
+   */
+  public static SiteRequestCondition create(SiteResolver siteResolver, SiteSet siteSet,
+                                            RequestMapping mappingAnnotation,
                                             HandlerDirectory handlerDirectory) {
     Multimap<String, Site> patternMap = buildPatternMap(siteSet, mappingAnnotation);
 
@@ -52,10 +76,13 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     return new SiteRequestCondition(siteResolver, requestConditionMap.build());
   }
 
+  /**
+   * Construct a map from each pattern to the sites that use that pattern.
+   */
   private static Multimap<String, Site> buildPatternMap(SiteSet siteSet, RequestMapping mappingAnnotation) {
     Multimap<String, Site> patterns = LinkedListMultimap.create();
     for (Site site : siteSet.getSites()) {
-      String pattern = getPatternForTheme(mappingAnnotation, site.getTheme());
+      String pattern = getPatternForSite(mappingAnnotation, site);
       if (pattern != null) {
         pattern = checkSitePathToken(site, pattern);
         patterns.put(pattern, site);
@@ -64,7 +91,19 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     return patterns;
   }
 
-  private static String getPatternForTheme(RequestMapping mappingAnnotation, Theme theme) {
+  /**
+   * Get the pattern that is mapped to a request handler for a given site. Return {@code null} if the handler is
+   * disabled on that site.
+   * <p/>
+   * Looks up the configured value from the site's theme, or gets the default value from the mapping annotation if it is
+   * not configured in the theme.
+   *
+   * @param mappingAnnotation the annotation representing the request handler
+   * @param site              the site
+   * @return the pattern mapped to that handler on that site, or {@code null} if the handler is disabled on the site
+   */
+  private static String getPatternForSite(RequestMapping mappingAnnotation, Site site) {
+    final Theme theme = site.getTheme();
     String[] annotationValue = mappingAnnotation.value();
     if (annotationValue.length == 0) return null;
     String annotationPattern = Iterables.getOnlyElement(Arrays.asList(annotationValue));
@@ -90,6 +129,14 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     }
   }
 
+  /**
+   * If the site is configured to be resolved with a path token, modify the pattern by adding a wildcard that will
+   * capture the path token.
+   *
+   * @param site    the site
+   * @param pattern the pattern to maybe modify
+   * @return the pattern value, modified if necessary
+   */
   private static String checkSitePathToken(Site site, String pattern) {
     if (site.getRequestScheme().hasPathToken()) {
       StringBuilder modified = new StringBuilder(pattern.length() + 8);

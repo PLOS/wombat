@@ -19,6 +19,13 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * A link to a site page.
+ * <p/>
+ * An instance of this class encapsulates a path to the linked page and the site to which the linked page belongs. It
+ * depends on an {@code HttpServletRequest} object in order to build an {@code href} value to appear in the
+ * corresponding response.
+ */
 public class Link {
 
   private final Site site;
@@ -32,10 +39,21 @@ public class Link {
   }
 
 
+  /**
+   * Begin building a link to a page within the same site.
+   *
+   * @param localSite the site for both the originating page and the link target
+   */
   public static Factory toLocalSite(Site localSite) {
     return new Factory(localSite, false);
   }
 
+  /**
+   * Begin building a link to a page on another site.
+   *
+   * @param localSite   the site of the originating page
+   * @param foreignSite the site of the link target
+   */
   public static Factory toForeignSite(Site localSite, Site foreignSite) {
     Optional<String> localHostname = localSite.getRequestScheme().getHostName();
     Optional<String> foreignHostname = foreignSite.getRequestScheme().getHostName();
@@ -53,6 +71,13 @@ public class Link {
     return new Factory(foreignSite, isAbsolute);
   }
 
+  /**
+   * Begin building a link to a page on another site.
+   *
+   * @param localSite         the site of the originating page
+   * @param foreignJournalKey the journal key of the target site
+   * @param siteSet           the global site set
+   */
   public static Factory toForeignSite(Site localSite, String foreignJournalKey, SiteSet siteSet) {
     Site foreignSite;
     try {
@@ -63,6 +88,9 @@ public class Link {
     return toForeignSite(localSite, foreignSite);
   }
 
+  /**
+   * An intermediate builder class.
+   */
   public static class Factory {
     private final Site site;
     private final boolean isAbsolute;
@@ -72,10 +100,24 @@ public class Link {
       this.isAbsolute = isAbsolute;
     }
 
+    /**
+     * Build a link to a direct path.
+     *
+     * @param path the path to link to
+     */
     public Link toPath(String path) {
       return new Link(site, path, isAbsolute);
     }
 
+    /**
+     * Build a link that will hit a specified request handler.
+     *
+     * @param handlerDirectory the global handler directory
+     * @param handlerName      the name of the target request handler
+     * @param variables        values to fill in to path variables in the request handler's pattern
+     * @param queryParameters  query parameters to add to the end of the URL
+     * @param wildcardValues   values to substitute for wildcards in the request handler's pattern
+     */
     public Link toPattern(HandlerDirectory handlerDirectory, String handlerName,
                           Map<String, ?> variables, Multimap<String, ?> queryParameters, List<?> wildcardValues) {
       String pattern = handlerDirectory.getPattern(handlerName, site);
@@ -183,6 +225,16 @@ public class Link {
   }
 
 
+  /**
+   * Build a link from this object. The returned value may be either an absolute link (full URL) or a relative link
+   * (path beginning with "/") depending on the sites used to set up this object.
+   * <p/>
+   * The returned path is suitable as an {@code href} value to be used in the response to the {@code request} argument.
+   * The argument value must resolve to the local site given to set up this object.
+   *
+   * @param request the originating request of the page from which to link
+   * @return a page that links from the originating page to the target page
+   */
   public String get(HttpServletRequest request) {
     StringBuilder sb = new StringBuilder();
     if (isAbsolute) {

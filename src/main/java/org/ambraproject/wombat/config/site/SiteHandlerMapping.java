@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
+import com.google.common.base.Preconditions;
 import org.ambraproject.wombat.controller.RootController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -37,13 +38,11 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
 
   @Override
   protected RequestCondition<?> getCustomMethodCondition(Method method) {
-    RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
     if (method.getDeclaringClass().equals(RootController.class)) {
       return handleRootController();
     }
-    if (methodAnnotation == null) {
-      return null;
-    }
+    RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
+    Preconditions.checkNotNull(methodAnnotation, "No @RequestMapping found on mapped method");
     if (methodAnnotation.value().length == 0) {
       return null;
     }

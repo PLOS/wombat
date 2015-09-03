@@ -44,7 +44,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
     RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
     Preconditions.checkNotNull(methodAnnotation, "No @RequestMapping found on mapped method");
     if (methodAnnotation.value().length == 0) {
-      return null;
+      throw new RuntimeException("No default pattern found on @RequestMapping for " + method.getName());
     }
     return SiteRequestCondition.create(siteResolver, siteSet, methodAnnotation, handlerDirectory);
   }
@@ -52,9 +52,8 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
   /**
    * Set up a special request condition for {@link RootController}.
    * <p/>
-   * {@link RootController} is the only pattern-matched page that does not belong to a {@link Site}. ({@link
-   * org.ambraproject.wombat.controller.NotFoundController} also does not belong to a site, but it is not
-   * pattern-matched.) Therefore, it is a special case that we handle uniquely here.
+   * {@link RootController} is the only pattern-matched page that does not belong to a {@link Site}. Therefore, it is a
+   * special case that we handle uniquely here.
    * <p/>
    * In general, we want to serve the root page if the servlet root is not mapped to one or more sites (assuming that
    * the sites would be served according to special hostnames). Otherwise, we assume that the "/" pattern will be mapped

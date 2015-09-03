@@ -136,7 +136,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
    */
   private static String checkSitePathToken(Site site, String pattern) {
     if (site.getRequestScheme().hasPathToken()) {
-      StringBuilder modified = new StringBuilder(pattern.length() + 8);
+      StringBuilder modified = new StringBuilder(pattern.length() + 3);
       modified.append("/*");
       if (!pattern.isEmpty() && !pattern.startsWith("/")) {
         modified.append('/');

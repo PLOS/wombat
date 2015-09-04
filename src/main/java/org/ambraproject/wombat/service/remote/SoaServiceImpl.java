@@ -80,13 +80,13 @@ public class SoaServiceImpl implements SoaService {
 
   @Override
   public void forwardResponse(HttpUriRequest requestToService, HttpServletResponse responseToClient) throws IOException {
-      try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {
-        HttpMessageUtil.copyResponse(responseFromService, responseToClient);
-      } catch (EntityNotFoundException e) {
-        responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
-      } catch (Exception e) {
-        responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-      }
+    try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {
+      HttpMessageUtil.copyResponse(responseFromService, responseToClient);
+    } catch (EntityNotFoundException e) {
+      responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
+    } catch (Exception e) {
+      responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+    }
   }
 
   @Override
@@ -112,9 +112,9 @@ public class SoaServiceImpl implements SoaService {
   }
 
   @Override
-  public CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers)
+  public CloseableHttpResponse requestAsset(String assetId, String fileType, Collection<? extends Header> headers)
       throws IOException {
-    HttpGet get = buildGet("assetfiles/" + assetId);
+    HttpGet get = buildGet("assetfiles/" + assetId + "?versionedPreview&type=" + fileType);
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }

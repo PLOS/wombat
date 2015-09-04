@@ -108,10 +108,11 @@ public interface SoaService {
    * connection pool and cause horrible timeouts.
    *
    * @param assetId the asset ID within the SOA service's "assetfiles/" namespace
+   * @param fileType
    * @return
    * @throws IOException
    */
-  public abstract CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers) throws IOException;
+  public abstract CloseableHttpResponse requestAsset(String assetId, String fileType, Collection<? extends Header> headers) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 

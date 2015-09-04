@@ -1204,7 +1204,7 @@
         <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>
       </xsl:variable>
       <xsl:variable name="slideshowURL">
-        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/file?type=medium&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="pptURL">
@@ -1212,14 +1212,14 @@
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('article/figure/image?size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/file?type=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
       <xsl:variable name="bigImgDOI">
         <xsl:value-of select="concat($imageURI,'.PNG_L')"/>
       </xsl:variable>
 
       <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('article/figure/image?size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/file?type=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
       <xsl:variable name="origImgDOI">
         <xsl:value-of select="concat($imageURI,'.TIF')"/>
@@ -1272,7 +1272,7 @@
             <xsl:element name="img">
               <xsl:attribute name="src">
                 <xsl:value-of
-                  select="concat('article/figure/image?size=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+                  select="concat('article/file?type=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>
@@ -1497,7 +1497,7 @@
         </xsl:variable>
         <xsl:attribute name="src">
           <xsl:value-of
-            select="concat('article/asset?id=',$graphicDOI,'.PNG')"/><!-- TODO: Avoid hard-coding 'PNG' -->
+            select="concat('article/file?type=thumbnail&amp;id=',$graphicDOI)"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -2189,7 +2189,7 @@
 
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat('article/asset?unique&amp;id=', $objURI)"/>
+            <xsl:value-of select="concat('article/file?type=supplementary&amp;id=', $objURI)"/>
           </xsl:attribute>
           <xsl:apply-templates select="label"/>
         </xsl:element>

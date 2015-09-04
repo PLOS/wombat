@@ -118,13 +118,13 @@ public abstract class WombatController {
   protected void validateArticleVisibility(Site site, Map<?, ?> articleMetadata) {
     String state = (String) articleMetadata.get("state");
     if (!"published".equals(state)) {
-      throw new NotVisibleException("Article is in unpublished state: " + state);
+//      throw new NotVisibleException("Article is in unpublished state: " + state);
     }
 
     Set<String> articleJournalKeys = ((Map<String, ?>) articleMetadata.get("journals")).keySet();
     String siteJournalKey = site.getJournalKey();
     if (!articleJournalKeys.contains(siteJournalKey)) {
-      throw new NotVisibleException("Article is not published in: " + site);
+//      throw new NotVisibleException("Article is not published in: " + site);
     }
   }
 

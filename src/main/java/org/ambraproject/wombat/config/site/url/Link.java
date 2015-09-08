@@ -59,7 +59,7 @@ public class Link {
     Optional<String> foreignHostname = foreignSite.getRequestScheme().getHostName();
     final boolean isAbsolute;
     if (foreignHostname.isPresent()) {
-      isAbsolute = localHostname.equals(foreignHostname);
+      isAbsolute = !localHostname.equals(foreignHostname);
     } else if (!localHostname.isPresent()) {
       isAbsolute = false;
     } else {

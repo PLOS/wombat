@@ -164,7 +164,11 @@ h1#artTitle{
   span.underline{ text-decoration: underline;}
 
   span.small-caps {
-    font-variant: small-caps;
+  font-variant: small-caps;
+  }
+
+  .monospace {
+    font-family: "Courier New", Courier, monospace;
   }
 
   // supplementary materials - need to have no margin between paragraphs just below the box

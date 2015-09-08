@@ -163,6 +163,10 @@ h1#artTitle{
   }
   span.underline{ text-decoration: underline;}
 
+  .monospace {
+    font-family: "Courier New", Courier, monospace;
+  }
+
   // supplementary materials - need to have no margin between paragraphs just below the box
   .supplementary-material{
     margin-bottom: $line-height;

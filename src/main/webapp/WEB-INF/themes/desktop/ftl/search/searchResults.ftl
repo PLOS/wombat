@@ -128,7 +128,7 @@
           <p>Journal: "<span>${journalName}</span>"</p>
           <p>
             There were no results; please
-            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&query=${query}&noSearchFlag=set">refine your search</a>
+            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">refine your search</a>
             and try again.</p>
         </div>
       <#else>

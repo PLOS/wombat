@@ -158,7 +158,10 @@
 
     function createDataObject(terms_array) {
       // loop through each item to see if they have children. Build out object data for the template
-      var data = $.map(terms_array, function (term) {
+      return $.map(terms_array, function (term) {
+        if (term === 'ROOT') {
+          return;
+        }
         return {
           'name': term,
           'isLeaf': child_counts[term] === 0,
@@ -166,15 +169,10 @@
           'count': term_counts[term]
         };
       });
-
-      return data;
     }
 
-    var term_count;
     if (term === '/') {
-      term_count = term_counts['ROOT'];
-    } else {
-      term_count = term_counts[term];
+      term = 'ROOT';
     }
 
     var markup = buildColumnMarkup({
@@ -182,7 +180,7 @@
       items: createDataObject(child_terms),
       level: term_stack.length, // level is 1-based, array length is 0-based
       view_all_link: buildSubjectUrl(term),
-      view_all_total: term_count
+      view_all_total: term_counts[term]
     });
 
     $('.levels-position').append(markup);
@@ -410,7 +408,7 @@
     });
 
     var parentTerm = data.parent_term;
-    if (parentTerm === '/') {
+    if (parentTerm === 'ROOT') {
       parentTerm = 'All Subject Areas';
     }
 
@@ -468,7 +466,6 @@
     function handleSuccess(terms, textStatus, xhr) {
 
       var child_terms = [];
-      var total_articles = 0;
       for (var i = 0; i < terms.length; i++) {
         var fullPath = terms[i].subject;
         var levels = fullPath.split('/');
@@ -478,7 +475,6 @@
         var articleCount = terms[i].articleCount;
         if (articleCount != undefined && articleCount > 0) {
           term_counts[leaf] = articleCount;
-          total_articles += articleCount;
         } else {
           term_counts[leaf] = 0;
         }
@@ -491,10 +487,6 @@
         }
 
         term_cache[leaf] = [];
-      }
-
-      if (parent_term === '/') {
-        term_counts['ROOT'] = total_articles;
       }
 
       term_cache[parent_term] = child_terms.sort();

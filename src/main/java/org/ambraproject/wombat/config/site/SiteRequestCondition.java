@@ -119,8 +119,8 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     if (override == null) {
       return annotationPattern;
     } else {
-      Boolean enabled = (Boolean) override.get("enabled");
-      if (enabled != null && !enabled) return null; // enabled == null means true by default
+      Boolean disabled = (Boolean) override.get("disabled");
+      if (disabled != null && disabled) return null; // disabled == null means false by default
       String overridePattern = (String) override.get("pattern");
       return (overridePattern != null) ? overridePattern : annotationPattern;
     }

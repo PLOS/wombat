@@ -22,7 +22,7 @@
 #         "pattern": "/a/auth"
 #       },
 #       "articleCommentTree": {
-#         "pattern": "/a/remarks"
+#         "disabled": true
 #       }
 #     }
 #
@@ -31,12 +31,12 @@
 # * `pattern`: A mapping pattern that directly replaces the `value` attribute of the
 #   `@RequestMapping` annotation. If omitted, use the default that is defined by the webapp.
 #
-# * `enabled`: A boolean value indicating whether the mapped page should show up in this theme at
-#   all. If it is `false`, requests that would otherwise be mapped to the controller will go to a
-#   404 page instead. If omitted, defaults to `true`.
+# * `disabled`: A boolean value indicating whether the mapped page should show up in this theme at
+#   all. If it is `true`, requests that would otherwise be mapped to the controller will go to a
+#   404 page instead. If null or omitted, defaults to `false`.
 #
-# Note that, if `enabled` is `false`, the pattern will be ignored. So config values will generally
-# have either a `pattern` value or `"enabled": false`, never both. (We could have accomplished the
+# Note that, if `disabled` is `true`, the pattern will be ignored. So config values will generally
+# have either a `pattern` value or `"disabled": true`, never both. (We could have accomplished the
 # same thing by having a null pattern mean "disabled", but this way gives us the flexibility to
 # add more values in the future.)
 

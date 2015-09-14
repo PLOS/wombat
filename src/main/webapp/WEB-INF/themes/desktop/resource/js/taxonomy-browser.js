@@ -445,7 +445,7 @@
     var url = SEARCH_URL;
 
     //Replace all spaces with "_" and encode the special characters
-    if ((typeof(last_term) !== 'undefined') && (last_term !== '/')) {
+    if ((typeof(last_term) !== 'undefined') && (last_term !== 'ROOT')) {
       last_term = "" + last_term;
       url = url + encodeURIComponent(last_term.replace(new RegExp("\\s", 'g'), "_").toLowerCase());
     }

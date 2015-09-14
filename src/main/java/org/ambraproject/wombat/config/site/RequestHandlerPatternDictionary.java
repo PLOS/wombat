@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * <p/>
  * This class is intended to be thread-safe. Writes are synchronized, and the object is immutable while being read.
  */
-public final class HandlerDirectory {
+public final class RequestHandlerPatternDictionary {
 
   private final ImmutableTable.Builder<String, Site, String> registry;
 
@@ -25,7 +25,7 @@ public final class HandlerDirectory {
   // By convention, never assign to this field (i.e., treat as final) if it is not null.
   private ImmutableTable<String, Site, String> table;
 
-  public HandlerDirectory() {
+  public RequestHandlerPatternDictionary() {
     registry = ImmutableTable.builder();
     table = null;
   }

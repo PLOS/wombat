@@ -3,7 +3,7 @@ package org.ambraproject.wombat.config.site.url;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Multimap;
-import org.ambraproject.wombat.config.site.HandlerDirectory;
+import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.UrlParamBuilder;
@@ -112,15 +112,15 @@ public class Link {
     /**
      * Build a link that will hit a specified request handler.
      *
-     * @param handlerDirectory the global handler directory
-     * @param handlerName      the name of the target request handler
-     * @param variables        values to fill in to path variables in the request handler's pattern
-     * @param queryParameters  query parameters to add to the end of the URL
-     * @param wildcardValues   values to substitute for wildcards in the request handler's pattern
+     * @param requestHandlerPatternDictionary the global handler directory
+     * @param handlerName                     the name of the target request handler
+     * @param variables                       values to fill in to path variables in the request handler's pattern
+     * @param queryParameters                 query parameters to add to the end of the URL
+     * @param wildcardValues                  values to substitute for wildcards in the request handler's pattern
      */
-    public Link toPattern(HandlerDirectory handlerDirectory, String handlerName,
+    public Link toPattern(RequestHandlerPatternDictionary requestHandlerPatternDictionary, String handlerName,
                           Map<String, ?> variables, Multimap<String, ?> queryParameters, List<?> wildcardValues) {
-      String pattern = handlerDirectory.getPattern(handlerName, site);
+      String pattern = requestHandlerPatternDictionary.getPattern(handlerName, site);
       if (pattern == null) {
         String message = String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.getKey());
         throw new IllegalArgumentException(message);

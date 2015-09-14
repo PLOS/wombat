@@ -46,18 +46,18 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   /**
    * Create a condition, representing all sites, for a single request handler.
    * <p/>
-   * Writes to the {@link HandlerDirectory} object as a side effect. To avoid redundant writes, this method must be
+   * Writes to the {@link RequestHandlerPatternDictionary} object as a side effect. To avoid redundant writes, this method must be
    * called only once per {@link RequestMapping} object.
    *
    * @param siteResolver      the global site resolver
    * @param siteSet           the set of all sites in the system
    * @param mappingAnnotation the annotation representing the request handler
-   * @param handlerDirectory  the global handler directory, which must be in a writable state
+   * @param requestHandlerPatternDictionary  the global handler directory, which must be in a writable state
    * @return the new condition object
    */
   public static SiteRequestCondition create(SiteResolver siteResolver, SiteSet siteSet,
                                             RequestMapping mappingAnnotation,
-                                            HandlerDirectory handlerDirectory) {
+                                            RequestHandlerPatternDictionary requestHandlerPatternDictionary) {
     Multimap<String, Site> patternMap = buildPatternMap(siteSet, mappingAnnotation);
 
     ImmutableMap.Builder<Site, PatternsRequestCondition> requestConditionMap = ImmutableMap.builder();
@@ -68,7 +68,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
       for (Site site : entry.getValue()) {
         requestConditionMap.put(site, condition);
         if (!mappingAnnotation.name().isEmpty()) {
-          handlerDirectory.register(mappingAnnotation, site, pattern);
+          requestHandlerPatternDictionary.register(mappingAnnotation, site, pattern);
         }
       }
     }

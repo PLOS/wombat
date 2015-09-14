@@ -22,7 +22,7 @@ import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.config.site.HandlerDirectory;
+import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
@@ -93,8 +93,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public HandlerDirectory handlerDirectory() {
-    return new HandlerDirectory();
+  public RequestHandlerPatternDictionary handlerDirectory() {
+    return new RequestHandlerPatternDictionary();
   }
 
   @Bean

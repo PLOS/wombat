@@ -27,7 +27,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
   @Autowired
   SiteResolver siteResolver;
   @Autowired
-  HandlerDirectory handlerDirectory;
+  RequestHandlerPatternDictionary requestHandlerPatternDictionary;
   @Autowired
   SiteSet siteSet;
 
@@ -46,7 +46,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
     if (methodAnnotation.value().length == 0) {
       throw new RuntimeException("No default pattern found on @RequestMapping for " + method.getName());
     }
-    return SiteRequestCondition.create(siteResolver, siteSet, methodAnnotation, handlerDirectory);
+    return SiteRequestCondition.create(siteResolver, siteSet, methodAnnotation, requestHandlerPatternDictionary);
   }
 
   /**

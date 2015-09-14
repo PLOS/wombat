@@ -11,7 +11,7 @@ import freemarker.template.TemplateModelException;
 import freemarker.template.TemplateModelIterator;
 import freemarker.template.TemplateScalarModel;
 import freemarker.template.TemplateSequenceModel;
-import org.ambraproject.wombat.config.site.HandlerDirectory;
+import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -84,7 +84,7 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
   @Autowired
   private SiteSet siteSet;
   @Autowired
-  private HandlerDirectory handlerDirectory;
+  private RequestHandlerPatternDictionary requestHandlerPatternDictionary;
 
   @Override
   protected String getValue(Environment env, Map params) throws TemplateModelException, IOException {
@@ -103,7 +103,8 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
       Map<String, ?> variables = getValueAsMap(params.get("pathVariables"));
       ListMultimap<String, ?> queryParameters = getValueAsMultimap(params.get("queryParameters"));
       List<?> wildcardValues = getValueAsList(params.get("wildcardValues"));
-      link = linkFactory.toPattern(handlerDirectory, handlerName, variables, queryParameters, wildcardValues);
+      link = linkFactory.toPattern(requestHandlerPatternDictionary, handlerName,
+          variables, queryParameters, wildcardValues);
     } else if (path != null) {
       link = linkFactory.toPath(path);
     } else {

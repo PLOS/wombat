@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
 import com.google.common.base.Preconditions;
-import org.ambraproject.wombat.controller.RootController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,40 +37,9 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
 
   @Override
   protected RequestCondition<?> getCustomMethodCondition(Method method) {
-    if (method.getDeclaringClass().equals(RootController.class)) {
-      return handleRootController();
-    }
     RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
     Preconditions.checkNotNull(methodAnnotation, "No @RequestMapping found on mapped method");
-    if (methodAnnotation.value().length == 0) {
-      throw new RuntimeException("No default pattern found on @RequestMapping for " + method.getName());
-    }
     return SiteRequestCondition.create(siteResolver, siteSet, methodAnnotation, requestHandlerPatternDictionary);
-  }
-
-  /**
-   * Set up a special request condition for {@link RootController}.
-   * <p/>
-   * {@link RootController} is the only pattern-matched page that does not belong to a {@link Site}. Therefore, it is a
-   * special case that we handle uniquely here.
-   * <p/>
-   * In general, we want to serve the root page if the servlet root is not mapped to one or more sites (assuming that
-   * the sites would be served according to special hostnames). Otherwise, we assume that the "/" pattern will be mapped
-   * to {@link org.ambraproject.wombat.controller.HomeController#serveHomepage} by default or something else by
-   * override.
-   *
-   * @return a request condition for the application root pattern if it is available, or {@code null} if that pattern
-   * risks a collision
-   */
-  private RequestCondition<?> handleRootController() {
-    boolean allSitesHavePathToken = true;
-    for (Site site : siteSet.getSites()) {
-      if (!site.getRequestScheme().hasPathToken()) {
-        allSitesHavePathToken = false;
-        break;
-      }
-    }
-    return allSitesHavePathToken ? new PatternsRequestCondition(new String[]{"/"}, null, null, false, false, null) : null;
   }
 
   /**

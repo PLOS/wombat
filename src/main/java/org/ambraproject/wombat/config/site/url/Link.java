@@ -50,6 +50,19 @@ public class Link {
   }
 
   /**
+   * Begin building a link to an absolute address.
+   * <p/>
+   * This should be used only if the resulting link will appear in a context outside of a local site, such as in a
+   * downloadable document file. If the link will appear on a site page served by this application, instead use {@link
+   * #toLocalSite} or {@link #toForeignSite} with a correct {@code localSite} argument.
+   *
+   * @param targetSite the site of the link target
+   */
+  public static Factory toAbsoluteAddress(Site targetSite) {
+    return new Factory(targetSite, true);
+  }
+
+  /**
    * Begin building a link to a page on another site.
    *
    * @param localSite   the site of the originating page

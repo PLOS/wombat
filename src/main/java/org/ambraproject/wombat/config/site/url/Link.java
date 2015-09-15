@@ -6,6 +6,7 @@ import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.util.HostnameUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponents;
@@ -46,6 +47,19 @@ public class Link {
    */
   public static Factory toLocalSite(Site localSite) {
     return new Factory(localSite, false);
+  }
+
+  /**
+   * Begin building a link to an absolute address.
+   * <p/>
+   * This should be used only if the resulting link will appear in a context outside of a local site, such as in a
+   * downloadable document file. If the link will appear on a site page served by this application, instead use {@link
+   * #toLocalSite} or {@link #toForeignSite} with a correct {@code localSite} argument.
+   *
+   * @param targetSite the site of the link target
+   */
+  public static Factory toAbsoluteAddress(Site targetSite) {
+    return new Factory(targetSite, true);
   }
 
   /**
@@ -262,7 +276,7 @@ public class Link {
     sb.append(request.getScheme()).append("://");
 
     Optional<String> hostName = site.getRequestScheme().getHostName();
-    sb.append(hostName.or(request.getServerName()));
+    sb.append(hostName.or(HostnameUtil.getClientHostname(request)));
 
     int serverPort = request.getServerPort();
     if (serverPort != getDefaultPort(request)) {

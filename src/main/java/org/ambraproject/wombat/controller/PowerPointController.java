@@ -2,9 +2,9 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
-import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
@@ -26,8 +26,6 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Endpoint for downloading PowerPoint slides of figures.
@@ -92,16 +90,6 @@ public class PowerPointController extends WombatController {
     }
   }
 
-  /*
-   * Quick and dirty regex for recovering everything before the path (scheme, hostname, port) of a full URL string.
-   * Would be preferable to parse into a URL object, if its methods could be used to build the needed output.
-   */
-  private static final Pattern URL_PREFIX_PATTERN = Pattern.compile(""
-      + "(\\w+?://" // scheme
-      + ".*?)/" // host and port
-      + ".*" // rest of the path
-  );
-
   /**
    * Build the full URL to the figure's parent article.
    *
@@ -111,15 +99,7 @@ public class PowerPointController extends WombatController {
    * @return the URL to view the parent article on the same site
    */
   private static URL buildArticleUrl(HttpServletRequest request, Site site, String parentArticleDoi) {
-    // Build the path to the article. (Doesn't include host.)
-    String articlePath = Link.toLocalSite(site).toPath("article?id=" + parentArticleDoi).get(request);
-
-    // Recover everything up to the path (scheme, host, port) from the request's raw URL.
-    Matcher urlMatcher = URL_PREFIX_PATTERN.matcher(request.getRequestURL().toString());
-    if (!urlMatcher.matches()) throw new RuntimeException("Unexpected request URL syntax");
-
-    // Combine them.
-    String articleUrl = urlMatcher.group(1) + articlePath;
+    String articleUrl = Link.toAbsoluteAddress(site).toPath("article?id=" + parentArticleDoi).get(request);
     try {
       return new URL(articleUrl);
     } catch (MalformedURLException e) {

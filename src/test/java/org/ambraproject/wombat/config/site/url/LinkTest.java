@@ -78,6 +78,26 @@ public class LinkTest {
     cases.add(new Object[]{Link.toLocalSite(HOST_ONLY).toPath("path"), reqSecure, "/path"});
     cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_ONLY).toPath("path"), reqSecure, "https://hostOnly.example.com/path"});
 
+    MockHttpServletRequest proxiedReq = new MockHttpServletRequest();
+    proxiedReq.setServerName("internal-frontend.example.com");
+    proxiedReq.setServerPort(8081);
+    proxiedReq.addHeader("X-Forwarded-Host", "public-frontend.example.com");
+    cases.add(new Object[]{Link.toAbsoluteAddress(TOKEN_1).toPath("path"), proxiedReq, "http://public-frontend.example.com/site1/path"});
+    cases.add(new Object[]{Link.toLocalSite(TOKEN_1).toPath("path"), proxiedReq, "/site1/path"});
+    cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_AND_TOKEN_1).toPath("path"), proxiedReq, "http://1.example.com/site3/path"});
+    cases.add(new Object[]{Link.toLocalSite(HOST_ONLY).toPath("path"), proxiedReq, "/path"});
+    cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_ONLY).toPath("path"), proxiedReq, "http://hostOnly.example.com/path"});
+
+    MockHttpServletRequest proxiedPortReq = new MockHttpServletRequest();
+    proxiedPortReq.setServerName("internal-frontend.example.com");
+    proxiedPortReq.setServerPort(8081);
+    proxiedPortReq.addHeader("X-Forwarded-Host", "public-frontend.example.com:8082");
+    cases.add(new Object[]{Link.toAbsoluteAddress(TOKEN_1).toPath("path"), proxiedPortReq, "http://public-frontend.example.com:8082/site1/path"});
+    cases.add(new Object[]{Link.toLocalSite(TOKEN_1).toPath("path"), proxiedPortReq, "/site1/path"});
+    cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_AND_TOKEN_1).toPath("path"), proxiedPortReq, "http://1.example.com:8082/site3/path"});
+    cases.add(new Object[]{Link.toLocalSite(HOST_ONLY).toPath("path"), proxiedPortReq, "/path"});
+    cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_ONLY).toPath("path"), proxiedPortReq, "http://hostOnly.example.com:8082/path"});
+
     return cases.toArray(new Object[0][]);
   }
 

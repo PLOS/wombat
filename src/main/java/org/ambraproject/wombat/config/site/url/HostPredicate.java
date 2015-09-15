@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.config.site.url;
 
 import com.google.common.base.Preconditions;
-import org.ambraproject.wombat.util.HostnameUtil;
+import org.ambraproject.wombat.util.ClientEndpoint;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,7 +17,7 @@ class HostPredicate implements SiteRequestPredicate {
 
   @Override
   public boolean isForSite(HttpServletRequest request) {
-    return hostName.equals(HostnameUtil.getClientHostname(request));
+    return hostName.equals(ClientEndpoint.get(request).getHostname());
   }
 
   @Override

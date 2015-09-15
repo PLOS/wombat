@@ -32,7 +32,7 @@ class ExceptionHandlerAdvisor {
   private static final Logger log = LoggerFactory.getLogger(WombatController.class);
 
   @Autowired
-  protected SiteSet siteSet;
+  private SiteSet siteSet;
   @Autowired
   private SiteResolver siteResolver;
   @Autowired
@@ -76,29 +76,31 @@ class ExceptionHandlerAdvisor {
   @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class, NotVisibleException.class,
           NoHandlerFoundException.class})
   protected ModelAndView handleNotFound(HttpServletRequest request, HttpServletResponse response) {
-    response.setStatus(HttpStatus.NOT_FOUND.value());
     Site site = siteResolver.resolveSite(request);
-    if (site == null) {
-      if (request.getServletPath().equals("/")) {
-        /**
-         * Show a page in response to the application root.
-         * <p/>
-         * This is here only for development/debugging: if you browse to the application root while you're setting up, this
-         * page is more useful than an error message. But all end-user-facing pages should belong to one of the sites in
-         * {@code siteSet}.
-         */
-        ModelAndView mav = new ModelAndView("//approot");
-        mav.addObject("siteKeys", siteSet.getSiteKeys());
-        try {
-          mav.addObject("imageCode", getResourceAsBase64("/WEB-INF/themes/root/app/wombat.jpg"));
-        } catch (IOException e) {}
-        return mav;
-      } else {
-        return new ModelAndView("//notFound");
-      }
-    } else {
-      return new ModelAndView(site.getKey() + "/ftl/notFound");
+    if (site == null && request.getServletPath().equals("/")) {
+      return serveAppRoot();
     }
+    response.setStatus(HttpStatus.NOT_FOUND.value());
+    String viewName = (site == null) ? "//notFound" : (site.getKey() + "/ftl/notFound");
+    return new ModelAndView(viewName);
+  }
+
+  /**
+   * Show a page in response to the application root.
+   * <p/>
+   * This is here only for development/debugging: if you browse to the application root while you're setting up, this
+   * page is more useful than an error message. But all end-user-facing pages should belong to one of the sites in
+   * {@code siteSet}.
+   */
+  private ModelAndView serveAppRoot() {
+    ModelAndView mav = new ModelAndView("//approot");
+    mav.addObject("siteKeys", siteSet.getSiteKeys());
+    try {
+      mav.addObject("imageCode", getResourceAsBase64("/WEB-INF/themes/root/app/wombat.jpg"));
+    } catch (IOException e) {
+      log.error("Error displaying root page image", e);
+    }
+    return mav;
   }
 
   private String getResourceAsBase64(String path) throws IOException {

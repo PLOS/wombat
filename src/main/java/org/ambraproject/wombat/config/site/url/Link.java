@@ -6,6 +6,7 @@ import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.util.HostnameUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponents;
@@ -262,7 +263,7 @@ public class Link {
     sb.append(request.getScheme()).append("://");
 
     Optional<String> hostName = site.getRequestScheme().getHostName();
-    sb.append(hostName.or(request.getServerName()));
+    sb.append(hostName.or(HostnameUtil.getClientHostname(request)));
 
     int serverPort = request.getServerPort();
     if (serverPort != getDefaultPort(request)) {

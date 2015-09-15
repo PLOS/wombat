@@ -226,11 +226,16 @@ public class SearchController extends WombatController {
       if (!Strings.isNullOrEmpty(unformattedQuery) && (journalParams == null || journalParams.isEmpty())) {
         return new ArrayList(siteSet.getJournalKeys());
       } else {
-
-        // If no filterJournals param is present, default to the current site.
-        return journalParams == null || journalParams.isEmpty()
-            ? Collections.singletonList(site.getJournalKey())
-            : journalParams;
+        //If no filterJournals param is present, default to the current site.
+        if (journalParams == null || journalParams.isEmpty()) {
+          return Collections.singletonList(site.getJournalKey());
+        } else {
+          // if the filter is set to "all", include all journals (desired in PLOS Collections simple search)
+          if (journalParams.get(0).toLowerCase().equals("all")) {
+            return new ArrayList(siteSet.getJournalKeys());
+          }
+          return journalParams;
+        }
       }
     }
 

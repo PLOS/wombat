@@ -48,7 +48,7 @@ public class TaxonomyController {
   @Autowired
   private SoaService soaService;
 
-  @RequestMapping(name = "taxonomy", value = "/{site}" + TAXONOMY_TEMPLATE, method = RequestMethod.GET)
+  @RequestMapping(name = "taxonomy", value = "" + TAXONOMY_TEMPLATE, method = RequestMethod.GET)
   public void read(@SiteParam Site site, HttpServletRequest request, HttpServletResponse response)
       throws IOException {
     Map<String, Object> taxonomyBrowserConfig = site.getTheme().getConfigMap("taxonomyBrowser");
@@ -75,12 +75,12 @@ public class TaxonomyController {
     }
   }
 
-  @RequestMapping(name = "taxonomyCategoryFlag", value = {TAXONOMY_NAMESPACE + "flag/{action:add|remove}",
-                          "/*" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}"}, method = { RequestMethod.POST })
-  public @ResponseBody void setFlag(HttpServletRequest request, HttpServletResponse responseToClient,
-                                    @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
-                                    @RequestParam(value = "articleDoi", required = true) String articleDoi)
-          throws IOException {
+  @RequestMapping(name = "taxonomyCategoryFlag", value = "" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}", method = RequestMethod.POST)
+  @ResponseBody
+  public void setFlag(HttpServletRequest request, HttpServletResponse responseToClient,
+                      @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
+                      @RequestParam(value = "articleDoi", required = true) String articleDoi)
+      throws IOException {
     // pass through any article category flagging ajax traffic to/from rhino
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
     HttpUriRequest req = HttpMessageUtil.buildRequest(forwardedUrl, "POST",

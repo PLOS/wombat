@@ -64,6 +64,7 @@ public class SiteRequestScheme implements SiteRequestPredicate {
 
     /**
      * Identify the host name for the site
+     *
      * @param hostName
      */
     public Builder specifyHost(String hostName) {
@@ -105,6 +106,18 @@ public class SiteRequestScheme implements SiteRequestPredicate {
     }
   }
 
+  public boolean hasPathToken() {
+    return pathToken.isPresent();
+  }
+
+  Optional<String> getPathToken() {
+    return pathToken;
+  }
+
+  Optional<String> getHostName() {
+    return hostName;
+  }
+
   @Override
   public boolean isForSite(HttpServletRequest request) {
     for (SiteRequestPredicate requestPredicate : requestPredicates) {
@@ -113,47 +126,6 @@ public class SiteRequestScheme implements SiteRequestPredicate {
       }
     }
     return true;
-  }
-
-  /**
-   * Build an absolute link to a path within a site.
-   * <p/>
-   * The link always starts with {@code 'http(s)://'} and is usable as an absolute link to a path on the current site.
-   *
-   * @param request a request to the current site
-   * @param path    a site-independent path
-   * @return a link to that path within the same site
-   */
-  public String buildLink(HttpServletRequest request, String path, boolean pathIncludesSiteToken) {
-    StringBuilder link = new StringBuilder(request.getScheme() + "://");
-
-    if (hostName.isPresent()) {
-      link.append(hostName.get());
-    } else {
-      link.append(request.getServerName());
-    }
-
-    if (request.getServerPort() != (request.isSecure() ? 443 : 80)){ // no static constants exist for these defaults
-      link.append(":").append(String.valueOf(request.getServerPort()));
-    }
-
-    link.append(request.getContextPath());
-
-    if (pathToken.isPresent() && !pathIncludesSiteToken) {
-      link.append('/').append(pathToken.get());
-    }
-
-    if (!path.startsWith("/")) {
-      link.append('/');
-    }
-
-    link.append(path);
-
-    return link.toString();
-  }
-
-  public String buildLink(HttpServletRequest request, String path) {
-    return buildLink(request, path, false);
   }
 
   @Override

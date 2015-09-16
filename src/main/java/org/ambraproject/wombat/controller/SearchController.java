@@ -231,7 +231,7 @@ public class SearchController extends WombatController {
           return Collections.singletonList(site.getJournalKey());
         } else {
           // if the filter is set to "all", include all journals (desired in PLOS Collections simple search)
-          if (journalParams.get(0).toLowerCase().equals("all")) {
+          if (journalParams.get(0).equalsIgnoreCase("all")) {
             return new ArrayList(siteSet.getJournalKeys());
           }
           return journalParams;

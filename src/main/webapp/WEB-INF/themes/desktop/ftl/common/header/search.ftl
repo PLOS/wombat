@@ -1,6 +1,6 @@
 <#--markup starts in SiteMenu.ftl: this li is part of the main nav ul -->
 
-<#macro simpleSearchUrl journal="thisJournal">
+<#macro searchForm journal="thisJournal">
 
 <li id="navsearch" class="head-search">
   <@themeConfig map="journal" value="journalKey" ; v>

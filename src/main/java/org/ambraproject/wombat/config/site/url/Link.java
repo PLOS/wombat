@@ -258,13 +258,12 @@ public class Link {
 
     Optional<String> pathToken = site.getRequestScheme().getPathToken();
     if (pathToken.isPresent()) {
-      sb.append(pathToken.get());
-      if (!path.startsWith("/")) {
-        sb.append('/');
-      }
+      sb.append(pathToken.get()).append('/');
     }
 
+    String path = this.path.startsWith("/") ? this.path.substring(1) : this.path;
     sb.append(path);
+
     return sb.toString();
   }
 

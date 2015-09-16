@@ -48,7 +48,11 @@ public class LinkTest {
         {Link.toForeignSite(HOST_AND_TOKEN_2, HOST_AND_TOKEN_3).toPath("path"), "/site5/path"},
         {Link.toLocalSite(HOST_ONLY).toPath(""), "/"},
         {Link.toLocalSite(HOST_ONLY).toPath("path"), "/path"},
+        {Link.toLocalSite(HOST_ONLY).toPath("/path"), "/path"},
+        {Link.toAbsoluteAddress(HOST_ONLY).toPath("path"), "http://hostOnly.example.com/path"},
+        {Link.toAbsoluteAddress(HOST_ONLY).toPath("/path"), "http://hostOnly.example.com/path"},
         {Link.toForeignSite(TOKEN_1, HOST_ONLY).toPath("path"), "http://hostOnly.example.com/path"},
+        {Link.toForeignSite(TOKEN_1, HOST_ONLY).toPath("/path"), "http://hostOnly.example.com/path"},
     };
     MockHttpServletRequest simpleReq = new MockHttpServletRequest();
     for (Object[] simpleCase : simpleCases) {

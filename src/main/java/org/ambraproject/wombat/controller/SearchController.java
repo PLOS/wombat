@@ -264,7 +264,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"q", "!volume"})
+  @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume"})
   public String simpleSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
@@ -274,7 +274,7 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = searchService.simpleSearch(params.getFirst("q"), commonParams.journalKeys,
         commonParams.articleTypes, commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder,
         commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -289,7 +289,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"unformattedQuery", "!volume"})
+  @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
@@ -298,8 +298,8 @@ public class SearchController extends WombatController {
     addOptionsToModel(model);
     Map<?, ?> searchResults = searchService.advancedSearch(params.getFirst("unformattedQuery"),
         commonParams.journalKeys, commonParams.articleTypes, commonParams.subjectList, commonParams.start,
-        commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -313,7 +313,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"subject", "!filterSubjects", "!volume",
+  @RequestMapping(name = "subjectSearch", value = "/search", params = {"subject", "!filterSubjects", "!volume",
       "!unformattedQuery"})
   public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
@@ -331,7 +331,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"filterSubjects", "!subject", "!volume",
+  @RequestMapping(name = "subjectsSearch", value = "/search", params = {"filterSubjects", "!subject", "!volume",
       "!unformattedQuery"})
   public String subjectsSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
@@ -350,7 +350,7 @@ public class SearchController extends WombatController {
     addOptionsToModel(model);
     Map<?, ?> searchResults = searchService.subjectSearch(commonParams.subjectList, commonParams.journalKeys,
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -364,7 +364,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"author", "!volume"})
+  @RequestMapping(name = "authorSearch", value = "/search", params = {"author", "!volume"})
   public String authorSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
@@ -373,7 +373,7 @@ public class SearchController extends WombatController {
     addOptionsToModel(model);
     Map<?, ?> searchResults = searchService.authorSearch(params.getFirst("author"), commonParams.journalKeys,
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -394,7 +394,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"id!="})
+  @RequestMapping(name = "doiSearch", value = "/search", params = {"id!="})
   public String doiSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam(value = "id", required = true) String doi) throws IOException {
     Map<?, ?> searchResults = searchService.lookupArticleByDoi(doi);
@@ -414,7 +414,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"eLocationId!="})
+  @RequestMapping(name = "eLocationSearch", value = "/search", params = {"eLocationId!="})
   public String eLocationSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam(value = "eLocationId", required = true) String eLocationId,
       @RequestParam(value = "filterJournals", required = true) String journal) throws IOException {
@@ -432,7 +432,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(value = {"search", "/{site}/search"}, params = {"volume!="})
+  @RequestMapping(name = "volumeSearch", value = "/search", params = {"volume!="})
   public String volumeSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
@@ -447,7 +447,7 @@ public class SearchController extends WombatController {
     }
     Map<?, ?> searchResults = searchService.volumeSearch(volume, commonParams.journalKeys, commonParams.articleTypes,
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("otherQuery", String.format("volume:%d", volume));
     return site.getKey() + "/ftl/search/searchResults";
   }
@@ -470,7 +470,7 @@ public class SearchController extends WombatController {
       throw new IllegalStateException("Valid DOIs should return exactly one article");
     }
     if (numFound == 1) {
-      searchResults = searchService.addArticleLinks(searchResults, request, site, siteSet, false);
+      searchResults = searchService.addArticleLinks(searchResults, request, site, siteSet);
       List docs = (List) searchResults.get("docs");
       Map doc = (Map) docs.get(0);
       return "redirect:" + doc.get("link");

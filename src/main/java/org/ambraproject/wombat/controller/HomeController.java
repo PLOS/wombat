@@ -182,13 +182,13 @@ public class HomeController extends WombatController {
     }
   }
 
-  @RequestMapping(name = "homePage", value = "/*", method = RequestMethod.GET)
+  @RequestMapping(name = "homePage", value = "", method = RequestMethod.GET)
   public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam(value = "section", required = false) String sectionParam,
                               @RequestParam(value = "page", required = false) String pageParam)
       throws IOException {
     if (!request.getServletPath().endsWith("/")) {
-      return "redirect:" + site.getRequestScheme().buildLink("/");
+      return "redirect:" + request.getServletPath() + "/";
     }
 
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");

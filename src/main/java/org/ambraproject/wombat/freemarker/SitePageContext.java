@@ -5,11 +5,13 @@ import freemarker.ext.beans.BeanModel;
 import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -56,19 +58,18 @@ public class SitePageContext {
     return site;
   }
 
+  public HttpServletRequest getRequest() {
+    return request;
+  }
+
+  // Convenience method
   public String buildLink(String path) {
-    return site.getRequestScheme().buildLink(request, path);
+    return Link.toLocalSite(getSite()).toPath(path).get(getRequest());
   }
 
+  // Convenience method
   public String buildLink(SiteSet siteSet, String journalKey, String path) {
-    try {
-      Site targetSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
-      return targetSite.getRequestScheme().buildLink(extractRequest(), path);
-    } catch (Exception e) {
-      log.error("Error building link for path={}. Error detail:{}", path, e.getMessage());
-      return buildLink(path);
-    }
+    return Link.toForeignSite(getSite(), journalKey, siteSet).toPath(path).get(getRequest());
   }
-
 
 }

@@ -185,15 +185,11 @@ public interface SearchService {
    * @param request current request
    * @param site site of the current request (for the search results)
    * @param siteSet site set of the current request
-   * @param includeApplicationRoot if true, the root context path of the application will be included
-   *     in the link; if false, it will not.  If you are generating a link to use in template code,
-   *     this should be true; if you are using this value for a "redirect:" string returned from a
-   *     spring controller, it should be false.
    * @return searchResults decorated with the new property
    * @throws IOException
    */
-  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet siteSet,
-      boolean includeApplicationRoot) throws IOException;
+  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet
+          siteSet) throws IOException;
 
   /**
    * Retrieves Solr stats for a given field in a given journal

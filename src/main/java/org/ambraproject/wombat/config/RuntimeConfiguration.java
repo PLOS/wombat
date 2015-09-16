@@ -112,7 +112,4 @@ public interface RuntimeConfiguration {
 
   CasConfiguration getCasConfiguration();
 
-  HandlerMappingConfiguration getHandlerMappingConfiguration(SiteSet siteSet);
-
-
 }

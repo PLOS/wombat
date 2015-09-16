@@ -15,14 +15,16 @@ public class Site {
 
   private final String key;
   private final Theme theme;
+  private final SiteRequestScheme requestScheme;
+
   private final String journalKey;
   private final String journalName;
-  private final SiteRequestScheme requestScheme;
 
   public Site(String key, Theme theme, SiteRequestScheme requestScheme) {
     this.key = Preconditions.checkNotNull(key);
     this.theme = Preconditions.checkNotNull(theme);
     this.requestScheme = Preconditions.checkNotNull(requestScheme);
+
     this.journalKey = findJournalKey(theme);
     this.journalName = findJournalName(theme);
   }
@@ -66,7 +68,9 @@ public class Site {
     return journalName;
   }
 
-  public String getJournalName() { return journalName; }
+  public String getJournalName() {
+    return journalName;
+  }
 
   public String getKey() {
     return key;
@@ -98,19 +102,20 @@ public class Site {
 
     if (!key.equals(site.key)) return false;
     if (!theme.equals(site.theme)) return false;
-    if (!journalKey.equals(site.journalKey)) return false;
     if (!requestScheme.equals(site.requestScheme)) return false;
 
     return true;
   }
 
+  private transient int hashValue;
+
   @Override
   public int hashCode() {
+    if (hashValue != 0) return hashValue;
     int result = key.hashCode();
     result = 31 * result + theme.hashCode();
-    result = 31 * result + journalKey.hashCode();
     result = 31 * result + requestScheme.hashCode();
-    return result;
+    return hashValue = result;
   }
 
 }

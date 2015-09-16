@@ -33,7 +33,7 @@ public class IndirectFileController extends WombatController {
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(name = "repoObject", value = {"indirect/{key}", "*/indirect/{key}"})
+  @RequestMapping(name = "repoObject", value = "/indirect/{key}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,
@@ -42,7 +42,7 @@ public class IndirectFileController extends WombatController {
     serve(response, request, key, Optional.<Integer>absent());
   }
 
-  @RequestMapping(name = "versionedRepoObject", value = {"indirect/{key}/{version}", "*/indirect/{key}/{version}"})
+  @RequestMapping(name = "versionedRepoObject", value = "/indirect/{key}/{version}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,
@@ -58,7 +58,7 @@ public class IndirectFileController extends WombatController {
     serve(response, request, key, Optional.of(versionInt));
   }
 
-  @RequestMapping(name = "repoObjectUsingPublicUrl", value = {"/s/file", "*/s/file"})
+  @RequestMapping(name = "repoObjectUsingPublicUrl", value = "/s/file")
   public void serveWithPublicUrl(HttpServletResponse response,
                                  HttpServletRequest request,
                                  @SiteParam Site site,

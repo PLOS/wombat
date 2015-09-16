@@ -12,6 +12,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.ArticleService;
@@ -72,13 +74,15 @@ public class ArticleController extends WombatController {
   @Autowired
   private Charset charset;
   @Autowired
+  private SiteSet siteSet;
+  @Autowired
   private SoaService soaService;
   @Autowired
   private ArticleService articleService;
   @Autowired
   private ArticleTransformService articleTransformService;
 
-  @RequestMapping(name = "article", value = {"/article", "/*/article"})
+  @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
@@ -116,7 +120,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleComments", value = {"/article/comments", "/*/article/comments"})
+  @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(Model model, @SiteParam Site site,
                                       @RequestParam("id") String articleId) throws IOException {
     requireNonemptyParameter(articleId);
@@ -287,7 +291,7 @@ public class ArticleController extends WombatController {
         }
         if (crossPublishedSite != null) {
           // Set up an href link to the other site's homepage
-          String homepageLink = crossPublishedSite.getRequestScheme().buildLink(request, "/");
+          String homepageLink = Link.toForeignSite(site, crossPublishedSite).toPath("/").get(request);
           crossPublishedJournalMetadata.put("href", homepageLink);
 
           // Look up whether the other site wants its journal title italicized
@@ -338,7 +342,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleCommentTree", value = {"/article/comment", "/*/article/comment"})
+  @RequestMapping(name = "articleCommentTree", value = "/article/comment")
   public String renderArticleCommentTree(Model model, @SiteParam Site site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
@@ -365,7 +369,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleAuthors", value = {"/article/authors", "/*/article/authors"})
+  @RequestMapping(name = "articleAuthors", value = "/article/authors")
   public String renderArticleAuthors(Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);

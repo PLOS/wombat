@@ -83,11 +83,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return SiteSet.create(input.sites, themeTree);
   }
 
-  @Override
-  public HandlerMappingConfiguration getHandlerMappingConfiguration(SiteSet siteSet) {
-    return new HandlerMappingConfiguration(input.handlerMapping, siteSet);
-  }
-
   private final CacheConfiguration cacheConfiguration = new CacheConfiguration() {
     @Override
     public String getMemcachedHost() {
@@ -234,7 +229,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String compiledAssetDir;
     private List<Map<String, ?>> themes;
     private List<Map<String, ?>> sites;
-    private Map<String, Map<String, ?>> handlerMapping;
 
     private CacheConfigurationInput cache;
     private HttpConnectionPoolConfigurationInput httpConnectionPool;
@@ -278,14 +272,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setSites(List<Map<String, ?>> sites) {
       this.sites = sites;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setHandlerMapping(Map<String, Map<String, ?>> handlerMapping) {
-      this.handlerMapping = handlerMapping;
     }
 
     /**

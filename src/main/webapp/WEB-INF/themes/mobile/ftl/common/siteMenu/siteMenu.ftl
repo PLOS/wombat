@@ -32,9 +32,9 @@
     </ul>
   </li>
   </#macro>
-  <#macro menuLink href>
+  <#macro menuLink href id=''>
   <li>
-    <a class="btn-lg" href="${href}"><#nested></a>
+    <a class="btn-lg" href="${href}"  <#if id?has_content>id=${id}</#if>><#nested></a>
   </li>
   </#macro>
   <#macro submitBlock>

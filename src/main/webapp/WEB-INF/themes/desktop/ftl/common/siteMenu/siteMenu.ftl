@@ -73,10 +73,9 @@
   </li>
   </#macro>
 
-
-  <#macro menuLink href>
+  <#macro menuLink href id=''>
   <li>
-    <a href="${href}"><#nested/></a>
+    <a href="${href}" <#if id?has_content>id=${id}</#if>><#nested/></a>
   </li>
   </#macro>
 

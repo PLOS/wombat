@@ -298,7 +298,7 @@ public class SearchController extends WombatController {
     addOptionsToModel(model);
     Map<?, ?> searchResults = searchService.advancedSearch(params.getFirst("unformattedQuery"),
         commonParams.journalKeys, commonParams.articleTypes, commonParams.subjectList, commonParams.start,
-        commonParams.resultsPerPage, commonParams.sortOrder);
+    commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     return site.getKey() + "/ftl/search/searchResults";
   }
@@ -335,6 +335,10 @@ public class SearchController extends WombatController {
       "!unformattedQuery"})
   public String subjectsSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
+    if (params.containsKey("q") && !params.getFirst("q").contentEquals("")) {
+      params.remove("filterSubjects");
+      return simpleSearch(request, model, site, params);
+    }
     return doSubjectsSearch(request, model, site, params);
   }
 

@@ -95,7 +95,8 @@ public interface SearchService {
    * @throws IOException
    */
   public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
-      List<String> subjectList, int start, int rows, SearchCriterion sortOrder) throws IOException;
+      List<String> subjectList, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange) throws IOException;
 
   /**
    * Performs a search by the subject fields.

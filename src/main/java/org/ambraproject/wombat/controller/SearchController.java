@@ -215,22 +215,27 @@ public class SearchController extends WombatController {
      * @param site the site the request is associated with
      * @param journalParams journal keys passed as URL parameters, if any
      * @param unformattedQuery the value of the unformattedQuery param (used in advanced search)
-     * @return if unformattedQuery is non-empty, and journalParams is empty, all journal keys will be
-     *     returned.  Otherwise, if journalParams is non-empty, those will be returned; otherwise
+     * @return if unformattedQuery is non-empty, and journalParams is empty, or the first journalParam
+     *     is "all", all journal keys will be returned.
+     *     Otherwise, if journalParams is non-empty, those will be returned; otherwise
      *     the current site's journal key will be returned.
      */
     private List<String> parseJournals(Site site, List<String> journalParams, String unformattedQuery) {
 
       // If we are in advanced search mode (unformattedQuery populated), and no journals are specified,
+      // OR if the filter is set to "all", include all journals
       // we default to all journals.
-      if (!Strings.isNullOrEmpty(unformattedQuery) && (journalParams == null || journalParams.isEmpty())) {
+      boolean journalParamsEmpty = journalParams == null || journalParams.isEmpty();
+      if ((!Strings.isNullOrEmpty(unformattedQuery) && journalParamsEmpty)
+          || (journalParams != null && journalParams.get(0).equalsIgnoreCase("all"))) {
         return new ArrayList(siteSet.getJournalKeys());
       } else {
-
-        // If no filterJournals param is present, default to the current site.
-        return journalParams == null || journalParams.isEmpty()
-            ? Collections.singletonList(site.getJournalKey())
-            : journalParams;
+        //If no filterJournals param is present, default to the current site.
+        if (journalParamsEmpty) {
+          return Collections.singletonList(site.getJournalKey());
+        } else {
+          return journalParams;
+        }
       }
     }
 

@@ -9,7 +9,7 @@
 
 <#include "relatedArticles.ftl" />
 
-<#if article.collections?size gt 0>
+<#if collectionIssues?keys?size gt 0>
   <#include "asideCollections.ftl" />
 </#if>
 

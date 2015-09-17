@@ -1,12 +1,13 @@
+
 <div class="aside-container">
-  <h3>Included in the Following <#if article.collections?size == 1>Collection<#else>Collections</#if></h3>
+  <h3>Included in the Following Collection</h3>
   <ul id="collectionList">
-  <#list article.collections as articleCollection>
+  <#list collectionIssues?keys as issueDoi>
     <li>
-      <#assign collectionLinkPath = "collection/${articleCollection.slug}" /><#-- Placeholder. TODO: Build correct link -->
-      <a href="<@siteLink path=collectionLinkPath journalKey=articleCollection.journalKey/>">
-      ${articleCollection.title}
-      </a>
+     <#-- TODO: Implement issue-browsing and point the link to it (this placeholder is currently a 404) -->
+     <a href="<@siteLink path="issue?id=" + issueDoi
+                         journalKey=collectionIssues[issueDoi]["parentJournal"]["journalKey"]/>">
+        ${collectionIssues[issueDoi]["displayName"]}</a>
     </li>
   </#list>
   </ul>

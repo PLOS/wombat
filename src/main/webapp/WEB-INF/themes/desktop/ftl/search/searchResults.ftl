@@ -120,6 +120,21 @@
       </form>
     </div>
   <section>
+    <#if searchResults.numFound != 0>
+      <aside id="searchResultFilters">
+        <div>
+          <h3>Journal</h3>
+          <dl id="searchFilterByJournal">
+            <#assign journalsFacetArr = journalFacetResults?values />
+            <#list  journalsFacetArr as journalsFacet>
+              <#list journalsFacet as journalFacet>
+              <dt><a href="#">${journalFacet?first} (${journalFacet?last})</a></dt>
+              </#list>
+            </#list>
+          </dl>
+        </div>
+      </aside>
+    </#if>
     <article>
       <#if searchResults.numFound == 0>
         <div class="search-results-none-found">

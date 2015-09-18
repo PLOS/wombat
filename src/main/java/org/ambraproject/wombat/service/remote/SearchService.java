@@ -98,6 +98,8 @@ public interface SearchService {
       List<String> subjectList, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) throws IOException;
 
+  public Map<?, ?> facetSearch(String query, String facetField, boolean useDisMax) throws IOException;
+
   /**
    * Performs a search by the subject fields.
    *

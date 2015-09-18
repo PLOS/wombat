@@ -274,6 +274,8 @@ public class SearchController extends WombatController {
         commonParams.articleTypes, commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder,
         commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("journalFacetResults", searchService.facetSearch(params.getFirst("q"),
+        "cross_published_journal_name", true));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -299,6 +301,8 @@ public class SearchController extends WombatController {
         commonParams.journalKeys, commonParams.articleTypes, commonParams.subjectList, commonParams.start,
         commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("journalFacetResults", searchService.facetSearch(params.getFirst("unformattedQuery"),
+        "cross_published_journal_name", false));
     return site.getKey() + "/ftl/search/searchResults";
   }
 

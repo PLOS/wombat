@@ -60,6 +60,9 @@ public class SolrSearchService implements SearchService {
   @VisibleForTesting
   protected Map<String, String> eIssnToJournalKey;
 
+  private static final int MAX_FACET_SIZE = 100;
+  private static final int MIN_FACET_COUNT = 1;
+
   /**
    * Enumerates sort orders that we want to expose in the UI.
    */
@@ -268,6 +271,14 @@ public class SolrSearchService implements SearchService {
       quotedSubjects.add(sb.toString());
     }
     return Joiner.on(" AND ").join(quotedSubjects);
+  }
+
+  @Override
+  public Map<?, ?> facetSearch(String query, String facetField, boolean useDisMax) throws IOException {
+    List<NameValuePair> params = buildFacetParams(query, facetField, useDisMax);
+    Map<String, Map> rawResult = (Map<String, Map>) getRawResults(params);
+    Map<String, Map> facetFields = (Map<String, Map>) rawResult.get("facet_counts").get("facet_fields");
+    return facetFields;
   }
 
   /**
@@ -484,6 +495,24 @@ public class SolrSearchService implements SearchService {
     for (Map.Entry<String, String> entry: rawQueryParams.entrySet()) {
       params.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
     }
+    return params;
+  }
+
+  private List<NameValuePair> buildFacetParams(String query, String facetField, boolean useDisMax) {
+    List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("wt", "json"));
+    params.add(new BasicNameValuePair("json.nl", "arrarr"));
+    params.add(new BasicNameValuePair("fq", "doc_type:full"));
+    params.add(new BasicNameValuePair("rows", "0"));
+    params.add(new BasicNameValuePair("hl", "false"));
+    params.add(new BasicNameValuePair("facet", "true"));
+    params.add(new BasicNameValuePair("facet.mincount", Integer.toString(MIN_FACET_COUNT)));
+    params.add(new BasicNameValuePair("facet.limit", Integer.toString(MAX_FACET_SIZE)));
+    params.add(new BasicNameValuePair("facet.field", facetField));
+    if (useDisMax) {
+      params.add(new BasicNameValuePair("defType", "dismax"));
+    }
+    params.add(new BasicNameValuePair("q", query));
     return params;
   }
 

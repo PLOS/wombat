@@ -53,6 +53,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -104,6 +105,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetadata));
+    model.addAttribute("collectionIssues", getCollectionIssues(articleMetadata, site));
 
     addCrossPublishedJournals(request, model, site, articleMetadata);
     requestAuthors(model, articleId);
@@ -165,6 +167,38 @@ public class ArticleController extends WombatController {
           }
         }
     );
+  }
+
+  /**
+   * filter a map of article issues (containing associated journal and volume info), only keeping issues published in
+   * journals identified as a collection
+   * @param articleMetadata
+   * @param site
+   * @return
+   */
+  private Map<?, ?> getCollectionIssues(Map<?, ?> articleMetadata, final Site site) {
+
+    Map<String, Map<String, Object>> articleIssues = (Map<String, Map<String, Object>>)articleMetadata.get("issues");
+    for (Iterator<Map.Entry<String, Map<String, Object>>> iter = articleIssues.entrySet().iterator(); iter.hasNext();) {
+      Map.Entry<String, Map<String, Object>> entry = iter.next();
+      Map<String, String> parentJournal = ((Map<String, String>) entry.getValue().get("parentJournal"));
+      if (parentJournal != null) {
+        String journalKey = parentJournal.get("journalKey");
+        if (journalKey != null){
+          Site publishedSite;
+          try {
+            publishedSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
+            if ((boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection")) { continue; }; // keep
+          } catch (UnmatchedSiteException use) {
+            throw new RuntimeException("Could not resolve collections pub site using journalKey: " + journalKey, use);
+          } catch (Exception e) {
+            throw new RuntimeException(e);
+          }
+        }
+      }
+      iter.remove(); // filter out any non-collection issues
+    }
+    return articleIssues;
   }
 
   /**

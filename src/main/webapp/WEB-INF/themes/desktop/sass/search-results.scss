@@ -68,7 +68,7 @@
 
   option{
     background: $grey-med-light;
-    color: black;
+    color: $black;
     outline: none;
   }
 
@@ -474,7 +474,7 @@ $pagination-height: 24px;
   line-height: $line-height-medium;
   float: left;
   color: $white;
-  background: $grey-blah;
+  background: $grey-med-dark;
   font-weight: bold;
   margin-right: $pad-xsmall;
   margin-bottom: $pad-xsmall;

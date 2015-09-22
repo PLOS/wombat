@@ -81,4 +81,11 @@ public final class RequestHandlerPatternDictionary {
     return table.get(Preconditions.checkNotNull(handlerName), Preconditions.checkNotNull(site));
   }
 
+  public String getAllMappings(){
+    if (table == null) {
+      table = registry.build();
+    }
+    return table.toString();
+  }
+
 }

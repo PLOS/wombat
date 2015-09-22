@@ -88,10 +88,13 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
 
   @Override
   protected String getValue(Environment env, Map params) throws TemplateModelException, IOException {
+    String getAllMappings = getStringValue(params.get("getAllMappings"));
+    if (getAllMappings != null) {
+      return requestHandlerPatternDictionary.getAllMappings();
+    }
     String path = getStringValue(params.get("path"));
     String targetJournal = getStringValue(params.get("journalKey"));
     String handlerName = getStringValue(params.get("handlerName"));
-
     SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
     Site site = sitePageContext.getSite();
 

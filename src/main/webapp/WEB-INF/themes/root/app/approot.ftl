@@ -16,6 +16,9 @@
 </#list>
 </ul>
 
+<p>Handler Mappings:</p>
+<@siteLink getAllMappings="true"/>
+
 <#if imageCode??>
 <hr/>
 <div>

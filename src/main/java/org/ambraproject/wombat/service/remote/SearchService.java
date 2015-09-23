@@ -61,6 +61,19 @@ public interface SearchService {
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
+   *
+   * @param query
+   * @param journalKeys
+   * @param articleTypes
+   * @param dateRange
+   * @param facetField
+   * @return
+   * @throws IOException
+   */
+  public Map<?, ?> simpleSearch(String facetField, String query, List<String> journalKeys, List<String> articleTypes,
+      SearchCriterion dateRange) throws IOException;
+
+  /**
    * Performs a "simple" search (against all article fields) and returns the results. It allows to pass raw
    * query parameters to Solr
    *
@@ -98,7 +111,19 @@ public interface SearchService {
       List<String> subjectList, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) throws IOException;
 
-  public Map<?, ?> facetSearch(String query, String facetField, boolean useDisMax) throws IOException;
+  /**
+   *
+   * @param facetField
+   * @param query
+   * @param journalKeys
+   * @param articleTypes
+   * @param subjectList
+   * @param dateRange
+   * @return
+   * @throws IOException
+   */
+  public Map<?, ?> advancedSearch(String facetField, String query, List<String> journalKeys,
+      List<String> articleTypes, List<String> subjectList, SearchCriterion dateRange) throws IOException;
 
   /**
    * Performs a search by the subject fields.
@@ -114,6 +139,36 @@ public interface SearchService {
    */
   public Map<?, ?> subjectSearch(List<String> subjects, List<String> journalKeys,
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
+
+  /**
+   *
+   * @param subjects
+   * @param journalKeys
+   * @param articleTypes
+   * @param start
+   * @param rows
+   * @param sortOrder
+   * @param dateRange
+   * @return
+   * @throws IOException
+   */
+  public Map<?, ?> subjectSearch(List<String> subjects, List<String> journalKeys,
+      List<String> articleTypes, int start, int rows, SearchCriterion sortOrder,
+      SearchCriterion dateRange) throws IOException;
+
+  /**
+   *
+   * @param facetField
+   * @param subjects
+   * @param journalKeys
+   * @param articleTypes
+   * @param dateRange
+   * @return
+   * @throws IOException
+   */
+  public Map<?, ?> subjectSearch(String facetField, List<String> subjects, List<String> journalKeys,
+      List<String> articleTypes, SearchCriterion dateRange) throws IOException;
+
   /**
    * Performs a search for an author's name.
    *
@@ -128,6 +183,34 @@ public interface SearchService {
    */
   public Map<?, ?> authorSearch(String author, List<String> journalKeys, int start, int rows,
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
+
+  /**
+   *
+   * @param author
+   * @param journalKeys
+   * @param articleTypes
+   * @param start
+   * @param rows
+   * @param sortOrder
+   * @param dateRange
+   * @return
+   * @throws IOException
+   */
+  public Map<?, ?> authorSearch(String author, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
+
+  /**
+   *
+   * @param facetField
+   * @param author
+   * @param journalKeys
+   * @param articleTypes
+   * @param dateRange
+   * @return
+   * @throws IOException
+   */
+  public Map<?, ?> authorSearch(String facetField, String author, List<String> journalKeys,
+      List<String> articleTypes, SearchCriterion dateRange) throws IOException;
 
   /**
    * Searches for articles within a volume of a journal.
@@ -145,6 +228,18 @@ public interface SearchService {
   public Map<?, ?> volumeSearch(int volume, List<String> journalKeys, List<String> articleTypes, int start, int rows,
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
+  /**
+   *
+   * @param facetField
+   * @param volume
+   * @param journalKeys
+   * @param articleTypes
+   * @param dateRange
+   * @return
+   * @throws IOException
+   */
+  public Map<?, ?> volumeSearch(String facetField, int volume, List<String> journalKeys,
+      List<String> articleTypes, SearchCriterion dateRange) throws IOException;
   /**
    * Retrieves articles for display on a journal home page, where there is no actual query.
    *

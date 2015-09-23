@@ -17,6 +17,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.slf4j.Logger;
@@ -50,6 +51,9 @@ public class SearchController extends WombatController {
 
   @Autowired
   private SearchService searchService;
+
+  @Autowired
+  private SearchFilterService searchFilterService;
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types.
@@ -274,8 +278,8 @@ public class SearchController extends WombatController {
         commonParams.articleTypes, commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder,
         commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
-    model.addAttribute("journalFacetResults", searchService.facetSearch(params.getFirst("q"),
-        "cross_published_journal_name", true));
+    model.addAttribute("searchFilters", searchFilterService.getSimpleSearchFilters(params.getFirst("q"), commonParams.journalKeys,
+        commonParams.articleTypes, commonParams.dateRange));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -301,8 +305,9 @@ public class SearchController extends WombatController {
         commonParams.journalKeys, commonParams.articleTypes, commonParams.subjectList, commonParams.start,
         commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
-    model.addAttribute("journalFacetResults", searchService.facetSearch(params.getFirst("unformattedQuery"),
-        "cross_published_journal_name", false));
+    model.addAttribute("searchFilters", searchFilterService.getAdvancedSearchFilers(params.getFirst
+        ("unformattedQuery"), commonParams.journalKeys, commonParams.articleTypes,
+        commonParams.subjectList, commonParams.dateRange));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -354,6 +359,8 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = searchService.subjectSearch(commonParams.subjectList, commonParams.journalKeys,
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchFilters", searchFilterService.getSubjectSearchFilters(commonParams.subjectList,
+        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -377,6 +384,8 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = searchService.authorSearch(params.getFirst("author"), commonParams.journalKeys,
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
+    model.addAttribute("searchFilters", searchFilterService.getAuthorSearchFilters(params.getFirst("author"),
+        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -452,6 +461,8 @@ public class SearchController extends WombatController {
         commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet, true));
     model.addAttribute("otherQuery", String.format("volume:%d", volume));
+    model.addAttribute("searchFilters", searchFilterService.getVolumeSearchFilters(volume,
+        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
     return site.getKey() + "/ftl/search/searchResults";
   }
 

@@ -214,20 +214,24 @@ public class SolrSearchService implements SearchService {
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
         dateRange, false);
-
-    // TODO: escape/quote the q param if needed.
-    if (Strings.isNullOrEmpty(query)) {
-      query = "*:*";
-    } else {
-
-      // Use the dismax query parser, recommended for all user-entered queries.
-      // See https://wiki.apache.org/solr/DisMax
-      params.add(new BasicNameValuePair("defType", "dismax"));
-    }
-    params.add(new BasicNameValuePair("q", query));
+    buildSimpleSearchQuery(params, query);
     return executeQuery(params);
   }
 
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> simpleSearch(String facetField, String query, List<String> journalKeys, List<String> articleTypes,
+      SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
+    buildSimpleSearchQuery(params, query);
+    return facetedSearch(params);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Map<?, ?> simpleSearch(String query, List<String> journalKeys, List<String> articleTypes,
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange, Map<String, String> rawQueryParams)
@@ -235,7 +239,11 @@ public class SolrSearchService implements SearchService {
 
     List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder, dateRange, false,
         rawQueryParams);
+    buildSimpleSearchQuery(params, query);
+    return getRawResults(params);
+  }
 
+  private void buildSimpleSearchQuery(List<NameValuePair> params, String query) {
     // TODO: escape/quote the q param if needed.
     if (Strings.isNullOrEmpty(query)) {
       query = "*:*";
@@ -246,20 +254,38 @@ public class SolrSearchService implements SearchService {
       params.add(new BasicNameValuePair("defType", "dismax"));
     }
     params.add(new BasicNameValuePair("q", query));
-    return getRawResults(params);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
       List<String> subjectList, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
         dateRange, false);
-    params.add(new BasicNameValuePair("q", query));
-    params.add(new BasicNameValuePair("fq", buildSubjectClause(subjectList)));
+    buildAdvancedSearchQuery(params, query, subjectList);
     return executeQuery(params);
   }
 
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> advancedSearch(String facetField, String query, List<String> journalKeys,
+      List<String> articleTypes, List<String> subjectList, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
+    buildAdvancedSearchQuery(params, query, subjectList);
+    return facetedSearch(params);
+  }
+
+  private void buildAdvancedSearchQuery(List<NameValuePair> params, String query, List<String> subjectList) {
+    params.add(new BasicNameValuePair("q", query));
+    params.add(new BasicNameValuePair("fq", buildSubjectClause(subjectList)));
+  }
+
+  public
   @VisibleForTesting
   static String buildSubjectClause(List<String> subjects) {
     List<String> quotedSubjects = new ArrayList<>();
@@ -273,14 +299,6 @@ public class SolrSearchService implements SearchService {
     return Joiner.on(" AND ").join(quotedSubjects);
   }
 
-  @Override
-  public Map<?, ?> facetSearch(String query, String facetField, boolean useDisMax) throws IOException {
-    List<NameValuePair> params = buildFacetParams(query, facetField, useDisMax);
-    Map<String, Map> rawResult = (Map<String, Map>) getRawResults(params);
-    Map<String, Map> facetFields = (Map<String, Map>) rawResult.get("facet_counts").get("facet_fields");
-    return facetFields;
-  }
-
   /**
    * {@inheritDoc}
    */
@@ -288,9 +306,36 @@ public class SolrSearchService implements SearchService {
   public Map<?, ?> subjectSearch(List<String> subjects, List<String> journalKeys, int start, int rows,
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
+    buildSubjectSearchQuery(params, subjects);
+    return executeQuery(params);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> subjectSearch(List<String> subjects, List<String> journalKeys,
+      List<String> articleTypes, int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
+        dateRange, false);
+    buildSubjectSearchQuery(params, subjects);
+    return executeQuery(params);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> subjectSearch(String facetField, List<String> subjects, List<String> journalKeys,
+      List<String> articleTypes, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
+    buildSubjectSearchQuery(params, subjects);
+    return facetedSearch(params);
+  }
+
+  private void buildSubjectSearchQuery(List<NameValuePair> params, List<String> subjects) {
     params.add(new BasicNameValuePair("q", "*:*"));
     params.add(new BasicNameValuePair("fq", buildSubjectClause(subjects)));
-    return executeQuery(params);
   }
 
   /**
@@ -304,14 +349,52 @@ public class SolrSearchService implements SearchService {
     return executeQuery(params);
   }
 
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> authorSearch(String author, List<String> journalKeys, List<String> articleTypes,
+      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
+        dateRange, false);
+    params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
+    return executeQuery(params);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> authorSearch(String facetField, String author, List<String> journalKeys,
+      List<String> articleTypes, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
+    params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
+    return facetedSearch(params);
+  }
+
   @Override
   public Map<?, ?> volumeSearch(int volume, List<String> journalKeys, List<String> articleTypes, int start, int rows,
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
         dateRange, false);
+    buildVolumeSearchQuery(params, volume);
+    return executeQuery(params);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Map<?, ?> volumeSearch(String facetField, int volume, List<String> journalKeys,
+      List<String> articleTypes, SearchCriterion dateRange) throws IOException {
+    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
+    buildVolumeSearchQuery(params, volume);
+    return facetedSearch(params);
+  }
+
+  private void buildVolumeSearchQuery(List<NameValuePair> params, int volume) {
     params.add(new BasicNameValuePair("q", "*:*"));
     params.add(new BasicNameValuePair("fq", String.format("volume:%d", volume)));
-    return executeQuery(params);
   }
 
   @Override
@@ -450,25 +533,7 @@ public class SolrSearchService implements SearchService {
       sortOrderStr += ",id desc";
     }
     params.add(new BasicNameValuePair("sort", sortOrderStr));
-    if (dateRange != null) {
-      String dateRangeStr = dateRange.getValue();
-      if (!Strings.isNullOrEmpty(dateRangeStr)) {
-        params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
-      }
-    }
-    List<String> crossPublishedJournals = new ArrayList<>();
-    for (String journalKey : journalKeys) {
-      crossPublishedJournals.add("cross_published_journal_key:" + journalKey);
-    }
-    params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
-
-    if (articleTypes != null && !articleTypes.isEmpty()) {
-      List<String> articleTypeQueryList = new ArrayList<>();
-      for (String articleType : articleTypes) {
-        articleTypeQueryList.add("article_type_facet:\"" + articleType + "\"");
-      }
-      params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
-    }
+    setQueryFilters(params, journalKeys, articleTypes, dateRange);
     return params;
   }
 
@@ -498,22 +563,59 @@ public class SolrSearchService implements SearchService {
     return params;
   }
 
-  private List<NameValuePair> buildFacetParams(String query, String facetField, boolean useDisMax) {
+  /**
+   * Populates the Solr parameters with values necessary for field value faceting
+   *
+   * @param facetField the field that should be treated as a facet
+   *
+   * @return populated list of parameters
+   */
+  private List<NameValuePair> buildFacetParams(String facetField, List<String> journalKeys, List<String> articleTypes,
+      SearchCriterion dateRange) {
     List<NameValuePair> params = new ArrayList<>();
     params.add(new BasicNameValuePair("wt", "json"));
     params.add(new BasicNameValuePair("json.nl", "arrarr"));
     params.add(new BasicNameValuePair("fq", "doc_type:full"));
+    params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
     params.add(new BasicNameValuePair("rows", "0"));
     params.add(new BasicNameValuePair("hl", "false"));
     params.add(new BasicNameValuePair("facet", "true"));
     params.add(new BasicNameValuePair("facet.mincount", Integer.toString(MIN_FACET_COUNT)));
     params.add(new BasicNameValuePair("facet.limit", Integer.toString(MAX_FACET_SIZE)));
     params.add(new BasicNameValuePair("facet.field", facetField));
-    if (useDisMax) {
-      params.add(new BasicNameValuePair("defType", "dismax"));
-    }
-    params.add(new BasicNameValuePair("q", query));
+    setQueryFilters(params, journalKeys, articleTypes, dateRange);
     return params;
+  }
+
+  private void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
+      List<String> articleTypes, SearchCriterion dateRange) {
+    if (dateRange != null) {
+      String dateRangeStr = dateRange.getValue();
+      if (!Strings.isNullOrEmpty(dateRangeStr)) {
+        params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
+      }
+    }
+    if (journalKeys != null && !journalKeys.isEmpty()) {
+      List<String> crossPublishedJournals = new ArrayList<>();
+      for (String journalKey : journalKeys) {
+        crossPublishedJournals.add("cross_published_journal_key:" + journalKey);
+      }
+      params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
+    }
+
+    if (articleTypes != null && !articleTypes.isEmpty()) {
+      List<String> articleTypeQueryList = new ArrayList<>();
+      for (String articleType : articleTypes) {
+        articleTypeQueryList.add("article_type_facet:\"" + articleType + "\"");
+      }
+      params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
+    }
+  }
+
+  private Map<?, ?> facetedSearch(List<NameValuePair> params) throws IOException {
+    Map<String, Map> rawResult = (Map<String, Map>) getRawResults(params);
+    Map<String, Map> facetFields = (Map<String, Map>) rawResult.get("facet_counts").get("facet_fields");
+    return facetFields;
   }
 
   private Map<?, ?> executeQuery(List<NameValuePair> params) throws IOException {

@@ -1312,6 +1312,9 @@
   <!-- Ambra modifications -->
   <xsl:template match="list">
     <xsl:call-template name="newline1"/>
+    <xsl:if test="title">
+      <h5><xsl:value-of select="title"/></h5>
+    </xsl:if>
     <xsl:choose>
       <xsl:when test="@list-type='bullet'">
         <xsl:call-template name="newline1"/>

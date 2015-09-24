@@ -121,15 +121,15 @@
     </div>
   <section>
     <#if searchResults.numFound != 0>
-      <aside id="searchResultFilters">
+      <aside id="searchFilters">
         <div>
           <h3>Journal</h3>
           <dl id="searchFilterByJournal">
-            <#assign journalsFacetArr = journalFacetResults?values />
-            <#list  journalsFacetArr as journalsFacet>
-              <#list journalsFacet as journalFacet>
-              <dt><a href="#">${journalFacet?first} (${journalFacet?last})</a></dt>
-              </#list>
+            <#assign journalFilter = searchFilters.journal />
+            <#list  journalFilter.cross_published_journal_name as journal>
+              <#if !journal?first?lower_case?contains("collections") >
+              <dt><a href="#">${journal?first} (${journal?last})</a></dt>
+              </#if>
             </#list>
           </dl>
         </div>

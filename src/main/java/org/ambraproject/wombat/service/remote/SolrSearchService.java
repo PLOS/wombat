@@ -314,18 +314,6 @@ public class SolrSearchService implements SearchService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> subjectSearch(List<String> subjects, List<String> journalKeys,
-      List<String> articleTypes, int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
-        dateRange, false);
-    buildSubjectSearchQuery(params, subjects);
-    return executeQuery(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
   public Map<?, ?> subjectSearch(String facetField, List<String> subjects, List<String> journalKeys,
       List<String> articleTypes, SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
@@ -345,18 +333,6 @@ public class SolrSearchService implements SearchService {
   public Map<?, ?> authorSearch(String author, List<String> journalKeys, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) throws IOException {
     List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
-    params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
-    return executeQuery(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> authorSearch(String author, List<String> journalKeys, List<String> articleTypes,
-      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
-        dateRange, false);
     params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
     return executeQuery(params);
   }
@@ -567,8 +543,10 @@ public class SolrSearchService implements SearchService {
    * Populates the Solr parameters with values necessary for field value faceting
    *
    * @param facetField the field that should be treated as a facet
-   *
-   * @return populated list of parameters
+   * @param journalKeys names of the journals in which to search.
+   * @param articleTypes types of articles in which to search. An empty list will search all article types.
+   * @param dateRange specifies the date range for the results
+   * @return populated list of parameters for faceted search
    */
   private List<NameValuePair> buildFacetParams(String facetField, List<String> journalKeys, List<String> articleTypes,
       SearchCriterion dateRange) {
@@ -587,6 +565,14 @@ public class SolrSearchService implements SearchService {
     return params;
   }
 
+  /**
+   * Set query filters that is common for both regular and faceted search
+   *
+   * @param params Solr query parameters
+   * @param journalKeys names of the journals in which to search.
+   * @param articleTypes types of articles in which to search. An empty list will search all article types.
+   * @param dateRange specifies the date range for the results
+   */
   private void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
       List<String> articleTypes, SearchCriterion dateRange) {
     if (dateRange != null) {
@@ -612,6 +598,13 @@ public class SolrSearchService implements SearchService {
     }
   }
 
+  /**
+   * Executes a faceted search
+   *
+   * @param params Solr query parameters
+   * @return results of a faceted search
+   * @throws IOException
+   */
   private Map<?, ?> facetedSearch(List<NameValuePair> params) throws IOException {
     Map<String, Map> rawResult = (Map<String, Map>) getRawResults(params);
     Map<String, Map> facetFields = (Map<String, Map>) rawResult.get("facet_counts").get("facet_fields");

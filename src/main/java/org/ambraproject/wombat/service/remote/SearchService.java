@@ -61,13 +61,15 @@ public interface SearchService {
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
+   * Performs a faceted "simple" search (against all article fields) and returns the results.
    *
-   * @param query
-   * @param journalKeys
-   * @param articleTypes
-   * @param dateRange
-   * @param facetField
-   * @return
+   * @param facetField the field that should be treated as a facet
+   * @param query term we are searching for.  If this is null, all articles will be returned (modulo sortOrder,
+   *              start, rows, and dateRange)
+   * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
+   * @param dateRange specifies the date range for the results
+   * @return deserialized JSON returned by the search server
    * @throws IOException
    */
   public Map<?, ?> simpleSearch(String facetField, String query, List<String> journalKeys, List<String> articleTypes,
@@ -104,6 +106,7 @@ public interface SearchService {
    * @param start starting result, zero-based.  0 will start at the first result.
    * @param rows max number of results to return
    * @param sortOrder specifies the desired ordering for results
+   * @param dateRange specifies the date range for the results
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
@@ -112,14 +115,16 @@ public interface SearchService {
       SearchCriterion dateRange) throws IOException;
 
   /**
+   * Performs a faceted "advanced search": the query parameter will be directly parsed by solr.
    *
-   * @param facetField
-   * @param query
-   * @param journalKeys
-   * @param articleTypes
-   * @param subjectList
-   * @param dateRange
-   * @return
+   * @param facetField the field that should be treated as a facet
+   * @param query specifies the solr fields and the values we are searching for; may be a boolean
+   *              combination of these.  Example: "(abstract:gene) AND author:smith"
+   * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
+   * @param subjectList only articles associated with these subjects will be returned
+   * @param dateRange specifies the date range for the results
+   * @return deserialized JSON returned by the search server
    * @throws IOException
    */
   public Map<?, ?> advancedSearch(String facetField, String query, List<String> journalKeys,
@@ -141,29 +146,14 @@ public interface SearchService {
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
+   * Performs a faceted search by the subject fields.
    *
-   * @param subjects
-   * @param journalKeys
-   * @param articleTypes
-   * @param start
-   * @param rows
-   * @param sortOrder
-   * @param dateRange
-   * @return
-   * @throws IOException
-   */
-  public Map<?, ?> subjectSearch(List<String> subjects, List<String> journalKeys,
-      List<String> articleTypes, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) throws IOException;
-
-  /**
-   *
-   * @param facetField
-   * @param subjects
-   * @param journalKeys
-   * @param articleTypes
-   * @param dateRange
-   * @return
+   * @param facetField the field that should be treated as a facet
+   * @param subjects taxonomy terms the search will be restricted to
+   * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
+   * @param dateRange specifies the date range for the results
+   * @return deserialized JSON returned by the search server
    * @throws IOException
    */
   public Map<?, ?> subjectSearch(String facetField, List<String> subjects, List<String> journalKeys,
@@ -185,28 +175,14 @@ public interface SearchService {
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
+   * Performs a faceted search for an author's name.
    *
-   * @param author
-   * @param journalKeys
-   * @param articleTypes
-   * @param start
-   * @param rows
-   * @param sortOrder
-   * @param dateRange
-   * @return
-   * @throws IOException
-   */
-  public Map<?, ?> authorSearch(String author, List<String> journalKeys, List<String> articleTypes,
-      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
-
-  /**
-   *
-   * @param facetField
-   * @param author
-   * @param journalKeys
-   * @param articleTypes
-   * @param dateRange
-   * @return
+   * @param facetField the field that should be treated as a facet
+   * @param author full or partial author name
+   * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
+   * @param dateRange specifies the date range for the results
+   * @return deserialized JSON returned by the search server
    * @throws IOException
    */
   public Map<?, ?> authorSearch(String facetField, String author, List<String> journalKeys,
@@ -229,13 +205,14 @@ public interface SearchService {
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException;
 
   /**
+   * Searches for articles within a volume of a journal. This is a faceted search.
    *
-   * @param facetField
-   * @param volume
-   * @param journalKeys
-   * @param articleTypes
-   * @param dateRange
-   * @return
+   * @param facetField the field that should be treated as a facet
+   * @param volume the volume number
+   * @param journalKeys list of the journals in which to search
+   * @param articleTypes types of articles in which to search
+   * @param dateRange specifies the date range for the results
+   * @return deserialized JSON returned by the search server
    * @throws IOException
    */
   public Map<?, ?> volumeSearch(String facetField, int volume, List<String> journalKeys,

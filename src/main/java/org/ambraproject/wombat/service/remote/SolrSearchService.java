@@ -437,8 +437,8 @@ public class SolrSearchService implements SearchService {
   /**
    * Populates the SOLR parameters with values used across all searchs in the application.
    *
-   * @param query
-   * @param useDisMax
+   * @param query       specifies the text or solr fields and the values we are searching for
+   * @param useDisMax   if true, use the dismax query parser
    * @param start       starting result, zero-based.  0 will start at the first result.
    * @param rows        max number of results to return
    * @param sortOrder   specifies the desired ordering for results
@@ -493,8 +493,8 @@ public class SolrSearchService implements SearchService {
    * Populates the Solr parameters with values used across all searches in the application. It is able to
    * parse the raw query parameters as well.
    *
-   * @param query
-   * @param useDisMax
+   * @param query       specifies the text or solr fields and the values we are searching for
+   * @param useDisMax   if true, use the dismax query parser
    * @param start       starting result, zero-based.  0 will start at the first result.
    * @param rows        max number of results to return
    * @param sortOrder   specifies the desired ordering for results
@@ -516,8 +516,8 @@ public class SolrSearchService implements SearchService {
    * Populates the Solr parameters with values necessary for field value faceting
    *
    * @param facetField the field that should be treated as a facet
-   * @param query
-   * @param useDisMax if true, use the dismax query parser
+   * @param query      specifies the text or solr fields and the values we are searching for
+   * @param useDisMax  if true, use the dismax query parser
    * @return populated list of parameters for faceted search
    */
   @VisibleForTesting

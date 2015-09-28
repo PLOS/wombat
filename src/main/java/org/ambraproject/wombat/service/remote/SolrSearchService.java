@@ -20,6 +20,7 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.util.ListUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
@@ -212,9 +213,8 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> simpleSearch(String query, List<String> journalKeys, List<String> articleTypes,
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
-        dateRange, false);
-    buildSimpleSearchQuery(params, query);
+    List<NameValuePair> params = buildCommonParams(query, true, start, rows, sortOrder, false);
+    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
     return executeQuery(params);
   }
 
@@ -224,8 +224,8 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> simpleSearch(String facetField, String query, List<String> journalKeys, List<String> articleTypes,
       SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
-    buildSimpleSearchQuery(params, query);
+    List<NameValuePair> params = buildFacetParams(facetField, query, true);
+    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
     return facetedSearch(params);
   }
 
@@ -237,23 +237,10 @@ public class SolrSearchService implements SearchService {
       int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange, Map<String, String> rawQueryParams)
       throws IOException {
 
-    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder, dateRange, false,
+    List<NameValuePair> params = buildCommonParams(query, true, start, rows, sortOrder, false,
         rawQueryParams);
-    buildSimpleSearchQuery(params, query);
+    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
     return getRawResults(params);
-  }
-
-  private void buildSimpleSearchQuery(List<NameValuePair> params, String query) {
-    // TODO: escape/quote the q param if needed.
-    if (Strings.isNullOrEmpty(query)) {
-      query = "*:*";
-    } else {
-
-      // Use the dismax query parser, recommended for all user-entered queries.
-      // See https://wiki.apache.org/solr/DisMax
-      params.add(new BasicNameValuePair("defType", "dismax"));
-    }
-    params.add(new BasicNameValuePair("q", query));
   }
 
   /**
@@ -263,9 +250,8 @@ public class SolrSearchService implements SearchService {
   public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
       List<String> subjectList, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
-        dateRange, false);
-    buildAdvancedSearchQuery(params, query, subjectList);
+    List<NameValuePair> params = buildCommonParams(query, false, start, rows, sortOrder, false);
+    setQueryFilters(params, journalKeys, articleTypes, subjectList, dateRange);
     return executeQuery(params);
   }
 
@@ -275,14 +261,9 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> advancedSearch(String facetField, String query, List<String> journalKeys,
       List<String> articleTypes, List<String> subjectList, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
-    buildAdvancedSearchQuery(params, query, subjectList);
+    List<NameValuePair> params = buildFacetParams(facetField, query, false);
+    setQueryFilters(params, journalKeys, articleTypes, subjectList, dateRange);
     return facetedSearch(params);
-  }
-
-  private void buildAdvancedSearchQuery(List<NameValuePair> params, String query, List<String> subjectList) {
-    params.add(new BasicNameValuePair("q", query));
-    params.add(new BasicNameValuePair("fq", buildSubjectClause(subjectList)));
   }
 
   public
@@ -305,8 +286,8 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> subjectSearch(List<String> subjects, List<String> journalKeys, int start, int rows,
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
-    buildSubjectSearchQuery(params, subjects);
+    List<NameValuePair> params = buildCommonParams("*:*", false, start, rows, sortOrder, false);
+    setQueryFilters(params, journalKeys, new ArrayList<String>(), subjects, dateRange);
     return executeQuery(params);
   }
 
@@ -316,14 +297,9 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> subjectSearch(String facetField, List<String> subjects, List<String> journalKeys,
       List<String> articleTypes, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
-    buildSubjectSearchQuery(params, subjects);
+    List<NameValuePair> params = buildFacetParams(facetField, "*:*", false);
+    setQueryFilters(params, journalKeys, new ArrayList<String>(), subjects, dateRange);
     return facetedSearch(params);
-  }
-
-  private void buildSubjectSearchQuery(List<NameValuePair> params, List<String> subjects) {
-    params.add(new BasicNameValuePair("q", "*:*"));
-    params.add(new BasicNameValuePair("fq", buildSubjectClause(subjects)));
   }
 
   /**
@@ -332,8 +308,9 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> authorSearch(String author, List<String> journalKeys, int start, int rows, SearchCriterion sortOrder,
       SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, start, rows, sortOrder, dateRange, false);
-    params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
+    List<NameValuePair> params = buildCommonParams(String.format("author:\"%s\"", author), false, start,
+        rows, sortOrder, false);
+    setQueryFilters(params, journalKeys, new ArrayList<String>(), new ArrayList<String>(), dateRange);
     return executeQuery(params);
   }
 
@@ -343,17 +320,17 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> authorSearch(String facetField, String author, List<String> journalKeys,
       List<String> articleTypes, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
-    params.add(new BasicNameValuePair("q", String.format("author:\"%s\"", author)));
+    List<NameValuePair> params = buildFacetParams(facetField, String.format("author:\"%s\"", author), false);
+    setQueryFilters(params, journalKeys, new ArrayList<String>(), new ArrayList<String>(), dateRange);
     return facetedSearch(params);
   }
 
   @Override
   public Map<?, ?> volumeSearch(int volume, List<String> journalKeys, List<String> articleTypes, int start, int rows,
       SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder,
-        dateRange, false);
-    buildVolumeSearchQuery(params, volume);
+    List<NameValuePair> params = buildCommonParams("*:*", false, start, rows, sortOrder, false);
+    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
+    params.add(new BasicNameValuePair("fq", String.format("volume:%d", volume)));
     return executeQuery(params);
   }
 
@@ -363,22 +340,19 @@ public class SolrSearchService implements SearchService {
   @Override
   public Map<?, ?> volumeSearch(String facetField, int volume, List<String> journalKeys,
       List<String> articleTypes, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, journalKeys, articleTypes, dateRange);
-    buildVolumeSearchQuery(params, volume);
+    List<NameValuePair> params = buildFacetParams(facetField, "*:*", false);
+    params.add(new BasicNameValuePair("fq", String.format("volume:%d", volume)));
+    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
     return facetedSearch(params);
   }
 
-  private void buildVolumeSearchQuery(List<NameValuePair> params, int volume) {
-    params.add(new BasicNameValuePair("q", "*:*"));
-    params.add(new BasicNameValuePair("fq", String.format("volume:%d", volume)));
-  }
 
   @Override
   public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows, SearchCriterion sortOrder)
       throws IOException {
-    List<NameValuePair> params = buildCommonParams(Collections.singletonList(journalKey), start, rows, sortOrder,
-        SolrEnumeratedDateRange.ALL_TIME, true);
-    params.add(new BasicNameValuePair("q", "*:*"));
+    List<NameValuePair> params = buildCommonParams("*:*", false, start, rows, sortOrder, true);
+    setQueryFilters(params, Collections.singletonList(journalKey), new ArrayList<String>(),
+        new ArrayList<String>(), SolrEnumeratedDateRange.ALL_TIME);
     return executeQuery(params);
   }
 
@@ -445,15 +419,6 @@ public class SolrSearchService implements SearchService {
     }
   }
 
-  //Override for buildCommonParams with no article types
-  @VisibleForTesting
-  List<NameValuePair> buildCommonParams(List<String> journalKeys, int start, int rows,
-      SearchCriterion sortOrder, SearchCriterion dateRange, boolean forHomePage) {
-    return buildCommonParams(journalKeys, new ArrayList<String>(), start, rows, sortOrder,
-        dateRange, forHomePage);
-  }
-
-
   @Override
   public Map<?, ?> getStats(String fieldName, String journalKey) throws IOException {
     Map<String, String> rawQueryParams = new HashMap();
@@ -472,19 +437,18 @@ public class SolrSearchService implements SearchService {
   /**
    * Populates the SOLR parameters with values used across all searchs in the application.
    *
-   * @param journalKeys names of the journals in which to search.
-   * @param articleTypes types of articles in which to search. An empty list will search all article types.
+   * @param query
+   * @param useDisMax
    * @param start       starting result, zero-based.  0 will start at the first result.
    * @param rows        max number of results to return
    * @param sortOrder   specifies the desired ordering for results
-   * @param dateRange   specifies the date range for the results
    * @param forHomePage if true, this search is for articles on a journal home page; if false it is for a specific
    *                    query
    * @return populated list of parameters
    */
   @VisibleForTesting
-  List<NameValuePair> buildCommonParams(List<String> journalKeys, List<String> articleTypes, int start, int rows,
-        SearchCriterion sortOrder, SearchCriterion dateRange, boolean forHomePage) {
+  List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start, int rows,
+      SearchCriterion sortOrder,  boolean forHomePage) {
 
     // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
     // This is the easiest way I found...
@@ -509,7 +473,19 @@ public class SolrSearchService implements SearchService {
       sortOrderStr += ",id desc";
     }
     params.add(new BasicNameValuePair("sort", sortOrderStr));
-    setQueryFilters(params, journalKeys, articleTypes, dateRange);
+
+    if (Strings.isNullOrEmpty(query)) {
+      query = "*:*";
+    } else {
+      if (useDisMax) {
+        // Use the dismax query parser, recommended for all user-entered queries.
+        // See https://wiki.apache.org/solr/DisMax
+        params.add(new BasicNameValuePair("defType", "dismax"));
+      }
+    }
+
+    params.add(new BasicNameValuePair("q", query));
+
     return params;
   }
 
@@ -517,22 +493,19 @@ public class SolrSearchService implements SearchService {
    * Populates the Solr parameters with values used across all searches in the application. It is able to
    * parse the raw query parameters as well.
    *
-   * @param journalKeys names of the journals in which to search.
-   * @param articleTypes types of articles in which to search. An empty list will search all article types.
+   * @param query
+   * @param useDisMax
    * @param start       starting result, zero-based.  0 will start at the first result.
    * @param rows        max number of results to return
    * @param sortOrder   specifies the desired ordering for results
-   * @param dateRange   specifies the date range for the results
    * @param forHomePage if true, this search is for articles on a journal home page; if false it is for a specific
    *                    query
    * @param rawQueryParams specifies the raw query parameters passed as name/value pairs
    * @return populated list of parameters
    */
-  private List<NameValuePair> buildCommonParams(List<String> journalKeys, List<String> articleTypes, int start,
-      int rows, SearchCriterion sortOrder, SearchCriterion dateRange, boolean forHomePage,
-      Map<String, String> rawQueryParams) {
-    List<NameValuePair> params = buildCommonParams(journalKeys, articleTypes, start, rows, sortOrder, dateRange,
-        forHomePage);
+  private List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,
+      int rows, SearchCriterion sortOrder, boolean forHomePage, Map<String, String> rawQueryParams) {
+    List<NameValuePair> params = buildCommonParams(query, useDisMax, start, rows, sortOrder, forHomePage);
     for (Map.Entry<String, String> entry: rawQueryParams.entrySet()) {
       params.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
     }
@@ -543,13 +516,12 @@ public class SolrSearchService implements SearchService {
    * Populates the Solr parameters with values necessary for field value faceting
    *
    * @param facetField the field that should be treated as a facet
-   * @param journalKeys names of the journals in which to search.
-   * @param articleTypes types of articles in which to search. An empty list will search all article types.
-   * @param dateRange specifies the date range for the results
+   * @param query
+   * @param useDisMax if true, use the dismax query parser
    * @return populated list of parameters for faceted search
    */
-  private List<NameValuePair> buildFacetParams(String facetField, List<String> journalKeys, List<String> articleTypes,
-      SearchCriterion dateRange) {
+  @VisibleForTesting
+  List<NameValuePair> buildFacetParams(String facetField, String query, boolean useDisMax) {
     List<NameValuePair> params = new ArrayList<>();
     params.add(new BasicNameValuePair("wt", "json"));
     params.add(new BasicNameValuePair("json.nl", "arrarr"));
@@ -561,7 +533,19 @@ public class SolrSearchService implements SearchService {
     params.add(new BasicNameValuePair("facet.mincount", Integer.toString(MIN_FACET_COUNT)));
     params.add(new BasicNameValuePair("facet.limit", Integer.toString(MAX_FACET_SIZE)));
     params.add(new BasicNameValuePair("facet.field", facetField));
-    setQueryFilters(params, journalKeys, articleTypes, dateRange);
+
+    if (Strings.isNullOrEmpty(query)) {
+      query = "*:*";
+    } else {
+      if (useDisMax) {
+        // Use the dismax query parser, recommended for all user-entered queries.
+        // See https://wiki.apache.org/solr/DisMax
+        params.add(new BasicNameValuePair("defType", "dismax"));
+      }
+    }
+
+    params.add(new BasicNameValuePair("q", query));
+
     return params;
   }
 
@@ -573,15 +557,16 @@ public class SolrSearchService implements SearchService {
    * @param articleTypes types of articles in which to search. An empty list will search all article types.
    * @param dateRange specifies the date range for the results
    */
-  private void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
-      List<String> articleTypes, SearchCriterion dateRange) {
+  @VisibleForTesting
+  void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
+      List<String> articleTypes, List<String> subjects, SearchCriterion dateRange) {
     if (dateRange != null) {
       String dateRangeStr = dateRange.getValue();
       if (!Strings.isNullOrEmpty(dateRangeStr)) {
         params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
       }
     }
-    if (journalKeys != null && !journalKeys.isEmpty()) {
+    if (!ListUtil.isNullOrEmpty(journalKeys)) {
       List<String> crossPublishedJournals = new ArrayList<>();
       for (String journalKey : journalKeys) {
         crossPublishedJournals.add("cross_published_journal_key:" + journalKey);
@@ -589,12 +574,16 @@ public class SolrSearchService implements SearchService {
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
     }
 
-    if (articleTypes != null && !articleTypes.isEmpty()) {
+    if (!ListUtil.isNullOrEmpty(articleTypes)) {
       List<String> articleTypeQueryList = new ArrayList<>();
       for (String articleType : articleTypes) {
         articleTypeQueryList.add("article_type_facet:\"" + articleType + "\"");
       }
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
+    }
+
+    if (!ListUtil.isNullOrEmpty(subjects)) {
+      params.add(new BasicNameValuePair("fq", buildSubjectClause(subjects)));
     }
   }
 

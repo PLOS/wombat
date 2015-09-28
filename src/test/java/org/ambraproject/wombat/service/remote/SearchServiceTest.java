@@ -29,6 +29,7 @@ import java.util.regex.Pattern;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
@@ -43,36 +44,84 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
 
   @Test
   public void testBuildCommonParams() {
-    List<String> articleTypes = new ArrayList<>();
-
-    // Single journal
-    List<NameValuePair> actual = searchService.buildCommonParams(Collections.singletonList("foo"), articleTypes, 0, 10,
-        SolrSearchService.SolrSortOrder.MOST_CITED, SolrSearchService.SolrEnumeratedDateRange.LAST_6_MONTHS, true);
+    // query string not null
+    List<NameValuePair> actual = searchService.buildCommonParams("foo", true, 0, 10,
+        SolrSearchService.SolrSortOrder.MOST_CITED, true);
     SetMultimap<String, String> actualMap = convertToMap(actual);
-    assertCommonParams(actualMap, 4);
+    assertCommonParams(actualMap, 2);
     assertSingle(actualMap.get("rows"), "10");
 
     // if start == 0 no param should be present.
     assertEquals(actualMap.get("start").size(), 0);
     assertSingle(actualMap.get("sort"), "alm_scopusCiteCount desc");
-    assertPubDate(actualMap.get("fq"));
-    assertJournals(actualMap.get("fq"), "foo");
+    assertSingle(actualMap.get("defType"), "dismax");
+    assertSingle(actualMap.get("q"), "foo");
+
+    // empty query string
+    actual = searchService.buildCommonParams("", false, 0, 10,
+        SolrSearchService.SolrSortOrder.MOST_CITED, true);
+    actualMap = convertToMap(actual);
+    assertCommonParams(actualMap, 2);
+    assertEquals(actualMap.get("defType").size(), 0);
+    assertSingle(actualMap.get("q"), "*:*");
+
+    // not home page
+    actual = searchService.buildCommonParams("", false, 0, 10,
+        SolrSearchService.SolrSortOrder.RELEVANCE, false);
+    actualMap = convertToMap(actual);
+    assertCommonParams(actualMap, 2);
+    assertSingle(actualMap.get("sort"), "score desc,publication_date desc,id desc");
+
+  }
+
+  @Test
+  public void testFacetParams() {
+    // query string not null
+    List<NameValuePair> actual = searchService.buildFacetParams("journal", "foo", true);
+    SetMultimap<String, String> actualMap = convertToMap(actual);
+    assertFacetParams(actualMap, 2);
+    assertSingle(actualMap.get("facet.field"), "journal");
+    assertSingle(actualMap.get("defType"), "dismax");
+    assertSingle(actualMap.get("q"), "foo");
+
+    // empty query string
+    actual = searchService.buildFacetParams("journal", "", false);
+    actualMap = convertToMap(actual);
+    assertFacetParams(actualMap, 2);
+    assertSingle(actualMap.get("facet.field"), "journal");
+    assertEquals(actualMap.get("defType").size(), 0);
+    assertSingle(actualMap.get("q"), "*:*");
+  }
+
+  @Test
+  public void testSetQueryFilters() {
+    List<NameValuePair> actual = new ArrayList<>();
+    List<String> articleTypes = new ArrayList<>();
+    List<String> subjects = new ArrayList<>();
 
     // Multiple journals
-    actual = searchService.buildCommonParams(Arrays.asList("foo", "bar", "blaz"), articleTypes, 20, 25,
-        SolrSearchService.SolrSortOrder.RELEVANCE, SolrSearchService.SolrEnumeratedDateRange.ALL_TIME, false);
-    actualMap = convertToMap(actual);
-    assertCommonParams(actualMap, 3);
-    assertSingle(actualMap.get("rows"), "25");
-    assertSingle(actualMap.get("start"), "20");
-    assertSingle(actualMap.get("sort"), "score desc,publication_date desc,id desc");
+    searchService.setQueryFilters(actual, Arrays.asList("foo", "bar", "blaz"),
+        articleTypes, subjects, SolrSearchService.SolrEnumeratedDateRange.ALL_TIME);
+    SetMultimap<String, String> actualMap = convertToMap(actual);
     assertJournals(actualMap.get("fq"), "foo", "bar", "blaz");
 
-    // null date range
-    actual = searchService.buildCommonParams(Collections.singletonList("foo"), articleTypes, 0, 15,
-        SolrSearchService.SolrSortOrder.RELEVANCE, null, false);
+    // date range
+    actual = new ArrayList<>();
+    searchService.setQueryFilters(actual, Collections.singletonList("foo"),
+        articleTypes, subjects, SolrSearchService.SolrEnumeratedDateRange.LAST_3_MONTHS);
     actualMap = convertToMap(actual);
-    assertCommonParams(actualMap, 3);
+    assertEquals(actualMap.get("fq").size(), 2);
+    for (String s : actualMap.get("fq")) {
+      if (!s.contains("publication_date:") && !s.contains("cross_published_journal_key:")) {
+        fail(s);
+      }
+    }
+
+    // null date range
+    actual = new ArrayList<>();
+    searchService.setQueryFilters(new ArrayList<NameValuePair>(), Collections.singletonList("foo"), articleTypes,
+        subjects, null);
+    actualMap = convertToMap(actual);
     Set<String> fq = actualMap.get("fq");
     for (String s : fq) {
       if (s.startsWith("publication_date:")) {
@@ -82,36 +131,47 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
   }
 
   @Test
-  public void testBuildCommonParams_ExplicitDateRange() throws IOException {
+  public void testSetQueryFilters_ExplicitDateRange() throws IOException {
+    List<NameValuePair> actual = new ArrayList<>();
     SolrSearchService.SolrExplicitDateRange edr
         = new SolrSearchService.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
-    List<NameValuePair> actual = searchService.buildCommonParams(Collections.singletonList("foo"),
-        new ArrayList<String>(), 0, 10, SolrSearchService.SolrSortOrder.MOST_CITED, edr, true);
+
+    searchService.setQueryFilters(actual, Collections.singletonList("foo"),
+        new ArrayList<String>(), new ArrayList<String>(), edr);
     SetMultimap<String, String> actualMap = convertToMap(actual);
-    assertCommonParams(actualMap, 4);
-    assertSingle(actualMap.get("rows"), "10");
-    assertEquals(actualMap.get("start").size(), 0);
-    assertSingle(actualMap.get("sort"), "alm_scopusCiteCount desc");
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
   }
 
   @Test
-  public void testBuildCommonParams_IncludeArticleTypes() throws IOException {
+  public void testSetQueryFilters_IncludeArticleTypes() throws IOException {
+    List<NameValuePair> actual = new ArrayList<>();
     SolrSearchService.SolrExplicitDateRange edr
         = new SolrSearchService.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
-    List<NameValuePair> actual = searchService.buildCommonParams(Collections.singletonList("foo"),
-      articleTypes, 0, 10, SolrSearchService.SolrSortOrder.MOST_CITED, edr, true);
+    searchService.setQueryFilters(actual, Collections.singletonList("foo"),
+        articleTypes, new ArrayList<String>(), edr);
     SetMultimap<String, String> actualMap = convertToMap(actual);
-    assertCommonParams(actualMap, 5);
-    assertSingle(actualMap.get("rows"), "10");
-    assertEquals(actualMap.get("start").size(), 0);
-    assertSingle(actualMap.get("sort"), "alm_scopusCiteCount desc");
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
     assertArticleTypes(actualMap.get("fq"));
+  }
+
+  @Test
+  public void testSetQueryFilters_IncludeSubjects() throws IOException {
+    List<NameValuePair> actual = new ArrayList<>();
+    SolrSearchService.SolrExplicitDateRange edr
+        = new SolrSearchService.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    ArrayList<String> articleTypes = new ArrayList<>();
+    articleTypes.add("Research Article");
+    searchService.setQueryFilters(actual, Collections.singletonList("foo"),
+        articleTypes, Arrays.asList("Skull", "Head", "Teeth"), edr);
+    SetMultimap<String, String> actualMap = convertToMap(actual);
+    assertPubDate(actualMap.get("fq"));
+    assertJournals(actualMap.get("fq"), "foo");
+    assertArticleTypes(actualMap.get("fq"));
+    assertSubjects(actualMap.get("fq"), "\"Skull\"", "\"Head\"", "\"Teeth\"");
   }
 
   private static class SearchServiceForAddArticleLinksTest extends SolrSearchService {
@@ -193,6 +253,23 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
   }
 
   /**
+   * Tests for parameters expected to be the same across all tests.
+   */
+  private void assertFacetParams(SetMultimap<String, String> actual, int expectedNumFqParams) {
+    assertSingle(actual.get("wt"), "json");
+    assertSingle(actual.get("json.nl"), "arrarr");
+    Set<String> fq = actual.get("fq");
+
+    // We check two of the fq params here; the caller should check the others.
+    Joiner joiner = Joiner.on(",");
+    assertEquals(fq.size(), expectedNumFqParams, joiner.join(fq));
+    assertTrue(fq.contains("doc_type:full"));
+    assertTrue(fq.contains("!article_type_facet:\"Issue Image\""));
+    assertSingle(actual.get("hl"), "false");
+    assertSingle(actual.get("facet"), "true");
+  }
+
+  /**
    * Asserts that the given set (all values of a single parameter) has exactly one entry
    * with the expected value.
    */
@@ -258,5 +335,28 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     assertNotNull(articleType);
     Matcher matcher = ARTICLE_TYPE_RE.matcher(articleType);
     assertTrue(matcher.matches());
+  }
+
+  private void assertSubjects(Set<String> actualFq, String... expectedSubjects ) {
+    String subjects = null;
+    for (String s : actualFq) {
+      if (s.startsWith("subject:")) {
+        subjects = s;
+        break;
+      }
+    }
+
+    assertNotNull(subjects);
+    // For multiple subjects, the expected format of the param is
+    // "subject:Teeth AND subject:Head"
+    String[] parts = subjects.split(" AND ");
+    assertEquals(parts.length, expectedSubjects.length);
+    Set<String> actualSubjects = new HashSet<>();
+    for (String part : parts) {
+      actualSubjects.add(part.substring("subject:".length()));
+    }
+    for (String expected : expectedSubjects) {
+      assertTrue(actualSubjects.contains(expected));
+    }
   }
 }

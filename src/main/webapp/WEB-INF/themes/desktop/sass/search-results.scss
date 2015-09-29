@@ -155,6 +155,20 @@ $controls-gray: $grey-med-light;
   margin-bottom: rem-calc($line-height-medium);
   position: relative;
 
+  div {
+    color: $controls-gray;
+    font-size: $txt-size-small;
+
+    a {
+      color: $controls-gray;
+      text-decoration: underline;
+
+      &:hover {
+        color: $controls-gray;
+      }
+
+    }
+
   > form {
     //   margin: 0 auto;
     position: relative;
@@ -166,7 +180,7 @@ $controls-gray: $grey-med-light;
       margin-bottom: rem-calc($line-height-medium);
 
       .search-field {
-        @include plos-grid-column($pixelwidth: 760, $gutter: none);
+        width: 100%;
       }
 
       .search-button {
@@ -246,16 +260,6 @@ $controls-gray: $grey-med-light;
       width: rem-calc(350);
       line-height: rem-calc(15);
       display: inline-block;
-      color: $controls-gray;
-      font-size: $txt-size-small;
-
-      a {
-        color: $controls-gray;
-        text-decoration: underline;
-
-        &:hover {
-          color: $controls-gray;
-        }
       }
     }
   }

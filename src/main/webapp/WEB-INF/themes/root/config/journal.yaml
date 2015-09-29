@@ -25,6 +25,3 @@ italicizeTitle: true
 # The title itself is defined by the service tier, as a field of the journal object identified by the journalKey.
 # But that data contains no information about whether to italicize the title, which is an additional display detail
 # controlled here.
-
-isCollection: false
-# Defines whether the journal associated with this site is a collection. This provides context for content rendering.

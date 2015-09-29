@@ -10,12 +10,13 @@ import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -53,7 +54,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -105,7 +105,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetadata));
-    model.addAttribute("collectionIssues", getCollectionIssues(articleMetadata, site));
+    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
 
     addCrossPublishedJournals(request, model, site, articleMetadata);
     requestAuthors(model, articleId);
@@ -169,41 +169,21 @@ public class ArticleController extends WombatController {
     );
   }
 
-  /**
-   * filter a map of article issues (containing associated journal and volume info), only keeping issues published in
-   * journals identified as a collection
-   * @param articleMetadata
-   * @param site
-   * @return
-   */
-  private Map<?, ?> getCollectionIssues(Map<?, ?> articleMetadata, final Site site) {
-
-    Map<String, Map<String, Object>> articleIssues = (Map<String, Map<String, Object>>)articleMetadata.get("issues");
-    for (Iterator<Map.Entry<String, Map<String, Object>>> iter = articleIssues.entrySet().iterator(); iter.hasNext();) {
-      Map.Entry<String, Map<String, Object>> entry = iter.next();
-      Map<String, String> parentJournal = ((Map<String, String>) entry.getValue().get("parentJournal"));
-      if (parentJournal != null) {
-        String journalKey = parentJournal.get("journalKey");
-        if (journalKey != null){
-          Site publishedSite;
-          try {
-            publishedSite = site.getTheme().resolveForeignJournalKey(siteSet, journalKey);
-            if ((boolean) publishedSite.getTheme().getConfigMap("journal").get("isCollection")) { continue; }; // keep
-          } catch (UnmatchedSiteException use) {
-            throw new RuntimeException("Could not resolve collections pub site using journalKey: " + journalKey, use);
-          } catch (Exception e) {
-            throw new RuntimeException(e);
-          }
-        }
-      }
-      iter.remove(); // filter out any non-collection issues
+  private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
+    List<Map<?, ?>> articleListObjects = soaService.requestObject(String.format("articles/%s?lists", doi), List.class);
+    Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
+    for (Map<?, ?> articleListObject : articleListObjects) {
+      String listType = (String) articleListObject.get("listType");
+      listType = String.valueOf(listType); // allow null; convert it to the string "null"
+      result.put(listType, articleListObject);
     }
-    return articleIssues;
+    return result.asMap();
   }
 
   /**
-   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a given
-   * category path)
+   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a
+   * given category path)
+   *
    * @param articleMetadata
    * @return a sorted list of category terms
    */
@@ -215,10 +195,10 @@ public class ArticleController extends WombatController {
 
     // create a map of terms/weights (effectively removes duplicate terms through the mapping)
     Map<String, Double> termsMap = new HashMap<>();
-    for (Map<String, ?> category: categories){
-      String[] categoryTerms = ((String)category.get("path")).split("/");
+    for (Map<String, ?> category : categories) {
+      String[] categoryTerms = ((String) category.get("path")).split("/");
       String categoryTerm = categoryTerms[categoryTerms.length - 1];
-      termsMap.put(categoryTerm, (Double)category.get("weight"));
+      termsMap.put(categoryTerm, (Double) category.get("weight"));
     }
 
     // use Guava for sorting, first on weight (descending), then on category term

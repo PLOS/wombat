@@ -1511,6 +1511,9 @@
   <!-- 1/4/12: Ambra modifications -->
     <xsl:template match="list">
         <xsl:call-template name="newline1"/>
+        <xsl:if test="title">
+          <h5><xsl:value-of select="title"/></h5>
+        </xsl:if>
         <xsl:choose>
             <xsl:when test="@list-type='bullet'">
                 <xsl:call-template name="newline1"/>
@@ -2804,77 +2807,6 @@
       test="not(ends-with(normalize-space(),'.')) and not(ends-with(normalize-space(),'?')) and not(ends-with(normalize-space(),'!'))">
       <xsl:text>.</xsl:text>
     </xsl:if>
-  </xsl:template>
-
-  <!-- 1/4/12: Ambra-specific template (works with next two linebreak templates) -->
-  <xsl:template match="text()">
-    <!-- do some character transformations first-->
-    <xsl:variable name="str" select="translate(., '&#8194;&#x200A;&#8764;&#x02236;&#x02208;', '  ~:&#x404;') "/>
-    <xsl:choose>
-      <!-- no need to progress further if the entire element is less then 40 characters -->
-      <xsl:when test="string-length($str) &gt; 40">
-        <xsl:call-template name="linebreaklongwords">
-          <xsl:with-param name="str" select="$str"/>
-          <xsl:with-param name="len" select="40"/>
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$str"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
-  <!-- 1/4/12: Ambra-specific template (works with following template to break long strings) -->
-  <!-- break words longer then len characters -->
-  <xsl:template name="linebreaklongwords">
-    <xsl:param name="str"/>
-    <xsl:param name="len"/>
-    <xsl:for-each select="tokenize($str,'\s')">
-      <xsl:choose>
-        <xsl:when test="string-length(.) &gt; $len">
-          <xsl:call-template name="linebreaklongwordsub">
-            <xsl:with-param name="str" select="."/>
-            <xsl:with-param name="len" select="$len"/>
-            <!-- zero length space -->
-            <xsl:with-param name="char">
-              <xsl:text>&#8203;</xsl:text>
-            </xsl:with-param>
-          </xsl:call-template>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:choose>
-            <xsl:when test="position()=last()">
-              <xsl:copy-of select="."/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:copy-of select="."/>
-              <xsl:text> </xsl:text>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:for-each>
-  </xsl:template>
-
-  <!-- 1/4/12: Ambra-specific template (works with above template to break long strings) -->
-  <xsl:template name="linebreaklongwordsub">
-    <xsl:param name="str"/>
-    <xsl:param name="len"/>
-    <xsl:param name="char"/>
-    <xsl:choose>
-      <xsl:when test="string-length($str) &gt; $len">
-        <xsl:value-of select="substring($str,1,$len)"/>
-        <xsl:value-of select="$char"/>
-        <xsl:call-template name="linebreaklongwordsub">
-          <xsl:with-param name="str" select="substring($str,$len + 1)"/>
-          <xsl:with-param name="len" select="$len"/>
-          <xsl:with-param name="char" select="$char"/>
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$str"/>
-      </xsl:otherwise>
-    </xsl:choose>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template (used for displaying annotations) -->

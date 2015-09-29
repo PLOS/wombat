@@ -1,6 +1,14 @@
 <#include "../common/twitterConfig.ftl" />
 <#include "../common/pubUrlPrefix.ftl" />
 
+<#--//analytics related meta tags - description and keywords-->
+<#if article.description??>
+  <meta name="description" content="${article.description?replace('<.+?>',' ','r')?html}" />
+</#if>
+<#if categoryTerms??>
+  <meta name="keywords" content="<#list categoryTerms as categoryTerm>${categoryTerm}<#if categoryTerm_has_next>,</#if></#list>" />
+</#if>
+
 <meta name="citation_doi" content="${articleDoi}" />
 <#if article.authors?? >
   <#list authors as author>

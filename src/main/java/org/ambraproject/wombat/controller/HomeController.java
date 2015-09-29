@@ -73,10 +73,14 @@ public class HomeController extends WombatController {
         return sanitizeSolrResults(result);
       }
     },
-    IN_THE_NEWS {
+    CURATED {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return (List<Object>) getInTheNewsArticles(context.soaService, site.getJournalKey());
+        String journalKey = site.getJournalKey();
+        String listId = journalKey + "/" + section.curatedListName;
+        Map<String, Object> curatedList = context.soaService.requestObject("lists/" + listId, Map.class);
+        List<?> articles = (List<?>) curatedList.get("articles");
+        return (List<Object>) articles;
       }
     };
 
@@ -97,6 +101,7 @@ public class HomeController extends WombatController {
     private final boolean shuffle;
     private final List<String> articleTypes;
     private final List<String> articleTypesToExclude;
+    private final String curatedListName;
     private final Integer cacheTtl; // nullable
 
     private SectionSpec(Map<String, Object> configuration) {
@@ -113,12 +118,15 @@ public class HomeController extends WombatController {
       this.articleTypes = (List<String>) configuration.get("articleTypes");
       this.articleTypesToExclude = (List<String>) configuration.get("articleTypesToExclude");
 
+      this.curatedListName = (String) configuration.get("curatedListName");
+      Preconditions.checkArgument((curatedListName != null) == (type == SectionType.CURATED));
+
       Number cacheTtl = (Number) configuration.get("cacheTtl");
       this.cacheTtl = (cacheTtl == null) ? null : cacheTtl.intValue();
     }
 
     public String getName() {
-      return type.name().toLowerCase();
+      return (type == SectionType.CURATED) ? curatedListName : type.name().toLowerCase();
     }
 
     public List<Object> getArticles(Site site, int start) throws IOException {
@@ -169,7 +177,7 @@ public class HomeController extends WombatController {
       sectionParam = defaultSection;
     }
     for (SectionSpec sectionSpec : sectionSpecs) {
-      if (sectionSpec.type.name().equalsIgnoreCase(sectionParam)) {
+      if (sectionSpec.getName().equalsIgnoreCase(sectionParam)) {
         return sectionSpec;
       }
     }
@@ -243,11 +251,6 @@ public class HomeController extends WombatController {
     model.addAttribute("currentIssue", currentIssue);
     Map<String, Object> issueImageMetadata = soaService.requestObject("articles/" + currentIssue.get("imageUri"), Map.class);
     model.addAttribute("issueImage", issueImageMetadata);
-  }
-
-  private static List<?> getInTheNewsArticles(SoaService soaService, String journalKey) throws IOException {
-    String requestAddress = "journals/" + journalKey + "?inTheNewsArticles";
-    return (List<Map<String, Object>>) soaService.requestObject(requestAddress, List.class);
   }
 
 }

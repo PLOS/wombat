@@ -10,6 +10,7 @@ sections:
   - name: "recent"
     # The section identifier.
     # Must be one of the valid values defined by org.ambraproject.wombat.controller.HomeController.SectionType.
+    # Each name except for "curated" must be used at most once.
 
     resultCount: 7
     # The number of articles to load into the model when this section is displayed.
@@ -36,6 +37,11 @@ sections:
     # Ignored unless "name" is "recent" and "since" is non-null.
     #
     # Never show any articles with these types as recent articles, regardless of other criteria.
+
+    curatedListName: null
+    # Ignored unless "name" is "curated". Required if "name" is "curated".
+    #
+    # The name of an article list, in this site's journal, to use to populate the section.
 
     cacheTtl: null
     # Ignored unless "name" is "recent" and "since" is non-null.

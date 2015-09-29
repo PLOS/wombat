@@ -26,7 +26,7 @@
           </#macro>
           <@sectionLink "recent" "recent" />
           <@sectionLink "popular" "popular" />
-          <@sectionLink "in_the_news" "in the news" />
+          <#include "curatedArticleLists.ftl" />
         </ul>
       </nav>
       <form id="hpSectionForm" action="" method="get" style="display: none;">

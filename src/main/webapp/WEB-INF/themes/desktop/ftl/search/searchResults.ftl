@@ -120,7 +120,7 @@
       </form>
     </div>
   <section>
-  <@enableDevFeature 'searchFiltersx'>
+  <@enableDevFeature 'searchFilters'>
     <#if searchResults.numFound != 0>
       <#if searchFilters?? >
         <aside id="searchFilters">

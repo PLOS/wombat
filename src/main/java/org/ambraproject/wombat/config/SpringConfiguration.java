@@ -31,6 +31,7 @@ import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
+import org.ambraproject.wombat.freemarker.IsDevFeatureEnabledDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
@@ -87,6 +88,11 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public IsDevFeatureEnabledDirective isDevFeatureEnabledDirective() {
+    return new IsDevFeatureEnabledDirective();
+  }
+
+  @Bean
   public SiteResolver siteResolver() {
     return new SiteResolver();
   }
@@ -123,6 +129,7 @@ public class SpringConfiguration {
 
   @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
+                                           IsDevFeatureEnabledDirective isDevFeatureEnabledDirective,
                                            SiteLinkDirective siteLinkDirective,
                                            RenderCssLinksDirective renderCssLinksDirective,
                                            RenderJsDirective renderJsDirective,
@@ -143,6 +150,7 @@ public class SpringConfiguration {
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("randomInteger", new RandomIntegerDirective());
     variables.put("siteLink", siteLinkDirective);
+    variables.put("isDevFeatureEnabled", isDevFeatureEnabledDirective);
     variables.put("cssLink", new CssLinkDirective());
     variables.put("renderCssLinks", renderCssLinksDirective);
     variables.put("js", new JsDirective());

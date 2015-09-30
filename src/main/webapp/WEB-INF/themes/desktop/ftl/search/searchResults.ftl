@@ -121,6 +121,11 @@
     </div>
   <section>
     <article>
+        requestString: ${requestString}<BR>
+        testLocalPath: ${testLocalPath}<BR>
+        testMedicinePath: ${testMedicinePath}<BR>
+        testCollectionsPath: ${testCollectionsPath}<BR>
+        <BR>
       <#if searchResults.numFound == 0>
         <div class="search-results-none-found">
           <p>You searched for articles that have all of the following:</p>

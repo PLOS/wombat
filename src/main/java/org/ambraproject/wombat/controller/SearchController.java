@@ -18,6 +18,7 @@ import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.slf4j.Logger;
@@ -280,6 +281,10 @@ public class SearchController extends WombatController {
         commonParams.articleTypes, commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder,
         commonParams.dateRange);
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
+    model.addAttribute("requestString", request.getScheme() + "://" + request.getServletPath());
+    model.addAttribute("testLocalPath", Link.toLocalSite(site).toPath("test/local/path").get(request));
+    model.addAttribute("testMedicinePath", Link.toForeignSite(site,"PLoSMedicine",siteSet).toPath("test/medicine/path").get(request));
+    model.addAttribute("testCollectionsPath", Link.toForeignSite(site,"PLoSCollections",siteSet).toPath("test/collections/path").get(request));
     return site.getKey() + "/ftl/search/searchResults";
   }
 

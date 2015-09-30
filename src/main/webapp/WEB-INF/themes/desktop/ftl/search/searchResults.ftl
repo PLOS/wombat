@@ -120,6 +120,7 @@
       </form>
     </div>
   <section>
+  <@enableDevFeature 'searchFilters'>
     <#if searchResults.numFound != 0>
       <#if searchFilters?? >
         <aside id="searchFilters">
@@ -139,6 +140,7 @@
         </aside>
       </#if>
     </#if>
+  </@enableDevFeature>
     <article>
       <#if searchResults.numFound == 0>
         <div class="search-results-none-found">

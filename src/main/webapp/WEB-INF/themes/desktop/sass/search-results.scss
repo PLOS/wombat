@@ -11,7 +11,7 @@
       @extend .plos-row;
     }
     article {
-      @include plos-grid-column($pixelwidth: 560, $gutter: right);
+      @include plos-grid-column($pixelwidth: 760, $gutter: right);
     }
 
     aside {

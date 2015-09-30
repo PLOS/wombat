@@ -11,7 +11,6 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
@@ -19,7 +18,6 @@ import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Interface that represents configurable values that are only known at server startup time.

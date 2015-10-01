@@ -18,6 +18,11 @@ import java.util.Collection;
 public class SiteRequestScheme implements SiteRequestPredicate {
 
   /**
+   * The host name, if any, that should be part of links to the site.
+   */
+  private final Optional<String> hostName;
+
+  /**
    * The site-identifying token, if any, that should be part of links to the site.
    */
   private final Optional<String> pathToken;
@@ -25,12 +30,14 @@ public class SiteRequestScheme implements SiteRequestPredicate {
   /**
    * A request is for this object's site if and only if all of these predicates are true for the request.
    * <p/>
-   * If {@link #pathToken} is present, this must include a {@link PathTokenPredicate} to be correct. This is the
-   * responsibility of {@link Builder#setPathToken}.
+   * If {@link #pathToken} or {@link #hostName} is present, this must include a {@link PathTokenPredicate} or
+   * {@link HostPredicate}, respectively, to be correct. This is the responsibility of {@link Builder#setPathToken} and
+   * {@link Builder#specifyHost}.
    */
   private final ImmutableSet<SiteRequestPredicate> requestPredicates;
 
-  private SiteRequestScheme(String pathToken, Iterable<? extends SiteRequestPredicate> requestPredicates) {
+  private SiteRequestScheme(String hostName, String pathToken, Iterable<? extends SiteRequestPredicate> requestPredicates) {
+    this.hostName = Optional.fromNullable(hostName);
     this.pathToken = Optional.fromNullable(pathToken);
     this.requestPredicates = ImmutableSet.copyOf(requestPredicates);
   }
@@ -43,11 +50,30 @@ public class SiteRequestScheme implements SiteRequestPredicate {
    * A mutable object that gathers the site definition from configuration code.
    */
   public static class Builder {
+    private String hostName;
     private String pathToken;
     private final Collection<SiteRequestPredicate> requestPredicates;
 
     private Builder() {
       requestPredicates = Lists.newArrayListWithCapacity(3);
+    }
+
+    /*
+     * Expose the various SiteRequestPredicate implementations through public methods here.
+     */
+
+    /**
+     * Identify the host name for the site
+     *
+     * @param hostName
+     */
+    public Builder specifyHost(String hostName) {
+      if (this.hostName != null) {
+        throw new IllegalStateException("host name has already been set");
+      }
+      this.hostName = hostName;
+      requestPredicates.add(new HostPredicate(hostName));
+      return this;
     }
 
     /**
@@ -64,10 +90,6 @@ public class SiteRequestScheme implements SiteRequestPredicate {
       return this;
     }
 
-    /*
-     * Expose the various SiteRequestPredicate implementations through public methods here.
-     */
-
     /**
      * Identify the site by a header value.
      *
@@ -79,14 +101,21 @@ public class SiteRequestScheme implements SiteRequestPredicate {
       return this;
     }
 
-    public Builder specifyHost(String hostName) {
-      requestPredicates.add(new HostPredicate(hostName));
-      return this;
-    }
-
     public SiteRequestScheme build() {
-      return new SiteRequestScheme(pathToken, requestPredicates);
+      return new SiteRequestScheme(hostName, pathToken, requestPredicates);
     }
+  }
+
+  public boolean hasPathToken() {
+    return pathToken.isPresent();
+  }
+
+  Optional<String> getPathToken() {
+    return pathToken;
+  }
+
+  Optional<String> getHostName() {
+    return hostName;
   }
 
   @Override
@@ -99,51 +128,10 @@ public class SiteRequestScheme implements SiteRequestPredicate {
     return true;
   }
 
-  /**
-   * Build a link to a path within a site.
-   * <p/>
-   * The link always starts with {@code '/'} and is usable as a domain-absolute link to a path on the current site.
-   *
-   * @param request a request to the current site
-   * @param path    a site-independent path
-   * @return a link to that path within the same site
-   */
-  public String buildLink(HttpServletRequest request, String path) {
-    return request.getContextPath() + buildLink(path);
-  }
-
-  /**
-   * Build a link to a path within a site.
-   * <p/>
-   * The link always starts with {@code '/'} and is relative to the application root. It is suitable for use in a {@code
-   * "redirect:*"} return value for Spring. It must <em>not</em> be used to build {@code href} values to be sent to the
-   * client browser; use {@link #buildLink(javax.servlet.http.HttpServletRequest, String)} for that instead.
-   *
-   * @param path a site-independent path
-   * @return a link to that path within the same site
-   */
-  public String buildLink(String path) {
-    /*
-     * Because the link starts at '/', we assume that nothing encapsulated in requestPredicates (such as hostname,
-     * ports...) would affect it, except for pathToken (which is why pathToken is its own field).
-     */
-    StringBuilder link = new StringBuilder(path.length() + 32);
-
-    if (pathToken.isPresent()) {
-      link.append('/').append(pathToken.get());
-    }
-
-    if (!path.startsWith("/")) {
-      link.append('/');
-    }
-    link.append(path);
-
-    return link.toString();
-  }
-
   @Override
   public String toString() {
     return "SiteRequestScheme{" +
+        "hostName=" + hostName +
         "pathToken=" + pathToken +
         ", requestPredicates=" + requestPredicates +
         '}';
@@ -156,6 +144,7 @@ public class SiteRequestScheme implements SiteRequestPredicate {
 
     SiteRequestScheme that = (SiteRequestScheme) o;
 
+    if (!hostName.equals(that.hostName)) return false;
     if (!pathToken.equals(that.pathToken)) return false;
     if (!requestPredicates.equals(that.requestPredicates)) return false;
 
@@ -164,7 +153,8 @@ public class SiteRequestScheme implements SiteRequestPredicate {
 
   @Override
   public int hashCode() {
-    int result = pathToken.hashCode();
+    int result = hostName.hashCode();
+    result = 31 * result + pathToken.hashCode();
     result = 31 * result + requestPredicates.hashCode();
     return result;
   }

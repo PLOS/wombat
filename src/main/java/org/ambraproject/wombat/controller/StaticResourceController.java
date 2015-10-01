@@ -2,6 +2,7 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetService.AssetUrls;
@@ -56,7 +57,7 @@ public class StaticResourceController extends WombatController {
     return PathUtil.JOINER.join(targetTokens);
   }
 
-  @RequestMapping(value = {"/" + AssetUrls.RESOURCE_NAMESPACE + "/**", "/{site}/" + AssetUrls.RESOURCE_NAMESPACE + "/**"})
+  @RequestMapping(name = "staticResource", value = "/" + AssetUrls.RESOURCE_NAMESPACE + "/**")
   public void serveResource(HttpServletRequest request, HttpServletResponse response,
                             HttpSession session, @SiteParam Site site)
       throws IOException {

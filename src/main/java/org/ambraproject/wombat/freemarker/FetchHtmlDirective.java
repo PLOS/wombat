@@ -8,7 +8,7 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
-import org.ambraproject.wombat.controller.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.apache.commons.io.IOUtils;

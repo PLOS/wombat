@@ -14,9 +14,9 @@
 package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
-import org.mortbay.util.ajax.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +35,8 @@ public class ExternalContentController extends WombatController {
   private EditorialContentService editorialContentService;
 
   private final String REPO_KEY_PREFIX = "c";
-  @RequestMapping(value = {"/c/{pageName}", "/{site}/c/{pageName}"})
+
+  @RequestMapping(name = "externalContent", value = "/external/{pageName}")
   public String renderExternalContent(Model model, @SiteParam Site site, @PathVariable String pageName)
           throws IOException {
 

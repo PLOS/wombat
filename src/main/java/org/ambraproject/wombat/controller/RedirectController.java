@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,7 @@ import java.io.IOException;
 @Controller
 public class RedirectController extends WombatController {
 
-  @RequestMapping(value = {"/{site}/redirect/{sourcePage}"})
+  @RequestMapping(name = "redirect", value = "/redirect/{sourcePage}")
   public String render(Model model, @SiteParam Site site,
                        @PathVariable String sourcePage,
                        @RequestParam(value="defaultTarget", required = false) String defaultTarget)

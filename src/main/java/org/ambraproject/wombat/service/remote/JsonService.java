@@ -97,12 +97,20 @@ public class JsonService {
    * @throws IOException
    */
   private <T> T deserializeStream(Class<T> responseClass, Reader reader, Object source) throws IOException {
+    T value;
     try {
-      return gson.fromJson(reader, responseClass);
+      value = gson.fromJson(reader, responseClass);
     } catch (JsonSyntaxException e) {
-      String message = String.format("Could not deserialize %s from stream at: %s", responseClass.getName(), source);
+      String message = String.format("Could not deserialize %s from stream at: %s. Message: %s",
+          responseClass.getName(), source, e.getMessage());
       throw new RuntimeException(message, e);
     }
+    if (value == null) {
+      String message = String.format("Could not deserialize %s from null/empty stream at: %s",
+          responseClass.getName(), source);
+      throw new RuntimeException(message);
+    }
+    return value;
   }
 
 }

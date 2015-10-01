@@ -11,14 +11,7 @@
 
 </#macro>
 
-<#--Use this macro along with the wombat.yaml file to hide/show in-development features. DPRO-1548 -->
-<#macro enableDevFeature featureName>
-  <@isDevFeatureEnabled feature=featureName ; flag>
-    <#if flag == true>
-      <#nested/>
-    </#if>
-  </@isDevFeatureEnabled>
-</#macro>
+<#include "../macro/ifDevFeatureEnabled.ftl" />
 
 <head prefix="og: http://ogp.me/ns#">
   <title><@titleFormat removeTags(title) /></title>

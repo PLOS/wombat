@@ -120,7 +120,8 @@
       </form>
     </div>
   <section>
-  <@enableDevFeature 'searchFilters'>
+  <#include "../macro/ifDevFeatureEnabled.ftl" />
+  <@ifDevFeatureEnabled 'searchFilters'>
     <#if searchResults.numFound != 0>
       <#if searchFilters?? >
         <aside id="searchFilters">
@@ -140,7 +141,7 @@
         </aside>
       </#if>
     </#if>
-  </@enableDevFeature>
+  </@ifDevFeatureEnabled>
     <article>
       <#if searchResults.numFound == 0>
         <div class="search-results-none-found">

@@ -77,7 +77,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
 
   @Override
   public ImmutableSet<String> getEnabledDevFeatures() {
-    return ImmutableSet.copyOf(Objects.firstNonNull(input.enableDevFeatures, ImmutableSet.of("")));
+    return ImmutableSet.copyOf(Objects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
   }
 
   @Override

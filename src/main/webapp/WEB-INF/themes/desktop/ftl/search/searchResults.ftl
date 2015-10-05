@@ -130,9 +130,15 @@
               <h3>Journal</h3>
               <dl id="searchFilterByJournal">
                 <#assign journalFilter = searchFilters.journal />
-                <#list  journalFilter.cross_published_journal_name as journal>
-                  <#if !journal?first?lower_case?contains("collections") >
-                    <dt><a href="#">${journal?first} (${journal?last})</a></dt>
+                <#list  journalFilter.searchFilterResult as searchFilterItem>
+                  <#if !searchFilterItem.displayName?lower_case?contains("collections") >
+                    <dt>
+                      <a href="#"
+                         data-filter-param="${searchFilterItem.filterParamName}"
+                         data-filter-value="${searchFilterItem.filterValue}">
+                        ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
+                      </a>
+                    </dt>
                   </#if>
                 </#list>
               </dl>

@@ -518,8 +518,9 @@ public class SolrSearchService implements SearchService {
   @VisibleForTesting
   List<NameValuePair> buildFacetParams(String facetField, String query, boolean useDisMax) {
     List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("facet.field", facetField));
     params.add(new BasicNameValuePair("wt", "json"));
-    params.add(new BasicNameValuePair("json.nl", "arrarr"));
+    params.add(new BasicNameValuePair("json.nl", "map"));
     params.add(new BasicNameValuePair("fq", "doc_type:full"));
     params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
     params.add(new BasicNameValuePair("rows", "0"));
@@ -527,7 +528,6 @@ public class SolrSearchService implements SearchService {
     params.add(new BasicNameValuePair("facet", "true"));
     params.add(new BasicNameValuePair("facet.mincount", Integer.toString(MIN_FACET_COUNT)));
     params.add(new BasicNameValuePair("facet.limit", Integer.toString(MAX_FACET_SIZE)));
-    params.add(new BasicNameValuePair("facet.field", facetField));
 
     if (Strings.isNullOrEmpty(query)) {
       query = "*:*";
@@ -592,7 +592,7 @@ public class SolrSearchService implements SearchService {
   private Map<?, ?> facetedSearch(List<NameValuePair> params) throws IOException {
     Map<String, Map> rawResult = (Map<String, Map>) getRawResults(params);
     Map<String, Map> facetFields = (Map<String, Map>) rawResult.get("facet_counts").get("facet_fields");
-    return facetFields;
+    return facetFields.get(params.get(0).getValue()); //We expect facet field to be the first element of the list
   }
 
   private Map<?, ?> executeQuery(List<NameValuePair> params) throws IOException {

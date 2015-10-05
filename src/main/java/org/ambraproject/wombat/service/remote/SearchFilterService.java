@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
+import org.ambraproject.wombat.model.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -16,15 +17,23 @@ public class SearchFilterService {
   @Autowired
   private SearchService searchService;
 
-  private Map<String, Map<?, ?>> filters;
+  @Autowired
+  private SearchFilter searchFilter;
+
+  private final String JOURNAL = "journal";
+
+  private Map<String, SearchFilter> filters;
 
   private final String JOURNAL_FACET_FIELD = "cross_published_journal_name";
 
   public Map<?,?> getSimpleSearchFilters(String query, List<String> journalKeys, List<String> articleTypes,
       SearchService.SearchCriterion dateRange) throws IOException {
     filters = new HashMap<>();
-    filters.put("journal", searchService.simpleSearch(JOURNAL_FACET_FIELD, query, new ArrayList<String>(), articleTypes,
-        dateRange));
+    Map<?, ?> results = searchService.simpleSearch(JOURNAL_FACET_FIELD, query, new ArrayList<String>(), articleTypes,
+        dateRange);
+
+    SearchFilter journalFilter = searchFilter.parseFacetedSearchResult(results, JOURNAL);
+    filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;
   }
@@ -33,8 +42,10 @@ public class SearchFilterService {
       List<String> articleTypes, List<String> subjectList, SearchService.SearchCriterion dateRange) throws
       IOException {
     filters = new HashMap<>();
-    filters.put("journal", searchService.advancedSearch(JOURNAL_FACET_FIELD, query, new ArrayList<String>(), articleTypes,
-        subjectList, dateRange));
+    Map<?, ?> results = searchService.advancedSearch(JOURNAL_FACET_FIELD, query, new ArrayList<String>(), articleTypes,
+        subjectList, dateRange);
+    SearchFilter journalFilter = searchFilter.parseFacetedSearchResult(results, JOURNAL);
+    filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;
   }
@@ -42,8 +53,10 @@ public class SearchFilterService {
   public Map<?, ?> getSubjectSearchFilters(List<String> subjects, List<String> journalKeys,
       List<String> articleTypes, SearchService.SearchCriterion dateRange) throws IOException {
     filters = new HashMap<>();
-    filters.put("journal", searchService.subjectSearch(JOURNAL_FACET_FIELD, subjects, new ArrayList<String>(), articleTypes,
-        dateRange));
+    Map<?, ?> results = searchService.subjectSearch(JOURNAL_FACET_FIELD, subjects, new ArrayList<String>(), articleTypes,
+        dateRange);
+    SearchFilter journalFilter = searchFilter.parseFacetedSearchResult(results, JOURNAL);
+    filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;
   }
@@ -51,8 +64,10 @@ public class SearchFilterService {
   public Map<?, ?> getAuthorSearchFilters(String author, List<String> journalKeys,
       List<String> articleTypes, SearchService.SearchCriterion dateRange) throws IOException {
     filters = new HashMap<>();
-    filters.put("journal", searchService.authorSearch(JOURNAL_FACET_FIELD, author, new ArrayList<String>(), articleTypes,
-        dateRange));
+    Map<?, ?> results = searchService.authorSearch(JOURNAL_FACET_FIELD, author, new ArrayList<String>(), articleTypes,
+        dateRange);
+    SearchFilter journalFilter = searchFilter.parseFacetedSearchResult(results, JOURNAL);
+    filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;
   }

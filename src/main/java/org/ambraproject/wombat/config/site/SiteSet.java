@@ -144,6 +144,18 @@ public class SiteSet {
     return sites.values();
   }
 
+  /**
+   * @return a journal key for a requested journal name
+   */
+  public String getJournalKey(String journalName) {
+    for (Site site : sites.values()) {
+      if (journalName.equals(site.getJournalName())) {
+        return site.getJournalKey();
+      }
+    }
+    throw new UnmatchedSiteException("Journal name not matched to key: " + journalName);
+  }
+
   public ImmutableSet<String> getSiteKeys() {
     return sites.keySet();
   }

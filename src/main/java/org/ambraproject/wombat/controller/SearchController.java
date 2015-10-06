@@ -139,10 +139,9 @@ public class SearchController extends WombatController {
           getSingleParam(params, "filterStartDate", null), getSingleParam(params, "filterEndDate", null));
       journalKeys = parseJournals(site, params.get("filterJournals"), getSingleParam(params, "unformattedQuery", null));
 
-      //Journal name is identical between mobile and desktop sites, so the first site matched is sufficient
       filterJournalNames = new HashSet<>();
       for (String journalKey : journalKeys) {
-        filterJournalNames.add(siteSet.getSites(journalKey).get(0).getJournalName());
+        filterJournalNames.add(siteSet.getJournalNameFromKey(journalKey));
       }
       startDate = getSingleParam(params, "filterStartDate", null);
       endDate = getSingleParam(params, "filterEndDate", null);

@@ -10,7 +10,7 @@ public class JournalFilterType implements SearchFilterType {
 
   @Override
   public String getFilterValue(String value) {
-    return siteSet.getJournalKey(value);
+    return siteSet.getJournalKeyFromName(value);
   }
 
   @Override

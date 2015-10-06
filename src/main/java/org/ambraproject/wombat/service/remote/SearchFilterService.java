@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.model.SearchFilter;
+import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class SearchFilterService {
   private SearchService searchService;
 
   @Autowired
-  private SearchFilter searchFilter;
+  private SearchFilterFactory searchFilterFactory;
 
   private final String JOURNAL = "journal";
 
@@ -32,7 +33,7 @@ public class SearchFilterService {
     Map<?, ?> results = searchService.simpleSearch(JOURNAL_FACET_FIELD, query, new ArrayList<String>(), articleTypes,
         dateRange);
 
-    SearchFilter journalFilter = searchFilter.parseFacetedSearchResult(results, JOURNAL);
+    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
     filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;
@@ -44,7 +45,7 @@ public class SearchFilterService {
     filters = new HashMap<>();
     Map<?, ?> results = searchService.advancedSearch(JOURNAL_FACET_FIELD, query, new ArrayList<String>(), articleTypes,
         subjectList, dateRange);
-    SearchFilter journalFilter = searchFilter.parseFacetedSearchResult(results, JOURNAL);
+    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
     filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;
@@ -55,7 +56,7 @@ public class SearchFilterService {
     filters = new HashMap<>();
     Map<?, ?> results = searchService.subjectSearch(JOURNAL_FACET_FIELD, subjects, new ArrayList<String>(), articleTypes,
         dateRange);
-    SearchFilter journalFilter = searchFilter.parseFacetedSearchResult(results, JOURNAL);
+    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
     filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;
@@ -66,7 +67,7 @@ public class SearchFilterService {
     filters = new HashMap<>();
     Map<?, ?> results = searchService.authorSearch(JOURNAL_FACET_FIELD, author, new ArrayList<String>(), articleTypes,
         dateRange);
-    SearchFilter journalFilter = searchFilter.parseFacetedSearchResult(results, JOURNAL);
+    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
     filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;

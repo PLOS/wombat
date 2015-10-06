@@ -4,7 +4,7 @@
 .search-results-body {
   background-color: $clr-header;
   main {
-    @extend .width-full;  //from scaffold.scss
+    @extend .width-full; //from scaffold.scss
     margin-bottom: rem-calc($line-height-large);
     section {
       margin: 0 auto;
@@ -66,9 +66,9 @@
 
   }
 
-  option{
+  option {
     background: $grey-med-light;
-    color: black;
+    color: $black;
     outline: none;
   }
 
@@ -116,26 +116,26 @@
 .search-results-button-branded {
   @include search-results-button;
   @extend %brand-background;
-  }
+}
 
 .search-results-button-hover-branded {
   @extend .search-results-button-branded;
   &:hover {
     background-color: $plos-default;
-    }
   }
+}
 
 .search-results-button-branded-small {
   @include search-results-button($txt-size-small);
   @extend %brand-background;
-  }
+}
 
 .search-results-button-hover-branded-small {
   @extend .search-results-button-branded-small;
   &:hover {
     background-color: $plos-default;
-    }
   }
+}
 
 .search-results-button-gray-small {
   @extend .search-results-button-branded-small;
@@ -144,8 +144,8 @@
 
   &:hover {
     color: $white;
-    }
   }
+}
 
 $controls-gray: $grey-med-light;
 
@@ -155,7 +155,20 @@ $controls-gray: $grey-med-light;
   margin-bottom: rem-calc($line-height-medium);
   position: relative;
 
-  > form {
+  div {
+    color: $controls-gray;
+    font-size: $txt-size-small;
+  }
+  a {
+    color: $controls-gray;
+    text-decoration: underline;
+
+    &:hover {
+      color: $controls-gray;
+    }
+  }
+
+  form {
     //   margin: 0 auto;
     position: relative;
     display: block;
@@ -166,7 +179,7 @@ $controls-gray: $grey-med-light;
       margin-bottom: rem-calc($line-height-medium);
 
       .search-field {
-        @include plos-grid-column($pixelwidth: 760, $gutter: none);
+        width: 100%;
       }
 
       .search-button {
@@ -183,34 +196,35 @@ $controls-gray: $grey-med-light;
 
     button:focus {
       outline: none;
-      }
+    }
 
     legend, label {
       display: none;
-      }
+    }
     fieldset {
       border: none;
-      }
+    }
 
     fieldset.search-field {
       display: inline;
       border: none;
       margin: 0;
+      padding: $pad-small;
       background-color: $white;
-
-      }
+    }
 
     input[type="text"] {
       margin: 0;
+      padding: 0;
       border: none;
       outline: 0;
       display: inline-block;
-      width: rem-calc(700);
+      width: 95%;
       font-family: $font-face-fancy;
       font-size: $txt-size-xlarge;
       color: $clr-input-active;
       top: 0 !important;
-      }
+    }
     @include input-placeholder-color();
 
     button[type="submit"] {
@@ -225,12 +239,12 @@ $controls-gray: $grey-med-light;
         @extend .fa;
         @extend .fa-search;
         font-size: rem-calc($txt-size-xlarge);
-        }
       }
+    }
 
     .search-results-flush-left {
       margin-left: 0;
-      }
+    }
 
     .search-results-controls-second-row {
       padding-bottom: $pad-default;
@@ -238,74 +252,63 @@ $controls-gray: $grey-med-light;
 
     .search-results-advanced-search-submit {
       float: right;
-      line-height: rem-calc(15); //?
-      }
-    }
-
-    .search-results-disabled-message {
-      width: rem-calc(350);
-      line-height: rem-calc(15);
-      display: inline-block;
-      color: $controls-gray;
-      font-size: $txt-size-small;
-
-      a {
-        color: $controls-gray;
-        text-decoration: underline;
-
-        &:hover {
-          color: $controls-gray;
-        }
-      }
+      padding-top: $pad-xsmall;
     }
   }
+
+  .search-results-disabled-message {
+    width: rem-calc(350);
+    line-height: rem-calc(15);
+    display: inline-block;
+  }
+
+}
 
 .search-results-none-found {
   padding: rem-calc(30 0 30 40);
 
   p {
     font-size: $txt-size-xlarge;
-    }
+  }
 
   span {
     font-weight: bold;
-    }
   }
+}
 
 .search-results-num-found {
   font-size: $txt-size-medium-large;
 
   span {
     font-weight: bold;
-    }
   }
-
+}
 
 .search-results-list {
   margin: rem-calc($line-height-small 0 $line-height-large);
   dd, dt {
     display: block;
     line-height: $line-height;
-    }
+  }
   dt {
     margin-bottom: rem-calc($line-height-xsmall);
-    }
+  }
   p {
     margin-bottom: rem-calc($line-height-xsmall);
-    }
   }
+}
 
 .search-results-title {
   padding-bottom: rem-calc(0);
   padding-top: $line-height;
 
-  }
+}
 
 .search-results-title a {
   @include link-text($color: $grey-dark, $color-hover: $plos-default, $decoration-hover: underline,
   $decoration-text: underline);
   font-size: $txt-size-medium-large;
-  }
+}
 
 .search-results-authors {
   color: $grey-med-dark;
@@ -336,7 +339,7 @@ $pagination-height: 24px;
   padding: rem-calc(0 6px);
   min-width: rem-calc(16px);
   border-radius: $default-border-radius;
-  }
+}
 
 .number, .switch, .skip {
   @include search-results-rounded-control;
@@ -363,7 +366,7 @@ $pagination-height: 24px;
   padding: 0;
   .icon-text {
     @extend .aria-text;
-    }
+  }
 
   // Hide the text that is embedded and display an icon instead.
   .icon:before {
@@ -371,25 +374,25 @@ $pagination-height: 24px;
     line-height: $pagination-height;
     white-space: nowrap;
     color: $white;
-    }
   }
+}
 
 .previous-page {
   .icon:before {
     @extend .icon-caret-left;
     margin-left: -2px;
-    }
   }
+}
 
 .next-page {
   .icon:before {
     @extend .icon-caret-right;
-    }
   }
+}
 
 .active {
   @extend %brand-background;
-  }
+}
 
 .search-results-num-per-page {
   display: inline-block;
@@ -423,7 +426,7 @@ $pagination-height: 24px;
     margin-left: 0.8em;
     margin-right: 0.6em;
     background: image-url("icon-ExpOfConcern-retraction.png") no-repeat;
-    }
+  }
 
   a {
     color: $warning;
@@ -431,14 +434,14 @@ $pagination-height: 24px;
     text-decoration: underline;
     font-weight: bold;
     padding-bottom: rem-calc(20);
-    }
   }
+}
 
 .search-results-alm, .search-results-alm-error {
   display: none;
   font-weight: bold;
   font-size: $txt-size-xxsmall;
-  }
+}
 
 .icon-warning-stack {
 
@@ -448,12 +451,12 @@ $pagination-height: 24px;
 
   .icon-warning {
     color: $alert;
-    }
+  }
   .fa-exclamation {
     color: $black;
     font-size: $txt-size-xxxsmall;
-    }
   }
+}
 
 .filter-block {
   padding-top: $pad-small;
@@ -474,7 +477,7 @@ $pagination-height: 24px;
   line-height: $line-height-medium;
   float: left;
   color: $white;
-  background: $grey-blah;
+  background: $grey-med-dark;
   font-weight: bold;
   margin-right: $pad-xsmall;
   margin-bottom: $pad-xsmall;

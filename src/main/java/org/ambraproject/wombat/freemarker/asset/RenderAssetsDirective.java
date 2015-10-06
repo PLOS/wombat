@@ -21,8 +21,9 @@ import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.controller.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.util.PathUtil;
@@ -79,16 +80,17 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
     assetNodes.clear(); // Reset in case new assets get put in for a second render
 
     if (assetPaths != null && !assetPaths.isEmpty()) {
+      SitePageContext sitePageContext = new SitePageContext(siteResolver, environment);
       if (runtimeConfiguration.getCompiledAssetDir() == null) {
         for (String assetPath : assetPaths) {
-          String assetAddress = new SitePageContext(siteResolver, environment).buildLink(assetPath);
+          String assetAddress = Link.toLocalSite(sitePageContext.getSite()).toPath(assetPath).get(sitePageContext.getRequest());
           environment.getOut().write(getHtml(assetAddress));
         }
       } else {
-        Site site = new SitePageContext(siteResolver, environment).getSite();
+        Site site = sitePageContext.getSite();
         String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site);
-        String assetAddress = site.getRequestScheme().buildLink(request,
-            PathUtil.JOINER.join(AssetService.AssetUrls.RESOURCE_NAMESPACE, assetLink));
+        String path = PathUtil.JOINER.join(AssetService.AssetUrls.RESOURCE_NAMESPACE, assetLink);
+        String assetAddress = Link.toLocalSite(site).toPath(path).get(request);
         environment.getOut().write(getHtml(assetAddress));
       }
     }

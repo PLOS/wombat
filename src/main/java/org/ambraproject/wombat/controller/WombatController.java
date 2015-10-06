@@ -17,23 +17,9 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.site.UnresolvedSiteException;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.Header;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.MissingServletRequestParameterException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
@@ -48,61 +34,6 @@ import static org.ambraproject.wombat.util.ReproxyUtil.X_REPROXY_URL;
  * Base class with common functionality for all controllers in the application.
  */
 public abstract class WombatController {
-
-  private static final Logger log = LoggerFactory.getLogger(WombatController.class);
-
-  @Autowired
-  protected SiteSet siteSet;
-  @Autowired
-  private SiteResolver siteResolver;
-
-  /**
-   * Handler invoked for all uncaught exceptions.  Renders a "nice" 500 page.
-   *
-   * @param exception uncaught exception
-   * @param request   HttpServletRequest
-   * @param response  HttpServletResponse
-   * @return ModelAndView specifying the view
-   * @throws IOException
-   */
-  @ExceptionHandler(Exception.class)
-  protected ModelAndView handleException(Exception exception, HttpServletRequest request, HttpServletResponse response)
-      throws IOException {
-    log.error("handleException", exception);
-    response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-    Site site = siteResolver.resolveSite(request);
-
-    // For some reason, methods decorated with @ExceptionHandler cannot accept Model parameters,
-    // unlike @RequestMapping methods.  So this is a little different...
-    String viewName = (site == null) ? "//error" : (site.getKey() + "/ftl/error");
-    ModelAndView mav = new ModelAndView(viewName);
-
-    StringWriter stackTrace = new StringWriter();
-    exception.printStackTrace(new PrintWriter(stackTrace));
-    mav.addObject("stackTrace", stackTrace.toString());
-
-    return mav;
-  }
-
-  @ExceptionHandler(UnresolvedSiteException.class)
-  protected String handleUnresolvedSite(HttpServletResponse response) {
-    response.setStatus(HttpStatus.NOT_FOUND.value());
-    return "//notFound";
-  }
-
-  /**
-   * Directs unhandled exceptions that indicate an invalid URL to a 404 page.
-   *
-   * @param request  HttpServletRequest
-   * @param response HttpServletResponse
-   * @return ModelAndView specifying the view
-   */
-  @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class, NotVisibleException.class})
-  protected String handleNotFound(HttpServletRequest request, HttpServletResponse response) {
-    response.setStatus(HttpStatus.NOT_FOUND.value());
-    Site site = siteResolver.resolveSite(request);
-    return (site == null) ? "//notFound" : (site.getKey() + "/ftl/notFound");
-  }
 
   /**
    * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user

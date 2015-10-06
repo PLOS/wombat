@@ -11,12 +11,14 @@
 
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
 import java.util.Collection;
+
 
 /**
  * Interface that represents configurable values that are only known at server startup time.
@@ -78,6 +80,11 @@ public interface RuntimeConfiguration {
   URL getSolrServer();
 
   /**
+   * @return the set of enabled dev features, configured in wombat.yaml.
+   */
+  ImmutableSet<String> getEnabledDevFeatures();
+
+  /**
    * Parse the user-defined themes.
    *
    * @param internalThemes constant themes provided by the webapp
@@ -110,4 +117,5 @@ public interface RuntimeConfiguration {
   }
 
   CasConfiguration getCasConfiguration();
+
 }

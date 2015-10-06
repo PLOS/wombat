@@ -119,6 +119,28 @@
       </form>
     </div>
   <section>
+  <#include "../macro/ifDevFeatureEnabled.ftl" />
+  <@ifDevFeatureEnabled 'searchFilters'>
+    <#if searchResults.numFound != 0>
+      <#if searchFilters?? >
+        <aside id="searchFilters">
+          <#if searchFilters.journal??>
+            <div>
+              <h3>Journal</h3>
+              <dl id="searchFilterByJournal">
+                <#assign journalFilter = searchFilters.journal />
+                <#list  journalFilter.cross_published_journal_name as journal>
+                  <#if !journal?first?lower_case?contains("collections") >
+                    <dt><a href="#">${journal?first} (${journal?last})</a></dt>
+                  </#if>
+                </#list>
+              </dl>
+            </div>
+          </#if>
+        </aside>
+      </#if>
+    </#if>
+  </@ifDevFeatureEnabled>
     <article>
       <#if searchResults.numFound == 0>
         <div class="search-results-none-found">

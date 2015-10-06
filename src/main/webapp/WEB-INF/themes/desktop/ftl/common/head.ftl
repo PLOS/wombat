@@ -11,6 +11,7 @@
 
 </#macro>
 
+<#include "../macro/ifDevFeatureEnabled.ftl" />
 
 <head prefix="og: http://ogp.me/ns#">
   <title><@titleFormat removeTags(title) /></title>

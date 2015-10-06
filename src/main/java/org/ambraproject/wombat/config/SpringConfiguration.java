@@ -22,15 +22,17 @@ import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
-import org.ambraproject.wombat.controller.SiteResolver;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
+import org.ambraproject.wombat.freemarker.IsDevFeatureEnabledDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
@@ -87,8 +89,18 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public IsDevFeatureEnabledDirective isDevFeatureEnabledDirective() {
+    return new IsDevFeatureEnabledDirective();
+  }
+
+  @Bean
   public SiteResolver siteResolver() {
     return new SiteResolver();
+  }
+
+  @Bean
+  public RequestHandlerPatternDictionary handlerDirectory() {
+    return new RequestHandlerPatternDictionary();
   }
 
   @Bean
@@ -123,6 +135,7 @@ public class SpringConfiguration {
 
   @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
+                                           IsDevFeatureEnabledDirective isDevFeatureEnabledDirective,
                                            SiteLinkDirective siteLinkDirective,
                                            RenderCssLinksDirective renderCssLinksDirective,
                                            RenderJsDirective renderJsDirective,
@@ -143,6 +156,7 @@ public class SpringConfiguration {
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("randomInteger", new RandomIntegerDirective());
     variables.put("siteLink", siteLinkDirective);
+    variables.put("isDevFeatureEnabled", isDevFeatureEnabledDirective);
     variables.put("cssLink", new CssLinkDirective());
     variables.put("renderCssLinks", renderCssLinksDirective);
     variables.put("js", new JsDirective());

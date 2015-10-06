@@ -12,7 +12,9 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.base.Charsets;
+import com.google.common.base.Objects;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableSet;
 import com.google.gson.GsonBuilder;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
@@ -71,6 +73,11 @@ public class YamlConfiguration implements RuntimeConfiguration {
   @Override
   public URL getSolrServer() {
     return buildUrl(input.solrServer, "http://localhost:8983/solr/select/");
+  }
+
+  @Override
+  public ImmutableSet<String> getEnabledDevFeatures() {
+    return ImmutableSet.copyOf(Objects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
   }
 
   @Override
@@ -227,6 +234,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String server;
     private String solrServer;
     private String compiledAssetDir;
+    private List<String> enableDevFeatures;
     private List<Map<String, ?>> themes;
     private List<Map<String, ?>> sites;
 
@@ -256,6 +264,14 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setCompiledAssetDir(String compiledAssetDir) {
       this.compiledAssetDir = compiledAssetDir;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setEnableDevFeatures(List<String> enableDevFeatures) {
+      this.enableDevFeatures = enableDevFeatures;
     }
 
     /**

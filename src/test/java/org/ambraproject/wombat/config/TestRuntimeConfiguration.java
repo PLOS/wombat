@@ -12,6 +12,7 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
@@ -47,6 +48,9 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public URL getSolrServer() {
     return null;
   }
+
+  @Override
+  public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
 
   @Override
   public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {

@@ -4,3 +4,6 @@ contentRepoKeyPrefix: s
 
 cacheTtl: null
 # If this is non-null, cache the written HTML for this many seconds.
+
+homeRepoKey: homepage
+# repo key used for site content home page

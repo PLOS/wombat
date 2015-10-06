@@ -1,5 +1,13 @@
+
+/**
+ *
+ * DEPENDENCY: resource/js/components/show_onscroll
+ *
+ */
 (function ($) {
   var $win = $(window);
+
+
   $.fn.floatingNav = function (options) {
     var defaults = {
       margin: 90,
@@ -36,13 +44,14 @@
       // traversal of the nav
       $('ul.' + opts.ul_class + ' li:not(.' + opts.class_active + ') ul').hide();
 
-      $('html,body').animate(
-        {scrollTop: $('#' + this.hash.substring(1)).offset().top}, opts.scroll_speed,
-        function () {
+      var scrollLocation = '#' + this.hash.substring(1);
+      $(scrollLocation).scrollTo(event,{
+        callback: function () {
           isAutoScrolling = false;
           showActiveSublist();
-        }
-      );
+        },
+        changeUrl: true
+      });
     }
 
     function showActiveSublist() {

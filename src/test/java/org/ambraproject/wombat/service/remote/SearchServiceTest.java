@@ -7,6 +7,7 @@ import com.google.common.collect.SetMultimap;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.util.MockSiteUtil;
 import org.apache.http.NameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -200,10 +201,9 @@ public class SearchServiceTest extends AbstractTestNGSpringContextTests {
     searchResults.put("docs", docs);
     MockHttpServletRequest request = new MockHttpServletRequest();
     request.setContextPath("someContextPath");
-    List<Site> sites = siteSet.getSites("journal2Key");
-    assertEquals(sites.size(), 1);  // For the purposes of this test
+    Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal2Key");
 
-    Map<?, ?> actual = searchServiceForTest.addArticleLinks(searchResults, request, sites.get(0), siteSet);
+    Map<?, ?> actual = searchServiceForTest.addArticleLinks(searchResults, request, site, siteSet);
     List<Map> actualDocs = (List) actual.get("docs");
     assertEquals(actualDocs.size(), 1);
     Map actualDoc = (Map) actualDocs.get(0);

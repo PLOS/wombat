@@ -45,8 +45,7 @@
             <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}" value="${query}" required />
             <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
           </fieldset>
-            <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">advanced</a>
-
+               <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">advanced</a>
         </div>
 
         <div class="search-results-controls-second-row">

@@ -43,7 +43,7 @@ import org.ambraproject.wombat.freemarker.asset.JsDirective;
 import org.ambraproject.wombat.freemarker.asset.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.asset.RenderJsDirective;
 import org.ambraproject.wombat.model.JournalFilterType;
-import org.ambraproject.wombat.model.SearchFilter;
+import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SearchFilterType;
 import org.ambraproject.wombat.model.SearchFilterTypeMap;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
@@ -196,7 +196,7 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public SearchFilter searchFilter() { return new SearchFilter(); }
+  public SearchFilterFactory searchFilterFactory() { return new SearchFilterFactory(); }
 
   @Bean
   public SearchFilterService searchFilterService() {

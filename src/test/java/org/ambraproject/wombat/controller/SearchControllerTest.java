@@ -4,6 +4,7 @@ import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.util.MockSiteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -32,7 +33,7 @@ public class SearchControllerTest extends AbstractTestNGSpringContextTests {
     params.put("page", Collections.singletonList("7"));
     params.put("filterSubjects", Arrays.asList("subject1", "subject2"));
 
-    Site site = siteSet.getSites("journal1Key").get(0);
+    Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal1Key");
     SearchController.CommonParams commonParams = new SearchController.CommonParams(siteSet, site);
     commonParams.parseParams(params);
 

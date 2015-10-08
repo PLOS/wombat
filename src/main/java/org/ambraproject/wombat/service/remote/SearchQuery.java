@@ -46,7 +46,7 @@ public class SearchQuery {
   private final ImmutableMap<String, String> rawParameters;
 
   private SearchQuery(Builder builder) {
-    this.query = Optional.fromNullable(builder.query);
+    this.query = getQueryString(builder.query);
     this.isSimple = builder.isSimple;
     this.isForRawResults = builder.isForRawResults;
     this.facet = Optional.fromNullable(builder.facet);
@@ -58,6 +58,11 @@ public class SearchQuery {
     this.subjects = ImmutableList.copyOf(builder.subjects);
     this.dateRange = Optional.fromNullable(builder.dateRange);
     this.rawParameters = ImmutableMap.copyOf(builder.rawParameters);
+  }
+
+  private static Optional<String> getQueryString(String query) {
+    // Treat empty string as absent query, which will be sent to Solr as "*:*"
+    return Strings.isNullOrEmpty(query) ? Optional.<String>absent() : Optional.of(query);
   }
 
   @VisibleForTesting

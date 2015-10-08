@@ -45,15 +45,13 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
   private static List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,
                                                        int rows, SolrSearchService.SearchCriterion sortOrder,
                                                        boolean forHomePage) {
-    SearchQuery.Builder queryObj = SearchQuery.builder()
+    return SearchQuery.builder()
+        .setQuery(query)
         .setSimple(useDisMax)
         .setStart(start)
         .setRows(rows)
-        .setSortOrder(sortOrder);
-    if (!query.isEmpty()) {
-      queryObj = queryObj.setQuery(query);
-    }
-    return queryObj.build().buildParameters();
+        .setSortOrder(sortOrder)
+        .build().buildParameters();
   }
 
   @Test
@@ -86,13 +84,11 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
   }
 
   private List<NameValuePair> buildFacetParams(String facetField, String query, boolean useDisMax) {
-    SearchQuery.Builder queryObj = SearchQuery.builder()
+    return SearchQuery.builder()
         .setFacet(facetField)
-        .setSimple(useDisMax);
-    if (!query.isEmpty()) {
-      queryObj = queryObj.setQuery(query);
-    }
-    return queryObj.build().buildParameters();
+        .setQuery(query)
+        .setSimple(useDisMax)
+        .build().buildParameters();
   }
 
   @Test

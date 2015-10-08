@@ -58,21 +58,20 @@ public class SearchController extends WombatController {
   private SearchFilterService searchFilterService;
 
   /**
-   * Class that encapsulates the parameters that are shared across many different search types.
-   * For example, a subject search and an advanced search will have many parameters in common,
-   * such as sort order, date range, page, results per page, etc.  This class eliminates the
-   * need to have long lists of @RequestParam parameters duplicated across many controller
-   * methods.
+   * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
+   * search and an advanced search will have many parameters in common, such as sort order, date range, page, results
+   * per page, etc.  This class eliminates the need to have long lists of @RequestParam parameters duplicated across
+   * many controller methods.
    * <p/>
-   * This class also contains logic having to do with which parameters take precedence
-   * over others, defaults when parameters are absent, and the like.
+   * This class also contains logic having to do with which parameters take precedence over others, defaults when
+   * parameters are absent, and the like.
    */
   @VisibleForTesting
   static final class CommonParams {
 
     /**
-     * The number of the first desired result (zero-based) that will be passed to solr.
-     * Calculated from the page and resultsPerPage URL parameters.
+     * The number of the first desired result (zero-based) that will be passed to solr. Calculated from the page and
+     * resultsPerPage URL parameters.
      */
     int start;
 
@@ -110,7 +109,7 @@ public class SearchController extends WombatController {
      * Constructor.
      *
      * @param siteSet siteSet associated with the request
-     * @param site site of the request
+     * @param site    site of the request
      */
     CommonParams(SiteSet siteSet, Site site) {
       this.siteSet = siteSet;
@@ -118,8 +117,8 @@ public class SearchController extends WombatController {
     }
 
     /**
-     * Extracts parameters from the raw parameter map, and performs some logic related to what
-     * parameters take precedence and default values when ones aren't present.
+     * Extracts parameters from the raw parameter map, and performs some logic related to what parameters take
+     * precedence and default values when ones aren't present.
      *
      * @param params
      * @throws IOException
@@ -154,11 +153,11 @@ public class SearchController extends WombatController {
     }
 
     /**
-     * Adds parameters (and derived values) back to the model needed for results page rendering.
-     * This only adds model attributes that are shared amongst different types of searches; it is
-     * the caller's responsibility to add the search results and any other data needed.
+     * Adds parameters (and derived values) back to the model needed for results page rendering. This only adds model
+     * attributes that are shared amongst different types of searches; it is the caller's responsibility to add the
+     * search results and any other data needed.
      *
-     * @param model model that will be passed to the template
+     * @param model   model that will be passed to the template
      * @param request HttpServletRequest
      */
     void addToModel(Model model, HttpServletRequest request) {
@@ -193,13 +192,13 @@ public class SearchController extends WombatController {
     }
 
     /**
-     * Determines which publication dates to filter by in the search.
-     * If no dates are input, a default date range of All Time will be used.
-     * Mobile search only provides the enumerated dateRangeParam field, while desktop search provides
+     * Determines which publication dates to filter by in the search. If no dates are input, a default date range of All
+     * Time will be used. Mobile search only provides the enumerated dateRangeParam field, while desktop search provides
      * explicit fields for start and end dates. The parameters are mutually exclusive.
+     *
      * @param dateRangeParam mobile date range enumeration value
-     * @param startDate desktop start date value
-     * @param endDate desktop end date value
+     * @param startDate      desktop start date value
+     * @param endDate        desktop end date value
      * @return A generic @SearchCriterion object used by Solr
      */
     private SolrSearchService.SearchCriterion parseDateRange(String dateRangeParam, String startDate, String endDate) {
@@ -216,13 +215,12 @@ public class SearchController extends WombatController {
     /**
      * Determines what journal keys to use in the search.
      *
-     * @param site the site the request is associated with
-     * @param journalParams journal keys passed as URL parameters, if any
+     * @param site             the site the request is associated with
+     * @param journalParams    journal keys passed as URL parameters, if any
      * @param unformattedQuery the value of the unformattedQuery param (used in advanced search)
-     * @return if unformattedQuery is non-empty, and journalParams is empty, or the first journalParam
-     *     is "all", all journal keys will be returned.
-     *     Otherwise, if journalParams is non-empty, those will be returned; otherwise
-     *     the current site's journal key will be returned.
+     * @return if unformattedQuery is non-empty, and journalParams is empty, or the first journalParam is "all", all
+     * journal keys will be returned. Otherwise, if journalParams is non-empty, those will be returned; otherwise the
+     * current site's journal key will be returned.
      */
     private List<String> parseJournals(Site site, List<String> journalParams, String unformattedQuery) {
 
@@ -245,7 +243,8 @@ public class SearchController extends WombatController {
 
     /**
      * subject is a mobile-only parameter, while subjects is a desktop-only parameter
-     * @param subject mobile subject area value
+     *
+     * @param subject  mobile subject area value
      * @param subjects desktop list of subject area values
      * @return singleton list of subject if subjects is null or empty, else return subjects
      */
@@ -278,15 +277,15 @@ public class SearchController extends WombatController {
    * Performs a "simple" search, where the q parameter's value is a single search term.
    *
    * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
-   * @param params all URL parameters
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
    * @return String indicating template location
    * @throws IOException
    */
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume"})
   public String simpleSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
+                             @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
@@ -304,19 +303,19 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Performs an "advanced" search, where the unformattedQuery parameter may have a boolean combination
-   * of search terms.  The form that generates this URL is still served by ambra.
+   * Performs an "advanced" search, where the unformattedQuery parameter may have a boolean combination of search terms.
+   * The form that generates this URL is still served by ambra.
    *
    * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
-   * @param params all URL parameters
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
    * @return String indicating template location
    * @throws IOException
    */
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
+                               @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
@@ -341,41 +340,40 @@ public class SearchController extends WombatController {
   // the corresponding parameters are present, and do not have a value of the empty string.
 
   /**
-   * Searches for an article having the given doi (the value of the id parameter).  If the DOI
-   * exists for any journal, this method will redirect to the article.  Otherwise, an empty
-   * search results page will be rendered.
+   * Searches for an article having the given doi (the value of the id parameter).  If the DOI exists for any journal,
+   * this method will redirect to the article.  Otherwise, an empty search results page will be rendered.
    *
    * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
-   * @param doi identifies the article
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param doi     identifies the article
    * @return String indicating template location
    * @throws IOException
    */
   @RequestMapping(name = "doiSearch", value = "/search", params = {"id!="})
   public String doiSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam(value = "id", required = true) String doi) throws IOException {
+                          @RequestParam(value = "id", required = true) String doi) throws IOException {
     Map<?, ?> searchResults = solrSearchService.lookupArticleByDoi(doi);
     return renderSingleResult(searchResults, "doi:" + doi, request, model, site);
   }
 
   /**
-   * Searches for an article having the given eLocationId from the given journal.  Note that eLocationIds
-   * are only unique within journals, so both parameters are necessary.  If the article is found, this
-   * method will redirect to it; otherwise an empty search results page will be rendered.
+   * Searches for an article having the given eLocationId from the given journal.  Note that eLocationIds are only
+   * unique within journals, so both parameters are necessary.  If the article is found, this method will redirect to
+   * it; otherwise an empty search results page will be rendered.
    *
-   * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
+   * @param request     HttpServletRequest
+   * @param model       model that will be passed to the template
+   * @param site        site the request originates from
    * @param eLocationId identifies the article in a journal
-   * @param journal journal to search within
+   * @param journal     journal to search within
    * @return String indicating template location
    * @throws IOException
    */
   @RequestMapping(name = "eLocationSearch", value = "/search", params = {"eLocationId!="})
   public String eLocationSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam(value = "eLocationId", required = true) String eLocationId,
-      @RequestParam(value = "filterJournals", required = true) String journal) throws IOException {
+                                @RequestParam(value = "eLocationId", required = true) String eLocationId,
+                                @RequestParam(value = "filterJournals", required = true) String journal) throws IOException {
     Map<?, ?> searchResults = solrSearchService.lookupArticleByELocationId(eLocationId, journal);
     return renderSingleResult(searchResults, "elocation_id:" + eLocationId, request, model, site);
   }
@@ -384,15 +382,15 @@ public class SearchController extends WombatController {
    * Renders either an article page, or an empty search results page.
    *
    * @param searchResults deserialized JSON that should be either empty, or contain a single article
-   * @param searchTerm the search term (suitable for display) that was input
-   * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
+   * @param searchTerm    the search term (suitable for display) that was input
+   * @param request       HttpServletRequest
+   * @param model         model that will be passed to the template
+   * @param site          site the request originates from
    * @return String indicating template location
    * @throws IOException
    */
   private String renderSingleResult(Map<?, ?> searchResults, String searchTerm, HttpServletRequest request, Model model,
-      Site site) throws IOException {
+                                    Site site) throws IOException {
     int numFound = ((Double) searchResults.get("numFound")).intValue();
     if (numFound > 1) {
       throw new IllegalStateException("Valid DOIs should return exactly one article");
@@ -411,9 +409,9 @@ public class SearchController extends WombatController {
    * Renders an empty search results page.
    *
    * @param searchResults empty search results.  If null, one will be constructed.
-   * @param searchTerm the search term (suitable for display) that was input
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
+   * @param searchTerm    the search term (suitable for display) that was input
+   * @param model         model that will be passed to the template
+   * @param site          site the request originates from
    * @return String indicating template location
    */
   private String renderEmptyResults(Map searchResults, String searchTerm, Model model, Site site) {

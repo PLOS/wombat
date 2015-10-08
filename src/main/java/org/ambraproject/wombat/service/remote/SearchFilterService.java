@@ -27,45 +27,37 @@ public class SearchFilterService {
 
   public Map<?,?> getSimpleSearchFilters(String query, List<String> journalKeys, List<String> articleTypes,
       SearchService.SearchCriterion dateRange) throws IOException {
-    Map<String, SearchFilter> filters = new HashMap<>();
-    Map<?, ?> results = searchService.simpleSearch(JOURNAL_FACET_FIELD, query, new ArrayList<String>(), articleTypes,
-        dateRange);
+    SearchQuery.Builder queryObj = SearchQuery.builder()
+        .setQuery(query)
+        .setFacet(JOURNAL_FACET_FIELD)
+        .setSimple(true)
+        .setArticleTypes(articleTypes)
+        .setDateRange(dateRange);
+
+    Map<?, ?> results = searchService.search(queryObj.build());
 
     SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
+    Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;
   }
 
-  public Map<?, ?> getAdvancedSearchFilers(String query, List<String> journalKeys,
-      List<String> articleTypes, List<String> subjectList, SearchService.SearchCriterion dateRange) throws
+  public Map<?, ?> getAdvancedSearchFilters(String query, List<String> journalKeys,
+                                            List<String> articleTypes, List<String> subjectList, SearchService.SearchCriterion dateRange) throws
       IOException {
-    Map<String, SearchFilter> filters = new HashMap<>();
-    Map<?, ?> results = searchService.advancedSearch(JOURNAL_FACET_FIELD, query, new ArrayList<String>(), articleTypes,
-        subjectList, dateRange);
-    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
-    filters.put(JOURNAL, journalFilter);
-    // TODO: add other filters here
-    return filters;
-  }
+    SearchQuery.Builder queryObj = SearchQuery.builder()
+        .setFacet(JOURNAL_FACET_FIELD)
+        .setQuery(query)
+        .setSimple(false)
+        .setArticleTypes(articleTypes)
+        .setSubjects(subjectList)
+        .setDateRange(dateRange);
 
-  public Map<?, ?> getSubjectSearchFilters(List<String> subjects, List<String> journalKeys,
-      List<String> articleTypes, SearchService.SearchCriterion dateRange) throws IOException {
-    Map<String, SearchFilter> filters = new HashMap<>();
-    Map<?, ?> results = searchService.subjectSearch(JOURNAL_FACET_FIELD, subjects, new ArrayList<String>(), articleTypes,
-        dateRange);
-    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
-    filters.put(JOURNAL, journalFilter);
-    // TODO: add other filters here
-    return filters;
-  }
+    Map<?, ?> results = searchService.search(queryObj.build());
 
-  public Map<?, ?> getAuthorSearchFilters(String author, List<String> journalKeys,
-      List<String> articleTypes, SearchService.SearchCriterion dateRange) throws IOException {
-    Map<String, SearchFilter> filters = new HashMap<>();
-    Map<?, ?> results = searchService.authorSearch(JOURNAL_FACET_FIELD, author, new ArrayList<String>(), articleTypes,
-        dateRange);
     SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
+    Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;

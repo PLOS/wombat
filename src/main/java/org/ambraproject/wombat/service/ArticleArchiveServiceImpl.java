@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.service.remote.SearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -61,9 +62,13 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
     SolrSearchService.SolrExplicitDateRange dateRange = new SolrSearchService.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
-    Map<String, Map> searchResult = (Map<String, Map>) solrSearchService.simpleSearch("",
-        Collections.singletonList(site.getJournalKey()), new ArrayList<String>(), 0, 1000000,
-        SolrSearchService.SolrSortOrder.DATE_OLDEST_FIRST, dateRange);
+    SearchQuery.Builder query = SearchQuery.builder()
+        .setJournalKeys(Collections.singletonList(site.getJournalKey()))
+        .setStart(0)
+        .setRows(1000000)
+        .setSortOrder(SolrSearchService.SolrSortOrder.DATE_OLDEST_FIRST)
+        .setDateRange(dateRange);
+    Map<String, Map> searchResult = (Map<String, Map>) solrSearchService.search(query.build());
     return searchResult;
   }
 }

@@ -18,10 +18,9 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.util.ListUtil;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
@@ -208,153 +207,14 @@ public class SolrSearchService implements SearchService {
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public Map<?, ?> simpleSearch(String query, List<String> journalKeys, List<String> articleTypes,
-      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(query, true, start, rows, sortOrder, false);
-    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
-    return executeQuery(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> simpleSearch(String facetField, String query, List<String> journalKeys, List<String> articleTypes,
-      SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, query, true);
-    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
-    return facetedSearch(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> simpleSearch(String query, List<String> journalKeys, List<String> articleTypes,
-      int start, int rows, SearchCriterion sortOrder, SearchCriterion dateRange, Map<String, String> rawQueryParams)
-      throws IOException {
-
-    List<NameValuePair> params = buildCommonParams(query, true, start, rows, sortOrder, false,
-        rawQueryParams);
-    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
-    return getRawResults(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> advancedSearch(String query, List<String> journalKeys, List<String> articleTypes,
-      List<String> subjectList, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(query, false, start, rows, sortOrder, false);
-    setQueryFilters(params, journalKeys, articleTypes, subjectList, dateRange);
-    return executeQuery(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> advancedSearch(String facetField, String query, List<String> journalKeys,
-      List<String> articleTypes, List<String> subjectList, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, query, false);
-    setQueryFilters(params, journalKeys, articleTypes, subjectList, dateRange);
-    return facetedSearch(params);
-  }
-
-  public
-  @VisibleForTesting
-  static String buildSubjectClause(List<String> subjects) {
-    List<String> quotedSubjects = new ArrayList<>();
-    for (String subject : subjects) {
-      StringBuilder sb = new StringBuilder();
-      sb.append("subject:\"");
-      sb.append(subject);
-      sb.append('"');
-      quotedSubjects.add(sb.toString());
-    }
-    return Joiner.on(" AND ").join(quotedSubjects);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> subjectSearch(List<String> subjects, List<String> journalKeys, int start, int rows,
-      SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams("*:*", false, start, rows, sortOrder, false);
-    setQueryFilters(params, journalKeys, new ArrayList<String>(), subjects, dateRange);
-    return executeQuery(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> subjectSearch(String facetField, List<String> subjects, List<String> journalKeys,
-      List<String> articleTypes, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, "*:*", false);
-    setQueryFilters(params, journalKeys, new ArrayList<String>(), subjects, dateRange);
-    return facetedSearch(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> authorSearch(String author, List<String> journalKeys, int start, int rows, SearchCriterion sortOrder,
-      SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams(String.format("author:\"%s\"", author), false, start,
-        rows, sortOrder, false);
-    setQueryFilters(params, journalKeys, new ArrayList<String>(), new ArrayList<String>(), dateRange);
-    return executeQuery(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> authorSearch(String facetField, String author, List<String> journalKeys,
-      List<String> articleTypes, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, String.format("author:\"%s\"", author), false);
-    setQueryFilters(params, journalKeys, new ArrayList<String>(), new ArrayList<String>(), dateRange);
-    return facetedSearch(params);
-  }
-
-  @Override
-  public Map<?, ?> volumeSearch(int volume, List<String> journalKeys, List<String> articleTypes, int start, int rows,
-      SearchCriterion sortOrder, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildCommonParams("*:*", false, start, rows, sortOrder, false);
-    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
-    params.add(new BasicNameValuePair("fq", String.format("volume:%d", volume)));
-    return executeQuery(params);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Map<?, ?> volumeSearch(String facetField, int volume, List<String> journalKeys,
-      List<String> articleTypes, SearchCriterion dateRange) throws IOException {
-    List<NameValuePair> params = buildFacetParams(facetField, "*:*", false);
-    params.add(new BasicNameValuePair("fq", String.format("volume:%d", volume)));
-    setQueryFilters(params, journalKeys, articleTypes, new ArrayList<String>(), dateRange);
-    return facetedSearch(params);
-  }
-
-
-  @Override
-  public Map<?, ?> getHomePageArticles(String journalKey, int start, int rows, SearchCriterion sortOrder)
-      throws IOException {
-    List<NameValuePair> params = buildCommonParams("*:*", false, start, rows, sortOrder, true);
-    setQueryFilters(params, Collections.singletonList(journalKey), new ArrayList<String>(),
-        new ArrayList<String>(), SolrEnumeratedDateRange.ALL_TIME);
-    return executeQuery(params);
+  public Map<?, ?> search(SearchQuery searchQuery) throws IOException {
+    return searchQuery.getResults(new SearchQuery.QueryExecutor() {
+      @Override
+      public Map<String, Map> executeQuery(List<NameValuePair> params) throws IOException {
+        return getRawResults(params);
+      }
+    });
   }
 
   @Override
@@ -397,7 +257,7 @@ public class SolrSearchService implements SearchService {
   /**
    * Initializes the eIssnToJournalKey map if necessary by calling rhino to get eISSNs for all journals.
    *
-   * @param siteSet set of all sites
+   * @param siteSet     set of all sites
    * @param currentSite site associated with the current request
    * @throws IOException
    */
@@ -420,190 +280,22 @@ public class SolrSearchService implements SearchService {
     rawQueryParams.put("stats", "true");
     rawQueryParams.put("stats.field", fieldName);
 
-    Map<String, Map> rawResult = (Map<String, Map>) simpleSearch("", Collections.singletonList(journalKey),
-        new ArrayList<String>(), 0, 0, SolrSearchService.SolrSortOrder.RELEVANCE,
-        SolrSearchService.SolrEnumeratedDateRange.ALL_TIME, rawQueryParams);
+    SearchQuery.Builder query = SearchQuery.builder()
+        .setForRawResults(true)
+        .setRawParameters(rawQueryParams)
+        .setSortOrder(SolrSortOrder.RELEVANCE)
+        .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
+        .setJournalKeys(Collections.singletonList(journalKey));
+
+    Map<String, Map> rawResult = (Map<String, Map>) search(query.build());
 
     Map<String, Map> statsField = (Map<String, Map>) rawResult.get("stats").get("stats_fields");
     Map<String, String> field = (Map<String, String>) statsField.get(fieldName);
     return field;
   }
 
-  /**
-   * Populates the SOLR parameters with values used across all searchs in the application.
-   *
-   * @param query       specifies the text or solr fields and the values we are searching for
-   * @param useDisMax   if true, use the dismax query parser
-   * @param start       starting result, zero-based.  0 will start at the first result.
-   * @param rows        max number of results to return
-   * @param sortOrder   specifies the desired ordering for results
-   * @param forHomePage if true, this search is for articles on a journal home page; if false it is for a specific
-   *                    query
-   * @return populated list of parameters
-   */
-  @VisibleForTesting
-  List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start, int rows,
-      SearchCriterion sortOrder,  boolean forHomePage) {
-
-    // Fascinating how painful it is to construct a longish URL and escape it properly in Java.
-    // This is the easiest way I found...
-    List<NameValuePair> params = new ArrayList<>();
-    params.add(new BasicNameValuePair("wt", "json"));
-    params.add(new BasicNameValuePair("fl", FL));
-    params.add(new BasicNameValuePair("fq", "doc_type:full"));
-    params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
-    params.add(new BasicNameValuePair("rows", Integer.toString(rows)));
-    if (start > 0) {
-      params.add(new BasicNameValuePair("start", Integer.toString(start)));
-    }
-    // The next two params improve solr performance significantly.
-    params.add(new BasicNameValuePair("hl", "false"));
-    params.add(new BasicNameValuePair("facet", "false"));
-    String sortOrderStr = sortOrder.getValue();
-
-    // This is a quirk from ambra: when doing "normal" searches, we append "id desc" as the final part of
-    // the sort order.  However ambra doesn't do this for homepage-related searches, and the returned
-    // results are slightly different.  We replicate that behavior here.
-    if (!forHomePage) {
-      sortOrderStr += ",id desc";
-    }
-    params.add(new BasicNameValuePair("sort", sortOrderStr));
-
-    if (Strings.isNullOrEmpty(query)) {
-      query = "*:*";
-    } else {
-      if (useDisMax) {
-        // Use the dismax query parser, recommended for all user-entered queries.
-        // See https://wiki.apache.org/solr/DisMax
-        params.add(new BasicNameValuePair("defType", "dismax"));
-      }
-    }
-
-    params.add(new BasicNameValuePair("q", query));
-
-    return params;
-  }
-
-  /**
-   * Populates the Solr parameters with values used across all searches in the application. It is able to
-   * parse the raw query parameters as well.
-   *
-   * @param query       specifies the text or solr fields and the values we are searching for
-   * @param useDisMax   if true, use the dismax query parser
-   * @param start       starting result, zero-based.  0 will start at the first result.
-   * @param rows        max number of results to return
-   * @param sortOrder   specifies the desired ordering for results
-   * @param forHomePage if true, this search is for articles on a journal home page; if false it is for a specific
-   *                    query
-   * @param rawQueryParams specifies the raw query parameters passed as name/value pairs
-   * @return populated list of parameters
-   */
-  private List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,
-      int rows, SearchCriterion sortOrder, boolean forHomePage, Map<String, String> rawQueryParams) {
-    List<NameValuePair> params = buildCommonParams(query, useDisMax, start, rows, sortOrder, forHomePage);
-    for (Map.Entry<String, String> entry: rawQueryParams.entrySet()) {
-      params.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
-    }
-    return params;
-  }
-
-  /**
-   * Populates the Solr parameters with values necessary for field value faceting
-   *
-   * @param facetField the field that should be treated as a facet
-   * @param query      specifies the text or solr fields and the values we are searching for
-   * @param useDisMax  if true, use the dismax query parser
-   * @return populated list of parameters for faceted search
-   */
-  @VisibleForTesting
-  List<NameValuePair> buildFacetParams(String facetField, String query, boolean useDisMax) {
-    List<NameValuePair> params = new ArrayList<>();
-    params.add(new BasicNameValuePair("facet.field", facetField));
-    params.add(new BasicNameValuePair("wt", "json"));
-    params.add(new BasicNameValuePair("json.nl", "map"));
-    params.add(new BasicNameValuePair("fq", "doc_type:full"));
-    params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
-    params.add(new BasicNameValuePair("rows", "0"));
-    params.add(new BasicNameValuePair("hl", "false"));
-    params.add(new BasicNameValuePair("facet", "true"));
-    params.add(new BasicNameValuePair("facet.mincount", Integer.toString(MIN_FACET_COUNT)));
-    params.add(new BasicNameValuePair("facet.limit", Integer.toString(MAX_FACET_SIZE)));
-
-    if (Strings.isNullOrEmpty(query)) {
-      query = "*:*";
-    } else {
-      if (useDisMax) {
-        // Use the dismax query parser, recommended for all user-entered queries.
-        // See https://wiki.apache.org/solr/DisMax
-        params.add(new BasicNameValuePair("defType", "dismax"));
-      }
-    }
-
-    params.add(new BasicNameValuePair("q", query));
-
-    return params;
-  }
-
-  /**
-   * Set query filters that is common for both regular and faceted search
-   *
-   * @param params Solr query parameters
-   * @param journalKeys names of the journals in which to search.
-   * @param articleTypes types of articles in which to search. An empty list will search all article types.
-   * @param dateRange specifies the date range for the results
-   */
-  @VisibleForTesting
-  void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
-      List<String> articleTypes, List<String> subjects, SearchCriterion dateRange) {
-    if (dateRange != null) {
-      String dateRangeStr = dateRange.getValue();
-      if (!Strings.isNullOrEmpty(dateRangeStr)) {
-        params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
-      }
-    }
-    if (!ListUtil.isNullOrEmpty(journalKeys)) {
-      List<String> crossPublishedJournals = new ArrayList<>();
-      for (String journalKey : journalKeys) {
-        crossPublishedJournals.add("cross_published_journal_key:" + journalKey);
-      }
-      params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
-    }
-
-    if (!ListUtil.isNullOrEmpty(articleTypes)) {
-      List<String> articleTypeQueryList = new ArrayList<>();
-      for (String articleType : articleTypes) {
-        articleTypeQueryList.add("article_type_facet:\"" + articleType + "\"");
-      }
-      params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
-    }
-
-    if (!ListUtil.isNullOrEmpty(subjects)) {
-      params.add(new BasicNameValuePair("fq", buildSubjectClause(subjects)));
-    }
-  }
-
-  /**
-   * Executes a faceted search
-   *
-   * @param params Solr query parameters
-   * @return results of a faceted search
-   * @throws IOException
-   */
-  private Map<?, ?> facetedSearch(List<NameValuePair> params) throws IOException {
-    Map<String, Map> rawResult = (Map<String, Map>) getRawResults(params);
-    Map<String, Map> facetFields = (Map<String, Map>) rawResult.get("facet_counts").get("facet_fields");
-    return facetFields.get(params.get(0).getValue()); //We expect facet field to be the first element of the list
-  }
-
   private Map<?, ?> executeQuery(List<NameValuePair> params) throws IOException {
-    URI uri;
-    try {
-      uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
-    } catch (MalformedURLException | URISyntaxException e) {
-      throw new IllegalArgumentException(e);
-    }
-    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
-    return (Map<?, ?>) rawResults.get("response");
+    return getRawResults(params).get("response");
   }
 
   /**
@@ -613,7 +305,7 @@ public class SolrSearchService implements SearchService {
    * @return raw results from Solr
    * @throws IOException
    */
-  private Map<?, ?> getRawResults (List<NameValuePair> params) throws IOException {
+  private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
     URI uri;
     try {
       uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
@@ -621,6 +313,6 @@ public class SolrSearchService implements SearchService {
       throw new IllegalArgumentException(e);
     }
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
-    return rawResults;
+    return (Map<String, Map>) rawResults;
   }
 }

@@ -7,6 +7,7 @@ import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.RecentArticleService;
+import org.ambraproject.wombat.service.remote.SearchQuery;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.slf4j.Logger;
@@ -60,17 +61,13 @@ public class HomeController extends WombatController {
     RECENT {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site.getJournalKey(), start,
-            section.resultCount, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
-        return sanitizeSolrResults(result);
+        return getArticlesFromSolr(context, section, site, start, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
       }
     },
     POPULAR {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        Map<?, ?> result = context.solrSearchService.getHomePageArticles(site.getJournalKey(), start,
-            section.resultCount, SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
-        return sanitizeSolrResults(result);
+        return getArticlesFromSolr(context, section, site, start, SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
       }
     },
     IN_THE_NEWS {
@@ -79,6 +76,19 @@ public class HomeController extends WombatController {
         return (List<Object>) getInTheNewsArticles(context.soaService, site.getJournalKey());
       }
     };
+
+    private static List<Object> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
+                                                    SolrSearchService.SolrSortOrder order)
+        throws IOException {
+      SearchQuery.Builder query = SearchQuery.builder()
+          .setStart(start)
+          .setRows(section.resultCount)
+          .setSortOrder(order)
+          .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+          .setDateRange(SolrSearchService.SolrEnumeratedDateRange.ALL_TIME);
+      Map<?, ?> result = context.solrSearchService.search(query.build());
+      return sanitizeSolrResults(result);
+    }
 
     /**
      * @throws java.lang.IllegalArgumentException if name is not matched

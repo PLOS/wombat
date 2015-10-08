@@ -19,6 +19,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.remote.SearchQuery;
 import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.slf4j.Logger;
@@ -255,6 +256,17 @@ public class SearchController extends WombatController {
         return subject != null ? Collections.singletonList(subject) : new ArrayList<String>();
       }
     }
+
+    private SearchQuery.Builder fill(SearchQuery.Builder builder) {
+      return builder
+          .setJournalKeys(journalKeys)
+          .setArticleTypes(articleTypes)
+          .setSubjects(subjectList)
+          .setStart(start)
+          .setRows(resultsPerPage)
+          .setSortOrder(sortOrder)
+          .setDateRange(dateRange);
+    }
   }
 
   // Unless the "!volume" part is included in the params in the next few methods, you will
@@ -279,9 +291,12 @@ public class SearchController extends WombatController {
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
     addOptionsToModel(model);
-    Map<?, ?> searchResults = searchService.simpleSearch(params.getFirst("q"), commonParams.journalKeys,
-        commonParams.articleTypes, commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder,
-        commonParams.dateRange);
+
+    SearchQuery.Builder query = SearchQuery.builder()
+        .setQuery(params.getFirst("q"))
+        .setSimple(true);
+    commonParams.fill(query);
+    Map<?, ?> searchResults = searchService.search(query.build());
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("searchFilters", searchFilterService.getSimpleSearchFilters(params.getFirst("q"), commonParams.journalKeys,
         commonParams.articleTypes, commonParams.dateRange));
@@ -306,90 +321,17 @@ public class SearchController extends WombatController {
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
     addOptionsToModel(model);
-    Map<?, ?> searchResults = searchService.advancedSearch(params.getFirst("unformattedQuery"),
-        commonParams.journalKeys, commonParams.articleTypes, commonParams.subjectList, commonParams.start,
-        commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
+
+    SearchQuery.Builder query = SearchQuery.builder()
+        .setQuery(params.getFirst("unformattedQuery"))
+        .setSimple(false);
+    commonParams.fill(query);
+
+    Map<?, ?> searchResults = searchService.search(query.build());
     model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("searchFilters", searchFilterService.getAdvancedSearchFilers(params.getFirst
-        ("unformattedQuery"), commonParams.journalKeys, commonParams.articleTypes,
+    model.addAttribute("searchFilters", searchFilterService.getAdvancedSearchFilters(params.getFirst
+            ("unformattedQuery"), commonParams.journalKeys, commonParams.articleTypes,
         commonParams.subjectList, commonParams.dateRange));
-    return site.getKey() + "/ftl/search/searchResults";
-  }
-
-  /**
-   * Performs a subject search, where the subject param is expected to be a term from our taxonomy.
-   *
-   * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
-   * @param params all URL parameters
-   * @return String indicating template location
-   * @throws IOException
-   */
-  @RequestMapping(name = "subjectSearch", value = "/search", params = {"subject", "!filterSubjects", "!volume",
-      "!unformattedQuery"})
-  public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
-    return doSubjectsSearch(request, model, site, params);
-  }
-
-  /**
-   * Performs a subject search, where the subject param is expected to be a term from our taxonomy.
-   * Multiple subjects are allowed in the filterSubjects params.
-   *
-   * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
-   * @param params all URL parameters
-   * @return String indicating template location
-   * @throws IOException
-   */
-  @RequestMapping(name = "subjectsSearch", value = "/search", params = {"filterSubjects", "!subject", "!volume",
-      "!unformattedQuery"})
-  public String subjectsSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
-    if (params.containsKey("q") && !params.getFirst("q").contentEquals("")) {
-      params.remove("filterSubjects");
-      return simpleSearch(request, model, site, params);
-    }
-    return doSubjectsSearch(request, model, site, params);
-  }
-
-  private String doSubjectsSearch(HttpServletRequest request, Model model, Site site,
-      MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-    addOptionsToModel(model);
-    Map<?, ?> searchResults = searchService.subjectSearch(commonParams.subjectList, commonParams.journalKeys,
-        commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("searchFilters", searchFilterService.getSubjectSearchFilters(commonParams.subjectList,
-        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
-    return site.getKey() + "/ftl/search/searchResults";
-  }
-
-  /**
-   * Performs an author search, where the value of the author param is searched against authors' names.
-   *
-   * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
-   * @param params all URL parameters
-   * @return String indicating template location
-   * @throws IOException
-   */
-  @RequestMapping(name = "authorSearch", value = "/search", params = {"author", "!volume"})
-  public String authorSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-    addOptionsToModel(model);
-    Map<?, ?> searchResults = searchService.authorSearch(params.getFirst("author"), commonParams.journalKeys,
-        commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchFilters", searchFilterService.getAuthorSearchFilters(params.getFirst("author"),
-        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -436,38 +378,6 @@ public class SearchController extends WombatController {
       @RequestParam(value = "filterJournals", required = true) String journal) throws IOException {
     Map<?, ?> searchResults = searchService.lookupArticleByELocationId(eLocationId, journal);
     return renderSingleResult(searchResults, "elocation_id:" + eLocationId, request, model, site);
-  }
-
-  /**
-   * Searches for all articles in the volume identified by the value of the volume parameter.
-   *
-   * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
-   * @param params all URL parameters
-   * @return String indicating template location
-   * @throws IOException
-   */
-  @RequestMapping(name = "volumeSearch", value = "/search", params = {"volume!="})
-  public String volumeSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-    addOptionsToModel(model);
-    int volume;
-    try {
-      volume = Integer.parseInt(params.getFirst("volume"));
-    } catch (NumberFormatException nfe) {
-      return renderEmptyResults(null, "volume:" + params.getFirst("volume"), model, site);
-    }
-    Map<?, ?> searchResults = searchService.volumeSearch(volume, commonParams.journalKeys, commonParams.articleTypes,
-        commonParams.start, commonParams.resultsPerPage, commonParams.sortOrder, commonParams.dateRange);
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("otherQuery", String.format("volume:%d", volume));
-    model.addAttribute("searchFilters", searchFilterService.getVolumeSearchFilters(volume,
-        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
-    return site.getKey() + "/ftl/search/searchResults";
   }
 
   /**

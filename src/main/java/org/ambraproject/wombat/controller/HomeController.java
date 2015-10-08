@@ -10,6 +10,7 @@ import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.remote.SearchQuery;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,13 +62,13 @@ public class HomeController extends WombatController {
     RECENT {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchService.SolrSortOrder.DATE_NEWEST_FIRST);
+        return getArticlesFromSolr(context, section, site, start, SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST);
       }
     },
     POPULAR {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchService.SolrSortOrder.MOST_VIEWS_30_DAYS);
+        return getArticlesFromSolr(context, section, site, start, SolrSearchServiceImpl.SolrSortOrder.MOST_VIEWS_30_DAYS);
       }
     },
     IN_THE_NEWS {
@@ -78,14 +79,14 @@ public class HomeController extends WombatController {
     };
 
     private static List<Object> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
-                                                    SolrSearchService.SolrSortOrder order)
+                                                    SolrSearchServiceImpl.SolrSortOrder order)
         throws IOException {
       SearchQuery.Builder query = SearchQuery.builder()
           .setStart(start)
           .setRows(section.resultCount)
           .setSortOrder(order)
           .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-          .setDateRange(SolrSearchService.SolrEnumeratedDateRange.ALL_TIME);
+          .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME);
       Map<?, ?> result = context.solrSearchService.search(query.build());
       return sanitizeSolrResults(result);
     }

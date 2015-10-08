@@ -5,7 +5,6 @@ import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +15,7 @@ import java.util.Map;
 public class SearchFilterService {
 
   @Autowired
-  private SearchService searchService;
+  private SolrSearchService solrSearchService;
 
   @Autowired
   private SearchFilterFactory searchFilterFactory;
@@ -26,7 +25,7 @@ public class SearchFilterService {
   private final String JOURNAL_FACET_FIELD = "cross_published_journal_name";
 
   public Map<?,?> getSimpleSearchFilters(String query, List<String> journalKeys, List<String> articleTypes,
-      SearchService.SearchCriterion dateRange) throws IOException {
+      SolrSearchService.SearchCriterion dateRange) throws IOException {
     SearchQuery.Builder queryObj = SearchQuery.builder()
         .setQuery(query)
         .setFacet(JOURNAL_FACET_FIELD)
@@ -34,7 +33,7 @@ public class SearchFilterService {
         .setArticleTypes(articleTypes)
         .setDateRange(dateRange);
 
-    Map<?, ?> results = searchService.search(queryObj.build());
+    Map<?, ?> results = solrSearchService.search(queryObj.build());
 
     SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
     Map<String, SearchFilter> filters = new HashMap<>();
@@ -44,7 +43,7 @@ public class SearchFilterService {
   }
 
   public Map<?, ?> getAdvancedSearchFilters(String query, List<String> journalKeys,
-                                            List<String> articleTypes, List<String> subjectList, SearchService.SearchCriterion dateRange) throws
+                                            List<String> articleTypes, List<String> subjectList, SolrSearchService.SearchCriterion dateRange) throws
       IOException {
     SearchQuery.Builder queryObj = SearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)
@@ -54,7 +53,7 @@ public class SearchFilterService {
         .setSubjects(subjectList)
         .setDateRange(dateRange);
 
-    Map<?, ?> results = searchService.search(queryObj.build());
+    Map<?, ?> results = solrSearchService.search(queryObj.build());
 
     SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
     Map<String, SearchFilter> filters = new HashMap<>();
@@ -64,7 +63,7 @@ public class SearchFilterService {
   }
 
   public Map<?, ?> getVolumeSearchFilters(int volume, List<String> journalKeys, List<String> articleTypes,
-      SearchService.SearchCriterion dateRange) throws IOException {
+      SolrSearchService.SearchCriterion dateRange) throws IOException {
     Map<String, SearchFilter> filters = new HashMap<>();
     // TODO: add other filters here (filter by journal is not applicable here)
     return filters;

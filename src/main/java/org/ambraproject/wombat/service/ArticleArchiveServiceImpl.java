@@ -2,14 +2,13 @@ package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.SearchQuery;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
@@ -20,7 +19,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
   private static final String MONTHS[] = new DateFormatSymbols().getMonths();
 
   @Autowired
-  SolrSearchService solrSearchService;
+  SolrSearchServiceImpl solrSearchService;
 
   @Override
   public Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException {
@@ -59,14 +58,14 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
     Calendar endDate = (Calendar) startDate.clone();
     endDate.add(Calendar.MONTH, 1);
 
-    SolrSearchService.SolrExplicitDateRange dateRange = new SolrSearchService.SolrExplicitDateRange
+    SolrSearchServiceImpl.SolrExplicitDateRange dateRange = new SolrSearchServiceImpl.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
     SearchQuery.Builder query = SearchQuery.builder()
         .setJournalKeys(Collections.singletonList(site.getJournalKey()))
         .setStart(0)
         .setRows(1000000)
-        .setSortOrder(SolrSearchService.SolrSortOrder.DATE_OLDEST_FIRST)
+        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_OLDEST_FIRST)
         .setDateRange(dateRange);
     Map<String, Map> searchResult = (Map<String, Map>) solrSearchService.search(query.build());
     return searchResult;

@@ -36,12 +36,12 @@ public class SearchQuery {
   private final int start;
   private final int rows;
 
-  private final Optional<SearchService.SearchCriterion> sortOrder;
+  private final Optional<SolrSearchService.SearchCriterion> sortOrder;
 
   private final ImmutableList<String> journalKeys;
   private final ImmutableList<String> articleTypes;
   private final ImmutableList<String> subjects;
-  private final Optional<SearchService.SearchCriterion> dateRange;
+  private final Optional<SolrSearchService.SearchCriterion> dateRange;
 
   private final ImmutableMap<String, String> rawParameters;
 
@@ -184,12 +184,12 @@ public class SearchQuery {
     private int start;
     private int rows;
 
-    private SearchService.SearchCriterion sortOrder;
+    private SolrSearchService.SearchCriterion sortOrder;
 
     private List<String> journalKeys = ImmutableList.of();
     private List<String> articleTypes = ImmutableList.of();
     private List<String> subjects = ImmutableList.of();
-    private SearchService.SearchCriterion dateRange;
+    private SolrSearchService.SearchCriterion dateRange;
 
     private Map<String, String> rawParameters = ImmutableMap.of();
 
@@ -226,7 +226,7 @@ public class SearchQuery {
       return this;
     }
 
-    public Builder setSortOrder(SearchService.SearchCriterion sortOrder) {
+    public Builder setSortOrder(SolrSearchService.SearchCriterion sortOrder) {
       this.sortOrder = sortOrder;
       return this;
     }
@@ -246,7 +246,7 @@ public class SearchQuery {
       return this;
     }
 
-    public Builder setDateRange(SearchService.SearchCriterion dateRange) {
+    public Builder setDateRange(SolrSearchService.SearchCriterion dateRange) {
       this.dateRange = dateRange;
       return this;
     }

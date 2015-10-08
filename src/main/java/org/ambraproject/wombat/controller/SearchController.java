@@ -20,8 +20,8 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SearchQuery;
-import org.ambraproject.wombat.service.remote.SearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class SearchController extends WombatController {
   private SiteSet siteSet;
 
   @Autowired
-  private SearchService searchService;
+  private SolrSearchService solrSearchService;
 
   @Autowired
   private SearchFilterService searchFilterService;
@@ -76,9 +76,9 @@ public class SearchController extends WombatController {
      */
     int start;
 
-    SolrSearchService.SolrSortOrder sortOrder;
+    SolrSearchServiceImpl.SolrSortOrder sortOrder;
 
-    SearchService.SearchCriterion dateRange;
+    SolrSearchService.SearchCriterion dateRange;
 
     List<String> articleTypes;
 
@@ -131,10 +131,10 @@ public class SearchController extends WombatController {
         int page = Integer.parseInt(pageParam);
         start = (page - 1) * resultsPerPage;
       }
-      sortOrder = SolrSearchService.SolrSortOrder.RELEVANCE;
+      sortOrder = SolrSearchServiceImpl.SolrSortOrder.RELEVANCE;
       String sortOrderParam = getSingleParam(params, "sortOrder", null);
       if (!Strings.isNullOrEmpty(sortOrderParam)) {
-        sortOrder = SolrSearchService.SolrSortOrder.valueOf(sortOrderParam);
+        sortOrder = SolrSearchServiceImpl.SolrSortOrder.valueOf(sortOrderParam);
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
           getSingleParam(params, "filterStartDate", null), getSingleParam(params, "filterEndDate", null));
@@ -150,7 +150,7 @@ public class SearchController extends WombatController {
       articleTypes = params.get("filterArticleTypes");
       articleTypes = articleTypes == null ? new ArrayList<String>() : articleTypes;
       isFiltered = !filterJournalNames.isEmpty() || !subjectList.isEmpty() || !articleTypes.isEmpty()
-          || dateRange != SolrSearchService.SolrEnumeratedDateRange.ALL_TIME;
+          || dateRange != SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME;
     }
 
     /**
@@ -202,12 +202,12 @@ public class SearchController extends WombatController {
      * @param endDate desktop end date value
      * @return A generic @SearchCriterion object used by Solr
      */
-    private SearchService.SearchCriterion parseDateRange(String dateRangeParam, String startDate, String endDate) {
-      SearchService.SearchCriterion dateRange = SolrSearchService.SolrEnumeratedDateRange.ALL_TIME;
+    private SolrSearchService.SearchCriterion parseDateRange(String dateRangeParam, String startDate, String endDate) {
+      SolrSearchService.SearchCriterion dateRange = SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME;
       if (!Strings.isNullOrEmpty(dateRangeParam)) {
-        dateRange = SolrSearchService.SolrEnumeratedDateRange.valueOf(dateRangeParam);
+        dateRange = SolrSearchServiceImpl.SolrEnumeratedDateRange.valueOf(dateRangeParam);
       } else if (!Strings.isNullOrEmpty(startDate) && !Strings.isNullOrEmpty(endDate)) {
-        dateRange = new SolrSearchService.SolrExplicitDateRange("explicit date range", startDate,
+        dateRange = new SolrSearchServiceImpl.SolrExplicitDateRange("explicit date range", startDate,
             endDate);
       }
       return dateRange;
@@ -296,8 +296,8 @@ public class SearchController extends WombatController {
         .setQuery(params.getFirst("q"))
         .setSimple(true);
     commonParams.fill(query);
-    Map<?, ?> searchResults = searchService.search(query.build());
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
+    Map<?, ?> searchResults = solrSearchService.search(query.build());
+    model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("searchFilters", searchFilterService.getSimpleSearchFilters(params.getFirst("q"), commonParams.journalKeys,
         commonParams.articleTypes, commonParams.dateRange));
     return site.getKey() + "/ftl/search/searchResults";
@@ -327,8 +327,8 @@ public class SearchController extends WombatController {
         .setSimple(false);
     commonParams.fill(query);
 
-    Map<?, ?> searchResults = searchService.search(query.build());
-    model.addAttribute("searchResults", searchService.addArticleLinks(searchResults, request, site, siteSet));
+    Map<?, ?> searchResults = solrSearchService.search(query.build());
+    model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("searchFilters", searchFilterService.getAdvancedSearchFilters(params.getFirst
             ("unformattedQuery"), commonParams.journalKeys, commonParams.articleTypes,
         commonParams.subjectList, commonParams.dateRange));
@@ -355,7 +355,7 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "doiSearch", value = "/search", params = {"id!="})
   public String doiSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam(value = "id", required = true) String doi) throws IOException {
-    Map<?, ?> searchResults = searchService.lookupArticleByDoi(doi);
+    Map<?, ?> searchResults = solrSearchService.lookupArticleByDoi(doi);
     return renderSingleResult(searchResults, "doi:" + doi, request, model, site);
   }
 
@@ -376,7 +376,7 @@ public class SearchController extends WombatController {
   public String eLocationSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam(value = "eLocationId", required = true) String eLocationId,
       @RequestParam(value = "filterJournals", required = true) String journal) throws IOException {
-    Map<?, ?> searchResults = searchService.lookupArticleByELocationId(eLocationId, journal);
+    Map<?, ?> searchResults = solrSearchService.lookupArticleByELocationId(eLocationId, journal);
     return renderSingleResult(searchResults, "elocation_id:" + eLocationId, request, model, site);
   }
 
@@ -398,7 +398,7 @@ public class SearchController extends WombatController {
       throw new IllegalStateException("Valid DOIs should return exactly one article");
     }
     if (numFound == 1) {
-      searchResults = searchService.addArticleLinks(searchResults, request, site, siteSet);
+      searchResults = solrSearchService.addArticleLinks(searchResults, request, site, siteSet);
       List docs = (List) searchResults.get("docs");
       Map doc = (Map) docs.get(0);
       return "redirect:" + doc.get("link");
@@ -426,15 +426,15 @@ public class SearchController extends WombatController {
     addOptionsToModel(model);
 
     // Add minimum model attributes necessary to render the form.
-    model.addAttribute("selectedSortOrder", SolrSearchService.SolrSortOrder.RELEVANCE);
-    model.addAttribute("selectedDateRange", SolrSearchService.SolrEnumeratedDateRange.ALL_TIME);
+    model.addAttribute("selectedSortOrder", SolrSearchServiceImpl.SolrSortOrder.RELEVANCE);
+    model.addAttribute("selectedDateRange", SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME);
     model.addAttribute("isFiltered", false);
     model.addAttribute("resultsPerPage", 15);
     return site.getKey() + "/ftl/search/searchResults";
   }
 
   private void addOptionsToModel(Model model) {
-    model.addAttribute("sortOrders", SolrSearchService.SolrSortOrder.values());
-    model.addAttribute("dateRanges", SolrSearchService.SolrEnumeratedDateRange.values());
+    model.addAttribute("sortOrders", SolrSearchServiceImpl.SolrSortOrder.values());
+    model.addAttribute("dateRanges", SolrSearchServiceImpl.SolrEnumeratedDateRange.values());
   }
 }

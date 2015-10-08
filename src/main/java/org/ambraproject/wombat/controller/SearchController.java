@@ -299,7 +299,7 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = solrSearchService.search(query.build());
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("searchFilters", searchFilterService.getSimpleSearchFilters(params.getFirst("q"), commonParams.journalKeys,
-        commonParams.articleTypes, commonParams.dateRange));
+        commonParams.articleTypes, commonParams.dateRange, params));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -331,7 +331,7 @@ public class SearchController extends WombatController {
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("searchFilters", searchFilterService.getAdvancedSearchFilters(params.getFirst
             ("unformattedQuery"), commonParams.journalKeys, commonParams.articleTypes,
-        commonParams.subjectList, commonParams.dateRange));
+        commonParams.subjectList, commonParams.dateRange, params));
     return site.getKey() + "/ftl/search/searchResults";
   }
 

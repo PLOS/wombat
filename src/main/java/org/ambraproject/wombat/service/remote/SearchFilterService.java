@@ -1,8 +1,10 @@
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.collect.ImmutableListMultimap;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.MultiValueMap;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,7 +27,7 @@ public class SearchFilterService {
   private final String JOURNAL_FACET_FIELD = "cross_published_journal_name";
 
   public Map<?,?> getSimpleSearchFilters(String query, List<String> journalKeys, List<String> articleTypes,
-      SolrSearchService.SearchCriterion dateRange) throws IOException {
+      SolrSearchService.SearchCriterion dateRange, MultiValueMap<String, String> params) throws IOException {
     SearchQuery.Builder queryObj = SearchQuery.builder()
         .setQuery(query)
         .setFacet(JOURNAL_FACET_FIELD)
@@ -35,15 +37,25 @@ public class SearchFilterService {
 
     Map<?, ?> results = solrSearchService.search(queryObj.build());
 
-    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
+    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL,
+        copyToMultimap(params));
     Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here
     return filters;
   }
 
+  private static <K, V> ImmutableListMultimap<K, V> copyToMultimap(Map<K, List<V>> map) {
+    ImmutableListMultimap.Builder<K, V> builder = ImmutableListMultimap.builder();
+    for (Map.Entry<K, List<V>> entry : map.entrySet()) {
+      builder.putAll(entry.getKey(), entry.getValue());
+    }
+    return builder.build();
+  }
+
   public Map<?, ?> getAdvancedSearchFilters(String query, List<String> journalKeys,
-                                            List<String> articleTypes, List<String> subjectList, SolrSearchService.SearchCriterion dateRange) throws
+      List<String> articleTypes, List<String> subjectList,
+      SolrSearchService.SearchCriterion dateRange, MultiValueMap<String, String> params) throws
       IOException {
     SearchQuery.Builder queryObj = SearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)
@@ -55,7 +67,7 @@ public class SearchFilterService {
 
     Map<?, ?> results = solrSearchService.search(queryObj.build());
 
-    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL);
+    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL, copyToMultimap(params));
     Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here

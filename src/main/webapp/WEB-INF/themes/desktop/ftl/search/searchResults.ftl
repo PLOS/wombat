@@ -133,11 +133,15 @@
                 <#list  journalFilter.searchFilterResult as searchFilterItem>
                   <#if !searchFilterItem.displayName?lower_case?contains("collections") >
                     <dt>
-                      <a href="#"
+                    <@siteLink handlerName="simpleSearch"
+                      queryParameters=searchFilterItem.filteredResultsParameters
+                      ; href>
+                      <a href="${href}"
                          data-filter-param="${searchFilterItem.filterParamName}"
                          data-filter-value="${searchFilterItem.filterValue}">
                         ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
                       </a>
+                    </@siteLink>
                     </dt>
                   </#if>
                 </#list>

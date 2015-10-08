@@ -163,7 +163,7 @@ public class SearchQuery {
 
     if (facet.isPresent()) {
       Map<String, Map> facetFields = (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
-      return facetFields.get(params.get(0).getValue()); //We expect facet field to be the first element of the list
+      return facetFields.get(facet.get()); //We expect facet field to be the first element of the list
     } else {
       return (Map<?, ?>) rawResults.get("response");
     }

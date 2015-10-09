@@ -25,22 +25,33 @@ public class SearchFilterService {
 
   private final String JOURNAL_FACET_FIELD = "cross_published_journal_name";
 
+  private final String SUBJECT_AREA = "subject_area";
+
+  private final String SUBJECT_AREA_FACET_FIELD = "subject_facet";
 
   public Map<?, ?> getSearchFilters(SearchQuery searchQuery, Multimap<String, String> urlParams)
       throws IOException {
-    SearchQuery.Builder queryObj = SearchQuery.builder()
+    SearchQuery.Builder journalFacetSearchQuery = SearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)
-        .setQuery(searchQuery.getQuery().orNull())
-        .setSimple(searchQuery.isSimple())
-        .setArticleTypes(searchQuery.getArticleTypes())
-        .setSubjects(searchQuery.getSubjects())
-        .setDateRange(searchQuery.getDateRange().orNull());
+        .setCommonQueryParams(searchQuery);
 
-    Map<?, ?> results = solrSearchService.search(queryObj.build());
+    Map<?, ?> journalFacetResults = solrSearchService.search(journalFacetSearchQuery.build());
 
-    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL, urlParams);
+    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(journalFacetResults,
+        JOURNAL, urlParams);
+
+    SearchQuery.Builder subjectAreaFacetSearchQuery = SearchQuery.builder()
+        .setFacet(SUBJECT_AREA_FACET_FIELD)
+        .setCommonQueryParams(searchQuery);
+
+    Map<?, ?> subjectAreaFacetResults = solrSearchService.search(subjectAreaFacetSearchQuery.build());
+
+    SearchFilter subjectAreaFilter = searchFilterFactory.parseFacetedSearchResult(
+        subjectAreaFacetResults, SUBJECT_AREA, urlParams);
+
     Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
+    filters.put(SUBJECT_AREA, subjectAreaFilter);
     // TODO: add other filters here
     return filters;
   }

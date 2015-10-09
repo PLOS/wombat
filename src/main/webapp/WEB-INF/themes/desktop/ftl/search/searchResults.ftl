@@ -129,13 +129,12 @@
             <div>
               <h3>Journal</h3>
               <dl id="searchFilterByJournal">
-                <#assign journalFilter = searchFilters.journal />
-                <#list  journalFilter.searchFilterResult as searchFilterItem>
+                <#assign subjectAreaFilter = searchFilters.journal />
+                <#list  subjectAreaFilter.searchFilterResult as searchFilterItem>
                   <#if !searchFilterItem.displayName?lower_case?contains("collections") >
                     <dt>
                     <@siteLink handlerName="simpleSearch"
-                      queryParameters=searchFilterItem.filteredResultsParameters
-                      ; href>
+                      queryParameters=searchFilterItem.filteredResultsParameters ; href>
                       <a href="${href}"
                          data-filter-param="${searchFilterItem.filterParamName}"
                          data-filter-value="${searchFilterItem.filterValue}">
@@ -144,6 +143,24 @@
                     </@siteLink>
                     </dt>
                   </#if>
+                </#list>
+              </dl>
+            </div>
+            <div>
+              <h3>Subject Areas</h3>
+              <dl id="searchFilterBySubjectArea">
+                <#assign subjectAreaFilter = searchFilters.subject_area />
+                <#list  subjectAreaFilter.searchFilterResult as searchFilterItem>
+                  <dt>
+                    <@siteLink handlerName="simpleSearch"
+                    queryParameters=searchFilterItem.filteredResultsParameters ; href>
+                      <a href="${href}"
+                         data-filter-param="${searchFilterItem.filterParamName}"
+                         data-filter-value="${searchFilterItem.filterValue}">
+                      ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
+                      </a>
+                    </@siteLink>
+                  </dt>
                 </#list>
               </dl>
             </div>

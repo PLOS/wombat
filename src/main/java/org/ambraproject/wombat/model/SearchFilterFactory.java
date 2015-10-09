@@ -2,6 +2,7 @@ package org.ambraproject.wombat.model;
 
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +16,7 @@ public class SearchFilterFactory {
   private SearchFilterTypeMap filterTypeMap;
 
   public SearchFilter parseFacetedSearchResult(Map<?, ?> results, String filterTypeMapKey,
-      ListMultimap<String, String> params) {
+      Multimap<String, String> params) {
 
     SearchFilterType filterType = filterTypeMap.getSearchFilterByKey(filterTypeMapKey);
 
@@ -39,7 +40,7 @@ public class SearchFilterFactory {
   }
 
   private ListMultimap<String, String> applyFilterToParams(String displayName,
-      ListMultimap<String, String> params, SearchFilterType filterType) {
+      Multimap<String, String> params, SearchFilterType filterType) {
     String filterValue = filterType.getFilterValue(displayName);
     String parameterName = filterType.getParameterName();
 

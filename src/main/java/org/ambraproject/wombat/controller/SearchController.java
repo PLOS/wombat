@@ -14,7 +14,9 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableListMultimap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -268,6 +270,34 @@ public class SearchController extends WombatController {
     }
   }
 
+  private static ImmutableListMultimap<String, String> rebuildUrlParameters(SearchQuery q) {
+    Preconditions.checkArgument(!q.isForRawResults());
+    Preconditions.checkArgument(!q.getFacet().isPresent());
+
+    ImmutableListMultimap.Builder<String, String> builder = ImmutableListMultimap.builder();
+    builder.put(q.isSimple() ? "q" : "unformattedQuery", q.getQuery().or(""));
+
+    int rows = q.getRows();
+    builder.put("resultsPerPage", Integer.toString(rows));
+    if (rows > 0) {
+      int page = q.getStart() / rows + 1;
+      builder.put("page", Integer.toString(page));
+    }
+
+    builder.putAll("filterJournals", q.getJournalKeys());
+    builder.putAll("filterSubjects", q.getSubjects());
+    builder.putAll("filterArticleTypes", q.getArticleTypes());
+
+    // TODO: Support dateRange
+    // TODO: Support sortOrder
+
+    for (Map.Entry<String, String> entry : q.getRawParameters().entrySet()) {
+      builder.put(entry);
+    }
+
+    return builder.build();
+  }
+
   // Unless the "!volume" part is included in the params in the next few methods, you will
   // get an "ambiguous handler method" exception from spring.  I think this is because all
   // of these methods (including volumeSearch) use a MultiValueMap for @RequestParam, instead
@@ -295,10 +325,10 @@ public class SearchController extends WombatController {
         .setQuery(params.getFirst("q"))
         .setSimple(true);
     commonParams.fill(query);
-    Map<?, ?> searchResults = solrSearchService.search(query.build());
+    SearchQuery queryObj = query.build();
+    Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("searchFilters", searchFilterService.getSimpleSearchFilters(params.getFirst("q"), commonParams.journalKeys,
-        commonParams.articleTypes, commonParams.dateRange, params));
+    model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -326,11 +356,10 @@ public class SearchController extends WombatController {
         .setSimple(false);
     commonParams.fill(query);
 
-    Map<?, ?> searchResults = solrSearchService.search(query.build());
+    SearchQuery queryObj = query.build();
+    Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("searchFilters", searchFilterService.getAdvancedSearchFilters(params.getFirst
-            ("unformattedQuery"), commonParams.journalKeys, commonParams.articleTypes,
-        commonParams.subjectList, commonParams.dateRange, params));
+    model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
     return site.getKey() + "/ftl/search/searchResults";
   }
 

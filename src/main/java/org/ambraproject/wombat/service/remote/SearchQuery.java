@@ -175,8 +175,74 @@ public class SearchQuery {
   }
 
 
+  public Optional<String> getQuery() {
+    return query;
+  }
+
+  public boolean isSimple() {
+    return isSimple;
+  }
+
+  public boolean isForRawResults() {
+    return isForRawResults;
+  }
+
+  public Optional<String> getFacet() {
+    return facet;
+  }
+
+  public int getStart() {
+    return start;
+  }
+
+  public int getRows() {
+    return rows;
+  }
+
+  public Optional<SolrSearchService.SearchCriterion> getSortOrder() {
+    return sortOrder;
+  }
+
+  public ImmutableList<String> getJournalKeys() {
+    return journalKeys;
+  }
+
+  public ImmutableList<String> getArticleTypes() {
+    return articleTypes;
+  }
+
+  public ImmutableList<String> getSubjects() {
+    return subjects;
+  }
+
+  public Optional<SolrSearchService.SearchCriterion> getDateRange() {
+    return dateRange;
+  }
+
+  public ImmutableMap<String, String> getRawParameters() {
+    return rawParameters;
+  }
+
+
   public static Builder builder() {
     return new Builder();
+  }
+
+  public Builder copy() {
+    Builder builder = builder();
+    builder.query = this.query.orNull();
+    builder.isSimple = this.isSimple;
+    builder.isForRawResults = this.isForRawResults;
+    builder.facet = this.facet.orNull();
+    builder.start = this.start;
+    builder.rows = this.rows;
+    builder.sortOrder = this.sortOrder.orNull();
+    builder.journalKeys = this.journalKeys;
+    builder.articleTypes = this.articleTypes;
+    builder.subjects = this.subjects;
+    builder.dateRange = this.dateRange.orNull();
+    builder.rawParameters = this.rawParameters;
+    return builder;
   }
 
   public static class Builder {

@@ -173,7 +173,7 @@ public class ArticleController extends WombatController {
     List<Map<?, ?>> articleListObjects = soaService.requestObject(String.format("articles/%s?lists", doi), List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
     for (Map<?, ?> articleListObject : articleListObjects) {
-      String listType = Preconditions.checkNotNull((String) articleListObject.get("listType"));
+      String listType = Preconditions.checkNotNull((String) articleListObject.get("type"));
       result.put(listType, articleListObject);
     }
     return result.asMap();

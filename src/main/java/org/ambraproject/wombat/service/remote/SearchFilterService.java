@@ -26,15 +26,15 @@ public class SearchFilterService {
   private final String JOURNAL_FACET_FIELD = "cross_published_journal_name";
 
 
-  public Map<?, ?> getSearchFilters(SearchQuery searchQuery, Multimap<String, String> urlParams)
+  public Map<?, ?> getSearchFilters(ArticleSearchQuery query, Multimap<String, String> urlParams)
       throws IOException {
-    SearchQuery.Builder queryObj = SearchQuery.builder()
+    ArticleSearchQuery.Builder queryObj = ArticleSearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)
-        .setQuery(searchQuery.getQuery().orNull())
-        .setSimple(searchQuery.isSimple())
-        .setArticleTypes(searchQuery.getArticleTypes())
-        .setSubjects(searchQuery.getSubjects())
-        .setDateRange(searchQuery.getDateRange().orNull());
+        .setQuery(query.getQuery().orNull())
+        .setSimple(query.isSimple())
+        .setArticleTypes(query.getArticleTypes())
+        .setSubjects(query.getSubjects())
+        .setDateRange(query.getDateRange().orNull());
 
     Map<?, ?> results = solrSearchService.search(queryObj.build());
 

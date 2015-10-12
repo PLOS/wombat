@@ -15,14 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class SearchQuery {
+public class ArticleSearchQuery {
 
   /**
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
-  private static final String FL = "id,eissn,publication_date,title,cross_published_journal_name,author_display,"
-      + "article_type,counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,"
-      + "alm_facebookCount,retraction,expression_of_concern";
+  private static final String ARTICLE_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
+      "id", "eissn", "publication_date", "title", "cross_published_journal_name", "author_display", "article_type",
+      "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount", "alm_mendeleyCount", "alm_twitterCount",
+      "alm_facebookCount", "retraction", "expression_of_concern"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
 
@@ -47,7 +48,7 @@ public class SearchQuery {
 
   private final ImmutableMap<String, String> rawParameters;
 
-  private SearchQuery(Builder builder) {
+  private ArticleSearchQuery(Builder builder) {
     this.query = getQueryString(builder.query);
     this.isSimple = builder.isSimple;
     this.isForRawResults = builder.isForRawResults;
@@ -101,7 +102,7 @@ public class SearchQuery {
       params.add(new BasicNameValuePair("json.nl", "map"));
     } else {
       params.add(new BasicNameValuePair("facet", "false"));
-      params.add(new BasicNameValuePair("fl", FL));
+      params.add(new BasicNameValuePair("fl", ARTICLE_FIELDS));
     }
 
     setQueryFilters(params);
@@ -365,8 +366,8 @@ public class SearchQuery {
       return this;
     }
 
-    public SearchQuery build() {
-      return new SearchQuery(this);
+    public ArticleSearchQuery build() {
+      return new ArticleSearchQuery(this);
     }
   }
 

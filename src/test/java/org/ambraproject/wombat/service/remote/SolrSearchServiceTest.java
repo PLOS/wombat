@@ -45,7 +45,7 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
   private static List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,
                                                        int rows, SolrSearchService.SearchCriterion sortOrder,
                                                        boolean forHomePage) {
-    return SearchQuery.builder()
+    return ArticleSearchQuery.builder()
         .setQuery(query)
         .setSimple(useDisMax)
         .setStart(start)
@@ -84,7 +84,7 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
   }
 
   private List<NameValuePair> buildFacetParams(String facetField, String query, boolean useDisMax) {
-    return SearchQuery.builder()
+    return ArticleSearchQuery.builder()
         .setFacet(facetField)
         .setQuery(query)
         .setSimple(useDisMax)
@@ -113,7 +113,7 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
   private static void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
                                       List<String> articleTypes, List<String> subjects,
                                       SolrSearchService.SearchCriterion dateRange) {
-    SearchQuery.builder()
+    ArticleSearchQuery.builder()
         .setJournalKeys(journalKeys)
         .setArticleTypes(articleTypes)
         .setSubjects(subjects)
@@ -236,8 +236,8 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
 
   @Test
   public void testBuildSubjectClause() {
-    assertEquals(SearchQuery.buildSubjectClause(Arrays.asList("foo")), "subject:\"foo\"");
-    assertEquals(SearchQuery.buildSubjectClause(Arrays.asList("foo", "2nd subject")),
+    assertEquals(ArticleSearchQuery.buildSubjectClause(Arrays.asList("foo")), "subject:\"foo\"");
+    assertEquals(ArticleSearchQuery.buildSubjectClause(Arrays.asList("foo", "2nd subject")),
         "subject:\"foo\" AND subject:\"2nd subject\"");
   }
 

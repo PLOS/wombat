@@ -22,7 +22,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
-import org.ambraproject.wombat.service.remote.SearchQuery;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.slf4j.Logger;
@@ -259,7 +259,7 @@ public class SearchController extends WombatController {
       }
     }
 
-    private SearchQuery.Builder fill(SearchQuery.Builder builder) {
+    private ArticleSearchQuery.Builder fill(ArticleSearchQuery.Builder builder) {
       return builder
           .setJournalKeys(journalKeys)
           .setArticleTypes(articleTypes)
@@ -271,7 +271,7 @@ public class SearchController extends WombatController {
     }
   }
 
-  private static ImmutableListMultimap<String, String> rebuildUrlParameters(SearchQuery q) {
+  private static ImmutableListMultimap<String, String> rebuildUrlParameters(ArticleSearchQuery q) {
     Preconditions.checkArgument(!q.isForRawResults());
     Preconditions.checkArgument(!q.getFacet().isPresent());
 
@@ -322,11 +322,11 @@ public class SearchController extends WombatController {
     commonParams.addToModel(model, request);
     addOptionsToModel(model);
 
-    SearchQuery.Builder query = SearchQuery.builder()
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(params.getFirst("q"))
         .setSimple(true);
     commonParams.fill(query);
-    SearchQuery queryObj = query.build();
+    ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
@@ -352,12 +352,12 @@ public class SearchController extends WombatController {
     commonParams.addToModel(model, request);
     addOptionsToModel(model);
 
-    SearchQuery.Builder query = SearchQuery.builder()
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(params.getFirst("unformattedQuery"))
         .setSimple(false);
     commonParams.fill(query);
 
-    SearchQuery queryObj = query.build();
+    ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
@@ -433,7 +433,7 @@ public class SearchController extends WombatController {
     }
     String volumeFilter = String.format("volume:%d", volume);
 
-    SearchQuery.Builder query = SearchQuery.builder()
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setFilterQueries(ImmutableList.of(volumeFilter));
     commonParams.fill(query);
 

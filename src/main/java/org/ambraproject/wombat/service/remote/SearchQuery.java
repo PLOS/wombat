@@ -155,17 +155,37 @@ public class SearchQuery {
   }
 
 
+  /**
+   * Callback object for exposing search service functionality.
+   */
   public static interface QueryExecutor {
+    /**
+     * Send a raw query to the Solr service.
+     *
+     * @param params raw parameters to send to the Solr service
+     * @return raw results from the Solr service
+     * @throws IOException
+     */
     Map<String, Map> executeQuery(List<NameValuePair> params) throws IOException;
   }
 
-  public Map<?, ?> getResults(QueryExecutor queryExecutor) throws IOException {
+  /**
+   * Build a Solr query, execute it, and return formatted results.
+   *
+   * @param queryExecutor
+   * @return search results
+   * @throws IOException
+   */
+  public Map<?, ?> search(QueryExecutor queryExecutor) throws IOException {
     List<NameValuePair> params = buildParameters();
     Map<String, Map> rawResults = queryExecutor.executeQuery(params);
+    return unpackResults(rawResults);
+  }
+
+  private Map<?, ?> unpackResults(Map<String, Map> rawResults) {
     if (isForRawResults) {
       return rawResults;
     }
-
     if (facet.isPresent()) {
       Map<String, Map> facetFields = (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
       return facetFields.get(facet.get()); //We expect facet field to be the first element of the list
@@ -174,6 +194,11 @@ public class SearchQuery {
     }
   }
 
+
+  /*
+   * These getters exist mainly for the benefit of SearchController.rebuildUrlParameters.
+   * In general, avoid calling them in favor of encapsulating the fields privately.
+   */
 
   public Optional<String> getQuery() {
     return query;

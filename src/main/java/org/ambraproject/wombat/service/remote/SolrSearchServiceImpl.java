@@ -207,7 +207,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
 
   @Override
   public Map<?, ?> search(SearchQuery searchQuery) throws IOException {
-    return searchQuery.getResults(new SearchQuery.QueryExecutor() {
+    return searchQuery.search(new SearchQuery.QueryExecutor() {
       @Override
       public Map<String, Map> executeQuery(List<NameValuePair> params) throws IOException {
         return getRawResults(params);

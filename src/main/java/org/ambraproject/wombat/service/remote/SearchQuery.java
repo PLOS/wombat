@@ -31,6 +31,8 @@ public class SearchQuery {
   private final boolean isSimple;
   private final boolean isForRawResults;
 
+  private final ImmutableList<String> filterQueries;
+
   private final Optional<String> facet;
 
   private final int start;
@@ -49,6 +51,7 @@ public class SearchQuery {
     this.query = getQueryString(builder.query);
     this.isSimple = builder.isSimple;
     this.isForRawResults = builder.isForRawResults;
+    this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
     this.facet = Optional.fromNullable(builder.facet);
     this.start = builder.start;
     this.rows = builder.rows;
@@ -71,6 +74,9 @@ public class SearchQuery {
     params.add(new BasicNameValuePair("wt", "json"));
     params.add(new BasicNameValuePair("fq", "doc_type:full"));
     params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
+    for (String filterQuery : filterQueries) {
+      params.add(new BasicNameValuePair("fq", filterQuery));
+    }
 
     if (start > 0) {
       params.add(new BasicNameValuePair("start", Integer.toString(start)));
@@ -275,6 +281,8 @@ public class SearchQuery {
     private boolean isSimple;
     private boolean isForRawResults;
 
+    private List<String> filterQueries = ImmutableList.of();
+
     private String facet;
 
     private int start;
@@ -304,6 +312,11 @@ public class SearchQuery {
 
     public Builder setForRawResults(boolean isForRawResults) {
       this.isForRawResults = isForRawResults;
+      return this;
+    }
+
+    public Builder setFilterQueries(List<String> filterQueries) {
+      this.filterQueries = filterQueries;
       return this;
     }
 

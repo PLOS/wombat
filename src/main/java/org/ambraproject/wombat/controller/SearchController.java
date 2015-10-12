@@ -16,6 +16,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -405,6 +406,43 @@ public class SearchController extends WombatController {
                                 @RequestParam(value = "filterJournals", required = true) String journal) throws IOException {
     Map<?, ?> searchResults = solrSearchService.lookupArticleByELocationId(eLocationId, journal);
     return renderSingleResult(searchResults, "elocation_id:" + eLocationId, request, model, site);
+  }
+
+  /**
+   * Searches for all articles in the volume identified by the value of the volume parameter.
+   *
+   * @param request HttpServletRequest
+   * @param model model that will be passed to the template
+   * @param site site the request originates from
+   * @param params all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
+  @RequestMapping(name = "volumeSearch", value = "/search", params = {"volume!="})
+  public String volumeSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
+    CommonParams commonParams = new CommonParams(siteSet, site);
+    commonParams.parseParams(params);
+    commonParams.addToModel(model, request);
+    addOptionsToModel(model);
+    int volume;
+    try {
+      volume = Integer.parseInt(params.getFirst("volume"));
+    } catch (NumberFormatException nfe) {
+      return renderEmptyResults(null, "volume:" + params.getFirst("volume"), model, site);
+    }
+    String volumeFilter = String.format("volume:%d", volume);
+
+    SearchQuery.Builder query = SearchQuery.builder()
+        .setFilterQueries(ImmutableList.of(volumeFilter));
+    commonParams.fill(query);
+
+    Map<?, ?> searchResults = solrSearchService.search(query.build());
+    model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
+    model.addAttribute("otherQuery", volumeFilter);
+    model.addAttribute("searchFilters", searchFilterService.getVolumeSearchFilters(volume,
+        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
+    return site.getKey() + "/ftl/search/searchResults";
   }
 
   /**

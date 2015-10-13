@@ -146,6 +146,8 @@
                 </#list>
               </dl>
             </div>
+          </#if>
+          <#if searchFilters.subject_area??>
             <div>
               <h3>Subject Areas</h3>
               <dl id="searchFilterBySubjectArea">

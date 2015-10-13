@@ -50,6 +50,16 @@ public interface SolrSearchService {
    */
   public Map<?, ?> search(ArticleSearchQuery query) throws IOException;
 
+  /**
+   * Perform a search, modifying the query with an additional filter by volume number.
+   *
+   * @param query        the base query
+   * @param volumeNumber the volume number to filter by
+   * @return deserialized JSON returned by the search server
+   * @throws IOException
+   */
+  Map<?, ?> searchVolume(ArticleSearchQuery query, int volumeNumber) throws IOException;
+
 
   /**
    * Attempts to retrieve information about an article based on the DOI.

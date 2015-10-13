@@ -438,15 +438,11 @@ public class SearchController extends WombatController {
     } catch (NumberFormatException nfe) {
       return renderEmptyResults(null, "volume:" + params.getFirst("volume"), model, site);
     }
-    String volumeFilter = String.format("volume:%d", volume);
 
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setFilterQueries(ImmutableList.of(volumeFilter));
-    commonParams.fill(query);
-
-    Map<?, ?> searchResults = solrSearchService.search(query.build());
+    ArticleSearchQuery query = commonParams.fill(ArticleSearchQuery.builder()).build();
+    Map<?, ?> searchResults = solrSearchService.searchVolume(query, volume);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("otherQuery", volumeFilter);
+    model.addAttribute("otherQuery", String.format("volume:%d", volume));
     model.addAttribute("searchFilters", searchFilterService.getVolumeSearchFilters(volume,
         commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
     return site.getKey() + "/ftl/search/searchResults";

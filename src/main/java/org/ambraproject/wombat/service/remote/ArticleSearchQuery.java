@@ -15,14 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class SearchQuery {
+public class ArticleSearchQuery {
 
   /**
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
-  private static final String FL = "id,eissn,publication_date,title,cross_published_journal_name,author_display,"
-      + "article_type,counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,"
-      + "alm_facebookCount,retraction,expression_of_concern";
+  private static final String ARTICLE_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
+      "id", "eissn", "publication_date", "title", "cross_published_journal_name", "author_display", "article_type",
+      "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount", "alm_mendeleyCount", "alm_twitterCount",
+      "alm_facebookCount", "retraction", "expression_of_concern"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
 
@@ -30,6 +31,8 @@ public class SearchQuery {
   private final Optional<String> query;
   private final boolean isSimple;
   private final boolean isForRawResults;
+
+  private final ImmutableList<String> filterQueries;
 
   private final Optional<String> facet;
 
@@ -45,10 +48,11 @@ public class SearchQuery {
 
   private final ImmutableMap<String, String> rawParameters;
 
-  private SearchQuery(Builder builder) {
+  private ArticleSearchQuery(Builder builder) {
     this.query = getQueryString(builder.query);
     this.isSimple = builder.isSimple;
     this.isForRawResults = builder.isForRawResults;
+    this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
     this.facet = Optional.fromNullable(builder.facet);
     this.start = builder.start;
     this.rows = builder.rows;
@@ -71,6 +75,9 @@ public class SearchQuery {
     params.add(new BasicNameValuePair("wt", "json"));
     params.add(new BasicNameValuePair("fq", "doc_type:full"));
     params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
+    for (String filterQuery : filterQueries) {
+      params.add(new BasicNameValuePair("fq", filterQuery));
+    }
 
     if (start > 0) {
       params.add(new BasicNameValuePair("start", Integer.toString(start)));
@@ -95,7 +102,7 @@ public class SearchQuery {
       params.add(new BasicNameValuePair("json.nl", "map"));
     } else {
       params.add(new BasicNameValuePair("facet", "false"));
-      params.add(new BasicNameValuePair("fl", FL));
+      params.add(new BasicNameValuePair("fl", ARTICLE_FIELDS));
     }
 
     setQueryFilters(params);
@@ -155,17 +162,37 @@ public class SearchQuery {
   }
 
 
+  /**
+   * Callback object for exposing search service functionality.
+   */
   public static interface QueryExecutor {
+    /**
+     * Send a raw query to the Solr service.
+     *
+     * @param params raw parameters to send to the Solr service
+     * @return raw results from the Solr service
+     * @throws IOException
+     */
     Map<String, Map> executeQuery(List<NameValuePair> params) throws IOException;
   }
 
-  public Map<?, ?> getResults(QueryExecutor queryExecutor) throws IOException {
+  /**
+   * Build a Solr query, execute it, and return formatted results.
+   *
+   * @param queryExecutor
+   * @return search results
+   * @throws IOException
+   */
+  public Map<?, ?> search(QueryExecutor queryExecutor) throws IOException {
     List<NameValuePair> params = buildParameters();
     Map<String, Map> rawResults = queryExecutor.executeQuery(params);
+    return unpackResults(rawResults);
+  }
+
+  private Map<?, ?> unpackResults(Map<String, Map> rawResults) {
     if (isForRawResults) {
       return rawResults;
     }
-
     if (facet.isPresent()) {
       Map<String, Map> facetFields = (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
       return facetFields.get(facet.get()); //We expect facet field to be the first element of the list
@@ -174,6 +201,11 @@ public class SearchQuery {
     }
   }
 
+
+  /*
+   * These getters exist mainly for the benefit of SearchController.rebuildUrlParameters.
+   * In general, avoid calling them in favor of encapsulating the fields privately.
+   */
 
   public Optional<String> getQuery() {
     return query;
@@ -250,6 +282,8 @@ public class SearchQuery {
     private boolean isSimple;
     private boolean isForRawResults;
 
+    private List<String> filterQueries = ImmutableList.of();
+
     private String facet;
 
     private int start;
@@ -267,68 +301,117 @@ public class SearchQuery {
     private Builder() {
     }
 
+    /**
+     * Set the raw search query
+     *
+     * @param query raw string of text to search for
+     */
     public Builder setQuery(String query) {
       this.query = query;
       return this;
     }
 
+    /**
+     * Set the search type. Simple search uses dismax in Solr, and is represented in the search URL
+     * as the "q" parameter. Advanced search does not use dismax in Solr, and is represented in the
+     * URL as the "unformattedQuery" parameter.
+     */
     public Builder setSimple(boolean isSimple) {
       this.isSimple = isSimple;
       return this;
     }
 
+    /**
+     * @param isForRawResults Flag the search to return raw results. Is only used to retrieve Solr stats.
+     */
     public Builder setForRawResults(boolean isForRawResults) {
       this.isForRawResults = isForRawResults;
       return this;
     }
 
+    /**
+     * @param filterQueries a list of additional filter queries to be executed in Solr
+     */
+    public Builder setFilterQueries(List<String> filterQueries) {
+      this.filterQueries = filterQueries;
+      return this;
+    }
+
+    /**
+     * @param facet the facet to search for as it is stored in Solr. Setting this will also set the
+     *              search itself as a "faceted" search.
+     */
     public Builder setFacet(String facet) {
       this.facet = facet;
       return this;
     }
 
+    /**
+     * @param start the start position to query from in Solr
+     */
     public Builder setStart(int start) {
       this.start = start;
       return this;
     }
 
+    /**
+     * @param rows the number of results to return from the Solr search
+     */
     public Builder setRows(int rows) {
       this.rows = rows;
       return this;
     }
 
+    /**
+     * @param sortOrder the sort order of the results returned from Solr
+     */
     public Builder setSortOrder(SolrSearchService.SearchCriterion sortOrder) {
       this.sortOrder = sortOrder;
       return this;
     }
 
+    /**
+     * @param journalKeys set the journals to filter by
+     */
     public Builder setJournalKeys(List<String> journalKeys) {
       this.journalKeys = journalKeys;
       return this;
     }
 
+    /**
+     * @param articleTypes set the article types to filter by
+     */
     public Builder setArticleTypes(List<String> articleTypes) {
       this.articleTypes = articleTypes;
       return this;
     }
 
+    /**
+     * @param subjects set the subjects to filter by
+     */
     public Builder setSubjects(List<String> subjects) {
       this.subjects = subjects;
       return this;
     }
 
+    /**
+     * @param dateRange set the date range to filter by
+     */
     public Builder setDateRange(SolrSearchService.SearchCriterion dateRange) {
       this.dateRange = dateRange;
       return this;
     }
 
+    /**
+     * @param rawParameters flag the query to use raw parameters. Is only used to retrieve Solr stats.
+     */
     public Builder setRawParameters(Map<String, String> rawParameters) {
       this.rawParameters = rawParameters;
       return this;
     }
 
-    public SearchQuery build() {
-      return new SearchQuery(this);
+    public ArticleSearchQuery build() {
+      return new ArticleSearchQuery(this);
     }
 
     public Builder setCommonQueryParams(SearchQuery searchQuery) {

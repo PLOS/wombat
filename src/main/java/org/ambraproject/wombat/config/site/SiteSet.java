@@ -49,6 +49,19 @@ public class SiteSet {
     return builder.build();
   }
 
+  /**
+   * Build a map representing the one-to-one relationship between journal keys and journal names.
+   * <p/>
+   * As a side effect, validates that the relationship actually is one-to-one -- that is, that multiple sites have the
+   * same journal key if and only if they have the same journal name. It is easier to obey this constraint if the {@code
+   * journalKey} and {@code journalName} config values are always set in the {@code journal.yaml} or {@code
+   * journal.json} file of the same theme, which should be a parent of all themes belonging to that journal.
+   *
+   * @param sites the set of all sites being served
+   * @return a map between journal keys and journal names
+   * @throws IllegalArgumentException if two sites with the same journal key have unequal journal names or if two sites
+   *                                  with the same journal name have unequal journal keys
+   */
   private static ImmutableBiMap<String, String> buildJournalKeysToNames(Set<Site> sites) {
     Multimap<String, Site> keysToSites = groupByJournalKey(sites);
     BiMap<String, String> keysToNames = HashBiMap.create(keysToSites.keySet().size());

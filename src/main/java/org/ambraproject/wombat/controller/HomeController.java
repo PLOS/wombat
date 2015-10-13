@@ -7,7 +7,7 @@ import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.RecentArticleService;
-import org.ambraproject.wombat.service.remote.SearchQuery;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
@@ -81,7 +81,7 @@ public class HomeController extends WombatController {
     private static List<Object> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
                                                     SolrSearchServiceImpl.SolrSortOrder order)
         throws IOException {
-      SearchQuery.Builder query = SearchQuery.builder()
+      ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
           .setStart(start)
           .setRows(section.resultCount)
           .setSortOrder(order)

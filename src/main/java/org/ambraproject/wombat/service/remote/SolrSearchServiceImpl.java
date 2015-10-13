@@ -206,8 +206,8 @@ public class SolrSearchServiceImpl implements SolrSearchService {
   private RuntimeConfiguration runtimeConfiguration;
 
   @Override
-  public Map<?, ?> search(SearchQuery searchQuery) throws IOException {
-    return searchQuery.getResults(new SearchQuery.QueryExecutor() {
+  public Map<?, ?> search(ArticleSearchQuery query) throws IOException {
+    return query.search(new ArticleSearchQuery.QueryExecutor() {
       @Override
       public Map<String, Map> executeQuery(List<NameValuePair> params) throws IOException {
         return getRawResults(params);
@@ -278,7 +278,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     rawQueryParams.put("stats", "true");
     rawQueryParams.put("stats.field", fieldName);
 
-    SearchQuery.Builder query = SearchQuery.builder()
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setForRawResults(true)
         .setRawParameters(rawQueryParams)
         .setSortOrder(SolrSortOrder.RELEVANCE)

@@ -10,22 +10,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class is used exclusively in the @code{SearchFilterService} to create @code{SearchFilter}s
+ * from faceted search results returned from Solr.
+ */
 public class SearchFilterFactory {
 
   @Autowired
   private SearchFilterTypeMap filterTypeMap;
 
   /**
-   * Parses results from a faceted search into a @code{SearchFilter} object.
+   * The main create method of the factory. Creates a @code{SearchFilter} in three steps:
+   *
+   * 1. Retrieve the specified @code{SearchFilterType} using the @code{SearchFilterTypeMap}
+   * 2. Parse the results from a faceted search into individual @code{SearchFilterItem}s
+   * 3. Combine all SearchFilterItems into a @code{SearchFilter} object.
+   *
    * Note that the @code{ArticleSearchQuery.Builder} query must be set as a faceted search
    * by calling setFacet()
    *
    * @param results faceted search results returned from Solr
    * @param filterTypeMapKey key for the filter type
    * @param params URL parameters applicable to the search
-   * @return @code{SearchFilter} object that contains the faceted search results
+   * @return @code{SearchFilter} object made up of one or many @code{SearchFilterItems} that contain
+   * the faceted search results. The SearchFilterItems also house a /search URL that represents
+   * how the filter would be applied or removed from a search.
    */
-  public SearchFilter parseFacetedSearchResult(Map<?, ?> results, String filterTypeMapKey,
+  public SearchFilter createSearchFilter(Map<?, ?> results, String filterTypeMapKey,
       Multimap<String, String> params) {
 
     SearchFilterType filterType = filterTypeMap.getSearchFilterByKey(filterTypeMapKey);
@@ -36,8 +47,8 @@ public class SearchFilterFactory {
 
       Double numberOfHits = (Double) entry.getValue();
 
+      //displayName is often represented by the filter value
       String displayName = entry.getKey().toString();
-      //displayName may represent the filter value as well
 
       ListMultimap<String, String> changedParams = applyFilterToParams(displayName, params,
           filterType);

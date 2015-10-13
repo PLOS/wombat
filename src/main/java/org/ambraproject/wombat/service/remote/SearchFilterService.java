@@ -47,7 +47,7 @@ public class SearchFilterService {
 
     Map<?, ?> results = solrSearchService.search(queryObj.build());
 
-    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(results, JOURNAL, urlParams);
+    SearchFilter journalFilter = searchFilterFactory.createSearchFilter(results, JOURNAL, urlParams);
     Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     // TODO: add other filters here

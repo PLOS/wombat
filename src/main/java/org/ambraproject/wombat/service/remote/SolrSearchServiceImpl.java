@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
@@ -213,6 +214,15 @@ public class SolrSearchServiceImpl implements SolrSearchService {
         return getRawResults(params);
       }
     });
+  }
+
+  @Override
+  public Map<?, ?> searchVolume(ArticleSearchQuery query, int volumeNumber) throws IOException {
+    String volumeFilter = String.format("volume:%d", volumeNumber);
+    ArticleSearchQuery volumeQuery = query.copy()
+        .setFilterQueries(ImmutableList.of(volumeFilter))
+        .build();
+    return search(volumeQuery);
   }
 
   @Override

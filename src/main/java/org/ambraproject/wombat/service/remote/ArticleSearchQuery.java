@@ -271,6 +271,7 @@ public class ArticleSearchQuery {
     builder.query = this.query.orNull();
     builder.isSimple = this.isSimple;
     builder.isForRawResults = this.isForRawResults;
+    builder.filterQueries = this.filterQueries;
     builder.facet = this.facet.orNull();
     builder.start = this.start;
     builder.rows = this.rows;

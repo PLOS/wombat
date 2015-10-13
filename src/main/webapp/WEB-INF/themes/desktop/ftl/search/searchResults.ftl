@@ -37,7 +37,7 @@
     <ul id="searchFilterBy${filterTypeName}">
       <#list  searchFilter.searchFilterResult as searchFilterItem>
         <#if !searchFilterItem.displayName?lower_case?contains("collections") >
-          <li>
+          <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility= "none"</#if>>
             <@siteLink handlerName="simpleSearch"
             queryParameters=searchFilterItem.filteredResultsParameters ; href>
               <a href="${href}"
@@ -49,6 +49,14 @@
           </li>
         </#if>
       </#list>
+      <#if searchFilter.searchFilterResult?size gt 5>
+        <li data-js-toggle="toggle_trigger" data>
+          <a>[ show more ]</a>
+        </li>
+        <li data-js-toggle="toggle_trigger"  data-visibility= "none">
+          <a>[ show less ]</a>
+        </li>
+      </#if>
     </ul>
   </div>
 </#macro>

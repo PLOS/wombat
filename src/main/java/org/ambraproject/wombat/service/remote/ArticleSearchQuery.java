@@ -414,7 +414,7 @@ public class ArticleSearchQuery {
       return new ArticleSearchQuery(this);
     }
 
-    public Builder setCommonQueryParams(SearchQuery searchQuery) {
+    public Builder setCommonQueryParams(ArticleSearchQuery searchQuery) {
       this.setQuery(searchQuery.getQuery().orNull())
           .setSimple(searchQuery.isSimple())
           .setArticleTypes(searchQuery.getArticleTypes())

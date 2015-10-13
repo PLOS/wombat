@@ -29,35 +29,43 @@ public class SearchFilterService {
 
   private final String SUBJECT_AREA_FACET_FIELD = "subject_facet";
 
-  public Map<?, ?> getSearchFilters(SearchQuery searchQuery, Multimap<String, String> urlParams)
+  /**
+   * Retrieves a map of search filters to be added to the model. The filters displayed will change
+   * depending on the query executed, but the number and type of filters is constant.
+   *
+   * @param query Execute query to determine the search filter results.
+   *              Must be set as faceted with the setFacet() method
+   * @param urlParams search URL parameters that have been rebuilt from the ArticleSearchQuery object
+   * @return HashMap containing all applicable filters
+   * @throws IOException
+   */
+  public Map<?, ?> getSearchFilters(ArticleSearchQuery query, Multimap<String, String> urlParams)
       throws IOException {
-    SearchQuery.Builder journalFacetSearchQuery = SearchQuery.builder()
+
+    ArticleSearchQuery.Builder journalFacetQuery = ArticleSearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)
-        .setCommonQueryParams(searchQuery);
+        .setCommonQueryParams(query);
+    Map<?, ?> journalFacetResults = solrSearchService.search(journalFacetQuery.build());
+    SearchFilter journalFilter = searchFilterFactory
+        .createSearchFilter(journalFacetResults, JOURNAL, urlParams);
 
-    Map<?, ?> journalFacetResults = solrSearchService.search(journalFacetSearchQuery.build());
-
-    SearchFilter journalFilter = searchFilterFactory.parseFacetedSearchResult(journalFacetResults,
-        JOURNAL, urlParams);
-
-    SearchQuery.Builder subjectAreaFacetSearchQuery = SearchQuery.builder()
+    ArticleSearchQuery.Builder subjectAreaFacetQuery = ArticleSearchQuery.builder()
         .setFacet(SUBJECT_AREA_FACET_FIELD)
-        .setCommonQueryParams(searchQuery);
-
-    Map<?, ?> subjectAreaFacetResults = solrSearchService.search(subjectAreaFacetSearchQuery.build());
-
-    SearchFilter subjectAreaFilter = searchFilterFactory.parseFacetedSearchResult(
-        subjectAreaFacetResults, SUBJECT_AREA, urlParams);
+        .setCommonQueryParams(query);
+    Map<?, ?> subjectAreaFacetResults = solrSearchService.search(subjectAreaFacetQuery.build());
+    SearchFilter subjectAreaFilter = searchFilterFactory
+        .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
 
     Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     filters.put(SUBJECT_AREA, subjectAreaFilter);
+
     // TODO: add other filters here
     return filters;
   }
 
   public Map<?, ?> getVolumeSearchFilters(int volume, List<String> journalKeys, List<String> articleTypes,
-                                          SolrSearchService.SearchCriterion dateRange) throws IOException {
+      SolrSearchService.SearchCriterion dateRange) throws IOException {
     Map<String, SearchFilter> filters = new HashMap<>();
     // TODO: add other filters here (filter by journal is not applicable here)
     return filters;

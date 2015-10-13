@@ -301,66 +301,110 @@ public class ArticleSearchQuery {
     private Builder() {
     }
 
+    /**
+     * Set the raw search query
+     *
+     * @param query raw string of text to search for
+     */
     public Builder setQuery(String query) {
       this.query = query;
       return this;
     }
 
+    /**
+     * Set the search type. Simple search uses dismax in Solr, and is represented in the search URL
+     * as the "q" parameter. Advanced search does not use dismax in Solr, and is represented in the
+     * URL as the "unformattedQuery" parameter.
+     */
     public Builder setSimple(boolean isSimple) {
       this.isSimple = isSimple;
       return this;
     }
 
+    /**
+     * @param isForRawResults Flag the search to return raw results. Is only used to retrieve Solr stats.
+     */
     public Builder setForRawResults(boolean isForRawResults) {
       this.isForRawResults = isForRawResults;
       return this;
     }
 
+    /**
+     * @param filterQueries a list of additional filter queries to be executed in Solr
+     */
     public Builder setFilterQueries(List<String> filterQueries) {
       this.filterQueries = filterQueries;
       return this;
     }
 
+    /**
+     * @param facet the facet to search for as it is stored in Solr. Setting this will also set the
+     *              search itself as a "faceted" search.
+     */
     public Builder setFacet(String facet) {
       this.facet = facet;
       return this;
     }
 
+    /**
+     * @param start the start position to query from in Solr
+     */
     public Builder setStart(int start) {
       this.start = start;
       return this;
     }
 
+    /**
+     * @param rows the number of results to return from the Solr search
+     */
     public Builder setRows(int rows) {
       this.rows = rows;
       return this;
     }
 
+    /**
+     * @param sortOrder the sort order of the results returned from Solr
+     */
     public Builder setSortOrder(SolrSearchService.SearchCriterion sortOrder) {
       this.sortOrder = sortOrder;
       return this;
     }
 
+    /**
+     * @param journalKeys set the journals to filter by
+     */
     public Builder setJournalKeys(List<String> journalKeys) {
       this.journalKeys = journalKeys;
       return this;
     }
 
+    /**
+     * @param articleTypes set the article types to filter by
+     */
     public Builder setArticleTypes(List<String> articleTypes) {
       this.articleTypes = articleTypes;
       return this;
     }
 
+    /**
+     * @param subjects set the subjects to filter by
+     */
     public Builder setSubjects(List<String> subjects) {
       this.subjects = subjects;
       return this;
     }
 
+    /**
+     * @param dateRange set the date range to filter by
+     */
     public Builder setDateRange(SolrSearchService.SearchCriterion dateRange) {
       this.dateRange = dateRange;
       return this;
     }
 
+    /**
+     * @param rawParameters flag the query to use raw parameters. Is only used to retrieve Solr stats.
+     */
     public Builder setRawParameters(Map<String, String> rawParameters) {
       this.rawParameters = rawParameters;
       return this;

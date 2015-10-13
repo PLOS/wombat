@@ -15,6 +15,16 @@ public class SearchFilterFactory {
   @Autowired
   private SearchFilterTypeMap filterTypeMap;
 
+  /**
+   * Parses results from a faceted search into a @code{SearchFilter} object.
+   * Note that the @code{ArticleSearchQuery.Builder} query must be set as a faceted search
+   * by calling setFacet()
+   *
+   * @param results faceted search results returned from Solr
+   * @param filterTypeMapKey key for the filter type
+   * @param params URL parameters applicable to the search
+   * @return @code{SearchFilter} object that contains the faceted search results
+   */
   public SearchFilter parseFacetedSearchResult(Map<?, ?> results, String filterTypeMapKey,
       Multimap<String, String> params) {
 
@@ -39,6 +49,14 @@ public class SearchFilterFactory {
     return new SearchFilter(searchFilterResult);
   }
 
+  /**
+   * Examines the current URL parameters, and toggles the selected parameter.
+   *
+   * @param displayName used to retrieve the filter value from the filter type map
+   * @param params current URL parameters to be modified
+   * @param filterType used to retrieve selected filter parameter name and value
+   * @return filtered URL parameter List
+   */
   private ListMultimap<String, String> applyFilterToParams(String displayName,
       Multimap<String, String> params, SearchFilterType filterType) {
     String filterValue = filterType.getFilterValue(displayName);

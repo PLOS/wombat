@@ -25,7 +25,16 @@ public class SearchFilterService {
 
   private final String JOURNAL_FACET_FIELD = "cross_published_journal_name";
 
-
+  /**
+   * Retrieves a map of search filters to be added to the model. The filters displayed will change
+   * depending on the query executed, but the number and type of filters is constant.
+   *
+   * @param query Execute query to determine the search filter results.
+   *              Must be set as faceted with the setFacet() method
+   * @param urlParams search URL parameters that have been rebuilt from the ArticleSearchQuery object
+   * @return HashMap containing all applicable filters
+   * @throws IOException
+   */
   public Map<?, ?> getSearchFilters(ArticleSearchQuery query, Multimap<String, String> urlParams)
       throws IOException {
     ArticleSearchQuery.Builder queryObj = ArticleSearchQuery.builder()

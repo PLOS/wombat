@@ -271,6 +271,13 @@ public class SearchController extends WombatController {
     }
   }
 
+  /**
+   * Examine the current @code{ArticleSearchQuery} object and build a single URL parameter
+   * string to append to the current search URL.
+   *
+   * @param q the search query to rebuild search URL parameters from
+   * @return ImmutableListMultimap that contains the URL parameter list
+   */
   private static ImmutableListMultimap<String, String> rebuildUrlParameters(ArticleSearchQuery q) {
     Preconditions.checkArgument(!q.isForRawResults());
     Preconditions.checkArgument(!q.getFacet().isPresent());

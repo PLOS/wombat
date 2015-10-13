@@ -11,11 +11,10 @@ import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ReaderService;
-import org.ambraproject.wombat.service.remote.SearchFilterService;
-import org.ambraproject.wombat.service.remote.SearchService;
+import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SoaServiceImpl;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.ambraproject.wombat.service.remote.StreamService;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -99,13 +98,8 @@ public class RootConfiguration {
   }
 
   @Bean
-  public SearchService searchService() {
-    return new SolrSearchService();
-  }
-
-  @Bean
-  public SearchFilterService searchFilterService() {
-    return new SearchFilterService();
+  public SolrSearchService searchService() {
+    return new SolrSearchServiceImpl();
   }
 
   @Bean

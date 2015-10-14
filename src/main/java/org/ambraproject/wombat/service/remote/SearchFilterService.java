@@ -44,14 +44,24 @@ public class SearchFilterService {
 
     ArticleSearchQuery.Builder journalFacetQuery = ArticleSearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)
-        .setCommonQueryParams(query);
+        .setQuery(query.getQuery().orNull())
+        .setSimple(query.isSimple())
+        .setArticleTypes(query.getArticleTypes())
+        .setSubjects(query.getSubjects())
+        .setDateRange(query.getDateRange().orNull());
+
     Map<?, ?> journalFacetResults = solrSearchService.search(journalFacetQuery.build());
     SearchFilter journalFilter = searchFilterFactory
         .createSearchFilter(journalFacetResults, JOURNAL, urlParams);
 
     ArticleSearchQuery.Builder subjectAreaFacetQuery = ArticleSearchQuery.builder()
         .setFacet(SUBJECT_AREA_FACET_FIELD)
-        .setCommonQueryParams(query);
+        .setQuery(query.getQuery().orNull())
+        .setSimple(query.isSimple())
+        .setArticleTypes(query.getArticleTypes())
+        .setDateRange(query.getDateRange().orNull())
+        .setJournalKeys(query.getJournalKeys());
+
     Map<?, ?> subjectAreaFacetResults = solrSearchService.search(subjectAreaFacetQuery.build());
     SearchFilter subjectAreaFilter = searchFilterFactory
         .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);

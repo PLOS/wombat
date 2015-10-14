@@ -413,15 +413,5 @@ public class ArticleSearchQuery {
     public ArticleSearchQuery build() {
       return new ArticleSearchQuery(this);
     }
-
-    public Builder setCommonQueryParams(ArticleSearchQuery searchQuery) {
-      this.setQuery(searchQuery.getQuery().orNull())
-          .setSimple(searchQuery.isSimple())
-          .setArticleTypes(searchQuery.getArticleTypes())
-          .setSubjects(searchQuery.getSubjects())
-          .setDateRange(searchQuery.getDateRange().orNull());
-      return this;
-    }
   }
-
 }

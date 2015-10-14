@@ -101,7 +101,8 @@ public abstract class WombatController {
    * client.
    */
   private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, X_REPROXY_URL, X_REPROXY_CACHE_FOR);
+      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, HttpHeaders.CONTENT_LENGTH,
+      X_REPROXY_URL, X_REPROXY_CACHE_FOR);
   protected static final HttpMessageUtil.HeaderFilter ASSET_RESPONSE_HEADER_FILTER = new HttpMessageUtil.HeaderFilter() {
     @Override
     public String getValue(Header header) {

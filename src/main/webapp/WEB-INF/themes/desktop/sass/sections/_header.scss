@@ -265,7 +265,7 @@ $width-nav: $block-grid-elements - $width-logo;
       box-shadow: $nav-main-box-shadow;
       }
     .mega {
-      width: rem-calc(980); //width of page
+      width: rem-calc(960); //width of page
       left: rem-calc(-594); //TODO- where do we get this value from should be more dynamic?
       position: relative;
       padding-bottom: 0;

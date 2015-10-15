@@ -34,7 +34,7 @@
 
 
 <#if externalData.name??>
-  <div id="external-content-container" data-service="${externalServiceName}" data-${externalData.name}-container/>
+  <div id="external-content-container" data-service="${externalServiceName}" data-${externalData.name}-container> </div>
 </#if>
 
 <#include "../common/footer/footer.ftl" />

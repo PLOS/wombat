@@ -29,6 +29,8 @@ public class SearchFilterFactory {
    * Note that the @code{ArticleSearchQuery.Builder} query must be set as a faceted search
    * by calling setFacet()
    *
+   * Note that no search filter items with a name containing "collections" will be included
+   *
    * @param results faceted search results returned from Solr
    * @param filterTypeMapKey key for the filter type
    * @param params URL parameters applicable to the search
@@ -49,6 +51,11 @@ public class SearchFilterFactory {
 
       //displayName is often represented by the filter value
       String displayName = entry.getKey().toString();
+
+      //todo: don't hardcode this
+      if(displayName.toLowerCase().contains("collections")) {
+        continue;
+      }
 
       ListMultimap<String, String> changedParams = applyFilterToParams(displayName, params,
           filterType);

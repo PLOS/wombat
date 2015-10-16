@@ -36,18 +36,15 @@
     <h3>${filterTypeName}</h3>
     <ul id="searchFilterBy${filterTypeName}">
       <#list  searchFilter.searchFilterResult as searchFilterItem>
-        <#if !searchFilterItem.displayName?lower_case?contains("collections") >
-          <li>
-            <@siteLink handlerName="simpleSearch"
-            queryParameters=searchFilterItem.filteredResultsParameters ; href>
-              <a href="${href}"
-                 data-filter-param="${searchFilterItem.filterParamName}"
-                 data-filter-value="${searchFilterItem.filterValue}">
+        <li>
+          <@siteLink handlerName="simpleSearch" queryParameters=searchFilterItem.filteredResultsParameters ; href>
+            <a href="${href}"
+               data-filter-param="${searchFilterItem.filterParamName}"
+               data-filter-value="${searchFilterItem.filterValue}">
               ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
-              </a>
-            </@siteLink>
-          </li>
-        </#if>
+            </a>
+          </@siteLink>
+        </li>
       </#list>
     </ul>
   </div>

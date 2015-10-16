@@ -31,12 +31,13 @@
 </#if>
 <#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set" />
 
+<#include "suppressSearchFilter.ftl" />
 <#macro searchFilter filterTypeName searchFilter>
   <div>
     <h3>${filterTypeName}</h3>
     <ul id="searchFilterBy${filterTypeName}">
       <#list  searchFilter.searchFilterResult as searchFilterItem>
-        <#if !searchFilterItem.displayName?lower_case?contains("collections") >
+        <#if !suppressSearchFilter(searchFilterItem) >
           <li>
             <@siteLink handlerName="simpleSearch"
             queryParameters=searchFilterItem.filteredResultsParameters ; href>

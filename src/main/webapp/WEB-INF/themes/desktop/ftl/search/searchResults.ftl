@@ -31,6 +31,29 @@
 </#if>
 <#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set" />
 
+<#include "suppressSearchFilter.ftl" />
+<#macro searchFilter filterTypeName searchFilter>
+  <div>
+    <h3>${filterTypeName}</h3>
+    <ul id="searchFilterBy${filterTypeName}">
+      <#list  searchFilter.searchFilterResult as searchFilterItem>
+        <#if !suppressSearchFilter(searchFilterItem) >
+          <li>
+            <@siteLink handlerName="simpleSearch"
+            queryParameters=searchFilterItem.filteredResultsParameters ; href>
+              <a href="${href}"
+                 data-filter-param="${searchFilterItem.filterParamName}"
+                 data-filter-value="${searchFilterItem.filterValue}">
+              ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
+              </a>
+            </@siteLink>
+          </li>
+        </#if>
+      </#list>
+    </ul>
+  </div>
+</#macro>
+
 <body class="static ${journalStyle} search-results-body">
 
 <#assign headerOmitMain = true />
@@ -126,27 +149,10 @@
     <#if searchFilters?? >
         <aside id="searchFilters">
           <#if searchFilters.journal??>
-            <div>
-              <h3>Journal</h3>
-              <dl id="searchFilterByJournal">
-                <#assign journalFilter = searchFilters.journal />
-                <#list  journalFilter.searchFilterResult as searchFilterItem>
-                  <#if !searchFilterItem.displayName?lower_case?contains("collections") >
-                    <dt>
-                    <@siteLink handlerName="simpleSearch"
-                      queryParameters=searchFilterItem.filteredResultsParameters
-                      ; href>
-                      <a href="${href}"
-                         data-filter-param="${searchFilterItem.filterParamName}"
-                         data-filter-value="${searchFilterItem.filterValue}">
-                        ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
-                      </a>
-                    </@siteLink>
-                    </dt>
-                  </#if>
-                </#list>
-              </dl>
-            </div>
+            <@searchFilter "Journal", searchFilters.journal/>
+          </#if>
+          <#if searchFilters.subject_area??>
+            <@searchFilter "Subject Area", searchFilters.subject_area/>
           </#if>
         </aside>
     </#if>

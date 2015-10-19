@@ -421,5 +421,4 @@ public class ArticleSearchQuery {
       return new ArticleSearchQuery(this);
     }
   }
-
 }

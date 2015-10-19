@@ -7,6 +7,7 @@ import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.controller.UserController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
@@ -126,6 +127,34 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     }
   }
 
+  /*
+   * Flag to mark a hideous kludge in two places, which we'd like to factor out.
+   *
+   * The kludge is needed because of the special "/user/logout" URL that is mapped to UserController.redirectToSignOut.
+   * Before SiteRequestCondition was introduced, the redirectToSignOut controller method was a special one that was not
+   * mapped to any Site. This is necessary because we point to it from root-context.xml in order to control special
+   * Spring security behavior.
+   *
+   * The logout endpoint is currently broken because root-context.xml points directly at "/user/logout" with no site
+   * token. It is difficult, maybe impossible, to inject configured site data before the requestSingleLogoutFilter bean
+   * is constructed. Even if we did, the bean would not know which site's URL to use. When a user logs out, Spring
+   * directs them to that URL that, without this kludge, can't be matched to a site and thus shows a siteless 404 page.
+   *
+   * The kludge fixes it as follows. First, we look for this special pattern and always map it with no site token.
+   * Second, we catch requests mapped to that pattern and ignore site-resolution errors in those cases, so that the
+   * requests reach the controller. From there, the controller works as intended.
+   *
+   * Separately, root-context.xml will point as the hard-coded "/user/logout" URL even if it should be overridden in
+   * theme config. This bug would exist without the kludge, and the kludge does not fix it.
+   *
+   * TODO when kludge is no longer needed:
+   * (i.e., when you can switch to "USING_USER_LOGOUT_KLUDGE = false" and everything still works)
+   *   1. Inline UserController.USER_LOGOUT_PATTERN back into its @RequestMapping annotation
+   *   2. Delete USING_USER_LOGOUT_KLUDGE
+   *   3. Delete all if-blocks that begin "if (USING_USER_LOGOUT_KLUDGE && ...)"
+   */
+  private static final boolean USING_USER_LOGOUT_KLUDGE = true;
+
   /**
    * If the site is configured to be resolved with a path token, modify the pattern by adding a wildcard that will
    * capture the path token.
@@ -135,6 +164,10 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
    * @return the pattern value, modified if necessary
    */
   private static String checkSitePathToken(Site site, String pattern) {
+    if (USING_USER_LOGOUT_KLUDGE && pattern.equals(UserController.USER_LOGOUT_PATTERN)) {
+      return pattern;
+    }
+
     if (site.getRequestScheme().hasPathToken()) {
       StringBuilder modified = new StringBuilder(pattern.length() + 3);
       modified.append("/*");
@@ -151,6 +184,11 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   @Override
   public SiteRequestCondition getMatchingCondition(HttpServletRequest request) {
     Site site = siteResolver.resolveSite(request);
+
+    if (USING_USER_LOGOUT_KLUDGE && (site == null) && request.getServletPath().endsWith(UserController.USER_LOGOUT_PATTERN)) {
+      return this;
+    }
+
     PatternsRequestCondition patternCondition = requestConditionMap.get(site);
     if (patternCondition == null) return null; // mapped handler is invalid for the site
     if (patternCondition.getMatchingCondition(request) == null) return null; // the URL is invalid for the site

@@ -74,7 +74,14 @@ public class UserController extends WombatController {
     soaService.postObject("users/" + remoteUser, persist);
   }
 
-  @RequestMapping(name = "userLogout", value = "/user/logout")
+  /*
+   * Used as a magic value in a kludge elsewhere. See SiteRequestCondition.USING_USER_LOGOUT_KLUDGE.
+   *
+   * TODO: Delete this (and re-inline value into @RequestMapping) when kludge is no longer needed
+   */
+  public static final String USER_LOGOUT_PATTERN = "/user/logout";
+
+  @RequestMapping(name = "userLogout", value = USER_LOGOUT_PATTERN)
   public ModelAndView redirectToSignOut(HttpServletRequest request) {
     String refererHeaderValue = request.getHeader("Referer");
     return new ModelAndView("redirect:" + ((refererHeaderValue == null) ? "/" : refererHeaderValue));

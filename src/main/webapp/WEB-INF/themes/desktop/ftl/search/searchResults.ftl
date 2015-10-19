@@ -50,6 +50,14 @@
           </li>
         </#if>
       </#list>
+      <#if searchFilter.searchFilterResult?size gt 5>
+        <li data-js-toggle="toggle_trigger">
+          <a>[ show more ]</a>
+        </li>
+        <li data-js-toggle="toggle_trigger"  data-visibility= "none">
+          <a>[ show less ]</a>
+        </li>
+      </#if>
     </ul>
   </div>
 </#macro>

@@ -31,13 +31,14 @@
 </#if>
 <#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set" />
 
+<#include "suppressSearchFilter.ftl" />
 <#macro searchFilter filterTypeName searchFilter>
   <div>
     <h3>${filterTypeName}</h3>
     <ul id="searchFilterBy${filterTypeName}">
       <#list  searchFilter.searchFilterResult as searchFilterItem>
-        <#if !searchFilterItem.displayName?lower_case?contains("collections") >
-          <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility= "none"</#if>>
+        <#if !suppressSearchFilter(searchFilterItem) >
+          <li>
             <@siteLink handlerName="simpleSearch"
             queryParameters=searchFilterItem.filteredResultsParameters ; href>
               <a href="${href}"
@@ -50,7 +51,7 @@
         </#if>
       </#list>
       <#if searchFilter.searchFilterResult?size gt 5>
-        <li data-js-toggle="toggle_trigger" data>
+        <li data-js-toggle="toggle_trigger">
           <a>[ show more ]</a>
         </li>
         <li data-js-toggle="toggle_trigger"  data-visibility= "none">

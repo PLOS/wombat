@@ -179,8 +179,8 @@ public class ArticleSearchQuery {
   /**
    * Build a Solr query, execute it, and return formatted results.
    *
-   * @param queryExecutor
-   * @return search results
+   * @param queryExecutor a callback that executes the query on a Solr service
+   * @return the search results matching this query object
    * @throws IOException
    */
   public Map<?, ?> search(QueryExecutor queryExecutor) throws IOException {
@@ -189,6 +189,12 @@ public class ArticleSearchQuery {
     return unpackResults(rawResults);
   }
 
+  /**
+   * Get a value from raw Solr results according to how the query was set up.
+   *
+   * @param rawResults the full map of results deserialized from Solr's response
+   * @return the subset of those results that were queried for
+   */
   private Map<?, ?> unpackResults(Map<String, Map> rawResults) {
     if (isForRawResults) {
       return rawResults;
@@ -265,6 +271,7 @@ public class ArticleSearchQuery {
     builder.query = this.query.orNull();
     builder.isSimple = this.isSimple;
     builder.isForRawResults = this.isForRawResults;
+    builder.filterQueries = this.filterQueries;
     builder.facet = this.facet.orNull();
     builder.start = this.start;
     builder.rows = this.rows;

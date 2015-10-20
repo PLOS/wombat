@@ -4,6 +4,7 @@ import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
+import org.ambraproject.wombat.config.site.RequestMappingValue;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.ClientEndpoint;
@@ -134,25 +135,28 @@ public class Link {
      */
     public Link toPattern(RequestHandlerPatternDictionary requestHandlerPatternDictionary, String handlerName,
                           Map<String, ?> variables, Multimap<String, ?> queryParameters, List<?> wildcardValues) {
-      String pattern = requestHandlerPatternDictionary.getPattern(handlerName, site);
-      if (pattern == null) {
+      RequestMappingValue mapping = requestHandlerPatternDictionary.getPattern(handlerName, site);
+      if (mapping == null) {
         String message = String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.getKey());
         throw new IllegalArgumentException(message);
       }
-      return toPath(buildPathFromPattern(pattern, site, variables, queryParameters, wildcardValues));
+      String path = buildPathFromMapping(mapping, site, variables, queryParameters, wildcardValues);
+      return toPath(path);
     }
   }
 
   // Match path wildcards of one or two asterisks
   private static final Pattern WILDCARD = Pattern.compile("\\*\\*?");
 
-  private static String buildPathFromPattern(String pattern, Site site,
+  private static String buildPathFromMapping(RequestMappingValue mapping, Site site,
                                              Map<String, ?> variables,
                                              Multimap<String, ?> queryParameters,
                                              List<?> wildcardValues) {
     Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(variables);
     Preconditions.checkNotNull(queryParameters);
+
+    String pattern = mapping.getPattern();
 
     if (site.getRequestScheme().hasPathToken()) {
       if (pattern.equals("/*") || pattern.startsWith("/*/")) {

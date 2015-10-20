@@ -39,7 +39,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
   protected RequestCondition<?> getCustomMethodCondition(Method method) {
     RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
     Preconditions.checkNotNull(methodAnnotation, "No @RequestMapping found on mapped method");
-    return SiteRequestCondition.create(siteResolver, siteSet, methodAnnotation, requestHandlerPatternDictionary);
+    return SiteRequestCondition.create(siteResolver, siteSet, method, requestHandlerPatternDictionary);
   }
 
   /**

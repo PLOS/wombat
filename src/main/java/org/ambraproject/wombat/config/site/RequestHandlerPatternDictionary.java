@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public final class RequestHandlerPatternDictionary {
 
-  private final ImmutableTable.Builder<String, Site, String> registry;
+  private final ImmutableTable.Builder<String, Site, RequestMappingValue> registry;
 
   // While null, this object is in a state to accept writes. Initialized on first call to getPattern.
   // By convention, never assign to this field (i.e., treat as final) if it is not null.
-  private ImmutableTable<String, Site, String> table;
+  private ImmutableTable<String, Site, RequestMappingValue> table;
 
   public RequestHandlerPatternDictionary() {
     registry = ImmutableTable.builder();
@@ -40,16 +40,15 @@ public final class RequestHandlerPatternDictionary {
    * @param pattern           the pattern to register
    * @throws IllegalStateException if {@link #getPattern} has been called once or more on this object
    */
-  public void register(RequestMapping handlerAnnotation, Site site, String pattern) {
-    String handlerName = Preconditions.checkNotNull(handlerAnnotation.name());
+  public void register(RequestMappingValue mapping, Site site) {
     Preconditions.checkNotNull(site);
-    Preconditions.checkNotNull(pattern);
+    String handlerName = Preconditions.checkNotNull(mapping.getAnnotation().name());
 
     if (table != null) {
       throw new IllegalStateException("Cannot register more methods after directory has been read");
     }
     synchronized (registry) {
-      registry.put(handlerName, site, pattern);
+      registry.put(handlerName, site, mapping);
     }
   }
 
@@ -63,7 +62,7 @@ public final class RequestHandlerPatternDictionary {
    * @param site        the site associated with the handler
    * @return the pattern, or {@code null} if no handler exists for the given name on the given site
    */
-  public String getPattern(String handlerName, Site site) {
+  public RequestMappingValue getPattern(String handlerName, Site site) {
     /*
      * We permit a harmless race condition here: if the first two calls to this method happen concurrently, we might
      * build the registry more than once.

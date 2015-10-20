@@ -70,6 +70,9 @@ public class BuildInfoDirective implements TemplateDirectiveModel {
         case "commitIdAbbrev":
           value = info.getGitCommitIdAbbrev();
           break;
+        case "enabledDevFeatures":
+          value = info.getEnabledDevFeatures();
+          break;
         default:
           throw new TemplateModelException("field required");
       }

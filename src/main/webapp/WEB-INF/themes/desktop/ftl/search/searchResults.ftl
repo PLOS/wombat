@@ -11,6 +11,7 @@
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/pages/search_results.js"/>
+<@js src="resource/js/components/toggle.js"/>
 
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />
@@ -38,7 +39,7 @@
     <ul id="searchFilterBy${filterTypeName}">
       <#list  searchFilter.searchFilterResult as searchFilterItem>
         <#if !suppressSearchFilter(searchFilterItem) >
-          <li>
+          <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility= "none"</#if>>
             <@siteLink handlerName="simpleSearch"
             queryParameters=searchFilterItem.filteredResultsParameters ; href>
               <a href="${href}"

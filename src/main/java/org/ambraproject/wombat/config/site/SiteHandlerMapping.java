@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.Set;
 
 
@@ -42,12 +43,32 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
     return SiteRequestCondition.create(siteResolver, siteSet, method, requestHandlerPatternDictionary);
   }
 
-  /**
-   * Create a RequestMappingInfo from a RequestMapping annotation.
-   */
+  @Override
+  protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
+    RequestMappingInfo info = null;
+    RequestMappingValue methodAnnotation = RequestMappingValue.create(method);
+    if (methodAnnotation != null) {
+      RequestCondition<?> methodCondition = this.getCustomMethodCondition(method);
+      info = this.createRequestMappingInfo(methodAnnotation, methodCondition);
+      RequestMappingValue typeAnnotation = RequestMappingValue.create(handlerType);
+      if (typeAnnotation != null) {
+        RequestCondition<?> typeCondition = this.getCustomTypeCondition(handlerType);
+        info = this.createRequestMappingInfo(typeAnnotation, typeCondition).combine(info);
+      }
+    }
+    return info;
+  }
+
   @Override
   protected RequestMappingInfo createRequestMappingInfo(RequestMapping annotation, RequestCondition<?> customCondition) {
-    Set<String> allPatterns = SiteRequestCondition.getAllPatterns(siteSet, annotation);
+    // Kludge alert: We expect our override of getMappingForMethod
+    // to shield this method from all calls in the superclass
+    throw new UnsupportedOperationException();
+  }
+
+  private RequestMappingInfo createRequestMappingInfo(RequestMappingValue mapping, RequestCondition<?> customCondition) {
+    Set<String> allPatterns = SiteRequestCondition.getAllPatterns(siteSet, mapping);
+    RequestMapping annotation = mapping.getAnnotation();
     String[] embeddedPatterns = resolveEmbeddedValuesInPatterns(allPatterns.toArray(new String[allPatterns.size()]));
     return new RequestMappingInfo(
         annotation.name(),

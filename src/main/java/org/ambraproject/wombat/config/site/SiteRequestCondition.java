@@ -38,8 +38,13 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
    * @param mappingAnnotation the annotation representing to the request handler
    * @return all patterns that are mapped to the request handler for any site in the set
    */
-  public static Set<String> getAllPatterns(SiteSet siteSet, RequestMapping mappingAnnotation) {
-    return ImmutableSet.of(); // buildPatternMap(siteSet, mappingAnnotation).keySet();
+  public static Set<String> getAllPatterns(SiteSet siteSet, RequestMappingValue baseMapping) {
+    Set<RequestMappingValue> mappings = buildPatternMap(siteSet, baseMapping).keySet();
+    ImmutableSet.Builder<String> patterns = ImmutableSet.builder();
+    for (RequestMappingValue mapping : mappings) {
+      patterns.add(mapping.getPattern());
+    }
+    return patterns.build();
   }
 
   /**

@@ -155,10 +155,10 @@ $controls-gray: $grey-med-light;
   margin-bottom: rem-calc($line-height-medium);
   position: relative;
 
-  div {
+
     color: $controls-gray;
     font-size: $txt-size-small;
-  }
+
   a {
     color: $controls-gray;
     text-decoration: underline;
@@ -476,7 +476,7 @@ $pagination-height: 24px;
   font-size: $txt-size-small;
   line-height: $line-height-medium;
   float: left;
-  color: $white;
+  color: $white ;
   background: $grey-med-dark;
   font-weight: bold;
   margin-right: $pad-xsmall;

@@ -40,6 +40,9 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
    * @return all patterns that are mapped to the request handler for any site in the set
    */
   public static Set<String> getAllPatterns(SiteSet siteSet, RequestMappingValue baseMapping) {
+    if (baseMapping.isSiteless()) {
+      return ImmutableSet.of(baseMapping.getPattern());
+    }
     Set<RequestMappingValue> mappings = buildPatternMap(siteSet, baseMapping).keySet();
     ImmutableSet.Builder<String> patterns = ImmutableSet.builder();
     for (RequestMappingValue mapping : mappings) {
@@ -98,6 +101,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
    * Construct a map from each pattern to the sites that use that pattern.
    */
   private static Multimap<RequestMappingValue, Site> buildPatternMap(SiteSet siteSet, RequestMappingValue baseMapping) {
+    Preconditions.checkArgument(!baseMapping.isSiteless());
     Multimap<RequestMappingValue, Site> patterns = LinkedListMultimap.create();
     for (Site site : siteSet.getSites()) {
       RequestMappingValue pattern = getPatternForSite(baseMapping, site);

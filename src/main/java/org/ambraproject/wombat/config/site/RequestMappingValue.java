@@ -109,7 +109,7 @@ public class RequestMappingValue {
     if (forbiddenParams != null) return forbiddenParams;
     ImmutableSet.Builder<String> builder = ImmutableSet.builder();
     for (String param : annotation.params()) {
-      if (!param.startsWith("!")) {
+      if (param.startsWith("!")) {
         builder.add(param.substring(1));
       }
     }

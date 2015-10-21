@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -24,9 +25,9 @@ import java.util.Set;
 public class SiteRequestCondition implements RequestCondition<SiteRequestCondition> {
 
   private final SiteResolver siteResolver;
-  private final ImmutableMap<Site, PatternsRequestCondition> requestConditionMap;
+  private final ImmutableMap<Optional<Site>, PatternsRequestCondition> requestConditionMap;
 
-  private SiteRequestCondition(SiteResolver siteResolver, Map<Site, PatternsRequestCondition> requestConditionMap) {
+  private SiteRequestCondition(SiteResolver siteResolver, Map<Optional<Site>, PatternsRequestCondition> requestConditionMap) {
     this.siteResolver = Preconditions.checkNotNull(siteResolver);
     this.requestConditionMap = ImmutableMap.copyOf(requestConditionMap);
   }
@@ -47,6 +48,11 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     return patterns.build();
   }
 
+  private static PatternsRequestCondition buildPatternsRequestCondition(RequestMappingValue mapping) {
+    return new PatternsRequestCondition(new String[]{mapping.getPattern()},
+        null, null, true, true, null);
+  }
+
   /**
    * Create a condition, representing all sites, for a single request handler.
    * <p/>
@@ -64,20 +70,21 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
                                             RequestHandlerPatternDictionary requestHandlerPatternDictionary) {
     RequestMappingValue baseMapping = RequestMappingValue.create(controllerMethod);
     if (baseMapping.isSiteless()) {
-      SiteRequestCondition sitelessCondition = null; // TODO: Implement
+      PatternsRequestCondition patternsRequestCondition = buildPatternsRequestCondition(baseMapping);
+      ImmutableMap<Optional<Site>, PatternsRequestCondition> map = ImmutableMap.of(Optional.<Site>absent(), patternsRequestCondition);
+      SiteRequestCondition sitelessCondition = new SiteRequestCondition(siteResolver, map);
       // TODO: Represent in dictionary somehow
       return sitelessCondition;
     }
 
     Multimap<RequestMappingValue, Site> patternMap = buildPatternMap(siteSet, baseMapping);
 
-    ImmutableMap.Builder<Site, PatternsRequestCondition> requestConditionMap = ImmutableMap.builder();
+    ImmutableMap.Builder<Optional<Site>, PatternsRequestCondition> requestConditionMap = ImmutableMap.builder();
     for (Map.Entry<RequestMappingValue, Collection<Site>> entry : patternMap.asMap().entrySet()) {
       RequestMappingValue mapping = entry.getKey();
-      PatternsRequestCondition condition = new PatternsRequestCondition(new String[]{mapping.getPattern()},
-          null, null, true, true, null);
+      PatternsRequestCondition condition = buildPatternsRequestCondition(mapping);
       for (Site site : entry.getValue()) {
-        requestConditionMap.put(site, condition);
+        requestConditionMap.put(Optional.of(site), condition);
         if (!mapping.getAnnotation().name().isEmpty()) {
           requestHandlerPatternDictionary.register(mapping, site);
         }
@@ -141,7 +148,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
 
   @Override
   public SiteRequestCondition getMatchingCondition(HttpServletRequest request) {
-    Site site = siteResolver.resolveSite(request);
+    Optional<Site> site = Optional.fromNullable(siteResolver.resolveSite(request));
     PatternsRequestCondition patternCondition = requestConditionMap.get(site);
     if (patternCondition == null) return null; // mapped handler is invalid for the site
     if (patternCondition.getMatchingCondition(request) == null) return null; // the URL is invalid for the site
@@ -154,15 +161,15 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   @Override
   public SiteRequestCondition combine(SiteRequestCondition that) {
     if (this.requestConditionMap.equals(that.requestConditionMap)) return this;
-    ImmutableMap.Builder<Site, PatternsRequestCondition> combinedMap = ImmutableMap.builder();
+    ImmutableMap.Builder<Optional<Site>, PatternsRequestCondition> combinedMap = ImmutableMap.builder();
 
-    Set<Site> patterns = Sets.union(this.requestConditionMap.keySet(), that.requestConditionMap.keySet());
-    for (Site pattern : patterns) {
-      PatternsRequestCondition thisCondition = this.requestConditionMap.get(pattern);
-      PatternsRequestCondition thatCondition = that.requestConditionMap.get(pattern);
+    Set<Optional<Site>> sites = Sets.union(this.requestConditionMap.keySet(), that.requestConditionMap.keySet());
+    for (Optional<Site> site : sites) {
+      PatternsRequestCondition thisCondition = this.requestConditionMap.get(site);
+      PatternsRequestCondition thatCondition = that.requestConditionMap.get(site);
       PatternsRequestCondition combinedCondition = thisCondition == null ? thatCondition : thatCondition == null ? thisCondition :
           thisCondition.combine(thatCondition);
-      combinedMap.put(pattern, combinedCondition);
+      combinedMap.put(site, combinedCondition);
     }
 
     return new SiteRequestCondition(siteResolver, combinedMap.build());

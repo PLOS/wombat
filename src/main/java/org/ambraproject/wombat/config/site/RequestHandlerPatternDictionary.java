@@ -1,8 +1,8 @@
 package org.ambraproject.wombat.config.site;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableTable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * A global bean that looks up patterns that have been mapped to request handlers. Ordinarily those patterns are set up
@@ -19,15 +19,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public final class RequestHandlerPatternDictionary {
 
-  private final ImmutableTable.Builder<String, Site, RequestMappingValue> registry;
+  // While false, this object is in a state to accept writes. Permanently set to true on first call to getPattern.
+  private boolean isFrozen = false;
 
-  // While null, this object is in a state to accept writes. Initialized on first call to getPattern.
-  // By convention, never assign to this field (i.e., treat as final) if it is not null.
-  private ImmutableTable<String, Site, RequestMappingValue> table;
+  private final Object writeLock = new Object();
+
+  private final ImmutableTable.Builder<String, Site, RequestMappingValue> siteTableBuilder;
+  private final ImmutableMap.Builder<String, RequestMappingValue> globalTableBuilder;
+
+  // By convention, assign to each of these fields only once, when isFrozen is set to true.
+  private ImmutableTable<String, Site, RequestMappingValue> siteTable = null;
+  private ImmutableMap<String, RequestMappingValue> globalTable = null;
 
   public RequestHandlerPatternDictionary() {
-    registry = ImmutableTable.builder();
-    table = null;
+    siteTableBuilder = ImmutableTable.builder();
+    globalTableBuilder = ImmutableMap.builder();
+  }
+
+  private static String getHandlerName(RequestMappingValue mapping) {
+    return Preconditions.checkNotNull(mapping.getAnnotation().name());
   }
 
   /**
@@ -35,20 +45,40 @@ public final class RequestHandlerPatternDictionary {
    * <p/>
    * All registrations must be completed before the first call to {@link #getPattern}.
    *
-   * @param handlerAnnotation the annotation for the handler
-   * @param site              the site associated with the handler
-   * @param pattern           the pattern to register
+   * @param mapping the mapping to the handler
+   * @param site    the site associated with the handler
    * @throws IllegalStateException if {@link #getPattern} has been called once or more on this object
    */
-  public void register(RequestMappingValue mapping, Site site) {
+  public void registerSiteMapping(RequestMappingValue mapping, Site site) {
     Preconditions.checkNotNull(site);
-    String handlerName = Preconditions.checkNotNull(mapping.getAnnotation().name());
+    Preconditions.checkArgument(!mapping.isSiteless());
+    String handlerName = getHandlerName(mapping);
 
-    if (table != null) {
-      throw new IllegalStateException("Cannot register more methods after directory has been read");
+    synchronized (writeLock) {
+      if (isFrozen) {
+        throw new IllegalStateException("Cannot register more methods after directory has been read");
+      }
+      siteTableBuilder.put(handlerName, site, mapping);
     }
-    synchronized (registry) {
-      registry.put(handlerName, site, mapping);
+  }
+
+  /**
+   * Register the pattern that is associated with a siteless handler.
+   * <p/>
+   * All registrations must be completed before the first call to {@link #getPattern}.
+   *
+   * @param mapping the mapping to the handler
+   * @throws IllegalStateException if {@link #getPattern} has been called once or more on this object
+   */
+  public void registerGlobalMapping(RequestMappingValue mapping) {
+    Preconditions.checkArgument(mapping.isSiteless());
+    String handlerName = getHandlerName(mapping);
+
+    synchronized (writeLock) {
+      if (isFrozen) {
+        throw new IllegalStateException("Cannot register more methods after directory has been read");
+      }
+      globalTableBuilder.put(handlerName, mapping);
     }
   }
 
@@ -56,28 +86,30 @@ public final class RequestHandlerPatternDictionary {
    * Look up a registered pattern.
    * <p/>
    * This method should only be called when all registrations are complete. The first time this method is called for
-   * this object, it has the side effect of freezing the object and invalidating any future calls to {@link #register}.
+   * this object, it has the side effect of freezing the object and invalidating any future calls to {@link
+   * #registerSiteMapping} and {@link #registerGlobalMapping}.
    *
    * @param handlerName the name of the handler
-   * @param site        the site associated with the handler
+   * @param site        the site associated with the request to map
    * @return the pattern, or {@code null} if no handler exists for the given name on the given site
    */
   public RequestMappingValue getPattern(String handlerName, Site site) {
     /*
-     * We permit a harmless race condition here: if the first two calls to this method happen concurrently, we might
-     * build the registry more than once.
-     *
-     * There are some other, weird race conditions that can happen if the first call to this method happens
-     * concurrently with a call to the register method. We expect the last register call to happen synchronously before
-     * the first getPattern call, so it is a bug if there is any chance of it happening the other way, and we would
-     * like to throw an IllegalStateException if possible. In the event of a bug that causes the two events to be
-     * ordered non-deterministically (even if we synchronize in this method), we throw IllegalStateException on a
-     * best-effort basis, but can't guarantee it.
+     * We permit a harmless race condition on the `if (!isFrozen)` block: if the first two calls to this method happen
+     * concurrently, we might invoke the builders more than once. This is safe because they will return identical data.
      */
-    if (table == null) {
-      table = registry.build();
+    if (!isFrozen) {
+      synchronized (writeLock) {
+        isFrozen = true;
+        siteTable = siteTableBuilder.build();
+        globalTable = globalTableBuilder.build();
+      }
     }
-    return table.get(Preconditions.checkNotNull(handlerName), Preconditions.checkNotNull(site));
+
+    Preconditions.checkNotNull(handlerName);
+    Preconditions.checkNotNull(site);
+    RequestMappingValue siteMapping = siteTable.get(handlerName, site);
+    return (siteMapping != null) ? siteMapping : globalTable.get(handlerName);
   }
 
 }

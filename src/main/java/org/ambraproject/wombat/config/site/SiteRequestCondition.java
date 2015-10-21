@@ -74,10 +74,9 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     RequestMappingValue baseMapping = RequestMappingValue.create(controllerMethod);
     if (baseMapping.isSiteless()) {
       PatternsRequestCondition patternsRequestCondition = buildPatternsRequestCondition(baseMapping);
+      requestHandlerPatternDictionary.registerGlobalMapping(baseMapping);
       ImmutableMap<Optional<Site>, PatternsRequestCondition> map = ImmutableMap.of(Optional.<Site>absent(), patternsRequestCondition);
-      SiteRequestCondition sitelessCondition = new SiteRequestCondition(siteResolver, map);
-      // TODO: Represent in dictionary somehow
-      return sitelessCondition;
+      return new SiteRequestCondition(siteResolver, map);
     }
 
     Multimap<RequestMappingValue, Site> patternMap = buildPatternMap(siteSet, baseMapping);
@@ -89,7 +88,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
       for (Site site : entry.getValue()) {
         requestConditionMap.put(Optional.of(site), condition);
         if (!mapping.getAnnotation().name().isEmpty()) {
-          requestHandlerPatternDictionary.register(mapping, site);
+          requestHandlerPatternDictionary.registerSiteMapping(mapping, site);
         }
       }
     }

@@ -154,10 +154,8 @@ $controls-gray: $grey-med-light;
   padding: rem-calc($line-height 0);
   margin-bottom: rem-calc($line-height-medium);
   position: relative;
-
-
-    color: $controls-gray;
-    font-size: $txt-size-small;
+  color: $controls-gray;
+  font-size: $txt-size-small;
 
   a {
     color: $controls-gray;

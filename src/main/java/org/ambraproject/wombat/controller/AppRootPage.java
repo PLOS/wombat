@@ -95,12 +95,13 @@ public class AppRootPage {
         String cell = table.get(mapping, site);
         row.add(Strings.nullToEmpty(cell));
       }
+      final String mappingRepresentation = represent(mapping);
       final boolean isGlobal = sitelessMappings.contains(mapping);
 
       rows.add(new MappingTableRow() {
         @Override
         public String getPattern() {
-          return mapping.getPattern();
+          return mappingRepresentation;
         }
 
         @Override
@@ -116,6 +117,16 @@ public class AppRootPage {
     }
 
     return ROW_ORDERING.immutableSortedCopy(rows);
+  }
+
+  private static String represent(RequestMappingValue mapping) {
+    StringBuilder sb = new StringBuilder().append(mapping.getPattern());
+    boolean atFirst = true;
+    for (String requiredParam : mapping.getRequiredParams()) {
+      sb.append(atFirst ? '?' : '&').append(requiredParam);
+      atFirst = false;
+    }
+    return sb.toString();
   }
 
   public static interface MappingTableRow {

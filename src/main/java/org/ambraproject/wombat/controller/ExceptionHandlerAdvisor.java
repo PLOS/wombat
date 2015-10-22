@@ -2,9 +2,6 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +12,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -32,11 +27,9 @@ class ExceptionHandlerAdvisor {
   private static final Logger log = LoggerFactory.getLogger(WombatController.class);
 
   @Autowired
-  private SiteSet siteSet;
-  @Autowired
   private SiteResolver siteResolver;
   @Autowired
-  private ServletContext servletContext;
+  private AppRootPage appRootPage;
 
   /**
    * Handler invoked for all uncaught exceptions.  Renders a "nice" 500 page.
@@ -78,36 +71,11 @@ class ExceptionHandlerAdvisor {
   protected ModelAndView handleNotFound(HttpServletRequest request, HttpServletResponse response) {
     Site site = siteResolver.resolveSite(request);
     if (site == null && request.getServletPath().equals("/")) {
-      return serveAppRoot();
+      return appRootPage.serveAppRoot();
     }
     response.setStatus(HttpStatus.NOT_FOUND.value());
     String viewName = (site == null) ? "//notFound" : (site.getKey() + "/ftl/notFound");
     return new ModelAndView(viewName);
   }
 
-  /**
-   * Show a page in response to the application root.
-   * <p/>
-   * This is here only for development/debugging: if you browse to the application root while you're setting up, this
-   * page is more useful than an error message. But all end-user-facing pages should belong to one of the sites in
-   * {@code siteSet}.
-   */
-  private ModelAndView serveAppRoot() {
-    ModelAndView mav = new ModelAndView("//approot");
-    mav.addObject("siteKeys", siteSet.getSiteKeys());
-    try {
-      mav.addObject("imageCode", getResourceAsBase64("/WEB-INF/themes/root/app/wombat.jpg"));
-    } catch (IOException e) {
-      log.error("Error displaying root page image", e);
-    }
-    return mav;
-  }
-
-  private String getResourceAsBase64(String path) throws IOException {
-    byte[] bytes;
-    try (InputStream stream = servletContext.getResourceAsStream(path)) {
-      bytes = IOUtils.toByteArray(stream);
-    }
-    return Base64.encodeBase64String(bytes);
-  }
 }

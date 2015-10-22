@@ -9,14 +9,43 @@
 
 <p>This page is for development/debugging purposes only. On a live site, it should not be visible to end users.</p>
 
-<p>Sites:</p>
+<h1>Sites</h1>
 <ul>
 <#list siteKeys as site>
   <li><a href="${site}/">${site}</a></li>
 </#list>
 </ul>
 
-<hr/>
+<h1>Builds</h1>
+<#macro buildInfoDisplay component>
+<ul>
+  <li>Version: <@buildInfo component=component field='version' /></li>
+  <li>Date: <@buildInfo component=component field='date' /></li>
+  <li>User: <code><@buildInfo component=component field='user' /></code></li>
+  <li>Commit: <code><@buildInfo component=component field='commitIdAbbrev' /></code></li>
+</ul>
+</#macro>
+
+<h2>Wombat</h2>
+<@buildInfoDisplay 'webapp' />
+
+<h3>Enabled Dev Features</h3>
+<@buildInfo component='webapp' field='enabledDevFeatures' ; enabledDevFeatures>
+  <#if enabledDevFeatures?has_content>
+  <ul>
+    <#list enabledDevFeatures as featureFlag>
+      <li><code>${featureFlag}</code></li>
+    </#list>
+  </ul>
+  <#else>
+  <strong>None</strong>
+  </#if>
+</@buildInfo>
+
+<h2>Rhino</h2>
+<@buildInfoDisplay 'service' />
+
+<h1>Mappings</h1>
 <table>
   <tr>
     <th>Pattern</th>

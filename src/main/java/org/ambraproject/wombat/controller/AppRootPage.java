@@ -1,6 +1,15 @@
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.site.SiteResolver;
+import com.google.common.base.Function;
+import com.google.common.base.Optional;
+import com.google.common.base.Strings;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Table;
+import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
+import org.ambraproject.wombat.config.site.RequestMappingValue;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
@@ -12,6 +21,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * A pseudo-controller that is dispatched to by {@link org.ambraproject.wombat.controller.ExceptionHandlerAdvisor}.
@@ -25,6 +38,8 @@ public class AppRootPage {
   private SiteSet siteSet;
   @Autowired
   private ServletContext servletContext;
+  @Autowired
+  private RequestHandlerPatternDictionary requestHandlerPatternDictionary;
 
   /**
    * Show a page in response to the application root.
@@ -36,6 +51,7 @@ public class AppRootPage {
   ModelAndView serveAppRoot() {
     ModelAndView mav = new ModelAndView("//approot");
     mav.addObject("siteKeys", siteSet.getSiteKeys());
+    mav.addObject("mappingTable", buildMappingTable());
     try {
       mav.addObject("imageCode", getResourceAsBase64("/WEB-INF/themes/root/app/wombat.jpg"));
     } catch (IOException e) {
@@ -51,5 +67,71 @@ public class AppRootPage {
     }
     return Base64.encodeBase64String(bytes);
   }
+
+  private ImmutableList<MappingTableRow> buildMappingTable() {
+    Table<RequestMappingValue, Site, String> table = HashBasedTable.create();
+    Set<RequestMappingValue> sitelessMappings = new HashSet<>();
+    ImmutableList<Site> allSites = siteSet.getSites().asList();
+    for (RequestHandlerPatternDictionary.MappingEntry entry : requestHandlerPatternDictionary.getAll()) {
+      RequestMappingValue mapping = entry.getMapping();
+      Optional<Site> site = entry.getSite();
+      String handlerName = entry.getHandlerName();
+
+      if (site.isPresent()) {
+        table.put(mapping, site.get(), handlerName);
+      } else {
+        sitelessMappings.add(mapping);
+        for (Site s : allSites) {
+          table.put(mapping, s, handlerName);
+        }
+      }
+    }
+
+    Set<RequestMappingValue> mappings = table.rowKeySet();
+    List<MappingTableRow> rows = new ArrayList<>(mappings.size());
+    for (final RequestMappingValue mapping : mappings) {
+      final List<String> row = new ArrayList<>(allSites.size());
+      for (Site site : allSites) {
+        String cell = table.get(mapping, site);
+        row.add(Strings.nullToEmpty(cell));
+      }
+      final boolean isGlobal = sitelessMappings.contains(mapping);
+
+      rows.add(new MappingTableRow() {
+        @Override
+        public String getPattern() {
+          return mapping.getPattern();
+        }
+
+        @Override
+        public List<String> getRow() {
+          return row;
+        }
+
+        @Override
+        public boolean isGlobal() {
+          return isGlobal;
+        }
+      });
+    }
+
+    return ROW_ORDERING.immutableSortedCopy(rows);
+  }
+
+  public static interface MappingTableRow {
+    String getPattern();
+
+    List<String> getRow();
+
+    boolean isGlobal();
+  }
+
+  private static final Ordering<MappingTableRow> ROW_ORDERING = Ordering.natural().onResultOf(
+      new Function<MappingTableRow, String>() {
+        @Override
+        public String apply(MappingTableRow row) {
+          return row.getPattern();
+        }
+      });
 
 }

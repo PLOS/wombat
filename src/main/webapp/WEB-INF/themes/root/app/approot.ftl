@@ -16,6 +16,29 @@
 </#list>
 </ul>
 
+<hr/>
+<table>
+  <tr>
+    <th>Pattern</th>
+  <#list siteKeys as site>
+    <th>${site}</th>
+  </#list>
+  </tr>
+
+<#list mappingTable as rowObj>
+  <tr>
+    <td><code>${rowObj.pattern}</code></td>
+    <#list rowObj.row as handlerName>
+      <td>
+        <#if handlerName?has_content>
+          <code>${handlerName}</code>
+        </#if>
+      </td>
+    </#list>
+  </tr>
+</#list>
+</table>
+
 <#if imageCode??>
 <hr/>
 <div>

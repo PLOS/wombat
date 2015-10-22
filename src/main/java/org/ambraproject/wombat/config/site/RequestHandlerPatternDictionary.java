@@ -1,8 +1,14 @@
 package org.ambraproject.wombat.config.site;
 
+import com.google.common.base.Function;
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableTable;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Table;
+
+import java.util.Map;
 
 /**
  * A global bean that looks up patterns that have been mapped to request handlers. Ordinarily those patterns are set up
@@ -82,6 +88,20 @@ public final class RequestHandlerPatternDictionary {
     }
   }
 
+  private void buildAndFreeze() {
+    /*
+     * We permit a harmless race condition on the `if (!isFrozen)` block: if the first two calls to this method happen
+     * concurrently, we might invoke the builders more than once. This is safe because they will return identical data.
+     */
+    if (!isFrozen) {
+      synchronized (writeLock) {
+        isFrozen = true;
+        siteTable = siteTableBuilder.build();
+        globalTable = globalTableBuilder.build();
+      }
+    }
+  }
+
   /**
    * Look up a registered pattern.
    * <p/>
@@ -94,22 +114,72 @@ public final class RequestHandlerPatternDictionary {
    * @return the pattern, or {@code null} if no handler exists for the given name on the given site
    */
   public RequestMappingValue getPattern(String handlerName, Site site) {
-    /*
-     * We permit a harmless race condition on the `if (!isFrozen)` block: if the first two calls to this method happen
-     * concurrently, we might invoke the builders more than once. This is safe because they will return identical data.
-     */
-    if (!isFrozen) {
-      synchronized (writeLock) {
-        isFrozen = true;
-        siteTable = siteTableBuilder.build();
-        globalTable = globalTableBuilder.build();
-      }
-    }
-
+    buildAndFreeze();
     Preconditions.checkNotNull(handlerName);
     Preconditions.checkNotNull(site);
     RequestMappingValue siteMapping = siteTable.get(handlerName, site);
     return (siteMapping != null) ? siteMapping : globalTable.get(handlerName);
+  }
+
+
+  public static interface MappingEntry {
+    String getHandlerName();
+
+    Optional<Site> getSite();
+
+    RequestMappingValue getMapping();
+  }
+
+  public Iterable<MappingEntry> getAll() {
+    buildAndFreeze();
+
+    Iterable<MappingEntry> siteEntries = Iterables.transform(siteTable.cellSet(),
+        new Function<Table.Cell<String, Site, RequestMappingValue>, MappingEntry>() {
+          @Override
+          public MappingEntry apply(final Table.Cell<String, Site, RequestMappingValue> cell) {
+            return new MappingEntry() {
+              @Override
+              public String getHandlerName() {
+                return cell.getRowKey();
+              }
+
+              @Override
+              public Optional<Site> getSite() {
+                return Optional.of(cell.getColumnKey());
+              }
+
+              @Override
+              public RequestMappingValue getMapping() {
+                return cell.getValue();
+              }
+            };
+          }
+        });
+
+    Iterable<MappingEntry> globalEntries = Iterables.transform(globalTable.entrySet(),
+        new Function<Map.Entry<String, RequestMappingValue>, MappingEntry>() {
+          @Override
+          public MappingEntry apply(final Map.Entry<String, RequestMappingValue> entry) {
+            return new MappingEntry() {
+              @Override
+              public String getHandlerName() {
+                return entry.getKey();
+              }
+
+              @Override
+              public Optional<Site> getSite() {
+                return Optional.absent();
+              }
+
+              @Override
+              public RequestMappingValue getMapping() {
+                return entry.getValue();
+              }
+            };
+          }
+        });
+
+    return Iterables.concat(siteEntries, globalEntries);
   }
 
 }

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.condition.ConsumesRequestCondition;
 import org.springframework.web.servlet.mvc.condition.HeadersRequestCondition;
 import org.springframework.web.servlet.mvc.condition.ParamsRequestCondition;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.mvc.condition.RequestMethodsRequestCondit
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Set;
@@ -81,5 +84,21 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
         customCondition);
   }
 
+  @Override
+  protected HandlerMethod handleNoMatch(Set<RequestMappingInfo> requestMappingInfos, String lookupPath,
+                                        HttpServletRequest request) throws ServletException {
+    /* The base implementation of this method looks for reasons that a given request may not have matched any existing
+    handler mapping despite matching a URL pattern correctly. This could be an incorrect HTTP method (e.g. a GET
+    instead of a POST), incorrect or missing params, etc. It then throws an exception or returns null if no obvious
+    reason was found.
 
+    Because we are providing a custom RequestCondition object which may reject a given request for any number of
+    reasons unrelated to any of these RequestMapping attributes, this method can no longer properly detect the
+    reason for a mismatch based solely on these attributes and may throw an exception inappropriately.
+
+    We may at some point want to implement our own handler code here to produce a log entry or other debugging
+    information for rejected requests, but at this time, returning a null (passing control to the usual 404 status
+    handling) seems sufficient. */
+    return null;
+  }
 }

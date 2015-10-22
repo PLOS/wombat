@@ -32,12 +32,15 @@ public class BuildInfo {
   private final String date;
   private final String user;
   private final String gitCommitIdAbbrev;
+  private final String enabledDevFeatures;
 
-  public BuildInfo(String version, String date, String user, String gitCommitIdAbbrev) {
+  public BuildInfo(String version, String date, String user, String gitCommitIdAbbrev,
+      String enabledDevFeaturesString) {
     this.version = Strings.nullToEmpty(version);
     this.date = Strings.nullToEmpty(date);
     this.user = Strings.nullToEmpty(user);
     this.gitCommitIdAbbrev = Strings.nullToEmpty(gitCommitIdAbbrev);
+    this.enabledDevFeatures = Strings.nullToEmpty(enabledDevFeaturesString);
   }
 
   /**
@@ -68,6 +71,13 @@ public class BuildInfo {
     return gitCommitIdAbbrev;
   }
 
+  /**
+   * @return a string describing the list of enabled dev features
+   */
+  public String getEnabledDevFeatures() {
+    return enabledDevFeatures;
+  }
+
   @Override
   public String toString() {
     return Objects.toStringHelper(this)
@@ -75,6 +85,7 @@ public class BuildInfo {
         .add("date", date)
         .add("user", user)
         .add("gitCommitIdAbbrev", gitCommitIdAbbrev)
+        .add("enabledDevFeatures", enabledDevFeatures)
         .toString();
   }
 
@@ -89,6 +100,7 @@ public class BuildInfo {
     if (!user.equals(buildInfo.user)) return false;
     if (!version.equals(buildInfo.version)) return false;
     if (!gitCommitIdAbbrev.equals(buildInfo.gitCommitIdAbbrev)) return false;
+    if (!enabledDevFeatures.equals(buildInfo.enabledDevFeatures)) return false;
 
     return true;
   }
@@ -99,6 +111,7 @@ public class BuildInfo {
     result = 31 * result + date.hashCode();
     result = 31 * result + user.hashCode();
     result = 31 * result + gitCommitIdAbbrev.hashCode();
+    result = 31 * result + enabledDevFeatures.hashCode();
     return result;
   }
 }

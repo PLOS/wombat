@@ -11,6 +11,7 @@
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/pages/search_results.js"/>
+<@js src="resource/js/components/toggle.js"/>
 
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />
@@ -38,7 +39,7 @@
     <ul id="searchFilterBy${filterTypeName}">
       <#list  searchFilter.searchFilterResult as searchFilterItem>
         <#if !suppressSearchFilter(searchFilterItem) >
-          <li>
+          <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility= "none"</#if>>
             <@siteLink handlerName="simpleSearch"
             queryParameters=searchFilterItem.filteredResultsParameters ; href>
               <a href="${href}"
@@ -77,7 +78,7 @@
                        value="${query}" required/>
                 <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
             </fieldset>
-            <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">advanced</a>
+            <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced Search</a>
         </div>
 
         <div class="search-results-controls-second-row">

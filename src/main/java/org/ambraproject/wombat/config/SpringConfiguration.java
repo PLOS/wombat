@@ -42,6 +42,11 @@ import org.ambraproject.wombat.freemarker.asset.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.asset.JsDirective;
 import org.ambraproject.wombat.freemarker.asset.RenderCssLinksDirective;
 import org.ambraproject.wombat.freemarker.asset.RenderJsDirective;
+import org.ambraproject.wombat.model.JournalFilterType;
+import org.ambraproject.wombat.model.SearchFilterFactory;
+import org.ambraproject.wombat.model.SearchFilterType;
+import org.ambraproject.wombat.model.SearchFilterTypeMap;
+import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
@@ -57,6 +62,7 @@ import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.service.remote.EditorialContentServiceImpl;
+import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -173,6 +179,28 @@ public class SpringConfiguration {
   @Bean
   public Charset charset() {
     return Charsets.UTF_8;
+  }
+
+  @Bean
+  public JournalFilterType journalFilterType() { return new JournalFilterType(); }
+
+  @Bean
+  public SearchFilterTypeMap searchFilterTypeMap(JournalFilterType journalFilterType) {
+    ImmutableMap.Builder<String, SearchFilterType> builder = ImmutableMap.builder();
+    builder.put("journal", journalFilterType);
+
+    for (SingletonSearchFilterType value : SingletonSearchFilterType.values()) {
+      builder.put(value.name().toLowerCase(), value);
+    }
+    return new SearchFilterTypeMap(builder.build());
+  }
+
+  @Bean
+  public SearchFilterFactory searchFilterFactory() { return new SearchFilterFactory(); }
+
+  @Bean
+  public SearchFilterService searchFilterService() {
+    return new SearchFilterService();
   }
 
   @Bean

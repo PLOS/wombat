@@ -63,7 +63,7 @@ public class Site {
     if (Strings.isNullOrEmpty(journalName)) {
       String message = String.format("The theme %s did not provide or inherit a journal name at the path: config/%s",
           theme.getKey(), JOURNAL_KEY_PATH);
-      log.error(message);
+      throw new RuntimeException(message);
     }
     return journalName;
   }

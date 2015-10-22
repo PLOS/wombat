@@ -25,12 +25,12 @@
 
     date_check = function (logDate, numDays) {
       ///requires moment.js
-      var testDate = new Date().addDays(numDays),
+      var testDate = new Date().addDays(-numDays),
           newFormat = "YYYYMMDD",
           testDateFormat = moment(testDate).format(newFormat),
           logDateFormat = moment(logDate).format(newFormat);
 
-      if (logDateFormat > testDateFormat) {
+      if (logDateFormat < testDateFormat) {
         return false;
 
       } else {
@@ -75,17 +75,13 @@
         timeout:     20000
       }).done(function (data) {
         initData = data.data[0];
+        numberOfDays = date_check(pubDate, offsetDays);
         if (initData === undefined) {
-          // is date less than "offsetDays" number of  days ago
-
-          numberOfDays = date_check(pubDate, offsetDays);
-
-          if (numberOfDays === true) {
+          displayError(errorText);
+        } else  if (numberOfDays === true) { // is date less than "offsetDays" number of  days ago
             displayError(tooSoonText);
-          } else {
-            displayError(errorText);
           }
-        } else {
+         else {
 
           //get the numbers & add commas where needed
           saves = formatNumberComma(data.data[0].saved);
@@ -119,7 +115,6 @@
 
           $('#almSignposts li').removeClass('noshow');
 
-//          }
         }
       }).fail(function () {
         displayError(errorText);

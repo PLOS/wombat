@@ -18,6 +18,8 @@
 
 package org.ambraproject.wombat.service;
 
+import com.google.common.base.Joiner;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.BuildInfo;
 import org.ambraproject.wombat.util.GitInfo;
@@ -38,6 +40,9 @@ public class BuildInfoServiceImpl implements BuildInfoService {
 
   @Autowired
   private GitInfo gitInfo;
+
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
 
   /*
    * Cache the results in the service object. This may not be the best place to cache them, especially if the data is
@@ -90,6 +95,9 @@ public class BuildInfoServiceImpl implements BuildInfoService {
       properties.load(versionStream);
     }
     properties.setProperty("gitCommitIdAbbrev", gitInfo.getCommitIdAbbrev());
+    String enabledDevFeaturesString = Joiner.on(',')
+        .join(runtimeConfiguration.getEnabledDevFeatures());
+    properties.setProperty("enabledDevFeatures", enabledDevFeaturesString);
     return parse(properties);
   }
 
@@ -102,7 +110,8 @@ public class BuildInfoServiceImpl implements BuildInfoService {
         (String) propertyMap.get("version"),
         (String) propertyMap.get("buildDate"),
         (String) propertyMap.get("buildUser"),
-        (String) propertyMap.get("gitCommitIdAbbrev"));
+        (String) propertyMap.get("gitCommitIdAbbrev"),
+        (String) propertyMap.get("enabledDevFeatures"));
   }
 
 }

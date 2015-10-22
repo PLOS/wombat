@@ -78,4 +78,8 @@
       }, 5000);
     });
   });
+
+  // initialize toggle for search filter item list
+  plos_toggle.init();
+
 })(jQuery);

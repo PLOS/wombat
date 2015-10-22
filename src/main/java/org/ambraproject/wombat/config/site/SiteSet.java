@@ -1,21 +1,25 @@
 package org.ambraproject.wombat.config.site;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableBiMap;
+import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Simple wrapper around a map from keys to site objects, for use as a Spring bean.
@@ -24,6 +28,8 @@ public class SiteSet {
 
   private final ImmutableBiMap<String, Site> sites;
 
+  private final ImmutableBiMap<String, String> journalKeysToNames;
+
   @VisibleForTesting // otherwise use SiteSet.create
   public SiteSet(Iterable<Site> sites) {
     ImmutableBiMap.Builder<String, Site> map = ImmutableBiMap.builder();
@@ -31,6 +37,55 @@ public class SiteSet {
       map.put(site.getKey(), site);
     }
     this.sites = map.build();
+
+    this.journalKeysToNames = buildJournalKeysToNames(this.sites.values());
+  }
+
+  private static ImmutableMultimap<String, Site> groupByJournalKey(Set<Site> sites) {
+    ImmutableMultimap.Builder<String, Site> builder = ImmutableMultimap.builder();
+    for (Site site : sites) {
+      builder.put(site.getJournalKey(), site);
+    }
+    return builder.build();
+  }
+
+  /**
+   * Build a map representing the one-to-one relationship between journal keys and journal names.
+   * <p/>
+   * As a side effect, validates that the relationship actually is one-to-one -- that is, that multiple sites have the
+   * same journal key if and only if they have the same journal name. It is easier to obey this constraint if the {@code
+   * journalKey} and {@code journalName} config values are always set in the {@code journal.yaml} or {@code
+   * journal.json} file of the same theme, which should be a parent of all themes belonging to that journal.
+   *
+   * @param sites the set of all sites being served
+   * @return a map between journal keys and journal names
+   * @throws IllegalArgumentException if two sites with the same journal key have unequal journal names or if two sites
+   *                                  with the same journal name have unequal journal keys
+   */
+  private static ImmutableBiMap<String, String> buildJournalKeysToNames(Set<Site> sites) {
+    Multimap<String, Site> keysToSites = groupByJournalKey(sites);
+    BiMap<String, String> keysToNames = HashBiMap.create(keysToSites.keySet().size());
+    for (Map.Entry<String, Collection<Site>> entry : keysToSites.asMap().entrySet()) {
+      String journalKey = entry.getKey();
+      Iterator<Site> siteIterator = entry.getValue().iterator();
+      String journalName = siteIterator.next().getJournalName();
+      while (siteIterator.hasNext()) {
+        String nextJournalName = siteIterator.next().getJournalName();
+        if (!journalName.equals(nextJournalName)) {
+          String message = String.format("Inconsistent journal names with key=%s: %s; %s",
+              journalKey, journalName, nextJournalName);
+          throw new IllegalArgumentException(message);
+        }
+      }
+
+      if (keysToNames.containsValue(journalName)) {
+        String message = String.format("Overloaded journal name (%s) for keys: %s; %s",
+            journalName, journalKey, keysToNames.inverse().get(journalName));
+        throw new IllegalArgumentException(message);
+      }
+      keysToNames.put(journalKey, journalName);
+    }
+    return ImmutableBiMap.copyOf(keysToNames);
   }
 
   public static SiteSet create(List<Map<String, ?>> siteSpecifications, ThemeTree themeTree) {
@@ -108,24 +163,6 @@ public class SiteSet {
   }
 
   /**
-   * @param journalKey specifies the journal
-   * @return Site List containing any sites that match the journalKey
-   * @throws UnmatchedSiteException if no journal is found
-   */
-  public ArrayList<Site> getSites(String journalKey) throws UnmatchedSiteException, IOException {
-    ArrayList<Site> sitesToReturn = new ArrayList<>();
-    for (Site site : sites.values()) {
-      if (site.getJournalKey().equals(journalKey)) {
-        sitesToReturn.add(site);
-      }
-    }
-    if (sitesToReturn.isEmpty()) {
-      throw new UnmatchedSiteException("Journal key not matched to any journal: " + journalKey);
-    }
-    return sitesToReturn;
-  }
-
-  /**
    * Attempts to load a site based on site key.
    *
    * @param key specifies the site
@@ -144,6 +181,25 @@ public class SiteSet {
     return sites.values();
   }
 
+  /**
+   * @return a journal key for a requested journal name
+   */
+  public String getJournalKeyFromName(String journalName) {
+    String journalKey = journalKeysToNames.inverse().get(journalName);
+    if (journalKey == null) {
+      throw new UnmatchedSiteException("Journal name not matched to key: " + journalName);
+    }
+    return journalKey;
+  }
+
+  public String getJournalNameFromKey(String journalKey) {
+    String journalName = journalKeysToNames.get(journalKey);
+    if (journalName == null) {
+      throw new UnmatchedSiteException("Journal key not matched to name: " + journalKey);
+    }
+    return journalName;
+  }
+
   public ImmutableSet<String> getSiteKeys() {
     return sites.keySet();
   }
@@ -153,11 +209,7 @@ public class SiteSet {
    *     these than siteKeys, since a journal can have multiple sites.
    */
   public ImmutableSet<String> getJournalKeys() {
-    ImmutableSet.Builder<String> result = ImmutableSet.builder();
-    for (Site site : sites.values()) {
-      result.add(site.getJournalKey());
-    }
-    return result.build();
+    return journalKeysToNames.keySet();
   }
 
   @Override

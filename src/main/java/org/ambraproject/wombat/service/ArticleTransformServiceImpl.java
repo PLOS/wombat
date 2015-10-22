@@ -63,7 +63,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   */
   private static final ImmutableSet<String> VALID_DTDS =
       ImmutableSet.of("http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd",
-                      "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd");
+                      "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd",
+                      "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd");
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here

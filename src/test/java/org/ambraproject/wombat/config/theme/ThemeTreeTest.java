@@ -13,11 +13,9 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertNotNull;
 
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
 public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
@@ -102,8 +100,17 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
   @Test
   public void testInheritPropertyFromRoot() throws IOException {
     Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal1Key");
-    Object inheritedValue = site.getTheme().getConfigMap("journal").get("isCollection");
-    assertNotNull(inheritedValue);
-    assertFalse((boolean) inheritedValue);
+    Map<String, Object> journal = site.getTheme().getConfigMap("homepage");
+    Object inheritedValue = journal.get("defaultSelection");
+    assertEquals(inheritedValue, "recent"); // expected to match src/main/webapp/WEB-INF/themes/root/config/homepage.yaml
   }
+
+  @Test
+  public void testCanOverridePropertyFromRoot() throws IOException {
+    Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal2Key");
+    Map<String, Object> journal = site.getTheme().getConfigMap("homepage");
+    Object inheritedValue = journal.get("defaultSelection");
+    assertEquals(inheritedValue, "popular"); // expected to match src/test/resources/test_themes/site2/config/homepage.json
+  }
+
 }

@@ -1,0 +1,9 @@
+{
+  "sections": [
+    {
+      "name": "popular",
+      "resultCount": 5
+    }
+  ],
+  "defaultSelection": "popular"
+}

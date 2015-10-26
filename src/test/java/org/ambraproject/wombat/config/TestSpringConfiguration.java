@@ -52,8 +52,6 @@ public class TestSpringConfiguration {
     themes.add(theme1);
     TestClasspathTheme theme2 = new TestClasspathTheme("site2", Collections.singletonList(rootTheme));
     themes.add(theme2);
-    TestClasspathTheme collectionTheme = new TestClasspathTheme("collectionSite", Collections.singletonList(rootTheme));
-    themes.add(collectionTheme);
     return runtimeConfiguration.getThemes(themes, rootTheme);
   }
 

@@ -84,8 +84,10 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     ImmutableMap.Builder<Optional<Site>, PatternsRequestCondition> requestConditionMap = ImmutableMap.builder();
     for (Map.Entry<RequestMappingValue, Collection<Site>> entry : patternMap.asMap().entrySet()) {
       RequestMappingValue mapping = entry.getKey();
+      Collection<Site> sites = entry.getValue(); // all sites that share the mapping pattern
+
       PatternsRequestCondition condition = buildPatternsRequestCondition(mapping);
-      for (Site site : entry.getValue()) {
+      for (Site site : sites) {
         requestConditionMap.put(Optional.of(site), condition);
         if (!mapping.getAnnotation().name().isEmpty()) {
           requestHandlerPatternDictionary.registerSiteMapping(mapping, site);

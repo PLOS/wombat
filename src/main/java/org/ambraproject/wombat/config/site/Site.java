@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
@@ -10,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Site {
 
@@ -21,9 +21,9 @@ public class Site {
   private final String journalName;
 
   public Site(String key, Theme theme, SiteRequestScheme requestScheme) {
-    this.key = Preconditions.checkNotNull(key);
-    this.theme = Preconditions.checkNotNull(theme);
-    this.requestScheme = Preconditions.checkNotNull(requestScheme);
+    this.key = Objects.requireNonNull(key);
+    this.theme = Objects.requireNonNull(theme);
+    this.requestScheme = Objects.requireNonNull(requestScheme);
 
     this.journalKey = findJournalKey(theme);
     this.journalName = findJournalName(theme);

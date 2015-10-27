@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config.site;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedListMultimap;
@@ -16,6 +15,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -28,7 +28,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   private final ImmutableMap<Site, PatternsRequestCondition> requestConditionMap;
 
   private SiteRequestCondition(SiteResolver siteResolver, Map<Site, PatternsRequestCondition> requestConditionMap) {
-    this.siteResolver = Preconditions.checkNotNull(siteResolver);
+    this.siteResolver = Objects.requireNonNull(siteResolver);
     this.requestConditionMap = ImmutableMap.copyOf(requestConditionMap);
   }
 

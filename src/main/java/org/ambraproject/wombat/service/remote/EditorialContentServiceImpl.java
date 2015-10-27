@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
@@ -25,6 +24,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class EditorialContentServiceImpl implements EditorialContentService {
@@ -64,7 +64,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
     if (contentRepoAddress == null) {
       setRepoConfig();
     }
-    return Preconditions.checkNotNull(contentRepoAddress);
+    return Objects.requireNonNull(contentRepoAddress);
   }
 
   private String getRepoBucketName() throws IOException {
@@ -74,7 +74,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
         throw new RuntimeException("No repository bucket name returned from service");
       }
     }
-    return Preconditions.checkNotNull(repoBucketName);
+    return Objects.requireNonNull(repoBucketName);
   }
 
 
@@ -118,7 +118,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
 
   @Override
   public <T> T requestCachedReader(CacheParams cacheParams, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
-    Preconditions.checkNotNull(callback);
+    Objects.requireNonNull(callback);
     return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version, RequestMode.OBJECT)), callback);
   }
 

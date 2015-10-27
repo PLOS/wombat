@@ -2,7 +2,6 @@ package org.ambraproject.wombat.util;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.hash.HashFunction;
@@ -14,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class CacheParams {
 
@@ -26,8 +26,8 @@ public class CacheParams {
   static final BaseEncoding HASH_BASE = BaseEncoding.base32();
 
   private CacheParams(String cacheKey, Optional<Integer> timeToLive) {
-    this.cacheKey = Preconditions.checkNotNull(cacheKey);
-    this.timeToLive = Preconditions.checkNotNull(timeToLive);
+    this.cacheKey = Objects.requireNonNull(cacheKey);
+    this.timeToLive = Objects.requireNonNull(timeToLive);
   }
 
   public static CacheParams create(String cacheKey) {

@@ -6,6 +6,7 @@ import java.util.Map;
 
 /**
  * This class is a wrapper for @code{Map<String, SearchFilterType>}. The map is populated as a bean in
+ *
  * @code{SpringConfiguration}.
  */
 public class SearchFilterTypeMap {

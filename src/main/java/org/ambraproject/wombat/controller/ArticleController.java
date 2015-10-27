@@ -2,7 +2,6 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
@@ -57,6 +56,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.SortedMap;
 
 /**
@@ -173,7 +173,7 @@ public class ArticleController extends WombatController {
     List<Map<?, ?>> articleListObjects = soaService.requestObject(String.format("articles/%s?lists", doi), List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
     for (Map<?, ?> articleListObject : articleListObjects) {
-      String listType = Preconditions.checkNotNull((String) articleListObject.get("type"));
+      String listType = Objects.requireNonNull((String) articleListObject.get("type"));
       result.put(listType, articleListObject);
     }
     return result.asMap();
@@ -465,7 +465,7 @@ public class ArticleController extends WombatController {
    * @return the service path to the correspond article XML asset file
    */
   private static String getArticleXmlAssetPath(RenderContext renderContext) {
-    return "articles/" + Preconditions.checkNotNull(renderContext.getArticleId()) + "?xml";
+    return "articles/" + Objects.requireNonNull(renderContext.getArticleId()) + "?xml";
   }
 
   /**
@@ -475,7 +475,7 @@ public class ArticleController extends WombatController {
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
-    String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
+    String cacheKey = "amendmentBody:" + Objects.requireNonNull(renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
@@ -524,7 +524,7 @@ public class ArticleController extends WombatController {
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
 
     String cacheKey = String.format("html:%s:%s",
-        Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
+        Objects.requireNonNull(renderContext.getSite()), renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {

@@ -1,9 +1,8 @@
 package org.ambraproject.wombat.config.site.url;
 
-import com.google.common.base.Preconditions;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
+import java.util.Objects;
 
 class HeaderPredicate implements SiteRequestPredicate {
 
@@ -11,8 +10,8 @@ class HeaderPredicate implements SiteRequestPredicate {
   private final String requiredValue;
 
   HeaderPredicate(String headerName, String requiredValue) {
-    this.headerName = Preconditions.checkNotNull(headerName);
-    this.requiredValue = Preconditions.checkNotNull(requiredValue);
+    this.headerName = Objects.requireNonNull(headerName);
+    this.requiredValue = Objects.requireNonNull(requiredValue);
   }
 
   @Override

@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.config.site.url;
 
 import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
 import org.ambraproject.wombat.config.site.Site;
@@ -17,6 +16,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,8 +34,8 @@ public class Link {
   private final boolean isAbsolute;
 
   private Link(Site site, String path, boolean isAbsolute) {
-    this.site = Preconditions.checkNotNull(site);
-    this.path = Preconditions.checkNotNull(path);
+    this.site = Objects.requireNonNull(site);
+    this.path = Objects.requireNonNull(path);
     this.isAbsolute = isAbsolute;
   }
 
@@ -110,7 +110,7 @@ public class Link {
     private final boolean isAbsolute;
 
     private Factory(Site site, boolean isAbsolute) {
-      this.site = Preconditions.checkNotNull(site);
+      this.site = Objects.requireNonNull(site);
       this.isAbsolute = isAbsolute;
     }
 
@@ -150,9 +150,9 @@ public class Link {
                                              Map<String, ?> variables,
                                              Multimap<String, ?> queryParameters,
                                              List<?> wildcardValues) {
-    Preconditions.checkNotNull(site);
-    Preconditions.checkNotNull(variables);
-    Preconditions.checkNotNull(queryParameters);
+    Objects.requireNonNull(site);
+    Objects.requireNonNull(variables);
+    Objects.requireNonNull(queryParameters);
 
     if (site.getRequestScheme().hasPathToken()) {
       if (pattern.equals("/*") || pattern.startsWith("/*/")) {

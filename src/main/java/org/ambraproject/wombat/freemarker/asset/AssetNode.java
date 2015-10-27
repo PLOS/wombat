@@ -1,9 +1,8 @@
 package org.ambraproject.wombat.freemarker.asset;
 
-import com.google.common.base.Preconditions;
-
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -15,7 +14,7 @@ class AssetNode {
   private final Set<String> dependencies;
 
   AssetNode(String path, Collection<String> dependencies) {
-    this.path = Preconditions.checkNotNull(path);
+    this.path = Objects.requireNonNull(path);
     this.dependencies = (dependencies == null) ? new HashSet<String>(0) : new HashSet<>(dependencies);
   }
 

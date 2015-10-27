@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config.site;
 
-import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -41,7 +41,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
   @Override
   protected RequestCondition<?> getCustomMethodCondition(Method method) {
     RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
-    Preconditions.checkNotNull(methodAnnotation, "No @RequestMapping found on mapped method");
+    Objects.requireNonNull(methodAnnotation, "No @RequestMapping found on mapped method");
     return SiteRequestCondition.create(siteResolver, siteSet, methodAnnotation, requestHandlerPatternDictionary);
   }
 

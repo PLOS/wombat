@@ -1,11 +1,11 @@
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.Preconditions;
 import freemarker.cache.TemplateLoader;
 import org.ambraproject.wombat.config.site.TemplateNotFoundException;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,8 +36,8 @@ public abstract class DelegatingTemplateLoader implements TemplateLoader {
     private final Object delegateTemplateSource;
 
     private TemplateSource(TemplateLoader delegateLoader, Object delegateTemplateSource) {
-      this.delegateLoader = Preconditions.checkNotNull(delegateLoader);
-      this.delegateTemplateSource = Preconditions.checkNotNull(delegateTemplateSource);
+      this.delegateLoader = Objects.requireNonNull(delegateLoader);
+      this.delegateTemplateSource = Objects.requireNonNull(delegateTemplateSource);
     }
   }
 

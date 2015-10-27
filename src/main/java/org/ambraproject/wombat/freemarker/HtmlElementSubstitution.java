@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.freemarker;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateException;
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * Encapsulates one element to be inserted into a document, replacing an element with a particular ID.
@@ -21,7 +21,7 @@ public class HtmlElementSubstitution {
   private final Element replacementElement;
 
   public HtmlElementSubstitution(Element replacementElement) {
-    this.replacementElement = Preconditions.checkNotNull(replacementElement);
+    this.replacementElement = Objects.requireNonNull(replacementElement);
   }
 
   public static ImmutableList<HtmlElementSubstitution> buildList(TemplateDirectiveBody body, String substAttrName)

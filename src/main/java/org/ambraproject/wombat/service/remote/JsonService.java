@@ -18,7 +18,6 @@
 
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -29,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.io.Reader;
 import java.net.URI;
+import java.util.Objects;
 
 /**
  * Abstract class for services that query a ReST backend that returns JSON.
@@ -55,7 +55,7 @@ public class JsonService {
    * @throws EntityNotFoundException if the object at the address does not exist
    */
   public <T> T requestObject(RemoteService<? extends Reader> remoteService, URI uri, Class<T> responseClass) throws IOException {
-    Preconditions.checkNotNull(responseClass);
+    Objects.requireNonNull(responseClass);
     try (Reader reader = remoteService.request(new HttpGet(uri))) {
       return deserializeStream(responseClass, reader, uri);
     }
@@ -76,7 +76,7 @@ public class JsonService {
   public <T> T requestCachedObject(CachedRemoteService<? extends Reader> remoteService, CacheParams cacheParams,
                                    final URI address, final Class<T> responseClass)
       throws IOException {
-    Preconditions.checkNotNull(responseClass);
+    Objects.requireNonNull(responseClass);
     return remoteService.requestCached(cacheParams, new HttpGet(address),
         new CacheDeserializer<Reader, T>() {
           @Override

@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.util.CacheParams;
@@ -17,6 +16,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Objects;
 
 /**
  * Decorator class that adds caching capability to a wrapped {@link RemoteService} object. The uncached RemoteService
@@ -31,8 +31,8 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
   private final Cache cache;
 
   public CachedRemoteService(RemoteService<S> remoteService, Cache cache) {
-    this.remoteService = Preconditions.checkNotNull(remoteService);
-    this.cache = Preconditions.checkNotNull(cache);
+    this.remoteService = Objects.requireNonNull(remoteService);
+    this.cache = Objects.requireNonNull(cache);
   }
 
   @Override // delegate
@@ -79,7 +79,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
     public T object;
 
     private CachedObject(Calendar timestamp, T object) {
-      this.timestamp = Preconditions.checkNotNull(timestamp);
+      this.timestamp = Objects.requireNonNull(timestamp);
       this.object = object; // nullable
     }
   }
@@ -100,9 +100,9 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    */
   public <T> T requestCached(CacheParams cacheParams, HttpUriRequest target, CacheDeserializer<? super S, ? extends T> callback)
       throws IOException {
-    Preconditions.checkNotNull(target);
-    Preconditions.checkNotNull(callback);
-    Preconditions.checkNotNull(cacheParams);
+    Objects.requireNonNull(target);
+    Objects.requireNonNull(callback);
+    Objects.requireNonNull(cacheParams);
 
     CachedObject<T> cached = getCachedObject(cacheParams.getCacheKey());
     Calendar lastModified = getLastModified(cached);
@@ -135,7 +135,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    */
   private <T> CachedObject<T> getCachedObject(String cacheKey) {
     try {
-      return cache.get(Preconditions.checkNotNull(cacheKey));
+      return cache.get(Objects.requireNonNull(cacheKey));
     } catch (Exception e) {
       // Unexpected, but to degrade gracefully, treat it the same as a cache miss
       log.error("Error accessing cache using key: {}", cacheKey, e);
@@ -173,7 +173,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    * @throws IOException
    */
   private TimestampedResponse requestIfModifiedSince(HttpUriRequest target, Calendar lastModified) throws IOException {
-    Preconditions.checkNotNull(lastModified);
+    Objects.requireNonNull(lastModified);
     CloseableHttpResponse response = null;
     boolean returningStream = false;
     try {

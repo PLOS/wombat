@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -41,6 +40,7 @@ import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
@@ -84,7 +84,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     private final Theme theme;
 
     private ThemeUriResolver(Theme theme) {
-      this.theme = Preconditions.checkNotNull(theme);
+      this.theme = Objects.requireNonNull(theme);
     }
 
     @Override
@@ -150,9 +150,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   @Override
   public void transform(RenderContext renderContext, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(renderContext);
-    Preconditions.checkNotNull(xml);
-    Preconditions.checkNotNull(html);
+    Objects.requireNonNull(renderContext);
+    Objects.requireNonNull(xml);
+    Objects.requireNonNull(html);
 
     log.debug("Starting XML transformation");
     SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -198,9 +198,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   @Override
   public void transformExcerpt(RenderContext renderContext, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(renderContext);
-    Preconditions.checkNotNull(xmlExcerpt);
-    Preconditions.checkNotNull(html);
+    Objects.requireNonNull(renderContext);
+    Objects.requireNonNull(xmlExcerpt);
+    Objects.requireNonNull(html);
 
     InputStream streamToTransform;
     if (Strings.isNullOrEmpty(enclosingTag)) {
@@ -219,8 +219,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
   @Override
   public String transformExcerpt(RenderContext renderContext, String xmlExcerpt, String enclosingTag) throws TransformerException {
-    Preconditions.checkNotNull(renderContext);
-    Preconditions.checkNotNull(xmlExcerpt);
+    Objects.requireNonNull(renderContext);
+    Objects.requireNonNull(xmlExcerpt);
     StringWriter html = new StringWriter();
     OutputStream outputStream = new WriterOutputStream(html, charset);
     InputStream inputStream = IOUtils.toInputStream(xmlExcerpt, charset);

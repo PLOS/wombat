@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config.theme;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import freemarker.cache.TemplateLoader;
@@ -12,6 +11,7 @@ import java.io.StringReader;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class StubTheme extends Theme {
 
@@ -19,7 +19,7 @@ public class StubTheme extends Theme {
 
   public StubTheme(String key, String journalKey, Theme... parents) {
     super(key, ImmutableList.copyOf(parents));
-    this.journalKey = Preconditions.checkNotNull(journalKey);
+    this.journalKey = Objects.requireNonNull(journalKey);
   }
 
   @Override

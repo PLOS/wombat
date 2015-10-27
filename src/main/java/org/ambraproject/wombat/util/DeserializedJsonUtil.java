@@ -1,11 +1,11 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.RandomAccess;
 
 /**
@@ -36,13 +36,13 @@ public class DeserializedJsonUtil {
    * @return the value
    */
   public static Object readField(Object jsonObject, List<String> fieldNames) {
-    Preconditions.checkNotNull(jsonObject);
+    Objects.requireNonNull(jsonObject);
     if (!(fieldNames instanceof RandomAccess)) {
       fieldNames = ImmutableList.copyOf(fieldNames);
     }
 
     for (int i = 0; i < fieldNames.size(); i++) {
-      String fieldName = Preconditions.checkNotNull(fieldNames.get(i));
+      String fieldName = Objects.requireNonNull(fieldNames.get(i));
 
       if (!(jsonObject instanceof Map)) {
         throw new IllegalArgumentException(String.format("%s is not a Map (%s)",

@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config.theme;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 import freemarker.cache.TemplateLoader;
 import freemarker.cache.WebappTemplateLoader;
@@ -14,6 +13,7 @@ import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -27,8 +27,8 @@ public class InternalTheme extends Theme {
 
   public InternalTheme(String key, List<? extends Theme> parents, ServletContext servletContext, String resourcePath) {
     super(key, parents);
-    this.servletContext = Preconditions.checkNotNull(servletContext);
-    this.resourceRoot = Preconditions.checkNotNull(resourcePath);
+    this.servletContext = Objects.requireNonNull(servletContext);
+    this.resourceRoot = Objects.requireNonNull(resourcePath);
     this.templateLoader = new WebappTemplateLoader(servletContext, resourcePath);
   }
 

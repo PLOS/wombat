@@ -1,8 +1,9 @@
 package org.ambraproject.wombat.config.site;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableTable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Objects;
 
 /**
  * A global bean that looks up patterns that have been mapped to request handlers. Ordinarily those patterns are set up
@@ -41,9 +42,9 @@ public final class RequestHandlerPatternDictionary {
    * @throws IllegalStateException if {@link #getPattern} has been called once or more on this object
    */
   public void register(RequestMapping handlerAnnotation, Site site, String pattern) {
-    String handlerName = Preconditions.checkNotNull(handlerAnnotation.name());
-    Preconditions.checkNotNull(site);
-    Preconditions.checkNotNull(pattern);
+    String handlerName = Objects.requireNonNull(handlerAnnotation.name());
+    Objects.requireNonNull(site);
+    Objects.requireNonNull(pattern);
 
     if (table != null) {
       throw new IllegalStateException("Cannot register more methods after directory has been read");
@@ -78,7 +79,7 @@ public final class RequestHandlerPatternDictionary {
     if (table == null) {
       table = registry.build();
     }
-    return table.get(Preconditions.checkNotNull(handlerName), Preconditions.checkNotNull(site));
+    return table.get(Objects.requireNonNull(handlerName), Objects.requireNonNull(site));
   }
 
 }

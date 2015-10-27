@@ -1,11 +1,10 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Preconditions;
-
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Objects;
 
 public class UriUtil {
   private UriUtil() {
@@ -22,7 +21,7 @@ public class UriUtil {
    */
   public static URI concatenate(URL server, String address) {
     try {
-      return new URL(server, Preconditions.checkNotNull(address)).toURI();
+      return new URL(server, Objects.requireNonNull(address)).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }

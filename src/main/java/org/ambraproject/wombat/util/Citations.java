@@ -2,13 +2,13 @@ package org.ambraproject.wombat.util;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
@@ -44,7 +44,7 @@ public class Citations {
     String suffix = (String) author.get("suffix");
 
     StringBuilder name = new StringBuilder();
-    name.append(Preconditions.checkNotNull(surnames));
+    name.append(Objects.requireNonNull(surnames));
     if (!Strings.isNullOrEmpty(givenNames)) {
       name.append(' ').append(abbreviateAuthorGivenNames(givenNames));
     }

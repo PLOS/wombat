@@ -31,6 +31,7 @@ import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public abstract class Theme {
@@ -94,7 +95,7 @@ public abstract class Theme {
    * @throws IOException if an error occurs accessing the resource
    */
   public final InputStream getStaticResource(String path) throws IOException {
-    Preconditions.checkNotNull(path);
+    Objects.requireNonNull(path);
     for (Theme theme : getChain()) {
       InputStream stream = theme.fetchStaticResource(path);
       if (stream != null) {
@@ -138,7 +139,7 @@ public abstract class Theme {
    * @throws IOException
    */
   public ResourceAttributes getResourceAttributes(String path) throws IOException {
-    Preconditions.checkNotNull(path);
+    Objects.requireNonNull(path);
     for (Theme theme : getChain()) {
       ResourceAttributes result = theme.fetchResourceAttributes(path);
       if (result != null) {

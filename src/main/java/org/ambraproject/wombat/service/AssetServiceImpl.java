@@ -38,6 +38,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
+import java.util.Objects;
 
 public class AssetServiceImpl implements AssetService {
 
@@ -236,8 +237,8 @@ public class AssetServiceImpl implements AssetService {
     private final byte[] contents;
 
     public CompiledAsset(CompiledDigest digest, byte[] contents) {
-      this.digest = Preconditions.checkNotNull(digest);
-      this.contents = Preconditions.checkNotNull(contents);
+      this.digest = Objects.requireNonNull(digest);
+      this.contents = Objects.requireNonNull(contents);
     }
   }
 

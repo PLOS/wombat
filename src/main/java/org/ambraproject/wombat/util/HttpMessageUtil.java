@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
@@ -24,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -117,7 +117,7 @@ public class HttpMessageUtil {
   }
 
   private static Collection<NameValuePair> getRequestParameters(HttpServletRequest request, Predicate<String> includeParam) {
-    Preconditions.checkNotNull(includeParam);
+    Objects.requireNonNull(includeParam);
     List<NameValuePair> paramList = new ArrayList<>();
     Enumeration allParamNames = request.getParameterNames();
     while (allParamNames.hasMoreElements()) {
@@ -147,9 +147,9 @@ public class HttpMessageUtil {
                                             Collection<? extends NameValuePair> params,
                                             NameValuePair... additionalParams) {
     RequestBuilder reqBuilder = RequestBuilder.create(method).setUri(fullUrl);
-    Preconditions.checkNotNull(headers);
-    Preconditions.checkNotNull(params);
-    Preconditions.checkNotNull(additionalParams);
+    Objects.requireNonNull(headers);
+    Objects.requireNonNull(params);
+    Objects.requireNonNull(additionalParams);
     for (Header header : headers) {
       reqBuilder.addHeader(header);
     }

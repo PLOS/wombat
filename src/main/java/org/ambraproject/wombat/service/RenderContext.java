@@ -1,7 +1,8 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Preconditions;
 import org.ambraproject.wombat.config.site.Site;
+
+import java.util.Objects;
 
 public class RenderContext {
 
@@ -9,7 +10,7 @@ public class RenderContext {
   private String articleId;
 
   public RenderContext(Site site) {
-    this.site = Preconditions.checkNotNull(site);
+    this.site = Objects.requireNonNull(site);
   }
 
   public Site getSite() {

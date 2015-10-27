@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Preconditions;
 import org.apache.commons.io.Charsets;
 import org.apache.http.HttpEntity;
 import org.apache.http.conn.HttpClientConnectionManager;
@@ -12,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
+import java.util.Objects;
 
 public class ReaderService extends AbstractRemoteService<Reader> {
   private static final Logger log = LoggerFactory.getLogger(ReaderService.class);
@@ -28,7 +28,7 @@ public class ReaderService extends AbstractRemoteService<Reader> {
 
   private static Charset getCharsetOrDefault(HttpEntity entity) {
     Charset charset = null;
-    ContentType contentType = ContentType.get(Preconditions.checkNotNull(entity));
+    ContentType contentType = ContentType.get(Objects.requireNonNull(entity));
     if (contentType != null) {
       charset = contentType.getCharset(); // may be null
     }

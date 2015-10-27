@@ -32,10 +32,10 @@ public class ClientEndpoint {
 
   /**
    * Get the client-side port. The return value is present only if the port is generally needed to build a link.
-   * <p/>
+   * <p>
    * If the original request had a {@code "X-Forwarded-Host"} header, the return value is present only if header
    * provided a port number after the hostname.
-   * <p/>
+   * <p>
    * If the original request did not have a {@code "X-Forwarded-Host"} header, the return value is absent if the port
    * number was the default (80 for HTTP; 443 for HTTPS).
    *
@@ -48,7 +48,7 @@ public class ClientEndpoint {
 
   /**
    * Recover a request's client-side hostname and port.
-   * <p/>
+   * <p>
    * If the request was forwarded by a proxy that supports the {@code "X-Forwarded-Host"} header, return the hostname
    * and port provided by that header value. Else, return the values stored in the request object.
    *

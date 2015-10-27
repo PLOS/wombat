@@ -45,14 +45,14 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
 
   /**
    * Create a condition, representing all sites, for a single request handler.
-   * <p/>
-   * Writes to the {@link RequestHandlerPatternDictionary} object as a side effect. To avoid redundant writes, this method must be
-   * called only once per {@link RequestMapping} object.
+   * <p>
+   * Writes to the {@link RequestHandlerPatternDictionary} object as a side effect. To avoid redundant writes, this
+   * method must be called only once per {@link RequestMapping} object.
    *
-   * @param siteResolver      the global site resolver
-   * @param siteSet           the set of all sites in the system
-   * @param mappingAnnotation the annotation representing the request handler
-   * @param requestHandlerPatternDictionary  the global handler directory, which must be in a writable state
+   * @param siteResolver                    the global site resolver
+   * @param siteSet                         the set of all sites in the system
+   * @param mappingAnnotation               the annotation representing the request handler
+   * @param requestHandlerPatternDictionary the global handler directory, which must be in a writable state
    * @return the new condition object
    */
   public static SiteRequestCondition create(SiteResolver siteResolver, SiteSet siteSet,
@@ -94,7 +94,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   /**
    * Get the pattern that is mapped to a request handler for a given site. Return {@code null} if the handler is
    * disabled on that site.
-   * <p/>
+   * <p>
    * Looks up the configured value from the site's theme, or gets the default value from the mapping annotation if it is
    * not configured in the theme.
    *

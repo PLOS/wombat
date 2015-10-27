@@ -19,18 +19,18 @@ import static org.testng.Assert.assertEquals;
 public class HtmlElementTransformationTest {
 
   @Test
-  public void testApply(){
+  public void testApply() {
 
     SitePageContext sitePageContext = mock(SitePageContext.class);
     SiteSet siteset = mock(SiteSet.class);
     when(sitePageContext.buildLink(anyString())).thenReturn("path/to/an/internal/page");
     when(sitePageContext.buildLink(any(SiteSet.class), anyString(), anyString())).thenReturn("path/to/another/journal/page");
 
-    String testHtml =  "<img data-lemur-key=\"content_1234\"/>" +
-            "<a data-lemur-key=\"file_4321\"/>" +
-            "<a data-lemur-link=\"s/lorum_ipsum\" data-lemur-link-suffix=\"#anchor_string\">Lorem Ipsum</a>" +
-            "<a data-lemur-link=\"s/test-page\" data-lemur-link-journal=\"PLoSCompBiol\">test cross-journal link</a>" +
-            "<a data-lemur-doi=\"10.1371/journal.pone.0008083\">article link</a>";
+    String testHtml = "<img data-lemur-key=\"content_1234\"/>" +
+        "<a data-lemur-key=\"file_4321\"/>" +
+        "<a data-lemur-link=\"s/lorum_ipsum\" data-lemur-link-suffix=\"#anchor_string\">Lorem Ipsum</a>" +
+        "<a data-lemur-link=\"s/test-page\" data-lemur-link-journal=\"PLoSCompBiol\">test cross-journal link</a>" +
+        "<a data-lemur-doi=\"10.1371/journal.pone.0008083\">article link</a>";
 
     Document document = Jsoup.parseBodyFragment(testHtml);
 
@@ -54,7 +54,7 @@ public class HtmlElementTransformationTest {
     assertEquals(journalKeyArg.getValue(), "PLoSCompBiol");
 
     assertEquals(document.toString(),
-            "<html>\n" +
+        "<html>\n" +
             " <head></head>\n" +
             " <body>\n" +
             "  <img src=\"path/to/an/internal/page\" />\n" +

@@ -8,7 +8,7 @@ public class RenderContext {
   private final Site site;
   private String articleId;
 
-  public RenderContext(Site site){
+  public RenderContext(Site site) {
     this.site = Preconditions.checkNotNull(site);
   }
 

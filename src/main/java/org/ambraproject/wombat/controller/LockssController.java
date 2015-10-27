@@ -15,8 +15,7 @@ import java.text.ParseException;
 import java.util.Map;
 
 /**
- * Responsible for providing the publication year range, months and article DOIs published in a
- * given year and month
+ * Responsible for providing the publication year range, months and article DOIs published in a given year and month
  */
 @Controller
 public class LockssController extends WombatController {

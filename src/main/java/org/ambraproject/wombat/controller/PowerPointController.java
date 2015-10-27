@@ -60,7 +60,9 @@ public class PowerPointController extends WombatController {
          * than just assuming that's the only thing that causes a 400 status.
          */
         throw new NotFoundException(figureId);
-      } else throw e;
+      } else {
+        throw e;
+      }
     }
 
     Map<String, Object> parentArticleMetadata = (Map<String, Object>) figureMetadata.get("parentArticle");

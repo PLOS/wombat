@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * A global bean that looks up patterns that have been mapped to request handlers. Ordinarily those patterns are set up
  * as part of Spring configuration; we want to capture those patterns in order to use them later, for building links.
- * <p/>
+ * <p>
  * This bean has two roles: intercepting the patterns before they get passed to Spring config (which, as far as we know,
  * doesn't have any built-in way to extract them later), and looking them up later. It would be nice if we could have
  * one bean to do the first job, which produces another, immutable bean to do the second job when it's done.
  * Unfortunately, we're not aware of a Spring hook that allows us to set up a separate bean only after all request
  * handlers have been mapped. For the next-best thing, we statefully freeze this object the first time it is read and
  * throw an {@code IllegalStateException} rather than allow any further writes, making it effectively immutable.
- * <p/>
+ * <p>
  * This class is intended to be thread-safe. Writes are synchronized, and the object is immutable while being read.
  */
 public final class RequestHandlerPatternDictionary {
@@ -32,7 +32,7 @@ public final class RequestHandlerPatternDictionary {
 
   /**
    * Register the pattern that is associated with a handler on a particular site.
-   * <p/>
+   * <p>
    * All registrations must be completed before the first call to {@link #getPattern}.
    *
    * @param handlerAnnotation the annotation for the handler
@@ -55,7 +55,7 @@ public final class RequestHandlerPatternDictionary {
 
   /**
    * Look up a registered pattern.
-   * <p/>
+   * <p>
    * This method should only be called when all registrations are complete. The first time this method is called for
    * this object, it has the side effect of freezing the object and invalidating any future calls to {@link #register}.
    *

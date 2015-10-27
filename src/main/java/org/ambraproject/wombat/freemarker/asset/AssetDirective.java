@@ -29,7 +29,7 @@ import java.util.Map;
 
 /**
  * Base class for Freemarker custom directives used to insert compiled versions of asset files (javascript and CSS).
- * <p/>
+ * <p>
  * Allows the invoker to specify "dependencies" for an asset, which means other assets that must precede it when
  * rendered on the page.
  */

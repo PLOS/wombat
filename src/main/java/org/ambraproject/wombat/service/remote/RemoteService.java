@@ -14,7 +14,7 @@ public interface RemoteService<S extends Closeable> {
 
   /**
    * Make a request and open a stream as the response.
-   * <p/>
+   * <p>
    * The caller must close the stream when it is done reading. This is important for connection pooling.
    *
    * @param target the request to send
@@ -41,7 +41,7 @@ public interface RemoteService<S extends Closeable> {
 
   /**
    * Makes a request to the given URI, checks for response codes 400 or above, and returns the response.
-   * <p/>
+   * <p>
    * The caller <em>must</em> either close the returned {@code CloseableHttpResponse} object or close the {@code
    * InputStream} to the response body (i.e., {@code CloseableHttpResponse.getEntity().getContent()}). This is very
    * important, because leaving responses hanging open can starve the connection pool and cause horrible timeouts.

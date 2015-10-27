@@ -36,9 +36,9 @@ public class ArticleControllerTest extends ControllerTest {
   private static final ArticleTransformService articleTransformService = mock(ArticleTransformService.class);
   private static final String SITE_UNDER_TEST = "DesktopPlosOne";
   private static final ImmutableMap<String, String> SITE_CONFIG = ImmutableMap.<String, String>builder()
-          .put("DesktopPlosOne", "PLoSONE")
-          .put("DesktopPlosCollections", "PLoSCollections")
-          .build();
+      .put("DesktopPlosOne", "PLoSONE")
+      .put("DesktopPlosCollections", "PLoSCollections")
+      .build();
   private static Map<String, String> MOCK_CONFIG_MAP = new HashMap<>();
 
 
@@ -110,7 +110,7 @@ public class ArticleControllerTest extends ControllerTest {
       SiteSet siteSet = mock(SiteSet.class);
 
       ImmutableSet.Builder<Site> testSiteBuilder = ImmutableSet.builder();
-      for (String key : SITE_CONFIG.keySet()){
+      for (String key : SITE_CONFIG.keySet()) {
         SiteRequestScheme mockRequestScheme = mock(SiteRequestScheme.class);
         when(mockRequestScheme.isForSite(any(HttpServletRequest.class))).thenReturn(key.contentEquals(SITE_UNDER_TEST));
 

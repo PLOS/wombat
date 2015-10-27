@@ -16,13 +16,12 @@ package org.ambraproject.wombat.controller;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
+import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.slf4j.Logger;
@@ -65,7 +64,7 @@ public class SearchController extends WombatController {
    * search and an advanced search will have many parameters in common, such as sort order, date range, page, results
    * per page, etc.  This class eliminates the need to have long lists of @RequestParam parameters duplicated across
    * many controller methods.
-   * <p/>
+   * <p>
    * This class also contains logic having to do with which parameters take precedence over others, defaults when
    * parameters are absent, and the like.
    */
@@ -272,8 +271,8 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Examine the current @code{ArticleSearchQuery} object and build a single URL parameter
-   * string to append to the current search URL.
+   * Examine the current @code{ArticleSearchQuery} object and build a single URL parameter string to append to the
+   * current search URL.
    *
    * @param q the search query to rebuild search URL parameters from
    * @return ImmutableListMultimap that contains the URL parameter list
@@ -419,15 +418,15 @@ public class SearchController extends WombatController {
    * Searches for all articles in the volume identified by the value of the volume parameter.
    *
    * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
-   * @param params all URL parameters
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
    * @return String indicating template location
    * @throws IOException
    */
   @RequestMapping(name = "volumeSearch", value = "/search", params = {"volume!="})
   public String volumeSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
+                             @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);

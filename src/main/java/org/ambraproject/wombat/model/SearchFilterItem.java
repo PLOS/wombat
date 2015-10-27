@@ -12,7 +12,7 @@ public class SearchFilterItem {
   Map<String, List<String>> filteredResultsParameters;
 
   public SearchFilterItem(String displayName, float numberOfHits, String filterParamName,
-      String filterValue, Map<String, List<String>> filteredResultsParameters) {
+                          String filterValue, Map<String, List<String>> filteredResultsParameters) {
     this.displayName = displayName;
     this.numberOfHits = numberOfHits;
     this.filterParamName = filterParamName;

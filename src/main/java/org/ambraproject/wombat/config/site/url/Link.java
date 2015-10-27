@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 /**
  * A link to a site page.
- * <p/>
+ * <p>
  * An instance of this class encapsulates a path to the linked page and the site to which the linked page belongs. It
  * depends on an {@code HttpServletRequest} object in order to build an {@code href} value to appear in the
  * corresponding response.
@@ -51,7 +51,7 @@ public class Link {
 
   /**
    * Begin building a link to an absolute address.
-   * <p/>
+   * <p>
    * This should be used only if the resulting link will appear in a context outside of a local site, such as in a
    * downloadable document file. If the link will appear on a site page served by this application, instead use {@link
    * #toLocalSite} or {@link #toForeignSite} with a correct {@code localSite} argument.
@@ -242,7 +242,7 @@ public class Link {
   /**
    * Build a link from this object. The returned value may be either an absolute link (full URL) or a relative link
    * (path beginning with "/") depending on the sites used to set up this object.
-   * <p/>
+   * <p>
    * The returned path is suitable as an {@code href} value to be used in the response to the {@code request} argument.
    * The argument value must resolve to the local site given to set up this object.
    *

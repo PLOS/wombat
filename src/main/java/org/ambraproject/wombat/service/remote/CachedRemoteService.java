@@ -86,15 +86,15 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
 
   /**
    * Get a value either from the cache or by converting a stream from a REST request or from the cache.
-   * <p/>
+   * <p>
    * If there is a cached value, and the REST service does not indicate that the value has been modified since the value
    * was inserted into the cache, return that value. Else, query the service for a new stream and convert that stream to
    * a cacheable return value using the provided callback.
    *
-   * @param cacheParams   the cache parameters object containing the cache key at which to retrieve and store the value
-   * @param target   the request with which to query the service if the value is not cached
-   * @param callback how to deserialize a new value from the stream, to return and insert into the cache
-   * @param <T>      the type of value to deserialize and return
+   * @param cacheParams the cache parameters object containing the cache key at which to retrieve and store the value
+   * @param target      the request with which to query the service if the value is not cached
+   * @param callback    how to deserialize a new value from the stream, to return and insert into the cache
+   * @param <T>         the type of value to deserialize and return
    * @return the value from the service or cache
    * @throws IOException
    */
@@ -112,7 +112,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
         try (S stream = remoteService.open(fromServer.response.getEntity())) {
           T value = callback.read(stream);
           if (fromServer.timestamp != null) {
-            if (cacheParams.getTimeToLive().isPresent()){
+            if (cacheParams.getTimeToLive().isPresent()) {
               cache.put(cacheParams.getCacheKey(), new CachedObject<>(fromServer.timestamp, value), cacheParams.getTimeToLive().get());
             } else {
               cache.put(cacheParams.getCacheKey(), new CachedObject<>(fromServer.timestamp, value));

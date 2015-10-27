@@ -21,9 +21,9 @@ import freemarker.ext.servlet.HttpRequestHashModel;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.util.PathUtil;
@@ -57,11 +57,11 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
    * Renders queued asset links as HTML. If in dev mode, the rendered output will be a sequence of plain links to the
    * asset resources. Else, the queued assets will be compiled into a minified form, and the rendered output will be a
    * single link to the result.
-   * <p/>
+   * <p>
    * Either way, assets will be ordered according to their dependencies, defaulting to the order in which they were
    * enqueued. (That is, in dev mode the links appear in that order, and in production mode the assets are concatenated
    * in that order before they are minified.)
-   * <p/>
+   * <p>
    * This method pulls asset nodes from the named environment variable. Executing the method clears the queue.
    *
    * @param assetType           defines the type of asset (.js or .css)
@@ -98,10 +98,10 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
 
   /**
    * Sort assets by their dependencies and return their paths in order.
-   * <p/>
+   * <p>
    * The result is a topological sort that preserves the input order as much as possible. The algorithm repeatedly pulls
    * the first node from the sequence that does not depend on any nodes not yet pulled.
-   * <p/>
+   * <p>
    * This method clobbers the nodes' {@code dependencies} fields. Specifically, a successful run will empty all the
    * dependency sets, with the assumption that the node objects will be discarded immediately after this method
    * returns.
@@ -128,7 +128,9 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
           String dependent = dependencyIterator.next();
           if (assetPaths.contains(dependent)) {
             dependencyIterator.remove();
-          } else break;
+          } else {
+            break;
+          }
         }
         if (dependencies.isEmpty()) {
           assetPaths.add(candidate.getPath());

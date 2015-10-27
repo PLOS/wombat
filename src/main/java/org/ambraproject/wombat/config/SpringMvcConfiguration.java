@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import java.util.List;
 
 @Configuration
-public class SpringMvcConfiguration extends WebMvcConfigurationSupport{
+public class SpringMvcConfiguration extends WebMvcConfigurationSupport {
 
   @Autowired
   SiteResolver siteResolver;

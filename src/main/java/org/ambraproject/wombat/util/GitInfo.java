@@ -72,8 +72,9 @@ public class GitInfo {
 
   /**
    * This is to handle a situation where git folder isn't available
+   *
    * @param properties Properties object that contains the git.properties info
-   * @param key key
+   * @param key        key
    * @return value, default value is an empty string
    */
   private String getPropertyValue(Properties properties, String key) {

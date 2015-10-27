@@ -38,7 +38,7 @@ public class HttpMessageUtil {
     /**
      * Return the header value to copy into the outgoing response, under the same header name as the incoming response.
      * Return {@code null} to copy no header with this name.
-     * <p/>
+     * <p>
      * To copy the header value unchanged, do {@code return header.getValue();}.
      *
      * @param header a header for an incoming response

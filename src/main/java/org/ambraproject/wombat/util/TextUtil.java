@@ -17,10 +17,9 @@ import java.util.regex.Pattern;
 public class TextUtil {
 
   /**
-   * Removes the footnote marker from a given text
-   * Footnote Marker Example:
-   * ¤b Current address: Joint Genome Institute, Walnut Creek, California, United States of America
-   * footnote marker would be "¤b" and that text will be replaced with an empty string.
+   * Removes the footnote marker from a given text Footnote Marker Example: ¤b Current address: Joint Genome Institute,
+   * Walnut Creek, California, United States of America footnote marker would be "¤b" and that text will be replaced
+   * with an empty string.
    *
    * @param text with footnote marker
    * @return text without footnote marker
@@ -32,7 +31,7 @@ public class TextUtil {
 
   /**
    * Convert a parsed DOM node to equivalent XML source code.
-   * <p/>
+   * <p>
    * TODO: Unify with {@link org.ambraproject.wombat.service.ArticleTransformService#transformExcerpt}?
    *
    * @param node the node to convert

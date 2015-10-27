@@ -16,7 +16,6 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Multimap;
 import freemarker.core.Environment;
-import freemarker.ext.servlet.HttpRequestParametersHashModel;
 import freemarker.template.SimpleHash;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
@@ -35,19 +34,19 @@ import java.util.Map;
 /**
  * Freemarker custom directive that writes out URL parameters based on the current request parameters.  A single
  * parameter's values can be replaced or added.
- * <p/>
+ * <p>
  * There is one required parameter named params.  This should be a map of the request parameters.
- * <p/>
- * Optional parameters are name and value.  If present, the named parameter will be added (or all values
- * will be replaced if it is already present).
- * <p/>
+ * <p>
+ * Optional parameters are name and value.  If present, the named parameter will be added (or all values will be
+ * replaced if it is already present).
+ * <p>
  * Example usage:
- * <p/>
+ * <p>
  * <a href="foo?<@replaceParams params=RequestParameters name="bar" value="baz" />">link</a>
- * <p/>
+ * <p>
  * This will write out a URL beginning with foo and including all the parameters in the current request, with an
  * additional parameter "bar" added (or replaced) with the value "baz".
- * <p/>
+ * <p>
  * TODO: add the ability to add/replace multiple params, if that is needed.
  */
 public class ReplaceParametersDirective implements TemplateDirectiveModel {

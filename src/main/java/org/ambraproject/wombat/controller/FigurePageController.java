@@ -34,7 +34,7 @@ public class FigurePageController extends WombatController {
    * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
    * descriptionHtml} member.
    *
-   * @param renderContext the context for the transform which wraps the site object and optional context values
+   * @param renderContext  the context for the transform which wraps the site object and optional context values
    * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
    */
   private void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
@@ -53,7 +53,7 @@ public class FigurePageController extends WombatController {
    * The transform is written assuming we're at the article path, but because we're also (probably improperly) reusing
    * it here, the paths are wrong. Unlike in FreeMarker, there's no apparent, easy way to configure what the path should
    * be on a per-transformation basis. So kludge in the fix after the fact.
-   * <p/>
+   * <p>
    * TODO something less horrible
    */
   private static String kludgeRelativeImageLinks(String descriptionHtml) {
@@ -122,7 +122,7 @@ public class FigurePageController extends WombatController {
    */
   @RequestMapping(name = "lightbox", value = "/article/lightbox")
   public String renderLightbox(Model model, @SiteParam Site site)
-          throws IOException {
+      throws IOException {
 
     return site + "/ftl/article/articleLightbox";
   }

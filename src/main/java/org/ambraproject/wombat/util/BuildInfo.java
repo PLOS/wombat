@@ -35,7 +35,7 @@ public class BuildInfo {
   private final String enabledDevFeatures;
 
   public BuildInfo(String version, String date, String user, String gitCommitIdAbbrev,
-      String enabledDevFeaturesString) {
+                   String enabledDevFeaturesString) {
     this.version = Strings.nullToEmpty(version);
     this.date = Strings.nullToEmpty(date);
     this.user = Strings.nullToEmpty(user);

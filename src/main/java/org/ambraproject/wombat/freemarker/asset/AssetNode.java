@@ -29,7 +29,7 @@ class AssetNode {
   /**
    * Return the set of dependencies on other nodes. Dependencies are represented by strings that match the other nodes'
    * {@link #getPath()} values.
-   * <p/>
+   * <p>
    * The returned {@code Set} supports addition and removal.
    *
    * @return the set of paths of nodes on which this node is dependent

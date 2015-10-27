@@ -15,7 +15,6 @@ import com.google.common.base.Joiner;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.controller.StaticResourceController;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 import org.springframework.beans.factory.annotation.Autowired;

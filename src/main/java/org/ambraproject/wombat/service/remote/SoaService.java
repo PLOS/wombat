@@ -14,7 +14,7 @@ import java.util.Collection;
 
 /**
  * A service for retrieving data from the SOA's RESTful server.
- * <p/>
+ * <p>
  * Each {@code address} argument for this service's methods must be formatted as a path to be appended to the root
  * server URL. For example, if the server is hosted at {@code http://example.com/api/v1/} and you want to send a request
  * to {@code http://example.com/api/v1/config}, then you would call {@code requestStream("config")}.
@@ -22,8 +22,8 @@ import java.util.Collection;
 public interface SoaService {
 
   /**
-   *  Return the host, port, and optionally part of the path.  For example "http://www.example.com/" or
-   *                "https://plos.org/api/"
+   * Return the host, port, and optionally part of the path.  For example "http://www.example.com/" or
+   * "https://plos.org/api/"
    */
 
   public abstract URL getServerUrl();
@@ -38,9 +38,11 @@ public interface SoaService {
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   public abstract InputStream requestStream(String address) throws IOException;
+
   public abstract InputStream requestStream(HttpUriRequest target) throws IOException;
 
   public abstract Reader requestReader(String address) throws IOException;
+
   public abstract Reader requestReader(HttpUriRequest target) throws IOException;
 
   /**
@@ -72,10 +74,10 @@ public interface SoaService {
    * query the service for a new stream and convert that stream to a cacheable return value using the provided
    * callback.
    *
-   * @param cacheParams   the cache parameters object containing the cache key at which to retrieve and store the value
-   * @param address  the address to query the SOA service if the value is not cached
-   * @param callback how to deserialize a new value from the stream, to return and insert into the cache
-   * @param <T>      the type of value to deserialize and return
+   * @param cacheParams the cache parameters object containing the cache key at which to retrieve and store the value
+   * @param address     the address to query the SOA service if the value is not cached
+   * @param callback    how to deserialize a new value from the stream, to return and insert into the cache
+   * @param <T>         the type of value to deserialize and return
    * @return the value from the service or cache
    * @throws IOException
    */
@@ -102,7 +104,7 @@ public interface SoaService {
 
   /**
    * Requests an asset, returning both the headers and stream.
-   * <p/>
+   * <p>
    * The caller <em>must</em> either close the returned {@code CloseableHttpResponse} object or close the {@code
    * InputStream} to the response body. This is very important, because leaving responses hanging open can starve the
    * connection pool and cause horrible timeouts.
@@ -117,6 +119,7 @@ public interface SoaService {
 
   /**
    * Forward the remote service response from a given request to a client
+   *
    * @return
    * @throws IOException
    */

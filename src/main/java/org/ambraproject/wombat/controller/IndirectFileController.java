@@ -63,7 +63,7 @@ public class IndirectFileController extends WombatController {
                                  HttpServletRequest request,
                                  @SiteParam Site site,
                                  @RequestParam(value = "id", required = true) String key)
-          throws IOException {
+      throws IOException {
     serve(response, request, key, Optional.<Integer>absent());
   }
 
@@ -77,11 +77,11 @@ public class IndirectFileController extends WombatController {
 
     try {
       fileMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey), key, version);
-        } catch (EntityNotFoundException e) {
-    String message = String.format("Not found in repo: [key: %s, version: %s]",
-            key, version.orNull());
-    throw new NotFoundException(message, e);
-  }
+    } catch (EntityNotFoundException e) {
+      String message = String.format("Not found in repo: [key: %s, version: %s]",
+          key, version.orNull());
+      throw new NotFoundException(message, e);
+    }
 
     String contentType = (String) fileMetadata.get("contentType");
     if (contentType != null) {

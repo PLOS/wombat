@@ -11,7 +11,7 @@ import java.util.Collection;
  * Encapsulates the scheme by which URLs and other request attributes are mapped onto {@link
  * org.ambraproject.wombat.config.site.Site} objects. Each instance of this class corresponds to a particular {@code
  * Site} (but does not have the {@code Site} as a field -- the composition goes in the other direction).
- * <p/>
+ * <p>
  * The class has two jobs: (1) given a request, determine whether the request is for this object's site; and (2) given a
  * path to an application page, format that path as a full link to that page within this object's site.
  */
@@ -29,10 +29,10 @@ public class SiteRequestScheme implements SiteRequestPredicate {
 
   /**
    * A request is for this object's site if and only if all of these predicates are true for the request.
-   * <p/>
-   * If {@link #pathToken} or {@link #hostName} is present, this must include a {@link PathTokenPredicate} or
-   * {@link HostPredicate}, respectively, to be correct. This is the responsibility of {@link Builder#setPathToken} and
-   * {@link Builder#specifyHost}.
+   * <p>
+   * If {@link #pathToken} or {@link #hostName} is present, this must include a {@link PathTokenPredicate} or {@link
+   * HostPredicate}, respectively, to be correct. This is the responsibility of {@link Builder#setPathToken} and {@link
+   * Builder#specifyHost}.
    */
   private final ImmutableSet<SiteRequestPredicate> requestPredicates;
 

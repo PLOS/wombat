@@ -62,7 +62,7 @@ public class CacheParams {
   /**
    * Create a hash from a sequence of strings and return it as a string for use as a cache key. This is useful when the
    * strings, concatenated, may be too long (by environmental default, >250 chars) to be used directly as a key.
-   * <p/>
+   * <p>
    * For consistent hashes, the argument must have a well-defined iteration order. Passing in, for example, a {@link
    * java.util.HashSet} is a bad idea.
    *

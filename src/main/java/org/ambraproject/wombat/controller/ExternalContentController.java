@@ -38,7 +38,7 @@ public class ExternalContentController extends WombatController {
 
   @RequestMapping(name = "externalContent", value = "/external/{pageName}")
   public String renderExternalContent(Model model, @SiteParam Site site, @PathVariable String pageName)
-          throws IOException {
+      throws IOException {
 
     String repoKey = REPO_KEY_PREFIX.concat(".").concat(pageName);
     model.addAttribute("externalServiceName", "ember"); // may not need, but kept for prototype

@@ -40,9 +40,9 @@ public class SiteContentController extends WombatController {
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(name="siteContent", value="/s/{pageName}")
+  @RequestMapping(name = "siteContent", value = "/s/{pageName}")
   public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
-          throws IOException {
+      throws IOException {
 
     Theme theme = site.getTheme();
     Map<String, Object> pageConfig = theme.getConfigMap("siteContent");
@@ -78,7 +78,7 @@ public class SiteContentController extends WombatController {
     String homeRepoKey = (String) pageConfig.get("homeRepoKey");
     if (homeRepoKey == null) {
       throw new RuntimeConfigurationException("Content repo key for site content home page not configured for theme " +
-              theme.toString());
+          theme.toString());
     }
     return renderSiteContent(model, site, homeRepoKey);
   }

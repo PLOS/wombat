@@ -15,7 +15,7 @@ public class TestArticleServiceImpl implements ArticleService {
   @Override
   public Map<?, ?> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
     BufferedReader reader = new BufferedReader(
-            new FileReader("src/test/resources/articleMeta/" + articleId.replace("10.1371/journal.","") + ".json"));
+        new FileReader("src/test/resources/articleMeta/" + articleId.replace("10.1371/journal.", "") + ".json"));
     return (Map<String, Object>) new Gson().fromJson(reader, HashMap.class);
   }
 }

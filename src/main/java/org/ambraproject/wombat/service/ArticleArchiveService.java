@@ -22,8 +22,8 @@ public interface ArticleArchiveService {
   public abstract Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException;
 
   /**
-   * Returns all of the months for the requested year. If it's the current year,
-   * it will return the months until the current month.
+   * Returns all of the months for the requested year. If it's the current year, it will return the months until the
+   * current month.
    *
    * @param requestedYear the year for which the months are listed
    * @return list of months
@@ -33,10 +33,9 @@ public interface ArticleArchiveService {
   /**
    * Returns all of the articles published for a given year and month per journal.
    *
-   * @param site specifies the name of the journal
-   * @param year specifies the year
+   * @param site  specifies the name of the journal
+   * @param year  specifies the year
    * @param month specifies the month
-   *
    * @return list of articles published in a given year and month in a journal
    * @throws IOException
    */

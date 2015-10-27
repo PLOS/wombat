@@ -4,7 +4,6 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -22,7 +21,7 @@ import java.util.SortedMap;
 
 /**
  * Internal representation of the set of all themes.
- * <p/>
+ * <p>
  * Note that, because a theme can have more than one parent, this is not actually a tree and should be renamed to
  * something like {@code ThemeGraph} or {@code ThemeDag}. However, to avoid causing conflicts between source branches,
  * we are putting off renaming it for later.

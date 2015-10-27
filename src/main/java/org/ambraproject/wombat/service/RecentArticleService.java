@@ -10,7 +10,7 @@ public interface RecentArticleService {
 
   /**
    * Query for recent articles.
-   * <p/>
+   * <p>
    * The service may retain a reference to the returned list for caching purposes. The caller is required not to modify
    * the list, nor any object nested inside it.
    *

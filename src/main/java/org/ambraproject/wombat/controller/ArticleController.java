@@ -255,7 +255,7 @@ public class ArticleController extends WombatController {
 
   /**
    * Add links to cross-published journals to the model.
-   * <p/>
+   * <p>
    * Each journal in which the article was published (according to the supplied article metadata) will be represented in
    * the model, other than the journal belonging to the site being browsed. If that journal is the only one, nothing is
    * added to the model. The journal of original publication (according to the article metadata's eISSN) is added under
@@ -328,7 +328,7 @@ public class ArticleController extends WombatController {
 
   /**
    * Apply the display logic for different amendment types taking precedence over each other.
-   * <p/>
+   * <p>
    * Retractions take precedence over all else (i.e., don't show them if there is a retraction) and EOCs take precedence
    * over corrections. This logic could conceivably vary between sites (e.g., some journals might want to show all
    * amendments side-by-side), so this is a good candidate for making it controllable through config. But for now,

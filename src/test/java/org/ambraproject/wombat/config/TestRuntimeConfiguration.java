@@ -50,7 +50,9 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
+  public ImmutableSet<String> getEnabledDevFeatures() {
+    return ImmutableSet.of();
+  }
 
   @Override
   public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {

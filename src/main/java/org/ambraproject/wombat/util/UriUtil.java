@@ -37,7 +37,7 @@ public class UriUtil {
     // (specifically org.ambraproject.rhino.rest.controller.abstr.RestController).
 
     return requestUrl.substring(requestUrl.indexOf(namespace) +
-            (namespace.startsWith("/") ? 1 : 0));  // Remove first slash where present
+        (namespace.startsWith("/") ? 1 : 0));  // Remove first slash where present
   }
 
 }

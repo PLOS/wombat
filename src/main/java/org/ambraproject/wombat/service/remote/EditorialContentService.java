@@ -1,8 +1,8 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
-import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
+import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.util.CacheParams;
 import org.apache.http.Header;
@@ -33,8 +33,7 @@ public interface EditorialContentService {
   public abstract Map<String, Object> requestMetadata(CacheParams cacheParams, String key, Optional<Integer> version) throws IOException;
 
   /**
-   * Fetch a block of HTML from
-   * Transform the raw HTML receives from a remote service.
+   * Fetch a block of HTML from Transform the raw HTML receives from a remote service.
    *
    * @param sitePageContext the site of the context into which the HTML will be inserted
    * @param key             a key identifying the HTML to fetch
@@ -50,7 +49,7 @@ public interface EditorialContentService {
   /**
    * Fetch a JSON object from a remote service.
    *
-   * @param key             a key identifying the JSON string to fetch
+   * @param key a key identifying the JSON string to fetch
    * @return an HTML block
    * @throws IOException
    */

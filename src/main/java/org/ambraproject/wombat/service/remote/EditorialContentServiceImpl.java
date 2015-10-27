@@ -4,8 +4,8 @@ import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
+import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.UrlParamBuilder;
@@ -135,14 +135,14 @@ public class EditorialContentServiceImpl implements EditorialContentService {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Applies transforms to HTML attributes and performs substitution of placeholder HTML elements with stored content
    */
   @Override
   public Reader readHtml(final SitePageContext sitePageContext, String pageType, String key,
                          final Set<HtmlElementTransformation> transformations,
                          final Collection<HtmlElementSubstitution> substitutions)
-          throws IOException {
+      throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
     String cacheKey = pageType.concat(":").concat(key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl");
@@ -174,7 +174,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Returns a JSON object from a remote service
    */
   @Override

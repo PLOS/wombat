@@ -38,7 +38,7 @@ public abstract class WombatController {
   /**
    * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user
    * should see a 404.
-   * <p/>
+   * <p>
    * An article may be invisible if it is not in a published state, or if it has not been published in a journal
    * corresponding to the site.
    *
@@ -61,7 +61,7 @@ public abstract class WombatController {
 
   /**
    * Check that a request parameter is not empty.
-   * <p/>
+   * <p>
    * This is useful for validating that the user didn't supply an empty string as a URL parameter, such as by typing
    * ".../article?doi" into the browser bar when ".../article?id=10.0/foo" is expected. The {@code required} argument on
    * {@code RequestParam} merely guarantees the parameter to be non-null, not non-empty.
@@ -79,7 +79,7 @@ public abstract class WombatController {
   /**
    * Interpret a URL parameter as a boolean. In general, interpret {@code null} as false and all non-null strings,
    * including the empty string, as true. But the string {@code "false"} is (case-insensitively) false.
-   * <p/>
+   * <p>
    * The empty string is true because it represents a URL parameter as being present but with no value, e.g. {@code
    * http://example.com/page?foo}. Contrast {@link Boolean#valueOf(String)}, which returns false for the empty string.
    *

@@ -19,7 +19,7 @@ public class DeserializedJsonUtil {
   /**
    * Read a nested field from a JSON object serialized to a {@link Map}. If more than one field name is provided, read
    * from nested maps.
-   * <p/>
+   * <p>
    * For example, if {@code jsonObject} is a Map deserialized from
    * <pre>
    *   {

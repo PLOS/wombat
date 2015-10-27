@@ -11,7 +11,7 @@ public class MockSiteUtil {
 
   /**
    * Find the unique site that has a given journal key.
-   * <p/>
+   * <p>
    * This is ONLY A TESTING UTILITY because sites in general do not have unique journal keys. If you need to dereference
    * a site by journal key, use {@link org.ambraproject.wombat.config.theme.Theme#resolveForeignJournalKey}. The context
    * of a theme is needed, e.g., to distinguish between the desktop or mobile sites with that key. To get a journal

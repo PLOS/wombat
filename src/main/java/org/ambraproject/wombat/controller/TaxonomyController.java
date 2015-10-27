@@ -84,7 +84,7 @@ public class TaxonomyController {
     // pass through any article category flagging ajax traffic to/from rhino
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
     HttpUriRequest req = HttpMessageUtil.buildRequest(forwardedUrl, "POST",
-            HttpMessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
+        HttpMessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
     soaService.forwardResponse(req, responseToClient);
   }
 

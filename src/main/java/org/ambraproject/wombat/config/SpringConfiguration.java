@@ -182,7 +182,9 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public JournalFilterType journalFilterType() { return new JournalFilterType(); }
+  public JournalFilterType journalFilterType() {
+    return new JournalFilterType();
+  }
 
   @Bean
   public SearchFilterTypeMap searchFilterTypeMap(JournalFilterType journalFilterType) {
@@ -196,7 +198,9 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public SearchFilterFactory searchFilterFactory() { return new SearchFilterFactory(); }
+  public SearchFilterFactory searchFilterFactory() {
+    return new SearchFilterFactory();
+  }
 
   @Bean
   public SearchFilterService searchFilterService() {

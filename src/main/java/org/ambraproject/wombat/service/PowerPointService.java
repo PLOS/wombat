@@ -15,7 +15,7 @@ public interface PowerPointService {
   public static interface JournalLogoCallback {
     /**
      * Open a stream to the logo image file for the journal.
-     * <p/>
+     * <p>
      * Return {@code null} if the journal's theme does not provide a logo file. In this case, it is best for the
      * callback to log a warning that describes the file missing from the theme, because the invoker won't know anything
      * about the theme backing this callback object.

@@ -32,8 +32,8 @@ public class RedirectController extends WombatController {
   @RequestMapping(name = "redirect", value = "/redirect/{sourcePage}")
   public String render(Model model, @SiteParam Site site,
                        @PathVariable String sourcePage,
-                       @RequestParam(value="defaultTarget", required = false) String defaultTarget)
-          throws IOException {
+                       @RequestParam(value = "defaultTarget", required = false) String defaultTarget)
+      throws IOException {
 
     model.addAttribute("sourcePage", sourcePage);
     model.addAttribute("defaultTarget", defaultTarget != null ? defaultTarget : sourcePage);

@@ -49,7 +49,7 @@ class ExceptionHandlerAdvisor {
    */
   @ExceptionHandler(Exception.class)
   protected ModelAndView handleException(Exception exception, HttpServletRequest request, HttpServletResponse response)
-          throws IOException {
+      throws IOException {
     log.error("handleException", exception);
     response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
     Site site = siteResolver.resolveSite(request);
@@ -74,7 +74,7 @@ class ExceptionHandlerAdvisor {
    * @return ModelAndView specifying the view
    */
   @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class, NotVisibleException.class,
-          NoHandlerFoundException.class})
+      NoHandlerFoundException.class})
   protected ModelAndView handleNotFound(HttpServletRequest request, HttpServletResponse response) {
     Site site = siteResolver.resolveSite(request);
     if (site == null && request.getServletPath().equals("/")) {
@@ -87,7 +87,7 @@ class ExceptionHandlerAdvisor {
 
   /**
    * Show a page in response to the application root.
-   * <p/>
+   * <p>
    * This is here only for development/debugging: if you browse to the application root while you're setting up, this
    * page is more useful than an error message. But all end-user-facing pages should belong to one of the sites in
    * {@code siteSet}.

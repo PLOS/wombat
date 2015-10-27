@@ -51,7 +51,7 @@ public class SiteSet {
 
   /**
    * Build a map representing the one-to-one relationship between journal keys and journal names.
-   * <p/>
+   * <p>
    * As a side effect, validates that the relationship actually is one-to-one -- that is, that multiple sites have the
    * same journal key if and only if they have the same journal name. It is easier to obey this constraint if the {@code
    * journalKey} and {@code journalName} config values are always set in the {@code journal.yaml} or {@code
@@ -205,8 +205,8 @@ public class SiteSet {
   }
 
   /**
-   * @return a set of all journal keys for this SiteSet.  Note that there may be fewer of
-   *     these than siteKeys, since a journal can have multiple sites.
+   * @return a set of all journal keys for this SiteSet.  Note that there may be fewer of these than siteKeys, since a
+   * journal can have multiple sites.
    */
   public ImmutableSet<String> getJournalKeys() {
     return journalKeysToNames.keySet();

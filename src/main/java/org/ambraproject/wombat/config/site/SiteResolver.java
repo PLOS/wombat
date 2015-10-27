@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Bean that resolves requests to the sites that the application hosts.
- * <p/>
+ * <p>
  * The sites themselves, and the definitions of how to resolve requests to individual sites, are encapsulated in the
  * {@link SiteSet} bean. This object exposes them to the view layer.
  */

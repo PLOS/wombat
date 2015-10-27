@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Reads a theme config value into a FreeMarker variable. The param {@code "map"} is the name of the theme config map to
  * read, and the param {@code "value"} is the key of the value to read from the map.
- * <p/>
+ * <p>
  * Example invocation:
  * <pre>
  *   <@themeConfig map="widget" value="widgetCount" ; c>
@@ -24,7 +24,7 @@ import java.util.Map;
  * </pre>
  * This would read the {@code widget.yaml} (or {@code widget.json}) from the current page's theme, extract the {@code
  * "widgetCount"} value from that map, and set that value as {@code c} for the interior of the body.
- * <p/>
+ * <p>
  * The optional {@code "journal"} param will look up the theme for another site, based on the site's configured journal
  * key, and return a config value from that theme instead.
  */

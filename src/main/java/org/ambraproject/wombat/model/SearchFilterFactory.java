@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This class is used exclusively in the @code{SearchFilterService} to create @code{SearchFilter}s
- * from faceted search results returned from Solr.
+ * This class is used exclusively in the @code{SearchFilterService} to create @code{SearchFilter}s from faceted search
+ * results returned from Solr.
  */
 public class SearchFilterFactory {
 
@@ -21,23 +21,22 @@ public class SearchFilterFactory {
 
   /**
    * The main create method of the factory. Creates a @code{SearchFilter} in three steps:
+   * <p>
+   * 1. Retrieve the specified @code{SearchFilterType} using the @code{SearchFilterTypeMap} 2. Parse the results from a
+   * faceted search into individual @code{SearchFilterItem}s 3. Combine all SearchFilterItems into a @code{SearchFilter}
+   * object.
+   * <p>
+   * Note that the @code{ArticleSearchQuery.Builder} query must be set as a faceted search by calling setFacet()
    *
-   * 1. Retrieve the specified @code{SearchFilterType} using the @code{SearchFilterTypeMap}
-   * 2. Parse the results from a faceted search into individual @code{SearchFilterItem}s
-   * 3. Combine all SearchFilterItems into a @code{SearchFilter} object.
-   *
-   * Note that the @code{ArticleSearchQuery.Builder} query must be set as a faceted search
-   * by calling setFacet()
-   *
-   * @param results faceted search results returned from Solr
+   * @param results          faceted search results returned from Solr
    * @param filterTypeMapKey key for the filter type
-   * @param params URL parameters applicable to the search
-   * @return @code{SearchFilter} object made up of one or many @code{SearchFilterItems} that contain
-   * the faceted search results. The SearchFilterItems also house a /search URL that represents
-   * how the filter would be applied or removed from a search.
+   * @param params           URL parameters applicable to the search
+   * @return @code{SearchFilter} object made up of one or many @code{SearchFilterItems} that contain the faceted search
+   * results. The SearchFilterItems also house a /search URL that represents how the filter would be applied or removed
+   * from a search.
    */
   public SearchFilter createSearchFilter(Map<?, ?> results, String filterTypeMapKey,
-      Multimap<String, String> params) {
+                                         Multimap<String, String> params) {
 
     SearchFilterType filterType = filterTypeMap.getSearchFilterByKey(filterTypeMapKey);
 
@@ -64,12 +63,12 @@ public class SearchFilterFactory {
    * Examines the current URL parameters, and toggles the selected parameter.
    *
    * @param displayName used to retrieve the filter value from the filter type map
-   * @param params current URL parameters to be modified
-   * @param filterType used to retrieve selected filter parameter name and value
+   * @param params      current URL parameters to be modified
+   * @param filterType  used to retrieve selected filter parameter name and value
    * @return filtered URL parameter List
    */
   private ListMultimap<String, String> applyFilterToParams(String displayName,
-      Multimap<String, String> params, SearchFilterType filterType) {
+                                                           Multimap<String, String> params, SearchFilterType filterType) {
     String filterValue = filterType.getFilterValue(displayName);
     String parameterName = filterType.getParameterName();
 

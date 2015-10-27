@@ -25,7 +25,7 @@ public class HtmlElementSubstitution {
   }
 
   public static ImmutableList<HtmlElementSubstitution> buildList(TemplateDirectiveBody body, String substAttrName)
-          throws IOException, TemplateException {
+      throws IOException, TemplateException {
     if (body == null) return ImmutableList.of();
     StringWriter bodyHtml = new StringWriter();
     body.render(bodyHtml);

@@ -31,7 +31,7 @@ public interface AssetService {
 
     /**
      * The URL namespace for webpage resources.
-     * <p/>
+     * <p>
      * The name "resource" is more general than "asset", as it encompasses fonts (as well as, potentially, other things
      * such as images). This value belongs in the service layer, but {@code AssetService} logically excludes resources
      * other than assets ("assets" meaning JS and CSS in this context). May want to move this string elsewhere if there

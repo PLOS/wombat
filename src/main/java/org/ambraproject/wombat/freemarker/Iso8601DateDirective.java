@@ -24,12 +24,10 @@ import java.util.Map;
 
 /**
  * FreeMarker custom directive that parses a ISO 8601 date representation and formats it appropriately.
- *
- * This directive accepts the following parameters:
- *   - date (required): a date string in the ISO 8601 format
- *   - format (required): format string to use for output
- *   - interpretDateAsLocalTime: if true, the timezone in the date string will be ignored, and the
- *     timezone of the local server will be used instead (this is to work around DPRO-1388)
+ * <p>
+ * This directive accepts the following parameters: - date (required): a date string in the ISO 8601 format - format
+ * (required): format string to use for output - interpretDateAsLocalTime: if true, the timezone in the date string will
+ * be ignored, and the timezone of the local server will be used instead (this is to work around DPRO-1388)
  */
 public class Iso8601DateDirective implements TemplateDirectiveModel {
 

@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 /**
  * Utility methods for building article citations.
- * <p/>
+ * <p>
  * Overlaps with some FreeMarker code. It would be good to refactor out duplication.
  */
 public class Citations {

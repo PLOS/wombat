@@ -319,9 +319,9 @@ public class ArticleSearchQuery {
     }
 
     /**
-     * Set the search type. Simple search uses dismax in Solr, and is represented in the search URL
-     * as the "q" parameter. Advanced search does not use dismax in Solr, and is represented in the
-     * URL as the "unformattedQuery" parameter.
+     * Set the search type. Simple search uses dismax in Solr, and is represented in the search URL as the "q"
+     * parameter. Advanced search does not use dismax in Solr, and is represented in the URL as the "unformattedQuery"
+     * parameter.
      */
     public Builder setSimple(boolean isSimple) {
       this.isSimple = isSimple;
@@ -345,8 +345,8 @@ public class ArticleSearchQuery {
     }
 
     /**
-     * @param facet the facet to search for as it is stored in Solr. Setting this will also set the
-     *              search itself as a "faceted" search.
+     * @param facet the facet to search for as it is stored in Solr. Setting this will also set the search itself as a
+     *              "faceted" search.
      */
     public Builder setFacet(String facet) {
       this.facet = facet;

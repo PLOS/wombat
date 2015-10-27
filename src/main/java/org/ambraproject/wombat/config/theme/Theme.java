@@ -86,7 +86,7 @@ public abstract class Theme {
   /**
    * Open a stream to a static resource defined in this theme or the nearest possible parent. Return {@code null} if the
    * resource is not available at all.
-   * <p/>
+   * <p>
    * It is the caller's responsibility to close the returned stream.
    *
    * @param path the path to the static resource
@@ -207,7 +207,7 @@ public abstract class Theme {
    * Read a set of configuration values from YAML (or JSON), overriding individual values from parent themes if
    * applicable. The path (plus a *.yaml or *.json extension) points to a file containing an object (i.e., key-value
    * map) in the special {@code config/} theme path.
-   * <p/>
+   * <p>
    * This is distinct from the other kinds of theme inheritance ({@link #getTemplateLoader} and {@link
    * #getStaticResource}), which override on a file-by-file basis. This method reads a map (if any) at the given path
    * from every theme in the inheritance chain, and builds the result map by overriding individual members.

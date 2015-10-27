@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * A directive that retrieves a value from the Java tier and provides it to the FreeMarker templating engine, either as
  * raw text or as a FreeMarker variable.
- * <p/>
+ * <p>
  * In the first mode, the directive invocation does not define any loop vars and does not have a body (i.e., it is a
  * self-closing tag). Then, the result is written into the page body as the output of the invocation. For example:
  * <pre>
@@ -23,7 +23,7 @@ import java.util.Map;
  * <pre>
  *   &lt;span>The value is qux&lt;/span>
  * </pre>
- * <p/>
+ * <p>
  * In the second mode, the directive defines a loop var and has a body that refers to the loop var. Then the result will
  * be bound to that loop var and the element body will be rendered with that variable, allowing arbitrary FreeMarker
  * logic to be applied to it. For example:
@@ -36,11 +36,11 @@ import java.util.Map;
  * <pre>
  *   &lt;span>The value is qux and its length is 3&lt;/span>
  * </pre>
- * <p/>
+ * <p>
  * The following are all errors: <ul> <li>{@code <@myDirective foo="bar">Hello!</@myDirective>} (has body but no loop
  * var)</li> <li>{@code <@myDirective foo="bar" ; x />} (has loop var but no body)</li> <li>{@code <@myDirective
  * foo="bar" ; x y>${x + y}</@myDirective>} (has more than one loop var)</li> </ul>
- * <p/>
+ * <p>
  * The value may be of any type that the FreeMarker environment's {@link freemarker.template.ObjectWrapper} can consume.
  * The first mode prints the result of the value's Java {@link #toString()} method. The second mode uses the FreeMarker
  * variable from {@code ObjectWrapper}. Null values are allowed only in the second mode.
@@ -75,7 +75,7 @@ public abstract class VariableLookupDirective<T> implements TemplateDirectiveMod
 
   /**
    * Return the value to provide as the body or loopvar.
-   * <p/>
+   * <p>
    * The {@code env} and {@code params} arguments are the same as those specified for {@link
    * TemplateDirectiveModel#execute}. Implementing classes may define their own contracts for the content of {@code
    * params}.

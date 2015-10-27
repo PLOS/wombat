@@ -72,7 +72,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
 
   /**
    * {@inheritDoc}
-   * <p/>
+   * <p>
    * Each service bean makes only one remote call during its lifecycle (or maybe a small number in edge cases with
    * concurrency).
    */

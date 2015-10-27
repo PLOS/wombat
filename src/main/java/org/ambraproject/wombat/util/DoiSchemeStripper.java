@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Utility class for removing the URI scheme ("info:doi/") from DOIs.  Most of the wombat code accepts URL parameters
  * that are DOIs either with or without the scheme, but for consistency, we render URLs without the scheme.
- * <p/>
+ * <p>
  * This code duplicates logic from the Rhino org.ambraproject.rhino.identity.ArticleIdentity, but we don't use that here
  * because doing so would introduce a dependency on ambra-models, which we don't want wombat to know about.
  */

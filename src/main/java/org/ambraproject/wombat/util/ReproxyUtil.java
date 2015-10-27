@@ -46,10 +46,10 @@ public final class ReproxyUtil {
 
   /**
    * Apply reproxying information for a requested asset to a response.
-   * <p/>
+   * <p>
    * The request may not support the reproxying protocol, and there may not be any reproxy URLs for the asset. In either
    * case, the response is not touched. The return value indicates this.
-   * <p/>
+   * <p>
    * Note that both {@code request} and {@code response} are for the client. Neither is for the service that reproxies
    * the asset. It is assumed that the caller has already queried the service that reproxies the asset, which provides
    * the {@code reproxyUrls} argument.

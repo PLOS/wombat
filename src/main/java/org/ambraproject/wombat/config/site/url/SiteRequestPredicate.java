@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * An attribute of a site definition that (along with others) tells whether a request is for a site.
- * <p/>
+ * <p>
  * Implementations should be package-private, and publicly exposed through public methods of {@link
  * org.ambraproject.wombat.config.site.url.SiteRequestScheme.Builder}.
  */

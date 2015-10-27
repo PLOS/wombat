@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 /**
  * Loads templates from a delegate {@link TemplateLoader} based on a key given in the view name.
- * <p/>
+ * <p>
  * An instance of this class interprets the first slash-separated component of any view name passed to it as a key value
  * that indicates how to build or choose a {@code TemplateLoader} to pass the rest to. How the key value is interpreted
  * is defined by concrete subclasses. For example, if a controller returns the view name {@code "foo/bar/baz.ftl"}, the

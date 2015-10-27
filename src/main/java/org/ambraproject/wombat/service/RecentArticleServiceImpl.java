@@ -40,9 +40,9 @@ public class RecentArticleServiceImpl implements RecentArticleService {
 
   /**
    * Select a random subset of elements and shuffle their order.
-   * <p/>
+   * <p>
    * The argument {@code sequence} is not mutated.
-   * <p/>
+   * <p>
    * This is more efficient than using {@link Collections#shuffle(List)} if {@code n} is much smaller than {@code
    * sequence.size()}, as it shuffles only part of the list.
    *

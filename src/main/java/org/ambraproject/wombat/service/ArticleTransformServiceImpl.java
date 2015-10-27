@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterators;
 import com.google.common.io.Closer;
 import net.sf.json.JSONArray;
+import net.sf.json.xml.XMLSerializer;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
@@ -17,7 +18,6 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import net.sf.json.xml.XMLSerializer;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -63,8 +63,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   */
   private static final ImmutableSet<String> VALID_DTDS =
       ImmutableSet.of("http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd",
-                      "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd",
-                      "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd");
+          "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd",
+          "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd");
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
@@ -105,16 +105,16 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
 
-
   /**
    * Build a new transformer and attach any required parameters for the given render context
    *
    * @param renderContext The render context contains information (such as the site object and articleId, and
    *                      potentially other variables related to client side capabilities or identifiers of specific
-   *                      excerpts targeted for rendering) that may be used to determine which parameters to pass to
-   *                      the transformer object.
-   * @param xmlReader An XML reader instance which is provided to parse XML-formatted strings for the purpose of
-   *                  creating any secondary SAX sources for the transform (passed to the transformer as parameters)
+   *                      excerpts targeted for rendering) that may be used to determine which parameters to pass to the
+   *                      transformer object.
+   * @param xmlReader     An XML reader instance which is provided to parse XML-formatted strings for the purpose of
+   *                      creating any secondary SAX sources for the transform (passed to the transformer as
+   *                      parameters)
    * @return the transformer
    * @throws IOException
    */

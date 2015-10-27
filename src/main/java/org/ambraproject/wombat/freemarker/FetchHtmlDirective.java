@@ -32,13 +32,13 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
   private static final String SUBST_ATTR_NAME = "data-subst";
 
   private static final ImmutableSetMultimap<String, HtmlElementTransformation> ELEMENT_TRANSFORMS =
-          ImmutableSetMultimap.<String, HtmlElementTransformation>builder()
-                  .putAll("homepage", HtmlElementTransformation.IMAGE,
-                                      HtmlElementTransformation.ARTICLE)
-                  .putAll("siteContent", HtmlElementTransformation.IMAGE,
-                                         HtmlElementTransformation.LINK,
-                                         HtmlElementTransformation.ASSET)
-                  .build();
+      ImmutableSetMultimap.<String, HtmlElementTransformation>builder()
+          .putAll("homepage", HtmlElementTransformation.IMAGE,
+              HtmlElementTransformation.ARTICLE)
+          .putAll("siteContent", HtmlElementTransformation.IMAGE,
+              HtmlElementTransformation.LINK,
+              HtmlElementTransformation.ASSET)
+          .build();
 
   @Override
   public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
@@ -65,7 +65,7 @@ public class FetchHtmlDirective implements TemplateDirectiveModel {
     SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
 
     try (Reader html = editorialContentService.readHtml(sitePageContext, pageType, pathObj.toString(),
-            transformations, substitutions)) {
+        transformations, substitutions)) {
       IOUtils.copy(html, env.getOut());
     } catch (EntityNotFoundException e) {
       // TODO: Allow themes to provide custom, user-visible error blocks

@@ -51,23 +51,23 @@ public enum HtmlElementTransformation {
   /**
    * Transform the element containing the matching attribute and tag name
    *
-   * @param element the HTML element to be transformed
+   * @param element         the HTML element to be transformed
    * @param sitePageContext the context of the HTML page
-   * @param siteSet encapsulates all hosted sites and their request scheme used to resolve to and from urls,
-   *                provided here for use in transformations which require cross-site references
+   * @param siteSet         encapsulates all hosted sites and their request scheme used to resolve to and from urls,
+   *                        provided here for use in transformations which require cross-site references
    */
   protected abstract void transformElement(Element element, SitePageContext sitePageContext, SiteSet siteSet);
 
   /**
-   * Retrieve the value for the given attribute and remove from the element. This is a useful way to ensure
-   * that any transform-specific attribute values consumed for the creation of new values are cleaned up.
+   * Retrieve the value for the given attribute and remove from the element. This is a useful way to ensure that any
+   * transform-specific attribute values consumed for the creation of new values are cleaned up.
    *
    * @param element the HTML element to be transformed
    * @param attrKey the name for the attribute
    * @return the attribute value, or empty string if attribute is not present
    */
   protected String getAttrValueAndRemove(Element element, String attrKey) {
-    if (element.hasAttr(attrKey)){
+    if (element.hasAttr(attrKey)) {
       String attrVal = element.attr(attrKey);
       element.removeAttr(attrKey);
       return attrVal;
@@ -76,9 +76,9 @@ public enum HtmlElementTransformation {
   }
 
   /**
-   * Retrieve the value for the matching attribute (the attribute used to find the given element), and remove
-   * from the element. This is a useful way to ensure that any transform-specific attribute values consumed for
-   * the creation of new values are cleaned up.
+   * Retrieve the value for the matching attribute (the attribute used to find the given element), and remove from the
+   * element. This is a useful way to ensure that any transform-specific attribute values consumed for the creation of
+   * new values are cleaned up.
    *
    * @param element the HTML element to be transformed
    * @return the target attribute value
@@ -96,9 +96,9 @@ public enum HtmlElementTransformation {
    * Apply a transformation for each HTML element with an attribute and tag name as described in this object
    *
    * @param sitePageContext the context of the HTML page
-   * @param siteSet encapsulates all hosted sites and their request scheme used to resolve to and from urls,
-   *                provided here for use in transformations which require cross-site references
-   * @param document the document to modify in place
+   * @param siteSet         encapsulates all hosted sites and their request scheme used to resolve to and from urls,
+   *                        provided here for use in transformations which require cross-site references
+   * @param document        the document to modify in place
    */
   public void apply(SitePageContext sitePageContext, SiteSet siteSet, Document document) {
     for (Element element : document.getElementsByAttribute(matchingAttributeName)) {

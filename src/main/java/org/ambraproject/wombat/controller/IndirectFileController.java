@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -23,6 +22,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Forwards requests for files to the content repository.
@@ -39,7 +39,7 @@ public class IndirectFileController extends WombatController {
                     @SiteParam Site site,
                     @PathVariable("key") String key)
       throws IOException {
-    serve(response, request, key, Optional.<Integer>absent());
+    serve(response, request, key, Optional.empty());
   }
 
   @RequestMapping(name = "versionedRepoObject", value = "/indirect/{key}/{version}")
@@ -64,7 +64,7 @@ public class IndirectFileController extends WombatController {
                                  @SiteParam Site site,
                                  @RequestParam(value = "id", required = true) String key)
       throws IOException {
-    serve(response, request, key, Optional.<Integer>absent());
+    serve(response, request, key, Optional.empty());
   }
 
   private static final int REPROXY_CACHE_FOR = 6 * 60 * 60; // 6 hours
@@ -72,14 +72,14 @@ public class IndirectFileController extends WombatController {
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
                      String key, Optional<Integer> version)
       throws IOException {
-    String cacheKey = "indirect:" + CacheParams.createKeyHash(key, String.valueOf(version.orNull()));
+    String cacheKey = "indirect:" + CacheParams.createKeyHash(key, String.valueOf(version.orElse(null)));
     Map<String, Object> fileMetadata;
 
     try {
       fileMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey), key, version);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",
-          key, version.orNull());
+          key, version.orElse(null));
       throw new NotFoundException(message, e);
     }
 
@@ -103,7 +103,7 @@ public class IndirectFileController extends WombatController {
       HttpMessageUtil.copyResponseWithHeaders(repoResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",
-          key, version.orNull());
+          key, version.orElse(null));
       throw new NotFoundException(message, e);
     }
   }

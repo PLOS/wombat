@@ -1,11 +1,11 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * The server endpoint as seen from the client side.
@@ -66,7 +66,7 @@ public class ClientEndpoint {
     List<String> parts = ON_COLON.splitToList(forwardedHost);
     switch (parts.size()) {
       case 1:
-        return new ClientEndpoint(parts.get(0), Optional.<Integer>absent());
+        return new ClientEndpoint(parts.get(0), Optional.empty());
       case 2:
         return new ClientEndpoint(parts.get(0), Optional.of(Integer.valueOf(parts.get(1))));
       default:
@@ -80,7 +80,7 @@ public class ClientEndpoint {
 
   private static ClientEndpoint extract(HttpServletRequest request) {
     int requestPort = request.getServerPort();
-    Optional<Integer> port = (requestPort == getDefaultPort(request)) ? Optional.<Integer>absent() : Optional.of(requestPort);
+    Optional<Integer> port = (requestPort == getDefaultPort(request)) ? Optional.empty() : Optional.of(requestPort);
     return new ClientEndpoint(request.getServerName(), port);
   }
 

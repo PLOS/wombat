@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.util;
 
 import com.google.common.base.Charsets;
-import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.hash.HashFunction;
@@ -14,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
 
 public class CacheParams {
 
@@ -31,11 +31,11 @@ public class CacheParams {
   }
 
   public static CacheParams create(String cacheKey) {
-    return new CacheParams(cacheKey, Optional.<Integer>absent());
+    return new CacheParams(cacheKey, Optional.empty());
   }
 
   public static CacheParams create(String cacheKey, Integer timeToLive) {
-    return new CacheParams(cacheKey, Optional.fromNullable(timeToLive));
+    return new CacheParams(cacheKey, Optional.ofNullable(timeToLive));
   }
 
   public Optional<Integer> getTimeToLive() {

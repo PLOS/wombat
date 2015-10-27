@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config.site.url;
 
-import com.google.common.base.Optional;
 import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
 import org.ambraproject.wombat.config.site.Site;
@@ -17,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -273,7 +273,7 @@ public class Link {
     ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
 
     Optional<String> targetHostname = site.getRequestScheme().getHostName();
-    sb.append(targetHostname.or(clientEndpoint.getHostname()));
+    sb.append(targetHostname.orElseGet(clientEndpoint::getHostname));
 
     Optional<Integer> serverPort = clientEndpoint.getPort();
     if (serverPort.isPresent()) {

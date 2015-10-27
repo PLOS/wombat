@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Optional;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
@@ -25,6 +24,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class EditorialContentServiceImpl implements EditorialContentService {
@@ -147,7 +147,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
     String cacheKey = pageType.concat(":").concat(key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl");
     CacheParams cacheParams = CacheParams.create(cacheKey, (cacheTtl == null) ? null : cacheTtl.intValue());
-    Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective
+    Optional<Integer> version = Optional.empty();     // TODO May want to support page versioning at some point using fetchHtmlDirective
 
     String transformedHtml = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
       @Override
@@ -181,7 +181,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
   public Object getJson(String pageType, String key) throws IOException {
     String cacheKey = pageType.concat(":").concat(key);
     CacheParams cacheParams = CacheParams.create(cacheKey);
-    Optional<Integer> version = Optional.absent();
+    Optional<Integer> version = Optional.empty();
     Object jsonObj = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, Object>() {
       @Override
       public Object read(Reader jsonReader) throws IOException {

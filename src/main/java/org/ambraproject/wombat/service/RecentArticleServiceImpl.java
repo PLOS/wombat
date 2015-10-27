@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.rhombat.cache.Cache;
@@ -18,6 +17,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 public class RecentArticleServiceImpl implements RecentArticleService {

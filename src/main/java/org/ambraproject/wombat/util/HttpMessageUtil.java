@@ -1,7 +1,5 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
@@ -25,6 +23,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
 
 /**
  * A utility class for creation and management of HTTP messages
@@ -109,11 +108,11 @@ public class HttpMessageUtil {
 
 
   public static Collection<NameValuePair> getRequestParameters(HttpServletRequest request) {
-    return getRequestParameters(request, Predicates.<String>alwaysTrue());
+    return getRequestParameters(request, (String) -> true);
   }
 
   public static Collection<NameValuePair> getRequestParameters(HttpServletRequest request, Set<String> paramNames) {
-    return getRequestParameters(request, Predicates.in(paramNames));
+    return getRequestParameters(request, paramNames::contains);
   }
 
   private static Collection<NameValuePair> getRequestParameters(HttpServletRequest request, Predicate<String> includeParam) {
@@ -122,7 +121,7 @@ public class HttpMessageUtil {
     Enumeration allParamNames = request.getParameterNames();
     while (allParamNames.hasMoreElements()) {
       String paramName = (String) allParamNames.nextElement();
-      if (includeParam.apply(paramName)) {
+      if (includeParam.test(paramName)) {
         paramList.add(new BasicNameValuePair(paramName, request.getParameter(paramName)));
       }
     }

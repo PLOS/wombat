@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -160,12 +159,7 @@ public class ArticleController extends WombatController {
 
     private static final ImmutableMap<String, AmendmentType> BY_RELATIONSHIP_TYPE = Maps.uniqueIndex(
         EnumSet.allOf(AmendmentType.class),
-        new Function<AmendmentType, String>() {
-          @Override
-          public String apply(AmendmentType input) {
-            return input.relationshipType;
-          }
-        }
+        (AmendmentType amendmentType) -> amendmentType.relationshipType
     );
   }
 

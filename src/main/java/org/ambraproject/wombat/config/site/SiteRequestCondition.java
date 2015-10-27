@@ -158,7 +158,6 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     if (patternCondition == null) return null; // mapped handler is invalid for the site
     if (patternCondition.getMatchingCondition(request) == null) return null; // the URL is invalid for the site
 
-    // TODO: Instead, return this?
     return requestConditionMap.size() == 1 ? this
         : new SiteRequestCondition(siteResolver, ImmutableMap.of(site, patternCondition));
   }

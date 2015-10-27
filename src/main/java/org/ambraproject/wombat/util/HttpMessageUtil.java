@@ -34,6 +34,7 @@ public class HttpMessageUtil {
   /**
    * Describes how to filter or modify a header while copying a response.
    */
+  @FunctionalInterface
   public static interface HeaderFilter {
     /**
      * Return the header value to copy into the outgoing response, under the same header name as the incoming response.

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
  * Implementations should be package-private, and publicly exposed through public methods of {@link
  * org.ambraproject.wombat.config.site.url.SiteRequestScheme.Builder}.
  */
+@FunctionalInterface
 interface SiteRequestPredicate {
 
   /**

@@ -12,6 +12,7 @@ public interface PowerPointService {
   /**
    * Represents access to the logo image for a particular journal.
    */
+  @FunctionalInterface
   public static interface JournalLogoCallback {
     /**
      * Open a stream to the logo image file for the journal.

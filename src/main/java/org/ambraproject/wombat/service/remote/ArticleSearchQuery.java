@@ -165,6 +165,7 @@ public class ArticleSearchQuery {
   /**
    * Callback object for exposing search service functionality.
    */
+  @FunctionalInterface
   public static interface QueryExecutor {
     /**
      * Send a raw query to the Solr service.

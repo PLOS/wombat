@@ -75,7 +75,7 @@ public class HomeController extends WombatController {
       @Override
       public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         String journalKey = site.getJournalKey();
-        String listId = journalKey + "/" + section.curatedListName;
+        String listId = String.format("%s/%s/%s", section.curatedListType, journalKey, section.curatedListName);
         Map<String, Object> curatedList = context.soaService.requestObject("lists/" + listId, Map.class);
         List<?> articles = (List<?>) curatedList.get("articles");
         return (List<Object>) articles;
@@ -113,6 +113,7 @@ public class HomeController extends WombatController {
     private final List<String> articleTypes;
     private final List<String> articleTypesToExclude;
     private final String curatedListName;
+    private final String curatedListType;
     private final Integer cacheTtl; // nullable
 
     private SectionSpec(Map<String, Object> configuration) {
@@ -131,6 +132,9 @@ public class HomeController extends WombatController {
 
       this.curatedListName = (String) configuration.get("curatedListName");
       Preconditions.checkArgument((curatedListName != null) == (type == SectionType.CURATED));
+
+      this.curatedListType = (String) configuration.get("curatedListType");
+      Preconditions.checkArgument((curatedListType != null) == (type == SectionType.CURATED));
 
       Number cacheTtl = (Number) configuration.get("cacheTtl");
       this.cacheTtl = (cacheTtl == null) ? null : cacheTtl.intValue();

@@ -19,6 +19,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.BuildInfo;
@@ -29,6 +30,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -90,15 +93,17 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   }
 
   private BuildInfo fetchWebappBuildInfo() throws IOException {
+    Map<Object, Object> buildInfo = new LinkedHashMap<>();
+
     Properties properties = new Properties();
     try (InputStream versionStream = getClass().getResourceAsStream("/version.properties")) {
       properties.load(versionStream);
     }
-    properties.setProperty("gitCommitIdAbbrev", gitInfo.getCommitIdAbbrev());
-    String enabledDevFeaturesString = Joiner.on(',')
-        .join(runtimeConfiguration.getEnabledDevFeatures());
-    properties.setProperty("enabledDevFeatures", enabledDevFeaturesString);
-    return parse(properties);
+    buildInfo.putAll(properties);
+
+    buildInfo.put("gitCommitIdAbbrev", gitInfo.getCommitIdAbbrev());
+    buildInfo.put("enabledDevFeatures", runtimeConfiguration.getEnabledDevFeatures());
+    return parse(buildInfo);
   }
 
   private BuildInfo fetchServiceBuildInfo() throws IOException {
@@ -111,7 +116,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
         (String) propertyMap.get("buildDate"),
         (String) propertyMap.get("buildUser"),
         (String) propertyMap.get("gitCommitIdAbbrev"),
-        (String) propertyMap.get("enabledDevFeatures"));
+        (Collection<String>) propertyMap.get("enabledDevFeatures"));
   }
 
 }

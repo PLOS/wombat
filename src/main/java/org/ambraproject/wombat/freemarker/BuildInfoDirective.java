@@ -31,14 +31,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.util.Map;
 
-public class BuildInfoDirective implements TemplateDirectiveModel {
+public class BuildInfoDirective extends VariableLookupDirective<Object> {
 
   @Autowired
   private BuildInfoService buildInfoService;
 
   @Override
-  public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
-      throws TemplateException, IOException {
+  protected Object getValue(Environment env, Map params) throws TemplateException, IOException {
     String component = params.get("component").toString();
     BuildInfo info;
     switch (component) {
@@ -52,7 +51,7 @@ public class BuildInfoDirective implements TemplateDirectiveModel {
         throw new TemplateModelException("component required");
     }
 
-    String value;
+    final Object value;
     if (info == null) {
       value = null;
     } else {
@@ -78,7 +77,7 @@ public class BuildInfoDirective implements TemplateDirectiveModel {
       }
     }
 
-    env.getOut().write(value != null ? value : "?");
+    return (value != null) ? value : "?";
   }
 
 }

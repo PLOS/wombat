@@ -18,7 +18,6 @@ import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.apache.http.Header;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -102,19 +101,16 @@ public abstract class WombatController {
    */
   private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
       HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, X_REPROXY_URL, X_REPROXY_CACHE_FOR);
-  protected static final HttpMessageUtil.HeaderFilter ASSET_RESPONSE_HEADER_FILTER = new HttpMessageUtil.HeaderFilter() {
-    @Override
-    public String getValue(Header header) {
-      String name = header.getName();
-      if (!ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
-        return null;
-      }
-      String value = header.getValue();
-      if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
-        return sanitizeAssetFilename(value);
-      }
-      return value;
+  protected static final HttpMessageUtil.HeaderFilter ASSET_RESPONSE_HEADER_FILTER = header -> {
+    String name = header.getName();
+    if (!ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
+      return null;
     }
+    String value = header.getValue();
+    if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
+      return sanitizeAssetFilename(value);
+    }
+    return value;
   };
 
 

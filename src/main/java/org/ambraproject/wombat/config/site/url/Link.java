@@ -171,15 +171,12 @@ public class Link {
 
   private static String fillVariables(String path, final Map<String, ?> variables) {
     UriComponentsBuilder builder = ServletUriComponentsBuilder.fromPath(path);
-    UriComponents.UriTemplateVariables uriVariables = new UriComponents.UriTemplateVariables() {
-      @Override
-      public Object getValue(String name) {
-        Object value = variables.get(name);
-        if (value == null) {
-          throw new IllegalArgumentException("Missing required parameter " + name);
-        }
-        return value;
+    UriComponents.UriTemplateVariables uriVariables = name -> {
+      Object value = variables.get(name);
+      if (value == null) {
+        throw new IllegalArgumentException("Missing required parameter " + name);
       }
+      return value;
     };
 
     return builder.build().expand(uriVariables).encode().toString();

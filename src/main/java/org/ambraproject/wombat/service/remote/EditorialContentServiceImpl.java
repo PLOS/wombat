@@ -182,12 +182,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
     String cacheKey = pageType.concat(":").concat(key);
     CacheParams cacheParams = CacheParams.create(cacheKey);
     Optional<Integer> version = Optional.empty();
-    Object jsonObj = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, Object>() {
-      @Override
-      public Object read(Reader jsonReader) throws IOException {
-        return gson.fromJson(jsonReader, Object.class);
-      }
-    });
+    Object jsonObj = requestCachedReader(cacheParams, key, version, jsonReader -> gson.fromJson(jsonReader, Object.class));
     return jsonObj;
   }
 }

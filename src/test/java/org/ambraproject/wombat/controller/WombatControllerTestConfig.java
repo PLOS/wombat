@@ -6,11 +6,7 @@ import com.google.common.collect.ImmutableSet;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.TemplateLoader;
-import freemarker.core.Environment;
-import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateModel;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -34,7 +30,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -46,10 +41,7 @@ public class WombatControllerTestConfig extends WebMvcConfigurerAdapter {
   public static final String MOCK_SITE_URL = "";
 
   public TemplateDirectiveModel getEmptyTemplateDirectiveModel() {
-    return new TemplateDirectiveModel() {
-      @Override
-      public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
-      }
+    return (env, params, loopVars, body) -> {
     };
   }
 

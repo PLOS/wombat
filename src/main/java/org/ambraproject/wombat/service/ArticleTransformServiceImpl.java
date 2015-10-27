@@ -13,7 +13,6 @@ import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -173,17 +172,14 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     // is much faster at XSLT if it uses its own XML parser instead of DocumentBuilder.  See
     // http://stackoverflow.com/questions/155101/make-documentbuilder-parse-ignore-dtd-references
     // for a discussion.
-    xmlr.setEntityResolver(new EntityResolver() {
-      @Override
-      public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException {
+    xmlr.setEntityResolver((publicId, systemId) -> {
 
-        // Note: returning null here will cause the HTTP request to be made.
+      // Note: returning null here will cause the HTTP request to be made.
 
-        if (VALID_DTDS.contains(systemId)) {
-          return new InputSource(new StringReader(""));
-        } else {
-          throw new IllegalArgumentException("Unexpected entity encountered: " + systemId);
-        }
+      if (VALID_DTDS.contains(systemId)) {
+        return new InputSource(new StringReader(""));
+      } else {
+        throw new IllegalArgumentException("Unexpected entity encountered: " + systemId);
       }
     });
     // build the transformer and add any context-dependent parameters required for the transform

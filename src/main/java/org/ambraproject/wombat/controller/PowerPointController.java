@@ -69,15 +69,12 @@ public class PowerPointController extends WombatController {
     validateArticleVisibility(site, parentArticleMetadata);
 
     final Theme theme = site.getTheme();
-    PowerPointService.JournalLogoCallback logoCallback = new PowerPointService.JournalLogoCallback() {
-      @Override
-      public InputStream openLogoStream() throws IOException {
-        InputStream stream = theme.getStaticResource(LOGO_PATH);
-        if (stream == null) {
-          log.warn("Logo file not found at {} for theme: {}", LOGO_PATH, theme.getKey());
-        }
-        return stream;
+    PowerPointService.JournalLogoCallback logoCallback = () -> {
+      InputStream stream = theme.getStaticResource(LOGO_PATH);
+      if (stream == null) {
+        log.warn("Logo file not found at {} for theme: {}", LOGO_PATH, theme.getKey());
       }
+      return stream;
     };
 
     String parentArticleDoi = (String) parentArticleMetadata.get("doi");

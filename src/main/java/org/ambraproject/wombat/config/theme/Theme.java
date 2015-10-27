@@ -55,12 +55,7 @@ public abstract class Theme {
     return key;
   }
 
-  static final Function<Theme, String> GET_KEY = new Function<Theme, String>() {
-    @Override
-    public String apply(Theme input) {
-      return input.getKey();
-    }
-  };
+  static final Function<Theme, String> GET_KEY = Theme::getKey;
 
 
   private transient Iterable<Theme> iterableView;

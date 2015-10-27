@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config.theme;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.AbstractIterator;
@@ -54,8 +53,6 @@ public abstract class Theme {
   public String getKey() {
     return key;
   }
-
-  static final Function<Theme, String> GET_KEY = Theme::getKey;
 
 
   private transient Iterable<Theme> iterableView;

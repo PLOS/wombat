@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.config.theme;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableList;
@@ -87,7 +88,7 @@ public class ThemeTree {
   public static ThemeTree parse(List<? extends Map<String, ?>> themeConfigJson, Collection<? extends Theme> internalThemes, Theme rootTheme)
       throws ThemeConfigurationException {
     Preconditions.checkArgument(internalThemes.contains(rootTheme));
-    Map<String, ? extends Theme> internalThemeMap = Maps.uniqueIndex(internalThemes, Theme.GET_KEY);
+    Map<String, ? extends Theme> internalThemeMap = Maps.uniqueIndex(internalThemes, (Function<Theme, String>) Theme::getKey);
     Map<String, Mutable> mutables = Maps.newLinkedHashMap();
 
     // Make a pass over the JSON, creating mutable objects and mapping them by their keys

@@ -41,7 +41,14 @@ sections:
     curatedListName: null
     # Ignored unless "name" is "curated". Required if "name" is "curated".
     #
-    # The name of an article list, in this site's journal, to use to populate the section.
+    # The name of an article list, in this site's journal, to use to populate the section. Must be unique among curated
+    # lists on this homepage (even if other lists have different "curatedListType" values).
+
+    curatedListType: null
+    # Ignored unless "name" is "curated". Required if "name" is "curated".
+    #
+    # The type of the article list identified by "curatedListName". This is used to request the article list from the
+    # service tier, but unlike "curatedListName" it does not show up in page URLs.
 
     cacheTtl: null
     # Ignored unless "name" is "recent" and "since" is non-null.

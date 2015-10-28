@@ -10,12 +10,20 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * The values for a request mapping, with modifications taken in from application context.
+ * <p/>
+ * This class allows for overriding the <em>pattern</em> part of a wrapped {@link RequestMapping} object, but delegates
+ * to it for all other values (such as query parameters).
+ * <p/>
+ * Instances are immutable. All "modifying" methods return new, modified objects.
+ */
 public class RequestMappingContext {
 
-  private final RequestMapping annotation;
-  private final String pattern;
-  private final boolean isSiteless;
-  private final boolean hasSiteToken;
+  private final RequestMapping annotation; // the raw, application-provided request mapping
+  private final String pattern; // the mapping pattern, which may have been overridden by the context
+  private final boolean isSiteless; // true if this object maps requests with no site resolution
+  private final boolean hasSiteToken; // true if the pattern has been modified by adding a site token to the beginning
 
   private RequestMappingContext(RequestMapping annotation, String pattern, boolean isSiteless, boolean hasSiteToken) {
     this.annotation = Objects.requireNonNull(annotation);
@@ -38,6 +46,13 @@ public class RequestMappingContext {
     }
   }
 
+  /**
+   * Wrap a raw {@link RequestMapping} object, which supplies the default mapping settings that are supplied by the
+   * application.
+   *
+   * @param controllerMethod a handler method from a controller class
+   * @return the wrapped request mapping
+   */
   public static RequestMappingContext create(Method controllerMethod) {
     RequestMapping requestMapping = AnnotationUtils.findAnnotation(controllerMethod, RequestMapping.class);
     if (requestMapping == null) return null;
@@ -45,10 +60,22 @@ public class RequestMappingContext {
     return new RequestMappingContext(requestMapping, extractPattern(requestMapping), isSiteless, false);
   }
 
+  /**
+   * Create a new object that overrides this one's pattern, copying all other values.
+   *
+   * @param newPattern the pattern that will override the default one
+   * @return a copy whose pattern is overridden
+   */
   public RequestMappingContext override(String newPattern) {
     return new RequestMappingContext(annotation, newPattern, isSiteless, false);
   }
 
+  /**
+   * Create a new object that will capture a site token from the beginning of mapped URLs, copying all other values.
+   *
+   * @return a copy that captures a site token
+   * @throws java.lang.IllegalArgumentException if this object is siteless or already captures a site token
+   */
   public RequestMappingContext addSiteToken() {
     Preconditions.checkState(!isSiteless, "Cannot add site token to a siteless mapping");
     Preconditions.checkState(!hasSiteToken, "Mapping already has site token");
@@ -59,14 +86,26 @@ public class RequestMappingContext {
   }
 
 
+  /**
+   * @return the raw annotation object that supplies default values for this mapping
+   */
   public RequestMapping getAnnotation() {
     return annotation;
   }
 
+  /**
+   * @return the URL pattern used for this mapping
+   */
   public String getPattern() {
     return pattern;
   }
 
+  /**
+   * @return {@code false} if requests mapped by this object should apply {@link org.ambraproject.wombat.config.site.Site}
+   * resolution rules; {@code true} if requests should always be mapped by this object the same way, independently of
+   * sites
+   * @see {@link org.ambraproject.wombat.config.site.Siteless}
+   */
   public boolean isSiteless() {
     return isSiteless;
   }
@@ -75,6 +114,9 @@ public class RequestMappingContext {
   private transient ImmutableSet<String> requiredParams;
   private transient ImmutableSet<String> forbiddenParams;
 
+  /**
+   * @return all {@code param} values that the mapping requires
+   */
   public Set<String> getRequiredParams() {
     if (requiredParams != null) return requiredParams;
     ImmutableSet.Builder<String> builder = ImmutableSet.builder();
@@ -86,6 +128,9 @@ public class RequestMappingContext {
     return requiredParams = builder.build();
   }
 
+  /**
+   * @return all {@code param} values excluded from the mapping
+   */
   public Set<String> getForbiddenParams() {
     if (forbiddenParams != null) return forbiddenParams;
     ImmutableSet.Builder<String> builder = ImmutableSet.builder();

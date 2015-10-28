@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * specific to a {@link org.ambraproject.wombat.config.site.Site}, and that a site token should never be added to the
  * handler's URL pattern.
  */
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Siteless {
 }

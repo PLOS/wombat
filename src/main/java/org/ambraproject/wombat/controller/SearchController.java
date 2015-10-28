@@ -16,7 +16,6 @@ package org.ambraproject.wombat.controller;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -369,6 +368,24 @@ public class SearchController extends WombatController {
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
     return site.getKey() + "/ftl/search/searchResults";
+  }
+
+  /**
+   * Uses {@link #simplSearch(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
+   * browser
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
+  @RequestMapping(name = "subjectSearch", value = "/search", params = {"subject", "!volume"})
+  public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+                              @RequestParam MultiValueMap<String, String> params) throws IOException {
+    params.add("q", "");
+    return simpleSearch(request, model, site, params);
   }
 
   // Requests coming from the advanced search form with URLs beginning with "/search/quick/" will always

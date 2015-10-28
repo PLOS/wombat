@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,8 +66,8 @@ public class RequestMappingValue {
   }
 
   public RequestMappingValue addSiteToken() {
-    if (isSiteless) throw new IllegalStateException("Cannot add site token to a siteless mapping");
-    if (hasSiteToken) throw new IllegalStateException("Mapping already has site token");
+    Preconditions.checkState(!isSiteless, "Cannot add site token to a siteless mapping");
+    Preconditions.checkState(!hasSiteToken, "Mapping already has site token");
 
     String prefix = (pattern.isEmpty() || pattern.startsWith("/")) ? "/*" : "/*/";
     String modified = prefix + pattern;

@@ -68,13 +68,9 @@ public class RequestMappingValue {
     if (isSiteless) throw new IllegalStateException("Cannot add site token to a siteless mapping");
     if (hasSiteToken) throw new IllegalStateException("Mapping already has site token");
 
-    StringBuilder modified = new StringBuilder(pattern.length() + 3);
-    modified.append("/*");
-    if (!pattern.isEmpty() && !pattern.startsWith("/")) {
-      modified.append('/');
-    }
-    modified.append(pattern);
-    return new RequestMappingValue(annotation, modified.toString(), false, true);
+    String prefix = (pattern.isEmpty() || pattern.startsWith("/")) ? "/*" : "/*/";
+    String modified = prefix + pattern;
+    return new RequestMappingValue(annotation, modified, false, true);
   }
 
 

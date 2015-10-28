@@ -51,11 +51,6 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     return patterns.build();
   }
 
-  private static PatternsRequestCondition buildPatternsRequestCondition(RequestMappingValue mapping) {
-    return new PatternsRequestCondition(new String[]{mapping.getPattern()},
-        null, null, true, true, null);
-  }
-
   /**
    * Create a condition, representing all sites, for a single request handler.
    * <p/>
@@ -73,7 +68,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
                                             RequestHandlerPatternDictionary requestHandlerPatternDictionary) {
     RequestMappingValue baseMapping = RequestMappingValue.create(controllerMethod);
     if (baseMapping.isSiteless()) {
-      PatternsRequestCondition patternsRequestCondition = buildPatternsRequestCondition(baseMapping);
+      PatternsRequestCondition patternsRequestCondition = new PatternsRequestCondition(baseMapping.getPattern());
       requestHandlerPatternDictionary.registerGlobalMapping(baseMapping);
       ImmutableMap<Optional<Site>, PatternsRequestCondition> map = ImmutableMap.of(Optional.<Site>absent(), patternsRequestCondition);
       return new SiteRequestCondition(siteResolver, map);
@@ -86,7 +81,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
       RequestMappingValue mapping = entry.getKey();
       Collection<Site> sites = entry.getValue(); // all sites that share the mapping pattern
 
-      PatternsRequestCondition condition = buildPatternsRequestCondition(mapping);
+      PatternsRequestCondition condition = new PatternsRequestCondition(mapping.getPattern());
       for (Site site : sites) {
         requestConditionMap.put(Optional.of(site), condition);
         if (!mapping.getAnnotation().name().isEmpty()) {

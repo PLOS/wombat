@@ -38,28 +38,12 @@ public class RequestMappingValue {
     }
   }
 
-
-  // Before you refactor the two methods below, they have less duplication than it looks like.
-  // Note that they are calling two different signatures of AnnotationUtils.findAnnotation.
-
   public static RequestMappingValue create(Method controllerMethod) {
     RequestMapping requestMapping = AnnotationUtils.findAnnotation(controllerMethod, RequestMapping.class);
     if (requestMapping == null) return null;
     boolean isSiteless = AnnotationUtils.findAnnotation(controllerMethod, Siteless.class) != null;
-    return create(requestMapping, isSiteless);
-  }
-
-  public static RequestMappingValue create(Class<?> controllerClass) {
-    RequestMapping requestMapping = AnnotationUtils.findAnnotation(controllerClass, RequestMapping.class);
-    if (requestMapping == null) return null;
-    boolean isSiteless = AnnotationUtils.findAnnotation(controllerClass, Siteless.class) != null;
-    return create(requestMapping, isSiteless);
-  }
-
-  private static RequestMappingValue create(RequestMapping requestMapping, boolean isSiteless) {
     return new RequestMappingValue(requestMapping, extractPattern(requestMapping), isSiteless, false);
   }
-
 
   public RequestMappingValue override(String newPattern) {
     return new RequestMappingValue(annotation, newPattern, isSiteless, false);

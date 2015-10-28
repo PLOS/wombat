@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.util.Collection;
 import java.util.Set;
 
 
@@ -53,13 +52,25 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
     if (methodAnnotation != null) {
       RequestCondition<?> methodCondition = this.getCustomMethodCondition(method);
       info = this.createRequestMappingInfo(methodAnnotation, methodCondition);
-      RequestMappingValue typeAnnotation = RequestMappingValue.create(handlerType);
-      if (typeAnnotation != null) {
-        RequestCondition<?> typeCondition = this.getCustomTypeCondition(handlerType);
-        info = this.createRequestMappingInfo(typeAnnotation, typeCondition).combine(info);
-      }
+      checkMappingsOnHandlerType(handlerType);
     }
     return info;
+  }
+
+  /**
+   * Throw an exception if a handler class has a RequestMapping annotation on it. We force everything to be declared
+   * directly on the controller methods, sometimes risking a little redundancy.
+   * <p/>
+   * The motivation here is to avoid complications with our extensions to RequestMapping semantics, especially the
+   * Siteless annotation. This is simpler than relying on the behavior of {@link org.springframework.web.servlet.mvc.method.RequestMappingInfo#combine},
+   * as {@link org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping} does, to account for
+   * the Siteless annotation correctly.
+   */
+  private static void checkMappingsOnHandlerType(Class<?> handlerType) {
+    RequestMapping requestMapping = AnnotationUtils.findAnnotation(handlerType, RequestMapping.class);
+    if (requestMapping != null) {
+      throw new RuntimeException("Expected RequestMapping not to appear at class level");
+    }
   }
 
   @Override

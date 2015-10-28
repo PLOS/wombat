@@ -3,8 +3,8 @@ package org.ambraproject.wombat.config.site.url;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Multimap;
-import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
-import org.ambraproject.wombat.config.site.RequestMappingValue;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
+import org.ambraproject.wombat.config.site.RequestMappingContext;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.ClientEndpoint;
@@ -127,15 +127,15 @@ public class Link {
     /**
      * Build a link that will hit a specified request handler.
      *
-     * @param requestHandlerPatternDictionary the global handler directory
+     * @param requestMappingContextDictionary the global handler directory
      * @param handlerName                     the name of the target request handler
      * @param variables                       values to fill in to path variables in the request handler's pattern
      * @param queryParameters                 query parameters to add to the end of the URL
      * @param wildcardValues                  values to substitute for wildcards in the request handler's pattern
      */
-    public Link toPattern(RequestHandlerPatternDictionary requestHandlerPatternDictionary, String handlerName,
+    public Link toPattern(RequestMappingContextDictionary requestMappingContextDictionary, String handlerName,
                           Map<String, ?> variables, Multimap<String, ?> queryParameters, List<?> wildcardValues) {
-      RequestMappingValue mapping = requestHandlerPatternDictionary.getPattern(handlerName, site);
+      RequestMappingContext mapping = requestMappingContextDictionary.getPattern(handlerName, site);
       if (mapping == null) {
         String message = String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.getKey());
         throw new IllegalArgumentException(message);
@@ -148,7 +148,7 @@ public class Link {
   // Match path wildcards of one or two asterisks
   private static final Pattern WILDCARD = Pattern.compile("\\*\\*?");
 
-  private static String buildPathFromMapping(RequestMappingValue mapping, Site site,
+  private static String buildPathFromMapping(RequestMappingContext mapping, Site site,
                                              Map<String, ?> variables,
                                              Multimap<String, ?> queryParameters,
                                              List<?> wildcardValues) {

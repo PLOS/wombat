@@ -17,26 +17,26 @@ import com.google.common.collect.ImmutableTable;
  * <p/>
  * This class is intended to be thread-safe. Writes are synchronized, and the object is immutable while being read.
  */
-public final class RequestHandlerPatternDictionary {
+public final class RequestMappingContextDictionary {
 
   // While false, this object is in a state to accept writes. Permanently set to true on first call to getPattern.
   private boolean isFrozen = false;
 
   private final Object writeLock = new Object();
 
-  private final ImmutableTable.Builder<String, Site, RequestMappingValue> siteTableBuilder;
-  private final ImmutableMap.Builder<String, RequestMappingValue> globalTableBuilder;
+  private final ImmutableTable.Builder<String, Site, RequestMappingContext> siteTableBuilder;
+  private final ImmutableMap.Builder<String, RequestMappingContext> globalTableBuilder;
 
   // By convention, assign to each of these fields only once, when isFrozen is set to true.
-  private ImmutableTable<String, Site, RequestMappingValue> siteTable = null;
-  private ImmutableMap<String, RequestMappingValue> globalTable = null;
+  private ImmutableTable<String, Site, RequestMappingContext> siteTable = null;
+  private ImmutableMap<String, RequestMappingContext> globalTable = null;
 
-  public RequestHandlerPatternDictionary() {
+  public RequestMappingContextDictionary() {
     siteTableBuilder = ImmutableTable.builder();
     globalTableBuilder = ImmutableMap.builder();
   }
 
-  private static String getHandlerName(RequestMappingValue mapping) {
+  private static String getHandlerName(RequestMappingContext mapping) {
     return Preconditions.checkNotNull(mapping.getAnnotation().name());
   }
 
@@ -49,7 +49,7 @@ public final class RequestHandlerPatternDictionary {
    * @param site    the site associated with the handler
    * @throws IllegalStateException if {@link #getPattern} has been called once or more on this object
    */
-  public void registerSiteMapping(RequestMappingValue mapping, Site site) {
+  public void registerSiteMapping(RequestMappingContext mapping, Site site) {
     Preconditions.checkNotNull(site);
     Preconditions.checkArgument(!mapping.isSiteless());
     String handlerName = getHandlerName(mapping);
@@ -70,7 +70,7 @@ public final class RequestHandlerPatternDictionary {
    * @param mapping the mapping to the handler
    * @throws IllegalStateException if {@link #getPattern} has been called once or more on this object
    */
-  public void registerGlobalMapping(RequestMappingValue mapping) {
+  public void registerGlobalMapping(RequestMappingContext mapping) {
     Preconditions.checkArgument(mapping.isSiteless());
     String handlerName = getHandlerName(mapping);
 
@@ -93,7 +93,7 @@ public final class RequestHandlerPatternDictionary {
    * @param site        the site associated with the request to map
    * @return the pattern, or {@code null} if no handler exists for the given name on the given site
    */
-  public RequestMappingValue getPattern(String handlerName, Site site) {
+  public RequestMappingContext getPattern(String handlerName, Site site) {
     /*
      * We permit a harmless race condition on the `if (!isFrozen)` block: if the first two calls to this method happen
      * concurrently, we might invoke the builders more than once. This is safe because they will return identical data.
@@ -108,7 +108,7 @@ public final class RequestHandlerPatternDictionary {
 
     Preconditions.checkNotNull(handlerName);
     Preconditions.checkNotNull(site);
-    RequestMappingValue siteMapping = siteTable.get(handlerName, site);
+    RequestMappingContext siteMapping = siteTable.get(handlerName, site);
     return (siteMapping != null) ? siteMapping : globalTable.get(handlerName);
   }
 

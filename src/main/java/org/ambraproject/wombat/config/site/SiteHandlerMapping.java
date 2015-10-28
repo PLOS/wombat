@@ -29,7 +29,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
   @Autowired
   SiteResolver siteResolver;
   @Autowired
-  RequestHandlerPatternDictionary requestHandlerPatternDictionary;
+  RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
   SiteSet siteSet;
 
@@ -42,16 +42,16 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
   protected RequestCondition<?> getCustomMethodCondition(Method method) {
     RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
     Preconditions.checkNotNull(methodAnnotation, "No @RequestMapping found on mapped method");
-    return SiteRequestCondition.create(siteResolver, siteSet, method, requestHandlerPatternDictionary);
+    return SiteRequestCondition.create(siteResolver, siteSet, method, requestMappingContextDictionary);
   }
 
   @Override
   protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
     RequestMappingInfo info = null;
-    RequestMappingValue methodAnnotation = RequestMappingValue.create(method);
-    if (methodAnnotation != null) {
+    RequestMappingContext mapping = RequestMappingContext.create(method);
+    if (mapping != null) {
       RequestCondition<?> methodCondition = this.getCustomMethodCondition(method);
-      info = this.createRequestMappingInfo(methodAnnotation, methodCondition);
+      info = this.createRequestMappingInfo(mapping, methodCondition);
       checkMappingsOnHandlerType(handlerType);
     }
     return info;
@@ -80,7 +80,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
     throw new UnsupportedOperationException();
   }
 
-  private RequestMappingInfo createRequestMappingInfo(RequestMappingValue mapping, RequestCondition<?> customCondition) {
+  private RequestMappingInfo createRequestMappingInfo(RequestMappingContext mapping, RequestCondition<?> customCondition) {
     Set<String> allPatterns = SiteRequestCondition.getAllPatterns(siteSet, mapping);
     RequestMapping annotation = mapping.getAnnotation();
     String[] embeddedPatterns = resolveEmbeddedValuesInPatterns(allPatterns.toArray(new String[allPatterns.size()]));

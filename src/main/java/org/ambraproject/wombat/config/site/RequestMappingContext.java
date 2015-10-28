@@ -10,14 +10,14 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
 
-public class RequestMappingValue {
+public class RequestMappingContext {
 
   private final RequestMapping annotation;
   private final String pattern;
   private final boolean isSiteless;
   private final boolean hasSiteToken;
 
-  private RequestMappingValue(RequestMapping annotation, String pattern, boolean isSiteless, boolean hasSiteToken) {
+  private RequestMappingContext(RequestMapping annotation, String pattern, boolean isSiteless, boolean hasSiteToken) {
     this.annotation = Objects.requireNonNull(annotation);
     this.pattern = Objects.requireNonNull(pattern);
     this.isSiteless = isSiteless;
@@ -38,24 +38,24 @@ public class RequestMappingValue {
     }
   }
 
-  public static RequestMappingValue create(Method controllerMethod) {
+  public static RequestMappingContext create(Method controllerMethod) {
     RequestMapping requestMapping = AnnotationUtils.findAnnotation(controllerMethod, RequestMapping.class);
     if (requestMapping == null) return null;
     boolean isSiteless = AnnotationUtils.findAnnotation(controllerMethod, Siteless.class) != null;
-    return new RequestMappingValue(requestMapping, extractPattern(requestMapping), isSiteless, false);
+    return new RequestMappingContext(requestMapping, extractPattern(requestMapping), isSiteless, false);
   }
 
-  public RequestMappingValue override(String newPattern) {
-    return new RequestMappingValue(annotation, newPattern, isSiteless, false);
+  public RequestMappingContext override(String newPattern) {
+    return new RequestMappingContext(annotation, newPattern, isSiteless, false);
   }
 
-  public RequestMappingValue addSiteToken() {
+  public RequestMappingContext addSiteToken() {
     Preconditions.checkState(!isSiteless, "Cannot add site token to a siteless mapping");
     Preconditions.checkState(!hasSiteToken, "Mapping already has site token");
 
     String prefix = (pattern.isEmpty() || pattern.startsWith("/")) ? "/*" : "/*/";
     String modified = prefix + pattern;
-    return new RequestMappingValue(annotation, modified, false, true);
+    return new RequestMappingContext(annotation, modified, false, true);
   }
 
 
@@ -101,9 +101,9 @@ public class RequestMappingValue {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof RequestMappingValue)) return false;
+    if (!(o instanceof RequestMappingContext)) return false;
 
-    RequestMappingValue that = (RequestMappingValue) o;
+    RequestMappingContext that = (RequestMappingContext) o;
 
     if (hasSiteToken != that.hasSiteToken) return false;
     if (isSiteless != that.isSiteless) return false;

@@ -62,9 +62,9 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
    * directly on the controller methods, sometimes risking a little redundancy.
    * <p/>
    * The motivation here is to avoid complications with our extensions to RequestMapping semantics, especially the
-   * Siteless annotation. This is simpler than relying on the behavior of {@link org.springframework.web.servlet.mvc.method.RequestMappingInfo#combine},
-   * as {@link org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping} does, to account for
-   * the Siteless annotation correctly.
+   * element-wise concatenation of class and method-level patterns in the method
+   * {@link org.springframework.web.servlet.mvc.condition.PatternsRequestCondition#combine(PatternsRequestCondition)},
+   * which would clobber our own site path token concatenation. See {@link RequestMappingContext#addSiteToken}
    */
   private static void checkMappingsOnHandlerType(Class<?> handlerType) {
     RequestMapping requestMapping = AnnotationUtils.findAnnotation(handlerType, RequestMapping.class);

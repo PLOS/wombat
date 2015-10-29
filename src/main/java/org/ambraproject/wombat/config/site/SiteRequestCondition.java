@@ -6,7 +6,6 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
@@ -157,21 +156,17 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
         : new SiteRequestCondition(siteResolver, ImmutableMap.of(site, patternCondition));
   }
 
+  /**
+   *  This method should only be called when combining the typical method-level {@code RequestMapping} annotations with
+   * those at the class-level. Since class-level {@code RequestMapping} annotations are not supported under the custom
+   * {@code SiteHandlerMapping} handling, throw an exception. See {@link SiteHandlerMapping#checkMappingsOnHandlerType}
+   * for details.
+   * @param that another {@code SiteRequestCondition} instance to combine with
+   * @return
+   */
   @Override
   public SiteRequestCondition combine(SiteRequestCondition that) {
-    if (this.requestConditionMap.equals(that.requestConditionMap)) return this;
-    ImmutableMap.Builder<Optional<Site>, PatternsRequestCondition> combinedMap = ImmutableMap.builder();
-
-    Set<Optional<Site>> sites = Sets.union(this.requestConditionMap.keySet(), that.requestConditionMap.keySet());
-    for (Optional<Site> site : sites) {
-      PatternsRequestCondition thisCondition = this.requestConditionMap.get(site);
-      PatternsRequestCondition thatCondition = that.requestConditionMap.get(site);
-      PatternsRequestCondition combinedCondition = thisCondition == null ? thatCondition : thatCondition == null ? thisCondition :
-          thisCondition.combine(thatCondition);
-      combinedMap.put(site, combinedCondition);
-    }
-
-    return new SiteRequestCondition(siteResolver, combinedMap.build());
+    throw new UnsupportedOperationException();
   }
 
   @Override

@@ -152,7 +152,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     }
     #tooSoon {
       @extend .unavailable;
-      padding: rem-calc(25) $pad-small $pad-small $pad-medium;
+      padding: $pad-small $pad-small;
     }
     #metricsError {
       @extend .unavailable;

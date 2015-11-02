@@ -1,19 +1,18 @@
 package org.ambraproject.wombat.config.site;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Iterables;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import org.ambraproject.wombat.config.theme.Theme;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.Arrays;
+import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -25,9 +24,9 @@ import java.util.Set;
 public class SiteRequestCondition implements RequestCondition<SiteRequestCondition> {
 
   private final SiteResolver siteResolver;
-  private final ImmutableMap<Site, PatternsRequestCondition> requestConditionMap;
+  private final ImmutableMap<Optional<Site>, PatternsRequestCondition> requestConditionMap;
 
-  private SiteRequestCondition(SiteResolver siteResolver, Map<Site, PatternsRequestCondition> requestConditionMap) {
+  private SiteRequestCondition(SiteResolver siteResolver, Map<Optional<Site>, PatternsRequestCondition> requestConditionMap) {
     this.siteResolver = Preconditions.checkNotNull(siteResolver);
     this.requestConditionMap = ImmutableMap.copyOf(requestConditionMap);
   }
@@ -35,40 +34,57 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   /**
    * Get the set of patterns mapped for a request handler across all sites.
    *
-   * @param siteSet           the set of all sites
-   * @param mappingAnnotation the annotation representing to the request handler
+   * @param siteSet     the set of all sites
+   * @param baseMapping the unmodified annotation on the request handler
    * @return all patterns that are mapped to the request handler for any site in the set
    */
-  public static Set<String> getAllPatterns(SiteSet siteSet, RequestMapping mappingAnnotation) {
-    return buildPatternMap(siteSet, mappingAnnotation).keySet();
+  public static Set<String> getAllPatterns(SiteSet siteSet, RequestMappingContext baseMapping) {
+    if (baseMapping.isSiteless()) {
+      return ImmutableSet.of(baseMapping.getPattern());
+    }
+    Set<RequestMappingContext> mappings = buildPatternMap(siteSet, baseMapping).keySet();
+    ImmutableSet.Builder<String> patterns = ImmutableSet.builder();
+    for (RequestMappingContext mapping : mappings) {
+      patterns.add(mapping.getPattern());
+    }
+    return patterns.build();
   }
 
   /**
    * Create a condition, representing all sites, for a single request handler.
    * <p/>
-   * Writes to the {@link RequestHandlerPatternDictionary} object as a side effect. To avoid redundant writes, this method must be
-   * called only once per {@link RequestMapping} object.
+   * Writes to the {@link RequestMappingContextDictionary} object as a side effect. To avoid redundant writes, this
+   * method must be called only once per {@link RequestMapping} object.
    *
-   * @param siteResolver      the global site resolver
-   * @param siteSet           the set of all sites in the system
-   * @param mappingAnnotation the annotation representing the request handler
-   * @param requestHandlerPatternDictionary  the global handler directory, which must be in a writable state
+   * @param siteResolver                    the global site resolver
+   * @param siteSet                         the set of all sites in the system
+   * @param controllerMethod                the method annotated with the request handler
+   * @param requestMappingContextDictionary the global handler directory, which must be in a writable state
    * @return the new condition object
    */
   public static SiteRequestCondition create(SiteResolver siteResolver, SiteSet siteSet,
-                                            RequestMapping mappingAnnotation,
-                                            RequestHandlerPatternDictionary requestHandlerPatternDictionary) {
-    Multimap<String, Site> patternMap = buildPatternMap(siteSet, mappingAnnotation);
+                                            Method controllerMethod,
+                                            RequestMappingContextDictionary requestMappingContextDictionary) {
+    RequestMappingContext baseMapping = RequestMappingContext.create(controllerMethod);
+    if (baseMapping.isSiteless()) {
+      PatternsRequestCondition patternsRequestCondition = new PatternsRequestCondition(baseMapping.getPattern());
+      requestMappingContextDictionary.registerGlobalMapping(baseMapping);
+      ImmutableMap<Optional<Site>, PatternsRequestCondition> map = ImmutableMap.of(Optional.<Site>absent(), patternsRequestCondition);
+      return new SiteRequestCondition(siteResolver, map);
+    }
 
-    ImmutableMap.Builder<Site, PatternsRequestCondition> requestConditionMap = ImmutableMap.builder();
-    for (Map.Entry<String, Collection<Site>> entry : patternMap.asMap().entrySet()) {
-      String pattern = entry.getKey();
-      PatternsRequestCondition condition = new PatternsRequestCondition(new String[]{pattern},
-          null, null, true, true, null);
-      for (Site site : entry.getValue()) {
-        requestConditionMap.put(site, condition);
-        if (!mappingAnnotation.name().isEmpty()) {
-          requestHandlerPatternDictionary.register(mappingAnnotation, site, pattern);
+    Multimap<RequestMappingContext, Site> patternMap = buildPatternMap(siteSet, baseMapping);
+
+    ImmutableMap.Builder<Optional<Site>, PatternsRequestCondition> requestConditionMap = ImmutableMap.builder();
+    for (Map.Entry<RequestMappingContext, Collection<Site>> entry : patternMap.asMap().entrySet()) {
+      RequestMappingContext mapping = entry.getKey();
+      Collection<Site> sites = entry.getValue(); // all sites that share the mapping pattern
+
+      PatternsRequestCondition condition = new PatternsRequestCondition(mapping.getPattern());
+      for (Site site : sites) {
+        requestConditionMap.put(Optional.of(site), condition);
+        if (!mapping.getAnnotation().name().isEmpty()) {
+          requestMappingContextDictionary.registerSiteMapping(mapping, site);
         }
       }
     }
@@ -79,13 +95,13 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   /**
    * Construct a map from each pattern to the sites that use that pattern.
    */
-  private static Multimap<String, Site> buildPatternMap(SiteSet siteSet, RequestMapping mappingAnnotation) {
-    Multimap<String, Site> patterns = LinkedListMultimap.create();
+  private static Multimap<RequestMappingContext, Site> buildPatternMap(SiteSet siteSet, RequestMappingContext baseMapping) {
+    Preconditions.checkArgument(!baseMapping.isSiteless());
+    Multimap<RequestMappingContext, Site> patterns = LinkedListMultimap.create();
     for (Site site : siteSet.getSites()) {
-      String pattern = getPatternForSite(mappingAnnotation, site);
-      if (pattern != null) {
-        pattern = checkSitePathToken(site, pattern);
-        patterns.put(pattern, site);
+      RequestMappingContext mapping = getMappingForSite(baseMapping, site);
+      if (mapping != null) {
+        patterns.put(mapping, site);
       }
     }
     return patterns;
@@ -98,83 +114,59 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
    * Looks up the configured value from the site's theme, or gets the default value from the mapping annotation if it is
    * not configured in the theme.
    *
-   * @param mappingAnnotation the annotation representing the request handler
-   * @param site              the site
+   * @param mapping the request handler's mapping
+   * @param site    the site
    * @return the pattern mapped to that handler on that site, or {@code null} if the handler is disabled on the site
    */
-  private static String getPatternForSite(RequestMapping mappingAnnotation, Site site) {
-    final Theme theme = site.getTheme();
-    String[] annotationValue = mappingAnnotation.value();
-    if (annotationValue.length == 0) return null;
-    String annotationPattern = Iterables.getOnlyElement(Arrays.asList(annotationValue));
-
-    Map<String, Object> mappingsConfig;
+  private static RequestMappingContext getMappingForSite(RequestMappingContext mapping, Site site) {
+    final Map<String, Object> mappingsConfig;
     try {
-      mappingsConfig = theme.getConfigMap("mappings");
+      mappingsConfig = site.getTheme().getConfigMap("mappings");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    Map<String, Object> override = (Map<String, Object>) mappingsConfig.get(mappingAnnotation.name());
 
-    if (override == null) {
-      return annotationPattern;
-    } else {
+    Map<String, Object> override = (Map<String, Object>) mappingsConfig.get(mapping.getAnnotation().name());
+    if (override != null) {
       Boolean disabled = (Boolean) override.get("disabled");
-      if (disabled != null && disabled) return null; // disabled == null means false by default
-      String overridePattern = (String) override.get("pattern");
-      return (overridePattern != null) ? overridePattern : annotationPattern;
-    }
-  }
-
-  /**
-   * If the site is configured to be resolved with a path token, modify the pattern by adding a wildcard that will
-   * capture the path token.
-   *
-   * @param site    the site
-   * @param pattern the pattern to maybe modify
-   * @return the pattern value, modified if necessary
-   */
-  private static String checkSitePathToken(Site site, String pattern) {
-    if (site.getRequestScheme().hasPathToken()) {
-      StringBuilder modified = new StringBuilder(pattern.length() + 3);
-      modified.append("/*");
-      if (!pattern.isEmpty() && !pattern.startsWith("/")) {
-        modified.append('/');
+      if (disabled != null && disabled) {
+        return null; // disabled == null means false by default
       }
-      modified.append(pattern);
-      return modified.toString();
-    } else {
-      return pattern;
+      String overridePattern = (String) override.get("pattern");
+      if (overridePattern != null) {
+        mapping = mapping.override(overridePattern);
+      }
     }
+
+    if (site.getRequestScheme().hasPathToken()) {
+      mapping = mapping.addSiteToken();
+    }
+
+    return mapping;
   }
 
   @Override
   public SiteRequestCondition getMatchingCondition(HttpServletRequest request) {
-    Site site = siteResolver.resolveSite(request);
+    Optional<Site> site = Optional.fromNullable(siteResolver.resolveSite(request));
     PatternsRequestCondition patternCondition = requestConditionMap.get(site);
     if (patternCondition == null) return null; // mapped handler is invalid for the site
     if (patternCondition.getMatchingCondition(request) == null) return null; // the URL is invalid for the site
 
-    // TODO: Instead, return this?
     return requestConditionMap.size() == 1 ? this
         : new SiteRequestCondition(siteResolver, ImmutableMap.of(site, patternCondition));
   }
 
+  /**
+   *  This method should only be called when combining the typical method-level {@code RequestMapping} annotations with
+   * those at the class-level. Since class-level {@code RequestMapping} annotations are not supported under the custom
+   * {@code SiteHandlerMapping} handling, throw an exception. See {@link SiteHandlerMapping#checkMappingsOnHandlerType}
+   * for details.
+   * @param that another {@code SiteRequestCondition} instance to combine with
+   * @return
+   */
   @Override
   public SiteRequestCondition combine(SiteRequestCondition that) {
-    if (this.requestConditionMap.equals(that.requestConditionMap)) return this;
-    ImmutableMap.Builder<Site, PatternsRequestCondition> combinedMap = ImmutableMap.builder();
-
-    Set<Site> patterns = Sets.union(this.requestConditionMap.keySet(), that.requestConditionMap.keySet());
-    for (Site pattern : patterns) {
-      PatternsRequestCondition thisCondition = this.requestConditionMap.get(pattern);
-      PatternsRequestCondition thatCondition = that.requestConditionMap.get(pattern);
-      PatternsRequestCondition combinedCondition = thisCondition == null ? thatCondition : thatCondition == null ? thisCondition :
-          thisCondition.combine(thatCondition);
-      combinedMap.put(pattern, combinedCondition);
-    }
-
-    return new SiteRequestCondition(siteResolver, combinedMap.build());
+    throw new UnsupportedOperationException();
   }
 
   @Override

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.Maps;
+import org.ambraproject.wombat.config.site.Siteless;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.HttpDebug;
 import org.apache.http.HttpHeaders;
@@ -27,6 +28,7 @@ public class UserController extends WombatController {
   @Autowired
   private SoaService soaService;
 
+  @Siteless
   @RequestMapping(name = "userLogin", value = "/user/secure/login")
   public ModelAndView redirectToOriginalLink(HttpServletRequest request, @RequestParam("page") String page) {
     // page param should contain the url to the location we want to send the user to
@@ -74,6 +76,7 @@ public class UserController extends WombatController {
     soaService.postObject("users/" + remoteUser, persist);
   }
 
+  @Siteless
   @RequestMapping(name = "userLogout", value = "/user/logout")
   public ModelAndView redirectToSignOut(HttpServletRequest request) {
     return new ModelAndView("redirect:" + request.getHeader("Referer"));

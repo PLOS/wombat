@@ -24,6 +24,20 @@ public enum SingletonSearchFilterType implements SearchFilterType {
     public String getParameterName() {
       return "filterAuthors";
     }
+
+  },
+
+  ARTICLE_TYPE {
+
+    @Override
+    public String getFilterValue(String value) {
+      return value;
+    }
+
+    @Override
+    public String getParameterName() {
+      return "filterArticleTypes";
+    }
   }
 
 }

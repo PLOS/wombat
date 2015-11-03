@@ -33,6 +33,10 @@ public class SearchFilterService {
 
   private final String AUTHOR_FACET = "author_facet";
 
+  private final String ARTICLE_TYPE = "article_type";
+
+  private final String ARTICLE_TYPE_FACET = "article_type_facet";
+
   /**
    * Retrieves a map of search filters to be added to the model. The filters displayed will change
    * depending on the query executed, but the number and type of filters is constant.
@@ -86,12 +90,26 @@ public class SearchFilterService {
     Map<?, ?> authorFacetResults = solrSearchService.search(authorFacetQuery.build());
     SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
 
+    ArticleSearchQuery.Builder articleTypeFacetQuery = ArticleSearchQuery.builder()
+        .setFacet(ARTICLE_TYPE_FACET)
+        .setQuery(query.getQuery().orNull())
+        .setSimple(query.isSimple())
+        .setDateRange(query.getDateRange().orNull())
+        .setJournalKeys(query.getJournalKeys())
+        .setSubjects(query.getSubjects());
+
+    Map<?, ?> articleTypeFacetResults = solrSearchService.search(articleTypeFacetQuery.build());
+    SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(articleTypeFacetResults,
+        ARTICLE_TYPE, urlParams);
+
+    // TODO: add other filters here
+
     Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     filters.put(SUBJECT_AREA, subjectAreaFilter);
     filters.put(AUTHOR, authorFilter);
+    filters.put(ARTICLE_TYPE, articleTypeFilter);
 
-    // TODO: add other filters here
     return filters;
   }
 

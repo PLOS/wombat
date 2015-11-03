@@ -171,9 +171,12 @@
           <#if searchFilters.subject_area??>
             <@searchFilter "Subject Areas", searchFilters.subject_area/>
           </#if>
-           <#if searchFilters.author??>
+          <#if searchFilters.article_type??>
+            <@searchFilter "Article Type", searchFilters.article_type/>
+          </#if>
+          <#if searchFilters.author??>
             <@searchFilter "Authors", searchFilters.author/>
-        </#if>
+          </#if>
         </aside>
     </#if>
   </#if>

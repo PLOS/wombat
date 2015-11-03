@@ -165,6 +165,9 @@
           <#if searchFilters.subject_area??>
             <@searchFilter "Subject Area", searchFilters.subject_area/>
           </#if>
+          <#if searchFilters.article_type??>
+            <@searchFilter "Article Type", searchFilters.article_type/>
+          </#if>
           <div>
             <form name="dateFilterForm" id="dateFilterForm" action="<@siteLink path='search'/>" method="get">
               <h3>Date</h3>

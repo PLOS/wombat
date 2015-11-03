@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Responsible for performing faceted search on different fields used for filtering on the search result
+ * Responsible for performing faceted search on different fields used for filtering search results
+ * Note that the Date Filter is a special case and need not be added here
  */
 public class SearchFilterService {
 
@@ -70,7 +71,7 @@ public class SearchFilterService {
     filters.put(JOURNAL, journalFilter);
     filters.put(SUBJECT_AREA, subjectAreaFilter);
 
-    // TODO: add other filters here
+    // TODO: add other filters here.
     return filters;
   }
 

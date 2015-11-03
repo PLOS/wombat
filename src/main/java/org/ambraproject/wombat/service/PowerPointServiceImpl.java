@@ -158,7 +158,9 @@ public class PowerPointServiceImpl implements PowerPointService {
 
     // Extract title from description
     Matcher titleElement = TITLE_EXTRACTOR.matcher(description);
-    if (!titleElement.find()) throw new RuntimeException("Title not found in description");
+    if (!titleElement.find()) {
+      return title + ".";
+    }
     String descriptionTitleText = titleElement.group(1);
     descriptionTitleText = TextUtil.removeMarkup(descriptionTitleText);
 

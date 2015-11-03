@@ -163,6 +163,9 @@
           <#if searchFilters.subject_area??>
             <@searchFilter "Subject Area", searchFilters.subject_area/>
           </#if>
+          <#if searchFilters.article_type??>
+            <@searchFilter "Article Type", searchFilters.article_type/>
+          </#if>
         </aside>
     </#if>
   </#if>

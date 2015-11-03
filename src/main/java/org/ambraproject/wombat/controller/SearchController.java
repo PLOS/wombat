@@ -24,6 +24,7 @@ import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
+import org.ambraproject.wombat.util.ListUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,6 +92,8 @@ public class SearchController extends WombatController {
     @VisibleForTesting
     List<String> subjectList;
 
+    List<String> authors;
+
     /**
      * Indicates whether any filter parameters are being applied to the search (journal, subject area, etc).
      */
@@ -150,8 +153,9 @@ public class SearchController extends WombatController {
       subjectList = parseSubjects(getSingleParam(params, "subject", null), params.get("filterSubjects"));
       articleTypes = params.get("filterArticleTypes");
       articleTypes = articleTypes == null ? new ArrayList<String>() : articleTypes;
+      authors = ListUtil.isNullOrEmpty(params.get("filterAuthors")) ? new ArrayList() : params.get("filterAuthors");
       isFiltered = !filterJournalNames.isEmpty() || !subjectList.isEmpty() || !articleTypes.isEmpty()
-          || dateRange != SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME;
+          || dateRange != SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME || !authors.isEmpty();
     }
 
     /**
@@ -172,6 +176,7 @@ public class SearchController extends WombatController {
       model.addAttribute("filterEndDate", endDate);
       model.addAttribute("filterSubjects", subjectList);
       model.addAttribute("filterArticleTypes", articleTypes);
+      model.addAttribute("filterAuthors", authors);
 
       // TODO: bind sticky form params using Spring MVC support for Freemarker.  I think we have to add
       // some more dependencies to do this.  See
@@ -263,6 +268,7 @@ public class SearchController extends WombatController {
           .setJournalKeys(journalKeys)
           .setArticleTypes(articleTypes)
           .setSubjects(subjectList)
+          .setAuthors(authors)
           .setStart(start)
           .setRows(resultsPerPage)
           .setSortOrder(sortOrder)
@@ -293,6 +299,7 @@ public class SearchController extends WombatController {
 
     builder.putAll("filterJournals", q.getJournalKeys());
     builder.putAll("filterSubjects", q.getSubjects());
+    builder.putAll("filterAuthors", q.getAuthors());
     builder.putAll("filterArticleTypes", q.getArticleTypes());
 
     // TODO: Support dateRange

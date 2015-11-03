@@ -143,6 +143,14 @@
                 <input type="hidden" name="filterArticleTypes" value="${articleType}"/>
             </#list>
           </#if>
+          <#if (filterAuthors?size > 0)>
+            <#list filterAuthors as author>
+              <div class="filter-item">
+                Author: "${author}"
+              </div>
+              <input type="hidden" name="filterAuthors" value="${author}"/>
+            </#list>
+          </#if>
         </div>
     </#if>
         <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}"/>
@@ -158,11 +166,14 @@
     <#if searchFilters?? >
         <aside id="searchFilters">
           <#if searchFilters.journal??>
-            <@searchFilter "Journal", searchFilters.journal/>
+            <@searchFilter "Journals", searchFilters.journal/>
           </#if>
           <#if searchFilters.subject_area??>
-            <@searchFilter "Subject Area", searchFilters.subject_area/>
+            <@searchFilter "Subject Areas", searchFilters.subject_area/>
           </#if>
+           <#if searchFilters.author??>
+            <@searchFilter "Authors", searchFilters.author/>
+        </#if>
         </aside>
     </#if>
   </#if>

@@ -29,6 +29,10 @@ public class SearchFilterService {
 
   private final String SUBJECT_AREA_FACET_FIELD = "subject_facet";
 
+  private final String AUTHOR = "author";
+
+  private final String AUTHOR_FACET = "author_facet";
+
   /**
    * Retrieves a map of search filters to be added to the model. The filters displayed will change
    * depending on the query executed, but the number and type of filters is constant.
@@ -48,6 +52,7 @@ public class SearchFilterService {
         .setSimple(query.isSimple())
         .setArticleTypes(query.getArticleTypes())
         .setSubjects(query.getSubjects())
+        .setAuthors(query.getAuthors())
         .setDateRange(query.getDateRange().orNull());
 
     Map<?, ?> journalFacetResults = solrSearchService.search(journalFacetQuery.build());
@@ -59,6 +64,7 @@ public class SearchFilterService {
         .setQuery(query.getQuery().orNull())
         .setSimple(query.isSimple())
         .setArticleTypes(query.getArticleTypes())
+        .setAuthors(query.getAuthors())
         .setDateRange(query.getDateRange().orNull())
         .setJournalKeys(query.getJournalKeys());
 
@@ -66,9 +72,24 @@ public class SearchFilterService {
     SearchFilter subjectAreaFilter = searchFilterFactory
         .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
 
+    ArticleSearchQuery.Builder authorFacetQuery = ArticleSearchQuery.builder()
+        .setFacet(AUTHOR_FACET)
+        .setQuery(query.getQuery().orNull())
+        .setSimple(query.isSimple())
+        .setJournalKeys(query.getJournalKeys())
+        .setArticleTypes(query.getArticleTypes())
+        .setDateRange(query.getDateRange().orNull())
+        .setAuthors(query.getAuthors()) // pass the previously filtered authors to narrow the results
+        .setSubjects(query.getSubjects());
+
+
+    Map<?, ?> authorFacetResults = solrSearchService.search(authorFacetQuery.build());
+    SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
+
     Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     filters.put(SUBJECT_AREA, subjectAreaFilter);
+    filters.put(AUTHOR, authorFilter);
 
     // TODO: add other filters here
     return filters;

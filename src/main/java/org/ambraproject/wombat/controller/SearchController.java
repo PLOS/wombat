@@ -20,8 +20,8 @@ import com.google.common.collect.ImmutableListMultimap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
+import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.ambraproject.wombat.util.ListUtil;
@@ -36,7 +36,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -110,6 +112,8 @@ public class SearchController extends WombatController {
 
     private String endDate;
 
+    private final String DEFAULT_START_DATE = "2003-01-01";
+
     /**
      * Constructor.
      *
@@ -150,6 +154,13 @@ public class SearchController extends WombatController {
       }
       startDate = getSingleParam(params, "filterStartDate", null);
       endDate = getSingleParam(params, "filterEndDate", null);
+
+      if (startDate == null && endDate != null) {
+        startDate = DEFAULT_START_DATE;
+      } else if (startDate != null && endDate == null) {
+        endDate = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+      }
+
       subjectList = parseSubjects(getSingleParam(params, "subject", null), params.get("filterSubjects"));
       articleTypes = params.get("filterArticleTypes");
       articleTypes = articleTypes == null ? new ArrayList<String>() : articleTypes;
@@ -195,7 +206,8 @@ public class SearchController extends WombatController {
 
     private String getSingleParam(Map<String, List<String>> params, String key, String defaultValue) {
       List<String> values = params.get(key);
-      return values == null || values.isEmpty() ? defaultValue : values.get(0);
+      return values == null || values.isEmpty() ? defaultValue
+          : values.get(0) == null || values.get(0).isEmpty() ? defaultValue : values.get(0);
     }
 
     /**

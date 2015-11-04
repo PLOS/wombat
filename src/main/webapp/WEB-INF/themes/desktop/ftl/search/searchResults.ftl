@@ -3,6 +3,7 @@
 <#assign depth = 0 />
 <#assign title = "Search Results" />
 <#assign cssFile="search-results.css"/>
+<@cssLink target="resource/css/jquery-ui.min.css"/>
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
@@ -12,6 +13,7 @@
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/pages/search_results.js"/>
 <@js src="resource/js/components/toggle.js"/>
+<@js src="resource/js/vendor/jquery-ui.min.js"/>
 
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />
@@ -166,17 +168,34 @@
     <#if searchFilters?? >
         <aside id="searchFilters">
           <#if searchFilters.journal??>
-            <@searchFilter "Journals", searchFilters.journal/>
+            <@searchFilter "Journal", searchFilters.journal/>
           </#if>
           <#if searchFilters.subject_area??>
-            <@searchFilter "Subject Areas", searchFilters.subject_area/>
+            <@searchFilter "Subject Area", searchFilters.subject_area/>
           </#if>
           <#if searchFilters.article_type??>
             <@searchFilter "Article Type", searchFilters.article_type/>
           </#if>
           <#if searchFilters.author??>
-            <@searchFilter "Authors", searchFilters.author/>
+            <@searchFilter "Author", searchFilters.author/>
           </#if>
+          <div>
+            <form name="dateFilterForm" id="dateFilterForm" action="<@siteLink path='search'/>" method="get">
+              <h3>Date</h3>
+              <div>Published between</div>
+              <input name="filterStartDate" id="dateFilterStartDate" type="text" class="datepicker"
+                     <#if filterStartDate??>value="${filterStartDate}"</#if>>
+              <div>to</div>
+              <input name="filterEndDate" id="dateFilterEndDate" type="text" class="datepicker"
+                     <#if filterEndDate??>value="${filterEndDate}"</#if>>
+              <input type="submit" id="dateFilterSubmitButton" value="Apply">
+              <#list parameterMap?keys as param>
+                <#if param != 'filterStartDate' && param != 'filterEndDate'>
+                  <input type="hidden" name="${param}" value="${parameterMap[param][0]}" />
+                </#if>
+              </#list>
+            </form>
+          </div>
         </aside>
     </#if>
   </#if>

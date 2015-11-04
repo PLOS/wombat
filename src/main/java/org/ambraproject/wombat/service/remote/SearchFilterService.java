@@ -30,6 +30,10 @@ public class SearchFilterService {
 
   private final String SUBJECT_AREA_FACET_FIELD = "subject_facet";
 
+  private final String AUTHOR = "author";
+
+  private final String AUTHOR_FACET = "author_facet";
+
   private final String ARTICLE_TYPE = "article_type";
 
   private final String ARTICLE_TYPE_FACET = "article_type_facet";
@@ -53,6 +57,7 @@ public class SearchFilterService {
         .setSimple(query.isSimple())
         .setArticleTypes(query.getArticleTypes())
         .setSubjects(query.getSubjects())
+        .setAuthors(query.getAuthors())
         .setDateRange(query.getDateRange().orNull());
 
     Map<?, ?> journalFacetResults = solrSearchService.search(journalFacetQuery.build());
@@ -64,12 +69,27 @@ public class SearchFilterService {
         .setQuery(query.getQuery().orNull())
         .setSimple(query.isSimple())
         .setArticleTypes(query.getArticleTypes())
+        .setAuthors(query.getAuthors())
         .setDateRange(query.getDateRange().orNull())
         .setJournalKeys(query.getJournalKeys());
 
     Map<?, ?> subjectAreaFacetResults = solrSearchService.search(subjectAreaFacetQuery.build());
     SearchFilter subjectAreaFilter = searchFilterFactory
         .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
+
+    ArticleSearchQuery.Builder authorFacetQuery = ArticleSearchQuery.builder()
+        .setFacet(AUTHOR_FACET)
+        .setQuery(query.getQuery().orNull())
+        .setSimple(query.isSimple())
+        .setJournalKeys(query.getJournalKeys())
+        .setArticleTypes(query.getArticleTypes())
+        .setDateRange(query.getDateRange().orNull())
+        .setAuthors(query.getAuthors()) // pass the previously filtered authors to narrow the results
+        .setSubjects(query.getSubjects());
+
+
+    Map<?, ?> authorFacetResults = solrSearchService.search(authorFacetQuery.build());
+    SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
 
     ArticleSearchQuery.Builder articleTypeFacetQuery = ArticleSearchQuery.builder()
         .setFacet(ARTICLE_TYPE_FACET)
@@ -88,6 +108,7 @@ public class SearchFilterService {
     Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     filters.put(SUBJECT_AREA, subjectAreaFilter);
+    filters.put(AUTHOR, authorFilter);
     filters.put(ARTICLE_TYPE, articleTypeFilter);
 
     return filters;

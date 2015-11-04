@@ -145,6 +145,14 @@
                 <input type="hidden" name="filterArticleTypes" value="${articleType}"/>
             </#list>
           </#if>
+          <#if (filterAuthors?size > 0)>
+            <#list filterAuthors as author>
+              <div class="filter-item">
+                Author: "${author}"
+              </div>
+              <input type="hidden" name="filterAuthors" value="${author}"/>
+            </#list>
+          </#if>
         </div>
     </#if>
         <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}"/>
@@ -167,6 +175,9 @@
           </#if>
           <#if searchFilters.article_type??>
             <@searchFilter "Article Type", searchFilters.article_type/>
+          </#if>
+          <#if searchFilters.author??>
+            <@searchFilter "Author", searchFilters.author/>
           </#if>
           <div>
             <form name="dateFilterForm" id="dateFilterForm" action="<@siteLink path='search'/>" method="get">

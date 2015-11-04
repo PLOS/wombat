@@ -28,6 +28,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.controller.AppRootPage;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
@@ -183,6 +184,11 @@ public class SpringConfiguration {
 
   @Bean
   public JournalFilterType journalFilterType() { return new JournalFilterType(); }
+
+  @Bean
+  public AppRootPage appRootPage() {
+    return new AppRootPage();
+  }
 
   @Bean
   public SearchFilterTypeMap searchFilterTypeMap(JournalFilterType journalFilterType) {

@@ -1,20 +1,25 @@
 package org.ambraproject.wombat.config.site;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableTable;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Table;
+
+import java.util.Map;
 
 /**
  * A global bean that looks up patterns that have been mapped to request handlers. Ordinarily those patterns are set up
  * as part of Spring configuration; we want to capture those patterns in order to use them later, for building links.
- * <p/>
+ * <p>
  * This bean has two roles: intercepting the patterns before they get passed to Spring config (which, as far as we know,
  * doesn't have any built-in way to extract them later), and looking them up later. It would be nice if we could have
  * one bean to do the first job, which produces another, immutable bean to do the second job when it's done.
  * Unfortunately, we're not aware of a Spring hook that allows us to set up a separate bean only after all request
  * handlers have been mapped. For the next-best thing, we statefully freeze this object the first time it is read and
  * throw an {@code IllegalStateException} rather than allow any further writes, making it effectively immutable.
- * <p/>
+ * <p>
  * This class is intended to be thread-safe. Writes are synchronized, and the object is immutable while being read.
  */
 public final class RequestMappingContextDictionary {
@@ -42,7 +47,7 @@ public final class RequestMappingContextDictionary {
 
   /**
    * Register the pattern that is associated with a handler on a particular site.
-   * <p/>
+   * <p>
    * All registrations must be completed before the first call to {@link #getPattern}.
    *
    * @param mapping the mapping to the handler
@@ -64,7 +69,7 @@ public final class RequestMappingContextDictionary {
 
   /**
    * Register the pattern that is associated with a siteless handler.
-   * <p/>
+   * <p>
    * All registrations must be completed before the first call to {@link #getPattern}.
    *
    * @param mapping the mapping to the handler
@@ -82,18 +87,7 @@ public final class RequestMappingContextDictionary {
     }
   }
 
-  /**
-   * Look up a registered pattern.
-   * <p/>
-   * This method should only be called when all registrations are complete. The first time this method is called for
-   * this object, it has the side effect of freezing the object and invalidating any future calls to {@link
-   * #registerSiteMapping} and {@link #registerGlobalMapping}.
-   *
-   * @param handlerName the name of the handler
-   * @param site        the site associated with the request to map
-   * @return the pattern, or {@code null} if no handler exists for the given name on the given site
-   */
-  public RequestMappingContext getPattern(String handlerName, Site site) {
+  private void buildAndFreeze() {
     /*
      * We permit a harmless race condition on the `if (!isFrozen)` block: if the first two calls to this method happen
      * concurrently, we might invoke the builders more than once. This is safe because they will return identical data.
@@ -105,11 +99,78 @@ public final class RequestMappingContextDictionary {
         globalTable = globalTableBuilder.build();
       }
     }
+  }
 
+  /**
+   * Look up a registered pattern.
+   * <p>
+   * This method should only be called when all registrations are complete. The first time this method is called for
+   * this object, it has the side effect of freezing the object and invalidating any future calls to {@link
+   * #registerSiteMapping} and {@link #registerGlobalMapping}.
+   *
+   * @param handlerName the name of the handler
+   * @param site        the site associated with the request to map
+   * @return the pattern, or {@code null} if no handler exists for the given name on the given site
+   */
+  public RequestMappingContext getPattern(String handlerName, Site site) {
+    buildAndFreeze();
     Preconditions.checkNotNull(handlerName);
     Preconditions.checkNotNull(site);
     RequestMappingContext siteMapping = siteTable.get(handlerName, site);
     return (siteMapping != null) ? siteMapping : globalTable.get(handlerName);
+  }
+
+
+  public static interface MappingEntry {
+    String getHandlerName();
+
+    Optional<Site> getSite();
+
+    RequestMappingContext getMapping();
+  }
+
+  public Iterable<MappingEntry> getAll() {
+    buildAndFreeze();
+
+    Iterable<MappingEntry> siteEntries = Iterables.transform(siteTable.cellSet(),
+        (Table.Cell<String, Site, RequestMappingContext> cell) ->
+            new MappingEntry() {
+              @Override
+              public String getHandlerName() {
+                return cell.getRowKey();
+              }
+
+              @Override
+              public Optional<Site> getSite() {
+                return Optional.of(cell.getColumnKey());
+              }
+
+              @Override
+              public RequestMappingContext getMapping() {
+                return cell.getValue();
+              }
+            });
+
+    Iterable<MappingEntry> globalEntries = Iterables.transform(globalTable.entrySet(),
+        (Map.Entry<String, RequestMappingContext> entry) ->
+            new MappingEntry() {
+              @Override
+              public String getHandlerName() {
+                return entry.getKey();
+              }
+
+              @Override
+              public Optional<Site> getSite() {
+                return Optional.absent();
+              }
+
+              @Override
+              public RequestMappingContext getMapping() {
+                return entry.getValue();
+              }
+            });
+
+    return Iterables.concat(siteEntries, globalEntries);
   }
 
 }

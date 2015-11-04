@@ -20,6 +20,11 @@ package org.ambraproject.wombat.util;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * An object encapsulating properties of a build of an application (either this one, or the service component).
@@ -32,15 +37,15 @@ public class BuildInfo {
   private final String date;
   private final String user;
   private final String gitCommitIdAbbrev;
-  private final String enabledDevFeatures;
+  private ImmutableSet<String> enabledDevFeatures;
 
   public BuildInfo(String version, String date, String user, String gitCommitIdAbbrev,
-      String enabledDevFeaturesString) {
+      Collection<String> enabledDevFeatures) {
     this.version = Strings.nullToEmpty(version);
     this.date = Strings.nullToEmpty(date);
     this.user = Strings.nullToEmpty(user);
     this.gitCommitIdAbbrev = Strings.nullToEmpty(gitCommitIdAbbrev);
-    this.enabledDevFeatures = Strings.nullToEmpty(enabledDevFeaturesString);
+    this.enabledDevFeatures = (enabledDevFeatures == null) ? ImmutableSet.<String>of() : ImmutableSet.copyOf(enabledDevFeatures);
   }
 
   /**
@@ -74,7 +79,7 @@ public class BuildInfo {
   /**
    * @return a string describing the list of enabled dev features
    */
-  public String getEnabledDevFeatures() {
+  public ImmutableSet<String> getEnabledDevFeatures() {
     return enabledDevFeatures;
   }
 

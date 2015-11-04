@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Responsible for performing faceted search on different fields used for filtering on the search result
+ * Responsible for performing faceted search on different fields used for filtering search results
+ * Note that the Date Filter is a special case and need not be added here
  */
 public class SearchFilterService {
 
@@ -28,6 +29,14 @@ public class SearchFilterService {
   private final String SUBJECT_AREA = "subject_area";
 
   private final String SUBJECT_AREA_FACET_FIELD = "subject_facet";
+
+  private final String AUTHOR = "author";
+
+  private final String AUTHOR_FACET = "author_facet";
+
+  private final String ARTICLE_TYPE = "article_type";
+
+  private final String ARTICLE_TYPE_FACET = "article_type_facet";
 
   /**
    * Retrieves a map of search filters to be added to the model. The filters displayed will change
@@ -48,6 +57,7 @@ public class SearchFilterService {
         .setSimple(query.isSimple())
         .setArticleTypes(query.getArticleTypes())
         .setSubjects(query.getSubjects())
+        .setAuthors(query.getAuthors())
         .setDateRange(query.getDateRange().orNull());
 
     Map<?, ?> journalFacetResults = solrSearchService.search(journalFacetQuery.build());
@@ -59,6 +69,7 @@ public class SearchFilterService {
         .setQuery(query.getQuery().orNull())
         .setSimple(query.isSimple())
         .setArticleTypes(query.getArticleTypes())
+        .setAuthors(query.getAuthors())
         .setDateRange(query.getDateRange().orNull())
         .setJournalKeys(query.getJournalKeys());
 
@@ -66,11 +77,40 @@ public class SearchFilterService {
     SearchFilter subjectAreaFilter = searchFilterFactory
         .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
 
+    ArticleSearchQuery.Builder authorFacetQuery = ArticleSearchQuery.builder()
+        .setFacet(AUTHOR_FACET)
+        .setQuery(query.getQuery().orNull())
+        .setSimple(query.isSimple())
+        .setJournalKeys(query.getJournalKeys())
+        .setArticleTypes(query.getArticleTypes())
+        .setDateRange(query.getDateRange().orNull())
+        .setAuthors(query.getAuthors()) // pass the previously filtered authors to narrow the results
+        .setSubjects(query.getSubjects());
+
+
+    Map<?, ?> authorFacetResults = solrSearchService.search(authorFacetQuery.build());
+    SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
+
+    ArticleSearchQuery.Builder articleTypeFacetQuery = ArticleSearchQuery.builder()
+        .setFacet(ARTICLE_TYPE_FACET)
+        .setQuery(query.getQuery().orNull())
+        .setSimple(query.isSimple())
+        .setDateRange(query.getDateRange().orNull())
+        .setJournalKeys(query.getJournalKeys())
+        .setSubjects(query.getSubjects());
+
+    Map<?, ?> articleTypeFacetResults = solrSearchService.search(articleTypeFacetQuery.build());
+    SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(articleTypeFacetResults,
+        ARTICLE_TYPE, urlParams);
+
+    // TODO: add other filters here
+
     Map<String, SearchFilter> filters = new HashMap<>();
     filters.put(JOURNAL, journalFilter);
     filters.put(SUBJECT_AREA, subjectAreaFilter);
+    filters.put(AUTHOR, authorFilter);
+    filters.put(ARTICLE_TYPE, articleTypeFilter);
 
-    // TODO: add other filters here
     return filters;
   }
 

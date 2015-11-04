@@ -26,7 +26,7 @@
           </#macro>
           <@sectionLink "recent" "recent" />
           <@sectionLink "popular" "popular" />
-          <@sectionLink "in_the_news" "in the news" />
+          <#include "curatedArticleLists.ftl" />
         </ul>
       </nav>
       <form id="hpSectionForm" action="" method="get" style="display: none;">
@@ -47,7 +47,7 @@
           </ul>
         </section>
 
-        <#if selectedSection != "in_the_news">
+        <#if selectedSection == "recent" || selectedSection == "popular">
           <#assign numPages = (articles?size / resultsPerPage)?ceiling />
           <#assign currentPage = (RequestParameters.page!1)?number />
           <#assign path = "" />

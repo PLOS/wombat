@@ -9,9 +9,7 @@
 
 <#include "relatedArticles.ftl" />
 
-<#if collectionIssues?keys?size gt 0>
-  <#include "asideCollections.ftl" />
-</#if>
+<#include "listLinks.ftl" />
 
 <#include "subjectAreas.ftl" />
 

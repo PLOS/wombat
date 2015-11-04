@@ -241,6 +241,13 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
         "subject:\"foo\" AND subject:\"2nd subject\"");
   }
 
+  @Test
+  public void testBuildAuthorClause() {
+    assertEquals(ArticleSearchQuery.buildAuthorClause(Arrays.asList("author1")), "author:\"author1\"");
+    assertEquals(ArticleSearchQuery.buildAuthorClause(Arrays.asList("author1", "author2")),
+        "author:\"author1\" AND author:\"author2\"");
+  }
+
   /**
    * Converts a list of params to a multimap from key to value(s).
    */

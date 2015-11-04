@@ -54,8 +54,8 @@
 
       pubDate = $('meta[name=citation_date]').attr("content");
 
-      offsetDays = 3; // TODO: if this number is one then add some logic to make it days singular - not an issue now.
-      tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable up to ' + offsetDays + '  days after publication</li>';
+      offsetDays = 1; // TODO: if this number is one then add some logic to make it days singular - not an issue now.
+      tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable for recently published articles.</li>';
       errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
 
       config = ALM_CONFIG;

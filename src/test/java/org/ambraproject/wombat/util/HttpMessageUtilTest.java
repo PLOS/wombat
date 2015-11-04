@@ -30,14 +30,11 @@ public class HttpMessageUtilTest {
     input.setHeader("excludeMe", "bar");
     input.setHeader("alterMe", "toBeAltered");
 
-    HeaderFilter headerFilter = new HeaderFilter() {
-      @Override
-      public String getValue(Header header) {
-        String name = header.getName();
-        if ("includeMe".equalsIgnoreCase(name)) return header.getValue();
-        if ("alterMe".equalsIgnoreCase(name)) return "altered";
-        return null;
-      }
+    HeaderFilter headerFilter = header -> {
+      String name = header.getName();
+      if ("includeMe".equalsIgnoreCase(name)) return header.getValue();
+      if ("alterMe".equalsIgnoreCase(name)) return "altered";
+      return null;
     };
 
     MockHttpServletResponse output = new MockHttpServletResponse();

@@ -44,6 +44,7 @@ public class ArticleSearchQuery {
   private final ImmutableList<String> journalKeys;
   private final ImmutableList<String> articleTypes;
   private final ImmutableList<String> subjects;
+  private final ImmutableList<String> authors;
   private final Optional<SolrSearchService.SearchCriterion> dateRange;
 
   private final ImmutableMap<String, String> rawParameters;
@@ -60,6 +61,7 @@ public class ArticleSearchQuery {
     this.journalKeys = ImmutableList.copyOf(builder.journalKeys);
     this.articleTypes = ImmutableList.copyOf(builder.articleTypes);
     this.subjects = ImmutableList.copyOf(builder.subjects);
+    this.authors = ImmutableList.copyOf(builder.authors);
     this.dateRange = Optional.fromNullable(builder.dateRange);
     this.rawParameters = ImmutableMap.copyOf(builder.rawParameters);
   }
@@ -146,6 +148,10 @@ public class ArticleSearchQuery {
     if (!ListUtil.isNullOrEmpty(subjects)) {
       params.add(new BasicNameValuePair("fq", buildSubjectClause(subjects)));
     }
+
+    if (!ListUtil.isNullOrEmpty(authors)) {
+      params.add(new BasicNameValuePair("fq", buildAuthorClause(authors)));
+    }
   }
 
   @VisibleForTesting
@@ -159,6 +165,19 @@ public class ArticleSearchQuery {
       quotedSubjects.add(sb.toString());
     }
     return Joiner.on(" AND ").join(quotedSubjects);
+  }
+
+  @VisibleForTesting
+  static String buildAuthorClause(List<String> authors) {
+    List<String> quotedAuthors = new ArrayList<>();
+    for (String author : authors) {
+      StringBuilder sb = new StringBuilder();
+      sb.append("author:\"");
+      sb.append(author);
+      sb.append('"');
+      quotedAuthors.add(sb.toString());
+    }
+    return Joiner.on(" AND ").join(quotedAuthors);
   }
 
 
@@ -253,6 +272,10 @@ public class ArticleSearchQuery {
     return subjects;
   }
 
+  public ImmutableList<String> getAuthors() {
+    return authors;
+  }
+
   public Optional<SolrSearchService.SearchCriterion> getDateRange() {
     return dateRange;
   }
@@ -301,6 +324,7 @@ public class ArticleSearchQuery {
     private List<String> journalKeys = ImmutableList.of();
     private List<String> articleTypes = ImmutableList.of();
     private List<String> subjects = ImmutableList.of();
+    private List<String> authors = ImmutableList.of();
     private SolrSearchService.SearchCriterion dateRange;
 
     private Map<String, String> rawParameters = ImmutableMap.of();
@@ -398,6 +422,14 @@ public class ArticleSearchQuery {
      */
     public Builder setSubjects(List<String> subjects) {
       this.subjects = subjects;
+      return this;
+    }
+
+    /**
+     * @param authors set the authors to filter by
+     */
+    public Builder setAuthors(List<String> authors) {
+      this.authors = authors;
       return this;
     }
 

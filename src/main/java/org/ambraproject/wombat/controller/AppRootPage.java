@@ -7,8 +7,8 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Table;
-import org.ambraproject.wombat.config.site.RequestHandlerPatternDictionary;
-import org.ambraproject.wombat.config.site.RequestMappingValue;
+import org.ambraproject.wombat.config.site.RequestMappingContext;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.apache.commons.codec.binary.Base64;
@@ -39,11 +39,11 @@ public class AppRootPage {
   @Autowired
   private ServletContext servletContext;
   @Autowired
-  private RequestHandlerPatternDictionary requestHandlerPatternDictionary;
+  private RequestMappingContextDictionary requestMappingContextDictionary;
 
   /**
    * Show a page in response to the application root.
-   * <p/>
+   * <p>
    * This is here only for development/debugging: if you browse to the application root while you're setting up, this
    * page is more useful than an error message. But all end-user-facing pages should belong to one of the sites in
    * {@code siteSet}.
@@ -69,11 +69,11 @@ public class AppRootPage {
   }
 
   private ImmutableList<MappingTableRow> buildMappingTable() {
-    Table<RequestMappingValue, Site, String> table = HashBasedTable.create();
-    Set<RequestMappingValue> sitelessMappings = new HashSet<>();
+    Table<RequestMappingContext, Site, String> table = HashBasedTable.create();
+    Set<RequestMappingContext> sitelessMappings = new HashSet<>();
     ImmutableList<Site> allSites = siteSet.getSites().asList();
-    for (RequestHandlerPatternDictionary.MappingEntry entry : requestHandlerPatternDictionary.getAll()) {
-      RequestMappingValue mapping = entry.getMapping();
+    for (RequestMappingContextDictionary.MappingEntry entry : requestMappingContextDictionary.getAll()) {
+      RequestMappingContext mapping = entry.getMapping();
       Optional<Site> site = entry.getSite();
       String handlerName = entry.getHandlerName();
 
@@ -87,9 +87,9 @@ public class AppRootPage {
       }
     }
 
-    Set<RequestMappingValue> mappings = table.rowKeySet();
+    Set<RequestMappingContext> mappings = table.rowKeySet();
     List<MappingTableRow> rows = new ArrayList<>(mappings.size());
-    for (final RequestMappingValue mapping : mappings) {
+    for (final RequestMappingContext mapping : mappings) {
       final List<String> row = new ArrayList<>(allSites.size());
       for (Site site : allSites) {
         String cell = table.get(mapping, site);
@@ -119,7 +119,7 @@ public class AppRootPage {
     return ROW_ORDERING.immutableSortedCopy(rows);
   }
 
-  private static String represent(RequestMappingValue mapping) {
+  private static String represent(RequestMappingContext mapping) {
     StringBuilder sb = new StringBuilder().append(mapping.getPattern());
     boolean atFirst = true;
     for (String requiredParam : mapping.getRequiredParams()) {

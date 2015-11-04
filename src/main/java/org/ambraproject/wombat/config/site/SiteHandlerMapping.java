@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.util.Collection;
 import java.util.Set;
 
 
@@ -30,7 +29,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
   @Autowired
   SiteResolver siteResolver;
   @Autowired
-  RequestHandlerPatternDictionary requestHandlerPatternDictionary;
+  RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
   SiteSet siteSet;
 
@@ -43,23 +42,35 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
   protected RequestCondition<?> getCustomMethodCondition(Method method) {
     RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
     Preconditions.checkNotNull(methodAnnotation, "No @RequestMapping found on mapped method");
-    return SiteRequestCondition.create(siteResolver, siteSet, method, requestHandlerPatternDictionary);
+    return SiteRequestCondition.create(siteResolver, siteSet, method, requestMappingContextDictionary);
   }
 
   @Override
   protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
     RequestMappingInfo info = null;
-    RequestMappingValue methodAnnotation = RequestMappingValue.create(method);
-    if (methodAnnotation != null) {
+    RequestMappingContext mapping = RequestMappingContext.create(method);
+    if (mapping != null) {
       RequestCondition<?> methodCondition = this.getCustomMethodCondition(method);
-      info = this.createRequestMappingInfo(methodAnnotation, methodCondition);
-      RequestMappingValue typeAnnotation = RequestMappingValue.create(handlerType);
-      if (typeAnnotation != null) {
-        RequestCondition<?> typeCondition = this.getCustomTypeCondition(handlerType);
-        info = this.createRequestMappingInfo(typeAnnotation, typeCondition).combine(info);
-      }
+      info = this.createRequestMappingInfo(mapping, methodCondition);
+      checkMappingsOnHandlerType(handlerType);
     }
     return info;
+  }
+
+  /**
+   * Throw an exception if a handler class has a RequestMapping annotation on it. We force everything to be declared
+   * directly on the controller methods, sometimes risking a little redundancy.
+   * <p/>
+   * The motivation here is to avoid complications with our extensions to RequestMapping semantics, especially the
+   * element-wise concatenation of class and method-level patterns in the method
+   * {@link org.springframework.web.servlet.mvc.condition.PatternsRequestCondition#combine(PatternsRequestCondition)},
+   * which would clobber our own site path token concatenation. See {@link RequestMappingContext#addSiteToken}
+   */
+  private static void checkMappingsOnHandlerType(Class<?> handlerType) {
+    RequestMapping requestMapping = AnnotationUtils.findAnnotation(handlerType, RequestMapping.class);
+    if (requestMapping != null) {
+      throw new RuntimeException("Expected RequestMapping not to appear at class level");
+    }
   }
 
   @Override
@@ -69,7 +80,7 @@ public class SiteHandlerMapping extends RequestMappingHandlerMapping {
     throw new UnsupportedOperationException();
   }
 
-  private RequestMappingInfo createRequestMappingInfo(RequestMappingValue mapping, RequestCondition<?> customCondition) {
+  private RequestMappingInfo createRequestMappingInfo(RequestMappingContext mapping, RequestCondition<?> customCondition) {
     Set<String> allPatterns = SiteRequestCondition.getAllPatterns(siteSet, mapping);
     RequestMapping annotation = mapping.getAnnotation();
     String[] embeddedPatterns = resolveEmbeddedValuesInPatterns(allPatterns.toArray(new String[allPatterns.size()]));

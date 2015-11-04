@@ -46,10 +46,7 @@ public class WombatControllerTestConfig extends WebMvcConfigurerAdapter {
   public static final String MOCK_SITE_URL = "";
 
   public TemplateDirectiveModel getEmptyTemplateDirectiveModel() {
-    return new TemplateDirectiveModel() {
-      @Override
-      public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
-      }
+    return (env, params, loopVars, body) -> {
     };
   }
 

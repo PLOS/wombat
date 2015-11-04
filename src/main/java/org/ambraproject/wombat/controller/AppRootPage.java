@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.common.collect.HashBasedTable;
@@ -137,12 +136,7 @@ public class AppRootPage {
     boolean isGlobal();
   }
 
-  private static final Ordering<MappingTableRow> ROW_ORDERING = Ordering.natural().onResultOf(
-      new Function<MappingTableRow, String>() {
-        @Override
-        public String apply(MappingTableRow row) {
-          return row.getPattern();
-        }
-      });
+  private static final Ordering<MappingTableRow> ROW_ORDERING = Ordering.natural()
+      .onResultOf(MappingTableRow::getPattern);
 
 }

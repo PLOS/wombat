@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config.site;
 
-import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
@@ -134,10 +133,8 @@ public final class RequestMappingContextDictionary {
     buildAndFreeze();
 
     Iterable<MappingEntry> siteEntries = Iterables.transform(siteTable.cellSet(),
-        new Function<Table.Cell<String, Site, RequestMappingContext>, MappingEntry>() {
-          @Override
-          public MappingEntry apply(final Table.Cell<String, Site, RequestMappingContext> cell) {
-            return new MappingEntry() {
+        (Table.Cell<String, Site, RequestMappingContext> cell) ->
+            new MappingEntry() {
               @Override
               public String getHandlerName() {
                 return cell.getRowKey();
@@ -152,15 +149,11 @@ public final class RequestMappingContextDictionary {
               public RequestMappingContext getMapping() {
                 return cell.getValue();
               }
-            };
-          }
-        });
+            });
 
     Iterable<MappingEntry> globalEntries = Iterables.transform(globalTable.entrySet(),
-        new Function<Map.Entry<String, RequestMappingContext>, MappingEntry>() {
-          @Override
-          public MappingEntry apply(final Map.Entry<String, RequestMappingContext> entry) {
-            return new MappingEntry() {
+        (Map.Entry<String, RequestMappingContext> entry) ->
+            new MappingEntry() {
               @Override
               public String getHandlerName() {
                 return entry.getKey();
@@ -175,9 +168,7 @@ public final class RequestMappingContextDictionary {
               public RequestMappingContext getMapping() {
                 return entry.getValue();
               }
-            };
-          }
-        });
+            });
 
     return Iterables.concat(siteEntries, globalEntries);
   }

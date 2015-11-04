@@ -47,7 +47,7 @@
           </ul>
         </section>
 
-        <#if selectedSection != "in_the_news">
+        <#if selectedSection == "recent" || selectedSection == "popular">
           <#assign numPages = (articles?size / resultsPerPage)?ceiling />
           <#assign currentPage = (RequestParameters.page!1)?number />
           <#assign path = "" />

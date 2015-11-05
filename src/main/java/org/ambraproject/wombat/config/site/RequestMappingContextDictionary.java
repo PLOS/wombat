@@ -115,10 +115,14 @@ public final class RequestMappingContextDictionary {
   public RequestMappingContext getPattern(String handlerName, Site site) {
     buildAndFreeze();
     Preconditions.checkNotNull(handlerName);
-    Preconditions.checkNotNull(site);
-    RequestMappingContext siteMapping = siteTable.get(handlerName, site);
-    return (siteMapping != null) ? siteMapping : globalTable.get(handlerName);
-  }
+    if (site != null) {
+      RequestMappingContext siteMapping = siteTable.get(handlerName, site);
+      if (siteMapping != null) {
+        return siteMapping;
+      }
+    }
+    return globalTable.get(handlerName);
+}
 
 
   public static interface MappingEntry {

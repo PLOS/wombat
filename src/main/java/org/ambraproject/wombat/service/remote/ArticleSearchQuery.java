@@ -80,8 +80,13 @@ public class ArticleSearchQuery {
     List<NameValuePair> params = new ArrayList<>();
     params.add(new BasicNameValuePair("wt", "json"));
 
-    String docType = isPartialSearch ? "partial" : "full";
-    params.add(new BasicNameValuePair("fq", "doc_type:" + docType));
+    if (isPartialSearch) {
+      params.add(new BasicNameValuePair("qf", "doc_partial_body"));
+      params.add(new BasicNameValuePair("fl", "*"));
+      params.add(new BasicNameValuePair("fq", "doc_type:partial"));
+    } else {
+      params.add(new BasicNameValuePair("fq", "doc_type:full"));
+    }
 
     params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
     for (String filterQuery : filterQueries) {
@@ -96,12 +101,6 @@ public class ArticleSearchQuery {
     params.add(new BasicNameValuePair("hl", "false"));
 
     String queryString = query.or("*:*");
-
-    if (isPartialSearch) {
-      params.add(new BasicNameValuePair("qf", "doc_partial_body"));
-      params.add(new BasicNameValuePair("fl", "*"));
-    }
-
     params.add(new BasicNameValuePair("q", queryString));
     if (query.isPresent() && isSimple) {
       // Use the dismax query parser, recommended for all user-entered queries.

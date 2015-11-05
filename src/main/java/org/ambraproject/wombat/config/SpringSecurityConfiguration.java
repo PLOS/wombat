@@ -159,8 +159,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
       }
       httpServletResponse.setStatus(HttpServletResponse.SC_OK);
       String logoutServiceUrl = createUrlFromRequest(httpServletRequest, logoutPath);
-      httpServletResponse.sendRedirect(runtimeConfiguration.getCasConfiguration().getLoginUrl().
-              concat("?service=").concat(URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name())));
+      httpServletResponse.sendRedirect(runtimeConfiguration.getCasConfiguration().getLogoutUrl()
+              .concat("?service=").concat(URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name())));
     };
   }
 

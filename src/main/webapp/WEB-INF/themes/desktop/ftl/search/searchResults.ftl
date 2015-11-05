@@ -153,6 +153,14 @@
               <input type="hidden" name="filterAuthors" value="${author}"/>
             </#list>
           </#if>
+          <#if (filterSections?size > 0)>
+            <#list filterSections as section>
+              <div class="filter-item">
+                Section: ${section}
+              </div>
+              <input type="hidden" name="filterSections" value="${section}"/>
+            </#list>
+          </#if>
         </div>
     </#if>
         <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}"/>
@@ -178,6 +186,9 @@
           </#if>
           <#if searchFilters.author??>
             <@searchFilter "Author", searchFilters.author/>
+          </#if>
+          <#if searchFilters.section??>
+            <@searchFilter "Where my keywords appear", searchFilters.section/>
           </#if>
           <div>
             <form name="dateFilterForm" id="dateFilterForm" action="<@siteLink path='search'/>" method="get">

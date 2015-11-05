@@ -31,6 +31,7 @@ public class ArticleSearchQuery {
   private final Optional<String> query;
   private final boolean isSimple;
   private final boolean isForRawResults;
+  private final boolean isPartialSearch;
 
   private final ImmutableList<String> filterQueries;
 
@@ -45,6 +46,7 @@ public class ArticleSearchQuery {
   private final ImmutableList<String> articleTypes;
   private final ImmutableList<String> subjects;
   private final ImmutableList<String> authors;
+  private final ImmutableList<String> sections;
   private final Optional<SolrSearchService.SearchCriterion> dateRange;
 
   private final ImmutableMap<String, String> rawParameters;
@@ -53,6 +55,7 @@ public class ArticleSearchQuery {
     this.query = getQueryString(builder.query);
     this.isSimple = builder.isSimple;
     this.isForRawResults = builder.isForRawResults;
+    this.isPartialSearch = builder.isPartialSearch;
     this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
     this.facet = Optional.fromNullable(builder.facet);
     this.start = builder.start;
@@ -62,6 +65,7 @@ public class ArticleSearchQuery {
     this.articleTypes = ImmutableList.copyOf(builder.articleTypes);
     this.subjects = ImmutableList.copyOf(builder.subjects);
     this.authors = ImmutableList.copyOf(builder.authors);
+    this.sections = ImmutableList.copyOf(builder.sections);
     this.dateRange = Optional.fromNullable(builder.dateRange);
     this.rawParameters = ImmutableMap.copyOf(builder.rawParameters);
   }
@@ -75,7 +79,10 @@ public class ArticleSearchQuery {
   List<NameValuePair> buildParameters() {
     List<NameValuePair> params = new ArrayList<>();
     params.add(new BasicNameValuePair("wt", "json"));
-    params.add(new BasicNameValuePair("fq", "doc_type:full"));
+
+    String docType = isPartialSearch ? "partial" : "full";
+    params.add(new BasicNameValuePair("fq", "doc_type:" + docType));
+
     params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
     for (String filterQuery : filterQueries) {
       params.add(new BasicNameValuePair("fq", filterQuery));
@@ -89,6 +96,12 @@ public class ArticleSearchQuery {
     params.add(new BasicNameValuePair("hl", "false"));
 
     String queryString = query.or("*:*");
+
+    if (isPartialSearch) {
+      params.add(new BasicNameValuePair("qf", "doc_partial_body"));
+      params.add(new BasicNameValuePair("fl", "*"));
+    }
+
     params.add(new BasicNameValuePair("q", queryString));
     if (query.isPresent() && isSimple) {
       // Use the dismax query parser, recommended for all user-entered queries.
@@ -151,6 +164,16 @@ public class ArticleSearchQuery {
 
     if (!ListUtil.isNullOrEmpty(authors)) {
       params.add(new BasicNameValuePair("fq", buildAuthorClause(authors)));
+    }
+
+    if (!ListUtil.isNullOrEmpty(sections)) {
+      List<String> sectionQueryList = new ArrayList<>();
+      for (String section : sections) {
+        //Convert friendly section name to Solr field name TODO:clean this up
+        section = section.equals("References") ? "reference" : section;
+        sectionQueryList.add(section.toLowerCase().replace(' ', '_'));
+      }
+      params.add(new BasicNameValuePair("qf", Joiner.on(" OR ").join(sectionQueryList)));
     }
   }
 
@@ -276,6 +299,10 @@ public class ArticleSearchQuery {
     return authors;
   }
 
+  public ImmutableList<String> getSections() {
+    return sections;
+  }
+
   public Optional<SolrSearchService.SearchCriterion> getDateRange() {
     return dateRange;
   }
@@ -303,6 +330,8 @@ public class ArticleSearchQuery {
     builder.articleTypes = this.articleTypes;
     builder.subjects = this.subjects;
     builder.dateRange = this.dateRange.orNull();
+    builder.authors = this.authors;
+    builder.sections = this.sections;
     builder.rawParameters = this.rawParameters;
     return builder;
   }
@@ -311,6 +340,7 @@ public class ArticleSearchQuery {
     private String query;
     private boolean isSimple;
     private boolean isForRawResults;
+    private boolean isPartialSearch;
 
     private List<String> filterQueries = ImmutableList.of();
 
@@ -325,6 +355,7 @@ public class ArticleSearchQuery {
     private List<String> articleTypes = ImmutableList.of();
     private List<String> subjects = ImmutableList.of();
     private List<String> authors = ImmutableList.of();
+    private List<String> sections = ImmutableList.of();
     private SolrSearchService.SearchCriterion dateRange;
 
     private Map<String, String> rawParameters = ImmutableMap.of();
@@ -357,6 +388,15 @@ public class ArticleSearchQuery {
      */
     public Builder setForRawResults(boolean isForRawResults) {
       this.isForRawResults = isForRawResults;
+      return this;
+    }
+
+    /**
+     * @param isPartialSearch flag the search to search partial documents. Only used when searching
+     *                        For which section a keyword appears in.
+     */
+    public Builder setIsPartialSearch(boolean isPartialSearch) {
+      this.isPartialSearch = isPartialSearch;
       return this;
     }
 
@@ -430,6 +470,14 @@ public class ArticleSearchQuery {
      */
     public Builder setAuthors(List<String> authors) {
       this.authors = authors;
+      return this;
+    }
+
+    /**
+     * @param sections set the sections to filter by
+     */
+    public Builder setSections(List<String> sections) {
+      this.sections = sections;
       return this;
     }
 

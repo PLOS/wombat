@@ -339,7 +339,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume"})
+  @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume", "!subject"})
   public String simpleSearch(HttpServletRequest request, Model model, @SiteParam Site site,
                              @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);

@@ -320,6 +320,14 @@ public class SearchController extends WombatController {
           .setEndDate(endDate);
     }
 
+    /**
+     * Examine incoming URL parameters to see which filter items are active. CommonParams contains
+     * journalKeys, articleTypes, subjectList, authors, and sections parsed from request params.
+     * Check each string in these lists against their applicable filters.
+     *
+     * @param filter the search filter to examine
+     * @return Set<SearchFilterItem> representing active filter items
+     */
     public Set<SearchFilterItem> getActiveFilterItems(SearchFilter filter) {
       String filterMapKey = filter.getFilterTypeMapKey();
       if (filterMapKey.equals(JournalFilterType.JOURNAL_FILTER_MAP_KEY)) {

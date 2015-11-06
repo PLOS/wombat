@@ -1,8 +1,10 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.Multimap;
+import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterFactory;
+import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -22,23 +24,23 @@ public class SearchFilterService {
   @Autowired
   private SearchFilterFactory searchFilterFactory;
 
-  private final String JOURNAL = "journal";
+  private final String JOURNAL = JournalFilterType.JOURNAL_FILTER_MAP_KEY;
 
   private final String JOURNAL_FACET_FIELD = "cross_published_journal_name";
 
-  private final String SUBJECT_AREA = "subject_area";
+  private final String SUBJECT_AREA = SingletonSearchFilterType.SUBJECT_AREA.getFilterMapKey();
 
   private final String SUBJECT_AREA_FACET_FIELD = "subject_facet";
 
-  private final String AUTHOR = "author";
+  private final String AUTHOR = SingletonSearchFilterType.AUTHOR.getFilterMapKey();
 
   private final String AUTHOR_FACET = "author_facet";
 
-  private final String ARTICLE_TYPE = "article_type";
+  private final String ARTICLE_TYPE = SingletonSearchFilterType.ARTICLE_TYPE.getFilterMapKey();
 
   private final String ARTICLE_TYPE_FACET = "article_type_facet";
 
-  private final String SECTION = "section";
+  private final String SECTION = SingletonSearchFilterType.SECTION.getFilterMapKey();
 
   private final String SECTION_FACET = "doc_partial_type";
 
@@ -52,8 +54,8 @@ public class SearchFilterService {
    * @return HashMap containing all applicable filters
    * @throws IOException
    */
-  public Map<?, ?> getSearchFilters(ArticleSearchQuery query, Multimap<String, String> urlParams)
-      throws IOException {
+  public Map<String, SearchFilter> getSearchFilters(ArticleSearchQuery query,
+      Multimap<String, String> urlParams) throws IOException {
 
     ArticleSearchQuery.Builder journalFacetQuery = ArticleSearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)

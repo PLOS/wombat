@@ -20,8 +20,10 @@ import com.google.common.collect.ImmutableListMultimap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
+import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -47,6 +49,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Controller class for user-initiated searches.
@@ -317,15 +320,21 @@ public class SearchController extends WombatController {
           .setEndDate(endDate);
     }
 
-    //todo: only call getActiveFilterItems for the applicable filter, not all filters
     public Set<SearchFilterItem> getActiveFilterItems(SearchFilter filter) {
-      Set<SearchFilterItem> activeFilterItems = new HashSet<>();
-      activeFilterItems.addAll(filter.getActiveFilterItems(journalKeys));
-      activeFilterItems.addAll(filter.getActiveFilterItems(articleTypes));
-      activeFilterItems.addAll(filter.getActiveFilterItems(subjectList));
-      activeFilterItems.addAll(filter.getActiveFilterItems(authors));
-      activeFilterItems.addAll(filter.getActiveFilterItems(sections));
-      return activeFilterItems;
+      String filterMapKey = filter.getFilterTypeMapKey();
+      if (filterMapKey.equals(JournalFilterType.JOURNAL_FILTER_MAP_KEY)) {
+        return filter.getActiveFilterItems(journalKeys);
+      } else if (filterMapKey.equals(SingletonSearchFilterType.ARTICLE_TYPE.getFilterMapKey())) {
+        return filter.getActiveFilterItems(articleTypes);
+      } else if (filterMapKey.equals(SingletonSearchFilterType.SUBJECT_AREA.getFilterMapKey())) {
+        return filter.getActiveFilterItems(subjectList);
+      } else if (filterMapKey.equals(SingletonSearchFilterType.AUTHOR.getFilterMapKey())) {
+        return filter.getActiveFilterItems(authors);
+      } else if (filterMapKey.equals(SingletonSearchFilterType.SECTION.getFilterMapKey())) {
+        return filter.getActiveFilterItems(sections);
+      } else {
+        throw new RuntimeException("Filter not configured with sane map key: " + filterMapKey);
+      }
     }
   }
 
@@ -398,15 +407,12 @@ public class SearchController extends WombatController {
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    Map<?, ?> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
+    Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
     model.addAttribute("searchFilters", filters);
 
-    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
-    for (Object key : filters.keySet()) {
-      SearchFilter filter = (SearchFilter) filters.get(key);
-      activeFilterItems.addAll(commonParams.getActiveFilterItems(filter));
-    }
-
+    Set<SearchFilterItem> activeFilterItems = filters.values().stream()
+        .flatMap((filter) ->
+            commonParams.getActiveFilterItems(filter).stream()).collect(Collectors.toSet());
     model.addAttribute("activeFilterItems", activeFilterItems);
 
     return site.getKey() + "/ftl/search/searchResults";

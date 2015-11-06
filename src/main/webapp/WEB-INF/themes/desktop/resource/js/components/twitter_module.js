@@ -134,10 +134,10 @@
       return prettydate;
     }
 
-    function dataPass(dataPrefix) {
+    function dataPass(dataPrefix, datePrefix) {
 
       tweetDateOther = dataPrefix.created_at;//dateParse(dataPrefix.created_at, false, true, "en-GB");
-      tweetDate = datePrefix.event_csl.issued['date-parts'];
+      tweetDate = datePrefix.event_csl ? datePrefix.event_csl.issued['date-parts'] : dataPrefix.created_at;
       tweetAvatar = dataPrefix.user_profile_image;
       tweetUserName = dataPrefix.user_name;
       tweetHandle = dataPrefix.user;

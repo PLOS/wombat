@@ -217,14 +217,14 @@ public class SearchController extends WombatController {
       Map<String, String[]> parameterMap = request.getParameterMap();
       model.addAttribute("parameterMap", parameterMap);
 
-      Map<String, String[]> noDateFilterParams = new HashMap<>();
-      noDateFilterParams.putAll(parameterMap);
-      noDateFilterParams.remove("filterStartDate");
-      noDateFilterParams.remove("filterEndDate");
-      model.addAttribute("dateClearParams", noDateFilterParams);
+      Map<String, String[]> clearDateFilterParams = new HashMap<>();
+      clearDateFilterParams.putAll(parameterMap);
+      clearDateFilterParams.remove("filterStartDate");
+      clearDateFilterParams.remove("filterEndDate");
+      model.addAttribute("dateClearParams", clearDateFilterParams);
 
       Map<String, String[]> clearAllFilterParams = new HashMap<>();
-      clearAllFilterParams.putAll(noDateFilterParams);
+      clearAllFilterParams.putAll(clearDateFilterParams);
       clearAllFilterParams.remove("filterJournals");
       clearAllFilterParams.remove("filterSubjects");
       clearAllFilterParams.remove("filterAuthors");
@@ -333,7 +333,7 @@ public class SearchController extends WombatController {
       } else if (filterMapKey.equals(SingletonSearchFilterType.SECTION.getFilterMapKey())) {
         return filter.getActiveFilterItems(sections);
       } else {
-        throw new RuntimeException("Filter not configured with sane map key: " + filterMapKey);
+        throw new RuntimeException("Search Filter not configured with sane map key: " + filterMapKey);
       }
     }
   }

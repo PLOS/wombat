@@ -87,12 +87,7 @@
 
         <#-- TODO: implement the following controls.
         <a id="filterByButton" class="search-results-button-hover-branded-small search-results-flush-left" href="#">filter by +</a>
-        <a id="clearAllFiltersButton" class="search-results-button-gray-small search-results-flush-left" href="#">Clear all filters</a>
         -->
-            <span class='search-results-disabled-message'>
-          Search filters are temporarily unavailable. Please use <a href="${advancedSearchLink}">Advanced Search</a>
-          to construct more specific queries.
-        </span>
 
         <#-- TODO: fis this select dropdown.  See comments in the .scss.  -->
         <#if searchResults.numFound != 0>
@@ -111,61 +106,44 @@
         </div>
     <#if (isFiltered)>
         <div class="filter-block">
-            <span>Results from:</span>
+            <span>filtered by:</span>
           <#if (filterStartDate??)>
               <div class="filter-item" id="filter-date">
-              ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
+                ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
+                <@siteLink handlerName="simpleSearch" queryParameters=dateClearParams ; href>
+                  <a href="${href}">[x]</a>
+                </@siteLink>
               </div>
               <input type="hidden" name="filterStartDate" value="${filterStartDate}"/>
             <#if (filterEndDate??)>
                 <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
             </#if>
           </#if>
-          <#if (filterJournals?size > 0)>
-            <#list filterJournalNames as journalName>
-                <div class="filter-item">
-                ${journalName}
-                </div>
-                <input type="hidden" name="filterJournals" value="${filterJournals[journalName_index]}"/>
-            </#list>
-          </#if>
-          <#if (filterSubjects?size > 0)>
-            <#list filterSubjects as subject>
-                <div class="filter-item">
-                    Subject areas: "${subject}"
-                </div>
-                <input type="hidden" name="filterSubjects" value="${subject}"/>
-            </#list>
-          </#if>
-          <#if (filterArticleTypes?size > 0)>
-            <#list filterArticleTypes as articleType>
-                <div class="filter-item">
-                    Article Type: "${articleType}"
-                </div>
-                <input type="hidden" name="filterArticleTypes" value="${articleType}"/>
-            </#list>
-          </#if>
-          <#if (filterAuthors?size > 0)>
-            <#list filterAuthors as author>
+          <#if (activeFilterItems?size > 0)>
+            <#list activeFilterItems as item>
               <div class="filter-item">
-                Author: "${author}"
+                ${item.getDisplayName()}
+                <@siteLink handlerName="simpleSearch"
+                  queryParameters=item.filteredResultsParameters ; href>
+                  <a href="${href}"
+                     data-filter-param="${item.filterParamName}"
+                     data-filter-value="${item.filterValue}">
+                  [x]
+                  </a>
+                </@siteLink>
+                <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
               </div>
-              <input type="hidden" name="filterAuthors" value="${author}"/>
-            </#list>
-          </#if>
-          <#if (filterSections?size > 0)>
-            <#list filterSections as section>
-              <div class="filter-item">
-                Section: ${section}
-              </div>
-              <input type="hidden" name="filterSections" value="${section}"/>
             </#list>
           </#if>
         </div>
     </#if>
-        <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}"/>
+    <@siteLink handlerName="simpleSearch" queryParameters=clearAllFilterParams ; href>
+      <a style="float:right; padding-right: 1rem" id="clearAllFiltersButton" href="${href}">Clear all filters</a>
+    </@siteLink>
+
+    <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}"/>
     <#if RequestParameters.page??>
-        <input type="hidden" name="page" value="${RequestParameters.page}"/>
+      <input type="hidden" name="page" value="${RequestParameters.page}"/>
     </#if>
     </form>
 </div>

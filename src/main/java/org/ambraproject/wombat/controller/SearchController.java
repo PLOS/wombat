@@ -20,6 +20,8 @@ import com.google.common.collect.ImmutableListMultimap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.model.SearchFilter;
+import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -209,7 +211,24 @@ public class SearchController extends WombatController {
       // The normal way to get request parameters from a freemarker template is to use the
       // RequestParameters variable, but due to a bug in freemarker, this does not handle
       // multi-valued parameters correctly.  See http://sourceforge.net/p/freemarker/bugs/324/
-      model.addAttribute("parameterMap", request.getParameterMap());
+      Map<String, String[]> parameterMap = request.getParameterMap();
+      model.addAttribute("parameterMap", parameterMap);
+
+      Map<String, String[]> noDateFilterParams = new HashMap<>();
+      noDateFilterParams.putAll(parameterMap);
+      noDateFilterParams.remove("filterStartDate");
+      noDateFilterParams.remove("filterEndDate");
+      model.addAttribute("dateClearParams", noDateFilterParams);
+
+      Map<String, String[]> clearAllFilterParams = new HashMap<>();
+      clearAllFilterParams.putAll(noDateFilterParams);
+      clearAllFilterParams.remove("filterJournals");
+      clearAllFilterParams.remove("filterSubjects");
+      clearAllFilterParams.remove("filterAuthors");
+      clearAllFilterParams.remove("filterSections");
+      clearAllFilterParams.remove("filterArticleTypes");
+      model.addAttribute("clearAllFilterParams", clearAllFilterParams);
+
     }
 
     private String getSingleParam(Map<String, List<String>> params, String key, String defaultValue) {
@@ -293,7 +312,20 @@ public class SearchController extends WombatController {
           .setStart(start)
           .setRows(resultsPerPage)
           .setSortOrder(sortOrder)
-          .setDateRange(dateRange);
+          .setDateRange(dateRange)
+          .setStartDate(startDate)
+          .setEndDate(endDate);
+    }
+
+    //todo: only call getActiveFilterItems for the applicable filter, not all filters
+    public Set<SearchFilterItem> getActiveFilterItems(SearchFilter filter) {
+      Set<SearchFilterItem> activeFilterItems = new HashSet<>();
+      activeFilterItems.addAll(filter.getActiveFilterItems(journalKeys));
+      activeFilterItems.addAll(filter.getActiveFilterItems(articleTypes));
+      activeFilterItems.addAll(filter.getActiveFilterItems(subjectList));
+      activeFilterItems.addAll(filter.getActiveFilterItems(authors));
+      activeFilterItems.addAll(filter.getActiveFilterItems(sections));
+      return activeFilterItems;
     }
   }
 
@@ -323,8 +355,10 @@ public class SearchController extends WombatController {
     builder.putAll("filterAuthors", q.getAuthors());
     builder.putAll("filterSections", q.getSections());
     builder.putAll("filterArticleTypes", q.getArticleTypes());
+    builder.putAll("filterStartDate", q.getStartDate() == null ? "" : q.getStartDate());
+    builder.putAll("filterEndDate", q.getEndDate() == null ? "" : q.getEndDate());
 
-    // TODO: Support dateRange
+    // TODO: Support dateRange. Note this is different from startDate and endDate
     // TODO: Support sortOrder
 
     for (Map.Entry<String, String> entry : q.getRawParameters().entrySet()) {
@@ -364,7 +398,17 @@ public class SearchController extends WombatController {
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
+    Map<?, ?> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
+    model.addAttribute("searchFilters", filters);
+
+    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
+    for (Object key : filters.keySet()) {
+      SearchFilter filter = (SearchFilter) filters.get(key);
+      activeFilterItems.addAll(commonParams.getActiveFilterItems(filter));
+    }
+
+    model.addAttribute("activeFilterItems", activeFilterItems);
+
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -400,7 +444,7 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Uses {@link #simplSearch(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
+   * Uses {@link #simpleSearch(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
    * browser
    *
    * @param request HttpServletRequest

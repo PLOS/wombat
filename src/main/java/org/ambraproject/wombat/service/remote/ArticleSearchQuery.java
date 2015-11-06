@@ -49,6 +49,9 @@ public class ArticleSearchQuery {
   private final ImmutableList<String> sections;
   private final Optional<SolrSearchService.SearchCriterion> dateRange;
 
+  private final String startDate;
+  private final String endDate;
+
   private final ImmutableMap<String, String> rawParameters;
 
   private ArticleSearchQuery(Builder builder) {
@@ -66,6 +69,8 @@ public class ArticleSearchQuery {
     this.subjects = ImmutableList.copyOf(builder.subjects);
     this.authors = ImmutableList.copyOf(builder.authors);
     this.sections = ImmutableList.copyOf(builder.sections);
+    this.startDate = builder.startDate;
+    this.endDate = builder.endDate;
     this.dateRange = Optional.fromNullable(builder.dateRange);
     this.rawParameters = ImmutableMap.copyOf(builder.rawParameters);
   }
@@ -306,6 +311,14 @@ public class ArticleSearchQuery {
     return dateRange;
   }
 
+  public String getStartDate() {
+    return startDate;
+  }
+
+  public String getEndDate() {
+    return endDate;
+  }
+
   public ImmutableMap<String, String> getRawParameters() {
     return rawParameters;
   }
@@ -356,6 +369,9 @@ public class ArticleSearchQuery {
     private List<String> authors = ImmutableList.of();
     private List<String> sections = ImmutableList.of();
     private SolrSearchService.SearchCriterion dateRange;
+
+    private String startDate;
+    private String endDate;
 
     private Map<String, String> rawParameters = ImmutableMap.of();
 
@@ -485,6 +501,16 @@ public class ArticleSearchQuery {
      */
     public Builder setDateRange(SolrSearchService.SearchCriterion dateRange) {
       this.dateRange = dateRange;
+      return this;
+    }
+
+    public Builder setStartDate(String startDate) {
+      this.startDate = startDate;
+      return this;
+    }
+
+    public Builder setEndDate(String endDate) {
+      this.endDate = endDate;
       return this;
     }
 

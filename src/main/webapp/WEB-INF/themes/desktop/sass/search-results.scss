@@ -461,7 +461,7 @@ $pagination-height: 24px;
 
   span {
     float: left;
-    line-height: rem-calc(20);
+    line-height: $line-height-small;
     padding-right: $pad-default;
     color: $controls-gray;
     font-size: $txt-size-small;
@@ -470,13 +470,10 @@ $pagination-height: 24px;
 }
 
 .filter-item {
-  @extend %rounded-default;
   font-size: $txt-size-small;
-  line-height: $line-height-medium;
+  line-height: $line-height-small;
   float: left;
   color: $white ;
-  background: $grey-med-dark;
-  font-weight: bold;
   margin-right: $pad-xsmall;
   margin-bottom: $pad-xsmall;
   padding-right: $pad-small;

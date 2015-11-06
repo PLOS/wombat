@@ -1,6 +1,8 @@
 <#--//This file gets called in the head.ftl because it should sit above other js files- the actual Js gets printed in the bottom of the body. -->
-<@js src="resource/js/vendor/jquery-1.11.0.js" />
-<#--//
+<#--<@js src="resource/js/vendor/jquery-1.11.0.js" />-->
+<script src="//code.jquery.com/jquery-2.1.4.js" ></script>
+<#--//ls
+
 fast click is required for mobile interactions for foundation.
 -->
 <@js src="resource/js/vendor/fastclick/lib/fastclick.js"/>

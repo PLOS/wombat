@@ -114,7 +114,7 @@ public class SiteRequestScheme implements SiteRequestPredicate {
     return pathToken;
   }
 
-  Optional<String> getHostName() {
+  public Optional<String> getHostName() {
     return hostName;
   }
 

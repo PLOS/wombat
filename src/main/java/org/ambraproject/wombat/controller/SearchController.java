@@ -17,6 +17,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableListMultimap;
+import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -49,6 +50,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -320,6 +322,15 @@ public class SearchController extends WombatController {
           .setEndDate(endDate);
     }
 
+    private static final ImmutableMap<String, Function<CommonParams, List<String>>> FILTER_KEYS_TO_FIELDS =
+        ImmutableMap.<String, Function<CommonParams, List<String>>>builder()
+            .put(JournalFilterType.JOURNAL_FILTER_MAP_KEY, params -> params.journalKeys)
+            .put(SingletonSearchFilterType.ARTICLE_TYPE.getFilterMapKey(), params -> params.articleTypes)
+            .put(SingletonSearchFilterType.SUBJECT_AREA.getFilterMapKey(), params -> params.subjectList)
+            .put(SingletonSearchFilterType.AUTHOR.getFilterMapKey(), params -> params.authors)
+            .put(SingletonSearchFilterType.SECTION.getFilterMapKey(), params -> params.sections)
+            .build();
+
     /**
      * Examine incoming URL parameters to see which filter items are active. CommonParams contains
      * journalKeys, articleTypes, subjectList, authors, and sections parsed from request params.
@@ -329,20 +340,13 @@ public class SearchController extends WombatController {
      * @return Set<SearchFilterItem> representing active filter items
      */
     public Set<SearchFilterItem> getActiveFilterItems(SearchFilter filter) {
+
       String filterMapKey = filter.getFilterTypeMapKey();
-      if (filterMapKey.equals(JournalFilterType.JOURNAL_FILTER_MAP_KEY)) {
-        return filter.getActiveFilterItems(journalKeys);
-      } else if (filterMapKey.equals(SingletonSearchFilterType.ARTICLE_TYPE.getFilterMapKey())) {
-        return filter.getActiveFilterItems(articleTypes);
-      } else if (filterMapKey.equals(SingletonSearchFilterType.SUBJECT_AREA.getFilterMapKey())) {
-        return filter.getActiveFilterItems(subjectList);
-      } else if (filterMapKey.equals(SingletonSearchFilterType.AUTHOR.getFilterMapKey())) {
-        return filter.getActiveFilterItems(authors);
-      } else if (filterMapKey.equals(SingletonSearchFilterType.SECTION.getFilterMapKey())) {
-        return filter.getActiveFilterItems(sections);
-      } else {
+      Function<CommonParams, List<String>> getter = FILTER_KEYS_TO_FIELDS.get(filterMapKey);
+      if (getter == null) {
         throw new RuntimeException("Search Filter not configured with sane map key: " + filterMapKey);
       }
+      return filter.getActiveFilterItems(getter.apply(this));
     }
   }
 

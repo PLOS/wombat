@@ -59,11 +59,11 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
-  private static String CAS_VALIDATION_URI = "/j_spring_cas_security_check";
-  private static String CAS_LOGOUT_URI = "/j_spring_cas_security_logout";
-  private static String CAS_AUTH_KEY = "casAuthProviderKey";
-  private static String LOGOUT_HANDLER_NAME = "userLogout"; // corresponds to @RequestHandler annotation name attribute
-  private static String AUTH_INTERCEPT_PATTERN = "/**/user/secure/**";
+  private static final String CAS_VALIDATION_URI = "/j_spring_cas_security_check";
+  private static final String CAS_LOGOUT_URI = "/j_spring_cas_security_logout";
+  private static final String CAS_AUTH_KEY = "casAuthProviderKey";
+  private static final String LOGOUT_HANDLER_NAME = "userLogout"; // corresponds to @RequestHandler annotation name attribute
+  private static final String AUTH_INTERCEPT_PATTERN = "/**/user/secure/**";
 
   @Bean
   public ServiceProperties serviceProperties() {

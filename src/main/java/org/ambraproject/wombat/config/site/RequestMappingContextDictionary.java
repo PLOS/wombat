@@ -109,7 +109,7 @@ public final class RequestMappingContextDictionary {
    * #registerSiteMapping} and {@link #registerGlobalMapping}.
    *
    * @param handlerName the name of the handler
-   * @param site        the site associated with the request to map
+   * @param site        the site associated with the request to map. Use null here in the case of a siteless mapping
    * @return the pattern, or {@code null} if no handler exists for the given name on the given site
    */
   public RequestMappingContext getPattern(String handlerName, Site site) {

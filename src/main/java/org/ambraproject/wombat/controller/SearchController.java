@@ -454,10 +454,18 @@ public class SearchController extends WombatController {
         .setSimple(false);
     commonParams.fill(query);
 
+    //todo: from here on out, code is duplicated in simple search. Methodize this.
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
+    Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
+    model.addAttribute("searchFilters", filters);
+
+    Set<SearchFilterItem> activeFilterItems = filters.values().stream()
+        .flatMap((filter) ->
+            commonParams.getActiveFilterItems(filter).stream()).collect(Collectors.toSet());
+    model.addAttribute("activeFilterItems", activeFilterItems);
+
     return site.getKey() + "/ftl/search/searchResults";
   }
 

@@ -28,7 +28,6 @@ public class UserController extends WombatController {
   @Autowired
   private SoaService soaService;
 
-  @Siteless
   @RequestMapping(name = "userLogin", value = "/user/secure/login")
   public ModelAndView redirectToOriginalLink(HttpServletRequest request, @RequestParam("page") String page) {
     // page param should contain the url to the location we want to send the user to

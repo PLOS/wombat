@@ -38,6 +38,19 @@ public enum SingletonSearchFilterType implements SearchFilterType {
     public String getParameterName() {
       return "filterArticleTypes";
     }
+  },
+
+  SECTION {
+
+    @Override
+    public String getFilterValue(String value) {
+      return value;
+    }
+
+    @Override
+    public String getParameterName() {
+      return "filterSections";
+    }
   }
 
 }

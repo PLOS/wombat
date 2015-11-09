@@ -107,13 +107,9 @@ public interface RuntimeConfiguration {
   interface CasConfiguration {
     String getCasUrl();
 
-    String getServiceUrl();
-
     String getLoginUrl();
 
     String getLogoutUrl();
-
-    String getLogoutServiceUrl();
   }
 
   CasConfiguration getCasConfiguration();

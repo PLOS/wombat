@@ -402,11 +402,14 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
-  public String renderArticleMetrics(Model model, @SiteParam Site site,
+  public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
+    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
+    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
+    addCrossPublishedJournals(request, model, site, articleMetadata);
     requestAuthors(model, articleId);
     return site + "/ftl/article/metrics";
   }

@@ -94,8 +94,10 @@ public class Link {
    * @see org.ambraproject.wombat.config.site.Siteless
    */
   public static Factory toSitelessHandler() {
-    return new Factory(Optional.empty(), true);
+    return SITELESS_FACTORY;
   }
+
+  private static final Factory SITELESS_FACTORY = new Factory(Optional.empty(), true);
 
   /**
    * Begin building a link to a page on another site.

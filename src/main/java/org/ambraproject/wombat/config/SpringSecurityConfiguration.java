@@ -118,7 +118,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   AuthenticationDetailsSource<HttpServletRequest,
           ServiceAuthenticationDetails> dynamicServiceResolver() {
     return request -> {
-      final String url = createUrlFromRequest(request, CAS_VALIDATION_URI);
+      String url = getCasValidationPath(request);
       return (ServiceAuthenticationDetails) () -> url;
     };
   }
@@ -190,7 +190,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint() {
       @Override
       protected String createServiceUrl(final HttpServletRequest request, final HttpServletResponse response) {
-        return createUrlFromRequest(request, CAS_VALIDATION_URI);
+        return getCasValidationPath(request);
       }
     };
     casAuthenticationEntryPoint.setLoginUrl(runtimeConfiguration.getCasConfiguration().getLoginUrl());
@@ -198,15 +198,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     return casAuthenticationEntryPoint;
   }
 
-  private String createUrlFromRequest(HttpServletRequest request, String path){
-    ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
+  private String getCasValidationPath(HttpServletRequest request) {
     validateHostname(request);
-    StringBuilder sb = new StringBuilder(request.getScheme()).append("://");
-    sb.append(clientEndpoint.getHostname());
-    sb.append((clientEndpoint.getPort().isPresent() ? (":" + clientEndpoint.getPort().getAsInt()) : ""));
-    sb.append(request.getContextPath());
-    sb.append(path.startsWith("/") ? path : sb.append("/").append(path));
-    return sb.toString();
+    return Link.toSitelessHandler().toPath(CAS_VALIDATION_URI).get(request);
   }
 
   private void validateHostname(HttpServletRequest request) {

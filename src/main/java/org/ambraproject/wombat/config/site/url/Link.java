@@ -88,7 +88,8 @@ public class Link {
 
   /**
    * Begin building a link to a siteless handler. The returned factory object will throw exceptions if {@link
-   * Factory#toPath} is called, or if {@link Factory#toPattern} is called for a handler that is not siteless.
+   * Factory#toPattern} is called for a handler that is not siteless, and will silently link to any path with no site
+   * token if {@link Factory#toPath} is called.
    *
    * @see org.ambraproject.wombat.config.site.Siteless
    */
@@ -131,9 +132,6 @@ public class Link {
      * @param path the path to link to
      */
     public Link toPath(String path) {
-      if (!site.isPresent()) {
-        throw new IllegalStateException("Cannot link directly to paths with a 'toSitelessHandler' Factory");
-      }
       return new Link(site, path, isAbsolute);
     }
 

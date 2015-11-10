@@ -393,6 +393,25 @@ public class ArticleController extends WombatController {
   }
 
   /**
+   * Serves the article metrics tab content for an article.
+   *
+   * @param model     data to pass to the view
+   * @param site      current site
+   * @param articleId specifies the article
+   * @return path to the template
+   * @throws IOException
+   */
+  @RequestMapping(name = "articleMetrics", value = "/article/metrics")
+  public String renderArticleMetrics(Model model, @SiteParam Site site,
+                                     @RequestParam("id") String articleId) throws IOException {
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateArticleVisibility(site, articleMetadata);
+    model.addAttribute("article", articleMetadata);
+    requestAuthors(model, articleId);
+    return site + "/ftl/article/metrics";
+  }
+
+  /**
    * Loads article metadata from the SOA layer.
    *
    * @param articleId DOI identifying the article

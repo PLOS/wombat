@@ -1,8 +1,12 @@
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.util.ClientEndpoint;
 import org.apache.commons.io.Charsets;
 import org.jasig.cas.client.session.SingleSignOutFilter;
@@ -148,19 +152,15 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         }
       }
 
-      // logout from any CAS server sessions using Single Logout and then return to our logout handler
-      String logoutPath;
-      try {
-        logoutPath = requestMappingContextDictionary.getPattern(LOGOUT_HANDLER_NAME, null).getPattern();
-      } catch (NullPointerException npe) {
-        log.error("Expected to find a siteless logout controller with the name \"{}\". ", LOGOUT_HANDLER_NAME);
-        httpServletResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        return;
-      }
+      validateHostname(httpServletRequest);
+      String logoutServiceUrl = Link.toSitelessHandler()
+          .toPattern(requestMappingContextDictionary, LOGOUT_HANDLER_NAME,
+              ImmutableMap.of(), ImmutableMultimap.of(), ImmutableList.of())
+          .get(httpServletRequest);
+
       httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-      String logoutServiceUrl = createUrlFromRequest(httpServletRequest, logoutPath);
       httpServletResponse.sendRedirect(runtimeConfiguration.getCasConfiguration().getLogoutUrl()
-              .concat("?service=").concat(URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name())));
+          + "?service=" + URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name()));
     };
   }
 
@@ -200,10 +200,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   private String createUrlFromRequest(HttpServletRequest request, String path){
     ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
-    if (!hasValidHostname(clientEndpoint)) {
-      throw new AccessDeniedException(String.format("Attempt to validate against foreign hostname %s. " +
-              "Possible hijack attempt.", clientEndpoint.getHostname()));
-    }
+    validateHostname(request);
     StringBuilder sb = new StringBuilder(request.getScheme()).append("://");
     sb.append(clientEndpoint.getHostname());
     sb.append((clientEndpoint.getPort().isPresent() ? (":" + clientEndpoint.getPort().getAsInt()) : ""));
@@ -212,11 +209,16 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     return sb.toString();
   }
 
-  private boolean hasValidHostname(ClientEndpoint ce) {
-    return siteSet.getSites().stream()
-            .map((Site site) -> site.getRequestScheme().getHostName())
-            .filter(Optional::isPresent)
-            .anyMatch((Optional<String> hostName) -> hostName.get().equals(ce.getHostname()));
+  private void validateHostname(HttpServletRequest request) {
+    ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
+    boolean hasValidHostname = siteSet.getSites().stream()
+        .map((Site site) -> site.getRequestScheme().getHostName())
+        .filter(Optional::isPresent)
+        .anyMatch((Optional<String> hostName) -> hostName.get().equals(clientEndpoint.getHostname()));
+    if (!hasValidHostname) {
+      throw new AccessDeniedException(String.format("Attempt to validate against foreign hostname %s. " +
+              "Possible hijack attempt.", clientEndpoint.getHostname()));
+    }
   }
 
 }

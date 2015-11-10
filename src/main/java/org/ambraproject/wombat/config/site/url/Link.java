@@ -47,7 +47,7 @@ public class Link {
    * @param localSite the site for both the originating page and the link target
    */
   public static Factory toLocalSite(Site localSite) {
-    return new Factory(localSite, false);
+    return new Factory(Optional.of(localSite), false);
   }
 
   /**
@@ -60,7 +60,7 @@ public class Link {
    * @param targetSite the site of the link target
    */
   public static Factory toAbsoluteAddress(Site targetSite) {
-    return new Factory(targetSite, true);
+    return new Factory(Optional.of(targetSite), true);
   }
 
   /**
@@ -83,7 +83,17 @@ public class Link {
               + "(Note: This error can be prevented by configuring a hostname either on every site or none.)",
           foreignSite.getKey(), localSite.getKey(), localHostname.get()));
     }
-    return new Factory(foreignSite, isAbsolute);
+    return new Factory(Optional.of(foreignSite), isAbsolute);
+  }
+
+  /**
+   * Begin building a link to a siteless handler. The returned factory object will throw exceptions if {@link
+   * Factory#toPath} is called, or if {@link Factory#toPattern} is called for a handler that is not siteless.
+   *
+   * @see org.ambraproject.wombat.config.site.Siteless
+   */
+  public static Factory toSitelessHandler() {
+    return new Factory(Optional.empty(), true);
   }
 
   /**
@@ -107,10 +117,10 @@ public class Link {
    * An intermediate builder class.
    */
   public static class Factory {
-    private final Site site;
+    private final Optional<Site> site; // if absent, may link only to siteless handlers
     private final boolean isAbsolute;
 
-    private Factory(Site site, boolean isAbsolute) {
+    private Factory(Optional<Site> site, boolean isAbsolute) {
       this.site = Preconditions.checkNotNull(site);
       this.isAbsolute = isAbsolute;
     }
@@ -121,7 +131,10 @@ public class Link {
      * @param path the path to link to
      */
     public Link toPath(String path) {
-      return new Link(Optional.of(site), path, isAbsolute);
+      if (!site.isPresent()) {
+        throw new IllegalStateException("Cannot link directly to paths with a 'toSitelessHandler' Factory");
+      }
+      return new Link(site, path, isAbsolute);
     }
 
     /**
@@ -135,12 +148,23 @@ public class Link {
      */
     public Link toPattern(RequestMappingContextDictionary requestMappingContextDictionary, String handlerName,
                           Map<String, ?> variables, Multimap<String, ?> queryParameters, List<?> wildcardValues) {
-      RequestMappingContext mapping = requestMappingContextDictionary.getPattern(handlerName, site);
+      RequestMappingContext mapping = requestMappingContextDictionary.getPattern(handlerName, site.orElse(null));
       if (mapping == null) {
-        String message = String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.getKey());
+        String message = site.isPresent()
+            ? String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.get().getKey())
+            : String.format("No siteless handler with name=\"%s\" exists", handlerName);
         throw new IllegalArgumentException(message);
       }
-      Optional<Site> linkSite = mapping.isSiteless() ? Optional.empty() : Optional.of(site);
+
+      final Optional<Site> linkSite;
+      if (mapping.isSiteless()) {
+        linkSite = Optional.empty();
+      } else if (site.isPresent()) {
+        linkSite = site;
+      } else {
+        throw new IllegalStateException("Can link only to Siteless handlers with a 'toSitelessHandler' Factory");
+      }
+
       String path = buildPathFromPattern(mapping.getPattern(), linkSite, variables, queryParameters, wildcardValues);
 
       return new Link(linkSite, path, isAbsolute);

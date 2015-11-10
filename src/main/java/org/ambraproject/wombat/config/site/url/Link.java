@@ -216,7 +216,7 @@ public class Link {
         return this;
       }
 
-      public PatternBuilder addWildcardValues(Object wildcardValue) {
+      public PatternBuilder addWildcardValue(Object wildcardValue) {
         this.wildcardValues.add(wildcardValue);
         return this;
       }

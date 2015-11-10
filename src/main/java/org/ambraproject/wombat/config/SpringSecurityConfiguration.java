@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -41,6 +40,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Configuration
@@ -206,7 +206,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
     StringBuilder sb = new StringBuilder(request.getScheme()).append("://");
     sb.append(clientEndpoint.getHostname());
-    sb.append((clientEndpoint.getPort().isPresent() ? (":" + clientEndpoint.getPort().get()) : ""));
+    sb.append((clientEndpoint.getPort().isPresent() ? (":" + clientEndpoint.getPort().getAsInt()) : ""));
     sb.append(request.getContextPath());
     sb.append(path.startsWith("/") ? path : sb.append("/").append(path));
     return sb.toString();

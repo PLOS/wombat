@@ -1,10 +1,9 @@
 package org.ambraproject.wombat.config.site.url;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Multimap;
-import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.RequestMappingContext;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.ClientEndpoint;
@@ -18,23 +17,24 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * A link to a site page.
- * <p/>
+ * <p>
  * An instance of this class encapsulates a path to the linked page and the site to which the linked page belongs. It
  * depends on an {@code HttpServletRequest} object in order to build an {@code href} value to appear in the
  * corresponding response.
  */
 public class Link {
 
-  private final Site site;
+  private final Optional<Site> site; // absent if the path is for a siteless handler
   private final String path;
   private final boolean isAbsolute;
 
-  private Link(Site site, String path, boolean isAbsolute) {
+  private Link(Optional<Site> site, String path, boolean isAbsolute) {
     this.site = Preconditions.checkNotNull(site);
     this.path = Preconditions.checkNotNull(path);
     this.isAbsolute = isAbsolute;
@@ -52,7 +52,7 @@ public class Link {
 
   /**
    * Begin building a link to an absolute address.
-   * <p/>
+   * <p>
    * This should be used only if the resulting link will appear in a context outside of a local site, such as in a
    * downloadable document file. If the link will appear on a site page served by this application, instead use {@link
    * #toLocalSite} or {@link #toForeignSite} with a correct {@code localSite} argument.
@@ -121,7 +121,7 @@ public class Link {
      * @param path the path to link to
      */
     public Link toPath(String path) {
-      return new Link(site, path, isAbsolute);
+      return new Link(Optional.of(site), path, isAbsolute);
     }
 
     /**
@@ -140,15 +140,17 @@ public class Link {
         String message = String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.getKey());
         throw new IllegalArgumentException(message);
       }
-      String path = buildPathFromMapping(mapping, site, variables, queryParameters, wildcardValues);
-      return toPath(path);
+      Optional<Site> linkSite = mapping.isSiteless() ? Optional.empty() : Optional.of(site);
+      String path = buildPathFromPattern(mapping.getPattern(), linkSite, variables, queryParameters, wildcardValues);
+
+      return new Link(linkSite, path, isAbsolute);
     }
   }
 
   // Match path wildcards of one or two asterisks
   private static final Pattern WILDCARD = Pattern.compile("\\*\\*?");
 
-  private static String buildPathFromMapping(RequestMappingContext mapping, Site site,
+  private static String buildPathFromPattern(String pattern, Optional<Site> site,
                                              Map<String, ?> variables,
                                              Multimap<String, ?> queryParameters,
                                              List<?> wildcardValues) {
@@ -156,9 +158,7 @@ public class Link {
     Preconditions.checkNotNull(variables);
     Preconditions.checkNotNull(queryParameters);
 
-    String pattern = mapping.getPattern();
-
-    if (site.getRequestScheme().hasPathToken()) {
+    if (site.isPresent() && site.get().getRequestScheme().hasPathToken()) {
       if (pattern.equals("/*") || pattern.startsWith("/*/")) {
         pattern = pattern.substring(2);
       } else {
@@ -175,15 +175,12 @@ public class Link {
 
   private static String fillVariables(String path, final Map<String, ?> variables) {
     UriComponentsBuilder builder = ServletUriComponentsBuilder.fromPath(path);
-    UriComponents.UriTemplateVariables uriVariables = new UriComponents.UriTemplateVariables() {
-      @Override
-      public Object getValue(String name) {
-        Object value = variables.get(name);
-        if (value == null) {
-          throw new IllegalArgumentException("Missing required parameter " + name);
-        }
-        return value;
+    UriComponents.UriTemplateVariables uriVariables = (String name) -> {
+      Object value = variables.get(name);
+      if (value == null) {
+        throw new IllegalArgumentException("Missing required parameter " + name);
       }
+      return value;
     };
 
     return builder.build().expand(uriVariables).encode().toString();
@@ -246,7 +243,7 @@ public class Link {
   /**
    * Build a link from this object. The returned value may be either an absolute link (full URL) or a relative link
    * (path beginning with "/") depending on the sites used to set up this object.
-   * <p/>
+   * <p>
    * The returned path is suitable as an {@code href} value to be used in the response to the {@code request} argument.
    * The argument value must resolve to the local site given to set up this object.
    *
@@ -260,7 +257,7 @@ public class Link {
     }
     sb.append(request.getContextPath()).append('/');
 
-    Optional<String> pathToken = site.getRequestScheme().getPathToken();
+    Optional<String> pathToken = site.flatMap(s -> s.getRequestScheme().getPathToken());
     if (pathToken.isPresent()) {
       sb.append(pathToken.get()).append('/');
     }
@@ -276,13 +273,12 @@ public class Link {
 
     ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
 
-    Optional<String> targetHostname = site.getRequestScheme().getHostName();
-    sb.append(targetHostname.or(clientEndpoint.getHostname()));
+    Optional<String> targetHostname = site.flatMap(s -> s.getRequestScheme().getHostName());
+    sb.append(targetHostname.orElse(clientEndpoint.getHostname()));
 
-    Optional<Integer> serverPort = clientEndpoint.getPort();
-    if (serverPort.isPresent()) {
-      sb.append(':').append(serverPort.get());
-    }
+    clientEndpoint.getPort().ifPresent(serverPort -> {
+      sb.append(':').append(serverPort);
+    });
   }
 
 

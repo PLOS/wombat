@@ -1,8 +1,5 @@
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -154,8 +151,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
       validateHostname(httpServletRequest);
       String logoutServiceUrl = Link.toSitelessHandler()
-          .toPattern(requestMappingContextDictionary, LOGOUT_HANDLER_NAME,
-              ImmutableMap.of(), ImmutableMultimap.of(), ImmutableList.of())
+          .toPattern(requestMappingContextDictionary, LOGOUT_HANDLER_NAME).build()
           .get(httpServletRequest);
 
       httpServletResponse.setStatus(HttpServletResponse.SC_OK);

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.config.site.url;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.RequestMappingContext;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
@@ -14,9 +15,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -168,6 +172,58 @@ public class Link {
       String path = buildPathFromPattern(mapping.getPattern(), linkSite, variables, queryParameters, wildcardValues);
 
       return new Link(linkSite, path, isAbsolute);
+    }
+
+    public PatternBuilder toPattern(RequestMappingContextDictionary requestMappingContextDictionary, String handlerName) {
+      return new PatternBuilder(requestMappingContextDictionary, handlerName);
+    }
+
+    public class PatternBuilder {
+      private final RequestMappingContextDictionary requestMappingContextDictionary;
+      private final String handlerName;
+
+      private final Map<String, Object> pathVariables = new LinkedHashMap<>();
+      private final Multimap<String, Object> queryParameters = LinkedListMultimap.create();
+      private final List<Object> wildcardValues = new ArrayList<>();
+
+      private PatternBuilder(RequestMappingContextDictionary requestMappingContextDictionary, String handlerName) {
+        this.requestMappingContextDictionary = Objects.requireNonNull(requestMappingContextDictionary);
+        this.handlerName = Objects.requireNonNull(handlerName);
+      }
+
+      public PatternBuilder addPathVariables(Map<String, ?> pathVariables) {
+        this.pathVariables.putAll(pathVariables);
+        return this;
+      }
+
+      public PatternBuilder addPathVariable(String key, Object value) {
+        this.pathVariables.put(key, value);
+        return this;
+      }
+
+      public PatternBuilder addQueryParameters(Multimap<String, ?> queryParameters) {
+        this.queryParameters.putAll(queryParameters);
+        return this;
+      }
+
+      public PatternBuilder addQueryParameter(String key, Object value) {
+        this.queryParameters.put(key, value);
+        return this;
+      }
+
+      public PatternBuilder addWildcardValues(List<?> wildcardValues) {
+        this.wildcardValues.addAll(wildcardValues);
+        return this;
+      }
+
+      public PatternBuilder addWildcardValues(Object wildcardValue) {
+        this.wildcardValues.add(wildcardValue);
+        return this;
+      }
+
+      public Link build() {
+        return toPattern(requestMappingContextDictionary, handlerName, pathVariables, queryParameters, wildcardValues);
+      }
     }
   }
 

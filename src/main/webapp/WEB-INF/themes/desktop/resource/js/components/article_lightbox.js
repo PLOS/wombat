@@ -248,7 +248,7 @@
     $FV.abst_pane = $('<div id="lightbox-abst" class="pane" />');
     var hdr, lnk_pdf, pdf_href, $abst_info, $abst_content = $('<div class="abstract" />');
     // hdr = $()
-    if (abstractText.size() == 0) {
+    if (abstractText.length == 0) {
       // There is no abstract. Hide the "view abstract" button created in FVBuildHdr.
       $FV.hdr.find('li.abst').hide();
     }

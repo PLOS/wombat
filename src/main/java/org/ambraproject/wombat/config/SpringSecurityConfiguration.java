@@ -1,9 +1,9 @@
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.util.ClientEndpoint;
 import org.apache.commons.io.Charsets;
 import org.jasig.cas.client.session.SingleSignOutFilter;
@@ -41,6 +41,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Configuration
@@ -114,7 +115,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   AuthenticationDetailsSource<HttpServletRequest,
           ServiceAuthenticationDetails> dynamicServiceResolver() {
     return request -> {
-      final String url = createUrlFromRequest(request, CAS_VALIDATION_URI);
+      String url = getCasValidationPath(request);
       return (ServiceAuthenticationDetails) () -> url;
     };
   }
@@ -148,19 +149,14 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         }
       }
 
-      // logout from any CAS server sessions using Single Logout and then return to our logout handler
-      String logoutPath;
-      try {
-        logoutPath = requestMappingContextDictionary.getPattern(LOGOUT_HANDLER_NAME, null).getPattern();
-      } catch (NullPointerException npe) {
-        log.error("Expected to find a siteless logout controller with the name \"{}\". ", LOGOUT_HANDLER_NAME);
-        httpServletResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        return;
-      }
+      validateHostname(httpServletRequest);
+      String logoutServiceUrl = Link.toSitelessHandler()
+          .toPattern(requestMappingContextDictionary, LOGOUT_HANDLER_NAME).build()
+          .get(httpServletRequest);
+
       httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-      String logoutServiceUrl = createUrlFromRequest(httpServletRequest, logoutPath);
       httpServletResponse.sendRedirect(runtimeConfiguration.getCasConfiguration().getLogoutUrl()
-              .concat("?service=").concat(URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name())));
+          + "?service=" + URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name()));
     };
   }
 
@@ -190,7 +186,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint() {
       @Override
       protected String createServiceUrl(final HttpServletRequest request, final HttpServletResponse response) {
-        return createUrlFromRequest(request, CAS_VALIDATION_URI);
+        return getCasValidationPath(request);
       }
     };
     casAuthenticationEntryPoint.setLoginUrl(runtimeConfiguration.getCasConfiguration().getLoginUrl());
@@ -198,25 +194,21 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     return casAuthenticationEntryPoint;
   }
 
-  private String createUrlFromRequest(HttpServletRequest request, String path){
+  private String getCasValidationPath(HttpServletRequest request) {
+    validateHostname(request);
+    return Link.toSitelessHandler().toPath(CAS_VALIDATION_URI).get(request);
+  }
+
+  private void validateHostname(HttpServletRequest request) {
     ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
-    if (!hasValidHostname(clientEndpoint)) {
+    boolean hasValidHostname = siteSet.getSites().stream()
+        .map((Site site) -> site.getRequestScheme().getHostName())
+        .filter(Optional::isPresent)
+        .anyMatch((Optional<String> hostName) -> hostName.get().equals(clientEndpoint.getHostname()));
+    if (!hasValidHostname) {
       throw new AccessDeniedException(String.format("Attempt to validate against foreign hostname %s. " +
               "Possible hijack attempt.", clientEndpoint.getHostname()));
     }
-    StringBuilder sb = new StringBuilder(request.getScheme()).append("://");
-    sb.append(clientEndpoint.getHostname());
-    sb.append((clientEndpoint.getPort().isPresent() ? (":" + clientEndpoint.getPort().get()) : ""));
-    sb.append(request.getContextPath());
-    sb.append(path.startsWith("/") ? path : sb.append("/").append(path));
-    return sb.toString();
-  }
-
-  private boolean hasValidHostname(ClientEndpoint ce) {
-    return siteSet.getSites().stream()
-            .map((Site site) -> site.getRequestScheme().getHostName())
-            .filter(Optional::isPresent)
-            .anyMatch((Optional<String> hostName) -> hostName.get().equals(ce.getHostname()));
   }
 
 }

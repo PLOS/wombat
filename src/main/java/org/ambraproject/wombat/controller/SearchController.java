@@ -343,8 +343,7 @@ public class SearchController extends WombatController {
      * listed in {@link AdvancedSearchTerms}
      */
     private boolean isSimpleSearch(String query) {
-        return Arrays.stream(AdvancedSearchTerms.class.getEnumConstants())
-            .noneMatch(e -> query.contains(e.text));
+        return Arrays.stream(AdvancedSearchTerms.values()).noneMatch(e -> query.contains(e.text));
     }
   }
 

@@ -124,11 +124,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
       }
 
       @Override
-      public String getServiceUrl() {
-        return null;
-      }
-
-      @Override
       public String getLoginUrl() {
         return null;
       }
@@ -138,10 +133,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
         return null;
       }
 
-      @Override
-      public String getLogoutServiceUrl() {
-        return null;
-      }
     };
   }
 }

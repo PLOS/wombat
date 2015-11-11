@@ -11,7 +11,6 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.Charsets;
 import com.google.common.base.Objects;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableSet;
@@ -20,10 +19,8 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -137,35 +134,13 @@ public class YamlConfiguration implements RuntimeConfiguration {
     }
 
     @Override
-    public String getServiceUrl() {
-      return (input.cas == null) ? null : input.cas.serviceUrl;
-    }
-
-    @Override
     public String getLoginUrl() {
       return (input.cas == null) ? null : input.cas.loginUrl;
     }
 
     @Override
-    public String getLogoutUrl() {
-      if (input.cas == null || Strings.isNullOrEmpty(input.cas.logoutUrl)) {
-        return null;
-      }
-
-      if (Strings.isNullOrEmpty(input.cas.logoutServiceUrl)) {
-        return input.cas.logoutUrl;
-      } else {
-        try {
-          return input.cas.logoutUrl + "?service=" + URLEncoder.encode(input.cas.logoutServiceUrl, Charsets.UTF_8.name());
-        } catch (UnsupportedEncodingException e) {
-          throw new RuntimeException(e);
-        }
-      }
-    }
-
-    @Override
-    public String getLogoutServiceUrl() {
-      return (input.cas == null) ? null : input.cas.logoutServiceUrl;
+    public String getLogoutUrl()  {
+      return (input.cas == null) ? null : input.cas.logoutUrl;
     }
   };
 
@@ -368,10 +343,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
 
   public static class CasConfigurationInput {
     private String casUrl;
-    private String serviceUrl;
     private String loginUrl;
     private String logoutUrl;
-    private String logoutServiceUrl;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -379,14 +352,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setCasUrl(String casUrl) {
       this.casUrl = casUrl;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setServiceUrl(String serviceUrl) {
-      this.serviceUrl = serviceUrl;
     }
 
     /**
@@ -405,12 +370,5 @@ public class YamlConfiguration implements RuntimeConfiguration {
       this.logoutUrl = logoutUrl;
     }
 
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setLogoutServiceUrl(String logoutServiceUrl) {
-      this.logoutServiceUrl = logoutServiceUrl;
-    }
   }
 }

@@ -396,7 +396,7 @@ public class SearchController extends WombatController {
      * listed in {@link AdvancedSearchTerms}
      */
     private boolean isSimpleSearch(String query) {
-        return Arrays.stream(AdvancedSearchTerms.values()).noneMatch(e -> query.contains(e.text));
+      return Arrays.stream(AdvancedSearchTerms.values()).noneMatch(e -> query.contains(e.text));
     }
   }
 
@@ -497,7 +497,6 @@ public class SearchController extends WombatController {
 
   /**
    * Uses {@link #search(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
->>>>>>> master
    * browser
    *
    * @param request HttpServletRequest

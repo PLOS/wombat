@@ -45,7 +45,7 @@ public abstract class WombatController {
    * from users during development. Return a 404 if the given feature is not enabled.
    * @param feature
    */
-  protected void assertDevFeatureEnabled(String feature) {
+  protected void enforceDevFeature(String feature) {
     if (!runtimeConfiguration.getEnabledDevFeatures().contains(feature)){
       throw new NotFoundException("Required dev feature is not enabled");
     }

@@ -404,7 +404,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
-    assertDevFeatureEnabled("metricsTab");     // TODO: remove when ready to expose page in prod
+    enforceDevFeature("metricsTab");     // TODO: remove when ready to expose page in prod
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);

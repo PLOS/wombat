@@ -38,6 +38,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
@@ -73,6 +74,46 @@ public class SearchController extends WombatController {
    */
   @VisibleForTesting
   static final class CommonParams {
+
+    private enum AdvancedSearchTerms {
+      EVERYTHING("everything:"),
+      TITLE("title:"),
+      AUTHOR("author:"),
+      BODY("body:"),
+      ABSTRACT("abstract:"),
+      SUBJECT("subject:"),
+      PUBLICATION_DATE("publication_date:"),
+      ACCEPTED_DATE("accepted_date:"),
+      ID("id:"),
+      ARTICLE_TYPE("article_type:"),
+      AUTHOR_AFFILIATE("author_affiliate:"),
+      COMPETING_INTEREST("competing_interest:"),
+      CONCLUSIONS("conclusions:"),
+      EDITOR("editor:"),
+      ELOCATION_ID("elocation_id:"),
+      FIGURE_TABLE_CAPTION("figure_table_caption:"),
+      FINANCIAL_DISCLOSURE("financial_disclosure:"),
+      INTRODUCTION("introduction:"),
+      ISSUE("issue:"),
+      MATERIALS_AND_METHODS("materials_and_methods:"),
+      RECEIVED_DATE("received_date:"),
+      REFERENCE("reference:"),
+      RESULTS_AND_DISCUSSION("results_and_discussion:"),
+      SUPPORTING_INFORMATION("supporting_information:"),
+      TRIAL_REGISTRATION("trial_registration:"),
+      VOLUME("volume:");
+
+      private final String text;
+
+      private AdvancedSearchTerms(final String text) {
+        this.text = text;
+      }
+
+      @Override
+      public String toString() {
+        return text;
+      }
+    }
 
     /**
      * The number of the first desired result (zero-based) that will be passed to solr. Calculated from the page and
@@ -295,6 +336,15 @@ public class SearchController extends WombatController {
           .setSortOrder(sortOrder)
           .setDateRange(dateRange);
     }
+
+    /**
+     * @param query the incoming query string
+     * @return True if the query string does not contain any advanced search terms,
+     * listed in {@link AdvancedSearchTerms}
+     */
+    private boolean isSimpleSearch(String query) {
+        return Arrays.stream(AdvancedSearchTerms.values()).noneMatch(e -> query.contains(e.text));
+    }
   }
 
   /**
@@ -340,7 +390,7 @@ public class SearchController extends WombatController {
   // of individually listing the params.
 
   /**
-   * Performs a "simple" search, where the q parameter's value is a single search term.
+   * Performs a 'simple' or 'advanced' search, where the q parameter's value is a single search term.
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
@@ -350,16 +400,17 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume", "!subject"})
-  public String simpleSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                             @RequestParam MultiValueMap<String, String> params) throws IOException {
+  public String search(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
     addOptionsToModel(model);
 
+    String queryString = params.getFirst("q");
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setQuery(params.getFirst("q"))
-        .setSimple(true);
+        .setQuery(queryString)
+        .setSimple(commonParams.isSimpleSearch(queryString));
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
@@ -369,38 +420,21 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Performs an "advanced" search, where the unformattedQuery parameter may have a boolean combination of search terms.
-   * The form that generates this URL is still served by ambra.
-   *
-   * @param request HttpServletRequest
-   * @param model   model that will be passed to the template
-   * @param site    site the request originates from
-   * @param params  all URL parameters
-   * @return String indicating template location
-   * @throws IOException
+   * This is a catch for advanced searches originating from Old Ambra. It transforms the
+   * "unformattedQuery" param into "q" which is used by Wombat's new search.
+   * todo: remove this method once Old Ambra advanced search is destroyed
    */
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
                                @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-    addOptionsToModel(model);
-
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setQuery(params.getFirst("unformattedQuery"))
-        .setSimple(false);
-    commonParams.fill(query);
-
-    ArticleSearchQuery queryObj = query.build();
-    Map<?, ?> searchResults = solrSearchService.search(queryObj);
-    model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
-    return site.getKey() + "/ftl/search/searchResults";
+    String queryString = params.getFirst("unformattedQuery");
+    params.remove("unformattedQuery");
+    params.add("q", queryString);
+    return search(request, model, site, params);
   }
 
   /**
-   * Uses {@link #simplSearch(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
+   * Uses {@link #search(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
    * browser
    *
    * @param request HttpServletRequest
@@ -414,7 +448,7 @@ public class SearchController extends WombatController {
   public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam MultiValueMap<String, String> params) throws IOException {
     params.add("q", "");
-    return simpleSearch(request, model, site, params);
+    return search(request, model, site, params);
   }
 
   // Requests coming from the advanced search form with URLs beginning with "/search/quick/" will always

@@ -10,6 +10,8 @@ public class SearchFilter {
 
   private final ImmutableList<SearchFilterItem> searchFilterResult;
 
+  private Set<SearchFilterItem> activeFilterItems;
+
   private final String filterTypeMapKey;
 
   public SearchFilter(List<SearchFilterItem> searchFilterResult, String filterTypeMapKey) {
@@ -25,10 +27,16 @@ public class SearchFilter {
     return filterTypeMapKey;
   }
 
-  public Set<SearchFilterItem> getActiveFilterItems(List<String> filterDisplayNames) {
-    return getSearchFilterResult().stream()
+  public Set<SearchFilterItem> getActiveFilterItems() {
+    return activeFilterItems;
+  }
+
+  public Set<SearchFilterItem> parseActiveFilterItems(List<String> filterDisplayNames) {
+    Set<SearchFilterItem> activeFilterItems = getSearchFilterResult().stream()
         .filter((SearchFilterItem filterItem) -> isFilterItemActive(filterDisplayNames, filterItem))
         .collect(Collectors.toSet());
+    this.activeFilterItems = activeFilterItems;
+    return activeFilterItems;
   }
 
   private boolean isFilterItemActive(List<String> filterDisplayNames,

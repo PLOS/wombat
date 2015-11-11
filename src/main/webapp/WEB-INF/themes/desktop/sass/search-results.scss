@@ -15,7 +15,7 @@
     }
 
     aside {
-      @include plos-grid-column($pixelwidth: 180);
+      @include plos-grid-column($pixelwidth: 180, $float: right, $gutter:none);
     }
 
     .search-results-controls {
@@ -484,6 +484,7 @@ $pagination-height: 24px;
 }
 
 // Right-hand aside (currently just contains two disabled controls).
+$disabled-filter-size: rem-calc(28); // when we redo the search I'll make sure all the filters and buttons are the same size.
 
 @mixin search-disabled-control {
   @extend %rounded-default;
@@ -491,33 +492,40 @@ $pagination-height: 24px;
   background: $clr-btn-disabled;
   color: $grey-light;
   cursor: default;
+  vertical-align: top;
+  height: $disabled-filter-size;
+  line-height: $disabled-filter-size;
 }
 
 @mixin search-disabled-tooltip {
   @include js-tooltip-target();
   @include tooltip($width: 350px, $tooltip-padding: $pad-xsmall);
-  top: 20px;
   text-align: center;
   background-color: $white;
   color: $grey-med;
   font-family: $font-face-plain;
+  top: rem-calc(10);
+
 }
 
 $search-icon-pad-default: 8;
 
 .search-alert {
   @include search-disabled-control;
-  display: inline;
-  padding: rem-calc($search-icon-pad-default + 1 $search-icon-pad-default $search-icon-pad-default - 3 $search-icon-pad-default);
+  padding: rem-calc(0 $search-icon-pad-default);
+  display: inline-block;
   font-size: $txt-size-xsmall;
   font-weight: bold;
   text-transform: uppercase;
+
 
   &:after {
     @extend .icon-bell;
     padding-left: rem-calc($search-icon-pad-default);
     font-size: $txt-size-large;
     font-weight: normal;
+    line-height:  $txt-size-large;
+    vertical-align: middle;
   }
 
   .search-alert-tooltip {
@@ -531,8 +539,10 @@ $search-icon-pad-default: 8;
 .search-feed {
   @extend .icon-rss;
   @include search-disabled-control;
-  line-height: 85%;
-  padding: rem-calc($search-icon-pad-default - 4 $search-icon-pad-default - 1 $search-icon-pad-default - 3 $search-icon-pad-default - 1);
+  min-width: $disabled-filter-size;
+  text-align: center;
+  display: inline-block;
+  font-size: $txt-size-large;
 
   .search-feed-tooltip {
     @include search-disabled-tooltip;

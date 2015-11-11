@@ -484,7 +484,7 @@ $pagination-height: 24px;
 }
 
 // Right-hand aside (currently just contains two disabled controls).
-$disabled-filter-size: rem-calc(28); // when we redo the search I'll make sure all the filters adn buttons are the same size.
+$disabled-filter-size: rem-calc(28); // when we redo the search I'll make sure all the filters and buttons are the same size.
 
 @mixin search-disabled-control {
   @extend %rounded-default;

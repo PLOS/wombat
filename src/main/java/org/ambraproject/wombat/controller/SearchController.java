@@ -17,14 +17,9 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableListMultimap;
-import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.model.JournalFilterType;
-import org.ambraproject.wombat.model.SearchFilter;
-import org.ambraproject.wombat.model.SearchFilterItem;
-import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -43,6 +38,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
@@ -50,8 +46,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Controller class for user-initiated searches.
@@ -80,6 +74,46 @@ public class SearchController extends WombatController {
    */
   @VisibleForTesting
   static final class CommonParams {
+
+    private enum AdvancedSearchTerms {
+      EVERYTHING("everything:"),
+      TITLE("title:"),
+      AUTHOR("author:"),
+      BODY("body:"),
+      ABSTRACT("abstract:"),
+      SUBJECT("subject:"),
+      PUBLICATION_DATE("publication_date:"),
+      ACCEPTED_DATE("accepted_date:"),
+      ID("id:"),
+      ARTICLE_TYPE("article_type:"),
+      AUTHOR_AFFILIATE("author_affiliate:"),
+      COMPETING_INTEREST("competing_interest:"),
+      CONCLUSIONS("conclusions:"),
+      EDITOR("editor:"),
+      ELOCATION_ID("elocation_id:"),
+      FIGURE_TABLE_CAPTION("figure_table_caption:"),
+      FINANCIAL_DISCLOSURE("financial_disclosure:"),
+      INTRODUCTION("introduction:"),
+      ISSUE("issue:"),
+      MATERIALS_AND_METHODS("materials_and_methods:"),
+      RECEIVED_DATE("received_date:"),
+      REFERENCE("reference:"),
+      RESULTS_AND_DISCUSSION("results_and_discussion:"),
+      SUPPORTING_INFORMATION("supporting_information:"),
+      TRIAL_REGISTRATION("trial_registration:"),
+      VOLUME("volume:");
+
+      private final String text;
+
+      private AdvancedSearchTerms(final String text) {
+        this.text = text;
+      }
+
+      @Override
+      public String toString() {
+        return text;
+      }
+    }
 
     /**
      * The number of the first desired result (zero-based) that will be passed to solr. Calculated from the page and
@@ -216,24 +250,7 @@ public class SearchController extends WombatController {
       // The normal way to get request parameters from a freemarker template is to use the
       // RequestParameters variable, but due to a bug in freemarker, this does not handle
       // multi-valued parameters correctly.  See http://sourceforge.net/p/freemarker/bugs/324/
-      Map<String, String[]> parameterMap = request.getParameterMap();
-      model.addAttribute("parameterMap", parameterMap);
-
-      Map<String, String[]> clearDateFilterParams = new HashMap<>();
-      clearDateFilterParams.putAll(parameterMap);
-      clearDateFilterParams.remove("filterStartDate");
-      clearDateFilterParams.remove("filterEndDate");
-      model.addAttribute("dateClearParams", clearDateFilterParams);
-
-      Map<String, String[]> clearAllFilterParams = new HashMap<>();
-      clearAllFilterParams.putAll(clearDateFilterParams);
-      clearAllFilterParams.remove("filterJournals");
-      clearAllFilterParams.remove("filterSubjects");
-      clearAllFilterParams.remove("filterAuthors");
-      clearAllFilterParams.remove("filterSections");
-      clearAllFilterParams.remove("filterArticleTypes");
-      model.addAttribute("clearAllFilterParams", clearAllFilterParams);
-
+      model.addAttribute("parameterMap", request.getParameterMap());
     }
 
     private String getSingleParam(Map<String, List<String>> params, String key, String defaultValue) {
@@ -317,36 +334,16 @@ public class SearchController extends WombatController {
           .setStart(start)
           .setRows(resultsPerPage)
           .setSortOrder(sortOrder)
-          .setDateRange(dateRange)
-          .setStartDate(startDate)
-          .setEndDate(endDate);
+          .setDateRange(dateRange);
     }
 
-    private static final ImmutableMap<String, Function<CommonParams, List<String>>> FILTER_KEYS_TO_FIELDS =
-        ImmutableMap.<String, Function<CommonParams, List<String>>>builder()
-            .put(JournalFilterType.JOURNAL_FILTER_MAP_KEY, params -> params.journalKeys)
-            .put(SingletonSearchFilterType.ARTICLE_TYPE.getFilterMapKey(), params -> params.articleTypes)
-            .put(SingletonSearchFilterType.SUBJECT_AREA.getFilterMapKey(), params -> params.subjectList)
-            .put(SingletonSearchFilterType.AUTHOR.getFilterMapKey(), params -> params.authors)
-            .put(SingletonSearchFilterType.SECTION.getFilterMapKey(), params -> params.sections)
-            .build();
-
     /**
-     * Examine incoming URL parameters to see which filter items are active. CommonParams contains
-     * journalKeys, articleTypes, subjectList, authors, and sections parsed from request params.
-     * Check each string in these lists against their applicable filters.
-     *
-     * @param filter the search filter to examine
-     * @return Set<SearchFilterItem> representing active filter items
+     * @param query the incoming query string
+     * @return True if the query string does not contain any advanced search terms,
+     * listed in {@link AdvancedSearchTerms}
      */
-    public Set<SearchFilterItem> getActiveFilterItems(SearchFilter filter) {
-
-      String filterMapKey = filter.getFilterTypeMapKey();
-      Function<CommonParams, List<String>> getter = FILTER_KEYS_TO_FIELDS.get(filterMapKey);
-      if (getter == null) {
-        throw new RuntimeException("Search Filter not configured with sane map key: " + filterMapKey);
-      }
-      return filter.getActiveFilterItems(getter.apply(this));
+    private boolean isSimpleSearch(String query) {
+        return Arrays.stream(AdvancedSearchTerms.values()).noneMatch(e -> query.contains(e.text));
     }
   }
 
@@ -376,10 +373,8 @@ public class SearchController extends WombatController {
     builder.putAll("filterAuthors", q.getAuthors());
     builder.putAll("filterSections", q.getSections());
     builder.putAll("filterArticleTypes", q.getArticleTypes());
-    builder.putAll("filterStartDate", q.getStartDate() == null ? "" : q.getStartDate());
-    builder.putAll("filterEndDate", q.getEndDate() == null ? "" : q.getEndDate());
 
-    // TODO: Support dateRange. Note this is different from startDate and endDate
+    // TODO: Support dateRange
     // TODO: Support sortOrder
 
     for (Map.Entry<String, String> entry : q.getRawParameters().entrySet()) {
@@ -395,7 +390,7 @@ public class SearchController extends WombatController {
   // of individually listing the params.
 
   /**
-   * Performs a "simple" search, where the q parameter's value is a single search term.
+   * Performs a 'simple' or 'advanced' search, where the q parameter's value is a single search term.
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
@@ -405,72 +400,41 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume", "!subject"})
-  public String simpleSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                             @RequestParam MultiValueMap<String, String> params) throws IOException {
+  public String search(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
     addOptionsToModel(model);
 
+    String queryString = params.getFirst("q");
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setQuery(params.getFirst("q"))
-        .setSimple(true);
+        .setQuery(queryString)
+        .setSimple(commonParams.isSimpleSearch(queryString));
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
-    model.addAttribute("searchFilters", filters);
-
-    Set<SearchFilterItem> activeFilterItems = filters.values().stream()
-        .flatMap((filter) ->
-            commonParams.getActiveFilterItems(filter).stream()).collect(Collectors.toSet());
-    model.addAttribute("activeFilterItems", activeFilterItems);
-
+    model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
     return site.getKey() + "/ftl/search/searchResults";
   }
 
   /**
-   * Performs an "advanced" search, where the unformattedQuery parameter may have a boolean combination of search terms.
-   * The form that generates this URL is still served by ambra.
-   *
-   * @param request HttpServletRequest
-   * @param model   model that will be passed to the template
-   * @param site    site the request originates from
-   * @param params  all URL parameters
-   * @return String indicating template location
-   * @throws IOException
+   * This is a catch for advanced searches originating from Old Ambra. It transforms the
+   * "unformattedQuery" param into "q" which is used by Wombat's new search.
+   * todo: remove this method once Old Ambra advanced search is destroyed
    */
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
                                @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-    addOptionsToModel(model);
-
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setQuery(params.getFirst("unformattedQuery"))
-        .setSimple(false);
-    commonParams.fill(query);
-
-    //todo: from here on out, code is duplicated in simple search. Methodize this.
-    ArticleSearchQuery queryObj = query.build();
-    Map<?, ?> searchResults = solrSearchService.search(queryObj);
-    model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
-    model.addAttribute("searchFilters", filters);
-
-    Set<SearchFilterItem> activeFilterItems = filters.values().stream()
-        .flatMap((filter) ->
-            commonParams.getActiveFilterItems(filter).stream()).collect(Collectors.toSet());
-    model.addAttribute("activeFilterItems", activeFilterItems);
-
-    return site.getKey() + "/ftl/search/searchResults";
+    String queryString = params.getFirst("unformattedQuery");
+    params.remove("unformattedQuery");
+    params.add("q", queryString);
+    return search(request, model, site, params);
   }
 
   /**
-   * Uses {@link #simpleSearch(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
+   * Uses {@link #search(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
    * browser
    *
    * @param request HttpServletRequest
@@ -484,7 +448,7 @@ public class SearchController extends WombatController {
   public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam MultiValueMap<String, String> params) throws IOException {
     params.add("q", "");
-    return simpleSearch(request, model, site, params);
+    return search(request, model, site, params);
   }
 
   // Requests coming from the advanced search form with URLs beginning with "/search/quick/" will always

@@ -1,5 +1,7 @@
 <#--//This file gets called in the head.ftl because it should sit above other js files- the actual Js gets printed in the bottom of the body. -->
-<@js src="resource/js/vendor/jquery-1.11.0.js" />
+<script src="//code.jquery.com/jquery-2.1.4.min.js" ></script>
+<script>window.jQuery || document.write('<script src="<@siteLink path="resource/js/vendor/jquery-2.1.4.min.js" />""><\/script>')</script>
+
 <#--//
 fast click is required for mobile interactions for foundation.
 -->

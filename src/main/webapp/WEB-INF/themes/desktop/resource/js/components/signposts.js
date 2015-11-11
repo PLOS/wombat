@@ -27,8 +27,16 @@
       ///requires moment.js
       var testDate = new Date().addDays(-numDays),
           newFormat = "YYYYMMDD",
+          oldFormat = "MMM DD, YYYY",
           testDateFormat = moment(testDate).format(newFormat),
-          logDateFormat = moment(logDate).format(newFormat);
+          logDateFormat = moment(logDate, oldFormat, true);
+
+      if (!logDateFormat.isValid()) {
+        // If format is not valid default to moment parsing
+        logDateFormat = moment(logDate);
+      }
+      logDateFormat = logDateFormat.format(newFormat);
+
 
       if (logDateFormat < testDateFormat) {
         return false;

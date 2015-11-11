@@ -16,9 +16,11 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.net.HttpHeaders;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.Header;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -34,6 +36,20 @@ import static org.ambraproject.wombat.util.ReproxyUtil.X_REPROXY_URL;
  * Base class with common functionality for all controllers in the application.
  */
 public abstract class WombatController {
+
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
+
+  /**
+   * Use this method to enforce the presence of a given development feature in order to hide a controller implementation
+   * from users during development. Return a 404 if the given feature is not enabled.
+   * @param feature
+   */
+  protected void enforceDevFeature(String feature) {
+    if (!runtimeConfiguration.getEnabledDevFeatures().contains(feature)){
+      throw new NotFoundException("Required dev feature is not enabled");
+    }
+  }
 
   /**
    * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user

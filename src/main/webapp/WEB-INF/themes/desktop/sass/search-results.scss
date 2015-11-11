@@ -2,7 +2,7 @@
 @import "global-section-imports";
 
 .search-results-body {
-  background-color: $clr-header;
+  background-color: $white;
   main {
     @extend .width-full; //from scaffold.scss
     margin-bottom: rem-calc($line-height-large);
@@ -11,11 +11,11 @@
       @extend .plos-row;
     }
     article {
-      @include plos-grid-column($pixelwidth: 760, $gutter: right);
+      @include plos-grid-column($pixelwidth: 760, $gutter: left);
     }
 
     aside {
-      @include plos-grid-column($pixelwidth: 180, $float: right, $gutter:none);
+      @include plos-grid-column($pixelwidth: 180, $gutter:none);
     }
 
     .search-results-controls {
@@ -478,6 +478,17 @@ $pagination-height: 24px;
   margin-bottom: $pad-xsmall;
   padding-right: $pad-small;
   padding-left: $pad-small;
+}
+
+/// new filter work!!!
+
+.search-results-header{
+
+}
+aside div ul{
+  @include nav-side($pad-left: 0);
+  li.toggle-trigger{ margin-left: $pad-small; a {color: $plos-default}}
+
 }
 
 // Right-hand aside (currently just contains two disabled controls).

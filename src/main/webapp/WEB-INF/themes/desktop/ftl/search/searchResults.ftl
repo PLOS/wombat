@@ -35,6 +35,46 @@
 <#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set" />
 
 <#include "suppressSearchFilter.ftl" />
+<#macro searchFilter filterTypeName searchFilter>
+<div>
+  <#list  searchFilter.activeFilterItems as activeFilterItem>
+  ${activeFilterItem.getDisplayName()}
+    <@siteLink handlerName="simpleSearch"
+    queryParameters=activeFilterItem.filteredResultsParameters ; href>
+        <a href="${href}"
+           data-filter-param="${activeFilterItem.filterParamName}"
+           data-filter-value="${activeFilterItem.filterValue}">
+            [x]
+        </a>
+    </@siteLink>
+  </#list>
+    <h3>${filterTypeName}</h3>
+    <ul id="searchFilterBy${filterTypeName}">
+      <#list  searchFilter.searchFilterResult as searchFilterItem>
+        <#if !suppressSearchFilter(searchFilterItem) >
+            <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility= "none"</#if>>
+              <@siteLink handlerName="simpleSearch"
+              queryParameters=searchFilterItem.filteredResultsParameters ; href>
+                  <a href="${href}"
+                     data-filter-param="${searchFilterItem.filterParamName}"
+                     data-filter-value="${searchFilterItem.filterValue}">
+                  ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
+                  </a>
+              </@siteLink>
+            </li>
+        </#if>
+      </#list>
+      <#if searchFilter.searchFilterResult?size gt 5>
+          <li data-js-toggle="toggle_trigger">
+              <a>[ show more ]</a>
+          </li>
+          <li data-js-toggle="toggle_trigger"  data-visibility= "none">
+              <a>[ show less ]</a>
+          </li>
+      </#if>
+    </ul>
+</div>
+</#macro>
 
 <body class="static ${journalStyle} search-results-body">
 

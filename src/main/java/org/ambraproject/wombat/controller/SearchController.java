@@ -380,14 +380,14 @@ public class SearchController extends WombatController {
      * @param filter the search filter to examine
      * @return Set<SearchFilterItem> representing active filter items
      */
-    public Set<SearchFilterItem> getActiveFilterItems(SearchFilter filter) {
+    public Set<SearchFilterItem> parseActiveFilterItems(SearchFilter filter) {
 
       String filterMapKey = filter.getFilterTypeMapKey();
       Function<CommonParams, List<String>> getter = FILTER_KEYS_TO_FIELDS.get(filterMapKey);
       if (getter == null) {
         throw new RuntimeException("Search Filter not configured with sane map key: " + filterMapKey);
       }
-      return filter.getActiveFilterItems(getter.apply(this));
+      return filter.parseActiveFilterItems(getter.apply(this));
     }
 
     /**
@@ -471,11 +471,12 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
-    model.addAttribute("searchFilters", filters);
 
     Set<SearchFilterItem> activeFilterItems = filters.values().stream()
         .flatMap((filter) ->
-            commonParams.getActiveFilterItems(filter).stream()).collect(Collectors.toSet());
+            commonParams.parseActiveFilterItems(filter).stream()).collect(Collectors.toSet());
+
+    model.addAttribute("searchFilters", filters);
     model.addAttribute("activeFilterItems", activeFilterItems);
 
     return site.getKey() + "/ftl/search/searchResults";

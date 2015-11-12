@@ -57,7 +57,7 @@ public class SearchFilterFactory {
           Multimaps.asMap(changedParams));
       searchFilterResult.add(filterItem);
     }
-    return new SearchFilter(searchFilterResult);
+    return new SearchFilter(searchFilterResult, filterTypeMapKey);
   }
 
   /**

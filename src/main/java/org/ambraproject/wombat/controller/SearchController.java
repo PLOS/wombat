@@ -17,9 +17,14 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableListMultimap;
+import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.model.JournalFilterType;
+import org.ambraproject.wombat.model.SearchFilter;
+import org.ambraproject.wombat.model.SearchFilterItem;
+import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -46,6 +51,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Controller class for user-initiated searches.
@@ -250,7 +257,24 @@ public class SearchController extends WombatController {
       // The normal way to get request parameters from a freemarker template is to use the
       // RequestParameters variable, but due to a bug in freemarker, this does not handle
       // multi-valued parameters correctly.  See http://sourceforge.net/p/freemarker/bugs/324/
-      model.addAttribute("parameterMap", request.getParameterMap());
+      Map<String, String[]> parameterMap = request.getParameterMap();
+      model.addAttribute("parameterMap", parameterMap);
+
+      Map<String, String[]> clearDateFilterParams = new HashMap<>();
+      clearDateFilterParams.putAll(parameterMap);
+      clearDateFilterParams.remove("filterStartDate");
+      clearDateFilterParams.remove("filterEndDate");
+      model.addAttribute("dateClearParams", clearDateFilterParams);
+
+      Map<String, String[]> clearAllFilterParams = new HashMap<>();
+      clearAllFilterParams.putAll(clearDateFilterParams);
+      clearAllFilterParams.remove("filterJournals");
+      clearAllFilterParams.remove("filterSubjects");
+      clearAllFilterParams.remove("filterAuthors");
+      clearAllFilterParams.remove("filterSections");
+      clearAllFilterParams.remove("filterArticleTypes");
+      model.addAttribute("clearAllFilterParams", clearAllFilterParams);
+
     }
 
     private String getSingleParam(Map<String, List<String>> params, String key, String defaultValue) {
@@ -334,7 +358,36 @@ public class SearchController extends WombatController {
           .setStart(start)
           .setRows(resultsPerPage)
           .setSortOrder(sortOrder)
-          .setDateRange(dateRange);
+          .setDateRange(dateRange)
+          .setStartDate(startDate)
+          .setEndDate(endDate);
+    }
+
+    private static final ImmutableMap<String, Function<CommonParams, List<String>>> FILTER_KEYS_TO_FIELDS =
+        ImmutableMap.<String, Function<CommonParams, List<String>>>builder()
+            .put(JournalFilterType.JOURNAL_FILTER_MAP_KEY, params -> params.journalKeys)
+            .put(SingletonSearchFilterType.ARTICLE_TYPE.getFilterMapKey(), params -> params.articleTypes)
+            .put(SingletonSearchFilterType.SUBJECT_AREA.getFilterMapKey(), params -> params.subjectList)
+            .put(SingletonSearchFilterType.AUTHOR.getFilterMapKey(), params -> params.authors)
+            .put(SingletonSearchFilterType.SECTION.getFilterMapKey(), params -> params.sections)
+            .build();
+
+    /**
+     * Examine incoming URL parameters to see which filter items are active. CommonParams contains
+     * journalKeys, articleTypes, subjectList, authors, and sections parsed from request params.
+     * Check each string in these lists against their applicable filters.
+     *
+     * @param filter the search filter to examine
+     * @return Set<SearchFilterItem> representing active filter items
+     */
+    public Set<SearchFilterItem> parseActiveFilterItems(SearchFilter filter) {
+
+      String filterMapKey = filter.getFilterTypeMapKey();
+      Function<CommonParams, List<String>> getter = FILTER_KEYS_TO_FIELDS.get(filterMapKey);
+      if (getter == null) {
+        throw new RuntimeException("Search Filter not configured with sane map key: " + filterMapKey);
+      }
+      return filter.parseActiveFilterItems(getter.apply(this));
     }
 
     /**
@@ -343,7 +396,7 @@ public class SearchController extends WombatController {
      * listed in {@link AdvancedSearchTerms}
      */
     private boolean isSimpleSearch(String query) {
-        return Arrays.stream(AdvancedSearchTerms.values()).noneMatch(e -> query.contains(e.text));
+      return Arrays.stream(AdvancedSearchTerms.values()).noneMatch(e -> query.contains(e.text));
     }
   }
 
@@ -373,8 +426,10 @@ public class SearchController extends WombatController {
     builder.putAll("filterAuthors", q.getAuthors());
     builder.putAll("filterSections", q.getSections());
     builder.putAll("filterArticleTypes", q.getArticleTypes());
+    builder.putAll("filterStartDate", q.getStartDate() == null ? "" : q.getStartDate());
+    builder.putAll("filterEndDate", q.getEndDate() == null ? "" : q.getEndDate());
 
-    // TODO: Support dateRange
+    // TODO: Support dateRange. Note this is different from startDate and endDate
     // TODO: Support sortOrder
 
     for (Map.Entry<String, String> entry : q.getRawParameters().entrySet()) {
@@ -415,7 +470,15 @@ public class SearchController extends WombatController {
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("searchFilters", searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj)));
+    Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
+
+    Set<SearchFilterItem> activeFilterItems = filters.values().stream()
+        .flatMap((filter) ->
+            commonParams.parseActiveFilterItems(filter).stream()).collect(Collectors.toSet());
+
+    model.addAttribute("searchFilters", filters);
+    model.addAttribute("activeFilterItems", activeFilterItems);
+
     return site.getKey() + "/ftl/search/searchResults";
   }
 

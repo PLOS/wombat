@@ -40,8 +40,8 @@
 // div.BLAH > label > select
 
 @mixin dropdown-styled($width:225, $height:false, $padding:false, $margin: 7 10 7 20, $caret-spacing:.20em ) {
-  float: right;
-  display: inline;
+  display: inline-block;
+  float:right;
   select, label {
     @extend .search-results-button-branded-small;
     margin-right: 0;
@@ -174,8 +174,6 @@ $controls-gray: $grey-med-light;
 
     .search-results-controls-first-row {
       @extend .plos-row;
-      margin-bottom: rem-calc($line-height-medium);
-
       .search-field {
         width: 100%;
       }
@@ -408,6 +406,8 @@ $pagination-height: 24px;
 
 .search-results-select {
   @include dropdown-styled;
+  float:none;
+  vertical-align: middle;
 }
 
 .search-results-eoc {
@@ -457,34 +457,88 @@ $pagination-height: 24px;
 }
 
 .filter-block {
-  padding-top: $pad-small;
-
   span {
     float: left;
-    line-height: $line-height-small;
-    padding-right: $pad-default;
-    color: $controls-gray;
-    font-size: $txt-size-small;
     font-weight: bold;
+    font-size: $txt-size-default;
+    padding-right: $pad-medium;
   }
 }
 
 .filter-item {
-  font-size: $txt-size-small;
-  line-height: $line-height-small;
+  display: inline-block;
   float: left;
-  color: $white ;
-  margin-right: $pad-xsmall;
-  margin-bottom: $pad-xsmall;
-  padding-right: $pad-small;
-  padding-left: $pad-small;
+  padding-left: $pad-medium;
 }
 
 /// new filter work!!!
-
+//TODO - make pattern out of these columns
+//TODO- cleanout old css
+//TODO - add sizes to variables.scss
+$column-size: 180 + 20;// TODO fix ems
+$column-size-mid: ($grid-width - ($column-size *2));
+$column-size-first: ($grid-width - $column-size);
 .search-results-header{
+    @extend .plos-row;
+  font-size: $txt-size-small;
+  margin-bottom: $line-height-medium !important;
+  display: flex;
+  align-content: center;
+
+  > div {margin: auto}
+
+  > div:nth-child(2){
+    @include plos-grid-column($pixelwidth: $column-size-mid, $gutter:none);
+    //display: table-cell;
+    //vertical-align: middle;
+
+  }
+   >div:first-child, > div:last-child {
+    @include plos-grid-column($pixelwidth: $column-size, $gutter:none);
+     //display: table-cell;
+     //vertical-align: middle;
+  }
+  > div:last-child {
+    text-align: right;
+  }
+  .results-number {
+     line-height: 100%;
+  }
+  .search-sort{
+    align-items: center;
+    span{display: inline-block;
+      vertical-align: middle;}
+  }
 
 }
+
+.filter-container{
+
+}
+.filter-view{
+  @extend .plos-row;
+  font-size: $txt-size-small;
+  margin-bottom: $line-height-medium !important;
+  display: flex;
+  align-items: center;
+  > div {
+    margin:auto;
+  }
+  > div:first-child{
+    text-align: left;
+    @include plos-grid-column($pixelwidth: $column-size-first, $gutter:none);
+    //display: table-cell;
+    //vertical-align: middle;
+  }
+
+  > div:last-child{
+    text-align: right;
+    @include plos-grid-column($pixelwidth: $column-size, $gutter:none);
+    //display: table-cell;
+    //vertical-align: middle;
+  }
+}
+
 aside div ul{
   @include nav-side($pad-left: 0);
   li.toggle-trigger{ margin-left: $pad-small; a {color: $plos-default}}

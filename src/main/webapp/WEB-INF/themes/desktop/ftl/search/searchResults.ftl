@@ -36,8 +36,19 @@
 
 <#include "suppressSearchFilter.ftl" />
 <#macro searchFilter filterTypeName searchFilter>
-  <div>
-    <h3>${filterTypeName}</h3>
+<div>
+  <#list  searchFilter.activeFilterItems as activeFilterItem>
+    ${activeFilterItem.getDisplayName()}
+    <@siteLink handlerName="simpleSearch"
+      queryParameters=activeFilterItem.filteredResultsParameters ; href>
+      <a href="${href}"
+         data-filter-param="${activeFilterItem.filterParamName}"
+         data-filter-value="${activeFilterItem.filterValue}">
+        [x]
+      </a>
+    </@siteLink>
+  </#list>
+  <h3>${filterTypeName}</h3>
     <ul id="searchFilterBy${filterTypeName}">
       <#list  searchFilter.searchFilterResult as searchFilterItem>
         <#if !suppressSearchFilter(searchFilterItem) >

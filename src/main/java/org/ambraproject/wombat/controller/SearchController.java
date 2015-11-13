@@ -52,7 +52,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Controller class for user-initiated searches.
@@ -378,16 +377,14 @@ public class SearchController extends WombatController {
      * Check each string in these lists against their applicable filters.
      *
      * @param filter the search filter to examine
-     * @return Set<SearchFilterItem> representing active filter items
      */
-    public Set<SearchFilterItem> parseActiveFilterItems(SearchFilter filter) {
-
+    public void setActiveAndInactiveFilterItems(SearchFilter filter) {
       String filterMapKey = filter.getFilterTypeMapKey();
       Function<CommonParams, List<String>> getter = FILTER_KEYS_TO_FIELDS.get(filterMapKey);
       if (getter == null) {
         throw new RuntimeException("Search Filter not configured with sane map key: " + filterMapKey);
       }
-      return filter.parseActiveFilterItems(getter.apply(this));
+      filter.setActiveAndInactiveFilterItems(getter.apply(this));
     }
 
     /**
@@ -472,9 +469,10 @@ public class SearchController extends WombatController {
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
 
-    Set<SearchFilterItem> activeFilterItems = filters.values().stream()
-        .flatMap((filter) ->
-            commonParams.parseActiveFilterItems(filter).stream()).collect(Collectors.toSet());
+    filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
+
+    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
+    filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
 
     model.addAttribute("searchFilters", filters);
     model.addAttribute("activeFilterItems", activeFilterItems);
@@ -586,8 +584,17 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = solrSearchService.searchVolume(query, volume);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("otherQuery", String.format("volume:%d", volume));
-    model.addAttribute("searchFilters", searchFilterService.getVolumeSearchFilters(volume,
-        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
+
+    Map<String, SearchFilter> filters = searchFilterService.getVolumeSearchFilters(volume,
+        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange);
+
+    filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
+
+    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
+    filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
+
+    model.addAttribute("searchFilters", filters);
+    model.addAttribute("activeFilterItems", activeFilterItems);
     return site.getKey() + "/ftl/search/searchResults";
   }
 

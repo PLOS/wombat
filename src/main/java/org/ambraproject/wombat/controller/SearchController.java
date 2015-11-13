@@ -584,8 +584,17 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = solrSearchService.searchVolume(query, volume);
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("otherQuery", String.format("volume:%d", volume));
-    model.addAttribute("searchFilters", searchFilterService.getVolumeSearchFilters(volume,
-        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange));
+
+    Map<String, SearchFilter> filters = searchFilterService.getVolumeSearchFilters(volume,
+        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange);
+
+    filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
+
+    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
+    filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
+
+    model.addAttribute("searchFilters", filters);
+    model.addAttribute("activeFilterItems", activeFilterItems);
     return site.getKey() + "/ftl/search/searchResults";
   }
 

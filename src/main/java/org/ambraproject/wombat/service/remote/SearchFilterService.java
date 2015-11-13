@@ -141,7 +141,7 @@ public class SearchFilterService {
     return filters;
   }
 
-  public Map<?, ?> getVolumeSearchFilters(int volume, List<String> journalKeys, List<String> articleTypes,
+  public Map<String, SearchFilter> getVolumeSearchFilters(int volume, List<String> journalKeys, List<String> articleTypes,
       SolrSearchService.SearchCriterion dateRange) throws IOException {
     Map<String, SearchFilter> filters = new HashMap<>();
     // TODO: add other filters here (filter by journal is not applicable here)

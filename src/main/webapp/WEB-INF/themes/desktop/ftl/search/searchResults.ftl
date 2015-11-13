@@ -35,54 +35,14 @@
 <#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set" />
 
 <#include "suppressSearchFilter.ftl" />
-<#macro searchFilter filterTypeName searchFilter>
-<div>
-  <#list  searchFilter.activeFilterItems as activeFilterItem>
-    ${activeFilterItem.getDisplayName()}
-    <@siteLink handlerName="simpleSearch"
-      queryParameters=activeFilterItem.filteredResultsParameters ; href>
-      <a href="${href}"
-         data-filter-param="${activeFilterItem.filterParamName}"
-         data-filter-value="${activeFilterItem.filterValue}">
-        [x]
-      </a>
-    </@siteLink>
-  </#list>
-  <h3>${filterTypeName}</h3>
-    <ul id="searchFilterBy${filterTypeName}">
-      <#list  searchFilter.searchFilterResult as searchFilterItem>
-        <#if !suppressSearchFilter(searchFilterItem) >
-          <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility= "none"</#if>>
-            <@siteLink handlerName="simpleSearch"
-            queryParameters=searchFilterItem.filteredResultsParameters ; href>
-              <a href="${href}"
-                 data-filter-param="${searchFilterItem.filterParamName}"
-                 data-filter-value="${searchFilterItem.filterValue}">
-              ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
-              </a>
-            </@siteLink>
-          </li>
-        </#if>
-      </#list>
-      <#if searchFilter.searchFilterResult?size gt 5>
-        <li data-js-toggle="toggle_trigger">
-          <a>[ show more ]</a>
-        </li>
-        <li data-js-toggle="toggle_trigger"  data-visibility= "none">
-          <a>[ show less ]</a>
-        </li>
-      </#if>
-    </ul>
-  </div>
-</#macro>
 
 <body class="static ${journalStyle} search-results-body">
 
 <#assign headerOmitMain = true />
 <#include "../common/header/headerContainer.ftl" />
+<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
+    <div class="search-results-controls">
 
-<div class="search-results-controls">
-    <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
         <div class="search-results-controls-first-row">
             <fieldset class="search-field">
                 <legend>Search</legend>
@@ -91,17 +51,47 @@
                        value="${query}" required/>
                 <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
             </fieldset>
-            <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced Search</a>
+            <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced
+                Search</a>
         </div>
 
-        <div class="search-results-controls-second-row">
 
-        <#-- TODO: implement the following controls.
-        <a id="filterByButton" class="search-results-button-hover-branded-small search-results-flush-left" href="#">filter by +</a>
-        -->
+    </div>
+<#if searchResults.numFound == 0>
+    <section class="search-results-none-found">
+        <p>You searched for articles that have all of the following:</p>
 
-        <#-- TODO: fis this select dropdown.  See comments in the .scss.  -->
-        <#if searchResults.numFound != 0>
+        <p>Search Term: "<span>${query}</span>"</p>
+
+        <p>Journal: "<span>${journalName}</span>"</p>
+
+        <p>
+            There were no results; please
+            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">refine
+                your search</a>
+            and try again.</p>
+    </section>
+</#if>
+<#if searchResults.numFound != 0>
+    <section class="search-results-header">
+        <div class="results-number">
+
+        ${searchResults.numFound}
+          <#if searchResults.numFound == 1>
+              result
+          <#else>
+              results
+          </#if>
+          <#if query?? && query?length gt 0>
+              for <strong>${query}</strong>
+          </#if>
+
+        </div>
+    <#-- TODO: fix this select dropdown.  See comments in the .scss.  -->
+        <div class="search-sort">
+
+            <span>Sort By:</span>
+
             <div class="search-results-select">
                 <label for="sortOrder">
                     <select name="sortOrder" id="sortOrder">
@@ -112,120 +102,88 @@
                     </select>
                 </label>
             </div>
-        </#if>
 
         </div>
-    <#if (isFiltered)>
-        <div class="filter-block">
-            <span>filtered by:</span>
-          <#if (filterStartDate??)>
-              <div class="filter-item" id="filter-date">
+        <div class="search-actions">
+            <div class="search-alert" data-js-tooltip-hover="trigger">
+                Search Alert
+                <div class="search-alert-tooltip" data-js-tooltip-hover="target">
+                    This feature temporarily unavailable.
+                </div>
+            </div>
+            <div class="search-feed" data-js-tooltip-hover="trigger">
+                <div class="search-feed-tooltip" data-js-tooltip-hover="target">
+                    This feature temporarily unavailable.
+                </div>
+            </div>
+        </div>
+
+    </section>
+</#if>
+
+</form>
+
+<#if searchResults.numFound != 0>
+<div class="filter-view-container">
+    <section class="filter-view">
+      <#if (isFiltered)>
+          <h3 class="filter-label">Filters:</h3>
+
+          <div class="filter-block">
+            <#if (filterStartDate??)>
+                <div class="filter-item" id="filter-date">
                 ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
-                <@siteLink handlerName="simpleSearch" queryParameters=dateClearParams ; href>
-                  <a href="${href}">[x]</a>
-                </@siteLink>
-              </div>
-              <input type="hidden" name="filterStartDate" value="${filterStartDate}"/>
-            <#if (filterEndDate??)>
-                <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
+                  <@siteLink handlerName="simpleSearch" queryParameters=dateClearParams ; href>
+                      <a href="${href}">[x]</a>
+                  </@siteLink>
+                </div>
+                <input type="hidden" name="filterStartDate" value="${filterStartDate}"/>
+              <#if (filterEndDate??)>
+                  <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
+              </#if>
             </#if>
-          </#if>
-          <#if (activeFilterItems?size > 0)>
-            <#list activeFilterItems as item>
-              <div class="filter-item">
-                ${item.getDisplayName()}
-                <@siteLink handlerName="simpleSearch"
-                  queryParameters=item.filteredResultsParameters ; href>
-                  <a href="${href}"
-                     data-filter-param="${item.filterParamName}"
-                     data-filter-value="${item.filterValue}">
-                  [x]
-                  </a>
-                </@siteLink>
-                <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
-              </div>
-            </#list>
+            <#if (activeFilterItems?size > 0)>
+              <#list activeFilterItems as item>
+                  <div class="filter-item">
+                  ${item.getDisplayName()}
+                    <@siteLink handlerName="simpleSearch"
+                    queryParameters=item.filteredResultsParameters ; href>
+                        <a href="${href}"
+                           data-filter-param="${item.filterParamName}"
+                           data-filter-value="${item.filterValue}">&nbsp;
+                        </a>
+                    </@siteLink>
+                      <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
+                  </div>
+              </#list>
+            </#if>
+          </div>
+      </#if>
+        <div class="clear-filters">
+          <@siteLink handlerName="simpleSearch" queryParameters=clearAllFilterParams ; href>
+              <a id="clearAllFiltersButton" href="${href}">Clear all filters</a>
+          </@siteLink>
+
+            <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}"/>
+          <#if RequestParameters.page??>
+              <input type="hidden" name="page" value="${RequestParameters.page}"/>
           </#if>
         </div>
-    </#if>
-    <@siteLink handlerName="simpleSearch" queryParameters=clearAllFilterParams ; href>
-      <a style="float:right; padding-right: 1rem" id="clearAllFiltersButton" href="${href}">Clear all filters</a>
-    </@siteLink>
-
-    <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}"/>
-    <#if RequestParameters.page??>
-      <input type="hidden" name="page" value="${RequestParameters.page}"/>
-    </#if>
-    </form>
+    </section>
 </div>
-<section>
+</#if>
 <#include "../macro/ifDevFeatureEnabled.ftl" />
+
 <@ifDevFeatureEnabled 'searchFilters'>
-  <#if searchResults.numFound != 0>
-    <#if searchFilters?? >
-        <aside id="searchFilters">
-          <#if searchFilters.journal??>
-            <@searchFilter "Journal", searchFilters.journal/>
-          </#if>
-          <#if searchFilters.subject_area??>
-            <@searchFilter "Subject Area", searchFilters.subject_area/>
-          </#if>
-          <#if searchFilters.article_type??>
-            <@searchFilter "Article Type", searchFilters.article_type/>
-          </#if>
-          <#if searchFilters.author??>
-            <@searchFilter "Author", searchFilters.author/>
-          </#if>
-          <#if searchFilters.section??>
-            <@searchFilter "Where my keywords appear", searchFilters.section/>
-          </#if>
-          <div>
-            <form name="dateFilterForm" id="dateFilterForm" action="<@siteLink path='search'/>" method="get">
-              <h3>Date</h3>
-              <div>Published between</div>
-              <input name="filterStartDate" id="dateFilterStartDate" type="text" class="datepicker"
-                     <#if filterStartDate??>value="${filterStartDate}"</#if>>
-              <div>to</div>
-              <input name="filterEndDate" id="dateFilterEndDate" type="text" class="datepicker"
-                     <#if filterEndDate??>value="${filterEndDate}"</#if>>
-              <input type="submit" id="dateFilterSubmitButton" value="Apply">
-              <#list parameterMap?keys as param>
-                <#if param != 'filterStartDate' && param != 'filterEndDate'>
-                  <input type="hidden" name="${param}" value="${parameterMap[param][0]}" />
-                </#if>
-              </#list>
-            </form>
-          </div>
-        </aside>
-    </#if>
-  </#if>
+<#--PG-shoudl this be a header?-->
+
+<section class="results-container">
+
+  <#include "searchFilters.ftl" />
 </@ifDevFeatureEnabled>
     <article>
-    <#if searchResults.numFound == 0>
-        <div class="search-results-none-found">
-            <p>You searched for articles that have all of the following:</p>
+    <#if searchResults.numFound != 0>
 
-            <p>Search Term: "<span>${query}</span>"</p>
-
-            <p>Journal: "<span>${journalName}</span>"</p>
-
-            <p>
-                There were no results; please
-                <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">refine
-                    your search</a>
-                and try again.</p>
-        </div>
-    <#else>
-        <div id="numberFound" class="search-results-num-found">${searchResults.numFound}
-          <#if searchResults.numFound == 1>
-              result
-          <#else>
-              results
-          </#if>
-          <#if query?? && query?length gt 0>
-              for <span>${query}</span>
-          </#if>
-        </div>
         <dl id="searchResultsList" class="search-results-list">
           <#list searchResults.docs as doc>
               <dt data-doi="${doc.id}" class="search-results-title">
@@ -311,21 +269,6 @@
 
     </article>
 
-<#if searchResults.numFound != 0>
-    <aside>
-        <div class="search-alert" data-js-tooltip-hover="trigger">
-            Search Alert
-            <div class="search-alert-tooltip" data-js-tooltip-hover="target">
-                This feature temporarily unavailable.
-            </div>
-        </div>
-        <div class="search-feed" data-js-tooltip-hover="trigger">
-            <div class="search-feed-tooltip" data-js-tooltip-hover="target">
-                This feature temporarily unavailable.
-            </div>
-        </div>
-    </aside>
-</#if>
 
 </section>
 <#include "../common/footer/footer.ftl" />

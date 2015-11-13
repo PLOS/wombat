@@ -547,15 +547,16 @@ $column-size-first: ($grid-width - $column-size);
     &.active-filters{
       margin-bottom:0;
     }
-  li input{ position: absolute; left: -20px; top:0;}
+  li input{ position: absolute; left: -$pad-default; top:0;}
     li.toggle-trigger {
       margin-left: $pad-small;
+      margin-top: $pad-xsmall;
       a {
         color: $plos-default;
       }
     }
   }
-
+  form{ input[type="submit"]{margin-top: $pad-small; }}
   hr{margin-top: 0;}
 
 }

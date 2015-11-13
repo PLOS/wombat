@@ -64,14 +64,15 @@
       <@searchFilter "Where my keywords appear", searchFilters.section/>
     </#if>
       <div>
-          <form name="dateFilterForm" id="dateFilterForm" action="<@siteLink path='search'/>" method="get">
-              <h3>Date</h3>
-              <div>Published between</div>
+          <form class="date-filter-form" name="dateFilterForm" id="dateFilterForm" action="<@siteLink path='search'/>" method="get">
+              <h3>Publication Date</h3>
+
               <input name="filterStartDate" id="dateFilterStartDate" type="text" class="datepicker"
                      <#if filterStartDate??>value="${filterStartDate}"</#if>>
-              <div>to</div>
+              <div>&nbsp;to</div>
               <input name="filterEndDate" id="dateFilterEndDate" type="text" class="datepicker"
                      <#if filterEndDate??>value="${filterEndDate}"</#if>>
+
               <input type="submit" id="dateFilterSubmitButton" value="Apply">
             <#list parameterMap?keys as param>
               <#if param != 'filterStartDate' && param != 'filterEndDate'>

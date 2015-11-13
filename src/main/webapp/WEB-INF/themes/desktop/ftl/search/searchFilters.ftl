@@ -16,7 +16,7 @@
       </#list></ul>
 
     <ul id="searchFilterBy${filterTypeName}">
-      <#list  searchFilter.searchFilterResult as searchFilterItem>
+      <#list  searchFilter.inactiveFilterItems as searchFilterItem>
         <#if !suppressSearchFilter(searchFilterItem) >
             <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility="none"</#if>>
               <@siteLink handlerName="simpleSearch"
@@ -24,8 +24,7 @@
                   <a href="${href}"
                      data-filter-param="${searchFilterItem.filterParamName}"
                      data-filter-value="${searchFilterItem.filterValue}">
-                      <input type="checkbox"/> <span>${searchFilterItem.displayName} (${searchFilterItem.numberOfHits}
-                      )  </span>
+                      <input type="checkbox"/> <span>${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})</span>
                   </a>
               </@siteLink>
             </li>

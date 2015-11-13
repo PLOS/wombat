@@ -1,0 +1,1 @@
+<img class="spinner" src="<@siteLink path="resource/img/loading_small.gif"/>" class="loading" />

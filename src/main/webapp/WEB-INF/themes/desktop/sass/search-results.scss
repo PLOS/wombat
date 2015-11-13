@@ -3,7 +3,7 @@
 
 .search-results-body {
   main {
-    background-color: $clr-header;
+    //background-color: $clr-header;
     @extend .width-full; //from scaffold.scss
     margin-bottom: rem-calc($line-height-large);
     section {
@@ -15,7 +15,7 @@
     }
 
     aside {
-      @include plos-grid-column($pixelwidth: 180, $gutter:none);
+      @include plos-grid-column($pixelwidth: 180, $gutter: none);
     }
 
   }
@@ -36,7 +36,7 @@
 
 @mixin dropdown-styled($width:225, $height:false, $padding:false, $margin: 7 10 7 20, $caret-spacing:.20em ) {
   display: inline-block;
-  float:right;
+  float: right;
   select, label {
     @extend .search-results-button-branded-small;
     margin-right: 0;
@@ -162,90 +162,89 @@ $controls-gray: $grey-med-light;
     }
   }
 
-    //   margin: 0 auto;
-    //position: relative;
-    //display: block;
-    //height: 100%;
+  //   margin: 0 auto;
+  //position: relative;
+  //display: block;
+  //height: 100%;
 
-    .search-results-controls-first-row {
-      @extend .plos-row;
-      .search-field {
-        width: 100%;
-      }
-
-      .search-button {
-        @include plos-grid-column($pixelwidth: 150, $gutter: none, $float: right);
-        text-align: right;
-        padding: 0;
-
-        a {
-          padding: $line-height-small $pad-medium;
-          margin-right: 0;
-        }
-      }
+  .search-results-controls-first-row {
+    @extend .plos-row;
+    .search-field {
+      width: 100%;
     }
 
-    button:focus {
-      outline: none;
-    }
-
-    legend, label {
-      display: none;
-    }
-    fieldset {
-      border: none;
-    }
-
-    fieldset.search-field {
-      display: inline;
-      border: none;
-      margin: 0;
-      padding: $pad-small;
-      background-color: $white;
-    }
-
-    input[type="text"] {
-      margin: 0;
+    .search-button {
+      @include plos-grid-column($pixelwidth: 150, $gutter: none, $float: right);
+      text-align: right;
       padding: 0;
-      border: none;
-      outline: 0;
-      display: inline-block;
-      width: 95%;
-      font-family: $font-face-fancy;
-      font-size: $txt-size-xlarge;
-      color: $clr-input-active;
-      top: 0 !important;
-    }
-    @include input-placeholder-color();
 
-    button[type="submit"] {
-      @include postfix($white, $white); // foundation
-      padding: 0;
-      margin: 0;
-      border: none;
-      display: inline-block;
-      float: right;
-
-      .search-icon {
-        @extend .fa;
-        @extend .fa-search;
-        font-size: rem-calc($txt-size-xlarge);
+      a {
+        padding: $line-height-small $pad-medium;
+        margin-right: 0;
       }
     }
+  }
 
-    .search-results-flush-left {
-      margin-left: 0;
+  button:focus {
+    outline: none;
+  }
+
+  legend, label {
+    display: none;
+  }
+  fieldset {
+    border: none;
+  }
+
+  fieldset.search-field {
+    display: inline;
+    border: none;
+    margin: 0;
+    padding: $pad-small;
+    background-color: $white;
+  }
+
+  input[type="text"] {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    display: inline-block;
+    width: 95%;
+    font-family: $font-face-fancy;
+    font-size: $txt-size-xlarge;
+    color: $clr-input-active;
+    top: 0 !important;
+  }
+  @include input-placeholder-color();
+
+  button[type="submit"] {
+    @include postfix($white, $white); // foundation
+    padding: 0;
+    margin: 0;
+    border: none;
+    display: inline-block;
+    float: right;
+
+    .search-icon {
+      @extend .fa;
+      @extend .fa-search;
+      font-size: rem-calc($txt-size-xlarge);
     }
+  }
 
-    .search-results-controls-second-row {
-      padding-bottom: $pad-default;
-    }
+  .search-results-flush-left {
+    margin-left: 0;
+  }
 
-    .search-results-advanced-search-submit {
-      float: right;
-      padding-top: $pad-xsmall;
-    }
+  .search-results-controls-second-row {
+    padding-bottom: $pad-default;
+  }
 
+  .search-results-advanced-search-submit {
+    float: right;
+    padding-top: $pad-xsmall;
+  }
 
   .search-results-disabled-message {
     width: rem-calc(350);
@@ -274,7 +273,7 @@ $controls-gray: $grey-med-light;
   }
 }
 
-.results-container{
+.results-container {
   margin-top: rem-calc($line-height-medium) !important;
 }
 
@@ -407,7 +406,7 @@ $pagination-height: 24px;
 
 .search-results-select {
   @include dropdown-styled;
-  float:none;
+  float: none;
   vertical-align: middle;
 }
 
@@ -457,52 +456,50 @@ $pagination-height: 24px;
   }
 }
 
-
-
-/// new filter work!!!
 //TODO - make pattern out of these columns
 //TODO- cleanout old css
 //TODO - add sizes to variables.scss
-$column-size: 180 + 20;// TODO fix ems
+$column-size: 180 + 20;
+// TODO fix ems
 $column-size-mid: ($grid-width - ($column-size *2));
 $column-size-first: ($grid-width - $column-size);
-.search-results-header{
-    @extend .plos-row;
+.search-results-header {
+  @extend .plos-row;
   font-size: $txt-size-small;
   margin-bottom: $line-height-medium !important;
   display: flex;
   align-content: center;
 
-  > div {margin: auto}
-
-  > div:nth-child(2){
-    @include plos-grid-column($pixelwidth: $column-size-mid, $gutter:none);
-    //display: table-cell;
-    //vertical-align: middle;
-
+  > div {
+    margin: auto
   }
-   >div:first-child, > div:last-child {
-    @include plos-grid-column($pixelwidth: $column-size, $gutter:none);
-     //display: table-cell;
-     //vertical-align: middle;
+
+  > div:nth-child(2) {
+    @include plos-grid-column($pixelwidth: $column-size-mid, $gutter: none);
+  }
+  > div:first-child, > div:last-child {
+    @include plos-grid-column($pixelwidth: $column-size, $gutter: none);
   }
   > div:last-child {
     text-align: right;
   }
   .results-number {
-     line-height: 100%;
+    line-height: 100%;
   }
-  .search-sort{
+  .search-sort {
     align-items: center;
-    span{display: inline-block;
-      vertical-align: middle;}
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 
 }
 
-.filter-view-container  {
-  background: $white;
+.filter-view-container {
+  background: $clr-header;
 }
+
 .filter-view {
   @extend .plos-row;
   font-size: $txt-size-small;
@@ -526,7 +523,7 @@ $column-size-first: ($grid-width - $column-size);
     display: inline-block;
     float: left;
     padding-left: $pad-medium;
-    a:before{
+    a:before {
       @extend .icon-close;
       font-size: $txt-size-default;
     }
@@ -540,14 +537,28 @@ $column-size-first: ($grid-width - $column-size);
   }
 }
 
+//TODO : remove this kludge for displaying empty results
+.search-filters  ul:empty{display:none;}
 .search-filters div {
   ul {
+
     @include nav-side($pad-left: 0);
-    li{ position:relative;}
-    &.active-filters{
-      margin-bottom:0;
+
+    &:empty{display:none;}
+
+    li {
+      position: relative;
     }
-  li input{ position: absolute; left: -$pad-default; top:0;}
+    &.active-filters {
+      border-bottom: 1px solid $clr-separator;
+      padding-bottom:0;
+      li a {font-weight: bold;}
+    }
+    li input {
+      position: absolute;
+      left: -$pad-default;
+      top: 0;
+    }
     li.toggle-trigger {
       margin-left: $pad-small;
       margin-top: $pad-xsmall;
@@ -556,13 +567,20 @@ $column-size-first: ($grid-width - $column-size);
       }
     }
   }
-  form{ input[type="submit"]{margin-top: $pad-small; }}
-  hr{margin-top: 0;}
+  form {
+    input[type="submit"] {
+      margin-top: $pad-small;
+    }
+  }
+  hr {
+    margin-top: 0;
+  }
 
 }
 
 // Right-hand aside (currently just contains two disabled controls).
-$disabled-filter-size: rem-calc(28); // when we redo the search I'll make sure all the filters and buttons are the same size.
+$disabled-filter-size: rem-calc(28);
+// when we redo the search I'll make sure all the filters and buttons are the same size.
 
 @mixin search-disabled-control {
   @extend %rounded-default;
@@ -596,13 +614,12 @@ $search-icon-pad-default: 8;
   font-weight: bold;
   text-transform: uppercase;
 
-
   &:after {
     @extend .icon-bell;
     padding-left: rem-calc($search-icon-pad-default);
     font-size: $txt-size-large;
     font-weight: normal;
-    line-height:  $txt-size-large;
+    line-height: $txt-size-large;
     vertical-align: middle;
   }
 

@@ -2,7 +2,6 @@
 <div>
     <h3>${filterTypeName}</h3>
 
-
     <ul class="active-filters" id="activeFilters-${filterTypeName}"><#list  searchFilter.activeFilterItems as activeFilterItem>
       <li>
         <@siteLink handlerName="simpleSearch"

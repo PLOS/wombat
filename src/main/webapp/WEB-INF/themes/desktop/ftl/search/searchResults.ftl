@@ -41,7 +41,7 @@
 <#assign headerOmitMain = true />
 <#include "../common/header/headerContainer.ftl" />
 <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
-<div class="search-results-controls">
+    <div class="search-results-controls">
 
         <div class="search-results-controls-first-row">
             <fieldset class="search-field">
@@ -51,11 +51,12 @@
                        value="${query}" required/>
                 <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
             </fieldset>
-            <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced Search</a>
+            <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced
+                Search</a>
         </div>
 
 
-</div>
+    </div>
 <#if searchResults.numFound == 0>
     <section class="search-results-none-found">
         <p>You searched for articles that have all of the following:</p>
@@ -75,33 +76,34 @@
     <section class="search-results-header">
         <div class="results-number">
 
-           ${searchResults.numFound}
-              <#if searchResults.numFound == 1>
-                  result
-              <#else>
-                  results
-              </#if>
-              <#if query?? && query?length gt 0>
-                  for <strong>${query}</strong>
-              </#if>
+        ${searchResults.numFound}
+          <#if searchResults.numFound == 1>
+              result
+          <#else>
+              results
+          </#if>
+          <#if query?? && query?length gt 0>
+              for <strong>${query}</strong>
+          </#if>
 
         </div>
     <#-- TODO: fix this select dropdown.  See comments in the .scss.  -->
-    <div class="search-sort">
+        <div class="search-sort">
 
-         <span>Sort By:</span>
-        <div class="search-results-select">
-            <label for="sortOrder">
-                <select name="sortOrder" id="sortOrder">
-                  <#list sortOrders as sortOrder>
-                      <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)>
-                              selected="selected"</#if>>${sortOrder.description}</option>
-                  </#list>
-                </select>
-            </label>
+            <span>Sort By:</span>
+
+            <div class="search-results-select">
+                <label for="sortOrder">
+                    <select name="sortOrder" id="sortOrder">
+                      <#list sortOrders as sortOrder>
+                          <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)>
+                                  selected="selected"</#if>>${sortOrder.description}</option>
+                      </#list>
+                    </select>
+                </label>
+            </div>
+
         </div>
-
-    </div>
         <div class="search-actions">
             <div class="search-alert" data-js-tooltip-hover="trigger">
                 Search Alert
@@ -124,48 +126,49 @@
 <#if searchResults.numFound != 0>
 <div class="filter-view-container">
     <section class="filter-view">
-    <#if (isFiltered)>
-        <h3 class="filter-label">Filters:</h3>
-        <div class="filter-block">
-          <#if (filterStartDate??)>
-              <div class="filter-item" id="filter-date">
-              ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
-                <@siteLink handlerName="simpleSearch" queryParameters=dateClearParams ; href>
-                    <a href="${href}">[x]</a>
-                </@siteLink>
-              </div>
-              <input type="hidden" name="filterStartDate" value="${filterStartDate}"/>
-            <#if (filterEndDate??)>
-                <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
-            </#if>
-          </#if>
-          <#if (activeFilterItems?size > 0)>
-            <#list activeFilterItems as item>
-                <div class="filter-item">
-                ${item.getDisplayName()}
-                  <@siteLink handlerName="simpleSearch"
-                  queryParameters=item.filteredResultsParameters ; href>
-                      <a href="${href}"
-                         data-filter-param="${item.filterParamName}"
-                         data-filter-value="${item.filterValue}">&nbsp;
-                      </a>
+      <#if (isFiltered)>
+          <h3 class="filter-label">Filters:</h3>
+
+          <div class="filter-block">
+            <#if (filterStartDate??)>
+                <div class="filter-item" id="filter-date">
+                ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
+                  <@siteLink handlerName="simpleSearch" queryParameters=dateClearParams ; href>
+                      <a href="${href}">[x]</a>
                   </@siteLink>
-                    <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
                 </div>
-            </#list>
+                <input type="hidden" name="filterStartDate" value="${filterStartDate}"/>
+              <#if (filterEndDate??)>
+                  <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
+              </#if>
+            </#if>
+            <#if (activeFilterItems?size > 0)>
+              <#list activeFilterItems as item>
+                  <div class="filter-item">
+                  ${item.getDisplayName()}
+                    <@siteLink handlerName="simpleSearch"
+                    queryParameters=item.filteredResultsParameters ; href>
+                        <a href="${href}"
+                           data-filter-param="${item.filterParamName}"
+                           data-filter-value="${item.filterValue}">&nbsp;
+                        </a>
+                    </@siteLink>
+                      <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
+                  </div>
+              </#list>
+            </#if>
+          </div>
+      </#if>
+        <div class="clear-filters">
+          <@siteLink handlerName="simpleSearch" queryParameters=clearAllFilterParams ; href>
+              <a id="clearAllFiltersButton" href="${href}">Clear all filters</a>
+          </@siteLink>
+
+            <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}"/>
+          <#if RequestParameters.page??>
+              <input type="hidden" name="page" value="${RequestParameters.page}"/>
           </#if>
         </div>
-    </#if>
-      <div class="clear-filters">
-    <@siteLink handlerName="simpleSearch" queryParameters=clearAllFilterParams ; href>
-        <a id="clearAllFiltersButton" href="${href}">Clear all filters</a>
-    </@siteLink>
-
-        <input type="hidden" name="resultsPerPage" id="resultsPerPage" value="${resultsPerPage}"/>
-    <#if RequestParameters.page??>
-        <input type="hidden" name="page" value="${RequestParameters.page}"/>
-    </#if>
-      </div>
     </section>
 </div>
 </#if>
@@ -176,7 +179,7 @@
 
 <section class="results-container">
 
-<#include "searchFilters.ftl" />
+  <#include "searchFilters.ftl" />
 </@ifDevFeatureEnabled>
     <article>
     <#if searchResults.numFound != 0>

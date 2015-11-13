@@ -1,7 +1,8 @@
 <#macro searchFilter filterTypeName searchFilter>
 <div>
     <h3>${filterTypeName}</h3>
-    <ul class="active-filters" id="id="activeFilters-${filterTypeName}""
+
+    <ul class="active-filters" id="activeFilters-${filterTypeName}">
   <#list  searchFilter.activeFilterItems as activeFilterItem>
  <li>
     <@siteLink handlerName="simpleSearch"
@@ -9,11 +10,13 @@
         <a href="${href}"
            data-filter-param="${activeFilterItem.filterParamName}"
            data-filter-value="${activeFilterItem.filterValue}">
-        ${activeFilterItem.getDisplayName()}
+            <input type="checkbox" checked/> <label> ${activeFilterItem.getDisplayName()} </label>
         </a>
     </li>
     </@siteLink>
+
   </#list>
+    </ul>
     <hr/>
     <ul id="searchFilterBy${filterTypeName}">
       <#list  searchFilter.searchFilterResult as searchFilterItem>
@@ -24,7 +27,7 @@
                   <a href="${href}"
                      data-filter-param="${searchFilterItem.filterParamName}"
                      data-filter-value="${searchFilterItem.filterValue}">
-                      <input type="checkbox" />  ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
+                      <input type="checkbox" />  <span>${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})  </span>
                   </a>
               </@siteLink>
             </li>
@@ -44,7 +47,7 @@
 
 <#if searchResults.numFound != 0>
   <#if searchFilters?? >
-  <aside id="searchFilters">
+  <aside class="search-filters" id="searchFilters">
     <#if searchFilters.journal??>
       <@searchFilter "Journal", searchFilters.journal/>
     </#if>

@@ -125,8 +125,8 @@
 <div class="filter-view-container">
     <section class="filter-view">
     <#if (isFiltered)>
+        <h3 class="filter-label">Filters:</h3>
         <div class="filter-block">
-            <span>Filters:</span>
           <#if (filterStartDate??)>
               <div class="filter-item" id="filter-date">
               ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}

@@ -147,7 +147,7 @@ $controls-gray: $grey-med-light;
 .search-results-controls {
   background: $grey-dark;
   padding: rem-calc($line-height 0);
-  margin-bottom: rem-calc($line-height-medium);
+  margin-bottom: rem-calc($line-height);
   position: relative;
   color: $controls-gray;
   font-size: $txt-size-small;
@@ -288,7 +288,7 @@ $controls-gray: $grey-med-light;
     margin-bottom: rem-calc($line-height-xsmall);
   }
   dd {
-    margin-bottom: rem-calc($line-height-small);
+    margin-bottom: rem-calc($line-height);
   }
   p {
     margin-bottom: rem-calc($line-height-xsmall);
@@ -457,24 +457,7 @@ $pagination-height: 24px;
   }
 }
 
-.filter-block {
-  span {
-    float: left;
-    font-weight: bold;
-    font-size: $txt-size-default;
-    padding-right: $pad-medium;
-  }
-}
 
-.filter-item {
-  display: inline-block;
-  float: left;
-  padding-left: $pad-medium;
-  a:before{
-    @extend .icon-close;
-    font-size: $txt-size-default;
-  }
-}
 
 /// new filter work!!!
 //TODO - make pattern out of these columns
@@ -520,33 +503,60 @@ $column-size-first: ($grid-width - $column-size);
 .filter-view-container  {
   background: $white;
 }
-.filter-view{
+.filter-view {
   @extend .plos-row;
   font-size: $txt-size-small;
-  padding: $line-height-medium 0;
+  padding: $line-height 0;
   display: flex;
   align-items: center;
   > div {
-    margin:auto;
+    margin: auto;
   }
-  > div:first-child{
+  > div:first-child {
     text-align: left;
-    @include plos-grid-column($pixelwidth: $column-size-first, $gutter:none);
-    //display: table-cell;
-    //vertical-align: middle;
+    @include plos-grid-column($pixelwidth: $column-size-first, $gutter: none);
   }
 
-  > div:last-child{
+  > div:last-child {
     text-align: right;
-    @include plos-grid-column($pixelwidth: $column-size, $gutter:none);
-    //display: table-cell;
-    //vertical-align: middle;
+    @include plos-grid-column($pixelwidth: $column-size, $gutter: none);
+  }
+
+  .filter-item {
+    display: inline-block;
+    float: left;
+    padding-left: $pad-medium;
+    a:before{
+      @extend .icon-close;
+      font-size: $txt-size-default;
+    }
+  }
+
+  .filter-label {
+    display: inline-block;
+    margin: 0;
+    float: left;
+    padding-right: $pad-medium;
   }
 }
 
-aside div ul{
-  @include nav-side($pad-left: 0);
-  li.toggle-trigger{ margin-left: $pad-small; a {color: $plos-default}}
+.search-filters div {
+  ul {
+    @include nav-side($pad-left: 0);
+    li{ position:relative;}
+    &.active-filters{
+      margin-bottom:0;
+    }
+  li input{ position: absolute; left: -20px; top:0;}
+    li.toggle-trigger {
+      margin-left: $pad-small;
+      a {
+        color: $plos-default;
+      }
+    }
+  }
+
+  hr{margin-top: 0;}
 
 }
 

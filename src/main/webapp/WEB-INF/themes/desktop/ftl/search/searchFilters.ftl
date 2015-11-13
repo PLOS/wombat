@@ -1,15 +1,15 @@
 <#macro searchFilter filterTypeName searchFilter>
 <div>
     <h3>${filterTypeName}</h3>
-    <ul id="id="activeFilters-${filterTypeName}""
+    <ul class="active-filters" id="id="activeFilters-${filterTypeName}""
   <#list  searchFilter.activeFilterItems as activeFilterItem>
- <li> ${activeFilterItem.getDisplayName()}
+ <li>
     <@siteLink handlerName="simpleSearch"
     queryParameters=activeFilterItem.filteredResultsParameters ; href>
         <a href="${href}"
            data-filter-param="${activeFilterItem.filterParamName}"
            data-filter-value="${activeFilterItem.filterValue}">
-            x
+        ${activeFilterItem.getDisplayName()}
         </a>
     </li>
     </@siteLink>

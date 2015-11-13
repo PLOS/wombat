@@ -40,9 +40,9 @@
 
 <#assign headerOmitMain = true />
 <#include "../common/header/headerContainer.ftl" />
-
+<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
 <div class="search-results-controls">
-    <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
+
         <div class="search-results-controls-first-row">
             <fieldset class="search-field">
                 <legend>Search</legend>
@@ -54,26 +54,27 @@
             <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced Search</a>
         </div>
 
-    </form>
-</div>
 
+</div>
+<#if searchResults.numFound == 0>
+    <section class="search-results-none-found">
+        <p>You searched for articles that have all of the following:</p>
+
+        <p>Search Term: "<span>${query}</span>"</p>
+
+        <p>Journal: "<span>${journalName}</span>"</p>
+
+        <p>
+            There were no results; please
+            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">refine
+                your search</a>
+            and try again.</p>
+    </section>
+</#if>
+<#if searchResults.numFound != 0>
     <section class="search-results-header">
         <div class="results-number">
-        <#if searchResults.numFound == 0>
-            <div class="search-results-none-found">
-                <p>You searched for articles that have all of the following:</p>
 
-                <p>Search Term: "<span>${query}</span>"</p>
-
-                <p>Journal: "<span>${journalName}</span>"</p>
-
-                <p>
-                    There were no results; please
-                    <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">refine
-                        your search</a>
-                    and try again.</p>
-            </div>
-        <#else>
            ${searchResults.numFound}
               <#if searchResults.numFound == 1>
                   result
@@ -84,11 +85,10 @@
                   for <strong>${query}</strong>
               </#if>
 
-        </#if>
         </div>
     <#-- TODO: fix this select dropdown.  See comments in the .scss.  -->
-    <#if searchResults.numFound != 0>
     <div class="search-sort">
+
          <span>Sort By:</span>
         <div class="search-results-select">
             <label for="sortOrder">
@@ -100,9 +100,8 @@
                 </select>
             </label>
         </div>
+
     </div>
-    </#if>
-    <#if searchResults.numFound != 0>
         <div class="search-actions">
             <div class="search-alert" data-js-tooltip-hover="trigger">
                 Search Alert
@@ -116,12 +115,15 @@
                 </div>
             </div>
         </div>
-    </#if>
 
     </section>
-<div class="filter-container">
+</#if>
+
+</form>
+
+<#if searchResults.numFound != 0>
+<div class="filter-view-container">
     <section class="filter-view">
-</div>
     <#if (isFiltered)>
         <div class="filter-block">
             <span>Filters:</span>
@@ -145,8 +147,7 @@
                   queryParameters=item.filteredResultsParameters ; href>
                       <a href="${href}"
                          data-filter-param="${item.filterParamName}"
-                         data-filter-value="${item.filterValue}">
-                          x
+                         data-filter-value="${item.filterValue}">&nbsp;
                       </a>
                   </@siteLink>
                     <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
@@ -166,12 +167,14 @@
     </#if>
       </div>
     </section>
+</div>
+</#if>
 <#include "../macro/ifDevFeatureEnabled.ftl" />
 
 <@ifDevFeatureEnabled 'searchFilters'>
 <#--PG-shoudl this be a header?-->
 
-<section>
+<section class="results-container">
 
 <#include "searchFilters.ftl" />
 </@ifDevFeatureEnabled>

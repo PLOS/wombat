@@ -1,16 +1,30 @@
 <#macro searchFilter filterTypeName searchFilter>
 <div>
     <h3>${filterTypeName}</h3>
+    <ul id="id="activeFilters-${filterTypeName}""
+  <#list  searchFilter.activeFilterItems as activeFilterItem>
+ <li> ${activeFilterItem.getDisplayName()}
+    <@siteLink handlerName="simpleSearch"
+    queryParameters=activeFilterItem.filteredResultsParameters ; href>
+        <a href="${href}"
+           data-filter-param="${activeFilterItem.filterParamName}"
+           data-filter-value="${activeFilterItem.filterValue}">
+            x
+        </a>
+    </li>
+    </@siteLink>
+  </#list>
+    <hr/>
     <ul id="searchFilterBy${filterTypeName}">
       <#list  searchFilter.searchFilterResult as searchFilterItem>
         <#if !suppressSearchFilter(searchFilterItem) >
             <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility= "none"</#if>>
-              <@siteLink handlerName="simpleSearch"
+             <@siteLink handlerName="simpleSearch"
               queryParameters=searchFilterItem.filteredResultsParameters ; href>
                   <a href="${href}"
                      data-filter-param="${searchFilterItem.filterParamName}"
                      data-filter-value="${searchFilterItem.filterValue}">
-                  ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
+                      <input type="checkbox" />  ${searchFilterItem.displayName} (${searchFilterItem.numberOfHits})
                   </a>
               </@siteLink>
             </li>

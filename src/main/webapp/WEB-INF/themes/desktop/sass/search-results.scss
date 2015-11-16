@@ -598,10 +598,10 @@ $disabled-filter-size: rem-calc(28);
   @include js-tooltip-target();
   @include tooltip($width: 350px, $tooltip-padding: $pad-xsmall);
   text-align: center;
-  background-color: $white;
-  color: $grey-med;
+  background: $clr-btn-disabled;
+  color: $grey-light;
   font-family: $font-face-plain;
-  top: rem-calc(10);
+  top: rem-calc(20);
 
 }
 

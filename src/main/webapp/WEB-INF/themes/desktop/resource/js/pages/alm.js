@@ -690,13 +690,12 @@
             var likes = source.events[0].like_count;
             var shares = source.events[0].share_count;
             var comments = source.events[0].comment_count;
-            tooltip = "<div class=\"tileTooltip\"><table class=\"tile_mini\">" +
+            tooltip = "<div class=\"tileTooltipContainer\"><table class=\"tile_mini tileTooltip\" data-js-tooltip-hover=\"target\">" +
                 "<thead><tr><th>Likes</th><th>Shares</th><th>Posts</th></tr>" +
                 "</thead><tbody><tr>" +
                 "<td class=\"data1\">" + likes.format(0, '.', ',') + "</td>" +
                 "<td class=\"data2\">" + shares.format(0, '.', ',') + "</td>" +
-                "<td class=\"data1\">" + comments.format(0, '.', ',') + "</td>" +
-                "</tr>" +
+                "<td class=\"data1\">" + comments.format(0, '.', ',') + "</td></tr>" +
                 "</tbody></table></div>";
           } else if (source.name === 'twitter') {
             //use link to our own twitter landing page
@@ -725,15 +724,11 @@
       $('#notesAndCommentsOnArticleMetricsTab').appendTo(discussedElement);
       $('#trackbackOnArticleMetricsTab').appendTo(discussedElement);
 
-      $("#FacebookOnArticleMetricsTab").tooltip({
-        delay: 250,
-        fade: 250,
-        track: true,
-        showURL: false,
-        bodyHandler: function () {
-          return $(tooltip);
-        }
-      });
+
+      $('#FacebookOnArticleMetricsTab')
+          .attr("data-js-tooltip-hover", "trigger")
+          .append(tooltip);
+      tooltip_hover.init();
 
       registerVisualElementCallback('#' + discussedID);
       discussedElement.show('blind', 500, countElementShownCallback);
@@ -1048,7 +1043,7 @@
           formatter: function () {
             var key = this.points[0].key,
                 h = data.history,
-                formattedDate = moment(new Date(h[key].year, h[key].month - 1, 2)).format('MMMM YYYY');
+                formattedDate = moment(new Date(h[key].year, h[key].month - 1, 2)).format('MMM YYYY');
 
             return '<table id="mini" cellpadding="0" cellspacing="0">'
                 + '<tr><th></td><td colspan="2">Views in ' + formattedDate

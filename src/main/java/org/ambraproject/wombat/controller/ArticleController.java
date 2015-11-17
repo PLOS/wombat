@@ -441,16 +441,19 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris")
   public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "ris", citationDownloadService::buildRisCitation);
+    return serveCitationDownload(site, articleId, "ris", "application/x-research-info-systems",
+        citationDownloadService::buildRisCitation);
   }
 
   @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex")
   public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "bib", citationDownloadService::buildBibtexCitation);
+    return serveCitationDownload(site, articleId, "bib", "application/x-bibtex",
+        citationDownloadService::buildBibtexCitation);
   }
 
-  private ResponseEntity<String> serveCitationDownload(Site site, String articleId, String fileExtension,
+  private ResponseEntity<String> serveCitationDownload(Site site, String articleId,
+                                                       String fileExtension, String contentType,
                                                        Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
     enforceDevFeature("citationDownload"); // TODO: remove when ready to expose page in prod
@@ -463,7 +466,7 @@ public class ArticleController extends WombatController {
         fileExtension);
 
     HttpHeaders headers = new HttpHeaders();
-    headers.add(HttpHeaders.CONTENT_TYPE, ContentType.TEXT_PLAIN.getMimeType());
+    headers.add(HttpHeaders.CONTENT_TYPE, contentType);
     headers.add(HttpHeaders.CONTENT_DISPOSITION, contentDispositionValue);
     return new ResponseEntity<>(citationBody, headers, HttpStatus.OK);
   }

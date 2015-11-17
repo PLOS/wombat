@@ -38,17 +38,13 @@
     };
 
     this.isArticle = function (doi) {
-      if (doi.indexOf('image') > -1) {
-        return false;
-      }
-      return true;
+      return doi.indexOf('image') === -1;
     };
 
     this.validateDOI = function (doi) {
       if (doi == null) {
         throw new Error('DOI is null.');
       }
-
       doi = encodeURI(doi);
 
       return doi.replace(new RegExp('/', 'g'), '%2F').replace(new RegExp(':', 'g'), '%3A');
@@ -177,7 +173,7 @@
           }
         }
 
-        if (sources[a].name.toLowerCase().toLowerCase() == "relativemetric") {
+        if (sources[a].name.toLowerCase() == "relativemetric") {
           if (sources[a].events != null) {
             result.relativeMetricData = sources[a].events;
           }
@@ -513,11 +509,10 @@
         var dateParts = response.data[0].issued['date-parts'][0];
         html = numCitations + " citation" + pluralization
             + " as recorded by <a href=\"http://www.crossref.org\">CrossRef</a>.  Article published "
-            + $.datepicker.formatDate("M d, yy", new Date(dateParts[0], dateParts[1], dateParts[2]))
+            + moment(new Date(dateParts[0], dateParts[1], dateParts[2])).format("MMM DD, YYYY")
             + ". Citations updated on "
-            + $.datepicker.formatDate("M dd, yy", new Date(response.data[0].update_date))
-            + "."
-            + " <ol>" + html + "</ol>";
+            + moment(new Date(response.data[0].update_date)).format("MMM DD, YYYY")
+            + ". <ol>" + html + "</ol>";
       }
 
       $("#" + crossRefID).html(html);
@@ -596,7 +591,7 @@
             var individuals = source.events.reader_count;
             var groups = source.events.group_count;
 
-            tooltip = "<div class=\"tileTooltip\"><table class=\"tile_mini\">" +
+            tooltip = "<div class=\"tileTooltipContainer\" ><table class=\"tile_mini tileTooltip\" data-js-tooltip-hover=\"target\">" +
                 "<thead><tr><th>Individuals</th><th>Groups</th></tr>" +
                 "</thead><tbody><tr><td class=\"data1\">" + individuals.format(0, '.', ',') + "</td>" +
                 "<td class=\"data2\">" + groups.format(0, '.', ',') + "</td></tr>" +
@@ -624,17 +619,10 @@
         }
       }
 
-      $('#MendeleyImageOnArticleMetricsTab').tooltip({
-        backgroundColor: "rgba(255, 255, 255, 0.0)",
-        delay: 250,
-        fade: 250,
-        track: true,
-        shadow: false,
-        showURL: false,
-        bodyHandler: function () {
-          return $(tooltip);
-        }
-      });
+      $('#MendeleyOnArticleMetricsTab')
+          .attr("data-js-tooltip-hover", "trigger")
+          .append(tooltip);
+      tooltip_hover.init();
 
       //if no tiles created, do not display header and section
       if (noTilesCreated) {
@@ -647,7 +635,7 @@
 
     this.setSavedError = function(message, bookMarksID, loadingID, registerVisualElementCallback, countElementShownCallback){
       $("#" + loadingID).fadeOut('slow');
-      $("#" + bookMarksID).html("<img src=RESOURCE_PATH + \"/icon_error.png\"/>&nbsp;" + message);
+      $("#" + bookMarksID).html("<img src='" + RESOURCE_PATH + "/icon_error.png'/>&nbsp;" + message);
       registerVisualElementCallback();
       $("#" + bookMarksID).show("blind", 500, countElementShownCallback);
     };
@@ -867,7 +855,7 @@
       //citation_date format = 2006/2/2
       // 12/11/2015: Citation date format is not the same anymore. Format: 'Oct 13, 2003'
 
-      var publishDate = $.datepicker.parseDate("M dd, yy", ARTICLE.citationDate);
+      var publishDate = moment(ARTICLE.citationDate, "MMM DD, YYYY").toDate();
       var publishDatems = publishDate.getTime();
 
       if (this.isNewArticle(publishDatems)) {
@@ -885,7 +873,7 @@
           var almError = function (message) {
             registerVisualElementCallback();
             $("#" + loadingID).fadeOut('slow');
-            $("#" + usageID).html("<img src=RESOURCE_PATH + \"/icon_error.png\"/>&nbsp;" + message);
+            $("#" + usageID).html("<img src='" + RESOURCE_PATH + "/icon_error.png'/>&nbsp;" + message);
             $("#" + usageID).show("blind", 500, countElementShownCallback);
             markChartShownCallback();
           };
@@ -899,8 +887,8 @@
 
             var summaryTable = $('<div id="pageViewsSummary"><div id="left"><div class="header">Total Article Views</div>' +
                 '<div class="totalCount">' + data.total.format(0, '.', ',') + '</div>' +
-                '<div class="pubDates">' + $.datepicker.formatDate('M d, yy', publishDate) + ' (publication date)' +
-                '<br>through ' + $.datepicker.formatDate('M d, yy', new Date()) + '*</div></div><div id="right">' +
+                '<div class="pubDates">' + moment(publishDate).format("MMM DD, YYYY") + ' (publication date)' +
+                '<br>through ' + moment().format("MMM DD, YYYY") + '*</div></div><div id="right">' +
                 '<table id="pageViewsTable"><tbody><tr><th></th><th nowrap="">HTML Page Views</th>' +
                 '<th nowrap="">PDF Downloads</th><th nowrap="">XML Downloads</th><th>Totals</th></tr><tr>' +
                 '<td class="source1">PLOS</td><td>' + data.totalCounterHTML.format(0, '.', ',') + '</td>' +
@@ -1059,12 +1047,12 @@
           },
           formatter: function () {
             var key = this.points[0].key,
-                h = data.history;
+                h = data.history,
+                formattedDate = moment(new Date(h[key].year, h[key].month - 1, 2)).format('MMMM YYYY');
 
             return '<table id="mini" cellpadding="0" cellspacing="0">'
-                + '<tr><th></td><td colspan="2">Views in '
-                + $.datepicker.formatDate('M yy', new Date(h[key].year, h[key].month - 1, 2))
-                + '</td><td colspan="2">Views through ' + $.datepicker.formatDate('M yy', new Date(h[key].year, h[key].month - 1, 2))
+                + '<tr><th></td><td colspan="2">Views in ' + formattedDate
+                + '</td><td colspan="2">Views through ' + formattedDate
                 + '</td></tr><tr><th>Source</th><th class="header1">PLOS</th><th class="header2">PMC</th>'
                 + '<th class="header1">PLOS</th><th class="header2">PMC</th></tr>'
                 + '<tr><td>HTML</td><td class="data1">' + h[key].source.counterViews.totalHTML + '</td>'
@@ -1212,38 +1200,24 @@
 
     this.addFigshareTile = function(response) {
 
-      var i = 0, source;
+      var source;
 
-      for (i = 0; i < response.sources.length; i++) {
+      for (var i = 0; i < response.sources.length; i++) {
         source = response.sources[i];
         if (source.name.toLowerCase() == "figshare") {
-          if (source.metrics.total > 0) {
-            var tileName = source.name;
-            var tile = this.createMetricsTileNoLink(tileName,
-                RESOURCE_PATH + "/logo-" + tileName + ".png",
-                source.metrics.total);
-
-            $('#views').append(tile);
-          } else {
+          if (source.metrics.total <= 0) {
             return;
           }
-          break;
-        }
-      }
 
-      $.ajax({
-        url: '/article/figureTableList.action?uri=' +  'info:doi/' + response.doi,
-        dataFilter: function (data, type) {
-          return data.replace(/(^\/\*|\*\/$)/g, '');
-        },
-        dataType: 'json',
-        error: function (jqXHR, textStatus, errorThrown) {
-          console.log(errorThrown);
-        },
-        success:function (data) {
+          var tileName = source.name;
+          var tile = this.createMetricsTileNoLink(tileName,
+              RESOURCE_PATH + "/logo-" + tileName + ".png",
+              source.metrics.total);
 
-          var popup = $('<div id=\"popup\"></div>'), dialogTable = $('<table class=\"tile_mini\"></table>'),
-              item, totalStat, key, itemInfoMap = {};
+          $('#views').append(tile);
+
+          var popup = $('<div id="dropdown-figshare" class="metric-dropdown" data-dropdown-content></div>'), dialogTable = $('<table class=\"tile_mini\"></table>'),
+              item, totalStat, key;
 
           // build tooltip
           for (i = 0; i < source.events.length; i++) {
@@ -1262,60 +1236,30 @@
             totalStat = item.stats.downloads + item.stats.page_views;
             itemInfo.stat = "<td class=\"data1\">" + totalStat + "</td>";
             itemInfo.link =  item.figshare_url;
-            itemInfoMap[key] = itemInfo;
-          }
+            itemInfo.title = item.files[0];
 
-          for (i = 0; i < data.secondaryObjects.length; i++) {
-            key = data.secondaryObjects[i].doi.replace("info:doi/", "");
-            if (itemInfoMap[key]) {
-              var link = "<a href=\"" + itemInfoMap[key].link + "\" target=_blank>" + data.secondaryObjects[i].title + "</a>";
-              dialogTable.append("<tr><td>" + link + "</td>" + itemInfoMap[key].stat + "</tr>");
+            if (itemInfo) {
+              var link = "<a href=\"" + itemInfo.link + "\" target=_blank>" + itemInfo.title + "</a>";
+              dialogTable.append("<tr><td>" + link + "</td>" + itemInfo.stat + "</tr>");
+            }
+
+            if (key === "SI") {
+              var link = "<a href=\"" + itemInfo.link + "\" target=_blank>  Supporting Info Files </a>";
+              dialogTable.append("<tr><td>" + link + "</td>" + itemInfo.stat + "</tr>");
             }
           }
-
-          if (itemInfoMap["SI"]) {
-            var link = "<a href=\"" + itemInfoMap["SI"].link + "\" target=_blank>  Supporting Info Files </a>";
-            dialogTable.append("<tr><td>" + link + "</td>" + itemInfoMap["SI"].stat + "</tr>");
-          }
-
-          popup.append(dialogTable);
-          popup.dialog({
-            dialogClass: "tooltip-like figure-table",
-            autoOpen: false,
-            draggable: false,
-            resizable: false,
-            height: "auto",
-            width: "auto",
-            closeText:"",
-            modal: true,
-            position: {my: "left top", at:"right center", of:"#figshareImageOnArticleMetricsTab"},
-            open: function(){
-              $('.ui-widget-overlay').bind('click',function(){
-                popup.dialog('close');
-              })
-            }
-          });
-          $("#figshareImageOnArticleMetricsTab").click(function() {
-            popup.dialog("open");
-          });
+          break;
         }
-      });
-    };
+      }
 
-    this.makeSignPostLI = function (text, value, description, link) {
-//    as per amec-1801, make alm signpost links
-      var textHref = '<a href="' + link + '">' + text + '</a>';
+      popup.append(dialogTable);
 
-      var li = $('<li>' +
-          '<div class="top">' + value.format(0, '.', ',') + '</div><div class="bottom"><div class="center">' +
-          '<div class="text">' + textHref + '<div class="content"><div class="description">' +
-          '<a href="' + link + '">' + description + '</a>.</div></div></div></div></div></li>');
+      $('#figshareImageOnArticleMetricsTab')
+          .attr('data-options', 'align:right')
+          .attr('data-dropdown', 'dropdown-figshare')
+          .after(popup);
 
-      (function () {
-        this.hoverEnhanced({});
-      }).apply(li);
-
-      return li;
+      $(document).foundation('dropdown', 'reflow');
     };
 
     this.setMetricsTab = function (doi, registerVisualElementCallback, countElementShownCallBack, allTilesRegisteredCallBack) {
@@ -1373,133 +1317,31 @@
   };
 
   function onReadyALM() {
-    //If the almViews node exists, assume almCitations exists as well and populate them with
-    //TODO: Review if this should go into it's own file or not.
-    //Appropriate results.
-
-    // Adding media coverage link logic in almSuccess
-
-    var fadeInDuration = 300,
-        twoDaysInMilliseconds = 172800000;
-    var $signposts = $("#almSignposts");
-
-    if ($signposts.length > 0) {
       var almService = new $.fn.alm(),
-          doi = ARTICLE.citationDoi,
-          publishDate = $.datepicker.parseDate("M dd, yy", ARTICLE.citationDate),
-          publishDatems = publishDate.getTime();
+          doi = ARTICLE.citationDoi;
 
-      var almError = function (message) {
-        $("#almSignpostsSpinner").css("display", "none");
-
-        // Only display data when the article is older than two days old
-        if (publishDatems <= (new Date().getTime() - twoDaysInMilliseconds)) {
-          $signposts.append($('<li></li>').text("metrics unavailable").css('vertical-align', 'middle'));
-          $signposts.fadeIn(fadeInDuration);
-        }
-      };
-
+      var almError = function () {};
       var almSuccess = function (response) {
-        var responseObject, sources, source, totalViews;
+        /*
+          Previously here was the signposts building code
+          after the removal of that code, the Media Coverage Link code
+          got left behind since they were entangled.
+        */
+
+        var responseObject, sources;
 
         if (response && response.length > 0) {
           responseObject = response[0].data[0];
 
           //distinguish sources
-          var counter, pmc, scopus, facebook, twitter, mendeley, citeulike, crossref, articleCoverageCurated, doiLink;
+          var articleCoverageCurated;
           sources = responseObject.sources;
 
           for(var i = 0; i < sources.length; i += 1){
-            source = sources[i];
-            if (source.name.toLowerCase() == 'counter') {
-              counter = source;
-            } else if (source.name.toLowerCase() == 'pmc') {
-              pmc = source;
-            } else if (source.name.toLowerCase() == 'scopus') {
-              scopus = source;
-            } else if (source.name.toLowerCase() == 'facebook') {
-              facebook = source;
-            } else if (source.name.toLowerCase() == 'twitter') {
-              twitter = source;
-            } else if (source.name.toLowerCase() == 'mendeley') {
-              mendeley = source;
-            } else if (source.name.toLowerCase() == 'citeulike') {
-              citeulike = source;
-            } else if (source.name.toLowerCase() == 'crossref') {
-              crossref = source;
-            } else if (source.name.toLowerCase() == 'articlecoveragecurated') {
-              articleCoverageCurated = source;
+            if (sources[i].name.toLowerCase() == 'articlecoveragecurated') {
+              articleCoverageCurated = sources[i];
             }
           }
-
-          doiLink = '/article/metrics/info:doi/' + ARTICLE.citationDoi;
-
-          totalViews = counter.metrics.total + pmc.metrics.total;
-          if (totalViews > 0) {
-            li = almService.makeSignPostLI("VIEWS", counter.metrics.total + pmc.metrics.total,
-                "Sum of PLOS and PubMed Central page views and downloads",
-                doiLink + "#viewedHeader");
-
-            $signposts.append(li);
-          }
-
-          var text, li;
-          //citations
-          if (scopus.metrics.total > 0) {
-            text = "CITATIONS";
-            if (scopus.metrics.total == 1) {
-              text = "CITATION";
-            }
-
-            li = almService.makeSignPostLI(text, scopus.metrics.total, "Paper's citation count computed by Scopus",
-                doiLink + "#citedHeader");
-
-            $signposts.append(li);
-          } else {
-            if (crossref.metrics.total > 0) {
-              text = "CITATIONS";
-              if (crossref.metrics.total == 1) {
-                text = "CITATION";
-              }
-
-              li = almService.makeSignPostLI(text, crossref.metrics.total,
-                  "Scopus data unavailable. Displaying Crossref citation count",
-                  doiLink + "#citedHeader");
-
-              $signposts.append(li);
-            }
-          }
-
-          //bookmarks
-          var bookmarksTotal = mendeley.metrics.total + citeulike.metrics.total;
-          if (bookmarksTotal > 0) {
-            text = "SAVES";
-            if (bookmarksTotal == 1) {
-              text = "SAVE";
-            }
-
-            li = almService.makeSignPostLI(text, mendeley.metrics.total + citeulike.metrics.total,
-                "Total Mendeley and CiteULike bookmarks", doiLink + "#savedHeader");
-
-            $signposts.append(li);
-          }
-
-          //shares
-          var sharesTotal = facebook.metrics.total + twitter.metrics.total;
-          if (sharesTotal > 0) {
-            text = "SHARES";
-            if (sharesTotal == 1) {
-              text = "SHARE";
-            }
-
-            li = almService.makeSignPostLI(text, facebook.metrics.total + twitter.metrics.total,
-                "Sum of Facebook and Twitter activity",
-                doiLink + "#discussedHeader");
-
-            $signposts.append(li);
-          }
-
-          $signposts.fadeIn(fadeInDuration);
 
           // this logic is NOT part of the almSignposts logic.
           // this logic adds "Media Coverage" link on the left hand side article nav
@@ -1507,12 +1349,10 @@
           if (articleCoverageCurated.metrics.total > 0) {
             buildMediaCoverageLink(articleCoverageCurated.metrics.total);
           }
-
         }
       };
 
       almService.getArticleSummaries([ doi ], almSuccess, almError);
-    }
   }
 
   function jumpToALMSection(){
@@ -1862,7 +1702,7 @@
             "Metrics unavailable for recently published articles. Please check back later.");
       } else {
         makeALMSearchWidgetError(ids[a],
-            "<img src=RESOURCE_PATH + \"/icon_error.png\"/>&nbsp;Metrics unavailable. Please check back later.");
+            "<img src='" + RESOURCE_PATH + "/icon_error.png'/>&nbsp;Metrics unavailable. Please check back later.");
       }
     }
   }

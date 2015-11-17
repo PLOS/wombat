@@ -25,7 +25,7 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
   private static String formatAuthorName(Map<String, String> authorData, String... fieldOrder) {
     return Stream.of(fieldOrder)
         .map((String fieldKey) -> authorData.get(fieldKey))
-        .filter((String namePart) -> !namePart.isEmpty())
+        .filter((String namePart) -> !Strings.isNullOrEmpty(namePart))
         .collect(Collectors.joining(", "));
   }
 
@@ -50,6 +50,10 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     List<Map<String, String>> authors = (List<Map<String, String>>) articleMetadata.get("authors");
     for (Map<String, String> author : authors) {
       appendRisCitationLine(citation, "A1", formatAuthorName(author, "surnames", "givenNames", "suffix"));
+    }
+    List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
+    for (String collaborativeAuthor : collaborativeAuthors) {
+      appendRisCitationLine(citation, "A1", collaborativeAuthor);
     }
 
     appendRisCitationLine(citation, "Y1", formatDateForRis(articleMetadata));
@@ -78,9 +82,10 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
       @Override
       protected String extractValue(Map<String, ?> articleMetadata) {
         List<Map<String, String>> authors = (List<Map<String, String>>) articleMetadata.get("authors");
-        return authors.stream()
-            .map((Map<String, String> authorData) ->
-                formatAuthorName(authorData, "surnames", "suffix", "givenNames"))
+        Stream<String> formattedAuthors = authors.stream().map(authorData ->
+            formatAuthorName(authorData, "surnames", "suffix", "givenNames"));
+        List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
+        return Stream.concat(formattedAuthors, collaborativeAuthors.stream())
             .collect(Collectors.joining(" AND "));
       }
     },

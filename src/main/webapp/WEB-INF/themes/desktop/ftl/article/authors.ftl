@@ -7,6 +7,8 @@
       class="no-js">
 <#assign title = article.title, articleDoi = article.doi />
 <#assign depth = 0 />
+<#assign tabPage = "Authors" />
+
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
@@ -18,7 +20,9 @@
 
 <#include "../common/header/headerContainer.ftl" />
 <div class="set-grid">
+
 <#include "articleHeader.ftl" />
+
     <section class="article-body">
 
     <#include "tabs.ftl" />

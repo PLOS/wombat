@@ -57,7 +57,7 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     }
 
     appendRisCitationLine(citation, "Y1", formatDateForRis(articleMetadata));
-    appendRisCitationLine(citation, "N2", getSummaryForRis(articleMetadata));
+    appendRisCitationLine(citation, "N2", (String) articleMetadata.get("description"));
     appendRisCitationLine(citation, "JF", (String) articleMetadata.get("journal"));
     appendRisCitationLine(citation, "JA", (String) articleMetadata.get("journal"));
     appendRisCitationLine(citation, "VL", (String) articleMetadata.get("volume"));
@@ -70,10 +70,6 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     appendRisCitationLine(citation, "ER", null); // Always blank (copied from legacy implementation)
 
     return citation.toString();
-  }
-
-  private String getSummaryForRis(Map<String, ?> articleMetadata) {
-    return "[THIS IS NOT IMPLEMENTED!]"; // TODO
   }
 
 
@@ -108,12 +104,7 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     VOLUME("volume", "volume"),
     URL("url", "url"),
     PAGES("pages", "pages"),
-    ABSTRACT("abstract", null) {
-      @Override
-      protected String extractValue(Map<String, ?> articleMetadata) {
-        return "[THIS IS NOT IMPLEMENTED!]"; // TODO: Get abstract from article document and format as HTML
-      }
-    },
+    ABSTRACT("abstract", "description"),
     NUMBER("number", "issue"),
     DOI("doi", "doi");
 

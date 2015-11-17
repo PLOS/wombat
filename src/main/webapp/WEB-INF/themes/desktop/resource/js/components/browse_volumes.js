@@ -1,5 +1,10 @@
 
 (function ($) {
+    $.fn.doOnce = function (func) {
+        this.length && func.apply(this);
+        return this;
+    };
+
     $.fn.journalArchive = function (options) {
         defaults = {
             navID:'',
@@ -30,3 +35,16 @@
         init();
     };
 })(jQuery);
+
+
+//Browse / issue page functions
+// on window load
+$(window).load(function () {
+    $('.journal_issues').doOnce(function () {
+        this.journalArchive({
+            navID:'#journal_years',
+            slidesContainer:'#journal_slides',
+            initialTab:0
+        });
+    });
+});

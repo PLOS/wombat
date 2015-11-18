@@ -59,6 +59,7 @@ import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
+import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
@@ -177,6 +178,11 @@ public class SpringConfiguration {
     variables.put("abbreviatedName", new AbbreviatedNameDirective());
     config.setFreemarkerVariables(variables.build());
     return config;
+  }
+
+  @Bean
+  public FreemarkerMailService freemarkerMailService() {
+    return new FreemarkerMailService();
   }
 
   @Bean

@@ -15,7 +15,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .set-grid {
   @extend .plos-row;
-  width: rem-calc(980);
+  width: rem-calc(960);
 }
 
 .article-body {

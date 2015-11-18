@@ -57,6 +57,8 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
+import org.ambraproject.wombat.service.CitationDownloadService;
+import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
@@ -268,6 +270,11 @@ public class SpringConfiguration {
   @Bean
   public ArticleArchiveServiceImpl articleArchiveService() {
     return new ArticleArchiveServiceImpl();
+  }
+
+  @Bean
+  public CitationDownloadService citationDownloadService() {
+    return new CitationDownloadServiceImpl();
   }
 
 }

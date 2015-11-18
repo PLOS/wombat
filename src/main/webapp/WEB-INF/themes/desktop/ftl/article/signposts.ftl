@@ -1,4 +1,4 @@
-<#assign metricsUrl = legacyUrlPrefix +'article/metrics/info:doi/'+articleDoi />
+<#assign metricsUrl = legacyUrlPrefix +'article/metrics/info:doi/'+article.doi />
 
 <ul id="almSignposts" class="signposts">
   <li id="loadingMetrics">

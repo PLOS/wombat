@@ -9,7 +9,7 @@
   <meta name="keywords" content="<#list categoryTerms as categoryTerm>${categoryTerm}<#if categoryTerm_has_next>,</#if></#list>" />
 </#if>
 
-<meta name="citation_doi" content="${articleDoi}" />
+<meta name="citation_doi" content="${article.doi}" />
 <#if article.authors?? >
   <#list authors as author>
   <meta name="citation_author" content="${author.fullName}" />
@@ -44,10 +44,10 @@
 </#if>
 
 <#--//crossmark identifier-->
-<meta name="dc.identifier" content="${articleDoi}" />
+<meta name="dc.identifier" content="${article.doi}" />
 
 <#if pubUrlPrefix?has_content>
-<link rel="canonical" href="${pubUrlPrefix}article?id=${articleDoi}" />
+<link rel="canonical" href="${pubUrlPrefix}article?id=${article.doi}" />
 </#if>
 
 <#if article.description??>
@@ -57,7 +57,7 @@
   </#if>
 <meta property="og:type" content="article" />
   <#if pubUrlPrefix?has_content>
-  <meta property="og:url" content="${pubUrlPrefix}article?id=${articleDoi}" />
+  <meta property="og:url" content="${pubUrlPrefix}article?id=${article.doi}" />
   </#if>
 <meta property="og:title" content="${article.title?replace('<.+?>',' ','r')?html}" />
 <meta property="og:description" content="${article.description?replace('<.+?>',' ','r')?html}" />

@@ -137,7 +137,7 @@
 
                   </@siteLink>
                 </div>
-                <input type="hidden" name="filterStartDate" value="${filterStartDate}"/>
+                <input type="hidden" name="filterStartDate" value="${filterStartDate}" placeholder="YYYY-MM-DD"/>
               <#if (filterEndDate??)>
                   <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
               </#if>
@@ -153,7 +153,7 @@
                            data-filter-value="${item.filterValue}">&nbsp;
                         </a>
                     </@siteLink>
-                      <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
+                      <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}" />
                   </div>
               </#list>
             </#if>

@@ -506,9 +506,7 @@ $column-size-first: ($grid-width - $column-size);
   padding: $line-height 0;
   display: flex;
   align-items: center;
-  > div {
-    margin: auto;
-  }
+
   > div:first-child {
     text-align: left;
     @include plos-grid-column($pixelwidth: $column-size-first, $gutter: none);
@@ -516,7 +514,7 @@ $column-size-first: ($grid-width - $column-size);
 
   > div:last-child {
     text-align: right;
-    @include plos-grid-column($pixelwidth: $column-size, $gutter: none);
+    @include plos-grid-column($pixelwidth: $column-size, $gutter: none, $float:right);
   }
 
   .filter-item {
@@ -571,6 +569,9 @@ $column-size-first: ($grid-width - $column-size);
     input[type="submit"] {
       margin-top: $pad-small;
     }
+    input[type="text"] {
+      width: 75%;
+    }
   }
   hr {
     margin-top: 0;
@@ -597,10 +598,10 @@ $disabled-filter-size: rem-calc(28);
   @include js-tooltip-target();
   @include tooltip($width: 350px, $tooltip-padding: $pad-xsmall);
   text-align: center;
-  background-color: $white;
-  color: $grey-med;
+  background: $clr-btn-disabled;
+  color: $grey-light;
   font-family: $font-face-plain;
-  top: rem-calc(10);
+  top: rem-calc(20);
 
 }
 

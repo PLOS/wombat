@@ -700,7 +700,7 @@
           } else if (source.name === 'twitter') {
             //use link to our own twitter landing page
             sourceMap[source.name] = this.createMetricsTile(source.display_name,
-                '/article/twitter/info:doi/' + doi, RESOURCE_PATH + '/logo-' + source.name + '.png',
+                ALM_CONFIG.hostname + '/works/doi.org/' + doi + "?source_id=twitter", RESOURCE_PATH + '/logo-' + source.name + '.png',
                 source.metrics.total);
 
           } else {
@@ -776,7 +776,7 @@
           //  If CrossRef, then compose a URL to our own CrossRef Citations page.
           if (source.name.toLowerCase() == 'crossref') {
             sourceMap[source.name] = this.createMetricsTile(source.display_name,
-                "/article/crossref/info:doi/" + doi,
+                ALM_CONFIG.hostname + "/works/doi.org/" + doi + "?source_id=crossref",
                 RESOURCE_PATH + "/logo-" + source.name + ".png",
                 source.metrics.total);
           } else if (source.events_url) {
@@ -1219,11 +1219,15 @@
             item = source.events[i], totalStat = 0, key = "";
             if (typeof item.doi !== 'undefined' && item.doi.length > 0) {
               // if the doi ends in (.s\d+), it refers to SIs
-              var pattern = /\.s\d+$/g;
-              if (item.doi.length == 1 && !pattern.test(item.doi[0])) {
+              var si_pattern = /\.s\d+$/g;
+              // if the doi ends in (.g\d+), it refers to Figures
+              var fig_pattern = /\.g\d+$/g;
+              if (si_pattern.test(item.doi[0])) {
+                key = "SI";
+              } else if (fig_pattern.test(item.doi[0])) {
                 key = item.doi[0].replace("http://dx.doi.org/", "");
               } else {
-                key = "SI";
+                continue;
               }
             }
 
@@ -1231,15 +1235,13 @@
             totalStat = item.stats.downloads + item.stats.page_views;
             itemInfo.stat = "<td class=\"data1\">" + totalStat + "</td>";
             itemInfo.link =  item.figshare_url;
-            itemInfo.title = item.files[0];
-
-            if (itemInfo) {
-              var link = "<a href=\"" + itemInfo.link + "\" target=_blank>" + itemInfo.title + "</a>";
-              dialogTable.append("<tr><td>" + link + "</td>" + itemInfo.stat + "</tr>");
-            }
 
             if (key === "SI") {
               var link = "<a href=\"" + itemInfo.link + "\" target=_blank>  Supporting Info Files </a>";
+              dialogTable.append("<tr><td>" + link + "</td>" + itemInfo.stat + "</tr>");
+            } else {
+              itemInfo.title = item.files[0].match(/[^\/]+\..{3}$/)[0].replace(/\..{3}$/, "").replace(/_/, " ");
+              var link = "<a href=\"" + itemInfo.link + "\" target=_blank>" + itemInfo.title + "</a>";
               dialogTable.append("<tr><td>" + link + "</td>" + itemInfo.stat + "</tr>");
             }
           }

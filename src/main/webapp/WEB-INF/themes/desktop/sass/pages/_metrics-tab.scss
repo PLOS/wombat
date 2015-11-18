@@ -89,12 +89,12 @@ table#mini tfoot td {
   box-shadow: 5px 5px 5px #888;
   padding: 0;
   top: -100px;
-  right: 3px;
+  right: -3px;
 }
 
 table.tile_mini {
   margin: 0;
-  font-size: .7em;
+  font-size: .8em;
   float: left;
   border-collapse: collapse;
 }
@@ -344,6 +344,7 @@ a.irs {
 
 .metric-dropdown {
   @include dropdown-container();
+  width: inherit;
 }
 
 

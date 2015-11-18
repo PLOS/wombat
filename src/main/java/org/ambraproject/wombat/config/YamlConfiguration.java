@@ -73,6 +73,11 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
+  public URL getMediaCurationServer() {
+    return buildUrl(input.mediaCurationServer, "http://localhost:3000/api/v1");
+  }
+
+  @Override
   public ImmutableSet<String> getEnabledDevFeatures() {
     return ImmutableSet.copyOf(Objects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
   }
@@ -208,6 +213,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
 
     private String server;
     private String solrServer;
+    private String mediaCurationServer;
     private String compiledAssetDir;
     private List<String> enableDevFeatures;
     private List<Map<String, ?>> themes;
@@ -231,6 +237,14 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setSolrServer(String solrServer) {
       this.solrServer = solrServer;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setMediaCurationServer(String mediaCurationServer) {
+      this.mediaCurationServer = mediaCurationServer;
     }
 
     /**

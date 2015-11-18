@@ -13,6 +13,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -23,17 +24,31 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
+import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.TextUtil;
 import org.apache.commons.io.output.WriterOutputStream;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
+import org.apache.commons.validator.routines.UrlValidator;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -47,6 +62,7 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Reader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -82,6 +98,10 @@ public class ArticleController extends WombatController {
   private ArticleService articleService;
   @Autowired
   private ArticleTransformService articleTransformService;
+  @Autowired
+  private CachedRemoteService<Reader> cachedRemoteReader;
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
 
   @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
@@ -438,6 +458,120 @@ public class ArticleController extends WombatController {
     requestAuthors(model, articleId);
     requestComments(model, articleId);
     return site + "/ftl/article/relatedContent";
+  }
+
+  /**
+   * Serves as an endpoint to submit media curation requests
+   *
+   * @param model     data passed in from the view
+   * @param site      current site
+   * @return path to the template
+   * @throws IOException
+   */
+  //todo: rename this mapping value?
+  //Todo clean this up
+  @RequestMapping(name = "forwardMediaCurationSubmission", value = "/article/forwardMediaCurationSubmission", method = RequestMethod.POST)
+  public ResponseEntity forwardMediaCurationSubmission(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam("uri") String uri,
+      @RequestParam("link") String link,
+      @RequestParam("comment") String comment,
+      @RequestParam("name") String name,
+      @RequestParam("email") String email)
+      throws IOException {
+    // TODO: remove when ready to expose page in prod
+    enforceDevFeature("relatedContentTab");
+
+    if (!validateInput(model, uri, link, comment, name, email)) {
+      model.addAttribute("formError", "Invalid values have been submitted.");
+      return new ResponseEntity(org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    HttpClient httpClient = new DefaultHttpClient();
+
+    String linkComment = name + ", " + email + "\n" + comment;
+
+    List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("doi", uri.replaceFirst("info:doi/", "")));
+    params.add(new BasicNameValuePair("link", link));
+    params.add(new BasicNameValuePair("comment", linkComment));
+    UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
+
+
+    String mediaCurationUrl = runtimeConfiguration.getMediaCurationServer().toString();
+
+    if (mediaCurationUrl != null) {
+      HttpPost httpPost = new HttpPost(mediaCurationUrl);
+      try {
+        httpPost.setEntity(entity);
+
+        HttpResponse httpResponse = httpClient.execute(httpPost);
+        int statusCode = httpResponse.getStatusLine().getStatusCode();
+
+        // check for status code
+        if (statusCode != HttpStatus.SC_CREATED) {
+          throw new RuntimeException("bad response"); //todo: better msg
+        }
+
+      } finally {
+        httpPost.releaseConnection();
+      }
+    }
+
+    return new ResponseEntity(org.springframework.http.HttpStatus.CREATED);
+  }
+
+  /**
+   * Validate the input from the form
+   * @return true if everything is ok
+   * @param model
+   * @param uri
+   * @param link
+   * @param comment
+   * @param name
+   * @param email
+   */
+  private boolean validateInput(Model model, String uri, String link, String comment, String name,
+      String email) {
+    // TODO handle data better
+
+    boolean isValid = true;
+
+    if (StringUtils.isBlank(uri)) {
+      isValid = false;
+    }
+
+    UrlValidator urlValidator = new UrlValidator();
+
+    if (StringUtils.isBlank(link)) {
+      model.addAttribute("linkError", "This field is required.");
+      isValid = false;
+    } else if (!urlValidator.isValid(link)) {
+      model.addAttribute("linkError", "Invalid Media link URL");
+      isValid = false;
+    }
+
+    if (StringUtils.isBlank(name)) {
+      model.addAttribute("nameError", "This field is required.");
+      isValid = false;
+    }
+
+    if (StringUtils.isBlank(email)) {
+      model.addAttribute("emailError", "This field is required.");
+      isValid = false;
+    } else if (!EmailValidator.getInstance().isValid(email)) {
+      model.addAttribute("emailError", "Invalid e-mail address");
+      isValid = false;
+    }
+
+    //todo: captcha validation
+//    HttpServletRequest request = ServletActionContext.getRequest();
+//
+//    if (!captchaService.validateCaptcha(request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
+//      addFieldError("captcha", "Verification is incorrect. Please try again.");
+//      isValid = false;
+//    }
+
+    return isValid;
   }
 
   /**

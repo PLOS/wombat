@@ -120,12 +120,12 @@
         recaptcha_response_field: $('#recaptcha_response_field').val()
       };
 
-      sendRequest("/article/mediaCoverageSubmit.action", data);
+      sendRequest(siteUrlPrefix + "article/forwardMediaCurationSubmission", data);
     });
 
     function sendRequest(url, data) {
       $.ajax(url, {
-        type: "post",
+        type: "POST",
         dataType:"json",
         data: data,
         dataFilter:function (data, type) {

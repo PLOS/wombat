@@ -7,6 +7,7 @@
       class="no-js">
 <#assign title = article.title, articleDoi = article.doi />
 <#assign depth = 0 />
+<#assign tabPage = "authors" />
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />

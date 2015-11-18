@@ -42,6 +42,7 @@ public class BrowseController extends WombatController {
 
   @RequestMapping(name = "browseVolumes", value = "/browse/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
+    enforceDevFeature("browse");
     String journalMetaUrl = "journals/" + site.getJournalKey();
     Map<String, Object> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);
     model.addAttribute("journal", journalMetadata);
@@ -52,6 +53,7 @@ public class BrowseController extends WombatController {
   public String browseIssue(Model model, @SiteParam Site site,
                             @RequestParam("id") String issueId) throws IOException {
     //TODO: implement this method. Stubbed out here to provide a linkable endpoint for the browseVolumes template
+    enforceDevFeature("browse");
     return site.getKey() + "/ftl/article/browseIssues";
   }
 }

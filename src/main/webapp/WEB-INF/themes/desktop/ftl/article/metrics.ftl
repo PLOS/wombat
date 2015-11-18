@@ -23,17 +23,12 @@
 <div class="set-grid">
     <#include "articleHeader.ftl" />
     <section class="metrics-body">
-
-    <#include "tabs.ftl" />
-    <#include "metricsBody.ftl" />
-      <div class="article-container">
-
-      </div>
-
-      </section>
-      <aside class="article-aside">
+        <#include "tabs.ftl" />
+        <#include "metricsBody.ftl" />
+    </section>
+    <aside class="article-aside">
         <#include "aside/sidebar.ftl" />
-      </aside>
+    </aside>
   </div>
 
   <#include "../common/footer/footer.ftl" />

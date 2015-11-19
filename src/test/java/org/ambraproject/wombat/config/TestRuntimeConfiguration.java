@@ -50,11 +50,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URL getMediaCurationServer() {
-    return null;
-  }
-
-  @Override
   public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
 
   @Override

@@ -20,6 +20,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
@@ -107,6 +108,8 @@ public class ArticleController extends WombatController {
   private CitationDownloadService citationDownloadService;
   @Autowired
   private JsonService jsonService;
+  @Autowired
+  private CaptchaService captchaService;
 
   @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
@@ -530,13 +533,14 @@ public class ArticleController extends WombatController {
       @RequestParam("comment") String comment,
       @RequestParam("name") String name,
       @RequestParam("email") String email,
-      @RequestParam("recaptcha_challenge_field") String captchaCallenge,
+      @RequestParam("recaptcha_challenge_field") String captchaChallenge,
       @RequestParam("recaptcha_response_field") String captchaResponse)
       throws IOException {
     // TODO: remove when ready to expose page in prod
     enforceDevFeature("relatedContentTab");
 
-    if (!validateMediaCurationInput(model, doi, link, name, email)) {
+    if (!validateMediaCurationInput(model, doi, link, name, email, captchaChallenge,
+        captchaResponse, site, request)) {
       model.addAttribute("formError", "Invalid values have been submitted.");
       //return model for error reporting
       return jsonService.serialize(model);
@@ -587,10 +591,11 @@ public class ArticleController extends WombatController {
    * @param link link pointing to media content relating to the article
    * @param name name of the user submitting the media curation request
    * @param email email of the user submitting the media curation request
+   * @param site
    */
   private boolean validateMediaCurationInput(Model model, String doi, String link, String name,
-      String email) {
-    // TODO handle data better
+      String email, String captchaChallenge, String captchaResponse, Site site,
+      HttpServletRequest request) throws IOException {
 
     boolean isValid = true;
 
@@ -621,11 +626,10 @@ public class ArticleController extends WombatController {
       isValid = false;
     }
 
-    //todo: captcha validation
-//    if (!captchaService.validateCaptcha(request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
+    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
       model.addAttribute("captchaError", "Verification is incorrect. Please try again.");
       isValid = false;
-//    }
+    }
 
     return isValid;
   }

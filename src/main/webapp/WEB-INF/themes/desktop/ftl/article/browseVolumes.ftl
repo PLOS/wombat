@@ -28,7 +28,7 @@
                     <div class="journal_thumb">
                       <@siteLink
                       handlerName="browseIssues"
-                      queryParameters={"id": "${journal.currentIssue.issueUri}"}; issueLink>
+                      queryParameters={"id": journal.currentIssue.issueUri}; issueLink>
                           <a href="${issueLink}"/>
                         <#assign issueImageFileId = journal.currentIssue.imageUri + ".g001.PNG_S"/>
                           <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}/>"

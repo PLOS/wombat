@@ -7,7 +7,6 @@
       class="no-js">
 <#assign title = article.title, articleDoi = article.doi />
 <#assign depth = 0 />
-<#assign tabPage = "authors" />
 
 
 <#include "../common/head.ftl" />
@@ -26,20 +25,23 @@
     <section class="article-body">
 
     <#include "tabs.ftl" />
+    <@displayTabList 'authors'></@displayTabList>
         <div class="article-container">
             <h1>About the Authors</h1>
         <#list authors as author>
             <div class="about-author">
-                <h5 class="comments-header">${author.fullName}</h5>   <p>
+                <h5 class="comments-header">${author.fullName}</h5>
+
+                <p>
 
 
-              <#list author.affiliations as affiliation>
-              ${affiliation}
+                  <#list author.affiliations as affiliation>
+                  ${affiliation}
 
-                <#if author.affiliations?size gt 0>
-                  <br/>
-              </#if>
-              </#list>
+                    <#if author.affiliations?size gt 0>
+                        <br/>
+                    </#if>
+                  </#list>
                 </p>
             </div>
         </#list>
@@ -83,7 +85,7 @@
 
 
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
 
 <#include "aside/crossmarkIframe.ftl" />

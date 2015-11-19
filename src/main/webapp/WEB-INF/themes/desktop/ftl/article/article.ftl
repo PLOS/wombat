@@ -23,7 +23,9 @@
   <section class="article-body">
 
   <#include "tabs.ftl" />
-    <div class="article-container">
+  <@displayTabList 'article'></@displayTabList>
+
+      <div class="article-container">
 
     <#include "nav.ftl" />
 

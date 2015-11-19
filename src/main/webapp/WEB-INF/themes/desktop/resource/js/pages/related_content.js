@@ -99,9 +99,7 @@
         htmlContent = '<b>' + publication + '</b>: "<a href="' + curReference.referral + '">' + title + '</a>"';
       }
 
-      var liItem = $('<li></li>').html(htmlContent);
-
-      return liItem;
+      return $('<li></li>').html(htmlContent);
     };
 
     var doi = $('#figshare-related').data('doi');
@@ -110,8 +108,9 @@
     $("#media-coverage-modal").on('click','.button.primary', function (e) {
       $("#media-coverage-form :input + span.form-error, #mcform-captcha + span.form-error").text("");
 
+      var doi = $('#media-coverage-form').find('form').data('doi');
       var data = {
-        uri: "info:doi/"  + $('meta[name=citation_doi]').attr("content"),
+        doi: doi,
         name: $('#mcform-name').val(),
         email: $('#mcform-email').val(),
         link: $('#mcform-link').val(),
@@ -120,7 +119,7 @@
         recaptcha_response_field: $('#recaptcha_response_field').val()
       };
 
-      sendRequest(siteUrlPrefix + "article/forwardMediaCurationSubmission", data);
+      sendRequest(siteUrlPrefix + "article/submitMediaCurationRequest", data);
     });
 
     function sendRequest(url, data) {
@@ -133,41 +132,24 @@
           return data.replace(/(^\s*\/\*\s*)|(\s*\*\/\s*$)/g, '');
         },
         success:function (data, textStatus, jqXHR) {
-          // check to see if there was any error
-          if (data.actionErrors && data.actionErrors.length > 0) {
-            var fieldErrorKeys = $.map(data.fieldErrors, function (value, key) {
-              return key;
-            });
 
-            if (fieldErrorKeys.length > 0) {
-              // check for an error message for each field
-              if (data.fieldErrors.link) {
-                $("#mcform-link").next().text(data.fieldErrors.link);
-              }
-
-              if (data.fieldErrors.name) {
-                $("#mcform-name").next().text(data.fieldErrors.name);
-              }
-
-              if (data.fieldErrors.email) {
-                $("#mcform-email").next().text(data.fieldErrors.email);
-              }
-
-              if (data.fieldErrors.captcha) {
-                $("#mcform-captcha").next().text(data.fieldErrors.captcha);
-                Recaptcha.reload();
-              }
-
-            } else {
-              // display the error message and close the form
-              $('#media-coverage-form').hide();
-              $('#media-coverage-failure').show();
-
-              setTimeout(function() {
-                $("#media-coverage-modal").dialog("close");
-              }, 3000);
+          if (!data.isValid) {
+            if (data.linkError) {
+              $("#mcform-link").next().text(data.linkError);
             }
 
+            if (data.nameError) {
+              $("#mcform-name").next().text(data.nameError);
+            }
+
+            if (data.emailError) {
+              $("#mcform-email").next().text(data.emailError);
+            }
+
+            if (data.captchaError) {
+              $("#mcform-captcha").next().text(data.captchaError);
+              Recaptcha.reload();
+            }
           } else {
             // display success message and close the form
             $('#media-coverage-form').hide();

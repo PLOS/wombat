@@ -2,8 +2,6 @@
 <#assign title = article.title, articleDoi = article.doi />
 <#assign depth = 0 />
 
-<@js src="resource/js/pages/related_content.js"/>
-
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <#include "../common/article/articleType.ftl" />
@@ -183,6 +181,8 @@ The CSS for dialog widget,
   <#include "aside/sidebar.ftl" />
   </aside>
 
+  <input type="hidden" name="reCaptcha-info" id="reCaptcha-info" value='${recaptchaPublicKey}'/>
+
   <div id="media_coverage">
     <h2>Media Coverage of this Article <#--a href="" class="ir" title="More information">info</a--></h2>
     <div id="media_coverage_addition">Found additional news media or blog coverage for the article? <a id="media-coverage-form-link">Please let us know.</a></div>
@@ -192,7 +192,7 @@ The CSS for dialog widget,
     <div id="media-coverage-modal" style="display: none;">
 
       <div id="media-coverage-form" class="cf">
-        <form onsubmit="return false;" class="form standard">
+        <form onsubmit="return false;" data-doi="${article.doi}" class="form standard">
           <ul>
             <li class="small cf">
               <div>
@@ -250,6 +250,8 @@ The CSS for dialog widget,
 
 <#include "../common/footer/footer.ftl" />
 
+<@js src="resource/js/pages/related_content.js"/>
+
 <@js src="resource/js/components/table_open.js"/>
 <@js src="resource/js/components/figshare.js"/>
 
@@ -270,6 +272,7 @@ The CSS for dialog widget,
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 
 <#include "aside/crossmarkIframe.ftl" />
 

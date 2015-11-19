@@ -80,13 +80,6 @@ public interface RuntimeConfiguration {
   URL getSolrServer();
 
   /**
-   * Get the URL of the media curation server.
-   *
-   * @return the URL
-   */
-  URL getMediaCurationServer();
-
-  /**
    * @return the set of enabled dev features, configured in wombat.yaml.
    */
   ImmutableSet<String> getEnabledDevFeatures();

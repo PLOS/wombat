@@ -14,7 +14,6 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -27,6 +26,7 @@ import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
@@ -35,13 +35,11 @@ import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.validator.routines.UrlValidator;
-import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,6 +51,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
@@ -105,9 +104,9 @@ public class ArticleController extends WombatController {
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
   @Autowired
-  private RuntimeConfiguration runtimeConfiguration;
-  @Autowired
   private CitationDownloadService citationDownloadService;
+  @Autowired
+  private JsonService jsonService;
 
   @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
@@ -511,86 +510,91 @@ public class ArticleController extends WombatController {
     addCrossPublishedJournals(request, model, site, articleMetadata);
     requestAuthors(model, articleId);
     requestComments(model, articleId);
+    String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
+    model.addAttribute("recaptchaPublicKey", recaptchaPublicKey);
     return site + "/ftl/article/relatedContent";
   }
 
   /**
-   * Serves as an endpoint to submit media curation requests
+   * Serves as a POST endpoint to submit media curation requests
    *
    * @param model     data passed in from the view
    * @param site      current site
    * @return path to the template
    * @throws IOException
    */
-  //todo: rename this mapping value?
-  //Todo clean this up
-  @RequestMapping(name = "forwardMediaCurationSubmission", value = "/article/forwardMediaCurationSubmission", method = RequestMethod.POST)
-  public ResponseEntity forwardMediaCurationSubmission(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam("uri") String uri,
+  @RequestMapping(name = "submitMediaCurationRequest", value = "/article/submitMediaCurationRequest", method = RequestMethod.POST)
+  public @ResponseBody String submitMediaCurationRequest(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam("doi") String doi,
       @RequestParam("link") String link,
       @RequestParam("comment") String comment,
       @RequestParam("name") String name,
-      @RequestParam("email") String email)
+      @RequestParam("email") String email,
+      @RequestParam("recaptcha_challenge_field") String captchaCallenge,
+      @RequestParam("recaptcha_response_field") String captchaResponse)
       throws IOException {
     // TODO: remove when ready to expose page in prod
     enforceDevFeature("relatedContentTab");
 
-    if (!validateInput(model, uri, link, comment, name, email)) {
+    if (!validateMediaCurationInput(model, doi, link, name, email)) {
       model.addAttribute("formError", "Invalid values have been submitted.");
-      return new ResponseEntity(org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR);
+      //return model for error reporting
+      return jsonService.serialize(model);
     }
-
-    HttpClient httpClient = new DefaultHttpClient();
 
     String linkComment = name + ", " + email + "\n" + comment;
 
     List<NameValuePair> params = new ArrayList<>();
-    params.add(new BasicNameValuePair("doi", uri.replaceFirst("info:doi/", "")));
+    params.add(new BasicNameValuePair("doi", doi.replaceFirst("info:doi/", "")));
     params.add(new BasicNameValuePair("link", link));
     params.add(new BasicNameValuePair("comment", linkComment));
     UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
 
-
-    String mediaCurationUrl = runtimeConfiguration.getMediaCurationServer().toString();
+    String mediaCurationUrl = site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl").toString();
 
     if (mediaCurationUrl != null) {
+      CloseableHttpResponse response = null;
       HttpPost httpPost = new HttpPost(mediaCurationUrl);
       try {
         httpPost.setEntity(entity);
 
-        HttpResponse httpResponse = httpClient.execute(httpPost);
-        int statusCode = httpResponse.getStatusLine().getStatusCode();
-
-        // check for status code
+        response = cachedRemoteReader.getResponse(httpPost);
+        int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode != HttpStatus.SC_CREATED) {
-          throw new RuntimeException("bad response"); //todo: better msg
+          throw new RuntimeException("bad response from media curation server: "
+              + response.getStatusLine());
         }
-
-      } finally {
+        //todo: better exception handling
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+      finally {
         httpPost.releaseConnection();
+        if (response != null) {
+          response.close();
+        }
       }
     }
 
-    return new ResponseEntity(org.springframework.http.HttpStatus.CREATED);
+    return jsonService.serialize(model);
   }
 
   /**
    * Validate the input from the form
    * @return true if everything is ok
-   * @param model
-   * @param uri
-   * @param link
-   * @param comment
-   * @param name
-   * @param email
+   * @param model data passed in from the view
+   * @param doi doi of the article to refer
+   * @param link link pointing to media content relating to the article
+   * @param name name of the user submitting the media curation request
+   * @param email email of the user submitting the media curation request
    */
-  private boolean validateInput(Model model, String uri, String link, String comment, String name,
+  private boolean validateMediaCurationInput(Model model, String doi, String link, String name,
       String email) {
     // TODO handle data better
 
     boolean isValid = true;
 
-    if (StringUtils.isBlank(uri)) {
+    if (StringUtils.isBlank(doi)) {
       isValid = false;
     }
 
@@ -618,11 +622,9 @@ public class ArticleController extends WombatController {
     }
 
     //todo: captcha validation
-//    HttpServletRequest request = ServletActionContext.getRequest();
-//
 //    if (!captchaService.validateCaptcha(request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-//      addFieldError("captcha", "Verification is incorrect. Please try again.");
-//      isValid = false;
+      model.addAttribute("captchaError", "Verification is incorrect. Please try again.");
+      isValid = false;
 //    }
 
     return isValid;

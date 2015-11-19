@@ -40,7 +40,7 @@ public class FeedbackController {
 
   private static Map<String, Object> getFeedbackConfig(Site site) {
     try {
-      return site.getTheme().getConfigMap("feedback");
+      return (Map<String, Object>) site.getTheme().getConfigMap("email").get("feedback");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -64,13 +64,17 @@ public class FeedbackController {
                                            @RequestParam("fromEmailAddress") String fromEmailAddress,
                                            @RequestParam("note") String note,
                                            @RequestParam("subject") String subject,
-                                           @RequestParam("name") String name)
+                                           @RequestParam("name") String name,
+                                           @RequestParam("userId") String userId
+                                           /* TODO: Add Captcha validation params */
+  )
       throws IOException, MessagingException {
     validateFeedbackConfig(site);
     model.addAttribute("page", page);
     model.addAttribute("fromEmailAddress", fromEmailAddress);
     model.addAttribute("note", note);
     model.addAttribute("name", name);
+    model.addAttribute("id", userId);
 
     if (Strings.isNullOrEmpty(subject)) {
       subject = (String) getFeedbackConfig(site).get("defaultSubject");

@@ -68,14 +68,18 @@ import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.service.remote.EditorialContentServiceImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.util.GitInfo;
+import org.ambraproject.wombat.util.NullJavaMailSender;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import javax.servlet.ServletContext;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.charset.Charset;
 
 @Configuration
@@ -196,6 +200,15 @@ public class SpringConfiguration {
   @Bean
   public AppRootPage appRootPage() {
     return new AppRootPage();
+  }
+
+  @Bean
+  public JavaMailSender javaMailSender(RuntimeConfiguration runtimeConfiguration) {
+    URL mailServer = runtimeConfiguration.getMailServer();
+    if (mailServer == null) return NullJavaMailSender.INSTANCE;
+    JavaMailSenderImpl sender = new JavaMailSenderImpl();
+    sender.setHost(mailServer.toString());
+    return sender;
   }
 
   @Bean

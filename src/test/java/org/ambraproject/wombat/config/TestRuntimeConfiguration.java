@@ -50,6 +50,11 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
+  public URL getMailServer() {
+    return null;
+  }
+
+  @Override
   public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
 
   @Override

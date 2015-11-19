@@ -36,10 +36,15 @@ public class FreemarkerMailService {
     return freeMarkerConfig.getConfiguration();
   }
 
+  private Template getEmailTemplate(Site site, String type, String filename) throws IOException {
+    String path = String.format("%s/ftl/email/%s/%s.ftl", site, type, filename);
+    return getConfiguration().getTemplate(path);
+  }
+
   public Multipart createContent(Site site, String templateFilename, Model context)
       throws IOException, MessagingException {
-    Template textTemplate = getConfiguration().getTemplate(site + "/ftl/email/txt/" + templateFilename);
-    Template htmlTemplate = getConfiguration().getTemplate(site + "/ftl/email/html/" + templateFilename);
+    Template textTemplate = getEmailTemplate(site, "txt", templateFilename);
+    Template htmlTemplate = getEmailTemplate(site, "html", templateFilename);
 
     // Create a "text" Multipart message
     Multipart mp = createPartForMultipart(textTemplate, context, "alternative", ContentType.TEXT_PLAIN);
@@ -54,14 +59,14 @@ public class FreemarkerMailService {
     return mp;
   }
 
-  private Multipart createPartForMultipart(Template htmlTemplate, Model context, String multipartType, ContentType mimeType)
+  private Multipart createPartForMultipart(Template htmlTemplate, Model context, String multipartType, ContentType contentType)
       throws IOException, MessagingException {
     Multipart multipart = new MimeMultipart(multipartType);
-    multipart.addBodyPart(createBodyPart(mimeType, htmlTemplate, context));
+    multipart.addBodyPart(createBodyPart(contentType, htmlTemplate, context));
     return multipart;
   }
 
-  private BodyPart createBodyPart(ContentType mimeType, Template htmlTemplate, Model context)
+  private BodyPart createBodyPart(ContentType contentType, Template htmlTemplate, Model context)
       throws IOException, MessagingException {
     BodyPart htmlPage = new MimeBodyPart();
     String encoding = getConfiguration().getDefaultEncoding();
@@ -74,11 +79,11 @@ public class FreemarkerMailService {
     try {
       htmlTemplate.process(context, writer);
     } catch (TemplateException e) {
-      throw new MailPreparationException("Can't generate " + mimeType + " subscription mail", e);
+      throw new MailPreparationException("Can't generate " + contentType.getMimeType() + " subscription mail", e);
     }
 
     htmlPage.setDataHandler(createBodyPartDataHandler(outputStream.toByteArray(),
-        mimeType.toString() + "; charset=" + getConfiguration().getDefaultEncoding()));
+        contentType.toString() + "; charset=" + getConfiguration().getDefaultEncoding()));
 
     return htmlPage;
   }

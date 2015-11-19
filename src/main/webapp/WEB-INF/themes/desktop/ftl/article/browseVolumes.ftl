@@ -12,6 +12,11 @@
 <body class="article ${journalStyle}">
 
 <#include "../common/header/headerContainer.ftl" />
+
+<!-- TODO: This is how Ambra does it, but it would be much preferred to provide the proper thumbnail asset file ids
+      for each issue in the controller layer. -->
+<#assign thumbnail_suffix = ".g001.PNG_S"/>
+
 <div class="set-grid">
 
     <section class="article-body">
@@ -30,7 +35,7 @@
                       handlerName="browseIssues"
                       queryParameters={"id": journal.currentIssue.issueUri}; issueLink>
                           <a href="${issueLink}"/>
-                        <#assign issueImageFileId = journal.currentIssue.imageUri + ".g001.PNG_S"/>
+                        <#assign issueImageFileId = journal.currentIssue.imageUri + thumbnail_suffix/>
                           <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}/>"
                                class="current-img" alt="Current Issue"/>
                           <span>${journal.currentIssue.displayName}</span>
@@ -74,7 +79,7 @@
                                 queryParameters={"id": "${issue.issueUri}"}; issueLink>
                                     <a href="${issueLink}">
                                       <#if issue.imageUri??>
-                                        <#assign issueImageFileId = issue.imageUri + ".g001.PNG_S"/>
+                                        <#assign issueImageFileId = issue.imageUri + thumbnail_suffix/>
                                         <@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}; issueImgURL>
                                             <img src="${issueImgURL}"
                                                  alt="${issue.displayName} Journal Cover"/>

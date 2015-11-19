@@ -1,4 +1,4 @@
-${name} (${fromEmailAddress}) has sent you a feedback from page ${page}<br/>
+${name} (${fromEmailAddress}) has sent you a feedback<br/>
 
 User's ambraId: ${id}<br/><br/>
 

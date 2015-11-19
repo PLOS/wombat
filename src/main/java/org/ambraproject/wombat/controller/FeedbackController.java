@@ -55,28 +55,28 @@ public class FeedbackController {
   @RequestMapping(name = "feedback", value = "/feedback", method = RequestMethod.GET)
   public String serveFeedbackPage(@SiteParam Site site) {
     validateFeedbackConfig(site);
-    return site + "/ftl/feedback"; // TODO
+    return site + "/ftl/feedback/feedback";
   }
+
+
 
   @RequestMapping(name = "feedbackPost", value = "/feedback", method = RequestMethod.POST)
   public ResponseEntity<?> receiveFeedback(HttpServletRequest request, Model model, @SiteParam Site site,
-                                           @RequestParam("page") String page,
-                                           @RequestParam("fromEmailAddress") String fromEmailAddress,
-                                           @RequestParam("note") String note,
-                                           @RequestParam("subject") String subject,
-                                           @RequestParam("name") String name,
-                                           @RequestParam("userId") String userId
+                                           @RequestParam(value = "fromEmailAddress", required = true) String fromEmailAddress,
+                                           @RequestParam(value = "note", required = true) String note,
+                                           @RequestParam(value = "subject", required = true) String subject,
+                                           @RequestParam(value = "name", required = true) String name,
+                                           @RequestParam(value = "userId", required = false) String userId
                                            /* TODO: Add Captcha validation params */
   )
       throws IOException, MessagingException {
     validateFeedbackConfig(site);
-    model.addAttribute("page", page);
     model.addAttribute("fromEmailAddress", fromEmailAddress);
     model.addAttribute("note", note);
     model.addAttribute("name", name);
     model.addAttribute("id", userId);
 
-    if (Strings.isNullOrEmpty(subject)) {
+    if (subject.isEmpty()) {
       subject = (String) getFeedbackConfig(site).get("defaultSubject");
     }
     model.addAttribute("subject", subject);

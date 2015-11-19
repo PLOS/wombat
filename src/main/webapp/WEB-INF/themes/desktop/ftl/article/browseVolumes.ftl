@@ -55,32 +55,32 @@
               <h3>All Issues</h3>
 
               <ul id="journal_years">
-                <#list journal.volumes?keys?sort?reverse as volumeId>
-                    <li class="btn primary"><a href="#${journal.volumes[volumeId].displayName}">
-                    ${journal.volumes[volumeId].displayName}</a>
+                <#list journal.volumes?reverse as volume>
+                    <li class="btn primary"><a href="#${volume.displayName}">
+                    ${volume.displayName}</a>
                     </li>
                 </#list>
               </ul>
 
               <ul id="journal_slides">
-                <#list journal.volumes?keys?sort?reverse as volumeId>
-                    <li id="${journal.volumes[volumeId].displayName}" class="slide">
+                <#list journal.volumes?reverse as volume>
+                    <li id="${volume.displayName}" class="slide">
                         <ul>
-                          <#assign issues = journal.volumes[volumeId].issues />
-                          <#list issues?keys?sort as issueId>
-                              <li<#if ((issueId_index + 1) % 6) = 0> class="endrow"</#if>>
+                          <#assign issues = volume.issues />
+                          <#list issues as issue>
+                              <li<#if ((issue_index + 1) % 6) = 0> class="endrow"</#if>>
                                 <@siteLink
                                 handlerName="browseIssues"
-                                queryParameters={"id": "${issues[issueId].issueUri}"}; issueLink>
+                                queryParameters={"id": "${issue.issueUri}"}; issueLink>
                                     <a href="${issueLink}">
-                                      <#if issues[issueId].imageUri??>
-                                        <#assign issueImageFileId = issues[issueId].imageUri + ".g001.PNG_S"/>
+                                      <#if issue.imageUri??>
+                                        <#assign issueImageFileId = issue.imageUri + ".g001.PNG_S"/>
                                         <@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}; issueImgURL>
                                             <img src="${issueImgURL}"
-                                                 alt="${issues[issueId].displayName} Journal Cover"/>
+                                                 alt="${issue.displayName} Journal Cover"/>
                                         </@siteLink>
                                       </#if>
-                                        <span>${issues[issueId].displayName}</span>
+                                        <span>${issue.displayName}</span>
                                     </a>
                                 </@siteLink>
                               </li>

@@ -6,10 +6,13 @@
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
 <#assign title = '' />
+<#assign cssFile="browse.css"/>
+
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 
-<body class="article ${journalStyle}">
+<body class="static ${journalStyle}">
+
 
 <#include "../common/header/headerContainer.ftl" />
 
@@ -17,9 +20,8 @@
       for each issue in the controller layer. -->
 <#assign thumbnail_suffix = ".g001.PNG_S"/>
 
-<div class="set-grid">
 
-    <section class="article-body">
+    <section >
 
 
         <h1>Journal Archive</h1>
@@ -100,13 +102,11 @@
 
     </#if>
     </section>
-</div>
 
 <#include "../common/footer/footer.ftl" />
 <@js src="resource/js/components/browse_volumes.js"/>
 <@renderJs />
 
-<@cssLink target="resource/css/browse-volumes.css"/>
 <@renderCssLinks />
 
 </body>

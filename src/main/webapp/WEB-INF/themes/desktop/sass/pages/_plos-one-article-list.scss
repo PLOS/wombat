@@ -1,0 +1,215 @@
+/* ARTICLES LIST */
+.subject-cover {
+  position: relative;
+  min-height: 816px; /* just in case there's no content */
+}
+
+.article-block {
+  float: left;
+  width: 306px;
+  height: 387px;
+  overflow: hidden; /* important for grayscale implementation below */
+  margin: 0 21px 21px 0;
+  position: relative;
+}
+
+.article-block-last {
+  margin-right: 0;
+}
+
+.article-block .overlayed {
+  z-index: 0;
+}
+
+/* ensures that images of smaller dimensions in either direction scale up
+   to fit the 306x387 article block
+*/
+.article-block IMG {
+  min-width: 306px; /* this should always be satisfied because the images are 320px wide */
+  min-height: 387px;
+}
+
+.article-block .details {
+  width: 245px;
+  height: 176px;
+  padding: 27px 20px 0;
+  background: #f8af2d;
+  position: absolute;
+  right: 0;
+  bottom: 40px;
+  z-index: 2;
+}
+
+.article-block .details h2 {
+  font-size: 18px;
+  line-height: 19px;
+  margin: 0 0 14px;
+}
+
+.article-block .details h2 a {
+  color: #333;
+}
+
+.article-block .details p {
+  font: 100%/1.385 arial, sans-serif;
+  color: #fff;
+  margin: 0;
+}
+
+.article-block .details p span {
+  white-space: nowrap;
+}
+
+.article-block .actions {
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.article-block:hover .actions {
+  display: block;
+  font-family: 'FS Albert Web Regular', Verdana, sans-serif;
+}
+
+.article-block .actions li {
+  display: inline;
+  float: left;
+  width: 94px;
+  border-right: 1px solid #616161;
+}
+
+.article-block .actions li.last {
+  width: 95px;
+  border: none;
+}
+
+.article-block .actions li a {
+  display: block;
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: #333;
+}
+
+.article-block .actions li.disabled {
+  cursor: default;
+}
+
+.article-block .actions li.disabled span {
+  display: block;
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: #777;
+  background: #333;
+}
+
+.article-block .actions li a:hover {
+  color: #fff;
+  background: #3c63af;
+}
+
+.articles-list .pagination {
+  clear: both;
+  width: 597px;
+  margin: 0 auto 59px;
+  position: relative;
+  top: 19px;
+}
+
+.articles-list .pagination .more {
+  width: 102px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  color: #fff;
+  background: #333;
+}
+
+.articles-list .pagination .more[disabled] {
+  background: #c1c1c1;
+}
+
+.articles-list .pagination .more:hover {
+  color: #333;
+  background: #f8af2d;
+}
+
+.articles-list .loader {
+  width: 100%;
+  height: 40px;
+  display: block;
+  clear: both;
+  text-align: center;
+}
+
+
+/* grayscale: setup for original image */
+
+/* hide images on load of the page by default */
+.article-block > a > img { visibility: hidden; }
+
+/* quickly revert/override the above via more specific rule */
+.no-js .article-block > a > img,
+.no-svginline.no-svgfilters .article-block > a > img,
+.no-inlinesvg .article-block > a > img { visibility: visible; }
+
+/* wait... hide images in the case where we have JS, but the domready event
+   hasn't fired yet. */
+.no-js .article-block > a > img { visibility: hidden !important; }
+
+/* the final complete state for JS-enabled browsers */
+.js .article-block > a > .complete > img { visibility: visible; }
+
+/* show default image as loading image */
+.article-block { background: url(../images/generic-article-image.png) left top no-repeat; }
+
+
+/* grayscale: option #1
+   apply legacy grayscale filter for browsers that don't do SVG or canvas.
+*/
+.no-svginline.no-svgfilters .article-block img,
+.no-canvas .article-block img {
+  filter: gray;
+  /*-webkit-filter: grayscale(100%); */
+}
+.no-svginline.no-svgfilters .article-block:hover img,
+.no-canvas .article-block:hover img {
+  filter: none;
+  /*-webkit-filter: grayscale(0%);*/
+}
+
+/* grayscale: option #2
+   hide original image for browsers that can do SVG/canvas
+*/
+.filterize-wrapper > img {
+  display: none;
+}
+.filterize-wrapper > svg,
+.filterize-wrapper > canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* then hide filterized image on hover, revealing the original image */
+.article-block:hover .filterize-wrapper > img {
+  display: block;
+}
+.article-block:hover .filterize-wrapper > svg,
+.article-block:hover .filterize-wrapper > canvas {
+  /* display: none; */ /* display: none does not work in IE 10; setting top instead */
+  top: 387px;
+}
+
+/* END ARTICLES LIST */

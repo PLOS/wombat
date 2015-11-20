@@ -57,6 +57,8 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
+import org.ambraproject.wombat.service.CaptchaService;
+import org.ambraproject.wombat.service.CaptchaServiceImpl;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
 import org.ambraproject.wombat.service.FreemarkerMailService;
@@ -295,6 +297,11 @@ public class SpringConfiguration {
   @Bean
   public CitationDownloadService citationDownloadService() {
     return new CitationDownloadServiceImpl();
+  }
+
+  @Bean
+  public CaptchaService captchaService() {
+    return new CaptchaServiceImpl();
   }
 
 }

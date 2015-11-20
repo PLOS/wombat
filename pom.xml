@@ -120,6 +120,16 @@
       <artifactId>mail</artifactId>
       <version>1.4.7</version>
     </dependency>
+    <dependency>
+      <groupId>commons-validator</groupId>
+      <artifactId>commons-validator</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>net.tanesha.recaptcha4j</groupId>
+      <artifactId>recaptcha4j</artifactId>
+      <version>0.0.7</version>
+    </dependency>
 
     <!-- Spring -->
     <dependency>

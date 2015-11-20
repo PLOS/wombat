@@ -1,8 +1,8 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,13 @@ public class FeedbackController {
   @Autowired
   private FreemarkerMailService freemarkerMailService;
   @Autowired
+  private CaptchaService captchaService;
+  @Autowired
   private JavaMailSender javaMailSender; // TODO
+
+  // Parameter names defined by net.tanesha.recaptcha library
+  private static final String RECAPTCHA_CHALLENGE_FIELD = "recaptcha_challenge_field";
+  private static final String RECAPTCHA_RESPONSE_FIELD = "recaptcha_response_field";
 
   private static Map<String, Object> getFeedbackConfig(Site site) {
     try {
@@ -53,11 +59,11 @@ public class FeedbackController {
   }
 
   @RequestMapping(name = "feedback", value = "/feedback", method = RequestMethod.GET)
-  public String serveFeedbackPage(@SiteParam Site site) {
+  public String serveFeedbackPage(Model model, @SiteParam Site site) throws IOException {
     validateFeedbackConfig(site);
+    model.addAttribute("captchaHtml", captchaService.getCaptchaHTML(site));
     return site + "/ftl/feedback/feedback";
   }
-
 
 
   @RequestMapping(name = "feedbackPost", value = "/feedback", method = RequestMethod.POST)
@@ -66,11 +72,15 @@ public class FeedbackController {
                                            @RequestParam(value = "note", required = true) String note,
                                            @RequestParam(value = "subject", required = true) String subject,
                                            @RequestParam(value = "name", required = true) String name,
-                                           @RequestParam(value = "userId", required = false) String userId
-                                           /* TODO: Add Captcha validation params */
-  )
+                                           @RequestParam(value = "userId", required = false) String userId,
+                                           @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required = true) String captchaChallenge,
+                                           @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required = true) String captchaResponse)
       throws IOException, MessagingException {
     validateFeedbackConfig(site);
+    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
+      throw new NotFoundException("Captcha failed"); // TODO: Show as a user-friendly form validation failure
+    }
+
     model.addAttribute("fromEmailAddress", fromEmailAddress);
     model.addAttribute("note", note);
     model.addAttribute("name", name);

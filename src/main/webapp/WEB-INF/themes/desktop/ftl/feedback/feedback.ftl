@@ -28,7 +28,7 @@
 
           <p>This question is to determine if you are a human visitor in order to prevent automated spam
             submissions.</p>
-        <#--${captchaHTML}-->
+        ${captchaHtml}
         </li>
       </ol>
       <input type="submit" value="Submit Feedback" class="btn"/>

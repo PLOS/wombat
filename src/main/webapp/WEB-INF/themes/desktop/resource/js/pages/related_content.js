@@ -32,10 +32,6 @@
 
       //assuming here the request was properly formatted to only get media information
       var mediaSource = result.sources[0];
-      //alert(mediaSource.name);
-
-      //alert(Object.keys(mediaSource));
-
 
       // don't display anything if there isn't any data
       if (mediaSource.events.length > 0) {

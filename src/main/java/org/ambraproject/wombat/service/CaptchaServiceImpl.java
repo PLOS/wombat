@@ -17,6 +17,7 @@ public class CaptchaServiceImpl implements CaptchaService {
 
   /** {@inheritDoc}
    */
+  @Override
   public boolean validateCaptcha(Site site, String ip, String challenge, String response)
       throws IOException {
     ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
@@ -33,6 +34,7 @@ public class CaptchaServiceImpl implements CaptchaService {
 
   /** {@inheritDoc}
    */
+  @Override
   public String getCaptchaHTML(Site site) throws IOException {
     String publicKey = getPublicKey(site);
     String privateKey = getPrivateKey(site);

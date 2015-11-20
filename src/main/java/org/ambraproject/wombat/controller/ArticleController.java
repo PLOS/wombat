@@ -506,6 +506,7 @@ public class ArticleController extends WombatController {
       @RequestParam("id") String articleId) throws IOException {
     // TODO: remove when ready to expose page in prod
     enforceDevFeature("relatedContentTab");
+    requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
@@ -539,8 +540,9 @@ public class ArticleController extends WombatController {
       throws IOException {
     // TODO: remove when ready to expose page in prod
     enforceDevFeature("relatedContentTab");
+    requireNonemptyParameter(doi);
 
-    if (!validateMediaCurationInput(model, doi, link, name, email, captchaChallenge,
+    if (!validateMediaCurationInput(model, link, name, email, captchaChallenge,
         captchaResponse, site, request)) {
       model.addAttribute("formError", "Invalid values have been submitted.");
       //return model for error reporting
@@ -592,23 +594,18 @@ public class ArticleController extends WombatController {
 
   /**
    * Validate the input from the form
-   * @return true if everything is ok
    * @param model data passed in from the view
-   * @param doi doi of the article to refer
    * @param link link pointing to media content relating to the article
    * @param name name of the user submitting the media curation request
    * @param email email of the user submitting the media curation request
    * @param site current site
+   * @return true if everything is ok
    */
-  private boolean validateMediaCurationInput(Model model, String doi, String link, String name,
+  private boolean validateMediaCurationInput(Model model, String link, String name,
       String email, String captchaChallenge, String captchaResponse, Site site,
       HttpServletRequest request) throws IOException {
 
     boolean isValid = true;
-
-    if (StringUtils.isBlank(doi)) {
-      isValid = false;
-    }
 
     UrlValidator urlValidator = new UrlValidator();
 

@@ -193,6 +193,7 @@ The CSS for dialog widget,
 
       <div id="media-coverage-form" class="cf">
         <form onsubmit="return false;" data-doi="${article.doi}" class="form standard">
+          <div id="mcform-error"></div>
           <ul>
             <li class="small cf">
               <div>

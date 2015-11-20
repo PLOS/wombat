@@ -132,8 +132,12 @@
           return data.replace(/(^\s*\/\*\s*)|(\s*\*\/\s*$)/g, '');
         },
         success:function (data, textStatus, jqXHR) {
+          $("#mcform-error").text("");
+          if (data.isValid == false) {
+            if (data.formError) {
+              $("#mcform-error").text(data.formError);
+            }
 
-          if (!data.isValid) {
             if (data.linkError) {
               $("#mcform-link").next().text(data.linkError);
             }
@@ -148,17 +152,14 @@
 
             if (data.captchaError) {
               $("#mcform-captcha").next().text(data.captchaError);
-              Recaptcha.reload();
             }
+            Recaptcha.reload();
           } else {
             // display success message and close the form
             $('#media-coverage-form').hide();
             $('#media-coverage-success').show();
 
-            setTimeout(function() {
-              $("#media-coverage-modal").dialog("close");
-            }, 1500);
-
+            closeMediaCoverageDialog(1500);
           }
         },
         error:function (jqXHR, textStatus, errorThrown) {
@@ -166,11 +167,15 @@
           $('#media-coverage-form').hide();
           $('#media-coverage-failure').show();
 
-          setTimeout(function() {
-            $("#media-coverage-modal").dialog("close");
-          }, 3000);
+          closeMediaCoverageDialog(3000);
         }
       });
+
+      function closeMediaCoverageDialog(timeToWait) {
+        setTimeout(function () {
+          $("#media-coverage-modal").dialog("close");
+        }, timeToWait);
+      }
     }
 
     $(document.body).on('click',"#media-coverage-form-link", function (e) {

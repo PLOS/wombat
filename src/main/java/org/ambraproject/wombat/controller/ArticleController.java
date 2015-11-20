@@ -28,6 +28,7 @@ import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
@@ -568,9 +569,15 @@ public class ArticleController extends WombatController {
           throw new RuntimeException("bad response from media curation server: "
               + response.getStatusLine());
         }
-        //todo: better exception handling
-      } catch (Exception e) {
-        throw new RuntimeException(e);
+      } catch (ServiceRequestException e) {
+        //This exception is thrown when the submitted link is already present for the article.
+        //todo: the response content body should be examined. It should say "The link already exists"
+        if(e.getStatusCode() == HttpStatus.SC_BAD_REQUEST) {
+          model.addAttribute("formError", "This link has already been submitted. Please submit a different link");
+          model.addAttribute("isValid", false);
+        } else {
+          throw new RuntimeException(e);
+        }
       }
       finally {
         httpPost.releaseConnection();
@@ -591,7 +598,7 @@ public class ArticleController extends WombatController {
    * @param link link pointing to media content relating to the article
    * @param name name of the user submitting the media curation request
    * @param email email of the user submitting the media curation request
-   * @param site
+   * @param site current site
    */
   private boolean validateMediaCurationInput(Model model, String doi, String link, String name,
       String email, String captchaChallenge, String captchaResponse, Site site,
@@ -631,6 +638,7 @@ public class ArticleController extends WombatController {
       isValid = false;
     }
 
+    model.addAttribute("isValid", isValid);
     return isValid;
   }
 

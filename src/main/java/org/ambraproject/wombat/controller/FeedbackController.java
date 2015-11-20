@@ -68,13 +68,13 @@ public class FeedbackController {
 
   @RequestMapping(name = "feedbackPost", value = "/feedback", method = RequestMethod.POST)
   public ResponseEntity<?> receiveFeedback(HttpServletRequest request, Model model, @SiteParam Site site,
-                                           @RequestParam(value = "fromEmailAddress", required = true) String fromEmailAddress,
-                                           @RequestParam(value = "note", required = true) String note,
-                                           @RequestParam(value = "subject", required = true) String subject,
-                                           @RequestParam(value = "name", required = true) String name,
-                                           @RequestParam(value = "userId", required = false) String userId,
-                                           @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required = true) String captchaChallenge,
-                                           @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required = true) String captchaResponse)
+                                           @RequestParam("fromEmailAddress") String fromEmailAddress,
+                                           @RequestParam("note") String note,
+                                           @RequestParam("subject") String subject,
+                                           @RequestParam("name") String name,
+                                           @RequestParam("userId") String userId,
+                                           @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+                                           @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException, MessagingException {
     validateFeedbackConfig(site);
     if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {

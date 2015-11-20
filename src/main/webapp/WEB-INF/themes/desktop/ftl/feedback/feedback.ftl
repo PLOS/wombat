@@ -14,10 +14,11 @@
   <#nested/>
 </#macro>
 
-  <form name="feedbackForm" action="" method="post" title="Feedback">
-  <#--<hidden name="page"/>-->
+  <form name="feedbackForm" method="post" title="Feedback"
+        action="<@siteLink handlerName="feedbackPost" />">
     <fieldset>
     <#include "preamble.ftl" />
+      <input type="text" name="userId" style="visibility: hidden" value="<#--TODO: Add userId if present-->"/>
       <ol>
         <li><@formLabel>Name:</@formLabel><input type="text" name="name"/></li>
         <li><@formLabel>E-mail Address:</@formLabel><input type="text" name="fromEmailAddress"/></li>
@@ -32,6 +33,7 @@
         </li>
       </ol>
       <input type="submit" value="Submit Feedback" class="btn"/>
+    </fieldset>
   </form>
 
 </div>

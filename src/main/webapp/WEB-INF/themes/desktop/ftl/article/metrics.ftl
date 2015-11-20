@@ -23,6 +23,8 @@
   <section class="article-body">
 
   <#include "tabs.ftl" />
+  <@displayTabList 'metrics' />
+
     <div class="article-container">
 
     </div>

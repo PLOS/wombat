@@ -415,6 +415,11 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/metrics";
   }
 
+  @RequestMapping(name = "relatedContent", value = "/article/related")
+  public String renderRelatedContent() {
+    throw new NotFoundException(); // TODO Implement
+  }
+
   /**
    * Loads article metadata from the SOA layer.
    *

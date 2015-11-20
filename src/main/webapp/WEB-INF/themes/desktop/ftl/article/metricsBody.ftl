@@ -35,6 +35,7 @@
         </h2>
 
         <div id="relatedBlogPosts" style="display:none;">
+            <#-- @TODO: Waiting for trackback service in order to implement. -->
 <#--        <#if trackbackCount gt 0>
             <div id="trackbackOnArticleMetricsTab" class="metrics_tile">
               <@s.a href="${relatedTabURL}#trackbackLinkAnchor">

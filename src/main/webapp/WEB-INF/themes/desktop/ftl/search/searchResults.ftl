@@ -134,7 +134,7 @@
                 <div class="filter-item" id="filter-date">
                 ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
                   <@siteLink handlerName="simpleSearch" queryParameters=dateClearParams ; href>
-
+                    <a href="${href}">&nbsp;</a>
                   </@siteLink>
                 </div>
                 <input type="hidden" name="filterStartDate" value="${filterStartDate}" placeholder="YYYY-MM-DD"/>

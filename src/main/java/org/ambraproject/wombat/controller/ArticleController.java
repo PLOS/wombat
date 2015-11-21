@@ -573,8 +573,8 @@ public class ArticleController extends WombatController {
         }
       } catch (ServiceRequestException e) {
         //This exception is thrown when the submitted link is already present for the article.
-        //todo: the response content body should be examined. It should say "The link already exists"
-        if(e.getStatusCode() == HttpStatus.SC_BAD_REQUEST) {
+        if(e.getStatusCode() == HttpStatus.SC_BAD_REQUEST
+            && e.getResponseBody().equals("The link already exists")) {
           model.addAttribute("formError", "This link has already been submitted. Please submit a different link");
           model.addAttribute("isValid", false);
         } else {

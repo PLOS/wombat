@@ -29,7 +29,7 @@ public class ArticleServiceImpl implements ArticleService {
   @Autowired
   private SoaService soaService;
 
-  private static ImmutableSet FIGURE_TABLE_CONTEXT_ELEMENT =
+  private static final ImmutableSet<String> FIGURE_TABLE_CONTEXT_ELEMENT =
       new ImmutableSet.Builder<String>()
       .add("fig").add("table-wrap").add("alternatives")
       .build();

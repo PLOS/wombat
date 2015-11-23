@@ -2,6 +2,9 @@
 .subject-cover {
   position: relative;
   min-height: 816px; /* just in case there's no content */
+  overflow-y: auto;
+  width: 960px;
+  margin-left: 10px;
 }
 
 .article-block {
@@ -38,6 +41,7 @@
   right: 0;
   bottom: 40px;
   z-index: 2;
+  box-sizing: content-box;
 }
 
 .article-block .details h2 {
@@ -51,7 +55,7 @@
 }
 
 .article-block .details p {
-  font: 100%/1.385 arial, sans-serif;
+  font: 82%/1.375 arial, sans-serif;
   color: #fff;
   margin: 0;
 }
@@ -118,6 +122,10 @@
 .article-block .actions li a:hover {
   color: #fff;
   background: #3c63af;
+}
+
+.articles-list {
+  overflow-y: auto;
 }
 
 .articles-list .pagination {

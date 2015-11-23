@@ -99,6 +99,11 @@
       }, 5000);
     });
   });
+  // making the checkbox also link in the filter column
+  $('#searchFilters li a input').on('change',function(){
+    var filterlink = $(this).parent('a').attr('href');
+     window.location.assign(filterlink);
+  })
 
   // initialize toggle for search filter item list
   plos_toggle.init();

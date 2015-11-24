@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
@@ -19,6 +20,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
@@ -28,9 +30,14 @@ import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.TextUtil;
 import org.apache.commons.io.output.WriterOutputStream;
+import org.apache.http.entity.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +55,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -82,6 +90,8 @@ public class ArticleController extends WombatController {
   private ArticleService articleService;
   @Autowired
   private ArticleTransformService articleTransformService;
+  @Autowired
+  private CitationDownloadService citationDownloadService;
 
   @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
@@ -255,7 +265,7 @@ public class ArticleController extends WombatController {
 
   /**
    * Add links to cross-published journals to the model.
-   * <p/>
+   * <p>
    * Each journal in which the article was published (according to the supplied article metadata) will be represented in
    * the model, other than the journal belonging to the site being browsed. If that journal is the only one, nothing is
    * added to the model. The journal of original publication (according to the article metadata's eISSN) is added under
@@ -328,7 +338,7 @@ public class ArticleController extends WombatController {
 
   /**
    * Apply the display logic for different amendment types taking precedence over each other.
-   * <p/>
+   * <p>
    * Retractions take precedence over all else (i.e., don't show them if there is a retraction) and EOCs take precedence
    * over corrections. This logic could conceivably vary between sites (e.g., some journals might want to show all
    * amendments side-by-side), so this is a good candidate for making it controllable through config. But for now,
@@ -414,6 +424,76 @@ public class ArticleController extends WombatController {
     requestAuthors(model, articleId);
     return site + "/ftl/article/metrics";
   }
+
+
+  @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
+  public String renderCitationDownloadPage(Model model, @SiteParam Site site,
+                                           @RequestParam("id") String articleId)
+      throws IOException {
+    enforceDevFeature("citationDownload"); // TODO: remove when ready to expose page in prod
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateArticleVisibility(site, articleMetadata);
+    requestAuthors(model, (String) articleMetadata.get("doi"));
+    model.addAttribute("article", articleMetadata);
+    return site + "/ftl/article/citationDownload";
+  }
+
+  @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris")
+  public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
+      throws IOException {
+    return serveCitationDownload(site, articleId, "ris", "application/x-research-info-systems",
+        citationDownloadService::buildRisCitation);
+  }
+
+  @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex")
+  public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
+      throws IOException {
+    return serveCitationDownload(site, articleId, "bib", "application/x-bibtex",
+        citationDownloadService::buildBibtexCitation);
+  }
+
+  private ResponseEntity<String> serveCitationDownload(Site site, String articleId,
+                                                       String fileExtension, String contentType,
+                                                       Function<Map<String, ?>, String> serviceFunction)
+      throws IOException {
+    enforceDevFeature("citationDownload"); // TODO: remove when ready to expose page in prod
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateArticleVisibility(site, articleMetadata);
+    String citationBody = serviceFunction.apply((Map<String, ?>) articleMetadata);
+    String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
+        URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
+        fileExtension);
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(HttpHeaders.CONTENT_TYPE, contentType);
+    headers.add(HttpHeaders.CONTENT_DISPOSITION, contentDispositionValue);
+    return new ResponseEntity<>(citationBody, headers, HttpStatus.OK);
+  }
+
+  /**
+   * Returns a list of figures and tables of a given article; main usage is the figshare tile on the Metrics
+   * tab
+   *
+   * @param site current site
+   * @param articleId DOI identifying the article
+   * @return a list of figures and tables of a given article
+   * @throws IOException
+   */
+  @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
+  public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
+                                                       @RequestParam("id") String articleId) throws IOException {
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateArticleVisibility(site, articleMetadata);
+    List<ImmutableMap<String, String>> articleFigsAndTables = articleService.getArticleFiguresAndTables(articleMetadata);
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+    return new ResponseEntity<>(articleFigsAndTables, headers, HttpStatus.OK);
+  }
+
 
   /**
    * Loads article metadata from the SOA layer.
@@ -563,4 +643,5 @@ public class ArticleController extends WombatController {
       }
     });
   }
+
 }

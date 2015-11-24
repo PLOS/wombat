@@ -2,8 +2,8 @@
 @import "global-section-imports";
 
 .search-results-body {
-  background-color: $clr-header;
   main {
+    //background-color: $clr-header;
     @extend .width-full; //from scaffold.scss
     margin-bottom: rem-calc($line-height-large);
     section {
@@ -11,18 +11,13 @@
       @extend .plos-row;
     }
     article {
-      @include plos-grid-column($pixelwidth: 760, $gutter: right);
+      @include plos-grid-column($pixelwidth: 760, $gutter: left);
     }
 
     aside {
-      @include plos-grid-column($pixelwidth: 180);
+      @include plos-grid-column($pixelwidth: 180, $gutter: none);
     }
 
-    .search-results-controls {
-      form {
-        @extend .plos-row;
-      }
-    }
   }
 }
 
@@ -40,8 +35,8 @@
 // div.BLAH > label > select
 
 @mixin dropdown-styled($width:225, $height:false, $padding:false, $margin: 7 10 7 20, $caret-spacing:.20em ) {
+  display: inline-block;
   float: right;
-  display: inline;
   select, label {
     @extend .search-results-button-branded-small;
     margin-right: 0;
@@ -152,10 +147,11 @@ $controls-gray: $grey-med-light;
 .search-results-controls {
   background: $grey-dark;
   padding: rem-calc($line-height 0);
-  margin-bottom: rem-calc($line-height-medium);
+  margin-bottom: rem-calc($line-height);
   position: relative;
   color: $controls-gray;
   font-size: $txt-size-small;
+  width: 100%;
 
   a {
     color: $controls-gray;
@@ -166,92 +162,88 @@ $controls-gray: $grey-med-light;
     }
   }
 
-  form {
-    //   margin: 0 auto;
-    position: relative;
-    display: block;
-    height: 100%;
+  //   margin: 0 auto;
+  //position: relative;
+  //display: block;
+  //height: 100%;
 
-    .search-results-controls-first-row {
-      @extend .plos-row;
-      margin-bottom: rem-calc($line-height-medium);
-
-      .search-field {
-        width: 100%;
-      }
-
-      .search-button {
-        @include plos-grid-column($pixelwidth: 150, $gutter: none, $float: right);
-        text-align: right;
-        padding: 0;
-
-        a {
-          padding: $line-height-small $pad-medium;
-          margin-right: 0;
-        }
-      }
+  .search-results-controls-first-row {
+    @extend .plos-row;
+    .search-field {
+      width: 100%;
     }
 
-    button:focus {
-      outline: none;
-    }
-
-    legend, label {
-      display: none;
-    }
-    fieldset {
-      border: none;
-    }
-
-    fieldset.search-field {
-      display: inline;
-      border: none;
-      margin: 0;
-      padding: $pad-small;
-      background-color: $white;
-    }
-
-    input[type="text"] {
-      margin: 0;
+    .search-button {
+      @include plos-grid-column($pixelwidth: 150, $gutter: none, $float: right);
+      text-align: right;
       padding: 0;
-      border: none;
-      outline: 0;
-      display: inline-block;
-      width: 95%;
-      font-family: $font-face-fancy;
-      font-size: $txt-size-xlarge;
-      color: $clr-input-active;
-      top: 0 !important;
-    }
-    @include input-placeholder-color();
 
-    button[type="submit"] {
-      @include postfix($white, $white); // foundation
-      padding: 0;
-      margin: 0;
-      border: none;
-      display: inline-block;
-      float: right;
-
-      .search-icon {
-        @extend .fa;
-        @extend .fa-search;
-        font-size: rem-calc($txt-size-xlarge);
+      a {
+        padding: $line-height-small $pad-medium;
+        margin-right: 0;
       }
     }
+  }
 
-    .search-results-flush-left {
-      margin-left: 0;
-    }
+  button:focus {
+    outline: none;
+  }
 
-    .search-results-controls-second-row {
-      padding-bottom: $pad-default;
-    }
+  legend, label {
+    display: none;
+  }
+  fieldset {
+    border: none;
+  }
 
-    .search-results-advanced-search-submit {
-      float: right;
-      padding-top: $pad-xsmall;
+  fieldset.search-field {
+    display: inline;
+    border: none;
+    margin: 0;
+    padding: $pad-small;
+    background-color: $white;
+  }
+
+  input[type="text"] {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    display: inline-block;
+    width: 95%;
+    font-family: $font-face-fancy;
+    font-size: $txt-size-xlarge;
+    color: $clr-input-active;
+    top: 0 !important;
+  }
+  @include input-placeholder-color();
+
+  button[type="submit"] {
+    @include postfix($white, $white); // foundation
+    padding: 0;
+    margin: 0;
+    border: none;
+    display: inline-block;
+    float: right;
+
+    .search-icon {
+      @extend .fa;
+      @extend .fa-search;
+      font-size: rem-calc($txt-size-xlarge);
     }
+  }
+
+  .search-results-flush-left {
+    margin-left: 0;
+  }
+
+  .search-results-controls-second-row {
+    padding-bottom: $pad-default;
+  }
+
+  .search-results-advanced-search-submit {
+    float: right;
+    padding-top: $pad-xsmall;
   }
 
   .search-results-disabled-message {
@@ -276,20 +268,26 @@ $controls-gray: $grey-med-light;
 
 .search-results-num-found {
   font-size: $txt-size-medium-large;
-
   span {
     font-weight: bold;
   }
 }
 
+.results-container {
+  margin-top: rem-calc($line-height-medium) !important;
+}
+
 .search-results-list {
-  margin: rem-calc($line-height-small 0 $line-height-large);
+
   dd, dt {
     display: block;
     line-height: $line-height;
   }
   dt {
     margin-bottom: rem-calc($line-height-xsmall);
+  }
+  dd {
+    margin-bottom: rem-calc($line-height);
   }
   p {
     margin-bottom: rem-calc($line-height-xsmall);
@@ -298,7 +296,7 @@ $controls-gray: $grey-med-light;
 
 .search-results-title {
   padding-bottom: rem-calc(0);
-  padding-top: $line-height;
+  padding-top: $line-height-small;
 
 }
 
@@ -408,6 +406,8 @@ $pagination-height: 24px;
 
 .search-results-select {
   @include dropdown-styled;
+  float: none;
+  vertical-align: middle;
 }
 
 .search-results-eoc {
@@ -456,34 +456,134 @@ $pagination-height: 24px;
   }
 }
 
-.filter-block {
-  padding-top: $pad-small;
+//TODO - make pattern out of these columns
+//TODO- cleanout old css
+//TODO - add sizes to variables.scss
+$column-size: 180 + 20;
+// TODO fix ems
+$column-size-mid: ($grid-width - ($column-size *2));
+$column-size-first: ($grid-width - $column-size);
+.search-results-header {
+  @extend .plos-row;
+  font-size: $txt-size-small;
+  margin-bottom: $line-height-medium !important;
+  display: flex;
+  align-content: center;
 
-  span {
+  > div {
+    margin: auto
+  }
+
+  > div:nth-child(2) {
+    @include plos-grid-column($pixelwidth: $column-size-mid, $gutter: none);
+  }
+  > div:first-child, > div:last-child {
+    @include plos-grid-column($pixelwidth: $column-size, $gutter: none);
+  }
+  > div:last-child {
+    text-align: right;
+  }
+  .results-number {
+    line-height: 100%;
+  }
+  .search-sort {
+    align-items: center;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+}
+
+.filter-view-container {
+  background: $clr-header;
+}
+
+.filter-view {
+  @extend .plos-row;
+  font-size: $txt-size-small;
+  padding: $line-height 0;
+  display: flex;
+  align-items: center;
+
+  > div:first-child {
+    text-align: left;
+    @include plos-grid-column($pixelwidth: $column-size-first, $gutter: none);
+  }
+
+  > div:last-child {
+    text-align: right;
+    @include plos-grid-column($pixelwidth: $column-size, $gutter: none, $float:right);
+  }
+
+  .filter-item {
+    display: inline-block;
     float: left;
-    line-height: rem-calc(20);
-    padding-right: $pad-default;
-    color: $controls-gray;
-    font-size: $txt-size-small;
-    font-weight: bold;
+    padding-left: $pad-medium;
+    padding-top: $pad-xsmall;
+    padding-bottom: $pad-xsmall;
+    a:before {
+      @extend .icon-close;
+      font-size: $txt-size-default;
+    }
+  }
+
+  .filter-label {
+    display: inline-block;
+    margin: 0;
+    float: left;
+    padding-right: $pad-medium;
   }
 }
 
-.filter-item {
-  @extend %rounded-default;
-  font-size: $txt-size-small;
-  line-height: $line-height-medium;
-  float: left;
-  color: $white ;
-  background: $grey-med-dark;
-  font-weight: bold;
-  margin-right: $pad-xsmall;
-  margin-bottom: $pad-xsmall;
-  padding-right: $pad-small;
-  padding-left: $pad-small;
+//TODO : remove this kludge for displaying empty results
+.search-filters  ul:empty{display:none;}
+.search-filters div {
+  ul {
+
+    @include nav-side($pad-left: 0);
+
+    &:empty{display:none;}
+
+    li {
+      position: relative;
+    }
+    &.active-filters {
+      border-bottom: 1px solid $clr-separator;
+      padding-bottom:0;
+      li a {font-weight: bold;}
+    }
+    li input {
+      position: absolute;
+      left: -$pad-default;
+      top: 0;
+    }
+    li.toggle-trigger {
+      margin-left: $pad-small;
+      margin-top: $pad-xsmall;
+      a {
+        color: $plos-default;
+      }
+    }
+  }
+  form {
+    input[type="submit"] {
+      margin-top: $pad-small;
+    }
+    input[type="text"] {
+      width: 75%;
+    }
+  }
+  hr {
+    margin-top: 0;
+  }
+
 }
 
 // Right-hand aside (currently just contains two disabled controls).
+$disabled-filter-size: rem-calc(28);
+// when we redo the search I'll make sure all the filters and buttons are the same size.
 
 @mixin search-disabled-control {
   @extend %rounded-default;
@@ -491,24 +591,28 @@ $pagination-height: 24px;
   background: $clr-btn-disabled;
   color: $grey-light;
   cursor: default;
+  vertical-align: top;
+  height: $disabled-filter-size;
+  line-height: $disabled-filter-size;
 }
 
 @mixin search-disabled-tooltip {
   @include js-tooltip-target();
   @include tooltip($width: 350px, $tooltip-padding: $pad-xsmall);
-  top: 20px;
   text-align: center;
-  background-color: $white;
-  color: $grey-med;
+  background: $clr-btn-disabled;
+  color: $grey-light;
   font-family: $font-face-plain;
+  top: rem-calc(20);
+
 }
 
 $search-icon-pad-default: 8;
 
 .search-alert {
   @include search-disabled-control;
-  display: inline;
-  padding: rem-calc($search-icon-pad-default + 1 $search-icon-pad-default $search-icon-pad-default - 3 $search-icon-pad-default);
+  padding: rem-calc(0 $search-icon-pad-default);
+  display: inline-block;
   font-size: $txt-size-xsmall;
   font-weight: bold;
   text-transform: uppercase;
@@ -518,6 +622,8 @@ $search-icon-pad-default: 8;
     padding-left: rem-calc($search-icon-pad-default);
     font-size: $txt-size-large;
     font-weight: normal;
+    line-height: $txt-size-large;
+    vertical-align: middle;
   }
 
   .search-alert-tooltip {
@@ -531,8 +637,10 @@ $search-icon-pad-default: 8;
 .search-feed {
   @extend .icon-rss;
   @include search-disabled-control;
-  line-height: 85%;
-  padding: rem-calc($search-icon-pad-default - 4 $search-icon-pad-default - 1 $search-icon-pad-default - 3 $search-icon-pad-default - 1);
+  min-width: $disabled-filter-size;
+  text-align: center;
+  display: inline-block;
+  font-size: $txt-size-large;
 
   .search-feed-tooltip {
     @include search-disabled-tooltip;

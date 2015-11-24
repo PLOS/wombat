@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.model;
 
 public enum SingletonSearchFilterType implements SearchFilterType {
-  //todo: add enum entries for singleton filter types such as author and dates
   SUBJECT_AREA {
     @Override
     public String getFilterValue(String value) {
@@ -11,6 +10,11 @@ public enum SingletonSearchFilterType implements SearchFilterType {
     @Override
     public String getParameterName() {
       return "filterSubjects";
+    }
+
+    @Override
+    public String getFilterMapKey() {
+      return "subject_area";
     }
   },
 
@@ -25,6 +29,10 @@ public enum SingletonSearchFilterType implements SearchFilterType {
       return "filterAuthors";
     }
 
+    @Override
+    public String getFilterMapKey() {
+      return "author";
+    }
   },
 
   ARTICLE_TYPE {
@@ -37,6 +45,11 @@ public enum SingletonSearchFilterType implements SearchFilterType {
     @Override
     public String getParameterName() {
       return "filterArticleTypes";
+    }
+
+    @Override
+    public String getFilterMapKey() {
+      return "article_type";
     }
   },
 
@@ -51,6 +64,10 @@ public enum SingletonSearchFilterType implements SearchFilterType {
     public String getParameterName() {
       return "filterSections";
     }
-  }
 
+    @Override
+    public String getFilterMapKey() {
+      return "section";
+    }
+  };
 }

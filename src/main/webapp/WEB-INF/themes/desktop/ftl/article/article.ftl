@@ -5,8 +5,9 @@
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-<#assign title = article.title, articleDoi = article.doi />
+<#assign title = article.title />
 <#assign depth = 0 />
+<#assign tabPage="Article"/>
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
@@ -22,7 +23,9 @@
   <section class="article-body">
 
   <#include "tabs.ftl" />
-    <div class="article-container">
+  <@displayTabList 'article'></@displayTabList>
+
+      <div class="article-container">
 
     <#include "nav.ftl" />
 

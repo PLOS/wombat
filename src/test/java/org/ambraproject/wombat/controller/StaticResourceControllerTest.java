@@ -13,6 +13,7 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.AssetService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.testng.annotations.BeforeMethod;
@@ -129,7 +130,8 @@ public class StaticResourceControllerTest extends ControllerTest {
 
   @Configuration
   @EnableWebMvc
-  static class TestConfig extends WombatControllerTestConfig {
+  @Import(WombatControllerTestConfig.class)
+  static class TestConfig {
 
     @Bean
     public StaticResourceController staticResourceController() {
@@ -141,9 +143,8 @@ public class StaticResourceControllerTest extends ControllerTest {
       return assetService;
     }
 
-    @Override
     @Bean
-    public SiteSet siteSetDependency() {
+    public SiteSet siteSet() {
       SiteRequestScheme mockRequestScheme = mock(SiteRequestScheme.class);
       when(mockRequestScheme.isForSite(any(HttpServletRequest.class))).thenReturn(true);
 

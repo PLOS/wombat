@@ -59,46 +59,43 @@
     }
   }
 
-  .ad-item-last {
-    width: 177px;
-    height: 110px;
+  #submission-links {
+    border-radius: inherit;
+    height: 150px;
     text-align: center;
     padding: 20px 30px;
     margin: 0;
     background: #333;
-  }
-
-  .ad-item-last h2, .ad-item-last h3 {
-    font-family: 'FS Albert Web Regular', Verdana, sans-serif;
-    font-size: 15px;
-    line-height: 24px;
-    padding: 0;
-    margin: 0;
-  }
-
-  .ad-item-last h2 {
-    font-weight: normal;
-    color: #fff;
-    margin: 0 0 9px;
-  }
-
-  .ad-item-last h3 {
-    padding: 9px 0 10px;
-  }
-
-  .ad-item-last h3.last {
-    padding: 9px 0 0;
-    border-top: 1px solid #616161;
-  }
-
-  .ad-item-last h3 a {
-    color: #f8af2d;
-  }
-
-  #submission-links {
     float: right;
-    width: 237px;
+    width: 245px;
     margin: 0;
+
+    h2, h3 {
+      font-family: $font-face-fancy;
+      font-size: 15px;
+      line-height: 24px;
+      padding: 0;
+      margin: 0;
+    }
+
+    h2 {
+      font-weight: normal;
+      color: #fff;
+      margin: 0 0 9px;
+    }
+
+    h3 {
+      padding: 9px 0 10px;
+    }
+
+    h3.last {
+      padding: 9px 0 0;
+      border-top: 1px solid #616161;
+    }
+
+    h3 a {
+      color: #f8af2d;
+    }
   }
 }
 

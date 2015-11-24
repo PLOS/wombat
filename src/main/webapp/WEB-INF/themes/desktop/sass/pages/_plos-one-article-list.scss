@@ -78,7 +78,7 @@
 
 .article-block:hover .actions {
   display: block;
-  font-family: 'FS Albert Web Regular', Verdana, sans-serif;
+  font-family: $font-face-fancy;
 }
 
 .article-block .actions li {
@@ -181,7 +181,7 @@
 .js .article-block > a > .complete > img { visibility: visible; }
 
 /* show default image as loading image */
-.article-block { background: url(../images/generic-article-image.png) left top no-repeat; }
+.article-block { background: url(../img/generic-article-image.png) left top no-repeat; }
 
 
 /* grayscale: option #1

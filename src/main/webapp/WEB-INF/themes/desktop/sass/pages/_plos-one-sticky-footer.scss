@@ -1,66 +1,71 @@
+/* STICKY FOOTER */
+#sticky-footer {
+  display: none;
+  width: 100%;
+  background: #242424;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
 
-/* FILTER BAR */
-.filter-bar {
-  min-height: 40px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  margin: 0 0 21px;
-  background: #333;
+  .wrapper {
+    width: 903px;
+    padding: 0 37px 0 0;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: content-box;
+  }
+
+  h3, h4 {
+    float: left;
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: normal;
+    color: #ccc;
+    padding: 12px 0;
+    margin: 0;
+    box-sizing: content-box;
+  }
+
+
+  h3 {
+    line-height: 10px;
+    a {
+      color: #f8af2d;
+    }
+  }
+
+  h3 strong, h4 a {
+    color: #fff;
+  }
+
+  h4 {
+    float: right;
+    font-family: $font-face-fancy;
+    padding: 0;
+    border-right: 1px solid #666;
+    border-left: 1px solid #666;
+  }
+
+  h4 a {
+    display: block;
+    padding: 12px 27px 12px 15px;
+    background: url(../img/submit-arrow.png) right 50% no-repeat;
+  }
+
+  h4 a:hover {
+    background-color: #3c63af;
+  }
+
+  a.close {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url(../img/close.png) no-repeat;
+    position: absolute;
+    top: 12px;
+    right: 0;
+  }
 }
 
-.filter-bar ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.filter-bar ul li {
-  display: inline;
-  float: left;
-  border-right: 1px solid #616161;
-}
-
-.filter-bar ul li.last {
-  border: none;
-}
-
-.filter-bar ul li a {
-  display: block;
-  height: 40px;
-  font-family: $font-face-fancy;
-  font-size: 16px;
-  line-height: 40px;
-  text-decoration: none;
-  color: #fff;
-  padding: 0 25px;
-}
-
-.filter-bar ul li.first a {
-  -webkit-border-top-left-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  -moz-border-radius-topleft: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.filter-bar ul li.last a {
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -moz-border-radius-bottomright: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.filter-bar ul li a.active {
-  color: #f8af2d;
-}
-
-.filter-bar ul li a:hover {
-  color: #fff;
-  background: #3c63af;
-}
-
-/* END FILTER BAR */
+/* END STICKY FOOTER */

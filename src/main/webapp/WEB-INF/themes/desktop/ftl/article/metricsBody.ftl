@@ -1,9 +1,3 @@
-<#--
-<@s.url id="almInfoURL" namespace="/static" action="almInfo" includeParams="none"/>
-<@s.url id="journalStatisticsURL" includeParams="none" namespace="/static" action="journalStatistics"/>
-<@s.url action="feedback" namespace="/feedback" includeParams="none" id="feedbackURL"/>
--->
-
 <div class="main cf" id="pjax-container">
 <#assign tab="metrics" />
 <#assign almInfoURL="/static" />
@@ -69,10 +63,6 @@
     <#if endIndex == -1>
       <#assign endIndex = freemarker_config.get("almHost")?length >
     </#if>-->
-
-        <#include "../common/legacyLink.ftl" />
-        <div><a href="${almInfoURL}/#static-content-wrap">Information on PLOS Article-Level Metrics</a></div>
-        <div>Questions or concerns about usage data? <a href="${legacyUrlPrefix}feedback/new">Please let us know.</a></div>
-
+        <#include "metricsFeedbackMessage.ftl" />
     </div><!--end article-metrics-->
 </div><!-- end main -->

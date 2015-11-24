@@ -54,7 +54,7 @@
 
   <@js src="resource/js/vendor/spin.js"/>
 
-  <@js src="resource/js/pages/alm.js"/>
+  <@js src="resource/js/metrics.js"/>
   <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>

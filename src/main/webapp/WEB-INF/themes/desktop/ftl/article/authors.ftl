@@ -26,6 +26,8 @@
     <section class="article-body">
 
     <#include "tabs.ftl" />
+      <@displayTabList 'authors' />
+
         <div class="article-container">
             <h1>About the Authors</h1>
         <#list authors as author>

@@ -240,7 +240,6 @@ public class HomeController extends WombatController {
     for (SectionSpec section : sectionsToRender) {
       try {
         List<Object> articles = section.getArticles(site, start);
-        articles = addStrikingImageUriToArticles(articles);
         sectionsForModel.put(section.getName(), articles);
       } catch (IOException e) {
         log.error("Could not populate home page section: " + section.getName(), e);
@@ -259,25 +258,6 @@ public class HomeController extends WombatController {
 
     model.addAttribute("sections", sectionsForModel);
     return site.getKey() + "/ftl/home/home";
-  }
-
-  /**
-   * @param articles a list of Objects representing articles as returned from Solr
-   * @return the same list of articles each with a new strkImgUri string returned from the soa service
-   * @throws IOException
-   */
-  private List<Object> addStrikingImageUriToArticles(List<Object> articles) throws IOException {
-    List<Object> articlesWithStrikingImage = new ArrayList<>();
-    for (Object article : articles) {
-      Map articleMap = (Map) article;
-      Map articleMetaData = soaService.requestObject("articles/" + articleMap.get("doi"), Map.class);
-      Object strkImgURI = articleMetaData.get("strkImgURI");
-      if (strkImgURI != null) {
-        articleMap.put("strkImgURI", strkImgURI);
-      }
-      articlesWithStrikingImage.add(articleMap);
-    }
-    return articlesWithStrikingImage;
   }
 
   private void populateCurrentIssue(Model model, Site site) throws IOException {

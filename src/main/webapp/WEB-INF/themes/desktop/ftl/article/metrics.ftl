@@ -21,10 +21,16 @@
 
 <#include "../common/header/headerContainer.ftl" />
 <div class="set-grid">
-    <#include "articleHeader.ftl" />
-    <section class="metrics-body">
-        <#include "tabs.ftl" />
-        <#include "metricsBody.ftl" />
+  <#include "articleHeader.ftl" />
+  <section class="article-body">
+
+  <#include "tabs.ftl" />
+  <@displayTabList 'metrics' />
+
+    <div class="article-container">
+
+    </div>
+
     </section>
     <aside class="article-aside">
         <#include "aside/sidebar.ftl" />
@@ -33,7 +39,6 @@
 
   <#include "../common/footer/footer.ftl" />
 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.js" ></script>
 
   <@js src="resource/js/components/show_onscroll.js"/>
   <@js src="resource/js/components/table_open.js"/>
@@ -56,12 +61,12 @@
 
   <@js src="resource/js/metrics.js"/>
   <@js src="resource/js/pages/article.js"/>
-  <@js src="resource/js/pages/article_body.js"/>
   <@js src="resource/js/pages/article_sidebar.js"/>
   <@renderJs />
 
 
   <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
   <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
 
   <#include "aside/crossmarkIframe.ftl" />

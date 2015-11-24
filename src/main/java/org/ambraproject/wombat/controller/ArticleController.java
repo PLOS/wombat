@@ -425,6 +425,11 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/metrics";
   }
 
+  @RequestMapping(name = "relatedContent", value = "/article/related")
+  public String renderRelatedContent() {
+    throw new NotFoundException(); // TODO Implement
+  }
+
 
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
   public String renderCitationDownloadPage(Model model, @SiteParam Site site,

@@ -521,6 +521,8 @@ $column-size-first: ($grid-width - $column-size);
     display: inline-block;
     float: left;
     padding-left: $pad-medium;
+    padding-top: $pad-xsmall;
+    padding-bottom: $pad-xsmall;
     a:before {
       @extend .icon-close;
       font-size: $txt-size-default;

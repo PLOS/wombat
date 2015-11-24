@@ -1,0 +1,1 @@
+<img class="spinner" src="<@siteLink handlerName="staticResource" wildcardValues=["img/loading_small.gif"] />" class="loading" />

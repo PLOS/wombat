@@ -32,16 +32,14 @@
             <h1>About the Authors</h1>
         <#list authors as author>
             <div class="about-author">
-                <h5 class="comments-header">${author.fullName}</h5>   <p>
-
-
-              <#list author.affiliations as affiliation>
-              ${affiliation}
-
-                <#if author.affiliations?size gt 0>
-                  <br/>
-              </#if>
-              </#list>
+                <h5 class="comments-header">${author.fullName}</h5>
+                <p>
+                  <#list author.affiliations as affiliation>
+                  ${affiliation}
+                    <#if author.affiliations?size gt 0>
+                        <br/>
+                    </#if>
+                  </#list>
                 </p>
             </div>
         </#list>

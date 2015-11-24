@@ -6,12 +6,17 @@
 <#assign depth = 0 />
 <#assign title = '' />
 <#assign cssFile="browse.css"/>
-
+<#include "../macro/removeTags.ftl" />
+<#include "../common/title/titleFormat.ftl" />
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <body class="static ${journalStyle}">
 
 <#include "../common/header/headerContainer.ftl" />
+
+<!-- TODO: This is how Ambra does it, but it would be much preferred to provide the proper thumbnail asset file ids
+      for each issue in the controller layer. -->
+<#assign issue_image_suffix = ".g001.PNG_M"/>
 
 <div id="toc-block">
     <h1>Table of Contents: ${issue.displayName} ${issue.parentVolume.displayName}</h1>
@@ -19,7 +24,19 @@
     <div class="layout-160_755 cf">
 
         <div class="col-1">
-            <div class="nav" id="nav-toc"></div>
+            <div class="nav" id="nav-toc">
+                <ul>
+                    <li id=cover">Cover</li>
+                    <#list articleGroups as articleGrp>
+                        <#if (articleGrp?size > 1)>
+                            <#assign articleHeader="${articleGrp.pluralHeading!articleGrp.heading!'No Header Defined'}">
+                        <#else>
+                            <#assign articleHeader="${articleGrp.heading!'No Header Defined'}">
+                        </#if>
+                        <li id="${articleHeader}">${articleHeader}</li>
+                    </#list>
+                </ul>
+            </div>
         </div>
         <!-- col-1 -->
 
@@ -30,15 +47,18 @@
 
                 <div class="header">
                     <div class="kicker">COVER</div>
-                <@s.url id="issueURL" action="issue" namespace="/article/browse" issue="${issueInfo.issueURI}"/>
-                    <h2><a href="${issueURL}">${issueTitle}</a></h2>
-
+                        <@siteLink
+                        handlerName="browseIssues"
+                        queryParameters={"id": issue.issueUri}; issueLink>
+                            <h2><a href="${issueLink}">${issueTitle}</a></h2>
+                        </@siteLink>
                     <div class="credit">Image Credit: ${issueImageCredit}</div>
                 </div>
                 <div class="img">
-                <#if issueInfo.imageArticle?has_content>
-                    <@s.url id="imageSmURL" action="fetchObject" namespace="/article" uri="${issueInfo.imageArticle}.g001" representation="PNG_M" includeParams="none"/>
-                    <img src="${imageSmURL}" alt="Issue Image" data-doi="${issueInfo.imageArticle}">
+                <#if issue.imageUri?has_content>
+                    <#assign issueImageFileId = issue.imageUri + issue_image_suffix/>
+                    <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}/>"
+                    alt="Issue Image" data-doi="${issue.imageUri}">
                 </#if>
                 </div>
                 <div class="txt">${issueDescription}</div>
@@ -46,8 +66,8 @@
 
         <#list articleGroups as articleGrp>
             <div class="section">
-                <a id="${articleGrp.id}" name="${articleGrp.id}" toc="${articleGrp.id}" title="${articleGrp.heading}"></a>
-                <#if (articleGrp.count > 1)>
+                <a id="${articleGrp.heading}" name="${articleGrp.heading}" toc="${articleGrp.heading}" title="${articleGrp.heading}"></a>
+                <#if (articleGrp?size > 1)>
                     <#assign articleHeader="${articleGrp.pluralHeading!articleGrp.heading!'No Header Defined'}">
                 <#else>
                     <#assign articleHeader="${articleGrp.heading!'No Header Defined'}">
@@ -55,47 +75,59 @@
                 <h2>${articleHeader!"No Header Defined"}</h2>
                 <#list articleGrp.articles as articleInfo>
                     <div class="item cf">
-                        <@s.url id="fetchArticleURL" action="fetchArticle" namespace="/article" articleURI="${articleInfo.doi}"
-                        includeParams="none"/>
-                        <div class="header">
-                            <h3><@s.a href="%{fetchArticleURL}" title="Read Open Access Article">
-                        <@articleFormat>${articleInfo.title}</@articleFormat></@s.a>
-                            </h3>
+                        <@siteLink
+                        handlerName="article"
+                        queryParameters={"id": articleInfo.doi}; articleLink>
 
-                            <div class="authors">
-                                <#list articleInfo.authors as auth>
-                                ${auth?trim}<#if auth_has_next>,</#if>
-                                </#list>
-                                <#if (articleInfo.collaborativeAuthors??)>
-                                    <#if (articleInfo.authors?size > 0) && (articleInfo.collaborativeAuthors?size > 0)>,</#if>
-                                    <#list articleInfo.collaborativeAuthors as cauth>
-                                    ${cauth?trim}<#if cauth_has_next>,</#if>
+                            <div class="header">
+                                <h3><a href="${articleLink}" title="Read Open Access Article">
+                                    <@titleFormat removeTags(articleInfo.title) /></a>
+                                </h3>
+
+                                <div class="authors">
+                                    <#list articleInfo.authors as auth>
+                                    ${auth.fullName?trim}<#if auth_has_next>,</#if>
                                     </#list>
-                                </#if>
+                                    <#if (articleInfo.collaborativeAuthors??)>
+                                        <#if (articleInfo.authors?size > 0) && (articleInfo.collaborativeAuthors?size > 0)>,</#if>
+                                        <#list articleInfo.collaborativeAuthors as cauth>
+                                        ${cauth.fullName?trim}<#if cauth_has_next>,</#if>
+                                        </#list>
+                                    </#if>
+                                </div>
                             </div>
-                        </div>
 
-                    <#--Don't have content for this section yet>
-                      <div class="txt">
-                      <p></p>
-                    </div>-->
+                        </@siteLink>
+
 
                         <div class="article-info">
-                            <p><b>${articleInfo.publishedJournal}:</b> published ${articleInfo.date?date?string("dd MMM yyyy")} | ${articleInfo.doi}</p>
+                            <p><b>${journal.title}:</b> published
+                                <@formatJsonDate date="${articleInfo.date}" format="MMMM d, yyyy" /> | ${articleInfo.doi}</p>
                         </div>
 
-                        <#if (articleGrp.heading == "Research Article") >
+                        <#if articleGrp.heading == "Research Article" >
                             <div class="links">
                             <#--assuming that all research articles have abstract-->
-                                <a data-doi="${articleInfo.doi}" class="abstract">Abstract</a> &bull;
-                                <@s.a href="%{fetchArticleURL}#abstract1" title="Read Author Summary">Author Summary</@s.a>
-                                <#if (articleInfo.hasFigures)>
+                                <a data-doi="${articleInfo.doi}" class="abstract">Abstract</a>
+                                <#if (articleInfo.figures?size > 0)>
                                     &bull; <a data-doi="${articleInfo.doi}" class="figures">Figures</a>
                                 </#if>
                             </div>
                         </#if>
 
-                        <@related articleInfo=articleInfo/>
+                        <#if (articleInfo.relatedArticles?size > 0)>
+                        <h4>Related Articles</h4>
+                        <ul>
+                            <#list articleInfo.relatedArticles as relArticle>
+                                <li>
+                                  <a href="http://dx.plos.org/${relArticle.doi?replace('info:doi/','')}"
+                                     title="Read Open Access Article">>
+                                      <@titleFormat removeTags(relArticle.title) />
+                                  </a>
+                                </li>
+                            </#list>
+                        </ul>
+                        </#if>
                     </div>
                 </#list>
             </div>

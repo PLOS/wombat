@@ -36,6 +36,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -424,6 +425,11 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/metrics";
   }
 
+  @RequestMapping(name = "relatedContent", value = "/article/related")
+  public String renderRelatedContent() {
+    throw new NotFoundException(); // TODO Implement
+  }
+
 
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
   public String renderCitationDownloadPage(Model model, @SiteParam Site site,
@@ -469,6 +475,28 @@ public class ArticleController extends WombatController {
     headers.add(HttpHeaders.CONTENT_TYPE, contentType);
     headers.add(HttpHeaders.CONTENT_DISPOSITION, contentDispositionValue);
     return new ResponseEntity<>(citationBody, headers, HttpStatus.OK);
+  }
+
+  /**
+   * Returns a list of figures and tables of a given article; main usage is the figshare tile on the Metrics
+   * tab
+   *
+   * @param site current site
+   * @param articleId DOI identifying the article
+   * @return a list of figures and tables of a given article
+   * @throws IOException
+   */
+  @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
+  public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
+                                                       @RequestParam("id") String articleId) throws IOException {
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateArticleVisibility(site, articleMetadata);
+    List<ImmutableMap<String, String>> articleFigsAndTables = articleService.getArticleFiguresAndTables(articleMetadata);
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+    return new ResponseEntity<>(articleFigsAndTables, headers, HttpStatus.OK);
   }
 
 
@@ -620,4 +648,5 @@ public class ArticleController extends WombatController {
       }
     });
   }
+
 }

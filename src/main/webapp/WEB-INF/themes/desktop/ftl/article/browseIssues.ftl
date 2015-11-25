@@ -10,7 +10,7 @@
 <#include "../common/title/titleFormat.ftl" />
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
-<body class="static ${journalStyle}">
+<body class="browse-issue ${journalStyle}">
 
 <#include "../common/header/headerContainer.ftl" />
 
@@ -18,29 +18,25 @@
       for each issue in the controller layer. -->
 <#assign issue_image_suffix = ".g001.PNG_M"/>
 
-<div id="toc-block">
+<section >
     <h1>Table of Contents: ${issue.displayName} ${issue.parentVolume.displayName}</h1>
 
-    <div class="layout-160_755 cf">
-
-        <div class="col-1">
-            <div class="nav" id="nav-toc">
+            <nav id="nav-toc" class="nav-page">
                 <ul>
-                    <li id=cover">Cover</li>
+                    <li id=cover"><a href="">Cover</a></li>
                     <#list articleGroups as articleGrp>
                         <#if (articleGrp?size > 1)>
                             <#assign articleHeader="${articleGrp.pluralHeading!articleGrp.heading!'No Header Defined'}">
                         <#else>
                             <#assign articleHeader="${articleGrp.heading!'No Header Defined'}">
                         </#if>
-                        <li id="${articleHeader}">${articleHeader}</li>
+                        <li ><a href="#${articleGrp.heading?replace(" ", "_")}">${articleHeader}</a></li>
                     </#list>
                 </ul>
-            </div>
-        </div>
+            </nav>
         <!-- col-1 -->
 
-        <div class="col-2">
+        <article>
 
             <div class="section cover cf">
                 <a id="cover" name="cover" toc="cover" title="Cover"></a>
@@ -66,12 +62,13 @@
 
         <#list articleGroups as articleGrp>
             <div class="section">
-                <a id="${articleGrp.heading}" name="${articleGrp.heading}" toc="${articleGrp.heading}" title="${articleGrp.heading}"></a>
+                <a id="${articleGrp.heading?replace(" ", "_")}" name="${articleGrp.heading?replace(" ", "_")}" toc="${articleGrp.heading}" title="${articleGrp.heading}"></a>
                 <#if (articleGrp?size > 1)>
                     <#assign articleHeader="${articleGrp.pluralHeading!articleGrp.heading!'No Header Defined'}">
                 <#else>
                     <#assign articleHeader="${articleGrp.heading!'No Header Defined'}">
                 </#if>
+
                 <h2>${articleHeader!"No Header Defined"}</h2>
                 <#list articleGrp.articles as articleInfo>
                     <div class="item cf">
@@ -121,7 +118,7 @@
                             <#list articleInfo.relatedArticles as relArticle>
                                 <li>
                                   <a href="http://dx.plos.org/${relArticle.doi?replace('info:doi/','')}"
-                                     title="Read Open Access Article">>
+                                     title="Read Open Access Article">
                                       <@titleFormat removeTags(relArticle.title) />
                                   </a>
                                 </li>
@@ -132,18 +129,17 @@
                 </#list>
             </div>
         </#list>
-        </div>
+        </article>
         <!-- col-2 -->
 
-    </div>
-    <!-- layout-625_300 -->
-</div>
-<!-- toc-block -->
+</section>
 
 <#include "../common/footer/footer.ftl" />
 
 <@js src="resource/js/components/scroll.js"/>
 <@js src="resource/js/components/floating_nav.js"/>
+<@js src="resource/js/pages/browse-issues.js"/>
+
 <@renderJs />
 
 </body>

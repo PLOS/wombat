@@ -38,17 +38,17 @@
 
         <article>
 
-            <div class="section cover cf">
+            <div class="cover">
                 <a id="cover" name="cover" toc="cover" title="Cover"></a>
 
                 <div class="header">
-                    <div class="kicker">COVER</div>
+                    <p class="kicker">COVER</p>
                         <@siteLink
                         handlerName="browseIssues"
                         queryParameters={"id": issue.issueUri}; issueLink>
                             <h2><a href="${issueLink}">${issueTitle}</a></h2>
                         </@siteLink>
-                    <div class="credit">Image Credit: ${issueImageCredit}</div>
+                    <p class="credit">Image Credit: ${issueImageCredit}</p>
                 </div>
                 <div class="img">
                 <#if issue.imageUri?has_content>

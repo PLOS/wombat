@@ -1,8 +1,101 @@
 .browse-issue {
 
-  .section{
+  .section {
     background-color: $white;
-    padding:  $line-height  $pad-default;
+    padding: $line-height $pad-default;
     margin: $line-height 0;
   }
+  .cover {
+    @extend .block-dark;
+    color: $white;
+    .header {
+      text-align: center;
+    }
+    .credit {
+      @extend .note;
+    }
+    h2 {
+      display: block;
+      text-align: center;
+      font-weight: normal;
+      font-family: $font-face-fancy;
+      font-size: $txt-size-xxlarge;
+      @extend %link-text-white;
+      a:hover {
+        @extend %brand-color;
+      }
+    }
+    .kicker {
+
+    }
+  }
+
+  .item .header {
+    margin-bottom: 5px;
+  }
+
+  .section h2 {
+    font: 26px/1 'FS Albert Web Regular', Verdana, sans-serif !important;
+    font-size-adjust: 0.48;
+    margin: 0 40px;
+  }
+
+  .item h3 {
+    font-size: 16px;
+    line-height: 1.125;
+    margin-bottom: 10px;
+  }
+
+  .item h3 a {
+    color: #333;
+  }
+
+  .item h3 a:hover {
+    color: #3c63af;
+    text-decoration: none;
+  }
+
+  .item .authors {
+    color: #666;
+  }
+
+  .item .txt {
+    float: left;
+    width: 600px;
+    padding-right: 35px;
+  }
+
+  .item {
+    .related h4 {
+    font-size: 12px;
+    line-height: 1.143;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    color: #666;
+    font-weight: bold;
+  }
+
+  .related ul {
+    margin-top: 5px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .related ul li {
+    margin-bottom: 3px;
+  }
+
+  .links {
+    font-size: 0.917em;
+    line-height: 1;
+    padding-bottom: 8px;
+  }
+
+  .links a {
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+
 }

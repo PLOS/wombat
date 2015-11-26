@@ -1,0 +1,165 @@
+/* ARTICLES LIST */
+.subject-cover {
+  position: relative;
+  min-height: 816px; /* just in case there's no content */
+  overflow-y: auto;
+  width: 960px;
+  margin-left: 10px;
+}
+
+.article-block {
+  float: left;
+  width: 306px;
+  height: 387px;
+  overflow: hidden; /* important for grayscale implementation below */
+  margin: 0 21px 21px 0;
+  position: relative;
+}
+
+.article-block-last {
+  margin-right: 0;
+}
+
+.article-block .overlayed {
+  z-index: 0;
+}
+
+/* ensures that images of smaller dimensions in either direction scale up
+   to fit the 306x387 article block
+*/
+.article-block IMG {
+  min-width: 306px; /* this should always be satisfied because the images are 320px wide */
+  min-height: 387px;
+}
+
+.article-block .details {
+  width: 245px;
+  height: 176px;
+  padding: 27px 20px 0;
+  background: #f8af2d;
+  position: absolute;
+  right: 0;
+  bottom: 40px;
+  z-index: 2;
+  box-sizing: content-box;
+}
+
+.article-block .details h2 {
+  font-size: 18px;
+  line-height: 19px;
+  margin: 0 0 14px;
+}
+
+.article-block .details h2 a {
+  color: #333;
+}
+
+.article-block .details p {
+  font: 82%/1.375 arial, sans-serif;
+  color: #fff;
+  margin: 0;
+}
+
+.article-block .details p span {
+  white-space: nowrap;
+}
+
+.article-block .actions {
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.article-block:hover .actions {
+  display: block;
+  font-family: $font-face-fancy;
+}
+
+.article-block .actions li {
+  display: inline;
+  float: left;
+  width: 94px;
+  border-right: 1px solid #616161;
+}
+
+.article-block .actions li.last {
+  width: 95px;
+  border: none;
+}
+
+.article-block .actions li a {
+  display: block;
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: #333;
+}
+
+.article-block .actions li.disabled {
+  cursor: default;
+}
+
+.article-block .actions li.disabled span {
+  display: block;
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: #777;
+  background: #333;
+}
+
+.article-block .actions li a:hover {
+  color: #fff;
+  background: #3c63af;
+}
+
+.articles-list {
+  overflow-y: auto;
+}
+
+.articles-list .pagination {
+  clear: both;
+  width: 597px;
+  margin: 0 auto 59px;
+  position: relative;
+  top: 19px;
+}
+
+.articles-list .pagination .more {
+  width: 102px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  color: #fff;
+  background: #333;
+}
+
+.articles-list .pagination .more[disabled] {
+  background: #c1c1c1;
+}
+
+.articles-list .pagination .more:hover {
+  color: #333;
+  background: #f8af2d;
+}
+
+.articles-list .loader {
+  width: 100%;
+  height: 40px;
+  display: block;
+  clear: both;
+  text-align: center;
+}
+
+/* END ARTICLES LIST */

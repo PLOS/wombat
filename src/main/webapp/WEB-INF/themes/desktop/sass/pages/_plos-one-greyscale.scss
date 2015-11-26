@@ -1,0 +1,18 @@
+/*/!* show default image as loading image *!/*/
+.article-block { background: url(../img/generic-article-image.png) left top no-repeat; }
+
+.article-block {
+  a {
+    img.grayscale {
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+      filter: gray; /* IE6-9 */
+      -webkit-filter: grayscale(1); /* Chrome 19+ & Safari 6+ */
+      @include single-transition(all, .3s, ease-in-out);
+    }
+  }
+
+  &:hover > a > img.grayscale{
+    filter: none;
+    -webkit-filter: grayscale(0);
+  }
+}

@@ -1,0 +1,17 @@
+/*
+ * This is the centralized import file for the main screen.css.
+*/
+@charset "UTF-8";
+@import "global-library-imports";
+@import "global-section-imports";
+@import "typography";
+@import "pages/home";
+@import "pages/plos-one-nav-bar";
+@import "pages/plos-one-article-list";
+@import "pages/plos-one-rectangle-ad";
+@import "pages/plos-one-social";
+@import "pages/plos-one-ad-slot-bottom";
+@import "pages/plos-one-sticky-footer";
+@import "pages/plos-one-greyscale";
+
+

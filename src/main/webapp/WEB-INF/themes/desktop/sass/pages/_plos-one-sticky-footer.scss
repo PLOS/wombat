@@ -1,0 +1,71 @@
+/* STICKY FOOTER */
+#sticky-footer {
+  display: none;
+  width: 100%;
+  background: #242424;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  .wrapper {
+    width: 903px;
+    padding: 0 37px 0 0;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: content-box;
+  }
+
+  h3, h4 {
+    float: left;
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: normal;
+    color: #ccc;
+    padding: 12px 0;
+    margin: 0;
+    box-sizing: content-box;
+  }
+
+
+  h3 {
+    line-height: 10px;
+    a {
+      color: #f8af2d;
+    }
+  }
+
+  h3 strong, h4 a {
+    color: #fff;
+  }
+
+  h4 {
+    float: right;
+    font-family: $font-face-fancy;
+    padding: 0;
+    border-right: 1px solid #666;
+    border-left: 1px solid #666;
+  }
+
+  h4 a {
+    display: block;
+    padding: 12px 27px 12px 15px;
+    background: url(../img/submit-arrow.png) right 50% no-repeat;
+  }
+
+  h4 a:hover {
+    background-color: #3c63af;
+  }
+
+  a.close {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url(../img/close.png) no-repeat;
+    position: absolute;
+    top: 12px;
+    right: 0;
+  }
+}
+
+/* END STICKY FOOTER */

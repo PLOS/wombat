@@ -78,8 +78,8 @@ public class BrowseController extends WombatController {
 
     String[] parsedIssueInfo = extractInfoFromIssueDesc((String)issueMeta.get("description"));
     model.addAttribute("issueTitle", parsedIssueInfo[0]);
-    model.addAttribute("issueDescription", parsedIssueInfo[1]);
-    model.addAttribute("issueImageCredit", parsedIssueInfo[2]);
+    model.addAttribute("issueImageCredit", parsedIssueInfo[1]);
+    model.addAttribute("issueDescription", parsedIssueInfo[2]);
 
     List<Map<String, Object>> articleGroups = soaService.requestObject("/articleTypes", List.class);
 

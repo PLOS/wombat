@@ -41,7 +41,7 @@ public class SearchFilter {
   public void setActiveAndInactiveFilterItems(List<String> filterDisplayNames) {
     this.activeFilterItems = getSearchFilterResult().stream()
         .filter((SearchFilterItem filterItem) -> isFilterItemActive(filterDisplayNames, filterItem))
-            .collect(Collectors.toCollection(LinkedHashSet::new));
+        .collect(Collectors.toCollection(LinkedHashSet::new));
     this.inactiveFilterItems = getSearchFilterResult().stream()
         .filter((SearchFilterItem filterItem) -> isFilterItemInactive(filterDisplayNames, filterItem))
         .collect(Collectors.toCollection(LinkedHashSet::new));

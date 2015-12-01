@@ -10,9 +10,9 @@ public class SearchFilter {
 
   private final ImmutableList<SearchFilterItem> searchFilterResult;
 
-  private Set<SearchFilterItem> activeFilterItems;
+  private List<SearchFilterItem> activeFilterItems;
 
-  private Set<SearchFilterItem> inactiveFilterItems;
+  private List<SearchFilterItem> inactiveFilterItems;
 
   private final String filterTypeMapKey;
 
@@ -29,21 +29,21 @@ public class SearchFilter {
     return filterTypeMapKey;
   }
 
-  public Set<SearchFilterItem> getActiveFilterItems() {
+  public List<SearchFilterItem> getActiveFilterItems() {
     return activeFilterItems;
   }
 
-  public Set<SearchFilterItem> getInactiveFilterItems() {
+  public List<SearchFilterItem> getInactiveFilterItems() {
     return inactiveFilterItems;
   }
 
   public void setActiveAndInactiveFilterItems(List<String> filterDisplayNames) {
-    this.activeFilterItems = getSearchFilterResult().stream()
+    this.activeFilterItems = getSearchFilterResult().stream().distinct()
         .filter((SearchFilterItem filterItem) -> isFilterItemActive(filterDisplayNames, filterItem))
-        .collect(Collectors.toSet());
-    this.inactiveFilterItems = getSearchFilterResult().stream()
+        .collect(Collectors.toList());
+    this.inactiveFilterItems = getSearchFilterResult().stream().distinct()
         .filter((SearchFilterItem filterItem) -> isFilterItemInactive(filterDisplayNames, filterItem))
-        .collect(Collectors.toSet());
+        .collect(Collectors.toList());
   }
 
   private boolean isFilterItemActive(List<String> filterDisplayNames,

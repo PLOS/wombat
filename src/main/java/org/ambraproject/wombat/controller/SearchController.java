@@ -471,7 +471,7 @@ public class SearchController extends WombatController {
 
     filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
-    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
+    List<SearchFilterItem> activeFilterItems = new ArrayList<>();
     filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
 
     model.addAttribute("searchFilters", filters);
@@ -590,7 +590,7 @@ public class SearchController extends WombatController {
 
     filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
-    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
+    List<SearchFilterItem> activeFilterItems = new ArrayList<>();
     filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
 
     model.addAttribute("searchFilters", filters);

@@ -1,10 +1,6 @@
 <#--markup starts in SiteMenu.ftl: this li is part of the main nav ul -->
 
-<@themeConfig map="journal" value="journalKey" ; v>
-  <#assign journalKey = v />
-</@themeConfig>
-
-<#macro searchForm journal="${journalKey}">
+<#macro searchForm journal="">
 
 <li id="navsearch" class="head-search">
     <form name="searchForm" action="<@siteLink path='search'/>" method="get">
@@ -15,13 +11,14 @@
             <button id="headerSearchButton" type="submit"><span class="search-icon"></span></button>
 
         </fieldset>
-        <input type="hidden" name="filterJournals" value="${journal}"/>
+        <#if journal?has_content><input type="hidden" name="filterJournals" value="${journal}"/></#if>
     </form>
 
   <@themeConfig map="legacy" value="urlPrefix" ; legacyUrlPrefix>
     <#if legacyUrlPrefix??>
       <a id="advSearch"
-         href="${legacyUrlPrefix}search/advanced?noSearchFlag=true&query=&filterJournals=${journalKey}">
+         href="${legacyUrlPrefix}search/advanced?noSearchFlag=true
+         <#if journal?has_content>&query=&filterJournals=${journal}</#if>">
           advanced search
       </a>
     </#if>

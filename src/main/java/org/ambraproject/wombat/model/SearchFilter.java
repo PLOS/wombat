@@ -2,6 +2,7 @@ package org.ambraproject.wombat.model;
 
 import com.google.common.collect.ImmutableList;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -40,10 +41,10 @@ public class SearchFilter {
   public void setActiveAndInactiveFilterItems(List<String> filterDisplayNames) {
     this.activeFilterItems = getSearchFilterResult().stream()
         .filter((SearchFilterItem filterItem) -> isFilterItemActive(filterDisplayNames, filterItem))
-        .collect(Collectors.toSet());
+            .collect(Collectors.toCollection(LinkedHashSet::new));
     this.inactiveFilterItems = getSearchFilterResult().stream()
         .filter((SearchFilterItem filterItem) -> isFilterItemInactive(filterDisplayNames, filterItem))
-        .collect(Collectors.toSet());
+        .collect(Collectors.toCollection(LinkedHashSet::new));
   }
 
   private boolean isFilterItemActive(List<String> filterDisplayNames,

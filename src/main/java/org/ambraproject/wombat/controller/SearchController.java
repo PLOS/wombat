@@ -48,6 +48,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -471,7 +472,7 @@ public class SearchController extends WombatController {
 
     filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
-    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
+    Set<SearchFilterItem> activeFilterItems = new LinkedHashSet<>();
     filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
 
     model.addAttribute("searchFilters", filters);

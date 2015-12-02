@@ -20,17 +20,29 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
+import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.TextUtil;
 import org.apache.commons.io.output.WriterOutputStream;
-import org.apache.http.entity.ContentType;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
+import org.apache.commons.validator.routines.UrlValidator;
+import org.apache.http.NameValuePair;
+import org.apache.http.StatusLine;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +53,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
@@ -54,6 +68,7 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Reader;
 import java.io.StringWriter;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
@@ -91,7 +106,13 @@ public class ArticleController extends WombatController {
   @Autowired
   private ArticleTransformService articleTransformService;
   @Autowired
+  private CachedRemoteService<Reader> cachedRemoteReader;
+  @Autowired
   private CitationDownloadService citationDownloadService;
+  @Autowired
+  private JsonService jsonService;
+  @Autowired
+  private CaptchaService captchaService;
 
   @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
@@ -477,7 +498,149 @@ public class ArticleController extends WombatController {
     return new ResponseEntity<>(citationBody, headers, HttpStatus.OK);
   }
 
+
   /**
+   * Serves the related content tab content for an article.
+   *
+   * @param model     data to pass to the view
+   * @param site      current site
+   * @param articleId specifies the article
+   * @return path to the template
+   * @throws IOException
+   */
+  @RequestMapping(name = "articleRelatedContent", value = "/article/relatedContent")
+  public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam("id") String articleId) throws IOException {
+    // TODO: remove when ready to expose page in prod
+    enforceDevFeature("relatedContentTab");
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateArticleVisibility(site, articleMetadata);
+    model.addAttribute("article", articleMetadata);
+    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
+    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
+    addCrossPublishedJournals(request, model, site, articleMetadata);
+    requestAuthors(model, articleId);
+    requestComments(model, articleId);
+    String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
+    model.addAttribute("recaptchaPublicKey", recaptchaPublicKey);
+    return site + "/ftl/article/relatedContent";
+  }
+
+  /**
+   * Serves as a POST endpoint to submit media curation requests
+   *
+   * @param model     data passed in from the view
+   * @param site      current site
+   * @return path to the template
+   * @throws IOException
+   */
+  @RequestMapping(name = "submitMediaCurationRequest", value = "/article/submitMediaCurationRequest", method = RequestMethod.POST)
+  public @ResponseBody String submitMediaCurationRequest(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam("doi") String doi,
+      @RequestParam("link") String link,
+      @RequestParam("comment") String comment,
+      @RequestParam("name") String name,
+      @RequestParam("email") String email,
+      @RequestParam("recaptcha_challenge_field") String captchaChallenge,
+      @RequestParam("recaptcha_response_field") String captchaResponse)
+      throws IOException {
+    // TODO: remove when ready to expose page in prod
+    enforceDevFeature("relatedContentTab");
+    requireNonemptyParameter(doi);
+
+    if (!validateMediaCurationInput(model, link, name, email, captchaChallenge,
+        captchaResponse, site, request)) {
+      model.addAttribute("formError", "Invalid values have been submitted.");
+      //return model for error reporting
+      return jsonService.serialize(model);
+    }
+
+    String linkComment = name + ", " + email + "\n" + comment;
+
+    List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("doi", doi.replaceFirst("info:doi/", "")));
+    params.add(new BasicNameValuePair("link", link));
+    params.add(new BasicNameValuePair("comment", linkComment));
+    UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
+
+    String mediaCurationUrl = site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl").toString();
+
+    if (mediaCurationUrl != null) {
+      HttpPost httpPost = new HttpPost(mediaCurationUrl);
+      httpPost.setEntity(entity);
+      StatusLine statusLine = null;
+      try (CloseableHttpResponse response = cachedRemoteReader.getResponse(httpPost)) {
+        statusLine = response.getStatusLine();
+      } catch (ServiceRequestException e) {
+        //This exception is thrown when the submitted link is already present for the article.
+        if (e.getStatusCode() == HttpStatus.BAD_REQUEST.value()
+            && e.getResponseBody().equals("The link already exists")) {
+          model.addAttribute("formError", "This link has already been submitted. Please submit a different link");
+          model.addAttribute("isValid", false);
+        } else {
+          throw new RuntimeException(e);
+        }
+      } finally {
+        httpPost.releaseConnection();
+      }
+
+      if (statusLine != null && statusLine.getStatusCode() != HttpStatus.CREATED.value()) {
+        throw new RuntimeException("bad response from media curation server: " + statusLine);
+      }
+    }
+
+    return jsonService.serialize(model);
+  }
+
+  /**
+<<<<<<< HEAD
+   * Validate the input from the form
+   * @param model data passed in from the view
+   * @param link link pointing to media content relating to the article
+   * @param name name of the user submitting the media curation request
+   * @param email email of the user submitting the media curation request
+   * @param site current site
+   * @return true if everything is ok
+   */
+  private boolean validateMediaCurationInput(Model model, String link, String name,
+      String email, String captchaChallenge, String captchaResponse, Site site,
+      HttpServletRequest request) throws IOException {
+
+    boolean isValid = true;
+
+    UrlValidator urlValidator = new UrlValidator();
+
+    if (StringUtils.isBlank(link)) {
+      model.addAttribute("linkError", "This field is required.");
+      isValid = false;
+    } else if (!urlValidator.isValid(link)) {
+      model.addAttribute("linkError", "Invalid Media link URL");
+      isValid = false;
+    }
+
+    if (StringUtils.isBlank(name)) {
+      model.addAttribute("nameError", "This field is required.");
+      isValid = false;
+    }
+
+    if (StringUtils.isBlank(email)) {
+      model.addAttribute("emailError", "This field is required.");
+      isValid = false;
+    } else if (!EmailValidator.getInstance().isValid(email)) {
+      model.addAttribute("emailError", "Invalid e-mail address");
+      isValid = false;
+    }
+
+    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
+      model.addAttribute("captchaError", "Verification is incorrect. Please try again.");
+      isValid = false;
+    }
+
+    model.addAttribute("isValid", isValid);
+    return isValid;
+  }
+  /*
    * Returns a list of figures and tables of a given article; main usage is the figshare tile on the Metrics
    * tab
    *
@@ -498,7 +661,6 @@ public class ArticleController extends WombatController {
     headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
     return new ResponseEntity<>(articleFigsAndTables, headers, HttpStatus.OK);
   }
-
 
   /**
    * Loads article metadata from the SOA layer.

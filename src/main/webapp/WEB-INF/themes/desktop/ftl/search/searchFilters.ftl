@@ -16,8 +16,12 @@
       </#list></ul>
 
     <ul id="searchFilterBy${filterTypeName}">
-      <#list  searchFilter.inactiveFilterItems as searchFilterItem>
-        <#if !suppressSearchFilter(searchFilterItem) >
+      <#assign filterSize = 0 />
+
+      <#list searchFilter.inactiveFilterItems as searchFilterItem>
+        <#if !suppressSearchFilter(searchFilterItem)>
+          <#assign filterSize = filterSize + 1 />
+
             <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility="none"</#if>>
               <@siteLink handlerName="simpleSearch"
               queryParameters=searchFilterItem.filteredResultsParameters ; href>
@@ -30,7 +34,8 @@
             </li>
         </#if>
       </#list>
-      <#if searchFilter.searchFilterResult?size gt 5>
+        ${filterSize}
+      <#if filterSize gt 5>
           <li class="toggle-trigger" data-js-toggle="toggle_trigger">
               <a>show more</a>
           </li>

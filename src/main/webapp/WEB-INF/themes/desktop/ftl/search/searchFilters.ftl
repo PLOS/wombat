@@ -22,7 +22,7 @@
       <#list searchFilter.inactiveFilterItems as searchFilterItem>
         <#if !suppressSearchFilter(searchFilterItem)>
           <#assign numFilters = numFilters + 1 />
-            <li <#if searchFilterItem_index gt numVisibleFilters>data-js-toggle="toggle_target" data-visibility="none"</#if>>
+            <li <#if numFilters gt numVisibleFilters>data-js-toggle="toggle_target" data-visibility="none"</#if>>
               <@siteLink handlerName="simpleSearch"
               queryParameters=searchFilterItem.filteredResultsParameters ; href>
                   <a href="${href}"
@@ -34,7 +34,7 @@
             </li>
         </#if>
       </#list>
-      <#if numFilters gt numVisibleFilters>
+git checkout       <#if numFilters gt numVisibleFilters>
           <li class="toggle-trigger" data-js-toggle="toggle_trigger">
               <a>show more</a>
           </li>

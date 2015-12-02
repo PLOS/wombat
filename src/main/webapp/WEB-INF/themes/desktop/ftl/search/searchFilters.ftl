@@ -34,7 +34,7 @@
             </li>
         </#if>
       </#list>
-    ${filterSize}
+      <#if filterSize gt 5>
           <li class="toggle-trigger" data-js-toggle="toggle_trigger">
               <a>show more</a>
           </li>

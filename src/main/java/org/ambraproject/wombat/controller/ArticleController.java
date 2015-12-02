@@ -121,25 +121,21 @@ public class ArticleController extends WombatController {
                               @RequestParam("id") String articleId)
       throws IOException {
 
-    // TODO: this method currently makes 5 backend RPCs, all sequentially.
+      // TODO: this method currently makes 5 backend RPCs, all sequentially.
     // Explore reducing this number, or doing them in parallel, if this is
     // a performance bottleneck.
+      Map<?, ?> articleMetaData = addCommonModelAttributesAndValidate(request, model, site, articleId);
+      validateArticleVisibility(site, articleMetaData);
 
-    requireNonemptyParameter(articleId);
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateArticleVisibility(site, articleMetadata);
+      requireNonemptyParameter(articleId);
     RenderContext renderContext = new RenderContext(site);
     renderContext.setArticleId(articleId);
 
     String articleHtml = getArticleHtml(renderContext);
-    model.addAttribute("article", articleMetadata);
-    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
-    model.addAttribute("articleText", articleHtml);
-    model.addAttribute("amendments", fillAmendments(site, articleMetadata));
-    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
+      model.addAttribute("article", articleMetaData);
+      model.addAttribute("articleText", articleHtml);
+    model.addAttribute("amendments", fillAmendments(site, articleMetaData));
 
-    addCrossPublishedJournals(request, model, site, articleMetadata);
-    requestAuthors(model, articleId);
     requestComments(model, articleId);
     return site + "/ftl/article/article";
   }
@@ -154,13 +150,12 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "articleComments", value = "/article/comments")
-  public String renderArticleComments(Model model, @SiteParam Site site,
+  public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
                                       @RequestParam("id") String articleId) throws IOException {
-    requireNonemptyParameter(articleId);
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateArticleVisibility(site, articleMetadata);
-    model.addAttribute("article", articleMetadata);
-    requestComments(model, articleId);
+      requireNonemptyParameter(articleId);
+      Map<?, ?> articleMetaData = addCommonModelAttributesAndValidate(request, model, site, articleId);
+      validateArticleVisibility(site, articleMetaData);
+      requestComments(model, articleId);
     return site + "/ftl/article/comments";
   }
 
@@ -414,16 +409,14 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "articleAuthors", value = "/article/authors")
-  public String renderArticleAuthors(Model model, @SiteParam Site site,
+  public String renderArticleAuthors( HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateArticleVisibility(site, articleMetadata);
-    model.addAttribute("article", articleMetadata);
-    requestAuthors(model, articleId);
-    return site + "/ftl/article/authors";
+      Map<?, ?> articleMetaData = addCommonModelAttributesAndValidate(request, model, site, articleId);
+      validateArticleVisibility(site, articleMetaData);
+      return site + "/ftl/article/authors";
   }
 
-  /**
+    /**
    * Serves the article metrics tab content for an article.
    *
    * @param model     data to pass to the view
@@ -436,14 +429,9 @@ public class ArticleController extends WombatController {
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
     enforceDevFeature("metricsTab");     // TODO: remove when ready to expose page in prod
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateArticleVisibility(site, articleMetadata);
-    model.addAttribute("article", articleMetadata);
-    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
-    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
-    addCrossPublishedJournals(request, model, site, articleMetadata);
-    requestAuthors(model, articleId);
-    return site + "/ftl/article/metrics";
+      Map<?, ?> articleMetaData = addCommonModelAttributesAndValidate(request, model, site, articleId);
+      validateArticleVisibility(site, articleMetaData);
+      return site + "/ftl/article/metrics";
   }
 
   @RequestMapping(name = "relatedContent", value = "/article/related")
@@ -453,16 +441,14 @@ public class ArticleController extends WombatController {
 
 
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
-  public String renderCitationDownloadPage(Model model, @SiteParam Site site,
+  public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
                                            @RequestParam("id") String articleId)
       throws IOException {
     enforceDevFeature("citationDownload"); // TODO: remove when ready to expose page in prod
     requireNonemptyParameter(articleId);
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateArticleVisibility(site, articleMetadata);
-    requestAuthors(model, (String) articleMetadata.get("doi"));
-    model.addAttribute("article", articleMetadata);
-    return site + "/ftl/article/citationDownload";
+      Map<?, ?> articleMetaData = addCommonModelAttributesAndValidate(request, model, site, articleId);
+      validateArticleVisibility(site, articleMetaData);
+      return site + "/ftl/article/citationDownload";
   }
 
   @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris")
@@ -489,8 +475,8 @@ public class ArticleController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
     String citationBody = serviceFunction.apply((Map<String, ?>) articleMetadata);
     String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
-        URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
-        fileExtension);
+            URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
+            fileExtension);
 
     HttpHeaders headers = new HttpHeaders();
     headers.add(HttpHeaders.CONTENT_TYPE, contentType);
@@ -810,5 +796,16 @@ public class ArticleController extends WombatController {
       }
     });
   }
+
+    private Map<?, ?> addCommonModelAttributesAndValidate(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam("id") String articleId) throws IOException {
+        Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+        validateArticleVisibility(site, articleMetadata);
+        addCrossPublishedJournals(request, model, site, articleMetadata);
+        model.addAttribute("article", articleMetadata);
+        model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
+        model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
+        requestAuthors(model, articleId);
+        return articleMetadata;
+    }
 
 }

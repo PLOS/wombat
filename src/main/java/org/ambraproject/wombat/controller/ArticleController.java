@@ -393,16 +393,13 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "articleAuthors", value = "/article/authors")
-  public String renderArticleAuthors(Model model, @SiteParam Site site,
+  public String renderArticleAuthors( HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateArticleVisibility(site, articleMetadata);
-    model.addAttribute("article", articleMetadata);
-    requestAuthors(model, articleId);
-    return site + "/ftl/article/authors";
+      addCommonModelAttributesAndValidate(request, model, site, articleId);
+      return site + "/ftl/article/authors";
   }
 
-  /**
+    /**
    * Serves the article metrics tab content for an article.
    *
    * @param model     data to pass to the view
@@ -415,13 +412,7 @@ public class ArticleController extends WombatController {
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
     enforceDevFeature("metricsTab");     // TODO: remove when ready to expose page in prod
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateArticleVisibility(site, articleMetadata);
-    model.addAttribute("article", articleMetadata);
-    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
-    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
-    addCrossPublishedJournals(request, model, site, articleMetadata);
-    requestAuthors(model, articleId);
+      addCommonModelAttributesAndValidate(request, model, site, articleId);
     return site + "/ftl/article/metrics";
   }
 
@@ -468,8 +459,8 @@ public class ArticleController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
     String citationBody = serviceFunction.apply((Map<String, ?>) articleMetadata);
     String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
-        URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
-        fileExtension);
+            URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
+            fileExtension);
 
     HttpHeaders headers = new HttpHeaders();
     headers.add(HttpHeaders.CONTENT_TYPE, contentType);
@@ -648,5 +639,15 @@ public class ArticleController extends WombatController {
       }
     });
   }
+
+    private void addCommonModelAttributesAndValidate(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam("id") String articleId) throws IOException {
+        Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+        validateArticleVisibility(site, articleMetadata);
+        addCrossPublishedJournals(request, model, site, articleMetadata);
+        model.addAttribute("article", articleMetadata);
+        model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
+        model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
+        requestAuthors(model, articleId);
+    }
 
 }

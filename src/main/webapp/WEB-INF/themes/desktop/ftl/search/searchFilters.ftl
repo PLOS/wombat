@@ -3,21 +3,25 @@
     <h3>${filterTypeName}</h3>
 
     <ul class="active-filters" id="activeFilters-${filterTypeName}"><#list  searchFilter.activeFilterItems as activeFilterItem>
-      <li>
-        <@siteLink handlerName="simpleSearch"
-        queryParameters=activeFilterItem.filteredResultsParameters ; href>
-            <a href="${href}"
-               data-filter-param="${activeFilterItem.filterParamName}"
-               data-filter-value="${activeFilterItem.filterValue}">
-                <input type="checkbox" checked/> <span> ${activeFilterItem.getDisplayName()} </span>
-            </a>
-        </li>
-        </@siteLink>
-      </#list></ul>
+    <li>
+      <@siteLink handlerName="simpleSearch"
+      queryParameters=activeFilterItem.filteredResultsParameters ; href>
+          <a href="${href}"
+             data-filter-param="${activeFilterItem.filterParamName}"
+             data-filter-value="${activeFilterItem.filterValue}">
+              <input type="checkbox" checked/> <span> ${activeFilterItem.getDisplayName()} </span>
+          </a>
+      </li>
+      </@siteLink>
+    </#list></ul>
 
     <ul id="searchFilterBy${filterTypeName}">
-      <#list  searchFilter.inactiveFilterItems as searchFilterItem>
-        <#if !suppressSearchFilter(searchFilterItem) >
+      <#assign filterSize = 0 />
+
+      <#list searchFilter.inactiveFilterItems as searchFilterItem>
+        <#if !suppressSearchFilter(searchFilterItem)>
+          <#assign filterSize = filterSize + 1 />
+
             <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility="none"</#if>>
               <@siteLink handlerName="simpleSearch"
               queryParameters=searchFilterItem.filteredResultsParameters ; href>
@@ -30,7 +34,7 @@
             </li>
         </#if>
       </#list>
-      <#if searchFilter.searchFilterResult?size gt 5>
+    ${filterSize}
           <li class="toggle-trigger" data-js-toggle="toggle_trigger">
               <a>show more</a>
           </li>

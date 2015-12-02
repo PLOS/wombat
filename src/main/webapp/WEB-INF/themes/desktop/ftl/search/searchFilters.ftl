@@ -34,7 +34,7 @@
             </li>
         </#if>
       </#list>
-        <#if numFilters gt numVisibleFilters>
+      <#if numFilters gt numVisibleFilters>
           <li class="toggle-trigger" data-js-toggle="toggle_trigger">
               <a>show more</a>
           </li>

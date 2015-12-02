@@ -37,7 +37,6 @@ import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.validator.routines.UrlValidator;
-import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -48,6 +47,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -445,6 +446,11 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/metrics";
   }
 
+  @RequestMapping(name = "relatedContent", value = "/article/related")
+  public String renderRelatedContent() {
+    throw new NotFoundException(); // TODO Implement
+  }
+
 
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
   public String renderCitationDownloadPage(Model model, @SiteParam Site site,
@@ -489,7 +495,7 @@ public class ArticleController extends WombatController {
     HttpHeaders headers = new HttpHeaders();
     headers.add(HttpHeaders.CONTENT_TYPE, contentType);
     headers.add(HttpHeaders.CONTENT_DISPOSITION, contentDispositionValue);
-    return new ResponseEntity<>(citationBody, headers, org.springframework.http.HttpStatus.OK);
+    return new ResponseEntity<>(citationBody, headers, HttpStatus.OK);
   }
 
 
@@ -568,7 +574,7 @@ public class ArticleController extends WombatController {
         statusLine = response.getStatusLine();
       } catch (ServiceRequestException e) {
         //This exception is thrown when the submitted link is already present for the article.
-        if (e.getStatusCode() == HttpStatus.SC_BAD_REQUEST
+        if (e.getStatusCode() == HttpStatus.BAD_REQUEST.value()
             && e.getResponseBody().equals("The link already exists")) {
           model.addAttribute("formError", "This link has already been submitted. Please submit a different link");
           model.addAttribute("isValid", false);
@@ -579,7 +585,7 @@ public class ArticleController extends WombatController {
         httpPost.releaseConnection();
       }
 
-      if (statusLine != null && statusLine.getStatusCode() != HttpStatus.SC_CREATED) {
+      if (statusLine != null && statusLine.getStatusCode() != HttpStatus.CREATED.value()) {
         throw new RuntimeException("bad response from media curation server: " + statusLine);
       }
     }
@@ -588,6 +594,7 @@ public class ArticleController extends WombatController {
   }
 
   /**
+<<<<<<< HEAD
    * Validate the input from the form
    * @param model data passed in from the view
    * @param link link pointing to media content relating to the article
@@ -632,6 +639,27 @@ public class ArticleController extends WombatController {
 
     model.addAttribute("isValid", isValid);
     return isValid;
+  }
+  /*
+   * Returns a list of figures and tables of a given article; main usage is the figshare tile on the Metrics
+   * tab
+   *
+   * @param site current site
+   * @param articleId DOI identifying the article
+   * @return a list of figures and tables of a given article
+   * @throws IOException
+   */
+  @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
+  public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
+                                                       @RequestParam("id") String articleId) throws IOException {
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    validateArticleVisibility(site, articleMetadata);
+    List<ImmutableMap<String, String>> articleFigsAndTables = articleService.getArticleFiguresAndTables(articleMetadata);
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+    return new ResponseEntity<>(articleFigsAndTables, headers, HttpStatus.OK);
   }
 
   /**
@@ -782,4 +810,5 @@ public class ArticleController extends WombatController {
       }
     });
   }
+
 }

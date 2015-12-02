@@ -16,7 +16,7 @@
       var fixNum = num.toString()
       fixNum = fixNum.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return fixNum;
-    };
+    }
 
     Date.prototype.addDays = function (days) {
       this.setDate(this.getDate() + days);
@@ -37,23 +37,12 @@
       }
       logDateFormat = logDateFormat.format(newFormat);
 
-
-      if (logDateFormat < testDateFormat) {
-        return false;
-
-      } else {
-        // The selected time is more than numDays days from now
-        return true;
-      }
+      // The selected time is more than numDays days from now
+      return logDateFormat >= testDateFormat;
     };
 
     plural_check = function (input) {
-      input = parseInt(input.replace(/[^0-9]/g, ''));
-      if (input === 1) {
-        return false;
-      } else {
-        return true;
-      }
+      return parseInt(input.replace(/[^0-9]/g, '')) !== 1;
     };
 
     this.getSignpostData = function (doi) {
@@ -128,7 +117,7 @@
         displayError(errorText);
       });
 
-    }
+    };
   };
 
   $('.metric-term').mouseenter(function () {

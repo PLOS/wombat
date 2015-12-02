@@ -1,4 +1,5 @@
-<#macro searchFilterList filterTypeName searchFilter>
+
+<#macro searchFilterList filterTypeName searchFilter visibleFilters=5>
 <div>
     <h3>${filterTypeName}</h3>
 
@@ -21,8 +22,7 @@
       <#list searchFilter.inactiveFilterItems as searchFilterItem>
         <#if !suppressSearchFilter(searchFilterItem)>
           <#assign filterSize = filterSize + 1 />
-
-            <li <#if searchFilterItem_index gt 5>data-js-toggle="toggle_target" data-visibility="none"</#if>>
+            <li <#if searchFilterItem_index gt visibleFilters>data-js-toggle="toggle_target" data-visibility="none"</#if>>
               <@siteLink handlerName="simpleSearch"
               queryParameters=searchFilterItem.filteredResultsParameters ; href>
                   <a href="${href}"
@@ -34,7 +34,7 @@
             </li>
         </#if>
       </#list>
-      <#if filterSize gt 5>
+      <#if filterSize gt visibleFilters>
           <li class="toggle-trigger" data-js-toggle="toggle_trigger">
               <a>show more</a>
           </li>

@@ -36,30 +36,30 @@
   text-decoration: none;
 }
 
-.pagination .prev,
-.pagination .next {
+.pagination .prevPage,
+.pagination .nextPage {
   position: absolute;
   background: #ddd url(../img/icon.sprite.page.gif) 0 0 no-repeat;
   text-indent: -9999px;
   overflow: hidden;
 }
 
-.pagination  a.prev,
-.pagination a.next {
+.pagination  a.prevPage,
+.pagination a.nextPage {
   background-color: #333;
 }
 
-.pagination .prev {
+.pagination .prevPage {
   left: 0;
   background-position: 0 -24px;
 }
 
-.pagination .next {
+.pagination .nextPage {
   right: 0;
 }
 
-.pagination a.prev:hover,
-.pagination a.next:hover,
+.pagination a.prevPage:hover,
+.pagination a.nextPage:hover,
 .pagination a:hover {
   background-color: #3C63AF;
   color: #FFF;

@@ -1,4 +1,4 @@
-<#macro renderSearchPaginationLinks url totalPages currentPageParam>
+<#macro renderSearchPaginationLinks url totalPages currentPage>
 <#--
   currentPage is zero based
   SOLR (the action class) expects a startPage parameter of 0 to N
@@ -21,40 +21,38 @@
   < 1 ...7 8 9 10 >
   < 1 2 3 4 ... 10 >
 -->
-    <#assign currentPage = currentPageParam + 1/>
-
     <#if (totalPages gt 1 )>
     <div class="pagination">
         <#if (totalPages lt 4) >
             <#if (currentPage gt 1) >
-                <a href="${url}?<@URLParameters parameters=searchParameters names="startPage" values=[currentPage - 2] />"
-                   class="prev">&lt;</a>&nbsp;
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(currentPage - 1) />"
+                   class="prevPage">&lt;</a>&nbsp;
             <#else>
-                <span class="prev">&lt;</span>
+                <span class="prevPage">&lt;</span>
             </#if>
 
             <#list 1..totalPages as pageNumber>
                 <#if pageNumber == currentPage>
                     <strong>${currentPage}</strong>
                 <#else>
-                    <a href="${url}?<@URLParameters parameters=searchParameters names="startPage" values=[pageNumber - 1] />">${pageNumber}</a>
+                    <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(currentPage - 1) />">${pageNumber}</a>
                 </#if>
             </#list>
 
             <#if (currentPage lt totalPages)>
-                <a href="${url}?<@URLParameters parameters=searchParameters names="startPage" values=[currentPage] />"
-                   class="next">
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=currentPage />"
+                   class="nextPage">
                     &gt;</a>
             <#else>
-                <span class="next">&gt;</span>
+                <span class="nextPage">&gt;</span>
             </#if>
         <#else>
             <#if (currentPage gt 1) >
-                <a href="${url}?<@URLParameters parameters=searchParameters names="startPage" values=[currentPage - 2] />"
-                   class="prev">&lt;</a>
-                <a href="${url}?<@URLParameters parameters=searchParameters names="startPage" values=[0] />">1</a>
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(currentPage - 1) />"
+                   class="prevPage">&lt;</a>
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=1 />">1</a>
             <#else>
-                <span class="prev">&lt;</span><strong>1</strong>
+                <span class="prevPage">&lt;</span><strong>1</strong>
             </#if>
             <#if (currentPage gt 3) >
                 <span>...</span>
@@ -70,20 +68,19 @@
                     <#if (currentPage == pageNumber)>
                         <strong>${pageNumber}</strong>
                     <#else>
-                        <a href="${url}?<@URLParameters parameters=searchParameters names="startPage" values=[pageNumber - 1] />">${pageNumber}</a>
+                        <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=pageNumber />">${pageNumber}</a>
                     </#if>
                 </#if>
             </#list>
             <#if (currentPage lt (totalPages - 2))>
-                ...
+                <span>...</span>
             </#if>
             <#if (currentPage lt totalPages)>
-                <a href="${url}?<@URLParameters parameters=searchParameters names="startPage" values=[totalPages - 1] />">${totalPages}</a>
-                <a href="${url}?<@URLParameters parameters=searchParameters names="startPage" values=[currentPage] />"
-                   class="next">&gt;</a>
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=totalPages />">${totalPages}</a>
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(currentPage + 1) />" class="nextPage">&gt;</a>
             <#else>
                 <strong>${totalPages}</strong>
-                <span class="next">&gt;</span>
+                <span class="nextPage">&gt;</span>
             </#if>
         </#if>
     </div>

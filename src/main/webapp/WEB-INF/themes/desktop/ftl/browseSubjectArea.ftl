@@ -154,9 +154,10 @@
                                     <a data-doi="info:doi/${article.id}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <#--@TODO: Wait for article.hasAssets fix in BE -->
     <#--                                <#if (article.hasAssets == true) >
-                                        <a data-doi="info:doi/${article.id}" class="figures" href="#">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-                                    <#else></#if> -->
-                                    <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                        <#else>
+                                            <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                        </#if> -->
+                                    <a data-doi="info:doi/${article.id}" class="figures" href="#">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <a href="${articleUrl}">Full Text</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <a href="<@siteLink handlerName="asset" queryParameters={"id": article.id + ".PDF"} />" target="_blank">Download PDF</a>
                                 </p>

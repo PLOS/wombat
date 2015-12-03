@@ -9,6 +9,8 @@
 <#include "../common/journalStyle.ftl" />
 <body class="home ${journalStyle}">
 
+<div id="test"></div>
+
 <#include "../common/header/headerContainer.ftl" />
 
 <#include "body.ftl" />

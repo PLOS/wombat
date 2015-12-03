@@ -116,14 +116,10 @@
         <#if resultView == "list">
             <div id="subject-list-view" class="main">
                 <#list searchResults.docs as article>
-                    <#list article?keys as key>
-                     ${key}: <#if article[key]?is_string || article[key]?is_number>${article[key]}</#if><br>
-                    </#list>
-
                     <ul id="search-results">
                         <@siteLink handlerName="article" queryParameters={"id":article.id} ; articleUrl>
                             <#include "article/articleTruncateTitle.ftl" />
-                            <li data-doi="${article.id}" data-pdate="${article.publication_date}">
+                            <li data-doi="${article.id}" data-pdate="${article.publication_date}" data-metricsurl="<@siteLink handlerName="articleMetrics" />">
                                 <h2><a href="${articleUrl}" title="${article.title}"><@truncateTitle article.title></@></a></h2>
                                 <p class="authors">
                                     <#list article.author_display![] as author>
@@ -131,10 +127,10 @@
                                     </#list>
                                 </p>
                                 <p class="date">published ${article.publication_date}</p> <#--?string("dd MMM yyyy")-->
-                                <span class="metrics" style="display: block;">
+                                <span class="metrics"><span>Loading metrics information...</span></span>
+<#--                                <span class="metrics" style="display: block;">
                                     <span class="almSearchWidget">
                                         <span>
-                                            <#--@TODO: Replace articleUrl by metricsUrl -->
                                             <a href="<@siteLink handlerName="articleMetrics" queryParameters={"id":article.id} />#usage" class="data">
                                                 Views: ${article.counter_total_all}
                                             </a>
@@ -153,14 +149,14 @@
                                             Shares: None
                                         </span>
                                     </span>
-                                </span>
+                                </span>-->
                                 <p class="actions">
                                     <a data-doi="info:doi/${article.id}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-                                <#--@TODO: Wait for article.hasAssets fix in BE -->
+                                    <#--@TODO: Wait for article.hasAssets fix in BE -->
     <#--                                <#if (article.hasAssets == true) >
                                         <a data-doi="info:doi/${article.id}" class="figures" href="#">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <#else></#if> -->
-                                        <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                    <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <a href="${articleUrl}">Full Text</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <a href="<@siteLink handlerName="asset" queryParameters={"id": article.id + ".PDF"} />" target="_blank">Download PDF</a>
                                 </p>
@@ -189,8 +185,15 @@
 
 <#include "common/footer/footer.ftl" />
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
+
+<@js src="resource/js/vendor/jquery.jsonp-2.4.0.js" />
 
 <@js src="resource/js/plosone.js" />
+<@js src="resource/js/util/alm_config.js" />
+<@js src="resource/js/metrics.js" />
+<@js src="resource/js/components/tooltip_hover.js"/>
+<@js src="resource/js/components/browse_results.js" />
 <@renderJs />
 
 </body>

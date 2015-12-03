@@ -293,3 +293,27 @@
 }
 
 /* END */
+
+/* METRICS IN BROWSE */
+
+/*Table mini in tooltip*/
+.metricTooltip{@include js-tooltip-target();}
+div.tooltipContainer {
+  display: inline-block;
+  @include js-tooltip-container();
+}
+.metricTooltip{
+  z-index: 3000;
+  border: 0;
+  padding: 5px;
+  span {
+    display: block;
+    background-color: #dadada;
+    border: 1px solid black;
+    padding: 3px;
+    font-size: $txt-size-medium;
+  }
+}
+
+/* END METRICS IN BROWSE */
+

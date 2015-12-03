@@ -306,6 +306,7 @@ div.tooltipContainer {
   z-index: 3000;
   border: 0;
   padding: 5px;
+  white-space: nowrap;
   span {
     display: block;
     background-color: #dadada;

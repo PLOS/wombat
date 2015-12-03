@@ -1,6 +1,6 @@
 <#macro renderSearchPaginationLinks url totalPages currentPage>
 <#--
-  currentPage is zero based
+  realPage is zero based
   SOLR (the action class) expects a startPage parameter of 0 to N
   We change this to a nonZero value here to make things a bit more readable
 
@@ -21,40 +21,41 @@
   < 1 ...7 8 9 10 >
   < 1 2 3 4 ... 10 >
 -->
+    <#assign realPage = currentPage + 1/>
     <#if (totalPages gt 1 )>
     <div class="pagination">
         <#if (totalPages lt 4) >
-            <#if (currentPage gt 1) >
-                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(currentPage - 1) />"
+            <#if (realPage gt 1) >
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(realPage - 1) />"
                    class="prevPage">&lt;</a>&nbsp;
             <#else>
                 <span class="prevPage">&lt;</span>
             </#if>
 
             <#list 1..totalPages as pageNumber>
-                <#if pageNumber == currentPage>
-                    <strong>${currentPage}</strong>
+                <#if pageNumber == realPage>
+                    <strong>${realPage}</strong>
                 <#else>
-                    <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(currentPage - 1) />">${pageNumber}</a>
+                    <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(pageNumber - 1) />">${pageNumber}</a>
                 </#if>
             </#list>
 
-            <#if (currentPage lt totalPages)>
-                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=currentPage />"
+            <#if (realPage lt totalPages)>
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=realPage />"
                    class="nextPage">
                     &gt;</a>
             <#else>
                 <span class="nextPage">&gt;</span>
             </#if>
         <#else>
-            <#if (currentPage gt 1) >
-                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(currentPage - 1) />"
+            <#if (realPage gt 1) >
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(realPage - 2) />"
                    class="prevPage">&lt;</a>
-                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=1 />">1</a>
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=0 />">1</a>
             <#else>
                 <span class="prevPage">&lt;</span><strong>1</strong>
             </#if>
-            <#if (currentPage gt 3) >
+            <#if (realPage gt 3) >
                 <span>...</span>
             </#if>
 
@@ -62,22 +63,22 @@
           Yes the following statements are confusing,
           but it should take care of all the use cases defined at the top
         --->
-            <#list min(currentPage - 1,0)..max(3,(currentPage + 1)) as pageNumber>
-                <#if ((pageNumber > 1 && pageNumber < totalPages && pageNumber > (currentPage - 2)
-                || ((pageNumber == (totalPages - 2)) && (pageNumber > (currentPage - 3)))))>
-                    <#if (currentPage == pageNumber)>
+            <#list min(realPage - 1,0)..max(3,(realPage + 1)) as pageNumber>
+                <#if ((pageNumber > 1 && pageNumber < totalPages && pageNumber > (realPage - 2)
+                || ((pageNumber == (totalPages - 2)) && (pageNumber > (realPage - 3)))))>
+                    <#if (realPage == pageNumber)>
                         <strong>${pageNumber}</strong>
                     <#else>
-                        <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=pageNumber />">${pageNumber}</a>
+                        <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(pageNumber - 1) />">${pageNumber}</a>
                     </#if>
                 </#if>
             </#list>
-            <#if (currentPage lt (totalPages - 2))>
+            <#if (realPage lt (totalPages - 2))>
                 <span>...</span>
             </#if>
-            <#if (currentPage lt totalPages)>
-                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=totalPages />">${totalPages}</a>
-                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(currentPage + 1) />" class="nextPage">&gt;</a>
+            <#if (realPage lt totalPages)>
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=(totalPages - 1)/>">${totalPages}</a>
+                <a href="${url}?<@URLParameters resultView=resultView sortOrder=sortOrder page=realPage />" class="nextPage">&gt;</a>
             <#else>
                 <strong>${totalPages}</strong>
                 <span class="nextPage">&gt;</span>

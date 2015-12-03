@@ -126,33 +126,11 @@
                                         <span class="author">${author}<#if author_has_next>,</#if></span>
                                     </#list>
                                 </p>
-                                <p class="date">published ${article.publication_date}</p> <#--?string("dd MMM yyyy")-->
+                                <p class="date">published ${article.publication_date?date("yyyy-mm-dd")?string("dd MMM yyyy")}</p>
                                 <span class="metrics"><span>Loading metrics information...</span></span>
-<#--                                <span class="metrics" style="display: block;">
-                                    <span class="almSearchWidget">
-                                        <span>
-                                            <a href="<@siteLink handlerName="articleMetrics" queryParameters={"id":article.id} />#usage" class="data">
-                                                Views: ${article.counter_total_all}
-                                            </a>
-                                        </span>&nbsp;•&nbsp;
-                                        <span>
-                                            <a href="<@siteLink handlerName="articleMetrics" queryParameters={"id":article.id} />#citations" class="data">
-                                                Citations: ${article.alm_scopusCiteCount}
-                                            </a>
-                                        </span>&nbsp;•&nbsp;
-                                        <span>
-                                            <a href="<@siteLink handlerName="articleMetrics" queryParameters={"id":article.id} />#other" class="data">
-                                                Saves: ${article.alm_mendeleyCount}
-                                            </a>
-                                        </span>&nbsp;•&nbsp;
-                                        <span class="no-data">
-                                            Shares: None
-                                        </span>
-                                    </span>
-                                </span>-->
                                 <p class="actions">
                                     <a data-doi="info:doi/${article.id}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-                                    <#--@TODO: Wait for article.hasAssets fix in BE -->
+                                    <#--@TODO: Wait for article.hasAssets fix in BE or figure out what to do with figures -->
     <#--                                <#if (article.hasAssets == true) >
                                         <#else>
                                             <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;

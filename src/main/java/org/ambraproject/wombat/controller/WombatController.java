@@ -106,6 +106,12 @@ public abstract class WombatController {
     return (parameterValue != null) && !Boolean.toString(false).equalsIgnoreCase(parameterValue);
   }
 
+
+  // Inconsistent with equals. See Javadoc for java.util.SortedSet.
+  private static ImmutableSortedSet<String> caseInsensitiveImmutableSet(String... strings) {
+    return ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, Arrays.asList(strings));
+  }
+
   /**
    * Names of headers that, on a request from the client, should be passed through on our request to the service tier
    * (Rhino or Content Repo).
@@ -152,8 +158,8 @@ public abstract class WombatController {
   }
 
 
-  // Inconsistent with equals. See Javadoc for java.util.SortedSet.
-  private static ImmutableSortedSet<String> caseInsensitiveImmutableSet(String... strings) {
-    return ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, Arrays.asList(strings));
-  }
+  // Parameter names defined by net.tanesha.recaptcha library
+  protected static final String RECAPTCHA_CHALLENGE_FIELD = "recaptcha_challenge_field";
+  protected static final String RECAPTCHA_RESPONSE_FIELD = "recaptcha_response_field";
+
 }

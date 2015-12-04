@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Controller
-public class FeedbackController {
+public class FeedbackController extends WombatController {
 
   @Autowired
   private FreeMarkerConfig freeMarkerConfig;
@@ -39,10 +39,6 @@ public class FeedbackController {
   private CaptchaService captchaService;
   @Autowired
   private JavaMailSender javaMailSender; // TODO
-
-  // Parameter names defined by net.tanesha.recaptcha library
-  private static final String RECAPTCHA_CHALLENGE_FIELD = "recaptcha_challenge_field";
-  private static final String RECAPTCHA_RESPONSE_FIELD = "recaptcha_response_field";
 
   private static Map<String, Object> getFeedbackConfig(Site site) {
     try {

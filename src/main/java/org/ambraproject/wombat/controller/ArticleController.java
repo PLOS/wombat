@@ -1,9 +1,11 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
@@ -89,6 +91,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.SortedMap;
+import java.util.stream.Collectors;
 
 /**
  * Controller for rendering an article.
@@ -684,6 +687,7 @@ public class ArticleController extends WombatController {
       @RequestParam("emailFrom") String emailFrom,
       @RequestParam("senderName") String senderName,
       @RequestParam("note") String note,
+      //TODO: extract captcha field names to reusable place
       @RequestParam("recaptcha_challenge_field") String captchaChallenge,
       @RequestParam("recaptcha_response_field") String captchaResponse)
       throws IOException, MessagingException {
@@ -698,16 +702,17 @@ public class ArticleController extends WombatController {
     model.addAttribute("note", note);
     model.addAttribute("articleUri", articleUri);
 
-    if (!validateEmailArticleInput(model, emailToAddresses, emailFrom, senderName, captchaChallenge,
-        captchaResponse, site, request)) {
-      model.addAttribute("formError", "Invalid values have been submitted.");
+    List<InternetAddress> toAddresses = Splitter.on(CharMatcher.anyOf("\n\r")).omitEmptyStrings()
+        .splitToList(emailToAddresses).stream()
+        .map(email -> EmailMessage.createAddress(null /*name*/, email))
+        .collect(Collectors.toList());
+
+    Map<String, Boolean> errorMap = validateEmailArticleInput(toAddresses, emailFrom, senderName,
+        captchaChallenge, captchaResponse, site, request);
+    if (!errorMap.isEmpty()) {
+      model.addAllAttributes(errorMap);
       response.setStatus(HttpStatus.BAD_REQUEST.value());
       return renderEmailThisArticle(request, model, site, articleId);
-    }
-
-    List<InternetAddress> toAddresses = new ArrayList<>();
-    for (String email : emailToAddresses.split("\\r?\\n")) {
-      EmailMessage.createAddress(null, email);
     }
 
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
@@ -731,48 +736,35 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/emailSuccess";
   }
 
-  private boolean validateEmailArticleInput(Model model, String emailToAddresses, String emailFrom,
-      String senderName, String captchaChallenge, String captchaResponse, Site site,
-      HttpServletRequest request) throws IOException {
+  private Map<String, Boolean> validateEmailArticleInput(List<InternetAddress> emailToAddresses,
+      String emailFrom, String senderName, String captchaChallenge, String captchaResponse,
+      Site site, HttpServletRequest request) throws IOException {
 
-    boolean isValid = true;
+    Map<String, Boolean> errors = new HashMap<>();
     if (StringUtils.isBlank(emailFrom)) {
-      model.addAttribute("emailFromError", "This field is required.");
-      isValid = false;
+      errors.put("emailFromMissing", true);
     } else if (!EmailValidator.getInstance().isValid(emailFrom)) {
-      model.addAttribute("emailFromError", "Invalid e-mail address");
-      isValid = false;
+      errors.put("emailFromInvalid", true);
     }
 
-    if (StringUtils.isBlank(emailToAddresses)) {
-      model.addAttribute("emailToAddressesError", "This field is required.");
-      isValid = false;
-    } else {
-      String[] emailToAddressArray = emailToAddresses.split("\\r?\\n");
-      if (emailToAddressArray.length > MAX_TO_EMAILS) {
-        model.addAttribute("emailToAddressesError", "Too many email addresses.");
-      } else {
-        for (String email : emailToAddressArray) {
-          if (!EmailValidator.getInstance().isValid(email)) {
-            model.addAttribute("emailToAddressesError", "Invalid e-mail address.");
-            isValid = false;
-            break;
-          }
-        }
-      }
+    if (emailToAddresses.isEmpty()) {
+      errors.put("emailToAddressesMissing", true);
+    } else if (emailToAddresses.size() > MAX_TO_EMAILS) {
+        errors.put("tooManyEmailToAddresses", true);
+    } else if (emailToAddresses.stream()
+        .noneMatch(email -> EmailValidator.getInstance().isValid(email.toString()))) {
+      errors.put("emailToAddressesInvalid", true);
     }
 
     if (StringUtils.isBlank(senderName)) {
-      model.addAttribute("senderNameError", "This field is required.");
-      isValid = false;
+      errors.put("senderNameMissing", true);
     }
 
     if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-      model.addAttribute("captchaError", "Verification is incorrect. Please try again.");
-      isValid = false;
+      errors.put("captchaError", true);
     }
 
-    return isValid;
+    return errors;
   }
 
   /**

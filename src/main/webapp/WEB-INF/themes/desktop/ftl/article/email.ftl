@@ -31,7 +31,9 @@
         Recipients' E-mail addresses (one per line, max ${maxEmails})
         <span>*</span>
       </label>
-      <#if emailToAddressesError??><span class="error">${emailToAddressesError}</span></#if>
+      <#if emailToAddressesMissing??><span class="error">This field is required.</span></#if>
+      <#if emailToAddressesInvalid??><span class="error">Invalid email address</span></#if>
+      <#if tooManyEmailToAddresses??><span class="error">Too many email addresses.</span></#if>
       <br/>
       <textarea id="emailToAddresses" rows="${maxEmails}" name="emailToAddresses"
                 cols="40"><#if emailToAddresses??>${emailToAddresses}</#if></textarea>
@@ -39,14 +41,15 @@
       <label id="emailAddressLabel" for="emailAddress">
         Your E-mail address <span>*</span>
       </label>
-      <#if emailFromError??><span class="error">${emailFromError}</span></#if>
+      <#if emailFromMissing??><span class="error">This field is required.</span></#if>
+      <#if emailFromInvalid??><span class="error">Invalid email address.</span></#if>
       <br/>
       <input id="emailAddress" type="text" name="emailFrom" size="40" <#if emailFrom??>value="${emailFrom}"</#if>/>
       <br/>
       <label id="senderNameLabel" for="senderName">
         Your name <span>*</span>
       </label>
-      <#if senderNameError??><span class="error">${senderNameError}</span></#if>
+      <#if senderNameMissing??><span class="error">This field is required.</span></#if>
       <br/>
       <input type="text" id="senderName" name="senderName" size="40" <#if senderName??>value="${senderName}"</#if>/>
       <br/>
@@ -58,7 +61,7 @@
                 cols="40"><#if note??>${note}<#else>I thought you would find this article interesting.</#if></textarea>
       <br/>
       <label>Text verification:</label>
-      <#if captchaError??><span class="error">${captchaError}</span></#if>
+      <#if captchaError??><span class="error">Verification is incorrect. Please try again.</span></#if>
       ${captchaHTML}
       <input id="sendButton" type="submit" value="Send">
     </fieldset>

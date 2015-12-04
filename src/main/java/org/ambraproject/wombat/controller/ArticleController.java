@@ -517,12 +517,6 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
-    model.addAttribute("article", articleMetadata);
-    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
-    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
-    addCrossPublishedJournals(request, model, site, articleMetadata);
-    requestAuthors(model, articleId);
-    requestComments(model, articleId);
     String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
     model.addAttribute("recaptchaPublicKey", recaptchaPublicKey);
     return site + "/ftl/article/relatedContent";
@@ -932,7 +926,6 @@ public class ArticleController extends WombatController {
 
     private Map<?, ?> addCommonModelAttributes(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam("id") String articleId) throws IOException {
         Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-        validateArticleVisibility(site, articleMetadata);
         addCrossPublishedJournals(request, model, site, articleMetadata);
         model.addAttribute("article", articleMetadata);
         model.addAttribute("containingLists", getContainingArticleLists(articleId, site));

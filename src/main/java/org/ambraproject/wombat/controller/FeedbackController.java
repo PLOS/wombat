@@ -5,9 +5,10 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +20,14 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -61,20 +65,33 @@ public class FeedbackController extends WombatController {
     return site + "/ftl/feedback/feedback";
   }
 
+  @RequestMapping(name = "feedbackSuccess", value = "/feedback/success", method = RequestMethod.GET)
+  public String indicateSuccess(@SiteParam Site site) {
+    validateFeedbackConfig(site);
+    return site + "/ftl/feedback/success";
+  }
 
   @RequestMapping(name = "feedbackPost", value = "/feedback", method = RequestMethod.POST)
-  public ResponseEntity<?> receiveFeedback(HttpServletRequest request, Model model, @SiteParam Site site,
-                                           @RequestParam("fromEmailAddress") String fromEmailAddress,
-                                           @RequestParam("note") String note,
-                                           @RequestParam("subject") String subject,
-                                           @RequestParam("name") String name,
-                                           @RequestParam("userId") String userId,
-                                           @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
-                                           @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
+  public String receiveFeedback(HttpServletRequest request, HttpServletResponse response,
+                                Model model, @SiteParam Site site,
+                                @RequestParam("fromEmailAddress") String fromEmailAddress,
+                                @RequestParam("note") String note,
+                                @RequestParam("subject") String subject,
+                                @RequestParam("name") String name,
+                                @RequestParam("userId") String userId,
+                                @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+                                @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException, MessagingException {
     validateFeedbackConfig(site);
+
+    Set<String> errors = validateInput(fromEmailAddress, note, subject, name);
     if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-      throw new NotFoundException("Captcha failed"); // TODO: Show as a user-friendly form validation failure
+      errors.add("captchaError");
+    }
+    if (!errors.isEmpty()) {
+      errors.forEach(error -> model.addAttribute(error, true));
+      response.setStatus(HttpStatus.BAD_REQUEST.value());
+      return serveFeedbackPage(model, site);
     }
 
     model.addAttribute("fromEmailAddress", fromEmailAddress);
@@ -101,7 +118,37 @@ public class FeedbackController extends WombatController {
         .build();
 
     message.send(javaMailSender);
-    return new ResponseEntity<>(HttpStatus.CREATED);
+
+    // TODO: Needs to build URL with Link?
+    // TODO: Includes weird extra URL parameters?
+    return "redirect:feedback/success";
+  }
+
+  /**
+   * Validate form parameters.
+   *
+   * @return a set of error flags to be added to the FTL model (empty if all input is valid)
+   */
+  private static Set<String> validateInput(String fromEmailAddress,
+                                           String note,
+                                           String subject,
+                                           String name) {
+    Set<String> errors = new HashSet<>();
+    if (StringUtils.isBlank(subject)) {
+      errors.add("subjectError");
+    }
+    if (StringUtils.isBlank(name)) {
+      errors.add("nameError");
+    }
+    if (StringUtils.isBlank(fromEmailAddress)) {
+      errors.add("emailAddressMissingError");
+    } else if (!EmailValidator.getInstance().isValid(fromEmailAddress)) {
+      errors.add("emailAddressInvalidError");
+    }
+    if (StringUtils.isBlank(note)) {
+      errors.add("noteError");
+    }
+    return errors;
   }
 
 

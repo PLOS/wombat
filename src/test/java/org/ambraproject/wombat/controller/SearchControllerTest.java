@@ -41,12 +41,8 @@ public class SearchControllerTest extends AbstractTestNGSpringContextTests {
     assertEquals(commonParams.sortOrder, SolrSearchServiceImpl.SolrSortOrder.RELEVANCE);
     assertEquals(commonParams.dateRange, SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME);
     assertTrue(commonParams.articleTypes.isEmpty());
-    assertEquals(commonParams.journalKeys.size(), 1);
-    assertEquals(commonParams.journalKeys.get(0), "journal1Key");
-    assertEquals(commonParams.filterJournalNames.size(), 1);
-    for (String journalName : commonParams.filterJournalNames) {
-      assertEquals(journalName, "Journal One");
-    }
+    assertTrue(commonParams.journalKeys.isEmpty());
+    assertTrue(commonParams.filterJournalNames.isEmpty());
     assertEquals(commonParams.subjectList.size(), 2);
     assertEquals(commonParams.subjectList.get(0), "subject1");
     assertEquals(commonParams.subjectList.get(1), "subject2");

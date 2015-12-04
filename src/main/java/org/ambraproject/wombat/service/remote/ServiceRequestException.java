@@ -8,19 +8,25 @@ import java.io.IOException;
 public class ServiceRequestException extends IOException {
 
   private final int statusCode;
+  private final String responseBody;
 
-  ServiceRequestException(int statusCode, String message) {
+  ServiceRequestException(int statusCode, String message, String responseBody) {
     super(message);
     this.statusCode = statusCode;
+    this.responseBody = responseBody;
   }
 
-  ServiceRequestException(int statusCode, String message, Throwable cause) {
+  ServiceRequestException(int statusCode, String message, Throwable cause, String responseBody) {
     super(message, cause);
     this.statusCode = statusCode;
+    this.responseBody = responseBody;
   }
 
   public int getStatusCode() {
     return statusCode;
   }
 
+  public String getResponseBody() {
+    return responseBody;
+  }
 }

@@ -123,42 +123,39 @@
 
 </form>
 
-<#if searchResults.numFound != 0>
+<#if searchResults.numFound != 0 && isFiltered>
 <div class="filter-view-container">
     <section class="filter-view">
-      <#if (isFiltered)>
-          <h3 class="filter-label">Filters:</h3>
-
-          <div class="filter-block">
-            <#if (filterStartDate??)>
-                <div class="filter-item" id="filter-date">
-                ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
-                  <@siteLink handlerName="simpleSearch" queryParameters=dateClearParams ; href>
-
+        <h3 class="filter-label">Filters:</h3>
+        <div class="filter-block">
+          <#if (filterStartDate??)>
+              <div class="filter-item" id="filter-date">
+              ${filterStartDate?date("yyyy-MM-dd")?string} TO ${filterEndDate?date("yyyy-MM-dd")?string}
+                <@siteLink handlerName="simpleSearch" queryParameters=dateClearParams ; href>
+                  <a href="${href}">&nbsp;</a>
+                </@siteLink>
+              </div>
+              <input type="hidden" name="filterStartDate" value="${filterStartDate}" placeholder="YYYY-MM-DD"/>
+            <#if (filterEndDate??)>
+                <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
+            </#if>
+          </#if>
+          <#if (activeFilterItems?size > 0)>
+            <#list activeFilterItems as item>
+                <div class="filter-item">
+                ${item.getDisplayName()}
+                  <@siteLink handlerName="simpleSearch"
+                  queryParameters=item.filteredResultsParameters ; href>
+                      <a href="${href}"
+                         data-filter-param="${item.filterParamName}"
+                         data-filter-value="${item.filterValue}">&nbsp;
+                      </a>
                   </@siteLink>
+                    <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}" />
                 </div>
-                <input type="hidden" name="filterStartDate" value="${filterStartDate}" placeholder="YYYY-MM-DD"/>
-              <#if (filterEndDate??)>
-                  <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
-              </#if>
-            </#if>
-            <#if (activeFilterItems?size > 0)>
-              <#list activeFilterItems as item>
-                  <div class="filter-item">
-                  ${item.getDisplayName()}
-                    <@siteLink handlerName="simpleSearch"
-                    queryParameters=item.filteredResultsParameters ; href>
-                        <a href="${href}"
-                           data-filter-param="${item.filterParamName}"
-                           data-filter-value="${item.filterValue}">&nbsp;
-                        </a>
-                    </@siteLink>
-                      <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}" />
-                  </div>
-              </#list>
-            </#if>
-          </div>
-      </#if>
+            </#list>
+          </#if>
+        </div>
         <div class="clear-filters">
           <@siteLink handlerName="simpleSearch" queryParameters=clearAllFilterParams ; href>
               <a id="clearAllFiltersButton" href="${href}">Clear all filters</a>

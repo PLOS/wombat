@@ -87,9 +87,11 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
 
@@ -707,10 +709,10 @@ public class ArticleController extends WombatController {
         .map(email -> EmailMessage.createAddress(null /*name*/, email))
         .collect(Collectors.toList());
 
-    Map<String, Boolean> errorMap = validateEmailArticleInput(toAddresses, emailFrom, senderName,
+    Set<String> errors = validateEmailArticleInput(toAddresses, emailFrom, senderName,
         captchaChallenge, captchaResponse, site, request);
-    if (!errorMap.isEmpty()) {
-      model.addAllAttributes(errorMap);
+    if (!errors.isEmpty()) {
+      errors.stream().forEach(error -> model.addAttribute(error, true));
       response.setStatus(HttpStatus.BAD_REQUEST.value());
       return renderEmailThisArticle(request, model, site, articleId);
     }
@@ -736,32 +738,32 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/emailSuccess";
   }
 
-  private Map<String, Boolean> validateEmailArticleInput(List<InternetAddress> emailToAddresses,
+  private Set<String> validateEmailArticleInput(List<InternetAddress> emailToAddresses,
       String emailFrom, String senderName, String captchaChallenge, String captchaResponse,
       Site site, HttpServletRequest request) throws IOException {
 
-    Map<String, Boolean> errors = new HashMap<>();
+    Set<String> errors = new HashSet<>();
     if (StringUtils.isBlank(emailFrom)) {
-      errors.put("emailFromMissing", true);
+      errors.add("emailFromMissing");
     } else if (!EmailValidator.getInstance().isValid(emailFrom)) {
-      errors.put("emailFromInvalid", true);
+      errors.add("emailFromInvalid");
     }
 
     if (emailToAddresses.isEmpty()) {
-      errors.put("emailToAddressesMissing", true);
+      errors.add("emailToAddressesMissing");
     } else if (emailToAddresses.size() > MAX_TO_EMAILS) {
-        errors.put("tooManyEmailToAddresses", true);
+        errors.add("tooManyEmailToAddresses");
     } else if (emailToAddresses.stream()
         .noneMatch(email -> EmailValidator.getInstance().isValid(email.toString()))) {
-      errors.put("emailToAddressesInvalid", true);
+      errors.add("emailToAddressesInvalid");
     }
 
     if (StringUtils.isBlank(senderName)) {
-      errors.put("senderNameMissing", true);
+      errors.add("senderNameMissing");
     }
 
     if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-      errors.put("captchaError", true);
+      errors.add("captchaError");
     }
 
     return errors;

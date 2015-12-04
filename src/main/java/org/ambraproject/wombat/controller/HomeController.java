@@ -7,6 +7,7 @@ import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.RecentArticleService;
+import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Handles requests for a site home page.
@@ -44,46 +46,34 @@ public class HomeController extends WombatController {
   private RecentArticleService recentArticleService;
 
   /**
-   * Extract {@code docs} element; rename {@code "id"} to {@code "doi"} to match the service API.
-   */
-  private static List<Object> sanitizeSolrResults(Map<?, ?> solrResults) {
-    List<Object> articles = (List<Object>) solrResults.get("docs");
-    for (Object articleObj : articles) {
-      Map<String, Object> article = (Map<String, Object>) articleObj;
-      article.put("doi", article.remove("id"));
-    }
-    return articles;
-  }
-
-  /**
    * Enumerates the allowed values for the section parameter for this page.
    */
   private static enum SectionType {
     RECENT {
       @Override
-      public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         return getArticlesFromSolr(context, section, site, start, SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST);
       }
     },
     POPULAR {
       @Override
-      public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         return getArticlesFromSolr(context, section, site, start, SolrSearchServiceImpl.SolrSortOrder.MOST_VIEWS_30_DAYS);
       }
     },
     CURATED {
       @Override
-      public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         String journalKey = site.getJournalKey();
         String listId = String.format("%s/%s/%s", section.curatedListType, journalKey, section.curatedListName);
         Map<String, Object> curatedList = context.soaService.requestObject("lists/" + listId, Map.class);
-        List<?> articles = (List<?>) curatedList.get("articles");
-        return (List<Object>) articles;
+        List<Map<String,Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
+        return articles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
       }
     };
 
-    private static List<Object> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
-                                                    SolrSearchServiceImpl.SolrSortOrder order)
+    private static List<SolrArticleAdapter> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
+                                                                SolrSearchServiceImpl.SolrSortOrder order)
         throws IOException {
       ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
           .setStart(start)
@@ -91,8 +81,8 @@ public class HomeController extends WombatController {
           .setSortOrder(order)
           .setJournalKeys(ImmutableList.of(site.getJournalKey()))
           .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME);
-      Map<?, ?> result = context.solrSearchService.search(query.build());
-      return sanitizeSolrResults(result);
+      Map<String, Object> result = (Map<String, Object>) context.solrSearchService.search(query.build());
+      return SolrArticleAdapter.unpackSolrQuery(result);
     }
 
     /**
@@ -102,7 +92,7 @@ public class HomeController extends WombatController {
       return SectionType.valueOf(name.toUpperCase());
     }
 
-    public abstract List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException;
+    public abstract List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException;
   }
 
   private class SectionSpec {
@@ -144,11 +134,12 @@ public class HomeController extends WombatController {
       return (type == SectionType.CURATED) ? curatedListName : type.name().toLowerCase();
     }
 
-    public List<Object> getArticles(Site site, int start) throws IOException {
+    public List<SolrArticleAdapter> getArticles(Site site, int start) throws IOException {
       if (since != null) {
         if (type == SectionType.RECENT) {
-          return recentArticleService.getRecentArticles(site,
+          List<Map<String, Object>> recentArticles = recentArticleService.getRecentArticles(site,
               resultCount, since, shuffle, articleTypes, articleTypesToExclude, Optional.fromNullable(cacheTtl));
+          return recentArticles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
         } else {
           throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support
         }
@@ -239,7 +230,7 @@ public class HomeController extends WombatController {
     Map<String, Object> sectionsForModel = Maps.newHashMapWithExpectedSize(sectionsToRender.size());
     for (SectionSpec section : sectionsToRender) {
       try {
-        List<Object> articles = section.getArticles(site, start);
+        List<SolrArticleAdapter> articles = section.getArticles(site, start);
         sectionsForModel.put(section.getName(), articles);
       } catch (IOException e) {
         log.error("Could not populate home page section: " + section.getName(), e);

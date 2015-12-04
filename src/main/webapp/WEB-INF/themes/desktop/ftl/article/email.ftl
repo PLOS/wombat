@@ -23,7 +23,8 @@
 
   <p>Fields marked with an <span>*</span> are required. </p>
   <form name="emailThisArticle" id="emailThisArticleForm" action="<@siteLink path='article/email'/>" method="post">
-  <input type="hidden" name="id" value="${article.doi}"/>
+    <input type="hidden" name="id" value="${article.doi}"/>
+    <input type="hidden" name="articleUri" value="<@siteLink handlerName="article" queryParameters={'id': article.doi} />"/>
     <fieldset>
       <legend>Complete this form</legend>
       <label id="emailToLabel" for="emailToAddresses">

@@ -22,7 +22,9 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
+import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
@@ -50,16 +52,21 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
@@ -95,6 +102,7 @@ public class ArticleController extends WombatController {
    * Initial size (in bytes) of buffer that holds transformed article HTML before passing it to the model.
    */
   private static final int XFORM_BUFFER_SIZE = 0x8000;
+  private static final int MAX_TO_EMAILS = 5;
 
   @Autowired
   private Charset charset;
@@ -114,6 +122,12 @@ public class ArticleController extends WombatController {
   private JsonService jsonService;
   @Autowired
   private CaptchaService captchaService;
+  @Autowired
+  private FreeMarkerConfig freeMarkerConfig;
+  @Autowired
+  private FreemarkerMailService freemarkerMailService;
+  @Autowired
+  private JavaMailSender javaMailSender;
 
   @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
@@ -656,7 +670,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
-    model.addAttribute("maxEmails", 5);
+    model.addAttribute("maxEmails", MAX_TO_EMAILS);
     model.addAttribute("captchaHTML", captchaService.getCaptchaHTML(site));
     return site + "/ftl/article/email";
   }
@@ -671,32 +685,56 @@ public class ArticleController extends WombatController {
   public String emailArticle(HttpServletRequest request, HttpServletResponse response, Model model,
       @SiteParam Site site,
       @RequestParam("id") String articleId,
+      @RequestParam("articleUri") String articleUri,
       @RequestParam("emailToAddresses") String emailToAddresses,
       @RequestParam("emailFrom") String emailFrom,
       @RequestParam("senderName") String senderName,
       @RequestParam("note") String note,
       @RequestParam("recaptcha_challenge_field") String captchaChallenge,
       @RequestParam("recaptcha_response_field") String captchaResponse)
-      throws IOException {
+      throws IOException, MessagingException {
     // TODO: remove when ready to expose page in prod
     enforceDevFeature("emailThisArticle");
     requireNonemptyParameter(articleId);
+    requireNonemptyParameter(articleUri);
+
+    model.addAttribute("emailToAddresses", emailToAddresses);
+    model.addAttribute("emailFrom", emailFrom);
+    model.addAttribute("senderName", senderName);
+    model.addAttribute("note", note);
+    model.addAttribute("articleUri", articleUri);
 
     if (!validateEmailArticleInput(model, emailToAddresses, emailFrom, senderName, captchaChallenge,
         captchaResponse, site, request)) {
-      model.addAttribute("emailToAddresses", emailToAddresses);
-      model.addAttribute("emailFrom", emailFrom);
-      model.addAttribute("senderName", senderName);
-      model.addAttribute("note", note);
       model.addAttribute("formError", "Invalid values have been submitted.");
       response.setStatus(HttpStatus.BAD_REQUEST.value());
       return renderEmailThisArticle(request, model, site, articleId);
     }
 
-    //todo: email article
+    List<InternetAddress> toAddresses = new ArrayList<>();
+    for (String email : emailToAddresses.split("\\r?\\n")) {
+      EmailMessage.createAddress(null, email);
+    }
+
+    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
+    String title = articleMetadata.get("title").toString();
+    model.addAttribute("title", title);
+    model.addAttribute("description", articleMetadata.get("description"));
+    model.addAttribute("journalName", site.getJournalName());
+    Multipart content = freemarkerMailService.createContent(site, "emailThisArticle", model);
+
+    EmailMessage message = EmailMessage.builder()
+        .addToEmailAddresses(toAddresses)
+        .setSenderAddress(EmailMessage.createAddress(senderName, emailFrom))
+        .setSubject("An Article from " + site.getJournalName() + ": " + title)
+        .setContent(content)
+        .setEncoding(freeMarkerConfig.getConfiguration().getDefaultEncoding())
+        .build();
+
+    message.send(javaMailSender);
 
     response.setStatus(HttpStatus.CREATED.value());
-    return null;
+    return site + "/ftl/article/emailSuccess";
   }
 
   private boolean validateEmailArticleInput(Model model, String emailToAddresses, String emailFrom,
@@ -717,11 +755,15 @@ public class ArticleController extends WombatController {
       isValid = false;
     } else {
       String[] emailToAddressArray = emailToAddresses.split("\\r?\\n");
-      for (String email : emailToAddressArray) {
-        if (!EmailValidator.getInstance().isValid(email)) {
-          model.addAttribute("emailToAddressesError", "Invalid e-mail address");
-          isValid = false;
-          break;
+      if (emailToAddressArray.length > MAX_TO_EMAILS) {
+        model.addAttribute("emailToAddressesError", "Too many email addresses.");
+      } else {
+        for (String email : emailToAddressArray) {
+          if (!EmailValidator.getInstance().isValid(email)) {
+            model.addAttribute("emailToAddressesError", "Invalid e-mail address.");
+            isValid = false;
+            break;
+          }
         }
       }
     }

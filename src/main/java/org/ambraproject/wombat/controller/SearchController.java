@@ -196,7 +196,8 @@ public class SearchController extends WombatController {
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
           getSingleParam(params, "filterStartDate", null), getSingleParam(params, "filterEndDate", null));
-      journalKeys = parseJournals(site, params.get("filterJournals"), getSingleParam(params, "unformattedQuery", null));
+      journalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
+              ? new ArrayList<String>() : params.get("filterJournals");
 
       filterJournalNames = new HashSet<>();
       for (String journalKey : journalKeys) {
@@ -302,35 +303,6 @@ public class SearchController extends WombatController {
             endDate);
       }
       return dateRange;
-    }
-
-    /**
-     * Determines what journal keys to use in the search.
-     *
-     * @param site             the site the request is associated with
-     * @param journalParams    journal keys passed as URL parameters, if any
-     * @param unformattedQuery the value of the unformattedQuery param (used in advanced search)
-     * @return if unformattedQuery is non-empty, and journalParams is empty, or the first journalParam is "all", all
-     * journal keys will be returned. Otherwise, if journalParams is non-empty, those will be returned; otherwise the
-     * current site's journal key will be returned.
-     */
-    private List<String> parseJournals(Site site, List<String> journalParams, String unformattedQuery) {
-
-      // If we are in advanced search mode (unformattedQuery populated), and no journals are specified,
-      // OR if the filter is set to "all", include all journals
-      // we default to all journals.
-      boolean journalParamsEmpty = journalParams == null || journalParams.isEmpty();
-      if ((!Strings.isNullOrEmpty(unformattedQuery) && journalParamsEmpty)
-          || (journalParams != null && journalParams.get(0).equalsIgnoreCase("all"))) {
-        return new ArrayList(siteSet.getJournalKeys());
-      } else {
-        //If no filterJournals param is present, default to the current site.
-        if (journalParamsEmpty) {
-          return Collections.singletonList(site.getJournalKey());
-        } else {
-          return journalParams;
-        }
-      }
     }
 
     /**

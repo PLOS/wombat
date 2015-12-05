@@ -411,11 +411,9 @@ public class ArticleController extends WombatController {
     } catch (EntityNotFoundException enfe) {
       throw new NotFoundException(enfe);
     }
-    comment = DoiSchemeStripper.strip(comment, "articleDoi");
     validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
 
     model.addAttribute("comment", comment);
-    model.addAttribute("articleDoi", comment.get("articleDoi"));
     return site + "/ftl/article/comment";
   }
 

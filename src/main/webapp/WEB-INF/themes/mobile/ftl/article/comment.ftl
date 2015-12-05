@@ -1,6 +1,6 @@
 <#include "../common/htmlTag.ftl" />
 
-<#assign title = "PLOS - Individual Comment" />
+<#assign title = comment.title />
 <#assign depth = 1 />
 <#include "../common/head.ftl" />
 
@@ -8,14 +8,14 @@
 <div id="container-main">
   <header id="site-header-container" class="back-header coloration-border-top">
     <span class="back-arrow">Back</span>
-    <a class="back" href="<@siteLink path="article?id=${articleDoi}" />">Back to Article</a>
+    <a class="back" href="<@siteLink path="article?id=${comment.parentArticle.doi}" />">Back to Article</a>
   </header>
 
 <#macro commentBody comment>
   <div class="context">
     <a class="expand">${comment.title}</a>
 
-    <p class="details">Posted by ${comment.creatorDisplayName}
+    <p class="details">Posted by ${comment.creator.displayName}
       on <@formatJsonDate date="${comment.created}" format="dd MMM yyyy 'at' hh:mm a" /></p>
   </div>
 

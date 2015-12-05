@@ -1,4 +1,4 @@
-// *** requires dateparse.js
+// *** requires moment.js
 
 function feedLoaded(blog_feed, blogPostCount, blogContainer) {
 
@@ -15,7 +15,7 @@ function feedLoaded(blog_feed, blogPostCount, blogContainer) {
 
           entry = result[i];
           postTitle = entry.title;
-          postPubDate = dateParse(entry.date);
+          postPubDate = moment(entry.date).format("MMMM DD");
 
           // add ellipsis to titles that are cut off
           if (postTitle.length > 75) {
@@ -39,11 +39,4 @@ function feedLoaded(blog_feed, blogPostCount, blogContainer) {
       });
 }
 
-$( document ).ready(function() {
-  var journal_blogfeed = $('#blogs').attr('data-feed-url');
-  var journal_blogpostcount = $('#blogs').attr('data-postcount');
-  var postCountInt = parseInt(journal_blogpostcount);
-  var journalBlogContainer = document.getElementById("blogrss");
 
-  feedLoaded(journal_blogfeed,postCountInt,journalBlogContainer);
-});

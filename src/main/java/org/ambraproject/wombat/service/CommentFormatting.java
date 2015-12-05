@@ -4,28 +4,7 @@ import com.google.common.collect.Maps;
 import com.opensymphony.util.UrlUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.xml.sax.InputSource;
-import sun.misc.BASE64Encoder;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.List;
@@ -136,72 +115,12 @@ public class CommentFormatting {
   // Please avoid introducing new dependencies on this
 
   private static final int TRUNCATED_COMMENT_LENGTH = 256;
-  private static final String HTTP_PREFIX = "http://";
-  private static final Pattern maliciousContentPattern = Pattern.compile("[<>\"\'%;()&+]");
   private static final Pattern lineBreakPattern = Pattern.compile("\\p{Zl}|\r\n|\n|\u0085|\\p{Zp}");
   private static final Pattern strongPattern = Pattern.compile("'''");
   private static final Pattern emphasizePattern = Pattern.compile("''");
   private static final Pattern strongEmphasizePattern = Pattern.compile("'''''");
   private static final Pattern superscriptPattern = Pattern.compile("\\^\\^");
   private static final Pattern subscriptPattern = Pattern.compile("~~");
-
-  private static Logger log = LoggerFactory.getLogger(CommentFormatting.class);
-
-  /**
-   * Create a hash of a string
-   *
-   * @param string the string to make the hash
-   * @return the hash of the string
-   */
-  private static String createHash(String string) {
-    return createHash(string.getBytes());
-  }
-
-  /**
-   * Create a hash of a byte array
-   *
-   * @param bytes
-   * @return the hash of the byte array
-   */
-  private static String createHash(byte[] bytes) {
-    try {
-      MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
-      messageDigest.update(bytes);
-
-      return encodeText(messageDigest.digest());
-    } catch (NoSuchAlgorithmException ex) {
-      throw new RuntimeException(ex);
-    }
-  }
-
-  /**
-   * Produces a String value suitable for rendering in HTML for the given binary data.
-   */
-  private static String encodeText(byte[] data) {
-    BASE64Encoder encoder = new BASE64Encoder();
-    String base64 = encoder.encodeBuffer(data);
-
-    // Make the returned value a little prettier by replacing slashes with underscores, and removing the trailing
-    // "=".
-    base64 = base64.replace('/', '_').trim();
-    return base64.substring(0, base64.length() - 1);
-  }
-
-  /**
-   * Convert a List of URIs to a List of Strings
-   *
-   * @param list a List of URIs
-   * @return a list of strings
-   */
-  private static List<String> toStringList(List<URI> list) {
-    List<String> simpleCollection = new ArrayList<String>();
-
-    for (URI uri : list) {
-      simpleCollection.add(uri.toString());
-    }
-
-    return simpleCollection;
-  }
 
   /**
    * Takes in a String and returns it with all line separators replaced by <br/> tags suitable for display as HTML.
@@ -426,16 +345,6 @@ public class CommentFormatting {
   }
 
   /**
-   * Linkify any possible web links excepting email addresses and enclosed with <p> tags
-   *
-   * @param text text
-   * @return hyperlinked text
-   */
-  private static String hyperlinkEnclosedWithPTags(final String text) {
-    return hyperlinkEnclosedWithPTags(text, 0);
-  }
-
-  /**
    * Linkify any possible web links excepting email addresses
    *
    * @param text      text
@@ -465,16 +374,6 @@ public class CommentFormatting {
   }
 
   /**
-   * Linkify any possible web links excepting email addresses
-   *
-   * @param text text
-   * @return hyperlinked text
-   */
-  private static String hyperlink(final String text) {
-    return hyperlink(text, 0);
-  }
-
-  /**
    * Return the escaped html. Useful when you want to make any dangerous scripts safe to render.
    * <p>
    * Also transforms wiki-type markup into HTML tags and replaces line breaks with HTML "break" tags.
@@ -495,75 +394,6 @@ public class CommentFormatting {
     transformedBodyContent = makeHtmlSubscript(transformedBodyContent); // matches ~~
 
     return transformedBodyContent;
-  }
-
-  /**
-   * @param bodyContent bodyContent
-   * @return Return escaped and hyperlinked text
-   */
-  private static String escapeAndHyperlink(final String bodyContent) {
-    return hyperlinkEnclosedWithPTags(escapeHtml(bodyContent), 0);
-  }
-
-  /**
-   * Transforms an org.w3c.dom.Document into a String
-   *
-   * @param node Document to transform
-   * @return String representation of node
-   * @throws javax.xml.transform.TransformerException TransformerException
-   */
-  private static String getAsXMLString(final Node node) throws TransformerException {
-    final Transformer tf = TransformerFactory.newInstance().newTransformer();
-    final StringWriter stringWriter = new StringWriter();
-
-    tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-    tf.transform(new DOMSource(node), new StreamResult(stringWriter));
-
-    return stringWriter.toString();
-  }
-
-  /**
-   * @param url A URL
-   * @return whether the url is a valid address
-   */
-  private static boolean verifyUrl(final String url) {
-    try {
-      URI u = new URI(url);
-
-      // To see if we can get a valid url or if we get an exception
-      u.toURL();
-      return true;
-    } catch (Exception e) {
-      return false;
-    }
-  }
-
-  /**
-   * Make a valid url from the given input url or url fragment
-   *
-   * @param url url
-   * @return valid url
-   * @throws java.net.MalformedURLException MalformedURLException
-   */
-  private static String makeValidUrl(final String url) throws MalformedURLException {
-    String finalUrl = url;
-    if (!verifyUrl(finalUrl)) {
-      finalUrl = HTTP_PREFIX + finalUrl;
-      if (!verifyUrl(finalUrl)) {
-        throw new MalformedURLException("Invalid url:" + url);
-      }
-    }
-    return finalUrl;
-  }
-
-  /**
-   * Check if the input text is potentially malicious. For more details read; http://www.dwheeler.com/secure-programs/Secure-Programs-HOWTO/cross-site-malicious-content.html
-   *
-   * @param text text
-   * @return boolean
-   */
-  private static boolean isPotentiallyMalicious(final String text) {
-    return maliciousContentPattern.matcher(text).find();
   }
 
   /**
@@ -910,66 +740,6 @@ public class CommentFormatting {
   }
 
   /**
-   * Remove all of the XML and HTML tags from the <code>s</code> parameter. The RegEx in this method removes everything
-   * between two "innermost" brackets (e.g., <code>&lt;...&gt;</code>) so it may accidentally remove sections of text
-   * that are not tags, just because both the "greater than" and "less than" symbols exist and there is no tag bewteen
-   * them.
-   * <p>
-   * For instance, the title: "Yak mass &lt; whale mass, but yak mass &gt; weasel mass" would be reduced to: "Yak mass
-   * weasel mass" which is very much not the desired result. That is why this method is prefaced with the lable
-   * "simple".
-   * <p>
-   * Note that the above example only fails because there is no tag between the &lt; and &gt; for this method to remove.
-   * If the title was, instead, "Yak mass &lt; whale mass, &lt;p&gt;but yak mass &gt; weasel mass", then the &lt;p&gt;
-   * tag would be removed and the rest of the title would be left alone.
-   * <p>
-   * TODO: Augment the RegEx to fix the above corner case.  This can be accomplished by ensuring todo: all openning tags
-   * have matching closing tags, then handling valid singleton tags (e.g., todo: &lt;p/&gt;) as special cases.
-   *
-   * @param s The String which will have all of its tags removed
-   * @return The <code>s</code> parameter with all tags removed
-   */
-  private static String simpleStripAllTags(String s) {
-    return s.replaceAll("<[^<>]*?>", "");
-  }
-
-  /**
-   * Transform a xml string to html text
-   *
-   * @param xmlContent xml
-   * @return html html text
-   */
-  private static String transformXMLtoHtmlText(String xmlContent) {
-    if (xmlContent != null) {
-      String htmlContent = "";
-
-      try {
-        DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        // surround the xml content with temporary root element to make sure that it can be parsed.
-        InputSource source = new InputSource(new StringReader("<temprootelement>" + xmlContent + "</temprootelement>"));
-        Document doc = db.parse(source);
-
-        // remove all the elements from the xml content
-        StringWriter stw = new StringWriter();
-        Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        transformer.setOutputProperty(OutputKeys.METHOD, "text");
-        transformer.transform(new DOMSource(doc), new StreamResult(stw));
-
-        htmlContent = stw.toString();
-        // make sure all the characters are escaped using html entities
-        htmlContent = StringEscapeUtils.escapeHtml(htmlContent);
-
-      } catch (Exception e) {
-        log.info("Failed to transform " + xmlContent + " to html text", e);
-      }
-
-      return htmlContent;
-    } else {
-      return "";
-    }
-  }
-
-  /**
    * truncate text
    *
    * @param text            text to truncate
@@ -1003,40 +773,6 @@ public class CommentFormatting {
     }
 
     return text;
-  }
-
-  /**
-   * truncate text and close open tags
-   *
-   * @param text            text to truncate
-   * @param truncatedLength truncate length
-   * @return truncated text
-   */
-  private static String truncateTextCloseOpenTag(String text, final int truncatedLength) {
-    String shortenedText = truncateText(text, truncatedLength);
-    int openIndex = shortenedText.lastIndexOf("<i>");
-    if (openIndex != -1) {
-      int closeIndex = shortenedText.indexOf("</i>", openIndex);
-      if (closeIndex == -1) {
-        shortenedText = shortenedText + "</i>";
-      }
-    }
-    return shortenedText;
-  }
-
-  /**
-   * Create a list of first, second and last authors
-   *
-   * @param authors the list of authors
-   * @return a combined string of first, second and last authors
-   */
-  private static String makeAuthorString(String[] authors) {
-    if (authors.length <= 3) {
-      return StringUtils.join(authors, ", ");
-    } else {
-      //use first two and last.
-      return authors[0].trim() + ", " + authors[1].trim() + ", [...], " + authors[authors.length - 1].trim();
-    }
   }
 
 }

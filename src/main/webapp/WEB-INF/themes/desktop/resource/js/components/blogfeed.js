@@ -1,54 +1,27 @@
 // *** requires dateparse.js
 
-//if (typeof google=='undefined') {
-//  document.getElementById("blogrss").innerHTML = "Please click on the link above to see the blog posts."
-//} else {
-//  google.load("feeds", "1");
-//}
-function feedLoaded() {
+function feedLoaded(blog_feed, blogPostCount, blogContainer) {
 
-  //var whichBlog = document.getElementById('blogtitle').innerHTML;
-  //whichBlog = whichBlog.slice(5,8);
-  //if (typeof google=='undefined') {
-  //  document.getElementById("blogrss").innerHTML = "Something went wrong. Please click on the link above to see the blog posts."
-  //} else {
-  //  if (whichBlog === 'Bio') {
-  //    var feed = new google.feeds.Feed("http://feeds.plos.org/plos/blogs/biologue");
-  //
-  //  } else if (whichBlog === 'Spe') {
-  //    var feed = new google.feeds.Feed("http://feeds.plos.org/plos/MedicineBlog");
-  //
-  //  }
-  //}
+  var container = blogContainer
 
-  $.getJSON("http://blogs-stage.plos.org/biologue/?feed=json",
+  $.getJSON(blog_feed,
       function (result) {
-      var container = document.getElementById("blogrss");
-      if (!result.error) {
-        var html = "", docTitle, blogDiv, postQty, entry, postTitle, postDescription,
-          postPubDate, tempDiv, blogImg;
+        var postCount = blogPostCount;
 
-        blogDiv = container.parentNode;
-        docTitle = document.title.slice(5, 8);
-        if (docTitle === 'Bio') {
-          postQty = 4;
-          blogDiv.style.height = "425px";
-        } else {
-          postQty = 2
-        }
-        for (var i = 0; i < postQty; i++) {
+        var html = "", entry, postTitle,
+          postPubDate, blogImg;
+
+        for (var i = 0; i < postCount; i++) {
 
           entry = result[i];
           postTitle = entry.title;
-
           postPubDate = dateParse(entry.date);
 
           // add ellipsis to titles that are cut off
           if (postTitle.length > 75) {
             postTitle = postTitle.slice(0, 70) + "&hellip;";
           }
-
-          // create temporary div to traverse the description content to extract image src
+         // TODO - need to move the link to the default image out of the JS.
           blogImg = entry.thumbnail;
           if (blogImg == null) {
             blogImg = "resource/img/generic_blogfeed.png";
@@ -58,16 +31,19 @@ function feedLoaded() {
             '<p class="posttitle"><a href="' + entry.link + '">' + postTitle + '</a></p>' +
             '<p class="postauthor">' + entry.author + '</p></div>';
 
-        }
         container.innerHTML = html;
 
-      } else {
-        container.innerHTML = "An error occurred while loading the blog posts.";
       }
-    }
-  );
+    }).fail(function(){
+        container.innerHTML = "An error occurred while loading the blog posts.";
+      });
 }
 
 $( document ).ready(function() {
-  feedLoaded();
+  var journal_blogfeed = $('#blogs').attr('data-feed-url');
+  var journal_blogpostcount = $('#blogs').attr('data-postcount');
+  var postCountInt = parseInt(journal_blogpostcount);
+  var journalBlogContainer = document.getElementById("blogrss");
+
+  feedLoaded(journal_blogfeed,postCountInt,journalBlogContainer);
 });

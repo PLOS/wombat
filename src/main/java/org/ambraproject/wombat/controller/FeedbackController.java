@@ -84,6 +84,13 @@ public class FeedbackController extends WombatController {
       throws IOException, MessagingException {
     validateFeedbackConfig(site);
 
+    // Fill input parameters into model. (These can be used in two ways: in the generated email if all input is valid,
+    // or in the form in case we need to display validation errors.)
+    model.addAttribute("fromEmailAddress", fromEmailAddress);
+    model.addAttribute("note", note);
+    model.addAttribute("name", name);
+    model.addAttribute("subject", subject);
+
     Set<String> errors = validateInput(fromEmailAddress, note, subject, name);
     if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
       errors.add("captchaError");
@@ -94,16 +101,12 @@ public class FeedbackController extends WombatController {
       return serveFeedbackPage(model, site);
     }
 
-    model.addAttribute("fromEmailAddress", fromEmailAddress);
-    model.addAttribute("note", note);
-    model.addAttribute("name", name);
-    model.addAttribute("id", userId);
 
     if (subject.isEmpty()) {
-      subject = (String) getFeedbackConfig(site).get("defaultSubject");
+      model.addAttribute("subject", (String) getFeedbackConfig(site).get("defaultSubject"));
     }
-    model.addAttribute("subject", subject);
 
+    model.addAttribute("id", userId);
     model.addAttribute("userInfo", formatUserInfo(request));
 
     Multipart content = freemarkerMailService.createContent(site, "feedback", model);

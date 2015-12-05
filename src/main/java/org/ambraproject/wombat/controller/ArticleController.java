@@ -24,6 +24,7 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
+import org.ambraproject.wombat.service.CommentFormatting;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
@@ -412,6 +413,7 @@ public class ArticleController extends WombatController {
       throw new NotFoundException(enfe);
     }
     validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
+    comment = CommentFormatting.addFormattingFields(comment);
 
     model.addAttribute("comment", comment);
     return site + "/ftl/article/comment";

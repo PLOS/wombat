@@ -20,7 +20,7 @@
   </div>
 
   <div class="response">
-    <p>${comment.bodyHtml}</p>
+    <p>${comment.formatting.bodyHtml}</p>
 
     <div class="response-menu">
     <#-- TODO: uncomment when we allow logged-in functionality

@@ -67,7 +67,8 @@ public class CommentFormattingTest {
 
   @Test(dataProvider = "getTestCases")
   public void testCommentFormatting(TestCase testCase) {
-    Map<String, Object> formatted = CommentFormatting.addFormattingFields(testCase.createView());
+    Map<String, Object> modifiedView = CommentFormatting.addFormattingFields(testCase.createView());
+    Map<String, Object> formatted = (Map<String, Object>) modifiedView.get("formatting");
     for (CommentModelField field : CommentModelField.values()) {
       String actual = (String) formatted.get(field.getKey());
       String expected = testCase.expectedFields.get(field);

@@ -2,7 +2,6 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.opensymphony.util.UrlUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
@@ -11,7 +10,6 @@ import java.util.Collection;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -23,28 +21,26 @@ public class CommentFormatting {
   private static final String REPLIES_KEY = "replies";
 
   /**
-   * Add fields defined by "CommentModelField" to the comment and all nested replies. A new, deep copy of the map is
-   * returned. The map passed as an argument is not modified.
+   * Add a new map, keyed {@code "formatting"}, containing all fields defined by "CommentModelField" to the comment and
+   * to all of its nested replies.
+   * <p>
+   * A new, deep copy of the map is returned. The map passed as an argument is not modified.
    */
   public static Map<String, Object> addFormattingFields(Map<String, ?> commentMetadata) {
-    Map<String, Object> addedFields = EnumSet.allOf(CommentModelField.class).stream().collect(Collectors.toMap(
+    Map<String, Object> formatting = EnumSet.allOf(CommentModelField.class).stream().collect(Collectors.toMap(
         field -> field.key,
         field -> field.generateFieldValue(commentMetadata)));
 
-    Map<String, Object> modifiedMetadata = Maps.newHashMapWithExpectedSize(commentMetadata.size() + addedFields.size());
+    Map<String, Object> modifiedMetadata = Maps.newHashMapWithExpectedSize(commentMetadata.size() + 1);
     modifiedMetadata.putAll(commentMetadata);
+    modifiedMetadata.put("formatting", formatting);
+
     Collection<Map<String, ?>> replies = (Collection<Map<String, ?>>) modifiedMetadata.remove(REPLIES_KEY);
     List<Map<String, Object>> modifiedReplies = replies.stream()
         .map(CommentFormatting::addFormattingFields)
         .collect(Collectors.toList());
     modifiedMetadata.put(REPLIES_KEY, modifiedReplies);
 
-    Set<String> keyCollisions = Sets.intersection(modifiedMetadata.keySet(), addedFields.keySet());
-    if (!keyCollisions.isEmpty()) {
-      throw new RuntimeException("Key collisions: " + keyCollisions);
-    }
-
-    modifiedMetadata.putAll(addedFields);
     return modifiedMetadata;
   }
 

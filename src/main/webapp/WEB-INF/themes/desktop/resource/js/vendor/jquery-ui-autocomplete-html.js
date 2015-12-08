@@ -35,7 +35,9 @@
       }
     },
 
+    //_renderItem function is called for each list item returned from the autocomplete source
     _renderItem: function( ul, item) {
+      //'info' is set as the value for headers or other info in the list that should not have a value
       if (item.value == 'info') {
         item.value = "";
       }

@@ -49,7 +49,7 @@
                 <label for="controlBarSearch">Search</label>
                 <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}"
                        value="${query}" required/>
-                <input id="journalFilter" type="hidden" name="filterJournals" value="${journalKey}"/>
+                <#if RequestParameters.filterJournals??><input type="hidden" name="filterJournals" value="${RequestParameters.filterJournals}"/></#if>
                 <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
             </fieldset>
             <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced
@@ -121,8 +121,8 @@
 
     </section>
 </#if>
-
 </form>
+
 
 <#if searchResults.numFound != 0 && isFiltered>
 <div class="filter-view-container">

@@ -1,6 +1,8 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.opensymphony.util.UrlUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
@@ -9,6 +11,7 @@ import java.util.Collection;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -36,6 +39,11 @@ public class CommentFormatting {
         .collect(Collectors.toList());
     modifiedMetadata.put(REPLIES_KEY, modifiedReplies);
 
+    Set<String> keyCollisions = Sets.intersection(modifiedMetadata.keySet(), addedFields.keySet());
+    if (!keyCollisions.isEmpty()) {
+      throw new RuntimeException("Key collisions: " + keyCollisions);
+    }
+
     modifiedMetadata.putAll(addedFields);
     return modifiedMetadata;
   }
@@ -46,37 +54,49 @@ public class CommentFormatting {
    * This is a ridiculous amount of display logic that is reproduced here for the sake of expediency. Please delete
    * anything that is not needed.
    */
-  private static enum CommentModelField {
+  @VisibleForTesting
+  static enum CommentModelField {
     bodyHtml("bodyHtml") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
-        return hyperlinkEnclosedWithPTags(escapeHtml(get(comment, "body")), 25);
+        String body = (String) comment.get("body");
+        if (body == null) return "";
+        return hyperlinkEnclosedWithPTags(escapeHtml(body), 25);
       }
     },
     truncatedBody("truncatedBody") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
-        return hyperlinkEnclosedWithPTags(truncateText(escapeHtml(get(comment, "body")), TRUNCATED_COMMENT_LENGTH), 25);
+        String body = (String) comment.get("body");
+        if (body == null) return "";
+        return hyperlinkEnclosedWithPTags(truncateText(escapeHtml(body), TRUNCATED_COMMENT_LENGTH), 25);
       }
     },
     bodyWithUrlLinkingNoPTags("bodyWithUrlLinkingNoPTags") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
-        return hyperlink(escapeHtml(get(comment, "body")), 25);
+        String body = (String) comment.get("body");
+        if (body == null) return "";
+        return hyperlink(escapeHtml(body), 25);
       }
     },
     truncatedBodyWithUrlLinkingNoPTags("truncatedBodyWithUrlLinkingNoPTags") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
-        return hyperlink(truncateText(escapeHtml(get(comment, "body")), TRUNCATED_COMMENT_LENGTH), 25);
+        String body = (String) comment.get("body");
+        if (body == null) return "";
+        return hyperlink(truncateText(escapeHtml(body), TRUNCATED_COMMENT_LENGTH), 25);
       }
     },
     bodyWithHighlightedText("bodyWithHighlightedText") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
-        String body = get(comment, "body");
-        String highlightedText = get(comment, "highlightedText");
-        if (highlightedText.isEmpty()) return body;
+        String highlightedText = (String) comment.get("highlightedText");
+        if (highlightedText == null) {
+          return bodyHtml.generateFieldValue(comment);
+        }
+        String body = (String) comment.get("body");
+        if (body == null) return "";
         String bodyWithHt = highlightedText + "\n\n" + body;
         return hyperlinkEnclosedWithPTags(escapeHtml(bodyWithHt), 150);
       }
@@ -84,13 +104,17 @@ public class CommentFormatting {
     competingInterestStatement("competingInterestStatement") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
-        return escapeHtml(get(comment, "competingInterestBody"));
+        String competingInterestBody = (String) comment.get("competingInterestBody");
+        if (competingInterestBody == null) return "";
+        return escapeHtml(competingInterestBody);
       }
     },
     truncatedCompetingInterestStatement("truncatedCompetingInterestStatement") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
-        return truncateText(escapeHtml(get(comment, "competingInterestBody")), TRUNCATED_COMMENT_LENGTH);
+        String competingInterestBody = (String) comment.get("competingInterestBody");
+        if (competingInterestBody == null) return "";
+        return truncateText(escapeHtml(competingInterestBody), TRUNCATED_COMMENT_LENGTH);
       }
     };
 
@@ -100,9 +124,9 @@ public class CommentFormatting {
       this.key = key;
     }
 
-    private static String get(Map<String, ?> commentMetadata, String key) {
-      Object value = commentMetadata.get(key);
-      return (value == null) ? "" : (String) value;
+    @VisibleForTesting
+    String getKey() {
+      return key;
     }
 
     protected abstract Object generateFieldValue(Map<String, ?> commentMetadata);

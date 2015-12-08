@@ -14,6 +14,8 @@
 <#if searchResults.numFound != 0>
   <#list searchResults.docs as doc>
     <p>${doc.id}: ${doc.title} : ${doc.link} </p>
+    <#if doc.figure_table_caption?size gt 0> you can use this condition for finding out if the document
+    has an asset</#if>
   </#list>
 </#if>
 

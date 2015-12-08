@@ -518,8 +518,6 @@ public class SearchController extends WombatController {
           siteSet));
       model.addAttribute("page", commonParams.getSingleParam(params, "page", "0"));
       model.addAttribute("journalKey", site.getKey());
-      // this param is very specific to this controller
-      model.addAttribute("resultView", params.getFirst("resultView"));
     }
 
     return site.getKey() + "/ftl/browseSubjectArea";

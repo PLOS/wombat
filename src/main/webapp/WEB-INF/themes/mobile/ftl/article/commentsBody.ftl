@@ -14,11 +14,11 @@
       </p>
     </div>
 
-    <#if comment.replies?size &gt; 0>
+    <#if comment.replyTreeSize &gt; 0>
       <div class="responses">
         <p class="response-header">
-          <a>${comment.replies?size}
-            <#if comment.replies?size == 1 >
+          <a>${comment.replyTreeSize}
+            <#if comment.replyTreeSize == 1 >
               RESPONSE
             <#else>
               RESPONSES

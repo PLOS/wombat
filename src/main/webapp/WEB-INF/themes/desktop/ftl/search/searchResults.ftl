@@ -40,7 +40,7 @@
 
 <#assign headerOmitMain = true />
 <#include "../common/header/headerContainer.ftl" />
-<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
+<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
     <div class="search-results-controls">
 
         <div class="search-results-controls-first-row">
@@ -49,6 +49,7 @@
                 <label for="controlBarSearch">Search</label>
                 <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}"
                        value="${query}" required/>
+                <input id="journalFilter" type="hidden" name="filterJournals" value="${journalKey}"/>
                 <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
             </fieldset>
             <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced

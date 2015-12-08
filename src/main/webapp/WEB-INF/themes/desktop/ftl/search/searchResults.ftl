@@ -32,7 +32,10 @@
   <#assign query = otherQuery />
   <#assign advancedSearch = true />
 </#if>
-<#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set" />
+<#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?unformattedQuery=${query}&noSearchFlag=set"/>
+<#if RequestParameters.filterJournals??>
+  <#assign advancedSearchLink = advancedSearchLink + "&filterJournals=${RequestParameters.filterJournals}"/>
+</#if>
 
 <#include "suppressSearchFilter.ftl" />
 
@@ -68,7 +71,7 @@
 
         <p>
             There were no results; please
-            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">refine
+            <a href="${advancedSearchLink}">refine
                 your search</a>
             and try again.</p>
     </section>

@@ -17,8 +17,7 @@
   <@themeConfig map="legacy" value="urlPrefix" ; legacyUrlPrefix>
     <#if legacyUrlPrefix??>
       <a id="advSearch"
-         href="${legacyUrlPrefix}search/advanced?noSearchFlag=true
-         <#if journal?has_content>&query=&filterJournals=${journal}</#if>">
+         href="${legacyUrlPrefix}search/advanced?noSearchFlag=true&query=<#if journal?has_content>&filterJournals=${journal}</#if>">
           advanced search
       </a>
     </#if>

@@ -1,0 +1,14 @@
+# Configuration for services that send email messages from this webapp.
+
+feedback:
+# Values for the feedback form, which receives messages from users and sends them to a single configured address.
+
+  destination: null
+  # The address to which to send the messages. If null, the feedback feature is disabled.
+
+  defaultSubject: null
+  # The default subject line for feedback messages. Should be provided with a non-empty string if 'destination' is added.
+
+emailThisArticle:
+  url: null
+# TODO

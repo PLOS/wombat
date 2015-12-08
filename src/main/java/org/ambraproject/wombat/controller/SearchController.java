@@ -498,7 +498,7 @@ public class SearchController extends WombatController {
 
       // perform search on the subject area
       params.add("subject", subject.replace("_", " "));
-      if (params.get("resultsPerPage") == null) {
+      if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {
         params.add("resultsPerPage", BROWSE_RESULTS_PER_PAGE);
       }
 

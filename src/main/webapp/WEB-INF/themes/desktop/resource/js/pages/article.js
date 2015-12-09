@@ -86,6 +86,8 @@
       plos_tooltip.init();
     }
 
+
+
     float_header.init();
 
     if ($.fn.twitter ) {
@@ -111,5 +113,8 @@
     almspinner = new Spinner(spin_opts).spin(spin_target);
 
   });
+
+
+
 
 }(jQuery));

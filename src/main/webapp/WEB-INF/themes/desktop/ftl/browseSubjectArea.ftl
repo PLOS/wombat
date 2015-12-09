@@ -13,7 +13,11 @@
 <body class="home">
 <#include "common/header/headerContainer.ftl" />
 
-<#assign resultView = RequestParameters.resultView!"cover">
+<#if parameterMap["resultView"]??>
+    <#assign resultView = parameterMap["resultView"]?first>
+<#else>
+    <#assign resultView = "cover">
+</#if>
 <@siteLink handlerName="browse" ; url>
     <#assign browseUrl = url/>
     <#assign fullBrowseUrl = browseUrl+"/"+category?replace(' ','_')?lower_case?url/>
@@ -29,10 +33,10 @@
                     <ul typeof="v:Breadcrumb">
                     <#if parents?? && parents?size gt 0>
                       <#list parents as parent>
-                            <li><a rel="v:url" property="v:title" href="./${parent?replace(' ','_')?lower_case?url}"><#--@TODO BROWSE URL--></a></li>
+                            <li><a rel="v:url" property="v:title" href="${browseUrl}/${parent?replace(' ','_')?lower_case?url}"></a></li>
                         <#-- Only mark up the first element as part of the breadcrumb parent -->
                           <#if parent_index == 0>
-                              <li><a rel="v:url" property="v:title" href="./">${parent}</a></li>
+                              <li><a rel="v:url" property="v:title" href="${browseUrl}/">${parent}</a></li>
                           <#else>
                               <li><a href="./">${parent}</a></li>
                           </#if>
@@ -73,7 +77,8 @@
             </#if>
             -->
 
-    <#--    <#if category??>
+    <#-- @TODO: Check what feedURL should be and add the appropiate <li> element
+         <#if category??>
           <@s.url id="feedURL" unformattedQuery="subject:\"${category}\"" sort = "${sort}" filterJournals = "${currentJournal}" namespace="/article/feed" action="executeFeedSearch" />
         <#else>
           <@s.url id="feedURL" unformattedQuery="*:*" sort = "${sort}" filterJournals = "${currentJournal}" namespace="/article/feed" action="executeFeedSearch" />
@@ -82,8 +87,7 @@
         </ul>
     </div><!-- /.filter-bar -->
 
-    <#--@TODO: Handle whitespace in macro -->
-    <#macro URLParameters resultView="cover" sortOrder="DATE_NEWEST_FIRST" page="1" resultsPerPage="15">${"resultView="+resultView?url+"&"+"sortOrder="+sortOrder?url+"&"+"page="+page?url+"&"+"resultsPerPage="+resultsPerPage?url}</#macro>
+    <#macro URLParameters resultView="cover" sortOrder="DATE_NEWEST_FIRST" page="1" resultsPerPage="13">${"resultView="+resultView?url+"&"+"sortOrder="+sortOrder?url+"&"+"page="+page?url+"&"+"resultsPerPage="+resultsPerPage?url}</#macro>
 
     <div class="header hdr-results subject cf">
         <div class="main">
@@ -92,8 +96,8 @@
             <#if (((page?number + 1) * selectedResultsPerPage) gt searchResults.numFound)>${searchResults.numFound}<#else>${(page?number + 1)* selectedResultsPerPage}</#if></#if> of ${searchResults.numFound}</p>
           <p class="sort">
               <span>View by:</span>
-              <a id="cover-page-link" title="Cover page view" href="?<@URLParameters resultView="cover" sortOrder=sortOrder page=page/>" class="<#if resultView == "cover">active</#if>">Cover Page</a>
-              <a id="list-page-link" title="List page view" href="?<@URLParameters resultView="list" sortOrder=sortOrder page=page />" class="<#if resultView == "list">active</#if>">List Articles</a>
+              <a id="cover-page-link" title="Cover page view" href="?<@URLParameters resultView="cover" sortOrder=sortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "cover">active</#if>">Cover Page</a>
+              <a id="list-page-link" title="List page view" href="?<@URLParameters resultView="list" sortOrder=sortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "list">active</#if>">List Articles</a>
           </p>
         </div><!-- /.main -->
         <div class="sidebar">
@@ -101,9 +105,9 @@
                 <span>Sort by:</span>
             <#if selectedSortOrder == "DATE_NEWEST_FIRST">
                 <span class="active">Recent</span>
-                <a title="Sort by most viewed, all time" href="?<@URLParameters resultView=resultView sortOrder="MOST_VIEWS_ALL_TIME" page=page />">Popular</a>
+                <a title="Sort by most viewed, all time" href="?<@URLParameters resultView=resultView sortOrder="MOST_VIEWS_ALL_TIME" page=page resultsPerPage=resultsPerPage />">Popular</a>
             <#else>
-                <a title="Sort by most recent" href="?<@URLParameters resultView=resultView sortOrder="DATE_NEWEST_FIRST" page=page />" >Recent</a>
+                <a title="Sort by most recent" href="?<@URLParameters resultView=resultView sortOrder="DATE_NEWEST_FIRST" page=page resultsPerPage=resultsPerPage />" >Recent</a>
                 <span class="active">Popular</span>
             </#if>
             </p>
@@ -130,12 +134,11 @@
                                 <span class="metrics"><span>Loading metrics information...</span></span>
                                 <p class="actions">
                                     <a data-doi="info:doi/${article.id}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-                                    <#--@TODO: Wait for article.hasAssets fix in BE or figure out what to do with figures -->
-    <#--                                <#if (article.hasAssets == true) >
-                                        <#else>
-                                            <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;
-                                        </#if> -->
-                                    <a data-doi="info:doi/${article.id}" class="figures" href="#">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                    <#if article.figure_table_caption?size gt 0>
+                                        <a data-doi="info:doi/${article.id}" class="figures" href="#" onclick="alert('Should redirect to lightbox.')">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                    <#else>
+                                        <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                    </#if>
                                     <a href="${articleUrl}">Full Text</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <a href="<@siteLink handlerName="asset" queryParameters={"id": article.id + ".PDF"} />" target="_blank">Download PDF</a>
                                 </p>
@@ -146,7 +149,7 @@
             </div><!--main -->
         <#else>
             <div class="articles-list cf" data-subst="article-list">
-                <#list searchResults.docs as article>
+            <#list searchResults.docs as article>
                 <#include "home/articleCard.ftl" />
             </#list>
             </div>

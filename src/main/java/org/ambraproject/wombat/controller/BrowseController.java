@@ -95,7 +95,7 @@ public class BrowseController extends WombatController {
       try {
         validateArticleVisibility(site, articleMetadata);
       } catch (NotVisibleException e) {
-        continue;
+        continue; //skip any articles that should be hidden from view
       }
       Map<String, String> currentArticleType = (Map<String, String>)articleMetadata.get("articleType");
       if (currentArticleType == null || currentArticleType.get("heading") == null) {
@@ -103,20 +103,20 @@ public class BrowseController extends WombatController {
         continue;
       }
       articleGroups.stream()
-              .filter(ag -> ag.get("heading").equals(currentArticleType.get("heading")))
-              .forEach(ag -> ((ArrayList<Map<?, ?>>)ag.get("articles")).add(articleMetadata));
+          .filter(ag -> ag.get("heading").equals(currentArticleType.get("heading")))
+          .forEach(ag -> ((ArrayList<Map<?, ?>>)ag.get("articles")).add(articleMetadata));
     }
 
     articleGroups = articleGroups.stream()
-            .filter(ag -> !((ArrayList<Map<?, ?>>)ag.get("articles")).isEmpty())
-            .collect(Collectors.toList());
+        .filter(ag -> !((ArrayList<Map<?, ?>>)ag.get("articles")).isEmpty())
+        .collect(Collectors.toList());
 
     model.addAttribute("articleGroups", articleGroups);
 
     return site.getKey() + "/ftl/article/browseIssues";
   }
 
- // TODO: get rid of this bit of ugliness from old Ambra if possible, or at least move regex into themes
+  // TODO: get rid of this bit of ugliness from old Ambra if possible, or at least move regex into themes
   /**
    * Extract issue title, issue description, issue image credit from the full issue description
    * @param desc full issue description

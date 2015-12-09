@@ -4,14 +4,13 @@
 @charset "UTF-8";
 @import "global-library-imports";
 @import "global-section-imports";
-@import "typography";
 @import "pages/home";
-@import "pages/plos-one-nav-bar";
-@import "pages/plos-one-article-list";
-@import "pages/plos-one-rectangle-ad";
-@import "pages/plos-one-social";
-@import "pages/plos-one-ad-slot-bottom";
-@import "pages/plos-one-sticky-footer";
-@import "pages/plos-one-greyscale";
+@import "sections/plos-one/nav-bar";
+@import "sections/plos-one/article-list";
+@import "sections/plos-one/rectangle-ad";
+@import "sections/plos-one/social";
+@import "sections/plos-one/ad-slot-bottom";
+@import "sections/plos-one/sticky-footer";
+@import "sections/plos-one/greyscale";
 
 

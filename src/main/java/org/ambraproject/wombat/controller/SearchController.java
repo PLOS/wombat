@@ -488,7 +488,7 @@ public class SearchController extends WombatController {
   }
 
   @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}", params = "!filterSubjects")
-  public String browsSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params) throws
       IOException {
     enforceDevFeature("browse");
@@ -498,7 +498,7 @@ public class SearchController extends WombatController {
 
       // perform search on the subject area
       params.add("subject", subject.replace("_", " "));
-      if (params.get("resultsPerPage") == null) {
+      if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {
         params.add("resultsPerPage", BROWSE_RESULTS_PER_PAGE);
       }
 

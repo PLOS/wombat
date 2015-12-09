@@ -52,7 +52,9 @@
                 <label for="controlBarSearch">Search</label>
                 <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}"
                        value="${query}" required/>
-                <#if RequestParameters.filterJournals??><input type="hidden" name="filterJournals" value="${RequestParameters.filterJournals}"/></#if>
+                <#list activeFilterItems as item>
+                    <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
+                </#list>
                 <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
             </fieldset>
             <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced

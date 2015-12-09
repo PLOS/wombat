@@ -180,6 +180,12 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comments";
   }
 
+  @RequestMapping(name = "articleCommentPost", value = "/article/comments/new")
+  public String renderArticleComments(@SiteParam Site site, @RequestParam("id") String articleId)
+      throws IOException {
+    return null; // TODO Implement
+  }
+
 
   /**
    * Types of related articles that get special display handling.
@@ -403,7 +409,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "articleCommentTree", value = "/article/comment")
-  public String renderArticleCommentTree(Model model, @SiteParam Site site,
+  public String renderArticleCommentTree(HttpServletRequest request, Model model, @SiteParam Site site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
     Map<String, Object> comment;
@@ -412,10 +418,15 @@ public class ArticleController extends WombatController {
     } catch (EntityNotFoundException enfe) {
       throw new NotFoundException(enfe);
     }
-    validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
-    comment = CommentFormatting.addFormattingFields(comment);
 
+    Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
+    String articleId = (String) parentArticleStub.get("doi");
+    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetadata);
+
+    comment = CommentFormatting.addFormattingFields(comment);
     model.addAttribute("comment", comment);
+
     return site + "/ftl/article/comment";
   }
 

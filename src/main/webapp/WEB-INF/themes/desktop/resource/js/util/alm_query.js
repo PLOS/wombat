@@ -47,6 +47,38 @@
     })
   };
 
+  $.fn.getMediaReferences = function (doi, successCallback, errorCallback) {
+    var config = ALM_CONFIG; // expect to import value from alm_config.js
+
+    if (config.host == null) {
+      // TODO: Replace with better console logging
+      // console.log('ALM API is not configured');
+      return;
+    }
+
+    doi = validateDOI(doi);
+
+    var requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + "&source_id=articlecoveragecurated&info=detail";
+
+    //alert(requestUrl)
+    //this.getData(request, callBack, errorCallback);
+
+    $.ajax({
+      url: requestUrl,
+      jsonp: 'callback',
+      dataType: 'jsonp',
+      timeout: 20000,
+      success: function (response) {
+        successCallback(response.data[0]);
+      },
+      error: function (jqXHR, textStatus) {
+        // TODO: Replace with better console logging
+        // console.log('ALM request failed: ' + requestUrl);
+        errorCallback(textStatus);
+      }
+    })
+  };
+
   /*
    * TODO: Support querying for multiple article summaries in efficient batches.
    * See getArticleSummaries in legacy Ambra.

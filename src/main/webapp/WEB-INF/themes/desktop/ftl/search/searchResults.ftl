@@ -32,7 +32,10 @@
   <#assign query = otherQuery />
   <#assign advancedSearch = true />
 </#if>
-<#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set" />
+<#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?unformattedQuery=${query}&noSearchFlag=set"/>
+<#if RequestParameters.filterJournals??>
+  <#assign advancedSearchLink = advancedSearchLink + "&filterJournals=${RequestParameters.filterJournals}"/>
+</#if>
 
 <#include "suppressSearchFilter.ftl" />
 
@@ -40,7 +43,7 @@
 
 <#assign headerOmitMain = true />
 <#include "../common/header/headerContainer.ftl" />
-<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink path='search'/>" method="get">
+<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
     <div class="search-results-controls">
 
         <div class="search-results-controls-first-row">
@@ -49,6 +52,9 @@
                 <label for="controlBarSearch">Search</label>
                 <input id="controlBarSearch" type="text" name="${advancedSearch?string('unformattedQuery', 'q')}"
                        value="${query}" required/>
+                <#list activeFilterItems as item>
+                    <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
+                </#list>
                 <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
             </fieldset>
             <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced
@@ -67,7 +73,7 @@
 
         <p>
             There were no results; please
-            <a href="${legacyUrlPrefix}search/advanced?filterJournals=${journalKey}&unformattedQuery=${query}&noSearchFlag=set">refine
+            <a href="${advancedSearchLink}">refine
                 your search</a>
             and try again.</p>
     </section>
@@ -120,8 +126,8 @@
 
     </section>
 </#if>
-
 </form>
+
 
 <#if searchResults.numFound != 0 && isFiltered>
 <div class="filter-view-container">

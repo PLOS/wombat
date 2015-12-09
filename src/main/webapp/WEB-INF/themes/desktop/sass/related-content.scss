@@ -1,4 +1,6 @@
 @import "screen";
+@import "sections/ambra/forms";
+@import "vendor/jqueryUI/jquery-ui";
   /*
 The CSS for dialog widget,
 (from: "jquery-ui-1.9.2.custom.css", which is not included yet)
@@ -134,7 +136,7 @@ The CSS for dialog widget,
 }
 
 .ui-dialog.tooltip-like .ui-dialog-titlebar-close span{
-  background-image: url('../images/btn.sprite.close.small.png');
+  background-image: image-url('ambra/btn.sprite.close.small.png');
   background-position: 2px 1px;
   width: 17px;
   height: 17px;
@@ -150,4 +152,33 @@ The CSS for dialog widget,
 
 .default-modal .ui-dialog-titlebar-close {
   display: none;
+}
+
+/* Modal overwrites */
+.default-modal.ui-corner-all {
+  border-radius: 0;
+  padding: 0;
+  border: 1px solid #fff;
+}
+
+.default-modal .ui-dialog-titlebar{
+  background: #333;
+  color: #fff;
+  border-radius: 0;
+  margin: 0;
+  border: 0 none;
+  font-weight: normal;
+}
+
+.default-modal .ui-dialog-content{
+  padding: 1em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ui-widget-overlay {
+  background: #333;
+  opacity: .4;
+  position: fixed !important;
 }

@@ -3,7 +3,6 @@
 <#assign depth = 0 />
 <#assign title = "Search Results" />
 <#assign cssFile="search-results.css"/>
-<@cssLink target="resource/css/jquery-ui.min.css"/>
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />

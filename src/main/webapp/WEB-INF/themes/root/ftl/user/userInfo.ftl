@@ -20,11 +20,11 @@
   <h1>${user.displayName!defaultVal}</h1>
 
   <dl class="tight-list">
-    <dt class=heading">Title</dt>
-    <dd class="text"><#if user.title?has_content>${user.title}<#else>${defaultVal}</#if></dd>
+    <dt>Title</dt>
+    <dd><#if user.title?has_content>${user.title}<#else>${defaultVal}</#if></dd>
 
-    <dt class=heading">Full Name</dt>
-    <dd class="text">
+    <dt>Full Name</dt>
+    <dd>
       <#if !user.givenNames?has_content && !user.surname?has_content>
               ${defaultVal}
             <#else>
@@ -32,8 +32,8 @@
       </#if>
     </dd>
 
-    <dt class=heading">Location</dt>
-    <dd class="text">
+    <dt>Location</dt>
+    <dd>
       <#if !user.city?has_content && !user.country?has_content>
       ${defaultVal}
       <#else>
@@ -42,38 +42,37 @@
       </#if>
     </dd>
 
-    <dt class=heading">Organization Address</dt>
-    <dd class="text"><#if user.postalAddress?has_content>${user.postalAddress}<#else>${defaultVal}</#if></dd>
+    <dt>Organization Address</dt>
+    <dd><#if user.postalAddress?has_content>${user.postalAddress}<#else>${defaultVal}</#if></dd>
 
-    <dt class=heading">Organization Type</dt>
-    <dd class="text"><#if user.organizationType?has_content>${user.organizationType}<#else>${defaultVal}</#if></dd>
+    <dt>Organization Type</dt>
+    <dd><#if user.organizationType?has_content>${user.organizationType}<#else>${defaultVal}</#if></dd>
 
-    <dt class=heading">Organization Name</dt>
-    <dd class="text"><#if user.organizationName?has_content>${user.organizationName}<#else>${defaultVal}</#if></dd>
+    <dt>Organization Name</dt>
+    <dd><#if user.organizationName?has_content>${user.organizationName}<#else>${defaultVal}</#if></dd>
 
-    <dt class=heading">Your Role</dt>
-    <dd class="text"><#if user.positionType?has_content>${user.positionType}<#else>${defaultVal}</#if></dd>
+    <dt>Your Role</dt>
+    <dd><#if user.positionType?has_content>${user.positionType}<#else>${defaultVal}</#if></dd>
 
-    <dt class=heading">Short Biography</dt>
-    <dd class="text"><#if user.biography?has_content>${user.biography}<#else>${defaultVal}</#if></dd>
+    <dt>Short Biography</dt>
+    <dd><#if user.biography?has_content>${user.biography}<#else>${defaultVal}</#if></dd>
 
-    <dt class=heading">Research Areas</dt>
-    <dd class="text"><#if user.researchAreas?has_content>${user.researchAreas}<#else>${defaultVal}</#if></dd>
+    <dt>Research Areas</dt>
+    <dd><#if user.researchAreas?has_content>${user.researchAreas}<#else>${defaultVal}</#if></dd>
 
-    <dt class=heading">Interests</dt>
-    <dd class="text"><#if user.interests?has_content>${user.interests}<#else>${defaultVal}</#if></dd>
+    <dt>Interests</dt>
+    <dd><#if user.interests?has_content>${user.interests}<#else>${defaultVal}</#if></dd>
 
-    <dt class=heading">Website URL</dt>
-    <dd class="text"><#if user.homePage?has_content><a href="${user.homePage}">${user.homePage}</a>
+    <dt>Website URL</dt>
+    <dd><#if user.homePage?has_content><a href="${user.homePage}">${user.homePage}</a>
     <#else>${defaultVal}</#if></dd>
 
-    <dt class=heading">Blog URL</dt>
-    <dd class="text"><#if user.weblog?has_content><a href="${user.weblog}">${user.weblog}</a>
+    <dt>Blog URL</dt>
+    <dd><#if user.weblog?has_content><a href="${user.weblog}">${user.weblog}</a>
     <#else>${defaultVal}</#if></dd>
   </dl>
 </article>
 </#if>
-
 
 <#include "../common/footer/footer.ftl" />
 

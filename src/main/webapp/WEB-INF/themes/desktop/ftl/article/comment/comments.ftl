@@ -6,7 +6,7 @@
 
 
 <#assign title = article.title />
-<#assign depth = 0 />
+<#assign articleDoi = article.doi />
 
 <#include "../../common/head.ftl" />
 <#include "../../common/journalStyle.ftl" />

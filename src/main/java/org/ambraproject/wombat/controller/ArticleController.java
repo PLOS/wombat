@@ -173,17 +173,22 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
                                       @RequestParam("id") String articleId) throws IOException {
-      requireNonemptyParameter(articleId);
-      Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-      validateArticleVisibility(site, articleMetaData);
-      requestComments(model, articleId);
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
+    requestComments(model, articleId);
     return site + "/ftl/article/comment/comments";
   }
 
   @RequestMapping(name = "articleCommentPost", value = "/article/comments/new")
-  public String renderArticleComments(@SiteParam Site site, @RequestParam("id") String articleId)
+  public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
+                                     @RequestParam("id") String articleId)
       throws IOException {
-    return null; // TODO Implement
+    enforceDevFeature("commentsTab");
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
+    return site + "/ftl/article/comment/newComment";
   }
 
 

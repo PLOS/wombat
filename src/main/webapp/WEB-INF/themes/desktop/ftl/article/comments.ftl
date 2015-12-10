@@ -36,7 +36,7 @@
       </p>
 
       <ul id="threads">
-      <#list articleComments as comment>
+      <#list articleComments?sort_by("mostRecentActivity")?reverse as comment>
         <li class="cf">
           <div class="responses">
             <span>${comment.replyTreeSize}</span>
@@ -52,9 +52,11 @@
             </a>
             <span>
               Posted by
-              <a href=""><#-- TODO: Link to user profile page -->
-              ${comment.creator.displayName}
-              </a>
+              <@siteLink handlerName="userInfo" pathVariables={"authId": comment.creator.authId}; user_href>
+                <a href="${user_href}">
+                ${comment.creator.displayName}
+                </a>
+              </@siteLink>
               on
               <@formatJsonDate date=comment.created format="dd MMM yyyy 'at' HH:mm zzz" />
             </span>

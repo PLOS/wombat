@@ -51,13 +51,8 @@
             ${comment.title}
             </a>
             <span>
-              Posted by
-              <@siteLink handlerName="userInfo" pathVariables={"authId": comment.creator.authId}; user_href>
-                <a href="${user_href}">
-                ${comment.creator.displayName}
-                </a>
-              </@siteLink>
-              on
+              <#include "userInfoLink.ftl" />
+              Posted by <@userInfoLink comment.creator /> on
               <@formatJsonDate date=comment.created format="dd MMM yyyy 'at' HH:mm zzz" />
             </span>
           </div>

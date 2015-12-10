@@ -36,11 +36,7 @@
 
       <div id="responses">
 
-      <#macro userReference user class="">
-        <a href="" class="${class}"><#-- TODO: Link to user profile page -->
-              ${user.displayName}
-        </a>
-      </#macro>
+      <#include "userInfoLink.ftl" />
 
       <#macro renderComment comment depth replyTo>
         <div class="response <#if depth==0>original</#if>" data-depth="${depth?c}">
@@ -49,9 +45,9 @@
             <h3>${comment.title}</h3>
             <h4>
               <#if depth == 0>
-                Posted by <@userReference comment.creator />
+                Posted by <@userInfoLink comment.creator />
               <#else>
-                <@userReference comment.creator /> replied to <@userReference replyTo.creator />
+                <@userInfoLink comment.creator /> replied to <@userInfoLink replyTo.creator />
               </#if>
               on
               <@formatJsonDate date=comment.created format="dd MMM yyyy 'at' HH:mm zzz" />
@@ -87,8 +83,8 @@
 
         <div class="replies">
           <#list comment.replies as reply>
-              <@renderComment comment=reply depth=(depth+1) replyTo=comment />
-            </#list>
+          <@renderComment comment=reply depth=(depth+1) replyTo=comment />
+          </#list>
         </div>
       </#macro>
       <@renderComment comment=comment depth=0 replyTo={} />

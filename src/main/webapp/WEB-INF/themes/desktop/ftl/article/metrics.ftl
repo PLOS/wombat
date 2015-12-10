@@ -24,7 +24,8 @@
 <#include "articleHeader.ftl" />
     <section class="metrics-body">
     <#include "tabs.ftl" />
-        <#include "metricsBody.ftl" />
+    <@displayTabList 'metrics' />
+    <#include "metricsBody.ftl" />
     </section>
     <aside class="article-aside">
     <#include "aside/sidebar.ftl" />

@@ -81,7 +81,7 @@ public class BrowseController extends WombatController {
     model.addAttribute("issueImageCredit", parsedIssueInfo[1]);
     model.addAttribute("issueDescription", parsedIssueInfo[2]);
 
-    List<Map<String, Object>> articleGroups = soaService.requestObject("/articleTypes", List.class);
+    List<Map<String, Object>> articleGroups = soaService.requestObject("articleTypes", List.class);
 
     articleGroups.stream().forEach(ag -> ag.put("articles", new ArrayList<Map<?, ?>>()));
 

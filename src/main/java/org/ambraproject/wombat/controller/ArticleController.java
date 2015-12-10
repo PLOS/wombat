@@ -177,7 +177,7 @@ public class ArticleController extends WombatController {
       Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
       validateArticleVisibility(site, articleMetaData);
       requestComments(model, articleId);
-    return site + "/ftl/article/comments";
+    return site + "/ftl/article/comment/comments";
   }
 
   @RequestMapping(name = "articleCommentPost", value = "/article/comments/new")
@@ -427,7 +427,7 @@ public class ArticleController extends WombatController {
     comment = CommentFormatting.addFormattingFields(comment);
     model.addAttribute("comment", comment);
 
-    return site + "/ftl/article/comment";
+    return site + "/ftl/article/comment/comment";
   }
 
   /**

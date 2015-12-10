@@ -8,20 +8,20 @@
 <#assign title = article.title />
 <#assign depth = 0 />
 
-<#include "../common/head.ftl" />
-<#include "../common/journalStyle.ftl" />
-<#include "../common/article/articleType.ftl" />
+<#include "../../common/head.ftl" />
+<#include "../../common/journalStyle.ftl" />
+<#include "../../common/article/articleType.ftl" />
 
-<#include "analyticsArticleJS.ftl" />
+<#include "../analyticsArticleJS.ftl" />
 
 <body class="article ${journalStyle}">
 
-<#include "../common/header/headerContainer.ftl" />
+<#include "../../common/header/headerContainer.ftl" />
 <div class="set-grid">
-<#include "articleHeader.ftl" />
+<#include "../articleHeader.ftl" />
   <section class="article-body">
 
-  <#include "tabs.ftl" />
+  <#include "../tabs.ftl" />
   <@displayTabList 'comments' />
 
     <div class="article-container">
@@ -64,11 +64,11 @@
 
   </section>
   <aside class="article-aside">
-  <#include "aside/sidebar.ftl" />
+  <#include "../aside/sidebar.ftl" />
   </aside>
 </div>
 
-<#include "../common/footer/footer.ftl" />
+<#include "../../common/footer/footer.ftl" />
 
 
 <@js src="resource/js/components/show_onscroll.js"/>
@@ -97,7 +97,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
 
-<#include "aside/crossmarkIframe.ftl" />
+<#include "../aside/crossmarkIframe.ftl" />
 
 </body>
 </html>

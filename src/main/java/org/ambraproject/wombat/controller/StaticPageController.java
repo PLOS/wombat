@@ -14,13 +14,14 @@ import java.io.InputStream;
  * model. The page is still generated from the FreeMarker engine and may call programmatic directives.
  */
 @Controller
-public class StaticPageController {
+public class StaticPageController extends WombatController {
 
   @RequestMapping(name = "staticPage", value = "/static/{pageName}")
   public String renderStaticPage(@SiteParam Site site, @PathVariable String pageName) {
     if (!doesStaticPageExist(site, pageName)) {
       throw new NotFoundException();
     }
+    enforceDevFeature("staticContent");     // TODO: remove when ready to expose page in prod
     return site + "/ftl/static/" + pageName;
   }
 

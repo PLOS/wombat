@@ -1,6 +1,8 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.Maps;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.Siteless;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.HttpDebug;
@@ -9,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,5 +90,14 @@ public class UserController extends WombatController {
       throw new NotFoundException();
     }
     return new ModelAndView("redirect:" + referrer);
+  }
+
+  @RequestMapping(name = "userInfo", value = "/user/{authId}")
+  public String displayUserInfo(Model model, @SiteParam Site site, @PathVariable String authId) throws IOException {
+    enforceDevFeature("userInfo");
+    String userMetaUrl = "users/" + authId;
+    Map<String, Object> userMetadata = soaService.requestObject(userMetaUrl, Map.class);
+    model.addAttribute("user", userMetadata);
+    return site.getKey() + "/ftl/user/userInfo";
   }
 }

@@ -161,7 +161,7 @@
         </#if>
 
         <#include "home/twitter.ftl" />
-        <#include "article/aside/adSlotAside.ftl" />
+        <#include "home/adSlotAside.ftl" />
         <#include "home/socialLinks.ftl" />
     </div>
 

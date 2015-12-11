@@ -1,0 +1,123 @@
+@import "site-content";
+@import "vendor/jqueryUI/jquery-ui";
+
+.pagination {
+  text-align: center;
+  position: relative;
+  padding: 0 30px;
+  margin: 20px 0;
+
+  a,
+  span,
+  strong {
+    background: #c2c2c2;
+    display: inline-block;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0 4px;
+    min-width: 16px;
+    border-radius: 4px;
+    margin: 0 1px;
+    box-sizing: content-box;
+  }
+
+  strong {
+    background-color: #f8af2d;
+    text-decoration: none;
+  }
+
+  .prev,
+  .next {
+    position: absolute;
+    background: #ddd image-url('ambra/icon.sprite.page.gif') 0 0 no-repeat;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+
+  a.prev,
+  a.next {
+    background-color: #333;
+  }
+
+  .prev {
+    left: 0;
+    background-position: 0 -24px;
+  }
+
+  .next {
+    right: 0;
+  }
+
+  a.prev:hover,
+  a.next:hover,
+  a:hover {
+    background-color: #3C63AF;
+    color: #FFF;
+    text-decoration: none;
+  }
+
+}
+
+/************* edboard pages *****************/
+
+#static-wrap-edboard h2 {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+#static-wrap-edboard dt {
+  padding-top: 5px;
+}
+
+#filter_container, #all_editors {
+  @extend .clearfix;
+}
+
+#all_editors,
+#filter_container {
+  margin-bottom: $line-height;
+}
+
+#filter_container #searchBox {
+  width: 202px;
+  padding-right: 22px;
+  font-size: $txt-size-default;
+}
+
+#filter_container #clearFilter {
+  position: absolute;
+  top: 4px;
+  left: 267px;
+  width: 18px;
+  height: 17px;
+  cursor: default;
+  background: #606060 image-url('ambra/btn.close.png') no-repeat 3px 3px;
+  border-radius: 3px;
+  background-size: 12px 12px;
+}
+
+#filter_container #clearFilter:hover {
+  background: #808080 image-url("ambra/btn.close.png") no-repeat scroll 3px 3px;
+}
+
+.ui-menu-item {
+
+  .item {
+    line-height: 0.9;
+  }
+  .header {
+    line-height: 2;
+    font-weight: bold;
+  }
+  .more {
+    font-style: italic;
+    color: $grey-med;
+  }
+}
+
+div.editor {
+  font-size: $txt-size-default;
+  line-height: $line-height;
+}

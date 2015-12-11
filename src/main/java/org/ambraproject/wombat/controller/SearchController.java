@@ -25,6 +25,7 @@ import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -513,10 +514,10 @@ public class SearchController extends WombatController {
       commonParams.fill(query);
 
       ArticleSearchQuery queryObj = query.build();
-      Map<?, ?> searchResults = solrSearchService.search(queryObj);
+      Map<String, ?> searchResults = solrSearchService.search(queryObj);
 
-      model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site,
-          siteSet));
+      model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
+      model.addAttribute("searchResults", searchResults);
       model.addAttribute("page", commonParams.getSingleParam(params, "page", "0"));
       model.addAttribute("journalKey", site.getKey());
     }

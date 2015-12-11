@@ -3,6 +3,7 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -35,22 +36,27 @@ public class SolrArticleAdapter {
   private final String doi; // non-null
   private final String title; // non-null
   private final String eIssn; // non-null
+  private final String date; // non-null
   private final String strkImgURI; // nullable (forego Optional because we want it to be clean as an FTL model)
+  private final boolean hasFigures;
   private final ImmutableList<Author> authors; // non-null
 
-  private SolrArticleAdapter(String doi, String title, String eIssn, String strkImgURI, List<Author> authors) {
+  private SolrArticleAdapter(String doi, String title, String eIssn, String date, String strkImgURI,
+                             boolean hasFigures, List<Author> authors) {
     this.doi = Objects.requireNonNull(doi);
     this.title = Objects.requireNonNull(title);
     this.eIssn = Objects.requireNonNull(eIssn);
+    this.date = Objects.requireNonNull(date);
     this.strkImgURI = strkImgURI;
+    this.hasFigures = hasFigures;
     this.authors = ImmutableList.copyOf(authors);
   }
 
   /**
    * Adapt a set of results, as provided by {@link org.ambraproject.wombat.service.remote.SolrSearchService#search(org.ambraproject.wombat.service.remote.ArticleSearchQuery)}.
    */
-  public static List<SolrArticleAdapter> unpackSolrQuery(Map<String, Object> solrResult) {
-    List<Map<String, Object>> docs = (List<Map<String, Object>>) solrResult.get("docs");
+  public static List<SolrArticleAdapter> unpackSolrQuery(Map<String, ?> solrResult) {
+    List<Map<String, ?>> docs = (List<Map<String, ?>>) solrResult.get("docs");
     return docs.stream().map(SolrArticleAdapter::adaptFromSolr).collect(Collectors.toList());
   }
 
@@ -60,16 +66,20 @@ public class SolrArticleAdapter {
    * @param solrArticle the map of Solr results representing the article
    * @return the extracted fields
    */
-  public static SolrArticleAdapter adaptFromSolr(Map<String, Object> solrArticle) {
+  public static SolrArticleAdapter adaptFromSolr(Map<String, ?> solrArticle) {
     String doi = (String) solrArticle.get("id");
     String title = (String) solrArticle.get("title");
     String eIssn = (String) solrArticle.get("eissn");
+    String date = (String) solrArticle.get("publication_date");
     String strkImgURI = (String) solrArticle.get("striking_image");
+
+    Collection<?> figureTableCaption = (Collection<?>) solrArticle.get("figure_table_caption");
+    boolean hasFigures = (figureTableCaption != null) && !figureTableCaption.isEmpty();
 
     List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
     List<Author> authors = Lists.transform(solrAuthors, Author::new);
 
-    return new SolrArticleAdapter(doi, title, eIssn, strkImgURI, authors);
+    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors);
   }
 
   /**
@@ -84,17 +94,21 @@ public class SolrArticleAdapter {
    * @param rhinoArticle a map of article metadata fields from Rhino
    * @return the extracted fields
    */
-  public static SolrArticleAdapter adaptFromRhino(Map<String, Object> rhinoArticle) {
+  public static SolrArticleAdapter adaptFromRhino(Map<String, ?> rhinoArticle) {
     String doi = (String) rhinoArticle.get("doi");
     String title = (String) rhinoArticle.get("title");
     String eIssn = (String) rhinoArticle.get("eIssn");
+    String date = (String) rhinoArticle.get("date");
     String strkImgURI = (String) rhinoArticle.get("strkImgURI");
 
-    List<Map<String, Object>> rhinoAuthors = (List<Map<String, Object>>) rhinoArticle.get("authors");
-    List<Author> authors = Lists.transform(rhinoAuthors,
-        (Map<String, Object> author) -> new Author((String) author.get("fullName")));
+    Collection<?> figures = (Collection<?>) rhinoArticle.get("figures");
+    boolean hasFigures = !figures.isEmpty();
 
-    return new SolrArticleAdapter(doi, title, eIssn, strkImgURI, authors);
+    List<Map<String, ?>> rhinoAuthors = (List<Map<String, ?>>) rhinoArticle.get("authors");
+    List<Author> authors = Lists.transform(rhinoAuthors,
+        (Map<String, ?> author) -> new Author((String) author.get("fullName")));
+
+    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors);
   }
 
   public String getDoi() {
@@ -109,8 +123,16 @@ public class SolrArticleAdapter {
     return eIssn;
   }
 
+  public String getDate() {
+    return date;
+  }
+
   public String getStrkImgURI() {
     return strkImgURI;
+  }
+
+  public boolean getHasFigures() {
+    return hasFigures;
   }
 
   public ImmutableList<Author> getAuthors() {

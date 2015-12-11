@@ -48,7 +48,7 @@ public interface SolrSearchService {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<?, ?> search(ArticleSearchQuery query) throws IOException;
+  public Map<String, ?> search(ArticleSearchQuery query) throws IOException;
 
   /**
    * Perform a search, modifying the query with an additional filter by volume number.

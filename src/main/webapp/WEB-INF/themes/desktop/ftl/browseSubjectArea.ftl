@@ -124,28 +124,28 @@
     <div id="subject-cover-view" class="subject-cover">
         <#if resultView == "list">
             <div id="subject-list-view" class="main">
-                <#list searchResults.docs as article>
+                <#list articles as article>
                     <ul id="search-results">
-                        <@siteLink handlerName="article" queryParameters={"id":article.id} ; articleUrl>
+                        <@siteLink handlerName="article" queryParameters={"id":article.doi} ; articleUrl>
                             <#include "article/articleTruncateTitle.ftl" />
-                            <li data-doi="${article.id}" data-pdate="${article.publication_date}" data-metricsurl="<@siteLink handlerName="articleMetrics" />">
+                            <li data-doi="${article.doi}" data-pdate="${article.date}" data-metricsurl="<@siteLink handlerName="articleMetrics" />">
                                 <h2><a href="${articleUrl}" title="${article.title}"><@truncateTitle article.title></@></a></h2>
                                 <p class="authors">
-                                    <#list article.author_display![] as author>
-                                        <span class="author">${author}<#if author_has_next>,</#if></span>
+                                    <#list article.authors as author>
+                                        <span class="author">${author.fullName}<#if author_has_next>,</#if></span>
                                     </#list>
                                 </p>
-                                <p class="date">published ${article.publication_date?date("yyyy-mm-dd")?string("dd MMM yyyy")}</p>
+                                <p class="date">published ${article.date?date("yyyy-mm-dd")?string("dd MMM yyyy")}</p>
                                 <span class="metrics"><span>Loading metrics information...</span></span>
                                 <p class="actions">
-                                    <a data-doi="info:doi/${article.id}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-                                    <#if article.figure_table_caption?? && article.figure_table_caption?size gt 0>
-                                        <a data-doi="info:doi/${article.id}" class="figures" href="#" onclick="alert('Should redirect to lightbox.')">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                    <a data-doi="info:doi/${article.doi}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                    <#if article.hasFigures>
+                                        <a data-doi="info:doi/${article.doi}" class="figures" href="#" onclick="alert('Should redirect to lightbox.')">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <#else>
                                         <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     </#if>
                                     <a href="${articleUrl}">Full Text</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-                                    <a href="<@siteLink handlerName="asset" queryParameters={"id": article.id + ".PDF"} />" target="_blank">Download PDF</a>
+                                    <a href="<@siteLink handlerName="asset" queryParameters={"id": article.doi + ".PDF"} />" target="_blank">Download PDF</a>
                                 </p>
                             </li>
                         </@siteLink>
@@ -154,7 +154,7 @@
             </div><!--main -->
         <#else>
             <div class="articles-list cf" data-subst="article-list">
-            <#list searchResults.docs as article>
+            <#list articles as article>
                 <#include "home/articleCard.ftl" />
             </#list>
             </div>

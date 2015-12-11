@@ -13,6 +13,10 @@
 <body class="home">
 <#include "common/header/headerContainer.ftl" />
 
+<#function encodeSubject subject>
+    <#return subject?replace(' ','_')?lower_case>
+</#function>
+
 <#if parameterMap["resultView"]??>
     <#assign resultView = parameterMap["resultView"]?first>
 <#else>
@@ -21,7 +25,7 @@
 <@siteLink handlerName="browse" ; url>
     <#assign browseUrl = url/>
 </@siteLink>
-<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": category?replace(' ','_')?lower_case?url}; url>
+<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": encodeSubject(category)}; url>
     <#assign fullBrowseUrl = url/>
 </@siteLink>
 <div id="search-results-block" class="cf subject-listing">
@@ -35,10 +39,10 @@
                     <ul typeof="v:Breadcrumb">
                     <#if parents?? && parents?size gt 0>
                       <#list parents as parent>
-                          <li><a rel="v:url" property="v:title" href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": parent?replace(' ','_')?lower_case?url} />"></a></li>
+                          <li><a rel="v:url" property="v:title" href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": encodeSubject(parent)} />"></a></li>
                         <#-- Only mark up the first element as part of the breadcrumb parent -->
                           <#if parent_index == 0>
-                              <li><a rel="v:url" property="v:title" href="${browseUrl}/">${parent}</a></li>
+                              <li><a rel="v:url" property="v:title" href="${browseUrl}">${parent}</a></li>
                           <#else>
                               <li><a href="./">${parent}</a></li>
                           </#if>
@@ -53,7 +57,7 @@
                         <ul>
                         <#if children??>
                           <#list children as child>
-                            <li><a href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": child?replace(' ','_')?lower_case?url} />">${child}</a></li>
+                            <li><a href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": encodeSubject(child)} />">${child}</a></li>
                           </#list>
                         </#if>
                         </ul>
@@ -89,8 +93,7 @@
         </ul>
     </div><!-- /.filter-bar -->
 
-    <#macro URLParameters resultView="cover" sortOrder="DATE_NEWEST_FIRST" page="1" resultsPerPage="13">${"resultView="+resultView?url+"&"+"sortOrder="+sortOrder?url+"&"+"page="+page?url+"&"+"resultsPerPage="+resultsPerPage?url}</#macro>
-
+    <#include "common/URLParametersMacro.ftl" />
     <div class="header hdr-results subject cf">
         <div class="main">
           <#assign totalPages = ((searchResults.numFound + selectedResultsPerPage - 1) / selectedResultsPerPage)?int>
@@ -136,7 +139,7 @@
                                 <span class="metrics"><span>Loading metrics information...</span></span>
                                 <p class="actions">
                                     <a data-doi="info:doi/${article.id}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-                                    <#if article.figure_table_caption?size gt 0>
+                                    <#if article.figure_table_caption?? && article.figure_table_caption?size gt 0>
                                         <a data-doi="info:doi/${article.id}" class="figures" href="#" onclick="alert('Should redirect to lightbox.')">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <#else>
                                         <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;

@@ -1,3 +1,4 @@
+<#include "common/URLParametersMacro.ftl" />
 <#macro renderSearchPaginationLinks url totalPages currentPage>
 <#--
   realPage is zero based

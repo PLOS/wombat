@@ -8,7 +8,7 @@
 <#setting url_escaping_charset="UTF-8">
 <#assign category = filterSubjects?first?cap_first!"" />
 <#assign title = category!"All Subject Areas" />
-<#assign cssFile="plos-one-browse.css"/>
+<#assign cssFile="browse-subject-area.css"/>
 <#include "common/head.ftl" />
 <body class="home">
 <#include "common/header/headerContainer.ftl" />
@@ -20,7 +20,9 @@
 </#if>
 <@siteLink handlerName="browse" ; url>
     <#assign browseUrl = url/>
-    <#assign fullBrowseUrl = browseUrl+"/"+category?replace(' ','_')?lower_case?url/>
+</@siteLink>
+<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": category?replace(' ','_')?lower_case?url}; url>
+    <#assign fullBrowseUrl = url/>
 </@siteLink>
 <div id="search-results-block" class="cf subject-listing">
     <div class="filter-bar subject cf">
@@ -33,7 +35,7 @@
                     <ul typeof="v:Breadcrumb">
                     <#if parents?? && parents?size gt 0>
                       <#list parents as parent>
-                            <li><a rel="v:url" property="v:title" href="${browseUrl}/${parent?replace(' ','_')?lower_case?url}"></a></li>
+                          <li><a rel="v:url" property="v:title" href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": parent?replace(' ','_')?lower_case?url} />"></a></li>
                         <#-- Only mark up the first element as part of the breadcrumb parent -->
                           <#if parent_index == 0>
                               <li><a rel="v:url" property="v:title" href="${browseUrl}/">${parent}</a></li>
@@ -51,7 +53,7 @@
                         <ul>
                         <#if children??>
                           <#list children as child>
-                            <li><a href="./${child?replace(' ','_')?lower_case?url}">${child}</a></li>
+                            <li><a href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": child?replace(' ','_')?lower_case?url} />">${child}</a></li>
                           </#list>
                         </#if>
                         </ul>

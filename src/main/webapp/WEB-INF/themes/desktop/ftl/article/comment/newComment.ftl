@@ -7,6 +7,7 @@
 
 <#assign title = article.title />
 <#assign articleDoi = article.doi />
+<#assign cssFile="comments.css"/>
 
 <#include "../../common/head.ftl" />
 <#include "../../common/journalStyle.ftl" />

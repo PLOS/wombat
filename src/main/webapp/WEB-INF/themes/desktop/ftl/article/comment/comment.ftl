@@ -6,6 +6,7 @@
 
 
 <#assign title = article.title, articleDoi = article.doi />
+<#assign cssFile="comments.css"/>
 
 <#include "../../common/head.ftl" />
 <#include "../../common/journalStyle.ftl" />
@@ -23,7 +24,7 @@
   <#include "../tabs.ftl" />
   <@displayTabList 'comments' />
 
-    <div class="article-container">
+    <div id="thread" class="article-container">
 
       <h2>Reader Comments <#--TODO: Do we want to show the count of article's root replies here?--></h2>
 
@@ -39,36 +40,63 @@
       <#include "userInfoLink.ftl" />
 
       <#macro renderComment comment depth replyTo>
-        <div class="response <#if depth==0>original</#if>" data-depth="${depth?c}">
+        <div class="response <#if depth==0>original</#if>"
+             data-depth="${depth?c}"
+             style="margin-left: ${(depth * 30)?c}px"
+            >
 
-          <div>
-            <h3>${comment.title}</h3>
+          <div class="info">
+            <h3 class="response_title">${comment.title}</h3>
             <h4>
               <#if depth == 0>
-                Posted by <@userInfoLink comment.creator />
+                Posted by <@userInfoLink user=comment.creator class="user icon replyCreator" />
               <#else>
-                <@userInfoLink comment.creator /> replied to <@userInfoLink replyTo.creator />
+                <@userInfoLink user=comment.creator class="user icon replyCreator" />
+                replied to
+                <@userInfoLink user=replyTo.creator class="user icon repliedTo" />
               </#if>
               on
-              <@formatJsonDate date=comment.created format="dd MMM yyyy 'at' HH:mm zzz" />
+              <span class="replyTimestamp">
+                <strong>
+                  <@formatJsonDate date=comment.created format="dd MMM yyyy 'at' HH:mm zzz" />
+                </strong>
+              </span>
             </h4>
+            <#if depth gt 0>
+              <div class="arrow"></div>
+            </#if>
           </div>
 
-          <div class="content">
-            <div class="body">${comment.formatting.bodyWithHighlightedText}</div>
+          <div class="response_content">
+            <div class="response_body">${comment.formatting.bodyWithHighlightedText}</div>
+
+          <#--TODO: Suppress entire competing_interests div if comment is early enough -->
+            <#assign hasCompetingInterest = comment.competingInterestStatement?has_content />
+            <div class="competing_interests <#if hasCompetingInterest>present<#else>absent</#if>">
+              <strong>
+                <#if hasCompetingInterest>
+                  Competing interests declared:
+                <#else>
+                  No competing interests declared.
+                </#if>
+              </strong>
+              <#if hasCompetingInterest>
+                <span class="ciStmt">${comment.competingInterestStatement}</span>
+              </#if>
+            </div>
           </div>
 
           <div class="toolbar">
             <#assign userIsLoggedIn = Session["SPRING_SECURITY_CONTEXT"]?exists && Session["SPRING_SECURITY_CONTEXT"].authentication.authenticated />
             <@siteLink handlerName="userLogin" ; login>
               <a href="${login}" title="Report a Concern"
-                 class="flag btn <#if userIsLoggedIn>primary</#if>"
+                 class="flag toolbar btn <#if userIsLoggedIn>primary</#if>"
                  <#if userIsLoggedIn>onclick="<#--TODO-->"</#if>
                   >
                 report a concern
               </a>
               <a href="${login}" title="Click to respond"
-                 class="respond btn <#if userIsLoggedIn>primary</#if>"
+                 class="respond toolbar btn <#if userIsLoggedIn>primary</#if>"
                  <#if userIsLoggedIn>onclick="<#--TODO-->"</#if>
                   >
                 respond to this posting

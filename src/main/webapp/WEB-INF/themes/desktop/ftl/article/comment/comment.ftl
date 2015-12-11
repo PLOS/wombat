@@ -35,6 +35,16 @@
         on this article
       </p>
 
+      <div id="respond_prototype" class="reply subresponse cf" style="display: none">
+        <h4>Post Your Discussion Comment</h4>
+
+        <div class="reply_content">
+        <#include "newCommentForm.ftl" />
+          <@newCommentForm/>
+        </div>
+
+      </div>
+
       <div id="responses">
 
       <#include "userInfoLink.ftl" />

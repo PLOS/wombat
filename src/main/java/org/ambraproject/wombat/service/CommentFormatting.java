@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 import com.opensymphony.util.UrlUtils;
 import org.apache.commons.lang.StringEscapeUtils;
@@ -56,7 +57,7 @@ public class CommentFormatting {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
         String body = (String) comment.get("body");
-        if (body == null) return "";
+        if (Strings.isNullOrEmpty(body)) return "";
         return hyperlinkEnclosedWithPTags(escapeHtml(body), 25);
       }
     },
@@ -64,7 +65,7 @@ public class CommentFormatting {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
         String body = (String) comment.get("body");
-        if (body == null) return "";
+        if (Strings.isNullOrEmpty(body)) return "";
         return hyperlinkEnclosedWithPTags(truncateText(escapeHtml(body), TRUNCATED_COMMENT_LENGTH), 25);
       }
     },
@@ -72,7 +73,7 @@ public class CommentFormatting {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
         String body = (String) comment.get("body");
-        if (body == null) return "";
+        if (Strings.isNullOrEmpty(body)) return "";
         return hyperlink(escapeHtml(body), 25);
       }
     },
@@ -80,7 +81,7 @@ public class CommentFormatting {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
         String body = (String) comment.get("body");
-        if (body == null) return "";
+        if (Strings.isNullOrEmpty(body)) return "";
         return hyperlink(truncateText(escapeHtml(body), TRUNCATED_COMMENT_LENGTH), 25);
       }
     },
@@ -88,11 +89,11 @@ public class CommentFormatting {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
         String highlightedText = (String) comment.get("highlightedText");
-        if (highlightedText == null) {
+        if (Strings.isNullOrEmpty(highlightedText)) {
           return bodyHtml.generateFieldValue(comment);
         }
         String body = (String) comment.get("body");
-        if (body == null) return "";
+        if (Strings.isNullOrEmpty(body)) return "";
         String bodyWithHt = highlightedText + "\n\n" + body;
         return hyperlinkEnclosedWithPTags(escapeHtml(bodyWithHt), 150);
       }
@@ -101,7 +102,7 @@ public class CommentFormatting {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
         String competingInterestBody = (String) comment.get("competingInterestBody");
-        if (competingInterestBody == null) return "";
+        if (Strings.isNullOrEmpty(competingInterestBody)) return "";
         return escapeHtml(competingInterestBody);
       }
     },
@@ -109,7 +110,7 @@ public class CommentFormatting {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
         String competingInterestBody = (String) comment.get("competingInterestBody");
-        if (competingInterestBody == null) return "";
+        if (Strings.isNullOrEmpty(competingInterestBody)) return "";
         return truncateText(escapeHtml(competingInterestBody), TRUNCATED_COMMENT_LENGTH);
       }
     };

@@ -101,7 +101,7 @@ public class CommentFormatting {
     competingInterestStatement("competingInterestStatement") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
-        String competingInterestBody = (String) comment.get("competingInterestBody");
+        String competingInterestBody = (String) ((Map<String, ?>) comment.get("competingInterestStatement")).get("body");
         if (Strings.isNullOrEmpty(competingInterestBody)) return "";
         return escapeHtml(competingInterestBody);
       }
@@ -109,7 +109,7 @@ public class CommentFormatting {
     truncatedCompetingInterestStatement("truncatedCompetingInterestStatement") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
-        String competingInterestBody = (String) comment.get("competingInterestBody");
+        String competingInterestBody = (String) ((Map<String, ?>) comment.get("competingInterestStatement")).get("body");
         if (Strings.isNullOrEmpty(competingInterestBody)) return "";
         return truncateText(escapeHtml(competingInterestBody), TRUNCATED_COMMENT_LENGTH);
       }

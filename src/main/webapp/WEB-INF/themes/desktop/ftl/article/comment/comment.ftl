@@ -77,32 +77,31 @@
             </#if>
           </div>
 
-        <div class="response_content">
-          <div class="response_body">${comment.formatting.bodyWithHighlightedText}</div>
+          <div class="response_content">
+            <div class="response_body">${comment.formatting.bodyWithHighlightedText}</div>
 
-          <#if !(comment.competingInterestStatement)??>
-          <#--
-            If the value is entirely absent, then the comment was created before the user would have been prompted to
-            declare whether or not they had any competing interests. Therefore, suppress the competing interests
-            element entirely, rather than stating affirmatively that the user has declared no competing interests.
-          -->
-          <#else>
-          <#-- An empty string indicates that the user has affirmatively declared no competing interests. -->
-            <#assign hasCompetingInterest = comment.competingInterestStatement?has_content />
-            <div class="competing_interests <#if hasCompetingInterest>present<#else>absent</#if>">
-              <strong>
+            <#if !(comment.competingInterestStatement.creatorWasPrompted)>
+            <#--
+                If the comment was created before the user would have been prompted to declare whether or not they had
+                any competing interests, then suppress the competing interests element entirely, rather than stating
+                affirmatively that the user has declared no competing interests.
+              -->
+            <#else>
+              <#assign hasCompetingInterest = comment.competingInterestStatement.hasCompetingInterests />
+              <div class="competing_interests <#if hasCompetingInterest>present<#else>absent</#if>">
+                <strong>
+                  <#if hasCompetingInterest>
+                    Competing interests declared:
+                  <#else>
+                    No competing interests declared.
+                  </#if>
+                </strong>
                 <#if hasCompetingInterest>
-                  Competing interests declared:
-                <#else>
-                  No competing interests declared.
+                  <span class="ciStmt">${comment.formatting.competingInterestStatement}</span>
                 </#if>
-              </strong>
-              <#if hasCompetingInterest>
-                <span class="ciStmt">${comment.competingInterestStatement}</span>
-              </#if>
-            </div>
+              </div>
+            </#if>
           </div>
-          </#if>
 
           <div class="toolbar">
             <#assign userIsLoggedIn = Session["SPRING_SECURITY_CONTEXT"]?exists && Session["SPRING_SECURITY_CONTEXT"].authentication.authenticated />

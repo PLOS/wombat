@@ -229,7 +229,7 @@ public class ArticleSearchQuery {
    * @return the search results matching this query object
    * @throws IOException
    */
-  public Map<?, ?> search(QueryExecutor queryExecutor) throws IOException {
+  public Map<String, ?> search(QueryExecutor queryExecutor) throws IOException {
     List<NameValuePair> params = buildParameters();
     Map<String, Map> rawResults = queryExecutor.executeQuery(params);
     return unpackResults(rawResults);
@@ -241,7 +241,7 @@ public class ArticleSearchQuery {
    * @param rawResults the full map of results deserialized from Solr's response
    * @return the subset of those results that were queried for
    */
-  private Map<?, ?> unpackResults(Map<String, Map> rawResults) {
+  private Map<String, ?> unpackResults(Map<String, Map> rawResults) {
     if (isForRawResults) {
       return rawResults;
     }
@@ -249,7 +249,7 @@ public class ArticleSearchQuery {
       Map<String, Map> facetFields = (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
       return facetFields.get(facet.get()); //We expect facet field to be the first element of the list
     } else {
-      return (Map<?, ?>) rawResults.get("response");
+      return (Map<String, ?>) rawResults.get("response");
     }
   }
 

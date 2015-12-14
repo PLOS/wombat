@@ -23,7 +23,7 @@ public class ArticleSearchQuery {
   private static final String ARTICLE_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
       "id", "eissn", "publication_date", "title", "cross_published_journal_name", "author_display", "article_type",
       "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount", "alm_mendeleyCount", "alm_twitterCount",
-      "alm_facebookCount", "retraction", "expression_of_concern", "striking_image"}));
+      "alm_facebookCount", "retraction", "expression_of_concern", "striking_image", "figure_table_caption"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
 

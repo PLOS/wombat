@@ -176,7 +176,8 @@
 
 <@js src="resource/js/vendor/jquery.jsonp-2.4.0.js" />
 
-<@js src="resource/js/plosone.js" />
+<#include "subjectAreaJs.ftl" />
+
 <@js src="resource/js/util/alm_config.js" />
 <@js src="resource/js/metrics.js" />
 <@js src="resource/js/components/tooltip_hover.js"/>

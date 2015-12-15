@@ -32,7 +32,7 @@
     </aside>
 </div>
 
-<#include "../common/articleJs.ftl" />
+<#include "articleJs.ftl" />
 
 <@js src="resource/js/components/table_open.js"/>
 <@js src="resource/js/components/figshare.js"/>
@@ -42,12 +42,8 @@
 <@js src="resource/js/vendor/hover-enhanced.js"/>
 <@js src="resource/js/highcharts.js"/>
 
-<@js src="resource/js/components/nav_builder.js"/>
-<@js src="resource/js/components/floating_nav.js"/>
-
 <@js src="resource/js/metrics.js"/>
 <@js src="resource/js/pages/article.js"/>
-<@js src="resource/js/pages/article_body.js"/>
 <#include "../common/footer/footer.ftl" />
 
 <@renderJs />

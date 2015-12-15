@@ -57,7 +57,7 @@
 
   <#include "../common/footer/footer.ftl" />
 
-  <#include "../common/articleJs.ftl" />
+  <#include "articleJs.ftl" />
   <@js src="resource/js/components/table_open.js"/>
   <@js src="resource/js/components/figshare.js"/>
 

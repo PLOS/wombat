@@ -64,7 +64,7 @@
 </div>
 
 <#include "../common/footer/footer.ftl" />
-<#include "../common/articleJs.ftl" />
+<#include "articleJs.ftl" />
 <@renderJs />
 
 <#include "aside/crossmarkIframe.ftl" />

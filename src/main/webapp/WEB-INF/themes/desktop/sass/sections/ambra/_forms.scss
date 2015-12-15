@@ -91,3 +91,136 @@ form.standard .note{
 a#media-coverage-form-link {
   cursor: pointer;
 }
+
+/* Styling for forms */
+.form-default {
+  position: relative;
+  display: block;
+}
+
+.form-default fieldset {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.form-default ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-default ol li {
+  position: relative;
+  list-style: none;
+  display: block;
+  padding-bottom: 14px;
+  background-color: transparent;
+  background-image: none;
+  clear: both;
+}
+
+.form-default ol li label {
+  display: block;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 6px;
+  line-height: normal;
+  font-weight: bold;
+}
+
+.form-default ol li input[type=text] {
+  width: 206px;
+  border: 1px solid #999;
+  padding: 2px;
+}
+
+.form-default ol li textarea {
+  margin-right: 5px;
+}
+
+.recaptcha_nothad_incorrect_sol {
+  display: inline-block;
+}
+
+.form-default textarea {
+  width: 324px;
+}
+
+.form-default span.note {
+  font-size: 13px;
+  color: #999;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.form-default{
+
+  .btn,
+  a.btn{
+    background: #333;
+    font-size: 15px;
+    line-height: 35px;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+    padding: 0 10px;
+    display: inline-block;
+    border-radius: 4px;
+    font-family: arial;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .btn.primary,
+  .btn.main{
+    background: #F8AF2D;
+    color: #333;
+  }
+
+  .btn.primary:hover,
+  .btn.primary.active,
+  .btn.active,
+  .btn:hover{
+    background: #3c63af;
+    color: #fff;
+    text-decoration: none;
+  }
+
+.btn.inactive {
+    background-color: #646464;
+    color: #FFF;
+  }
+
+  input.btn {
+    line-height: normal;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+}
+
+.form-label {
+  margin-bottom: 6px;
+  display: block;
+  font-size: 12px;
+  color: #333;
+  font-weight: bold;
+}
+
+.form-error,
+.form-default ol .error{
+  color: #f03;
+}
+
+.emailrequired {
+  color: #A61200
+}
+
+.required {
+  color: #f03;
+  font-size: 13px;
+  font-weight: bold;
+}

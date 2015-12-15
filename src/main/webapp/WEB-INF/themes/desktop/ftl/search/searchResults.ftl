@@ -54,6 +54,12 @@
                 <#list activeFilterItems as item>
                     <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
                 </#list>
+                <#if (filterStartDate??)>
+                    <input type="hidden" name="filterStartDate" value="${filterStartDate}"/>
+                    <#if (filterEndDate??)>
+                        <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
+                    </#if>
+                </#if>
                 <button id="searchFieldButton" type="submit"><span class="search-icon"></span></button>
             </fieldset>
             <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced

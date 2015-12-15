@@ -89,6 +89,7 @@ import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -842,10 +843,10 @@ public class ArticleController extends WombatController {
     }
 
     //Create comma-separated list of authors per affiliation
-    Map<String, String> authorListAffiliationMap = new HashMap<>();
-    for (String affiliation : authorAffiliationsMap.asMap().keySet()) {
-      authorListAffiliationMap.put(affiliation, Joiner.on(", ")
-          .join(authorAffiliationsMap.get(affiliation)));
+    LinkedHashMap<String, String> authorListAffiliationMap = new LinkedHashMap<>();
+    for (Map.Entry affiliation : authorAffiliationsMap.asMap().entrySet()) {
+      String key = affiliation.getKey().toString();
+      authorListAffiliationMap.put(key, Joiner.on(", ").join(authorAffiliationsMap.get(key)));
     }
 
     model.addAttribute("authorListAffiliationMap", authorListAffiliationMap);

@@ -35,8 +35,8 @@
             <#if emailToAddressesInvalid??><p class="error">Invalid email address</p></#if>
             <#if tooManyEmailToAddresses??><p class="error">Too many email addresses.</p></#if>
             <textarea id="emailToAddresses"  class="form-label" rows="${maxEmails}" name="emailToAddresses" cols="40">
-              <#if emailToAddresses??>${emailToAddresses}</#if>
-            </textarea>
+              <#t><#if emailToAddresses??>${emailToAddresses}</#if>
+            </textarea><#t>
           </li>
           <li>
             <label class="form-label" id="emailAddressLabel" for="emailAddress">
@@ -59,8 +59,8 @@
               Your comments to add to the E-mail
             </label>
             <textarea id="note" name="note" rows="5" cols="40">
-              <#if note??>${note}<#else>I thought you would find this article interesting.</#if>
-            </textarea>
+              <#t><#if note??>${note}<#else>I thought you would find this article interesting.</#if>
+            </textarea><#t>
           </li>
           <li>
             <label class="form-label">Text verification:</label>

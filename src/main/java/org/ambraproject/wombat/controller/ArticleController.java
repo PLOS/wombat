@@ -844,9 +844,8 @@ public class ArticleController extends WombatController {
 
     //Create comma-separated list of authors per affiliation
     LinkedHashMap<String, String> authorListAffiliationMap = new LinkedHashMap<>();
-    for (Map.Entry affiliation : authorAffiliationsMap.asMap().entrySet()) {
-      String key = affiliation.getKey().toString();
-      authorListAffiliationMap.put(key, Joiner.on(", ").join(authorAffiliationsMap.get(key)));
+    for (Map.Entry<String, Collection<String>> affiliation : authorAffiliationsMap.asMap().entrySet()) {
+      authorListAffiliationMap.put(affiliation.getKey(), Joiner.on(", ").join(affiliation.getValue()));
     }
 
     model.addAttribute("authorListAffiliationMap", authorListAffiliationMap);

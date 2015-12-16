@@ -1,7 +1,5 @@
 <@js src="resource/js/components/show_onscroll.js"/>
 
-<#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
-<@js src="resource/js/components/article_lightbox.js"/>
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/vendor/moment.js"/>

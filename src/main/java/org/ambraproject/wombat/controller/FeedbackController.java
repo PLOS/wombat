@@ -8,7 +8,6 @@ import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -95,9 +94,7 @@ public class FeedbackController extends WombatController {
     if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
       errors.add("captchaError");
     }
-    if (!errors.isEmpty()) {
-      errors.forEach(error -> model.addAttribute(error, true));
-      response.setStatus(HttpStatus.BAD_REQUEST.value());
+    if (applyValidation(response, model, errors)) {
       return serveFeedbackPage(model, site);
     }
 

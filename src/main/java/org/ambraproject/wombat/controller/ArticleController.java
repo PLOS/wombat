@@ -710,9 +710,7 @@ public class ArticleController extends WombatController {
 
     Set<String> errors = validateEmailArticleInput(toAddresses, emailFrom, senderName,
         captchaChallenge, captchaResponse, site, request);
-    if (!errors.isEmpty()) {
-      errors.forEach(error -> model.addAttribute(error, true));
-      response.setStatus(HttpStatus.BAD_REQUEST.value());
+    if (applyValidation(response, model, errors)) {
       return renderEmailThisArticle(request, model, site, articleId);
     }
 

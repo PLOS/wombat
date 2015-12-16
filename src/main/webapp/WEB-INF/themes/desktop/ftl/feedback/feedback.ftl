@@ -1,12 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en" xml:lang="en"
+      itemscope itemtype="http://schema.org/Article"
+      class="no-js">
 <#assign title = "" /> <#-- use default -->
+<#assign cssFile = 'site-content.css'/>
 <#include "../common/head.ftl" />
 
 <#include "../common/journalStyle.ftl" />
 <body class="${journalStyle}">
 <#include "../common/header/headerContainer.ftl" />
 
-<div>
+<article class="ambra-form">
   <h1>Feedback</h1>
 
 <#--
@@ -41,7 +46,7 @@
   </#if>
 </#macro>
 
-  <form id="feedbackCreate" name="feedbackForm" method="post" title="Feedback"
+  <form class="form-default" id="feedbackCreate" name="feedbackForm" method="post" title="Feedback"
         action="<@siteLink handlerName="feedbackPost" />">
     <fieldset>
     <#include "preamble.ftl" />
@@ -78,8 +83,9 @@
     </fieldset>
   </form>
 
-</div>
+</article>
 
 <#include "../common/footer/footer.ftl" />
+<@renderJs />
 </body>
 </html>

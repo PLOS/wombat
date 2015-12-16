@@ -9,19 +9,18 @@
 <div>
   <h1>Feedback</h1>
 
-<#macro formLabel>
-<#-- Placeholder for styling on form labels. -->
-  <#nested/>
-</#macro>
-
 <#--
-  Simple form input field.
+  Simple form input field with label. The nested element is the label.
 
   The key is both the form parameter name, and the name for prior input (if we are displaying validation errors) in the
   FreeMarker model. It is assumed that the same key will be used for both values.
   -->
 <#macro formInput key>
-  <input type="text" name="${key}" value="${key?eval!''}"/>
+  <#assign formInputId = "feedbackCreate_${key}" />
+  <label for="${formInputId}">
+    <#nested/>
+  </label>
+  <input id="${formInputId}" type="text" name="${key}" value="${key?eval!''}"/>
 </#macro>
 
 <#--
@@ -42,31 +41,28 @@
   </#if>
 </#macro>
 
-  <form name="feedbackForm" method="post" title="Feedback"
+  <form id="feedbackCreate" name="feedbackForm" method="post" title="Feedback"
         action="<@siteLink handlerName="feedbackPost" />">
     <fieldset>
     <#include "preamble.ftl" />
       <input type="text" name="userId" style="visibility: hidden" value="<#--TODO: Add userId if present-->"/>
       <ol>
         <li>
-        <@formLabel>Name:</@formLabel>
-        <@formInput "name" />
+        <@formInput "name">Name:</@formInput>
         <@formValidation "nameError">This field is required.</@formValidation>
         </li>
         <li>
-        <@formLabel>E-mail Address:</@formLabel>
-        <@formInput "fromEmailAddress" />
+        <@formInput "fromEmailAddress">E-mail Address:</@formInput>
         <@formValidation "emailAddressMissingError">This field is required.</@formValidation>
         <@formValidation "emailAddressInvalidError">Invalid e-mail address</@formValidation>
         </li>
         <li>
-        <@formLabel>Subject:</@formLabel>
-        <@formInput "subject"/>
+        <@formInput "subject">Subject:</@formInput>
         <@formValidation "subjectError">This field is required.</@formValidation>
         </li>
         <li>
-        <@formLabel>Message:</@formLabel>
-          <textarea name="note" cols="70" rows="5">${note!''}</textarea>
+          <label for="feedbackCreate_note">Message:</label>
+          <textarea id="feedbackCreate_note" name="note" cols="70" rows="5">${note!''}</textarea>
         <@formValidation "noteError">This field is required.</@formValidation>
         </li>
         <li>

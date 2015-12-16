@@ -518,7 +518,7 @@ public class ArticleController extends WombatController {
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam("id") String articleId) throws IOException {
     // TODO: remove when ready to expose page in prod
-    enforceDevFeature("relatedContentTab");
+    enforceDevFeature("relatedTab");
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);

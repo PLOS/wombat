@@ -3,7 +3,7 @@
 <#macro searchForm journal="">
 
 <li id="navsearch" class="head-search">
-    <form name="searchForm" action="<@siteLink path='search'/>" method="get">
+    <form name="searchForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
         <fieldset>
             <legend>Search</legend>
             <label for="search">Search</label>
@@ -17,8 +17,7 @@
   <@themeConfig map="legacy" value="urlPrefix" ; legacyUrlPrefix>
     <#if legacyUrlPrefix??>
       <a id="advSearch"
-         href="${legacyUrlPrefix}search/advanced?noSearchFlag=true
-         <#if journal?has_content>&query=&filterJournals=${journal}</#if>">
+         href="${legacyUrlPrefix}search/advanced?noSearchFlag=true&query=<#if journal?has_content>&filterJournals=${journal}</#if>">
           advanced search
       </a>
     </#if>

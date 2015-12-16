@@ -152,6 +152,9 @@ variable  | result   | default
 .block-card {
   @include blocks($radius: none, $padding: none);
 }
+.block-dark{
+  @include blocks($radius: all, $color: $grey-dark, $shadow: none)
+}
 
 
 ///PLACEHOLDER STYLES

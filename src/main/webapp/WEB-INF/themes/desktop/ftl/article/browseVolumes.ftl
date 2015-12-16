@@ -20,7 +20,6 @@
       for each issue in the controller layer. -->
 <#assign thumbnail_suffix = ".g001.PNG_S"/>
 
-
     <section >
 
 

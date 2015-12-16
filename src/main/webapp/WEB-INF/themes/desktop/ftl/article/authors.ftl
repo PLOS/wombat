@@ -23,51 +23,55 @@
 
 <#include "articleHeader.ftl" />
 
-    <section class="article-body">
+  <section class="article-body content">
 
     <#include "tabs.ftl" />
-      <@displayTabList 'authors' />
+    <@displayTabList 'authors' />
+    <h1>About the Authors</h1>
 
-        <div class="article-container">
-            <h1>About the Authors</h1>
-        <#list authors as author>
-            <div class="about-author">
-                <h5 class="comments-header">${author.fullName}</h5>
-                <p>
-                  <#list author.affiliations as affiliation>
-                  ${affiliation}
-                    <#if author.affiliations?size gt 0>
-                        <br/>
-                    </#if>
-                  </#list>
-                </p>
-            </div>
-        </#list>
+    <#list authorListAffiliationMap?keys as affiliation>
+      <p>
+        <span class="author-list">${authorListAffiliationMap[affiliation]}</span>
+        <br/>
+        ${affiliation}
+      </p>
+    </#list>
 
-        <#if correspondingAuthors?? && correspondingAuthors?size gt 0>
-          <#if correspondingAuthors?size == 1>
-              <h2>Corresponding Author</h2>
-          <#else>
-              <h2>Corresponding Authors</h2>
-          </#if>
-          <#list correspondingAuthors as correspondingAuthor>
-              <p class="about-author">${correspondingAuthor}</p>
-          </#list>
-        </#if>
+    <#if correspondingAuthors?? && correspondingAuthors?size gt 0>
+      <#if correspondingAuthors?size == 1>
+        <h2>Corresponding Author</h2>
+      <#else>
+        <h2>Corresponding Authors</h2>
+      </#if>
+      <#list correspondingAuthors as correspondingAuthor>
+        <p class="about-author">${correspondingAuthor}</p>
+      </#list>
+    </#if>
 
-        </div>
+    <#if competingInterests?size gt 0>
+      <h2>Competing Interests</h2>
+      <#list competingInterests as competingInterest>
+        <p>${competingInterest}</p>
+      </#list>
+    </#if>
 
-    </section>
-    <aside class="article-aside">
-    <#include "aside/sidebar.ftl" />
-    </aside>
+    <#if authorContributions?size gt 0>
+      <h2>Author Contributions</h2>
+      <#list authorContributions as contribution>
+        <p>${contribution}</p>
+      </#list>
+    </#if>
+
+  </section>
+  <aside class="article-aside">
+  <#include "aside/sidebar.ftl" />
+  </aside>
 </div>
 
 <#include "../common/footer/footer.ftl" />
 
 <@js src="resource/js/components/show_onscroll.js"/>
 
-<#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/vendor/moment.js"/>
@@ -76,6 +80,7 @@
 <@js src="resource/js/components/signposts.js"/>
 <@js src="resource/js/vendor/spin.js"/>
 
+<@js src="resource/js/pages/article.js"/>
 <@js src="resource/js/pages/article_sidebar.js"/>
 <@renderJs />
 
@@ -83,8 +88,10 @@
 
 
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
-<script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
+<script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script type="text/javascript"
+        src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
 
 <#include "aside/crossmarkIframe.ftl" />
 <#--

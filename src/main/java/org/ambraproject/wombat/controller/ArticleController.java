@@ -542,8 +542,8 @@ public class ArticleController extends WombatController {
       @RequestParam("comment") String comment,
       @RequestParam("name") String name,
       @RequestParam("email") String email,
-      @RequestParam("recaptcha_challenge_field") String captchaChallenge,
-      @RequestParam("recaptcha_response_field") String captchaResponse)
+      @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+      @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException {
     // TODO: remove when ready to expose page in prod
     enforceDevFeature("relatedContentTab");
@@ -689,9 +689,8 @@ public class ArticleController extends WombatController {
       @RequestParam("emailFrom") String emailFrom,
       @RequestParam("senderName") String senderName,
       @RequestParam("note") String note,
-      //TODO: extract captcha field names to reusable place
-      @RequestParam("recaptcha_challenge_field") String captchaChallenge,
-      @RequestParam("recaptcha_response_field") String captchaResponse)
+      @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+      @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException, MessagingException {
     // TODO: remove when ready to expose page in prod
     enforceDevFeature("emailThisArticle");
@@ -711,9 +710,7 @@ public class ArticleController extends WombatController {
 
     Set<String> errors = validateEmailArticleInput(toAddresses, emailFrom, senderName,
         captchaChallenge, captchaResponse, site, request);
-    if (!errors.isEmpty()) {
-      errors.forEach(error -> model.addAttribute(error, true));
-      response.setStatus(HttpStatus.BAD_REQUEST.value());
+    if (applyValidation(response, model, errors)) {
       return renderEmailThisArticle(request, model, site, articleId);
     }
 

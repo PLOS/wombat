@@ -23,44 +23,49 @@
 
 <#include "articleHeader.ftl" />
 
-    <section class="article-body">
+  <section class="article-body content">
 
     <#include "tabs.ftl" />
-      <@displayTabList 'authors' />
+    <@displayTabList 'authors' />
+    <h1>About the Authors</h1>
 
-        <div class="article-container">
-            <h1>About the Authors</h1>
-        <#list authors as author>
-            <div class="about-author">
-                <h5 class="comments-header">${author.fullName}</h5>
-                <p>
-                  <#list author.affiliations as affiliation>
-                  ${affiliation}
-                    <#if author.affiliations?size gt 0>
-                        <br/>
-                    </#if>
-                  </#list>
-                </p>
-            </div>
-        </#list>
+    <#list authorListAffiliationMap?keys as affiliation>
+      <p>
+        <span class="author-list">${authorListAffiliationMap[affiliation]}</span>
+        <br/>
+        ${affiliation}
+      </p>
+    </#list>
 
-        <#if correspondingAuthors?? && correspondingAuthors?size gt 0>
-          <#if correspondingAuthors?size == 1>
-              <h2>Corresponding Author</h2>
-          <#else>
-              <h2>Corresponding Authors</h2>
-          </#if>
-          <#list correspondingAuthors as correspondingAuthor>
-              <p class="about-author">${correspondingAuthor}</p>
-          </#list>
-        </#if>
+    <#if correspondingAuthors?? && correspondingAuthors?size gt 0>
+      <#if correspondingAuthors?size == 1>
+        <h2>Corresponding Author</h2>
+      <#else>
+        <h2>Corresponding Authors</h2>
+      </#if>
+      <#list correspondingAuthors as correspondingAuthor>
+        <p class="about-author">${correspondingAuthor}</p>
+      </#list>
+    </#if>
 
-        </div>
+    <#if competingInterests?size gt 0>
+      <h2>Competing Interests</h2>
+      <#list competingInterests as competingInterest>
+        <p>${competingInterest}</p>
+      </#list>
+    </#if>
 
-    </section>
-    <aside class="article-aside">
-    <#include "aside/sidebar.ftl" />
-    </aside>
+    <#if authorContributions?size gt 0>
+      <h2>Author Contributions</h2>
+      <#list authorContributions as contribution>
+        <p>${contribution}</p>
+      </#list>
+    </#if>
+
+  </section>
+  <aside class="article-aside">
+  <#include "aside/sidebar.ftl" />
+  </aside>
 </div>
 
 <#include "../common/footer/footer.ftl" />

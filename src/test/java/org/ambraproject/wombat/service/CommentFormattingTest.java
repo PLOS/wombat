@@ -53,7 +53,8 @@ public class CommentFormattingTest {
       if (body != null) builder.put("body", body);
       if (title != null) builder.put("title", title);
       if (highlightedText != null) builder.put("highlightedText", highlightedText);
-      if (competingInterestBody != null) builder.put("competingInterestBody", competingInterestBody);
+      builder.put("competingInterestStatement", (competingInterestBody != null)
+          ? ImmutableMap.of("body", competingInterestBody) : ImmutableMap.of());
       return builder.build();
     }
   }

@@ -500,8 +500,14 @@ public class SearchController extends WombatController {
 
       // perform search on the subject area
       params.add("subject", subject.replace("_", " "));
+
+      // set defaults for subject area landing page
       if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {
         params.add("resultsPerPage", BROWSE_RESULTS_PER_PAGE);
+      }
+
+      if (ListUtil.isNullOrEmpty(params.get("sortOrder"))) {
+        params.add("sortOrder", "DATE_NEWEST_FIRST");
       }
 
       CommonParams commonParams = new CommonParams(siteSet, site);

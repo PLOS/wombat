@@ -107,6 +107,13 @@
     );
   })();
 
+  /* Load signposts */
+  if ($.fn.signposts ) {
+    var doi = $('meta[name=citation_doi]').attr('content');
+    var signposts = new $.fn.signposts();
+    signposts.getSignpostData(doi);
+  }
+
 })(jQuery);
 
 

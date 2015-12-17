@@ -94,7 +94,6 @@
 <#include "articleJs.ftl" />
 
 <@js src="resource/js/pages/related_content.js"/>
-<@js src="resource/js/pages/article.js"/>
 <@renderJs />
 
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>

@@ -63,7 +63,6 @@
   <#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
   <@js src="resource/js/components/article_lightbox.js"/>
 
-  <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
 
   <@renderJs />

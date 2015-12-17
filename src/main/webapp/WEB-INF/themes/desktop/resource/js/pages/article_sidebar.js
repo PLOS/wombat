@@ -107,13 +107,12 @@
     );
   })();
 
-  /* Load signposts */
-  if ($.fn.signposts ) {
+  /* Load twitter */
+  if ($.fn.twitter ) {
     var doi = $('meta[name=citation_doi]').attr('content');
-    var signposts = new $.fn.signposts();
-    signposts.getSignpostData(doi);
+    var twitter = new $.fn.twitter();
+    twitter.getSidebarTweets(doi);
   }
-
 })(jQuery);
 
 

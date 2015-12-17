@@ -77,9 +77,8 @@ public class SolrArticleAdapter {
     Collection<?> figureTableCaption = (Collection<?>) solrArticle.get("figure_table_caption");
     boolean hasFigures = (figureTableCaption != null) && !figureTableCaption.isEmpty();
 
-    List<String> solrAuthors = solrArticle.containsKey("author_display") ?
-            (List<String>) solrArticle.get("author_display") : Collections.emptyList();
-    List<Author> authors = Lists.transform(solrAuthors, Author::new);
+    List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
+    List<Author> authors = (solrAuthors != null) ? Lists.transform(solrAuthors, Author::new) : ImmutableList.of();
 
     return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors);
   }

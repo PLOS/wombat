@@ -8,6 +8,7 @@
 <@js src="resource/js/components/signposts.js"/>
 <@js src="resource/js/vendor/spin.js"/>
 
+<@js src="resource/js/pages/article.js"/>
 <@js src="resource/js/pages/article_sidebar.js"/>
 
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>

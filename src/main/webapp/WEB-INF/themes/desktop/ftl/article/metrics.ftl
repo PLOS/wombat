@@ -43,7 +43,6 @@
 <@js src="resource/js/highcharts.js"/>
 
 <@js src="resource/js/metrics.js"/>
-<@js src="resource/js/pages/article.js"/>
 <#include "../common/footer/footer.ftl" />
 
 <@renderJs />

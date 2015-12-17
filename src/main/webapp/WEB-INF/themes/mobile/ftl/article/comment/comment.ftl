@@ -1,8 +1,7 @@
-<#include "../common/htmlTag.ftl" />
+<#include "../../common/htmlTag.ftl" />
 
 <#assign title = comment.title />
-<#assign depth = 1 />
-<#include "../common/head.ftl" />
+<#include "../../common/head.ftl" />
 
 <body id="page-comments-individual">
 <div id="container-main">
@@ -60,6 +59,6 @@
 
 </section><#--end model info window-->
 
-<#include "../common/bodyJs.ftl" />
+<#include "../../common/bodyJs.ftl" />
 </body>
 </html>

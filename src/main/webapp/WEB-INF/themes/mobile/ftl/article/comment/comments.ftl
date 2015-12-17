@@ -1,12 +1,11 @@
-<#include "../common/htmlTag.ftl" />
+<#include "../../common/htmlTag.ftl" />
 
-<#assign title = "PLOS - Comments" />
-<#assign depth = 1 />
-<#include "../common/head.ftl" />
+<#assign title = "" />
+<#include "../../common/head.ftl" />
 
 <body id="page-comments">
 <div id="container-main">
-<#include "backToArticle.ftl" />
+<#include "../backToArticle.ftl" />
 
   <div id="comment-content" class="content">
     <h3 class="comments-header">Reader Comments (${articleComments?size})</h3>
@@ -18,10 +17,10 @@
   <#include "commentsBody.ftl" />
   </div><#--end content-->
 
-<#include "../common/footer/footer.ftl" />
+<#include "../../common/footer/footer.ftl" />
 
 </div><#--end container main-->
 
-<#include "../common/bodyJs.ftl" />
+<#include "../../common/bodyJs.ftl" />
 </body>
 </html>

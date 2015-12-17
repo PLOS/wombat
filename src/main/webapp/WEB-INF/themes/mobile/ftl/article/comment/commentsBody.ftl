@@ -32,4 +32,4 @@
 </#list>
 </section>
 
-<#include "../common/bottomMenu/bottomMenu.ftl" />
+<#include "../../common/bottomMenu/bottomMenu.ftl" />

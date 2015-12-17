@@ -4,6 +4,7 @@ import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
+import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
@@ -89,6 +90,7 @@ import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -135,26 +137,24 @@ public class ArticleController extends WombatController {
   @Autowired
   private JavaMailSender javaMailSender;
 
+  // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
+  // number, or doing them in parallel, if this is a performance bottleneck.
   @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
                               @RequestParam("id") String articleId)
       throws IOException {
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
 
-      // TODO: this method currently makes 5 backend RPCs, all sequentially.
-    // Explore reducing this number, or doing them in parallel, if this is
-    // a performance bottleneck.
-      Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-      validateArticleVisibility(site, articleMetaData);
-
-      requireNonemptyParameter(articleId);
+    requireNonemptyParameter(articleId);
     RenderContext renderContext = new RenderContext(site);
     renderContext.setArticleId(articleId);
 
     String articleHtml = getArticleHtml(renderContext);
-      model.addAttribute("article", articleMetaData);
-      model.addAttribute("articleText", articleHtml);
+    model.addAttribute("article", articleMetaData);
+    model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
 
     requestComments(model, articleId);
@@ -467,12 +467,8 @@ public class ArticleController extends WombatController {
     enforceDevFeature("metricsTab");     // TODO: remove when ready to expose page in prod
       Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
       validateArticleVisibility(site, articleMetaData);
+      requestComments(model, articleId);
       return site + "/ftl/article/metrics";
-  }
-
-  @RequestMapping(name = "relatedContent", value = "/article/related")
-  public String renderRelatedContent() {
-    throw new NotFoundException(); // TODO Implement
   }
 
 
@@ -530,11 +526,11 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleRelatedContent", value = "/article/relatedContent")
+  @RequestMapping(name = "articleRelatedContent", value = "/article/related")
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam("id") String articleId) throws IOException {
     // TODO: remove when ready to expose page in prod
-    enforceDevFeature("relatedContentTab");
+    enforceDevFeature("relatedTab");
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -558,8 +554,8 @@ public class ArticleController extends WombatController {
       @RequestParam("comment") String comment,
       @RequestParam("name") String name,
       @RequestParam("email") String email,
-      @RequestParam("recaptcha_challenge_field") String captchaChallenge,
-      @RequestParam("recaptcha_response_field") String captchaResponse)
+      @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+      @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException {
     // TODO: remove when ready to expose page in prod
     enforceDevFeature("relatedContentTab");
@@ -705,9 +701,8 @@ public class ArticleController extends WombatController {
       @RequestParam("emailFrom") String emailFrom,
       @RequestParam("senderName") String senderName,
       @RequestParam("note") String note,
-      //TODO: extract captcha field names to reusable place
-      @RequestParam("recaptcha_challenge_field") String captchaChallenge,
-      @RequestParam("recaptcha_response_field") String captchaResponse)
+      @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+      @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException, MessagingException {
     // TODO: remove when ready to expose page in prod
     enforceDevFeature("emailThisArticle");
@@ -727,9 +722,7 @@ public class ArticleController extends WombatController {
 
     Set<String> errors = validateEmailArticleInput(toAddresses, emailFrom, senderName,
         captchaChallenge, captchaResponse, site, request);
-    if (!errors.isEmpty()) {
-      errors.forEach(error -> model.addAttribute(error, true));
-      response.setStatus(HttpStatus.BAD_REQUEST.value());
+    if (applyValidation(response, model, errors)) {
       return renderEmailThisArticle(request, model, site, articleId);
     }
 
@@ -823,21 +816,31 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private void requestAuthors(Model model, String doi) throws IOException {
-    List<?> authors = soaService.requestObject(String.format("articles/%s?authors", doi), List.class);
+    Map<?,?> allAuthorsData = soaService.requestObject(String.format("articles/%s?authors", doi), Map.class);
+    List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);
 
     // Putting this here was a judgement call.  One could make the argument that this logic belongs
     // in Rhino, but it's so simple I elected to keep it here for now.
     List<String> correspondingAuthors = new ArrayList<>();
     List<String> equalContributors = new ArrayList<>();
+    ListMultimap<String, String> authorAffiliationsMap = LinkedListMultimap.create();
     for (Object o : authors) {
       Map<String, Object> author = (Map<String, Object>) o;
+      String fullName = (String) author.get("fullName");
+
+      List<String> affiliations = (List<String>) author.get("affiliations");
+      for (String affiliation : affiliations) {
+        authorAffiliationsMap.put(affiliation, fullName);
+      }
+
       if (author.containsKey("corresponding")) {
         correspondingAuthors.add((String) author.get("corresponding"));
       }
+
       Object obj = author.get("equalContrib");
       if (obj != null && (boolean) obj) {
-        equalContributors.add((String) author.get("fullName"));
+        equalContributors.add(fullName);
       }
 
       // remove the footnote marker from the current address
@@ -848,6 +851,15 @@ public class ArticleController extends WombatController {
       }
     }
 
+    //Create comma-separated list of authors per affiliation
+    LinkedHashMap<String, String> authorListAffiliationMap = new LinkedHashMap<>();
+    for (Map.Entry<String, Collection<String>> affiliation : authorAffiliationsMap.asMap().entrySet()) {
+      authorListAffiliationMap.put(affiliation.getKey(), Joiner.on(", ").join(affiliation.getValue()));
+    }
+
+    model.addAttribute("authorListAffiliationMap", authorListAffiliationMap);
+    model.addAttribute("authorContributions", allAuthorsData.get("authorContributions"));
+    model.addAttribute("competingInterests", allAuthorsData.get("competingInterests"));
     model.addAttribute("correspondingAuthors", correspondingAuthors);
     model.addAttribute("equalContributors", equalContributors);
   }

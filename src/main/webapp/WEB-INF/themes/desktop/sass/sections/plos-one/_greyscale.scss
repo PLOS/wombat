@@ -1,0 +1,21 @@
+/*/!* show default image as loading image *!/*/
+.article-block { background: url(../img/generic-article-image.png) left top no-repeat; }
+
+.article-block {
+  a {
+    img.grayscale {
+      filter: gray; /* IE6-9 */
+      -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+      -moz-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+      -o-filter: grayscale(100%);
+      filter: grayscale(100%);
+      @include single-transition(all, .3s, ease-in-out);
+    }
+  }
+
+  &:hover > a > img.grayscale{
+    filter: none;
+    -webkit-filter: grayscale(0);
+  }
+}

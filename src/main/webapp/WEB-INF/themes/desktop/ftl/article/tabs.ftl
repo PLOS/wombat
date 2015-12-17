@@ -28,6 +28,6 @@
 
   <@tabyLink tabPage "metrics" "articleMetrics">Metrics</@tabyLink>
   <@tabyLink tabPage "comments" "articleComments">Comments</@tabyLink>
-  <@tabyLink tabPage "related" "relatedContent">Related Content</@tabyLink>
+  <@tabyLink tabPage "related" "articleRelatedContent">Related Content</@tabyLink>
 </ul>
 </#macro>

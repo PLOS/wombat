@@ -25,6 +25,7 @@ import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -36,6 +37,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -48,6 +50,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -68,6 +71,8 @@ public class SearchController extends WombatController {
 
   @Autowired
   private SearchFilterService searchFilterService;
+
+  private final String BROWSE_RESULTS_PER_PAGE = "13";
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
@@ -443,7 +448,7 @@ public class SearchController extends WombatController {
 
     filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
-    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
+    Set<SearchFilterItem> activeFilterItems = new LinkedHashSet<>();
     filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
 
     model.addAttribute("searchFilters", filters);
@@ -483,6 +488,49 @@ public class SearchController extends WombatController {
     params.add("q", "");
     return search(request, model, site, params);
   }
+
+  @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}", params = "!filterSubjects")
+  public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
+      @PathVariable String subject, @RequestParam MultiValueMap<String, String> params) throws
+      IOException {
+    enforceDevFeature("browse");
+    // TODO: check the site, this controller should return 404 for non PLOS One journals
+
+    if (!Strings.isNullOrEmpty(subject)) {
+
+      // perform search on the subject area
+      params.add("subject", subject.replace("_", " "));
+
+      // set defaults for subject area landing page
+      if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {
+        params.add("resultsPerPage", BROWSE_RESULTS_PER_PAGE);
+      }
+
+      if (ListUtil.isNullOrEmpty(params.get("sortOrder"))) {
+        params.add("sortOrder", "DATE_NEWEST_FIRST");
+      }
+
+      CommonParams commonParams = new CommonParams(siteSet, site);
+      commonParams.parseParams(params);
+      commonParams.addToModel(model, request);
+
+      ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+          .setQuery("")
+          .setSimple(false);
+      commonParams.fill(query);
+
+      ArticleSearchQuery queryObj = query.build();
+      Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+      model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
+      model.addAttribute("searchResults", searchResults);
+      model.addAttribute("page", commonParams.getSingleParam(params, "page", "0"));
+      model.addAttribute("journalKey", site.getKey());
+    }
+
+    return site.getKey() + "/ftl/browseSubjectArea";
+  }
+
 
   // Requests coming from the advanced search form with URLs beginning with "/search/quick/" will always
   // have the parameters id, eLocationId, and volume, although only one will be populated.  The expressions

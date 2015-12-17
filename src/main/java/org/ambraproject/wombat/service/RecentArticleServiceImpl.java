@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class RecentArticleServiceImpl implements RecentArticleService {
@@ -63,17 +64,17 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   }
 
   @Override
-  public List<Object> getRecentArticles(Site site,
-                                        int articleCount,
-                                        double numberOfDaysAgo,
-                                        boolean shuffle,
-                                        List<String> articleTypes,
-                                        List<String> articleTypesToExclude,
-                                        Optional<Integer> cacheDuration)
+  public List<Map<String, Object>> getRecentArticles(Site site,
+                                                     int articleCount,
+                                                     double numberOfDaysAgo,
+                                                     boolean shuffle,
+                                                     List<String> articleTypes,
+                                                     List<String> articleTypesToExclude,
+                                                     Optional<Integer> cacheDuration)
       throws IOException {
     String journalKey = site.getJournalKey();
     String cacheKey = "recentArticles:" + journalKey;
-    List<Object> articles = null;
+    List<Map<String, Object>> articles = null;
     if (cacheDuration.isPresent()) {
       articles = cache.get(cacheKey); // remains null if not cached
     }
@@ -103,7 +104,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     return articles;
   }
 
-  private List<Object> retrieveRecentArticles(String journalKey,
+  private List<Map<String, Object>> retrieveRecentArticles(String journalKey,
                                               int articleCount,
                                               double numberOfDaysAgo,
                                               List<String> articleTypes,

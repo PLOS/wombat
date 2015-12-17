@@ -23,7 +23,7 @@ public class ArticleSearchQuery {
   private static final String ARTICLE_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
       "id", "eissn", "publication_date", "title", "cross_published_journal_name", "author_display", "article_type",
       "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount", "alm_mendeleyCount", "alm_twitterCount",
-      "alm_facebookCount", "retraction", "expression_of_concern", "striking_image"}));
+      "alm_facebookCount", "retraction", "expression_of_concern", "striking_image", "figure_table_caption"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
 
@@ -229,7 +229,7 @@ public class ArticleSearchQuery {
    * @return the search results matching this query object
    * @throws IOException
    */
-  public Map<?, ?> search(QueryExecutor queryExecutor) throws IOException {
+  public Map<String, ?> search(QueryExecutor queryExecutor) throws IOException {
     List<NameValuePair> params = buildParameters();
     Map<String, Map> rawResults = queryExecutor.executeQuery(params);
     return unpackResults(rawResults);
@@ -241,7 +241,7 @@ public class ArticleSearchQuery {
    * @param rawResults the full map of results deserialized from Solr's response
    * @return the subset of those results that were queried for
    */
-  private Map<?, ?> unpackResults(Map<String, Map> rawResults) {
+  private Map<String, ?> unpackResults(Map<String, Map> rawResults) {
     if (isForRawResults) {
       return rawResults;
     }
@@ -249,7 +249,7 @@ public class ArticleSearchQuery {
       Map<String, Map> facetFields = (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
       return facetFields.get(facet.get()); //We expect facet field to be the first element of the list
     } else {
-      return (Map<?, ?>) rawResults.get("response");
+      return (Map<String, ?>) rawResults.get("response");
     }
   }
 

@@ -454,11 +454,6 @@ public class ArticleController extends WombatController {
       return site + "/ftl/article/metrics";
   }
 
-  @RequestMapping(name = "relatedContent", value = "/article/related")
-  public String renderRelatedContent() {
-    throw new NotFoundException(); // TODO Implement
-  }
-
 
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
   public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
@@ -514,7 +509,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
-  @RequestMapping(name = "articleRelatedContent", value = "/article/relatedContent")
+  @RequestMapping(name = "articleRelatedContent", value = "/article/related")
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam("id") String articleId) throws IOException {
     // TODO: remove when ready to expose page in prod

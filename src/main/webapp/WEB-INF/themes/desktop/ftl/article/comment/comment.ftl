@@ -103,7 +103,7 @@
             </#if>
           </div>
 
-          <div class="toolbar">
+          <div class="toolbar form-default">
             <#assign userIsLoggedIn = Session["SPRING_SECURITY_CONTEXT"]?exists && Session["SPRING_SECURITY_CONTEXT"].authentication.authenticated />
             <@siteLink handlerName="userLogin" ; login>
               <a href="${login}" title="Report a Concern"

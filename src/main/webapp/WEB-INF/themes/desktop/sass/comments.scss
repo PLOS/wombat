@@ -2,6 +2,7 @@
 @import "global-library-imports";
 @import "global-section-imports";
 @import "pages/article";
+@import "sections/ambra/_forms";
 
 /* comments */
 #thread {
@@ -28,11 +29,13 @@
 
     li {
       margin-bottom: 4px;
+      @include clearfix;
     }
 
     li div {
       display: inline-block;
       float: left;
+      box-sizing: content-box;
     }
 
     li a {

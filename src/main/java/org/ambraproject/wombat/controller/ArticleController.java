@@ -451,6 +451,7 @@ public class ArticleController extends WombatController {
     enforceDevFeature("metricsTab");     // TODO: remove when ready to expose page in prod
       Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
       validateArticleVisibility(site, articleMetaData);
+      requestComments(model, articleId);
       return site + "/ftl/article/metrics";
   }
 

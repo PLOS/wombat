@@ -53,44 +53,14 @@ public class CommentFormatting {
    */
   @VisibleForTesting
   static enum CommentModelField {
-    bodyHtml("bodyHtml") {
-      @Override
-      protected Object generateFieldValue(Map<String, ?> comment) {
-        String body = (String) comment.get("body");
-        if (Strings.isNullOrEmpty(body)) return "";
-        return hyperlinkEnclosedWithPTags(escapeHtml(body), 25);
-      }
-    },
-    truncatedBody("truncatedBody") {
-      @Override
-      protected Object generateFieldValue(Map<String, ?> comment) {
-        String body = (String) comment.get("body");
-        if (Strings.isNullOrEmpty(body)) return "";
-        return hyperlinkEnclosedWithPTags(truncateText(escapeHtml(body), TRUNCATED_COMMENT_LENGTH), 25);
-      }
-    },
-    bodyWithUrlLinkingNoPTags("bodyWithUrlLinkingNoPTags") {
-      @Override
-      protected Object generateFieldValue(Map<String, ?> comment) {
-        String body = (String) comment.get("body");
-        if (Strings.isNullOrEmpty(body)) return "";
-        return hyperlink(escapeHtml(body), 25);
-      }
-    },
-    truncatedBodyWithUrlLinkingNoPTags("truncatedBodyWithUrlLinkingNoPTags") {
-      @Override
-      protected Object generateFieldValue(Map<String, ?> comment) {
-        String body = (String) comment.get("body");
-        if (Strings.isNullOrEmpty(body)) return "";
-        return hyperlink(truncateText(escapeHtml(body), TRUNCATED_COMMENT_LENGTH), 25);
-      }
-    },
     bodyWithHighlightedText("bodyWithHighlightedText") {
       @Override
       protected Object generateFieldValue(Map<String, ?> comment) {
         String highlightedText = (String) comment.get("highlightedText");
         if (Strings.isNullOrEmpty(highlightedText)) {
-          return bodyHtml.generateFieldValue(comment);
+          String body = (String) comment.get("body");
+          if (Strings.isNullOrEmpty(body)) return "";
+          return hyperlinkEnclosedWithPTags(escapeHtml(body), 25);
         }
         String body = (String) comment.get("body");
         if (Strings.isNullOrEmpty(body)) return "";
@@ -104,14 +74,6 @@ public class CommentFormatting {
         String competingInterestBody = (String) ((Map<String, ?>) comment.get("competingInterestStatement")).get("body");
         if (Strings.isNullOrEmpty(competingInterestBody)) return "";
         return escapeHtml(competingInterestBody);
-      }
-    },
-    truncatedCompetingInterestStatement("truncatedCompetingInterestStatement") {
-      @Override
-      protected Object generateFieldValue(Map<String, ?> comment) {
-        String competingInterestBody = (String) ((Map<String, ?>) comment.get("competingInterestStatement")).get("body");
-        if (Strings.isNullOrEmpty(competingInterestBody)) return "";
-        return truncateText(escapeHtml(competingInterestBody), TRUNCATED_COMMENT_LENGTH);
       }
     };
 
@@ -758,42 +720,6 @@ public class CommentFormatting {
                     return -1;
     */
     return schemeStart;
-  }
-
-  /**
-   * truncate text
-   *
-   * @param text            text to truncate
-   * @param truncatedLength truncate length
-   * @return truncated text
-   */
-  private static String truncateText(String text, int truncatedLength) {
-    if (StringUtils.isBlank(text)) {
-      return text;
-    }
-
-    if (text.length() > truncatedLength) {
-      final String abrsfx = "...";
-      final int abrsfxlen = 3;
-      // attempt to truncate on a word boundary
-      int index = truncatedLength - 1;
-
-      while (!Character.isWhitespace(text.charAt(index)) ||
-          index > (truncatedLength - abrsfxlen - 1)) {
-        if (--index == 0) {
-          break;
-        }
-      }
-
-      if (index == 0) {
-        index = truncatedLength - abrsfxlen - 1;
-      }
-
-      text = text.substring(0, index) + abrsfx;
-      assert text.length() <= truncatedLength;
-    }
-
-    return text;
   }
 
 }

@@ -17,11 +17,7 @@
   <section class="article-body">
 
   <#include "tabs.ftl" />
-    <div class="article-container">
-      <#--<#include "nav.ftl" />-->
-    </div>
-
-
+  <@displayTabList "related" />
 
   <input type="hidden" name="reCaptcha-info" id="reCaptcha-info" value='${recaptchaPublicKey}'/>
 

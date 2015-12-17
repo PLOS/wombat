@@ -26,7 +26,7 @@
 
     <div id="thread" class="article-container">
 
-      <h2>Reader Comments <#--TODO: Do we want to show the count of article's root replies here?--></h2>
+      <h2>Reader Comments</h2>
 
       <p class="post_comment">
         <a href="<@siteLink handlerName="articleCommentPost" queryParameters={"id": article.doi} />">

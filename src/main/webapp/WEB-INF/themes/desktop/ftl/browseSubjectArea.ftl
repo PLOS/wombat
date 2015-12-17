@@ -10,7 +10,9 @@
 <#assign title = category!"All Subject Areas" />
 <#assign cssFile="browse-subject-area.css"/>
 <#include "common/head.ftl" />
-<body class="home">
+<#include "common/journalStyle.ftl" />
+
+<body class="home ${journalStyle}">
 <#include "common/header/headerContainer.ftl" />
 
 <#function encodeSubject subject>

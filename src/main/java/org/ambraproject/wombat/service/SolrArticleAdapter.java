@@ -3,7 +3,9 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -76,7 +78,8 @@ public class SolrArticleAdapter {
     Collection<?> figureTableCaption = (Collection<?>) solrArticle.get("figure_table_caption");
     boolean hasFigures = (figureTableCaption != null) && !figureTableCaption.isEmpty();
 
-    List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
+    List<String> solrAuthors = solrArticle.containsKey("author_display") ?
+            (List<String>) solrArticle.get("author_display") : Collections.emptyList();
     List<Author> authors = Lists.transform(solrAuthors, Author::new);
 
     return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors);

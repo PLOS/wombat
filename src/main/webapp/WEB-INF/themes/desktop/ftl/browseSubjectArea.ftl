@@ -84,14 +84,21 @@
                 </li>
             </#if>
             -->
-
-    <#-- @TODO: Check what feedURL should be and add the appropiate <li> element
-         <#if category??>
-          <@s.url id="feedURL" unformattedQuery="subject:\"${category}\"" sort = "${sort}" filterJournals = "${currentJournal}" namespace="/article/feed" action="executeFeedSearch" />
-        <#else>
-          <@s.url id="feedURL" unformattedQuery="*:*" sort = "${sort}" filterJournals = "${currentJournal}" namespace="/article/feed" action="executeFeedSearch" />
-        </#if>
-            <li class="last"><a href="${feedURL}" title="Get the RSS feed for ${category!"all articles"}">Get the RSS feed for ${category!"all articles"}</a></li>-->
+            <#--@TODO: Point RSS Feed to wombat when ready -->
+            <#if category??>
+                 <#assign subject = "subject:\"" + category?replace(' ','+') + "\""/>
+            <#else>
+                <#assign subject = "*:*"/>
+            </#if>
+            <#if selectedSortOrder == "DATE_NEWEST_FIRST">
+                <#--Sort order in ambra is different, change it to what it used to be-->
+                <#assign legacySelectedSortOrder = "Date%2C+newest+first"/>
+            <#else>
+                <#assign legacySelectedSortOrder = "Most+views%2C+all+time"/>
+            </#if>
+    <#include "common/legacyLink.ftl" />
+            <#assign feedURL = legacyUrlPrefix + "article/feed/search?filterJournals=" + journalStyle + "&sort=" + legacySelectedSortOrder + "&unformattedQuery=" + subject?url/>
+            <li class="last"><a href="${feedURL}" title="Get the RSS feed for ${category!"all articles"}">Get the RSS feed for ${category!"all articles"}</a></li>
         </ul>
     </div><!-- /.filter-bar -->
 

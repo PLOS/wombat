@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -77,7 +78,7 @@ public class SolrArticleAdapter {
     boolean hasFigures = (figureTableCaption != null) && !figureTableCaption.isEmpty();
 
     List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
-    List<Author> authors = Lists.transform(solrAuthors, Author::new);
+    List<Author> authors = (solrAuthors != null) ? Lists.transform(solrAuthors, Author::new) : ImmutableList.of();
 
     return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors);
   }

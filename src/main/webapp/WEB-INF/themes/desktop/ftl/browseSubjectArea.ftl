@@ -10,7 +10,9 @@
 <#assign title = category!"All Subject Areas" />
 <#assign cssFile="browse-subject-area.css"/>
 <#include "common/head.ftl" />
-<body class="home">
+<#include "common/journalStyle.ftl" />
+
+<body class="home ${journalStyle}">
 <#include "common/header/headerContainer.ftl" />
 
 <#function encodeSubject subject>
@@ -101,8 +103,8 @@
             <#if (((page?number + 1) * selectedResultsPerPage) gt searchResults.numFound)>${searchResults.numFound}<#else>${(page?number + 1)* selectedResultsPerPage}</#if></#if> of ${searchResults.numFound}</p>
           <p class="sort">
               <span>View by:</span>
-              <a id="cover-page-link" title="Cover page view" href="?<@URLParameters resultView="cover" sortOrder=sortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "cover">active</#if>">Cover Page</a>
-              <a id="list-page-link" title="List page view" href="?<@URLParameters resultView="list" sortOrder=sortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "list">active</#if>">List Articles</a>
+              <a id="cover-page-link" title="Cover page view" href="?<@URLParameters resultView="cover" sortOrder=selectedSortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "cover">active</#if>">Cover Page</a>
+              <a id="list-page-link" title="List page view" href="?<@URLParameters resultView="list" sortOrder=selectedSortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "list">active</#if>">List Articles</a>
           </p>
         </div><!-- /.main -->
         <div class="sidebar">

@@ -233,11 +233,6 @@ blockquote, .pullquote, .block-quote {
   line-height: $pad-large;
   }
 
-.header-allcaps-smallest {
-  @extend %header-allcaps-plain;
-  font-size: $txt-size-xxxsmall;
-  }
-
 /*doc
 ---
 title: link styles
@@ -491,3 +486,9 @@ table.table-zebra-stripes {
   box-shadow: $default-header-shadow;
   text-align: center;
   }
+
+.header-allcaps-smallest {
+  @extend %header-allcaps-plain;
+  font-size: rem-calc($txt-size-xxxsmall);
+}
+

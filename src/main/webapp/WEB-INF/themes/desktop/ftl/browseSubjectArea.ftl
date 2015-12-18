@@ -85,6 +85,7 @@
             </#if>
             -->
             <#--@TODO: Point RSS Feed to wombat when ready -->
+            <#include "common/rssFeedKey.ftl" />
             <#if category??>
                  <#assign subject = "subject:\"" + category?replace(' ','+') + "\""/>
             <#else>
@@ -97,7 +98,7 @@
                 <#assign legacySelectedSortOrder = "Most+views%2C+all+time"/>
             </#if>
     <#include "common/legacyLink.ftl" />
-            <#assign feedURL = legacyUrlPrefix + "article/feed/search?filterJournals=" + journalStyle + "&sort=" + legacySelectedSortOrder + "&unformattedQuery=" + subject?url/>
+            <#assign feedURL = legacyUrlPrefix + "article/feed/search?filterJournals=" + rssFeedKey + "&sort=" + legacySelectedSortOrder + "&unformattedQuery=" + subject?url/>
             <li class="last"><a href="${feedURL}" title="Get the RSS feed for ${category!"all articles"}">Get the RSS feed for ${category!"all articles"}</a></li>
         </ul>
     </div><!-- /.filter-bar -->

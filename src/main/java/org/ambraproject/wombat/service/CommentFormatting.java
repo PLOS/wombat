@@ -3,7 +3,6 @@ package org.ambraproject.wombat.service;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
-import com.opensymphony.util.UrlUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
@@ -97,7 +96,6 @@ public class CommentFormatting {
   // Please refactor liberally
   // Please avoid introducing new dependencies on this
 
-  private static final int TRUNCATED_COMMENT_LENGTH = 256;
   private static final Pattern lineBreakPattern = Pattern.compile("\\p{Zl}|\r\n|\n|\u0085|\\p{Zp}");
   private static final Pattern strongPattern = Pattern.compile("'''");
   private static final Pattern emphasizePattern = Pattern.compile("''");
@@ -550,7 +548,7 @@ public class CommentFormatting {
             }
           }
 
-          if (UrlUtils.isValidURLChar(str.charAt(linkEndIndex))) {
+          if (isValidURLChar(str.charAt(linkEndIndex))) {
             urlStr += str.charAt(linkEndIndex);
             linkEndIndex++;
 
@@ -651,7 +649,7 @@ public class CommentFormatting {
           urlStr = "http://" + urlStr;
         }
 
-        if (UrlUtils.verifyHierachicalURI(urlStr)) {
+        if (verifyHierachicalURI(urlStr)) {
           //Construct the hyperlink for the url...
           String urlLink;
 
@@ -691,7 +689,7 @@ public class CommentFormatting {
    * @return The location the string was found, ot -1 if the string was not found.
    */
   private static int getSchemeIndex(StringBuilder str, int startIndex) {
-    int schemeIndex = str.indexOf(UrlUtils.SCHEME_URL, startIndex + 1);
+    int schemeIndex = str.indexOf(SCHEME_URL, startIndex + 1);
 
     //if it was not found, or found at the start of the string, then return 'not found'
     if (schemeIndex <= 0) {
@@ -704,7 +702,7 @@ public class CommentFormatting {
     for (schemeStart = schemeIndex - 1; schemeStart >= 0; schemeStart--) {
       char currentChar = str.charAt(schemeStart);
 
-      if (!UrlUtils.isValidSchemeChar(currentChar)) {
+      if (!isValidSchemeChar(currentChar)) {
         break;
       }
     }
@@ -714,12 +712,99 @@ public class CommentFormatting {
 
     /*
          we don't want to do this, otherwise an invalid scheme would ruin the linking for later schemes
-                if (UrlUtils.isValidScheme(str.substring(schemeStart, schemeIndex)))
+                if (isValidScheme(str.substring(schemeStart, schemeIndex)))
                     return schemeStart;
                 else
                     return -1;
     */
     return schemeStart;
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Forked from com.opensymphony.util.UrlUtils
+
+  private static final String SCHEME_URL = "://";
+
+  private static boolean isAcceptableReservedChar(char c) {
+    return (c == ';') || (c == '/') || (c == '?') || (c == ':') || (c == '@') || (c == '&') || (c == '=') || (c == '+') || (c == '$') || (c == ',');
+  }
+
+  private static boolean isAlpha(char c) {
+    return ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z'));
+  }
+
+  private static boolean isDigit(char c) {
+    return ((c >= '0') && (c <= '9'));
+  }
+
+  private static boolean isOtherChar(char c) {
+    return (c == '#') || (c == '%');
+  }
+
+  private static boolean isUnreservedChar(char c) {
+    return (c == '-') || (c == '_') || (c == '.') || (c == '!') || (c == '~') || (c == '*') || (c == '\'') || (c == '(') || (c == ')');
+  }
+
+  private static boolean isValidScheme(String scheme) {
+    if ((scheme == null) || (scheme.length() == 0)) {
+      return false;
+    }
+    char[] schemeChars = scheme.toCharArray();
+    if (!isAlpha(schemeChars[0])) {
+      return false;
+    }
+    for (int i = 1; i < schemeChars.length; i++) {
+      char schemeChar = schemeChars[i];
+      if (!(isValidSchemeChar(schemeChar))) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private static boolean isValidSchemeChar(char c) {
+    return isAlpha(c) || isDigit(c) || (c == '+') || (c == '-') || (c == '.');
+  }
+
+  private static boolean isValidURLChar(char c) {
+    return isAlpha(c) || isDigit(c) || isAcceptableReservedChar(c) || isUnreservedChar(c) || isOtherChar(c);
+  }
+
+  private static boolean verifyHierachicalURI(String uri) {
+    return verifyHierachicalURI(uri, null);
+  }
+
+  private static boolean verifyHierachicalURI(String uri, String[] schemesConsideredInvalid) {
+    if ((uri == null) || (uri.length() < SCHEME_URL.length())) {
+      return false;
+    }
+    int schemeUrlIndex = uri.indexOf(SCHEME_URL);
+    if (schemeUrlIndex == -1) {
+      return false;
+    }
+    final String scheme = uri.substring(0, schemeUrlIndex);
+    if (!isValidScheme(scheme)) {
+      return false;
+    }
+    if (schemesConsideredInvalid != null) {
+      for (int i = 0; i < schemesConsideredInvalid.length; i++) {
+        String invalidScheme = schemesConsideredInvalid[i];
+        if (scheme.equalsIgnoreCase(invalidScheme)) {
+          return false;
+        }
+      }
+    }
+    if (uri.length() < (schemeUrlIndex + SCHEME_URL.length() + 1)) {
+      return false;
+    }
+    for (int i = schemeUrlIndex + SCHEME_URL.length(); i < uri.length();
+         i++) {
+      char c = uri.charAt(i);
+      if (!isValidURLChar(c)) {
+        return false;
+      }
+    }
+    return true;
   }
 
 }

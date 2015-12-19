@@ -49,10 +49,23 @@
 
       <#include "userInfoLink.ftl" />
 
+      <#assign indentationWidth = 30 />
+
+      <#--
+          Global counter, incremented once for each time renderComment is called.
+          Guaranteed to be unique only within this page, for HTML and JS purposes.
+          Do not pass these IDs anywhere outside the context of a single page rendering.
+          We do it this way so that simple integers can be concatenated into HTML attributes;
+          the comments' identifying URIs are not suitable for this.
+        -->
+      <#assign commentId = 0 />
+
       <#macro renderComment comment depth replyTo>
-        <div class="response <#if depth==0>original</#if>"
+        <#assign commentId = commentId + 1 />
+        <div id="reply-${commentId}"
+             class="response <#if depth==0>original</#if>"
              data-depth="${depth?c}"
-             style="margin-left: ${(depth * 30)?c}px"
+             style="margin-left: ${(depth * indentationWidth)?c}px"
             >
 
           <div class="info">
@@ -106,15 +119,23 @@
           <div class="toolbar form-default">
             <#assign userIsLoggedIn = Session["SPRING_SECURITY_CONTEXT"]?exists && Session["SPRING_SECURITY_CONTEXT"].authentication.authenticated />
             <@siteLink handlerName="userLogin" ; login>
-              <a href="${login}" title="Report a Concern"
+              <a title="Report a Concern"
                  class="flag toolbar btn <#if userIsLoggedIn>primary</#if>"
-                 <#if userIsLoggedIn>onclick="<#--TODO-->"</#if>
+                <#if userIsLoggedIn>
+                 onclick="comments.showReportBox('${commentId?c}'); return false;"
+                <#else>
+                 href="${login}"
+                </#if>
                   >
                 report a concern
               </a>
-              <a href="${login}" title="Click to respond"
+              <a title="Click to respond"
                  class="respond toolbar btn <#if userIsLoggedIn>primary</#if>"
-                 <#if userIsLoggedIn>onclick="<#--TODO-->"</#if>
+                <#if userIsLoggedIn>
+                 onclick="comments.showRespondBox('${commentId?c}', ${depth?c}); return false;"
+                <#else>
+                 href="${login}"
+                </#if>
                   >
                 respond to this posting
               </a>
@@ -145,25 +166,25 @@
 <#include "../../common/footer/footer.ftl" />
 
 
-<@js src="resource/js/components/show_onscroll.js"/>
-<@js src="resource/js/components/table_open.js"/>
-<@js src="resource/js/components/figshare.js"/>
-<@js src="resource/js/components/tooltip_hover.js"/>
 
-<@js src="resource/js/util/alm_config.js"/>
-<@js src="resource/js/util/alm_query.js"/>
-<@js src="resource/js/vendor/moment.js"/>
-<@js src="resource/js/vendor/jquery.jsonp-2.4.0.js"/>
-<@js src="resource/js/vendor/hover-enhanced.js"/>
-<@js src="resource/js/highcharts.js"/>
+<script type="text/javascript">
+  var comments = null;
+  (function ($) {
+    window.onload = function () {
+      comments = new $.fn.comments();
+      comments.indentationWidth = ${indentationWidth?c};
+      comments.addresses = {
+        submitFlagURL: '', // TODO
+        submitReplyURL: '', // TODO
+        getAnnotationURL: '' // TODO
+      };
+    };
+  }(jQuery));
+</script>
 
-<@js src="resource/js/components/twitter_module.js"/>
-<@js src="resource/js/components/signposts.js"/>
-<@js src="resource/js/components/nav_builder.js"/>
-<@js src="resource/js/components/floating_nav.js"/>
-
-<@js src="resource/js/pages/article.js"/>
-<@js src="resource/js/pages/article_sidebar.js"/>
+<#include "../articleJs.ftl" />
+<@js src="resource/js/vendor/jquery.textarea-expander.js" />
+<@js src="resource/js/pages/comments.js" />
 <@renderJs />
 
 

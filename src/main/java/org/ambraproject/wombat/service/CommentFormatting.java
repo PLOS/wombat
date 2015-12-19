@@ -649,7 +649,7 @@ public class CommentFormatting {
           urlStr = "http://" + urlStr;
         }
 
-        if (verifyHierachicalURI(urlStr)) {
+        if (verifyHierarchicalURI(urlStr, null)) {
           //Construct the hyperlink for the url...
           String urlLink;
 
@@ -770,11 +770,7 @@ public class CommentFormatting {
     return isAlpha(c) || isDigit(c) || isAcceptableReservedChar(c) || isUnreservedChar(c) || isOtherChar(c);
   }
 
-  private static boolean verifyHierachicalURI(String uri) {
-    return verifyHierachicalURI(uri, null);
-  }
-
-  private static boolean verifyHierachicalURI(String uri, String[] schemesConsideredInvalid) {
+  private static boolean verifyHierarchicalURI(String uri, String[] schemesConsideredInvalid) {
     if ((uri == null) || (uri.length() < SCHEME_URL.length())) {
       return false;
     }

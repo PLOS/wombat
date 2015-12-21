@@ -1,13 +1,11 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Collection;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -21,19 +19,15 @@ public class CommentFormatting {
   private static final String REPLIES_KEY = "replies";
 
   /**
-   * Add a new map, keyed {@code "formatting"}, containing all fields defined by "CommentModelField" to the comment and
-   * to all of its nested replies.
+   * Add a new map, keyed {@code "formatting"} and containing a {@link FormattedComment} object, to the comment and to
+   * all of its nested replies.
    * <p>
    * A new, deep copy of the map is returned. The map passed as an argument is not modified.
    */
   public static Map<String, Object> addFormattingFields(Map<String, ?> commentMetadata) {
-    Map<String, Object> formatting = EnumSet.allOf(CommentModelField.class).stream().collect(Collectors.toMap(
-        field -> field.key,
-        field -> field.generateFieldValue(commentMetadata)));
-
     Map<String, Object> modifiedMetadata = Maps.newHashMapWithExpectedSize(commentMetadata.size() + 1);
     modifiedMetadata.putAll(commentMetadata);
-    modifiedMetadata.put("formatting", formatting);
+    modifiedMetadata.put("formatting", new FormattedComment(commentMetadata));
 
     Collection<Map<String, ?>> replies = (Collection<Map<String, ?>>) modifiedMetadata.remove(REPLIES_KEY);
     List<Map<String, Object>> modifiedReplies = replies.stream()
@@ -44,57 +38,52 @@ public class CommentFormatting {
     return modifiedMetadata;
   }
 
-  /**
+  /*
    * Model fields defined by old Ambra's "AnnotationView".
-   * <p>
-   * This is a ridiculous amount of display logic that is reproduced here for the sake of expediency. Please delete
-   * anything that is not needed.
    */
-  @VisibleForTesting
-  static enum CommentModelField {
-    bodyWithHighlightedText("bodyWithHighlightedText") {
-      @Override
-      protected Object generateFieldValue(Map<String, ?> comment) {
-        String highlightedText = (String) comment.get("highlightedText");
-        if (Strings.isNullOrEmpty(highlightedText)) {
-          String body = (String) comment.get("body");
-          if (Strings.isNullOrEmpty(body)) return "";
-          return hyperlinkEnclosedWithPTags(escapeHtml(body), 25);
-        }
-        String body = (String) comment.get("body");
-        if (Strings.isNullOrEmpty(body)) return "";
-        String bodyWithHt = highlightedText + "\n\n" + body;
-        return hyperlinkEnclosedWithPTags(escapeHtml(bodyWithHt), 150);
-      }
-    },
-    competingInterestStatement("competingInterestStatement") {
-      @Override
-      protected Object generateFieldValue(Map<String, ?> comment) {
-        String competingInterestBody = (String) ((Map<String, ?>) comment.get("competingInterestStatement")).get("body");
-        if (Strings.isNullOrEmpty(competingInterestBody)) return "";
-        return escapeHtml(competingInterestBody);
-      }
-    };
+  public static class FormattedComment {
+    private final String bodyWithHighlightedText;
+    private final String competingInterestStatement;
 
-    private final String key;
-
-    private CommentModelField(String key) {
-      this.key = key;
+    private FormattedComment(Map<String, ?> comment) {
+      this.bodyWithHighlightedText = buildBodyWithHighlightedText(comment);
+      this.competingInterestStatement = buildCompetingInterestStatement(comment);
     }
 
-    @VisibleForTesting
-    String getKey() {
-      return key;
+    public String getBodyWithHighlightedText() {
+      return bodyWithHighlightedText;
     }
 
-    protected abstract Object generateFieldValue(Map<String, ?> commentMetadata);
+    public String getCompetingInterestStatement() {
+      return competingInterestStatement;
+    }
   }
-
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Code forklifted from old Ambra is below
   // Please refactor liberally
   // Please avoid introducing new dependencies on this
+
+
+  private static String buildBodyWithHighlightedText(Map<String, ?> comment) {
+    String highlightedText = (String) comment.get("highlightedText");
+    if (Strings.isNullOrEmpty(highlightedText)) {
+      String body = (String) comment.get("body");
+      if (Strings.isNullOrEmpty(body)) return "";
+      return hyperlinkEnclosedWithPTags(escapeHtml(body), 25);
+    }
+    String body = (String) comment.get("body");
+    if (Strings.isNullOrEmpty(body)) return "";
+    String bodyWithHt = highlightedText + "\n\n" + body;
+    return hyperlinkEnclosedWithPTags(escapeHtml(bodyWithHt), 150);
+  }
+
+  private static String buildCompetingInterestStatement(Map<String, ?> comment) {
+    String competingInterestBody = (String) ((Map<String, ?>) comment.get("competingInterestStatement")).get("body");
+    if (Strings.isNullOrEmpty(competingInterestBody)) return "";
+    return escapeHtml(competingInterestBody);
+  }
+
 
   private static final Pattern lineBreakPattern = Pattern.compile("\\p{Zl}|\r\n|\n|\u0085|\\p{Zp}");
   private static final Pattern strongPattern = Pattern.compile("'''");

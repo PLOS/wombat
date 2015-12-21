@@ -42,8 +42,56 @@
         <#include "newCommentForm.ftl" />
           <@newCommentForm/>
         </div>
-
       </div>
+
+      <div id="report_prototype" class="reply review cf" style="display: none">
+        <div class="flagForm">
+          <h4>Why should this posting be reviewed?</h4>
+
+          <div class="reply_content">
+          <#include "flagPreamble.ftl" />
+          </div>
+
+          <div class="error" style="display:none;"></div>
+
+          <form class="cf">
+            <fieldset class="">
+              <div class="cf">
+                <input type="radio" name="reason" value="spam" id="spam" checked/>
+                <label for="spam">Spam</label>
+              </div>
+              <div class="cf">
+                <input type="radio" name="reason" value="offensive" id="offensive"/>
+                <label for="offensive">Offensive</label>
+              </div>
+              <div class="cf">
+                <input type="radio" name="reason" value="inappropriate" id="inappropriate"/>
+                <label for="inappropriate">Inappropriate</label>
+              </div>
+              <div class="cf">
+                <input type="radio" name="reason" value="other" id="other"/>
+                <label for="other">Other</label>
+              </div>
+              <div id="flag_text">
+                <textarea placeholder="Add any additional information here..." name="additional_info"></textarea>
+              </div>
+
+            <#-- JavaScript fills in these buttons' on-click behaviors when the box appears. -->
+              <span class="btn btn_cancel">cancel</span>
+              <span class="btn primary btn_submit">submit</span>
+            </fieldset>
+          </form>
+        </div>
+        <!--end flagForm-->
+
+        <div class="flagConfirm" style="display: none;">
+          <h4>Thank You!</h4>
+
+          <p>Thank you for taking the time to flag this posting; we review flagged postings on a regular basis.</p>
+          <span class="close_confirm">close</span>
+        </div>
+      </div>
+      <!--end report_prototype-->
 
       <div id="responses">
 

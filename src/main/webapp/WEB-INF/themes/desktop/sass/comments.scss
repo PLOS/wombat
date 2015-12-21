@@ -8,8 +8,13 @@
 .cf{
   @include clearfix;
 }
+// For forklifting purposes allows us to use ems
+%size-overide{
+  *{font-size: 13px;}
+}
 
 #thread {
+@extend %size-overide;
   h2 {
     margin: 30px 10px;
   }
@@ -54,14 +59,14 @@
       padding: 5px 14px;
       text-align: center;
       text-transform: uppercase;
-   //   font-size: .8em;
+      font-size: .8em;
       margin-top: 30px;
       width: 62px;
     }
 
     li div.responses span {
       display: block;
-   //   font-size: 2em;
+      font-size: 2em;
       font-weight: normal;
       line-height: normal;
       margin-bottom: 10px;
@@ -75,13 +80,13 @@
     }
 
     li div.recent span {
-  //    font-size: .8em;
+      font-size: .8em;
       font-weight: bold;
       text-transform: uppercase;
     }
 
     li div.title {
-   //   font-size: 1em;
+      font-size: 1em;
       width: 455px;
       padding: 35px 50px;
       background: #efefef;
@@ -91,13 +96,14 @@
 
     li div.title span {
       display: block;
-   //   font-size: .9em;
+      font-size: .9em;
     }
   }
 }
 
 /* comments responses */
 #responses {
+  @extend %size-overide;
   .response {
     margin-bottom: 30px;
   }
@@ -110,7 +116,7 @@
   }
 
   .response .info h3 {
- //   font-size: 1.462em;
+    font-size: 1.462em;
   }
 
   .response.correction h3 {
@@ -118,7 +124,7 @@
   }
 
   .response .info h4 {
-  //  font-size: .815em;
+    font-size: .815em;
   }
 
   .response.original .info {
@@ -151,6 +157,7 @@
 }
 
 .reply {
+  @extend %size-overide;
   background-color: #333;
   padding: 30px 30px 15px 30px;
   position: relative;
@@ -266,7 +273,7 @@
 }
 
 .reply form fieldset label {
- // font-size: 0.813em;
+  font-size: 0.813em;
   position: relative;
 }
 

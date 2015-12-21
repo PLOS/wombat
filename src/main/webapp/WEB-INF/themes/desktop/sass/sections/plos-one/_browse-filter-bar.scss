@@ -53,7 +53,7 @@
   width: 56px;
   height: 9px;
   margin: -4px 0 0;
-  background: url(../img/icons-filter-bar.png) 0 50% no-repeat;
+  background: image-url('icons-filter-bar.png') 0 50% no-repeat;
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -65,15 +65,15 @@
 }
 
 .filter-bar.subject ul li.middle a, a.journal-alert{
-  background: url(../img/icon-email.png) 50% 50% no-repeat;
+  background: image-url('icon-email.png') 50% 50% no-repeat;
 }
 
 .filter-bar.subject ul li.middle a.subscribed {
-  background: url(../img/icon-email-check.png) 50% 50% no-repeat;
+  background: image-url('icon-email-check.png') 50% 50% no-repeat;
 }
 
 .filter-bar.subject ul li.last a {
-  background: url(../img/icon-rss.png) 50% 50% no-repeat;
+  background: image-url('icon-rss.png') 50% 50% no-repeat;
 }
 
 .filter-bar.subject ul li a:hover {
@@ -148,7 +148,7 @@
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-  background: url(../img/subject-listing-dropdown.png) 17px 50% no-repeat;
+  background: image-url('subject-listing-dropdown.png') 17px 50% no-repeat;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -176,7 +176,7 @@
   width: 72px;
   height: 17px;
   margin: -10px 0 0;
-  background: url(../img/you-are-here.png) no-repeat;
+  background: image-url('you-are-here.png') no-repeat;
   position: absolute;
   top: 50%;
   right: -3px;
@@ -197,12 +197,12 @@
   font-weight: normal;
   color: #333;
   padding: 6px 17px 6px 46px;
-  background: url(../img/subject-listing-dropdown.png) -366px 50% no-repeat;
+  background: image-url('subject-listing-dropdown.png') -366px 50% no-repeat;
 }
 
 .filter-bar.subject ul li.first ul li.here ul li a:hover {
   color: #fff;
-  background: url(../img/subject-listing-dropdown.png) -766px 50% no-repeat #3c63af;
+  background: image-url('subject-listing-dropdown.png') -766px 50% no-repeat #3c63af;
 }
 
 /* list header */

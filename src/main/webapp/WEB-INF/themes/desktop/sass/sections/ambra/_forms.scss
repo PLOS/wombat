@@ -177,8 +177,7 @@ a#media-coverage-form-link {
 
   .btn.primary,
   .btn.main{
-    background: #F8AF2D;
-    color: #333;
+    @extend %brand-background;
   }
 
   .btn.primary:hover,

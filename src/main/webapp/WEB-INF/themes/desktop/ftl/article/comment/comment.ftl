@@ -111,7 +111,7 @@
       <#macro renderComment comment depth replyTo>
         <#assign commentId = commentId + 1 />
         <div id="reply-${commentId}"
-             class="response <#if depth==0>original</#if>"
+             class="form-default response <#if depth==0>original</#if>"
              data-depth="${depth?c}"
              style="margin-left: ${(depth * indentationWidth)?c}px"
             >
@@ -164,11 +164,11 @@
             </#if>
           </div>
 
-          <div class="toolbar form-default">
+          <div class="toolbar">
             <#assign userIsLoggedIn = Session["SPRING_SECURITY_CONTEXT"]?exists && Session["SPRING_SECURITY_CONTEXT"].authentication.authenticated />
             <@siteLink handlerName="userLogin" ; login>
               <a title="Report a Concern"
-                 class="flag toolbar btn <#if userIsLoggedIn>primary</#if>"
+                 class="flag toolbar btn <#if userIsLoggedIn>logged-in</#if>"
                 <#if userIsLoggedIn>
                  onclick="comments.showReportBox('${commentId?c}'); return false;"
                 <#else>
@@ -178,7 +178,7 @@
                 report a concern
               </a>
               <a title="Click to respond"
-                 class="respond toolbar btn <#if userIsLoggedIn>primary</#if>"
+                 class="respond toolbar btn <#if userIsLoggedIn>logged-in</#if>"
                 <#if userIsLoggedIn>
                  onclick="comments.showRespondBox('${commentId?c}', ${depth?c}); return false;"
                 <#else>

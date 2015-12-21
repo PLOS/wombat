@@ -214,7 +214,6 @@
 <#include "../../common/footer/footer.ftl" />
 
 
-
 <script type="text/javascript">
   var comments = null;
   (function ($) {
@@ -222,9 +221,15 @@
       comments = new $.fn.comments();
       comments.indentationWidth = ${indentationWidth?c};
       comments.addresses = {
-        submitFlagURL: '', // TODO
-        submitReplyURL: '', // TODO
-        getAnnotationURL: '' // TODO
+      <@siteLink handlerName="postCommentFlag" ; url>
+        submitFlagURL: "${url?js_string}",
+      </@siteLink>
+      <@siteLink handlerName="postComment" ; url>
+        submitReplyURL: "${url?js_string}",
+      </@siteLink>
+      <@siteLink handlerName="ajaxComment" ; url> <#-- Omit 'id' parameter; JS will fill it in -->
+        getAnnotationURL: "${url?js_string}"
+      </@siteLink>
       };
     };
   }(jQuery));

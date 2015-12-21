@@ -435,6 +435,23 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/comment";
   }
 
+  @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
+  public String receiveNewComment(HttpServletRequest request, @SiteParam Site site) {
+    return null; // TODO: Implement
+  }
+
+  @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
+  public String receiveCommentFlag(HttpServletRequest request, @SiteParam Site site) {
+    return null; // TODO: Implement
+  }
+
+  @RequestMapping(name = "ajaxComment", method = RequestMethod.GET, value = "/article/comment/ajax")
+  public String ajaxComment(HttpServletRequest request, @SiteParam Site site,
+                            @RequestParam("id") String commentId) {
+    return null; // TODO: Implement
+  }
+
+
   /**
    * Serves a request for the "about the authors" page for an article.
    *

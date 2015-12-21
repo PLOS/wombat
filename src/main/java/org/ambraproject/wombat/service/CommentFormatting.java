@@ -59,10 +59,26 @@ public class CommentFormatting {
     }
   }
 
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // Code forklifted from old Ambra is below
-  // Please refactor liberally
-  // Please avoid introducing new dependencies on this
+  // WARNING: Now entering some extremely hairy code that was forklifted from old Ambra.
+  // The current maintainers disclaim all culpability for the code's quality.
+  // PLEASE AVOID INTRODUCING ANY NEW DEPENDENCIES ON ANY VALUES OR METHODS DEFINED BELOW.
+  // If the functionality needs to be touched for any reason, feel free to delete or refactor liberally.
+  //
+  //      _;~)                  (~;_
+  //     (   |                  |   )
+  //      ~', ',    ,''~'',   ,' ,'~
+  //          ', ',' ^   ^ ',' ,'
+  //            ',: {o} {o} :,'
+  //              ;   /^\   ;
+  //               ~\     /~
+  //             ,' ,\===/, ',
+  //           ,' ,' ;   ; ', ',
+  //         ,' ,'    '''    ', ',
+  //       (~  ;               ;  ~)
+  //        -;_)               (_;-
+  //
 
 
   private static String buildBodyWithHighlightedText(Map<String, ?> comment) {

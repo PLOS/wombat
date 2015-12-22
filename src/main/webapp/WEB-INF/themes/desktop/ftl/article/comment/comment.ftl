@@ -29,7 +29,7 @@
       <h2>Reader Comments</h2>
 
       <p class="post_comment">
-        <a href="<@siteLink handlerName="articleCommentPost" queryParameters={"id": article.doi} />">
+        <a href="<@siteLink handlerName="articleCommentForm" queryParameters={"id": article.doi} />">
           Post a new comment
         </a>
         on this article

@@ -180,7 +180,7 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/comments";
   }
 
-  @RequestMapping(name = "articleCommentPost", value = "/article/comments/new")
+  @RequestMapping(name = "articleCommentForm", value = "/article/comments/new")
   public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId)
       throws IOException {

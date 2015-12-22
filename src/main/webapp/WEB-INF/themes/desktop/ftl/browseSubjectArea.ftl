@@ -84,7 +84,7 @@
                 </li>
             </#if>
             -->
-            <#include "browseSubjectAresRssFeed.ftl" />
+            <#include "browseSubjectAreaRssFeed.ftl" />
         </ul>
     </div><!-- /.filter-bar -->
 

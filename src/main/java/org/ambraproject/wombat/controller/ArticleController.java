@@ -436,19 +436,23 @@ public class ArticleController extends WombatController {
   }
 
   @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
-  public String receiveNewComment(HttpServletRequest request, @SiteParam Site site) {
-    return null; // TODO: Implement
+  @ResponseBody
+  public Object receiveNewComment(HttpServletRequest request, @SiteParam Site site) {
+    String createdCommentUri = ""; // TODO: Implement
+    return ImmutableMap.of("createdCommentUri", createdCommentUri);
   }
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
-  public String receiveCommentFlag(HttpServletRequest request, @SiteParam Site site) {
-    return null; // TODO: Implement
+  @ResponseBody
+  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site) {
+    return ImmutableMap.of(); // TODO: Implement
   }
 
   @RequestMapping(name = "ajaxComment", method = RequestMethod.GET, value = "/article/comment/ajax")
-  public String ajaxComment(HttpServletRequest request, @SiteParam Site site,
+  @ResponseBody
+  public Object ajaxComment(HttpServletRequest request, @SiteParam Site site,
                             @RequestParam("id") String commentId) {
-    return null; // TODO: Implement
+    return ImmutableMap.of(); // TODO: Implement
   }
 
 

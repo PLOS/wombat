@@ -19,7 +19,10 @@
         submitReplyURL: "${url?js_string}",
       </@siteLink>
       <@siteLink handlerName="ajaxComment" ; url> <#-- Omit 'id' parameter; JS will fill it in -->
-        getAnnotationURL: "${url?js_string}"
+        getAnnotationURL: "${url?js_string}",
+      </@siteLink>
+      <@siteLink handlerName="articleCommentTree" ; url> <#-- Omit 'id' parameter; JS will fill it in -->
+        listThreadURL: "${url?js_string}"
       </@siteLink>
       };
     };

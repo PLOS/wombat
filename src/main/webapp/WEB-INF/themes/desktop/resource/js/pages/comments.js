@@ -180,7 +180,7 @@
 
       var listThreadURL = this.addresses.listThreadURL; // make available in the local scope
       var submittedCallback = function (data) {
-        window.location = listThreadURL + '?root=' + data.annotationId;
+        window.location = listThreadURL + '?id=' + data.createdCommentUri;
       };
       submit(replyElement, $('.error'), this.addresses.submitDiscussionURL, commentData, submittedCallback);
     };

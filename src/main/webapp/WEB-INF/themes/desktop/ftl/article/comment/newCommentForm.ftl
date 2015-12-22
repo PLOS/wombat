@@ -35,7 +35,13 @@
                 placeholder="Enter your competing interests..."></textarea>
     </div>
 
-    <span class="btn flt-l btn_submit primary">post</span>
+    <span class="btn flt-l btn_submit primary"
+      <#if isStandalone>
+          onclick="comments.submitDiscussion('${article.doi?js_string}')"
+      </#if>
+        >
+      post
+    </span>
     <#if isStandalone>
     <a href="<@siteLink handlerName="articleComments" queryParameters={"id": article.doi} />">
     </#if>

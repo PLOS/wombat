@@ -28,7 +28,7 @@
     <div id="thread">
       <h2>Start a Discussion</h2>
 
-      <div class="reply cf" id="respond">
+      <div class="reply cf form-default" id="respond">
         <h4>Post Your Discussion Comment</h4>
 
       <#include "newCommentForm.ftl" />

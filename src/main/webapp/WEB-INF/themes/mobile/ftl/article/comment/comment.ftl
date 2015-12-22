@@ -1,26 +1,25 @@
-<#include "../common/htmlTag.ftl" />
+<#include "../../common/htmlTag.ftl" />
 
-<#assign title = "PLOS - Individual Comment" />
-<#assign depth = 1 />
-<#include "../common/head.ftl" />
+<#assign title = comment.title />
+<#include "../../common/head.ftl" />
 
 <body id="page-comments-individual">
 <div id="container-main">
   <header id="site-header-container" class="back-header coloration-border-top">
     <span class="back-arrow">Back</span>
-    <a class="back" href="<@siteLink path="article?id=${articleDoi}" />">Back to Article</a>
+    <a class="back" href="<@siteLink path="article?id=${comment.parentArticle.doi}" />">Back to Article</a>
   </header>
 
 <#macro commentBody comment>
   <div class="context">
     <a class="expand">${comment.title}</a>
 
-    <p class="details">Posted by ${comment.creatorDisplayName}
+    <p class="details">Posted by ${comment.creator.displayName}
       on <@formatJsonDate date="${comment.created}" format="dd MMM yyyy 'at' hh:mm a" /></p>
   </div>
 
   <div class="response">
-    <p>${comment.body}</p>
+    <p>${comment.formatting.bodyWithHighlightedText}</p>
 
     <div class="response-menu">
     <#-- TODO: uncomment when we allow logged-in functionality
@@ -60,6 +59,6 @@
 
 </section><#--end model info window-->
 
-<#include "../common/bodyJs.ftl" />
+<#include "../../common/bodyJs.ftl" />
 </body>
 </html>

@@ -25,6 +25,7 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
+import org.ambraproject.wombat.service.CommentFormatting;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
@@ -172,11 +173,22 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
                                       @RequestParam("id") String articleId) throws IOException {
-      requireNonemptyParameter(articleId);
-      Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-      validateArticleVisibility(site, articleMetaData);
-      requestComments(model, articleId);
-    return site + "/ftl/article/comments";
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
+    requestComments(model, articleId);
+    return site + "/ftl/article/comment/comments";
+  }
+
+  @RequestMapping(name = "articleCommentPost", value = "/article/comments/new")
+  public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
+                                     @RequestParam("id") String articleId)
+      throws IOException {
+    enforceDevFeature("commentsTab");
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
+    return site + "/ftl/article/comment/newComment";
   }
 
 
@@ -402,7 +414,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "articleCommentTree", value = "/article/comment")
-  public String renderArticleCommentTree(Model model, @SiteParam Site site,
+  public String renderArticleCommentTree(HttpServletRequest request, Model model, @SiteParam Site site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
     Map<String, Object> comment;
@@ -411,12 +423,16 @@ public class ArticleController extends WombatController {
     } catch (EntityNotFoundException enfe) {
       throw new NotFoundException(enfe);
     }
-    comment = DoiSchemeStripper.strip(comment, "articleDoi");
-    validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
 
+    Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
+    String articleId = (String) parentArticleStub.get("doi");
+    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetadata);
+
+    comment = CommentFormatting.addFormattingFields(comment);
     model.addAttribute("comment", comment);
-    model.addAttribute("articleDoi", comment.get("articleDoi"));
-    return site + "/ftl/article/comment";
+
+    return site + "/ftl/article/comment/comment";
   }
 
   /**

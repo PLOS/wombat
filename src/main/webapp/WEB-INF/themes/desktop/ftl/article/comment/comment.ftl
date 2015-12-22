@@ -166,9 +166,9 @@
 
           <div class="toolbar">
             <#assign userIsLoggedIn = Session["SPRING_SECURITY_CONTEXT"]?exists && Session["SPRING_SECURITY_CONTEXT"].authentication.authenticated />
+            <#assign userIsLoggedIn = true /> <#-- DEBUG! TODO: Remove -->
             <@siteLink handlerName="userLogin" ; login>
-              <a title="Report a Concern"
-                 class="flag toolbar btn <#if userIsLoggedIn>logged-in</#if>"
+              <a title="Report a Concern" class="flag toolbar btn"
                 <#if userIsLoggedIn>
                  onclick="comments.showReportBox('${commentId?c}'); return false;"
                 <#else>
@@ -177,8 +177,7 @@
                   >
                 report a concern
               </a>
-              <a title="Click to respond"
-                 class="respond toolbar btn <#if userIsLoggedIn>logged-in</#if>"
+              <a title="Click to respond" class="respond toolbar btn"
                 <#if userIsLoggedIn>
                  onclick="comments.showRespondBox('${commentId?c}', ${depth?c}); return false;"
                 <#else>

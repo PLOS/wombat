@@ -40,7 +40,7 @@
 
         <div class="reply_content">
         <#include "newCommentForm.ftl" />
-          <@newCommentForm/>
+          <@newCommentForm false />
         </div>
       </div>
 
@@ -213,30 +213,8 @@
 <#include "../../common/footer/footer.ftl" />
 
 
-<script type="text/javascript">
-  var comments = null;
-  (function ($) {
-    window.onload = function () {
-      comments = new $.fn.comments();
-      comments.indentationWidth = ${indentationWidth?c};
-      comments.addresses = {
-      <@siteLink handlerName="postCommentFlag" ; url>
-        submitFlagURL: "${url?js_string}",
-      </@siteLink>
-      <@siteLink handlerName="postComment" ; url>
-        submitReplyURL: "${url?js_string}",
-      </@siteLink>
-      <@siteLink handlerName="ajaxComment" ; url> <#-- Omit 'id' parameter; JS will fill it in -->
-        getAnnotationURL: "${url?js_string}"
-      </@siteLink>
-      };
-    };
-  }(jQuery));
-</script>
-
 <#include "../articleJs.ftl" />
-<@js src="resource/js/vendor/jquery.textarea-expander.js" />
-<@js src="resource/js/pages/comments.js" />
+<#include "commentSubmissionJs.ftl" />
 <@renderJs />
 
 

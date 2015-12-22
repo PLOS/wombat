@@ -542,7 +542,7 @@ public class ArticleController extends WombatController {
       @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException {
     // TODO: remove when ready to expose page in prod
-    enforceDevFeature("relatedContentTab");
+    enforceDevFeature("relatedTab");
     requireNonemptyParameter(doi);
 
     if (!validateMediaCurationInput(model, link, name, email, captchaChallenge,

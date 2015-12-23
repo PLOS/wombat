@@ -112,6 +112,7 @@
         <#assign commentId = commentId + 1 />
         <div id="reply-${commentId}"
              class="form-default response <#if depth==0>original</#if>"
+             data-uri="${comment.annotationUri}"
              data-depth="${depth?c}"
              style="margin-left: ${(depth * indentationWidth)?c}px"
             >

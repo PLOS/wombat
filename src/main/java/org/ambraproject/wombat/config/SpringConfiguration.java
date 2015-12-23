@@ -61,6 +61,10 @@ import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CaptchaServiceImpl;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
+import org.ambraproject.wombat.service.CommentCensorService;
+import org.ambraproject.wombat.service.CommentCensorServiceImpl;
+import org.ambraproject.wombat.service.CommentValidationService;
+import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
 import org.ambraproject.wombat.service.PowerPointService;
@@ -302,6 +306,16 @@ public class SpringConfiguration {
   @Bean
   public CaptchaService captchaService() {
     return new CaptchaServiceImpl();
+  }
+
+  @Bean
+  public CommentCensorService commentCensorService() {
+    return new CommentCensorServiceImpl();
+  }
+
+  @Bean
+  public CommentValidationService commentValidationService() {
+    return new CommentValidationServiceImpl();
   }
 
 }

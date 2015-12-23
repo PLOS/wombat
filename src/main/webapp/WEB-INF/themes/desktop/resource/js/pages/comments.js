@@ -187,7 +187,7 @@
     this.submitResponse = function (parentId) {
       var replyElement = getReplyElement(parentId);
       var commentData = getCommentData(replyElement);
-      commentData.inReplyTo = parentId;
+      commentData.inReplyTo = replyElement.data('uri');
 
       var outer = this;
       var submittedCallback = function (data) {

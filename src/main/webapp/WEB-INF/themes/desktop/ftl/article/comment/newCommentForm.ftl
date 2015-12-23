@@ -10,8 +10,7 @@
   <fieldset>
 
     <input type="text" name="comment_title" placeholder="Enter your comment title..." id="comment_title">
-    <textarea name="comment" class="expand106-99999" placeholder="Enter your comment..."
-              id="comment"></textarea>
+    <textarea name="comment" placeholder="Enter your comment..." id="comment"></textarea>
 
     <div class="help">
       <p>Supported markup tags: ''<em>italic</em>'' '''<strong>bold</strong>''' '''''<strong><em>bold
@@ -29,7 +28,7 @@
       <label for="yes_competing">Yes, I have competing interests to declare (enter below):</label>
     </div>
     <div class="competing_text">
-      <textarea name="competing_interests" class="competing_interests expand88-99999"
+      <textarea name="competing_interests" class="competing_interests"
                 id="competing_interests"
                 disabled="disabled"
                 placeholder="Enter your competing interests..."></textarea>

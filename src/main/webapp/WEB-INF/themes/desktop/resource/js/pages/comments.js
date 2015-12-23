@@ -107,8 +107,6 @@
               outer.submitReport(replyId);
             });
           });
-      //activate expanding text area
-      $('#reply-' + replyId + ' form[class="cf"] textarea[name="additional_info"]').TextAreaExpander(106, 99999);
     };
 
     /**
@@ -128,9 +126,6 @@
             box.find('[name="comment_title"]').attr("value", 'RE: ' + parentTitle);
             outer.wireCompetingInterestRadioButtons(box);
           });
-      //activate expanding text area
-      $('#reply-' + replyId + ' form[class="cf"] textarea[name="comment"]').TextAreaExpander(106, 99999);
-      $('#reply-' + replyId + ' form[class="cf"] textarea[name="competing_interests"]').TextAreaExpander(88, 99999);
     };
 
     /**
@@ -234,8 +229,15 @@
      * @return {Object}  the overlay object from the "JQuery TOOLS Overlay" library
      */
     function freezeForLoading() {
-      var $loadingOverlay = $(".loading_overlay");
-      var overlay = $loadingOverlay.overlay({
+      // Disabled because of incompatibility between jquery.overlay-1.2.5.js and newer JQuery versions
+      // TODO: Re-implement
+      if (true) return {
+        close: function () {
+        }
+      };
+
+
+      var overlay = $(".loading_overlay").overlay({
         api: true, // Control it with .load() and .close() calls instead of user action
         closeOnClick: false, closeOnEsc: false,
         mask: { // Freezes the screen, with a visual graying-out effect

@@ -34,8 +34,6 @@
       <#include "newCommentForm.ftl" />
       <@newCommentForm true />
 
-      <#include "loading.ftl" />
-
       </div>
 
     </div>

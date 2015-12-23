@@ -1,7 +1,5 @@
 <#-- JavaScript code necessary to submit comments from a page. Acts on the form from newCommentForm.ftl. -->
 
-<@js src="resource/js/vendor/jquery.textarea-expander.js" />
-<@js src="resource/js/vendor/jquery.overlay-1.2.5.js" />
 <@js src="resource/js/pages/comments.js" />
 
 <script type="text/javascript">

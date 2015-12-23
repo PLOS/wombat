@@ -1,10 +1,42 @@
 <#-- The form for posting a comment. Wired by commentSubmissionJs.ftl. -->
+<#macro commentErrorMessage key>
+<p class="commentErrorMessage" data-error-key="${key}" style="display:none"><#nested/></p>
+</#macro>
+
 <#macro newCommentForm isStandalone>
 <div class="reply_content">
   <#include "newCommentPreamble.ftl" />
 </div>
 
-<div id="responseSubmitMsg" class="error" style="display:none"></div>
+<div id="responseSubmitMsg" class="error" style="display:none">
+<#-- Messages that can be revealed by JavaScript. TODO: Implement in JS -->
+  <@commentErrorMessage "missingTitle">A title is required.</@commentErrorMessage>
+  <@commentErrorMessage "missingBody">You must say something in your comment.</@commentErrorMessage>
+  <@commentErrorMessage "missingCi">You must say something in your competing interest statement.</@commentErrorMessage>
+
+<#-- Currently no mechanism to fill in values. Implement in JS? -->
+  <@commentErrorMessage "titleLength">
+    Your title is {length} characters long; it cannot be longer than {maxLength} characters.
+  </@commentErrorMessage>
+  <@commentErrorMessage "bodyLength">
+    Your comment is {length} characters long; it cannot be longer than {maxLength} characters.
+  </@commentErrorMessage>
+  <@commentErrorMessage "ciLength">
+    Your competing interest statement is {length} characters long; it cannot be longer than {maxLength}
+    characters.
+  </@commentErrorMessage>
+
+<#-- Censored words are provided in the error key, but we don't display them. -->
+  <@commentErrorMessage "censoredTitle">
+    Your comment triggered a profanity filter. Please reword your comment.
+  </@commentErrorMessage>
+  <@commentErrorMessage "censoredBody">
+    Your comment triggered a profanity filter. Please reword your comment.
+  </@commentErrorMessage>
+  <@commentErrorMessage "censoredCi">
+    Your comment triggered a profanity filter. Please reword your comment.
+  </@commentErrorMessage>
+</div>
 
 <form class="cf" onsubmit="return false;">
   <fieldset>

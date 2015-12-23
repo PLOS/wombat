@@ -451,8 +451,14 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "ajaxComment", method = RequestMethod.GET, value = "/article/comment/ajax")
   @ResponseBody
   public Object ajaxComment(HttpServletRequest request, @SiteParam Site site,
-                            @RequestParam("id") String commentId) {
-    return ImmutableMap.of(); // TODO: Implement
+                            @RequestParam("id") String commentId) throws IOException {
+    Map<String, ?> comment;
+    try {
+      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+    } catch (EntityNotFoundException enfe) {
+      throw new NotFoundException(enfe);
+    }
+    return CommentFormatting.addFormattingFields(comment);
   }
 
 

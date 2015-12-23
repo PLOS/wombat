@@ -29,11 +29,8 @@
 
       <h2>Reader Comments (${articleComments?size})</h2>
 
-      <p class="post_comment">
-        <a href="<@siteLink handlerName="articleCommentForm" queryParameters={"id": article.doi} />">
-          Post a new comment</a>
-        on this article
-      </p>
+    <#include "postNewCommentLink.ftl" />
+    <@postNewCommentLink article.doi />
 
       <ul id="threads">
       <#list articleComments?sort_by("mostRecentActivity")?reverse as comment>

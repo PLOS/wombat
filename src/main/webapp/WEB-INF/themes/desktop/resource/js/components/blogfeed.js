@@ -28,7 +28,7 @@ function feedLoaded(blog_feed, blogPostCount, blogContainer) {
           }
 
           html += '<div><img class="postimg" src="' + blogImg + '" /><p class="postdate">Posted ' + postPubDate + '</p>' +
-            '<p class="posttitle"><a href="' + entry.link + '">' + postTitle + '</a></p>' +
+            '<p class="posttitle"><a href="' + entry.permalink + '">' + postTitle + '</a></p>' +
             '<p class="postauthor">' + entry.author + '</p></div>';
 
         container.innerHTML = html;

@@ -211,10 +211,10 @@ public class SpringConfiguration {
 
   @Bean
   public JavaMailSender javaMailSender(RuntimeConfiguration runtimeConfiguration) {
-    URL mailServer = runtimeConfiguration.getMailServer();
+    String mailServer = runtimeConfiguration.getMailServer();
     if (mailServer == null) return NullJavaMailSender.INSTANCE;
     JavaMailSenderImpl sender = new JavaMailSenderImpl();
-    sender.setHost(mailServer.toString());
+    sender.setHost(mailServer);
     return sender;
   }
 

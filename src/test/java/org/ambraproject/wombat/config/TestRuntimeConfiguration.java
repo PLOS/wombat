@@ -50,7 +50,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URL getMailServer() {
+  public String getMailServer() {
     return null;
   }
 

@@ -448,6 +448,7 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam("inReplyTo") String parentUri,
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest) {
+    enforceDevFeature("commentsTab");
     Map<String, Object> validationErrors = commentValidationService.validate(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
@@ -460,6 +461,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
   @ResponseBody
   public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site) {
+    enforceDevFeature("commentsTab");
     return ImmutableMap.of(); // TODO: Implement
   }
 
@@ -467,6 +469,7 @@ public class ArticleController extends WombatController {
   @ResponseBody
   public Object ajaxComment(HttpServletRequest request, @SiteParam Site site,
                             @RequestParam("id") String commentId) throws IOException {
+    enforceDevFeature("commentsTab");
     Map<String, ?> comment;
     try {
       comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);

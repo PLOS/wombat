@@ -28,12 +28,8 @@
 
       <h2>Reader Comments</h2>
 
-      <p class="post_comment">
-        <a href="<@siteLink handlerName="articleCommentPost" queryParameters={"id": article.doi} />">
-          Post a new comment
-        </a>
-        on this article
-      </p>
+    <#include "postNewCommentLink.ftl" />
+    <@postNewCommentLink article.doi />
 
       <div id="respond_prototype" class="reply subresponse cf" style="display: none">
         <h4>Post Your Discussion Comment</h4>

@@ -80,10 +80,9 @@ public interface RuntimeConfiguration {
   URL getSolrServer();
 
   /**
-   * Get the URL or the server to which to send SMTP messages;
+   * Get the host name of the server to which to send SMTP messages;
    */
-  // TODO: String instead of URL? Not sure if this should be a full URL or just a hostname
-  URL getMailServer();
+  String getMailServer();
 
   /**
    * @return the set of enabled dev features, configured in wombat.yaml.

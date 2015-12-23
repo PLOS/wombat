@@ -84,14 +84,7 @@
                 </li>
             </#if>
             -->
-
-    <#-- @TODO: Check what feedURL should be and add the appropiate <li> element
-         <#if category??>
-          <@s.url id="feedURL" unformattedQuery="subject:\"${category}\"" sort = "${sort}" filterJournals = "${currentJournal}" namespace="/article/feed" action="executeFeedSearch" />
-        <#else>
-          <@s.url id="feedURL" unformattedQuery="*:*" sort = "${sort}" filterJournals = "${currentJournal}" namespace="/article/feed" action="executeFeedSearch" />
-        </#if>
-            <li class="last"><a href="${feedURL}" title="Get the RSS feed for ${category!"all articles"}">Get the RSS feed for ${category!"all articles"}</a></li>-->
+            <#include "browseSubjectAreaRssFeed.ftl" />
         </ul>
     </div><!-- /.filter-bar -->
 

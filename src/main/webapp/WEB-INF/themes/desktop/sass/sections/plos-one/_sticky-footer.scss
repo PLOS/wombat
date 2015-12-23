@@ -50,7 +50,7 @@
   h4 a {
     display: block;
     padding: 12px 27px 12px 15px;
-    background: url(../img/submit-arrow.png) right 50% no-repeat;
+    background: image-url('submit-arrow.png') right 50% no-repeat;
   }
 
   h4 a:hover {
@@ -61,7 +61,7 @@
     display: block;
     width: 25px;
     height: 25px;
-    background: url(../img/close.png) no-repeat;
+    background: image-url('close.png') no-repeat;
     position: absolute;
     top: 12px;
     right: 0;

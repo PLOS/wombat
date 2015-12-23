@@ -312,7 +312,7 @@ table#pageViewsTable tr.percent td {
 a.ir {
   display: inline-block;
   text-indent: -9999px;
-  background-image: url(../img/button_info.png);
+  background-image: image-url('button_info.png');
   width: 17px;
   height: 17px;
 }
@@ -320,7 +320,7 @@ a.ir {
 a.irs {
   display: inline-block;
   text-indent: -9999px;
-  background-image: url(../img/button_info_small.png);
+  background-image: image-url('button_info_small.png');
   width: 13px;
   height: 13px;
   vertical-align: middle;

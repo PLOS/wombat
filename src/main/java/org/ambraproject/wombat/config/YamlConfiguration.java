@@ -73,8 +73,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URL getMailServer() {
-    return buildUrl(input.mailServer, null);
+  public String getMailServer() {
+    return input.mailServer;
   }
 
   @Override

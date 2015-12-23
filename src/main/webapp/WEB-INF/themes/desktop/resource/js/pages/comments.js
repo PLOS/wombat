@@ -234,7 +234,8 @@
      * @return {Object}  the overlay object from the "JQuery TOOLS Overlay" library
      */
     function freezeForLoading() {
-      var overlay = $(".loading_overlay").overlay({
+      var $loadingOverlay = $(".loading_overlay");
+      var overlay = $loadingOverlay.overlay({
         api: true, // Control it with .load() and .close() calls instead of user action
         closeOnClick: false, closeOnEsc: false,
         mask: { // Freezes the screen, with a visual graying-out effect

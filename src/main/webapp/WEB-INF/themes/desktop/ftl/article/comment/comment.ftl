@@ -202,6 +202,8 @@
       </#macro>
       <@renderComment comment=comment depth=0 replyTo={} />
 
+        <#include "loading.ftl" />
+
       </div>
 
   </section>

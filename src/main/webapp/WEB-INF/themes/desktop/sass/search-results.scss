@@ -205,6 +205,10 @@ $controls-gray: $grey-med-light;
     background-color: $white;
   }
 
+  fieldset.disabled, fieldset.disabled button {
+    background-color: #EBEBE4;
+  }
+
   input[type="text"] {
     margin: 0;
     padding: 0;
@@ -651,3 +655,5 @@ $search-icon-pad-default: 8;
   }
 }
 
+
+@import "pages/advanced-search";

@@ -23,7 +23,7 @@
     <p>Fields marked with an <span class="required">*</span> are required. </p>
     <form id="emailThisArticleForm" class="form-default" name="emailThisArticle" action="<@siteLink path='article/email'/>" method="post">
       <input type="hidden" name="id" value="${article.doi}"/>
-      <input type="hidden" name="articleUri" value="<@siteLink handlerName="article" absoluteLink="true"
+      <input type="hidden" name="articleUri" value="<@siteLink handlerName="article" absoluteLink=true
         queryParameters={'id': article.doi} />"/>
       <fieldset>
         <ol>

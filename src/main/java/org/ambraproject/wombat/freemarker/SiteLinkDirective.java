@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ListMultimap;
 import freemarker.core.Environment;
+import freemarker.template.TemplateBooleanModel;
 import freemarker.template.TemplateHashModelEx;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
@@ -116,7 +117,7 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
   }
 
   private static boolean getBoolValue(Object valueObj) throws TemplateModelException {
-    return valueObj instanceof TemplateScalarModel && Boolean.parseBoolean(((TemplateScalarModel) valueObj).getAsString());
+    return valueObj instanceof TemplateBooleanModel && ((TemplateBooleanModel) valueObj).getAsBoolean();
   }
 
   private static String getStringValue(Object valueObj) throws TemplateModelException {

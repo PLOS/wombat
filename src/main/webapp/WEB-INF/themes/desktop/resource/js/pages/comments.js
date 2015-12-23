@@ -191,6 +191,10 @@
 
       var outer = this;
       var submittedCallback = function (data) {
+        // Reload the page so the user can see their comment
+        location.reload(true);
+        return; // TODO: Instead insert the comment into the page without a refresh
+
         // Make a second Ajax request to get the new comment (we need its back-end representation)
         sendAjaxRequest(outer.addresses.getAnnotationURL, {annotationId: data.replyId},
             function (data, textStatus, jqXHR) {

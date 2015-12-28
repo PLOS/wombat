@@ -1,35 +1,46 @@
+var AdvancedSearch = {};
 (function ($) {
   /* AdvancedSearch attributes */
-  var AdvancedSearch = {
+  AdvancedSearch = {
     /* External elements */
-    searchInputSelector     : "#controlBarSearch",
+    inputSearchSelector     : '#controlBarSearch',
 
     /* Internal elements */
-    templateRowSelector     : "#advanced-search-row-template",
-    templateControlsSelector: "#advanced-search-controls",
-    containerSelector       : ".advanced-search-container",
-    inputContainerSelector  : ".advanced-search-inputs-container",
-    rowSelector             : ".advanced-search-row",
-    addSelector             : ".add-row-button",
-    removeSelector          : ".remove-row-button",
-    editQuerySelector       : ".edit-query",
-    conditionInputSelector  : "input.query-condition-value",
-    formSelector            : ".advanced-search-form",
-    inputQuerySelector      : "#unformatted-query-input"
+    templateRowSelector     : '#advanced-search-row-template',
+    templateControlsSelector: '#advanced-search-controls',
+    containerSelector       : '.advanced-search-container',
+    inputContainerSelector  : '.advanced-search-inputs-container',
+    rowSelector             : '.advanced-search-row',
+    addSelector             : '.add-row-button',
+    removeSelector          : '.remove-row-button',
+    editQuerySelector       : '.edit-query',
+    inputConditionContainerSelector  : '#input-condition-container',
+    inputConditionSelector  : 'input.query-condition-value',
+    inputQuerySelector      : '#unformatted-query-input',
+    clearButtonSelector     : '#searchFieldButton .clear'
   };
 
   /* AdvancedSearch methods */
-  AdvancedSearch.init = function () {
+  AdvancedSearch.init = function (containerSelector, cb) {
     var that = this;
+    if (containerSelector) {
+      this.containerSelector = containerSelector;
+    }
+
+    if (this.isInitialized(this.containerSelector)) {
+      /* Advanced search has already been initialized in this container */
+      return cb(new Error('Advanced search has already been initialized in this container.'));
+    }
+
     $(this.containerSelector)
         /* Add row binding */
-        .on("click", this.addSelector, function (e) {
+        .on('click', this.addSelector, function (e) {
           e.preventDefault();
           that.addRow();
         })
 
         /* Remove row binding */
-        .on("click", this.removeSelector, function (e) {
+        .on('click', this.removeSelector, function (e) {
           e.preventDefault();
           var row = $(e.target).parents(that.rowSelector);
           that.removeRow(row);
@@ -37,31 +48,99 @@
         })
 
         /* Write in condition input */
-        .on("keyup", this.conditionInputSelector, function () {
+        .on('keyup change', this.inputConditionSelector, function () {
           that.refreshSearchInput();
         })
 
-        .on("change", "select", function () {
+        .on('change', 'select', function () {
           that.refreshSearchInput();
-        });
+        })
 
-    $(this.editQuerySelector).on("click", function (e) {
-      e.preventDefault();
-      that.enableSearchInput(true);
-    });
+        /* Change input type on category change */
+        .on('change', 'select.category', function (e) {
+          var row = $(e.target).parents(that.rowSelector);
+          var newInputTemplateSelector = $(e.target).find(':selected').data('input-template');
 
-/*
-    $(this.formSelector).on("submit", function () {
-    });
-*/
+          /* default input template */
+          if (!newInputTemplateSelector) {
+            newInputTemplateSelector = '#default-search-input';
+          }
 
-    this.disableSearchInput();
+          if (row.data('input-template-in-use') !== newInputTemplateSelector) {
+            that.replaceRowInputTemplate(row, newInputTemplateSelector);
+          }
+          that.refreshSearchInput();
+        })
+
+        .data('advanced-search-initialized', true);
 
     /* Add search button */
     this.addControlButtons();
 
+    $(this.editQuerySelector).on('click', function (e) {
+      e.preventDefault();
+      that.enableSearchInput(true);
+    });
+
+    $(this.clearButtonSelector).on('click', function (e) {
+        e.preventDefault();
+        that.resetInputs();
+    });
+
+    this.disableSearchInput();
+
     /* Add first row */
     this.addRow();
+
+    if (cb && typeof cb === 'function') {
+      cb();
+    }
+  };
+
+  AdvancedSearch.isInitialized = function (containerSelector) {
+    return $(containerSelector).data('advanced-search-initialized');
+  };
+
+  /* inputTemplate options specifies whether to use an html template or not and which one */
+  var tmpOptions = [
+    {name: '----- Popular -----',   value: '', disabled: true},
+    {name: 'All Fields',   value: 'everything', selected: true},
+    {name: 'Title',   value: 'title'},
+    {name: 'Author',  value: 'author'},
+    {name: 'Body', value: 'body'},
+    {name: 'Abstract', value: 'abstract'},
+    {name: 'Subject', value: 'subject'},
+    {name: 'Publication Date',  value: 'publication_date', inputTemplate: '#date-search-input'},
+    {name: '----- Other -----',   value: '', disabled: true},
+    {name: 'Subject', value: 'subject'},
+    {name: 'Accepted Date',  value: 'accepted_date', inputTemplate: '#date-search-input'},
+    {name: 'Article DOI (Digital Object Identifier)', value: 'id'},
+    {name: 'Article Type', value: 'article_type'},
+    {name: 'Author Affiliations', value: 'author_affiliate'},
+    {name: 'Competing Interest Statement', value: 'competing_interest'},
+    {name: 'Conclusions', value: 'conclusions'},
+    {name: 'Editor', value: 'editor'},
+    {name: 'eNumber', value: 'elocation_id'},
+    {name: 'Figure & Table Captions', value: 'figure_table_caption'},
+    {name: 'Financial Disclosure Statement', value: 'financial_disclosure'},
+    {name: 'Introduction', value: 'introduction'},
+    {name: 'Issue Number', value: 'issue'},
+    {name: 'Materials and Methods', value: 'materials_and_methods'},
+    {name: 'Received Date', value: 'received_date', inputTemplate: '#date-search-input'},
+    {name: 'References', value: 'reference'},
+    {name: 'Results and Discussion', value: 'results_and_discussion'},
+    {name: 'Supporting Information', value: 'supporting_information'},
+    {name: 'Trial Registration', value: 'trial_registration'},
+    {name: 'Volume Number', value: 'volume'}
+  ];
+  AdvancedSearch.getCategoryOptions = function () {
+    /* @TODO: Remove hardcoded  options and replace with ajax call. Cache options for better performance */
+    if (this.categoryOptions) {
+      return this.categoryOptions;
+    }
+    /* @TODO: Replace with ajax call */
+    this.categoryOptions = tmpOptions;
+    return this.categoryOptions;
   };
 
   AdvancedSearch.addControlButtons = function () {
@@ -71,51 +150,108 @@
 
   AdvancedSearch.addRow = function () {
     var templateRow = _.template($(this.templateRowSelector).html());
-    $(this.inputContainerSelector).append(templateRow());
+    $(this.inputContainerSelector).append(templateRow({categories: this.getCategoryOptions()}))
+        /* trigger category change to process category input templates */
+        .find('select.category').trigger('change');
   };
 
   AdvancedSearch.removeRow = function (row) {
     row.remove();
   };
 
+  AdvancedSearch.replaceRowInputTemplate = function (row, newTemplateSelector) {
+    var inputTemplate = _.template($(newTemplateSelector).html());
+    var rowInputContainer = row.find(this.inputConditionContainerSelector);
+    rowInputContainer.children().remove();
+
+    /* Append current input template */
+    rowInputContainer.append(inputTemplate());
+    /* Store template selector in div's data for future template-in-use checking */
+    row.data('input-template-in-use', newTemplateSelector);
+  };
+
+  AdvancedSearch.resetInputs = function () {
+    $(this.inputSearchSelector).val('');
+    $(this.rowSelector).remove();
+    this.addRow();
+  };
+
   AdvancedSearch.refreshSearchInput = function () {
     var that = this,
-        fullCondition = "";
-    $(this.conditionInputSelector).each(function () {
-      if (this.value) {
+        fullCondition = '';
+    $(this.rowSelector).each(function () {
+      var row = $(this);
+      if (row.find('input').length && row.find('input')[0].value) {
         /* Extract the query if input is not empty */
-        var row = $(this).parents(that.rowSelector);
-        fullCondition += that.getRowQuery(row) + " ";
+        fullCondition = '(' + fullCondition + that.getRowQuery(row) + ') ';
       }
     });
 
-    /* Replace AND|OR from the beggining of the string */
-    var fullCondition = fullCondition.replace(/^(AND|OR)\s/,"");
-    $(this.searchInputSelector).val(fullCondition);
+    /* Replace starting/ending parentheses and AND|OR from the beggining of the string */
+    fullCondition = fullCondition.trim().replace(/^(\()/,'').replace(/(\))$/,'').replace(/^(\(*?)(AND|OR)\s/,'$1');
+    $(this.inputSearchSelector).val(fullCondition);
     $(this.inputQuerySelector).val(fullCondition);
   };
 
   AdvancedSearch.getRowQuery = function (row) {
-    var query = "";
-    query += row.find("select.operator").val() + " ";
-    query += row.find("select.category").val() + ":";
-    query += row.find("input").val();
+    var query = '';
+    query += row.find('select.operator').val() + ' ';
+    query += row.find('select.category').val() + ':';
+
+    /* Special treatement is required when fields are dates */
+    var queryValue = '';
+    if (row.find('input')[0].type === 'date') {
+      queryValue = this.processDateCondition(row.find('input'));
+    } else {
+      queryValue = row.find('input').val();
+      if (queryValue.indexOf(' ') !== -1) {
+        /* If there is a space in the value, add quotes */
+        queryValue = '"' + queryValue + '"';
+      }
+    }
+
+    query += queryValue;
     return query;
   };
 
+  AdvancedSearch.processDateCondition = function (dates) {
+    var processedDates = '';
+    dates.each(function (ix, dateInput) {
+      if (!dateInput.value) {
+        /* @TODO: Check what needs to be done with an empty date */
+        return;
+      }
+
+      processedDates += dateInput.value + 'T00:00:00Z';
+      if (ix !== (dates.length - 1)) {
+        /* add ' TO ' to all elements but the lastone */
+        processedDates += ' TO ';
+      }
+    });
+    return '[' + processedDates + ']';
+  };
+
   AdvancedSearch.disableSearchInput = function () {
-    $(this.searchInputSelector).attr("disabled", true)
-        .parent("fieldset").addClass("disabled");
+    $(this.inputSearchSelector).attr('disabled', true)
+        .parent('fieldset').addClass('disabled');
   };
 
   AdvancedSearch.enableSearchInput = function (focusInput) {
-    $(this.searchInputSelector).attr("disabled", false)
-        .parent("fieldset").removeClass("disabled");
+    $(this.inputSearchSelector).attr('disabled', false)
+        .parent('fieldset').removeClass('disabled');
     if (focusInput) {
-      $(this.searchInputSelector).focus();
+      $(this.inputSearchSelector).focus();
     }
   };
 
-  AdvancedSearch.init();
+  AdvancedSearch.destroy = function (containerSelector) {
+    if (AdvancedSearch.isInitialized(containerSelector)) {
+      $(this.containerSelector).off('click change keyup');
+      AdvancedSearch.enableSearchInput();
+      $(containerSelector).children().remove();
+      $(this.inputSearchSelector).val('');
+      $(this.containerSelector).data('advanced-search-initialized', false);
+    }
+  };
 
 })(jQuery);

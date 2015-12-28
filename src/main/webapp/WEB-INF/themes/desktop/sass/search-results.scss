@@ -655,5 +655,11 @@ $search-icon-pad-default: 8;
   }
 }
 
-
+/* Advanced search rules */
+.advanced-search-container {
+  display: none;
+}
+#simpleSearchLink {
+  display: none;
+}
 @import "pages/advanced-search";

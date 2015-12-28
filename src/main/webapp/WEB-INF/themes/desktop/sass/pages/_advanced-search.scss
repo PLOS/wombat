@@ -6,6 +6,7 @@
   }
 
   .advanced-search-col-last {
+    text-align: center;
     @include plos-grid-column($pixelwidth: columns, $columns: 1, $gutter:none, $collapse: false);
   }
 
@@ -23,13 +24,13 @@
   /* Add button */
   &:last-child {
     .add-row-button {
-      display: inline-block;
+      visibility: visible;
     }
   }
 
   i {
     &.add-row-button {
-      display: none;
+      visibility: hidden;
     }
     padding-left: rem-calc(5px);
     padding-right: rem-calc(5px);
@@ -42,11 +43,12 @@
     }
   }
 
-  input[type=text] {
-    width: 100%;
+  input {
+    width: 100% !important;
   }
 
   select {
+    cursor: pointer;
     height: rem-calc(24px);
     font-size: rem-calc($txt-size-mediumish)
   }
@@ -67,5 +69,52 @@
     text-align: center;
     cursor: pointer;
     border: none;
+  }
+}
+
+/* Clear button in input search bar */
+button[type=submit] {
+  i.clear {
+    font-size: rem-calc(22px);
+    margin-top: 4px;
+    cursor: pointer;
+  }
+
+  i.search-icon {
+    display: none !important;
+  }
+}
+
+#controlBarSearch {
+  &:invalid ~ button[type=submit] > i{
+    &.clear {
+      display: none;
+    }
+    &.search-icon {
+      display: inline-block !important;
+    }
+  }
+}
+
+
+
+/* Date template styles #date-search-input */
+#date-search-input-container {
+  #date-search-query-input-from {
+    width: 45% !important;
+  }
+
+  #date-to-label {
+    display: inline-block;
+  }
+
+  #date-search-query-input-to-span {
+    float:right;
+    line-height: rem-calc(24px);
+  }
+
+  #date-search-query-input-to {
+    width: 45% !important;
+    float: right;
   }
 }

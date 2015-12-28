@@ -108,4 +108,21 @@
   // initialize toggle for search filter item list
   plos_toggle.init();
 
+  // Advanced search behaviour
+  $('.search-results-advanced-search-submit').on('click', function (e) {
+    e.preventDefault();
+    $('.search-results-advanced-search-submit').toggle();
+    if (AdvancedSearch.isInitialized('.advanced-search-container')) {
+      $('.advanced-search-container').slideUp(function () {
+        // Only destroy after it has been hidden
+        AdvancedSearch.destroy('.advanced-search-container');
+      });
+    } else {
+      AdvancedSearch.init('.advanced-search-container', function (err) {
+        // Only show after it has been initialized
+        $('.advanced-search-container').slideDown();
+      });
+    }
+  });
+
 })(jQuery);

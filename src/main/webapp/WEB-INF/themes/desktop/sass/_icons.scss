@@ -81,6 +81,16 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   @extend .fa-envelope-o;
   content: '\f003';
 }
+.icon-minus {
+  @extend .icon-fa;
+  @extend .fa-minus;
+  line-height: normal;
+}
+.icon-plus-no-square {
+  @extend .icon-fa;
+  @extend .fa-plus;
+  line-height: normal;
+}
 .icon-plus {
   @extend .icon-fa;
   @extend .fa-plus-square;

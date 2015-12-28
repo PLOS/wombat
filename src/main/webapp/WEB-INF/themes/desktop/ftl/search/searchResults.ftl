@@ -10,11 +10,11 @@
 
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
+<@js src="resource/js/pages/advanced_search.js"/>
 <@js src="resource/js/pages/search_results.js"/>
 <@js src="resource/js/components/toggle.js"/>
 <@js src="resource/js/vendor/jquery-ui.min.js"/>
 <@js src="resource/js/vendor/underscore-min.js"/>
-<@js src="resource/js/pages/advanced_search.js"/>
 
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />

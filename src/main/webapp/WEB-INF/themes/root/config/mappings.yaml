@@ -43,5 +43,13 @@
 {
   "articleMetrics": {
     "disabled": true
+  },
+
+  "browse": {
+    "disabled": true
+  },
+
+  "browseSubjectArea": {
+    "disabled": true
   }
 }

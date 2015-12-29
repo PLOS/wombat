@@ -45,12 +45,11 @@ public class BrowseController extends WombatController {
   @Autowired
   private SoaService soaService;
 
-
   @Autowired
   private ArticleService articleService;
 
 
-  @RequestMapping(name = "browseVolumes", value = "volume")
+  @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
     enforceDevFeature("browse");
     String journalMetaUrl = "journals/" + site.getJournalKey();
@@ -59,7 +58,7 @@ public class BrowseController extends WombatController {
     return site.getKey() + "/ftl/article/browseVolumes";
   }
 
-  @RequestMapping(name = "browseIssues", value = "issue")
+  @RequestMapping(name = "browseIssues", value = "/issue")
   public String browseIssue(Model model, @SiteParam Site site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
     enforceDevFeature("browse");

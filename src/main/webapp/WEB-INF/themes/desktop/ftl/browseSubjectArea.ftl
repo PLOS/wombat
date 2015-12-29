@@ -31,9 +31,7 @@
     <#assign browseUrl = url/>
 </@siteLink>
 <#if category??>
-<@siteLink handlerName="browseSubjectArea" pathVariables={"subject":
-encodeSubject(category)
-}; url>
+<@siteLink handlerName="browseSubjectArea" pathVariables={"subject":encodeSubject(category)}; url>
     <#assign fullBrowseUrl = url/>
 </@siteLink>
 </#if>

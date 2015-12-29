@@ -489,6 +489,48 @@ public class SearchController extends WombatController {
     return search(request, model, site, params);
   }
 
+@RequestMapping(name = "browse", value = "/browse", params = "!filterSubjects")
+public String browse(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam MultiValueMap<String, String> params) throws
+        IOException {
+
+  model.addAttribute("journalKey", site.getKey());
+
+  params.add("subject", "");
+//  params.add("filterSubjects", "");
+
+
+  // set defaults for subject area landing page
+  if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {
+    params.add("resultsPerPage", BROWSE_RESULTS_PER_PAGE);
+  }
+
+  if (ListUtil.isNullOrEmpty(params.get("sortOrder"))) {
+    params.add("sortOrder", "DATE_NEWEST_FIRST");
+  }
+
+
+  CommonParams commonParams = new CommonParams(siteSet, site);
+  commonParams.parseParams(params);
+  commonParams.addToModel(model, request);
+
+  ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+                                             .setQuery("")
+                                             .setSimple(false);
+  commonParams.fill(query);
+
+  ArticleSearchQuery queryObj = query.build();
+  Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+  model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
+  model.addAttribute("searchResults", searchResults);
+  model.addAttribute("page", commonParams.getSingleParam(params, "page", "0"));
+  model.addAttribute("journalKey", site.getKey());
+
+  return site.getKey() + "/ftl/browseSubjectArea";
+
+}
+
+
   @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}", params = "!filterSubjects")
   public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params) throws

@@ -48,11 +48,7 @@ public class BrowseController extends WombatController {
   @Autowired
   private ArticleService articleService;
 
-  @RequestMapping(name = "browse", value = "/browse")
-  public String browse(Model model, @SiteParam Site site) {
-    model.addAttribute("journalKey", site.getKey());
-    return site.getKey() + "/ftl/browse";
-  }
+
 
   @RequestMapping(name = "browseVolumes", value = "/browse/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {

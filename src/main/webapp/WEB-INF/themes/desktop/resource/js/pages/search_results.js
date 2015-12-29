@@ -117,6 +117,7 @@
       });
     } else {
       AdvancedSearch.init('.advanced-search-container', function (err) {
+        if (err) return console.log(err.message);
         // Only show after it has been initialized
         $('.advanced-search-container').slideDown();
       });

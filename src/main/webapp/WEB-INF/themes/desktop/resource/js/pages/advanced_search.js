@@ -30,9 +30,12 @@ var AdvancedSearch = {};
       this.containerSelector = containerSelector;
     }
 
-    if (this.isInitialized(this.containerSelector)) {
+    if ($(this.containerSelector).length === 0) {
+      /* There is no container in which to initialize advanced search */
+      return cb(new Error('Advanced Search: No valid container provided to initialize advanced search widget.'));
+    } else if (this.isInitialized(this.containerSelector)) {
       /* Advanced search has already been initialized in this container */
-      return cb(new Error('Advanced search has already been initialized in this container.'));
+      return cb(new Error('Advanced Search: Advanced search has already been initialized in this container.'));
     }
 
     $(this.containerSelector)

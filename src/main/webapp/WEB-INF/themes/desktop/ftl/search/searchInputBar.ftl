@@ -20,7 +20,9 @@
         <a id="simpleSearchLink" class="search-results-advanced-search-submit" href="#">Simple Search</a>
         <a class="edit-query" href="#">edit query</a>
     </div>
-    <div class="advanced-search-container">
-    </div>
+    <@ifDevFeatureEnabled 'advancedSearch'>
+        <div class="advanced-search-container">
+        </div>
+    </@ifDevFeatureEnabled>
 </div>
 <#include "advancedSearchQueryBuilder.ftl" />

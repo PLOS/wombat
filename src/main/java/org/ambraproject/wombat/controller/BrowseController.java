@@ -45,7 +45,6 @@ public class BrowseController extends WombatController {
   @Autowired
   private SoaService soaService;
 
-
   @Autowired
   private ArticleService articleService;
 

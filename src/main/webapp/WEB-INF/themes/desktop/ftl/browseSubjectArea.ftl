@@ -31,9 +31,9 @@
     <#assign browseUrl = url/>
 </@siteLink>
 <#if category??>
-<@siteLink handlerName="browseSubjectArea" pathVariables={"subject":encodeSubject(category)}; url>
+  <@siteLink handlerName="browseSubjectArea" pathVariables={"subject":encodeSubject(category)}; url>
     <#assign fullBrowseUrl = url/>
-</@siteLink>
+  </@siteLink>
 </#if>
 <div id="search-results-block" class="cf subject-listing">
     <div class="filter-bar subject cf">
@@ -168,7 +168,7 @@
 </div>
 
 <#include "renderSearchPaginationLinks.ftl" />
-<#if category?has_content>
+<#if category??>
   <@renderSearchPaginationLinks url=fullBrowseUrl totalPages=totalPages currentPage=page?number/>
 <#else>
   <@renderSearchPaginationLinks url=browseUrl totalPages=totalPages currentPage=page?number/>

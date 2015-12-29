@@ -5,11 +5,10 @@
 <#include "common/head.ftl" />
 <#include "common/configJs.ftl" />
 <@themeConfig map="journal" value="journalKey" ; journalKey>
-  <#assign journalKey =journalKey/>
+    <#assign journalKey =journalKey/>
 </@themeConfig>
 
 <body id="page-browse" class="plosone">
-
 
 <div id="container-main">
 <#include "common/header/headerContainer.ftl" />

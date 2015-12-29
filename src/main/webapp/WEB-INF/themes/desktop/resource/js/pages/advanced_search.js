@@ -17,6 +17,9 @@ var AdvancedSearch = {};
     inputConditionContainerSelector  : '#input-condition-container',
     inputConditionSelector  : 'input.query-condition-value',
     inputQuerySelector      : '#unformatted-query-input',
+    inputFromDateSelector   : '#date-search-query-input-from',
+    inputToDateSelector     : '#date-search-query-input-to',
+
     clearButtonSelector     : '#searchFieldButton .clear'
   };
 
@@ -70,6 +73,27 @@ var AdvancedSearch = {};
             that.replaceRowInputTemplate(row, newInputTemplateSelector);
           }
           that.refreshSearchInput();
+        })
+
+        .on('template-replaced', function (e, row) {
+          $(row)
+              .find('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                maxDate: '0',
+                dateFormat: 'yy-mm-dd',
+                yearRange: '2003:+0'
+              }).end()
+
+              //Start Date max date is the entered End Date. End Date min date is the entered Start Date.
+              //Both Start and End Dates have a strict maximum of the current day
+              .find(that.inputFromDateSelector).on('change', function(){
+                $(row).find(that.inputToDateSelector).datepicker('option', 'minDate', this.value);
+              }).end()
+
+              .find(that.inputToDateSelector).on('change', function(){
+                $(row).find(that.inputFromDateSelector).datepicker('option', 'maxDate', this.value);
+              });
         })
 
         .data('advanced-search-initialized', true);
@@ -167,7 +191,7 @@ var AdvancedSearch = {};
     /* Append current input template */
     rowInputContainer.append(inputTemplate());
     /* Store template selector in div's data for future template-in-use checking */
-    row.data('input-template-in-use', newTemplateSelector);
+    row.data('input-template-in-use', newTemplateSelector).trigger('template-replaced', row);
   };
 
   AdvancedSearch.resetInputs = function () {
@@ -198,9 +222,9 @@ var AdvancedSearch = {};
     query += row.find('select.operator').val() + ' ';
     query += row.find('select.category').val() + ':';
 
-    /* Special treatement is required when fields are dates */
     var queryValue = '';
-    if (row.find('input')[0].type === 'date') {
+    if (row.find('input').hasClass('datepicker')) {
+      /* Special treatement is required when inputs are datepickers */
       queryValue = this.processDateCondition(row.find('input'));
     } else {
       queryValue = row.find('input').val();
@@ -246,11 +270,9 @@ var AdvancedSearch = {};
 
   AdvancedSearch.destroy = function (containerSelector) {
     if (AdvancedSearch.isInitialized(containerSelector)) {
-      $(this.containerSelector).off('click change keyup');
       AdvancedSearch.enableSearchInput();
-      $(containerSelector).children().remove();
+      $(containerSelector).off('click change keyup').data('advanced-search-initialized', false).children().remove();
       $(this.inputSearchSelector).val('');
-      $(this.containerSelector).data('advanced-search-initialized', false);
     }
   };
 

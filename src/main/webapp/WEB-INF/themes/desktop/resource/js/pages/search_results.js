@@ -16,24 +16,22 @@
 
   $(document).ready(function() {
 
-    $( ".datepicker" ).datepicker({
+    $('.datepicker').datepicker({
       changeMonth: true,
       changeYear: true,
       maxDate: '0',
       dateFormat: 'yy-mm-dd',
-      yearRange: "2003:+0"
+      yearRange: '2003:+0'
     });
 
     //Start Date max date is the entered End Date. End Date min date is the entered Start Date.
     //Both Start and End Dates have a strict maximum of the current day
     $('#dateFilterStartDate').change(function(){
-      var minDate = $(this).val() ? $(this).val() : '';
-      $('#dateFilterEndDate').datepicker('option', 'minDate', minDate)
+      $('#dateFilterEndDate').datepicker('option', 'minDate', this.value);
     });
 
     $('#dateFilterEndDate').change(function(){
-      var maxDate = $(this).val() ? $(this).val() : '0';
-      $('#dateFilterStartDate').datepicker('option', 'maxDate', maxDate)
+      $('#dateFilterStartDate').datepicker('option', 'maxDate', this.value);
     });
 
     $('.search-results-alm').each(function () {

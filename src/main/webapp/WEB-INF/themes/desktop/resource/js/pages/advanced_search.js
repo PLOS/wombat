@@ -91,7 +91,11 @@ var AdvancedSearch = {};
               //Start Date max date is the entered End Date. End Date min date is the entered Start Date.
               //Both Start and End Dates have a strict maximum of the current day
               .find(that.inputFromDateSelector).on('change', function(){
-                $(row).find(that.inputToDateSelector).datepicker('option', 'minDate', this.value);
+                var toDatepicker = $(row).find(that.inputToDateSelector);
+                if (!toDatepicker.val()) { // Add default date of Now()
+                  toDatepicker.datepicker('setDate', new Date());
+                }
+                toDatepicker.datepicker('option', 'minDate', this.value);
               }).end()
 
               .find(that.inputToDateSelector).on('change', function(){
@@ -249,7 +253,7 @@ var AdvancedSearch = {};
         return;
       }
 
-      processedDates += dateInput.value + 'T00:00:00Z';
+      processedDates += dateInput.value + (ix === 0 ? 'T00:00:00Z' : 'T23:59:59Z');
       if (ix !== (dates.length - 1)) {
         /* add ' TO ' to all elements but the lastone */
         processedDates += ' TO ';

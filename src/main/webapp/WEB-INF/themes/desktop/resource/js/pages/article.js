@@ -106,6 +106,13 @@
     spin_target = document.getElementById('loadingMetrics');
     almspinner = new Spinner(spin_opts).spin(spin_target);
 
+    FigureLightbox.init('#article-lightbox', function (err) {
+      if (err) return console.log(err.message);
+      $('.lightbox-figure').on('click', function () {
+        FigureLightbox.loadImage($(this).data('figure-doi'));
+      });
+    });
+
   });
 
 

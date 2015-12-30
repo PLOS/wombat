@@ -1,0 +1,226 @@
+/* form elements */
+
+form.standard{
+  color: #333;
+}
+
+form.standard ul li {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-bottom: 10px;
+  display: block;
+}
+form.standard ul li.short{ }
+form.standard ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+form.standard input[type="text"],form.standard textarea {
+  font-size: 16px;
+  border: 1px solid #b3b3b3;
+  border-radius: 3px;
+  padding: 8px 10px 6px;
+  box-shadow: inset 3px 3px 3px rgba(0,0,0,0.1);
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+form.standard textarea {
+  height: 10.5em;
+}
+
+form.standard li.small div{
+  width: 48%;
+  float: left;
+}
+
+form.standard li.small div.last {
+  float: right;
+}
+
+form.standard label {
+  display: inline-block;
+  font: 12px 'FS Albert Web Regular', Verdana, sans-serif;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+
+form.standard input[type="button"],
+form.standard input[type="submit"],
+form.standard .button,
+.ui-dialog .ui-dialog-buttonset .ui-button{
+  background: #333;
+  color: #fff;
+  margin-right: 2px;
+  padding: 9px 10px;
+  border: 0;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+form.standard input[type="button"]:hover,
+form.standard input[type="submit"]:hover,
+form.standard .button:hover,
+.ui-dialog .ui-dialog-buttonset .ui-button:hover{
+  background: #3c63af !important;
+  color: #fff !important;
+}
+
+form.standard input[type="button"].primary,
+form.standard input[type="submit"].primary,
+form.standard .button.primary,
+.ui-dialog .ui-dialog-buttonset .primary.ui-button{
+  background: #f8af2d;
+  color: #333;
+}
+
+form.standard .note{
+  font-size: 11px;
+}
+
+a#media-coverage-form-link {
+  cursor: pointer;
+}
+
+/* Styling for forms */
+.form-default {
+  position: relative;
+  display: block;
+}
+
+.form-default fieldset {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.form-default ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-default ol li {
+  position: relative;
+  list-style: none;
+  display: block;
+  padding-bottom: 14px;
+  background-color: transparent;
+  background-image: none;
+  clear: both;
+}
+
+.form-default ol li label {
+  display: block;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 6px;
+  line-height: normal;
+  font-weight: bold;
+}
+
+.form-default ol li input[type=text] {
+  width: 206px;
+  border: 1px solid #999;
+  padding: 2px;
+}
+
+.form-default ol li textarea {
+  margin-right: 5px;
+}
+
+.recaptcha_nothad_incorrect_sol {
+  display: inline-block;
+}
+
+.form-default textarea {
+  width: 324px;
+}
+
+.form-default span.note {
+  font-size: 13px;
+  color: #999;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.form-default{
+
+  .btn,
+  a.btn{
+    background: #333;
+    font-size: 15px;
+    line-height: 35px;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+    padding: 0 10px;
+    display: inline-block;
+    border-radius: 4px;
+    font-family: arial;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .btn.primary,
+  .btn.main{
+    background: #F8AF2D;
+    color: #333;
+  }
+
+  .btn.primary:hover,
+  .btn.primary.active,
+  .btn.active,
+  .btn:hover{
+    background: #3c63af;
+    color: #fff;
+    text-decoration: none;
+  }
+
+.btn.inactive {
+    background-color: #646464;
+    color: #FFF;
+  }
+
+  input.btn {
+    line-height: normal;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+}
+
+.form-label {
+  margin-bottom: 6px;
+  display: block;
+  font-size: 12px;
+  color: #333;
+  font-weight: bold;
+}
+
+.form-error,
+.form-default ol .error{
+  color: #f03;
+}
+
+.emailrequired {
+  color: #A61200
+}
+
+.required {
+  color: #f03;
+  font-size: 13px;
+  font-weight: bold;
+}

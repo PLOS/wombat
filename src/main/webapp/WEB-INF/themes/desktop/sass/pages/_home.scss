@@ -517,6 +517,9 @@ $image-container: ($image-width + $pad-small);
   height: $block-height;
   position: relative;
 
+  &.tall{
+    height: rem-calc(425);
+  }
   .block-header {
     @extend %brand-header;
     @extend %link-text-white;

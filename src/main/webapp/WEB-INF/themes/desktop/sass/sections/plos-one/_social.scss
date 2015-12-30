@@ -1,0 +1,27 @@
+.home {
+  /* TWEETS */
+  #twitter {
+    width: 306px;
+    height: 387px;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    margin: 0;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+  /* END TWEETS */
+
+
+  /* CONNECT */
+  #social-links {
+    position: absolute;
+    top: 705px;
+    right: 0;
+    margin: 0;
+  }
+  /* END CONNECT */
+}

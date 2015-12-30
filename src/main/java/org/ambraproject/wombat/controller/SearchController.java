@@ -25,6 +25,7 @@ import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -36,6 +37,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -70,12 +72,14 @@ public class SearchController extends WombatController {
   @Autowired
   private SearchFilterService searchFilterService;
 
+  private final String BROWSE_RESULTS_PER_PAGE = "13";
+
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
    * search and an advanced search will have many parameters in common, such as sort order, date range, page, results
    * per page, etc.  This class eliminates the need to have long lists of @RequestParam parameters duplicated across
    * many controller methods.
-   * <p/>
+   * <p>
    * This class also contains logic having to do with which parameters take precedence over others, defaults when
    * parameters are absent, and the like.
    */
@@ -197,7 +201,7 @@ public class SearchController extends WombatController {
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
           getSingleParam(params, "filterStartDate", null), getSingleParam(params, "filterEndDate", null));
       journalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
-              ? new ArrayList<String>() : params.get("filterJournals");
+          ? new ArrayList<String>() : params.get("filterJournals");
 
       filterJournalNames = new HashSet<>();
       for (String journalKey : journalKeys) {
@@ -426,7 +430,7 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume", "!subject"})
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
+                       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
@@ -485,6 +489,23 @@ public class SearchController extends WombatController {
     return search(request, model, site, params);
   }
 
+  @RequestMapping(name = "browse", value = "/browse", params = "!filterSubjects")
+  public String browse(HttpServletRequest request, Model model, @SiteParam Site site,
+                       @RequestParam MultiValueMap<String, String> params) throws IOException {
+    subjectAreaSearch(request, model, site, params, "");
+    return site.getKey() + "/ftl/browseSubjectArea";
+  }
+
+  @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}", params = "!filterSubjects")
+  public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
+                                  @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
+      throws IOException {
+    enforceDevFeature("browse");
+    subjectAreaSearch(request, model, site, params, subject);
+    return site.getKey() + "/ftl/browseSubjectArea";
+  }
+
+
   // Requests coming from the advanced search form with URLs beginning with "/search/quick/" will always
   // have the parameters id, eLocationId, and volume, although only one will be populated.  The expressions
   // like "id!=" in the following request mappings cause spring to map to controller methods only if
@@ -533,15 +554,15 @@ public class SearchController extends WombatController {
    * Searches for all articles in the volume identified by the value of the volume parameter.
    *
    * @param request HttpServletRequest
-   * @param model model that will be passed to the template
-   * @param site site the request originates from
-   * @param params all URL parameters
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
    * @return String indicating template location
    * @throws IOException
    */
   @RequestMapping(name = "volumeSearch", value = "/search", params = {"volume!="})
   public String volumeSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
+                             @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
@@ -627,5 +648,55 @@ public class SearchController extends WombatController {
   private void addOptionsToModel(Model model) {
     model.addAttribute("sortOrders", SolrSearchServiceImpl.SolrSortOrder.values());
     model.addAttribute("dateRanges", SolrSearchServiceImpl.SolrEnumeratedDateRange.values());
+  }
+
+  /**
+   * Set defaults and performs search for subject area landing page
+   *
+   * @param request HTTP request for browsing subject areas
+   * @param model model that will be passed to the template
+   * @param site site the request originates from
+   * @param params HTTP request params
+   * @param subject the subject area to be search; return all articles if no subject area is provided
+   * @throws IOException
+   */
+  private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
+                                 MultiValueMap<String, String> params, String subject) throws IOException {
+
+    if (Strings.isNullOrEmpty(subject)) {
+      params.add("subject", "");
+    } else {
+      params.add("subject", subject.replace("_", " "));
+    }
+
+    // set defaults for subject area landing page
+    if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {
+      params.add("resultsPerPage", BROWSE_RESULTS_PER_PAGE);
+    }
+
+    if (ListUtil.isNullOrEmpty(params.get("sortOrder"))) {
+      params.add("sortOrder", "DATE_NEWEST_FIRST");
+    }
+
+    if (ListUtil.isNullOrEmpty(params.get("filterJournals"))) {
+      params.add("filterJournals", site.getJournalKey());
+    }
+
+    CommonParams commonParams = new CommonParams(siteSet, site);
+    commonParams.parseParams(params);
+    commonParams.addToModel(model, request);
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery("")
+        .setSimple(false);
+    commonParams.fill(query);
+
+    ArticleSearchQuery queryObj = query.build();
+    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+    model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
+    model.addAttribute("searchResults", searchResults);
+    model.addAttribute("page", commonParams.getSingleParam(params, "page", "0"));
+    model.addAttribute("journalKey", site.getKey());
   }
 }

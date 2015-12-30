@@ -131,8 +131,6 @@
 
     </section>
 </#if>
-</form>
-
 
 <#if searchResults.numFound != 0 && isFiltered>
 <div class="filter-view-container">
@@ -180,6 +178,8 @@
     </section>
 </div>
 </#if>
+</form>
+
 
 <#--PG-shoudl this be a header?-->
 

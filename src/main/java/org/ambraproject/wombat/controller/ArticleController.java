@@ -10,6 +10,7 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Iterators;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
@@ -26,6 +27,7 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CommentFormatting;
+import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
@@ -136,6 +138,8 @@ public class ArticleController extends WombatController {
   private FreemarkerMailService freemarkerMailService;
   @Autowired
   private JavaMailSender javaMailSender;
+  @Autowired
+  private CommentValidationService commentValidationService;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -180,7 +184,7 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/comments";
   }
 
-  @RequestMapping(name = "articleCommentPost", value = "/article/comments/new")
+  @RequestMapping(name = "articleCommentForm", value = "/article/comments/new")
   public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId)
       throws IOException {
@@ -434,6 +438,47 @@ public class ArticleController extends WombatController {
 
     return site + "/ftl/article/comment/comment";
   }
+
+  @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
+  @ResponseBody
+  public Object receiveNewComment(HttpServletRequest request,
+                                  @SiteParam Site site,
+                                  @RequestParam("commentTitle") String commentTitle,
+                                  @RequestParam("comment") String commentBody,
+                                  @RequestParam(value = "ciStatement", required = false) String ciStatement,
+                                  @RequestParam("inReplyTo") String parentUri,
+                                  @RequestParam("isCompetingInterest") boolean hasCompetingInterest) {
+    enforceDevFeature("commentsTab");
+    Map<String, Object> validationErrors = commentValidationService.validate(site,
+        commentTitle, commentBody, hasCompetingInterest, ciStatement);
+    if (!validationErrors.isEmpty()) {
+      return ImmutableMap.of("errors", validationErrors);
+    }
+    String createdCommentUri = ""; // TODO: Implement
+    return ImmutableMap.of("createdCommentUri", createdCommentUri);
+  }
+
+  @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
+  @ResponseBody
+  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site) {
+    enforceDevFeature("commentsTab");
+    return ImmutableMap.of(); // TODO: Implement
+  }
+
+  @RequestMapping(name = "ajaxComment", method = RequestMethod.GET, value = "/article/comment/ajax")
+  @ResponseBody
+  public Object ajaxComment(HttpServletRequest request, @SiteParam Site site,
+                            @RequestParam("id") String commentId) throws IOException {
+    enforceDevFeature("commentsTab");
+    Map<String, ?> comment;
+    try {
+      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+    } catch (EntityNotFoundException enfe) {
+      throw new NotFoundException(enfe);
+    }
+    return CommentFormatting.addFormattingFields(comment);
+  }
+
 
   /**
    * Serves a request for the "about the authors" page for an article.

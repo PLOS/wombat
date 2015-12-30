@@ -5,7 +5,16 @@
 @import "sections/ambra/_forms";
 
 /* comments */
+.cf{
+  @include clearfix;
+}
+// For forklifting purposes allows us to use ems
+%size-overide{
+  *{font-size: 13px;}
+}
+
 #thread {
+@extend %size-overide;
   h2 {
     margin: 30px 10px;
   }
@@ -94,6 +103,7 @@
 
 /* comments responses */
 #responses {
+  @extend %size-overide;
   .response {
     margin-bottom: 30px;
   }
@@ -119,6 +129,7 @@
 
   .response.original .info {
     border-top: 5px solid #f8af2d;
+    @extend %brand-border;
   }
 
   .response .response_content {
@@ -135,12 +146,6 @@
     margin-bottom: 10px;
   }
 
-  .response .toolbar .btn {
-    background: #333;
-    color: #FFF;
-    font-size: 1em;
-  }
-
   .response .info .arrow {
     width: 18px;
     height: 25px;
@@ -152,10 +157,14 @@
 }
 
 .reply {
+  @extend %size-overide;
   background-color: #333;
-  color: #FFF;
   padding: 30px 30px 15px 30px;
   position: relative;
+  color: #FFF;
+  h2.h3,h4,a, p, div {
+    color: #FFF;
+  }
 }
 
 .reply h4 {
@@ -168,7 +177,6 @@
 }
 
 .reply a {
-  color: #FFF;
   text-decoration: underline;
 }
 

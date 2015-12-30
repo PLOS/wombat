@@ -36,19 +36,81 @@
 
         <div class="reply_content">
         <#include "newCommentForm.ftl" />
-          <@newCommentForm/>
+          <@newCommentForm false />
         </div>
-
       </div>
+
+      <div id="report_prototype" class="reply review cf" style="display: none">
+        <div class="flagForm">
+          <h4>Why should this posting be reviewed?</h4>
+
+          <div class="reply_content">
+          <#include "flagPreamble.ftl" />
+          </div>
+
+          <div class="error" style="display:none;"></div>
+
+          <form class="cf">
+            <fieldset class="">
+              <div class="cf">
+                <input type="radio" name="reason" value="spam" id="spam" checked/>
+                <label for="spam">Spam</label>
+              </div>
+              <div class="cf">
+                <input type="radio" name="reason" value="offensive" id="offensive"/>
+                <label for="offensive">Offensive</label>
+              </div>
+              <div class="cf">
+                <input type="radio" name="reason" value="inappropriate" id="inappropriate"/>
+                <label for="inappropriate">Inappropriate</label>
+              </div>
+              <div class="cf">
+                <input type="radio" name="reason" value="other" id="other"/>
+                <label for="other">Other</label>
+              </div>
+              <div id="flag_text">
+                <textarea placeholder="Add any additional information here..." name="additional_info"></textarea>
+              </div>
+
+            <#-- JavaScript fills in these buttons' on-click behaviors when the box appears. -->
+              <span class="btn btn_cancel">cancel</span>
+              <span class="btn primary btn_submit">submit</span>
+            </fieldset>
+          </form>
+        </div>
+        <!--end flagForm-->
+
+        <div class="flagConfirm" style="display: none;">
+          <h4>Thank You!</h4>
+
+          <p>Thank you for taking the time to flag this posting; we review flagged postings on a regular basis.</p>
+          <span class="close_confirm">close</span>
+        </div>
+      </div>
+      <!--end report_prototype-->
 
       <div id="responses">
 
       <#include "userInfoLink.ftl" />
 
+      <#assign indentationWidth = 30 />
+
+      <#--
+          Global counter, incremented once for each time renderComment is called.
+          Guaranteed to be unique only within this page, for HTML and JS purposes.
+          Do not pass these IDs anywhere outside the context of a single page rendering.
+          We do it this way so that simple integers can be concatenated into HTML attributes;
+          the comments' identifying URIs are not suitable for this.
+        -->
+      <#assign commentId = 0 />
+
       <#macro renderComment comment depth replyTo>
-        <div class="response <#if depth==0>original</#if>"
+        <#assign commentId = commentId + 1 />
+        <div id="reply-${commentId}"
+             class="form-default response <#if depth==0>original</#if>"
+             data-uri="${comment.annotationUri}"
              data-depth="${depth?c}"
-             style="margin-left: ${(depth * 30)?c}px"
+             style="margin-left: ${(depth * indentationWidth)?c}px"
             >
 
           <div class="info">
@@ -99,18 +161,25 @@
             </#if>
           </div>
 
-          <div class="toolbar form-default">
+          <div class="toolbar">
             <#assign userIsLoggedIn = Session["SPRING_SECURITY_CONTEXT"]?exists && Session["SPRING_SECURITY_CONTEXT"].authentication.authenticated />
+            <#assign userIsLoggedIn = true /> <#-- DEBUG! TODO: Remove -->
             <@siteLink handlerName="userLogin" ; login>
-              <a href="${login}" title="Report a Concern"
-                 class="flag toolbar btn <#if userIsLoggedIn>primary</#if>"
-                 <#if userIsLoggedIn>onclick="<#--TODO-->"</#if>
+              <a title="Report a Concern" class="flag toolbar btn"
+                <#if userIsLoggedIn>
+                 onclick="comments.showReportBox('${commentId?c}'); return false;"
+                <#else>
+                 href="${login}"
+                </#if>
                   >
                 report a concern
               </a>
-              <a href="${login}" title="Click to respond"
-                 class="respond toolbar btn <#if userIsLoggedIn>primary</#if>"
-                 <#if userIsLoggedIn>onclick="<#--TODO-->"</#if>
+              <a title="Click to respond" class="respond toolbar btn"
+                <#if userIsLoggedIn>
+                 onclick="comments.showRespondBox('${commentId?c}', ${depth?c}); return false;"
+                <#else>
+                 href="${login}"
+                </#if>
                   >
                 respond to this posting
               </a>
@@ -141,25 +210,8 @@
 <#include "../../common/footer/footer.ftl" />
 
 
-<@js src="resource/js/components/show_onscroll.js"/>
-<@js src="resource/js/components/table_open.js"/>
-<@js src="resource/js/components/figshare.js"/>
-<@js src="resource/js/components/tooltip_hover.js"/>
-
-<@js src="resource/js/util/alm_config.js"/>
-<@js src="resource/js/util/alm_query.js"/>
-<@js src="resource/js/vendor/moment.js"/>
-<@js src="resource/js/vendor/jquery.jsonp-2.4.0.js"/>
-<@js src="resource/js/vendor/hover-enhanced.js"/>
-<@js src="resource/js/highcharts.js"/>
-
-<@js src="resource/js/components/twitter_module.js"/>
-<@js src="resource/js/components/signposts.js"/>
-<@js src="resource/js/components/nav_builder.js"/>
-<@js src="resource/js/components/floating_nav.js"/>
-
-<@js src="resource/js/pages/article.js"/>
-<@js src="resource/js/pages/article_sidebar.js"/>
+<#include "../articleJs.ftl" />
+<#include "commentSubmissionJs.ftl" />
 <@renderJs />
 
 

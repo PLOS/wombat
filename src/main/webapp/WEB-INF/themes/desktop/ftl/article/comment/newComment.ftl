@@ -28,11 +28,11 @@
     <div id="thread">
       <h2>Start a Discussion</h2>
 
-      <div class="reply cf" id="respond">
+      <div class="reply cf form-default" id="respond">
         <h4>Post Your Discussion Comment</h4>
 
       <#include "newCommentForm.ftl" />
-      <@newCommentForm/>
+      <@newCommentForm true />
 
       </div>
 
@@ -47,25 +47,8 @@
 <#include "../../common/footer/footer.ftl" />
 
 
-<@js src="resource/js/components/show_onscroll.js"/>
-<@js src="resource/js/components/table_open.js"/>
-<@js src="resource/js/components/figshare.js"/>
-<@js src="resource/js/components/tooltip_hover.js"/>
-
-<@js src="resource/js/util/alm_config.js"/>
-<@js src="resource/js/util/alm_query.js"/>
-<@js src="resource/js/vendor/moment.js"/>
-<@js src="resource/js/vendor/jquery.jsonp-2.4.0.js"/>
-<@js src="resource/js/vendor/hover-enhanced.js"/>
-<@js src="resource/js/highcharts.js"/>
-
-<@js src="resource/js/components/twitter_module.js"/>
-<@js src="resource/js/components/signposts.js"/>
-<@js src="resource/js/components/nav_builder.js"/>
-<@js src="resource/js/components/floating_nav.js"/>
-
-<@js src="resource/js/pages/article.js"/>
-<@js src="resource/js/pages/article_sidebar.js"/>
+<#include "../articleJs.ftl" />
+<#include "commentSubmissionJs.ftl" />
 <@renderJs />
 
 

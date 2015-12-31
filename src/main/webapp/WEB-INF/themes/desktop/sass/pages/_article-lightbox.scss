@@ -1,0 +1,149 @@
+#figure-lightbox {
+  .lb-header {
+    font-family: $font-face-fancy;
+    padding: $fv-small rem-calc(280) 0 1.1%;
+    height: rem-calc(46);
+    background: $grey-dark;
+    position: relative;
+    border-right: rem-calc(46) solid transparent;
+    z-index: map_get($zindex, topvisible);
+
+    h1, h1 a {
+      font-size: $txt-size-medium;
+      margin: 0 0 rem-calc(2);
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: $grey-light;
+      line-height: normal;
+    }
+
+    a:hover {
+      color: $grey-light;
+      text-decoration: none;
+    }
+  }
+
+  .lb-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    li {
+      display: inline-block;
+      float: left;
+      border-right: 1px solid $grey-med-dark;
+      padding: 0 $pad-smallish;
+      font-size: $txt-size-medium-large;
+      line-height: rem-calc(46);
+      color: $white;
+      cursor: pointer;
+      outline: 0;
+
+      // special handling for PLOSOne is in _utilities.scss in the brand color section
+      &.tab_active {
+        @extend %brand-background;
+      }
+
+      &:hover {
+        background: $plos-default;
+        color: $white;
+      }
+    }
+  }
+
+  .lb-close {
+    background: image-url('sprite.fv.png') no-repeat -40px 0;
+    position: absolute;
+    right: rem-calc(-46);
+    top: 0;
+    width: rem-calc(46);
+    height: rem-calc(46);
+    cursor: pointer;
+    color: $grey-light;
+    &:hover {
+      @extend %brand-background;
+    }
+  }
+
+  h3 {
+    margin-bottom: $pad-default;
+    font-family: $font-face-plain;
+    font-size: $txt-size-large;
+    font-weight: bold;
+    color: $grey-dark;
+  }
+
+  .img-container {
+    img {
+      max-width: 80%;
+    }
+    min-width: 100%;
+    min-height: 70%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .btns-container {
+    @extend %brand-background;
+    .range-slider-container {
+      position: relative;
+      .range-slider-handle {
+        background-color: white;
+      }
+      .range-slider {
+        width: 90%;
+        margin-left: 5%;
+        background-color: rgba(255,255,255,0.64);
+      }
+
+      #lb-zoom-min,
+      #lb-zoom-max {
+        width: rem-calc(16);
+        height: rem-calc(16);
+        background: image-url('sprite.fv.png');
+        cursor: pointer;
+        position: absolute;
+        top: rem-calc(19px);
+      }
+
+      #lb-zoom-min {
+        left: -5px;
+        background-position: -110px 0;
+        cursor: -webkit-zoom-out;
+        cursor: -moz-zoom-out;
+      }
+
+      #lb-zoom-max {
+        right: -5px;
+        background-position: -90px 0;
+        cursor: -webkit-zoom-in;
+        cursor: -moz-zoom-in;
+      }
+
+
+    }
+  }
+
+  .lightbox-row {
+    @extend .plos-row;
+    max-width: 100%;
+    .lightbox-col-1 {
+      @include plos-grid-column($pixelwidth: columns, $columns: 1, $gutter: none, $collapse: false);
+    }
+    .lightbox-col-3 {
+      @include plos-grid-column($pixelwidth: columns, $columns: 3, $gutter: none, $collapse: false);
+    }
+    .lightbox-col-4 {
+      @include plos-grid-column($pixelwidth: columns, $columns: 4, $gutter: none, $collapse: false);
+    }
+  }
+
+}
+
+
+

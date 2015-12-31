@@ -15,24 +15,7 @@
   }
 
   $(document).ready(function() {
-
-    $('.datepicker').datepicker({
-      changeMonth: true,
-      changeYear: true,
-      maxDate: '0',
-      dateFormat: 'yy-mm-dd',
-      yearRange: '2003:+0'
-    });
-
-    //Start Date max date is the entered End Date. End Date min date is the entered Start Date.
-    //Both Start and End Dates have a strict maximum of the current day
-    $('#dateFilterStartDate').change(function(){
-      $('#dateFilterEndDate').datepicker('option', 'minDate', this.value);
-    });
-
-    $('#dateFilterEndDate').change(function(){
-      $('#dateFilterStartDate').datepicker('option', 'maxDate', this.value);
-    });
+    RangeDatepicker.init($('#dateFilterStartDate'), $('#dateFilterEndDate'));
 
     $('.search-results-alm').each(function () {
       var $alm = $(this);

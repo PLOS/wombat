@@ -69,11 +69,11 @@
                 method="get">
               <h3>Publication Date</h3>
 
-              <input name="filterStartDate" id="dateFilterStartDate" type="text" class="datepicker"
+              <input name="filterStartDate" id="dateFilterStartDate" type="text" class="fdatepicker"
                      <#if filterStartDate??>value="${filterStartDate}"</#if>>
 
               <div>&nbsp;to</div>
-              <input name="filterEndDate" id="dateFilterEndDate" type="text" class="datepicker"
+              <input name="filterEndDate" id="dateFilterEndDate" type="text" class="fdatepicker"
                      <#if filterEndDate??>value="${filterEndDate}"</#if>>
 
               <input type="submit" id="dateFilterSubmitButton" value="Apply">

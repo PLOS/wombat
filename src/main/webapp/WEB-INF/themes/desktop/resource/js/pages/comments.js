@@ -274,12 +274,18 @@
       sendAjaxRequest(submitUrl, data,
           function (data, textStatus, jqXHR) {
             // The Ajax request had no errors, but the server may have sent back user validation errors.
-            var errors = [];
-            for (var errorKey in data.fieldErrors) {
-              errors.push(data.fieldErrors[errorKey]);
+            var errors = []
+            for (var errorKey in data.errors) {
+              errors.push({key: errorKey, value: data.errors[errorKey]});
             }
             if (errors.length > 0) {
-              errorMsgElement.html(errors.join('<br/>'));
+              for (var i in errors) {
+                var error = errors[i];
+                var msg = errorMsgElement.find(".commentErrorMessage[data-error-key='" + error.key + "']");
+                msg.show();
+              }
+
+              //errorMsgElement.html(errors.join('<br/>'));
               animatedShow(errorMsgElement);
 
               // #respond starting a discussion

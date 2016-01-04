@@ -1,12 +1,17 @@
 <#if article.figures?has_content>
 <div>
   <#list article.figures as figure>
-
+    <#list figure?keys as key>
+    ${key}
+    </#list>
   <#-- Omit figures that don't appear in article body (e.g. a striking image) -->
     <#if figure.contextElement?has_content>
 
       <@siteLink path=("article/figure/image?size=small&id=" + figure.doi) ; src>
-        <a href="#" class="lightbox-figure" data-figure-doi="${figure.doi}">
+        <a href="#" class="lightbox-figure"
+           data-figure-doi="${figure.doi?html}"
+           data-figure-title="${figure.title?html}"
+           data-figure-description="${figure.description?html}">
           <img src="${src?html}"
             <#if figure.title?has_content >
                alt="${figure.title?html}"
@@ -25,13 +30,17 @@
   <div id="figure-lightbox" class="reveal-modal full" data-reveal aria-labelledby="modalTitle" aria-hidden="true"
        role="dialog">
     <div class="lb-header">
-      <h1 id="lb-title"></h1>
+      <h1 id="lb-title"><%= articleTitle %></h1>
 
-      <div id="lb-authors"></div>
+      <div id="lb-authors">
+        <% authorList.split(',').forEach(function (author) { %>
+          <span><%= author.trim() %></span>
+        <% }) %>
+      </div>
 
       <ul class="lb-nav">
         <li class="abst">Abstract</li>
-        <li class="figs">Figures</li>
+        <li class="figs tab-active">Figures</li>
         <li class="refs">References</li>
       </ul>
 
@@ -41,8 +50,7 @@
       <img src=""/>
     </div>
     <div class="btns-container lightbox-row">
-      <div class="lightbox-col-4">&nbsp;</div>
-      <div class="range-slider-container lightbox-col-4">
+      <div class="range-slider-container">
         <div id="lb-zoom-min"></div>
         <div class="range-slider round" data-slider data-options="step: 0.05; start: 0.05; end: 5; initial: 1;">
           <span class="range-slider-handle" role="slider" tabindex="0"></span>
@@ -51,6 +59,13 @@
         </div>
         <div id="lb-zoom-max"></div>
       </div>
+    </div>
+    <div class="lightbox-footer">
+      <div class="footer-text">
+        <span class="figure-title"><%= title %></span>
+        <%= description %>
+      </div>
+
     </div>
   </div>
 </script>

@@ -109,7 +109,7 @@
     FigureLightbox.init('#figure-lightbox-container', function (err) {
       if (err) return console.log(err.message);
       $('.lightbox-figure').on('click', function () {
-        FigureLightbox.loadImage($(this).data('figure-doi'));
+        FigureLightbox.loadImage($(this).data('figure-doi'), $(this).data('figure-title'), $(this).data('figure-description'));
       });
     });
 

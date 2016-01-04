@@ -11,6 +11,7 @@ var FigureLightbox = {};
     lbCloseButtonSelector:    '.lb-close',
     zoomRangeSelector:        '.range-slider',
     $panZoomEl:               null,
+    imgData:                  null,
 
 
     /* internal config variables */
@@ -19,7 +20,6 @@ var FigureLightbox = {};
 
   FigureLightbox.init = function (lbContainer, cb) {
     this.lbContainerSelector = lbContainer;
-    this.insertLightboxTemplate();
 
     $(this.lbContainerSelector)
         .find(this.lbCloseButtonSelector).on('click', function () {
@@ -30,11 +30,33 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.insertLightboxTemplate = function () {
+    var articleData = this.fetchArticleData();
     var lbTemplate = _.template($(this.lbTemplateSelector).html());
-    $(this.lbContainerSelector).append(lbTemplate());
+    $(this.lbContainerSelector).append(lbTemplate(articleData));
   };
 
-  FigureLightbox.loadImage = function (imgDoi) {
+  // @TODO: Do not parse article. Fetch data via an ajax call
+  FigureLightbox.fetchArticleData = function () {
+    var $mainContainer = $(document).find('main');
+    return {
+      doi: this.imgData.doi,
+      title: this.imgData.title,
+      description: this.imgData.description,
+      articleTitle: $mainContainer.find('#artTitle').text(),
+      authorList: $mainContainer.find('.author-name').text(),
+      body: $mainContainer.find('#artText'),
+      abstractData: $mainContainer.find('.abstract'),
+      abstractInfo: $mainContainer.find('.articleinfo')
+    };
+  };
+
+  FigureLightbox.loadImage = function (imgDoi, imgTitle, imgDescription) {
+    this.imgData = {
+      doi: imgDoi || '0',
+      description: imgDescription || '',
+      title: imgTitle || ''
+    };
+    this.insertLightboxTemplate();
     $(this.lbSelector)
         .foundation('reveal', 'open');
     var $image = $(this.lbSelector).find('img').attr('src', this.buildImgUrl(imgDoi));

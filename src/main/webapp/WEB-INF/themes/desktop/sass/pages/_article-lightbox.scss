@@ -45,7 +45,7 @@
       outline: 0;
 
       // special handling for PLOSOne is in _utilities.scss in the brand color section
-      &.tab_active {
+      &.tab-active {
         @extend %brand-background;
       }
 
@@ -77,6 +77,25 @@
     font-weight: bold;
     color: $grey-dark;
   }
+
+  #lb-authors {
+    height: rem-calc(15);
+    line-height: rem-calc(15);
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: $txt-size-xxsmall;
+    color: $grey-med-light;
+
+    span {
+      white-space: nowrap;
+      padding-right: rem-calc(3);
+    }
+    span:last-child {
+      padding-right: 0;
+    }
+  }
+
 
   .img-container {
     img {
@@ -130,16 +149,54 @@
   }
 
   .lightbox-row {
-    @extend .plos-row;
+    text-align: center;
     max-width: 100%;
-    .lightbox-col-1 {
-      @include plos-grid-column($pixelwidth: columns, $columns: 1, $gutter: none, $collapse: false);
+    min-height: rem-calc(50px);
+    .range-slider-container {
+      text-align: initial;
+      display: inline-block;
+      width: 33%;
     }
-    .lightbox-col-3 {
-      @include plos-grid-column($pixelwidth: columns, $columns: 3, $gutter: none, $collapse: false);
-    }
-    .lightbox-col-4 {
-      @include plos-grid-column($pixelwidth: columns, $columns: 4, $gutter: none, $collapse: false);
+  }
+
+  .lightbox-footer {
+    position: relative;
+    height: rem-calc(120);
+    text-align: center;
+    background: $grey-light;
+    bottom: 0;
+    .footer-text {
+      word-wrap: break-word;
+      width: 34.4%;
+      background: $grey-light;
+      background: rgba(239,239,239,0.95);
+      text-align: left;
+      font-family: $font-face-plain;
+      font-size: $txt-size-xsmall;
+      line-height:rem-calc(18);
+      z-index: map-get($zindex, header);
+      .figure-title, title {
+        display: inline-block;
+        padding-top: rem-calc(3);
+        padding-right: rem-calc(16);
+        margin-bottom: 0;
+        font-weight: bold;
+        line-height: rem-calc(16);
+      }
+
+      a {
+        color: $plos-default;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      p {
+        font-family: $font-face-plain;
+        padding-top: $pad-xsmall;
+        font-size: $txt-size-xsmall;
+        line-height:rem-calc(18);
+      }
     }
   }
 

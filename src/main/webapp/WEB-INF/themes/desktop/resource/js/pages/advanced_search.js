@@ -1,3 +1,15 @@
+/**
+    Advanced search widget
+ Provided with a inputSearchSelector this widget will create a list of rows that contain
+ operators, condition and values that make a query builder interface for the user.
+ The resulting query is pasted into the inputSearchSelector element.
+
+ Be aware that the inputSearchSelector passed to the component should be an input[type=text] and
+ its values and properties (such as disabled, readonly, etc) will be modified by the component.
+ Also, in order to work with the current implementation, if the input has a parent fieldset then said
+ element might also be disabled.
+ 
+ */
 var AdvancedSearch = {};
 (function ($) {
   /* AdvancedSearch attributes */
@@ -223,6 +235,7 @@ var AdvancedSearch = {};
   };
 
   AdvancedSearch.disableSearchInput = function () {
+    // Has to disable the fieldset containing the input
     $(this.inputSearchSelector).attr('disabled', true)
         .parent('fieldset').addClass('disabled');
   };

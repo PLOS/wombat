@@ -12,14 +12,35 @@
         </div>
         <div class="advanced-search-col-3">
             <select class="category" title="Search Field">
-                <% categories.forEach(function (category) { %>
-                    <option value="<%= category.value %>"
-                        <%= category.selected ?  'selected' : '' %>
-                        <%= category.disabled ?  'disabled' : '' %>
-                        data-input-template="<%= category.inputTemplate %>">
-                            <%= category.name %>
-                    </option>
-                <% }); %>
+                <option value="" disabled=>----- Popular -----</option>
+                <option value="everything" selected>All Fields</option>
+                <option value="title" >Title</option>
+                <option value="author" >Author</option>
+                <option value="body" >Body</option>
+                <option value="abstract" >Abstract</option>
+                <option value="subject" >Subject</option>
+                <option value="publication_date" data-input-template="#date-search-input">Publication Date</option>
+                <option value="" disabled>----- Other -----</option>
+                <option value="subject" >Subject</option>
+                <option value="accepted_date" data-input-template="#date-search-input">Accepted Date</option>
+                <option value="id" >Article DOI (Digital Object Identifier)</option>
+                <option value="article_type" >Article Type</option>
+                <option value="author_affiliate" >Author Affiliations</option>
+                <option value="competing_interest" >Competing Interest Statement</option>
+                <option value="conclusions" >Conclusions</option>
+                <option value="editor" >Editor</option>
+                <option value="elocation_id" >eNumber</option>
+                <option value="figure_table_caption" >Figure &amp; Table Captions</option>
+                <option value="financial_disclosure" >Financial Disclosure Statement</option>
+                <option value="introduction" >Introduction</option>
+                <option value="issue" >Issue Number</option>
+                <option value="materials_and_methods" >Materials and Methods</option>
+                <option value="received_date" data-input-template="#date-search-input">Received Date</option>
+                <option value="reference" >References</option>
+                <option value="results_and_discussion" >Results and Discussion</option>
+                <option value="supporting_information" >Supporting Information</option>
+                <option value="trial_registration" >Trial Registration</option>
+                <option value="volume" >Volume Number</option>
             </select>
         </div>
         <div id="input-condition-container" class="advanced-search-col-7">

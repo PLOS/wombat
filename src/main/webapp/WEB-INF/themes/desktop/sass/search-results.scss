@@ -205,8 +205,9 @@ $controls-gray: $grey-med-light;
     background-color: $white;
   }
 
-  fieldset.disabled, fieldset.disabled button {
-    background-color: #EBEBE4;
+  fieldset.disabled, fieldset.disabled button, input[disabled] {
+    background-color: $clr-input-disabled;
+    cursor: no-drop;
   }
 
   input[type="text"] {

@@ -19,6 +19,8 @@ var AdvancedSearch = {};
     inputQuerySelector      : '#unformatted-query-input',
     inputFromDateSelector   : '#date-search-query-input-from',
     inputToDateSelector     : '#date-search-query-input-to',
+    operatorSelectSelector  : 'select.operator',
+    categorySelectSelector  : 'select.category',
 
     clearButtonSelector     : '#searchFieldButton .clear'
   };
@@ -63,7 +65,7 @@ var AdvancedSearch = {};
         })
 
         /* Change input type on category change */
-        .on('change', 'select.category', function (e) {
+        .on('change', this.categorySelectSelector, function (e) {
           var row = $(e.target).parents(that.rowSelector);
           var newInputTemplateSelector = $(e.target).find(':selected').data('input-template');
 
@@ -132,48 +134,6 @@ var AdvancedSearch = {};
     return $(containerSelector).data('advanced-search-initialized');
   };
 
-  /* inputTemplate options specifies whether to use an html template or not and which one */
-  var tmpOptions = [
-    {name: '----- Popular -----',   value: '', disabled: true},
-    {name: 'All Fields',   value: 'everything', selected: true},
-    {name: 'Title',   value: 'title'},
-    {name: 'Author',  value: 'author'},
-    {name: 'Body', value: 'body'},
-    {name: 'Abstract', value: 'abstract'},
-    {name: 'Subject', value: 'subject'},
-    {name: 'Publication Date',  value: 'publication_date', inputTemplate: '#date-search-input'},
-    {name: '----- Other -----',   value: '', disabled: true},
-    {name: 'Subject', value: 'subject'},
-    {name: 'Accepted Date',  value: 'accepted_date', inputTemplate: '#date-search-input'},
-    {name: 'Article DOI (Digital Object Identifier)', value: 'id'},
-    {name: 'Article Type', value: 'article_type'},
-    {name: 'Author Affiliations', value: 'author_affiliate'},
-    {name: 'Competing Interest Statement', value: 'competing_interest'},
-    {name: 'Conclusions', value: 'conclusions'},
-    {name: 'Editor', value: 'editor'},
-    {name: 'eNumber', value: 'elocation_id'},
-    {name: 'Figure & Table Captions', value: 'figure_table_caption'},
-    {name: 'Financial Disclosure Statement', value: 'financial_disclosure'},
-    {name: 'Introduction', value: 'introduction'},
-    {name: 'Issue Number', value: 'issue'},
-    {name: 'Materials and Methods', value: 'materials_and_methods'},
-    {name: 'Received Date', value: 'received_date', inputTemplate: '#date-search-input'},
-    {name: 'References', value: 'reference'},
-    {name: 'Results and Discussion', value: 'results_and_discussion'},
-    {name: 'Supporting Information', value: 'supporting_information'},
-    {name: 'Trial Registration', value: 'trial_registration'},
-    {name: 'Volume Number', value: 'volume'}
-  ];
-  AdvancedSearch.getCategoryOptions = function () {
-    /* @TODO: Remove hardcoded  options and replace with ajax call. Cache options for better performance */
-    if (this.categoryOptions) {
-      return this.categoryOptions;
-    }
-    /* @TODO: Replace with ajax call */
-    this.categoryOptions = tmpOptions;
-    return this.categoryOptions;
-  };
-
   AdvancedSearch.addControlButtons = function () {
     var templateControls = _.template($(this.templateControlsSelector).html());
     $(this.containerSelector).prepend(templateControls());
@@ -181,9 +141,9 @@ var AdvancedSearch = {};
 
   AdvancedSearch.addRow = function () {
     var templateRow = _.template($(this.templateRowSelector).html());
-    $(this.inputContainerSelector).append(templateRow({categories: this.getCategoryOptions()}))
+    $(this.inputContainerSelector).append(templateRow())
         /* trigger category change to process category input templates */
-        .find('select.category').trigger('change');
+        .find(this.categorySelectSelector).trigger('change');
   };
 
   AdvancedSearch.removeRow = function (row) {
@@ -226,8 +186,8 @@ var AdvancedSearch = {};
 
   AdvancedSearch.getRowQuery = function (row) {
     var query = '';
-    query += row.find('select.operator').val() + ' ';
-    query += row.find('select.category').val() + ':';
+    query += row.find(this.operatorSelectSelector).val() + ' ';
+    query += row.find(this.categorySelectSelector).val() + ':';
 
     var queryValue = '';
     if (row.find('input').hasClass('datepicker')) {

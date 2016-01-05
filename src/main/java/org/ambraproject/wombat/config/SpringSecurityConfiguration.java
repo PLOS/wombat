@@ -42,6 +42,8 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -203,16 +205,14 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   private void validateHostname(HttpServletRequest request) {
     ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
-    Stream<Optional<String>> hostNames = siteSet.getSites().stream()
+    Set<String> hostNames = siteSet.getSites().stream()
             .map((Site site) -> site.getRequestScheme().getHostName())
-            .filter(Optional::isPresent);
-    if (hostNames.count()>0) {
-      boolean hasValidHostname = hostNames
-              .anyMatch(hostName -> hostName.get().equals(clientEndpoint.getHostname()));
-      if (!hasValidHostname) {
+            .filter(Optional::isPresent)
+            .map(Optional::get)
+            .collect(Collectors.toSet());
+    if (!hostNames.isEmpty() && !hostNames.contains(clientEndpoint.getHostname())) {
         throw new AccessDeniedException(String.format("Attempt to validate against foreign hostname %s. " +
                 "Possible hijack attempt.", clientEndpoint.getHostname()));
-      }
     }
   }
 

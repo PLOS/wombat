@@ -439,15 +439,20 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/comment";
   }
 
+  /**
+   * @param parentArticleUri null if a reply to another comment
+   * @param parentCommentUri null if a direct reply to an article
+   */
   @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
   @ResponseBody
   public Object receiveNewComment(HttpServletRequest request,
                                   @SiteParam Site site,
                                   @RequestParam("commentTitle") String commentTitle,
                                   @RequestParam("comment") String commentBody,
+                                  @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
-                                  @RequestParam("inReplyTo") String parentUri,
-                                  @RequestParam("isCompetingInterest") boolean hasCompetingInterest) {
+                                  @RequestParam(value = "target", required = false) String parentArticleUri,
+                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) {
     enforceDevFeature("commentsTab");
     Map<String, Object> validationErrors = commentValidationService.validate(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);

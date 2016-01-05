@@ -16,6 +16,7 @@
       </@siteLink>
       <@siteLink handlerName="postComment" ; url>
         submitReplyURL: "${url?js_string}",
+        submitDiscussionURL: "${url?js_string}",
       </@siteLink>
       <@siteLink handlerName="ajaxComment" ; url> <#-- Omit 'id' parameter; JS will fill it in -->
         getAnnotationURL: "${url?js_string}",

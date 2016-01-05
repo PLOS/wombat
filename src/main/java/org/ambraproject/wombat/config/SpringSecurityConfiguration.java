@@ -64,7 +64,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   private static final String CAS_LOGOUT_URI = "/j_spring_cas_security_logout";
   private static final String CAS_AUTH_KEY = "casAuthProviderKey";
   private static final String LOGOUT_HANDLER_NAME = "userLogout"; // corresponds to @RequestHandler annotation name attribute
-  private static final String AUTH_INTERCEPT_PATTERN = "/**/user/secure/**";
+  private static final String USER_AUTH_INTERCEPT_PATTERN = "/**/user/secure/**";
+  private static final String NEW_COMMENT_AUTH_INTERCEPT_PATTERN = "/**/article/comments/new**";
+  private static final String FLAG_COMMENT_AUTH_INTERCEPT_PATTERN = "/**/article/comments/flag**";
 
   @Bean
   public ServiceProperties serviceProperties() {
@@ -166,7 +168,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     http.addFilter(casAuthenticationFilter())
             .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
             .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-            .authorizeRequests().antMatchers(AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
+            .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+            .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+            .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
     http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
     http.csrf().disable();
   }

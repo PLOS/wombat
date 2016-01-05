@@ -1,6 +1,7 @@
 <#-- The form for posting a comment. Wired by commentSubmissionJs.ftl. -->
 <#macro commentErrorMessage key>
-<p class="commentErrorMessage" data-error-key="${key}" style="display:none"><#nested/></p>
+<p class="commentErrorMessage" data-error-key="${key}" style="display:none"
+   data-error-message="<#nested/>"></p>
 </#macro>
 
 <#macro newCommentForm isStandalone>
@@ -9,7 +10,7 @@
 </div>
 
 <div id="responseSubmitMsg" class="error" style="display:none">
-<#-- Messages that can be revealed by JavaScript. TODO: Implement in JS -->
+<#-- Messages that can be revealed by JavaScript. -->
   <@commentErrorMessage "missingTitle">A title is required.</@commentErrorMessage>
   <@commentErrorMessage "missingBody">You must say something in your comment.</@commentErrorMessage>
   <@commentErrorMessage "missingCi">You must say something in your competing interest statement.</@commentErrorMessage>

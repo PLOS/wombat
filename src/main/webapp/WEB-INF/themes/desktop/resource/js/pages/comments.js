@@ -277,8 +277,8 @@
           function (data, textStatus, jqXHR) {
             // The Ajax request had no errors, but the server may have sent back user validation errors.
             var errors = [];
-            for (var errorKey in data.errors) {
-              errors.push({key: errorKey, value: data.errors[errorKey]});
+            for (var errorKey in data.validationErrors) {
+              errors.push({key: errorKey, value: data.validationErrors[errorKey]});
             }
             if (errors.length > 0) {
               for (var i in errors) {

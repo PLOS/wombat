@@ -457,7 +457,7 @@ public class ArticleController extends WombatController {
     Map<String, Object> validationErrors = commentValidationService.validate(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
-      return ImmutableMap.of("errors", validationErrors);
+      return ImmutableMap.of("validationErrors", validationErrors);
     }
     String createdCommentUri = ""; // TODO: Implement
     return ImmutableMap.of("createdCommentUri", createdCommentUri);

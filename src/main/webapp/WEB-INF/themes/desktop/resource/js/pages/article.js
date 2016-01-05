@@ -106,13 +106,14 @@
     spin_target = document.getElementById('loadingMetrics');
     almspinner = new Spinner(spin_opts).spin(spin_target);
 
-    FigureLightbox.init('#figure-lightbox-container', function (err) {
-      if (err) return console.log(err.message);
-      $('.lightbox-figure').on('click', function () {
-        FigureLightbox.loadImage($(this).data('figure-doi'), $(this).data('figure-title'), $(this).data('figure-description'));
-      });
+    $('.lightbox-figure').on('click', function () {
+      var imgData = {
+        doi: $(this).data('figure-doi'),
+        title: $(this).data('figure-title'),
+        description: $(this).data('figure-description')
+      };
+     FigureLightbox.loadImage('#figure-lightbox-container', imgData);
     });
-
   });
 
 

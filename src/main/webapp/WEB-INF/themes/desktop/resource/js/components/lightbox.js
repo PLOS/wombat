@@ -18,17 +18,6 @@ var FigureLightbox = {};
     imgPath:        WombatConfig.figurePath || 'IMG_PATH_NOT_LOADED'
   };
 
-  FigureLightbox.init = function (lbContainer, cb) {
-    this.lbContainerSelector = lbContainer;
-
-    $(this.lbContainerSelector)
-        .find(this.lbCloseButtonSelector).on('click', function () {
-          FigureLightbox.close();
-        });
-
-    cb();
-  };
-
   FigureLightbox.insertLightboxTemplate = function () {
     var articleData = this.fetchArticleData();
     var lbTemplate = _.template($(this.lbTemplateSelector).html());
@@ -50,20 +39,34 @@ var FigureLightbox = {};
     };
   };
 
-  FigureLightbox.loadImage = function (imgDoi, imgTitle, imgDescription) {
+  FigureLightbox.bindBehavior = function () {
+    $(this.lbContainerSelector)
+        .find(this.lbCloseButtonSelector).on('click', function () {
+          FigureLightbox.close();
+        });
+  };
+
+  FigureLightbox.loadImage = function (lbContainer, img, cb) {
+    this.lbContainerSelector = lbContainer;
+
     this.imgData = {
-      doi: imgDoi || '0',
-      description: imgDescription || '',
-      title: imgTitle || ''
+      doi: img.doi || '0',
+      description: img.description || '',
+      title: img.title || ''
     };
     this.insertLightboxTemplate();
+    this.bindBehavior();
     $(this.lbSelector)
         .foundation('reveal', 'open');
-    var $image = $(this.lbSelector).find('img').attr('src', this.buildImgUrl(imgDoi));
+    var $image = $(this.lbSelector).find('img').attr('src', this.buildImgUrl(this.imgData.doi));
     this.panZoom($image);
 
     // Reinitialize sliders
     $(document).foundation('slider', 'reflow');
+
+    if (typeof cb === 'function') {
+      cb();
+    }
   };
 
   FigureLightbox.close = function () {
@@ -93,8 +96,6 @@ var FigureLightbox = {};
   FigureLightbox.bindPanZoomToSlider = function () {
     var that = this;
     $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function(){
-      // do something when the value changes
-      console.log('zooming to ' + this.dataset.slider);
       var panzoomInstance = that.$panZoomEl.panzoom('instance');
       var matrix = panzoomInstance.getMatrix();
       matrix[0] = matrix[3] = this.dataset.slider;

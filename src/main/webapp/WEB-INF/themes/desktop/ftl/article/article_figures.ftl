@@ -59,13 +59,38 @@
         </div>
         <div id="lb-zoom-max"></div>
       </div>
+      <div class="fig-btns-container">
+        <span class="fig-btn all-fig-btn"><i class="icon icon-all"></i> All Figures</span>
+        <span class="fig-btn next-fig-btn"><i class="icon icon-next"></i> Next</span>
+        <span class="fig-btn prev-fig-btn"><i class="icon icon-prev"></i> Prev</span>
+      </div>
     </div>
     <div class="lightbox-footer">
       <div class="footer-text">
         <span class="figure-title"><%= title %></span>
         <%= description %>
       </div>
-
+      <div class="show-context-container">
+        <a class="btn show-context" href="#">Show in Context</a>
+      </div>
+      <div class="download-buttons">
+        <h3>Download:</h3>
+        <div class="item">
+          <a href="" title="PowerPoint slide">
+            <span class="download-btn">PPT</span>
+          </a>
+        </div>
+        <div class="item">
+          <a href="" title="large image">
+            <span class="download-btn">PNG</span>
+          </a>
+        </div>
+        <div class="item">
+          <a href="" title="original image">
+            <span class="download-btn">TIFF</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </script>

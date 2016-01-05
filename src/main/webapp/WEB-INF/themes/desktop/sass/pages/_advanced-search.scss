@@ -96,7 +96,10 @@ button[type=submit] {
   }
 }
 
-
+.advanced-search-toggle-btn {
+  float: right;
+  padding-top: $pad-xsmall;
+}
 
 /* Date template styles #date-search-input */
 #date-search-input-container {

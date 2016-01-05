@@ -107,9 +107,9 @@
   plos_toggle.init();
 
   // Advanced search behaviour
-  $('.search-results-advanced-search-submit').on('click', function (e) {
+  $('.advanced-search-toggle-btn').on('click', function (e) {
     e.preventDefault();
-    $('.search-results-advanced-search-submit').toggle();
+    $('.advanced-search-toggle-btn').toggle();
     if (AdvancedSearch.isInitialized('.advanced-search-container')) {
       $('.advanced-search-container').slideUp(function () {
         // Only destroy after it has been hidden

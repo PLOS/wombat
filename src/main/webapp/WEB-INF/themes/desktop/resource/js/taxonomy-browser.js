@@ -607,7 +607,7 @@
 
     $levelsPosition.on('click', 'ul li a', handleTermClick);
 
-    $('.prev, .next').click(handleCarouselClick);
+    $('#taxonomy-browser').find('.prev, .next').click(handleCarouselClick);
   }
 
   $(document).ready(function () {

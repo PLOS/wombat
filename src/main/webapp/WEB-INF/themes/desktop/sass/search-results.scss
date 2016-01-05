@@ -205,6 +205,11 @@ $controls-gray: $grey-med-light;
     background-color: $white;
   }
 
+  fieldset.disabled, fieldset.disabled button, input[disabled] {
+    background-color: $clr-input-disabled;
+    cursor: no-drop;
+  }
+
   input[type="text"] {
     margin: 0;
     padding: 0;
@@ -651,3 +656,11 @@ $search-icon-pad-default: 8;
   }
 }
 
+/* Advanced search rules */
+.advanced-search-container {
+  display: none;
+}
+#simpleSearchLink {
+  display: none;
+}
+@import "pages/advanced-search";

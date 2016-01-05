@@ -1,0 +1,123 @@
+.advanced-search-row {
+  margin-top: rem-calc(12px);
+  @extend .plos-row;
+  .advanced-search-col-first {
+    @include plos-grid-column($pixelwidth: columns, $columns: 1, $gutter:none, $collapse: false);
+  }
+
+  .advanced-search-col-last {
+    text-align: center;
+    @include plos-grid-column($pixelwidth: columns, $columns: 1, $gutter:none, $collapse: false);
+  }
+
+  $column-gutter: 30px;
+  @for $i from 1 through $total-columns {
+    .advanced-search-col-#{$i} {
+      @include plos-grid-column($pixelwidth: columns, $columns: $i, $gutter: none, $collapse: false);
+    }
+
+    .advanced-search-col-offset-#{$i} {
+      @include plos-grid-column($pixelwidth: columns, $offset: $i, $gutter: none, $collapse: false);
+    }
+  }
+
+  /* Add button */
+  &:last-child {
+    .add-row-button {
+      visibility: visible;
+    }
+  }
+
+  i {
+    &.add-row-button {
+      visibility: hidden;
+    }
+    padding-left: rem-calc(5px);
+    padding-right: rem-calc(5px);
+  }
+
+  /* Hide first AND/OR operator */
+  &:first-child {
+    .advanced-search-col-first {
+      visibility: hidden;
+    }
+  }
+
+  input[type=text] {
+    width: 100%;
+  }
+
+  select {
+    cursor: pointer;
+    height: rem-calc(24px);
+    font-size: rem-calc($txt-size-mediumish)
+  }
+}
+
+/* Edit query */
+.edit-query {
+  float: left;
+  padding-top: $pad-xsmall;
+}
+
+.advanced-search-buttons-container {
+  margin-top: rem-calc($line-height-small);
+  @extend .plos-row;
+  .search-button {
+    @include plos-grid-column($pixelwidth: columns, $columns: 2, $offset: 5, $gutter:none, $collapse: false);
+    @extend .button;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+  }
+}
+
+/* Clear button in input search bar */
+button[type=submit] {
+  i.clear {
+    font-size: rem-calc(22px);
+    margin-top: 4px;
+    cursor: pointer;
+  }
+
+  i.search-icon {
+    display: none !important;
+  }
+}
+
+#controlBarSearch {
+  &:invalid ~ button[type=submit] > i{
+    &.clear {
+      display: none;
+    }
+    &.search-icon {
+      display: inline-block !important;
+    }
+  }
+}
+
+.advanced-search-toggle-btn {
+  float: right;
+  padding-top: $pad-xsmall;
+}
+
+/* Date template styles #date-search-input */
+#date-search-input-container {
+  #date-search-query-input-from {
+    width: 45%;
+  }
+
+  #date-to-label {
+    display: inline-block;
+  }
+
+  #date-search-query-input-to-span {
+    float:right;
+    line-height: rem-calc(24px);
+  }
+
+  #date-search-query-input-to {
+    width: 45%;
+    float: right;
+  }
+}

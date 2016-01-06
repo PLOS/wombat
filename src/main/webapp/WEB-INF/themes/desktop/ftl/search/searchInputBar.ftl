@@ -14,14 +14,21 @@
                 <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
             </#if>
         </#if>
-            <button id="searchFieldButton" type="submit"><i class="search-icon"></i><i title="Clear Search Input" class="fa fa-times-circle fa-lg clear"></i></button>
+        <@ifDevFeatureEnabled 'advancedSearch'>
+          <button id="searchFieldButton" type="submit" class="toggle-icons">
+              <i class="search-icon"></i>
+              <i title="Clear Search Input" class="fa fa-times-circle fa-lg clear"></i>
+            </button>
         </fieldset>
-    <@ifDevFeatureEnabled 'advancedSearch'>
         <a id="advancedSearchLink" class="advanced-search-toggle-btn" href="#">Advanced Search</a>
         <a id="simpleSearchLink" class="advanced-search-toggle-btn" href="#">Simple Search</a>
         <a class="edit-query" href="#">edit query</a>
     </@ifDevFeatureEnabled>
     <@ifDevFeatureDisabled 'advancedSearch'>
+          <button id="searchFieldButton" type="submit">
+            <i class="search-icon"></i>
+          </button>
+      </fieldset>
       <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced
         Search</a>
     </@ifDevFeatureDisabled>

@@ -1,13 +1,5 @@
-<#include "../common/htmlTag.ftl" />
+<#include "../common/headContent.ftl" />
 
-<#assign title = '' />
-<#assign depth = 0 />
-<#include "../common/head.ftl" />
-
-<body>
-<div id="container-main">
-
-<#include "../common/header/headerContainer.ftl" />
 
   <div id="article-content" class="content">
 
@@ -15,12 +7,5 @@
 
   </div><#-- end home-content -->
 
-<#include "../common/footer/footer.ftl" />
+<#include "../common/footContent.ftl" />
 
-</div><#-- end container-main -->
-
-<#include "../common/siteMenu/siteMenu.ftl" />
-<#include "../common/bodyJs.ftl" />
-
-</body>
-</html>

@@ -73,7 +73,7 @@
 }
 
 /* Clear button in input search bar */
-button[type=submit] {
+button[type=submit].toggle-icons {
   i.clear {
     font-size: rem-calc(22px);
     margin-top: 4px;
@@ -86,7 +86,7 @@ button[type=submit] {
 }
 
 #controlBarSearch {
-  &:invalid ~ button[type=submit] > i{
+  &:invalid ~ button[type=submit].toggle-icons > i{
     &.clear {
       display: none;
     }

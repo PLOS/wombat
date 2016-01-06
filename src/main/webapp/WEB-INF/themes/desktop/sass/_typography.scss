@@ -85,11 +85,11 @@ ol {
     padding-left: $pad-default;
     margin-bottom: rem-calc($line-height-small);
     position: relative;
-  }
-  li::before {
     @extend .fa;
     @extend .fa-chevron-right;
     @extend .list-icon;
+  }
+  li::before {
     content: "\f054";
     font-size: rem-calc(10);
     display: inline-block;

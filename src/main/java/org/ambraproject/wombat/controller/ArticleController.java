@@ -10,7 +10,6 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
@@ -40,16 +39,22 @@ import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
+import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
+import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.validator.routines.UrlValidator;
+import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,6 +89,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
+import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -113,6 +119,8 @@ public class ArticleController extends WombatController {
    */
   private static final int XFORM_BUFFER_SIZE = 0x8000;
   private static final int MAX_TO_EMAILS = 5;
+
+  private static final String COMMENT_NAMESPACE = "/comments";
 
   @Autowired
   private Charset charset;
@@ -440,25 +448,41 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * @param parentArticleUri null if a reply to another comment
+   * @param parentArticleDoi null if a reply to another comment
    * @param parentCommentUri null if a direct reply to an article
    */
   @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
   @ResponseBody
-  public Object receiveNewComment(HttpServletRequest request,
+  public Object receiveNewComment(HttpServletRequest request, HttpServletResponse responseToClient,
                                   @SiteParam Site site,
                                   @RequestParam("commentTitle") String commentTitle,
                                   @RequestParam("comment") String commentBody,
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
-                                  @RequestParam(value = "target", required = false) String parentArticleUri,
-                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) {
+                                  @RequestParam(value = "target", required = false) String parentArticleDoi,
+                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
     enforceDevFeature("commentsTab");
     Map<String, Object> validationErrors = commentValidationService.validate(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("errors", validationErrors);
     }
+
+    parentCommentUri = parentCommentUri == null ? "" : parentCommentUri;
+
+    URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), COMMENT_NAMESPACE);
+    HttpEntity entity = new StringEntity("{'articleDoi':'" + parentArticleDoi
+        + "','creatorAuthId':'" + request.getRemoteUser()
+        + "','parentCommentId':'" + parentCommentUri
+        + "','title':'" + commentTitle
+        + "','body':'" + commentBody
+        + "','competingInterestStatement':'" + ciStatement + "'}",
+        ContentType.create("application/json"));
+
+    HttpUriRequest req = HttpMessageUtil.buildEntityPost(forwardedUrl, entity);
+
+    soaService.forwardResponse(req, responseToClient);
+
     String createdCommentUri = ""; // TODO: Implement
     return ImmutableMap.of("createdCommentUri", createdCommentUri);
   }

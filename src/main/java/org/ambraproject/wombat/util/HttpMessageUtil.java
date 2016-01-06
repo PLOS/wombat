@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -133,6 +134,10 @@ public class HttpMessageUtil {
     return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), ImmutableSet.<NameValuePair>of());
   }
 
+  public static HttpUriRequest buildRequest(URI fullUrl, String method, HttpEntity entity) {
+    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), ImmutableSet.<NameValuePair>of());
+  }
+
 
   public static HttpUriRequest buildRequest(URI fullUrl, String method,
                                             Collection<? extends NameValuePair> params,
@@ -161,5 +166,9 @@ public class HttpMessageUtil {
     return reqBuilder.build();
   }
 
+  public static HttpUriRequest buildEntityPost(URI fullUrl, HttpEntity entity) {
+    RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(fullUrl).setEntity(entity);
+    return reqBuilder.build();
+  }
 
 }

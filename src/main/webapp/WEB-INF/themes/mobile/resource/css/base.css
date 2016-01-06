@@ -226,3 +226,9 @@ ol.roman-upper {
 ol.simple {
     list-style-type: none;
 }
+
+/*utilities*/
+
+.center-text{
+  text-align:center;
+}

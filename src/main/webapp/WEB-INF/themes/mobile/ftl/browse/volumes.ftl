@@ -9,12 +9,9 @@
 
 <#include "../common/header/headerContainer.ftl" />
 
-  <div id="article-contetn" class="content">
+  <div id="article-content" class="content">
 
-  <#include "browseVolumesBody.ftl"/>
-
-
-
+  <#include "volumesBody.ftl"/>
 
   </div><#-- end home-content -->
 

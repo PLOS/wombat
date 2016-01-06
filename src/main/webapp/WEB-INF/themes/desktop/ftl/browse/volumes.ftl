@@ -17,7 +17,7 @@
 <#include "../common/header/headerContainer.ftl" />
 
     <section>
-      <#include "browseVolumesBody.ftl"/>
+      <#include "volumesBody.ftl"/>
 
     </section>
 

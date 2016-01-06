@@ -115,7 +115,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Bean
   AuthenticationDetailsSource<HttpServletRequest,
-          ServiceAuthenticationDetails> dynamicServiceResolver() {
+      ServiceAuthenticationDetails> dynamicServiceResolver() {
     return request -> {
       String url = getCasValidationPath(request);
       return (ServiceAuthenticationDetails) () -> url;
@@ -166,9 +166,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
 
     http.addFilter(casAuthenticationFilter())
-            .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
-            .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-            .authorizeRequests().antMatchers(AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
+        .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
+        .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
+        .authorizeRequests().antMatchers(AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
     http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
     http.csrf().disable();
   }
@@ -205,13 +205,13 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   private void validateHostname(HttpServletRequest request) {
     ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
     Set<String> hostNames = siteSet.getSites().stream()
-            .map((Site site) -> site.getRequestScheme().getHostName())
-            .filter(Optional::isPresent)
-            .map(Optional::get)
-            .collect(Collectors.toSet());
+        .map((Site site) -> site.getRequestScheme().getHostName())
+        .filter(Optional::isPresent)
+        .map(Optional::get)
+        .collect(Collectors.toSet());
     if (!hostNames.isEmpty() && !hostNames.contains(clientEndpoint.getHostname())) {
-        throw new AccessDeniedException(String.format("Attempt to validate against foreign hostname %s. " +
-                "Possible hijack attempt.", clientEndpoint.getHostname()));
+      throw new AccessDeniedException(String.format("Attempt to validate against foreign hostname %s. " +
+          "Possible hijack attempt.", clientEndpoint.getHostname()));
     }
   }
 

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringWriter;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -86,6 +87,22 @@ public class HttpMessageUtil {
          OutputStream streamToClient = responseTo.getOutputStream()) {
       IOUtils.copy(streamFromService, streamToClient);
     }
+  }
+
+  /**
+   * Read content from a response
+   *
+   * @param response incoming HttpResponse to be read
+   * @throws IOException
+   */
+  public static String readResponse(HttpResponse response) throws IOException {
+
+    StringWriter writer = new StringWriter();
+    try (InputStream streamFromService = response.getEntity().getContent())
+    {
+      IOUtils.copy(streamFromService, writer);
+    }
+    return writer.toString();
   }
 
   /**
@@ -166,7 +183,7 @@ public class HttpMessageUtil {
     return reqBuilder.build();
   }
 
-  public static HttpUriRequest buildEntityPost(URI fullUrl, HttpEntity entity) {
+  public static HttpUriRequest buildEntityPostRequest(URI fullUrl, HttpEntity entity) {
     RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(fullUrl).setEntity(entity);
     return reqBuilder.build();
   }

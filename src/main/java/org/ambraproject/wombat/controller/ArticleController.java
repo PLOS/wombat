@@ -453,7 +453,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
   @ResponseBody
-  public Object receiveNewComment(HttpServletRequest request, HttpServletResponse responseToClient,
+  public Object receiveNewComment(HttpServletRequest request,
                                   @SiteParam Site site,
                                   @RequestParam("commentTitle") String commentTitle,
                                   @RequestParam("comment") String commentBody,
@@ -479,11 +479,10 @@ public class ArticleController extends WombatController {
         + "','competingInterestStatement':'" + ciStatement + "'}",
         ContentType.create("application/json"));
 
-    HttpUriRequest req = HttpMessageUtil.buildEntityPost(forwardedUrl, entity);
-
-    soaService.forwardResponse(req, responseToClient);
-
-    String createdCommentUri = ""; // TODO: Implement
+    HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
+    CloseableHttpResponse response = soaService.getResponse(commentPostRequest);
+    String createdCommentUri = HttpMessageUtil.readResponse(response);
+    response.close();
     return ImmutableMap.of("createdCommentUri", createdCommentUri);
   }
 

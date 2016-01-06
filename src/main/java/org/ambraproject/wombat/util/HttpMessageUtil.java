@@ -151,11 +151,6 @@ public class HttpMessageUtil {
     return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), ImmutableSet.<NameValuePair>of());
   }
 
-  public static HttpUriRequest buildRequest(URI fullUrl, String method, HttpEntity entity) {
-    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), ImmutableSet.<NameValuePair>of());
-  }
-
-
   public static HttpUriRequest buildRequest(URI fullUrl, String method,
                                             Collection<? extends NameValuePair> params,
                                             NameValuePair... additionalParams) {

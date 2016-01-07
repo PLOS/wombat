@@ -470,8 +470,6 @@ public class ArticleController extends WombatController {
       return ImmutableMap.of("errors", validationErrors);
     }
 
-    parentCommentUri = parentCommentUri == null ? "" : parentCommentUri;
-
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), COMMENT_NAMESPACE);
     ArticleComment comment = new ArticleComment(parentArticleDoi, request.getRemoteUser(),
         parentCommentUri, commentTitle, commentBody, ciStatement);

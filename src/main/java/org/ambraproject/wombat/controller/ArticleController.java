@@ -17,10 +17,12 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -471,19 +473,16 @@ public class ArticleController extends WombatController {
     parentCommentUri = parentCommentUri == null ? "" : parentCommentUri;
 
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), COMMENT_NAMESPACE);
-    HttpEntity entity = new StringEntity("{'articleDoi':'" + parentArticleDoi
-        + "','creatorAuthId':'" + request.getRemoteUser()
-        + "','parentCommentId':'" + parentCommentUri
-        + "','title':'" + commentTitle
-        + "','body':'" + commentBody
-        + "','competingInterestStatement':'" + ciStatement + "'}",
-        ContentType.create("application/json"));
+    ArticleComment comment = new ArticleComment(parentArticleDoi, request.getRemoteUser(),
+        parentCommentUri, commentTitle, commentBody, ciStatement);
+    String articleCommentJson = new Gson().toJson(comment);
+    HttpEntity entity = new StringEntity(articleCommentJson, ContentType.create("application/json"));
 
     HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
-    CloseableHttpResponse response = soaService.getResponse(commentPostRequest);
-    String createdCommentUri = HttpMessageUtil.readResponse(response);
-    response.close();
-    return ImmutableMap.of("createdCommentUri", createdCommentUri);
+    try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {
+      String createdCommentUri = HttpMessageUtil.readResponse(response);
+      return ImmutableMap.of("createdCommentUri", createdCommentUri);
+    }
   }
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")

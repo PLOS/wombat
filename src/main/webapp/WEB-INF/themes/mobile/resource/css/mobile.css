@@ -919,3 +919,14 @@ ol.references ul.find li:first-child {
 #feedback-form-container form#feedbackCreate #submit-feedback-btn {
   margin-bottom: 12px;
 }
+
+/* Feedback Success */
+#success-message-container {
+  padding: 12px;
+  text-align: center;
+}
+
+#success-message-container #success-message{
+  font-size: 1.2em;
+  padding: 12px 0;
+}

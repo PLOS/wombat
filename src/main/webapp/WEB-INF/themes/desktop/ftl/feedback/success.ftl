@@ -6,13 +6,7 @@
 <body class="${journalStyle}">
 <#include "../common/header/headerContainer.ftl" />
 
-<div>
-  <h1>Thank You</h1>
-
-  <p><strong>
-    Thanks for helping us make <@themeConfig map="journal" value="journalName" /> better!
-  </strong></p>
-</div>
+<#include "successBody.ftl" />
 
 <#include "../common/footer/footer.ftl" />
 </body>

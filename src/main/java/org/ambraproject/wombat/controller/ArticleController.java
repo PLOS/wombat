@@ -10,7 +10,6 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
@@ -454,7 +453,7 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "target", required = false) String parentArticleUri,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) {
     enforceDevFeature("commentsTab");
-    Map<String, Object> validationErrors = commentValidationService.validate(site,
+    Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);
@@ -467,9 +466,13 @@ public class ArticleController extends WombatController {
   @ResponseBody
   public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site,
                                    @RequestParam("reasonCode") String reasonCode,
-                                   @RequestParam("comment") String comment,
-                                   @RequestParam("target") String target) {
+                                   @RequestParam("comment") String flagCommentBody,
+                                   @RequestParam("target") String targetComment) {
     enforceDevFeature("commentsTab");
+    Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
+    if (!validationErrors.isEmpty()) {
+      return ImmutableMap.of("validationErrors", validationErrors);
+    }
     return ImmutableMap.of(); // TODO: Implement
   }
 

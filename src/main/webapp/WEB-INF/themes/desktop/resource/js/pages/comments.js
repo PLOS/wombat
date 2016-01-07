@@ -214,7 +214,7 @@
     this.submitReport = function (replyId) {
       var reply = getReplyElement(replyId);
       var data = {
-        target: replyId,
+        target: reply.data('uri'),
         reasonCode: reply.find('input:radio[name="reason"]:checked').val(),
         comment: reply.find('[name="additional_info"]').val()
       };

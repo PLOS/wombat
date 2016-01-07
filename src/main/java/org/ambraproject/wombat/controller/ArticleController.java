@@ -465,7 +465,10 @@ public class ArticleController extends WombatController {
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
   @ResponseBody
-  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site) {
+  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site,
+                                   @RequestParam("reasonCode") String reasonCode,
+                                   @RequestParam("comment") String comment,
+                                   @RequestParam("target") String target) {
     enforceDevFeature("commentsTab");
     return ImmutableMap.of(); // TODO: Implement
   }

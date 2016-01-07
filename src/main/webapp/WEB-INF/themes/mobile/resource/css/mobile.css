@@ -919,3 +919,112 @@ ol.references ul.find li:first-child {
 #feedback-form-container form#feedbackCreate #submit-feedback-btn {
   margin-bottom: 12px;
 }
+
+
+
+
+/* Issue */
+
+#container-main {
+  background: #efefef;
+}
+
+#container-main #nav-toc {
+  display: none;
+}
+
+#container-main h1 {
+  text-align: center;
+  font-size: 28px;
+}
+
+#issue-articles-container p {
+  font-family: inherit;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  margin-bottom: 3px;
+  text-rendering: optimizeLegibility;
+}
+
+#issue-articles-container #issue-title {
+  display: block;
+  font-weight: normal;
+  font-family: 'fs_albertregular', sans-serif;
+  font-size: 27px;
+}
+
+#issue-articles-container #issue-title a {
+  color: white;
+}
+
+#issue-articles-container .cover {
+  border-radius: 5px;
+  margin-bottom: 16px;
+  color: white;
+  padding: 12px 25px;
+  background: #333333;
+}
+
+#issue-articles-container .header {
+  text-align: center;
+}
+
+#issue-articles-container .cover .credit {
+  color: #cccccc;
+}
+
+#issue-articles-container .detail-container {
+  text-align: center;
+}
+
+#issue-articles-container .detail-container img {
+  display: inline-block;
+}
+
+#issue-articles-container .detail-container .txt {
+  padding: 10px 0;
+}
+
+#issue-articles-container .section {
+  background-color: white;
+  padding: 18px 2.5rem;
+  margin: 18px 0;
+}
+
+#issue-articles-container .section h2 {
+  font-family: 'fs_albertregular', sans-serif;
+  font-size: 27px;
+}
+
+#issue-articles-container .section .item {
+  font-size: 13px;
+  margin-top: 27px;
+}
+
+#issue-articles-container .section .item h3 {
+  font-size: 16px;
+  margin-bottom: 9px;
+}
+
+#issue-articles-container .section .item h3 a {
+  color: #333;
+}
+
+
+#issue-articles-container .section .item h4 {
+  font-size: 13px;
+  color: #666;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+
+#issue-articles-container .section .item ol li {
+  list-style-type: none;
+  margin-bottom: 3px;
+}
+
+#issue-articles-container .section .item ol li a {
+  font-size: 14px;
+}

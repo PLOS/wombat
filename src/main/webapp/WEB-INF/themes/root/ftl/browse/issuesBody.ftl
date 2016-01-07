@@ -17,17 +17,16 @@
     </nav>
 <!-- col-1 -->
 
-<article>
+<article id="issue-articles-container">
 
     <div class="cover">
         <a id="Cover" name="Cover" toc="Cover" title="Cover"></a>
-
         <div class="header">
             <p class="kicker">COVER</p>
                 <@siteLink
                 handlerName="browseIssues"
                 queryParameters={"id": issue.issueUri}; issueLink>
-                    <h2><a href="${issueLink}">${issueTitle}</a></h2>
+                    <h2 id="issue-title"><a href="${issueLink}">${issueTitle}</a></h2>
                 </@siteLink>
             <p class="credit">Image Credit: ${issueImageCredit}</p>
         </div>

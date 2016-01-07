@@ -169,7 +169,6 @@
 
           <div class="toolbar">
             <#assign userIsLoggedIn = Session["SPRING_SECURITY_CONTEXT"]?exists && Session["SPRING_SECURITY_CONTEXT"].authentication.authenticated />
-            <#assign userIsLoggedIn = true /> <#-- DEBUG! TODO: Remove -->
             <@siteLink handlerName="userLogin" ; login>
               <a title="Report a Concern" class="flag toolbar btn"
                 <#if userIsLoggedIn>

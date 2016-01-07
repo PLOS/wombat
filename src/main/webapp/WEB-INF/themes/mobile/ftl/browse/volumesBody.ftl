@@ -1,4 +1,4 @@
-ey <!-- TODO: This is how Ambra does it, but it would be much preferred to provide the proper thumbnail asset file ids
+<!-- TODO: This is how Ambra does it, but it would be much preferred to provide the proper thumbnail asset file ids
       for each issue in the controller layer. -->
 <#assign thumbnail_suffix = ".g001.PNG_S"/>
 

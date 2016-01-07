@@ -29,6 +29,7 @@
       <h2>Reader Comments</h2>
 
     <#include "postNewCommentLink.ftl" />
+    <#include "errorMessages.ftl" />
     <@postNewCommentLink article.doi />
 
       <div id="respond_prototype" class="reply subresponse cf" style="display: none">
@@ -48,7 +49,12 @@
           <#include "flagPreamble.ftl" />
           </div>
 
-          <div class="error" style="display:none;"></div>
+        <@commentErrorMessageBlock>
+          <@commentErrorMessage "missingComment">You must say something in your flag comment</@commentErrorMessage>
+          <@commentErrorMessage "commentLength">
+            Your flag comment is {length} characters long, it can not be longer than {maxLength}.
+          </@commentErrorMessage>
+        </@commentErrorMessageBlock>
 
           <form class="cf">
             <fieldset class="">

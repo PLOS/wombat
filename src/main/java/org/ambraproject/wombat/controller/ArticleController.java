@@ -464,10 +464,10 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
     enforceDevFeature("commentsTab");
-    Map<String, Object> validationErrors = commentValidationService.validate(site,
+    Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
-      return ImmutableMap.of("errors", validationErrors);
+      return ImmutableMap.of("validationErrors", validationErrors);
     }
 
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), COMMENT_NAMESPACE);
@@ -485,8 +485,15 @@ public class ArticleController extends WombatController {
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
   @ResponseBody
-  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site) {
+  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site,
+                                   @RequestParam("reasonCode") String reasonCode,
+                                   @RequestParam("comment") String flagCommentBody,
+                                   @RequestParam("target") String targetComment) {
     enforceDevFeature("commentsTab");
+    Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
+    if (!validationErrors.isEmpty()) {
+      return ImmutableMap.of("validationErrors", validationErrors);
+    }
     return ImmutableMap.of(); // TODO: Implement
   }
 

@@ -2,6 +2,8 @@
 
 <#assign title = "Page Not Found" />
 <#include "../common/head.ftl" />
+<@cssLink target="resource/css/feedback.css" />
+<@renderCssLinks />
 
 <body>
 <div id="container-main">

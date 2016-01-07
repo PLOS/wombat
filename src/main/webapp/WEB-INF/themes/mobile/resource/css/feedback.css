@@ -1,0 +1,60 @@
+/* Feedback */
+#feedback-form-container {
+  text-align: center;
+  font-size: 1.4em;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#feedback-form-container form#feedbackCreate ol {
+  margin-top: 12px;
+  text-align: left;
+}
+
+#feedback-form-container form#feedbackCreate li {
+  margin-top: 12px;
+}
+
+#feedback-form-container form#feedbackCreate li#security-check-row {
+  text-align: center;
+}
+
+#feedback-form-container form#feedbackCreate label {
+  width: 24%;
+  min-width: 100px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 5px;
+}
+
+#feedback-form-container form#feedbackCreate input,
+#feedback-form-container form#feedbackCreate textarea {
+  width: 50%;
+  border: 1px solid rgb(169, 169, 169);
+}
+
+#feedback-form-container form#feedbackCreate #recaptcha_widget_div{
+  display: inline-block;
+}
+
+#feedback-form-container form#feedbackCreate label#security-check-label {
+  margin: 20px 0 0;
+  min-width: 150px;
+  text-align: center;
+}
+
+#feedback-form-container form#feedbackCreate #submit-feedback-btn {
+  margin: 0 0 12px 0;
+}
+
+/* Feedback Success */
+#success-message-container {
+  padding: 12px;
+  text-align: center;
+  font-family: "fs_albertregular";
+  font-size: 1.6em;
+}
+
+#success-message-container #success-message{
+  padding: 12px 0;
+}

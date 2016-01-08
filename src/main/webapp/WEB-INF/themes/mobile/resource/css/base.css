@@ -226,25 +226,9 @@ ol.roman-upper {
 ol.simple {
     list-style-type: none;
 }
-.txt-medium {
-  font-size: 1.25rem;
-}
-.txt-large {
-  font-size: 1.5rem;
-}
-
 
 /*utilities*/
 
 .center-text{
   text-align:center;
 }
-.center-block{
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.pad-small-y{padding: 5px 0}
-.pad-small-x{padding: 0 5px}
-
-italic {font-style: italic;} /*sometimes this is in the transform*/

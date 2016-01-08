@@ -49,12 +49,12 @@
 
 /* Feedback Success */
 #success-message-container {
-  padding: 12px;
+  padding: 5% 0;
   text-align: center;
   font-family: "fs_albertregular";
   font-size: 1.6em;
 }
 
 #success-message-container #success-message{
-  padding: 12px 0;
+  padding: 5% 0;
 }

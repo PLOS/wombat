@@ -1,22 +1,11 @@
-<#include "../common/htmlTag.ftl" />
+<#-- Specific css file will be added by head.ftl template -->
+<#assign cssFile = "feedback.css" />
 
-<#assign title = "Page Not Found" />
-<#include "../common/head.ftl" />
-<@cssLink target="resource/css/feedback.css" />
-<@renderCssLinks />
+<#include "../common/headContent.ftl" />
 
-<body>
-<div id="container-main">
-<#include "../common/header/headerContainer.ftl" />
-
-<div id="feedback-form-container">
+  <div id="feedback-form-container">
   <#include "feedbackBody.ftl" />
-</div>
+  </div>
+</div><#-- end home-content -->
 
-<#include "../common/footer/footer.ftl" />
-</div><#-- end container-main -->
-
-<#include "../common/siteMenu/siteMenu.ftl" />
-<#include "../common/bodyJs.ftl" />
-</body>
-</html>
+<#include "../common/footContent.ftl" />

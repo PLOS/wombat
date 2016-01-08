@@ -77,7 +77,7 @@ var AdvancedSearch = {};
         })
 
         /* Change input type on category change */
-        .on('change', this.categorySelectSelector, function (e) {
+        .on('change', this.categorySelectSelector, function (e, data) {
           var row = $(e.target).parents(that.rowSelector);
           var newInputTemplateSelector = $(e.target).find(':selected').data('input-template');
 
@@ -87,7 +87,7 @@ var AdvancedSearch = {};
           }
 
           if (row.data('input-template-in-use') !== newInputTemplateSelector) {
-            that.replaceRowInputTemplate(row, newInputTemplateSelector);
+            that.replaceRowInputTemplate(row, newInputTemplateSelector, data);
           }
           that.refreshSearchInput();
         })
@@ -132,10 +132,10 @@ var AdvancedSearch = {};
         that.resetInputs();
     });
 
+    var searchInputPrevValue = $(this.inputSearchSelector).val();
     this.disableSearchInput();
-
     /* Add first row */
-    this.addRow();
+    this.addRow(searchInputPrevValue);
 
     if (cb && typeof cb === 'function') {
       cb();
@@ -151,24 +151,25 @@ var AdvancedSearch = {};
     $(this.containerSelector).prepend(templateControls());
   };
 
-  AdvancedSearch.addRow = function () {
+  AdvancedSearch.addRow = function (queryValue) {
+    // If no value, then it is initialized empty
     var templateRow = _.template($(this.templateRowSelector).html());
     $(this.inputContainerSelector).append(templateRow())
         /* trigger category change to process category input templates */
-        .find(this.categorySelectSelector).trigger('change');
+        .find(this.categorySelectSelector).trigger('change', queryValue);
   };
 
   AdvancedSearch.removeRow = function (row) {
     row.remove();
   };
 
-  AdvancedSearch.replaceRowInputTemplate = function (row, newTemplateSelector) {
+  AdvancedSearch.replaceRowInputTemplate = function (row, newTemplateSelector, queryValue) {
     var inputTemplate = _.template($(newTemplateSelector).html());
     var rowInputContainer = row.find(this.inputConditionContainerSelector);
     rowInputContainer.children().remove();
 
     /* Append current input template */
-    rowInputContainer.append(inputTemplate());
+    rowInputContainer.append(inputTemplate({queryValue: queryValue || ''}));
     /* Store template selector in div's data for future template-in-use checking */
     row.data('input-template-in-use', newTemplateSelector).trigger('template-replaced', row);
   };
@@ -192,8 +193,12 @@ var AdvancedSearch = {};
 
     /* Replace starting/ending parentheses and AND|OR from the beggining of the string */
     fullCondition = fullCondition.trim().replace(/^(\()/,'').replace(/(\))$/,'').replace(/^(\(*?)(AND|OR)\s/,'$1');
-    $(this.inputSearchSelector).val(fullCondition);
-    $(this.inputQuerySelector).val(fullCondition);
+    $(this.inputSearchSelector).val(fullCondition).attr('advanced-condition', true);
+    $(this.inputQuerySelector).val(fullCondition).attr('advanced-condition', true);
+    if (fullCondition.length === 0) { // Mark inputs as empty
+      $(this.inputSearchSelector).attr('advanced-condition', null);
+      $(this.inputQuerySelector).attr('advanced-condition', null);
+    }
   };
 
   AdvancedSearch.getRowQuery = function (row) {
@@ -250,7 +255,7 @@ var AdvancedSearch = {};
 
   AdvancedSearch.destroy = function (containerSelector) {
     if (AdvancedSearch.isInitialized(containerSelector)) {
-      AdvancedSearch.enableSearchInput();
+      AdvancedSearch.enableSearchInput(true);
       $(containerSelector).off('click change keyup').data('advanced-search-initialized', false).children().remove();
       $(this.inputSearchSelector).val('');
     }

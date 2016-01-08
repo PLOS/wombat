@@ -109,7 +109,7 @@
   // Advanced search behaviour
   $('.advanced-search-toggle-btn').on('click', function (e) {
     e.preventDefault();
-    $('.advanced-search-toggle-btn').toggle();
+    $('.advanced-search-toggle-btn, .edit-query').toggle();
     if (AdvancedSearch.isInitialized('.advanced-search-container')) {
       $('.advanced-search-container').slideUp(function () {
         // Only destroy after it has been hidden

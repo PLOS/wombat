@@ -28,7 +28,7 @@
     }
   }
 
-  i {
+  a {
     &.add-row-button {
       visibility: hidden;
     }
@@ -51,6 +51,10 @@
     cursor: pointer;
     height: rem-calc(24px);
     font-size: rem-calc($txt-size-mediumish)
+  }
+
+  a {
+    text-decoration: none;
   }
 }
 
@@ -78,20 +82,17 @@ button[type=submit].toggle-icons {
     font-size: rem-calc(22px);
     margin-top: 4px;
     cursor: pointer;
-  }
-
-  i.search-icon {
-    display: none !important;
+    display: none;
   }
 }
 
 #controlBarSearch {
-  &:invalid ~ button[type=submit].toggle-icons > i{
+  &[advanced-condition] ~ button[type=submit].toggle-icons > i{
     &.clear {
-      display: none;
+      display: inline-block;
     }
     &.search-icon {
-      display: inline-block !important;
+      display: none !important;
     }
   }
 }

@@ -21,7 +21,6 @@
                 <option value="subject" >Subject</option>
                 <option value="publication_date" data-input-template="#date-search-input">Publication Date</option>
                 <option value="" disabled>----- Other -----</option>
-                <option value="subject" >Subject</option>
                 <option value="accepted_date" data-input-template="#date-search-input">Accepted Date</option>
                 <option value="id" >Article DOI (Digital Object Identifier)</option>
                 <option value="article_type" >Article Type</option>
@@ -46,11 +45,11 @@
         <div id="input-condition-container" class="advanced-search-col-7">
         </div>
         <div class="advanced-search-col-last">
-            <a href="#">
-                <i class="icon-minus remove-row-button"></i>
+            <a href="#" class="remove-row-button">
+                <i class="icon-minus"></i>
             </a>
-            <a href="#">
-                <i class="icon-plus-no-square add-row-button"></i>
+            <a href="#" class="add-row-button">
+                <i class="icon-plus-no-square"></i>
             </a>
         </div>
     </fieldset>
@@ -73,15 +72,15 @@
 <script type="text/template" id="default-search-input">
     <#-- Default text input to write conditions -->
     <div id="default-search-input-container">
-        <input type="text" class="query-condition-value"/>
+        <input type="text" class="query-condition-value" value="<%= queryValue %>"/>
     </div>
 </script>
 
 <script type="text/template" id="date-search-input">
     <#-- FROM and TO datepicker inputs to filter by date ranges -->
     <div id="date-search-input-container">
-        <input id="date-search-query-input-from" type="text" placeholder="Date from (YYYY-MM-DD)" class="datepicker query-condition-value"/>
-        <input id="date-search-query-input-to" type="text" placeholder="Date to (YYYY-MM-DD)" class="datepicker query-condition-value"/>
+        <input id="date-search-query-input-from" type="text" placeholder="Date from (YYYY-MM-DD)" class="datepicker query-condition-value" value="<%= queryValue %>"/>
+        <input id="date-search-query-input-to" type="text" placeholder="Date to (YYYY-MM-DD)" class="datepicker query-condition-value" value="<%= queryValue %>"/>
         <span id="date-search-query-input-to-span">to:&nbsp;&nbsp;</span>
     </div>
 </script>

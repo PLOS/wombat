@@ -52,6 +52,10 @@ var AdvancedSearch = {};
       return cb(new Error('Advanced Search: Advanced search has already been initialized in this container.'));
     }
 
+    // Modify datepicker options
+    RangeDatepicker.options.min = new Date(2003, 9, 1);
+    RangeDatepicker.options.max = new Date();
+
     $(this.containerSelector)
         /* Add row binding */
         .on('click', this.addSelector, function (e) {

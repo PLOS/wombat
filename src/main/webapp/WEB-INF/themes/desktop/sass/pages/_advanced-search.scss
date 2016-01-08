@@ -22,6 +22,12 @@
   }
 
   /* Add button */
+  &:only-child {
+    .remove-row-button {
+      display: none;
+    }
+  }
+
   &:last-child {
     .add-row-button {
       visibility: visible;

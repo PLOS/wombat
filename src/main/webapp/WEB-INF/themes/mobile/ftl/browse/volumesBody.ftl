@@ -5,31 +5,31 @@
 <h1>Journal Archive</h1>
 <#if journal??>
   <#if journal.currentIssue??>
-  <div class="journal_current">
-    <h2>Current Issue</h2>
+    <@siteLink
+    handlerName="browseIssues"
+    queryParameters={"id": journal.currentIssue.issueUri}; issueLink>
+      <#assign issueLink = issueLink/>
+    </@siteLink>
 
-    <div class="issue_container center-text">
+
+  <div class="journal_current">
+    <h2>Current Issue: <a href="${issueLink}">${journal.currentIssue.displayName}</a></h2>
+
+    <div class="issue_container">
+
       <#if journal.currentIssue.imageUri??>
         <div class="journal_thumb">
-          <@siteLink
-          handlerName="browseIssues"
-          queryParameters={"id": journal.currentIssue.issueUri}; issueLink>
-            <a href="${issueLink}"/>
+<p class="">
+            <a href="${issueLink}" class="">
             <#assign issueImageFileId = journal.currentIssue.imageUri + thumbnail_suffix/>
-            <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}/>"
-                 class="current-img" alt="Current Issue"/>
-            <span>${journal.currentIssue.displayName}</span>
+            <img src="http://localhost:8081/wombat/DesktopPlosOne/resource/img/404error.png"
+                 class="center-block" alt="Current Issue"/>
             </a>
-          </@siteLink>
+</p>
+          <p class="pad-small-y">${journal.currentIssue.description}</p>
         </div>
       </#if>
 
-      <div class="journal_description">
-        <span class="tag">ABOUT THIS IMAGE</span>
-        <br/>
-
-        <p>${journal.currentIssue.description}</p>
-      </div>
     </div> <!--  issue_container -->
   </div><!-- journal_current -->
   </#if>
@@ -49,11 +49,11 @@
         <ul class="accordion-content">
         <#list issues as issue>
 
-          <li <#if ((issue_index + 1) % 6) = 0> class="endrow"</#if>>
+          <li class="pad-small-y">
             <@siteLink
             handlerName="browseIssues"
             queryParameters={"id": "${issue.issueUri}"}; issueLink>
-              <a href="${issueLink}">
+              <a href="${issueLink}" class="txt-medium">
              ${issue.displayName}
               </a>
             </@siteLink>
@@ -64,8 +64,7 @@
         </li>
       </#list>
     </ul>
-<#--<#include "browseVolumesList.ftl" />-->
-    </div><#-- journal_issues -->
+    </div>
   </#if>
 
 </#if>

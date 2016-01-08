@@ -20,11 +20,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
+import java.util.TimeZone;
 
 /**
  * A utility class for creation and management of HTTP messages
@@ -161,5 +165,25 @@ public class HttpMessageUtil {
     return reqBuilder.build();
   }
 
+  /**
+   * Checks to see if we should serve the contents of the requested object, or just return a 304 response with no body,
+   * based on cache-related request headers.
+   *
+   * @param request      HttpServletRequest we will check for cache headers
+   * @param lastModified last modified timestamp of the actual resource on the server
+   * @param etag         etag generated from the actual resource on the server
+   * @return true if we should serve the bytes of the resource, false if we should return 304.
+   */
+  public static boolean checkIfModifiedSince(HttpServletRequest request, Long lastModified, String etag) {
+
+    // Let the Etag-based header take precedence over If-Modified-Since.
+    String etagFromRequest = request.getHeader("If-None-Match");
+    if (etag != null && etagFromRequest != null) {
+      return !etagFromRequest.equals(etag);
+    } else {
+      return lastModified == null || lastModified > request.getDateHeader("If-Modified-Since");
+    }
+
+  }
 
 }

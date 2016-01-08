@@ -55,7 +55,7 @@ public class BrowseController extends WombatController {
     String journalMetaUrl = "journals/" + site.getJournalKey();
     Map<String, Object> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);
     model.addAttribute("journal", journalMetadata);
-    return site.getKey() + "/ftl/article/browseVolumes";
+    return site.getKey() + "/ftl/browse/volumes";
   }
 
   @RequestMapping(name = "browseIssues", value = "/issue")
@@ -108,7 +108,7 @@ public class BrowseController extends WombatController {
 
     model.addAttribute("articleGroups", articleGroups);
 
-    return site.getKey() + "/ftl/article/browseIssues";
+    return site.getKey() + "/ftl/browse/issues";
   }
 
   // TODO: get rid of this bit of ugliness from old Ambra if possible, or at least move regex into themes

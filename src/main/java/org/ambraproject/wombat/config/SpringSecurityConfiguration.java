@@ -42,6 +42,8 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Configuration
@@ -64,7 +66,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   private static final String CAS_LOGOUT_URI = "/j_spring_cas_security_logout";
   private static final String CAS_AUTH_KEY = "casAuthProviderKey";
   private static final String LOGOUT_HANDLER_NAME = "userLogout"; // corresponds to @RequestHandler annotation name attribute
-  private static final String AUTH_INTERCEPT_PATTERN = "/**/user/secure/**";
+  private static final String USER_AUTH_INTERCEPT_PATTERN = "/**/user/secure/**";
+  private static final String NEW_COMMENT_AUTH_INTERCEPT_PATTERN = "/**/article/comments/new**";
+  private static final String FLAG_COMMENT_AUTH_INTERCEPT_PATTERN = "/**/article/comments/flag**";
 
   @Bean
   public ServiceProperties serviceProperties() {
@@ -113,7 +117,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Bean
   AuthenticationDetailsSource<HttpServletRequest,
-          ServiceAuthenticationDetails> dynamicServiceResolver() {
+      ServiceAuthenticationDetails> dynamicServiceResolver() {
     return request -> {
       String url = getCasValidationPath(request);
       return (ServiceAuthenticationDetails) () -> url;
@@ -166,7 +170,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     http.addFilter(casAuthenticationFilter())
             .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
             .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-            .authorizeRequests().antMatchers(AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
+            .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+            .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+            .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
     http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
     http.headers().cacheControl().disable();
     http.csrf().disable();
@@ -203,13 +209,14 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   private void validateHostname(HttpServletRequest request) {
     ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
-    boolean hasValidHostname = siteSet.getSites().stream()
+    Set<String> hostNames = siteSet.getSites().stream()
         .map((Site site) -> site.getRequestScheme().getHostName())
         .filter(Optional::isPresent)
-        .anyMatch((Optional<String> hostName) -> hostName.get().equals(clientEndpoint.getHostname()));
-    if (!hasValidHostname) {
+        .map(Optional::get)
+        .collect(Collectors.toSet());
+    if (!hostNames.isEmpty() && !hostNames.contains(clientEndpoint.getHostname())) {
       throw new AccessDeniedException(String.format("Attempt to validate against foreign hostname %s. " +
-              "Possible hijack attempt.", clientEndpoint.getHostname()));
+          "Possible hijack attempt.", clientEndpoint.getHostname()));
     }
   }
 

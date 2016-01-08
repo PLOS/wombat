@@ -1,6 +1,6 @@
 @import "global-library-imports";
 @import "global-section-imports";
-@import "vendor/jqueryUI/jquery-ui";
+@import "vendor/foundation-datepicker";
 
 .search-results-body {
   main {
@@ -203,6 +203,11 @@ $controls-gray: $grey-med-light;
     margin: 0;
     padding: $pad-small;
     background-color: $white;
+  }
+
+  fieldset.disabled, fieldset.disabled button, input[disabled] {
+    background-color: $clr-input-disabled;
+    cursor: no-drop;
   }
 
   input[type="text"] {
@@ -651,3 +656,11 @@ $search-icon-pad-default: 8;
   }
 }
 
+/* Advanced search rules */
+.advanced-search-container {
+  display: none;
+}
+#simpleSearchLink {
+  display: none;
+}
+@import "pages/advanced-search";

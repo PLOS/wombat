@@ -214,7 +214,7 @@
     this.submitReport = function (replyId) {
       var reply = getReplyElement(replyId);
       var data = {
-        target: replyId,
+        target: reply.data('uri'),
         reasonCode: reply.find('input:radio[name="reason"]:checked').val(),
         comment: reply.find('[name="additional_info"]').val()
       };
@@ -269,17 +269,24 @@
       parentReply.data('submitting', true);
       var overlay = freezeForLoading();
 
-      errorMsgElement.hide(); // in case it was already shown from a previous attempt
+      // In case they were already shown from a previous attempt
+      errorMsgElement.hide();
+      errorMsgElement.find(".commentErrorMessage").hide();
 
       sendAjaxRequest(submitUrl, data,
           function (data, textStatus, jqXHR) {
             // The Ajax request had no errors, but the server may have sent back user validation errors.
             var errors = [];
-            for (var errorKey in data.fieldErrors) {
-              errors.push(data.fieldErrors[errorKey]);
+            for (var errorKey in data.validationErrors) {
+              errors.push({key: errorKey, value: data.validationErrors[errorKey]});
             }
             if (errors.length > 0) {
-              errorMsgElement.html(errors.join('<br/>'));
+              for (var i in errors) {
+                var error = errors[i];
+                var msg = errorMsgElement.find(".commentErrorMessage[data-error-key='" + error.key + "']");
+                displayErrorMessage(msg, error.value);
+              }
+
               animatedShow(errorMsgElement);
 
               // #respond starting a discussion
@@ -310,6 +317,28 @@
 
             overlay.close();
           });
+    }
+
+    /**
+     * Display an error message element. Fill in its text, replacing arguments with values if necessary.
+     * <p>
+     * If the message text contains any argument names surrounded by curly braces, then {@code values} is expected to
+     * be an object with keys matching those names. Else, {@code values} is ignored and may be any type.
+     */
+    function displayErrorMessage(messageElement, values) {
+      var errorMessage = messageElement.data('error-message');
+      var modifiedMessage = errorMessage;
+      var argumentPattern = /\{(.*?)\}/g;
+
+      var match;
+      while ((match = argumentPattern.exec(errorMessage)) !== null) {
+        var argument = match[0];
+        var value = values[match[1]];
+        modifiedMessage = modifiedMessage.replace(argument, value);
+      }
+
+      messageElement.text(modifiedMessage);
+      messageElement.show();
     }
 
     /**

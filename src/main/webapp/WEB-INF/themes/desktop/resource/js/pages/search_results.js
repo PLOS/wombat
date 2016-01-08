@@ -15,26 +15,7 @@
   }
 
   $(document).ready(function() {
-
-    $( ".datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      maxDate: '0',
-      dateFormat: 'yy-mm-dd',
-      yearRange: "2003:+0"
-    });
-
-    //Start Date max date is the entered End Date. End Date min date is the entered Start Date.
-    //Both Start and End Dates have a strict maximum of the current day
-    $('#dateFilterStartDate').change(function(){
-      var minDate = $(this).val() ? $(this).val() : '';
-      $('#dateFilterEndDate').datepicker('option', 'minDate', minDate)
-    });
-
-    $('#dateFilterEndDate').change(function(){
-      var maxDate = $(this).val() ? $(this).val() : '0';
-      $('#dateFilterStartDate').datepicker('option', 'maxDate', maxDate)
-    });
+    RangeDatepicker.init($('#dateFilterStartDate'), $('#dateFilterEndDate'));
 
     $('.search-results-alm').each(function () {
       var $alm = $(this);
@@ -107,5 +88,23 @@
 
   // initialize toggle for search filter item list
   plos_toggle.init();
+
+  // Advanced search behaviour
+  $('.advanced-search-toggle-btn').on('click', function (e) {
+    e.preventDefault();
+    $('.advanced-search-toggle-btn').toggle();
+    if (AdvancedSearch.isInitialized('.advanced-search-container')) {
+      $('.advanced-search-container').slideUp(function () {
+        // Only destroy after it has been hidden
+        AdvancedSearch.destroy('.advanced-search-container');
+      });
+    } else {
+      AdvancedSearch.init('.advanced-search-container', function (err) {
+        if (err) return console.log(err.message);
+        // Only show after it has been initialized
+        $('.advanced-search-container').slideDown();
+      });
+    }
+  });
 
 })(jQuery);

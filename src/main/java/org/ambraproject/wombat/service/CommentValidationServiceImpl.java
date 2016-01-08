@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -38,9 +39,9 @@ public class CommentValidationServiceImpl implements CommentValidationService {
   }
 
   @Override
-  public Map<String, Object> validate(Site site,
-                                      String title, String body,
-                                      boolean hasCompetingInterest, String ciStatement) {
+  public Map<String, Object> validateComment(Site site,
+                                             String title, String body,
+                                             boolean hasCompetingInterest, String ciStatement) {
     Map<String, Object> errors = new LinkedHashMap<>();
     if (Strings.isNullOrEmpty(title)) {
       errors.put("missingTitle", true);
@@ -60,6 +61,16 @@ public class CommentValidationServiceImpl implements CommentValidationService {
     checkForCensoredWords(errors, "censoredBody", site, body);
     checkForCensoredWords(errors, "censoredCi", site, ciStatement);
 
+    return errors;
+  }
+
+  @Override
+  public Map<String, Object> validateFlag(String flagComment) {
+    Map<String, Object> errors = Maps.newHashMapWithExpectedSize(1);
+    if (Strings.isNullOrEmpty(flagComment)) {
+      errors.put("missingComment", true);
+    }
+    checkLength(errors, "commentLength", flagComment, COMMENT_BODY_MAX);
     return errors;
   }
 

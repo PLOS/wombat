@@ -52,6 +52,11 @@
   margin: 0;
 }
 
+#issue-articles-container .detail-container {
+  text-align: center;
+  background: white;
+}
+
 #issue-articles-container .detail-container img {
   display: inline-block;
 }

@@ -122,7 +122,7 @@ public class ArticleController extends WombatController {
   private static final int XFORM_BUFFER_SIZE = 0x8000;
   private static final int MAX_TO_EMAILS = 5;
 
-  private static final String COMMENT_NAMESPACE = "/comments";
+  private static final String COMMENT_NAMESPACE = "comments";
 
   @Autowired
   private Charset charset;

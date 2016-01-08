@@ -57,7 +57,7 @@
         <textarea id="feedbackCreate_note" name="note" cols="70" rows="5">${note!''}</textarea>
       <@formValidation "noteError">This field is required.</@formValidation>
       </li>
-      <li>
+      <li id="security-check-row">
         <label id="security-check-label"><strong>Security Check:</strong></label>
 
         <p>This question is to determine if you are a human visitor in order to prevent automated spam

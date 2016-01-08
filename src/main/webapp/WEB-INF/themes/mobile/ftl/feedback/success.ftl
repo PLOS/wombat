@@ -3,9 +3,9 @@
 
 <#include "../common/headContent.ftl" />
 
-  <div id="feedback-form-container">
-  <#include "feedbackBody.ftl" />
-  </div>
+<div id="feedback-form-container">
+<#include "successBody.ftl" />
+</div>
 </div><#-- end home-content -->
 
 <#include "../common/footContent.ftl" />

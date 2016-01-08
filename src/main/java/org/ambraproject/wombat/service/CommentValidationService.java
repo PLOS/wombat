@@ -16,6 +16,9 @@ public interface CommentValidationService {
    *
    * @return validation errors, or an empty map if comment passes
    */
-  public abstract Map<String, Object> validate(Site site, String title, String body, boolean hasCompetingInterest, String ciStatement);
+  public abstract Map<String, Object> validateComment(Site site, String title, String body,
+                                                      boolean hasCompetingInterest, String ciStatement);
+
+  public abstract Map<String, Object> validateFlag(String flagComment);
 
 }

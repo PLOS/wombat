@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringWriter;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -88,6 +90,22 @@ public class HttpMessageUtil {
   }
 
   /**
+   * Read content from a response
+   *
+   * @param response incoming HttpResponse to be read
+   * @throws IOException
+   */
+  public static String readResponse(HttpResponse response) throws IOException {
+
+    StringWriter writer = new StringWriter();
+    try (InputStream streamFromService = response.getEntity().getContent())
+    {
+      IOUtils.copy(streamFromService, writer);
+    }
+    return writer.toString();
+  }
+
+  /**
    * Return a list of headers from a request, using an optional whitelist
    *
    * @param request a request
@@ -133,7 +151,6 @@ public class HttpMessageUtil {
     return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), ImmutableSet.<NameValuePair>of());
   }
 
-
   public static HttpUriRequest buildRequest(URI fullUrl, String method,
                                             Collection<? extends NameValuePair> params,
                                             NameValuePair... additionalParams) {
@@ -161,5 +178,9 @@ public class HttpMessageUtil {
     return reqBuilder.build();
   }
 
+  public static HttpUriRequest buildEntityPostRequest(URI fullUrl, HttpEntity entity) {
+    RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(fullUrl).setEntity(entity);
+    return reqBuilder.build();
+  }
 
 }

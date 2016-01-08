@@ -10,7 +10,6 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
@@ -18,10 +17,12 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -40,16 +41,22 @@ import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
+import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
+import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.validator.routines.UrlValidator;
+import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,6 +91,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
+import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -113,6 +121,8 @@ public class ArticleController extends WombatController {
    */
   private static final int XFORM_BUFFER_SIZE = 0x8000;
   private static final int MAX_TO_EMAILS = 5;
+
+  private static final String COMMENT_NAMESPACE = "/comments";
 
   @Autowired
   private Charset charset;
@@ -440,7 +450,7 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * @param parentArticleUri null if a reply to another comment
+   * @param parentArticleDoi null if a reply to another comment
    * @param parentCommentUri null if a direct reply to an article
    */
   @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
@@ -451,22 +461,39 @@ public class ArticleController extends WombatController {
                                   @RequestParam("comment") String commentBody,
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
-                                  @RequestParam(value = "target", required = false) String parentArticleUri,
-                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) {
+                                  @RequestParam(value = "target", required = false) String parentArticleDoi,
+                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
     enforceDevFeature("commentsTab");
-    Map<String, Object> validationErrors = commentValidationService.validate(site,
+    Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
-      return ImmutableMap.of("errors", validationErrors);
+      return ImmutableMap.of("validationErrors", validationErrors);
     }
-    String createdCommentUri = ""; // TODO: Implement
-    return ImmutableMap.of("createdCommentUri", createdCommentUri);
+
+    URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), COMMENT_NAMESPACE);
+    ArticleComment comment = new ArticleComment(parentArticleDoi, request.getRemoteUser(),
+        parentCommentUri, commentTitle, commentBody, ciStatement);
+    String articleCommentJson = new Gson().toJson(comment);
+    HttpEntity entity = new StringEntity(articleCommentJson, ContentType.create("application/json"));
+
+    HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
+    try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {
+      String createdCommentUri = HttpMessageUtil.readResponse(response);
+      return ImmutableMap.of("createdCommentUri", createdCommentUri);
+    }
   }
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
   @ResponseBody
-  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site) {
+  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site,
+                                   @RequestParam("reasonCode") String reasonCode,
+                                   @RequestParam("comment") String flagCommentBody,
+                                   @RequestParam("target") String targetComment) {
     enforceDevFeature("commentsTab");
+    Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
+    if (!validationErrors.isEmpty()) {
+      return ImmutableMap.of("validationErrors", validationErrors);
+    }
     return ImmutableMap.of(); // TODO: Implement
   }
 

@@ -34,7 +34,7 @@
       </form>
     </#if>
 
-    <div id="article-results-container">
+      <div id="article-results-container">
       <#if sections[selectedSection]??>
         <#assign articles = sections[selectedSection] />
         <section>

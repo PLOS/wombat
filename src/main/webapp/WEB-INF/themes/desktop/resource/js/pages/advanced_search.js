@@ -93,28 +93,7 @@ var AdvancedSearch = {};
         })
 
         .on('template-replaced', function (e, row) {
-          $(row)
-              .find('.datepicker').datepicker({
-                changeMonth: true,
-                changeYear: true,
-                maxDate: '0',
-                dateFormat: 'yy-mm-dd',
-                yearRange: '2003:+0'
-              }).end()
-
-              //Start Date max date is the entered End Date. End Date min date is the entered Start Date.
-              //Both Start and End Dates have a strict maximum of the current day
-              .find(that.inputFromDateSelector).on('change', function(){
-                var toDatepicker = $(row).find(that.inputToDateSelector);
-                if (!toDatepicker.val()) { // Add default date of Now()
-                  toDatepicker.datepicker('setDate', new Date());
-                }
-                toDatepicker.datepicker('option', 'minDate', this.value);
-              }).end()
-
-              .find(that.inputToDateSelector).on('change', function(){
-                $(row).find(that.inputFromDateSelector).datepicker('option', 'maxDate', this.value);
-              });
+          RangeDatepicker.init($(row).find(that.inputFromDateSelector), $(row).find(that.inputToDateSelector));
         })
 
         .data('advanced-search-initialized', true);
@@ -202,7 +181,7 @@ var AdvancedSearch = {};
     query += row.find(this.categorySelectSelector).val() + ':';
 
     var queryValue = '';
-    if (row.find('input').hasClass('datepicker')) {
+    if (row.find('input').hasClass('fdatepicker')) {
       /* Special treatement is required when inputs are datepickers */
       queryValue = this.processDateCondition(row.find('input'));
     } else {

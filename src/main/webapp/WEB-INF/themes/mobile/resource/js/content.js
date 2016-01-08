@@ -425,7 +425,7 @@ function ConfigureCollapsiblePanel() {
   $(".collapsible-title", this).click(CollapsibleContainerTitleOnClick);
 
   // Keep the widget closed initially.
-  $(".collapsible-content", $(this).parent()).toggle();
+  $(".collapsible-content", $(this).parent()).hide();
 }
 
 function CollapsibleContainerTitleOnClick() {

@@ -39,7 +39,7 @@
 .pagination .prevPage,
 .pagination .nextPage {
   position: absolute;
-  background: #ddd url(../img/icon.sprite.page.gif) 0 0 no-repeat;
+  background: #ddd image-url('icon.sprite.page.gif') 0 0 no-repeat;
   text-indent: -9999px;
   overflow: hidden;
 }

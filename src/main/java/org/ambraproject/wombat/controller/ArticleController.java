@@ -17,14 +17,18 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
+import org.ambraproject.wombat.service.CommentFormatting;
+import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
@@ -37,16 +41,22 @@ import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
+import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
+import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.validator.routines.UrlValidator;
+import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,6 +91,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
+import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -111,6 +122,8 @@ public class ArticleController extends WombatController {
   private static final int XFORM_BUFFER_SIZE = 0x8000;
   private static final int MAX_TO_EMAILS = 5;
 
+  private static final String COMMENT_NAMESPACE = "/comments";
+
   @Autowired
   private Charset charset;
   @Autowired
@@ -135,6 +148,8 @@ public class ArticleController extends WombatController {
   private FreemarkerMailService freemarkerMailService;
   @Autowired
   private JavaMailSender javaMailSender;
+  @Autowired
+  private CommentValidationService commentValidationService;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -172,11 +187,22 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
                                       @RequestParam("id") String articleId) throws IOException {
-      requireNonemptyParameter(articleId);
-      Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-      validateArticleVisibility(site, articleMetaData);
-      requestComments(model, articleId);
-    return site + "/ftl/article/comments";
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
+    requestComments(model, articleId);
+    return site + "/ftl/article/comment/comments";
+  }
+
+  @RequestMapping(name = "articleCommentForm", value = "/article/comments/new")
+  public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
+                                     @RequestParam("id") String articleId)
+      throws IOException {
+    enforceDevFeature("commentsTab");
+    requireNonemptyParameter(articleId);
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
+    return site + "/ftl/article/comment/newComment";
   }
 
 
@@ -402,7 +428,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "articleCommentTree", value = "/article/comment")
-  public String renderArticleCommentTree(Model model, @SiteParam Site site,
+  public String renderArticleCommentTree(HttpServletRequest request, Model model, @SiteParam Site site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
     Map<String, Object> comment;
@@ -411,13 +437,80 @@ public class ArticleController extends WombatController {
     } catch (EntityNotFoundException enfe) {
       throw new NotFoundException(enfe);
     }
-    comment = DoiSchemeStripper.strip(comment, "articleDoi");
-    validateArticleVisibility(site, (Map<?, ?>) comment.get("parentArticle"));
 
+    Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
+    String articleId = (String) parentArticleStub.get("doi");
+    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetadata);
+
+    comment = CommentFormatting.addFormattingFields(comment);
     model.addAttribute("comment", comment);
-    model.addAttribute("articleDoi", comment.get("articleDoi"));
-    return site + "/ftl/article/comment";
+
+    return site + "/ftl/article/comment/comment";
   }
+
+  /**
+   * @param parentArticleDoi null if a reply to another comment
+   * @param parentCommentUri null if a direct reply to an article
+   */
+  @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
+  @ResponseBody
+  public Object receiveNewComment(HttpServletRequest request,
+                                  @SiteParam Site site,
+                                  @RequestParam("commentTitle") String commentTitle,
+                                  @RequestParam("comment") String commentBody,
+                                  @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
+                                  @RequestParam(value = "ciStatement", required = false) String ciStatement,
+                                  @RequestParam(value = "target", required = false) String parentArticleDoi,
+                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
+    enforceDevFeature("commentsTab");
+    Map<String, Object> validationErrors = commentValidationService.validateComment(site,
+        commentTitle, commentBody, hasCompetingInterest, ciStatement);
+    if (!validationErrors.isEmpty()) {
+      return ImmutableMap.of("validationErrors", validationErrors);
+    }
+
+    URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), COMMENT_NAMESPACE);
+    ArticleComment comment = new ArticleComment(parentArticleDoi, request.getRemoteUser(),
+        parentCommentUri, commentTitle, commentBody, ciStatement);
+    String articleCommentJson = new Gson().toJson(comment);
+    HttpEntity entity = new StringEntity(articleCommentJson, ContentType.create("application/json"));
+
+    HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
+    try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {
+      String createdCommentUri = HttpMessageUtil.readResponse(response);
+      return ImmutableMap.of("createdCommentUri", createdCommentUri);
+    }
+  }
+
+  @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
+  @ResponseBody
+  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site,
+                                   @RequestParam("reasonCode") String reasonCode,
+                                   @RequestParam("comment") String flagCommentBody,
+                                   @RequestParam("target") String targetComment) {
+    enforceDevFeature("commentsTab");
+    Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
+    if (!validationErrors.isEmpty()) {
+      return ImmutableMap.of("validationErrors", validationErrors);
+    }
+    return ImmutableMap.of(); // TODO: Implement
+  }
+
+  @RequestMapping(name = "ajaxComment", method = RequestMethod.GET, value = "/article/comment/ajax")
+  @ResponseBody
+  public Object ajaxComment(HttpServletRequest request, @SiteParam Site site,
+                            @RequestParam("id") String commentId) throws IOException {
+    enforceDevFeature("commentsTab");
+    Map<String, ?> comment;
+    try {
+      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+    } catch (EntityNotFoundException enfe) {
+      throw new NotFoundException(enfe);
+    }
+    return CommentFormatting.addFormattingFields(comment);
+  }
+
 
   /**
    * Serves a request for the "about the authors" page for an article.
@@ -542,7 +635,7 @@ public class ArticleController extends WombatController {
       @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException {
     // TODO: remove when ready to expose page in prod
-    enforceDevFeature("relatedContentTab");
+    enforceDevFeature("relatedTab");
     requireNonemptyParameter(doi);
 
     if (!validateMediaCurationInput(model, link, name, email, captchaChallenge,

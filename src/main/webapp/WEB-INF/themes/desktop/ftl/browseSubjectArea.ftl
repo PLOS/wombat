@@ -6,7 +6,9 @@
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
 <#setting url_escaping_charset="UTF-8">
-<#assign category = filterSubjects?first?cap_first!"" />
+<#if filterSubjects?has_content>
+    <#assign category = filterSubjects?first?cap_first!"" />
+</#if>
 <#assign title = category!"All Subject Areas" />
 <#assign cssFile="browse-subject-area.css"/>
 <#include "common/head.ftl" />
@@ -19,6 +21,7 @@
     <#return subject?replace(' ','_')?lower_case>
 </#function>
 
+
 <#if parameterMap["resultView"]??>
     <#assign resultView = parameterMap["resultView"]?first>
 <#else>
@@ -27,9 +30,11 @@
 <@siteLink handlerName="browse" ; url>
     <#assign browseUrl = url/>
 </@siteLink>
-<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": encodeSubject(category)}; url>
+<#if category??>
+  <@siteLink handlerName="browseSubjectArea" pathVariables={"subject":encodeSubject(category)}; url>
     <#assign fullBrowseUrl = url/>
-</@siteLink>
+  </@siteLink>
+</#if>
 <div id="search-results-block" class="cf subject-listing">
     <div class="filter-bar subject cf">
         <h1>${category!"All Subject Areas"}</h1>
@@ -55,7 +60,7 @@
                       </#if>
                     </#if>
                       <li class="here" rel="v:child">
-                            <a typeof="v:Breadcrumb" rel="v:url" href="${fullBrowseUrl}"><div property="v:title" >${category!"All Subject Areas"}</div><span></span></a>
+                            <#--<a typeof="v:Breadcrumb" rel="v:url" href="${fullBrowseUrl}"><div property="v:title" >${category!"All Subject Areas"}</div><span></span></a>-->
                         <ul>
                         <#if children??>
                           <#list children as child>
@@ -84,14 +89,7 @@
                 </li>
             </#if>
             -->
-
-    <#-- @TODO: Check what feedURL should be and add the appropiate <li> element
-         <#if category??>
-          <@s.url id="feedURL" unformattedQuery="subject:\"${category}\"" sort = "${sort}" filterJournals = "${currentJournal}" namespace="/article/feed" action="executeFeedSearch" />
-        <#else>
-          <@s.url id="feedURL" unformattedQuery="*:*" sort = "${sort}" filterJournals = "${currentJournal}" namespace="/article/feed" action="executeFeedSearch" />
-        </#if>
-            <li class="last"><a href="${feedURL}" title="Get the RSS feed for ${category!"all articles"}">Get the RSS feed for ${category!"all articles"}</a></li>-->
+            <#include "browseSubjectAreaRssFeed.ftl" />
         </ul>
     </div><!-- /.filter-bar -->
 
@@ -170,15 +168,19 @@
 </div>
 
 <#include "renderSearchPaginationLinks.ftl" />
-<@renderSearchPaginationLinks url=fullBrowseUrl totalPages=totalPages currentPage=page?number/>
-
+<#if category??>
+  <@renderSearchPaginationLinks url=fullBrowseUrl totalPages=totalPages currentPage=page?number/>
+<#else>
+  <@renderSearchPaginationLinks url=browseUrl totalPages=totalPages currentPage=page?number/>
+</#if>
 <#include "common/footer/footer.ftl" />
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
 
 <@js src="resource/js/vendor/jquery.jsonp-2.4.0.js" />
 
-<@js src="resource/js/plosone.js" />
+<#include "subjectAreaJs.ftl" />
+
 <@js src="resource/js/util/alm_config.js" />
 <@js src="resource/js/metrics.js" />
 <@js src="resource/js/components/tooltip_hover.js"/>

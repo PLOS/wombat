@@ -79,8 +79,8 @@
 <script type="text/template" id="date-search-input">
     <#-- FROM and TO datepicker inputs to filter by date ranges -->
     <div id="date-search-input-container">
-        <input id="date-search-query-input-from" type="text" placeholder="Date from (YYYY-MM-DD)" class="datepicker query-condition-value" value="<%= queryValue %>"/>
-        <input id="date-search-query-input-to" type="text" placeholder="Date to (YYYY-MM-DD)" class="datepicker query-condition-value" value="<%= queryValue %>"/>
+        <input id="date-search-query-input-from" type="text" placeholder="Date from (YYYY-MM-DD)" class="fdatepicker query-condition-value"/>
+        <input id="date-search-query-input-to" type="text" placeholder="Date to (YYYY-MM-DD)" class="fdatepicker query-condition-value"/>
         <span id="date-search-query-input-to-span">to:&nbsp;&nbsp;</span>
     </div>
 </script>

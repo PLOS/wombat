@@ -4,7 +4,6 @@ var TaxonomyBrowser = function () {
   var self = this;
 
   self.init = function () {
-
     self.$browserDiv = $('#browse-container');
 
     if (self.$browserDiv.length) {

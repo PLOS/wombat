@@ -19,15 +19,15 @@
 
       <#if journal.currentIssue.imageUri??>
         <div class="journal_thumb">
-<p >
-            <a href="${issueLink}" >
+        <p>
+            <a href="${issueLink}" class="">
             <#assign issueImageFileId = journal.currentIssue.imageUri + thumbnail_suffix/>
-            <img src="http://localhost:8081/wombat/DesktopPlosOne/resource/img/404error.png"
+              <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}/>"
                  class="center-block"
                  alt="Current Issue"/>
             </a>
-</p>
-          <p class="pad-small-y">${journal.currentIssue.description}</p>
+        </p>
+        <p class="pad-small-y">${journal.currentIssue.description}</p>
         </div>
       </#if>
 

@@ -34,7 +34,12 @@ var AdvancedSearch = {};
     operatorSelectSelector  : 'select.operator',
     categorySelectSelector  : 'select.category',
 
-    clearButtonSelector     : '#searchFieldButton .clear'
+    clearButtonSelector     : '#searchFieldButton .clear',
+
+    /* Internal properties */
+    maxConditions: 50,
+    currentConditions: 0
+
   };
 
   /* AdvancedSearch methods */
@@ -135,15 +140,20 @@ var AdvancedSearch = {};
   };
 
   AdvancedSearch.addRow = function (queryValue) {
+    if (this.currentConditions >= this.maxConditions) {
+      return alert('No more conditions can be added.');
+    }
     // If no value, then it is initialized empty
     var templateRow = _.template($(this.templateRowSelector).html());
     $(this.inputContainerSelector).append(templateRow())
         /* trigger category change to process category input templates */
         .find(this.categorySelectSelector).trigger('change', queryValue);
+    this.currentConditions++;
   };
 
   AdvancedSearch.removeRow = function (row) {
     row.remove();
+    this.currentConditions--;
   };
 
   AdvancedSearch.replaceRowInputTemplate = function (row, newTemplateSelector, queryValue) {

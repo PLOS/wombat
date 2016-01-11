@@ -55,6 +55,7 @@
     </fieldset>
 </script>
 
+<#--<@siteLink handlerName="advancedSearch" queryParameters=searchFilterItem.filteredResultsParameters>-->
 
 <script type="text/template" id="advanced-search-controls">
     <#-- Main form and neccesary inputs to place all the parameters required in the querystring -->
@@ -63,6 +64,9 @@
         </div>
         <div class="advanced-search-buttons-container">
             <input id="unformatted-query-input" type="hidden" name="unformattedQuery" value="${query}"/>
+            <#list activeFilterItems as item>
+              <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
+            </#list>
             <input type="submit" class="search-button" value="Search"/>
         </div>
     </form>
@@ -72,7 +76,8 @@
 <script type="text/template" id="default-search-input">
     <#-- Default text input to write conditions -->
     <div id="default-search-input-container">
-        <input type="text" class="query-condition-value" value="<%= queryValue %>"/>
+      <#-- Erase anything before a : symbol to make sure no conditions are repeated -->
+      <input type="text" class="query-condition-value" value="<%= queryValue.replace(/^((.*):)/,'') %>"/>
     </div>
 </script>
 

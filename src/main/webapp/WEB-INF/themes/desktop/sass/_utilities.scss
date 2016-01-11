@@ -344,3 +344,8 @@ example | extension
   .hide-for-print { display: none !important; }
   .show-for-print { display: inherit !important; }
 }
+
+// Placeholder for an anchor
+.dummy-anchor {
+  visibility: hidden;
+}

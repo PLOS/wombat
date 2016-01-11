@@ -1,26 +1,40 @@
 var RangeDatepicker = {};
 (function ($) {
-  /* AdvancedSearch attributes */
-  RangeDatepicker = {
-    format: 'yyyy-mm-dd'
+  RangeDatepicker.options = {
+    format: 'yyyy-mm-dd',
+    min: null,
+    max: null
   };
 
   /* AdvancedSearch methods */
-  RangeDatepicker.init = function (fromInput, toInput) {
+  RangeDatepicker.init = function (fromInput, toInput, options) {
+
     //Start Date max date is the entered End Date. End Date min date is the entered Start Date.
     //Both Start and End Dates have a strict maximum of the current day
-    var now = new Date();
+    options = $.extend(RangeDatepicker.options, $(fromInput).data());
     var startDate = $(fromInput).fdatepicker({
-      format: this.format,
+      format: options.format,
       onRender: function (date) {
-        return date.valueOf() > now.valueOf() ? 'disabled' : '';
+        if (options.min instanceof Date && date.valueOf() < options.min.valueOf()) {
+          return 'disabled';
+        }
+        if (options.max instanceof Date && date.valueOf() > options.max.valueOf()) {
+          return 'disabled';
+        }
       }
     }).on('changeDate', function () {
-      endDate.update(now); // Add default date of Now()
+      endDate.update(new Date()); // Add default date of Now()
     }).data('datepicker');
+    options = $.extend(RangeDatepicker.options, $(toInput).data());
     var endDate = $(toInput).fdatepicker({
-      format: this.format,
+      format: options.format,
       onRender: function (date) {
+        if (options.min instanceof Date && date.valueOf() < options.min.valueOf()) {
+          return 'disabled';
+        }
+        if (options.max instanceof Date && date.valueOf() > options.max.valueOf()) {
+          return 'disabled';
+        }
         return date.valueOf() < startDate.date.valueOf() ? 'disabled' : '';
       }
     }).data('datepicker');

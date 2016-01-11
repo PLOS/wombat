@@ -117,7 +117,7 @@ public class ExternalResourceController extends WombatController {
       if (etag != null) {
         responseToClient.setHeader("Etag", etag);
       }
-      return;
+      return; // Etag matches or mod date is not recent so return response with 304 status -- "not modified"
     }
 
     String contentType = (String) fileMetadata.get("contentType");

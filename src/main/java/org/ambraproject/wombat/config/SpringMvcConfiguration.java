@@ -40,8 +40,7 @@ public class SpringMvcConfiguration extends WebMvcConfigurationSupport{
 
   @Override
   protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-    ResourceHandlerRegistration registration = registry.addResourceHandler("/" +
-        AssetService.AssetUrls.RESOURCE_NAMESPACE + "/**");
+    ResourceHandlerRegistration registration = registry.addResourceHandler(AssetService.AssetUrls.RESOURCE_TEMPLATE);
     registration.addResourceLocations("/" + AssetService.AssetUrls.RESOURCE_NAMESPACE + "/");
   }
 

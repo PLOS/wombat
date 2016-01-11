@@ -38,6 +38,7 @@ public interface AssetService {
      * is ever a ResourceService or such.
      */
     public static final String RESOURCE_NAMESPACE = "resource";
+    public static final String RESOURCE_TEMPLATE = "/" + RESOURCE_NAMESPACE + "/**";
 
     /**
      * The logical (servlet-relative) directory in which compiled asset files are served from.

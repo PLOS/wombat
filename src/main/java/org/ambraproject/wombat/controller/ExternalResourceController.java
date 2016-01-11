@@ -35,14 +35,17 @@ import java.util.TimeZone;
  * Forwards requests for files to the content repository.
  */
 @Controller
-public class IndirectFileController extends WombatController {
+public class ExternalResourceController extends WombatController {
 
-  private static final Logger log = LoggerFactory.getLogger(IndirectFileController.class);
+  public static final String EXTERNAL_RESOURCE_NAMESPACE = "indirect";
+  public static final String EXTERNAL_RESOURCE_TEMPLATE = "/" + EXTERNAL_RESOURCE_NAMESPACE + "**";
+
+  private static final Logger log = LoggerFactory.getLogger(ExternalResourceController.class);
 
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(name = "repoObject", value = "/indirect/{key}")
+  @RequestMapping(name = "repoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,
@@ -51,7 +54,7 @@ public class IndirectFileController extends WombatController {
     serve(response, request, key, Optional.<Integer>absent());
   }
 
-  @RequestMapping(name = "versionedRepoObject", value = "/indirect/{key}/{version}")
+  @RequestMapping(name = "versionedRepoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}/{version}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,

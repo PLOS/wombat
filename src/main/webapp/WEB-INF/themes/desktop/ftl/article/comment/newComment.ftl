@@ -25,7 +25,7 @@
   <#include "../tabs.ftl" />
   <@displayTabList 'comments' />
 
-    <div id="thread">
+    <div id="thread" class="startDiscussion">
       <h2>Start a Discussion</h2>
 
       <div class="reply cf form-default" id="respond">

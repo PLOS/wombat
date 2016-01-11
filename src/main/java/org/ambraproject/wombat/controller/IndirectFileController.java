@@ -101,8 +101,8 @@ public class IndirectFileController extends WombatController {
     fmt.setTimeZone(TimeZone.getTimeZone("GMT"));
     try {
       lastModifiedTime = fmt.parse((String) fileMetadata.get("creationDate")).getTime();
-    } catch (NullPointerException|ParseException e) {
-      log.error("Error retrieving creation date from repo object with key: {}", key);
+    } catch (ParseException e) {
+      log.error("Error parsing creation date from repo object with key: {}", key);
     }
 
     if (lastModifiedTime != null) {

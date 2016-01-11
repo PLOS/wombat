@@ -25,6 +25,11 @@
         listThreadURL: "${url?js_string}"
       </@siteLink>
       };
+
+    <#-- Applies only on the root new-comment page.
+         Others invoke wireCompetingInterestRadioButtons dynamically and won't have .startDiscussion
+      -->
+      comments.wireCompetingInterestRadioButtons($('.startDiscussion'));
     };
   }(jQuery));
 </script>

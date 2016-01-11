@@ -1,0 +1,28 @@
+
+
+/* Issue */
+#user-container {
+  color: #333333;
+}
+
+#user-container h1 {
+  font-size: 28px;
+  padding-bottom: 13px
+}
+
+#user-container dt {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 18px;
+  padding-bottom: 6px;
+  text-rendering: optimizeLegibility;
+}
+
+#user-container dd {
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 18px;
+  padding-bottom: 14px;
+  text-rendering: optimizeLegibility;
+}

@@ -1,9 +1,7 @@
 <#-- Specific css file will be added by head.ftl template -->
-<#assign cssFile = "user-info.css" />
-
 <#include "../common/headContent.ftl" />
 
-<div class="content">
+<div id="content">
   <#include "userInfoBody.ftl" />
 </div>
 

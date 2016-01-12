@@ -2,11 +2,11 @@
   /// floating nav
 
   $('nav#nav-toc').floatingNav({
-    content: $('section'),
+    content: $('article'),
     link_selector: 'a',
-    section_anchor: 'article .section a[name]',
+    section_anchor: '.section a[name]',
     section_anchor_attr: 'id',
-    margin: 10
+    margin: 80
   });
 
 })(jQuery);

@@ -18,7 +18,7 @@ public final class ReproxyUtil {
   }
 
   // TODO: Pull in code that depends on these values and make them private
-  // See: WombatController.ASSET_RESPONSE_HEADER_FILTER, FigureImageController.serveAssetFile, IndirectFileController.serve
+  // See: WombatController.ASSET_RESPONSE_HEADER_FILTER, FigureImageController.serveAssetFile, ExternalResourceController.serve
   public static final String X_PROXY_CAPABILITIES = "X-Proxy-Capabilities";
   public static final String REPROXY_FILE = "reproxy-file";
   public static final String X_REPROXY_URL = "X-Reproxy-URL";

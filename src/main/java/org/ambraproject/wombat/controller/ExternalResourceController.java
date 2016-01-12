@@ -11,6 +11,8 @@ import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.ReproxyUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,20 +22,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 /**
  * Forwards requests for files to the content repository.
  */
 @Controller
-public class IndirectFileController extends WombatController {
+public class ExternalResourceController extends WombatController {
+
+  public static final String EXTERNAL_RESOURCE_NAMESPACE = "indirect";
+  public static final String EXTERNAL_RESOURCE_TEMPLATE = "/" + EXTERNAL_RESOURCE_NAMESPACE + "**";
+
+  private static final Logger log = LoggerFactory.getLogger(ExternalResourceController.class);
 
   @Autowired
   private EditorialContentService editorialContentService;
 
-  @RequestMapping(name = "repoObject", value = "/indirect/{key}")
+  @RequestMapping(name = "repoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,
@@ -42,7 +54,7 @@ public class IndirectFileController extends WombatController {
     serve(response, request, key, Optional.<Integer>absent());
   }
 
-  @RequestMapping(name = "versionedRepoObject", value = "/indirect/{key}/{version}")
+  @RequestMapping(name = "versionedRepoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}/{version}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
                     @SiteParam Site site,
@@ -81,7 +93,32 @@ public class IndirectFileController extends WombatController {
     String message = String.format("Not found in repo: [key: %s, version: %s]",
             key, version.orNull());
     throw new NotFoundException(message, e);
-  }
+    }
+
+    // UUID is unique for a given combination of repo object and associated metadata, so good candidate for Etag
+    String etag = (String) fileMetadata.get("uuid");
+
+    // creationDate is equivalent to lastModified in that any new versions of objects are given a new creation timestamp
+    Long lastModifiedTime = null;
+    DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:s", Locale.US);
+    fmt.setTimeZone(TimeZone.getTimeZone("GMT"));
+    try {
+      lastModifiedTime = fmt.parse((String) fileMetadata.get("creationDate")).getTime();
+    } catch (ParseException e) {
+      log.error("Error parsing creation date from repo object with key: {}", key);
+    }
+
+    if (lastModifiedTime != null) {
+      responseToClient.setDateHeader(HttpHeaders.LAST_MODIFIED, lastModifiedTime);
+    }
+
+    if (!HttpMessageUtil.checkIfModifiedSince(requestFromClient, lastModifiedTime, etag)) {
+      responseToClient.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
+      if (etag != null) {
+        responseToClient.setHeader("Etag", etag);
+      }
+      return; // Etag matches or mod date is not recent so return response with 304 status -- "not modified"
+    }
 
     String contentType = (String) fileMetadata.get("contentType");
     if (contentType != null) {

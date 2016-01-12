@@ -6,6 +6,7 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetService.AssetUrls;
+import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.PathUtil;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -118,9 +115,9 @@ public class StaticResourceController extends WombatController {
         // here (instead concatenating length and mtime).  This is what the legacy ambra does for all
         // resources.
         String etag = String.format("W/\"%d-%d\"", attributes.getContentLength(), attributes.getLastModified());
-        if (checkIfModifiedSince(request, attributes.getLastModified(), etag)) {
+        if (HttpMessageUtil.checkIfModifiedSince(request, attributes.getLastModified(), etag)) {
           response.setHeader("Etag", etag);
-          setLastModified(response, attributes.getLastModified());
+          response.setDateHeader(HttpHeaders.LAST_MODIFIED, attributes.getLastModified());
           try (OutputStream outputStream = response.getOutputStream()) {
             IOUtils.copy(inputStream, outputStream);
           }
@@ -162,9 +159,9 @@ public class StaticResourceController extends WombatController {
     // This is a "strong" etag since it's based on a fingerprint of the contents.
     String etag = String.format("\"%s\"", matcher.group(1));
     long lastModified = assetService.getLastModifiedTime(basename);
-    if (checkIfModifiedSince(request, lastModified, etag)) {
+    if (HttpMessageUtil.checkIfModifiedSince(request, lastModified, etag)) {
       response.setHeader("Etag", etag);
-      setLastModified(response, lastModified);
+      response.setDateHeader(HttpHeaders.LAST_MODIFIED, lastModified);
       assetService.serveCompiledAsset(basename, response.getOutputStream());
     } else {
       response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
@@ -172,37 +169,4 @@ public class StaticResourceController extends WombatController {
     }
   }
 
-  /**
-   * Sets the "Last-Modified" header in the response.
-   *
-   * @param response     HttpServletResponse
-   * @param lastModified timestamp to set the header to
-   */
-  private void setLastModified(HttpServletResponse response, long lastModified) {
-
-    // RFC 1123 date. eg. Tue, 20 May 2008 13:45:26 GMT and always in English.
-    SimpleDateFormat fmt = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
-    fmt.setTimeZone(TimeZone.getTimeZone("GMT"));
-    response.setHeader("Last-Modified", fmt.format(new Date(lastModified)));
-  }
-
-  /**
-   * Checks to see if we should serve the contents of the static resource, or just return a 304 response with no body,
-   * based on cache-related request headers.
-   *
-   * @param request      HttpServletRequest we will check for cache headers
-   * @param lastModified last modified timestamp of the actual resource on the server
-   * @param etag         etag generated from the actual resource on the server
-   * @return true if we should serve the bytes of the resource, false if we should return 304.
-   */
-  private boolean checkIfModifiedSince(HttpServletRequest request, long lastModified, String etag) {
-
-    // Let the Etag-based header take precedence over If-Modified-Since.  This is copied from legacy ambra.
-    String etagFromRequest = request.getHeader("If-None-Match");
-    if (etagFromRequest != null) {
-      return !etagFromRequest.equals(etag);
-    } else {
-      return lastModified > request.getDateHeader("If-Modified-Since");
-    }
-  }
 }

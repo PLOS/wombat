@@ -4,6 +4,8 @@ import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.controller.ExternalResourceController;
+import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.util.ClientEndpoint;
 import org.apache.commons.io.Charsets;
 import org.jasig.cas.client.session.SingleSignOutFilter;
@@ -26,6 +28,7 @@ import org.springframework.security.cas.web.authentication.ServiceAuthentication
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.GrantedAuthority;
@@ -162,6 +165,14 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
       httpServletResponse.sendRedirect(runtimeConfiguration.getCasConfiguration().getLogoutUrl()
           + "?service=" + URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name()));
     };
+  }
+
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+    web
+        .ignoring()
+        .antMatchers(AssetService.AssetUrls.RESOURCE_TEMPLATE)
+        .antMatchers(ExternalResourceController.EXTERNAL_RESOURCE_TEMPLATE);
   }
 
   @Override

@@ -77,7 +77,7 @@ public class UserController extends WombatController {
     persist.put("sessionId", sessionId);
     persist.put("IP", ipAddress);
     persist.put("userAgent", userAgent);
-    soaService.postObject("users/" + remoteUser, persist);
+    soaService.postObject("user?authId=" + remoteUser, persist);
   }
 
   @Siteless
@@ -92,10 +92,10 @@ public class UserController extends WombatController {
     return new ModelAndView("redirect:" + referrer);
   }
 
-  @RequestMapping(name = "userInfo", value = "/user/{authId}")
-  public String displayUserInfo(Model model, @SiteParam Site site, @PathVariable String authId) throws IOException {
+  @RequestMapping(name = "userInfo", value = "/user/{displayName}")
+  public String displayUserInfo(Model model, @SiteParam Site site, @PathVariable String displayName) throws IOException {
     enforceDevFeature("userInfo");
-    String userMetaUrl = "users/" + authId;
+    String userMetaUrl = "user?displayName=" + displayName;
     Map<String, Object> userMetadata = soaService.requestObject(userMetaUrl, Map.class);
     model.addAttribute("user", userMetadata);
     return site.getKey() + "/ftl/user/userInfo";

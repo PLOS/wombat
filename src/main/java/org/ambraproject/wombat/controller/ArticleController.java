@@ -497,20 +497,6 @@ public class ArticleController extends WombatController {
     return ImmutableMap.of(); // TODO: Implement
   }
 
-  @RequestMapping(name = "ajaxComment", method = RequestMethod.GET, value = "/article/comment/ajax")
-  @ResponseBody
-  public Object ajaxComment(HttpServletRequest request, @SiteParam Site site,
-                            @RequestParam("id") String commentId) throws IOException {
-    enforceDevFeature("commentsTab");
-    Map<String, ?> comment;
-    try {
-      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
-    } catch (EntityNotFoundException enfe) {
-      throw new NotFoundException(enfe);
-    }
-    return CommentFormatting.addFormattingFields(comment);
-  }
-
 
   /**
    * Serves a request for the "about the authors" page for an article.

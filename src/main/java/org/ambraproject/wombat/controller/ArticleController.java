@@ -23,6 +23,7 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ArticleComment;
+import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -488,13 +489,23 @@ public class ArticleController extends WombatController {
   public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site,
                                    @RequestParam("reasonCode") String reasonCode,
                                    @RequestParam("comment") String flagCommentBody,
-                                   @RequestParam("target") String targetComment) {
+                                   @RequestParam("target") String targetComment)
+      throws IOException {
     enforceDevFeature("commentsTab");
     Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);
     }
-    return ImmutableMap.of(); // TODO: Implement
+
+    URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(),
+        String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
+    ArticleCommentFlag flag = new ArticleCommentFlag(request.getRemoteUser(), flagCommentBody, reasonCode);
+    HttpEntity entity = new StringEntity(new Gson().toJson(flag), ContentType.create("application/json"));
+
+    HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
+    try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {
+      return ImmutableMap.of(); // the "201 CREATED" status is all the AJAX client needs
+    }
   }
 
   @RequestMapping(name = "ajaxComment", method = RequestMethod.GET, value = "/article/comment/ajax")

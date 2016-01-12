@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      lang="en" xml:lang="en"
-      itemscope itemtype="http://schema.org/Article"
-      class="no-js">
-<#assign depth = 0 />
-<#assign title = '' />
-<#assign cssFile="site-content.css"/>
-
-<#include "../common/head.ftl" />
-<#include "../common/journalStyle.ftl" />
-<body class="static ${journalStyle}">
-
-<#include "../common/header/headerContainer.ftl" />
-
 <#if user??>
   <#assign defaultVal="<em>No answer</em>"/>
 
-<article>
+<article id="user-container">
   <h1>${user.displayName!defaultVal}</h1>
 
   <dl class="tight-list">
@@ -73,10 +58,3 @@
   </dl>
 </article>
 </#if>
-
-<#include "../common/footer/footer.ftl" />
-
-<@renderJs />
-
-</body>
-</html>

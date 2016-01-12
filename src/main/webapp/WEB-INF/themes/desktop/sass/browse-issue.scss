@@ -5,6 +5,10 @@ body {
   background: $clr-header;
 }
 
+main {
+  margin-top: 0;
+}
+
 h1 {
   font-family: $font-face-fancy;
   font-size: $txt-size-giant;;
@@ -16,7 +20,7 @@ h2 {
   font-weight: normal;
 }
 
-.section {
+.section:not(.cover) {
   background-color: $white;
   padding: $line-height $pad-large;
   margin: $line-height 0;
@@ -28,9 +32,9 @@ h2 {
   padding: $pad-default $pad-large;
   .header {
     text-align: center;
+    margin-bottom: $line-height-medium;
   }
   .img {
-
     img {
       width: rem-calc(280);
       height: rem-calc(280);
@@ -38,6 +42,7 @@ h2 {
   }
   .credit {
     @extend .note;
+    font-size: $txt-size-xxsmall;
   }
   h2 {
     display: block;
@@ -45,13 +50,19 @@ h2 {
     font-weight: normal;
     font-family: $font-face-fancy;
     font-size: $txt-size-xxxlarge;
+    margin: 0 0 $pad-xsmall 0;
     @extend %link-text-white;
+    &:hover {
+      text-decoration: none;
+    }
     a:hover {
       @extend %brand-color;
+      text-decoration: none;
     }
   }
   .kicker {
-
+    margin: 0;
+    font-size: $txt-size-xxsmall;
   }
 }
 
@@ -60,18 +71,25 @@ h2 {
   .img, .txt {
     @include plos-grid-column(320, $gutter-width: $pad-large);
   }
+  .txt {
+    padding: 0 $pad-small;
+    p {
+      font-size: $txt-size-medium;
+    }
+  }
   .img {
-    border-right: 1px solid $white;
+    border-right: 1px solid $grey-tinytext;
   }
 }
 
 .section h2 {
   font-size: $txt-size-xxxlarge;
+  margin: $pad-small 0;
 }
 
 .item {
   font-size: $txt-size-default;
-  margin-top: $line-height-medium;
+  padding: $line-height-small 0;
   h3 {
     font-size: 16px;
     margin-bottom: $line-height-small;
@@ -86,8 +104,9 @@ h2 {
     }
   }
 
-  .item .authors {
+  .authors {
     color: #666;
+    font-size: $txt-size-small;
   }
 
   h4 {
@@ -120,3 +139,9 @@ h2 {
 }
 
 
+/* Right Navbar */
+#nav-toc {
+  ul li a {
+    color: $grey-dark;
+  }
+}

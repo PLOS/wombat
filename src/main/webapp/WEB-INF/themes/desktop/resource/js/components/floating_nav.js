@@ -61,7 +61,7 @@
     function hiliteLink(link) {
       var $links = $floating_nav_menu.find(opts.link_selector);
       var parentTag = link.parent().prop('tagName');
-      var isIgnoredSection = parentTag !== "" && opts.ignored_sections.indexOf(parentTag) != -1;
+      var isIgnoredSection = parentTag !== '' && opts.ignored_sections.indexOf(parentTag) !== -1;
       if (win_top > (link.offset().top - opts.margin) && !isIgnoredSection) {
 
         var $linkRef = link.attr(opts.section_anchor_attr);
@@ -77,7 +77,7 @@
 
         var hilite = function () {
           opts.content.find(opts.section_anchor).each(function() {
-            hiliteLink($(this))
+            hiliteLink($(this));
           });
         };
 

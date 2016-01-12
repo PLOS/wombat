@@ -4,10 +4,11 @@
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
 <#assign depth = 0 />
-<#assign title = '' />
 <#assign cssFile="browse-issue.css"/>
+<#include "../common/title/issuesTitle.ftl" />
+<#assign title = issuesTitle />
+
 <#include "../macro/removeTags.ftl" />
-<#include "../common/title/titleFormat.ftl" />
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <body class="browse-issue ${journalStyle}">
@@ -38,7 +39,7 @@
 
         <article>
 
-            <div class="cover">
+            <div class="section cover">
                 <a id="Cover" name="Cover" toc="Cover" title="Cover"></a>
 
                 <div class="header">
@@ -53,9 +54,11 @@
               <div class="detail-container">
                 <div class="img">
                 <#if issue.imageUri?has_content>
-                    <#assign issueImageFileId = issue.imageUri + issue_image_suffix/>
+                  <#assign issueImageFileId = issue.imageUri + issue_image_suffix/>
+                  <a href="<@siteLink handlerName="article" queryParameters={"id": issue.imageUri} />">
                     <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId, "size" : "inline"}/>"
                     alt="Issue Image" data-doi="${issue.imageUri}">
+                  </a>
                 </#if>
                 </div>
                 <div class="txt">${issueDescription}</div>
@@ -78,8 +81,10 @@
                         handlerName="article"
                         queryParameters={"id": articleInfo.doi}; articleLink>
 
-                                <h3><a href="${articleLink}" title="Read Open Access Article">
-                                    <@titleFormat removeTags(articleInfo.title) /></a>
+                                <h3>
+                                  <a href="${articleLink}" title="Read Open Access Article">
+                                    ${articleInfo.title}
+                                  </a>
                                 </h3>
 
                                 <p class="authors">
@@ -118,7 +123,7 @@
                                 <li>
                                   <a href="http://dx.plos.org/${relArticle.doi?replace('info:doi/','')}"
                                      title="Read Open Access Article">
-                                      <@titleFormat removeTags(relArticle.title) />
+                                      ${relArticle.title}
                                   </a>
                                 </li>
                             </#list>

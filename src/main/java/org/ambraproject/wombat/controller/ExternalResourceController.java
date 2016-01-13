@@ -38,7 +38,7 @@ import java.util.TimeZone;
 public class ExternalResourceController extends WombatController {
 
   public static final String EXTERNAL_RESOURCE_NAMESPACE = "indirect";
-  public static final String EXTERNAL_RESOURCE_TEMPLATE = "/" + EXTERNAL_RESOURCE_NAMESPACE + "**";
+  public static final String EXTERNAL_RESOURCE_TEMPLATE = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/**";
 
   private static final Logger log = LoggerFactory.getLogger(ExternalResourceController.class);
 
@@ -98,6 +98,10 @@ public class ExternalResourceController extends WombatController {
     // UUID is unique for a given combination of repo object and associated metadata, so good candidate for Etag
     String etag = (String) fileMetadata.get("uuid");
 
+    if (etag != null) {
+      responseToClient.setHeader("Etag", etag);
+    }
+
     // creationDate is equivalent to lastModified in that any new versions of objects are given a new creation timestamp
     Long lastModifiedTime = null;
     DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:s", Locale.US);
@@ -114,9 +118,6 @@ public class ExternalResourceController extends WombatController {
 
     if (!HttpMessageUtil.checkIfModifiedSince(requestFromClient, lastModifiedTime, etag)) {
       responseToClient.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
-      if (etag != null) {
-        responseToClient.setHeader("Etag", etag);
-      }
       return; // Etag matches or mod date is not recent so return response with 304 status -- "not modified"
     }
 

@@ -169,10 +169,11 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   public void configure(WebSecurity web) throws Exception {
-    web
-        .ignoring()
-        .antMatchers(AssetService.AssetUrls.RESOURCE_TEMPLATE)
-        .antMatchers(ExternalResourceController.EXTERNAL_RESOURCE_TEMPLATE);
+    // Allow internal or external resource requests bypass spring security, and thereby avoid the acquisition
+    // of default cache control headers which would prevent client-side caching. The "/**" prefix to the Ant
+    // pattern accommodates the optional presence of site path tokens in the URL.
+    web.ignoring().antMatchers("/**" + AssetService.AssetUrls.RESOURCE_TEMPLATE,
+            "/**" + ExternalResourceController.EXTERNAL_RESOURCE_TEMPLATE);
   }
 
   @Override

@@ -194,9 +194,10 @@
         // Reload the page so the user can see their comment
         location.reload(true);
         return; // TODO: Instead insert the comment into the page without a refresh
+        var annotationUrl = null; // outer.addresses.getAnnotationURL; TODO: Set up with Ajax endpoint
 
         // Make a second Ajax request to get the new comment (we need its back-end representation)
-        sendAjaxRequest(outer.addresses.getAnnotationURL, {annotationId: data.replyId},
+        sendAjaxRequest(annotationUrl, {annotationId: data.replyId},
             function (data, textStatus, jqXHR) {
               // Got the new comment; now add the content to the page
               outer.putComment(parentId, data.annotationId, data.annotation);

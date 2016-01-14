@@ -58,18 +58,12 @@
 <#--<@siteLink handlerName="advancedSearch" queryParameters=searchFilterItem.filteredResultsParameters>-->
 
 <script type="text/template" id="advanced-search-controls">
-    <#-- Main form and neccesary inputs to place all the parameters required in the querystring -->
-    <form id="advanced-search-form" method="get" action="<@siteLink handlerName='advancedSearch'/>">
-        <div class="advanced-search-inputs-container">
-        </div>
-        <div class="advanced-search-buttons-container">
-            <input id="unformatted-query-input" type="hidden" name="unformattedQuery" value="${query}"/>
-            <#list activeFilterItems as item>
-              <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
-            </#list>
-            <input type="submit" class="search-button" value="Search"/>
-        </div>
-    </form>
+    <div class="advanced-search-inputs-container">
+    </div>
+    <div class="advanced-search-buttons-container">
+        <input id="unformatted-query-input" type="hidden" name="unformattedQuery" value="${query}"/>
+        <input type="submit" class="search-button" value="Search"/>
+    </div>
 </script>
 
 
@@ -77,15 +71,15 @@
     <#-- Default text input to write conditions -->
     <div id="default-search-input-container">
       <#-- Erase anything before a : symbol to make sure no conditions are repeated -->
-      <input type="text" class="query-condition-value" value="<%= queryValue.replace(/^((.*):)/,'') %>"/>
+      <input type="text" class="query-condition-value" value="<%= queryValue %>"/>
     </div>
 </script>
 
 <script type="text/template" id="date-search-input">
     <#-- FROM and TO datepicker inputs to filter by date ranges -->
     <div id="date-search-input-container">
-        <input id="date-search-query-input-from" type="text" placeholder="Date from (YYYY-MM-DD)" class="fdatepicker query-condition-value"/>
-        <input id="date-search-query-input-to" type="text" placeholder="Date to (YYYY-MM-DD)" class="fdatepicker query-condition-value"/>
+        <input id="date-search-query-input-from" type="text" placeholder="Date from (YYYY-MM-DD)" class="fdatepicker query-condition-value" required/>
+        <input id="date-search-query-input-to" type="text" placeholder="Date to (YYYY-MM-DD)" class="fdatepicker query-condition-value" required/>
         <span id="date-search-query-input-to-span">to:&nbsp;&nbsp;</span>
     </div>
 </script>

@@ -236,11 +236,19 @@ var AdvancedSearch = {};
     // Has to disable the fieldset containing the input
     $(this.inputSearchSelector).attr('disabled', true)
         .parent('fieldset').addClass('disabled');
+    $(this.inputSearchSelector).off('change');
   };
 
   AdvancedSearch.enableSearchInput = function (focusInput) {
+    var that = this;
     $(this.inputSearchSelector).attr('disabled', false)
         .parent('fieldset').removeClass('disabled');
+
+    // Reflect changes by the user in the hidden input
+    $(this.inputSearchSelector).on('change', function () {
+      $(that.inputQuerySelector).val($(this).val());
+    });
+
     if (focusInput) {
       $(this.inputSearchSelector).focus();
     }

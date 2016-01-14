@@ -251,6 +251,9 @@ var AdvancedSearch = {};
       AdvancedSearch.enableSearchInput(true);
       $(containerSelector).off('click change keyup').data('advanced-search-initialized', false).children().remove();
       $(this.inputSearchSelector).val('');
+      this.currentConditions = 0;
+      $(this.inputSearchSelector).attr('advanced-condition', null);
+      $(this.inputQuerySelector).attr('advanced-condition', null);
     }
   };
 

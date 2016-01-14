@@ -61,6 +61,7 @@ var AdvancedSearch = {};
     RangeDatepicker.options.max = new Date();
 
     $(this.containerSelector)
+
         /* Add row binding */
         .on('click', this.addSelector, function (e) {
           e.preventDefault();
@@ -104,15 +105,15 @@ var AdvancedSearch = {};
           RangeDatepicker.init($(row).find(that.inputFromDateSelector), $(row).find(that.inputToDateSelector));
         })
 
-        .on('submit', 'form', function (e) {
-          e.preventDefault();
-          that.validateForm(function (err) {
-            if (err) return alert(err.message);
-            $(e.delegateTarget).unbind('submit').find('form').submit();
-          });
-        })
-
         .data('advanced-search-initialized', true);
+
+    $(this.inputSearchSelector).parents('form').on('submit', function (e) {
+      e.preventDefault();
+      that.validateForm(function (err) {
+        if (err) return alert(err.message);
+        $(e.target).unbind('submit').submit();
+      });
+    });
 
     /* Add search button */
     this.addControlButtons();
@@ -242,6 +243,7 @@ var AdvancedSearch = {};
   };
 
   AdvancedSearch.disableSearchInput = function () {
+    var that = this;
     // Has to disable the fieldset containing the input
     $(this.inputSearchSelector).attr('disabled', true)
         .parent('fieldset').addClass('disabled');
@@ -269,14 +271,16 @@ var AdvancedSearch = {};
     if (query.length <= 0) {
       error = new Error('Search query cannot be empty.');
     }
+    // Return false if error and also callback with the error
     cb(error);
+    return !error;
   };
 
   AdvancedSearch.destroy = function (containerSelector) {
     if (AdvancedSearch.isInitialized(containerSelector)) {
       AdvancedSearch.enableSearchInput(true);
-      $(containerSelector).off('click change keyup submit').data('advanced-search-initialized', false).children().remove();
-      $(this.inputSearchSelector).val('');
+      $(containerSelector).off('click change keyup').data('advanced-search-initialized', false).children().remove();
+      $(this.inputSearchSelector).val('').parents('form').off('submit');;
       this.currentConditions = 0;
       $(this.inputSearchSelector).attr('advanced-condition', null);
       $(this.inputQuerySelector).attr('advanced-condition', null);

@@ -58,18 +58,12 @@
 <#--<@siteLink handlerName="advancedSearch" queryParameters=searchFilterItem.filteredResultsParameters>-->
 
 <script type="text/template" id="advanced-search-controls">
-    <#-- Main form and neccesary inputs to place all the parameters required in the querystring -->
-    <form id="advanced-search-form" method="get" action="<@siteLink handlerName='advancedSearch'/>">
-        <div class="advanced-search-inputs-container">
-        </div>
-        <div class="advanced-search-buttons-container">
-            <input id="unformatted-query-input" type="hidden" name="unformattedQuery" value="${query}" required/>
-            <#list activeFilterItems as item>
-              <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
-            </#list>
-            <input type="submit" class="search-button" value="Search"/>
-        </div>
-    </form>
+    <div class="advanced-search-inputs-container">
+    </div>
+    <div class="advanced-search-buttons-container">
+        <input id="unformatted-query-input" type="hidden" name="unformattedQuery" value="${query}"/>
+        <input type="submit" class="search-button" value="Search"/>
+    </div>
 </script>
 
 

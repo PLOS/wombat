@@ -23,7 +23,7 @@
         <a id="advancedSearchLink" class="advanced-search-toggle-btn" href="#">Advanced Search</a>
         <a id="simpleSearchLink" class="advanced-search-toggle-btn" href="#">Simple Search</a>
         <a class="edit-query" href="#">Edit Query</a>
-    </@ifDevFeatureEnabled>
+        </@ifDevFeatureEnabled>
     <@ifDevFeatureDisabled 'advancedSearch'>
           <button id="searchFieldButton" type="submit">
             <i class="search-icon"></i>

@@ -13,8 +13,34 @@
   *{font-size: 13px;}
 }
 
+.loader.showing {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: $black;
+  z-index: 600000;
+  opacity: 0.5;
+  @include single-transition();
+}
+
 #thread {
+  .btn.disabled{
+    @include single-transition();
+    background: #636363;
+    color: #636363;
+    display: inline-block;
+    position: relative;
+    &:after {
+      @extend .icon-spinner;
+      color:$white;
+      line-height: inherit;
+      position: absolute;
+      top: 0;
+      left: rem-calc(10);
+    }
+  }
 @extend %size-overide;
+  position: relative;
   h2 {
     margin: 30px 10px;
   }

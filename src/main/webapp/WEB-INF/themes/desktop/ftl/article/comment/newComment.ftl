@@ -26,6 +26,8 @@
   <@displayTabList 'comments' />
 
     <div id="thread" class="startDiscussion">
+      <div class="loader">  </div>
+
       <h2>Start a Discussion</h2>
 
       <div class="reply cf form-default" id="respond">

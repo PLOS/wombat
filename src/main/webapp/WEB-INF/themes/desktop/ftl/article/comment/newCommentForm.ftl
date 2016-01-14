@@ -66,7 +66,7 @@
 
     <span class="btn flt-l btn_submit primary"
       <#if isStandalone>
-          onclick="comments.submitDiscussion('${article.doi?js_string}')"
+          onclick="comments.submitDiscussion('${article.doi?js_string}',this)"
       </#if>
         >
       post

@@ -39,7 +39,6 @@ var AdvancedSearch = {};
     /* Internal properties */
     maxConditions: 50,
     currentConditions: 0
-
   };
 
   /* AdvancedSearch methods */
@@ -105,6 +104,14 @@ var AdvancedSearch = {};
           RangeDatepicker.init($(row).find(that.inputFromDateSelector), $(row).find(that.inputToDateSelector));
         })
 
+        .on('submit', 'form', function (e) {
+          e.preventDefault();
+          that.validateForm(function (err) {
+            if (err) return alert(err.message);
+            $(e.delegateTarget).unbind('submit').find('form').submit();
+          });
+        })
+
         .data('advanced-search-initialized', true);
 
     /* Add search button */
@@ -121,6 +128,9 @@ var AdvancedSearch = {};
     });
 
     var searchInputPrevValue = $(this.inputSearchSelector).val();
+    if (searchInputPrevValue.indexOf(':') !== -1) {
+      searchInputPrevValue = '';
+    }
     this.disableSearchInput();
     /* Add first row */
     this.addRow(searchInputPrevValue);
@@ -219,7 +229,6 @@ var AdvancedSearch = {};
     var processedDates = '';
     dates.each(function (ix, dateInput) {
       if (!dateInput.value) {
-        /* @TODO: Check what needs to be done with an empty date */
         return;
       }
 
@@ -254,10 +263,19 @@ var AdvancedSearch = {};
     }
   };
 
+  AdvancedSearch.validateForm = function (cb) {
+    var error = null;
+    var query = $(this.inputQuerySelector).val();
+    if (query.length <= 0) {
+      error = new Error('Search query cannot be empty.');
+    }
+    cb(error);
+  };
+
   AdvancedSearch.destroy = function (containerSelector) {
     if (AdvancedSearch.isInitialized(containerSelector)) {
       AdvancedSearch.enableSearchInput(true);
-      $(containerSelector).off('click change keyup').data('advanced-search-initialized', false).children().remove();
+      $(containerSelector).off('click change keyup submit').data('advanced-search-initialized', false).children().remove();
       $(this.inputSearchSelector).val('');
       this.currentConditions = 0;
       $(this.inputSearchSelector).attr('advanced-condition', null);

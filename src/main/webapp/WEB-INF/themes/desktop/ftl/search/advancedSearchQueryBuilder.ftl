@@ -63,7 +63,7 @@
         <div class="advanced-search-inputs-container">
         </div>
         <div class="advanced-search-buttons-container">
-            <input id="unformatted-query-input" type="hidden" name="unformattedQuery" value="${query}"/>
+            <input id="unformatted-query-input" type="hidden" name="unformattedQuery" value="${query}" required/>
             <#list activeFilterItems as item>
               <input type="hidden" name="${item.filterParamName}" value="${item.filterValue}"/>
             </#list>
@@ -77,7 +77,7 @@
     <#-- Default text input to write conditions -->
     <div id="default-search-input-container">
       <#-- Erase anything before a : symbol to make sure no conditions are repeated -->
-      <input type="text" class="query-condition-value" value="<%= queryValue.replace(/^((.*):)/,'') %>" required/>
+      <input type="text" class="query-condition-value" value="<%= queryValue %>"/>
     </div>
 </script>
 

@@ -28,7 +28,9 @@ public class CalendarUtil {
       calendar.setTimeZone(TimeZone.getDefault());
     }  // Else calendar will be set with tz in the ISO-8601 date string, which is usually UTC
     Date d = calendar.getTime();
-    return new SimpleDateFormat(format).format(d);
+    SimpleDateFormat formatObj = new SimpleDateFormat(format);
+    formatObj.setTimeZone(calendar.getTimeZone());
+    return formatObj.format(d);
   }
 
 }

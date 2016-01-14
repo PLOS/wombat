@@ -196,22 +196,12 @@
         var annotationUrl = null; // outer.addresses.getAnnotationURL; TODO: Set up with Ajax endpoint
 
         // Make a second Ajax request to get the new comment (we need its back-end representation)
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-        sendAjaxRequest(outer.addresses.getAnnotationURL, {annotationId: data.replyId},
-          function (data, textStatus, jqXHR) {
-            // Got the new comment; now add the content to the page
-            outer.putComment(parentId, data.annotationId, data.annotation);
-          });
-=======
->>>>>>> Stashed changes
+
         sendAjaxRequest(annotationUrl, {annotationId: data.replyId},
             function (data, textStatus, jqXHR) {
               // Got the new comment; now add the content to the page
               outer.putComment(parentId, data.annotationId, data.annotation);
             });
->>>>>>> origin/master
       };
       var errorMsgElement = replyElement.find('.subresponse .error');
 console.log(eventElement);

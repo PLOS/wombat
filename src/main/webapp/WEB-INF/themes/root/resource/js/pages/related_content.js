@@ -85,11 +85,11 @@
       var publication_date = "Unknown";
       if(curReference.published_on.length > 0) {
         var dateParts = /^(\d{4})-(\d{2})-(\d{2})T(.*)Z$/.exec(curReference.published_on);
-        publication_date = $.datepicker.formatDate('dd M yy', new Date(dateParts[1], dateParts[2] - 1, dateParts[3]));
+        publication_date = moment(new Date(dateParts[1], dateParts[2] - 1, dateParts[3])).format('D MMM YYYY');
       }
 
       var htmlContent = '<b>' + publication + '</b>: "<a href="' + curReference.referral + '">' + title +
-        '</a>"&nbsp;&nbsp;' + publication_date;
+          '</a>"&nbsp;&nbsp;' + publication_date;
 
       if (category == 'Other') {
         htmlContent = '<b>' + publication + '</b>: "<a href="' + curReference.referral + '">' + title + '</a>"';

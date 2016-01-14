@@ -4,21 +4,12 @@
   overflow-x: hidden;
 }
 
-#content.related-content {
-  text-align: center;
-}
-
-#content.related-content h2 {
-  font-size: 21px;
-}
-
 #content.related-content #media_coverage {
   font-size: 13px;
 }
 
 #content.related-content .related-content-wrap {
   display: inline-block;
-  text-align: center;
 }
 
 #content.related-content .related-content-wrap.rc-cf {

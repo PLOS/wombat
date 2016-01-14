@@ -4,7 +4,9 @@
 <#include "../common/headContent.ftl" />
 
 <div id="content" class="related-content">
-  <#include "relatedContentBody.ftl" />
+  <article>
+    <#include "relatedContentBody.ftl" />
+  </article>
 </div>
 
 </div><#-- end home-content -->

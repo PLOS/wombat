@@ -34,7 +34,6 @@ import java.util.Map;
 public class ExternalResourceController extends WombatController {
 
   public static final String EXTERNAL_RESOURCE_NAMESPACE = "indirect";
-  public static final String EXTERNAL_RESOURCE_TEMPLATE = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/**";
 
   private static final Logger log = LoggerFactory.getLogger(ExternalResourceController.class);
 

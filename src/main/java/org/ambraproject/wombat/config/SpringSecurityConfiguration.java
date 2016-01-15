@@ -1,11 +1,12 @@
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableSet;
+import org.ambraproject.wombat.config.site.RequestMappingContext;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.controller.ExternalResourceController;
-import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.util.ClientEndpoint;
 import org.apache.commons.io.Charsets;
 import org.jasig.cas.client.session.SingleSignOutFilter;
@@ -38,12 +39,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -60,11 +64,15 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   private SiteSet siteSet;
 
   @Autowired
+  private SiteResolver siteResolver;
+
+  @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
+  private static final AntPathMatcher ANT_PATH_MATCHER = new AntPathMatcher();
   private static final String CAS_VALIDATION_URI = "/j_spring_cas_security_check";
   private static final String CAS_LOGOUT_URI = "/j_spring_cas_security_logout";
   private static final String CAS_AUTH_KEY = "casAuthProviderKey";
@@ -72,6 +80,13 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   private static final String USER_AUTH_INTERCEPT_PATTERN = "/**/user/secure/**";
   private static final String NEW_COMMENT_AUTH_INTERCEPT_PATTERN = "/**/article/comments/new**";
   private static final String FLAG_COMMENT_AUTH_INTERCEPT_PATTERN = "/**/article/comments/flag**";
+  private static final ImmutableSet<String> CACHED_RESOURCE_HANDLERS = new ImmutableSet.Builder<String>()
+      .add("staticResource")
+      .add("repoObject")
+      .add("versionedRepoObject")
+      .add("repoObjectUsingPublicUrl")
+      .add("figureImage")
+      .build();
 
   @Bean
   public ServiceProperties serviceProperties() {
@@ -89,7 +104,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Bean
   public AuthenticationUserDetailsService authenticationUserDetailsService() {
-    return new AbstractCasAssertionUserDetailsService(){
+    return new AbstractCasAssertionUserDetailsService() {
       @Override
       protected UserDetails loadUserDetails(Assertion assertion) {
         final List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
@@ -147,7 +162,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Bean
   public LogoutSuccessHandler getLogoutSuccessHandler() {
     return (httpServletRequest, httpServletResponse, authentication) -> {
-      if (authentication != null && authentication.getDetails() != null){
+      if (authentication != null && authentication.getDetails() != null) {
         try {
           httpServletRequest.getSession().invalidate();
         } catch (IllegalStateException e) {
@@ -169,21 +184,26 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   public void configure(WebSecurity web) throws Exception {
-    web
-        .ignoring()
-        .antMatchers(AssetService.AssetUrls.RESOURCE_TEMPLATE)
-        .antMatchers(ExternalResourceController.EXTERNAL_RESOURCE_TEMPLATE);
+    // Allow internal or external resource requests bypass spring security, and thereby avoid the acquisition
+    // of default cache control headers which would prevent client-side caching.
+    web.ignoring().requestMatchers((RequestMatcher) request ->
+        CACHED_RESOURCE_HANDLERS.stream()
+            .map(handlerName -> requestMappingContextDictionary.getPattern(handlerName, siteResolver.resolveSite(request)))
+            .filter(Objects::nonNull)
+            .map(RequestMappingContext::getPattern)
+            .anyMatch(handlerPattern -> ANT_PATH_MATCHER.match(handlerPattern, request.getServletPath()))
+    );
   }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
 
     http.addFilter(casAuthenticationFilter())
-            .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
-            .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-            .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-            .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-            .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
+        .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
+        .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
+        .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+        .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+        .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
     http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
     http.csrf().disable();
   }
@@ -193,7 +213,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     auth.authenticationProvider(casAuthenticationProvider());
   }
 
-  @Bean @Override
+  @Bean
+  @Override
   public AuthenticationManager authenticationManagerBean() throws Exception {
     return super.authenticationManagerBean();
   }

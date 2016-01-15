@@ -22,14 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 
 /**
  * Forwards requests for files to the content repository.
@@ -38,7 +33,6 @@ import java.util.TimeZone;
 public class ExternalResourceController extends WombatController {
 
   public static final String EXTERNAL_RESOURCE_NAMESPACE = "indirect";
-  public static final String EXTERNAL_RESOURCE_TEMPLATE = "/" + EXTERNAL_RESOURCE_NAMESPACE + "**";
 
   private static final Logger log = LoggerFactory.getLogger(ExternalResourceController.class);
 
@@ -95,31 +89,6 @@ public class ExternalResourceController extends WombatController {
     throw new NotFoundException(message, e);
     }
 
-    // UUID is unique for a given combination of repo object and associated metadata, so good candidate for Etag
-    String etag = (String) fileMetadata.get("uuid");
-
-    // creationDate is equivalent to lastModified in that any new versions of objects are given a new creation timestamp
-    Long lastModifiedTime = null;
-    DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:s", Locale.US);
-    fmt.setTimeZone(TimeZone.getTimeZone("GMT"));
-    try {
-      lastModifiedTime = fmt.parse((String) fileMetadata.get("creationDate")).getTime();
-    } catch (ParseException e) {
-      log.error("Error parsing creation date from repo object with key: {}", key);
-    }
-
-    if (lastModifiedTime != null) {
-      responseToClient.setDateHeader(HttpHeaders.LAST_MODIFIED, lastModifiedTime);
-    }
-
-    if (!HttpMessageUtil.checkIfModifiedSince(requestFromClient, lastModifiedTime, etag)) {
-      responseToClient.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
-      if (etag != null) {
-        responseToClient.setHeader("Etag", etag);
-      }
-      return; // Etag matches or mod date is not recent so return response with 304 status -- "not modified"
-    }
-
     String contentType = (String) fileMetadata.get("contentType");
     if (contentType != null) {
       responseToClient.setHeader(HttpHeaders.CONTENT_TYPE, contentType);
@@ -137,7 +106,7 @@ public class ExternalResourceController extends WombatController {
 
     Collection<Header> assetHeaders = HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST);
     try (CloseableHttpResponse repoResponse = editorialContentService.request(key, version, assetHeaders)) {
-      HttpMessageUtil.copyResponseWithHeaders(repoResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
+      forwardAssetResponse(repoResponse, responseToClient);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",
           key, version.orNull());

@@ -204,7 +204,6 @@
             });
       };
       var errorMsgElement = replyElement.find('.subresponse .error');
-console.log(eventElement);
       submit(replyElement, errorMsgElement, this.addresses.submitReplyURL, commentData, submittedCallback, eventElement);
     };
 

@@ -103,7 +103,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Bean
   public AuthenticationUserDetailsService authenticationUserDetailsService() {
-    return new AbstractCasAssertionUserDetailsService(){
+    return new AbstractCasAssertionUserDetailsService() {
       @Override
       protected UserDetails loadUserDetails(Assertion assertion) {
         final List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
@@ -161,7 +161,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Bean
   public LogoutSuccessHandler getLogoutSuccessHandler() {
     return (httpServletRequest, httpServletResponse, authentication) -> {
-      if (authentication != null && authentication.getDetails() != null){
+      if (authentication != null && authentication.getDetails() != null) {
         try {
           httpServletRequest.getSession().invalidate();
         } catch (IllegalStateException e) {
@@ -187,10 +187,10 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     // of default cache control headers which would prevent client-side caching.
     web.ignoring().requestMatchers((RequestMatcher) request ->
         CACHED_RESOURCE_HANDLERS.stream()
-        .map(handlerName -> requestMappingContextDictionary.getPattern(handlerName, siteResolver.resolveSite(request)))
-        .filter(Objects::nonNull)
-        .map(RequestMappingContext::getPattern)
-        .anyMatch(handlerPattern -> new AntPathMatcher().match(handlerPattern, request.getServletPath()))
+            .map(handlerName -> requestMappingContextDictionary.getPattern(handlerName, siteResolver.resolveSite(request)))
+            .filter(Objects::nonNull)
+            .map(RequestMappingContext::getPattern)
+            .anyMatch(handlerPattern -> new AntPathMatcher().match(handlerPattern, request.getServletPath()))
     );
   }
 
@@ -198,11 +198,11 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
 
     http.addFilter(casAuthenticationFilter())
-            .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
-            .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-            .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-            .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-            .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
+        .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
+        .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
+        .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+        .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+        .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
     http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
     http.csrf().disable();
   }
@@ -212,7 +212,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     auth.authenticationProvider(casAuthenticationProvider());
   }
 
-  @Bean @Override
+  @Bean
+  @Override
   public AuthenticationManager authenticationManagerBean() throws Exception {
     return super.authenticationManagerBean();
   }

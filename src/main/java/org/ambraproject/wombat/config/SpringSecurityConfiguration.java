@@ -72,6 +72,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
+  private static final AntPathMatcher ANT_PATH_MATCHER = new AntPathMatcher();
   private static final String CAS_VALIDATION_URI = "/j_spring_cas_security_check";
   private static final String CAS_LOGOUT_URI = "/j_spring_cas_security_logout";
   private static final String CAS_AUTH_KEY = "casAuthProviderKey";
@@ -190,7 +191,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .map(handlerName -> requestMappingContextDictionary.getPattern(handlerName, siteResolver.resolveSite(request)))
             .filter(Objects::nonNull)
             .map(RequestMappingContext::getPattern)
-            .anyMatch(handlerPattern -> new AntPathMatcher().match(handlerPattern, request.getServletPath()))
+            .anyMatch(handlerPattern -> ANT_PATH_MATCHER.match(handlerPattern, request.getServletPath()))
     );
   }
 

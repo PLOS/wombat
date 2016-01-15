@@ -197,12 +197,12 @@ public abstract class WombatController {
     return true;
   }
 
-  protected static void CopyResponseIfModified(HttpServletResponse responseToClient,
-      CloseableHttpResponse repoResponse) throws IOException {
-    if (repoResponse.getStatusLine().getStatusCode() == org.apache.http.HttpStatus.SC_NOT_MODIFIED) {
+  protected static void forwardAssetResponse(CloseableHttpResponse remoteResponse, HttpServletResponse responseToClient)
+      throws IOException {
+    if (remoteResponse.getStatusLine().getStatusCode() == org.apache.http.HttpStatus.SC_NOT_MODIFIED) {
       responseToClient.setStatus(org.apache.http.HttpStatus.SC_NOT_MODIFIED);
     } else {
-      HttpMessageUtil.copyResponseWithHeaders(repoResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
+      HttpMessageUtil.copyResponseWithHeaders(remoteResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
     }
   }
 }

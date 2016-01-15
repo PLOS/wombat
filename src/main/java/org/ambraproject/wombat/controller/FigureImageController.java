@@ -43,7 +43,7 @@ public class FigureImageController extends WombatController {
       throws IOException {
     try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId,
             HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST))) {
-      CopyResponseIfModified(responseToClient, responseFromService);
+      forwardAssetResponse(responseFromService, responseToClient);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

@@ -83,23 +83,21 @@
 }
 
 /* Clear button in input search bar */
-button[type=submit].toggle-icons {
-  i.clear {
-    font-size: rem-calc(22px);
-    margin-top: 4px;
-    cursor: pointer;
-    display: none;
-  }
+i.clear {
+  margin-top: 3px;
+  cursor: pointer;
+  float: right;
+  color: $grey-dark;
+  display: none;
 }
 
 #controlBarSearch {
-  &[advanced-condition] ~ button[type=submit].toggle-icons > i{
-    &.clear {
-      display: inline-block;
-    }
-    &.search-icon {
+  &[advanced-condition] ~ button[type=submit] > i.search-icon {
       display: none !important;
-    }
+  }
+
+  &[advanced-condition] ~ i.clear  {
+    display: inline-block;
   }
 }
 

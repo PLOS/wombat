@@ -182,6 +182,13 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   line-height: $line-height-icon;
 }
 
+.icon-times-circle {
+  @extend .icon-fa;
+  @extend .fa-times-circle;
+  line-height: $line-height;
+  font-size: $txt-size-xlarge;
+}
+
 .icon-pointer {
   @extend .icon-fa;
   @extend .fa-hand-o-right;

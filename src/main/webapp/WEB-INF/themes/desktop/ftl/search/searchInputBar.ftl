@@ -15,10 +15,10 @@
             </#if>
         </#if>
         <@ifDevFeatureEnabled 'advancedSearch'>
-          <button id="searchFieldButton" type="submit" class="toggle-icons">
+          <button id="searchFieldButton" type="submit">
               <i class="search-icon"></i>
-              <i title="Clear Search Input" class="fa fa-times-circle fa-lg clear"></i>
-            </button>
+          </button>
+          <i title="Clear Search Input" class="icon-fa icon-times-circle clear"></i>
         </fieldset>
         <a id="advancedSearchLink" class="advanced-search-toggle-btn" href="#">Advanced Search</a>
         <a id="simpleSearchLink" class="advanced-search-toggle-btn" href="#">Simple Search</a>

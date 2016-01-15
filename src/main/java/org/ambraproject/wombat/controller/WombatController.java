@@ -20,11 +20,13 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.Header;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
@@ -195,4 +197,12 @@ public abstract class WombatController {
     return true;
   }
 
+  protected static void CopyResponseIfModified(HttpServletResponse responseToClient,
+      CloseableHttpResponse repoResponse) throws IOException {
+    if (repoResponse.getStatusLine().getStatusCode() == org.apache.http.HttpStatus.SC_NOT_MODIFIED) {
+      responseToClient.setStatus(org.apache.http.HttpStatus.SC_NOT_MODIFIED);
+    } else {
+      HttpMessageUtil.copyResponseWithHeaders(repoResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
+    }
+  }
 }

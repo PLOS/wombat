@@ -10,7 +10,6 @@ import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.ReproxyUtil;
 import org.apache.http.Header;
-import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,11 +106,7 @@ public class ExternalResourceController extends WombatController {
 
     Collection<Header> assetHeaders = HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST);
     try (CloseableHttpResponse repoResponse = editorialContentService.request(key, version, assetHeaders)) {
-      if (repoResponse.getStatusLine().getStatusCode() == HttpStatus.SC_NOT_MODIFIED) {
-        responseToClient.setStatus(HttpStatus.SC_NOT_MODIFIED);
-      } else {
-        HttpMessageUtil.copyResponseWithHeaders(repoResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
-      }
+      CopyResponseIfModified(responseToClient, repoResponse);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",
           key, version.orNull());

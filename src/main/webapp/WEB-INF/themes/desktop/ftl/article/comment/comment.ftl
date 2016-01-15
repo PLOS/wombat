@@ -18,6 +18,7 @@
 
 <#include "../../common/header/headerContainer.ftl" />
 <div class="set-grid">
+
 <#include "../articleHeader.ftl" />
   <section class="article-body">
 
@@ -25,6 +26,7 @@
   <@displayTabList 'comments' />
 
     <div id="thread" class="article-container">
+      <div class="loader">  </div>
 
       <h2>Reader Comments</h2>
 

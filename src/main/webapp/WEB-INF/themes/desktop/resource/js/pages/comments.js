@@ -102,30 +102,30 @@
     this.showReportBox = function (replyId) {
       var outer = this;
       this.showBox(replyId, 'respond', 'report', ['.btn_cancel', '.close_confirm'],
-          function (box) {
-            box.find('.btn_submit').click(function () {
-              outer.submitReport(replyId);
-            });
+        function (box) {
+          box.find('.btn_submit').click(function () {
+            outer.submitReport(replyId,$(this));
           });
+        });
     };
 
     /**
      * Show the "respond to this posting" box beneath a reply, clearing the report box first if necessary.
      * @param replyId  the ID of the reply where the box should be shown
      */
-    this.showRespondBox = function (replyId, depth) {
+    this.showRespondBox = function (replyId, depth, eventElement) {
       var replyElement = getReplyElement(replyId);
       replyElement.data('depth', depth);
       var outer = this;
       var parentTitle = replyElement.find('.response_title').text();
       this.showBox(replyId, 'report', 'respond', ['.btn_cancel'],
-          function (box) {
-            box.find('.btn_submit').click(function () {
-              outer.submitResponse(replyId);
-            });
-            box.find('[name="comment_title"]').attr("value", 'RE: ' + parentTitle);
-            outer.wireCompetingInterestRadioButtons(box);
+        function (box) {
+          box.find('.btn_submit').click(function () {
+            outer.submitResponse(replyId, $(this));
           });
+          box.find('[name="comment_title"]').attr("value", 'RE: ' + parentTitle);
+          outer.wireCompetingInterestRadioButtons(box);
+        });
     };
 
     /**
@@ -157,7 +157,6 @@
         },
         success: success,
         error: function (jqXHR, textStatus, errorThrown) {
-          alert(textStatus + '\n' + errorThrown);
         },
         complete: function (jqXHR, textStatus) {
         }
@@ -168,7 +167,7 @@
      * Submit a top-level response to an article over Ajax and show the result.
      * @param articleDoi the DOI of the article to which the user is responding
      */
-    this.submitDiscussion = function (articleDoi) {
+    this.submitDiscussion = function (articleDoi, eventElement) {
       var replyElement = $('.reply');
       var commentData = getCommentData(replyElement);
       commentData.target = articleDoi;
@@ -177,14 +176,14 @@
       var submittedCallback = function (data) {
         window.location = listThreadURL + '?id=' + data.createdCommentUri;
       };
-      submit(replyElement, $('.error'), this.addresses.submitDiscussionURL, commentData, submittedCallback);
+      submit(replyElement, $('.error'), this.addresses.submitDiscussionURL, commentData, submittedCallback, eventElement);
     };
 
     /**
      * Submit the response data from a reply's response box and show the result. Talks to the server over Ajax.
      * @param parentId  the ID of the existing reply, to which the user is responding
      */
-    this.submitResponse = function (parentId) {
+    this.submitResponse = function (parentId, eventElement) {
       var replyElement = getReplyElement(parentId);
       var commentData = getCommentData(replyElement);
       commentData.inReplyTo = replyElement.data('uri');
@@ -197,6 +196,7 @@
         var annotationUrl = null; // outer.addresses.getAnnotationURL; TODO: Set up with Ajax endpoint
 
         // Make a second Ajax request to get the new comment (we need its back-end representation)
+
         sendAjaxRequest(annotationUrl, {annotationId: data.replyId},
             function (data, textStatus, jqXHR) {
               // Got the new comment; now add the content to the page
@@ -204,15 +204,14 @@
             });
       };
       var errorMsgElement = replyElement.find('.subresponse .error');
-
-      submit(replyElement, errorMsgElement, this.addresses.submitReplyURL, commentData, submittedCallback);
+      submit(replyElement, errorMsgElement, this.addresses.submitReplyURL, commentData, submittedCallback, eventElement);
     };
 
     /**
      * Submit a report (flag) from a reply's "report a concern" button and show the result.
      * @param replyId  the ID of the reply being flagged
      */
-    this.submitReport = function (replyId) {
+    this.submitReport = function (replyId, eventElement) {
       var reply = getReplyElement(replyId);
       var data = {
         target: reply.data('uri'),
@@ -225,7 +224,7 @@
         reportDialog.find('.flagForm').hide();
         animatedShow(reportDialog.find('.flagConfirm'));
       };
-      submit(reply, errorMsgElement, this.addresses.submitFlagURL, data, submittedCallback);
+      submit(reply, errorMsgElement, this.addresses.submitFlagURL, data, submittedCallback, eventElement);
     };
 
     /**
@@ -233,27 +232,19 @@
      * Call {@code .close()} on the returned object to end.
      * @return {Object}  the overlay object from the "JQuery TOOLS Overlay" library
      */
-    function freezeForLoading() {
-      // Disabled because of incompatibility between jquery.overlay-1.2.5.js and newer JQuery versions
-      // TODO: Re-implement
-      if (true) return {
-        close: function () {
-        }
-      };
+    var freezeForLoading = (function () {
 
-
-      var overlay = $(".loading_overlay").overlay({
-        api: true, // Control it with .load() and .close() calls instead of user action
-        closeOnClick: false, closeOnEsc: false,
-        mask: { // Freezes the screen, with a visual graying-out effect
-          opacity: 0.25, // Set to 0 for no visible effect (maximum 1.0)
-          color: '#fff', // Ignored if opacity is 0
-          loadSpeed: 250 // Ignored if opacity is 0
+      return {
+        load: function (eventElement) {
+          $(eventElement).addClass("disabled");
+          $(".loader").addClass("showing");
+        },
+        close: function (eventElement) {
+          $(eventElement).removeClass("disabled");
+          $(".loader").removeClass("showing");
         }
-      });
-      overlay.load();
-      return overlay;
-    }
+      }
+    })();
 
     /**
      * Submit user input in general to the server.
@@ -264,60 +255,59 @@
      * @param data  the comment's content, as an object that can be sent to the server
      * @param submittedCallback  a function to call after the comment has been submitted without errors
      */
-    function submit(parentReply, errorMsgElement, submitUrl, data, submittedCallback) {
+    function submit(parentReply, errorMsgElement, submitUrl, data, submittedCallback, eventElement) {
       // If another submission is unfinished, ignore the input
       if (parentReply.data('submitting')) return;
       parentReply.data('submitting', true);
-      var overlay = freezeForLoading();
+
+      freezeForLoading.load(eventElement);
 
       // In case they were already shown from a previous attempt
       errorMsgElement.hide();
       errorMsgElement.find(".commentErrorMessage").hide();
-
       sendAjaxRequest(submitUrl, data,
-          function (data, textStatus, jqXHR) {
-            // The Ajax request had no errors, but the server may have sent back user validation errors.
-            var errors = [];
-            for (var errorKey in data.validationErrors) {
-              errors.push({key: errorKey, value: data.validationErrors[errorKey]});
+        function (data, textStatus, jqXHR) {
+          // The Ajax request had no errors, but the server may have sent back user validation errors.
+          var errors = [];
+          for (var errorKey in data.validationErrors) {
+            errors.push({key: errorKey, value: data.validationErrors[errorKey]});
+          }
+          if (errors.length > 0) {
+            for (var i in errors) {
+              var error = errors[i];
+              var msg = errorMsgElement.find(".commentErrorMessage[data-error-key='" + error.key + "']");
+              displayErrorMessage(msg, error.value);
             }
-            if (errors.length > 0) {
-              for (var i in errors) {
-                var error = errors[i];
-                var msg = errorMsgElement.find(".commentErrorMessage[data-error-key='" + error.key + "']");
-                displayErrorMessage(msg, error.value);
-              }
 
-              animatedShow(errorMsgElement);
+            animatedShow(errorMsgElement);
 
-              // #respond starting a discussion
-              // .report_container reporting a concern
-              // .respond_container responding to this posting
+            // #respond starting a discussion
+            // .report_container reporting a concern
+            // .respond_container responding to this posting
 
-              var commentParent = null;
+            var commentParent = null;
 
-              if (errorMsgElement.closest("#respond").length > 0) {
-                commentParent = errorMsgElement.closest("#respond");
-              } else if (errorMsgElement.closest(".report_container").length > 0) {
-                commentParent = errorMsgElement.closest(".report_container");
-              } else if (errorMsgElement.closest(".respond_container").length > 0) {
-                commentParent = errorMsgElement.closest(".respond_container");
-              } else {
-                // do nothing, something went wrong
-              }
-
-              if (commentParent) {
-                $('html, body').animate({scrollTop: commentParent.offset().top}, 500);
-              }
-
+            if (errorMsgElement.closest("#respond").length > 0) {
+              commentParent = errorMsgElement.closest("#respond");
+            } else if (errorMsgElement.closest(".report_container").length > 0) {
+              commentParent = errorMsgElement.closest(".report_container");
+            } else if (errorMsgElement.closest(".respond_container").length > 0) {
+              commentParent = errorMsgElement.closest(".respond_container");
             } else {
-              // No validation errors, meaning the comment was submitted successfully and persisted.
-              submittedCallback(data);
+              // do nothing, something went wrong
             }
-            parentReply.data('submitting', false);
 
-            overlay.close();
-          });
+            if (commentParent) {
+              $('html, body').animate({scrollTop: commentParent.offset().top}, 500);
+            }
+
+          } else {
+            // No validation errors, meaning the comment was submitted successfully and persisted.
+            submittedCallback(data);
+          }
+          parentReply.data('submitting', false);
+          freezeForLoading.close(eventElement);
+        });
     }
 
     /**
@@ -410,9 +400,9 @@
       // Format the date. We need to duplicate the FreeMarker date formatting.
       var timestamp = new Date(childReply.createdFormatted); // UTC
       var timestampFormat
-          = '<strong>' + $.datepicker.formatDate('dd M yy', timestamp) + '</strong> at <strong>'
-          + padZeroes(timestamp.getUTCHours(), 2) + ':' + padZeroes(timestamp.getUTCMinutes(), 2)
-          + ' GMT</strong>';
+        = '<strong>' + $.datepicker.formatDate('dd M yy', timestamp) + '</strong> at <strong>'
+        + padZeroes(timestamp.getUTCHours(), 2) + ':' + padZeroes(timestamp.getUTCMinutes(), 2)
+        + ' GMT</strong>';
       comment.find('.replyTimestamp').html($(timestampFormat));
 
       var outer = this;

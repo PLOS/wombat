@@ -43,6 +43,7 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
 
 */
 
+
 .more-icon {
   // need to use content instead of @extend .fa-chevron-circle-right with ::after;
   content: '\f138';
@@ -56,6 +57,13 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   @extend .fa;
   line-height: ($txt-size-xxlarge * 2);
   font-size: $txt-size-xxlarge;
+}
+
+
+.icon-spinner{
+@extend .icon-fa;
+  content: "\f110";
+  @extend .fa-spin;
 }
 
 .icon-twitter {

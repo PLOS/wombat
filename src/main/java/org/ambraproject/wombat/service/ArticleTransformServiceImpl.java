@@ -236,14 +236,18 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   @Override
   public void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
     String description = (String) figureMetadata.get("description");
+    figureMetadata.put("descriptionHtml", transformDescription(renderContext, description));
+  }
+
+  @Override
+  public String transformDescription(RenderContext renderContext, String description) {
     String descriptionHtml;
     try {
       descriptionHtml = transformExcerpt(renderContext, description, "desc");
     } catch (TransformerException e) {
       throw new RuntimeException(e);
     }
-    descriptionHtml = kludgeRelativeImageLinks(descriptionHtml);
-    figureMetadata.put("descriptionHtml", descriptionHtml);
+    return kludgeRelativeImageLinks(descriptionHtml);
   }
 
   /**

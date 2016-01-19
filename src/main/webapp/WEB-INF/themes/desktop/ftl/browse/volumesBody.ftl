@@ -26,7 +26,7 @@
         <span class="tag">ABOUT THIS IMAGE</span>
         <br/>
 
-        <p>${journal.currentIssue.description}</p>
+        <p>${currentIssueDescription}</p>
       </div>
     </div> <!--  issue_container -->
   </div><!-- journal_current -->

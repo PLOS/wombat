@@ -60,4 +60,6 @@ public interface ArticleTransformService {
    * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
    */
   public void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata);
+
+  public String transformDescription(RenderContext renderContext, String description);
 }

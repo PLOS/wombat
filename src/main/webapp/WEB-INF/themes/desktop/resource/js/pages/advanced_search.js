@@ -34,7 +34,7 @@ var AdvancedSearch = {};
     operatorSelectSelector  : 'select.operator',
     categorySelectSelector  : 'select.category',
 
-    clearButtonSelector     : '#searchFieldButton .clear',
+    clearButtonSelector     : 'i.clear',
 
     /* Internal properties */
     maxConditions: 50,
@@ -124,8 +124,8 @@ var AdvancedSearch = {};
     });
 
     $(this.clearButtonSelector).on('click', function (e) {
-        e.preventDefault();
-        that.resetInputs();
+      e.preventDefault();
+      that.resetInputs();
     });
 
     var searchInputPrevValue = $(this.inputSearchSelector).val();
@@ -280,7 +280,8 @@ var AdvancedSearch = {};
     if (AdvancedSearch.isInitialized(containerSelector)) {
       AdvancedSearch.enableSearchInput(true);
       $(containerSelector).off('click change keyup').data('advanced-search-initialized', false).children().remove();
-      $(this.inputSearchSelector).val('').parents('form').off('submit');;
+      $(this.clearButtonSelector).off('click');
+      $(this.inputSearchSelector).val('').parents('form').off('submit');
       this.currentConditions = 0;
       $(this.inputSearchSelector).attr('advanced-condition', null);
       $(this.inputQuerySelector).attr('advanced-condition', null);

@@ -20,11 +20,13 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.Header;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
@@ -120,14 +122,16 @@ public abstract class WombatController {
    * Names of headers that, on a request from the client, should be passed through on our request to the service tier
    * (Rhino or Content Repo).
    */
-  protected static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet(X_PROXY_CAPABILITIES);
+  protected static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet(
+      HttpHeaders.IF_MODIFIED_SINCE, X_PROXY_CAPABILITIES);
 
   /**
    * Names of headers that, in a response from the service tier (Rhino or Content Repo), should be passed through to the
    * client.
    */
   private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, X_REPROXY_URL, X_REPROXY_CACHE_FOR);
+      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, HttpHeaders.LAST_MODIFIED,
+      X_REPROXY_URL, X_REPROXY_CACHE_FOR);
   protected static final HttpMessageUtil.HeaderFilter ASSET_RESPONSE_HEADER_FILTER = new HttpMessageUtil.HeaderFilter() {
     @Override
     public String getValue(Header header) {
@@ -193,4 +197,12 @@ public abstract class WombatController {
     return true;
   }
 
+  protected static void forwardAssetResponse(CloseableHttpResponse remoteResponse, HttpServletResponse responseToClient)
+      throws IOException {
+    if (remoteResponse.getStatusLine().getStatusCode() == org.apache.http.HttpStatus.SC_NOT_MODIFIED) {
+      responseToClient.setStatus(org.apache.http.HttpStatus.SC_NOT_MODIFIED);
+    } else {
+      HttpMessageUtil.copyResponseWithHeaders(remoteResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
+    }
+  }
 }

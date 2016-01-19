@@ -18,7 +18,7 @@
           <button id="searchFieldButton" type="submit">
               <i class="search-icon"></i>
           </button>
-          <i title="Clear Search Input" class="icon-fa icon-times-circle clear"></i>
+          <i title="Clear Search Input" class="icon-times-circle clear"></i>
         </fieldset>
         <a id="advancedSearchLink" class="advanced-search-toggle-btn" href="#">Advanced Search</a>
         <a id="simpleSearchLink" class="advanced-search-toggle-btn" href="#">Simple Search</a>

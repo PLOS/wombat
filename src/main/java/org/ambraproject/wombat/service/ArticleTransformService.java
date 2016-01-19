@@ -4,6 +4,7 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Map;
 
 public interface ArticleTransformService {
 
@@ -51,4 +52,14 @@ public interface ArticleTransformService {
   public abstract String transformExcerpt(RenderContext renderContext, String xmlExcerpt, String enclosingTag)
       throws TransformerException;
 
+  /**
+   * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
+   * descriptionHtml} member.
+   *
+   * @param renderContext the context for the transform which wraps the site object and optional context values
+   * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
+   */
+  public void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata);
+
+  public String transformDescription(RenderContext renderContext, String description);
 }

@@ -23,7 +23,7 @@
   <section class="article-body">
 
   <#include "tabs.ftl" />
-    <@displayTabList 'article' />
+    <@displayTabList 'Article' />
 
     <div class="article-container">
 

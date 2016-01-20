@@ -32,17 +32,19 @@
       </#if>
     </dd>
 
-    <dt>Organization Address</dt>
-    <dd><#if user.postalAddress?has_content>${userValue(user.postalAddress)}<#else>${defaultVal}</#if></dd>
+    <#if user.organizationVisibility>
+      <dt>Organization Address</dt>
+      <dd><#if user.postalAddress?has_content>${userValue(user.postalAddress)}<#else>${defaultVal}</#if></dd>
 
-    <dt>Organization Type</dt>
-    <dd><#if user.organizationType?has_content>${userValue(user.organizationType)}<#else>${defaultVal}</#if></dd>
+      <dt>Organization Type</dt>
+      <dd><#if user.organizationType?has_content>${userValue(user.organizationType)}<#else>${defaultVal}</#if></dd>
 
-    <dt>Organization Name</dt>
-    <dd><#if user.organizationName?has_content>${userValue(user.organizationName)}<#else>${defaultVal}</#if></dd>
+      <dt>Organization Name</dt>
+      <dd><#if user.organizationName?has_content>${userValue(user.organizationName)}<#else>${defaultVal}</#if></dd>
 
-    <dt>Your Role</dt>
-    <dd><#if user.positionType?has_content>${userValue(user.positionType)}<#else>${defaultVal}</#if></dd>
+      <dt>Your Role</dt>
+      <dd><#if user.positionType?has_content>${userValue(user.positionType)}<#else>${defaultVal}</#if></dd>
+    </#if>
 
     <dt>Short Biography</dt>
     <dd><#if user.biography?has_content>${userValue(user.biography)}<#else>${defaultVal}</#if></dd>

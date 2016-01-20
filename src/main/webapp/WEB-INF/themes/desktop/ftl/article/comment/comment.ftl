@@ -99,6 +99,7 @@
 
       <div id="responses">
 
+      <#include "../../macro/userSession.ftl" />
       <#include "userInfoLink.ftl" />
 
       <#assign indentationWidth = 30 />
@@ -170,8 +171,8 @@
           </div>
 
           <div class="toolbar">
-            <#assign userIsLoggedIn = Session["SPRING_SECURITY_CONTEXT"]?exists && Session["SPRING_SECURITY_CONTEXT"].authentication.authenticated />
-            <@siteLink handlerName="userLogin" ; login>
+            <#assign userIsLoggedIn = isUserLoggedIn() />
+            <@siteLink handlerName="userLogin" queryParameters={"page": getLinkToCurrentPage()?url('UTF-8')} ; login>
               <a title="Report a Concern" class="flag toolbar btn"
                 <#if userIsLoggedIn>
                  onclick="comments.showReportBox('${commentId?c}'); return false;"

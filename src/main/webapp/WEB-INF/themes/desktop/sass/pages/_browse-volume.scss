@@ -68,6 +68,13 @@ h2 {
   padding: 0 30px;
 }
 
+
+.journal_current .journal_description h2 {
+  font-family: $body-font-family;
+  font-size: $txt-size-default;
+  margin-top: 0;
+}
+
 .journal_current .journal_description span.tag {
   font-size: 0.769em;
   text-transform: uppercase;

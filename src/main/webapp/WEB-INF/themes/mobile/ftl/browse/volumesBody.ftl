@@ -27,7 +27,7 @@
                  alt="Current Issue"/>
             </a>
         </p>
-        <p class="pad-small-y">${currentIssueDescription}</p>
+        ${currentIssueDescription}
         </div>
       </#if>
 

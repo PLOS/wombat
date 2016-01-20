@@ -27,7 +27,7 @@
                  alt="Current Issue"/>
             </a>
         </p>
-        <p class="pad-small-y">${journal.currentIssue.description}</p>
+        ${currentIssueDescription}
         </div>
       </#if>
 

@@ -81,8 +81,8 @@
               </div>
 
             <#-- JavaScript fills in these buttons' on-click behaviors when the box appears. -->
-              <span class="btn btn_cancel">cancel</span>
               <span class="btn primary btn_submit">submit</span>
+              <span class="btn btn_cancel">cancel</span>
             </fieldset>
           </form>
         </div>

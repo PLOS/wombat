@@ -71,7 +71,6 @@ public class BrowseController extends WombatController {
   @RequestMapping(name = "browseIssues", value = "/issue")
   public String browseIssue(Model model, @SiteParam Site site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
-    enforceDevFeature("browse");
 
     String journalMetaUrl = "journals/" + site.getJournalKey();
     Map<String, Object> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);

@@ -26,7 +26,7 @@
   <section class="article-body content">
 
     <#include "tabs.ftl" />
-    <@displayTabList 'authors' />
+    <@displayTabList 'Authors' />
     <h1>About the Authors</h1>
 
     <#list authorListAffiliationMap?keys as affiliation>

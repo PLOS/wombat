@@ -18,7 +18,7 @@
   height: 100%;
   width: 100%;
   background-color: $black;
-  z-index: 600000;
+  z-index: map-get($zindex, dropdown);
   opacity: 0.5;
   @include single-transition();
 }

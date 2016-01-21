@@ -94,7 +94,6 @@ public class UserController extends WombatController {
 
   @RequestMapping(name = "userInfo", value = "/user/{displayName}")
   public String displayUserInfo(Model model, @SiteParam Site site, @PathVariable String displayName) throws IOException {
-    enforceDevFeature("userInfo");
     String userMetaUrl = "user?displayName=" + displayName;
     Map<String, Object> userMetadata = soaService.requestObject(userMetaUrl, Map.class);
     model.addAttribute("user", userMetadata);

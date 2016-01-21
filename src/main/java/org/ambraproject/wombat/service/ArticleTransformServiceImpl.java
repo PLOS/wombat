@@ -233,4 +233,32 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     return html.toString();
   }
 
+  @Override
+  public void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
+    String description = (String) figureMetadata.get("description");
+    figureMetadata.put("descriptionHtml", transformDescription(renderContext, description));
+  }
+
+  @Override
+  public String transformDescription(RenderContext renderContext, String description) {
+    String descriptionHtml;
+    try {
+      descriptionHtml = transformExcerpt(renderContext, description, "desc");
+    } catch (TransformerException e) {
+      throw new RuntimeException(e);
+    }
+    return kludgeRelativeImageLinks(descriptionHtml);
+  }
+
+  /**
+   * The transform is written assuming we're at the article path, but because we're also (probably improperly) reusing
+   * it here, the paths are wrong. Unlike in FreeMarker, there's no apparent, easy way to configure what the path should
+   * be on a per-transformation basis. So kludge in the fix after the fact.
+   * <p/>
+   * TODO something less horrible
+   */
+  private static String kludgeRelativeImageLinks(String descriptionHtml) {
+    return descriptionHtml.replace("<img src=\"article/", "<img src=\"../article/");
+  }
+
 }

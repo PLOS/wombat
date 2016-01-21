@@ -23,10 +23,8 @@
       </#if>
 
       <div class="journal_description">
-        <span class="tag">ABOUT THIS IMAGE</span>
-        <br/>
-
-        <p>${journal.currentIssue.description}</p>
+        <p class="tag">ABOUT THIS IMAGE</p>
+        ${currentIssueDescription}
       </div>
     </div> <!--  issue_container -->
   </div><!-- journal_current -->

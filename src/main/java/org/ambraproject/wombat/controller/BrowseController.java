@@ -16,7 +16,9 @@ package org.ambraproject.wombat.controller;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -48,12 +51,18 @@ public class BrowseController extends WombatController {
   @Autowired
   private ArticleService articleService;
 
+  @Autowired
+  private ArticleTransformService articleTransformService;
+
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
-    enforceDevFeature("browse");
     String journalMetaUrl = "journals/" + site.getJournalKey();
-    Map<String, Object> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);
+    Map<String, Map<String, Object>> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);
+    String issueDesc = (String) journalMetadata.getOrDefault("currentIssue",
+        Collections.emptyMap()).getOrDefault("description", "");
+    model.addAttribute("currentIssueDescription", articleTransformService.transformDescription(new RenderContext(site),
+        issueDesc));
     model.addAttribute("journal", journalMetadata);
     return site.getKey() + "/ftl/browse/volumes";
   }
@@ -61,7 +70,6 @@ public class BrowseController extends WombatController {
   @RequestMapping(name = "browseIssues", value = "/issue")
   public String browseIssue(Model model, @SiteParam Site site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
-    enforceDevFeature("browse");
 
     String journalMetaUrl = "journals/" + site.getJournalKey();
     Map<String, Object> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);

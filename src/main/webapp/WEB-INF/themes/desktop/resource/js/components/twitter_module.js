@@ -1,4 +1,7 @@
 (function ($) {
+
+  /* Requires WombatConfig in configJs */
+  var IMG_PATH = WombatConfig.imgPath;
   $.fn.twitter = function (doi) {
     var tweet, tweetText, totalTweets, initData, minDisplayTweets, maxDisplayTweets, dataSort, datePrefix, dataPrefix, tweetDate, tweetDateOther, tweetInfo, tweetActionLink, tweetAvatar, tweetPlaceholder, tweetId, replyLink, retweetLink, favoriteLink, tweetActions, tweetUserName, tweetHandle, wholeTweet, listBody, tweetAvatarParse;
 
@@ -151,7 +154,7 @@
         tweetAvatar = "http://pbs" + tweetAvatar.slice(9);
       }
       // user photo, date of post, user names
-      tweetPlaceholder = 'resource/img/icon.avatar.placeholder.png';
+      tweetPlaceholder = IMG_PATH + 'icon.avatar.placeholder.png';
       // TODO: put in placeholder conditional
       tweetInfo = '<a href="http://twitter.com/' + tweetHandle + '"' + '>' + '<span class="imgholder"><img class="imgLoad" src="' + tweetAvatar + '"/></span>' + '<div class="tweetDate">' + tweetDate + '</div>' + '<div class="tweetUser"><strong>' + tweetUserName + ' </strong><span>@' + tweetHandle + '</span></div></a>';
 

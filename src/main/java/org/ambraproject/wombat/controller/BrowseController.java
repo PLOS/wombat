@@ -57,7 +57,6 @@ public class BrowseController extends WombatController {
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
-    enforceDevFeature("browse");
     String journalMetaUrl = "journals/" + site.getJournalKey();
     Map<String, Map<String, Object>> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);
     String issueDesc = (String) journalMetadata.getOrDefault("currentIssue",

@@ -76,7 +76,12 @@ public class BrowseController extends WombatController {
     model.addAttribute("journal", journalMetadata);
 
     String issueMetaUrl = issueId == null ? "journals/" + site.getJournalKey() + "?currentIssue" : "issues/" + issueId;
-    Map<String, Object> issueMeta = soaService.requestObject(issueMetaUrl, Map.class);
+    Map<String, Object> issueMeta;
+    try {
+      issueMeta = soaService.requestObject(issueMetaUrl, Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
+    }
     model.addAttribute("issue", issueMeta);
 
     String[] parsedIssueInfo = extractInfoFromIssueDesc((String)issueMeta.get("description"));

@@ -52,5 +52,5 @@ public interface ArticleTransformService {
   public abstract String transformExcerpt(RenderContext renderContext, String xmlExcerpt, String enclosingTag)
       throws TransformerException;
 
-  public String transformDescription(RenderContext renderContext, String description);
+  public String transformImageDescription(RenderContext renderContext, String description);
 }

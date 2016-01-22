@@ -106,7 +106,7 @@ public class FigurePageController extends WombatController {
    */
   private void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
     String description = (String) figureMetadata.get("description");
-    figureMetadata.put("descriptionHtml", articleTransformService.transformDescription(renderContext, description));
+    figureMetadata.put("descriptionHtml", articleTransformService.transformImageDescription(renderContext, description));
   }
 
 }

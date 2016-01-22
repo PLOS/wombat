@@ -234,7 +234,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public String transformDescription(RenderContext renderContext, String description) {
+  public String transformImageDescription(RenderContext renderContext, String description) {
     String descriptionHtml;
     try {
       descriptionHtml = transformExcerpt(renderContext, description, "desc");

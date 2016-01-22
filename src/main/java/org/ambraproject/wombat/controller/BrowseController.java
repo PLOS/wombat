@@ -61,8 +61,8 @@ public class BrowseController extends WombatController {
     Map<String, Map<String, Object>> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);
     String issueDesc = (String) journalMetadata.getOrDefault("currentIssue",
         Collections.emptyMap()).getOrDefault("description", "");
-    model.addAttribute("currentIssueDescription", articleTransformService.transformDescription(new RenderContext(site),
-        issueDesc));
+    model.addAttribute("currentIssueDescription",
+        articleTransformService.transformImageDescription(new RenderContext(site), issueDesc));
     model.addAttribute("journal", journalMetadata);
     return site.getKey() + "/ftl/browse/volumes";
   }

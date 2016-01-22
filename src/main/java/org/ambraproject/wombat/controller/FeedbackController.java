@@ -59,7 +59,6 @@ public class FeedbackController extends WombatController {
 
   @RequestMapping(name = "feedback", value = "/feedback", method = RequestMethod.GET)
   public String serveFeedbackPage(Model model, @SiteParam Site site) throws IOException {
-    enforceDevFeature("feedback");
     validateFeedbackConfig(site);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHTML(site));
     return site + "/ftl/feedback/feedback";
@@ -76,7 +75,6 @@ public class FeedbackController extends WombatController {
                                 @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
                                 @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException, MessagingException {
-    enforceDevFeature("feedback");
     validateFeedbackConfig(site);
 
     // Fill input parameters into model. (These can be used in two ways: in the generated email if all input is valid,

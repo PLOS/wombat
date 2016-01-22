@@ -52,7 +52,7 @@ public class FigurePageController extends WombatController {
     List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
     for (Map<String, Object> figureMetadata : figureMetadataList) {
       figureMetadata = DoiSchemeStripper.strip(figureMetadata);
-      articleTransformService.transformFigureDescription(renderContext, figureMetadata);
+      transformFigureDescription(renderContext, figureMetadata);
     }
 
     return site + "/ftl/article/figures";
@@ -81,7 +81,7 @@ public class FigurePageController extends WombatController {
 
     RenderContext renderContext = new RenderContext(site);
     renderContext.setArticleId(parentArticleDoi);
-    articleTransformService.transformFigureDescription(renderContext, figureMetadata);
+    transformFigureDescription(renderContext, figureMetadata);
     model.addAttribute("figure", figureMetadata);
 
     return site + "/ftl/article/figure";
@@ -95,6 +95,18 @@ public class FigurePageController extends WombatController {
           throws IOException {
 
     return site + "/ftl/article/articleLightbox";
+  }
+
+  /**
+   * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
+   * descriptionHtml} member.
+   *
+   * @param renderContext the context for the transform which wraps the site object and optional context values
+   * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
+   */
+  private void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
+    String description = (String) figureMetadata.get("description");
+    figureMetadata.put("descriptionHtml", articleTransformService.transformDescription(renderContext, description));
   }
 
 }

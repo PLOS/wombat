@@ -124,9 +124,7 @@ public class FeedbackController extends WombatController {
 
     // TODO: Needs to build URL with Link?
     // TODO: Includes weird extra URL parameters?
-    request.getParameterMap().clear();
-
-    return "redirect:feedback/success";
+    return indicateSuccess(site);
   }
 
   /**

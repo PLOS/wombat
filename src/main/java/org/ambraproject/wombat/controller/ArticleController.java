@@ -199,7 +199,6 @@ public class ArticleController extends WombatController {
   public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId)
       throws IOException {
-    enforceDevFeature("commentsTab");
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
@@ -464,7 +463,6 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
-    enforceDevFeature("commentsTab");
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
@@ -491,7 +489,6 @@ public class ArticleController extends WombatController {
                                    @RequestParam("comment") String flagCommentBody,
                                    @RequestParam("target") String targetComment)
       throws IOException {
-    enforceDevFeature("commentsTab");
     Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);

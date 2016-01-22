@@ -44,21 +44,42 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.bindBehavior = function () {
+    var that = this;
+    // Escape key destroys and closes lightbox
+    $(document).on('keyup.figure-lightbox', function(e) {
+      if (e.keyCode === 27) {
+        that.close();
+      }
+    });
+
     $(this.lbContainerSelector)
+      // Bind close button
         .find(this.lbCloseButtonSelector).on('click', function () {
-          FigureLightbox.close();
+          that.close();
         }).end()
 
+        // Bind buttons to change images
         .find('.change-img').on('click', function () {
-          FigureLightbox.switchImage(this.getAttribute('data-doi'));
+          that.switchImage(this.getAttribute('data-doi'));
         }).end()
 
+      // Bind button to show all images
         .find('.all-fig-btn').on('click', function () {
+          var $figList = $('#figures-list');
+          if (!$figList.is(':visible')) { // If not is visible show it
+            $figList.show();
+            var tmpPos = $figList.position();
+            $figList.css({right: tmpPos.left - screen.width});
+          }
+          var end = $figList.position();
           // Get the static position
-          var end = $('#figures-list').position();
-          $('#figures-list').animate({ // Animate toggle to the right
-            right: -(screen.width - end.left)
+          $figList.animate({ // Animate toggle to the right
+            right: end.left - screen.width
           });
+        }).end()
+
+        .find('#figures-list').on('mousewheel', function(e) {
+          e.stopPropagation();
         });
   };
 
@@ -103,6 +124,7 @@ var FigureLightbox = {};
 
 
   FigureLightbox.close = function () {
+    this.destroy();
     $(this.lbSelector).foundation('reveal', 'close');
   };
 
@@ -154,5 +176,14 @@ var FigureLightbox = {};
     return options.path + '?size=' + options.size + '&id=' + imgDoi;
   };
 
+  FigureLightbox.destroy = function () {
+    $(this.lbContainerSelector)
+      // Unbind close button
+        .find(this.lbCloseButtonSelector).off('click').end()
+      // Unbind buttons to change images
+        .find('.change-img').off('click').end()
+      // Unbind button to show all images
+        .find('.all-fig-btn').off('click');
+  };
 
-})(jQuery);
+  })(jQuery);

@@ -28,7 +28,7 @@
     <div class="article-container">
 
     <#include "nav.ftl" />
-    <#include "article_figures.ftl" />
+    <#include "articleLightboxNew.ftl" />
 
       <div class="article-content">
 

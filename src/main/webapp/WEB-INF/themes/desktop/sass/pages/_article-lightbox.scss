@@ -1,4 +1,42 @@
+/* @TODO: Move figure carousel to apporpiate place in article before displaying */
+#figure-carousel-section {
+  display: block;
+}
+.reveal-modal {
+  /* Fix for foundation's reveal-modal */
+  position: fixed;
+}
+
+.range-slider-active-segment {
+  /* Fix for foundation's range slider */
+  border-radius: 1000px;
+}
+
 #figure-lightbox {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: $grey-med-dark;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: $grey-med-dark;
+  }
+
+
+
   .lb-header {
     font-family: $font-face-fancy;
     padding: $fv-small rem-calc(280) 0 1.1%;
@@ -101,23 +139,26 @@
     img.main-lightbox-image {
       max-width: 80%;
     }
-    height: 90%;
+    height: 80%;
     min-width: 100%;
     margin: 0 auto;
     text-align: center;
     position: relative;
 
     #figures-list {
+      display: none;
+      height: 90%;
+      overflow-y: scroll;
       max-width: rem-calc(180px);
       right: 0;
       top: 0;
       position: absolute;
       background: $grey-dark;
       .change-img {
-        background: $grey-med-dark;
+        background: $grey-med;
         cursor: pointer;
         padding: 4%;
-        margin: 4% 2%;
+        margin: 8% 2%;
         img {
           min-width: 150px;
         }
@@ -126,7 +167,7 @@
   }
 
   #lightbox-footer {
-    height: rem-calc(130px);
+    height: 20%;
     background: $grey-light;
     position: fixed;
     bottom: 0;

@@ -1,25 +1,4 @@
-<#if article.figures?has_content>
-<div>
-  <#list article.figures as figure>
-  <#-- Omit figures that don't appearas in article body (e.g. a striking image) -->
-    <#if figure.contextElement?has_content>
-
-      <@siteLink path=("article/figure/image?size=small&id=" + figure.doi) ; src>
-        <a href="#" class="lightbox-figure"
-           data-figure-doi="${figure.doi?html}">
-          <img src="${src?html}"
-            <#if figure.title?has_content >
-               alt="${figure.title?html}"
-            </#if>
-              />
-        </a>
-      </@siteLink>
-
-    </#if>
-  </#list>
-</div>
 <div id="figure-lightbox-container"></div>
-</#if>
 
 <script id="figure-lightbox-template" type="text/template">
   <div id="figure-lightbox" class="reveal-modal full" data-reveal aria-labelledby="modalTitle" aria-hidden="true"

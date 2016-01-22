@@ -64,12 +64,6 @@ public class FeedbackController extends WombatController {
     return site + "/ftl/feedback/feedback";
   }
 
-  @RequestMapping(name = "feedbackSuccess", value = "/feedback/success", method = RequestMethod.GET)
-  public String indicateSuccess(@SiteParam Site site) {
-    validateFeedbackConfig(site);
-    return site + "/ftl/feedback/success";
-  }
-
   @RequestMapping(name = "feedbackPost", value = "/feedback", method = RequestMethod.POST)
   public String receiveFeedback(HttpServletRequest request, HttpServletResponse response,
                                 Model model, @SiteParam Site site,
@@ -118,10 +112,7 @@ public class FeedbackController extends WombatController {
         .build();
 
     message.send(javaMailSender);
-
-    // TODO: Needs to build URL with Link?
-    // TODO: Includes weird extra URL parameters?
-    return "redirect:feedback/success";
+    return site + "/ftl/feedback/success";
   }
 
   /**

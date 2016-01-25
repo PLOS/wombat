@@ -1,7 +1,7 @@
 <div id="figure-lightbox-container"></div>
 
 <script id="figure-lightbox-template" type="text/template">
-  <div id="figure-lightbox" class="reveal-modal full" data-reveal aria-labelledby="modalTitle" aria-hidden="true"
+  <div id="figure-lightbox" class="reveal-modal full" data-reveal aria-hidden="true"
        role="dialog">
     <div class="lb-header">
       <h1 id="lb-title"><%= articleTitle %></h1>
@@ -25,7 +25,7 @@
       <aside id="figures-list">
         <% figureList.each(function (ix, figure) { %>
         <div class="change-img" data-doi="<%= figure.getAttribute('data-figure-doi') %>">
-          <img class="aside-figure" src="<@siteLink path="article/figure/image?size=inline&id=" /><%= figure.getAttribute('data-figure-doi') %>" />
+          <img class="aside-figure" src="<@siteLink handlerName="figureImage" queryParameters={"size": "inline"}/>&id=<%= figure.getAttribute('data-figure-doi') %>" />
         </div>
         <% }) %>
       </aside>
@@ -44,36 +44,39 @@
         <div id="fig-btns-container">
           <span class="fig-btn all-fig-btn"><i class="icon icon-all"></i> All Figures</span>
           <span class="fig-btn next-fig-btn"><i class="icon icon-next"></i> Next</span>
-          <span class="fig-btn prev-fig-btn"><i class="icon icon-prev"></i> Prev</span>
+          <span class="fig-btn prev-fig-btn"><i class="icon icon-prev"></i> Previous</span>
         </div>
       </div>
       <div id="image-context">
-        <div class="footer-text">
-          <span id="figure-title"><%= title %></span>
-          <span id="figure-description"><%= description %></span>
-        </div>
-        <div id="show-context-container">
-          <a class="btn show-context" href="#">Show in Context</a>
-        </div>
-        <div id="download-buttons">
-          <h3>Download:</h3>
-          <div class="item">
-            <a href="" title="PowerPoint slide">
-              <span class="download-btn">PPT</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="" title="large image">
-              <span class="download-btn">PNG</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="" title="original image">
-              <span class="download-btn">TIFF</span>
-            </a>
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
+</script>
+
+<script id="image-context-template" type="text/template">
+  <div class="footer-text">
+    <span id="figure-title"><%= title %></span>
+    <span id="figure-description"><%= description %></span>
+  </div>
+  <div id="show-context-container">
+    <a class="btn show-context" href="<%= showInContext(strippedDoi) %>">Show in Context</a>
+  </div>
+  <div id="download-buttons">
+    <h3>Download:</h3>
+    <div class="item">
+      <a href="<@siteLink handlerName="powerPoint"/>?id=<%= doi %>" title="PowerPoint slide">
+        <span class="download-btn">PPT</span>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "large"}/>&id=<%= doi %>" title="large image">
+        <span class="download-btn">PNG</span>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "original"}/>&id=<%= doi %>" title="original image">
+        <span class="download-btn">TIFF</span>
+      </a>
     </div>
   </div>
 </script>

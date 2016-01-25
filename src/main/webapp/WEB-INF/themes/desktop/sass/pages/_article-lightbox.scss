@@ -168,6 +168,7 @@
 
   #lightbox-footer {
     height: 20%;
+    width: 100%;
     background: $grey-light;
     position: fixed;
     bottom: 0;
@@ -285,6 +286,7 @@
     }
 
     #image-context {
+      width: 100%;
       display: inline-block;
       .footer-text {
         display: inline-block;
@@ -337,16 +339,17 @@
         display: inline-block;
         vertical-align: top;
         padding-top: $pad-xsmall;
+        text-align: right;
         h3 {
-          float: left;
+          display: inline-block;
           font-size: $txt-size-small;
           line-height: rem-calc(36);
-          margin: 0;
+          margin: 0 $pad-default + $pad-xsmall;
         }
 
         .item {
-          float: left;
-          margin-left: $pad-default + $pad-xsmall;
+          float: right;
+          margin-right: $pad-default + $pad-xsmall;
         }
         .item a {
           display: block;

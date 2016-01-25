@@ -19,6 +19,7 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
+import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +55,9 @@ public class BrowseController extends WombatController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
+  @Autowired
+  private XmlService xmlService;
+
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
@@ -84,10 +88,11 @@ public class BrowseController extends WombatController {
     }
     model.addAttribute("issue", issueMeta);
 
-    String[] parsedIssueInfo = extractInfoFromIssueDesc((String)issueMeta.get("description"));
-    model.addAttribute("issueTitle", parsedIssueInfo[0]);
-    model.addAttribute("issueImageCredit", parsedIssueInfo[1]);
-    model.addAttribute("issueDescription", parsedIssueInfo[2]);
+    String issueDesc = (String) issueMeta.getOrDefault("description", "");
+    model.addAttribute("issueTitle", articleTransformService.transformImageDescription(new RenderContext(site),
+        xmlService.extractElement(issueDesc, "title")));
+    model.addAttribute("issueDescription", articleTransformService.transformImageDescription(new RenderContext(site),
+        xmlService.removeElement(issueDesc, "title")));
 
     List<Map<String, Object>> articleGroups = soaService.requestObject("articleTypes", List.class);
 

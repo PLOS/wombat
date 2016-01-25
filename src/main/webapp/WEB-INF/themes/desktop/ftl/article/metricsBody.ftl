@@ -10,7 +10,7 @@
 
         <a id="citations" name="citations"></a>
         <h2 id="citedHeader" class="topstroke">Cited <a href="#citationInfo" class="ir" title="More information">info</a>
-            <span id="relatedCitesSpinner"><#include "../common/loadingcycle.ftl"></span>
+            <#--<span id="relatedCitesSpinner"><#include "../common/loadingcycle.ftl"></span>-->
         </h2>
         <div id="relatedCites"></div>
 

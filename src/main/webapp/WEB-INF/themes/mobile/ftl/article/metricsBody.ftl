@@ -1,5 +1,6 @@
 <div class="main cf" id="pjax-container">
 <#assign almInfoURL="http://lagotto.io/plos" />
+
   <div id="article-metrics">
     <h2 id="viewedHeader">Viewed <a href="${almInfoURL}#usageInfo" class="ir" title="More information">info</a>
       <#--<span id="chartSpinner"><#include "../common/loadingcycle.ftl"></span>-->
@@ -41,22 +42,22 @@
             </#if>-->
 
     <#include "../common/legacyLink.ftl" />
-    <#--
-                @TODO: replace legacyUrlPrefix with commentsTabURL when wombat's comments tab is ready
-                <@siteLink handlerName="articleComments" queryParameters={"id":articleDoi}; commentsTabURL>
-                </@siteLink>
-    -->
-    <#assign commentsTabURL = legacyUrlPrefix + "article/comments/info:doi/" + articleDoi/>
-      <div id="notesAndCommentsOnArticleMetricsTab" class="metrics_tile">
-        <a href="${commentsTabURL}">
-          <img id="notesAndCommentsImageOnArticleMetricsTab" src="<@siteLink handlerName="staticResource" wildcardValues=["img/logo-comments.png"]/>"
-               alt="${articleComments?size} Comments and Notes" class="metrics_tile_image"/>
-        </a>
-        <div class="metrics_tile_footer" onclick="location.href='${commentsTabURL}';">
-          <a href="${commentsTabURL}">${articleComments?size}</a>
-        </div>
-      </div>
-    </div>
+                <#--@TODO: replace legacyUrlPrefix with commentsTabURL when wombat's comments tab is ready-->
+
+                <#--<@siteLink handlerName="articleComments" queryParameters={"id":articleDoi}; commentsTabURL>-->
+                <#--</@siteLink>-->
+
+    <#--<#assign commentsTabURL = legacyUrlPrefix + "article/comments/info:doi/" + articleDoi/>-->
+      <#--<div id="notesAndCommentsOnArticleMetricsTab" class="metrics_tile">-->
+        <#--<a href="${commentsTabURL}">-->
+          <#--<img id="notesAndCommentsImageOnArticleMetricsTab" src="<@siteLink handlerName="staticResource" wildcardValues=["img/logo-comments.png"]/>"-->
+               <#--alt="${articleComments?size} Comments and Notes" class="metrics_tile_image"/>-->
+        <#--</a>-->
+        <#--<div class="metrics_tile_footer" onclick="location.href='${commentsTabURL}';">-->
+          <#--<a href="${commentsTabURL}">${articleComments?size}</a>-->
+        <#--</div>-->
+      <#--</div>-->
+    <#--</div>-->
 
     <h2 id="f1kHeader" class="topstroke" style="display: none;">Recommended <a href="${almInfoURL}#recommended" class="ir" title="More information">info</a>
       <#--<span id="f1KSpinner"><#include "../common/loadingcycle.ftl"></span>-->
@@ -69,6 +70,6 @@
         <#assign endIndex = freemarker_config.get("almHost")?length >
       </#if>-->
     <div><a href="${almInfoURL}#static-content-wrap">Information on PLOS Article-Level Metrics</a></div>
-  <#include "metricsFeedbackMessage.ftl" />
+  <#--<#include "metricsFeedbackMessage.ftl" />-->
   </div><!--end article-metrics-->
 </div><!-- end main -->

@@ -1,6 +1,6 @@
 <#-- This is the basic macro that displays a series of numbered page links.
      We use various combinations of it and ellipses below.  -->
-<#macro pageLinkRange first last selected>
+<#macro pageLinkRange path first last selected>
   <#list first..last as i>
     <#assign linkClass = (i == selected)?string("number seq active text-color", "number seq text-color") />
     <#if selected == i >
@@ -43,20 +43,20 @@
       <span id="prevPageLink" class="previous-page switch disabled"><span class="icon"></span><span class="icon-text">Previous Page</span></span>
     </#if>
     <#if numPages lt 10>
-      <@pageLinkRange first=1 last=numPages selected=currentPage />
+      <@pageLinkRange path=path first=1 last=numPages selected=currentPage />
     <#elseif currentPage lte 4>
-      <@pageLinkRange first=1 last=max(4, currentPage + 1) selected=currentPage />
+      <@pageLinkRange path=path first=1 last=max(4, currentPage + 1) selected=currentPage />
       <span class="skip">...</span>
-      <@pageLinkRange first=numPages last=numPages selected=currentPage />
+      <@pageLinkRange path=path first=numPages last=numPages selected=currentPage />
     <#else>
-      <@pageLinkRange first=1 last=1 selected=currentPage />
+      <@pageLinkRange path=path first=1 last=1 selected=currentPage />
       <span class="skip">...</span>
       <#if currentPage lt numPages - 3>
-        <@pageLinkRange first=currentPage - 1 last=currentPage + 1 selected=currentPage />
+        <@pageLinkRange path=path first=currentPage - 1 last=currentPage + 1 selected=currentPage />
         <span class="skip">...</span>
-        <@pageLinkRange first=numPages last=numPages selected=currentPage />
+        <@pageLinkRange path=path first=numPages last=numPages selected=currentPage />
       <#else>
-        <@pageLinkRange first=min(currentPage - 1, numPages - 2) last=numPages selected=currentPage />
+        <@pageLinkRange path=path first=min(currentPage - 1, numPages - 2) last=numPages selected=currentPage />
       </#if>
     </#if>
     <#if currentPage lt numPages>

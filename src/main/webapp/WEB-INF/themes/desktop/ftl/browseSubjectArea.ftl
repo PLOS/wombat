@@ -167,12 +167,9 @@
 
 </div>
 
-<#include "renderSearchPaginationLinks.ftl" />
-<#if category??>
-  <@renderSearchPaginationLinks url=fullBrowseUrl totalPages=totalPages currentPage=page?number/>
-<#else>
-  <@renderSearchPaginationLinks url=browseUrl totalPages=totalPages currentPage=page?number/>
-</#if>
+<#include "common/paging.ftl" />
+<@paging totalPages, page?number, (category??)?string(fullBrowseUrl, browseUrl), parameterMap />
+
 <#include "common/footer/footer.ftl" />
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>

@@ -24,7 +24,6 @@ var FigureLightbox = {};
 
     var lbTemplate = _.template($(this.lbTemplateSelector).html());
     $(this.lbContainerSelector).append(lbTemplate(articleData));
-    this.switchImage(this.imgData.doi);
   };
 
   FigureLightbox.fetchArticleData = function () {
@@ -36,7 +35,7 @@ var FigureLightbox = {};
 
       articleTitle: $mainContainer.find('#artTitle').text(),
       authorList: $mainContainer.find('.author-name').text(),
-      figureList: $mainContainer.find('.lightbox-figure')
+      figureList: this.imgList
     };
   };
 
@@ -61,7 +60,8 @@ var FigureLightbox = {};
     });
 
     $(this.lbContainerSelector)
-      // Bind close button
+        .data('is-inited', true)
+        // Bind close button
         .find(this.lbCloseButtonSelector).on('click', function () {
           that.close();
         }).end()
@@ -104,12 +104,21 @@ var FigureLightbox = {};
         // Bind next figure button
         .find('.prev-fig-btn').on('click', function () {
           return that.prevImage();
+        }).end()
+
+        .on('image-switch', function (e, data) {
+          var buttons = $(that.lbSelector).find('.fig-btn').show();
+          if (data.index === 0) {
+            buttons.filter('.prev-fig-btn').hide(); // Hide prev button
+          } else if (data.index === (that.imgList.length - 1)) {
+            buttons.filter('.next-fig-btn').hide(); // Hide next button
+          }
         });
   };
 
   FigureLightbox.nextImage = function () {
-    var currentIx = this.getCurrentImageIndex();
-    var nextImg = this.imgList[currentIx + 1];
+    var newIndex = this.getCurrentImageIndex() + 1;
+    var nextImg = this.imgList[newIndex];
     if (!nextImg) {
       return false;
     }
@@ -117,8 +126,8 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.prevImage = function () {
-    var currentIx = this.getCurrentImageIndex();
-    var prevImg = this.imgList[currentIx - 1];
+    var newIndex = this.getCurrentImageIndex() - 1;
+    var prevImg = this.imgList[newIndex];
     if (!prevImg) {
       return false;
     }
@@ -142,36 +151,44 @@ var FigureLightbox = {};
       doi: imgDoi
     };
     this.imgData.strippedDoi = this.imgData.doi.replace(/^info:doi\//, '');
-    this.imgData.imgElement = this.imgList.filter('.figure[data-doi="' + this.imgData.strippedDoi + '"]');
+    var currentIndex = this.getCurrentImageIndex();
+    this.imgData.imgElement = $(this.imgList[currentIndex]);
+    // Get data to populate image context
     var imageData = this.fetchImageData();
     var templateFunctions = {
       showInContext: this.showInContext
     };
     var templateData = $.extend(imageData, templateFunctions);
-
     var lbTemplate = _.template($(this.contextTemplateSelector).html());
     // Remove actual img context
     $('#image-context').children().remove().end()
         // Append new img context
         .append(lbTemplate(templateData));
-
     this.renderImg(this.imgData.doi);
+
+    $(this.lbContainerSelector).trigger('image-switch', {index: currentIndex, element: this.imgData.imgElement});
+  };
+
+  FigureLightbox.isInited = function () {
+    return $(this.lbContainerSelector).data('is-inited');
   };
 
   FigureLightbox.loadImage = function (lbContainer, imgDoi, cb) {
     this.lbContainerSelector = lbContainer || this.lbContainerSelector;
 
     this.imgData = {
-      doi: imgDoi || '0'
+      doi: imgDoi
     };
     this.imgData.strippedDoi = this.imgData.doi.replace(/^info:doi\//, '');
-    this.imgList = $('.figure');
 
-    this.insertLightboxTemplate();
-    this.bindBehavior();
+    if (!this.isInited()) {
+      this.imgList = $('.figure');
+      this.insertLightboxTemplate();
+      this.bindBehavior();
+    }
     $(this.lbSelector)
         .foundation('reveal', 'open');
-    this.renderImg(this.imgData.doi);
+    this.switchImage(this.imgData.doi);
 
     if (typeof cb === 'function') {
       cb();
@@ -248,13 +265,14 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.destroy = function () {
-    $(this.lbContainerSelector)
+/*    $(this.lbContainerSelector)
       // Unbind close button
         .find(this.lbCloseButtonSelector).off('click').end()
       // Unbind buttons to change images
         .find('.change-img').off('click').end()
       // Unbind button to show all images
-        .find('.all-fig-btn').off('click');
+        .find('.all-fig-btn').off('click').end()
+        .off('image-switch');*/
   };
 
   })(jQuery);

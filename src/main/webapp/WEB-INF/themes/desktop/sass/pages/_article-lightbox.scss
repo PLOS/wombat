@@ -241,10 +241,10 @@
             width: $fv-small;
             height: rem-calc(11);
             margin-top: rem-calc(15px);
-            &:hover {
-              background-color: $plos-default;
-              color: $white;
-            }
+          }
+          &:hover {
+            background-color: $plos-default;
+            color: $white;
           }
 
           &.all-fig-btn {
@@ -263,23 +263,15 @@
           }
 
           &.next-fig-btn .icon-next {
-            background-position: -140px -20px;
-            float: right;
-            margin-left: 6px;
+              background-position: -140px -20px;
+              float: right;
+              margin-left: 6px;
           }
 
-          &.next-fig-btn:hover .icon-next {
-            background-position: -140px -20px;
-          }
-
-          &.prev-fig-btn  .icon-prev {
+          &.prev-fig-btn .icon-prev {
             background-position: -130px -20px;
             float: left;
             margin-right: rem-calc(6);
-          }
-
-          &.prev-fig-btn :hover .icon-prev {
-            background-position: -130px -20px;
           }
         }
       }

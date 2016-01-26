@@ -24,8 +24,8 @@
       <img class="main-lightbox-image" src=""/>
       <aside id="figures-list">
         <% figureList.each(function (ix, figure) { %>
-        <div class="change-img" data-doi="<%= figure.getAttribute('data-figure-doi') %>">
-          <img class="aside-figure" src="<@siteLink handlerName="figureImage" queryParameters={"size": "inline"}/>&id=<%= figure.getAttribute('data-figure-doi') %>" />
+        <div class="change-img" data-doi="<%= figure.getAttribute('data-doi') %>">
+          <img class="aside-figure" src="<@siteLink handlerName="figureImage" queryParameters={"size": "inline"}/>&id=<%= figure.getAttribute('data-doi') %>" />
         </div>
         <% }) %>
       </aside>

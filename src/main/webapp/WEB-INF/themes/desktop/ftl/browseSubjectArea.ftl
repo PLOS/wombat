@@ -179,7 +179,7 @@
 </div>
 
 <#include "common/paging.ftl" />
-<@paging totalPages, page?number, (category??)?string(fullBrowseUrl, browseUrl), parameterMap />
+<@paging totalPages, page?number, (category??)?string(fullBrowseUrl, browseUrl), parameterMap, true />
 
 <#include "common/footer/footer.ftl" />
 

@@ -49,7 +49,6 @@
                         queryParameters={"id": issue.issueUri}; issueLink>
                             <h2><a href="${issueLink}">${issueTitle}</a></h2>
                         </@siteLink>
-                    <p class="credit">Image Credit: ${issueImageCredit}</p>
                 </div>
               <div class="detail-container">
                 <div class="img">

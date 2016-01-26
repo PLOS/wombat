@@ -89,6 +89,7 @@ public class BrowseController extends WombatController {
     model.addAttribute("issue", issueMeta);
 
     String issueDesc = (String) issueMeta.getOrDefault("description", "");
+    issueDesc = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root>" + issueDesc + "</root>";
     model.addAttribute("issueTitle", articleTransformService.transformImageDescription(new RenderContext(site),
         xmlService.extractElement(issueDesc, "title")));
     model.addAttribute("issueDescription", articleTransformService.transformImageDescription(new RenderContext(site),

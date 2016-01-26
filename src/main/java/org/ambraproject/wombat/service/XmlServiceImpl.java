@@ -5,6 +5,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,9 +17,11 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 
@@ -37,6 +40,30 @@ public class XmlServiceImpl implements XmlService {
         throw new RuntimeException(e); // using default configuration; should be impossible
       }
 
+//      BufferedReader br = null;
+//      StringBuilder sb = new StringBuilder();
+//
+//      String line;
+//      try {
+//
+//        br = new BufferedReader(new InputStreamReader(xmlStream));
+//        while ((line = br.readLine()) != null) {
+//          sb.append(line);
+//        }
+//
+//      } catch (IOException e) {
+//        e.printStackTrace();
+//      } finally {
+//        if (br != null) {
+//          try {
+//            br.close();
+//          } catch (IOException e) {
+//            e.printStackTrace();
+//          }
+//        }
+//      }
+
+
       try {
         document = documentBuilder.parse(xmlStream);
       } catch (SAXException e) {
@@ -47,6 +74,7 @@ public class XmlServiceImpl implements XmlService {
     }
     return document;
   }
+
 
   public String createXmlString(Node node) {
     Transformer transformer;

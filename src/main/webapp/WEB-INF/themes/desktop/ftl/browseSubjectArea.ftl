@@ -93,7 +93,6 @@
         </ul>
     </div><!-- /.filter-bar -->
 
-    <#include "common/URLParametersMacro.ftl" />
     <div class="header hdr-results subject cf">
         <div class="main">
           <#assign totalPages = ((searchResults.numFound + selectedResultsPerPage - 1) / selectedResultsPerPage)?int>
@@ -101,8 +100,8 @@
             <#if (((page?number + 1) * selectedResultsPerPage) gt searchResults.numFound)>${searchResults.numFound}<#else>${(page?number + 1)* selectedResultsPerPage}</#if></#if> of ${searchResults.numFound}</p>
           <p class="sort">
               <span>View by:</span>
-              <a id="cover-page-link" title="Cover page view" href="?<@URLParameters resultView="cover" sortOrder=selectedSortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "cover">active</#if>">Cover Page</a>
-              <a id="list-page-link" title="List page view" href="?<@URLParameters resultView="list" sortOrder=selectedSortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "list">active</#if>">List Articles</a>
+              <a id="cover-page-link" title="Cover page view" href="?<@replaceParams parameterMap=parameterMap name="resultView" value="cover" />" class="<#if resultView == "cover">active</#if>">Cover Page</a>
+              <a id="list-page-link" title="List page view" href="?<@replaceParams parameterMap=parameterMap name="resultView" value="list" />" class="<#if resultView == "list">active</#if>">List Articles</a>
           </p>
         </div><!-- /.main -->
         <div class="sidebar">
@@ -110,9 +109,9 @@
                 <span>Sort by:</span>
             <#if selectedSortOrder == "DATE_NEWEST_FIRST">
                 <span class="active">Recent</span>
-                <a title="Sort by most viewed, all time" href="?<@URLParameters resultView=resultView sortOrder="MOST_VIEWS_ALL_TIME" resultsPerPage=resultsPerPage />">Popular</a>
+                <a title="Sort by most viewed, all time" href="?<@replaceParams parameterMap=parameterMap name="sortOrder" value="MOST_VIEWS_ALL_TIME" />">Popular</a>
             <#else>
-                <a title="Sort by most recent" href="?<@URLParameters resultView=resultView sortOrder="DATE_NEWEST_FIRST" resultsPerPage=resultsPerPage />" >Recent</a>
+                <a title="Sort by most recent" href="?<@replaceParams parameterMap=parameterMap name="sortOrder" value="DATE_NEWEST_FIRST" />" >Recent</a>
                 <span class="active">Popular</span>
             </#if>
             </p>

@@ -2,28 +2,38 @@
 <#assign almInfoURL="http://lagotto.io/plos" />
 
   <div id="article-metrics">
+    <section class="card">
+
     <h2 id="viewedHeader">Viewed <a href="${almInfoURL}#usageInfo" class="ir" title="More information">info</a>
       <#--<span id="chartSpinner"><#include "../common/loadingcycle.ftl"></span>-->
     </h2>
 
     <div id="usage"></div>
     <div id="views"></div>
-
+    </section>
+    <section class="card">
     <a id="citations" name="citations"></a>
-    <h2 id="citedHeader" class="topstroke">Cited <a href="${almInfoURL}#citationInfo" class="ir" title="More information">info</a>
+
+    <h2 id="citedHeader">Cited <a href="${almInfoURL}#citationInfo" class="ir" title="More information">info</a>
       <#--<span id="relatedCitesSpinner"><#include "../common/loadingcycle.ftl"></span>-->
     </h2>
     <div id="relatedCites"></div>
+    </section>
+
+    <section class="card">
 
     <div id="socialNetworksOnArticleMetricsPage">
       <a id="other" name="other"></a>
-      <h2 id="savedHeader" class="topstroke">Saved <a href="${almInfoURL}#socialBookmarks" class="ir" title="More information">info</a>
+      <h2 id="savedHeader">Saved <a href="${almInfoURL}#socialBookmarks" class="ir" title="More information">info</a>
         <#--<span id="relatedBookmarksSpinner"><#include "../common/loadingcycle.ftl"></span>-->
       </h2>
       <div id="relatedBookmarks"></div>
     </div>
+</section>
 
-    <h2 id="discussedHeader" class="topstroke">Discussed <a href="${almInfoURL}#blogCoverage" class="ir" title="More information">info</a>
+    <section class="card">
+
+    <h2 id="discussedHeader">Discussed <a href="${almInfoURL}#blogCoverage" class="ir" title="More information">info</a>
       <#--<span id="relatedBlogPostsSpinner"><#include "../common/loadingcycle.ftl"></span>-->
     </h2>
 
@@ -59,17 +69,17 @@
       <#--</div>-->
     <#--</div>-->
 
-    <h2 id="f1kHeader" class="topstroke" style="display: none;">Recommended <a href="${almInfoURL}#recommended" class="ir" title="More information">info</a>
+    <h2 id="f1kHeader" style="display: none;">Recommended <a href="${almInfoURL}#recommended" class="ir" title="More information">info</a>
       <#--<span id="f1KSpinner"><#include "../common/loadingcycle.ftl"></span>-->
     </h2>
     <div id="f1kContent" style="display:none;"></div>
-
+</section>
     <!-- try to find the location of the first '/' after 'http://' -->
   <#--    <#assign endIndex = freemarker_config.get("almHost")?index_of("/", 7)>
       <#if endIndex == -1>
         <#assign endIndex = freemarker_config.get("almHost")?length >
       </#if>-->
-    <div><a href="${almInfoURL}#static-content-wrap">Information on PLOS Article-Level Metrics</a></div>
+    <div class="card"><a href="${almInfoURL}#static-content-wrap">Information on PLOS Article-Level Metrics</a></div>
   <#--<#include "metricsFeedbackMessage.ftl" />-->
   </div><!--end article-metrics-->
 </div><!-- end main -->

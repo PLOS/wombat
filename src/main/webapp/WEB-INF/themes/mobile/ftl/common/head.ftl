@@ -35,6 +35,8 @@
 <#if cssFile?has_content>
   <@cssLink target="resource/css/${cssFile}" />
 </#if>
+<@cssLink target="resource/css/metrics.css" />
+
 
 <#include "../cssLinks.ftl" />
 

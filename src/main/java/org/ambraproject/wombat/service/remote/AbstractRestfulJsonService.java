@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.HttpMessageUtil;
@@ -18,6 +20,8 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URL;
+import java.util.Map;
+import java.util.function.Function;
 
 abstract class AbstractRestfulJsonService implements RestfulJsonService {
 
@@ -31,6 +35,10 @@ abstract class AbstractRestfulJsonService implements RestfulJsonService {
   protected abstract URL getServerUrl();
 
   protected abstract String getCachePrefix();
+
+  protected Multimap<String, String> getAdditionalHeaders() {
+    return ImmutableMultimap.of();
+  }
 
   @Override
   public final InputStream requestStream(String address) throws IOException {
@@ -64,7 +72,7 @@ abstract class AbstractRestfulJsonService implements RestfulJsonService {
   @Override
   public final void postObject(String address, Object object) throws IOException {
     String json = jsonService.serialize(object);
-    HttpPost post = new HttpPost(buildUri(address));
+    HttpPost post = buildRequest(address, HttpPost::new);
     try {
       post.setEntity(new StringEntity(json));
     } catch (UnsupportedEncodingException e) {
@@ -105,15 +113,20 @@ abstract class AbstractRestfulJsonService implements RestfulJsonService {
 
   @Override
   public final <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException {
-    return jsonService.requestCachedObject(cachedRemoteReader, cacheParams, buildUri(address), responseClass);
+    return jsonService.requestCachedObject(cachedRemoteReader, cacheParams, buildGet(address), responseClass);
   }
 
   protected final HttpGet buildGet(String address) {
-    return new HttpGet(buildUri(address));
+    return buildRequest(address, HttpGet::new);
   }
 
-  private URI buildUri(String address) {
-    return UriUtil.concatenate(this.getServerUrl(), address);
+  private <R extends HttpUriRequest> R buildRequest(String address, Function<URI, R> requestConstructor) {
+    URI uri = UriUtil.concatenate(this.getServerUrl(), address);
+    R request = requestConstructor.apply(uri);
+    for (Map.Entry<String, String> header : getAdditionalHeaders().entries()) {
+      request.addHeader(header.getKey(), header.getValue());
+    }
+    return request;
   }
 
 }

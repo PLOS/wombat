@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -17,6 +19,8 @@ public class NedServiceImpl extends AbstractRestfulJsonService implements NedSer
     private final String authorizationAppName;
     private final String authorizationPassword;
 
+    private final ImmutableMultimap<String, String> authorizationHeader;
+
     private NedConfiguration(Map<String, Object> nedConfigurationData) {
       try {
         this.server = new URL(nedConfigurationData.get("server").toString());
@@ -25,6 +29,13 @@ public class NedServiceImpl extends AbstractRestfulJsonService implements NedSer
       }
       this.authorizationAppName = nedConfigurationData.get("authorizationAppName").toString();
       this.authorizationPassword = nedConfigurationData.get("authorizationPassword").toString();
+
+      if (authorizationAppName != null && authorizationPassword != null) {
+        String authorizationHeaderValue = ""; // TODO
+        this.authorizationHeader = ImmutableMultimap.of("Authorization", authorizationHeaderValue);
+      } else {
+        this.authorizationHeader = ImmutableMultimap.of();
+      }
     }
   }
 
@@ -43,9 +54,13 @@ public class NedServiceImpl extends AbstractRestfulJsonService implements NedSer
   }
 
   @Override
+  protected Multimap<String, String> getAdditionalHeaders() {
+    return getNedConfiguration().authorizationHeader;
+  }
+
+  @Override
   protected URL getServerUrl() {
-    NedConfiguration nedConfiguration1 = getNedConfiguration();
-    return nedConfiguration1.server;
+    return getNedConfiguration().server;
   }
 
   @Override

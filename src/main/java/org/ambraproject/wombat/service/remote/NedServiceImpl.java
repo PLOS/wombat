@@ -1,13 +1,18 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
+import com.google.common.base.Charsets;
+import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
+import org.apache.http.Header;
+import org.apache.http.message.BasicHeader;
+import org.apache.xerces.impl.dv.util.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
+import java.util.Objects;
 
 public class NedServiceImpl extends AbstractRestfulJsonService implements NedService {
 
@@ -16,35 +21,37 @@ public class NedServiceImpl extends AbstractRestfulJsonService implements NedSer
 
   private static class NedConfiguration {
     private final URL server;
-    private final String authorizationAppName;
-    private final String authorizationPassword;
+    private final ImmutableCollection<BasicHeader> authorizationHeader;
 
-    private final ImmutableMultimap<String, String> authorizationHeader;
-
-    private NedConfiguration(Map<String, Object> nedConfigurationData) {
+    private NedConfiguration(String server, String authorizationAppName, String authorizationPassword) {
       try {
-        this.server = new URL(nedConfigurationData.get("server").toString());
+        this.server = new URL(Objects.requireNonNull(server));
       } catch (MalformedURLException e) {
         throw new RuntimeException(e);
       }
-      this.authorizationAppName = nedConfigurationData.get("authorizationAppName").toString();
-      this.authorizationPassword = nedConfigurationData.get("authorizationPassword").toString();
 
-      if (authorizationAppName != null && authorizationPassword != null) {
-        String authorizationHeaderValue = ""; // TODO
-        this.authorizationHeader = ImmutableMultimap.of("Authorization", authorizationHeaderValue);
-      } else {
-        this.authorizationHeader = ImmutableMultimap.of();
-      }
+      this.authorizationHeader = ((authorizationAppName != null) && (authorizationPassword != null))
+          ? ImmutableList.of(createAuthorizationHeader(authorizationAppName, authorizationPassword))
+          : ImmutableList.of();
     }
   }
 
+  private static BasicHeader createAuthorizationHeader(String authorizationAppName, String authorizationPassword) {
+    String authorization = authorizationAppName + ":" + authorizationPassword;
+    String encoded = Base64.encode(authorization.getBytes(Charsets.ISO_8859_1));
+    return new BasicHeader("Authorization", "Basic " + encoded);
+  }
+
   private NedConfiguration fetchNedConfiguration() {
+    Map<String, ?> nedConfigurationData;
     try {
-      return new NedConfiguration(soaService.requestObject("config/ned", Map.class));
+      nedConfigurationData = soaService.requestObject("config/ned", Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+    return new NedConfiguration((String) nedConfigurationData.get("server"),
+        (String) nedConfigurationData.get("authorizationAppName"),
+        (String) nedConfigurationData.get("authorizationPassword"));
   }
 
   private transient NedConfiguration nedConfiguration;
@@ -54,7 +61,7 @@ public class NedServiceImpl extends AbstractRestfulJsonService implements NedSer
   }
 
   @Override
-  protected Multimap<String, String> getAdditionalHeaders() {
+  protected Iterable<? extends Header> getAdditionalHeaders() {
     return getNedConfiguration().authorizationHeader;
   }
 

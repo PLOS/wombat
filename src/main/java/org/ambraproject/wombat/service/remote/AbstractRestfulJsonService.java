@@ -1,11 +1,11 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
+import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -20,7 +20,6 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URL;
-import java.util.Map;
 import java.util.function.Function;
 
 abstract class AbstractRestfulJsonService implements RestfulJsonService {
@@ -36,8 +35,8 @@ abstract class AbstractRestfulJsonService implements RestfulJsonService {
 
   protected abstract String getCachePrefix();
 
-  protected Multimap<String, String> getAdditionalHeaders() {
-    return ImmutableMultimap.of();
+  protected Iterable<? extends Header> getAdditionalHeaders() {
+    return ImmutableList.of();
   }
 
   @Override
@@ -123,8 +122,8 @@ abstract class AbstractRestfulJsonService implements RestfulJsonService {
   private <R extends HttpUriRequest> R buildRequest(String address, Function<URI, R> requestConstructor) {
     URI uri = UriUtil.concatenate(this.getServerUrl(), address);
     R request = requestConstructor.apply(uri);
-    for (Map.Entry<String, String> header : getAdditionalHeaders().entries()) {
-      request.addHeader(header.getKey(), header.getValue());
+    for (Header header : getAdditionalHeaders()) {
+      request.addHeader(header);
     }
     return request;
   }

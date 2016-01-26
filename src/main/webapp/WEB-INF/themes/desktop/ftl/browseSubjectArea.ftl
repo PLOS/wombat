@@ -95,9 +95,21 @@
 
     <div class="header hdr-results subject cf">
         <div class="main">
-          <#assign totalPages = ((searchResults.numFound + selectedResultsPerPage - 1) / selectedResultsPerPage)?int>
-          <p class="count">Showing ${(page?number * selectedResultsPerPage) + 1} - <#if (searchResults.numFound lt selectedResultsPerPage)>${searchResults.numFound}<#else>
-            <#if (((page?number + 1) * selectedResultsPerPage) gt searchResults.numFound)>${searchResults.numFound}<#else>${(page?number + 1)* selectedResultsPerPage}</#if></#if> of ${searchResults.numFound}</p>
+        <#assign totalPages = ((searchResults.numFound + selectedResultsPerPage - 1) / selectedResultsPerPage)?int>
+          <p class="count">
+            Showing ${((page?number - 1) * selectedResultsPerPage) + 1} -
+          <#if (searchResults.numFound lt selectedResultsPerPage)>
+          ${searchResults.numFound}
+          <#else>
+            <#if ((page?number * selectedResultsPerPage) gt searchResults.numFound)>
+            ${searchResults.numFound}
+            <#else>
+            ${page?number * selectedResultsPerPage}
+            </#if>
+          </#if>
+            of ${searchResults.numFound}
+          </p>
+
           <p class="sort">
               <span>View by:</span>
               <a id="cover-page-link" title="Cover page view" href="?<@replaceParams parameterMap=parameterMap name="resultView" value="cover" />" class="<#if resultView == "cover">active</#if>">Cover Page</a>

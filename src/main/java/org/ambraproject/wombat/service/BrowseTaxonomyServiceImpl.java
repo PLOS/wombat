@@ -129,9 +129,9 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * {@inheritDoc}
    */
   @Override
-  public Map<String, Double> getCounts(CategoryView taxonomy, String currentJournal, Optional<Integer> cacheDuration) throws IOException {
-    Map<String, Double> counts = getAllCounts(currentJournal, cacheDuration);
-    Map<String, Double> results = new HashMap<>();
+  public Map<String, Long> getCounts(CategoryView taxonomy, String currentJournal, Optional<Integer> cacheDuration) throws IOException {
+    Map<String, Long> counts = getAllCounts(currentJournal, cacheDuration);
+    Map<String, Long> results = new HashMap<>();
     for (CategoryView child : taxonomy.getChildren().values()) {
       results.put(child.getName(), counts.get(child.getName()));
     }
@@ -148,10 +148,10 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * @return map from subject term to article count
    * @throws IOException
    */
-  private Map<String, Double> getAllCounts(final String journalKey, Optional<Integer> cacheDuration) throws IOException {
+  private Map<String, Long> getAllCounts(final String journalKey, Optional<Integer> cacheDuration) throws IOException {
 
     String cacheKey = ("categoryCountCacheKey" + journalKey).intern();
-    Map<String, Double> counts = null;
+    Map<String, Long> counts = null;
     if (cacheDuration.isPresent()) {
       counts = cache.get(cacheKey); // remains null if not cached
     }
@@ -164,7 +164,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
 
   //todo: may need to get total article count here
   //EG counts.put(CategoryView.ROOT_NODE_NAME, subjectCounts.totalArticles);
-  private Map<String, Double> getAllCountsWithoutCache(String currentJournal) throws IOException {
+  private Map<String, Long> getAllCountsWithoutCache(String currentJournal) throws IOException {
     return solrSearchService.getAllSubjectCounts(currentJournal);
   }
 

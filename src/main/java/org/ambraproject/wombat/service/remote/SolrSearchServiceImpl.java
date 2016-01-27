@@ -329,14 +329,14 @@ public class SolrSearchServiceImpl implements SolrSearchService {
    * @inheritDoc
    */
   @Override
-  public Map<String, Double> getAllSubjectCounts(String journalKey) throws IOException {
+  public Map<String, Long> getAllSubjectCounts(String journalKey) throws IOException {
     String facet = "subject_facet";
     List<NameValuePair> params = setCommonCategoryParams(journalKey, facet);
 
-    Map<String, Double> categoryCountMap = new HashMap<>();
+    Map<String, Long> categoryCountMap = new HashMap<>();
     Map<?, ?> resultsMap = executeFacetedQuery(params, facet);
     for (Object o : resultsMap.keySet()) {
-      categoryCountMap.put(o.toString(), (Double) resultsMap.get(o));
+      categoryCountMap.put(o.toString(), ((Double) resultsMap.get(o)).longValue());
     }
     
     return categoryCountMap;

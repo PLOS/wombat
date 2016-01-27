@@ -122,5 +122,5 @@ public interface SolrSearchService {
    * @param journalKey specifies the journal
    * @throws IOException
    */
-  public Map<String, Double> getAllSubjectCounts(String journalKey) throws IOException;
+  public Map<String, Long> getAllSubjectCounts(String journalKey) throws IOException;
 }

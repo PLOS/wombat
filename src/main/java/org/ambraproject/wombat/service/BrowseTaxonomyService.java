@@ -47,5 +47,5 @@ public interface BrowseTaxonomyService {
    *                       If absent, don't read or add to the cache and always check for new data.
    * @return map from taxonomy term to count of articles
    */
-  Map<String, Double> getCounts(CategoryView taxonomy, String currentJournal, Optional<Integer> cacheTtl) throws IOException;
+  Map<String, Long> getCounts(CategoryView taxonomy, String currentJournal, Optional<Integer> cacheTtl) throws IOException;
 }

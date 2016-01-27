@@ -1,4 +1,12 @@
-
+/**
+ *
+ * DEPENDENCIES:  resource/js/vendor/underscore
+ *                resource/js/vendor/jquery
+ *                resource/js/vendor/jquery.panzoom
+ *                resource/js/vendor/jquery.dotdotdot
+ *                resource/js/vendor/foundation
+ *
+ */
 var FigureLightbox = {};
 (function($) {
 
@@ -9,8 +17,8 @@ var FigureLightbox = {};
     lbSelector:               '#figure-lightbox',
     lbTemplateSelector:       '#figure-lightbox-template',
     contextTemplateSelector:  '#image-context-template',
-    lbCloseButtonSelector:    '.lb-close',
-    zoomRangeSelector:        '.range-slider',
+    lbCloseButtonSelector:    '#figure-lightbox .lb-close',
+    zoomRangeSelector:        '#figure-lightbox .range-slider',
     $panZoomEl:               null,
     imgData:                  null,
 
@@ -106,6 +114,10 @@ var FigureLightbox = {};
           return that.prevImage();
         }).end()
 
+        .find('#view-more').on('click', function () {
+          $('#view-more-wrapper').hide();
+        }).end()
+
         .on('image-switch', function (e, data) {
           var buttons = $(that.lbSelector).find('.fig-btn').show();
           if (data.index === 0) {
@@ -113,6 +125,14 @@ var FigureLightbox = {};
           } else if (data.index === (that.imgList.length - 1)) {
             buttons.filter('.next-fig-btn').hide(); // Hide next button
           }
+
+          $(that.lbSelector).find('#view-more, #view-less').on('click', function () {
+            $('#image-context').toggleClass('full-display')
+                .children(':not(.full-display-show)').toggle();
+            $('#view-more-wrapper').slideToggle();
+            $('#view-less-wrapper').slideToggle('slow');
+
+          });
         });
   };
 
@@ -161,10 +181,11 @@ var FigureLightbox = {};
     var templateData = $.extend(imageData, templateFunctions);
     var lbTemplate = _.template($(this.contextTemplateSelector).html());
     // Remove actual img context
-    $('#image-context').children().remove().end()
+    $(this.lbSelector + ' #image-context').children().remove().end()
         // Append new img context
         .append(lbTemplate(templateData));
     this.renderImg(this.imgData.doi);
+    $(this.lbSelector + ' #view-more-wrapper').dotdotdot({after: '#view-more'});
 
     $(this.lbContainerSelector).trigger('image-switch', {index: currentIndex, element: this.imgData.imgElement});
   };
@@ -265,6 +286,7 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.destroy = function () {
+      // @TODO: Check when to destroy modal with images
 /*    $(this.lbContainerSelector)
       // Unbind close button
         .find(this.lbCloseButtonSelector).off('click').end()

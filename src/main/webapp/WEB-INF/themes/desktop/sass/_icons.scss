@@ -119,6 +119,14 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   @extend .fa-exclamation-circle;
   content: "\f06a";
 }
+.icon-arrow-right{
+  @extend .icon-fa;
+  @extend .fa-arrow-right;
+}
+.icon-arrow-left{
+  @extend .icon-fa;
+  @extend .fa-arrow-left;
+}
 .icon-caret-down {
   @extend .icon-fa;
   @extend .fa-caret-down;

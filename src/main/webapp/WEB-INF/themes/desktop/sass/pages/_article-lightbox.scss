@@ -167,7 +167,6 @@
   }
 
   #lightbox-footer {
-    height: 20%;
     width: 100%;
     background: $grey-light;
     position: fixed;
@@ -280,24 +279,66 @@
     #image-context {
       width: 100%;
       display: inline-block;
+      -webkit-transition: height 300ms ease-in-out;
+      -moz-transition: height 300ms ease-in-out;
+      -o-transition: height 300ms ease-in-out;
+      transition: height 300ms ease-in-out;
+      max-height: rem-calc(80px);
+      overflow-y: hidden;
+      &.full-display {
+        width: 100%;
+        max-height: rem-calc(150px);
+        overflow-y: scroll;
+        .footer-text {
+          width: 100%;
+        }
+      }
+
       .footer-text {
         display: inline-block;
         padding: 0 1% 0 1.1%;
         word-wrap: break-word;
-        width: 33%;
+        width: 39%;
         background: $grey-light;
         text-align: left;
         font-family: $font-face-plain;
         font-size: $txt-size-xsmall;
-        line-height: rem-calc(18);
+        line-height: $line-height;
         z-index: map-get($zindex, header);
         #figure-title, title {
           display: inline-block;
+          width: 100%;
+          font-size: $txt-size-small;
           padding-top: rem-calc(3);
           padding-right: rem-calc(16);
           margin-bottom: 0;
           font-weight: bold;
           line-height: rem-calc(16);
+        }
+
+        #figure-description-wrapper {
+          overflow-y: hidden;
+          #view-more-wrapper {
+            /* Needs static height for dotdotdot to trim text */
+            max-height: rem-calc(65px);
+          }
+
+          #view-less-wrapper {
+            display: none;
+          }
+
+          #view-more, #view-less {
+            cursor: pointer;
+            color: $plos-default;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          i {
+            line-height: $line-height-small;
+            font-size: $txt-size-xsmall;
+            margin-left: 3px;
+          }
         }
 
         a {
@@ -307,16 +348,16 @@
           }
         }
 
-        p {
+        p, span {
           font-family: $font-face-plain;
           padding-top: $pad-xsmall;
-          font-size: $txt-size-xsmall;
+          font-size: $txt-size-small;
           line-height: rem-calc(18);
         }
       }
 
       #show-context-container {
-        width: 33%;
+        width: 20%;
         text-align: center;
         display: inline-block;
         vertical-align: top;
@@ -327,7 +368,7 @@
       }
 
       #download-buttons {
-        width: 33%;
+        width: 40%;
         display: inline-block;
         vertical-align: top;
         padding-top: $pad-xsmall;

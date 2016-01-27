@@ -55,6 +55,8 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
+import org.ambraproject.wombat.service.BrowseTaxonomyServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -316,6 +318,11 @@ public class SpringConfiguration {
   @Bean
   public CommentValidationService commentValidationService() {
     return new CommentValidationServiceImpl();
+  }
+
+  @Bean
+  public BrowseTaxonomyService browseTaxonomyService() {
+    return new BrowseTaxonomyServiceImpl();
   }
 
 }

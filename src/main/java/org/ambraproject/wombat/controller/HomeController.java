@@ -6,6 +6,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.model.CategoryView;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -44,6 +46,9 @@ public class HomeController extends WombatController {
 
   @Autowired
   private RecentArticleService recentArticleService;
+
+  @Autowired
+  private BrowseTaxonomyService browseTaxonomyService;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -246,6 +251,11 @@ public class HomeController extends WombatController {
         log.error("Could not retrieve current issue for: " + site.getJournalKey(), e);
       }
     }
+
+    //todo: add categoryView and counts to model for Taxonomy Browser
+    Optional<Integer> cacheTtl = Optional.fromNullable((Integer) homepageConfig.get("cacheTtl"));
+    CategoryView categoryView = browseTaxonomyService.parseCategories(site.getJournalKey(), cacheTtl);
+    Map<String, Double> counts = browseTaxonomyService.getCounts(categoryView, site.getJournalKey(), cacheTtl);
 
     model.addAttribute("sections", sectionsForModel);
     return site.getKey() + "/ftl/home/home";

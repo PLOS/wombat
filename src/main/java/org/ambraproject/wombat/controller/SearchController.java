@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableListMultimap;
@@ -25,6 +26,7 @@ import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
@@ -71,6 +73,9 @@ public class SearchController extends WombatController {
 
   @Autowired
   private SearchFilterService searchFilterService;
+
+  @Autowired
+  private BrowseTaxonomyService browseTaxonomyService;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -662,6 +667,12 @@ public class SearchController extends WombatController {
    */
   private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
                                  MultiValueMap<String, String> params, String subject) throws IOException {
+
+    Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");
+    Optional<Integer> cacheTtl = Optional.fromNullable((Integer) homepageConfig.get("cacheTtl"));
+    //todo: add topAndSecondLevelCategories to model for the Subject Area Dropdown
+    Map<String, List<String>> topAndSecondLevelCategories = browseTaxonomyService
+        .parseTopAndSecondLevelCategories(site.getJournalKey(), cacheTtl);
 
     if (Strings.isNullOrEmpty(subject)) {
       params.add("subject", "");

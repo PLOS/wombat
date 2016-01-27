@@ -102,9 +102,9 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
         : Link.toForeignSite(site, targetJournal, siteSet);
     final Link link;
     if (handlerName != null) {
-      Map<String, ?> variables = getValueAsMap(params.get("pathVariables"));
-      ListMultimap<String, ?> queryParameters = getValueAsMultimap(params.get("queryParameters"));
-      List<?> wildcardValues = getValueAsList(params.get("wildcardValues"));
+      Map<String, ?> variables = TemplateModelUtil.getAsMap((TemplateModel) params.get("pathVariables"));
+      ListMultimap<String, ?> queryParameters = TemplateModelUtil.getAsMultimap((TemplateModel) params.get("queryParameters"));
+      List<?> wildcardValues = TemplateModelUtil.getAsList((TemplateModel) params.get("wildcardValues"));
       link = linkFactory.toPattern(requestMappingContextDictionary, handlerName,
           variables, queryParameters, wildcardValues);
     } else if (path != null) {
@@ -122,58 +122,6 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
 
   private static String getStringValue(Object valueObj) throws TemplateModelException {
     return valueObj instanceof TemplateScalarModel ? ((TemplateScalarModel) valueObj).getAsString() : null;
-  }
-
-  private static ImmutableList<?> getValueAsList(Object value) throws TemplateModelException {
-    if (value == null) return ImmutableList.of();
-    if (value instanceof TemplateSequenceModel) {
-      ImmutableList.Builder<Object> builder = ImmutableList.builder();
-      TemplateSequenceModel sequenceModel = (TemplateSequenceModel) value;
-      int size = sequenceModel.size();
-      for (int i = 0; i < size; i++) {
-        builder.add(sequenceModel.get(i));
-      }
-      return builder.build();
-    } else {
-      return ImmutableList.of(value);
-    }
-  }
-
-  private static ImmutableMap<String, ?> getValueAsMap(Object value) throws TemplateModelException {
-    if (value == null) return ImmutableMap.of();
-    if (value instanceof TemplateHashModelEx) {
-      TemplateHashModelEx ftlHash = (TemplateHashModelEx) value;
-      ImmutableMap.Builder<String, Object> builder = ImmutableMap.builder();
-      for (TemplateModelIterator iterator = ftlHash.keys().iterator(); iterator.hasNext(); ) {
-        String key = iterator.next().toString();
-        builder.put(key, ftlHash.get(key));
-      }
-      return builder.build();
-    }
-    throw new TemplateModelException("Hash type expected");
-  }
-
-  private static ImmutableListMultimap<String, ?> getValueAsMultimap(Object value) throws TemplateModelException {
-    if (value == null) return ImmutableListMultimap.of();
-    if (value instanceof TemplateHashModelEx) {
-      TemplateHashModelEx ftlHash = (TemplateHashModelEx) value;
-      ImmutableListMultimap.Builder<String, Object> builder = ImmutableListMultimap.builder();
-      for (TemplateModelIterator iterator = ftlHash.keys().iterator(); iterator.hasNext(); ) {
-        String key = iterator.next().toString();
-        TemplateModel model = ftlHash.get(key);
-        if (model instanceof TemplateSequenceModel) {
-          TemplateSequenceModel sequenceModel = (TemplateSequenceModel) model;
-          int size = sequenceModel.size();
-          for (int i = 0; i < size; i++) {
-            builder.put(key, sequenceModel.get(i));
-          }
-        } else {
-          builder.put(key, model);
-        }
-      }
-      return builder.build();
-    }
-    throw new TemplateModelException("Hash type expected");
   }
 
 }

@@ -18,6 +18,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -122,5 +123,26 @@ public interface SolrSearchService {
    * @param journalKey specifies the journal
    * @throws IOException
    */
-  public Map<String, Long> getAllSubjectCounts(String journalKey) throws IOException;
+  public Collection<SubjectCount> getAllSubjectCounts(String journalKey) throws IOException;
+
+  /**
+   * Simple class wrapping the category -> count map returned by Solr subject searches.
+   */
+  public static class SubjectCount {
+    public String category;
+    public Long count;
+
+    public SubjectCount(String category, Long count) {
+      this.category = category;
+      this.count = count;
+    }
+
+    public String getCategory() {
+      return category;
+    }
+
+    public Long getCount() {
+      return count;
+    }
+  }
 }

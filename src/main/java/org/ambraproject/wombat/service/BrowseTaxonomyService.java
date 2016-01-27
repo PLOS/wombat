@@ -2,8 +2,10 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Optional;
 import org.ambraproject.wombat.model.CategoryView;
+import org.ambraproject.wombat.service.remote.SolrSearchService;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -47,5 +49,5 @@ public interface BrowseTaxonomyService {
    *                       If absent, don't read or add to the cache and always check for new data.
    * @return map from taxonomy term to count of articles
    */
-  Map<String, Long> getCounts(CategoryView taxonomy, String currentJournal, Optional<Integer> cacheTtl) throws IOException;
+  Collection<SolrSearchService.SubjectCount> getCounts(CategoryView taxonomy, String currentJournal, Optional<Integer> cacheTtl) throws IOException;
 }

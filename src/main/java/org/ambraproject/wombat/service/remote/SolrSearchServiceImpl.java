@@ -37,6 +37,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -329,17 +330,14 @@ public class SolrSearchServiceImpl implements SolrSearchService {
    * @inheritDoc
    */
   @Override
-  public Map<String, Long> getAllSubjectCounts(String journalKey) throws IOException {
+  public Collection<SubjectCount> getAllSubjectCounts(String journalKey) throws IOException {
     String facet = "subject_facet";
     List<NameValuePair> params = setCommonCategoryParams(journalKey, facet);
 
-    Map<String, Long> categoryCountMap = new HashMap<>();
     Map<?, ?> resultsMap = executeFacetedQuery(params, facet);
-    for (Object o : resultsMap.keySet()) {
-      categoryCountMap.put(o.toString(), ((Double) resultsMap.get(o)).longValue());
-    }
-    
-    return categoryCountMap;
+    return resultsMap.entrySet().stream()
+        .map((Map.Entry<?, ?> entry) -> new SubjectCount((String) entry.getKey(),
+            ((Double) entry.getValue()).longValue())).collect(Collectors.toList());
   }
 
   /**

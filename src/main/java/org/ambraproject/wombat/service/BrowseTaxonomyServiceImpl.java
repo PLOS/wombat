@@ -27,6 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,6 +36,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * {@inheritDoc}
@@ -129,14 +131,14 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * {@inheritDoc}
    */
   @Override
-  public Map<String, Long> getCounts(CategoryView taxonomy, String currentJournal, Optional<Integer> cacheDuration) throws IOException {
-    Map<String, Long> counts = getAllCounts(currentJournal, cacheDuration);
-    Map<String, Long> results = new HashMap<>();
-    for (CategoryView child : taxonomy.getChildren().values()) {
-      results.put(child.getName(), counts.get(child.getName()));
-    }
-    results.put(taxonomy.getName(), counts.get(taxonomy.getName()));
-    return results;
+  public Collection<SolrSearchService.SubjectCount> getCounts(CategoryView taxonomy, String currentJournal, Optional<Integer> cacheDuration) throws IOException {
+    Collection<SolrSearchService.SubjectCount> counts = getAllCounts(currentJournal, cacheDuration);
+
+    Set<String> categorySet = taxonomy.getChildren().values()
+        .stream().map(CategoryView::getName).collect(Collectors.toSet());
+    categorySet.add(taxonomy.getName());
+
+    return counts.stream().filter(subjectCount -> categorySet.contains(subjectCount.getCategory())).collect(Collectors.toList());
   }
 
   /**
@@ -148,10 +150,10 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * @return map from subject term to article count
    * @throws IOException
    */
-  private Map<String, Long> getAllCounts(final String journalKey, Optional<Integer> cacheDuration) throws IOException {
+  private Collection<SolrSearchService.SubjectCount> getAllCounts(final String journalKey, Optional<Integer> cacheDuration) throws IOException {
 
     String cacheKey = ("categoryCountCacheKey" + journalKey).intern();
-    Map<String, Long> counts = null;
+    Collection<SolrSearchService.SubjectCount> counts = null;
     if (cacheDuration.isPresent()) {
       counts = cache.get(cacheKey); // remains null if not cached
     }
@@ -164,7 +166,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
 
   //todo: may need to get total article count here
   //EG counts.put(CategoryView.ROOT_NODE_NAME, subjectCounts.totalArticles);
-  private Map<String, Long> getAllCountsWithoutCache(String currentJournal) throws IOException {
+  private Collection<SolrSearchService.SubjectCount> getAllCountsWithoutCache(String currentJournal) throws IOException {
     return solrSearchService.getAllSubjectCounts(currentJournal);
   }
 

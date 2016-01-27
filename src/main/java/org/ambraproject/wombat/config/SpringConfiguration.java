@@ -71,6 +71,8 @@ import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
+import org.ambraproject.wombat.service.XmlService;
+import org.ambraproject.wombat.service.XmlServiceImpl;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.service.remote.EditorialContentServiceImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
@@ -257,6 +259,9 @@ public class SpringConfiguration {
   public ArticleTransformService articleTransformService() {
     return new ArticleTransformServiceImpl();
   }
+
+  @Bean
+  public XmlService xmlService() { return new XmlServiceImpl(); }
 
   @Bean
   public AssetService assetService() {

@@ -1,12 +1,11 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Charsets;
-import com.google.common.base.Preconditions;
+import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,20 +17,17 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.util.Objects;
+import java.util.function.Function;
 
 public class XmlServiceImpl implements XmlService {
 
   private static final Charset XML_CHARSET = Charsets.UTF_8;
   private static final String XML_DECLARATION = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-  private static final String XML_ROOT_OPEN = "<root>";
-  private static final String XML_ROOT_CLOSE = "</root>";
 
   @Override
   public Document createXmlDocument(InputStream xmlStream) throws IOException {
@@ -81,8 +77,8 @@ public class XmlServiceImpl implements XmlService {
 
   @Override
   public String extractElementFromFragment(String xmlString, String tagName) throws IOException {
-    InputStream xmlStream = new ByteArrayInputStream(wrapWithXmlRoot(xmlString).getBytes(XML_CHARSET));
-    return createXmlString(extractElement(createXmlDocument(xmlStream), tagName));
+    WrappedXmlFragment fragment = new WrappedXmlFragment(xmlString);
+    return createXmlString(extractElement(fragment.buildWrappedDocument(), tagName));
   }
 
   @Override
@@ -92,8 +88,8 @@ public class XmlServiceImpl implements XmlService {
 
   @Override
   public String removeElementFromFragment(String xmlString, String tagName) throws IOException {
-    InputStream xmlStream = new ByteArrayInputStream(wrapWithXmlRoot(xmlString).getBytes(XML_CHARSET));
-    return createXmlStringFromWrapped(removeElement(createXmlDocument(xmlStream), tagName));
+    WrappedXmlFragment fragment = new WrappedXmlFragment(xmlString);
+    return fragment.modifyAndUnwrap(document -> removeElement(document, tagName));
   }
 
   @Override
@@ -119,11 +115,6 @@ public class XmlServiceImpl implements XmlService {
 
   }
 
-  private String createXmlStringFromWrapped(Node node) {
-    String wrappedXmlFragment = createXmlString(node);
-    return unwrapXmlRoot(wrappedXmlFragment);
-  }
-
   private Element extractElement(Document xmlDoc, String tagName) {
     return (Element) xmlDoc.getElementsByTagName(tagName).item(0);
   }
@@ -135,12 +126,66 @@ public class XmlServiceImpl implements XmlService {
     return xmlDoc;
   }
 
-  private String wrapWithXmlRoot(String xmlFragment) {
-    return  XML_DECLARATION + XML_ROOT_OPEN + xmlFragment + XML_ROOT_CLOSE;
+  /**
+   * A fragment of XML code that is wrapped in a fake element in order to form a pseudo-document.
+   */
+  private class WrappedXmlFragment {
+    private final String fragmentXml;
+    private final String openingTag;
+    private final String closingTag;
+
+    public WrappedXmlFragment(String fragmentXml) {
+      this("root", fragmentXml);
+    }
+
+    public WrappedXmlFragment(String wrappingTagName, String fragmentXml) {
+      this.fragmentXml = Objects.requireNonNull(fragmentXml);
+
+      Objects.requireNonNull(wrappingTagName);
+      openingTag = '<' + wrappingTagName + '>';
+      closingTag = "</" + wrappingTagName + '>';
+    }
+
+    /**
+     * @return a fake XML document made by wrapping the fragment in a new, root-level element
+     */
+    public Document buildWrappedDocument() throws IOException {
+      String documentXml = XML_DECLARATION + openingTag + fragmentXml + closingTag;
+      return createXmlDocument(IOUtils.toInputStream(documentXml, XML_CHARSET));
+    }
+
+    /**
+     * Apply a modification to the document and return the wrapped fragment, with the same modification applied to it,
+     * without its fake wrapping element.
+     *
+     * @param modification the operation to apply to the document
+     * @return XML code representing the modified fragment
+     */
+    public String modifyAndUnwrap(Function<? super Document, ? extends Node> modification) throws IOException {
+      Document document = buildWrappedDocument();
+      Node modified = modification.apply(document);
+      String modifiedString = createXmlString(modified);
+      return removeAffixes(openingTag, modifiedString, closingTag);
+    }
   }
 
-  private String unwrapXmlRoot(String wrappedXmlFragment) {
-    return wrappedXmlFragment.substring(XML_ROOT_OPEN.length(), wrappedXmlFragment.length() - XML_ROOT_CLOSE.length());
+  /**
+   * Verify that a string has expected affixes and remove them.
+   *
+   * @param prefix the prefix to remove
+   * @param text   a string that must have the given prefix and suffix
+   * @param suffix the suffix to remove
+   * @return the string with the prefix and suffix removed
+   * @throws IllegalArgumentException if {@code text} does not begin with {@code prefix} or end with {@code suffix}
+   */
+  private static String removeAffixes(String prefix, String text, String suffix) {
+    if (!prefix.equals(text.substring(0, prefix.length()))) {
+      throw new IllegalArgumentException("Prefix does not match text");
+    }
+    if (!suffix.equals(text.substring(text.length() - suffix.length()))) {
+      throw new IllegalArgumentException("Suffix does not match text");
+    }
+    return text.substring(prefix.length(), text.length() - suffix.length());
   }
 
 }

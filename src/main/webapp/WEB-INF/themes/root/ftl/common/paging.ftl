@@ -8,7 +8,7 @@
     <#-- TODO: this should really be a span, not an a, but that messes up the styling right now. -->
     <a class="${linkClass}" data-page="${i}">${i}</a>
     <#else>
-    <a href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=i />" class="${linkClass}"
+    <a href="${path}?<@replaceParams parameterMap=parameterMap replacements={"page": i} />" class="${linkClass}"
        data-page="${i}">${i}</a>
     </#if>
   </#list>
@@ -36,7 +36,7 @@
   <#if numPages gt 1>
   <nav id="article-pagination" class="nav-pagination">
     <#if currentPage gt 1>
-      <a id="prevPageLink" href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage - 1 />"
+      <a id="prevPageLink" href="${path}?<@replaceParams parameterMap=parameterMap replacements={"page": currentPage - 1} />"
          class="previous-page switch"><span class="icon"></span><span class="icon-text">Previous Page</span>
       </a>
     <#elseif alwaysShow>
@@ -60,7 +60,7 @@
       </#if>
     </#if>
     <#if currentPage lt numPages>
-      <a id="nextPageLink" href="${path}?<@replaceParams parameterMap=parameterMap name="page" value=currentPage + 1 />"
+      <a id="nextPageLink" href="${path}?<@replaceParams parameterMap=parameterMap replacements={"page": currentPage + 1} />"
          class="next-page switch"><span class="icon"></span><span class="icon-text">Next Page</span>
       </a>
     <#elseif alwaysShow>

@@ -12,11 +12,12 @@
 package org.ambraproject.wombat.freemarker;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Multimap;
 import freemarker.core.Environment;
-import freemarker.ext.servlet.HttpRequestParametersHashModel;
 import freemarker.template.SimpleHash;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
@@ -28,6 +29,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -47,17 +49,23 @@ import java.util.Map;
  * <p/>
  * This will write out a URL beginning with foo and including all the parameters in the current request, with an
  * additional parameter "bar" added (or replaced) with the value "baz".
- * <p/>
- * TODO: add the ability to add/replace multiple params, if that is needed.
  */
 public class ReplaceParametersDirective implements TemplateDirectiveModel {
 
+  private static final String PARAMETER_MAP_KEY = "parameterMap";
+  private static final String REPLACEMENTS_KEY = "replacements";
+  private static final ImmutableSet<String> EXPECTED_KEYS = ImmutableSet.of(PARAMETER_MAP_KEY, REPLACEMENTS_KEY);
+
   public void execute(Environment environment, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
       throws TemplateException, IOException {
+    if (!params.keySet().equals(EXPECTED_KEYS)) {
+      throw new TemplateException("ReplaceParametersDirective requires keys: " + EXPECTED_KEYS, environment);
+    }
 
     // I have no idea why freemarker feels the need to invent their own collection classes...
-    SimpleHash parameterMap = (SimpleHash) params.get("parameterMap");
-    Multimap<String, String> outputParams = replaceParameters(parameterMap, params);
+    SimpleHash parameterMap = (SimpleHash) params.get(PARAMETER_MAP_KEY);
+    Multimap<String, TemplateModel> replacements = TemplateModelUtil.getAsMultimap((TemplateModel) params.get(REPLACEMENTS_KEY));
+    Multimap<String, String> outputParams = replaceParameters(parameterMap, replacements);
     List<NameValuePair> paramList = new ArrayList<>(outputParams.size());
     for (String key : outputParams.keySet()) {
       for (String value : outputParams.get(key)) {
@@ -68,7 +76,8 @@ public class ReplaceParametersDirective implements TemplateDirectiveModel {
   }
 
   @VisibleForTesting
-  static Multimap<String, String> replaceParameters(SimpleHash parameterMap, Map directiveParams)
+  static Multimap<String, String> replaceParameters(SimpleHash parameterMap,
+                                                    Multimap<String, TemplateModel> replacements)
       throws TemplateException {
     Multimap<String, String> result = HashMultimap.create();
 
@@ -83,11 +92,12 @@ public class ReplaceParametersDirective implements TemplateDirectiveModel {
         result.put((String) entry.getKey(), value);
       }
     }
-    Object name = directiveParams.get("name");
-    if (name != null) {
-      result.removeAll(name.toString());
-      result.put(name.toString(), directiveParams.get("value").toString());
+
+    for (Map.Entry<String, Collection<TemplateModel>> replacementEntry : replacements.asMap().entrySet()) {
+      Collection<String> replacementValues = Collections2.transform(replacementEntry.getValue(), Object::toString);
+      result.replaceValues(replacementEntry.getKey(), replacementValues);
     }
+
     return ImmutableSetMultimap.copyOf(result);
   }
 }

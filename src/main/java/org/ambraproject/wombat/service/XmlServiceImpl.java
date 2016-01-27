@@ -40,30 +40,6 @@ public class XmlServiceImpl implements XmlService {
         throw new RuntimeException(e); // using default configuration; should be impossible
       }
 
-//      BufferedReader br = null;
-//      StringBuilder sb = new StringBuilder();
-//
-//      String line;
-//      try {
-//
-//        br = new BufferedReader(new InputStreamReader(xmlStream));
-//        while ((line = br.readLine()) != null) {
-//          sb.append(line);
-//        }
-//
-//      } catch (IOException e) {
-//        e.printStackTrace();
-//      } finally {
-//        if (br != null) {
-//          try {
-//            br.close();
-//          } catch (IOException e) {
-//            e.printStackTrace();
-//          }
-//        }
-//      }
-
-
       try {
         document = documentBuilder.parse(xmlStream);
       } catch (SAXException e) {

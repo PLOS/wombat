@@ -35,18 +35,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Freemarker custom directive that writes out URL parameters based on the current request parameters.  A single
- * parameter's values can be replaced or added.
- * <p/>
- * There is one required parameter named params.  This should be a map of the request parameters.
- * <p/>
- * Optional parameters are name and value.  If present, the named parameter will be added (or all values
- * will be replaced if it is already present).
- * <p/>
+ * Freemarker custom directive that writes out URL parameters based on the current request parameters. Parameter values
+ * can be replaced or added.
+ * <p>
+ * A required directive parameter named "parameterMap" should be a map of the request parameters.
+ * <p>
+ * The other directive parameter is "replacements", which is a FreeMarker hash of URL parameter names and values to
+ * replace. All URL parameters given this way will be added, or all values will be replaced if it is already present.
+ * The value may be a sequence, in which case multiple URL parameters with the same name will be added (replacing any
+ * number of parameters with that name).
+ * <p>
  * Example usage:
- * <p/>
- * <a href="foo?<@replaceParams params=RequestParameters name="bar" value="baz" />">link</a>
- * <p/>
+ * <p>
+ * <a href="foo?<@replaceParams parameterMap=RequestParameters replacements={"bar": "baz"} />">link</a>
+ * <p>
  * This will write out a URL beginning with foo and including all the parameters in the current request, with an
  * additional parameter "bar" added (or replaced) with the value "baz".
  */

@@ -253,9 +253,8 @@ public class HomeController extends WombatController {
     }
 
     //todo: add categoryView and counts to model for Taxonomy Browser
-    Optional<Integer> cacheTtl = Optional.fromNullable((Integer) homepageConfig.get("cacheTtl"));
-    CategoryView categoryView = browseTaxonomyService.parseCategories(site.getJournalKey(), cacheTtl);
-    Collection<SolrSearchService.SubjectCount> counts = browseTaxonomyService.getCounts(categoryView, site.getJournalKey(), cacheTtl);
+    CategoryView categoryView = browseTaxonomyService.parseCategories(site.getJournalKey());
+    Collection<SolrSearchService.SubjectCount> counts = browseTaxonomyService.getCounts(categoryView, site.getJournalKey());
 
     model.addAttribute("sections", sectionsForModel);
     return site.getKey() + "/ftl/home/home";

@@ -14,7 +14,6 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableListMultimap;
@@ -668,11 +667,9 @@ public class SearchController extends WombatController {
   private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
                                  MultiValueMap<String, String> params, String subject) throws IOException {
 
-    Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");
-    Optional<Integer> cacheTtl = Optional.fromNullable((Integer) homepageConfig.get("cacheTtl"));
     //todo: add topAndSecondLevelCategories to model for the Subject Area Dropdown
     Map<String, List<String>> topAndSecondLevelCategories = browseTaxonomyService
-        .parseTopAndSecondLevelCategories(site.getJournalKey(), cacheTtl);
+        .parseTopAndSecondLevelCategories(site.getJournalKey());
 
     if (Strings.isNullOrEmpty(subject)) {
       params.add("subject", "");

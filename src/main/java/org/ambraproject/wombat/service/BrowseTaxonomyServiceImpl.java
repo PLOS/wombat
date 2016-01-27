@@ -18,10 +18,10 @@
  */
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Optional;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.model.CategoryView;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.util.CacheParams;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -36,6 +36,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -52,16 +53,13 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   /**
    * {@inheritDoc}
    */
-  public SortedMap<String, List<String>> parseTopAndSecondLevelCategories(final String journalKey, Optional<Integer> cacheDuration)
+  public SortedMap<String, List<String>> parseTopAndSecondLevelCategories(final String journalKey)
     throws IOException {
-    String cacheKey = ("topAndSecondLevelCategoriesCacheKey" + journalKey).intern();
-    SortedMap<String, List<String>> categories = null;
-    if (cacheDuration.isPresent()) {
-      categories = cache.get(cacheKey); // remains null if not cached
-    }
+    String cacheKey = CacheParams.createKeyHash("topAndSecondLevelCategoriesCacheKey:" + journalKey);
+    SortedMap<String, List<String>> categories = cache.get(cacheKey);
     if (categories == null) {
       categories = parseTopAndSecondLevelCategoriesWithoutCache(journalKey);
-      cache.put(cacheKey, (Serializable) categories, cacheDuration.get());
+      cache.put(cacheKey, (Serializable) categories);
     }
     return categories;
   }
@@ -103,26 +101,26 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   /**
    * {@inheritDoc}
    */
-  public CategoryView parseCategories(final String journalKey, Optional<Integer> cacheDuration)
+  public CategoryView parseCategories(final String journalKey)
     throws IOException {
 
-    String cacheKey = ("categoriesCacheKey" + journalKey).intern();
-    CategoryView categories = null;
-    if (cacheDuration.isPresent()) {
-      categories = cache.get(cacheKey); // remains null if not cached
-    }
+    String cacheKey = CacheParams.createKeyHash("categoriesCacheKey:" + journalKey);
+    CategoryView categories;
+
+    categories = cache.get(cacheKey); // remains null if not cached
+
     if (categories == null) {
       categories = parseCategoriesWithoutCache(journalKey);
-      cache.put(cacheKey, categories, cacheDuration.get());
+      cache.put(cacheKey, categories);
     }
     return categories;
   }
 
   @SuppressWarnings("unchecked")
-  private CategoryView parseCategoriesWithoutCache(String currentJournal)
+  private CategoryView parseCategoriesWithoutCache(String journalKey)
     throws IOException {
 
-    List<String> subjects = solrSearchService.getAllSubjects(currentJournal);
+    List<String> subjects = solrSearchService.getAllSubjects(journalKey);
 
     return createMapFromStringList(subjects);
   }
@@ -131,14 +129,13 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * {@inheritDoc}
    */
   @Override
-  public Collection<SolrSearchService.SubjectCount> getCounts(CategoryView taxonomy, String currentJournal, Optional<Integer> cacheDuration) throws IOException {
-    Collection<SolrSearchService.SubjectCount> counts = getAllCounts(currentJournal, cacheDuration);
+  public Collection<SolrSearchService.SubjectCount> getCounts(CategoryView taxonomy, String journalKey) throws IOException {
+    Map<String, SolrSearchService.SubjectCount> counts = getAllCounts(journalKey);
 
-    Set<String> categorySet = taxonomy.getChildren().values()
-        .stream().map(CategoryView::getName).collect(Collectors.toSet());
-    categorySet.add(taxonomy.getName());
-
-    return counts.stream().filter(subjectCount -> categorySet.contains(subjectCount.getCategory())).collect(Collectors.toList());
+    List<SolrSearchService.SubjectCount> subjectCounts = taxonomy.getChildren().values().stream()
+        .map(categoryView -> counts.get(categoryView.getName())).collect(Collectors.toList());
+    subjectCounts.add(counts.get(taxonomy.getName()));
+    return subjectCounts;
   }
 
   /**
@@ -146,20 +143,20 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * The results will be cached for CACHE_TTL.
    *
    * @param journalKey specifies the current journal
-   * @param cacheDuration cache timer
    * @return map from subject term to article count
    * @throws IOException
    */
-  private Collection<SolrSearchService.SubjectCount> getAllCounts(final String journalKey, Optional<Integer> cacheDuration) throws IOException {
+  private Map<String, SolrSearchService.SubjectCount> getAllCounts(final String journalKey) throws IOException {
 
-    String cacheKey = ("categoryCountCacheKey" + journalKey).intern();
-    Collection<SolrSearchService.SubjectCount> counts = null;
-    if (cacheDuration.isPresent()) {
-      counts = cache.get(cacheKey); // remains null if not cached
-    }
+    String cacheKey = CacheParams.createKeyHash("categoryCountCacheKey:" + journalKey);
+    Map<String, SolrSearchService.SubjectCount> counts;
+
+    counts = cache.get(cacheKey); // remains null if not cached
+
     if (counts == null) {
-      counts = getAllCountsWithoutCache(journalKey);
-      cache.put(cacheKey, (Serializable) counts, cacheDuration.get());
+      counts = getAllCountsWithoutCache(journalKey).stream()
+          .collect(Collectors.toMap(SolrSearchService.SubjectCount::getCategory, Function.identity()));
+      cache.put(cacheKey, (Serializable) counts);
     }
     return counts;
   }

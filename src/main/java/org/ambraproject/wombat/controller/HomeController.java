@@ -248,6 +248,7 @@ public class HomeController extends WombatController {
     }
 
     model.addAttribute("sections", sectionsForModel);
+    model.addAttribute("parameterMap", request.getParameterMap()); // needed for paging
     return site.getKey() + "/ftl/home/home";
   }
 

@@ -1,6 +1,7 @@
 @import "global-library-imports";
 @import "global-section-imports";
 @import "vendor/foundation-datepicker";
+@import "sections/paging-controls";
 
 .search-results-body {
   main {
@@ -317,83 +318,8 @@ $controls-gray: $grey-med-light;
   margin-bottom: rem-calc(3px);
 }
 
-// Paging controls (shared with mobile).
-
-$inactive-background-color: $grey-med-light;
-$pagination-height: 24px;
-
 .nav-pagination {
-  display: inline;
-
-  a {
-    line-height: rem-calc($pagination-height);
-    padding: rem-calc(0 4px);
-    box-sizing: content-box;
-    color: $clr-body-text;
-  }
-}
-
-@mixin search-results-rounded-control {
-  display: inline-block;
-  font-weight: bold;
-  font-size: $txt-size-medium;
-  line-height: $pad-default;
-  padding: rem-calc(0 6px);
-  min-width: rem-calc(16px);
-  border-radius: $default-border-radius;
-}
-
-.number, .switch, .skip {
-  @include search-results-rounded-control;
-  background-color: $inactive-background-color;
-  text-align: center;
-  margin: rem-calc(0 1px);
-}
-
-.switch {
-  background: $clr-body-text;
-  &.previous-page {
-    margin: rem-calc(0 50 0 0);
-    padding: 0;
-  }
-  &.next-page {
-    margin: rem-calc(0 0 0 50);
-    padding: 0;
-  }
-  &.disabled {
-    background-color: $inactive-background-color;
-    cursor: default;
-  }
-
-  padding: 0;
-  .icon-text {
-    @extend .aria-text;
-  }
-
-  // Hide the text that is embedded and display an icon instead.
-  .icon:before {
-    width: $pagination-height;
-    line-height: $pagination-height;
-    white-space: nowrap;
-    color: $white;
-  }
-}
-
-.previous-page {
-  .icon:before {
-    @extend .icon-caret-left;
-    margin-left: -2px;
-  }
-}
-
-.next-page {
-  .icon:before {
-    @extend .icon-caret-right;
-  }
-}
-
-.active {
-  @extend %brand-background;
+  @extend %floating-pagination;
 }
 
 .search-results-num-per-page {

@@ -1,1 +1,0 @@
-<#macro URLParameters resultView="cover" sortOrder="DATE_NEWEST_FIRST" page="1" resultsPerPage="13">${"resultView="+resultView?url+"&"+"sortOrder="+sortOrder?url+"&"+"page="+page?url+"&"+"resultsPerPage="+resultsPerPage?url}</#macro>

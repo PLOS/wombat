@@ -121,9 +121,9 @@
                 <span>Sort by:</span>
             <#if selectedSortOrder == "DATE_NEWEST_FIRST">
                 <span class="active">Recent</span>
-                <a title="Sort by most viewed, all time" href="?<@replaceParams parameterMap=parameterMap replacements={"sortOrder": "MOST_VIEWS_ALL_TIME"} />">Popular</a>
+                <a title="Sort by most viewed, all time" href="?<@replaceParams parameterMap=parameterMap replacements={"sortOrder": "MOST_VIEWS_ALL_TIME", "page": 1} />">Popular</a>
             <#else>
-                <a title="Sort by most recent" href="?<@replaceParams parameterMap=parameterMap replacements={"sortOrder": "DATE_NEWEST_FIRST"} />" >Recent</a>
+                <a title="Sort by most recent" href="?<@replaceParams parameterMap=parameterMap replacements={"sortOrder": "DATE_NEWEST_FIRST", "page": 1} />" >Recent</a>
                 <span class="active">Popular</span>
             </#if>
             </p>

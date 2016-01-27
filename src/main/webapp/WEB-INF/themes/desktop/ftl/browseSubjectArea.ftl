@@ -112,8 +112,8 @@
 
           <p class="sort">
               <span>View by:</span>
-              <a id="cover-page-link" title="Cover page view" href="?<@replaceParams parameterMap=parameterMap name="resultView" value="cover" />" class="<#if resultView == "cover">active</#if>">Cover Page</a>
-              <a id="list-page-link" title="List page view" href="?<@replaceParams parameterMap=parameterMap name="resultView" value="list" />" class="<#if resultView == "list">active</#if>">List Articles</a>
+              <a id="cover-page-link" title="Cover page view" href="?<@replaceParams parameterMap=parameterMap replacements={"resultView": "cover"} />" class="<#if resultView == "cover">active</#if>">Cover Page</a>
+              <a id="list-page-link" title="List page view" href="?<@replaceParams parameterMap=parameterMap replacements={"resultView": "list"} />" class="<#if resultView == "list">active</#if>">List Articles</a>
           </p>
         </div><!-- /.main -->
         <div class="sidebar">
@@ -121,9 +121,9 @@
                 <span>Sort by:</span>
             <#if selectedSortOrder == "DATE_NEWEST_FIRST">
                 <span class="active">Recent</span>
-                <a title="Sort by most viewed, all time" href="?<@replaceParams parameterMap=parameterMap name="sortOrder" value="MOST_VIEWS_ALL_TIME" />">Popular</a>
+                <a title="Sort by most viewed, all time" href="?<@replaceParams parameterMap=parameterMap replacements={"sortOrder": "MOST_VIEWS_ALL_TIME", "page": 1} />">Popular</a>
             <#else>
-                <a title="Sort by most recent" href="?<@replaceParams parameterMap=parameterMap name="sortOrder" value="DATE_NEWEST_FIRST" />" >Recent</a>
+                <a title="Sort by most recent" href="?<@replaceParams parameterMap=parameterMap replacements={"sortOrder": "DATE_NEWEST_FIRST", "page": 1} />" >Recent</a>
                 <span class="active">Popular</span>
             </#if>
             </p>
@@ -179,7 +179,12 @@
 </div>
 
 <#include "common/paging.ftl" />
-<@paging totalPages, page?number, (category??)?string(fullBrowseUrl, browseUrl), parameterMap, true />
+<#if category??>
+  <#assign pagingPath = fullBrowseUrl />
+<#else>
+  <#assign pagingPath = browseUrl />
+</#if>
+<@paging totalPages, page?number, pagingPath, parameterMap, true />
 
 <#include "common/footer/footer.ftl" />
 

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Charsets;
+import com.google.common.base.Preconditions;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -27,7 +28,10 @@ import java.nio.charset.Charset;
 
 public class XmlServiceImpl implements XmlService {
 
-  static final Charset XML_CHARSET = Charsets.UTF_8;
+  private static final Charset XML_CHARSET = Charsets.UTF_8;
+  private static final String XML_DECLARATION = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+  private static final String XML_ROOT_OPEN = "<root>";
+  private static final String XML_ROOT_CLOSE = "</root>";
 
   @Override
   public Document createXmlDocument(InputStream xmlStream) throws IOException {
@@ -75,8 +79,29 @@ public class XmlServiceImpl implements XmlService {
     return document;
   }
 
+  @Override
+  public String extractElementFromFragment(String xmlString, String tagName) throws IOException {
+    InputStream xmlStream = new ByteArrayInputStream(wrapWithXmlRoot(xmlString).getBytes(XML_CHARSET));
+    return createXmlString(extractElement(createXmlDocument(xmlStream), tagName));
+  }
 
-  public String createXmlString(Node node) {
+  @Override
+  public String extractElement(InputStream xmlStream, String tagName) throws IOException {
+    return createXmlString(extractElement(createXmlDocument(xmlStream), tagName));
+  }
+
+  @Override
+  public String removeElementFromFragment(String xmlString, String tagName) throws IOException {
+    InputStream xmlStream = new ByteArrayInputStream(wrapWithXmlRoot(xmlString).getBytes(XML_CHARSET));
+    return createXmlStringFromWrapped(removeElement(createXmlDocument(xmlStream), tagName));
+  }
+
+  @Override
+  public String removeElement(InputStream xmlStream, String tagName) throws IOException {
+    return createXmlString(removeElement(createXmlDocument(xmlStream), tagName));
+  }
+
+  private String createXmlString(Node node) {
     Transformer transformer;
     try {
       transformer = TransformerFactory.newInstance().newTransformer(); // not thread-safe
@@ -91,28 +116,12 @@ public class XmlServiceImpl implements XmlService {
       throw new RuntimeException(e);
     }
     return xml.toString();
+
   }
 
-  @Override
-  public String extractElement(String xmlString, String tagName) throws IOException {
-    InputStream xmlStream = new ByteArrayInputStream(xmlString.getBytes(XML_CHARSET));
-    return createXmlString(extractElement(createXmlDocument(xmlStream), tagName));
-  }
-
-  @Override
-  public String extractElement(InputStream xmlStream, String tagName) throws IOException {
-    return createXmlString(extractElement(createXmlDocument(xmlStream), tagName));
-  }
-
-  @Override
-  public String removeElement(String xmlString, String tagName) throws IOException {
-    InputStream xmlStream = new ByteArrayInputStream(xmlString.getBytes(XML_CHARSET));
-    return createXmlString(removeElement(createXmlDocument(xmlStream), tagName));
-  }
-
-  @Override
-  public String removeElement(InputStream xmlStream, String tagName) throws IOException {
-    return createXmlString(removeElement(createXmlDocument(xmlStream), tagName));
+  private String createXmlStringFromWrapped(Node node) {
+    String wrappedXmlFragment = createXmlString(node);
+    return unwrapXmlRoot(wrappedXmlFragment);
   }
 
   private Element extractElement(Document xmlDoc, String tagName) {
@@ -124,6 +133,14 @@ public class XmlServiceImpl implements XmlService {
     element.getParentNode().removeChild(element);
     xmlDoc.normalize();
     return xmlDoc;
+  }
+
+  private String wrapWithXmlRoot(String xmlFragment) {
+    return  XML_DECLARATION + XML_ROOT_OPEN + xmlFragment + XML_ROOT_CLOSE;
+  }
+
+  private String unwrapXmlRoot(String wrappedXmlFragment) {
+    return wrappedXmlFragment.substring(XML_ROOT_OPEN.length(), wrappedXmlFragment.length() - XML_ROOT_CLOSE.length());
   }
 
 }

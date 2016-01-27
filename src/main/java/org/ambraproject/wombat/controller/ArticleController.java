@@ -979,17 +979,14 @@ public class ArticleController extends WombatController {
         Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
-    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
-      @Override
-      public String read(InputStream stream) throws IOException {
-        StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-        try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-          articleTransformService.transform(renderContext, stream, outputStream);
-        } catch (TransformerException e) {
-          throw new RuntimeException(e);
-        }
-        return articleHtml.toString();
+    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
+      StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+      try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
+        articleTransformService.transform(renderContext, stream, outputStream);
+      } catch (TransformerException e) {
+        throw new RuntimeException(e);
       }
+      return articleHtml.toString();
     });
   }
 

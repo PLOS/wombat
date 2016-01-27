@@ -47,7 +47,7 @@
 
   var ANIMATION_TIME = 200; // in ms
   var API_URL = siteUrlPrefix + 'taxonomy/';
-  var SEARCH_URL = $('#taxonomy-browser').attr('data-legacy-url-prefix') + 'browse/';
+  var SEARCH_URL = $('#taxonomy-browser').attr('data-search-url') + '/';
 
   // store the term as a key with its children terms as an array of strings,
   // emulating the same data structure as the API response. the key '/'

@@ -55,7 +55,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    */
   public SortedMap<String, List<String>> parseTopAndSecondLevelCategories(final String journalKey)
     throws IOException {
-    String cacheKey = CacheParams.createKeyHash("topAndSecondLevelCategoriesCacheKey:" + journalKey);
+    String cacheKey = "topAndSecondLevelCategories:" + CacheParams.createKeyHash(journalKey);
     SortedMap<String, List<String>> categories = cache.get(cacheKey);
     if (categories == null) {
       categories = parseTopAndSecondLevelCategoriesWithoutCache(journalKey);
@@ -104,7 +104,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   public CategoryView parseCategories(final String journalKey)
     throws IOException {
 
-    String cacheKey = CacheParams.createKeyHash("categoriesCacheKey:" + journalKey);
+    String cacheKey = "categories:" + CacheParams.createKeyHash(journalKey);
     CategoryView categories;
 
     categories = cache.get(cacheKey); // remains null if not cached
@@ -148,7 +148,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    */
   private Map<String, SolrSearchService.SubjectCount> getAllCounts(final String journalKey) throws IOException {
 
-    String cacheKey = CacheParams.createKeyHash("categoryCountCacheKey:" + journalKey);
+    String cacheKey = "categoryCount:" + CacheParams.createKeyHash(journalKey);
     Map<String, SolrSearchService.SubjectCount> counts;
 
     counts = cache.get(cacheKey); // remains null if not cached

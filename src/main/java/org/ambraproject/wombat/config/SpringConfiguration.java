@@ -55,6 +55,8 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
+import org.ambraproject.wombat.service.BrowseTaxonomyServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -71,6 +73,8 @@ import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
+import org.ambraproject.wombat.service.XmlService;
+import org.ambraproject.wombat.service.XmlServiceImpl;
 import org.ambraproject.wombat.service.remote.EditorialContentService;
 import org.ambraproject.wombat.service.remote.EditorialContentServiceImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
@@ -259,6 +263,9 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public XmlService xmlService() { return new XmlServiceImpl(); }
+
+  @Bean
   public AssetService assetService() {
     return new AssetServiceImpl();
   }
@@ -316,6 +323,11 @@ public class SpringConfiguration {
   @Bean
   public CommentValidationService commentValidationService() {
     return new CommentValidationServiceImpl();
+  }
+
+  @Bean
+  public BrowseTaxonomyService browseTaxonomyService() {
+    return new BrowseTaxonomyServiceImpl();
   }
 
 }

@@ -12,7 +12,6 @@
     <@commentErrorMessage "missingBody">You must say something in your comment.</@commentErrorMessage>
     <@commentErrorMessage "missingCi">You must say something in your competing interest statement.</@commentErrorMessage>
 
-  <#-- Currently no mechanism to fill in values. Implement in JS? -->
     <@commentErrorMessage "titleLength">
     Your title is {length} characters long; it cannot be longer than {maxLength} characters.
     </@commentErrorMessage>

@@ -35,6 +35,7 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
+import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
@@ -74,18 +75,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.xml.sax.SAXException;
 
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -151,6 +146,8 @@ public class ArticleController extends WombatController {
   private JavaMailSender javaMailSender;
   @Autowired
   private CommentValidationService commentValidationService;
+  @Autowired
+  private XmlService xmlService;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -199,7 +196,6 @@ public class ArticleController extends WombatController {
   public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId)
       throws IOException {
-    enforceDevFeature("commentsTab");
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
@@ -464,7 +460,6 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
-    enforceDevFeature("commentsTab");
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
@@ -491,7 +486,6 @@ public class ArticleController extends WombatController {
                                    @RequestParam("comment") String flagCommentBody,
                                    @RequestParam("target") String targetComment)
       throws IOException {
-    enforceDevFeature("commentsTab");
     Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);
@@ -957,38 +951,14 @@ public class ArticleController extends WombatController {
     String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
-    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
-      @Override
-      public String read(InputStream stream) throws IOException {
-        Document document;
-        try {
-          DocumentBuilder documentBuilder; // not thread-safe
-          try {
-            documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-          } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e); // using default configuration; should be impossible
-          }
+    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
 
-          try {
-            document = documentBuilder.parse(stream);
-          } catch (SAXException e) {
-            throw new RuntimeException("Invalid XML syntax for: " + renderContext.getArticleId(), e);
-          }
-        } finally {
-          stream.close();
-        }
-
-        // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
-        Node bodyNode = document.getElementsByTagName("body").item(0);
-
-        // Convert XML excerpt to renderable HTML.
-        // TODO: Transform without intermediate buffering into String?
-        String bodyXml = TextUtil.recoverXml(bodyNode);
-        try {
-          return articleTransformService.transformExcerpt(renderContext, bodyXml, null);
-        } catch (TransformerException e) {
-          throw new RuntimeException(e);
-        }
+      // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
+      String bodyXml = xmlService.extractElement(stream, "body");
+      try {
+        return articleTransformService.transformExcerpt(renderContext, bodyXml, null);
+      } catch (TransformerException e) {
+        throw new RuntimeException(e);
       }
     });
   }
@@ -1006,17 +976,14 @@ public class ArticleController extends WombatController {
         Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
-    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, new CacheDeserializer<InputStream, String>() {
-      @Override
-      public String read(InputStream stream) throws IOException {
-        StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-        try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-          articleTransformService.transform(renderContext, stream, outputStream);
-        } catch (TransformerException e) {
-          throw new RuntimeException(e);
-        }
-        return articleHtml.toString();
+    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
+      StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+      try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
+        articleTransformService.transform(renderContext, stream, outputStream);
+      } catch (TransformerException e) {
+        throw new RuntimeException(e);
       }
+      return articleHtml.toString();
     });
   }
 

@@ -124,6 +124,7 @@
     <#assign currentPage = (RequestParameters.page!1)?number />
     <#assign path = "search" />
     <#include "../common/paging.ftl" />
+    <@paging numPages currentPage path parameterMap />
     </section>
   <#include "../common/bottomMenu/bottomMenu.ftl" />
   </div><#--end content-->

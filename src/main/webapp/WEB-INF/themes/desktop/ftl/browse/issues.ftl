@@ -49,7 +49,6 @@
                         queryParameters={"id": issue.issueUri}; issueLink>
                             <h2><a href="${issueLink}">${issueTitle}</a></h2>
                         </@siteLink>
-                    <p class="credit">Image Credit: ${issueImageCredit}</p>
                 </div>
               <div class="detail-container">
                 <div class="img">
@@ -88,15 +87,15 @@
                                 </h3>
 
                                 <p class="authors">
-                                    <#list articleInfo.authors as auth>
-                                    ${auth.fullName?trim}<#if auth_has_next>,</#if>
-                                    </#list>
-                                    <#if (articleInfo.collaborativeAuthors??)>
-                                        <#if (articleInfo.authors?size > 0) && (articleInfo.collaborativeAuthors?size > 0)>,</#if>
-                                        <#list articleInfo.collaborativeAuthors as cauth>
-                                        ${cauth.fullName?trim}<#if cauth_has_next>,</#if>
-                                        </#list>
-                                    </#if>
+                                  <#list articleInfo.authors as auth>
+                                    <#rt>${auth.fullName?trim}<#if auth_has_next>,</#if>
+                                  </#list>
+                                  <#if (articleInfo.collaborativeAuthors??)>
+                                      <#if (articleInfo.authors?size > 0) && (articleInfo.collaborativeAuthors?size > 0)><#lt>,</#if>
+                                      <#list articleInfo.collaborativeAuthors as cauth>
+                                        ${cauth?trim}<#if cauth_has_next>,</#if>
+                                      </#list>
+                                  </#if>
                                 </p>
 
                         </@siteLink>

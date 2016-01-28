@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -30,35 +29,6 @@ public class FigurePageController extends WombatController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
-  /**
-   * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
-   * descriptionHtml} member.
-   *
-   * @param renderContext the context for the transform which wraps the site object and optional context values
-   * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
-   */
-  private void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
-    String description = (String) figureMetadata.get("description");
-    String descriptionHtml;
-    try {
-      descriptionHtml = articleTransformService.transformExcerpt(renderContext, description, "desc");
-    } catch (TransformerException e) {
-      throw new RuntimeException(e);
-    }
-    descriptionHtml = kludgeRelativeImageLinks(descriptionHtml);
-    figureMetadata.put("descriptionHtml", descriptionHtml);
-  }
-
-  /**
-   * The transform is written assuming we're at the article path, but because we're also (probably improperly) reusing
-   * it here, the paths are wrong. Unlike in FreeMarker, there's no apparent, easy way to configure what the path should
-   * be on a per-transformation basis. So kludge in the fix after the fact.
-   * <p/>
-   * TODO something less horrible
-   */
-  private static String kludgeRelativeImageLinks(String descriptionHtml) {
-    return descriptionHtml.replace("<img src=\"article/", "<img src=\"../article/");
-  }
 
   /**
    * Serve a page listing all figures for an article.
@@ -125,6 +95,18 @@ public class FigurePageController extends WombatController {
           throws IOException {
 
     return site + "/ftl/article/articleLightbox";
+  }
+
+  /**
+   * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
+   * descriptionHtml} member.
+   *
+   * @param renderContext the context for the transform which wraps the site object and optional context values
+   * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
+   */
+  private void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
+    String description = (String) figureMetadata.get("description");
+    figureMetadata.put("descriptionHtml", articleTransformService.transformImageDescription(renderContext, description));
   }
 
 }

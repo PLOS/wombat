@@ -4,6 +4,7 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Map;
 
 public interface ArticleTransformService {
 
@@ -51,4 +52,5 @@ public interface ArticleTransformService {
   public abstract String transformExcerpt(RenderContext renderContext, String xmlExcerpt, String enclosingTag)
       throws TransformerException;
 
+  public String transformImageDescription(RenderContext renderContext, String description);
 }

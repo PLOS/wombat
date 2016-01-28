@@ -1,0 +1,105 @@
+// Paging controls (shared with mobile).
+
+$inactive-background-color: $grey-med-light;
+$pagination-height: 24px;
+
+// For floating implementation. For example, if there is "results per page" to one side.
+//  .nav-pagination {
+//    @extend %floating;
+//  }
+%floating-pagination {
+  display: inline;
+}
+
+// For full width implementation:
+//  .nav-pagination {
+//    @extend %full-width-pagination;
+//  }
+%full-width-pagination {
+  text-align: center;
+  position: relative;
+  padding: 0 30px;
+  margin: 20px 0;
+  display: block;
+
+  .previous-page {
+    position: absolute;
+    left: $pad-small;
+  }
+  .next-page {
+    position: absolute;
+    right: $pad-small;
+  }
+}
+
+@mixin search-results-rounded-control {
+  display: inline-block;
+  font-weight: bold;
+  font-size: $txt-size-medium;
+  line-height: $pad-default;
+  padding: rem-calc(0 6px);
+  min-width: rem-calc(16px);
+  border-radius: $default-border-radius;
+}
+
+.nav-pagination {
+  a {
+    line-height: rem-calc($pagination-height);
+    padding: rem-calc(0 4px);
+    box-sizing: content-box;
+    color: $clr-body-text;
+  }
+}
+
+.number, .switch, .skip {
+  @include search-results-rounded-control;
+  background-color: $inactive-background-color;
+  text-align: center;
+  margin: rem-calc(0 1px);
+}
+
+.switch {
+  background: $clr-body-text;
+  &.previous-page {
+    margin: rem-calc(0 50 0 0);
+    padding: 0;
+  }
+  &.next-page {
+    margin: rem-calc(0 0 0 50);
+    padding: 0;
+  }
+  &.disabled {
+    background-color: $inactive-background-color;
+    cursor: default;
+  }
+
+  padding: 0;
+  .icon-text {
+    @extend .aria-text;
+  }
+
+  // Hide the text that is embedded and display an icon instead.
+  .icon:before {
+    width: $pagination-height;
+    line-height: $pagination-height;
+    white-space: nowrap;
+    color: $white;
+  }
+}
+
+.previous-page {
+  .icon:before {
+    @extend .icon-caret-left;
+    margin-left: -2px;
+  }
+}
+
+.next-page {
+  .icon:before {
+    @extend .icon-caret-right;
+  }
+}
+
+.active {
+  @extend %brand-background;
+}

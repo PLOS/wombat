@@ -5,6 +5,7 @@
 @import "global-library-imports";
 @import "global-section-imports";
 @import "pages/home";
+@import "sections/paging-controls";
 @import "sections/plos-one/nav-bar";
 @import "sections/plos-one/article-list";
 @import "sections/plos-one/rectangle-ad";
@@ -12,7 +13,7 @@
 @import "sections/plos-one/ad-slot-bottom";
 @import "sections/plos-one/browse-filter-bar";
 @import "sections/plos-one/greyscale";
-@import "sections/plos-one/browse-pagination";
 
-
-
+.nav-pagination {
+  @extend %full-width-pagination;
+}

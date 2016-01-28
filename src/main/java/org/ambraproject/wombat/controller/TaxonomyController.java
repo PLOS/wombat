@@ -69,8 +69,8 @@ public class TaxonomyController {
     }
     req += "journal=" + site.getJournalKey();
     response.setContentType("application/json");
-    try (OutputStream output = response.getOutputStream();
-         InputStream input = soaService.requestStream(req)) {
+    try (InputStream input = soaService.requestStream(req);
+         OutputStream output = response.getOutputStream()) {
       IOUtils.copy(input, output);
     }
   }

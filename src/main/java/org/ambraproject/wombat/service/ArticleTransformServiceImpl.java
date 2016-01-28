@@ -234,13 +234,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
-    String description = (String) figureMetadata.get("description");
-    figureMetadata.put("descriptionHtml", transformDescription(renderContext, description));
-  }
-
-  @Override
-  public String transformDescription(RenderContext renderContext, String description) {
+  public String transformImageDescription(RenderContext renderContext, String description) {
     String descriptionHtml;
     try {
       descriptionHtml = transformExcerpt(renderContext, description, "desc");

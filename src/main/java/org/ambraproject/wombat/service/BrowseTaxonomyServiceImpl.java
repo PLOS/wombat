@@ -26,7 +26,6 @@ import org.ambraproject.wombat.util.CacheUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,6 +33,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -148,6 +148,26 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   //EG counts.put(CategoryView.ROOT_NODE_NAME, subjectCounts.totalArticles);
   private Collection<SolrSearchService.SubjectCount> getAllCountsWithoutCache(String currentJournal) throws IOException {
     return solrSearchService.getAllSubjectCounts(currentJournal);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public CategoryView findCategory(CategoryView parentCategoryView, String category) throws IOException {
+    String cacheKey = "singleCategory:"
+        + CacheParams.createKeyHash(category, parentCategoryView.getName());
+    return CacheUtil.getOrCompute(cache, cacheKey,
+        () -> findCategoryWithoutCache(parentCategoryView, category));
+  }
+
+  public CategoryView findCategoryWithoutCache(CategoryView parentCategoryView, String category) {
+    if(parentCategoryView.getName().equalsIgnoreCase(category)) {
+      return parentCategoryView;
+    }
+
+    return parentCategoryView.getChildren().values().stream()
+        .map((CategoryView child) -> findCategoryWithoutCache(child, category))
+        .filter(Objects::nonNull).findAny().orElse(null);
   }
 
   /**

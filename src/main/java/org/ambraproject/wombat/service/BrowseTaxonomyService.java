@@ -43,4 +43,16 @@ public interface BrowseTaxonomyService {
    * @return map from taxonomy term to count of articles
    */
   Collection<SolrSearchService.SubjectCount> getCounts(CategoryView taxonomy, String journalKey) throws IOException;
+
+  /**
+   * For the passed in category, find the matching CategoryView.  This will come in handy when looking for
+   * getting the correctly formatted case corrected category name
+   *
+   * @param parentCategoryView the categoryView to search from
+   * @param category the string of the category to search for
+   *
+   * @return The first matching category view
+   *
+   */
+  CategoryView findCategory(CategoryView parentCategoryView, String category) throws IOException;
 }

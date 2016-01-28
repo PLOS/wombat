@@ -21,6 +21,7 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.model.CategoryView;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
@@ -434,7 +435,7 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume", "!subject"})
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
-                       @RequestParam MultiValueMap<String, String> params) throws IOException {
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
@@ -468,7 +469,7 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                               @RequestParam MultiValueMap<String, String> params) throws IOException {
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     String queryString = params.getFirst("unformattedQuery");
     params.remove("unformattedQuery");
     params.add("q", queryString);
@@ -488,21 +489,21 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "subjectSearch", value = "/search", params = {"subject", "!volume"})
   public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                              @RequestParam MultiValueMap<String, String> params) throws IOException {
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     params.add("q", "");
     return search(request, model, site, params);
   }
 
   @RequestMapping(name = "browse", value = "/browse", params = "!filterSubjects")
   public String browse(HttpServletRequest request, Model model, @SiteParam Site site,
-                       @RequestParam MultiValueMap<String, String> params) throws IOException {
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     subjectAreaSearch(request, model, site, params, "");
     return site.getKey() + "/ftl/browseSubjectArea";
   }
 
   @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}", params = "!filterSubjects")
   public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
-                                  @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
+      @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
       throws IOException {
     enforceDevFeature("browse");
     subjectAreaSearch(request, model, site, params, subject);
@@ -665,11 +666,9 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
-                                 MultiValueMap<String, String> params, String subject) throws IOException {
+      MultiValueMap<String, String> params, String subject) throws IOException {
 
-    //todo: add topAndSecondLevelCategories to model for the Subject Area Dropdown
-    Map<String, List<String>> topAndSecondLevelCategories = browseTaxonomyService
-        .parseTopAndSecondLevelCategories(site.getJournalKey());
+    modelSubjectHierarchy(model, site, subject);
 
     if (Strings.isNullOrEmpty(subject)) {
       params.add("subject", "");
@@ -706,5 +705,35 @@ public class SearchController extends WombatController {
     model.addAttribute("searchResults", searchResults);
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());
+  }
+
+  private void modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
+    CategoryView fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
+
+    Set<String> subjectParents;
+    Set<String> subjectChildren;
+    if (subject != null && subject.length() > 0) {
+      //Recreate the category name as stored in the DB
+      subject = subject.replace("_", " ");
+
+      CategoryView categoryView = browseTaxonomyService.findCategory(fullTaxonomyView, subject);
+      if (categoryView == null) {
+        throw new NotFoundException(String.format("category %s does not exist.", subject));
+      } else {
+        if (categoryView.getParents().keySet().size() == 1 && categoryView.getParents().keySet().contains("ROOT")) {
+          subjectParents = new HashSet<>();
+        } else {
+          subjectParents = categoryView.getParents().keySet();
+        }
+
+        subjectChildren = categoryView.getChildren().keySet();
+      }
+    } else {
+      subjectParents = new HashSet<>();
+      subjectChildren = fullTaxonomyView.getChildren().keySet();
+    }
+
+    model.addAttribute("subjectParents", subjectParents);
+    model.addAttribute("subjectChildren", subjectChildren);
   }
 }

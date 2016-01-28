@@ -107,7 +107,7 @@
     almspinner = new Spinner(spin_opts).spin(spin_target);
 
     $('.lightbox-figure').on('click', function () {
-     FigureLightbox.loadImage('#figure-lightbox-container', $(this).data('figure-doi'));
+     FigureLightbox.loadImage('#figure-lightbox-container', $(this).data('doi'));
     });
   });
 

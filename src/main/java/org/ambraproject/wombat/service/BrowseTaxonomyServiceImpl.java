@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -160,19 +161,13 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   }
 
   public CategoryView findCategoryWithoutCache(CategoryView parentCategoryView, String category) {
-    if(parentCategoryView.getName().toLowerCase().equals(category.toLowerCase())) {
+    if(parentCategoryView.getName().equalsIgnoreCase(category)) {
       return parentCategoryView;
     }
 
-    for(String key : parentCategoryView.getChildren().keySet()) {
-      CategoryView categoryView = findCategoryWithoutCache(parentCategoryView.getChild(key), category);
-
-      if(categoryView != null) {
-        return categoryView;
-      }
-    }
-
-    return null;
+    return parentCategoryView.getChildren().values().stream()
+        .map((CategoryView child) -> findCategoryWithoutCache(child, category))
+        .filter(Objects::nonNull).findAny().orElse(null);
   }
 
   /**

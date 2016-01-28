@@ -28,7 +28,7 @@ var FigureLightbox = {};
 
   FigureLightbox.fetchArticleData = function () {
     // @TODO: Do not parse article. Fetch data via an ajax call
-    var $articleContainer = $('article');
+    var $articleContainer = $('.article');
     return {
       doi: this.imgData.doi,
       strippedDoi: this.imgData.strippedDoi,

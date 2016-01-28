@@ -196,13 +196,26 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.renderImg = function (imgDoi) {
-    var $image = $(this.lbSelector).find('img.main-lightbox-image').attr('src', this.buildImgUrl(imgDoi));
+    var that = this;
+    this.showLoader();
+    var $image = $(this.lbSelector).find('img.main-lightbox-image')
+        .attr('src', this.buildImgUrl(imgDoi))
+        .one('load', function () {
+          that.hideLoader();
+        });
     this.panZoom($image);
 
     // Reinitialize sliders
     $(document).foundation('slider', 'reflow');
   };
 
+  FigureLightbox.showLoader = function () {
+    $(this.lbSelector).find('.loader').addClass('showing');
+  };
+
+  FigureLightbox.hideLoader = function () {
+    $(this.lbSelector).find('.loader').removeClass('showing');
+  };
 
   FigureLightbox.close = function () {
     this.destroy();

@@ -118,6 +118,14 @@ var FigureLightbox = {};
           $('#view-more-wrapper').hide();
         }).end()
 
+        .find('#lb-zoom-min').on('click', function () {
+          that.zoomOut();
+        }).end()
+
+        .find('#lb-zoom-max').on('click', function () {
+          that.zoomIn();
+        }).end()
+
         .on('image-switch', function (e, data) {
           var buttons = $(that.lbSelector).find('.fig-btn').show();
           if (data.index === 0) {
@@ -127,11 +135,7 @@ var FigureLightbox = {};
           }
 
           $(that.lbSelector).find('#view-more, #view-less').on('click', function () {
-            $('#image-context').toggleClass('full-display')
-                .children(':not(.full-display-show)').toggle();
-            $('#view-more-wrapper').slideToggle();
-            $('#view-less-wrapper').slideToggle('slow');
-
+            that.toggleDescription();
           });
         });
   };
@@ -166,7 +170,12 @@ var FigureLightbox = {};
     return currentIx;
   };
 
-  FigureLightbox.switchImage = function (imgDoi) {
+  FigureLightbox.switchImage = function (imgDoi, options) {
+    var defaultOptions = {
+      descriptionExpanded: this.descriptionExpanded || false
+    };
+    options = $.extend(defaultOptions, options);
+
     this.imgData = {
       doi: imgDoi
     };
@@ -178,16 +187,46 @@ var FigureLightbox = {};
     var templateFunctions = {
       showInContext: this.showInContext
     };
-    var templateData = $.extend(imageData, templateFunctions);
+    var templateData = $.extend(imageData, templateFunctions, options);
     var lbTemplate = _.template($(this.contextTemplateSelector).html());
     // Remove actual img context
     $(this.lbSelector + ' #image-context').children().remove().end()
         // Append new img context
         .append(lbTemplate(templateData));
     this.renderImg(this.imgData.doi);
-    $(this.lbSelector + ' #view-more-wrapper').dotdotdot({after: '#view-more'});
+
+    if (!this.descriptionExpanded) {
+      $(this.lbSelector + ' #view-more-wrapper').dotdotdot({after: '#view-more'}).data('is-truncated', true);
+    }
 
     $(this.lbContainerSelector).trigger('image-switch', {index: currentIndex, element: this.imgData.imgElement});
+  };
+
+  FigureLightbox.toggleDescription = function () {
+    if (this.descriptionExpanded) {
+      this.retractDescription();
+    } else {
+      this.expandDescription();
+    }
+  };
+
+  FigureLightbox.expandDescription = function () {
+    $('#image-context').addClass('full-display');
+    $('#view-more-wrapper').slideUp();
+    $('#view-less-wrapper').slideDown('slow');
+    this.descriptionExpanded = true;
+  };
+
+  FigureLightbox.retractDescription = function () {
+    $('#view-less-wrapper').slideUp('slow', function () {
+      $('#image-context').removeClass('full-display');
+      $('#view-more-wrapper').show();
+      // Dotdotdot in case description is initialized expanded
+      if (!$('#view-more-wrapper').data('is-truncated')) {
+        $('#view-more-wrapper').dotdotdot({after: '#view-more'});
+      }
+    });
+    this.descriptionExpanded = false;
   };
 
   FigureLightbox.isInited = function () {
@@ -249,11 +288,24 @@ var FigureLightbox = {};
       e.preventDefault();
       var delta = e.delta || e.originalEvent.wheelDelta;
       var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-      that.$panZoomEl.panzoom('zoom', zoomOut, {
-        increment: 0.05,
-        animate: false,
-        focal: e
-      });
+      that.zoom(zoomOut, e);
+    });
+  };
+
+  FigureLightbox.zoomIn = function () {
+    this.zoom(false);
+  };
+
+  FigureLightbox.zoomOut = function () {
+    this.zoom(true);
+  };
+
+  FigureLightbox.zoom = function (zoomOut, focal) {
+    zoomOut = zoomOut || false;
+    this.$panZoomEl.panzoom('zoom', zoomOut, {
+      increment: 0.05,
+      animate: false,
+      focal: focal
     });
   };
 

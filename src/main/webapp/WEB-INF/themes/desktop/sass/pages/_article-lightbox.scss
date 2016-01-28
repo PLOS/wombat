@@ -283,14 +283,19 @@
       -moz-transition: height 300ms ease-in-out;
       -o-transition: height 300ms ease-in-out;
       transition: height 300ms ease-in-out;
+      min-height: rem-calc(80px);
       max-height: rem-calc(80px);
       overflow-y: hidden;
+
       &.full-display {
         width: 100%;
         max-height: rem-calc(150px);
         overflow-y: scroll;
         .footer-text {
           width: 100%;
+        }
+        %full-display-no-show {
+          display: none;
         }
       }
 
@@ -357,6 +362,7 @@
       }
 
       #show-context-container {
+        @extend %full-display-no-show;
         width: 20%;
         text-align: center;
         display: inline-block;
@@ -368,6 +374,7 @@
       }
 
       #download-buttons {
+        @extend %full-display-no-show;
         width: 40%;
         display: inline-block;
         vertical-align: top;

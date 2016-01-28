@@ -25,6 +25,7 @@ import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
@@ -71,6 +72,9 @@ public class SearchController extends WombatController {
 
   @Autowired
   private SearchFilterService searchFilterService;
+
+  @Autowired
+  private BrowseTaxonomyService browseTaxonomyService;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -662,6 +666,10 @@ public class SearchController extends WombatController {
    */
   private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
                                  MultiValueMap<String, String> params, String subject) throws IOException {
+
+    //todo: add topAndSecondLevelCategories to model for the Subject Area Dropdown
+    Map<String, List<String>> topAndSecondLevelCategories = browseTaxonomyService
+        .parseTopAndSecondLevelCategories(site.getJournalKey());
 
     if (Strings.isNullOrEmpty(subject)) {
       params.add("subject", "");

@@ -154,7 +154,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    */
   public CategoryView findCategory(CategoryView parentCategoryView, String category) throws IOException {
     String cacheKey = "singleCategory:"
-        + CacheParams.createKeyHash(category + parentCategoryView.hashCode());
+        + CacheParams.createKeyHash(category, parentCategoryView.getName());
     return CacheUtil.getOrCompute(cache, cacheKey,
         () -> findCategoryWithoutCache(parentCategoryView, category));
   }

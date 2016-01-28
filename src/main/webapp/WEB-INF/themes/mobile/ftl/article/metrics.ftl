@@ -10,6 +10,8 @@
 <#include "metricsBody.ftl"/>
 
 </div><#-- end home-content -->
+<@js src="resource/js/vendor/underscore-min.js"/>
+
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 

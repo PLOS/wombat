@@ -2,6 +2,13 @@
 <#assign almInfoURL="http://lagotto.io/plos" />
 
   <div id="article-metrics">
+
+    <script type="text/template" id="metricsTileTemplateBasic">
+      <div id=" <%= name %>OnArticleMetricsTab" class="metrics_tile">
+        <h3><a href="<%= url %>"><%= name %></a></h3> +
+        <div class="metrics_tile_footer" onclick="location.href=<%= url %>;">
+          <%= linkText %> </div></div>
+    </script>
     <section class="card">
 
     <h2 id="viewedHeader">Viewed <a href="${almInfoURL}#usageInfo" class="ir" title="More information">info</a>

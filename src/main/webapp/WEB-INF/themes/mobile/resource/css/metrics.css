@@ -356,6 +356,7 @@ a.button-container {
 
 
 
+
 /************* Article Metrics page: Metrics Tiles and Rating Tile *****************/
 
 /*#article-metrics {*/
@@ -376,17 +377,8 @@ div.metrics_tile {
   *display: inline; /*  Workaround for IE */
 }
 
-div.metrics_tile:hover {
-  border: 1px solid #90ABBD;
-  background-color: #C8DFED;
-}
-
 img.metrics_tile_image {
   border-bottom: 1px solid #CCCCCC;
-}
-
-div.metrics_tile:hover .metrics_tile_image {
-  border-bottom: 1px solid #90ABBD;
 }
 
 div.metrics_tile_footer {

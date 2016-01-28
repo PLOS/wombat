@@ -13,6 +13,27 @@
 }
 
 #figure-lightbox {
+  .loader {
+    display: none;
+    &.showing {
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: $black;
+      z-index: map-get($zindex, dropdown);
+      opacity: 0.5;
+      @include single-transition();
+    }
+
+    i {
+      position: absolute;
+      top: 40%;
+      @extend .icon-spinner;
+      font-size: $txt-size-giant;
+    }
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
   }

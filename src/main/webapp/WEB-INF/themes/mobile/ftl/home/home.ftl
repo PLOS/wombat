@@ -52,6 +52,7 @@
           <#assign currentPage = (RequestParameters.page!1)?number />
           <#assign path = "" />
           <#include "../common/paging.ftl" />
+          <@paging numPages currentPage path parameterMap />
         </#if>
       <#else>
         <section>

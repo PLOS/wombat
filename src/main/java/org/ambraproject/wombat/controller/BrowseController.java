@@ -19,6 +19,7 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
+import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +55,9 @@ public class BrowseController extends WombatController {
   @Autowired
   private ArticleTransformService articleTransformService;
 
+  @Autowired
+  private XmlService xmlService;
+
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
@@ -61,8 +65,8 @@ public class BrowseController extends WombatController {
     Map<String, Map<String, Object>> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);
     String issueDesc = (String) journalMetadata.getOrDefault("currentIssue",
         Collections.emptyMap()).getOrDefault("description", "");
-    model.addAttribute("currentIssueDescription", articleTransformService.transformDescription(new RenderContext(site),
-        issueDesc));
+    model.addAttribute("currentIssueDescription",
+        articleTransformService.transformImageDescription(new RenderContext(site), issueDesc));
     model.addAttribute("journal", journalMetadata);
     return site.getKey() + "/ftl/browse/volumes";
   }
@@ -84,10 +88,11 @@ public class BrowseController extends WombatController {
     }
     model.addAttribute("issue", issueMeta);
 
-    String[] parsedIssueInfo = extractInfoFromIssueDesc((String)issueMeta.get("description"));
-    model.addAttribute("issueTitle", parsedIssueInfo[0]);
-    model.addAttribute("issueImageCredit", parsedIssueInfo[1]);
-    model.addAttribute("issueDescription", parsedIssueInfo[2]);
+    String issueDesc = (String) issueMeta.getOrDefault("description", "");
+    model.addAttribute("issueTitle", articleTransformService.transformImageDescription(new RenderContext(site),
+        xmlService.extractElementFromFragment(issueDesc, "title")));
+    model.addAttribute("issueDescription", articleTransformService.transformImageDescription(new RenderContext(site),
+        xmlService.removeElementFromFragment(issueDesc, "title")));
 
     List<Map<String, Object>> articleGroups = soaService.requestObject("articleTypes", List.class);
 
@@ -123,54 +128,5 @@ public class BrowseController extends WombatController {
 
     return site.getKey() + "/ftl/browse/issues";
   }
-
-  // TODO: get rid of this bit of ugliness from old Ambra if possible, or at least move regex into themes
-  /**
-   * Extract issue title, issue description, issue image credit from the full issue description
-   * @param desc full issue description
-   * @return issue title, issue image credit, issue description
-   */
-  private String[] extractInfoFromIssueDesc(String desc) {
-    String results[] = {"", "", ""};
-    int start = 0, end = 0;
-
-    // get the title of the issue
-    Pattern p1 = Pattern.compile("<title>(.*?)</title>");
-    Matcher m1 = p1.matcher(desc);
-    if (m1.find()) {
-      // there should be one title
-      results[0] = m1.group(1);
-      // title seems to be surround by <bold> element
-      results[0] = results[0].replaceAll("<.*?>", "");
-
-      start = m1.start();
-      end = m1.end();
-
-      // remove the title from the total description
-      String descBefore = desc.substring(0, start);
-      String descAfter = desc.substring(end);
-      desc = descBefore + descAfter;
-    }
-
-    // get the image credit
-    Pattern p2 = Pattern.compile("<italic>Image Credit: (.*?)</italic>");
-    Matcher m2 = p2.matcher(desc);
-    if (m2.find()) {
-      // there should be one image credit
-      results[1] = m2.group(1);
-
-      start = m2.start();
-      end = m2.end();
-
-      // remove the image credit from the total description
-      String descBefore = desc.substring(0, start);
-      String descAfter = desc.substring(end);
-      desc = descBefore + descAfter;
-    }
-
-    // once title and image credit have been removed, the rest of the content is the issue description
-    results[2] = desc;
-
-    return results;
-  }
+  
 }

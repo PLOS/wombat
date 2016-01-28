@@ -8,6 +8,7 @@ fast click is required for mobile interactions for foundation.
 -->
 <@js src="resource/js/vendor/fastclick/lib/fastclick.js"/>
 <@js src="resource/js/vendor/foundation/foundation.js"/>
+<@js src="resource/js/vendor/underscore-min.js"/>
 
 <#--//include foundation js widgets here *
 * unless you are absolutely sure they will only be in one scenario - then you

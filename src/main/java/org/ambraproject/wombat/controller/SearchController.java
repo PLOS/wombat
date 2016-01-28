@@ -696,7 +696,7 @@ public class SearchController extends WombatController {
 
     model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
     model.addAttribute("searchResults", searchResults);
-    model.addAttribute("page", commonParams.getSingleParam(params, "page", "0"));
+    model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());
   }
 }

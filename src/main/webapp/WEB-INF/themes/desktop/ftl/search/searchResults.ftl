@@ -233,8 +233,8 @@
     <#assign numPages = (searchResults.numFound / resultsPerPage)?ceiling />
     <#assign currentPage = (RequestParameters.page!1)?number />
     <#assign path = "search" />
-    <#assign alwaysShow = true />
     <#include "../common/paging.ftl" />
+    <@paging numPages currentPage path parameterMap true />
 
     <#if numPages gt 1>
         <div class="search-results-num-per-page">

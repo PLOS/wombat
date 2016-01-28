@@ -26,7 +26,6 @@ import org.ambraproject.wombat.util.CacheUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -148,6 +147,32 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   //EG counts.put(CategoryView.ROOT_NODE_NAME, subjectCounts.totalArticles);
   private Collection<SolrSearchService.SubjectCount> getAllCountsWithoutCache(String currentJournal) throws IOException {
     return solrSearchService.getAllSubjectCounts(currentJournal);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public CategoryView findCategory(CategoryView parentCategoryView, String category) throws IOException {
+    String cacheKey = "singleCategory:"
+        + CacheParams.createKeyHash(category + parentCategoryView.hashCode());
+    return CacheUtil.getOrCompute(cache, cacheKey,
+        () -> findCategoryWithoutCache(parentCategoryView, category));
+  }
+
+  public CategoryView findCategoryWithoutCache(CategoryView parentCategoryView, String category) {
+    if(parentCategoryView.getName().toLowerCase().equals(category.toLowerCase())) {
+      return parentCategoryView;
+    }
+
+    for(String key : parentCategoryView.getChildren().keySet()) {
+      CategoryView categoryView = findCategoryWithoutCache(parentCategoryView.getChild(key), category);
+
+      if(categoryView != null) {
+        return categoryView;
+      }
+    }
+
+    return null;
   }
 
   /**

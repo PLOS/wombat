@@ -22,6 +22,7 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.model.CategoryView;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -56,12 +57,8 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   public SortedMap<String, List<String>> parseTopAndSecondLevelCategories(final String journalKey)
     throws IOException {
     String cacheKey = "topAndSecondLevelCategories:" + CacheParams.createKeyHash(journalKey);
-    SortedMap<String, List<String>> categories = cache.get(cacheKey);
-    if (categories == null) {
-      categories = parseTopAndSecondLevelCategoriesWithoutCache(journalKey);
-      cache.put(cacheKey, (Serializable) categories);
-    }
-    return categories;
+    return CacheUtil.getOrCompute(cache, cacheKey,
+        () -> parseTopAndSecondLevelCategoriesWithoutCache(journalKey));
   }
 
   private SortedMap<String, List<String>> parseTopAndSecondLevelCategoriesWithoutCache(String currentJournal)
@@ -105,15 +102,8 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
     throws IOException {
 
     String cacheKey = "categories:" + CacheParams.createKeyHash(journalKey);
-    CategoryView categories;
-
-    categories = cache.get(cacheKey); // remains null if not cached
-
-    if (categories == null) {
-      categories = parseCategoriesWithoutCache(journalKey);
-      cache.put(cacheKey, categories);
-    }
-    return categories;
+    return CacheUtil.getOrCompute(cache, cacheKey,
+        () -> parseCategoriesWithoutCache(journalKey));
   }
 
   @SuppressWarnings("unchecked")
@@ -149,16 +139,9 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   private Map<String, SolrSearchService.SubjectCount> getAllCounts(final String journalKey) throws IOException {
 
     String cacheKey = "categoryCount:" + CacheParams.createKeyHash(journalKey);
-    Map<String, SolrSearchService.SubjectCount> counts;
-
-    counts = cache.get(cacheKey); // remains null if not cached
-
-    if (counts == null) {
-      counts = getAllCountsWithoutCache(journalKey).stream()
-          .collect(Collectors.toMap(SolrSearchService.SubjectCount::getCategory, Function.identity()));
-      cache.put(cacheKey, (Serializable) counts);
-    }
-    return counts;
+    return CacheUtil.getOrCompute(cache, cacheKey,
+        () -> getAllCountsWithoutCache(journalKey).stream()
+            .collect(Collectors.toMap(SolrSearchService.SubjectCount::getCategory, Function.identity())));
   }
 
   //todo: may need to get total article count here

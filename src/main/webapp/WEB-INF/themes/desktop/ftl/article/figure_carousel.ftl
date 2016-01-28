@@ -11,7 +11,7 @@
           <#-- Omit figures that don't appear in article body (e.g. a striking image) -->
           <#if figure.contextElement?has_content>
 
-            <div class="carousel-item lightbox-figure" data-doi="${figure.doi}" data-figure-doi="${figure.doi?html}">
+            <div class="carousel-item lightbox-figure" data-doi="${figure.doi?html}">
 
               <@siteLink path=("article/figure/image?size=inline&id=" + figure.doi) ; src>
                 <img src="${src?html}"

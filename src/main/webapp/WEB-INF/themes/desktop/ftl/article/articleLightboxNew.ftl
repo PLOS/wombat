@@ -56,7 +56,20 @@
 <script id="image-context-template" type="text/template">
   <div class="footer-text">
     <span id="figure-title"><%= title %></span>
-    <span id="figure-description"><%= description %></span>
+    <div id="figure-description-wrapper">
+      <div id="view-more-wrapper" style="<% descriptionExpanded? print('display:none;') : '' %>">
+        <p id="figure-description">
+          <%= description %>&nbsp;&nbsp;
+          <span id="view-more">show more<i class="icon-arrow-right"></i></span>
+        </p>
+      </div>
+      <div id="view-less-wrapper" style="<% descriptionExpanded? print('display:inline-block;') : '' %>" >
+        <p id="full-figure-description">
+          <%= description %>&nbsp;&nbsp;
+          <span id="view-less">show less<i class="icon-arrow-left"></i></span>
+        </p>
+      </div>
+    </div>
   </div>
   <div id="show-context-container">
     <a class="btn show-context" href="<%= showInContext(strippedDoi) %>">Show in Context</a>
@@ -64,8 +77,8 @@
   <div id="download-buttons">
     <h3>Download:</h3>
     <div class="item">
-      <a href="<@siteLink handlerName="powerPoint"/>?id=<%= doi %>" title="PowerPoint slide">
-        <span class="download-btn">PPT</span>
+      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "original"}/>&id=<%= doi %>" title="original image">
+        <span class="download-btn">TIFF</span>
       </a>
     </div>
     <div class="item">
@@ -74,9 +87,10 @@
       </a>
     </div>
     <div class="item">
-      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "original"}/>&id=<%= doi %>" title="original image">
-        <span class="download-btn">TIFF</span>
+      <a href="<@siteLink handlerName="powerPoint"/>?id=<%= doi %>" title="PowerPoint slide">
+        <span class="download-btn">PPT</span>
       </a>
     </div>
+
   </div>
 </script>

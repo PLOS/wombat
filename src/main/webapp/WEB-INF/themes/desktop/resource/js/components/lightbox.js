@@ -296,7 +296,8 @@ var FigureLightbox = {};
   FigureLightbox.panZoom = function ($image) {
     var that = this;
     this.$panZoomEl = $image.panzoom({
-      contain: false
+      contain: false,
+      minScale: 0.45
     });
 
     /* Bind panzoom and slider to mutually control each other */

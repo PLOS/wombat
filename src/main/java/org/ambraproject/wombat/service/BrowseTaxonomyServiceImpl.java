@@ -21,6 +21,7 @@ package org.ambraproject.wombat.service;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.model.SubjectCount;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.CacheUtil;
@@ -110,7 +111,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   @Override
   public TaxonomyCountTable getCounts(TaxonomyGraph taxonomy, String journalKey) throws IOException {
     String cacheKey = "categoryCount:" + CacheParams.createKeyHash(journalKey);
-    Collection<SolrSearchService.SubjectCount> counts = CacheUtil.getOrCompute(cache, cacheKey,
+    Collection<SubjectCount> counts = CacheUtil.getOrCompute(cache, cacheKey,
         () -> solrSearchService.getAllSubjectCounts(journalKey));
     return new TaxonomyCountTable(taxonomy, counts);
   }

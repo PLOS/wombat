@@ -2,7 +2,6 @@ package org.ambraproject.wombat.model;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import org.ambraproject.wombat.service.remote.SolrSearchService.SubjectCount;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -14,7 +13,7 @@ public class TaxonomyCountTable {
 
   public TaxonomyCountTable(TaxonomyGraph taxonomyGraph, Collection<SubjectCount> counts) {
     this.taxonomyGraph = Objects.requireNonNull(taxonomyGraph);
-    this.counts = Maps.uniqueIndex(counts, SubjectCount::getCategory);
+    this.counts = Maps.uniqueIndex(counts, SubjectCount::getSubject);
   }
 
   /*

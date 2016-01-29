@@ -207,7 +207,7 @@ $fv-small: rem-calc(7);
         }
         .range-slider {
           width: 90%;
-          margin: 3% 5%;
+          margin: rem-calc(12px) 5%;
           background-color: rgba(255,255,255,0.64);
         }
 

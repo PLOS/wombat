@@ -170,7 +170,10 @@ $fv-small: rem-calc(7);
 
     #figures-list {
       display: none;
-      height: 90%;
+      height: 95%;
+      @media screen and (min-height: 740px) {
+          height: 100%;
+      }
       overflow-y: scroll;
       max-width: rem-calc(180px);
       right: 0;

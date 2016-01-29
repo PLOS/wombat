@@ -127,12 +127,14 @@ var FigureLightbox = {};
         }).end()
 
         .on('image-switch', function (e, data) {
+          // Show both prev and next buttons
           var buttons = $(that.lbSelector).find('.fig-btn').show();
           if (data.index === 0) {
             buttons.filter('.prev-fig-btn').hide(); // Hide prev button
           } else if (data.index === (that.imgList.length - 1)) {
             buttons.filter('.next-fig-btn').hide(); // Hide next button
           }
+
 
           $(that.lbSelector).find('#view-more, #view-less').on('click', function () {
             that.toggleDescription();
@@ -261,6 +263,8 @@ var FigureLightbox = {};
     var $image = $(this.lbSelector).find('img.main-lightbox-image')
         .attr('src', this.buildImgUrl(imgDoi))
         .one('load', function () {
+          // Reset to original zoom
+          that.resetZoom();
           that.hideLoader();
         });
     this.panZoom($image);
@@ -291,7 +295,9 @@ var FigureLightbox = {};
 
   FigureLightbox.panZoom = function ($image) {
     var that = this;
-    this.$panZoomEl = $image.panzoom();
+    this.$panZoomEl = $image.panzoom({
+      contain: false
+    });
 
     /* Bind panzoom and slider to mutually control each other */
     this.bindPanZoomToSlider();
@@ -311,6 +317,10 @@ var FigureLightbox = {};
 
   FigureLightbox.zoomOut = function () {
     this.zoom(true);
+  };
+
+  FigureLightbox.resetZoom = function () {
+    this.$panZoomEl.panzoom('reset', false);
   };
 
   FigureLightbox.zoom = function (zoomOut, focal) {

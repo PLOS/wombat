@@ -1,7 +1,7 @@
 <div class="main cf" id="pjax-container">
 <#assign almInfoURL="http://lagotto.io/plos" />
 
-  <div id="article-metrics" data-showGraph="true">
+  <div id="article-metrics">
 
     <script type="text/template" id="metricsTileTemplate">
       <div id="<%= name %>OnArticleMetricsTab" class="metrics_tile">

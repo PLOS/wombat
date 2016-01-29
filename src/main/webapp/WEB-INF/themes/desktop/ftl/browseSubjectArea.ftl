@@ -195,7 +195,7 @@
 <#include "subjectAreaJs.ftl" />
 
 <@js src="resource/js/util/alm_config.js" />
-<@js src="resource/js/metrics-mobile.js" />
+<@js src="resource/js/metrics.js" />
 <@js src="resource/js/components/tooltip_hover.js"/>
 <@js src="resource/js/components/browse_results.js" />
 <@renderJs />

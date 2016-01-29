@@ -1,5 +1,5 @@
 
-
+.card { font-size: 13px;}
 .card h2 {
   font-size: 1.5em;
 }
@@ -55,7 +55,6 @@ div#pageViewsSummary div.pubDates {
   font-size: 1em;
   font-weight: bold;
   color: #666;
-  line-height: 11px;
 }
 
 

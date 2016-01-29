@@ -14,8 +14,8 @@
 
     <script type="text/template" id="metricsTileTemplateNoLink">
       <div id="<%= name %>OnArticleMetricsTab" class="metrics_tile">
-        <h3><a href="<%= url %>"><%= name %></a></h3>
-        <div class="metrics_tile_footer" onclick="location.href=<%= url %>;">
+        <h3><%= name %></h3>
+        <div class="metrics_tile_footer">
           <%= linkText %>
         </div>
       </div>

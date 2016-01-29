@@ -19,7 +19,8 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.rhombat.cache.Cache;
-import org.ambraproject.wombat.model.CategoryView;
+import org.ambraproject.wombat.model.TaxonomyCountTable;
+import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.CacheUtil;
@@ -33,12 +34,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * {@inheritDoc}
@@ -98,7 +96,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   /**
    * {@inheritDoc}
    */
-  public CategoryView parseCategories(final String journalKey)
+  public TaxonomyGraph parseCategories(final String journalKey)
     throws IOException {
 
     String cacheKey = "categories:" + CacheParams.createKeyHash(journalKey);
@@ -107,7 +105,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   }
 
   @SuppressWarnings("unchecked")
-  private CategoryView parseCategoriesWithoutCache(String journalKey)
+  private TaxonomyGraph parseCategoriesWithoutCache(String journalKey)
     throws IOException {
 
     List<String> subjects = solrSearchService.getAllSubjects(journalKey);
@@ -119,13 +117,8 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * {@inheritDoc}
    */
   @Override
-  public Collection<SolrSearchService.SubjectCount> getCounts(CategoryView taxonomy, String journalKey) throws IOException {
-    Map<String, SolrSearchService.SubjectCount> counts = getAllCounts(journalKey);
-
-    List<SolrSearchService.SubjectCount> subjectCounts = taxonomy.getChildren().values().stream()
-        .map(categoryView -> counts.get(categoryView.getName())).collect(Collectors.toList());
-    subjectCounts.add(counts.get(taxonomy.getName()));
-    return subjectCounts;
+  public TaxonomyCountTable getCounts(TaxonomyGraph taxonomy, String journalKey) throws IOException {
+    return new TaxonomyCountTable(taxonomy, getAllCounts(journalKey));
   }
 
   /**
@@ -136,12 +129,11 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * @return map from subject term to article count
    * @throws IOException
    */
-  private Map<String, SolrSearchService.SubjectCount> getAllCounts(final String journalKey) throws IOException {
+  private Collection<SolrSearchService.SubjectCount> getAllCounts(final String journalKey) throws IOException {
 
     String cacheKey = "categoryCount:" + CacheParams.createKeyHash(journalKey);
     return CacheUtil.getOrCompute(cache, cacheKey,
-        () -> getAllCountsWithoutCache(journalKey).stream()
-            .collect(Collectors.toMap(SolrSearchService.SubjectCount::getCategory, Function.identity())));
+        () -> getAllCountsWithoutCache(journalKey));
   }
 
   //todo: may need to get total article count here
@@ -151,67 +143,14 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   }
 
   /**
-   * {@inheritDoc}
-   */
-  public CategoryView findCategory(CategoryView parentCategoryView, String category) throws IOException {
-    String cacheKey = "singleCategory:"
-        + CacheParams.createKeyHash(category, parentCategoryView.getName());
-    return CacheUtil.getOrCompute(cache, cacheKey,
-        () -> findCategoryWithoutCache(parentCategoryView, category));
-  }
-
-  public CategoryView findCategoryWithoutCache(CategoryView parentCategoryView, String category) {
-    if(parentCategoryView.getName().equalsIgnoreCase(category)) {
-      return parentCategoryView;
-    }
-
-    return parentCategoryView.getChildren().values().stream()
-        .map((CategoryView child) -> findCategoryWithoutCache(child, category))
-        .filter(Objects::nonNull).findAny().orElse(null);
-  }
-
-  /**
    * Given a list of "/" delimited strings build a structured map
    *
    * @param categories list of Pairs wrapping the category name and article count
    *
    * @return a new treeMap
    */
-  private static CategoryView createMapFromStringList(List<String> categories) {
-    CategoryView root = new CategoryView("ROOT");
-
-    // Since there can be multiple paths to the same child, we don't want to create the same
-    // child more than once.  Hence the need for this map.
-    Map<String, CategoryView> createdCategories = new HashMap<>();
-    for (String category : categories) {
-      if(category.charAt(0) == '/') {
-        //Ignore first "/"
-        root = recurseValues(root, category.substring(1).split("/"), 0, createdCategories);
-      } else {
-        root = recurseValues(root, category.split("/"), 0, createdCategories);
-      }
-    }
-
-    return root;
+  private static TaxonomyGraph createMapFromStringList(List<String> categories) {
+    return TaxonomyGraph.create(categories);
   }
 
-  private static CategoryView recurseValues(CategoryView root, String categories[], int index,
-      Map<String, CategoryView> created) {
-    CategoryView child = root.getChildren().get(categories[index]);
-
-    if (child == null) {
-      child = created.get(categories[index]);
-      if (child == null) {
-        child = new CategoryView(categories[index]);
-        created.put(categories[index], child);
-      }
-      root.addChild(child);
-    }
-
-    if ((index + 1) < categories.length) { // path end
-      recurseValues(child, categories, index + 1, created);
-    }
-
-    return root;
-  }
 }

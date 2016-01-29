@@ -333,22 +333,23 @@ $fv-small: rem-calc(7);
         font-size: $txt-size-xsmall;
         line-height: $line-height;
         z-index: map-get($zindex, header);
-        #figure-title, title {
-          display: inline-block;
-          width: 100%;
-          font-size: $txt-size-small;
-          padding-top: rem-calc(3);
-          padding-right: rem-calc(16);
-          margin-bottom: 0;
-          font-weight: bold;
-          line-height: rem-calc(16);
-        }
 
         #figure-description-wrapper {
+          #figure-title, title {
+            display: inline-block;
+            width: 100%;
+            font-size: $txt-size-small;
+            padding-top: rem-calc(3);
+            padding-right: rem-calc(16);
+            margin-bottom: 0;
+            font-weight: bold;
+            line-height: rem-calc(16);
+          }
+
           overflow-y: hidden;
           #view-more-wrapper {
             /* Needs static height for dotdotdot to trim text */
-            max-height: rem-calc(65px);
+            max-height: rem-calc(82px);
           }
 
           #view-less-wrapper {

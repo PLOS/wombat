@@ -56,15 +56,16 @@
 
 <script id="image-context-template" type="text/template">
   <div class="footer-text">
-    <span id="figure-title"><%= title %></span>
     <div id="figure-description-wrapper">
       <div id="view-more-wrapper" style="<% descriptionExpanded? print('display:none;') : '' %>">
+        <span id="figure-title"><%= title %></span>
         <p id="figure-description">
           <%= description %>&nbsp;&nbsp;
           <span id="view-more">show more<i class="icon-arrow-right"></i></span>
         </p>
       </div>
       <div id="view-less-wrapper" style="<% descriptionExpanded? print('display:inline-block;') : '' %>" >
+        <span id="figure-title"><%= title %></span>
         <p id="full-figure-description">
           <%= description %>&nbsp;&nbsp;
           <span id="view-less">show less<i class="icon-arrow-left"></i></span>

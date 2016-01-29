@@ -101,16 +101,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
 
     String cacheKey = "categories:" + CacheParams.createKeyHash(journalKey);
     return CacheUtil.getOrCompute(cache, cacheKey,
-        () -> parseCategoriesWithoutCache(journalKey));
-  }
-
-  @SuppressWarnings("unchecked")
-  private TaxonomyGraph parseCategoriesWithoutCache(String journalKey)
-    throws IOException {
-
-    List<String> subjects = solrSearchService.getAllSubjects(journalKey);
-
-    return createMapFromStringList(subjects);
+        () -> TaxonomyGraph.create(solrSearchService.getAllSubjects(journalKey)));
   }
 
   /**
@@ -118,39 +109,10 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    */
   @Override
   public TaxonomyCountTable getCounts(TaxonomyGraph taxonomy, String journalKey) throws IOException {
-    return new TaxonomyCountTable(taxonomy, getAllCounts(journalKey));
-  }
-
-  /**
-   * Returns article counts for a given journal for all subject terms in the taxonomy.
-   * The results will be cached for CACHE_TTL.
-   *
-   * @param journalKey specifies the current journal
-   * @return map from subject term to article count
-   * @throws IOException
-   */
-  private Collection<SolrSearchService.SubjectCount> getAllCounts(final String journalKey) throws IOException {
-
     String cacheKey = "categoryCount:" + CacheParams.createKeyHash(journalKey);
-    return CacheUtil.getOrCompute(cache, cacheKey,
-        () -> getAllCountsWithoutCache(journalKey));
-  }
-
-  //todo: may need to get total article count here
-  //EG counts.put(CategoryView.ROOT_NODE_NAME, subjectCounts.totalArticles);
-  private Collection<SolrSearchService.SubjectCount> getAllCountsWithoutCache(String currentJournal) throws IOException {
-    return solrSearchService.getAllSubjectCounts(currentJournal);
-  }
-
-  /**
-   * Given a list of "/" delimited strings build a structured map
-   *
-   * @param categories list of Pairs wrapping the category name and article count
-   *
-   * @return a new treeMap
-   */
-  private static TaxonomyGraph createMapFromStringList(List<String> categories) {
-    return TaxonomyGraph.create(categories);
+    Collection<SolrSearchService.SubjectCount> counts = CacheUtil.getOrCompute(cache, cacheKey,
+        () -> solrSearchService.getAllSubjectCounts(journalKey));
+    return new TaxonomyCountTable(taxonomy, counts);
   }
 
 }

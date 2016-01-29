@@ -26,7 +26,7 @@
 <@js src="resource/js/highcharts.js"/>
 
 
-<@js src="resource/js/metrics.js"/>
+<@js src="resource/js/metrics-mobile.js"/>
 
 <#include "../common/footContent.ftl" />
 

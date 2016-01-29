@@ -3,13 +3,92 @@
 
   <div id="article-metrics">
 
-    <script type="text/template" id="metricsTileTemplateBasic">
-      <div id=" <%= name %>OnArticleMetricsTab" class="metrics_tile">
-        <h3><a href="<%= url %>"><%= name %></a></h3> +
+    <script type="text/template" id="metricsTileTemplate">
+      <div id="<%= name %>OnArticleMetricsTab" class="metrics_tile">
+        <h3><a href="<%= url %>"><%= name %></a></h3>
         <div class="metrics_tile_footer" onclick="location.href=<%= url %>;">
           <%= linkText %> </div></div>
     </script>
-    <section class="card">
+
+    <script type="text/template" id="metricsTileTemplateNoLink">
+      <div id="<%= name %>OnArticleMetricsTab" class="metrics_tile">
+        <h3><a href="<%= url %>"><%= name %></a></h3>
+        <div class="metrics_tile_footer" onclick="location.href=<%= url %>;">
+          <%= linkText %> </div></div>
+    </script>
+
+
+    <script type="text/template" id="pageViewsSummary" >
+
+    <div id="pageViewsSummary">
+    <div id="left"> 
+      <div class="header">Total Article Views</div> 
+      <div class="totalCount"> <%= total %>  </div>
+      <div class="pubDates"> <%= pubDatesFrom %>   (publication date)
+        <br>through <%= pubDatesTo %> *</div>
+      </div>
+    <div id="left">
+      <table id="pageViewsTable"><tbody>
+      <tr>
+        <th nowrap="" colspan="2">HTML Page Views</th>
+        </tr>
+      <tr>
+        <td class="source1">PLOS</td>
+        <td> <%= totalCounterHTML %> </td>
+        </tr>
+      <tr>
+        <td class="source2">PMC</td>
+        <td> <%= totalPMCHTML %>  </td>
+        </tr>
+      <tr>
+        <td>Totals</td>
+        <td class="total"> <%= totalHTML %> </td>
+        </tr>
+      </tbody>
+        </table>
+      <table id="pageViewsTable"><tbody>
+      <tr>
+        <th nowrap="" colspan="2">PDF Downloads</th>
+        </tr>
+      <tr>
+        <td class="source1">PLOS</td>
+        <td>  <%= totalCounterPDF %> </td>
+        </tr>
+      <tr>
+        <td class="source2">PMC</td>
+        <td> <%= totalPMCPDF %> </td>
+        </tr>
+      <tr>
+        <td>Totals</td>
+        <td class="total"><%= totalPDF %> </td>
+        </tr>
+      </tbody>
+        </table>
+      <table id="pageViewsTable"><tbody>
+      <tr>
+        <th nowrap="" colspan="2">XML Downloads</th>
+        </tr>
+      <tr>
+        <td class="source1">PLOS</td>
+        <td> <%= totalCounterXML %> </td>
+        </tr>
+      <tr>
+        <td class="source2">PMC</td>
+        <td>n.a.</td>
+        </tr>
+      <tr>
+        <td>Totals</td>
+        <td class="total"> <%= totalXML %> </td>
+        </tr>
+      </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    </script>
+
+    <section id="viewedCard" class="card" data-showGraph>
 
     <h2 id="viewedHeader">Viewed <a href="${almInfoURL}#usageInfo" class="ir" title="More information">info</a>
       <#--<span id="chartSpinner"><#include "../common/loadingcycle.ftl"></span>-->

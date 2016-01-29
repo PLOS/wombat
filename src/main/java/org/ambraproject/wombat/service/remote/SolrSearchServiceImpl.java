@@ -20,6 +20,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.model.SubjectCount;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
@@ -303,10 +304,13 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     return getRawResults(params).get("response");
   }
 
-  private Map<?, ?> executeFacetedQuery(List<NameValuePair> params, String facet) throws IOException {
-    Map<?, ?> facet_counts = getRawResults(params).get("facet_counts");
+  //todo: replace this with ArticleSearchQuery
+  private FacetedQueryResponse executeFacetedQuery(List<NameValuePair> params, String facet) throws IOException {
+    Map<String, Map> rawResults = getRawResults(params);
+    Map<?, ?> facet_counts = rawResults.get("facet_counts");
     Map<?, ?> facet_fields = (Map<?, ?>) facet_counts.get("facet_fields");
-    return (Map<?, ?>) facet_fields.get(facet);
+    Map<?, ?> resultsMap = (Map<?, ?>) facet_fields.get(facet);
+    return new FacetedQueryResponse(resultsMap, ((Double) rawResults.get("response").get("numFound")).longValue());
   }
 
   /**
@@ -318,8 +322,8 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     List<NameValuePair> params = setCommonCategoryParams(journalKey, facet);
 
     ArrayList<String> categories = new ArrayList<>();
-    Map<?, ?> resultsMap = executeFacetedQuery(params, facet);
-    categories.addAll(resultsMap.keySet()
+    FacetedQueryResponse response = executeFacetedQuery(params, facet);
+    categories.addAll(response.getResultsMap().keySet()
         .stream().map(Object::toString)
         .collect(Collectors.toList()));
 
@@ -334,10 +338,12 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     String facet = "subject_facet";
     List<NameValuePair> params = setCommonCategoryParams(journalKey, facet);
 
-    Map<?, ?> resultsMap = executeFacetedQuery(params, facet);
-    return resultsMap.entrySet().stream()
+    FacetedQueryResponse response = executeFacetedQuery(params, facet);
+    List<SubjectCount> subjectCounts = response.getResultsMap().entrySet().stream()
         .map((Map.Entry<?, ?> entry) -> new SubjectCount((String) entry.getKey(),
             ((Double) entry.getValue()).longValue())).collect(Collectors.toList());
+    subjectCounts.add(new SubjectCount("ROOT", response.getTotalArticles()));
+    return subjectCounts;
   }
 
   /**
@@ -393,5 +399,23 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     }
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
     return (Map<String, Map>) rawResults;
+  }
+
+  private class FacetedQueryResponse {
+    private Map<?, ?> resultsMap;
+    private Long totalArticles;
+
+    public FacetedQueryResponse(Map<?, ?> resultsMap, Long totalArticles) {
+      this.resultsMap = resultsMap;
+      this.totalArticles = totalArticles;
+    }
+
+    public Map<?, ?> getResultsMap() {
+      return resultsMap;
+    }
+
+    public Long getTotalArticles() {
+      return totalArticles;
+    }
   }
 }

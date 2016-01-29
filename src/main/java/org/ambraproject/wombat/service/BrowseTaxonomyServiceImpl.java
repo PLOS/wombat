@@ -20,6 +20,7 @@ package org.ambraproject.wombat.service;
 
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.model.CategoryView;
+import org.ambraproject.wombat.model.SubjectCount;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.CacheUtil;
@@ -119,10 +120,10 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * {@inheritDoc}
    */
   @Override
-  public Collection<SolrSearchService.SubjectCount> getCounts(CategoryView taxonomy, String journalKey) throws IOException {
-    Map<String, SolrSearchService.SubjectCount> counts = getAllCounts(journalKey);
+  public Collection<SubjectCount> getCounts(CategoryView taxonomy, String journalKey) throws IOException {
+    Map<String, SubjectCount> counts = getAllCounts(journalKey);
 
-    List<SolrSearchService.SubjectCount> subjectCounts = taxonomy.getChildren().values().stream()
+    List<SubjectCount> subjectCounts = taxonomy.getChildren().values().stream()
         .map(categoryView -> counts.get(categoryView.getName())).collect(Collectors.toList());
     subjectCounts.add(counts.get(taxonomy.getName()));
     return subjectCounts;
@@ -136,17 +137,15 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
    * @return map from subject term to article count
    * @throws IOException
    */
-  private Map<String, SolrSearchService.SubjectCount> getAllCounts(final String journalKey) throws IOException {
+  private Map<String, SubjectCount> getAllCounts(final String journalKey) throws IOException {
 
     String cacheKey = "categoryCount:" + CacheParams.createKeyHash(journalKey);
     return CacheUtil.getOrCompute(cache, cacheKey,
         () -> getAllCountsWithoutCache(journalKey).stream()
-            .collect(Collectors.toMap(SolrSearchService.SubjectCount::getCategory, Function.identity())));
+            .collect(Collectors.toMap(SubjectCount::getSubject, Function.identity())));
   }
 
-  //todo: may need to get total article count here
-  //EG counts.put(CategoryView.ROOT_NODE_NAME, subjectCounts.totalArticles);
-  private Collection<SolrSearchService.SubjectCount> getAllCountsWithoutCache(String currentJournal) throws IOException {
+  private Collection<SubjectCount> getAllCountsWithoutCache(String currentJournal) throws IOException {
     return solrSearchService.getAllSubjectCounts(currentJournal);
   }
 

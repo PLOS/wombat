@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.model.CategoryView;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.model.SubjectCount;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -42,7 +42,7 @@ public interface BrowseTaxonomyService {
    * @param journalKey specifies the journal
    * @return map from taxonomy term to count of articles
    */
-  Collection<SolrSearchService.SubjectCount> getCounts(CategoryView taxonomy, String journalKey) throws IOException;
+  Collection<SubjectCount> getCounts(CategoryView taxonomy, String journalKey) throws IOException;
 
   /**
    * For the passed in category, find the matching CategoryView.  This will come in handy when looking for

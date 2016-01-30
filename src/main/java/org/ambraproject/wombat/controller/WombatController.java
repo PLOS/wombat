@@ -24,9 +24,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
@@ -206,51 +204,5 @@ public abstract class WombatController {
     } else {
       HttpMessageUtil.copyResponseWithHeaders(remoteResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
     }
-  }
-
-  /**
-   * Retrieve a RESTful argument that consists of the entire request URL after a namespace prefix. The namespace prefix
-   * consists of one or more URI path elements that the API defines as a prefix for a class of RESTful "nouns" and must
-   * end with a slash (for example, {@code "/article/"}). The request's URI must contain the given namespace prefix:
-   * everything before the namespace (typically the path to the webapp, or nothing) is ignored, and everything after the
-   * namespace is the return value.
-   * <p/>
-   * This is essentially doing the work of a {@link PathVariable} annotated parameter, but Spring does not seem to
-   * support {@code PathVariable}s that span multiple URI components across slashes. So, if we want to treat a value
-   * that contains slashes (such as a DOI, which is itself a nested URI) as a single variable, we have to parse it from
-   * the request URI string ourselves.
-   *
-   * @param request   the HTTP request for a REST action
-   * @param optional  if true, null will be returned if no additional path exists after the namespace; if false,
-   *                  IllegalArgumentException will be thrown if this is the case
-   * @param namespace the namespace in which the request was received  @return the contents of the request path after
-   *                  the namespace prefix
-   * @throws IllegalArgumentException if the request URI does not start with the namespace or if the namespace does not
-   *                                  end with a slash, and optional is false
-   *
-   * todo: there is duplicate code in Rhino that should be moved to a shared library
-   */
-  protected static String getFullPathVariable(HttpServletRequest request, boolean optional, final String namespace) {
-    final int namespaceLength = namespace.length();
-    if (namespaceLength < 3 || namespace.charAt(0) != '/' || namespace.charAt(namespaceLength - 1) != '/') {
-      throw new IllegalArgumentException("Namespace must begin and end with '/'");
-    }
-    String requestUri = request.getRequestURI();
-    int namespaceIndex = requestUri.indexOf(namespace);
-    if (namespaceIndex < 0) {
-      String message = String.format("Request URI (\"%s\") does not have expected namespace (\"%s\")",
-          requestUri, namespace);
-      throw new IllegalArgumentException(message);
-    }
-    int namespaceEnd = namespaceIndex + namespaceLength;
-    int end = requestUri.length() - (requestUri.endsWith("/") ? 1 : 0);
-    if (end <= namespaceEnd) {
-      if (optional) {
-        return null;
-      } else {
-        throw new IllegalArgumentException("Request URI has no path variable after namespace");
-      }
-    }
-    return requestUri.substring(namespaceEnd, end);
   }
 }

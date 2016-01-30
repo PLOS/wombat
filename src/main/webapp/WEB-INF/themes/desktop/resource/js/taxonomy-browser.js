@@ -506,7 +506,7 @@
 
     var url = createUrlFromTermStack();
     if (parent_term != '/') {
-      url += parent_term;
+      url += "&c=" + parent_term;
     }
 
     $.ajax({
@@ -520,9 +520,9 @@
   }
 
   function createUrlFromTermStack() {
-    var url = API_URL;
+    var url = API_URL + "?";
     for (var i = 1; i < term_stack.length; i++) {
-      url += term_stack[i] + "/";
+      url += "c=" + term_stack[i] + "&";
     }
     return url;
   }

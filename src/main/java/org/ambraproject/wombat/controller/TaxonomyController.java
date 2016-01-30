@@ -13,6 +13,7 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -27,6 +28,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +38,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -65,7 +66,8 @@ public class TaxonomyController extends WombatController {
   @RequestMapping(name = "taxonomy", value = "" + TAXONOMY_TEMPLATE, method = RequestMethod.GET)
   @ResponseBody
   //todo: use query parameters to send category data instead of parsing the path to get the parent term
-  public List<SubjectData> read(@SiteParam Site site, HttpServletRequest request)
+  public List<SubjectData> read(@SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params)
       throws IOException {
     Map<String, Object> taxonomyBrowserConfig = site.getTheme().getConfigMap("taxonomyBrowser");
     boolean hasTaxonomyBrowser = (boolean) taxonomyBrowserConfig.get("hasTaxonomyBrowser");
@@ -76,9 +78,11 @@ public class TaxonomyController extends WombatController {
     TaxonomyGraph taxonomyGraph = browseTaxonomyService.parseCategories(site.getJournalKey());
 
     //parent will be null only for the ROOT taxonomy
-    String parent = getFullPathVariable(request, true, TAXONOMY_NAMESPACE);
-    if (!Strings.isNullOrEmpty(parent)) {
-      parent = URLDecoder.decode(parent, "UTF-8");
+    String parent;
+    if (params.isEmpty()) {
+      parent = null;
+    } else {
+      parent = Joiner.on("/").join(params.get("c"));
     }
 
     TaxonomyCountTable articleCounts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey());

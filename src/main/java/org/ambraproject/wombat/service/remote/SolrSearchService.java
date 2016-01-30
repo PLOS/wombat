@@ -18,9 +18,11 @@ import org.ambraproject.wombat.config.site.SiteSet;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Interface to the article search service for the application.
@@ -128,12 +130,12 @@ public interface SolrSearchService {
   /**
    * Simple class wrapping the category -> count map returned by Solr subject searches.
    */
-  public static class SubjectCount {
-    public String category;
-    public Long count;
+  public static final class SubjectCount implements Serializable {
+    private final String category;
+    private final long count;
 
     public SubjectCount(String category, Long count) {
-      this.category = category;
+      this.category = Objects.requireNonNull(category);
       this.count = count;
     }
 
@@ -141,7 +143,7 @@ public interface SolrSearchService {
       return category;
     }
 
-    public Long getCount() {
+    public long getCount() {
       return count;
     }
   }

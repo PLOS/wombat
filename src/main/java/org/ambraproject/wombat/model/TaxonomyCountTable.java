@@ -4,9 +4,10 @@ import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.service.remote.SolrSearchService.SubjectCount;
 
+import java.io.Serializable;
 import java.util.Collection;
 
-public class TaxonomyCountTable {
+public class TaxonomyCountTable implements Serializable {
 
   private final ImmutableSortedMap<String, SubjectCount> counts; // case-insensitive
 

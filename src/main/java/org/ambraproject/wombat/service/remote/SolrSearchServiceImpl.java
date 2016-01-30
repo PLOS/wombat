@@ -37,12 +37,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of SearchService that queries a solr backend.
@@ -60,7 +62,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
   @VisibleForTesting
   protected Map<String, String> eIssnToJournalKey;
 
-  private static final int MAX_FACET_SIZE = 100;
+  private static final int MAX_FACET_SIZE = -1; //unlimited
   private static final int MIN_FACET_COUNT = 1;
 
   /**
@@ -299,6 +301,80 @@ public class SolrSearchServiceImpl implements SolrSearchService {
 
   private Map<?, ?> executeQuery(List<NameValuePair> params) throws IOException {
     return getRawResults(params).get("response");
+  }
+
+  private Map<?, ?> executeFacetedQuery(List<NameValuePair> params, String facet) throws IOException {
+    Map<?, ?> facet_counts = getRawResults(params).get("facet_counts");
+    Map<?, ?> facet_fields = (Map<?, ?>) facet_counts.get("facet_fields");
+    return (Map<?, ?>) facet_fields.get(facet);
+  }
+
+  /**
+   * @inheritDoc
+   */
+  @Override
+  public List<String> getAllSubjects(String journalKey) throws IOException {
+    String facet = "subject_hierarchy";
+    List<NameValuePair> params = setCommonCategoryParams(journalKey, facet);
+
+    ArrayList<String> categories = new ArrayList<>();
+    Map<?, ?> resultsMap = executeFacetedQuery(params, facet);
+    categories.addAll(resultsMap.keySet()
+        .stream().map(Object::toString)
+        .collect(Collectors.toList()));
+
+    return categories;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  @Override
+  public Collection<SubjectCount> getAllSubjectCounts(String journalKey) throws IOException {
+    String facet = "subject_facet";
+    List<NameValuePair> params = setCommonCategoryParams(journalKey, facet);
+
+    Map<?, ?> resultsMap = executeFacetedQuery(params, facet);
+    return resultsMap.entrySet().stream()
+        .map((Map.Entry<?, ?> entry) -> new SubjectCount((String) entry.getKey(),
+            ((Double) entry.getValue()).longValue())).collect(Collectors.toList());
+  }
+
+  /**
+   * This method is used to set common Solr parameters used by both @code{getAllSubjectCounts}
+   * and @code{getAllSubjects}.
+   *
+   * @param journalKey Solr query will be constrained by this journal key.
+   * @param facetName Solr query will be constrained to this facet.
+   *                  Will be either "subject_facet" or "subject_hierarchy".
+   * @return List of common name/value pairs used in Solr category browse queries.
+   */
+  private List<NameValuePair> setCommonCategoryParams(String journalKey, String facetName) {
+    List<NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("wt", "json"));
+    params.add(new BasicNameValuePair("q", "*:*"));
+
+    params.add(new BasicNameValuePair("fq", "doc_type:full"));
+    params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
+
+    params.add(new BasicNameValuePair("fq", "cross_published_journal_key:" + journalKey));
+
+    params.add(new BasicNameValuePair("facet", "true"));
+    params.add(new BasicNameValuePair("facet.field", facetName));
+    params.add(new BasicNameValuePair("facet.method", "fc"));
+    params.add(new BasicNameValuePair("facet.mincount", Integer.toString(MIN_FACET_COUNT)));
+    params.add(new BasicNameValuePair("facet.limit", Integer.toString(MAX_FACET_SIZE)));
+    params.add(new BasicNameValuePair("json.nl", "map"));
+
+    params.add(new BasicNameValuePair("rows", "0"));
+
+    String fieldList = "id,score,title_display,publication_date,eissn,journal,article_type," +
+        "author_display,abstract,abstract_primary_display,striking_image,figure_table_caption," +
+        "subject,expression_of_concern,retraction";
+
+    params.add(new BasicNameValuePair("fl", fieldList));
+
+    return params;
   }
 
   /**

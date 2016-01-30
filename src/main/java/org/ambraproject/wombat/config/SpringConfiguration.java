@@ -65,6 +65,8 @@ import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
 import org.ambraproject.wombat.service.CommentCensorService;
 import org.ambraproject.wombat.service.CommentCensorServiceImpl;
+import org.ambraproject.wombat.service.CommentService;
+import org.ambraproject.wombat.service.CommentServiceImpl;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.FreemarkerMailService;
@@ -90,7 +92,6 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import javax.servlet.ServletContext;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.charset.Charset;
 
 @Configuration
@@ -328,6 +329,11 @@ public class SpringConfiguration {
   @Bean
   public BrowseTaxonomyService browseTaxonomyService() {
     return new BrowseTaxonomyServiceImpl();
+  }
+
+  @Bean
+  public CommentService commentService() {
+    return new CommentServiceImpl();
   }
 
 }

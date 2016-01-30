@@ -28,7 +28,7 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
-import org.ambraproject.wombat.service.CommentFormatting;
+import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -36,7 +36,6 @@ import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.XmlService;
-import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
@@ -83,7 +82,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
@@ -148,6 +146,8 @@ public class ArticleController extends WombatController {
   private CommentValidationService commentValidationService;
   @Autowired
   private XmlService xmlService;
+  @Autowired
+  private CommentService commentService;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -428,19 +428,13 @@ public class ArticleController extends WombatController {
   public String renderArticleCommentTree(HttpServletRequest request, Model model, @SiteParam Site site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
-    Map<String, Object> comment;
-    try {
-      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
-    } catch (EntityNotFoundException enfe) {
-      throw new NotFoundException(enfe);
-    }
+    Map<String, Object> comment = commentService.getComment(commentId);
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
     String articleId = (String) parentArticleStub.get("doi");
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
 
-    comment = CommentFormatting.addFormattingFields(comment);
     model.addAttribute("comment", comment);
 
     return site + "/ftl/article/comment/comment";

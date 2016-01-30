@@ -43,7 +43,7 @@ class ExceptionHandlerAdvisor {
   @ExceptionHandler(Exception.class)
   protected ModelAndView handleException(Exception exception, HttpServletRequest request, HttpServletResponse response)
           throws IOException {
-    exception.printStackTrace(System.err);
+    log.error("handleException", exception);
     response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
     Site site = siteResolver.resolveSite(request);
 

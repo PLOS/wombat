@@ -17,6 +17,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * A representation of the graph of all taxonomy terms. Each term is a graph node that may have multiple parents and
+ * children.
+ */
 public class TaxonomyGraph implements Serializable {
 
   private final ImmutableSet<String> roots;
@@ -37,6 +41,10 @@ public class TaxonomyGraph implements Serializable {
     return CATEGORY_SPLITTER.splitToList(categoryPath);
   }
 
+  /**
+   * @param categoryPaths a list of all slash-delimited category paths in the taxonomy
+   * @return a parsed graph representation of the taxonomy
+   */
   public static TaxonomyGraph create(Collection<String> categoryPaths) {
     Set<String> roots = new TreeSet<>();
     SetMultimap<String, String> parentsToChildren = TreeMultimap.create();
@@ -66,11 +74,18 @@ public class TaxonomyGraph implements Serializable {
     return Sets.union(roots, childrenToParents.keySet());
   }
 
+  /**
+   * @param categoryName the name of a category (not a full path)
+   * @return a view of the named category, or {@code null} if no such category is in this graph
+   */
   public CategoryView getView(String categoryName) {
     return (roots.contains(categoryName) || childrenToParents.containsKey(categoryName))
         ? new CategoryView(categoryName) : null;
   }
 
+  /**
+   * A view of a category, with access to its parents and children.
+   */
   public class CategoryView {
     private final String name;
 
@@ -78,16 +93,34 @@ public class TaxonomyGraph implements Serializable {
       this.name = Objects.requireNonNull(name);
     }
 
+    /**
+     * @return the category's name
+     */
     public String getName() {
       return name;
     }
 
-    public Map<String, CategoryView> getParents() {
-      return Maps.asMap(childrenToParents.get(name), CategoryView::new);
+    /**
+     * Create a lazy-loading map view of a group of other categories. Other CategoryView will be constructed only
+     * on-demand, meaning that we do not have to walk the graph and construct CategoryView objects for nodes that are
+     * not read.
+     */
+    private Map<String, CategoryView> buildLazyMap(ImmutableSet<String> categoryNames) {
+      return Maps.asMap(categoryNames, CategoryView::new);
     }
 
+    /**
+     * @return views of the category's parents
+     */
+    public Map<String, CategoryView> getParents() {
+      return buildLazyMap(childrenToParents.get(name));
+    }
+
+    /**
+     * @return views of the category's children
+     */
     public Map<String, CategoryView> getChildren() {
-      return Maps.asMap(parentsToChildren.get(name), CategoryView::new);
+      return buildLazyMap(parentsToChildren.get(name));
     }
   }
 

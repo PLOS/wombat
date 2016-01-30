@@ -93,16 +93,27 @@
         </ul>
     </div><!-- /.filter-bar -->
 
-    <#include "common/URLParametersMacro.ftl" />
     <div class="header hdr-results subject cf">
         <div class="main">
-          <#assign totalPages = ((searchResults.numFound + selectedResultsPerPage - 1) / selectedResultsPerPage)?int>
-          <p class="count">Showing ${(page?number * selectedResultsPerPage) + 1} - <#if (searchResults.numFound lt selectedResultsPerPage)>${searchResults.numFound}<#else>
-            <#if (((page?number + 1) * selectedResultsPerPage) gt searchResults.numFound)>${searchResults.numFound}<#else>${(page?number + 1)* selectedResultsPerPage}</#if></#if> of ${searchResults.numFound}</p>
+        <#assign totalPages = ((searchResults.numFound + selectedResultsPerPage - 1) / selectedResultsPerPage)?int>
+          <p class="count">
+            Showing ${((page?number - 1) * selectedResultsPerPage) + 1} -
+          <#if (searchResults.numFound lt selectedResultsPerPage)>
+          ${searchResults.numFound}
+          <#else>
+            <#if ((page?number * selectedResultsPerPage) gt searchResults.numFound)>
+            ${searchResults.numFound}
+            <#else>
+            ${page?number * selectedResultsPerPage}
+            </#if>
+          </#if>
+            of ${searchResults.numFound}
+          </p>
+
           <p class="sort">
               <span>View by:</span>
-              <a id="cover-page-link" title="Cover page view" href="?<@URLParameters resultView="cover" sortOrder=selectedSortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "cover">active</#if>">Cover Page</a>
-              <a id="list-page-link" title="List page view" href="?<@URLParameters resultView="list" sortOrder=selectedSortOrder page=page resultsPerPage=resultsPerPage />" class="<#if resultView == "list">active</#if>">List Articles</a>
+              <a id="cover-page-link" title="Cover page view" href="?<@replaceParams parameterMap=parameterMap replacements={"resultView": "cover"} />" class="<#if resultView == "cover">active</#if>">Cover Page</a>
+              <a id="list-page-link" title="List page view" href="?<@replaceParams parameterMap=parameterMap replacements={"resultView": "list"} />" class="<#if resultView == "list">active</#if>">List Articles</a>
           </p>
         </div><!-- /.main -->
         <div class="sidebar">
@@ -110,9 +121,9 @@
                 <span>Sort by:</span>
             <#if selectedSortOrder == "DATE_NEWEST_FIRST">
                 <span class="active">Recent</span>
-                <a title="Sort by most viewed, all time" href="?<@URLParameters resultView=resultView sortOrder="MOST_VIEWS_ALL_TIME" resultsPerPage=resultsPerPage />">Popular</a>
+                <a title="Sort by most viewed, all time" href="?<@replaceParams parameterMap=parameterMap replacements={"sortOrder": "MOST_VIEWS_ALL_TIME", "page": 1} />">Popular</a>
             <#else>
-                <a title="Sort by most recent" href="?<@URLParameters resultView=resultView sortOrder="DATE_NEWEST_FIRST" resultsPerPage=resultsPerPage />" >Recent</a>
+                <a title="Sort by most recent" href="?<@replaceParams parameterMap=parameterMap replacements={"sortOrder": "DATE_NEWEST_FIRST", "page": 1} />" >Recent</a>
                 <span class="active">Popular</span>
             </#if>
             </p>
@@ -167,12 +178,14 @@
 
 </div>
 
-<#include "renderSearchPaginationLinks.ftl" />
+<#include "common/paging.ftl" />
 <#if category??>
-  <@renderSearchPaginationLinks url=fullBrowseUrl totalPages=totalPages currentPage=page?number/>
+  <#assign pagingPath = fullBrowseUrl />
 <#else>
-  <@renderSearchPaginationLinks url=browseUrl totalPages=totalPages currentPage=page?number/>
+  <#assign pagingPath = browseUrl />
 </#if>
+<@paging totalPages, page?number, pagingPath, parameterMap, true />
+
 <#include "common/footer/footer.ftl" />
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>

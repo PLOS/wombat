@@ -1,9 +1,12 @@
 package org.ambraproject.wombat.freemarker;
 
 
+import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Multimap;
 import freemarker.template.SimpleHash;
+import freemarker.template.SimpleScalar;
+import freemarker.template.TemplateModel;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -20,12 +23,10 @@ public class ReplaceParametersDirectiveTest {
     parameters.put("multiValuedParam", new String[]{"value1", "value2"});
     parameters.put("emptyParam", new String[]{""});
     parameters.put("paramToReplace", new String[]{"oldValue"});
-    Map directiveParams = new HashMap();
-    directiveParams.put("name", "paramToReplace");
-    directiveParams.put("value", "newValue");
+    Multimap<String, TemplateModel> replacements = ImmutableMultimap.of("paramToReplace", new SimpleScalar("newValue"));
 
     Multimap<String, String> actual = ReplaceParametersDirective.replaceParameters(new SimpleHash(parameters),
-        directiveParams);
+        replacements);
     ImmutableSetMultimap.Builder<String, String> expected = ImmutableSetMultimap.builder();
     expected.put("foo", "fooValue")
         .putAll("multiValuedParam", "value1", "value2")

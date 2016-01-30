@@ -6,6 +6,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.model.CategoryView;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -44,6 +46,9 @@ public class HomeController extends WombatController {
 
   @Autowired
   private RecentArticleService recentArticleService;
+
+  @Autowired
+  private BrowseTaxonomyService browseTaxonomyService;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -247,7 +252,12 @@ public class HomeController extends WombatController {
       }
     }
 
+    //todo: add categoryView and counts to model for Taxonomy Browser
+    CategoryView categoryView = browseTaxonomyService.parseCategories(site.getJournalKey());
+    Collection<SolrSearchService.SubjectCount> counts = browseTaxonomyService.getCounts(categoryView, site.getJournalKey());
+
     model.addAttribute("sections", sectionsForModel);
+    model.addAttribute("parameterMap", request.getParameterMap()); // needed for paging
     return site.getKey() + "/ftl/home/home";
   }
 

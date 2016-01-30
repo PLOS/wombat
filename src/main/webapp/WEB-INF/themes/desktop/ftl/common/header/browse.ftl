@@ -1,6 +1,5 @@
 <@js src="resource/js/taxonomy-browser.js" />
-<#include "../legacyLink.ftl" />
-<div id="taxonomy-browser" class="areas" data-legacy-url-prefix="${legacyUrlPrefix}">
+<div id="taxonomy-browser" class="areas" data-search-url="<@siteLink handlerName="browse"/>">
   <div class="wrapper">
     <div class="taxonomy-header">
       Browse Subject Areas

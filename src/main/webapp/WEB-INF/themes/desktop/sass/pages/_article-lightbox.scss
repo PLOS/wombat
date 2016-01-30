@@ -1,0 +1,444 @@
+/* @TODO: Move figure carousel to apporpiate place in article before displaying */
+
+$fv-small: rem-calc(7);
+#figure-carousel-section {
+  display: block;
+}
+.reveal-modal {
+  /* Fix for foundation's reveal-modal */
+  position: fixed;
+}
+
+.range-slider-active-segment {
+  /* Fix for foundation's range slider */
+  border-radius: 1000px;
+}
+
+#figure-lightbox {
+  .loader {
+    display: none;
+    &.showing {
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: $black;
+      z-index: map-get($zindex, dropdown);
+      opacity: 0.5;
+      @include single-transition();
+    }
+
+    i {
+      position: absolute;
+      top: 40%;
+      @extend .icon-spinner;
+      font-size: $txt-size-giant;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: $grey-med-dark;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: $grey-med-dark;
+  }
+
+
+
+  .lb-header {
+    font-family: $font-face-fancy;
+    padding: $fv-small rem-calc(280) 0 1.1%;
+    height: rem-calc(46);
+    background: $grey-dark;
+    position: relative;
+    border-right: rem-calc(46) solid transparent;
+    z-index: map_get($zindex, topvisible);
+
+    h1, h1 a {
+      font-size: $txt-size-medium;
+      margin: 0 0 rem-calc(2);
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: $grey-light;
+      line-height: normal;
+    }
+
+    a:hover {
+      color: $grey-light;
+      text-decoration: none;
+    }
+  }
+
+  .lb-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    li {
+      display: inline-block;
+      float: left;
+      border-right: 1px solid $grey-med-dark;
+      padding: 0 $pad-smallish;
+      font-size: $txt-size-medium-large;
+      line-height: rem-calc(46);
+      color: $white;
+      cursor: pointer;
+      outline: 0;
+
+      // special handling for PLOSOne is in _utilities.scss in the brand color section
+      &.tab-active {
+        @extend %brand-background;
+      }
+
+      &:hover {
+        background: $plos-default;
+        color: $white;
+      }
+    }
+  }
+
+  .lb-close {
+    background: image-url('sprite.fv.png') no-repeat -40px 0;
+    position: absolute;
+    right: rem-calc(-46);
+    top: 0;
+    width: rem-calc(46);
+    height: rem-calc(46);
+    cursor: pointer;
+    color: $grey-light;
+    &:hover {
+      @extend %brand-background;
+    }
+  }
+
+  h3 {
+    margin-bottom: $pad-default;
+    font-family: $font-face-plain;
+    font-size: $txt-size-large;
+    font-weight: bold;
+    color: $grey-dark;
+  }
+
+  #lb-authors {
+    height: rem-calc(15);
+    line-height: rem-calc(15);
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: $txt-size-xxsmall;
+    color: $grey-med-light;
+
+    span {
+      white-space: nowrap;
+      padding-right: rem-calc(3);
+    }
+    span:last-child {
+      padding-right: 0;
+    }
+  }
+
+
+  .img-container {
+    img.main-lightbox-image {
+      max-width: 80%;
+    }
+    height: 80%;
+    min-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+
+    #figures-list {
+      display: none;
+      height: 95%;
+      @media screen and (min-height: 740px) {
+          height: 100%;
+      }
+      overflow-y: scroll;
+      max-width: rem-calc(180px);
+      right: 0;
+      top: 0;
+      position: absolute;
+      background: $grey-dark;
+      .change-img {
+        background: $grey-med;
+        cursor: pointer;
+        padding: 4%;
+        margin: 8% 2%;
+        img {
+          min-width: 150px;
+        }
+      }
+    }
+  }
+
+  #lightbox-footer {
+    width: 100%;
+    background: $grey-light;
+    position: fixed;
+    bottom: 0;
+
+    #btns-container {
+      @extend %brand-background;
+      .range-slider-container {
+        position: relative;
+        .range-slider-handle {
+          background-color: white;
+        }
+        .range-slider {
+          width: 90%;
+          margin: rem-calc(12px) 5%;
+          background-color: rgba(255,255,255,0.64);
+        }
+
+        #lb-zoom-min,
+        #lb-zoom-max {
+          width: rem-calc(16);
+          height: rem-calc(16);
+          background: image-url('sprite.fv.png');
+          cursor: pointer;
+          position: absolute;
+          top: rem-calc(11px);
+        }
+
+        #lb-zoom-min {
+          left: -5px;
+          background-position: -110px 0;
+          cursor: -webkit-zoom-out;
+          cursor: -moz-zoom-out;
+        }
+
+        #lb-zoom-max {
+          right: -5px;
+          background-position: -90px 0;
+          cursor: -webkit-zoom-in;
+          cursor: -moz-zoom-in;
+        }
+      }
+    }
+
+    .lightbox-row {
+      text-align: center;
+      width: 100%;
+      min-height: rem-calc(40px);
+      .range-slider-container {
+        text-align: initial;
+        display: inline-block;
+        width: 33%;
+        margin-left: 33%;
+        float: left;
+      }
+
+      #fig-btns-container {
+        float: right;
+        .fig-btn {
+          display: block;
+          float: right;
+          padding: 0 $pad-small;
+          border-left: 1px solid #666;
+          border-color: rgba(51,51,51,0.25);
+          line-height: rem-calc(40px);
+          font-family: $font-face-fancy;
+          color: $white;
+          cursor: pointer;
+          .icon {
+            background-image: image-url('sprite.fv.png');
+            width: $fv-small;
+            height: rem-calc(11);
+            margin-top: rem-calc(15px);
+          }
+          &:hover {
+            background-color: $plos-default;
+            color: $white;
+          }
+
+          &.all-fig-btn {
+            padding: 0;
+            width: rem-calc(162);
+            text-align: center;
+            font-weight: bold;
+            .icon-all {
+              display: inline-block;
+              width: rem-calc(16);
+              height: rem-calc(16);
+              vertical-align: middle;
+              background-position: -90px -20px;
+              margin: 0 rem-calc(2);
+            }
+          }
+
+          &.next-fig-btn .icon-next {
+              background-position: -140px -20px;
+              float: right;
+              margin-left: 6px;
+          }
+
+          &.prev-fig-btn .icon-prev {
+            background-position: -130px -20px;
+            float: left;
+            margin-right: rem-calc(6);
+          }
+        }
+      }
+    }
+
+    #image-context {
+      width: 100%;
+      display: inline-block;
+      -webkit-transition: height 300ms ease-in-out;
+      -moz-transition: height 300ms ease-in-out;
+      -o-transition: height 300ms ease-in-out;
+      transition: height 300ms ease-in-out;
+      min-height: rem-calc(80px);
+      max-height: rem-calc(80px);
+      overflow-y: hidden;
+
+      &.full-display {
+        width: 100%;
+        max-height: rem-calc(150px);
+        overflow-y: scroll;
+        .footer-text {
+          width: 100%;
+        }
+        %full-display-no-show {
+          display: none;
+        }
+      }
+
+      .footer-text {
+        display: inline-block;
+        padding: 0 1% 0 1.1%;
+        word-wrap: break-word;
+        width: 39%;
+        background: $grey-light;
+        text-align: left;
+        font-family: $font-face-plain;
+        font-size: $txt-size-xsmall;
+        line-height: $line-height;
+        z-index: map-get($zindex, header);
+
+        #figure-description-wrapper {
+          #figure-title, title {
+            display: inline-block;
+            width: 100%;
+            font-size: $txt-size-small;
+            padding-top: rem-calc(3);
+            padding-right: rem-calc(16);
+            margin-bottom: 0;
+            font-weight: bold;
+            line-height: rem-calc(16);
+          }
+
+          overflow-y: hidden;
+          #view-more-wrapper {
+            /* Needs static height for dotdotdot to trim text */
+            max-height: rem-calc(82px);
+          }
+
+          #view-less-wrapper {
+            display: none;
+          }
+
+          #view-more, #view-less {
+            cursor: pointer;
+            color: $plos-default;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          i {
+            line-height: $line-height-small;
+            font-size: $txt-size-xsmall;
+            margin-left: 3px;
+          }
+        }
+
+        a {
+          color: $plos-default;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        p, span {
+          font-family: $font-face-plain;
+          padding-top: $pad-xsmall;
+          font-size: $txt-size-small;
+          line-height: rem-calc(18);
+        }
+      }
+
+      #show-context-container {
+        @extend %full-display-no-show;
+        width: 20%;
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+        padding-top: $pad-xsmall;
+        .show-context {
+          @extend .button-big;
+        }
+      }
+
+      #download-buttons {
+        @extend %full-display-no-show;
+        width: 40%;
+        display: inline-block;
+        vertical-align: top;
+        padding-top: $pad-xsmall;
+        text-align: right;
+        h3 {
+          display: inline-block;
+          font-size: $txt-size-small;
+          line-height: rem-calc(36);
+          margin: 0 $pad-default + $pad-xsmall;
+        }
+
+        .item {
+          float: right;
+          margin-right: $pad-default + $pad-xsmall;
+        }
+        .item a {
+          display: block;
+          color: $grey-dark;
+          text-decoration: none;
+        }
+        .size {
+          display: block;
+          font-size: 0.769em;
+          margin-top: $pad-xsmall;
+        }
+        .download-btn {
+          @extend .button-big;
+        }
+        .item a:hover .download-btn {
+          background: $plos-default;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+
+

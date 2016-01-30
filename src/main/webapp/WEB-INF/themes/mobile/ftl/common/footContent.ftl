@@ -1,5 +1,5 @@
-<#include "footer/footer.ftl" />
 
+<#include "footer/footer.ftl" />
 </div><#-- end container-main -->
 
 <#include "siteMenu/siteMenu.ftl" />

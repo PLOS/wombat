@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.model;
 
 import com.google.common.base.Splitter;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Maps;
@@ -8,6 +9,7 @@ import com.google.common.collect.SetMultimap;
 import com.google.common.collect.Sets;
 import com.google.common.collect.TreeMultimap;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +17,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class TaxonomyGraph {
+public class TaxonomyGraph implements Serializable {
 
   private final ImmutableSet<String> roots;
   private final ImmutableSetMultimap<String, String> parentsToChildren;
@@ -54,6 +56,10 @@ public class TaxonomyGraph {
 
   public ImmutableSet<String> getRootCategoryNames() {
     return roots;
+  }
+
+  public Collection<CategoryView> getRootCategoryViews() {
+    return Collections2.transform(getRootCategoryNames(), CategoryView::new);
   }
 
   public Set<String> getAllCategoryNames() {

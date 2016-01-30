@@ -4,8 +4,6 @@ import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Provides services related to reading and browsing the subject category taxonomy.
@@ -15,15 +13,6 @@ import java.util.Map;
  */
 
 public interface BrowseTaxonomyService {
-
-  /**
-   * Parses a list of slash-delimited categories, as returned by solr, into a sorted map
-   * from top-level category to a list of second-level categories.
-   *
-   * @param journalKey The current journal
-   * @return map with keys of (sorted) top-level categories
-   */
-  Map<String, List<String>> parseTopAndSecondLevelCategories(String journalKey) throws IOException;
 
   /**
    * For the current journal return a complete structured map of the taxonomic categories

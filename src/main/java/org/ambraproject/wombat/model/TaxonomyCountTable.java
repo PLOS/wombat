@@ -1,23 +1,26 @@
 package org.ambraproject.wombat.model;
 
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Maps;
+import org.ambraproject.wombat.service.remote.SolrSearchService.SubjectCount;
 
 import java.util.Collection;
-import java.util.Objects;
 
 public class TaxonomyCountTable {
 
-  private final TaxonomyGraph taxonomyGraph;
-  private final ImmutableMap<String, SubjectCount> counts;
+  private final ImmutableSortedMap<String, SubjectCount> counts; // case-insensitive
 
-  public TaxonomyCountTable(TaxonomyGraph taxonomyGraph, Collection<SubjectCount> counts) {
-    this.taxonomyGraph = Objects.requireNonNull(taxonomyGraph);
-    this.counts = Maps.uniqueIndex(counts, SubjectCount::getSubject);
+  public TaxonomyCountTable(Collection<SubjectCount> counts) {
+    this.counts = ImmutableSortedMap.copyOf(Maps.uniqueIndex(counts, SubjectCount::getSubject),
+        String.CASE_INSENSITIVE_ORDER);
   }
 
-  /*
-   * TODO: Provide views as needed
-   */
+  public long getCount(String subjectName) {
+    SubjectCount subjectCount = counts.get(subjectName);
+    if (subjectCount == null) {
+      throw new IllegalArgumentException();
+    }
+    return subjectCount.getCount();
+  }
 
 }

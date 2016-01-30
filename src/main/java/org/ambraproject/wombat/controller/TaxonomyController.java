@@ -16,8 +16,9 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.model.CategoryView;
-import org.ambraproject.wombat.model.SubjectCount;
+import org.ambraproject.wombat.model.TaxonomyCountTable;
+import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.ambraproject.wombat.util.HttpMessageUtil;
@@ -37,8 +38,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
@@ -63,7 +64,7 @@ public class TaxonomyController extends WombatController {
   @RequestMapping(name = "taxonomy", value = "" + TAXONOMY_TEMPLATE, method = RequestMethod.GET)
   @ResponseBody
   //todo: use query parameters to send category data instead of parsing the path to get the parent term
-  public List<SubjectCount> read(@SiteParam Site site, HttpServletRequest request)
+  public List<SubjectData> read(@SiteParam Site site, HttpServletRequest request)
       throws IOException {
     Map<String, Object> taxonomyBrowserConfig = site.getTheme().getConfigMap("taxonomyBrowser");
     boolean hasTaxonomyBrowser = (boolean) taxonomyBrowserConfig.get("hasTaxonomyBrowser");
@@ -71,12 +72,7 @@ public class TaxonomyController extends WombatController {
       throw new NotFoundException();
     }
 
-    CategoryView categoryView;
-    try {
-      categoryView = browseTaxonomyService.parseCategories(site.getJournalKey());
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    TaxonomyGraph taxonomyGraph = browseTaxonomyService.parseCategories(site.getJournalKey());
 
     //parent will be null only for the ROOT taxonomy
     String parent = getFullPathVariable(request, true, TAXONOMY_NAMESPACE);
@@ -84,45 +80,52 @@ public class TaxonomyController extends WombatController {
       parent = URLDecoder.decode(parent, "UTF-8");
     }
 
-    if (parent == null) {
-      parent = "";
-    } else {
-      String[] levels = parent.split("/");
-      for (String level : levels) {
-        categoryView = categoryView.getChild(level);
-      }
-      if (parent.charAt(0) != '/') {
-        parent = '/' + parent;
-      }
-    }
+    List<String> terms = TaxonomyGraph.parseTerms(parent);
+    String parentLeafNodeName = terms.get(terms.size() - 1);
+    CategoryView categoryView = taxonomyGraph.getView(parentLeafNodeName);
 
-    Collection<SubjectCount> articleCounts;
-    try {
-      articleCounts = browseTaxonomyService.getCounts(categoryView, site.getJournalKey());
-    } catch (Exception e) {
-      throw new IOException(e);
-    }
+    TaxonomyCountTable articleCounts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey());
 
     Map<String, SortedSet<String>> tree = getShortTree(categoryView);
-    List<SubjectCount> results = new ArrayList<>(tree.size());
+    List<SubjectData> results = new ArrayList<>(tree.size());
     for (Map.Entry<String, SortedSet<String>> entry : tree.entrySet()) {
       String subjectName = parent + '/' + entry.getKey();
       long childCount = entry.getValue().size();
-      long articleCount = articleCounts.stream()
-          .filter(count -> count.subject.equalsIgnoreCase(entry.getKey()))
-          .findAny().orElse(null).articleCount;
-      results.add(new SubjectCount(subjectName, articleCount, childCount));
+      long articleCount = articleCounts.getCount(subjectName);
+      results.add(new SubjectData(subjectName, articleCount, childCount));
     }
 
     if(categoryView.getName().equals("ROOT")) {
-      Long rootArticleCount = articleCounts.stream()
-          .filter(count -> count.subject.equals("ROOT"))
-          .findAny().orElse(null).articleCount;
-      results.add(new SubjectCount("ROOT", rootArticleCount, (long) results.size()));
+      Long rootArticleCount = articleCounts.getCount("ROOT");
+      results.add(new SubjectData("ROOT", rootArticleCount, (long) results.size()));
     }
 
-    Collections.sort(results);
+    Collections.sort(results, Comparator.comparing(SubjectData::getSubject));
     return results;
+  }
+
+  private static class SubjectData {
+    private final String subject;
+    private final long articleCount;
+    private final long childCount;
+
+    private SubjectData(String subject, long articleCount, long childCount) {
+      this.subject = subject;
+      this.articleCount = articleCount;
+      this.childCount = childCount;
+    }
+
+    public String getSubject() {
+      return subject;
+    }
+
+    public long getArticleCount() {
+      return articleCount;
+    }
+
+    public long getChildCount() {
+      return childCount;
+    }
   }
 
   @RequestMapping(name = "taxonomyCategoryFlag", value = "" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}", method = RequestMethod.POST)
@@ -150,10 +153,10 @@ public class TaxonomyController extends WombatController {
 
     Map<String, SortedSet<String>> results = new ConcurrentSkipListMap<>();
 
-    for(String key : categoryView.getChildren().keySet()) {
+    for(CategoryView child : categoryView.getChildren().values()) {
       ConcurrentSkipListSet sortedSet = new ConcurrentSkipListSet();
-      sortedSet.addAll(categoryView.getChild(key).getChildren().keySet());
-      results.put(key, sortedSet);
+      sortedSet.addAll(categoryView.getChildren().keySet());
+      results.put(child.getName(), sortedSet);
     }
 
     return results;

@@ -31,12 +31,16 @@ public class TaxonomyGraph {
 
   private static final Splitter CATEGORY_SPLITTER = Splitter.on('/').omitEmptyStrings();
 
+  public static List<String> parseTerms(String categoryPath) {
+    return CATEGORY_SPLITTER.splitToList(categoryPath);
+  }
+
   public static TaxonomyGraph create(Collection<String> categoryPaths) {
     Set<String> roots = new TreeSet<>();
     SetMultimap<String, String> parentsToChildren = TreeMultimap.create();
     SetMultimap<String, String> childrenToParents = TreeMultimap.create();
     for (String categoryPath : categoryPaths) {
-      List<String> categories = CATEGORY_SPLITTER.splitToList(categoryPath);
+      List<String> categories = parseTerms(categoryPath);
       roots.add(categories.get(0));
       for (int i = 1; i < categories.size(); i++) {
         String parent = categories.get(i - 1);

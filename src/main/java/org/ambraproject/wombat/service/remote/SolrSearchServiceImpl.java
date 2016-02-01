@@ -304,9 +304,9 @@ public class SolrSearchServiceImpl implements SolrSearchService {
 
   private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query) throws IOException {
     Map<String, Map> rawResults = (Map<String, Map>) search(query);
-    Map<?, ?> facet_counts = rawResults.get("facet_counts");
-    Map<?, ?> facet_fields = (Map<?, ?>) facet_counts.get("facet_fields");
-    Map<?, ?> resultsMap = (Map<?, ?>) facet_fields.get(query.getFacet().get());
+    Map<?, ?> facetCounts = rawResults.get("facet_counts");
+    Map<?, ?> facetFields = (Map<?, ?>) facetCounts.get("facet_fields");
+    Map<?, ?> resultsMap = (Map<?, ?>) facetFields.get(query.getFacet().get());
     return new FacetedQueryResponse(resultsMap, ((Double) rawResults.get("response").get("numFound")).longValue());
   }
 

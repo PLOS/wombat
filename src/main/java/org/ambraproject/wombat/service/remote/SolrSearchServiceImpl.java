@@ -63,7 +63,6 @@ public class SolrSearchServiceImpl implements SolrSearchService {
   protected Map<String, String> eIssnToJournalKey;
 
   private static final int MAX_FACET_SIZE = -1; //unlimited
-  private static final int MIN_FACET_COUNT = 1;
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -303,12 +302,11 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     return getRawResults(params).get("response");
   }
 
-  //todo: replace this with ArticleSearchQuery
-  private FacetedQueryResponse executeFacetedQuery(List<NameValuePair> params, String facet) throws IOException {
-    Map<String, Map> rawResults = getRawResults(params);
+  private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query) throws IOException {
+    Map<String, Map> rawResults = (Map<String, Map>) search(query);
     Map<?, ?> facet_counts = rawResults.get("facet_counts");
     Map<?, ?> facet_fields = (Map<?, ?>) facet_counts.get("facet_fields");
-    Map<?, ?> resultsMap = (Map<?, ?>) facet_fields.get(facet);
+    Map<?, ?> resultsMap = (Map<?, ?>) facet_fields.get(query.getFacet().get());
     return new FacetedQueryResponse(resultsMap, ((Double) rawResults.get("response").get("numFound")).longValue());
   }
 
@@ -317,11 +315,14 @@ public class SolrSearchServiceImpl implements SolrSearchService {
    */
   @Override
   public List<String> getAllSubjects(String journalKey) throws IOException {
-    String facet = "subject_hierarchy";
-    List<NameValuePair> params = setCommonCategoryParams(journalKey, facet);
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setForRawResults(true)
+        .setFacet("subject_hierarchy")
+        .setMaxFacetSize(MAX_FACET_SIZE)
+        .setJournalKeys(Collections.singletonList(journalKey));
 
     ArrayList<String> categories = new ArrayList<>();
-    FacetedQueryResponse response = executeFacetedQuery(params, facet);
+    FacetedQueryResponse response = executeFacetedQuery(query.build());
     categories.addAll(response.getResultsMap().keySet()
         .stream().map(Object::toString)
         .collect(Collectors.toList()));
@@ -334,52 +335,18 @@ public class SolrSearchServiceImpl implements SolrSearchService {
    */
   @Override
   public Collection<SubjectCount> getAllSubjectCounts(String journalKey) throws IOException {
-    String facet = "subject_facet";
-    List<NameValuePair> params = setCommonCategoryParams(journalKey, facet);
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setForRawResults(true)
+        .setFacet("subject_facet")
+        .setMaxFacetSize(MAX_FACET_SIZE)
+        .setJournalKeys(Collections.singletonList(journalKey));
 
-    FacetedQueryResponse response = executeFacetedQuery(params, facet);
+    FacetedQueryResponse response = executeFacetedQuery(query.build());
     List<SubjectCount> subjectCounts = response.getResultsMap().entrySet().stream()
         .map((Map.Entry<?, ?> entry) -> new SubjectCount((String) entry.getKey(),
             ((Double) entry.getValue()).longValue())).collect(Collectors.toList());
     subjectCounts.add(new SubjectCount("ROOT", response.getTotalArticles()));
     return subjectCounts;
-  }
-
-  /**
-   * This method is used to set common Solr parameters used by both @code{getAllSubjectCounts}
-   * and @code{getAllSubjects}.
-   *
-   * @param journalKey Solr query will be constrained by this journal key.
-   * @param facetName Solr query will be constrained to this facet.
-   *                  Will be either "subject_facet" or "subject_hierarchy".
-   * @return List of common name/value pairs used in Solr category browse queries.
-   */
-  private List<NameValuePair> setCommonCategoryParams(String journalKey, String facetName) {
-    List<NameValuePair> params = new ArrayList<>();
-    params.add(new BasicNameValuePair("wt", "json"));
-    params.add(new BasicNameValuePair("q", "*:*"));
-
-    params.add(new BasicNameValuePair("fq", "doc_type:full"));
-    params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
-
-    params.add(new BasicNameValuePair("fq", "cross_published_journal_key:" + journalKey));
-
-    params.add(new BasicNameValuePair("facet", "true"));
-    params.add(new BasicNameValuePair("facet.field", facetName));
-    params.add(new BasicNameValuePair("facet.method", "fc"));
-    params.add(new BasicNameValuePair("facet.mincount", Integer.toString(MIN_FACET_COUNT)));
-    params.add(new BasicNameValuePair("facet.limit", Integer.toString(MAX_FACET_SIZE)));
-    params.add(new BasicNameValuePair("json.nl", "map"));
-
-    params.add(new BasicNameValuePair("rows", "0"));
-
-    String fieldList = "id,score,title_display,publication_date,eissn,journal,article_type," +
-        "author_display,abstract,abstract_primary_display,striking_image,figure_table_caption," +
-        "subject,expression_of_concern,retraction";
-
-    params.add(new BasicNameValuePair("fl", fieldList));
-
-    return params;
   }
 
   /**

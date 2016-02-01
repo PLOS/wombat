@@ -1,5 +1,10 @@
 .home {
-  /* COLLECTIONS */
+
+  .spotlight {
+    margin: 0 0 41px 0;
+    @extend .clearfix;
+  }
+
   #ad-slot-bottom {
     float: left;
     width: 75%;
@@ -9,7 +14,7 @@
       width: 241px;
       height: 150px;
       overflow: hidden;
-      margin: 0 4px 41px 0;
+      margin: 0 4px 0 0;
       background: #fff;
       position: relative;
     }

@@ -506,7 +506,7 @@
 
     var url = createUrlFromTermStack();
     if (parent_term != '/') {
-      url += "&c=" + parent_term;
+      url += "c=" + parent_term;
     }
 
     $.ajax({

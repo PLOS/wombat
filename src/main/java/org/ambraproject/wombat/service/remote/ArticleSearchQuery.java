@@ -37,8 +37,8 @@ public class ArticleSearchQuery {
 
   private final Optional<String> facet;
 
-  private final Optional<Integer> maxFacetSize;
-  private final Optional<Integer> minFacetCount;
+  private final int maxFacetSize;
+  private final int minFacetCount;
 
   private final int start;
   private final int rows;
@@ -64,8 +64,8 @@ public class ArticleSearchQuery {
     this.isPartialSearch = builder.isPartialSearch;
     this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
     this.facet = Optional.fromNullable(builder.facet);
-    this.minFacetCount = Optional.fromNullable(builder.minFacetCount).or(Optional.of(MIN_FACET_COUNT));
-    this.maxFacetSize = Optional.fromNullable(builder.maxFacetSize).or(Optional.of(MAX_FACET_SIZE));
+    this.minFacetCount = builder.minFacetCount;
+    this.maxFacetSize = builder.maxFacetSize;
     this.start = builder.start;
     this.rows = builder.rows;
     this.sortOrder = Optional.fromNullable(builder.sortOrder);
@@ -121,8 +121,8 @@ public class ArticleSearchQuery {
     if (facet.isPresent()) {
       params.add(new BasicNameValuePair("facet", "true"));
       params.add(new BasicNameValuePair("facet.field", facet.get()));
-      params.add(new BasicNameValuePair("facet.mincount", Integer.toString(minFacetCount.get())));
-      params.add(new BasicNameValuePair("facet.limit", Integer.toString(maxFacetSize.get())));
+      params.add(new BasicNameValuePair("facet.mincount", Integer.toString(minFacetCount)));
+      params.add(new BasicNameValuePair("facet.limit", Integer.toString(maxFacetSize)));
       params.add(new BasicNameValuePair("json.nl", "map"));
     } else {
       params.add(new BasicNameValuePair("facet", "false"));
@@ -340,8 +340,8 @@ public class ArticleSearchQuery {
     builder.isForRawResults = this.isForRawResults;
     builder.filterQueries = this.filterQueries;
     builder.facet = this.facet.orNull();
-    builder.minFacetCount = this.minFacetCount.or(MIN_FACET_COUNT);
-    builder.maxFacetSize = this.maxFacetSize.or(MAX_FACET_SIZE);
+    builder.minFacetCount = this.minFacetCount;
+    builder.maxFacetSize = this.maxFacetSize;
     builder.start = this.start;
     builder.rows = this.rows;
     builder.sortOrder = this.sortOrder.orNull();
@@ -365,8 +365,8 @@ public class ArticleSearchQuery {
 
     private String facet;
 
-    private Integer maxFacetSize;
-    private Integer minFacetCount;
+    private int maxFacetSize = MAX_FACET_SIZE;
+    private int minFacetCount = MIN_FACET_COUNT;
 
     private int start;
     private int rows;
@@ -445,7 +445,7 @@ public class ArticleSearchQuery {
     /**
      * @param maxFacetSize maximum number of faceted results to return
      */
-    public Builder setMaxFacetSize(Integer maxFacetSize) {
+    public Builder setMaxFacetSize(int maxFacetSize) {
       this.maxFacetSize = maxFacetSize;
       return this;
     }
@@ -453,7 +453,7 @@ public class ArticleSearchQuery {
     /**
      * @param minFacetCount   minimum number of facets to use
      */
-    public Builder setMinFacetCount(Integer minFacetCount) {
+    public Builder setMinFacetCount(int minFacetCount) {
       this.minFacetCount = minFacetCount;
       return this;
     }

@@ -63,9 +63,8 @@ public class TaxonomyController extends WombatController {
   @Autowired
   private BrowseTaxonomyService browseTaxonomyService;
 
-  @RequestMapping(name = "taxonomy", value = "" + TAXONOMY_TEMPLATE, method = RequestMethod.GET)
+  @RequestMapping(name = "taxonomy", value = TAXONOMY_TEMPLATE, method = RequestMethod.GET)
   @ResponseBody
-  //todo: use query parameters to send category data instead of parsing the path to get the parent term
   public List<SubjectData> read(@SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params)
       throws IOException {

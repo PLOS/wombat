@@ -118,9 +118,9 @@ public final class RequestMappingContextDictionary {
      */
     if (!isFrozen) {
       synchronized (writeLock) {
-        isFrozen = true;
         siteTable = ImmutableTable.copyOf(siteTableBuilder);
         globalTable = ImmutableMap.copyOf(globalTableBuilder);
+        isFrozen = true;
       }
     }
   }

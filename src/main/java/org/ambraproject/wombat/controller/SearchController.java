@@ -21,7 +21,7 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.model.CategoryView;
+import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
@@ -708,7 +708,7 @@ public class SearchController extends WombatController {
   }
 
   private void modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
-    CategoryView fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
+    TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
 
     Set<String> subjectParents;
     Set<String> subjectChildren;
@@ -716,11 +716,11 @@ public class SearchController extends WombatController {
       //Recreate the category name as stored in the DB
       subject = subject.replace("_", " ");
 
-      CategoryView categoryView = browseTaxonomyService.findCategory(fullTaxonomyView, subject);
+      TaxonomyGraph.CategoryView categoryView = fullTaxonomyView.getView(subject);
       if (categoryView == null) {
         throw new NotFoundException(String.format("category %s does not exist.", subject));
       } else {
-        if (categoryView.getParents().keySet().size() == 1 && categoryView.getParents().keySet().contains("ROOT")) {
+        if (categoryView.getParents().isEmpty()) {
           subjectParents = new HashSet<>();
         } else {
           subjectParents = categoryView.getParents().keySet();
@@ -730,7 +730,7 @@ public class SearchController extends WombatController {
       }
     } else {
       subjectParents = new HashSet<>();
-      subjectChildren = fullTaxonomyView.getChildren().keySet();
+      subjectChildren = fullTaxonomyView.getRootCategoryNames();
     }
 
     model.addAttribute("subjectParents", subjectParents);

@@ -6,7 +6,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.model.CategoryView;
+import org.ambraproject.wombat.model.TaxonomyCountTable;
+import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
@@ -253,8 +254,8 @@ public class HomeController extends WombatController {
     }
 
     //todo: add categoryView and counts to model for Taxonomy Browser
-    CategoryView categoryView = browseTaxonomyService.parseCategories(site.getJournalKey());
-    Collection<SolrSearchService.SubjectCount> counts = browseTaxonomyService.getCounts(categoryView, site.getJournalKey());
+    TaxonomyGraph taxonomyGraph = browseTaxonomyService.parseCategories(site.getJournalKey());
+    TaxonomyCountTable counts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey());
 
     model.addAttribute("sections", sectionsForModel);
     model.addAttribute("parameterMap", request.getParameterMap()); // needed for paging

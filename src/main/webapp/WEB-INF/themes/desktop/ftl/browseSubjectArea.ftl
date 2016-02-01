@@ -40,19 +40,13 @@
         <h1>${category!"All Subject Areas"}</h1>
         <ul>
             <li class="first">
-                <a href="${browseUrl}" title="Related content">Related content</a><span></span>
+                <a href="#" title="Related content">Related content</a><span></span>
             <#-- This xmlns mark up is for search engines to understand the hiearchy a bit -->
                 <div xmlns:v="http://rdf.data-vocabulary.org/#" class="dropdown">
                     <ul typeof="v:Breadcrumb">
-                    <#if parents?? && parents?size gt 0>
-                      <#list parents as parent>
-                          <li><a rel="v:url" property="v:title" href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": encodeSubject(parent)} />"></a></li>
-                        <#-- Only mark up the first element as part of the breadcrumb parent -->
-                          <#if parent_index == 0>
-                              <li><a rel="v:url" property="v:title" href="${browseUrl}">${parent}</a></li>
-                          <#else>
-                              <li><a href="./">${parent}</a></li>
-                          </#if>
+                    <#if subjectParents?? && subjectParents?size gt 0>
+                      <#list subjectParents as parent>
+                          <li><a rel="v:url" property="v:title" href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": encodeSubject(parent)} />">${parent}</a></li>
                       </#list>
                     <#else>
                       <#if category??>
@@ -60,10 +54,10 @@
                       </#if>
                     </#if>
                       <li class="here" rel="v:child">
-                            <#--<a typeof="v:Breadcrumb" rel="v:url" href="${fullBrowseUrl}"><div property="v:title" >${category!"All Subject Areas"}</div><span></span></a>-->
+                            <a typeof="v:Breadcrumb" rel="v:url" href="${fullBrowseUrl}"><div property="v:title" >${category!"All Subject Areas"}</div><span></span></a>
                         <ul>
-                        <#if children??>
-                          <#list children as child>
+                        <#if subjectChildren??>
+                          <#list subjectChildren as child>
                             <li><a href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": encodeSubject(child)} />">${child}</a></li>
                           </#list>
                         </#if>

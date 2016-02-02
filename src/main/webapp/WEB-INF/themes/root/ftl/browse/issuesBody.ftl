@@ -96,7 +96,7 @@
                 <ol>
                     <#list articleInfo.relatedArticles as relArticle>
                         <li>
-                          <a href="http://dx.plos.org/${relArticle.doi?replace('info:doi/','')}"
+                          <a href="${doiResolverLink(relArticle.doi)}"
                              title="Read Open Access Article">
                               <@titleFormat removeTags(relArticle.title) />
                           </a>

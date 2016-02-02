@@ -10,17 +10,8 @@
   </div>
   <div data-js-tooltip-hover="trigger" class="dload-hover">&nbsp;
     <ul class="dload-xml" data-js-tooltip-hover="target">
-
-    <@isDevFeatureEnabled feature="citationDownload" ; citationDownloadIsEnabled>
-      <#if citationDownloadIsEnabled>
-        <li><a href="<@siteLink handlerName="citationDownloadPage" queryParameters={'id': article.doi} />"
-               id="downloadCitation">Citation</a></li>
-      <#else>
-      <#-- TODO: Delete the citationLink.ftl file when citationDownload is permanently enabled -->
-        <#include "citationLink.ftl" />
-      </#if>
-    </@isDevFeatureEnabled>
-
+      <li><a href="<@siteLink handlerName="citationDownloadPage" queryParameters={'id': article.doi} />"
+             id="downloadCitation">Citation</a></li>
       <li><a href="<@siteLink handlerName="asset" queryParameters={"id": article.doi + ".XML"} />"
              id="downloadXml">XML</a>
       </li>

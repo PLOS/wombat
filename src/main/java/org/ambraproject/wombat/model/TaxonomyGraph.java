@@ -3,10 +3,11 @@ package org.ambraproject.wombat.model;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSetMultimap;
+import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Maps;
-import com.google.common.collect.SetMultimap;
+import com.google.common.collect.Multimaps;
 import com.google.common.collect.Sets;
+import com.google.common.collect.SortedSetMultimap;
 import com.google.common.collect.TreeMultimap;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
@@ -23,16 +25,18 @@ import java.util.TreeSet;
  */
 public class TaxonomyGraph implements Serializable {
 
-  private final ImmutableSet<String> roots;
-  private final ImmutableSetMultimap<String, String> parentsToChildren;
-  private final ImmutableSetMultimap<String, String> childrenToParents;
+  // All lookups are case-insensitive, so all data structures sorted with case-insensitive comparisons.
+  // There is no ImmutableSortedSetMultimap, so use unmodifiable wrappers instead.
+  private final SortedSetMultimap<String, String> parentsToChildren;
+  private final SortedSetMultimap<String, String> childrenToParents;
+  private final ImmutableSortedSet<String> roots;
 
-  private TaxonomyGraph(Collection<String> roots,
-                        SetMultimap<String, String> parentsToChildren,
-                        SetMultimap<String, String> childrenToParents) {
-    this.roots = ImmutableSet.copyOf(roots);
-    this.parentsToChildren = ImmutableSetMultimap.copyOf(parentsToChildren);
-    this.childrenToParents = ImmutableSetMultimap.copyOf(childrenToParents);
+  private TaxonomyGraph(Set<String> roots,
+                        SortedSetMultimap<String, String> parentsToChildren,
+                        SortedSetMultimap<String, String> childrenToParents) {
+    this.roots = ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, roots);
+    this.parentsToChildren = Multimaps.unmodifiableSortedSetMultimap(parentsToChildren);
+    this.childrenToParents = Multimaps.unmodifiableSortedSetMultimap(childrenToParents);
   }
 
   private static final Splitter CATEGORY_SPLITTER = Splitter.on('/').omitEmptyStrings();
@@ -41,14 +45,18 @@ public class TaxonomyGraph implements Serializable {
     return CATEGORY_SPLITTER.splitToList(categoryPath);
   }
 
+  private static SortedSetMultimap<String, String> caseInsenstiveSetMultimap() {
+    return TreeMultimap.create(String.CASE_INSENSITIVE_ORDER, String.CASE_INSENSITIVE_ORDER);
+  }
+
   /**
    * @param categoryPaths a list of all slash-delimited category paths in the taxonomy
    * @return a parsed graph representation of the taxonomy
    */
   public static TaxonomyGraph create(Collection<String> categoryPaths) {
-    Set<String> roots = new TreeSet<>();
-    SetMultimap<String, String> parentsToChildren = TreeMultimap.create();
-    SetMultimap<String, String> childrenToParents = TreeMultimap.create();
+    Set<String> roots = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+    SortedSetMultimap<String, String> parentsToChildren = caseInsenstiveSetMultimap();
+    SortedSetMultimap<String, String> childrenToParents = caseInsenstiveSetMultimap();
     for (String categoryPath : categoryPaths) {
       List<String> categories = parseTerms(categoryPath);
       roots.add(categories.get(0));
@@ -75,7 +83,7 @@ public class TaxonomyGraph implements Serializable {
   }
 
   /**
-   * @param categoryName the name of a category (not a full path)
+   * @param categoryName the name of a category (not a full path; case-insensitive)
    * @return a view of the named category, or {@code null} if no such category is in this graph
    */
   public CategoryView getView(String categoryName) {
@@ -104,8 +112,10 @@ public class TaxonomyGraph implements Serializable {
      * Create a lazy-loading map view of a group of other categories. Other CategoryView will be constructed only
      * on-demand, meaning that we do not have to walk the graph and construct CategoryView objects for nodes that are
      * not read.
+     * <p>
+     * Uses the same definition of equality as the delegate set (i.e., case-insensitivity).
      */
-    private Map<String, CategoryView> buildLazyMap(ImmutableSet<String> categoryNames) {
+    private Map<String, CategoryView> buildLazyMap(SortedSet<String> categoryNames) {
       return Maps.asMap(categoryNames, CategoryView::new);
     }
 

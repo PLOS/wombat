@@ -1,4 +1,4 @@
-<div class="" id="pjax-container">
+<div id="pjax-container">
 <#assign almInfoURL="http://lagotto.io/plos" />
 
   <div id="article-metrics">

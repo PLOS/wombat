@@ -295,9 +295,6 @@ var FigureLightbox = {};
 
   FigureLightbox.panZoom = function ($image) {
     var that = this;
-    if ($image.panzoom) {
-      $image.panzoom('destroy');
-    }
     this.$panZoomEl = $image.panzoom({
       contain: false,
       minScale: 0.45

@@ -4,7 +4,7 @@
   font-size: 1.5em;
 }
 
-#container-main{
+#container-main, body{
   background: #e5e4e4;
 }
 .highcharts-container {
@@ -15,7 +15,7 @@
   background-color: white;
   padding: 10px;
   border-radius: 3px;
-  margin: 20px 0;
+  margin: 20px;
 
 }
 /* pageViewsSummary table */

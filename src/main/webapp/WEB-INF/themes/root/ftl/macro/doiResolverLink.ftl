@@ -7,7 +7,7 @@ The domain used for the DOI resolver URL can be customized in themes via doiReso
 
 <#function doiResolverLink doi>
 
-  <#assign doi = doi.replace("info:doi/", "") />
+  <#assign doi = doi?replace("info:doi/", "") />
   <#return "http://" + doiResolverDomain + "/" + doi />
 
 </#function>

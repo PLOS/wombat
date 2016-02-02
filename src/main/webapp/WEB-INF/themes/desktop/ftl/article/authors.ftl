@@ -40,12 +40,15 @@
     <#if correspondingAuthors?? && correspondingAuthors?size gt 0>
       <#if correspondingAuthors?size == 1>
         <h2>Corresponding Author</h2>
+        <p class="about-author">${correspondingAuthors[0]}</p>
       <#else>
         <h2>Corresponding Authors</h2>
+        <ul>
+          <#list correspondingAuthors as correspondingAuthor>
+            <li class="about-author">${correspondingAuthor}</li>
+          </#list>
+        </ul>
       </#if>
-      <#list correspondingAuthors as correspondingAuthor>
-        <p class="about-author">${correspondingAuthor}</p>
-      </#list>
     </#if>
 
     <#if competingInterests?size gt 0>

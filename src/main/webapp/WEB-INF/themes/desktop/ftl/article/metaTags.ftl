@@ -1,5 +1,6 @@
 <#include "../common/twitterConfig.ftl" />
 <#include "../common/pubUrlPrefix.ftl" />
+<#include "../macro/doiResolverLink.ftl" />
 
 <#--//analytics related meta tags - description and keywords-->
 <#if article.description??>
@@ -62,7 +63,7 @@
 <meta property="og:title" content="${article.title?replace('<.+?>',' ','r')?html}" />
 <meta property="og:description" content="${article.description?replace('<.+?>',' ','r')?html}" />
   <#if (article.strkImgURI?? && (article.strkImgURI?length > 0)) >
-  <meta property="og:image" content="http://dx.plos.org/${article.strkImgURI?replace('info:doi/','')}" />
+  <meta property="og:image" content="${doiResolverLink(article.strkImgURI)}" />
   </#if>
 </#if>
 

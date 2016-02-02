@@ -295,6 +295,9 @@ var FigureLightbox = {};
 
   FigureLightbox.panZoom = function ($image) {
     var that = this;
+    if ($image.panzoom) {
+      $image.panzoom('destroy');
+    }
     this.$panZoomEl = $image.panzoom({
       contain: false,
       minScale: 0.45
@@ -304,7 +307,7 @@ var FigureLightbox = {};
     this.bindPanZoomToSlider();
     this.bindSliderToPanZoom();
 
-    this.$panZoomEl.parent().on('mousewheel.focal', function(e) {
+    this.$panZoomEl.parent().off('mousewheel.focal').on('mousewheel.focal', function(e) {
       e.preventDefault();
       var delta = e.delta || e.originalEvent.wheelDelta;
       var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
@@ -344,7 +347,7 @@ var FigureLightbox = {};
   };
   FigureLightbox.bindSliderToPanZoom = function () {
     var that = this;
-    this.$panZoomEl.on('panzoomzoom', function(e, panzoom, scale) {
+    this.$panZoomEl.off('panzoomzoom').on('panzoomzoom', function(e, panzoom, scale) {
       $(that.zoomRangeSelector).foundation('slider', 'set_value', scale);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
@@ -370,7 +373,9 @@ var FigureLightbox = {};
         .find('.change-img').off('click').end()
       // Unbind button to show all images
         .find('.all-fig-btn').off('click').end()
-        .off('image-switch');*/
+        .off('image-switch');
+      this.$panZoomEl.panzoom('destroy');
+        */
   };
 
   })(jQuery);

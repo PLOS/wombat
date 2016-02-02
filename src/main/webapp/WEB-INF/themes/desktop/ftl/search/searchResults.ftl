@@ -210,12 +210,15 @@
                       <p class="search-results-alm-loading">
                           Loading metrics information...
                       </p>
+                    <#assign metricsUrl>
+                      <@siteLink handlerName="articleMetrics" queryParameters={"id": doc.id} />
+                    </#assign>
 
                       <p class="search-results-alm" data-doi="${doc.id}">
-                          <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#viewedHeader">Views: </a> •
-                          <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#citedHeader">Citations: </a> •
-                          <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#savedHeader">Saves: </a> •
-                          <a href="${legacyUrlPrefix}article/metrics/info:doi/${doc.id}#discussedHeader">Shares: </a>
+                          <a href="${metricsUrl}#viewedHeader">Views: </a> •
+                          <a href="${metricsUrl}#citedHeader">Citations: </a> •
+                          <a href="${metricsUrl}#savedHeader">Saves: </a> •
+                          <a href="${metricsUrl}#discussedHeader">Shares: </a>
                       </p>
 
                       <p class="search-results-alm-error">

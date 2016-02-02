@@ -1,9 +1,13 @@
 <#assign articleDoi = article.doi />
 
-<#include "../common/headContent.ftl" />
-<#include "../common/configJs.ftl" />
+<#include "../common/htmlTag.ftl" />
 
-<div id="article-content" class="content">
+<#assign title = article.title />
+<#assign depth = 1 />
+<#include "../common/head.ftl" />
+<#include "../common/configJs.ftl" />
+<#include "backToArticle.ftl" />
+<div id="container-main" class="metrics">
 
 
 

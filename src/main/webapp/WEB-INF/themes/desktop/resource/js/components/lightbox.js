@@ -214,13 +214,15 @@ var FigureLightbox = {};
 
   FigureLightbox.expandDescription = function () {
     $('#image-context').addClass('full-display');
-    $('#view-more-wrapper').slideUp();
+    // Workaround to slide and fade at the same time
+    $('#view-more-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp();
     $('#view-less-wrapper').slideDown('slow');
     this.descriptionExpanded = true;
   };
 
   FigureLightbox.retractDescription = function () {
-    $('#view-less-wrapper').slideUp('slow', function () {
+    // Workaround to slide and fade at the same time
+    $('#view-less-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp(500, function () {
       $('#image-context').removeClass('full-display');
       $('#view-more-wrapper').show();
       // Dotdotdot in case description is initialized expanded

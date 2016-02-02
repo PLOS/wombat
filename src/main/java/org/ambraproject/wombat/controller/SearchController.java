@@ -505,7 +505,6 @@ public class SearchController extends WombatController {
   public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
       throws IOException {
-    enforceDevFeature("browse");
     subjectAreaSearch(request, model, site, params, subject);
     return site.getKey() + "/ftl/browseSubjectArea";
   }

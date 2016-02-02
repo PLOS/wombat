@@ -739,8 +739,6 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "email", value = "/article/email")
   public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam("id") String articleId) throws IOException {
-    // TODO: remove when ready to expose page in prod
-    enforceDevFeature("emailThisArticle");
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -767,8 +765,6 @@ public class ArticleController extends WombatController {
       @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
       @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException, MessagingException {
-    // TODO: remove when ready to expose page in prod
-    enforceDevFeature("emailThisArticle");
     requireNonemptyParameter(articleId);
     requireNonemptyParameter(articleUri);
 

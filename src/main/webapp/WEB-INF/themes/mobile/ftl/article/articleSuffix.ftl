@@ -8,14 +8,6 @@
       </a>
     </li>
   </#if>
-  <#if articleCorrections?? && articleCorrections?size gt 0>
-    <li class="menuitem">
-      <a class="btn-lg" href="article/corrections?id=${article.doi}">
-        <span class="arrow">View</span>
-        Corrections (${articleCorrections?size})
-      </a>
-    </li>
-  </#if>
   <#if articleComments?? && articleComments?size &gt; 0>
     <li class="menuitem">
       <a class="btn-lg" href="<@siteLink handlerName="articleComments" queryParameters={"id": article.doi} />">

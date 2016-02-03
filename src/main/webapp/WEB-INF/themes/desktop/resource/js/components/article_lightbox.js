@@ -69,17 +69,17 @@ var FigureLightbox = {};
 
     $(this.lbContainerSelector)
         .data('is-inited', true)
-      // Bind close button
+        // Bind close button
         .find(this.lbCloseButtonSelector).on('click', function () {
           that.close();
         }).end()
 
-      // Bind buttons to change images
+        // Bind buttons to change images
         .find('.change-img').on('click', function () {
           that.switchImage(this.getAttribute('data-doi'));
         }).end()
 
-      // Bind button to show all images
+        // Bind button to show all images
         .find('.all-fig-btn').on('click', function () {
           var $figList = $('#figures-list');
           if (!$figList.is(':visible')) { // If not is visible show it
@@ -94,22 +94,22 @@ var FigureLightbox = {};
           });
         }).end()
 
-      // Bind mousewheel in figure list. Prevent image zooming
+        // Bind mousewheel in figure list. Prevent image zooming
         .find('#figures-list').on('mousewheel', function(e) {
           e.stopPropagation();
         }).end()
 
-      // Bind show in context button
+        // Bind show in context button
         .find('#image-context').on('click', '.show-context', function () {
           that.close();
         }).end()
 
-      // Bind next figure button
+        // Bind next figure button
         .find('.next-fig-btn').on('click', function () {
           return that.nextImage();
         }).end()
 
-      // Bind next figure button
+        // Bind next figure button
         .find('.prev-fig-btn').on('click', function () {
           return that.prevImage();
         }).end()
@@ -193,7 +193,7 @@ var FigureLightbox = {};
     var lbTemplate = _.template($(this.contextTemplateSelector).html());
     // Remove actual img context
     $(this.lbSelector + ' #image-context').children().remove().end()
-      // Append new img context
+        // Append new img context
         .append(lbTemplate(templateData));
     this.renderImg(this.imgData.doi);
 
@@ -364,17 +364,17 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.destroy = function () {
-    // @TODO: Check when to destroy modal with images
-    /*    $(this.lbContainerSelector)
-     // Unbind close button
-     .find(this.lbCloseButtonSelector).off('click').end()
-     // Unbind buttons to change images
-     .find('.change-img').off('click').end()
-     // Unbind button to show all images
-     .find('.all-fig-btn').off('click').end()
-     .off('image-switch');
-     this.$panZoomEl.panzoom('destroy');
-     */
+      // @TODO: Check when to destroy modal with images
+/*    $(this.lbContainerSelector)
+      // Unbind close button
+        .find(this.lbCloseButtonSelector).off('click').end()
+      // Unbind buttons to change images
+        .find('.change-img').off('click').end()
+      // Unbind button to show all images
+        .find('.all-fig-btn').off('click').end()
+        .off('image-switch');
+      this.$panZoomEl.panzoom('destroy');
+        */
   };
 
-})(jQuery);
+  })(jQuery);

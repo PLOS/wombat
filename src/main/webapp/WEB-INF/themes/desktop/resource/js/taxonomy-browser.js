@@ -511,7 +511,7 @@
 
     //Replace spaces with underscores, will be reverted to spaces in TaxonomyController.
     //This prevents 502 proxy errors that occur when we try to request a url with '%20' in it.
-    url = url.replace(" ", "_");
+    url = url.replace(/\s/g, "_");
 
     $.ajax({
       url: url,

@@ -14,20 +14,20 @@
   </#if></@themeConfig>
 </#macro>
 
-<#macro displayTabList tabPage='article'>
+<#macro displayTabList tabPage='Article'>
 <ul class="article-tabs">
   <#assign tabCounter = 0 /> <#-- Referred to privately by tabyLink -->
 
-  <@tabyLink tabPage "article" "article">Article</@tabyLink>
+  <@tabyLink tabPage "Article" "article">Article</@tabyLink>
 
   <#if authors?? && authors?size gt 0>
     <#if !["Correction", "Retraction", "Expression of Concern", "Obituary"]?seq_contains(articleTypeHeading) >
-      <@tabyLink tabPage "authors" "articleAuthors">Authors</@tabyLink>
+      <@tabyLink tabPage "Authors" "articleAuthors">Authors</@tabyLink>
     </#if>
   </#if>
 
-  <@tabyLink tabPage "metrics" "articleMetrics">Metrics</@tabyLink>
-  <@tabyLink tabPage "comments" "articleComments">Comments</@tabyLink>
-  <@tabyLink tabPage "related" "articleRelatedContent">Related Content</@tabyLink>
+  <@tabyLink tabPage "Metrics" "articleMetrics">Metrics</@tabyLink>
+  <@tabyLink tabPage "Comments" "articleComments">Comments</@tabyLink>
+  <@tabyLink tabPage "Related" "articleRelatedContent">Related Content</@tabyLink>
 </ul>
 </#macro>

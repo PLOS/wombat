@@ -18,7 +18,7 @@
   <section class="article-body">
 
   <#include "tabs.ftl" />
-  <@displayTabList "related" />
+  <@displayTabList "Related" />
   <#include "relatedContentBody.ftl" />
 
   </section>

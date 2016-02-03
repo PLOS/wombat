@@ -45,7 +45,7 @@ public class TaxonomyGraph implements Serializable {
     return CATEGORY_SPLITTER.splitToList(categoryPath);
   }
 
-  private static SortedSetMultimap<String, String> caseInsenstiveSetMultimap() {
+  private static SortedSetMultimap<String, String> caseInsensitiveSetMultimap() {
     return TreeMultimap.create(String.CASE_INSENSITIVE_ORDER, String.CASE_INSENSITIVE_ORDER);
   }
 
@@ -55,8 +55,8 @@ public class TaxonomyGraph implements Serializable {
    */
   public static TaxonomyGraph create(Collection<String> categoryPaths) {
     Set<String> roots = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
-    SortedSetMultimap<String, String> parentsToChildren = caseInsenstiveSetMultimap();
-    SortedSetMultimap<String, String> childrenToParents = caseInsenstiveSetMultimap();
+    SortedSetMultimap<String, String> parentsToChildren = caseInsensitiveSetMultimap();
+    SortedSetMultimap<String, String> childrenToParents = caseInsensitiveSetMultimap();
     for (String categoryPath : categoryPaths) {
       List<String> categories = parseTerms(categoryPath);
       roots.add(categories.get(0));

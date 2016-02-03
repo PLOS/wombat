@@ -2,6 +2,7 @@
 <#assign cssFile = "issues.css" />
 
 <#include "../common/headContent.ftl" />
+<#include "../macro/doiResolverLink.ftl" />
 
   <div id="feedback-form-container">
   <#include "issuesBody.ftl"/>

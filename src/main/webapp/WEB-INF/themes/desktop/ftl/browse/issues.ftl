@@ -9,6 +9,7 @@
 <#assign title = issuesTitle />
 
 <#include "../macro/removeTags.ftl" />
+<#include "../macro/doiResolverLink.ftl" />
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <body class="browse-issue ${journalStyle}">
@@ -120,7 +121,7 @@
                         <ol>
                             <#list articleInfo.relatedArticles as relArticle>
                                 <li>
-                                  <a href="http://dx.plos.org/${relArticle.doi?replace('info:doi/','')}"
+                                  <a href="${doiResolverLink(relArticle.doi)}"
                                      title="Read Open Access Article">
                                       ${relArticle.title}
                                   </a>

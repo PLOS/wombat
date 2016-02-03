@@ -6,10 +6,7 @@
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
 <#setting url_escaping_charset="UTF-8">
-<#if filterSubjects?has_content>
-    <#assign category = filterSubjects?first?cap_first!"" />
-</#if>
-<#assign title = category!"All Subject Areas" />
+<#assign title = subjectName />
 <#assign cssFile="browse-subject-area.css"/>
 <#include "common/head.ftl" />
 <#include "common/journalStyle.ftl" />
@@ -27,18 +24,18 @@
     <#assign resultView = "cover">
 </#if>
 <@siteLink handlerName="browse" ; url>
-    <#assign browseUrl = url/>
+    <#assign rootBrowseUrl = url/>
 </@siteLink>
-<#if category??>
-  <@siteLink handlerName="browseSubjectArea" pathVariables={"subject":encodeSubject(category)}; url>
-    <#assign fullBrowseUrl = url/>
+<#if subject?has_content>
+  <@siteLink handlerName="browseSubjectArea" pathVariables={"subject":encodeSubject(subject)}; url>
+    <#assign categoryBrowseUrl = url/>
   </@siteLink>
 <#else>
-  <#assign fullBrowseUrl = browseUrl/>
+  <#assign categoryBrowseUrl = rootBrowseUrl/>
 </#if>
 <div id="search-results-block" class="cf subject-listing">
     <div class="filter-bar subject cf">
-        <h1>${category!"All Subject Areas"}</h1>
+        <h1>${subjectName}</h1>
         <ul>
             <li class="first">
                 <a href="#" title="Related content">Related content</a><span></span>
@@ -49,11 +46,11 @@
                       <#list subjectParents as parent>
                           <li><a rel="v:url" property="v:title" href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": encodeSubject(parent)} />">${parent}</a></li>
                       </#list>
-                    <#elseif category??>
-                      <li><a rel="v:url" property="v:title" href="${browseUrl}">All Subject Areas</a></li>
+                    <#elseif subject?has_content>
+                      <li><a rel="v:url" property="v:title" href="${rootBrowseUrl}">All Subject Areas</a></li>
                     </#if>
                       <li class="here" rel="v:child">
-                            <a typeof="v:Breadcrumb" rel="v:url" href="${fullBrowseUrl}"><div property="v:title" >${category!"All Subject Areas"}</div><span></span></a>
+                            <a typeof="v:Breadcrumb" rel="v:url" href="${categoryBrowseUrl}"><div property="v:title" >${subjectName}</div><span></span></a>
                         <ul>
                         <#if subjectChildren??>
                           <#list subjectChildren as child>
@@ -67,7 +64,7 @@
             </li>
         <#--@TODO: Handle session and subscription-->
         <#--
-            <#if category??>
+            <#if subject?has_content>
                 <li class="middle">
                                  <#if Session?exists && Session[freemarker_config.userAttributeKey]?exists>
                     <#if subscribed>
@@ -75,9 +72,9 @@
                     <#else>
                       <#assign subscribedClass = "">
                     </#if>
-                      <a href="#" title="Get an email alert for ${category}" class="journal-alert${subscribedClass}" id="save-journal-alert-link" data-category="${category}">Get an email alert for ${category}</a>
+                      <a href="#" title="Get an email alert for ${subject}" class="journal-alert${subscribedClass}" id="save-journal-alert-link" data-category="${subject}">Get an email alert for ${subject}</a>
                   <#else>
-                      <a href="#" title="Get an email alert for ${category}" id="login-link" data-category="${category}">Get an email alert for ${category}</a>
+                      <a href="#" title="Get an email alert for ${subject}" id="login-link" data-category="${subject}">Get an email alert for ${subject}</a>
                   </#if>
                 </li>
             </#if>
@@ -172,10 +169,10 @@
 </div>
 
 <#include "common/paging.ftl" />
-<#if category??>
-  <#assign pagingPath = fullBrowseUrl />
+<#if subject?has_content>
+  <#assign pagingPath = categoryBrowseUrl />
 <#else>
-  <#assign pagingPath = browseUrl />
+  <#assign pagingPath = rootBrowseUrl />
 </#if>
 <@paging totalPages, page?number, pagingPath, parameterMap, true />
 

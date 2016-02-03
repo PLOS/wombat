@@ -885,7 +885,6 @@ public class ArticleController extends WombatController {
 
     // Putting this here was a judgement call.  One could make the argument that this logic belongs
     // in Rhino, but it's so simple I elected to keep it here for now.
-    List<String> correspondingAuthors = new ArrayList<>();
     List<String> equalContributors = new ArrayList<>();
     ListMultimap<String, String> authorAffiliationsMap = LinkedListMultimap.create();
     for (Object o : authors) {
@@ -895,10 +894,6 @@ public class ArticleController extends WombatController {
       List<String> affiliations = (List<String>) author.get("affiliations");
       for (String affiliation : affiliations) {
         authorAffiliationsMap.put(affiliation, fullName);
-      }
-
-      if (author.containsKey("corresponding")) {
-        correspondingAuthors.add((String) author.get("corresponding"));
       }
 
       Object obj = author.get("equalContrib");
@@ -923,7 +918,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("authorListAffiliationMap", authorListAffiliationMap);
     model.addAttribute("authorContributions", allAuthorsData.get("authorContributions"));
     model.addAttribute("competingInterests", allAuthorsData.get("competingInterests"));
-    model.addAttribute("correspondingAuthors", correspondingAuthors);
+    model.addAttribute("correspondingAuthors", allAuthorsData.get("correspondingAuthorList"));
     model.addAttribute("equalContributors", equalContributors);
   }
 

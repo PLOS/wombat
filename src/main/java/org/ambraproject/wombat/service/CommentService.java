@@ -11,7 +11,14 @@ public interface CommentService {
    * @param commentId the ID of a comment
    * @return a representation of the comment's content and metadata
    * @throws IOException
+   * @throws CommentNotFoundException if the comment does not exist
    */
   Map<String, Object> getComment(String commentId) throws IOException;
+
+  public static class CommentNotFoundException extends RuntimeException {
+    public CommentNotFoundException(String commentId, EntityNotFoundException cause) {
+      super("No comment with ID: " + commentId, cause);
+    }
+  }
 
 }

@@ -428,7 +428,12 @@ public class ArticleController extends WombatController {
   public String renderArticleCommentTree(HttpServletRequest request, Model model, @SiteParam Site site,
                                          @RequestParam("id") String commentId) throws IOException {
     requireNonemptyParameter(commentId);
-    Map<String, Object> comment = commentService.getComment(commentId);
+    Map<String, Object> comment;
+    try {
+      comment = commentService.getComment(commentId);
+    } catch (CommentService.CommentNotFoundException e) {
+      throw new NotFoundException(e);
+    }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
     String articleId = (String) parentArticleStub.get("doi");

@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.controller.NotFoundException;
 import org.ambraproject.wombat.service.remote.NedService;
 import org.ambraproject.wombat.service.remote.SoaService;
 import org.plos.ned_client.model.IndividualComposite;
@@ -71,7 +70,7 @@ public class CommentServiceImpl implements CommentService {
     try {
       comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
     } catch (EntityNotFoundException enfe) {
-      throw new NotFoundException(enfe);
+      throw new CommentNotFoundException(commentId, enfe);
     }
 
     return modifyCommentTree(comment, c -> {

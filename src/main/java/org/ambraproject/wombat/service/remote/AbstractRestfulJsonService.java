@@ -22,6 +22,10 @@ import java.net.URI;
 import java.net.URL;
 import java.util.function.Function;
 
+/**
+ * Base implementation for {@link RestfulJsonService}. Details about the service address, caching, authentication
+ * headers, etc., are injected by subclasses.
+ */
 abstract class AbstractRestfulJsonService implements RestfulJsonService {
 
   @Autowired

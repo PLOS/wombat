@@ -81,7 +81,9 @@ public class TaxonomyController extends WombatController {
     if (params.isEmpty()) {
       parent = null;
     } else {
-      parent = Joiner.on("/").join(params.get("c"));
+      List<String> categoryParams = params.get("c");
+      categoryParams.replaceAll(s -> s.replace("_", " "));
+      parent = Joiner.on("/").join(categoryParams);
     }
 
     TaxonomyCountTable articleCounts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey());

@@ -21,7 +21,6 @@
     <#return subject?replace(' ','_')?lower_case>
 </#function>
 
-
 <#if parameterMap["resultView"]??>
     <#assign resultView = parameterMap["resultView"]?first>
 <#else>
@@ -34,6 +33,8 @@
   <@siteLink handlerName="browseSubjectArea" pathVariables={"subject":encodeSubject(category)}; url>
     <#assign fullBrowseUrl = url/>
   </@siteLink>
+<#else>
+  <#assign fullBrowseUrl = browseUrl/>
 </#if>
 <div id="search-results-block" class="cf subject-listing">
     <div class="filter-bar subject cf">
@@ -48,10 +49,8 @@
                       <#list subjectParents as parent>
                           <li><a rel="v:url" property="v:title" href="<@siteLink handlerName="browseSubjectArea" pathVariables={"subject": encodeSubject(parent)} />">${parent}</a></li>
                       </#list>
-                    <#else>
-                      <#if category??>
-                        <li><a rel="v:url" property="v:title" href="${browseUrl}">All Subject Areas</a></li>
-                      </#if>
+                    <#elseif category??>
+                      <li><a rel="v:url" property="v:title" href="${browseUrl}">All Subject Areas</a></li>
                     </#if>
                       <li class="here" rel="v:child">
                             <a typeof="v:Breadcrumb" rel="v:url" href="${fullBrowseUrl}"><div property="v:title" >${category!"All Subject Areas"}</div><span></span></a>

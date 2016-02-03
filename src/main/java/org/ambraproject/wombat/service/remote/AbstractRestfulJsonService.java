@@ -31,10 +31,19 @@ abstract class AbstractRestfulJsonService implements RestfulJsonService {
   @Autowired
   protected CachedRemoteService<Reader> cachedRemoteReader;
 
+  /**
+   * @return the base URL to which request addresses will be appended
+   */
   protected abstract URL getServerUrl();
 
+  /**
+   * @return a string, which is constant and unique for each service, to identify cached values the service
+   */
   protected abstract String getCachePrefix();
 
+  /**
+   * @return headers to add to every outgoing request to the service
+   */
   protected Iterable<? extends Header> getAdditionalHeaders() {
     return ImmutableList.of();
   }

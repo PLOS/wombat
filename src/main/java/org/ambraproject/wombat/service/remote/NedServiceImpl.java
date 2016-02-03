@@ -19,6 +19,8 @@ public class NedServiceImpl extends AbstractRestfulJsonService implements NedSer
   @Autowired
   private SoaService soaService;
 
+  // Configuration data for sending requests to NED.
+  // Lazily initialized. We can't create it until soaService is wired.
   private static class NedConfiguration {
     private final URL server;
     private final ImmutableCollection<BasicHeader> authorizationHeader;
@@ -36,6 +38,7 @@ public class NedServiceImpl extends AbstractRestfulJsonService implements NedSer
     }
   }
 
+  // There is probably a library for this. TODO
   private static BasicHeader createAuthorizationHeader(String authorizationAppName, String authorizationPassword) {
     String authorization = authorizationAppName + ":" + authorizationPassword;
     String encoded = Base64.encode(authorization.getBytes(Charsets.ISO_8859_1));

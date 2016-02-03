@@ -29,6 +29,8 @@
           <img class="aside-figure" src="<@siteLink handlerName="figureImage" queryParameters={"size": "inline"}/>&id=<%= figure.getAttribute('data-doi') %>" />
         </div>
         <% }) %>
+        <div class="dummy-figure">
+        </div>
       </aside>
     </div>
     <div id="lightbox-footer">

@@ -162,7 +162,7 @@ $fv-small: rem-calc(7);
     img.main-lightbox-image {
       max-width: 80%;
     }
-    height: 80%;
+    height: 100%;
     min-width: 100%;
     margin: 0 auto;
     text-align: center;
@@ -170,10 +170,7 @@ $fv-small: rem-calc(7);
 
     #figures-list {
       display: none;
-      height: 95%;
-      @media screen and (min-height: 740px) {
-          height: 100%;
-      }
+      height: 100%;
       overflow-y: scroll;
       max-width: rem-calc(180px);
       right: 0;
@@ -186,8 +183,14 @@ $fv-small: rem-calc(7);
         padding: 4%;
         margin: 8% 2%;
         img {
-          min-width: 150px;
+          min-width: rem-calc(150px);
         }
+      }
+
+      // Workaround to show all images since height is % and footer is px
+      .dummy-figure {
+        // Header height + footer height
+        height: rem-calc(170px);
       }
     }
   }

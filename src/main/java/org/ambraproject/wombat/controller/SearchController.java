@@ -288,10 +288,6 @@ public class SearchController extends WombatController {
 
     }
 
-    private List<String> getParamList(Map<String, List<String>> params, String key) {
-      return params.get(key);
-    }
-
     private String getSingleParam(Map<String, List<String>> params, String key, String defaultValue) {
       List<String> values = params.get(key);
       return values == null || values.isEmpty() ? defaultValue

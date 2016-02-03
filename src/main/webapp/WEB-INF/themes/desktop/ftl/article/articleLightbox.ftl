@@ -35,7 +35,7 @@
       <div id="btns-container" class="lightbox-row">
         <div class="range-slider-container">
           <div id="lb-zoom-min"></div>
-          <div class="range-slider round" data-slider data-options="step: 0.05; start: 0.45; end: 5; initial: 0.9;">
+          <div class="range-slider round" data-slider data-options="step: 0.05; start: 1; end: 5; initial: 1;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden">
@@ -63,7 +63,7 @@
           <%= description %>&nbsp;&nbsp;
           <span id="view-more">show more<i class="icon-arrow-right"></i></span>
         </p>
-      </div>
+ =    </div>
       <div id="view-less-wrapper" style="<% descriptionExpanded? print('display:inline-block;') : '' %>" >
         <span id="figure-title"><%= title %></span>
         <p id="full-figure-description">

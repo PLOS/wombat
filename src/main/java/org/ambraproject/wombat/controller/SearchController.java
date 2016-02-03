@@ -33,6 +33,7 @@ import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.ambraproject.wombat.util.ListUtil;
+import org.apache.commons.lang.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -669,11 +670,16 @@ public class SearchController extends WombatController {
 
     modelSubjectHierarchy(model, site, subject);
 
+    String subjectName;
     if (Strings.isNullOrEmpty(subject)) {
       params.add("subject", "");
+      subjectName = "All Subject Areas";
     } else {
-      params.add("subject", subject.replace("_", " "));
+      subject = subject.replace("_", " ");
+      params.add("subject", subject);
+      subjectName = WordUtils.capitalize(subject);
     }
+    model.addAttribute("subjectName", subjectName);
 
     // set defaults for subject area landing page
     if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {

@@ -31,7 +31,7 @@
       </a>
     </li>
       <li class="menuitem">
-        <a class="btn-lg">
+        <a class="btn-lg" href="<@siteLink handlerName="articleMetrics" queryParameters={"id": article.doi} />">
           <span class="arrow">View</span>
           Metrics
         </a>

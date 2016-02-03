@@ -28,14 +28,12 @@
           Metrics
         </a>
       </li>
-  <#-- TODO: determine how to do these in mobile
   <li class="menuitem">
-    <a class="btn-lg">
+    <a class="btn-lg" href="<@siteLink handlerName="articleRelatedContent" queryParameters={"id": article.doi} />">
       <span class="arrow">View</span>
       Related Content
     </a>
   </li>
--->
   </ul>
 </nav><#--end article buttons-->
 

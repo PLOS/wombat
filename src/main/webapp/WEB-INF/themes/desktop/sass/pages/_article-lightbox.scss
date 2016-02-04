@@ -130,7 +130,9 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     height: $lb-header-height;
     cursor: pointer;
     color: $grey-light;
+    border-left: 1px $grey-light solid;
     &:hover {
+      border-left: none;
       @extend %brand-background;
     }
   }

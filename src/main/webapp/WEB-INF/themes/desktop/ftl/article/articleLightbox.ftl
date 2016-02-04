@@ -12,12 +12,6 @@
         <% }) %>
       </div>
 
-      <ul class="lb-nav">
-        <li class="abst">Abstract</li>
-        <li class="figs tab-active">Figures</li>
-        <li class="refs">References</li>
-      </ul>
-
       <div class="lb-close" title="close">&nbsp;</div>
     </div>
     <div class="img-container">

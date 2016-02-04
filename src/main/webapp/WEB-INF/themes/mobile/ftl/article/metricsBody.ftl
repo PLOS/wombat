@@ -93,12 +93,11 @@
         </div>
       </div>
 
-
     </script>
 
     <section id="viewedCard" class="card">
 
-      <h2 id="viewedHeader">Viewed <a href="${almInfoURL}#usageInfo" class="ir" title="More information">info</a>
+      <h2 id="viewedHeader">Viewed <a href="${almInfoURL}#usageInfo" class="ir" title="More information"><i class="fa fa-question-circle"></i></a>
       </h2>
 
       <div id="usage"></div>
@@ -107,7 +106,7 @@
     <section class="card">
       <a id="citations" name="citations"></a>
 
-      <h2 id="citedHeader">Cited <a href="${almInfoURL}#citationInfo" class="ir" title="More information">info</a>
+      <h2 id="citedHeader">Cited <a href="${almInfoURL}#citationInfo" class="fa" title="More information"><i class="fa fa-question-circle"></i></a>
       </h2>
       <div id="relatedCites"></div>
     </section>
@@ -116,7 +115,7 @@
 
       <div id="socialNetworksOnArticleMetricsPage">
         <a id="other" name="other"></a>
-        <h2 id="savedHeader">Saved <a href="${almInfoURL}#socialBookmarks" class="ir" title="More information">info</a>
+        <h2 id="savedHeader">Saved <a href="${almInfoURL}#socialBookmarks" class="ir" title="More information"><i class="fa fa-question-circle"></i></a>
         </h2>
         <div id="relatedBookmarks"></div>
       </div>
@@ -125,7 +124,7 @@
     <section class="card">
 
       <h2 id="discussedHeader">Discussed <a href="${almInfoURL}#blogCoverage" class="ir"
-                                            title="More information">info</a>
+                                            title="More information"><i class="fa fa-question-circle"></i></a>
       </h2>
 
       <div id="relatedBlogPosts" style="display:none;">
@@ -158,8 +157,8 @@
 
     <section class="card" id="f1kHeader" style="display: none;">
 
-      <h2>Recommended <a href="${almInfoURL}#recommended" class="ir"
-                                                               title="More information">info</a>
+      <h2>Recommended<a href="${almInfoURL}#recommended" class="ir"
+                                                    title="More information"><i class="fa fa-question-circle"></i></a>
       <#--<span id="f1KSpinner"><#include "../common/loadingcycle.ftl"></span>-->
       </h2>
       <div id="f1kContent" style="display:none;"></div>

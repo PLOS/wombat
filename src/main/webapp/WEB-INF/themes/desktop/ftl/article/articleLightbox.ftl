@@ -78,11 +78,13 @@
       <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "original"}/>&id=<%= doi %>" title="original image">
         <span class="download-btn">TIFF</span>
       </a>
+      <span class="file-size"><%= fileSizes.original %></span>
     </div>
     <div class="item">
       <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "large"}/>&id=<%= doi %>" title="large image">
         <span class="download-btn">PNG</span>
       </a>
+      <span class="file-size"><%= fileSizes.large %></span>
     </div>
     <div class="item">
       <a href="<@siteLink handlerName="powerPoint"/>?id=<%= doi %>" title="PowerPoint slide">

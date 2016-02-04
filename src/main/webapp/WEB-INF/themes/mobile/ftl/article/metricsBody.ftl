@@ -153,23 +153,16 @@
           </div>
         </div>
       </@siteLink>
-
-      <#--<div id="notesAndCommentsOnArticleMetricsTab" class="metrics_tile">-->
-      <#--<a href="${commentsTabURL}">-->
-      <#--<img id="notesAndCommentsImageOnArticleMetricsTab" src="<@siteLink handlerName="staticResource" wildcardValues=["img/logo-comments.png"]/>"-->
-      <#--alt="${articleComments?size} Comments and Notes" class="metrics_tile_image"/>-->
-      <#--</a>-->
-      <#--<div class="metrics_tile_footer" onclick="location.href='${commentsTabURL}';">-->
-      <#--<a href="${commentsTabURL}">${articleComments?size}</a>-->
-      <#--</div>-->
-      <#--</div>-->
       </div>
+    </section>
 
-        <h2 id="f1kHeader" style="display: none;">Recommended <a href="${almInfoURL}#recommended" class="ir"
-                                                                 title="More information">info</a>
-        <#--<span id="f1KSpinner"><#include "../common/loadingcycle.ftl"></span>-->
-        </h2>
-        <div id="f1kContent" style="display:none;"></div>
+    <section class="card" id="f1kHeader" style="display: none;">
+
+      <h2>Recommended <a href="${almInfoURL}#recommended" class="ir"
+                                                               title="More information">info</a>
+      <#--<span id="f1KSpinner"><#include "../common/loadingcycle.ftl"></span>-->
+      </h2>
+      <div id="f1kContent" style="display:none;"></div>
     </section>
     <!-- try to find the location of the first '/' after 'http://' -->
   <#--    <#assign endIndex = freemarker_config.get("almHost")?index_of("/", 7)>

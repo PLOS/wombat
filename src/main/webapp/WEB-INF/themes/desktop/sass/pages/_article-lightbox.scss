@@ -4,7 +4,7 @@ $lb-small: rem-calc(7);
 $lb-header-height: rem-calc(46);
 $lb-control-bar-height: rem-calc(40px);
 $lb-description-bar-height: rem-calc(82px);
-$lb-footer-height: $lb-control-bar-height + $lb-description-bar-height;
+$lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-header-height;
 
 #figure-carousel-section {
   display: block;

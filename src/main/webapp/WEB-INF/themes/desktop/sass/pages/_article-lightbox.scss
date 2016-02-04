@@ -425,11 +425,15 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
         .item {
           float: right;
           margin-right: $pad-default + $pad-xsmall;
-        }
-        .item a {
-          display: block;
-          color: $grey-dark;
-          text-decoration: none;
+          text-align: center;
+          a {
+            display: block;
+            color: $grey-dark;
+            text-decoration: none;
+          }
+          .file-size {
+            font-size: $txt-size-xsmall;
+          }
         }
         .size {
           display: block;

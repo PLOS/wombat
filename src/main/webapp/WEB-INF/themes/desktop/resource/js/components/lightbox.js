@@ -53,7 +53,11 @@ var FigureLightbox = {};
       strippedDoi: this.imgData.strippedDoi,
 
       title: this.imgData.imgElement.find('.figcaption').text(),
-      description: this.imgData.imgElement.find('.caption_target').next().html()
+      description: this.imgData.imgElement.find('.caption_target').next().html(),
+      fileSizes: {
+        original: this.imgData.imgElement.find('.file-size[data-size="original"]').text(),
+        large: this.imgData.imgElement.find('.file-size[data-size="large"]').text()
+      }
     };
   };
 

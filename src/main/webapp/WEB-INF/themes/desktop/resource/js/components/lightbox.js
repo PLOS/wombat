@@ -11,6 +11,7 @@ var FigureLightbox = {};
 (function($) {
 
   FigureLightbox = {
+    // All events are triggered on this container
     lbContainerSelector:     '#figure-lightbox-container',
 
     /* internal selectors */
@@ -126,7 +127,7 @@ var FigureLightbox = {};
           that.zoomIn();
         }).end()
 
-        .on('image-switch', function (e, data) {
+        .on('image-switch.lightbox', function (e, data) {
           // Show both prev and next buttons
           var buttons = $(that.lbSelector).find('.fig-btn').show();
           if (data.index === 0) {
@@ -201,7 +202,7 @@ var FigureLightbox = {};
       $(this.lbSelector + ' #view-more-wrapper').dotdotdot({after: '#view-more'}).data('is-truncated', true);
     }
 
-    $(this.lbContainerSelector).trigger('image-switch', {index: currentIndex, element: this.imgData.imgElement});
+    $(this.lbContainerSelector).trigger('image-switch.lightbox', {index: currentIndex, element: this.imgData.imgElement});
   };
 
   FigureLightbox.toggleDescription = function () {
@@ -238,6 +239,7 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.loadImage = function (lbContainer, imgDoi, cb) {
+    $(this.lbContainerSelector).trigger('opened.lightbox');
     this.lbContainerSelector = lbContainer || this.lbContainerSelector;
 
     this.imgData = {
@@ -286,6 +288,7 @@ var FigureLightbox = {};
   FigureLightbox.close = function () {
     this.destroy();
     $(this.lbSelector).foundation('reveal', 'close');
+    $(this.lbContainerSelector).trigger('closed.lightbox');
   };
 
   FigureLightbox.showInContext = function (imgDoi) {
@@ -308,6 +311,7 @@ var FigureLightbox = {};
 
     this.$panZoomEl.parent().off('mousewheel.focal').on('mousewheel.focal', function(e) {
       e.preventDefault();
+      $(that.lbContainerSelector).trigger('mousewheel-zoom.lightbox', e);
       var delta = e.delta || e.originalEvent.wheelDelta;
       var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
       that.zoom(zoomOut, e);
@@ -337,11 +341,16 @@ var FigureLightbox = {};
 
   FigureLightbox.bindPanZoomToSlider = function () {
     var that = this;
+    var panzoomInstance = that.$panZoomEl.panzoom('instance');
     $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function(){
-      var panzoomInstance = that.$panZoomEl.panzoom('instance');
+      // If values differ, change them
       var matrix = panzoomInstance.getMatrix();
-      matrix[0] = matrix[3] = this.dataset.slider;
-      panzoomInstance.setMatrix(matrix);
+      var newSliderValue = parseFloat(this.dataset.slider);
+      if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
+        $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
+        matrix[0] = matrix[3] = newSliderValue;
+        panzoomInstance.setMatrix(matrix);
+      }
     });
   };
   FigureLightbox.bindSliderToPanZoom = function () {
@@ -372,7 +381,7 @@ var FigureLightbox = {};
         .find('.change-img').off('click').end()
       // Unbind button to show all images
         .find('.all-fig-btn').off('click').end()
-        .off('image-switch');
+        .off('image-switch.lightbox');
       this.$panZoomEl.panzoom('destroy');
         */
   };

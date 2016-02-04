@@ -21,6 +21,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -363,7 +364,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }
-    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
+    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
     return (Map<String, Map>) rawResults;
   }
 

@@ -16,26 +16,11 @@ public class CommentFormatting {
     throw new AssertionError();
   }
 
-  private static final String REPLIES_KEY = "replies";
-
   /**
-   * Add a new map, keyed {@code "formatting"} and containing a {@link FormattedComment} object, to the comment and to
-   * all of its nested replies.
-   * <p>
-   * A new, deep copy of the map is returned. The map passed as an argument is not modified.
+   * Add a new map, keyed {@code "formatting"} and containing a {@link FormattedComment} object, to the comment.
    */
-  public static Map<String, Object> addFormattingFields(Map<String, ?> commentMetadata) {
-    Map<String, Object> modifiedMetadata = Maps.newHashMapWithExpectedSize(commentMetadata.size() + 1);
-    modifiedMetadata.putAll(commentMetadata);
-    modifiedMetadata.put("formatting", new FormattedComment(commentMetadata));
-
-    Collection<Map<String, ?>> replies = (Collection<Map<String, ?>>) modifiedMetadata.remove(REPLIES_KEY);
-    List<Map<String, Object>> modifiedReplies = replies.stream()
-        .map(CommentFormatting::addFormattingFields)
-        .collect(Collectors.toList());
-    modifiedMetadata.put(REPLIES_KEY, modifiedReplies);
-
-    return modifiedMetadata;
+  public static void addFormattingFields(Map<String, Object> commentMetadata) {
+    commentMetadata.put("formatting", new FormattedComment(commentMetadata));
   }
 
   /*

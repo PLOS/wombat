@@ -28,7 +28,7 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
-import org.ambraproject.wombat.service.CommentFormatting;
+import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -146,6 +146,8 @@ public class ArticleController extends WombatController {
   private CommentValidationService commentValidationService;
   @Autowired
   private XmlService xmlService;
+  @Autowired
+  private CommentService commentService;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -428,9 +430,9 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(commentId);
     Map<String, Object> comment;
     try {
-      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
-    } catch (EntityNotFoundException enfe) {
-      throw new NotFoundException(enfe);
+      comment = commentService.getComment(commentId);
+    } catch (CommentService.CommentNotFoundException e) {
+      throw new NotFoundException(e);
     }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
@@ -438,7 +440,6 @@ public class ArticleController extends WombatController {
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
 
-    comment = CommentFormatting.addFormattingFields(comment);
     model.addAttribute("comment", comment);
 
     return site + "/ftl/article/comment/comment";

@@ -10,6 +10,8 @@ import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.NedService;
+import org.ambraproject.wombat.service.remote.NedServiceImpl;
 import org.ambraproject.wombat.service.remote.ReaderService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SoaService;
@@ -100,6 +102,11 @@ public class RootConfiguration {
   @Bean
   public SolrSearchService searchService() {
     return new SolrSearchServiceImpl();
+  }
+
+  @Bean
+  public NedService nedService() {
+    return new NedServiceImpl();
   }
 
   @Bean

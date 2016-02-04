@@ -145,10 +145,15 @@
       <#include "../common/legacyLink.ftl" />
       <#--@TODO: replace legacyUrlPrefix with commentsTabURL when wombat's comments tab is ready-->
 
-      <#--<@siteLink handlerName="articleComments" queryParameters={"id":articleDoi}; commentsTabURL>-->
-      <#--</@siteLink>-->
+      <@siteLink handlerName="articleComments" queryParameters={"id":articleDoi}/>
 
-      <#--<#assign commentsTabURL = legacyUrlPrefix + "article/comments/info:doi/" + articleDoi/>-->
+        <div id="commentsOnArticleMetricsTab" class="metrics_tile">
+          <h3><a href="<%= url %>">Comments and Notes</a></h3>
+          <div class="metrics_tile_footer" onclick="location.href=<%= url %>;">
+          ${articleComments?size}
+          </div>
+        </div>
+
       <#--<div id="notesAndCommentsOnArticleMetricsTab" class="metrics_tile">-->
       <#--<a href="${commentsTabURL}">-->
       <#--<img id="notesAndCommentsImageOnArticleMetricsTab" src="<@siteLink handlerName="staticResource" wildcardValues=["img/logo-comments.png"]/>"-->
@@ -158,7 +163,7 @@
       <#--<a href="${commentsTabURL}">${articleComments?size}</a>-->
       <#--</div>-->
       <#--</div>-->
-      <#--</div>-->
+      </div>
 
         <h2 id="f1kHeader" style="display: none;">Recommended <a href="${almInfoURL}#recommended" class="ir"
                                                                  title="More information">info</a>
@@ -171,7 +176,9 @@
       <#if endIndex == -1>
         <#assign endIndex = freemarker_config.get("almHost")?length >
       </#if>-->
-    <div class="card"><a href="${almInfoURL}#static-content-wrap">Information on PLOS Article-Level Metrics</a></div>
-  <#--<#include "metricsFeedbackMessage.ftl" />-->
-  </div><!--end article-metrics-->
+    <div class="card"><p></p><a href="${almInfoURL}#static-content-wrap">Information on PLOS Article-Level Metrics</a></p>
+
+    <p>Questions or concerns about usage data? <a href="<@siteLink handlerName="feedback" />">Please let us know.</a></p>
+
+    </div><!--end article-metrics-->
 </div><!-- end main -->

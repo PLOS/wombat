@@ -198,10 +198,25 @@ var FigureLightbox = {};
     this.renderImg(this.imgData.doi);
 
     if (!this.descriptionExpanded) {
-      $(this.lbSelector + ' #view-more-wrapper').dotdotdot({after: '#view-more'}).data('is-truncated', true);
+      this.truncateDescription();
     }
 
     $(this.lbContainerSelector).trigger('image-switch', {index: currentIndex, element: this.imgData.imgElement});
+  };
+
+  FigureLightbox.truncateDescription = function () {
+    var $viewMoreWrapper = $(this.lbSelector + ' #view-more-wrapper');
+    if (!$viewMoreWrapper.data('is-truncated')) {
+      if ($viewMoreWrapper.find('img').length > 0) {
+        // Workaround: If description has inline images reduce
+        // the height of the container to avoid hiding the show
+        // more button when the images are rendered and ocuppy more space
+        $viewMoreWrapper.css({ maxHeight: function( index, value ) {
+          return parseFloat( value ) * 3/4;
+        }});
+      }
+      $viewMoreWrapper.dotdotdot({after: '#view-more'}).data('is-truncated', true);
+    }
   };
 
   FigureLightbox.toggleDescription = function () {
@@ -221,14 +236,13 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.retractDescription = function () {
+    var that = this;
     // Workaround to slide and fade at the same time
     $('#view-less-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp(500, function () {
       $('#image-context').removeClass('full-display');
       $('#view-more-wrapper').show();
       // Dotdotdot in case description is initialized expanded
-      if (!$('#view-more-wrapper').data('is-truncated')) {
-        $('#view-more-wrapper').dotdotdot({after: '#view-more'});
-      }
+      that.truncateDescription();
     });
     this.descriptionExpanded = false;
   };

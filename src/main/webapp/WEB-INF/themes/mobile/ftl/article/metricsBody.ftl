@@ -145,14 +145,14 @@
       <#include "../common/legacyLink.ftl" />
       <#--@TODO: replace legacyUrlPrefix with commentsTabURL when wombat's comments tab is ready-->
 
-      <@siteLink handlerName="articleComments" queryParameters={"id":articleDoi}/>
-
+      <@siteLink handlerName="articleComments" queryParameters={"id":articleDoi}; commentsUrl>
         <div id="commentsOnArticleMetricsTab" class="metrics_tile">
-          <h3><a href="<%= url %>">Comments and Notes</a></h3>
-          <div class="metrics_tile_footer" onclick="location.href=<%= url %>;">
+          <h3><a href="${commentsUrl}">Comments and Notes</a></h3>
+          <div class="metrics_tile_footer" onclick="location.href=${commentsUrl};">
           ${articleComments?size}
           </div>
         </div>
+      </@siteLink>
 
       <#--<div id="notesAndCommentsOnArticleMetricsTab" class="metrics_tile">-->
       <#--<a href="${commentsTabURL}">-->

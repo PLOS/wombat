@@ -2,6 +2,9 @@
 
 $lb-small: rem-calc(7);
 $lb-header-height: rem-calc(46);
+$lb-control-bar-height: rem-calc(40px);
+$lb-description-bar-height: rem-calc(82px);
+$lb-footer-height: $lb-control-bar-height + $lb-description-bar-height;
 
 #figure-carousel-section {
   display: block;
@@ -243,7 +246,7 @@ $lb-header-height: rem-calc(46);
     .lightbox-row {
       text-align: center;
       width: 100%;
-      min-height: rem-calc(40px);
+      min-height: $lb-control-bar-height;
       .range-slider-container {
         text-align: initial;
         display: inline-block;
@@ -260,7 +263,7 @@ $lb-header-height: rem-calc(46);
           padding: 0 $pad-small;
           border-left: 1px solid #666;
           border-color: rgba(51,51,51,0.25);
-          line-height: rem-calc(40px);
+          line-height: $lb-control-bar-height;
           font-family: $font-face-fancy;
           color: $white;
           cursor: pointer;
@@ -355,7 +358,7 @@ $lb-header-height: rem-calc(46);
           overflow-y: hidden;
           #view-more-wrapper {
             /* Needs static height for dotdotdot to trim text */
-            max-height: rem-calc(82px);
+            max-height: $lb-description-bar-height;
           }
 
           #view-less-wrapper {

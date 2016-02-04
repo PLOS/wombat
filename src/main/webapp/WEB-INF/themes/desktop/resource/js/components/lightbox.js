@@ -214,13 +214,15 @@ var FigureLightbox = {};
 
   FigureLightbox.expandDescription = function () {
     $('#image-context').addClass('full-display');
-    $('#view-more-wrapper').slideUp();
+    // Workaround to slide and fade at the same time
+    $('#view-more-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp();
     $('#view-less-wrapper').slideDown('slow');
     this.descriptionExpanded = true;
   };
 
   FigureLightbox.retractDescription = function () {
-    $('#view-less-wrapper').slideUp('slow', function () {
+    // Workaround to slide and fade at the same time
+    $('#view-less-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp(500, function () {
       $('#image-context').removeClass('full-display');
       $('#view-more-wrapper').show();
       // Dotdotdot in case description is initialized expanded
@@ -296,14 +298,15 @@ var FigureLightbox = {};
   FigureLightbox.panZoom = function ($image) {
     var that = this;
     this.$panZoomEl = $image.panzoom({
-      contain: false
+      contain: false,
+      minScale: 1
     });
 
     /* Bind panzoom and slider to mutually control each other */
     this.bindPanZoomToSlider();
     this.bindSliderToPanZoom();
 
-    this.$panZoomEl.parent().on('mousewheel.focal', function(e) {
+    this.$panZoomEl.parent().off('mousewheel.focal').on('mousewheel.focal', function(e) {
       e.preventDefault();
       var delta = e.delta || e.originalEvent.wheelDelta;
       var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
@@ -343,7 +346,7 @@ var FigureLightbox = {};
   };
   FigureLightbox.bindSliderToPanZoom = function () {
     var that = this;
-    this.$panZoomEl.on('panzoomzoom', function(e, panzoom, scale) {
+    this.$panZoomEl.off('panzoomzoom').on('panzoomzoom', function(e, panzoom, scale) {
       $(that.zoomRangeSelector).foundation('slider', 'set_value', scale);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
@@ -369,7 +372,9 @@ var FigureLightbox = {};
         .find('.change-img').off('click').end()
       // Unbind button to show all images
         .find('.all-fig-btn').off('click').end()
-        .off('image-switch');*/
+        .off('image-switch');
+      this.$panZoomEl.panzoom('destroy');
+        */
   };
 
   })(jQuery);

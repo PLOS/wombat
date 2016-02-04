@@ -36,7 +36,6 @@ import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.XmlService;
-import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
@@ -83,7 +82,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
@@ -532,7 +530,6 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
-    enforceDevFeature("metricsTab");     // TODO: remove when ready to expose page in prod
       Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
       validateArticleVisibility(site, articleMetaData);
       requestComments(model, articleId);
@@ -544,7 +541,6 @@ public class ArticleController extends WombatController {
   public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
                                            @RequestParam("id") String articleId)
       throws IOException {
-    enforceDevFeature("citationDownload"); // TODO: remove when ready to expose page in prod
     requireNonemptyParameter(articleId);
       Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
       validateArticleVisibility(site, articleMetaData);
@@ -569,7 +565,6 @@ public class ArticleController extends WombatController {
                                                        String fileExtension, String contentType,
                                                        Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
-    enforceDevFeature("citationDownload"); // TODO: remove when ready to expose page in prod
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -597,8 +592,6 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleRelatedContent", value = "/article/related")
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam("id") String articleId) throws IOException {
-    // TODO: remove when ready to expose page in prod
-    enforceDevFeature("relatedTab");
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -625,8 +618,6 @@ public class ArticleController extends WombatController {
       @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
       @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException {
-    // TODO: remove when ready to expose page in prod
-    enforceDevFeature("relatedTab");
     requireNonemptyParameter(doi);
 
     if (!validateMediaCurationInput(model, link, name, email, captchaChallenge,
@@ -744,8 +735,6 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "email", value = "/article/email")
   public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam("id") String articleId) throws IOException {
-    // TODO: remove when ready to expose page in prod
-    enforceDevFeature("emailThisArticle");
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -772,8 +761,6 @@ public class ArticleController extends WombatController {
       @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
       @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException, MessagingException {
-    // TODO: remove when ready to expose page in prod
-    enforceDevFeature("emailThisArticle");
     requireNonemptyParameter(articleId);
     requireNonemptyParameter(articleUri);
 
@@ -890,7 +877,6 @@ public class ArticleController extends WombatController {
 
     // Putting this here was a judgement call.  One could make the argument that this logic belongs
     // in Rhino, but it's so simple I elected to keep it here for now.
-    List<String> correspondingAuthors = new ArrayList<>();
     List<String> equalContributors = new ArrayList<>();
     ListMultimap<String, String> authorAffiliationsMap = LinkedListMultimap.create();
     for (Object o : authors) {
@@ -900,10 +886,6 @@ public class ArticleController extends WombatController {
       List<String> affiliations = (List<String>) author.get("affiliations");
       for (String affiliation : affiliations) {
         authorAffiliationsMap.put(affiliation, fullName);
-      }
-
-      if (author.containsKey("corresponding")) {
-        correspondingAuthors.add((String) author.get("corresponding"));
       }
 
       Object obj = author.get("equalContrib");
@@ -928,7 +910,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("authorListAffiliationMap", authorListAffiliationMap);
     model.addAttribute("authorContributions", allAuthorsData.get("authorContributions"));
     model.addAttribute("competingInterests", allAuthorsData.get("competingInterests"));
-    model.addAttribute("correspondingAuthors", correspondingAuthors);
+    model.addAttribute("correspondingAuthors", allAuthorsData.get("correspondingAuthorList"));
     model.addAttribute("equalContributors", equalContributors);
   }
 

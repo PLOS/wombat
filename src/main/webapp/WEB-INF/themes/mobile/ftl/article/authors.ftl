@@ -21,12 +21,15 @@
   <#if correspondingAuthors?? && correspondingAuthors?size gt 0>
     <#if correspondingAuthors?size == 1>
       <h2>Corresponding Author</h2>
+      <p class="about-author">${correspondingAuthors[0]}</p>
     <#else>
       <h2>Corresponding Authors</h2>
+      <ul class="bulletlist">
+        <#list correspondingAuthors as correspondingAuthor>
+          <li class="about-author">${correspondingAuthor}</li>
+        </#list>
+      </ul>
     </#if>
-    <#list correspondingAuthors as correspondingAuthor>
-      <div class="about-author">${correspondingAuthor}</div>
-    </#list>
   </#if>
   </div>
   <!--end content-->

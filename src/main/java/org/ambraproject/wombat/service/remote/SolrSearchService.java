@@ -18,7 +18,11 @@ import org.ambraproject.wombat.config.site.SiteSet;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Interface to the article search service for the application.
@@ -104,4 +108,43 @@ public interface SolrSearchService {
    * @throws IOException
    */
   public Map<?, ?> getStats(String fieldName, String journalKey) throws IOException;
+
+  /**
+   * Returns a list of all subject categories associated with all papers ever published
+   * for the given journal.
+   *
+   * @param journalKey name of the journal in question
+   * @return List of category names
+   */
+  public List<String> getAllSubjects(String journalKey) throws IOException;
+
+  /**
+   * Returns the number of articles, for a given journal, associated with all the subject
+   * categories in the taxonomy.
+   *
+   * @param journalKey specifies the journal
+   * @throws IOException
+   */
+  public Collection<SubjectCount> getAllSubjectCounts(String journalKey) throws IOException;
+
+  /**
+   * Simple class wrapping the category -> count map returned by Solr subject searches.
+   */
+  public static final class SubjectCount implements Serializable {
+    private final String category;
+    private final long count;
+
+    public SubjectCount(String category, Long count) {
+      this.category = Objects.requireNonNull(category);
+      this.count = count;
+    }
+
+    public String getSubject() {
+      return category;
+    }
+
+    public long getCount() {
+      return count;
+    }
+  }
 }

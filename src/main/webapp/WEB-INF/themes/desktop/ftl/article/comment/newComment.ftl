@@ -23,7 +23,7 @@
   <section class="article-body">
 
   <#include "../tabs.ftl" />
-  <@displayTabList 'comments' />
+  <@displayTabList 'Comments' />
 
     <div id="thread" class="startDiscussion">
       <div class="loader">  </div>

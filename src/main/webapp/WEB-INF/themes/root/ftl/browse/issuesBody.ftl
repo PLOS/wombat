@@ -28,7 +28,6 @@
                 queryParameters={"id": issue.issueUri}; issueLink>
                     <h2 id="issue-title"><a href="${issueLink}">${issueTitle}</a></h2>
                 </@siteLink>
-            <p class="credit">Image Credit: ${issueImageCredit}</p>
         </div>
       <div class="detail-container">
         <div class="img">
@@ -96,7 +95,7 @@
                 <ol>
                     <#list articleInfo.relatedArticles as relArticle>
                         <li>
-                          <a href="http://dx.plos.org/${relArticle.doi?replace('info:doi/','')}"
+                          <a href="${doiResolverLink(relArticle.doi)}"
                              title="Read Open Access Article">
                               <@titleFormat removeTags(relArticle.title) />
                           </a>

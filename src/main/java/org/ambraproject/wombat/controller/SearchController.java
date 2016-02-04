@@ -21,16 +21,19 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.ambraproject.wombat.util.ListUtil;
+import org.apache.commons.lang.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +74,9 @@ public class SearchController extends WombatController {
 
   @Autowired
   private SearchFilterService searchFilterService;
+
+  @Autowired
+  private BrowseTaxonomyService browseTaxonomyService;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -430,7 +436,7 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume", "!subject"})
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
-                       @RequestParam MultiValueMap<String, String> params) throws IOException {
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
@@ -464,7 +470,7 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                               @RequestParam MultiValueMap<String, String> params) throws IOException {
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     String queryString = params.getFirst("unformattedQuery");
     params.remove("unformattedQuery");
     params.add("q", queryString);
@@ -484,23 +490,22 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "subjectSearch", value = "/search", params = {"subject", "!volume"})
   public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                              @RequestParam MultiValueMap<String, String> params) throws IOException {
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     params.add("q", "");
     return search(request, model, site, params);
   }
 
   @RequestMapping(name = "browse", value = "/browse", params = "!filterSubjects")
   public String browse(HttpServletRequest request, Model model, @SiteParam Site site,
-                       @RequestParam MultiValueMap<String, String> params) throws IOException {
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     subjectAreaSearch(request, model, site, params, "");
     return site.getKey() + "/ftl/browseSubjectArea";
   }
 
   @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}", params = "!filterSubjects")
   public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
-                                  @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
+      @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
       throws IOException {
-    enforceDevFeature("browse");
     subjectAreaSearch(request, model, site, params, subject);
     return site.getKey() + "/ftl/browseSubjectArea";
   }
@@ -661,13 +666,20 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
-                                 MultiValueMap<String, String> params, String subject) throws IOException {
+      MultiValueMap<String, String> params, String subject) throws IOException {
 
+    modelSubjectHierarchy(model, site, subject);
+
+    String subjectName;
     if (Strings.isNullOrEmpty(subject)) {
       params.add("subject", "");
+      subjectName = "All Subject Areas";
     } else {
-      params.add("subject", subject.replace("_", " "));
+      subject = subject.replace("_", " ");
+      params.add("subject", subject);
+      subjectName = WordUtils.capitalize(subject);
     }
+    model.addAttribute("subjectName", subjectName);
 
     // set defaults for subject area landing page
     if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {
@@ -698,5 +710,35 @@ public class SearchController extends WombatController {
     model.addAttribute("searchResults", searchResults);
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());
+  }
+
+  private void modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
+    TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
+
+    Set<String> subjectParents;
+    Set<String> subjectChildren;
+    if (subject != null && subject.length() > 0) {
+      //Recreate the category name as stored in the DB
+      subject = subject.replace("_", " ");
+
+      TaxonomyGraph.CategoryView categoryView = fullTaxonomyView.getView(subject);
+      if (categoryView == null) {
+        throw new NotFoundException(String.format("category %s does not exist.", subject));
+      } else {
+        if (categoryView.getParents().isEmpty()) {
+          subjectParents = new HashSet<>();
+        } else {
+          subjectParents = categoryView.getParents().keySet();
+        }
+
+        subjectChildren = categoryView.getChildren().keySet();
+      }
+    } else {
+      subjectParents = new HashSet<>();
+      subjectChildren = fullTaxonomyView.getRootCategoryNames();
+    }
+
+    model.addAttribute("subjectParents", subjectParents);
+    model.addAttribute("subjectChildren", subjectChildren);
   }
 }

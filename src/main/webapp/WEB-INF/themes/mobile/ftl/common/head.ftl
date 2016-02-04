@@ -5,6 +5,15 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<#if article??> <#--TODO PUT THIS INTO ONLY ARTICLE HEAD-->
+  <#if article.date??>
+    <meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}"/>
+  </#if>
+  <meta name="citation_title" content="${article.title?replace('<.+?>',' ','r')?html}"/>
+  <meta name="citation_doi" content="${article.doi}"/>
+</#if>
+
+
   <style type='text/css'>
     @-ms-viewport {
       width: device-width;
@@ -26,6 +35,8 @@
 <#if cssFile?has_content>
   <@cssLink target="resource/css/${cssFile}" />
 </#if>
+<@cssLink target="resource/css/metrics.css" />
+
 
 <#include "../cssLinks.ftl" />
 

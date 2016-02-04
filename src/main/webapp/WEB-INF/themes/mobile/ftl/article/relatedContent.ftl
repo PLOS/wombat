@@ -1,8 +1,11 @@
-<#-- Specific css file will be added by head.ftl template -->
 <#assign cssFile = "related-content.css" />
 
-<#include "../common/headContent.ftl" />
+<#include "../common/htmlTag.ftl" />
 
+<#assign title = article.title />
+<#include "../common/head.ftl" />
+<#include "../common/configJs.ftl" />
+<#include "backToArticle.ftl" />
 <div id="content" class="related-content">
   <article>
     <#include "relatedContentBody.ftl" />

@@ -37,12 +37,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of SearchService that queries a solr backend.
@@ -60,8 +62,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
   @VisibleForTesting
   protected Map<String, String> eIssnToJournalKey;
 
-  private static final int MAX_FACET_SIZE = 100;
-  private static final int MIN_FACET_COUNT = 1;
+  private static final int MAX_FACET_SIZE = -1; //unlimited
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -301,6 +302,53 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     return getRawResults(params).get("response");
   }
 
+  private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query) throws IOException {
+    Map<String, Map> rawResults = (Map<String, Map>) search(query);
+    Map<?, ?> facetCounts = rawResults.get("facet_counts");
+    Map<?, ?> facetFields = (Map<?, ?>) facetCounts.get("facet_fields");
+    Map<?, ?> resultsMap = (Map<?, ?>) facetFields.get(query.getFacet().get());
+    return new FacetedQueryResponse(resultsMap, ((Double) rawResults.get("response").get("numFound")).longValue());
+  }
+
+  /**
+   * @inheritDoc
+   */
+  @Override
+  public List<String> getAllSubjects(String journalKey) throws IOException {
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setForRawResults(true)
+        .setFacet("subject_hierarchy")
+        .setMaxFacetSize(MAX_FACET_SIZE)
+        .setJournalKeys(Collections.singletonList(journalKey));
+
+    ArrayList<String> categories = new ArrayList<>();
+    FacetedQueryResponse response = executeFacetedQuery(query.build());
+    categories.addAll(response.getResultsMap().keySet()
+        .stream().map(Object::toString)
+        .collect(Collectors.toList()));
+
+    return categories;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  @Override
+  public Collection<SubjectCount> getAllSubjectCounts(String journalKey) throws IOException {
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setForRawResults(true)
+        .setFacet("subject_facet")
+        .setMaxFacetSize(MAX_FACET_SIZE)
+        .setJournalKeys(Collections.singletonList(journalKey));
+
+    FacetedQueryResponse response = executeFacetedQuery(query.build());
+    List<SubjectCount> subjectCounts = response.getResultsMap().entrySet().stream()
+        .map((Map.Entry<?, ?> entry) -> new SubjectCount((String) entry.getKey(),
+            ((Double) entry.getValue()).longValue())).collect(Collectors.toList());
+    subjectCounts.add(new SubjectCount("ROOT", response.getTotalArticles()));
+    return subjectCounts;
+  }
+
   /**
    * Queries Solr and returns the raw results
    *
@@ -317,5 +365,23 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     }
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
     return (Map<String, Map>) rawResults;
+  }
+
+  private class FacetedQueryResponse {
+    private Map<?, ?> resultsMap;
+    private Long totalArticles;
+
+    public FacetedQueryResponse(Map<?, ?> resultsMap, Long totalArticles) {
+      this.resultsMap = resultsMap;
+      this.totalArticles = totalArticles;
+    }
+
+    public Map<?, ?> getResultsMap() {
+      return resultsMap;
+    }
+
+    public Long getTotalArticles() {
+      return totalArticles;
+    }
   }
 }

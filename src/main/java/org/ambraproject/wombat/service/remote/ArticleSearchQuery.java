@@ -37,6 +37,9 @@ public class ArticleSearchQuery {
 
   private final Optional<String> facet;
 
+  private final int maxFacetSize;
+  private final int minFacetCount;
+
   private final int start;
   private final int rows;
 
@@ -61,6 +64,8 @@ public class ArticleSearchQuery {
     this.isPartialSearch = builder.isPartialSearch;
     this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
     this.facet = Optional.fromNullable(builder.facet);
+    this.minFacetCount = builder.minFacetCount;
+    this.maxFacetSize = builder.maxFacetSize;
     this.start = builder.start;
     this.rows = builder.rows;
     this.sortOrder = Optional.fromNullable(builder.sortOrder);
@@ -116,8 +121,8 @@ public class ArticleSearchQuery {
     if (facet.isPresent()) {
       params.add(new BasicNameValuePair("facet", "true"));
       params.add(new BasicNameValuePair("facet.field", facet.get()));
-      params.add(new BasicNameValuePair("facet.mincount", Integer.toString(MIN_FACET_COUNT)));
-      params.add(new BasicNameValuePair("facet.limit", Integer.toString(MAX_FACET_SIZE)));
+      params.add(new BasicNameValuePair("facet.mincount", Integer.toString(minFacetCount)));
+      params.add(new BasicNameValuePair("facet.limit", Integer.toString(maxFacetSize)));
       params.add(new BasicNameValuePair("json.nl", "map"));
     } else {
       params.add(new BasicNameValuePair("facet", "false"));
@@ -335,6 +340,8 @@ public class ArticleSearchQuery {
     builder.isForRawResults = this.isForRawResults;
     builder.filterQueries = this.filterQueries;
     builder.facet = this.facet.orNull();
+    builder.minFacetCount = this.minFacetCount;
+    builder.maxFacetSize = this.maxFacetSize;
     builder.start = this.start;
     builder.rows = this.rows;
     builder.sortOrder = this.sortOrder.orNull();
@@ -357,6 +364,9 @@ public class ArticleSearchQuery {
     private List<String> filterQueries = ImmutableList.of();
 
     private String facet;
+
+    private int maxFacetSize = MAX_FACET_SIZE;
+    private int minFacetCount = MIN_FACET_COUNT;
 
     private int start;
     private int rows;
@@ -429,6 +439,22 @@ public class ArticleSearchQuery {
      */
     public Builder setFacet(String facet) {
       this.facet = facet;
+      return this;
+    }
+
+    /**
+     * @param maxFacetSize maximum number of faceted results to return
+     */
+    public Builder setMaxFacetSize(int maxFacetSize) {
+      this.maxFacetSize = maxFacetSize;
+      return this;
+    }
+
+    /**
+     * @param minFacetCount   minimum number of facets to use
+     */
+    public Builder setMinFacetCount(int minFacetCount) {
+      this.minFacetCount = minFacetCount;
       return this;
     }
 

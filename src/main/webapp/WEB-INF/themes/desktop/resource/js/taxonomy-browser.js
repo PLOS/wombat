@@ -506,8 +506,12 @@
 
     var url = createUrlFromTermStack();
     if (parent_term != '/') {
-      url += parent_term;
+      url += "c=" + parent_term;
     }
+
+    //Replace spaces with underscores, will be reverted to spaces in TaxonomyController.
+    //This prevents 502 proxy errors that occur when we try to request a url with '%20' in it.
+    url = url.replace(/\s/g, "_");
 
     $.ajax({
       url: url,
@@ -520,9 +524,9 @@
   }
 
   function createUrlFromTermStack() {
-    var url = API_URL;
+    var url = API_URL + "?";
     for (var i = 1; i < term_stack.length; i++) {
-      url += term_stack[i] + "/";
+      url += "c=" + term_stack[i] + "&";
     }
     return url;
   }

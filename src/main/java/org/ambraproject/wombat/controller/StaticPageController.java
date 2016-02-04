@@ -21,7 +21,6 @@ public class StaticPageController extends WombatController {
     if (!doesStaticPageExist(site, pageName)) {
       throw new NotFoundException();
     }
-    enforceDevFeature("staticContent");     // TODO: remove when ready to expose page in prod
     return site + "/ftl/static/" + pageName;
   }
 

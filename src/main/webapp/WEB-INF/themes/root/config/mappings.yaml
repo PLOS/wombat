@@ -41,10 +41,6 @@
 # add more values in the future.)
 
 {
-  "articleMetrics": {
-    "disabled": true
-  },
-
   "browse": {
     "disabled": true
   },

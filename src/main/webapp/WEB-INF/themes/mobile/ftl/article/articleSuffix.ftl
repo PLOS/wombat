@@ -2,48 +2,38 @@
   <ul class="article-buttons">
   <#if article.figures?? && article.figures?size &gt; 0 >
     <li class="menuitem">
-      <a class="btn-lg" href="article/figures?id=${article.doi}">
+      <a class="btn-lg" href="<@siteLink handlerName="figurePage" queryParameters={"id": article.doi} />">
         <span class="arrow">View</span>
         Figures (${article.figures?size})
       </a>
     </li>
   </#if>
-  <#if articleCorrections?? && articleCorrections?size gt 0>
-    <li class="menuitem">
-      <a class="btn-lg" href="article/corrections?id=${article.doi}">
-        <span class="arrow">View</span>
-        Corrections (${articleCorrections?size})
-      </a>
-    </li>
-  </#if>
   <#if articleComments?? && articleComments?size &gt; 0>
     <li class="menuitem">
-      <a class="btn-lg" href="article/comments?id=${article.doi}">
+      <a class="btn-lg" href="<@siteLink handlerName="articleComments" queryParameters={"id": article.doi} />">
         <span class="arrow">View</span>
         Reader Comments (${articleComments?size})
       </a>
     </li>
   </#if>
     <li class="menuitem">
-      <a class="btn-lg" href="article/authors?id=${article.doi}">
+      <a class="btn-lg" href="<@siteLink handlerName="articleAuthors" queryParameters={"id": article.doi} />">
         <span class="arrow">View</span>
         About the Authors
       </a>
     </li>
-  <#-- TODO: determine how to do these in mobile
       <li class="menuitem">
-        <a class="btn-lg">
+        <a class="btn-lg" href="<@siteLink handlerName="articleMetrics" queryParameters={"id": article.doi} />">
           <span class="arrow">View</span>
           Metrics
         </a>
       </li>
-      <li class="menuitem">
-        <a class="btn-lg">
-          <span class="arrow">View</span>
-          Related Content
-        </a>
-      </li>
-  -->
+  <li class="menuitem">
+    <a class="btn-lg" href="<@siteLink handlerName="articleRelatedContent" queryParameters={"id": article.doi} />">
+      <span class="arrow">View</span>
+      Related Content
+    </a>
+  </li>
   </ul>
 </nav><#--end article buttons-->
 

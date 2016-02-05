@@ -352,8 +352,7 @@ var FigureLightbox = {};
     zoomOut = zoomOut || false;
     this.$panZoomEl.panzoom('zoom', zoomOut, {
       increment: 0.05,
-      animate: false,
-      focal: focal
+      animate: false
     });
   };
 

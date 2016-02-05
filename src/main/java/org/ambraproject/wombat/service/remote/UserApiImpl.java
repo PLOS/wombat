@@ -48,7 +48,7 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   private UserApiConfiguration fetchApiConfiguration() {
     Map<String, ?> userConfigData;
     try {
-      userConfigData = articleApi.requestObject("config/ned", Map.class);
+      userConfigData = articleApi.requestObject("config/userApi", Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

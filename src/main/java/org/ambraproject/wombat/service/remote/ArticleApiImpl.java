@@ -22,7 +22,7 @@ public class ArticleApiImpl extends AbstractRestfulJsonApi implements ArticleApi
 
   @Override
   protected String getCachePrefix() {
-    return "obj";
+    return "article";
   }
 
   @Override

@@ -137,7 +137,8 @@ var FigureLightbox = {};
           var buttons = $(that.lbSelector).find('.fig-btn').show();
           if (data.index === 0) {
             buttons.filter('.prev-fig-btn').hide(); // Hide prev button
-          } else if (data.index === (that.imgList.length - 1)) {
+          }
+          if (data.index === (that.imgList.length - 1)) {
             buttons.filter('.next-fig-btn').hide(); // Hide next button
           }
 

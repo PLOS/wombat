@@ -4,6 +4,7 @@
  *                resource/js/vendor/jquery
  *                resource/js/vendor/jquery.panzoom
  *                resource/js/vendor/jquery.dotdotdot
+ *                resource/js/vendor/jquery.mousewheel
  *                resource/js/vendor/foundation
  *
  */
@@ -327,7 +328,7 @@ var FigureLightbox = {};
     this.bindPanZoomToSlider();
     this.bindSliderToPanZoom();
 
-    this.$panZoomEl.parent().off('mousewheel.focal').on('mousewheel.focal', function(e) {
+    this.$panZoomEl.parent().off('mousewheel').on('mousewheel', function(e) {
       e.preventDefault();
       $(that.lbContainerSelector).trigger('mousewheel-zoom.lightbox', e);
       var delta = e.delta || e.originalEvent.wheelDelta;

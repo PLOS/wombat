@@ -63,6 +63,7 @@
   <@js src="resource/js/components/figshare.js"/>
   <#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
   <@js src="resource/js/vendor/jquery.panzoom.min.js"/>
+  <@js src="resource/js/vendor/jquery.mousewheel.js"/>
 
   <@js src="resource/js/components/lightbox.js"/>
 

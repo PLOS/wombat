@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 
-public class SoaServiceImpl extends AbstractRestfulJsonService implements SoaService {
+public class ArticleApiImpl extends AbstractRestfulJsonApi implements ArticleApi {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;

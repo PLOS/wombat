@@ -12,9 +12,9 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
-import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
-import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
+import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +40,10 @@ public class HomeController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
   @Autowired
-  private SolrSearchService solrSearchService;
+  private SolrSearchApi solrSearchApi;
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @Autowired
   private RecentArticleService recentArticleService;
@@ -58,13 +58,13 @@ public class HomeController extends WombatController {
     RECENT {
       @Override
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST);
+        return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST);
       }
     },
     POPULAR {
       @Override
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchServiceImpl.SolrSortOrder.MOST_VIEWS_30_DAYS);
+        return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.MOST_VIEWS_30_DAYS);
       }
     },
     CURATED {
@@ -72,22 +72,22 @@ public class HomeController extends WombatController {
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         String journalKey = site.getJournalKey();
         String listId = String.format("%s/%s/%s", section.curatedListType, journalKey, section.curatedListName);
-        Map<String, Object> curatedList = context.soaService.requestObject("lists/" + listId, Map.class);
+        Map<String, Object> curatedList = context.articleApi.requestObject("lists/" + listId, Map.class);
         List<Map<String,Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
         return articles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
       }
     };
 
     private static List<SolrArticleAdapter> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
-                                                                SolrSearchServiceImpl.SolrSortOrder order)
+                                                                SolrSearchApiImpl.SolrSortOrder order)
         throws IOException {
       ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
           .setStart(start)
           .setRows(section.resultCount)
           .setSortOrder(order)
           .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-          .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME);
-      Map<String, Object> result = (Map<String, Object>) context.solrSearchService.search(query.build());
+          .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
+      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.search(query.build());
       return SolrArticleAdapter.unpackSolrQuery(result);
     }
 
@@ -264,9 +264,9 @@ public class HomeController extends WombatController {
 
   private void populateCurrentIssue(Model model, Site site) throws IOException {
     String issueAddress = "journals/" + site.getJournalKey() + "?currentIssue";
-    Map<String, Object> currentIssue = soaService.requestObject(issueAddress, Map.class);
+    Map<String, Object> currentIssue = articleApi.requestObject(issueAddress, Map.class);
     model.addAttribute("currentIssue", currentIssue);
-    Map<String, Object> issueImageMetadata = soaService.requestObject("articles/" + currentIssue.get("imageUri"), Map.class);
+    Map<String, Object> issueImageMetadata = articleApi.requestObject("articles/" + currentIssue.get("imageUri"), Map.class);
     model.addAttribute("issueImage", issueImageMetadata);
   }
 

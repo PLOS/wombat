@@ -15,7 +15,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 public class ArticleServiceImpl implements ArticleService {
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   private static final ImmutableSet<String> FIGURE_TABLE_CONTEXT_ELEMENT =
       new ImmutableSet.Builder<String>()
@@ -36,7 +36,7 @@ public class ArticleServiceImpl implements ArticleService {
 
   @Override
   public Map<String, Object> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
-    Map<String, Object> map = (Map<String, Object>) soaService.requestObject(String.format(
+    Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(String.format(
         "articles/%s?excludeCitations=" + excludeCitations.toString(), articleId), Map.class);
     return DoiSchemeStripper.strip(map);
   }

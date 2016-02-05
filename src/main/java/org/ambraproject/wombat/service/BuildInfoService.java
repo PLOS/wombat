@@ -10,7 +10,7 @@ public interface BuildInfoService {
   public abstract BuildInfo getWebappBuildInfo();
 
   /**
-   * @return build properties describing the service component accessed by {@link org.ambraproject.wombat.service.remote.SoaService},
+   * @return build properties describing the service component accessed by {@link org.ambraproject.wombat.service.remote.ArticleApi},
    * or {@code null} if not available
    */
   public abstract BuildInfo getServiceBuildInfo();

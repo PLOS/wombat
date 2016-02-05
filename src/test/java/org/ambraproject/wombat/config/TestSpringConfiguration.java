@@ -21,8 +21,8 @@ import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
+import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -85,14 +85,14 @@ public class TestSpringConfiguration {
   }
 
   @Bean
-  public SoaService soaService() {
+  public ArticleApi articleApi() {
 
     // TODO: stub out if necessary for any test.
     return null;
   }
 
   @Bean
-  public SolrSearchServiceImpl getSearchService() {
-    return new SolrSearchServiceImpl();
+  public SolrSearchApiImpl getSearchService() {
+    return new SolrSearchApiImpl();
   }
 }

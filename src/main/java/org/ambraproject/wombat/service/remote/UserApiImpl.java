@@ -14,13 +14,13 @@ import java.net.URL;
 import java.util.Map;
 import java.util.Objects;
 
-public class NedServiceImpl extends AbstractRestfulJsonService implements NedService {
+public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   // Configuration data for sending requests to NED.
-  // Lazily initialized. We can't create it until soaService is wired.
+  // Lazily initialized. We can't create it until articleApi is wired.
   private static class NedConfiguration {
     private final URL server;
     private final ImmutableCollection<BasicHeader> authorizationHeader;
@@ -48,7 +48,7 @@ public class NedServiceImpl extends AbstractRestfulJsonService implements NedSer
   private NedConfiguration fetchNedConfiguration() {
     Map<String, ?> nedConfigurationData;
     try {
-      nedConfigurationData = soaService.requestObject("config/ned", Map.class);
+      nedConfigurationData = articleApi.requestObject("config/ned", Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

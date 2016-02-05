@@ -77,8 +77,8 @@ import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.XmlServiceImpl;
-import org.ambraproject.wombat.service.remote.EditorialContentService;
-import org.ambraproject.wombat.service.remote.EditorialContentServiceImpl;
+import org.ambraproject.wombat.service.remote.EditorialContentApi;
+import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.ambraproject.wombat.util.NullJavaMailSender;
@@ -292,8 +292,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public EditorialContentService editorialRepoService() {
-    return new EditorialContentServiceImpl();
+  public EditorialContentApi editorialContentApi() {
+    return new EditorialContentApiImpl();
   }
 
   @Bean

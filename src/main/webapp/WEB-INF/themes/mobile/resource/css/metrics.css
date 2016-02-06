@@ -161,12 +161,9 @@ table#pageViewsTable tr.percent td {
 
 div.metrics_tile {
   vertical-align: text-top;
-  /*display: inline-block;*/
-  /*border: 1px solid #CCCCCC;*/
   border-radius: 3px;
   margin-right: 12px;
-  margin-bottom: 12px;
-  /*background-color: #E5E4E4;*/
+  margin-bottom: 25px;
   *zoom: 1; /*  Workaround for IE */
   *display: inline; /*  Workaround for IE */
 }

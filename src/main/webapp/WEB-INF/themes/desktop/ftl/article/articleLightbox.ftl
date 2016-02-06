@@ -12,12 +12,6 @@
         <% }) %>
       </div>
 
-      <ul class="lb-nav">
-        <li class="abst">Abstract</li>
-        <li class="figs tab-active">Figures</li>
-        <li class="refs">References</li>
-      </ul>
-
       <div class="lb-close" title="close">&nbsp;</div>
     </div>
     <div class="img-container">
@@ -29,13 +23,15 @@
           <img class="aside-figure" src="<@siteLink handlerName="figureImage" queryParameters={"size": "inline"}/>&id=<%= figure.getAttribute('data-doi') %>" />
         </div>
         <% }) %>
+        <div class="dummy-figure">
+        </div>
       </aside>
     </div>
     <div id="lightbox-footer">
       <div id="btns-container" class="lightbox-row">
         <div class="range-slider-container">
           <div id="lb-zoom-min"></div>
-          <div class="range-slider round" data-slider data-options="step: 0.05; start: 0.45; end: 5; initial: 0.9;">
+          <div class="range-slider round" data-slider data-options="step: 0.05; start: 1; end: 5; initial: 1;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden">
@@ -82,11 +78,13 @@
       <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "original"}/>&id=<%= doi %>" title="original image">
         <span class="download-btn">TIFF</span>
       </a>
+      <span class="file-size"><%= fileSizes.original %></span>
     </div>
     <div class="item">
       <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "large"}/>&id=<%= doi %>" title="large image">
         <span class="download-btn">PNG</span>
       </a>
+      <span class="file-size"><%= fileSizes.large %></span>
     </div>
     <div class="item">
       <a href="<@siteLink handlerName="powerPoint"/>?id=<%= doi %>" title="PowerPoint slide">

@@ -4,6 +4,7 @@
  *                resource/js/vendor/jquery
  *                resource/js/vendor/jquery.panzoom
  *                resource/js/vendor/jquery.dotdotdot
+ *                resource/js/vendor/jquery.mousewheel
  *                resource/js/vendor/foundation
  *
  */
@@ -11,6 +12,7 @@ var FigureLightbox = {};
 (function($) {
 
   FigureLightbox = {
+    // All events are triggered on this container
     lbContainerSelector:     '#figure-lightbox-container',
 
     /* internal selectors */
@@ -53,7 +55,11 @@ var FigureLightbox = {};
       strippedDoi: this.imgData.strippedDoi,
 
       title: this.imgData.imgElement.find('.figcaption').text(),
-      description: this.imgData.imgElement.find('.caption_target').next().html()
+      description: this.imgData.imgElement.find('.caption_target').next().html(),
+      fileSizes: {
+        original: this.imgData.imgElement.find('.file-size[data-size="original"]').text(),
+        large: this.imgData.imgElement.find('.file-size[data-size="large"]').text()
+      }
     };
   };
 
@@ -126,12 +132,13 @@ var FigureLightbox = {};
           that.zoomIn();
         }).end()
 
-        .on('image-switch', function (e, data) {
+        .on('image-switch.lightbox', function (e, data) {
           // Show both prev and next buttons
           var buttons = $(that.lbSelector).find('.fig-btn').show();
           if (data.index === 0) {
             buttons.filter('.prev-fig-btn').hide(); // Hide prev button
-          } else if (data.index === (that.imgList.length - 1)) {
+          }
+          if (data.index === (that.imgList.length - 1)) {
             buttons.filter('.next-fig-btn').hide(); // Hide next button
           }
 
@@ -198,10 +205,25 @@ var FigureLightbox = {};
     this.renderImg(this.imgData.doi);
 
     if (!this.descriptionExpanded) {
-      $(this.lbSelector + ' #view-more-wrapper').dotdotdot({after: '#view-more'}).data('is-truncated', true);
+      this.truncateDescription();
     }
 
-    $(this.lbContainerSelector).trigger('image-switch', {index: currentIndex, element: this.imgData.imgElement});
+    $(this.lbContainerSelector).trigger('image-switch.lightbox', {index: currentIndex, element: this.imgData.imgElement});
+  };
+
+  FigureLightbox.truncateDescription = function () {
+    var $viewMoreWrapper = $(this.lbSelector + ' #view-more-wrapper');
+    if (!$viewMoreWrapper.data('is-truncated')) {
+      if ($viewMoreWrapper.find('img').length > 0) {
+        // Workaround: If description has inline images reduce
+        // the height of the container to avoid hiding the show
+        // more button when the images are rendered and ocuppy more space
+        $viewMoreWrapper.css({ maxHeight: function( index, value ) {
+          return parseFloat( value ) * 3/4;
+        }});
+      }
+      $viewMoreWrapper.dotdotdot({after: '#view-more'}).data('is-truncated', true);
+    }
   };
 
   FigureLightbox.toggleDescription = function () {
@@ -221,14 +243,13 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.retractDescription = function () {
+    var that = this;
     // Workaround to slide and fade at the same time
     $('#view-less-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp(500, function () {
       $('#image-context').removeClass('full-display');
       $('#view-more-wrapper').show();
       // Dotdotdot in case description is initialized expanded
-      if (!$('#view-more-wrapper').data('is-truncated')) {
-        $('#view-more-wrapper').dotdotdot({after: '#view-more'});
-      }
+      that.truncateDescription();
     });
     this.descriptionExpanded = false;
   };
@@ -238,6 +259,7 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.loadImage = function (lbContainer, imgDoi, cb) {
+    $(this.lbContainerSelector).trigger('opened.lightbox');
     this.lbContainerSelector = lbContainer || this.lbContainerSelector;
 
     this.imgData = {
@@ -286,6 +308,7 @@ var FigureLightbox = {};
   FigureLightbox.close = function () {
     this.destroy();
     $(this.lbSelector).foundation('reveal', 'close');
+    $(this.lbContainerSelector).trigger('closed.lightbox');
   };
 
   FigureLightbox.showInContext = function (imgDoi) {
@@ -299,15 +322,16 @@ var FigureLightbox = {};
     var that = this;
     this.$panZoomEl = $image.panzoom({
       contain: false,
-      minScale: 0.45
+      minScale: 1
     });
 
     /* Bind panzoom and slider to mutually control each other */
     this.bindPanZoomToSlider();
     this.bindSliderToPanZoom();
 
-    this.$panZoomEl.parent().off('mousewheel.focal').on('mousewheel.focal', function(e) {
+    this.$panZoomEl.parent().off('mousewheel').on('mousewheel', function(e) {
       e.preventDefault();
+      $(that.lbContainerSelector).trigger('mousewheel-zoom.lightbox', e);
       var delta = e.delta || e.originalEvent.wheelDelta;
       var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
       that.zoom(zoomOut, e);
@@ -330,18 +354,22 @@ var FigureLightbox = {};
     zoomOut = zoomOut || false;
     this.$panZoomEl.panzoom('zoom', zoomOut, {
       increment: 0.05,
-      animate: false,
-      focal: focal
+      animate: false
     });
   };
 
   FigureLightbox.bindPanZoomToSlider = function () {
     var that = this;
+    var panzoomInstance = that.$panZoomEl.panzoom('instance');
     $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function(){
-      var panzoomInstance = that.$panZoomEl.panzoom('instance');
+      // If values differ, change them
       var matrix = panzoomInstance.getMatrix();
-      matrix[0] = matrix[3] = this.dataset.slider;
-      panzoomInstance.setMatrix(matrix);
+      var newSliderValue = parseFloat(this.dataset.slider);
+      if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
+        $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
+        matrix[0] = matrix[3] = newSliderValue;
+        panzoomInstance.setMatrix(matrix);
+      }
     });
   };
   FigureLightbox.bindSliderToPanZoom = function () {
@@ -372,7 +400,7 @@ var FigureLightbox = {};
         .find('.change-img').off('click').end()
       // Unbind button to show all images
         .find('.all-fig-btn').off('click').end()
-        .off('image-switch');
+        .off('image-switch.lightbox');
       this.$panZoomEl.panzoom('destroy');
         */
   };

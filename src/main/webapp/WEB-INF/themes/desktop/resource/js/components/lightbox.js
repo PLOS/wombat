@@ -54,7 +54,7 @@ var FigureLightbox = {};
       doi: this.imgData.doi,
       strippedDoi: this.imgData.strippedDoi,
 
-      title: this.imgData.imgElement.find('.figcaption').text(),
+      title: this.imgData.imgElement.find('.figcaption').html(),
       description: this.imgData.imgElement.find('.caption_target').next().html(),
       fileSizes: {
         original: this.imgData.imgElement.find('.file-size[data-size="original"]').text(),
@@ -392,7 +392,8 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.destroy = function () {
-      // @TODO: Check when to destroy modal with images
+      // @TODO: Check when to destroy modal with images,
+    ///add destroy when opening in other pages.
 /*    $(this.lbContainerSelector)
       // Unbind close button
         .find(this.lbCloseButtonSelector).off('click').end()

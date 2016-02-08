@@ -6,7 +6,6 @@
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
-<#include "../common/legacyLink.ftl" />
 
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
@@ -34,10 +33,14 @@
   <#assign query = otherQuery />
   <#assign advancedSearch = true />
 </#if>
-<#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?unformattedQuery=${query}&noSearchFlag=set"/>
+<#assign advancedSearchParams = {"unformattedQuery": query} />
 <#if RequestParameters.filterJournals??>
-  <#assign advancedSearchLink = advancedSearchLink + "&filterJournals=${RequestParameters.filterJournals}"/>
+  <#assign advancedSearchParams = advancedSearchParams + {"filterJournals" : RequestParameters.filterJournals} />
+<#else>
 </#if>
+<@siteLink handlerName="advancedSearch" queryParameters=advancedSearchParams ; advancedSearchLink>
+  <#assign advancedSearchLink = advancedSearchLink />
+</@siteLink>
 
 <#include "suppressSearchFilter.ftl" />
 

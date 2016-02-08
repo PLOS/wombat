@@ -1,13 +1,13 @@
 <div class="article-block">
 <@siteLink handlerName="article" queryParameters={"id":article.doi} ; articleUrl>
       <#if (article.strkImgURI?? && article.strkImgURI?length > 0) >
-          <a class="articleURL"  href="${articleUrl}">
+          <a class="article-url"  href="${articleUrl}">
               <@siteLink handlerName="figureImage" queryParameters={"id" : article.strkImgURI, "size": "inline"} ; href>
                   <img class="grayscale" src="${href}"/>
               </@siteLink>
           </a>
       <#else>
-        <a class="articleURL" href="${articleUrl}">
+        <a class="article-url" href="${articleUrl}">
           <@siteLink handlerName="staticResource" wildcardValues=["img/generic-article-image.png"] ; href>
               <img src="${href}"/>
           </@siteLink>

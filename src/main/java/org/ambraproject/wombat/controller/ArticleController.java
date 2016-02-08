@@ -860,6 +860,9 @@ public class ArticleController extends WombatController {
    */
   private void requestComments(Model model, String doi) throws IOException {
     List<?> comments = soaService.requestObject(String.format("articles/%s?comments", doi), List.class);
+    for (Object o : comments) {
+      commentService.addCreatorData((Map<String, Object>) o);
+    }
     model.addAttribute("articleComments", comments);
   }
 

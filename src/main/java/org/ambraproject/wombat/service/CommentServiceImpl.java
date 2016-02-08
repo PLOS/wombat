@@ -49,7 +49,8 @@ public class CommentServiceImpl implements CommentService {
   /**
    * Fetch data about a user from NED and put it in the comment, replacing the NED ID.
    */
-  private void addCreatorData(Map<String, Object> comment) {
+  @Override
+  public void addCreatorData(Map<String, Object> comment) {
     Map<String, Object> creator = (Map<String, Object>) comment.remove(CREATOR_KEY);
     String nedId = creator.get("nedId").toString();
 

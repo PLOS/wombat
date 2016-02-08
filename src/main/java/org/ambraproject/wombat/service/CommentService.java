@@ -15,6 +15,8 @@ public interface CommentService {
    */
   Map<String, Object> getComment(String commentId) throws IOException;
 
+  void addCreatorData(Map<String, Object> object) throws IOException;
+
   public static class CommentNotFoundException extends RuntimeException {
     public CommentNotFoundException(String commentId, EntityNotFoundException cause) {
       super("No comment with ID: " + commentId, cause);

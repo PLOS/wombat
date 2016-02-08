@@ -52,7 +52,7 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public void addCreatorData(Map<String, Object> comment) {
     Map<String, Object> creator = (Map<String, Object>) comment.remove(CREATOR_KEY);
-    String nedId = creator.get("nedId").toString();
+    String nedId = creator.get("userId").toString();
 
     IndividualComposite individual;
     try {

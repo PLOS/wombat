@@ -13,21 +13,6 @@
         </fieldset>
         <#if journal?has_content><input type="hidden" name="filterJournals" value="${journal}"/></#if>
     </form>
-
-  <@ifDevFeatureDisabled 'advancedSearch'>
-    <@themeConfig map="legacy" value="urlPrefix" ; legacyUrlPrefix>
-      <#if legacyUrlPrefix??>
-        <a id="advSearch"
-           href="${legacyUrlPrefix}search/advanced?noSearchFlag=true&query=<#if journal?has_content>&filterJournals=${journal}</#if>">
-          advanced search
-        </a>
-      </#if>
-    </@themeConfig>
-  </@ifDevFeatureDisabled>
-  <@ifDevFeatureEnabled 'advancedSearch'>
-    <#-- @TODO: Remove dummy anchor and set right padding to header if feature goes live. -->
-    <a href="#" class="dummy-anchor">&nbsp;</a>
-  </@ifDevFeatureEnabled>
   </li>
 
 </#macro>

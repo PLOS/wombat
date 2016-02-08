@@ -14,18 +14,18 @@ import java.net.URL;
 import java.util.Map;
 import java.util.Objects;
 
-public class NedServiceImpl extends AbstractRestfulJsonService implements NedService {
+public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
-  // Configuration data for sending requests to NED.
-  // Lazily initialized. We can't create it until soaService is wired.
-  private static class NedConfiguration {
+  // Configuration data for sending requests to the remote user service.
+  // Lazily initialized. We can't create it until articleApi is wired.
+  private static class UserApiConfiguration {
     private final URL server;
     private final ImmutableCollection<BasicHeader> authorizationHeader;
 
-    private NedConfiguration(String server, String authorizationAppName, String authorizationPassword) {
+    private UserApiConfiguration(String server, String authorizationAppName, String authorizationPassword) {
       try {
         this.server = new URL(Objects.requireNonNull(server));
       } catch (MalformedURLException e) {
@@ -45,36 +45,36 @@ public class NedServiceImpl extends AbstractRestfulJsonService implements NedSer
     return new BasicHeader("Authorization", "Basic " + encoded);
   }
 
-  private NedConfiguration fetchNedConfiguration() {
-    Map<String, ?> nedConfigurationData;
+  private UserApiConfiguration fetchApiConfiguration() {
+    Map<String, ?> userConfigData;
     try {
-      nedConfigurationData = soaService.requestObject("config/ned", Map.class);
+      userConfigData = articleApi.requestObject("config/userApi", Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    return new NedConfiguration((String) nedConfigurationData.get("server"),
-        (String) nedConfigurationData.get("authorizationAppName"),
-        (String) nedConfigurationData.get("authorizationPassword"));
+    return new UserApiConfiguration((String) userConfigData.get("server"),
+        (String) userConfigData.get("authorizationAppName"),
+        (String) userConfigData.get("authorizationPassword"));
   }
 
-  private transient NedConfiguration nedConfiguration;
+  private transient UserApiConfiguration userApiConfiguration;
 
-  private NedConfiguration getNedConfiguration() {
-    return (nedConfiguration != null) ? nedConfiguration : (nedConfiguration = fetchNedConfiguration());
+  private UserApiConfiguration getUserApiConfiguration() {
+    return (userApiConfiguration != null) ? userApiConfiguration : (userApiConfiguration = fetchApiConfiguration());
   }
 
   @Override
   protected Iterable<? extends Header> getAdditionalHeaders() {
-    return getNedConfiguration().authorizationHeader;
+    return getUserApiConfiguration().authorizationHeader;
   }
 
   @Override
   protected URL getServerUrl() {
-    return getNedConfiguration().server;
+    return getUserApiConfiguration().server;
   }
 
   @Override
   protected String getCachePrefix() {
-    return "ned";
+    return "user";
   }
 }

@@ -39,7 +39,7 @@ import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
@@ -123,7 +123,7 @@ public class ArticleController extends WombatController {
   @Autowired
   private SiteSet siteSet;
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
   @Autowired
   private ArticleService articleService;
   @Autowired
@@ -239,7 +239,7 @@ public class ArticleController extends WombatController {
   }
 
   private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
-    List<Map<?, ?>> articleListObjects = soaService.requestObject(String.format("articles/%s?lists", doi), List.class);
+    List<Map<?, ?>> articleListObjects = articleApi.requestObject(String.format("articles/%s?lists", doi), List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
     for (Map<?, ?> articleListObject : articleListObjects) {
       String listType = Preconditions.checkNotNull((String) articleListObject.get("type"));
@@ -465,14 +465,14 @@ public class ArticleController extends WombatController {
       return ImmutableMap.of("validationErrors", validationErrors);
     }
 
-    URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), COMMENT_NAMESPACE);
+    URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), COMMENT_NAMESPACE);
     ArticleComment comment = new ArticleComment(parentArticleDoi, request.getRemoteUser(),
         parentCommentUri, commentTitle, commentBody, ciStatement);
     String articleCommentJson = new Gson().toJson(comment);
     HttpEntity entity = new StringEntity(articleCommentJson, ContentType.create("application/json"));
 
     HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
-    try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {
+    try (CloseableHttpResponse response = articleApi.getResponse(commentPostRequest)) {
       String createdCommentUri = HttpMessageUtil.readResponse(response);
       return ImmutableMap.of("createdCommentUri", createdCommentUri);
     }
@@ -490,13 +490,13 @@ public class ArticleController extends WombatController {
       return ImmutableMap.of("validationErrors", validationErrors);
     }
 
-    URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(),
+    URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(),
         String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
     ArticleCommentFlag flag = new ArticleCommentFlag(request.getRemoteUser(), flagCommentBody, reasonCode);
     HttpEntity entity = new StringEntity(new Gson().toJson(flag), ContentType.create("application/json"));
 
     HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
-    try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {
+    try (CloseableHttpResponse response = articleApi.getResponse(commentPostRequest)) {
       return ImmutableMap.of(); // the "201 CREATED" status is all the AJAX client needs
     }
   }
@@ -859,7 +859,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private void requestComments(Model model, String doi) throws IOException {
-    List<?> comments = soaService.requestObject(String.format("articles/%s?comments", doi), List.class);
+    List<?> comments = articleApi.requestObject(String.format("articles/%s?comments", doi), List.class);
     model.addAttribute("articleComments", comments);
   }
 
@@ -872,7 +872,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private void requestAuthors(Model model, String doi) throws IOException {
-    Map<?,?> allAuthorsData = soaService.requestObject(String.format("articles/%s?authors", doi), Map.class);
+    Map<?,?> allAuthorsData = articleApi.requestObject(String.format("articles/%s?authors", doi), Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);
 
@@ -934,7 +934,7 @@ public class ArticleController extends WombatController {
     String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
-    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
+    return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
 
       // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
       String bodyXml = xmlService.extractElement(stream, "body");
@@ -959,7 +959,7 @@ public class ArticleController extends WombatController {
         Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
-    return soaService.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
+    return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
         articleTransformService.transform(renderContext, stream, outputStream);

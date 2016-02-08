@@ -74,9 +74,7 @@
         </ol>
       </fieldset>
     </form>
-    <br/>
-    <br/>
-    <a href="${legacyUrlPrefix}static/privacy">Privacy Policy</a>
+    <#include "emailFooter.ftl" />
   </article>
 </div>
 

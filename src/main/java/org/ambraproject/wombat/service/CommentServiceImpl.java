@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.service.remote.NedService;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.plos.ned_client.model.IndividualComposite;
 import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 public class CommentServiceImpl implements CommentService {
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
   @Autowired
-  private NedService nedService;
+  private UserApi userApi;
 
   private static final String REPLIES_KEY = "replies";
   private static final String CREATOR_KEY = "creator";
@@ -56,7 +56,7 @@ public class CommentServiceImpl implements CommentService {
 
     IndividualComposite individual;
     try {
-      individual = nedService.requestObject("individuals/" + nedId, IndividualComposite.class);
+      individual = userApi.requestObject("individuals/" + nedId, IndividualComposite.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -69,7 +69,7 @@ public class CommentServiceImpl implements CommentService {
   public Map<String, Object> getComment(String commentId) throws IOException {
     Map<String, Object> comment;
     try {
-      comment = soaService.requestObject(String.format("comments/" + commentId), Map.class);
+      comment = articleApi.requestObject(String.format("comments/" + commentId), Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new CommentNotFoundException(commentId, enfe);
     }

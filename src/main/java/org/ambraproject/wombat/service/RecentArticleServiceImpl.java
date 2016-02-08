@@ -5,7 +5,7 @@ import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   private static final Logger log = LoggerFactory.getLogger(RecentArticleServiceImpl.class);
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
   @Autowired
   private Cache cache;
 
@@ -128,7 +128,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       }
     }
 
-    return soaService.requestObject("articles?" + params.format(), List.class);
+    return articleApi.requestObject("articles?" + params.format(), List.class);
   }
 
 }

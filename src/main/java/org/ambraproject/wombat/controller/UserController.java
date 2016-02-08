@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.Siteless;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.HttpDebug;
 import org.apache.http.HttpHeaders;
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ public class UserController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @RequestMapping(name = "userLogin", value = "/user/secure/login")
   public ModelAndView redirectToOriginalLink(HttpServletRequest request, @RequestParam("page") String page) {
@@ -77,7 +77,7 @@ public class UserController extends WombatController {
     persist.put("sessionId", sessionId);
     persist.put("IP", ipAddress);
     persist.put("userAgent", userAgent);
-    soaService.postObject("user?authId=" + remoteUser, persist);
+    articleApi.postObject("user?authId=" + remoteUser, persist);
   }
 
   @Siteless
@@ -95,7 +95,7 @@ public class UserController extends WombatController {
   @RequestMapping(name = "userInfo", value = "/user/{displayName}")
   public String displayUserInfo(Model model, @SiteParam Site site, @PathVariable String displayName) throws IOException {
     String userMetaUrl = "user?displayName=" + displayName;
-    Map<String, Object> userMetadata = soaService.requestObject(userMetaUrl, Map.class);
+    Map<String, Object> userMetadata = articleApi.requestObject(userMetaUrl, Map.class);
     model.addAttribute("user", userMetadata);
     return site.getKey() + "/ftl/user/userInfo";
   }

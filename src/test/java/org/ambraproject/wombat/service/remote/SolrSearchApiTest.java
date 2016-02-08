@@ -34,16 +34,16 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
-public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
+public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
 
   @Autowired
-  private SolrSearchService searchService;
+  private SolrSearchApi searchService;
 
   @Autowired
   private SiteSet siteSet;
 
   private static List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,
-                                                       int rows, SolrSearchService.SearchCriterion sortOrder,
+                                                       int rows, SolrSearchApi.SearchCriterion sortOrder,
                                                        boolean forHomePage) {
     return ArticleSearchQuery.builder()
         .setQuery(query)
@@ -57,7 +57,7 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
   @Test
   public void testBuildCommonParams() {
     // query string not null
-    List<NameValuePair> actual = buildCommonParams("foo", true, 0, 10, SolrSearchServiceImpl.SolrSortOrder.MOST_CITED, true);
+    List<NameValuePair> actual = buildCommonParams("foo", true, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
     SetMultimap<String, String> actualMap = convertToMap(actual);
     assertCommonParams(actualMap, 2);
     assertSingle(actualMap.get("rows"), "10");
@@ -69,14 +69,14 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
     assertSingle(actualMap.get("q"), "foo");
 
     // empty query string
-    actual = buildCommonParams("", false, 0, 10, SolrSearchServiceImpl.SolrSortOrder.MOST_CITED, true);
+    actual = buildCommonParams("", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
     actualMap = convertToMap(actual);
     assertCommonParams(actualMap, 2);
     assertEquals(actualMap.get("defType").size(), 0);
     assertSingle(actualMap.get("q"), "*:*");
 
     // not home page
-    actual = buildCommonParams("", false, 0, 10, SolrSearchServiceImpl.SolrSortOrder.RELEVANCE, false);
+    actual = buildCommonParams("", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.RELEVANCE, false);
     actualMap = convertToMap(actual);
     assertCommonParams(actualMap, 2);
     assertSingle(actualMap.get("sort"), "score desc,publication_date desc,id desc");
@@ -112,7 +112,7 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
 
   private static void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
                                       List<String> articleTypes, List<String> subjects,
-                                      SolrSearchService.SearchCriterion dateRange) {
+                                      SolrSearchApi.SearchCriterion dateRange) {
     ArticleSearchQuery.builder()
         .setJournalKeys(journalKeys)
         .setArticleTypes(articleTypes)
@@ -129,14 +129,14 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
 
     // Multiple journals
     setQueryFilters(actual, Arrays.asList("foo", "bar", "blaz"), articleTypes, subjects,
-        SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME);
+        SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
     SetMultimap<String, String> actualMap = convertToMap(actual);
     assertJournals(actualMap.get("fq"), "foo", "bar", "blaz");
 
     // date range
     actual = new ArrayList<>();
     setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, subjects,
-        SolrSearchServiceImpl.SolrEnumeratedDateRange.LAST_3_MONTHS);
+        SolrSearchApiImpl.SolrEnumeratedDateRange.LAST_3_MONTHS);
     actualMap = convertToMap(actual);
     assertEquals(actualMap.get("fq").size(), 2);
     for (String s : actualMap.get("fq")) {
@@ -160,8 +160,8 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
   @Test
   public void testSetQueryFilters_ExplicitDateRange() throws IOException {
     List<NameValuePair> actual = new ArrayList<>();
-    SolrSearchServiceImpl.SolrExplicitDateRange edr
-        = new SolrSearchServiceImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    SolrSearchApiImpl.SolrExplicitDateRange edr
+        = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
 
     setQueryFilters(actual, Collections.singletonList("foo"), new ArrayList<String>(), new ArrayList<String>(), edr);
     SetMultimap<String, String> actualMap = convertToMap(actual);
@@ -172,8 +172,8 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
   @Test
   public void testSetQueryFilters_IncludeArticleTypes() throws IOException {
     List<NameValuePair> actual = new ArrayList<>();
-    SolrSearchServiceImpl.SolrExplicitDateRange edr
-        = new SolrSearchServiceImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    SolrSearchApiImpl.SolrExplicitDateRange edr
+        = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
     setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, new ArrayList<String>(), edr);
@@ -186,8 +186,8 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
   @Test
   public void testSetQueryFilters_IncludeSubjects() throws IOException {
     List<NameValuePair> actual = new ArrayList<>();
-    SolrSearchServiceImpl.SolrExplicitDateRange edr
-        = new SolrSearchServiceImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    SolrSearchApiImpl.SolrExplicitDateRange edr
+        = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
     setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, Arrays.asList("Skull", "Head", "Teeth"), edr);
@@ -198,7 +198,7 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
     assertSubjects(actualMap.get("fq"), "\"Skull\"", "\"Head\"", "\"Teeth\"");
   }
 
-  private static class SearchServiceForAddArticleLinksTest extends SolrSearchServiceImpl {
+  private static class SearchApiForAddArticleLinksTest extends SolrSearchApiImpl {
 
     @Override
     protected void initializeEIssnToJournalKeyMap(SiteSet siteSet, Site currentSite) throws IOException {
@@ -212,7 +212,7 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
 
   @Test
   public void testAddArticleLinks() throws IOException {
-    SolrSearchService solrSearchServiceForTest = new SearchServiceForAddArticleLinksTest();
+    SolrSearchApi solrSearchApiForTest = new SearchApiForAddArticleLinksTest();
     Map<String, List<Map>> searchResults = new HashMap<>();
     List<Map> docs = new ArrayList<>(1);
     Map doc = new HashMap();
@@ -226,7 +226,7 @@ public class SolrSearchServiceTest extends AbstractTestNGSpringContextTests {
     request.setContextPath("someContextPath");
     Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal2Key");
 
-    Map<?, ?> actual = solrSearchServiceForTest.addArticleLinks(searchResults, request, site, siteSet);
+    Map<?, ?> actual = solrSearchApiForTest.addArticleLinks(searchResults, request, site, siteSet);
     List<Map> actualDocs = (List) actual.get("docs");
     assertEquals(actualDocs.size(), 1);
     Map actualDoc = (Map) actualDocs.get(0);

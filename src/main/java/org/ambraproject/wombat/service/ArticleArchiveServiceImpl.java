@@ -2,7 +2,7 @@ package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
-import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -19,11 +19,11 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
   private static final String MONTHS[] = new DateFormatSymbols().getMonths();
 
   @Autowired
-  SolrSearchServiceImpl solrSearchService;
+  SolrSearchApiImpl solrSearchApi;
 
   @Override
   public Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException {
-    Map<String, String> yearRange = (Map<String, String>) solrSearchService.getStats("publication_date",
+    Map<String, String> yearRange = (Map<String, String>) solrSearchApi.getStats("publication_date",
         site.getJournalKey());
     return yearRange;
   }
@@ -58,16 +58,16 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
     Calendar endDate = (Calendar) startDate.clone();
     endDate.add(Calendar.MONTH, 1);
 
-    SolrSearchServiceImpl.SolrExplicitDateRange dateRange = new SolrSearchServiceImpl.SolrExplicitDateRange
+    SolrSearchApiImpl.SolrExplicitDateRange dateRange = new SolrSearchApiImpl.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setJournalKeys(Collections.singletonList(site.getJournalKey()))
         .setStart(0)
         .setRows(1000000)
-        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_OLDEST_FIRST)
+        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
         .setDateRange(dateRange);
-    Map<String, Map> searchResult = (Map<String, Map>) solrSearchService.search(query.build());
+    Map<String, Map> searchResult = (Map<String, Map>) solrSearchApi.search(query.build());
     return searchResult;
   }
 }

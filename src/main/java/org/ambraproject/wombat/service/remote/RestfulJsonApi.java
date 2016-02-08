@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 
-public interface RestfulJsonService {
+public interface RestfulJsonApi {
 
   /**
    * Send a REST request and open a stream as the response.

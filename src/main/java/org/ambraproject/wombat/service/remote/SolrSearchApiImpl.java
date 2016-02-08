@@ -50,7 +50,7 @@ import java.util.stream.Collectors;
 /**
  * Implementation of SearchService that queries a solr backend.
  */
-public class SolrSearchServiceImpl implements SolrSearchService {
+public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Autowired
   private JsonService jsonService;
@@ -58,7 +58,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
   private CachedRemoteService<Reader> cachedRemoteReader;
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @VisibleForTesting
   protected Map<String, String> eIssnToJournalKey;
@@ -271,7 +271,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     if (eIssnToJournalKey == null) {
       Map<String, String> mutable = new HashMap<>();
       for (Site site : siteSet.getSites()) {
-        Map<String, String> rhinoResult = (Map<String, String>) soaService.requestObject(
+        Map<String, String> rhinoResult = (Map<String, String>) articleApi.requestObject(
             "journals/" + site.getJournalKey(), Map.class);
         mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
       }

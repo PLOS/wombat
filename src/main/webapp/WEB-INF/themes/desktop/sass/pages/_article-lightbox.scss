@@ -1,6 +1,11 @@
 /* @TODO: Move figure carousel to apporpiate place in article before displaying */
 
-$fv-small: rem-calc(7);
+$lb-small: rem-calc(7);
+$lb-header-height: rem-calc(46);
+$lb-control-bar-height: rem-calc(40px);
+$lb-description-bar-height: rem-calc(82px);
+$lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-header-height;
+
 #figure-carousel-section {
   display: block;
 }
@@ -36,17 +41,17 @@ $fv-small: rem-calc(7);
     }
   }
 
+
+  ////// Scrollbar styles for webkit users
   ::-webkit-scrollbar {
     width: 10px;
   }
-
   /* Track */
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     -webkit-border-radius: 10px;
     border-radius: 10px;
   }
-
   /* Handle */
   ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
@@ -59,14 +64,13 @@ $fv-small: rem-calc(7);
   }
 
 
-
   .lb-header {
     font-family: $font-face-fancy;
-    padding: $fv-small rem-calc(280) 0 1.1%;
-    height: rem-calc(46);
+    padding: $lb-small rem-calc(280) 0 1.1%;
+    height: $lb-header-height;
     background: $grey-dark;
     position: relative;
-    border-right: rem-calc(46) solid transparent;
+    margin-right: $lb-header-height;
     z-index: map_get($zindex, topvisible);
 
     h1, h1 a {
@@ -100,7 +104,7 @@ $fv-small: rem-calc(7);
       border-right: 1px solid $grey-med-dark;
       padding: 0 $pad-smallish;
       font-size: $txt-size-medium-large;
-      line-height: rem-calc(46);
+      line-height: $lb-header-height;
       color: $white;
       cursor: pointer;
       outline: 0;
@@ -120,13 +124,15 @@ $fv-small: rem-calc(7);
   .lb-close {
     background: image-url('sprite.fv.png') no-repeat -40px 0;
     position: absolute;
-    right: rem-calc(-46);
+    right: -$lb-header-height;
     top: 0;
-    width: rem-calc(46);
-    height: rem-calc(46);
+    width: $lb-header-height;
+    height: $lb-header-height;
     cursor: pointer;
     color: $grey-light;
+    border-left: 1px $grey-light solid;
     &:hover {
+      border-left: none;
       @extend %brand-background;
     }
   }
@@ -140,8 +146,6 @@ $fv-small: rem-calc(7);
   }
 
   #lb-authors {
-    height: rem-calc(15);
-    line-height: rem-calc(15);
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -161,8 +165,9 @@ $fv-small: rem-calc(7);
   .img-container {
     img.main-lightbox-image {
       max-width: 80%;
+      max-height: 75%;
     }
-    height: 80%;
+    height: 100%;
     min-width: 100%;
     margin: 0 auto;
     text-align: center;
@@ -170,10 +175,7 @@ $fv-small: rem-calc(7);
 
     #figures-list {
       display: none;
-      height: 95%;
-      @media screen and (min-height: 740px) {
-          height: 100%;
-      }
+      height: 100%;
       overflow-y: scroll;
       max-width: rem-calc(180px);
       right: 0;
@@ -186,8 +188,14 @@ $fv-small: rem-calc(7);
         padding: 4%;
         margin: 8% 2%;
         img {
-          min-width: 150px;
+          min-width: rem-calc(150px);
         }
+      }
+
+      // Workaround to show all images since height is % and footer is px
+      .dummy-figure {
+        // Header height + footer height
+        height: $lb-footer-height;
       }
     }
   }
@@ -240,7 +248,7 @@ $fv-small: rem-calc(7);
     .lightbox-row {
       text-align: center;
       width: 100%;
-      min-height: rem-calc(40px);
+      min-height: $lb-control-bar-height;
       .range-slider-container {
         text-align: initial;
         display: inline-block;
@@ -257,13 +265,13 @@ $fv-small: rem-calc(7);
           padding: 0 $pad-small;
           border-left: 1px solid #666;
           border-color: rgba(51,51,51,0.25);
-          line-height: rem-calc(40px);
+          line-height: $lb-control-bar-height;
           font-family: $font-face-fancy;
           color: $white;
           cursor: pointer;
           .icon {
             background-image: image-url('sprite.fv.png');
-            width: $fv-small;
+            width: $lb-small;
             height: rem-calc(11);
             margin-top: rem-calc(15px);
           }
@@ -352,7 +360,7 @@ $fv-small: rem-calc(7);
           overflow-y: hidden;
           #view-more-wrapper {
             /* Needs static height for dotdotdot to trim text */
-            max-height: rem-calc(82px);
+            max-height: $lb-description-bar-height;
           }
 
           #view-less-wrapper {
@@ -417,11 +425,15 @@ $fv-small: rem-calc(7);
         .item {
           float: right;
           margin-right: $pad-default + $pad-xsmall;
-        }
-        .item a {
-          display: block;
-          color: $grey-dark;
-          text-decoration: none;
+          text-align: center;
+          a {
+            display: block;
+            color: $grey-dark;
+            text-decoration: none;
+          }
+          .file-size {
+            font-size: $txt-size-xsmall;
+          }
         }
         .size {
           display: block;

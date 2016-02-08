@@ -8,7 +8,7 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.apache.poi.hslf.usermodel.SlideShow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +37,7 @@ public class PowerPointController extends WombatController {
   private static final String LOGO_PATH = "resource/img/logo.png";
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
   @Autowired
   private PowerPointService powerPointService;
 
@@ -49,7 +49,7 @@ public class PowerPointController extends WombatController {
 
     Map<String, Object> figureMetadata;
     try {
-      figureMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+      figureMetadata = articleApi.requestObject("assets/" + figureId + "?figure", Map.class);
     } catch (ServiceRequestException e) {
       if (e.getStatusCode() == HttpStatus.BAD_REQUEST.value()) {
         /*

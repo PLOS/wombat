@@ -14,7 +14,7 @@ import java.util.Collection;
  * server URL. For example, if the server is hosted at {@code http://example.com/api/v1/} and you want to send a request
  * to {@code http://example.com/api/v1/config}, then you would call {@code requestStream("config")}.
  */
-public interface SoaService extends RestfulJsonService {
+public interface ArticleApi extends RestfulJsonApi {
 
   /**
    * Return the host, port, and optionally part of the path.  For example "http://www.example.com/" or

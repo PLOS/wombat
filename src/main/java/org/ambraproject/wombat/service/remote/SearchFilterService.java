@@ -19,7 +19,7 @@ import java.util.Map;
 public class SearchFilterService {
 
   @Autowired
-  private SolrSearchService solrSearchService;
+  private SolrSearchApi solrSearchApi;
 
   @Autowired
   private SearchFilterFactory searchFilterFactory;
@@ -67,7 +67,7 @@ public class SearchFilterService {
         .setDateRange(query.getDateRange().orNull())
         .setSections(query.getSections());
 
-    Map<?, ?> journalFacetResults = solrSearchService.search(journalFacetQuery.build());
+    Map<?, ?> journalFacetResults = solrSearchApi.search(journalFacetQuery.build());
     SearchFilter journalFilter = searchFilterFactory
         .createSearchFilter(journalFacetResults, JOURNAL, urlParams);
 
@@ -82,7 +82,7 @@ public class SearchFilterService {
         .setSections(query.getSections())
         .setSubjects(query.getSubjects());  // pass the previously filtered subjects to narrow the results
 
-    Map<?, ?> subjectAreaFacetResults = solrSearchService.search(subjectAreaFacetQuery.build());
+    Map<?, ?> subjectAreaFacetResults = solrSearchApi.search(subjectAreaFacetQuery.build());
     SearchFilter subjectAreaFilter = searchFilterFactory
         .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
 
@@ -98,7 +98,7 @@ public class SearchFilterService {
         .setSections(query.getSections());
 
 
-    Map<?, ?> authorFacetResults = solrSearchService.search(authorFacetQuery.build());
+    Map<?, ?> authorFacetResults = solrSearchApi.search(authorFacetQuery.build());
     SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
 
     ArticleSearchQuery.Builder articleTypeFacetQuery = ArticleSearchQuery.builder()
@@ -111,7 +111,7 @@ public class SearchFilterService {
         .setAuthors(query.getAuthors())
         .setSections(query.getSections());
 
-    Map<?, ?> articleTypeFacetResults = solrSearchService.search(articleTypeFacetQuery.build());
+    Map<?, ?> articleTypeFacetResults = solrSearchApi.search(articleTypeFacetQuery.build());
     SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(articleTypeFacetResults,
         ARTICLE_TYPE, urlParams);
 
@@ -125,7 +125,7 @@ public class SearchFilterService {
         .setSubjects(query.getSubjects())
         .setAuthors(query.getAuthors());
 
-    Map<?, ?> sectionFacetResults = solrSearchService.search(sectionFacetQuery.build());
+    Map<?, ?> sectionFacetResults = solrSearchApi.search(sectionFacetQuery.build());
     SearchFilter sectionFilter = searchFilterFactory.createSearchFilter(sectionFacetResults,
         SECTION, urlParams);
 
@@ -142,7 +142,7 @@ public class SearchFilterService {
   }
 
   public Map<String, SearchFilter> getVolumeSearchFilters(int volume, List<String> journalKeys, List<String> articleTypes,
-      SolrSearchService.SearchCriterion dateRange) throws IOException {
+      SolrSearchApi.SearchCriterion dateRange) throws IOException {
     Map<String, SearchFilter> filters = new HashMap<>();
     // TODO: add other filters here (filter by journal is not applicable here)
     return filters;

@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.UserApi;
 import org.plos.ned_client.model.IndividualComposite;
 import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class CommentServiceImpl implements CommentService {
@@ -28,18 +27,15 @@ public class CommentServiceImpl implements CommentService {
    * <p>
    * A new, deep copy of the map is returned. The map passed as an argument is not modified.
    *
-   * @param comment      the root comment
-   * @param modification a visitor that modifies each map of comment metadata in the tree
+   * @param comment the root comment
    * @return a deep copy with the modification applied to all
    */
-  private static Map<String, Object> modifyCommentTree(Map<String, Object> comment,
-                                                       Consumer<Map<String, Object>> modification) {
-    Map<String, Object> modified = new HashMap<>(comment);
-    modification.accept(modified);
+  private Map<String, Object> modifyCommentTree(Map<String, Object> comment) {
+    Map<String, Object> modified = modifyComment(new HashMap<>(comment));
 
     List<Map<String, Object>> replies = (List<Map<String, Object>>) modified.remove(REPLIES_KEY);
     List<Map<String, Object>> modifiedReplies = replies.stream()
-        .map(reply -> modifyCommentTree(reply, modification)) // recursion (terminal case is when replies is empty)
+        .map(this::modifyCommentTree) // recursion (terminal case is when replies is empty)
         .collect(Collectors.toList());
     modified.put(REPLIES_KEY, modifiedReplies);
 
@@ -47,10 +43,21 @@ public class CommentServiceImpl implements CommentService {
   }
 
   /**
+   * Modify a raw comment with additional data as needed for display.
+   *
+   * @param comment raw comment metadata as provided by {@link ArticleApi}
+   * @return a copy of the same comment metadata with additional display-tier details added
+   */
+  private Map<String, Object> modifyComment(Map<String, Object> comment) {
+    CommentFormatting.addFormattingFields(comment);
+    addCreatorData(comment);
+    return comment;
+  }
+
+  /**
    * Fetch data about a user from NED and put it in the comment, replacing the NED ID.
    */
-  @Override
-  public void addCreatorData(Map<String, Object> comment) {
+  private void addCreatorData(Map<String, Object> comment) {
     Map<String, Object> creator = (Map<String, Object>) comment.remove(CREATOR_KEY);
     String nedId = creator.get("userId").toString();
 
@@ -74,10 +81,15 @@ public class CommentServiceImpl implements CommentService {
       throw new CommentNotFoundException(commentId, enfe);
     }
 
-    return modifyCommentTree(comment, c -> {
-      CommentFormatting.addFormattingFields(c);
-      addCreatorData(c);
-    });
+    return modifyCommentTree(comment);
+  }
+
+  @Override
+  public List<Map<String, Object>> getArticleComments(String articleDoi) throws IOException {
+    List<Map<String, Object>> comments = articleApi.requestObject(String.format("articles/%s?comments", articleDoi), List.class);
+    return comments.stream()
+        .map(this::modifyCommentTree)
+        .collect(Collectors.toList());
   }
 
 }

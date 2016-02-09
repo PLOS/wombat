@@ -169,7 +169,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
 
-    requestComments(model, articleId);
+    model.addAttribute("articleComments", commentService.getArticleComments(articleId));
     return site + "/ftl/article/article";
   }
 
@@ -188,7 +188,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
-    requestComments(model, articleId);
+    model.addAttribute("articleComments", commentService.getArticleComments(articleId));
     return site + "/ftl/article/comment/comments";
   }
 
@@ -533,8 +533,8 @@ public class ArticleController extends WombatController {
                                      @RequestParam("id") String articleId) throws IOException {
       Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
       validateArticleVisibility(site, articleMetaData);
-      requestComments(model, articleId);
-      return site + "/ftl/article/metrics";
+    model.addAttribute("articleComments", commentService.getArticleComments(articleId));
+    return site + "/ftl/article/metrics";
   }
 
 
@@ -849,22 +849,6 @@ public class ArticleController extends WombatController {
       throw new ArticleNotFoundException(articleId);
     }
     return articleMetadata;
-  }
-
-  /**
-   * Checks whether any comments are associated with the given article, and appends them to the model if so.
-   *
-   * @param model model to be passed to the view
-   * @param doi   identifies the article
-   * @throws IOException
-   */
-  private void requestComments(Model model, String doi) throws IOException {
-
-    List<?> comments = articleApi.requestObject(String.format("articles/%s?comments", doi), List.class);
-    for (Object o : comments) {
-      commentService.addCreatorData((Map<String, Object>) o);
-    }
-    model.addAttribute("articleComments", comments);
   }
 
   /**

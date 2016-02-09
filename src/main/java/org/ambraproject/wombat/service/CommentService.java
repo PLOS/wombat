@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 public interface CommentService {
@@ -15,7 +16,15 @@ public interface CommentService {
    */
   Map<String, Object> getComment(String commentId) throws IOException;
 
-  void addCreatorData(Map<String, Object> object) throws IOException;
+  /**
+   * Retrieve all comments belonging to a single parent article and wire in additional data needed for display.
+   *
+   * @param articleDoi the article DOI
+   * @return a list of representations of the comments' content and metadata
+   * @throws IOException
+   * @throws EntityNotFoundException if the article does not exist
+   */
+  List<Map<String, Object>> getArticleComments(String articleDoi) throws IOException;
 
   public static class CommentNotFoundException extends RuntimeException {
     public CommentNotFoundException(String commentId, EntityNotFoundException cause) {

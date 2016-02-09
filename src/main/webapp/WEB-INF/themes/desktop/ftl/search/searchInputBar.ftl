@@ -14,7 +14,6 @@
                 <input type="hidden" name="filterEndDate" value="${filterEndDate}"/>
             </#if>
         </#if>
-        <@ifDevFeatureEnabled 'advancedSearch'>
           <button id="searchFieldButton" type="submit">
               <i class="search-icon"></i>
           </button>
@@ -23,19 +22,9 @@
         <a id="advancedSearchLink" class="advanced-search-toggle-btn" href="#">Advanced Search</a>
         <a id="simpleSearchLink" class="advanced-search-toggle-btn" href="#">Simple Search</a>
         <a class="edit-query" href="#">Edit Query</a>
-        </@ifDevFeatureEnabled>
-    <@ifDevFeatureDisabled 'advancedSearch'>
-          <button id="searchFieldButton" type="submit">
-            <i class="search-icon"></i>
-          </button>
-      </fieldset>
-      <a id="advancedSearchLink" class="search-results-advanced-search-submit" href="${advancedSearchLink}">Advanced
-        Search</a>
-    </@ifDevFeatureDisabled>
     </div>
-    <@ifDevFeatureEnabled 'advancedSearch'>
     <div class="advanced-search-container">
     </div>
-    </@ifDevFeatureEnabled>
+
 </div>
 <#include "advancedSearchQueryBuilder.ftl" />

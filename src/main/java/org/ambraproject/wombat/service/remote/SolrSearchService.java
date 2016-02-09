@@ -15,6 +15,7 @@ package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.w3c.dom.Document;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -53,6 +54,14 @@ public interface SolrSearchService {
    * @throws IOException
    */
   public Map<String, ?> search(ArticleSearchQuery query) throws IOException;
+
+  /**
+   * Performs a search and returns the results as a document. Useful for RSS-based searches.
+   *
+   * @return Document returned by the search server
+   * @throws IOException
+   */
+  public Document documentSearch(ArticleSearchQuery query) throws IOException;
 
   /**
    * Perform a search, modifying the query with an additional filter by volume number.

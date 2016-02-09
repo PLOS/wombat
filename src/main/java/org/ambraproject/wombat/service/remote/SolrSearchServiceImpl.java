@@ -23,16 +23,25 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,6 +60,8 @@ import java.util.stream.Collectors;
  */
 public class SolrSearchServiceImpl implements SolrSearchService {
 
+  private static final Logger log = LoggerFactory.getLogger(SolrSearchServiceImpl.class);
+
   @Autowired
   private JsonService jsonService;
   @Autowired
@@ -63,6 +74,11 @@ public class SolrSearchServiceImpl implements SolrSearchService {
   protected Map<String, String> eIssnToJournalKey;
 
   private static final int MAX_FACET_SIZE = -1; //unlimited
+
+  /**
+   * number of milliseconds to wait on a url connection to SOLR
+   */
+  private static final int CONNECTION_TIMEOUT = 100;
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -350,6 +366,48 @@ public class SolrSearchServiceImpl implements SolrSearchService {
   }
 
   /**
+   * @inheritDoc
+   */
+  @Override
+  public Document documentSearch(ArticleSearchQuery query) throws IOException {
+
+    List<NameValuePair> params = query.buildParameters();
+    params.removeIf(param -> param.getName().equals("wt"));
+    params.add(new BasicNameValuePair("wt", "xml"));
+    URL url = getSolrUri(params).toURL();
+
+      InputStream urlStream = null;
+      Document doc = null;
+      try {
+        URLConnection connection = url.openConnection();
+        connection.setConnectTimeout(CONNECTION_TIMEOUT);
+        connection.connect();
+        urlStream = connection.getInputStream();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        doc = builder.parse(urlStream);
+      } catch (IOException e) {
+        throw new IOException("Error connecting to the Solr server at " + url, e);
+      } catch (ParserConfigurationException e) {
+        throw new IOException("Error configuring parser xml parser for solr response", e);
+      } catch (SAXException e) {
+        throw new IOException("Solr Returned bad XML for url: " + url, e);
+      } finally {
+        //Close the input stream
+        if (urlStream != null) {
+          try {
+            urlStream.close();
+          } catch (IOException e) {
+            log.error("Error closing url stream to Solr", e);
+          }
+        }
+      }
+
+      return doc;
+  }
+
+  /**
    * Queries Solr and returns the raw results
    *
    * @param params Solr query parameters
@@ -357,14 +415,19 @@ public class SolrSearchServiceImpl implements SolrSearchService {
    * @throws IOException
    */
   private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
+    URI uri = getSolrUri(params);
+    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
+    return (Map<String, Map>) rawResults;
+  }
+
+  private URI getSolrUri(List<NameValuePair> params) {
     URI uri;
     try {
       uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }
-    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
-    return (Map<String, Map>) rawResults;
+    return uri;
   }
 
   private class FacetedQueryResponse {

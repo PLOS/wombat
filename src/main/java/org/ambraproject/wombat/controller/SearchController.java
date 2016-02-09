@@ -43,6 +43,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.w3c.dom.Document;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -449,6 +450,9 @@ public class SearchController extends WombatController {
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
+
+    Document document = solrSearchService.documentSearch(queryObj);
+
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
 

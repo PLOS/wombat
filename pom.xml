@@ -283,6 +283,13 @@
       <version>3.1.12</version>
     </dependency>
 
+    <!-- RSS -->
+    <dependency>
+      <groupId>com.rometools</groupId>
+      <artifactId>rome</artifactId>
+      <version>1.5.1</version>
+    </dependency>
+
     <!-- security -->
     <dependency>
       <groupId>org.springframework.security</groupId>

@@ -55,6 +55,23 @@ public class CommentServiceImpl implements CommentService {
   }
 
   /**
+   * The value of {@link Individualprofile#getSource()} that indicates that the profile is in use by this system.
+   */
+  private static final String AMBRA_SOURCE = "Ambra";
+
+  /**
+   * Extract the profile in use by this system.
+   */
+  // TODO: Move to a public service or util class if needed elsewhere
+  private static Individualprofile getAmbraProfile(IndividualComposite individualComposite) {
+    return individualComposite.getIndividualprofiles().stream()
+        .filter((Individualprofile profile) -> AMBRA_SOURCE.equals(profile.getSource()))
+        .findFirst()
+        .orElseThrow(() -> new RuntimeException(
+            "An IndividualComposite does not have an Individualprofile with source named " + AMBRA_SOURCE));
+  }
+
+  /**
    * Fetch data about a user from NED and put it in the comment, replacing the NED ID.
    */
   private void addCreatorData(Map<String, Object> comment) {
@@ -68,8 +85,7 @@ public class CommentServiceImpl implements CommentService {
       throw new RuntimeException(e);
     }
 
-    Individualprofile profile = individual.getIndividualprofiles().get(0); // TODO?
-    comment.put(CREATOR_KEY, profile);
+    comment.put(CREATOR_KEY, getAmbraProfile(individual));
   }
 
   @Override

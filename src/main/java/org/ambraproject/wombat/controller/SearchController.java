@@ -26,7 +26,6 @@ import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
-import org.ambraproject.wombat.rss.WombatFeed;
 import org.ambraproject.wombat.rss.WombatRssViewer;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
@@ -82,9 +81,6 @@ public class SearchController extends WombatController {
 
   @Autowired
   private BrowseTaxonomyService browseTaxonomyService;
-
-  @Autowired
-  private WombatFeed wombatFeed;
 
   @Autowired
   private WombatRssViewer wombatRssViewer;
@@ -454,7 +450,8 @@ public class SearchController extends WombatController {
     Document document = solrSearchService.documentSearch(queryObj);
     Map<String, ?> search = solrSearchService.search(queryObj);
 
-    mav.addObject("feeds", wombatFeed.createFeed());
+    mav.addObject("site", site);
+    mav.addObject("solrResults", search.get("docs"));
     mav.setView(wombatRssViewer);
     return mav;
   }

@@ -2,6 +2,7 @@ package org.ambraproject.wombat.rss;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
+import com.google.common.collect.Iterables;
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Description;
 import com.rometools.rome.feed.rss.Item;
@@ -86,9 +87,9 @@ public class ArticleRssViewer extends AbstractRssFeedView {
     //both "abstract" and "abstract_primary_display" are single-item lists
     private Description buildDescription(Map<String, ?> article) {
       Description description = new Description();
-      String descriptionString = ((ArrayList<String>) article.get("abstract_primary_display")).get(0);
+      String descriptionString = Iterables.getOnlyElement((ArrayList<String>) article.get("abstract_primary_display"));
       if (Strings.isNullOrEmpty(descriptionString)) {
-        descriptionString = ((ArrayList<String>) article.get("abstract")).get(0);
+        descriptionString = Iterables.getOnlyElement((ArrayList<String>) article.get("abstract"));
       }
       description.setValue(descriptionString);
       return description;

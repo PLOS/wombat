@@ -26,7 +26,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("unchecked")
-public class WombatRssViewer extends AbstractRssFeedView {
+public class ArticleRssViewer extends AbstractRssFeedView {
 
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
@@ -59,7 +59,7 @@ public class WombatRssViewer extends AbstractRssFeedView {
 
       item.setPubDate(getPubDate(article));
 
-      ArrayList<String> authorList = (ArrayList<String>) article.get("author_display");
+      List<String> authorList = (List<String>) article.get("author_display");
       if (authorList != null) {
         item.setAuthor(Joiner.on(", ").join(authorList));
       }

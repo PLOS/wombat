@@ -48,7 +48,7 @@ import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SearchFilterType;
 import org.ambraproject.wombat.model.SearchFilterTypeMap;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
-import org.ambraproject.wombat.rss.WombatRssViewer;
+import org.ambraproject.wombat.rss.ArticleRssViewer;
 import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
@@ -331,5 +331,5 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public WombatRssViewer wombatRssViewer() { return new WombatRssViewer(); }
+  public ArticleRssViewer wombatRssViewer() { return new ArticleRssViewer(); }
 }

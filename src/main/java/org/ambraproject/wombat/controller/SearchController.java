@@ -26,7 +26,7 @@ import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
-import org.ambraproject.wombat.rss.WombatRssViewer;
+import org.ambraproject.wombat.rss.ArticleRssViewer;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -82,7 +82,7 @@ public class SearchController extends WombatController {
   private BrowseTaxonomyService browseTaxonomyService;
 
   @Autowired
-  private WombatRssViewer wombatRssViewer;
+  private ArticleRssViewer articleRssViewer;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -462,7 +462,7 @@ public class SearchController extends WombatController {
     ModelAndView mav = new ModelAndView();
     mav.addObject("site", site);
     mav.addObject("solrResults", searchResults.get("docs"));
-    mav.setView(wombatRssViewer);
+    mav.setView(articleRssViewer);
     return mav;
   }
 

@@ -18,6 +18,7 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -146,6 +147,8 @@ public class ArticleController extends WombatController {
   private CommentValidationService commentValidationService;
   @Autowired
   private XmlService xmlService;
+  @Autowired
+  private RequestMappingContextDictionary requestMappingContextDictionary;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -361,25 +364,18 @@ public class ArticleController extends WombatController {
 
         // Find the site object (if possible) for the other journal
         String crossPublishedJournalKey = (String) crossPublishedJournalMetadata.get("journalKey");
-        Site crossPublishedSite;
-        try {
-          crossPublishedSite = site.getTheme().resolveForeignJournalKey(siteSet, crossPublishedJournalKey);
-        } catch (UnmatchedSiteException e) {
-          // The data may still be valid if the other journal is hosted on a legacy Ambra system
-          log.warn("Cross-published journal with no matching site: {}", crossPublishedJournalKey);
-          crossPublishedSite = null; // Still show the title, but without the link
-        }
-        if (crossPublishedSite != null) {
-          // Set up an href link to the other site's homepage
-          String homepageLink = Link.toForeignSite(site, crossPublishedSite).toPath("/").get(request);
-          crossPublishedJournalMetadata.put("href", homepageLink);
+        Site crossPublishedSite = site.getTheme().resolveForeignJournalKey(siteSet, crossPublishedJournalKey);
 
-          // Look up whether the other site wants its journal title italicized
-          // (This isn't a big deal because it's only one value, but if similar display details pile up
-          // in the future, it would be better to abstract them out than to handle them all individually here.)
-          boolean italicizeTitle = (boolean) crossPublishedSite.getTheme().getConfigMap("journal").get("italicizeTitle");
-          crossPublishedJournalMetadata.put("italicizeTitle", italicizeTitle);
-        }
+        // Set up an href link to the other site's homepage
+        String homepageLink = Link.toForeignSite(site, crossPublishedSite)
+            .toPattern(requestMappingContextDictionary, "homePage").build().get(request);
+        crossPublishedJournalMetadata.put("href", homepageLink);
+
+        // Look up whether the other site wants its journal title italicized
+        // (This isn't a big deal because it's only one value, but if similar display details pile up
+        // in the future, it would be better to abstract them out than to handle them all individually here.)
+        boolean italicizeTitle = (boolean) crossPublishedSite.getTheme().getConfigMap("journal").get("italicizeTitle");
+        crossPublishedJournalMetadata.put("italicizeTitle", italicizeTitle);
 
         if (eissn.equals(crossPublishedJournalMetadata.get("eIssn"))) {
           originalJournal = crossPublishedJournalMetadata;

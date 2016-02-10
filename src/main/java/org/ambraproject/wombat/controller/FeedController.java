@@ -3,7 +3,6 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.rss.WombatFeed;
 import org.ambraproject.wombat.rss.WombatRssViewer;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
@@ -18,9 +17,6 @@ import java.util.Map;
 
 @Controller
 public class FeedController {
-
-  @Autowired
-  private WombatFeed myFeed;
 
   @Autowired
   private WombatRssViewer wombatRssViewer;

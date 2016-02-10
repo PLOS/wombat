@@ -21,9 +21,9 @@ div#publish_main_content #publish_banner_band {
 }
 
 div#publish_main_content a.submit_manuscript {
-  @extend .button;
+  @extend %button-base;
   font-size: $txt-size-medium-large;
-  background: $white;
+  background-color: $white;
   color: $grey-dark;
   padding: rem-calc(10px);
   display: inline-block;

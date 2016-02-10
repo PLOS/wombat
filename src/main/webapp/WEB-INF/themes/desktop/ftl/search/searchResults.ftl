@@ -47,7 +47,9 @@
 <#include "../common/header/headerContainer.ftl" />
 <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
 <#include "searchInputBar.ftl" />
-  RSS LINK: <a href="${rssLink}">here</a> <#--todo: redesign-->
+<@siteLink handlerName="feed" wildcardValues=["rss"] queryParameters=searchQueryParams ; href>
+  <a href="${href}">RSS View</a>
+</@siteLink>
 <#if searchResults.numFound == 0>
     <section class="search-results-none-found">
         <p>You searched for articles that have all of the following:</p>

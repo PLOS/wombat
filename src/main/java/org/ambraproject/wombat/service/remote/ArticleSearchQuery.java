@@ -24,6 +24,9 @@ public class ArticleSearchQuery {
       "id", "eissn", "publication_date", "title", "cross_published_journal_name", "author_display", "article_type",
       "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount", "alm_mendeleyCount", "alm_twitterCount",
       "alm_facebookCount", "retraction", "expression_of_concern", "striking_image", "figure_table_caption"}));
+  private static final String RSS_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
+      "id", "publication_date", "title", "cross_published_journal_name", "author_display",
+      "abstract", "abstract_primary_display"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
 
@@ -32,6 +35,7 @@ public class ArticleSearchQuery {
   private final boolean isSimple;
   private final boolean isForRawResults;
   private final boolean isPartialSearch;
+  private final boolean isRssSearch;
 
   private final ImmutableList<String> filterQueries;
 
@@ -62,6 +66,7 @@ public class ArticleSearchQuery {
     this.isSimple = builder.isSimple;
     this.isForRawResults = builder.isForRawResults;
     this.isPartialSearch = builder.isPartialSearch;
+    this.isRssSearch = builder.isRssSearch;
     this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
     this.facet = Optional.fromNullable(builder.facet);
     this.minFacetCount = builder.minFacetCount;
@@ -124,6 +129,9 @@ public class ArticleSearchQuery {
       params.add(new BasicNameValuePair("facet.mincount", Integer.toString(minFacetCount)));
       params.add(new BasicNameValuePair("facet.limit", Integer.toString(maxFacetSize)));
       params.add(new BasicNameValuePair("json.nl", "map"));
+    } else if (isRssSearch) {
+      params.add(new BasicNameValuePair("facet", "false"));
+      params.add(new BasicNameValuePair("fl", RSS_FIELDS));
     } else {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", ARTICLE_FIELDS));
@@ -360,6 +368,7 @@ public class ArticleSearchQuery {
     private boolean isSimple;
     private boolean isForRawResults;
     private boolean isPartialSearch;
+    private boolean isRssSearch;
 
     private List<String> filterQueries = ImmutableList.of();
 
@@ -417,11 +426,19 @@ public class ArticleSearchQuery {
     }
 
     /**
-     * @param isPartialSearch flag the search to search partial documents. Only used when searching
+     * @param isPartialSearch Flag the search to search partial documents. Only used when searching
      *                        For which section a keyword appears in.
      */
     public Builder setIsPartialSearch(boolean isPartialSearch) {
       this.isPartialSearch = isPartialSearch;
+      return this;
+    }
+
+    /**
+     * @param isRssSearch Flag the search to return only fields used by the RSS view
+     */
+    public Builder setIsRssSearch(boolean isRssSearch) {
+      this.isRssSearch = isRssSearch;
       return this;
     }
 

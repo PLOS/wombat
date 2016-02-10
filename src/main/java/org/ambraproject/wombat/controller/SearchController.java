@@ -46,7 +46,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.w3c.dom.Document;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -426,32 +425,43 @@ public class SearchController extends WombatController {
     return builder.build();
   }
 
-  /**
-   * @return
-   */
-  @RequestMapping(name ="feed", value="/feed.*", method = RequestMethod.GET)
-  public ModelAndView getContent(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
-    ModelAndView mav = new ModelAndView();
-
+  private CommonParams modelCommonParams(HttpServletRequest request, Model model,
+      @SiteParam Site site, @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
     addOptionsToModel(model);
+    return commonParams;
+  }
+
+  /**
+   * Performs a search and serves the result as XML to be read by an RSS reader
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params search parameters identical to the {@code search} method
+   * @return RSS view of articles returned by the search
+   * @throws IOException
+   */
+  @RequestMapping(name ="feed", value="/search/feed.*", method = RequestMethod.GET)
+  public ModelAndView getRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(queryString)
-        .setSimple(commonParams.isSimpleSearch(queryString));
+        .setSimple(commonParams.isSimpleSearch(queryString))
+        .setIsRssSearch(true);
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
 
-    //todo: parse document or search results fields to add to wombatFeed
-    Document document = solrSearchService.documentSearch(queryObj);
-    Map<String, ?> search = solrSearchService.search(queryObj);
+    Map<String, ?> searchResults = solrSearchService.search(queryObj);
 
+    ModelAndView mav = new ModelAndView();
     mav.addObject("site", site);
-    mav.addObject("solrResults", search.get("docs"));
+    mav.addObject("solrResults", searchResults.get("docs"));
     mav.setView(wombatRssViewer);
     return mav;
   }
@@ -474,10 +484,7 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume", "!subject"})
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-    addOptionsToModel(model);
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
@@ -486,8 +493,6 @@ public class SearchController extends WombatController {
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
-
-//    Document document = solrSearchService.documentSearch(queryObj); //todo: remove or reconfig
 
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
@@ -499,15 +504,7 @@ public class SearchController extends WombatController {
 
     model.addAttribute("searchFilters", filters);
     model.addAttribute("activeFilterItems", activeFilterItems);
-
-    String rssLink = "/wombat/DesktopPlosOne/feed.rss?";
-    for (Map.Entry<String, List<String>> entry : params.entrySet()) {
-      List<String> values = entry.getValue();
-      for (String value : values) {
-        rssLink += entry.getKey() + "=" + value + "&";
-      }
-    }
-    model.addAttribute("rssLink",  rssLink);
+    model.addAttribute("searchQueryParams",  params);
 
     return site.getKey() + "/ftl/search/searchResults";
   }
@@ -617,10 +614,7 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "volumeSearch", value = "/search", params = {"volume!="})
   public String volumeSearch(HttpServletRequest request, Model model, @SiteParam Site site,
                              @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-    addOptionsToModel(model);
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
     int volume;
     try {
       volume = Integer.parseInt(params.getFirst("volume"));

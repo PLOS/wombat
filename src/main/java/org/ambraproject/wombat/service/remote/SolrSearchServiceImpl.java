@@ -26,22 +26,15 @@ import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -363,48 +356,6 @@ public class SolrSearchServiceImpl implements SolrSearchService {
             ((Double) entry.getValue()).longValue())).collect(Collectors.toList());
     subjectCounts.add(new SubjectCount("ROOT", response.getTotalArticles()));
     return subjectCounts;
-  }
-
-  /**
-   * @inheritDoc
-   */
-  @Override
-  public Document documentSearch(ArticleSearchQuery query) throws IOException {
-
-    List<NameValuePair> params = query.buildParameters();
-    params.removeIf(param -> param.getName().equals("wt"));
-    params.add(new BasicNameValuePair("wt", "xml"));
-    URL url = getSolrUri(params).toURL();
-
-      InputStream urlStream = null;
-      Document doc = null;
-      try {
-        URLConnection connection = url.openConnection();
-        connection.setConnectTimeout(CONNECTION_TIMEOUT);
-        connection.connect();
-        urlStream = connection.getInputStream();
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        factory.setNamespaceAware(true);
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        doc = builder.parse(urlStream);
-      } catch (IOException e) {
-        throw new IOException("Error connecting to the Solr server at " + url, e);
-      } catch (ParserConfigurationException e) {
-        throw new IOException("Error configuring parser xml parser for solr response", e);
-      } catch (SAXException e) {
-        throw new IOException("Solr Returned bad XML for url: " + url, e);
-      } finally {
-        //Close the input stream
-        if (urlStream != null) {
-          try {
-            urlStream.close();
-          } catch (IOException e) {
-            log.error("Error closing url stream to Solr", e);
-          }
-        }
-      }
-
-      return doc;
   }
 
   /**

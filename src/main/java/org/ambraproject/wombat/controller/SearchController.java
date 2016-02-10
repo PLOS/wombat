@@ -21,11 +21,13 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.rss.WombatFeed;
+import org.ambraproject.wombat.rss.WombatRssViewer;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -42,7 +44,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,6 +82,12 @@ public class SearchController extends WombatController {
 
   @Autowired
   private BrowseTaxonomyService browseTaxonomyService;
+
+  @Autowired
+  private WombatFeed wombatFeed;
+
+  @Autowired
+  private WombatRssViewer wombatRssViewer;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -420,6 +430,35 @@ public class SearchController extends WombatController {
     return builder.build();
   }
 
+  /**
+   * @return
+   */
+  @RequestMapping(name ="feed", value="/feed.*", method = RequestMethod.GET)
+  public ModelAndView getContent(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
+    ModelAndView mav = new ModelAndView();
+
+    CommonParams commonParams = new CommonParams(siteSet, site);
+    commonParams.parseParams(params);
+    commonParams.addToModel(model, request);
+    addOptionsToModel(model);
+
+    String queryString = params.getFirst("q");
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery(queryString)
+        .setSimple(commonParams.isSimpleSearch(queryString));
+    commonParams.fill(query);
+    ArticleSearchQuery queryObj = query.build();
+
+    //todo: parse document or search results fields to add to wombatFeed
+    Document document = solrSearchService.documentSearch(queryObj);
+    Map<String, ?> search = solrSearchService.search(queryObj);
+
+    mav.addObject("feeds", wombatFeed.createFeed());
+    mav.setView(wombatRssViewer);
+    return mav;
+  }
+
   // Unless the "!volume" part is included in the params in the next few methods, you will
   // get an "ambiguous handler method" exception from spring.  I think this is because all
   // of these methods (including volumeSearch) use a MultiValueMap for @RequestParam, instead
@@ -451,7 +490,7 @@ public class SearchController extends WombatController {
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
 
-    Document document = solrSearchService.documentSearch(queryObj);
+//    Document document = solrSearchService.documentSearch(queryObj); //todo: remove or reconfig
 
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
@@ -463,6 +502,15 @@ public class SearchController extends WombatController {
 
     model.addAttribute("searchFilters", filters);
     model.addAttribute("activeFilterItems", activeFilterItems);
+
+    String rssLink = "/wombat/DesktopPlosOne/feed.rss?";
+    for (Map.Entry<String, List<String>> entry : params.entrySet()) {
+      List<String> values = entry.getValue();
+      for (String value : values) {
+        rssLink += entry.getKey() + "=" + value + "&";
+      }
+    }
+    model.addAttribute("rssLink",  rssLink);
 
     return site.getKey() + "/ftl/search/searchResults";
   }

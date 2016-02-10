@@ -1,16 +1,18 @@
 package org.ambraproject.wombat.rss;
 
-import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
-import com.rometools.rome.feed.rss.Channel;
-import com.rometools.rome.feed.rss.Description;
-import com.rometools.rome.feed.rss.Item;
+import com.rometools.rome.feed.atom.Content;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.feed.atom.Person;
+import com.rometools.rome.feed.synd.SyndPerson;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.url.Link;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
+import org.springframework.web.servlet.view.feed.AbstractAtomFeedView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,46 +29,56 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("unchecked")
-public class ArticleRssViewer extends AbstractRssFeedView {
+public class ArticleAtomViewer extends AbstractAtomFeedView {
 
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
 
   @Override
-  protected List<Item> buildFeedItems(Map<String, Object> model,
-      HttpServletRequest request, HttpServletResponse response) throws Exception {
+  protected List<Entry> buildFeedEntries(Map<String, Object> model, HttpServletRequest request,
+      HttpServletResponse response) throws Exception {
     Site site = (Site) model.get("site");
-    ItemFactory itemFactory = new ItemFactory(request, site);
+    EntryFactory entryFactory = new EntryFactory(request, site);
     List<Map<String, ?>> solrResults = (List<Map<String, ?>>) model.get("solrResults");
-    return solrResults.stream().map(itemFactory::represent).collect(Collectors.toList());
+    return solrResults.stream().map(entryFactory::represent).collect(Collectors.toList());
   }
 
-  private class ItemFactory {
+  private class EntryFactory {
     private final HttpServletRequest request;
     private final Site site;
 
-    private ItemFactory(HttpServletRequest request, Site site) {
+    private EntryFactory(HttpServletRequest request, Site site) {
       this.request = Objects.requireNonNull(request);
       this.site = Objects.requireNonNull(site);
     }
 
-    public Item represent(Map<String, ?> article) {
-      Item item = new Item();
-      item.setTitle((String) article.get("title"));
-      item.setLink(Link.toAbsoluteAddress(site)
+    public Entry represent(Map<String, ?> article) {
+      Entry entry = new Entry();
+      entry.setTitle((String) article.get("title"));
+
+      Link link = new Link();
+      String linkStr = org.ambraproject.wombat.config.site.url.Link.toAbsoluteAddress(site)
           .toPattern(requestMappingContextDictionary, "article")
           .addQueryParameter("id", article.get("id"))
-          .build().get(request));
+          .build().get(request);
+      link.setHref(linkStr);
+      entry.setAlternateLinks(ImmutableList.of(link));
 
-      item.setPubDate(getPubDate(article));
+      entry.setPublished(getPubDate(article));
 
       List<String> authorList = (List<String>) article.get("author_display");
       if (authorList != null) {
-        item.setAuthor(Joiner.on(", ").join(authorList));
+        ArrayList<SyndPerson> authors = new ArrayList<>();
+        for (String s : authorList) {
+          Person author = new Person();
+          author.setName(s);
+          authors.add(author);
+        }
+        entry.setAuthors(authors);
       }
-      item.setDescription(buildDescription(article));
+      entry.setContents(buildContents(article));
 
-      return item;
+      return entry;
     }
 
     private Date getPubDate(Map<String, ?> article) {
@@ -85,19 +97,20 @@ public class ArticleRssViewer extends AbstractRssFeedView {
     }
 
     //both "abstract" and "abstract_primary_display" are single-item lists
-    private Description buildDescription(Map<String, ?> article) {
-      Description description = new Description();
+    private List<Content> buildContents(Map<String, ?> article) {
+      Content content = new Content();
+      content.setType("html");
       String descriptionString = Iterables.getOnlyElement((ArrayList<String>) article.get("abstract_primary_display"));
       if (Strings.isNullOrEmpty(descriptionString)) {
         descriptionString = Iterables.getOnlyElement((ArrayList<String>) article.get("abstract"));
       }
-      description.setValue(descriptionString);
-      return description;
+      content.setValue(descriptionString);
+      return ImmutableList.of(content);
     }
   }
 
   @Override
-  protected void buildFeedMetadata(Map<String, Object> model, Channel feed, HttpServletRequest request) {
+  protected void buildFeedMetadata(Map<String, Object> model, Feed feed, HttpServletRequest request) {
     Site site = (Site) model.get("site");
     Map<String, Object> feedConfig;
     try {
@@ -106,12 +119,7 @@ public class ArticleRssViewer extends AbstractRssFeedView {
       throw new RuntimeException(e);
     }
 
-    // TODO: Are these always the same, or should they differ from feed to feed?
-    // Maybe a user who is subscribed to several of our feeds would like these fields to help tell the feeds apart.
-    feed.setTitle(site.getJournalName());
-    feed.setDescription(Strings.nullToEmpty((String) feedConfig.get("description")));
+    // TODO: set all appropriate feed member variables
 
-    // TODO: Is this supposed to go to root, or to the feed URL?
-    feed.setLink(Link.toAbsoluteAddress(site).toPath("").get(request));
   }
 }

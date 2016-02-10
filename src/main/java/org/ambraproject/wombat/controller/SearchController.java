@@ -21,11 +21,13 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.model.FeedType;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.rss.ArticleAtomViewer;
 import org.ambraproject.wombat.rss.ArticleRssViewer;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
@@ -83,6 +85,9 @@ public class SearchController extends WombatController {
 
   @Autowired
   private ArticleRssViewer articleRssViewer;
+
+  @Autowired
+  private ArticleAtomViewer articleAtomViewer;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -444,9 +449,9 @@ public class SearchController extends WombatController {
    * @return RSS view of articles returned by the search
    * @throws IOException
    */
-  @RequestMapping(name ="feed", value="/search/feed.*", method = RequestMethod.GET)
+  @RequestMapping(name ="feed", value="/search/feed.{feedType}", method = RequestMethod.GET)
   public ModelAndView getRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
+      @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
@@ -462,7 +467,11 @@ public class SearchController extends WombatController {
     ModelAndView mav = new ModelAndView();
     mav.addObject("site", site);
     mav.addObject("solrResults", searchResults.get("docs"));
-    mav.setView(articleRssViewer);
+    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
+      mav.setView(articleAtomViewer);
+    } else {
+      mav.setView(articleRssViewer);
+    }
     return mav;
   }
 

@@ -49,6 +49,9 @@ $pagination-height: 24px;
     box-sizing: content-box;
     color: $clr-body-text;
   }
+  .active {
+    @extend %brand-background;
+  }
 }
 
 .number, .switch, .skip {
@@ -100,6 +103,4 @@ $pagination-height: 24px;
   }
 }
 
-.active {
-  @extend %brand-background;
-}
+

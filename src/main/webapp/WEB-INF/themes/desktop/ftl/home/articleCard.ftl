@@ -30,7 +30,7 @@
     <li><a data-doi="${article.doi}" class="abstract" onclick="alert('Should redirect to lightbox.')">Abstract</a></li>
     <li><a data-doi="${article.doi}" class="figures" onclick="alert('Should redirect to lightbox.')">Figures</a></li>
     <@siteLink handlerName="article" queryParameters={"id":article.doi} ; href>
-      <li class="last"><a href="${href}" onclick="alert('Should redirect to lightbox.')">Full Text</a></li>
+      <li class="last"><a class="full-text" href="${href}" onclick="alert('Should redirect to lightbox.')">Full Text</a></li>
     </@siteLink>
   </ul>
 </div>

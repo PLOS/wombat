@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ArticleFeedView {
@@ -378,10 +379,7 @@ public class ArticleFeedView {
       Entry entry = new Entry();
       entry.setTitle((String) article.get("title"));
 
-      com.rometools.rome.feed.atom.Link link = new com.rometools.rome.feed.atom.Link();
-      link.setHref(getArticleLink(article));
-      entry.setAlternateLinks(ImmutableList.of(link));
-
+      entry.setAlternateLinks(buildLinks(article));
       entry.setPublished(getPubDate(article));
 
       List<String> authorList = (List<String>) article.get("author_display");
@@ -397,6 +395,36 @@ public class ArticleFeedView {
       entry.setContents(buildContents(article));
 
       return entry;
+    }
+
+    private ImmutableList<com.rometools.rome.feed.atom.Link> buildLinks(Map<String, ?> article) {
+      String articleId = (String) article.get("id");
+      String title = (String) article.get("title");
+
+      com.rometools.rome.feed.atom.Link articleLink = createLink(getArticleLink(article),
+          title, Optional.empty(), Optional.empty());
+      com.rometools.rome.feed.atom.Link pdfLink = createLink(Link.toAbsoluteAddress(site)
+              .toPattern(requestMappingContextDictionary, "asset")
+              .addQueryParameter("id", articleId + ".PDF")
+              .build().get(request),
+          "(PDF) " + title, Optional.of("related"), Optional.of("application/pdf"));
+      com.rometools.rome.feed.atom.Link xmlLink = createLink(Link.toAbsoluteAddress(site)
+              .toPattern(requestMappingContextDictionary, "asset")
+              .addQueryParameter("id", articleId + ".XML")
+              .build().get(request),
+          "(XML) " + title, Optional.of("related"), Optional.of("text/xml"));
+
+      return ImmutableList.of(articleLink, pdfLink, xmlLink);
+    }
+
+    private com.rometools.rome.feed.atom.Link createLink(String href, String title,
+                                                         Optional<String> rel, Optional<String> mimetype) {
+      com.rometools.rome.feed.atom.Link link = new com.rometools.rome.feed.atom.Link();
+      link.setHref(href);
+      link.setTitle(title);
+      rel.ifPresent(link::setRel);
+      mimetype.ifPresent(link::setType);
+      return link;
     }
 
     private List<Content> buildContents(Map<String, ?> article) {

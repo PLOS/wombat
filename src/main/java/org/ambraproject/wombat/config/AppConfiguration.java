@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.config;
 
-import org.ambraproject.wombat.rss.ArticleRssViewer;
+import org.ambraproject.wombat.rss.ArticleFeedView;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -11,6 +11,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class AppConfiguration extends WebMvcConfigurerAdapter  {
   @Override
   public void configureViewResolvers(ViewResolverRegistry registry) {
-    registry.enableContentNegotiation(new ArticleRssViewer());
+    ArticleFeedView articleFeedView = new ArticleFeedView();
+    registry.enableContentNegotiation(articleFeedView.getArticleRssView());
+    registry.enableContentNegotiation(articleFeedView.getArticleAtomView());
   }
 }

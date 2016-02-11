@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.rss;
 
+import com.google.common.base.CaseFormat;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
@@ -65,21 +66,15 @@ public class ArticleFeedView {
 
     @Override
     protected void buildFeedMetadata(Map<String, Object> model, Channel feed, HttpServletRequest request) {
-      Site site = (Site) model.get("site");
-      Map<String, Object> feedConfig;
-      try {
-        feedConfig = site.getTheme().getConfigMap("feed");
-      } catch (IOException e) {
-        throw new RuntimeException(e);
+      FeedMetadata feedMetadata = new FeedMetadata(model, request);
+      feed.setTitle(feedMetadata.getTitle());
+      feed.setDescription(feedMetadata.getDescription());
+      feed.setLink(feedMetadata.getLink());
+
+      String copyright = feedMetadata.getCopyright();
+      if (!Strings.isNullOrEmpty(copyright)) {
+        feed.setCopyright(copyright);
       }
-
-      // TODO: Are these always the same, or should they differ from feed to feed?
-      // Maybe a user who is subscribed to several of our feeds would like these fields to help tell the feeds apart.
-      feed.setTitle(site.getJournalName());
-      feed.setDescription(Strings.nullToEmpty((String) feedConfig.get("description")));
-
-      // TODO: Is this supposed to go to root, or to the feed URL?
-      feed.setLink(Link.toAbsoluteAddress(site).toPath("").get(request));
     }
   }
 
@@ -92,15 +87,81 @@ public class ArticleFeedView {
 
     @Override
     protected void buildFeedMetadata(Map<String, Object> model, Feed feed, HttpServletRequest request) {
-      Site site = (Site) model.get("site");
-      Map<String, Object> feedConfig;
+      FeedMetadata feedMetadata = new FeedMetadata(model, request);
+      feed.setTitle(feedMetadata.getTitle());
+
+      Content subtitle = new Content();
+      subtitle.setType("text");
+      subtitle.setValue(feedMetadata.getDescription());
+      feed.setSubtitle(subtitle);
+
+      com.rometools.rome.feed.atom.Link link = new com.rometools.rome.feed.atom.Link();
+      link.setHref(feedMetadata.getLink());
+      feed.setAlternateLinks(ImmutableList.of(link));
+
+      String copyright = feedMetadata.getCopyright();
+      if (!Strings.isNullOrEmpty(copyright)) {
+        feed.setRights(copyright);
+      }
+    }
+  }
+
+
+  public static enum FeedMetadataField {
+    TITLE, DESCRIPTION, LINK;
+
+    private String getKey() {
+      return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, name());
+    }
+
+    public Object putInto(Map<String, Object> model, Object value) {
+      return model.put(getKey(), value);
+    }
+
+    public Object getFrom(Map<String, Object> model) {
+      return model.get(getKey());
+    }
+  }
+
+  private class FeedMetadata {
+    private final Map<String, Object> model;
+    private final HttpServletRequest request;
+    private final Site site;
+    private final Map<String, Object> feedConfig;
+
+    private FeedMetadata(Map<String, Object> model, HttpServletRequest request) {
+      this.model = Objects.requireNonNull(model);
+      this.request = Objects.requireNonNull(request);
+      this.site = Objects.requireNonNull((Site) model.get("site"));
+
       try {
-        feedConfig = site.getTheme().getConfigMap("feed");
+        this.feedConfig = Objects.requireNonNull(site.getTheme().getConfigMap("feed"));
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
+    }
 
-      // TODO: set all appropriate feed member variables
+    public String getTitle() {
+      String journalName = site.getJournalName();
+      String feedTitle = (String) FeedMetadataField.TITLE.getFrom(model);
+      return Strings.isNullOrEmpty(feedTitle) ? journalName : journalName + ": " + feedTitle;
+    }
+
+    public String getDescription() {
+      String feedDescription = (String) FeedMetadataField.DESCRIPTION.getFrom(model);
+      if (!Strings.isNullOrEmpty(feedDescription)) {
+        return feedDescription;
+      }
+      String siteDescription = (String) feedConfig.get("description");
+      return Strings.nullToEmpty(siteDescription);
+    }
+
+    public String getLink() {
+      return Link.toAbsoluteAddress(site).toPath("").get(request);
+    }
+
+    public String getCopyright() {
+      return (String) feedConfig.get("copyright");
     }
   }
 

@@ -136,7 +136,7 @@
                                         <span class="author">${author.fullName}<#if author_has_next>,</#if></span>
                                     </#list>
                                 </p>
-                                <p class="date">published ${article.date?date("yyyy-mm-dd")?string("dd MMM yyyy")}</p>
+                                <p class="date">published ${article.date?date("yyyy-MM-dd")?string("dd MMM yyyy")}</p>
                                 <span class="metrics"><span>Loading metrics information...</span></span>
                                 <p class="actions">
                                     <a data-doi="info:doi/${article.doi}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;

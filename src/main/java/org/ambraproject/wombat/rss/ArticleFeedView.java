@@ -14,6 +14,7 @@ import com.rometools.rome.feed.rss.Description;
 import com.rometools.rome.feed.rss.Image;
 import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.synd.SyndPerson;
+import com.rometools.rome.feed.synd.SyndPersonImpl;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.url.Link;
@@ -75,6 +76,7 @@ public class ArticleFeedView {
       feed.setLink(feedLink);
 
       feed.setDescription(feedMetadata.getDescription());
+      feed.setWebMaster(feedMetadata.getAuthorEmail());
       feed.setLastBuildDate(feedMetadata.getTimestamp());
 
       String copyright = feedMetadata.getCopyright();
@@ -109,6 +111,7 @@ public class ArticleFeedView {
     @Override
     protected void buildFeedMetadata(Map<String, Object> model, Feed feed, HttpServletRequest request) {
       FeedMetadata feedMetadata = new FeedMetadata(model, request);
+
       feed.setId(feedMetadata.getId());
       feed.setTitle(feedMetadata.getTitle());
       feed.setUpdated(feedMetadata.getTimestamp());
@@ -121,6 +124,8 @@ public class ArticleFeedView {
       com.rometools.rome.feed.atom.Link link = new com.rometools.rome.feed.atom.Link();
       link.setHref(feedMetadata.getLink());
       feed.setAlternateLinks(ImmutableList.of(link));
+
+      feed.setAuthors(ImmutableList.of(buildFeedAuthor(feedMetadata)));
 
       String imageLink = feedMetadata.getImageLink();
       if (!Strings.isNullOrEmpty(imageLink)) {
@@ -135,6 +140,23 @@ public class ArticleFeedView {
       if (!Strings.isNullOrEmpty(copyright)) {
         feed.setRights(copyright);
       }
+    }
+
+    private SyndPerson buildFeedAuthor(FeedMetadata feedMetadata) {
+      SyndPerson feedAuthor = new SyndPersonImpl();
+      feedAuthor.setUri(feedMetadata.getLink());
+
+      String authorName = feedMetadata.getAuthorName();
+      if (!Strings.isNullOrEmpty(authorName)) {
+        feedAuthor.setName(authorName);
+      }
+
+      String authorEmail = feedMetadata.getAuthorEmail();
+      if (!Strings.isNullOrEmpty(authorEmail)) {
+        feedAuthor.setEmail(authorEmail);
+      }
+
+      return feedAuthor;
     }
   }
 
@@ -226,6 +248,14 @@ public class ArticleFeedView {
       // If we have a path, resolve it into a link
       return (imagePath == null) ? null
           : Link.toAbsoluteAddress(site).toPath(imagePath).get(request);
+    }
+
+    public String getAuthorName() {
+      return (String) feedConfig.get("authorName");
+    }
+
+    public String getAuthorEmail() {
+      return (String) feedConfig.get("authorEmail");
     }
   }
 

@@ -513,7 +513,6 @@ public class SearchController extends WombatController {
 
     model.addAttribute("searchFilters", filters);
     model.addAttribute("activeFilterItems", activeFilterItems);
-    model.addAttribute("searchQueryParams",  params);
 
     return site.getKey() + "/ftl/search/searchResults";
   }

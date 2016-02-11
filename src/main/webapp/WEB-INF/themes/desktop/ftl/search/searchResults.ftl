@@ -47,9 +47,6 @@
 <#include "../common/header/headerContainer.ftl" />
 <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
 <#include "searchInputBar.ftl" />
-<@siteLink handlerName="feed" wildcardValues=["rss"] queryParameters=searchQueryParams ; href>
-  <a href="${href}">RSS View</a>
-</@siteLink>
 <#if searchResults.numFound == 0>
     <section class="search-results-none-found">
         <p>You searched for articles that have all of the following:</p>
@@ -104,11 +101,9 @@
                     This feature temporarily unavailable.
                 </div>
             </div>
-            <div class="search-feed" data-js-tooltip-hover="trigger">
-                <div class="search-feed-tooltip" data-js-tooltip-hover="target">
-                    This feature temporarily unavailable.
-                </div>
-            </div>
+            <a href="<@siteLink handlerName="feed" queryParameters=parameterMap pathVariables={'feedType': 'atom'}/>"
+               class="search-feed">
+            </a>
         </div>
 
     </section>

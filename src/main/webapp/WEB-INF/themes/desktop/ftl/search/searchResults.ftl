@@ -102,8 +102,7 @@
                 </div>
             </div>
             <a href="<@siteLink handlerName="feed" queryParameters=parameterMap pathVariables={'feedType': 'atom'}/>"
-               class="search-feed">
-            </a>
+               class="search-feed"></a>
         </div>
 
     </section>

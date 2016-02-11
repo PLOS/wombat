@@ -144,7 +144,7 @@ public class ArticleFeedView {
 
     private SyndPerson buildFeedAuthor(FeedMetadata feedMetadata) {
       SyndPerson feedAuthor = new SyndPersonImpl();
-      feedAuthor.setUri(feedMetadata.getLink());
+      feedAuthor.setUri(feedMetadata.getSiteLink());
 
       String authorName = feedMetadata.getAuthorName();
       if (!Strings.isNullOrEmpty(authorName)) {
@@ -229,8 +229,13 @@ public class ArticleFeedView {
       return Strings.nullToEmpty(siteDescription);
     }
 
-    public String getLink() {
+    public String getSiteLink() {
       return Link.toAbsoluteAddress(site).toPath("").get(request);
+    }
+
+    public String getLink() {
+      String feedLink = (String) FeedMetadataField.LINK.getFrom(model);
+      return Strings.isNullOrEmpty(feedLink) ? getSiteLink() : feedLink;
     }
 
     public String getCopyright() {

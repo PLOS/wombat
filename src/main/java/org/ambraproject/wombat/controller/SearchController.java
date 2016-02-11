@@ -27,8 +27,7 @@ import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
-import org.ambraproject.wombat.rss.ArticleAtomViewer;
-import org.ambraproject.wombat.rss.ArticleRssViewer;
+import org.ambraproject.wombat.rss.ArticleFeedView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -84,10 +83,7 @@ public class SearchController extends WombatController {
   private BrowseTaxonomyService browseTaxonomyService;
 
   @Autowired
-  private ArticleRssViewer articleRssViewer;
-
-  @Autowired
-  private ArticleAtomViewer articleAtomViewer;
+  private ArticleFeedView articleFeedView;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -468,9 +464,9 @@ public class SearchController extends WombatController {
     mav.addObject("site", site);
     mav.addObject("solrResults", searchResults.get("docs"));
     if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
-      mav.setView(articleAtomViewer);
+      mav.setView(articleFeedView.getArticleAtomView());
     } else {
-      mav.setView(articleRssViewer);
+      mav.setView(articleFeedView.getArticleRssView());
     }
     return mav;
   }

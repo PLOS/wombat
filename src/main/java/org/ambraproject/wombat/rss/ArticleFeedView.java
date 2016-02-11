@@ -11,6 +11,7 @@ import com.rometools.rome.feed.atom.Feed;
 import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Description;
+import com.rometools.rome.feed.rss.Image;
 import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.synd.SyndPerson;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
@@ -67,14 +68,34 @@ public class ArticleFeedView {
     @Override
     protected void buildFeedMetadata(Map<String, Object> model, Channel feed, HttpServletRequest request) {
       FeedMetadata feedMetadata = new FeedMetadata(model, request);
-      feed.setTitle(feedMetadata.getTitle());
+
+      String feedTitle = feedMetadata.getTitle();
+      String feedLink = feedMetadata.getLink();
+      feed.setTitle(feedTitle);
+      feed.setLink(feedLink);
+
       feed.setDescription(feedMetadata.getDescription());
-      feed.setLink(feedMetadata.getLink());
+      feed.setLastBuildDate(feedMetadata.getTimestamp());
 
       String copyright = feedMetadata.getCopyright();
       if (!Strings.isNullOrEmpty(copyright)) {
         feed.setCopyright(copyright);
       }
+
+      String imageLink = feedMetadata.getImageLink();
+      if (!Strings.isNullOrEmpty(imageLink)) {
+        Image image = new Image();
+        image.setUrl(imageLink);
+
+        // Per https://validator.w3.org/feed/docs/rss2.html
+        //   "Note, in practice the image <title> and <link> should have the same value as the channel's <title> and <link>."
+        image.setTitle(feedTitle);
+        image.setLink(feedLink);
+
+        feed.setImage(image);
+      }
+
+      feed.setDocs("https://validator.w3.org/feed/docs/rss2.html");
     }
   }
 
@@ -88,7 +109,9 @@ public class ArticleFeedView {
     @Override
     protected void buildFeedMetadata(Map<String, Object> model, Feed feed, HttpServletRequest request) {
       FeedMetadata feedMetadata = new FeedMetadata(model, request);
+      feed.setId(feedMetadata.getId());
       feed.setTitle(feedMetadata.getTitle());
+      feed.setUpdated(feedMetadata.getTimestamp());
 
       Content subtitle = new Content();
       subtitle.setType("text");
@@ -99,6 +122,15 @@ public class ArticleFeedView {
       link.setHref(feedMetadata.getLink());
       feed.setAlternateLinks(ImmutableList.of(link));
 
+      String imageLink = feedMetadata.getImageLink();
+      if (!Strings.isNullOrEmpty(imageLink)) {
+        // We are ignoring part of the spec here. From http://atomenabled.org/developers/syndication/
+        //   "icon: ...a small image... Icons should be square."
+        //   "logo: ...a larger image... Images should be twice as wide as they are tall.
+        feed.setIcon(imageLink);
+        feed.setLogo(imageLink);
+      }
+
       String copyright = feedMetadata.getCopyright();
       if (!Strings.isNullOrEmpty(copyright)) {
         feed.setRights(copyright);
@@ -107,8 +139,11 @@ public class ArticleFeedView {
   }
 
 
+  /**
+   * Values passed from the Spring model to describe the feed.
+   */
   public static enum FeedMetadataField {
-    TITLE, DESCRIPTION, LINK;
+    ID, TIMESTAMP, TITLE, DESCRIPTION, LINK, IMAGE;
 
     private String getKey() {
       return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, name());
@@ -141,6 +176,22 @@ public class ArticleFeedView {
       }
     }
 
+    /**
+     * @return a URL that <em>uniquely</em> identifies the feed
+     */
+    public String getId() {
+      String id = (String) FeedMetadataField.ID.getFrom(model);
+      return Strings.isNullOrEmpty(id) ? request.getRequestURL().toString() : id;
+    }
+
+    /**
+     * @return a timestamp for the latest time the feed was updated, defaulting to now
+     */
+    public Date getTimestamp() {
+      Date timestamp = (Date) FeedMetadataField.TIMESTAMP.getFrom(model);
+      return (timestamp == null) ? new Date() : timestamp;
+    }
+
     public String getTitle() {
       String journalName = site.getJournalName();
       String feedTitle = (String) FeedMetadataField.TITLE.getFrom(model);
@@ -162,6 +213,19 @@ public class ArticleFeedView {
 
     public String getCopyright() {
       return (String) feedConfig.get("copyright");
+    }
+
+    public String getImageLink() {
+      // An image defined for this particular feed takes precedence
+      String imagePath = (String) FeedMetadataField.IMAGE.getFrom(model);
+      if (Strings.isNullOrEmpty(imagePath)) {
+        // Else, check if the site has configured a global image for all feeds
+        imagePath = (String) feedConfig.get("image");
+      }
+
+      // If we have a path, resolve it into a link
+      return (imagePath == null) ? null
+          : Link.toAbsoluteAddress(site).toPath(imagePath).get(request);
     }
   }
 

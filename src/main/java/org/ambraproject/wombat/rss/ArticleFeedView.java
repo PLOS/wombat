@@ -61,7 +61,7 @@ public class ArticleFeedView {
     @Override
     protected List<Item> buildFeedItems(Map<String, Object> model,
                                         HttpServletRequest request, HttpServletResponse response) {
-      return buildRepresentations(model, request, RssFactory::new);
+      return buildElements(model, request, RssFactory::new);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class ArticleFeedView {
     @Override
     protected List<Entry> buildFeedEntries(Map<String, Object> model,
                                            HttpServletRequest request, HttpServletResponse response) {
-      return buildRepresentations(model, request, AtomFactory::new);
+      return buildElements(model, request, AtomFactory::new);
     }
 
     @Override
@@ -166,38 +166,38 @@ public class ArticleFeedView {
   }
 
 
-  // Function that an AbstractRssFeedView uses to initialize a RepresentationFactory
+  // Function that an AbstractRssFeedView uses to initialize a ElementFactory
   @FunctionalInterface
-  private static interface RepresentationFactoryConstructor<T, F extends RepresentationFactory<T>> {
+  private static interface ElementFactoryConstructor<T, F extends ElementFactory<T>> {
     F construct(HttpServletRequest request, Site site);
   }
 
-  // Dispatch from an AbstractRssFeedView to a RepresentationFactory
-  private static <T, F extends RepresentationFactory<T>> List<T> buildRepresentations(
+  // Dispatch from an AbstractRssFeedView to a ElementFactory
+  private static <T, F extends ElementFactory<T>> List<T> buildElements(
       Map<String, Object> model, HttpServletRequest request,
-      RepresentationFactoryConstructor<T, F> factoryConstructor) {
+      ElementFactoryConstructor<T, F> factoryConstructor) {
     Site site = (Site) model.get("site");
     List<Map<String, ?>> solrResults = (List<Map<String, ?>>) model.get("solrResults");
-    F representationFactory = factoryConstructor.construct(request, site);
-    return solrResults.stream().map(representationFactory::represent).collect(Collectors.toList());
+    F elementFactory = factoryConstructor.construct(request, site);
+    return solrResults.stream().map(elementFactory::buildFeedElement).collect(Collectors.toList());
   }
 
 
   /**
-   * A factory object that represents articles as feed objects.
+   * A factory object that represents articles as elements within a feed.
    *
    * @param <T> the type of feed object to output
    */
-  private abstract class RepresentationFactory<T> {
+  private abstract class ElementFactory<T> {
     protected final HttpServletRequest request;
     protected final Site site;
 
-    private RepresentationFactory(HttpServletRequest request, Site site) {
+    private ElementFactory(HttpServletRequest request, Site site) {
       this.request = Objects.requireNonNull(request);
       this.site = Objects.requireNonNull(site);
     }
 
-    public abstract T represent(Map<String, ?> article);
+    public abstract T buildFeedElement(Map<String, ?> article);
 
     protected final String getArticleLink(Map<String, ?> article) {
       return Link.toAbsoluteAddress(site)
@@ -230,7 +230,7 @@ public class ArticleFeedView {
     }
   }
 
-  private class RssFactory extends RepresentationFactory<Item> {
+  private class RssFactory extends ElementFactory<Item> {
     public RssFactory(HttpServletRequest request, Site site) {
       super(request, site);
     }
@@ -241,7 +241,7 @@ public class ArticleFeedView {
      * @param article a Solr result of an article
      */
     @Override
-    public Item represent(Map<String, ?> article) {
+    public Item buildFeedElement(Map<String, ?> article) {
       Item item = new Item();
       item.setTitle((String) article.get("title"));
       item.setLink(getArticleLink(article));
@@ -264,7 +264,7 @@ public class ArticleFeedView {
     }
   }
 
-  private class AtomFactory extends RepresentationFactory<Entry> {
+  private class AtomFactory extends ElementFactory<Entry> {
     public AtomFactory(HttpServletRequest request, Site site) {
       super(request, site);
     }
@@ -275,7 +275,7 @@ public class ArticleFeedView {
      * @param article a Solr result of an article
      */
     @Override
-    public Entry represent(Map<String, ?> article) {
+    public Entry buildFeedElement(Map<String, ?> article) {
       Entry entry = new Entry();
       entry.setTitle((String) article.get("title"));
 

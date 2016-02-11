@@ -40,6 +40,7 @@ import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
@@ -122,6 +123,8 @@ public class ArticleController extends WombatController {
   private Charset charset;
   @Autowired
   private SiteSet siteSet;
+  @Autowired
+  private UserApi userApi;
   @Autowired
   private ArticleApi articleApi;
   @Autowired
@@ -466,8 +469,11 @@ public class ArticleController extends WombatController {
     }
 
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), COMMENT_NAMESPACE);
-    ArticleComment comment = new ArticleComment(parentArticleDoi, request.getRemoteUser(),
+
+    String authId = request.getRemoteUser();
+    ArticleComment comment = new ArticleComment(parentArticleDoi, authId, getNedIdFromAuthId(authId),
         parentCommentUri, commentTitle, commentBody, ciStatement);
+
     String articleCommentJson = new Gson().toJson(comment);
     HttpEntity entity = new StringEntity(articleCommentJson, ContentType.create("application/json"));
 
@@ -476,6 +482,29 @@ public class ArticleController extends WombatController {
       String createdCommentUri = HttpMessageUtil.readResponse(response);
       return ImmutableMap.of("createdCommentUri", createdCommentUri);
     }
+  }
+
+  private String getNedIdFromAuthId(String authId) throws IOException {
+    Map<String, Object> result;
+    try {
+      result = userApi.requestObject(String.format("individuals/CAS/%s", authId), Map.class);
+    } catch (EntityNotFoundException e) {
+      //e.printStackTrace();
+      log.error("user not found for authId=" + authId);
+      throw new IOException(e);
+    }
+
+    String nedid;
+    try {
+      List<Object> credentials = (List<Object>) result.get("credentials");
+      Map<String,Object> credential0 = (Map<String, Object>) credentials.get(0);
+      nedid = String.valueOf(((Double) credential0.get("nedid")).longValue());
+    } catch (Exception e) {
+      //e.printStackTrace();
+      log.error("wrong response JSON format in extracting nedid from user");
+      throw new IOException(e);
+    }
+    return nedid;
   }
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
@@ -492,7 +521,8 @@ public class ArticleController extends WombatController {
 
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(),
         String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
-    ArticleCommentFlag flag = new ArticleCommentFlag(request.getRemoteUser(), flagCommentBody, reasonCode);
+    String authId = request.getRemoteUser();
+    ArticleCommentFlag flag = new ArticleCommentFlag(authId, getNedIdFromAuthId(authId), flagCommentBody, reasonCode);
     HttpEntity entity = new StringEntity(new Gson().toJson(flag), ContentType.create("application/json"));
 
     HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);

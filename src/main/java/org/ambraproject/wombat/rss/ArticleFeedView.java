@@ -41,12 +41,6 @@ import java.util.stream.Collectors;
 
 public class ArticleFeedView {
 
-  @Autowired
-  private RequestMappingContextDictionary requestMappingContextDictionary;
-
-  private final View articleRssView = new ArticleRssView();
-  private final View articleAtomView = new ArticleAtomView();
-
   /**
    * @return a Spring view that represents articles from the model as an RSS feed
    */
@@ -61,107 +55,36 @@ public class ArticleFeedView {
     return articleAtomView;
   }
 
-  private class ArticleRssView extends AbstractRssFeedView {
-    @Override
-    protected List<Item> buildFeedItems(Map<String, Object> model,
-                                        HttpServletRequest request, HttpServletResponse response) {
-      return buildElements(model, request, RssFactory::new);
-    }
+  // ==================================================================================================================
+  // Wiring
 
-    @Override
-    protected void buildFeedMetadata(Map<String, Object> model, Channel feed, HttpServletRequest request) {
-      FeedMetadata feedMetadata = new FeedMetadata(model, request);
+  @Autowired
+  private RequestMappingContextDictionary requestMappingContextDictionary;
 
-      String feedTitle = feedMetadata.getTitle();
-      String feedLink = feedMetadata.getLink();
-      feed.setTitle(feedTitle);
-      feed.setLink(feedLink);
+  private final View articleRssView = new ArticleRssView();
+  private final View articleAtomView = new ArticleAtomView();
 
-      feed.setDescription(feedMetadata.getDescription());
-      feed.setWebMaster(feedMetadata.getAuthorEmail());
-      feed.setLastBuildDate(feedMetadata.getTimestamp());
-
-      String copyright = feedMetadata.getCopyright();
-      if (!Strings.isNullOrEmpty(copyright)) {
-        feed.setCopyright(copyright);
-      }
-
-      String imageLink = feedMetadata.getImageLink();
-      if (!Strings.isNullOrEmpty(imageLink)) {
-        Image image = new Image();
-        image.setUrl(imageLink);
-
-        // Per https://validator.w3.org/feed/docs/rss2.html
-        //   "Note, in practice the image <title> and <link> should have the same value as the channel's <title> and <link>."
-        image.setTitle(feedTitle);
-        image.setLink(feedLink);
-
-        feed.setImage(image);
-      }
-
-      feed.setDocs("https://validator.w3.org/feed/docs/rss2.html");
-    }
+  // Function that an AbstractRssFeedView uses to initialize a ElementFactory
+  @FunctionalInterface
+  private static interface ElementFactoryConstructor<T, F extends ElementFactory<T>> {
+    F construct(HttpServletRequest request, Site site);
   }
 
-  private class ArticleAtomView extends AbstractAtomFeedView {
-    @Override
-    protected List<Entry> buildFeedEntries(Map<String, Object> model,
-                                           HttpServletRequest request, HttpServletResponse response) {
-      return buildElements(model, request, AtomFactory::new);
-    }
-
-    @Override
-    protected void buildFeedMetadata(Map<String, Object> model, Feed feed, HttpServletRequest request) {
-      FeedMetadata feedMetadata = new FeedMetadata(model, request);
-
-      feed.setId(feedMetadata.getId());
-      feed.setTitle(feedMetadata.getTitle());
-      feed.setUpdated(feedMetadata.getTimestamp());
-
-      Content subtitle = new Content();
-      subtitle.setType("text");
-      subtitle.setValue(feedMetadata.getDescription());
-      feed.setSubtitle(subtitle);
-
-      com.rometools.rome.feed.atom.Link link = new com.rometools.rome.feed.atom.Link();
-      link.setHref(feedMetadata.getLink());
-      feed.setAlternateLinks(ImmutableList.of(link));
-
-      feed.setAuthors(ImmutableList.of(buildFeedAuthor(feedMetadata)));
-
-      String imageLink = feedMetadata.getImageLink();
-      if (!Strings.isNullOrEmpty(imageLink)) {
-        // We are ignoring part of the spec here. From http://atomenabled.org/developers/syndication/
-        //   "icon: ...a small image... Icons should be square."
-        //   "logo: ...a larger image... Images should be twice as wide as they are tall.
-        feed.setIcon(imageLink);
-        feed.setLogo(imageLink);
-      }
-
-      String copyright = feedMetadata.getCopyright();
-      if (!Strings.isNullOrEmpty(copyright)) {
-        feed.setRights(copyright);
-      }
-    }
-
-    private SyndPerson buildFeedAuthor(FeedMetadata feedMetadata) {
-      SyndPerson feedAuthor = new SyndPersonImpl();
-      feedAuthor.setUri(feedMetadata.getSiteLink());
-
-      String authorName = feedMetadata.getAuthorName();
-      if (!Strings.isNullOrEmpty(authorName)) {
-        feedAuthor.setName(authorName);
-      }
-
-      String authorEmail = feedMetadata.getAuthorEmail();
-      if (!Strings.isNullOrEmpty(authorEmail)) {
-        feedAuthor.setEmail(authorEmail);
-      }
-
-      return feedAuthor;
-    }
+  // Dispatch from an AbstractRssFeedView to a ElementFactory
+  private static <T, F extends ElementFactory<T>> List<T> buildElements(
+      Map<String, Object> model, HttpServletRequest request,
+      ElementFactoryConstructor<T, F> factoryConstructor) {
+    Site site = (Site) model.get("site");
+    List<Map<String, ?>> solrResults = (List<Map<String, ?>>) model.get("solrResults");
+    F elementFactory = factoryConstructor.construct(request, site);
+    return solrResults.stream().map(elementFactory::buildFeedElement).collect(Collectors.toList());
   }
 
+  // ==================================================================================================================
+  // Standard-independent
+
+  // --------------------------------------------------------------------------
+  // Feed metadata
 
   /**
    * Values passed from the Spring model to describe the feed.
@@ -266,23 +189,8 @@ public class ArticleFeedView {
     }
   }
 
-
-  // Function that an AbstractRssFeedView uses to initialize a ElementFactory
-  @FunctionalInterface
-  private static interface ElementFactoryConstructor<T, F extends ElementFactory<T>> {
-    F construct(HttpServletRequest request, Site site);
-  }
-
-  // Dispatch from an AbstractRssFeedView to a ElementFactory
-  private static <T, F extends ElementFactory<T>> List<T> buildElements(
-      Map<String, Object> model, HttpServletRequest request,
-      ElementFactoryConstructor<T, F> factoryConstructor) {
-    Site site = (Site) model.get("site");
-    List<Map<String, ?>> solrResults = (List<Map<String, ?>>) model.get("solrResults");
-    F elementFactory = factoryConstructor.construct(request, site);
-    return solrResults.stream().map(elementFactory::buildFeedElement).collect(Collectors.toList());
-  }
-
+  // --------------------------------------------------------------------------
+  // Element metadata
 
   /**
    * A factory object that represents articles as elements within a feed.
@@ -349,6 +257,58 @@ public class ArticleFeedView {
     }
   }
 
+
+  // ==================================================================================================================
+  // RSS
+
+  // --------------------------------------------------------------------------
+  // Feed metadata
+
+  private class ArticleRssView extends AbstractRssFeedView {
+    @Override
+    protected List<Item> buildFeedItems(Map<String, Object> model,
+                                        HttpServletRequest request, HttpServletResponse response) {
+      return buildElements(model, request, RssFactory::new);
+    }
+
+    @Override
+    protected void buildFeedMetadata(Map<String, Object> model, Channel feed, HttpServletRequest request) {
+      FeedMetadata feedMetadata = new FeedMetadata(model, request);
+
+      String feedTitle = feedMetadata.getTitle();
+      String feedLink = feedMetadata.getLink();
+      feed.setTitle(feedTitle);
+      feed.setLink(feedLink);
+
+      feed.setDescription(feedMetadata.getDescription());
+      feed.setWebMaster(feedMetadata.getAuthorEmail());
+      feed.setLastBuildDate(feedMetadata.getTimestamp());
+
+      String copyright = feedMetadata.getCopyright();
+      if (!Strings.isNullOrEmpty(copyright)) {
+        feed.setCopyright(copyright);
+      }
+
+      String imageLink = feedMetadata.getImageLink();
+      if (!Strings.isNullOrEmpty(imageLink)) {
+        Image image = new Image();
+        image.setUrl(imageLink);
+
+        // Per https://validator.w3.org/feed/docs/rss2.html
+        //   "Note, in practice the image <title> and <link> should have the same value as the channel's <title> and <link>."
+        image.setTitle(feedTitle);
+        image.setLink(feedLink);
+
+        feed.setImage(image);
+      }
+
+      feed.setDocs("https://validator.w3.org/feed/docs/rss2.html");
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Article metadata
+
   private class RssFactory extends ElementFactory<Item> {
     public RssFactory(HttpServletRequest request, Site site) {
       super(request, site);
@@ -382,6 +342,75 @@ public class ArticleFeedView {
       return description;
     }
   }
+
+
+  // ==================================================================================================================
+  // Atom
+
+  // --------------------------------------------------------------------------
+  // Feed metadata
+
+  private class ArticleAtomView extends AbstractAtomFeedView {
+    @Override
+    protected List<Entry> buildFeedEntries(Map<String, Object> model,
+                                           HttpServletRequest request, HttpServletResponse response) {
+      return buildElements(model, request, AtomFactory::new);
+    }
+
+    @Override
+    protected void buildFeedMetadata(Map<String, Object> model, Feed feed, HttpServletRequest request) {
+      FeedMetadata feedMetadata = new FeedMetadata(model, request);
+
+      feed.setId(feedMetadata.getId());
+      feed.setTitle(feedMetadata.getTitle());
+      feed.setUpdated(feedMetadata.getTimestamp());
+
+      Content subtitle = new Content();
+      subtitle.setType("text");
+      subtitle.setValue(feedMetadata.getDescription());
+      feed.setSubtitle(subtitle);
+
+      com.rometools.rome.feed.atom.Link link = new com.rometools.rome.feed.atom.Link();
+      link.setHref(feedMetadata.getLink());
+      feed.setAlternateLinks(ImmutableList.of(link));
+
+      feed.setAuthors(ImmutableList.of(buildFeedAuthor(feedMetadata)));
+
+      String imageLink = feedMetadata.getImageLink();
+      if (!Strings.isNullOrEmpty(imageLink)) {
+        // We are ignoring part of the spec here. From http://atomenabled.org/developers/syndication/
+        //   "icon: ...a small image... Icons should be square."
+        //   "logo: ...a larger image... Images should be twice as wide as they are tall.
+        feed.setIcon(imageLink);
+        feed.setLogo(imageLink);
+      }
+
+      String copyright = feedMetadata.getCopyright();
+      if (!Strings.isNullOrEmpty(copyright)) {
+        feed.setRights(copyright);
+      }
+    }
+
+    private SyndPerson buildFeedAuthor(FeedMetadata feedMetadata) {
+      SyndPerson feedAuthor = new SyndPersonImpl();
+      feedAuthor.setUri(feedMetadata.getSiteLink());
+
+      String authorName = feedMetadata.getAuthorName();
+      if (!Strings.isNullOrEmpty(authorName)) {
+        feedAuthor.setName(authorName);
+      }
+
+      String authorEmail = feedMetadata.getAuthorEmail();
+      if (!Strings.isNullOrEmpty(authorEmail)) {
+        feedAuthor.setEmail(authorEmail);
+      }
+
+      return feedAuthor;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Article metadata
 
   private class AtomFactory extends ElementFactory<Entry> {
     public AtomFactory(HttpServletRequest request, Site site) {

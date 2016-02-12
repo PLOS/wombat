@@ -60,6 +60,8 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
+import org.plos.ned_client.model.IndividualComposite;
+import org.plos.ned_client.model.Individualprofile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -462,6 +464,7 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
+
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
@@ -471,7 +474,7 @@ public class ArticleController extends WombatController {
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), COMMENT_NAMESPACE);
 
     String authId = request.getRemoteUser();
-    ArticleComment comment = new ArticleComment(parentArticleDoi, authId, getNedIdFromAuthId(authId),
+    ArticleComment comment = new ArticleComment(parentArticleDoi, getUserIdFromAuthId(authId),
         parentCommentUri, commentTitle, commentBody, ciStatement);
 
     String articleCommentJson = new Gson().toJson(comment);
@@ -484,27 +487,15 @@ public class ArticleController extends WombatController {
     }
   }
 
-  private String getNedIdFromAuthId(String authId) throws IOException {
-    Map<String, Object> result;
-    try {
-      result = userApi.requestObject(String.format("individuals/CAS/%s", authId), Map.class);
-    } catch (EntityNotFoundException e) {
-      //e.printStackTrace();
-      log.error("user not found for authId=" + authId);
-      throw new IOException(e);
-    }
-
-    String nedid;
-    try {
-      List<Object> credentials = (List<Object>) result.get("credentials");
-      Map<String,Object> credential0 = (Map<String, Object>) credentials.get(0);
-      nedid = String.valueOf(((Double) credential0.get("nedid")).longValue());
-    } catch (Exception e) {
-      //e.printStackTrace();
-      log.error("wrong response JSON format in extracting nedid from user");
-      throw new IOException(e);
-    }
-    return nedid;
+  private String getUserIdFromAuthId(String authId) throws IOException {
+    IndividualComposite individualComposite = userApi.requestObject(
+        String.format("individuals/CAS/%s", authId), IndividualComposite.class);
+    // use nedid from any available profile.
+    Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
+        .findFirst()
+        .orElseThrow(() -> new RuntimeException(
+            "An IndividualComposite does not have an Individualprofile"));
+    return individualprofile.getNedid().toString();
   }
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
@@ -522,7 +513,7 @@ public class ArticleController extends WombatController {
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(),
         String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
     String authId = request.getRemoteUser();
-    ArticleCommentFlag flag = new ArticleCommentFlag(authId, getNedIdFromAuthId(authId), flagCommentBody, reasonCode);
+    ArticleCommentFlag flag = new ArticleCommentFlag(getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
     HttpEntity entity = new StringEntity(new Gson().toJson(flag), ContentType.create("application/json"));
 
     HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);

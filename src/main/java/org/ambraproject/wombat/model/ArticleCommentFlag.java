@@ -2,14 +2,12 @@ package org.ambraproject.wombat.model;
 
 public class ArticleCommentFlag {
 
-  private final String creatorAuthId;
-  private final String creatorNedId;
+  private final String creatorUserId;
   private final String body;
   private final String reasonCode;
 
-  public ArticleCommentFlag(String creatorAuthId, String creatorNedId, String body, String reasonCode) {
-    this.creatorAuthId = creatorAuthId;
-    this.creatorNedId = creatorNedId;
+  public ArticleCommentFlag(String creatorUserId, String body, String reasonCode) {
+    this.creatorUserId = creatorUserId;
     this.body = body;
     this.reasonCode = reasonCode;
   }

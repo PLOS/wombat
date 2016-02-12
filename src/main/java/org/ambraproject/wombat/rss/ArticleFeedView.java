@@ -15,7 +15,6 @@ import com.rometools.rome.feed.rss.Guid;
 import com.rometools.rome.feed.rss.Image;
 import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.synd.SyndPerson;
-import com.rometools.rome.feed.synd.SyndPersonImpl;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.url.Link;
@@ -397,8 +396,8 @@ public class ArticleFeedView {
       }
     }
 
-    private SyndPerson buildFeedAuthor(FeedMetadata feedMetadata) {
-      SyndPerson feedAuthor = new SyndPersonImpl();
+    private Person buildFeedAuthor(FeedMetadata feedMetadata) {
+      Person feedAuthor = new Person();
       feedAuthor.setUri(feedMetadata.getSiteLink());
 
       String authorName = feedMetadata.getAuthorName();

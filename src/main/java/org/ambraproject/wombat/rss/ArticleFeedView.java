@@ -11,6 +11,7 @@ import com.rometools.rome.feed.atom.Feed;
 import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Description;
+import com.rometools.rome.feed.rss.Guid;
 import com.rometools.rome.feed.rss.Image;
 import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.synd.SyndPerson;
@@ -325,6 +326,11 @@ public class ArticleFeedView {
       item.setTitle((String) article.get("title"));
       item.setLink(getArticleLink(article));
 
+      Guid guid = new Guid();
+      guid.setValue((String) article.get("id"));
+      guid.setPermaLink(false);
+      item.setGuid(guid);
+
       item.setPubDate(getPubDate(article));
 
       List<String> authorList = (List<String>) article.get("author_display");
@@ -426,6 +432,7 @@ public class ArticleFeedView {
     public Entry buildFeedElement(Map<String, ?> article) {
       Entry entry = new Entry();
       entry.setTitle((String) article.get("title"));
+      entry.setId((String) article.get("id"));
 
       entry.setAlternateLinks(buildLinks(article));
       entry.setPublished(getPubDate(article));

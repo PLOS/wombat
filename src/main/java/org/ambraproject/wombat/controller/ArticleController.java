@@ -40,6 +40,7 @@ import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
@@ -59,6 +60,8 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
+import org.plos.ned_client.model.IndividualComposite;
+import org.plos.ned_client.model.Individualprofile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,6 +125,8 @@ public class ArticleController extends WombatController {
   private Charset charset;
   @Autowired
   private SiteSet siteSet;
+  @Autowired
+  private UserApi userApi;
   @Autowired
   private ArticleApi articleApi;
   @Autowired
@@ -459,6 +464,7 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
+
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {
@@ -466,8 +472,11 @@ public class ArticleController extends WombatController {
     }
 
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), COMMENT_NAMESPACE);
-    ArticleComment comment = new ArticleComment(parentArticleDoi, request.getRemoteUser(),
+
+    String authId = request.getRemoteUser();
+    ArticleComment comment = new ArticleComment(parentArticleDoi, getUserIdFromAuthId(authId),
         parentCommentUri, commentTitle, commentBody, ciStatement);
+
     String articleCommentJson = new Gson().toJson(comment);
     HttpEntity entity = new StringEntity(articleCommentJson, ContentType.create("application/json"));
 
@@ -476,6 +485,17 @@ public class ArticleController extends WombatController {
       String createdCommentUri = HttpMessageUtil.readResponse(response);
       return ImmutableMap.of("createdCommentUri", createdCommentUri);
     }
+  }
+
+  private String getUserIdFromAuthId(String authId) throws IOException {
+    IndividualComposite individualComposite = userApi.requestObject(
+        String.format("individuals/CAS/%s", authId), IndividualComposite.class);
+    // use nedid from any available profile.
+    Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
+        .findFirst()
+        .orElseThrow(() -> new RuntimeException(
+            "An IndividualComposite does not have an Individualprofile"));
+    return individualprofile.getNedid().toString();
   }
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
@@ -492,7 +512,8 @@ public class ArticleController extends WombatController {
 
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(),
         String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
-    ArticleCommentFlag flag = new ArticleCommentFlag(request.getRemoteUser(), flagCommentBody, reasonCode);
+    String authId = request.getRemoteUser();
+    ArticleCommentFlag flag = new ArticleCommentFlag(getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
     HttpEntity entity = new StringEntity(new Gson().toJson(flag), ContentType.create("application/json"));
 
     HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);

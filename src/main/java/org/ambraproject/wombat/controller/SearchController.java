@@ -16,6 +16,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
@@ -86,6 +87,7 @@ public class SearchController extends WombatController {
   private ArticleFeedView articleFeedView;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
+  private final int RSS_ARTICLE_COUNT = 30;
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
@@ -436,17 +438,72 @@ public class SearchController extends WombatController {
   }
 
   /**
+   * Performs a search based on subject area and serves the result as XML to be read by an RSS reader
+   *
+   * @param site site the request originates from
+   * @return RSS view of articles returned by the search
+   * @throws IOException
+   */
+  @RequestMapping(name = "browseAllFeed", value = "/browse/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getBrowseAllRssFeedView(@SiteParam Site site, @PathVariable String feedType)
+      throws IOException {
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery("*:*")
+        .setStart(0)
+        .setRows(RSS_ARTICLE_COUNT)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setSimple(false)
+        .setIsRssSearch(true);
+    ArticleSearchQuery queryObj = query.build();
+
+    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+    return getFeedModelAndView(site, feedType, searchResults);
+  }
+
+  /**
+   * Performs a search based on subject area and serves the result as XML to be read by an RSS reader
+   *
+   * @param site site the request originates from
+   * @return RSS view of articles returned by the search
+   * @throws IOException
+   */
+  @RequestMapping(name = "browseFeed", value = "/browse/{subject}/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getBrowseRssFeedView(@SiteParam Site site,
+      @PathVariable String feedType, @PathVariable String subject) throws IOException {
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery("")
+        .setSubjects(ImmutableList.of(subject.replace('_', ' ')))
+        .setStart(0)
+        .setRows(RSS_ARTICLE_COUNT)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setSimple(false)
+        .setIsRssSearch(true);
+    ArticleSearchQuery queryObj = query.build();
+
+    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+    return getFeedModelAndView(site, feedType, searchResults);
+  }
+
+  /**
    * Performs a search and serves the result as XML to be read by an RSS reader
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
    * @param site    site the request originates from
-   * @param params search parameters identical to the {@code search} method
+   * @param params  search parameters identical to the {@code search} method
    * @return RSS view of articles returned by the search
    * @throws IOException
    */
-  @RequestMapping(name ="searchFeed", value="/search/feed/{feedType}", method = RequestMethod.GET)
-  public ModelAndView getRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
+  @RequestMapping(name = "searchFeed", value = "/search/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
 
@@ -460,6 +517,10 @@ public class SearchController extends WombatController {
 
     Map<String, ?> searchResults = solrSearchService.search(queryObj);
 
+    return getFeedModelAndView(site, feedType, searchResults);
+  }
+
+  private ModelAndView getFeedModelAndView(Site site, String feedType, Map<String, ?> searchResults) {
     ModelAndView mav = new ModelAndView();
     mav.addObject("site", site);
     mav.addObject("solrResults", searchResults.get("docs"));

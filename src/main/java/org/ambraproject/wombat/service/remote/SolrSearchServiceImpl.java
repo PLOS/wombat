@@ -23,6 +23,8 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +53,8 @@ import java.util.stream.Collectors;
  */
 public class SolrSearchServiceImpl implements SolrSearchService {
 
+  private static final Logger log = LoggerFactory.getLogger(SolrSearchServiceImpl.class);
+
   @Autowired
   private JsonService jsonService;
   @Autowired
@@ -63,6 +67,11 @@ public class SolrSearchServiceImpl implements SolrSearchService {
   protected Map<String, String> eIssnToJournalKey;
 
   private static final int MAX_FACET_SIZE = -1; //unlimited
+
+  /**
+   * number of milliseconds to wait on a url connection to SOLR
+   */
+  private static final int CONNECTION_TIMEOUT = 100;
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -357,14 +366,19 @@ public class SolrSearchServiceImpl implements SolrSearchService {
    * @throws IOException
    */
   private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
+    URI uri = getSolrUri(params);
+    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
+    return (Map<String, Map>) rawResults;
+  }
+
+  private URI getSolrUri(List<NameValuePair> params) {
     URI uri;
     try {
       uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }
-    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
-    return (Map<String, Map>) rawResults;
+    return uri;
   }
 
   private class FacetedQueryResponse {

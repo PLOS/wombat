@@ -16,16 +16,19 @@ package org.ambraproject.wombat.controller;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.model.FeedType;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.rss.ArticleFeedView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -42,7 +45,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -78,7 +83,11 @@ public class SearchController extends WombatController {
   @Autowired
   private BrowseTaxonomyService browseTaxonomyService;
 
+  @Autowired
+  private ArticleFeedView articleFeedView;
+
   private final String BROWSE_RESULTS_PER_PAGE = "13";
+  private final int RSS_ARTICLE_COUNT = 30;
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
@@ -419,6 +428,110 @@ public class SearchController extends WombatController {
     return builder.build();
   }
 
+  private CommonParams modelCommonParams(HttpServletRequest request, Model model,
+      @SiteParam Site site, @RequestParam MultiValueMap<String, String> params) throws IOException {
+    CommonParams commonParams = new CommonParams(siteSet, site);
+    commonParams.parseParams(params);
+    commonParams.addToModel(model, request);
+    addOptionsToModel(model);
+    return commonParams;
+  }
+
+  /**
+   * Performs a search based on subject area and serves the result as XML to be read by an RSS reader
+   *
+   * @param site site the request originates from
+   * @return RSS view of articles returned by the search
+   * @throws IOException
+   */
+  @RequestMapping(name = "browseAllFeed", value = "/browse/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getBrowseAllRssFeedView(@SiteParam Site site, @PathVariable String feedType)
+      throws IOException {
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery("*:*")
+        .setStart(0)
+        .setRows(RSS_ARTICLE_COUNT)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setSimple(false)
+        .setIsRssSearch(true);
+    ArticleSearchQuery queryObj = query.build();
+
+    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+    return getFeedModelAndView(site, feedType, searchResults);
+  }
+
+  /**
+   * Performs a search based on subject area and serves the result as XML to be read by an RSS reader
+   *
+   * @param site site the request originates from
+   * @return RSS view of articles returned by the search
+   * @throws IOException
+   */
+  @RequestMapping(name = "browseFeed", value = "/browse/{subject}/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getBrowseRssFeedView(@SiteParam Site site,
+      @PathVariable String feedType, @PathVariable String subject) throws IOException {
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery("")
+        .setSubjects(ImmutableList.of(subject.replace('_', ' ')))
+        .setStart(0)
+        .setRows(RSS_ARTICLE_COUNT)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setSimple(false)
+        .setIsRssSearch(true);
+    ArticleSearchQuery queryObj = query.build();
+
+    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+    return getFeedModelAndView(site, feedType, searchResults);
+  }
+
+  /**
+   * Performs a search and serves the result as XML to be read by an RSS reader
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  search parameters identical to the {@code search} method
+   * @return RSS view of articles returned by the search
+   * @throws IOException
+   */
+  @RequestMapping(name = "searchFeed", value = "/search/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
+      @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
+
+    String queryString = params.getFirst("q");
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery(queryString)
+        .setSimple(commonParams.isSimpleSearch(queryString))
+        .setIsRssSearch(true);
+    commonParams.fill(query);
+    ArticleSearchQuery queryObj = query.build();
+
+    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+    return getFeedModelAndView(site, feedType, searchResults);
+  }
+
+  private ModelAndView getFeedModelAndView(Site site, String feedType, Map<String, ?> searchResults) {
+    ModelAndView mav = new ModelAndView();
+    mav.addObject("site", site);
+    mav.addObject("solrResults", searchResults.get("docs"));
+    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
+      mav.setView(articleFeedView.getArticleAtomView());
+    } else {
+      mav.setView(articleFeedView.getArticleRssView());
+    }
+    return mav;
+  }
+
   // Unless the "!volume" part is included in the params in the next few methods, you will
   // get an "ambiguous handler method" exception from spring.  I think this is because all
   // of these methods (including volumeSearch) use a MultiValueMap for @RequestParam, instead
@@ -437,10 +550,7 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume", "!subject"})
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-    addOptionsToModel(model);
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
@@ -449,6 +559,7 @@ public class SearchController extends WombatController {
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
+
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
 
@@ -568,10 +679,7 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "volumeSearch", value = "/search", params = {"volume!="})
   public String volumeSearch(HttpServletRequest request, Model model, @SiteParam Site site,
                              @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-    addOptionsToModel(model);
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
     int volume;
     try {
       volume = Integer.parseInt(params.getFirst("volume"));

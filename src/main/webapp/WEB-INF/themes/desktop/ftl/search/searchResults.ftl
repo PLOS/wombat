@@ -104,11 +104,8 @@
                     This feature temporarily unavailable.
                 </div>
             </div>
-            <div class="search-feed" data-js-tooltip-hover="trigger">
-                <div class="search-feed-tooltip" data-js-tooltip-hover="target">
-                    This feature temporarily unavailable.
-                </div>
-            </div>
+            <a href="<@siteLink handlerName="searchFeed" queryParameters=parameterMap pathVariables={'feedType': 'atom'}/>"
+               class="search-feed"></a>
         </div>
 
     </section>

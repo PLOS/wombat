@@ -48,6 +48,7 @@ import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SearchFilterType;
 import org.ambraproject.wombat.model.SearchFilterTypeMap;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.rss.ArticleFeedView;
 import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
@@ -90,7 +91,6 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import javax.servlet.ServletContext;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.charset.Charset;
 
 @Configuration
@@ -328,6 +328,11 @@ public class SpringConfiguration {
   @Bean
   public BrowseTaxonomyService browseTaxonomyService() {
     return new BrowseTaxonomyServiceImpl();
+  }
+
+  @Bean
+  public ArticleFeedView articleFeedView() {
+    return new ArticleFeedView();
   }
 
 }

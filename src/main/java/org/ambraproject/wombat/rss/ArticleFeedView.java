@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -291,10 +292,17 @@ public class ArticleFeedView {
   private abstract class ElementFactory<T> {
     protected final HttpServletRequest request;
     protected final Site site;
+    protected final Map<String, Object> feedConfig;
 
     private ElementFactory(HttpServletRequest request, Site site) {
       this.request = Objects.requireNonNull(request);
       this.site = Objects.requireNonNull(site);
+
+      try {
+        this.feedConfig = Objects.requireNonNull(site.getTheme().getConfigMap("feed"));
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
     }
 
     public abstract T buildFeedElement(Map<String, ?> article);
@@ -317,8 +325,19 @@ public class ArticleFeedView {
       }
       Calendar cal = Calendar.getInstance();
       cal.setTime(pubDate);
-      cal.set(Calendar.HOUR_OF_DAY, 14); //Publish time is 2PM
+      getPublicationTime().ifPresent((LocalTime publicationTime) -> {
+        cal.set(Calendar.HOUR_OF_DAY, publicationTime.getHour());
+        cal.set(Calendar.MINUTE, publicationTime.getMinute());
+        cal.set(Calendar.SECOND, publicationTime.getSecond());
+      });
       return cal.getTime();
+    }
+
+    private Optional<LocalTime> getPublicationTime() {
+      List<Number> publicationTime = (List<Number>) feedConfig.get("publicationTimeOfDay");
+      if (publicationTime == null) return Optional.empty();
+      if (publicationTime.size() != 2) throw new RuntimeException();
+      return Optional.of(LocalTime.of(publicationTime.get(0).intValue(), publicationTime.get(1).intValue()));
     }
 
     protected final String getAbstractText(Map<String, ?> article) {

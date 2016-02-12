@@ -14,3 +14,8 @@ authorName: null
 
 authorEmail: null
 # A contact email address for the person or organization who authors the feed, or their webmaster.
+
+publicationTimeOfDay: null
+# The time of day of record at which articles are published, according to the feed.
+# If present, must be a list of two integers representing the hour (0 to 23) and minute (0 to 59).
+# For example, 1:30 PM is [13, 30].

@@ -16,6 +16,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
@@ -436,6 +437,77 @@ public class SearchController extends WombatController {
   }
 
   /**
+   * Performs a search based on subject area and serves the result as XML to be read by an RSS reader
+   *
+   * @param site    site the request originates from
+   * @return RSS view of articles returned by the search
+   * @throws IOException
+   */
+  @RequestMapping(name ="browseAllFeed", value="/browse/feed/{feedType}", method = RequestMethod.GET)
+  public ModelAndView getBrowseAllRssFeedView(@SiteParam Site site, @PathVariable String feedType)
+      throws IOException {
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery("*:*")
+        .setStart(0)
+        .setRows(15)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setSimple(false)
+        .setIsRssSearch(true);
+    ArticleSearchQuery queryObj = query.build();
+
+    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+    ModelAndView mav = new ModelAndView();
+    mav.addObject("site", site);
+    mav.addObject("solrResults", searchResults.get("docs"));
+    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
+      mav.setView(articleFeedView.getArticleAtomView());
+    } else {
+      mav.setView(articleFeedView.getArticleRssView());
+    }
+    return mav;
+  }
+
+  /**
+   * Performs a search based on subject area and serves the result as XML to be read by an RSS reader
+   *
+   * @param site    site the request originates from
+   * @return RSS view of articles returned by the search
+   * @throws IOException
+   */
+  @RequestMapping(name ="browseFeed", value="/browse/{subject}/feed/{feedType}", method = RequestMethod.GET)
+  public ModelAndView getBrowseRssFeedView(@SiteParam Site site,
+      @PathVariable String feedType, @PathVariable String subject) throws IOException {
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery("")
+        .setSubjects(ImmutableList.of(subject.replace('_', ' ')))
+        .setStart(0)
+        .setRows(15)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setSimple(false)
+        .setIsRssSearch(true);
+    ArticleSearchQuery queryObj = query.build();
+
+    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+
+    ModelAndView mav = new ModelAndView();
+    mav.addObject("site", site);
+    mav.addObject("solrResults", searchResults.get("docs"));
+    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
+      mav.setView(articleFeedView.getArticleAtomView());
+    } else {
+      mav.setView(articleFeedView.getArticleRssView());
+    }
+    return mav;
+  }
+
+  /**
    * Performs a search and serves the result as XML to be read by an RSS reader
    *
    * @param request HttpServletRequest
@@ -446,7 +518,7 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name ="searchFeed", value="/search/feed/{feedType}", method = RequestMethod.GET)
-  public ModelAndView getRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
+  public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
 

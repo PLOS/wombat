@@ -6,9 +6,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.model.TaxonomyCountTable;
-import org.ambraproject.wombat.model.TaxonomyGraph;
-import org.ambraproject.wombat.service.BrowseTaxonomyService;
+import org.ambraproject.wombat.model.FeedType;
+import org.ambraproject.wombat.rss.ArticleFeedView;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -20,9 +19,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class HomeController extends WombatController {
   private RecentArticleService recentArticleService;
 
   @Autowired
-  private BrowseTaxonomyService browseTaxonomyService;
+  private ArticleFeedView articleFeedView;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -253,10 +254,6 @@ public class HomeController extends WombatController {
       }
     }
 
-    //todo: add categoryView and counts to model for Taxonomy Browser
-    TaxonomyGraph taxonomyGraph = browseTaxonomyService.parseCategories(site.getJournalKey());
-    TaxonomyCountTable counts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey());
-
     model.addAttribute("sections", sectionsForModel);
     model.addAttribute("parameterMap", request.getParameterMap()); // needed for paging
     return site.getKey() + "/ftl/home/home";
@@ -270,4 +267,34 @@ public class HomeController extends WombatController {
     model.addAttribute("issueImage", issueImageMetadata);
   }
 
+  /**
+   * Serves recent journal articles as XML to be read by an RSS reader
+   *
+   * @param site    site the request originates from
+   * @return RSS view of recent articles for the specified site
+   * @throws IOException
+   */
+  @RequestMapping(name ="homepageFeed", value="/feed/{feedType}", method = RequestMethod.GET)
+  public ModelAndView getRssFeedView(@SiteParam Site site, @PathVariable String feedType)
+      throws IOException {
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setStart(0)
+        .setRows(15)
+        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setIsRssSearch(true);
+    Map<String, ?> recentArticles = solrSearchService.search(query.build());
+
+    ModelAndView mav = new ModelAndView();
+    mav.addObject("site", site);
+    mav.addObject("solrResults", recentArticles.get("docs"));
+    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
+      mav.setView(articleFeedView.getArticleAtomView());
+    } else {
+      mav.setView(articleFeedView.getArticleRssView());
+    }
+    return mav;
+  }
 }

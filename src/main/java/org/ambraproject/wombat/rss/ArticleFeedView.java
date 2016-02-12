@@ -65,13 +65,13 @@ public class ArticleFeedView {
   private final View articleRssView = new ArticleRssView();
   private final View articleAtomView = new ArticleAtomView();
 
-  // Function that an AbstractRssFeedView uses to initialize a ElementFactory
+  // Function that an AbstractFeedView uses to initialize a ElementFactory
   @FunctionalInterface
   private static interface ElementFactoryConstructor<T, F extends ElementFactory<T>> {
     F construct(HttpServletRequest request, Site site);
   }
 
-  // Dispatch from an AbstractRssFeedView to a ElementFactory
+  // Dispatch from an AbstractFeedView to a ElementFactory
   private static <T, F extends ElementFactory<T>> List<T> buildElements(
       Map<String, Object> model, HttpServletRequest request,
       ElementFactoryConstructor<T, F> factoryConstructor) {

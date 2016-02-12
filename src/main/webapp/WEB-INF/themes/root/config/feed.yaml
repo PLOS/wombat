@@ -1,3 +1,16 @@
+# This file defines metadata that appear on the root level of the site's RSS and Atom feeds.
+
 description: null
+# A default subtitle/description.
 
 copyright: null
+# A copyright or license statement.
+
+image: null
+# A path (local to the site) to an image file to be used as the feed's icon.
+
+authorName: null
+# A name of the person or organization who authors the feed.
+
+authorEmail: null
+# A contact email address for the person or organization who authors the feed, or their webmaster.

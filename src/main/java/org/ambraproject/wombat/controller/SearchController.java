@@ -465,8 +465,10 @@ public class SearchController extends WombatController {
     mav.addObject("solrResults", searchResults.get("docs"));
     if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
       mav.setView(articleFeedView.getArticleAtomView());
-    } else {
+    } else if (feedType.equalsIgnoreCase(FeedType.RSS.name())) {
       mav.setView(articleFeedView.getArticleRssView());
+    } else {
+      throw new NotFoundException();
     }
     return mav;
   }

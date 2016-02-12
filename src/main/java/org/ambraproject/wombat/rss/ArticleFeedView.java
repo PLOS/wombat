@@ -435,7 +435,10 @@ public class ArticleFeedView {
       entry.setId((String) article.get("id"));
 
       entry.setAlternateLinks(buildLinks(article));
-      entry.setPublished(getPubDate(article));
+
+      Date pubDate = getPubDate(article);
+      entry.setPublished(pubDate);
+      entry.setUpdated(pubDate);
 
       List<String> authorList = (List<String>) article.get("author_display");
       if (authorList != null) {

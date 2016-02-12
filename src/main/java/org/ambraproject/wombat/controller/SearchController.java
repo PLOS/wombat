@@ -445,7 +445,7 @@ public class SearchController extends WombatController {
    * @return RSS view of articles returned by the search
    * @throws IOException
    */
-  @RequestMapping(name ="feed", value="/search/feed/{feedType}", method = RequestMethod.GET)
+  @RequestMapping(name ="searchFeed", value="/search/feed/{feedType}", method = RequestMethod.GET)
   public ModelAndView getRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);

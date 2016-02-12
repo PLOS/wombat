@@ -101,7 +101,7 @@
                     This feature temporarily unavailable.
                 </div>
             </div>
-            <a href="<@siteLink handlerName="feed" queryParameters=parameterMap pathVariables={'feedType': 'atom'}/>"
+            <a href="<@siteLink handlerName="searchFeed" queryParameters=parameterMap pathVariables={'feedType': 'atom'}/>"
                class="search-feed"></a>
         </div>
 

@@ -274,13 +274,13 @@ public class HomeController extends WombatController {
    * @return RSS view of recent articles for the specified site
    * @throws IOException
    */
-  @RequestMapping(name ="homepageFeed", value="/feed/{feedType}", method = RequestMethod.GET)
+  @RequestMapping(name ="homepageFeed", value="/feed/{feedType:atom|rss}", method = RequestMethod.GET)
   public ModelAndView getRssFeedView(@SiteParam Site site, @PathVariable String feedType)
       throws IOException {
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setStart(0)
-        .setRows(15)
+        .setRows(30)
         .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)

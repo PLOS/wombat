@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.model;
+package org.ambraproject.wombat.feed;
 
 public enum FeedType {
   RSS,

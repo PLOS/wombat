@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.rss;
+package org.ambraproject.wombat.feed;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Joiner;

@@ -22,13 +22,14 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.feed.ArticleFeedView;
+import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
-import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -537,13 +538,13 @@ public class SearchController extends WombatController {
 
   private ModelAndView getFeedModelAndView(Site site, String feedType, String title, Map<String, ?> searchResults) {
     ModelAndView mav = new ModelAndView();
-    mav.addObject("site", site);
-    mav.addObject("solrResults", searchResults.get("docs"));
-    ArticleFeedView.FeedMetadataField.TITLE.putInto(mav.getModel(), title);
+    FeedMetadataField.SITE.putInto(mav, site);
+    FeedMetadataField.FEED_INPUT.putInto(mav, searchResults.get("docs"));
+    FeedMetadataField.TITLE.putInto(mav, title);
     if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
-      mav.setView(articleFeedView.getArticleAtomView());
+      mav.setView(articleFeedView.getAtomView());
     } else {
-      mav.setView(articleFeedView.getArticleRssView());
+      mav.setView(articleFeedView.getRssView());
     }
     return mav;
   }

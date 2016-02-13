@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
 import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.service.RecentArticleService;
@@ -288,12 +289,12 @@ public class HomeController extends WombatController {
     Map<String, ?> recentArticles = solrSearchService.search(query.build());
 
     ModelAndView mav = new ModelAndView();
-    mav.addObject("site", site);
-    mav.addObject("solrResults", recentArticles.get("docs"));
+    FeedMetadataField.SITE.putInto(mav, site);
+    FeedMetadataField.FEED_INPUT.putInto(mav, recentArticles.get("docs"));
     if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
-      mav.setView(articleFeedView.getArticleAtomView());
+      mav.setView(articleFeedView.getAtomView());
     } else {
-      mav.setView(articleFeedView.getArticleRssView());
+      mav.setView(articleFeedView.getRssView());
     }
     return mav;
   }

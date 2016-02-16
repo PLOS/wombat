@@ -1,6 +1,5 @@
-<#macro userInfoLink user class="">
+<#include "../../common/akitaUrl.ftl" />
 
-  <@siteLink handlerName="userInfo" pathVariables={"displayName": user.displayname} ; user_href>
-  <a class="${class}" href="${user_href}">${user.displayname}</a>
-  </@siteLink>
+<#macro userInfoLink user class="">
+  <a class="${class}" href="${akitaUrl('people/${user.displayname}')}">${user.displayname}</a>
 </#macro>

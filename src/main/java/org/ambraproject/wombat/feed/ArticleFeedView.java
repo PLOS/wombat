@@ -11,6 +11,8 @@ import com.rometools.rome.feed.rss.Description;
 import com.rometools.rome.feed.rss.Guid;
 import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.synd.SyndPerson;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +26,9 @@ import java.util.Map;
 import java.util.Optional;
 
 public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>> {
+
+  @Autowired
+  private RequestMappingContextDictionary requestMappingContextDictionary;
 
   private String getArticleLink(FeedMetadata feedMetadata, Map<String, ?> article) {
     return feedMetadata.buildLink(link -> link

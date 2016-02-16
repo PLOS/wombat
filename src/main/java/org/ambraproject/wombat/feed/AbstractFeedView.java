@@ -9,8 +9,6 @@ import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Image;
 import com.rometools.rome.feed.rss.Item;
-import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.feed.AbstractAtomFeedView;
 import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
@@ -22,9 +20,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 abstract class AbstractFeedView<I> {
-
-  @Autowired
-  protected RequestMappingContextDictionary requestMappingContextDictionary;
 
   public final View getRssView() {
     return rssView;

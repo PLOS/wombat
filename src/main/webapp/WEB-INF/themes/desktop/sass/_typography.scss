@@ -204,6 +204,11 @@ blockquote, .pullquote, .block-quote {
   font-weight: bold;
   }
 
+.block-aperta {
+  @extend .block-global-alert;
+  background: $clr-aperta;
+}
+
 .block-tip {
   @include callout($icon-type: 'pointer');
   }

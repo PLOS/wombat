@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.rometools.rome.feed.atom.Content;
 import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.rss.Description;
 import com.rometools.rome.feed.rss.Guid;
@@ -128,19 +129,19 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
     return entry;
   }
 
-  private ImmutableList<com.rometools.rome.feed.atom.Link> buildLinks(
+  private ImmutableList<Link> buildLinks(
       FeedMetadata feedMetadata, Map<String, ?> article) {
     String articleId = (String) article.get("id");
     String title = (String) article.get("title");
 
-    com.rometools.rome.feed.atom.Link articleLink = createAtomLink(getArticleLink(feedMetadata, article),
+    Link articleLink = createAtomLink(getArticleLink(feedMetadata, article),
         title, Optional.empty(), Optional.empty());
-    com.rometools.rome.feed.atom.Link pdfLink = createAtomLink(feedMetadata.buildLink(link -> link
+    Link pdfLink = createAtomLink(feedMetadata.buildLink(link -> link
             .toPattern(requestMappingContextDictionary, "asset")
             .addQueryParameter("id", articleId + ".PDF")
             .build()),
         "(PDF) " + title, Optional.of("related"), Optional.of("application/pdf"));
-    com.rometools.rome.feed.atom.Link xmlLink = createAtomLink(feedMetadata.buildLink(link -> link
+    Link xmlLink = createAtomLink(feedMetadata.buildLink(link -> link
             .toPattern(requestMappingContextDictionary, "asset")
             .addQueryParameter("id", articleId + ".XML")
             .build()),
@@ -149,9 +150,9 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
     return ImmutableList.of(articleLink, pdfLink, xmlLink);
   }
 
-  private com.rometools.rome.feed.atom.Link createAtomLink(String href, String title,
-                                                           Optional<String> rel, Optional<String> mimetype) {
-    com.rometools.rome.feed.atom.Link link = new com.rometools.rome.feed.atom.Link();
+  private Link createAtomLink(String href, String title,
+                              Optional<String> rel, Optional<String> mimetype) {
+    Link link = new Link();
     link.setHref(href);
     link.setTitle(title);
     rel.ifPresent(link::setRel);

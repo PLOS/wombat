@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import com.rometools.rome.feed.atom.Content;
 import com.rometools.rome.feed.atom.Entry;
 import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Image;
@@ -104,7 +105,7 @@ abstract class AbstractFeedView<I> {
       subtitle.setValue(feedMetadata.getDescription());
       feed.setSubtitle(subtitle);
 
-      com.rometools.rome.feed.atom.Link link = new com.rometools.rome.feed.atom.Link();
+      Link link = new Link();
       link.setHref(feedMetadata.getLink());
       feed.setAlternateLinks(ImmutableList.of(link));
 

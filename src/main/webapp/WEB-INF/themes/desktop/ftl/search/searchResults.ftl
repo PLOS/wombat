@@ -38,9 +38,6 @@
   <#assign advancedSearchParams = advancedSearchParams + {"filterJournals" : RequestParameters.filterJournals} />
 <#else>
 </#if>
-<@siteLink handlerName="advancedSearch" queryParameters=advancedSearchParams ; advancedSearchLink>
-  <#assign advancedSearchLink = advancedSearchLink />
-</@siteLink>
 
 <#include "suppressSearchFilter.ftl" />
 
@@ -58,11 +55,7 @@
 
         <p>Journal: "<span>${journalName}</span>"</p>
 
-        <p>
-            There were no results; please
-            <a href="${advancedSearchLink}">refine
-                your search</a>
-            and try again.</p>
+        <p>There were no results; please refine your search above and try again.</p>
     </section>
 </#if>
 <#if searchResults.numFound != 0>

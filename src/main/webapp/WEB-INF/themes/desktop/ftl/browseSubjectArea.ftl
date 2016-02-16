@@ -140,11 +140,13 @@
                                 <span class="metrics"><span>Loading metrics information...</span></span>
                                 <p class="actions">
                                     <a data-doi="info:doi/${article.doi}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                  <#-- TODO: When able to launch lightbox from here, uncomment, remove alerts, and redirect to lightbox
                                     <#if article.hasFigures>
                                         <a data-doi="info:doi/${article.doi}" class="figures" href="#" onclick="alert('Should redirect to lightbox.')">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <#else>
                                         <span class="disabled">Figures</span> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     </#if>
+                                  -->
                                     <a href="${articleUrl}">Full Text</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <a href="<@siteLink handlerName="asset" queryParameters={"id": article.doi + ".PDF"} />" target="_blank">Download PDF</a>
                                 </p>

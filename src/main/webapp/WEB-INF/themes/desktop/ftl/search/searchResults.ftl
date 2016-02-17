@@ -6,12 +6,14 @@
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
+<#include "../macro/searchResultsAlm.ftl" />
 
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/components/range_datepicker.js"/>
 <@js src="resource/js/pages/advanced_search.js"/>
 <@js src="resource/js/pages/search_results.js"/>
+<@js src="resource/js/components/search_results_alm.js"/>
 <@js src="resource/js/components/toggle.js"/>
 <@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/vendor/underscore-min.js"/>
@@ -202,28 +204,7 @@
                       </#if>
                     </div>
                 </#if>
-                  <div class="search-results-alm-container">
-                      <p class="search-results-alm-loading">
-                          Loading metrics information...
-                      </p>
-                    <#assign metricsUrl>
-                      <@siteLink handlerName="articleMetrics" queryParameters={"id": doc.id} />
-                    </#assign>
-
-                      <p class="search-results-alm" data-doi="${doc.id}">
-                          <a href="${metricsUrl}#viewedHeader">Views: </a> •
-                          <a href="${metricsUrl}#citedHeader">Citations: </a> •
-                          <a href="${metricsUrl}#savedHeader">Saves: </a> •
-                          <a href="${metricsUrl}#discussedHeader">Shares: </a>
-                      </p>
-
-                      <p class="search-results-alm-error">
-                <span class="fa-stack icon-warning-stack">
-                  <i class="fa fa-exclamation fa-stack-1x icon-b"></i>
-                  <i class="fa icon-warning fa-stack-1x icon-a"></i>
-                </span>Metrics unavailable. Please check back later.
-                      </p>
-                  </div>
+                <@searchResultsAlm doc.id/>
               </dd>
           </#list>
         </dl>

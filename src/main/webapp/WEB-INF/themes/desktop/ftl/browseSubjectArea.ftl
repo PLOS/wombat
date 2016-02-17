@@ -136,10 +136,11 @@
                                         <span class="author">${author.fullName}<#if author_has_next>,</#if></span>
                                     </#list>
                                 </p>
-                              <p class="date"> published ${article.date?date("yyyy-MM-dd")?string("dd MMM yyyy")}</p>
-                              <#assign articleDoi=article.doi/>
-                              <#include "search/searchResultsAlm.ftl" />
-                              <p class="actions">
+                                <p class="date"> published ${article.date?date("yyyy-MM-dd")?string("dd MMM yyyy")}</p>
+                                <#assign articleDoi=article.doi/>
+                                <#include "search/searchResultsAlm.ftl" />
+                                <p class="actions">
+                                <#-- TODO: When able to launch lightbox from here, uncomment, remove alerts, and redirect to lightbox
                                     <a data-doi="info:doi/${article.doi}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <#if article.hasFigures>
                                         <a data-doi="info:doi/${article.doi}" class="figures" href="#" onclick="alert('Should redirect to lightbox.')">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -148,6 +149,7 @@
                                     </#if>
                                     <a href="${articleUrl}">Full Text</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <a href="<@siteLink handlerName="asset" queryParameters={"id": article.doi + ".PDF"} />" target="_blank">Download PDF</a>
+                                -->
                                 </p>
                             </li>
                         </@siteLink>

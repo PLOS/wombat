@@ -26,11 +26,12 @@
         <@authorList article.authors></@authorList>
     </div><!-- /.details -->
   <ul class="actions">
-      <#--@TODO: Remove alerts and redirect to lightbox-->
+  <#--@TODO: When able to launch lightbox from here, uncomment, remove alerts, and redirect to lightbox
     <li><a data-doi="${article.doi}" class="abstract" onclick="alert('Should redirect to lightbox.')">Abstract</a></li>
     <li><a data-doi="${article.doi}" class="figures" onclick="alert('Should redirect to lightbox.')">Figures</a></li>
     <@siteLink handlerName="article" queryParameters={"id":article.doi} ; href>
       <li class="last"><a href="${href}" onclick="alert('Should redirect to lightbox.')">Full Text</a></li>
     </@siteLink>
+  -->
   </ul>
 </div>

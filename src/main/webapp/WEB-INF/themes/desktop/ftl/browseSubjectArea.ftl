@@ -10,6 +10,7 @@
 <#assign cssFile="browse-subject-area.css"/>
 <#include "common/head.ftl" />
 <#include "common/journalStyle.ftl" />
+<#include "macro/searchResultsAlm.ftl" />
 
 <body class="home ${journalStyle}">
 <#include "common/header/headerContainer.ftl" />
@@ -137,8 +138,7 @@
                                     </#list>
                                 </p>
                                 <p class="date"> published ${article.date?date("yyyy-MM-dd")?string("dd MMM yyyy")}</p>
-                                <#assign articleDoi=article.doi/>
-                                <#include "search/searchResultsAlm.ftl" />
+                                <@searchResultsAlm article.doi/>
                                 <p class="actions">
                                 <#-- TODO: When able to launch lightbox from here, uncomment, remove alerts, and redirect to lightbox
                                     <a data-doi="info:doi/${article.doi}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;

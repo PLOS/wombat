@@ -6,6 +6,7 @@
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
+<#include "../macro/searchResultsAlm.ftl" />
 
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
@@ -203,8 +204,7 @@
                       </#if>
                     </div>
                 </#if>
-                <#assign articleDoi=doc.id/>
-                <#include "searchResultsAlm.ftl" />
+                <@searchResultsAlm doc.id/>
               </dd>
           </#list>
         </dl>

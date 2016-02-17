@@ -18,3 +18,11 @@
 .nav-pagination {
   @extend %full-width-pagination;
 }
+
+#search-results .search-results-alm a {
+  color: $plos-default;
+}
+
+.search-results-alm-container {
+  padding-bottom: rem-calc(6);
+}

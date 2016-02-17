@@ -109,10 +109,12 @@
                         <#if articleGrp.heading == "Research Article" >
                             <p class="links">
                             <#--assuming that all research articles have abstract-->
+                            <#-- TODO: When able to launch lightbox from here, uncomment and wire to lightbox
                                 <a data-doi="${articleInfo.doi}" class="abstract">Abstract</a>
                                 <#if (articleInfo.figures?size > 0)>
                                     &bull; <a data-doi="${articleInfo.doi}" class="figures">Figures</a>
                                 </#if>
+                            -->
                             </p>
                         </#if>
 

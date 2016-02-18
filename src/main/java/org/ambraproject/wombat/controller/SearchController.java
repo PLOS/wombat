@@ -414,11 +414,13 @@ public class SearchController extends WombatController {
     public Set<SearchFilterItem> setActiveFilterParams(Model model, HttpServletRequest request) {
       Map<String, String[]> parameterMap = request.getParameterMap();
       model.addAttribute("parameterMap", parameterMap);
+
+      Set<String> filterParameterNames = Stream.of(SingletonSearchFilterType.values()).map
+          (SingletonSearchFilterType::getParameterName).collect(Collectors.toSet());
       // exclude non-filter query parameters
       Map<String, String[]> filtersOnlyMap = parameterMap.entrySet().stream()
-          .filter(entry -> Stream.of(SingletonSearchFilterType.values()).map
-              (SingletonSearchFilterType::getParameterName).collect(Collectors.toList()).contains(entry
-              .getKey()) || ("filterJournals").equals(entry.getKey()))
+          .filter(entry -> filterParameterNames.contains(entry.getKey())
+              || ("filterJournals").equals(entry.getKey()))
           .collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
 
       Set<SearchFilterItem> activeFilterItems = new LinkedHashSet<>();

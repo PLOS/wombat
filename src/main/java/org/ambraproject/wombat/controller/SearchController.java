@@ -59,6 +59,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Controller class for user-initiated searches.
@@ -371,39 +372,52 @@ public class SearchController extends WombatController {
       filter.setActiveAndInactiveFilterItems(getter.apply(this));
     }
 
-    private void buildQueryParam(List<SearchFilterItem> filterParameterMap, Map<String,
+    /**
+     *  Creates an instance of {SearchFilterItem} for active filters using url parameters
+     *
+     * @param activeFilterItems set of active filter items
+     * @param parameterMap request's query parameter
+     * @param filterName name of the filter
+     * @param filterValues values of the filter
+     */
+    private void buildActiveFilterItems(Set<SearchFilterItem> activeFilterItems, Map<String,
         String[]> parameterMap, String filterName, String[] filterValues) {
 
       for (String filterValue : filterValues) {
         List<String> filterValueList = new ArrayList<>(Arrays.asList(filterValues));
         Map<String, List<String>> queryParamMap = new HashMap<>();
+        // covert Map<String, String[]> to Map<String, List<String> for code re-usability
         queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(entry -> entry
             .getKey(), entry -> new ArrayList<>(Arrays.asList(entry.getValue())))));
         queryParamMap.remove(filterName);
+        // include the rest of filter values for that specific filter
         if (filterValueList.size() > 1) {
           filterValueList.remove(filterValue);
           queryParamMap.put(filterName, filterValueList);
         }
         SearchFilterItem filterItem = new SearchFilterItem(filterValue, 0,  filterName, filterValue, queryParamMap);
-        filterParameterMap.add(filterItem);
+        activeFilterItems.add(filterItem);
       }
     }
     /**
-     * Examine the incoming URL and
+     * Examine the incoming URL when there is no search result and set the active filters
+     *
+     * @return set of active filters
      */
-    public void setActiveFilterParams(Model model, HttpServletRequest request) {
+    public Set<SearchFilterItem> setActiveFilterParams(Model model, HttpServletRequest request) {
       Map<String, String[]> parameterMap = request.getParameterMap();
       model.addAttribute("parameterMap", parameterMap);
       // exclude non-filter query parameters
       Map<String, String[]> filtersOnlyMap = parameterMap.entrySet().stream()
-          .filter(entry -> Arrays.asList(new String[]{"filterSubjects", "filterJournals", "filterSections",
-              "filterAuthors", "filterArticleTypes"}).contains(entry.getKey()))
+          .filter(entry -> Stream.of(SingletonSearchFilterType.values()).map
+              (SingletonSearchFilterType::getParameterName).collect(Collectors.toList()).contains(entry
+              .getKey()) || ("filterJournals").equals(entry.getKey()))
           .collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
 
-      List<SearchFilterItem> activeFilters = new ArrayList<>();
-      filtersOnlyMap.forEach((filterName, filterValues) -> buildQueryParam(activeFilters,
+      Set<SearchFilterItem> activeFilterItems = new LinkedHashSet<>();
+      filtersOnlyMap.forEach((filterName, filterValues) -> buildActiveFilterItems(activeFilterItems,
           parameterMap, filterName, filterValues));
-      model.addAttribute("activeFilterItems" , activeFilters);
+      return activeFilterItems;
     }
 
     /**
@@ -488,20 +502,20 @@ public class SearchController extends WombatController {
 
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
 
+    Set<SearchFilterItem> activeFilterItems;
+
     if ((Double) searchResults.get("numFound") == 0.0) {
-      commonParams.setActiveFilterParams(model, request);
+       activeFilterItems = commonParams.setActiveFilterParams(model, request);
+    } else {
+      Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
+      filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
+
+      activeFilterItems = new LinkedHashSet<>();
+      filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
+      model.addAttribute("searchFilters", filters);
     }
 
-    Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
-
-
-    filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
-
-    Set<SearchFilterItem> activeFilterItems = new LinkedHashSet<>();
-    filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
-
-    model.addAttribute("searchFilters", filters);
-   // model.addAttribute("activeFilterItems", activeFilterItems);
+    model.addAttribute("activeFilterItems", activeFilterItems);
 
     return site.getKey() + "/ftl/search/searchResults";
   }

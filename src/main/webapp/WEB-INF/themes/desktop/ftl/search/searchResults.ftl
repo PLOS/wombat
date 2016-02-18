@@ -50,7 +50,9 @@
 <#include "../common/header/headerContainer.ftl" />
 <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
 <#include "searchInputBar.ftl" />
+</form>
 
+<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
 <#if searchResults.numFound != 0>
     <section class="search-results-header">
         <div class="results-number">
@@ -147,21 +149,20 @@
 </div>
 </#if>
 </form>
-
 <#if searchResults.numFound == 0>
-<section class="search-results-none-found">
-  <p>You searched for articles that have all of the following:</p>
+  <section class="search-results-none-found">
+    <p>You searched for articles that have all of the following:</p>
 
-  <p>Search Term: "<span>${query}</span>"</p>
+    <p>Search Term: "<span>${query}</span>"</p>
 
-  <p>Journal: "<span>${journalName}</span>"</p>
+    <p>Journal: "<span>${journalName}</span>"</p>
 
-  <p>
-    There were no results; please
-    <a href="${advancedSearchLink}">refine
-      your search</a>
-    and try again.</p>
-</section>
+    <p>
+      There were no results; please
+      <a href="${advancedSearchLink}">refine
+        your search</a>
+      and try again.</p>
+  </section>
 </#if>
 
 <#--PG-shoudl this be a header?-->

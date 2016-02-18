@@ -176,6 +176,10 @@ public class SearchController extends WombatController {
 
     private final String DEFAULT_START_DATE = "2003-01-01";
 
+    // doesn't include jouranl and date filter param names
+    static final Set<String> FILTER_PARAMETER_NAMES = Stream.of(SingletonSearchFilterType.values()).map
+        (SingletonSearchFilterType::getParameterName).collect(Collectors.toSet());
+
     /**
      * Constructor.
      *
@@ -415,11 +419,10 @@ public class SearchController extends WombatController {
       Map<String, String[]> parameterMap = request.getParameterMap();
       model.addAttribute("parameterMap", parameterMap);
 
-      Set<String> filterParameterNames = Stream.of(SingletonSearchFilterType.values()).map
-          (SingletonSearchFilterType::getParameterName).collect(Collectors.toSet());
+
       // exclude non-filter query parameters
       Map<String, String[]> filtersOnlyMap = parameterMap.entrySet().stream()
-          .filter(entry -> filterParameterNames.contains(entry.getKey())
+          .filter(entry -> FILTER_PARAMETER_NAMES.contains(entry.getKey())
               || ("filterJournals").equals(entry.getKey()))
           .collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
 

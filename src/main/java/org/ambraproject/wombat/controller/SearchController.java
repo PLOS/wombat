@@ -395,7 +395,14 @@ public class SearchController extends WombatController {
           filterValueList.remove(filterValue);
           queryParamMap.put(filterName, filterValueList);
         }
-        SearchFilterItem filterItem = new SearchFilterItem(filterValue, 0,  filterName, filterValue, queryParamMap);
+        String displayName;
+        if (filterName.equals("filterJournals")) {
+          displayName = siteSet.getJournalNameFromKey(filterValue);
+        } else {
+          displayName = filterValue;
+        }
+        SearchFilterItem filterItem = new SearchFilterItem(displayName, 0,
+            filterName, filterValue, queryParamMap);
         activeFilterItems.add(filterItem);
       }
     }

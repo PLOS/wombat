@@ -176,7 +176,7 @@ public class SearchController extends WombatController {
 
     private final String DEFAULT_START_DATE = "2003-01-01";
 
-    // doesn't include jouranl and date filter param names
+    // doesn't include journal and date filter param names
     static final Set<String> FILTER_PARAMETER_NAMES = Stream.of(SingletonSearchFilterType.values()).map
         (SingletonSearchFilterType::getParameterName).collect(Collectors.toSet());
 

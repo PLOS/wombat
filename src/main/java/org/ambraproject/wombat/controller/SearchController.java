@@ -58,6 +58,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Controller class for user-initiated searches.
@@ -370,6 +371,41 @@ public class SearchController extends WombatController {
       filter.setActiveAndInactiveFilterItems(getter.apply(this));
     }
 
+    private void buildQueryParam(List<SearchFilterItem> filterParameterMap, Map<String,
+        String[]> parameterMap, String filterName, String[] filterValues) {
+
+      for (String filterValue : filterValues) {
+        List<String> filterValueList = new ArrayList<>(Arrays.asList(filterValues));
+        Map<String, List<String>> queryParamMap = new HashMap<>();
+        queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(entry -> entry
+            .getKey(), entry -> new ArrayList<>(Arrays.asList(entry.getValue())))));
+        queryParamMap.remove(filterName);
+        if (filterValueList.size() > 1) {
+          filterValueList.remove(filterValue);
+          queryParamMap.put(filterName, filterValueList);
+        }
+        SearchFilterItem filterItem = new SearchFilterItem(filterValue, 0,  filterName, filterValue, queryParamMap);
+        filterParameterMap.add(filterItem);
+      }
+    }
+    /**
+     * Examine the incoming URL and
+     */
+    public void setActiveFilterParams(Model model, HttpServletRequest request) {
+      Map<String, String[]> parameterMap = request.getParameterMap();
+      model.addAttribute("parameterMap", parameterMap);
+      // exclude non-filter query parameters
+      Map<String, String[]> filtersOnlyMap = parameterMap.entrySet().stream()
+          .filter(entry -> Arrays.asList(new String[]{"filterSubjects", "filterJournals", "filterSections",
+              "filterAuthors", "filterArticleTypes"}).contains(entry.getKey()))
+          .collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
+
+      List<SearchFilterItem> activeFilters = new ArrayList<>();
+      filtersOnlyMap.forEach((filterName, filterValues) -> buildQueryParam(activeFilters,
+          parameterMap, filterName, filterValues));
+      model.addAttribute("activeFilterItems" , activeFilters);
+    }
+
     /**
      * @param query the incoming query string
      * @return True if the query string does not contain any advanced search terms,
@@ -449,8 +485,15 @@ public class SearchController extends WombatController {
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
+
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
+
+    if ((Double) searchResults.get("numFound") == 0.0) {
+      commonParams.setActiveFilterParams(model, request);
+    }
+
     Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
+
 
     filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
@@ -458,7 +501,7 @@ public class SearchController extends WombatController {
     filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
 
     model.addAttribute("searchFilters", filters);
-    model.addAttribute("activeFilterItems", activeFilterItems);
+   // model.addAttribute("activeFilterItems", activeFilterItems);
 
     return site.getKey() + "/ftl/search/searchResults";
   }

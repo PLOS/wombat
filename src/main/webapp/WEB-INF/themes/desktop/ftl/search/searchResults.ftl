@@ -49,17 +49,9 @@
 <#include "../common/header/headerContainer.ftl" />
 <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
 <#include "searchInputBar.ftl" />
-<#if searchResults.numFound == 0>
-    <section class="search-results-none-found">
-        <p>You searched for articles that have all of the following:</p>
+</form>
 
-        <p>Search Term: "<span>${query}</span>"</p>
-
-        <p>Journal: "<span>${journalName}</span>"</p>
-
-        <p>There were no results; please refine your search above and try again.</p>
-    </section>
-</#if>
+<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
 <#if searchResults.numFound != 0>
     <section class="search-results-header">
         <div class="results-number">
@@ -109,7 +101,7 @@
     </section>
 </#if>
 
-<#if searchResults.numFound != 0 && isFiltered>
+<#if isFiltered>
 <div class="filter-view-container">
     <section class="filter-view">
         <h3 class="filter-label">Filters:</h3>
@@ -157,9 +149,19 @@
 </#if>
 </form>
 
+<#if searchResults.numFound == 0>
+  <section class="search-results-none-found">
+    <p>You searched for articles that have all of the following:</p>
+
+    <p>Search Term: "<span>${query}</span>"</p>
+
+    <p>Journal: "<span>${journalName}</span>"</p>
+
+    <p>There were no results; please refine your search above and try again.</p>
+  </section>
+</#if>
 
 <#--PG-shoudl this be a header?-->
-
 <section class="results-container">
 
   <#include "searchFilters.ftl" />

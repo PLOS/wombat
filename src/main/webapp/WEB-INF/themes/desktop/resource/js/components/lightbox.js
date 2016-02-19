@@ -209,7 +209,7 @@ var FigureLightbox = {};
         // Append new img context
         .append(lbTemplate(templateData))
         //Add selector for links within captions
-        .find('a[href^="#"]').addClass('target_link');
+        .find('#figure-description a[href^="#"]').addClass('target_link');
 
     this.renderImg(this.imgData.doi);
 

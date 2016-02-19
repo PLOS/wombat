@@ -94,6 +94,11 @@ var TaxonomyBrowser = function () {
       url += 'c=' + lastTerm;
     }
 
+    //Replace spaces with underscores, will be reverted to spaces in TaxonomyController.
+    //This prevents 502 proxy errors that occur when we try to request a url with '%20' in it.
+    //todo: After cleaning up redirects and solving the 502 proxy error, this should be removed
+    url = url.replace(/\s/g, "_");
+
     $.ajax(url, {
       type: 'GET',
       success: function (data) {

@@ -2,7 +2,7 @@
   <ul class="article-buttons">
   <#if article.figures?? && article.figures?size &gt; 0 >
     <li class="menuitem">
-      <a class="btn-lg" href="<@siteLink handlerName="figurePage" queryParameters={"id": article.doi} />">
+      <a class="btn-lg" href="<@siteLink handlerName="figuresPage" queryParameters={"id": article.doi} />">
         <span class="arrow">View</span>
         Figures (${article.figures?size})
       </a>

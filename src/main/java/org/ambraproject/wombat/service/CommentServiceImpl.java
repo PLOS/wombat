@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.plos.ned_client.model.IndividualComposite;
@@ -7,9 +9,15 @@ import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class CommentServiceImpl implements CommentService {
@@ -27,31 +35,22 @@ public class CommentServiceImpl implements CommentService {
    * <p>
    * A new, deep copy of the map is returned. The map passed as an argument is not modified.
    *
-   * @param comment the root comment
+   * @param comment      the root comment
+   * @param modification a visitor that modifies each map of comment metadata in the tree
    * @return a deep copy with the modification applied to all
    */
-  private Map<String, Object> modifyCommentTree(Map<String, Object> comment) {
-    Map<String, Object> modified = modifyComment(new HashMap<>(comment));
+  private static Map<String, Object> modifyCommentTree(Map<String, Object> comment,
+                                                       Consumer<Map<String, Object>> modification) {
+    Map<String, Object> modified = new HashMap<>(comment);
+    modification.accept(modified);
 
     List<Map<String, Object>> replies = (List<Map<String, Object>>) modified.remove(REPLIES_KEY);
     List<Map<String, Object>> modifiedReplies = replies.stream()
-        .map(this::modifyCommentTree) // recursion (terminal case is when replies is empty)
+        .map(reply -> modifyCommentTree(reply, modification)) // recursion (terminal case is when replies is empty)
         .collect(Collectors.toList());
     modified.put(REPLIES_KEY, modifiedReplies);
 
     return modified;
-  }
-
-  /**
-   * Modify a raw comment with additional data as needed for display.
-   *
-   * @param comment raw comment metadata as provided by {@link ArticleApi}
-   * @return a copy of the same comment metadata with additional display-tier details added
-   */
-  private Map<String, Object> modifyComment(Map<String, Object> comment) {
-    CommentFormatting.addFormattingFields(comment);
-    addCreatorData(comment);
-    return comment;
   }
 
   /**
@@ -71,21 +70,45 @@ public class CommentServiceImpl implements CommentService {
             "An IndividualComposite does not have an Individualprofile with source named " + AMBRA_SOURCE));
   }
 
-  /**
-   * Fetch data about a user from NED and put it in the comment, replacing the NED ID.
-   */
-  private void addCreatorData(Map<String, Object> comment) {
-    Map<String, Object> creator = (Map<String, Object>) comment.remove(CREATOR_KEY);
-    String nedId = creator.get("userId").toString();
-
+  private Individualprofile requestProfile(String userId) {
     IndividualComposite individual;
     try {
-      individual = userApi.requestObject("individuals/" + nedId, IndividualComposite.class);
+      individual = userApi.requestObject("individuals/" + userId, IndividualComposite.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+    return getAmbraProfile(individual);
+  }
 
-    comment.put(CREATOR_KEY, getAmbraProfile(individual));
+  /**
+   * Add display data related to comment creators to all comments. The argument may be a "forest" of multiple roots,
+   * each with a tree of replies. Creator data will be added to all comments in each tree.
+   *
+   * @param rootComments a list of root-level comments
+   * @return a list containing the same comments in order, with creator data added to each one and its nested replies
+   */
+  private List<Map<String, Object>> addCreatorData(List<Map<String, Object>> rootComments) {
+    // Gather up all distinct user IDs in the forest
+    Set<String> userIds = Collections.synchronizedSet(new HashSet<>());
+    rootComments.forEach(rootComment -> modifyCommentTree(rootComment, comment -> {
+      Map<String, Object> creator = (Map<String, Object>) comment.get(CREATOR_KEY);
+      userIds.add(creator.get("userId").toString());
+    }));
+
+    // For each distinct user ID, make a remote request for the profile data
+    // (this is the bottleneck that we want to parallelize)
+    Map<String, Individualprofile> profiles = userIds.parallelStream()
+        .collect(Collectors.toMap(Function.identity(), this::requestProfile));
+
+    // Insert the profile data into each comment
+    return rootComments.stream()
+        .map(rootComment -> modifyCommentTree(rootComment, comment -> {
+          Map<String, Object> creator = (Map<String, Object>) comment.remove(CREATOR_KEY);
+          String userId = creator.get("userId").toString();
+          Individualprofile profile = Objects.requireNonNull(profiles.get(userId));
+          comment.put(CREATOR_KEY, profile);
+        }))
+        .collect(Collectors.toList());
   }
 
   @Override
@@ -97,15 +120,18 @@ public class CommentServiceImpl implements CommentService {
       throw new CommentNotFoundException(commentId, enfe);
     }
 
-    return modifyCommentTree(comment);
+    comment = modifyCommentTree(comment, CommentFormatting::addFormattingFields);
+    comment = Iterables.getOnlyElement(addCreatorData(ImmutableList.of(comment)));
+    return comment;
   }
 
   @Override
   public List<Map<String, Object>> getArticleComments(String articleDoi) throws IOException {
     List<Map<String, Object>> comments = articleApi.requestObject(String.format("articles/%s?comments", articleDoi), List.class);
-    return comments.stream()
-        .map(this::modifyCommentTree)
+    comments = comments.stream()
+        .map(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields))
         .collect(Collectors.toList());
+    return addCreatorData(comments);
   }
 
 }

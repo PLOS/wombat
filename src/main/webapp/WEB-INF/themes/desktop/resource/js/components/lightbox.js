@@ -108,7 +108,7 @@ var FigureLightbox = {};
         // Bind show in context button
        .find('#image-context').on('click', 'a.target_link', function () {
         target= $(this).attr('href');
-          that.close().animate({scrollTop: jQuery(target).offset().top}, 200);
+          that.close();
         }).end()
 
         // Bind show in context button
@@ -209,7 +209,7 @@ var FigureLightbox = {};
         // Append new img context
         .append(lbTemplate(templateData))
         //Add selector for links within captions
-        .find('#figure-description a[href^="#"]').addClass('target_link');
+        .find('#figure-description-wrapper a[href^="#"]').addClass('target_link');
 
     this.renderImg(this.imgData.doi);
 

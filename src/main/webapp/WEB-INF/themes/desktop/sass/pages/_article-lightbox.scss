@@ -182,6 +182,13 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       top: 0;
       position: absolute;
       background: $grey-dark;
+      opacity: 0.75;
+      transition: opacity 300ms ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+
       .change-img {
         background: $grey-med;
         cursor: pointer;
@@ -189,6 +196,10 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
         margin: 8% 2%;
         img {
           min-width: rem-calc(150px);
+        }
+
+        &.change-img-active {
+          @extend %brand-background;
         }
       }
 

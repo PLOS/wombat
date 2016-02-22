@@ -202,6 +202,9 @@ var FigureLightbox = {};
     $(this.lbSelector + ' #image-context').children().remove().end()
         // Append new img context
         .append(lbTemplate(templateData));
+    if (this.descriptionExpanded) {
+      this.retractDescription();
+    }
     this.renderImg(this.imgData.doi);
 
     if (!this.descriptionExpanded) {
@@ -376,6 +379,12 @@ var FigureLightbox = {};
     var that = this;
     this.$panZoomEl.off('panzoomzoom').on('panzoomzoom', function(e, panzoom, scale) {
       $(that.zoomRangeSelector).foundation('slider', 'set_value', scale);
+      // Bug in foundation unbinds after set_value. Workaround: rebind everytime
+      that.bindPanZoomToSlider();
+    });
+
+    this.$panZoomEl.off('panzoomreset').on('panzoomreset', function(e) {
+      $(that.zoomRangeSelector).foundation('slider', 'set_value', 1);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
     });

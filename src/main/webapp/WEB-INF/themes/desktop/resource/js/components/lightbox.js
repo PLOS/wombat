@@ -191,6 +191,11 @@ var FigureLightbox = {};
     this.imgData.strippedDoi = this.imgData.doi.replace(/^info:doi\//, '');
     var currentIndex = this.getCurrentImageIndex();
     this.imgData.imgElement = $(this.imgList[currentIndex]);
+
+    //Add active class to selected image in drawer
+    $(this.lbSelector + ' #figures-list .change-img-active').removeClass('change-img-active');
+    $(this.lbSelector + ' #figures-list .change-img:eq('+currentIndex+')').addClass('change-img-active');
+
     // Get data to populate image context
     var imageData = this.fetchImageData();
     var templateFunctions = {

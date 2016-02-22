@@ -66,6 +66,7 @@ var FigureLightbox = {};
 
   FigureLightbox.bindBehavior = function () {
     var that = this;
+
     // Escape key destroys and closes lightbox
     $(document).on('keyup.figure-lightbox', function(e) {
       if (e.keyCode === 27) {
@@ -88,16 +89,14 @@ var FigureLightbox = {};
         // Bind button to show all images
         .find('.all-fig-btn').on('click', function () {
           var $figList = $('#figures-list');
-          if (!$figList.is(':visible')) { // If not is visible show it
-            $figList.show();
-            var tmpPos = $figList.position();
-            $figList.css({right: tmpPos.left - screen.width});
+
+          if($figList.hasClass('figures-list-open')) {
+            $figList.removeClass('figures-list-open');
           }
-          var end = $figList.position();
-          // Get the static position
-          $figList.animate({ // Animate toggle to the right
-            right: end.left - screen.width
-          });
+          else {
+            $figList.addClass('figures-list-open');
+          }
+
         }).end()
 
         // Bind mousewheel in figure list. Prevent image zooming

@@ -54,7 +54,7 @@ import java.util.stream.Collectors;
  */
 public class SolrSearchApiImpl implements SolrSearchApi {
 
-  private static final Logger log = LoggerFactory.getLogger(SolrSearchServiceImpl.class);
+  private static final Logger log = LoggerFactory.getLogger(SolrSearchApiImpl.class);
 
   @Autowired
   private JsonService jsonService;

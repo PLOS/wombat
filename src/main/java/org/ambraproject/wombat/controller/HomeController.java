@@ -281,11 +281,11 @@ public class HomeController extends WombatController {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(30)
-        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
         .setIsRssSearch(true);
-    Map<String, ?> recentArticles = solrSearchService.search(query.build());
+    Map<String, ?> recentArticles = solrSearchApi.search(query.build());
 
     ModelAndView mav = new ModelAndView();
     mav.addObject("site", site);

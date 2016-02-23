@@ -515,13 +515,13 @@ public class SearchController extends WombatController {
         .setStart(0)
         .setRows(RSS_ARTICLE_COUNT)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
-        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
         .setSimple(false)
         .setIsRssSearch(true);
     ArticleSearchQuery queryObj = query.build();
 
-    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+    Map<String, ?> searchResults = solrSearchApi.search(queryObj);
 
     return getFeedModelAndView(site, feedType, searchResults);
   }
@@ -543,13 +543,13 @@ public class SearchController extends WombatController {
         .setStart(0)
         .setRows(RSS_ARTICLE_COUNT)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
-        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
         .setSimple(false)
         .setIsRssSearch(true);
     ArticleSearchQuery queryObj = query.build();
 
-    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+    Map<String, ?> searchResults = solrSearchApi.search(queryObj);
 
     return getFeedModelAndView(site, feedType, searchResults);
   }
@@ -577,7 +577,7 @@ public class SearchController extends WombatController {
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
 
-    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+    Map<String, ?> searchResults = solrSearchApi.search(queryObj);
 
     return getFeedModelAndView(site, feedType, searchResults);
   }

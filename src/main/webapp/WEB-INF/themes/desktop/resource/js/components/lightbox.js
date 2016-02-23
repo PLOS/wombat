@@ -69,8 +69,31 @@ var FigureLightbox = {};
 
     // Escape key destroys and closes lightbox
     $(document).on('keyup.figure-lightbox', function(e) {
-      if (e.keyCode === 27) {
-        that.close();
+      if($(that.lbSelector).hasClass('open')) {
+        switch (e.which) {
+          case 27: // esc
+            that.close();
+            break;
+          case 37: // left
+            that.prevImage();
+            break;
+
+          case 38: // up
+            that.nextImage();
+            break;
+
+          case 39: // right
+            that.nextImage();
+            break;
+
+          case 40: // down
+            that.prevImage();
+            break;
+
+          default:
+            return; // exit this handler for other keys
+        }
+        e.preventDefault();
       }
     });
 

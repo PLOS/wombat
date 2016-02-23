@@ -66,7 +66,6 @@ var FigureLightbox = {};
 
   FigureLightbox.bindBehavior = function () {
     var that = this;
-
     // Escape key destroys and closes lightbox
     $(document).on('keyup.figure-lightbox', function(e) {
       if (e.keyCode === 27) {
@@ -86,6 +85,7 @@ var FigureLightbox = {};
           that.switchImage(this.getAttribute('data-doi'));
         }).end()
 
+
         // Bind button to show all images
         .find('.all-fig-btn').on('click', function () {
           var $figList = $('#figures-list');
@@ -102,6 +102,11 @@ var FigureLightbox = {};
         // Bind mousewheel in figure list. Prevent image zooming
         .find('#figures-list').on('mousewheel', function(e) {
           e.stopPropagation();
+        }).end()
+        // Bind show in context button
+       .find('#image-context').on('click', 'a.target_link', function () {
+        target= $(this).attr('href');
+          that.close();
         }).end()
 
         // Bind show in context button
@@ -200,7 +205,9 @@ var FigureLightbox = {};
     // Remove actual img context
     $(this.lbSelector + ' #image-context').children().remove().end()
         // Append new img context
-        .append(lbTemplate(templateData));
+        .append(lbTemplate(templateData))
+        //Add selector for links within captions
+        .find('#figure-description-wrapper a[href^="#"]').addClass('target_link');
     if (this.descriptionExpanded) {
       this.retractDescription();
     }
@@ -388,7 +395,6 @@ var FigureLightbox = {};
       that.bindPanZoomToSlider();
     });
   };
-
 
   FigureLightbox.buildImgUrl = function (imgDoi, options) {
     var defaultOptions = {

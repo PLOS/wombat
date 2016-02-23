@@ -500,12 +500,6 @@ public class SearchController extends WombatController {
     return commonParams;
   }
 
-  private static int getFeedLength(Site site) throws IOException {
-    Map<String, Object> feedConfig = site.getTheme().getConfigMap("feed");
-    Number length = (Number) feedConfig.get("length");
-    return length.intValue();
-  }
-
   /**
    * Performs a search for all articles in the journal and serves the result as XML to be read by an RSS reader
    *

@@ -205,4 +205,11 @@ public abstract class WombatController {
       HttpMessageUtil.copyResponseWithHeaders(remoteResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
     }
   }
+
+  protected static int getFeedLength(Site site) throws IOException {
+    Map<String, Object> feedConfig = site.getTheme().getConfigMap("feed");
+    Number length = (Number) feedConfig.get("length");
+    return length.intValue();
+  }
+
 }

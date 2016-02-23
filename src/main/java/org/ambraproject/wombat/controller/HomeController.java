@@ -285,7 +285,7 @@ public class HomeController extends WombatController {
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setStart(0)
-        .setRows(30)
+        .setRows(getFeedLength(site))
         .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
@@ -302,10 +302,7 @@ public class HomeController extends WombatController {
   @RequestMapping(name = "commentFeed", value = "/feed/comments/{feedType:atom|rss}", method = RequestMethod.GET)
   public ModelAndView getCommentFeed(@SiteParam Site site, @PathVariable String feedType)
       throws IOException {
-    Map<String, Object> feedConfig = site.getTheme().getConfigMap("feed");
-    Number length = (Number) feedConfig.get("length");
-
-    String requestAddress = String.format("/journals/%s?comments&limit=%d", site.getJournalKey(), length.intValue());
+    String requestAddress = String.format("/journals/%s?comments&limit=%d", site.getJournalKey(), getFeedLength(site));
     List comments = soaService.requestObject(requestAddress, List.class);
 
     ModelAndView mav = new ModelAndView();

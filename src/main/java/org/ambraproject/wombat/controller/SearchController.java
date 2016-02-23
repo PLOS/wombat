@@ -603,11 +603,7 @@ public class SearchController extends WombatController {
     FeedMetadataField.SITE.putInto(mav, site);
     FeedMetadataField.FEED_INPUT.putInto(mav, searchResults.get("docs"));
     FeedMetadataField.TITLE.putInto(mav, title);
-    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
-      mav.setView(articleFeedView.getAtomView());
-    } else {
-      mav.setView(articleFeedView.getRssView());
-    }
+    mav.setView(FeedType.getView(articleFeedView, feedType));
     return mav;
   }
 

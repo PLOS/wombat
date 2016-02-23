@@ -295,11 +295,7 @@ public class HomeController extends WombatController {
     ModelAndView mav = new ModelAndView();
     FeedMetadataField.SITE.putInto(mav, site);
     FeedMetadataField.FEED_INPUT.putInto(mav, recentArticles.get("docs"));
-    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
-      mav.setView(articleFeedView.getAtomView());
-    } else {
-      mav.setView(articleFeedView.getRssView());
-    }
+    mav.setView(FeedType.getView(articleFeedView, feedType));
     return mav;
   }
 
@@ -313,11 +309,7 @@ public class HomeController extends WombatController {
     FeedMetadataField.SITE.putInto(mav, site);
     FeedMetadataField.TITLE.putInto(mav, "Comments");
     FeedMetadataField.FEED_INPUT.putInto(mav, comments);
-    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
-      mav.setView(commentFeedView.getAtomView());
-    } else {
-      mav.setView(commentFeedView.getRssView());
-    }
+    mav.setView(FeedType.getView(commentFeedView, feedType));
     return mav;
   }
 

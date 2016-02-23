@@ -368,7 +368,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    */
   private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
     URI uri = getSolrUri(params);
-    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
+    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
     return (Map<String, Map>) rawResults;
   }
 

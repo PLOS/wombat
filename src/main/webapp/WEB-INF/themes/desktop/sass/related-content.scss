@@ -120,6 +120,10 @@ The CSS for dialog widget,
   color: #3C63AF;
 }
 
+.rca-title:hover {
+  text-decoration: underline;
+}
+
 
 /* css for the close button on the dialog */
 
@@ -181,4 +185,12 @@ The CSS for dialog widget,
   background: #333;
   opacity: .4;
   position: fixed !important;
+}
+
+#media-coverage-data ul {
+  margin-left: 0;
+
+  li {
+    list-style: none;
+  }
 }

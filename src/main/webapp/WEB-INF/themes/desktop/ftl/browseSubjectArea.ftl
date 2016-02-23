@@ -10,6 +10,7 @@
 <#assign cssFile="browse-subject-area.css"/>
 <#include "common/head.ftl" />
 <#include "common/journalStyle.ftl" />
+<#include "macro/searchResultsAlm.ftl" />
 
 <body class="home ${journalStyle}">
 <#include "common/header/headerContainer.ftl" />
@@ -136,9 +137,10 @@
                                         <span class="author">${author.fullName}<#if author_has_next>,</#if></span>
                                     </#list>
                                 </p>
-                                <p class="date">published ${article.date?date("yyyy-mm-dd")?string("dd MMM yyyy")}</p>
-                                <span class="metrics"><span>Loading metrics information...</span></span>
+                                <p class="date"> published ${article.date?date("yyyy-MM-dd")?string("dd MMM yyyy")}</p>
+                                <@searchResultsAlm article.doi/>
                                 <p class="actions">
+                                <#-- TODO: When able to launch lightbox from here, uncomment, remove alerts, and redirect to lightbox
                                     <a data-doi="info:doi/${article.doi}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <#if article.hasFigures>
                                         <a data-doi="info:doi/${article.doi}" class="figures" href="#" onclick="alert('Should redirect to lightbox.')">Figures</a> &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -147,6 +149,7 @@
                                     </#if>
                                     <a href="${articleUrl}">Full Text</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                                     <a href="<@siteLink handlerName="asset" queryParameters={"id": article.doi + ".PDF"} />" target="_blank">Download PDF</a>
+                                -->
                                 </p>
                             </li>
                         </@siteLink>
@@ -185,7 +188,8 @@
 <#include "subjectAreaJs.ftl" />
 
 <@js src="resource/js/util/alm_config.js" />
-<@js src="resource/js/metrics.js" />
+<@js src="resource/js/util/alm_query.js"/>
+<@js src="resource/js/components/search_results_alm.js"/>
 <@js src="resource/js/components/tooltip_hover.js"/>
 <@js src="resource/js/components/browse_results.js" />
 <@renderJs />

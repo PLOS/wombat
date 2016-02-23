@@ -174,14 +174,19 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     position: relative;
 
     #figures-list {
-      display: none;
       height: 100%;
       overflow-y: scroll;
       max-width: rem-calc(180px);
-      right: 0;
       top: 0;
+      right: rem-calc(-180px);
       position: absolute;
       background: $grey-dark;
+      @include single-transition();
+
+      &.figures-list-open {
+        right: 0;
+      }
+
       .change-img {
         background: $grey-med;
         cursor: pointer;

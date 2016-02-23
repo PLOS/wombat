@@ -181,25 +181,26 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       right: 0;
       top: 0;
       position: absolute;
-      background: $grey-dark;
-      opacity: 0.75;
+      background: transparentize($grey-dark, 0.2);
       transition: opacity 300ms ease-in-out;
 
-      &:hover {
-        opacity: 1;
-      }
-
       .change-img {
-        background: $grey-med;
+        background: rgba(255,255,255,0.25);
         cursor: pointer;
         padding: 4%;
         margin: 8% 2%;
-        img {
-          min-width: rem-calc(150px);
+        transition: background 300ms ease-in-out;
+
+        &:hover {
+          background: rgba(255,255,255,0.35);
         }
 
         &.change-img-active {
           @extend %brand-background;
+        }
+
+        img {
+          min-width: rem-calc(150px);
         }
       }
 

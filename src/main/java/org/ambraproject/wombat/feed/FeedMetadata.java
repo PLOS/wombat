@@ -21,7 +21,7 @@ class FeedMetadata {
   FeedMetadata(Map<String, Object> model, HttpServletRequest request) {
     this.model = Objects.requireNonNull(model);
     this.request = Objects.requireNonNull(request);
-    this.site = Objects.requireNonNull((Site) model.get("site"));
+    this.site = Objects.requireNonNull((Site) FeedMetadataField.SITE.getFrom(model));
 
     try {
       this.feedConfig = Collections.unmodifiableMap(site.getTheme().getConfigMap("feed"));

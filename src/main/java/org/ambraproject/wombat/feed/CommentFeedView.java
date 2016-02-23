@@ -7,11 +7,13 @@ import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.rss.Guid;
 import com.rometools.rome.feed.rss.Item;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
+import org.ambraproject.wombat.service.CommentFormatting;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
@@ -42,6 +44,17 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
     return Date.from(Instant.parse((String) comment.get("lastModified")));
   }
 
+  private String createCommentHtml(FeedMetadata feedMetadata, Map<String, Object> comment) {
+    Map<String, Object> article = (Map<String, Object>) comment.get("parentArticle");
+    String articleTitle = (String) Objects.requireNonNull(article.get("title"));
+
+    String header = String.format("<p>Comment on <a href=\"%s\">%s</a></p>\n",
+        getArticleUrl(feedMetadata, article), articleTitle);
+
+    CommentFormatting.FormattedComment formatted = new CommentFormatting.FormattedComment(comment);
+    return header + formatted.getBodyWithHighlightedText();
+  }
+
   @Override
   protected Item createRssItem(FeedMetadata feedMetadata, Map<String, Object> comment) {
     String commentId = (String) comment.get("annotationUri");
@@ -57,7 +70,10 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
     guid.setPermaLink(false);
     item.setGuid(guid);
 
-    // TODO: setContent
+    com.rometools.rome.feed.rss.Content content = new com.rometools.rome.feed.rss.Content();
+    content.setType(com.rometools.rome.feed.rss.Content.HTML);
+    content.setValue(createCommentHtml(feedMetadata, comment));
+    item.setContent(content);
 
     return item;
   }
@@ -84,7 +100,10 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
     entry.setPublished(lastModified);
     entry.setUpdated(lastModified);
 
-    // TODO: setContents
+    com.rometools.rome.feed.atom.Content content = new com.rometools.rome.feed.atom.Content();
+    content.setType(com.rometools.rome.feed.atom.Content.HTML);
+    content.setValue(createCommentHtml(feedMetadata, comment));
+    entry.setContents(ImmutableList.of(content));
 
     return entry;
   }

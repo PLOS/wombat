@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 abstract class AbstractFeedView<I> {
@@ -143,5 +144,22 @@ abstract class AbstractFeedView<I> {
       return feedAuthor;
     }
   };
+
+  // Convenience method for a Person where name is the only field that is set
+  protected static Person createAtomPerson(String name) {
+    Person person = new Person();
+    person.setName(name);
+    return person;
+  }
+
+  protected static Link createAtomLink(String href, String title,
+                                       Optional<String> rel, Optional<String> mimetype) {
+    Link link = new Link();
+    link.setHref(href);
+    link.setTitle(title);
+    rel.ifPresent(link::setRel);
+    mimetype.ifPresent(link::setType);
+    return link;
+  }
 
 }

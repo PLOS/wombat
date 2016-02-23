@@ -7,24 +7,22 @@ import com.google.common.collect.Iterables;
 import com.rometools.rome.feed.atom.Content;
 import com.rometools.rome.feed.atom.Entry;
 import com.rometools.rome.feed.atom.Link;
-import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.rss.Description;
 import com.rometools.rome.feed.rss.Guid;
 import com.rometools.rome.feed.rss.Item;
-import com.rometools.rome.feed.synd.SyndPerson;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>> {
 
@@ -116,13 +114,7 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
 
     List<String> authorList = (List<String>) article.get("author_display");
     if (authorList != null) {
-      List<SyndPerson> authors = new ArrayList<>();
-      for (String s : authorList) {
-        Person author = new Person();
-        author.setName(s);
-        authors.add(author);
-      }
-      entry.setAuthors(authors);
+      entry.setAuthors(authorList.stream().map(AbstractFeedView::createAtomPerson).collect(Collectors.toList()));
     }
     entry.setContents(buildAtomContents(article));
 
@@ -148,16 +140,6 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
         "(XML) " + title, Optional.of("related"), Optional.of("text/xml"));
 
     return ImmutableList.of(articleLink, pdfLink, xmlLink);
-  }
-
-  private Link createAtomLink(String href, String title,
-                              Optional<String> rel, Optional<String> mimetype) {
-    Link link = new Link();
-    link.setHref(href);
-    link.setTitle(title);
-    rel.ifPresent(link::setRel);
-    mimetype.ifPresent(link::setType);
-    return link;
   }
 
   private List<Content> buildAtomContents(Map<String, ?> article) {

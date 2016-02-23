@@ -91,7 +91,6 @@ public class SearchController extends WombatController {
   private ArticleFeedView articleFeedView;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
-  private final int RSS_ARTICLE_COUNT = 30;
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
@@ -501,6 +500,12 @@ public class SearchController extends WombatController {
     return commonParams;
   }
 
+  private static int getFeedLength(Site site) throws IOException {
+    Map<String, Object> feedConfig = site.getTheme().getConfigMap("feed");
+    Number length = (Number) feedConfig.get("length");
+    return length.intValue();
+  }
+
   /**
    * Performs a search for all articles in the journal and serves the result as XML to be read by an RSS reader
    *
@@ -515,7 +520,7 @@ public class SearchController extends WombatController {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery("*:*")
         .setStart(0)
-        .setRows(RSS_ARTICLE_COUNT)
+        .setRows(getFeedLength(site))
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
@@ -545,7 +550,7 @@ public class SearchController extends WombatController {
         .setQuery("")
         .setSubjects(ImmutableList.of(subjectName))
         .setStart(0)
-        .setRows(RSS_ARTICLE_COUNT)
+        .setRows(getFeedLength(site))
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)

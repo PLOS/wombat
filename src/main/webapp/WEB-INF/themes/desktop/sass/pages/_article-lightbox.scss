@@ -277,9 +277,10 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
 
           &.fig-btn-disabled {
             cursor: default;
-            background-color: $clr-btn-disabled;
+            opacity: 0.4;
+            border-color: rgba(51, 51, 51, 0.70);
             &:hover {
-              background-color: $clr-btn-disabled;
+              background-color: inherit;
             }
           }
 

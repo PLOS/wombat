@@ -29,6 +29,7 @@ import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.AppRootPage;
+import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
@@ -333,6 +334,11 @@ public class SpringConfiguration {
   @Bean
   public ArticleFeedView articleFeedView() {
     return new ArticleFeedView();
+  }
+
+  @Bean
+  public CommentFeedView commentFeedView() {
+    return new CommentFeedView();
   }
 
 }

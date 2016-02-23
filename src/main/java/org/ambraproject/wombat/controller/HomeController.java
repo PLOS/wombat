@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
 import org.ambraproject.wombat.feed.ArticleFeedView;
@@ -52,6 +53,9 @@ public class HomeController extends WombatController {
 
   @Autowired
   private ArticleFeedView articleFeedView;
+
+  @Autowired
+  private CommentFeedView commentFeedView;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -298,4 +302,23 @@ public class HomeController extends WombatController {
     }
     return mav;
   }
+
+  @RequestMapping(name = "commentFeed", value = "/feed/comments/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getCommentFeed(@SiteParam Site site, @PathVariable String feedType)
+      throws IOException {
+    String requestAddress = String.format("/journals/%s?comments&limit=%d", site.getJournalKey(), 30);
+    List comments = soaService.requestObject(requestAddress, List.class);
+
+    ModelAndView mav = new ModelAndView();
+    FeedMetadataField.SITE.putInto(mav, site);
+    FeedMetadataField.TITLE.putInto(mav, "Comments");
+    FeedMetadataField.FEED_INPUT.putInto(mav, comments);
+    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
+      mav.setView(commentFeedView.getAtomView());
+    } else {
+      mav.setView(commentFeedView.getRssView());
+    }
+    return mav;
+  }
+
 }

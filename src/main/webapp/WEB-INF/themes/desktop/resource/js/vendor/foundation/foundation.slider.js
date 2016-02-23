@@ -44,19 +44,39 @@
               if (!e.pageY) {
                 scroll_offset = window.scrollY;
               }
-              self.calculate_position(self.cache.active, (e.pageY || 
-                                                          e.originalEvent.clientY || 
-                                                          e.originalEvent.touches[0].clientY || 
-                                                          e.currentPoint.y) 
+              self.calculate_position(self.cache.active, (e.pageY ||
+                                                          e.originalEvent.clientY ||
+                                                          e.originalEvent.touches[0].clientY ||
+                                                          e.currentPoint.y)
                                                           + scroll_offset);
             } else {
-              self.calculate_position(self.cache.active, e.pageX || 
-                                                         e.originalEvent.clientX || 
-                                                         e.originalEvent.touches[0].clientX || 
+              self.calculate_position(self.cache.active, e.pageX ||
+                                                         e.originalEvent.clientX ||
+                                                         e.originalEvent.touches[0].clientX ||
                                                          e.currentPoint.x);
             }
           }
         })
+          .on('mouseup.fndtn.slider touchend.fndtn.slider pointerup.fndtn.slider', function (e) {
+            if(!self.cache.active) {
+              // if the user has just clicked into the slider without starting to drag the handle
+              var slider = $(e.target).attr('role') === 'slider' ? $(e.target) : $(e.target).closest('.range-slider').find("[role='slider']");
+
+              if (slider.length && (!slider.parent().hasClass('disabled') && !slider.parent().attr('disabled'))) {
+                self.set_active_slider(slider);
+                if ($.data(self.cache.active[0], 'settings').vertical) {
+                  var scroll_offset = 0;
+                  if (!e.pageY) {
+                    scroll_offset = window.scrollY;
+                  }
+                  self.calculate_position(self.cache.active, self.get_cursor_position(e, 'y') + scroll_offset);
+                } else {
+                  self.calculate_position(self.cache.active, self.get_cursor_position(e, 'x'));
+                }
+              }
+            }
+            self.remove_active_slider();
+          })
         .on('mouseup.fndtn.slider touchend.fndtn.slider pointerup.fndtn.slider', function(e) {
           self.remove_active_slider();
         })
@@ -68,6 +88,24 @@
         .on('resize.fndtn.slider', self.throttle(function(e) {
           self.reflow();
         }, 300));
+    },
+
+    get_cursor_position : function (e, xy) {
+      var pageXY = 'page' + xy.toUpperCase(),
+          clientXY = 'client' + xy.toUpperCase(),
+          position;
+
+      if (typeof e[pageXY] !== 'undefined') {
+        position = e[pageXY];
+      } else if (typeof e.originalEvent[clientXY] !== 'undefined') {
+        position = e.originalEvent[clientXY];
+      } else if (e.originalEvent.touches && e.originalEvent.touches[0] && typeof e.originalEvent.touches[0][clientXY] !== 'undefined') {
+        position = e.originalEvent.touches[0][clientXY];
+      } else if (e.currentPoint && typeof e.currentPoint[xy] !== 'undefined') {
+        position = e.currentPoint[xy];
+      }
+
+      return position;
     },
 
     set_active_slider : function($handle) {

@@ -39,7 +39,7 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
   }
 
   private Date getPubDate(FeedMetadata feedMetadata, Map<String, ?> article) {
-    SimpleDateFormat solrDateFormat = new SimpleDateFormat("YYYY-MM-dd", Locale.ENGLISH);
+    SimpleDateFormat solrDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
     String publicationDateStr = (String) article.get("publication_date");
     Date pubDate;
     try {

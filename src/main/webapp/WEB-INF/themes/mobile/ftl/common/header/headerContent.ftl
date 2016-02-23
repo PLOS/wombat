@@ -1,9 +1,11 @@
+
 <header id="common-header">
+  <#macro searchForm journal="">
   <div class="search-expanded">
     <div class="search-form-container coloration-bg">
-      <form id="simpleSearchForm" action="search" method="get">
+      <form id="simpleSearchForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
         <input name="q" id="search-input" type="text" class="search-field" placeholder="Search articles...">
-
+        <#if journal?has_content><input type="hidden" name="filterJournals" value="${journal}"/></#if>
         <div class="search-buttons">
           <button id="search-cancel" class="rounded" type="reset">cancel</button>
           <button id="search-execute" class="rounded" type="submit">search</button>
@@ -11,6 +13,8 @@
       </form>
     </div>
   </div>
+  </#macro>
+  <#include "searchJournal.ftl"/>
   <div id="site-header-container" class="coloration-border-top">
 
   <#include "../siteMenu/siteMenuFlag.ftl" />

@@ -366,9 +366,9 @@ public class ArticleController extends WombatController {
         String crossPublishedJournalKey = (String) crossPublishedJournalMetadata.get("journalKey");
         Site crossPublishedSite = site.getTheme().resolveForeignJournalKey(siteSet, crossPublishedJournalKey);
 
-        // Set up an href link to the other site's homepage
-        String homepageLink = Link.toForeignSite(site, crossPublishedSite)
-            .toPattern(requestMappingContextDictionary, "homePage").build().get(request);
+        // Set up an href link to the other site's root page.
+        // Do not link to handlerName="homePage" because we don't know if the other site has disabled it.
+        String homepageLink = Link.toForeignSite(site, crossPublishedSite).toPath("").get(request);
         crossPublishedJournalMetadata.put("href", homepageLink);
 
         // Look up whether the other site wants its journal title italicized

@@ -20,11 +20,7 @@
         <#macro crossPubLink prefix publications>
         ${prefix}
           <#list publications as pub>
-            <#if pub.href??>
-                <a href="${pub.href}"><@crossPubTitle pub /></a><#t/>
-            <#else>
-              <@crossPubTitle pub /><#t/>
-            </#if>
+            <a href="${pub.href}"><@crossPubTitle pub /></a><#t/>
             <#if pub_has_next><#t/>,</#if>
           </#list>
         </#macro>

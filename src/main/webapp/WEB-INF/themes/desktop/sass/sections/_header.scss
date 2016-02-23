@@ -111,6 +111,7 @@ $width-nav: $block-grid-elements - $width-logo;
 .nav-main {
   @extend .plos-row;
   @extend .top-bar; // foundation
+  margin-bottom: $pad-default;
   font-family: $font-face-navigation;
   > .dropdown {
     visibility: hidden;
@@ -246,7 +247,6 @@ $width-nav: $block-grid-elements - $width-logo;
     @include border-top-radius();
     box-shadow: $nav-main-box-shadow;
     background: $white;
-    padding-bottom: 12px;
     color: $clr-body-text;
     // &hover + li is used to account for the padding needed for the
     //  drop shadow. if the color isn't changed it sticks out too much.
@@ -255,7 +255,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
       }
     > .dropdown {
-      top: 45px;
+      top: rem-calc(40);
       @include border-radius();
       width: rem-calc(240);
       left: -13px;

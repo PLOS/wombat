@@ -6,7 +6,7 @@
   <artifactId>wombat</artifactId>
   <name>wombat</name>
   <packaging>war</packaging>
-  <version>1.4.10</version>
+  <version>2.0.0</version>
   <url>https://github.com/PLOS/wombat</url>
   <scm>
     <connection>scm:git:git@github.com:PLOS/wombat.git</connection>
@@ -286,6 +286,13 @@
       <groupId>org.jasig.cas.client</groupId>
       <artifactId>cas-client-core</artifactId>
       <version>3.1.12</version>
+    </dependency>
+
+    <!-- RSS -->
+    <dependency>
+      <groupId>com.rometools</groupId>
+      <artifactId>rome</artifactId>
+      <version>1.5.1</version>
     </dependency>
 
     <!-- security -->

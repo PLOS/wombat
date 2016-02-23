@@ -2,6 +2,7 @@
 @import "global-section-imports";
 @import "vendor/foundation-datepicker";
 @import "sections/paging-controls";
+@import "sections/search_results_alm";
 
 .search-results-body {
   main {
@@ -367,27 +368,6 @@ $controls-gray: $grey-med-light;
   }
 }
 
-.search-results-alm, .search-results-alm-error {
-  display: none;
-  font-weight: bold;
-  font-size: $txt-size-xxsmall;
-}
-
-.icon-warning-stack {
-
-  .icon-warning, .fa-exclamation {
-    @extend .list-icon;
-  }
-
-  .icon-warning {
-    color: $alert;
-  }
-  .fa-exclamation {
-    color: $black;
-    font-size: $txt-size-xxxsmall;
-  }
-}
-
 //TODO - make pattern out of these columns
 //TODO- cleanout old css
 //TODO - add sizes to variables.scss
@@ -514,7 +494,7 @@ $column-size-first: ($grid-width - $column-size);
 }
 
 // Right-hand aside (currently just contains two disabled controls).
-$disabled-filter-size: rem-calc(28);
+$filter-size: rem-calc(28);
 // when we redo the search I'll make sure all the filters and buttons are the same size.
 
 @mixin search-disabled-control {
@@ -524,8 +504,8 @@ $disabled-filter-size: rem-calc(28);
   color: $grey-light;
   cursor: default;
   vertical-align: top;
-  height: $disabled-filter-size;
-  line-height: $disabled-filter-size;
+  height: $filter-size;
+  line-height: $filter-size;
 }
 
 @mixin search-disabled-tooltip {
@@ -568,17 +548,21 @@ $search-icon-pad-default: 8;
 
 .search-feed {
   @extend .icon-rss;
-  @include search-disabled-control;
-  min-width: $disabled-filter-size;
+  @extend %rounded-default;
+  min-width: $filter-size;
   text-align: center;
   display: inline-block;
   font-size: $txt-size-large;
+  background: $clr-brand;
+  color: $white;
+  cursor: default;
+  vertical-align: top;
+  height: $filter-size;
+  line-height: $filter-size;
 
-  .search-feed-tooltip {
-    @include search-disabled-tooltip;
-    left: rem-calc(-150);
-    font-size: $txt-size-small;
-    font-weight: bold;
+  &:hover {
+    background-color: $clr-link-hover;
+    color: $white;
   }
 }
 

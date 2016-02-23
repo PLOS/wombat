@@ -6,13 +6,14 @@
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
-<#include "../common/legacyLink.ftl" />
+<#include "../macro/searchResultsAlm.ftl" />
 
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/components/range_datepicker.js"/>
 <@js src="resource/js/pages/advanced_search.js"/>
 <@js src="resource/js/pages/search_results.js"/>
+<@js src="resource/js/components/search_results_alm.js"/>
 <@js src="resource/js/components/toggle.js"/>
 <@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/vendor/underscore-min.js"/>
@@ -34,9 +35,10 @@
   <#assign query = otherQuery />
   <#assign advancedSearch = true />
 </#if>
-<#assign advancedSearchLink = "${legacyUrlPrefix}search/advanced?unformattedQuery=${query}&noSearchFlag=set"/>
+<#assign advancedSearchParams = {"unformattedQuery": query} />
 <#if RequestParameters.filterJournals??>
-  <#assign advancedSearchLink = advancedSearchLink + "&filterJournals=${RequestParameters.filterJournals}"/>
+  <#assign advancedSearchParams = advancedSearchParams + {"filterJournals" : RequestParameters.filterJournals} />
+<#else>
 </#if>
 
 <#include "suppressSearchFilter.ftl" />
@@ -47,21 +49,9 @@
 <#include "../common/header/headerContainer.ftl" />
 <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
 <#include "searchInputBar.ftl" />
-<#if searchResults.numFound == 0>
-    <section class="search-results-none-found">
-        <p>You searched for articles that have all of the following:</p>
+</form>
 
-        <p>Search Term: "<span>${query}</span>"</p>
-
-        <p>Journal: "<span>${journalName}</span>"</p>
-
-        <p>
-            There were no results; please
-            <a href="${advancedSearchLink}">refine
-                your search</a>
-            and try again.</p>
-    </section>
-</#if>
+<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
 <#if searchResults.numFound != 0>
     <section class="search-results-header">
         <div class="results-number">
@@ -101,17 +91,14 @@
                     This feature temporarily unavailable.
                 </div>
             </div>
-            <div class="search-feed" data-js-tooltip-hover="trigger">
-                <div class="search-feed-tooltip" data-js-tooltip-hover="target">
-                    This feature temporarily unavailable.
-                </div>
-            </div>
+            <a href="<@siteLink handlerName="searchFeed" queryParameters=parameterMap pathVariables={'feedType': 'atom'}/>"
+               class="search-feed"></a>
         </div>
 
     </section>
 </#if>
 
-<#if searchResults.numFound != 0 && isFiltered>
+<#if isFiltered>
 <div class="filter-view-container">
     <section class="filter-view">
         <h3 class="filter-label">Filters:</h3>
@@ -159,9 +146,19 @@
 </#if>
 </form>
 
+<#if searchResults.numFound == 0>
+  <section class="search-results-none-found">
+    <p>You searched for articles that have all of the following:</p>
+
+    <p>Search Term: "<span>${query}</span>"</p>
+
+    <p>Journal: "<span>${journalName}</span>"</p>
+
+    <p>There were no results; please refine your search above and try again.</p>
+  </section>
+</#if>
 
 <#--PG-shoudl this be a header?-->
-
 <section class="results-container">
 
   <#include "searchFilters.ftl" />
@@ -206,28 +203,7 @@
                       </#if>
                     </div>
                 </#if>
-                  <div class="search-results-alm-container">
-                      <p class="search-results-alm-loading">
-                          Loading metrics information...
-                      </p>
-                    <#assign metricsUrl>
-                      <@siteLink handlerName="articleMetrics" queryParameters={"id": doc.id} />
-                    </#assign>
-
-                      <p class="search-results-alm" data-doi="${doc.id}">
-                          <a href="${metricsUrl}#viewedHeader">Views: </a> •
-                          <a href="${metricsUrl}#citedHeader">Citations: </a> •
-                          <a href="${metricsUrl}#savedHeader">Saves: </a> •
-                          <a href="${metricsUrl}#discussedHeader">Shares: </a>
-                      </p>
-
-                      <p class="search-results-alm-error">
-                <span class="fa-stack icon-warning-stack">
-                  <i class="fa fa-exclamation fa-stack-1x icon-b"></i>
-                  <i class="fa icon-warning fa-stack-1x icon-a"></i>
-                </span>Metrics unavailable. Please check back later.
-                      </p>
-                  </div>
+                <@searchResultsAlm doc.id/>
               </dd>
           </#list>
         </dl>

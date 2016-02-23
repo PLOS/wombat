@@ -1,0 +1,20 @@
+.search-results-alm, .search-results-alm-error {
+  display: none;
+  font-weight: bold;
+  font-size: $txt-size-xxsmall;
+}
+
+.icon-warning-stack {
+
+  .icon-warning, .fa-exclamation {
+    @extend .list-icon;
+  }
+
+  .icon-warning {
+    color: $alert;
+  }
+  .fa-exclamation {
+    color: $black;
+    font-size: $txt-size-xxxsmall;
+  }
+}

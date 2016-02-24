@@ -193,8 +193,8 @@ var FigureLightbox = {};
     this.imgData.imgElement = $(this.imgList[currentIndex]);
 
     //Add active class to selected image in drawer
-    $(this.lbSelector + ' #figures-list .change-img-active').removeClass('change-img-active');
-    $(this.lbSelector + ' #figures-list .change-img:eq('+currentIndex+')').addClass('change-img-active');
+    $(this.lbSelector + ' #figures-list').find('.change-img-active').removeClass('change-img-active')
+        .end().find('.change-img:eq('+currentIndex+')').addClass('change-img-active');
 
     // Get data to populate image context
     var imageData = this.fetchImageData();

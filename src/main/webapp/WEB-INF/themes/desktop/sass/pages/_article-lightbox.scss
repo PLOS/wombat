@@ -274,6 +274,16 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
           font-family: $font-face-fancy;
           color: $white;
           cursor: pointer;
+
+          &.fig-btn-disabled {
+            cursor: default;
+            opacity: 0.4;
+            border-color: rgba(51, 51, 51, 0.70);
+            &:hover {
+              background-color: inherit;
+            }
+          }
+
           .icon {
             background-image: image-url('sprite.fv.png');
             width: $lb-small;
@@ -299,6 +309,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
               margin: 0 rem-calc(2);
             }
           }
+
 
           &.next-fig-btn .icon-next {
               background-position: -140px -20px;

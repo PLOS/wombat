@@ -115,12 +115,12 @@ var FigureLightbox = {};
         }).end()
 
         // Bind next figure button
-        .find('.next-fig-btn').on('click', function () {
+        .find('.next-fig-btn:not(.fig-btn-disabled)').on('click', function () {
           return that.nextImage();
         }).end()
 
         // Bind next figure button
-        .find('.prev-fig-btn').on('click', function () {
+        .find('.prev-fig-btn:not(.fig-btn-disabled)').on('click', function () {
           return that.prevImage();
         }).end()
 
@@ -140,10 +140,16 @@ var FigureLightbox = {};
           // Show both prev and next buttons
           var buttons = $(that.lbSelector).find('.fig-btn').show();
           if (data.index === 0) {
-            buttons.filter('.prev-fig-btn').hide(); // Hide prev button
+            buttons.filter('.prev-fig-btn').addClass('fig-btn-disabled'); // Hide prev button
+          }
+          else {
+            buttons.filter('.prev-fig-btn').removeClass('fig-btn-disabled');
           }
           if (data.index === (that.imgList.length - 1)) {
-            buttons.filter('.next-fig-btn').hide(); // Hide next button
+            buttons.filter('.next-fig-btn').addClass('fig-btn-disabled'); // Hide next button
+          }
+          else {
+            buttons.filter('.next-fig-btn').removeClass('fig-btn-disabled');
           }
 
 

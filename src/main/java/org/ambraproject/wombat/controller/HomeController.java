@@ -302,7 +302,7 @@ public class HomeController extends WombatController {
   @RequestMapping(name = "commentFeed", value = "/feed/comments/{feedType:atom|rss}", method = RequestMethod.GET)
   public ModelAndView getCommentFeed(@SiteParam Site site, @PathVariable String feedType)
       throws IOException {
-    String requestAddress = String.format("/journals/%s?comments&limit=%d", site.getJournalKey(), getFeedLength(site));
+    String requestAddress = String.format("journals/%s?comments&limit=%d", site.getJournalKey(), getFeedLength(site));
     List comments = soaService.requestObject(requestAddress, List.class);
 
     ModelAndView mav = new ModelAndView();

@@ -185,14 +185,14 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       transition: opacity 300ms ease-in-out;
 
       .change-img {
-        background: rgba(255,255,255,0.25);
+        background: transparentize($white, 0.75);
         cursor: pointer;
         padding: 4%;
         margin: 8% 2%;
         transition: background 300ms ease-in-out;
 
         &:hover {
-          background: rgba(255,255,255,0.35);
+          background: transparentize($white, 0.65);
         }
 
         &.change-img-active {

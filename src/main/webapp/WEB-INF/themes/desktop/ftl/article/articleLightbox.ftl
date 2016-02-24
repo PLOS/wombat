@@ -29,14 +29,16 @@
     </div>
     <div id="lightbox-footer">
       <div id="btns-container" class="lightbox-row">
-        <div class="range-slider-container">
-          <div id="lb-zoom-min"></div>
-          <div class="range-slider round" data-slider data-options="step: 0.05; start: 1; end: 5; initial: 1;">
-            <span class="range-slider-handle" role="slider" tabindex="0"></span>
-            <span class="range-slider-active-segment"></span>
-            <input type="hidden">
+        <div class="zoom-slider-container">
+          <div class="range-slider-container">
+            <span id="lb-zoom-min"></span>
+            <div class="range-slider round" data-slider data-options="step: 0.05; start: 1; end: 5; initial: 1;">
+              <span class="range-slider-handle" role="slider" tabindex="0"></span>
+              <span class="range-slider-active-segment"></span>
+              <input type="hidden">
+            </div>
+            <span id="lb-zoom-max"></span>
           </div>
-          <div id="lb-zoom-max"></div>
         </div>
         <div id="fig-btns-container">
           <span class="fig-btn all-fig-btn"><i class="icon icon-all"></i> All Figures</span>

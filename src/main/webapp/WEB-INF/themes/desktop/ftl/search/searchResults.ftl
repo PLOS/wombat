@@ -51,7 +51,7 @@
 <#include "searchInputBar.ftl" />
 </form>
 
-<form name="searchControlBarForm" id="searchResultForm" action="<@siteLink handlerName='simpleSearch'/>"
+<form name="searchResultsForm" id="searchResultsForm" action="<@siteLink handlerName='simpleSearch'/>"
       method="get">
   <input type="hidden" pattern=".{1,}" name="${advancedSearch?string('unformattedQuery',
   'q')}" value="${query}" required/>

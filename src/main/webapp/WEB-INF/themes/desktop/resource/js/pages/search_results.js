@@ -4,7 +4,7 @@
     RangeDatepicker.init($('#dateFilterStartDate'), $('#dateFilterEndDate'));
 
     $('#sortOrder').on('change', function() {
-      $('#searchResultForm').submit();
+      $('#searchResultsForm').submit();
     });
 
     $('#resultsPerPageDropdown').on('change', function() {
@@ -12,7 +12,7 @@
       // Due to the way the CSS for the page currently works, it's difficult to have the <form>
       // extend all the way down to this dropdown, so we instead set a hidden field here.
       $('#resultsPerPage').val($('#resultsPerPageDropdown').val());
-      $('#searchResultForm').submit();
+      $('#searchResultsForm').submit();
     });
 
     // Code to make tooltips around disabled controls work on tablets.

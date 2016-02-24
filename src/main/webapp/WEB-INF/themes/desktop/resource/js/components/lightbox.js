@@ -286,10 +286,6 @@ var FigureLightbox = {};
       this.imgList = $('.figure');
       this.insertLightboxTemplate();
       this.bindBehavior();
-      if(this.imgList.length <= 1) {
-
-        $(this.lbSelector).find('#btns-container').addClass('one-figure-only');
-      }
     }
     $(this.lbSelector)
         .foundation('reveal', 'open');

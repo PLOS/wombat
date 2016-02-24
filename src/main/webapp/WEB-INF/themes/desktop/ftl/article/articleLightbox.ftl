@@ -28,7 +28,7 @@
       </aside>
     </div>
     <div id="lightbox-footer">
-      <div id="btns-container" class="lightbox-row">
+      <div id="btns-container" class="lightbox-row <% if(figureList.length <= 1) { print('one-figure-only') } %>">
         <div class="range-slider-container">
           <div id="lb-zoom-min"></div>
           <div class="range-slider round" data-slider data-options="step: 0.05; start: 1; end: 5; initial: 1;">

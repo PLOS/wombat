@@ -40,16 +40,11 @@ var TaxonomyBrowser = function () {
       var fullPath = terms[i].subject;
       var levels = fullPath.split('/');
       var leaf = levels[levels.length - 1];
-
-      // Get parent term if there is one.  Only do this once for efficiency since all terms
-      // will have the same parent.
-      if (i == 0 && levels.length > 2) {
-        for (var j = 0; j < levels.length - 1; j++) {
-          if (j > 1) {
-            parent += '/';
-          }
-          parent += levels[j];
-        }
+      if (leaf == 'ROOT') {
+        break;
+      }
+      if (parent == '/') {
+        parent += levels[0];
       }
 
       var termHtml = $('#subject-term-template').html();
@@ -91,12 +86,19 @@ var TaxonomyBrowser = function () {
   // Loads the child terms given a parent term.  If the parent evaluates to false,
   // the root taxonomy terms will be loaded.
   self.loadTerms = function (parent, pushState) {
-    var url = 'taxonomy';
-    if (parent) {
-      url += parent;
-    } else {
-      url += '/';
+
+    var url = 'taxonomy/?';
+    if (parent != '/') {
+      var termArray = parent.split('/');
+      var lastTerm = termArray[termArray.length -1];
+      url += 'c=' + lastTerm;
     }
+
+    //Replace spaces with underscores, will be reverted to spaces in TaxonomyController.
+    //This prevents 502 proxy errors that occur when we try to request a url with '%20' in it.
+    //todo: After cleaning up redirects and solving the 502 proxy error, this should be removed
+    url = url.replace(/\s/g, "_");
+
     $.ajax(url, {
       type: 'GET',
       success: function (data) {

@@ -9,13 +9,11 @@
 <#include "backToArticle.ftl" />
 
   <div id="author-content" class="content">
-  <#list authors as author>
+  <#list authorListAffiliationMap?keys as affiliation>
     <div class="about-author">
-      <h3 class="comments-header">${author.fullName}</h3>
-      <#list author.affiliations as affiliation>
-        <p>${affiliation}</p>
-      </#list>
-    </div>
+      <h3 class="comments-header">${authorListAffiliationMap[affiliation]}</h3>
+
+      <p>${affiliation}</p></div>
   </#list>
 
   <#if correspondingAuthors?? && correspondingAuthors?size gt 0>

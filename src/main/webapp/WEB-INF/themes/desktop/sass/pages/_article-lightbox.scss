@@ -174,15 +174,18 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     position: relative;
 
     #figures-list {
-      display: none;
       height: 100%;
       overflow-y: scroll;
       max-width: rem-calc(180px);
-      right: 0;
       top: 0;
+      right: rem-calc(-180px);
       position: absolute;
       background: transparentize($grey-dark, 0.2);
-      transition: opacity 300ms ease-in-out;
+      @include single-transition();
+
+      &.figures-list-open {
+        right: 0;
+      }
 
       .change-img {
         background: transparentize($white, 0.75);
@@ -281,6 +284,16 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
           font-family: $font-face-fancy;
           color: $white;
           cursor: pointer;
+
+          &.fig-btn-disabled {
+            cursor: default;
+            opacity: 0.4;
+            border-color: rgba(51, 51, 51, 0.70);
+            &:hover {
+              background-color: inherit;
+            }
+          }
+
           .icon {
             background-image: image-url('sprite.fv.png');
             width: $lb-small;

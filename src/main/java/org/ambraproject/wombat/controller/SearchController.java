@@ -22,13 +22,14 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.model.FeedType;
+import org.ambraproject.wombat.feed.ArticleFeedView;
+import org.ambraproject.wombat.feed.FeedMetadataField;
+import org.ambraproject.wombat.feed.FeedType;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
-import org.ambraproject.wombat.rss.ArticleFeedView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -36,6 +37,7 @@ import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.ambraproject.wombat.util.ListUtil;
+import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.lang.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,6 +65,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Controller class for user-initiated searches.
@@ -87,7 +91,6 @@ public class SearchController extends WombatController {
   private ArticleFeedView articleFeedView;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
-  private final int RSS_ARTICLE_COUNT = 30;
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
@@ -182,6 +185,10 @@ public class SearchController extends WombatController {
     private String endDate;
 
     private final String DEFAULT_START_DATE = "2003-01-01";
+
+    // doesn't include journal and date filter param names
+    static final Set<String> FILTER_PARAMETER_NAMES = Stream.of(SingletonSearchFilterType.values()).map
+        (SingletonSearchFilterType::getParameterName).collect(Collectors.toSet());
 
     /**
      * Constructor.
@@ -380,6 +387,62 @@ public class SearchController extends WombatController {
     }
 
     /**
+     *  Creates an instance of {SearchFilterItem} for active filters using url parameters
+     *
+     * @param activeFilterItems set of active filter items
+     * @param parameterMap request's query parameter
+     * @param filterName name of the filter
+     * @param filterValues values of the filter
+     */
+    private void buildActiveFilterItems(Set<SearchFilterItem> activeFilterItems, Map<String,
+        String[]> parameterMap, String filterName, String[] filterValues) {
+
+      for (String filterValue : filterValues) {
+        List<String> filterValueList = new ArrayList<>(Arrays.asList(filterValues));
+        Map<String, List<String>> queryParamMap = new HashMap<>();
+        // covert Map<String, String[]> to Map<String, List<String> for code re-usability
+        queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(entry -> entry
+            .getKey(), entry -> new ArrayList<>(Arrays.asList(entry.getValue())))));
+        queryParamMap.remove(filterName);
+        // include the rest of filter values for that specific filter
+        if (filterValueList.size() > 1) {
+          filterValueList.remove(filterValue);
+          queryParamMap.put(filterName, filterValueList);
+        }
+        String displayName;
+        if (filterName.equals("filterJournals")) {
+          displayName = siteSet.getJournalNameFromKey(filterValue);
+        } else {
+          displayName = filterValue;
+        }
+        SearchFilterItem filterItem = new SearchFilterItem(displayName, 0,
+            filterName, filterValue, queryParamMap);
+        activeFilterItems.add(filterItem);
+      }
+    }
+    /**
+     * Examine the incoming URL when there is no search result and set the active filters
+     *
+     * @return set of active filters
+     */
+    public Set<SearchFilterItem> setActiveFilterParams(Model model, HttpServletRequest request) {
+      Map<String, String[]> parameterMap = request.getParameterMap();
+      model.addAttribute("parameterMap", parameterMap);
+
+
+      // exclude non-filter query parameters
+      Map<String, String[]> filtersOnlyMap = parameterMap.entrySet().stream()
+          .filter(entry -> FILTER_PARAMETER_NAMES.contains(entry.getKey())
+              || ("filterJournals").equals(entry.getKey()))
+          .collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
+
+      Set<SearchFilterItem> activeFilterItems = new LinkedHashSet<>();
+      filtersOnlyMap.forEach((filterName, filterValues) -> buildActiveFilterItems(activeFilterItems,
+          parameterMap, filterName, filterValues));
+      return activeFilterItems;
+    }
+
+    /**
      * @param query the incoming query string
      * @return True if the query string does not contain any advanced search terms,
      * listed in {@link AdvancedSearchTerms}
@@ -438,7 +501,7 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Performs a search based on subject area and serves the result as XML to be read by an RSS reader
+   * Performs a search for all articles in the journal and serves the result as XML to be read by an RSS reader
    *
    * @param site site the request originates from
    * @return RSS view of articles returned by the search
@@ -451,7 +514,7 @@ public class SearchController extends WombatController {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery("*:*")
         .setStart(0)
-        .setRows(RSS_ARTICLE_COUNT)
+        .setRows(getFeedLength(site))
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
@@ -461,7 +524,8 @@ public class SearchController extends WombatController {
 
     Map<String, ?> searchResults = solrSearchService.search(queryObj);
 
-    return getFeedModelAndView(site, feedType, searchResults);
+    String feedTitle = ""; // Because it's for all articles, let it default to the journal title
+    return getFeedModelAndView(site, feedType, feedTitle, searchResults);
   }
 
   /**
@@ -474,12 +538,13 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "browseFeed", value = "/browse/{subject}/feed/{feedType:atom|rss}", method = RequestMethod.GET)
   public ModelAndView getBrowseRssFeedView(@SiteParam Site site,
       @PathVariable String feedType, @PathVariable String subject) throws IOException {
+    String subjectName = subject.replace('_', ' ');
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery("")
-        .setSubjects(ImmutableList.of(subject.replace('_', ' ')))
+        .setSubjects(ImmutableList.of(subjectName))
         .setStart(0)
-        .setRows(RSS_ARTICLE_COUNT)
+        .setRows(getFeedLength(site))
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
@@ -489,7 +554,7 @@ public class SearchController extends WombatController {
 
     Map<String, ?> searchResults = solrSearchService.search(queryObj);
 
-    return getFeedModelAndView(site, feedType, searchResults);
+    return getFeedModelAndView(site, feedType, subjectName, searchResults);
   }
 
   /**
@@ -517,18 +582,27 @@ public class SearchController extends WombatController {
 
     Map<String, ?> searchResults = solrSearchService.search(queryObj);
 
-    return getFeedModelAndView(site, feedType, searchResults);
+    String feedTitle = representQueryParametersAsString(params);
+    return getFeedModelAndView(site, feedType, feedTitle, searchResults);
   }
 
-  private ModelAndView getFeedModelAndView(Site site, String feedType, Map<String, ?> searchResults) {
-    ModelAndView mav = new ModelAndView();
-    mav.addObject("site", site);
-    mav.addObject("solrResults", searchResults.get("docs"));
-    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
-      mav.setView(articleFeedView.getArticleAtomView());
-    } else {
-      mav.setView(articleFeedView.getArticleRssView());
+  private static String representQueryParametersAsString(MultiValueMap<String, String> params) {
+    UrlParamBuilder builder = UrlParamBuilder.params();
+    for (Map.Entry<String, List<String>> entry : params.entrySet()) {
+      String key = entry.getKey();
+      for (String value : entry.getValue()) {
+        builder.add(key, value);
+      }
     }
+    return builder.toString();
+  }
+
+  private ModelAndView getFeedModelAndView(Site site, String feedType, String title, Map<String, ?> searchResults) {
+    ModelAndView mav = new ModelAndView();
+    FeedMetadataField.SITE.putInto(mav, site);
+    FeedMetadataField.FEED_INPUT.putInto(mav, searchResults.get("docs"));
+    FeedMetadataField.TITLE.putInto(mav, title);
+    mav.setView(FeedType.getView(articleFeedView, feedType));
     return mav;
   }
 
@@ -561,14 +635,20 @@ public class SearchController extends WombatController {
     Map<?, ?> searchResults = solrSearchService.search(queryObj);
 
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
-    Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
 
-    filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
+    Set<SearchFilterItem> activeFilterItems;
 
-    Set<SearchFilterItem> activeFilterItems = new LinkedHashSet<>();
-    filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
+    if ((Double) searchResults.get("numFound") == 0.0) {
+       activeFilterItems = commonParams.setActiveFilterParams(model, request);
+    } else {
+      Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
+      filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
-    model.addAttribute("searchFilters", filters);
+      activeFilterItems = new LinkedHashSet<>();
+      filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
+      model.addAttribute("searchFilters", filters);
+    }
+
     model.addAttribute("activeFilterItems", activeFilterItems);
 
     return site.getKey() + "/ftl/search/searchResults";

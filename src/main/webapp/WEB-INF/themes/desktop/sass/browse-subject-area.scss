@@ -6,6 +6,7 @@
 @import "global-section-imports";
 @import "pages/home";
 @import "sections/paging-controls";
+@import "sections/search_results_alm";
 @import "sections/plos-one/nav-bar";
 @import "sections/plos-one/article-list";
 @import "sections/plos-one/rectangle-ad";
@@ -16,4 +17,12 @@
 
 .nav-pagination {
   @extend %full-width-pagination;
+}
+
+#search-results .search-results-alm a {
+  color: $plos-default;
+}
+
+.search-results-alm-container {
+  padding-bottom: rem-calc(6);
 }

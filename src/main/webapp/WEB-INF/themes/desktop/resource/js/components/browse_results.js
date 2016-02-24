@@ -5,10 +5,6 @@
 //***************************************
 // ALM Service and some other globals
 //***************************************
-var almService = new $.fn.alm(),
-  ids = [],
-  //When we get the results back, we put those IDs into this list.
-  confirmed_ids = [];
 
 var keyDownEventHandler = function(e) {
   //console.log('key down event');
@@ -172,14 +168,6 @@ $(document).ready(function() {
   $('#btn-save-journal-alert').bind('click', saveAlert);
   $('.btn-cancel-alert').bind('click', removeModal);
   $('#btn-unsubscribe-journal-alert').bind('click', unsubscribeAlert);
-
-  $('li[data-doi]').each(function(index, element) {
-    ids[ids.length] = $(element).data('doi');
-  });
-
-  if(ids.length > 0) {
-    almService.getArticleSummaries(ids, almService.setALMSearchWidgets, almService.setALMSearchWidgetsError);
-  }
 });
 
 

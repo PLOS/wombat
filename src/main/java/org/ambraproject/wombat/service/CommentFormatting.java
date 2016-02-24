@@ -45,7 +45,7 @@ public class CommentFormatting {
     private final String bodyWithHighlightedText;
     private final String competingInterestStatement;
 
-    private FormattedComment(Map<String, ?> comment) {
+    public FormattedComment(Map<String, ?> comment) {
       this.bodyWithHighlightedText = buildBodyWithHighlightedText(comment);
       this.competingInterestStatement = buildCompetingInterestStatement(comment);
     }

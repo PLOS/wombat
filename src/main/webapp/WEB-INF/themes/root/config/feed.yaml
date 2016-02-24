@@ -1,5 +1,8 @@
 # This file defines metadata that appear on the root level of the site's RSS and Atom feeds.
 
+length: 30
+# Maximum number of items in chronological feeds of unbounded length.
+
 description: null
 # A default subtitle/description.
 

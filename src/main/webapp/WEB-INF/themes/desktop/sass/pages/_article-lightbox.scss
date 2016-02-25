@@ -235,6 +235,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
         position: relative;
         width: 60%;
         padding: 0 rem-calc(27);
+        text-align: left;
 
         @media #{$large-up} {
           width: 33%;

@@ -364,7 +364,7 @@ var FigureLightbox = {};
     $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function(){
       // If values differ, change them
       var matrix = panzoomInstance.getMatrix();
-      var newSliderValue = parseFloat(this.dataset.slider/20);
+      var newSliderValue = parseFloat(this.getAttribute('data-slider')/20);
       if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
         $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
         matrix[0] = matrix[3] = newSliderValue;

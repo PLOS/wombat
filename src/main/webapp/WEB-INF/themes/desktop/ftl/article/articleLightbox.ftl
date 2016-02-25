@@ -28,7 +28,7 @@
       </aside>
     </div>
     <div id="lightbox-footer">
-      <div id="btns-container" class="lightbox-row <% if(figureList.length <= 1) { print('one-figure-only') } %>">
+      <div id="btns-container" class="lightbox-row">
         <div class="range-slider-container">
           <div id="lb-zoom-min"></div>
           <div class="range-slider round" data-slider data-options="step: 0.05; start: 1; end: 5; initial: 1;">
@@ -38,11 +38,13 @@
           </div>
           <div id="lb-zoom-max"></div>
         </div>
+        <% if(figureList.length > 1) { %>
         <div id="fig-btns-container">
           <span class="fig-btn all-fig-btn"><i class="icon icon-all"></i> All Figures</span>
           <span class="fig-btn next-fig-btn"><i class="icon icon-next"></i> Next</span>
           <span class="fig-btn prev-fig-btn"><i class="icon icon-prev"></i> Previous</span>
         </div>
+        <% } %>
       </div>
       <div id="image-context">
       </div>

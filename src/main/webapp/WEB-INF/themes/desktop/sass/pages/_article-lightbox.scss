@@ -214,12 +214,6 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     #btns-container {
       @extend %brand-background;
 
-      &.one-figure-only {
-        #fig-btns-container {
-          display: none;
-        }
-      }
-
       .range-slider-container {
         position: relative;
         .range-slider-handle {

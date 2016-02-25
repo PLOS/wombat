@@ -31,7 +31,7 @@
       <div id="btns-container" class="lightbox-row">
         <div class="range-slider-container">
           <div id="lb-zoom-min"></div>
-          <div class="range-slider round" data-slider data-options="step: 0.05; start: 1; end: 5; initial: 1;">
+          <div class="range-slider round" data-slider data-options="start: 20; end: 100; initial: 20;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden">

@@ -3,6 +3,7 @@ package org.ambraproject.wombat.feed;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.util.ClientEndpoint;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -44,7 +45,7 @@ class FeedMetadata {
    */
   public String getId() {
     String id = (String) FeedMetadataField.ID.getFrom(model);
-    return Strings.isNullOrEmpty(id) ? request.getRequestURL().toString() : id;
+    return Strings.isNullOrEmpty(id) ? ClientEndpoint.getRequestUrl(request) : id;
   }
 
   /**

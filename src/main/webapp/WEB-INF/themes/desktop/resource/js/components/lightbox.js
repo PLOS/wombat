@@ -66,11 +66,33 @@ var FigureLightbox = {};
 
   FigureLightbox.bindBehavior = function () {
     var that = this;
-
     // Escape key destroys and closes lightbox
     $(document).on('keyup.figure-lightbox', function(e) {
-      if (e.keyCode === 27) {
-        that.close();
+      if($(that.lbSelector).hasClass('open')) {
+        switch (e.which) {
+          case 27: // esc
+            that.close();
+            break;
+          case 37: // left
+            that.prevImage();
+            break;
+
+          case 38: // up
+            that.nextImage();
+            break;
+
+          case 39: // right
+            that.nextImage();
+            break;
+
+          case 40: // down
+            that.prevImage();
+            break;
+
+          default:
+            return; // exit this handler for other keys
+        }
+        e.preventDefault();
       }
     });
 
@@ -85,6 +107,7 @@ var FigureLightbox = {};
         .find('.change-img').on('click', function () {
           that.switchImage(this.getAttribute('data-doi'));
         }).end()
+
 
         // Bind button to show all images
         .find('.all-fig-btn').on('click', function () {
@@ -103,6 +126,11 @@ var FigureLightbox = {};
         .find('#figures-list').on('mousewheel', function(e) {
           e.stopPropagation();
         }).end()
+        // Bind show in context button
+       .find('#image-context').on('click', 'a.target_link', function () {
+        target= $(this).attr('href');
+          that.close();
+        }).end()
 
         // Bind show in context button
         .find('#image-context').on('click', '.show-context', function () {
@@ -110,12 +138,12 @@ var FigureLightbox = {};
         }).end()
 
         // Bind next figure button
-        .find('.next-fig-btn').on('click', function () {
+        .find('.next-fig-btn:not(.fig-btn-disabled)').on('click', function () {
           return that.nextImage();
         }).end()
 
         // Bind next figure button
-        .find('.prev-fig-btn').on('click', function () {
+        .find('.prev-fig-btn:not(.fig-btn-disabled)').on('click', function () {
           return that.prevImage();
         }).end()
 
@@ -135,10 +163,16 @@ var FigureLightbox = {};
           // Show both prev and next buttons
           var buttons = $(that.lbSelector).find('.fig-btn').show();
           if (data.index === 0) {
-            buttons.filter('.prev-fig-btn').hide(); // Hide prev button
+            buttons.filter('.prev-fig-btn').addClass('fig-btn-disabled'); // Hide prev button
+          }
+          else {
+            buttons.filter('.prev-fig-btn').removeClass('fig-btn-disabled');
           }
           if (data.index === (that.imgList.length - 1)) {
-            buttons.filter('.next-fig-btn').hide(); // Hide next button
+            buttons.filter('.next-fig-btn').addClass('fig-btn-disabled'); // Hide next button
+          }
+          else {
+            buttons.filter('.next-fig-btn').removeClass('fig-btn-disabled');
           }
 
 
@@ -190,6 +224,11 @@ var FigureLightbox = {};
     this.imgData.strippedDoi = this.imgData.doi.replace(/^info:doi\//, '');
     var currentIndex = this.getCurrentImageIndex();
     this.imgData.imgElement = $(this.imgList[currentIndex]);
+
+    //Add active class to selected image in drawer
+    $(this.lbSelector + ' #figures-list').find('.change-img-active').removeClass('change-img-active')
+        .end().find('.change-img:eq('+currentIndex+')').addClass('change-img-active');
+
     // Get data to populate image context
     var imageData = this.fetchImageData();
     var templateFunctions = {
@@ -200,7 +239,9 @@ var FigureLightbox = {};
     // Remove actual img context
     $(this.lbSelector + ' #image-context').children().remove().end()
         // Append new img context
-        .append(lbTemplate(templateData));
+        .append(lbTemplate(templateData))
+        //Add selector for links within captions
+        .find('#figure-description-wrapper a[href^="#"]').addClass('target_link');
     if (this.descriptionExpanded) {
       this.retractDescription();
     }
@@ -366,7 +407,7 @@ var FigureLightbox = {};
     $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function(){
       // If values differ, change them
       var matrix = panzoomInstance.getMatrix();
-      var newSliderValue = parseFloat(this.dataset.slider);
+      var newSliderValue = parseFloat(this.getAttribute('data-slider')/20);
       if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
         $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
         matrix[0] = matrix[3] = newSliderValue;
@@ -377,7 +418,7 @@ var FigureLightbox = {};
   FigureLightbox.bindSliderToPanZoom = function () {
     var that = this;
     this.$panZoomEl.off('panzoomzoom').on('panzoomzoom', function(e, panzoom, scale) {
-      $(that.zoomRangeSelector).foundation('slider', 'set_value', scale);
+      $(that.zoomRangeSelector).foundation('slider', 'set_value', scale*20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
     });
@@ -388,7 +429,6 @@ var FigureLightbox = {};
       that.bindPanZoomToSlider();
     });
   };
-
 
   FigureLightbox.buildImgUrl = function (imgDoi, options) {
     var defaultOptions = {

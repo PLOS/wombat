@@ -180,7 +180,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       top: 0;
       right: rem-calc(-180px);
       position: absolute;
-      background: $grey-dark;
+      background: transparentize($grey-dark, 0.2);
       @include single-transition();
 
       &.figures-list-open {
@@ -188,10 +188,20 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       }
 
       .change-img {
-        background: $grey-med;
+        background: transparentize($white, 0.75);
         cursor: pointer;
         padding: 4%;
         margin: 8% 2%;
+        transition: background 300ms ease-in-out;
+
+        &:hover {
+          background: transparentize($white, 0.65);
+        }
+
+        &.change-img-active {
+          @extend %brand-background;
+        }
+
         img {
           min-width: rem-calc(150px);
         }
@@ -300,6 +310,16 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
           font-family: $font-face-fancy;
           color: $white;
           cursor: pointer;
+
+          &.fig-btn-disabled {
+            cursor: default;
+            opacity: 0.4;
+            border-color: rgba(51, 51, 51, 0.70);
+            &:hover {
+              background-color: inherit;
+            }
+          }
+
           .icon {
             background-image: image-url('sprite.fv.png');
             width: $lb-small;

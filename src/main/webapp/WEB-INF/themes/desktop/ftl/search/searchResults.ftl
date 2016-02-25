@@ -51,7 +51,10 @@
 <#include "searchInputBar.ftl" />
 </form>
 
-<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
+<form name="searchResultsForm" id="searchResultsForm" action="<@siteLink handlerName='simpleSearch'/>"
+      method="get">
+  <input type="hidden" pattern=".{1,}" name="${advancedSearch?string('unformattedQuery',
+  'q')}" value="${query}" required/>
 <#if searchResults.numFound != 0>
     <section class="search-results-header">
         <div class="results-number">

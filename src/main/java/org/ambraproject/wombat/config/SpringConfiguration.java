@@ -29,6 +29,7 @@ import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.AppRootPage;
+import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
@@ -48,7 +49,7 @@ import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SearchFilterType;
 import org.ambraproject.wombat.model.SearchFilterTypeMap;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
-import org.ambraproject.wombat.rss.ArticleFeedView;
+import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
@@ -333,6 +334,11 @@ public class SpringConfiguration {
   @Bean
   public ArticleFeedView articleFeedView() {
     return new ArticleFeedView();
+  }
+
+  @Bean
+  public CommentFeedView commentFeedView() {
+    return new CommentFeedView();
   }
 
 }

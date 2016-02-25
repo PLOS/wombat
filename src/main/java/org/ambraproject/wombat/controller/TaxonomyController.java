@@ -82,6 +82,7 @@ public class TaxonomyController extends WombatController {
       parent = null;
     } else {
       List<String> categoryParams = params.get("c");
+      //todo: After cleaning up redirects and solving the 502 proxy error, this replace should be removed
       categoryParams.replaceAll(s -> s.replace("_", " "));
       parent = Joiner.on("/").join(categoryParams);
     }

@@ -32,7 +32,7 @@
         <div class="zoom-slider-container">
           <div class="range-slider-container">
             <span id="lb-zoom-min"></span>
-            <div class="range-slider round" data-slider data-options="step: 0.05; start: 1; end: 5; initial: 1;">
+            <div class="range-slider round" data-slider data-options="start: 20; end: 100; initial: 20;">
               <span class="range-slider-handle" role="slider" tabindex="0"></span>
               <span class="range-slider-active-segment"></span>
               <input type="hidden">
@@ -40,11 +40,13 @@
             <span id="lb-zoom-max"></span>
           </div>
         </div>
+        <% if(figureList.length > 1) { %>
         <div id="fig-btns-container">
           <span class="fig-btn all-fig-btn"><i class="icon icon-all"></i> All Figures</span>
           <span class="fig-btn next-fig-btn"><i class="icon icon-next"></i> Next</span>
           <span class="fig-btn prev-fig-btn"><i class="icon icon-prev"></i> Previous</span>
         </div>
+        <% } %>
       </div>
       <div id="image-context">
       </div>

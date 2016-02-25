@@ -224,6 +224,23 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     #btns-container {
       @extend %brand-background;
       position: relative;
+
+      &.one-figure-only {
+        .zoom-slider-container {
+          position: relative;
+          left: auto;
+          top: auto;
+          bottom: auto;
+          right: auto;
+          text-align: left;
+        }
+        .range-slider-container {
+          width: 33%;
+          margin-left: 33%;
+          float: left;
+        }
+      }
+
       .zoom-slider-container {
         position: absolute;
         left: 0;

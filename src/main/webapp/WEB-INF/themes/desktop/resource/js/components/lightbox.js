@@ -424,7 +424,7 @@ var FigureLightbox = {};
     });
 
     this.$panZoomEl.off('panzoomreset').on('panzoomreset', function(e) {
-      $(that.zoomRangeSelector).foundation('slider', 'set_value', 1);
+      $(that.zoomRangeSelector).foundation('slider', 'set_value', 20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
     });

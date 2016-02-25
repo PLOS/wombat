@@ -364,7 +364,8 @@ var FigureLightbox = {};
     $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function(){
       // If values differ, change them
       var matrix = panzoomInstance.getMatrix();
-      var newSliderValue = parseFloat(this.dataset.slider);
+      var newSliderValue = parseFloat(this.dataset.slider/20);
+      console.log(newSliderValue);
       if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
         $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
         matrix[0] = matrix[3] = newSliderValue;
@@ -375,7 +376,7 @@ var FigureLightbox = {};
   FigureLightbox.bindSliderToPanZoom = function () {
     var that = this;
     this.$panZoomEl.off('panzoomzoom').on('panzoomzoom', function(e, panzoom, scale) {
-      $(that.zoomRangeSelector).foundation('slider', 'set_value', scale);
+      $(that.zoomRangeSelector).foundation('slider', 'set_value', scale*20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
     });

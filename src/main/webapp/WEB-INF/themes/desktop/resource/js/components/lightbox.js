@@ -365,7 +365,6 @@ var FigureLightbox = {};
       // If values differ, change them
       var matrix = panzoomInstance.getMatrix();
       var newSliderValue = parseFloat(this.dataset.slider/20);
-      console.log(newSliderValue);
       if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
         $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
         matrix[0] = matrix[3] = newSliderValue;

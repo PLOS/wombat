@@ -363,6 +363,7 @@ var FigureLightbox = {};
 
   FigureLightbox.panZoom = function ($image) {
     var that = this;
+
     this.$panZoomEl = $image.panzoom({
       contain: false,
       minScale: 1
@@ -371,6 +372,8 @@ var FigureLightbox = {};
     /* Bind panzoom and slider to mutually control each other */
     this.bindPanZoomToSlider();
     this.bindSliderToPanZoom();
+
+
 
     this.$panZoomEl.parent().off('mousewheel').on('mousewheel', function(e) {
       e.preventDefault();
@@ -401,6 +404,19 @@ var FigureLightbox = {};
     });
   };
 
+  FigureLightbox.calculateImageTopPosition = function () {
+    var imageContainerHeight = $(this.lbSelector).find('.img-container').height();
+    var footerHeight = $(this.lbSelector).find('#lightbox-footer').height();
+    var headerHeight = $(this.lbSelector).find('.lb-header').height();
+    var imageHeight = this.$panZoomEl.height();
+    var imageTopPosition = (imageContainerHeight - headerHeight - footerHeight - imageHeight) / 2;
+
+    var panzoomInstance = this.$panZoomEl.panzoom('instance');
+    var matrix = panzoomInstance.getMatrix();
+    matrix[5] = imageTopPosition;
+    panzoomInstance.setMatrix(matrix);
+  };
+
   FigureLightbox.bindPanZoomToSlider = function () {
     var that = this;
     var panzoomInstance = that.$panZoomEl.panzoom('instance');
@@ -427,6 +443,7 @@ var FigureLightbox = {};
       $(that.zoomRangeSelector).foundation('slider', 'set_value', 20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
+      that.calculateImageTopPosition();
     });
   };
 

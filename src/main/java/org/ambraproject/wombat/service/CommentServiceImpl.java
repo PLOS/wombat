@@ -21,6 +21,7 @@ public class CommentServiceImpl implements CommentService {
 
   private static final String REPLIES_KEY = "replies";
   private static final String CREATOR_KEY = "creator";
+  //private static final String USER_PROFILE_ID_KEY = "userProfileID";
 
   /**
    * Iterate over a comment and all of its nested replies, applying a modification to each.
@@ -75,12 +76,11 @@ public class CommentServiceImpl implements CommentService {
    * Fetch data about a user from NED and put it in the comment, replacing the NED ID.
    */
   private void addCreatorData(Map<String, Object> comment) {
-    Map<String, Object> creator = (Map<String, Object>) comment.remove(CREATOR_KEY);
-    String nedId = creator.get("userId").toString();
+    String userProfileID = (String) comment.remove("userProfileID");
 
     IndividualComposite individual;
     try {
-      individual = userApi.requestObject("individuals/" + nedId, IndividualComposite.class);
+      individual = userApi.requestObject("individuals/" + userProfileID, IndividualComposite.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

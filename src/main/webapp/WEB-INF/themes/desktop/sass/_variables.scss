@@ -201,6 +201,20 @@ $line-height-icon: rem-calc(35);
 
 $button-height: 35px;
 
+// Here we define the breakpoints which will become the upper border for each media size.
+// The function em-calc() calculates the em-value from a px-value.
+$small-breakpoint:  em-calc(640)  !default;
+$medium-breakpoint: em-calc(1024) !default;
+$large-breakpoint:  em-calc(1440) !default;
+$xlarge-breakpoint: em-calc(1920) !default;
+
+// Here we define the lower and upper bounds for each media size
+$small-range:   (0, $small-breakpoint) !default; /* 0, 640px */
+$medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint) !default; /* 641px, 1024px */
+$large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint)  !default; /* 1025px, 1440px */
+$xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint) !default; /* 1441px, 1920px */
+$xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999)) !default; /* 1921px, ... */
+
 /*doc
 ---
 title: Setting basic defaults

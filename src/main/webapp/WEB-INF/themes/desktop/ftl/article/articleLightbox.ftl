@@ -28,15 +28,17 @@
       </aside>
     </div>
     <div id="lightbox-footer">
-      <div id="btns-container" class="lightbox-row">
-        <div class="range-slider-container">
-          <div id="lb-zoom-min"></div>
-          <div class="range-slider round" data-slider data-options="start: 20; end: 100; initial: 20;">
-            <span class="range-slider-handle" role="slider" tabindex="0"></span>
-            <span class="range-slider-active-segment"></span>
-            <input type="hidden">
+      <div id="btns-container" class="lightbox-row <% if(figureList.length <= 1) { print('one-figure-only') } %>">
+        <div class="zoom-slider-container">
+          <div class="range-slider-container">
+            <span id="lb-zoom-min"></span>
+            <div class="range-slider round" data-slider data-options="start: 20; end: 100; initial: 20;">
+              <span class="range-slider-handle" role="slider" tabindex="0"></span>
+              <span class="range-slider-active-segment"></span>
+              <input type="hidden">
+            </div>
+            <span id="lb-zoom-max"></span>
           </div>
-          <div id="lb-zoom-max"></div>
         </div>
         <% if(figureList.length > 1) { %>
         <div id="fig-btns-container">

@@ -4,6 +4,8 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -45,6 +47,42 @@ public class ClientEndpoint {
     return port;
   }
 
+
+  /**
+   * Recover a request's client-side URL.
+   * <p>
+   * If the request was forwarded by a proxy that supports the {@code "X-Forwarded-Host"} header, substitute the
+   * hostname and port provided by that header value. Else, return the raw request URL.
+   *
+   * @param request a request
+   * @return the client-side view of the URL, according to best available information
+   */
+  public static String getRequestUrl(HttpServletRequest request) {
+    ClientEndpoint endpoint = get(request);
+    URL requestUrl;
+    try {
+      requestUrl = new URL(request.getRequestURL().toString()); // does not have query string
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
+
+    String protocol = requestUrl.getProtocol();
+    String file = requestUrl.getFile();
+    String host = endpoint.getHostname();
+    OptionalInt port = endpoint.getPort();
+
+    URL clientUrl;
+    try {
+      clientUrl = port.isPresent()
+          ? new URL(protocol, host, port.getAsInt(), file)
+          : new URL(protocol, host, file);
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
+
+    String requestQuery = request.getQueryString();
+    return (requestQuery == null) ? clientUrl.toString() : clientUrl + "?" + requestQuery;
+  }
 
   /**
    * Recover a request's client-side hostname and port.

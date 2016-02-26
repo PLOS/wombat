@@ -68,8 +68,31 @@ var FigureLightbox = {};
     var that = this;
     // Escape key destroys and closes lightbox
     $(document).on('keyup.figure-lightbox', function(e) {
-      if (e.keyCode === 27) {
-        that.close();
+      if($(that.lbSelector).hasClass('open')) {
+        switch (e.which) {
+          case 27: // esc
+            that.close();
+            break;
+          case 37: // left
+            that.prevImage();
+            break;
+
+          case 38: // up
+            that.nextImage();
+            break;
+
+          case 39: // right
+            that.nextImage();
+            break;
+
+          case 40: // down
+            that.prevImage();
+            break;
+
+          default:
+            return; // exit this handler for other keys
+        }
+        e.preventDefault();
       }
     });
 
@@ -201,6 +224,11 @@ var FigureLightbox = {};
     this.imgData.strippedDoi = this.imgData.doi.replace(/^info:doi\//, '');
     var currentIndex = this.getCurrentImageIndex();
     this.imgData.imgElement = $(this.imgList[currentIndex]);
+
+    //Add active class to selected image in drawer
+    $(this.lbSelector + ' #figures-list').find('.change-img-active').removeClass('change-img-active')
+        .end().find('.change-img:eq('+currentIndex+')').addClass('change-img-active');
+
     // Get data to populate image context
     var imageData = this.fetchImageData();
     var templateFunctions = {
@@ -379,7 +407,7 @@ var FigureLightbox = {};
     $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function(){
       // If values differ, change them
       var matrix = panzoomInstance.getMatrix();
-      var newSliderValue = parseFloat(this.dataset.slider);
+      var newSliderValue = parseFloat(this.getAttribute('data-slider')/20);
       if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
         $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
         matrix[0] = matrix[3] = newSliderValue;
@@ -390,13 +418,13 @@ var FigureLightbox = {};
   FigureLightbox.bindSliderToPanZoom = function () {
     var that = this;
     this.$panZoomEl.off('panzoomzoom').on('panzoomzoom', function(e, panzoom, scale) {
-      $(that.zoomRangeSelector).foundation('slider', 'set_value', scale);
+      $(that.zoomRangeSelector).foundation('slider', 'set_value', scale*20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
     });
 
     this.$panZoomEl.off('panzoomreset').on('panzoomreset', function(e) {
-      $(that.zoomRangeSelector).foundation('slider', 'set_value', 1);
+      $(that.zoomRangeSelector).foundation('slider', 'set_value', 20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
     });

@@ -178,7 +178,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       overflow-y: scroll;
       max-width: rem-calc(180px);
       top: 0;
-      right: rem-calc(-180px);
+      right: rem-calc(-190px);
       position: absolute;
       background: transparentize($grey-dark, 0.2);
       @include single-transition();

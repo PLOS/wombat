@@ -78,7 +78,7 @@ var FigureLightbox = {};
             break;
 
           case 38: // up
-            that.nextImage();
+            that.prevImage();
             break;
 
           case 39: // right
@@ -86,7 +86,7 @@ var FigureLightbox = {};
             break;
 
           case 40: // down
-            that.prevImage();
+            that.nextImage();
             break;
 
           default:
@@ -188,6 +188,7 @@ var FigureLightbox = {};
     if (!nextImg) {
       return false;
     }
+    this.scrollDrawerToIndex(newIndex);
     this.switchImage(nextImg.getAttribute('data-doi'));
   };
 
@@ -197,7 +198,17 @@ var FigureLightbox = {};
     if (!prevImg) {
       return false;
     }
+    this.scrollDrawerToIndex(newIndex);
     this.switchImage(prevImg.getAttribute('data-doi'));
+  };
+
+  FigureLightbox.scrollDrawerToIndex = function (index) {
+    var $drawer = $(this.lbSelector + ' #figures-list');
+    var itemTopPosition = $drawer.find('.change-img:eq('+index+')').position().top;
+
+    if($drawer.hasClass('figures-list-open')) {
+      $drawer.scrollTop($drawer.scrollTop()+itemTopPosition);
+    }
   };
 
   FigureLightbox.getCurrentImageIndex = function () {

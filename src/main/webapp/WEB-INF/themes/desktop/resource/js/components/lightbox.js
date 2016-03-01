@@ -395,9 +395,17 @@ var FigureLightbox = {};
 
   FigureLightbox.zoom = function (zoomOut, focal) {
     zoomOut = zoomOut || false;
+    var panzoomInstance = this.$panZoomEl.panzoom('instance');
+    var matrix = panzoomInstance.getMatrix();
+
+
     this.$panZoomEl.panzoom('zoom', zoomOut, {
       increment: 0.05,
-      animate: false
+      animate: false,
+      focal: {
+        clientX: matrix[4]/matrix[3],
+        clientY: matrix[5]/matrix[3]
+      }
     });
   };
 
@@ -410,8 +418,26 @@ var FigureLightbox = {};
       var newSliderValue = parseFloat(this.getAttribute('data-slider')/20);
       if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
         $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
-        matrix[0] = matrix[3] = newSliderValue;
-        panzoomInstance.setMatrix(matrix);
+
+        var zoomOut = false;
+        var increment = 0;
+
+        if (newSliderValue > matrix[3]) {
+          increment = newSliderValue - matrix[3];
+        }
+        else {
+          zoomOut = true;
+          increment = matrix[3] - newSliderValue;
+        }
+
+        that.$panZoomEl.panzoom('zoom', zoomOut, {
+          increment: increment,
+          animate: false,
+          focal: {
+            clientX: matrix[4]/matrix[3],
+            clientY: matrix[5]/matrix[3]
+          }
+        });
       }
     });
   };

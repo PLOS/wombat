@@ -558,7 +558,7 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Performs a search and serves the result as XML to be read by an RSS reader
+   * Performs a simple search and serves the result as XML to be read by an RSS reader
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
@@ -567,7 +567,8 @@ public class SearchController extends WombatController {
    * @return RSS view of articles returned by the search
    * @throws IOException
    */
-  @RequestMapping(name = "searchFeed", value = "/search/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  @RequestMapping(name = "searchFeed", value = "/search/feed/{feedType:atom|rss}",
+      params = {"q", "!volume", "!subject"}, method = RequestMethod.GET)
   public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
@@ -584,6 +585,26 @@ public class SearchController extends WombatController {
 
     String feedTitle = representQueryParametersAsString(params);
     return getFeedModelAndView(site, feedType, feedTitle, searchResults);
+  }
+
+  /**
+   * Performs an advanced search and serves the result as XML to be read by an RSS reader
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  search parameters identical to the {@code search} method
+   * @return RSS view of articles returned by the search
+   * @throws IOException
+   */
+  @RequestMapping(name = "advancedSearchFeed", value = "/search/feed/{feedType:atom|rss}",
+      params = {"unformattedQuery", "!volume"}, method = RequestMethod.GET)
+  public ModelAndView getAdvancedSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
+      @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
+    String queryString = params.getFirst("unformattedQuery");
+    params.remove("unformattedQuery");
+    params.add("q", queryString);
+    return getSearchRssFeedView(request, model, site, feedType, params);
   }
 
   private static String representQueryParametersAsString(MultiValueMap<String, String> params) {

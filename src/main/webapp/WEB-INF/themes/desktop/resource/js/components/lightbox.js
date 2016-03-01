@@ -373,8 +373,6 @@ var FigureLightbox = {};
     this.bindPanZoomToSlider();
     this.bindSliderToPanZoom();
 
-
-
     this.$panZoomEl.parent().off('mousewheel').on('mousewheel', function(e) {
       e.preventDefault();
       $(that.lbContainerSelector).trigger('mousewheel-zoom.lightbox', e);

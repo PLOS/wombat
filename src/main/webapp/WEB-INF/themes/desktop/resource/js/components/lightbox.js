@@ -441,6 +441,7 @@ var FigureLightbox = {};
       $(that.zoomRangeSelector).foundation('slider', 'set_value', 20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
+      //Centers the image in the viewport everytime the panzoom resets
       that.calculateImageTopPosition();
     });
   };

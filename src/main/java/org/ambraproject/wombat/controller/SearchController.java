@@ -500,62 +500,6 @@ public class SearchController extends WombatController {
     return commonParams;
   }
 
-  /**
-   * Performs a search for all articles in the journal and serves the result as XML to be read by an RSS reader
-   *
-   * @param site site the request originates from
-   * @return RSS view of articles returned by the search
-   * @throws IOException
-   */
-  @RequestMapping(name = "browseAllFeed", value = "/browse/feed/{feedType:atom|rss}", method = RequestMethod.GET)
-  public ModelAndView getBrowseAllRssFeedView(@SiteParam Site site, @PathVariable String feedType)
-      throws IOException {
-
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setQuery("*:*")
-        .setStart(0)
-        .setRows(getFeedLength(site))
-        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
-        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
-        .setSimple(false)
-        .setIsRssSearch(true);
-    ArticleSearchQuery queryObj = query.build();
-
-    Map<String, ?> searchResults = solrSearchService.search(queryObj);
-
-    String feedTitle = ""; // Because it's for all articles, let it default to the journal title
-    return getFeedModelAndView(site, feedType, feedTitle, searchResults);
-  }
-
-  /**
-   * Performs a search based on subject area and serves the result as XML to be read by an RSS reader
-   *
-   * @param site site the request originates from
-   * @return RSS view of articles returned by the search
-   * @throws IOException
-   */
-  @RequestMapping(name = "browseFeed", value = "/browse/{subject}/feed/{feedType:atom|rss}", method = RequestMethod.GET)
-  public ModelAndView getBrowseRssFeedView(@SiteParam Site site,
-      @PathVariable String feedType, @PathVariable String subject) throws IOException {
-    String subjectName = subject.replace('_', ' ');
-
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setQuery("")
-        .setSubjects(ImmutableList.of(subjectName))
-        .setStart(0)
-        .setRows(getFeedLength(site))
-        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-        .setSortOrder(SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST)
-        .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME)
-        .setSimple(false)
-        .setIsRssSearch(true);
-    ArticleSearchQuery queryObj = query.build();
-
-    Map<String, ?> searchResults = solrSearchService.search(queryObj);
-
-    return getFeedModelAndView(site, feedType, subjectName, searchResults);
-  }
 
   /**
    * Performs a simple search and serves the result as XML to be read by an RSS reader

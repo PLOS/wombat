@@ -47,10 +47,6 @@
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${article.doi}" />
 
-<#if pubUrlPrefix?has_content>
-<link rel="canonical" href="${pubUrlPrefix}article?id=${article.doi}" />
-</#if>
-
 <#if article.description??>
   <#if twitterUsername?has_content>
   <meta name="twitter:card" content="summary" />

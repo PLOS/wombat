@@ -10,7 +10,7 @@ import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Image;
 import com.rometools.rome.feed.rss.Item;
-import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.AbstractView;
 import org.springframework.web.servlet.view.feed.AbstractAtomFeedView;
 import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
 
@@ -23,11 +23,13 @@ import java.util.stream.Collectors;
 
 abstract class AbstractFeedView<I> {
 
-  public final View getRssView() {
+  public final AbstractView getRssView() {
+    rssView.setContentType("application/rss+xml;charset=utf-8");
     return rssView;
   }
 
-  public final View getAtomView() {
+  public final AbstractView getAtomView() {
+    atomView.setContentType("application/atom+xml;charset=utf-8");
     return atomView;
   }
 
@@ -36,7 +38,7 @@ abstract class AbstractFeedView<I> {
   protected abstract Entry createAtomEntry(FeedMetadata feedMetadata, I input);
 
 
-  private final View rssView = new AbstractRssFeedView() {
+  private final AbstractView rssView = new AbstractRssFeedView() {
     @Override
     protected List<Item> buildFeedItems(Map<String, Object> model,
                                         HttpServletRequest request, HttpServletResponse response) {
@@ -82,7 +84,7 @@ abstract class AbstractFeedView<I> {
     }
   };
 
-  private final View atomView = new AbstractAtomFeedView() {
+  private final AbstractView atomView = new AbstractAtomFeedView() {
     @Override
     protected List<Entry> buildFeedEntries(Map<String, Object> model,
                                            HttpServletRequest request, HttpServletResponse response) {

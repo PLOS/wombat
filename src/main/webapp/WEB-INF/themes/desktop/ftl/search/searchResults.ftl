@@ -25,6 +25,10 @@
   <#assign journalName = v />
 </@themeConfig>
 
+<#if !isNewSearch??>
+  <#assign isNewSearch = false />
+</#if>
+
 <#if RequestParameters.q??>
   <#assign query = RequestParameters.q?html />
   <#assign advancedSearch = false />
@@ -152,7 +156,7 @@
 </#if>
 <#if isNewSearch>
   <section class="search-results-none-found">
-    <p>Please enter your search term above</p>
+    <p>${message}</p>
   </section>
 <#elseif searchResults.numFound == 0>
   <section class="search-results-none-found">

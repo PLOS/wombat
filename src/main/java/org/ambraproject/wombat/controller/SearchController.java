@@ -64,6 +64,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -90,6 +91,7 @@ public class SearchController extends WombatController {
   private ArticleFeedView articleFeedView;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
+  private final List<String> FORBIDDEN_SEARCH_CHARACTERS = Arrays.asList("\"", "\\", "/", "{", "}", "[", "]");
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
@@ -185,7 +187,7 @@ public class SearchController extends WombatController {
 
     private final String DEFAULT_START_DATE = "2003-01-01";
 
-    // doesn't include journal and date filter param names
+    // doesn"t include journal and date filter param names
     static final Set<String> FILTER_PARAMETER_NAMES = Stream.of(SingletonSearchFilterType.values()).map
         (SingletonSearchFilterType::getParameterName).collect(Collectors.toSet());
 
@@ -202,7 +204,7 @@ public class SearchController extends WombatController {
 
     /**
      * Extracts parameters from the raw parameter map, and performs some logic related to what parameters take
-     * precedence and default values when ones aren't present.
+     * precedence and default values when ones aren"t present.
      *
      * @param params
      * @throws IOException
@@ -252,7 +254,7 @@ public class SearchController extends WombatController {
 
     /**
      * Adds parameters (and derived values) back to the model needed for results page rendering. This only adds model
-     * attributes that are shared amongst different types of searches; it is the caller's responsibility to add the
+     * attributes that are shared amongst different types of searches; it is the caller"s responsibility to add the
      * search results and any other data needed.
      *
      * @param model   model that will be passed to the template
@@ -389,7 +391,7 @@ public class SearchController extends WombatController {
      *  Creates an instance of {SearchFilterItem} for active filters using url parameters
      *
      * @param activeFilterItems set of active filter items
-     * @param parameterMap request's query parameter
+     * @param parameterMap request"s query parameter
      * @param filterName name of the filter
      * @param filterValues values of the filter
      */
@@ -576,7 +578,10 @@ public class SearchController extends WombatController {
   // of individually listing the params.
 
   /**
-   * Performs a 'simple' or 'advanced' search, where the q parameter's value is a single search term.
+   * Performs a "simple" or "advanced" search. The query parameter is read, and if advanced search
+   * terms are found, an advanced search is performed. Otherwise, a simple search is performed. The
+   * only difference between simple and advanced searches is the use of dismax in the ultimate
+   * Solr query.
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
@@ -591,6 +596,12 @@ public class SearchController extends WombatController {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
+
+    if (!isValidSearchQuery(queryString)) {
+      return newAdvancedSearch(model, site, "Your query contains some invalid characters. " +
+          "Please try a new search above.");
+    }
+
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(queryString)
         .setSimple(commonParams.isSimpleSearch(queryString));
@@ -618,9 +629,13 @@ public class SearchController extends WombatController {
     return site.getKey() + "/ftl/search/searchResults";
   }
 
+  private boolean isValidSearchQuery(String queryString) {
+    return !Pattern.compile("\"|\\\\|/|\\[|\\]|\\{|\\}|:\\s|:$").matcher(queryString).find();
+  }
+
   /**
    * This is a catch for advanced searches originating from Old Ambra. It transforms the
-   * "unformattedQuery" param into "q" which is used by Wombat's new search.
+   * "unformattedQuery" param into "q" which is used by Wombat"s new search.
    * todo: remove this method once Old Ambra advanced search is destroyed
    */
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})
@@ -633,7 +648,11 @@ public class SearchController extends WombatController {
   }
 
   @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!volume"})
-  public String newAdvancedSearch(Model model, @SiteParam Site site) throws IOException {
+  public String newAdvancedSearch(Model model, @SiteParam Site site, String message) throws IOException {
+    if (Strings.isNullOrEmpty(message)) {
+      message = "Please enter your search term above";
+    }
+    model.addAttribute("message", message);
     model.addAttribute("isNewSearch", true);
     model.addAttribute("otherQuery", "");
     model.addAttribute("activeFilterItems", new HashSet<>());

@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.feed;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.rometools.rome.feed.atom.Category;
 import com.rometools.rome.feed.atom.Entry;
@@ -15,6 +16,8 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
 
@@ -44,6 +47,15 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
     return Date.from(Instant.parse((String) comment.get("lastModified")));
   }
 
+  private static String formatUserName(Map<String, Object> userProfile) {
+    String givenNames = Strings.emptyToNull((String) userProfile.get("givenNames"));
+    String surname = Strings.emptyToNull((String) userProfile.get("surname"));
+
+    return (givenNames == null && surname == null)
+        ? (String) userProfile.get("displayName")
+        : Stream.of(givenNames, surname).filter(Objects::nonNull).collect(Collectors.joining(" "));
+  }
+
   private String createCommentHtml(FeedMetadata feedMetadata, Map<String, Object> comment) {
     Map<String, Object> article = (Map<String, Object>) comment.get("parentArticle");
     String articleTitle = (String) Objects.requireNonNull(article.get("title"));
@@ -51,8 +63,12 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
     String header = String.format("<p>Comment on <a href=\"%s\">%s</a></p>\n",
         getArticleUrl(feedMetadata, article), articleTitle);
 
+    String author = formatUserName((Map<String, Object>) comment.get("creator"));
+    String authorAttribution = Strings.isNullOrEmpty(author) ? ""
+        : String.format("<p>By %s:</p>\n", author);
+
     CommentFormatting.FormattedComment formatted = new CommentFormatting.FormattedComment(comment);
-    return header + formatted.getBodyWithHighlightedText();
+    return header + authorAttribution + formatted.getBodyWithHighlightedText();
   }
 
   @Override

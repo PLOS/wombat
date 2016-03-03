@@ -405,31 +405,49 @@ var FigureLightbox = {};
     this.$panZoomEl.panzoom('reset', false);
   };
 
-  FigureLightbox.zoom = function (zoomOut, focal) {
-    zoomOut = zoomOut || false;
-    var panzoomInstance = this.$panZoomEl.panzoom('instance');
-    var matrix = panzoomInstance.getMatrix();
-
-
-    this.$panZoomEl.panzoom('zoom', zoomOut, {
-      increment: 0.05,
-      animate: false,
-      focal: {
-        clientX: matrix[4]/matrix[3],
-        clientY: matrix[5]/matrix[3]
-      }
-    });
-  };
-
-  FigureLightbox.calculateImageTopPosition = function () {
+  FigureLightbox.calculateViewportDimensions = function () {
     var imageContainerHeight = $(this.lbSelector).find('.img-container').height();
     var footerHeight = $(this.lbSelector).find('#lightbox-footer').height();
     var headerHeight = $(this.lbSelector).find('.lb-header').height();
+
+    return {
+      width: $(this.lbSelector).find('.img-container').width(),
+      height: imageContainerHeight - headerHeight - footerHeight
+    };
+  };
+
+  //Calculate the focal point in the middle of the parent to keep always the visible part in center
+  FigureLightbox.calculateFocalPoint = function () {
+    var $imageContainer = $(this.lbSelector).find('.img-container');
+    var focus = {
+      clientX: $imageContainer.width()/2,
+      clientY: $imageContainer.height()/2
+    };
+
+    return focus;
+  };
+
+  FigureLightbox.zoom = function (zoomOut) {
+    zoomOut = zoomOut || false;
+    var focal = this.calculateFocalPoint();
+    this.$panZoomEl.panzoom('zoom', zoomOut, {
+      increment: 0.05,
+      animate: false,
+      focal: focal
+    });
+  };
+
+  //Calculate the initial position in the center of the viewport
+  FigureLightbox.calculateImageInitialPosition = function () {
+    var viewportDimensions = this.calculateViewportDimensions();
     var imageHeight = this.$panZoomEl.height();
-    var imageTopPosition = (imageContainerHeight - headerHeight - footerHeight - imageHeight) / 2;
+    var imageWidth = this.$panZoomEl.width();
+    var imageTopPosition = (viewportDimensions.height - imageHeight) / 2;
+    var imageLeftPosition = (viewportDimensions.width - imageWidth) / 2;
 
     var panzoomInstance = this.$panZoomEl.panzoom('instance');
     var matrix = panzoomInstance.getMatrix();
+    matrix[4] = imageLeftPosition;
     matrix[5] = imageTopPosition;
     panzoomInstance.setMatrix(matrix);
   };
@@ -440,12 +458,14 @@ var FigureLightbox = {};
     $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function(){
       // If values differ, change them
       var matrix = panzoomInstance.getMatrix();
+      //Divide the slider value by 20 to keep the increment in 0.005
       var newSliderValue = parseFloat(this.getAttribute('data-slider')/20);
       if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
         $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
 
         var zoomOut = false;
         var increment = 0;
+        var focal = that.calculateFocalPoint();
 
         if (newSliderValue > matrix[3]) {
           increment = newSliderValue - matrix[3];
@@ -458,17 +478,16 @@ var FigureLightbox = {};
         that.$panZoomEl.panzoom('zoom', zoomOut, {
           increment: increment,
           animate: false,
-          focal: {
-            clientX: matrix[4]/matrix[3],
-            clientY: matrix[5]/matrix[3]
-          }
+          focal: focal
         });
       }
     });
   };
+
   FigureLightbox.bindSliderToPanZoom = function () {
     var that = this;
     this.$panZoomEl.off('panzoomzoom').on('panzoomzoom', function(e, panzoom, scale) {
+      //Multiply the scale value by 20 to keep proportional to the slider range
       $(that.zoomRangeSelector).foundation('slider', 'set_value', scale*20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
@@ -479,7 +498,7 @@ var FigureLightbox = {};
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
       //Centers the image in the viewport everytime the panzoom resets
-      that.calculateImageTopPosition();
+      that.calculateImageInitialPosition();
     });
   };
 

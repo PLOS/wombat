@@ -62,12 +62,19 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
     return Optional.of(LocalTime.of(publicationTime.get(0).intValue(), publicationTime.get(1).intValue()));
   }
 
-  private String getAbstractText(Map<String, ?> article) {
+  private static final Joiner AUTHOR_JOINER = Joiner.on(", ");
+
+  private String getContentText(Map<String, ?> article) {
+    List<String> authors = (List<String>) article.get("author_display");
+    String authorList = (authors == null || authors.isEmpty()) ? ""
+        : String.format("<p>by %s</p>\n", AUTHOR_JOINER.join(authors));
+
     String abstractText = Iterables.getOnlyElement((List<String>) article.get("abstract_primary_display"));
     if (Strings.isNullOrEmpty(abstractText)) {
       abstractText = Iterables.getOnlyElement((List<String>) article.get("abstract"));
     }
-    return abstractText;
+
+    return authorList + abstractText;
   }
 
 
@@ -86,7 +93,7 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
 
     List<String> authorList = (List<String>) article.get("author_display");
     if (authorList != null) {
-      item.setAuthor(Joiner.on(", ").join(authorList));
+      item.setAuthor(AUTHOR_JOINER.join(authorList));
     }
     item.setDescription(buildRssDescription(article));
 
@@ -95,7 +102,7 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
 
   private Description buildRssDescription(Map<String, ?> article) {
     Description description = new Description();
-    description.setValue(getAbstractText(article));
+    description.setValue(getContentText(article));
     return description;
   }
 
@@ -145,7 +152,7 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
   private List<Content> buildAtomContents(Map<String, ?> article) {
     Content content = new Content();
     content.setType("html");
-    content.setValue(getAbstractText(article));
+    content.setValue(getContentText(article));
     return ImmutableList.of(content);
   }
 

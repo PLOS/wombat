@@ -6,8 +6,10 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.model.FeedType;
-import org.ambraproject.wombat.rss.ArticleFeedView;
+import org.ambraproject.wombat.feed.CommentFeedView;
+import org.ambraproject.wombat.feed.FeedMetadataField;
+import org.ambraproject.wombat.feed.FeedType;
+import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -51,6 +53,9 @@ public class HomeController extends WombatController {
 
   @Autowired
   private ArticleFeedView articleFeedView;
+
+  @Autowired
+  private CommentFeedView commentFeedView;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -280,7 +285,7 @@ public class HomeController extends WombatController {
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setStart(0)
-        .setRows(30)
+        .setRows(getFeedLength(site))
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
@@ -288,13 +293,24 @@ public class HomeController extends WombatController {
     Map<String, ?> recentArticles = solrSearchApi.search(query.build());
 
     ModelAndView mav = new ModelAndView();
-    mav.addObject("site", site);
-    mav.addObject("solrResults", recentArticles.get("docs"));
-    if (feedType.equalsIgnoreCase(FeedType.ATOM.name())) {
-      mav.setView(articleFeedView.getArticleAtomView());
-    } else {
-      mav.setView(articleFeedView.getArticleRssView());
-    }
+    FeedMetadataField.SITE.putInto(mav, site);
+    FeedMetadataField.FEED_INPUT.putInto(mav, recentArticles.get("docs"));
+    mav.setView(FeedType.getView(articleFeedView, feedType));
     return mav;
   }
+
+  @RequestMapping(name = "commentFeed", value = "/feed/comments/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getCommentFeed(@SiteParam Site site, @PathVariable String feedType)
+      throws IOException {
+    String requestAddress = String.format("journals/%s?comments&limit=%d", site.getJournalKey(), getFeedLength(site));
+    List comments = soaService.requestObject(requestAddress, List.class);
+
+    ModelAndView mav = new ModelAndView();
+    FeedMetadataField.SITE.putInto(mav, site);
+    FeedMetadataField.TITLE.putInto(mav, "Comments");
+    FeedMetadataField.FEED_INPUT.putInto(mav, comments);
+    mav.setView(FeedType.getView(commentFeedView, feedType));
+    return mav;
+  }
+
 }

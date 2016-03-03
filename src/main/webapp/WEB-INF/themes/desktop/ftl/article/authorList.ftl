@@ -11,7 +11,7 @@
   <#if hasMeta> <a  <#else> <span </#if>data-author-id="${author_index?c}" class="author-name<#if
 !hasMeta> no-author-data</#if>" >
 
-  ${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if><#-- no space
+  ${author.fullName} <#if author.onBehalfOf??>, ${author.onBehalfOf}</#if><#-- no space
  --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space
  --><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if><#-- no space
  --><#if author.corresponding??> <span class="email">  </span></#if><#-- no space
@@ -51,6 +51,11 @@
           <#list author.customFootnotes as note>
           ${note}
           </#list>
+        </#if>
+        <#if author.orcid?? && author.orcid.authenticated>
+          <p id="authOrcid-${author_index?c}">
+           <a href="${author.orcid.value}">${author.orcid.value}</a>
+          </p>
         </#if>
         <a data-js-tooltip="tooltip_close" class="close" id="tooltipClose${author_index?c}"> &#x02A2F; </a>
       </div>

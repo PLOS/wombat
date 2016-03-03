@@ -33,6 +33,7 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchService;
 import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.ambraproject.wombat.util.ListUtil;
@@ -64,7 +65,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -91,7 +91,6 @@ public class SearchController extends WombatController {
   private ArticleFeedView articleFeedView;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
-  private final List<String> FORBIDDEN_SEARCH_CHARACTERS = Arrays.asList("\"", "\\", "/", "{", "}", "[", "]");
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
@@ -454,7 +453,7 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Examine the current @code{ArticleSearchQuery} object and build a single URL parameter
+   * Examine the current @code{ArticleSearchQuery} obj4ect and build a single URL parameter
    * string to append to the current search URL.
    *
    * @param q the search query to rebuild search URL parameters from
@@ -596,18 +595,17 @@ public class SearchController extends WombatController {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
-
-    if (!isValidSearchQuery(queryString)) {
-      return newAdvancedSearch(model, site, "Your query contains some invalid characters. " +
-          "Please try a new search above.");
-    }
-
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(queryString)
         .setSimple(commonParams.isSimpleSearch(queryString));
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
-    Map<?, ?> searchResults = solrSearchService.search(queryObj);
+    Map<?, ?> searchResults;
+    try {
+      searchResults = solrSearchService.search(queryObj);
+    } catch (ServiceRequestException sre) {
+      return handleInvalidSolrResponse(model, site, queryString, sre);
+    }
 
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
 
@@ -629,9 +627,20 @@ public class SearchController extends WombatController {
     return site.getKey() + "/ftl/search/searchResults";
   }
 
-  private boolean isValidSearchQuery(String queryString) {
-    return !Pattern.compile("\"|\\\\|/|\\[|\\]|\\{|\\}|:\\s|:$").matcher(queryString).find();
+  private String handleInvalidSolrResponse(Model model, Site site, String queryString,
+      ServiceRequestException sre) throws IOException {
+    String message;
+    if (sre.getResponseBody().contains("SyntaxError: Cannot parse")) {
+      log.warn("User attempted invalid search: " + queryString + "\n Exception: " + sre.getMessage());
+       message = "Your query is invalid and may contain one of the " +
+          "following invalid characters: \" [ ] { } \\ / <br/>Please try a new search above.";
+    } else {
+      log.error("Unknown error returned from Solr: " + sre.getMessage());
+      message = "There was a problem loading search results. Please edit your query or try again later";
+    }
+    return newAdvancedSearch(model, site, message);
   }
+
 
   /**
    * This is a catch for advanced searches originating from Old Ambra. It transforms the

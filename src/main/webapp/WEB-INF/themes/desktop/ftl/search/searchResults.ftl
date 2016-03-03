@@ -51,6 +51,7 @@
 <#include "searchInputBar.ftl" />
 </form>
 
+<#if !isNewSearch>
 <form name="searchResultsForm" id="searchResultsForm" action="<@siteLink handlerName='simpleSearch'/>"
       method="get">
   <input type="hidden" pattern=".{1,}" name="${advancedSearch?string('unformattedQuery',
@@ -148,8 +149,12 @@
 </div>
 </#if>
 </form>
-
-<#if searchResults.numFound == 0>
+</#if>
+<#if isNewSearch>
+  <section class="search-results-none-found">
+    <p>Please enter your search term above</p>
+  </section>
+<#elseif searchResults.numFound == 0>
   <section class="search-results-none-found">
     <p>You searched for articles that have all of the following:</p>
 
@@ -162,6 +167,7 @@
 </#if>
 
 <#--PG-shoudl this be a header?-->
+<#if !isNewSearch>
 <section class="results-container">
 
   <#include "searchFilters.ftl" />
@@ -237,6 +243,7 @@
 
 
 </section>
+</#if>
 <#include "../common/footer/footer.ftl" />
 <@renderJs />
 </body>

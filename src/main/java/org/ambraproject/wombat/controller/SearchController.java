@@ -16,7 +16,6 @@ package org.ambraproject.wombat.controller;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
@@ -631,6 +630,14 @@ public class SearchController extends WombatController {
     params.remove("unformattedQuery");
     params.add("q", queryString);
     return search(request, model, site, params);
+  }
+
+  @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!volume"})
+  public String newAdvancedSearch(Model model, @SiteParam Site site) throws IOException {
+    model.addAttribute("isNewSearch", true);
+    model.addAttribute("otherQuery", "");
+    model.addAttribute("activeFilterItems", new HashSet<>());
+    return site.getKey() + "/ftl/search/searchResults";
   }
 
   /**

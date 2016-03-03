@@ -187,7 +187,7 @@ public class SearchController extends WombatController {
 
     private final String DEFAULT_START_DATE = "2003-01-01";
 
-    // doesn"t include journal and date filter param names
+    // doesn't include journal and date filter param names
     static final Set<String> FILTER_PARAMETER_NAMES = Stream.of(SingletonSearchFilterType.values()).map
         (SingletonSearchFilterType::getParameterName).collect(Collectors.toSet());
 
@@ -204,7 +204,7 @@ public class SearchController extends WombatController {
 
     /**
      * Extracts parameters from the raw parameter map, and performs some logic related to what parameters take
-     * precedence and default values when ones aren"t present.
+     * precedence and default values when ones aren't present.
      *
      * @param params
      * @throws IOException
@@ -254,7 +254,7 @@ public class SearchController extends WombatController {
 
     /**
      * Adds parameters (and derived values) back to the model needed for results page rendering. This only adds model
-     * attributes that are shared amongst different types of searches; it is the caller"s responsibility to add the
+     * attributes that are shared amongst different types of searches; it is the caller's responsibility to add the
      * search results and any other data needed.
      *
      * @param model   model that will be passed to the template
@@ -391,7 +391,7 @@ public class SearchController extends WombatController {
      *  Creates an instance of {SearchFilterItem} for active filters using url parameters
      *
      * @param activeFilterItems set of active filter items
-     * @param parameterMap request"s query parameter
+     * @param parameterMap request's query parameter
      * @param filterName name of the filter
      * @param filterValues values of the filter
      */
@@ -635,7 +635,7 @@ public class SearchController extends WombatController {
 
   /**
    * This is a catch for advanced searches originating from Old Ambra. It transforms the
-   * "unformattedQuery" param into "q" which is used by Wombat"s new search.
+   * "unformattedQuery" param into "q" which is used by Wombat's new search.
    * todo: remove this method once Old Ambra advanced search is destroyed
    */
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})

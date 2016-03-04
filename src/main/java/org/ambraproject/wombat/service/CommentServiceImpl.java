@@ -60,7 +60,8 @@ public class CommentServiceImpl implements CommentService {
             "An IndividualComposite does not have an Individualprofile with source named " + AMBRA_SOURCE));
   }
 
-  private Individualprofile requestProfile(String userId) {
+  @Override
+  public Individualprofile requestProfile(String userId) {
     IndividualComposite individual;
     try {
       individual = userApi.requestObject("individuals/" + userId, IndividualComposite.class);

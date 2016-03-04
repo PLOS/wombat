@@ -1,10 +1,20 @@
 package org.ambraproject.wombat.service;
 
+import org.plos.ned_client.model.Individualprofile;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 public interface CommentService {
+
+  /**
+   * Retrieve a user profile.
+   *
+   * @param userId the user ID to use.
+   * @return a representation of the user profile object.
+   */
+  Individualprofile requestProfile(String userId);
 
   /**
    * Retrieve a comment and wire in additional data needed for display.

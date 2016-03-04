@@ -35,7 +35,6 @@ import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
-import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
@@ -57,6 +56,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
@@ -440,6 +440,13 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/comment";
   }
 
+  private static HttpUriRequest createJsonPostRequest(URI target, Object body) {
+    String json = new Gson().toJson(body);
+    HttpEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
+    RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(target).setEntity(entity);
+    return reqBuilder.build();
+  }
+
   /**
    * @param parentArticleDoi null if a reply to another comment
    * @param parentCommentUri null if a direct reply to an article
@@ -463,10 +470,8 @@ public class ArticleController extends WombatController {
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), COMMENT_NAMESPACE);
     ArticleComment comment = new ArticleComment(parentArticleDoi, request.getRemoteUser(),
         parentCommentUri, commentTitle, commentBody, ciStatement);
-    String articleCommentJson = new Gson().toJson(comment);
-    HttpEntity entity = new StringEntity(articleCommentJson, ContentType.APPLICATION_JSON);
 
-    HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
+    HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, comment);
     try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {
       String createdCommentUri = HttpMessageUtil.readResponse(response);
       return ImmutableMap.of("createdCommentUri", createdCommentUri);
@@ -488,9 +493,8 @@ public class ArticleController extends WombatController {
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(),
         String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
     ArticleCommentFlag flag = new ArticleCommentFlag(request.getRemoteUser(), flagCommentBody, reasonCode);
-    HttpEntity entity = new StringEntity(new Gson().toJson(flag), ContentType.APPLICATION_JSON);
 
-    HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
+    HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, flag);
     try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {
       return ImmutableMap.of(); // the "201 CREATED" status is all the AJAX client needs
     }

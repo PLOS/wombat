@@ -453,7 +453,7 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Examine the current @code{ArticleSearchQuery} obj4ect and build a single URL parameter
+   * Examine the current @code{ArticleSearchQuery} object and build a single URL parameter
    * string to append to the current search URL.
    *
    * @param q the search query to rebuild search URL parameters from

@@ -604,7 +604,7 @@ public class SearchController extends WombatController {
     try {
       searchResults = solrSearchService.search(queryObj);
     } catch (ServiceRequestException sre) {
-      return handleInvalidSolrResponse(model, site, queryString, sre);
+      return handleFailedSolrRequest(model, site, queryString, sre);
     }
 
     model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
@@ -627,7 +627,7 @@ public class SearchController extends WombatController {
     return site.getKey() + "/ftl/search/searchResults";
   }
 
-  private String handleInvalidSolrResponse(Model model, Site site, String queryString,
+  private String handleFailedSolrRequest(Model model, Site site, String queryString,
       ServiceRequestException sre) throws IOException {
     String message;
     if (sre.getResponseBody().contains("SyntaxError: Cannot parse")) {

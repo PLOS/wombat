@@ -464,7 +464,7 @@ public class ArticleController extends WombatController {
     ArticleComment comment = new ArticleComment(parentArticleDoi, request.getRemoteUser(),
         parentCommentUri, commentTitle, commentBody, ciStatement);
     String articleCommentJson = new Gson().toJson(comment);
-    HttpEntity entity = new StringEntity(articleCommentJson, ContentType.create("application/json"));
+    HttpEntity entity = new StringEntity(articleCommentJson, ContentType.APPLICATION_JSON);
 
     HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
     try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {
@@ -488,7 +488,7 @@ public class ArticleController extends WombatController {
     URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(),
         String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
     ArticleCommentFlag flag = new ArticleCommentFlag(request.getRemoteUser(), flagCommentBody, reasonCode);
-    HttpEntity entity = new StringEntity(new Gson().toJson(flag), ContentType.create("application/json"));
+    HttpEntity entity = new StringEntity(new Gson().toJson(flag), ContentType.APPLICATION_JSON);
 
     HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
     try (CloseableHttpResponse response = soaService.getResponse(commentPostRequest)) {

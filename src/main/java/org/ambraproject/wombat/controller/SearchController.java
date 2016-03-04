@@ -629,16 +629,14 @@ public class SearchController extends WombatController {
 
   private String handleFailedSolrRequest(Model model, Site site, String queryString,
       ServiceRequestException sre) throws IOException {
-    String message;
     if (sre.getResponseBody().contains("SyntaxError: Cannot parse")) {
       log.warn("User attempted invalid search: " + queryString + "\n Exception: " + sre.getMessage());
-       message = "Your query is invalid and may contain one of the " +
-          "following invalid characters: \" [ ] { } \\ / <br/>Please try a new search above.";
+       model.addAttribute("cannotParseQueryError", true);
     } else {
       log.error("Unknown error returned from Solr: " + sre.getMessage());
-      message = "There was a problem loading search results. Please edit your query or try again later";
+      model.addAttribute("unknownQueryError", true);
     }
-    return newAdvancedSearch(model, site, message);
+    return newAdvancedSearch(model, site);
   }
 
 
@@ -657,11 +655,7 @@ public class SearchController extends WombatController {
   }
 
   @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!volume"})
-  public String newAdvancedSearch(Model model, @SiteParam Site site, String message) throws IOException {
-    if (Strings.isNullOrEmpty(message)) {
-      message = "Please enter your search term above";
-    }
-    model.addAttribute("message", message);
+  public String newAdvancedSearch(Model model, @SiteParam Site site) throws IOException {
     model.addAttribute("isNewSearch", true);
     model.addAttribute("otherQuery", "");
     model.addAttribute("activeFilterItems", new HashSet<>());

@@ -276,7 +276,7 @@ var FigureLightbox = {};
           return parseFloat( value ) * 3/4;
         }});
       }
-      $viewMoreWrapper.dotdotdot({after: '#view-more'}).data('is-truncated', true);
+      //$viewMoreWrapper.dotdotdot({after: '#view-more'}).data('is-truncated', true);
     }
   };
 
@@ -291,8 +291,8 @@ var FigureLightbox = {};
   FigureLightbox.expandDescription = function () {
     $('#image-context').addClass('full-display');
     // Workaround to slide and fade at the same time
-    $('#view-more-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp();
-    $('#view-less-wrapper').slideDown('slow');
+    $('#view-more-wrapper').stop(true, true).fadeOut({ queue: false });
+    $('#view-less-wrapper').fadeIn('slow');
     this.descriptionExpanded = true;
   };
 

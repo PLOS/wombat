@@ -414,6 +414,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
         z-index: map-get($zindex, header);
 
         #figure-description-wrapper {
+          position:relative;
           #figure-title, title {
             display: inline-block;
             width: 100%;
@@ -441,6 +442,13 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
             &:hover {
               text-decoration: underline;
             }
+            position: absolute;
+            display: block;
+            right: -60px;
+            height: 100px;
+            transform: rotate(90deg);
+            transform-origin: left top 0;
+            top: 0;
           }
           i {
             line-height: $line-height-small;

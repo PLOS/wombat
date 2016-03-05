@@ -9,7 +9,6 @@ import com.rometools.rome.feed.rss.Guid;
 import com.rometools.rome.feed.rss.Item;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.service.CommentFormatting;
-import org.ambraproject.wombat.service.CommentService;
 import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,9 +24,6 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
 
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
-
-  @Autowired
-  private CommentService commentService;
 
   private String getCommentUrl(FeedMetadata feedMetadata, String commentId) {
     return feedMetadata.buildLink(link -> link
@@ -73,11 +69,8 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
     return header + authorAttribution + formatted.getBodyWithHighlightedText();
   }
 
-  private Individualprofile getCreatorProfile(Map<String, Object> comment) {
-    Map<String, Object> creator = (Map<String, Object>) comment.get("creator");
-    String userId = (String) creator.get("userId");
-    Individualprofile profile = commentService.requestProfile(userId);
-    return profile;
+  private static Individualprofile getCreatorProfile(Map<String, Object> comment) {
+    return (Individualprofile) comment.get("creator");
   }
 
   @Override

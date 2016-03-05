@@ -10,6 +10,7 @@ import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
 import org.ambraproject.wombat.feed.ArticleFeedView;
+import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -56,6 +57,9 @@ public class HomeController extends WombatController {
 
   @Autowired
   private CommentFeedView commentFeedView;
+
+  @Autowired
+  private CommentService commentService;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -302,8 +306,7 @@ public class HomeController extends WombatController {
   @RequestMapping(name = "commentFeed", value = "/feed/comments/{feedType:atom|rss}", method = RequestMethod.GET)
   public ModelAndView getCommentFeed(@SiteParam Site site, @PathVariable String feedType)
       throws IOException {
-    String requestAddress = String.format("journals/%s?comments&limit=%d", site.getJournalKey(), getFeedLength(site));
-    List comments = articleApi.requestObject(requestAddress, List.class);
+    List<Map<String, Object>> comments = commentService.getRecentJournalComments(site.getJournalKey(), getFeedLength(site));
 
     ModelAndView mav = new ModelAndView();
     FeedMetadataField.SITE.putInto(mav, site);

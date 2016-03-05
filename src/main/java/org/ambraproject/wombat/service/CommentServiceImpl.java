@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
@@ -40,7 +41,9 @@ public class CommentServiceImpl implements CommentService {
     modification.accept(comment);
 
     List<Map<String, Object>> replies = (List<Map<String, Object>>) comment.get(REPLIES_KEY);
-    replies.forEach(reply -> modifyCommentTree(reply, modification)); // recursion (terminal case is when replies is empty)
+    if (replies != null) {
+      replies.forEach(reply -> modifyCommentTree(reply, modification)); // recursion (terminal case is when replies is empty)
+    }
   }
 
   /**
@@ -60,8 +63,7 @@ public class CommentServiceImpl implements CommentService {
             "An IndividualComposite does not have an Individualprofile with source named " + AMBRA_SOURCE));
   }
 
-  @Override
-  public Individualprofile requestProfile(String userId) {
+  private Individualprofile requestProfile(String userId) {
     IndividualComposite individual;
     try {
       individual = userApi.requestObject("individuals/" + userId, IndividualComposite.class);
@@ -116,6 +118,16 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public List<Map<String, Object>> getArticleComments(String articleDoi) throws IOException {
     List<Map<String, Object>> comments = articleApi.requestObject(String.format("articles/%s?comments", articleDoi), List.class);
+    comments.forEach(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields));
+    addCreatorData(comments);
+    return comments;
+  }
+
+  @Override
+  public List<Map<String, Object>> getRecentJournalComments(String journalKey, int count) throws IOException {
+    Preconditions.checkArgument(count >= 0);
+    String requestAddress = String.format("journals/%s?comments&limit=%d", journalKey, count);
+    List<Map<String, Object>> comments = articleApi.requestObject(requestAddress, List.class);
     comments.forEach(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields));
     addCreatorData(comments);
     return comments;

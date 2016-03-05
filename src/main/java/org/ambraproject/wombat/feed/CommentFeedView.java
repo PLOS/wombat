@@ -39,29 +39,32 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
         .build());
   }
 
+  private static String getCreatorDisplayName(Map<String, Object> comment) {
+    Individualprofile creator = (Individualprofile) comment.get("creator");
+    return creator.getDisplayname();
+  }
+
   private static Date getCommentDate(Map<String, Object> comment) {
     return Date.from(Instant.parse((String) comment.get("lastModified")));
   }
 
   private static String formatUserName(Individualprofile userProfile) {
-    String givenNames = Strings.emptyToNull((userProfile.getFirstname()));
-    String surname = Strings.emptyToNull((String) userProfile.getLastname());
+    String givenNames = Strings.emptyToNull(userProfile.getFirstname());
+    String surname = Strings.emptyToNull(userProfile.getLastname());
 
     return (givenNames == null && surname == null)
-        ? (String) userProfile.getDisplayname()
+        ? userProfile.getDisplayname()
         : Stream.of(givenNames, surname).filter(Objects::nonNull).collect(Collectors.joining(" "));
   }
 
   private String createCommentHtml(FeedMetadata feedMetadata, Map<String, Object> comment) {
-    Individualprofile profile = getCreatorProfile(comment);
-
     Map<String, Object> article = (Map<String, Object>) comment.get("parentArticle");
     String articleTitle = (String) Objects.requireNonNull(article.get("title"));
 
     String header = String.format("<p>Comment on <a href=\"%s\">%s</a></p>\n",
         getArticleUrl(feedMetadata, article), articleTitle);
 
-    String author = formatUserName(profile);
+    String author = formatUserName((Individualprofile) comment.get("creator"));
     String authorAttribution = Strings.isNullOrEmpty(author) ? ""
         : String.format("<p>By %s:</p>\n", author);
 
@@ -69,20 +72,14 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
     return header + authorAttribution + formatted.getBodyWithHighlightedText();
   }
 
-  private static Individualprofile getCreatorProfile(Map<String, Object> comment) {
-    return (Individualprofile) comment.get("creator");
-  }
-
   @Override
   protected Item createRssItem(FeedMetadata feedMetadata, Map<String, Object> comment) {
     String commentId = (String) comment.get("annotationUri");
 
-    Individualprofile profile = getCreatorProfile(comment);
-
     Item item = new Item();
     item.setTitle((String) comment.get("title"));
     item.setLink(getCommentUrl(feedMetadata, commentId));
-    item.setAuthor(profile.getDisplayname());
+    item.setAuthor(getCreatorDisplayName(comment));
     item.setPubDate(getCommentDate(comment));
 
     Guid guid = new Guid();
@@ -104,12 +101,10 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
     String commentId = (String) comment.get("annotationUri");
     String commentTitle = (String) comment.get("title");
 
-    Individualprofile profile = getCreatorProfile(comment);
-
     Entry entry = new Entry();
     entry.setId(commentId);
     entry.setTitle(commentTitle);
-    entry.setAuthors(ImmutableList.of(createAtomPerson(profile.getDisplayname())));
+    entry.setAuthors(ImmutableList.of(createAtomPerson(getCreatorDisplayName(comment))));
     createAtomCategory(comment).map(ImmutableList::of).ifPresent(entry::setCategories);
 
     Link commentLink = createAtomLink(getCommentUrl(feedMetadata, commentId),

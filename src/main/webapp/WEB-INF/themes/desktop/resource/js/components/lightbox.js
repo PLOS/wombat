@@ -147,6 +147,11 @@ var FigureLightbox = {};
           return that.prevImage();
         }).end()
 
+        // Bind reset zoom button
+        .find('.reset-zoom-btn').on('click', function () {
+          return that.resetZoom();
+        }).end()
+
         .find('#view-more').on('click', function () {
           $('#view-more-wrapper').hide();
         }).end()

@@ -244,7 +244,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
 
       .zoom-slider-container {
         position: absolute;
-        left: 0;
+        left: rem-calc(98);
         top: 0;
         bottom: 0;
         right: rem-calc(318);
@@ -261,7 +261,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       }
       .range-slider-container {
         position: relative;
-        width: 60%;
+        width: 80%;
         padding: 0 rem-calc(27);
         text-align: left;
 
@@ -288,7 +288,6 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
           cursor: pointer;
           position: absolute;
           top: rem-calc(11px);
-          content: ' ';
         }
 
         #lb-zoom-min {
@@ -316,8 +315,15 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
         display: inline-block;
       }
 
-      #fig-btns-container {
+      .fig-btns-container {
         float: right;
+        
+        &.reset-zoom-wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        
         .fig-btn {
           display: block;
           float: right;
@@ -347,6 +353,12 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
           &:hover {
             background-color: $plos-default;
             color: $white;
+          }
+
+          &.reset-zoom-btn {
+            border-left-width: 0px;
+            border-right-width: 1px;
+            border-right-style: solid;
           }
 
           &.all-fig-btn {

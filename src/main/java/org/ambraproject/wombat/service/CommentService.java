@@ -26,6 +26,18 @@ public interface CommentService {
    */
   List<Map<String, Object>> getArticleComments(String articleDoi) throws IOException;
 
+  /**
+   * Retrieve the most recent comments among all articles from a journal and wire in additional data needed for
+   * display.
+   *
+   * @param journalKey the journal's key
+   * @param count      the number of comments to retrieve
+   * @return a list of size equal to {@code count} (or less, if there aren't that many comments) containing the most
+   * recent comments from the journal
+   * @throws IOException
+   */
+  List<Map<String, Object>> getRecentJournalComments(String journalKey, int count) throws IOException;
+
   public static class CommentNotFoundException extends RuntimeException {
     public CommentNotFoundException(String commentId, EntityNotFoundException cause) {
       super("No comment with ID: " + commentId, cause);

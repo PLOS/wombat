@@ -630,7 +630,7 @@ public class SearchController extends WombatController {
   private String handleFailedSolrRequest(Model model, Site site, String queryString,
       ServiceRequestException sre) throws IOException {
     if (sre.getResponseBody().contains("SyntaxError: Cannot parse")) {
-      log.warn("User attempted invalid search: " + queryString + "\n Exception: " + sre.getMessage());
+      log.info("User attempted invalid search: " + queryString + "\n Exception: " + sre.getMessage());
        model.addAttribute("cannotParseQueryError", true);
     } else {
       log.error("Unknown error returned from Solr: " + sre.getMessage());

@@ -72,13 +72,17 @@
         timeout:     20000
       }).done(function (data) {
         initData = data.data[0];
-        numberOfDays = date_check(pubDate, offsetDays);
+        var numberOfDays = date_check(pubDate, offsetDays);
+
         if (initData === undefined) {
-          displayError(errorText);
-        } else  if (numberOfDays === true) { // is date less than "offsetDays" number of  days ago
+          if (numberOfDays === true) { // is date less than "offsetDays" number of  days ago
             displayError(tooSoonText);
           }
-         else {
+          else {
+            displayError(errorText);
+          }
+        }
+        else {
 
           //get the numbers & add commas where needed
           saves = formatNumberComma(data.data[0].saved);
@@ -101,7 +105,11 @@
           build_parts('#almViews', views);
           build_parts('#almShares', shares);
 
-          var scopus = data.data[0].sources[4].metrics.total;
+          var scopus = 0;
+          if (data.data[0].sources !== undefined) {
+            scopus = data.data[0].sources[4].metrics.total;
+          }
+
           if (scopus > 0) {
             $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
           } else {

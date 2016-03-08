@@ -29,7 +29,7 @@
 
     function mediaReferenceSuccess (result) {
       //Put results into buckets
-      if(typeof result !== 'undefined') {
+      if(result !== undefined && result.sources !== undefined) {
         //assuming here the request was properly formatted to only get media information
         var mediaSource = result.sources[0];
 

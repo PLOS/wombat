@@ -105,7 +105,11 @@
           build_parts('#almViews', views);
           build_parts('#almShares', shares);
 
-          var scopus = data.data[0].sources[4].metrics.total;
+          var scopus = 0;
+          if (data.data[0].sources !== undefined) {
+            scopus = data.data[0].sources[4].metrics.total;
+          }
+
           if (scopus > 0) {
             $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
           } else {

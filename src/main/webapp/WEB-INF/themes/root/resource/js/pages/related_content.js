@@ -29,18 +29,19 @@
 
     function mediaReferenceSuccess (result) {
       //Put results into buckets
+      if(typeof result !== 'undefined') {
+        //assuming here the request was properly formatted to only get media information
+        var mediaSource = result.sources[0];
 
-      //assuming here the request was properly formatted to only get media information
-      var mediaSource = result.sources[0];
+        // don't display anything if there isn't any data
+        if (mediaSource.events.length > 0) {
+          var categorizedResults = categorizeReferences(mediaSource.events);
 
-      // don't display anything if there isn't any data
-      if (mediaSource.events.length > 0) {
-        var categorizedResults = categorizeReferences(mediaSource.events);
+          //Build up the UI
+          var docFragment = createReferencesHTML(categorizedResults);
 
-        //Build up the UI
-        var docFragment = createReferencesHTML(categorizedResults);
-
-        docFragment.show("blind", 500);
+          docFragment.show("blind", 500);
+        }
       }
     }
 

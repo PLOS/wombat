@@ -72,13 +72,17 @@
         timeout:     20000
       }).done(function (data) {
         initData = data.data[0];
-        numberOfDays = date_check(pubDate, offsetDays);
+        var numberOfDays = date_check(pubDate, offsetDays);
+
         if (initData === undefined) {
-          displayError(errorText);
-        } else  if (numberOfDays === true) { // is date less than "offsetDays" number of  days ago
+          if (numberOfDays === true) { // is date less than "offsetDays" number of  days ago
             displayError(tooSoonText);
           }
-         else {
+          else {
+            displayError(errorText);
+          }
+        }
+        else {
 
           //get the numbers & add commas where needed
           saves = formatNumberComma(data.data[0].saved);

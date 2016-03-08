@@ -37,7 +37,9 @@
       dataType: 'jsonp',
       timeout: 20000,
       success: function (response) {
-        successCallback(response.data[0]);
+        if(response.data.length > 0) {
+          successCallback(response.data[0]);
+        }
       },
       error: function (jqXHR, textStatus) {
         // TODO: Replace with better console logging

@@ -168,6 +168,9 @@ $(document).ready(function() {
   $('#btn-save-journal-alert').bind('click', saveAlert);
   $('.btn-cancel-alert').bind('click', removeModal);
   $('#btn-unsubscribe-journal-alert').bind('click', unsubscribeAlert);
+  $(".list-title").dotdotdot({
+    height      : 45
+  });
 });
 
 

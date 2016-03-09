@@ -170,8 +170,13 @@
 
         <dl id="searchResultsList" class="search-results-list">
           <#list searchResults.docs as doc>
+              <#if doc.title_display?? >
+                <#assign docTitle=doc.title_display />
+              <#else>
+                <#assign docTitle=doc.title />
+              </#if>
               <dt data-doi="${doc.id}" class="search-results-title">
-                  <a href="${doc.link}">${doc.title}</a>
+                  <a href="${doc.link}">${docTitle}</a>
               </dt>
               <dd id="article-result-${doc_index}">
                   <p class="search-results-authors">

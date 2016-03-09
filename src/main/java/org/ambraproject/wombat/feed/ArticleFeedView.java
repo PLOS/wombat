@@ -77,12 +77,16 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
     return authorList + abstractText;
   }
 
+  private static String getArticleTitle(Map<String, ?> article) {
+    return Strings.isNullOrEmpty((String) article.get("title_display")) ?
+        (String) article.get("title") : (String) article.get("title_display");
+  }
+
 
   @Override
   protected Item createRssItem(FeedMetadata feedMetadata, Map<String, Object> article) {
     Item item = new Item();
-    item.setTitle(Strings.isNullOrEmpty((String) article.get("title_display")) ?
-        (String) article.get("title") : (String) article.get("title_display"));
+    item.setTitle(getArticleTitle(article));
     item.setLink(getArticleLink(feedMetadata, article));
 
     Guid guid = new Guid();
@@ -111,8 +115,7 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
   @Override
   protected Entry createAtomEntry(FeedMetadata feedMetadata, Map<String, Object> article) {
     Entry entry = new Entry();
-    entry.setTitle(Strings.isNullOrEmpty((String) article.get("title_display")) ?
-        (String) article.get("title") : (String) article.get("title_display"));
+    entry.setTitle(getArticleTitle(article));
     entry.setId((String) article.get("id"));
 
     entry.setAlternateLinks(buildLinks(feedMetadata, article));
@@ -133,8 +136,7 @@ public final class ArticleFeedView extends AbstractFeedView<Map<String, Object>>
   private ImmutableList<Link> buildLinks(
       FeedMetadata feedMetadata, Map<String, ?> article) {
     String articleId = (String) article.get("id");
-    String title = Strings.isNullOrEmpty((String) article.get("title_display")) ?
-        (String) article.get("title") : (String) article.get("title_display");
+    String title = getArticleTitle(article);
 
     Link articleLink = createAtomLink(getArticleLink(feedMetadata, article),
         title, Optional.empty(), Optional.empty());

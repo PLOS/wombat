@@ -2,7 +2,7 @@
   <ul class="nav-secondary">
 
     <li class="nav-comments" id="nav-comments">
-      <a href="article/comments?id=${article.doi}">Reader Comments (${articleComments?size})</a>
+      <a href="article/comments?id=${article.doi}">Reader Comments (${article.commentCount})</a>
     </li>
 
     <li class="nav-media" id="nav-media" data-doi="${article.doi}">

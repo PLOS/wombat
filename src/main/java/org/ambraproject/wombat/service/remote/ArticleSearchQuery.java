@@ -21,11 +21,12 @@ public class ArticleSearchQuery {
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
   private static final String ARTICLE_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "eissn", "publication_date", "title", "cross_published_journal_name", "author_display", "article_type",
-      "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount", "alm_mendeleyCount", "alm_twitterCount",
-      "alm_facebookCount", "retraction", "expression_of_concern", "striking_image", "figure_table_caption"}));
+      "id", "eissn", "publication_date", "title", "title_display", "cross_published_journal_name",
+      "author_display", "article_type", "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount",
+      "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction", "expression_of_concern",
+      "striking_image", "figure_table_caption"}));
   private static final String RSS_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "publication_date", "title", "cross_published_journal_name", "author_display",
+      "id", "publication_date", "title", "title_display", "cross_published_journal_name", "author_display",
       "abstract", "abstract_primary_display"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;

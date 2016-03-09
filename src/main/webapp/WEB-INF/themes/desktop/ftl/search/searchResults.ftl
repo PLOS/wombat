@@ -25,6 +25,10 @@
   <#assign journalName = v />
 </@themeConfig>
 
+<#if !isNewSearch??>
+  <#assign isNewSearch = false />
+</#if>
+
 <#if RequestParameters.q??>
   <#assign query = RequestParameters.q?html />
   <#assign advancedSearch = false />
@@ -51,6 +55,7 @@
 <#include "searchInputBar.ftl" />
 </form>
 
+<#if !isNewSearch>
 <form name="searchResultsForm" id="searchResultsForm" action="<@siteLink handlerName='simpleSearch'/>"
       method="get">
   <input type="hidden" pattern=".{1,}" name="${advancedSearch?string('unformattedQuery',
@@ -148,8 +153,22 @@
 </div>
 </#if>
 </form>
-
-<#if searchResults.numFound == 0>
+</#if>
+<#if isNewSearch>
+  <section class="search-results-none-found">
+    <p>
+    <#if cannotParseQueryError??>
+      Your query is invalid and may contain one of the following invalid characters: " [ ] { } \ /
+      <br/>
+      Please try a new search above.
+    <#elseif unknownQueryError??>
+      There was a problem loading search results. Please edit your query or try again later.
+    <#else>
+      Please enter your search term above
+    </#if>
+    </p>
+  </section>
+<#elseif searchResults.numFound == 0>
   <section class="search-results-none-found">
     <p>You searched for articles that have all of the following:</p>
 
@@ -162,6 +181,7 @@
 </#if>
 
 <#--PG-shoudl this be a header?-->
+<#if !isNewSearch>
 <section class="results-container">
 
   <#include "searchFilters.ftl" />
@@ -242,6 +262,7 @@
 
 
 </section>
+</#if>
 <#include "../common/footer/footer.ftl" />
 <@renderJs />
 </body>

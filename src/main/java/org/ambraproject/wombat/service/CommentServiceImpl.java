@@ -73,6 +73,17 @@ public class CommentServiceImpl implements CommentService {
     return getAmbraProfile(individual);
   }
 
+  private Individualprofile requestProfileOrNotFound(String userId) {
+    try {
+      return requestProfile(userId);
+    } catch (RuntimeException e) {
+      Individualprofile result = new Individualprofile();
+      result.setDisplayname("not found");
+      return result;
+    }
+  }
+
+
   /**
    * Add display data related to comment creators to all comments. The argument may be a "forest" of multiple roots,
    * each with a tree of replies. Creator data will be added to all comments in each tree.
@@ -90,7 +101,7 @@ public class CommentServiceImpl implements CommentService {
     // For each distinct user ID, make a remote request for the profile data
     // (this is the bottleneck that we want to parallelize)
     Map<String, Individualprofile> profiles = userIds.parallelStream()
-        .collect(Collectors.toMap(Function.identity(), this::requestProfile));
+        .collect(Collectors.toMap(Function.identity(), this::requestProfileOrNotFound));
 
     // Insert the profile data into each comment
     rootComments.forEach(rootComment -> modifyCommentTree(rootComment, comment -> {

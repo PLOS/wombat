@@ -167,6 +167,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       max-width: 80%;
       max-height: 75%;
       display: block;
+      -moz-transform-origin: 0 0 !important;
     }
     text-align: center;
     height: 100%;

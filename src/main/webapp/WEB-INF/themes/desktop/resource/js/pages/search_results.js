@@ -47,6 +47,19 @@
   // initialize toggle for search filter item list
   plos_toggle.init();
 
+  if($('#searchControlBarForm').attr('data-advanced-search')) {
+    $('#simpleSearchLink, .edit-query').show();
+    $('#advancedSearchLink').hide();
+    AdvancedSearch.init('.advanced-search-container', function (err) {
+      // Only show after it has been initialized
+      $('.advanced-search-container').show();
+      $('.advanced-search-inputs-container input[type=text]').first().focus();
+
+
+    });
+
+  }
+
   // Advanced search behaviour
   $('.advanced-search-toggle-btn').on('click', function (e) {
     e.preventDefault();

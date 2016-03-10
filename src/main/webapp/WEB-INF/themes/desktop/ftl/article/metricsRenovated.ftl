@@ -34,6 +34,7 @@
 
 <#include "articleJs.ftl" />
 <@js src="resource/js/vendor/underscore-min.js"/>
+<@js src="resource/js/vendor/q.min.js"/>
 
 <@js src="resource/js/components/table_open.js"/>
 <@js src="resource/js/components/figshare.js"/>
@@ -44,7 +45,7 @@
 <@js src="resource/js/highcharts.js"/>
 
 
-
+<@js src="resource/js/util/alm_query_promise.js"/>
 <@js src="resource/js/metrics.js"/>
 <#include "../common/footer/footer.ftl" />
 

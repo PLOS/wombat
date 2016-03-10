@@ -7,7 +7,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -196,11 +195,6 @@ public class HttpMessageUtil {
     } else {
       return lastModified == null || lastModified > request.getDateHeader("If-Modified-Since");
     }
-  }
-
-  public static HttpUriRequest buildEntityPostRequest(URI fullUrl, HttpEntity entity) {
-    RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(fullUrl).setEntity(entity);
-    return reqBuilder.build();
   }
 
 }

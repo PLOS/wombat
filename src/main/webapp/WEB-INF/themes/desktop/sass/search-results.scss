@@ -215,6 +215,7 @@ $controls-gray: $grey-med-light;
   input[type="text"] {
     margin: 0;
     padding: 0;
+    padding-left: rem-calc(3);
     border: none;
     outline: 0;
     display: inline-block;

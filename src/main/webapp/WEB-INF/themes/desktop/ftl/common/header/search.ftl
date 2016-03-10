@@ -13,6 +13,12 @@
         </fieldset>
         <#if journal?has_content><input type="hidden" name="filterJournals" value="${journal}"/></#if>
     </form>
+
+    <a id="advSearch"
+       href="<@siteLink handlerName='newAdvancedSearch'/>">
+      advanced search
+    </a>
+
   </li>
 
 </#macro>

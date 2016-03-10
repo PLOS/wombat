@@ -93,6 +93,11 @@
             ${note}
             </#list>
           </#if>
+          <#if author.orcid?? && author.orcid.authenticated>
+            <p id="authOrcid-${author_index?c}">
+              <a href="${author.orcid.value}">${author.orcid.value}</a>
+            </p>
+          </#if>
         </div>
       </#if>
     </#list>

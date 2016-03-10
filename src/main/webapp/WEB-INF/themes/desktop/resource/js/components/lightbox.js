@@ -176,7 +176,7 @@ var FigureLightbox = {};
           }
 
 
-          $(that.lbSelector).find('#view-more, #view-less').on('click', function () {
+          $(that.lbSelector).find('#view-more').on('click', function () {
             that.toggleDescription();
           });
         });
@@ -286,25 +286,23 @@ var FigureLightbox = {};
     } else {
       this.expandDescription();
     }
+    console.log("expanded? " + this.descriptionExpanded)
   };
 
   FigureLightbox.expandDescription = function () {
     $('#image-context').addClass('full-display');
     // Workaround to slide and fade at the same time
-    $('#view-more-wrapper').stop(true, true).fadeOut({ queue: false });
-    $('#view-less-wrapper').fadeIn('slow');
+    $('.footer-text').addClass('open').stop(true, true).animate({ width: "100%" }, 1000);
     this.descriptionExpanded = true;
   };
 
   FigureLightbox.retractDescription = function () {
     var that = this;
+    $('#image-context').removeClass('full-display');
+
     // Workaround to slide and fade at the same time
-    $('#view-less-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp(500, function () {
-      $('#image-context').removeClass('full-display');
-      $('#view-more-wrapper').show();
-      // Dotdotdot in case description is initialized expanded
-      that.truncateDescription();
-    });
+    $('.footer-text').stop(true, true).animate({ width: "39%" }, 1000).removeClass('open');
+
     this.descriptionExpanded = false;
   };
 

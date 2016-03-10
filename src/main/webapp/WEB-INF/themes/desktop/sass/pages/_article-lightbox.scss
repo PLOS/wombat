@@ -404,6 +404,8 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       .footer-text {
         width: 39%;
         display: inline-block;
+        position: absolute;
+
         padding: 0 1% 0 1.1%;
         word-wrap: break-word;
         background: $grey-light;
@@ -414,7 +416,8 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
         z-index: map-get($zindex, header);
 
         #figure-description-wrapper {
-          position:relative;
+          //position:relative;
+          overflow-y: hidden;
           #figure-title, title {
             display: inline-block;
             width: 100%;
@@ -426,7 +429,14 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
             line-height: rem-calc(16);
           }
 
-          overflow-y: hidden;
+          &.open #figure-description-wrapper
+          {
+            overflow-y: scroll;
+            top: 0;
+            left:0;
+
+          }
+
           #view-more-wrapper {
             /* Needs static height for dotdotdot to trim text */
             max-height: $lb-description-bar-height;

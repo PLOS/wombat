@@ -65,13 +65,13 @@
         <span id="view-more">show more<i class="icon-arrow-right"></i></span>
       </div>
 
-      <div id="view-less-wrapper" style="<% descriptionExpanded? print('display:inline-block;') : '' %>" >
-        <span id="figure-title"><%= title %></span>
-        <p id="full-figure-description">
-          <%= description %>&nbsp;&nbsp;
-        </p>
-        <span id="view-less">show less<i class="icon-arrow-left"></i></span>
-      </div>
+      <#--<div id="view-less-wrapper" style="<% descriptionExpanded? print('display:inline-block;') : '' %>" >-->
+        <#--<span id="figure-title"><%= title %></span>-->
+        <#--<p id="full-figure-description">-->
+          <#--<%= description %>&nbsp;&nbsp;-->
+        <#--</p>-->
+        <#--<span id="view-less">show less<i class="icon-arrow-left"></i></span>-->
+      <#--</div>-->
 
     </div>
   </div>

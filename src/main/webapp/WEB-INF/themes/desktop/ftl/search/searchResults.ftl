@@ -169,7 +169,7 @@
     <#elseif unknownQueryError??>
       There was a problem loading search results. Please edit your query or try again later.
     <#else>
-      Please enter your search term above
+      Please enter your search term above.
     </#if>
     </p>
   </section>

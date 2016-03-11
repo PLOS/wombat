@@ -306,7 +306,14 @@ var FigureLightbox = {};
     $('#image-context').removeClass('full-display');
 
     // Workaround to slide and fade at the same time
-    $('.footer-text').stop(true, true).animate({ width: "39%" }, 1000).removeClass('open');
+    $('.footer-text').stop(true, true).animate({
+      width: "39%",
+    }, {
+      duration: 2000,
+      specialEasing: {
+        width: "easeOutCirc"
+      }
+    }).removeClass('open');
 
     this.descriptionExpanded = false;
   };

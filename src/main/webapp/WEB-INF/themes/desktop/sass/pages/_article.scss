@@ -547,6 +547,9 @@ $article-sidebar-width: 160;
 
   .dload-pdf {
     @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 11), $border-radius: 5px 0 0 5px, $hover: false);
+    width: 79%;
+    text-align: center;
+    white-space: nowrap;
     &:hover {
       background: $plos-default;
     }
@@ -560,6 +563,7 @@ $article-sidebar-width: 160;
     @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 8 0 11), $border-radius: 0 5px 5px 0, $hover: false);
     @include js-tooltip-container();
     @extend .icon-caret-down;
+    width: 20%;
     &:hover {
       cursor: pointer;
       background: $plos-default;

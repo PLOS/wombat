@@ -16,7 +16,6 @@ package org.ambraproject.wombat.controller;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
@@ -36,6 +35,7 @@ import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.lang.WordUtils;
@@ -577,7 +577,10 @@ public class SearchController extends WombatController {
   // of individually listing the params.
 
   /**
-   * Performs a 'simple' or 'advanced' search, where the q parameter's value is a single search term.
+   * Performs a "simple" or "advanced" search. The query parameter is read, and if advanced search
+   * terms are found, an advanced search is performed. Otherwise, a simple search is performed. The
+   * only difference between simple and advanced searches is the use of dismax in the ultimate
+   * Solr query.
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
@@ -597,7 +600,12 @@ public class SearchController extends WombatController {
         .setSimple(commonParams.isSimpleSearch(queryString));
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
-    Map<?, ?> searchResults = solrSearchApi.search(queryObj);
+    Map<?, ?> searchResults;
+    try {
+      searchResults = solrSearchApi.search(queryObj);
+    } catch (ServiceRequestException sre) {
+      return handleFailedSolrRequest(model, site, queryString, sre);
+    }
 
     model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
 
@@ -619,6 +627,19 @@ public class SearchController extends WombatController {
     return site.getKey() + "/ftl/search/searchResults";
   }
 
+  private String handleFailedSolrRequest(Model model, Site site, String queryString,
+      ServiceRequestException sre) throws IOException {
+    if (sre.getResponseBody().contains("SyntaxError: Cannot parse")) {
+      log.info("User attempted invalid search: " + queryString + "\n Exception: " + sre.getMessage());
+       model.addAttribute("cannotParseQueryError", true);
+    } else {
+      log.error("Unknown error returned from Solr: " + sre.getMessage());
+      model.addAttribute("unknownQueryError", true);
+    }
+    return newAdvancedSearch(model, site);
+  }
+
+
   /**
    * This is a catch for advanced searches originating from Old Ambra. It transforms the
    * "unformattedQuery" param into "q" which is used by Wombat's new search.
@@ -631,6 +652,14 @@ public class SearchController extends WombatController {
     params.remove("unformattedQuery");
     params.add("q", queryString);
     return search(request, model, site, params);
+  }
+
+  @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!volume"})
+  public String newAdvancedSearch(Model model, @SiteParam Site site) throws IOException {
+    model.addAttribute("isNewSearch", true);
+    model.addAttribute("otherQuery", "");
+    model.addAttribute("activeFilterItems", new HashSet<>());
+    return site.getKey() + "/ftl/search/searchResults";
   }
 
   /**

@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
@@ -68,7 +69,8 @@ public class SolrArticleAdapter {
    */
   public static SolrArticleAdapter adaptFromSolr(Map<String, ?> solrArticle) {
     String doi = (String) solrArticle.get("id");
-    String title = (String) solrArticle.get("title");
+    String title = Strings.isNullOrEmpty((String) solrArticle.get("title_display")) ? (String) solrArticle.get("title")
+        : (String) solrArticle.get("title_display");
     String eIssn = (String) solrArticle.get("eissn");
     String date = (String) solrArticle.get("publication_date");
     String strkImgURI = (String) solrArticle.get("striking_image");

@@ -654,7 +654,7 @@ public class SearchController extends WombatController {
     return search(request, model, site, params);
   }
 
-  @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!volume"})
+  @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!volume", "!subject"})
   public String newAdvancedSearch(Model model, @SiteParam Site site) throws IOException {
     model.addAttribute("isNewSearch", true);
     model.addAttribute("otherQuery", "");

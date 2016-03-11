@@ -5,8 +5,12 @@
 <![endif]-->
 <div class="dload-menu">
   <div class="dload-pdf">
-    <a href="<@siteLink handlerName="asset" queryParameters={"id": article.doi + ".PDF"} />"
+  <#if article.articlePdf??>
+    <a href="<@siteLink handlerName="asset" queryParameters={"id": article.articlePdf.file} />"
        id="downloadPdf" target="_blank">Download PDF</a>
+  <#else>
+    Download
+  </#if>
   </div>
   <div data-js-tooltip-hover="trigger" class="dload-hover">&nbsp;
     <ul class="dload-xml" data-js-tooltip-hover="target">

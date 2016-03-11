@@ -129,9 +129,8 @@
                 <#list articles as article>
                     <ul id="search-results">
                         <@siteLink handlerName="article" queryParameters={"id":article.doi} ; articleUrl>
-                            <#include "article/articleTruncateTitle.ftl" />
                             <li data-doi="${article.doi}" data-pdate="${article.date}" data-metricsurl="<@siteLink handlerName="articleMetrics" />">
-                                <h2><a href="${articleUrl}" title="${article.title}"><@truncateTitle article.title></@></a></h2>
+                                <h2><a href="${articleUrl}" title="${article.title}" class="list-title">${article.title}</a></h2>
                                 <p class="authors">
                                     <#list article.authors as author>
                                         <span class="author">${author.fullName}<#if author_has_next>,</#if></span>
@@ -191,6 +190,7 @@
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/components/search_results_alm.js"/>
 <@js src="resource/js/components/tooltip_hover.js"/>
+<@js src="resource/js/vendor/jquery.dotdotdot.js" />
 <@js src="resource/js/components/browse_results.js" />
 <@renderJs />
 

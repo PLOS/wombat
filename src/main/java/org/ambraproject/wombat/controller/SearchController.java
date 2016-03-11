@@ -645,7 +645,7 @@ public class SearchController extends WombatController {
    * "unformattedQuery" param into "q" which is used by Wombat's new search.
    * todo: remove this method once Old Ambra advanced search is destroyed
    */
-  @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})
+  @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume", "!subject"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     String queryString = params.getFirst("unformattedQuery");
@@ -654,7 +654,7 @@ public class SearchController extends WombatController {
     return search(request, model, site, params);
   }
 
-  @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!volume"})
+  @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!volume", "!subject"})
   public String newAdvancedSearch(Model model, @SiteParam Site site) throws IOException {
     model.addAttribute("isNewSearch", true);
     model.addAttribute("otherQuery", "");

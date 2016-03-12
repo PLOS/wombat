@@ -46,17 +46,19 @@ var AlmQuery = {};
   };
 
   AlmQuery.validateDOI = function (doi) {
-    var that = this;
+    var context = this;
     if(this.isDOIValid(doi)) {
       if(_.isString(doi)) {
         return this.formatDOI(doi);
       }
       else if (_.isArray(doi)) {
-        return _.map(doi, function (value) { return that.formatDOI(value); });
+        return _.map(doi, function (value) { return context.formatDOI(value); });
       }
     }
     else {
-      throw new Error('[AlmQuery::validateDOI] - Invalid DOI');
+      var e = new Error('[AlmQuery::validateDOI] - Invalid DOI');
+      e.name = 'InvalidDOIError';
+      throw e;
     }
   };
 
@@ -89,7 +91,9 @@ var AlmQuery = {};
     var deferred = Q.defer();
 
     if(this.config.host == null) {
-      deferred.reject(new Error('[AlmQuery::processRequest] - ALM API is not configured'));
+      var e = new Error('[AlmQuery::processRequest] - ALM API is not configured');
+      e.name = 'ALMNotConfiguredError';
+      deferred.reject(e);
     }
     else {
       $.ajax({
@@ -101,7 +105,9 @@ var AlmQuery = {};
           deferred.resolve(response);
         },
         error: function (jqXHR, textStatus) {
-          deferred.reject(new Error('[AlmQuery::processRequest] - Request failed to API'));
+          var e = new Error('[AlmQuery::processRequest] - Request failed to API');
+          e.name = 'APIRequestError';
+          deferred.reject(e);
         }
       });
     }
@@ -116,6 +122,15 @@ var AlmQuery = {};
   AlmQuery.getArticleSummary = function (doi) {
     var requestUrl = this.getRequestUrl({
       ids: doi
+    });
+
+    return this.processRequest(requestUrl);
+  };
+
+  AlmQuery.getArticleDetail = function (doi) {
+    var requestUrl = this.getRequestUrl({
+      ids: doi,
+      info: 'detail'
     });
 
     return this.processRequest(requestUrl);

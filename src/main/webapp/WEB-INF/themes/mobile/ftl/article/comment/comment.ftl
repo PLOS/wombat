@@ -41,14 +41,18 @@
   </#list>
 </#macro>
 
+<#if userApiError??>
+  <#include "../../common/userApiErrorMessage.ftl" />
+<#else>
   <div id="comment-content" class="content">
     <section id="comments-individual" class="comments">
       <section class="comment primary coloration-border-top">
-      <@commentBody comment=comment />
+        <@commentBody comment=comment />
       </section>
     </section>
   </div>
 </div>
+</#if>
 <section id="comment-info-window" class="modal-info-window top" data-method="full">
 
   <div class="modal-header clearfix">

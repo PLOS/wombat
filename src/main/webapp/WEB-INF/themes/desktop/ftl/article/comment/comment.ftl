@@ -205,7 +205,11 @@
           </#list>
         </div>
       </#macro>
-      <@renderComment comment=comment depth=0 replyTo={} />
+      <#if userApiError??>
+        <#include "../../common/userApiErrorMessage.ftl" />
+      <#else>
+        <@renderComment comment=comment depth=0 replyTo={} />
+      </#if>
 
       </div>
 

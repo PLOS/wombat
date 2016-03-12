@@ -195,7 +195,14 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
-    model.addAttribute("articleComments", commentService.getArticleComments(articleId));
+
+    try {
+      model.addAttribute("articleComments", commentService.getArticleComments(articleId));
+    } catch (UserApi.UserApiException e) {
+      log.error(e.getMessage(), e);
+      model.addAttribute("userApiError", e);
+    }
+
     return site + "/ftl/article/comment/comments";
   }
 
@@ -433,6 +440,14 @@ public class ArticleController extends WombatController {
       comment = commentService.getComment(commentId);
     } catch (CommentService.CommentNotFoundException e) {
       throw new NotFoundException(e);
+    } catch (UserApi.UserApiException e) {
+      log.error(e.getMessage(), e);
+      model.addAttribute("userApiError", e);
+
+      // Get a copy of the comment that is not populated with userApi data.
+      // This articleApi call is redundant to one that commentService.getComment would have made before throwing.
+      // TODO: Prevent extra articleApi call
+      comment = articleApi.requestObject(String.format("comments/" + commentId), Map.class);
     }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");

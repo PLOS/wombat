@@ -13,7 +13,7 @@ var DiscussedBox = {
     this.data = data;
     this.element.hide();
 
-    var sourcesUnordered = _.filter(data.sources, function (source) { return _.contains(context.sourceOrder, source.name) && source.metrics.total > 0; });
+    var sourcesUnordered = _.filter(this.data.sources, function (source) { return _.contains(context.sourceOrder, source.name) && source.metrics.total > 0; });
     var sourceOrderKeys = _.invert(_.object(_.pairs(this.sourceOrder)));
     this.sources = _.sortBy(sourcesUnordered, function(source) { return sourceOrderKeys[source.name] });
 
@@ -28,7 +28,7 @@ var DiscussedBox = {
           context.createTwitterTile(source);
           break;
         default:
-          context.createTile(source);
+          MetricTile.createTile(source, context.element);
           break;
       }
     });
@@ -50,7 +50,7 @@ var DiscussedBox = {
   };
 
   DiscussedBox.createFacebookTile = function (source) {
-    this.createTile(source);
+    MetricTile.createTile(source, this.element);
     var tooltipTemplate = _.template($('#metricsTileFacebookTooltipTemplate').html());
     var tooltipData = {
       likes: source.events[0].like_count,
@@ -66,22 +66,7 @@ var DiscussedBox = {
 
   DiscussedBox.createTwitterTile = function (source) {
     source.events_url = ALM_CONFIG.hostname + '/works/doi.org/' + ArticleData.doi + "?source_id=twitter";
-    this.createTile(source);
-  };
-
-  DiscussedBox.createTile = function (source) {
-    var tile = new MetricTile(source.display_name, null, WombatConfig.imgPath + "logo-" + source.name + '.png', source.metrics.total);
-    var tileElement = null;
-
-    if(_.has(source, 'events_url') && !_.isEmpty(source.events_url)) {
-      tile.url = source.events_url.replace(/"/g, "%22");
-      tileElement = tile.createWithLink();
-    }
-    else {
-      tileElement = tile.createWithNoLink();
-    }
-
-    $(this.element).append(tileElement);
+    MetricTile.createTile(source, this.element);
   };
 
 })(jQuery);

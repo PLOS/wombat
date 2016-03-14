@@ -162,7 +162,10 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="volume"/>(<xsl:value-of select="issue"/>):
         <xsl:value-of select="elocation-id"/>.
-        doi:<xsl:value-of select="article-id[@pub-id-type='doi']"/>
+        <a>
+          <xsl:attribute name="href">http://dx.doi.org/<xsl:value-of select="article-id[@pub-id-type='doi']"/></xsl:attribute>
+          http://dx.doi.org/<xsl:value-of select="article-id[@pub-id-type='doi']"/>
+        </a>
       </p>
       <!-- editors -->
       <xsl:for-each-group select="//contrib-group/contrib[@contrib-type='editor']" group-by="role">

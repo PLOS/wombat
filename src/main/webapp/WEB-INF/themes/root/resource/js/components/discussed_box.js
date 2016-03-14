@@ -44,7 +44,8 @@ var DiscussedBox = {
   };
 
   DiscussedBox.dataError = function () {
-
+    this.loadingEl.hide();
+    this.element.show();
   };
 
   DiscussedBox.createFacebookTile = function (source) {

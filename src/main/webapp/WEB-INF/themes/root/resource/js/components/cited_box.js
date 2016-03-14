@@ -1,12 +1,23 @@
 var CitedBox = {
   data: {},
-  sourceOrder: ['scopus','crossref','pubmed','wos', 'pmceurope', 'pmceuropedata', 'datacite', 'google']
+  sourceOrder: ['scopus','crossref','pubmed','wos', 'pmceurope', 'pmceuropedata', 'datacite']
 };
 
 (function ($) {
 
   CitedBox.element = $('#relatedCites');
   CitedBox.loadingEl = $('#relatedCitesSpinner');
+
+  var doi = encodeURI(ArticleData.doi);
+  var docURL = "http://dx.plos.org/" + doi.replace("info%3Adoi/", "");
+  var googleCitationUrl = WombatConfig.metrics.googleScholarCitationUrl + docURL;
+
+  CitedBox.formatName = function (name) {
+    name = name.replace(/\s/g, "");
+    // removing registered trademark symbol from web of science
+    name = name.replace("\u00ae", "");
+    return name;
+  };
 
   CitedBox.init = function (data) {
     var context = this;
@@ -17,7 +28,24 @@ var CitedBox = {
     var sourceOrderKeys = _.invert(_.object(_.pairs(this.sourceOrder)));
     this.sources = _.sortBy(sourcesUnordered, function(source) { return sourceOrderKeys[source.name] });
 
-
+    if(this.sources.length) {
+      _.each(this.sources, function (source) {
+          source.display_name = context.formatName(source.display_name);
+          MetricTile.createTile(source, context.element);
+      });
+      var googleTileSource = {
+        display_name: "GoogleScholar",
+        events_url: googleCitationUrl,
+        name: 'google-scholar',
+        metrics: {
+          total: "Search"
+        }
+      };
+      MetricTile.createTile(googleTileSource, this.element)
+    }
+    else {
+      this.dataError();
+    }
 
     this.loadingEl.hide();
     this.element.show();
@@ -29,21 +57,6 @@ var CitedBox = {
   };
 
   CitedBox.dataError = function () {
-
-  };
-
-  CitedBox.createTile = function (source) {
-    var tile = new MetricTile(source.display_name, null, WombatConfig.imgPath + "logo-" + source.name + '.png', source.metrics.total);
-    var tileElement = null;
-
-    if(_.has(source, 'events_url') && !_.isEmpty(source.events_url)) {
-      tileElement = tile.createWithLink();
-    }
-    else {
-      tileElement = tile.createWithNoLink();
-    }
-
-    $(this.element).append(tileElement);
   };
 
 })(jQuery);

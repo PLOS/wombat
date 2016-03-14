@@ -2,7 +2,7 @@ var MetricsTab = {};
 
 (function ($) {
 
-  MetricsTab.components = [DiscussedBox];
+  MetricsTab.components = [DiscussedBox, CitedBox];
   MetricsTab.loadedComponents = [];
 
   MetricsTab.isDataValid = function (data) {

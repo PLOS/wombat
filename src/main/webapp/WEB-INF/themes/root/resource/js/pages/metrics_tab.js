@@ -2,7 +2,7 @@ var MetricsTab = {};
 
 (function ($) {
 
-  MetricsTab.components = [DiscussedBox];
+  MetricsTab.components = [DiscussedBox, SavedBox];
   MetricsTab.loadedComponents = [];
 
   MetricsTab.isDataValid = function (data) {
@@ -55,6 +55,7 @@ var MetricsTab = {};
         _.each(context.getComponents(), function (value) { value.init(data); });
       })
       .fail(function (error) {
+        console.log(error);
         switch(error.name) {
           case 'NewArticleError':
             _.each(context.getComponents(), function (value) { value.newArticleError(); });

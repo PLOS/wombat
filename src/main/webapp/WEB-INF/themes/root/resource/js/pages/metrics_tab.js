@@ -5,7 +5,6 @@ var MetricsTab = {};
   MetricsTab.components = [DiscussedBox];
   MetricsTab.loadedComponents = [];
 
-
   MetricsTab.isDataValid = function (data) {
     return (!_.isUndefined(data) && _.has(data, 'sources'));
   };

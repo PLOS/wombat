@@ -70,7 +70,6 @@ var DiscussedBox = {
   };
 
   DiscussedBox.createTile = function (source) {
-
     var tile = new MetricTile(source.display_name, null, WombatConfig.imgPath + "logo-" + source.name + '.png', source.metrics.total);
     var tileElement = null;
 
@@ -83,6 +82,6 @@ var DiscussedBox = {
     }
 
     $(this.element).append(tileElement);
-  }
+  };
 
 })(jQuery);

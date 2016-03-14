@@ -25,7 +25,7 @@
 
   <div id="subject-term-template" style="display: none;">
     <li>
-      <a href="search?subject=__TAXONOMY_TERM_ESCAPED__&filterJournals=${journalKey}" class="browse-link
+      <a href="search/subject?subject=__TAXONOMY_TERM_ESCAPED__&filterJournals=${journalKey}" class="browse-link
       browse-left">__TAXONOMY_TERM_LEAF__</a>
       <a class="__CHILD_LINK_STYLE__" data-term="__TAXONOMY_TERM_FULL_PATH__">
         View Subcategories

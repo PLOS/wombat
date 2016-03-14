@@ -17,8 +17,6 @@ var DiscussedBox = {
     var sourceOrderKeys = _.invert(_.object(_.pairs(this.sourceOrder)));
     this.sources = _.sortBy(sourcesUnordered, function(source) { return sourceOrderKeys[source.name] });
 
-    console.log(this.sources);
-
     _.each(this.sources, function (source) {
       switch(source.name) {
         case 'facebook':

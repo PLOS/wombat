@@ -57,6 +57,11 @@ var CitedBox = {
   };
 
   CitedBox.dataError = function () {
+    var template = _.template($('#citedBoxNoDataTemplate').html());
+    var templateHtml = template({googleLink: googleCitationUrl});
+
+    this.element.append(templateHtml).show();
+    this.loadingEl.hide();
   };
 
 })(jQuery);

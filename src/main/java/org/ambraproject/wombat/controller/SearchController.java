@@ -19,6 +19,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -36,9 +37,12 @@ import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.lang.WordUtils;
+import org.plos.ned_client.model.Individualprofile;
+import org.plos.ned_client.model.IndividualComposite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +93,12 @@ public class SearchController extends WombatController {
 
   @Autowired
   private ArticleFeedView articleFeedView;
+
+  @Autowired
+  private UserApi userApi;
+
+  @Autowired
+  protected Gson gson;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -863,7 +873,50 @@ public class SearchController extends WombatController {
     model.addAttribute("searchResults", searchResults);
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());
+
+    String authId = request.getRemoteUser();
+    if (authId != null) {
+      model.addAttribute("subscribed", isUserSubscribed(authId, Strings.isNullOrEmpty(subject) ? "" : subjectName));
+    }
+
   }
+
+  private boolean isUserSubscribed(String authId, String subjectName) throws IOException {
+    String nedId = getUserIdFromAuthId(authId);
+    List<Object> alerts = userApi.requestObject(String.format("individuals/%s/alerts", nedId), List.class);
+    if (Strings.isNullOrEmpty(subjectName)) {
+      return !alerts.isEmpty();
+    } else {
+      boolean result = alerts.stream()
+        .anyMatch((v) -> {
+          String queryString = (String) ((Map<String, Object>) v).get("query");
+        Map<String, Object> queryObject = (Map<String, Object>) gson.fromJson(queryString, Map.class);
+        if (queryObject.containsKey("filterSubjectsDisjunction")) {
+            List<Object> subjectsList = (List<Object>) queryObject.get("filterSubjectsDisjunction");
+            boolean matched = subjectsList.stream()
+                    .anyMatch((s) -> {
+                    return subjectName.equalsIgnoreCase((String) s);
+                  });
+            return matched;
+          } else {
+            return false;
+          }
+      });
+      return result;
+    }
+  }
+
+  private String getUserIdFromAuthId(String authId) throws IOException {
+    IndividualComposite individualComposite = userApi.requestObject(
+        String.format("individuals/CAS/%s", authId), IndividualComposite.class);
+    // use nedid from any available profile.
+    Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
+        .findFirst()
+        .orElseThrow(() -> new RuntimeException(
+            "An IndividualComposite does not have an Individualprofile"));
+    return individualprofile.getNedid().toString();
+  }
+
 
   private void modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
     TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());

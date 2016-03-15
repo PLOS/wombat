@@ -674,7 +674,7 @@ public class SearchController extends WombatController {
 
   /**
    * Serves search result data. Used by the mobile taxonomy browser search results and
-   * desktop subject area landing pages. This endpoint serves all subject areas.
+   * desktop subject area landing pages. This endpoint returns the articles for all subject areas.
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
@@ -692,12 +692,12 @@ public class SearchController extends WombatController {
 
   /**
    * Serves search result data. Used by the mobile taxonomy browser search results and
-   * desktop subject area landing pages. This endpoint serves a single subject area as the new parent,
-   * and displays all children.
+   * desktop subject area landing pages. This endpoint returns the articles for a single subject area.
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
    * @param site    site the request originates from
+   * @param subject the subject area to be searched
    * @param params  all URL parameters
    * @return String indicating template location
    * @throws IOException

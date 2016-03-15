@@ -664,41 +664,12 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Serves search result data to be used by the mobile taxonomy browser. This endpoint serves all
-   * subject areas.
+   * Endpoint to render the subject area browser in mobile
    *
-   * @param request HttpServletRequest
-   * @param model   model that will be passed to the template
-   * @param site    site the request originates from
-   * @param params  all URL parameters
-   * @return String indicating template location
-   * @throws IOException
    */
-  @RequestMapping(name = "mobileTaxonomyBrowseAll", value = "/subjectAreaBrowse")
-  public String mobileTaxonomyBrowser(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
-    subjectAreaSearch(request, model, site, params, "");
-    return site.getKey() + "/ftl/mobileTaxonomyBrowser";
-  }
-
-  /**
-   * Serves search result data to be used by the mobile taxonomy browser when advancing through
-   * child terms. This endpoint serves a single subject area as the new parent, and displays
-   * all children.
-   *
-   * @param request HttpServletRequest
-   * @param model   model that will be passed to the template
-   * @param site    site the request originates from
-   * @param params  all URL parameters
-   * @return String indicating template location
-   * @throws IOException
-   */
-  @RequestMapping(name = "mobileTaxonomyBrowserSubjectArea", value = "/subjectAreaBrowse/{subject}")
-  public String mobileTaxonomyBrowserSubjectArea(HttpServletRequest request, Model model,
-      @SiteParam Site site, @RequestParam MultiValueMap<String, String> params,
-      @PathVariable("subject") String subject) throws IOException {
-    subjectAreaSearch(request, model, site, params, subject);
-    return site.getKey() + "/ftl/mobileTaxonomyBrowser";
+  @RequestMapping(name = "mobileSubjectAreaBrowser", value = "/subjectAreaBrowse")
+  public String mobileSubjectAreaBrowser(@SiteParam Site site) {
+    return site.getKey() + "/ftl/mobileSubjectAreaBrowser";
   }
 
   /**

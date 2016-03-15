@@ -663,28 +663,25 @@ public class SearchController extends WombatController {
     return site.getKey() + "/ftl/search/searchResults";
   }
 
-  /**
-   * Uses {@link #search(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
-   * browser
-   *
-   * @param request HttpServletRequest
-   * @param model   model that will be passed to the template
-   * @param site    site the request originates from
-   * @param params  all URL parameters
-   * @return String indicating template location
-   * @throws IOException
-   */
-  @RequestMapping(name = "subjectSearch", value = "/search/subject")
-  public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+  @RequestMapping(name = "mobileTaxonomyBrowseAll", value = "/subjectAreaBrowse")
+  public String mobileTaxonomyBrowseAll(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
-    params.add("q", "");
-    return search(request, model, site, params);
+    subjectAreaSearch(request, model, site, params, "");
+    return site.getKey() + "/ftl/mobileTaxonomyBrowser";
+  }
+
+  @RequestMapping(name = "mobileTaxonomyBrowseSubject", value = "/subjectAreaBrowse/{subject}")
+  public String mobileTaxonomyBrowseSubjectArea(HttpServletRequest request, Model model,
+      @SiteParam Site site, @RequestParam MultiValueMap<String, String> params,
+      @PathVariable("subject") String subject) throws IOException {
+    subjectAreaSearch(request, model, site, params, subject);
+    return site.getKey() + "/ftl/mobileTaxonomyBrowser";
   }
 
   @RequestMapping(name = "browse", value = "/browse")
-  public String browse(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String browseAll(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
-    subjectAreaLandingPageSearch(request, model, site, params, "");
+    subjectAreaSearch(request, model, site, params, "");
     return site.getKey() + "/ftl/browseSubjectArea";
   }
 
@@ -692,7 +689,7 @@ public class SearchController extends WombatController {
   public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
       throws IOException {
-    subjectAreaLandingPageSearch(request, model, site, params, subject);
+    subjectAreaSearch(request, model, site, params, subject);
     return site.getKey() + "/ftl/browseSubjectArea";
   }
 
@@ -706,7 +703,7 @@ public class SearchController extends WombatController {
    * @param subject the subject area to be search; return all articles if no subject area is provided
    * @throws IOException
    */
-  private void subjectAreaLandingPageSearch(HttpServletRequest request, Model model, Site site,
+  private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
       MultiValueMap<String, String> params, String subject) throws IOException {
 
     modelSubjectHierarchy(model, site, subject);
@@ -735,10 +732,7 @@ public class SearchController extends WombatController {
       params.add("filterJournals", site.getJournalKey());
     }
 
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery("")
         .setSimple(false);

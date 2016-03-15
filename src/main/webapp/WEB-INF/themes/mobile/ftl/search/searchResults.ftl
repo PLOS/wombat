@@ -51,8 +51,8 @@
   <div class="filter-container clearfix">
     <h3>
       ${searchResults.numFound} ${(searchResults.numFound == 1)?string("result", "results")} found
-      <#if RequestParameters.subject??>
-        in ${RequestParameters.subject}
+      <#if subjectName??>
+        in ${subjectName}
       </#if>
     </h3>
           <button class="filter-button coloration-white-on-color">
@@ -122,7 +122,7 @@
 
     <#assign numPages = (searchResults.numFound / resultsPerPage)?ceiling />
     <#assign currentPage = (RequestParameters.page!1)?number />
-    <#assign path = "search" />
+    <#assign path = "" />
     <#include "../common/paging.ftl" />
     <@paging numPages currentPage path parameterMap />
     </section>

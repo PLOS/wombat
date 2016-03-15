@@ -64,6 +64,7 @@ class ExceptionHandlerAdvisor {
     if (site == null) {
       return "//error";
     } else if (exception instanceof UserApi.UserApiException) {
+      log.error("UserApiException", exception);
       return site.getKey() + "/ftl/error/userApiError";
     } else {
       return site.getKey() + "/ftl/error/error";

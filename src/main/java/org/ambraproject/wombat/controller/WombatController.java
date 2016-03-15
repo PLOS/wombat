@@ -141,7 +141,13 @@ public abstract class WombatController {
       }
       String value = header.getValue();
       if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
-        return isDownloadRequest ? sanitizeAssetFilename(value) : null;
+        if (isDownloadRequest) {
+          return sanitizeAssetFilename(value);
+        } else {
+          // Suppress Content-Disposition header to ensure that the user does not get an "attachment" header.
+          // TODO: Instead, change "attachment" to "inline"?
+          return null;
+        }
       }
       return value;
     };
@@ -197,7 +203,8 @@ public abstract class WombatController {
     return true;
   }
 
-  protected static void forwardAssetResponse(CloseableHttpResponse remoteResponse, HttpServletResponse responseToClient, boolean isDownloadRequest)
+  protected static void forwardAssetResponse(CloseableHttpResponse remoteResponse, HttpServletResponse responseToClient,
+                                             boolean isDownloadRequest)
       throws IOException {
     if (remoteResponse.getStatusLine().getStatusCode() == org.apache.http.HttpStatus.SC_NOT_MODIFIED) {
       responseToClient.setStatus(org.apache.http.HttpStatus.SC_NOT_MODIFIED);

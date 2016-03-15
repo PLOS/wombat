@@ -37,6 +37,7 @@ public class FigureImageController extends WombatController {
    * @param requestFromClient
    * @param responseToClient
    * @param assetId           the identifier for an asset or asset file
+   * @param isDownloadRequest forward Content-Disposition headers with "attachment" value only if {@code true}
    * @throws IOException
    */
   private void serveAssetFile(HttpServletRequest requestFromClient,
@@ -55,8 +56,9 @@ public class FigureImageController extends WombatController {
   /**
    * Serve the identified asset file.
    *
-   * @param id     an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
-   * @param unique if present, assume the asset has a single file and serve that file; else, serve an identified file
+   * @param id       an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
+   * @param unique   if present, assume the asset has a single file and serve that file; else, serve an identified file
+   * @param download forward Content-Disposition headers with "attachment" value only if {@code true}
    */
   @RequestMapping(name = "asset", value = "/article/asset")
   public void serveAsset(HttpServletRequest request,

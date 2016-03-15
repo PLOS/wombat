@@ -44,7 +44,6 @@ public class FigureImageController extends WombatController {
                               String assetId,
                               boolean isDownloadRequest)
       throws IOException {
-    Collection<Header> headers = HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST);
     try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId,
             HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST))) {
       forwardAssetResponse(responseFromService, responseToClient, isDownloadRequest);

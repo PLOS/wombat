@@ -42,7 +42,7 @@
 </#macro>
 
 <#if userApiError??>
-  <#include "../../common/userApiErrorMessage.ftl" />
+  <#include "../../error/userApiErrorMessage.ftl" />
 <#else>
   <div id="comment-content" class="content">
     <section id="comments-individual" class="comments">

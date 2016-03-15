@@ -15,7 +15,7 @@
   -->
 
   <#if userApiError??>
-    <#include "../../common/userApiErrorMessage.ftl" />
+    <#include "../../error/userApiErrorMessage.ftl" />
   <#else>
     <#include "commentsBody.ftl" />
   </#if>

@@ -1,11 +1,11 @@
-<#include "common/htmlTag.ftl" />
+<#include "../common/htmlTag.ftl" />
 
 <#assign title = "Server Error" />
-<#include "common/head.ftl" />
+<#include "../common/head.ftl" />
 
 <body>
 <div id="container-main">
-<#include "common/header/headerContainer.ftl" />
+<#include "../common/header/headerContainer.ftl" />
   <div class="error">
 
     <h1>Something's Broken!</h1>
@@ -22,10 +22,10 @@
     </div>
   </div>
 
-<#include "common/footer/footer.ftl" />
+<#include "../common/footer/footer.ftl" />
 </div><#-- end container-main -->
 
-<#include "common/siteMenu/siteMenu.ftl" />
-<#include "common/bodyJs.ftl" />
+<#include "../common/siteMenu/siteMenu.ftl" />
+<#include "../common/bodyJs.ftl" />
 </body>
 </html>

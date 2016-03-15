@@ -64,9 +64,9 @@ class ExceptionHandlerAdvisor {
     if (site == null) {
       return "//error";
     } else if (exception instanceof UserApi.UserApiException) {
-      return site.getKey() + "/ftl/userApiError";
+      return site.getKey() + "/ftl/error/userApiError";
     } else {
-      return site.getKey() + "/ftl/error";
+      return site.getKey() + "/ftl/error/error";
     }
   }
 
@@ -85,7 +85,7 @@ class ExceptionHandlerAdvisor {
       return appRootPage.serveAppRoot();
     }
     response.setStatus(HttpStatus.NOT_FOUND.value());
-    String viewName = (site == null) ? "//notFound" : (site.getKey() + "/ftl/notFound");
+    String viewName = (site == null) ? "//notFound" : (site.getKey() + "/ftl/error/notFound");
     return new ModelAndView(viewName);
   }
 

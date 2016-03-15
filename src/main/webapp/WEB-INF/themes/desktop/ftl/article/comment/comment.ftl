@@ -206,7 +206,7 @@
         </div>
       </#macro>
       <#if userApiError??>
-        <#include "../../common/userApiErrorMessage.ftl" />
+        <#include "../../error/userApiErrorMessage.ftl" />
       <#else>
         <@renderComment comment=comment depth=0 replyTo={} />
       </#if>

@@ -5,18 +5,18 @@
       class="no-js">
 
 <#assign title = "Server Error" />
-<#include "common/head.ftl" />
+<#include "../common/head.ftl" />
 
-<#include "common/journalStyle.ftl" />
+<#include "../common/journalStyle.ftl" />
 <body class="static ${journalStyle}">
-<#include "common/header/headerContainer.ftl" />
+<#include "../common/header/headerContainer.ftl" />
 
    <article class="error-page">
      <h1>Something's Broken!</h1>
 
      <div class="content">
-       <p>We're sorry, user data and comments are unavailable. This is likely a temporary condition so please try again
-         later.</p>
+       <p>We're sorry, our server has encountered an internal error or misconfiguration and is unable to complete your
+         request. This is likely a temporary condition so please try again later.</p>
 
        <p>Thank you for your patience.</p>
 
@@ -26,7 +26,7 @@
 
      </div>
   </article>
-<#include "common/footer/footer.ftl" />
+<#include "../common/footer/footer.ftl" />
 <@js src="resource/js/global.js" />
 <@renderJs />
 

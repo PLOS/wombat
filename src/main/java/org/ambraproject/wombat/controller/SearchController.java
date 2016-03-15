@@ -663,21 +663,55 @@ public class SearchController extends WombatController {
     return site.getKey() + "/ftl/search/searchResults";
   }
 
+  /**
+   * Serves search result data to be used by the mobile taxonomy browser. This endpoint serves all
+   * subject areas.
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
   @RequestMapping(name = "mobileTaxonomyBrowseAll", value = "/subjectAreaBrowse")
-  public String mobileTaxonomyBrowseAll(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String mobileTaxonomyBrowser(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     subjectAreaSearch(request, model, site, params, "");
     return site.getKey() + "/ftl/mobileTaxonomyBrowser";
   }
 
-  @RequestMapping(name = "mobileTaxonomyBrowseSubject", value = "/subjectAreaBrowse/{subject}")
-  public String mobileTaxonomyBrowseSubjectArea(HttpServletRequest request, Model model,
+  /**
+   * Serves search result data to be used by the mobile taxonomy browser when advancing through
+   * child terms. This endpoint serves a single subject area as the new parent, and displays
+   * all children.
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
+  @RequestMapping(name = "mobileTaxonomyBrowserSubjectArea", value = "/subjectAreaBrowse/{subject}")
+  public String mobileTaxonomyBrowserSubjectArea(HttpServletRequest request, Model model,
       @SiteParam Site site, @RequestParam MultiValueMap<String, String> params,
       @PathVariable("subject") String subject) throws IOException {
     subjectAreaSearch(request, model, site, params, subject);
     return site.getKey() + "/ftl/mobileTaxonomyBrowser";
   }
 
+  /**
+   * Serves search result data. Used by the mobile taxonomy browser search results and
+   * desktop subject area landing pages. This endpoint serves all subject areas.
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
   @RequestMapping(name = "browse", value = "/browse")
   public String browseAll(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
@@ -685,6 +719,18 @@ public class SearchController extends WombatController {
     return site.getKey() + "/ftl/browseSubjectArea";
   }
 
+  /**
+   * Serves search result data. Used by the mobile taxonomy browser search results and
+   * desktop subject area landing pages. This endpoint serves a single subject area as the new parent,
+   * and displays all children.
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
   @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}")
   public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)

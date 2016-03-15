@@ -30,7 +30,7 @@
       <h2>Reader Comments (${article.commentCount.root})</h2>
 
     <#if userApiError??>
-      <#include "../../error/userApiErrorMessage.ftl" />
+      <#include "userApiErrorMessage.ftl" />
     <#else>
       <#include "postNewCommentLink.ftl" />
       <@postNewCommentLink article.doi />

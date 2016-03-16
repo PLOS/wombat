@@ -234,6 +234,7 @@ $article-sidebar-width: 160;
   h1 {
     font-size: $txt-size-xxxlarge; // TEMP-PROD: needs to be 26px or 28px
     line-height: normal;
+    margin-bottom: $pad-small;
 
     i, italic, named-content {
       font-style: italic;

@@ -141,16 +141,23 @@ public abstract class WombatController {
       }
       String value = header.getValue();
       if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
-        if (isDownloadRequest) {
-          return sanitizeAssetFilename(value);
-        } else {
-          // Suppress Content-Disposition header to ensure that the user does not get an "attachment" header.
-          // TODO: Instead, change "attachment" to "inline"?
-          return null;
+        if (!isDownloadRequest) {
+          value = setDispositionType(value, "inline");
         }
+        return sanitizeAssetFilename(value);
       }
       return value;
     };
+  }
+
+  private static final Pattern CONTENT_DISPOSITION_PATTERN = Pattern.compile("^\\s*\\w+\\s*(;.*)");
+
+  private static String setDispositionType(String dispositionHeaderValue, String newType) {
+    Matcher matcher = CONTENT_DISPOSITION_PATTERN.matcher(dispositionHeaderValue);
+    if (matcher.find()) {
+      return newType + matcher.group(1);
+    }
+    return dispositionHeaderValue;
   }
 
 

@@ -5,11 +5,11 @@
       class="no-js">
 
 <#assign title = "Server Error" />
-<#include "common/head.ftl" />
+<#include "../common/head.ftl" />
 
-<#include "common/journalStyle.ftl" />
+<#include "../common/journalStyle.ftl" />
 <body class="static ${journalStyle}">
-<#include "common/header/headerContainer.ftl" />
+<#include "../common/header/headerContainer.ftl" />
 
    <article class="error-page">
      <h1>Something's Broken!</h1>
@@ -26,7 +26,7 @@
 
      </div>
   </article>
-<#include "common/footer/footer.ftl" />
+<#include "../common/footer/footer.ftl" />
 <@js src="resource/js/global.js" />
 <@renderJs />
 

@@ -96,12 +96,12 @@ public class JsonService {
     } catch (JsonSyntaxException e) {
       String message = String.format("Could not deserialize %s from stream at: %s. Message: %s",
           responseClass.getName(), source, e.getMessage());
-      throw new RuntimeException(message, e);
+      throw new ServiceResponseFormatException(message, e);
     }
     if (value == null) {
       String message = String.format("Could not deserialize %s from null/empty stream at: %s",
           responseClass.getName(), source);
-      throw new RuntimeException(message);
+      throw new ServiceResponseFormatException(message);
     }
     return value;
   }

@@ -759,9 +759,10 @@ public class SearchController extends WombatController {
     Map<String, ?> searchResults = solrSearchService.search(queryObj);
 
     model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
-    model.addAttribute("searchResults", searchResults);
+    model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());
+    model.addAttribute("isBrowse", true);
   }
 
   private void modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {

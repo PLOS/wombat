@@ -56,7 +56,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     }
   }
 
-
   @Override
   public String getCompiledAssetDir() {
     return input.compiledAssetDir;
@@ -80,6 +79,11 @@ public class YamlConfiguration implements RuntimeConfiguration {
   @Override
   public ImmutableSet<String> getEnabledDevFeatures() {
     return ImmutableSet.copyOf(Objects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
+  }
+
+  @Override
+  public String getRootPagePath() {
+    return input.rootPagePath;
   }
 
   @Override
@@ -215,6 +219,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String solrServer;
     private String mailServer;
     private String compiledAssetDir;
+    private String rootPagePath;
     private List<String> enableDevFeatures;
     private List<Map<String, ?>> themes;
     private List<Map<String, ?>> sites;
@@ -253,6 +258,14 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setCompiledAssetDir(String compiledAssetDir) {
       this.compiledAssetDir = compiledAssetDir;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setRootPagePath(String rootPagePath) {
+      this.rootPagePath = rootPagePath;
     }
 
     /**

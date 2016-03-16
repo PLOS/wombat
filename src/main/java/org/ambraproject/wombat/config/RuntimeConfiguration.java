@@ -85,6 +85,10 @@ public interface RuntimeConfiguration {
   String getMailServer();
 
   /**
+   * Get the path of an HTML document to display on the root page
+   */
+  String getRootPagePath();
+  /**
    * @return the set of enabled dev features, configured in wombat.yaml.
    */
   ImmutableSet<String> getEnabledDevFeatures();

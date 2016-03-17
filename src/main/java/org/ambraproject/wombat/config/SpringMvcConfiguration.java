@@ -25,9 +25,6 @@ public class SpringMvcConfiguration extends WebMvcConfigurationSupport{
   @Autowired
   SiteSet siteSet;
 
-  @Autowired
-  private RuntimeConfiguration runtimeConfiguration;
-
   @Bean
   public RequestMappingHandlerMapping requestMappingHandlerMapping() {
     RequestMappingHandlerMapping handlerMapping = new SiteHandlerMapping();

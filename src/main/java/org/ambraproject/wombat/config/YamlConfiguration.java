@@ -208,12 +208,14 @@ public class YamlConfiguration implements RuntimeConfiguration {
       return new GsonBuilder().create().toJson(this);
     }
 
+    /* Input-defining fields appear below.
+     * SnakeYAML will reflectively inspect the names of these fields and use them as the input contract.
+     * All such fields are immutable by convention. They should be set only by the YAML deserializer.
+     * The intent of the @Deprecated annotation is to raise a warning in the IDE if a human refers
+     * to them in code. (The reflective code in the library won't care at runtime of course.)
 
-    // Input-defining fields appear below.
-    // SnakeYAML will reflectively inspect the names of these fields and use them as the input contract.
-    // All such fields are immutable by convention. They should be set only by the YAML deserializer.
-
-    // ---------------- Input fields (and boring boilerplate setters) are below this line ----------------
+     * ---------------- Input fields (and boring boilerplate setters) are below this line ----------------
+     */
 
     private String server;
     private String solrServer;

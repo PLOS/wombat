@@ -2,8 +2,7 @@ var MetricsTab = {};
 
 (function ($) {
 
-  MetricsTab.components = [DiscussedBox];
-  MetricsTab.loadedComponents = [];
+  MetricsTab.components = [(new DiscussedBox())];
 
   MetricsTab.isDataValid = function (data) {
     return (!_.isUndefined(data) && _.has(data, 'sources'));
@@ -19,48 +18,37 @@ var MetricsTab = {};
     return this.components;
   };
 
-  MetricsTab.onLoadedComponentRegistered = function (component) {
-
-  };
-
-  MetricsTab.registerLoadedComponent = function (component) {
-    if(_.indexOf(this.getComponents(), component) !== -1) {
-      this.loadedComponents.push(component);
-      this.onLoadedComponentRegistered(component);
-    }
-  };
-
   MetricsTab.init = function () {
     var query = AlmQuery.init();
-    var context = this;
+    var that = this;
 
     query.getArticleDetail(ArticleData.doi)
       .then(function (articleData) {
         var data = articleData.data[0];
-        if(context.isDataValid(articleData.data[0])) {
+        if(that.isDataValid(data)) {
           return data;
         }
-        else if(context.isArticleNew()) {
-          var e = new Error('[MetricsTab::init] - The article is too new to have data.');
-          e.name = 'NewArticleError';
-          throw e;
+        else if(that.isArticleNew()) {
+          var err = new Error('[MetricsTab::init] - The article is too new to have data.');
+          err.name = 'NewArticleError';
+          throw err;
         }
         else {
-          var e = new Error('[MetricsTab::init] - The article data is invalid');
-          e.name = 'InvalidDataError';
-          throw e;
+          var err = new Error('[MetricsTab::init] - The article data is invalid');
+          err.name = 'InvalidDataError';
+          throw err;
         }
       })
       .then(function (data) {
-        _.each(context.getComponents(), function (value) { value.init(data); });
+        _.each(that.getComponents(), function (value) { value.loadData(data); });
       })
       .fail(function (error) {
         switch(error.name) {
           case 'NewArticleError':
-            _.each(context.getComponents(), function (value) { value.newArticleError(); });
+            _.each(that.getComponents(), function (value) { value.newArticleError(); });
             break;
           default:
-            _.each(context.getComponents(), function (value) { value.dataError(); });
+            _.each(that.getComponents(), function (value) { value.dataError(); });
             break;
         }
       })

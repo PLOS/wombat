@@ -32,12 +32,7 @@ var AlmQuery = {};
    */
 
   AlmQuery.isDOIValid = function (doi) {
-    if(!_.isEmpty(doi) && (_.isString(doi) || _.isArray(doi))) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return !_.isEmpty(doi) && (_.isString(doi) || _.isArray(doi));
   };
 
   AlmQuery.formatDOI = function (doi) {

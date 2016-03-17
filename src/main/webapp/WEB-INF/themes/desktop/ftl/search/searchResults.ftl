@@ -11,11 +11,11 @@
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/components/range_datepicker.js"/>
+<@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/pages/advanced_search.js"/>
 <@js src="resource/js/pages/search_results.js"/>
 <@js src="resource/js/components/search_results_alm.js"/>
 <@js src="resource/js/components/toggle.js"/>
-<@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/vendor/underscore-min.js"/>
 
 <@themeConfig map="journal" value="journalKey" ; v>
@@ -27,6 +27,10 @@
 
 <#if !isNewSearch??>
   <#assign isNewSearch = false />
+</#if>
+
+<#if isNewSearch || (searchResults.numFound == 0)>
+  <#assign advancedOpen = true />
 </#if>
 
 <#if RequestParameters.q??>
@@ -51,7 +55,8 @@
 
 <#assign headerOmitMain = true />
 <#include "../common/header/headerContainer.ftl" />
-<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
+<form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>" method="get" <#if advancedOpen??> data-advanced-search="open"  </#if>
+>
 <#include "searchInputBar.ftl" />
 </form>
 
@@ -164,17 +169,16 @@
     <#elseif unknownQueryError??>
       There was a problem loading search results. Please edit your query or try again later.
     <#else>
-      Please enter your search term above
+      Please enter your search term above.
     </#if>
     </p>
   </section>
 <#elseif searchResults.numFound == 0>
+
   <section class="search-results-none-found">
     <p>You searched for articles that have all of the following:</p>
 
     <p>Search Term: "<span>${query}</span>"</p>
-
-    <p>Journal: "<span>${journalName}</span>"</p>
 
     <p>There were no results; please refine your search above and try again.</p>
   </section>
@@ -190,8 +194,13 @@
 
         <dl id="searchResultsList" class="search-results-list">
           <#list searchResults.docs as doc>
+              <#if doc.title_display?? >
+                <#assign docTitle=doc.title_display />
+              <#else>
+                <#assign docTitle=doc.title />
+              </#if>
               <dt data-doi="${doc.id}" class="search-results-title">
-                  <a href="${doc.link}">${doc.title}</a>
+                  <a href="${doc.link}">${docTitle}</a>
               </dt>
               <dd id="article-result-${doc_index}">
                   <p class="search-results-authors">

@@ -106,7 +106,7 @@ public class ExternalResourceController extends WombatController {
 
     Collection<Header> assetHeaders = HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST);
     try (CloseableHttpResponse repoResponse = editorialContentService.request(key, version, assetHeaders)) {
-      forwardAssetResponse(repoResponse, responseToClient);
+      forwardAssetResponse(repoResponse, responseToClient, false);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",
           key, version.orNull());

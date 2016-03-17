@@ -3,6 +3,8 @@
 
 //  use "// TEMP-PROD:" for temporary styles to match production until all tabs are re-styled
 $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padding: $pad-small; for  article-tab >tab-title > a
+$article-body-width: 755;
+$article-sidebar-width: 160;
 
 // extensible layout styles
 
@@ -21,12 +23,12 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .article-body {
-  @include plos-grid-column(755, $gutter: none);
+  @include plos-grid-column($article-body-width, $gutter: none);
 }
 
 .article-aside {
   @extend .hide-for-print;
-  @include plos-grid-column(180, $gutter: none);
+  @include plos-grid-column($article-sidebar-width, $gutter: right);
   float: right;
 }
 
@@ -45,7 +47,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   .anime-hide {
      opacity: 0;
   }
-  @include plos-grid-column(160, $gutter: none);
+  @include plos-grid-column($article-sidebar-width, $gutter: none);
   @extend .inline-list;
   margin: $pad-default $pad-default $pad-default 0;
   float: right;
@@ -133,7 +135,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     }
   }
     .unavailable {
-      width: rem-calc(160);
+      width: rem-calc($article-sidebar-width);
       border-right: 0;
       border-bottom: 0;
       font-size: $txt-size-xsmall;
@@ -144,7 +146,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     #loadingMetrics {
       @extend .unavailable;
       position: relative;
-      height: rem-calc(160);
+      height: rem-calc($article-sidebar-width);
 
       text-align: center;
       p {
@@ -160,7 +162,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
       @extend .unavailable;
       padding: rem-calc(105) $pad-small $pad-small $pad-default;
       background: $grey-light;
-      height: rem-calc(160);
+      height: rem-calc($article-sidebar-width);
     }
   }
 
@@ -170,7 +172,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 }
 
 .classifications {
-  @include plos-grid-column(755, $gutter: none);
+  @include plos-grid-column($article-body-width, $gutter: none);
   @extend %txt-transform;
   margin-top: $pad-smallish;
 
@@ -226,12 +228,13 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 
 .article-title-etc {
-  @include plos-grid-column(755, $gutter: none);
+  @include plos-grid-column($article-body-width, $gutter: none);
   margin-top: $pad-small;
 
   h1 {
     font-size: $txt-size-xxxlarge; // TEMP-PROD: needs to be 26px or 28px
     line-height: normal;
+    margin-bottom: $pad-small;
 
     i, italic, named-content {
       font-style: italic;
@@ -317,7 +320,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
   }
 
   .logo-close {
-    @include plos-grid-column(160, $gutter: none);
+    @include plos-grid-column($article-sidebar-width, $gutter: none);
     padding: 0 $pad-small $pad-xsmall 0;
     display: block;
     float: right;
@@ -545,7 +548,9 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
   .dload-pdf {
     @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 11), $border-radius: 5px 0 0 5px, $hover: false);
-
+    width: 79%;
+    text-align: center;
+    white-space: nowrap;
     &:hover {
       background: $plos-default;
     }
@@ -559,10 +564,10 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
     @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 8 0 11), $border-radius: 0 5px 5px 0, $hover: false);
     @include js-tooltip-container();
     @extend .icon-caret-down;
-
+    width: 20%;
     &:hover {
       cursor: pointer;
-      background: $plos-default;;
+      background: $plos-default;
     }
   }
 
@@ -610,7 +615,7 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 
 .aside-container {
   @include clearfix();
-  width: rem-calc(160);
+  width: rem-calc($article-sidebar-width);
   margin-bottom: $pad-default;
 
   h3 {
@@ -801,7 +806,7 @@ body.article .ui-widget-overlay {
       }
 
       .taxo-tooltip {
-        @include tooltip($width: 160px);
+        @include tooltip($width: $article-sidebar-width);
         position: absolute;
         top: 0;
         right: 0;

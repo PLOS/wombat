@@ -408,23 +408,24 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     #image-context {
       width: 100%;
       display: inline-block;
-      -webkit-transition: height 300ms ease-in-out;
-      -moz-transition: height 300ms ease-in-out;
-      -o-transition: height 300ms ease-in-out;
-      transition: height 300ms ease-in-out;
+      min-width: rem-calc($grid-width/2);
+      //-webkit-transition: height 300ms ease-in-out;
+      //-moz-transition: height 300ms ease-in-out;
+      //-o-transition: height 300ms ease-in-out;
+      //transition: height 300ms ease-in-out;
       min-height: rem-calc(80px);
-      max-height: rem-calc(80px);
+      height: rem-calc(80px);
       overflow-y: hidden;
 
-      &.full-display {
+      &.full-display-animate {
         width: 100%;
-        max-height: rem-calc(150px);
+        max-height: rem-calc(300px);
         overflow-y: scroll;
         .footer-text {
-          width: 100%;
+          //width: 100%;
         }
         %full-display-no-show {
-          display: none;
+          display: block;
         }
       }
 
@@ -452,7 +453,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
             line-height: rem-calc(16);
           }
 
-          overflow-y: hidden;
+          //overflow-y: hidden;
           #view-more-wrapper {
             /* Needs static height for dotdotdot to trim text */
             max-height: $lb-description-bar-height;
@@ -460,6 +461,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
 
           #view-less-wrapper {
             display: none;
+
           }
 
           #view-more, #view-less {

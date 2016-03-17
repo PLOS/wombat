@@ -50,7 +50,7 @@
 <@js src="resource/js/util/number.js"/>
 <@js src="resource/js/components/metric_tile.js"/>
 <@js src="resource/js/components/metrics_tab_component.js"/>
-<@js src="resource/js/components/discussed_box.js"/>
+<@js src="resource/js/components/discussed_section.js"/>
 <@js src="resource/js/pages/metrics_tab.js"/>
 <#include "../common/footer/footer.ftl" />
 

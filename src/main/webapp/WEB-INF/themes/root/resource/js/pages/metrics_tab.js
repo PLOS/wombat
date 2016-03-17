@@ -2,7 +2,7 @@ var MetricsTab = {};
 
 (function ($) {
 
-  MetricsTab.components = [(new DiscussedBox())];
+  MetricsTab.components = [(new DiscussedSection())];
 
   MetricsTab.isDataValid = function (data) {
     return (!_.isUndefined(data) && _.has(data, 'sources'));
@@ -19,7 +19,7 @@ var MetricsTab = {};
   };
 
   MetricsTab.init = function () {
-    var query = AlmQuery.init();
+    var query = new AlmQuery();
     var that = this;
 
     query.getArticleDetail(ArticleData.doi)

@@ -11,7 +11,13 @@
 <#include "../common/header/headerContainer.ftl" />
 
   <div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
-    <form id="sortAndFilterSearchResults" action="search" method="get">
+    <form id="sortAndFilterSearchResults"
+          <#if isBrowse??>
+            action="<@siteLink handlerName='browseSubjectArea' pathVariables={"subject":subject}/>"
+          <#else>
+            action="<@siteLink handlerName='simpleSearch'/>"
+          </#if>
+          method="get">
     <#if RequestParameters.q??>
       <input type="hidden" name="q" value="${RequestParameters.q}"/>
     </#if>
@@ -84,7 +90,7 @@
 
       <#-- We rely here on the fact that search in wombat is always restricted to the current
            journal.  If this changes, we'll have to pass in the site in the href.  -->
-        <a href="article?id=${doc.id}" class="article-title">${doc.title}</a>
+        <a href="${doc.link}" class="article-title">${doc.title}</a>
 
         <p class="author-list">
           <#list doc.author_display![] as author>

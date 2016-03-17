@@ -16,7 +16,7 @@
     <ul class="dload-xml" data-js-tooltip-hover="target">
       <li><a href="<@siteLink handlerName="citationDownloadPage" queryParameters={'id': article.doi} />"
              id="downloadCitation">Citation</a></li>
-      <li><a href="<@siteLink handlerName="asset" queryParameters={"id": article.doi + ".XML"} />"
+      <li><a href="<@siteLink handlerName="asset" queryParameters={"id": article.doi + ".XML", "download": ""} />"
              id="downloadXml">XML</a>
       </li>
     </ul>

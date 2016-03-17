@@ -1212,17 +1212,11 @@
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('article/figure/image?size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
-      </xsl:variable>
-      <xsl:variable name="bigImgDOI">
-        <xsl:value-of select="concat($imageURI,'.PNG_L')"/>
+        <xsl:value-of select="concat('article/figure/image?download&amp;size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('article/figure/image?size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
-      </xsl:variable>
-      <xsl:variable name="origImgDOI">
-        <xsl:value-of select="concat($imageURI,'.TIF')"/>
+        <xsl:value-of select="concat('article/figure/image?download&amp;size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="targetURI">

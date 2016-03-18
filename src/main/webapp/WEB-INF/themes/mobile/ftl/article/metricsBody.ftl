@@ -42,6 +42,53 @@
       </div>
     </script>
 
+    <script type="text/template" id="viewedHighchartTooltipTemplate">
+      <table id="mini" cellpadding="0" cellspacing="0">
+        <tr>
+          <td></td>
+          <td colspan="2">Views in <%= formattedDate %></td>
+          <td colspan="2">Views through <%= formattedDate %></td>
+        </tr>
+        <tr>
+          <th>Source</th>
+          <th class="header1">PLOS</th>
+          <th class="header2">PMC</th>
+          <th class="header1">PLOS</th>
+          <th class="header2">PMC</th>
+        </tr>
+        <tr>
+          <td>HTML</td>
+          <td class="data1"> <%= source.counterViews.totalHTML %></td>
+          <td class="data2"> <%= source.pmcViews.totalHTML.format(0, '.', ',') %>
+          </td>
+          <td class="data1"><%= source.counterViews.cumulativeHTML.format(0, '.', ',') %></td>
+          <td class="data2"><%= source.pmcViews.cumulativeHTML.format(0, '.', ',') %></td>
+        </tr>
+        <tr>
+          <td>PDF</td>
+          <td class="data1"><%= source.counterViews.totalPDF %></td>
+          <td class="data2"><%= source.pmcViews.totalPDF.format(0, '.', ',') %></td>
+          <td class="data1"><%= source.counterViews.cumulativePDF.format(0, '.', ',') %></td>
+          <td class="data2"><%= source.pmcViews.cumulativePDF.format(0, '.', ',') %></td>
+        </tr>
+        <tr>
+          <td>XML</td>
+          <td class="data1"><%= source.counterViews.totalXML %></td>
+          <td class="data2">n.a.</td>
+          <td class="data1"><%= source.counterViews.cumulativeXML.format(0, '.', ',') %></td>
+          <td class="data2">n.a.</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td class="data1"><%= source.counterViews.total %></td>
+          <td class="data2"><%= source.pmcViews.total.format(0, '.', ',') %></td>
+          <td class="data1"><%= source.counterViews.cumulativeTotal.format(0, '.', ',') %></td>
+          <td class="data2"><%= source.pmcViews.cumulativeTotal.format(0, '.', ',') %>
+          </td>
+        </tr>
+      </table>
+    </script>
+
     <script type="text/template" id="pageViewsSummary">
 
       <div id="pageViewsSummary">

@@ -8,6 +8,7 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.ambraproject.wombat.util.HttpMessageUtil;
+import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -35,15 +37,17 @@ public class FigureImageController extends WombatController {
    * @param requestFromClient
    * @param responseToClient
    * @param assetId           the identifier for an asset or asset file
+   * @param isDownloadRequest forward Content-Disposition headers with "attachment" value only if {@code true}
    * @throws IOException
    */
   private void serveAssetFile(HttpServletRequest requestFromClient,
                               HttpServletResponse responseToClient,
-                              String assetId)
+                              String assetId,
+                              boolean isDownloadRequest)
       throws IOException {
     try (CloseableHttpResponse responseFromService = articleApi.requestAsset(assetId,
             HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST))) {
-      forwardAssetResponse(responseFromService, responseToClient);
+      forwardAssetResponse(responseFromService, responseToClient, isDownloadRequest);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
@@ -52,15 +56,17 @@ public class FigureImageController extends WombatController {
   /**
    * Serve the identified asset file.
    *
-   * @param id     an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
-   * @param unique if present, assume the asset has a single file and serve that file; else, serve an identified file
+   * @param id       an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
+   * @param unique   if present, assume the asset has a single file and serve that file; else, serve an identified file
+   * @param download forward Content-Disposition headers with "attachment" value only if {@code true}
    */
   @RequestMapping(name = "asset", value = "/article/asset")
   public void serveAsset(HttpServletRequest request,
                          HttpServletResponse response,
                          @SiteParam Site site,
                          @RequestParam(value = "id", required = true) String id,
-                         @RequestParam(value = "unique", required = false) String unique)
+                         @RequestParam(value = "unique", required = false) String unique,
+                         @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(id);
 
@@ -95,7 +101,7 @@ public class FigureImageController extends WombatController {
     Map<?, ?> parentArticleMetadata = (Map<String, ?>) assetFileMetadata.get("parentArticle");
     validateArticleVisibility(site, parentArticleMetadata);
 
-    serveAssetFile(request, response, assetFileId);
+    serveAssetFile(request, response, assetFileId, booleanParameter(download));
   }
 
   private static final String ORIGINAL_FIGURE = "original";
@@ -109,7 +115,8 @@ public class FigureImageController extends WombatController {
                                HttpServletResponse response,
                                @SiteParam Site site,
                                @RequestParam("id") String figureId,
-                               @RequestParam("size") String figureSize)
+                               @RequestParam("size") String figureSize,
+                               @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(figureId);
     Map<String, ?> assetMetadata;
@@ -128,7 +135,7 @@ public class FigureImageController extends WombatController {
     }
     String assetFileId = (String) figureObject.get("file");
 
-    serveAssetFile(request, response, assetFileId);
+    serveAssetFile(request, response, assetFileId, booleanParameter(download));
   }
 
 }

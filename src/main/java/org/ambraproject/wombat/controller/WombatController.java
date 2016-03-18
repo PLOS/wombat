@@ -132,20 +132,33 @@ public abstract class WombatController {
   private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
       HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, HttpHeaders.LAST_MODIFIED,
       X_REPROXY_URL, X_REPROXY_CACHE_FOR);
-  protected static final HttpMessageUtil.HeaderFilter ASSET_RESPONSE_HEADER_FILTER = new HttpMessageUtil.HeaderFilter() {
-    @Override
-    public String getValue(Header header) {
+
+  protected static HttpMessageUtil.HeaderFilter getAssetResponseHeaderFilter(boolean isDownloadRequest) {
+    return (Header header) -> {
       String name = header.getName();
       if (!ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
         return null;
       }
       String value = header.getValue();
       if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
+        if (!isDownloadRequest) {
+          value = setDispositionType(value, "inline");
+        }
         return sanitizeAssetFilename(value);
       }
       return value;
+    };
+  }
+
+  private static final Pattern CONTENT_DISPOSITION_PATTERN = Pattern.compile("^\\s*\\w+\\s*(;.*)");
+
+  private static String setDispositionType(String dispositionHeaderValue, String newType) {
+    Matcher matcher = CONTENT_DISPOSITION_PATTERN.matcher(dispositionHeaderValue);
+    if (matcher.find()) {
+      return newType + matcher.group(1);
     }
-  };
+    return dispositionHeaderValue;
+  }
 
 
   private static final Pattern BAD_THUMBNAIL_EXTENSION = Pattern.compile("\\.PNG_\\w+$", Pattern.CASE_INSENSITIVE);
@@ -197,12 +210,13 @@ public abstract class WombatController {
     return true;
   }
 
-  protected static void forwardAssetResponse(CloseableHttpResponse remoteResponse, HttpServletResponse responseToClient)
+  protected static void forwardAssetResponse(CloseableHttpResponse remoteResponse, HttpServletResponse responseToClient,
+                                             boolean isDownloadRequest)
       throws IOException {
     if (remoteResponse.getStatusLine().getStatusCode() == org.apache.http.HttpStatus.SC_NOT_MODIFIED) {
       responseToClient.setStatus(org.apache.http.HttpStatus.SC_NOT_MODIFIED);
     } else {
-      HttpMessageUtil.copyResponseWithHeaders(remoteResponse, responseToClient, ASSET_RESPONSE_HEADER_FILTER);
+      HttpMessageUtil.copyResponseWithHeaders(remoteResponse, responseToClient, getAssetResponseHeaderFilter(isDownloadRequest));
     }
   }
 

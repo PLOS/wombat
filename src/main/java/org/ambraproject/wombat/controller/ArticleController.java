@@ -494,8 +494,7 @@ public class ArticleController extends WombatController {
     ArticleComment comment = new ArticleComment(parentArticleDoi, getUserIdFromAuthId(authId),
         parentCommentUri, commentTitle, commentBody, ciStatement);
 
-    String articleCommentJson = new Gson().toJson(comment);
-    HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, articleCommentJson);
+    HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, comment);
     try (CloseableHttpResponse response = articleApi.getResponse(commentPostRequest)) {
       String createdCommentUri = HttpMessageUtil.readResponse(response);
       return ImmutableMap.of("createdCommentUri", createdCommentUri);

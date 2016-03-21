@@ -75,7 +75,7 @@ var ViewedSection;
       for(var year=pubYear; year <= todayYear; year++) {
         //If current year is equal to pubYear and todayYear we limit the initial month to the pubMonth and limit the end to the todayMonth
         if(year == pubYear && year == todayYear) {
-          for(var month = pubMonth; month <= todayMonth-1; month++) {
+          for(var month = pubMonth; month <= todayMonth; month++) {
             history[this.getYearMonthString(month, year, '-')] = this.createHistoryMonthStructure(month, year);
           }
         }
@@ -87,7 +87,7 @@ var ViewedSection;
         }
         //If current year is equal to todayYear and different pubYear we limit the initial month to 1 and limit the end to todayMonth
         else if(year != pubYear && year == todayYear) {
-          for(var month = 1; month <= todayMonth-1; month++) {
+          for(var month = 1; month <= todayMonth; month++) {
             history[this.getYearMonthString(month, year, '-')] = this.createHistoryMonthStructure(month, year);
           }
         }
@@ -211,10 +211,10 @@ var ViewedSection;
 
       var counterViews = this.filterEvents('counter', pubYearMonth);
       var pmcViews = this.filterEvents('pmc', pubYearMonth);
-      var relativeMetric = _.filter(this.data.sources, function (source) { return source.name.toLowerCase() == 'relativemetrics'});
+      var relativeMetric = _.filter(this.data.sources, function (source) { return source.name.toLowerCase() == 'relativemetric'});
 
       if(relativeMetric[0] && relativeMetric[0].events && relativeMetric[0].events.length > 0) {
-        filteredData.relativeMetricData = relativeMetric;
+        filteredData.relativeMetricData = relativeMetric.events;
       }
 
       /*
@@ -410,6 +410,13 @@ var ViewedSection;
           .css("height", "200px"));
 
         var chart = new Highcharts.Chart(highchartOptions);
+        this.createRelativeMetricInfo(chart);
+      }
+    },
+
+    createRelativeMetricInfo: function (chart) {
+      if(_.has(this.chartData, 'relativeMetricData') && !_.isEmpty(this.chartData.relativeMetricData)) {
+
       }
     }
 

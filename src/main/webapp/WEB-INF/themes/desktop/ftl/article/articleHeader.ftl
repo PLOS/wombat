@@ -8,7 +8,10 @@
 
         <ul class="date-doi">
             <li id="artPubDate">Published: <@formatJsonDate date="${article.date}" format="MMMM d, yyyy" /></li>
-            <li id="artDoi">DOI: ${article.doi} </li>
+            <li id="artDoi">
+              <#include "../macro/doiAsLink.ftl" />
+              <@doiAsLink article.doi />
+            </li>
 
         <#macro crossPubTitle pub>
           <#if pub.italicizeTitle>

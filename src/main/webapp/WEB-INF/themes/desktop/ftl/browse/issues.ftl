@@ -102,9 +102,11 @@
                         </@siteLink>
 
 
-                        <p class="article-info"><b>${journal.title}:</b> published
-                                <@formatJsonDate date="${articleInfo.date}" format="MMMM d, yyyy" /> | ${articleInfo.doi}
-                        </p>
+                      <p class="article-info"><b>${journal.title}:</b> published
+                        <@formatJsonDate date="${articleInfo.date}" format="MMMM d, yyyy" /> |
+                        <#include "../macro/doiAsLink.ftl" />
+                        <@doiAsLink articleInfo.doi />
+                      </p>
 
                         <#if articleGrp.heading == "Research Article" >
                             <p class="links">

@@ -284,9 +284,8 @@ var ViewedSection;
       this.$chartElement.append(summaryTable);
     },
 
-    buildHighchartOptions: function () {
+    buildHighchartOptions: function (dataHistoryKeys) {
       var data = this.chartData;
-      var dataHistoryKeys = Object.keys(data.history);
 
       var options = {
         chart: {
@@ -403,45 +402,95 @@ var ViewedSection;
       var showGraph = $('#article-metrics').attr('data-showTooltip');
 
       if(_.keys(this.chartData.history).length > 1 && showGraph) {
-        var highchartOptions = this.buildHighchartOptions();
+        var dataHistoryKeys = Object.keys(this.chartData.history);
+        var highchartOptions = this.buildHighchartOptions(dataHistoryKeys);
 
         this.$chartElement.append($('<div id="chart"></div>')
           .css("width", "600px")
           .css("height", "200px"));
 
         var chart = new Highcharts.Chart(highchartOptions);
-        this.createRelativeMetricInfo(chart);
+        this.createRelativeMetricInfo(chart, dataHistoryKeys);
       }
     },
 
-    createRelativeMetricInfo: function (chart) {
+    createRelativeMetricInfo: function (chart, dataHistoryKeys) {
       var that = this;
       if(_.has(this.chartData, 'relativeMetricData') && !_.isEmpty(this.chartData.relativeMetricData)) {
         var template = _.template($('#relativeMetricTemplate').html());
         var subjectAreas = this.chartData.relativeMetricData.subject_areas;
-        var subjectAreasList = [];
+        var subjectAreasList = {};
         _.each(subjectAreas, function (subjectArea) {
+          var subjectAreaData = subjectArea.average_usage;
+          //Check if the data is not bigger than the chart
+          if (subjectAreaData.length > dataHistoryKeys.length) {
+            subjectAreaData = subjectAreaData.slice(0, dataHistoryKeys.length);
+          }
+          //Add the line to the chart
+          chart.addSeries({
+              id: subjectArea.subject_area,
+              data: subjectAreaData,
+              type: "line",
+              color: "#01DF01",
+              marker: {
+                enabled: false,
+                states: {
+                  hover: {
+                    enabled: false
+                  }
+                }
+              }
+            }
+          );
+
+          //Hide the added line
+          chart.get(subjectArea.subject_area).hide();
+
           var subjectAreaTitles = subjectArea.subject_area.split('/');
           if(subjectAreaTitles.length > 2) {
             var item = that.formatSubjectArea(subjectAreaTitles, true);
-            subjectAreasList[subjectAreaTitles[1]].children.push(item);
+            subjectAreasList[s.slugify(subjectAreaTitles[1])].children.push(item);
           }
           else {
             var item = that.formatSubjectArea(subjectAreaTitles, false);
-            subjectAreasList[subjectAreaTitles[1]] = item;
+            subjectAreasList[s.slugify(subjectAreaTitles[1])] = item;
           }
         });
 
-        var baseLinkToRefset = "/search/advanced?pageSize=12&unformattedQuery=(publication_date:[" + data.relativeMetricData.start_date + " TO " + data.relativeMetricData.end_date + "]) AND subject:\"SUBJECT_AREA\"";
+        var baseLinkToRefset = "/search/advanced?pageSize=12&unformattedQuery=(publication_date:[" + this.chartData.relativeMetricData.start_date + " TO " + this.chartData.relativeMetricData.end_date + "]) AND subject:\"SUBJECT_AREA\"";
 
         var templateData = {
-          yearPublished: new Date(data.relativeMetricData.start_date).getUTCFullYear(),
+          yearPublished: new Date(this.chartData.relativeMetricData.start_date).getUTCFullYear(),
           subjectAreasList: subjectAreasList,
-          referenceUrl: WombatConfig.metrics.referenceUrl,
+          referenceUrl: WombatConfig.metrics.referenceUrl
+        };
 
-        }
+        this.$chartElement.append(template(templateData));
+
+        //Select the first subject area
+        this.selectSubjectArea(subjectAreas[0].subject_area, chart, baseLinkToRefset);
+
+        //Callback for the subject area selector
+        $('#subject_areas').on('change', function () {
+          var value = $(this).val();
+          that.selectSubjectArea(value, chart, baseLinkToRefset);
+        });
+
+
 
       }
+    },
+
+    selectSubjectArea: function (subjectArea, chart, baseLinkToRefset) {
+      var activeArea = $('#subject_areas').data('activeArea');
+      chart.get(subjectArea).show();
+      if(activeArea) {
+        chart.get(activeArea).hide();
+      }
+
+      $('#linkToRefset').attr('href', baseLinkToRefset.replace('SUBJECT_AREA', subjectArea));
+
+      $('#subject_areas').data('activeArea', subjectArea);
     },
 
     formatSubjectArea: function (subjectAreaTitles, isChildren) {

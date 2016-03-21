@@ -34,6 +34,7 @@
 
 <#include "articleJs.ftl" />
 <@js src="resource/js/vendor/underscore-min.js"/>
+<@js src="resource/js/vendor/underscore.string.min.js"/>
 <@js src="resource/js/vendor/q.min.js"/>
 
 <@js src="resource/js/components/table_open.js"/>

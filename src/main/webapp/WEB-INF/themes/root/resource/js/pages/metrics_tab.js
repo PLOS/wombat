@@ -43,6 +43,7 @@ var MetricsTab = {};
         _.each(that.getComponents(), function (value) { value.loadData(data); });
       })
       .fail(function (error) {
+        console.log(error);
         switch(error.name) {
           case 'NewArticleError':
             _.each(that.getComponents(), function (value) { value.newArticleError(); });

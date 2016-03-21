@@ -213,8 +213,8 @@ var ViewedSection;
       var pmcViews = this.filterEvents('pmc', pubYearMonth);
       var relativeMetric = _.filter(this.data.sources, function (source) { return source.name.toLowerCase() == 'relativemetric'});
 
-      if(relativeMetric[0] && relativeMetric[0].events && relativeMetric[0].events.length > 0) {
-        filteredData.relativeMetricData = relativeMetric.events;
+      if(relativeMetric[0] && relativeMetric[0].events) {
+        filteredData.relativeMetricData = relativeMetric[0].events;
       }
 
       /*
@@ -415,9 +415,47 @@ var ViewedSection;
     },
 
     createRelativeMetricInfo: function (chart) {
+      var that = this;
       if(_.has(this.chartData, 'relativeMetricData') && !_.isEmpty(this.chartData.relativeMetricData)) {
+        var template = _.template($('#relativeMetricTemplate').html());
+        var subjectAreas = this.chartData.relativeMetricData.subject_areas;
+        var subjectAreasList = [];
+        _.each(subjectAreas, function (subjectArea) {
+          var subjectAreaTitles = subjectArea.subject_area.split('/');
+          if(subjectAreaTitles.length > 2) {
+            var item = that.formatSubjectArea(subjectAreaTitles, true);
+            subjectAreasList[subjectAreaTitles[1]].children.push(item);
+          }
+          else {
+            var item = that.formatSubjectArea(subjectAreaTitles, false);
+            subjectAreasList[subjectAreaTitles[1]] = item;
+          }
+        });
+
+        var baseLinkToRefset = "/search/advanced?pageSize=12&unformattedQuery=(publication_date:[" + data.relativeMetricData.start_date + " TO " + data.relativeMetricData.end_date + "]) AND subject:\"SUBJECT_AREA\"";
+
+        var templateData = {
+          yearPublished: new Date(data.relativeMetricData.start_date).getUTCFullYear(),
+          subjectAreasList: subjectAreasList,
+          referenceUrl: WombatConfig.metrics.referenceUrl,
+
+        }
 
       }
+    },
+
+    formatSubjectArea: function (subjectAreaTitles, isChildren) {
+      var item = {};
+      item.id = subjectAreaTitles.join('/');
+      if(isChildren) {
+        item.title = subjectAreaTitles[2];
+      }
+      else {
+        item.title = subjectAreaTitles[1];
+        item.children = [];
+      }
+
+      return item;
     }
 
   });

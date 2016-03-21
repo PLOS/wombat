@@ -48,24 +48,23 @@ var saveAlert = function() {
 
   $.ajax({
     type: 'POST',
-    url: '/search/saveJournalAlert.action',
-    data: 'category=' + encodeURIComponent(category),
+    url: '../subjectalert',
+    data: 'action=add&subject=' + encodeURIComponent(category),
     dataType:'json',
     success: function(response) {
-      if (response.exception) {
-        var errorMessage = response.exception.message;
+      if (response.error) {
+        var errorMessage = response.error;
         $('#save-journal-alert-error').html('Exception: ' + errorMessage);
         return;
       }
 
-      if (response.actionErrors && response.actionErrors.length > 0) {
-        //The action in question can only return one message
-        var errorMessage = response.actionErrors[0];
-        $('#save-journal-alert-error').html(errorMessage);
-        return;
-      }
-
       removeModal();
+      $("#save-journal-alert-link").addClass("subscribed");
+      setTimeout(function() {
+        $("#btn-save-journal-alert").val("Unsubscribe");
+        $("#text-journal-alert-prompt").html("You are currently subscribed to:");
+      }, 500);
+
     },
     error: function(req, textStatus, errorThrown) {
       $('#span_error_savedsearch').html(errorThrown.message);
@@ -79,31 +78,36 @@ var unsubscribeAlert = function() {
 
   $.ajax({
     type: 'POST',
-    url: '/search/unsubscribeJournalAlert.action',
-    data: 'category=' + encodeURIComponent(category),
+    url: '../subjectalert',
+    data: 'action=remove&subject=' + encodeURIComponent(category),
     dataType:'json',
     success: function(response) {
-      if (response.exception) {
-        var errorMessage = response.exception.message;
+      if (response.error) {
+        var errorMessage = response.error;
         $('#save-journal-alert-error').html('Exception: ' + errorMessage);
         return;
       }
 
-      if (response.actionErrors && response.actionErrors.length > 0) {
-        //The action in question can only return one message
-        var errorMessage = response.actionErrors[0];
-        $('#save-journal-alert-error').html(errorMessage);
-        return;
-      }
-
       removeModal();
-      //$("#save-journal-alert-link").removeClass("subscribed");
+      $("#save-journal-alert-link").removeClass("subscribed");
+      setTimeout(function() {
+        $("#btn-save-journal-alert").val("Save");
+        $("#text-journal-alert-prompt").html("Create a weekly email alert for:");
+      }, 500);
     },
     error: function(req, textStatus, errorThrown) {
       $('#save-journal-alert-error').html(errorThrown.message);
       console.log('error: ' + errorThrown.message);
     }
   });
+};
+
+var saveOrUnsubscribeAlert = function() {
+  var subscribed = $("#save-journal-alert-link").hasClass("subscribed");
+  if (subscribed)
+    unsubscribeAlert();
+  else
+    saveAlert();
 };
 
 var showModalForJournalAlert = function(e) {
@@ -165,9 +169,8 @@ var showModalForLogin = function(e) {
 $(document).ready(function() {
   $('#save-journal-alert-link').bind('click',showModalForJournalAlert);
   $('#login-link').bind('click',showModalForLogin);
-  $('#btn-save-journal-alert').bind('click', saveAlert);
+  $('#btn-save-journal-alert').bind('click', saveOrUnsubscribeAlert);
   $('.btn-cancel-alert').bind('click', removeModal);
-  $('#btn-unsubscribe-journal-alert').bind('click', unsubscribeAlert);
 });
 
 

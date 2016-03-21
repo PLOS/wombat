@@ -6,9 +6,12 @@ import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,11 +93,36 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     } catch (UnsupportedEncodingException e) {
       throw new RuntimeException(e);
     }
+    post.addHeader(HttpHeaders.CONTENT_TYPE, "application/json");
 
     try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(post)) {
     }
   }
 
+
+  @Override
+  public final void putObject(String address, Object object) throws IOException {
+    String json = jsonService.serialize(object);
+    HttpPut put = buildRequest(address, HttpPut::new);
+    try {
+      put.setEntity(new StringEntity(json));
+    } catch (UnsupportedEncodingException e) {
+      throw new RuntimeException(e);
+    }
+    put.addHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+
+    try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(put)) {
+    }
+  }
+
+
+  @Override
+  public final void deleteObject(String address) throws IOException {
+    HttpDelete delete = buildRequest(address, HttpDelete::new);
+
+    try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(delete)) {
+    }
+  }
   @Override
   public final void forwardResponse(HttpUriRequest requestToService, HttpServletResponse responseToClient) throws IOException {
     try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {

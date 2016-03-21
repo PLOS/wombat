@@ -194,5 +194,13 @@
 <@js src="resource/js/components/browse_results.js" />
 <@renderJs />
 
+
+<div id="login-box" class="login inlinePopup">
+<#include "loginJournalAlertPopup.ftl"/>
+</div>
+<div id="journal-alert-box" class="journalAlert inlinePopup">
+<#include "saveJournalAlertPopup.ftl"/>
+</div>
+
 </body>
 </html>

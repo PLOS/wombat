@@ -51,6 +51,10 @@ public interface RestfulJsonApi {
    */
   public abstract void postObject(String address, Object object) throws IOException;
 
+  public abstract void putObject(String address, Object object) throws IOException;
+
+  public abstract void deleteObject(String address) throws IOException;
+
   /**
    * Get a stream either through a REST request or from the cache. If there is a cached value, and the REST service does
    * not indicate that the value has been modified since the value was inserted into the cache, return that value. Else,

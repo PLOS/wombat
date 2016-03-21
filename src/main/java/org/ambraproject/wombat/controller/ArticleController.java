@@ -543,7 +543,6 @@ public String renderArticleMetricsRenovated(HttpServletRequest request, Model mo
   enforceDevFeature("metricsRenovated");
   Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
   validateArticleVisibility(site, articleMetaData);
-  requestComments(model, articleId);
   return site + "/ftl/article/metricsRenovated";
 }
 

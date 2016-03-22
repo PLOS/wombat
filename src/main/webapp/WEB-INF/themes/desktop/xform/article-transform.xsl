@@ -1362,7 +1362,10 @@
         </p>
         <xsl:if test="object-id[@pub-id-type='doi']">
           <p class="caption_object">
-            <xsl:apply-templates select="object-id[@pub-id-type='doi']"/>
+            <a>
+              <xsl:attribute name="href">http://dx.doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/></xsl:attribute>
+              http://dx.doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/>
+            </a>
           </p>
         </xsl:if>
       </div>

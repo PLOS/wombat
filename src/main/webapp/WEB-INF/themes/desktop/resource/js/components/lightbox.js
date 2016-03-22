@@ -146,6 +146,10 @@ var FigureLightbox = {};
       .find('.prev-fig-btn:not(.fig-btn-disabled)').on('click', function () {
       return that.prevImage();
     }).end()
+      //Bind view-more and view less links
+      .find('#image-context').on('click', '#view-more, #view-less', function () {
+      that.toggleDescription();
+    }).end()
 
       // Bind reset zoom button
       .find('.reset-zoom-btn').on('click', function () {
@@ -154,15 +158,14 @@ var FigureLightbox = {};
       .find('#lb-zoom-min').on('click', function () {
       that.zoomOut();
     }).end()
-      .find('#image-context').on('click', '#view-more, #view-less', function () {
-      that.toggleDescription();
-    }).end()
+
       .find('#lb-zoom-max').on('click', function () {
       that.zoomIn();
     }).end()
       .on('image-switch.lightbox', function (e, data) {
         // Show both prev and next buttons
         var buttons = $(that.lbSelector).find('.fig-btn').show();
+
         if (data.index === 0) {
           buttons.filter('.prev-fig-btn').addClass('fig-btn-disabled'); // Hide prev button
         }
@@ -175,7 +178,7 @@ var FigureLightbox = {};
         else {
           buttons.filter('.next-fig-btn').removeClass('fig-btn-disabled');
         }
-
+        that.truncateDescription();
 
       });
   };
@@ -291,10 +294,6 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.expandDescription = function () {
-    // Workaround to slide and fade at the same time
-    //$('#view-more-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp();
-    //$('#view-less-wrapper').slideDown('slow');
-
 
     this.descriptionExpanded = true;
 

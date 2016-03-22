@@ -65,9 +65,8 @@
         <span id="figure-title"><%= title %></span>
         <p id="figure-description">
           <%= description %>&nbsp;&nbsp;
-          <span id="view-more">show more<i class="icon-arrow-right"></i></span>
-
         </p>
+        <span id="view-more">show more<i class="icon-arrow-right"></i></span>
 
       </div>
       <div id="view-less-wrapper" style="<% descriptionExpanded? print('display:inline-block;') : '' %>" >

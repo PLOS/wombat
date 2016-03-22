@@ -1,3 +1,9 @@
+/*
+* MetricTile:
+*
+* For Metrics tab we use tiles to display the data, this is the class responsible for display
+* the correct template and append to the main component.
+*/
 var MetricTile;
 
 (function ($) {
@@ -5,10 +11,12 @@ var MetricTile;
     init: function(source){
       this.source = source;
     },
+    //Template for tiles that the source has a link
     createWithLink: function () {
       var metricsTileTemplate = _.template($('#metricsTileTemplate').html());
       return  metricsTileTemplate({url: this.url, name: this.name, imgSrc: this.imageSrc, linkText: this.linkText});
     },
+    //Template for tiles that the source has no link
     createWithNoLink: function () {
       var metricsTileTemplate = _.template($('#metricsTileTemplateNoLink').html());
       return  metricsTileTemplate({name: this.name, imgSrc: this.imageSrc, linkText: this.linkText});
@@ -17,6 +25,7 @@ var MetricTile;
       this.beforeCreateTile();
       var tileElement = null;
 
+      //Check if the tile has a URL, if it has, we use the link template (createWithLink()), if don't we use the no link one (createWithNoLink())
       if(this.hasUrl) {
         tileElement = this.createWithLink();
       }
@@ -27,6 +36,7 @@ var MetricTile;
       $(elementToAppend).append(tileElement);
       this.afterCreateTile();
     },
+    //In some sources the data needs to be treated before pass to the template, this function responsible of treat this data.
     beforeCreateTile: function () {
       switch(this.source.name) {
         case 'twitter':
@@ -45,10 +55,17 @@ var MetricTile;
         this.url = this.source.events_url.replace(/"/g, "%22");
       }
     },
+
+    //In some sources we need to append a tooltip after the tile is appended to the template, this function is responsible for that.
     afterCreateTile: function () {
+      //The tooltip underscore template to compile.
       var tooltipTemplate = false;
+      //The data for the tooltip underscore template.
       var tooltipData = false;
+      //The ID of the element that should be mouse overed to show the tooltip.
       var tooltipElementId = false;
+
+      //For each source that needs a tooltip we add in the switch case and fill the tooltipTemplate, tooltipData and tooltipElementId.
       switch (this.source.name) {
         case 'facebook':
           tooltipTemplate = _.template($('#metricsTileFacebookTooltipTemplate').html());
@@ -63,6 +80,7 @@ var MetricTile;
           break;
       }
 
+      //If we have a template and data we append the element to the 'tooltipElementId' and initialize the tooltip plugin.
       if(tooltipTemplate && tooltipData) {
         $(tooltipElementId)
           .attr("data-js-tooltip-hover", "trigger")

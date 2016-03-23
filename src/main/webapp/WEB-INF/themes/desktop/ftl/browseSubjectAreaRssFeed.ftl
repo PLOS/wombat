@@ -18,10 +18,9 @@
 </li>
 
 <#if subject?has_content>
-  <#assign queryParams = {'sortOrder': selectedSortOrder, 'filterJournals': journalKey, 'unformattedQuery': 'subject:${subject}'}/>
-<#else>
-  <#assign queryParams = {'sortOrder': selectedSortOrder, 'filterJournals': journalKey, 'unformattedQuery': ''}/>
+  <#assign subjectParam = 'subject:"${subject?replace("_"," ")}"'/>
 </#if>
+<#assign queryParams = {'sortOrder': selectedSortOrder, 'filterJournals': journalKey, 'unformattedQuery': subjectParam!''}/>
 <li id="browseRssFeedButton" class="last">
   <a href="<@siteLink handlerName="advancedSearchFeed" queryParameters=queryParams pathVariables={'feedType': 'atom'}/>"
      class="social" title="Get the RSS feed for ${subjectName}">Get the RSS feed for ${subjectName}</a>

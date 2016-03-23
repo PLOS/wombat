@@ -16,7 +16,6 @@ package org.ambraproject.wombat.controller;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
@@ -43,6 +42,7 @@ import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.lang.WordUtils;
@@ -511,7 +511,8 @@ public class SearchController extends WombatController {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
-    addOptionsToModel(model);
+    model.addAttribute("sortOrders", SolrSearchApiImpl.SolrSortOrder.values());
+    model.addAttribute("dateRanges", SolrSearchApiImpl.SolrEnumeratedDateRange.values());
     return commonParams;
   }
 
@@ -527,7 +528,7 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "searchFeed", value = "/search/feed/{feedType:atom|rss}",
-      params = {"q", "!volume", "!subject"}, method = RequestMethod.GET)
+      params = {"q"}, method = RequestMethod.GET)
   public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
@@ -557,7 +558,7 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "advancedSearchFeed", value = "/search/feed/{feedType:atom|rss}",
-      params = {"unformattedQuery", "!volume"}, method = RequestMethod.GET)
+      params = {"unformattedQuery"}, method = RequestMethod.GET)
   public ModelAndView getAdvancedSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
     String queryString = params.getFirst("unformattedQuery");
@@ -592,7 +593,10 @@ public class SearchController extends WombatController {
   // of individually listing the params.
 
   /**
-   * Performs a 'simple' or 'advanced' search, where the q parameter's value is a single search term.
+   * Performs a "simple" or "advanced" search. The query parameter is read, and if advanced search
+   * terms are found, an advanced search is performed. Otherwise, a simple search is performed. The
+   * only difference between simple and advanced searches is the use of dismax in the ultimate
+   * Solr query.
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
@@ -601,7 +605,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(name = "simpleSearch", value = "/search", params = {"q", "!volume", "!subject"})
+  @RequestMapping(name = "simpleSearch", value = "/search", params = {"q"})
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
@@ -612,7 +616,12 @@ public class SearchController extends WombatController {
         .setSimple(commonParams.isSimpleSearch(queryString));
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
-    Map<?, ?> searchResults = solrSearchApi.search(queryObj);
+    Map<?, ?> searchResults;
+    try {
+      searchResults = solrSearchApi.search(queryObj);
+    } catch (ServiceRequestException sre) {
+      return handleFailedSolrRequest(model, site, queryString, sre);
+    }
 
     model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
 
@@ -634,12 +643,25 @@ public class SearchController extends WombatController {
     return site.getKey() + "/ftl/search/searchResults";
   }
 
+  private String handleFailedSolrRequest(Model model, Site site, String queryString,
+      ServiceRequestException sre) throws IOException {
+    if (sre.getResponseBody().contains("SyntaxError: Cannot parse")) {
+      log.info("User attempted invalid search: " + queryString + "\n Exception: " + sre.getMessage());
+       model.addAttribute("cannotParseQueryError", true);
+    } else {
+      log.error("Unknown error returned from Solr: " + sre.getMessage());
+      model.addAttribute("unknownQueryError", true);
+    }
+    return newAdvancedSearch(model, site);
+  }
+
+
   /**
    * This is a catch for advanced searches originating from Old Ambra. It transforms the
    * "unformattedQuery" param into "q" which is used by Wombat's new search.
    * todo: remove this method once Old Ambra advanced search is destroyed
    */
-  @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!volume"})
+  @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!q"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     String queryString = params.getFirst("unformattedQuery");
@@ -648,9 +670,26 @@ public class SearchController extends WombatController {
     return search(request, model, site, params);
   }
 
+  @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!q"})
+  public String newAdvancedSearch(Model model, @SiteParam Site site) throws IOException {
+    model.addAttribute("isNewSearch", true);
+    model.addAttribute("otherQuery", "");
+    model.addAttribute("activeFilterItems", new HashSet<>());
+    return site.getKey() + "/ftl/search/searchResults";
+  }
+
   /**
-   * Uses {@link #search(HttpServletRequest, Model, Site, MultiValueMap)} to support the mobile taxonomy
-   * browser
+   * Endpoint to render the subject area browser in mobile
+   *
+   */
+  @RequestMapping(name = "mobileSubjectAreaBrowser", value = "/subjectAreaBrowse")
+  public String mobileSubjectAreaBrowser(@SiteParam Site site) {
+    return site.getKey() + "/ftl/mobileSubjectAreaBrowser";
+  }
+
+  /**
+   * Serves search result data. Used by the mobile taxonomy browser search results and
+   * desktop subject area landing pages. This endpoint returns the articles for all subject areas.
    *
    * @param request HttpServletRequest
    * @param model   model that will be passed to the template
@@ -659,168 +698,31 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(name = "subjectSearch", value = "/search", params = {"subject", "!volume"})
-  public String subjectSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
-    params.add("q", "");
-    return search(request, model, site, params);
-  }
-
-  @RequestMapping(name = "browse", value = "/browse", params = "!filterSubjects")
-  public String browse(HttpServletRequest request, Model model, @SiteParam Site site,
+  @RequestMapping(name = "browse", value = "/browse")
+  public String browseAll(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     subjectAreaSearch(request, model, site, params, "");
     return site.getKey() + "/ftl/browseSubjectArea";
   }
 
-  @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}", params = "!filterSubjects")
+  /**
+   * Serves search result data. Used by the mobile taxonomy browser search results and
+   * desktop subject area landing pages. This endpoint returns the articles for a single subject area.
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param subject the subject area to be searched
+   * @param params  all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
+  @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}")
   public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
       throws IOException {
     subjectAreaSearch(request, model, site, params, subject);
     return site.getKey() + "/ftl/browseSubjectArea";
-  }
-
-
-  // Requests coming from the advanced search form with URLs beginning with "/search/quick/" will always
-  // have the parameters id, eLocationId, and volume, although only one will be populated.  The expressions
-  // like "id!=" in the following request mappings cause spring to map to controller methods only if
-  // the corresponding parameters are present, and do not have a value of the empty string.
-
-  /**
-   * Searches for an article having the given doi (the value of the id parameter).  If the DOI exists for any journal,
-   * this method will redirect to the article.  Otherwise, an empty search results page will be rendered.
-   *
-   * @param request HttpServletRequest
-   * @param model   model that will be passed to the template
-   * @param site    site the request originates from
-   * @param doi     identifies the article
-   * @return String indicating template location
-   * @throws IOException
-   */
-  @RequestMapping(name = "doiSearch", value = "/search", params = {"id!="})
-  public String doiSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                          @RequestParam(value = "id", required = true) String doi) throws IOException {
-    Map<?, ?> searchResults = solrSearchApi.lookupArticleByDoi(doi);
-    return renderSingleResult(searchResults, "doi:" + doi, request, model, site);
-  }
-
-  /**
-   * Searches for an article having the given eLocationId from the given journal.  Note that eLocationIds are only
-   * unique within journals, so both parameters are necessary.  If the article is found, this method will redirect to
-   * it; otherwise an empty search results page will be rendered.
-   *
-   * @param request     HttpServletRequest
-   * @param model       model that will be passed to the template
-   * @param site        site the request originates from
-   * @param eLocationId identifies the article in a journal
-   * @param journal     journal to search within
-   * @return String indicating template location
-   * @throws IOException
-   */
-  @RequestMapping(name = "eLocationSearch", value = "/search", params = {"eLocationId!="})
-  public String eLocationSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                                @RequestParam(value = "eLocationId", required = true) String eLocationId,
-                                @RequestParam(value = "filterJournals", required = true) String journal) throws IOException {
-    Map<?, ?> searchResults = solrSearchApi.lookupArticleByELocationId(eLocationId, journal);
-    return renderSingleResult(searchResults, "elocation_id:" + eLocationId, request, model, site);
-  }
-
-  /**
-   * Searches for all articles in the volume identified by the value of the volume parameter.
-   *
-   * @param request HttpServletRequest
-   * @param model   model that will be passed to the template
-   * @param site    site the request originates from
-   * @param params  all URL parameters
-   * @return String indicating template location
-   * @throws IOException
-   */
-  @RequestMapping(name = "volumeSearch", value = "/search", params = {"volume!="})
-  public String volumeSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                             @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = modelCommonParams(request, model, site, params);
-    int volume;
-    try {
-      volume = Integer.parseInt(params.getFirst("volume"));
-    } catch (NumberFormatException nfe) {
-      return renderEmptyResults(null, "volume:" + params.getFirst("volume"), model, site);
-    }
-
-    ArticleSearchQuery query = commonParams.fill(ArticleSearchQuery.builder()).build();
-    Map<?, ?> searchResults = solrSearchApi.searchVolume(query, volume);
-    model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
-    model.addAttribute("otherQuery", String.format("volume:%d", volume));
-
-    Map<String, SearchFilter> filters = searchFilterService.getVolumeSearchFilters(volume,
-        commonParams.journalKeys, commonParams.articleTypes, commonParams.dateRange);
-
-    filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
-
-    Set<SearchFilterItem> activeFilterItems = new HashSet<>();
-    filters.values().forEach(filter -> activeFilterItems.addAll(filter.getActiveFilterItems()));
-
-    model.addAttribute("searchFilters", filters);
-    model.addAttribute("activeFilterItems", activeFilterItems);
-    return site.getKey() + "/ftl/search/searchResults";
-  }
-
-  /**
-   * Renders either an article page, or an empty search results page.
-   *
-   * @param searchResults deserialized JSON that should be either empty, or contain a single article
-   * @param searchTerm    the search term (suitable for display) that was input
-   * @param request       HttpServletRequest
-   * @param model         model that will be passed to the template
-   * @param site          site the request originates from
-   * @return String indicating template location
-   * @throws IOException
-   */
-  private String renderSingleResult(Map<?, ?> searchResults, String searchTerm, HttpServletRequest request, Model model,
-                                    Site site) throws IOException {
-    int numFound = ((Double) searchResults.get("numFound")).intValue();
-    if (numFound > 1) {
-      throw new IllegalStateException("Valid DOIs should return exactly one article");
-    }
-    if (numFound == 1) {
-      searchResults = solrSearchApi.addArticleLinks(searchResults, request, site, siteSet);
-      List docs = (List) searchResults.get("docs");
-      Map doc = (Map) docs.get(0);
-      return "redirect:" + doc.get("link");
-    } else {
-      return renderEmptyResults(searchResults, searchTerm, model, site);
-    }
-  }
-
-  /**
-   * Renders an empty search results page.
-   *
-   * @param searchResults empty search results.  If null, one will be constructed.
-   * @param searchTerm    the search term (suitable for display) that was input
-   * @param model         model that will be passed to the template
-   * @param site          site the request originates from
-   * @return String indicating template location
-   */
-  private String renderEmptyResults(Map searchResults, String searchTerm, Model model, Site site) {
-    if (searchResults == null) {
-      searchResults = new HashMap<>();
-      searchResults.put("numFound", 0);
-    }
-    model.addAttribute("searchResults", searchResults);
-    model.addAttribute("otherQuery", searchTerm);
-    addOptionsToModel(model);
-
-    // Add minimum model attributes necessary to render the form.
-    model.addAttribute("selectedSortOrder", SolrSearchApiImpl.SolrSortOrder.RELEVANCE);
-    model.addAttribute("selectedDateRange", SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
-    model.addAttribute("isFiltered", false);
-    model.addAttribute("resultsPerPage", 15);
-    return site.getKey() + "/ftl/search/searchResults";
-  }
-
-  private void addOptionsToModel(Model model) {
-    model.addAttribute("sortOrders", SolrSearchApiImpl.SolrSortOrder.values());
-    model.addAttribute("dateRanges", SolrSearchApiImpl.SolrEnumeratedDateRange.values());
   }
 
   /**
@@ -862,10 +764,7 @@ public class SearchController extends WombatController {
       params.add("filterJournals", site.getJournalKey());
     }
 
-    CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
-    commonParams.addToModel(model, request);
-
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery("")
         .setSimple(false);
@@ -875,9 +774,10 @@ public class SearchController extends WombatController {
     Map<String, ?> searchResults = solrSearchApi.search(queryObj);
 
     model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
-    model.addAttribute("searchResults", searchResults);
+    model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());
+    model.addAttribute("isBrowse", true);
 
     String authId = request.getRemoteUser();
     if (authId != null) {

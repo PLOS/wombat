@@ -171,6 +171,10 @@ $(document).ready(function() {
   $('#login-link').bind('click',showModalForLogin);
   $('#btn-save-journal-alert').bind('click', saveOrUnsubscribeAlert);
   $('.btn-cancel-alert').bind('click', removeModal);
+  $('#btn-unsubscribe-journal-alert').bind('click', unsubscribeAlert);
+  $(".list-title").dotdotdot({
+    height      : 45
+  });
 });
 
 

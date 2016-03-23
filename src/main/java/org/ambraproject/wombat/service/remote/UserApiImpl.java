@@ -77,4 +77,14 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   protected String getCachePrefix() {
     return "user";
   }
+
+  @Override
+  protected <T> T makeRemoteRequest(RemoteRequest<T> requestAction) throws IOException {
+    try {
+      return super.makeRemoteRequest(requestAction);
+    } catch (ServiceRequestException | ServiceConnectionException | ServiceResponseFormatException e) {
+      throw new UserApiException(e);
+    }
+  }
+
 }

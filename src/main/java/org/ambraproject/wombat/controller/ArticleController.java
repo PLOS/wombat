@@ -35,7 +35,6 @@ import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
-import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
@@ -58,6 +57,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
@@ -177,7 +177,6 @@ public class ArticleController extends WombatController {
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
 
-    model.addAttribute("articleComments", commentService.getArticleComments(articleId));
     return site + "/ftl/article/article";
   }
 
@@ -196,7 +195,14 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
-    model.addAttribute("articleComments", commentService.getArticleComments(articleId));
+
+    try {
+      model.addAttribute("articleComments", commentService.getArticleComments(articleId));
+    } catch (UserApi.UserApiException e) {
+      log.error(e.getMessage(), e);
+      model.addAttribute("userApiError", e);
+    }
+
     return site + "/ftl/article/comment/comments";
   }
 
@@ -434,6 +440,14 @@ public class ArticleController extends WombatController {
       comment = commentService.getComment(commentId);
     } catch (CommentService.CommentNotFoundException e) {
       throw new NotFoundException(e);
+    } catch (UserApi.UserApiException e) {
+      log.error(e.getMessage(), e);
+      model.addAttribute("userApiError", e);
+
+      // Get a copy of the comment that is not populated with userApi data.
+      // This articleApi call is redundant to one that commentService.getComment would have made before throwing.
+      // TODO: Prevent extra articleApi call
+      comment = articleApi.requestObject(String.format("comments/" + commentId), Map.class);
     }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
@@ -444,6 +458,13 @@ public class ArticleController extends WombatController {
     model.addAttribute("comment", comment);
 
     return site + "/ftl/article/comment/comment";
+  }
+
+  private static HttpUriRequest createJsonPostRequest(URI target, Object body) {
+    String json = new Gson().toJson(body);
+    HttpEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
+    RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(target).setEntity(entity);
+    return reqBuilder.build();
   }
 
   /**
@@ -473,10 +494,7 @@ public class ArticleController extends WombatController {
     ArticleComment comment = new ArticleComment(parentArticleDoi, getUserIdFromAuthId(authId),
         parentCommentUri, commentTitle, commentBody, ciStatement);
 
-    String articleCommentJson = new Gson().toJson(comment);
-    HttpEntity entity = new StringEntity(articleCommentJson, ContentType.create("application/json"));
-
-    HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
+    HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, comment);
     try (CloseableHttpResponse response = articleApi.getResponse(commentPostRequest)) {
       String createdCommentUri = HttpMessageUtil.readResponse(response);
       return ImmutableMap.of("createdCommentUri", createdCommentUri);
@@ -510,9 +528,8 @@ public class ArticleController extends WombatController {
         String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
     String authId = request.getRemoteUser();
     ArticleCommentFlag flag = new ArticleCommentFlag(getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
-    HttpEntity entity = new StringEntity(new Gson().toJson(flag), ContentType.create("application/json"));
 
-    HttpUriRequest commentPostRequest = HttpMessageUtil.buildEntityPostRequest(forwardedUrl, entity);
+    HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, flag);
     try (CloseableHttpResponse response = articleApi.getResponse(commentPostRequest)) {
       return ImmutableMap.of(); // the "201 CREATED" status is all the AJAX client needs
     }
@@ -550,9 +567,17 @@ public class ArticleController extends WombatController {
                                      @RequestParam("id") String articleId) throws IOException {
       Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
       validateArticleVisibility(site, articleMetaData);
-    model.addAttribute("articleComments", commentService.getArticleComments(articleId));
     return site + "/ftl/article/metrics";
   }
+
+@RequestMapping(name = "articleMetricsRenovated", value = "/article/metricsRenovated")
+public String renderArticleMetricsRenovated(HttpServletRequest request, Model model, @SiteParam Site site,
+                                   @RequestParam("id") String articleId) throws IOException {
+  enforceDevFeature("metricsRenovated");
+  Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+  validateArticleVisibility(site, articleMetaData);
+  return site + "/ftl/article/metricsRenovated";
+}
 
 
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")

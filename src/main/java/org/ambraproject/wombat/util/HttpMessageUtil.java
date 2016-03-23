@@ -7,7 +7,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -36,6 +35,7 @@ public class HttpMessageUtil {
   /**
    * Describes how to filter or modify a header while copying a response.
    */
+  @FunctionalInterface
   public static interface HeaderFilter {
     /**
      * Return the header value to copy into the outgoing response, under the same header name as the incoming response.
@@ -196,11 +196,6 @@ public class HttpMessageUtil {
     } else {
       return lastModified == null || lastModified > request.getDateHeader("If-Modified-Since");
     }
-  }
-
-  public static HttpUriRequest buildEntityPostRequest(URI fullUrl, HttpEntity entity) {
-    RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(fullUrl).setEntity(entity);
-    return reqBuilder.build();
   }
 
 }

@@ -26,8 +26,8 @@ import java.net.URL;
 import java.util.function.Function;
 
 /**
- * Base implementation for {@link RestfulJsonApi}. Details about the service address, caching, authentication
- * headers, etc., are injected by subclasses.
+ * Base implementation for {@link RestfulJsonApi}. Details about the service address, caching, authentication headers,
+ * etc., are injected by subclasses.
  */
 abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
@@ -55,24 +55,40 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     return ImmutableList.of();
   }
 
+  @FunctionalInterface
+  protected static interface RemoteRequest<T> {
+    T execute() throws IOException;
+  }
+
+  /**
+   * Execute a remote request that has been set up by another method. Every invocation by this class to {@link
+   * #cachedRemoteStreamer} and {@link #cachedRemoteReader} is wrapped in a call to {@link #makeRemoteRequest}.
+   * <p>
+   * Subclasses may override this method to add special exception handling. Each override must make a {@code super}
+   * call.
+   */
+  protected <T> T makeRemoteRequest(RemoteRequest<T> requestAction) throws IOException {
+    return requestAction.execute();
+  }
+
   @Override
   public final InputStream requestStream(String address) throws IOException {
-    return cachedRemoteStreamer.request(buildGet(address));
+    return makeRemoteRequest(() -> cachedRemoteStreamer.request(buildGet(address)));
   }
 
   @Override
   public final Reader requestReader(String address) throws IOException {
-    return cachedRemoteReader.request(buildGet(address));
+    return makeRemoteRequest(() -> cachedRemoteReader.request(buildGet(address)));
   }
 
   @Override
   public final InputStream requestStream(HttpUriRequest target) throws IOException {
-    return cachedRemoteStreamer.request(target);
+    return makeRemoteRequest(() -> cachedRemoteStreamer.request(target));
   }
 
   @Override
   public final Reader requestReader(HttpUriRequest target) throws IOException {
-    return cachedRemoteReader.request(target);
+    return makeRemoteRequest(() -> cachedRemoteReader.request(target));
   }
 
   @Override
@@ -95,7 +111,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     }
     post.addHeader(HttpHeaders.CONTENT_TYPE, "application/json");
 
-    try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(post)) {
+    try (CloseableHttpResponse ignored = makeRemoteRequest(() -> cachedRemoteReader.getResponse(post))) {
     }
   }
 
@@ -136,24 +152,25 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
   @Override
   public final CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException {
-    return cachedRemoteReader.getResponse(target);
+    return makeRemoteRequest(() -> cachedRemoteReader.getResponse(target));
   }
 
   @Override
   public final <T> T requestCachedStream(CacheParams cacheParams, String address,
                                          CacheDeserializer<InputStream, T> callback) throws IOException {
-    return cachedRemoteStreamer.requestCached(cacheParams, buildGet(address), callback);
+    return makeRemoteRequest(() -> cachedRemoteStreamer.requestCached(cacheParams, buildGet(address), callback));
   }
 
   @Override
   public final <T> T requestCachedReader(CacheParams cacheParams, String address,
                                          CacheDeserializer<Reader, T> callback) throws IOException {
-    return cachedRemoteReader.requestCached(cacheParams, buildGet(address), callback);
+    return makeRemoteRequest(() -> cachedRemoteReader.requestCached(cacheParams, buildGet(address), callback));
   }
 
   @Override
   public final <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException {
-    return jsonService.requestCachedObject(cachedRemoteReader, cacheParams, buildGet(address), responseClass);
+    return makeRemoteRequest(() ->
+        jsonService.requestCachedObject(cachedRemoteReader, cacheParams, buildGet(address), responseClass));
   }
 
   protected final HttpGet buildGet(String address) {

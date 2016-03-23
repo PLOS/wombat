@@ -1212,17 +1212,11 @@
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('article/figure/image?size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
-      </xsl:variable>
-      <xsl:variable name="bigImgDOI">
-        <xsl:value-of select="concat($imageURI,'.PNG_L')"/>
+        <xsl:value-of select="concat('article/figure/image?download&amp;size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('article/figure/image?size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
-      </xsl:variable>
-      <xsl:variable name="origImgDOI">
-        <xsl:value-of select="concat($imageURI,'.TIF')"/>
+        <xsl:value-of select="concat('article/figure/image?download&amp;size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="targetURI">
@@ -1368,7 +1362,10 @@
         </p>
         <xsl:if test="object-id[@pub-id-type='doi']">
           <p class="caption_object">
-            <xsl:apply-templates select="object-id[@pub-id-type='doi']"/>
+            <a>
+              <xsl:attribute name="href">http://dx.doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/></xsl:attribute>
+              http://dx.doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/>
+            </a>
           </p>
         </xsl:if>
       </div>

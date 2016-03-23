@@ -37,8 +37,7 @@
         
         if (initData === undefined) {
         // no data, do nothing further
-        } else {
-
+        } else if (initData.sources !== undefined) {
           totalTweets = initData.sources[0].metrics.total;
 
           if (totalTweets === 0) {

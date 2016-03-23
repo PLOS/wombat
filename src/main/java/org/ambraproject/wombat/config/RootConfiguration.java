@@ -10,11 +10,13 @@ import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.UserApiImpl;
 import org.ambraproject.wombat.service.remote.ReaderService;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
-import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.service.remote.SoaServiceImpl;
-import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.ArticleApiImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.StreamService;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -56,8 +58,8 @@ public class RootConfiguration {
   }
 
   @Bean
-  public SoaService soaService() {
-    return new SoaServiceImpl();
+  public ArticleApi articleApi() {
+    return new ArticleApiImpl();
   }
 
   @Bean
@@ -98,8 +100,13 @@ public class RootConfiguration {
   }
 
   @Bean
-  public SolrSearchService searchService() {
-    return new SolrSearchServiceImpl();
+  public SolrSearchApi searchService() {
+    return new SolrSearchApiImpl();
+  }
+
+  @Bean
+  public UserApi userApi() {
+    return new UserApiImpl();
   }
 
   @Bean

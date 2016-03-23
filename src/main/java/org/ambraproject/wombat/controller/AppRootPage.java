@@ -6,6 +6,8 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Table;
+import com.google.common.io.ByteStreams;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.RequestMappingContext;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
@@ -15,14 +17,23 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.ui.ExtendedModelMap;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -30,6 +41,27 @@ import java.util.Set;
  * Autowired as a normal Spring bean.
  */
 public class AppRootPage {
+
+  /**
+   * A Singleton View used to serve static HTML files outside of the web application.
+   */
+  private static enum HtmlFileView implements View {
+  INSTANCE;
+   @Override
+    public String getContentType() {
+      return MediaType.TEXT_HTML.toString();
+    }
+
+    @Override
+    public void render(Map<String, ?> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+      try (FileInputStream fileInputStream = new FileInputStream((File) model.get("rootPage"));
+          ServletOutputStream outputStream = response.getOutputStream()) {
+        ByteStreams.copy(fileInputStream, outputStream);
+      }
+    }
+  }
+
+
 
   private static final Logger log = LoggerFactory.getLogger(AppRootPage.class);
 
@@ -39,15 +71,23 @@ public class AppRootPage {
   private ServletContext servletContext;
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
 
   /**
    * Show a page in response to the application root.
-   * <p>
-   * This is here only for development/debugging: if you browse to the application root while you're setting up, this
-   * page is more useful than an error message. But all end-user-facing pages should belong to one of the sites in
-   * {@code siteSet}.
+   *
    */
   ModelAndView serveAppRoot() {
+    String rootPagePath = runtimeConfiguration.getRootPagePath();
+    if (Strings.isNullOrEmpty(rootPagePath)) {
+      return serveDebugPage();
+    } else {
+      return serveCustomRootPage(rootPagePath);
+    }
+  }
+
+  private ModelAndView serveDebugPage() {
     ModelAndView mav = new ModelAndView("//approot");
     mav.addObject("siteKeys", siteSet.getSiteKeys());
     mav.addObject("mappingTable", buildMappingTable());
@@ -57,6 +97,12 @@ public class AppRootPage {
       log.error("Error displaying root page image", e);
     }
     return mav;
+  }
+
+  private ModelAndView serveCustomRootPage(String rootPagePath) {
+    ExtendedModelMap model = new ExtendedModelMap();
+    model.addAttribute("rootPage", new File(rootPagePath));
+    return new ModelAndView(HtmlFileView.INSTANCE, model);
   }
 
   private String getResourceAsBase64(String path) throws IOException {

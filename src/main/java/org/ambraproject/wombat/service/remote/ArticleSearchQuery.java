@@ -21,11 +21,12 @@ public class ArticleSearchQuery {
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
   private static final String ARTICLE_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "eissn", "publication_date", "title", "cross_published_journal_name", "author_display", "article_type",
-      "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount", "alm_mendeleyCount", "alm_twitterCount",
-      "alm_facebookCount", "retraction", "expression_of_concern", "striking_image", "figure_table_caption"}));
+      "id", "eissn", "publication_date", "title", "title_display", "cross_published_journal_name",
+      "author_display", "article_type", "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount",
+      "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction", "expression_of_concern",
+      "striking_image", "figure_table_caption"}));
   private static final String RSS_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "publication_date", "title", "cross_published_journal_name", "author_display",
+      "id", "publication_date", "title", "title_display", "cross_published_journal_name", "author_display",
       "abstract", "abstract_primary_display"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
@@ -47,14 +48,14 @@ public class ArticleSearchQuery {
   private final int start;
   private final int rows;
 
-  private final Optional<SolrSearchService.SearchCriterion> sortOrder;
+  private final Optional<SolrSearchApi.SearchCriterion> sortOrder;
 
   private final ImmutableList<String> journalKeys;
   private final ImmutableList<String> articleTypes;
   private final ImmutableList<String> subjects;
   private final ImmutableList<String> authors;
   private final ImmutableList<String> sections;
-  private final Optional<SolrSearchService.SearchCriterion> dateRange;
+  private final Optional<SolrSearchApi.SearchCriterion> dateRange;
 
   private final String startDate;
   private final String endDate;
@@ -296,7 +297,7 @@ public class ArticleSearchQuery {
     return rows;
   }
 
-  public Optional<SolrSearchService.SearchCriterion> getSortOrder() {
+  public Optional<SolrSearchApi.SearchCriterion> getSortOrder() {
     return sortOrder;
   }
 
@@ -320,7 +321,7 @@ public class ArticleSearchQuery {
     return sections;
   }
 
-  public Optional<SolrSearchService.SearchCriterion> getDateRange() {
+  public Optional<SolrSearchApi.SearchCriterion> getDateRange() {
     return dateRange;
   }
 
@@ -380,14 +381,14 @@ public class ArticleSearchQuery {
     private int start;
     private int rows;
 
-    private SolrSearchService.SearchCriterion sortOrder;
+    private SolrSearchApi.SearchCriterion sortOrder;
 
     private List<String> journalKeys = ImmutableList.of();
     private List<String> articleTypes = ImmutableList.of();
     private List<String> subjects = ImmutableList.of();
     private List<String> authors = ImmutableList.of();
     private List<String> sections = ImmutableList.of();
-    private SolrSearchService.SearchCriterion dateRange;
+    private SolrSearchApi.SearchCriterion dateRange;
 
     private String startDate;
     private String endDate;
@@ -494,7 +495,7 @@ public class ArticleSearchQuery {
     /**
      * @param sortOrder the sort order of the results returned from Solr
      */
-    public Builder setSortOrder(SolrSearchService.SearchCriterion sortOrder) {
+    public Builder setSortOrder(SolrSearchApi.SearchCriterion sortOrder) {
       this.sortOrder = sortOrder;
       return this;
     }
@@ -542,7 +543,7 @@ public class ArticleSearchQuery {
     /**
      * @param dateRange set the date range to filter by
      */
-    public Builder setDateRange(SolrSearchService.SearchCriterion dateRange) {
+    public Builder setDateRange(SolrSearchApi.SearchCriterion dateRange) {
       this.dateRange = dateRange;
       return this;
     }

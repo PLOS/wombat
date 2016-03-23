@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public interface EditorialContentService {
+public interface EditorialContentApi {
 
   /**
    * Requests a file from the content repository. Returns the full response.

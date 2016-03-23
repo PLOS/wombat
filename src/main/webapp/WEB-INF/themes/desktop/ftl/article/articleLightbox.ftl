@@ -28,7 +28,11 @@
       </aside>
     </div>
     <div id="lightbox-footer">
+
       <div id="btns-container" class="lightbox-row <% if(figureList.length <= 1) { print('one-figure-only') } %>">
+        <div class="fig-btns-container reset-zoom-wrapper left">
+          <span class="fig-btn reset-zoom-btn">Reset zoom</span>
+        </div>
         <div class="zoom-slider-container">
           <div class="range-slider-container">
             <span id="lb-zoom-min"></span>
@@ -41,7 +45,7 @@
           </div>
         </div>
         <% if(figureList.length > 1) { %>
-        <div id="fig-btns-container">
+        <div class="fig-btns-container">
           <span class="fig-btn all-fig-btn"><i class="icon icon-all"></i> All Figures</span>
           <span class="fig-btn next-fig-btn"><i class="icon icon-next"></i> Next</span>
           <span class="fig-btn prev-fig-btn"><i class="icon icon-prev"></i> Previous</span>
@@ -79,13 +83,13 @@
   <div id="download-buttons">
     <h3>Download:</h3>
     <div class="item">
-      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "original"}/>&id=<%= doi %>" title="original image">
+      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "original", "download": ""}/>&id=<%= doi %>" title="original image">
         <span class="download-btn">TIFF</span>
       </a>
       <span class="file-size"><%= fileSizes.original %></span>
     </div>
     <div class="item">
-      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "large"}/>&id=<%= doi %>" title="large image">
+      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "large", "download": ""}/>&id=<%= doi %>" title="large image">
         <span class="download-btn">PNG</span>
       </a>
       <span class="file-size"><%= fileSizes.large %></span>

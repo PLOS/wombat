@@ -36,6 +36,7 @@
     </script>
 
   <script type="text/javascript" src="<@siteLink path="resource/js/vendor/modernizr-v2.7.1.js"/>"></script>
+  <script type="text/javascript" src="<@siteLink path="resource/js/vendor/detectizr.min.js"/>"></script>
   <#-- //html5shiv. js and respond.js - enable the use of foundation's dropdowns to work in IE8 -->
   <#-- //The rem  polyfill rewrites the rems in to pixels. I don't think we can call this using the asset manager. -->
   <!--[if IE 8]>

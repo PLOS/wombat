@@ -21,6 +21,26 @@
       </div>
     </script>
 
+    <script type="text/template" id="metricsTileFacebookTooltipTemplate">
+      <div class="tileTooltipContainer">
+        <table class="tile_mini tileTooltip" data-js-tooltip-hover="target">
+          <thead>
+          <tr>
+            <th>Likes</th>
+            <th>Shares</th>
+            <th>Posts</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="data1"> <%= likes.format(0, '.', ',') %> </td>
+            <td class="data2"> <%= shares.format(0, '.', ',') %> </td>
+            <td class="data1"> <%= comments.format(0, '.', ',') %> </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </script>
 
     <script type="text/template" id="pageViewsSummary">
 
@@ -145,7 +165,7 @@
         <div id="commentsOnArticleMetricsTab" class="metrics_tile">
           <h3><a href="${commentsUrl}">Comments and Notes</a></h3>
           <div class="metrics_tile_footer" onclick="location.href=${commentsUrl};">
-          ${articleComments?size}
+          ${article.commentCount.root}
           </div>
         </div>
       </@siteLink>

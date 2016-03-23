@@ -21,7 +21,7 @@ import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -58,7 +58,7 @@ public class TaxonomyController extends WombatController {
   private static final String TAXONOMY_TEMPLATE = TAXONOMY_NAMESPACE + "**";
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @Autowired
   private BrowseTaxonomyService browseTaxonomyService;
@@ -149,10 +149,10 @@ public class TaxonomyController extends WombatController {
                       @RequestParam(value = "articleDoi", required = true) String articleDoi)
       throws IOException {
     // pass through any article category flagging ajax traffic to/from rhino
-    URI forwardedUrl = UriUtil.concatenate(soaService.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
+    URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
     HttpUriRequest req = HttpMessageUtil.buildRequest(forwardedUrl, "POST",
             HttpMessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
-    soaService.forwardResponse(req, responseToClient);
+    articleApi.forwardResponse(req, responseToClient);
   }
 
   /**

@@ -48,7 +48,7 @@ var TaxonomyBrowser = function () {
       }
 
       var termHtml = $('#subject-term-template').html();
-      termHtml = termHtml.replace('__TAXONOMY_TERM_ESCAPED__', leaf.replace(/ /g, '+'));
+      termHtml = termHtml.replace('__TAXONOMY_TERM_ESCAPED__', leaf.replace(/ /g, '_'));
       termHtml = termHtml.replace('__TAXONOMY_TERM_LEAF__', leaf);
       termHtml = termHtml.replace('__TAXONOMY_TERM_FULL_PATH__', fullPath);
       var childLinkStyle = 'browse-further browse-right';
@@ -74,8 +74,8 @@ var TaxonomyBrowser = function () {
   // Saves the current state to the browser history, so the back button functions correctly.
   // Term should be the parent term of the ones we are currently displaying.
   self.pushState = function(term) {
-    var url = 'browse';
-    var title = 'browse';
+    var url = 'subjectAreaBrowse';
+    var title = 'subjectAreaBrowse';
     if (term) {
       url += '?path=' + term;
       title = term;

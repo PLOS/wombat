@@ -9,6 +9,7 @@ import com.rometools.rome.feed.rss.Guid;
 import com.rometools.rome.feed.rss.Item;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.service.CommentFormatting;
+import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Instant;
@@ -39,20 +40,20 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
   }
 
   private static String getCreatorDisplayName(Map<String, Object> comment) {
-    Map<String, Object> creator = (Map<String, Object>) comment.get("creator");
-    return (String) creator.get("displayName");
+    Individualprofile creator = (Individualprofile) comment.get("creator");
+    return creator.getDisplayname();
   }
 
   private static Date getCommentDate(Map<String, Object> comment) {
     return Date.from(Instant.parse((String) comment.get("lastModified")));
   }
 
-  private static String formatUserName(Map<String, Object> userProfile) {
-    String givenNames = Strings.emptyToNull((String) userProfile.get("givenNames"));
-    String surname = Strings.emptyToNull((String) userProfile.get("surname"));
+  private static String formatUserName(Individualprofile userProfile) {
+    String givenNames = Strings.emptyToNull(userProfile.getFirstname());
+    String surname = Strings.emptyToNull(userProfile.getLastname());
 
     return (givenNames == null && surname == null)
-        ? (String) userProfile.get("displayName")
+        ? userProfile.getDisplayname()
         : Stream.of(givenNames, surname).filter(Objects::nonNull).collect(Collectors.joining(" "));
   }
 
@@ -63,7 +64,7 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
     String header = String.format("<p>Comment on <a href=\"%s\">%s</a></p>\n",
         getArticleUrl(feedMetadata, article), articleTitle);
 
-    String author = formatUserName((Map<String, Object>) comment.get("creator"));
+    String author = formatUserName((Individualprofile) comment.get("creator"));
     String authorAttribution = Strings.isNullOrEmpty(author) ? ""
         : String.format("<p>By %s:</p>\n", author);
 

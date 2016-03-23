@@ -17,9 +17,8 @@
 
     <div class="details">
     <h2 class="title">
-        <#include "../article/articleTruncateTitle.ftl" />
         <@siteLink handlerName="article" queryParameters={"id":article.doi} ; href>
-            <a href="${href}" title="${article.title}"><@truncateTitle article.title></@></a>
+            <a href="${href}" title="${article.title}">${article.title}</a>
         </@siteLink>
     </h2>
         <#include "../article/authorListHomepage.ftl" />
@@ -35,3 +34,5 @@
   -->
   </ul>
 </div>
+<@js src="resource/js/vendor/jquery.dotdotdot.js" />
+<@js src="resource/js/components/article_card.js" />

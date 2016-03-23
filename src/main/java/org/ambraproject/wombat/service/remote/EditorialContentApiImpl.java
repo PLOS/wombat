@@ -27,10 +27,10 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public class EditorialContentServiceImpl implements EditorialContentService {
+public class EditorialContentApiImpl implements EditorialContentApi {
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
   @Autowired
   private CachedRemoteService<InputStream> cachedRemoteStreamer;
   @Autowired
@@ -44,7 +44,7 @@ public class EditorialContentServiceImpl implements EditorialContentService {
   private String repoBucketName;
 
   private void setRepoConfig() throws IOException {
-    Map<String, Object> repoConfig = (Map<String, Object>) soaService.requestObject("config?type=repo", Map.class);
+    Map<String, Object> repoConfig = (Map<String, Object>) articleApi.requestObject("config?type=repo", Map.class);
     Map<String, Object> editorialConfig = (Map<String, Object>) repoConfig.get("editorial");
     if (editorialConfig == null) throw new RuntimeException("config?type=repo did not provide \"editorial\" config");
     String address = (String) editorialConfig.get("address");

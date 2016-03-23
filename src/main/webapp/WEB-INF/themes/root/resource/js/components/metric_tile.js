@@ -76,6 +76,14 @@ var MetricTile;
           };
           tooltipElementId = '#FacebookOnArticleMetricsTab';
           break;
+        case 'mendeley':
+          tooltipTemplate = _.template($('#metricsTileMendeleyTooltipTemplate').html());
+          tooltipData = {
+            individuals: this.source.events.reader_count,
+            groups: this.source.events.group_count
+          };
+          tooltipElementId = '#MendeleyOnArticleMetricsTab';
+          break;
         default:
           break;
       }

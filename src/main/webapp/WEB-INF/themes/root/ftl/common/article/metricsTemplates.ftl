@@ -1,14 +1,18 @@
 <script type="text/template" id="metricsTileTemplate">
     <div id="<%=  name %>OnArticleMetricsTab" class="metrics_tile">
-        <a href="<%=  url %>"><img id="<%=  name %>ImageOnArticleMetricsTab" src="<%=  imgSrc %>" alt="<%=  linkText %> <%=  name %>" class="metrics_tile_image"/></a>
+        <a href="<%=  url %>"><img id="<%=  name %>ImageOnArticleMetricsTab" src="<%=  imgSrc %>"
+                                   alt="<%=  linkText %> <%=  name %>" class="metrics_tile_image"/></a>
         <div class="metrics_tile_footer" onclick="location.href=<%=  url %>">
-            <a href="<%=  url %>"><%=  linkText %></a></div></div>
+            <a href="<%=  url %>"><%= linkText %></a></div>
+    </div>
 </script>
 
 <script type="text/template" id="metricsTileTemplateNoLink">
     <div id="<%= name %>OnArticleMetricsTab" class="metrics_tile_no_link">
-        <img id="<%= name %>ImageOnArticleMetricsTab" src="<%= imgSrc %>" alt="<%= linkText %> <%= name %>" class="metrics_tile_image"/>
-        <div class="metrics_tile_footer_no_link"><%= linkText %></div></div>
+        <img id="<%= name %>ImageOnArticleMetricsTab" src="<%= imgSrc %>" alt="<%= linkText %> <%= name %>"
+             class="metrics_tile_image"/>
+        <div class="metrics_tile_footer_no_link"><%= linkText %></div>
+    </div>
 </script>
 
 <script type="text/template" id="metricsTileFacebookTooltipTemplate">
@@ -23,9 +27,9 @@
             </thead>
             <tbody>
             <tr>
-                <td class="data1"> <%= likes.format(0, '.', ',') %> </td>
-                <td class="data2"> <%= shares.format(0, '.', ',') %> </td>
-                <td class="data1"> <%= comments.format(0, '.', ',') %> </td>
+                <td class="data1"> <%= likes.format(0, '.', ',') %></td>
+                <td class="data2"> <%= shares.format(0, '.', ',') %></td>
+                <td class="data1"> <%= comments.format(0, '.', ',') %></td>
             </tr>
             </tbody>
         </table>
@@ -33,7 +37,7 @@
 </script>
 
 <script type="text/template" id="metricsTileMendeleyTooltipTemplate">
-    <div class="tileTooltipContainer" >
+    <div class="tileTooltipContainer">
         <table class="tile_mini tileTooltip" data-js-tooltip-hover="target">
             <thead>
             <tr>
@@ -43,11 +47,80 @@
             </thead>
             <tbody>
             <tr>
-                <td class="data1"> <%= individuals.format(0, '.', ',') %> </td>
-                <td class="data2"> <%= groups.format(0, '.', ',') %> </td>
+                <td class="data1"> <%= individuals.format(0, '.', ',') %></td>
+                <td class="data2"> <%= groups.format(0, '.', ',') %></td>
             </tr>
             </tbody>
         </table>
+    </div>
+</script>
+
+<script type="text/template" id="viewedHighchartTooltipTemplate">
+    <table id="mini" cellpadding="0" cellspacing="0">
+        <tr>
+            <td></td>
+            <td colspan="2">Views in <%= formattedDate %></td>
+            <td colspan="2">Views through <%= formattedDate %></td>
+        </tr>
+        <tr>
+            <th>Source</th>
+            <th class="header1">PLOS</th>
+            <th class="header2">PMC</th>
+            <th class="header1">PLOS</th>
+            <th class="header2">PMC</th>
+        </tr>
+        <tr>
+            <td>HTML</td>
+            <td class="data1"> <%= source.counterViews.totalHTML %></td>
+            <td class="data2"> <%= source.pmcViews.totalHTML.format(0, '.', ',') %>
+            </td>
+            <td class="data1"><%= source.counterViews.cumulativeHTML.format(0, '.', ',') %></td>
+            <td class="data2"><%= source.pmcViews.cumulativeHTML.format(0, '.', ',') %></td>
+        </tr>
+        <tr>
+            <td>PDF</td>
+            <td class="data1"><%= source.counterViews.totalPDF %></td>
+            <td class="data2"><%= source.pmcViews.totalPDF.format(0, '.', ',') %></td>
+            <td class="data1"><%= source.counterViews.cumulativePDF.format(0, '.', ',') %></td>
+            <td class="data2"><%= source.pmcViews.cumulativePDF.format(0, '.', ',') %></td>
+        </tr>
+        <tr>
+            <td>XML</td>
+            <td class="data1"><%= source.counterViews.totalXML %></td>
+            <td class="data2">n.a.</td>
+            <td class="data1"><%= source.counterViews.cumulativeXML.format(0, '.', ',') %></td>
+            <td class="data2">n.a.</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td class="data1"><%= source.counterViews.total %></td>
+            <td class="data2"><%= source.pmcViews.total.format(0, '.', ',') %></td>
+            <td class="data1"><%= source.counterViews.cumulativeTotal.format(0, '.', ',') %></td>
+            <td class="data2"><%= source.pmcViews.cumulativeTotal.format(0, '.', ',') %>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script type="text/template" id="relativeMetricTemplate">
+    <div id="averageViewsSummary">
+        <div>
+            <span class="colorbox"></span>
+            &nbsp;Compare average usage for articles published in <b><%= yearPublished %></b> in the
+            subject area: <a href="<%= referenceUrl %>" class="ir" title="More information">info</a>
+        </div>
+        <div>
+            <select id="subject_areas">
+                <% _.each(subjectAreasList, function(item) { %>
+                <option value="<%= item.id %>"><%= item.title %></option>
+                <% _.each(item.children, function(child) { %>
+                <option value="<%= child.id %>">&nbsp;&nbsp;&nbsp;<%= child.title %></option>
+                <% }); %>
+                <% }); %>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            <a id="linkToRefset" href="">Show reference set</a>
+        </div>
     </div>
 </script>
 
@@ -87,7 +160,7 @@
                 <tr>
                     <td>Totals</td>
                     <td class="total"> <%= totalHTML %></td>
-                    <td  class="total"> <%= totalPDF %>
+                    <td class="total"> <%= totalPDF %>
                     </td>
                     <td class="total"> <%= totalXML %>
                     </td>

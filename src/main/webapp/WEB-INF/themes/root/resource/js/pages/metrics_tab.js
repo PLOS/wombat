@@ -2,7 +2,7 @@ var MetricsTab = {};
 
 (function ($) {
 
-  MetricsTab.components = [(new MetricsSavedSection()), (new MetricsDiscussedSection())];
+  MetricsTab.components = [(new MetricsViewedSection()), (new MetricsSavedSection()), (new MetricsDiscussedSection())];
 
   MetricsTab.isDataValid = function (data) {
     return (!_.isUndefined(data) && _.has(data, 'sources'));
@@ -39,6 +39,7 @@ var MetricsTab = {};
         _.each(that.getComponents(), function (value) { value.loadData(data); });
       })
       .fail(function (error) {
+        console.log(error);
         switch(error.name) {
           case 'NewArticleError':
             _.each(that.getComponents(), function (value) { value.newArticleError(); });

@@ -65,9 +65,18 @@ var MetricsTabComponent;
       this.sources = _.sortBy(sourcesUnordered, function(source) { return sourceOrderKeys[source.name] });
     },
 
+    formatName: function (name) {
+      //Remove spaces
+      name = name.replace(/\s/g, "");
+      // removing registered trademark symbol from web of science
+      name = name.replace("\u00ae", "");
+      return name;
+    },
+
     createTiles: function () {
       var that = this;
       _.each(this.sources, function (source) {
+        source.display_name = that.formatName(source.display_name);
         var tile = new MetricTile(source);
         tile.createTile(that.$element);
       });

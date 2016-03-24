@@ -21,6 +21,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
@@ -51,9 +52,9 @@ import java.util.stream.Collectors;
 /**
  * Implementation of SearchService that queries a solr backend.
  */
-public class SolrSearchServiceImpl implements SolrSearchService {
+public class SolrSearchApiImpl implements SolrSearchApi {
 
-  private static final Logger log = LoggerFactory.getLogger(SolrSearchServiceImpl.class);
+  private static final Logger log = LoggerFactory.getLogger(SolrSearchApiImpl.class);
 
   @Autowired
   private JsonService jsonService;
@@ -61,7 +62,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
   private CachedRemoteService<Reader> cachedRemoteReader;
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @VisibleForTesting
   protected Map<String, String> eIssnToJournalKey;
@@ -279,7 +280,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
     if (eIssnToJournalKey == null) {
       Map<String, String> mutable = new HashMap<>();
       for (Site site : siteSet.getSites()) {
-        Map<String, String> rhinoResult = (Map<String, String>) soaService.requestObject(
+        Map<String, String> rhinoResult = (Map<String, String>) articleApi.requestObject(
             "journals/" + site.getJournalKey(), Map.class);
         mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
       }
@@ -367,7 +368,7 @@ public class SolrSearchServiceImpl implements SolrSearchService {
    */
   private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
     URI uri = getSolrUri(params);
-    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, uri, Map.class);
+    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
     return (Map<String, Map>) rawResults;
   }
 

@@ -16,7 +16,7 @@ package org.ambraproject.wombat.controller;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.EditorialContentService;
+import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +32,7 @@ import java.io.IOException;
 public class ExternalContentController extends WombatController {
 
   @Autowired
-  private EditorialContentService editorialContentService;
+  private EditorialContentApi editorialContentApi;
 
   private final String REPO_KEY_PREFIX = "c";
 
@@ -44,7 +44,7 @@ public class ExternalContentController extends WombatController {
     model.addAttribute("externalServiceName", "ember"); // may not need, but kept for prototype
 
     try {
-      model.addAttribute("externalData", editorialContentService.getJson("externalContent", repoKey));
+      model.addAttribute("externalData", editorialContentApi.getJson("externalContent", repoKey));
     } catch (EntityNotFoundException e) {
       // Return a 404 if no object found.
       throw new NotFoundException(e);

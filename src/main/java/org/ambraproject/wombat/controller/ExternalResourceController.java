@@ -5,7 +5,7 @@ import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.EditorialContentService;
+import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.ReproxyUtil;
@@ -37,7 +37,7 @@ public class ExternalResourceController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(ExternalResourceController.class);
 
   @Autowired
-  private EditorialContentService editorialContentService;
+  private EditorialContentApi editorialContentApi;
 
   @RequestMapping(name = "repoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}")
   public void serve(HttpServletResponse response,
@@ -82,7 +82,7 @@ public class ExternalResourceController extends WombatController {
     Map<String, Object> fileMetadata;
 
     try {
-      fileMetadata = editorialContentService.requestMetadata(CacheParams.create(cacheKey), key, version);
+      fileMetadata = editorialContentApi.requestMetadata(CacheParams.create(cacheKey), key, version);
         } catch (EntityNotFoundException e) {
     String message = String.format("Not found in repo: [key: %s, version: %s]",
             key, version.orNull());
@@ -105,8 +105,8 @@ public class ExternalResourceController extends WombatController {
     }
 
     Collection<Header> assetHeaders = HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST);
-    try (CloseableHttpResponse repoResponse = editorialContentService.request(key, version, assetHeaders)) {
-      forwardAssetResponse(repoResponse, responseToClient);
+    try (CloseableHttpResponse repoResponse = editorialContentApi.request(key, version, assetHeaders)) {
+      forwardAssetResponse(repoResponse, responseToClient, false);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",
           key, version.orNull());

@@ -2,6 +2,7 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
+import org.ambraproject.wombat.service.remote.UserApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ class ExceptionHandlerAdvisor {
 
     // For some reason, methods decorated with @ExceptionHandler cannot accept Model parameters,
     // unlike @RequestMapping methods.  So this is a little different...
-    String viewName = (site == null) ? "//error" : (site.getKey() + "/ftl/error");
+    String viewName = chooseExceptionView(site, exception);
     ModelAndView mav = new ModelAndView(viewName);
 
     StringWriter stackTrace = new StringWriter();
@@ -58,6 +59,17 @@ class ExceptionHandlerAdvisor {
     mav.addObject("stackTrace", stackTrace.toString());
 
     return mav;
+  }
+
+  private String chooseExceptionView(Site site, Exception exception) {
+    if (site == null) {
+      return "//error";
+    } else if (exception instanceof UserApi.UserApiException) {
+      log.error("UserApiException", exception);
+      return site.getKey() + "/ftl/error/userApiError";
+    } else {
+      return site.getKey() + "/ftl/error/error";
+    }
   }
 
   /**
@@ -76,7 +88,7 @@ class ExceptionHandlerAdvisor {
       return appRootPage.serveAppRoot();
     }
     response.setStatus(HttpStatus.NOT_FOUND.value());
-    String viewName = (site == null) ? "//notFound" : (site.getKey() + "/ftl/notFound");
+    String viewName = (site == null) ? "//notFound" : (site.getKey() + "/ftl/error/notFound");
     return new ModelAndView(viewName);
   }
 

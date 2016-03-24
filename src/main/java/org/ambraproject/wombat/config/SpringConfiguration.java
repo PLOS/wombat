@@ -67,6 +67,8 @@ import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
 import org.ambraproject.wombat.service.CommentCensorService;
 import org.ambraproject.wombat.service.CommentCensorServiceImpl;
+import org.ambraproject.wombat.service.CommentService;
+import org.ambraproject.wombat.service.CommentServiceImpl;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.FreemarkerMailService;
@@ -77,8 +79,8 @@ import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.XmlServiceImpl;
-import org.ambraproject.wombat.service.remote.EditorialContentService;
-import org.ambraproject.wombat.service.remote.EditorialContentServiceImpl;
+import org.ambraproject.wombat.service.remote.EditorialContentApi;
+import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.ambraproject.wombat.util.NullJavaMailSender;
@@ -292,8 +294,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public EditorialContentService editorialRepoService() {
-    return new EditorialContentServiceImpl();
+  public EditorialContentApi editorialContentApi() {
+    return new EditorialContentApiImpl();
   }
 
   @Bean
@@ -329,6 +331,11 @@ public class SpringConfiguration {
   @Bean
   public BrowseTaxonomyService browseTaxonomyService() {
     return new BrowseTaxonomyServiceImpl();
+  }
+
+  @Bean
+  public CommentService commentService() {
+    return new CommentServiceImpl();
   }
 
   @Bean

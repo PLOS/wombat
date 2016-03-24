@@ -55,6 +55,11 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
+  public String getRootPagePath() {
+    return null;
+  }
+
+  @Override
   public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
 
   @Override

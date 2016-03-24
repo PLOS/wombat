@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.util.CacheParams;
-import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 
@@ -9,43 +8,29 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
-import java.net.URL;
-import java.util.Collection;
 
-/**
- * A service for retrieving data from the SOA's RESTful server.
- * <p/>
- * Each {@code address} argument for this service's methods must be formatted as a path to be appended to the root
- * server URL. For example, if the server is hosted at {@code http://example.com/api/v1/} and you want to send a request
- * to {@code http://example.com/api/v1/config}, then you would call {@code requestStream("config")}.
- */
-public interface SoaService {
-
-  /**
-   *  Return the host, port, and optionally part of the path.  For example "http://www.example.com/" or
-   *                "https://plos.org/api/"
-   */
-
-  public abstract URL getServerUrl();
+public interface RestfulJsonApi {
 
   /**
    * Send a REST request and open a stream as the response.
    *
    * @param address the path to which to send the REST request
    * @return a stream to the response
-   * @throws IOException                                             if there is an error connecting to the server
+   * @throws java.io.IOException                                     if there is an error connecting to the server
    * @throws NullPointerException                                    if the address is null
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
   public abstract InputStream requestStream(String address) throws IOException;
+
   public abstract InputStream requestStream(HttpUriRequest target) throws IOException;
 
   public abstract Reader requestReader(String address) throws IOException;
+
   public abstract Reader requestReader(HttpUriRequest target) throws IOException;
 
   /**
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
-   * org.ambraproject.wombat.config.SpringConfiguration#gson()} bean.
+   * org.ambraproject.wombat.config.RootConfiguration#gson()} bean.
    *
    * @param address       the path to which to send the REST request
    * @param responseClass the object type into which to serialize the JSON response
@@ -72,10 +57,10 @@ public interface SoaService {
    * query the service for a new stream and convert that stream to a cacheable return value using the provided
    * callback.
    *
-   * @param cacheParams   the cache parameters object containing the cache key at which to retrieve and store the value
-   * @param address  the address to query the SOA service if the value is not cached
-   * @param callback how to deserialize a new value from the stream, to return and insert into the cache
-   * @param <T>      the type of value to deserialize and return
+   * @param cacheParams the cache parameters object containing the cache key at which to retrieve and store the value
+   * @param address     the address to query the SOA service if the value is not cached
+   * @param callback    how to deserialize a new value from the stream, to return and insert into the cache
+   * @param <T>         the type of value to deserialize and return
    * @return the value from the service or cache
    * @throws IOException
    */
@@ -100,23 +85,11 @@ public interface SoaService {
   public abstract <T> T requestCachedObject(CacheParams cacheParams, String address,
                                             Class<T> responseClass) throws IOException;
 
-  /**
-   * Requests an asset, returning both the headers and stream.
-   * <p/>
-   * The caller <em>must</em> either close the returned {@code CloseableHttpResponse} object or close the {@code
-   * InputStream} to the response body. This is very important, because leaving responses hanging open can starve the
-   * connection pool and cause horrible timeouts.
-   *
-   * @param assetId the asset ID within the SOA service's "assetfiles/" namespace
-   * @return
-   * @throws IOException
-   */
-  public abstract CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers) throws IOException;
-
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 
   /**
    * Forward the remote service response from a given request to a client
+   *
    * @return
    * @throws IOException
    */

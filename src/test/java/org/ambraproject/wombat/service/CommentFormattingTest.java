@@ -6,6 +6,7 @@ import org.ambraproject.wombat.service.CommentFormatting.FormattedComment;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -52,15 +53,18 @@ public class CommentFormattingTest {
       return this;
     }
 
-    public ImmutableMap<String, Object> createView() {
-      ImmutableMap.Builder<String, Object> builder = ImmutableMap.<String, Object>builder();
-      builder.put("replies", ImmutableList.of());
-      if (body != null) builder.put("body", body);
-      if (title != null) builder.put("title", title);
-      if (highlightedText != null) builder.put("highlightedText", highlightedText);
-      builder.put("competingInterestStatement", (competingInterestBody != null)
+    /**
+     * Represent this test case as a mutable metadata map.
+     */
+    public Map<String, Object> createView() {
+      Map<String, Object> view = new HashMap<>();
+      view.put("replies", ImmutableList.of());
+      if (body != null) view.put("body", body);
+      if (title != null) view.put("title", title);
+      if (highlightedText != null) view.put("highlightedText", highlightedText);
+      view.put("competingInterestStatement", (competingInterestBody != null)
           ? ImmutableMap.of("body", competingInterestBody) : ImmutableMap.of());
-      return builder.build();
+      return view;
     }
   }
 
@@ -73,8 +77,9 @@ public class CommentFormattingTest {
 
   @Test(dataProvider = "getTestCases")
   public void testCommentFormatting(TestCase testCase) {
-    Map<String, Object> modifiedView = CommentFormatting.addFormattingFields(testCase.createView());
-    FormattedComment formatted = (FormattedComment) modifiedView.get("formatting");
+    Map<String, Object> view = testCase.createView();
+    CommentFormatting.addFormattingFields(view);
+    FormattedComment formatted = (FormattedComment) view.get("formatting");
     assertEquals(formatted.getBodyWithHighlightedText(), testCase.expectedBodyWithHighlightedText);
     assertEquals(formatted.getCompetingInterestStatement(), testCase.expectedCompetingInterestStatement);
   }

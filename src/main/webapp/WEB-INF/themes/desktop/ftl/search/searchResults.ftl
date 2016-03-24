@@ -224,7 +224,8 @@
                     </#if>
                   </p>
 
-                  <p class="search-results-doi">${doc.id}</p>
+                <#include "../macro/doiAsLink.ftl" />
+                <p class="search-results-doi"><@doiAsLink doc.id/></p>
                 <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
                     <div class="search-results-eoc">
                         <span></span>

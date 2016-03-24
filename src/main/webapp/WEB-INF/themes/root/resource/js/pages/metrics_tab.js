@@ -2,7 +2,7 @@ var MetricsTab = {};
 
 (function ($) {
 
-  MetricsTab.components = [(new ViewedSection()), (new MetricsDiscussedSection())];
+  MetricsTab.components = [(new ViewedSection()), (new MetricsSavedSection()), (new MetricsDiscussedSection())];
 
   MetricsTab.isDataValid = function (data) {
     return (!_.isUndefined(data) && _.has(data, 'sources'));

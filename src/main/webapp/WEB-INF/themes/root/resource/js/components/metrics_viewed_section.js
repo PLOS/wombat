@@ -419,7 +419,7 @@ var MetricsViewedSection;
       var that = this;
       if(_.has(this.chartData, 'relativeMetricData') && !_.isEmpty(this.chartData.relativeMetricData)) {
         var template = _.template($('#relativeMetricTemplate').html());
-        var subjectAreas = this.chartData.relativeMetricData.subject_areas;
+        var subjectAreas = _.sortBy(this.chartData.relativeMetricData.subject_areas, function (subject_area) { return subject_area.subject_area; });
         var subjectAreasList = {};
         _.each(subjectAreas, function (subjectArea) {
           var subjectAreaData = subjectArea.average_usage;
@@ -450,7 +450,14 @@ var MetricsViewedSection;
           var subjectAreaTitles = subjectArea.subject_area.split('/');
           if(subjectAreaTitles.length > 2) {
             var item = that.formatSubjectArea(subjectAreaTitles, true);
-            subjectAreasList[s.slugify(subjectAreaTitles[1])].children.push(item);
+            if(_.has(subjectAreasList, s.slugify(subjectAreaTitles[1]))) {
+              subjectAreasList[s.slugify(subjectAreaTitles[1])].children.push(item);
+            }
+            else {
+              var parentItem = that.formatSubjectArea(subjectAreaTitles, false);
+              subjectAreasList[s.slugify(subjectAreaTitles[1])] = parentItem;
+              subjectAreasList[s.slugify(subjectAreaTitles[1])].children.push(item);
+            }
           }
           else {
             var item = that.formatSubjectArea(subjectAreaTitles, false);
@@ -476,8 +483,6 @@ var MetricsViewedSection;
           var value = $(this).val();
           that.selectSubjectArea(value, chart, baseLinkToRefset);
         });
-
-
 
       }
     },

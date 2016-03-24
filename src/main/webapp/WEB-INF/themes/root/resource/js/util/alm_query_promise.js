@@ -24,7 +24,7 @@ var AlmQuery;
      */
 
     init: function (config) {
-      this.config = config || ALM_CONFIG;
+      this.config = _.extend(ALM_CONFIG, config);
     },
     
     /*
@@ -51,9 +51,7 @@ var AlmQuery;
         }
       }
       else {
-        var err = new Error('[AlmQuery::validateDOI] - Invalid DOI');
-        err.name = 'InvalidDOIError';
-        throw err;
+        throw new ErrorFactory('InvalidDOIError', '[AlmQuery::validateDOI] - Invalid DOI');
       }
     },
     
@@ -88,7 +86,7 @@ var AlmQuery;
       if(this.config.host == null) {
         var err = new Error('[AlmQuery::processRequest] - ALM API is not configured');
         err.name = 'ALMNotConfiguredError';
-        deferred.reject(err);
+        deferred.reject(new ErrorFactory('ALMNotConfiguredError', '[AlmQuery::processRequest] - ALM API is not configured'));
       }
       else {
         $.ajax({
@@ -102,7 +100,7 @@ var AlmQuery;
           error: function (jqXHR, textStatus) {
             var err = new Error('[AlmQuery::processRequest] - Request failed to API');
             err.name = 'APIRequestError';
-            deferred.reject(err);
+            deferred.reject(new ErrorFactory('APIRequestError', '[AlmQuery::processRequest] - Request failed to API'));
           }
         });
       }

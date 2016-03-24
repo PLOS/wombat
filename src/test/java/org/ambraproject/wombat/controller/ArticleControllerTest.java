@@ -11,7 +11,7 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.TestArticleServiceImpl;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.mockito.Matchers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -87,10 +87,10 @@ public class ArticleControllerTest extends ControllerTest {
     }
 
     @Bean
-    public SoaService soaService() throws IOException {
-      SoaService soaService = mock(SoaService.class);
-      when(soaService.requestObject(Matchers.endsWith("authors"), any(Class.class))).thenReturn(ImmutableList.of());
-      return soaService;
+    public ArticleApi articleApi() throws IOException {
+      ArticleApi articleApi = mock(ArticleApi.class);
+      when(articleApi.requestObject(Matchers.endsWith("authors"), any(Class.class))).thenReturn(ImmutableList.of());
+      return articleApi;
     }
 
     @Bean

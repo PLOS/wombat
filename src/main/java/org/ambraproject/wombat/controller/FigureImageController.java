@@ -5,7 +5,7 @@ import com.google.common.collect.Iterables;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.Header;
@@ -29,7 +29,7 @@ public class FigureImageController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(FigureImageController.class);
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   /**
    * Forward a response for an asset file from the SOA to the response.
@@ -45,7 +45,7 @@ public class FigureImageController extends WombatController {
                               String assetId,
                               boolean isDownloadRequest)
       throws IOException {
-    try (CloseableHttpResponse responseFromService = soaService.requestAsset(assetId,
+    try (CloseableHttpResponse responseFromService = articleApi.requestAsset(assetId,
             HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST))) {
       forwardAssetResponse(responseFromService, responseToClient, isDownloadRequest);
     } catch (EntityNotFoundException e) {
@@ -76,11 +76,11 @@ public class FigureImageController extends WombatController {
       if (!booleanParameter(unique)) {
         // The request directly identifies an asset file.
         assetFileId = id;
-        assetFileMetadata = soaService.requestObject("assetfiles/" + id + "?metadata", Map.class);
+        assetFileMetadata = articleApi.requestObject("assetfiles/" + id + "?metadata", Map.class);
       } else {
         // The request identifies an asset and asserts that the asset has exactly one file. Get the ID of that file.
 
-        Map<String, Map<String, ?>> assetMetadata = soaService.requestObject("assets/" + id + "?metadata", Map.class);
+        Map<String, Map<String, ?>> assetMetadata = articleApi.requestObject("assets/" + id + "?metadata", Map.class);
         if (assetMetadata.size() != 1) {
           /*
            * The user queried for the unique file of a non-unique asset. Because they might have manually punched in an
@@ -121,7 +121,7 @@ public class FigureImageController extends WombatController {
     requireNonemptyParameter(figureId);
     Map<String, ?> assetMetadata;
     try {
-      assetMetadata = soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+      assetMetadata = articleApi.requestObject("assets/" + figureId + "?figure", Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

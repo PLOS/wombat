@@ -48,14 +48,14 @@ public class ArticleSearchQuery {
   private final int start;
   private final int rows;
 
-  private final Optional<SolrSearchService.SearchCriterion> sortOrder;
+  private final Optional<SolrSearchApi.SearchCriterion> sortOrder;
 
   private final ImmutableList<String> journalKeys;
   private final ImmutableList<String> articleTypes;
   private final ImmutableList<String> subjects;
   private final ImmutableList<String> authors;
   private final ImmutableList<String> sections;
-  private final Optional<SolrSearchService.SearchCriterion> dateRange;
+  private final Optional<SolrSearchApi.SearchCriterion> dateRange;
 
   private final String startDate;
   private final String endDate;
@@ -297,7 +297,7 @@ public class ArticleSearchQuery {
     return rows;
   }
 
-  public Optional<SolrSearchService.SearchCriterion> getSortOrder() {
+  public Optional<SolrSearchApi.SearchCriterion> getSortOrder() {
     return sortOrder;
   }
 
@@ -321,7 +321,7 @@ public class ArticleSearchQuery {
     return sections;
   }
 
-  public Optional<SolrSearchService.SearchCriterion> getDateRange() {
+  public Optional<SolrSearchApi.SearchCriterion> getDateRange() {
     return dateRange;
   }
 
@@ -381,14 +381,14 @@ public class ArticleSearchQuery {
     private int start;
     private int rows;
 
-    private SolrSearchService.SearchCriterion sortOrder;
+    private SolrSearchApi.SearchCriterion sortOrder;
 
     private List<String> journalKeys = ImmutableList.of();
     private List<String> articleTypes = ImmutableList.of();
     private List<String> subjects = ImmutableList.of();
     private List<String> authors = ImmutableList.of();
     private List<String> sections = ImmutableList.of();
-    private SolrSearchService.SearchCriterion dateRange;
+    private SolrSearchApi.SearchCriterion dateRange;
 
     private String startDate;
     private String endDate;
@@ -495,7 +495,7 @@ public class ArticleSearchQuery {
     /**
      * @param sortOrder the sort order of the results returned from Solr
      */
-    public Builder setSortOrder(SolrSearchService.SearchCriterion sortOrder) {
+    public Builder setSortOrder(SolrSearchApi.SearchCriterion sortOrder) {
       this.sortOrder = sortOrder;
       return this;
     }
@@ -543,7 +543,7 @@ public class ArticleSearchQuery {
     /**
      * @param dateRange set the date range to filter by
      */
-    public Builder setDateRange(SolrSearchService.SearchCriterion dateRange) {
+    public Builder setDateRange(SolrSearchApi.SearchCriterion dateRange) {
       this.dateRange = dateRange;
       return this;
     }

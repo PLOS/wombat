@@ -63,7 +63,7 @@ var MetricTile;
       //The data for the tooltip underscore template.
       var tooltipData = false;
       //The ID of the element that should be mouse overed to show the tooltip.
-      var tooltipElementId = false;
+      var tooltipWrapperElementId = '#' + this.name + 'OnArticleMetricsTab';
 
       //For each source that needs a tooltip we add in the switch case and fill the tooltipTemplate, tooltipData and tooltipElementId.
       switch (this.source.name) {
@@ -74,15 +74,21 @@ var MetricTile;
             shares: this.source.events[0].share_count,
             comments: this.source.events[0].comment_count
           };
-          tooltipElementId = '#FacebookOnArticleMetricsTab';
+          break;
+        case 'mendeley':
+          tooltipTemplate = _.template($('#metricsTileMendeleyTooltipTemplate').html());
+          tooltipData = {
+            individuals: this.source.events.reader_count,
+            groups: this.source.events.group_count
+          };
           break;
         default:
           break;
       }
 
-      //If we have a template and data we append the element to the 'tooltipElementId' and initialize the tooltip plugin.
+      //If we have a template and data we append the element to the 'tooltipWrapperElementId' and initialize the tooltip plugin.
       if(tooltipTemplate && tooltipData) {
-        $(tooltipElementId)
+        $(tooltipWrapperElementId)
           .attr("data-js-tooltip-hover", "trigger")
           .append(tooltipTemplate(tooltipData));
         tooltip_hover.init();

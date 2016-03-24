@@ -1,7 +1,7 @@
-var ViewedSection;
+var MetricsViewedSection;
 
 (function ($) {
-  ViewedSection = MetricsTabComponent.extend({
+  MetricsViewedSection = MetricsTabComponent.extend({
     $element: $('#views'),
     $loadingEl: $('#chartSpinner'),
     $chartElement: $('#usage'),
@@ -28,11 +28,12 @@ var ViewedSection;
       this.$chartElement.show();
     },
 
-    //Join year and month to a string
+    //Join year and month to a string, used as key to the history object and as ordering factor for the events
     getYearMonthString: function (month, year, separator) {
       if(!separator) {
         separator = '';
       }
+      //if month less then 10, append a 0 before it
       if(month < 10) {
         month = "0" + month.toString();
       }
@@ -64,7 +65,7 @@ var ViewedSection;
       return events;
     },
 
-    //This function creates the default data to all the months in the history, between the publication year and today. This way if is missing some month in ALM, the chart is rendered right.
+    //Create the default data to all the months in the history, between the publication year and today. This way if is missing some month in ALM, the chart is rendered right.
     createHistoryDataStructure: function (pubYear, pubMonth) {
       var todayDate = new Date();
       var todayYear = todayDate.getFullYear();
@@ -143,13 +144,13 @@ var ViewedSection;
 
     populateHistoryData: function (historyStructure, counterViews, pmcViews) {
       var that = this;
-      var cumulativeCounterPDF = 0,
-        cumulativeCounterXML = 0,
-        cumulativeCounterHTML = 0,
-        cumulativeCounterTotal = 0,
-        cumulativePMCPDF = 0,
-        cumulativePMCHTML = 0,
-        cumulativePMCTotal = 0;
+      var cumulativeCounterPDF = 0;
+      var cumulativeCounterXML = 0;
+      var cumulativeCounterHTML = 0;
+      var cumulativeCounterTotal = 0;
+      var cumulativePMCPDF = 0;
+      var cumulativePMCHTML = 0;
+      var cumulativePMCTotal = 0;
 
       _.each(historyStructure, function (historyMonth, key) {
         var counterViewsData = _.findWhere(counterViews, { month: historyMonth.month.toString(), year: historyMonth.year.toString() });
@@ -213,7 +214,7 @@ var ViewedSection;
       var pmcViews = this.filterEvents('pmc', pubYearMonth);
       var relativeMetric = _.filter(this.data.sources, function (source) { return source.name.toLowerCase() == 'relativemetric'});
 
-      if(relativeMetric[0] && relativeMetric[0].events) {
+      if(relativeMetric[0] && relativeMetric[0].events && !_.isEmpty(relativeMetric[0].events.subject_areas)) {
         filteredData.relativeMetricData = relativeMetric[0].events;
       }
 

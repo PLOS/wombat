@@ -172,7 +172,7 @@
 
           <div class="toolbar">
             <#assign userIsLoggedIn = isUserLoggedIn() />
-            <@siteLink handlerName="userLogin" queryParameters={"page": getLinkToCurrentPage()?url('UTF-8')} ; login>
+            <@siteLink handlerName="userLogin" queryParameters={"page": getLinkToCurrentPage()} ; login>
               <a title="Report a Concern" class="flag toolbar btn"
                 <#if userIsLoggedIn>
                  onclick="comments.showReportBox('${commentId?c}'); return false;"
@@ -205,7 +205,11 @@
           </#list>
         </div>
       </#macro>
-      <@renderComment comment=comment depth=0 replyTo={} />
+      <#if userApiError??>
+        <#include "userApiErrorMessage.ftl" />
+      <#else>
+        <@renderComment comment=comment depth=0 replyTo={} />
+      </#if>
 
       </div>
 

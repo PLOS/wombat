@@ -2,9 +2,11 @@
 var tooltip_references, initReferenceTooltip;
 
   function getMediaCoverageCount(almData) {
-    for (var i = 0; i < almData.sources.length; i++) {
-      if (almData.sources[i].name == 'articlecoveragecurated') {
-        return almData.sources[i].metrics.total;
+    if(almData.sources !== undefined) {
+      for (var i = 0; i < almData.sources.length; i++) {
+        if (almData.sources[i].name == 'articlecoveragecurated') {
+          return almData.sources[i].metrics.total;
+        }
       }
     }
     return 0;

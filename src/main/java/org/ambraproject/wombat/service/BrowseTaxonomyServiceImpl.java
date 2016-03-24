@@ -21,7 +21,7 @@ package org.ambraproject.wombat.service;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.CacheUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ import java.util.Collection;
 public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
 
   @Autowired
-  private SolrSearchService solrSearchService;
+  private SolrSearchApi solrSearchApi;
 
   @Autowired
   private Cache cache;
@@ -48,7 +48,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
 
     String cacheKey = "categories:" + CacheParams.createKeyHash(journalKey);
     return CacheUtil.getOrCompute(cache, cacheKey,
-        () -> TaxonomyGraph.create(solrSearchService.getAllSubjects(journalKey)));
+        () -> TaxonomyGraph.create(solrSearchApi.getAllSubjects(journalKey)));
   }
 
   /**
@@ -59,7 +59,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
     String cacheKey = "categoryCount:" + CacheParams.createKeyHash(journalKey);
     return CacheUtil.getOrCompute(cache, cacheKey,
         () -> {
-          Collection<SolrSearchService.SubjectCount> counts = solrSearchService.getAllSubjectCounts(journalKey);
+          Collection<SolrSearchApi.SubjectCount> counts = solrSearchApi.getAllSubjectCounts(journalKey);
           return new TaxonomyCountTable(counts);
         });
   }

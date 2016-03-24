@@ -27,7 +27,7 @@ import java.util.Objects;
 /**
  * Interface to the article search service for the application.
  */
-public interface SolrSearchService {
+public interface SolrSearchApi {
 
   /**
    * Type representing some restriction on the desired search results--for instance, a date range, or a sort order.

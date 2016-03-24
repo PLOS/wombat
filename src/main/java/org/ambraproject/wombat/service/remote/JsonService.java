@@ -23,12 +23,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.util.CacheParams;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.net.URI;
 
 /**
  * Abstract class for services that query a ReST backend that returns JSON.
@@ -54,10 +53,10 @@ public class JsonService {
    * @throws NullPointerException    if either argument is null
    * @throws EntityNotFoundException if the object at the address does not exist
    */
-  public <T> T requestObject(RemoteService<? extends Reader> remoteService, URI uri, Class<T> responseClass) throws IOException {
+  public <T> T requestObject(RemoteService<? extends Reader> remoteService, HttpUriRequest target, Class<T> responseClass) throws IOException {
     Preconditions.checkNotNull(responseClass);
-    try (Reader reader = remoteService.request(new HttpGet(uri))) {
-      return deserializeStream(responseClass, reader, uri);
+    try (Reader reader = remoteService.request(target)) {
+      return deserializeStream(responseClass, reader, target.getURI());
     }
   }
 
@@ -74,17 +73,11 @@ public class JsonService {
    * @throws IOException
    */
   public <T> T requestCachedObject(CachedRemoteService<? extends Reader> remoteService, CacheParams cacheParams,
-                                   final URI address, final Class<T> responseClass)
+                                   HttpUriRequest target, final Class<T> responseClass)
       throws IOException {
     Preconditions.checkNotNull(responseClass);
-    return remoteService.requestCached(cacheParams, new HttpGet(address),
-        new CacheDeserializer<Reader, T>() {
-          @Override
-          public T read(Reader reader) throws IOException {
-            return deserializeStream(responseClass, reader, address);
-          }
-        }
-    );
+    return remoteService.requestCached(cacheParams, target,
+        (Reader reader) -> deserializeStream(responseClass, reader, target.getURI()));
   }
 
   /**
@@ -103,12 +96,12 @@ public class JsonService {
     } catch (JsonSyntaxException e) {
       String message = String.format("Could not deserialize %s from stream at: %s. Message: %s",
           responseClass.getName(), source, e.getMessage());
-      throw new RuntimeException(message, e);
+      throw new ServiceResponseFormatException(message, e);
     }
     if (value == null) {
       String message = String.format("Could not deserialize %s from null/empty stream at: %s",
           responseClass.getName(), source);
-      throw new RuntimeException(message);
+      throw new ServiceResponseFormatException(message);
     }
     return value;
   }

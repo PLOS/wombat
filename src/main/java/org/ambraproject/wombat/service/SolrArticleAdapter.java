@@ -1,10 +1,10 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -54,7 +54,7 @@ public class SolrArticleAdapter {
   }
 
   /**
-   * Adapt a set of results, as provided by {@link org.ambraproject.wombat.service.remote.SolrSearchService#search(org.ambraproject.wombat.service.remote.ArticleSearchQuery)}.
+   * Adapt a set of results, as provided by {@link org.ambraproject.wombat.service.remote.SolrSearchApi#search(org.ambraproject.wombat.service.remote.ArticleSearchQuery)}.
    */
   public static List<SolrArticleAdapter> unpackSolrQuery(Map<String, ?> solrResult) {
     List<Map<String, ?>> docs = (List<Map<String, ?>>) solrResult.get("docs");
@@ -69,7 +69,8 @@ public class SolrArticleAdapter {
    */
   public static SolrArticleAdapter adaptFromSolr(Map<String, ?> solrArticle) {
     String doi = (String) solrArticle.get("id");
-    String title = (String) solrArticle.get("title");
+    String title = Strings.isNullOrEmpty((String) solrArticle.get("title_display")) ? (String) solrArticle.get("title")
+        : (String) solrArticle.get("title_display");
     String eIssn = (String) solrArticle.get("eissn");
     String date = (String) solrArticle.get("publication_date");
     String strkImgURI = (String) solrArticle.get("striking_image");

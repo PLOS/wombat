@@ -55,6 +55,11 @@
     </div>
 </script>
 
+<script type="text/template" id="citedBoxNoDataTemplate">
+    No related citations found <br/>
+    Search for citations in <a href="<%= googleLink %>">Google Scholar</a>
+</script>
+
 <script type="text/template" id="viewedHighchartTooltipTemplate">
     <table id="mini" cellpadding="0" cellspacing="0">
         <tr>

@@ -168,6 +168,10 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       max-height: 75%;
       display: block;
       -moz-transform-origin: 0 0 !important;
+
+      html.windows7 & {
+        -ms-transform-origin: 0 0 !important;
+      }
     }
     text-align: center;
     height: 100%;

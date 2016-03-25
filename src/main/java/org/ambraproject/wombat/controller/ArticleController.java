@@ -176,6 +176,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("article", articleMetaData);
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
+    model.addAttribute("interactiveFigureUrl", "test");
 
     return site + "/ftl/article/article";
   }

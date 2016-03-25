@@ -126,5 +126,7 @@
      FigureLightbox.loadImage('#figure-lightbox-container', $('.figure').eq(0).data('doi'));
    });
   });
-
+  $('#nav-interactive-figures').on('click', function () {
+    $('#figure-lightbox-container-interactive').fadeIn('fast');
+  });
 }(jQuery));

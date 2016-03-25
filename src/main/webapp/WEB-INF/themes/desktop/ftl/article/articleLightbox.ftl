@@ -1,5 +1,7 @@
 <div id="figure-lightbox-container"></div>
 
+<div id="figure-lightbox-container-interactive"></div>
+
 <script id="figure-lightbox-template" type="text/template">
   <div id="figure-lightbox" class="reveal-modal full" data-reveal aria-hidden="true"
        role="dialog">

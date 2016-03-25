@@ -5,11 +5,11 @@
       class="no-js">
 
 <#assign title = "Page Not Found" />
-<#include "common/head.ftl" />
+<#include "../common/head.ftl" />
 
-<#include "common/journalStyle.ftl" />
+<#include "../common/journalStyle.ftl" />
 <body class="static ${journalStyle}">
-<#include "common/header/headerContainer.ftl" />
+<#include "../common/header/headerContainer.ftl" />
 
 <article class="error-page">
   <h1>Page Not Found</h1>
@@ -19,7 +19,7 @@
     <p>Thank you for your patience.</p>
   </div>
 </article>
-<#include "common/footer/footer.ftl" />
+<#include "../common/footer/footer.ftl" />
 <@js src="resource/js/global.js" />
 <@renderJs />
 

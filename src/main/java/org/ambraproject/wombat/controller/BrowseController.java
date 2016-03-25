@@ -20,7 +20,7 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +34,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -47,7 +45,7 @@ public class BrowseController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(BrowseController.class);
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @Autowired
   private ArticleService articleService;
@@ -62,7 +60,7 @@ public class BrowseController extends WombatController {
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
     String journalMetaUrl = "journals/" + site.getJournalKey();
-    Map<String, Map<String, Object>> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);
+    Map<String, Map<String, Object>> journalMetadata = articleApi.requestObject(journalMetaUrl, Map.class);
     String issueDesc = (String) journalMetadata.getOrDefault("currentIssue",
         Collections.emptyMap()).getOrDefault("description", "");
     model.addAttribute("currentIssueDescription",
@@ -76,13 +74,13 @@ public class BrowseController extends WombatController {
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
 
     String journalMetaUrl = "journals/" + site.getJournalKey();
-    Map<String, Object> journalMetadata = soaService.requestObject(journalMetaUrl, Map.class);
+    Map<String, Object> journalMetadata = articleApi.requestObject(journalMetaUrl, Map.class);
     model.addAttribute("journal", journalMetadata);
 
     String issueMetaUrl = issueId == null ? "journals/" + site.getJournalKey() + "?currentIssue" : "issues/" + issueId;
     Map<String, Object> issueMeta;
     try {
-      issueMeta = soaService.requestObject(issueMetaUrl, Map.class);
+      issueMeta = articleApi.requestObject(issueMetaUrl, Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
@@ -94,7 +92,7 @@ public class BrowseController extends WombatController {
     model.addAttribute("issueDescription", articleTransformService.transformImageDescription(new RenderContext(site),
         xmlService.removeElementFromFragment(issueDesc, "title")));
 
-    List<Map<String, Object>> articleGroups = soaService.requestObject("articleTypes", List.class);
+    List<Map<String, Object>> articleGroups = articleApi.requestObject("articleTypes", List.class);
 
     articleGroups.stream().forEach(ag -> ag.put("articles", new ArrayList<Map<?, ?>>()));
 

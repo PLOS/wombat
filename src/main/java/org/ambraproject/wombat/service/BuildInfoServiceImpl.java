@@ -18,10 +18,8 @@
 
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.BuildInfo;
 import org.ambraproject.wombat.util.GitInfo;
 import org.slf4j.Logger;
@@ -39,7 +37,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   private static final Logger log = LoggerFactory.getLogger(BuildInfoServiceImpl.class);
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @Autowired
   private GitInfo gitInfo;
@@ -107,7 +105,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   }
 
   private BuildInfo fetchServiceBuildInfo() throws IOException {
-    return parse(soaService.requestObject("config?type=build", Map.class));
+    return parse(articleApi.requestObject("config?type=build", Map.class));
   }
 
   private static BuildInfo parse(Map<?, ?> propertyMap) {

@@ -9,6 +9,7 @@ import java.io.IOException;
  * @param <S> the type of stream (typically {@link java.io.InputStream} or {@link java.io.Reader})
  * @param <T> the type of data
  */
+@FunctionalInterface
 public interface CacheDeserializer<S extends Closeable, T> {
 
   /**

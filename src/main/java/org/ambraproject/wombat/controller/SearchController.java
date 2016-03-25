@@ -33,9 +33,9 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
-import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.lang.WordUtils;
@@ -79,7 +79,7 @@ public class SearchController extends WombatController {
   private SiteSet siteSet;
 
   @Autowired
-  private SolrSearchService solrSearchService;
+  private SolrSearchApi solrSearchApi;
 
   @Autowired
   private SearchFilterService searchFilterService;
@@ -150,9 +150,9 @@ public class SearchController extends WombatController {
      */
     int start;
 
-    SolrSearchServiceImpl.SolrSortOrder sortOrder;
+    SolrSearchApiImpl.SolrSortOrder sortOrder;
 
-    SolrSearchService.SearchCriterion dateRange;
+    SolrSearchApi.SearchCriterion dateRange;
 
     List<String> articleTypes;
 
@@ -215,10 +215,10 @@ public class SearchController extends WombatController {
         int page = Integer.parseInt(pageParam);
         start = (page - 1) * resultsPerPage;
       }
-      sortOrder = SolrSearchServiceImpl.SolrSortOrder.RELEVANCE;
+      sortOrder = SolrSearchApiImpl.SolrSortOrder.RELEVANCE;
       String sortOrderParam = getSingleParam(params, "sortOrder", null);
       if (!Strings.isNullOrEmpty(sortOrderParam)) {
-        sortOrder = SolrSearchServiceImpl.SolrSortOrder.valueOf(sortOrderParam);
+        sortOrder = SolrSearchApiImpl.SolrSortOrder.valueOf(sortOrderParam);
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
           getSingleParam(params, "filterStartDate", null), getSingleParam(params, "filterEndDate", null));
@@ -247,7 +247,7 @@ public class SearchController extends WombatController {
           ? new ArrayList<String>() : params.get("filterSections");
 
       isFiltered = !filterJournalNames.isEmpty() || !subjectList.isEmpty() || !articleTypes.isEmpty()
-          || dateRange != SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME || !authors.isEmpty()
+          || dateRange != SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME || !authors.isEmpty()
           || startDate != null || endDate != null || !sections.isEmpty();
     }
 
@@ -320,12 +320,12 @@ public class SearchController extends WombatController {
      * @param endDate        desktop end date value
      * @return A generic @SearchCriterion object used by Solr
      */
-    private SolrSearchService.SearchCriterion parseDateRange(String dateRangeParam, String startDate, String endDate) {
-      SolrSearchService.SearchCriterion dateRange = SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME;
+    private SolrSearchApi.SearchCriterion parseDateRange(String dateRangeParam, String startDate, String endDate) {
+      SolrSearchApi.SearchCriterion dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME;
       if (!Strings.isNullOrEmpty(dateRangeParam)) {
-        dateRange = SolrSearchServiceImpl.SolrEnumeratedDateRange.valueOf(dateRangeParam);
+        dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.valueOf(dateRangeParam);
       } else if (!Strings.isNullOrEmpty(startDate) && !Strings.isNullOrEmpty(endDate)) {
-        dateRange = new SolrSearchServiceImpl.SolrExplicitDateRange("explicit date range", startDate,
+        dateRange = new SolrSearchApiImpl.SolrExplicitDateRange("explicit date range", startDate,
             endDate);
       }
       return dateRange;
@@ -496,8 +496,8 @@ public class SearchController extends WombatController {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
-    model.addAttribute("sortOrders", SolrSearchServiceImpl.SolrSortOrder.values());
-    model.addAttribute("dateRanges", SolrSearchServiceImpl.SolrEnumeratedDateRange.values());
+    model.addAttribute("sortOrders", SolrSearchApiImpl.SolrSortOrder.values());
+    model.addAttribute("dateRanges", SolrSearchApiImpl.SolrEnumeratedDateRange.values());
     return commonParams;
   }
 
@@ -526,7 +526,7 @@ public class SearchController extends WombatController {
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
 
-    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+    Map<String, ?> searchResults = solrSearchApi.search(queryObj);
 
     String feedTitle = representQueryParametersAsString(params);
     return getFeedModelAndView(site, feedType, feedTitle, searchResults);
@@ -603,12 +603,12 @@ public class SearchController extends WombatController {
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults;
     try {
-      searchResults = solrSearchService.search(queryObj);
+      searchResults = solrSearchApi.search(queryObj);
     } catch (ServiceRequestException sre) {
       return handleFailedSolrRequest(model, site, queryString, sre);
     }
 
-    model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
+    model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
 
     Set<SearchFilterItem> activeFilterItems;
 
@@ -756,10 +756,10 @@ public class SearchController extends WombatController {
     commonParams.fill(query);
 
     ArticleSearchQuery queryObj = query.build();
-    Map<String, ?> searchResults = solrSearchService.search(queryObj);
+    Map<String, ?> searchResults = solrSearchApi.search(queryObj);
 
     model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
-    model.addAttribute("searchResults", solrSearchService.addArticleLinks(searchResults, request, site, siteSet));
+    model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());
     model.addAttribute("isBrowse", true);

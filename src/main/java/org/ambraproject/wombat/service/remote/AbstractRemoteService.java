@@ -10,6 +10,7 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
@@ -49,7 +50,12 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
     boolean returningResponse = false;
     CloseableHttpResponse response = null;
     try {
-      response = client.execute(target);
+      try {
+        response = client.execute(target);
+      } catch (HttpHostConnectException e) {
+        throw new ServiceConnectionException(e);
+      }
+
       StatusLine statusLine = response.getStatusLine();
       int statusCode = statusLine.getStatusCode();
       if (isErrorStatus(statusCode)) {

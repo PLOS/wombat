@@ -2,7 +2,7 @@ package org.ambraproject.wombat.model;
 
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Maps;
-import org.ambraproject.wombat.service.remote.SolrSearchService.SubjectCount;
+import org.ambraproject.wombat.service.remote.SolrSearchApi.SubjectCount;
 
 import java.io.Serializable;
 import java.util.Collection;

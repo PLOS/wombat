@@ -1,6 +1,6 @@
-<#macro userInfoLink user class="">
+<#include "../../common/userMgmtUrl.ftl" />
 
-  <@siteLink handlerName="userInfo" pathVariables={"displayName": user.displayName} ; user_href>
-  <a class="${class}" href="${user_href}">${user.displayName}</a>
-  </@siteLink>
+<#macro userInfoLink user class="">
+  <#assign userInfoUrl = userMgmtUrl('people/${user.displayname}') />
+  <a class="${class}" <#if userInfoUrl?has_content>href="${userInfoUrl}"</#if> >${user.displayname}</a>
 </#macro>

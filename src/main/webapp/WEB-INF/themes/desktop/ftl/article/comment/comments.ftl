@@ -27,35 +27,39 @@
 
     <div id="thread" class="article-container">
 
-      <h2>Reader Comments (${articleComments?size})</h2>
+      <h2>Reader Comments (${article.commentCount.root})</h2>
 
-    <#include "postNewCommentLink.ftl" />
-    <@postNewCommentLink article.doi />
+    <#if userApiError??>
+      <#include "userApiErrorMessage.ftl" />
+    <#else>
+      <#include "postNewCommentLink.ftl" />
+      <@postNewCommentLink article.doi />
 
       <ul id="threads">
-      <#list articleComments?sort_by("mostRecentActivity")?reverse as comment>
-        <li class="cf">
-          <div class="responses">
-            <span>${comment.replyTreeSize}</span>
-            <#if comment.replyTreeSize == 1>Response<#else>Responses</#if>
-          </div>
-          <div class="recent">
-            <@formatJsonDate date=comment.mostRecentActivity format="dd MMM yyyy '<br/>' HH:mm zzz" /><br/>
-            <span>Most Recent</span>
-          </div>
-          <div class="title">
-            <a href="<@siteLink handlerName="articleCommentTree" queryParameters={"id": comment.annotationUri} />">
-            ${comment.title}
-            </a>
+        <#list articleComments?sort_by("mostRecentActivity")?reverse as comment>
+          <li class="cf">
+            <div class="responses">
+              <span>${comment.replyTreeSize}</span>
+              <#if comment.replyTreeSize == 1>Response<#else>Responses</#if>
+            </div>
+            <div class="recent">
+              <@formatJsonDate date=comment.mostRecentActivity format="dd MMM yyyy '<br/>' HH:mm zzz" /><br/>
+              <span>Most Recent</span>
+            </div>
+            <div class="title">
+              <a href="<@siteLink handlerName="articleCommentTree" queryParameters={"id": comment.annotationUri} />">
+              ${comment.title}
+              </a>
             <span>
               <#include "userInfoLink.ftl" />
               Posted by <@userInfoLink comment.creator /> on
               <@formatJsonDate date=comment.created format="dd MMM yyyy 'at' HH:mm zzz" />
             </span>
-          </div>
-        </li>
-      </#list>
+            </div>
+          </li>
+        </#list>
       </ul>
+    </#if>
 
     </div>
 

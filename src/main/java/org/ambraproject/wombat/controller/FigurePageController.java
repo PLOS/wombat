@@ -7,7 +7,7 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ import java.util.Map;
 public class FigurePageController extends WombatController {
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
   @Autowired
   private ArticleService articleService;
   @Autowired
@@ -68,7 +68,7 @@ public class FigurePageController extends WombatController {
     requireNonemptyParameter(figureId);
     Map<String, Object> figureMetadata;
     try {
-      figureMetadata = (Map<String, Object>) soaService.requestObject("assets/" + figureId + "?figure", Map.class);
+      figureMetadata = (Map<String, Object>) articleApi.requestObject("assets/" + figureId + "?figure", Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);
     }

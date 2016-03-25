@@ -298,19 +298,16 @@ var FigureLightbox = {};
     this.descriptionExpanded = true;
 
 
-    var animate_fast = 500;
-    var animate_slow = 300;
+    var animate_fast = 300;
+    var animate_slow = 500;
 
-    $('#view-more-wrapper, #download-buttons, #show-context-container').stop(true, true).fadeOut(animate_fast, function () {
+    $('#view-more-wrapper,#show-context-container, #download-buttons').stop(true, true).fadeOut(animate_fast, function () {
+      $('#view-less-wrapper').fadeIn(animate_slow);
+
       $('#image-context').addClass('full-display');
 
-      $('.footer-text').animate(
-        {width: '95%'}, animate_slow, function () {
-          $('#image-context').addClass("full-display-animate").
-          find('#view-less-wrapper').fadeIn(animate_slow);
-
-        });
     });
+
     this.descriptionExpanded = true;
 
   };
@@ -318,17 +315,13 @@ var FigureLightbox = {};
   FigureLightbox.retractDescription = function () {
     var that = this;
 
-    var animate_fast = 500;
-    var animate_slow = 300;
+    var animate_fast = 300;
     $('#view-less-wrapper').stop(true, true).fadeOut(animate_fast, function () {
       $('#image-context').removeClass('full-display');
 
-      $('.footer-text').animate(
-        {width: '39%'}, animate_slow, function () {
-          $('#image-context').removeClass("full-display-animate").find('#view-more-wrapper').fadeIn(animate_slow).end().find('#download-buttons, #show-context-container').fadeIn(animate_slow);
        //TODO: use truncate description instead
-         $('#view-less-wrapper').trigger("update");
-        });
+      $('#view-more-wrapper,#show-context-container, #download-buttons').fadeIn(animate_fast);
+      $('#view-less-wrapper').trigger("update");
     });
     this.descriptionExpanded = false;
   };

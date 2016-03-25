@@ -41,6 +41,7 @@ import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.SubjectAlertService;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.util.ListUtil;
@@ -104,6 +105,9 @@ public class SearchController extends WombatController {
 
   @Autowired
   private UserApi userApi;
+
+  @Autowired
+  private SubjectAlertService subjectAlertService;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -780,72 +784,12 @@ public class SearchController extends WombatController {
     model.addAttribute("isBrowse", true);
 
     String authId = request.getRemoteUser();
+    boolean subscribed = false;
     if (authId != null) {
-      model.addAttribute("subscribed", isUserSubscribed(authId, site.getJournalKey(), Strings.isNullOrEmpty(subject) ? "" : subjectName));
-    } else {
-      model.addAttribute("subscribed", false);
+      String subjectParam = Strings.isNullOrEmpty(subject) ? "" : subjectName;
+      subscribed = subjectAlertService.isUserSubscribed(authId, site.getJournalKey(), subjectParam);
     }
-  }
-
-  private boolean isUserSubscribed(String authId, String journalKey, String subjectName) throws IOException {
-    String nedId = getUserIdFromAuthId(authId);
-    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", nedId), JsonArray.class);
-    JsonObject existing = findMatchingAlert(alerts, journalKey);
-    if (existing == null) {
-      return false;
-    }
-    else if (Strings.isNullOrEmpty(subjectName)) {
-      // empty subject list means alert for all (or any) subjects.
-      return existing != null;
-    } else {
-      JsonObject query = getAlertQuery(existing);
-      JsonArray filterSubjects = query.getAsJsonArray("filterSubjectsDisjunction");
-      for (JsonElement subject : filterSubjects) {
-        if (subjectName.equalsIgnoreCase(subject.getAsJsonPrimitive().getAsString())) {
-          return true;
-        }
-      }
-      return false;
-    }
-  }
-
-  private String getUserIdFromAuthId(String authId) throws IOException {
-    IndividualComposite individualComposite = userApi.requestObject(
-        String.format("individuals/CAS/%s", authId), IndividualComposite.class);
-    // use nedid from any available profile.
-    Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
-        .findFirst()
-        .orElseThrow(() -> new RuntimeException(
-            "An IndividualComposite does not have an Individualprofile"));
-    return individualprofile.getNedid().toString();
-  }
-
-
-  private JsonObject findMatchingAlert(JsonArray alerts, String journalKey) {
-    for (JsonElement it : alerts) {
-      JsonObject alert = it.getAsJsonObject();
-      String source = alert.getAsJsonPrimitive("source").getAsString();
-      String frequency = alert.getAsJsonPrimitive("frequency").getAsString();
-      String name = alert.getAsJsonPrimitive("name").getAsString();
-      if ("Ambra".equals(source) && "weekly".equals(frequency) && "PLoSONE".equals(name)) {
-        JsonObject query = getAlertQuery(alert);
-        if (query.has("filterJournals") && query.has("filterSubjectsDisjunction")) {
-          JsonArray filterJournals = query.getAsJsonArray("filterJournals");
-          if (filterJournals.size() == 1 && journalKey.equalsIgnoreCase(filterJournals.get(0).getAsString())) {
-            return alert;
-          }
-        }
-      }
-    }
-    return null;
-  }
-
-  private JsonObject getAlertQuery(JsonObject alert) {
-    String queryString = alert.getAsJsonPrimitive("query").getAsString();
-    if (queryString != null) {
-      return (JsonObject) (new Gson()).fromJson(queryString, JsonObject.class);
-    }
-    return null;
+    model.addAttribute("subscribed", subscribed);
   }
 
   private void modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
@@ -876,137 +820,5 @@ public class SearchController extends WombatController {
 
     model.addAttribute("subjectParents", subjectParents);
     model.addAttribute("subjectChildren", subjectChildren);
-  }
-
-  @RequestMapping(name = "addSubjectAlert", value = "/subjectalert", params = {"action", "subject"})
-  @ResponseBody
-  public Map<String, Object> changeSubjectAlert(HttpServletRequest request, Model model, @SiteParam Site site,
-                                @RequestParam Map<String, String> params)
-      throws IOException {
-
-    try {
-      String action = params.get("action");
-      String subject = params.get("subject");
-      subject = subject.replace("_", " ");
-      String subjectName = WordUtils.capitalize(subject);
-
-      String authId = request.getRemoteUser();
-      if (authId == null) {
-        throw new RuntimeException("not logged in");
-      }
-
-      String nedId = getUserIdFromAuthId(authId);
-      if (nedId == null) {
-        throw new RuntimeException("failed to get NED ID");
-      }
-
-      if ("add".equals(action)) {
-        addSubjectAlert(nedId, site.getJournalKey(), subjectName);
-      } else if ("remove".equals(action)) {
-        removeSubjectAlert(nedId, site.getJournalKey(), subjectName);
-      }
-
-      Map<String, Object> response = new HashMap<String, Object>();
-      response.put("result", "success");
-      return response;
-    } catch (RuntimeException e) {
-      e.printStackTrace();
-      Map<String, Object> response = new HashMap<String, Object>();
-      response.put("result", "failed");
-      response.put("error", e.getMessage());
-      return response;
-    }
-  }
-
-  private void addSubjectAlert(String nedId, String journalKey, String subjectName) throws IOException {
-    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", nedId), JsonArray.class);
-    JsonObject alert = findMatchingAlert(alerts, journalKey);
-
-    if (alert != null) {
-      JsonObject query = getAlertQuery(alert);
-      JsonArray filterSubjects = query.getAsJsonArray("filterSubjectsDisjunction");
-      for (JsonElement filterSubject : filterSubjects) {
-        if (subjectName.equalsIgnoreCase(filterSubject.getAsString())) {
-          throw new RuntimeException("already exists");
-        }
-      }
-
-      filterSubjects.add(new JsonPrimitive(subjectName));
-      alert.remove("query");
-      alert.add("query", new JsonPrimitive((new Gson()).toJson(query)));
-    } else {
-      String queryString = "{\"startPage\":0,\"filterSubjects\":[],\"unformattedQuery\":\"\",\"query\":\"*:*\","
-          + "\"eLocationId\":\"\",\"pageSize\":0,\"resultView\":\"\",\"volume\":\"\",\"sortValue\":\"\","
-          + "\"sortKey\":\"\",\"filterKeyword\":\"\",\"filterArticleTypes\":[],"
-          + "\"filterSubjectsDisjunction\":[],\"filterAuthors\":[],\"filterJournals\":[],\"id\":\"\"}";
-      JsonObject query = (new Gson()).fromJson(queryString, JsonObject.class);
-
-      JsonArray filterJournals = query.getAsJsonArray("filterJournals");
-      filterJournals.add(new JsonPrimitive(journalKey));
-      JsonArray filterSubjects = query.getAsJsonArray("filterSubjectsDisjunction");
-      filterSubjects.add(new JsonPrimitive(subjectName));
-      query.remove("filterJournals");
-      query.remove("filterSubjects");
-      query.add("filterJournals", filterJournals);
-      query.add("filterSubjects", filterSubjects);
-
-      alert = new JsonObject();
-      alert.addProperty("source", "Ambra");
-      alert.addProperty("frequency", "weekly");
-      alert.addProperty("name", "PLoSONE");
-      alert.addProperty("query", (new Gson()).toJson(query));
-    }
-
-    try {
-      if (alert.has("id")) {
-        String alertId = String.valueOf(alert.getAsJsonPrimitive("id").getAsLong());
-        userApi.putObject(String.format("individuals/%s/alerts/%s", nedId, alertId), alert);
-      } else {
-        userApi.postObject(String.format("individuals/%s/alerts", nedId), alert);
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-      throw new RuntimeException(e.getMessage());
-    }
-  }
-
-  private void removeSubjectAlert(String nedId, String journalKey, String subjectName) throws IOException {
-    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", nedId), JsonArray.class);
-    JsonObject alert = findMatchingAlert(alerts, journalKey);
-
-    if (alert == null) {
-      throw new RuntimeException("subject alert not found");
-    }
-    JsonObject query = getAlertQuery(alert);
-    JsonArray filterSubjects = query.getAsJsonArray("filterSubjectsDisjunction");
-    boolean found = false;
-    for (Iterator<JsonElement> it = filterSubjects.iterator(); it.hasNext(); ) {
-      JsonElement filterSubject = it.next();
-      if (subjectName.equalsIgnoreCase(filterSubject.getAsString())) {
-        it.remove();
-        found = true;
-      }
-    }
-    if (!found) {
-      throw new RuntimeException("subject alert does not exist");
-    }
-
-    try {
-      if (alert.has("id")) {
-        String alertId = String.valueOf(alert.getAsJsonPrimitive("id").getAsLong());
-        if (filterSubjects.size() == 0) {
-          userApi.deleteObject(String.format("individuals/%s/alerts/%s", nedId, alertId));
-        } else {
-          query.remove("filterSubjectsDisjunction");
-          query.add("filterSubjectsDisjunction", filterSubjects);
-          alert.remove("query");
-          alert.add("query", new JsonPrimitive((new Gson()).toJson(query)));
-          userApi.putObject(String.format("individuals/%s/alerts/%s", nedId, alertId), alert);
-        }
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-      throw new RuntimeException(e.getMessage());
-    }
   }
 }

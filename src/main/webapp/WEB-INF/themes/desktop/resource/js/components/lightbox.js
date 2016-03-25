@@ -9,24 +9,24 @@
  *
  */
 var FigureLightbox = {};
-(function($) {
+(function ($) {
 
   FigureLightbox = {
     // All events are triggered on this container
-    lbContainerSelector:     '#figure-lightbox-container',
+    lbContainerSelector: '#figure-lightbox-container',
 
     /* internal selectors */
-    lbSelector:               '#figure-lightbox',
-    lbTemplateSelector:       '#figure-lightbox-template',
-    contextTemplateSelector:  '#image-context-template',
-    lbCloseButtonSelector:    '#figure-lightbox .lb-close',
-    zoomRangeSelector:        '#figure-lightbox .range-slider',
-    $panZoomEl:               null,
-    imgData:                  null,
+    lbSelector: '#figure-lightbox',
+    lbTemplateSelector: '#figure-lightbox-template',
+    contextTemplateSelector: '#image-context-template',
+    lbCloseButtonSelector: '#figure-lightbox .lb-close',
+    zoomRangeSelector: '#figure-lightbox .range-slider',
+    $panZoomEl: null,
+    imgData: null,
 
 
     /* internal config variables */
-    imgPath:        WombatConfig.figurePath || 'IMG_PATH_NOT_LOADED'
+    imgPath: WombatConfig.figurePath || 'IMG_PATH_NOT_LOADED'
   };
 
   FigureLightbox.insertLightboxTemplate = function () {
@@ -67,8 +67,8 @@ var FigureLightbox = {};
   FigureLightbox.bindBehavior = function () {
     var that = this;
     // Escape key destroys and closes lightbox
-    $(document).on('keyup.figure-lightbox', function(e) {
-      if($(that.lbSelector).hasClass('open')) {
+    $(document).on('keyup.figure-lightbox', function (e) {
+      if ($(that.lbSelector).hasClass('open')) {
         switch (e.which) {
           case 27: // esc
             that.close();
@@ -97,94 +97,90 @@ var FigureLightbox = {};
     });
 
     $(this.lbContainerSelector)
-        .data('is-inited', true)
-        // Bind close button
-        .find(this.lbCloseButtonSelector).on('click', function () {
-          that.close();
-        }).end()
+      .data('is-inited', true)
+      // Bind close button
+      .find(this.lbCloseButtonSelector).on('click', function () {
+      that.close();
+    }).end()
 
-        // Bind buttons to change images
-        .find('.change-img').on('click', function () {
-          that.switchImage(this.getAttribute('data-doi'));
-        }).end()
-
-
-        // Bind button to show all images
-        .find('.all-fig-btn').on('click', function () {
-          var $figList = $('#figures-list');
-
-          if($figList.hasClass('figures-list-open')) {
-            $figList.removeClass('figures-list-open');
-          }
-          else {
-            $figList.addClass('figures-list-open');
-          }
-
-        }).end()
-
-        // Bind mousewheel in figure list. Prevent image zooming
-        .find('#figures-list').on('mousewheel', function(e) {
-          e.stopPropagation();
-        }).end()
-        // Bind show in context button
-       .find('#image-context').on('click', 'a.target_link', function () {
-        target= $(this).attr('href');
-          that.close();
-        }).end()
-
-        // Bind show in context button
-        .find('#image-context').on('click', '.show-context', function () {
-          that.close();
-        }).end()
-
-        // Bind next figure button
-        .find('.next-fig-btn:not(.fig-btn-disabled)').on('click', function () {
-          return that.nextImage();
-        }).end()
-
-        // Bind next figure button
-        .find('.prev-fig-btn:not(.fig-btn-disabled)').on('click', function () {
-          return that.prevImage();
-        }).end()
-
-        // Bind reset zoom button
-        .find('.reset-zoom-btn').on('click', function () {
-          return that.resetZoom();
-        }).end()
-
-        .find('#view-more').on('click', function () {
-          $('#view-more-wrapper').hide();
-        }).end()
-
-        .find('#lb-zoom-min').on('click', function () {
-          that.zoomOut();
-        }).end()
-
-        .find('#lb-zoom-max').on('click', function () {
-          that.zoomIn();
-        }).end()
-
-        .on('image-switch.lightbox', function (e, data) {
-          // Show both prev and next buttons
-          var buttons = $(that.lbSelector).find('.fig-btn').show();
-          if (data.index === 0) {
-            buttons.filter('.prev-fig-btn').addClass('fig-btn-disabled'); // Hide prev button
-          }
-          else {
-            buttons.filter('.prev-fig-btn').removeClass('fig-btn-disabled');
-          }
-          if (data.index === (that.imgList.length - 1)) {
-            buttons.filter('.next-fig-btn').addClass('fig-btn-disabled'); // Hide next button
-          }
-          else {
-            buttons.filter('.next-fig-btn').removeClass('fig-btn-disabled');
-          }
+      // Bind buttons to change images
+      .find('.change-img').on('click', function () {
+      that.switchImage(this.getAttribute('data-doi'));
+    }).end()
 
 
-          $(that.lbSelector).find('#view-more, #view-less').on('click', function () {
-            that.toggleDescription();
-          });
-        });
+      // Bind button to show all images
+      .find('.all-fig-btn').on('click', function () {
+      var $figList = $('#figures-list');
+
+      if ($figList.hasClass('figures-list-open')) {
+        $figList.removeClass('figures-list-open');
+      }
+      else {
+        $figList.addClass('figures-list-open');
+      }
+
+    }).end()
+
+      // Bind mousewheel in figure list. Prevent image zooming
+      .find('#figures-list').on('mousewheel', function (e) {
+      e.stopPropagation();
+    }).end()
+      // Bind show in context button
+      .find('#image-context').on('click', 'a.target_link', function () {
+      target = $(this).attr('href');
+      that.close();
+    }).end()
+
+      // Bind show in context button
+      .find('#image-context').on('click', '.show-context', function () {
+      that.close();
+    }).end()
+
+      // Bind next figure button
+      .find('.next-fig-btn:not(.fig-btn-disabled)').on('click', function () {
+      return that.nextImage();
+    }).end()
+
+      // Bind next figure button
+      .find('.prev-fig-btn:not(.fig-btn-disabled)').on('click', function () {
+      return that.prevImage();
+    }).end()
+      //Bind view-more and view less links
+      .find('#image-context').on('click', '#view-more, #view-less', function () {
+      that.toggleDescription();
+    }).end()
+
+      // Bind reset zoom button
+      .find('.reset-zoom-btn').on('click', function () {
+      return that.resetZoom();
+    }).end()
+      .find('#lb-zoom-min').on('click', function () {
+      that.zoomOut();
+    }).end()
+
+      .find('#lb-zoom-max').on('click', function () {
+      that.zoomIn();
+    }).end()
+      .on('image-switch.lightbox', function (e, data) {
+        // Show both prev and next buttons
+        var buttons = $(that.lbSelector).find('.fig-btn').show();
+
+        if (data.index === 0) {
+          buttons.filter('.prev-fig-btn').addClass('fig-btn-disabled'); // Hide prev button
+        }
+        else {
+          buttons.filter('.prev-fig-btn').removeClass('fig-btn-disabled');
+        }
+        if (data.index === (that.imgList.length - 1)) {
+          buttons.filter('.next-fig-btn').addClass('fig-btn-disabled'); // Hide next button
+        }
+        else {
+          buttons.filter('.next-fig-btn').removeClass('fig-btn-disabled');
+        }
+        that.truncateDescription();
+
+      });
   };
 
   FigureLightbox.nextImage = function () {
@@ -209,10 +205,10 @@ var FigureLightbox = {};
 
   FigureLightbox.scrollDrawerToIndex = function (index) {
     var $drawer = $(this.lbSelector + ' #figures-list');
-    var itemTopPosition = $drawer.find('.change-img:eq('+index+')').position().top;
+    var itemTopPosition = $drawer.find('.change-img:eq(' + index + ')').position().top;
 
-    if($drawer.hasClass('figures-list-open')) {
-      $drawer.scrollTop($drawer.scrollTop()+itemTopPosition);
+    if ($drawer.hasClass('figures-list-open')) {
+      $drawer.scrollTop($drawer.scrollTop() + itemTopPosition);
     }
   };
 
@@ -243,7 +239,7 @@ var FigureLightbox = {};
 
     //Add active class to selected image in drawer
     $(this.lbSelector + ' #figures-list').find('.change-img-active').removeClass('change-img-active')
-        .end().find('.change-img:eq('+currentIndex+')').addClass('change-img-active');
+      .end().find('.change-img:eq(' + currentIndex + ')').addClass('change-img-active');
 
     // Get data to populate image context
     var imageData = this.fetchImageData();
@@ -254,10 +250,10 @@ var FigureLightbox = {};
     var lbTemplate = _.template($(this.contextTemplateSelector).html());
     // Remove actual img context
     $(this.lbSelector + ' #image-context').children().remove().end()
-        // Append new img context
-        .append(lbTemplate(templateData))
-        //Add selector for links within captions
-        .find('#figure-description-wrapper a[href^="#"]').addClass('target_link');
+      // Append new img context
+      .append(lbTemplate(templateData))
+      //Add selector for links within captions
+      .find('#figure-description-wrapper a[href^="#"]').addClass('target_link');
     if (this.descriptionExpanded) {
       this.retractDescription();
     }
@@ -267,22 +263,26 @@ var FigureLightbox = {};
       this.truncateDescription();
     }
 
-    $(this.lbContainerSelector).trigger('image-switch.lightbox', {index: currentIndex, element: this.imgData.imgElement});
+    $(this.lbContainerSelector).trigger('image-switch.lightbox', {
+      index: currentIndex,
+      element: this.imgData.imgElement
+    });
   };
 
   FigureLightbox.truncateDescription = function () {
     var $viewMoreWrapper = $(this.lbSelector + ' #view-more-wrapper');
-    if (!$viewMoreWrapper.data('is-truncated')) {
-      if ($viewMoreWrapper.find('img').length > 0) {
-        // Workaround: If description has inline images reduce
-        // the height of the container to avoid hiding the show
-        // more button when the images are rendered and ocuppy more space
-        $viewMoreWrapper.css({ maxHeight: function( index, value ) {
-          return parseFloat( value ) * 3/4;
-        }});
-      }
-      $viewMoreWrapper.dotdotdot({after: '#view-more'}).data('is-truncated', true);
-    }
+    //if (!$viewMoreWrapper.data('is-truncated')) {
+    //  if ($viewMoreWrapper.find('img').length > 0) {
+    //    // Workaround: If description has inline images reduce
+    //    // the height of the container to avoid hiding the show
+    //    // more button when the images are rendered and ocuppy more space
+    //    $viewMoreWrapper.css({ maxHeight: function( index, value ) {
+    //      return parseFloat( value ) * 3/4;
+    //    }});
+    //  }
+    $viewMoreWrapper.dotdotdot({after: '#view-more', watch: true}).data('is-truncated', true);
+
+
   };
 
   FigureLightbox.toggleDescription = function () {
@@ -294,21 +294,34 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.expandDescription = function () {
-    $('#image-context').addClass('full-display');
-    // Workaround to slide and fade at the same time
-    $('#view-more-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp();
-    $('#view-less-wrapper').slideDown('slow');
+
     this.descriptionExpanded = true;
+
+
+    var animate_fast = 300;
+    var animate_slow = 500;
+
+    $('#view-more-wrapper,#show-context-container, #download-buttons').stop(true, true).fadeOut(animate_fast, function () {
+      $('#view-less-wrapper').fadeIn(animate_slow);
+
+      $('#image-context').addClass('full-display');
+
+    });
+
+    this.descriptionExpanded = true;
+
   };
 
   FigureLightbox.retractDescription = function () {
     var that = this;
-    // Workaround to slide and fade at the same time
-    $('#view-less-wrapper').stop(true, true).fadeOut({ queue: false }).slideUp(500, function () {
+
+    var animate_fast = 300;
+    $('#view-less-wrapper').stop(true, true).fadeOut(animate_fast, function () {
       $('#image-context').removeClass('full-display');
-      $('#view-more-wrapper').show();
-      // Dotdotdot in case description is initialized expanded
-      that.truncateDescription();
+
+       //TODO: use truncate description instead
+      $('#view-more-wrapper,#show-context-container, #download-buttons').fadeIn(animate_fast);
+      $('#view-less-wrapper').trigger("update");
     });
     this.descriptionExpanded = false;
   };
@@ -332,7 +345,7 @@ var FigureLightbox = {};
       this.bindBehavior();
     }
     $(this.lbSelector)
-        .foundation('reveal', 'open');
+      .foundation('reveal', 'open');
     this.switchImage(this.imgData.doi);
 
     if (typeof cb === 'function') {
@@ -344,12 +357,12 @@ var FigureLightbox = {};
     var that = this;
     this.showLoader();
     var $image = $(this.lbSelector).find('img.main-lightbox-image')
-        .attr('src', this.buildImgUrl(imgDoi))
-        .one('load', function () {
-          // Reset to original zoom
-          that.resetZoom();
-          that.hideLoader();
-        });
+      .attr('src', this.buildImgUrl(imgDoi))
+      .one('load', function () {
+        // Reset to original zoom
+        that.resetZoom();
+        that.hideLoader();
+      });
     this.panZoom($image);
 
     // Reinitialize sliders
@@ -373,7 +386,7 @@ var FigureLightbox = {};
   FigureLightbox.showInContext = function (imgDoi) {
     imgDoi = imgDoi.split('/');
     imgDoi = imgDoi[1].slice(8);
-    imgDoi = imgDoi.replace(/\./g,'-');
+    imgDoi = imgDoi.replace(/\./g, '-');
     return '#' + imgDoi;
   };
 
@@ -389,7 +402,7 @@ var FigureLightbox = {};
     this.bindPanZoomToSlider();
     this.bindSliderToPanZoom();
 
-    this.$panZoomEl.parent().off('mousewheel').on('mousewheel', function(e) {
+    this.$panZoomEl.parent().off('mousewheel').on('mousewheel', function (e) {
       e.preventDefault();
       $(that.lbContainerSelector).trigger('mousewheel-zoom.lightbox', e);
       var delta = e.delta || e.originalEvent.wheelDelta;
@@ -425,8 +438,8 @@ var FigureLightbox = {};
   FigureLightbox.calculateFocalPoint = function () {
     var $imageContainer = $(this.lbSelector).find('.img-container');
     var focus = {
-      clientX: $imageContainer.width()/2,
-      clientY: $imageContainer.height()/2
+      clientX: $imageContainer.width() / 2,
+      clientY: $imageContainer.height() / 2
     };
 
     return focus;
@@ -460,11 +473,11 @@ var FigureLightbox = {};
   FigureLightbox.bindPanZoomToSlider = function () {
     var that = this;
     var panzoomInstance = that.$panZoomEl.panzoom('instance');
-    $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function(){
+    $(this.zoomRangeSelector).off('change.fndtn.slider').on('change.fndtn.slider', function () {
       // If values differ, change them
       var matrix = panzoomInstance.getMatrix();
       //Divide the slider value by 20 to keep the increment in 0.005
-      var newSliderValue = parseFloat(this.getAttribute('data-slider')/20);
+      var newSliderValue = parseFloat(this.getAttribute('data-slider') / 20);
       if (matrix[0] !== newSliderValue || matrix[3] !== newSliderValue) {
         $(that.lbContainerSelector).trigger('slider-zoom.lightbox');
 
@@ -491,14 +504,14 @@ var FigureLightbox = {};
 
   FigureLightbox.bindSliderToPanZoom = function () {
     var that = this;
-    this.$panZoomEl.off('panzoomzoom').on('panzoomzoom', function(e, panzoom, scale) {
+    this.$panZoomEl.off('panzoomzoom').on('panzoomzoom', function (e, panzoom, scale) {
       //Multiply the scale value by 20 to keep proportional to the slider range
-      $(that.zoomRangeSelector).foundation('slider', 'set_value', scale*20);
+      $(that.zoomRangeSelector).foundation('slider', 'set_value', scale * 20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
     });
 
-    this.$panZoomEl.off('panzoomreset').on('panzoomreset', function(e) {
+    this.$panZoomEl.off('panzoomreset').on('panzoomreset', function (e) {
       $(that.zoomRangeSelector).foundation('slider', 'set_value', 20);
       // Bug in foundation unbinds after set_value. Workaround: rebind everytime
       that.bindPanZoomToSlider();
@@ -517,18 +530,18 @@ var FigureLightbox = {};
   };
 
   FigureLightbox.destroy = function () {
-      // @TODO: Check when to destroy modal with images,
+    // @TODO: Check when to destroy modal with images,
     ///add destroy when opening in other pages.
-/*    $(this.lbContainerSelector)
-      // Unbind close button
-        .find(this.lbCloseButtonSelector).off('click').end()
-      // Unbind buttons to change images
-        .find('.change-img').off('click').end()
-      // Unbind button to show all images
-        .find('.all-fig-btn').off('click').end()
-        .off('image-switch.lightbox');
-      this.$panZoomEl.panzoom('destroy');
-        */
+    /*    $(this.lbContainerSelector)
+     // Unbind close button
+     .find(this.lbCloseButtonSelector).off('click').end()
+     // Unbind buttons to change images
+     .find('.change-img').off('click').end()
+     // Unbind button to show all images
+     .find('.all-fig-btn').off('click').end()
+     .off('image-switch.lightbox');
+     this.$panZoomEl.panzoom('destroy');
+     */
   };
 
-  })(jQuery);
+})(jQuery);

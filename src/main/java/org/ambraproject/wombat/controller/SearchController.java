@@ -56,6 +56,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -767,8 +768,8 @@ public class SearchController extends WombatController {
   private TaxonomyGraph modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
     TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
 
-    Set<String> subjectParents;
-    Set<String> subjectChildren;
+    Collection<String> subjectParents;
+    Collection<String> subjectChildren;
     if (subject != null && subject.length() > 0) {
       //Recreate the category name as stored in the DB
       subject = subject.replace("_", " ");

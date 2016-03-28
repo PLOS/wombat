@@ -1,14 +1,11 @@
 package org.ambraproject.wombat.model;
 
-import com.google.common.base.Functions;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Multimaps;
-import com.google.common.collect.Sets;
 import com.google.common.collect.SortedSetMultimap;
 import com.google.common.collect.TreeMultimap;
 
@@ -27,22 +24,13 @@ import java.util.TreeSet;
  */
 public class TaxonomyGraph implements Serializable {
 
-  // All lookups are case-insensitive, so all data structures sorted with case-insensitive comparisons.
-  // There is no ImmutableSortedSetMultimap, so use unmodifiable wrappers instead.
-  private final SortedSetMultimap<String, String> parentsToChildren;
-  private final SortedSetMultimap<String, String> childrenToParents;
-  private final ImmutableSortedSet<String> roots;
-  private final ImmutableSortedMap<String, String> canonicalNames;
+  private final ImmutableSortedMap<String, CategoryInfo> categories;
+  private final ImmutableList<CategoryInfo> roots;
 
-  private TaxonomyGraph(Set<String> roots,
-                        SortedSetMultimap<String, String> parentsToChildren,
-                        SortedSetMultimap<String, String> childrenToParents,
-                        Set<String> canonicalNames) {
-    this.roots = ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, roots);
-    this.parentsToChildren = Multimaps.unmodifiableSortedSetMultimap(parentsToChildren);
-    this.childrenToParents = Multimaps.unmodifiableSortedSetMultimap(childrenToParents);
-    this.canonicalNames = ImmutableSortedMap.copyOf(Maps.asMap(canonicalNames, Functions.identity()),
-        String.CASE_INSENSITIVE_ORDER);
+  private TaxonomyGraph(ImmutableSortedMap<String, CategoryInfo> categories) {
+    this.categories = Objects.requireNonNull(categories);
+    this.roots = ImmutableList.copyOf(Collections2.filter(this.categories.values(),
+        category -> category.parentNames.isEmpty()));
   }
 
   private static final Splitter CATEGORY_SPLITTER = Splitter.on('/').omitEmptyStrings();
@@ -60,36 +48,40 @@ public class TaxonomyGraph implements Serializable {
    * @return a parsed graph representation of the taxonomy
    */
   public static TaxonomyGraph create(Collection<String> categoryPaths) {
-    Set<String> roots = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
     Set<String> names = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
     SortedSetMultimap<String, String> parentsToChildren = caseInsensitiveSetMultimap();
     SortedSetMultimap<String, String> childrenToParents = caseInsensitiveSetMultimap();
     for (String categoryPath : categoryPaths) {
       List<String> categories = parseTerms(categoryPath);
-      String root = categories.get(0);
-      roots.add(root);
-      names.add(root);
-      for (int i = 1; i < categories.size(); i++) {
-        String parent = categories.get(i - 1);
-        String child = categories.get(i);
-        parentsToChildren.put(parent, child);
-        childrenToParents.put(child, parent);
-        names.add(child);
+      for (int i = 0; i < categories.size(); i++) {
+        String node = categories.get(i);
+        names.add(node);
+        if (i > 0) {
+          String parent = categories.get(i - 1);
+          parentsToChildren.put(parent, node);
+          childrenToParents.put(node, parent);
+        }
       }
     }
-    return new TaxonomyGraph(roots, parentsToChildren, childrenToParents, names);
+
+    ImmutableSortedMap.Builder<String, CategoryInfo> categoryMap = ImmutableSortedMap.orderedBy(String.CASE_INSENSITIVE_ORDER);
+    for (String name : names) {
+      categoryMap.put(name, new CategoryInfo(name, childrenToParents.get(name), parentsToChildren.get(name)));
+    }
+
+    return new TaxonomyGraph(categoryMap.build());
   }
 
-  public ImmutableSet<String> getRootCategoryNames() {
-    return roots;
+  public Collection<String> getRootCategoryNames() {
+    return Collections2.transform(roots, CategoryInfo::getName);
   }
 
   public Collection<CategoryView> getRootCategoryViews() {
-    return Collections2.transform(getRootCategoryNames(), CategoryView::new);
+    return Collections2.transform(roots, CategoryView::new);
   }
 
   public Set<String> getAllCategoryNames() {
-    return Sets.union(roots, childrenToParents.keySet());
+    return categories.keySet();
   }
 
   /**
@@ -97,33 +89,54 @@ public class TaxonomyGraph implements Serializable {
    * @return a view of the named category, or {@code null} if no such category is in this graph
    */
   public CategoryView getView(String categoryName) {
-    return (roots.contains(categoryName) || childrenToParents.containsKey(categoryName))
-        ? new CategoryView(categoryName) : null;
+    CategoryInfo info = categories.get(categoryName);
+    return (info == null) ? null : new CategoryView(info);
   }
 
   /**
-   * @param subject the name of a category
+   * @param categoryName the name of a category
    * @return the same name with its canonical capitalization, or {@code null} if the named category does not exist
    */
-  public String getName(String subject) {
-    return canonicalNames.get(subject);
+  public String getName(String categoryName) {
+    CategoryInfo info = categories.get(categoryName);
+    return (info == null) ? null : info.getName();
   }
 
   /**
-   * A view of a category, with access to its parents and children.
+   * Serializable storage of data for a category.
+   */
+  private static class CategoryInfo implements Serializable {
+    private final String name;
+    private final ImmutableSortedSet<String> parentNames;
+    private final ImmutableSortedSet<String> childNames;
+
+    private CategoryInfo(String name, Set<String> parentNames, Set<String> childNames) {
+      this.name = name;
+      this.parentNames = ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, parentNames);
+      this.childNames = ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, childNames);
+    }
+
+    private String getName() {
+      return name;
+    }
+  }
+
+  /**
+   * A non-serializable, lazy-loading view of a category, with access to its parents and children, for the purpose of
+   * passing up to the front end.
    */
   public class CategoryView {
-    private final String name;
+    private final CategoryInfo categoryInfo;
 
-    private CategoryView(String name) {
-      this.name = Objects.requireNonNull(name);
+    public CategoryView(CategoryInfo categoryInfo) {
+      this.categoryInfo = Objects.requireNonNull(categoryInfo);
     }
 
     /**
      * @return the category's name
      */
     public String getName() {
-      return name;
+      return categoryInfo.name;
     }
 
     /**
@@ -134,21 +147,21 @@ public class TaxonomyGraph implements Serializable {
      * Uses the same definition of equality as the delegate set (i.e., case-insensitivity).
      */
     private Map<String, CategoryView> buildLazyMap(SortedSet<String> categoryNames) {
-      return Maps.asMap(categoryNames, CategoryView::new);
+      return Maps.asMap(categoryNames, TaxonomyGraph.this::getView);
     }
 
     /**
      * @return views of the category's parents
      */
     public Map<String, CategoryView> getParents() {
-      return buildLazyMap(childrenToParents.get(name));
+      return buildLazyMap(categoryInfo.parentNames);
     }
 
     /**
      * @return views of the category's children
      */
     public Map<String, CategoryView> getChildren() {
-      return buildLazyMap(parentsToChildren.get(name));
+      return buildLazyMap(categoryInfo.childNames);
     }
   }
 

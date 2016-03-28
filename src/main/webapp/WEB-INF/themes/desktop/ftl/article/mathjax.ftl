@@ -2,7 +2,7 @@
 <!-- more can be found at http://docs.mathjax.org/en/latest/ -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-  jax: ["output/CommonHTML"]
+  jax: ["output/CommonHTML", "output/HTML-CSS"]
 });
 </script>
 

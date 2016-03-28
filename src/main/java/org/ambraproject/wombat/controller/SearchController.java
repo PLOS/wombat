@@ -401,8 +401,8 @@ public class SearchController extends WombatController {
         List<String> filterValueList = new ArrayList<>(Arrays.asList(filterValues));
         Map<String, List<String>> queryParamMap = new HashMap<>();
         // covert Map<String, String[]> to Map<String, List<String> for code re-usability
-        queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(entry -> entry
-            .getKey(), entry -> new ArrayList<>(Arrays.asList(entry.getValue())))));
+        queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey,
+            (Map.Entry<String, String[]> entry) -> new ArrayList<>(Arrays.asList(entry.getValue())))));
         queryParamMap.remove(filterName);
         // include the rest of filter values for that specific filter
         if (filterValueList.size() > 1) {

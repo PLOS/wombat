@@ -1,8 +1,10 @@
 package org.ambraproject.wombat.model;
 
+import com.google.common.base.Functions;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
@@ -30,13 +32,17 @@ public class TaxonomyGraph implements Serializable {
   private final SortedSetMultimap<String, String> parentsToChildren;
   private final SortedSetMultimap<String, String> childrenToParents;
   private final ImmutableSortedSet<String> roots;
+  private final ImmutableSortedMap<String, String> canonicalNames;
 
   private TaxonomyGraph(Set<String> roots,
                         SortedSetMultimap<String, String> parentsToChildren,
-                        SortedSetMultimap<String, String> childrenToParents) {
+                        SortedSetMultimap<String, String> childrenToParents,
+                        Set<String> canonicalNames) {
     this.roots = ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, roots);
     this.parentsToChildren = Multimaps.unmodifiableSortedSetMultimap(parentsToChildren);
     this.childrenToParents = Multimaps.unmodifiableSortedSetMultimap(childrenToParents);
+    this.canonicalNames = ImmutableSortedMap.copyOf(Maps.asMap(canonicalNames, Functions.identity()),
+        String.CASE_INSENSITIVE_ORDER);
   }
 
   private static final Splitter CATEGORY_SPLITTER = Splitter.on('/').omitEmptyStrings();
@@ -55,19 +61,23 @@ public class TaxonomyGraph implements Serializable {
    */
   public static TaxonomyGraph create(Collection<String> categoryPaths) {
     Set<String> roots = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+    Set<String> names = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
     SortedSetMultimap<String, String> parentsToChildren = caseInsensitiveSetMultimap();
     SortedSetMultimap<String, String> childrenToParents = caseInsensitiveSetMultimap();
     for (String categoryPath : categoryPaths) {
       List<String> categories = parseTerms(categoryPath);
-      roots.add(categories.get(0));
+      String root = categories.get(0);
+      roots.add(root);
+      names.add(root);
       for (int i = 1; i < categories.size(); i++) {
         String parent = categories.get(i - 1);
         String child = categories.get(i);
         parentsToChildren.put(parent, child);
         childrenToParents.put(child, parent);
+        names.add(child);
       }
     }
-    return new TaxonomyGraph(roots, parentsToChildren, childrenToParents);
+    return new TaxonomyGraph(roots, parentsToChildren, childrenToParents, names);
   }
 
   public ImmutableSet<String> getRootCategoryNames() {
@@ -89,6 +99,14 @@ public class TaxonomyGraph implements Serializable {
   public CategoryView getView(String categoryName) {
     return (roots.contains(categoryName) || childrenToParents.containsKey(categoryName))
         ? new CategoryView(categoryName) : null;
+  }
+
+  /**
+   * @param subject the name of a category
+   * @return the same name with its canonical capitalization, or {@code null} if the named category does not exist
+   */
+  public String getName(String subject) {
+    return canonicalNames.get(subject);
   }
 
   /**

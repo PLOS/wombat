@@ -33,12 +33,11 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
-import org.apache.commons.lang.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -723,7 +722,7 @@ public class SearchController extends WombatController {
   private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
       MultiValueMap<String, String> params, String subject) throws IOException {
 
-    modelSubjectHierarchy(model, site, subject);
+    TaxonomyGraph taxonomyGraph = modelSubjectHierarchy(model, site, subject);
 
     String subjectName;
     if (Strings.isNullOrEmpty(subject)) {
@@ -732,7 +731,7 @@ public class SearchController extends WombatController {
     } else {
       subject = subject.replace("_", " ");
       params.add("subject", subject);
-      subjectName = WordUtils.capitalize(subject);
+      subjectName = taxonomyGraph.getName(subject);
     }
     model.addAttribute("subjectName", subjectName);
 
@@ -765,7 +764,7 @@ public class SearchController extends WombatController {
     model.addAttribute("isBrowse", true);
   }
 
-  private void modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
+  private TaxonomyGraph modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
     TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
 
     Set<String> subjectParents;
@@ -793,5 +792,7 @@ public class SearchController extends WombatController {
 
     model.addAttribute("subjectParents", subjectParents);
     model.addAttribute("subjectChildren", subjectChildren);
+
+    return fullTaxonomyView;
   }
 }

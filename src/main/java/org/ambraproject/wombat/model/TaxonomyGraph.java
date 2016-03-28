@@ -128,7 +128,7 @@ public class TaxonomyGraph implements Serializable {
   public class CategoryView {
     private final CategoryInfo categoryInfo;
 
-    public CategoryView(CategoryInfo categoryInfo) {
+    private CategoryView(CategoryInfo categoryInfo) {
       this.categoryInfo = Objects.requireNonNull(categoryInfo);
     }
 

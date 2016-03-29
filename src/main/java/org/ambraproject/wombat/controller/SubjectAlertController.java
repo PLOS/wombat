@@ -21,8 +21,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,17 +32,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Controller class for subject alert add/delete.
- * This is invoked from Ajax and cannot have DELETE method, so
- * an "action" param is used to indicate "add" or "remove".
+ * Controller class for subject alert add/delete. This is invoked from Ajax and cannot have DELETE method, so an
+ * "action" param is used to indicate "add" or "remove".
  */
 @Controller
 public class SubjectAlertController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(SubjectAlertController.class);
-
-  private static final String ACTION_ADD = "add";
-
-  private static final String ACTION_REMOVE = "remove";
 
   private static final String RESULT_SUCCESS = "success";
 
@@ -51,27 +46,38 @@ public class SubjectAlertController extends WombatController {
   @Autowired
   private SubjectAlertService subjectAlertService;
 
+  @RequestMapping(name = "addSubjectAlert", value = "/subjectalert/add", method = RequestMethod.POST)
+  @ResponseBody
+  public Map<String, Object> addSubjectAlert(HttpServletRequest request, @SiteParam Site site,
+                                             @RequestParam("subject") String subject)
+      throws IOException {
+    return changeSubjectAlert(request, site, subject, subjectAlertService::addAlert);
+  }
+
+  @RequestMapping(name = "removeSubjectAlert", value = "/subjectalert/remove", method = RequestMethod.POST)
+  @ResponseBody
+  public Map<String, Object> removeSubjectAlert(HttpServletRequest request, @SiteParam Site site,
+                                                @RequestParam("subject") String subject)
+      throws IOException {
+    return changeSubjectAlert(request, site, subject, subjectAlertService::removeAlert);
+  }
+
+  @FunctionalInterface
+  private static interface SearchAlertAction {
+    void execute(String authId, String journalKey, String subjectName) throws IOException;
+  }
+
   /**
    * Add/remove subject alert for the logged in user.
    *
-   * @param request
-   * @param model
-   * @param site
-   * @param params "action" is either "add" or "remove" and "subject" is string for the alert's subject.
    * @return Map converted to JSON with "result" of "success" or "failed" and optional "error" attributes.
    * @throws IOException
    */
-
-  @RequestMapping(name = "addSubjectAlert", value = "/subjectalert", params = {"action", "subject"})
-  @ResponseBody
-  public Map<String, Object> changeSubjectAlert(HttpServletRequest request, Model model, @SiteParam Site site,
-                                @RequestParam Map<String, String> params)
+  private Map<String, Object> changeSubjectAlert(HttpServletRequest request, Site site,
+                                                 String subject, SearchAlertAction action)
       throws IOException {
-
     Map<String, Object> response = new HashMap<String, Object>();
     try {
-      String action = params.get("action");
-      String subject = params.get("subject");
       subject = subject.replace("_", " ");
       String subjectName = WordUtils.capitalize(subject);
 
@@ -82,11 +88,7 @@ public class SubjectAlertController extends WombatController {
         throw new RuntimeException("not logged in");
       }
 
-      if (ACTION_ADD.equals(action)) {
-        subjectAlertService.addAlert(authId, journalKey, subjectName);
-      } else if (ACTION_REMOVE.equals(action)) {
-        subjectAlertService.removeAlert(authId, journalKey, subjectName);
-      }
+      action.execute(authId, journalKey, subjectName);
 
       response.put("result", RESULT_SUCCESS);
     } catch (RuntimeException e) {

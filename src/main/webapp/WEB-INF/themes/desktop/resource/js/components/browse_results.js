@@ -48,8 +48,8 @@ var saveAlert = function() {
 
   $.ajax({
     type: 'POST',
-    url: '../subjectalert',
-    data: 'action=add&subject=' + encodeURIComponent(category),
+    url: '../subjectalert/add',
+    data: 'subject=' + encodeURIComponent(category),
     dataType:'json',
     success: function(response) {
       if (response.error) {
@@ -78,8 +78,8 @@ var unsubscribeAlert = function() {
 
   $.ajax({
     type: 'POST',
-    url: '../subjectalert',
-    data: 'action=remove&subject=' + encodeURIComponent(category),
+    url: '../subjectalert/remove',
+    data: 'subject=' + encodeURIComponent(category),
     dataType:'json',
     success: function(response) {
       if (response.error) {

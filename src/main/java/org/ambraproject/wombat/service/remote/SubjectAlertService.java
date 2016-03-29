@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
- * Add and remove subject alert for user in journal using individuals/{nedId}/alerts
+ * Add and remove subject alert for user in journal using individuals/{userId}/alerts
  * resource.
  */
 public class SubjectAlertService {
@@ -36,8 +36,8 @@ public class SubjectAlertService {
 
   /**
    * Add the subject alert for the loggedin user for the journal.
-   * If the alert object exists for the journal it uses PUT individuals/{nedId}/alerts/{alertId}
-   * to modify that alert object, otherwise it uses POST individuals/{nedId}/alerts
+   * If the alert object exists for the journal it uses PUT individuals/{userId}/alerts/{alertId}
+   * to modify that alert object, otherwise it uses POST individuals/{userId}/alerts
    * to create a new alert object.
    *
    * @param authId The authentication ID of the logged in user.
@@ -46,12 +46,12 @@ public class SubjectAlertService {
    * @throws IOException
    */
   public void addAlert(String authId, String journalKey, String subjectName) throws IOException {
-    String nedId = userApi.getUserIdFromAuthId(authId);
-    if (nedId == null) {
+    String userId = userApi.getUserIdFromAuthId(authId);
+    if (userId == null) {
       throw new RuntimeException("failed to get NED ID");
     }
 
-    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", nedId), JsonArray.class);
+    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", userId), JsonArray.class);
     JsonObject alert = findMatchingAlert(alerts, journalKey);
 
     if (alert != null) {
@@ -62,17 +62,17 @@ public class SubjectAlertService {
 
     if (alert.has("id")) {
       String alertId = String.valueOf(alert.getAsJsonPrimitive("id").getAsLong());
-      userApi.putObject(String.format("individuals/%s/alerts/%s", nedId, alertId), alert);
+      userApi.putObject(String.format("individuals/%s/alerts/%s", userId, alertId), alert);
     } else {
-      userApi.postObject(String.format("individuals/%s/alerts", nedId), alert);
+      userApi.postObject(String.format("individuals/%s/alerts", userId), alert);
     }
   }
 
   /**
    * Remove the subject alert for the loggedin user for the journal.
    * After removing the subject, if other subjects exist in the alert object for the journal,
-   * then it uses PUT individuals/{nedId}/alerts/{alertId} to modify the alert object,
-   * otherwise it uses DELETE individuals/{nedId}/alerts/{alertId} to remove the
+   * then it uses PUT individuals/{userId}/alerts/{alertId} to modify the alert object,
+   * otherwise it uses DELETE individuals/{userId}/alerts/{alertId} to remove the
    * alert object.
    *
    * @param authId The authentication ID of the logged in user.
@@ -81,12 +81,12 @@ public class SubjectAlertService {
    * @throws IOException
    */
   public void removeAlert(String authId, String journalKey, String subjectName) throws IOException {
-    String nedId = userApi.getUserIdFromAuthId(authId);
-    if (nedId == null) {
+    String userId = userApi.getUserIdFromAuthId(authId);
+    if (userId == null) {
       throw new RuntimeException("failed to get NED ID");
     }
 
-    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", nedId), JsonArray.class);
+    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", userId), JsonArray.class);
     JsonObject alert = findMatchingAlert(alerts, journalKey);
 
     if (alert == null) {
@@ -101,9 +101,9 @@ public class SubjectAlertService {
 
     String alertId = String.valueOf(alert.getAsJsonPrimitive("id").getAsLong());
     if (result == RemoveResult.EMPTY_AFTER_REMOVE) {
-      userApi.deleteObject(String.format("individuals/%s/alerts/%s", nedId, alertId));
+      userApi.deleteObject(String.format("individuals/%s/alerts/%s", userId, alertId));
     } else {
-      userApi.putObject(String.format("individuals/%s/alerts/%s", nedId, alertId), alert);
+      userApi.putObject(String.format("individuals/%s/alerts/%s", userId, alertId), alert);
     }
   }
 
@@ -118,8 +118,8 @@ public class SubjectAlertService {
    */
   public boolean isUserSubscribed(String authId, String journalKey, String subjectName) throws IOException {
 
-    String nedId = userApi.getUserIdFromAuthId(authId);
-    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", nedId), JsonArray.class);
+    String userId = userApi.getUserIdFromAuthId(authId);
+    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", userId), JsonArray.class);
     JsonObject existing = findMatchingAlert(alerts, journalKey);
 
     if (existing == null) {

@@ -6,6 +6,7 @@ import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
+import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpDelete;
@@ -13,6 +14,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -100,35 +102,34 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     return requestCachedObject(CacheParams.create(cacheKey), address, responseClass);
   }
 
-  @Override
-  public final void postObject(String address, Object object) throws IOException {
+
+  private static final String APPLICATION_JSON_CONTENT_TYPE = ContentType.APPLICATION_JSON.toString();
+
+  private <R extends HttpUriRequest & HttpEntityEnclosingRequest>
+  void uploadObject(String address, Object object, Function<URI, R> requestConstructor)
+      throws IOException {
     String json = jsonService.serialize(object);
-    HttpPost post = buildRequest(address, HttpPost::new);
+    R request = buildRequest(address, requestConstructor);
     try {
-      post.setEntity(new StringEntity(json));
+      request.setEntity(new StringEntity(json));
     } catch (UnsupportedEncodingException e) {
       throw new RuntimeException(e);
     }
-    post.addHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+    request.addHeader(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_CONTENT_TYPE);
 
-    try (CloseableHttpResponse ignored = makeRemoteRequest(() -> cachedRemoteReader.getResponse(post))) {
+    try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(request)) {
     }
   }
 
 
   @Override
-  public final void putObject(String address, Object object) throws IOException {
-    String json = jsonService.serialize(object);
-    HttpPut put = buildRequest(address, HttpPut::new);
-    try {
-      put.setEntity(new StringEntity(json));
-    } catch (UnsupportedEncodingException e) {
-      throw new RuntimeException(e);
-    }
-    put.addHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+  public final void postObject(String address, Object object) throws IOException {
+    uploadObject(address, object, HttpPost::new);
+  }
 
-    try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(put)) {
-    }
+  @Override
+  public final void putObject(String address, Object object) throws IOException {
+    uploadObject(address, object, HttpPut::new);
   }
 
 
@@ -139,6 +140,8 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(delete)) {
     }
   }
+
+
   @Override
   public final void forwardResponse(HttpUriRequest requestToService, HttpServletResponse responseToClient) throws IOException {
     try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {

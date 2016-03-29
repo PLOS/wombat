@@ -33,12 +33,11 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
-import org.apache.commons.lang.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +56,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -401,8 +401,8 @@ public class SearchController extends WombatController {
         List<String> filterValueList = new ArrayList<>(Arrays.asList(filterValues));
         Map<String, List<String>> queryParamMap = new HashMap<>();
         // covert Map<String, String[]> to Map<String, List<String> for code re-usability
-        queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(entry -> entry
-            .getKey(), entry -> new ArrayList<>(Arrays.asList(entry.getValue())))));
+        queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey,
+            (Map.Entry<String, String[]> entry) -> new ArrayList<>(Arrays.asList(entry.getValue())))));
         queryParamMap.remove(filterName);
         // include the rest of filter values for that specific filter
         if (filterValueList.size() > 1) {
@@ -723,7 +723,7 @@ public class SearchController extends WombatController {
   private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
       MultiValueMap<String, String> params, String subject) throws IOException {
 
-    modelSubjectHierarchy(model, site, subject);
+    TaxonomyGraph taxonomyGraph = modelSubjectHierarchy(model, site, subject);
 
     String subjectName;
     if (Strings.isNullOrEmpty(subject)) {
@@ -732,7 +732,7 @@ public class SearchController extends WombatController {
     } else {
       subject = subject.replace("_", " ");
       params.add("subject", subject);
-      subjectName = WordUtils.capitalize(subject);
+      subjectName = taxonomyGraph.getName(subject);
     }
     model.addAttribute("subjectName", subjectName);
 
@@ -765,11 +765,11 @@ public class SearchController extends WombatController {
     model.addAttribute("isBrowse", true);
   }
 
-  private void modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
+  private TaxonomyGraph modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
     TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
 
-    Set<String> subjectParents;
-    Set<String> subjectChildren;
+    Collection<String> subjectParents;
+    Collection<String> subjectChildren;
     if (subject != null && subject.length() > 0) {
       //Recreate the category name as stored in the DB
       subject = subject.replace("_", " ");
@@ -793,5 +793,7 @@ public class SearchController extends WombatController {
 
     model.addAttribute("subjectParents", subjectParents);
     model.addAttribute("subjectChildren", subjectChildren);
+
+    return fullTaxonomyView;
   }
 }

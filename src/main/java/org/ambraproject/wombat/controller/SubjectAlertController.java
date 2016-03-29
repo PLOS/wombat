@@ -63,7 +63,7 @@ public class SubjectAlertController extends WombatController {
   }
 
   @FunctionalInterface
-  private static interface SearchAlertAction {
+  private static interface SubjectAlertAction {
     void execute(String authId, String journalKey, String subjectName) throws IOException;
   }
 
@@ -74,7 +74,7 @@ public class SubjectAlertController extends WombatController {
    * @throws IOException
    */
   private Map<String, Object> changeSubjectAlert(HttpServletRequest request, Site site,
-                                                 String subject, SearchAlertAction action)
+                                                 String subject, SubjectAlertAction action)
       throws IOException {
     Map<String, Object> response = new HashMap<String, Object>();
     try {

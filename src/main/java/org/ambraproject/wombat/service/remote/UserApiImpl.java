@@ -54,7 +54,11 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    return new UserApiConfiguration((String) userConfigData.get("server"),
+    String server = (String) userConfigData.get("server");
+    if (server == null) {
+      throw new RuntimeException("userApi is not configured");
+    }
+    return new UserApiConfiguration(server,
         (String) userConfigData.get("authorizationAppName"),
         (String) userConfigData.get("authorizationPassword"));
   }
@@ -92,7 +96,7 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   @Override
   public final String getUserIdFromAuthId(String authId) throws IOException {
     IndividualComposite individualComposite = requestObject(
-        String.format("individuals/CAS/%s", authId), IndividualComposite.class);
+        String.format("individuals/CAS/%s", Objects.requireNonNull(authId)), IndividualComposite.class);
     // use nedid from any available profile.
     Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
         .findFirst()

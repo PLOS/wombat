@@ -63,24 +63,8 @@
                     </ul>
                 </div><!-- /.dropdown -->
             </li>
-        <#--@TODO: Handle session and subscription-->
-        <#--
-            <#if subject?has_content>
-                <li class="middle">
-                                 <#if Session?exists && Session[freemarker_config.userAttributeKey]?exists>
-                    <#if subscribed>
-                      <#assign subscribedClass = " subscribed">
-                    <#else>
-                      <#assign subscribedClass = "">
-                    </#if>
-                      <a href="#" title="Get an email alert for ${subject}" class="journal-alert${subscribedClass}" id="save-journal-alert-link" data-category="${subject}">Get an email alert for ${subject}</a>
-                  <#else>
-                      <a href="#" title="Get an email alert for ${subject}" id="login-link" data-category="${subject}">Get an email alert for ${subject}</a>
-                  </#if>
-                </li>
-            </#if>
-            -->
-            <#include "browseSubjectAreaRssFeed.ftl" />
+        <#include "browseSubjectAreaAlert.ftl" />
+        <#include "browseSubjectAreaRssFeed.ftl" />
         </ul>
     </div><!-- /.filter-bar -->
 

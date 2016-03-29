@@ -8,12 +8,12 @@
 <#setting url_escaping_charset="UTF-8">
 <#assign title = subjectName />
 <#assign cssFile="browse-subject-area.css"/>
-<#include "common/head.ftl" />
-<#include "common/journalStyle.ftl" />
-<#include "macro/searchResultsAlm.ftl" />
+<#include "../../common/head.ftl" />
+<#include "../../common/journalStyle.ftl" />
+<#include "../../macro/searchResultsAlm.ftl" />
 
 <body class="home ${journalStyle}">
-<#include "common/header/headerContainer.ftl" />
+<#include "../../common/header/headerContainer.ftl" />
 
 <#function encodeSubject subject>
     <#return subject?replace(' ','_')?lower_case>
@@ -158,19 +158,19 @@
         <#else>
             <div class="articles-list cf" data-subst="article-list">
             <#list articles as article>
-                <#include "home/articleCard.ftl" />
+                <#include "../../home/articleCard.ftl" />
             </#list>
             </div>
         </#if>
 
-        <#include "home/twitter.ftl" />
-        <#include "home/adSlotAside.ftl" />
-        <#include "home/socialLinks.ftl" />
+        <#include "../../home/twitter.ftl" />
+        <#include "../../home/adSlotAside.ftl" />
+        <#include "../../home/socialLinks.ftl" />
     </div>
 
 </div>
 
-<#include "common/paging.ftl" />
+<#include "../../common/paging.ftl" />
 <#if subject?has_content>
   <#assign pagingPath = categoryBrowseUrl />
 <#else>
@@ -178,7 +178,7 @@
 </#if>
 <@paging totalPages, page?number, pagingPath, parameterMap, true />
 
-<#include "common/footer/footer.ftl" />
+<#include "../../common/footer/footer.ftl" />
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
 

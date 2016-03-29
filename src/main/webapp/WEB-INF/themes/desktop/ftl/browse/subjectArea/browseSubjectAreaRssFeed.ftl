@@ -1,4 +1,4 @@
-<#include "common/rssFeedKey.ftl" />
+<#include "../../common/rssFeedKey.ftl" />
 
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />

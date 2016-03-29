@@ -695,7 +695,7 @@ public class SearchController extends WombatController {
   public String browseAll(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     subjectAreaSearch(request, model, site, params, "");
-    return site.getKey() + "/ftl/browseSubjectArea";
+    return site.getKey() + "/ftl/browse/subjectArea/browseSubjectArea";
   }
 
   /**
@@ -715,7 +715,7 @@ public class SearchController extends WombatController {
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
       throws IOException {
     subjectAreaSearch(request, model, site, params, subject);
-    return site.getKey() + "/ftl/browseSubjectArea";
+    return site.getKey() + "/ftl/browse/subjectArea/browseSubjectArea";
   }
 
   /**

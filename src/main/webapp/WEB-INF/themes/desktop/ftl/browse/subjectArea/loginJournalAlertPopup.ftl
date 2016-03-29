@@ -1,4 +1,4 @@
-<#include "common/userMgmtUrl.ftl" />
+<#include "../../common/userMgmtUrl.ftl" />
 
 <div class="top-header">
   <span class="heading">Save this journal alert</span>

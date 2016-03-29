@@ -13,9 +13,12 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.remote.SubjectAlertService;
+import org.ambraproject.wombat.service.remote.UserApi;
 import org.apache.commons.lang.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +31,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -38,10 +40,6 @@ import java.util.Map;
 @Controller
 public class SubjectAlertController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(SubjectAlertController.class);
-
-  private static final String RESULT_SUCCESS = "success";
-
-  private static final String RESULT_FAILED = "failed";
 
   @Autowired
   private SubjectAlertService subjectAlertService;
@@ -67,6 +65,15 @@ public class SubjectAlertController extends WombatController {
     void execute(String authId, String journalKey, String subjectName) throws IOException;
   }
 
+  private static final ImmutableMap<String, Object> SUCCESS_RESPONSE = ImmutableMap.of("result", "success");
+
+  private static ImmutableMap<String, Object> respondFailure(String message) {
+    return ImmutableMap.<String, Object>builder()
+        .put("result", "failed")
+        .put("error", Strings.nullToEmpty(message))
+        .build();
+  }
+
   /**
    * Add/remove subject alert for the logged in user.
    *
@@ -76,26 +83,26 @@ public class SubjectAlertController extends WombatController {
   private Map<String, Object> changeSubjectAlert(HttpServletRequest request, Site site,
                                                  String subject, SubjectAlertAction action)
       throws IOException {
-    Map<String, Object> response = new HashMap<String, Object>();
-    try {
-      subject = subject.replace("_", " ");
-      String subjectName = WordUtils.capitalize(subject);
+    subject = subject.replace("_", " ");
+    String subjectName = WordUtils.capitalize(subject);
 
-      String journalKey = site.getJournalKey();
+    String journalKey = site.getJournalKey();
 
-      String authId = request.getRemoteUser();
-      if (authId == null) {
-        throw new RuntimeException("not logged in");
-      }
-
-      action.execute(authId, journalKey, subjectName);
-
-      response.put("result", RESULT_SUCCESS);
-    } catch (RuntimeException e) {
-      e.printStackTrace();
-      response.put("result", RESULT_FAILED);
-      response.put("error", e.getMessage());
+    String authId = request.getRemoteUser();
+    if (authId == null) {
+      return respondFailure("not logged in");
     }
-    return response;
+
+    try {
+      action.execute(authId, journalKey, subjectName);
+    } catch (SubjectAlertService.SubjectAlertException e) {
+      log.error("Error while changing subject alert", e);
+      return respondFailure(e.getMessage());
+    } catch (UserApi.UserApiException e) {
+      log.error("Error from UserApi while changing subject alert", e);
+      return respondFailure("User data is temporarily unavailable");
+    }
+
+    return SUCCESS_RESPONSE;
   }
 }

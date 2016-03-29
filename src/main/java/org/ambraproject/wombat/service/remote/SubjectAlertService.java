@@ -32,6 +32,14 @@ public class SubjectAlertService {
     NOT_FOUND, EMPTY_AFTER_REMOVE, NOT_EMPTY_AFTER_REMOVE
   };
 
+  /**
+   * Indicates that a subject alert operation could not be completed due to invalid input or state.
+   */
+  public static class SubjectAlertException extends RuntimeException {
+    private SubjectAlertException(String message) {
+      super(message);
+    }
+  }
 
 
   /**
@@ -48,7 +56,7 @@ public class SubjectAlertService {
   public void addAlert(String authId, String journalKey, String subjectName) throws IOException {
     String userId = userApi.getUserIdFromAuthId(authId);
     if (userId == null) {
-      throw new RuntimeException("failed to get NED ID");
+      throw new SubjectAlertException("failed to get NED ID");
     }
 
     JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", userId), JsonArray.class);
@@ -83,20 +91,20 @@ public class SubjectAlertService {
   public void removeAlert(String authId, String journalKey, String subjectName) throws IOException {
     String userId = userApi.getUserIdFromAuthId(authId);
     if (userId == null) {
-      throw new RuntimeException("failed to get NED ID");
+      throw new SubjectAlertException("failed to get NED ID");
     }
 
     JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", userId), JsonArray.class);
     JsonObject alert = findMatchingAlert(alerts, journalKey);
 
     if (alert == null) {
-      throw new RuntimeException("no subject alert found");
+      throw new SubjectAlertException("no subject alert found");
     }
 
     RemoveResult result = removeSubjectFromAlert(alert, subjectName);
 
     if (result == RemoveResult.NOT_FOUND) {
-      throw new RuntimeException("matching subject alert not found");
+      throw new SubjectAlertException("matching subject alert not found");
     }
 
     String alertId = String.valueOf(alert.getAsJsonPrimitive("id").getAsLong());
@@ -235,7 +243,7 @@ public class SubjectAlertService {
     JsonArray filterSubjects = query.getAsJsonArray("filterSubjectsDisjunction");
     for (JsonElement filterSubject : filterSubjects) {
       if (subjectName.equalsIgnoreCase(filterSubject.getAsString())) {
-        throw new RuntimeException("already exists");
+        throw new SubjectAlertException("already exists");
       }
     }
 

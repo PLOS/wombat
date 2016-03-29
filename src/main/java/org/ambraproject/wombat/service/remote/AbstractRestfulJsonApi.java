@@ -118,6 +118,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     request.addHeader(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_CONTENT_TYPE);
 
     try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(request)) {
+      ignored.close();
     }
   }
 
@@ -136,8 +137,8 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   @Override
   public final void deleteObject(String address) throws IOException {
     HttpDelete delete = buildRequest(address, HttpDelete::new);
-
     try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(delete)) {
+      ignored.close();
     }
   }
 

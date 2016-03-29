@@ -18,12 +18,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -39,16 +33,13 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.SubjectAlertService;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
-import org.apache.commons.lang.WordUtils;
-import org.plos.ned_client.model.Individualprofile;
-import org.plos.ned_client.model.IndividualComposite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +50,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -68,14 +58,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -420,8 +409,8 @@ public class SearchController extends WombatController {
         List<String> filterValueList = new ArrayList<>(Arrays.asList(filterValues));
         Map<String, List<String>> queryParamMap = new HashMap<>();
         // covert Map<String, String[]> to Map<String, List<String> for code re-usability
-        queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(entry -> entry
-            .getKey(), entry -> new ArrayList<>(Arrays.asList(entry.getValue())))));
+        queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey,
+            (Map.Entry<String, String[]> entry) -> new ArrayList<>(Arrays.asList(entry.getValue())))));
         queryParamMap.remove(filterName);
         // include the rest of filter values for that specific filter
         if (filterValueList.size() > 1) {
@@ -742,7 +731,7 @@ public class SearchController extends WombatController {
   private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
       MultiValueMap<String, String> params, String subject) throws IOException {
 
-    modelSubjectHierarchy(model, site, subject);
+    TaxonomyGraph taxonomyGraph = modelSubjectHierarchy(model, site, subject);
 
     String subjectName;
     if (Strings.isNullOrEmpty(subject)) {
@@ -751,7 +740,7 @@ public class SearchController extends WombatController {
     } else {
       subject = subject.replace("_", " ");
       params.add("subject", subject);
-      subjectName = WordUtils.capitalize(subject);
+      subjectName = taxonomyGraph.getName(subject);
     }
     model.addAttribute("subjectName", subjectName);
 
@@ -792,11 +781,11 @@ public class SearchController extends WombatController {
     model.addAttribute("subscribed", subscribed);
   }
 
-  private void modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
+  private TaxonomyGraph modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
     TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
 
-    Set<String> subjectParents;
-    Set<String> subjectChildren;
+    Collection<String> subjectParents;
+    Collection<String> subjectChildren;
     if (subject != null && subject.length() > 0) {
       //Recreate the category name as stored in the DB
       subject = subject.replace("_", " ");
@@ -820,5 +809,7 @@ public class SearchController extends WombatController {
 
     model.addAttribute("subjectParents", subjectParents);
     model.addAttribute("subjectChildren", subjectChildren);
+
+    return fullTaxonomyView;
   }
 }

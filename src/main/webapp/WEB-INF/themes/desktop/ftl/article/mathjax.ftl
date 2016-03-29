@@ -2,15 +2,10 @@
 <!-- more can be found at http://docs.mathjax.org/en/latest/ -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-"HTML-CSS": {
-linebreaks: {
-  automatic: true,
-  width: "85% container"
-}
-}
+  jax: ["output/CommonHTML", "output/HTML-CSS"]
 });
 </script>
 
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/2.1-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        src="http://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>

@@ -168,6 +168,10 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       max-height: 75%;
       display: block;
       -moz-transform-origin: 0 0 !important;
+
+      html.windows7 & {
+        -ms-transform-origin: 0 0 !important;
+      }
     }
     text-align: center;
     height: 100%;
@@ -408,37 +412,31 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     #image-context {
       width: 100%;
       display: inline-block;
-      -webkit-transition: height 300ms ease-in-out;
-      -moz-transition: height 300ms ease-in-out;
-      -o-transition: height 300ms ease-in-out;
-      transition: height 300ms ease-in-out;
+      min-width: rem-calc($grid-width/2);
       min-height: rem-calc(80px);
-      max-height: rem-calc(80px);
+      height: rem-calc(80px);
       overflow-y: hidden;
+      position: relative;
 
-      &.full-display {
+      &.full-display-animate {
         width: 100%;
-        max-height: rem-calc(150px);
+        max-height: rem-calc(300px);
         overflow-y: scroll;
-        .footer-text {
-          width: 100%;
-        }
+
         %full-display-no-show {
-          display: none;
+          display: block;
         }
       }
 
       .footer-text {
         width: 39%;
         display: inline-block;
-        padding: 0 1% 0 1.1%;
         word-wrap: break-word;
         background: $grey-light;
         text-align: left;
         font-family: $font-face-plain;
         font-size: $txt-size-xsmall;
         line-height: $line-height;
-        z-index: map-get($zindex, header);
 
         #figure-description-wrapper {
           #figure-title, title {
@@ -451,8 +449,10 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
             font-weight: bold;
             line-height: rem-calc(16);
           }
-
-          overflow-y: hidden;
+          #view-more-wrapper,  #view-less-wrapper{
+            padding: 0 5px 0 8px;
+          }
+          //overflow-y: hidden;
           #view-more-wrapper {
             /* Needs static height for dotdotdot to trim text */
             max-height: $lb-description-bar-height;
@@ -460,11 +460,22 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
 
           #view-less-wrapper {
             display: none;
+            position:absolute;
+            width: 100%;
+            top:0;
+            height: $lb-description-bar-height;
+            z-index: map-get($zindex, header);
+            background: #efefef;
+            overflow-y: scroll;
+            left:0;
+
+
           }
 
           #view-more, #view-less {
             cursor: pointer;
             color: $plos-default;
+
             &:hover {
               text-decoration: underline;
             }

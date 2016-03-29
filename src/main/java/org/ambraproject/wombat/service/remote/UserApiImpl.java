@@ -6,6 +6,8 @@ import com.google.common.collect.ImmutableList;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
 import org.apache.xerces.impl.dv.util.Base64;
+import org.plos.ned_client.model.IndividualComposite;
+import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -85,6 +87,18 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
     } catch (ServiceRequestException | ServiceConnectionException | ServiceResponseFormatException e) {
       throw new UserApiException(e);
     }
+  }
+
+  @Override
+  public final String getUserIdFromAuthId(String authId) throws IOException {
+    IndividualComposite individualComposite = requestObject(
+        String.format("individuals/CAS/%s", authId), IndividualComposite.class);
+    // use nedid from any available profile.
+    Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
+        .findFirst()
+        .orElseThrow(() -> new UserApiException(
+            "An IndividualComposite does not have an Individualprofile"));
+    return individualprofile.getNedid().toString();
   }
 
 }

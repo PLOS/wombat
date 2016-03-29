@@ -46,7 +46,7 @@ public class SubjectAlertService {
    * @throws IOException
    */
   public void addAlert(String authId, String journalKey, String subjectName) throws IOException {
-    String nedId = getUserIdFromAuthId(authId);
+    String nedId = userApi.getUserIdFromAuthId(authId);
     if (nedId == null) {
       throw new RuntimeException("failed to get NED ID");
     }
@@ -81,7 +81,7 @@ public class SubjectAlertService {
    * @throws IOException
    */
   public void removeAlert(String authId, String journalKey, String subjectName) throws IOException {
-    String nedId = getUserIdFromAuthId(authId);
+    String nedId = userApi.getUserIdFromAuthId(authId);
     if (nedId == null) {
       throw new RuntimeException("failed to get NED ID");
     }
@@ -118,7 +118,7 @@ public class SubjectAlertService {
    */
   public boolean isUserSubscribed(String authId, String journalKey, String subjectName) throws IOException {
 
-    String nedId = getUserIdFromAuthId(authId);
+    String nedId = userApi.getUserIdFromAuthId(authId);
     JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", nedId), JsonArray.class);
     JsonObject existing = findMatchingAlert(alerts, journalKey);
 
@@ -138,24 +138,6 @@ public class SubjectAlertService {
       }
       return false;
     }
-  }
-
-  /**
-   * Given the authentication ID, get the ned ID using the individuals/CAS/{authId} API.
-   *
-   * @param authId The authentication API.
-   * @return the user ID (or ned ID).
-   * @throws IOException
-   */
-  private String getUserIdFromAuthId(String authId) throws IOException {
-    IndividualComposite individualComposite = userApi.requestObject(
-        String.format("individuals/CAS/%s", authId), IndividualComposite.class);
-    // use nedid from any available profile.
-    Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
-        .findFirst()
-        .orElseThrow(() -> new RuntimeException(
-            "An IndividualComposite does not have an Individualprofile"));
-    return individualprofile.getNedid().toString();
   }
 
 

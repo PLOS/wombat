@@ -1,17 +1,18 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import org.plos.ned_client.model.IndividualComposite;
-import org.plos.ned_client.model.Individualprofile;
+import com.google.gson.reflect.TypeToken;
+import org.plos.ned_client.model.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Add and remove subject alert for user in journal using individuals/{userId}/alerts
@@ -27,10 +28,12 @@ public class SubjectAlertService {
 
   @Autowired
   private UserApi userApi;
+  @Autowired
+  private Gson gson;
 
   private static enum RemoveResult {
     NOT_FOUND, EMPTY_AFTER_REMOVE, NOT_EMPTY_AFTER_REMOVE
-  };
+  }
 
   /**
    * Indicates that a subject alert operation could not be completed due to invalid input or state.
@@ -41,6 +44,13 @@ public class SubjectAlertService {
     }
   }
 
+
+  private static final Type LIST_OF_ALERTS = new TypeToken<List<Alert>>() {
+  }.getType();
+
+  private List<Alert> fetchAlerts(String userId) throws IOException {
+    return userApi.requestObject(String.format("individuals/%s/alerts", Objects.requireNonNull(userId)), LIST_OF_ALERTS);
+  }
 
   /**
    * Add the subject alert for the loggedin user for the journal.
@@ -59,8 +69,8 @@ public class SubjectAlertService {
       throw new SubjectAlertException("failed to get NED ID");
     }
 
-    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", userId), JsonArray.class);
-    JsonObject alert = findMatchingAlert(alerts, journalKey);
+    List<Alert> alerts = fetchAlerts(userId);
+    Alert alert = findMatchingAlert(alerts, journalKey);
 
     if (alert != null) {
       addSubjectToAlert(alert, subjectName);
@@ -68,8 +78,8 @@ public class SubjectAlertService {
       alert = createAlertForSubject(journalKey, subjectName);
     }
 
-    if (alert.has("id")) {
-      String alertId = String.valueOf(alert.getAsJsonPrimitive("id").getAsLong());
+    if (alert.getId() != null) {
+      String alertId = alert.getId().toString();
       userApi.putObject(String.format("individuals/%s/alerts/%s", userId, alertId), alert);
     } else {
       userApi.postObject(String.format("individuals/%s/alerts", userId), alert);
@@ -94,8 +104,8 @@ public class SubjectAlertService {
       throw new SubjectAlertException("failed to get NED ID");
     }
 
-    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", userId), JsonArray.class);
-    JsonObject alert = findMatchingAlert(alerts, journalKey);
+    List<Alert> alerts = fetchAlerts(userId);
+    Alert alert = findMatchingAlert(alerts, journalKey);
 
     if (alert == null) {
       throw new SubjectAlertException("no subject alert found");
@@ -107,7 +117,7 @@ public class SubjectAlertService {
       throw new SubjectAlertException("matching subject alert not found");
     }
 
-    String alertId = String.valueOf(alert.getAsJsonPrimitive("id").getAsLong());
+    String alertId = alert.getId().toString();
     if (result == RemoveResult.EMPTY_AFTER_REMOVE) {
       userApi.deleteObject(String.format("individuals/%s/alerts/%s", userId, alertId));
     } else {
@@ -127,8 +137,8 @@ public class SubjectAlertService {
   public boolean isUserSubscribed(String authId, String journalKey, String subjectName) throws IOException {
 
     String userId = userApi.getUserIdFromAuthId(authId);
-    JsonArray alerts = userApi.requestObject(String.format("individuals/%s/alerts", userId), JsonArray.class);
-    JsonObject existing = findMatchingAlert(alerts, journalKey);
+    List<Alert> alerts = fetchAlerts(userId);
+    Alert existing = findMatchingAlert(alerts, journalKey);
 
     if (existing == null) {
       return false;
@@ -137,10 +147,10 @@ public class SubjectAlertService {
       // empty subject list means alert for all (or any) subjects.
       return existing != null;
     } else {
-      JsonObject query = getAlertQuery(existing);
-      JsonArray filterSubjects = query.getAsJsonArray("filterSubjectsDisjunction");
-      for (JsonElement subject : filterSubjects) {
-        if (subjectName.equalsIgnoreCase(subject.getAsJsonPrimitive().getAsString())) {
+      AlertQuery query = getAlertQuery(existing);
+      List<String> filterSubjects = query.getFilterSubjectsDisjunction();
+      for (String subject : filterSubjects) {
+        if (subjectName.equalsIgnoreCase(subject)) {
           return true;
         }
       }
@@ -161,22 +171,19 @@ public class SubjectAlertService {
    * @param journalKey The journal key string.
    * @return  First matching alert object for journalKey or null if no match.
    */
-  private JsonObject findMatchingAlert(JsonArray alerts, String journalKey) {
-    for (JsonElement it : alerts) {
-      JsonObject alert = it.getAsJsonObject();
-      String source = alert.getAsJsonPrimitive("source").getAsString();
-      String frequency = alert.getAsJsonPrimitive("frequency").getAsString();
-      String name = alert.getAsJsonPrimitive("name").getAsString();
+  private Alert findMatchingAlert(List<Alert> alerts, String journalKey) {
+    for (Alert alert : alerts) {
+      String source = alert.getSource();
+      String frequency = alert.getFrequency();
+      String name = alert.getName();
 
       if (ALERT_SOURCE.equalsIgnoreCase(source)
           && ALERT_FREQUENCY.equalsIgnoreCase(frequency)
           && ALERT_NAME.equalsIgnoreCase(name)) {
-        JsonObject query = getAlertQuery(alert);
-        if (query.has("filterJournals") && query.has("filterSubjectsDisjunction")) {
-          JsonArray filterJournals = query.getAsJsonArray("filterJournals");
-          if (filterJournals.size() == 1 && journalKey.equalsIgnoreCase(filterJournals.get(0).getAsString())) {
-            return alert;
-          }
+        AlertQuery query = getAlertQuery(alert);
+        List<String> filterJournals = query.getFilterJournals();
+        if (filterJournals.size() == 1 && journalKey.equalsIgnoreCase(filterJournals.get(0))) {
+          return alert;
         }
       }
     }
@@ -185,17 +192,13 @@ public class SubjectAlertService {
 
   /**
    * For the alert object, return the "query" attribute string parsed into a JSON object.
-   * Return null if no "query" exist.
    *
    * @param alert The JSON alert object.
-   * @return Parsed JSON object for the "query" attribute value, or null if not found.
+   * @return Parsed JSON object for the "query" attribute value
    */
-  private JsonObject getAlertQuery(JsonObject alert) {
-    String queryString = alert.getAsJsonPrimitive("query").getAsString();
-    if (queryString != null) {
-      return (JsonObject) (new Gson()).fromJson(queryString, JsonObject.class);
-    }
-    return null;
+  private AlertQuery getAlertQuery(Alert alert) {
+    String queryString = Objects.requireNonNull(alert.getQuery());
+    return gson.fromJson(queryString, AlertQuery.class);
   }
 
   /**
@@ -205,27 +208,20 @@ public class SubjectAlertService {
    * @param subjectName The subject to create alert for.
    * @return JSON alert object.
    */
-  private JsonObject createAlertForSubject(String journalKey, String subjectName) {
-    String queryString = "{\"startPage\":0,\"filterSubjects\":[],\"unformattedQuery\":\"\",\"query\":\"*:*\","
-        + "\"eLocationId\":\"\",\"pageSize\":0,\"resultView\":\"\",\"volume\":\"\",\"sortValue\":\"\","
-        + "\"sortKey\":\"\",\"filterKeyword\":\"\",\"filterArticleTypes\":[],"
-        + "\"filterSubjectsDisjunction\":[],\"filterAuthors\":[],\"filterJournals\":[],\"id\":\"\"}";
-    JsonObject query = (new Gson()).fromJson(queryString, JsonObject.class);
+  private Alert createAlertForSubject(String journalKey, String subjectName) {
+    AlertQuery query = new AlertQuery();
 
-    JsonArray filterJournals = query.getAsJsonArray("filterJournals");
-    filterJournals.add(new JsonPrimitive(journalKey));
-    JsonArray filterSubjects = query.getAsJsonArray("filterSubjectsDisjunction");
-    filterSubjects.add(new JsonPrimitive(subjectName));
-    query.remove("filterJournals");
-    query.remove("filterSubjects");
-    query.add("filterJournals", filterJournals);
-    query.add("filterSubjects", filterSubjects);
+    query.setFilterJournals(ImmutableList.of(journalKey));
 
-    JsonObject alert = new JsonObject();
-    alert.addProperty("source", ALERT_SOURCE);
-    alert.addProperty("frequency", ALERT_FREQUENCY);
-    alert.addProperty("name", ALERT_NAME);
-    alert.addProperty("query", (new Gson()).toJson(query));
+    List<String> subjectList = ImmutableList.of(subjectName);
+    query.setFilterSubjects(subjectList);
+    query.setFilterSubjectsDisjunction(subjectList);
+
+    Alert alert = new Alert();
+    alert.setSource(ALERT_SOURCE);
+    alert.setFrequency(ALERT_FREQUENCY);
+    alert.setName(ALERT_NAME);
+    alert.setQuery(gson.toJson(query));
 
     return alert;
   }
@@ -237,19 +233,19 @@ public class SubjectAlertService {
    * @param alert
    * @param subjectName
    */
-  private void addSubjectToAlert(JsonObject alert, String subjectName) {
-    JsonObject query = getAlertQuery(alert);
+  private void addSubjectToAlert(Alert alert, String subjectName) {
+    AlertQuery query = getAlertQuery(alert);
 
-    JsonArray filterSubjects = query.getAsJsonArray("filterSubjectsDisjunction");
-    for (JsonElement filterSubject : filterSubjects) {
-      if (subjectName.equalsIgnoreCase(filterSubject.getAsString())) {
+    List<String> filterSubjects = query.getFilterSubjectsDisjunction();
+    for (String filterSubject : filterSubjects) {
+      if (subjectName.equalsIgnoreCase(filterSubject)) {
         throw new SubjectAlertException("already exists");
       }
     }
 
-    filterSubjects.add(new JsonPrimitive(subjectName));
-    alert.remove("query");
-    alert.add("query", new JsonPrimitive((new Gson()).toJson(query)));
+    query.setFilterSubjectsDisjunction(ImmutableList.<String>builder()
+        .addAll(filterSubjects).add(subjectName).build());
+    alert.setQuery(gson.toJson(query));
   }
 
   /**
@@ -260,14 +256,14 @@ public class SubjectAlertService {
    * @return Indicates whether the subject was not found, or found and removed, and
    * if yes, then whether the "filterSubjects" is empty after remove or not.
    */
-  private RemoveResult removeSubjectFromAlert(JsonObject alert, String subjectName) {
-    JsonObject query = getAlertQuery(alert);
-    JsonArray filterSubjects = query.getAsJsonArray("filterSubjectsDisjunction");
+  private RemoveResult removeSubjectFromAlert(Alert alert, String subjectName) {
+    AlertQuery query = getAlertQuery(alert);
+    List<String> filterSubjects = new LinkedList<>(query.getFilterSubjectsDisjunction());
 
     boolean found = false;
-    for (Iterator<JsonElement> it = filterSubjects.iterator(); it.hasNext(); ) {
-      JsonElement filterSubject = it.next();
-      if (subjectName.equalsIgnoreCase(filterSubject.getAsString())) {
+    for (Iterator<String> it = filterSubjects.iterator(); it.hasNext(); ) {
+      String filterSubject = it.next();
+      if (subjectName.equalsIgnoreCase(filterSubject)) {
         it.remove();
         found = true;
       }
@@ -276,10 +272,8 @@ public class SubjectAlertService {
       return RemoveResult.NOT_FOUND;
     }
 
-    query.remove("filterSubjectsDisjunction");
-    query.add("filterSubjectsDisjunction", filterSubjects);
-    alert.remove("query");
-    alert.add("query", new JsonPrimitive((new Gson()).toJson(query)));
+    query.setFilterSubjectsDisjunction(filterSubjects);
+    alert.setQuery(gson.toJson(query));
 
     return (filterSubjects.size() == 0 ? RemoveResult.EMPTY_AFTER_REMOVE : RemoveResult.NOT_EMPTY_AFTER_REMOVE);
   }

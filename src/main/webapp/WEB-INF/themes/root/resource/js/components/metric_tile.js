@@ -14,12 +14,12 @@ var MetricTile;
     //Template for tiles that the source has a link
     createWithLink: function () {
       var metricsTileTemplate = _.template($('#metricsTileTemplate').html());
-      return  metricsTileTemplate({url: this.url, name: this.name, imgSrc: this.imageSrc, linkText: this.linkText});
+      return  metricsTileTemplate({url: this.url, name: this.name, source_name: this.source.name, imgSrc: this.imageSrc, linkText: this.linkText});
     },
     //Template for tiles that the source has no link
     createWithNoLink: function () {
       var metricsTileTemplate = _.template($('#metricsTileTemplateNoLink').html());
-      return  metricsTileTemplate({name: this.name, imgSrc: this.imageSrc, linkText: this.linkText});
+      return  metricsTileTemplate({name: this.name, source_name: this.source.name, imgSrc: this.imageSrc, linkText: this.linkText});
     },
     createTile: function (elementToAppend) {
       this.beforeCreateTile();

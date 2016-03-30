@@ -21,10 +21,20 @@ import java.util.Optional;
  */
 public class SubjectAlertService {
 
+  /**
+   * Identifies this component as the source of the alert.
+   */
   private static final String ALERT_SOURCE = "Ambra";
 
+  /**
+   * The only supported frequency value for this type of alert.
+   */
   private static final String ALERT_FREQUENCY = "weekly";
 
+  /**
+   * Due to legacy reasons, this is a magic string that uniquely identifies alerts of this type (i.e., for subject
+   * areas). Despite how it looks, it is not a journal key.
+   */
   private static final String ALERT_NAME = "PLoSONE";
 
   @Autowired

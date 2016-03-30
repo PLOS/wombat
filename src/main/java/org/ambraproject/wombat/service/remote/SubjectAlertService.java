@@ -206,12 +206,8 @@ public class SubjectAlertService {
    */
   private Alert createAlertForSubject(String journalKey, String subjectName) {
     AlertQuery query = new AlertQuery();
-
     query.setFilterJournals(ImmutableList.of(journalKey));
-
-    List<String> subjectList = ImmutableList.of(subjectName);
-    query.setFilterSubjects(subjectList);
-    query.setFilterSubjectsDisjunction(subjectList);
+    query.setFilterSubjectsDisjunction(ImmutableList.of(subjectName));
 
     Alert alert = new Alert();
     alert.setSource(ALERT_SOURCE);

@@ -18,8 +18,10 @@ import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.StreamService;
+import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.joda.time.LocalDate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
@@ -67,6 +69,7 @@ public class RootConfiguration {
     GsonBuilder builder = new GsonBuilder();
     builder.setPrettyPrinting();
     builder.registerTypeAdapter(Date.class, new Iso8601DateAdapter());
+    builder.registerTypeAdapter(org.joda.time.LocalDate.class, JodaTimeLocalDateAdapter.INSTANCE);
     return builder.create();
   }
 

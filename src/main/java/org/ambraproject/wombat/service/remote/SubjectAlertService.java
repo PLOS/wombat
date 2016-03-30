@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Add and remove subject alert for user in journal using individuals/{userId}/alerts
@@ -70,13 +71,9 @@ public class SubjectAlertService {
     }
 
     List<Alert> alerts = fetchAlerts(userId);
-    Alert alert = findMatchingAlert(alerts, journalKey);
-
-    if (alert != null) {
-      addSubjectToAlert(alert, subjectName);
-    } else {
-      alert = createAlertForSubject(journalKey, subjectName);
-    }
+    Alert alert = findMatchingAlert(alerts, journalKey)
+        .map(a -> addSubjectToAlert(a, subjectName))
+        .orElseGet(() -> createAlertForSubject(journalKey, subjectName));
 
     if (alert.getId() != null) {
       String alertId = alert.getId().toString();
@@ -105,11 +102,8 @@ public class SubjectAlertService {
     }
 
     List<Alert> alerts = fetchAlerts(userId);
-    Alert alert = findMatchingAlert(alerts, journalKey);
-
-    if (alert == null) {
-      throw new SubjectAlertException("no subject alert found");
-    }
+    Alert alert = findMatchingAlert(alerts, journalKey)
+        .orElseThrow(() -> new SubjectAlertException("no subject alert found"));
 
     RemoveResult result = removeSubjectFromAlert(alert, subjectName);
 
@@ -138,16 +132,15 @@ public class SubjectAlertService {
 
     String userId = userApi.getUserIdFromAuthId(authId);
     List<Alert> alerts = fetchAlerts(userId);
-    Alert existing = findMatchingAlert(alerts, journalKey);
+    Optional<Alert> existing = findMatchingAlert(alerts, journalKey);
 
-    if (existing == null) {
+    if (!existing.isPresent()) {
       return false;
-    }
-    else if (Strings.isNullOrEmpty(subjectName)) {
+    } else if (Strings.isNullOrEmpty(subjectName)) {
       // empty subject list means alert for all (or any) subjects.
-      return existing != null;
+      return true;
     } else {
-      AlertQuery query = getAlertQuery(existing);
+      AlertQuery query = getAlertQuery(existing.get());
       List<String> filterSubjects = query.getFilterSubjectsDisjunction();
       for (String subject : filterSubjects) {
         if (subjectName.equalsIgnoreCase(subject)) {
@@ -160,7 +153,7 @@ public class SubjectAlertService {
 
 
   /**
-   * For the list of alerts, return the first alert object that matches the journal, or null.
+   * For the list of alerts, return the first alert object that matches the journal, or empty.
    * It matches only if there is only one item in "filterJournals" matching the specified journal
    * key.
    *
@@ -169,9 +162,9 @@ public class SubjectAlertService {
    *
    * @param alerts JSON list of alert objects.
    * @param journalKey The journal key string.
-   * @return  First matching alert object for journalKey or null if no match.
+   * @return  First matching alert object for journalKey or empty if no match.
    */
-  private Alert findMatchingAlert(List<Alert> alerts, String journalKey) {
+  private Optional<Alert> findMatchingAlert(List<Alert> alerts, String journalKey) {
     for (Alert alert : alerts) {
       String source = alert.getSource();
       String frequency = alert.getFrequency();
@@ -183,11 +176,11 @@ public class SubjectAlertService {
         AlertQuery query = getAlertQuery(alert);
         List<String> filterJournals = query.getFilterJournals();
         if (filterJournals.size() == 1 && journalKey.equalsIgnoreCase(filterJournals.get(0))) {
-          return alert;
+          return Optional.of(alert);
         }
       }
     }
-    return null;
+    return Optional.empty();
   }
 
   /**
@@ -233,7 +226,7 @@ public class SubjectAlertService {
    * @param alert
    * @param subjectName
    */
-  private void addSubjectToAlert(Alert alert, String subjectName) {
+  private Alert addSubjectToAlert(Alert alert, String subjectName) {
     AlertQuery query = getAlertQuery(alert);
 
     List<String> filterSubjects = query.getFilterSubjectsDisjunction();
@@ -246,6 +239,8 @@ public class SubjectAlertService {
     query.setFilterSubjectsDisjunction(ImmutableList.<String>builder()
         .addAll(filterSubjects).add(subjectName).build());
     alert.setQuery(gson.toJson(query));
+
+    return alert;
   }
 
   /**

@@ -92,7 +92,7 @@ public class SubjectAlertController extends WombatController {
     } else {
       subjectName = subjectParam.replace("_", " ");
       subjectName = browseTaxonomyService.parseCategories(site.getJournalKey()).getName(subjectName);
-      if (subjectParam == null) {
+      if (subjectName == null) {
         log.error("Subject parameter not matched to taxonomy: {}", subjectParam);
         return respondFailure("Subject not found");
       }

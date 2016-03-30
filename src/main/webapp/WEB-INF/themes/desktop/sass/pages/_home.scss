@@ -572,10 +572,8 @@ $image-container: ($image-width + $pad-small);
   @extend .plos-row;
   .ad-item {
     @extend %width-small;
-    iframe {
-      @extend .block-card;
-      }
-
+    @extend .block-card;
+    padding:rem-calc(3);
     }
   }
 

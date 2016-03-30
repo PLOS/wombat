@@ -66,9 +66,6 @@ public class SubjectAlertService {
    */
   public void addAlert(String authId, String journalKey, String subjectName) throws IOException {
     String userId = userApi.getUserIdFromAuthId(authId);
-    if (userId == null) {
-      throw new SubjectAlertException("failed to get NED ID");
-    }
 
     List<Alert> alerts = fetchAlerts(userId);
     Alert alert = findMatchingAlert(alerts, journalKey)
@@ -97,9 +94,6 @@ public class SubjectAlertService {
    */
   public void removeAlert(String authId, String journalKey, String subjectName) throws IOException {
     String userId = userApi.getUserIdFromAuthId(authId);
-    if (userId == null) {
-      throw new SubjectAlertException("failed to get NED ID");
-    }
 
     List<Alert> alerts = fetchAlerts(userId);
     Alert alert = findMatchingAlert(alerts, journalKey)
@@ -129,7 +123,6 @@ public class SubjectAlertService {
    * @throws IOException
    */
   public boolean isUserSubscribed(String authId, String journalKey, String subjectName) throws IOException {
-
     String userId = userApi.getUserIdFromAuthId(authId);
     List<Alert> alerts = fetchAlerts(userId);
     Optional<Alert> existing = findMatchingAlert(alerts, journalKey);

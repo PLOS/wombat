@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URL;
 import java.util.function.Function;
@@ -94,12 +95,17 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   }
 
   @Override
-  public final <T> T requestObject(String address, Class<T> responseClass) throws IOException {
+  public final <T> T requestObject(String address, Type responseType) throws IOException {
     String keyHash = CacheParams.createKeyHash(address);
     String cacheKey = getCachePrefix() + ":" + keyHash;
 
     // Just try to cache everything. We may want to narrow this in the future.
-    return requestCachedObject(CacheParams.create(cacheKey), address, responseClass);
+    return requestCachedObject(CacheParams.create(cacheKey), address, responseType);
+  }
+
+  @Override
+  public final <T> T requestObject(String address, Class<T> responseClass) throws IOException {
+    return requestObject(address, (Type) responseClass);
   }
 
 
@@ -172,9 +178,14 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   }
 
   @Override
-  public final <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException {
+  public final <T> T requestCachedObject(CacheParams cacheParams, String address, Type responseType) throws IOException {
     return makeRemoteRequest(() ->
-        jsonService.requestCachedObject(cachedRemoteReader, cacheParams, buildGet(address), responseClass));
+        jsonService.requestCachedObject(cachedRemoteReader, cacheParams, buildGet(address), responseType));
+  }
+
+  @Override
+  public final <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException {
+    return requestCachedObject(cacheParams, address, (Type) responseClass);
   }
 
   protected final HttpGet buildGet(String address) {

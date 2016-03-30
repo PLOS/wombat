@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.lang.reflect.Type;
 
 public interface RestfulJsonApi {
 
@@ -32,14 +33,16 @@ public interface RestfulJsonApi {
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
    * org.ambraproject.wombat.config.RootConfiguration#gson()} bean.
    *
-   * @param address       the path to which to send the REST request
-   * @param responseClass the object type into which to serialize the JSON response
-   * @param <T>           the type of {@code responseClass}
+   * @param address      the path to which to send the REST request
+   * @param responseType the object type into which to serialize the JSON response
+   * @param <T>          the type of {@code responseClass}
    * @return the response, serialized from JSON into an object
    * @throws IOException                                             if there is an error connecting to the server
    * @throws NullPointerException                                    if either argument is null
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
+  public abstract <T> T requestObject(String address, Type responseType) throws IOException;
+
   public abstract <T> T requestObject(String address, Class<T> responseClass) throws IOException;
 
   /**
@@ -79,15 +82,16 @@ public interface RestfulJsonApi {
    * service does not indicate that the value has been modified since the value was inserted into the cache, return that
    * value. Else, query the service for JSON and deserialize it to an object as usual.
    *
-   * @param cacheParams   the cache parameters object containing the cache key at which to retrieve and store the value
-   * @param address       the address to query the SOA service if the value is not cached
-   * @param responseClass the type of object to deserialize
-   * @param <T>           the type of {@code responseClass}
+   * @param cacheParams  the cache parameters object containing the cache key at which to retrieve and store the value
+   * @param address      the address to query the SOA service if the value is not cached
+   * @param responseType the type of object to deserialize
+   * @param <T>          the type of {@code responseClass}
    * @return the deserialized object
    * @throws IOException
    */
-  public abstract <T> T requestCachedObject(CacheParams cacheParams, String address,
-                                            Class<T> responseClass) throws IOException;
+  public abstract <T> T requestCachedObject(CacheParams cacheParams, String address, Type responseType) throws IOException;
+
+  public abstract <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 

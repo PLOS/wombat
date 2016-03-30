@@ -5,6 +5,10 @@ import com.google.common.collect.ImmutableList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Specification for a search to be done to populate an alert. A JSON string representing this class is the value of
+ * {@link org.plos.ned_client.model.Alert#query}.
+ */
 public class AlertQuery {
 
   private int startPage = 0;

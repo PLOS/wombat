@@ -94,7 +94,7 @@ public class SubjectAlertController extends WombatController {
       subjectName = browseTaxonomyService.parseCategories(site.getJournalKey()).getName(subjectName);
       if (subjectParam == null) {
         log.error("Subject parameter not matched to taxonomy: {}", subjectParam);
-        return respondFailure("not logged in");
+        return respondFailure("Subject not found");
       }
     }
 

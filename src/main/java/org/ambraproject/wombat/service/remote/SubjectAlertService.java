@@ -129,7 +129,7 @@ public class SubjectAlertService {
 
     if (!existing.isPresent()) {
       return false;
-    } else if (Strings.isNullOrEmpty(subjectName)) {
+    } else if (subjectName.isEmpty()) {
       // empty subject list means alert for all (or any) subjects.
       return true;
     } else {

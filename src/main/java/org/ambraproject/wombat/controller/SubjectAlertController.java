@@ -17,6 +17,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.remote.SubjectAlertService;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.apache.commons.lang.WordUtils;
@@ -43,6 +44,8 @@ public class SubjectAlertController extends WombatController {
 
   @Autowired
   private SubjectAlertService subjectAlertService;
+  @Autowired
+  private BrowseTaxonomyService browseTaxonomyService;
 
   @RequestMapping(name = "addSubjectAlert", value = "/subjectalert/add", method = RequestMethod.POST)
   @ResponseBody
@@ -81,20 +84,28 @@ public class SubjectAlertController extends WombatController {
    * @throws IOException
    */
   private Map<String, Object> changeSubjectAlert(HttpServletRequest request, Site site,
-                                                 String subject, SubjectAlertAction action)
+                                                 String subjectParam, SubjectAlertAction action)
       throws IOException {
-    subject = subject.replace("_", " ");
-    String subjectName = WordUtils.capitalize(subject);
-
-    String journalKey = site.getJournalKey();
+    String subjectName;
+    if (Strings.isNullOrEmpty(subjectParam)) {
+      subjectName = ""; // indicates an alert for all subjects
+    } else {
+      subjectName = subjectParam.replace("_", " ");
+      subjectName = browseTaxonomyService.parseCategories(site.getJournalKey()).getName(subjectName);
+      if (subjectParam == null) {
+        log.error("Subject parameter not matched to taxonomy: {}", subjectParam);
+        return respondFailure("not logged in");
+      }
+    }
 
     String authId = request.getRemoteUser();
     if (authId == null) {
+      log.error("User made request to change subject alert without being logged in.");
       return respondFailure("not logged in");
     }
 
     try {
-      action.execute(authId, journalKey, subjectName);
+      action.execute(authId, site.getJournalKey(), subjectName);
     } catch (SubjectAlertService.SubjectAlertException e) {
       log.error("Error while changing subject alert", e);
       return respondFailure(e.getMessage());

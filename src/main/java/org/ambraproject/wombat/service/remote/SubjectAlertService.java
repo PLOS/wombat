@@ -178,7 +178,7 @@ public class SubjectAlertService {
           && ALERT_NAME.equalsIgnoreCase(name)) {
         AlertQuery query = getAlertQuery(alert);
         List<String> filterJournals = query.getFilterJournals();
-        if (filterJournals.size() == 1 && journalKey.equalsIgnoreCase(filterJournals.get(0))) {
+        if (filterJournals.size() == 1 && journalKey.equals(filterJournals.get(0))) {
           return Optional.of(alert);
         }
       }

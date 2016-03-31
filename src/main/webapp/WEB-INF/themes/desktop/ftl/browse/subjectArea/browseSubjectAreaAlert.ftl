@@ -6,7 +6,7 @@
     <#else>
      id="login-link"
     </#if>
-     data-category="${subject}">
+     data-category="${subjectName}">
     Get an email alert for ${subjectName}
   </a>
 </li>

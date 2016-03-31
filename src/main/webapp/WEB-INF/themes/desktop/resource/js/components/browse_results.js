@@ -54,7 +54,7 @@ var saveAlert = function() {
     success: function(response) {
       if (response.error) {
         var errorMessage = response.error;
-        $('#save-journal-alert-error').html('Exception: ' + errorMessage);
+        $('#save-journal-alert-error').html(errorMessage);
         return;
       }
 
@@ -84,7 +84,7 @@ var unsubscribeAlert = function() {
     success: function(response) {
       if (response.error) {
         var errorMessage = response.error;
-        $('#save-journal-alert-error').html('Exception: ' + errorMessage);
+        $('#save-journal-alert-error').html(errorMessage);
         return;
       }
 

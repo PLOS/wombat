@@ -1,14 +1,11 @@
 <li id="browseJournalAlertButton" class="middle">
-<#if isUserLoggedIn()>
-  <#if subscribed>
-    <#assign subscribedClass = " subscribed">
+  <a href="#" title="Get an email alert for ${subjectName}"
+  <#if isUserLoggedIn()>
+     id="save-journal-alert-link" class="journal-alert <#if subscribed>subscribed</#if>"
   <#else>
-    <#assign subscribedClass = "">
+     id="login-link"
   </#if>
-  <a href="#" title="Get an email alert for ${subject}" class="journal-alert${subscribedClass}"
-     id="save-journal-alert-link" data-category="${subject}">Get an email alert for ${subject}</a>
-<#else>
-  <a href="#" title="Get an email alert for ${subject}" id="login-link" data-category="${subject}">Get an email alert
-    for ${subject}</a>
-</#if>
+     data-category="${subject!""}">
+    Get an email alert for ${subjectName}
+  </a>
 </li>

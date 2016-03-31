@@ -491,7 +491,7 @@ public class ArticleController extends WombatController {
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), COMMENT_NAMESPACE);
 
     String authId = request.getRemoteUser();
-    ArticleComment comment = new ArticleComment(parentArticleDoi, getUserIdFromAuthId(authId),
+    ArticleComment comment = new ArticleComment(parentArticleDoi, userApi.getUserIdFromAuthId(authId),
         parentCommentUri, commentTitle, commentBody, ciStatement);
 
     HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, comment);
@@ -499,17 +499,6 @@ public class ArticleController extends WombatController {
       String createdCommentUri = HttpMessageUtil.readResponse(response);
       return ImmutableMap.of("createdCommentUri", createdCommentUri);
     }
-  }
-
-  private String getUserIdFromAuthId(String authId) throws IOException {
-    IndividualComposite individualComposite = userApi.requestObject(
-        String.format("individuals/CAS/%s", authId), IndividualComposite.class);
-    // use nedid from any available profile.
-    Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
-        .findFirst()
-        .orElseThrow(() -> new RuntimeException(
-            "An IndividualComposite does not have an Individualprofile"));
-    return individualprofile.getNedid().toString();
   }
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
@@ -527,7 +516,7 @@ public class ArticleController extends WombatController {
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(),
         String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
     String authId = request.getRemoteUser();
-    ArticleCommentFlag flag = new ArticleCommentFlag(getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
+    ArticleCommentFlag flag = new ArticleCommentFlag(userApi.getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
 
     HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, flag);
     try (CloseableHttpResponse response = articleApi.getResponse(commentPostRequest)) {

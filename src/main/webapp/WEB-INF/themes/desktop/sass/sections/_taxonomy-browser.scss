@@ -335,3 +335,124 @@ a.hide-active-scroll {
   height: rem-calc(21);
   background: $grey-light;
 }
+
+/*
+  Shadow box and mask for search alerts
+*/
+
+div.inlinePopup {
+  display: none;
+  position: fixed;
+  box-sizing: content-box;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 180px;
+  border: solid 1px #C8DFED;
+  padding-bottom: 16px;
+  font: 85% Verdana, Arial, Helvetica, sans-serif;
+  background: #FFFFFF;
+  z-index: 99999;
+}
+
+div.inlinePopup input[type="button"].primary {
+  background: #F8AF2D;
+  color: #333;
+}
+
+
+/* Journal alerts are a little smaller.  Note the footer in browse.ftl */
+div#journal-alert-box.journalAlert {
+  height: 150px;
+}
+
+div#login-box.login {
+  height: 110px;
+}
+
+div.inlinePopup div.top-header {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: #333333;
+  color: #ffffff;
+}
+
+div.inlinePopup span.heading {
+  font-weight: bold;
+  font-size: 14px;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+div.inlinePopup div.body-wrapper {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 12px;
+}
+
+div.inlinePopup .big-box {
+  width: 350px;
+  border: solid 1px #606060;
+}
+
+div.inlinePopup div.check-box {
+  padding-top: 4px;
+  width: 370px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+div.inlinePopup div.grey-text {
+  color: #606060;
+  margin-top: 8px;
+  width: 370px;
+}
+
+div.inlinePopup div.button-wrapper {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+div.inlinePopup span.errortext {
+  color: #ff0000;
+}
+
+div.inlinePopup input[type="button"] {
+  background: #333;
+  color: #fff;
+  margin-right: 2px;
+  padding: 9px 10px;
+  border: 0;
+  display: inline-block;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+}
+
+div.inlinePopup input[type="button"]:hover {
+  background: #3c63af !important;
+  color: #fff !important;
+}
+
+#mask {
+  display: none;
+  background: #000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  z-index: 999;
+}
+
+/*
+  End shadow box and mask for search alerts
+*/

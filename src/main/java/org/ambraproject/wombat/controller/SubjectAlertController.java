@@ -20,7 +20,6 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.remote.SubjectAlertService;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.apache.commons.lang.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,16 +85,16 @@ public class SubjectAlertController extends WombatController {
   private Map<String, Object> changeSubjectAlert(HttpServletRequest request, Site site,
                                                  String subjectParam, SubjectAlertAction action)
       throws IOException {
-    String subjectName;
-    if (Strings.isNullOrEmpty(subjectParam)) {
-      subjectName = ""; // indicates an alert for all subjects
-    } else {
-      subjectName = subjectParam.replace("_", " ");
-      subjectName = browseTaxonomyService.parseCategories(site.getJournalKey()).getName(subjectName);
-      if (subjectName == null) {
-        log.error("Subject parameter not matched to taxonomy: {}", subjectParam);
-        return respondFailure("Subject not found");
-      }
+    if (subjectParam.isEmpty()) {
+      log.error("Empty subject parameter");
+      return respondFailure("Subject required");
+    }
+
+    String subjectName = subjectParam.replace("_", " ");
+    subjectName = browseTaxonomyService.parseCategories(site.getJournalKey()).getName(subjectName);
+    if (subjectName == null) {
+      log.error("Subject parameter not matched to taxonomy: {}", subjectParam);
+      return respondFailure("Subject not found");
     }
 
     String authId = request.getRemoteUser();

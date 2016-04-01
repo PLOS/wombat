@@ -169,7 +169,7 @@
     <#elseif unknownQueryError??>
       There was a problem loading search results. Please edit your query or try again later.
     <#else>
-      Please enter your search term above
+      Please enter your search term above.
     </#if>
     </p>
   </section>
@@ -224,7 +224,8 @@
                     </#if>
                   </p>
 
-                  <p class="search-results-doi">${doc.id}</p>
+                <#include "../macro/doiAsLink.ftl" />
+                <p class="search-results-doi"><@doiAsLink doc.id/></p>
                 <#if (doc.retraction?? && doc.retraction?length gt 0) || doc.expression_of_concern!?size gt 0>
                     <div class="search-results-eoc">
                         <span></span>

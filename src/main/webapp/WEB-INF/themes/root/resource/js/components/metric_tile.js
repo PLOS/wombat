@@ -14,12 +14,12 @@ var MetricTile;
     //Template for tiles that the source has a link
     createWithLink: function () {
       var metricsTileTemplate = _.template($('#metricsTileTemplate').html());
-      return  metricsTileTemplate({url: this.url, name: this.name, imgSrc: this.imageSrc, linkText: this.linkText});
+      return  metricsTileTemplate({url: this.url, name: this.name, source_name: this.source.name, imgSrc: this.imageSrc, linkText: this.linkText});
     },
     //Template for tiles that the source has no link
     createWithNoLink: function () {
       var metricsTileTemplate = _.template($('#metricsTileTemplateNoLink').html());
-      return  metricsTileTemplate({name: this.name, imgSrc: this.imageSrc, linkText: this.linkText});
+      return  metricsTileTemplate({name: this.name, source_name: this.source.name, imgSrc: this.imageSrc, linkText: this.linkText});
     },
     createTile: function (elementToAppend) {
       this.beforeCreateTile();
@@ -62,8 +62,8 @@ var MetricTile;
       var tooltipTemplate = false;
       //The data for the tooltip underscore template.
       var tooltipData = false;
-      //The ID of the element that should be mouse overed to show the tooltip.
-      var tooltipWrapperElementId = '#' + this.name + 'OnArticleMetricsTab';
+      //The ID of the element that should be mouse hovered to show the tooltip.
+      var tooltipWrapperElementId = '#' + this.source.name + 'OnArticleMetricsTab';
 
       //For each source that needs a tooltip we add in the switch case and fill the tooltipTemplate, tooltipData and tooltipElementId.
       switch (this.source.name) {

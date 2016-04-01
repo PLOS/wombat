@@ -24,11 +24,14 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
+import org.ambraproject.wombat.util.UrlParamBuilder;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -145,14 +148,20 @@ public class TaxonomyController extends WombatController {
   @RequestMapping(name = "taxonomyCategoryFlag", value = "" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}", method = RequestMethod.POST)
   @ResponseBody
   public void setFlag(HttpServletRequest request, HttpServletResponse responseToClient,
+                      @PathVariable(value = "action") String action,
                       @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
                       @RequestParam(value = "articleDoi", required = true) String articleDoi)
       throws IOException {
-    // pass through any article category flagging ajax traffic to/from rhino
-    URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
-    HttpUriRequest req = HttpMessageUtil.buildRequest(forwardedUrl, "POST",
-            HttpMessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
-    articleApi.forwardResponse(req, responseToClient);
+    String userId = ""; // TODO: Resolve authId into userId with UserApi
+
+    UrlParamBuilder params = UrlParamBuilder.params()
+        .add("categoryTerm", categoryTerm)
+        .add("articleDoi", articleDoi)
+        .add("userId", userId);
+    URI serviceUri = URI.create(String.format("%s/taxonomy/flag/%s?%s", articleApi.getServerUrl(), action, params.format()));
+    HttpPost requestToService = new HttpPost(serviceUri);
+
+    articleApi.forwardResponse(requestToService, responseToClient);
   }
 
   /**

@@ -61,6 +61,8 @@
   <#include "../common/footer/footer.ftl" />
 
   <#include "articleJs.ftl" />
+<#include "../common/configIntFigJS.ftl" />
+
   <@js src="resource/js/components/table_open.js"/>
   <@js src="resource/js/components/figshare.js"/>
   <#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->

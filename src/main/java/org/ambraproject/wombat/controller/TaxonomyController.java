@@ -22,6 +22,7 @@ import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
@@ -62,7 +63,8 @@ public class TaxonomyController extends WombatController {
 
   @Autowired
   private ArticleApi articleApi;
-
+  @Autowired
+  private UserApi userApi;
   @Autowired
   private BrowseTaxonomyService browseTaxonomyService;
 
@@ -152,12 +154,16 @@ public class TaxonomyController extends WombatController {
                       @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
                       @RequestParam(value = "articleDoi", required = true) String articleDoi)
       throws IOException {
-    String userId = ""; // TODO: Resolve authId into userId with UserApi
-
     UrlParamBuilder params = UrlParamBuilder.params()
         .add("categoryTerm", categoryTerm)
-        .add("articleDoi", articleDoi)
-        .add("userId", userId);
+        .add("articleDoi", articleDoi);
+
+    String authId = request.getRemoteUser();
+    if (authId != null) {
+      String userId = userApi.getUserIdFromAuthId(authId);
+      params.add("userId", userId);
+    }
+
     URI serviceUri = URI.create(String.format("%s/taxonomy/flag/%s?%s", articleApi.getServerUrl(), action, params.format()));
     HttpPost requestToService = new HttpPost(serviceUri);
 

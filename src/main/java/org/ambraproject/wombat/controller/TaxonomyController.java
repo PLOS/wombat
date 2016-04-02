@@ -23,12 +23,10 @@ import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.ambraproject.wombat.util.UriUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.client.methods.RequestBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
@@ -164,8 +162,11 @@ public class TaxonomyController extends WombatController {
       params.add("userId", userId);
     }
 
-    URI serviceUri = URI.create(String.format("%s/taxonomy/flag/%s?%s", articleApi.getServerUrl(), action, params.format()));
-    HttpPost requestToService = new HttpPost(serviceUri);
+    URI serviceUri = URI.create(String.format("%s/taxonomy/flag/%s", articleApi.getServerUrl(), action));
+    HttpUriRequest requestToService = RequestBuilder.create(HttpPost.METHOD_NAME)
+        .setUri(serviceUri)
+        .addParameters(params.buildArray())
+        .build();
 
     articleApi.forwardResponse(requestToService, responseToClient);
   }

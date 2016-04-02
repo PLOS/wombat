@@ -55,6 +55,27 @@
     </div>
 </script>
 
+<script type="text/template" id="metricsTileFigshareTooltipTemplate">
+    <div id="dropdown-figshare" class="metric-dropdown" data-dropdown-content>
+        <div class="close-button" onclick="Foundation.libs.dropdown.close(jQuery('#dropdown-figshare'));">
+            <span>&nbsp;</span>
+            <a class="button-container">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+        <table class="tile_mini">
+            <% _.each(items, function(item) { %>
+            <tr>
+                <td>
+                    <a href="<%= item.link %>" target=_blank> <%= item.title %></a>
+                </td>
+                <td class="data1"><%= item.totalStat %></td>
+            </tr>
+            <% }); %>
+        </table>
+    </div>
+</script>
+
 <script type="text/template" id="citedBoxNoDataTemplate">
     No related citations found <br/>
     Search for citations in <a href="<%= googleLink %>">Google Scholar</a>

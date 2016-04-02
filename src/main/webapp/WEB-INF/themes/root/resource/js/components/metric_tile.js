@@ -58,6 +58,7 @@ var MetricTile;
 
     //In some sources we need to append a tooltip after the tile is appended to the template, this function is responsible for that.
     afterCreateTile: function () {
+      var that = this;
       //The tooltip underscore template to compile.
       var tooltipTemplate = false;
       //The data for the tooltip underscore template.
@@ -81,6 +82,66 @@ var MetricTile;
             individuals: this.source.events.reader_count,
             groups: this.source.events.group_count
           };
+          break;
+        case 'figshare':
+          var figshareTooltipTemplate = _.template($('#metricsTileFigshareTooltipTemplate').html());
+          var figshareTooltipData = {
+            items: {}
+          };
+          $.ajax({
+            url: 'assets/figsAndTables?id=' + ArticleData.doi,
+            dataType: 'json',
+            error: function (jqXHR, textStatus, errorThrown) {
+              //throw new ErrorFactory('FigshareTooltipError', '[MetricTile::afterCreateTile] - Error while fetch figshare tooltip data');
+            },
+            success: function (data) {
+              if(data && that.source.events) {
+                _.each(that.source.events, function (item) {
+                  if(_.has(item, 'doi') && !_.isEmpty(item.doi)) {
+                    var key = null;
+                    // if the doi ends in (.s\d+), it refers to SIs
+                    var pattern = /\.s\d+$/g;
+                    if (item.doi.length == 1 && !pattern.test(item.doi[0])) {
+                      key = item.doi[0].replace("http://dx.doi.org/", "");
+                    } else {
+                      key = "SI";
+                    }
+                  }
+
+                  var itemInfo = {};
+                  if(key == "SI") {
+                    itemInfo.title = 'Supporting Info Files'
+
+                  }
+                  else {
+                    var doi = "info:doi/" + key;
+                    var dataItem = _.findWhere(data, { doi: doi });
+                    if(dataItem) {
+                      itemInfo.title = dataItem.title;
+                    }
+                    else {
+                      return;
+                    }
+                  }
+
+                  itemInfo.totalStat = item.stats.downloads + item.stats.page_views;
+                  itemInfo.link =  item.figshare_url;
+
+                  figshareTooltipData.items[key] = itemInfo;
+                });
+
+                $('#figshareImageOnArticleMetricsTab')
+                  .attr('data-options', 'align:right')
+                  .attr('data-dropdown', 'dropdown-figshare')
+                  .after(figshareTooltipTemplate(figshareTooltipData));
+                var showDropdown = $('#article-metrics').attr('data-showTooltip');
+
+                if (showDropdown) {
+                  $(document).foundation('dropdown', 'reflow');
+                }
+              }
+            }
+          });
           break;
         default:
           break;

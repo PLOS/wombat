@@ -332,6 +332,13 @@
       messageElement.show();
     }
 
+    function getRecaptchaFields() {
+      return {
+        recaptcha_challenge_field: $('#recaptcha_challenge_field').val(),
+        recaptcha_response_field: $('#recaptcha_response_field').val()
+      };
+    }
+
     /**
      * Pull the input for a submitted comment from the page.
      * @param replyElement  the existing reply, to which the user is responding, as a JQuery element
@@ -348,6 +355,8 @@
       if (data.isCompetingInterest) {
         data.ciStatement = replyElement.find('[name="competing_interests"]').val();
       }
+
+      $.extend(data, getRecaptchaFields());
 
       return data;
     }

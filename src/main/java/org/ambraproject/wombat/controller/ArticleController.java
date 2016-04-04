@@ -469,9 +469,6 @@ public class ArticleController extends WombatController {
     return reqBuilder.build();
   }
 
-  private static final ImmutableMap<String, Object> CAPTCHA_VALIDATION_FAILURE = ImmutableMap.of("validationErrors",
-      ImmutableMap.of("captchaValidationFailure", true));
-
   /**
    * @param parentArticleDoi null if a reply to another comment
    * @param parentCommentUri null if a direct reply to an article
@@ -489,11 +486,11 @@ public class ArticleController extends WombatController {
                                   @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
                                   @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException {
-    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-      return CAPTCHA_VALIDATION_FAILURE;
-    }
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
+    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
+      validationErrors.put("captchaValidationFailure", true);
+    }
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);
     }

@@ -32,6 +32,10 @@ public class UrlParamBuilder {
     return ImmutableList.copyOf(params);
   }
 
+  public NameValuePair[] buildArray() {
+    return params.toArray(new NameValuePair[params.size()]);
+  }
+
   public String format() {
     return URLEncodedUtils.format(params, Charsets.UTF_8);
   }

@@ -28,16 +28,4 @@ public class UriUtil {
     }
   }
 
-
-  public static String stripUrlPrefix(String requestUrl, String namespace) {
-    // Strip the url of any  to prepare for forwarding a request
-    // The string manipulation is a little ugly here, but the alternative would be have wombat
-    // share a bunch of code with rhino in order to extract portions of the servlet path in
-    // a way that plays nicely with spring
-    // (specifically org.ambraproject.rhino.rest.controller.abstr.RestController).
-
-    return requestUrl.substring(requestUrl.indexOf(namespace) +
-            (namespace.startsWith("/") ? 1 : 0));  // Remove first slash where present
-  }
-
 }

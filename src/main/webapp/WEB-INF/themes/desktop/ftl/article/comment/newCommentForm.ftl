@@ -67,7 +67,7 @@
                 placeholder="Enter your competing interests..."></textarea>
     </div>
 
-    ${captchaHTML}
+    ${captchaHtml}
 
     <span class="btn flt-l btn_submit primary"
       <#if isStandalone>

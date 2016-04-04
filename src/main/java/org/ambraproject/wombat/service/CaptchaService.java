@@ -3,6 +3,7 @@ package org.ambraproject.wombat.service;
 import org.ambraproject.wombat.config.site.Site;
 
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Interface for a captcha implementation
@@ -25,7 +26,7 @@ public interface CaptchaService {
   /**
    * @return Returns a captchaHTML block to insert into a web page
    */
-  public String getCaptchaHTML(Site site) throws IOException;
+  public String getCaptchaHtml(Site site, Optional<String> captchaTheme) throws IOException;
 
   public String getPublicKey(Site site) throws IOException;
 }

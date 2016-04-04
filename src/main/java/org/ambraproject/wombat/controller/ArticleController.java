@@ -102,6 +102,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
@@ -213,7 +214,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
-    model.addAttribute("captchaHTML", captchaService.getCaptchaHTML(site));
+    model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
     return site + "/ftl/article/comment/newComment";
   }
 
@@ -457,7 +458,7 @@ public class ArticleController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
 
     model.addAttribute("comment", comment);
-    model.addAttribute("captchaHTML", captchaService.getCaptchaHTML(site));
+    model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
     return site + "/ftl/article/comment/comment";
   }
 
@@ -782,7 +783,7 @@ public class ArticleController extends WombatController {
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("maxEmails", MAX_TO_EMAILS);
-    model.addAttribute("captchaHTML", captchaService.getCaptchaHTML(site));
+    model.addAttribute("captchaHTML", captchaService.getCaptchaHtml(site, Optional.empty()));
     return site + "/ftl/article/email";
   }
 

@@ -33,6 +33,10 @@
     <@commentErrorMessage "censoredCi">
     Your comment triggered a profanity filter. Please reword your comment.
     </@commentErrorMessage>
+
+    <@commentErrorMessage "captchaValidationFailure">
+    Verification is incorrect. Please try again.
+    </@commentErrorMessage>
   </@commentErrorMessageBlock>
 
 <form class="cf" onsubmit="return false;">
@@ -62,6 +66,8 @@
                 disabled="disabled"
                 placeholder="Enter your competing interests..."></textarea>
     </div>
+
+    ${captchaHTML}
 
     <span class="btn flt-l btn_submit primary"
       <#if isStandalone>

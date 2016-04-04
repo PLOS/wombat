@@ -213,6 +213,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
+    model.addAttribute("captchaHTML", captchaService.getCaptchaHTML(site));
     return site + "/ftl/article/comment/newComment";
   }
 
@@ -456,7 +457,7 @@ public class ArticleController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
 
     model.addAttribute("comment", comment);
-
+    model.addAttribute("captchaHTML", captchaService.getCaptchaHTML(site));
     return site + "/ftl/article/comment/comment";
   }
 
@@ -466,6 +467,9 @@ public class ArticleController extends WombatController {
     RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(target).setEntity(entity);
     return reqBuilder.build();
   }
+
+  private static final ImmutableMap<String, Object> CAPTCHA_VALIDATION_FAILURE = ImmutableMap.of("validationErrors",
+      ImmutableMap.of("captchaValidationFailure", true));
 
   /**
    * @param parentArticleDoi null if a reply to another comment
@@ -480,8 +484,13 @@ public class ArticleController extends WombatController {
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
-                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
-
+                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
+                                  @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+                                  @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
+      throws IOException {
+    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
+      return CAPTCHA_VALIDATION_FAILURE;
+    }
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
     if (!validationErrors.isEmpty()) {

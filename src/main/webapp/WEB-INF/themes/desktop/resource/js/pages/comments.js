@@ -282,6 +282,12 @@
           for (var errorKey in data.validationErrors) {
             errors.push({key: errorKey, value: data.validationErrors[errorKey]});
           }
+
+          if (data.validationErrors['captchaValidationFailure']) {
+            // Need to refresh because the third-party server will not accept a second response for the same challenge.
+            $("#recaptcha_reload").click();
+          }
+
           if (errors.length > 0) {
             for (var i in errors) {
               var error = errors[i];

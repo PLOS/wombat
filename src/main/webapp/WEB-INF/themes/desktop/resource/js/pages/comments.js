@@ -125,6 +125,9 @@
           });
           box.find('[name="comment_title"]').attr("value", 'RE: ' + parentTitle);
           outer.wireCompetingInterestRadioButtons(box);
+
+          // Shift the Captcha prototype form into the box's container
+          $('#captchaPrototype').detach().appendTo(box.find('.captchaContainer')).show();
         });
     };
 
@@ -332,18 +335,10 @@
       messageElement.show();
     }
 
-    function getRecaptchaFields(replyElement) {
-      /*
-       * The net.tanesha.recaptcha library generates HTML for the Captcha form with ID attributes, but they are not
-       * unique because we copy the Recaptcha form in many places over the page. Ideally, we should fix this. In the
-       * meantime, make sure we grab the right ID from within the replyElement.
-       */
-      var challenge = replyElement.find('#recaptcha_challenge_field');
-      var response = replyElement.find('#recaptcha_response_field');
-
+    function getRecaptchaFields() {
       return {
-        recaptcha_challenge_field: challenge.val(),
-        recaptcha_response_field: response.val()
+        recaptcha_challenge_field: $('#recaptcha_challenge_field').val(),
+        recaptcha_response_field: $('#recaptcha_response_field').val()
       };
     }
 

@@ -67,7 +67,15 @@
                 placeholder="Enter your competing interests..."></textarea>
     </div>
 
+    <div class="captchaContainer">
+      <#if isStandalone>
     ${captchaHtml}
+      </#if>
+      <#--
+        Else, count on JavaScript to insert it into the captchaContainer.
+        We don't want captchaHtml appearing twice on the page, because that breaks it.
+        -->
+    </div>
 
     <span class="btn flt-l btn_submit primary"
       <#if isStandalone>

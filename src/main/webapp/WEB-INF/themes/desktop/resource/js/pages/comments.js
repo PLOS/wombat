@@ -109,6 +109,10 @@
         });
     };
 
+    function shiftCaptchaFormTo(replyBox) {
+      $('#captchaForm').detach().appendTo(replyBox.find('.captchaContainer')).show();
+    }
+
     /**
      * Show the "respond to this posting" box beneath a reply, clearing the report box first if necessary.
      * @param replyId  the ID of the reply where the box should be shown
@@ -121,10 +125,16 @@
       this.showBox(replyId, 'report', 'respond', ['.btn_cancel'],
         function (box) {
           box.find('.btn_submit').click(function () {
+            // Usually the Captcha form will already be here.  In case the user opened a second box and submitted from
+            // the first box, shift the Captcha form back so they won't be confused if there is a validation failure.
+            shiftCaptchaFormTo(box);
+
             outer.submitResponse(replyId, $(this));
           });
           box.find('[name="comment_title"]').attr("value", 'RE: ' + parentTitle);
           outer.wireCompetingInterestRadioButtons(box);
+
+          shiftCaptchaFormTo(box);
         });
     };
 
@@ -272,6 +282,12 @@
           for (var errorKey in data.validationErrors) {
             errors.push({key: errorKey, value: data.validationErrors[errorKey]});
           }
+
+          if (data.validationErrors['captchaValidationFailure']) {
+            // Need to refresh because the third-party server will not accept a second response for the same challenge.
+            $("#recaptcha_reload").click();
+          }
+
           if (errors.length > 0) {
             for (var i in errors) {
               var error = errors[i];
@@ -332,18 +348,10 @@
       messageElement.show();
     }
 
-    function getRecaptchaFields(replyElement) {
-      /*
-       * The net.tanesha.recaptcha library generates HTML for the Captcha form with ID attributes, but they are not
-       * unique because we copy the Recaptcha form in many places over the page. Ideally, we should fix this. In the
-       * meantime, make sure we grab the right ID from within the replyElement.
-       */
-      var challenge = replyElement.find('#recaptcha_challenge_field');
-      var response = replyElement.find('#recaptcha_response_field');
-
+    function getRecaptchaFields() {
       return {
-        recaptcha_challenge_field: challenge.val(),
-        recaptcha_response_field: response.val()
+        recaptcha_challenge_field: $('#recaptcha_challenge_field').val(),
+        recaptcha_response_field: $('#recaptcha_response_field').val()
       };
     }
 

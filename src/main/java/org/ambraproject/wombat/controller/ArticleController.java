@@ -488,9 +488,15 @@ public class ArticleController extends WombatController {
       throws IOException {
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
-    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-      validationErrors.put("captchaValidationFailure", true);
+
+    if (validationErrors.isEmpty()) {
+      // Submit Captcha for validation only if there are no other errors.
+      // Otherwise, the user's valid Captcha response would be wasted when they resubmit the comment.
+      if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
+        validationErrors.put("captchaValidationFailure", true);
+      }
     }
+
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);
     }

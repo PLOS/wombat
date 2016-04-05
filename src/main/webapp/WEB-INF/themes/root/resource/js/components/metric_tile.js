@@ -111,7 +111,7 @@ var MetricTile;
                 data = _.map(data, function (item) {
                   item.doi = item.doi.replace('info:doi/', '');
                   var event = events[item.doi];
-                  //Fix to order the title correctly, add a 0 before the numbers have only one character 
+                  //Fix to order the title correctly, add a 0 before the numbers have only one character
                   var titleSplit = item.title.split(' ');
                   if(titleSplit[1].length == 1) {
                     item.title = titleSplit[0] + ' 0'+titleSplit[1];

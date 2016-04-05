@@ -1,9 +1,9 @@
 /*
-* MetricTile:
-*
-* For Metrics tab we use tiles to display the data, this is the class responsible for display
-* the correct template and append to the main component.
-*/
+ * MetricTile:
+ *
+ * For Metrics tab we use tiles to display the data, this is the class responsible for display
+ * the correct template and append to the main component.
+ */
 var MetricTile;
 
 (function ($) {
@@ -58,6 +58,7 @@ var MetricTile;
 
     //In some sources we need to append a tooltip after the tile is appended to the template, this function is responsible for that.
     afterCreateTile: function () {
+      var that = this;
       //The tooltip underscore template to compile.
       var tooltipTemplate = false;
       //The data for the tooltip underscore template.
@@ -81,6 +82,69 @@ var MetricTile;
             individuals: this.source.events.reader_count,
             groups: this.source.events.group_count
           };
+          break;
+        case 'figshare':
+          var figshareTooltipTemplate = _.template($('#metricsTileFigshareTooltipTemplate').html());
+          var figshareTooltipData = {
+            items: {}
+          };
+
+          $.ajax({
+            url: 'assets/figsAndTables?id=' + ArticleData.doi,
+            dataType: 'json',
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            },
+            success: function (data) {
+              if(data && that.source.events) {
+                var events = {};
+                _.each(that.source.events, function (event) {
+                  if(event.doi && _.isString(event.doi)) {
+                    var formattedDOI = event.doi.replace('https://dx.doi.org/', '');
+                    events[formattedDOI] = event;
+                  }
+                  else {
+                    events["SI"] = event;
+                  }
+                });
+
+                data = _.map(data, function (item) {
+                  item.doi = item.doi.replace('info:doi/', '');
+                  var event = events[item.doi];
+                  //Fix to order the title correctly, add a 0 before the numbers have only one character
+                  var titleSplit = item.title.split(' ');
+                  if(titleSplit[1].length == 1) {
+                    item.title = titleSplit[0] + ' 0'+titleSplit[1];
+                  }
+
+                  item.totalStat = event.stats.downloads + event.stats.page_views;
+                  item.link = event.figshare_url;
+                  return item;
+                });
+
+                figshareTooltipData.items = _.sortBy(data, 'title');
+
+                if(events["SI"]) {
+                  var supportingInfo = {
+                    title: 'Supporting Info Files',
+                    totalStat: events["SI"].stats.downloads + events["SI"].stats.page_views,
+                    link: events["SI"].figshare_url
+                  };
+                  figshareTooltipData.items.push(supportingInfo);
+                }
+
+                $('#figshareImageOnArticleMetricsTab')
+                  .attr('data-options', 'align:right')
+                  .attr('data-dropdown', 'dropdown-figshare')
+                  .after(figshareTooltipTemplate(figshareTooltipData));
+                var showDropdown = $('#article-metrics').attr('data-showTooltip');
+
+                if (showDropdown) {
+                  $(document).foundation('dropdown', 'reflow');
+                }
+              }
+            }
+          });
           break;
         default:
           break;

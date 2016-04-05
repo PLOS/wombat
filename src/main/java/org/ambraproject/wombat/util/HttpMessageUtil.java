@@ -1,18 +1,11 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,12 +13,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
-import java.net.URI;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Set;
 
 /**
  * A utility class for creation and management of HTTP messages
@@ -124,59 +114,6 @@ public class HttpMessageUtil {
     return headers;
   }
 
-
-  public static Collection<NameValuePair> getRequestParameters(HttpServletRequest request) {
-    return getRequestParameters(request, Predicates.<String>alwaysTrue());
-  }
-
-  public static Collection<NameValuePair> getRequestParameters(HttpServletRequest request, Set<String> paramNames) {
-    return getRequestParameters(request, Predicates.in(paramNames));
-  }
-
-  private static Collection<NameValuePair> getRequestParameters(HttpServletRequest request, Predicate<String> includeParam) {
-    Preconditions.checkNotNull(includeParam);
-    List<NameValuePair> paramList = new ArrayList<>();
-    Enumeration allParamNames = request.getParameterNames();
-    while (allParamNames.hasMoreElements()) {
-      String paramName = (String) allParamNames.nextElement();
-      if (includeParam.apply(paramName)) {
-        paramList.add(new BasicNameValuePair(paramName, request.getParameter(paramName)));
-      }
-    }
-    return paramList;
-  }
-
-
-  public static HttpUriRequest buildRequest(URI fullUrl, String method) {
-    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), ImmutableSet.<NameValuePair>of());
-  }
-
-  public static HttpUriRequest buildRequest(URI fullUrl, String method,
-                                            Collection<? extends NameValuePair> params,
-                                            NameValuePair... additionalParams) {
-    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), params, additionalParams);
-  }
-
-
-  public static HttpUriRequest buildRequest(URI fullUrl, String method,
-                                            Collection<? extends Header> headers,
-                                            Collection<? extends NameValuePair> params,
-                                            NameValuePair... additionalParams) {
-    RequestBuilder reqBuilder = RequestBuilder.create(method).setUri(fullUrl);
-    Preconditions.checkNotNull(headers);
-    Preconditions.checkNotNull(params);
-    Preconditions.checkNotNull(additionalParams);
-    for (Header header : headers) {
-      reqBuilder.addHeader(header);
-    }
-    if (!params.isEmpty()) {
-      reqBuilder.addParameters(params.toArray(new NameValuePair[params.size()]));
-    }
-    for (NameValuePair param : additionalParams) {
-      reqBuilder.addParameter(param);
-    }
-    return reqBuilder.build();
-  }
 
   /**
    * Checks to see if we should serve the contents of the requested object, or just return a 304 response with no body,

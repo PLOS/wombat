@@ -3,9 +3,12 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
 import org.apache.xerces.impl.dv.util.Base64;
+import org.plos.ned_client.model.IndividualComposite;
+import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -52,7 +55,11 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    return new UserApiConfiguration((String) userConfigData.get("server"),
+    String server = (String) userConfigData.get("server");
+    if (server == null) {
+      throw new RuntimeException("userApi is not configured");
+    }
+    return new UserApiConfiguration(server,
         (String) userConfigData.get("authorizationAppName"),
         (String) userConfigData.get("authorizationPassword"));
   }
@@ -85,6 +92,24 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
     } catch (ServiceRequestException | ServiceConnectionException | ServiceResponseFormatException e) {
       throw new UserApiException(e);
     }
+  }
+
+  @Override
+  public final String getUserIdFromAuthId(String authId) throws IOException {
+    Objects.requireNonNull(authId);
+    final IndividualComposite individualComposite;
+    try {
+      individualComposite = requestObject(String.format("individuals/CAS/%s", authId), IndividualComposite.class);
+    } catch (EntityNotFoundException e) {
+      throw new UserApiException("No IndividualComposite found with authId=" + authId, e);
+    }
+
+    // use nedid from any available profile.
+    Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
+        .findFirst()
+        .orElseThrow(() -> new UserApiException(
+            "An IndividualComposite does not have an Individualprofile"));
+    return individualprofile.getNedid().toString();
   }
 
 }

@@ -570,16 +570,6 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/metrics";
   }
 
-@RequestMapping(name = "articleMetricsRenovated", value = "/article/metricsRenovated")
-public String renderArticleMetricsRenovated(HttpServletRequest request, Model model, @SiteParam Site site,
-                                   @RequestParam("id") String articleId) throws IOException {
-  enforceDevFeature("metricsRenovated");
-  Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-  validateArticleVisibility(site, articleMetaData);
-  return site + "/ftl/article/metricsRenovated";
-}
-
-
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
   public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
                                            @RequestParam("id") String articleId)

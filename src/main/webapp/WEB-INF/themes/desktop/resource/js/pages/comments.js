@@ -110,7 +110,7 @@
     };
 
     function shiftCaptchaFormTo(replyBox) {
-      $('#captchaPrototype').detach().appendTo(replyBox.find('.captchaContainer')).show();
+      $('#captchaForm').detach().appendTo(replyBox.find('.captchaContainer')).show();
     }
 
     /**

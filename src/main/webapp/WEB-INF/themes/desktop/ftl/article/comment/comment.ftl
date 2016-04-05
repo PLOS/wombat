@@ -34,7 +34,7 @@
     <#include "errorMessages.ftl" />
     <@postNewCommentLink article.doi />
 
-      <div id="captchaPrototype" style="display: none">
+      <div id="captchaForm" style="display: none">
         ${captchaHtml}
       </div>
 

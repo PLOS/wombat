@@ -6,6 +6,7 @@ import net.tanesha.recaptcha.ReCaptchaImpl;
 import org.ambraproject.wombat.config.site.Site;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.Properties;
 
 /**
@@ -35,7 +36,7 @@ public class CaptchaServiceImpl implements CaptchaService {
   /** {@inheritDoc}
    */
   @Override
-  public String getCaptchaHTML(Site site) throws IOException {
+  public String getCaptchaHtml(Site site, Optional<String> captchaTheme) throws IOException {
     String publicKey = getPublicKey(site);
     String privateKey = getPrivateKey(site);
 
@@ -45,10 +46,9 @@ public class CaptchaServiceImpl implements CaptchaService {
 
     ReCaptcha c = ReCaptchaFactory.newReCaptcha(publicKey, privateKey, false);
 
-    return c.createRecaptchaHtml(null, new Properties() {{
-          setProperty("theme", "white");
-        }}
-    );
+    Properties properties = new Properties();
+    properties.setProperty("theme", captchaTheme.orElse("white"));
+    return c.createRecaptchaHtml(null, properties);
   }
 
   @Override

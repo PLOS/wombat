@@ -29,11 +29,11 @@ $line-height-small: ($line-height * .5);
 }
 
 // this is the amount we want to offset the target so it doesn't butt up against the top of the window OR the floating header.
-.article-content a:target{
+/*.article-content a:target{
   margin-top: -$target-offset;
   padding-top: $target-offset;
   display:inline-block;
-}
+}*/
 
 .article-body.content, .article-content {
   a {

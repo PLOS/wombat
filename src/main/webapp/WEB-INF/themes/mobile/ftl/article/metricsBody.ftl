@@ -21,7 +21,7 @@
       <div id="relatedCites"></div>
     </section>
 
-    <section class="card">
+    <section id="savedCard" class="card">
 
       <div id="socialNetworksOnArticleMetricsPage">
         <a id="other" name="other"></a>

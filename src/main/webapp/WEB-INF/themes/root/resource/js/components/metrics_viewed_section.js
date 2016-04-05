@@ -28,6 +28,24 @@ var MetricsViewedSection;
       this.$chartElement.show();
     },
 
+    dataError: function () {
+      //In case of error we show the text for data no available
+      var template = _.template($('#viewedSectionNoDataTemplate').html());
+      var templateHtml = template();
+
+      this.$element.append(templateHtml).show();
+      this.$loadingEl.hide();
+    },
+
+    newArticleError: function () {
+      //In case of error we show the text for new article error
+      var template = _.template($('#viewedSectionNewArticleErrorTemplate').html());
+      var templateHtml = template();
+
+      this.$element.append(templateHtml).show();
+      this.$loadingEl.hide();
+    },
+
     //Join year and month to a string, used as key to the history object and as ordering factor for the events
     getYearMonthString: function (month, year, separator) {
       if(!separator) {

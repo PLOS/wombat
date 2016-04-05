@@ -88,47 +88,50 @@ var MetricTile;
           var figshareTooltipData = {
             items: {}
           };
+
           $.ajax({
             url: 'assets/figsAndTables?id=' + ArticleData.doi,
             dataType: 'json',
             error: function (jqXHR, textStatus, errorThrown) {
-              //throw new ErrorFactory('FigshareTooltipError', '[MetricTile::afterCreateTile] - Error while fetch figshare tooltip data');
+
             },
             success: function (data) {
               if(data && that.source.events) {
-                _.each(that.source.events, function (item) {
-                  if(_.has(item, 'doi') && !_.isEmpty(item.doi)) {
-                    var key = null;
-                    // if the doi ends in (.s\d+), it refers to SIs
-                    var pattern = /\.s\d+$/g;
-                    if (item.doi.length == 1 && !pattern.test(item.doi[0])) {
-                      key = item.doi[0].replace("http://dx.doi.org/", "");
-                    } else {
-                      key = "SI";
-                    }
-                  }
-
-                  var itemInfo = {};
-                  if(key == "SI") {
-                    itemInfo.title = 'Supporting Info Files'
-
+                var events = {};
+                _.each(that.source.events, function (event) {
+                  if(event.doi && _.isString(event.doi)) {
+                    var formattedDOI = event.doi.replace('https://dx.doi.org/', '');
+                    events[formattedDOI] = event;
                   }
                   else {
-                    var doi = "info:doi/" + key;
-                    var dataItem = _.findWhere(data, { doi: doi });
-                    if(dataItem) {
-                      itemInfo.title = dataItem.title;
-                    }
-                    else {
-                      return;
-                    }
+                    events["SI"] = event;
+                  }
+                });
+
+                data = _.map(data, function (item) {
+                  item.doi = item.doi.replace('info:doi/', '');
+                  var event = events[item.doi];
+                  //Fix to order the title correctly, add a 0 before the numbers have only one character
+                  var titleSplit = item.title.split(' ');
+                  if(titleSplit[1].length == 1) {
+                    item.title = titleSplit[0] + ' 0'+titleSplit[1];
                   }
 
-                  itemInfo.totalStat = item.stats.downloads + item.stats.page_views;
-                  itemInfo.link =  item.figshare_url;
-
-                  figshareTooltipData.items[key] = itemInfo;
+                  item.totalStat = event.stats.downloads + event.stats.page_views;
+                  item.link = event.figshare_url;
+                  return item;
                 });
+
+                figshareTooltipData.items = _.sortBy(data, 'title');
+
+                if(events["SI"]) {
+                  var supportingInfo = {
+                    title: 'Supporting Info Files',
+                    totalStat: events["SI"].stats.downloads + events["SI"].stats.page_views,
+                    link: events["SI"].figshare_url
+                  };
+                  figshareTooltipData.items.push(supportingInfo);
+                }
 
                 $('#figshareImageOnArticleMetricsTab')
                   .attr('data-options', 'align:right')

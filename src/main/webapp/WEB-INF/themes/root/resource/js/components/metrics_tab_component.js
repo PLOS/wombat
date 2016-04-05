@@ -44,6 +44,20 @@ var MetricsTabComponent;
     },
 
     loadData: function (data) {
+      //Fix for CrossRef, the metrics.total is not calculated by ALM
+      var crossrefIndex = _.findIndex(data.sources, {name: 'crossref'});
+      if(crossrefIndex >= 0){
+        var crossref = data.sources[crossrefIndex];
+        if(!_.has(crossref, 'metrics')) {
+          crossref.metrics = { total: 0 };
+        }
+
+        if(_.has(crossref, 'by_month') && crossref.metrics.total <= 0) {
+          var total = _.reduce(crossref.by_month, function (memo, obj) { return memo + obj.total }, 0);
+          crossref.metrics.total = total;
+        }
+      }
+
       this.data = data;
       this.filterSources();
     },

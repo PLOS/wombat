@@ -82,6 +82,7 @@ import org.ambraproject.wombat.service.XmlServiceImpl;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.remote.SubjectAlertService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.ambraproject.wombat.util.NullJavaMailSender;
 import org.springframework.context.annotation.Bean;
@@ -243,6 +244,12 @@ public class SpringConfiguration {
   public SearchFilterService searchFilterService() {
     return new SearchFilterService();
   }
+
+  @Bean
+  public SubjectAlertService subjectAlertService() {
+    return new SubjectAlertService();
+  }
+
 
   @Bean
   public FreeMarkerViewResolver viewResolver(Charset charset) {

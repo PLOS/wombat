@@ -29,6 +29,7 @@ public class CommentServiceImpl implements CommentService {
 
   private static final String REPLIES_KEY = "replies";
   private static final String CREATOR_KEY = "creator";
+  //private static final String USER_PROFILE_ID_KEY = "userProfileID";
 
   /**
    * Iterate over a comment and all of its nested replies, applying a modification in place to each.

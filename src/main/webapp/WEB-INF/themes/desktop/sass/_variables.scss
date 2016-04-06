@@ -187,7 +187,8 @@ $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
-$sub-sup-alignment: .5ex; //controls sub and super text
+$sub-alignment: .5ex; //controls sub and super text
+$sup-alignment: 1ex; //controls sub and super text
 
 $line-height: 18px; // applies to parapgraphs and lists by default
 $line-height-large: ($line-height * 2);

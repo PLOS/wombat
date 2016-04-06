@@ -76,9 +76,17 @@
     </div>
 </script>
 
-<script type="text/template" id="citedBoxNoDataTemplate">
+<script type="text/template" id="citedSectionNoDataTemplate">
     No related citations found <br/>
     Search for citations in <a href="<%= googleLink %>">Google Scholar</a>
+</script>
+
+<script type="text/template" id="viewedSectionNoDataTemplate">
+    Viewed data is not available. Please try again later.
+</script>
+
+<script type="text/template" id="viewedSectionNewArticleErrorTemplate">
+    This article was only recently published. Although we update our data on a daily basis (not in real time), there may be a 48-hour delay before the most recent numbers are available.
 </script>
 
 <script type="text/template" id="viewedHighchartTooltipTemplate">

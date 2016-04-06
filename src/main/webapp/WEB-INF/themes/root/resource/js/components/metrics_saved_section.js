@@ -14,8 +14,13 @@ var MetricsSavedSection;
       this.afterLoadData();
     },
     dataError: function () {
-      //For saved section in case of error we hide all the section, including title.
-      $('#socialNetworksOnArticleMetricsPage').css("display", "none");
+      //For saved section in case of error we hide all the section, including title. Verify if we have a #savedCard to hide the card also on mobile.
+      if($('#savedCard').length) {
+        $('#savedCard').hide();
+      }
+      else {
+        $('#socialNetworksOnArticleMetricsPage').css("display", "none");
+      }
     },
     newArticleError: function () {
       this.dataError();

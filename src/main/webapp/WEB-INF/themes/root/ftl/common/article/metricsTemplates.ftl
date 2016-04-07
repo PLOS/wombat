@@ -1,6 +1,6 @@
 <script type="text/template" id="metricsTileTemplate">
-    <div id="<%=  name %>OnArticleMetricsTab" class="metrics_tile">
-        <a href="<%=  url %>"><img id="<%=  name %>ImageOnArticleMetricsTab" src="<%=  imgSrc %>"
+    <div id="<%=  source_name %>OnArticleMetricsTab" class="metrics_tile">
+        <a href="<%=  url %>"><img id="<%=  source_name %>ImageOnArticleMetricsTab" src="<%=  imgSrc %>"
                                    alt="<%=  linkText %> <%=  name %>" class="metrics_tile_image"/></a>
         <div class="metrics_tile_footer" onclick="location.href=<%=  url %>">
             <a href="<%=  url %>"><%= linkText %></a></div>
@@ -8,8 +8,8 @@
 </script>
 
 <script type="text/template" id="metricsTileTemplateNoLink">
-    <div id="<%= name %>OnArticleMetricsTab" class="metrics_tile_no_link">
-        <img id="<%= name %>ImageOnArticleMetricsTab" src="<%= imgSrc %>" alt="<%= linkText %> <%= name %>"
+    <div id="<%= source_name %>OnArticleMetricsTab" class="metrics_tile_no_link">
+        <img id="<%= source_name %>ImageOnArticleMetricsTab" src="<%= imgSrc %>" alt="<%= linkText %> <%= name %>"
              class="metrics_tile_image"/>
         <div class="metrics_tile_footer_no_link"><%= linkText %></div>
     </div>
@@ -51,6 +51,27 @@
                 <td class="data2"> <%= groups.format(0, '.', ',') %></td>
             </tr>
             </tbody>
+        </table>
+    </div>
+</script>
+
+<script type="text/template" id="metricsTileFigshareTooltipTemplate">
+    <div id="dropdown-figshare" class="metric-dropdown" data-dropdown-content>
+        <div class="close-button" onclick="Foundation.libs.dropdown.close(jQuery('#dropdown-figshare'));">
+            <span>&nbsp;</span>
+            <a class="button-container">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+        <table class="tile_mini">
+            <% _.each(items, function(item) { %>
+            <tr>
+                <td>
+                    <a href="<%= item.link %>" target=_blank> <%= item.title %></a>
+                </td>
+                <td class="data1"><%= item.totalStat %></td>
+            </tr>
+            <% }); %>
         </table>
     </div>
 </script>

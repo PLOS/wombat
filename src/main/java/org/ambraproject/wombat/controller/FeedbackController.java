@@ -26,6 +26,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -60,7 +61,7 @@ public class FeedbackController extends WombatController {
   @RequestMapping(name = "feedback", value = "/feedback", method = RequestMethod.GET)
   public String serveFeedbackPage(Model model, @SiteParam Site site) throws IOException {
     validateFeedbackConfig(site);
-    model.addAttribute("captchaHtml", captchaService.getCaptchaHTML(site));
+    model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.empty()));
     return site + "/ftl/feedback/feedback";
   }
 

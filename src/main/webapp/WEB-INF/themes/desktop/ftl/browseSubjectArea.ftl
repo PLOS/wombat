@@ -8,6 +8,8 @@
 <#setting url_escaping_charset="UTF-8">
 <#assign title = subjectName />
 <#assign cssFile="browse-subject-area.css"/>
+<#assign adPage="SubjectAreaLandingPage"/>
+
 <#include "common/head.ftl" />
 <#include "common/journalStyle.ftl" />
 <#include "macro/searchResultsAlm.ftl" />

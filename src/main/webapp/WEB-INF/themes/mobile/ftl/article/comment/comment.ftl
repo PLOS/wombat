@@ -14,7 +14,9 @@
   <div class="context">
     <a class="expand">${comment.title}</a>
 
-    <p class="details">Posted by ${comment.creator.displayName}
+    <p class="details">
+      <#include "userInfoLink.ftl" />
+      Posted by <@userInfoLink comment.creator />
       on <@formatJsonDate date="${comment.created}" format="dd MMM yyyy 'at' hh:mm a" /></p>
   </div>
 

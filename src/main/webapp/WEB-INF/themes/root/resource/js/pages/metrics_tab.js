@@ -2,7 +2,7 @@ var MetricsTab = {};
 
 (function ($) {
 
-  MetricsTab.components = [(new MetricsViewedSection()), (new MetricsCitedSection()), (new MetricsSavedSection()), (new MetricsDiscussedSection())];
+  MetricsTab.components = [(new MetricsViewedSection()), (new MetricsCitedSection()), (new MetricsSavedSection()), (new MetricsDiscussedSection()), (new MetricsRecommendedSection())];
 
   MetricsTab.isDataValid = function (data) {
     return (!_.isUndefined(data) && _.has(data, 'sources'));
@@ -22,7 +22,7 @@ var MetricsTab = {};
     var query = new AlmQuery();
     var that = this;
 
-    query.getArticleDetail(ArticleData.doi)
+    query.getArticleDetail('10.1371/journal.pmed.0040253')
       .then(function (articleData) {
         var data = articleData.data[0];
         if(that.isDataValid(data)) {

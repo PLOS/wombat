@@ -9,6 +9,7 @@ var MetricsCitedSection;
   MetricsCitedSection = MetricsTabComponent.extend({
     $element: $('#relatedCites'),
     $loadingEl: $('#relatedCitesSpinner'),
+    $headerEl: $('#citedHeader'),
     sourceOrder: ['scopus','crossref','pubmed','wos', 'pmceurope', 'pmceuropedata', 'datacite'],
     loadData: function (data) {
       this._super(data);

@@ -4,6 +4,7 @@ var MetricsViewedSection;
   MetricsViewedSection = MetricsTabComponent.extend({
     $element: $('#views'),
     $loadingEl: $('#chartSpinner'),
+    $headerEl: $('#viewedHeader'),
     $chartElement: $('#usage'),
     sourceOrder: ['figshare'],
     chartData:[],
@@ -24,7 +25,7 @@ var MetricsViewedSection;
     },
 
     afterLoadData: function () {
-      this._super();
+      this.showComponent();
       this.$chartElement.show();
     },
 

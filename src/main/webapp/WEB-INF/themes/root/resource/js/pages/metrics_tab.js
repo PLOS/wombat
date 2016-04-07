@@ -22,7 +22,7 @@ var MetricsTab = {};
     var query = new AlmQuery();
     var that = this;
 
-    query.getArticleDetail('10.1371/journal.pmed.0040253')
+    query.getArticleDetail(ArticleData.doi)
       .then(function (articleData) {
         var data = articleData.data[0];
         if(that.isDataValid(data)) {

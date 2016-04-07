@@ -1,25 +1,27 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.plos.ned_client.model.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.MultiValueMap;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
 /**
- * Add and remove subject alert for user in journal using individuals/{userId}/alerts
+ * Add and remove alert for user using individuals/{userId}/alerts
  * resource.
  */
-public class SubjectAlertService {
+public class AlertService {
 
   /**
    * Identifies this component as the source of the alert.
@@ -39,6 +41,7 @@ public class SubjectAlertService {
 
   @Autowired
   private UserApi userApi;
+
   @Autowired
   private Gson gson;
 
@@ -49,8 +52,8 @@ public class SubjectAlertService {
   /**
    * Indicates that a subject alert operation could not be completed due to invalid input or state.
    */
-  public static class SubjectAlertException extends RuntimeException {
-    private SubjectAlertException(String message) {
+  public static class AlertException extends RuntimeException {
+    private AlertException(String message) {
       super(message);
     }
   }
@@ -74,7 +77,7 @@ public class SubjectAlertService {
    * @param subjectName The subject to add alert for.
    * @throws IOException
    */
-  public void addAlert(String authId, String journalKey, String subjectName) throws IOException {
+  public void addSubjectAlert(String authId, String journalKey, String subjectName) throws IOException {
     String userId = userApi.getUserIdFromAuthId(authId);
 
     List<Alert> alerts = fetchAlerts(userId);
@@ -102,17 +105,17 @@ public class SubjectAlertService {
    * @param subjectName The subject to remove alert for.
    * @throws IOException
    */
-  public void removeAlert(String authId, String journalKey, String subjectName) throws IOException {
+  public void removeSubjectAlert(String authId, String journalKey, String subjectName) throws IOException {
     String userId = userApi.getUserIdFromAuthId(authId);
 
     List<Alert> alerts = fetchAlerts(userId);
     Alert alert = findMatchingAlert(alerts, journalKey)
-        .orElseThrow(() -> new SubjectAlertException("no subject alert found"));
+        .orElseThrow(() -> new AlertException("no subject alert found"));
 
     RemoveResult result = removeSubjectFromAlert(alert, subjectName);
 
     if (result == RemoveResult.NOT_FOUND) {
-      throw new SubjectAlertException("matching subject alert not found");
+      throw new AlertException("matching subject alert not found");
     }
 
     String alertId = alert.getId().toString();
@@ -121,6 +124,13 @@ public class SubjectAlertService {
     } else {
       userApi.putObject(String.format("individuals/%s/alerts/%s", userId, alertId), alert);
     }
+  }
+
+  public void addSearchAlert(String authId, String name, String query,
+                             String frequency) throws IOException {
+    String userId = userApi.getUserIdFromAuthId(authId);
+    Alert alert = createAlertForSearch(name, query, frequency);
+    userApi.postObject(String.format("individuals/%s/alerts", userId), alert);
   }
 
   /**
@@ -215,6 +225,16 @@ public class SubjectAlertService {
     return alert;
   }
 
+  private Alert createAlertForSearch(String name, String query, String frequency) {
+    Alert alert = new Alert();
+    alert.setSource(ALERT_SOURCE);
+    alert.setFrequency(frequency);
+    alert.setName(name);
+    alert.setQuery(query);
+
+    return alert;
+  }
+
   /**
    * Add the subject in the "filterSubjectsDisjuction" attribute
    * of "query" attribute of the alert JSON object.
@@ -228,7 +248,7 @@ public class SubjectAlertService {
     List<String> filterSubjects = query.getFilterSubjectsDisjunction();
     for (String filterSubject : filterSubjects) {
       if (subjectName.equalsIgnoreCase(filterSubject)) {
-        throw new SubjectAlertException("already exists");
+        throw new AlertException("already exists");
       }
     }
 
@@ -267,5 +287,26 @@ public class SubjectAlertService {
     alert.setQuery(gson.toJson(query));
 
     return (filterSubjects.size() == 0 ? RemoveResult.EMPTY_AFTER_REMOVE : RemoveResult.NOT_EMPTY_AFTER_REMOVE);
+  }
+
+  // convert params to JSON model attribute to be used as alert query if needed.
+  public String convertParamsToJSON(MultiValueMap<String, String> params) {
+    Map<String, Object> map = new HashMap<String, Object>();
+    for (Map.Entry<String, List<String> > entry: params.entrySet()) {
+      String key = entry.getKey();
+      if (key == "q") {
+        key = "query";
+      }
+      if (key.equals("filterSubjects") || key.equals("filterArticleTypes") || key.equals("filterSections")
+          || key.equals("filterSubjectsDisjunction") || key.equals("filterAuthors") || key.equals("filterJournals")) {
+        map.put(key, entry.getValue());
+      } else {
+        List<String> value = entry.getValue();
+        map.put(key, value.isEmpty() ? "" : value.get(0));
+      }
+    }
+    // need to create single line JSON, so cannot use the gson bean.
+    String result = (new Gson()).toJson(map);
+    return result;
   }
 }

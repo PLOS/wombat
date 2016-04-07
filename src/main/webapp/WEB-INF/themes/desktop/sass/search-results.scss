@@ -509,6 +509,21 @@ $filter-size: rem-calc(28);
   line-height: $filter-size;
 }
 
+@mixin search-enabled-control {
+  @extend %rounded-default;
+  @include js-tooltip-container;
+  background: $clr-brand;
+  color: $white;
+  cursor: pointer;
+  vertical-align: top;
+  height: $filter-size;
+  line-height: $filter-size;
+  &:hover {
+    background-color: $clr-link-hover;
+    color: $white;
+  }
+}
+
 @mixin search-disabled-tooltip {
   @include js-tooltip-target();
   @include tooltip($width: 350px, $tooltip-padding: $pad-xsmall);
@@ -520,10 +535,21 @@ $filter-size: rem-calc(28);
 
 }
 
+@mixin search-enabled-tooltip {
+  @include js-tooltip-target();
+  @include tooltip($width: 350px, $tooltip-padding: $pad-xsmall);
+  text-align: center;
+  background: $clr-brand;
+  color: $white;
+  font-family: $font-face-plain;
+  top: rem-calc(20);
+
+}
+
 $search-icon-pad-default: 8;
 
 .search-alert {
-  @include search-disabled-control;
+  @include search-enabled-control;
   padding: rem-calc(0 $search-icon-pad-default);
   display: inline-block;
   font-size: $txt-size-xsmall;
@@ -540,7 +566,7 @@ $search-icon-pad-default: 8;
   }
 
   .search-alert-tooltip {
-    @include search-disabled-tooltip;
+    @include search-enabled-tooltip;
     left: -100%;
     font-size: $txt-size-small;
     text-transform: none;

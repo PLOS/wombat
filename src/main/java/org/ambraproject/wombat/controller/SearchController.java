@@ -31,12 +31,13 @@ import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
+import org.ambraproject.wombat.service.remote.AlertQuery;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.service.remote.SubjectAlertService;
+import org.ambraproject.wombat.service.remote.AlertService;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
@@ -96,7 +97,7 @@ public class SearchController extends WombatController {
   private UserApi userApi;
 
   @Autowired
-  private SubjectAlertService subjectAlertService;
+  private AlertService alertService;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -633,6 +634,8 @@ public class SearchController extends WombatController {
 
     model.addAttribute("activeFilterItems", activeFilterItems);
 
+    model.addAttribute("alertQuery", alertService.convertParamsToJSON(params));
+
     return site.getKey() + "/ftl/search/searchResults";
   }
 
@@ -776,7 +779,7 @@ public class SearchController extends WombatController {
     boolean subscribed = false;
     if (authId != null) {
       String subjectParam = Strings.isNullOrEmpty(subject) ? "" : subjectName;
-      subscribed = subjectAlertService.isUserSubscribed(authId, site.getJournalKey(), subjectParam);
+      subscribed = alertService.isUserSubscribed(authId, site.getJournalKey(), subjectParam);
     }
     model.addAttribute("subscribed", subscribed);
   }

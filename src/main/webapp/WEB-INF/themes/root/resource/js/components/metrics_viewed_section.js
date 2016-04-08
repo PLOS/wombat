@@ -508,10 +508,11 @@ var MetricsViewedSection;
 
     selectSubjectArea: function (subjectArea, chart, baseLinkToRefset) {
       var activeArea = $('#subject_areas').data('activeArea');
-      chart.get(subjectArea).show();
       if(activeArea) {
         chart.get(activeArea).hide();
       }
+      chart.get(subjectArea).show();
+
 
       $('#linkToRefset').attr('href', baseLinkToRefset.replace('SUBJECT_AREA', subjectArea));
 

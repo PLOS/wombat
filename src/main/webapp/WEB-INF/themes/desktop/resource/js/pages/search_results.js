@@ -1,71 +1,10 @@
 (function ($) {
 
-  function handleUndefinedOrZeroMetric(metric) {
-    return metric == undefined || metric == 0 ? 'None' : metric;
-  }
-
-  function appendOrRemoveLink(link, metric) {
-    metric = handleUndefinedOrZeroMetric(metric);
-    if (metric == 'None') {
-      link.html(link.html() + ' ' + metric);
-      link.contents().unwrap();
-    } else {
-      link.append(metric);
-    }
-  }
-
   $(document).ready(function() {
-
-    $( ".datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      maxDate: '0',
-      dateFormat: 'yy-mm-dd',
-      yearRange: "2003:+0"
-    });
-
-    //Start Date max date is the entered End Date. End Date min date is the entered Start Date.
-    //Both Start and End Dates have a strict maximum of the current day
-    $('#dateFilterStartDate').change(function(){
-      var minDate = $(this).val() ? $(this).val() : '';
-      $('#dateFilterEndDate').datepicker('option', 'minDate', minDate)
-    });
-
-    $('#dateFilterEndDate').change(function(){
-      var maxDate = $(this).val() ? $(this).val() : '0';
-      $('#dateFilterStartDate').datepicker('option', 'maxDate', maxDate)
-    });
-
-    $('.search-results-alm').each(function () {
-      var $alm = $(this);
-      var doi = $alm.data('doi');
-      $alm.getArticleSummary(doi, function (almData) { //success function
-
-        var almLinks = $alm.find('a');
-        var viewsLink = $(almLinks[0]);
-        appendOrRemoveLink(viewsLink, almData.viewed);
-
-        var citationsLink = $(almLinks[1]);
-        appendOrRemoveLink(citationsLink, almData.cited);
-
-        var savesLink = $(almLinks[2]);
-        appendOrRemoveLink(savesLink, almData.saved);
-
-        var sharesLink = $(almLinks[3]);
-        appendOrRemoveLink(sharesLink, almData.shared);
-
-        $alm.siblings('.search-results-alm-loading').fadeOut('slow', function () {
-          $alm.fadeIn();
-        })
-      }, function () { //error function
-        $alm.siblings('.search-results-alm-loading').fadeOut('slow', function () {
-          $alm.siblings('.search-results-alm-error').fadeIn();
-        })
-      });
-    });
+    RangeDatepicker.init($('#dateFilterStartDate'), $('#dateFilterEndDate'));
 
     $('#sortOrder').on('change', function() {
-      $(this).parents('form').submit();
+      $('#searchResultsForm').submit();
     });
 
     $('#resultsPerPageDropdown').on('change', function() {
@@ -73,7 +12,7 @@
       // Due to the way the CSS for the page currently works, it's difficult to have the <form>
       // extend all the way down to this dropdown, so we instead set a hidden field here.
       $('#resultsPerPage').val($('#resultsPerPageDropdown').val());
-      $('#searchControlBarForm').submit();
+      $('#searchResultsForm').submit();
     });
 
     // Code to make tooltips around disabled controls work on tablets.
@@ -99,8 +38,43 @@
       }, 5000);
     });
   });
+  // making the checkbox also link in the filter column
+  $('#searchFilters li a input').on('change',function(){
+    var filterlink = $(this).parent('a').attr('href');
+     window.location.assign(filterlink);
+  });
 
   // initialize toggle for search filter item list
   plos_toggle.init();
+// advanced search opens on empty tag.
+  if($('#searchControlBarForm').attr('data-advanced-search')) {
+    $('#simpleSearchLink, .edit-query').show();
+    $('#advancedSearchLink').hide();
+    
+    AdvancedSearch.init('.advanced-search-container', function (err) {
+      // Only show after it has been initialized
+      $('.advanced-search-container').show();
+      $('.advanced-search-inputs-container input[type=text]').first().focus();
+    });
+    
+  }
+
+  // Advanced search behaviour
+  $('.advanced-search-toggle-btn').on('click', function (e) {
+    e.preventDefault();
+    $('.advanced-search-toggle-btn, .edit-query').toggle();
+    if (AdvancedSearch.isInitialized('.advanced-search-container')) {
+      $('.advanced-search-container').slideUp(function () {
+        // Only destroy after it has been hidden
+        AdvancedSearch.destroy('.advanced-search-container');
+      });
+    } else {
+      AdvancedSearch.init('.advanced-search-container', function (err) {
+        if (err) return console.log(err.message);
+        // Only show after it has been initialized
+        $('.advanced-search-container').slideDown();
+      });
+    }
+  });
 
 })(jQuery);

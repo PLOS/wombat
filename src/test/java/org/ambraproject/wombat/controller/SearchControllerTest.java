@@ -3,7 +3,7 @@ package org.ambraproject.wombat.controller;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.util.MockSiteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -38,15 +38,11 @@ public class SearchControllerTest extends AbstractTestNGSpringContextTests {
     commonParams.parseParams(params);
 
     assertEquals(commonParams.start, 90);  // Default results per page should be 15
-    assertEquals(commonParams.sortOrder, SolrSearchServiceImpl.SolrSortOrder.RELEVANCE);
-    assertEquals(commonParams.dateRange, SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME);
+    assertEquals(commonParams.sortOrder, SolrSearchApiImpl.SolrSortOrder.RELEVANCE);
+    assertEquals(commonParams.dateRange, SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
     assertTrue(commonParams.articleTypes.isEmpty());
-    assertEquals(commonParams.journalKeys.size(), 1);
-    assertEquals(commonParams.journalKeys.get(0), "journal1Key");
-    assertEquals(commonParams.filterJournalNames.size(), 1);
-    for (String journalName : commonParams.filterJournalNames) {
-      assertEquals(journalName, "Journal One");
-    }
+    assertTrue(commonParams.journalKeys.isEmpty());
+    assertTrue(commonParams.filterJournalNames.isEmpty());
     assertEquals(commonParams.subjectList.size(), 2);
     assertEquals(commonParams.subjectList.get(0), "subject1");
     assertEquals(commonParams.subjectList.get(1), "subject2");

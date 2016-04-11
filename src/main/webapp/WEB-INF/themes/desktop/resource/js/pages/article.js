@@ -88,16 +88,12 @@
 
     float_header.init();
 
-    if ($.fn.twitter ) {
-      var doi = $('meta[name=citation_doi]').attr('content');
-      var twitter = new $.fn.twitter();
-      twitter.getSidebarTweets(doi);
-    }
-    if ($.fn.signposts ) {
-      var doi = $('meta[name=citation_doi]').attr('content');
-      var signposts = new $.fn.signposts();
-      signposts.getSignpostData(doi);
-    }
+     /* Load signposts */
+     if ($.fn.signposts ) {
+         var doi = $('meta[name=citation_doi]').attr('content');
+         var signposts = new $.fn.signposts();
+         signposts.getSignpostData(doi);
+     }
     // initialize toggle for author list view more
     plos_toggle.init();
 
@@ -110,6 +106,25 @@
     spin_target = document.getElementById('loadingMetrics');
     almspinner = new Spinner(spin_opts).spin(spin_target);
 
+
+   //////// BIND IMAGES' TRIGGERS TO FIGURE LIGHTBOX ////////////
+   //// Every trigger has a different way of obtaining the doi property
+   //// of the image. Therefore, they are binded separate
+   // carousel images on article page
+    $('.lightbox-figure').on('click', function () {
+      FigureLightbox.loadImage('#figure-lightbox-container', $(this).data('doi'));
+    });
+
+   // article inline images
+   $('#artText div.img-box').on('click', function (e) {
+     e.preventDefault();
+     FigureLightbox.loadImage('#figure-lightbox-container', $(this).find('a').data('uri'));
+   });
+
+   // 'figure' item in article floating nav
+   $('#nav-figures a').on('click', function () {
+     FigureLightbox.loadImage('#figure-lightbox-container', $('.figure').eq(0).data('doi'));
+   });
   });
 
 }(jQuery));

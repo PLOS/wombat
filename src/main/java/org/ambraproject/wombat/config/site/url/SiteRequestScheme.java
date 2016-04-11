@@ -1,11 +1,11 @@
 package org.ambraproject.wombat.config.site.url;
 
-import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * Encapsulates the scheme by which URLs and other request attributes are mapped onto {@link
@@ -37,8 +37,8 @@ public class SiteRequestScheme implements SiteRequestPredicate {
   private final ImmutableSet<SiteRequestPredicate> requestPredicates;
 
   private SiteRequestScheme(String hostName, String pathToken, Iterable<? extends SiteRequestPredicate> requestPredicates) {
-    this.hostName = Optional.fromNullable(hostName);
-    this.pathToken = Optional.fromNullable(pathToken);
+    this.hostName = Optional.ofNullable(hostName);
+    this.pathToken = Optional.ofNullable(pathToken);
     this.requestPredicates = ImmutableSet.copyOf(requestPredicates);
   }
 
@@ -114,7 +114,7 @@ public class SiteRequestScheme implements SiteRequestPredicate {
     return pathToken;
   }
 
-  Optional<String> getHostName() {
+  public Optional<String> getHostName() {
     return hostName;
   }
 

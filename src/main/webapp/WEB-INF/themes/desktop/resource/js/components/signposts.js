@@ -16,7 +16,7 @@
       var fixNum = num.toString()
       fixNum = fixNum.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return fixNum;
-    };
+    }
 
     Date.prototype.addDays = function (days) {
       this.setDate(this.getDate() + days);
@@ -27,25 +27,22 @@
       ///requires moment.js
       var testDate = new Date().addDays(-numDays),
           newFormat = "YYYYMMDD",
+          oldFormat = "MMM DD, YYYY",
           testDateFormat = moment(testDate).format(newFormat),
-          logDateFormat = moment(logDate).format(newFormat);
+          logDateFormat = moment(logDate, oldFormat, true);
 
-      if (logDateFormat < testDateFormat) {
-        return false;
-
-      } else {
-        // The selected time is more than numDays days from now
-        return true;
+      if (!logDateFormat.isValid()) {
+        // If format is not valid default to moment parsing
+        logDateFormat = moment(logDate);
       }
+      logDateFormat = logDateFormat.format(newFormat);
+
+      // The selected time is more than numDays days from now
+      return logDateFormat >= testDateFormat;
     };
 
     plural_check = function (input) {
-      input = parseInt(input.replace(/[^0-9]/g, ''));
-      if (input === 1) {
-        return false;
-      } else {
-        return true;
-      }
+      return parseInt(input.replace(/[^0-9]/g, '')) !== 1;
     };
 
     this.getSignpostData = function (doi) {
@@ -75,13 +72,17 @@
         timeout:     20000
       }).done(function (data) {
         initData = data.data[0];
-        numberOfDays = date_check(pubDate, offsetDays);
+        var numberOfDays = date_check(pubDate, offsetDays);
+
         if (initData === undefined) {
-          displayError(errorText);
-        } else  if (numberOfDays === true) { // is date less than "offsetDays" number of  days ago
+          if (numberOfDays === true) { // is date less than "offsetDays" number of  days ago
             displayError(tooSoonText);
           }
-         else {
+          else {
+            displayError(errorText);
+          }
+        }
+        else {
 
           //get the numbers & add commas where needed
           saves = formatNumberComma(data.data[0].saved);
@@ -104,7 +105,11 @@
           build_parts('#almViews', views);
           build_parts('#almShares', shares);
 
-          var scopus = data.data[0].sources[4].metrics.total;
+          var scopus = 0;
+          if (data.data[0].sources !== undefined) {
+            scopus = data.data[0].sources[4].metrics.total;
+          }
+
           if (scopus > 0) {
             $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
           } else {
@@ -120,7 +125,7 @@
         displayError(errorText);
       });
 
-    }
+    };
   };
 
   $('.metric-term').mouseenter(function () {

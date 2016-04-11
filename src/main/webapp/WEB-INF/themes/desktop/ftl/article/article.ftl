@@ -7,6 +7,7 @@
       class="no-js">
 <#assign title = article.title, articleDoi = article.doi />
 <#assign depth = 0 />
+<#assign tabPage="Article"/>
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
@@ -18,52 +19,16 @@
 
 <#include "../common/header/headerContainer.ftl" />
 <div class="set-grid">
-  <header class="title-block">
-  <#include "signposts.ftl" />
-    <div class="article-meta">
-    <#include "articleClassifications.ftl" />
-    </div>
-    <div class="article-title-etc">
-    <#include "articleTitle.ftl" />
-
-      <ul class="date-doi">
-        <li id="artPubDate">Published: <@formatJsonDate date="${article.date}" format="MMMM d, yyyy" /></li>
-        <li id="artDoi">DOI: ${article.doi} </li>
-
-      <#macro crossPubTitle pub>
-        <#if pub.italicizeTitle>
-          <em>${pub.title}</em><#t/>
-        <#else>
-        ${pub.title}<#t/>
-        </#if>
-      </#macro>
-      <#macro crossPubLink prefix publications>
-      ${prefix}
-        <#list publications as pub>
-          <#if pub.href??>
-            <a href="${pub.href}"><@crossPubTitle pub /></a><#t/>
-          <#else>
-            <@crossPubTitle pub /><#t/>
-          </#if>
-          <#if pub_has_next><#t/>,</#if>
-        </#list>
-      </#macro>
-      <#if originalPub??>
-        <li><@crossPubLink "Published in", [originalPub] /></li>
-      </#if>
-      <#if crossPub?size gt 0>
-        <li><@crossPubLink "Featured in" crossPub /></li>
-      </#if>
-
-      </ul>
-    </div>
-  </header>
+  <#include "articleHeader.ftl" />
   <section class="article-body">
 
   <#include "tabs.ftl" />
+    <@displayTabList 'Article' />
+
     <div class="article-container">
 
     <#include "nav.ftl" />
+    <#include "articleLightbox.ftl" />
 
       <div class="article-content">
 
@@ -93,24 +58,17 @@
 
   <#include "../common/footer/footer.ftl" />
 
-  <@js src="resource/js/components/show_onscroll.js"/>
-
+  <#include "articleJs.ftl" />
   <@js src="resource/js/components/table_open.js"/>
   <@js src="resource/js/components/figshare.js"/>
-<#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
-  <@js src="resource/js/components/article_lightbox.js"/>
-  <@js src="resource/js/util/alm_config.js"/>
-  <@js src="resource/js/util/alm_query.js"/>
-  <@js src="resource/js/vendor/moment.js"/>
+  <#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
+  <@js src="resource/js/vendor/jquery.panzoom.min.js"/>
+  <@js src="resource/js/vendor/jquery.mousewheel.js"/>
 
-<@js src="resource/js/components/twitter_module.js"/>
-  <@js src="resource/js/components/signposts.js"/>
-  <@js src="resource/js/vendor/spin.js"/>
+  <@js src="resource/js/components/lightbox.js"/>
 
-
-  <@js src="resource/js/pages/article.js"/>
   <@js src="resource/js/pages/article_body.js"/>
-  <@js src="resource/js/pages/article_sidebar.js"/>
+
   <@renderJs />
 
 <#include "mathjax.ftl">
@@ -127,17 +85,10 @@
   </script>
 
 
-  <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
-  <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
-
   <#include "aside/crossmarkIframe.ftl" />
 <#--
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide
 -->
 <div class="reveal-modal-bg"></div>
-<div id="article-lightbox" class="reveal-modal" data-reveal>
-
-</div>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config.site;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -15,21 +14,91 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
  * One instance of this class encapsulates, for one request mapping, the pattern conditions for all applicable sites. It
  * also represents which sites disable the request mapping, by not having a pattern condition for those sites.
  */
-public class SiteRequestCondition implements RequestCondition<SiteRequestCondition> {
+public abstract class SiteRequestCondition implements RequestCondition<SiteRequestCondition> {
 
-  private final SiteResolver siteResolver;
-  private final ImmutableMap<Optional<Site>, PatternsRequestCondition> requestConditionMap;
-
-  private SiteRequestCondition(SiteResolver siteResolver, Map<Optional<Site>, PatternsRequestCondition> requestConditionMap) {
-    this.siteResolver = Preconditions.checkNotNull(siteResolver);
-    this.requestConditionMap = ImmutableMap.copyOf(requestConditionMap);
+  private SiteRequestCondition() {
+    // Nested implementations only
   }
+
+  /**
+   * Resolve a request to an appropriate PatternsRequestCondition. If needed, matches the request to the particular
+   * PatternsRequestCondition that is appropriate for the {@link Site} that the request is hitting.
+   *
+   * @param request a request
+   * @return the matched condition, or {@code null} if there is no condition for the site that the request is hitting
+   */
+  protected abstract PatternsRequestCondition resolve(HttpServletRequest request);
+
+  /**
+   * If this object covers more than one site, return a new condition that covers only the site that the request is
+   * hitting. Motivated by {@link RequestCondition#getMatchingCondition}.
+   *
+   * @param request a request
+   * @return a condition that covers only the site that the request is hitting
+   */
+  protected SiteRequestCondition narrow(HttpServletRequest request) {
+    return this;
+  }
+
+  /**
+   * Always returns the same pattern. Ignores the request, since we don't care about resolving to a site. In fact, the
+   * request probably doesn't resolve to a site at all but is still valid.
+   */
+  private static SiteRequestCondition forSiteless(PatternsRequestCondition globalPattern) {
+    Objects.requireNonNull(globalPattern);
+    return new SiteRequestCondition() {
+      @Override
+      protected PatternsRequestCondition resolve(HttpServletRequest request) {
+        return globalPattern;
+      }
+    };
+  }
+
+  /**
+   * Returns a single pattern for requests that resolve to one site, or {@code null} otherwise.
+   */
+  private static SiteRequestCondition forSingleSite(SiteResolver siteResolver,
+                                                    Site site, PatternsRequestCondition sitePattern) {
+    Objects.requireNonNull(siteResolver);
+    Objects.requireNonNull(site);
+    Objects.requireNonNull(sitePattern);
+    return new SiteRequestCondition() {
+      @Override
+      protected PatternsRequestCondition resolve(HttpServletRequest request) {
+        return site.equals(siteResolver.resolveSite(request)) ? sitePattern : null;
+      }
+    };
+  }
+
+  /**
+   * Contains the patterns for all sites that define an appropriate handler.
+   */
+  private static SiteRequestCondition forSiteMap(SiteResolver siteResolver,
+                                                 ImmutableMap<Site, PatternsRequestCondition> requestConditionMap) {
+    Objects.requireNonNull(siteResolver);
+    Objects.requireNonNull(requestConditionMap);
+    return new SiteRequestCondition() {
+      @Override
+      protected PatternsRequestCondition resolve(HttpServletRequest request) {
+        return requestConditionMap.get(siteResolver.resolveSite(request));
+      }
+
+      @Override
+      protected SiteRequestCondition narrow(HttpServletRequest request) {
+        Site site = siteResolver.resolveSite(request);
+        PatternsRequestCondition condition = requestConditionMap.get(site);
+        return forSingleSite(siteResolver, site, condition);
+      }
+    };
+  }
+
 
   /**
    * Get the set of patterns mapped for a request handler across all sites.
@@ -52,7 +121,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
 
   /**
    * Create a condition, representing all sites, for a single request handler.
-   * <p/>
+   * <p>
    * Writes to the {@link RequestMappingContextDictionary} object as a side effect. To avoid redundant writes, this
    * method must be called only once per {@link RequestMapping} object.
    *
@@ -69,27 +138,26 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
     if (baseMapping.isSiteless()) {
       PatternsRequestCondition patternsRequestCondition = new PatternsRequestCondition(baseMapping.getPattern());
       requestMappingContextDictionary.registerGlobalMapping(baseMapping);
-      ImmutableMap<Optional<Site>, PatternsRequestCondition> map = ImmutableMap.of(Optional.<Site>absent(), patternsRequestCondition);
-      return new SiteRequestCondition(siteResolver, map);
+      return forSiteless(patternsRequestCondition);
     }
 
     Multimap<RequestMappingContext, Site> patternMap = buildPatternMap(siteSet, baseMapping);
 
-    ImmutableMap.Builder<Optional<Site>, PatternsRequestCondition> requestConditionMap = ImmutableMap.builder();
+    ImmutableMap.Builder<Site, PatternsRequestCondition> requestConditionMap = ImmutableMap.builder();
     for (Map.Entry<RequestMappingContext, Collection<Site>> entry : patternMap.asMap().entrySet()) {
       RequestMappingContext mapping = entry.getKey();
       Collection<Site> sites = entry.getValue(); // all sites that share the mapping pattern
 
       PatternsRequestCondition condition = new PatternsRequestCondition(mapping.getPattern());
       for (Site site : sites) {
-        requestConditionMap.put(Optional.of(site), condition);
+        requestConditionMap.put(site, condition);
         if (!mapping.getAnnotation().name().isEmpty()) {
           requestMappingContextDictionary.registerSiteMapping(mapping, site);
         }
       }
     }
 
-    return new SiteRequestCondition(siteResolver, requestConditionMap.build());
+    return forSiteMap(siteResolver, requestConditionMap.build());
   }
 
   /**
@@ -110,7 +178,7 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
   /**
    * Get the pattern that is mapped to a request handler for a given site. Return {@code null} if the handler is
    * disabled on that site.
-   * <p/>
+   * <p>
    * Looks up the configured value from the site's theme, or gets the default value from the mapping annotation if it is
    * not configured in the theme.
    *
@@ -147,20 +215,19 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
 
   @Override
   public SiteRequestCondition getMatchingCondition(HttpServletRequest request) {
-    Optional<Site> site = Optional.fromNullable(siteResolver.resolveSite(request));
-    PatternsRequestCondition patternCondition = requestConditionMap.get(site);
+    PatternsRequestCondition patternCondition = resolve(request);
     if (patternCondition == null) return null; // mapped handler is invalid for the site
     if (patternCondition.getMatchingCondition(request) == null) return null; // the URL is invalid for the site
 
-    return requestConditionMap.size() == 1 ? this
-        : new SiteRequestCondition(siteResolver, ImmutableMap.of(site, patternCondition));
+    return narrow(request);
   }
 
   /**
-   *  This method should only be called when combining the typical method-level {@code RequestMapping} annotations with
+   * This method should only be called when combining the typical method-level {@code RequestMapping} annotations with
    * those at the class-level. Since class-level {@code RequestMapping} annotations are not supported under the custom
    * {@code SiteHandlerMapping} handling, throw an exception. See {@link SiteHandlerMapping#checkMappingsOnHandlerType}
    * for details.
+   *
    * @param that another {@code SiteRequestCondition} instance to combine with
    * @return
    */
@@ -171,9 +238,8 @@ public class SiteRequestCondition implements RequestCondition<SiteRequestConditi
 
   @Override
   public int compareTo(SiteRequestCondition that, HttpServletRequest request) {
-    Site site = siteResolver.resolveSite(request);
-    RequestCondition thisCondition = this.requestConditionMap.get(site);
-    RequestCondition thatCondition = that.requestConditionMap.get(site);
+    PatternsRequestCondition thisCondition = this.resolve(request);
+    PatternsRequestCondition thatCondition = that.resolve(request);
 
     return thisCondition == null && thatCondition == null ? 0
         : thisCondition == null ? 1

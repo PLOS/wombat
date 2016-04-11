@@ -1,0 +1,196 @@
+@import "screen";
+@import "sections/ambra/forms";
+@import "vendor/jqueryUI/jquery-ui";
+  /*
+The CSS for dialog widget,
+(from: "jquery-ui-1.9.2.custom.css", which is not included yet)
+*/
+.ui-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: .2em;
+  width: 300px;
+  overflow: hidden;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  padding: .4em 1em;
+  position: relative;
+}
+
+.ui-dialog .ui-dialog-title {
+  float: left;
+  margin: .1em 16px .1em 0;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  position: absolute;
+  right: .3em;
+  top: 50%;
+  width: 19px;
+  margin: -10px 0 0 0;
+  padding: 1px;
+  height: 18px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close span {
+  display: block;
+}
+
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus {
+  padding: 0;
+}
+
+
+.ui-dialog .ui-dialog-content {
+  position: relative;
+  border: 0;
+  padding: .5em 1em;
+  background: none;
+  overflow: auto;
+  zoom: 1;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+  text-align: left;
+  border-width:0 0 0 0;
+  background-image: none;
+  margin: .5em 0 0 0;
+  padding: .3em 1em .5em .4em;
+
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+  float: right;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+  margin: .5em 5px .5em 0;
+  cursor: pointer;
+}
+
+.ui-dialog .ui-resizable-se {
+  width: 14px;
+  height: 14px;
+  right: 3px;
+  bottom: 3px;
+}
+
+
+.ui-draggable .ui-dialog-titlebar {
+  cursor: move;
+}
+
+
+/* Customized css for the FigShare dialog */
+
+/* jqueryUI overrides*/
+.ui-dialog.tooltip-like .ui-dialog-titlebar-close.ui-state-hover,
+.ui-dialog.default-modal .ui-dialog-titlebar-close.ui-state-hover{
+  border: none /*{borderColorHover}*/;
+  background: none;
+  font-weight: normal /*{fwDefault}*/;
+}
+
+.ui-dialog.tooltip-like {
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+
+.ui-dialog.figure-table .tile_mini {
+  min-width: 100px;
+}
+
+.ui-dialog .ui-dialog-content {
+  padding: 0;
+}
+
+.ui-dialog.tooltip-like .ui-widget-header {
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+.tooltip-like + .ui-widget-overlay {
+  background: none;
+}
+
+#popup .tile_mini a {
+  color: #3C63AF;
+}
+
+.rca-title:hover {
+  text-decoration: underline;
+}
+
+
+/* css for the close button on the dialog */
+
+.ui-dialog.tooltip-like .ui-dialog-titlebar-close{
+  position: absolute;
+  right: 2px;
+  top: 12px;
+  margin: -10px 0 0 0;
+  padding: 0px;
+  background-color: #F8AF2D;
+  text-indent: -9999px;
+  border-radius: 2px;
+  display: block;
+}
+
+.ui-dialog.tooltip-like .ui-dialog-titlebar-close span{
+  background-image: image-url('ambra/btn.sprite.close.small.png');
+  background-position: 2px 1px;
+  width: 17px;
+  height: 17px;
+}
+
+.ui-dialog.tooltip-like .ui-dialog-titlebar-close:hover{
+  background-color: #3C63AF;
+}
+
+.ui-dialog.tooltip-like .ui-dialog-titlebar-close:hover span{
+  background-position: 2px -13px;
+}
+
+.default-modal .ui-dialog-titlebar-close {
+  display: none;
+}
+
+/* Modal overwrites */
+.default-modal.ui-corner-all {
+  border-radius: 0;
+  padding: 0;
+  border: 1px solid #fff;
+}
+
+.default-modal .ui-dialog-titlebar{
+  background: #333;
+  color: #fff;
+  border-radius: 0;
+  margin: 0;
+  border: 0 none;
+  font-weight: normal;
+}
+
+.default-modal .ui-dialog-content{
+  padding: 1em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ui-widget-overlay {
+  background: #333;
+  opacity: .4;
+  position: fixed !important;
+}
+
+#media-coverage-data ul {
+  margin-left: 0;
+
+  li {
+    list-style: none;
+  }
+}

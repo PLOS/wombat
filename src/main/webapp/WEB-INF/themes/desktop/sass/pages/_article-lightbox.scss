@@ -1,0 +1,593 @@
+/* @TODO: Move figure carousel to apporpiate place in article before displaying */
+
+$lb-small: rem-calc(7);
+$lb-header-height: rem-calc(46);
+$lb-control-bar-height: rem-calc(40px);
+$lb-description-bar-height: rem-calc(82px);
+$lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-header-height;
+
+#figure-carousel-section {
+  display: block;
+}
+.reveal-modal {
+  /* Fix for foundation's reveal-modal */
+  position: fixed;
+}
+
+.range-slider-active-segment {
+  /* Fix for foundation's range slider */
+  border-radius: 1000px;
+}
+
+#figure-lightbox {
+  .loader {
+    display: none;
+    &.showing {
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: $black;
+      z-index: map-get($zindex, dropdown);
+      opacity: 0.5;
+      @include single-transition();
+    }
+
+    i {
+      position: absolute;
+      top: 40%;
+      @extend .icon-spinner;
+      font-size: $txt-size-giant;
+    }
+  }
+
+
+  ////// Scrollbar styles for webkit users
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: $grey-med-dark;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: $grey-med-dark;
+  }
+
+
+  .lb-header {
+    font-family: $font-face-fancy;
+    padding: $lb-small rem-calc(280) 0 1.1%;
+    height: $lb-header-height;
+    background: $grey-dark;
+    position: relative;
+    margin-right: $lb-header-height;
+    z-index: map_get($zindex, topvisible);
+
+    h1, h1 a {
+      font-size: $txt-size-medium;
+      margin: 0 0 rem-calc(2);
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: $grey-light;
+      line-height: normal;
+    }
+
+    a:hover {
+      color: $grey-light;
+      text-decoration: none;
+    }
+  }
+
+  .lb-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    li {
+      display: inline-block;
+      float: left;
+      border-right: 1px solid $grey-med-dark;
+      padding: 0 $pad-smallish;
+      font-size: $txt-size-medium-large;
+      line-height: $lb-header-height;
+      color: $white;
+      cursor: pointer;
+      outline: 0;
+
+      // special handling for PLOSOne is in _utilities.scss in the brand color section
+      &.tab-active {
+        @extend %brand-background;
+      }
+
+      &:hover {
+        background: $plos-default;
+        color: $white;
+      }
+    }
+  }
+
+  .lb-close {
+    background: image-url('sprite.fv.png') no-repeat -40px 0;
+    position: absolute;
+    right: -$lb-header-height;
+    top: 0;
+    width: $lb-header-height;
+    height: $lb-header-height;
+    cursor: pointer;
+    color: $grey-light;
+    border-left: 1px $grey-light solid;
+    &:hover {
+      border-left: none;
+      @extend %brand-background;
+    }
+  }
+
+  h3 {
+    margin-bottom: $pad-default;
+    font-family: $font-face-plain;
+    font-size: $txt-size-large;
+    font-weight: bold;
+    color: $grey-dark;
+  }
+
+  #lb-authors {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: $txt-size-xxsmall;
+    color: $grey-med-light;
+
+    span {
+      white-space: nowrap;
+      padding-right: rem-calc(3);
+    }
+    span:last-child {
+      padding-right: 0;
+    }
+  }
+
+
+  .img-container {
+    img.main-lightbox-image {
+      max-width: 80%;
+      max-height: 75%;
+      display: block;
+      -moz-transform-origin: 0 0 !important;
+
+      html.windows7 & {
+        -ms-transform-origin: 0 0 !important;
+      }
+    }
+    text-align: center;
+    height: 100%;
+    min-width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    #figures-list {
+      height: 100%;
+      overflow-y: scroll;
+      max-width: rem-calc(180px);
+      top: 0;
+      right: rem-calc(-190px);
+      position: absolute;
+      background: transparentize($grey-dark, 0.2);
+      @include single-transition();
+
+      &.figures-list-open {
+        right: 0;
+      }
+
+      .change-img {
+        background: transparentize($white, 0.75);
+        cursor: pointer;
+        padding: 4%;
+        margin: 8% 2%;
+        transition: background 300ms ease-in-out;
+
+        &:hover {
+          background: transparentize($white, 0.65);
+        }
+
+        &.change-img-active {
+          @extend %brand-background;
+        }
+
+        img {
+          min-width: rem-calc(150px);
+        }
+      }
+
+      // Workaround to show all images since height is % and footer is px
+      .dummy-figure {
+        // Header height + footer height
+        height: $lb-footer-height;
+      }
+    }
+  }
+
+  #lightbox-footer {
+    width: 100%;
+    background: $grey-light;
+    position: fixed;
+    bottom: 0;
+
+    #btns-container {
+      @extend %brand-background;
+      position: relative;
+
+      &.one-figure-only {
+        .zoom-slider-container {
+          position: relative;
+          left: auto;
+          top: auto;
+          bottom: auto;
+          right: auto;
+          text-align: left;
+        }
+        .range-slider-container {
+          width: 33%;
+          margin-left: 33%;
+          float: left;
+        }
+      }
+
+      .zoom-slider-container {
+        position: absolute;
+        left: rem-calc(98);
+        top: 0;
+        bottom: 0;
+        right: rem-calc(318);
+        text-align: center;
+
+        @media #{$large-up} {
+          position: relative;
+          left: auto;
+          top: auto;
+          bottom: auto;
+          right: auto;
+          text-align: left;
+        }
+      }
+      .range-slider-container {
+        position: relative;
+        width: 80%;
+        padding: 0 rem-calc(27);
+        text-align: left;
+
+        @media #{$large-up} {
+          width: 33%;
+          margin-left: 33%;
+          float: left;
+        }
+
+        .range-slider-handle {
+          background-color: white;
+        }
+        .range-slider {
+          width: 100%;
+          margin: rem-calc(12px) 0;
+          background-color: rgba(255,255,255,0.64);
+
+          html.touch & {
+            height: rem-calc(24);
+            margin: rem-calc(8) 0;
+
+            .range-slider-handle {
+              height: rem-calc(30);
+            }
+
+            .range-slider-active-segment {
+              height: rem-calc(22);
+            }
+          }
+        }
+
+        #lb-zoom-min,
+        #lb-zoom-max {
+          width: rem-calc(16);
+          height: rem-calc(16);
+          background: image-url('sprite.fv.png');
+          cursor: pointer;
+          position: absolute;
+          top: rem-calc(11px);
+        }
+
+        #lb-zoom-min {
+          left: 0;
+          background-position: -110px 0;
+          cursor: -webkit-zoom-out;
+          cursor: -moz-zoom-out;
+        }
+
+        #lb-zoom-max {
+          right: 0;
+          background-position: -90px 0;
+          cursor: -webkit-zoom-in;
+          cursor: -moz-zoom-in;
+        }
+      }
+    }
+
+    .lightbox-row {
+      text-align: center;
+      width: 100%;
+      min-height: $lb-control-bar-height;
+      .range-slider-container {
+        text-align: initial;
+        display: inline-block;
+      }
+
+      .fig-btns-container {
+        float: right;
+        
+        &.reset-zoom-wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        
+        .fig-btn {
+          display: block;
+          float: right;
+          padding: 0 $pad-small;
+          border-left: 1px solid #666;
+          border-color: rgba(51,51,51,0.25);
+          line-height: $lb-control-bar-height;
+          font-family: $font-face-fancy;
+          color: $white;
+          cursor: pointer;
+
+          &.fig-btn-disabled {
+            cursor: default;
+            opacity: 0.4;
+            border-color: rgba(51, 51, 51, 0.70);
+            &:hover {
+              background-color: inherit;
+            }
+          }
+
+          .icon {
+            background-image: image-url('sprite.fv.png');
+            width: $lb-small;
+            height: rem-calc(11);
+            margin-top: rem-calc(15px);
+          }
+          &:hover {
+            background-color: $plos-default;
+            color: $white;
+          }
+
+          &.reset-zoom-btn {
+            border-left-width: 0px;
+            border-right-width: 1px;
+            border-right-style: solid;
+          }
+
+          &.all-fig-btn {
+            padding: 0;
+            width: rem-calc(162);
+            text-align: center;
+            font-weight: bold;
+            .icon-all {
+              display: inline-block;
+              width: rem-calc(16);
+              height: rem-calc(16);
+              vertical-align: middle;
+              background-position: -90px -20px;
+              margin: 0 rem-calc(2);
+            }
+          }
+
+          &.next-fig-btn .icon-next {
+              background-position: -140px -20px;
+              float: right;
+              margin-left: 6px;
+          }
+
+          &.prev-fig-btn .icon-prev {
+            background-position: -130px -20px;
+            float: left;
+            margin-right: rem-calc(6);
+          }
+        }
+      }
+    }
+
+    #image-context {
+      width: 100%;
+      display: inline-block;
+      min-width: rem-calc($grid-width/2);
+      min-height: rem-calc(80px);
+      height: rem-calc(80px);
+      overflow-y: hidden;
+      position: relative;
+
+      &.full-display-animate {
+        width: 100%;
+        max-height: rem-calc(300px);
+        overflow-y: scroll;
+
+        %full-display-no-show {
+          display: block;
+        }
+      }
+
+      .footer-text {
+        width: 39%;
+        display: inline-block;
+        word-wrap: break-word;
+        background: $grey-light;
+        text-align: left;
+        font-family: $font-face-plain;
+        font-size: $txt-size-xsmall;
+        line-height: $line-height;
+
+        #figure-description-wrapper {
+          #figure-title, title {
+            display: inline-block;
+            width: 100%;
+            font-size: $txt-size-small;
+            padding-top: rem-calc(3);
+            padding-right: rem-calc(16);
+            margin-bottom: 0;
+            font-weight: bold;
+            line-height: rem-calc(16);
+          }
+          #view-more-wrapper,  #view-less-wrapper{
+            padding: 0 5px 0 8px;
+          }
+          //overflow-y: hidden;
+          #view-more-wrapper {
+            /* Needs static height for dotdotdot to trim text */
+            max-height: $lb-description-bar-height;
+          }
+
+          #view-less-wrapper {
+            display: none;
+            position:absolute;
+            width: 100%;
+            top:0;
+            height: $lb-description-bar-height;
+            z-index: map-get($zindex, header);
+            background: #efefef;
+            overflow-y: scroll;
+            left:0;
+
+
+          }
+
+          #view-more, #view-less {
+            cursor: pointer;
+            color: $plos-default;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          i {
+            line-height: $line-height-small;
+            font-size: $txt-size-xsmall;
+            margin-left: 3px;
+          }
+        }
+
+        a {
+          color: $plos-default;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        p, span {
+          font-family: $font-face-plain;
+          padding-top: $pad-xsmall;
+          font-size: $txt-size-small;
+          line-height: rem-calc(18);
+        }
+      }
+
+      #show-context-container .show-context, #download-buttons .item .download-btn {
+        font-size: rem-calc(12);
+        line-height: 1.3;
+        padding: rem-calc(6);
+
+        @media #{$large-up} {
+          font-size: rem-calc(15);
+          line-height: rem-calc(35);
+          padding: 0 rem-calc(10);
+        }
+      }
+
+      #show-context-container {
+        @extend %full-display-no-show;
+        width: 15%;
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+        padding-top: $pad-xsmall;
+
+        @media #{$large-up} {
+          width: 20%;
+        }
+
+        .show-context {
+          @extend .button-big;
+        }
+      }
+
+      #download-buttons {
+        @extend %full-display-no-show;
+        display: inline-block;
+        vertical-align: top;
+        padding-top: $pad-xsmall;
+        text-align: right;
+        width: 44%;
+
+        @media #{$large-up} {
+          width: 40%;
+        }
+
+        h3 {
+          display: inline-block;
+          font-size: $txt-size-small;
+          line-height: rem-calc(36);
+          margin: 0 $pad-xsmall;
+
+          @media #{$large-up} {
+            margin: 0 $pad-default + $pad-xsmall;
+          }
+        }
+
+        .item {
+          float: right;
+          text-align: center;
+          margin-right: $pad-xsmall;
+
+          @media #{$large-up} {
+            margin-right: $pad-default + $pad-xsmall;
+          }
+
+          a {
+            display: block;
+            color: $grey-dark;
+            text-decoration: none;
+          }
+          .file-size {
+            font-size: $txt-size-xsmall;
+          }
+        }
+        .size {
+          display: block;
+          font-size: 0.769em;
+          margin-top: $pad-xsmall;
+        }
+        .download-btn {
+          @extend .button-big;
+        }
+        .item a:hover .download-btn {
+          background: $plos-default;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+
+

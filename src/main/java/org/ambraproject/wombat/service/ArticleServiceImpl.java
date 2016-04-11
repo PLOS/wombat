@@ -13,22 +13,43 @@
 
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.service.remote.SoaService;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ArticleServiceImpl implements ArticleService {
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
+
+  private static final ImmutableSet<String> FIGURE_TABLE_CONTEXT_ELEMENT =
+      new ImmutableSet.Builder<String>()
+      .add("fig").add("table-wrap").add("alternatives")
+      .build();
 
   @Override
   public Map<String, Object> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
-    Map<String, Object> map = (Map<String, Object>) soaService.requestObject(String.format(
+    Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(String.format(
         "articles/%s?excludeCitations=" + excludeCitations.toString(), articleId), Map.class);
     return DoiSchemeStripper.strip(map);
+  }
+
+  @Override
+  public List<ImmutableMap<String, String>> getArticleFiguresAndTables(Map<?, ?> articleMetadata) {
+    List<Map<String, String>> assets = (List<Map<String, String>>) articleMetadata.get("figures");
+    List<ImmutableMap<String, String>> figsAndTables = assets.stream()
+        .filter(asset -> FIGURE_TABLE_CONTEXT_ELEMENT.contains(asset.get("contextElement")))
+        .map(asset -> ImmutableMap.<String, String>builder().put("title", asset.get("title"))
+            .put("doi", asset.get("doi"))
+            .build())
+        .collect(Collectors.toList());
+    return figsAndTables;
   }
 }

@@ -1,5 +1,6 @@
 <#include "../common/twitterConfig.ftl" />
 <#include "../common/pubUrlPrefix.ftl" />
+<#include "../macro/doiResolverLink.ftl" />
 
 <#--//analytics related meta tags - description and keywords-->
 <#if article.description??>
@@ -9,7 +10,7 @@
   <meta name="keywords" content="<#list categoryTerms as categoryTerm>${categoryTerm}<#if categoryTerm_has_next>,</#if></#list>" />
 </#if>
 
-<meta name="citation_doi" content="${articleDoi}" />
+<meta name="citation_doi" content="${article.doi}" />
 <#if article.authors?? >
   <#list authors as author>
   <meta name="citation_author" content="${author.fullName}" />
@@ -44,11 +45,7 @@
 </#if>
 
 <#--//crossmark identifier-->
-<meta name="dc.identifier" content="${articleDoi}" />
-
-<#if pubUrlPrefix?has_content>
-<link rel="canonical" href="${pubUrlPrefix}article?id=${articleDoi}" />
-</#if>
+<meta name="dc.identifier" content="${article.doi}" />
 
 <#if article.description??>
   <#if twitterUsername?has_content>
@@ -57,12 +54,12 @@
   </#if>
 <meta property="og:type" content="article" />
   <#if pubUrlPrefix?has_content>
-  <meta property="og:url" content="${pubUrlPrefix}article?id=${articleDoi}" />
+  <meta property="og:url" content="${pubUrlPrefix}article?id=${article.doi}" />
   </#if>
 <meta property="og:title" content="${article.title?replace('<.+?>',' ','r')?html}" />
 <meta property="og:description" content="${article.description?replace('<.+?>',' ','r')?html}" />
   <#if (article.strkImgURI?? && (article.strkImgURI?length > 0)) >
-  <meta property="og:image" content="http://dx.plos.org/${article.strkImgURI?replace('info:doi/','')}" />
+  <meta property="og:image" content="${doiResolverLink(article.strkImgURI)}" />
   </#if>
 </#if>
 

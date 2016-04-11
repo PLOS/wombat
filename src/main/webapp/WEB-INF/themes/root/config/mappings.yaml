@@ -40,4 +40,12 @@
 # same thing by having a null pattern mean "disabled", but this way gives us the flexibility to
 # add more values in the future.)
 
-{}
+{
+  "browse": {
+    "disabled": true
+  },
+
+  "browseSubjectArea": {
+    "disabled": true
+  }
+}

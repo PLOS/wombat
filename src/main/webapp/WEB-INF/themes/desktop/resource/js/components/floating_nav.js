@@ -6,6 +6,7 @@
  */
 (function ($) {
   var $win = $(window);
+  var originalTarget = window.location.hash;
 
 
   $.fn.floatingNav = function (options) {
@@ -28,64 +29,124 @@
     var $floating_nav_menu = $(this);
     var win_top = $win.scrollTop();
     var opts = $.extend(defaults, options);
-    var isAutoScrolling = false;
 
-    $('body').on('click', 'ul.' + opts.ul_class + ' a', AutoScroll);
-
-    function AutoScroll(event) {
-      //window.history.pushState is not on all browsers
-      if (window.history.pushState) {
-        window.history.pushState({}, document.title, event.target.href);
+    function AutoScroll(sectionsMap, section, event) {
+      if(event) {
+        event.preventDefault();
+        event.stopPropagation();
       }
+      $floating_nav_menu.addClass('scrolling');
 
-      event.preventDefault();
-      isAutoScrolling = true;
-      // suppress  expansion/collapse of any nested list items during animation-triggered
-      // traversal of the nav
-      $('ul.' + opts.ul_class + ' li:not(.' + opts.class_active + ') ul').hide();
-
-      var scrollLocation = '#' + this.hash.substring(1);
-      $(scrollLocation).scrollTo(event,{
-        callback: function () {
-          isAutoScrolling = false;
-          showActiveSublist();
+      $('html,body').stop().animate(
+        {
+          scrollTop: section.topPosition
         },
-        changeUrl: true
-      });
-    }
+        500,
+        function () {
+          $floating_nav_menu.removeClass('scrolling');
+          window.location.hash='#'+section.id;
+          hiliteLink(sectionsMap);
+        }
+      );
+    };
 
-    function showActiveSublist() {
-      $('ul.' + opts.ul_class + ' li.' + opts.class_active + ' ul').show();
-    }
+    function hiliteLink(sectionsMap) {
+      if(!$floating_nav_menu.hasClass('scrolling')) {
+        var currentSection = _.filter(sectionsMap, function (section) {
+          return section.topPosition <= win_top && section.bottomPosition >= win_top;
+        })[0];
 
-    function hiliteLink(link) {
-      var $links = $floating_nav_menu.find(opts.link_selector);
-      var parentTag = link.parent().prop('tagName');
-      var isIgnoredSection = parentTag !== "" && opts.ignored_sections.indexOf(parentTag) != -1;
-      if (win_top > (link.offset().top - opts.margin) && !isIgnoredSection) {
+        if (currentSection) {
+          var $closest_li = currentSection.$link.closest('li');
+          if ($closest_li.parents('li').hasClass('active')) {
+            $floating_nav_menu.addClass('no-hidding');
+          }
+          else {
+            $floating_nav_menu.removeClass('no-hidding');
+          }
 
-        var $linkRef = link.attr(opts.section_anchor_attr);
-        var $closest_li = $floating_nav_menu.find('a[href="#' + $linkRef + '"]').closest('li');
+          var $linkActive = $floating_nav_menu.find('li.' + opts.class_active);
+          $linkActive.removeClass(opts.class_active);
 
-        $links.closest('li').removeClass(opts.class_active);
-        $closest_li.addClass(opts.class_active).parents('li').addClass(opts.class_active);
-      }
+          $closest_li.addClass(opts.class_active).parents('li').addClass(opts.class_active);
+        }
+        else {
+          var $linkActive = $floating_nav_menu.find('li.' + opts.class_active);
+          $linkActive.removeClass(opts.class_active);
+        }
+      };
+
     }
 
     return this.each(
       function () {
+        var sectionsMap = [];
+        var createSectionsMap = function () {
+          sectionsMap = [];
+          var links =  $floating_nav_menu.find(opts.link_selector);
+          links.each(function (index) {
+            var sectionObj = {};
+            var section = opts.content.find($(this).attr('href'));
 
-        var hilite = function () {
-          opts.content.find(opts.section_anchor).each(function() {
-            hiliteLink($(this))
+            var topPosition = section.offset().top;
+            var nextEl = opts.content.find(links.eq(index+1).attr('href'));
+            var bottomPosition = 0;
+
+            if(nextEl.offset()) {
+              bottomPosition = nextEl.offset().top-1;
+            }
+            else {
+              bottomPosition = opts.content.height() + opts.content.offset().top;
+              var sectionHeight = bottomPosition-topPosition;
+              var windowHeight = $(window).height();
+              var spacingHeight = opts.content.find('.final-section-spacing').height();
+              if(sectionHeight + spacingHeight < windowHeight) {
+                if(!opts.content.find('.final-section-spacing').length) {
+                  opts.content.append('<div class="final-section-spacing"></div>')
+                }
+
+                var diff = windowHeight - sectionHeight - $('body > footer').innerHeight();
+                opts.content.find('.final-section-spacing').css('height', diff+'px');
+              }
+            }
+
+            var $floatTitleTop = $('#floatTitleTop');
+
+            if($floatTitleTop.length) {
+              var floatTitleHeight = $floatTitleTop.height() + 20;
+              if(originalTarget != '#'+section.attr(opts.section_anchor_attr)) {
+                topPosition = topPosition - floatTitleHeight;
+              }
+
+              var nextEl = links.eq(index+1);
+              if(originalTarget != nextEl.attr('href')) {
+                bottomPosition = bottomPosition - floatTitleHeight;
+              }
+            }
+
+            sectionObj.id = section.attr(opts.section_anchor_attr);
+            sectionObj.$element = section;
+            sectionObj.$link = $(this);
+            sectionObj.topPosition = topPosition;
+            sectionObj.bottomPosition = bottomPosition;
+
+            sectionsMap.push(sectionObj);
           });
         };
 
-        var positionUpdated = function () {
+        var hilite = function () {
+          createSectionsMap();
+          hiliteLink(sectionsMap);
+        };
 
-          if (!isAutoScrolling) {
-            showActiveSublist();
-          }
+        $('body').on('click', 'ul.' + opts.ul_class + ' a', function (e) {
+          createSectionsMap();
+          var sectionId = $(this).attr('href').substring(1);
+          var section = _.findWhere(sectionsMap, { id: sectionId });
+          AutoScroll(sectionsMap, section, e);
+        });
+
+        var positionUpdated = function () {
 
           win_top = $win.scrollTop();
           var $ftr_top = $(opts.footer).offset().top;

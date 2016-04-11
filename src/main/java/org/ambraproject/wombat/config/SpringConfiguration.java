@@ -28,6 +28,8 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.controller.AppRootPage;
+import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
@@ -47,6 +49,7 @@ import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SearchFilterType;
 import org.ambraproject.wombat.model.SearchFilterTypeMap;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
@@ -54,18 +57,38 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
+import org.ambraproject.wombat.service.BrowseTaxonomyServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
+import org.ambraproject.wombat.service.CaptchaService;
+import org.ambraproject.wombat.service.CaptchaServiceImpl;
+import org.ambraproject.wombat.service.CitationDownloadService;
+import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
+import org.ambraproject.wombat.service.CommentCensorService;
+import org.ambraproject.wombat.service.CommentCensorServiceImpl;
+import org.ambraproject.wombat.service.CommentService;
+import org.ambraproject.wombat.service.CommentServiceImpl;
+import org.ambraproject.wombat.service.CommentValidationService;
+import org.ambraproject.wombat.service.CommentValidationServiceImpl;
+import org.ambraproject.wombat.service.FreemarkerMailService;
+import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
-import org.ambraproject.wombat.service.remote.EditorialContentService;
-import org.ambraproject.wombat.service.remote.EditorialContentServiceImpl;
+import org.ambraproject.wombat.service.XmlService;
+import org.ambraproject.wombat.service.XmlServiceImpl;
+import org.ambraproject.wombat.service.remote.EditorialContentApi;
+import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.remote.SubjectAlertService;
 import org.ambraproject.wombat.util.GitInfo;
+import org.ambraproject.wombat.util.NullJavaMailSender;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
@@ -177,12 +200,31 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public FreemarkerMailService freemarkerMailService() {
+    return new FreemarkerMailServiceImpl();
+  }
+
+  @Bean
   public Charset charset() {
     return Charsets.UTF_8;
   }
 
   @Bean
   public JournalFilterType journalFilterType() { return new JournalFilterType(); }
+
+  @Bean
+  public AppRootPage appRootPage() {
+    return new AppRootPage();
+  }
+
+  @Bean
+  public JavaMailSender javaMailSender(RuntimeConfiguration runtimeConfiguration) {
+    String mailServer = runtimeConfiguration.getMailServer();
+    if (mailServer == null) return NullJavaMailSender.INSTANCE;
+    JavaMailSenderImpl sender = new JavaMailSenderImpl();
+    sender.setHost(mailServer);
+    return sender;
+  }
 
   @Bean
   public SearchFilterTypeMap searchFilterTypeMap(JournalFilterType journalFilterType) {
@@ -204,6 +246,12 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public SubjectAlertService subjectAlertService() {
+    return new SubjectAlertService();
+  }
+
+
+  @Bean
   public FreeMarkerViewResolver viewResolver(Charset charset) {
     FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
     resolver.setContentType("text/html;charset=" + charset);
@@ -223,6 +271,9 @@ public class SpringConfiguration {
   public ArticleTransformService articleTransformService() {
     return new ArticleTransformServiceImpl();
   }
+
+  @Bean
+  public XmlService xmlService() { return new XmlServiceImpl(); }
 
   @Bean
   public AssetService assetService() {
@@ -250,8 +301,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public EditorialContentService editorialRepoService() {
-    return new EditorialContentServiceImpl();
+  public EditorialContentApi editorialContentApi() {
+    return new EditorialContentApiImpl();
   }
 
   @Bean
@@ -262,6 +313,46 @@ public class SpringConfiguration {
   @Bean
   public ArticleArchiveServiceImpl articleArchiveService() {
     return new ArticleArchiveServiceImpl();
+  }
+
+  @Bean
+  public CitationDownloadService citationDownloadService() {
+    return new CitationDownloadServiceImpl();
+  }
+
+  @Bean
+  public CaptchaService captchaService() {
+    return new CaptchaServiceImpl();
+  }
+
+  @Bean
+  public CommentCensorService commentCensorService() {
+    return new CommentCensorServiceImpl();
+  }
+
+  @Bean
+  public CommentValidationService commentValidationService() {
+    return new CommentValidationServiceImpl();
+  }
+
+  @Bean
+  public BrowseTaxonomyService browseTaxonomyService() {
+    return new BrowseTaxonomyServiceImpl();
+  }
+
+  @Bean
+  public CommentService commentService() {
+    return new CommentServiceImpl();
+  }
+
+  @Bean
+  public ArticleFeedView articleFeedView() {
+    return new ArticleFeedView();
+  }
+
+  @Bean
+  public CommentFeedView commentFeedView() {
+    return new CommentFeedView();
   }
 
 }

@@ -1,8 +1,10 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.Multimap;
+import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterFactory;
+import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -17,26 +19,30 @@ import java.util.Map;
 public class SearchFilterService {
 
   @Autowired
-  private SolrSearchService solrSearchService;
+  private SolrSearchApi solrSearchApi;
 
   @Autowired
   private SearchFilterFactory searchFilterFactory;
 
-  private final String JOURNAL = "journal";
+  private final String JOURNAL = JournalFilterType.JOURNAL_FILTER_MAP_KEY;
 
   private final String JOURNAL_FACET_FIELD = "cross_published_journal_name";
 
-  private final String SUBJECT_AREA = "subject_area";
+  private final String SUBJECT_AREA = SingletonSearchFilterType.SUBJECT_AREA.getFilterMapKey();
 
   private final String SUBJECT_AREA_FACET_FIELD = "subject_facet";
 
-  private final String AUTHOR = "author";
+  private final String AUTHOR = SingletonSearchFilterType.AUTHOR.getFilterMapKey();
 
   private final String AUTHOR_FACET = "author_facet";
 
-  private final String ARTICLE_TYPE = "article_type";
+  private final String ARTICLE_TYPE = SingletonSearchFilterType.ARTICLE_TYPE.getFilterMapKey();
 
   private final String ARTICLE_TYPE_FACET = "article_type_facet";
+
+  private final String SECTION = SingletonSearchFilterType.SECTION.getFilterMapKey();
+
+  private final String SECTION_FACET = "doc_partial_type";
 
   /**
    * Retrieves a map of search filters to be added to the model. The filters displayed will change
@@ -48,8 +54,8 @@ public class SearchFilterService {
    * @return HashMap containing all applicable filters
    * @throws IOException
    */
-  public Map<?, ?> getSearchFilters(ArticleSearchQuery query, Multimap<String, String> urlParams)
-      throws IOException {
+  public Map<String, SearchFilter> getSearchFilters(ArticleSearchQuery query,
+      Multimap<String, String> urlParams) throws IOException {
 
     ArticleSearchQuery.Builder journalFacetQuery = ArticleSearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)
@@ -58,9 +64,10 @@ public class SearchFilterService {
         .setArticleTypes(query.getArticleTypes())
         .setSubjects(query.getSubjects())
         .setAuthors(query.getAuthors())
-        .setDateRange(query.getDateRange().orNull());
+        .setDateRange(query.getDateRange().orNull())
+        .setSections(query.getSections());
 
-    Map<?, ?> journalFacetResults = solrSearchService.search(journalFacetQuery.build());
+    Map<?, ?> journalFacetResults = solrSearchApi.search(journalFacetQuery.build());
     SearchFilter journalFilter = searchFilterFactory
         .createSearchFilter(journalFacetResults, JOURNAL, urlParams);
 
@@ -71,9 +78,11 @@ public class SearchFilterService {
         .setArticleTypes(query.getArticleTypes())
         .setAuthors(query.getAuthors())
         .setDateRange(query.getDateRange().orNull())
-        .setJournalKeys(query.getJournalKeys());
+        .setJournalKeys(query.getJournalKeys())
+        .setSections(query.getSections())
+        .setSubjects(query.getSubjects());  // pass the previously filtered subjects to narrow the results
 
-    Map<?, ?> subjectAreaFacetResults = solrSearchService.search(subjectAreaFacetQuery.build());
+    Map<?, ?> subjectAreaFacetResults = solrSearchApi.search(subjectAreaFacetQuery.build());
     SearchFilter subjectAreaFilter = searchFilterFactory
         .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
 
@@ -85,10 +94,11 @@ public class SearchFilterService {
         .setArticleTypes(query.getArticleTypes())
         .setDateRange(query.getDateRange().orNull())
         .setAuthors(query.getAuthors()) // pass the previously filtered authors to narrow the results
-        .setSubjects(query.getSubjects());
+        .setSubjects(query.getSubjects())
+        .setSections(query.getSections());
 
 
-    Map<?, ?> authorFacetResults = solrSearchService.search(authorFacetQuery.build());
+    Map<?, ?> authorFacetResults = solrSearchApi.search(authorFacetQuery.build());
     SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
 
     ArticleSearchQuery.Builder articleTypeFacetQuery = ArticleSearchQuery.builder()
@@ -97,11 +107,27 @@ public class SearchFilterService {
         .setSimple(query.isSimple())
         .setDateRange(query.getDateRange().orNull())
         .setJournalKeys(query.getJournalKeys())
-        .setSubjects(query.getSubjects());
+        .setSubjects(query.getSubjects())
+        .setAuthors(query.getAuthors())
+        .setSections(query.getSections());
 
-    Map<?, ?> articleTypeFacetResults = solrSearchService.search(articleTypeFacetQuery.build());
+    Map<?, ?> articleTypeFacetResults = solrSearchApi.search(articleTypeFacetQuery.build());
     SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(articleTypeFacetResults,
         ARTICLE_TYPE, urlParams);
+
+    ArticleSearchQuery.Builder sectionFacetQuery = ArticleSearchQuery.builder()
+        .setFacet(SECTION_FACET)
+        .setIsPartialSearch(true)
+        .setQuery(query.getQuery().orNull())
+        .setSimple(query.isSimple())
+        .setDateRange(query.getDateRange().orNull())
+        .setJournalKeys(query.getJournalKeys())
+        .setSubjects(query.getSubjects())
+        .setAuthors(query.getAuthors());
+
+    Map<?, ?> sectionFacetResults = solrSearchApi.search(sectionFacetQuery.build());
+    SearchFilter sectionFilter = searchFilterFactory.createSearchFilter(sectionFacetResults,
+        SECTION, urlParams);
 
     // TODO: add other filters here
 
@@ -110,12 +136,13 @@ public class SearchFilterService {
     filters.put(SUBJECT_AREA, subjectAreaFilter);
     filters.put(AUTHOR, authorFilter);
     filters.put(ARTICLE_TYPE, articleTypeFilter);
+    filters.put(SECTION, sectionFilter);
 
     return filters;
   }
 
-  public Map<?, ?> getVolumeSearchFilters(int volume, List<String> journalKeys, List<String> articleTypes,
-      SolrSearchService.SearchCriterion dateRange) throws IOException {
+  public Map<String, SearchFilter> getVolumeSearchFilters(int volume, List<String> journalKeys, List<String> articleTypes,
+      SolrSearchApi.SearchCriterion dateRange) throws IOException {
     Map<String, SearchFilter> filters = new HashMap<>();
     // TODO: add other filters here (filter by journal is not applicable here)
     return filters;

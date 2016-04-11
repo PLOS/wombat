@@ -1,4 +1,7 @@
-<#assign metricsUrl = legacyUrlPrefix +'article/metrics/info:doi/'+articleDoi />
+<#assign metricsUrl>
+  <@siteLink handlerName="articleMetrics" queryParameters={"id": article.doi} />
+</#assign>
+
 
 <ul id="almSignposts" class="signposts">
   <li id="loadingMetrics">

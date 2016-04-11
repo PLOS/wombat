@@ -4,7 +4,6 @@ var TaxonomyBrowser = function () {
   var self = this;
 
   self.init = function () {
-
     self.$browserDiv = $('#browse-container');
 
     if (self.$browserDiv.length) {
@@ -41,20 +40,15 @@ var TaxonomyBrowser = function () {
       var fullPath = terms[i].subject;
       var levels = fullPath.split('/');
       var leaf = levels[levels.length - 1];
-
-      // Get parent term if there is one.  Only do this once for efficiency since all terms
-      // will have the same parent.
-      if (i == 0 && levels.length > 2) {
-        for (var j = 0; j < levels.length - 1; j++) {
-          if (j > 1) {
-            parent += '/';
-          }
-          parent += levels[j];
-        }
+      if (leaf == 'ROOT') {
+        break;
+      }
+      if (parent == '/') {
+        parent += levels[0];
       }
 
       var termHtml = $('#subject-term-template').html();
-      termHtml = termHtml.replace('__TAXONOMY_TERM_ESCAPED__', leaf.replace(/ /g, '+'));
+      termHtml = termHtml.replace('__TAXONOMY_TERM_ESCAPED__', leaf.replace(/ /g, '_'));
       termHtml = termHtml.replace('__TAXONOMY_TERM_LEAF__', leaf);
       termHtml = termHtml.replace('__TAXONOMY_TERM_FULL_PATH__', fullPath);
       var childLinkStyle = 'browse-further browse-right';
@@ -80,8 +74,8 @@ var TaxonomyBrowser = function () {
   // Saves the current state to the browser history, so the back button functions correctly.
   // Term should be the parent term of the ones we are currently displaying.
   self.pushState = function(term) {
-    var url = 'browse';
-    var title = 'browse';
+    var url = 'subjectAreaBrowse';
+    var title = 'subjectAreaBrowse';
     if (term) {
       url += '?path=' + term;
       title = term;
@@ -92,12 +86,19 @@ var TaxonomyBrowser = function () {
   // Loads the child terms given a parent term.  If the parent evaluates to false,
   // the root taxonomy terms will be loaded.
   self.loadTerms = function (parent, pushState) {
-    var url = 'taxonomy';
-    if (parent) {
-      url += parent;
-    } else {
-      url += '/';
+
+    var url = 'taxonomy/?';
+    if (parent != '/') {
+      var termArray = parent.split('/');
+      var lastTerm = termArray[termArray.length -1];
+      url += 'c=' + lastTerm;
     }
+
+    //Replace spaces with underscores, will be reverted to spaces in TaxonomyController.
+    //This prevents 502 proxy errors that occur when we try to request a url with '%20' in it.
+    //todo: After cleaning up redirects and solving the 502 proxy error, this should be removed
+    url = url.replace(/\s/g, "_");
+
     $.ajax(url, {
       type: 'GET',
       success: function (data) {

@@ -80,6 +80,15 @@ public interface RuntimeConfiguration {
   URL getSolrServer();
 
   /**
+   * Get the host name of the server to which to send SMTP messages;
+   */
+  String getMailServer();
+
+  /**
+   * Get the path of an HTML document to display on the root page
+   */
+  String getRootPagePath();
+  /**
    * @return the set of enabled dev features, configured in wombat.yaml.
    */
   ImmutableSet<String> getEnabledDevFeatures();
@@ -107,13 +116,9 @@ public interface RuntimeConfiguration {
   interface CasConfiguration {
     String getCasUrl();
 
-    String getServiceUrl();
-
     String getLoginUrl();
 
     String getLogoutUrl();
-
-    String getLogoutServiceUrl();
   }
 
   CasConfiguration getCasConfiguration();

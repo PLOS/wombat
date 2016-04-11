@@ -11,6 +11,8 @@
 
   <context:component-scan base-package="org.ambraproject.wombat.controller"/>
 
+  <beans:bean class="org.ambraproject.wombat.config.SpringSecurityConfiguration" />
+
   <beans:bean class="org.ambraproject.wombat.config.SpringConfiguration" />
 
   <beans:bean class="org.ambraproject.wombat.config.SpringMvcConfiguration" />

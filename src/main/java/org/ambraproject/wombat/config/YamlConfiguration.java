@@ -11,7 +11,6 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.Charsets;
 import com.google.common.base.Objects;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableSet;
@@ -20,10 +19,8 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -59,7 +56,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     }
   }
 
-
   @Override
   public String getCompiledAssetDir() {
     return input.compiledAssetDir;
@@ -76,8 +72,18 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
+  public String getMailServer() {
+    return input.mailServer;
+  }
+
+  @Override
   public ImmutableSet<String> getEnabledDevFeatures() {
     return ImmutableSet.copyOf(Objects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
+  }
+
+  @Override
+  public String getRootPagePath() {
+    return input.rootPagePath;
   }
 
   @Override
@@ -137,35 +143,13 @@ public class YamlConfiguration implements RuntimeConfiguration {
     }
 
     @Override
-    public String getServiceUrl() {
-      return (input.cas == null) ? null : input.cas.serviceUrl;
-    }
-
-    @Override
     public String getLoginUrl() {
       return (input.cas == null) ? null : input.cas.loginUrl;
     }
 
     @Override
-    public String getLogoutUrl() {
-      if (input.cas == null || Strings.isNullOrEmpty(input.cas.logoutUrl)) {
-        return null;
-      }
-
-      if (Strings.isNullOrEmpty(input.cas.logoutServiceUrl)) {
-        return input.cas.logoutUrl;
-      } else {
-        try {
-          return input.cas.logoutUrl + "?service=" + URLEncoder.encode(input.cas.logoutServiceUrl, Charsets.UTF_8.name());
-        } catch (UnsupportedEncodingException e) {
-          throw new RuntimeException(e);
-        }
-      }
-    }
-
-    @Override
-    public String getLogoutServiceUrl() {
-      return (input.cas == null) ? null : input.cas.logoutServiceUrl;
+    public String getLogoutUrl()  {
+      return (input.cas == null) ? null : input.cas.logoutUrl;
     }
   };
 
@@ -224,16 +208,20 @@ public class YamlConfiguration implements RuntimeConfiguration {
       return new GsonBuilder().create().toJson(this);
     }
 
+    /* Input-defining fields appear below.
+     * SnakeYAML will reflectively inspect the names of these fields and use them as the input contract.
+     * All such fields are immutable by convention. They should be set only by the YAML deserializer.
+     * The intent of the @Deprecated annotation is to raise a warning in the IDE if a human refers
+     * to them in code. (The reflective code in the library won't care at runtime of course.)
 
-    // Input-defining fields appear below.
-    // SnakeYAML will reflectively inspect the names of these fields and use them as the input contract.
-    // All such fields are immutable by convention. They should be set only by the YAML deserializer.
-
-    // ---------------- Input fields (and boring boilerplate setters) are below this line ----------------
+     * ---------------- Input fields (and boring boilerplate setters) are below this line ----------------
+     */
 
     private String server;
     private String solrServer;
+    private String mailServer;
     private String compiledAssetDir;
+    private String rootPagePath;
     private List<String> enableDevFeatures;
     private List<Map<String, ?>> themes;
     private List<Map<String, ?>> sites;
@@ -262,8 +250,24 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
+    public void setMailServer(String mailServer) {
+      this.mailServer = mailServer;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
     public void setCompiledAssetDir(String compiledAssetDir) {
       this.compiledAssetDir = compiledAssetDir;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setRootPagePath(String rootPagePath) {
+      this.rootPagePath = rootPagePath;
     }
 
     /**
@@ -368,10 +372,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
 
   public static class CasConfigurationInput {
     private String casUrl;
-    private String serviceUrl;
     private String loginUrl;
     private String logoutUrl;
-    private String logoutServiceUrl;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -379,14 +381,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setCasUrl(String casUrl) {
       this.casUrl = casUrl;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setServiceUrl(String serviceUrl) {
-      this.serviceUrl = serviceUrl;
     }
 
     /**
@@ -405,12 +399,5 @@ public class YamlConfiguration implements RuntimeConfiguration {
       this.logoutUrl = logoutUrl;
     }
 
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setLogoutServiceUrl(String logoutServiceUrl) {
-      this.logoutServiceUrl = logoutServiceUrl;
-    }
   }
 }

@@ -9,7 +9,9 @@
       <img src="${src}" alt="${alt}" class="logo-footer"/>
     </#macro>
     <#include "footerLogo.ftl" />
-    <#include "footerCredits.ftl" />
+      <p class="nav-special">
+      <#include "footerCredits.ftl" />
+      </p>
     <#include "footerPrimaryLinks.ftl" />
     </div>
     <div class="link-column">

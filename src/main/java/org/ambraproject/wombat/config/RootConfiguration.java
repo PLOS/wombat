@@ -10,14 +10,18 @@ import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.UserApiImpl;
 import org.ambraproject.wombat.service.remote.ReaderService;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
-import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.service.remote.SoaServiceImpl;
-import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.ArticleApiImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.StreamService;
+import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.joda.time.LocalDate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
@@ -56,8 +60,8 @@ public class RootConfiguration {
   }
 
   @Bean
-  public SoaService soaService() {
-    return new SoaServiceImpl();
+  public ArticleApi articleApi() {
+    return new ArticleApiImpl();
   }
 
   @Bean
@@ -65,6 +69,7 @@ public class RootConfiguration {
     GsonBuilder builder = new GsonBuilder();
     builder.setPrettyPrinting();
     builder.registerTypeAdapter(Date.class, new Iso8601DateAdapter());
+    builder.registerTypeAdapter(org.joda.time.LocalDate.class, JodaTimeLocalDateAdapter.INSTANCE);
     return builder.create();
   }
 
@@ -98,8 +103,13 @@ public class RootConfiguration {
   }
 
   @Bean
-  public SolrSearchService searchService() {
-    return new SolrSearchServiceImpl();
+  public SolrSearchApi searchService() {
+    return new SolrSearchApiImpl();
+  }
+
+  @Bean
+  public UserApi userApi() {
+    return new UserApiImpl();
   }
 
   @Bean

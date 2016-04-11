@@ -1,0 +1,58 @@
+/* Feedback */
+#container-main {
+  min-width: 250px;
+  overflow-x: hidden;
+}
+
+#content.related-content #media_coverage {
+  font-size: 13px;
+}
+
+#content.related-content .related-content-wrap {
+  display: inline-block;
+}
+
+#content.related-content .related-content-wrap.rc-cf {
+  width: 100%;
+}
+
+#content.related-content .related-content-wrap div.rc-article-wrap {
+  border-bottom-width: 5px;
+}
+
+#content.related-content #media_coverage_addition {
+  display: none;
+}
+
+#content.related-content ul li {
+  list-style-type: none;
+}
+
+/* Figshare recommendations */
+#figshare-related div.rca-row-1 {
+  width: 100%;
+  margin: 0;
+  padding: 0 5%;
+}
+
+#figshare-related div.rca-row-2,
+#figshare-related div.rca-row-3{
+  width: 50%;
+  margin: 0;
+  padding: 2% 3%;
+  text-align: center;
+}
+
+#figshare-related .rca-row-2 div,
+#figshare-related .rca-row-3 div{
+  display: inline-block;
+}
+
+#figshare-related .rc-cta {
+  padding: 5%;
+}
+
+#figshare-related .rc-cta a.rc-figshare-logo{
+  right: 5px;
+  top: 20px;
+}

@@ -9,24 +9,25 @@
 <#include "backToArticle.ftl" />
 
   <div id="author-content" class="content">
-  <#list authors as author>
+  <#list authorListAffiliationMap?keys as affiliation>
     <div class="about-author">
-      <h3 class="comments-header">${author.fullName}</h3>
-      <#list author.affiliations as affiliation>
-        <p>${affiliation}</p>
-      </#list>
-    </div>
+      <h3 class="comments-header">${authorListAffiliationMap[affiliation]}</h3>
+
+      <p>${affiliation}</p></div>
   </#list>
 
   <#if correspondingAuthors?? && correspondingAuthors?size gt 0>
     <#if correspondingAuthors?size == 1>
       <h2>Corresponding Author</h2>
+      <p class="about-author">${correspondingAuthors[0]}</p>
     <#else>
       <h2>Corresponding Authors</h2>
+      <ul class="bulletlist">
+        <#list correspondingAuthors as correspondingAuthor>
+          <li class="about-author">${correspondingAuthor}</li>
+        </#list>
+      </ul>
     </#if>
-    <#list correspondingAuthors as correspondingAuthor>
-      <div class="about-author">${correspondingAuthor}</div>
-    </#list>
   </#if>
   </div>
   <!--end content-->

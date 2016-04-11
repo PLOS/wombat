@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.Citations;
 import org.ambraproject.wombat.util.TextUtil;
 import org.apache.commons.io.IOUtils;
@@ -31,7 +31,7 @@ public class PowerPointServiceImpl implements PowerPointService {
   private static final Logger log = LoggerFactory.getLogger(PowerPointServiceImpl.class);
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @Override
   public SlideShow createPowerPointFile(Map<String, Object> figureMetadata,
@@ -73,7 +73,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     Map<String, Object> thumbnails = (Map<String, Object>) figureMetadata.get("thumbnails");
     Map<String, Object> medium = (Map<String, Object>) thumbnails.get("medium");
     String file = (String) medium.get("file");
-    try (InputStream stream = soaService.requestStream("assetfiles/" + file)) {
+    try (InputStream stream = articleApi.requestStream("assetfiles/" + file)) {
       return IOUtils.toByteArray(stream);
     }
   }
@@ -197,7 +197,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     Map<String, Object> parentArticleSummary = (Map<String, Object>) figureMetadata.get("parentArticle");
     String parentArticleDoi = (String) parentArticleSummary.get("doi");
     try {
-      return soaService.requestObject("articles/" + parentArticleDoi, Map.class);
+      return articleApi.requestObject("articles/" + parentArticleDoi, Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

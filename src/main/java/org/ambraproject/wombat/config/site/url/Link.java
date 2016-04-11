@@ -1,10 +1,10 @@
 package org.ambraproject.wombat.config.site.url;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
-import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.RequestMappingContext;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.ClientEndpoint;
@@ -15,26 +15,30 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * A link to a site page.
- * <p/>
+ * <p>
  * An instance of this class encapsulates a path to the linked page and the site to which the linked page belongs. It
  * depends on an {@code HttpServletRequest} object in order to build an {@code href} value to appear in the
  * corresponding response.
  */
 public class Link {
 
-  private final Site site;
+  private final Optional<Site> site; // absent if the path is for a siteless handler
   private final String path;
   private final boolean isAbsolute;
 
-  private Link(Site site, String path, boolean isAbsolute) {
+  private Link(Optional<Site> site, String path, boolean isAbsolute) {
     this.site = Preconditions.checkNotNull(site);
     this.path = Preconditions.checkNotNull(path);
     this.isAbsolute = isAbsolute;
@@ -47,12 +51,12 @@ public class Link {
    * @param localSite the site for both the originating page and the link target
    */
   public static Factory toLocalSite(Site localSite) {
-    return new Factory(localSite, false);
+    return new Factory(Optional.of(localSite), false);
   }
 
   /**
    * Begin building a link to an absolute address.
-   * <p/>
+   * <p>
    * This should be used only if the resulting link will appear in a context outside of a local site, such as in a
    * downloadable document file. If the link will appear on a site page served by this application, instead use {@link
    * #toLocalSite} or {@link #toForeignSite} with a correct {@code localSite} argument.
@@ -60,7 +64,7 @@ public class Link {
    * @param targetSite the site of the link target
    */
   public static Factory toAbsoluteAddress(Site targetSite) {
-    return new Factory(targetSite, true);
+    return new Factory(Optional.of(targetSite), true);
   }
 
   /**
@@ -83,8 +87,21 @@ public class Link {
               + "(Note: This error can be prevented by configuring a hostname either on every site or none.)",
           foreignSite.getKey(), localSite.getKey(), localHostname.get()));
     }
-    return new Factory(foreignSite, isAbsolute);
+    return new Factory(Optional.of(foreignSite), isAbsolute);
   }
+
+  /**
+   * Begin building a link to a siteless handler. The returned factory object will throw exceptions if {@link
+   * Factory#toPattern} is called for a handler that is not siteless, and will silently link to any path with no site
+   * token if {@link Factory#toPath} is called.
+   *
+   * @see org.ambraproject.wombat.config.site.Siteless
+   */
+  public static Factory toSitelessHandler() {
+    return SITELESS_FACTORY;
+  }
+
+  private static final Factory SITELESS_FACTORY = new Factory(Optional.empty(), true);
 
   /**
    * Begin building a link to a page on another site.
@@ -107,10 +124,10 @@ public class Link {
    * An intermediate builder class.
    */
   public static class Factory {
-    private final Site site;
+    private final Optional<Site> site; // if absent, may link only to siteless handlers
     private final boolean isAbsolute;
 
-    private Factory(Site site, boolean isAbsolute) {
+    private Factory(Optional<Site> site, boolean isAbsolute) {
       this.site = Preconditions.checkNotNull(site);
       this.isAbsolute = isAbsolute;
     }
@@ -135,20 +152,85 @@ public class Link {
      */
     public Link toPattern(RequestMappingContextDictionary requestMappingContextDictionary, String handlerName,
                           Map<String, ?> variables, Multimap<String, ?> queryParameters, List<?> wildcardValues) {
-      RequestMappingContext mapping = requestMappingContextDictionary.getPattern(handlerName, site);
+      RequestMappingContext mapping = requestMappingContextDictionary.getPattern(handlerName, site.orElse(null));
       if (mapping == null) {
-        String message = String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.getKey());
+        String message = site.isPresent()
+            ? String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.get().getKey())
+            : String.format("No siteless handler with name=\"%s\" exists", handlerName);
         throw new IllegalArgumentException(message);
       }
-      String path = buildPathFromMapping(mapping, site, variables, queryParameters, wildcardValues);
-      return toPath(path);
+
+      final Optional<Site> linkSite;
+      if (mapping.isSiteless()) {
+        linkSite = Optional.empty();
+      } else if (site.isPresent()) {
+        linkSite = site;
+      } else {
+        throw new IllegalStateException("Can link only to Siteless handlers with a 'toSitelessHandler' Factory");
+      }
+
+      String path = buildPathFromPattern(mapping.getPattern(), linkSite, variables, queryParameters, wildcardValues);
+
+      return new Link(linkSite, path, isAbsolute);
+    }
+
+    public PatternBuilder toPattern(RequestMappingContextDictionary requestMappingContextDictionary, String handlerName) {
+      return new PatternBuilder(requestMappingContextDictionary, handlerName);
+    }
+
+    public class PatternBuilder {
+      private final RequestMappingContextDictionary requestMappingContextDictionary;
+      private final String handlerName;
+
+      private final Map<String, Object> pathVariables = new LinkedHashMap<>();
+      private final Multimap<String, Object> queryParameters = LinkedListMultimap.create();
+      private final List<Object> wildcardValues = new ArrayList<>();
+
+      private PatternBuilder(RequestMappingContextDictionary requestMappingContextDictionary, String handlerName) {
+        this.requestMappingContextDictionary = Objects.requireNonNull(requestMappingContextDictionary);
+        this.handlerName = Objects.requireNonNull(handlerName);
+      }
+
+      public PatternBuilder addPathVariables(Map<String, ?> pathVariables) {
+        this.pathVariables.putAll(pathVariables);
+        return this;
+      }
+
+      public PatternBuilder addPathVariable(String key, Object value) {
+        this.pathVariables.put(key, value);
+        return this;
+      }
+
+      public PatternBuilder addQueryParameters(Multimap<String, ?> queryParameters) {
+        this.queryParameters.putAll(queryParameters);
+        return this;
+      }
+
+      public PatternBuilder addQueryParameter(String key, Object value) {
+        this.queryParameters.put(key, value);
+        return this;
+      }
+
+      public PatternBuilder addWildcardValues(List<?> wildcardValues) {
+        this.wildcardValues.addAll(wildcardValues);
+        return this;
+      }
+
+      public PatternBuilder addWildcardValue(Object wildcardValue) {
+        this.wildcardValues.add(wildcardValue);
+        return this;
+      }
+
+      public Link build() {
+        return toPattern(requestMappingContextDictionary, handlerName, pathVariables, queryParameters, wildcardValues);
+      }
     }
   }
 
   // Match path wildcards of one or two asterisks
   private static final Pattern WILDCARD = Pattern.compile("\\*\\*?");
 
-  private static String buildPathFromMapping(RequestMappingContext mapping, Site site,
+  private static String buildPathFromPattern(String pattern, Optional<Site> site,
                                              Map<String, ?> variables,
                                              Multimap<String, ?> queryParameters,
                                              List<?> wildcardValues) {
@@ -156,9 +238,7 @@ public class Link {
     Preconditions.checkNotNull(variables);
     Preconditions.checkNotNull(queryParameters);
 
-    String pattern = mapping.getPattern();
-
-    if (site.getRequestScheme().hasPathToken()) {
+    if (site.isPresent() && site.get().getRequestScheme().hasPathToken()) {
       if (pattern.equals("/*") || pattern.startsWith("/*/")) {
         pattern = pattern.substring(2);
       } else {
@@ -175,15 +255,12 @@ public class Link {
 
   private static String fillVariables(String path, final Map<String, ?> variables) {
     UriComponentsBuilder builder = ServletUriComponentsBuilder.fromPath(path);
-    UriComponents.UriTemplateVariables uriVariables = new UriComponents.UriTemplateVariables() {
-      @Override
-      public Object getValue(String name) {
-        Object value = variables.get(name);
-        if (value == null) {
-          throw new IllegalArgumentException("Missing required parameter " + name);
-        }
-        return value;
+    UriComponents.UriTemplateVariables uriVariables = (String name) -> {
+      Object value = variables.get(name);
+      if (value == null) {
+        throw new IllegalArgumentException("Missing required parameter " + name);
       }
+      return value;
     };
 
     return builder.build().expand(uriVariables).encode().toString();
@@ -246,7 +323,7 @@ public class Link {
   /**
    * Build a link from this object. The returned value may be either an absolute link (full URL) or a relative link
    * (path beginning with "/") depending on the sites used to set up this object.
-   * <p/>
+   * <p>
    * The returned path is suitable as an {@code href} value to be used in the response to the {@code request} argument.
    * The argument value must resolve to the local site given to set up this object.
    *
@@ -260,7 +337,7 @@ public class Link {
     }
     sb.append(request.getContextPath()).append('/');
 
-    Optional<String> pathToken = site.getRequestScheme().getPathToken();
+    Optional<String> pathToken = site.flatMap(s -> s.getRequestScheme().getPathToken());
     if (pathToken.isPresent()) {
       sb.append(pathToken.get()).append('/');
     }
@@ -276,13 +353,12 @@ public class Link {
 
     ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
 
-    Optional<String> targetHostname = site.getRequestScheme().getHostName();
-    sb.append(targetHostname.or(clientEndpoint.getHostname()));
+    Optional<String> targetHostname = site.flatMap(s -> s.getRequestScheme().getHostName());
+    sb.append(targetHostname.orElse(clientEndpoint.getHostname()));
 
-    Optional<Integer> serverPort = clientEndpoint.getPort();
-    if (serverPort.isPresent()) {
-      sb.append(':').append(serverPort.get());
-    }
+    clientEndpoint.getPort().ifPresent(serverPort -> {
+      sb.append(':').append(serverPort);
+    });
   }
 
 

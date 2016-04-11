@@ -1,0 +1,382 @@
+@charset "UTF-8";
+@import "global-library-imports";
+@import "global-section-imports";
+@import "pages/article";
+@import "sections/ambra/_forms";
+
+/* comments */
+.cf{
+  @include clearfix;
+}
+// For forklifting purposes allows us to use ems
+%size-overide{
+  *:not(h1,h2,h3,h4,h5,h6){font-size: 13px;}
+}
+
+.loader.showing {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: $black;
+  z-index: map-get($zindex, dropdown);
+  opacity: 0.5;
+  @include single-transition();
+}
+
+#thread {
+  .btn.disabled{
+    @include single-transition();
+    background: #636363;
+    color: #636363;
+    display: inline-block;
+    position: relative;
+    &:after {
+      @extend .icon-spinner;
+      color:$white;
+      line-height: inherit;
+      position: absolute;
+      top: 0;
+      left: rem-calc(10);
+    }
+  }
+@extend %size-overide;
+  position: relative;
+  h2 {
+    margin: 30px 10px;
+    font-weight: normal;
+    font-size: rem-calc(26px);
+    font-family: $font-face-fancy;
+  }
+
+  p.post_comment {
+    color: #666;
+    margin-bottom: 50px;
+    padding: 0 10px;
+  }
+
+  p.post_comment a {
+    color: $plos-default;
+    text-decoration: underline;
+  }
+
+  ul#threads {
+    border-top: 1px solid #D1D1D1;
+    list-style: none;
+    margin: 0;
+    padding: 30px 0 0 0;
+
+    li {
+      margin-bottom: 4px;
+      @include clearfix;
+    }
+
+    li div {
+      display: inline-block;
+      float: left;
+      box-sizing: content-box;
+    }
+
+    li a {
+      color: $grey-dark;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    li div.responses {
+      border-right: 1px solid #D1D1D1;
+      font-weight: bold;
+      padding: 5px 14px;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: .8em;
+      margin-top: 30px;
+      width: 62px;
+    }
+
+    li div.responses span {
+      display: block;
+      font-size: 2em;
+      font-weight: normal;
+      line-height: normal;
+      margin-bottom: 10px;
+    }
+
+    li div.recent {
+      line-height: 1.25;
+      padding: 5px 14px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    li div.recent span {
+      font-size: .8em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    li div.title {
+      font-size: 1em;
+      width: 455px;
+      padding: 35px 50px;
+      background: #efefef;
+      float: right;
+      word-wrap: break-word;
+    }
+
+    li div.title span {
+      display: block;
+      font-size: .9em;
+    }
+  }
+}
+
+/* comments responses */
+#responses {
+  @extend %size-overide;
+  .response {
+    margin-bottom: 30px;
+  }
+
+  .response .info {
+    padding: 20px 15px;
+    border-top: 5px solid $grey-dark;
+    background: #efefef;
+    position: relative;
+  }
+
+  .response .info h3 {
+    font-size: 1.462em;
+  }
+
+  .response.correction h3 {
+    color: $warning;
+  }
+
+  .response .info h4 {
+    font-size: .815em;
+  }
+
+  .response.original .info {
+    border-top: 5px solid $plos-one;
+    @extend %brand-border;
+  }
+
+  .response .response_content {
+    padding: 20px 15px;
+    word-wrap: break-word;
+  }
+
+  .response .response_title {
+    word-wrap: break-word;
+  }
+
+  .response .toolbar {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+
+  .response .info .arrow {
+    width: 18px;
+    height: 25px;
+    background: image-url('ambra/arrow.png') 0 0 no-repeat;
+    position: absolute;
+    left: -29px;
+    top: 0;
+  }
+}
+
+.reply {
+  @extend %size-overide;
+  background-color: #333;
+  padding: 30px 30px 15px 30px;
+  position: relative;
+  color: $white;
+  h2,h3,h4,a, p, div {
+    color: $white;
+  }
+}
+
+.reply h4 {
+  font-size: 1.385em;
+  margin-bottom: 30px;
+}
+
+.reply .reply_content {
+  margin-bottom: rem-calc(30px);
+  ol {
+    margin: rem-calc(13px) 0;
+    padding: 0 0 0 rem-calc(45px);
+    li {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      list-style-type: decimal;
+      display: list-item;
+    }
+  }
+}
+
+.reply a {
+  text-decoration: underline;
+}
+
+.reply a:hover {
+  text-decoration: none;
+  color: #999;
+}
+
+.reply form fieldset {
+  min-width: 49%;
+  float: left;
+}
+
+/* spacing between competing interest radio buttons */
+.reply form fieldset div.cf {
+  margin-bottom: 10px;
+}
+
+/* competing interest text area margins */
+.reply form fieldset div.competing_text,
+.reply form fieldset #flag_text {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.reply.review form fieldset {
+  float: none;
+  width: 100%;
+}
+
+.reply.correction form fieldset {
+  float: none;
+  width: 100%;
+}
+
+.reply form fieldset input,
+.reply form fieldset textarea {
+  display: block;
+  padding: 3px;
+  width: 687px;
+  border: 1px solid #f2f2f2;
+  margin: 0 0 10px 0 !important;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.reply form fieldset textarea {
+  height: 106px;
+  resize: none;
+}
+
+.reply form fieldset textarea.competing_interests {
+  min-height: auto;
+  height: 88px;
+  resize: none;
+  margin-bottom: 12px !important;
+}
+
+.reply form fieldset div {
+  margin-bottom: 15px;
+}
+
+.reply form input[type=radio], .reply form input[type=checkbox] {
+  float: left;
+  border: none;
+}
+
+.reply form input[type=radio] {
+  width: auto;
+  margin: 0px 5px 0px 0 !important;
+}
+
+.reply form input[type=checkbox] {
+  width: 18px;
+  height: 14px;
+  margin: 0 5px 10px 0 !important;
+}
+
+.reply form span.btn {
+  margin-right: 10px;
+}
+
+.reply form span.btn:hover {
+  background: $plos-default;
+  color: $white;
+  cursor: pointer;
+}
+
+.reply form span.btn_cancel {
+  background: #636363;
+  color: #FFF;
+}
+
+.reply form input[type=submit] {
+}
+
+.reply form fieldset label {
+  font-size: rem-calc(11px);
+  position: relative;
+}
+
+.reply .help p {
+  color: #CCC;
+}
+
+.reply .help span {
+  color: $white;
+}
+
+.reply.review #flagConfirm, .reply #correction_confirm {
+  position: relative;
+}
+
+.reply .close_confirm {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-image: image-url('icon.sprite.close.png');
+  @extend %brand-background;
+  text-indent: -9999px;
+  border-radius: 3px;
+}
+
+.reply.review .close_confirm:hover {
+  background-position: 0 -24px;
+}
+
+.reply .error {
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: $grey-dark;
+  p {
+    font-style: normal;
+    font-weight: bold;
+    color: $warning;
+    margin-bottom: 0;
+  }
+}
+
+#reply_loading.loading_overlay img {
+  position: fixed;
+  width: 58px;
+  height: 58px; /* Natural size of image */
+  left: 50%;
+  margin-left: -29px;
+  top: 50%;
+  margin-top: -29px; /* Center in window (29 == 1/2 of size) */
+}
+
+//RECAPTCHA styling
+#recaptcha_widget_div{
+  @extend .clearfix;
+  display: block !important;
+  #recaptcha_area #recaptcha_table{ background-color: $white;}
+
+
+}
+
+#recaptcha_privacy{
+  font-size: $txt-size-xxsmall;
+}

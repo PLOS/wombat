@@ -41,8 +41,7 @@ category: components
   @include rounded-pill($padding: $pad-small,  $hover: false);
 }
 
-.button {
-  @extend %brand-background-hover;
+%button-base{
   border-radius: 4px;     //matches production
   width: auto;
   padding: $pad-xsmall;
@@ -52,6 +51,12 @@ category: components
   font-weight: bold;
   color: $white;
 }
+
+.button {
+  @extend %brand-background-hover;
+  @extend %button-base;
+}
+
 
 // to be used with tooltip_hover.js
 .button-big{
@@ -151,6 +156,9 @@ variable  | result   | default
 }
 .block-card {
   @include blocks($radius: none, $padding: none);
+}
+.block-dark{
+  @include blocks($radius: all, $color: $grey-dark, $shadow: none)
 }
 
 

@@ -52,6 +52,11 @@
           ${note}
           </#list>
         </#if>
+        <#if author.orcid?? && author.orcid.authenticated>
+          <p id="authOrcid-${author_index?c}">
+           <a href="${author.orcid.value}">${author.orcid.value}</a>
+          </p>
+        </#if>
         <a data-js-tooltip="tooltip_close" class="close" id="tooltipClose${author_index?c}"> &#x02A2F; </a>
       </div>
     </#if>

@@ -43,6 +43,7 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
 
 */
 
+
 .more-icon {
   // need to use content instead of @extend .fa-chevron-circle-right with ::after;
   content: '\f138';
@@ -56,6 +57,13 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   @extend .fa;
   line-height: ($txt-size-xxlarge * 2);
   font-size: $txt-size-xxlarge;
+}
+
+
+.icon-spinner{
+@extend .icon-fa;
+  content: "\f110";
+  @extend .fa-spin;
 }
 
 .icon-twitter {
@@ -81,6 +89,16 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   @extend .fa-envelope-o;
   content: '\f003';
 }
+.icon-minus {
+  @extend .icon-fa;
+  @extend .fa-minus;
+  line-height: normal;
+}
+.icon-plus-no-square {
+  @extend .icon-fa;
+  @extend .fa-plus;
+  line-height: normal;
+}
 .icon-plus {
   @extend .icon-fa;
   @extend .fa-plus-square;
@@ -100,6 +118,14 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   @extend .icon-fa;
   @extend .fa-exclamation-circle;
   content: "\f06a";
+}
+.icon-arrow-right{
+  @extend .icon-fa;
+  @extend .fa-arrow-right;
+}
+.icon-arrow-left{
+  @extend .icon-fa;
+  @extend .fa-arrow-left;
 }
 .icon-caret-down {
   @extend .icon-fa;
@@ -170,6 +196,13 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   content: '\f111';
   font-size: $txt-size-xxxsmall;
   line-height: $line-height-icon;
+}
+
+.icon-times-circle {
+  @extend .icon-fa;
+  @extend .fa-times-circle;
+  line-height: $line-height;
+  font-size: $txt-size-xlarge;
 }
 
 .icon-pointer {

@@ -50,6 +50,16 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
+  public String getMailServer() {
+    return null;
+  }
+
+  @Override
+  public String getRootPagePath() {
+    return null;
+  }
+
+  @Override
   public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
 
   @Override
@@ -124,11 +134,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
       }
 
       @Override
-      public String getServiceUrl() {
-        return null;
-      }
-
-      @Override
       public String getLoginUrl() {
         return null;
       }
@@ -138,10 +143,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
         return null;
       }
 
-      @Override
-      public String getLogoutServiceUrl() {
-        return null;
-      }
     };
   }
 }

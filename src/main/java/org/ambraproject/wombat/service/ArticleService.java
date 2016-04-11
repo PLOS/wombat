@@ -13,7 +13,10 @@
 
 package org.ambraproject.wombat.service;
 
+import com.google.common.collect.ImmutableMap;
+
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,4 +33,12 @@ public interface ArticleService {
    * @throws IOException
    */
   Map<?, ?> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException;
+
+  /**
+   * Get the list of article figures and tables from the article meta data
+   *
+   * @param articleMetadata article metadata
+   * @return list of figures and tables
+   */
+  List<ImmutableMap<String, String>> getArticleFiguresAndTables(Map<?, ?> articleMetadata);
 }

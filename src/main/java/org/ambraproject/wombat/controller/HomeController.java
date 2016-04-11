@@ -6,19 +6,27 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.feed.CommentFeedView;
+import org.ambraproject.wombat.feed.FeedMetadataField;
+import org.ambraproject.wombat.feed.FeedType;
+import org.ambraproject.wombat.feed.ArticleFeedView;
+import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.RecentArticleService;
+import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
-import org.ambraproject.wombat.service.remote.SoaService;
-import org.ambraproject.wombat.service.remote.SolrSearchService;
-import org.ambraproject.wombat.service.remote.SolrSearchServiceImpl;
+import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -26,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Handles requests for a site home page.
@@ -35,25 +44,22 @@ public class HomeController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
   @Autowired
-  private SolrSearchService solrSearchService;
+  private SolrSearchApi solrSearchApi;
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @Autowired
   private RecentArticleService recentArticleService;
 
-  /**
-   * Extract {@code docs} element; rename {@code "id"} to {@code "doi"} to match the service API.
-   */
-  private static List<Object> sanitizeSolrResults(Map<?, ?> solrResults) {
-    List<Object> articles = (List<Object>) solrResults.get("docs");
-    for (Object articleObj : articles) {
-      Map<String, Object> article = (Map<String, Object>) articleObj;
-      article.put("doi", article.remove("id"));
-    }
-    return articles;
-  }
+  @Autowired
+  private ArticleFeedView articleFeedView;
+
+  @Autowired
+  private CommentFeedView commentFeedView;
+
+  @Autowired
+  private CommentService commentService;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -61,38 +67,38 @@ public class HomeController extends WombatController {
   private static enum SectionType {
     RECENT {
       @Override
-      public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchServiceImpl.SolrSortOrder.DATE_NEWEST_FIRST);
+      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+        return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST);
       }
     },
     POPULAR {
       @Override
-      public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchServiceImpl.SolrSortOrder.MOST_VIEWS_30_DAYS);
+      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+        return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.MOST_VIEWS_30_DAYS);
       }
     },
     CURATED {
       @Override
-      public List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         String journalKey = site.getJournalKey();
         String listId = String.format("%s/%s/%s", section.curatedListType, journalKey, section.curatedListName);
-        Map<String, Object> curatedList = context.soaService.requestObject("lists/" + listId, Map.class);
-        List<?> articles = (List<?>) curatedList.get("articles");
-        return (List<Object>) articles;
+        Map<String, Object> curatedList = context.articleApi.requestObject("lists/" + listId, Map.class);
+        List<Map<String,Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
+        return articles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
       }
     };
 
-    private static List<Object> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
-                                                    SolrSearchServiceImpl.SolrSortOrder order)
+    private static List<SolrArticleAdapter> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
+                                                                SolrSearchApiImpl.SolrSortOrder order)
         throws IOException {
       ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
           .setStart(start)
           .setRows(section.resultCount)
           .setSortOrder(order)
           .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-          .setDateRange(SolrSearchServiceImpl.SolrEnumeratedDateRange.ALL_TIME);
-      Map<?, ?> result = context.solrSearchService.search(query.build());
-      return sanitizeSolrResults(result);
+          .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
+      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.search(query.build());
+      return SolrArticleAdapter.unpackSolrQuery(result);
     }
 
     /**
@@ -102,7 +108,7 @@ public class HomeController extends WombatController {
       return SectionType.valueOf(name.toUpperCase());
     }
 
-    public abstract List<Object> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException;
+    public abstract List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException;
   }
 
   private class SectionSpec {
@@ -144,11 +150,12 @@ public class HomeController extends WombatController {
       return (type == SectionType.CURATED) ? curatedListName : type.name().toLowerCase();
     }
 
-    public List<Object> getArticles(Site site, int start) throws IOException {
+    public List<SolrArticleAdapter> getArticles(Site site, int start) throws IOException {
       if (since != null) {
         if (type == SectionType.RECENT) {
-          return recentArticleService.getRecentArticles(site,
+          List<Map<String, Object>> recentArticles = recentArticleService.getRecentArticles(site,
               resultCount, since, shuffle, articleTypes, articleTypesToExclude, Optional.fromNullable(cacheTtl));
+          return recentArticles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
         } else {
           throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support
         }
@@ -239,7 +246,7 @@ public class HomeController extends WombatController {
     Map<String, Object> sectionsForModel = Maps.newHashMapWithExpectedSize(sectionsToRender.size());
     for (SectionSpec section : sectionsToRender) {
       try {
-        List<Object> articles = section.getArticles(site, start);
+        List<SolrArticleAdapter> articles = section.getArticles(site, start);
         sectionsForModel.put(section.getName(), articles);
       } catch (IOException e) {
         log.error("Could not populate home page section: " + section.getName(), e);
@@ -257,15 +264,56 @@ public class HomeController extends WombatController {
     }
 
     model.addAttribute("sections", sectionsForModel);
+    model.addAttribute("parameterMap", request.getParameterMap()); // needed for paging
     return site.getKey() + "/ftl/home/home";
   }
 
   private void populateCurrentIssue(Model model, Site site) throws IOException {
     String issueAddress = "journals/" + site.getJournalKey() + "?currentIssue";
-    Map<String, Object> currentIssue = soaService.requestObject(issueAddress, Map.class);
+    Map<String, Object> currentIssue = articleApi.requestObject(issueAddress, Map.class);
     model.addAttribute("currentIssue", currentIssue);
-    Map<String, Object> issueImageMetadata = soaService.requestObject("articles/" + currentIssue.get("imageUri"), Map.class);
+    Map<String, Object> issueImageMetadata = articleApi.requestObject("articles/" + currentIssue.get("imageUri"), Map.class);
     model.addAttribute("issueImage", issueImageMetadata);
+  }
+
+  /**
+   * Serves recent journal articles as XML to be read by an RSS reader
+   *
+   * @param site    site the request originates from
+   * @return RSS view of recent articles for the specified site
+   * @throws IOException
+   */
+  @RequestMapping(name ="homepageFeed", value="/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getRssFeedView(@SiteParam Site site, @PathVariable String feedType)
+      throws IOException {
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setStart(0)
+        .setRows(getFeedLength(site))
+        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setIsRssSearch(true);
+    Map<String, ?> recentArticles = solrSearchApi.search(query.build());
+
+    ModelAndView mav = new ModelAndView();
+    FeedMetadataField.SITE.putInto(mav, site);
+    FeedMetadataField.FEED_INPUT.putInto(mav, recentArticles.get("docs"));
+    mav.setView(FeedType.getView(articleFeedView, feedType));
+    return mav;
+  }
+
+  @RequestMapping(name = "commentFeed", value = "/feed/comments/{feedType:atom|rss}", method = RequestMethod.GET)
+  public ModelAndView getCommentFeed(@SiteParam Site site, @PathVariable String feedType)
+      throws IOException {
+    List<Map<String, Object>> comments = commentService.getRecentJournalComments(site.getJournalKey(), getFeedLength(site));
+
+    ModelAndView mav = new ModelAndView();
+    FeedMetadataField.SITE.putInto(mav, site);
+    FeedMetadataField.TITLE.putInto(mav, "Comments");
+    FeedMetadataField.FEED_INPUT.putInto(mav, comments);
+    mav.setView(FeedType.getView(commentFeedView, feedType));
+    return mav;
   }
 
 }

@@ -7,9 +7,12 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class CalendarUtil {
+
   private CalendarUtil() {
     throw new AssertionError("Not instantiable");
   }
+
+  private static final TimeZone GMT = TimeZone.getTimeZone("GMT");
 
   /**
    * Formats a date string expressed in the ISO 8601 format.
@@ -27,8 +30,15 @@ public class CalendarUtil {
     if (interpretDateAsLocalTime) {
       calendar.setTimeZone(TimeZone.getDefault());
     }  // Else calendar will be set with tz in the ISO-8601 date string, which is usually UTC
-    Date d = calendar.getTime();
-    return new SimpleDateFormat(format).format(d);
+
+    TimeZone timeZone = calendar.getTimeZone();
+    if ("GMT+00:00".equals(timeZone.getID())) {
+      timeZone = GMT; // kludge for formatting (remove the "+00:00" offset)
+    }
+
+    SimpleDateFormat formatObj = new SimpleDateFormat(format);
+    formatObj.setTimeZone(timeZone);
+    return formatObj.format(calendar.getTime());
   }
 
 }

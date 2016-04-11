@@ -18,9 +18,8 @@
 
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Joiner;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.service.remote.SoaService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.BuildInfo;
 import org.ambraproject.wombat.util.GitInfo;
 import org.slf4j.Logger;
@@ -29,6 +28,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -36,7 +37,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   private static final Logger log = LoggerFactory.getLogger(BuildInfoServiceImpl.class);
 
   @Autowired
-  private SoaService soaService;
+  private ArticleApi articleApi;
 
   @Autowired
   private GitInfo gitInfo;
@@ -90,19 +91,21 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   }
 
   private BuildInfo fetchWebappBuildInfo() throws IOException {
+    Map<Object, Object> buildInfo = new LinkedHashMap<>();
+
     Properties properties = new Properties();
     try (InputStream versionStream = getClass().getResourceAsStream("/version.properties")) {
       properties.load(versionStream);
     }
-    properties.setProperty("gitCommitIdAbbrev", gitInfo.getCommitIdAbbrev());
-    String enabledDevFeaturesString = Joiner.on(',')
-        .join(runtimeConfiguration.getEnabledDevFeatures());
-    properties.setProperty("enabledDevFeatures", enabledDevFeaturesString);
-    return parse(properties);
+    buildInfo.putAll(properties);
+
+    buildInfo.put("gitCommitIdAbbrev", gitInfo.getCommitIdAbbrev());
+    buildInfo.put("enabledDevFeatures", runtimeConfiguration.getEnabledDevFeatures());
+    return parse(buildInfo);
   }
 
   private BuildInfo fetchServiceBuildInfo() throws IOException {
-    return parse(soaService.requestObject("config?type=build", Map.class));
+    return parse(articleApi.requestObject("config?type=build", Map.class));
   }
 
   private static BuildInfo parse(Map<?, ?> propertyMap) {
@@ -111,7 +114,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
         (String) propertyMap.get("buildDate"),
         (String) propertyMap.get("buildUser"),
         (String) propertyMap.get("gitCommitIdAbbrev"),
-        (String) propertyMap.get("enabledDevFeatures"));
+        (Collection<String>) propertyMap.get("enabledDevFeatures"));
   }
 
 }

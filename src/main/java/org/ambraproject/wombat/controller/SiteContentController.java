@@ -19,7 +19,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.EditorialContentService;
+import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.util.CacheParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +38,7 @@ import java.util.Map;
 public class SiteContentController extends WombatController {
 
   @Autowired
-  private EditorialContentService editorialContentService;
+  private EditorialContentApi editorialContentApi;
 
   @RequestMapping(name="siteContent", value="/s/{pageName}")
   public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
@@ -58,7 +58,7 @@ public class SiteContentController extends WombatController {
     Optional<Integer> version = Optional.absent(); // versioning is not supported for site content
     try {
       // Check for validity of the content repo key prior to rendering page. Return a 404 if no object found.
-      editorialContentService.requestMetadata(CacheParams.create(cacheKey), repoKey, version);
+      editorialContentApi.requestMetadata(CacheParams.create(cacheKey), repoKey, version);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

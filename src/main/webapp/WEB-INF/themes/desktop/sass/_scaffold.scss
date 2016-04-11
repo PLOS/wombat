@@ -71,10 +71,10 @@ $grid-width-inside: ($row-width - $grid-gutter);
   @return ( $colNumber * $columnWidth ) - $grid-gutter;
 }
 
-@mixin plos-grid-column($pixelwidth, $gutter: outside, $gutter-width: $grid-gutter, $f-gridargs...) {
 
+@mixin plos-grid-column($pixelwidth, $gutter: outside, $gutter-width: $grid-gutter, $collapse: null, $f-gridargs...) {
   // from foundation:
-  @include grid-column($collapse: null, $f-gridargs...);
+  @include grid-column($collapse: $collapse, $f-gridargs...);
   // sets the width
   @if $pixelwidth == full-width {
     width: $grid-width-inside;
@@ -197,6 +197,38 @@ main,
     max-width: 100%;
   }
 }
+
+//body layout options
+/*doc
+---
+title: layout options
+name: layout
+category: Scaffold
+---
+
+```sass_example
+
+```
+
+```sass_example
+
+```
+
+*/
+@mixin layout-two-column {
+    @extend .plos-row;
+    width: (rem-calc($grid-width) - $grid-gutter);
+    margin-top: rem-calc($line-height-large);
+    margin-bottom: rem-calc($line-height-large);
+
+    nav {
+      @include plos-grid-column($pixelwidth: 180, $gutter: right);
+      position: relative;
+      & + article {
+        @include plos-grid-column($pixelwidth: 760, $gutter: none, $float: right);
+      }
+    }
+  }
 
 /*doc
 

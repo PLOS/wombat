@@ -1,30 +1,21 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URI;
-import java.util.ArrayList;
+import java.io.StringWriter;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Set;
 
 /**
  * A utility class for creation and management of HTTP messages
@@ -34,6 +25,7 @@ public class HttpMessageUtil {
   /**
    * Describes how to filter or modify a header while copying a response.
    */
+  @FunctionalInterface
   public static interface HeaderFilter {
     /**
      * Return the header value to copy into the outgoing response, under the same header name as the incoming response.
@@ -88,6 +80,22 @@ public class HttpMessageUtil {
   }
 
   /**
+   * Read content from a response
+   *
+   * @param response incoming HttpResponse to be read
+   * @throws IOException
+   */
+  public static String readResponse(HttpResponse response) throws IOException {
+
+    StringWriter writer = new StringWriter();
+    try (InputStream streamFromService = response.getEntity().getContent())
+    {
+      IOUtils.copy(streamFromService, writer);
+    }
+    return writer.toString();
+  }
+
+  /**
    * Return a list of headers from a request, using an optional whitelist
    *
    * @param request a request
@@ -107,59 +115,24 @@ public class HttpMessageUtil {
   }
 
 
-  public static Collection<NameValuePair> getRequestParameters(HttpServletRequest request) {
-    return getRequestParameters(request, Predicates.<String>alwaysTrue());
-  }
+  /**
+   * Checks to see if we should serve the contents of the requested object, or just return a 304 response with no body,
+   * based on cache-related request headers.
+   *
+   * @param request      HttpServletRequest we will check for cache headers
+   * @param lastModified last modified timestamp of the actual resource on the server
+   * @param etag         etag generated from the actual resource on the server
+   * @return true if we should serve the bytes of the resource, false if we should return 304.
+   */
+  public static boolean checkIfModifiedSince(HttpServletRequest request, Long lastModified, String etag) {
 
-  public static Collection<NameValuePair> getRequestParameters(HttpServletRequest request, Set<String> paramNames) {
-    return getRequestParameters(request, Predicates.in(paramNames));
-  }
-
-  private static Collection<NameValuePair> getRequestParameters(HttpServletRequest request, Predicate<String> includeParam) {
-    Preconditions.checkNotNull(includeParam);
-    List<NameValuePair> paramList = new ArrayList<>();
-    Enumeration allParamNames = request.getParameterNames();
-    while (allParamNames.hasMoreElements()) {
-      String paramName = (String) allParamNames.nextElement();
-      if (includeParam.apply(paramName)) {
-        paramList.add(new BasicNameValuePair(paramName, request.getParameter(paramName)));
-      }
+    // Let the Etag-based header take precedence over If-Modified-Since.
+    String etagFromRequest = request.getHeader("If-None-Match");
+    if (etag != null && etagFromRequest != null) {
+      return !etagFromRequest.equals(etag);
+    } else {
+      return lastModified == null || lastModified > request.getDateHeader("If-Modified-Since");
     }
-    return paramList;
   }
-
-
-  public static HttpUriRequest buildRequest(URI fullUrl, String method) {
-    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), ImmutableSet.<NameValuePair>of());
-  }
-
-
-  public static HttpUriRequest buildRequest(URI fullUrl, String method,
-                                            Collection<? extends NameValuePair> params,
-                                            NameValuePair... additionalParams) {
-    return buildRequest(fullUrl, method, ImmutableSet.<Header>of(), params, additionalParams);
-  }
-
-
-  public static HttpUriRequest buildRequest(URI fullUrl, String method,
-                                            Collection<? extends Header> headers,
-                                            Collection<? extends NameValuePair> params,
-                                            NameValuePair... additionalParams) {
-    RequestBuilder reqBuilder = RequestBuilder.create(method).setUri(fullUrl);
-    Preconditions.checkNotNull(headers);
-    Preconditions.checkNotNull(params);
-    Preconditions.checkNotNull(additionalParams);
-    for (Header header : headers) {
-      reqBuilder.addHeader(header);
-    }
-    if (!params.isEmpty()) {
-      reqBuilder.addParameters(params.toArray(new NameValuePair[params.size()]));
-    }
-    for (NameValuePair param : additionalParams) {
-      reqBuilder.addParameter(param);
-    }
-    return reqBuilder.build();
-  }
-
 
 }

@@ -16,11 +16,19 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.net.HttpHeaders;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.Header;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -34,6 +42,20 @@ import static org.ambraproject.wombat.util.ReproxyUtil.X_REPROXY_URL;
  * Base class with common functionality for all controllers in the application.
  */
 public abstract class WombatController {
+
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
+
+  /**
+   * Use this method to enforce the presence of a given development feature in order to hide a controller implementation
+   * from users during development. Return a 404 if the given feature is not enabled.
+   * @param feature
+   */
+  protected void enforceDevFeature(String feature) {
+    if (!runtimeConfiguration.getEnabledDevFeatures().contains(feature)){
+      throw new NotFoundException("Required dev feature is not enabled");
+    }
+  }
 
   /**
    * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user
@@ -90,32 +112,53 @@ public abstract class WombatController {
     return (parameterValue != null) && !Boolean.toString(false).equalsIgnoreCase(parameterValue);
   }
 
+
+  // Inconsistent with equals. See Javadoc for java.util.SortedSet.
+  private static ImmutableSortedSet<String> caseInsensitiveImmutableSet(String... strings) {
+    return ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, Arrays.asList(strings));
+  }
+
   /**
    * Names of headers that, on a request from the client, should be passed through on our request to the service tier
    * (Rhino or Content Repo).
    */
-  protected static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet(X_PROXY_CAPABILITIES);
+  protected static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet(
+      HttpHeaders.IF_MODIFIED_SINCE, X_PROXY_CAPABILITIES);
 
   /**
    * Names of headers that, in a response from the service tier (Rhino or Content Repo), should be passed through to the
    * client.
    */
   private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, X_REPROXY_URL, X_REPROXY_CACHE_FOR);
-  protected static final HttpMessageUtil.HeaderFilter ASSET_RESPONSE_HEADER_FILTER = new HttpMessageUtil.HeaderFilter() {
-    @Override
-    public String getValue(Header header) {
+      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, HttpHeaders.LAST_MODIFIED,
+      X_REPROXY_URL, X_REPROXY_CACHE_FOR);
+
+  protected static HttpMessageUtil.HeaderFilter getAssetResponseHeaderFilter(boolean isDownloadRequest) {
+    return (Header header) -> {
       String name = header.getName();
       if (!ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
         return null;
       }
       String value = header.getValue();
       if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
+        if (!isDownloadRequest) {
+          value = setDispositionType(value, "inline");
+        }
         return sanitizeAssetFilename(value);
       }
       return value;
+    };
+  }
+
+  private static final Pattern CONTENT_DISPOSITION_PATTERN = Pattern.compile("^\\s*\\w+\\s*(;.*)");
+
+  private static String setDispositionType(String dispositionHeaderValue, String newType) {
+    Matcher matcher = CONTENT_DISPOSITION_PATTERN.matcher(dispositionHeaderValue);
+    if (matcher.find()) {
+      return newType + matcher.group(1);
     }
-  };
+    return dispositionHeaderValue;
+  }
 
 
   private static final Pattern BAD_THUMBNAIL_EXTENSION = Pattern.compile("\\.PNG_\\w+$", Pattern.CASE_INSENSITIVE);
@@ -136,8 +179,51 @@ public abstract class WombatController {
   }
 
 
-  // Inconsistent with equals. See Javadoc for java.util.SortedSet.
-  private static ImmutableSortedSet<String> caseInsensitiveImmutableSet(String... strings) {
-    return ImmutableSortedSet.copyOf(String.CASE_INSENSITIVE_ORDER, Arrays.asList(strings));
+  // Parameter names defined by net.tanesha.recaptcha library
+  protected static final String RECAPTCHA_CHALLENGE_FIELD = "recaptcha_challenge_field";
+  protected static final String RECAPTCHA_RESPONSE_FIELD = "recaptcha_response_field";
+
+
+  /**
+   * If any validation errors from a form are present, set them up to be rendered.
+   * <p>
+   * If this method returns {@code true}, it generally means that the calling controller should halt and render a page
+   * displaying the validation messages.
+   *
+   * @param response             the response
+   * @param model                the model
+   * @param validationErrorNames attribute names for present validation errors
+   * @return {@code true} if a validation error is present
+   */
+  protected static boolean applyValidation(HttpServletResponse response, Model model,
+                                           Collection<String> validationErrorNames) {
+    if (validationErrorNames.isEmpty()) return false;
+
+    /*
+     * Presently, it is assumed that all validation error messages in FreeMarker use a simple presence/absence check
+     * with the '??' operator. The value 'true' is just a placeholder. If any validation error messages require more
+     * specific values, they must be added to the model separately. Refactor this method if that happens too often.
+     */
+    validationErrorNames.forEach(error -> model.addAttribute(error, true));
+
+    response.setStatus(HttpStatus.BAD_REQUEST.value());
+    return true;
   }
+
+  protected static void forwardAssetResponse(CloseableHttpResponse remoteResponse, HttpServletResponse responseToClient,
+                                             boolean isDownloadRequest)
+      throws IOException {
+    if (remoteResponse.getStatusLine().getStatusCode() == org.apache.http.HttpStatus.SC_NOT_MODIFIED) {
+      responseToClient.setStatus(org.apache.http.HttpStatus.SC_NOT_MODIFIED);
+    } else {
+      HttpMessageUtil.copyResponseWithHeaders(remoteResponse, responseToClient, getAssetResponseHeaderFilter(isDownloadRequest));
+    }
+  }
+
+  protected static int getFeedLength(Site site) throws IOException {
+    Map<String, Object> feedConfig = site.getTheme().getConfigMap("feed");
+    Number length = (Number) feedConfig.get("length");
+    return length.intValue();
+  }
+
 }

@@ -19,11 +19,11 @@ sup, sub {
   }
 
 sub {
-  top: $sub-sup-alignment;
+  top: $sub-alignment;
   }
 
 sup {
-  bottom: $sub-sup-alignment;
+  bottom: $sup-alignment;
   }
 
 /*doc
@@ -204,6 +204,11 @@ blockquote, .pullquote, .block-quote {
   font-weight: bold;
   }
 
+.block-aperta {
+  @extend .block-global-alert;
+  background: $clr-aperta;
+}
+
 .block-tip {
   @include callout($icon-type: 'pointer');
   }
@@ -231,11 +236,6 @@ blockquote, .pullquote, .block-quote {
   font-family: $font-face-fancy;
   font-size: rem-calc($txt-size-medium-large);
   line-height: $pad-large;
-  }
-
-.header-allcaps-smallest {
-  @extend %header-allcaps-plain;
-  font-size: $txt-size-xxxsmall;
   }
 
 /*doc
@@ -491,3 +491,9 @@ table.table-zebra-stripes {
   box-shadow: $default-header-shadow;
   text-align: center;
   }
+
+.header-allcaps-smallest {
+  @extend %header-allcaps-plain;
+  font-size: rem-calc($txt-size-xxxsmall);
+}
+

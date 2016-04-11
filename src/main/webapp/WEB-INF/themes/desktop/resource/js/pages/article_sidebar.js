@@ -107,6 +107,12 @@
     );
   })();
 
+  /* Load twitter */
+  if ($.fn.twitter ) {
+    var doi = $('meta[name=citation_doi]').attr('content');
+    var twitter = new $.fn.twitter();
+    twitter.getSidebarTweets(doi);
+  }
 })(jQuery);
 
 

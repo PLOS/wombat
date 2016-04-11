@@ -159,7 +159,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     // Extract title from description
     Matcher titleElement = TITLE_EXTRACTOR.matcher(description);
     if (!titleElement.find()) {
-      return title + ".";
+      return title.isEmpty() ? "" : (title + ".");
     }
     String descriptionTitleText = titleElement.group(1);
     descriptionTitleText = TextUtil.removeMarkup(descriptionTitleText);

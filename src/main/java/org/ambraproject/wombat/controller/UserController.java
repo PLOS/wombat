@@ -53,11 +53,4 @@ public class UserController extends WombatController {
     return new ModelAndView("redirect:" + referrer);
   }
 
-  @RequestMapping(name = "userInfo", value = "/user/{displayName}")
-  public String displayUserInfo(Model model, @SiteParam Site site, @PathVariable String displayName) throws IOException {
-    String userMetaUrl = "user?displayName=" + displayName;
-    Map<String, Object> userMetadata = articleApi.requestObject(userMetaUrl, Map.class);
-    model.addAttribute("user", userMetadata);
-    return site.getKey() + "/ftl/user/userInfo";
-  }
 }

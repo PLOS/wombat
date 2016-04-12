@@ -533,9 +533,12 @@ $image-container: ($image-width + $pad-small);
       }
     .postimg {
       float: left;
-      height: 75px;
+      height: rem-calc(75px);
       width: $image-width;
+      background-size: cover;
+      background-position: center;
       margin-right: $pad-small;
+      margin-bottom: 0;
       }
     .postdate {
       margin: 0;

@@ -5,6 +5,7 @@
 			class="no-js">
 <#assign depth = 0 />
 <#assign title = '' />
+<#assign adPage="Homepage"/>
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <body class="home ${journalStyle}">

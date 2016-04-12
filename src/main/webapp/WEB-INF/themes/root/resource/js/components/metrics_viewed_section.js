@@ -4,6 +4,7 @@ var MetricsViewedSection;
   MetricsViewedSection = MetricsTabComponent.extend({
     $element: $('#views'),
     $loadingEl: $('#chartSpinner'),
+    $headerEl: $('#viewedHeader'),
     $chartElement: $('#usage'),
     sourceOrder: ['figshare'],
     chartData:[],
@@ -24,7 +25,7 @@ var MetricsViewedSection;
     },
 
     afterLoadData: function () {
-      this._super();
+      this.showComponent();
       this.$chartElement.show();
     },
 
@@ -507,10 +508,11 @@ var MetricsViewedSection;
 
     selectSubjectArea: function (subjectArea, chart, baseLinkToRefset) {
       var activeArea = $('#subject_areas').data('activeArea');
-      chart.get(subjectArea).show();
       if(activeArea) {
         chart.get(activeArea).hide();
       }
+      chart.get(subjectArea).show();
+
 
       $('#linkToRefset').attr('href', baseLinkToRefset.replace('SUBJECT_AREA', subjectArea));
 

@@ -1,169 +1,105 @@
+var Signposts;
+
 (function ($) {
-  $.fn.signposts = function (doi) {
-    var errorText, tooSoonText, initData, issued, date_check, compareDate, isThree, plural_check, views, saves, shares, citations, listBody;
 
-    function validateDOI(doi) {
-      if (doi == null) {
-        throw new Error('DOI is null.');
-      }
+  Signposts = Class.extend({
 
-      doi = encodeURI(doi);
+    $element: $('#almSignposts'),
 
-      return doi.replace(new RegExp('/', 'g'), '%2F').replace(new RegExp(':', 'g'), '%3A');
-    }
+    isDataValid: function (data) {
+      return !_.isUndefined(data);
+    },
+    bindTooltips: function () {
+      $('.metric-term').mouseenter(function () {
 
-    function formatNumberComma(num) {
-      var fixNum = num.toString()
-      fixNum = fixNum.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      return fixNum;
-    }
+        clearTimeout($(this).data('mouseId'));
+        $(this).addClass('show-tip');
+        var tippy = $(this).next();
 
-    Date.prototype.addDays = function (days) {
-      this.setDate(this.getDate() + days);
-      return this;
-    };
+        $(tippy).fadeIn('fast').addClass('tippy');
 
-    date_check = function (logDate, numDays) {
-      ///requires moment.js
-      var testDate = new Date().addDays(-numDays),
-          newFormat = "YYYYMMDD",
-          oldFormat = "MMM DD, YYYY",
-          testDateFormat = moment(testDate).format(newFormat),
-          logDateFormat = moment(logDate, oldFormat, true);
+      }).mouseleave(function () {
+        var boxtop = $(this);
+        var tippy = $(this).next();
 
-      if (!logDateFormat.isValid()) {
-        // If format is not valid default to moment parsing
-        logDateFormat = moment(logDate);
-      }
-      logDateFormat = logDateFormat.format(newFormat);
+        $(tippy).mouseenter(function () {
 
-      // The selected time is more than numDays days from now
-      return logDateFormat >= testDateFormat;
-    };
+          var boxtop = $(tippy).prev();
+          clearTimeout($(boxtop).data('mouseId'));
+          if ($(boxtop).hasClass('show-tip')) {} else {$(boxtop).addClass('show-tip');}
 
-    plural_check = function (input) {
-      return parseInt(input.replace(/[^0-9]/g, '')) !== 1;
-    };
+        }).mouseleave(function () {
+          var boxtop = $(tippy).prev();
 
-    this.getSignpostData = function (doi) {
-      doi = validateDOI(doi);
-      var config, requestUrl, errorText, tooSoonText, pubDate, offsetDays;
+          $(boxtop).removeClass('show-tip');
 
-      pubDate = $('meta[name=citation_date]').attr("content");
+          $(tippy).fadeOut('fast');
+        });
 
-      offsetDays = 1; // TODO: if this number is one then add some logic to make it days singular - not an issue now.
-      tooSoonText = '<li></li><li></li><li id="tooSoon">Article metrics are unavailable for recently published articles.</li>';
-      errorText = '<li id="metricsError">Article metrics are unavailable at this time. Please try again later.</li>';
+        var mouseId = setTimeout(function () {
 
-      config = ALM_CONFIG;
+          $(tippy).fadeOut('fast');
 
-      requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail';
+          $(boxtop).removeClass('show-tip');
+        }, 250);
 
-      function displayError(message) {
-        $('#almSignposts').html(message);
-        $('#loadingMetrics').css('display', 'none');
-      }
+        $(boxtop).data('mouseId', mouseId);
+      });
+    },
+    init: function() {
+      var that = this;
+      var query = new AlmQuery();
 
-      $.ajax({
-        url:         requestUrl,
-        dataType:    'jsonp',
-        contentType: "text/json; charset=utf-8",
-        type:        "GET",
-        timeout:     20000
-      }).done(function (data) {
-        initData = data.data[0];
-        var numberOfDays = date_check(pubDate, offsetDays);
-
-        if (initData === undefined) {
-          if (numberOfDays === true) { // is date less than "offsetDays" number of  days ago
-            displayError(tooSoonText);
+      query.getArticleDetail(ArticleData.doi)
+        .then(function (articleData) {
+          var data = articleData.data[0];
+          if(that.isDataValid(data)) {
+            return data;
+          }
+          else if(query.isArticleNew()) {
+            throw new ErrorFactory('NewArticleError', '[Signposts::init] - The article is too new to have data.');
           }
           else {
-            displayError(errorText);
+            throw new ErrorFactory('InvalidDataError', '[Signposts::init] - The article data is invalid');
           }
-        }
-        else {
+        })
+        .then(function (data) {
+          var template  = _.template($('#signpostsTemplate').html());
+          var templateData = {
+            saveCount: data.saved,
+            citationCount: data.cited,
+            shareCount: data.discussed,
+            viewCount: data.viewed
+          };
 
-          //get the numbers & add commas where needed
-          saves = formatNumberComma(data.data[0].saved);
-          citations = formatNumberComma(data.data[0].cited);
-          views = formatNumberComma(data.data[0].viewed);
-          shares = formatNumberComma(data.data[0].discussed);
+          that.$element.html(template(templateData));
 
-          //check if term needs to be plural
-          function build_parts(li_id, metric) {
-            var plural = plural_check(metric);
-            if (plural === true) {
-              $(li_id).prepend(metric).find('.metric-term').append('s');
-            } else {
-              $(li_id).prepend(metric);
+          if(!_.isUndefined(data.sources)) {
+            var scopus = _.findWhere(data.sources, { name: 'scopus' });
+            if(scopus.metrics.total > 0) {
+              $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
             }
           }
 
-          build_parts('#almSaves', saves);
-          build_parts('#almCitations', citations);
-          build_parts('#almViews', views);
-          build_parts('#almShares', shares);
-
-          var scopus = 0;
-          if (data.data[0].sources !== undefined) {
-            scopus = data.data[0].sources[4].metrics.total;
+          //Initialize tooltips
+          that.bindTooltips();
+        })
+        .fail(function (error) {
+          switch(error.name) {
+            case 'NewArticleError':
+              var template  = _.template($('#signpostsNewArticleErrorTemplate').html());
+              break;
+            default:
+              var template  = _.template($('#signpostsGeneralErrorTemplate').html());
+              break;
           }
 
-          if (scopus > 0) {
-            $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
-          } else {
-            //
-          }
+          that.$element.html(template());
+        });
 
-          $('#loadingMetrics').css('display', 'none');
-
-          $('#almSignposts li').removeClass('noshow');
-
-        }
-      }).fail(function () {
-        displayError(errorText);
-      });
-
-    };
-  };
-
-  $('.metric-term').mouseenter(function () {
-
-    clearTimeout($(this).data('mouseId'));
-    $(this).addClass('show-tip');
-    var tippy = $(this).next();
-
-    $(tippy).fadeIn('fast').addClass('tippy');
-
-  }).mouseleave(function () {
-    var boxtop = $(this);
-    var tippy = $(this).next();
-
-    $(tippy).mouseenter(function () {
-
-      var boxtop = $(tippy).prev();
-      clearTimeout($(boxtop).data('mouseId'));
-      if ($(boxtop).hasClass('show-tip')) {} else {$(boxtop).addClass('show-tip');}
-
-    }).mouseleave(function () {
-      var boxtop = $(tippy).prev();
-
-      $(boxtop).removeClass('show-tip');
-
-      $(tippy).fadeOut('fast');
-    });
-
-    var mouseId = setTimeout(function () {
-
-      $(tippy).fadeOut('fast');
-
-      $(boxtop).removeClass('show-tip');
-    }, 250);
-
-    $(boxtop).data('mouseId', mouseId);
+    }
   });
 
+  new Signposts();
+
 })(jQuery);
-
-

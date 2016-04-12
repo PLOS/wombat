@@ -1,3 +1,8 @@
+<@js src="resource/js/vendor/q.min.js"/>
+<@js src="resource/js/util/class.js"/>
+<@js src="resource/js/util/error_factory.js"/>
+<@js src="resource/js/util/article_data.js"/>
+<@js src="resource/js/util/alm_query_promise.js"/>
 <@js src="resource/js/components/show_onscroll.js"/>
 
 <@js src="resource/js/util/alm_config.js"/>

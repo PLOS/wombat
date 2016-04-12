@@ -5,6 +5,7 @@ var MetricsSavedSection;
   MetricsSavedSection = MetricsTabComponent.extend({
     $element: $('#relatedBookmarks'),
     $loadingEl: $('#relatedBookmarksSpinner'),
+    $headerEl: $('#savedHeader'),
     sourceOrder: ['citeulike', 'connotea', 'mendeley'],
     loadData: function (data) {
       this._super(data);

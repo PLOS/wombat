@@ -302,7 +302,7 @@ public class AlertService {
         key = "query";
       }
       List<String> value = entry.getValue();
-      if (MULTI_VALUE_KEYS.contains(key)) {
+      if (value.size() > 1 || MULTI_VALUE_KEYS.contains(key)) {
         map.put(key, value);
       } else {
         map.put(key, value.isEmpty() ? "" : value.get(0));

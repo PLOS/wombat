@@ -572,9 +572,11 @@ $image-container: ($image-width + $pad-small);
   @extend .plos-row;
   .ad-item {
     @extend %width-small;
-    iframe {
-      @extend .block-card;
-      }
+    text-align: center;
+    //@extend .block-card;
+    padding:rem-calc(3);
+    margin: $pad-default;
+    margin-top:0;
 
     }
   }

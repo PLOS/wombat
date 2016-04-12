@@ -1,22 +1,27 @@
 .home {
 
+  %rectangular-slots {
+    width: 306px;
+    height: 256px;
+  }
+
   .spotlight {
-    margin: 0 0 41px 0;
+    margin: 0 0 41px 10px;
     @extend .clearfix;
   }
 
   #ad-slot-bottom {
-    float: left;
-    width: 75%;
-
+    width: 652px;
+    margin-left: 0;
+    margin-right: 0;
+    float:left;
     .ad-item {
+      @extend %rectangular-slots;
       float: left;
-      width: 241px;
-      height: 150px;
       overflow: hidden;
-      margin: 0 4px 0 0;
-      background: #fff;
+      margin: 0 $pad-default 0 0;
       position: relative;
+      padding: rem-calc(3);
     }
 
     .ad-item img {
@@ -54,31 +59,22 @@
       left: 116px;
     }
 
-    .ad-item iframe {
-      padding: 0;
-      -moz-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-      -webkit-box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-      box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-      margin-bottom: 1.25rem;
-      background: white;
-    }
   }
 
   #submission-links {
+    width: 300px;
+    height: 250px;
     border-radius: inherit;
-    height: 150px;
     text-align: center;
-    padding: 20px 30px;
-    margin: 0;
+    padding: 40px;
     background: #333;
     float: right;
-    width: 245px;
-    margin: 0;
+    margin: 3px 15px 3px 3px;
 
     h2, h3 {
       font-family: $font-face-fancy;
-      font-size: 15px;
-      line-height: 24px;
+      font-size: 18px;
+      line-height: 40px;
       padding: 0;
       margin: 0;
     }
@@ -91,6 +87,8 @@
 
     h3 {
       padding: 9px 0 10px;
+      box-shadow: none;
+
     }
 
     h3.last {

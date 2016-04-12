@@ -31,7 +31,6 @@ import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
-import org.ambraproject.wombat.service.remote.AlertQuery;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
@@ -634,7 +633,7 @@ public class SearchController extends WombatController {
 
     model.addAttribute("activeFilterItems", activeFilterItems);
 
-    model.addAttribute("alertQuery", alertService.convertParamsToJSON(params));
+    model.addAttribute("alertQuery", alertService.convertParamsToJson(params));
 
     return site.getKey() + "/ftl/search/searchResults";
   }

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.plos.ned_client.model.Alert;
@@ -289,24 +290,25 @@ public class AlertService {
     return (filterSubjects.size() == 0 ? RemoveResult.EMPTY_AFTER_REMOVE : RemoveResult.NOT_EMPTY_AFTER_REMOVE);
   }
 
+  private static final ImmutableSet<String> MULTI_VALUE_KEYS = ImmutableSet.of(
+      "filterSubjects", "filterArticleTypes", "filterSections", "filterSubjectsDisjunction", "filterAuthors", "filterJournals");
+
   // convert params to JSON model attribute to be used as alert query if needed.
-  public String convertParamsToJSON(MultiValueMap<String, String> params) {
-    Map<String, Object> map = new HashMap<String, Object>();
-    for (Map.Entry<String, List<String> > entry: params.entrySet()) {
+  public String convertParamsToJson(MultiValueMap<String, String> params) {
+    Map<String, Object> map = new HashMap<>();
+    for (Map.Entry<String, List<String>> entry : params.entrySet()) {
       String key = entry.getKey();
-      if (key == "q") {
+      if (key.equals("q")) {
         key = "query";
       }
-      if (key.equals("filterSubjects") || key.equals("filterArticleTypes") || key.equals("filterSections")
-          || key.equals("filterSubjectsDisjunction") || key.equals("filterAuthors") || key.equals("filterJournals")) {
-        map.put(key, entry.getValue());
+      List<String> value = entry.getValue();
+      if (MULTI_VALUE_KEYS.contains(key)) {
+        map.put(key, value);
       } else {
-        List<String> value = entry.getValue();
         map.put(key, value.isEmpty() ? "" : value.get(0));
       }
     }
     // need to create single line JSON, so cannot use the gson bean.
-    String result = (new Gson()).toJson(map);
-    return result;
+    return (new Gson()).toJson(map);
   }
 }

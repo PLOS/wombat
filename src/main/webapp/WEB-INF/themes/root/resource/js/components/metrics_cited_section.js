@@ -29,7 +29,7 @@ var MetricsCitedSection;
     },
     dataError: function () {
       //In case of error we show the google scholar link
-      var template = _.template($('#citedBoxNoDataTemplate').html());
+      var template = _.template($('#citedSectionNoDataTemplate').html());
       var templateHtml = template({googleLink: googleCitationUrl});
 
       this.$element.append(templateHtml).show();

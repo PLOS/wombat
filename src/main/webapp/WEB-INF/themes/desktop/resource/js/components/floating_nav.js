@@ -6,6 +6,7 @@
  */
 (function ($) {
   var $win = $(window);
+  var originalTarget = window.location.hash;
 
 
   $.fn.floatingNav = function (options) {
@@ -113,8 +114,14 @@
 
             if($floatTitleTop.length) {
               var floatTitleHeight = $floatTitleTop.height() + 20;
-              topPosition = topPosition - floatTitleHeight;
-              bottomPosition = bottomPosition - floatTitleHeight;
+              if(originalTarget != '#'+section.attr(opts.section_anchor_attr)) {
+                topPosition = topPosition - floatTitleHeight;
+              }
+
+              var nextEl = links.eq(index+1);
+              if(originalTarget != nextEl.attr('href')) {
+                bottomPosition = bottomPosition - floatTitleHeight;
+              }
             }
 
             sectionObj.id = section.attr(opts.section_anchor_attr);

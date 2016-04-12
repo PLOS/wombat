@@ -36,6 +36,8 @@ import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.SubjectAlertService;
+import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.slf4j.Logger;
@@ -89,6 +91,12 @@ public class SearchController extends WombatController {
 
   @Autowired
   private ArticleFeedView articleFeedView;
+
+  @Autowired
+  private UserApi userApi;
+
+  @Autowired
+  private SubjectAlertService subjectAlertService;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
 
@@ -687,7 +695,7 @@ public class SearchController extends WombatController {
   public String browseAll(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     subjectAreaSearch(request, model, site, params, "");
-    return site.getKey() + "/ftl/browseSubjectArea";
+    return site.getKey() + "/ftl/browse/subjectArea/browseSubjectArea";
   }
 
   /**
@@ -707,7 +715,7 @@ public class SearchController extends WombatController {
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
       throws IOException {
     subjectAreaSearch(request, model, site, params, subject);
-    return site.getKey() + "/ftl/browseSubjectArea";
+    return site.getKey() + "/ftl/browse/subjectArea/browseSubjectArea";
   }
 
   /**
@@ -763,6 +771,14 @@ public class SearchController extends WombatController {
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());
     model.addAttribute("isBrowse", true);
+
+    String authId = request.getRemoteUser();
+    boolean subscribed = false;
+    if (authId != null) {
+      String subjectParam = Strings.isNullOrEmpty(subject) ? "" : subjectName;
+      subscribed = subjectAlertService.isUserSubscribed(authId, site.getJournalKey(), subjectParam);
+    }
+    model.addAttribute("subscribed", subscribed);
   }
 
   private TaxonomyGraph modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {

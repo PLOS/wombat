@@ -19,11 +19,11 @@ sup, sub {
   }
 
 sub {
-  top: $sub-sup-alignment;
+  top: $sub-alignment;
   }
 
 sup {
-  bottom: $sub-sup-alignment;
+  bottom: $sup-alignment;
   }
 
 /*doc

@@ -8,14 +8,20 @@
 <#setting url_escaping_charset="UTF-8">
 <#assign title = subjectName />
 <#assign cssFile="browse-subject-area.css"/>
+<<<<<<< HEAD:src/main/webapp/WEB-INF/themes/desktop/ftl/browseSubjectArea.ftl
 <#assign adPage="SubjectAreaLandingPage"/>
 
 <#include "common/head.ftl" />
 <#include "common/journalStyle.ftl" />
 <#include "macro/searchResultsAlm.ftl" />
+=======
+<#include "../../common/head.ftl" />
+<#include "../../common/journalStyle.ftl" />
+<#include "../../macro/searchResultsAlm.ftl" />
+>>>>>>> master:src/main/webapp/WEB-INF/themes/desktop/ftl/browse/subjectArea/browseSubjectArea.ftl
 
 <body class="home ${journalStyle}">
-<#include "common/header/headerContainer.ftl" />
+<#include "../../common/header/headerContainer.ftl" />
 
 <#function encodeSubject subject>
     <#return subject?replace(' ','_')?lower_case>
@@ -65,24 +71,8 @@
                     </ul>
                 </div><!-- /.dropdown -->
             </li>
-        <#--@TODO: Handle session and subscription-->
-        <#--
-            <#if subject?has_content>
-                <li class="middle">
-                                 <#if Session?exists && Session[freemarker_config.userAttributeKey]?exists>
-                    <#if subscribed>
-                      <#assign subscribedClass = " subscribed">
-                    <#else>
-                      <#assign subscribedClass = "">
-                    </#if>
-                      <a href="#" title="Get an email alert for ${subject}" class="journal-alert${subscribedClass}" id="save-journal-alert-link" data-category="${subject}">Get an email alert for ${subject}</a>
-                  <#else>
-                      <a href="#" title="Get an email alert for ${subject}" id="login-link" data-category="${subject}">Get an email alert for ${subject}</a>
-                  </#if>
-                </li>
-            </#if>
-            -->
-            <#include "browseSubjectAreaRssFeed.ftl" />
+        <#include "browseSubjectAreaAlert.ftl" />
+        <#include "browseSubjectAreaRssFeed.ftl" />
         </ul>
     </div><!-- /.filter-bar -->
 
@@ -160,19 +150,19 @@
         <#else>
             <div class="articles-list cf" data-subst="article-list">
             <#list articles as article>
-                <#include "home/articleCard.ftl" />
+                <#include "../../home/articleCard.ftl" />
             </#list>
             </div>
         </#if>
 
-        <#include "home/twitter.ftl" />
-        <#include "home/adSlotAside.ftl" />
-        <#include "home/socialLinks.ftl" />
+        <#include "../../home/twitter.ftl" />
+        <#include "../../home/adSlotAside.ftl" />
+        <#include "../../home/socialLinks.ftl" />
     </div>
 
 </div>
 
-<#include "common/paging.ftl" />
+<#include "../../common/paging.ftl" />
 <#if subject?has_content>
   <#assign pagingPath = categoryBrowseUrl />
 <#else>
@@ -180,7 +170,7 @@
 </#if>
 <@paging totalPages, page?number, pagingPath, parameterMap, true />
 
-<#include "common/footer/footer.ftl" />
+<#include "../../common/footer/footer.ftl" />
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
 
@@ -195,6 +185,14 @@
 <@js src="resource/js/vendor/jquery.dotdotdot.js" />
 <@js src="resource/js/components/browse_results.js" />
 <@renderJs />
+
+
+<div id="login-box" class="login inlinePopup">
+<#include "loginJournalAlertPopup.ftl"/>
+</div>
+<div id="journal-alert-box" class="journalAlert inlinePopup">
+<#include "saveJournalAlertPopup.ftl"/>
+</div>
 
 </body>
 </html>

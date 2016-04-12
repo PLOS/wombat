@@ -8,9 +8,23 @@
 <#setting url_escaping_charset="UTF-8">
 <#assign title = subjectName />
 <#assign cssFile="browse-subject-area.css"/>
+<<<<<<< HEAD:src/main/webapp/WEB-INF/themes/desktop/ftl/browse/subjectArea/browseSubjectArea.ftl
 <#include "../../common/head.ftl" />
 <#include "../../common/journalStyle.ftl" />
 <#include "../../macro/searchResultsAlm.ftl" />
+=======
+<<<<<<< HEAD:src/main/webapp/WEB-INF/themes/desktop/ftl/browseSubjectArea.ftl
+<#assign adPage="SubjectAreaLandingPage"/>
+
+<#include "common/head.ftl" />
+<#include "common/journalStyle.ftl" />
+<#include "macro/searchResultsAlm.ftl" />
+=======
+<#include "../../common/head.ftl" />
+<#include "../../common/journalStyle.ftl" />
+<#include "../../macro/searchResultsAlm.ftl" />
+>>>>>>> master:src/main/webapp/WEB-INF/themes/desktop/ftl/browse/subjectArea/browseSubjectArea.ftl
+>>>>>>> dev-doubleclick:src/main/webapp/WEB-INF/themes/desktop/ftl/browse/subjectArea/browseSubjectArea.ftl
 
 <body class="home ${journalStyle}">
 <#include "../../common/header/headerContainer.ftl" />

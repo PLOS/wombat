@@ -61,8 +61,6 @@ import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
-import org.plos.ned_client.model.IndividualComposite;
-import org.plos.ned_client.model.Individualprofile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -164,14 +162,14 @@ public class ArticleController extends WombatController {
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
-                              @RequestParam("id") String articleId)
+                              @RequestParam("id") String articleId,
+                              @RequestParam("rev") String revision)
       throws IOException {
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
 
     requireNonemptyParameter(articleId);
-    RenderContext renderContext = new RenderContext(site);
-    renderContext.setArticleId(articleId);
+    RenderContext renderContext = new RenderContext(site, articleId);
 
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("article", articleMetaData);
@@ -328,8 +326,7 @@ public class ArticleController extends WombatController {
       // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
       String amendmentType = (String) amendment.get("type");
       if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
-        RenderContext renderContext = new RenderContext(site);
-        renderContext.setArticleId(amendmentId);
+        RenderContext renderContext = new RenderContext(site, amendmentId);
         String body = getAmendmentBody(renderContext);
         amendment.put("body", body);
       }

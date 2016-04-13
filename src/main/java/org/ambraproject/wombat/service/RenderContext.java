@@ -1,27 +1,31 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Preconditions;
 import org.ambraproject.wombat.config.site.Site;
+
+import java.util.Objects;
+import java.util.Optional;
 
 public class RenderContext {
 
   private final Site site;
-  private String articleId;
+  private final Optional<String> articleId;
 
-  public RenderContext(Site site){
-    this.site = Preconditions.checkNotNull(site);
+  public RenderContext(Site site) {
+    this.site = Objects.requireNonNull(site);
+    this.articleId = Optional.empty();
+  }
+
+  public RenderContext(Site site, String articleId) {
+    this.site = Objects.requireNonNull(site);
+    this.articleId = Optional.of(articleId);
   }
 
   public Site getSite() {
     return site;
   }
 
-  public String getArticleId() {
+  public Optional<String> getArticleId() {
     return articleId;
-  }
-
-  public void setArticleId(String articleId) {
-    this.articleId = articleId;
   }
 
   @Override
@@ -31,7 +35,7 @@ public class RenderContext {
 
     RenderContext that = (RenderContext) o;
 
-    if (articleId != null ? !articleId.equals(that.articleId) : that.articleId != null) return false;
+    if (!articleId.equals(that.articleId)) return false;
     if (!site.equals(that.site)) return false;
 
     return true;
@@ -40,7 +44,7 @@ public class RenderContext {
   @Override
   public int hashCode() {
     int result = site.hashCode();
-    result = 31 * result + (articleId != null ? articleId.hashCode() : 0);
+    result = 31 * result + articleId.hashCode();
     return result;
   }
 }

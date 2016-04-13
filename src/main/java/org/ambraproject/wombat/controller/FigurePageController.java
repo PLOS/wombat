@@ -47,8 +47,7 @@ public class FigurePageController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
 
-    RenderContext renderContext = new RenderContext(site);
-    renderContext.setArticleId(articleId);
+    RenderContext renderContext = new RenderContext(site, articleId);
     List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
     for (Map<String, Object> figureMetadata : figureMetadataList) {
       figureMetadata = DoiSchemeStripper.strip(figureMetadata);
@@ -79,8 +78,7 @@ public class FigurePageController extends WombatController {
     String parentArticleDoi = (String) parentArticle.get("doi");
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));
 
-    RenderContext renderContext = new RenderContext(site);
-    renderContext.setArticleId(parentArticleDoi);
+    RenderContext renderContext = new RenderContext(site, parentArticleDoi);
     transformFigureDescription(renderContext, figureMetadata);
     model.addAttribute("figure", figureMetadata);
 

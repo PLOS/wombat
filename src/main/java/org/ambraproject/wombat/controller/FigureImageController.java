@@ -4,11 +4,11 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -76,11 +75,15 @@ public class FigureImageController extends WombatController {
       if (!booleanParameter(unique)) {
         // The request directly identifies an asset file.
         assetFileId = id;
-        assetFileMetadata = articleApi.requestObject("assetfiles/" + id + "?metadata", Map.class);
+        assetFileMetadata = articleApi.requestObject(
+            ApiAddress.builder("assetfiles").addToken(id).addParameter("metadata").build(),
+            Map.class);
       } else {
         // The request identifies an asset and asserts that the asset has exactly one file. Get the ID of that file.
 
-        Map<String, Map<String, ?>> assetMetadata = articleApi.requestObject("assets/" + id + "?metadata", Map.class);
+        Map<String, Map<String, ?>> assetMetadata = articleApi.requestObject(
+            ApiAddress.builder("assets").addToken(id).addParameter("metadata").build(),
+            Map.class);
         if (assetMetadata.size() != 1) {
           /*
            * The user queried for the unique file of a non-unique asset. Because they might have manually punched in an
@@ -121,7 +124,9 @@ public class FigureImageController extends WombatController {
     requireNonemptyParameter(figureId);
     Map<String, ?> assetMetadata;
     try {
-      assetMetadata = articleApi.requestObject("assets/" + figureId + "?figure", Map.class);
+      assetMetadata = articleApi.requestObject(
+          ApiAddress.builder("assets").addToken(figureId).addParameter("figure").build(),
+          Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

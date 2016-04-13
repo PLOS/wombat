@@ -6,7 +6,6 @@ import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,22 +112,22 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     Calendar threshold = Calendar.getInstance();
     threshold.add(Calendar.SECOND, (int) (-numberOfDaysAgo * SECONDS_PER_DAY));
 
-    UrlParamBuilder params = UrlParamBuilder.params()
-        .add("journal", journalKey)
-        .add("min", Integer.toString(articleCount))
-        .add("since", HttpDateUtil.format(threshold));
+    ApiAddress.Builder address = ApiAddress.builder("articles")
+        .addParameter("journal", journalKey)
+        .addParameter("min", Integer.toString(articleCount))
+        .addParameter("since", HttpDateUtil.format(threshold));
     if (articleTypes != null) {
       for (String articleType : articleTypes) {
-        params.add("type", articleType);
+        address.addParameter("type", articleType);
       }
     }
     if (articleTypesToExclude != null) {
       for (String articleType : articleTypesToExclude) {
-        params.add("exclude", articleType);
+        address.addParameter("exclude", articleType);
       }
     }
 
-    return articleApi.requestObject("articles?" + params.format(), List.class);
+    return articleApi.requestObject(address.build(), List.class);
   }
 
 }

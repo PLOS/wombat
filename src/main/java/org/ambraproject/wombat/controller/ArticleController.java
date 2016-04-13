@@ -26,6 +26,7 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -255,7 +256,9 @@ public class ArticleController extends WombatController {
   }
 
   private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
-    List<Map<?, ?>> articleListObjects = articleApi.requestObject(String.format("articles/%s?lists", doi), List.class);
+    List<Map<?, ?>> articleListObjects = articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(doi).addParameter("lists").build(),
+        List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
     for (Map<?, ?> articleListObject : articleListObjects) {
       String listType = Preconditions.checkNotNull((String) articleListObject.get("type"));
@@ -448,7 +451,7 @@ public class ArticleController extends WombatController {
       // Get a copy of the comment that is not populated with userApi data.
       // This articleApi call is redundant to one that commentService.getComment would have made before throwing.
       // TODO: Prevent extra articleApi call
-      comment = articleApi.requestObject(String.format("comments/" + commentId), Map.class);
+      comment = articleApi.requestObject(ApiAddress.builder("comments").addToken(commentId).build(), Map.class);
     }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
@@ -893,7 +896,9 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private void requestAuthors(Model model, String doi) throws IOException {
-    Map<?,?> allAuthorsData = articleApi.requestObject(String.format("articles/%s?authors", doi), Map.class);
+    Map<?, ?> allAuthorsData = articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(doi).addParameter("authors").build(),
+        Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);
 
@@ -941,11 +946,14 @@ public class ArticleController extends WombatController {
    *
    * @return the service path to the correspond article XML asset file
    */
-  private static String getArticleXmlAssetPath(RenderContext renderContext) {
+  private static ApiAddress getArticleXmlAssetPath(RenderContext renderContext) {
     ScholarlyWorkId id = renderContext.getArticleId().get();
     OptionalInt revisionNumber = id.getRevisionNumber();
-    return "articles/" + id.getDoi() + "?xml&"
-        + (revisionNumber.isPresent() ? ("revision=" + revisionNumber.getAsInt()) : "");
+    ApiAddress.Builder address = ApiAddress.builder("articles").addToken(id.getDoi()).addParameter("xml");
+    if (revisionNumber.isPresent()) {
+      address = address.addParameter("revision", revisionNumber.getAsInt());
+    }
+    return address.build();
   }
 
   /**
@@ -956,7 +964,7 @@ public class ArticleController extends WombatController {
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
     String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
 
@@ -981,7 +989,7 @@ public class ArticleController extends WombatController {
 
     String cacheKey = String.format("html:%s:%s",
         Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);

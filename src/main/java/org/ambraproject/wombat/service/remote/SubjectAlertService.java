@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.plos.ned_client.model.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -59,8 +60,12 @@ public class SubjectAlertService {
   private static final Type LIST_OF_ALERTS = new TypeToken<List<Alert>>() {
   }.getType();
 
+  private static ApiAddress.Builder buildAlertAddress(String userId) {
+    return ApiAddress.builder("individuals").addToken(userId).addToken("alerts");
+  }
+
   private List<Alert> fetchAlerts(String userId) throws IOException {
-    return userApi.requestObject(String.format("individuals/%s/alerts", Objects.requireNonNull(userId)), LIST_OF_ALERTS);
+    return userApi.requestObject(buildAlertAddress(userId).build(), LIST_OF_ALERTS);
   }
 
   /**
@@ -82,11 +87,12 @@ public class SubjectAlertService {
         .map(a -> addSubjectToAlert(a, subjectName))
         .orElseGet(() -> createAlertForSubject(journalKey, subjectName));
 
+    ApiAddress.Builder builder = buildAlertAddress(userId);
     if (alert.getId() != null) {
       String alertId = alert.getId().toString();
-      userApi.putObject(String.format("individuals/%s/alerts/%s", userId, alertId), alert);
+      userApi.putObject(builder.addToken(alertId).build(), alert);
     } else {
-      userApi.postObject(String.format("individuals/%s/alerts", userId), alert);
+      userApi.postObject(builder.build(), alert);
     }
   }
 
@@ -116,10 +122,11 @@ public class SubjectAlertService {
     }
 
     String alertId = alert.getId().toString();
+    ApiAddress address = buildAlertAddress(userId).addToken(alertId).build();
     if (result == RemoveResult.EMPTY_AFTER_REMOVE) {
-      userApi.deleteObject(String.format("individuals/%s/alerts/%s", userId, alertId));
+      userApi.deleteObject(address);
     } else {
-      userApi.putObject(String.format("individuals/%s/alerts/%s", userId, alertId), alert);
+      userApi.putObject(address, alert);
     }
   }
 

@@ -89,7 +89,7 @@ public class ArticleControllerTest extends ControllerTest {
     @Bean
     public ArticleApi articleApi() throws IOException {
       ArticleApi articleApi = mock(ArticleApi.class);
-      when(articleApi.requestObject(Matchers.endsWith("authors"), any(Class.class))).thenReturn(ImmutableList.of());
+//      when(articleApi.requestObject(Matchers.endsWith("authors"), any(Class.class))).thenReturn(ImmutableList.of());
       return articleApi;
     }
 

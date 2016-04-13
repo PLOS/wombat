@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.HttpMessageUtil;
@@ -75,28 +76,18 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   }
 
   @Override
-  public final InputStream requestStream(String address) throws IOException {
+  public final InputStream requestStream(ApiAddress address) throws IOException {
     return makeRemoteRequest(() -> cachedRemoteStreamer.request(buildGet(address)));
   }
 
   @Override
-  public final Reader requestReader(String address) throws IOException {
+  public final Reader requestReader(ApiAddress address) throws IOException {
     return makeRemoteRequest(() -> cachedRemoteReader.request(buildGet(address)));
   }
 
   @Override
-  public final InputStream requestStream(HttpUriRequest target) throws IOException {
-    return makeRemoteRequest(() -> cachedRemoteStreamer.request(target));
-  }
-
-  @Override
-  public final Reader requestReader(HttpUriRequest target) throws IOException {
-    return makeRemoteRequest(() -> cachedRemoteReader.request(target));
-  }
-
-  @Override
-  public final <T> T requestObject(String address, Type responseType) throws IOException {
-    String keyHash = CacheParams.createKeyHash(address);
+  public final <T> T requestObject(ApiAddress address, Type responseType) throws IOException {
+    String keyHash = CacheParams.createKeyHash(address.getAddress());
     String cacheKey = getCachePrefix() + ":" + keyHash;
 
     // Just try to cache everything. We may want to narrow this in the future.
@@ -104,7 +95,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   }
 
   @Override
-  public final <T> T requestObject(String address, Class<T> responseClass) throws IOException {
+  public final <T> T requestObject(ApiAddress address, Class<T> responseClass) throws IOException {
     return requestObject(address, (Type) responseClass);
   }
 
@@ -112,7 +103,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   private static final String APPLICATION_JSON_CONTENT_TYPE = ContentType.APPLICATION_JSON.toString();
 
   private <R extends HttpUriRequest & HttpEntityEnclosingRequest>
-  void uploadObject(String address, Object object, Function<URI, R> requestConstructor)
+  void uploadObject(ApiAddress address, Object object, Function<URI, R> requestConstructor)
       throws IOException {
     String json = jsonService.serialize(object);
     R request = buildRequest(address, requestConstructor);
@@ -130,18 +121,18 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
 
   @Override
-  public final void postObject(String address, Object object) throws IOException {
+  public final void postObject(ApiAddress address, Object object) throws IOException {
     uploadObject(address, object, HttpPost::new);
   }
 
   @Override
-  public final void putObject(String address, Object object) throws IOException {
+  public final void putObject(ApiAddress address, Object object) throws IOException {
     uploadObject(address, object, HttpPut::new);
   }
 
 
   @Override
-  public final void deleteObject(String address) throws IOException {
+  public final void deleteObject(ApiAddress address) throws IOException {
     HttpDelete delete = buildRequest(address, HttpDelete::new);
     try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(delete)) {
       ignored.close();
@@ -166,34 +157,34 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   }
 
   @Override
-  public final <T> T requestCachedStream(CacheParams cacheParams, String address,
+  public final <T> T requestCachedStream(CacheParams cacheParams, ApiAddress address,
                                          CacheDeserializer<InputStream, T> callback) throws IOException {
     return makeRemoteRequest(() -> cachedRemoteStreamer.requestCached(cacheParams, buildGet(address), callback));
   }
 
   @Override
-  public final <T> T requestCachedReader(CacheParams cacheParams, String address,
+  public final <T> T requestCachedReader(CacheParams cacheParams, ApiAddress address,
                                          CacheDeserializer<Reader, T> callback) throws IOException {
     return makeRemoteRequest(() -> cachedRemoteReader.requestCached(cacheParams, buildGet(address), callback));
   }
 
   @Override
-  public final <T> T requestCachedObject(CacheParams cacheParams, String address, Type responseType) throws IOException {
+  public final <T> T requestCachedObject(CacheParams cacheParams, ApiAddress address, Type responseType) throws IOException {
     return makeRemoteRequest(() ->
         jsonService.requestCachedObject(cachedRemoteReader, cacheParams, buildGet(address), responseType));
   }
 
   @Override
-  public final <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException {
+  public final <T> T requestCachedObject(CacheParams cacheParams, ApiAddress address, Class<T> responseClass) throws IOException {
     return requestCachedObject(cacheParams, address, (Type) responseClass);
   }
 
-  protected final HttpGet buildGet(String address) {
+  protected final HttpGet buildGet(ApiAddress address) {
     return buildRequest(address, HttpGet::new);
   }
 
-  private <R extends HttpUriRequest> R buildRequest(String address, Function<URI, R> requestConstructor) {
-    URI uri = UriUtil.concatenate(this.getServerUrl(), address);
+  private <R extends HttpUriRequest> R buildRequest(ApiAddress address, Function<URI, R> requestConstructor) {
+    URI uri = address.buildUri(this.getServerUrl());
     R request = requestConstructor.apply(uri);
     for (Header header : getAdditionalHeaders()) {
       request.addHeader(header);

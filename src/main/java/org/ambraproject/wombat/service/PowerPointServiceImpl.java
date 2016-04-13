@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import io.swagger.annotations.Api;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.Citations;
 import org.ambraproject.wombat.util.TextUtil;
@@ -73,7 +74,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     Map<String, Object> thumbnails = (Map<String, Object>) figureMetadata.get("thumbnails");
     Map<String, Object> medium = (Map<String, Object>) thumbnails.get("medium");
     String file = (String) medium.get("file");
-    try (InputStream stream = articleApi.requestStream("assetfiles/" + file)) {
+    try (InputStream stream = articleApi.requestStream(ApiAddress.builder("assetfiles").addToken(file).build())) {
       return IOUtils.toByteArray(stream);
     }
   }
@@ -197,7 +198,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     Map<String, Object> parentArticleSummary = (Map<String, Object>) figureMetadata.get("parentArticle");
     String parentArticleDoi = (String) parentArticleSummary.get("doi");
     try {
-      return articleApi.requestObject("articles/" + parentArticleDoi, Map.class);
+      return articleApi.requestObject(ApiAddress.builder("articles").addToken(parentArticleDoi).build(), Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

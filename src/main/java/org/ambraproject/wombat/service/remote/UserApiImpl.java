@@ -89,7 +89,8 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   protected <T> T makeRemoteRequest(RemoteRequest<T> requestAction) throws IOException {
     try {
       return super.makeRemoteRequest(requestAction);
-    } catch (ServiceRequestException | ServiceConnectionException | ServiceResponseFormatException e) {
+    } catch (ServiceRequestException | ServiceConnectionException | ServiceResponseFormatException |
+        EntityNotFoundException e) {
       throw new UserApiException(e);
     }
   }

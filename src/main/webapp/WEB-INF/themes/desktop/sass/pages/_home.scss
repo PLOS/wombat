@@ -329,7 +329,8 @@ $image-container: ($image-width + $pad-small);
     position: absolute;
     display: inline-block;
     right: $pad-default;
-    top: 11px;
+    top: 50%;
+    margin-top: -13px;
     }
   }
 

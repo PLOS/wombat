@@ -102,6 +102,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
@@ -164,18 +165,18 @@ public class ArticleController extends WombatController {
                               Model model,
                               @SiteParam Site site,
                               @RequestParam("id") String articleId,
-                              @RequestParam("rev") String revision)
+                              @RequestParam("rev") int revision)
       throws IOException {
-    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetaData);
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+//    validateArticleVisibility(site, articleMetaData);
 
     requireNonemptyParameter(articleId);
-    RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(articleId));
+    RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(articleId, OptionalInt.of(revision)));
 
     String articleHtml = getArticleHtml(renderContext);
-    model.addAttribute("article", articleMetaData);
+    model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml);
-    model.addAttribute("amendments", fillAmendments(site, articleMetaData));
+    model.addAttribute("amendments", fillAmendments(site, articleMetadata));
 
     return site + "/ftl/article/article";
   }
@@ -941,7 +942,10 @@ public class ArticleController extends WombatController {
    * @return the service path to the correspond article XML asset file
    */
   private static String getArticleXmlAssetPath(RenderContext renderContext) {
-    return "articles/" + Preconditions.checkNotNull(renderContext.getArticleId()) + "?xml";
+    ScholarlyWorkId id = renderContext.getArticleId().get();
+    OptionalInt revisionNumber = id.getRevisionNumber();
+    return "articles/" + id.getDoi() + "?xml&"
+        + (revisionNumber.isPresent() ? ("revision=" + revisionNumber.getAsInt()) : "");
   }
 
   /**

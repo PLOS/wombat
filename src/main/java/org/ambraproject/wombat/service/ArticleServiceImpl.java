@@ -36,8 +36,9 @@ public class ArticleServiceImpl implements ArticleService {
 
   @Override
   public Map<String, Object> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
+    String revisionNumber = "1"; // TODO: Get as parameter
     Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(String.format(
-        "articles/%s?excludeCitations=" + excludeCitations.toString(), articleId), Map.class);
+        "articles/%s?versionedPreview&revision=" + revisionNumber + "&excludeCitations=" + excludeCitations.toString(), articleId), Map.class);
     return DoiSchemeStripper.strip(map);
   }
 

@@ -23,14 +23,6 @@ public class ApiAddress {
     this.parameters = ImmutableList.copyOf(builder.parameters);
   }
 
-  public String getPath() {
-    return path;
-  }
-
-  public ImmutableList<BasicNameValuePair> getParameters() {
-    return parameters;
-  }
-
   public URI buildUri(URL root) {
     return UriUtil.concatenate(root, getAddress());
   }

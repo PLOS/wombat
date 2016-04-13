@@ -56,7 +56,7 @@ public class ApiAddress {
     }
 
     public Builder addParameter(String name, String value) {
-      parameters.add(new BasicNameValuePair(name, value));
+      parameters.add(new BasicNameValuePair(name, Objects.requireNonNull(value)));
       return this;
     }
 
@@ -65,7 +65,8 @@ public class ApiAddress {
     }
 
     public Builder addParameter(String name) {
-      return addParameter(name, null);
+      parameters.add(new BasicNameValuePair(name, null));
+      return this;
     }
 
     public ApiAddress build() {

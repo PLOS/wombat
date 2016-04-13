@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -8,14 +9,14 @@ import java.util.Optional;
 public class RenderContext {
 
   private final Site site;
-  private final Optional<String> articleId;
+  private final Optional<ScholarlyWorkId> articleId;
 
   public RenderContext(Site site) {
     this.site = Objects.requireNonNull(site);
     this.articleId = Optional.empty();
   }
 
-  public RenderContext(Site site, String articleId) {
+  public RenderContext(Site site, ScholarlyWorkId articleId) {
     this.site = Objects.requireNonNull(site);
     this.articleId = Optional.of(articleId);
   }
@@ -24,7 +25,7 @@ public class RenderContext {
     return site;
   }
 
-  public Optional<String> getArticleId() {
+  public Optional<ScholarlyWorkId> getArticleId() {
     return articleId;
   }
 

@@ -25,6 +25,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -169,7 +170,7 @@ public class ArticleController extends WombatController {
     validateArticleVisibility(site, articleMetaData);
 
     requireNonemptyParameter(articleId);
-    RenderContext renderContext = new RenderContext(site, articleId);
+    RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(articleId));
 
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("article", articleMetaData);
@@ -326,7 +327,7 @@ public class ArticleController extends WombatController {
       // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
       String amendmentType = (String) amendment.get("type");
       if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
-        RenderContext renderContext = new RenderContext(site, amendmentId);
+        RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(amendmentId));
         String body = getAmendmentBody(renderContext);
         amendment.put("body", body);
       }

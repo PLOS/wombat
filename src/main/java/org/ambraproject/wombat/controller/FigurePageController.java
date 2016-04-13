@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -47,7 +48,7 @@ public class FigurePageController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
 
-    RenderContext renderContext = new RenderContext(site, articleId);
+    RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(articleId));
     List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
     for (Map<String, Object> figureMetadata : figureMetadataList) {
       figureMetadata = DoiSchemeStripper.strip(figureMetadata);
@@ -78,7 +79,7 @@ public class FigurePageController extends WombatController {
     String parentArticleDoi = (String) parentArticle.get("doi");
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));
 
-    RenderContext renderContext = new RenderContext(site, parentArticleDoi);
+    RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(parentArticleDoi));
     transformFigureDescription(renderContext, figureMetadata);
     model.addAttribute("figure", figureMetadata);
 

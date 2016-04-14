@@ -29,6 +29,7 @@
 <@js src="resource/js/highcharts.js"/>
 
 
+<#include "articleData.ftl" />
 <#include "../common/article/metricsJs.ftl" />
 
 <#include "../common/footContent.ftl" />

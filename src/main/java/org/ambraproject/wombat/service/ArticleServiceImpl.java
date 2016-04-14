@@ -15,6 +15,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +36,12 @@ public class ArticleServiceImpl implements ArticleService {
       .build();
 
   @Override
-  public Map<String, Object> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
-    String revisionNumber = "1"; // TODO: Get as parameter
+  public Map<String, Object> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations)
+      throws IOException {
     Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(articleId)
-            .addParameter("versionedPreview").addParameter("revision", revisionNumber)
-            .addParameter("excludeCitations", excludeCitations.toString())
-            .build(),
+        articleId.appendId(ApiAddress.builder("articles")
+            .addParameter("versionedPreview")
+            .addParameter("excludeCitations", Boolean.toString(excludeCitations))),
         Map.class);
     return DoiSchemeStripper.strip(map);
   }

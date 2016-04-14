@@ -37,9 +37,8 @@ public class FigurePageController extends WombatController {
    */
   @RequestMapping(name = "figuresPage", value = "/article/figures")
   public String renderFiguresPage(Model model, @SiteParam Site site,
-                                  @RequestParam("id") String articleId)
+                                  ScholarlyWorkId articleId)
       throws IOException {
-    requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata;
     try {
       articleMetadata = articleService.requestArticleMetadata(articleId, true);
@@ -49,7 +48,7 @@ public class FigurePageController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
 
-    RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(articleId));
+    RenderContext renderContext = new RenderContext(site, articleId);
     List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
     for (Map<String, Object> figureMetadata : figureMetadataList) {
       figureMetadata = DoiSchemeStripper.strip(figureMetadata);
@@ -64,13 +63,12 @@ public class FigurePageController extends WombatController {
    */
   @RequestMapping(name = "figurePage", value = "/article/figure")
   public String renderFigurePage(Model model, @SiteParam Site site,
-                                 @RequestParam("id") String figureId)
+                                 ScholarlyWorkId figureId)
       throws IOException {
-    requireNonemptyParameter(figureId);
     Map<String, Object> figureMetadata;
     try {
       figureMetadata = (Map<String, Object>) articleApi.requestObject(
-          ApiAddress.builder("assets").addToken(figureId).addParameter("figure").build(), Map.class);
+          figureId.appendId(ApiAddress.builder("assets").addParameter("figure")), Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);
     }

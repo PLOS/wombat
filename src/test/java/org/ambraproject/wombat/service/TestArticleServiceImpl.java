@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,9 +17,9 @@ import java.util.Map;
  */
 public class TestArticleServiceImpl implements ArticleService {
   @Override
-  public Map<?, ?> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
+  public Map<?, ?> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations) throws IOException {
     BufferedReader reader = new BufferedReader(
-            new FileReader("src/test/resources/articleMeta/" + articleId.replace("10.1371/journal.","") + ".json"));
+            new FileReader("src/test/resources/articleMeta/" + articleId.getDoi().replace("10.1371/journal.","") + ".json"));
     return (Map<String, Object>) new Gson().fromJson(reader, HashMap.class);
   }
 

@@ -165,16 +165,12 @@ public class ArticleController extends WombatController {
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
-                              @RequestParam("id") String articleId,
-                              @RequestParam("rev") int revision,
-                              // TODO: Replace articleId with workId everywhere
                               ScholarlyWorkId workId)
       throws IOException {
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-//    validateArticleVisibility(site, articleMetaData);
+    Map<?, ?> articleMetadata = requestArticleMetadata(workId);
+    validateArticleVisibility(site, articleMetadata);
 
-    requireNonemptyParameter(articleId);
-    RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(articleId, OptionalInt.of(revision)));
+    RenderContext renderContext = new RenderContext(site, workId);
 
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("article", articleMetadata);
@@ -195,8 +191,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
-                                      @RequestParam("id") String articleId) throws IOException {
-    requireNonemptyParameter(articleId);
+                                      ScholarlyWorkId articleId) throws IOException {
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
 
@@ -212,9 +207,8 @@ public class ArticleController extends WombatController {
 
   @RequestMapping(name = "articleCommentForm", value = "/article/comments/new")
   public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
-                                     @RequestParam("id") String articleId)
+                                     ScholarlyWorkId articleId)
       throws IOException {
-    requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
@@ -257,9 +251,9 @@ public class ArticleController extends WombatController {
     );
   }
 
-  private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
+  private Map<String, Collection<Object>> getContainingArticleLists(ScholarlyWorkId articleId, Site site) throws IOException {
     List<Map<?, ?>> articleListObjects = articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(doi).addParameter("lists").build(),
+        articleId.appendId(ApiAddress.builder("articles").addParameter("lists")),
         List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
     for (Map<?, ?> articleListObject : articleListObjects) {
@@ -325,7 +319,7 @@ public class ArticleController extends WombatController {
 
     for (Object amendmentObj : amendments.values()) {
       Map<String, Object> amendment = (Map<String, Object>) amendmentObj;
-      String amendmentId = (String) amendment.get("doi");
+      ScholarlyWorkId amendmentId = new ScholarlyWorkId((String) amendment.get("doi")); // TODO: Has revision?
 
       Map<String, ?> amendmentMetadata = (Map<String, ?>) requestArticleMetadata(amendmentId);
       amendment.putAll(amendmentMetadata);
@@ -333,7 +327,7 @@ public class ArticleController extends WombatController {
       // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
       String amendmentType = (String) amendment.get("type");
       if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
-        RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(amendmentId));
+        RenderContext renderContext = new RenderContext(site, amendmentId);
         String body = getAmendmentBody(renderContext);
         amendment.put("body", body);
       }
@@ -457,7 +451,7 @@ public class ArticleController extends WombatController {
     }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
-    String articleId = (String) parentArticleStub.get("doi");
+    ScholarlyWorkId articleId = new ScholarlyWorkId((String) parentArticleStub.get("doi")); // latest revision
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
 
@@ -553,7 +547,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleAuthors", value = "/article/authors")
   public String renderArticleAuthors(HttpServletRequest request, Model model, @SiteParam Site site,
-                                     @RequestParam("id") String articleId) throws IOException {
+                                     ScholarlyWorkId articleId) throws IOException {
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
     return site + "/ftl/article/authors";
@@ -570,7 +564,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
-                                     @RequestParam("id") String articleId) throws IOException {
+                                     ScholarlyWorkId articleId) throws IOException {
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
     return site + "/ftl/article/metrics";
@@ -578,33 +572,31 @@ public class ArticleController extends WombatController {
 
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
   public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
-                                           @RequestParam("id") String articleId)
+                                           ScholarlyWorkId articleId)
       throws IOException {
-    requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
     return site + "/ftl/article/citationDownload";
   }
 
   @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris")
-  public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
+  public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, ScholarlyWorkId articleId)
       throws IOException {
     return serveCitationDownload(site, articleId, "ris", "application/x-research-info-systems",
         citationDownloadService::buildRisCitation);
   }
 
   @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex")
-  public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
+  public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, ScholarlyWorkId articleId)
       throws IOException {
     return serveCitationDownload(site, articleId, "bib", "application/x-bibtex",
         citationDownloadService::buildBibtexCitation);
   }
 
-  private ResponseEntity<String> serveCitationDownload(Site site, String articleId,
+  private ResponseEntity<String> serveCitationDownload(Site site, ScholarlyWorkId articleId,
                                                        String fileExtension, String contentType,
                                                        Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
-    requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
     String citationBody = serviceFunction.apply((Map<String, ?>) articleMetadata);
@@ -630,8 +622,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleRelatedContent", value = "/article/related")
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
-                                            @RequestParam("id") String articleId) throws IOException {
-    requireNonemptyParameter(articleId);
+                                            ScholarlyWorkId articleId) throws IOException {
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
     String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
@@ -764,8 +755,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
   public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
-                                                          @RequestParam("id") String articleId) throws IOException {
-    requireNonemptyParameter(articleId);
+                                                          ScholarlyWorkId articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
     List<ImmutableMap<String, String>> articleFigsAndTables = articleService.getArticleFiguresAndTables(articleMetadata);
@@ -777,8 +767,7 @@ public class ArticleController extends WombatController {
 
   @RequestMapping(name = "email", value = "/article/email")
   public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
-                                       @RequestParam("id") String articleId) throws IOException {
-    requireNonemptyParameter(articleId);
+                                       ScholarlyWorkId articleId) throws IOException {
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("maxEmails", MAX_TO_EMAILS);
@@ -795,7 +784,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "emailPost", value = "/article/email", method = RequestMethod.POST)
   public String emailArticle(HttpServletRequest request, HttpServletResponse response, Model model,
                              @SiteParam Site site,
-                             @RequestParam("id") String articleId,
+                             ScholarlyWorkId articleId,
                              @RequestParam("articleUri") String articleUri,
                              @RequestParam("emailToAddresses") String emailToAddresses,
                              @RequestParam("emailFrom") String emailFrom,
@@ -804,7 +793,6 @@ public class ArticleController extends WombatController {
                              @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
                              @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException, MessagingException {
-    requireNonemptyParameter(articleId);
     requireNonemptyParameter(articleUri);
 
     model.addAttribute("emailToAddresses", emailToAddresses);
@@ -879,16 +867,16 @@ public class ArticleController extends WombatController {
   /**
    * Loads article metadata from the SOA layer.
    *
-   * @param articleId DOI identifying the article
+   * @param workId DOI identifying the article
    * @return Map of JSON representing the article
    * @throws IOException
    */
-  private Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
+  private Map<?, ?> requestArticleMetadata(ScholarlyWorkId workId) throws IOException {
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = articleService.requestArticleMetadata(articleId, false);
+      articleMetadata = articleService.requestArticleMetadata(workId, false);
     } catch (EntityNotFoundException enfe) {
-      throw new ArticleNotFoundException(articleId);
+      throw new ArticleNotFoundException(workId);
     }
     return articleMetadata;
   }
@@ -896,14 +884,14 @@ public class ArticleController extends WombatController {
   /**
    * Appends additional info about article authors to the model.
    *
-   * @param model model to be passed to the view
-   * @param doi   identifies the article
+   * @param model  model to be passed to the view
+   * @param workId identifies the article
    * @return the list of authors appended to the model
    * @throws IOException
    */
-  private void requestAuthors(Model model, String doi) throws IOException {
+  private void requestAuthors(Model model, ScholarlyWorkId workId) throws IOException {
     Map<?, ?> allAuthorsData = articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(doi).addParameter("authors").build(),
+        workId.appendId(ApiAddress.builder("articles").addParameter("authors")),
         Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);
@@ -1008,7 +996,7 @@ public class ArticleController extends WombatController {
     });
   }
 
-  private Map<?, ?> addCommonModelAttributes(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam("id") String articleId) throws IOException {
+  private Map<?, ?> addCommonModelAttributes(HttpServletRequest request, Model model, @SiteParam Site site, ScholarlyWorkId articleId) throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     addCrossPublishedJournals(request, model, site, articleMetadata);
     model.addAttribute("article", articleMetadata);

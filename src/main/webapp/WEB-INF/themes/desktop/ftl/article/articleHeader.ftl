@@ -35,5 +35,8 @@
         </#if>
 
         </ul>
+
+    <#include "revisionMenu.ftl" />
+
     </div>
 </header>

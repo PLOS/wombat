@@ -107,6 +107,7 @@ import java.util.OptionalInt;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Controller for rendering an article.
@@ -176,6 +177,14 @@ public class ArticleController extends WombatController {
     model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetadata));
+
+    List<?> revisionMenu = articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(workId.getDoi())
+            .addParameter("versionedPreview").addParameter("revisions").build(),
+        List.class);
+    model.addAttribute("revisionMenu", revisionMenu.stream()
+        .map(n -> ((Number) n).intValue())
+        .collect(Collectors.toList()));
 
     return site + "/ftl/article/article";
   }

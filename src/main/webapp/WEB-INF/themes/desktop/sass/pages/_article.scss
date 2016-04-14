@@ -72,6 +72,18 @@ $article-sidebar-width: 160;
     height: rem-calc(80);
 
     .tools {
+      &.highlighted {
+        a.metric-term {
+          background-color: $plos-default;
+          border-radius: $border-radius-default;
+          color: $white;
+          text-decoration: underline;
+        }
+        p.visible {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
       a {
         font-size: $txt-size-xsmall;
         color: $grey-dark;
@@ -87,29 +99,26 @@ $article-sidebar-width: 160;
           border-radius: $border-radius-default;
           color: $white;
         }
-        &:hover {
-          background-color: $plos-default;
-          border-radius: $border-radius-default;
-          color: $white;
-          text-decoration: underline;
-        }
       }
 
       p {
 
         background-color: $plos-default;
         border-radius: $border-radius-default;
-        width: rem-calc(280);
+        max-width: rem-calc(280);
         position: absolute;
         text-align: left;
         z-index: map-get($zindex, overlay);
         padding: $pad-xsmall;
-        display: none;
+        visibility: hidden;
+        opacity: 0;
+        transition-property: all;
+        transition-duration: .5s;
+        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 
         > a {
           color: $white;
           padding: 0;
-          display: block;
         }
       }
 

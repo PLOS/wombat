@@ -19,33 +19,33 @@
 <script type="text/template" id="signpostsTemplate">
     <li id="almSaves">
       <%= s.numberFormat(saveCount, 0) %>
-      <div class="tools">
+      <div class="tools" data-js-tooltip-hover="trigger">
         <a class="metric-term" href="${metricsUrl}#savedHeader">Save</a>
-        <p class="saves-tip"><a href="${metricsUrl}#savedHeader">Total Mendeley and CiteULike bookmarks.</a></p>
+        <p class="saves-tip" data-js-tooltip-hover="target"><a href="${metricsUrl}#savedHeader">Total Mendeley and CiteULike bookmarks.</a></p>
       </div>
     </li>
 
     <li id="almCitations">
       <%= s.numberFormat(citationCount, 0) %>
-      <div class="tools">
+      <div class="tools" data-js-tooltip-hover="trigger">
         <a class="metric-term" href="${metricsUrl}#citedHeader">Citation</a>
-        <p class="citations-tip"><a href="${metricsUrl}#citedHeader">Paper's citation count computed by Scopus.</a></p>
+        <p class="citations-tip" data-js-tooltip-hover="target"><a href="${metricsUrl}#citedHeader">Paper's citation count computed by Scopus.</a></p>
       </div>
     </li>
 
     <li id="almViews">
       <%= s.numberFormat(viewCount, 0) %>
-      <div class="tools">
+      <div class="tools" data-js-tooltip-hover="trigger">
         <a class="metric-term" href="${metricsUrl}#viewedHeader">View</a>
-        <p class="views-tip"><a href="${metricsUrl}#viewedHeader">Sum of PLOS and PubMed Central page views and downloads.</a></p>
+        <p class="views-tip" data-js-tooltip-hover="target"><a href="${metricsUrl}#viewedHeader">Sum of PLOS and PubMed Central page views and downloads.</a></p>
       </div>
     </li>
 
     <li id="almShares">
       <%= s.numberFormat(shareCount, 0) %>
-      <div class="tools">
+      <div class="tools" data-js-tooltip-hover="trigger">
         <a class="metric-term" href="${metricsUrl}#discussedHeader">Share</a>
-        <p class="shares-tip"><a href="${metricsUrl}#discussedHeader">Sum of Facebook and Twitter activity.</a></p>
+        <p class="shares-tip" data-js-tooltip-hover="target"><a href="${metricsUrl}#discussedHeader">Sum of Facebook and Twitter activity.</a></p>
       </div>
     </li>
 </script>

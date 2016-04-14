@@ -9,43 +9,6 @@ var Signposts;
     isDataValid: function (data) {
       return !_.isUndefined(data);
     },
-    bindTooltips: function () {
-      $('.metric-term').mouseenter(function () {
-
-        clearTimeout($(this).data('mouseId'));
-        $(this).addClass('show-tip');
-        var tippy = $(this).next();
-
-        $(tippy).fadeIn('fast').addClass('tippy');
-
-      }).mouseleave(function () {
-        var boxtop = $(this);
-        var tippy = $(this).next();
-
-        $(tippy).mouseenter(function () {
-
-          var boxtop = $(tippy).prev();
-          clearTimeout($(boxtop).data('mouseId'));
-          if ($(boxtop).hasClass('show-tip')) {} else {$(boxtop).addClass('show-tip');}
-
-        }).mouseleave(function () {
-          var boxtop = $(tippy).prev();
-
-          $(boxtop).removeClass('show-tip');
-
-          $(tippy).fadeOut('fast');
-        });
-
-        var mouseId = setTimeout(function () {
-
-          $(tippy).fadeOut('fast');
-
-          $(boxtop).removeClass('show-tip');
-        }, 250);
-
-        $(boxtop).data('mouseId', mouseId);
-      });
-    },
     init: function() {
       var that = this;
       var query = new AlmQuery();
@@ -82,7 +45,7 @@ var Signposts;
           }
 
           //Initialize tooltips
-          that.bindTooltips();
+          tooltip_hover.init();
         })
         .fail(function (error) {
           switch(error.name) {

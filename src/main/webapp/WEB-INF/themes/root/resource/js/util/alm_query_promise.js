@@ -57,9 +57,9 @@ var AlmQuery;
     },
 
     isArticleNew: function () {
-      var publishDate = moment(ArticleData.date, "MMM DD, YYYY").toDate();
-      var todayMinus48Hours = (new Date()).getTime() - 172800000;
-      return (todayMinus48Hours < publishDate.getTime());
+      var publishDate = moment(ArticleData.date, "MMM DD, YYYY").valueOf();
+      var todayMinus48Hours = moment().subtract(2, 'days').valueOf();
+      return (todayMinus48Hours < publishDate);
     },
     
     /*

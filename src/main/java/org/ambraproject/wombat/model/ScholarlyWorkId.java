@@ -16,7 +16,7 @@ public class ScholarlyWorkId {
   }
 
   public ScholarlyWorkId(String doi, Integer revisionNumber) {
-    this(doi, (revisionNumber != null) ? OptionalInt.of(revisionNumber) : OptionalInt.of(revisionNumber));
+    this(doi, (revisionNumber != null) ? OptionalInt.of(revisionNumber) : OptionalInt.empty());
   }
 
   public ScholarlyWorkId(String doi, OptionalInt revisionNumber) {

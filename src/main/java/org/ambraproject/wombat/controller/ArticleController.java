@@ -166,7 +166,9 @@ public class ArticleController extends WombatController {
                               Model model,
                               @SiteParam Site site,
                               @RequestParam("id") String articleId,
-                              @RequestParam("rev") int revision)
+                              @RequestParam("rev") int revision,
+                              // TODO: Replace articleId with workId everywhere
+                              ScholarlyWorkId workId)
       throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
 //    validateArticleVisibility(site, articleMetaData);

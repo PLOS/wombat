@@ -29,6 +29,7 @@ import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.AppRootPage;
+import org.ambraproject.wombat.controller.ScholarlyWorkIdResolver;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
@@ -125,6 +126,11 @@ public class SpringConfiguration {
   @Bean
   public SiteResolver siteResolver() {
     return new SiteResolver();
+  }
+
+  @Bean
+  public ScholarlyWorkIdResolver scholarlyWorkIdResolver() {
+    return new ScholarlyWorkIdResolver();
   }
 
   @Bean

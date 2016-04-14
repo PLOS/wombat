@@ -330,7 +330,7 @@ $image-container: ($image-width + $pad-small);
     display: inline-block;
     right: $pad-default;
     top: 50%;
-    margin-top: -13px;
+    margin-top: rem-calc(-13);
     }
   }
 

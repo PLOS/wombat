@@ -38,10 +38,10 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
-import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
@@ -552,14 +552,14 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "articleAuthors", value = "/article/authors")
-  public String renderArticleAuthors( HttpServletRequest request, Model model, @SiteParam Site site,
+  public String renderArticleAuthors(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
-      Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-      validateArticleVisibility(site, articleMetaData);
-      return site + "/ftl/article/authors";
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
+    return site + "/ftl/article/authors";
   }
 
-    /**
+  /**
    * Serves the article metrics tab content for an article.
    *
    * @param model     data to pass to the view
@@ -571,8 +571,8 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam("id") String articleId) throws IOException {
-      Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-      validateArticleVisibility(site, articleMetaData);
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
     return site + "/ftl/article/metrics";
   }
 
@@ -581,9 +581,9 @@ public class ArticleController extends WombatController {
                                            @RequestParam("id") String articleId)
       throws IOException {
     requireNonemptyParameter(articleId);
-      Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-      validateArticleVisibility(site, articleMetaData);
-      return site + "/ftl/article/citationDownload";
+    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
+    validateArticleVisibility(site, articleMetaData);
+    return site + "/ftl/article/citationDownload";
   }
 
   @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris")
@@ -609,8 +609,8 @@ public class ArticleController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
     String citationBody = serviceFunction.apply((Map<String, ?>) articleMetadata);
     String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
-            URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
-            fileExtension);
+        URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
+        fileExtension);
 
     HttpHeaders headers = new HttpHeaders();
     headers.add(HttpHeaders.CONTENT_TYPE, contentType);
@@ -630,7 +630,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleRelatedContent", value = "/article/related")
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam("id") String articleId) throws IOException {
+                                            @RequestParam("id") String articleId) throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -642,20 +642,22 @@ public class ArticleController extends WombatController {
   /**
    * Serves as a POST endpoint to submit media curation requests
    *
-   * @param model     data passed in from the view
-   * @param site      current site
+   * @param model data passed in from the view
+   * @param site  current site
    * @return path to the template
    * @throws IOException
    */
   @RequestMapping(name = "submitMediaCurationRequest", value = "/article/submitMediaCurationRequest", method = RequestMethod.POST)
-  public @ResponseBody String submitMediaCurationRequest(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam("doi") String doi,
-      @RequestParam("link") String link,
-      @RequestParam("comment") String comment,
-      @RequestParam("name") String name,
-      @RequestParam("email") String email,
-      @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
-      @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
+  public
+  @ResponseBody
+  String submitMediaCurationRequest(HttpServletRequest request, Model model, @SiteParam Site site,
+                                    @RequestParam("doi") String doi,
+                                    @RequestParam("link") String link,
+                                    @RequestParam("comment") String comment,
+                                    @RequestParam("name") String name,
+                                    @RequestParam("email") String email,
+                                    @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+                                    @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException {
     requireNonemptyParameter(doi);
 
@@ -705,16 +707,17 @@ public class ArticleController extends WombatController {
 
   /**
    * Validate the input from the form
+   *
    * @param model data passed in from the view
-   * @param link link pointing to media content relating to the article
-   * @param name name of the user submitting the media curation request
+   * @param link  link pointing to media content relating to the article
+   * @param name  name of the user submitting the media curation request
    * @param email email of the user submitting the media curation request
-   * @param site current site
+   * @param site  current site
    * @return true if everything is ok
    */
   private boolean validateMediaCurationInput(Model model, String link, String name,
-      String email, String captchaChallenge, String captchaResponse, Site site,
-      HttpServletRequest request) throws IOException {
+                                             String email, String captchaChallenge, String captchaResponse, Site site,
+                                             HttpServletRequest request) throws IOException {
 
     boolean isValid = true;
 
@@ -749,6 +752,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("isValid", isValid);
     return isValid;
   }
+
   /*
    * Returns a list of figures and tables of a given article; main usage is the figshare tile on the Metrics
    * tab
@@ -760,7 +764,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
   public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
-                                                       @RequestParam("id") String articleId) throws IOException {
+                                                          @RequestParam("id") String articleId) throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -773,7 +777,7 @@ public class ArticleController extends WombatController {
 
   @RequestMapping(name = "email", value = "/article/email")
   public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam("id") String articleId) throws IOException {
+                                       @RequestParam("id") String articleId) throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
@@ -783,22 +787,22 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * @param model     data passed in from the view
-   * @param site      current site
+   * @param model data passed in from the view
+   * @param site  current site
    * @return path to the template
    * @throws IOException
    */
   @RequestMapping(name = "emailPost", value = "/article/email", method = RequestMethod.POST)
   public String emailArticle(HttpServletRequest request, HttpServletResponse response, Model model,
-      @SiteParam Site site,
-      @RequestParam("id") String articleId,
-      @RequestParam("articleUri") String articleUri,
-      @RequestParam("emailToAddresses") String emailToAddresses,
-      @RequestParam("emailFrom") String emailFrom,
-      @RequestParam("senderName") String senderName,
-      @RequestParam("note") String note,
-      @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
-      @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
+                             @SiteParam Site site,
+                             @RequestParam("id") String articleId,
+                             @RequestParam("articleUri") String articleUri,
+                             @RequestParam("emailToAddresses") String emailToAddresses,
+                             @RequestParam("emailFrom") String emailFrom,
+                             @RequestParam("senderName") String senderName,
+                             @RequestParam("note") String note,
+                             @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+                             @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException, MessagingException {
     requireNonemptyParameter(articleId);
     requireNonemptyParameter(articleUri);
@@ -842,8 +846,8 @@ public class ArticleController extends WombatController {
   }
 
   private Set<String> validateEmailArticleInput(List<InternetAddress> emailToAddresses,
-      String emailFrom, String senderName, String captchaChallenge, String captchaResponse,
-      Site site, HttpServletRequest request) throws IOException {
+                                                String emailFrom, String senderName, String captchaChallenge, String captchaResponse,
+                                                Site site, HttpServletRequest request) throws IOException {
 
     Set<String> errors = new HashSet<>();
     if (StringUtils.isBlank(emailFrom)) {
@@ -855,7 +859,7 @@ public class ArticleController extends WombatController {
     if (emailToAddresses.isEmpty()) {
       errors.add("emailToAddressesMissing");
     } else if (emailToAddresses.size() > MAX_TO_EMAILS) {
-        errors.add("tooManyEmailToAddresses");
+      errors.add("tooManyEmailToAddresses");
     } else if (emailToAddresses.stream()
         .noneMatch(email -> EmailValidator.getInstance().isValid(email.toString()))) {
       errors.add("emailToAddressesInvalid");
@@ -1004,14 +1008,14 @@ public class ArticleController extends WombatController {
     });
   }
 
-    private Map<?, ?> addCommonModelAttributes(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam("id") String articleId) throws IOException {
-        Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-        addCrossPublishedJournals(request, model, site, articleMetadata);
-        model.addAttribute("article", articleMetadata);
-        model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
-        model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
-        requestAuthors(model, articleId);
-        return articleMetadata;
-    }
+  private Map<?, ?> addCommonModelAttributes(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam("id") String articleId) throws IOException {
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+    addCrossPublishedJournals(request, model, site, articleMetadata);
+    model.addAttribute("article", articleMetadata);
+    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
+    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
+    requestAuthors(model, articleId);
+    return articleMetadata;
+  }
 
 }

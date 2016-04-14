@@ -14,7 +14,7 @@
       var selected_state = '.hover';
       // if mobile, use modernizer to check for touch events. If so then: use "touchstart" instead of hover  and make sure the menu is closeable
 
-      if ($('html.touch').length) {
+      if ($('html.touch:not(.desktop)').length) {
         $menu_drop_selector.on(
             'touchstart', function (event) {
               $(this).menu_drop('show').

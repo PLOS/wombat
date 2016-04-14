@@ -167,7 +167,7 @@ public class ArticleController extends WombatController {
                               @SiteParam Site site,
                               ScholarlyWorkId workId)
       throws IOException {
-    Map<?, ?> articleMetadata = requestArticleMetadata(workId);
+    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, workId);
     validateArticleVisibility(site, articleMetadata);
 
     RenderContext renderContext = new RenderContext(site, workId);

@@ -329,7 +329,8 @@ $image-container: ($image-width + $pad-small);
     position: absolute;
     display: inline-block;
     right: $pad-default;
-    top: 18px;
+    top: 50%;
+    margin-top: rem-calc(-13);
     }
   }
 
@@ -533,9 +534,12 @@ $image-container: ($image-width + $pad-small);
       }
     .postimg {
       float: left;
-      height: 75px;
+      height: rem-calc(75px);
       width: $image-width;
+      background-size: cover;
+      background-position: center;
       margin-right: $pad-small;
+      margin-bottom: 0;
       }
     .postdate {
       margin: 0;

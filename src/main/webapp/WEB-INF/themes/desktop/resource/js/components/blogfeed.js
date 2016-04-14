@@ -32,7 +32,7 @@ function feedLoaded(blog_feed, blogPostCount, blogContainer) {
           blogImgString = blogImg.split(" ");
           blogImgRefined = blogImgString[0];
 
-          html += '<div><img class="postimg" src="' + blogImgRefined + '"  srcset="' + blogImg + '"/><p class="postdate">Posted ' + postPubDate + '</p>' +
+          html += '<div><div class="postimg" style="background-image: url('+blogImgRefined+')"></div><p class="postdate">Posted ' + postPubDate + '</p>' +
             '<p class="posttitle"><a href="' + entry.permalink + '">' + postTitle + '</a></p>' +
             '<p class="postauthor">' + entry.author + '</p></div>';
 

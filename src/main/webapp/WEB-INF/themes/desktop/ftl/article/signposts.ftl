@@ -1,6 +1,7 @@
 <#assign metricsUrl>
   <@siteLink handlerName="articleMetrics" queryParameters={"id": article.doi} />
 </#assign>
+<@js src="resource/js/components/signposts.js"/>
 
 <ul id="almSignposts" class="signposts">
   <li id="loadingMetrics">

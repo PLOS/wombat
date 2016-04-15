@@ -31,6 +31,9 @@ header {
   border-bottom-width: 6px;
   border-bottom-style: solid;
   padding: $pad-xsmall $pad-small;
+  .advertisement{
+    float:left;
+  }
   .center {
     width: 748px;
     margin: 0 auto;

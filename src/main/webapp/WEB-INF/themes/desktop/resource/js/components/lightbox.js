@@ -23,6 +23,7 @@ var FigureLightbox = {};
     zoomRangeSelector: '#figure-lightbox .range-slider',
     $panZoomEl: null,
     imgData: null,
+    maxPanzoomScale: 200,
 
 
     /* internal config variables */
@@ -395,7 +396,8 @@ var FigureLightbox = {};
 
     this.$panZoomEl = $image.panzoom({
       contain: false,
-      minScale: 1
+      minScale: 1,
+      maxScale: that.maxPanzoomScale/20,
     });
 
     /* Bind panzoom and slider to mutually control each other */

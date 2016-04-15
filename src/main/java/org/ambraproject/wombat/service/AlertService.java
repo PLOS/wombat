@@ -1,9 +1,11 @@
-package org.ambraproject.wombat.service.remote;
+package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.ambraproject.wombat.model.AlertQuery;
+import org.ambraproject.wombat.service.remote.UserApi;
 import org.plos.ned_client.model.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.MultiValueMap;
@@ -291,16 +293,23 @@ public class AlertService {
   }
 
   private static final ImmutableSet<String> MULTI_VALUE_KEYS = ImmutableSet.of(
-      "filterSubjects", "filterArticleTypes", "filterSections", "filterSubjectsDisjunction", "filterAuthors", "filterJournals");
+      "filterSubjects", "filterArticleTypes", "filterSubjectsDisjunction", "filterAuthors", "filterJournals");
 
   // convert params to JSON model attribute to be used as alert query if needed.
   public String convertParamsToJson(MultiValueMap<String, String> params) {
     Map<String, Object> map = new HashMap<>();
     for (Map.Entry<String, List<String>> entry : params.entrySet()) {
       String key = entry.getKey();
+      // the following two if statements are added to match key to the search parameters used by
+      // org.ambraproject.service.search.SolrSearchService in ambra which is used by Queue to query Solr
       if (key.equals("q")) {
         key = "query";
       }
+
+      if (key.equals("filterSections")) {
+        key = "filterKeyword";
+      }
+
       List<String> value = entry.getValue();
       if (value.size() > 1 || MULTI_VALUE_KEYS.contains(key)) {
         map.put(key, value);

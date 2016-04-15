@@ -17,7 +17,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.service.remote.AlertService;
+import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

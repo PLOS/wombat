@@ -15,6 +15,7 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -102,7 +103,8 @@ private static final  ApiAddress ARTICLE_TYPES_ADDRESS = ApiAddress.builder("art
 
     articleGroups.stream().forEach(ag -> ag.put("articles", new ArrayList<Map<?, ?>>()));
 
-    for (String articleId : (List<String>)issueMeta.get("articleOrder")) {
+    for (String articleDoi : (List<String>)issueMeta.get("articleOrder")) {
+      ScholarlyWorkId articleId = new ScholarlyWorkId(articleDoi);
       Map<?, ?> articleMetadata;
       try {
         articleMetadata = articleService.requestArticleMetadata(articleId, true);

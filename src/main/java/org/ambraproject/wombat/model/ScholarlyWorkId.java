@@ -1,5 +1,9 @@
 package org.ambraproject.wombat.model;
 
+import com.google.common.base.Preconditions;
+import org.ambraproject.wombat.service.ApiAddress;
+
+import java.util.Objects;
 import java.util.OptionalInt;
 
 public class ScholarlyWorkId {
@@ -11,8 +15,13 @@ public class ScholarlyWorkId {
     this(doi, OptionalInt.empty());
   }
 
+  public ScholarlyWorkId(String doi, Integer revisionNumber) {
+    this(doi, (revisionNumber != null) ? OptionalInt.of(revisionNumber) : OptionalInt.empty());
+  }
+
   public ScholarlyWorkId(String doi, OptionalInt revisionNumber) {
-    this.doi = doi;
+    Preconditions.checkArgument(!revisionNumber.isPresent() || revisionNumber.getAsInt() >= 0);
+    this.doi = Objects.requireNonNull(doi);
     this.revisionNumber = revisionNumber;
   }
 
@@ -22,6 +31,22 @@ public class ScholarlyWorkId {
 
   public OptionalInt getRevisionNumber() {
     return revisionNumber;
+  }
+
+  public ApiAddress appendId(ApiAddress.Builder builder) {
+    builder.addToken(doi);
+    if (revisionNumber.isPresent()) {
+      builder.addParameter("revision", revisionNumber.getAsInt());
+    }
+    return builder.build();
+  }
+
+  @Override
+  public String toString() {
+    return "ScholarlyWorkId{" +
+        "doi='" + doi + '\'' +
+        ", revisionNumber=" + revisionNumber +
+        '}';
   }
 
   @Override

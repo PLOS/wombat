@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,12 +28,12 @@ public interface ArticleService {
   /**
    * Requests metadata about an article.
    *
-   * @param articleId DOI string
+   * @param articleId        DOI string
    * @param excludeCitations if true, citation data will not be returned (optimization param)
    * @return deserialized JSON data structure as returned by the SOA layer
    * @throws IOException
    */
-  Map<?, ?> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException;
+  Map<?, ?> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations) throws IOException;
 
   /**
    * Get the list of article figures and tables from the article meta data

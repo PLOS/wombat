@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.plos.ned_client.model.IndividualComposite;
@@ -118,9 +119,9 @@ public class CommentServiceImpl implements CommentService {
   }
 
   @Override
-  public List<Map<String, Object>> getArticleComments(String articleDoi) throws IOException {
+  public List<Map<String, Object>> getArticleComments(ScholarlyWorkId articleId) throws IOException {
     List<Map<String, Object>> comments = articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(articleDoi).addParameter("comments").build(),
+        articleId.appendId(ApiAddress.builder("articles").addParameter("comments")),
         List.class);
     comments.forEach(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields));
     addCreatorData(comments);

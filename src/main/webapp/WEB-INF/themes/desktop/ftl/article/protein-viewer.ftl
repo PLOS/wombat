@@ -61,5 +61,18 @@
 
   <div id="viewer">
   </div>
+  <div id=inspector>
+    <h1>Choose Style</h1>
+    <ul>
+      <li id=preset>Preset</li>
+      <li id=cartoon>Cartoon</li>
+      <li id=tube>Tube</li>
+      <li id=lines>Lines</li>
+      <li id=line-trace>Line Trace</li>
+      <li id=sline>Smooth Line Trace</li>
+      <li id=trace>Trace</li>
+    </ul>
 
+    <span><a href='index.html'>About</a> | Code on <a href="http://github.com/biasmv/pv">github.com</a></span>
+  </div>
 </div>

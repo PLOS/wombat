@@ -83,27 +83,17 @@
 
   <script type="text/javascript">
 
+
+    function setLigands(structure, viewer) {
+      var ligands = structure.select({rnames: ['SAH', 'RVP']});
+      viewer.ballsAndSticks('ligands', ligands);
+      viewer.centerOn(structure);
+    }
+
     (function ($) {
 
       /*filesizetable*/
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
-
-      function loadMethylTransferase() {
-        // asynchronously load the PDB file for the dengue methyl transferase
-        // from the server and display it in the viewer.
-        pv.io.fetchPdb('http://localhost:8234/wombat/DesktopPlosPathogens/resource/intfig/1r6a.pdb', function (structure) {
-          // display the protein as cartoon, coloring the secondary structure
-          // elements in a rainbow gradient.
-          viewer.cartoon('protein', structure, {color: color.ssSuccession()});
-          // there are two ligands in the structure, the co-factor S-adenosyl
-          // homocysteine and the inhibitor ribavirin-5' triphosphate. They have
-          // the three-letter codes SAH and RVP, respectively. Let's display them
-          // with balls and sticks.
-          var ligands = structure.select({rnames: ['SAH', 'RVP']});
-          viewer.ballsAndSticks('ligands', ligands);
-          viewer.centerOn(structure);
-        });
-      }
 
       //pv.pathPDBFolder(folder='/resource');
       // override the default options with something less restrictive.
@@ -111,56 +101,80 @@
         width: 600,
         height: 600,
         antialias: true,
-        quality : 'medium'
+        quality: 'medium'
       };
-      // insert the viewer under the Dom element with id 'gl'.
       var viewer = pv.Viewer($('#viewer').get(0), options);
-      loadMethylTransferase();
+      
+      pv.io.fetchPdb('http://localhost:8234/wombat/DesktopPlosPathogens/resource/intfig/1r6a.pdb', function (structure) {
+        // display the protein as cartoon, coloring the secondary structure
+        // elements in a rainbow gradient.
+        viewer.cartoon('structure', structure, {color: color.ssSuccession()});
+        setLigands(structure, viewer);
 
+        var structure;
+
+        function lines() {
+          viewer.clear();
+          viewer.lines('structure', structure);
+          setLigands(structure, viewer);
+        }
+
+        function cartoon() {
+          viewer.clear();
+          viewer.cartoon('structure', structure, {color: color.ssSuccession()});
+          setLigands(structure, viewer);
+        }
+
+        function lineTrace() {
+          viewer.clear();
+          viewer.lineTrace('structure', structure);
+          setLigands(structure, viewer);
+        }
+
+        function sline() {
+          viewer.clear();
+          viewer.sline('structure', structure);
+          setLigands(structure, viewer);
+        }
+
+        function tube() {
+          viewer.clear();
+          viewer.tube('structure', structure);
+          setLigands(structure, viewer);
+        }
+
+        function trace() {
+          viewer.clear();
+          viewer.trace('structure', structure);
+          setLigands(structure, viewer);
+        }
+
+        function preset() {
+          viewer.clear();
+          viewer.cartoon('protein', structure);
+          setLigands(structure, viewer);
+        }
+
+
+        document.getElementById('cartoon').onclick = cartoon;
+        document.getElementById('line-trace').onclick = lineTrace;
+        document.getElementById('preset').onclick = preset;
+        document.getElementById('lines').onclick = lines;
+        document.getElementById('trace').onclick = trace;
+        document.getElementById('sline').onclick = sline;
+        document.getElementById('tube').onclick = tube;
+
+      });
     })(jQuery);
 
   </script>
 
 
-  <#include "aside/crossmarkIframe.ftl" />
+<#include "aside/crossmarkIframe.ftl" />
 <#--
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide
 -->
 <div class="reveal-modal-bg"></div>
 
-<script>
-
-  // when the DOM loads
-//  $(function() {
-//    function loadMethylTransferase() {
-//      // asynchronously load the PDB file for the dengue methyl transferase
-//      // from the server and display it in the viewer.
-//      pv.io.fetchPdb('/resource/intfig/1r6a.pdb', function (structure) {
-//      // display the protein as cartoon, coloring the secondary structure
-//      // elements in a rainbow gradient.
-//        viewer.cartoon('protein', structure, {color: color.ssSuccession()});
-//        // there are two ligands in the structure, the co-factor S-adenosyl
-//        // homocysteine and the inhibitor ribavirin-5' triphosphate. They have
-//        // the three-letter codes SAH and RVP, respectively. Let's display them
-//        // with balls and sticks.
-//        var ligands = structure.select({rnames: ['SAH', 'RVP']});
-//        viewer.ballsAndSticks('ligands', ligands);
-//        viewer.centerOn(structure);
-//      });
-//    }
-//
-//    //pv.pathPDBFolder(folder='/resource');
-//    // override the default options with something less restrictive.
-//    var options = {
-//      width: 600,
-//      height: 600,
-//      antialias: true,
-//      quality : 'medium'
-//    };
-//    // insert the viewer under the Dom element with id 'gl'.
-//    var viewer = pv.Viewer($('#viewer').get(0), options);
-//    loadMethylTransferase();
-//  });
-</script>
 </body>
 </html>

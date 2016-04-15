@@ -81,12 +81,12 @@ ol {
 /// this should be used on a ul but I wanted to make it extensible
 .list-bullet {
   list-style-type: none;
-  li {
+  > li {
     padding-left: $pad-default;
     margin-bottom: rem-calc($line-height-small);
     position: relative;
   }
-  li::before {
+  > li::before {
     @extend .fa;
     @extend .fa-chevron-right;
     @extend .list-icon;

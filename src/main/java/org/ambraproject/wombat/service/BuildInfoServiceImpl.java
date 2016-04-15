@@ -104,8 +104,10 @@ public class BuildInfoServiceImpl implements BuildInfoService {
     return parse(buildInfo);
   }
 
+  private static final ApiAddress BUILD_CONFIG_ADDRESS = ApiAddress.builder("config").addParameter("type", "build").build();
+
   private BuildInfo fetchServiceBuildInfo() throws IOException {
-    return parse(articleApi.requestObject("config?type=build", Map.class));
+    return parse(articleApi.requestObject(BUILD_CONFIG_ADDRESS, Map.class));
   }
 
   private static BuildInfo parse(Map<?, ?> propertyMap) {

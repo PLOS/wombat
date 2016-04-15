@@ -25,6 +25,8 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -61,8 +63,6 @@ import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
-import org.plos.ned_client.model.IndividualComposite;
-import org.plos.ned_client.model.Individualprofile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,6 +103,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
@@ -164,19 +165,19 @@ public class ArticleController extends WombatController {
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
-                              @RequestParam("id") String articleId)
+                              @RequestParam("id") String articleId,
+                              @RequestParam("rev") int revision)
       throws IOException {
-    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetaData);
+    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
+//    validateArticleVisibility(site, articleMetaData);
 
     requireNonemptyParameter(articleId);
-    RenderContext renderContext = new RenderContext(site);
-    renderContext.setArticleId(articleId);
+    RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(articleId, OptionalInt.of(revision)));
 
     String articleHtml = getArticleHtml(renderContext);
-    model.addAttribute("article", articleMetaData);
+    model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml);
-    model.addAttribute("amendments", fillAmendments(site, articleMetaData));
+    model.addAttribute("amendments", fillAmendments(site, articleMetadata));
 
     return site + "/ftl/article/article";
   }
@@ -255,7 +256,9 @@ public class ArticleController extends WombatController {
   }
 
   private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
-    List<Map<?, ?>> articleListObjects = articleApi.requestObject(String.format("articles/%s?lists", doi), List.class);
+    List<Map<?, ?>> articleListObjects = articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(doi).addParameter("lists").build(),
+        List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
     for (Map<?, ?> articleListObject : articleListObjects) {
       String listType = Preconditions.checkNotNull((String) articleListObject.get("type"));
@@ -328,8 +331,7 @@ public class ArticleController extends WombatController {
       // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
       String amendmentType = (String) amendment.get("type");
       if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
-        RenderContext renderContext = new RenderContext(site);
-        renderContext.setArticleId(amendmentId);
+        RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(amendmentId));
         String body = getAmendmentBody(renderContext);
         amendment.put("body", body);
       }
@@ -449,7 +451,7 @@ public class ArticleController extends WombatController {
       // Get a copy of the comment that is not populated with userApi data.
       // This articleApi call is redundant to one that commentService.getComment would have made before throwing.
       // TODO: Prevent extra articleApi call
-      comment = articleApi.requestObject(String.format("comments/" + commentId), Map.class);
+      comment = articleApi.requestObject(ApiAddress.builder("comments").addToken(commentId).build(), Map.class);
     }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
@@ -894,7 +896,9 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private void requestAuthors(Model model, String doi) throws IOException {
-    Map<?,?> allAuthorsData = articleApi.requestObject(String.format("articles/%s?authors", doi), Map.class);
+    Map<?, ?> allAuthorsData = articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(doi).addParameter("authors").build(),
+        Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);
 
@@ -942,8 +946,14 @@ public class ArticleController extends WombatController {
    *
    * @return the service path to the correspond article XML asset file
    */
-  private static String getArticleXmlAssetPath(RenderContext renderContext) {
-    return "articles/" + Preconditions.checkNotNull(renderContext.getArticleId()) + "?xml";
+  private static ApiAddress getArticleXmlAssetPath(RenderContext renderContext) {
+    ScholarlyWorkId id = renderContext.getArticleId().get();
+    OptionalInt revisionNumber = id.getRevisionNumber();
+    ApiAddress.Builder address = ApiAddress.builder("articles").addToken(id.getDoi()).addParameter("xml");
+    if (revisionNumber.isPresent()) {
+      address = address.addParameter("revision", revisionNumber.getAsInt());
+    }
+    return address.build();
   }
 
   /**
@@ -954,7 +964,7 @@ public class ArticleController extends WombatController {
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
     String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
 
@@ -979,7 +989,7 @@ public class ArticleController extends WombatController {
 
     String cacheKey = String.format("html:%s:%s",
         Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);

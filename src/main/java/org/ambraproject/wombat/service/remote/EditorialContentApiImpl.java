@@ -7,6 +7,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.SitePageContext;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.IOUtils;
@@ -43,8 +44,10 @@ public class EditorialContentApiImpl implements EditorialContentApi {
   private URI contentRepoAddress;
   private String repoBucketName;
 
+  private static final ApiAddress REPO_CONFIG_ADDRESS = ApiAddress.builder("config").addParameter("type", "repo").build();
+
   private void setRepoConfig() throws IOException {
-    Map<String, Object> repoConfig = (Map<String, Object>) articleApi.requestObject("config?type=repo", Map.class);
+    Map<String, Object> repoConfig = (Map<String, Object>) articleApi.requestObject(REPO_CONFIG_ADDRESS, Map.class);
     Map<String, Object> editorialConfig = (Map<String, Object>) repoConfig.get("editorial");
     if (editorialConfig == null) throw new RuntimeException("config?type=repo did not provide \"editorial\" config");
     String address = (String) editorialConfig.get("address");

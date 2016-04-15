@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.util.CacheParams;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -21,13 +22,9 @@ public interface RestfulJsonApi {
    * @throws NullPointerException                                    if the address is null
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
-  public abstract InputStream requestStream(String address) throws IOException;
+  public abstract InputStream requestStream(ApiAddress address) throws IOException;
 
-  public abstract InputStream requestStream(HttpUriRequest target) throws IOException;
-
-  public abstract Reader requestReader(String address) throws IOException;
-
-  public abstract Reader requestReader(HttpUriRequest target) throws IOException;
+  public abstract Reader requestReader(ApiAddress address) throws IOException;
 
   /**
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
@@ -41,9 +38,9 @@ public interface RestfulJsonApi {
    * @throws NullPointerException                                    if either argument is null
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
-  public abstract <T> T requestObject(String address, Type responseType) throws IOException;
+  public abstract <T> T requestObject(ApiAddress address, Type responseType) throws IOException;
 
-  public abstract <T> T requestObject(String address, Class<T> responseClass) throws IOException;
+  public abstract <T> T requestObject(ApiAddress address, Class<T> responseClass) throws IOException;
 
   /**
    * Serialize an object to JSON and POST the JSON to a service path.
@@ -52,11 +49,11 @@ public interface RestfulJsonApi {
    * @param object  the object to serialize to product JSON
    * @throws IOException
    */
-  public abstract void postObject(String address, Object object) throws IOException;
+  public abstract void postObject(ApiAddress address, Object object) throws IOException;
 
-  public abstract void putObject(String address, Object object) throws IOException;
+  public abstract void putObject(ApiAddress address, Object object) throws IOException;
 
-  public abstract void deleteObject(String address) throws IOException;
+  public abstract void deleteObject(ApiAddress address) throws IOException;
 
   /**
    * Get a stream either through a REST request or from the cache. If there is a cached value, and the REST service does
@@ -71,10 +68,10 @@ public interface RestfulJsonApi {
    * @return the value from the service or cache
    * @throws IOException
    */
-  public abstract <T> T requestCachedStream(CacheParams cacheParams, String address,
+  public abstract <T> T requestCachedStream(CacheParams cacheParams, ApiAddress address,
                                             CacheDeserializer<InputStream, T> callback) throws IOException;
 
-  public abstract <T> T requestCachedReader(CacheParams cacheParams, String address,
+  public abstract <T> T requestCachedReader(CacheParams cacheParams, ApiAddress address,
                                             CacheDeserializer<Reader, T> callback) throws IOException;
 
   /**
@@ -89,9 +86,9 @@ public interface RestfulJsonApi {
    * @return the deserialized object
    * @throws IOException
    */
-  public abstract <T> T requestCachedObject(CacheParams cacheParams, String address, Type responseType) throws IOException;
+  public abstract <T> T requestCachedObject(CacheParams cacheParams, ApiAddress address, Type responseType) throws IOException;
 
-  public abstract <T> T requestCachedObject(CacheParams cacheParams, String address, Class<T> responseClass) throws IOException;
+  public abstract <T> T requestCachedObject(CacheParams cacheParams, ApiAddress address, Class<T> responseClass) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 

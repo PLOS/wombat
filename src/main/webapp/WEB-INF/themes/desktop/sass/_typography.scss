@@ -131,13 +131,13 @@ h2, h3, h4, h5 {
 
 h2 {
   margin-bottom: rem-calc($line-height);
-  font-size: rem-calc(20);
+  font-size: rem-calc($txt-size-h2);
   font-weight: normal;
 }
 
 h3 {
-  margin-bottom: rem-calc(16);
-  margin-top: rem-calc(24);
+  margin-bottom: rem-calc($txt-margin-bottom-h3);
+  margin-top: rem-calc($txt-margin-top-h3);
 }
 
 h4, h5 {

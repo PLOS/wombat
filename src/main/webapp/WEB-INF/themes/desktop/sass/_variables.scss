@@ -181,12 +181,15 @@ $txt-size-xxxxsmall: 9px;
 $txt-size-pgtitle: $txt-size-xxxlarge;
 $txt-size-default: $txt-size-small;
 $txt-size-h1: $txt-size-xlarge;  //TODO- should this be page title?
-$txt-size-h2: $txt-size-large;
+$txt-size-h2: $txt-size-xlarge;
 $txt-size-h3: $txt-size-medium-large;
 $txt-size-h4: $txt-size-medium-large;
 $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
+
+$txt-margin-bottom-h3: 16px;
+$txt-margin-top-h3: 24px;
 
 $sub-alignment: .5ex; //controls sub text
 $sup-alignment: 1ex; //controls super text

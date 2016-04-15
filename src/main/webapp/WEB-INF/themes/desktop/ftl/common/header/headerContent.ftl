@@ -1,3 +1,4 @@
+
 <header>
   <div id="topslot" class="head-top">
   <#include "adSlotTop.ftl" />

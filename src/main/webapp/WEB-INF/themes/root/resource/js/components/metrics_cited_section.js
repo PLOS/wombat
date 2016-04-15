@@ -9,6 +9,7 @@ var MetricsCitedSection;
   MetricsCitedSection = MetricsTabComponent.extend({
     $element: $('#relatedCites'),
     $loadingEl: $('#relatedCitesSpinner'),
+    $headerEl: $('#citedHeader'),
     sourceOrder: ['scopus','crossref','pubmed','wos', 'pmceurope', 'pmceuropedata', 'datacite'],
     loadData: function (data) {
       this._super(data);
@@ -29,7 +30,7 @@ var MetricsCitedSection;
     },
     dataError: function () {
       //In case of error we show the google scholar link
-      var template = _.template($('#citedBoxNoDataTemplate').html());
+      var template = _.template($('#citedSectionNoDataTemplate').html());
       var templateHtml = template({googleLink: googleCitationUrl});
 
       this.$element.append(templateHtml).show();

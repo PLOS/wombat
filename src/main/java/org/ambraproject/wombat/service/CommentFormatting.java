@@ -1,15 +1,11 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.Maps;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class CommentFormatting {
   private CommentFormatting() {
@@ -641,16 +637,13 @@ public class CommentFormatting {
 
         if (verifyHierarchicalURI(urlStr, null)) {
           //Construct the hyperlink for the url...
-          String urlLink;
+          String urlLink = "<a rel=\"nofollow\" href=\"" + urlStr + "\"" + targetString;
 
           if (maxDisplayLength > 0 && urlStr.length() > maxDisplayLength) {
-            //urlLink = "<a href=\"" + urlStr + "\"" + targetString + ">" + urlToDisplay + "</a>";
-            urlLink = "<a href=\"" + urlStr + "\"" + targetString + " title=\"" + htmlEncode(urlStr, true) + "\">" + urlToDisplay + "</a>";
+            urlLink += " title=\"" + htmlEncode(urlStr, true) + "\">" + urlToDisplay + "</a>";
           } else {
-            urlLink = "<a href=\"" + urlStr + "\"" + targetString + ">" + urlToDisplay + "</a>";
+            urlLink += ">" + urlToDisplay + "</a>";
           }
-
-          //urlLink = "<a href=\"" + urlStr + '\"' + targetString + '>' + urlToDisplay + "</a>";
 
           //Remove the original urlStr from str and put urlLink there instead...
           str.replace(linkStartIndex, linkEndIndex + 1, urlLink);

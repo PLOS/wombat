@@ -132,7 +132,8 @@ $default-header-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.3);
 $nav-main-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.15), 3px 3px 3px rgba(0, 0, 0, 0.15);
 $default-transition-duration: .3s;
 $default-transition-function: linear;
-$target-offset: 60px; // this is the amount we want to offset the target so it doesn't butt up against the top of the window OR the floating header.
+$target-offset: 25px; // this is the amount we want to offset the target so it doesn't butt up against the top of the window OR the floating header.
+$target-large-offset: 65px; // this is the amount we want to offset the target that is in the references so it doesn't butt up against the top of the window OR the floating header.
 
 // typography
 $pad-xsmall: ($grid-gutter / 4);  //5px
@@ -187,7 +188,8 @@ $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
-$sub-sup-alignment: .5ex; //controls sub and super text
+$sub-alignment: .5ex; //controls sub text
+$sup-alignment: 1ex; //controls super text
 
 $line-height: 18px; // applies to parapgraphs and lists by default
 $line-height-large: ($line-height * 2);

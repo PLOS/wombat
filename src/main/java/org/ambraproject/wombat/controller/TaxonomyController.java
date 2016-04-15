@@ -22,13 +22,15 @@ import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.ambraproject.wombat.util.UriUtil;
+import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.util.UrlParamBuilder;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.client.methods.RequestBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,7 +61,8 @@ public class TaxonomyController extends WombatController {
 
   @Autowired
   private ArticleApi articleApi;
-
+  @Autowired
+  private UserApi userApi;
   @Autowired
   private BrowseTaxonomyService browseTaxonomyService;
 
@@ -145,14 +148,27 @@ public class TaxonomyController extends WombatController {
   @RequestMapping(name = "taxonomyCategoryFlag", value = "" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}", method = RequestMethod.POST)
   @ResponseBody
   public void setFlag(HttpServletRequest request, HttpServletResponse responseToClient,
+                      @PathVariable(value = "action") String action,
                       @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
                       @RequestParam(value = "articleDoi", required = true) String articleDoi)
       throws IOException {
-    // pass through any article category flagging ajax traffic to/from rhino
-    URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), UriUtil.stripUrlPrefix(request.getRequestURI(), TAXONOMY_NAMESPACE));
-    HttpUriRequest req = HttpMessageUtil.buildRequest(forwardedUrl, "POST",
-            HttpMessageUtil.getRequestParameters(request), new BasicNameValuePair("authId", request.getRemoteUser()));
-    articleApi.forwardResponse(req, responseToClient);
+    UrlParamBuilder params = UrlParamBuilder.params()
+        .add("categoryTerm", categoryTerm)
+        .add("articleDoi", articleDoi);
+
+    String authId = request.getRemoteUser();
+    if (authId != null) {
+      String userId = userApi.getUserIdFromAuthId(authId);
+      params.add("userId", userId);
+    }
+
+    URI serviceUri = URI.create(String.format("%s/taxonomy/flag/%s", articleApi.getServerUrl(), action));
+    HttpUriRequest requestToService = RequestBuilder.create(HttpPost.METHOD_NAME)
+        .setUri(serviceUri)
+        .addParameters(params.buildArray())
+        .build();
+
+    articleApi.forwardResponse(requestToService, responseToClient);
   }
 
   /**

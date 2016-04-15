@@ -19,11 +19,11 @@ sup, sub {
   }
 
 sub {
-  top: $sub-sup-alignment;
+  top: $sub-alignment;
   }
 
 sup {
-  bottom: $sub-sup-alignment;
+  bottom: $sup-alignment;
   }
 
 /*doc
@@ -485,7 +485,6 @@ table.table-zebra-stripes {
   }
 
 %header-bottom-shadow {
-  //not used ?
   padding-bottom: rem-calc(17);
   margin-bottom: rem-calc(17);
   box-shadow: $default-header-shadow;

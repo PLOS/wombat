@@ -31,6 +31,8 @@ var MetricsTabComponent;
     $loadingEl: null,
     //The main jQuery element of the component, where the tiles should be appended.
     $element: null,
+    //Header for the section jQuery Element
+    $headerEl: null,
     //The order that the sources needs to be displayed in the tiles
     sourceOrder: [],
     //Filled by the loadData function
@@ -44,13 +46,48 @@ var MetricsTabComponent;
     },
 
     loadData: function (data) {
+      //Fix for CrossRef, the metrics.total is not calculated by ALM
+      var crossrefIndex = _.findIndex(data.sources, {name: 'crossref'});
+      if(crossrefIndex >= 0){
+        var crossref = data.sources[crossrefIndex];
+        if(!_.has(crossref, 'metrics')) {
+          crossref.metrics = { total: 0 };
+        }
+
+        if(_.has(crossref, 'by_month') && crossref.metrics.total <= 0) {
+          var total = _.reduce(crossref.by_month, function (memo, obj) { return memo + obj.total }, 0);
+          crossref.metrics.total = total;
+        }
+      }
+
       this.data = data;
       this.filterSources();
     },
 
-    afterLoadData: function () {
+    showComponent: function () {
       this.$loadingEl.hide();
       this.$element.show();
+      this.$headerEl.show();
+    },
+
+    hideComponent: function () {
+      this.$loadingEl.hide();
+      this.$element.hide();
+      this.$headerEl.hide();
+    },
+
+    //Default behavior when the component is empty, hide all the components
+    emptyComponent: function () {
+      this.hideComponent();
+    },
+
+    afterLoadData: function () {
+      if(this.sources.length) {
+        this.showComponent();
+      }
+      else {
+        this.emptyComponent();
+      }
     },
 
     filterSources: function () {

@@ -4,6 +4,7 @@ var MetricsViewedSection;
   MetricsViewedSection = MetricsTabComponent.extend({
     $element: $('#views'),
     $loadingEl: $('#chartSpinner'),
+    $headerEl: $('#viewedHeader'),
     $chartElement: $('#usage'),
     sourceOrder: ['figshare'],
     chartData:[],
@@ -24,8 +25,26 @@ var MetricsViewedSection;
     },
 
     afterLoadData: function () {
-      this._super();
+      this.showComponent();
       this.$chartElement.show();
+    },
+
+    dataError: function () {
+      //In case of error we show the text for data no available
+      var template = _.template($('#viewedSectionNoDataTemplate').html());
+      var templateHtml = template();
+
+      this.$element.append(templateHtml).show();
+      this.$loadingEl.hide();
+    },
+
+    newArticleError: function () {
+      //In case of error we show the text for new article error
+      var template = _.template($('#viewedSectionNewArticleErrorTemplate').html());
+      var templateHtml = template();
+
+      this.$element.append(templateHtml).show();
+      this.$loadingEl.hide();
     },
 
     //Join year and month to a string, used as key to the history object and as ordering factor for the events
@@ -489,10 +508,11 @@ var MetricsViewedSection;
 
     selectSubjectArea: function (subjectArea, chart, baseLinkToRefset) {
       var activeArea = $('#subject_areas').data('activeArea');
-      chart.get(subjectArea).show();
       if(activeArea) {
         chart.get(activeArea).hide();
       }
+      chart.get(subjectArea).show();
+
 
       $('#linkToRefset').attr('href', baseLinkToRefset.replace('SUBJECT_AREA', subjectArea));
 

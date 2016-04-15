@@ -38,7 +38,7 @@
         <div class="zoom-slider-container">
           <div class="range-slider-container">
             <span id="lb-zoom-min"></span>
-            <div class="range-slider round" data-slider data-options="start: 20; end: 100; initial: 20;">
+            <div class="range-slider round" data-slider data-options="start: 20; end: 200; initial: 20;">
               <span class="range-slider-handle" role="slider" tabindex="0"></span>
               <span class="range-slider-active-segment"></span>
               <input type="hidden">

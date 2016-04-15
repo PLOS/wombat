@@ -102,6 +102,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
@@ -214,6 +215,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
+    model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
     return site + "/ftl/article/comment/newComment";
   }
 
@@ -457,7 +459,7 @@ public class ArticleController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
 
     model.addAttribute("comment", comment);
-
+    model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
     return site + "/ftl/article/comment/comment";
   }
 
@@ -481,10 +483,21 @@ public class ArticleController extends WombatController {
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
-                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri) throws IOException {
-
+                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
+                                  @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
+                                  @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
+      throws IOException {
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
+
+    if (validationErrors.isEmpty()) {
+      // Submit Captcha for validation only if there are no other errors.
+      // Otherwise, the user's valid Captcha response would be wasted when they resubmit the comment.
+      if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
+        validationErrors.put("captchaValidationFailure", true);
+      }
+    }
+
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);
     }
@@ -492,7 +505,7 @@ public class ArticleController extends WombatController {
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), COMMENT_NAMESPACE);
 
     String authId = request.getRemoteUser();
-    ArticleComment comment = new ArticleComment(parentArticleDoi, getUserIdFromAuthId(authId),
+    ArticleComment comment = new ArticleComment(parentArticleDoi, userApi.getUserIdFromAuthId(authId),
         parentCommentUri, commentTitle, commentBody, ciStatement);
 
     HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, comment);
@@ -500,17 +513,6 @@ public class ArticleController extends WombatController {
       String createdCommentUri = HttpMessageUtil.readResponse(response);
       return ImmutableMap.of("createdCommentUri", createdCommentUri);
     }
-  }
-
-  private String getUserIdFromAuthId(String authId) throws IOException {
-    IndividualComposite individualComposite = userApi.requestObject(
-        String.format("individuals/CAS/%s", authId), IndividualComposite.class);
-    // use nedid from any available profile.
-    Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
-        .findFirst()
-        .orElseThrow(() -> new RuntimeException(
-            "An IndividualComposite does not have an Individualprofile"));
-    return individualprofile.getNedid().toString();
   }
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
@@ -528,7 +530,7 @@ public class ArticleController extends WombatController {
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(),
         String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
     String authId = request.getRemoteUser();
-    ArticleCommentFlag flag = new ArticleCommentFlag(getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
+    ArticleCommentFlag flag = new ArticleCommentFlag(userApi.getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
 
     HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, flag);
     try (CloseableHttpResponse response = articleApi.getResponse(commentPostRequest)) {
@@ -570,16 +572,6 @@ public class ArticleController extends WombatController {
       validateArticleVisibility(site, articleMetaData);
     return site + "/ftl/article/metrics";
   }
-
-@RequestMapping(name = "articleMetricsRenovated", value = "/article/metricsRenovated")
-public String renderArticleMetricsRenovated(HttpServletRequest request, Model model, @SiteParam Site site,
-                                   @RequestParam("id") String articleId) throws IOException {
-  enforceDevFeature("metricsRenovated");
-  Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-  validateArticleVisibility(site, articleMetaData);
-  return site + "/ftl/article/metricsRenovated";
-}
-
 
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
   public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
@@ -783,7 +775,7 @@ public String renderArticleMetricsRenovated(HttpServletRequest request, Model mo
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("maxEmails", MAX_TO_EMAILS);
-    model.addAttribute("captchaHTML", captchaService.getCaptchaHTML(site));
+    model.addAttribute("captchaHTML", captchaService.getCaptchaHtml(site, Optional.empty()));
     return site + "/ftl/article/email";
   }
 

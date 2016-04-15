@@ -2,7 +2,7 @@ var MetricsTab = {};
 
 (function ($) {
 
-  MetricsTab.components = [(new MetricsViewedSection()), (new MetricsCitedSection()), (new MetricsSavedSection()), (new MetricsDiscussedSection())];
+  MetricsTab.components = [(new MetricsViewedSection()), (new MetricsCitedSection()), (new MetricsSavedSection()), (new MetricsDiscussedSection()), (new MetricsRecommendedSection())];
 
   MetricsTab.isDataValid = function (data) {
     return (!_.isUndefined(data) && _.has(data, 'sources'));
@@ -29,7 +29,7 @@ var MetricsTab = {};
           return data;
         }
         else if(that.isArticleNew()) {
-          throw new ErrorFactory('NewArticleError', '[MetricsTab::init] - The article is too new to have data.')
+          throw new ErrorFactory('NewArticleError', '[MetricsTab::init] - The article is too new to have data.');
         }
         else {
           throw new ErrorFactory('InvalidDataError', '[MetricsTab::init] - The article data is invalid');
@@ -39,7 +39,6 @@ var MetricsTab = {};
         _.each(that.getComponents(), function (value) { value.loadData(data); });
       })
       .fail(function (error) {
-        console.log(error);
         switch(error.name) {
           case 'NewArticleError':
             _.each(that.getComponents(), function (value) { value.newArticleError(); });

@@ -55,9 +55,38 @@
     </div>
 </script>
 
-<script type="text/template" id="citedBoxNoDataTemplate">
+<script type="text/template" id="metricsTileFigshareTooltipTemplate">
+    <div id="dropdown-figshare" class="metric-dropdown" data-dropdown-content>
+        <div class="close-button" onclick="Foundation.libs.dropdown.close(jQuery('#dropdown-figshare'));">
+            <span>&nbsp;</span>
+            <a class="button-container">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+        <table class="tile_mini">
+            <% _.each(items, function(item) { %>
+            <tr>
+                <td>
+                    <a href="<%= item.link %>" target=_blank> <%= item.title %></a>
+                </td>
+                <td class="data1"><%= item.totalStat %></td>
+            </tr>
+            <% }); %>
+        </table>
+    </div>
+</script>
+
+<script type="text/template" id="citedSectionNoDataTemplate">
     No related citations found <br/>
     Search for citations in <a href="<%= googleLink %>">Google Scholar</a>
+</script>
+
+<script type="text/template" id="viewedSectionNoDataTemplate">
+    Viewed data is not available. Please try again later.
+</script>
+
+<script type="text/template" id="viewedSectionNewArticleErrorTemplate">
+    This article was only recently published. Although we update our data on a daily basis (not in real time), there may be a 48-hour delay before the most recent numbers are available.
 </script>
 
 <script type="text/template" id="viewedHighchartTooltipTemplate">

@@ -5,6 +5,8 @@
 <#include "head.ftl" />
 
 <body>
+<#include "analyticsUpdated.ftl" />
+
 <div id="container-main">
 
 <#include "header/headerContainer.ftl" />

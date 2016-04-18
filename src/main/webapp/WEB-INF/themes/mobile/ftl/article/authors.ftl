@@ -5,6 +5,8 @@
 <#include "../common/head.ftl" />
 
 <body id="page-authors">
+<#include "../common/analyticsUpdated.ftl" />
+
 <div id="container-main">
 <#include "backToArticle.ftl" />
 

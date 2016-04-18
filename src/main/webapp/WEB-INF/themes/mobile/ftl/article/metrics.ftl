@@ -1,10 +1,10 @@
 <#assign articleDoi = article.doi />
-
-<#include "../common/htmlTag.ftl" />
-
 <#assign title = article.title />
-<#include "../common/head.ftl" />
+<#include "../common/headContent.ftl" />
+
+
 <#include "../common/configJs.ftl" />
+
 <#include "backToArticle.ftl" />
 <div id="container-main" class="metrics">
 
@@ -32,4 +32,3 @@
 <#include "../common/article/metricsJs.ftl" />
 
 <#include "../common/footContent.ftl" />
-

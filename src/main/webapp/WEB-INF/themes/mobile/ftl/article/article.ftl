@@ -6,8 +6,6 @@
 
 <body>
 
-
-
 <#include "articlePrefix.ftl" />
 
 <div id="articleText">

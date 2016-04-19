@@ -51,7 +51,11 @@ $line-height-small: ($line-height * .5);
 
 .article-content {
 
- .section > div {
+ .section > div,
+ //Fix for articles without <sec>
+ .article-text > div:not(.toc-section):not(.section):not(#figure-carousel-section):not(.articleinfo):not(.ref-tooltip),
+ //Fix for the second-last item equal margin
+ .article-text > *:nth-last-child(2) {
     margin-bottom: $line-height;
   }
 

@@ -136,6 +136,12 @@
     </table>
 </script>
 
+<@siteLink handlerName="advancedSearch" ; href>
+<script type="text/javascript">
+  var baseLinkToRefset = '${href}';
+</script>
+</@siteLink>
+
 <script type="text/template" id="relativeMetricTemplate">
     <div id="averageViewsSummary">
         <div>

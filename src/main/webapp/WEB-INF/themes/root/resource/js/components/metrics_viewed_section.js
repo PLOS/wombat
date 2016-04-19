@@ -484,7 +484,7 @@ var MetricsViewedSection;
           }
         });
 
-        var baseLinkToRefset = "/search/advanced?pageSize=12&unformattedQuery=(publication_date:[" + this.chartData.relativeMetricData.start_date + " TO " + this.chartData.relativeMetricData.end_date + "]) AND subject:\"SUBJECT_AREA\"";
+        baseLinkToRefset = baseLinkToRefset + "?pageSize=12&unformattedQuery=(publication_date:[" + this.chartData.relativeMetricData.start_date + " TO " + this.chartData.relativeMetricData.end_date + "]) AND subject:\"SUBJECT_AREA\"";
 
         var templateData = {
           yearPublished: new Date(this.chartData.relativeMetricData.start_date).getUTCFullYear(),

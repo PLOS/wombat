@@ -136,12 +136,6 @@
     </table>
 </script>
 
-<@siteLink handlerName="advancedSearch" ; href>
-<script type="text/javascript">
-  var baseLinkToRefset = '${href}';
-</script>
-</@siteLink>
-
 <script type="text/template" id="relativeMetricTemplate">
     <div id="averageViewsSummary">
         <div>
@@ -159,7 +153,9 @@
                 <% }); %>
             </select>
             &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            <a id="linkToRefset" href="">Show reference set</a>
+            <@siteLink handlerName="advancedSearch" ; href>
+            <a id="linkToRefset" href="" data-base-link="${href}">Show reference set</a>
+            </@siteLink>
         </div>
     </div>
 </script>

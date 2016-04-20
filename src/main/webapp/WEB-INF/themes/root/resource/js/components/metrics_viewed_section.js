@@ -438,7 +438,6 @@ var MetricsViewedSection;
       var that = this;
       if(_.has(this.chartData, 'relativeMetricData') && !_.isEmpty(this.chartData.relativeMetricData)) {
         var template = _.template($('#relativeMetricTemplate').html());
-        console.log(this.chartData.relativeMetricData.subject_areas);
         var subjectAreas = _.sortBy(this.chartData.relativeMetricData.subject_areas, function (subject_area) { return subject_area.subject_area; });
         var subjectAreasList = {};
         _.each(subjectAreas, function (subjectArea) {
@@ -510,10 +509,12 @@ var MetricsViewedSection;
     selectSubjectArea: function (subjectArea, chart, baseLinkQueryParams) {
       var activeArea = $('#subject_areas').data('active-area');
       var baseLinkToRefset = $('#linkToRefset').data('base-link') + baseLinkQueryParams;
-      if(activeArea) {
+      if(activeArea && chart.get(activeArea)) {
         chart.get(activeArea).hide();
       }
-      chart.get(subjectArea).show();
+      if(chart.get(subjectArea)) {
+        chart.get(subjectArea).show();
+      }
 
 
       $('#linkToRefset').attr('href', baseLinkToRefset.replace('SUBJECT_AREA', subjectArea));

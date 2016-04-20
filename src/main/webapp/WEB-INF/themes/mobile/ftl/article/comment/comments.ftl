@@ -5,6 +5,8 @@
 
 <body id="page-comments">
 <div id="container-main">
+<#include "../../common/bodyAnalytics.ftl" />
+
 <#include "../backToArticle.ftl" />
 
   <div id="comment-content" class="content">

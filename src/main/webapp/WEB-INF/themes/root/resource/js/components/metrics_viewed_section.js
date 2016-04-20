@@ -495,7 +495,8 @@ var MetricsViewedSection;
         this.$chartElement.append(template(templateData));
 
         //Select the first subject area
-        this.selectSubjectArea(subjectAreas[0].subject_area, chart, baseLinkQueryParams);
+        var firstSubjectInSelect = $('#subject_areas option:eq(0)').attr('value');
+        this.selectSubjectArea(firstSubjectInSelect, chart, baseLinkQueryParams);
 
         //Callback for the subject area selector
         $('#subject_areas').on('change', function () {

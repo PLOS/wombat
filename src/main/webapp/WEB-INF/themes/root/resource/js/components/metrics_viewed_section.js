@@ -509,10 +509,12 @@ var MetricsViewedSection;
     selectSubjectArea: function (subjectArea, chart, baseLinkQueryParams) {
       var activeArea = $('#subject_areas').data('active-area');
       var baseLinkToRefset = $('#linkToRefset').data('base-link') + baseLinkQueryParams;
-      if(activeArea) {
+      if(activeArea && chart.get(activeArea)) {
         chart.get(activeArea).hide();
       }
-      chart.get(subjectArea).show();
+      if(chart.get(subjectArea)) {
+        chart.get(subjectArea).show();
+      }
 
 
       $('#linkToRefset').attr('href', baseLinkToRefset.replace('SUBJECT_AREA', subjectArea));
@@ -522,12 +524,14 @@ var MetricsViewedSection;
 
     formatSubjectArea: function (subjectAreaTitles, isChildren) {
       var item = {};
-      item.id = subjectAreaTitles.join('/');
+
       if(isChildren) {
+        item.id = subjectAreaTitles.join('/');
         item.title = subjectAreaTitles[2];
       }
       else {
-        item.title = subjectAreaTitles[1];
+        item.id = '/'+subjectAreaTitles[1];
+          item.title = subjectAreaTitles[1];
         item.children = [];
       }
 

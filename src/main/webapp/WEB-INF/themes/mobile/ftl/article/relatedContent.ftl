@@ -4,6 +4,9 @@
 
 <#assign title = article.title />
 <#include "../common/head.ftl" />
+<body>
+<#include "../common/bodyAnalytics.ftl" />
+
 <#include "../common/configJs.ftl" />
 <#include "backToArticle.ftl" />
 <div id="content" class="related-content">

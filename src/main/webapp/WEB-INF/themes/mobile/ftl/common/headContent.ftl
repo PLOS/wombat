@@ -5,7 +5,7 @@
 <#include "head.ftl" />
 
 <body>
-<#include "analyticsUpdated.ftl" />
+<#include "bodyAnalytics.ftl" />
 
 <div id="container-main">
 

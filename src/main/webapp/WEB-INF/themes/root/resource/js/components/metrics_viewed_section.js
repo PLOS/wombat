@@ -438,6 +438,7 @@ var MetricsViewedSection;
       var that = this;
       if(_.has(this.chartData, 'relativeMetricData') && !_.isEmpty(this.chartData.relativeMetricData)) {
         var template = _.template($('#relativeMetricTemplate').html());
+        console.log(this.chartData.relativeMetricData.subject_areas);
         var subjectAreas = _.sortBy(this.chartData.relativeMetricData.subject_areas, function (subject_area) { return subject_area.subject_area; });
         var subjectAreasList = {};
         _.each(subjectAreas, function (subjectArea) {
@@ -522,12 +523,14 @@ var MetricsViewedSection;
 
     formatSubjectArea: function (subjectAreaTitles, isChildren) {
       var item = {};
-      item.id = subjectAreaTitles.join('/');
+
       if(isChildren) {
+        item.id = subjectAreaTitles.join('/');
         item.title = subjectAreaTitles[2];
       }
       else {
-        item.title = subjectAreaTitles[1];
+        item.id = '/'+subjectAreaTitles[1];
+          item.title = subjectAreaTitles[1];
         item.children = [];
       }
 

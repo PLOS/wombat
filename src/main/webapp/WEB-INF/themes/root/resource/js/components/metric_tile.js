@@ -113,9 +113,7 @@ var MetricTile;
                   var event = events[item.doi];
 
                   if(event){
-                    console.log(event.stats);
                     item.totalStat = event.stats.downloads + event.stats.page_views;
-
                     item.link = event.figshare_url;
                   }
                   //Fix to order the title correctly, add a 0 before the numbers have only one character
@@ -123,7 +121,6 @@ var MetricTile;
                   if(titleSplit[1].length == 1) {
                     item.title = titleSplit[0] + ' 0'+titleSplit[1];
                   }
-
 
                   return item;
                 });

@@ -18,7 +18,7 @@ class PathTokenPredicate implements SiteRequestPredicate {
   @Override
   public boolean isForSite(HttpServletRequest request) {
     Iterator<String> path = PathUtil.SPLITTER.split(request.getServletPath()).iterator();
-    return path.hasNext() && token.equals(path.next());
+    return path.hasNext() && token.toLowerCase().equals(path.next().toLowerCase());
   }
 
   @Override

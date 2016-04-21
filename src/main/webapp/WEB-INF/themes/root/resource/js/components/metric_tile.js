@@ -111,14 +111,20 @@ var MetricTile;
                 data = _.map(data, function (item) {
                   item.doi = item.doi.replace('info:doi/', '');
                   var event = events[item.doi];
+
+                  if(event){
+                    console.log(event.stats);
+                    item.totalStat = event.stats.downloads + event.stats.page_views;
+
+                    item.link = event.figshare_url;
+                  }
                   //Fix to order the title correctly, add a 0 before the numbers have only one character
                   var titleSplit = item.title.split(' ');
                   if(titleSplit[1].length == 1) {
                     item.title = titleSplit[0] + ' 0'+titleSplit[1];
                   }
 
-                  item.totalStat = event.stats.downloads + event.stats.page_views;
-                  item.link = event.figshare_url;
+
                   return item;
                 });
 

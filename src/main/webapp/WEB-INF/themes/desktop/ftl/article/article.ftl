@@ -19,6 +19,8 @@
 
 <body class="article ${journalStyle}">
 
+
+
 <#include "../common/header/headerContainer.ftl" />
 <div class="set-grid">
   <#include "articleHeader.ftl" />
@@ -92,6 +94,8 @@
 
     (function ($) {
 
+   var figLink = '<@siteLink handlerName="repoObject" pathVariables={"key": "${intfigData[0].resources[0]}" + ".fake"}></@siteLink>';
+      console.log(figLink);
       /*filesizetable*/
       $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
 
@@ -105,7 +109,7 @@
       };
       var viewer = pv.Viewer($('#viewer').get(0), options);
       
-      pv.io.fetchPdb('http://localhost:8234/wombat/DesktopPlosPathogens/resource/intfig/1r6a.pdb', function (structure) {
+      pv.io.fetchPdb(figLink, function (structure) {
         // display the protein as cartoon, coloring the secondary structure
         // elements in a rainbow gradient.
         viewer.cartoon('structure', structure, {color: color.ssSuccession()});

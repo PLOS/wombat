@@ -36,10 +36,11 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
-import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.CacheParams;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
@@ -61,8 +62,6 @@ import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
-import org.plos.ned_client.model.IndividualComposite;
-import org.plos.ned_client.model.Individualprofile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,6 +156,8 @@ public class ArticleController extends WombatController {
   private CommentService commentService;
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
+  @Autowired
+  private EditorialContentApi editorialContentApi;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -177,7 +178,10 @@ public class ArticleController extends WombatController {
     model.addAttribute("article", articleMetaData);
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
-    model.addAttribute("interactiveFigureUrl", "test");
+
+    List<Map<String, Object>> intfigData = (List<Map<String, Object>>) editorialContentApi.getJson("intfigData", "intfig.ppat.1001072");
+    model.addAttribute("intfigData", intfigData);
+
 
     return site + "/ftl/article/article";
   }

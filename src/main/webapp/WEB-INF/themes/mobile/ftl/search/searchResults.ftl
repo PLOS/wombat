@@ -115,12 +115,20 @@
         </p><#--end full citation-->
 
         <nav class="article-options-menu clearfix">
-          <a href="article/figures?id=${doc.id}">Figures</a>
-          <a href="article?id=${doc.id}#abstract">Abstract</a>
+          <@siteLink handlerName="figuresPage" queryParameters={"id": doc.id} ; href>
+            <a href="${href}">Figures</a>
+          </@siteLink>
+          <@siteLink handlerName="article" queryParameters={"id": doc.id} ; href>
+            <a href="${href}#abstract">Abstract</a>
+          </@siteLink>
 
         <#-- TODO: what does this link mean?  Do we need to expand all accordion sections?  -->
-          <a href="article?id=${doc.id}">Full text</a>
-          <a href="article/asset?id=${doc.id}.PDF">PDF</a>
+          <@siteLink handlerName="article" queryParameters={"id": doc.id} ; href>
+            <a href="${href}">Full text</a>
+          </@siteLink>
+          <@siteLink handlerName="asset" queryParameters={"id": doc.id + ".PDF"} ; href>
+            <a href="${href}">PDF</a>
+          </@siteLink>
         </nav><#--end article-options-menu-->
 
       </article>

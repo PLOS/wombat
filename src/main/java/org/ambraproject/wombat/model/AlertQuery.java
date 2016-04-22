@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.service.remote;
+package org.ambraproject.wombat.model;
 
 import com.google.common.collect.ImmutableList;
 
@@ -8,6 +8,9 @@ import java.util.Objects;
 /**
  * Specification for a search to be done to populate an alert. A JSON string representing this class is the value of
  * {@link org.plos.ned_client.model.Alert#query}.
+ * Please note that these query parameters are the ones required by {@link org.ambraproject.service.search.SolrSearchService}
+ * which is used by PLOS Queue to search against Solr. They should be updated as soon as the logic in queue
+ * has been updated to talk to Solr directly.
  */
 public class AlertQuery {
 

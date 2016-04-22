@@ -1,10 +1,10 @@
 <#assign articleDoi = article.doi />
-
-<#include "../common/htmlTag.ftl" />
-
 <#assign title = article.title />
-<#include "../common/head.ftl" />
+<#include "../common/headContent.ftl" />
+
+
 <#include "../common/configJs.ftl" />
+
 <#include "backToArticle.ftl" />
 <div id="container-main" class="metrics">
 
@@ -13,10 +13,6 @@
 <#include "metricsBody.ftl"/>
 
 </div><#-- end home-content -->
-<@js src="resource/js/vendor/underscore-min.js"/>
-<@js src="resource/js/vendor/underscore.string.min.js"/>
-<@js src="resource/js/vendor/q.min.js"/>
-
 <@js src="resource/js/util/alm_config.js"/>
 
 
@@ -29,7 +25,7 @@
 <@js src="resource/js/highcharts.js"/>
 
 
+<#include "articleData.ftl" />
 <#include "../common/article/metricsJs.ftl" />
 
 <#include "../common/footContent.ftl" />
-

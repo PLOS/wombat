@@ -33,7 +33,6 @@
 </div>
 
 <#include "articleJs.ftl" />
-<@js src="resource/js/vendor/q.min.js"/>
 
 <@js src="resource/js/components/table_open.js"/>
 <@js src="resource/js/components/figshare.js"/>

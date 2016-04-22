@@ -67,9 +67,17 @@
             <% _.each(items, function(item) { %>
             <tr>
                 <td>
+                  <% if (typeof(item.link) !== "undefined") { %>
                     <a href="<%= item.link %>" target=_blank> <%= item.title %></a>
+                  <% } else { %>
+                    <%= item.title %>
+                  <% } %>
                 </td>
-                <td class="data1"><%= item.totalStat %></td>
+                <td class="data1">
+                  <% if (typeof(item.totalStat) !== "undefined") { %>
+                    <%= item.totalStat %>
+                  <% } %>
+                </td>
             </tr>
             <% }); %>
         </table>
@@ -153,7 +161,9 @@
                 <% }); %>
             </select>
             &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            <a id="linkToRefset" href="">Show reference set</a>
+            <@siteLink handlerName="advancedSearch" ; href>
+            <a id="linkToRefset" href="" data-base-link="${href}">Show reference set</a>
+            </@siteLink>
         </div>
     </div>
 </script>

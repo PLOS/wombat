@@ -25,6 +25,7 @@ var AlmQuery;
 
     init: function (config) {
       this.config = _.extend(ALM_CONFIG, config);
+      this.hasSessionStorage = Modernizr.sessionstorage;
     },
     
     /*
@@ -54,6 +55,12 @@ var AlmQuery;
         throw new ErrorFactory('InvalidDOIError', '[AlmQuery::validateDOI] - Invalid DOI');
       }
     },
+
+    isArticleNew: function () {
+      var publishDate = moment(ArticleData.date, "MMM DD, YYYY").valueOf();
+      var todayMinus48Hours = moment().subtract(2, 'days').valueOf();
+      return (todayMinus48Hours < publishDate);
+    },
     
     /*
      * Request handling functions
@@ -61,6 +68,23 @@ var AlmQuery;
 
     getRequestBaseUrl: function () {
       return this.config.host + '?api_key=' + this.config.apiKey;
+    },
+
+    saveRequestCache: function (requestUrl, response) {
+      if(this.hasSessionStorage) {
+        window.sessionStorage.setItem(requestUrl, JSON.stringify(response));
+      }
+    },
+
+    getRequestCache: function (requestUrl) {
+      if(this.hasSessionStorage) {
+        var item = window.sessionStorage.getItem(requestUrl);
+        if(item && !_.isEmpty(item)) {
+          return JSON.parse(item);
+        }
+      }
+
+      return false;
     },
 
     getRequestUrl: function (queryParams) {
@@ -81,9 +105,14 @@ var AlmQuery;
     },
 
     processRequest: function (requestUrl) {
+      var that = this;
       var deferred = Q.defer();
+      var cacheItem = this.getRequestCache(requestUrl);
 
-      if(this.config.host == null) {
+      if(cacheItem) {
+        deferred.resolve(cacheItem);
+      }
+      else if(this.config.host == null) {
         var err = new Error('[AlmQuery::processRequest] - ALM API is not configured');
         err.name = 'ALMNotConfiguredError';
         deferred.reject(new ErrorFactory('ALMNotConfiguredError', '[AlmQuery::processRequest] - ALM API is not configured'));
@@ -95,6 +124,7 @@ var AlmQuery;
           dataType: 'jsonp',
           timeout: 20000,
           success: function (response) {
+            that.saveRequestCache(requestUrl, response);
             deferred.resolve(response);
           },
           error: function (jqXHR, textStatus) {

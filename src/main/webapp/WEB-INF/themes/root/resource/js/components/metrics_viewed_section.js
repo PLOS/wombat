@@ -484,7 +484,7 @@ var MetricsViewedSection;
           }
         });
 
-        var baseLinkToRefset = "/search/advanced?pageSize=12&unformattedQuery=(publication_date:[" + this.chartData.relativeMetricData.start_date + " TO " + this.chartData.relativeMetricData.end_date + "]) AND subject:\"SUBJECT_AREA\"";
+        var baseLinkQueryParams = "?pageSize=12&unformattedQuery=(publication_date:[" + this.chartData.relativeMetricData.start_date + " TO " + this.chartData.relativeMetricData.end_date + "]) AND subject:\"SUBJECT_AREA\"";
 
         var templateData = {
           yearPublished: new Date(this.chartData.relativeMetricData.start_date).getUTCFullYear(),
@@ -495,38 +495,44 @@ var MetricsViewedSection;
         this.$chartElement.append(template(templateData));
 
         //Select the first subject area
-        this.selectSubjectArea(subjectAreas[0].subject_area, chart, baseLinkToRefset);
+        var firstSubjectInSelect = $('#subject_areas option:eq(0)').attr('value');
+        this.selectSubjectArea(firstSubjectInSelect, chart, baseLinkQueryParams);
 
         //Callback for the subject area selector
         $('#subject_areas').on('change', function () {
           var value = $(this).val();
-          that.selectSubjectArea(value, chart, baseLinkToRefset);
+          that.selectSubjectArea(value, chart, baseLinkQueryParams);
         });
 
       }
     },
 
-    selectSubjectArea: function (subjectArea, chart, baseLinkToRefset) {
-      var activeArea = $('#subject_areas').data('activeArea');
-      if(activeArea) {
+    selectSubjectArea: function (subjectArea, chart, baseLinkQueryParams) {
+      var activeArea = $('#subject_areas').data('active-area');
+      var baseLinkToRefset = $('#linkToRefset').data('base-link') + baseLinkQueryParams;
+      if(activeArea && chart.get(activeArea)) {
         chart.get(activeArea).hide();
       }
-      chart.get(subjectArea).show();
+      if(chart.get(subjectArea)) {
+        chart.get(subjectArea).show();
+      }
 
 
       $('#linkToRefset').attr('href', baseLinkToRefset.replace('SUBJECT_AREA', subjectArea));
 
-      $('#subject_areas').data('activeArea', subjectArea);
+      $('#subject_areas').data('active-area', subjectArea);
     },
 
     formatSubjectArea: function (subjectAreaTitles, isChildren) {
       var item = {};
-      item.id = subjectAreaTitles.join('/');
+
       if(isChildren) {
+        item.id = subjectAreaTitles.join('/');
         item.title = subjectAreaTitles[2];
       }
       else {
-        item.title = subjectAreaTitles[1];
+        item.id = '/'+subjectAreaTitles[1];
+          item.title = subjectAreaTitles[1];
         item.children = [];
       }
 

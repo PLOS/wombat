@@ -1,3 +1,6 @@
+<#include "articleData.ftl" />
+
+<#include "../common/almQueryJs.ftl" />
 <@js src="resource/js/components/show_onscroll.js"/>
 
 <@js src="resource/js/util/alm_config.js"/>
@@ -5,7 +8,6 @@
 <@js src="resource/js/vendor/moment.js"/>
 
 <@js src="resource/js/components/twitter_module.js"/>
-<@js src="resource/js/components/signposts.js"/>
 <@js src="resource/js/vendor/spin.js"/>
 
 <@js src="resource/js/pages/article.js"/>

@@ -67,9 +67,17 @@
             <% _.each(items, function(item) { %>
             <tr>
                 <td>
+                  <% if (typeof(item.link) !== "undefined") { %>
                     <a href="<%= item.link %>" target=_blank> <%= item.title %></a>
+                  <% } else { %>
+                    <%= item.title %>
+                  <% } %>
                 </td>
-                <td class="data1"><%= item.totalStat %></td>
+                <td class="data1">
+                  <% if (typeof(item.totalStat) !== "undefined") { %>
+                    <%= item.totalStat %>
+                  <% } %>
+                </td>
             </tr>
             <% }); %>
         </table>

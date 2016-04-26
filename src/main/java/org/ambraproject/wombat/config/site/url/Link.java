@@ -331,11 +331,22 @@ public class Link {
    * @return a page that links from the originating page to the target page
    */
   public String get(HttpServletRequest request) {
+    return get(request, false);
+  }
+
+  public String getRedirect(HttpServletRequest request) {
+    return "redirect:" + get(request, !isAbsolute);
+  }
+
+  private String get(HttpServletRequest request, boolean isInContext) {
     StringBuilder sb = new StringBuilder();
     if (isAbsolute) {
       appendPrefix(sb, request);
     }
-    sb.append(request.getContextPath()).append('/');
+    if (!isInContext) {
+      sb.append(request.getContextPath());
+    }
+    sb.append('/');
 
     Optional<String> pathToken = site.flatMap(s -> s.getRequestScheme().getPathToken());
     if (pathToken.isPresent()) {

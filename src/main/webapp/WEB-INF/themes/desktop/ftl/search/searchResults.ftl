@@ -98,13 +98,23 @@
 
         </div>
         <div class="search-actions">
-            <div class="search-alert" data-js-tooltip-hover="trigger">
-                Search Alert
-                <div class="search-alert-tooltip" data-js-tooltip-hover="target">
-                    This feature temporarily unavailable.
-                </div>
+          <#include "../macro/userSession.ftl" />
+          <div class="search-alert" data-js-tooltip-hover="trigger"
+            <#if isUserLoggedIn()>
+               id="save-search-link"
+            <#else>
+               id="login-link"
+            </#if> >
+            Search Alert
+            <div class="search-alert-tooltip" data-js-tooltip-hover="target">
+              <#if isUserLoggedIn()>
+                Save this search alert
+              <#else>
+                Sign in to save this search alert
+              </#if>
             </div>
-            <a href="<@siteLink handlerName="searchFeed" queryParameters=parameterMap pathVariables={'feedType': 'atom'}/>"
+          </div>
+          <a href="<@siteLink handlerName="searchFeed" queryParameters=parameterMap pathVariables={'feedType': 'atom'}/>"
                class="search-feed"></a>
         </div>
 
@@ -271,4 +281,11 @@
 <#include "../common/footer/footer.ftl" />
 <@renderJs />
 </body>
+<div id="save-search-box" class="inlinePopup">
+  <#include "savedSearchPopup.ftl"/>
+</div>
+
+<div id="login-box" class="login inlinePopup">
+  <#include "loginSavedSearchPopup.ftl"/>
+</div>
 </html>

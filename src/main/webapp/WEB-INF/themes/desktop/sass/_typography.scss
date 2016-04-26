@@ -13,18 +13,22 @@ category: Files
 
 @include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf", "fontawesome-webfont.svg", "fontawesome-webfont.woff"));
 
+p {
+  word-wrap: break-word;
+}
+
 sup, sub {
   vertical-align: 0;
   position: relative;
-  }
+}
 
 sub {
   top: $sub-alignment;
-  }
+}
 
 sup {
   bottom: $sup-alignment;
-  }
+}
 
 /*doc
 ---
@@ -65,28 +69,28 @@ example | extension
 @mixin text-default{
   font-size: rem-calc($txt-size-default);
   line-height: rem-calc($line-height);
-  }
+}
 @mixin text-below{margin-bottom: $paragraph-spacing;}
 @mixin default-list{
-    li{
-      @include text-default;
-      @include text-below;
-      }
+  li{
+    @include text-default;
+    @include text-below;
   }
+}
 
 ol {
   padding-left: $pad-default;
-   @include default-list;
-  }
+  @include default-list;
+}
 /// this should be used on a ul but I wanted to make it extensible
 .list-bullet {
   list-style-type: none;
-  li {
+  > li {
     padding-left: $pad-default;
     margin-bottom: rem-calc($line-height-small);
     position: relative;
   }
-  li::before {
+  > li::before {
     @extend .fa;
     @extend .fa-chevron-right;
     @extend .list-icon;
@@ -104,45 +108,52 @@ ol {
     display: inline-block;
     margin-left: 0;
     position: relative;
-    }
   }
+}
 .bulleted {@extend .list-bullet;}    /// used for article pages
 
 /// sizes are set in foundation.
 h2, h3, h4, h5 {
   font-family: $font-face-plain;
-  }
+}
 
 // font-weights
-h2, h3, h5 {
+h3, h5 {
   font-weight: bold;
-  }
+}
 
 h4 {
   font-weight: normal;
-  }
+}
 
 //spacing
 h2, h3, h4, h5 {
   margin-bottom: rem-calc($line-height-small);
   margin-top: rem-calc($line-height-medium);
   line-height: normal;
-  }
+}
 
 h2 {
   margin-bottom: rem-calc($line-height);
-  }
+  font-size: rem-calc($txt-size-h2);
+  font-weight: normal;
+}
 
-h3, h4, h5 {
+h3 {
+  margin-bottom: rem-calc($txt-margin-bottom-h3);
+  margin-top: rem-calc($txt-margin-top-h3);
+}
+
+h4, h5 {
   margin-top: rem-calc($line-height-small);
-  }
+}
 
 //special styles
 
 .title-small {
   font-size: $txt-size-default;
   font-weight: bold;
-  }
+}
 
 //callout styles
 
@@ -166,9 +177,9 @@ $icon-width: $pad-medium) {
       left: $padding-x;
       top: ($padding-y - rem-calc(2));
       line-height: 1 !important;
-      }
     }
   }
+}
 
 //////////
 // BLOCKS AND CALLOUTS
@@ -176,33 +187,33 @@ $icon-width: $pad-medium) {
 
 %callout-default {
   @include callout();
-  }
+}
 
 .block-quote {
   @extend blockquote; //for lemur
-  }
+}
 
 blockquote, .pullquote, .block-quote {
   @include text-default;
   border-left: $pad-xsmall solid $clr-separator;
   margin: rem-calc($line-height-medium 0 $line-height 0);
-  }
+}
 
 .pullquote {
   @extend blockquote;
   font-style: italic;
-  }
+}
 
 .block-basic {
   @include callout();
   background: $clr-callout-bg;
-  }
+}
 
 .block-global-alert {
   @extend %callout-default;
   background: $plos-default-shade1;
   font-weight: bold;
-  }
+}
 
 .block-aperta {
   @extend .block-global-alert;
@@ -211,23 +222,23 @@ blockquote, .pullquote, .block-quote {
 
 .block-tip {
   @include callout($icon-type: 'pointer');
-  }
+}
 
 .block-important {
   @include callout($icon-type: 'important');
   background: $clr-alert;
-  }
+}
 
 .block-more-information {
   @include callout($icon-type: 'info');
   background: $clr-callout-bg;
-  }
+}
 
 %brand-title {
   @extend %header-allcaps;
   @extend %brand-color;
   margin-bottom: $pad-small;
-  }
+}
 
 %brand-header {
   @extend %brand-background;
@@ -236,7 +247,7 @@ blockquote, .pullquote, .block-quote {
   font-family: $font-face-fancy;
   font-size: rem-calc($txt-size-medium-large);
   line-height: $pad-large;
-  }
+}
 
 /*doc
 ---
@@ -287,19 +298,19 @@ example | extension
 %link-text-body, %link-text-body a {
   //TODO- should this be link text home?
   @include link-text();
-  }
+}
 
 %link-text-white, %link-text-white a {
   @include link-text($color: $white, $decoration-hover: underline);
-  }
+}
 
 %link-text-underline, %link-text-underline a {
   @include link-text($decoration-hover: underline);
-  }
+}
 
 %link-text-default, %link-text-default a {
   @include link-text($color: $plos-default, $decoration-hover: underline);
-  }
+}
 
 //////////////
 //font decorations
@@ -308,23 +319,23 @@ example | extension
 %small-italic {
   font-size: rem-calc($txt-size-xxxsmall);
   font-style: italic;
-  }
+}
 
 %condense {
   letter-spacing: -0.5px;
-  }
+}
 
 %txt-transform {
   text-transform: uppercase;
-  }
+}
 
 .inline-intro {
   font-weight: bold;
-  }
+}
 
 .no-margin {
   margin-bottom: 0;
-  }
+}
 
 //////////////
 //form styles
@@ -333,19 +344,19 @@ example | extension
 @mixin input-placeholder-color($color: $clr-input-placeholder) {
   ::-webkit-input-placeholder {
     color: $color;
-    }
+  }
   :-moz-placeholder {
     /* Firefox 18- */
     color: $color;
-    }
+  }
   ::-moz-placeholder {
     /* Firefox 19+ */
     color: $color;
-    }
+  }
   :-ms-input-placeholder {
     color: $color;
-    }
   }
+}
 
 //////////////
 //font-sizes styles
@@ -370,7 +381,7 @@ This is one place not to use @extend, since this is a semantic class name
 
 .note, .caption, figcaption {
   color: $grey-med-light;
-  }
+}
 
 /////////
 /// table styles
@@ -380,7 +391,7 @@ This is one place not to use @extend, since this is a semantic class name
   @include table; //from foundation
   border-collapse: collapse;
   width: 100%;
-  }
+}
 
 table.table-basic {
   @extend %table-fancy;
@@ -388,16 +399,16 @@ table.table-basic {
 
   thead th {
     border-bottom: $table-separator-header;
-    }
+  }
 
   tbody td {
     border-bottom: $table-separator;
-    }
+  }
 
   tbody tr:last-child td {
     border-bottom: 0
-    }
   }
+}
 
 table.table-borders {
   @extend %table-fancy;
@@ -405,12 +416,12 @@ table.table-borders {
 
   td, th {
     border: $table-separator;
-    }
+  }
 
   thead th {
     border-bottom: $table-separator-header;
-    }
   }
+}
 
 table.table-zebra-stripes {
   @extend %table-fancy;
@@ -418,25 +429,25 @@ table.table-zebra-stripes {
 
   td, th {
     border-left: $table-separator-width solid $clr-body-bg;
-    }
+  }
 
   tr {
     background: $grey-light;
-    }
+  }
 
   tr {
     &.even,
     &.alt,
     &:nth-of-type(even) {
       background: $grey-med-light;
-      }
     }
+  }
 
   thead tr th {
     background: $grey-med-dark;
     color: $clr-body-bg;
-    }
   }
+}
 
 /////////
 /// homepage font styles
@@ -449,47 +460,47 @@ table.table-zebra-stripes {
   margin-top: .2rem;
   margin-bottom: .2rem;
   @extend %link-text-body;
-  }
+}
 
 %header-allcaps {
   font-size: rem-calc($txt-size-medium);
   font-family: $font-face-fancy;
   @extend %txt-transform;
-  }
+}
 
 %header-allcaps-plain {
   @extend %header-allcaps;
   font-family: $font-face-plain;
-  }
+}
 
 %header-allcaps-xlarge {
   @extend %header-allcaps;
   font-size: rem-calc($txt-size-xlarge);
-  }
+}
 
 %header-medium-bold {
   font-size: rem-calc($txt-size-medium);
   font-family: $font-face-fancy;
   font-weight: bold;
-  }
+}
 
 %header-xlarge-light {
   font-size: rem-calc($txt-size-xlarge);
   color: $clr-light-text;
   font-family: $font-face-fancy;
-  }
+}
 
 %header-xxlarge {
   font-size: rem-calc($txt-size-xxlarge);
   font-family: $font-face-fancy;
-  }
+}
 
 %header-bottom-shadow {
   padding-bottom: rem-calc(17);
   margin-bottom: rem-calc(17);
   box-shadow: $default-header-shadow;
   text-align: center;
-  }
+}
 
 .header-allcaps-smallest {
   @extend %header-allcaps-plain;

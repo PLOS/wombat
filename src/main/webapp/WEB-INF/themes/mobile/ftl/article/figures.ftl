@@ -5,6 +5,8 @@
 <#include "../common/head.ftl" />
 
 <body id="page-figures">
+<#include "../common/bodyAnalytics.ftl" />
+
 <div id="container-main">
 <#include "backToArticle.ftl" />
 

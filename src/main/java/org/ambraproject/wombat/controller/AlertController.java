@@ -17,7 +17,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.service.remote.SubjectAlertService;
+import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,18 +38,18 @@ import java.util.Map;
  * "action" param is used to indicate "add" or "remove".
  */
 @Controller
-public class SubjectAlertController extends WombatController {
-  private static final Logger log = LoggerFactory.getLogger(SubjectAlertController.class);
+public class AlertController extends WombatController {
+  private static final Logger log = LoggerFactory.getLogger(AlertController.class);
 
   @Autowired
-  private SubjectAlertService subjectAlertService;
+  private AlertService alertService;
 
   @RequestMapping(name = "addSubjectAlert", value = "/subjectalert/add", method = RequestMethod.POST)
   @ResponseBody
   public Map<String, Object> addSubjectAlert(HttpServletRequest request, @SiteParam Site site,
                                              @RequestParam("subject") String subject)
       throws IOException {
-    return changeSubjectAlert(request, site, subject, subjectAlertService::addAlert);
+    return changeAlert(request, site, subject, alertService::addSubjectAlert);
   }
 
   @RequestMapping(name = "removeSubjectAlert", value = "/subjectalert/remove", method = RequestMethod.POST)
@@ -56,7 +57,40 @@ public class SubjectAlertController extends WombatController {
   public Map<String, Object> removeSubjectAlert(HttpServletRequest request, @SiteParam Site site,
                                                 @RequestParam("subject") String subject)
       throws IOException {
-    return changeSubjectAlert(request, site, subject, subjectAlertService::removeAlert);
+    return changeAlert(request, site, subject, alertService::removeSubjectAlert);
+  }
+
+  @RequestMapping(name = "addSearchAlert", value = "/searchalert/add", method = RequestMethod.POST)
+  @ResponseBody
+  public Map<String, Object> addSearchAlert(HttpServletRequest request, @SiteParam Site site,
+                                            @RequestParam("name") String name,
+                                            @RequestParam("query") String query,
+                                            @RequestParam("frequency") List<String> frequency)
+      throws IOException {
+    if (name.isEmpty()) {
+      log.error("Empty name parameter");
+      return respondFailure("name required");
+    }
+
+    String authId = request.getRemoteUser();
+    if (authId == null) {
+      log.error("User made request to change search alert without being logged in.");
+      return respondFailure("not logged in");
+    }
+
+    try {
+      for (String freq: frequency) {
+        alertService.addSearchAlert(authId, name, query, freq);
+      }
+    } catch (AlertService.AlertException e) {
+      log.error("Error while changing search alert", e);
+      return respondFailure(e.getMessage());
+    } catch (UserApi.UserApiException e) {
+      log.error("Error from UserApi while changing search alert", e);
+      return respondFailure("User data is temporarily unavailable");
+    }
+
+    return SUCCESS_RESPONSE;
   }
 
   @FunctionalInterface
@@ -79,7 +113,7 @@ public class SubjectAlertController extends WombatController {
    * @return Map converted to JSON with "result" of "success" or "failed" and optional "error" attributes.
    * @throws IOException
    */
-  private Map<String, Object> changeSubjectAlert(HttpServletRequest request, Site site,
+  private Map<String, Object> changeAlert(HttpServletRequest request, Site site,
                                                  String subject, SubjectAlertAction action)
       throws IOException {
     if (subject.isEmpty()) {
@@ -95,7 +129,7 @@ public class SubjectAlertController extends WombatController {
 
     try {
       action.execute(authId, site.getJournalKey(), subject);
-    } catch (SubjectAlertService.SubjectAlertException e) {
+    } catch (AlertService.AlertException e) {
       log.error("Error while changing subject alert", e);
       return respondFailure(e.getMessage());
     } catch (UserApi.UserApiException e) {

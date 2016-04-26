@@ -83,7 +83,7 @@ import org.ambraproject.wombat.service.XmlServiceImpl;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
-import org.ambraproject.wombat.service.remote.SubjectAlertService;
+import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.ambraproject.wombat.util.NullJavaMailSender;
 import org.springframework.context.annotation.Bean;
@@ -252,9 +252,7 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public SubjectAlertService subjectAlertService() {
-    return new SubjectAlertService();
-  }
+  public AlertService alertService() { return new AlertService(); }
 
 
   @Bean

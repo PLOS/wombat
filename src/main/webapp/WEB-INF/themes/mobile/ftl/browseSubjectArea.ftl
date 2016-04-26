@@ -1,1 +1,0 @@
-<#include "search/searchResults.ftl" />

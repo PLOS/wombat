@@ -39,6 +39,12 @@ $article-sidebar-width: 160;
   min-height: rem-calc(100);
 }
 
+%signposts-tooltip-transition {
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
 .signposts {
   .noshow {
     display: none;
@@ -72,44 +78,47 @@ $article-sidebar-width: 160;
     height: rem-calc(80);
 
     .tools {
+      &.highlighted {
+        a.metric-term {
+          background-color: $plos-default;
+          border-radius: $border-radius-default;
+          color: $white;
+          text-decoration: underline;
+        }
+        p.visible {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
       a {
+        @extend %signposts-tooltip-transition;
         font-size: $txt-size-xsmall;
         color: $grey-dark;
         padding: $pad-xsmall;
         margin-bottom: rem-calc(2);
-       // @include single-transition(background-color);
-        transition-property: all;
-        transition-duration: .5s;
-        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 
         &.show-tip {
           background-color: $plos-default;
           border-radius: $border-radius-default;
           color: $white;
         }
-        &:hover {
-          background-color: $plos-default;
-          border-radius: $border-radius-default;
-          color: $white;
-          text-decoration: underline;
-        }
       }
 
       p {
-
+        @extend %signposts-tooltip-transition;
         background-color: $plos-default;
         border-radius: $border-radius-default;
-        width: rem-calc(280);
+        max-width: rem-calc(280);
         position: absolute;
         text-align: left;
         z-index: map-get($zindex, overlay);
         padding: $pad-xsmall;
-        display: none;
+        visibility: hidden;
+        opacity: 0;
 
         > a {
           color: $white;
           padding: 0;
-          display: block;
         }
       }
 

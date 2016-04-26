@@ -78,3 +78,145 @@
   });
 
 })(jQuery);
+
+var keyDownEventHandler = function(e) {
+  //console.log('key down event');
+
+  if (e.which === 13) {
+    saveSearchAlert();
+
+    //Prevent default event (Submits the form)
+    e.preventDefault();
+    return false;
+  }
+
+  if (e.which === 27) {
+    removeModal();
+  }
+};
+
+var clickEventHandler = function(e) {
+  //If the click happens outside of the modal, close the modal
+  if($(e.target).is("inlinePopup") || $(e.target).parents('.inlinePopup').size()) {
+    //Do nothing
+    //console.log('inside box');
+  } else {
+    //Close the modal
+    //console.log('outside box');
+    removeModal();
+  }
+};
+
+var removeModal = function() {
+  $(document).unbind('keydown', keyDownEventHandler);
+  $(document).unbind('click', clickEventHandler);
+
+  $('#mask , .inlinePopup').fadeOut(300 , function() {
+    $('#mask').remove();
+  });
+};
+
+var saveSearch = function() {
+  var name = $('#text_name_savedsearch').val();
+  var query = $('#alert_query_savedsearch').val();
+  var weekly = $('#cb_weekly_savedsearch').is(':checked');
+  var monthly = $('#cb_monthly_savedsearch').is(':checked');
+
+  $.ajax({
+    type: 'POST',
+    url: 'searchalert/add',
+    data: 'name=' + encodeURIComponent(name)
+          + "&query=" + encodeURIComponent(query)
+          + (weekly ? "&frequency=weekly" : "") + (monthly ? "&frequency=monthly" : ""),
+    dataType:'json',
+    success: function(response) {
+      if (response.error) {
+        var errorMessage = response.error;
+        $('#span_error_savedsearch').html(errorMessage);
+        return;
+      }
+
+      removeModal();
+    },
+    error: function(req, textStatus, errorThrown) {
+      $('#span_error_savedsearch').html(errorThrown);
+      console.log('error: ' + errorThrown);
+    }
+  });
+};
+
+var showModalForLogin = function(e) {
+  $('#span_error_savedsearch').html('');
+
+  //logic to show the pop-up
+  var loginBox = $('#login-box');
+
+  //Fade in the Popup
+  $(loginBox).fadeIn(300);
+
+  //Set the center alignment padding + border see css style
+  var popMargTop = ($(loginBox).height() + 24) / 2;
+  var popMargLeft = ($(loginBox).width() + 24) / 2;
+
+  $(loginBox).css({
+    'margin-top' : -popMargTop,
+    'margin-left' : -popMargLeft
+  });
+
+  // Add the mask to body
+  $('body').append('<div id="mask"></div>');
+  $('#mask').fadeIn(300);
+
+  $(document).bind('keydown', keyDownEventHandler);
+  $(document).bind('click', clickEventHandler);
+
+  return false;
+};
+
+var showModalForSavedSearch = function(e) {
+  ////if the request is from author/editor facet for save search, setting the search name with anchor name.
+  ////else the regular search term is used.
+  //if($(this).attr('name')) {
+  //  $('#text_name_savedsearch').val($(this).attr('name'));
+  //}
+  //else if ($('#searchOnResult')) {
+  //  $('#text_name_savedsearch').val($('#searchOnResult').val());
+  //}
+  $('#text_name_savedsearch').val($('#controlBarSearch').val());
+  $('#span_error_savedsearch').html('');
+
+  //logic to show the pop-up
+  var saveSearchBox = $('#save-search-box');
+
+  //Fade in the Popup
+  $(saveSearchBox).fadeIn(300);
+
+  //Set the center alignment padding + border see css style
+  var popMargTop = ($(saveSearchBox).height() + 24) / 2;
+  var popMargLeft = ($(saveSearchBox).width() + 24) / 2;
+
+  $(saveSearchBox).css({
+    'margin-top' : -popMargTop,
+    'margin-left' : -popMargLeft
+  });
+
+  // Add the mask to body
+  $('body').append('<div id="mask"></div>');
+  $('#mask').fadeIn(300);
+
+  $(document).bind('keydown', keyDownEventHandler);
+  $(document).bind('click', clickEventHandler);
+  $('#text_name_savedsearch').focus();
+  //This may seems a bit odd, but this sets the cursor at the end of the string
+  var input = $('#text_name_savedsearch')[0];
+  input.selectionStart = input.selectionEnd = input.value.length;
+
+  return false;
+};
+
+$(document).ready(function() {
+  $('#save-search-link').bind('click',showModalForSavedSearch);
+  $('#login-link').bind('click',showModalForLogin);
+  $('.btn-cancel-savedsearch').bind('click', removeModal);
+  $('#btn-save-savedsearch').bind('click', saveSearch);
+});

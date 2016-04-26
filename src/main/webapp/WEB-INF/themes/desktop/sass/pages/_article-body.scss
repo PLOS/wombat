@@ -50,7 +50,10 @@ $line-height-small: ($line-height * .5);
 }
 
 .article-content {
-
+ .body-section{
+   margin-top: $line-height-medium;
+   margin-bottom: $line-height-medium;
+ }
  .section > div {
     margin-bottom: $line-height;
   }

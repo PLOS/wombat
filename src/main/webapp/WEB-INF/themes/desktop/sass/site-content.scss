@@ -52,3 +52,10 @@ article {      // to work on ck editor editing
   @import 'sections/ambra/forms';
 }
 
+// Special adjustments:
+
+.survey-page {
+  .survey-page-header, .question-number, .survey-footer, .smcx-widget-footer {
+    display: none;
+  }
+}

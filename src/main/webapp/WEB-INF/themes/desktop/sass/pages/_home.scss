@@ -443,16 +443,16 @@ $image-container: ($image-width + $pad-small);
 #submission-links {
   @include blocks($color: $grey-dark, $radius: all, $padding: $pad-small $pad-medium $pad-xsmall $pad-medium, $shadow: none);
   @extend %width-small;
-  //padding-top: $pad-small + $pad-xsmall;
+
   h3 {
     @extend %header-bottom-shadow;
     @extend %header-xlarge-light;
-    }
+  }
   .split-container {
     @extend .inline-list;
     margin: 0 0 $pad-small;
     line-height: inherit;
-    }
+  }
   .split-item {
     margin: 0 !important;
     width: 50%;
@@ -460,14 +460,18 @@ $image-container: ($image-width + $pad-small);
     text-align: center;
     &:first-child {
       border-right: 1px solid $grey-med-dark;
-      }
+    }
     a {
       @include link-text($color: $clr-link-against-dark, $decoration-hover: underline);
       font-size: $txt-size-medium-large;
       font-family: $font-face-fancy;
-      }
     }
   }
+  .single-line {
+    text-align: left;
+    line-height: $line-height-large;
+  }
+}
 
 #social-links {
   @extend %width-small;

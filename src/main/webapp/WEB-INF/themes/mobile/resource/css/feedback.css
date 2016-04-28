@@ -1,4 +1,4 @@
-/* Feedback */
+/* Feedback and Email this Article */
 #feedback-form-container, #set-grid {
   text-align: center;
   font-size: 1.4em;
@@ -47,7 +47,22 @@
   margin: 0 0 12px 0;
 }
 
-/* Feedback Success */
+#emailThisArticleForm .error {
+    margin-left: 10%;
+    padding: 0;
+    color: red;
+    display: block;
+}
+
+#emailThisArticleForm li:last-child .error {
+    margin-left: 19%;
+}
+
+.required {
+    color: red;
+}
+
+/* Feedback and Email this Article Success */
 #success-message-container {
   padding: 5% 0;
   text-align: center;
@@ -55,6 +70,9 @@
   font-size: 1.25em;
 }
 
-#success-message-container #success-message{
+#success-message-container #success-message {
   padding: 5% 0;
 }
+
+
+

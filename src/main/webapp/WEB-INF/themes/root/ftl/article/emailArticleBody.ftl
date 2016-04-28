@@ -6,9 +6,9 @@
   <input id="${formInputId}" name="${formInputId}" type="text" value="${input?eval!''}"/>
 </#macro>
 
-<#macro formValidation errorKey>
+<#macro formValidation errorKey input>
   <#if errorKey?eval??>
-    <label class="error">
+    <label for="${input}" class="error">
         <#nested/>
     </label>
   </#if>
@@ -30,25 +30,25 @@
     <fieldset>
       <ol>
         <li>
-          <label class="form-label" for="toAddresses">Recipients' E-mail addresses (one per
+          <label class="form-label" for="emailToAddresses">Recipients' E-mail addresses (one per
             line,
             max ${maxEmails})<span class="required">*</span>
           </label>
           <textarea id="emailToAddresses"  class="form-label" rows="${maxEmails}" name="emailToAddresses"
                     cols="40">
           <#t>${emailToAddresses!''}</textarea>
-          <@formValidation "emailToAddressesMissing">This field is required.</@formValidation>
-          <@formValidation "emailToAddressesInvalid">Invalid email address.</@formValidation>
-          <@formValidation "tooManyEmailToAddresses">Too many email addresses.</@formValidation>
+          <@formValidation "emailToAddressesMissing" "emailToAddresses">This field is required.</@formValidation>
+          <@formValidation "emailToAddressesInvalid" "emailToAddresses">Invalid email address.</@formValidation>
+          <@formValidation "tooManyEmailToAddresses" "emailToAddresses">Too many email addresses.</@formValidation>
         </li>
         <li>
         <@formInput "emailFrom"> Your E-mail address <span class="required">*</span></@formInput>
-        <@formValidation "emailFromMissing">This field is required.</@formValidation>
-        <@formValidation "emailFromInvalid">Invalid email address.</@formValidation>
+        <@formValidation "emailFromMissing" "emailFrom">This field is required.</@formValidation>
+        <@formValidation "emailFromInvalid" "emailFrom">Invalid email address.</@formValidation>
         </li>
         <li>
         <@formInput "senderName">Your name <span class="required">*</span></@formInput>
-        <@formValidation "senderNameMissing">This field is required.</@formValidation>
+        <@formValidation "senderNameMissing" "senderName">This field is required.</@formValidation>
         </li>
         <li>
           <label class="form-label" for="note">
@@ -59,9 +59,10 @@
           </textarea><#t>
         </li>
         <li>
-          <label class="form-label">Text verification:</label>
+          <label class="form-label">Text verification</label>
         ${captchaHTML}
-        <@formValidation "captchaError" >Verification is incorrect. Please try again.</@formValidation>
+        <@formValidation "captchaError" "captcha">Verification is incorrect. Please try again
+          .</@formValidation>
         </li>
       </ol>
       <input class="btn" id="sendButton" type="submit" value="Send" />

@@ -302,7 +302,17 @@
     <xsl:for-each select="body">
       <xsl:call-template name="newline1"/>
       <xsl:call-template name="newline1"/>
-      <xsl:apply-templates/>
+      <xsl:choose>
+        <xsl:when test="not(sec)">
+          <div>
+            <xsl:call-template name="make-bodysection-class"/>
+            <xsl:apply-templates/>
+          </div>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates/>
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:call-template name="newline1"/>
     </xsl:for-each>
   </xsl:template>
@@ -771,6 +781,10 @@
 
   <xsl:template name="make-section-class">
     <xsl:attribute name="class">section toc-section</xsl:attribute>
+  </xsl:template>
+
+  <xsl:template name="make-bodysection-class">
+    <xsl:attribute name="class">section toc-section body-section</xsl:attribute>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->

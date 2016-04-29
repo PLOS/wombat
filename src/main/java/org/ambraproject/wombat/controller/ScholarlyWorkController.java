@@ -11,6 +11,7 @@ import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -59,6 +60,15 @@ public class ScholarlyWorkController {
     workId.getRevisionNumber().ifPresent(revisionNumber ->
         link.addQueryParameter("rev", revisionNumber));
     return link.build();
+  }
+
+  @RequestMapping(name = "work", value = "/work")
+  public void redirectToWorkFile(HttpServletRequest request,
+                                 @SiteParam Site site,
+                                 ScholarlyWorkId workId,
+                                 @RequestParam("fileType") String fileType)
+      throws IOException {
+    // TODO
   }
 
 }

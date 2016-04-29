@@ -10,13 +10,11 @@ import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Map;
-import java.util.Objects;
 
 @Controller
 public class ScholarlyWorkController {
@@ -27,12 +25,11 @@ public class ScholarlyWorkController {
   private RequestMappingContextDictionary requestMappingContextDictionary;
 
   @RequestMapping(name = "work", value = "/work")
-  public String renderWork(HttpServletRequest request,
-                           Model model,
-                           @SiteParam Site site,
-                           ScholarlyWorkId workId)
+  public String redirectToWork(HttpServletRequest request,
+                               @SiteParam Site site,
+                               ScholarlyWorkId workId)
       throws IOException {
-    return getRedirectFor(getTypeOf(workId)).get(Link.toLocalSite(site), workId).getRedirect(request);
+    return getRedirectFor(site, workId).get(request);
   }
 
   private String getTypeOf(ScholarlyWorkId workId) throws IOException {
@@ -40,33 +37,28 @@ public class ScholarlyWorkController {
     return (String) workMetadata.get("type");
   }
 
-  @FunctionalInterface
-  private static interface TypeRedirect {
-    Link get(Link.Factory factory, ScholarlyWorkId workId);
-  }
-
-  private Link redirectFigure(Link.Factory factory, ScholarlyWorkId workId) {
-    return factory.toPattern(requestMappingContextDictionary, "article/figure")
-        .addQueryParameter("id", workId.getDoi())
-        .build();
-  }
-
-  private final ImmutableMap<String, TypeRedirect> REDIRECTS = ImmutableMap.<String, TypeRedirect>builder()
-      .put("article", (factory, workId) ->
-          factory.toPattern(requestMappingContextDictionary, "article")
-              .addQueryParameter("id", workId.getDoi())
-              .build())
-      .put("figure", this::redirectFigure)
-      .put("table", this::redirectFigure)
-      // TODO: supp info
+  private static final ImmutableMap<String, String> REDIRECT_HANDLERS = ImmutableMap.<String, String>builder()
+      .put("article", "article")
+      .put("figure", "figurePage")
+      .put("table", "figurePage")
+          // TODO: supp info
       .build();
 
-  private TypeRedirect getRedirectFor(String type) {
-    TypeRedirect redirect = REDIRECTS.get(Objects.requireNonNull(type));
-    if (redirect == null) {
-      throw new RuntimeException("Unrecognized type: " + type);
+  private Link getRedirectFor(Site site, ScholarlyWorkId workId) throws IOException {
+    String handlerName = REDIRECT_HANDLERS.get(getTypeOf(workId));
+    if (handlerName == null) {
+      throw new RuntimeException("Unrecognized type: " + workId);
     }
-    return redirect;
+    Link.Factory.PatternBuilder handlerLink = Link.toLocalSite(site)
+        .toPattern(requestMappingContextDictionary, handlerName);
+    return pointLinkToWork(handlerLink, workId);
+  }
+
+  private static Link pointLinkToWork(Link.Factory.PatternBuilder link, ScholarlyWorkId workId) {
+    link.addQueryParameter("id", workId.getDoi());
+    workId.getRevisionNumber().ifPresent(revisionNumber ->
+        link.addQueryParameter("rev", revisionNumber));
+    return link.build();
   }
 
 }

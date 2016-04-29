@@ -179,9 +179,13 @@ public class ArticleController extends WombatController {
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
 
-    List<Map<String, Object>> intfigData = (List<Map<String, Object>>) editorialContentApi.getJson("intfigData", "intfig.ppat.1001072");
-    model.addAttribute("intfigData", intfigData);
-
+    String intfigDoiSuffix = articleId.replace("10.1371/journal", "intfig");
+    try {
+      model.addAttribute("intfigData", editorialContentApi.getJson("externalContent", intfigDoiSuffix));
+    } catch (EntityNotFoundException e) {
+      //todo: avoid handling no intfigs in this way
+      //do nothing - no interactive figures to add
+    }
 
     return site + "/ftl/article/article";
   }

@@ -55,9 +55,16 @@
     z-index: 6000;
     color: #fff
   }
+  .close_me{
+    float: right;
+  }
 </style>
 
-<div id="figure-lightbox-container-interactive">
+<div id="figure-lightbox-container-interactive" style="display: none">
+  <div class="ci-header">
+
+    <div class="close_me">close</div>
+  </div>
 
   <div id="viewer">
   </div>

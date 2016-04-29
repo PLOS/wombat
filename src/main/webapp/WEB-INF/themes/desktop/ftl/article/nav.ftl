@@ -14,6 +14,8 @@
   <#if article.figures?? && article.figures?size &gt; 0 >
     <li id="nav-figures"><a href="#" data-doi="${article.doi}">Figures</a></li>
   </#if>
+    <li ><a id="nav-int-figures">Interactive Figures</a></li>
+
   </ul>
 </div>
 <@js src="resource/js/components/scroll.js"/>

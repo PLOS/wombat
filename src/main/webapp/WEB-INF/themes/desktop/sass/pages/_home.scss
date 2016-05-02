@@ -472,6 +472,7 @@ $image-container: ($image-width + $pad-small);
     }
   }
 
+
 #social-links {
   @extend %width-small;
   @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);

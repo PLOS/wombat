@@ -444,10 +444,17 @@ $image-container: ($image-width + $pad-small);
   @include blocks($color: $grey-dark, $radius: all, $padding: $pad-small $pad-medium $pad-xsmall $pad-medium, $shadow: none);
   @extend %width-small;
   //padding-top: $pad-small + $pad-xsmall;
+  p{text-align: center; margin:$pad-default auto $pad-small auto}
+  a {
+    @include link-text($color: $clr-link-against-dark, $decoration-hover: underline);
+    font-size: $txt-size-medium-large;
+    font-family: $font-face-fancy;
+  }
   h3 {
     @extend %header-bottom-shadow;
     @extend %header-xlarge-light;
     }
+
   .split-container {
     @extend .inline-list;
     margin: 0 0 $pad-small;
@@ -461,13 +468,10 @@ $image-container: ($image-width + $pad-small);
     &:first-child {
       border-right: 1px solid $grey-med-dark;
       }
-    a {
-      @include link-text($color: $clr-link-against-dark, $decoration-hover: underline);
-      font-size: $txt-size-medium-large;
-      font-family: $font-face-fancy;
-      }
+
     }
   }
+
 
 #social-links {
   @extend %width-small;

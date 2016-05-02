@@ -7,6 +7,7 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,12 +31,20 @@ public class ScholarlyWorkController {
                                @SiteParam Site site,
                                ScholarlyWorkId workId)
       throws IOException {
-    return getRedirectFor(site, workId).get(request);
+    return getRedirectFor(site, workId).getRedirect(request);
+  }
+
+  private Map<String, Object> getWorkMetadata(ScholarlyWorkId workId) throws IOException {
+    ApiAddress address = workId.appendId(ApiAddress.builder("work"));
+    try {
+      return articleApi.requestObject(address, Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException("No work exists with ID: " + workId, e);
+    }
   }
 
   private String getTypeOf(ScholarlyWorkId workId) throws IOException {
-    Map<String, Object> workMetadata = articleApi.requestObject(workId.appendId(ApiAddress.builder("work")), Map.class);
-    return (String) workMetadata.get("type");
+    return (String) getWorkMetadata(workId).get("type");
   }
 
   private static final ImmutableMap<String, String> REDIRECT_HANDLERS = ImmutableMap.<String, String>builder()
@@ -62,7 +71,7 @@ public class ScholarlyWorkController {
     return link.build();
   }
 
-  @RequestMapping(name = "work", value = "/work")
+  @RequestMapping(name = "workFile", value = "/work", params = {"fileType"})
   public void redirectToWorkFile(HttpServletRequest request,
                                  @SiteParam Site site,
                                  ScholarlyWorkId workId,

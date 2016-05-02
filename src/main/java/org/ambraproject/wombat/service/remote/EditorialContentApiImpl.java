@@ -15,7 +15,6 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.Collection;
 import java.util.Map;
-import java.util.OptionalInt;
 import java.util.Set;
 
 public class EditorialContentApiImpl extends AbstractContentApi implements EditorialContentApi {
@@ -42,9 +41,9 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
     String cacheKey = pageType.concat(":").concat(key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl");
     CacheParams cacheParams = CacheParams.create(cacheKey, (cacheTtl == null) ? null : cacheTtl.intValue());
-    OptionalInt version = OptionalInt.empty(); // TODO May want to support page versioning at some point using fetchHtmlDirective
+    ContentKey version = ContentKey.createForLatestVersion(key); // TODO May want to support page versioning at some point using fetchHtmlDirective
 
-    String transformedHtml = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
+    String transformedHtml = requestCachedReader(cacheParams, version, new CacheDeserializer<Reader, String>() {
       @Override
       public String read(Reader htmlReader) throws IOException {
         // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
@@ -74,15 +73,9 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
    */
   @Override
   public Object getJson(String pageType, String key) throws IOException {
-    String cacheKey = pageType.concat(":").concat(key);
+    String cacheKey = pageType + ":" + key;
     CacheParams cacheParams = CacheParams.create(cacheKey);
-    OptionalInt version = OptionalInt.empty();
-    Object jsonObj = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, Object>() {
-      @Override
-      public Object read(Reader jsonReader) throws IOException {
-        return gson.fromJson(jsonReader, Object.class);
-      }
-    });
-    return jsonObj;
+    ContentKey version = ContentKey.createForLatestVersion(key);
+    return requestCachedReader(cacheParams, version, jsonReader -> gson.fromJson(jsonReader, Object.class));
   }
 }

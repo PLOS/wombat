@@ -17,7 +17,6 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
-import java.util.OptionalInt;
 
 public abstract class AbstractContentApi implements ContentApi {
 
@@ -78,9 +77,9 @@ public abstract class AbstractContentApi implements ContentApi {
   protected abstract String getRepoConfigKey();
 
   @Override
-  public final CloseableHttpResponse request(String key, OptionalInt version, Collection<? extends Header> headers)
+  public final CloseableHttpResponse request(ContentKey key, Collection<? extends Header> headers)
       throws IOException {
-    URI requestAddress = buildUri(key, version, RequestMode.OBJECT);
+    URI requestAddress = buildUri(key, RequestMode.OBJECT);
     HttpGet get = new HttpGet(requestAddress);
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
@@ -101,25 +100,23 @@ public abstract class AbstractContentApi implements ContentApi {
     }
   }
 
-  private URI buildUri(String key, OptionalInt version, RequestMode mode) throws IOException {
+  private URI buildUri(ContentKey key, RequestMode mode) throws IOException {
     RepoConfig repoConfig = getRepoConfig();
-    UrlParamBuilder requestParams = UrlParamBuilder.params().add("key", key);
-    if (version.isPresent()) {
-      requestParams.add("version", Integer.toString(version.getAsInt()));
-    }
+    UrlParamBuilder requestParams = UrlParamBuilder.params();
+    key.setParameters(requestParams);
     String repoBucketName = repoConfig.bucketName;
     return URI.create(String.format("%s/%s/%s?%s",
         repoConfig.address, mode.getPathComponent(), repoBucketName, requestParams.format()));
   }
 
-  protected final <T> T requestCachedReader(CacheParams cacheParams, String key, OptionalInt version, CacheDeserializer<Reader, T> callback) throws IOException {
-    HttpGet target = new HttpGet(buildUri(key, version, RequestMode.OBJECT));
+  protected final <T> T requestCachedReader(CacheParams cacheParams, ContentKey key, CacheDeserializer<Reader, T> callback) throws IOException {
+    HttpGet target = new HttpGet(buildUri(key, RequestMode.OBJECT));
     return cachedRemoteReader.requestCached(cacheParams, target, callback);
   }
 
   @Override
-  public final Map<String, Object> requestMetadata(CacheParams cacheParams, String key, OptionalInt version) throws IOException {
-    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version, RequestMode.METADATA)),
+  public final Map<String, Object> requestMetadata(CacheParams cacheParams, ContentKey key) throws IOException {
+    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, RequestMode.METADATA)),
         (Reader stream) -> gson.fromJson(stream, Map.class));
   }
 

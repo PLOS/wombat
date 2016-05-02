@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
@@ -9,22 +10,29 @@ import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.ContentKey;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
-public class ScholarlyWorkController {
+public class ScholarlyWorkController extends WombatController {
 
   @Autowired
   private ArticleApi articleApi;
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
+  @Autowired
+  private CorpusContentApi corpusContentApi;
 
   @RequestMapping(name = "work", value = "/work")
   public String redirectToWork(HttpServletRequest request,
@@ -72,12 +80,29 @@ public class ScholarlyWorkController {
   }
 
   @RequestMapping(name = "workFile", value = "/work", params = {"fileType"})
-  public void redirectToWorkFile(HttpServletRequest request,
-                                 @SiteParam Site site,
-                                 ScholarlyWorkId workId,
-                                 @RequestParam("fileType") String fileType)
+  public void serveWorkFile(HttpServletResponse responseToClient,
+                            @SiteParam Site site,
+                            ScholarlyWorkId workId,
+                            @RequestParam("fileType") String fileType)
       throws IOException {
-    // TODO
+    Map<String, ?> metadata = getWorkMetadata(workId);
+    Map<String, ?> files = (Map<String, ?>) metadata.get("files");
+    Map<String, ?> fileRepoKey = (Map<String, ?>) files.get(fileType);
+    if (fileRepoKey == null) {
+      String message = String.format("Unrecognized file type (\"%s\") for workId: %s", fileType, workId);
+      throw new NotFoundException(message);
+    }
+
+    ContentKey contentKey = createKey(fileRepoKey);
+    try (CloseableHttpResponse responseFromApi = corpusContentApi.request(contentKey, ImmutableList.of())) {
+      forwardAssetResponse(responseFromApi, responseToClient, false);
+    }
+  }
+
+  private static ContentKey createKey(Map<String, ?> fileRepoKey) {
+    String key = (String) fileRepoKey.get("key");
+    UUID uuid = UUID.fromString((String) fileRepoKey.get("uuid"));
+    return ContentKey.createForUuid(key, uuid);
   }
 
 }

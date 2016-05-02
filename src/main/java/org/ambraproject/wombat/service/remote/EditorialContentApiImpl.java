@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
@@ -43,7 +42,7 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
     String cacheKey = pageType.concat(":").concat(key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl");
     CacheParams cacheParams = CacheParams.create(cacheKey, (cacheTtl == null) ? null : cacheTtl.intValue());
-    Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective
+    OptionalInt version = OptionalInt.empty(); // TODO May want to support page versioning at some point using fetchHtmlDirective
 
     String transformedHtml = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
       @Override
@@ -77,7 +76,7 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
   public Object getJson(String pageType, String key) throws IOException {
     String cacheKey = pageType.concat(":").concat(key);
     CacheParams cacheParams = CacheParams.create(cacheKey);
-    Optional<Integer> version = Optional.absent();
+    OptionalInt version = OptionalInt.empty();
     Object jsonObj = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, Object>() {
       @Override
       public Object read(Reader jsonReader) throws IOException {

@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Optional;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.util.CacheParams;
@@ -18,6 +17,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
+import java.util.OptionalInt;
 
 public abstract class AbstractContentApi implements ContentApi {
 
@@ -78,7 +78,7 @@ public abstract class AbstractContentApi implements ContentApi {
   protected abstract String getRepoConfigKey();
 
   @Override
-  public final CloseableHttpResponse request(String key, Optional<Integer> version, Collection<? extends Header> headers)
+  public final CloseableHttpResponse request(String key, OptionalInt version, Collection<? extends Header> headers)
       throws IOException {
     URI requestAddress = buildUri(key, version, RequestMode.OBJECT);
     HttpGet get = new HttpGet(requestAddress);
@@ -101,24 +101,24 @@ public abstract class AbstractContentApi implements ContentApi {
     }
   }
 
-  private URI buildUri(String key, Optional<Integer> version, RequestMode mode) throws IOException {
+  private URI buildUri(String key, OptionalInt version, RequestMode mode) throws IOException {
     RepoConfig repoConfig = getRepoConfig();
     UrlParamBuilder requestParams = UrlParamBuilder.params().add("key", key);
     if (version.isPresent()) {
-      requestParams.add("version", version.get().toString());
+      requestParams.add("version", Integer.toString(version.getAsInt()));
     }
     String repoBucketName = repoConfig.bucketName;
     return URI.create(String.format("%s/%s/%s?%s",
         repoConfig.address, mode.getPathComponent(), repoBucketName, requestParams.format()));
   }
 
-  protected final <T> T requestCachedReader(CacheParams cacheParams, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
+  protected final <T> T requestCachedReader(CacheParams cacheParams, String key, OptionalInt version, CacheDeserializer<Reader, T> callback) throws IOException {
     HttpGet target = new HttpGet(buildUri(key, version, RequestMode.OBJECT));
     return cachedRemoteReader.requestCached(cacheParams, target, callback);
   }
 
   @Override
-  public final Map<String, Object> requestMetadata(CacheParams cacheParams, String key, Optional<Integer> version) throws IOException {
+  public final Map<String, Object> requestMetadata(CacheParams cacheParams, String key, OptionalInt version) throws IOException {
     return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version, RequestMode.METADATA)),
         (Reader stream) -> gson.fromJson(stream, Map.class));
   }

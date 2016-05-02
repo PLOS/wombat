@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -25,6 +24,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.OptionalInt;
 
 /**
  * Forwards requests for files to the content repository.
@@ -45,7 +45,7 @@ public class ExternalResourceController extends WombatController {
                     @SiteParam Site site,
                     @PathVariable("key") String key)
       throws IOException {
-    serve(response, request, key, Optional.<Integer>absent());
+    serve(response, request, key, OptionalInt.empty());
   }
 
   @RequestMapping(name = "versionedRepoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}/{version}")
@@ -61,7 +61,7 @@ public class ExternalResourceController extends WombatController {
     } catch (NumberFormatException e) {
       throw new NotFoundException("Not a valid version integer: " + version, e);
     }
-    serve(response, request, key, Optional.of(versionInt));
+    serve(response, request, key, OptionalInt.of(versionInt));
   }
 
   @RequestMapping(name = "repoObjectUsingPublicUrl", value = "/s/file")
@@ -70,22 +70,26 @@ public class ExternalResourceController extends WombatController {
                                  @SiteParam Site site,
                                  @RequestParam(value = "id", required = true) String key)
           throws IOException {
-    serve(response, request, key, Optional.<Integer>absent());
+    serve(response, request, key, OptionalInt.empty());
+  }
+
+  private static String asNullableString(OptionalInt optionalInt) {
+    return optionalInt.isPresent() ? Integer.toString(optionalInt.getAsInt()) : String.valueOf((Object) null);
   }
 
   private static final int REPROXY_CACHE_FOR = 6 * 60 * 60; // 6 hours
 
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
-                     String key, Optional<Integer> version)
+                     String key, OptionalInt version)
       throws IOException {
-    String cacheKey = "indirect:" + CacheParams.createKeyHash(key, String.valueOf(version.orNull()));
+    String cacheKey = "indirect:" + CacheParams.createKeyHash(key, asNullableString(version));
     Map<String, Object> fileMetadata;
 
     try {
       fileMetadata = editorialContentApi.requestMetadata(CacheParams.create(cacheKey), key, version);
         } catch (EntityNotFoundException e) {
     String message = String.format("Not found in repo: [key: %s, version: %s]",
-            key, version.orNull());
+            key, asNullableString(version));
     throw new NotFoundException(message, e);
     }
 
@@ -109,7 +113,7 @@ public class ExternalResourceController extends WombatController {
       forwardAssetResponse(repoResponse, responseToClient, false);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: [key: %s, version: %s]",
-          key, version.orNull());
+          key, asNullableString(version));
       throw new NotFoundException(message, e);
     }
   }

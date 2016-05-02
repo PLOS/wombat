@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Optional;
 import org.ambraproject.wombat.util.CacheParams;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -8,6 +7,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
+import java.util.OptionalInt;
 
 public interface ContentApi {
 
@@ -20,9 +20,9 @@ public interface ContentApi {
    * @throws IOException
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the repository does not provide the file
    */
-  public abstract CloseableHttpResponse request(String key, Optional<Integer> version, Collection<? extends Header> headers)
+  public abstract CloseableHttpResponse request(String key, OptionalInt version, Collection<? extends Header> headers)
       throws IOException;
 
-  public abstract Map<String, Object> requestMetadata(CacheParams cacheParams, String key, Optional<Integer> version) throws IOException;
+  public abstract Map<String, Object> requestMetadata(CacheParams cacheParams, String key, OptionalInt version) throws IOException;
 
 }

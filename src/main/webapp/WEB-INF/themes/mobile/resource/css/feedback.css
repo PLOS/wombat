@@ -48,18 +48,14 @@
 }
 
 #emailThisArticleForm .error {
-    margin-left: 10%;
-    padding: 0;
-    color: red;
+    margin-left: 24%;
+    padding: 5px 5px 5px 8px;
     display: block;
+    text-align:left;
 }
 
-#emailThisArticleForm li:last-child .error {
-    margin-left: 19%;
-}
-
-.required {
-    color: red;
+.error, .required {
+    color: #e53350;
 }
 
 /* Feedback and Email this Article Success */

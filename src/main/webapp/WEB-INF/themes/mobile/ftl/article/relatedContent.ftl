@@ -25,8 +25,9 @@
 
 <#include "../common/bodyJs.ftl" />
 
-<@js src="resource/js/util/alm_config.js"/>
-<@js src="resource/js/util/alm_query.js"/>
+<#include "articleData.ftl" />
+<#include "../common/almQueryJs.ftl" />
+
 <@js src="resource/js/vendor/moment.js"/>
 <@js src="resource/js/pages/related_content.js"/>
 <@renderJs />

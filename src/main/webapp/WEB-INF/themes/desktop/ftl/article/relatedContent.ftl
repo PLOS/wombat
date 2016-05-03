@@ -30,7 +30,7 @@
 <#include "../common/footer/footer.ftl" />
 <#include "articleJs.ftl" />
 
-<@js src="resource/js/pages/related_content_promise.js"/>
+<@js src="resource/js/pages/related_content.js"/>
 <@renderJs />
 
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>

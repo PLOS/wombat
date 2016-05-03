@@ -28,6 +28,10 @@
   list-style-type: none;
 }
 
+#media-coverage-modal {
+  display: none;
+}
+
 /* Figshare recommendations */
 #figshare-related div.rca-row-1 {
   width: 100%;

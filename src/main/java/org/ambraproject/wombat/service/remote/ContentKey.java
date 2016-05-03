@@ -41,10 +41,6 @@ public abstract class ContentKey {
     return new VersionContentKey(key, OptionalInt.of(version));
   }
 
-  public static ContentKey createForVersion(String key, OptionalInt version) {
-    return new VersionContentKey(key, version);
-  }
-
   private static final class VersionContentKey extends ContentKey {
     private final OptionalInt version;
 

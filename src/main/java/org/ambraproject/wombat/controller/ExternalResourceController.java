@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.OptionalInt;
 
 /**
  * Forwards requests for files to the content repository.
@@ -72,10 +71,6 @@ public class ExternalResourceController extends WombatController {
                                  @RequestParam(value = "id", required = true) String key)
           throws IOException {
     serve(response, request, ContentKey.createForLatestVersion(key));
-  }
-
-  private static String asNullableString(OptionalInt optionalInt) {
-    return optionalInt.isPresent() ? Integer.toString(optionalInt.getAsInt()) : String.valueOf((Object) null);
   }
 
   private static final int REPROXY_CACHE_FOR = 6 * 60 * 60; // 6 hours

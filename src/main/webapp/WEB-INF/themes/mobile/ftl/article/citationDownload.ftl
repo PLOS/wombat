@@ -8,9 +8,10 @@
 
 <div id="container-main">
 <#include "backToArticle.ftl" />
+  <section class="content">
 
 <#include "citationDownloadBody.ftl" />
-
+</section>
 <#include "../common/footer/footer.ftl" />
 </div>
 <#include "../common/bodyJs.ftl" />

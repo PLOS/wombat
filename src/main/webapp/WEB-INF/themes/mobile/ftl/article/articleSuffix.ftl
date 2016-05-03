@@ -55,6 +55,10 @@
   <@articleSaveButton href>Download Citation</@articleSaveButton>
 </@siteLink>
 
+<@siteLink handlerName="email" queryParameters={"id": article.doi} ; href>
+  <@articleSaveButton href>Email this Article</@articleSaveButton>
+</@siteLink>
+
 </nav><#--end article-save-options-->
 </article>
 

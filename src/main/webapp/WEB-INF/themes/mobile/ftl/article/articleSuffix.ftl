@@ -38,33 +38,26 @@
 </nav><#--end article buttons-->
 
 <nav class="article-save-options">
-  <div class="button-row">
-    <a class="rounded coloration-white-on-color full"
-       href="article/asset?id=${article.doi}.PDF">
-      Download Article (PDF)</a>
-  </div>
-  <div class="button-row">
-  <a class="rounded coloration-white-on-color full"
-      href="article/email?id=${article.doi}">
-      Email this Article</a>
-  </div>
 
-<#-- TODO: Implement non-MVP features.
-     Below is how the three buttons for the originally designed features should look together.
-     Note that "full" needs to be deleted from the <a> above if it is put inside a div.button-pair.
-
-  <div class="button-row button-pair clearfix">
-    <a class="rounded coloration-white-on-color"
-       href="article/asset?id=${article.doi}.PDF">
-      Download Article (PDF)</a>
-    <a href="." class="rounded coloration-white-on-color">Email this Article</a>
-  </div>
+<#macro articleSaveButton address>
   <div class="button-row">
-    <a href="." class="rounded full save-article" data-list-type="individual"><span class="plus">+</span>
-      Add article to my list
+    <a class="rounded coloration-white-on-color full" href="${address}">
+      <#nested/>
     </a>
   </div>
--->
+</#macro>
+
+<@siteLink handlerName="asset" queryParameters={"id": "${article.doi}.PDF"} ; href>
+  <@articleSaveButton href>Download Article (PDF)</@articleSaveButton>
+</@siteLink>
+
+<@siteLink handlerName="citationDownloadPage" queryParameters={"id": article.doi} ; href>
+  <@articleSaveButton href>Download Citation</@articleSaveButton>
+</@siteLink>
+
+<@siteLink handlerName="email" queryParameters={"id": article.doi} ; href>
+  <@articleSaveButton href>Email this Article</@articleSaveButton>
+</@siteLink>
 
 </nav><#--end article-save-options-->
 </article>

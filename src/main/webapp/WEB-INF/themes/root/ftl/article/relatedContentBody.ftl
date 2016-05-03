@@ -1,5 +1,19 @@
 <input type="hidden" name="reCaptcha-info" id="reCaptcha-info" value='${recaptchaPublicKey}'/>
 
+<script type="text/template" id="articleRelatedContentSectionTemplate">
+  <h3><%= section.title %></h3>
+  <ul>
+    <% _.each(items, function(item) { %>
+    <li>
+      <b><%= item.publication %></b>:
+      "<a href="<%= item.referral %>"><%= item.title %></a>"
+      &nbsp;&nbsp;
+      <%= moment(item.published_on).format("DD MMM YYYY") %>
+    </li>
+    <% }); %>
+  </ul>
+</script>
+
 <div id="media_coverage">
   <h2>Media Coverage of this Article <#--a href="" class="ir" title="More information">info</a--></h2>
   <div id="media_coverage_addition">Found additional news media or blog coverage for the article? <a id="media-coverage-form-link">Please let us know.</a></div>

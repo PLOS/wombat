@@ -8,6 +8,9 @@ import java.util.Objects;
 import java.util.OptionalInt;
 import java.util.UUID;
 
+/**
+ * Uniquely identifies an entity in the Content Repo, using various ways to distinguish versions.
+ */
 public abstract class ContentKey {
 
   protected final String key;
@@ -18,8 +21,16 @@ public abstract class ContentKey {
     this.key = key;
   }
 
+  /**
+   * Set the parameters for a Content Repo request to identify this key's entity.
+   *
+   * @param requestParams the builder to modify by adding parameters
+   */
   public abstract void setParameters(UrlParamBuilder requestParams);
 
+  /**
+   * @return a cache key that is reliably unique among all {@link ContentKey} instances
+   */
   public abstract String asCacheKey();
 
   @Override
@@ -33,14 +44,26 @@ public abstract class ContentKey {
   }
 
 
+  /**
+   * @param key a Content Repo key
+   * @return a pointer at the latest version with that key
+   */
   public static ContentKey createForLatestVersion(String key) {
     return new VersionContentKey(key, OptionalInt.empty());
   }
 
+  /**
+   * @param key     a Content Repo key
+   * @param version a Content Repo version number
+   * @return a pointer at the identified version
+   */
   public static ContentKey createForVersion(String key, int version) {
     return new VersionContentKey(key, OptionalInt.of(version));
   }
 
+  /**
+   * Identifies a Content Repo entity with the progression of version numbers.
+   */
   private static final class VersionContentKey extends ContentKey {
     private final OptionalInt version;
 
@@ -81,10 +104,18 @@ public abstract class ContentKey {
   }
 
 
+  /**
+   * @param key  a Content Repo key
+   * @param uuid a UUID identifying a Content Repo version
+   * @return a pointer at the identified version
+   */
   public static ContentKey createForUuid(String key, UUID uuid) {
     return new UuidContentKey(key, uuid);
   }
 
+  /**
+   * Identifies a Content Repo entity with a UUID pointing directly a a version.
+   */
   private static final class UuidContentKey extends ContentKey {
     private final UUID uuid;
 

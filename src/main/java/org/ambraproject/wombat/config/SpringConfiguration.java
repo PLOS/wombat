@@ -80,6 +80,7 @@ import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.XmlServiceImpl;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
@@ -307,6 +308,11 @@ public class SpringConfiguration {
   @Bean
   public EditorialContentApi editorialContentApi() {
     return new EditorialContentApiImpl();
+  }
+
+  @Bean
+  public CorpusContentApi corpusContentApi() {
+    return new CorpusContentApi();
   }
 
   @Bean

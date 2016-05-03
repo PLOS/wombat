@@ -43,6 +43,11 @@
        href="article/asset?id=${article.doi}.PDF">
       Download Article (PDF)</a>
   </div>
+  <div class="button-row">
+  <a class="rounded coloration-white-on-color full"
+      href="article/email?id=${article.doi}">
+      Email this Article</a>
+  </div>
 
 <#-- TODO: Implement non-MVP features.
      Below is how the three buttons for the originally designed features should look together.

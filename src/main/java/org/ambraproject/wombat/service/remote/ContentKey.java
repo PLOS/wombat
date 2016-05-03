@@ -119,7 +119,7 @@ public abstract class ContentKey {
   private static final class UuidContentKey extends ContentKey {
     private final UUID uuid;
 
-    public UuidContentKey(String key, UUID uuid) {
+    private UuidContentKey(String key, UUID uuid) {
       super(key);
       this.uuid = Objects.requireNonNull(uuid);
     }

@@ -279,11 +279,12 @@
         function (data, textStatus, jqXHR) {
           // The Ajax request had no errors, but the server may have sent back user validation errors.
           var errors = [];
-          for (var errorKey in data.validationErrors) {
-            errors.push({key: errorKey, value: data.validationErrors[errorKey]});
+          var serverErrors = (data.validationErrors == null) ? {} : data.validationErrors;
+          for (var errorKey in serverErrors) {
+            errors.push({key: errorKey, value: serverErrors[errorKey]});
           }
 
-          if (data.validationErrors['captchaValidationFailure']) {
+          if (serverErrors['captchaValidationFailure']) {
             // Need to refresh because the third-party server will not accept a second response for the same challenge.
             $("#recaptcha_reload").click();
           }

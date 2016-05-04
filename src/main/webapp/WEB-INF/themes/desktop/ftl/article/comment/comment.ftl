@@ -176,7 +176,7 @@
 
           <div class="toolbar">
             <#assign userIsLoggedIn = isUserLoggedIn() />
-            <@siteLink handlerName="userLogin" queryParameters={"page": getLinkToCurrentPage()?url("UTF-8")
+            <@siteLink handlerName="userLogin" queryParameters={"page": getLinkToCurrentPage()
             } ; login>
               <a title="Report a Concern" class="flag toolbar btn"
                 <#if userIsLoggedIn>

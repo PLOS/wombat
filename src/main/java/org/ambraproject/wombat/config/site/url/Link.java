@@ -334,10 +334,23 @@ public class Link {
     return get(request, false);
   }
 
+  /**
+   * Build a Spring view string that which, if returned from a Spring {@code RequestMapping} method, will redirect to
+   * the linked address.
+   *
+   * @param request the originating request of the page from which to link
+   * @return a Spring redirect string
+   */
   public String getRedirect(HttpServletRequest request) {
     return "redirect:" + get(request, !isAbsolute);
   }
 
+  /**
+   * @param request     an originating request
+   * @param isInContext {@code true} if the output should be relative to the application context; {@code false} if the
+   *                    output should contain the application context path
+   * @return the linked address
+   */
   private String get(HttpServletRequest request, boolean isInContext) {
     StringBuilder sb = new StringBuilder();
     if (isAbsolute) {

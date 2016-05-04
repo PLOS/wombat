@@ -85,6 +85,9 @@ public abstract class AbstractContentApi implements ContentApi {
     return cachedRemoteStreamer.getResponse(get);
   }
 
+  /**
+   * Designates whether a request to the Content Repo service is for an object (file content) or metadata (JSON).
+   */
   private static enum RequestMode {
     OBJECT, METADATA;
 

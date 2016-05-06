@@ -331,11 +331,35 @@ public class Link {
    * @return a page that links from the originating page to the target page
    */
   public String get(HttpServletRequest request) {
+    return get(request, false);
+  }
+
+  /**
+   * Build a Spring view string that which, if returned from a Spring {@code RequestMapping} method, will redirect to
+   * the linked address.
+   *
+   * @param request the originating request of the page from which to link
+   * @return a Spring redirect string
+   */
+  public String getRedirect(HttpServletRequest request) {
+    return "redirect:" + get(request, !isAbsolute);
+  }
+
+  /**
+   * @param request     an originating request
+   * @param isInContext {@code true} if the output should be relative to the application context; {@code false} if the
+   *                    output should contain the application context path
+   * @return the linked address
+   */
+  private String get(HttpServletRequest request, boolean isInContext) {
     StringBuilder sb = new StringBuilder();
     if (isAbsolute) {
       appendPrefix(sb, request);
     }
-    sb.append(request.getContextPath()).append('/');
+    if (!isInContext) {
+      sb.append(request.getContextPath());
+    }
+    sb.append('/');
 
     Optional<String> pathToken = site.flatMap(s -> s.getRequestScheme().getPathToken());
     if (pathToken.isPresent()) {

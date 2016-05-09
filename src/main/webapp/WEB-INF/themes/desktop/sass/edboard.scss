@@ -96,6 +96,7 @@
   background: #606060 image-url('ambra/btn.close.png') no-repeat 3px 3px;
   border-radius: 3px;
   background-size: 12px 12px;
+  display: none;
 }
 
 #filter_container #clearFilter:hover {
@@ -120,4 +121,22 @@
 div.editor {
   font-size: $txt-size-default;
   line-height: $line-height;
+}
+
+#filter_container {
+  #loading {
+    display:none;
+    float:left;
+  }
+  #searchButton {
+    margin-left: 1.7em;
+  }
+  .searchWrapper {
+    float: left;
+    position: relative;
+  }
+}
+
+#section_editor_icon, #all_editors {
+  display:none;
 }

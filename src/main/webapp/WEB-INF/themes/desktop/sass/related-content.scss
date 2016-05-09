@@ -11,29 +11,12 @@
 }
 
 #media-coverage-modal {
-  @extend .reveal-modal;
+  @extend %modal;
   @extend .small;
-
-  top: $pad-default;
-  background-color: white;
-  padding: $pad-default;
-
-  .close-reveal-modal {
-    @extend %modal-close-button;
-    @extend %brand-background;
-
-    &:hover {
-      background-color: $clr-highlight;
-    }
-  }
 
   #media-coverage-success, #media-coverage-failure {
     display: none;
   }
-}
-
-.reveal-modal-bg {
-  background-color: rgba(0,0,0,0.5);
 }
 
 #media-coverage-data ul {

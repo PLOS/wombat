@@ -485,6 +485,28 @@ Modal component
   }
 }
 
+%modal {
+  @extend .reveal-modal;
+
+  top: $pad-default;
+  background-color: white;
+  padding: $pad-default;
+
+  .close-reveal-modal {
+    @extend %modal-close-button;
+    @extend %brand-background;
+
+    &:hover {
+      background-color: $clr-highlight;
+    }
+  }
+}
+
+.reveal-modal-bg {
+  background-color: $modal-overlay-bg;
+}
+
+
 // js utilities
 .pos-right {   // used in tooltip.js
   right:0

@@ -1,3 +1,5 @@
+@import "../components";
+
 /* @TODO: Move figure carousel to apporpiate place in article before displaying */
 
 $lb-small: rem-calc(7);
@@ -5,22 +7,6 @@ $lb-header-height: rem-calc(46);
 $lb-control-bar-height: rem-calc(40px);
 $lb-description-bar-height: rem-calc(82px);
 $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-header-height;
-
-%modal-close-button {
-  background: image-url('sprite.fv.png') no-repeat -40px 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: $lb-header-height;
-  height: $lb-header-height;
-  cursor: pointer;
-  color: $grey-light;
-  border-left: 1px $grey-light solid;
-  &:hover {
-    border-left: none;
-    @extend %brand-background;
-  }
-}
 
 #figure-carousel-section {
   display: block;
@@ -140,6 +126,8 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
   .lb-close {
     @extend %modal-close-button;
     right: -$lb-header-height;
+    height: $lb-header-height;
+    width: $lb-header-height;
   }
 
   h3 {

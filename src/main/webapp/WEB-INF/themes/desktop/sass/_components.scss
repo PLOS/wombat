@@ -465,6 +465,26 @@ have a fixed width and height (but it's not required).
 
 }
 
+/*
+Modal component
+*/
+
+%modal-close-button {
+  background: image-url('sprite.fv.png') no-repeat -40px 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $modal-close-btn-width;
+  height: $modal-close-btn-height;
+  cursor: pointer;
+  color: $grey-light;
+  border-left: 1px $grey-light solid;
+  &:hover {
+    border-left: none;
+    @extend %brand-background;
+  }
+}
+
 // js utilities
 .pos-right {   // used in tooltip.js
   right:0

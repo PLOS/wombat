@@ -99,6 +99,9 @@ $clr-input-disabled: $grey-light;
 
 $clr-aperta: #8ecb87;
 
+$modal-close-btn-width: rem-calc(46);
+$modal-close-btn-height: $modal-close-btn-width;
+
 $table-separator-color: $clr-separator;
 $table-separator-width: 1px;
 $table-separator-header-color: $clr-body-text;

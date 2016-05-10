@@ -4,6 +4,7 @@
 <#include "../../common/head.ftl" />
 
 <body id="page-comments-individual">
+<#include "../../common/bodyAnalytics.ftl" />
 <div id="container-main">
   <header id="site-header-container" class="back-header coloration-border-top">
     <span class="back-arrow">Back</span>

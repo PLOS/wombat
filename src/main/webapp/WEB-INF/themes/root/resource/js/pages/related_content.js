@@ -23,6 +23,8 @@ var ArticleRelatedContent;
       },
     ],
     modalFormEl: '#media-coverage-modal',
+    modalErrorCloseTimeout: 3000,
+    modalSuccessCloseTimeout: this.modalErrorCloseTimeout/2,
 
     init: function () {
       var query = new AlmQuery();
@@ -171,7 +173,7 @@ var ArticleRelatedContent;
             $('#media-coverage-form').hide();
             $('#media-coverage-success').show();
 
-            that.modalFormDismiss(1500);
+            that.modalFormDismiss(that.modalSuccessCloseTimeout);
           }
         },
         error:function (jqXHR, textStatus, errorThrown) {
@@ -179,7 +181,7 @@ var ArticleRelatedContent;
           $('#media-coverage-form').hide();
           $('#media-coverage-failure').show();
 
-          that.modalFormDismiss(3000);
+          that.modalFormDismiss(that.modalErrorCloseTimeout);
         }
       });
     },

@@ -1,5 +1,4 @@
 @import "site-content";
-@import "vendor/jqueryUI/jquery-ui";
 
 .pagination {
   text-align: center;
@@ -88,14 +87,15 @@
 
 #filter_container #clearFilter {
   position: absolute;
-  top: 4px;
-  left: 267px;
+  top: 1px;
+  left: 275px;
   width: 18px;
   height: 17px;
   cursor: default;
   background: #606060 image-url('ambra/btn.close.png') no-repeat 3px 3px;
   border-radius: 3px;
   background-size: 12px 12px;
+
 }
 
 #filter_container #clearFilter:hover {
@@ -120,4 +120,14 @@
 div.editor {
   font-size: $txt-size-default;
   line-height: $line-height;
+}
+
+.twitter-typeahead {
+  margin-top: -2px;
+  float: left;
+  margin-left: 10px;
+}
+
+#searchFor {
+  float: left;
 }

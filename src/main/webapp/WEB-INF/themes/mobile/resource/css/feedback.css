@@ -1,25 +1,25 @@
-/* Feedback */
-#feedback-form-container {
+/* Feedback and Email this Article */
+#feedback-form-container, #set-grid {
   text-align: center;
   font-size: 1.4em;
   width: 100%;
   overflow-x: hidden;
 }
 
-#feedback-form-container form#feedbackCreate ol {
+#feedback-form-container form#feedbackCreate ol, #emailThisArticleForm ol {
   margin-top: 12px;
   text-align: left;
 }
 
-#feedback-form-container form#feedbackCreate li {
+#feedback-form-container form#feedbackCreate li, #emailThisArticleForm li {
   margin-top: 12px;
 }
 
-#feedback-form-container form#feedbackCreate li#security-check-row {
+#feedback-form-container form#feedbackCreate li#security-check-row, #emailThisArticleForm li#security-check-row {
   text-align: center;
 }
 
-#feedback-form-container form#feedbackCreate label {
+#feedback-form-container form#feedbackCreate label, #emailThisArticleForm label {
   width: 24%;
   min-width: 100px;
   display: inline-block;
@@ -27,27 +27,38 @@
   margin-right: 5px;
 }
 
-#feedback-form-container form#feedbackCreate input,
-#feedback-form-container form#feedbackCreate textarea {
+#feedback-form-container form#feedbackCreate input, #emailThisArticleForm input,
+#feedback-form-container form#feedbackCreate textarea, #emailThisArticleForm textarea {
   width: 50%;
   border: 1px solid rgb(169, 169, 169);
 }
 
-#feedback-form-container form#feedbackCreate #recaptcha_widget_div{
+#feedback-form-container form#feedbackCreate #recaptcha_widget_div, #emailThisArticleForm #recaptcha_widget_div{
   display: inline-block;
 }
 
-#feedback-form-container form#feedbackCreate label#security-check-label {
+#feedback-form-container form#feedbackCreate label#security-check-label, #emailThisArticleForm label#security-check-label {
   margin: 20px 0 0;
   min-width: 150px;
   text-align: center;
 }
 
-#feedback-form-container form#feedbackCreate #submit-feedback-btn {
+#feedback-form-container form#feedbackCreate #submit-feedback-btn, #emailThisArticleForm #sendButton  {
   margin: 0 0 12px 0;
 }
 
-/* Feedback Success */
+#emailThisArticleForm .error {
+    margin-left: 24%;
+    padding: 5px 5px 5px 8px;
+    display: block;
+    text-align:left;
+}
+
+.error, .required {
+    color: #e53350;
+}
+
+/* Feedback and Email this Article Success */
 #success-message-container {
   padding: 5% 0;
   text-align: center;
@@ -55,6 +66,9 @@
   font-size: 1.25em;
 }
 
-#success-message-container #success-message{
+#success-message-container #success-message {
   padding: 5% 0;
 }
+
+
+

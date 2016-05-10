@@ -62,8 +62,9 @@
 <#include "analytics.ftl" />
 <#include "doubleClickAdHead.ftl" />
 <#include "header/doubleClickAdHeadSetup.ftl" />
-</head>
 <#-- //references js that is foundational like jquery and foundation.js. JS output is printed at the bottom of the body.
 -->
 <#include "baseJs.ftl" />
+</head>
+
 

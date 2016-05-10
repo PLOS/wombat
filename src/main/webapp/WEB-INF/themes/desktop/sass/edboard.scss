@@ -149,3 +149,9 @@ div.editor {
 #section_editor_icon, #all_editors {
   display:none;
 }
+
+.section_editor_icon {
+  @extend .fa;
+  @extend .fa-play;
+  @extend %brand-color;
+}

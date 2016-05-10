@@ -466,6 +466,48 @@ have a fixed width and height (but it's not required).
 }
 
 /*
+Modal component
+*/
+
+%modal-close-button {
+  background: image-url('sprite.fv.png') no-repeat -40px 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $modal-close-btn-width;
+  height: $modal-close-btn-height;
+  cursor: pointer;
+  color: $grey-light;
+  border-left: 1px $grey-light solid;
+  &:hover {
+    border-left: none;
+    @extend %brand-background;
+  }
+}
+
+%modal {
+  @extend .reveal-modal;
+
+  top: $pad-default;
+  background-color: white;
+  padding: $pad-default;
+
+  .close-reveal-modal {
+    @extend %modal-close-button;
+    @extend %brand-background;
+
+    &:hover {
+      background-color: $clr-highlight;
+    }
+  }
+}
+
+.reveal-modal-bg {
+  background-color: $modal-overlay-bg-color;
+}
+
+
+/*
 TypeAhead
 */
 

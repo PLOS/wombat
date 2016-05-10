@@ -1,3 +1,5 @@
+@import "../components";
+
 /* @TODO: Move figure carousel to apporpiate place in article before displaying */
 
 $lb-small: rem-calc(7);
@@ -122,19 +124,10 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
   }
 
   .lb-close {
-    background: image-url('sprite.fv.png') no-repeat -40px 0;
-    position: absolute;
+    @extend %modal-close-button;
     right: -$lb-header-height;
-    top: 0;
-    width: $lb-header-height;
     height: $lb-header-height;
-    cursor: pointer;
-    color: $grey-light;
-    border-left: 1px $grey-light solid;
-    &:hover {
-      border-left: none;
-      @extend %brand-background;
-    }
+    width: $lb-header-height;
   }
 
   h3 {

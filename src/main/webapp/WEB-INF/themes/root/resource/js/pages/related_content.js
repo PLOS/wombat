@@ -1,110 +1,126 @@
+var ArticleRelatedContent;
+
 (function ($) {
+  ArticleRelatedContent = Class.extend({
 
-  $( document ).ready(function() {
+    $mediaCoverageEl: $('#media-coverage-data'),
+    mediaCoverageData: null,
+    mediaCoverageSections: [
+      {
+        name: "News",
+        title: "News Media Coverage",
+        eventTypes: ['News']
+      },
+      {
+        name: "Blog",
+        title: "Blog Coverage",
+        eventTypes: ['Blog']
+      },
+      {
+        name: "Other",
+        title: "Related Resources",
+        eventTypes: []
+      },
+    ],
+    modalFormEl: '#media-coverage-modal',
+    modalErrorCloseTimeout: 3000,
+    modalSuccessCloseTimeout: this.modalErrorCloseTimeout/2,
 
-    var categoryDisplayNameMap = { "News": "News Media Coverage", "Blog": "Blog Coverage", "Other": "Related Resources" };
+    init: function () {
+      var query = new AlmQuery();
+      var that = this;
 
-    //Create the HTML block for the media coverage
-    var createReferencesHTML = function(categorizedResults) {
-      var html = $('#media-coverage-data');
-      var keys = Object.keys(categorizedResults);
-      for(var a = 0; a < keys.length; a++) {
-        var category = keys[a];
-        var categoryDisplay = categoryDisplayNameMap[category];
+      query.getArticleDetail(ArticleData.doi)
+        .then(function (articleData) {
+          var data = articleData[0];
+          var mediaCoverageSource = _.findWhere(data.sources, {name: 'articlecoveragecurated'});
 
-        if(categorizedResults[category].length > 0) {
-          $(html).append($('<h3></h3>').html(categoryDisplay));
-          var list = $('<ul></ul>');
-          for(var b = 0; b < categorizedResults[category].length; b++) {
-            var curReference = categorizedResults[category][b];
-            list.append(createReferenceLI(curReference, category));
+          if(mediaCoverageSource && mediaCoverageSource.events.length) {
+            that.mediaCoverageData = _.map(mediaCoverageSource.events, function (item) { return item.event; });
+          }
+          else {
+            throw new ErrorFactory('NoRelatedContentError', '[ArticleRelatedContent::init] - The article has no related content.');
           }
 
-          $(html).append(list);
+          that.loadMediaCoverage();
+        })
+        .fail(function (error) {
+          console.log(error);
+        });
+
+      this.modalFormBindings();
+    },
+
+    loadMediaCoverage: function () {
+      var that = this;
+      var usedTypes = [];
+      var renderedSections = 0;
+      var sectionTemplate = _.template($('#articleRelatedContentSectionTemplate').html());
+      _.each(this.mediaCoverageSections, function (section) {
+        usedTypes = usedTypes.concat(section.eventTypes);
+
+        var items = _.filter(that.mediaCoverageData, function (item) {
+          var typeValidation = (_.indexOf(section.eventTypes, item.type) >= 0);
+          if(!section.eventTypes.length) {
+            typeValidation = (_.indexOf(usedTypes, item.type) < 0);
+          }
+          return typeValidation &&
+            (item.link_state = "APPROVED") &&
+            !_.isEmpty(item.title) &&
+            !_.isEmpty(item.publication) &&
+            !_.isEmpty(item.published_on);
+        });
+
+        if(items.length) {
+          that.$mediaCoverageEl.append(sectionTemplate({ section: section, items: items }));
+          renderedSections++;
         }
+      });
+
+      if(!renderedSections) {
+        that.$mediaCoverageEl.append('<p><br>No media coverage found for this article.</p>');
       }
+    },
 
-      return html;
-    };
+    modalFormBindings: function () {
+      var that = this;
+      $(this.modalFormEl).on('click', '.cancel', function () {
+        that.modalFormDismiss(0);
+      });
 
-    function mediaReferenceSuccess (result) {
-      //Put results into buckets
-      if(result !== undefined && result.sources !== undefined) {
-        //assuming here the request was properly formatted to only get media information
-        var mediaSource = result.sources[0];
+      $(this.modalFormEl+' #media-coverage-form').on('submit', 'form', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-        // don't display anything if there isn't any data
-        if (mediaSource.events.length > 0) {
-          var categorizedResults = categorizeReferences(mediaSource.events);
+        that.modalFormSubmit();
+      });
 
-          //Build up the UI
-          var docFragment = createReferencesHTML(categorizedResults);
+      $(document).on('open.fndtn.reveal', '[data-reveal]', function () {
+        that.modalFormReset();
+      });
+    },
 
-          docFragment.show("blind", 500);
-        }
-      }
-    }
+    modalFormReset: function () {
+      $("#media-coverage-form :input + span.form-error, #mcform-captcha + span.form-error, #mcform-error").text("");
 
-    function mediaReferenceFailure(result) {
-      // don't display anything if there is an error
+      this.modalFormShowRecaptcha('mcform-captcha');
 
-      console.error(result);
-    }
+      $('#media-coverage-success').hide();
+      $('#media-coverage-failure').hide();
+      $('#media-coverage-form').show();
 
-    //Put the ALM mediaTracker response array into buckets matching their types
-    var categorizeReferences = function(response) {
-      //The names of these buckets may have to be changed to reflect API changes
-      var result = { "News": [], "Blog": [], "Other": [] };
-      var typeGroupOther = result["Other"];
+      // clear input field values
+      $('#media-coverage-form :input').not("#mcform-name, #mcform-email").val('');
+    },
 
-      for(var a = 0; a < response.length; a++) {
-        var cur = response[a].event;
-        var typeGroup = result[cur.type];
+    modalFormShowRecaptcha: function (element) {
+      Recaptcha.create($('#reCaptcha-info').val(), element, {
+        theme: "white",
+        callback: Recaptcha.focus_response_field});
+    },
 
-        if(typeof typeGroup === 'undefined') {
-          typeGroupOther.push(cur);
-        } else {
-          typeGroup.push(cur);
-        }
-      }
-
-      return result;
-    };
-
-    //Create the LI block for one referral
-    var createReferenceLI = function(curReference, category) {
-      var publication = "Unknown"
-      if(curReference.publication.length > 0) {
-        publication = curReference.publication;
-      }
-
-      var title = "Unknown";
-      if(curReference.title.length > 0) {
-        title = curReference.title;
-      }
-
-      var publication_date = "Unknown";
-      if(curReference.published_on.length > 0) {
-        var dateParts = /^(\d{4})-(\d{2})-(\d{2})T(.*)Z$/.exec(curReference.published_on);
-        publication_date = moment(new Date(dateParts[1], dateParts[2] - 1, dateParts[3])).format('D MMM YYYY');
-      }
-
-      var htmlContent = '<b>' + publication + '</b>: "<a href="' + curReference.referral + '">' + title +
-          '</a>"&nbsp;&nbsp;' + publication_date;
-
-      if (category == 'Other') {
-        htmlContent = '<b>' + publication + '</b>: "<a href="' + curReference.referral + '">' + title + '</a>"';
-      }
-
-      return $('<li></li>').html(htmlContent);
-    };
-
-    var doi = $('#figshare-related').data('doi');
-    $.fn.getMediaReferences(doi, mediaReferenceSuccess, mediaReferenceFailure);
-
-    $("#media-coverage-modal").on('click','.button.primary', function (e) {
-      $("#media-coverage-form :input + span.form-error, #mcform-captcha + span.form-error").text("");
-
+    modalFormSubmit: function () {
+      var that = this;
       var doi = $('#media-coverage-form').find('form').data('doi');
       var data = {
         doi: doi,
@@ -116,11 +132,11 @@
         recaptcha_response_field: $('#recaptcha_response_field').val()
       };
 
-      sendRequest(siteUrlPrefix + "article/submitMediaCurationRequest", data);
-    });
+      $("#media-coverage-form :input + span.form-error, #mcform-captcha + span.form-error").text("");
 
-    function sendRequest(url, data) {
-      $.ajax(url, {
+      var formEndpoint = siteUrlPrefix + "article/submitMediaCurationRequest";
+
+      $.ajax(formEndpoint, {
         type: "POST",
         dataType:"json",
         data: data,
@@ -151,12 +167,13 @@
               $("#mcform-captcha").next().text(data.captchaError);
             }
             Recaptcha.reload();
-          } else {
+          }
+          else {
             // display success message and close the form
             $('#media-coverage-form').hide();
             $('#media-coverage-success').show();
 
-            closeMediaCoverageDialog(1500);
+            that.modalFormDismiss(that.modalSuccessCloseTimeout);
           }
         },
         error:function (jqXHR, textStatus, errorThrown) {
@@ -164,43 +181,20 @@
           $('#media-coverage-form').hide();
           $('#media-coverage-failure').show();
 
-          closeMediaCoverageDialog(3000);
+          that.modalFormDismiss(that.modalErrorCloseTimeout);
         }
       });
+    },
 
-      function closeMediaCoverageDialog(timeToWait) {
-        setTimeout(function () {
-          $("#media-coverage-modal").dialog("close");
-        }, timeToWait);
-      }
-    }
-
-    $(document.body).on('click',"#media-coverage-form-link", function (e) {
-      $("#media-coverage-form :input + span.form-error, #mcform-captcha + span.form-error").text("");
-
-      showRecaptcha('mcform-captcha');
-
-      $('#media-coverage-success').hide();
-      $('#media-coverage-failure').hide();
-
-      $('#media-coverage-form').show();
-      // clear input field values
-      $('#media-coverage-form :input').not("#mcform-name, #mcform-email").val('');
-
-      $("#media-coverage-modal").dialog({ autoOpen: false, modal: true, resizable: false, minWidth: 600, dialogClass: 'default-modal', title: 'Submit a link to media coverage of this article' });
-      $("#media-coverage-modal").dialog("open");
-    });
-
-    $("#media-coverage-modal").on('click','.button.cancel', function (e) {
-      $("#media-coverage-modal").dialog("close");
-    });
-
-    function showRecaptcha(element) {
-      Recaptcha.create($('#reCaptcha-info').val(), element, {
-        theme: "white",
-        callback: Recaptcha.focus_response_field});
+    modalFormDismiss: function (timeToWait) {
+      var that = this;
+      setTimeout(function () {
+        $(that.modalFormEl).foundation('reveal', 'close');
+      }, timeToWait);
     }
 
   });
 
-}(jQuery));
+  new ArticleRelatedContent();
+
+})(jQuery);

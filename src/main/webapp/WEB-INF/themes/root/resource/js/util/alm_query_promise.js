@@ -15,9 +15,120 @@
 
  */
 
+var AlmQueryValidator;
 var AlmQuery;
 
+
 (function ($) {
+
+  AlmQueryValidator = Class.extend({
+
+    promise: null,
+
+    init: function (options) {
+      var deferred = Q.defer();
+      var defaultOptions = {
+          checkSources: true,
+          excludeInvalidSources: true,
+          checkIsUndefined: true,
+          excludeUndefinedItems: true,
+          checkHasData: true
+        };
+      this.options = _.extend(defaultOptions, options);
+      deferred.resolve(true);
+      this.promise = deferred.promise;
+    },
+
+    validate: function (data) {
+      var that = this;
+
+      return this.promise
+        .then(function () {
+          if(that.options.checkHasData) {
+            if(_.has(data, 'data') && data.data.length) {
+              return data.data;
+            }
+            else {
+              throw new ErrorFactory('AlmQueryValidatorError', '[AlmQueryValidator::validate] - Data has no "data" key');
+            }
+          }
+
+          return data;
+        })
+        .then(function (data) {
+          if(that.options.checkIsUndefined) {
+            var undefinedDataError = new ErrorFactory('AlmQueryValidatorError', '[AlmQueryValidator::validate] - Data is undefined');
+            if(_.isArray(data) && data.length) {
+              if(that.options.excludeUndefinedItems) {
+                var newData = [];
+                _.each(data, function (item) {
+                  if(!_.isUndefined(item)) {
+                    newData.push(item);
+                  }
+                });
+
+                if(!newData.length) {
+                  throw undefinedDataError;
+                }
+
+                data = newData;
+              }
+              else {
+                _.each(data, function (item) {
+                  if(_.isUndefined(item)) {
+                    throw undefinedDataError;
+                  }
+                });
+              }
+            }
+            else if(_.isUndefined(data)) {
+              throw undefinedDataError;
+            }
+          }
+
+          return data;
+        })
+        .then(function (data) {
+          if(that.options.checkSources) {
+            var invalidSourceError = new ErrorFactory('AlmQueryValidatorError', '[AlmQueryValidator::validate] - Data source is invalid');
+            if(_.isArray(data) && data.length) {
+              if(that.options.excludeInvalidSources) {
+                var newData = [];
+                _.each(data, function (item) {
+                  if(that.validateSource(item)) {
+                    newData.push(item);
+                  }
+                });
+
+                if(!newData.length) {
+                  throw invalidSourceError;
+                }
+
+                data = newData;
+              }
+              else {
+                _.each(data, function (item) {
+                  if(!that.validateSource(item)) {
+                    throw invalidSourceError;
+                  }
+                });
+              }
+            }
+            else if(that.validateSource(data)) {
+              throw invalidSourceError;
+            }
+          }
+
+          return data;
+        });
+    },
+
+    validateSource: function (item) {
+      return _.has(item, 'sources') && !_.isUndefined(item.sources);
+    }
+
+  });
+
   AlmQuery = Class.extend({
     /*
      * Constructor function
@@ -61,6 +172,27 @@ var AlmQuery;
       var todayMinus48Hours = moment().subtract(2, 'days').valueOf();
       return (todayMinus48Hours < publishDate);
     },
+
+    /*
+    * Data validation functions:
+    */
+
+    /*
+    * Validator used for all the instance's queries. Defaults to AlmQueryValidator.
+    */
+    dataValidator: new AlmQueryValidator(),
+
+    /*
+     * Set a custom dataValidator, should be a AlmQueryValidator or child class instance.
+     */
+    setDataValidator: function (customValidator) {
+      if(customValidator instanceof AlmQueryValidator) {
+        this.dataValidator = customValidator;
+      }
+
+      return this;
+    },
+
     
     /*
      * Request handling functions
@@ -110,7 +242,20 @@ var AlmQuery;
       var cacheItem = this.getRequestCache(requestUrl);
 
       if(cacheItem) {
-        deferred.resolve(cacheItem);
+        this.dataValidator
+          .validate(cacheItem)
+          .then(function (data) {
+            deferred.resolve(data);
+          })
+          .fail(function (error) {
+            if(that.isArticleNew()) {
+              deferred.reject(new ErrorFactory('NewArticleError', '[AlmQuery::processRequest] - The article is too new to have data.'));
+            }
+            else {
+              deferred.reject(error);
+            }
+          });
+
       }
       else if(this.config.host == null) {
         var err = new Error('[AlmQuery::processRequest] - ALM API is not configured');
@@ -124,8 +269,20 @@ var AlmQuery;
           dataType: 'jsonp',
           timeout: 20000,
           success: function (response) {
-            that.saveRequestCache(requestUrl, response);
-            deferred.resolve(response);
+            that.dataValidator.validate(response)
+              .then(function (data) {
+                that.saveRequestCache(requestUrl, response);
+                deferred.resolve(data);
+              })
+              .fail(function (error) {
+                if(that.isArticleNew()) {
+                  deferred.reject(new ErrorFactory('NewArticleError', '[AlmQuery::processRequest] - The article is too new to have data.'));
+                }
+                else {
+                  deferred.reject(error);
+                }
+              });
+
           },
           error: function (jqXHR, textStatus) {
             var err = new Error('[AlmQuery::processRequest] - Request failed to API');
@@ -169,7 +326,5 @@ var AlmQuery;
       return this.processRequest(requestUrl);
     }
   });
-
-
 
 })(jQuery);

@@ -74,7 +74,7 @@
 <#if pubUrlPrefix?has_content>
   <meta property="og:url" content="${pubUrlPrefix}article?id=${article.doi}" />
 </#if>
-<#if article.description??>
+<#if article.title??>
   <meta property="og:title" content="${articleTitle}" />
 </#if>
 <#if article.description??>

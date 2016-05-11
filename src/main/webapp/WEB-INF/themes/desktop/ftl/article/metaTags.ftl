@@ -3,9 +3,16 @@
 <#include "../macro/doiResolverLink.ftl" />
 
 <#--//analytics related meta tags - description and keywords-->
+<#--todo: these assignments should be moved to the controller-->
+<#--todo: stop repeating "replace('<.+?>',' ','r')"-->
 <#if article.description??>
-  <meta name="description" content="${article.description?replace('<.+?>',' ','r')?html}" />
+  <#assign articleDescription=article.description?replace('<.+?>',' ','r')?html/>
+  <meta name="description" content="${articleDescription}" />
 </#if>
+<#if article.title??>
+  <#assign articleTitle=article.title?replace('<.+?>',' ','r')?html/>
+</#if>
+
 <#if categoryTerms??>
   <meta name="keywords" content="<#list categoryTerms as categoryTerm>${categoryTerm}<#if categoryTerm_has_next>,</#if></#list>" />
 </#if>
@@ -19,48 +26,62 @@
       </#list>
   </#list>
 </#if>
+<#assign hasStrkImgUri=article.strkImgURI?? && (article.strkImgURI?length > 0) />
 
 <#include "./alterJournalTitle.ftl">
 
-<meta name="citation_title" content="${article.title?replace('<.+?>',' ','r')?html}" />
-<meta itemprop="name" content="${article.title?replace('<.+?>',' ','r')?html}" />
+<#if article.title??>
+  <meta name="citation_title" content="${articleTitle}" />
+  <meta itemprop="name" content="${articleTitle}" />
+</#if>
 <#if article.journal??>
-<meta name="citation_journal_title" content="${alterJournalTitle(article.journal)}" />
+  <meta name="citation_journal_title" content="${alterJournalTitle(article.journal)}" />
+  <meta name="citation_journal_abbrev" content="${alterJournalTitle(article.journal)}" />
 </#if>
 <#if article.date??>
-<meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}" />
+  <meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}" />
 </#if>
 <meta name="citation_firstpage" content="${article.eLocationId!}" />
 <meta name="citation_issue" content="${article.issue}" />
 <meta name="citation_volume" content="${article.volume}" />
 <meta name="citation_issn" content="${article.eIssn}" />
-<#if article.journal??>
-<meta name="citation_journal_abbrev" content="${alterJournalTitle(article.journal)}" />
-</#if>
+
 <#if article.publisherName??>
-<meta name="citation_publisher" content="${article.publisherName}" />
+  <meta name="citation_publisher" content="${article.publisherName}" />
 </#if>
 <#if article.articlePdf??>
-<meta name="citation_pdf_url" content="${pubUrlPrefix}article/asset?id=${article.articlePdf.file}">
+  <meta name="citation_pdf_url" content="${pubUrlPrefix}article/asset?id=${article.articlePdf.file}">
 </#if>
 
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${article.doi}" />
 
-<#if article.description??>
-  <#if twitterUsername?has_content>
+<#if twitterUsername?has_content>
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="${twitterUsername}"/>
+  <#if article.title??>
+    <meta name="twitter:title" content="${articleTitle}" />
   </#if>
+  <#if article.description??>
+    <meta property="twitter:description" content="${articleDescription}" />
+  </#if>
+  <#if hasStrkImgUri >
+    <meta property="twitter:image" content="${doiResolverLink(article.strkImgURI)}" />
+  </#if>
+</#if>
+
 <meta property="og:type" content="article" />
-  <#if pubUrlPrefix?has_content>
+<#if pubUrlPrefix?has_content>
   <meta property="og:url" content="${pubUrlPrefix}article?id=${article.doi}" />
-  </#if>
-<meta property="og:title" content="${article.title?replace('<.+?>',' ','r')?html}" />
-<meta property="og:description" content="${article.description?replace('<.+?>',' ','r')?html}" />
-  <#if (article.strkImgURI?? && (article.strkImgURI?length > 0)) >
+</#if>
+<#if article.title??>
+  <meta property="og:title" content="${articleTitle}" />
+</#if>
+<#if article.description??>
+  <meta property="og:description" content="${articleDescription}" />
+</#if>
+<#if hasStrkImgUri >
   <meta property="og:image" content="${doiResolverLink(article.strkImgURI)}" />
-  </#if>
 </#if>
 
 <#--All of this data must be HTML char stripped to compensate for some XML in the database. If not, an ending tag can

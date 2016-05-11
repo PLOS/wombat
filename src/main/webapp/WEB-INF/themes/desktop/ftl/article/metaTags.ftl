@@ -3,9 +3,16 @@
 <#include "../macro/doiResolverLink.ftl" />
 
 <#--//analytics related meta tags - description and keywords-->
+<#--todo: these assignments should be moved to the controller-->
+<#--todo: stop repeating "replace('<.+?>',' ','r')"-->
 <#if article.description??>
-  <meta name="description" content="${article.description?replace('<.+?>',' ','r')?html}" />
+  <#assign articleDescription=article.description?replace('<.+?>',' ','r')?html/>
+  <meta name="description" content="${articleDescription}" />
 </#if>
+<#if article.title??>
+  <#assign articleTitle=article.title?replace('<.+?>',' ','r')?html/>
+</#if>
+
 <#if categoryTerms??>
   <meta name="keywords" content="<#list categoryTerms as categoryTerm>${categoryTerm}<#if categoryTerm_has_next>,</#if></#list>" />
 </#if>
@@ -19,11 +26,11 @@
       </#list>
   </#list>
 </#if>
-
+<#assign hasStrkImgUri=article.strkImgURI?? && (article.strkImgURI?length > 0) />
 <#include "./alterJournalTitle.ftl">
 
-<meta name="citation_title" content="${article.title?replace('<.+?>',' ','r')?html}" />
-<meta itemprop="name" content="${article.title?replace('<.+?>',' ','r')?html}" />
+<meta name="citation_title" content="${articleTitle}" />
+<meta itemprop="name" content="${articleTitle}" />
 <#if article.journal??>
 <meta name="citation_journal_title" content="${alterJournalTitle(article.journal)}" />
 </#if>
@@ -49,17 +56,23 @@
 
 <#if article.description??>
   <#if twitterUsername?has_content>
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="${twitterUsername}"/>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="${twitterUsername}"/>
+    <meta name="twitter:title" content="${articleTitle}" />
+    <meta property="twitter:description" content="${articleDescription}" />
+    <#if hasStrkImgUri >
+      <meta property="twitter:image" content="${doiResolverLink(article.strkImgURI)}" />
+    </#if>
   </#if>
-<meta property="og:type" content="article" />
+
+  <meta property="og:type" content="article" />
   <#if pubUrlPrefix?has_content>
-  <meta property="og:url" content="${pubUrlPrefix}article?id=${article.doi}" />
+    <meta property="og:url" content="${pubUrlPrefix}article?id=${article.doi}" />
   </#if>
-<meta property="og:title" content="${article.title?replace('<.+?>',' ','r')?html}" />
-<meta property="og:description" content="${article.description?replace('<.+?>',' ','r')?html}" />
-  <#if (article.strkImgURI?? && (article.strkImgURI?length > 0)) >
-  <meta property="og:image" content="${doiResolverLink(article.strkImgURI)}" />
+  <meta property="og:title" content="${articleTitle}" />
+  <meta property="og:description" content="${articleDescription}" />
+  <#if hasStrkImgUri >
+    <meta property="og:image" content="${doiResolverLink(article.strkImgURI)}" />
   </#if>
 </#if>
 

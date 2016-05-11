@@ -123,22 +123,29 @@ div.editor {
 }
 
 .twitter-typeahead {
-  margin-top: -2px;
+  margin-top: rem-calc(-3px);
   float: left;
-  margin-left: 10px;
+  margin-left: $pad-small;
 }
 
 #searchFor {
   float: left;
+  font-weight: bold;
 }
 
 #filter_container {
   #loading {
+    @extend .fa;
+    @extend .fa-spinner;
+    @extend .fa-spin;
+    @extend .fa-fw;
+    @extend %highlight-color;
+    margin-left: $pad-small;
     display:none;
     float:left;
   }
   #searchButton {
-    margin-left: 1.7em;
+    margin-left: $pad-small;
   }
   .searchWrapper {
     float: left;

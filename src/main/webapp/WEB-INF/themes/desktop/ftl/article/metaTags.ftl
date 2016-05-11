@@ -27,53 +27,61 @@
   </#list>
 </#if>
 <#assign hasStrkImgUri=article.strkImgURI?? && (article.strkImgURI?length > 0) />
+
 <#include "./alterJournalTitle.ftl">
 
-<meta name="citation_title" content="${articleTitle}" />
-<meta itemprop="name" content="${articleTitle}" />
+<#if article.title??>
+  <meta name="citation_title" content="${articleTitle}" />
+  <meta itemprop="name" content="${articleTitle}" />
+</#if>
 <#if article.journal??>
-<meta name="citation_journal_title" content="${alterJournalTitle(article.journal)}" />
+  <meta name="citation_journal_title" content="${alterJournalTitle(article.journal)}" />
+  <meta name="citation_journal_abbrev" content="${alterJournalTitle(article.journal)}" />
 </#if>
 <#if article.date??>
-<meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}" />
+  <meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}" />
 </#if>
 <meta name="citation_firstpage" content="${article.eLocationId!}" />
 <meta name="citation_issue" content="${article.issue}" />
 <meta name="citation_volume" content="${article.volume}" />
 <meta name="citation_issn" content="${article.eIssn}" />
-<#if article.journal??>
-<meta name="citation_journal_abbrev" content="${alterJournalTitle(article.journal)}" />
-</#if>
+
 <#if article.publisherName??>
-<meta name="citation_publisher" content="${article.publisherName}" />
+  <meta name="citation_publisher" content="${article.publisherName}" />
 </#if>
 <#if article.articlePdf??>
-<meta name="citation_pdf_url" content="${pubUrlPrefix}article/asset?id=${article.articlePdf.file}">
+  <meta name="citation_pdf_url" content="${pubUrlPrefix}article/asset?id=${article.articlePdf.file}">
 </#if>
 
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${article.doi}" />
 
-<#if article.description??>
-  <#if twitterUsername?has_content>
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="${twitterUsername}"/>
+<#if twitterUsername?has_content>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="${twitterUsername}"/>
+  <#if article.title??>
     <meta name="twitter:title" content="${articleTitle}" />
+  </#if>
+  <#if article.description??>
     <meta property="twitter:description" content="${articleDescription}" />
-    <#if hasStrkImgUri >
-      <meta property="twitter:image" content="${doiResolverLink(article.strkImgURI)}" />
-    </#if>
   </#if>
-
-  <meta property="og:type" content="article" />
-  <#if pubUrlPrefix?has_content>
-    <meta property="og:url" content="${pubUrlPrefix}article?id=${article.doi}" />
-  </#if>
-  <meta property="og:title" content="${articleTitle}" />
-  <meta property="og:description" content="${articleDescription}" />
   <#if hasStrkImgUri >
-    <meta property="og:image" content="${doiResolverLink(article.strkImgURI)}" />
+    <meta property="twitter:image" content="${doiResolverLink(article.strkImgURI)}" />
   </#if>
+</#if>
+
+<meta property="og:type" content="article" />
+<#if pubUrlPrefix?has_content>
+  <meta property="og:url" content="${pubUrlPrefix}article?id=${article.doi}" />
+</#if>
+<#if article.description??>
+  <meta property="og:title" content="${articleTitle}" />
+</#if>
+<#if article.description??>
+  <meta property="og:description" content="${articleDescription}" />
+</#if>
+<#if hasStrkImgUri >
+  <meta property="og:image" content="${doiResolverLink(article.strkImgURI)}" />
 </#if>
 
 <#--All of this data must be HTML char stripped to compensate for some XML in the database. If not, an ending tag can

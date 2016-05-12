@@ -59,7 +59,6 @@
 <#include "../article/metaTags.ftl" />
 
 </#if>
-<#include "analytics.ftl" />
 <#include "doubleClickAdHead.ftl" />
 <#include "header/doubleClickAdHeadSetup.ftl" />
 <#-- //references js that is foundational like jquery and foundation.js. JS output is printed at the bottom of the body.

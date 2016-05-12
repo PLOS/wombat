@@ -7,8 +7,6 @@
 <#include "../common/journalStyle.ftl" />
 <#include "../common/article/articleType.ftl" />
 
-<#include "analyticsArticleJS.ftl" />
-
 <body class="${journalStyle}">
 
 <#include "../common/header/headerContainer.ftl" />

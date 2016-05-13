@@ -139,10 +139,10 @@ div.editor {
     @extend .fa-spinner;
     @extend .fa-spin;
     @extend .fa-fw;
-    @extend %highlight-color;
     margin-left: $pad-small;
     display:none;
     float:left;
+    color: $grey-med;
   }
   #searchButton {
     margin-left: $pad-small;

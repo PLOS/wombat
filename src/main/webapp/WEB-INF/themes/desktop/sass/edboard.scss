@@ -53,48 +53,18 @@
     .counters {
       margin-bottom: $pad-default;
     }
-    .pagination {
+    .nav-pagination {
       width: 100%;
       text-align: center;
       margin-bottom: $pad-default;
 
-      .pagination-item {
-        border-radius: rem-calc(4);
+      a {
         display: inline-block;
-        padding: 0 rem-calc(4);
-        font-size: rem-calc(14);
-        line-height: rem-calc(24) !important;
-        background-color: $grey-med-light;
-        min-width: rem-calc(16);
-        color: $clr-body-text;
-        font-weight: bold;
-        box-sizing: content-box;
 
-        &:hover:not(.separator):not(.disabled):not(.current) {
-          @extend %highlight-background;
-        }
-
-        &.current {
-          @extend %brand-background;
-        }
-
-        &.next, &.prev {
-          @extend .fa;
-          background-color: $grey-dark;
-          color: white;
-
-          &.disabled {
-            opacity: 0.5;
-          }
-        }
-
-        &.prev {
-          @extend .fa-caret-left;
+        &.previous-page {
           float: left;
         }
-
-        &.next {
-          @extend .fa-caret-right;
+        &.next-page {
           float: right;
         }
       }

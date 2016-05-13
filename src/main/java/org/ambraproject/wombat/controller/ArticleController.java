@@ -107,7 +107,6 @@ import java.util.OptionalInt;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Controller for rendering an article.
@@ -989,9 +988,12 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
+    ScholarlyWorkId workId = renderContext.getArticleId().get();
+    OptionalInt revisionNumber = workId.getRevisionNumber();
+    String workIdCacheKey = CacheParams.createKeyHash(workId.getDoi(),
+        revisionNumber.isPresent() ? Integer.toString(revisionNumber.getAsInt()) : "");
 
-    String cacheKey = String.format("html:%s:%s",
-        Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
+    String cacheKey = String.format("html:%s:%s", renderContext.getSite(), workIdCacheKey);
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {

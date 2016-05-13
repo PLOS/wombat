@@ -177,14 +177,6 @@ public class ArticleController extends WombatController {
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetadata));
 
-    List<?> revisionMenu = articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(workId.getDoi())
-            .addParameter("versionedPreview").addParameter("revisions").build(),
-        List.class);
-    model.addAttribute("revisionMenu", revisionMenu.stream()
-        .map(n -> ((Number) n).intValue())
-        .collect(Collectors.toList()));
-
     return site + "/ftl/article/article";
   }
 
@@ -1014,6 +1006,15 @@ public class ArticleController extends WombatController {
     model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
     model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     requestAuthors(model, articleId);
+
+    List<?> revisionMenu = articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(articleId.getDoi())
+            .addParameter("versionedPreview").addParameter("revisions").build(),
+        List.class);
+    model.addAttribute("revisionMenu", revisionMenu.stream()
+        .map(n -> ((Number) n).intValue())
+        .collect(Collectors.toList()));
+
     return articleMetadata;
   }
 

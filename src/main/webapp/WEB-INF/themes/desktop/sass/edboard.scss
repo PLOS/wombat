@@ -26,6 +26,9 @@
     }
     #loading {
       color: $grey-med;
+      font-size: rem-calc(16);
+      line-height: 1;
+      display: none;
     }
     .editors-search-reset {
       @extend .fa;

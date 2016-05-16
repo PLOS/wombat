@@ -61,8 +61,8 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
 
 
 .icon-spinner{
-@extend .icon-fa;
-  content: "\f110";
+  @extend .icon-fa;
+  @extend .fa-spinner;
   @extend .fa-spin;
 }
 

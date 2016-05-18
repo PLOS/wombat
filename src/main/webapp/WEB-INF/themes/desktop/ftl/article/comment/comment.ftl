@@ -147,7 +147,13 @@
           </div>
 
           <div class="response_content">
-            <div class="response_body">${comment.formatting.bodyWithHighlightedText}</div>
+            <div class="response_body">
+              <#if comment.isRemoved >
+                <p class="removed_comment_note">This comment has been removed.</p>
+              <#else>
+                ${comment.formatting.bodyWithHighlightedText}
+              </#if>
+            </div>
 
             <#if !(comment.competingInterestStatement.creatorWasPrompted)>
             <#--

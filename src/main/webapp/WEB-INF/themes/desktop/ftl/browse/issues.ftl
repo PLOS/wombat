@@ -3,7 +3,6 @@
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-<#assign depth = 0 />
 <#assign cssFile="browse-issue.css"/>
 <#include "../common/title/issuesTitle.ftl" />
 <#assign title = issuesTitle />

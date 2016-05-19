@@ -1,7 +1,6 @@
 <#include "../common/htmlTag.ftl" />
 
 <#assign title = figure.title />
-<#assign depth = 1 />
 <#include "../common/head.ftl" />
 
 <body id="page-figure">

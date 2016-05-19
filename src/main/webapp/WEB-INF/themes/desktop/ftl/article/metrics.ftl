@@ -8,7 +8,6 @@
 
 
 <#assign title = article.title, articleDoi = article.doi />
-<#assign depth = 0 />
 <#assign cssFile="metrics.css"/>
 
 <#include "../common/head.ftl" />

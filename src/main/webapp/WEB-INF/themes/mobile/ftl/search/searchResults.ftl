@@ -1,7 +1,6 @@
 <#include "../common/htmlTag.ftl" />
 
 <#assign title = "PLOS - Results" />
-<#assign depth = 0 />
 <#include "../common/head.ftl" />
 
 <body id="page-results" class="plosone">

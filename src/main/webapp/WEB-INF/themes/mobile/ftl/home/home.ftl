@@ -1,29 +1,22 @@
-<#include "../common/htmlTag.ftl" />
+<#include '../baseTemplates/base.ftl' />
 
-<#assign title = '' />
-<#assign depth = 0 />
-<#include "../common/head.ftl" />
+<#macro sectionLink sectionName sectionLabel>
+  <#if supportedSections?seq_contains(sectionName)>
+  <li class="${(selectedSection == sectionName)?string('active color-active', 'color-active')}"
+      data-method="${sectionName}">
+  ${sectionLabel}
+  </li>
+  </#if>
+</#macro>
 
-<body>
-<div id="container-main">
+<#macro page_content>
+<div id="home-content" class="content">
 
-<#include "../common/header/headerContainer.ftl" />
-
-  <div id="home-content" class="content">
-
-    <section id="home-articles" class="articles-container">
+  <section id="home-articles" class="articles-container">
 
     <#if supportedSections?size gt 1>
       <nav id="article-type-menu" class="menu-rounded">
         <ul>
-          <#macro sectionLink sectionName sectionLabel>
-            <#if supportedSections?seq_contains(sectionName)>
-              <li class="${(selectedSection == sectionName)?string('active color-active', 'color-active')}"
-                  data-method="${sectionName}">
-              ${sectionLabel}
-              </li>
-            </#if>
-          </#macro>
           <@sectionLink "recent" "recent" />
           <@sectionLink "popular" "popular" />
           <#include "curatedArticleLists.ftl" />
@@ -34,7 +27,7 @@
       </form>
     </#if>
 
-      <div id="article-results-container">
+    <div id="article-results-container">
       <#if sections[selectedSection]??>
         <#assign articles = sections[selectedSection] />
         <section>
@@ -65,20 +58,15 @@
           </ul>
         </section>
       </#if>
-      </div><#-- end article-results-container -->
+    </div><#-- end article-results-container -->
 
-    </section><#-- end articles-container -->
+  </section><#-- end articles-container -->
 
   <#include "homeContent.ftl" />
 
-  </div><#-- end home-content -->
+</div><#-- end home-content -->
+</#macro>
 
-<#include "../common/footer/footer.ftl" />
+<@render_page/>
 
-</div><#-- end container-main -->
 
-<#include "../common/siteMenu/siteMenu.ftl" />
-<#include "../common/bodyJs.ftl" />
-
-</body>
-</html>

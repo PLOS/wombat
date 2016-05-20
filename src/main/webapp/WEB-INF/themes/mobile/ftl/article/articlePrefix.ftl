@@ -1,9 +1,5 @@
-<div id="container-main">
-
-<#include "../common/header/headerContainer.ftl" />
 <#include "../common/article/articleType.ftl" />
-
-  <div id="article-content" class="content" data-article-id="0059893">
+<div id="article-content" class="content" data-article-id="0059893">
     <article class="article-item">
 
     <#-- TODO: implement save to article list.  Not MVP.

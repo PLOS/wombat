@@ -1,18 +1,9 @@
-<#include "../common/htmlTag.ftl" />
+<#include "../baseTemplates/article.ftl" />
 
-<#assign title = article.title />
-<#assign depth = 0 />
-<#include "../common/head.ftl" />
-
-<body>
-
-<#include "articlePrefix.ftl" />
-
+<#macro page_content>
 <div id="articleText">
 ${articleText}
 </div>
+</#macro>
 
-<#include "articleSuffix.ftl" />
-
-</body>
-</html>
+<@render_page '' article.title />

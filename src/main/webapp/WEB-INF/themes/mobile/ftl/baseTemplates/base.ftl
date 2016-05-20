@@ -1,4 +1,4 @@
-<#macro base_page_head cssFile='' title='' bodyId=''>
+<#macro base_page_head>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -58,15 +58,15 @@
 <body<#if bodyId?has_content> id="${bodyId}"</#if>>
 </#macro>
 
-<#macro page_head_extra>
+<#macro page_header_extra>
 
 </#macro>
 
-<#macro page_head cssFile='' title='' bodyId=''>
-    <@base_page_head cssFile title bodyId />
+<#macro page_header>
+    <@base_page_head />
     <div id="container-main">
     <#include "../common/header/headerContainer.ftl" />
-  <@page_head_extra />
+  <@page_header_extra />
 </#macro>
 
 <#macro base_page_footer>
@@ -84,14 +84,4 @@
 
   </body>
   </html>
-</#macro>
-
-<#macro page_content>
-
-</#macro>
-
-<#macro render_page cssFile='' title='' bodyId=''>
-  <@page_head cssFile title bodyId />
-  <@page_content />
-  <@page_footer />
 </#macro>

@@ -1,12 +1,12 @@
 <#include 'base.ftl' />
 
-<#macro page_head cssFile='' title='' bodyId=''>
-  <@base_page_head cssFile title bodyId />
+<#macro page_header>
+  <@base_page_head />
   <#include "../common/bodyAnalytics.ftl" />
 
   <div id="container-main">
     <#include "../article/backToArticle.ftl" />
-  <@page_head_extra />
+  <@page_header_extra />
 </#macro>
 
 <#macro page_footer>

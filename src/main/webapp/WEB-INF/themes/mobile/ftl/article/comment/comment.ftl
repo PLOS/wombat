@@ -1,4 +1,6 @@
 <#include '../../baseTemplates/articleSection.ftl' />
+<#assign title = comment.title />
+<#assign bodyId = 'page-comments-individual' />
 
 <#macro commentBody comment>
 <div class="context">
@@ -32,8 +34,7 @@
   </section>
   </#list>
 </#macro>
-
-<#macro page_content>
+<@page_header />
   <#if userApiError??>
     <#include "userApiErrorMessage.ftl" />
   <#else>
@@ -55,6 +56,5 @@
   <div class="modal-content"></div>
 
 </section><#--end model info window-->
-</#macro>
 
-<@render_page '' comment.title 'page-comments-individual' />
+<@page_footer />

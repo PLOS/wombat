@@ -1,7 +1,9 @@
 <#include "../baseTemplates/articleFigure.ftl" />
 
-<#macro page_content>
-  <#assign imageToShow = figure.thumbnails.large />
+<#assign title = figure.title />
+
+<@page_header />
+<#assign imageToShow = figure.thumbnails.large />
 <img class="figure-img" src="asset?id=${imageToShow.file}" alt="${figure.title}">
 
 </div><#--end container main-->
@@ -27,6 +29,4 @@
   </div>
 
 </section><#--end model info window-->
-</#macro>
-
-<@render_page '' figure.title />
+<@page_footer />

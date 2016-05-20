@@ -21,6 +21,6 @@
 <div id="container-main-overlay"></div>
 </#macro>
 
-<#macro page_head_extra>
+<#macro page_header_extra>
   <#include "../article/articlePrefix.ftl" />
 </#macro>

@@ -1,9 +1,8 @@
 <#include "../baseTemplates/article.ftl" />
+<#assign title = article.title />
 
-<#macro page_content>
+<@page_header />
 <div id="articleText">
 ${articleText}
 </div>
-</#macro>
-
-<@render_page '' article.title />
+<@page_footer />

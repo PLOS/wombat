@@ -1,5 +1,8 @@
 <#include '../baseTemplates/base.ftl' />
-<#macro page_content>
+<#assign title = 'PLOS - Results' />
+<#assign bodyId = 'page-results' />
+
+<@page_header />
 <div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
   <form id="sortAndFilterSearchResults"
     <#if isBrowse??>
@@ -148,7 +151,5 @@
 </section><#--end model info window-->
 
 <div id="container-main-overlay"></div>
-</#macro>
-
-<@render_page '' "PLOS - Results" "page-results" />
+<@page_footer />
 

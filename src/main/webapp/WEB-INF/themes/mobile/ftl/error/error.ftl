@@ -1,6 +1,7 @@
 <#include '../baseTemplates/base.ftl' />
+<#assign title = 'Server Error' />
 
-<#macro page_content>
+<@page_header />
 <div class="error">
 
   <h1>Something's Broken!</h1>
@@ -16,6 +17,4 @@
     <pre>${stackTrace}</pre>
   </div>
 </div>
-</#macro>
-
-<@render_page '' 'Server Error' />
+<@page_footer />

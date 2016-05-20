@@ -1,24 +1,15 @@
-<#include "../common/htmlTag.ftl" />
+<#include '../baseTemplates/base.ftl' />
 
-<#assign title = "Page Not Found" />
-<#include "../common/head.ftl" />
+<#macro page_content>
+<div class="error">
 
-<body>
-<div id="container-main">
-<#include "../common/header/headerContainer.ftl" />
-  <div class="error">
+  <h1>Page Not Found</h1>
 
-    <h1>Page Not Found</h1>
+  <p>Sorry, the page that you've requested cannot be found; it may have been moved, changed or removed.</p>
 
-    <p>Sorry, the page that you've requested cannot be found; it may have been moved, changed or removed.</p>
+  <p>Please use the search form above to locate an article.</p>
+</div>
+</#macro>
 
-    <p>Please use the search form above to locate an article.</p>
-  </div>
+<@render_page '' 'Page Not Found' />
 
-<#include "../common/footer/footer.ftl" />
-</div><#-- end container-main -->
-
-<#include "../common/siteMenu/siteMenu.ftl" />
-<#include "../common/bodyJs.ftl" />
-</body>
-</html>

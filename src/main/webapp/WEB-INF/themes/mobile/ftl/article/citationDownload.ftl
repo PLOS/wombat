@@ -1,19 +1,10 @@
-<#include "../common/htmlTag.ftl" />
+<#include "../baseTemplates/articleSection.ftl" />
 
-<#assign title = "" />
-<#include "../common/head.ftl" />
-
-<body>
-<#include "../common/bodyAnalytics.ftl" />
-
-<div id="container-main">
-<#include "backToArticle.ftl" />
-  <section class="content">
-
-<#include "citationDownloadBody.ftl" />
+<#macro page_content>
+<section class="content">
+  <#include "citationDownloadBody.ftl" />
 </section>
-<#include "../common/footer/footer.ftl" />
-</div>
-<#include "../common/bodyJs.ftl" />
-</body>
-</html>
+<!--end content-->
+</#macro>
+
+<@render_page '' 'PLOS - Author Info' 'page-authors' />

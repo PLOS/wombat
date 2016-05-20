@@ -1,11 +1,9 @@
-<#-- Specific css file will be added by head.ftl template -->
-<#assign cssFile = "feedback.css" />
+<#include '../baseTemplates/base.ftl' />
 
-<#include "../common/headContent.ftl" />
-
+<#macro page_content>
 <div id="feedback-form-container">
-<#include "successBody.ftl" />
+  <#include "successBody.ftl" />
 </div>
-</div><#-- end home-content -->
+</#macro>
 
-<#include "../common/footContent.ftl" />
+<@render_page 'feedback.css' />

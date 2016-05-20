@@ -1,4 +1,4 @@
-<#macro base_page_head cssFile='' title=''>
+<#macro base_page_head cssFile='' title='' bodyId=''>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -55,15 +55,15 @@
     <@renderCssLinks />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
+<body<#if bodyId?has_content> id="${bodyId}"</#if>>
 </#macro>
 
 <#macro page_head_extra>
 
 </#macro>
 
-<#macro page_head cssFile='' title=''>
-    <@base_page_head cssFile title />
-  <body>
+<#macro page_head cssFile='' title='' bodyId=''>
+    <@base_page_head cssFile title bodyId />
     <div id="container-main">
     <#include "../common/header/headerContainer.ftl" />
   <@page_head_extra />
@@ -90,8 +90,8 @@
 
 </#macro>
 
-<#macro render_page cssFile='' title=''>
-  <@page_head cssFile title />
+<#macro render_page cssFile='' title='' bodyId=''>
+  <@page_head cssFile title bodyId />
   <@page_content />
   <@page_footer />
 </#macro>

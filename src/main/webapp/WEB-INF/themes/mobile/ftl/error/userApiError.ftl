@@ -1,28 +1,13 @@
-<#include "../common/htmlTag.ftl" />
+<#include '../baseTemplates/base.ftl' />
 
-<#assign title = "Server Error" />
-<#include "../common/head.ftl" />
+<#macro page_content>
+<div class="error">
+  <h1>Something's Broken!</h1>
 
-<body>
-<div id="container-main">
-<#include "../common/header/headerContainer.ftl" />
-  <div class="error">
+  <p>We're sorry, user data and comments are unavailable. This is likely a temporary condition so please try again later.</p>
+  <p>Thank you for your patience.</p>
+</div>
+</#macro>
 
-    <h1>Something's Broken!</h1>
+<@render_page '' 'Server error' />
 
-    <p>
-      We're sorry, user data and comments are unavailable. This is likely a temporary condition so please try again
-      later.
-    </p>
-
-    <p>Thank you for your patience.</p>
-
-  </div>
-
-<#include "../common/footer/footer.ftl" />
-</div><#-- end container-main -->
-
-<#include "../common/siteMenu/siteMenu.ftl" />
-<#include "../common/bodyJs.ftl" />
-</body>
-</html>

@@ -1,11 +1,10 @@
-<#include "../common/headContent.ftl" />
+<#include '../baseTemplates/base.ftl' />
 
-
-  <div id="article-content" class="content">
-
+<#macro page_content>
+<div id="article-content" class="content">
   <#include "volumesBody.ftl"/>
+</div>
+</#macro>
 
-  </div><#-- end home-content -->
-
-<#include "../common/footContent.ftl" />
+<@render_page />
 

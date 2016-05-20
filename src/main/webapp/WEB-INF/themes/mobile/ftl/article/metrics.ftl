@@ -1,31 +1,19 @@
 <#assign articleDoi = article.doi />
-<#assign title = article.title />
-<#include "../common/headContent.ftl" />
+<#include "../baseTemplates/articleSection.ftl" />
 
+<#macro page_content>
+  <#include "metricsBody.ftl"/>
 
-<#include "../common/configJs.ftl" />
+  <#include "../common/configJs.ftl" />
+  <@js src="resource/js/util/alm_config.js"/>
+  <@js src="resource/js/vendor/moment.js"/>
+  <@js src="resource/js/components/table_open.js"/>
+  <@js src="resource/js/components/figshare.js"/>
+  <@js src="resource/js/components/tooltip_hover.js"/>
+  <@js src="resource/js/vendor/hover-enhanced.js"/>
+  <@js src="resource/js/highcharts.js"/>
+  <#include "articleData.ftl" />
+  <#include "../common/article/metricsJs.ftl" />
+</#macro>
 
-<#include "backToArticle.ftl" />
-<div id="container-main" class="metrics">
-
-
-
-<#include "metricsBody.ftl"/>
-
-</div><#-- end home-content -->
-<@js src="resource/js/util/alm_config.js"/>
-
-
-<@js src="resource/js/vendor/moment.js"/>
-<@js src="resource/js/components/table_open.js"/>
-<@js src="resource/js/components/figshare.js"/>
-<@js src="resource/js/components/tooltip_hover.js"/>
-
-<@js src="resource/js/vendor/hover-enhanced.js"/>
-<@js src="resource/js/highcharts.js"/>
-
-
-<#include "articleData.ftl" />
-<#include "../common/article/metricsJs.ftl" />
-
-<#include "../common/footContent.ftl" />
+<@render_page '' article.title 'page-authors' />

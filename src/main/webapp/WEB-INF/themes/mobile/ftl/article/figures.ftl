@@ -1,16 +1,6 @@
-<#include "../common/htmlTag.ftl" />
-
-<#assign title = article.title />
-<#assign depth = 1 />
-<#include "../common/head.ftl" />
-
-<body id="page-figures">
-<#include "../common/bodyAnalytics.ftl" />
-
-<div id="container-main">
-<#include "backToArticle.ftl" />
-
-  <section id="figures-content" class="content">
+<#include "../baseTemplates/articleSection.ftl" />
+<#macro page_content>
+<section id="figures-content" class="content">
   <#list article.figures as figure>
     <#assign hasTitle = figure.title?? && figure.title?length gt 0 />
     <figure class="figure-small">
@@ -33,14 +23,9 @@
     </figure>
   </#list>
 
-  </section><#--end content-->
+</section><#--end content-->
 
-<#include "../common/bottomMenu/bottomMenu.ftl" />
+  <#include "../common/bottomMenu/bottomMenu.ftl" />
+</#macro>
 
-<#include "../common/footer/footer.ftl" />
-
-</div><#--end container main-->
-
-<#include "../common/bodyJs.ftl" />
-</body>
-</html>
+<@render_page '' article.title 'page-figures' />

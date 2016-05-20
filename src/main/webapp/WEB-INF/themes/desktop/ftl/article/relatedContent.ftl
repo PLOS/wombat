@@ -1,6 +1,5 @@
 <html>
 <#assign title = article.title, articleDoi = article.doi />
-<#assign depth = 0 />
 <#assign cssFile="related-content.css"/>
 
 <#include "../common/head.ftl" />

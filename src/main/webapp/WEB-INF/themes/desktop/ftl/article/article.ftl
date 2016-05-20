@@ -6,7 +6,6 @@
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
 <#assign title = article.title, articleDoi = article.doi />
-<#assign depth = 0 />
 <#assign tabPage="Article"/>
 
 <#assign adPage="Article"/>

@@ -369,14 +369,19 @@
 }
 
 //RECAPTCHA styling
-#recaptcha_widget_div{
+#recaptcha_widget_div {
   @extend .clearfix;
   display: block !important;
-  #recaptcha_area #recaptcha_table{ background-color: $white;}
-
+  #recaptcha_area #recaptcha_table {
+    background-color: $white;
+  }
 
 }
 
-#recaptcha_privacy{
+#recaptcha_privacy {
   font-size: $txt-size-xxsmall;
+}
+
+.removed_comment_note {
+  font-style: italic;
 }

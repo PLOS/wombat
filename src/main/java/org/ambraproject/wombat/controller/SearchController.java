@@ -18,6 +18,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -29,6 +30,7 @@ import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -36,8 +38,6 @@ import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.service.AlertService;
-import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.slf4j.Logger;
@@ -50,6 +50,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -93,12 +94,14 @@ public class SearchController extends WombatController {
   private ArticleFeedView articleFeedView;
 
   @Autowired
-  private UserApi userApi;
+  private Gson gson;
 
   @Autowired
   private AlertService alertService;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
+  private final String CANNOT_PARSE_QUERY_ERROR = "cannotParseQueryError";
+  private final String UNKNOWN_QUERY_ERROR = "unknownQueryError";
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
@@ -580,11 +583,6 @@ public class SearchController extends WombatController {
     return mav;
   }
 
-  // Unless the "!volume" part is included in the params in the next few methods, you will
-  // get an "ambiguous handler method" exception from spring.  I think this is because all
-  // of these methods (including volumeSearch) use a MultiValueMap for @RequestParam, instead
-  // of individually listing the params.
-
   /**
    * Performs a "simple" or "advanced" search. The query parameter is read, and if advanced search
    * terms are found, an advanced search is performed. Otherwise, a simple search is performed. The
@@ -601,6 +599,34 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q"})
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
+    if (!performValidSearch(request, model, site, params)) {
+      return newAdvancedSearch(model, site);
+    }
+    return site.getKey() + "/ftl/search/searchResults";
+  }
+
+  /**
+   * AJAX endpoint to perform a dynamic search, returning search results as JSON. Identical to the
+   * {@code search} method above, the query parameter is read, and if advanced search
+   * terms are found, an advanced search is performed. Otherwise, a simple search is performed.
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
+  @RequestMapping(name = "dynamicSearch", value = "/dynamicSearch", params = {"q"})
+  @ResponseBody
+  public Object dynamicSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
+    performValidSearch(request, model, site, params);
+    return gson.toJson(model);
+  }
+
+  private boolean performValidSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
@@ -613,7 +639,9 @@ public class SearchController extends WombatController {
     try {
       searchResults = solrSearchApi.search(queryObj);
     } catch (ServiceRequestException sre) {
-      return handleFailedSolrRequest(model, site, queryString, sre);
+      model.addAttribute(isInvalidSolrRequest(queryString, sre)
+          ? CANNOT_PARSE_QUERY_ERROR : UNKNOWN_QUERY_ERROR, true);
+      return false; //not a valid search - report errors
     }
 
     model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
@@ -623,7 +651,8 @@ public class SearchController extends WombatController {
     if ((Double) searchResults.get("numFound") == 0.0) {
        activeFilterItems = commonParams.setActiveFilterParams(model, request);
     } else {
-      Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
+      Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj,
+          rebuildUrlParameters(queryObj));
       filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
       activeFilterItems = new LinkedHashSet<>();
@@ -634,35 +663,18 @@ public class SearchController extends WombatController {
     model.addAttribute("activeFilterItems", activeFilterItems);
 
     model.addAttribute("alertQuery", alertService.convertParamsToJson(params));
-
-    return site.getKey() + "/ftl/search/searchResults";
+    return true; //valid search - proceed to return results
   }
 
-  private String handleFailedSolrRequest(Model model, Site site, String queryString,
-      ServiceRequestException sre) throws IOException {
+  private boolean isInvalidSolrRequest(String queryString, ServiceRequestException sre)
+      throws IOException {
     if (sre.getResponseBody().contains("SyntaxError: Cannot parse")) {
       log.info("User attempted invalid search: " + queryString + "\n Exception: " + sre.getMessage());
-       model.addAttribute("cannotParseQueryError", true);
+       return true;
     } else {
       log.error("Unknown error returned from Solr: " + sre.getMessage());
-      model.addAttribute("unknownQueryError", true);
+      return false;
     }
-    return newAdvancedSearch(model, site);
-  }
-
-
-  /**
-   * This is a catch for advanced searches originating from Old Ambra. It transforms the
-   * "unformattedQuery" param into "q" which is used by Wombat's new search.
-   * todo: remove this method once Old Ambra advanced search is destroyed
-   */
-  @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!q"})
-  public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
-    String queryString = params.getFirst("unformattedQuery");
-    params.remove("unformattedQuery");
-    params.add("q", queryString);
-    return search(request, model, site, params);
   }
 
   @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!q"})

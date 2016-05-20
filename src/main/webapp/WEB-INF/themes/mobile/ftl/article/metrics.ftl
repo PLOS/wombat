@@ -1,5 +1,5 @@
-<#assign articleDoi = article.doi />
 <#include "../baseTemplates/articleSection.ftl" />
+<#assign articleDoi = article.doi />
 <#assign title = article.title />
 <#assign bodyId = 'page-authors' />
 

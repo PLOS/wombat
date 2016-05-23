@@ -1,7 +1,6 @@
 <#include "common/htmlTag.ftl" />
 
 <#assign title = "PLOS - Browse" />
-<#assign depth = 0 />
 <#include "common/head.ftl" />
 <#include "common/configJs.ftl" />
 <@themeConfig map="journal" value="journalKey" ; journalKey>

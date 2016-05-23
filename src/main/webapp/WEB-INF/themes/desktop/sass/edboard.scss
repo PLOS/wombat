@@ -2,7 +2,6 @@
 @import "global-section-imports";
 @import "sections/paging-controls";
 
-.edboard.plosone {
   .editors-search-filter {
     width: 100%;
     display: table;
@@ -21,7 +20,7 @@
       margin-top: rem-calc(-3);
     }
     #editors-search-input {
-      font-size: rem-calc(13);
+      font-size: $txt-size-default;
       min-width: rem-calc(230);
     }
     #loading {
@@ -31,24 +30,18 @@
       display: none;
     }
     .editors-search-reset {
-      @extend .fa;
-      @extend .fa-times;
+      @extend .icon-times-circle;
+      border: none;
       width: rem-calc(18);
       height: rem-calc(18);
-      border: 0 solid #fff;
-      color: white;
-      background-color: $grey-med-dark;
-      border-radius: rem-calc(4);
+      color: $grey-med-dark;
+      background: $white;
       position: absolute;
       top: rem-calc(-1);
       left: rem-calc(304);
       padding: 0;
       display: none;
 
-      &:hover {
-        @extend %highlight-background;
-        cursor: pointer;
-      }
 
     }
   }
@@ -73,17 +66,7 @@
       }
     }
     .editors-list {
-      @extend .inline-list;
-      li {
-        margin-bottom: $pad-default;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-
-        strong {
-          display: inline-block;
-        }
+      @extend .list-no-bullet;
 
         .section-editor-icon {
           @extend .fa;
@@ -92,5 +75,4 @@
         }
       }
     }
-  }
-}
+

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="no-js">
-<#assign depth = 0 />
 <#assign title = "Search Results" />
 <#assign cssFile="search-results.css"/>
 

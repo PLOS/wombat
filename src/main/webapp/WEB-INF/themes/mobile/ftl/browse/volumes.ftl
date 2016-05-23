@@ -1,10 +1,8 @@
 <#include '../baseTemplates/base.ftl' />
 
-<#macro page_content>
+<@page_header />
 <div id="article-content" class="content">
   <#include "volumesBody.ftl"/>
 </div>
-</#macro>
-
-<@render_page />
+<@page_footer />
 

@@ -1,10 +1,10 @@
 <#include '../baseTemplates/base.ftl' />
 
 <#assign articleDoi = article.doi />
+<#assign title = article.title />
+<#assign cssFile = 'feedback.css' />
 <#include "../macro/doiResolverLink.ftl" />
 
-<#macro page_content>
-  <#include  "emailArticleBody.ftl" />
-</#macro>
-
-<@render_page 'feedback.css' article.title />
+<@page_header />
+<#include  "emailArticleBody.ftl" />
+<@page_footer />

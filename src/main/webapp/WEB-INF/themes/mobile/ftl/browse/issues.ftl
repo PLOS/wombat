@@ -1,11 +1,9 @@
 <#include '../baseTemplates/base.ftl' />
-
+<#assign cssFile = 'issues.css' />
 <#include "../macro/doiResolverLink.ftl" />
 
-<#macro page_content>
+<@page_header />
 <div id="feedback-form-container">
   <#include "issuesBody.ftl"/>
 </div>
-</#macro>
-
-<@render_page "issues.css" />
+<@page_footer />

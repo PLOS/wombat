@@ -1,6 +1,7 @@
 <#include '../baseTemplates/base.ftl' />
+<#assign title = 'Page Not Found' />
 
-<#macro page_content>
+<@page_header />
 <div class="error">
 
   <h1>Page Not Found</h1>
@@ -9,7 +10,5 @@
 
   <p>Please use the search form above to locate an article.</p>
 </div>
-</#macro>
-
-<@render_page '' 'Page Not Found' />
+<@page_footer />
 

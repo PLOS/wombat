@@ -1,8 +1,7 @@
 <#include '../baseTemplates/base.ftl' />
+<#assign cssFile = 'feedback.css' />
 
-<#macro page_content>
-  <#include "emailSuccessBody.ftl" />
-</#macro>
-
-<@render_page 'feedback.css' />
+<@page_header />
+<#include "emailSuccessBody.ftl" />
+<@page_footer />
 

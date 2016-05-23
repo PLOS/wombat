@@ -1,6 +1,8 @@
 <#include "../baseTemplates/articleSection.ftl" />
+<#assign title = 'PLOS - Author Info' />
+<#assign bodyId = 'page-authors' />
 
-<#macro page_content>
+<@page_header />
 <div id="author-content" class="content">
   <#list authorListAffiliationMap?keys as affiliation>
     <div class="about-author">
@@ -24,6 +26,4 @@
   </#if>
 </div>
 <!--end content-->
-</#macro>
-
-<@render_page '' 'PLOS - Author Info' 'page-authors' />
+<@page_footer />

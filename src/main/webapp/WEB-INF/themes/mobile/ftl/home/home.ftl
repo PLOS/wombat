@@ -9,7 +9,7 @@
   </#if>
 </#macro>
 
-<#macro page_content>
+<@page_header />
 <div id="home-content" class="content">
 
   <section id="home-articles" class="articles-container">
@@ -65,8 +65,7 @@
   <#include "homeContent.ftl" />
 
 </div><#-- end home-content -->
-</#macro>
 
-<@render_page/>
+<@page_footer/>
 
 

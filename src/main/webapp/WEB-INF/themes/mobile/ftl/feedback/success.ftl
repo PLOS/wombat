@@ -1,9 +1,8 @@
 <#include '../baseTemplates/base.ftl' />
+<#assign cssFile = 'feedback.css' />
 
-<#macro page_content>
+<@page_header />
 <div id="feedback-form-container">
   <#include "successBody.ftl" />
 </div>
-</#macro>
-
-<@render_page 'feedback.css' />
+<@page_footer />

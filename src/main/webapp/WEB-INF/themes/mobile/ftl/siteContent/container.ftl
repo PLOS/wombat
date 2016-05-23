@@ -1,9 +1,7 @@
 <#include '../baseTemplates/base.ftl' />
 
-<#macro page_content>
+<@page_header />
 <div id="content">
   <@fetchHtml type="siteContent" path=siteContentRepoKey/>
 </div><#-- end home-content -->
-</#macro>
-
-<@render_page />
+<@page_footer />

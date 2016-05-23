@@ -1,5 +1,8 @@
 <#include "../baseTemplates/articleSection.ftl" />
-<#macro page_content>
+<#assign title = article.title />
+<#assign bodyId = 'page-figures' />
+
+<@page_header />
 <section id="figures-content" class="content">
   <#list article.figures as figure>
     <#assign hasTitle = figure.title?? && figure.title?length gt 0 />
@@ -25,7 +28,5 @@
 
 </section><#--end content-->
 
-  <#include "../common/bottomMenu/bottomMenu.ftl" />
-</#macro>
-
-<@render_page '' article.title 'page-figures' />
+<#include "../common/bottomMenu/bottomMenu.ftl" />
+<@page_footer />

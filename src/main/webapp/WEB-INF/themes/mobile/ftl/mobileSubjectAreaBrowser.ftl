@@ -1,10 +1,12 @@
 <#include 'baseTemplates/base.ftl'>
+<#assign title = 'PLOS - Browse' />
+<#assign bodyId = 'page-browse' />
 
 <@themeConfig map="journal" value="journalKey" ; journalKey>
   <#assign journalKey =journalKey/>
 </@themeConfig>
 
-<#macro page_content>
+<@page_header />
 <div id="browse-content" class="content">
   <div id="browse-container"></div>
 </div>
@@ -25,7 +27,5 @@
     </a>
   </li>
 </div>
-  <#include "common/configJs.ftl" />
-</#macro>
-
-<@render_page '' 'PLOS - Browse' 'page-browse' />
+<#include "common/configJs.ftl" />
+<@page_footer />

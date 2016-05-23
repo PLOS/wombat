@@ -1,6 +1,7 @@
 <#include "../../baseTemplates/articleSection.ftl" />
+<#assign bodyId = 'page-comments' />
 
-<#macro page_content>
+<@page_header />
 <div id="comment-content" class="content">
   <h3 class="comments-header">Reader Comments (${article.commentCount.root})</h3>
 
@@ -14,6 +15,4 @@
     <#include "commentsBody.ftl" />
   </#if>
 </div><#--end content-->
-</#macro>
-
-<@render_page '' '' 'page-comments' />
+<@page_footer />

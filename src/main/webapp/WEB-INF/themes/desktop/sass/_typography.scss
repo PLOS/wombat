@@ -111,6 +111,12 @@ ol {
   }
 }
 .bulleted {@extend .list-bullet;}    /// used for article pages
+.list-no-bullet{
+  margin-left: 0;
+  list-style-type: none;
+  @include default-list;
+
+}
 
 /// sizes are set in foundation.
 h2, h3, h4, h5 {

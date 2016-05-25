@@ -111,7 +111,6 @@ var AdvancedSearch = {};
       e.preventDefault();
       that.validateForm(function (err) {
         if (err) return alert(err.message);
-        $(e.target).unbind('submit').submit();
       });
     });
 

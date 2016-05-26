@@ -3,7 +3,7 @@
 <#assign bodyId = 'page-figures' />
 
 <@page_header />
-<section id="figures-content" class="content">
+<main id="figures-content" class="content">
   <#list article.figures as figure>
     <#assign hasTitle = figure.title?? && figure.title?length gt 0 />
     <figure class="figure-small">
@@ -26,7 +26,7 @@
     </figure>
   </#list>
 
-</section><#--end content-->
+</main><#--end content-->
 
 <#include "../common/bottomMenu/bottomMenu.ftl" />
 <@page_footer />

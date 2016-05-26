@@ -1,4 +1,4 @@
-<#include '../baseTemplates/base.ftl' />
+<#include '../baseTemplates/default.ftl' />
 
 <#macro sectionLink sectionName sectionLabel>
   <#if supportedSections?seq_contains(sectionName)>
@@ -10,7 +10,7 @@
 </#macro>
 
 <@page_header />
-<div id="home-content" class="content">
+<main id="home-content" class="content">
 
   <section id="home-articles" class="articles-container">
 
@@ -64,7 +64,7 @@
 
   <#include "homeContent.ftl" />
 
-</div><#-- end home-content -->
+</main><#-- end home-content -->
 
 <@page_footer/>
 

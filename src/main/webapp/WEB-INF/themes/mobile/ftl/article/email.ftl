@@ -1,4 +1,4 @@
-<#include '../baseTemplates/base.ftl' />
+<#include '../baseTemplates/default.ftl' />
 
 <#assign articleDoi = article.doi />
 <#assign title = article.title />
@@ -6,5 +6,7 @@
 <#include "../macro/doiResolverLink.ftl" />
 
 <@page_header />
+<main>
 <#include  "emailArticleBody.ftl" />
+</main>
 <@page_footer />

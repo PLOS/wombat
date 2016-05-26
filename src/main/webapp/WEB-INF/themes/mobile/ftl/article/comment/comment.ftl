@@ -3,6 +3,7 @@
 <#assign bodyId = 'page-comments-individual' />
 
 <#macro commentBody comment>
+<main>
 <div class="context">
   <a class="expand">${comment.title}</a>
 
@@ -56,5 +57,5 @@
   <div class="modal-content"></div>
 
 </section><#--end model info window-->
-
+</main>
 <@page_footer />

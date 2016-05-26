@@ -2,11 +2,9 @@
 <#assign cssFile = '' />
 <#assign bodyId = '' />
 
+<#-- Base for the head, all the 'page_header' macros should call this before all the content to get the base tags -->
 <#macro base_page_head>
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
 <!--[if IE 9]><html class="no-js ie9"><![endif]-->
 <!--[if gt IE 9]><!-->
 <html class="no-js">
@@ -48,9 +46,6 @@
     <#if cssFile?has_content>
         <@cssLink target="resource/css/${cssFile}" />
     </#if>
-    <@cssLink target="resource/css/metrics.css" />
-
-
     <#include "../cssLinks.ftl" />
 
   <script src="<@siteLink path="resource/js/vendor/vendor.min.js" />"></script>
@@ -61,11 +56,11 @@
 </head>
 <body<#if bodyId?has_content> id="${bodyId}"</#if>>
 </#macro>
-
+<#-- Extra for 'page_header', if you need to include anything in the header after the default content, extend this macro -->
 <#macro page_header_extra>
 
 </#macro>
-
+<#-- the default header for all the pages, should be called in all the pages before the content, in case of extending this macro, should respect the same structure of this one -->
 <#macro page_header>
     <@base_page_head />
     <div id="container-main">
@@ -73,12 +68,14 @@
   <@page_header_extra />
 </#macro>
 
-<#macro base_page_footer>
+<#-- Extra for 'page_footer', if you need to include anything in the footer before the default content, extend this macro -->
+<#macro page_footer_extra>
 
 </#macro>
 
+<#-- the default footer for all the pages, should be called in all the pages after the content, in case of extending this macro, should respect the same structure of this one -->
 <#macro page_footer>
-    <@base_page_footer />
+    <@page_footer_extra />
     <#include "../common/footer/footer.ftl" />
 
   </div><#-- end container-main -->

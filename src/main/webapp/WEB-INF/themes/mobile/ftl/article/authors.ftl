@@ -3,7 +3,7 @@
 <#assign bodyId = 'page-authors' />
 
 <@page_header />
-<div id="author-content" class="content">
+<main id="author-content" class="content">
   <#list authorListAffiliationMap?keys as affiliation>
     <div class="about-author">
       <h3 class="comments-header">${authorListAffiliationMap[affiliation]}</h3>
@@ -24,6 +24,6 @@
       </ul>
     </#if>
   </#if>
-</div>
+</main>
 <!--end content-->
 <@page_footer />

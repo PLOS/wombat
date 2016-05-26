@@ -1,13 +1,14 @@
-<div id="pjax-container">
+<main id="pjax-container">
 <#assign almInfoURL="http://lagotto.io/plos" />
 
   <div id="article-metrics">
 
-    <#include "../common/article/metricsTemplates.ftl" />
+  <#include "../common/article/metricsTemplates.ftl" />
 
     <section id="viewedCard" class="card">
 
-      <h2 id="viewedHeader">Viewed <a href="${almInfoURL}#usageInfo" class="ir" title="More information"><i class="fa fa-question-circle"></i></a>
+      <h2 id="viewedHeader">Viewed <a href="${almInfoURL}#usageInfo" class="ir" title="More information"><i
+          class="fa fa-question-circle"></i></a>
       </h2>
 
       <div id="usage"></div>
@@ -16,7 +17,8 @@
     <section class="card">
       <a id="citations" name="citations"></a>
 
-      <h2 id="citedHeader">Cited <a href="${almInfoURL}#citationInfo" class="fa" title="More information"><i class="fa fa-question-circle"></i></a>
+      <h2 id="citedHeader">Cited <a href="${almInfoURL}#citationInfo" class="fa" title="More information"><i
+          class="fa fa-question-circle"></i></a>
       </h2>
       <div id="relatedCites"></div>
     </section>
@@ -25,7 +27,8 @@
 
       <div id="socialNetworksOnArticleMetricsPage">
         <a id="other" name="other"></a>
-        <h2 id="savedHeader">Saved <a href="${almInfoURL}#socialBookmarks" class="ir" title="More information"><i class="fa fa-question-circle"></i></a>
+        <h2 id="savedHeader">Saved <a href="${almInfoURL}#socialBookmarks" class="ir" title="More information"><i
+            class="fa fa-question-circle"></i></a>
         </h2>
         <div id="relatedBookmarks"></div>
       </div>
@@ -65,7 +68,7 @@
     <section class="card" id="f1kHeader" style="display: none;">
 
       <h2>Recommended<a href="${almInfoURL}#recommended" class="ir"
-                                                    title="More information"><i class="fa fa-question-circle"></i></a>
+                        title="More information"><i class="fa fa-question-circle"></i></a>
       <#--<span id="f1KSpinner"><#include "../common/loadingcycle.ftl"></span>-->
       </h2>
       <div id="f1kContent" style="display:none;"></div>
@@ -75,9 +78,15 @@
       <#if endIndex == -1>
         <#assign endIndex = freemarker_config.get("almHost")?length >
       </#if>-->
-    <div class="card"><p></p><a href="${almInfoURL}#static-content-wrap">Information on PLOS Article-Level Metrics</a></p>
+    <section class="card">
+      <p>
+        <a href="${almInfoURL}#static-content-wrap">Information on PLOS Article-Level Metrics</a>
+      </p>
 
-    <p>Questions or concerns about usage data? <a href="<@siteLink handlerName="feedback" />">Please let us know.</a></p>
+      <p>
+        Questions or concerns about usage data? <a href="<@siteLink handlerName="feedback" />">Please let us know.</a>
+      </p>
 
-    </div><!--end article-metrics-->
-</div><!-- end main -->
+    </section>
+  </div>
+</main>

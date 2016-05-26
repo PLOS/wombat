@@ -2,7 +2,7 @@
 <#assign bodyId = 'page-comments' />
 
 <@page_header />
-<div id="comment-content" class="content">
+<main id="comment-content" class="content">
   <h3 class="comments-header">Reader Comments (${article.commentCount.root})</h3>
 
 <#-- TODO: implement when we support logged-in functionality.
@@ -14,5 +14,5 @@
   <#else>
     <#include "commentsBody.ftl" />
   </#if>
-</div><#--end content-->
+</main><#--end content-->
 <@page_footer />

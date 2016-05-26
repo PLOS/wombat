@@ -1,8 +1,8 @@
-<#include '../baseTemplates/base.ftl' />
+<#include '../baseTemplates/default.ftl' />
 
 <@page_header />
-<div id="article-content" class="content">
+<main id="article-content" class="content">
   <#include "volumesBody.ftl"/>
-</div>
+</main>
 <@page_footer />
 

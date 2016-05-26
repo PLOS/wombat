@@ -1,4 +1,4 @@
-<#include 'base.ftl' />
+<#include 'default.ftl' />
 
 <#macro page_header>
   <@base_page_head />
@@ -10,7 +10,7 @@
 </#macro>
 
 <#macro page_footer>
-  <@base_page_footer />
+  <@page_footer_extra />
   <#include "../common/footer/footer.ftl" />
 
   </div>

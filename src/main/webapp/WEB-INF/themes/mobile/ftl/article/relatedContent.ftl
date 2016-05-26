@@ -4,11 +4,11 @@
 <#assign cssFile = 'related-content.css' />
 
 <@page_header />
-<div id="content" class="related-content">
+<main id="content" class="related-content">
   <article>
     <#include "relatedContentBody.ftl" />
   </article>
-</div>
+</main>
 
 <#include "articleData.ftl" />
 <#include "../common/almQueryJs.ftl" />

@@ -2,6 +2,7 @@
 <#assign articleDoi = article.doi />
 <#assign title = article.title />
 <#assign bodyId = 'page-authors' />
+<#assign cssFile = 'metrics.css' />
 
 <@page_header />
 <#include "metricsBody.ftl"/>

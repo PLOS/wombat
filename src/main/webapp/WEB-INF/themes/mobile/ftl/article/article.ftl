@@ -2,7 +2,7 @@
 <#assign title = article.title />
 
 <@page_header />
-<div id="articleText">
+<main id="articleText">
 ${articleText}
-</div>
+</main>
 <@page_footer />

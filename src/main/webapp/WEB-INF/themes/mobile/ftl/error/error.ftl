@@ -1,8 +1,8 @@
-<#include '../baseTemplates/base.ftl' />
+<#include '../baseTemplates/default.ftl' />
 <#assign title = 'Server Error' />
 
 <@page_header />
-<div class="error">
+<main class="error">
 
   <h1>Something's Broken!</h1>
 
@@ -16,5 +16,5 @@
   <div class="collapsible" title="+&nbsp;Technical Information for Developers">
     <pre>${stackTrace}</pre>
   </div>
-</div>
+</main>
 <@page_footer />

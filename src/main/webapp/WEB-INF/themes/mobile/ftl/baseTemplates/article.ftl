@@ -1,6 +1,6 @@
-<#include 'base.ftl' />
+<#include 'default.ftl' />
 
-<#macro base_page_footer>
+<#macro page_footer_extra>
   <#include "../article/articleSuffix.ftl" />
   <#include "../common/bottomMenu/bottomMenu.ftl" />
   </div><#--end content-->

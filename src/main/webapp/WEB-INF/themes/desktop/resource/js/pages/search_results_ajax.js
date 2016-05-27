@@ -8,19 +8,27 @@ var SearchResult;
     $searchBarInput: $('#controlBarSearch'),
     $loadingEl: $('#serch-loading'),
     currentSearchParams: {
+      "filterJournals": null,
+      "filterSubjects": null,
+      "filterArticleTypes": null,
+      "filterAuthors": null,
+      "filterSections": null,
       "filterStartDate": null,
       "filterEndDate": null,
       "resultsPerPage": null,
-      "filterSubjects": null,
       "unformattedQuery": null,
-      "filterArticleTypes": null,
-      "filterJournals": null,
-      "filterAuthors": null,
-      "q": null
+      "q": null,
+      "sortOrder": null
     },
     currentUrlParams: null,
     searchEndpoint: 'search',
     ajaxSearchEndpoint: 'dynamicSearch',
+    filterJournalsList: [],
+    filterSubjects: [],
+    filterArticleTypesList: [],
+    filterAuthorsList: [],
+    filterSectionsList: [],
+
 
     init: function () {
       this.loadUrlParams();
@@ -51,21 +59,20 @@ var SearchResult;
         if(!_.isEmpty(item)) {
           if(_.isArray(item)) {
             _.each(item, function (item) {
-              urlParams = urlParams + key + '=' + encodeURI(item) + '&';
+              urlParams = urlParams + key + '=' + encodeURIComponent(item) + '&';
             });
           }
           else {
-            urlParams = urlParams + key + '=' + encodeURI(item) + '&';
+            urlParams = urlParams + key + '=' + encodeURIComponent(item) + '&';
           }
         }
       });
-      this.currentUrlParams = urlParams.slice(0, -1);
+      this.currentUrlParams = urlParams.slice(0, -1).replace('%20', '+');
       this.updatePageUrl();
     },
     updatePageUrl: function () {
       var title = document.title;
       var href = this.searchEndpoint + this.currentUrlParams;
-      console.log(this.currentUrlParams);
       window.history.pushState( href, title, href );
     },
     bindSeachFormEvents: function () {

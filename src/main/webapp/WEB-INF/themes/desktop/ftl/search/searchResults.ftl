@@ -13,7 +13,6 @@
 <@js src="resource/js/components/range_datepicker.js"/>
 <@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/pages/advanced_search.js"/>
-<@js src="resource/js/pages/search_results.js"/>
 <@js src="resource/js/pages/search_results_ajax.js"/>
 <@js src="resource/js/components/search_results_alm.js"/>
 <@js src="resource/js/components/toggle.js"/>
@@ -200,7 +199,7 @@
 <section class="results-container">
 
   <#include "searchFilters.ftl" />
-    <article>
+    <article class="searchResults">
     <#if searchResults.numFound != 0>
 
         <dl id="searchResultsList" class="search-results-list">

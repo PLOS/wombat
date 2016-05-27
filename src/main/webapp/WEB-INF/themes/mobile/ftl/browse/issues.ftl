@@ -1,12 +1,8 @@
-<#-- Specific css file will be added by head.ftl template -->
-<#assign cssFile = "issues.css" />
-
-<#include "../common/headContent.ftl" />
+<#include '../baseTemplates/default.ftl' />
+<#assign cssFile = 'issues.css' />
+<#assign mainId = "feedback-form-container" />
 <#include "../macro/doiResolverLink.ftl" />
 
-  <div id="feedback-form-container">
-  <#include "issuesBody.ftl"/>
-  </div>
-</div><#-- end home-content -->
-
-<#include "../common/footContent.ftl" />
+<@page_header />
+<#include "issuesBody.ftl"/>
+<@page_footer />

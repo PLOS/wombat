@@ -1,31 +1,18 @@
-<#include "../common/htmlTag.ftl" />
+<#include '../baseTemplates/default.ftl' />
+<#assign title = 'Server Error' />
+<#assign mainClass = "error" />
 
-<#assign title = "Server Error" />
-<#include "../common/head.ftl" />
+<@page_header />
+<h1>Something's Broken!</h1>
 
-<body>
-<div id="container-main">
-<#include "../common/header/headerContainer.ftl" />
-  <div class="error">
+<p>
+  We're sorry, our server has encountered an internal error or misconfiguration and is unable to complete
+  your request. This is likely a temporary condition so please try again later.
+</p>
 
-    <h1>Something's Broken!</h1>
+<p>Thank you for your patience.</p>
 
-    <p>
-      We're sorry, our server has encountered an internal error or misconfiguration and is unable to complete
-      your request. This is likely a temporary condition so please try again later.
-    </p>
-
-    <p>Thank you for your patience.</p>
-
-    <div class="collapsible" title="+&nbsp;Technical Information for Developers">
-      <pre>${stackTrace}</pre>
-    </div>
-  </div>
-
-<#include "../common/footer/footer.ftl" />
-</div><#-- end container-main -->
-
-<#include "../common/siteMenu/siteMenu.ftl" />
-<#include "../common/bodyJs.ftl" />
-</body>
-</html>
+<div class="collapsible" title="+&nbsp;Technical Information for Developers">
+  <pre>${stackTrace}</pre>
+</div>
+<@page_footer />

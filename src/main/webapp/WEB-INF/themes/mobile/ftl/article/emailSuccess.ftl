@@ -1,6 +1,7 @@
-<#assign cssFile = "feedback.css" />
+<#include '../baseTemplates/default.ftl' />
+<#assign cssFile = 'feedback.css' />
 
-<#include "../common/headContent.ftl" />
+<@page_header />
 <#include "emailSuccessBody.ftl" />
-</div> <#-- end home-content -->
-<#include "../common/footContent.ftl" />
+<@page_footer />
+

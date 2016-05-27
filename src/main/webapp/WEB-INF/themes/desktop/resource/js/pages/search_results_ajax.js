@@ -2,11 +2,16 @@ var SearchResult;
 
 (function ($) {
   SearchResult = Class.extend({
+    isInitialized: false,
+
     $resultListEl: $(),
     $filtersEl: $(),
     $searchBarForm: $('#searchControlBarForm'),
     $searchBarInput: $('#controlBarSearch'),
-    $loadingEl: $('#serch-loading'),
+    $loadingEl: $('#search-loading'),
+    $orderByEl: $('#sortOrder'),
+    $resultPerPageEl: $('#resultsPerPageDropdown'),
+
     currentSearchParams: {
       "filterJournals": null,
       "filterSubjects": null,
@@ -18,21 +23,35 @@ var SearchResult;
       "resultsPerPage": null,
       "unformattedQuery": null,
       "q": null,
-      "sortOrder": null
+      "sortOrder": null,
+      "page": 1
     },
     currentUrlParams: null,
     searchEndpoint: 'search',
     ajaxSearchEndpoint: 'dynamicSearch',
-    filterJournalsList: [],
-    filterSubjects: [],
-    filterArticleTypesList: [],
-    filterAuthorsList: [],
-    filterSectionsList: [],
 
+    searchFilters: {},
+    results: [],
+    resultTotalRecords: 0,
+    resultsOffset: 0,
+    pagination: null,
 
     init: function () {
+      var that = this;
       this.loadUrlParams();
-      this.bindSeachFormEvents();
+      this.bindSearchEvents();
+      this.pagination = new Pagination(this.getCurrentPage(), this.resultTotalRecords, this.getResultsPerPage(), function (currentPage) {
+        that.currentSearchParams.page = currentPage;
+        that.processRequest();
+      });
+
+      this.processRequest();
+    },
+    getCurrentPage: function() {
+      return parseInt(this.currentSearchParams.page);
+    },
+    getResultsPerPage: function () {
+      return parseInt(this.currentSearchParams.resultsPerPage);
     },
     showLoading: function () {
       this.$loadingEl.show();
@@ -71,24 +90,93 @@ var SearchResult;
       this.updatePageUrl();
     },
     updatePageUrl: function () {
-      var title = document.title;
-      var href = this.searchEndpoint + this.currentUrlParams;
-      window.history.pushState( href, title, href );
+      if(this.isInitialized) {
+        var title = document.title;
+        var href = this.searchEndpoint + this.currentUrlParams;
+        window.history.pushState(href, title, href);
+      }
     },
-    bindSeachFormEvents: function () {
+    bindSearchEvents: function () {
       var that = this;
       this.$searchBarForm.on('submit', function (e) {
         e.preventDefault();
         e.stopPropagation();
         var inputValue = that.$searchBarInput.val();
-        that.currentSearchParams.q = null;
-        that.currentSearchParams.unformattedQuery = inputValue;
+        that.currentSearchParams.unformattedQuery = null;
+        that.currentSearchParams.q = inputValue;
 
+        that.processRequest();
+      });
+
+      this.$orderByEl.on('change', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        that.currentSearchParams.sortOrder = $(this).val();
+        that.processRequest();
+      });
+
+      this.$resultPerPageEl.on('change', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        that.currentSearchParams.resultsPerPage = $(this).val();
         that.processRequest();
       });
     },
     processRequest: function () {
+      var that = this;
+      this.pagination.setCurrentPage(this.getCurrentPage());
+      this.showLoading();
       this.createUrlParams();
+
+      if(!this.isInitialized) {
+        this.isInitialized = true;
+      }
+
+      $.ajax({
+        url: this.ajaxSearchEndpoint+this.currentUrlParams,
+        method: 'GET',
+        jsonp: 'callback',
+        dataType: 'json',
+        timeout: 20000,
+        success: function (response) {
+          that.resultTotalRecords = response.searchResults.numFound;
+          if(that.resultTotalRecords > 0) {
+            that.results = response.searchResults.docs;
+            that.pagination.setItemsPerPage(that.getResultsPerPage());
+            that.pagination.setTotalRecords(that.resultTotalRecords);
+            that.resultsOffset = response.searchResults.start;
+
+            that.searchFilters = response.searchFilters;
+
+            that.createFilters();
+            that.createResultList();
+            var pagination = that.pagination.getPaginationElement();
+
+            that.hideLoading();
+          }
+          else {
+            that.showNoResults();
+          }
+        },
+        error: function (jqXHR, textStatus) {
+          that.showRequestError();
+        }
+      });
+
+    },
+    showRequestError: function () {
+      
+    },
+    showNoResults: function() {
+
+    },
+    createResultList: function () {
+
+    },
+    createFilters: function () {
+
     },
     getJsonFromUrl: function (hashBased) {
       var query;

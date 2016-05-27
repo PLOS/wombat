@@ -1,7 +1,6 @@
 <#include '../baseTemplates/default.ftl' />
+<#assign mainId = "content" />
 
 <@page_header />
-<main id="content">
-  <@fetchHtml type="siteContent" path=siteContentRepoKey/>
-</main><#-- end home-content -->
+<@fetchHtml type="siteContent" path=siteContentRepoKey/>
 <@page_footer />

@@ -1,8 +1,8 @@
 <#include "../baseTemplates/article.ftl" />
 <#assign title = article.title />
+<#assign mainId = "articleText" />
+
 
 <@page_header />
-<main id="articleText">
 ${articleText}
-</main>
 <@page_footer />

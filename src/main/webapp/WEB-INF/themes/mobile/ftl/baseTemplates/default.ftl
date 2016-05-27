@@ -1,6 +1,8 @@
 <#assign title = '' />
 <#assign cssFile = '' />
 <#assign bodyId = '' />
+<#assign mainId = '' />
+<#assign mainClass = '' />
 
 <#-- Base for the head, all the 'page_header' macros should call this before all the content to get the base tags -->
 <#macro base_page_head>
@@ -66,6 +68,7 @@
     <div id="container-main">
     <#include "../common/header/headerContainer.ftl" />
   <@page_header_extra />
+  <main<#if mainId?has_content> id="${mainId}"</#if><#if mainClass?has_content> class="${mainClass}"</#if>>
 </#macro>
 
 <#-- Extra for 'page_footer', if you need to include anything in the footer before the default content, extend this macro -->
@@ -75,6 +78,7 @@
 
 <#-- the default footer for all the pages, should be called in all the pages after the content, in case of extending this macro, should respect the same structure of this one -->
 <#macro page_footer>
+    </main>
     <@page_footer_extra />
     <#include "../common/footer/footer.ftl" />
 

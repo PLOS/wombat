@@ -3,7 +3,6 @@
 <#assign title = figure.title />
 
 <@page_header />
-<main>
 <#assign imageToShow = figure.thumbnails.large />
 <img class="figure-img" src="asset?id=${imageToShow.file}" alt="${figure.title}">
 
@@ -30,5 +29,4 @@
   </div>
 
 </section><#--end model info window-->
-</main>
 <@page_footer />

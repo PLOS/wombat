@@ -3,7 +3,6 @@
 <#assign bodyId = 'page-comments-individual' />
 
 <#macro commentBody comment>
-<main>
 <div class="context">
   <a class="expand">${comment.title}</a>
 
@@ -36,18 +35,18 @@
   </#list>
 </#macro>
 <@page_header />
-  <#if userApiError??>
-    <#include "userApiErrorMessage.ftl" />
-  <#else>
-  <div id="comment-content" class="content">
-    <section id="comments-individual" class="comments">
-      <section class="comment primary coloration-border-top">
-        <@commentBody comment=comment />
-      </section>
+<#if userApiError??>
+  <#include "userApiErrorMessage.ftl" />
+<#else>
+<div id="comment-content" class="content">
+  <section id="comments-individual" class="comments">
+    <section class="comment primary coloration-border-top">
+      <@commentBody comment=comment />
     </section>
-  </div>
-  </div>
-  </#if>
+  </section>
+</div>
+</div>
+</#if>
 <section id="comment-info-window" class="modal-info-window top" data-method="full">
 
   <div class="modal-header clearfix">
@@ -57,5 +56,4 @@
   <div class="modal-content"></div>
 
 </section><#--end model info window-->
-</main>
 <@page_footer />

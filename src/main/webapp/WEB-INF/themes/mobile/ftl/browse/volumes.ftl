@@ -1,8 +1,8 @@
 <#include '../baseTemplates/default.ftl' />
+<#assign mainId = "article-content" />
+<#assign mainClass = "content" />
 
 <@page_header />
-<main id="article-content" class="content">
-  <#include "volumesBody.ftl"/>
-</main>
+<#include "volumesBody.ftl"/>
 <@page_footer />
 

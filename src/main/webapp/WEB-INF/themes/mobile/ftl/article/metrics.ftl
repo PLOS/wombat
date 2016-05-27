@@ -3,6 +3,7 @@
 <#assign title = article.title />
 <#assign bodyId = 'page-authors' />
 <#assign cssFile = 'metrics.css' />
+<#assign mainId = "pjax-container" />
 
 <@page_header />
 <#include "metricsBody.ftl"/>

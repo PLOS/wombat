@@ -1,8 +1,7 @@
 <#include '../baseTemplates/default.ftl' />
 <#assign cssFile = 'feedback.css' />
+<#assign mainId = "feedback-form-container" />
 
 <@page_header />
-<main id="feedback-form-container">
-  <#include "feedbackBody.ftl" />
-</main>
+<#include "feedbackBody.ftl" />
 <@page_footer />

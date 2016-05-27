@@ -1,14 +1,14 @@
 <#include "../baseTemplates/articleSection.ftl" />
+<#assign mainclass = "related-content" />
+<#assign mainId = "content" />
 
 <#assign title = article.title />
 <#assign cssFile = 'related-content.css' />
 
 <@page_header />
-<main id="content" class="related-content">
-  <article>
-    <#include "relatedContentBody.ftl" />
-  </article>
-</main>
+<article>
+<#include "relatedContentBody.ftl" />
+</article>
 
 <#include "articleData.ftl" />
 <#include "../common/almQueryJs.ftl" />

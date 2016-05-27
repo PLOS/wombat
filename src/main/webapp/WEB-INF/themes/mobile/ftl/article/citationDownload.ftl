@@ -1,8 +1,7 @@
 <#include "../baseTemplates/articleSection.ftl" />
+<#assign mainClass = "content" />
 
 <@page_header />
-<main class="content">
-  <#include "citationDownloadBody.ftl" />
-</main>
+<#include "citationDownloadBody.ftl" />
 <!--end content-->
 <@page_footer />

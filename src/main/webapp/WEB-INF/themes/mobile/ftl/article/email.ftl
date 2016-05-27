@@ -6,7 +6,5 @@
 <#include "../macro/doiResolverLink.ftl" />
 
 <@page_header />
-<main>
 <#include  "emailArticleBody.ftl" />
-</main>
 <@page_footer />

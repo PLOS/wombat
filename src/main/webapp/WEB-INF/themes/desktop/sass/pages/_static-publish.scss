@@ -1,8 +1,7 @@
 
 /* STATIC/PUBLISH */
 .static-publish main {
-  width: 100%;
-  max-width: 100%;
+  @extend .width-full;
   margin: 0;
 }
 

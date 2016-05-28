@@ -1,5 +1,10 @@
 
 /* STATIC/PUBLISH */
+.static-publish main {
+  @extend .width-full;
+  margin: 0;
+}
+
 div#publish_main_content {
   width: 100%;
   h2, h3, h4, h5 {

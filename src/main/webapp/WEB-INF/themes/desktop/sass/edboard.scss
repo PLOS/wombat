@@ -2,77 +2,93 @@
 @import "global-section-imports";
 @import "sections/paging-controls";
 
-  .editors-search-filter {
+.edboard main {
+  margin-top: rem-calc($line-height-large);
+  margin-bottom: rem-calc($line-height-large);
+}
+
+.editors-search-filter {
+  width: 100%;
+  display: table;
+  position: relative;
+  margin-bottom: rem-calc($line-height);
+
+  label, .twitter-typeahead, .editors-search-button, #loading {
+    float: left;
+    margin-right: $pad-small;
+  }
+
+  label {
+    font-weight: bold;
+  }
+  .twitter-typeahead {
+    margin-top: rem-calc(-3);
+  }
+  #editors-search-input {
+    font-size: $txt-size-default;
+    min-width: rem-calc(230);
+    padding-right: rem-calc(20);
+  }
+  #loading {
+    color: $grey-med;
+    font-size: rem-calc(16);
+    line-height: 1;
+    display: none;
+  }
+  .editors-search-reset {
+    @extend .fa;
+    @extend .fa-times;
+    border: none;
+    width: rem-calc(18);
+    height: rem-calc(18);
+    background: $grey-med-dark;
+    color: $white;
+    position: absolute;
+    top: 0;
+    left: rem-calc(303);
+    padding: 0;
+    display: none;
+    border-radius: rem-calc(3);
+
+  }
+}
+
+.results {
+  margin-bottom: rem-calc($line-height);
+  .counters {
+    margin-bottom: rem-calc($line-height);
+  }
+  .nav-pagination {
     width: 100%;
-    display: table;
-    position: relative;
-    margin-bottom: $pad-default;
+    text-align: center;
+    margin-bottom: rem-calc($line-height);
 
-    label, .twitter-typeahead, .editors-search-button, #loading {
-      float: left;
-      margin-right: $pad-small;
-    }
+    a, span {
+      display: inline-block;
 
-    label {
-      font-weight: bold;
-    }
-    .twitter-typeahead {
-      margin-top: rem-calc(-3);
-    }
-    #editors-search-input {
-      font-size: $txt-size-default;
-      min-width: rem-calc(230);
-    }
-    #loading {
-      color: $grey-med;
-      font-size: rem-calc(16);
-      line-height: 1;
-      display: none;
-    }
-    .editors-search-reset {
-      @extend .icon-times-circle;
-      border: none;
-      width: rem-calc(18);
-      height: rem-calc(18);
-      color: $grey-med-dark;
-      background: $white;
-      position: absolute;
-      top: rem-calc(-1);
-      left: rem-calc(304);
-      padding: 0;
-      display: none;
-
-
+      &.previous-page {
+        float: left;
+      }
+      &.next-page {
+        float: right;
+      }
     }
   }
-  .results {
-    .counters {
-      margin-bottom: $pad-default;
-    }
-    .nav-pagination {
-      width: 100%;
-      text-align: center;
-      margin-bottom: $pad-default;
+  .editors-list {
+    @extend .list-no-bullet;
 
-      a, span {
-        display: inline-block;
-
-        &.previous-page {
-          float: left;
-        }
-        &.next-page {
-          float: right;
-        }
+    li {
+      margin-bottom: rem-calc($line-height);
+      &:last-of-type {
+        margin-bottom: rem-calc($line-height-medium);
       }
     }
-    .editors-list {
-      @extend .list-no-bullet;
 
-        .section-editor-icon {
-          @extend .fa;
-          @extend .fa-play;
-          @extend %brand-color;
-        }
-      }
+    .section-editor-icon {
+      @extend .fa;
+      @extend .fa-play;
+      @extend %brand-color;
     }
+  }
+}
 

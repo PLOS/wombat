@@ -55,10 +55,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -191,11 +190,11 @@ public class SearchController extends WombatController {
 
     private int resultsPerPage;
 
-    private String startDate;
+    private LocalDate startDate;
 
-    private String endDate;
+    private LocalDate endDate;
 
-    private final String DEFAULT_START_DATE = "2003-01-01";
+    private static final LocalDate DEFAULT_START_DATE = LocalDate.parse("2003-01-01");
 
     // doesn't include journal and date filter param names
     static final Set<String> FILTER_PARAMETER_NAMES = Stream.of(SingletonSearchFilterType.values()).map
@@ -240,13 +239,13 @@ public class SearchController extends WombatController {
       for (String journalKey : journalKeys) {
         filterJournalNames.add(siteSet.getJournalNameFromKey(journalKey));
       }
-      startDate = getSingleParam(params, "filterStartDate", null);
-      endDate = getSingleParam(params, "filterEndDate", null);
+      startDate = getDateParam(params, "filterStartDate");
+      endDate = getDateParam(params, "filterEndDate");
 
       if (startDate == null && endDate != null) {
         startDate = DEFAULT_START_DATE;
       } else if (startDate != null && endDate == null) {
-        endDate = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        endDate = LocalDate.now();
       }
 
       subjectList = parseSubjects(getSingleParam(params, "subject", null), params.get("filterSubjects"));
@@ -276,8 +275,8 @@ public class SearchController extends WombatController {
 
       // TODO: split or share model assignments between mobile and desktop.
       model.addAttribute("filterJournals", journalKeys);
-      model.addAttribute("filterStartDate", startDate);
-      model.addAttribute("filterEndDate", endDate);
+      model.addAttribute("filterStartDate", startDate == null ? null : startDate.toString());
+      model.addAttribute("filterEndDate", endDate == null ? null : endDate.toString());
       model.addAttribute("filterSubjects", subjectList);
       model.addAttribute("filterArticleTypes", articleTypes);
       model.addAttribute("filterAuthors", authors);
@@ -319,6 +318,11 @@ public class SearchController extends WombatController {
       List<String> values = params.get(key);
       return values == null || values.isEmpty() ? defaultValue
           : values.get(0) == null || values.get(0).isEmpty() ? defaultValue : values.get(0);
+    }
+
+    private LocalDate getDateParam(Map<String, List<String>> params, String key) {
+      String dateString = getSingleParam(params, key, null);
+      return Strings.isNullOrEmpty(dateString) ? null : LocalDate.parse(dateString);
     }
 
     /**
@@ -368,8 +372,8 @@ public class SearchController extends WombatController {
           .setRows(resultsPerPage)
           .setSortOrder(sortOrder)
           .setDateRange(dateRange)
-          .setStartDate(startDate)
-          .setEndDate(endDate);
+          .setStartDate(startDate == null ? null : startDate.toString())
+          .setEndDate(endDate == null ? null : endDate.toString());
     }
 
     private static final ImmutableMap<String, Function<CommonParams, List<String>>> FILTER_KEYS_TO_FIELDS =

@@ -33,6 +33,7 @@ import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
+import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
@@ -233,12 +234,21 @@ public class SearchController extends WombatController {
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
           getSingleParam(params, "filterStartDate", null), getSingleParam(params, "filterEndDate", null));
-      journalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
-          ? new ArrayList<String>() : params.get("filterJournals");
+      // may include invalid journal keys
+      List<String> allJournalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
+          ? new ArrayList<>() : params.get("filterJournals");
 
       filterJournalNames = new HashSet<>();
-      for (String journalKey : journalKeys) {
-        filterJournalNames.add(siteSet.getJournalNameFromKey(journalKey));
+      // will have only valid journal keys
+      journalKeys = new ArrayList<>();
+      for (String journalKey : allJournalKeys) {
+        try {
+          String journalName = siteSet.getJournalNameFromKey(journalKey);
+          journalKeys.add(journalKey);
+          filterJournalNames.add(journalName);
+        } catch (UnmatchedSiteException umse) {
+          log.info("Search on an invalid journal key: %s".format(journalKey));
+        }
       }
       startDate = getSingleParam(params, "filterStartDate", null);
       endDate = getSingleParam(params, "filterEndDate", null);
@@ -421,14 +431,18 @@ public class SearchController extends WombatController {
           queryParamMap.put(filterName, filterValueList);
         }
         String displayName;
-        if (filterName.equals("filterJournals")) {
-          displayName = siteSet.getJournalNameFromKey(filterValue);
-        } else {
-          displayName = filterValue;
+        try {
+          if (filterName.equals("filterJournals")) {
+            displayName = siteSet.getJournalNameFromKey(filterValue);
+          } else {
+            displayName = filterValue;
+          }
+          SearchFilterItem filterItem = new SearchFilterItem(displayName, 0,
+              filterName, filterValue, queryParamMap);
+          activeFilterItems.add(filterItem);
+        } catch (UnmatchedSiteException umse) {
+          log.info("Search on an invalid journal filter: %s".format(filterValue));
         }
-        SearchFilterItem filterItem = new SearchFilterItem(displayName, 0,
-            filterName, filterValue, queryParamMap);
-        activeFilterItems.add(filterItem);
       }
     }
     /**

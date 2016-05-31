@@ -56,6 +56,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -231,7 +232,7 @@ public class SearchController extends WombatController {
         sortOrder = SolrSearchApiImpl.SolrSortOrder.valueOf(sortOrderParam);
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
-          getSingleParam(params, "filterStartDate", null), getSingleParam(params, "filterEndDate", null));
+          getDateParam(params, "filterStartDate"), getDateParam(params, "filterEndDate"));
       journalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
           ? new ArrayList<String>() : params.get("filterJournals");
 
@@ -322,7 +323,13 @@ public class SearchController extends WombatController {
 
     private LocalDate getDateParam(Map<String, List<String>> params, String key) {
       String dateString = getSingleParam(params, key, null);
-      return Strings.isNullOrEmpty(dateString) ? null : LocalDate.parse(dateString);
+      if (Strings.isNullOrEmpty(dateString)) return null;
+      try {
+        return LocalDate.parse(dateString);
+      } catch (DateTimeParseException e) {
+        log.info("Invalid date for {}: {}", key, dateString);
+        return null;
+      }
     }
 
     /**
@@ -335,13 +342,13 @@ public class SearchController extends WombatController {
      * @param endDate        desktop end date value
      * @return A generic @SearchCriterion object used by Solr
      */
-    private SolrSearchApi.SearchCriterion parseDateRange(String dateRangeParam, String startDate, String endDate) {
+    private SolrSearchApi.SearchCriterion parseDateRange(String dateRangeParam, LocalDate startDate, LocalDate endDate) {
       SolrSearchApi.SearchCriterion dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME;
       if (!Strings.isNullOrEmpty(dateRangeParam)) {
         dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.valueOf(dateRangeParam);
-      } else if (!Strings.isNullOrEmpty(startDate) && !Strings.isNullOrEmpty(endDate)) {
-        dateRange = new SolrSearchApiImpl.SolrExplicitDateRange("explicit date range", startDate,
-            endDate);
+      } else if (startDate != null && endDate != null) {
+        dateRange = new SolrSearchApiImpl.SolrExplicitDateRange("explicit date range",
+            startDate.toString(), endDate.toString());
       }
       return dateRange;
     }

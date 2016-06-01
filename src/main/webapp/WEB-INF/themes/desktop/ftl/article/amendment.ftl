@@ -1,8 +1,8 @@
 <#include "citation.ftl" />
-<#macro amendmentNotice amendmentGroup title linkText showCount>
+<#macro amendmentNotice amendmentGroup title linkText>
 <div class="amendment amendment-${amendmentGroup.type} toc-section">
   <#assign tocTitle>
-    <#t/>${title}<#if showCount> (${amendmentGroup.amendments?size})</#if>
+    <#t/>${title}<#if amendmentGroup.amendments?size gt 1> (${amendmentGroup.amendments?size})</#if>
   </#assign>
   <a data-toc="amendment-${amendmentGroup.type}" title="${tocTitle}" id="amendment-${amendmentGroup.type}" name="amendment-${amendmentGroup.type}"></a>
 
@@ -41,12 +41,12 @@
   <#if amendmentGroup.type == 'correction'>
     <@amendmentNotice amendmentGroup,
     (amendmentGroup.amendments?size == 1)?string("Correction", "Corrections"),
-    "View correction", true />
+    "View correction" />
   </#if>
   <#if amendmentGroup.type == 'eoc'>
-    <@amendmentNotice amendmentGroup "Expression of Concern" "View expression of concern" false />
+    <@amendmentNotice amendmentGroup "Expression of Concern" "View expression of concern" />
   </#if>
   <#if amendmentGroup.type == 'retraction'>
-    <@amendmentNotice amendmentGroup "Retraction" "View retraction" false />
+    <@amendmentNotice amendmentGroup "Retraction" "View retraction" />
   </#if>
 </#list>

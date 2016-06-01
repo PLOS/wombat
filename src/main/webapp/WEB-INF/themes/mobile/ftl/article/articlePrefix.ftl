@@ -116,21 +116,23 @@
         </h3></span>
       </div>
     </#macro>
-    <#if amendments.correction??>
-      <@amendment amendments.correction "correction">
-        This article has been corrected.
-      </@amendment>
-    </#if>
-    <#if amendments.eoc??>
-      <@amendment amendments.eoc "expression of concern">
-        There is an expression of concern about this article.
-      </@amendment>
-    </#if>
-    <#if amendments.retraction??>
-      <@amendment amendments.retraction "retraction">
-        This article has been retracted.
-      </@amendment>
-    </#if>
+    <#list amendments as amendmentGroup>
+      <#if amendmentGroup.type == 'correction'>
+        <@amendment amendmentGroup.amendments "correction">
+          This article has been corrected.
+        </@amendment>
+      </#if>
+      <#if amendmentGroup.type == 'eoc'>
+        <@amendment amendmentGroup.amendments "expression of concern">
+          There is an expression of concern about this article.
+        </@amendment>
+      </#if>
+      <#if amendmentGroup.type == 'retraction'>
+        <@amendment amendmentGroup.amendments "retraction">
+          This article has been retracted.
+        </@amendment>
+      </#if>
+    </#list>
 
     <#-- In articleSuffix.ftl: Close <article class="article-item"> -->
     <#-- In articleSuffix.ftl: Close <div id="article-content"> -->

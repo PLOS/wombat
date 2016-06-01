@@ -7,7 +7,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.SitePageContext;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
@@ -117,14 +117,14 @@ public class EditorialContentApiImpl implements EditorialContentApi {
   }
 
   @Override
-  public <T> T requestCachedReader(CacheParams cacheParams, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
+  public <T> T requestCachedReader(CacheKey cacheKey, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
     Preconditions.checkNotNull(callback);
-    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version, RequestMode.OBJECT)), callback);
+    return cachedRemoteReader.requestCached(cacheKey, new HttpGet(buildUri(key, version, RequestMode.OBJECT)), callback);
   }
 
   @Override
-  public Map<String, Object> requestMetadata(CacheParams cacheParams, String key, Optional<Integer> version) throws IOException {
-    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, version, RequestMode.METADATA)),
+  public Map<String, Object> requestMetadata(CacheKey cacheKey, String key, Optional<Integer> version) throws IOException {
+    return cachedRemoteReader.requestCached(cacheKey, new HttpGet(buildUri(key, version, RequestMode.METADATA)),
         new CacheDeserializer<Reader, Map<String, Object>>() {
           @Override
           public Map<String, Object> read(Reader stream) throws IOException {
@@ -144,12 +144,14 @@ public class EditorialContentApiImpl implements EditorialContentApi {
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
-    String cacheKey = pageType.concat(":").concat(key);
+    CacheKey cacheKey = CacheKey.create(pageType, key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl");
-    CacheParams cacheParams = CacheParams.create(cacheKey, (cacheTtl == null) ? null : cacheTtl.intValue());
+    if (cacheTtl != null) {
+      cacheKey = cacheKey.addTimeToLive(cacheTtl.intValue());
+    }
     Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective
 
-    String transformedHtml = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, String>() {
+    String transformedHtml = requestCachedReader(cacheKey, key, version, new CacheDeserializer<Reader, String>() {
       @Override
       public String read(Reader htmlReader) throws IOException {
         // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
@@ -179,10 +181,9 @@ public class EditorialContentApiImpl implements EditorialContentApi {
    */
   @Override
   public Object getJson(String pageType, String key) throws IOException {
-    String cacheKey = pageType.concat(":").concat(key);
-    CacheParams cacheParams = CacheParams.create(cacheKey);
+    CacheKey cacheKey = CacheKey.create(pageType, key);
     Optional<Integer> version = Optional.absent();
-    Object jsonObj = requestCachedReader(cacheParams, key, version, new CacheDeserializer<Reader, Object>() {
+    Object jsonObj = requestCachedReader(cacheKey, key, version, new CacheDeserializer<Reader, Object>() {
       @Override
       public Object read(Reader jsonReader) throws IOException {
         return gson.fromJson(jsonReader, Object.class);

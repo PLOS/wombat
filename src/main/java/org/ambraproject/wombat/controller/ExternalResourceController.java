@@ -6,7 +6,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.ReproxyUtil;
 import org.apache.http.Header;
@@ -78,11 +78,11 @@ public class ExternalResourceController extends WombatController {
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
                      String key, Optional<Integer> version)
       throws IOException {
-    String cacheKey = "indirect:" + CacheParams.createKeyHash(key, String.valueOf(version.orNull()));
+    CacheKey cacheKey = CacheKey.create("indirect", key, String.valueOf(version.orNull()));
     Map<String, Object> fileMetadata;
 
     try {
-      fileMetadata = editorialContentApi.requestMetadata(CacheParams.create(cacheKey), key, version);
+      fileMetadata = editorialContentApi.requestMetadata(cacheKey, key, version);
         } catch (EntityNotFoundException e) {
     String message = String.format("Not found in repo: [key: %s, version: %s]",
             key, version.orNull());

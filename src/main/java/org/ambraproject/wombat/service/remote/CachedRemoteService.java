@@ -3,7 +3,7 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.rhombat.cache.Cache;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -17,6 +17,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Optional;
 
 /**
  * Decorator class that adds caching capability to a wrapped {@link RemoteService} object. The uncached RemoteService
@@ -91,20 +92,21 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    * was inserted into the cache, return that value. Else, query the service for a new stream and convert that stream to
    * a cacheable return value using the provided callback.
    *
-   * @param cacheParams   the cache parameters object containing the cache key at which to retrieve and store the value
+   * @param cacheKey   the cache parameters object containing the cache key at which to retrieve and store the value
    * @param target   the request with which to query the service if the value is not cached
    * @param callback how to deserialize a new value from the stream, to return and insert into the cache
    * @param <T>      the type of value to deserialize and return
    * @return the value from the service or cache
    * @throws IOException
    */
-  public <T> T requestCached(CacheParams cacheParams, HttpUriRequest target, CacheDeserializer<? super S, ? extends T> callback)
+  public <T> T requestCached(CacheKey cacheKey, HttpUriRequest target, CacheDeserializer<? super S, ? extends T> callback)
       throws IOException {
     Preconditions.checkNotNull(target);
     Preconditions.checkNotNull(callback);
-    Preconditions.checkNotNull(cacheParams);
+    Preconditions.checkNotNull(cacheKey);
 
-    CachedObject<T> cached = getCachedObject(cacheParams.getCacheKey());
+    String externalKey = cacheKey.getExternalKey();
+    CachedObject<T> cached = getCachedObject(externalKey);
     Calendar lastModified = getLastModified(cached);
 
     try (TimestampedResponse fromServer = requestIfModifiedSince(target, lastModified)) {
@@ -112,10 +114,12 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
         try (S stream = remoteService.open(fromServer.response.getEntity())) {
           T value = callback.read(stream);
           if (fromServer.timestamp != null) {
-            if (cacheParams.getTimeToLive().isPresent()){
-              cache.put(cacheParams.getCacheKey(), new CachedObject<>(fromServer.timestamp, value), cacheParams.getTimeToLive().get());
+            CachedObject<T> cachedObject = new CachedObject<>(fromServer.timestamp, value);
+            Optional<Integer> timeToLive = cacheKey.getTimeToLive();
+            if (timeToLive.isPresent()){
+              cache.put(externalKey, cachedObject, timeToLive.get());
             } else {
-              cache.put(cacheParams.getCacheKey(), new CachedObject<>(fromServer.timestamp, value));
+              cache.put(externalKey, cachedObject);
             }
           }
           return value;

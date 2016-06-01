@@ -218,32 +218,6 @@ public class ArticleController extends WombatController {
   }
 
 
-  /**
-   * Types of related articles that get special display handling.
-   */
-  private static enum AmendmentType {
-    CORRECTION("correction-forward"),
-    EOC("expressed-concern"),
-    RETRACTION("retraction");
-
-    /**
-     * A value of the "type" field of an object in an article's "relatedArticles" list.
-     */
-    private final String relationshipType;
-
-    private AmendmentType(String relationshipType) {
-      this.relationshipType = relationshipType;
-    }
-
-    // For use as a key in maps destined for the FreeMarker model
-    private String getLabel() {
-      return name().toLowerCase();
-    }
-
-    private static final ImmutableMap<String, AmendmentType> BY_RELATIONSHIP_TYPE = Maps.uniqueIndex(
-        EnumSet.allOf(AmendmentType.class), input -> input.relationshipType);
-  }
-
   private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
     List<Map<?, ?>> articleListObjects = articleApi.requestObject(String.format("articles/%s?lists", doi), List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
@@ -283,6 +257,32 @@ public class ArticleController extends WombatController {
 
   }
 
+  
+  /**
+   * Types of related articles that get special display handling.
+   */
+  private static enum AmendmentType {
+    CORRECTION("correction-forward"),
+    EOC("expressed-concern"),
+    RETRACTION("retraction");
+
+    /**
+     * A value of the "type" field of an object in an article's "relatedArticles" list.
+     */
+    private final String relationshipType;
+
+    private AmendmentType(String relationshipType) {
+      this.relationshipType = relationshipType;
+    }
+
+    // For use as a key in maps destined for the FreeMarker model
+    private String getLabel() {
+      return name().toLowerCase();
+    }
+
+    private static final ImmutableMap<String, AmendmentType> BY_RELATIONSHIP_TYPE = Maps.uniqueIndex(
+        EnumSet.allOf(AmendmentType.class), input -> input.relationshipType);
+  }
 
   /**
    * Check related articles for ones that amend this article. Set them up for special display, and retrieve additional

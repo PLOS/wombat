@@ -79,7 +79,7 @@ public class CacheKey {
     return prefix + ":" + createKeyHash(identifiers);
   }
 
-  private static final char HASH_TERMINATOR = '\0';
+  private static final char HASH_SEPARATOR = '\0';
 
   /**
    * Create a hash from the sequence of identifiers and return it, with a prefix appended, for use as a cache key.
@@ -95,7 +95,7 @@ public class CacheKey {
     for (Iterator<String> iterator = identifiers.iterator(); iterator.hasNext(); ) {
       hasher.putString(iterator.next(), HASH_CHARSET);
       if (iterator.hasNext()) {
-        hasher.putChar(HASH_TERMINATOR);
+        hasher.putChar(HASH_SEPARATOR);
       }
     }
     return HASH_BASE.encode(hasher.hash().asBytes());

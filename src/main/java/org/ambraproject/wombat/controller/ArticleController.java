@@ -361,7 +361,7 @@ public class ArticleController extends WombatController {
     return amendmentGroups;
   }
 
-  private static class AmendmentGroup {
+  public static class AmendmentGroup {
     private final String type;
     private final ImmutableList<Map<String,Object>> amendments;
 

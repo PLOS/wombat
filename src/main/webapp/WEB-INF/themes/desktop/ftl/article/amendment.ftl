@@ -37,14 +37,16 @@
 </div>
 </#macro>
 
-<#if amendments.correction??>
-  <@amendmentNotice amendments.correction, "correction",
-  (amendments.correction?size == 1)?string("Correction", "Corrections"),
-  "View correction", true />
-</#if>
-<#if amendments.eoc??>
-  <@amendmentNotice amendments.eoc "eoc" "Expression of Concern" "View expression of concern" false />
-</#if>
-<#if amendments.retraction??>
-  <@amendmentNotice amendments.retraction "retraction" "Retraction" "View retraction" false />
-</#if>
+<#list amendments as amendmentGroup>
+  <#if amendmentGroup.type == 'correction'>
+    <@amendmentNotice amendmentGroup.amendments, "correction",
+    (amendmentGroup.amendments?size == 1)?string("Correction", "Corrections"),
+    "View correction", true />
+  </#if>
+  <#if amendmentGroup.type == 'eoc'>
+    <@amendmentNotice amendmentGroup.amendments "eoc" "Expression of Concern" "View expression of concern" false />
+  </#if>
+  <#if amendmentGroup.type == 'retraction'>
+    <@amendmentNotice amendmentGroup.amendments "retraction" "Retraction" "View retraction" false />
+  </#if>
+</#list>

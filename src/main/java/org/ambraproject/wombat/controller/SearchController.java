@@ -233,7 +233,7 @@ public class SearchController extends WombatController {
         sortOrder = SolrSearchApiImpl.SolrSortOrder.valueOf(sortOrderParam);
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
-      getDateParam(params, "filterStartDate"), getDateParam(params, "filterEndDate"));
+          getDateParam(params, "filterStartDate"), getDateParam(params, "filterEndDate"));
       List<String> allJournalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
           ? new ArrayList<>() : params.get("filterJournals");
 

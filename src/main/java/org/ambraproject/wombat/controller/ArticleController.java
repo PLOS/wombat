@@ -15,7 +15,6 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
@@ -82,6 +81,7 @@ import javax.mail.Multipart;
 import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.DatatypeConverter;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -100,6 +100,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
@@ -239,17 +240,8 @@ public class ArticleController extends WombatController {
       return name().toLowerCase();
     }
 
-    private static final int COUNT = values().length;
-
     private static final ImmutableMap<String, AmendmentType> BY_RELATIONSHIP_TYPE = Maps.uniqueIndex(
-        EnumSet.allOf(AmendmentType.class),
-        new Function<AmendmentType, String>() {
-          @Override
-          public String apply(AmendmentType input) {
-            return input.relationshipType;
-          }
-        }
-    );
+        EnumSet.allOf(AmendmentType.class), input -> input.relationshipType);
   }
 
   private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
@@ -299,41 +291,45 @@ public class ArticleController extends WombatController {
    * @param articleMetadata the article metadata
    * @return a map from amendment type labels to related article objects
    */
-  private Map<String, List<Object>> fillAmendments(Site site, Map<?, ?> articleMetadata) throws IOException {
+  private List<Map<String, Object>> fillAmendments(Site site, Map<?, ?> articleMetadata) throws IOException {
     List<Map<String, ?>> relatedArticles = (List<Map<String, ?>>) articleMetadata.get("relatedArticles");
-    if (relatedArticles == null || relatedArticles.isEmpty()) {
-      return ImmutableMap.of();
-    }
-    ListMultimap<String, Object> amendments = LinkedListMultimap.create(AmendmentType.COUNT);
-    for (Map<String, ?> relatedArticle : relatedArticles) {
-      String relationshipType = (String) relatedArticle.get("type");
-      AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
-      if (amendmentType != null) {
-        amendments.put(amendmentType.getLabel(), relatedArticle);
+    return relatedArticles.stream()
+        .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
+        .filter(Objects::nonNull)
+        .sorted(BY_DESCENDING_DATE)
+        .collect(Collectors.toList());
+  }
+
+  private static final Comparator<Map<String, ?>> BY_DESCENDING_DATE = Comparator.comparing(
+      (Map<String, ?> objectMetadata) -> {
+        String date = (String) objectMetadata.get("date");
+        if (date == null) throw new IllegalArgumentException("Date not found");
+        return DatatypeConverter.parseDateTime(date);
+      })
+      .reversed();
+
+  private Map<String, Object> createAmendment(Site site, Map<String, ?> relatedArticle) {
+    Map<String, Object> amendment = new HashMap<>(relatedArticle); // make a copy to clobber
+
+    String relationshipType = (String) relatedArticle.get("type");
+    AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
+    if (amendmentType == null) return null; // not an amendment
+
+    // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
+    if (amendmentType != AmendmentType.CORRECTION) {
+      RenderContext renderContext = new RenderContext(site);
+      renderContext.setArticleId((String) amendment.get("doi"));
+      String body;
+      try {
+        body = getAmendmentBody(renderContext);
+      } catch (IOException e) {
+        throw new RuntimeException(e);
       }
-    }
-    if (amendments.keySet().size() > 1) {
-      applyAmendmentPrecedence(amendments);
+      amendment.put("body", body);
     }
 
-    for (Object amendmentObj : amendments.values()) {
-      Map<String, Object> amendment = (Map<String, Object>) amendmentObj;
-      String amendmentId = (String) amendment.get("doi");
-
-      Map<String, ?> amendmentMetadata = (Map<String, ?>) requestArticleMetadata(amendmentId);
-      amendment.putAll(amendmentMetadata);
-
-      // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
-      String amendmentType = (String) amendment.get("type");
-      if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
-        RenderContext renderContext = new RenderContext(site);
-        renderContext.setArticleId(amendmentId);
-        String body = getAmendmentBody(renderContext);
-        amendment.put("body", body);
-      }
-    }
-
-    return Multimaps.asMap(amendments);
+    amendment.put("type", amendmentType.getLabel()); // for templating
+    return amendment;
   }
 
   /**
@@ -400,25 +396,6 @@ public class ArticleController extends WombatController {
 
     model.addAttribute("crossPub", crossPublishedJournals);
     model.addAttribute("originalPub", originalJournal);
-  }
-
-  /**
-   * Apply the display logic for different amendment types taking precedence over each other.
-   * <p>
-   * Retractions take precedence over all else (i.e., don't show them if there is a retraction) and EOCs take precedence
-   * over corrections. This logic could conceivably vary between sites (e.g., some journals might want to show all
-   * amendments side-by-side), so this is a good candidate for making it controllable through config. But for now,
-   * assume that the rules are always the same.
-   *
-   * @param amendments related article objects, keyed by {@link AmendmentType#getLabel()}.
-   */
-  private static void applyAmendmentPrecedence(ListMultimap<String, Object> amendments) {
-    if (amendments.containsKey(AmendmentType.RETRACTION.getLabel())) {
-      amendments.removeAll(AmendmentType.EOC.getLabel());
-      amendments.removeAll(AmendmentType.CORRECTION.getLabel());
-    } else if (amendments.containsKey(AmendmentType.EOC.getLabel())) {
-      amendments.removeAll(AmendmentType.CORRECTION.getLabel());
-    }
   }
 
 

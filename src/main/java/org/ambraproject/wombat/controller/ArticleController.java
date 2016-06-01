@@ -291,13 +291,14 @@ public class ArticleController extends WombatController {
    * @param articleMetadata the article metadata
    * @return a map from amendment type labels to related article objects
    */
-  private List<Map<String, Object>> fillAmendments(Site site, Map<?, ?> articleMetadata) throws IOException {
+  private List<AmendmentGroup> fillAmendments(Site site, Map<?, ?> articleMetadata) throws IOException {
     List<Map<String, ?>> relatedArticles = (List<Map<String, ?>>) articleMetadata.get("relatedArticles");
-    return relatedArticles.stream()
+    List<Map<String, Object>> amendments = relatedArticles.parallelStream()
         .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
         .filter(Objects::nonNull)
         .sorted(BY_DESCENDING_DATE)
         .collect(Collectors.toList());
+    return buildAmendmentGroups(amendments);
   }
 
   private static final Comparator<Map<String, ?>> BY_DESCENDING_DATE = Comparator.comparing(
@@ -331,6 +332,54 @@ public class ArticleController extends WombatController {
     amendment.put("type", amendmentType.getLabel()); // for templating
     return amendment;
   }
+
+  /**
+   * Combine adjacent amendments that have the same type into one AmendmentGroup object, for display purposes. If
+   * multiple amendments share a type but are separated in order by a different type, they go in separate groups.
+   *
+   * @param amendments a list of amendment objects in their desired display order
+   * @return the amendments grouped by type in the same order
+   */
+  private List<AmendmentGroup> buildAmendmentGroups(List<Map<String, Object>> amendments) {
+    if (amendments.isEmpty()) return ImmutableList.of();
+
+    List<AmendmentGroup> amendmentGroups = new ArrayList<>(amendments.size());
+    List<Map<String, Object>> nextGroup = null;
+    String type = null;
+    for (Map<String, Object> amendment : amendments) {
+      String nextType = (String) amendment.get("type");
+      if (nextGroup == null || !Objects.equals(type, nextType)) {
+        if (nextGroup != null) {
+          amendmentGroups.add(new AmendmentGroup(type, nextGroup));
+        }
+        type = nextType;
+        nextGroup = new ArrayList<>();
+      }
+      nextGroup.add(amendment);
+    }
+    amendmentGroups.add(new AmendmentGroup(type, nextGroup));
+    return amendmentGroups;
+  }
+
+  private static class AmendmentGroup {
+    private final String type;
+    private final ImmutableList<Map<String,Object>> amendments;
+
+    private AmendmentGroup(String type, List<Map<String, Object>> amendments) {
+      this.type = Objects.requireNonNull(type);
+      this.amendments = ImmutableList.copyOf(amendments);
+      Preconditions.checkArgument(!this.amendments.isEmpty());
+    }
+
+    public String getType() {
+      return type;
+    }
+
+    public ImmutableList<Map<String, Object>> getAmendments() {
+      return amendments;
+    }
+  }
+
 
   /**
    * Add links to cross-published journals to the model.

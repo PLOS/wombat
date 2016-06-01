@@ -36,12 +36,12 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
-import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
@@ -61,8 +61,6 @@ import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
-import org.plos.ned_client.model.IndividualComposite;
-import org.plos.ned_client.model.Individualprofile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -953,10 +951,10 @@ public class ArticleController extends WombatController {
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
-    String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
+    CacheKey cacheKey = CacheKey.create("amendmentBody", renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
-    return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
+    return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
 
       // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
       String bodyXml = xmlService.extractElement(stream, "body");
@@ -977,11 +975,10 @@ public class ArticleController extends WombatController {
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
 
-    String cacheKey = String.format("html:%s:%s",
-        Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
+    CacheKey cacheKey = CacheKey.create("html", renderContext.getSite().getKey(), renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
-    return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
+    return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
         articleTransformService.transform(renderContext, stream, outputStream);

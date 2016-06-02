@@ -3,6 +3,7 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
@@ -48,10 +49,12 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
     return new BasicHeader("Authorization", "Basic " + encoded);
   }
 
+  private static final ApiAddress USER_API_CONFIG = ApiAddress.builder("config/userApi").build();
+
   private UserApiConfiguration fetchApiConfiguration() {
     Map<String, ?> userConfigData;
     try {
-      userConfigData = articleApi.requestObject("config/userApi", Map.class);
+      userConfigData = articleApi.requestObject(USER_API_CONFIG, Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -99,7 +102,7 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   public final String getUserIdFromAuthId(String authId) throws IOException {
     Objects.requireNonNull(authId);
     final IndividualComposite individualComposite;
-    individualComposite = requestObject(String.format("individuals/CAS/%s", authId), IndividualComposite.class);
+    individualComposite = requestObject(ApiAddress.builder("individuals/CAS").addToken(authId).build(), IndividualComposite.class);
     // use nedid from any available profile.
     Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
         .findFirst()

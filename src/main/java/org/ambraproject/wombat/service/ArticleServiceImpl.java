@@ -36,8 +36,11 @@ public class ArticleServiceImpl implements ArticleService {
 
   @Override
   public Map<String, Object> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
-    Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(String.format(
-        "articles/%s?excludeCitations=" + excludeCitations.toString(), articleId), Map.class);
+    Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(articleId)
+            .addParameter("excludeCitations", Boolean.toString(excludeCitations))
+            .build(),
+        Map.class);
     return DoiSchemeStripper.strip(map);
   }
 

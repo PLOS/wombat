@@ -319,12 +319,13 @@ public class ArticleController extends WombatController {
     // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
     if (amendmentType != AmendmentType.CORRECTION) {
       RenderContext renderContext = new RenderContext(site);
-      renderContext.setArticleId((String) amendment.get("doi"));
+      String doi = (String) amendment.get("doi");
+      renderContext.setArticleId(doi);
       String body;
       try {
         body = getAmendmentBody(renderContext);
       } catch (IOException e) {
-        throw new RuntimeException(e);
+        throw new RuntimeException("Could not get body for amendment: " + doi, e);
       }
       amendment.put("body", body);
     }

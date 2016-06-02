@@ -15,7 +15,6 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
@@ -36,12 +35,12 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
-import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
@@ -61,8 +60,6 @@ import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
-import org.plos.ned_client.model.IndividualComposite;
-import org.plos.ned_client.model.Individualprofile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +81,7 @@ import javax.mail.Multipart;
 import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.DatatypeConverter;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -102,6 +100,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
@@ -219,41 +218,6 @@ public class ArticleController extends WombatController {
   }
 
 
-  /**
-   * Types of related articles that get special display handling.
-   */
-  private static enum AmendmentType {
-    CORRECTION("correction-forward"),
-    EOC("expressed-concern"),
-    RETRACTION("retraction");
-
-    /**
-     * A value of the "type" field of an object in an article's "relatedArticles" list.
-     */
-    private final String relationshipType;
-
-    private AmendmentType(String relationshipType) {
-      this.relationshipType = relationshipType;
-    }
-
-    // For use as a key in maps destined for the FreeMarker model
-    private String getLabel() {
-      return name().toLowerCase();
-    }
-
-    private static final int COUNT = values().length;
-
-    private static final ImmutableMap<String, AmendmentType> BY_RELATIONSHIP_TYPE = Maps.uniqueIndex(
-        EnumSet.allOf(AmendmentType.class),
-        new Function<AmendmentType, String>() {
-          @Override
-          public String apply(AmendmentType input) {
-            return input.relationshipType;
-          }
-        }
-    );
-  }
-
   private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
     List<Map<?, ?>> articleListObjects = articleApi.requestObject(String.format("articles/%s?lists", doi), List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
@@ -293,6 +257,32 @@ public class ArticleController extends WombatController {
 
   }
 
+  
+  /**
+   * Types of related articles that get special display handling.
+   */
+  private static enum AmendmentType {
+    CORRECTION("correction-forward"),
+    EOC("expressed-concern"),
+    RETRACTION("retraction");
+
+    /**
+     * A value of the "type" field of an object in an article's "relatedArticles" list.
+     */
+    private final String relationshipType;
+
+    private AmendmentType(String relationshipType) {
+      this.relationshipType = relationshipType;
+    }
+
+    // For use as a key in maps destined for the FreeMarker model
+    private String getLabel() {
+      return name().toLowerCase();
+    }
+
+    private static final ImmutableMap<String, AmendmentType> BY_RELATIONSHIP_TYPE = Maps.uniqueIndex(
+        EnumSet.allOf(AmendmentType.class), input -> input.relationshipType);
+  }
 
   /**
    * Check related articles for ones that amend this article. Set them up for special display, and retrieve additional
@@ -301,42 +291,96 @@ public class ArticleController extends WombatController {
    * @param articleMetadata the article metadata
    * @return a map from amendment type labels to related article objects
    */
-  private Map<String, List<Object>> fillAmendments(Site site, Map<?, ?> articleMetadata) throws IOException {
+  private List<AmendmentGroup> fillAmendments(Site site, Map<?, ?> articleMetadata) throws IOException {
     List<Map<String, ?>> relatedArticles = (List<Map<String, ?>>) articleMetadata.get("relatedArticles");
-    if (relatedArticles == null || relatedArticles.isEmpty()) {
-      return ImmutableMap.of();
-    }
-    ListMultimap<String, Object> amendments = LinkedListMultimap.create(AmendmentType.COUNT);
-    for (Map<String, ?> relatedArticle : relatedArticles) {
-      String relationshipType = (String) relatedArticle.get("type");
-      AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
-      if (amendmentType != null) {
-        amendments.put(amendmentType.getLabel(), relatedArticle);
-      }
-    }
-    if (amendments.keySet().size() > 1) {
-      applyAmendmentPrecedence(amendments);
-    }
-
-    for (Object amendmentObj : amendments.values()) {
-      Map<String, Object> amendment = (Map<String, Object>) amendmentObj;
-      String amendmentId = (String) amendment.get("doi");
-
-      Map<String, ?> amendmentMetadata = (Map<String, ?>) requestArticleMetadata(amendmentId);
-      amendment.putAll(amendmentMetadata);
-
-      // Display the body only on non-correction amendments. Would be better if there were configurable per theme.
-      String amendmentType = (String) amendment.get("type");
-      if (!amendmentType.equals(AmendmentType.CORRECTION.relationshipType)) {
-        RenderContext renderContext = new RenderContext(site);
-        renderContext.setArticleId(amendmentId);
-        String body = getAmendmentBody(renderContext);
-        amendment.put("body", body);
-      }
-    }
-
-    return Multimaps.asMap(amendments);
+    List<Map<String, Object>> amendments = relatedArticles.parallelStream()
+        .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
+        .filter(Objects::nonNull)
+        .sorted(BY_DESCENDING_DATE)
+        .collect(Collectors.toList());
+    return buildAmendmentGroups(amendments);
   }
+
+  private static final Comparator<Map<String, ?>> BY_DESCENDING_DATE = Comparator.comparing(
+      (Map<String, ?> objectMetadata) -> {
+        String date = (String) objectMetadata.get("date");
+        if (date == null) throw new IllegalArgumentException("Date not found");
+        return DatatypeConverter.parseDateTime(date);
+      })
+      .reversed();
+
+  private Map<String, Object> createAmendment(Site site, Map<String, ?> relatedArticle) {
+    Map<String, Object> amendment = new HashMap<>(relatedArticle); // make a copy to clobber
+
+    String relationshipType = (String) relatedArticle.get("type");
+    AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
+    if (amendmentType == null) return null; // not an amendment
+
+    // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
+    if (amendmentType != AmendmentType.CORRECTION) {
+      RenderContext renderContext = new RenderContext(site);
+      String doi = (String) amendment.get("doi");
+      renderContext.setArticleId(doi);
+      String body;
+      try {
+        body = getAmendmentBody(renderContext);
+      } catch (IOException e) {
+        throw new RuntimeException("Could not get body for amendment: " + doi, e);
+      }
+      amendment.put("body", body);
+    }
+
+    amendment.put("type", amendmentType.getLabel()); // for templating
+    return amendment;
+  }
+
+  /**
+   * Combine adjacent amendments that have the same type into one AmendmentGroup object, for display purposes. If
+   * multiple amendments share a type but are separated in order by a different type, they go in separate groups.
+   *
+   * @param amendments a list of amendment objects in their desired display order
+   * @return the amendments grouped by type in the same order
+   */
+  private List<AmendmentGroup> buildAmendmentGroups(List<Map<String, Object>> amendments) {
+    if (amendments.isEmpty()) return ImmutableList.of();
+
+    List<AmendmentGroup> amendmentGroups = new ArrayList<>(amendments.size());
+    List<Map<String, Object>> nextGroup = null;
+    String type = null;
+    for (Map<String, Object> amendment : amendments) {
+      String nextType = (String) amendment.get("type");
+      if (nextGroup == null || !Objects.equals(type, nextType)) {
+        if (nextGroup != null) {
+          amendmentGroups.add(new AmendmentGroup(type, nextGroup));
+        }
+        type = nextType;
+        nextGroup = new ArrayList<>();
+      }
+      nextGroup.add(amendment);
+    }
+    amendmentGroups.add(new AmendmentGroup(type, nextGroup));
+    return amendmentGroups;
+  }
+
+  public static class AmendmentGroup {
+    private final String type;
+    private final ImmutableList<Map<String,Object>> amendments;
+
+    private AmendmentGroup(String type, List<Map<String, Object>> amendments) {
+      this.type = Objects.requireNonNull(type);
+      this.amendments = ImmutableList.copyOf(amendments);
+      Preconditions.checkArgument(!this.amendments.isEmpty());
+    }
+
+    public String getType() {
+      return type;
+    }
+
+    public ImmutableList<Map<String, Object>> getAmendments() {
+      return amendments;
+    }
+  }
+
 
   /**
    * Add links to cross-published journals to the model.
@@ -402,25 +446,6 @@ public class ArticleController extends WombatController {
 
     model.addAttribute("crossPub", crossPublishedJournals);
     model.addAttribute("originalPub", originalJournal);
-  }
-
-  /**
-   * Apply the display logic for different amendment types taking precedence over each other.
-   * <p>
-   * Retractions take precedence over all else (i.e., don't show them if there is a retraction) and EOCs take precedence
-   * over corrections. This logic could conceivably vary between sites (e.g., some journals might want to show all
-   * amendments side-by-side), so this is a good candidate for making it controllable through config. But for now,
-   * assume that the rules are always the same.
-   *
-   * @param amendments related article objects, keyed by {@link AmendmentType#getLabel()}.
-   */
-  private static void applyAmendmentPrecedence(ListMultimap<String, Object> amendments) {
-    if (amendments.containsKey(AmendmentType.RETRACTION.getLabel())) {
-      amendments.removeAll(AmendmentType.EOC.getLabel());
-      amendments.removeAll(AmendmentType.CORRECTION.getLabel());
-    } else if (amendments.containsKey(AmendmentType.EOC.getLabel())) {
-      amendments.removeAll(AmendmentType.CORRECTION.getLabel());
-    }
   }
 
 
@@ -953,10 +978,10 @@ public class ArticleController extends WombatController {
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
-    String cacheKey = "amendmentBody:" + Preconditions.checkNotNull(renderContext.getArticleId());
+    CacheKey cacheKey = CacheKey.create("amendmentBody", renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
-    return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
+    return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
 
       // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
       String bodyXml = xmlService.extractElement(stream, "body");
@@ -977,11 +1002,10 @@ public class ArticleController extends WombatController {
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
 
-    String cacheKey = String.format("html:%s:%s",
-        Preconditions.checkNotNull(renderContext.getSite()), renderContext.getArticleId());
+    CacheKey cacheKey = CacheKey.create("html", renderContext.getSite().getKey(), renderContext.getArticleId());
     String xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
-    return articleApi.requestCachedStream(CacheParams.create(cacheKey), xmlAssetPath, stream -> {
+    return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
         articleTransformService.transform(renderContext, stream, outputStream);

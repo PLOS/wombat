@@ -1,11 +1,8 @@
-<#include "../common/headContent.ftl" />
+<#include '../baseTemplates/default.ftl' />
+<#assign mainId = "article-content" />
+<#assign mainClass = "content" />
 
-
-  <div id="article-content" class="content">
-
-  <#include "volumesBody.ftl"/>
-
-  </div><#-- end home-content -->
-
-<#include "../common/footContent.ftl" />
+<@page_header />
+<#include "volumesBody.ftl"/>
+<@page_footer />
 

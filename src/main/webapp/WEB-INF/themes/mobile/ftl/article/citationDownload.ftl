@@ -1,19 +1,7 @@
-<#include "../common/htmlTag.ftl" />
+<#include "../baseTemplates/articleSection.ftl" />
+<#assign mainClass = "content" />
 
-<#assign title = "" />
-<#include "../common/head.ftl" />
-
-<body>
-<#include "../common/bodyAnalytics.ftl" />
-
-<div id="container-main">
-<#include "backToArticle.ftl" />
-  <section class="content">
-
+<@page_header />
 <#include "citationDownloadBody.ftl" />
-</section>
-<#include "../common/footer/footer.ftl" />
-</div>
-<#include "../common/bodyJs.ftl" />
-</body>
-</html>
+<!--end content-->
+<@page_footer />

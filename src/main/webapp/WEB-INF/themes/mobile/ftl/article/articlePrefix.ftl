@@ -1,9 +1,5 @@
-<div id="container-main">
-
-<#include "../common/header/headerContainer.ftl" />
 <#include "../common/article/articleType.ftl" />
-
-  <div id="article-content" class="content" data-article-id="0059893">
+<div id="article-content" class="content" data-article-id="0059893">
     <article class="article-item">
 
     <#-- TODO: implement save to article list.  Not MVP.
@@ -120,21 +116,23 @@
         </h3></span>
       </div>
     </#macro>
-    <#if amendments.correction??>
-      <@amendment amendments.correction "correction">
-        This article has been corrected.
-      </@amendment>
-    </#if>
-    <#if amendments.eoc??>
-      <@amendment amendments.eoc "expression of concern">
-        There is an expression of concern about this article.
-      </@amendment>
-    </#if>
-    <#if amendments.retraction??>
-      <@amendment amendments.retraction "retraction">
-        This article has been retracted.
-      </@amendment>
-    </#if>
+    <#list amendments as amendmentGroup>
+      <#if amendmentGroup.type == 'correction'>
+        <@amendment amendmentGroup.amendments "correction">
+          This article has been corrected.
+        </@amendment>
+      </#if>
+      <#if amendmentGroup.type == 'eoc'>
+        <@amendment amendmentGroup.amendments "expression of concern">
+          There is an expression of concern about this article.
+        </@amendment>
+      </#if>
+      <#if amendmentGroup.type == 'retraction'>
+        <@amendment amendmentGroup.amendments "retraction">
+          This article has been retracted.
+        </@amendment>
+      </#if>
+    </#list>
 
     <#-- In articleSuffix.ftl: Close <article class="article-item"> -->
     <#-- In articleSuffix.ftl: Close <div id="article-content"> -->

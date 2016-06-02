@@ -1,13 +1,13 @@
 <#include "citation.ftl" />
-<#macro amendmentNotice amendmentObjects type title linkText showCount>
-<div class="amendment amendment-${type} toc-section">
+<#macro amendmentNotice amendmentGroup title linkText index>
+<div class="amendment amendment-${amendmentGroup.type} toc-section">
   <#assign tocTitle>
-    <#t/>${title}<#if showCount> (${amendmentObjects?size})</#if>
+    <#t/>${title}<#if amendmentGroup.amendments?size gt 1> (${amendmentGroup.amendments?size})</#if>
   </#assign>
-  <a data-toc="amendment-${type}" title="${tocTitle}" id="amendment-${type}" name="amendment-${type}"></a>
+  <a data-toc="amendment-${index?c}" title="${tocTitle}" id="amendment-${index?c}" name="amendment-${index?c}"></a>
 
   <h2>${title}</h2>
-  <#list amendmentObjects as amendment>
+  <#list amendmentGroup.amendments as amendment>
     <#if amendment.body??>
       <div class="amendment-body">
       ${amendment.body}
@@ -37,14 +37,16 @@
 </div>
 </#macro>
 
-<#if amendments.correction??>
-  <@amendmentNotice amendments.correction, "correction",
-  (amendments.correction?size == 1)?string("Correction", "Corrections"),
-  "View correction", true />
-</#if>
-<#if amendments.eoc??>
-  <@amendmentNotice amendments.eoc "eoc" "Expression of Concern" "View expression of concern" false />
-</#if>
-<#if amendments.retraction??>
-  <@amendmentNotice amendments.retraction "retraction" "Retraction" "View retraction" false />
-</#if>
+<#list amendments as amendmentGroup>
+  <#if amendmentGroup.type == 'correction'>
+    <@amendmentNotice amendmentGroup,
+    (amendmentGroup.amendments?size == 1)?string("Correction", "Corrections"),
+    "View correction" amendmentGroup_index />
+  </#if>
+  <#if amendmentGroup.type == 'eoc'>
+    <@amendmentNotice amendmentGroup "Expression of Concern" "View expression of concern" amendmentGroup_index />
+  </#if>
+  <#if amendmentGroup.type == 'retraction'>
+    <@amendmentNotice amendmentGroup "Retraction" "View retraction" amendmentGroup_index />
+  </#if>
+</#list>

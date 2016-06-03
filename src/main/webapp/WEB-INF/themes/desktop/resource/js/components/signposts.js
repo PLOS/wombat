@@ -6,27 +6,16 @@ var Signposts;
 
     $element: $('#almSignposts'),
 
-    isDataValid: function (data) {
-      return !_.isUndefined(data);
-    },
     init: function() {
       var that = this;
       var query = new AlmQuery();
+      var validator = new AlmQueryValidator({ checkSources: false });
 
-      query.getArticleDetail(ArticleData.doi)
+      query
+        .setDataValidator(validator)
+        .getArticleDetail(ArticleData.doi)
         .then(function (articleData) {
-          var data = articleData.data[0];
-          if(that.isDataValid(data)) {
-            return data;
-          }
-          else if(query.isArticleNew()) {
-            throw new ErrorFactory('NewArticleError', '[Signposts::init] - The article is too new to have data.');
-          }
-          else {
-            throw new ErrorFactory('InvalidDataError', '[Signposts::init] - The article data is invalid');
-          }
-        })
-        .then(function (data) {
+          var data = articleData[0];
           var template  = _.template($('#signpostsTemplate').html());
           var templateData = {
             saveCount: data.saved,

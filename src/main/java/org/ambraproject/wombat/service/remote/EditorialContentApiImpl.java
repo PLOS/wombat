@@ -4,7 +4,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,12 +38,14 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
-    String cacheKey = pageType.concat(":").concat(key);
+    CacheKey cacheKey = CacheKey.create(pageType, key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl");
-    CacheParams cacheParams = CacheParams.create(cacheKey, (cacheTtl == null) ? null : cacheTtl.intValue());
+    if (cacheTtl != null) {
+      cacheKey = cacheKey.addTimeToLive(cacheTtl.intValue());
+    }
     ContentKey version = ContentKey.createForLatestVersion(key); // TODO May want to support page versioning at some point using fetchHtmlDirective
 
-    String transformedHtml = requestCachedReader(cacheParams, version, new CacheDeserializer<Reader, String>() {
+    String transformedHtml = requestCachedReader(cacheKey, version, new CacheDeserializer<Reader, String>() {
       @Override
       public String read(Reader htmlReader) throws IOException {
         // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
@@ -73,9 +75,8 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
    */
   @Override
   public Object getJson(String pageType, String key) throws IOException {
-    String cacheKey = pageType + ":" + key;
-    CacheParams cacheParams = CacheParams.create(cacheKey);
+    CacheKey cacheKey = CacheKey.create(pageType, key);
     ContentKey version = ContentKey.createForLatestVersion(key);
-    return requestCachedReader(cacheParams, version, jsonReader -> gson.fromJson(jsonReader, Object.class));
+    return requestCachedReader(cacheKey, version, jsonReader -> gson.fromJson(jsonReader, Object.class));
   }
 }

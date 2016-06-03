@@ -1,16 +1,10 @@
-<#include "../common/htmlTag.ftl" />
+<#include "../baseTemplates/articleSection.ftl" />
+<#assign title = 'PLOS - Author Info' />
+<#assign bodyId = 'page-authors' />
+<#assign mainId = "author-content" />
+<#assign mainClass = "content" />
 
-<#assign title = "PLOS - Author Info" />
-<#assign depth = 1 />
-<#include "../common/head.ftl" />
-
-<body id="page-authors">
-<#include "../common/bodyAnalytics.ftl" />
-
-<div id="container-main">
-<#include "backToArticle.ftl" />
-
-  <div id="author-content" class="content">
+<@page_header />
   <#list authorListAffiliationMap?keys as affiliation>
     <div class="about-author">
       <h3 class="comments-header">${authorListAffiliationMap[affiliation]}</h3>
@@ -31,14 +25,5 @@
       </ul>
     </#if>
   </#if>
-  </div>
-  <!--end content-->
-
-<#include "../common/footer/footer.ftl" />
-
-</div>
-<!--end container main-->
-
-<#include "../common/bodyJs.ftl" />
-</body>
-</html>
+<!--end content-->
+<@page_footer />

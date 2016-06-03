@@ -465,6 +465,76 @@ have a fixed width and height (but it's not required).
 
 }
 
+/*
+Modal component
+*/
+
+%modal-close-button {
+  background: image-url('sprite.fv.png') no-repeat -40px 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $modal-close-btn-width;
+  height: $modal-close-btn-height;
+  cursor: pointer;
+  color: $grey-light;
+  border-left: 1px $grey-light solid;
+  &:hover {
+    border-left: none;
+    @extend %brand-background;
+  }
+}
+
+%modal {
+  @extend .reveal-modal;
+
+  top: $pad-default;
+  background-color: white;
+  padding: $pad-default;
+
+  .close-reveal-modal {
+    @extend %modal-close-button;
+    @extend %brand-background;
+
+    &:hover {
+      background-color: $clr-highlight;
+    }
+  }
+}
+
+.reveal-modal-bg {
+  background-color: $modal-overlay-bg-color;
+}
+
+
+/*
+TypeAhead
+*/
+
+.twitter-typeahead {
+  .tt-menu {
+    background-color: white;
+    min-width: 100%;
+    border: 1px solid $grey-med-light;
+    border-top-color: transparent;
+    padding: $pad-small/2 0;
+  }
+  h5 {
+    font-weight: bold;
+    padding: $pad-small/2 $pad-small;
+    margin: 0;
+  }
+  .tt-suggestion {
+    padding: $pad-small/2 $pad-small;
+    margin: 0;
+
+    &.tt-cursor,&:hover {
+      @extend %brand-background;
+      cursor: pointer;
+    }
+  }
+}
+
 // js utilities
 .pos-right {   // used in tooltip.js
   right:0

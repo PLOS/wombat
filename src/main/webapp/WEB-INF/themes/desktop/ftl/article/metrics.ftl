@@ -8,14 +8,11 @@
 
 
 <#assign title = article.title, articleDoi = article.doi />
-<#assign depth = 0 />
 <#assign cssFile="metrics.css"/>
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <#include "../common/article/articleType.ftl" />
-
-<#include "analyticsArticleJS.ftl" />
 
 <body class="article ${journalStyle}">
 

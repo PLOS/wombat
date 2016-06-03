@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.util.CacheKey;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +28,10 @@ public class RenderContext {
 
   public Optional<ScholarlyWorkId> getArticleId() {
     return articleId;
+  }
+
+  public CacheKey getCacheKey(String prefix) {
+    throw new UnsupportedOperationException("TODO: Implement"); // TODO: Implement
   }
 
   @Override

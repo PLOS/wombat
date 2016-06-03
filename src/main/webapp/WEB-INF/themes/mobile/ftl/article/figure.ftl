@@ -1,17 +1,10 @@
-<#include "../common/htmlTag.ftl" />
+<#include "../baseTemplates/articleFigure.ftl" />
 
 <#assign title = figure.title />
-<#assign depth = 1 />
-<#include "../common/head.ftl" />
 
-<body id="page-figure">
-<#include "../common/bodyAnalytics.ftl" />
-
-<div id="container-main">
-<#include "backToArticle.ftl" />
-
+<@page_header />
 <#assign imageToShow = figure.thumbnails.large />
-  <img class="figure-img" src="asset?id=${imageToShow.file}" alt="${figure.title}">
+<img class="figure-img" src="asset?id=${imageToShow.file}" alt="${figure.title}">
 
 </div><#--end container main-->
 
@@ -36,9 +29,4 @@
   </div>
 
 </section><#--end model info window-->
-
-</div><#--end container main-->
-
-<#include "../common/bodyJs.ftl" />
-</body>
-</html>
+<@page_footer />

@@ -20,7 +20,7 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +30,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.OptionalInt;
 
 /**
  * Controller intended to serve static pages
@@ -54,12 +53,12 @@ public class SiteContentController extends WombatController {
     }
     String repoKey = repoKeyPrefix + "." + pageName;
 
-    String cacheKey = "siteContent_meta:" + repoKey;
+    CacheKey cacheKey = CacheKey.create("siteContent_meta", repoKey);
 
     ContentKey version = ContentKey.createForLatestVersion(repoKey); // versioning is not supported for site content
     try {
       // Check for validity of the content repo key prior to rendering page. Return a 404 if no object found.
-      editorialContentApi.requestMetadata(CacheParams.create(cacheKey), version);
+      editorialContentApi.requestMetadata(cacheKey, version);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

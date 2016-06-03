@@ -26,7 +26,7 @@ main nav ul {
     @extend %link-text-default;
     }
 
-  img.img-default {
+  img.img-default, img.img-center {
     display: block;
     clear: both;
     margin: $line-height-small auto;
@@ -39,12 +39,15 @@ main nav ul {
     float: left;
     }
 
-  table img.img-default {
-    @extend .img-left;
+  table {
+    img.img-default {
+      @extend .img-left;
     }
   }
+
+  }
 article {      // to work on ck editor editing
-     @include site-content;
+  @include site-content;
   ul{@extend .list-bullet;}
   }
 

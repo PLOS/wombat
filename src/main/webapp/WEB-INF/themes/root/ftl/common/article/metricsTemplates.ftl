@@ -161,7 +161,7 @@
                 <% }); %>
             </select>
             &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            <@siteLink handlerName="advancedSearch" ; href>
+            <@siteLink handlerName="newAdvancedSearch" ; href>
             <a id="linkToRefset" href="" data-base-link="${href}">Show reference set</a>
             </@siteLink>
         </div>

@@ -72,7 +72,8 @@ public class BrowseController extends WombatController {
     return site.getKey() + "/ftl/browse/volumes";
   }
 
-private static final  ApiAddress ARTICLE_TYPES_ADDRESS = ApiAddress.builder("articleTypes").build();
+  private static final ApiAddress ARTICLE_TYPES_ADDRESS = ApiAddress.builder("articleTypes").build();
+
   @RequestMapping(name = "browseIssues", value = "/issue")
   public String browseIssue(Model model, @SiteParam Site site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
@@ -99,11 +100,11 @@ private static final  ApiAddress ARTICLE_TYPES_ADDRESS = ApiAddress.builder("art
     model.addAttribute("issueDescription", articleTransformService.transformImageDescription(new RenderContext(site),
         xmlService.removeElementFromFragment(issueDesc, "title")));
 
-    List<Map<String, Object>> articleGroups = articleApi.requestObject(        ARTICLE_TYPES_ADDRESS, List.class);
+    List<Map<String, Object>> articleGroups = articleApi.requestObject(ARTICLE_TYPES_ADDRESS, List.class);
 
     articleGroups.stream().forEach(ag -> ag.put("articles", new ArrayList<Map<?, ?>>()));
 
-    for (String articleDoi : (List<String>)issueMeta.get("articleOrder")) {
+    for (String articleDoi : (List<String>) issueMeta.get("articleOrder")) {
       ScholarlyWorkId articleId = new ScholarlyWorkId(articleDoi);
       Map<?, ?> articleMetadata;
       try {
@@ -116,23 +117,23 @@ private static final  ApiAddress ARTICLE_TYPES_ADDRESS = ApiAddress.builder("art
       } catch (NotVisibleException e) {
         continue; //skip any articles that should be hidden from view
       }
-      Map<String, String> currentArticleType = (Map<String, String>)articleMetadata.get("articleType");
+      Map<String, String> currentArticleType = (Map<String, String>) articleMetadata.get("articleType");
       if (currentArticleType == null || currentArticleType.get("heading") == null) {
         log.warn("No article type found for {}", articleId);
         continue;
       }
       articleGroups.stream()
           .filter(ag -> ag.get("heading").equals(currentArticleType.get("heading")))
-          .forEach(ag -> ((ArrayList<Map<?, ?>>)ag.get("articles")).add(articleMetadata));
+          .forEach(ag -> ((ArrayList<Map<?, ?>>) ag.get("articles")).add(articleMetadata));
     }
 
     articleGroups = articleGroups.stream()
-        .filter(ag -> !((ArrayList<Map<?, ?>>)ag.get("articles")).isEmpty())
+        .filter(ag -> !((ArrayList<Map<?, ?>>) ag.get("articles")).isEmpty())
         .collect(Collectors.toList());
 
     model.addAttribute("articleGroups", articleGroups);
 
     return site.getKey() + "/ftl/browse/issues";
   }
-  
+
 }

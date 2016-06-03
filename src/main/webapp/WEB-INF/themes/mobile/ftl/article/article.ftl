@@ -1,18 +1,8 @@
-<#include "../common/htmlTag.ftl" />
-
+<#include "../baseTemplates/article.ftl" />
 <#assign title = article.title />
-<#assign depth = 0 />
-<#include "../common/head.ftl" />
+<#assign mainId = "articleText" />
 
-<body>
 
-<#include "articlePrefix.ftl" />
-
-<div id="articleText">
+<@page_header />
 ${articleText}
-</div>
-
-<#include "articleSuffix.ftl" />
-
-</body>
-</html>
+<@page_footer />

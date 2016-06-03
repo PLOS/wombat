@@ -12,8 +12,6 @@
 <#include "../../common/journalStyle.ftl" />
 <#include "../../common/article/articleType.ftl" />
 
-<#include "../analyticsArticleJS.ftl" />
-
 <body class="article ${journalStyle}">
 
 <#include "../../common/header/headerContainer.ftl" />
@@ -149,7 +147,13 @@
           </div>
 
           <div class="response_content">
-            <div class="response_body">${comment.formatting.bodyWithHighlightedText}</div>
+            <div class="response_body">
+              <#if comment.isRemoved >
+                <p class="removed_comment_note">This comment has been removed.</p>
+              <#else>
+                ${comment.formatting.bodyWithHighlightedText}
+              </#if>
+            </div>
 
             <#if !(comment.competingInterestStatement.creatorWasPrompted)>
             <#--
@@ -176,7 +180,7 @@
 
           <div class="toolbar">
             <#assign userIsLoggedIn = isUserLoggedIn() />
-            <@siteLink handlerName="userLogin" queryParameters={"page": getLinkToCurrentPage()?url("UTF-8")
+            <@siteLink handlerName="userLogin" queryParameters={"page": getLinkToCurrentPage()
             } ; login>
               <a title="Report a Concern" class="flag toolbar btn"
                 <#if userIsLoggedIn>

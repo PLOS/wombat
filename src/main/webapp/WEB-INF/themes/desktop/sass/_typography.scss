@@ -90,7 +90,7 @@ ol {
     margin-bottom: rem-calc($line-height-small);
     position: relative;
   }
-  > li::before {
+  > li:before {
     @extend .fa;
     @extend .fa-chevron-right;
     @extend .list-icon;
@@ -102,7 +102,7 @@ ol {
   // to do put in variables
 }
 .list-bullet-over-ride{
-  li::before{
+  li:before{
     content: none;
     font-size: inherit;
     display: inline-block;
@@ -111,6 +111,12 @@ ol {
   }
 }
 .bulleted {@extend .list-bullet;}    /// used for article pages
+.list-no-bullet{
+  margin-left: 0;
+  list-style-type: none;
+  @include default-list;
+
+}
 
 /// sizes are set in foundation.
 h2, h3, h4, h5 {
@@ -170,7 +176,7 @@ $icon-width: $pad-medium) {
     padding-left: ($padding-x + $icon-width);
     position: relative;
 
-    &::after {
+    &:after {
       @extend .icon-#{$icon-type};
       display: block;
       position: absolute;

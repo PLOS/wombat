@@ -2,7 +2,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.gson.Gson;
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -112,14 +112,14 @@ public abstract class AbstractContentApi implements ContentApi {
         repoConfig.address, mode.getPathComponent(), repoBucketName, requestParams.format()));
   }
 
-  protected final <T> T requestCachedReader(CacheParams cacheParams, ContentKey key, CacheDeserializer<Reader, T> callback) throws IOException {
+  protected final <T> T requestCachedReader(CacheKey cacheKey, ContentKey key, CacheDeserializer<Reader, T> callback) throws IOException {
     HttpGet target = new HttpGet(buildUri(key, RequestMode.OBJECT));
-    return cachedRemoteReader.requestCached(cacheParams, target, callback);
+    return cachedRemoteReader.requestCached(cacheKey, target, callback);
   }
 
   @Override
-  public final Map<String, Object> requestMetadata(CacheParams cacheParams, ContentKey key) throws IOException {
-    return cachedRemoteReader.requestCached(cacheParams, new HttpGet(buildUri(key, RequestMode.METADATA)),
+  public final Map<String, Object> requestMetadata(CacheKey cacheKey, ContentKey key) throws IOException {
+    return cachedRemoteReader.requestCached(cacheKey, new HttpGet(buildUri(key, RequestMode.METADATA)),
         (Reader stream) -> gson.fromJson(stream, Map.class));
   }
 

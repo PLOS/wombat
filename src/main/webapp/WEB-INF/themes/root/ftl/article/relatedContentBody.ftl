@@ -1,15 +1,33 @@
 <input type="hidden" name="reCaptcha-info" id="reCaptcha-info" value='${recaptchaPublicKey}'/>
 
+<script type="text/template" id="articleRelatedContentSectionTemplate">
+  <h3><%= section.title %></h3>
+  <ul>
+    <% _.each(items, function(item) { %>
+    <li>
+      <b><%= item.publication %></b>:
+      "<a href="<%= item.referral %>"><%= item.title %></a>"
+      &nbsp;&nbsp;
+      <%= moment(item.published_on).format("DD MMM YYYY") %>
+    </li>
+    <% }); %>
+  </ul>
+</script>
+
 <div id="media_coverage">
   <h2>Media Coverage of this Article <#--a href="" class="ir" title="More information">info</a--></h2>
-  <div id="media_coverage_addition">Found additional news media or blog coverage for the article? <a id="media-coverage-form-link">Please let us know.</a></div>
+  <div id="media_coverage_addition">Found additional news media or blog coverage for the article? <a href="#"
+                                                                                                     data-reveal-id="media-coverage-modal">Please
+    let us know.</a></div>
 
   <div id="media-coverage-data"></div>
 
-  <div id="media-coverage-modal" style="display: none;">
+  <div id="media-coverage-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h2>Submit a link to media coverage of this article</h2>
+    <a class="close-reveal-modal" aria-label="Close"></a>
 
     <div id="media-coverage-form" class="cf">
-      <form onsubmit="return false;" data-doi="${article.doi}" class="form standard">
+      <form data-doi="${article.doi}" class="form standard">
         <div id="mcform-error"></div>
         <ul>
           <li class="small cf">
@@ -42,7 +60,7 @@
           </li>
           <li>
 
-            <span class="button primary">submit</span>
+            <button type="submit" class="button primary">submit</button>
             <span class="button cancel">cancel</span>
 
           </li>

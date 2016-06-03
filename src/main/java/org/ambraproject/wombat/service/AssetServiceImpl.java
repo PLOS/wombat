@@ -18,7 +18,7 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
 import org.mozilla.javascript.EvaluatorException;
@@ -92,7 +92,7 @@ public class AssetServiceImpl implements AssetService {
     }
 
     private String generateCacheKey() {
-      String filenameDigest = CacheParams.createKeyHash(filenames);
+      String filenameDigest = CacheKey.createKeyHash(filenames);
 
       return String.format("%sFile:%s:%s", assetType.name().toLowerCase(), site, filenameDigest);
     }
@@ -293,7 +293,7 @@ public class AssetServiceImpl implements AssetService {
     }
     byte[] contents = baos.toByteArray();
 
-    String contentHash = CacheParams.createContentHash(contents);
+    String contentHash = CacheKey.createContentHash(contents);
     CompiledDigest digest = new CompiledDigest(AssetUrls.COMPILED_NAME_PREFIX
         + contentHash + assetType.getExtension());
     File file = digest.getFile();

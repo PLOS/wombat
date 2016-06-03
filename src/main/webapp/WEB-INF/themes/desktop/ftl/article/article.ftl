@@ -6,7 +6,6 @@
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
 <#assign title = article.title, articleDoi = article.doi />
-<#assign depth = 0 />
 <#assign tabPage="Article"/>
 
 <#assign adPage="Article"/>
@@ -14,8 +13,6 @@
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <#include "../common/article/articleType.ftl" />
-
-<#include "analyticsArticleJS.ftl" />
 
 <body class="article ${journalStyle}">
 

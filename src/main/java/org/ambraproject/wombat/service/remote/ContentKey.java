@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Preconditions;
-import org.ambraproject.wombat.util.CacheParams;
+import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 
 import java.util.Objects;
@@ -31,7 +31,7 @@ public abstract class ContentKey {
   /**
    * @return a cache key that is reliably unique among all {@link ContentKey} instances
    */
-  public abstract String asCacheKey();
+  public abstract CacheKey asCacheKey(String prefix);
 
   @Override
   public boolean equals(Object o) {
@@ -82,9 +82,9 @@ public abstract class ContentKey {
     }
 
     @Override
-    public String asCacheKey() {
+    public CacheKey asCacheKey(String prefix) {
       String versionString = version.isPresent() ? Integer.toString(version.getAsInt()) : String.valueOf((Object) null);
-      return CacheParams.createKeyHash(key, versionString);
+      return CacheKey.create(prefix, key, versionString);
     }
 
     @Override
@@ -130,8 +130,8 @@ public abstract class ContentKey {
     }
 
     @Override
-    public String asCacheKey() {
-      return CacheParams.createKeyHash(key, uuid.toString());
+    public CacheKey asCacheKey(String prefix) {
+      return CacheKey.create(prefix, key, uuid.toString());
     }
 
     @Override

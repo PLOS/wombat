@@ -3,7 +3,6 @@
 			lang="en" xml:lang="en"
 			itemscope itemtype="http://schema.org/Article"
 			class="no-js">
-<#assign depth = 0 />
 <#assign title = '' />
 <#assign adPage="Homepage"/>
 <#include "../common/head.ftl" />

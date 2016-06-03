@@ -1,32 +1,18 @@
-<#include "../../common/htmlTag.ftl" />
+<#include "../../baseTemplates/articleSection.ftl" />
+<#assign bodyId = 'page-comments' />
+<#assign mainId = "comment-content" />
+<#assign mainClass = "content" />
 
-<#assign title = "" />
-<#include "../../common/head.ftl" />
+<@page_header />
+<h3 class="comments-header">Reader Comments (${article.commentCount.root})</h3>
 
-<body id="page-comments">
-<div id="container-main">
-<#include "../../common/bodyAnalytics.ftl" />
+<#-- TODO: implement when we support logged-in functionality.
+<p class="post-comment"><a href="FIXME">Post a comment</a> on this article.</p>
+-->
 
-<#include "../backToArticle.ftl" />
-
-  <div id="comment-content" class="content">
-    <h3 class="comments-header">Reader Comments (${article.commentCount.root})</h3>
-
-  <#-- TODO: implement when we support logged-in functionality.
-  <p class="post-comment"><a href="FIXME">Post a comment</a> on this article.</p>
-  -->
-
-  <#if userApiError??>
-    <#include "userApiErrorMessage.ftl" />
-  <#else>
-    <#include "commentsBody.ftl" />
-  </#if>
-  </div><#--end content-->
-
-<#include "../../common/footer/footer.ftl" />
-
-</div><#--end container main-->
-
-<#include "../../common/bodyJs.ftl" />
-</body>
-</html>
+<#if userApiError??>
+  <#include "userApiErrorMessage.ftl" />
+<#else>
+  <#include "commentsBody.ftl" />
+</#if>
+<@page_footer />

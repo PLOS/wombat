@@ -18,6 +18,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -29,15 +30,15 @@ import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
+import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.service.AlertService;
-import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.slf4j.Logger;
@@ -50,14 +51,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -93,12 +95,14 @@ public class SearchController extends WombatController {
   private ArticleFeedView articleFeedView;
 
   @Autowired
-  private UserApi userApi;
+  private Gson gson;
 
   @Autowired
   private AlertService alertService;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
+  private final String CANNOT_PARSE_QUERY_ERROR = "cannotParseQueryError";
+  private final String UNKNOWN_QUERY_ERROR = "unknownQueryError";
 
   /**
    * Class that encapsulates the parameters that are shared across many different search types. For example, a subject
@@ -188,11 +192,11 @@ public class SearchController extends WombatController {
 
     private int resultsPerPage;
 
-    private String startDate;
+    private LocalDate startDate;
 
-    private String endDate;
+    private LocalDate endDate;
 
-    private final String DEFAULT_START_DATE = "2003-01-01";
+    private static final LocalDate DEFAULT_START_DATE = LocalDate.parse("2003-01-01");
 
     // doesn't include journal and date filter param names
     static final Set<String> FILTER_PARAMETER_NAMES = Stream.of(SingletonSearchFilterType.values()).map
@@ -229,21 +233,29 @@ public class SearchController extends WombatController {
         sortOrder = SolrSearchApiImpl.SolrSortOrder.valueOf(sortOrderParam);
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
-          getSingleParam(params, "filterStartDate", null), getSingleParam(params, "filterEndDate", null));
-      journalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
-          ? new ArrayList<String>() : params.get("filterJournals");
+          getDateParam(params, "filterStartDate"), getDateParam(params, "filterEndDate"));
+      List<String> allJournalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
+          ? new ArrayList<>() : params.get("filterJournals");
 
       filterJournalNames = new HashSet<>();
-      for (String journalKey : journalKeys) {
-        filterJournalNames.add(siteSet.getJournalNameFromKey(journalKey));
+      // will have only valid journal keys
+      journalKeys = new ArrayList<>();
+      for (String journalKey : allJournalKeys) {
+        try {
+          String journalName = siteSet.getJournalNameFromKey(journalKey);
+          journalKeys.add(journalKey);
+          filterJournalNames.add(journalName);
+        } catch (UnmatchedSiteException umse) {
+          log.info("Search on an invalid journal key: %s".format(journalKey));
+        }
       }
-      startDate = getSingleParam(params, "filterStartDate", null);
-      endDate = getSingleParam(params, "filterEndDate", null);
+      startDate = getDateParam(params, "filterStartDate");
+      endDate = getDateParam(params, "filterEndDate");
 
       if (startDate == null && endDate != null) {
         startDate = DEFAULT_START_DATE;
       } else if (startDate != null && endDate == null) {
-        endDate = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        endDate = LocalDate.now();
       }
 
       subjectList = parseSubjects(getSingleParam(params, "subject", null), params.get("filterSubjects"));
@@ -273,8 +285,8 @@ public class SearchController extends WombatController {
 
       // TODO: split or share model assignments between mobile and desktop.
       model.addAttribute("filterJournals", journalKeys);
-      model.addAttribute("filterStartDate", startDate);
-      model.addAttribute("filterEndDate", endDate);
+      model.addAttribute("filterStartDate", startDate == null ? null : startDate.toString());
+      model.addAttribute("filterEndDate", endDate == null ? null : endDate.toString());
       model.addAttribute("filterSubjects", subjectList);
       model.addAttribute("filterArticleTypes", articleTypes);
       model.addAttribute("filterAuthors", authors);
@@ -318,6 +330,17 @@ public class SearchController extends WombatController {
           : values.get(0) == null || values.get(0).isEmpty() ? defaultValue : values.get(0);
     }
 
+    private LocalDate getDateParam(Map<String, List<String>> params, String key) {
+      String dateString = getSingleParam(params, key, null);
+      if (Strings.isNullOrEmpty(dateString)) return null;
+      try {
+        return LocalDate.parse(dateString);
+      } catch (DateTimeParseException e) {
+        log.info("Invalid date for {}: {}", key, dateString);
+        return null;
+      }
+    }
+
     /**
      * Determines which publication dates to filter by in the search. If no dates are input, a default date range of All
      * Time will be used. Mobile search only provides the enumerated dateRangeParam field, while desktop search provides
@@ -328,13 +351,13 @@ public class SearchController extends WombatController {
      * @param endDate        desktop end date value
      * @return A generic @SearchCriterion object used by Solr
      */
-    private SolrSearchApi.SearchCriterion parseDateRange(String dateRangeParam, String startDate, String endDate) {
+    private SolrSearchApi.SearchCriterion parseDateRange(String dateRangeParam, LocalDate startDate, LocalDate endDate) {
       SolrSearchApi.SearchCriterion dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME;
       if (!Strings.isNullOrEmpty(dateRangeParam)) {
         dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.valueOf(dateRangeParam);
-      } else if (!Strings.isNullOrEmpty(startDate) && !Strings.isNullOrEmpty(endDate)) {
-        dateRange = new SolrSearchApiImpl.SolrExplicitDateRange("explicit date range", startDate,
-            endDate);
+      } else if (startDate != null && endDate != null) {
+        dateRange = new SolrSearchApiImpl.SolrExplicitDateRange("explicit date range",
+            startDate.toString(), endDate.toString());
       }
       return dateRange;
     }
@@ -365,8 +388,8 @@ public class SearchController extends WombatController {
           .setRows(resultsPerPage)
           .setSortOrder(sortOrder)
           .setDateRange(dateRange)
-          .setStartDate(startDate)
-          .setEndDate(endDate);
+          .setStartDate(startDate == null ? null : startDate.toString())
+          .setEndDate(endDate == null ? null : endDate.toString());
     }
 
     private static final ImmutableMap<String, Function<CommonParams, List<String>>> FILTER_KEYS_TO_FIELDS =
@@ -418,14 +441,18 @@ public class SearchController extends WombatController {
           queryParamMap.put(filterName, filterValueList);
         }
         String displayName;
-        if (filterName.equals("filterJournals")) {
-          displayName = siteSet.getJournalNameFromKey(filterValue);
-        } else {
-          displayName = filterValue;
+        try {
+          if (filterName.equals("filterJournals")) {
+            displayName = siteSet.getJournalNameFromKey(filterValue);
+          } else {
+            displayName = filterValue;
+          }
+          SearchFilterItem filterItem = new SearchFilterItem(displayName, 0,
+              filterName, filterValue, queryParamMap);
+          activeFilterItems.add(filterItem);
+        } catch (UnmatchedSiteException umse) {
+          log.info("Search on an invalid journal filter: %s".format(filterValue));
         }
-        SearchFilterItem filterItem = new SearchFilterItem(displayName, 0,
-            filterName, filterValue, queryParamMap);
-        activeFilterItems.add(filterItem);
       }
     }
     /**
@@ -580,11 +607,6 @@ public class SearchController extends WombatController {
     return mav;
   }
 
-  // Unless the "!volume" part is included in the params in the next few methods, you will
-  // get an "ambiguous handler method" exception from spring.  I think this is because all
-  // of these methods (including volumeSearch) use a MultiValueMap for @RequestParam, instead
-  // of individually listing the params.
-
   /**
    * Performs a "simple" or "advanced" search. The query parameter is read, and if advanced search
    * terms are found, an advanced search is performed. Otherwise, a simple search is performed. The
@@ -601,6 +623,34 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "simpleSearch", value = "/search", params = {"q"})
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
+    if (!performValidSearch(request, model, site, params)) {
+      return newAdvancedSearch(model, site);
+    }
+    return site.getKey() + "/ftl/search/searchResults";
+  }
+
+  /**
+   * AJAX endpoint to perform a dynamic search, returning search results as JSON. Identical to the
+   * {@code search} method above, the query parameter is read, and if advanced search
+   * terms are found, an advanced search is performed. Otherwise, a simple search is performed.
+   *
+   * @param request HttpServletRequest
+   * @param model   model that will be passed to the template
+   * @param site    site the request originates from
+   * @param params  all URL parameters
+   * @return String indicating template location
+   * @throws IOException
+   */
+  @RequestMapping(name = "dynamicSearch", value = "/dynamicSearch", params = {"q"})
+  @ResponseBody
+  public Object dynamicSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
+    performValidSearch(request, model, site, params);
+    return gson.toJson(model);
+  }
+
+  private boolean performValidSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+      @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
@@ -613,7 +663,9 @@ public class SearchController extends WombatController {
     try {
       searchResults = solrSearchApi.search(queryObj);
     } catch (ServiceRequestException sre) {
-      return handleFailedSolrRequest(model, site, queryString, sre);
+      model.addAttribute(isInvalidSolrRequest(queryString, sre)
+          ? CANNOT_PARSE_QUERY_ERROR : UNKNOWN_QUERY_ERROR, true);
+      return false; //not a valid search - report errors
     }
 
     model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
@@ -623,7 +675,8 @@ public class SearchController extends WombatController {
     if ((Double) searchResults.get("numFound") == 0.0) {
        activeFilterItems = commonParams.setActiveFilterParams(model, request);
     } else {
-      Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj, rebuildUrlParameters(queryObj));
+      Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj,
+          rebuildUrlParameters(queryObj));
       filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
       activeFilterItems = new LinkedHashSet<>();
@@ -634,27 +687,24 @@ public class SearchController extends WombatController {
     model.addAttribute("activeFilterItems", activeFilterItems);
 
     model.addAttribute("alertQuery", alertService.convertParamsToJson(params));
-
-    return site.getKey() + "/ftl/search/searchResults";
+    return true; //valid search - proceed to return results
   }
 
-  private String handleFailedSolrRequest(Model model, Site site, String queryString,
-      ServiceRequestException sre) throws IOException {
+  private boolean isInvalidSolrRequest(String queryString, ServiceRequestException sre)
+      throws IOException {
     if (sre.getResponseBody().contains("SyntaxError: Cannot parse")) {
       log.info("User attempted invalid search: " + queryString + "\n Exception: " + sre.getMessage());
-       model.addAttribute("cannotParseQueryError", true);
+       return true;
     } else {
       log.error("Unknown error returned from Solr: " + sre.getMessage());
-      model.addAttribute("unknownQueryError", true);
+      return false;
     }
-    return newAdvancedSearch(model, site);
   }
-
 
   /**
    * This is a catch for advanced searches originating from Old Ambra. It transforms the
    * "unformattedQuery" param into "q" which is used by Wombat's new search.
-   * todo: remove this method once Old Ambra advanced search is destroyed
+   * todo: remove this method and direct all advancedSearch requests to the simple search method
    */
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!q"})
   public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,

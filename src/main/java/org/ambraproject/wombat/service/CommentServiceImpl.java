@@ -67,7 +67,8 @@ public class CommentServiceImpl implements CommentService {
   private Individualprofile requestProfile(String userId) {
     IndividualComposite individual;
     try {
-      individual = userApi.requestObject("individuals/" + userId, IndividualComposite.class);
+      individual = userApi.requestObject(ApiAddress.builder("individuals").addToken(userId).build(),
+          IndividualComposite.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -106,7 +107,7 @@ public class CommentServiceImpl implements CommentService {
   public Map<String, Object> getComment(String commentId) throws IOException {
     Map<String, Object> comment;
     try {
-      comment = articleApi.requestObject(String.format("comments/" + commentId), Map.class);
+      comment = articleApi.requestObject(ApiAddress.builder("comments").addToken(commentId).build(), Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new CommentNotFoundException(commentId, enfe);
     }
@@ -118,7 +119,9 @@ public class CommentServiceImpl implements CommentService {
 
   @Override
   public List<Map<String, Object>> getArticleComments(String articleDoi) throws IOException {
-    List<Map<String, Object>> comments = articleApi.requestObject(String.format("articles/%s?comments", articleDoi), List.class);
+    List<Map<String, Object>> comments = articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(articleDoi).addParameter("comments").build(),
+        List.class);
     comments.forEach(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields));
     addCreatorData(comments);
     return comments;
@@ -127,7 +130,9 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public List<Map<String, Object>> getRecentJournalComments(String journalKey, int count) throws IOException {
     Preconditions.checkArgument(count >= 0);
-    String requestAddress = String.format("journals/%s?comments&limit=%d", journalKey, count);
+    ApiAddress requestAddress = ApiAddress.builder("journals").addToken(journalKey)
+        .addParameter("comments").addParameter("limit", count)
+        .build();
     List<Map<String, Object>> comments = articleApi.requestObject(requestAddress, List.class);
     comments.forEach(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields));
     addCreatorData(comments);

@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -21,13 +22,9 @@ public interface RestfulJsonApi {
    * @throws NullPointerException                                    if the address is null
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
-  public abstract InputStream requestStream(String address) throws IOException;
+  public abstract InputStream requestStream(ApiAddress address) throws IOException;
 
-  public abstract InputStream requestStream(HttpUriRequest target) throws IOException;
-
-  public abstract Reader requestReader(String address) throws IOException;
-
-  public abstract Reader requestReader(HttpUriRequest target) throws IOException;
+  public abstract Reader requestReader(ApiAddress address) throws IOException;
 
   /**
    * Send a REST request and serialize the response to an object. The serialization is controlled by the {@link
@@ -41,9 +38,9 @@ public interface RestfulJsonApi {
    * @throws NullPointerException                                    if either argument is null
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
-  public abstract <T> T requestObject(String address, Type responseType) throws IOException;
+  public abstract <T> T requestObject(ApiAddress address, Type responseType) throws IOException;
 
-  public abstract <T> T requestObject(String address, Class<T> responseClass) throws IOException;
+  public abstract <T> T requestObject(ApiAddress address, Class<T> responseClass) throws IOException;
 
   /**
    * Serialize an object to JSON and POST the JSON to a service path.
@@ -52,11 +49,11 @@ public interface RestfulJsonApi {
    * @param object  the object to serialize to product JSON
    * @throws IOException
    */
-  public abstract void postObject(String address, Object object) throws IOException;
+  public abstract void postObject(ApiAddress address, Object object) throws IOException;
 
-  public abstract void putObject(String address, Object object) throws IOException;
+  public abstract void putObject(ApiAddress address, Object object) throws IOException;
 
-  public abstract void deleteObject(String address) throws IOException;
+  public abstract void deleteObject(ApiAddress address) throws IOException;
 
   /**
    * Get a stream either through a REST request or from the cache. If there is a cached value, and the REST service does
@@ -65,16 +62,16 @@ public interface RestfulJsonApi {
    * callback.
    *
    * @param cacheKey the cache parameters object containing the cache key at which to retrieve and store the value
-   * @param address     the address to query the SOA service if the value is not cached
-   * @param callback    how to deserialize a new value from the stream, to return and insert into the cache
-   * @param <T>         the type of value to deserialize and return
+   * @param address  the address to query the SOA service if the value is not cached
+   * @param callback how to deserialize a new value from the stream, to return and insert into the cache
+   * @param <T>      the type of value to deserialize and return
    * @return the value from the service or cache
    * @throws IOException
    */
-  public abstract <T> T requestCachedStream(CacheKey cacheKey, String address,
+  public abstract <T> T requestCachedStream(CacheKey cacheKey, ApiAddress address,
                                             CacheDeserializer<InputStream, T> callback) throws IOException;
 
-  public abstract <T> T requestCachedReader(CacheKey cacheKey, String address,
+  public abstract <T> T requestCachedReader(CacheKey cacheKey, ApiAddress address,
                                             CacheDeserializer<Reader, T> callback) throws IOException;
 
   /**
@@ -82,16 +79,16 @@ public interface RestfulJsonApi {
    * service does not indicate that the value has been modified since the value was inserted into the cache, return that
    * value. Else, query the service for JSON and deserialize it to an object as usual.
    *
-   * @param cacheKey  the cache parameters object containing the cache key at which to retrieve and store the value
+   * @param cacheKey     the cache parameters object containing the cache key at which to retrieve and store the value
    * @param address      the address to query the SOA service if the value is not cached
    * @param responseType the type of object to deserialize
    * @param <T>          the type of {@code responseClass}
    * @return the deserialized object
    * @throws IOException
    */
-  public abstract <T> T requestCachedObject(CacheKey cacheKey, String address, Type responseType) throws IOException;
+  public abstract <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Type responseType) throws IOException;
 
-  public abstract <T> T requestCachedObject(CacheKey cacheKey, String address, Class<T> responseClass) throws IOException;
+  public abstract <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Class<T> responseClass) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 

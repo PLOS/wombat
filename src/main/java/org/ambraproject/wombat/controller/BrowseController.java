@@ -15,6 +15,7 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -59,8 +60,9 @@ public class BrowseController extends WombatController {
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
-    String journalMetaUrl = "journals/" + site.getJournalKey();
-    Map<String, Map<String, Object>> journalMetadata = articleApi.requestObject(journalMetaUrl, Map.class);
+    Map<String, Map<String, Object>> journalMetadata = articleApi.requestObject(
+        ApiAddress.builder("journals").addToken(site.getJournalKey()).build(),
+        Map.class);
     String issueDesc = (String) journalMetadata.getOrDefault("currentIssue",
         Collections.emptyMap()).getOrDefault("description", "");
     model.addAttribute("currentIssueDescription",
@@ -69,15 +71,20 @@ public class BrowseController extends WombatController {
     return site.getKey() + "/ftl/browse/volumes";
   }
 
+  private static final ApiAddress ARTICLE_TYPES_ADDRESS = ApiAddress.builder("articleTypes").build();
+
   @RequestMapping(name = "browseIssues", value = "/issue")
   public String browseIssue(Model model, @SiteParam Site site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
 
-    String journalMetaUrl = "journals/" + site.getJournalKey();
-    Map<String, Object> journalMetadata = articleApi.requestObject(journalMetaUrl, Map.class);
+    Map<String, Object> journalMetadata = articleApi.requestObject(
+        ApiAddress.builder("journals").addToken(site.getJournalKey()).build(),
+        Map.class);
     model.addAttribute("journal", journalMetadata);
 
-    String issueMetaUrl = issueId == null ? "journals/" + site.getJournalKey() + "?currentIssue" : "issues/" + issueId;
+    ApiAddress issueMetaUrl = (issueId == null)
+        ? ApiAddress.builder("journals").addToken(site.getJournalKey()).addParameter("currentIssue").build()
+        : ApiAddress.builder("issues").addToken(issueId).build();
     Map<String, Object> issueMeta;
     try {
       issueMeta = articleApi.requestObject(issueMetaUrl, Map.class);
@@ -92,7 +99,7 @@ public class BrowseController extends WombatController {
     model.addAttribute("issueDescription", articleTransformService.transformImageDescription(new RenderContext(site),
         xmlService.removeElementFromFragment(issueDesc, "title")));
 
-    List<Map<String, Object>> articleGroups = articleApi.requestObject("articleTypes", List.class);
+    List<Map<String, Object>> articleGroups = articleApi.requestObject(ARTICLE_TYPES_ADDRESS, List.class);
 
     articleGroups.stream().forEach(ag -> ag.put("articles", new ArrayList<Map<?, ?>>()));
 

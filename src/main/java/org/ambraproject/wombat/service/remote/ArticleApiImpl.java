@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -28,7 +29,7 @@ public class ArticleApiImpl extends AbstractRestfulJsonApi implements ArticleApi
   @Override
   public CloseableHttpResponse requestAsset(String assetId, Collection<? extends Header> headers)
       throws IOException {
-    HttpGet get = buildGet("assetfiles/" + assetId);
+    HttpGet get = buildGet(ApiAddress.builder("assetfiles").addToken(assetId).build());
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return cachedRemoteStreamer.getResponse(get);
   }

@@ -20,6 +20,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -281,7 +282,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       Map<String, String> mutable = new HashMap<>();
       for (Site site : siteSet.getSites()) {
         Map<String, String> rhinoResult = (Map<String, String>) articleApi.requestObject(
-            "journals/" + site.getJournalKey(), Map.class);
+            ApiAddress.builder("journals").addToken(site.getJournalKey()).build(), Map.class);
         mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
       }
       eIssnToJournalKey = ImmutableMap.copyOf(mutable);

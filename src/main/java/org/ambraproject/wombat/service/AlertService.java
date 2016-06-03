@@ -65,8 +65,12 @@ public class AlertService {
   private static final Type LIST_OF_ALERTS = new TypeToken<List<Alert>>() {
   }.getType();
 
+  private static ApiAddress.Builder buildAlertAddress(String userId) {
+    return ApiAddress.builder("individuals").addToken(userId).addToken("alerts");
+  }
+
   private List<Alert> fetchAlerts(String userId) throws IOException {
-    return userApi.requestObject(String.format("individuals/%s/alerts", Objects.requireNonNull(userId)), LIST_OF_ALERTS);
+    return userApi.requestObject(buildAlertAddress(userId).build(), LIST_OF_ALERTS);
   }
 
   /**
@@ -88,11 +92,12 @@ public class AlertService {
         .map(a -> addSubjectToAlert(a, subjectName))
         .orElseGet(() -> createAlertForSubject(journalKey, subjectName));
 
+    ApiAddress.Builder builder = buildAlertAddress(userId);
     if (alert.getId() != null) {
       String alertId = alert.getId().toString();
-      userApi.putObject(String.format("individuals/%s/alerts/%s", userId, alertId), alert);
+      userApi.putObject(builder.addToken(alertId).build(), alert);
     } else {
-      userApi.postObject(String.format("individuals/%s/alerts", userId), alert);
+      userApi.postObject(builder.build(), alert);
     }
   }
 
@@ -122,10 +127,11 @@ public class AlertService {
     }
 
     String alertId = alert.getId().toString();
+    ApiAddress address = buildAlertAddress(userId).addToken(alertId).build();
     if (result == RemoveResult.EMPTY_AFTER_REMOVE) {
-      userApi.deleteObject(String.format("individuals/%s/alerts/%s", userId, alertId));
+      userApi.deleteObject(address);
     } else {
-      userApi.putObject(String.format("individuals/%s/alerts/%s", userId, alertId), alert);
+      userApi.putObject(address, alert);
     }
   }
 
@@ -133,7 +139,8 @@ public class AlertService {
                              String frequency) throws IOException {
     String userId = userApi.getUserIdFromAuthId(authId);
     Alert alert = createAlertForSearch(name, query, frequency);
-    userApi.postObject(String.format("individuals/%s/alerts", userId), alert);
+    userApi.postObject(ApiAddress.builder("individuals").addToken(userId).addToken("alerts").build(),
+        alert);
   }
 
   /**

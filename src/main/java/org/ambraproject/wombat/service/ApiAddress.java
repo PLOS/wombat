@@ -6,8 +6,10 @@ import org.apache.commons.io.Charsets;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,8 +21,18 @@ public class ApiAddress {
   private final ImmutableList<BasicNameValuePair> parameters;
 
   private ApiAddress(Builder builder) {
-    this.path = builder.pathTokens.stream().collect(Collectors.joining("/"));
+    this.path = builder.pathTokens.stream()
+        .map(ApiAddress::encodePath)
+        .collect(Collectors.joining("/"));
     this.parameters = ImmutableList.copyOf(builder.parameters);
+  }
+
+  private static String encodePath(String path) {
+    try {
+      return URLEncoder.encode(path, Charsets.UTF_8.toString());
+    } catch (UnsupportedEncodingException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   public URI buildUri(URL root) {

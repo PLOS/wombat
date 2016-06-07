@@ -263,8 +263,10 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     for (Map doc : docs) {
       String doi = (String) doc.get("id");
       String eIssn = (String) doc.get("eissn");
-      String link = Link.toForeignSite(site, eIssnToJournalKey.get(eIssn), siteSet).toPath("/article?id=" + doi).get(request);
+      String foreignJournalKey = eIssnToJournalKey.get(eIssn);
+      String link = Link.toForeignSite(site, foreignJournalKey, siteSet).toPath("/article?id=" + doi).get(request);
       doc.put("link", link);
+      doc.put("journalKey", foreignJournalKey);
     }
     return searchResults;
   }

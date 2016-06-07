@@ -245,7 +245,7 @@
                       </#if>
                     </div>
                 </#if>
-                <@searchResultsAlm doc.id/>
+                <@searchResultsAlm doc.id doc.journalKey/>
               </dd>
           </#list>
         </dl>

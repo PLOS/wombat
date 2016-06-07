@@ -6,14 +6,13 @@
       class="no-js">
 
   <body>
-    <#include "../macro/doiResolverLink.ftl" />
     <h1>${month} ${year}</h1>
     <#if searchResult??>
       <#assign docs = searchResult["docs"] />
       <ol>
         <#list docs as doc>
           <#assign doi = doc["id"] />
-          <li style="b"><a href="${doiResolverLink(doi)}"> ${doi} </a></li>
+          <li style="b"><a href="<@siteLink handlerName="article" queryParameters={"id": doi} />"> ${doi} </a></li>
         </#list>
       </ol>
     </#if>

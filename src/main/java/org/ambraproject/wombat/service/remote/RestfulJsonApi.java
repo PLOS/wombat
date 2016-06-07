@@ -62,9 +62,9 @@ public interface RestfulJsonApi {
    * callback.
    *
    * @param cacheKey the cache parameters object containing the cache key at which to retrieve and store the value
-   * @param address     the address to query the SOA service if the value is not cached
-   * @param callback    how to deserialize a new value from the stream, to return and insert into the cache
-   * @param <T>         the type of value to deserialize and return
+   * @param address  the address to query the SOA service if the value is not cached
+   * @param callback how to deserialize a new value from the stream, to return and insert into the cache
+   * @param <T>      the type of value to deserialize and return
    * @return the value from the service or cache
    * @throws IOException
    */
@@ -79,7 +79,7 @@ public interface RestfulJsonApi {
    * service does not indicate that the value has been modified since the value was inserted into the cache, return that
    * value. Else, query the service for JSON and deserialize it to an object as usual.
    *
-   * @param cacheKey  the cache parameters object containing the cache key at which to retrieve and store the value
+   * @param cacheKey     the cache parameters object containing the cache key at which to retrieve and store the value
    * @param address      the address to query the SOA service if the value is not cached
    * @param responseType the type of object to deserialize
    * @param <T>          the type of {@code responseClass}

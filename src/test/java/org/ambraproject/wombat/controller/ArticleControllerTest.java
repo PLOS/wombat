@@ -8,10 +8,12 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.TestArticleServiceImpl;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.mockito.ArgumentMatcher;
 import org.mockito.Matchers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.argThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -89,7 +92,15 @@ public class ArticleControllerTest extends ControllerTest {
     @Bean
     public ArticleApi articleApi() throws IOException {
       ArticleApi articleApi = mock(ArticleApi.class);
-//      when(articleApi.requestObject(Matchers.endsWith("authors"), any(Class.class))).thenReturn(ImmutableList.of());
+      when(articleApi.requestObject(
+          argThat(new ArgumentMatcher<ApiAddress>() {
+            @Override
+            public boolean matches(Object o) {
+              return (o instanceof ApiAddress) && ((ApiAddress) o).getAddress().endsWith("authors");
+            }
+          }),
+          any(Class.class))
+      ).thenReturn(ImmutableList.of());
       return articleApi;
     }
 

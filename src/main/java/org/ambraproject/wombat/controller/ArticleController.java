@@ -610,34 +610,32 @@ public class ArticleController extends WombatController {
       return site + "/ftl/article/citationDownload";
   }
 
-  @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris")
+  @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris", produces = "application/x-research-info-systems;charset=UTF-8")
   public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "ris", "application/x-research-info-systems",
+    return serveCitationDownload(site, articleId, "ris",
         citationDownloadService::buildRisCitation);
   }
 
-  @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex")
+  @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex", produces = "application/x-bibtex;charset=UTF-8")
   public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "bib", "application/x-bibtex",
+    return serveCitationDownload(site, articleId, "bib",
         citationDownloadService::buildBibtexCitation);
   }
 
-  private ResponseEntity<String> serveCitationDownload(Site site, String articleId,
-                                                       String fileExtension, String contentType,
-                                                       Function<Map<String, ?>, String> serviceFunction)
+  private ResponseEntity<String> serveCitationDownload(Site site, String articleId, String fileExtension,
+      Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
     String citationBody = serviceFunction.apply((Map<String, ?>) articleMetadata);
     String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
-            URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
-            fileExtension);
+        URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
+        fileExtension);
 
     HttpHeaders headers = new HttpHeaders();
-    headers.add(HttpHeaders.CONTENT_TYPE, contentType);
     headers.add(HttpHeaders.CONTENT_DISPOSITION, contentDispositionValue);
     return new ResponseEntity<>(citationBody, headers, HttpStatus.OK);
   }

@@ -1,187 +1,75 @@
+var TwitterModule;
+
 (function ($) {
+  TwitterModule = Class.extend({
+    $listEl: $('#tweetList'),
+    $containerEl: $('.twitter-container'),
+    init: function () {
+      this.loadData();
+    },
 
-  /* Requires WombatConfig in configJs */
-  var IMG_PATH = WombatConfig.imgPath;
-  $.fn.twitter = function (doi) {
-    var tweet, tweetText, totalTweets, initData, minDisplayTweets, maxDisplayTweets, dataSort, datePrefix, dataPrefix, tweetDate, tweetDateOther, tweetInfo, tweetActionLink, tweetAvatar, tweetPlaceholder, tweetId, replyLink, retweetLink, favoriteLink, tweetActions, tweetUserName, tweetHandle, wholeTweet, listBody, tweetAvatarParse;
+    loadData: function () {
+      var that = this;
 
-    function validateDOI(doi) {
-      if (doi == null) {
-        throw new Error('DOI is null.');
-      }
+      var query = new AlmQuery();
 
-      doi = encodeURI(doi);
-
-      return doi.replace(new RegExp('/', 'g'), '%2F').replace(new RegExp(':', 'g'), '%3A');
-    }
-
-    this.getSidebarTweets = function (doi) {
-      doi = validateDOI(doi);
-      var config, requestUrl, errorText;
-
-      config = ALM_CONFIG;
-      // if twitter stream stops working, check the api for parameter changes: http://alm.plos.org/docs/api
-      requestUrl = config.host + '?api_key=' + config.apiKey + '&ids=' + doi + '&info=detail&source_id=twitter';
-
-      errorText = '<li>Our system is having a bad day. We are working on it. Please check back later.</li>';
-
-      $.ajax({
-        url:         requestUrl,
-        dataType:    'jsonp',
-        contentType: "text/json; charset=utf-8",
-        type:        "GET"
-      }).done(function (data) {
-
-        initData = data.data[0];
-
-        
-        if (initData === undefined) {
-        // no data, do nothing further
-        } else if (initData.sources !== undefined) {
-          totalTweets = initData.sources[0].metrics.total;
-
-          if (totalTweets === 0) {
-            //no tweets to display, do nothing further
-          } else {
-            minDisplayTweets = 2;
-            maxDisplayTweets = 5;
-            dataSort = initData.sources[0].events;
-
-            //parse the date to be able to sort by date
-            this.parseTwitterDate = function (tweetdate) {
-              //running regex to grab everything after the time
-              var newdate = tweetdate.replace(/(\d{1,2}[:]\d{2}[:]\d{2}) (.*)/, '$2 $1');
-              //moving the time code to the end
-              newdate = newdate.replace(/(\+\S+) (.*)/, '$2 $1');
-
-              return new Date(Date.parse(newdate));
+      query.getArticleTweets(ArticleData.doi)
+          .then(function (articleData) {
+            if (articleData[0].sources[0] && articleData[0].sources[0].events) {
+              return articleData[0].sources[0].events;
             }
-            //sort by date from Ambra
-            this.sort_tweets_by_date = function (a, b) {
-              var aDt = isNaN(a.event.created_at) ? this.parseTwitterDate(a.event.created_at) : a.event.created_at;
-              var bDt = isNaN(b.event.created_at) ? this.parseTwitterDate(b.event.created_at) : b.event.created_at;
-
-              return (new Date(bDt).getTime()) - (new Date(aDt).getTime());
+            else {
+              throw new ErrorFactory('NoTwitterDataError', '[TwitterModule::loadData] - No twitter data available');
             }
-            //pull the data & run the sort function
-            dataSort = dataSort.sort(jQuery.proxy(this.sort_tweets_by_date, this));
-            // only show 5, so cut the json results to 5
-            if (dataSort.length > maxDisplayTweets) {
-              dataSort = dataSort.slice(0, 5);
-            } else { }
+          })
+          .then(function (twitterData) {
+            var itemTemplate = _.template($('#twitterModuleItemTemplate').html());
+            twitterData = _.map(twitterData, function (item) {
+              item = item.event;
+              item.text = that.addTweetTextLinks(item.text);
+              item.created_at = moment(item.created_at).format('D MMM YYYY');
 
-            $.each(dataSort, function (index) {
-              dataPrefix = dataSort[index].event;
-              datePrefix = dataSort[index];
-              //run through dataPass to get all the data
-              dataPass(dataPrefix, datePrefix);
-              //show only 2 and then 5
-              if (index < minDisplayTweets) {
-                wholeTweet = '<li>' + listBody + '</li>';
-              } else {
-                wholeTweet = '<li class="more-tweets">' + listBody + '</li>';
+              var tweetAvatar = item.user_profile_image;
+              var tweetAvatarParse = tweetAvatar.slice(7, 9);
+              if (tweetAvatarParse === "a0") {
+                item.user_profile_image = "http://pbs" + tweetAvatar.slice(9);
               }
 
-              $('#tweetList').append(wholeTweet);
-              checkAvatar(listBody);
-
+              return item;
             });
+            var templateCompiled = itemTemplate({items: twitterData});
 
-            //display tweets
-            $('.twitter-container').css('display', 'block');
+            that.$listEl.html(templateCompiled);
+            that.onImageFailEventBind();
 
-            // display the more tweets if there are any.
-            if (totalTweets > minDisplayTweets) {
-              var show_link = more_tweets();
-              return show_link;
+            if (twitterData.length > 5) {
+              that.$listEl.find('li:gt(4)').hide();
+              var showMoreButton = that.$containerEl.find('.load-more');
+              var viewAllButton = that.$containerEl.find('.view-all');
+              showMoreButton.on('click', function () {
+                that.$listEl.find('li').show();
+                viewAllButton.show();
+                showMoreButton.hide();
+              });
+              showMoreButton.show();
             }
 
-          }
-        }
-      }).fail(function () {
-        $('.twitter-container').css('display', 'block');
-        $('#tweetList').append(errorText);
+            that.$containerEl.show();
+          })
+          .fail(function (error) {
+            console.log(error);
+          });
+    },
+
+    onImageFailEventBind: function () {
+      var avatarPlaceholder = WombatConfig.imgPath + 'icon.avatar.placeholder.png';
+      this.$containerEl.find('.imgLoad').on('error', function () {
+        var newImage = $(this).attr('src', avatarPlaceholder);
+        $(this).parent().html(newImage);
       });
+    },
 
-    };
-
-    function checkAvatar(listappend) {
-      var checkImg = $(listappend).find('.imgLoad');
-      $(checkImg).on('error', changeAvatar);
-    }
-
-    function changeAvatar(event) {
-      if (event) {
-        var newthing = $(this).attr('src', tweetPlaceholder);
-        return $('.imgholder').html(newthing);
-      }
-    }
-
-    function dateFiddle(tweetDate) {
-      var dateraw, dateoptions, prettydate, iedate, ugh, months, toNum;
-      if (!document.all) {
-        dateraw = new Date(tweetDate);
-        dateoptions = {day: "numeric", month: "short", year: "numeric"};
-        prettydate = dateraw.toLocaleString("en-GB", dateoptions);
-
-      } else {  //alert(tweetDate.indexOf(","));
-        iedate = tweetDate.toString();
-        ugh = iedate.split(',');
-        months = new Array();
-        months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        toNum = ugh[1];
-
-        prettydate = ugh[2] + ' ' + months[toNum] + ' ' + ugh[0];
-      }
-      return prettydate;
-    }
-
-    function dataPass(dataPrefix, datePrefix) {
-
-      tweetDateOther = dataPrefix.created_at;//dateParse(dataPrefix.created_at, false, true, "en-GB");
-      tweetDate = datePrefix.event_csl ? datePrefix.event_csl.issued['date-parts'] : dataPrefix.created_at;
-      tweetAvatar = dataPrefix.user_profile_image;
-      tweetUserName = dataPrefix.user_name;
-      tweetHandle = dataPrefix.user;
-      tweetText = linkify(dataPrefix.text);
-      tweetId = dataPrefix.id;
-
-      tweetDate = dateFiddle(tweetDate);
-      //change twitter avatar url if an old one ("a0") is stored
-      tweetAvatarParse = tweetAvatar.slice(7, 9);
-      if (tweetAvatarParse === "a0") {
-        tweetAvatar = "http://pbs" + tweetAvatar.slice(9);
-      }
-      // user photo, date of post, user names
-      tweetPlaceholder = IMG_PATH + 'icon.avatar.placeholder.png';
-      // TODO: put in placeholder conditional
-      tweetInfo = '<a href="http://twitter.com/' + tweetHandle + '"' + '>' + '<span class="imgholder"><img class="imgLoad" src="' + tweetAvatar + '"/></span>' + '<div class="tweetDate">' + tweetDate + '</div>' + '<div class="tweetUser"><strong>' + tweetUserName + ' </strong><span>@' + tweetHandle + '</span></div></a>';
-
-      //twitter reply/retweet/favorite links
-      tweetActionLink = 'https://twitter.com/intent/';
-      replyLink = tweetActionLink + 'tweet?in_reply_to' + tweetId + '&text=@' + tweetHandle;
-      retweetLink = tweetActionLink + 'retweet?tweet_id=' + tweetId;
-      favoriteLink = tweetActionLink + 'favorite?tweet_id=' + tweetId;
-
-      tweetActions = '<a class="tweet-reply" href="' + replyLink + '"><div>&nbsp;</div>Reply</a>' + '<a class="tweet-retweet" href="' + retweetLink + '"><div>&nbsp;</div>Retweet</a>' + '<a class="tweet-favorite" href="' + favoriteLink + '"><div>&nbsp;</div>Favorite</a>';
-
-      return listBody = '<div class="tweet-info">' + tweetInfo + '</div><div class="tweetText">' + tweetText + '</div>' + '<div id="tweetActions">' + tweetActions + '</div>';
-
-    }
-
-    //show 'load more' and 'view all' links if necessary
-    var more_tweets = function () {
-      $('.load-more').css('display', 'block').on('click', function () {
-        $('.more-tweets').css('display', 'block');
-        $(this).css('display', 'none');
-        if (totalTweets > maxDisplayTweets) {
-          return $('.view-all').css('display', 'block');
-        }
-      });
-    }
-
-    // linkify is from Ambra; parse twitter body to add anchor tags and such.
-    var linkify = function (tweetText) {
+    addTweetTextLinks: function (tweetText) {
       //Add an extra space so we capture urls/tags/usernames that end on the final character
       tweetText = tweetText + " ";
 
@@ -204,7 +92,9 @@
       });
 
       return newValue;
-    };
+    }
 
-  };
+  });
+
+  new TwitterModule();
 })(jQuery);

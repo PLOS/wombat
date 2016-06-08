@@ -4,7 +4,13 @@ var TwitterModule;
   TwitterModule = Class.extend({
     $listEl: $('#tweetList'),
     $containerEl: $('.twitter-container'),
+    $showMoreButtonEl: null,
+    $viewAllButtonEl: null,
+
     init: function () {
+      this.$showMoreButtonEl = this.$containerEl.find('.load-more');
+      this.$viewAllButtonEl = this.$containerEl.find('.view-all');
+
       this.loadData();
     },
 
@@ -15,7 +21,8 @@ var TwitterModule;
 
       query.getArticleTweets(ArticleData.doi)
           .then(function (articleData) {
-            if (articleData[0].sources[0] && articleData[0].sources[0].events) {
+            // Check if we have the twitter source and also if it has events
+            if (articleData[0].sources[0] && articleData[0].sources[0].events.length) {
               return articleData[0].sources[0].events;
             }
             else {
@@ -24,11 +31,14 @@ var TwitterModule;
           })
           .then(function (twitterData) {
             var itemTemplate = _.template($('#twitterModuleItemTemplate').html());
+
+            // Map twitter data to be in the template pattern
             twitterData = _.map(twitterData, function (item) {
               item = item.event;
               item.text = that.addTweetTextLinks(item.text);
               item.created_at = moment(item.created_at).format('D MMM YYYY');
 
+              // Change the profile pic domain if is an old one
               var tweetAvatar = item.user_profile_image;
               var tweetAvatarParse = tweetAvatar.slice(7, 9);
               if (tweetAvatarParse === "a0") {
@@ -40,31 +50,39 @@ var TwitterModule;
             var templateCompiled = itemTemplate({items: twitterData});
 
             that.$listEl.html(templateCompiled);
-            that.onImageFailEventBind();
+            // Need to bind this event after the element is loaded because the 'error' event do not allow data binding.
+            that.bindImageFailEvent();
 
+            // If there is more then 5 tweets, we show the 'show more button' and bind the on click event.
             if (twitterData.length > 5) {
-              that.$listEl.find('li:gt(4)').hide();
-              var showMoreButton = that.$containerEl.find('.load-more');
-              var viewAllButton = that.$containerEl.find('.view-all');
-              showMoreButton.on('click', function () {
-                that.$listEl.find('li').show();
-                viewAllButton.show();
-                showMoreButton.hide();
-              });
-              showMoreButton.show();
+              that.bindShowMoreEvent();
             }
 
             that.$containerEl.show();
           })
           .fail(function (error) {
+            // As the module is hidden by default, we just log the error.
             console.log(error);
           });
     },
 
-    onImageFailEventBind: function () {
+    bindShowMoreEvent: function () {
+      var that = this;
+      this.$listEl.find('li:gt(4)').hide();
+      this.$showMoreButtonEl.on('click', function () {
+        that.$listEl.find('li').show();
+        that.$viewAllButtonEl.show();
+        that.$showMoreButtonEl.hide();
+      });
+      this.$showMoreButtonEl.show();
+    },
+
+    bindImageFailEvent: function () {
+      // If the image fails to load, we load a placeholder instead.
       var avatarPlaceholder = WombatConfig.imgPath + 'icon.avatar.placeholder.png';
       this.$containerEl.find('.imgLoad').on('error', function () {
         var newImage = $(this).attr('src', avatarPlaceholder);
+        // Just change the src for the image do not work, so we need to change the parent html.
         $(this).parent().html(newImage);
       });
     },

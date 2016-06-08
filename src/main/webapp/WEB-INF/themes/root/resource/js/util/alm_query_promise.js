@@ -290,6 +290,15 @@ var AlmQuery;
       });
 
       return this.processRequest(requestUrl);
+    },
+    getArticleTweets: function (doi) {
+      var requestUrl = this.getRequestUrl({
+        ids: doi,
+        source_id: 'twitter',
+        info: 'detail'
+      });
+
+      return this.processRequest(requestUrl);
     }
   });
 

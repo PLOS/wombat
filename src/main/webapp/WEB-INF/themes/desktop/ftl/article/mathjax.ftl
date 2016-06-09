@@ -2,13 +2,15 @@
 <!-- more can be found at http://docs.mathjax.org/en/latest/ -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-  SVG: {
+  "HTML-CSS": {
     scale: 100,
-    font: "STIX-Web",
+    availableFonts: ["STIX","TeX"],
+    preferredFont: "STIX",
+    webFont: "STIX-Web",
     linebreaks: { automatic: false }
   },
-  jax: ["input/MathML", "output/SVG"]
+  jax: ["input/MathML", "output/HTML-CSS"]
 });
 </script>
 
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_SVG"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>

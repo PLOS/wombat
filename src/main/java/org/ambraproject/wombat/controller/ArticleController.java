@@ -555,7 +555,7 @@ public class ArticleController extends WombatController {
     }
 
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(),
-        String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
+        String.format("%s/%s?flags", COMMENT_NAMESPACE, targetComment));
     String authId = request.getRemoteUser();
     ArticleCommentFlag flag = new ArticleCommentFlag(userApi.getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
 

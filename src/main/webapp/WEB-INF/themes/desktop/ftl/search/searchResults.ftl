@@ -94,12 +94,7 @@
     </div>
     <div class="search-actions">
     <#include "../macro/userSession.ftl" />
-      <div class="search-alert" data-js-tooltip-hover="trigger"
-      <#if isUserLoggedIn()>
-           id="save-search-link"
-      <#else>
-           id="login-link"
-      </#if>>
+      <div class="search-alert open-search-alert-modal" data-js-tooltip-hover="trigger">
         Search Alert
         <div class="search-alert-tooltip" data-js-tooltip-hover="target">
         <#if isUserLoggedIn()>
@@ -109,7 +104,7 @@
         </#if>
         </div>
       </div>
-      <a href=""
+      <a href="<@siteLink handlerName="searchFeed" queryParameters=parameterMap pathVariables={'feedType': 'atom'}/>"
          class="search-feed"></a>
     </div>
 
@@ -133,13 +128,15 @@
 
 <#include "../common/footer/footer.ftl" />
 
+<div id="search-alert-modal" class="inlinePopup <#if isUserLoggedIn()>loggedIn</#if>" data-reveal>
+  <#if isUserLoggedIn()>
+    <#include "savedSearchPopup.ftl"/>
+  <#else>
+    <#include "loginSavedSearchPopup.ftl"/>
+  </#if>
+  <a class="close-reveal-modal" aria-label="Close"></a>
+</div>
 <@renderJs />
 </body>
-<div id="save-search-box" class="inlinePopup">
-<#include "savedSearchPopup.ftl"/>
-</div>
 
-<div id="login-box" class="login inlinePopup">
-<#include "loginSavedSearchPopup.ftl"/>
-</div>
 </html>

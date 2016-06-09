@@ -14,6 +14,10 @@ var SearchResult;
     $loadingEl: $('#search-loading'),
     $orderByEl: $('#sortOrder'),
     $searchFeedBtnEl: $('.search-feed'),
+    $searchAlertOpenModalBtnEl: $('.open-search-alert-modal'),
+    $searchAlertCloseModalBtnEl: $('.btn-cancel-savedsearch'),
+    $searchAlertSaveBtnEl: $('#btn-save-savedsearch'),
+    $searchAlertModalEl: $('#search-alert-modal'),
     resultPerPageElId: '#resultsPerPageDropdown',
     resetFiltersElId: '#clearAllFiltersButton',
 
@@ -221,7 +225,72 @@ var SearchResult;
         $(this).hide();
         $(this).parent('ul').find('[data-show-more-items]').fadeIn();
       });
+
+      this.$searchAlertOpenModalBtnEl.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        that.$searchAlertModalEl.foundation('reveal', 'open');
+
+        if(that.$searchAlertModalEl.hasClass('loggedIn')) {
+          var textInput = $('#text_name_savedsearch');
+          textInput.val(that.currentSearchParams.q);
+          textInput.focus();
+          textInput[0].selectionStart = textInput[0].selectionEnd = textInput[0].value.length;
+        }
+      });
+
+      this.$searchAlertCloseModalBtnEl.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        that.$searchAlertModalEl.foundation('reveal', 'close');
+      });
+
+      this.$searchAlertSaveBtnEl.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        that.processSearchAlert();
+      });
     },
+
+    processSearchAlert: function () {
+      var that = this;
+      var name = $('#text_name_savedsearch').val();
+      var query = {};
+
+      _.mapObject(this.currentSearchParams, function (item, key) {
+        if(!_.isEmpty(item)) {
+          query[key] = item;
+        }
+      });
+      query = JSON.stringify(query);
+      var weekly = $('#cb_weekly_savedsearch').is(':checked');
+      var monthly = $('#cb_monthly_savedsearch').is(':checked');
+
+      $.ajax({
+        type: 'POST',
+        url: 'searchalert/add',
+        data: 'name=' + encodeURIComponent(name)
+        + "&query=" + encodeURIComponent(query)
+        + (weekly ? "&frequency=weekly" : "") + (monthly ? "&frequency=monthly" : ""),
+        dataType:'json',
+        success: function(response) {
+          if (response.error) {
+            var errorMessage = response.error;
+            $('#span_error_savedsearch').html(errorMessage);
+            return;
+          }
+
+          that.$searchAlertModalEl.foundation('reveal', 'close');
+        },
+        error: function(req, textStatus, errorThrown) {
+          $('#span_error_savedsearch').html(errorThrown);
+          console.log('error: ' + errorThrown);
+        }
+      });
+    },
+
     processRequest: function () {
       var that = this;
       this.pagination.setCurrentPage(this.getCurrentPage());

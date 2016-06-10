@@ -1,6 +1,7 @@
 <#include "htmlTag.ftl" />
 
 <#assign title = '' />
+
 <#include "head.ftl" />
 
 <body>

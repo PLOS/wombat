@@ -215,15 +215,12 @@ var SearchResult;
         e.preventDefault();
         e.stopPropagation();
 
-        $(this).parent('ul').find('li:gt(4)').fadeIn();
-        $(this).hide();
+        that.showMoreFilterItems($(this));
       }).on('click', '[data-show-less-items]', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
-        $(this).parent('ul').find('li:gt(4)').fadeOut();
-        $(this).hide();
-        $(this).parent('ul').find('[data-show-more-items]').fadeIn();
+        that.showLessFilterItems($(this));
       });
 
       this.$searchAlertOpenModalBtnEl.on('click', function (e) {
@@ -252,6 +249,16 @@ var SearchResult;
 
         that.processSearchAlert();
       });
+    },
+
+    showLessFilterItems: function ($btn) {
+      $btn.parent('ul').find('li:gt(4)').fadeOut();
+      $btn.hide();
+      $btn.parent('ul').find('[data-show-more-items]').fadeIn();
+    },
+    showMoreFilterItems: function ($btn) {
+      $btn.parent('ul').find('li:gt(4)').fadeIn();
+      $btn.hide();
     },
 
     processSearchAlert: function () {
@@ -427,8 +434,7 @@ var SearchResult;
           var items = $(this).find('ul:not(".active-filters") li');
           var $moreButton = $(this).find('[data-show-more-items]');
           if (items.length > 5) {
-            $(this).find('ul:not(".active-filters") li:gt(4)').hide();
-            $moreButton.show();
+            that.showLessFilterItems($moreButton);
           }
           else {
             $moreButton.hide();

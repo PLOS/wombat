@@ -102,7 +102,8 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   public final String getUserIdFromAuthId(String authId) throws IOException {
     Objects.requireNonNull(authId);
     final IndividualComposite individualComposite;
-    individualComposite = requestObject(ApiAddress.builder("individuals/CAS").addToken(authId).build(), IndividualComposite.class);
+    individualComposite = requestObject(ApiAddress.builder("individuals").addToken("CAS")
+        .addToken(authId).build(), IndividualComposite.class);
     // use nedid from any available profile.
     Individualprofile individualprofile = individualComposite.getIndividualprofiles().stream()
         .findFirst()

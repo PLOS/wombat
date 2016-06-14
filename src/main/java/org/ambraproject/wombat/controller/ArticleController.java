@@ -218,6 +218,12 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/newComment";
   }
 
+  private Map<String, Integer> getCommentCount(String doi) throws IOException {
+    return articleApi.requestObject(ApiAddress.builder("articles").addToken(doi).addParameter("commentCount").build(),
+        Map.class);
+  }
+
+
 
   private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
     List<Map<?, ?>> articleListObjects = articleApi.requestObject(
@@ -1023,6 +1029,7 @@ public class ArticleController extends WombatController {
         Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
         addCrossPublishedJournals(request, model, site, articleMetadata);
         model.addAttribute("article", articleMetadata);
+        model.addAttribute("commentCount", getCommentCount(articleId));
         model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
         model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
         requestAuthors(model, articleId);

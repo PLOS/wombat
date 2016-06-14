@@ -6,8 +6,9 @@
 
 <h1>Page Not Found</h1>
 
-<p>Sorry, the page that you've requested cannot be found; it may have been moved, changed or removed.</p>
+<p>Looking for an article? Use the article search box above, or try <a href="<@siteLink handlerName="advancedSearch" />">advanced search form</a>.</p>
 
-<p>Please use the search form above to locate an article.</p>
+<p>Experiencing an issue with the website? Please use the <a href="<@siteLink handlerName="feedback" />">feedback form</a> and provide a detailed description of the
+  problem.</p>
 <@page_footer />
 

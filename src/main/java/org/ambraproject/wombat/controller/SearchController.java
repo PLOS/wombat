@@ -629,6 +629,16 @@ public class SearchController extends WombatController {
     return site.getKey() + "/ftl/search/searchResults";
   }
 
+@RequestMapping(name = "simpleSearchAjax", value = "/searchAjax")
+public String searchAjax(HttpServletRequest request, Model model, @SiteParam Site site,
+                     @RequestParam MultiValueMap<String, String> params) throws IOException {
+  enforceDevFeature("searchAjax");
+  if (!performValidSearch(request, model, site, params)) {
+    return advancedSearchAjax(model, site);
+  }
+  return site.getKey() + "/ftl/search/searchResultsAjax";
+}
+
   /**
    * AJAX endpoint to perform a dynamic search, returning search results as JSON. Identical to the
    * {@code search} method above, the query parameter is read, and if advanced search
@@ -722,6 +732,13 @@ public class SearchController extends WombatController {
     model.addAttribute("activeFilterItems", new HashSet<>());
     return site.getKey() + "/ftl/search/searchResults";
   }
+
+@RequestMapping(name = "advancedSearchAjax", value = "/searchAjax", params = {"!unformattedQuery", "!q"})
+public String advancedSearchAjax(Model model, @SiteParam Site site) throws IOException {
+  enforceDevFeature("searchAjax");
+  model.addAttribute("isNewSearch", true);
+  return site.getKey() + "/ftl/search/searchResultsAjax";
+}
 
   /**
    * Endpoint to render the subject area browser in mobile

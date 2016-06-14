@@ -17,7 +17,8 @@
   .content {
     @extend .plos-column-6;
     p {
-      font-size: $txt-size-xlarge;
+      font-size: $txt-size-large;
+      line-height: 1.2;
     }
   }
 

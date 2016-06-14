@@ -25,7 +25,7 @@
 
     <div id="thread" class="article-container">
 
-      <h2>Reader Comments (${article.commentCount.root})</h2>
+      <h2>Reader Comments (${commentCount.root})</h2>
 
     <#if userApiError??>
       <#include "userApiErrorMessage.ftl" />

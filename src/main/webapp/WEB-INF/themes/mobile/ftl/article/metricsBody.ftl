@@ -57,7 +57,7 @@
       <div id="commentsOnArticleMetricsTab" class="metrics_tile">
         <h3><a href="${commentsUrl}">Comments and Notes</a></h3>
         <div class="metrics_tile_footer" onclick="location.href=${commentsUrl};">
-        ${article.commentCount.root}
+        ${commentCount.root}
         </div>
       </div>
     </@siteLink>

@@ -1,11 +1,11 @@
-<#macro searchResultsAlm articleDoi >
+<#macro searchResultsAlm articleDoi journalKey>
   <div class="search-results-alm-container">
     <p class="search-results-alm-loading">
       Loading metrics information...
     </p>
 
     <#assign metricsUrl>
-      <@siteLink handlerName="articleMetrics" queryParameters={"id": articleDoi} />
+      <@siteLink journalKey=journalKey handlerName="articleMetrics" queryParameters={"id": articleDoi} />
     </#assign>
 
     <p class="search-results-alm" data-doi="${articleDoi}">

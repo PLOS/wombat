@@ -24,6 +24,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -219,7 +220,9 @@ public class ArticleController extends WombatController {
 
 
   private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
-    List<Map<?, ?>> articleListObjects = articleApi.requestObject(String.format("articles/%s?lists", doi), List.class);
+    List<Map<?, ?>> articleListObjects = articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(doi).addParameter("lists").build(),
+        List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
     for (Map<?, ?> articleListObject : articleListObjects) {
       String listType = Preconditions.checkNotNull((String) articleListObject.get("type"));
@@ -474,7 +477,7 @@ public class ArticleController extends WombatController {
       // Get a copy of the comment that is not populated with userApi data.
       // This articleApi call is redundant to one that commentService.getComment would have made before throwing.
       // TODO: Prevent extra articleApi call
-      comment = articleApi.requestObject(String.format("comments/" + commentId), Map.class);
+      comment = articleApi.requestObject(ApiAddress.builder("comments").addToken(commentId).build(), Map.class);
     }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
@@ -607,34 +610,32 @@ public class ArticleController extends WombatController {
       return site + "/ftl/article/citationDownload";
   }
 
-  @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris")
+  @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris", produces = "application/x-research-info-systems;charset=UTF-8")
   public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "ris", "application/x-research-info-systems",
+    return serveCitationDownload(site, articleId, "ris",
         citationDownloadService::buildRisCitation);
   }
 
-  @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex")
+  @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex", produces = "application/x-bibtex;charset=UTF-8")
   public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, @RequestParam("id") String articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "bib", "application/x-bibtex",
+    return serveCitationDownload(site, articleId, "bib",
         citationDownloadService::buildBibtexCitation);
   }
 
-  private ResponseEntity<String> serveCitationDownload(Site site, String articleId,
-                                                       String fileExtension, String contentType,
-                                                       Function<Map<String, ?>, String> serviceFunction)
+  private ResponseEntity<String> serveCitationDownload(Site site, String articleId, String fileExtension,
+      Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
     requireNonemptyParameter(articleId);
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     validateArticleVisibility(site, articleMetadata);
     String citationBody = serviceFunction.apply((Map<String, ?>) articleMetadata);
     String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
-            URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
-            fileExtension);
+        URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
+        fileExtension);
 
     HttpHeaders headers = new HttpHeaders();
-    headers.add(HttpHeaders.CONTENT_TYPE, contentType);
     headers.add(HttpHeaders.CONTENT_DISPOSITION, contentDispositionValue);
     return new ResponseEntity<>(citationBody, headers, HttpStatus.OK);
   }
@@ -919,7 +920,9 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private void requestAuthors(Model model, String doi) throws IOException {
-    Map<?,?> allAuthorsData = articleApi.requestObject(String.format("articles/%s?authors", doi), Map.class);
+    Map<?, ?> allAuthorsData = articleApi.requestObject(
+        ApiAddress.builder("articles").addToken(doi).addParameter("authors").build(),
+        Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);
 
@@ -967,8 +970,8 @@ public class ArticleController extends WombatController {
    *
    * @return the service path to the correspond article XML asset file
    */
-  private static String getArticleXmlAssetPath(RenderContext renderContext) {
-    return "articles/" + Preconditions.checkNotNull(renderContext.getArticleId()) + "?xml";
+  private static ApiAddress getArticleXmlAssetPath(RenderContext renderContext) {
+    return ApiAddress.builder("articles").addToken(renderContext.getArticleId()).addParameter("xml").build();
   }
 
   /**
@@ -979,7 +982,7 @@ public class ArticleController extends WombatController {
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
     CacheKey cacheKey = CacheKey.create("amendmentBody", renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
 
@@ -1003,7 +1006,7 @@ public class ArticleController extends WombatController {
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
 
     CacheKey cacheKey = CacheKey.create("html", renderContext.getSite().getKey(), renderContext.getArticleId());
-    String xmlAssetPath = getArticleXmlAssetPath(renderContext);
+    ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);

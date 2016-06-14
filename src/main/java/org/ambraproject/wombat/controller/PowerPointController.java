@@ -6,6 +6,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -49,7 +50,8 @@ public class PowerPointController extends WombatController {
 
     Map<String, Object> figureMetadata;
     try {
-      figureMetadata = articleApi.requestObject("assets/" + figureId + "?figure", Map.class);
+      figureMetadata = articleApi.requestObject(
+          ApiAddress.builder("assets").addToken(figureId).addParameter("figure").build(), Map.class);
     } catch (ServiceRequestException e) {
       if (e.getStatusCode() == HttpStatus.BAD_REQUEST.value()) {
         /*

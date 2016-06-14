@@ -3,6 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -68,7 +69,8 @@ public class FigurePageController extends WombatController {
     requireNonemptyParameter(figureId);
     Map<String, Object> figureMetadata;
     try {
-      figureMetadata = (Map<String, Object>) articleApi.requestObject("assets/" + figureId + "?figure", Map.class);
+      figureMetadata = (Map<String, Object>) articleApi.requestObject(
+          ApiAddress.builder("assets").addToken(figureId).addParameter("figure").build(), Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);
     }

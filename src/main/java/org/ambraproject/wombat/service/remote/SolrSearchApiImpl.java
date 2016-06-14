@@ -20,6 +20,7 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -262,8 +263,10 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     for (Map doc : docs) {
       String doi = (String) doc.get("id");
       String eIssn = (String) doc.get("eissn");
-      String link = Link.toForeignSite(site, eIssnToJournalKey.get(eIssn), siteSet).toPath("/article?id=" + doi).get(request);
+      String foreignJournalKey = eIssnToJournalKey.get(eIssn);
+      String link = Link.toForeignSite(site, foreignJournalKey, siteSet).toPath("/article?id=" + doi).get(request);
       doc.put("link", link);
+      doc.put("journalKey", foreignJournalKey);
     }
     return searchResults;
   }
@@ -281,7 +284,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       Map<String, String> mutable = new HashMap<>();
       for (Site site : siteSet.getSites()) {
         Map<String, String> rhinoResult = (Map<String, String>) articleApi.requestObject(
-            "journals/" + site.getJournalKey(), Map.class);
+            ApiAddress.builder("journals").addToken(site.getJournalKey()).build(), Map.class);
         mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
       }
       eIssnToJournalKey = ImmutableMap.copyOf(mutable);

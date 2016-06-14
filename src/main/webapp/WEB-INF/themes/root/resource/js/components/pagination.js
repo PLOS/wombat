@@ -122,7 +122,7 @@ var Pagination;
     },
     bindPaginationEvents: function () {
       var that = this;
-      $('body').on('click', 'a.number', function (e) {
+      $('main').on('click', 'a.number', function (e) {
         e.preventDefault();
         that.setCurrentPage(parseInt($(this).data('page')));
         that.callback(that.getCurrentPage());

@@ -118,7 +118,9 @@
 <#--PG-shoudl this be a header?-->
 <section class="results-container">
 
-  <#include "searchFilters.ftl" />
+  <aside class="search-filters" id="searchFilters">
+
+  </aside>
   <article class="searchResults">
     <h2>Please enter your search term above.</h2>
   </article>

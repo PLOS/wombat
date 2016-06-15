@@ -2,12 +2,14 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.util.DeserializedJsonUtil;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.slf4j.Logger;
@@ -20,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -29,6 +30,10 @@ public class FigureImageController extends WombatController {
 
   @Autowired
   private ArticleApi articleApi;
+  @Autowired
+  private RequestMappingContextDictionary requestMappingContextDictionary;
+  @Autowired
+  private ScholarlyWorkController scholarlyWorkController;
 
   /**
    * Forward a response for an asset file from the SOA to the response.
@@ -114,33 +119,33 @@ public class FigureImageController extends WombatController {
    * Serve the asset file for an identified figure thumbnail.
    */
   @RequestMapping(name = "figureImage", value = "/article/figure/image")
-  public void serveFigureImage(HttpServletRequest request,
-                               HttpServletResponse response,
-                               @SiteParam Site site,
-                               @RequestParam("id") String figureId,
-                               @RequestParam("size") String figureSize,
-                               @RequestParam(value = "download", required = false) String download)
+  public String serveFigureImage(HttpServletRequest request,
+                                 HttpServletResponse response,
+                                 @SiteParam Site site,
+                                 @RequestParam("id") String figureId,
+                                 @RequestParam("size") String figureSize,
+                                 @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(figureId);
-    Map<String, ?> assetMetadata;
-    try {
-      assetMetadata = articleApi.requestObject(
-          ApiAddress.builder("assets").addToken(figureId).addParameter("figure").build(),
-          Map.class);
-    } catch (EntityNotFoundException e) {
-      throw new NotFoundException(e);
-    }
-    validateArticleVisibility(site, (Map<?, ?>) assetMetadata.get("parentArticle"));
-
-    List<String> pathToFigureObject = ORIGINAL_FIGURE.equals(figureSize)
-        ? ORIGINAL_FIGURE_PATH : ImmutableList.of("thumbnails", figureSize);
-    Map<String, ?> figureObject = (Map<String, ?>) DeserializedJsonUtil.readField(assetMetadata, pathToFigureObject);
-    if (figureObject == null) {
+    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(new ScholarlyWorkId(figureId));
+    Map<String, Object> files = (Map<String, Object>) workMetadata.get("files");
+    if (files.containsKey(figureSize)) {
+      return redirectToWorkFile(request, site, figureId, figureSize, booleanParameter(download));
+    } else {
       throw new NotFoundException("Not a valid size: " + figureSize);
     }
-    String assetFileId = (String) figureObject.get("file");
+  }
 
-    serveAssetFile(request, response, assetFileId, booleanParameter(download));
+  private String redirectToWorkFile(HttpServletRequest request, Site site,
+                                    String id, String fileType, boolean isDownload) {
+    Link.Factory.PatternBuilder link = Link.toLocalSite(site)
+        .toPattern(requestMappingContextDictionary, "workFile")
+        .addQueryParameter("id", id)
+        .addQueryParameter("fileType", fileType);
+    if (isDownload) {
+      link = link.addQueryParameter("download", "");
+    }
+    return link.build().getRedirect(request);
   }
 
 }

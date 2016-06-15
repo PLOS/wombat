@@ -42,7 +42,7 @@ public class ScholarlyWorkController extends WombatController {
     return getRedirectFor(site, workId).getRedirect(request);
   }
 
-  private Map<String, Object> getWorkMetadata(ScholarlyWorkId workId) throws IOException {
+  Map<String, Object> getWorkMetadata(ScholarlyWorkId workId) throws IOException {
     ApiAddress address = workId.appendId(ApiAddress.builder("work"));
     try {
       return articleApi.requestObject(address, Map.class);

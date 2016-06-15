@@ -143,10 +143,7 @@ public abstract class WombatController {
       }
       String value = header.getValue();
       if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
-        if (!isDownloadRequest) {
-          value = setDispositionType(value, "inline");
-        }
-        return sanitizeAssetFilename(value);
+        return sanitizeAssetFilename(setDispositionType(value, isDownloadRequest ? "attachment" : "inline"));
       }
       return value;
     };

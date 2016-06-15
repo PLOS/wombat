@@ -14,9 +14,10 @@
 <article class="error-page">
   <h1>Page Not Found</h1>
   <div class="content">
-    <p>Sorry, the page that you've requested cannot be found; it may have been moved, changed or removed.</p>
+    <p>Looking for an article? Use the article search box above, or try <a href="<@siteLink handlerName="advancedSearch" />">advanced search form</a>.</p>
 
-    <p>Thank you for your patience.</p>
+    <p>Experiencing an issue with the website? Please use the <a href="<@siteLink handlerName="feedback" />">feedback form</a> and provide a detailed description of the
+      problem.</p>
   </div>
 </article>
 <#include "../common/footer/footer.ftl" />

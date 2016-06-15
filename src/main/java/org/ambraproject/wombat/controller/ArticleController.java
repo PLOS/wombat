@@ -216,6 +216,12 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/newComment";
   }
 
+  private Map<String, Integer> getCommentCount(String doi) throws IOException {
+    return articleApi.requestObject(ApiAddress.builder("articles").addToken(doi).addParameter("commentCount").build(),
+        Map.class);
+  }
+
+
 
   private Map<String, Collection<Object>> getContainingArticleLists(ScholarlyWorkId articleId, Site site) throws IOException {
     List<Map<?, ?>> articleListObjects = articleApi.requestObject(
@@ -553,7 +559,7 @@ public class ArticleController extends WombatController {
     }
 
     URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(),
-        String.format("%s/%s?flag", COMMENT_NAMESPACE, targetComment));
+        String.format("%s/%s?flags", COMMENT_NAMESPACE, targetComment));
     String authId = request.getRemoteUser();
     ArticleCommentFlag flag = new ArticleCommentFlag(userApi.getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
 
@@ -607,22 +613,23 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/citationDownload";
   }
 
-  @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris")
+  @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris", produces = "application/x-research-info-systems;charset=UTF-8")
   public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, ScholarlyWorkId articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "ris", "application/x-research-info-systems",
+    return serveCitationDownload(site, articleId, "ris",
         citationDownloadService::buildRisCitation);
   }
 
-  @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex")
+  @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex", produces = "application/x-bibtex;charset=UTF-8")
   public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, ScholarlyWorkId articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "bib", "application/x-bibtex",
+    return serveCitationDownload(site, articleId, "bib",
         citationDownloadService::buildBibtexCitation);
   }
 
-  private ResponseEntity<String> serveCitationDownload(Site site, ScholarlyWorkId articleId,
-                                                       String fileExtension, String contentType,
+  private ResponseEntity<String> serveCitationDownload(Site site,
+                                                       ScholarlyWorkId articleId,
+                                                       String fileExtension,
                                                        Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
@@ -633,7 +640,6 @@ public class ArticleController extends WombatController {
         fileExtension);
 
     HttpHeaders headers = new HttpHeaders();
-    headers.add(HttpHeaders.CONTENT_TYPE, contentType);
     headers.add(HttpHeaders.CONTENT_DISPOSITION, contentDispositionValue);
     return new ResponseEntity<>(citationBody, headers, HttpStatus.OK);
   }
@@ -1027,6 +1033,7 @@ public class ArticleController extends WombatController {
     Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
     addCrossPublishedJournals(request, model, site, articleMetadata);
     model.addAttribute("article", articleMetadata);
+    model.addAttribute("commentCount", getCommentCount(articleId.getDoi()));
     model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
     model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
     requestAuthors(model, articleId);

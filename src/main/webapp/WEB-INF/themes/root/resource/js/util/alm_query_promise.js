@@ -202,23 +202,6 @@ var AlmQuery;
       return this.config.host + '?api_key=' + this.config.apiKey;
     },
 
-    saveRequestCache: function (requestUrl, response) {
-      if(this.hasSessionStorage) {
-        window.sessionStorage.setItem(requestUrl, JSON.stringify(response));
-      }
-    },
-
-    getRequestCache: function (requestUrl) {
-      if(this.hasSessionStorage) {
-        var item = window.sessionStorage.getItem(requestUrl);
-        if(item && !_.isEmpty(item)) {
-          return JSON.parse(item);
-        }
-      }
-
-      return false;
-    },
-
     getRequestUrl: function (queryParams) {
       if(_.has(queryParams, 'ids')) {
         queryParams.ids = this.validateDOI(queryParams.ids);
@@ -239,39 +222,22 @@ var AlmQuery;
     processRequest: function (requestUrl) {
       var that = this;
       var deferred = Q.defer();
-      var cacheItem = this.getRequestCache(requestUrl);
 
-      if(cacheItem) {
-        this.dataValidator
-          .validate(cacheItem)
-          .then(function (data) {
-            deferred.resolve(data);
-          })
-          .fail(function (error) {
-            if(that.isArticleNew()) {
-              deferred.reject(new ErrorFactory('NewArticleError', '[AlmQuery::processRequest] - The article is too new to have data.'));
-            }
-            else {
-              deferred.reject(error);
-            }
-          });
-
-      }
-      else if(this.config.host == null) {
+      if(this.config.host == null) {
         var err = new Error('[AlmQuery::processRequest] - ALM API is not configured');
         err.name = 'ALMNotConfiguredError';
         deferred.reject(new ErrorFactory('ALMNotConfiguredError', '[AlmQuery::processRequest] - ALM API is not configured'));
+
       }
       else {
         $.ajax({
           url: requestUrl,
           jsonp: 'callback',
           dataType: 'jsonp',
-          timeout: 20000,
+          timeout: 60000,
           success: function (response) {
             that.dataValidator.validate(response)
               .then(function (data) {
-                that.saveRequestCache(requestUrl, response);
                 deferred.resolve(data);
               })
               .fail(function (error) {
@@ -320,6 +286,15 @@ var AlmQuery;
       var requestUrl = this.getRequestUrl({
         ids: doi,
         source_id: 'articlecoveragecurated',
+        info: 'detail'
+      });
+
+      return this.processRequest(requestUrl);
+    },
+    getArticleTweets: function (doi) {
+      var requestUrl = this.getRequestUrl({
+        ids: doi,
+        source_id: 'twitter',
         info: 'detail'
       });
 

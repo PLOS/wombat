@@ -68,9 +68,9 @@
 
   <@js src="resource/js/pages/article_body.js"/>
 
-  <@renderJs />
+  <#include "mathjax.ftl">
 
-<#include "mathjax.ftl">
+  <@renderJs />
 
   <script type="text/javascript">
 

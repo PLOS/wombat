@@ -130,11 +130,11 @@
 
 <#include "../common/footer/footer.ftl" />
 
-<div id="search-alert-modal" class="inlinePopup <#if isUserLoggedIn()>loggedIn</#if>" data-reveal>
+<div id="search-alert-modal" class="inlinePopup <#if isUserLoggedIn()>loggedIn</#if> ajax" data-reveal>
   <#if isUserLoggedIn()>
-    <#include "savedSearchPopup.ftl"/>
+    <#include "savedSearchPopupAjax.ftl"/>
   <#else>
-    <#include "loginSavedSearchPopup.ftl"/>
+    <#include "loginSavedSearchPopupAjax.ftl"/>
   </#if>
   <a class="close-reveal-modal" aria-label="Close"></a>
 </div>

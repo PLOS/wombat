@@ -594,7 +594,7 @@ $search-icon-pad-default: 8;
 }
 
 /* Modal styles */
-#search-alert-modal {
+#search-alert-modal.ajax {
   @extend %modal;
   @extend .small;
 

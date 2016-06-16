@@ -593,6 +593,18 @@ $search-icon-pad-default: 8;
   }
 }
 
+/* Modal styles */
+#search-alert-modal.ajax {
+  @extend %modal;
+  @extend .small;
+
+  border: 0px solid white;
+
+  .grey-text {
+    width: 100%;
+  }
+}
+
 /* Advanced search rules */
 .advanced-search-container {
   display: none;

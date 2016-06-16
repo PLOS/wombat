@@ -8,11 +8,11 @@
       </a>
     </li>
   </#if>
-  <#if article.commentCount.root &gt; 0>
+  <#if commentCount.root &gt; 0>
     <li class="menuitem">
       <a class="btn-lg" href="<@siteLink handlerName="articleComments" queryParameters={"id": article.doi} />">
         <span class="arrow">View</span>
-        Reader Comments (${article.commentCount.root})
+        Reader Comments (${commentCount.root})
       </a>
     </li>
   </#if>

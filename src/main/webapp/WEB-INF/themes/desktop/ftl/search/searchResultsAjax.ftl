@@ -17,7 +17,6 @@
 <@js src="resource/js/pages/search_results_ajax.js"/>
 <@js src="resource/js/components/search_results_alm.js"/>
 <@js src="resource/js/components/toggle.js"/>
-<@js src="resource/js/vendor/moment.js"/>
 <@js src="resource/js/vendor/underscore-min.js"/>
 
 <@themeConfig map="journal" value="journalKey" ; v>

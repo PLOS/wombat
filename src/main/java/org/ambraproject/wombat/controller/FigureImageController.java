@@ -52,7 +52,7 @@ public class FigureImageController extends WombatController {
     FIGURE("figure", "table") {
       private final ImmutableSortedMap<String, String> extensions = ImmutableSortedMap
           .<String, String>orderedBy(String.CASE_INSENSITIVE_ORDER)
-          .put("TIF", "original").put("TIFF", "original")
+          .put("TIF", "original").put("TIFF", "original").put("GIF", "original")
           .put("PNG_S", "small")
           .put("PNG_I", "inline")
           .put("PNG_M", "medium")
@@ -68,7 +68,7 @@ public class FigureImageController extends WombatController {
     GRAPHIC("graphic") {
       private final ImmutableSortedMap<String, String> extensions = ImmutableSortedMap
           .<String, String>orderedBy(String.CASE_INSENSITIVE_ORDER)
-          .put("TIF", "original").put("GIF", "original")
+          .put("TIF", "original").put("TIFF", "original").put("GIF", "original")
           .put("PNG", "thumbnail")
           .build();
 

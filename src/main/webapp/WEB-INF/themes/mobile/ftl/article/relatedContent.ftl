@@ -13,6 +13,5 @@
 <#include "articleData.ftl" />
 <#include "../common/almQueryJs.ftl" />
 
-<@js src="resource/js/vendor/moment.js"/>
 <@js src="resource/js/pages/related_content.js"/>
 <@page_footer />

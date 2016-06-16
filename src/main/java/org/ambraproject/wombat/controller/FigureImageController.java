@@ -81,14 +81,14 @@ public class FigureImageController extends WombatController {
     SUPPLEMENTARY_MATERIAL("supplementaryMaterial") {
       @Override
       protected String resolveToFileType(String fileExtension) {
-        return "strikingImage";
+        return "supplementary";
       }
     },
 
     STANDALONE_STRIKING_IMAGE("standaloneStrikingImage") {
       @Override
       protected String resolveToFileType(String fileExtension) {
-        return "supplementary";
+        return "strikingImage";
       }
     };
 

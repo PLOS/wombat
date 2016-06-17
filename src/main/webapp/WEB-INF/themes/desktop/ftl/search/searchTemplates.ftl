@@ -36,11 +36,11 @@
 
 
         <p style="display: block;" class="search-results-alm" data-doi="<%= item.id %>">
-          <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#viewedHeader">Views:2912</a>
+          <a href="/wombat/DesktopPlosOne/article/metrics?id=<%= item.id %>#viewedHeader">Views:2912</a>
           •
-          <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#citedHeader">Citations:8</a>
+          <a href="/wombat/DesktopPlosOne/article/metrics?id=<%= item.id %>#citedHeader">Citations:8</a>
           •
-          <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#savedHeader">Saves:20</a>
+          <a href="/wombat/DesktopPlosOne/article/metrics?id=<%= item.id %>#savedHeader">Saves:20</a>
           •
           Shares: None
         </p>

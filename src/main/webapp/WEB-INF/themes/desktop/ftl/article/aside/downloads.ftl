@@ -4,7 +4,7 @@
 </style>
 <![endif]-->
 <div class="dload-menu">
-  <div class="dload-pdf">
+  <div class="dload-pdf <#if !article.articlePdf??>no-pdf</#if>">
   <#if article.articlePdf??>
     <a href="<@siteLink handlerName="asset" queryParameters={"id": article.articlePdf.file} />"
        id="downloadPdf" target="_blank">Download PDF</a>

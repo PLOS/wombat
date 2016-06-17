@@ -111,6 +111,9 @@ var AdvancedSearch = {};
       e.preventDefault();
       that.validateForm(function (err) {
         if (err) return alert(err.message);
+        if(_.isUndefined(window.SearchResult)) {
+          $(e.target).unbind('submit').submit();
+        }
       });
     });
 

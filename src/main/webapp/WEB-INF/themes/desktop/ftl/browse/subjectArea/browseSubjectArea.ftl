@@ -126,7 +126,10 @@
                                     </#list>
                                 </p>
                                 <p class="date"> published ${article.date?date("yyyy-MM-dd")?string("dd MMM yyyy")}</p>
-                                <@searchResultsAlm article.doi/>
+
+                              <@themeConfig map="journal" value="journalKey" ; journalKey>
+                                <@searchResultsAlm article.doi journalKey/>
+                              </@themeConfig>
                                 <p class="actions">
                                 <#-- TODO: When able to launch lightbox from here, uncomment, remove alerts, and redirect to lightbox
                                     <a data-doi="info:doi/${article.doi}" class="abstract" href="#">Abstract</a> &nbsp;&nbsp;|&nbsp;&nbsp;

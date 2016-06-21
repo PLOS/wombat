@@ -111,6 +111,8 @@ public class FigureImageController extends WombatController {
     protected abstract String resolveToFileType(String fileExtension);
 
     private static final ImmutableMap<String, LegacyFileExtensionRedirectStrategy> STRATEGIES = ImmutableMap.copyOf(
+        // Map each LegacyFileExtensionRedirectStrategy by its associated types.
+        // A strategy with more than one type goes under more than one map key.
         EnumSet.allOf(LegacyFileExtensionRedirectStrategy.class).stream()
             .flatMap((LegacyFileExtensionRedirectStrategy strategy) -> strategy.associatedTypes.stream()
                 .map((String associatedType) -> Maps.immutableEntry(associatedType, strategy)))

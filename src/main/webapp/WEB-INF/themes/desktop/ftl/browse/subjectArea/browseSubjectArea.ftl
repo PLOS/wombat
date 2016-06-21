@@ -126,6 +126,7 @@
                                     </#list>
                                 </p>
                                 <p class="date"> published ${article.date?date("yyyy-MM-dd")?string("dd MMM yyyy")}</p>
+
                                 <@searchResultsAlm article.doi/>
                                 <p class="actions">
                                 <#-- TODO: When able to launch lightbox from here, uncomment, remove alerts, and redirect to lightbox

@@ -1,4 +1,5 @@
-<#macro searchResultsAlm articleDoi journalKey>
+<#macro searchResultsAlm articleDoi journalKey="">
+
   <div class="search-results-alm-container">
     <p class="search-results-alm-loading">
       Loading metrics information...

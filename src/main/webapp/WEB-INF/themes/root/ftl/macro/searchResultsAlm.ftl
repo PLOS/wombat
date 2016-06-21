@@ -6,7 +6,11 @@
     </p>
 
     <#assign metricsUrl>
-      <@siteLink journalKey=journalKey handlerName="articleMetrics" queryParameters={"id": articleDoi} />
+      <#if journalKey?has_content>
+        <@siteLink journalKey=journalKey handlerName="articleMetrics" queryParameters={"id": articleDoi} /><#t>
+      <#else>
+        <@siteLink handlerName="articleMetrics" queryParameters={"id": articleDoi} /><#t>
+      </#if>
     </#assign>
 
     <p class="search-results-alm" data-doi="${articleDoi}">

@@ -42,7 +42,7 @@ public class ScholarlyWorkController extends WombatController {
     return getRedirectFor(site, workId).getRedirect(request);
   }
 
-  private Map<String, Object> getWorkMetadata(ScholarlyWorkId workId) throws IOException {
+  Map<String, Object> getWorkMetadata(ScholarlyWorkId workId) throws IOException {
     ApiAddress address = workId.appendId(ApiAddress.builder("work"));
     try {
       return articleApi.requestObject(address, Map.class);
@@ -59,7 +59,7 @@ public class ScholarlyWorkController extends WombatController {
       .put("article", "article")
       .put("figure", "figurePage")
       .put("table", "figurePage")
-          // TODO: supp info
+      // TODO: supp info
       .build();
 
   private Link getRedirectFor(Site site, ScholarlyWorkId workId) throws IOException {
@@ -83,7 +83,8 @@ public class ScholarlyWorkController extends WombatController {
   public void serveWorkFile(HttpServletResponse responseToClient,
                             @SiteParam Site site,
                             ScholarlyWorkId workId,
-                            @RequestParam("fileType") String fileType)
+                            @RequestParam(value = "fileType", required = true) String fileType,
+                            @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
     Map<String, ?> metadata = getWorkMetadata(workId);
     Map<String, ?> files = (Map<String, ?>) metadata.get("files");
@@ -95,7 +96,7 @@ public class ScholarlyWorkController extends WombatController {
 
     ContentKey contentKey = createKey(fileRepoKey);
     try (CloseableHttpResponse responseFromApi = corpusContentApi.request(contentKey, ImmutableList.of())) {
-      forwardAssetResponse(responseFromApi, responseToClient, false);
+      forwardAssetResponse(responseFromApi, responseToClient, booleanParameter(isDownload));
     }
   }
 

@@ -36,18 +36,10 @@
 
 <#if RequestParameters.q??>
   <#assign query = RequestParameters.q?html />
-  <#assign advancedSearch = false />
 <#elseif RequestParameters.unformattedQuery??>
   <#assign query = RequestParameters.unformattedQuery?html />
-  <#assign advancedSearch = true />
 <#else>
-  <#assign query = otherQuery />
-  <#assign advancedSearch = true />
-</#if>
-<#assign advancedSearchParams = {"unformattedQuery": query} />
-<#if RequestParameters.filterJournals??>
-  <#assign advancedSearchParams = advancedSearchParams + {"filterJournals" : RequestParameters.filterJournals} />
-<#else>
+  <#assign query = '' />
 </#if>
 
 <#include "suppressSearchFilter.ftl" />
@@ -61,7 +53,7 @@
 <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>"
       method="get" <#if advancedOpen??> data-advanced-search="open"  </#if>
 >
-<#include "searchInputBar.ftl" />
+<#include "searchInputBarAjax.ftl" />
 </form>
 
 <form name="searchResultsForm" id="searchResultsForm" action="<@siteLink handlerName='simpleSearch'/>"

@@ -399,7 +399,7 @@ var SearchResult;
     },
     updateCounterText: function () {
       var counterText = '%TOTAL% %RESULTSTR% for <strong>%TERM%</strong>';
-      counterText = counterText.replace('%TOTAL%', this.resultTotalRecords);
+      counterText = counterText.replace('%TOTAL%', s.numberFormat(this.resultTotalRecords, 0));
       if(this.resultTotalRecords > 1) {
         counterText = counterText.replace('%RESULTSTR%', 'results');
       }
@@ -408,7 +408,7 @@ var SearchResult;
       }
       counterText = counterText.replace('%TERM%', this.currentSearchParams.q);
 
-      this.$searchCounterEl.html(s.numberFormat(counterText, 0));
+      this.$searchCounterEl.html(counterText);
     },
     createFilters: function () {
       var that = this;

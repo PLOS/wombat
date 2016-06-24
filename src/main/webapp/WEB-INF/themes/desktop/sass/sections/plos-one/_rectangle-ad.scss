@@ -6,13 +6,22 @@
 
 .ad-alt {
   padding: 0 3px;
+
+  .advertisement {
+    text-align: right;
+    padding: 4px 0 0;
+    margin: 0;
+    color: #bbb;
+    text-transform: uppercase;
+    font-size: 10px;
+    box-sizing: content-box;
+  }
+
+  .advertisement-notice {
+    @extend .header-allcaps-smallest;
+    margin-top: $pad-xsmall;
+    text-align: center;
+    color: $grey-tinytext;
+  }
 }
 
-.ad-alt .advertisement {
-  text-align: right;
-  padding: 4px 0 0;
-  margin: 0;
-  color: #bbb;
-  text-transform: uppercase;
-  font-size: 10px;
-}

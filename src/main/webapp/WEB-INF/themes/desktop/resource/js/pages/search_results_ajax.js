@@ -72,12 +72,11 @@ var SearchResult;
         that.currentSearchParams.page = currentPage;
         that.processRequest();
       });
-      this.$searchHeaderEl.hide();
-      this.$filtersEl.hide();
       if(this.currentSearchParams.q != null) {
         this.processRequest();
       }
       else {
+        $('.no-term').show();
         this.isInitialized = true;
       }
     },
@@ -409,7 +408,7 @@ var SearchResult;
       }
       counterText = counterText.replace('%TERM%', this.currentSearchParams.q);
 
-      this.$searchCounterEl.html(counterText);
+      this.$searchCounterEl.html(s.numberFormat(counterText, 0));
     },
     createFilters: function () {
       var that = this;
@@ -431,13 +430,15 @@ var SearchResult;
         });
 
         $('.filterSection').each(function () {
-          var items = $(this).find('ul:not(".active-filters") li');
+          var items = $(this).find('ul:not(".active-filters") li:not(.toggle-trigger)');
           var $moreButton = $(this).find('[data-show-more-items]');
+          var $lessButton = $(this).find('[data-show-less-items]');
           if (items.length > 5) {
             that.showLessFilterItems($moreButton);
           }
           else {
             $moreButton.hide();
+            $lessButton.hide();
           }
         });
 

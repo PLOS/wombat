@@ -44,7 +44,7 @@
 
 <#include "suppressSearchFilter.ftl" />
 
-<body class="static ${journalStyle} search-results-body">
+<body class="static ${journalStyle} search-results-body search-results-ajax">
 <#include "searchTemplates.ftl" />
 <#include "../common/paginationTemplate.ftl" />
 
@@ -113,7 +113,7 @@
 
   </aside>
   <article class="searchResults">
-    <h2>Please enter your search term above.</h2>
+    <h2 class="no-term">Please enter your search term above.</h2>
   </article>
 
 

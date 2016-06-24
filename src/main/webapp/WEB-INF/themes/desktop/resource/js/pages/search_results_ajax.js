@@ -72,12 +72,11 @@ var SearchResult;
         that.currentSearchParams.page = currentPage;
         that.processRequest();
       });
-      this.$searchHeaderEl.hide();
-      this.$filtersEl.hide();
       if(this.currentSearchParams.q != null) {
         this.processRequest();
       }
       else {
+        $('.no-term').show();
         this.isInitialized = true;
       }
     },
@@ -429,7 +428,7 @@ var SearchResult;
     },
     updateCounterText: function () {
       var counterText = '%TOTAL% %RESULTSTR% for <strong>%TERM%</strong>';
-      counterText = counterText.replace('%TOTAL%', this.resultTotalRecords);
+      counterText = counterText.replace('%TOTAL%', s.numberFormat(this.resultTotalRecords, 0));
       if(this.resultTotalRecords > 1) {
         counterText = counterText.replace('%RESULTSTR%', 'results');
       }
@@ -460,13 +459,15 @@ var SearchResult;
         });
 
         $('.filterSection').each(function () {
-          var items = $(this).find('ul:not(".active-filters") li');
+          var items = $(this).find('ul:not(".active-filters") li:not(.toggle-trigger)');
           var $moreButton = $(this).find('[data-show-more-items]');
+          var $lessButton = $(this).find('[data-show-less-items]');
           if (items.length > 5) {
             that.showLessFilterItems($moreButton);
           }
           else {
             $moreButton.hide();
+            $lessButton.hide();
           }
         });
 

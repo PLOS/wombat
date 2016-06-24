@@ -77,7 +77,7 @@
         <a href="#" data-filter-param-name="<%= item.filterParamName %>" data-filter-value="<%= item.filterValue %>">
           <input type="checkbox" data-filter-param-name="<%= item.filterParamName %>"
                  data-filter-value="<%= item.filterValue %>">
-          <span><%= item.displayName %>  (<%= item.numberOfHits %>)</span>
+          <span><%= item.displayName %>  (<%= s.numberFormat(item.numberOfHits, 0) %>)</span>
         </a>
       </li>
       <% }); %>

@@ -36,7 +36,7 @@ var SearchResult;
       "page": 1
     },
     currentUrlParams: null,
-    searchEndpoint: 'search',
+    searchEndpoint: 'searchAjax',
     ajaxSearchEndpoint: 'dynamicSearch',
     searchFeedEndpoint: 'search/feed/atom',
 
@@ -221,7 +221,36 @@ var SearchResult;
         e.stopPropagation();
 
         that.showLessFilterItems($(this));
+      }).on('click', '.advanced-search-toggle-btn', function (e) {
+        e.preventDefault();
+        $('.advanced-search-toggle-btn, .edit-query').toggle();
+        if (AdvancedSearch.isInitialized('.advanced-search-container')) {
+          $('.advanced-search-container').slideUp(function () {
+            // Only destroy after it has been hidden
+            AdvancedSearch.destroy('.advanced-search-container');
+          });
+        } else {
+          AdvancedSearch.init('.advanced-search-container', function (err) {
+            if (err) return console.log(err.message);
+            // Only show after it has been initialized
+            $('.advanced-search-container').slideDown();
+          });
+        }
       });
+
+      plos_toggle.init();
+
+      if ($('#searchControlBarForm').attr('data-advanced-search')) {
+        $('#simpleSearchLink, .edit-query').show();
+        $('#advancedSearchLink').hide();
+
+        AdvancedSearch.init('.advanced-search-container', function (err) {
+          // Only show after it has been initialized
+          $('.advanced-search-container').show();
+          $('.advanced-search-inputs-container input[type=text]').first().focus();
+        });
+
+      }
 
       this.$searchAlertOpenModalBtnEl.on('click', function (e) {
         e.preventDefault();

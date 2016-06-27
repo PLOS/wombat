@@ -174,11 +174,11 @@ $line-height-small: ($line-height * .5);
   span.underline{ text-decoration: underline;}
 
   span.small-caps {
-  font-variant: small-caps;
+    @extend %small-caps;
   }
 
   .monospace {
-    font-family: "Courier New", Courier, monospace;
+    @extend %monospace;
   }
 
   // supplementary materials - need to have no margin between paragraphs just below the box

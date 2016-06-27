@@ -343,6 +343,14 @@ example | extension
   margin-bottom: 0;
 }
 
+%small-caps {
+  font-variant: small-caps;
+}
+
+%monospace {
+  font-family: "Courier New", Courier, monospace;
+}
+
 //////////////
 //form styles
 ///////////////

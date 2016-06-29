@@ -7,6 +7,9 @@
 <#include "../common/journalStyle.ftl" />
 <#include "../macro/searchResultsAlm.ftl" />
 
+<#include "../common/almQueryJs.ftl" />
+
+
 <@js src="resource/js/util/class.js"/>
 <@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
@@ -120,7 +123,7 @@
   <aside class="search-filters" id="searchFilters">
 
   </aside>
-  <article class="searchResults">
+  <article class="searchResults" data-doi="10.1371/journal.pbio.1000015">
     <h2>Please enter your search term above.</h2>
   </article>
 

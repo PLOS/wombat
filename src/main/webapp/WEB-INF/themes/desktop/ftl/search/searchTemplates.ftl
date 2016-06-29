@@ -1,3 +1,26 @@
+<script id="search-results-alm" type="text/template">
+
+  <p style="display: block;" class="search-results-alm" data-doi="">
+    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#viewedHeader">Views:  <%= viewCount  %></a>
+    •
+    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#citedHeader">Citations: <%= citationCount %></a>
+    •
+    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#savedHeader">Saves: <%= saveCount %></a>
+    •
+    Shares: <%= shareCount %>
+  </p>
+
+</script>
+<script id="search-results-alm-error" type="text/template">
+
+<p class="search-results-alm-error">
+<span class="fa-stack icon-warning-stack">
+<i class="fa fa-exclamation fa-stack-1x icon-b"></i>
+<i class="fa icon-warning fa-stack-1x icon-a"></i>
+</span>Metrics unavailable. Please check back later.
+</p>
+</script>
+
 <script id="searchListItemTemplate" type="text/template">
   <dl id="searchResultsList" class="search-results-list">
     <% _.each(results, function(item, index) { %>
@@ -29,32 +52,20 @@
 
       <p class="search-results-doi"><a href="http://dx.doi.org/<%= item.id %>">http://dx.doi.org/<%= item.id %></a>
       </p>
-      <div class="search-results-alm-container">
-        <p style="display: none;" class="search-results-alm-loading">
-          Loading metrics information...
-        </p>
+      <div class="search-results-alm-container" data-doi="<%= item.id %>" data-index="<%= index %>">
 
+      <p class="search-results-alm-loading">
+  Loading metrics information...
+  </p>
 
-        <p style="display: block;" class="search-results-alm" data-doi="<%= item.id %>">
-          <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#viewedHeader">Views:2912</a>
-          •
-          <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#citedHeader">Citations:8</a>
-          •
-          <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#savedHeader">Saves:20</a>
-          •
-          Shares: None
-        </p>
-
-        <p class="search-results-alm-error">
-      <span class="fa-stack icon-warning-stack">
-        <i class="fa fa-exclamation fa-stack-1x icon-b"></i>
-        <i class="fa icon-warning fa-stack-1x icon-a"></i>
-      </span>Metrics unavailable. Please check back later.
-        </p>
       </div>
     </dd>
     <% }); %>
 </script>
+
+
+
+
 
 <script id="searchListFilterSectionTemplate" type="text/template">
   <div class="filterSection">

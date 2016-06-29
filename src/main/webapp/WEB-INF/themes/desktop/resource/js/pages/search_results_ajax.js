@@ -343,6 +343,9 @@ var SearchResult;
               that.createResultList();
 
               that.hideLoading();
+              new SearchResultsALMs();
+
+
             }
             else {
               that.showNoResults();
@@ -380,10 +383,13 @@ var SearchResult;
     },
     createResultList: function () {
       var resultListTemplate = _.template($('#searchListItemTemplate').html());
+
       var list = resultListTemplate({results: this.results});
 
       this.$resultListEl.append(list);
       this.$resultListEl.append(this.pagination.createPaginationElement());
+      //console.log("ALMS!");
+
       this.createPageSelector();
     },
     createPageSelector: function () {

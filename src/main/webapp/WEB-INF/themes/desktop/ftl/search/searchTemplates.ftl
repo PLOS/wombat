@@ -132,11 +132,13 @@
 </script>
 
 <script type="text/template" id="searchNoResultsTemplate">
-  <p>You searched for articles that have all of the following:</p>
+  <div class="search-results-none-found">
+    <p>You searched for articles that have all of the following:</p>
 
-  <p>Search Term: "<span><%= q %></span>"</p>
+    <p>Search Term: "<span><%= q %></span>"</p>
 
-  <p>There were no results; please refine your search above and try again.</p>
+    <p>There were no results; please refine your search above and try again.</p>
+  </div>
 </script>
 
 <script type="text/template" id="searchParseErrorTemplate">

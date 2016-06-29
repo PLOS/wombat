@@ -33,13 +33,13 @@ var SearchResultsALMs;
                 viewCount: i.viewed
               };
 
-              var template = _.template($('#search-results-alm').html());
+              var template = _.template($('#searchResultsAlm').html());
               $(".search-results-alm-container[data-doi='" + doi + "']").html(template(templateData));
 
             });
           })
           .fail(function (error) {
-            var template = _.template($('#search-results-alm-error').html());
+            var template = _.template($('#searchResultsAlmError').html());
             $('.search-results-alm-container').html(template());
           });
 

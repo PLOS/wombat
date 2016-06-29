@@ -40,9 +40,9 @@
     <% }); %>
 </script>
 
-<script id="search-results-alm" type="text/template">
+<script id="searchResultsAlm" type="text/template">
 
-  <p style="display: block;" class="search-results-alm" data-doi="">
+  <p class="search-results-alm" data-doi="">
     <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#viewedHeader">Views: <%= viewCount
       %></a>
     •
@@ -56,7 +56,7 @@
   </p>
 
 </script>
-<script id="search-results-alm-error" type="text/template">
+<script id="searchResultsAlmError" type="text/template">
   <p class="search-results-alm-error">
     <span class="fa-stack icon-warning-stack">
       <i class="fa fa-exclamation fa-stack-1x icon-b"></i>

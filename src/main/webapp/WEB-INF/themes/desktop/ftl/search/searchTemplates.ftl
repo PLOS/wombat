@@ -60,7 +60,7 @@
   <div class="filterSection">
     <h3><%= filterTitle %></h3>
     <% if (activeFilterItems.length > 0) { %>
-    <ul class="active-filters-" id="active-<%= activeFilterItems[0].filterParamName %>">
+    <ul class="active-filters" id="active-<%= activeFilterItems[0].filterParamName %>">
       <% _.each(activeFilterItems, function(item) { %>
       <li>
         <a href="#" data-filter-param-name="<%= item.filterParamName %>" data-filter-value="<%= item.filterValue %>">

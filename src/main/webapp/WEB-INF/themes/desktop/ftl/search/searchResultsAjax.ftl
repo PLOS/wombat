@@ -18,7 +18,7 @@
 <@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/pages/advanced_search.js"/>
 <@js src="resource/js/pages/search_results_ajax.js"/>
-<@js src="resource/js/components/search_results_alm.js"/>
+<@js src="resource/js/components/search_results_alm_ajax.js"/>
 <@js src="resource/js/components/toggle.js"/>
 <@js src="resource/js/vendor/underscore-min.js"/>
 
@@ -55,7 +55,7 @@
 
 <#include "suppressSearchFilter.ftl" />
 
-<body class="static ${journalStyle} search-results-body">
+<body class="static ${journalStyle} search-results-body ajax">
 <#include "searchTemplates.ftl" />
 <#include "../common/paginationTemplate.ftl" />
 

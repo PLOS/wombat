@@ -1,26 +1,3 @@
-<script id="search-results-alm" type="text/template">
-
-  <p style="display: block;" class="search-results-alm" data-doi="">
-    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#viewedHeader">Views:  <%= viewCount  %></a>
-    •
-    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#citedHeader">Citations: <%= citationCount %></a>
-    •
-    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#savedHeader">Saves: <%= saveCount %></a>
-    •
-    Shares: <%= shareCount %>
-  </p>
-
-</script>
-<script id="search-results-alm-error" type="text/template">
-
-<p class="search-results-alm-error">
-<span class="fa-stack icon-warning-stack">
-<i class="fa fa-exclamation fa-stack-1x icon-b"></i>
-<i class="fa icon-warning fa-stack-1x icon-a"></i>
-</span>Metrics unavailable. Please check back later.
-</p>
-</script>
-
 <script id="searchListItemTemplate" type="text/template">
   <dl id="searchResultsList" class="search-results-list">
     <% _.each(results, function(item, index) { %>
@@ -54,17 +31,39 @@
       </p>
       <div class="search-results-alm-container" data-doi="<%= item.id %>" data-index="<%= index %>">
 
-      <p class="search-results-alm-loading">
-  Loading metrics information...
-  </p>
+        <p class="search-results-alm-loading">
+          Loading metrics information...
+        </p>
 
       </div>
     </dd>
     <% }); %>
 </script>
 
+<script id="search-results-alm" type="text/template">
 
+  <p style="display: block;" class="search-results-alm" data-doi="">
+    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#viewedHeader">Views: <%= viewCount
+      %></a>
+    •
+    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#citedHeader">Citations: <%=
+      citationCount %></a>
+    •
+    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#savedHeader">Saves: <%= saveCount
+      %></a>
+    •
+    Shares: <%= shareCount %>
+  </p>
 
+</script>
+<script id="search-results-alm-error" type="text/template">
+  <p class="search-results-alm-error">
+    <span class="fa-stack icon-warning-stack">
+      <i class="fa fa-exclamation fa-stack-1x icon-b"></i>
+      <i class="fa icon-warning fa-stack-1x icon-a"></i>
+    </span>Metrics unavailable. Please check back later.
+  </p>
+</script>
 
 
 <script id="searchListFilterSectionTemplate" type="text/template">
@@ -159,6 +158,6 @@
 </script>
 <script type="text/template" id="searchGeneralErrorTemplate">
   <h2>
-  There was a problem loading search results. Please edit your query or try again later.
+    There was a problem loading search results. Please edit your query or try again later.
   </h2>
 </script>

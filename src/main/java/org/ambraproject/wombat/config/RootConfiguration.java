@@ -4,10 +4,9 @@ import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
-import org.ambraproject.rhombat.cache.Cache;
-import org.ambraproject.rhombat.cache.MemcacheClient;
-import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import org.ambraproject.wombat.model.TaxonomyCountTable;
+import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.UserApi;
@@ -21,18 +20,27 @@ import org.ambraproject.wombat.service.remote.StreamService;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.joda.time.LocalDate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
 
+import javax.cache.Cache;
+import javax.cache.CacheManager;
+import javax.cache.Caching;
+import javax.cache.spi.CachingProvider;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.io.Serializable;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class RootConfiguration {
@@ -86,20 +94,50 @@ public class RootConfiguration {
     return manager;
   }
 
-  @Bean
-  public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
-    final RuntimeConfiguration.CacheConfiguration cacheConfiguration = runtimeConfiguration.getCacheConfiguration();
-    if (!Strings.isNullOrEmpty(cacheConfiguration.getMemcachedHost())) {
+  private CacheManager cacheManager() throws IOException {
+    CachingProvider provider = Caching.getCachingProvider();
 
-      // TODO: consider defining this in wombat.yaml instead.
-      final int cacheTimeout = 60 * 60;
-      MemcacheClient result = new MemcacheClient(cacheConfiguration.getMemcachedHost(),
-          cacheConfiguration.getMemcachedPort(), cacheConfiguration.getCacheAppPrefix(), cacheTimeout);
-      result.connect();
-      return result;
-    } else {
-      return new NullCache();
-    }
+      CachingProvider cachingProvider = Caching.getCachingProvider();
+      URI uri = new File("/etc/ambra/cache107.xml").toURI();
+      ClassLoader loader = getClass().getClassLoader();
+      CacheManager manager = cachingProvider.getCacheManager(uri, null);
+      return manager;
+  }
+
+  @Bean
+  public Cache<String, String> assetFilenameCache() throws IOException {
+    /**
+     * We use a shorter cache TTL than the global default (1 hour), because it's theoretically possible that the
+     * uncompiled asset files might change in the themes directory.  And since the cache key can only be calculated by
+     * loading and hashing all the corresponding files (an expensive operation), we have to accept that we'll serve stale
+     * assets for this period.
+     */
+    return cacheManager().getCache("assetFilenameCache", String.class, String.class);
+  }
+
+  @Bean
+  public Cache<String, Object> assetContentCache() throws IOException {
+    return cacheManager().getCache("assetContentCache", String.class, Object.class);
+  }
+
+  @Bean
+  public Cache<String, TaxonomyGraph> taxonomyGraphCache() throws IOException {
+    return cacheManager().getCache("taxonomyGraphCache", String.class, TaxonomyGraph.class);
+  }
+
+  @Bean
+  public Cache<String, TaxonomyCountTable> taxonomyCountTableCache() throws IOException {
+    return cacheManager().getCache("taxonomyCountTableCache", String.class, TaxonomyCountTable.class);
+  }
+
+  @Bean
+  public Cache<String, List> recentArticleCache() throws IOException {
+    return cacheManager().getCache("recentArticleCache", String.class, List.class);
+  }
+
+  @Bean
+  public Cache<String, Object> remoteServiceCache() throws IOException {
+    return cacheManager().getCache("remoteServiceCache", String.class, Object.class);
   }
 
   @Bean
@@ -118,14 +156,14 @@ public class RootConfiguration {
   }
 
   @Bean
-  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
-                                                               Cache cache) {
-    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), cache);
+  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager) throws IOException {
+    Cache<String, Object> remoteServiceCache = cacheManager().getCache("remoteServiceCache", String.class, Object.class);
+    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), remoteServiceCache);
   }
 
   @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
-                                                        Cache cache) {
-    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), cache);
+  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager) throws IOException {
+    Cache<String, Object> remoteServiceCache = cacheManager().getCache("remoteServiceCache", String.class, Object.class);
+    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), remoteServiceCache);
   }
 }

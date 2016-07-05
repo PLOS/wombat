@@ -2,7 +2,6 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
-import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -13,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 
+import javax.cache.Cache;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
@@ -115,12 +115,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
           T value = callback.read(stream);
           if (fromServer.timestamp != null) {
             CachedObject<T> cachedObject = new CachedObject<>(fromServer.timestamp, value);
-            Optional<Integer> timeToLive = cacheKey.getTimeToLive();
-            if (timeToLive.isPresent()){
-              cache.put(externalKey, cachedObject, timeToLive.get());
-            } else {
-              cache.put(externalKey, cachedObject);
-            }
+            cache.put(externalKey, cachedObject);
           }
           return value;
         }
@@ -139,7 +134,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    */
   private <T> CachedObject<T> getCachedObject(String cacheKey) {
     try {
-      return cache.get(Preconditions.checkNotNull(cacheKey));
+      return (CachedObject<T>) cache.get(Preconditions.checkNotNull(cacheKey));
     } catch (Exception e) {
       // Unexpected, but to degrade gracefully, treat it the same as a cache miss
       log.error("Error accessing cache using key: {}", cacheKey, e);

@@ -3,13 +3,13 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
-import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.cache.Cache;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   @Autowired
   private ArticleApi articleApi;
   @Autowired
-  private Cache cache;
+  private Cache<String, List> recentArticleCache;
 
   /*
    * This could be injected as a bean instead if needed.
@@ -75,7 +75,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     String cacheKey = "recentArticles:" + journalKey;
     List<Map<String, Object>> articles = null;
     if (cacheDuration.isPresent()) {
-      articles = cache.get(cacheKey); // remains null if not cached
+      articles = recentArticleCache.get(cacheKey); // remains null if not cached
     }
     if (articles == null) {
       articles = retrieveRecentArticles(journalKey, articleCount, numberOfDaysAgo, articleTypes, articleTypesToExclude);
@@ -85,7 +85,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
          * enough. We could avoid the cast with a shallow copy to a serializable List, but we would still rely on all
          * nested Lists and Maps being serializable. We'd rather avoid a deep copy until it's necessary.
          */
-        cache.put(cacheKey, (Serializable) articles, cacheDuration.get());
+        recentArticleCache.put(cacheKey, articles);
       }
     }
 

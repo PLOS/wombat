@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.util;
 
-import org.ambraproject.rhombat.cache.Cache;
 
+import javax.cache.Cache;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -33,13 +33,13 @@ public class CacheUtil {
    * @throws IOException
    * @throws java.lang.ClassCastException if {@code lookup} returns a non-{@code Serializable} value
    */
-  public static <T> T getOrCompute(Cache cache, CacheKey key, Lookup<? extends T> lookup)
+  public static <T> T getOrCompute(Cache<String, T> cache, CacheKey key, Lookup<? extends T> lookup)
       throws IOException {
     String externalKey = key.getExternalKey();
     T value = cache.get(externalKey);
     if (value == null) {
       value = lookup.get();
-      cache.put(externalKey, (Serializable) value);
+      cache.put(externalKey, value);
     }
     return value;
   }

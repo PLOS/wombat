@@ -15,23 +15,16 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.TestClasspathTheme;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
-import org.ambraproject.wombat.model.TaxonomyCountTable;
-import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.util.CacheManagerWrapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.cache.CacheManager;
-import javax.cache.Caching;
-import javax.cache.configuration.MutableConfiguration;
-import javax.cache.expiry.CreatedExpiryPolicy;
-import javax.cache.expiry.Duration;
-import javax.cache.spi.CachingProvider;
 import java.io.Reader;
 import java.util.Collections;
 import java.util.HashSet;
@@ -74,10 +67,8 @@ public class TestSpringConfiguration {
   }
 
   @Bean
-  public CacheManager cacheManager() {
-    CachingProvider provider = Caching.getCachingProvider();
-    CacheManager manager = provider.getCacheManager();
-    return manager;
+  public CacheManagerWrapper cacheManager() {
+    return new CacheManagerWrapper(false);
   }
 
   @Bean
